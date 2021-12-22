@@ -14,8 +14,16 @@
 <td><p>Data holders <strong>MAY</strong> add a &#39;profile selection&#39; step or equivalent prior to the account selection step if a single identifier provides access to different customer accounts. For example, one customer ID may give access to business customer and individual customer accounts.</p><p>The &#39;profile selection&#39; step <strong>SHOULD</strong> only be considered if it is an existing customer experience, and <strong>SHOULD</strong> be as minimal as possible to avoid introducing unwarranted friction (having regard to CDR Rule 4.24).</p></td>
 </tr>
 <tr>
+<td><strong>Authorisation:</strong><br>Account confirm</td>
+<td>Data holders <strong>MUST</strong> show which accounts the data is being shared from prior to confirming authorisation if the data request includes account-specific data. The data holder <strong>MAY</strong> omit this information if none of the data being requested is specific to an account (e.g. Saved Payees).</td>
+</tr>
+<tr>
+<td><strong>Authorisation:</strong><br>Pending status</td>
+<td><p>Where an account requires further actions or approvals before data can be disclosed, data holders <strong>MUST</strong> indicate this to the user visually and <strong>MUST</strong> provide an explanation of what is required or expected.</p><p>This <strong>MAY</strong>, for example, be achieved with a visual icon to indicate that the account is &#39;pending&#39;. This indication <strong>MUST</strong> be accompanied by an in-context explanation to describe what the status means. This explanation <strong>SHOULD</strong> include any required actions and any specified time frames.</p></td>
+</tr>
+<tr>
 <td><strong>Unavailable Accounts:</strong><br/>Displaying accounts</td>
-<td><p>If certain accounts are unavailable to share, data holders <strong>SHOULD</strong> show these unavailable accounts in the account-selection step. </p><p>Data holders <strong>SHOULD</strong> communicate why these accounts cannot be selected, and this <strong>SHOULD</strong> be communicated as in-line help or as a modal to reduce on-screen content.</p><p>Data holders <strong>MAY</strong> provide instructions on how to make these accounts available to share, and this <strong>SHOULD</strong> be communicated as in-line help or as a modal to reduce on-screen content.</p><p><em>Note:</em> Unavailable accounts are to be interpreted in accordance with the rules on eligible consumers and required consumer data.</p></td>
+<td><p>If certain accounts are unavailable to share, data holders <strong>SHOULD</strong> show these unavailable accounts in the account-selection step. </p><p>Data holders <strong>SHOULD</strong> communicate why these accounts cannot be selected, and this <strong>SHOULD</strong> be communicated as in-line help or as a modal to reduce on-screen content.</p><p>Data holders <strong>MAY</strong> provide instructions on how to make these accounts available to share, and this <strong>SHOULD</strong> be communicated as in-line help or as a modal to reduce on-screen content.</p><p><strong>Note:</strong> Unavailable accounts are to be interpreted in accordance with the rules on eligible consumers and required consumer data.</p></td>
 </tr>
 <tr>
 <td><strong>Unavailable Accounts:</strong><br/>No accounts can be shown</td>
@@ -28,9 +36,5 @@
 <tr>
 <td><strong>Unavailable Accounts:</strong><br/>Request sharing rights</td>
 <td>If a user does not have sharing rights for a particular account or set of accounts, data holders <strong>MAY</strong> invite the user to request sharing rights from the authorisation flow. The presentation of this mechanism <strong>MUST NOT</strong> introduce unwarranted friction as defined in rule 4.24 on restrictions.</td>
-</tr>
-<tr>
-<td><strong>Authorisation:</strong><br>Account confirm</td>
-<td>Data holders <strong>MUST</strong> show which accounts the data is being shared from prior to confirming authorisation if the data request includes account-specific data. The data holder <strong>MAY</strong> omit this information if none of the data being requested is specific to an account (e.g. Saved Payees).</td>
 </tr>
 </tbody></table>

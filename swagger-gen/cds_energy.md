@@ -345,7 +345,7 @@ Obtain detailed information on a single energy plan offered openly to the market
           "description": "string",
           "scheme": "PREMIUM",
           "payerType": "GOVERNMENT",
-          "tariffUType": "GOVERNMENT",
+          "tariffUType": "singleTariff",
           "singleTariff": {
             "amount": "string"
           },
@@ -367,6 +367,7 @@ Obtain detailed information on a single energy plan offered openly to the market
       ],
       "tariffPeriod": [
         {
+          "type": "ENVIRONMENTAL",
           "displayName": "string",
           "startDate": "string",
           "endDate": "string",
@@ -379,6 +380,7 @@ Obtain detailed information on a single energy plan offered openly to the market
             "rates": [
               {
                 "unitPrice": "string",
+                "measureUnit": "KWH",
                 "volume": 0
               }
             ],
@@ -391,6 +393,7 @@ Obtain detailed information on a single energy plan offered openly to the market
               "rates": [
                 {
                   "unitPrice": "string",
+                  "measureUnit": "KWH",
                   "volume": 0
                 }
               ],
@@ -411,6 +414,7 @@ Obtain detailed information on a single energy plan offered openly to the market
               "displayName": "string",
               "description": "string",
               "amount": "string",
+              "measureUnit": "KWH",
               "startTime": "string",
               "endTime": "string",
               "days": {
@@ -530,7 +534,7 @@ Obtain detailed information on a single energy plan offered openly to the market
           "description": "string",
           "scheme": "PREMIUM",
           "payerType": "GOVERNMENT",
-          "tariffUType": "GOVERNMENT",
+          "tariffUType": "singleTariff",
           "singleTariff": {
             "amount": "string"
           },
@@ -552,6 +556,7 @@ Obtain detailed information on a single energy plan offered openly to the market
       ],
       "tariffPeriod": [
         {
+          "type": "ENVIRONMENTAL",
           "displayName": "string",
           "startDate": "string",
           "endDate": "string",
@@ -564,6 +569,7 @@ Obtain detailed information on a single energy plan offered openly to the market
             "rates": [
               {
                 "unitPrice": "string",
+                "measureUnit": "KWH",
                 "volume": 0
               }
             ],
@@ -576,6 +582,7 @@ Obtain detailed information on a single energy plan offered openly to the market
               "rates": [
                 {
                   "unitPrice": "string",
+                  "measureUnit": "KWH",
                   "volume": 0
                 }
               ],
@@ -596,6 +603,7 @@ Obtain detailed information on a single energy plan offered openly to the market
               "displayName": "string",
               "description": "string",
               "amount": "string",
+              "measureUnit": "KWH",
               "startTime": "string",
               "endTime": "string",
               "days": {
@@ -713,9 +721,9 @@ Obtain a list of service points owned by the customer that has authorised the cu
 |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
 |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
 |x-fapi-interaction-id|header|string|optional|An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
-|x-fapi-auth-date|header|string|optional|The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
+|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|optional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
 
 > Example responses
 
@@ -840,9 +848,9 @@ Obtain detailed standing information for a specific service point that is owned 
 |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
 |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
 |x-fapi-interaction-id|header|string|optional|An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
-|x-fapi-auth-date|header|string|optional|The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
+|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|optional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
 
 > Example responses
 
@@ -947,7 +955,7 @@ Obtain detailed standing information for a specific service point that is owned 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyServicePointDetailResponse](#schemacdr-energy-apienergyservicepointdetailresponse)|
-|4xx|[**Client Error**](https://tools.ietf.org/html/rfc7231#section-6.5)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Unavailable Service Point](#error-422-unavailable-service-point)</li><li>[422 - Invalid Service Point](#error-422-invalid-service-point)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
+|4xx|[**Client Error**](https://tools.ietf.org/html/rfc7231#section-6.5)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[404 - Unavailable Service Point](#error-404-unavailable-service-point)</li><li>[404 - Invalid Service Point](#error-404-invalid-service-point)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
 
 ### Response Headers
 
@@ -1031,9 +1039,9 @@ Obtain a list of electricity usage data from a particular service point
 |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
 |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
 |x-fapi-interaction-id|header|string|optional|An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
-|x-fapi-auth-date|header|string|optional|The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
+|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|optional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
 
 > Example responses
 
@@ -1089,7 +1097,7 @@ Obtain a list of electricity usage data from a particular service point
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyUsageListResponse](#schemacdr-energy-apienergyusagelistresponse)|
-|4xx|[**Client Error**](https://tools.ietf.org/html/rfc7231#section-6.5)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Invalid Page](#error-422-field-invalid-page)</li><li>[422 - Unavailable Service Point](#error-422-unavailable-service-point)</li><li>[422 - Invalid Service Point](#error-422-invalid-service-point)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
+|4xx|[**Client Error**](https://tools.ietf.org/html/rfc7231#section-6.5)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Invalid Page](#error-422-field-invalid-page)</li><li>[404 - Unavailable Service Point](#error-404-unavailable-service-point)</li><li>[404 - Invalid Service Point](#error-404-invalid-service-point)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
 
 ### Response Headers
 
@@ -1172,9 +1180,9 @@ Obtain usage data for all service points associated with the customer
 |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
 |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
 |x-fapi-interaction-id|header|string|optional|An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
-|x-fapi-auth-date|header|string|optional|The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
+|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|optional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
 
 > Example responses
 
@@ -1328,9 +1336,9 @@ Obtain the electricity usage data for a specific set of service points
 |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
 |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
 |x-fapi-interaction-id|header|string|optional|An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
-|x-fapi-auth-date|header|string|optional|The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
+|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|optional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
 |body|body|[servicePointIdList](#schemacdr-energy-apiservicepointidlist)|mandatory|Request payload containing list of specific Service Points to obtain data for|
 |» data|body|object|mandatory|none|
 |»» servicePointIds|body|[string]|mandatory|Array of specific servicePointIds to obtain data for|
@@ -1470,9 +1478,9 @@ Obtain a list of DER data from a particular service point
 |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
 |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
 |x-fapi-interaction-id|header|string|optional|An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
-|x-fapi-auth-date|header|string|optional|The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
+|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|optional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
 
 > Example responses
 
@@ -1543,7 +1551,7 @@ Obtain a list of DER data from a particular service point
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyDerDetailResponse](#schemacdr-energy-apienergyderdetailresponse)|
-|4xx|[**Client Error**](https://tools.ietf.org/html/rfc7231#section-6.5)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Unavailable Service Point](#error-422-unavailable-service-point)</li><li>[422 - Invalid Service Point](#error-422-invalid-service-point)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
+|4xx|[**Client Error**](https://tools.ietf.org/html/rfc7231#section-6.5)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[404 - Unavailable Service Point](#error-404-unavailable-service-point)</li><li>[404 - Invalid Service Point](#error-404-invalid-service-point)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
 
 ### Response Headers
 
@@ -1624,9 +1632,9 @@ Obtain DER data for all service points associated with the customer
 |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
 |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
 |x-fapi-interaction-id|header|string|optional|An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
-|x-fapi-auth-date|header|string|optional|The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
+|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|optional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
 
 > Example responses
 
@@ -1804,9 +1812,9 @@ Obtain DER data for a specific set of service points
 |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
 |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
 |x-fapi-interaction-id|header|string|optional|An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
-|x-fapi-auth-date|header|string|optional|The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
+|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|optional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
 |body|body|[servicePointIdList](#schemacdr-energy-apiservicepointidlist)|mandatory|Request payload containing list of specific Service Points to obtain data for|
 |» data|body|object|mandatory|none|
 |»» servicePointIds|body|[string]|mandatory|Array of specific servicePointIds to obtain data for|
@@ -1973,9 +1981,9 @@ Obtain the list of energy accounts available under the authorised consent
 |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
 |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
 |x-fapi-interaction-id|header|string|optional|An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
-|x-fapi-auth-date|header|string|optional|The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
+|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|optional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
 
 > Example responses
 
@@ -2105,9 +2113,9 @@ Obtain detailed information for a specific energy account
 |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
 |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
 |x-fapi-interaction-id|header|string|optional|An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
-|x-fapi-auth-date|header|string|optional|The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
+|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|optional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
 
 > Example responses
 
@@ -2236,7 +2244,7 @@ Obtain detailed information for a specific energy account
                 "description": "string",
                 "scheme": "PREMIUM",
                 "payerType": "GOVERNMENT",
-                "tariffUType": "GOVERNMENT",
+                "tariffUType": "singleTariff",
                 "singleTariff": {
                   "amount": "string"
                 },
@@ -2251,6 +2259,7 @@ Obtain detailed information for a specific energy account
             ],
             "tariffPeriod": [
               {
+                "type": "ENVIRONMENTAL",
                 "displayName": "string",
                 "startDate": "string",
                 "endDate": "string",
@@ -2279,6 +2288,7 @@ Obtain detailed information for a specific energy account
                     "displayName": "string",
                     "description": "string",
                     "amount": "string",
+                    "measureUnit": "KWH",
                     "startTime": "string",
                     "endTime": "string",
                     "days": {},
@@ -2384,7 +2394,7 @@ Obtain detailed information for a specific energy account
                 "description": "string",
                 "scheme": "PREMIUM",
                 "payerType": "GOVERNMENT",
-                "tariffUType": "GOVERNMENT",
+                "tariffUType": "singleTariff",
                 "singleTariff": {
                   "amount": "string"
                 },
@@ -2399,6 +2409,7 @@ Obtain detailed information for a specific energy account
             ],
             "tariffPeriod": [
               {
+                "type": "ENVIRONMENTAL",
                 "displayName": "string",
                 "startDate": "string",
                 "endDate": "string",
@@ -2427,6 +2438,7 @@ Obtain detailed information for a specific energy account
                     "displayName": "string",
                     "description": "string",
                     "amount": "string",
+                    "measureUnit": "KWH",
                     "startTime": "string",
                     "endTime": "string",
                     "days": {},
@@ -2466,7 +2478,7 @@ Obtain detailed information for a specific energy account
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyAccountDetailResponse](#schemacdr-energy-apienergyaccountdetailresponse)|
-|4xx|[**Client Error**](https://tools.ietf.org/html/rfc7231#section-6.5)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Unavailable Energy Account](#error-422-unavailable-energy-account)</li><li>[422 - Invalid Energy Account](#error-422-invalid-energy-account)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
+|4xx|[**Client Error**](https://tools.ietf.org/html/rfc7231#section-6.5)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[404 - Unavailable Energy Account](#error-404-unavailable-energy-account)</li><li>[404 - Invalid Energy Account](#error-404-invalid-energy-account)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
 
 ### Response Headers
 
@@ -2546,9 +2558,9 @@ Obtain the agreed payment schedule and details, if any, for a specific energy ac
 |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
 |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
 |x-fapi-interaction-id|header|string|optional|An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
-|x-fapi-auth-date|header|string|optional|The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
+|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|optional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
 
 > Example responses
 
@@ -2587,7 +2599,7 @@ Obtain the agreed payment schedule and details, if any, for a specific energy ac
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyPaymentScheduleResponse](#schemacdr-energy-apienergypaymentscheduleresponse)|
-|4xx|[**Client Error**](https://tools.ietf.org/html/rfc7231#section-6.5)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Unavailable Energy Account](#error-422-unavailable-energy-account)</li><li>[422 - Invalid Energy Account](#error-422-invalid-energy-account)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
+|4xx|[**Client Error**](https://tools.ietf.org/html/rfc7231#section-6.5)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[404 - Unavailable Energy Account](#error-404-unavailable-energy-account)</li><li>[404 - Invalid Energy Account](#error-404-invalid-energy-account)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
 
 ### Response Headers
 
@@ -2652,7 +2664,7 @@ $.ajax({
 
 `GET /energy/accounts/{accountId}/concessions`
 
-Obtain the details of any concessions or hardship arrangements applied to a specific energy account
+Obtain the details of any concessions or arrangements applied to a specific energy account
 
 ###Endpoint Version
 |   |  |
@@ -2667,9 +2679,9 @@ Obtain the details of any concessions or hardship arrangements applied to a spec
 |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
 |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
 |x-fapi-interaction-id|header|string|optional|An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
-|x-fapi-auth-date|header|string|optional|The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
+|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|optional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
 
 > Example responses
 
@@ -2704,7 +2716,7 @@ Obtain the details of any concessions or hardship arrangements applied to a spec
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyConcessionsResponse](#schemacdr-energy-apienergyconcessionsresponse)|
-|4xx|[**Client Error**](https://tools.ietf.org/html/rfc7231#section-6.5)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Unavailable Energy Account](#error-422-unavailable-energy-account)</li><li>[422 - Invalid Energy Account](#error-422-invalid-energy-account)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
+|4xx|[**Client Error**](https://tools.ietf.org/html/rfc7231#section-6.5)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[404 - Unavailable Energy Account](#error-404-unavailable-energy-account)</li><li>[404 - Invalid Energy Account](#error-404-invalid-energy-account)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
 
 ### Response Headers
 
@@ -2784,9 +2796,9 @@ Obtain the current balance for a specific account
 |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
 |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
 |x-fapi-interaction-id|header|string|optional|An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
-|x-fapi-auth-date|header|string|optional|The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
+|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|optional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
 
 > Example responses
 
@@ -2809,7 +2821,7 @@ Obtain the current balance for a specific account
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyBalanceResponse](#schemacdr-energy-apienergybalanceresponse)|
-|4xx|[**Client Error**](https://tools.ietf.org/html/rfc7231#section-6.5)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Unavailable Energy Account](#error-422-unavailable-energy-account)</li><li>[422 - Invalid Energy Account](#error-422-invalid-energy-account)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
+|4xx|[**Client Error**](https://tools.ietf.org/html/rfc7231#section-6.5)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[404 - Unavailable Energy Account](#error-404-unavailable-energy-account)</li><li>[404 - Invalid Energy Account](#error-404-invalid-energy-account)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
 
 ### Response Headers
 
@@ -2829,7 +2841,7 @@ To perform this operation, you must be authenticated and authorised with the fol
     
   
 
-## Get Bulk Balances (Energy)
+## Get Bulk Balances for Energy
 
 <a id="opIdlistBalancesBulk"></a>
 
@@ -2881,7 +2893,7 @@ Obtain the current balance for all accounts
 |---|--|
 |Version|**1**
 
-<h3 id="get-bulk-balances-(energy)-parameters">Parameters</h3>
+<h3 id="get-bulk-balances-for-energy-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -2890,9 +2902,9 @@ Obtain the current balance for all accounts
 |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
 |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
 |x-fapi-interaction-id|header|string|optional|An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
-|x-fapi-auth-date|header|string|optional|The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
+|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|optional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
 
 > Example responses
 
@@ -2922,7 +2934,7 @@ Obtain the current balance for all accounts
 }
 ```
 
-<h3 id="get-bulk-balances-(energy)-responses">Responses</h3>
+<h3 id="get-bulk-balances-for-energy-responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -3023,9 +3035,9 @@ Obtain the current balance for a specified set of accounts
 |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
 |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
 |x-fapi-interaction-id|header|string|optional|An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
-|x-fapi-auth-date|header|string|optional|The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
+|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|optional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
 |body|body|[accountIdList](#schemacdr-energy-apiaccountidlist)|mandatory|Request payload containing list of specific Accounts to obtain data for|
 |» data|body|object|mandatory|none|
 |»» accountIds|body|[string]|mandatory|Array of specific accountIds to obtain data for|
@@ -3148,9 +3160,9 @@ Obtain the invoices for a specific account
 |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
 |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
 |x-fapi-interaction-id|header|string|optional|An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
-|x-fapi-auth-date|header|string|optional|The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
+|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|optional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
 
 > Example responses
 
@@ -3187,6 +3199,7 @@ Obtain the invoices for a specific account
           "totalOnceOffDiscounts": "string",
           "otherCharges": [
             {
+              "type": "ENVIRONMENTAL",
               "amount": "string",
               "description": "string"
             }
@@ -3200,6 +3213,7 @@ Obtain the invoices for a specific account
           "totalOnceOffDiscounts": "string",
           "otherCharges": [
             {
+              "type": "ENVIRONMENTAL",
               "amount": "string",
               "description": "string"
             }
@@ -3234,7 +3248,7 @@ Obtain the invoices for a specific account
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyInvoiceListResponse](#schemacdr-energy-apienergyinvoicelistresponse)|
-|4xx|[**Client Error**](https://tools.ietf.org/html/rfc7231#section-6.5)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Invalid Page](#error-422-field-invalid-page)</li><li>[422 - Unavailable Energy Account](#error-422-unavailable-energy-account)</li><li>[422 - Invalid Energy Account](#error-422-invalid-energy-account)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
+|4xx|[**Client Error**](https://tools.ietf.org/html/rfc7231#section-6.5)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Invalid Page](#error-422-field-invalid-page)</li><li>[404 - Unavailable Energy Account](#error-404-unavailable-energy-account)</li><li>[404 - Invalid Energy Account](#error-404-invalid-energy-account)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
 
 ### Response Headers
 
@@ -3317,9 +3331,9 @@ Obtain the invoices for all accounts
 |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
 |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
 |x-fapi-interaction-id|header|string|optional|An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
-|x-fapi-auth-date|header|string|optional|The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
+|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|optional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
 
 > Example responses
 
@@ -3356,6 +3370,7 @@ Obtain the invoices for all accounts
           "totalOnceOffDiscounts": "string",
           "otherCharges": [
             {
+              "type": "ENVIRONMENTAL",
               "amount": "string",
               "description": "string"
             }
@@ -3369,6 +3384,7 @@ Obtain the invoices for all accounts
           "totalOnceOffDiscounts": "string",
           "otherCharges": [
             {
+              "type": "ENVIRONMENTAL",
               "amount": "string",
               "description": "string"
             }
@@ -3501,9 +3517,9 @@ Obtain invoices for a specified set of accounts
 |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
 |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
 |x-fapi-interaction-id|header|string|optional|An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
-|x-fapi-auth-date|header|string|optional|The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
+|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|optional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
 |body|body|[accountIdList](#schemacdr-energy-apiaccountidlist)|mandatory|Request payload containing list of specific Accounts to obtain data for|
 |» data|body|object|mandatory|none|
 |»» accountIds|body|[string]|mandatory|Array of specific accountIds to obtain data for|
@@ -3544,6 +3560,7 @@ Obtain invoices for a specified set of accounts
           "totalOnceOffDiscounts": "string",
           "otherCharges": [
             {
+              "type": "ENVIRONMENTAL",
               "amount": "string",
               "description": "string"
             }
@@ -3557,6 +3574,7 @@ Obtain invoices for a specified set of accounts
           "totalOnceOffDiscounts": "string",
           "otherCharges": [
             {
+              "type": "ENVIRONMENTAL",
               "amount": "string",
               "description": "string"
             }
@@ -3675,9 +3693,9 @@ Obtain the billing transactions for a specific account
 |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
 |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
 |x-fapi-interaction-id|header|string|optional|An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
-|x-fapi-auth-date|header|string|optional|The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
+|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|optional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
 
 > Example responses
 
@@ -3700,6 +3718,7 @@ Obtain the billing transactions for a specific account
           "isEstimate": true,
           "startDate": "string",
           "endDate": "string",
+          "measureUnit": "KWH",
           "usage": 0,
           "amount": "string",
           "calculationFactors": [
@@ -3747,6 +3766,9 @@ Obtain the billing transactions for a specific account
         "otherCharges": {
           "servicePointId": "string",
           "invoiceNumber": "string",
+          "startDate": "string",
+          "endDate": "string",
+          "type": "ENVIRONMENTAL",
           "amount": "string",
           "description": "string"
         },
@@ -3776,7 +3798,7 @@ Obtain the billing transactions for a specific account
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyBillingListResponse](#schemacdr-energy-apienergybillinglistresponse)|
-|4xx|[**Client Error**](https://tools.ietf.org/html/rfc7231#section-6.5)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Invalid Page](#error-422-field-invalid-page)</li><li>[422 - Unavailable Energy Account](#error-422-unavailable-energy-account)</li><li>[422 - Invalid Energy Account](#error-422-invalid-energy-account)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
+|4xx|[**Client Error**](https://tools.ietf.org/html/rfc7231#section-6.5)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Invalid Page](#error-422-field-invalid-page)</li><li>[404 - Unavailable Energy Account](#error-404-unavailable-energy-account)</li><li>[404 - Invalid Energy Account](#error-404-invalid-energy-account)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
 
 ### Response Headers
 
@@ -3859,9 +3881,9 @@ Obtain billing transactions for all accounts
 |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
 |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
 |x-fapi-interaction-id|header|string|optional|An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
-|x-fapi-auth-date|header|string|optional|The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
+|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|optional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
 
 > Example responses
 
@@ -3884,6 +3906,7 @@ Obtain billing transactions for all accounts
           "isEstimate": true,
           "startDate": "string",
           "endDate": "string",
+          "measureUnit": "KWH",
           "usage": 0,
           "amount": "string",
           "calculationFactors": [
@@ -3931,6 +3954,9 @@ Obtain billing transactions for all accounts
         "otherCharges": {
           "servicePointId": "string",
           "invoiceNumber": "string",
+          "startDate": "string",
+          "endDate": "string",
+          "type": "ENVIRONMENTAL",
           "amount": "string",
           "description": "string"
         },
@@ -4058,9 +4084,9 @@ Obtain billing for a specified set of accounts
 |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
 |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
 |x-fapi-interaction-id|header|string|optional|An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
-|x-fapi-auth-date|header|string|optional|The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
+|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|optional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
 |body|body|[accountIdList](#schemacdr-energy-apiaccountidlist)|mandatory|Request payload containing list of specific Accounts to obtain data for|
 |» data|body|object|mandatory|none|
 |»» accountIds|body|[string]|mandatory|Array of specific accountIds to obtain data for|
@@ -4087,6 +4113,7 @@ Obtain billing for a specified set of accounts
           "isEstimate": true,
           "startDate": "string",
           "endDate": "string",
+          "measureUnit": "KWH",
           "usage": 0,
           "amount": "string",
           "calculationFactors": [
@@ -4134,6 +4161,9 @@ Obtain billing for a specified set of accounts
         "otherCharges": {
           "servicePointId": "string",
           "invoiceNumber": "string",
+          "startDate": "string",
+          "endDate": "string",
+          "type": "ENVIRONMENTAL",
           "amount": "string",
           "description": "string"
         },
@@ -4186,7 +4216,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h2 class="schema-heading" id="cdr-energy-api-schemas">Schemas</h2>
 <a class="schema-link" id="cdr-energy-api-schemas"></a>
 
-<h2 class="schema-toc" id="tocSenergyplanlistresponse">EnergyPlanListResponse</h2>
+<h3 class="schema-toc" id="tocSenergyplanlistresponse">EnergyPlanListResponse</h3>
 
 <a id="schemacdr-energy-apienergyplanlistresponse"></a>
 
@@ -4249,7 +4279,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |links|[LinksPaginated](#schemacdr-energy-apilinkspaginated)|mandatory|none|
 |meta|[MetaPaginated](#schemacdr-energy-apimetapaginated)|mandatory|none|
 
-<h2 class="schema-toc" id="tocSenergyplanresponse">EnergyPlanResponse</h2>
+<h3 class="schema-toc" id="tocSenergyplanresponse">EnergyPlanResponse</h3>
 
 <a id="schemacdr-energy-apienergyplanresponse"></a>
 
@@ -4385,7 +4415,7 @@ To perform this operation, you must be authenticated and authorised with the fol
           "description": "string",
           "scheme": "PREMIUM",
           "payerType": "GOVERNMENT",
-          "tariffUType": "GOVERNMENT",
+          "tariffUType": "singleTariff",
           "singleTariff": {
             "amount": "string"
           },
@@ -4407,6 +4437,7 @@ To perform this operation, you must be authenticated and authorised with the fol
       ],
       "tariffPeriod": [
         {
+          "type": "ENVIRONMENTAL",
           "displayName": "string",
           "startDate": "string",
           "endDate": "string",
@@ -4419,6 +4450,7 @@ To perform this operation, you must be authenticated and authorised with the fol
             "rates": [
               {
                 "unitPrice": "string",
+                "measureUnit": "KWH",
                 "volume": 0
               }
             ],
@@ -4431,6 +4463,7 @@ To perform this operation, you must be authenticated and authorised with the fol
               "rates": [
                 {
                   "unitPrice": "string",
+                  "measureUnit": "KWH",
                   "volume": 0
                 }
               ],
@@ -4451,6 +4484,7 @@ To perform this operation, you must be authenticated and authorised with the fol
               "displayName": "string",
               "description": "string",
               "amount": "string",
+              "measureUnit": "KWH",
               "startTime": "string",
               "endTime": "string",
               "days": {
@@ -4570,7 +4604,7 @@ To perform this operation, you must be authenticated and authorised with the fol
           "description": "string",
           "scheme": "PREMIUM",
           "payerType": "GOVERNMENT",
-          "tariffUType": "GOVERNMENT",
+          "tariffUType": "singleTariff",
           "singleTariff": {
             "amount": "string"
           },
@@ -4592,6 +4626,7 @@ To perform this operation, you must be authenticated and authorised with the fol
       ],
       "tariffPeriod": [
         {
+          "type": "ENVIRONMENTAL",
           "displayName": "string",
           "startDate": "string",
           "endDate": "string",
@@ -4604,6 +4639,7 @@ To perform this operation, you must be authenticated and authorised with the fol
             "rates": [
               {
                 "unitPrice": "string",
+                "measureUnit": "KWH",
                 "volume": 0
               }
             ],
@@ -4616,6 +4652,7 @@ To perform this operation, you must be authenticated and authorised with the fol
               "rates": [
                 {
                   "unitPrice": "string",
+                  "measureUnit": "KWH",
                   "volume": 0
                 }
               ],
@@ -4636,6 +4673,7 @@ To perform this operation, you must be authenticated and authorised with the fol
               "displayName": "string",
               "description": "string",
               "amount": "string",
+              "measureUnit": "KWH",
               "startTime": "string",
               "endTime": "string",
               "days": {
@@ -4679,7 +4717,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |links|[Links](#schemacdr-energy-apilinks)|mandatory|none|
 |meta|[Meta](#schemacdr-energy-apimeta)|mandatory|none|
 
-<h2 class="schema-toc" id="tocSenergyservicepointlistresponse">EnergyServicePointListResponse</h2>
+<h3 class="schema-toc" id="tocSenergyservicepointlistresponse">EnergyServicePointListResponse</h3>
 
 <a id="schemacdr-energy-apienergyservicepointlistresponse"></a>
 
@@ -4727,7 +4765,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |links|[LinksPaginated](#schemacdr-energy-apilinkspaginated)|mandatory|none|
 |meta|[MetaPaginated](#schemacdr-energy-apimetapaginated)|mandatory|none|
 
-<h2 class="schema-toc" id="tocSenergyservicepointdetailresponse">EnergyServicePointDetailResponse</h2>
+<h3 class="schema-toc" id="tocSenergyservicepointdetailresponse">EnergyServicePointDetailResponse</h3>
 
 <a id="schemacdr-energy-apienergyservicepointdetailresponse"></a>
 
@@ -4834,7 +4872,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |links|[Links](#schemacdr-energy-apilinks)|mandatory|none|
 |meta|[Meta](#schemacdr-energy-apimeta)|mandatory|none|
 
-<h2 class="schema-toc" id="tocSenergyusagelistresponse">EnergyUsageListResponse</h2>
+<h3 class="schema-toc" id="tocSenergyusagelistresponse">EnergyUsageListResponse</h3>
 
 <a id="schemacdr-energy-apienergyusagelistresponse"></a>
 
@@ -4893,7 +4931,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |links|[LinksPaginated](#schemacdr-energy-apilinkspaginated)|mandatory|none|
 |meta|[MetaPaginated](#schemacdr-energy-apimetapaginated)|mandatory|none|
 
-<h2 class="schema-toc" id="tocSenergyderlistresponse">EnergyDerListResponse</h2>
+<h3 class="schema-toc" id="tocSenergyderlistresponse">EnergyDerListResponse</h3>
 
 <a id="schemacdr-energy-apienergyderlistresponse"></a>
 
@@ -4978,7 +5016,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |links|[LinksPaginated](#schemacdr-energy-apilinkspaginated)|mandatory|none|
 |meta|[MetaPaginated](#schemacdr-energy-apimetapaginated)|mandatory|none|
 
-<h2 class="schema-toc" id="tocSenergyderdetailresponse">EnergyDerDetailResponse</h2>
+<h3 class="schema-toc" id="tocSenergyderdetailresponse">EnergyDerDetailResponse</h3>
 
 <a id="schemacdr-energy-apienergyderdetailresponse"></a>
 
@@ -5051,7 +5089,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |links|[Links](#schemacdr-energy-apilinks)|mandatory|none|
 |meta|[Meta](#schemacdr-energy-apimeta)|mandatory|none|
 
-<h2 class="schema-toc" id="tocSenergyaccountlistresponse">EnergyAccountListResponse</h2>
+<h3 class="schema-toc" id="tocSenergyaccountlistresponse">EnergyAccountListResponse</h3>
 
 <a id="schemacdr-energy-apienergyaccountlistresponse"></a>
 
@@ -5104,7 +5142,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |links|[LinksPaginated](#schemacdr-energy-apilinkspaginated)|mandatory|none|
 |meta|[MetaPaginated](#schemacdr-energy-apimetapaginated)|mandatory|none|
 
-<h2 class="schema-toc" id="tocSenergyaccountdetailresponse">EnergyAccountDetailResponse</h2>
+<h3 class="schema-toc" id="tocSenergyaccountdetailresponse">EnergyAccountDetailResponse</h3>
 
 <a id="schemacdr-energy-apienergyaccountdetailresponse"></a>
 
@@ -5231,7 +5269,7 @@ To perform this operation, you must be authenticated and authorised with the fol
                 "description": "string",
                 "scheme": "PREMIUM",
                 "payerType": "GOVERNMENT",
-                "tariffUType": "GOVERNMENT",
+                "tariffUType": "singleTariff",
                 "singleTariff": {
                   "amount": "string"
                 },
@@ -5246,6 +5284,7 @@ To perform this operation, you must be authenticated and authorised with the fol
             ],
             "tariffPeriod": [
               {
+                "type": "ENVIRONMENTAL",
                 "displayName": "string",
                 "startDate": "string",
                 "endDate": "string",
@@ -5274,6 +5313,7 @@ To perform this operation, you must be authenticated and authorised with the fol
                     "displayName": "string",
                     "description": "string",
                     "amount": "string",
+                    "measureUnit": "KWH",
                     "startTime": "string",
                     "endTime": "string",
                     "days": {},
@@ -5379,7 +5419,7 @@ To perform this operation, you must be authenticated and authorised with the fol
                 "description": "string",
                 "scheme": "PREMIUM",
                 "payerType": "GOVERNMENT",
-                "tariffUType": "GOVERNMENT",
+                "tariffUType": "singleTariff",
                 "singleTariff": {
                   "amount": "string"
                 },
@@ -5394,6 +5434,7 @@ To perform this operation, you must be authenticated and authorised with the fol
             ],
             "tariffPeriod": [
               {
+                "type": "ENVIRONMENTAL",
                 "displayName": "string",
                 "startDate": "string",
                 "endDate": "string",
@@ -5422,6 +5463,7 @@ To perform this operation, you must be authenticated and authorised with the fol
                     "displayName": "string",
                     "description": "string",
                     "amount": "string",
+                    "measureUnit": "KWH",
                     "startTime": "string",
                     "endTime": "string",
                     "days": {},
@@ -5465,7 +5507,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |links|[Links](#schemacdr-energy-apilinks)|mandatory|none|
 |meta|[Meta](#schemacdr-energy-apimeta)|mandatory|none|
 
-<h2 class="schema-toc" id="tocSenergypaymentscheduleresponse">EnergyPaymentScheduleResponse</h2>
+<h3 class="schema-toc" id="tocSenergypaymentscheduleresponse">EnergyPaymentScheduleResponse</h3>
 
 <a id="schemacdr-energy-apienergypaymentscheduleresponse"></a>
 
@@ -5506,7 +5548,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |links|[Links](#schemacdr-energy-apilinks)|mandatory|none|
 |meta|[Meta](#schemacdr-energy-apimeta)|mandatory|none|
 
-<h2 class="schema-toc" id="tocSenergyconcessionsresponse">EnergyConcessionsResponse</h2>
+<h3 class="schema-toc" id="tocSenergyconcessionsresponse">EnergyConcessionsResponse</h3>
 
 <a id="schemacdr-energy-apienergyconcessionsresponse"></a>
 
@@ -5544,7 +5586,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |links|[Links](#schemacdr-energy-apilinks)|mandatory|none|
 |meta|[Meta](#schemacdr-energy-apimeta)|mandatory|none|
 
-<h2 class="schema-toc" id="tocSenergybalancelistresponse">EnergyBalanceListResponse</h2>
+<h3 class="schema-toc" id="tocSenergybalancelistresponse">EnergyBalanceListResponse</h3>
 
 <a id="schemacdr-energy-apienergybalancelistresponse"></a>
 
@@ -5584,7 +5626,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |» links|[LinksPaginated](#schemacdr-energy-apilinkspaginated)|mandatory|none|
 |» meta|[MetaPaginated](#schemacdr-energy-apimetapaginated)|mandatory|none|
 
-<h2 class="schema-toc" id="tocSenergybalanceresponse">EnergyBalanceResponse</h2>
+<h3 class="schema-toc" id="tocSenergybalanceresponse">EnergyBalanceResponse</h3>
 
 <a id="schemacdr-energy-apienergybalanceresponse"></a>
 
@@ -5610,7 +5652,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |links|[Links](#schemacdr-energy-apilinks)|mandatory|none|
 |meta|[Meta](#schemacdr-energy-apimeta)|mandatory|none|
 
-<h2 class="schema-toc" id="tocSenergyinvoicelistresponse">EnergyInvoiceListResponse</h2>
+<h3 class="schema-toc" id="tocSenergyinvoicelistresponse">EnergyInvoiceListResponse</h3>
 
 <a id="schemacdr-energy-apienergyinvoicelistresponse"></a>
 
@@ -5645,6 +5687,7 @@ To perform this operation, you must be authenticated and authorised with the fol
           "totalOnceOffDiscounts": "string",
           "otherCharges": [
             {
+              "type": "ENVIRONMENTAL",
               "amount": "string",
               "description": "string"
             }
@@ -5658,6 +5701,7 @@ To perform this operation, you must be authenticated and authorised with the fol
           "totalOnceOffDiscounts": "string",
           "otherCharges": [
             {
+              "type": "ENVIRONMENTAL",
               "amount": "string",
               "description": "string"
             }
@@ -5697,7 +5741,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |links|[LinksPaginated](#schemacdr-energy-apilinkspaginated)|mandatory|none|
 |meta|[MetaPaginated](#schemacdr-energy-apimetapaginated)|mandatory|none|
 
-<h2 class="schema-toc" id="tocSenergybillinglistresponse">EnergyBillingListResponse</h2>
+<h3 class="schema-toc" id="tocSenergybillinglistresponse">EnergyBillingListResponse</h3>
 
 <a id="schemacdr-energy-apienergybillinglistresponse"></a>
 
@@ -5718,6 +5762,7 @@ To perform this operation, you must be authenticated and authorised with the fol
           "isEstimate": true,
           "startDate": "string",
           "endDate": "string",
+          "measureUnit": "KWH",
           "usage": 0,
           "amount": "string",
           "calculationFactors": [
@@ -5765,6 +5810,9 @@ To perform this operation, you must be authenticated and authorised with the fol
         "otherCharges": {
           "servicePointId": "string",
           "invoiceNumber": "string",
+          "startDate": "string",
+          "endDate": "string",
+          "type": "ENVIRONMENTAL",
           "amount": "string",
           "description": "string"
         },
@@ -5799,7 +5847,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |links|[LinksPaginated](#schemacdr-energy-apilinkspaginated)|mandatory|none|
 |meta|[MetaPaginated](#schemacdr-energy-apimetapaginated)|mandatory|none|
 
-<h2 class="schema-toc" id="tocSerrorlistresponse">ErrorListResponse</h2>
+<h3 class="schema-toc" id="tocSerrorlistresponse">ErrorListResponse</h3>
 
 <a id="schemacdr-energy-apierrorlistresponse"></a>
 
@@ -5830,7 +5878,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |» meta|object|optional|Additional data for customised error codes|
 |»» urn|string|conditional|The CDR error code URN which the application-specific error code extends. Mandatory if the error `code` is an application-specific error rather than a standardised error code.|
 
-<h2 class="schema-toc" id="tocSenergyplan">EnergyPlan</h2>
+<h3 class="schema-toc" id="tocSenergyplan">EnergyPlan</h3>
 
 <a id="schemacdr-energy-apienergyplan"></a>
 
@@ -5906,7 +5954,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |customerType|RESIDENTIAL|
 |customerType|BUSINESS|
 
-<h2 class="schema-toc" id="tocSenergyplandetail">EnergyPlanDetail</h2>
+<h3 class="schema-toc" id="tocSenergyplandetail">EnergyPlanDetail</h3>
 
 <a id="schemacdr-energy-apienergyplandetail"></a>
 
@@ -6041,7 +6089,7 @@ To perform this operation, you must be authenticated and authorised with the fol
         "description": "string",
         "scheme": "PREMIUM",
         "payerType": "GOVERNMENT",
-        "tariffUType": "GOVERNMENT",
+        "tariffUType": "singleTariff",
         "singleTariff": {
           "amount": "string"
         },
@@ -6063,6 +6111,7 @@ To perform this operation, you must be authenticated and authorised with the fol
     ],
     "tariffPeriod": [
       {
+        "type": "ENVIRONMENTAL",
         "displayName": "string",
         "startDate": "string",
         "endDate": "string",
@@ -6075,6 +6124,7 @@ To perform this operation, you must be authenticated and authorised with the fol
           "rates": [
             {
               "unitPrice": "string",
+              "measureUnit": "KWH",
               "volume": 0
             }
           ],
@@ -6087,6 +6137,7 @@ To perform this operation, you must be authenticated and authorised with the fol
             "rates": [
               {
                 "unitPrice": "string",
+                "measureUnit": "KWH",
                 "volume": 0
               }
             ],
@@ -6107,6 +6158,7 @@ To perform this operation, you must be authenticated and authorised with the fol
             "displayName": "string",
             "description": "string",
             "amount": "string",
+            "measureUnit": "KWH",
             "startTime": "string",
             "endTime": "string",
             "days": {
@@ -6226,7 +6278,7 @@ To perform this operation, you must be authenticated and authorised with the fol
         "description": "string",
         "scheme": "PREMIUM",
         "payerType": "GOVERNMENT",
-        "tariffUType": "GOVERNMENT",
+        "tariffUType": "singleTariff",
         "singleTariff": {
           "amount": "string"
         },
@@ -6248,6 +6300,7 @@ To perform this operation, you must be authenticated and authorised with the fol
     ],
     "tariffPeriod": [
       {
+        "type": "ENVIRONMENTAL",
         "displayName": "string",
         "startDate": "string",
         "endDate": "string",
@@ -6260,6 +6313,7 @@ To perform this operation, you must be authenticated and authorised with the fol
           "rates": [
             {
               "unitPrice": "string",
+              "measureUnit": "KWH",
               "volume": 0
             }
           ],
@@ -6272,6 +6326,7 @@ To perform this operation, you must be authenticated and authorised with the fol
             "rates": [
               {
                 "unitPrice": "string",
+                "measureUnit": "KWH",
                 "volume": 0
               }
             ],
@@ -6292,6 +6347,7 @@ To perform this operation, you must be authenticated and authorised with the fol
             "displayName": "string",
             "description": "string",
             "amount": "string",
+            "measureUnit": "KWH",
             "startTime": "string",
             "endTime": "string",
             "days": {
@@ -6344,7 +6400,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |» gasContract|[EnergyPlanContractFull](#schemacdr-energy-apienergyplancontractfull)|conditional|The details of the terms for the supply of electricity under this plan.  Is mandatory if fuelType is set to GAS or DUAL|
 |» electricityContract|[EnergyPlanContractFull](#schemacdr-energy-apienergyplancontractfull)|conditional|The details of the terms for the supply of electricity under this plan.  Is mandatory if fuelType is set to ELECTRICITY or DUAL|
 
-<h2 class="schema-toc" id="tocSenergyplancontract">EnergyPlanContract</h2>
+<h3 class="schema-toc" id="tocSenergyplancontract">EnergyPlanContract</h3>
 
 <a id="schemacdr-energy-apienergyplancontract"></a>
 
@@ -6442,7 +6498,7 @@ To perform this operation, you must be authenticated and authorised with the fol
       "description": "string",
       "scheme": "PREMIUM",
       "payerType": "GOVERNMENT",
-      "tariffUType": "GOVERNMENT",
+      "tariffUType": "singleTariff",
       "singleTariff": {
         "amount": "string"
       },
@@ -6464,6 +6520,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   ],
   "tariffPeriod": [
     {
+      "type": "ENVIRONMENTAL",
       "displayName": "string",
       "startDate": "string",
       "endDate": "string",
@@ -6476,6 +6533,7 @@ To perform this operation, you must be authenticated and authorised with the fol
         "rates": [
           {
             "unitPrice": "string",
+            "measureUnit": "KWH",
             "volume": 0
           }
         ],
@@ -6488,6 +6546,7 @@ To perform this operation, you must be authenticated and authorised with the fol
           "rates": [
             {
               "unitPrice": "string",
+              "measureUnit": "KWH",
               "volume": 0
             }
           ],
@@ -6508,6 +6567,7 @@ To perform this operation, you must be authenticated and authorised with the fol
           "displayName": "string",
           "description": "string",
           "amount": "string",
+          "measureUnit": "KWH",
           "startTime": "string",
           "endTime": "string",
           "days": {
@@ -6540,7 +6600,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |paymentOption|[string]|mandatory|Payment options for this contract|
 |intrinsicGreenPower|object|optional|Describes intrinsic green power for the plan.  If present then the plan includes a percentage of green power in the base plan. Should not be present for gas contracts|
 |» greenPercentage|[RateString](#common-field-types)|mandatory|Percentage of green power intrinsically included in the plan|
-|controlledLoad|[EnergyPlanControlledLoad](#schemacdr-energy-apienergyplancontrolledload)|conditional|Required if pricing model is SINGLE_RATE_CONT_LOAD or TIME_OF_USE_CONT_LOAD|
+|controlledLoad|[EnergyPlanControlledLoad](#schemacdr-energy-apienergyplancontrolledload)|conditional|Required if pricing model is SINGLE_RATE_CONT_LOAD or TIME_OF_USE_CONT_LOAD or FLEXIBLE_CONT_LOAD|
 |incentives|[EnergyPlanIncentives](#schemacdr-energy-apienergyplanincentives)|optional|Optional list of incentives available for the contract|
 |discounts|[EnergyPlanDiscounts](#schemacdr-energy-apienergyplandiscounts)|optional|Optional list of discounts available for the contract|
 |greenPowerCharges|[EnergyPlanGreenPowerCharges](#schemacdr-energy-apienergyplangreenpowercharges)|optional|Optional list of charges applicable to green power|
@@ -6563,7 +6623,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |timeZone|LOCAL|
 |timeZone|AEST|
 
-<h2 class="schema-toc" id="tocSenergyplancontractfull">EnergyPlanContractFull</h2>
+<h3 class="schema-toc" id="tocSenergyplancontractfull">EnergyPlanContractFull</h3>
 
 <a id="schemacdr-energy-apienergyplancontractfull"></a>
 
@@ -6661,7 +6721,7 @@ To perform this operation, you must be authenticated and authorised with the fol
       "description": "string",
       "scheme": "PREMIUM",
       "payerType": "GOVERNMENT",
-      "tariffUType": "GOVERNMENT",
+      "tariffUType": "singleTariff",
       "singleTariff": {
         "amount": "string"
       },
@@ -6683,6 +6743,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   ],
   "tariffPeriod": [
     {
+      "type": "ENVIRONMENTAL",
       "displayName": "string",
       "startDate": "string",
       "endDate": "string",
@@ -6695,6 +6756,7 @@ To perform this operation, you must be authenticated and authorised with the fol
         "rates": [
           {
             "unitPrice": "string",
+            "measureUnit": "KWH",
             "volume": 0
           }
         ],
@@ -6707,6 +6769,7 @@ To perform this operation, you must be authenticated and authorised with the fol
           "rates": [
             {
               "unitPrice": "string",
+              "measureUnit": "KWH",
               "volume": 0
             }
           ],
@@ -6727,6 +6790,7 @@ To perform this operation, you must be authenticated and authorised with the fol
           "displayName": "string",
           "description": "string",
           "amount": "string",
+          "measureUnit": "KWH",
           "startTime": "string",
           "endTime": "string",
           "days": {
@@ -6788,7 +6852,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |termType|ONGOING|
 |termType|OTHER|
 
-<h2 class="schema-toc" id="tocSenergyplancontrolledload">EnergyPlanControlledLoad</h2>
+<h3 class="schema-toc" id="tocSenergyplancontrolledload">EnergyPlanControlledLoad</h3>
 
 <a id="schemacdr-energy-apienergyplancontrolledload"></a>
 
@@ -6808,7 +6872,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-*Required if pricing model is SINGLE_RATE_CONT_LOAD or TIME_OF_USE_CONT_LOAD*
+*Required if pricing model is SINGLE_RATE_CONT_LOAD or TIME_OF_USE_CONT_LOAD or FLEXIBLE_CONT_LOAD*
 
 ### Properties
 
@@ -6822,7 +6886,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |» unitPrice|[AmountString](#common-field-types)|mandatory|Unit price of usage per kWh (exclusive of GST)|
 |» volume|number|optional|Volume in kWh that this rate applies to.  Only applicable for ‘stepped’ rates where different rates apply for different volumes of usage in a period|
 
-<h2 class="schema-toc" id="tocSenergyplanincentives">EnergyPlanIncentives</h2>
+<h3 class="schema-toc" id="tocSenergyplanincentives">EnergyPlanIncentives</h3>
 
 <a id="schemacdr-energy-apienergyplanincentives"></a>
 
@@ -6857,7 +6921,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |category|ACCOUNT_CREDIT|
 |category|OTHER|
 
-<h2 class="schema-toc" id="tocSenergyplandiscounts">EnergyPlanDiscounts</h2>
+<h3 class="schema-toc" id="tocSenergyplandiscounts">EnergyPlanDiscounts</h3>
 
 <a id="schemacdr-energy-apienergyplandiscounts"></a>
 
@@ -6926,7 +6990,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |methodUType|fixedAmount|
 |methodUType|percentOverThreshold|
 
-<h2 class="schema-toc" id="tocSenergyplangreenpowercharges">EnergyPlanGreenPowerCharges</h2>
+<h3 class="schema-toc" id="tocSenergyplangreenpowercharges">EnergyPlanGreenPowerCharges</h3>
 
 <a id="schemacdr-energy-apienergyplangreenpowercharges"></a>
 
@@ -6977,7 +7041,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |type|PERCENT_OF_USE|
 |type|PERCENT_OF_BILL|
 
-<h2 class="schema-toc" id="tocSenergyplaneligibility">EnergyPlanEligibility</h2>
+<h3 class="schema-toc" id="tocSenergyplaneligibility">EnergyPlanEligibility</h3>
 
 <a id="schemacdr-energy-apienergyplaneligibility"></a>
 
@@ -7028,7 +7092,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |type|CONTINGENT_PLAN|
 |type|OTHER|
 
-<h2 class="schema-toc" id="tocSenergyplanfees">EnergyPlanFees</h2>
+<h3 class="schema-toc" id="tocSenergyplanfees">EnergyPlanFees</h3>
 
 <a id="schemacdr-energy-apienergyplanfees"></a>
 
@@ -7091,7 +7155,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |term|BIANNUAL|
 |term|VARIABLE|
 
-<h2 class="schema-toc" id="tocSenergyplansolarfeedintariff">EnergyPlanSolarFeedInTariff</h2>
+<h3 class="schema-toc" id="tocSenergyplansolarfeedintariff">EnergyPlanSolarFeedInTariff</h3>
 
 <a id="schemacdr-energy-apienergyplansolarfeedintariff"></a>
 
@@ -7102,7 +7166,7 @@ To perform this operation, you must be authenticated and authorised with the fol
     "description": "string",
     "scheme": "PREMIUM",
     "payerType": "GOVERNMENT",
-    "tariffUType": "GOVERNMENT",
+    "tariffUType": "singleTariff",
     "singleTariff": {
       "amount": "string"
     },
@@ -7156,19 +7220,20 @@ To perform this operation, you must be authenticated and authorised with the fol
 |scheme|OTHER|
 |payerType|GOVERNMENT|
 |payerType|RETAILER|
-|tariffUType|GOVERNMENT|
-|tariffUType|RETAILER|
+|tariffUType|singleTariff|
+|tariffUType|timeVaryingTariffs|
 |type|PEAK|
 |type|OFF_PEAK|
 |type|SHOULDER|
 
-<h2 class="schema-toc" id="tocSenergyplantariffperiod">EnergyPlanTariffPeriod</h2>
+<h3 class="schema-toc" id="tocSenergyplantariffperiod">EnergyPlanTariffPeriod</h3>
 
 <a id="schemacdr-energy-apienergyplantariffperiod"></a>
 
 ```json
 [
   {
+    "type": "ENVIRONMENTAL",
     "displayName": "string",
     "startDate": "string",
     "endDate": "string",
@@ -7181,6 +7246,7 @@ To perform this operation, you must be authenticated and authorised with the fol
       "rates": [
         {
           "unitPrice": "string",
+          "measureUnit": "KWH",
           "volume": 0
         }
       ],
@@ -7193,6 +7259,7 @@ To perform this operation, you must be authenticated and authorised with the fol
         "rates": [
           {
             "unitPrice": "string",
+            "measureUnit": "KWH",
             "volume": 0
           }
         ],
@@ -7213,6 +7280,7 @@ To perform this operation, you must be authenticated and authorised with the fol
         "displayName": "string",
         "description": "string",
         "amount": "string",
+        "measureUnit": "KWH",
         "startTime": "string",
         "endTime": "string",
         "days": {
@@ -7237,24 +7305,27 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
+|type|string|optional|Type of charge. Assumed to be other if absent|
 |displayName|string|mandatory|The name of the tariff period|
 |startDate|string|mandatory|The start date of the tariff period in a calendar year.  Formatted in mm-dd format|
 |endDate|string|mandatory|The end date of the tariff period in a calendar year.  Formatted in mm-dd format|
-|dailySupplyCharges|[AmountString](#common-field-types)|mandatory|The amount of access charge for the tariff period, in cents per day exclusive of GST.|
+|dailySupplyCharges|[AmountString](#common-field-types)|optional|The amount of access charge for the tariff period, in dollars per day exclusive of GST.|
 |rateBlockUType|string|mandatory|Specifies the type of rate applicable to this tariff period|
 |singleRate|object|conditional|Object representing a single rate.  Required if rateBlockUType is singleRate|
 |» displayName|string|mandatory|Display name of the rate|
 |» description|string|optional|Description of the rate|
-|» generalUnitPrice|[AmountString](#common-field-types)|conditional|The block rate (unit price) for any usage above the included fixed usage, in cents per kWh inclusive of GST.  Only required if pricingModel field is ‘QUOTA’|
+|» generalUnitPrice|[AmountString](#common-field-types)|conditional|The block rate (unit price) for any usage above the included fixed usage, in dollars per kWh inclusive of GST.  Only required if pricingModel field is ‘QUOTA’|
 |» rates|[object]|mandatory|Array of controlled load rates in order of usage volume|
-|»» unitPrice|[AmountString](#common-field-types)|mandatory|Unit price of usage per kWh (exclusive of GST)|
+|»» unitPrice|[AmountString](#common-field-types)|mandatory|Unit price of usage per measure unit (exclusive of GST)|
+|»» measureUnit|string|optional|The measurement unit of rate. Assumed to be KWH if absent|
 |»» volume|number|optional|Volume in kWh that this rate applies to.  Only applicable for ‘stepped’ rates where different rates apply for different volumes of usage in a period|
 |» period|[ExternalRef](#common-field-types)|optional|Usage period for which the block rate applies. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
 |timeOfUseRates|[object]|conditional|Array of objects representing time of use rates.  Required if rateBlockUType is timeOfUseRates|
 |» displayName|string|mandatory|Display name of the rate|
 |» description|string|optional|Description of the rate|
 |» rates|[object]|mandatory|Array of controlled load rates in order of usage volume|
-|»» unitPrice|[AmountString](#common-field-types)|mandatory|Unit price of usage per kWh (exclusive of GST)|
+|»» unitPrice|[AmountString](#common-field-types)|mandatory|Unit price of usage per  measure unit (exclusive of GST)|
+|»» measureUnit|string|optional|The measurement unit of rate. Assumed to be KWH if absent|
 |»» volume|number|optional|Volume in kWh that this rate applies to.  Only applicable for ‘stepped’ rates where different rates apply for different volumes of usage in a period|
 |» timeOfUse|[object]|mandatory|Array of times of use|
 |»» days|[string]|mandatory|The days that the rate applies to|
@@ -7264,7 +7335,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |demandCharges|[object]|conditional|Array of demand charges.  Required if rateBlockUType is demandCharges|
 |» displayName|string|mandatory|Display name of the charge|
 |» description|string|optional|Description of the charge|
-|» amount|[AmountString](#common-field-types)|mandatory|The charge amount per kWh exclusive of GST|
+|» amount|[AmountString](#common-field-types)|mandatory|The charge amount per  measure unit exclusive of GST|
+|» measureUnit|string|optional|The measurement unit of charge amount. Assumed to be KWH if absent|
 |» startTime|string|mandatory|Start of the period in HHMM format using 24 hour clock format|
 |» endTime|string|mandatory|End of the period in HHMM format using 24 hour clock format|
 |» days|object|optional|Object containing demand tariff by day of week|
@@ -7280,14 +7352,45 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Property|Value|
 |---|---|
+|type|ENVIRONMENTAL|
+|type|REGULATED|
+|type|NETWORK|
+|type|METERING|
+|type|RETAIL_SERVICE|
+|type|RCTI|
+|type|OTHER|
 |rateBlockUType|singleRate|
 |rateBlockUType|timeOfUseRates|
 |rateBlockUType|demandCharges|
+|measureUnit|KWH|
+|measureUnit|KVA|
+|measureUnit|KVAR|
+|measureUnit|KVARH|
+|measureUnit|KW|
+|measureUnit|DAYS|
+|measureUnit|METER|
+|measureUnit|MONTH|
+|measureUnit|KWH|
+|measureUnit|KVA|
+|measureUnit|KVAR|
+|measureUnit|KVARH|
+|measureUnit|KW|
+|measureUnit|DAYS|
+|measureUnit|METER|
+|measureUnit|MONTH|
 |type|PEAK|
 |type|OFF_PEAK|
 |type|SHOULDER|
 |type|SHOULDER1|
 |type|SHOULDER2|
+|measureUnit|KWH|
+|measureUnit|KVA|
+|measureUnit|KVAR|
+|measureUnit|KVARH|
+|measureUnit|KW|
+|measureUnit|DAYS|
+|measureUnit|METER|
+|measureUnit|MONTH|
 |measurementPeriod|DAY|
 |measurementPeriod|MONTH|
 |measurementPeriod|TARIFF_PERIOD|
@@ -7295,7 +7398,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |chargePeriod|MONTH|
 |chargePeriod|TARIFF_PERIOD|
 
-<h2 class="schema-toc" id="tocSenergyservicepoint">EnergyServicePoint</h2>
+<h3 class="schema-toc" id="tocSenergyservicepoint">EnergyServicePoint</h3>
 
 <a id="schemacdr-energy-apienergyservicepoint"></a>
 
@@ -7364,7 +7467,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |threshold|MEDIUM|
 |threshold|HIGH|
 
-<h2 class="schema-toc" id="tocSenergyservicepointdetail">EnergyServicePointDetail</h2>
+<h3 class="schema-toc" id="tocSenergyservicepointdetail">EnergyServicePointDetail</h3>
 
 <a id="schemacdr-energy-apienergyservicepointdetail"></a>
 
@@ -7604,7 +7707,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |consumptionType|ACTUAL|
 |consumptionType|CUMULATIVE|
 
-<h2 class="schema-toc" id="tocSenergyusageread">EnergyUsageRead</h2>
+<h3 class="schema-toc" id="tocSenergyusageread">EnergyUsageRead</h3>
 
 <a id="schemacdr-energy-apienergyusageread"></a>
 
@@ -7673,7 +7776,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |quality|SUBSTITUTE|
 |quality|FINAL_SUBSTITUTE|
 
-<h2 class="schema-toc" id="tocSenergyderrecord">EnergyDerRecord</h2>
+<h3 class="schema-toc" id="tocSenergyderrecord">EnergyDerRecord</h3>
 
 <a id="schemacdr-energy-apienergyderrecord"></a>
 
@@ -7800,7 +7903,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |type|STORAGE|
 |type|OTHER|
 
-<h2 class="schema-toc" id="tocSenergyaccountbase">EnergyAccountBase</h2>
+<h3 class="schema-toc" id="tocSenergyaccountbase">EnergyAccountBase</h3>
 
 <a id="schemacdr-energy-apienergyaccountbase"></a>
 
@@ -7823,7 +7926,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |displayName|string|optional|An optional display name for the account if one exists or can be derived.  The content of this field is at the discretion of the data holder|
 |creationDate|[DateString](#common-field-types)|mandatory|The date that the account was created or opened|
 
-<h2 class="schema-toc" id="tocSenergyaccount">EnergyAccount</h2>
+<h3 class="schema-toc" id="tocSenergyaccount">EnergyAccount</h3>
 
 <a id="schemacdr-energy-apienergyaccount"></a>
 
@@ -7871,7 +7974,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |»»» startDate|[DateString](#common-field-types)|mandatory|The start date of the applicability of this plan|
 |»»» endDate|[DateString](#common-field-types)|optional|The end date of the applicability of this plan|
 
-<h2 class="schema-toc" id="tocSenergyaccountdetail">EnergyAccountDetail</h2>
+<h3 class="schema-toc" id="tocSenergyaccountdetail">EnergyAccountDetail</h3>
 
 <a id="schemacdr-energy-apienergyaccountdetail"></a>
 
@@ -7997,7 +8100,7 @@ To perform this operation, you must be authenticated and authorised with the fol
               "description": "string",
               "scheme": "PREMIUM",
               "payerType": "GOVERNMENT",
-              "tariffUType": "GOVERNMENT",
+              "tariffUType": "singleTariff",
               "singleTariff": {
                 "amount": "string"
               },
@@ -8016,6 +8119,7 @@ To perform this operation, you must be authenticated and authorised with the fol
           ],
           "tariffPeriod": [
             {
+              "type": "ENVIRONMENTAL",
               "displayName": "string",
               "startDate": "string",
               "endDate": "string",
@@ -8028,6 +8132,7 @@ To perform this operation, you must be authenticated and authorised with the fol
                 "rates": [
                   {
                     "unitPrice": "string",
+                    "measureUnit": "KWH",
                     "volume": 0
                   }
                 ],
@@ -8051,6 +8156,7 @@ To perform this operation, you must be authenticated and authorised with the fol
                   "displayName": "string",
                   "description": "string",
                   "amount": "string",
+                  "measureUnit": "KWH",
                   "startTime": "string",
                   "endTime": "string",
                   "days": {
@@ -8160,7 +8266,7 @@ To perform this operation, you must be authenticated and authorised with the fol
               "description": "string",
               "scheme": "PREMIUM",
               "payerType": "GOVERNMENT",
-              "tariffUType": "GOVERNMENT",
+              "tariffUType": "singleTariff",
               "singleTariff": {
                 "amount": "string"
               },
@@ -8179,6 +8285,7 @@ To perform this operation, you must be authenticated and authorised with the fol
           ],
           "tariffPeriod": [
             {
+              "type": "ENVIRONMENTAL",
               "displayName": "string",
               "startDate": "string",
               "endDate": "string",
@@ -8191,6 +8298,7 @@ To perform this operation, you must be authenticated and authorised with the fol
                 "rates": [
                   {
                     "unitPrice": "string",
+                    "measureUnit": "KWH",
                     "volume": 0
                   }
                 ],
@@ -8214,6 +8322,7 @@ To perform this operation, you must be authenticated and authorised with the fol
                   "displayName": "string",
                   "description": "string",
                   "amount": "string",
+                  "measureUnit": "KWH",
                   "startTime": "string",
                   "endTime": "string",
                   "days": {
@@ -8294,7 +8403,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |fuelType|GAS|
 |fuelType|DUAL|
 
-<h2 class="schema-toc" id="tocSenergypaymentschedule">EnergyPaymentSchedule</h2>
+<h3 class="schema-toc" id="tocSenergypaymentschedule">EnergyPaymentSchedule</h3>
 
 <a id="schemacdr-energy-apienergypaymentschedule"></a>
 
@@ -8360,7 +8469,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |calculationType|BALANCE|
 |calculationType|CALCULATED|
 
-<h2 class="schema-toc" id="tocSenergyconcession">EnergyConcession</h2>
+<h3 class="schema-toc" id="tocSenergyconcession">EnergyConcession</h3>
 
 <a id="schemacdr-energy-apienergyconcession"></a>
 
@@ -8393,7 +8502,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |yearlyDiscount|[AmountString](#common-field-types)|conditional|Annual discount value due to the concession.  At least one dailyDiscount, monthlyDiscount, yearlyDiscount and percentageDiscount must be provided|
 |percentageDiscount|[RateString](#common-field-types)|conditional|Percentage of each invoice to be discounted due to the concession.  At least one dailyDiscount, monthlyDiscount, yearlyDiscount and percentageDiscount must be provided|
 
-<h2 class="schema-toc" id="tocSenergyinvoice">EnergyInvoice</h2>
+<h3 class="schema-toc" id="tocSenergyinvoice">EnergyInvoice</h3>
 
 <a id="schemacdr-energy-apienergyinvoice"></a>
 
@@ -8425,6 +8534,7 @@ To perform this operation, you must be authenticated and authorised with the fol
     "totalOnceOffDiscounts": "string",
     "otherCharges": [
       {
+        "type": "ENVIRONMENTAL",
         "amount": "string",
         "description": "string"
       }
@@ -8438,6 +8548,7 @@ To perform this operation, you must be authenticated and authorised with the fol
     "totalOnceOffDiscounts": "string",
     "otherCharges": [
       {
+        "type": "ENVIRONMENTAL",
         "amount": "string",
         "description": "string"
       }
@@ -8486,7 +8597,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |paymentStatus|PARTIALLY_PAID|
 |paymentStatus|NOT_PAID|
 
-<h2 class="schema-toc" id="tocSenergyinvoicegasusagecharges">EnergyInvoiceGasUsageCharges</h2>
+<h3 class="schema-toc" id="tocSenergyinvoicegasusagecharges">EnergyInvoiceGasUsageCharges</h3>
 
 <a id="schemacdr-energy-apienergyinvoicegasusagecharges"></a>
 
@@ -8498,6 +8609,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   "totalOnceOffDiscounts": "string",
   "otherCharges": [
     {
+      "type": "ENVIRONMENTAL",
       "amount": "string",
       "description": "string"
     }
@@ -8516,11 +8628,24 @@ To perform this operation, you must be authenticated and authorised with the fol
 |totalOnceOffCharges|[AmountString](#common-field-types)|mandatory|The aggregate total of any once off charges arising from electricity usage for the period covered by the invoice (exclusive of GST)|
 |totalOnceOffDiscounts|[AmountString](#common-field-types)|mandatory|The aggregate total of any once off discounts or credits arising from electricity usage for the period covered by the invoice (exclusive of GST)|
 |otherCharges|[object]|optional|Optional array of charges that may be part of the invoice (for e.g. environmental charges for C&I consumers) (exclusive of GST)|
+|» type|string|optional|Type of charge. Assumed to be other if absent|
 |» amount|[AmountString](#common-field-types)|mandatory|The aggregate total of charges for this item (exclusive of GST)|
 |» description|string|mandatory|A free text description of the type of charge|
 |totalGst|[AmountString](#common-field-types)|optional|The total GST for all electricity usage charges.  If absent then zero is assumed|
 
-<h2 class="schema-toc" id="tocSenergyinvoiceelectricityusagecharges">EnergyInvoiceElectricityUsageCharges</h2>
+#### Enumerated Values
+
+|Property|Value|
+|---|---|
+|type|ENVIRONMENTAL|
+|type|REGULATED|
+|type|NETWORK|
+|type|METERING|
+|type|RETAIL_SERVICE|
+|type|RCTI|
+|type|OTHER|
+
+<h3 class="schema-toc" id="tocSenergyinvoiceelectricityusagecharges">EnergyInvoiceElectricityUsageCharges</h3>
 
 <a id="schemacdr-energy-apienergyinvoiceelectricityusagecharges"></a>
 
@@ -8532,6 +8657,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   "totalOnceOffDiscounts": "string",
   "otherCharges": [
     {
+      "type": "ENVIRONMENTAL",
       "amount": "string",
       "description": "string"
     }
@@ -8550,11 +8676,24 @@ To perform this operation, you must be authenticated and authorised with the fol
 |totalOnceOffCharges|[AmountString](#common-field-types)|mandatory|The aggregate total of any once off charges arising from electricity usage for the period covered by the invoice (exclusive of GST)|
 |totalOnceOffDiscounts|[AmountString](#common-field-types)|mandatory|The aggregate total of any once off discounts or credits arising from electricity usage for the period covered by the invoice (exclusive of GST)|
 |otherCharges|[object]|optional|Optional array of charges that may be part of the invoice (for e.g. environmental charges for C&I consumers) (exclusive of GST)|
+|» type|string|optional|Type of charge. Assumed to be other if absent|
 |» amount|[AmountString](#common-field-types)|mandatory|The aggregate total of charges for this item (exclusive of GST)|
 |» description|string|mandatory|A free text description of the type of charge|
 |totalGst|[AmountString](#common-field-types)|optional|The total GST for all electricity usage charges.  If absent then zero is assumed|
 
-<h2 class="schema-toc" id="tocSenergyinvoiceaccountcharges">EnergyInvoiceAccountCharges</h2>
+#### Enumerated Values
+
+|Property|Value|
+|---|---|
+|type|ENVIRONMENTAL|
+|type|REGULATED|
+|type|NETWORK|
+|type|METERING|
+|type|RETAIL_SERVICE|
+|type|RCTI|
+|type|OTHER|
+
+<h3 class="schema-toc" id="tocSenergyinvoiceaccountcharges">EnergyInvoiceAccountCharges</h3>
 
 <a id="schemacdr-energy-apienergyinvoiceaccountcharges"></a>
 
@@ -8577,7 +8716,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |totalDiscounts|[AmountString](#common-field-types)|mandatory|The aggregate total of account level discounts or credits for the period covered by the invoice|
 |totalGst|[AmountString](#common-field-types)|optional|The total GST for all account level charges.  If absent then zero is assumed|
 
-<h2 class="schema-toc" id="tocSenergybillingtransaction">EnergyBillingTransaction</h2>
+<h3 class="schema-toc" id="tocSenergybillingtransaction">EnergyBillingTransaction</h3>
 
 <a id="schemacdr-energy-apienergybillingtransaction"></a>
 
@@ -8595,6 +8734,7 @@ To perform this operation, you must be authenticated and authorised with the fol
     "isEstimate": true,
     "startDate": "string",
     "endDate": "string",
+    "measureUnit": "KWH",
     "usage": 0,
     "amount": "string",
     "calculationFactors": [
@@ -8642,6 +8782,9 @@ To perform this operation, you must be authenticated and authorised with the fol
   "otherCharges": {
     "servicePointId": "string",
     "invoiceNumber": "string",
+    "startDate": "string",
+    "endDate": "string",
+    "type": "ENVIRONMENTAL",
     "amount": "string",
     "description": "string"
   },
@@ -8677,7 +8820,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |transactionUType|otherCharges|
 |transactionUType|payment|
 
-<h2 class="schema-toc" id="tocSenergybillingusagetransaction">EnergyBillingUsageTransaction</h2>
+<h3 class="schema-toc" id="tocSenergybillingusagetransaction">EnergyBillingUsageTransaction</h3>
 
 <a id="schemacdr-energy-apienergybillingusagetransaction"></a>
 
@@ -8690,6 +8833,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   "isEstimate": true,
   "startDate": "string",
   "endDate": "string",
+  "measureUnit": "KWH",
   "usage": 0,
   "amount": "string",
   "calculationFactors": [
@@ -8719,7 +8863,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |isEstimate|boolean|optional|Flag indicating if the usage is estimated or actual.  True indicates estimate.  False or absent indicates actual|
 |startDate|[DateTimeString](#common-field-types)|mandatory|Date and time when the usage period starts|
 |endDate|[DateTimeString](#common-field-types)|mandatory|Date and time when the usage period ends|
-|usage|number|mandatory|The usage for the period in kWh.  A negative value indicates power generated|
+|measureUnit|string|optional|The measurement unit of rate. Assumed to be KWH if absent|
+|usage|number|mandatory|The usage for the period in measure unit.  A negative value indicates power generated|
 |amount|[AmountString](#common-field-types)|mandatory|The amount charged or credited for this transaction prior to any adjustments being applied.  A negative value indicates a credit|
 |calculationFactors|[object]|optional|Additional calculation factors that inform the transaction|
 |» value|number|mandatory|The value of the calculation factor|
@@ -8741,10 +8886,18 @@ To perform this operation, you must be authenticated and authorised with the fol
 |timeOfUseType|CONTROLLED_LOAD|
 |timeOfUseType|SOLAR|
 |timeOfUseType|AGGREGATE|
+|measureUnit|KWH|
+|measureUnit|KVA|
+|measureUnit|KVAR|
+|measureUnit|KVARH|
+|measureUnit|KW|
+|measureUnit|DAYS|
+|measureUnit|METER|
+|measureUnit|MONTH|
 |type|DLF|
 |type|MLF|
 
-<h2 class="schema-toc" id="tocSenergybillingdemandtransaction">EnergyBillingDemandTransaction</h2>
+<h3 class="schema-toc" id="tocSenergybillingdemandtransaction">EnergyBillingDemandTransaction</h3>
 
 <a id="schemacdr-energy-apienergybillingdemandtransaction"></a>
 
@@ -8811,7 +8964,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |type|DLF|
 |type|MLF|
 
-<h2 class="schema-toc" id="tocSenergybillingonceofftransaction">EnergyBillingOnceOffTransaction</h2>
+<h3 class="schema-toc" id="tocSenergybillingonceofftransaction">EnergyBillingOnceOffTransaction</h3>
 
 <a id="schemacdr-energy-apienergybillingonceofftransaction"></a>
 
@@ -8834,7 +8987,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |amount|[AmountString](#common-field-types)|mandatory|The amount of the charge or credit.  A positive value indicates a charge and a negative value indicates a credit|
 |description|string|mandatory|A free text description of the item|
 
-<h2 class="schema-toc" id="tocSenergybillingothertransaction">EnergyBillingOtherTransaction</h2>
+<h3 class="schema-toc" id="tocSenergybillingothertransaction">EnergyBillingOtherTransaction</h3>
 
 <a id="schemacdr-energy-apienergybillingothertransaction"></a>
 
@@ -8842,6 +8995,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 {
   "servicePointId": "string",
   "invoiceNumber": "string",
+  "startDate": "string",
+  "endDate": "string",
+  "type": "ENVIRONMENTAL",
   "amount": "string",
   "description": "string"
 }
@@ -8854,10 +9010,25 @@ To perform this operation, you must be authenticated and authorised with the fol
 |---|---|---|---|
 |servicePointId|string|optional|The ID of the service point to which this transaction applies if any|
 |invoiceNumber|string|optional|The number of the invoice in which this transaction is included if it has been issued|
+|startDate|[DateString](#common-field-types)|optional|Optional start date for the application of the charge|
+|endDate|[DateString](#common-field-types)|optional|Optional end date for the application of the charge|
+|type|string|optional|Type of charge. Assumed to be other if absent|
 |amount|[AmountString](#common-field-types)|mandatory|The amount of the charge|
 |description|string|mandatory|A free text description of the item|
 
-<h2 class="schema-toc" id="tocSenergybillingpaymenttransaction">EnergyBillingPaymentTransaction</h2>
+#### Enumerated Values
+
+|Property|Value|
+|---|---|
+|type|ENVIRONMENTAL|
+|type|REGULATED|
+|type|NETWORK|
+|type|METERING|
+|type|RETAIL_SERVICE|
+|type|RCTI|
+|type|OTHER|
+
+<h3 class="schema-toc" id="tocSenergybillingpaymenttransaction">EnergyBillingPaymentTransaction</h3>
 
 <a id="schemacdr-energy-apienergybillingpaymenttransaction"></a>
 
@@ -8888,7 +9059,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |method|CHEQUE|
 |method|OTHER|
 
-<h2 class="schema-toc" id="tocSlinks">Links</h2>
+<h3 class="schema-toc" id="tocSlinks">Links</h3>
 
 <a id="schemacdr-energy-apilinks"></a>
 
@@ -8905,7 +9076,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |---|---|---|---|
 |self|[URIString](#common-field-types)|mandatory|Fully qualified link that generated the current response document|
 
-<h2 class="schema-toc" id="tocSmeta">Meta</h2>
+<h3 class="schema-toc" id="tocSmeta">Meta</h3>
 
 <a id="schemacdr-energy-apimeta"></a>
 
@@ -8918,7 +9089,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 *None*
 
-<h2 class="schema-toc" id="tocSlinkspaginated">LinksPaginated</h2>
+<h3 class="schema-toc" id="tocSlinkspaginated">LinksPaginated</h3>
 
 <a id="schemacdr-energy-apilinkspaginated"></a>
 
@@ -8943,7 +9114,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |next|[URIString](#common-field-types)|conditional|URI to the next page of this set. Mandatory if this response is not the last page|
 |last|[URIString](#common-field-types)|conditional|URI to the last page of this set. Mandatory if this response is not the last page|
 
-<h2 class="schema-toc" id="tocSmetapaginated">MetaPaginated</h2>
+<h3 class="schema-toc" id="tocSmetapaginated">MetaPaginated</h3>
 
 <a id="schemacdr-energy-apimetapaginated"></a>
 

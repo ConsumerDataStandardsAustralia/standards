@@ -519,7 +519,7 @@ x-fapi-interaction-id: string
           </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"scheme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PREMIUM"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"payerType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GOVERNMENT"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"tariffUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GOVERNMENT"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"tariffUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"singleTariff"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"singleTariff"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
           </span><span class="p">},</span><span class="w">
@@ -541,6 +541,7 @@ x-fapi-interaction-id: string
       </span><span class="p">],</span><span class="w">
       </span><span class="s2">"tariffPeriod"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ENVIRONMENTAL"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -553,6 +554,7 @@ x-fapi-interaction-id: string
             </span><span class="s2">"rates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
               </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"unitPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"measureUnit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KWH"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"volume"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
               </span><span class="p">}</span><span class="w">
             </span><span class="p">],</span><span class="w">
@@ -565,6 +567,7 @@ x-fapi-interaction-id: string
               </span><span class="s2">"rates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
                 </span><span class="p">{</span><span class="w">
                   </span><span class="s2">"unitPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"measureUnit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KWH"</span><span class="p">,</span><span class="w">
                   </span><span class="s2">"volume"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
                 </span><span class="p">}</span><span class="w">
               </span><span class="p">],</span><span class="w">
@@ -585,6 +588,7 @@ x-fapi-interaction-id: string
               </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"measureUnit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KWH"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"startTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"endTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"days"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -704,7 +708,7 @@ x-fapi-interaction-id: string
           </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"scheme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PREMIUM"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"payerType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GOVERNMENT"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"tariffUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GOVERNMENT"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"tariffUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"singleTariff"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"singleTariff"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
           </span><span class="p">},</span><span class="w">
@@ -726,6 +730,7 @@ x-fapi-interaction-id: string
       </span><span class="p">],</span><span class="w">
       </span><span class="s2">"tariffPeriod"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ENVIRONMENTAL"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -738,6 +743,7 @@ x-fapi-interaction-id: string
             </span><span class="s2">"rates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
               </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"unitPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"measureUnit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KWH"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"volume"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
               </span><span class="p">}</span><span class="w">
             </span><span class="p">],</span><span class="w">
@@ -750,6 +756,7 @@ x-fapi-interaction-id: string
               </span><span class="s2">"rates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
                 </span><span class="p">{</span><span class="w">
                   </span><span class="s2">"unitPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"measureUnit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KWH"</span><span class="p">,</span><span class="w">
                   </span><span class="s2">"volume"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
                 </span><span class="p">}</span><span class="w">
               </span><span class="p">],</span><span class="w">
@@ -770,6 +777,7 @@ x-fapi-interaction-id: string
               </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"measureUnit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KWH"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"startTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"endTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"days"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -966,7 +974,7 @@ x-cds-client-headers: string
 <td>x-fapi-auth-date</td>
 <td>header</td>
 <td>string</td>
-<td>optional</td>
+<td>conditional</td>
 <td>The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.</td>
 </tr>
 <tr>
@@ -980,7 +988,7 @@ x-cds-client-headers: string
 <td>x-cds-client-headers</td>
 <td>header</td>
 <td><a href="#common-field-types">Base64</a></td>
-<td>optional</td>
+<td>conditional</td>
 <td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
 </tr>
 </tbody></table>
@@ -1179,7 +1187,7 @@ x-cds-client-headers: string
 <td>x-fapi-auth-date</td>
 <td>header</td>
 <td>string</td>
-<td>optional</td>
+<td>conditional</td>
 <td>The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.</td>
 </tr>
 <tr>
@@ -1193,7 +1201,7 @@ x-cds-client-headers: string
 <td>x-cds-client-headers</td>
 <td>header</td>
 <td><a href="#common-field-types">Base64</a></td>
-<td>optional</td>
+<td>conditional</td>
 <td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
 </tr>
 </tbody></table>
@@ -1314,7 +1322,7 @@ x-cds-client-headers: string
 <tr>
 <td>4xx</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5"><strong>Client Error</strong></a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li><li><a href="#error-422-unavailable-service-point">422 - Unavailable Service Point</a></li><li><a href="#error-422-invalid-service-point">422 - Invalid Service Point</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li><li><a href="#error-404-unavailable-service-point">404 - Unavailable Service Point</a></li><li><a href="#error-404-invalid-service-point">404 - Invalid Service Point</a></li></ul></td>
 <td><a href="#schemacdr-energy-apierrorlistresponse">ErrorListResponse</a></td>
 </tr>
 </tbody></table>
@@ -1480,7 +1488,7 @@ x-cds-client-headers: string
 <td>x-fapi-auth-date</td>
 <td>header</td>
 <td>string</td>
-<td>optional</td>
+<td>conditional</td>
 <td>The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.</td>
 </tr>
 <tr>
@@ -1494,7 +1502,7 @@ x-cds-client-headers: string
 <td>x-cds-client-headers</td>
 <td>header</td>
 <td><a href="#common-field-types">Base64</a></td>
-<td>optional</td>
+<td>conditional</td>
 <td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
 </tr>
 </tbody></table>
@@ -1566,7 +1574,7 @@ x-cds-client-headers: string
 <tr>
 <td>4xx</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5"><strong>Client Error</strong></a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li><li><a href="#error-422-field-invalid-page">422 - Invalid Page</a></li><li><a href="#error-422-unavailable-service-point">422 - Unavailable Service Point</a></li><li><a href="#error-422-invalid-service-point">422 - Invalid Service Point</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li><li><a href="#error-422-field-invalid-page">422 - Invalid Page</a></li><li><a href="#error-404-unavailable-service-point">404 - Unavailable Service Point</a></li><li><a href="#error-404-invalid-service-point">404 - Invalid Service Point</a></li></ul></td>
 <td><a href="#schemacdr-energy-apierrorlistresponse">ErrorListResponse</a></td>
 </tr>
 </tbody></table>
@@ -1725,7 +1733,7 @@ x-cds-client-headers: string
 <td>x-fapi-auth-date</td>
 <td>header</td>
 <td>string</td>
-<td>optional</td>
+<td>conditional</td>
 <td>The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.</td>
 </tr>
 <tr>
@@ -1739,7 +1747,7 @@ x-cds-client-headers: string
 <td>x-cds-client-headers</td>
 <td>header</td>
 <td><a href="#common-field-types">Base64</a></td>
-<td>optional</td>
+<td>conditional</td>
 <td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
 </tr>
 </tbody></table>
@@ -1984,7 +1992,7 @@ x-cds-client-headers: string
 <td>x-fapi-auth-date</td>
 <td>header</td>
 <td>string</td>
-<td>optional</td>
+<td>conditional</td>
 <td>The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.</td>
 </tr>
 <tr>
@@ -1998,7 +2006,7 @@ x-cds-client-headers: string
 <td>x-cds-client-headers</td>
 <td>header</td>
 <td><a href="#common-field-types">Base64</a></td>
-<td>optional</td>
+<td>conditional</td>
 <td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
 </tr>
 <tr>
@@ -2236,7 +2244,7 @@ x-cds-client-headers: string
 <td>x-fapi-auth-date</td>
 <td>header</td>
 <td>string</td>
-<td>optional</td>
+<td>conditional</td>
 <td>The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.</td>
 </tr>
 <tr>
@@ -2250,7 +2258,7 @@ x-cds-client-headers: string
 <td>x-cds-client-headers</td>
 <td>header</td>
 <td><a href="#common-field-types">Base64</a></td>
-<td>optional</td>
+<td>conditional</td>
 <td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
 </tr>
 </tbody></table>
@@ -2337,7 +2345,7 @@ x-cds-client-headers: string
 <tr>
 <td>4xx</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5"><strong>Client Error</strong></a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li><li><a href="#error-422-unavailable-service-point">422 - Unavailable Service Point</a></li><li><a href="#error-422-invalid-service-point">422 - Invalid Service Point</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li><li><a href="#error-404-unavailable-service-point">404 - Unavailable Service Point</a></li><li><a href="#error-404-invalid-service-point">404 - Invalid Service Point</a></li></ul></td>
 <td><a href="#schemacdr-energy-apierrorlistresponse">ErrorListResponse</a></td>
 </tr>
 </tbody></table>
@@ -2482,7 +2490,7 @@ x-cds-client-headers: string
 <td>x-fapi-auth-date</td>
 <td>header</td>
 <td>string</td>
-<td>optional</td>
+<td>conditional</td>
 <td>The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.</td>
 </tr>
 <tr>
@@ -2496,7 +2504,7 @@ x-cds-client-headers: string
 <td>x-cds-client-headers</td>
 <td>header</td>
 <td><a href="#common-field-types">Base64</a></td>
-<td>optional</td>
+<td>conditional</td>
 <td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
 </tr>
 </tbody></table>
@@ -2753,7 +2761,7 @@ x-cds-client-headers: string
 <td>x-fapi-auth-date</td>
 <td>header</td>
 <td>string</td>
-<td>optional</td>
+<td>conditional</td>
 <td>The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.</td>
 </tr>
 <tr>
@@ -2767,7 +2775,7 @@ x-cds-client-headers: string
 <td>x-cds-client-headers</td>
 <td>header</td>
 <td><a href="#common-field-types">Base64</a></td>
-<td>optional</td>
+<td>conditional</td>
 <td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
 </tr>
 <tr>
@@ -3038,7 +3046,7 @@ x-cds-client-headers: string
 <td>x-fapi-auth-date</td>
 <td>header</td>
 <td>string</td>
-<td>optional</td>
+<td>conditional</td>
 <td>The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.</td>
 </tr>
 <tr>
@@ -3052,7 +3060,7 @@ x-cds-client-headers: string
 <td>x-cds-client-headers</td>
 <td>header</td>
 <td><a href="#common-field-types">Base64</a></td>
-<td>optional</td>
+<td>conditional</td>
 <td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
 </tr>
 </tbody></table>
@@ -3256,7 +3264,7 @@ x-cds-client-headers: string
 <td>x-fapi-auth-date</td>
 <td>header</td>
 <td>string</td>
-<td>optional</td>
+<td>conditional</td>
 <td>The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.</td>
 </tr>
 <tr>
@@ -3270,7 +3278,7 @@ x-cds-client-headers: string
 <td>x-cds-client-headers</td>
 <td>header</td>
 <td><a href="#common-field-types">Base64</a></td>
-<td>optional</td>
+<td>conditional</td>
 <td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
 </tr>
 </tbody></table>
@@ -3402,7 +3410,7 @@ x-cds-client-headers: string
                 </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"scheme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PREMIUM"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"payerType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GOVERNMENT"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"tariffUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GOVERNMENT"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"tariffUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"singleTariff"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"singleTariff"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
                   </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
                 </span><span class="p">},</span><span class="w">
@@ -3417,6 +3425,7 @@ x-cds-client-headers: string
             </span><span class="p">],</span><span class="w">
             </span><span class="s2">"tariffPeriod"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
               </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ENVIRONMENTAL"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -3445,6 +3454,7 @@ x-cds-client-headers: string
                     </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
                     </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
                     </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"measureUnit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KWH"</span><span class="p">,</span><span class="w">
                     </span><span class="s2">"startTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
                     </span><span class="s2">"endTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
                     </span><span class="s2">"days"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
@@ -3550,7 +3560,7 @@ x-cds-client-headers: string
                 </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"scheme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PREMIUM"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"payerType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GOVERNMENT"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"tariffUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GOVERNMENT"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"tariffUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"singleTariff"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"singleTariff"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
                   </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
                 </span><span class="p">},</span><span class="w">
@@ -3565,6 +3575,7 @@ x-cds-client-headers: string
             </span><span class="p">],</span><span class="w">
             </span><span class="s2">"tariffPeriod"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
               </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ENVIRONMENTAL"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -3593,6 +3604,7 @@ x-cds-client-headers: string
                     </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
                     </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
                     </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"measureUnit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KWH"</span><span class="p">,</span><span class="w">
                     </span><span class="s2">"startTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
                     </span><span class="s2">"endTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
                     </span><span class="s2">"days"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
@@ -3645,7 +3657,7 @@ x-cds-client-headers: string
 <tr>
 <td>4xx</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5"><strong>Client Error</strong></a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li><li><a href="#error-422-unavailable-energy-account">422 - Unavailable Energy Account</a></li><li><a href="#error-422-invalid-energy-account">422 - Invalid Energy Account</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li><li><a href="#error-404-unavailable-energy-account">404 - Unavailable Energy Account</a></li><li><a href="#error-404-invalid-energy-account">404 - Invalid Energy Account</a></li></ul></td>
 <td><a href="#schemacdr-energy-apierrorlistresponse">ErrorListResponse</a></td>
 </tr>
 </tbody></table>
@@ -3783,7 +3795,7 @@ x-cds-client-headers: string
 <td>x-fapi-auth-date</td>
 <td>header</td>
 <td>string</td>
-<td>optional</td>
+<td>conditional</td>
 <td>The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.</td>
 </tr>
 <tr>
@@ -3797,7 +3809,7 @@ x-cds-client-headers: string
 <td>x-cds-client-headers</td>
 <td>header</td>
 <td><a href="#common-field-types">Base64</a></td>
-<td>optional</td>
+<td>conditional</td>
 <td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
 </tr>
 </tbody></table>
@@ -3852,7 +3864,7 @@ x-cds-client-headers: string
 <tr>
 <td>4xx</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5"><strong>Client Error</strong></a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li><li><a href="#error-422-unavailable-energy-account">422 - Unavailable Energy Account</a></li><li><a href="#error-422-invalid-energy-account">422 - Invalid Energy Account</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li><li><a href="#error-404-unavailable-energy-account">404 - Unavailable Energy Account</a></li><li><a href="#error-404-invalid-energy-account">404 - Invalid Energy Account</a></li></ul></td>
 <td><a href="#schemacdr-energy-apierrorlistresponse">ErrorListResponse</a></td>
 </tr>
 </tbody></table>
@@ -3933,7 +3945,7 @@ x-cds-client-headers: string
 </code></pre>
 <p><code>GET /energy/accounts/{accountId}/concessions</code></p>
 
-<p>Obtain the details of any concessions or hardship arrangements applied to a specific energy account</p>
+<p>Obtain the details of any concessions or arrangements applied to a specific energy account</p>
 <h3 id='endpoint-version-14'>Endpoint Version</h3>
 <table><thead>
 <tr>
@@ -3990,7 +4002,7 @@ x-cds-client-headers: string
 <td>x-fapi-auth-date</td>
 <td>header</td>
 <td>string</td>
-<td>optional</td>
+<td>conditional</td>
 <td>The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.</td>
 </tr>
 <tr>
@@ -4004,7 +4016,7 @@ x-cds-client-headers: string
 <td>x-cds-client-headers</td>
 <td>header</td>
 <td><a href="#common-field-types">Base64</a></td>
-<td>optional</td>
+<td>conditional</td>
 <td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
 </tr>
 </tbody></table>
@@ -4055,7 +4067,7 @@ x-cds-client-headers: string
 <tr>
 <td>4xx</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5"><strong>Client Error</strong></a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li><li><a href="#error-422-unavailable-energy-account">422 - Unavailable Energy Account</a></li><li><a href="#error-422-invalid-energy-account">422 - Invalid Energy Account</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li><li><a href="#error-404-unavailable-energy-account">404 - Unavailable Energy Account</a></li><li><a href="#error-404-invalid-energy-account">404 - Invalid Energy Account</a></li></ul></td>
 <td><a href="#schemacdr-energy-apierrorlistresponse">ErrorListResponse</a></td>
 </tr>
 </tbody></table>
@@ -4193,7 +4205,7 @@ x-cds-client-headers: string
 <td>x-fapi-auth-date</td>
 <td>header</td>
 <td>string</td>
-<td>optional</td>
+<td>conditional</td>
 <td>The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.</td>
 </tr>
 <tr>
@@ -4207,7 +4219,7 @@ x-cds-client-headers: string
 <td>x-cds-client-headers</td>
 <td>header</td>
 <td><a href="#common-field-types">Base64</a></td>
-<td>optional</td>
+<td>conditional</td>
 <td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
 </tr>
 </tbody></table>
@@ -4246,7 +4258,7 @@ x-cds-client-headers: string
 <tr>
 <td>4xx</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5"><strong>Client Error</strong></a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li><li><a href="#error-422-unavailable-energy-account">422 - Unavailable Energy Account</a></li><li><a href="#error-422-invalid-energy-account">422 - Invalid Energy Account</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li><li><a href="#error-404-unavailable-energy-account">404 - Unavailable Energy Account</a></li><li><a href="#error-404-invalid-energy-account">404 - Invalid Energy Account</a></li></ul></td>
 <td><a href="#schemacdr-energy-apierrorlistresponse">ErrorListResponse</a></td>
 </tr>
 </tbody></table>
@@ -4287,7 +4299,7 @@ x-cds-client-headers: string
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">energy:billing:read</a>
 </aside></p>
-<h2 id='get-bulk-balances-energy'>Get Bulk Balances (Energy)</h2>
+<h2 id='get-bulk-balances-for-energy'>Get Bulk Balances for Energy</h2>
 <p><a id="opIdlistBalancesBulk"></a></p>
 
 <blockquote>
@@ -4341,7 +4353,7 @@ x-cds-client-headers: string
 </tr>
 </tbody></table>
 
-<h3 id="get-bulk-balances-(energy)-parameters">Parameters</h3>
+<h3 id="get-bulk-balances-for-energy-parameters">Parameters</h3>
 
 <table><thead>
 <tr>
@@ -4391,7 +4403,7 @@ x-cds-client-headers: string
 <td>x-fapi-auth-date</td>
 <td>header</td>
 <td>string</td>
-<td>optional</td>
+<td>conditional</td>
 <td>The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.</td>
 </tr>
 <tr>
@@ -4405,7 +4417,7 @@ x-cds-client-headers: string
 <td>x-cds-client-headers</td>
 <td>header</td>
 <td><a href="#common-field-types">Base64</a></td>
-<td>optional</td>
+<td>conditional</td>
 <td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
 </tr>
 </tbody></table>
@@ -4437,7 +4449,7 @@ x-cds-client-headers: string
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id="get-bulk-balances-(energy)-responses">Responses</h3>
+<h3 id="get-bulk-balances-for-energy-responses">Responses</h3>
 
 <table><thead>
 <tr>
@@ -4615,7 +4627,7 @@ x-cds-client-headers: string
 <td>x-fapi-auth-date</td>
 <td>header</td>
 <td>string</td>
-<td>optional</td>
+<td>conditional</td>
 <td>The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.</td>
 </tr>
 <tr>
@@ -4629,7 +4641,7 @@ x-cds-client-headers: string
 <td>x-cds-client-headers</td>
 <td>header</td>
 <td><a href="#common-field-types">Base64</a></td>
-<td>optional</td>
+<td>conditional</td>
 <td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
 </tr>
 <tr>
@@ -4874,7 +4886,7 @@ x-cds-client-headers: string
 <td>x-fapi-auth-date</td>
 <td>header</td>
 <td>string</td>
-<td>optional</td>
+<td>conditional</td>
 <td>The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.</td>
 </tr>
 <tr>
@@ -4888,7 +4900,7 @@ x-cds-client-headers: string
 <td>x-cds-client-headers</td>
 <td>header</td>
 <td><a href="#common-field-types">Base64</a></td>
-<td>optional</td>
+<td>conditional</td>
 <td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
 </tr>
 </tbody></table>
@@ -4928,6 +4940,7 @@ x-cds-client-headers: string
           </span><span class="s2">"totalOnceOffDiscounts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"otherCharges"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
             </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ENVIRONMENTAL"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
             </span><span class="p">}</span><span class="w">
@@ -4941,6 +4954,7 @@ x-cds-client-headers: string
           </span><span class="s2">"totalOnceOffDiscounts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"otherCharges"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
             </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ENVIRONMENTAL"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
             </span><span class="p">}</span><span class="w">
@@ -4988,7 +5002,7 @@ x-cds-client-headers: string
 <tr>
 <td>4xx</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5"><strong>Client Error</strong></a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li><li><a href="#error-422-field-invalid-page">422 - Invalid Page</a></li><li><a href="#error-422-unavailable-energy-account">422 - Unavailable Energy Account</a></li><li><a href="#error-422-invalid-energy-account">422 - Invalid Energy Account</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li><li><a href="#error-422-field-invalid-page">422 - Invalid Page</a></li><li><a href="#error-404-unavailable-energy-account">404 - Unavailable Energy Account</a></li><li><a href="#error-404-invalid-energy-account">404 - Invalid Energy Account</a></li></ul></td>
 <td><a href="#schemacdr-energy-apierrorlistresponse">ErrorListResponse</a></td>
 </tr>
 </tbody></table>
@@ -5147,7 +5161,7 @@ x-cds-client-headers: string
 <td>x-fapi-auth-date</td>
 <td>header</td>
 <td>string</td>
-<td>optional</td>
+<td>conditional</td>
 <td>The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.</td>
 </tr>
 <tr>
@@ -5161,7 +5175,7 @@ x-cds-client-headers: string
 <td>x-cds-client-headers</td>
 <td>header</td>
 <td><a href="#common-field-types">Base64</a></td>
-<td>optional</td>
+<td>conditional</td>
 <td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
 </tr>
 </tbody></table>
@@ -5201,6 +5215,7 @@ x-cds-client-headers: string
           </span><span class="s2">"totalOnceOffDiscounts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"otherCharges"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
             </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ENVIRONMENTAL"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
             </span><span class="p">}</span><span class="w">
@@ -5214,6 +5229,7 @@ x-cds-client-headers: string
           </span><span class="s2">"totalOnceOffDiscounts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"otherCharges"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
             </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ENVIRONMENTAL"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
             </span><span class="p">}</span><span class="w">
@@ -5434,7 +5450,7 @@ x-cds-client-headers: string
 <td>x-fapi-auth-date</td>
 <td>header</td>
 <td>string</td>
-<td>optional</td>
+<td>conditional</td>
 <td>The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.</td>
 </tr>
 <tr>
@@ -5448,7 +5464,7 @@ x-cds-client-headers: string
 <td>x-cds-client-headers</td>
 <td>header</td>
 <td><a href="#common-field-types">Base64</a></td>
-<td>optional</td>
+<td>conditional</td>
 <td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
 </tr>
 <tr>
@@ -5516,6 +5532,7 @@ x-cds-client-headers: string
           </span><span class="s2">"totalOnceOffDiscounts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"otherCharges"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
             </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ENVIRONMENTAL"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
             </span><span class="p">}</span><span class="w">
@@ -5529,6 +5546,7 @@ x-cds-client-headers: string
           </span><span class="s2">"totalOnceOffDiscounts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"otherCharges"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
             </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ENVIRONMENTAL"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
             </span><span class="p">}</span><span class="w">
@@ -5742,7 +5760,7 @@ x-cds-client-headers: string
 <td>x-fapi-auth-date</td>
 <td>header</td>
 <td>string</td>
-<td>optional</td>
+<td>conditional</td>
 <td>The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.</td>
 </tr>
 <tr>
@@ -5756,7 +5774,7 @@ x-cds-client-headers: string
 <td>x-cds-client-headers</td>
 <td>header</td>
 <td><a href="#common-field-types">Base64</a></td>
-<td>optional</td>
+<td>conditional</td>
 <td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
 </tr>
 </tbody></table>
@@ -5782,6 +5800,7 @@ x-cds-client-headers: string
           </span><span class="s2">"isEstimate"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
           </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"measureUnit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KWH"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"usage"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
           </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"calculationFactors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -5829,6 +5848,9 @@ x-cds-client-headers: string
         </span><span class="s2">"otherCharges"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"servicePointId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"invoiceNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ENVIRONMENTAL"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
         </span><span class="p">},</span><span class="w">
@@ -5871,7 +5893,7 @@ x-cds-client-headers: string
 <tr>
 <td>4xx</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5"><strong>Client Error</strong></a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li><li><a href="#error-422-field-invalid-page">422 - Invalid Page</a></li><li><a href="#error-422-unavailable-energy-account">422 - Unavailable Energy Account</a></li><li><a href="#error-422-invalid-energy-account">422 - Invalid Energy Account</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li><li><a href="#error-422-field-invalid-page">422 - Invalid Page</a></li><li><a href="#error-404-unavailable-energy-account">404 - Unavailable Energy Account</a></li><li><a href="#error-404-invalid-energy-account">404 - Invalid Energy Account</a></li></ul></td>
 <td><a href="#schemacdr-energy-apierrorlistresponse">ErrorListResponse</a></td>
 </tr>
 </tbody></table>
@@ -6030,7 +6052,7 @@ x-cds-client-headers: string
 <td>x-fapi-auth-date</td>
 <td>header</td>
 <td>string</td>
-<td>optional</td>
+<td>conditional</td>
 <td>The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.</td>
 </tr>
 <tr>
@@ -6044,7 +6066,7 @@ x-cds-client-headers: string
 <td>x-cds-client-headers</td>
 <td>header</td>
 <td><a href="#common-field-types">Base64</a></td>
-<td>optional</td>
+<td>conditional</td>
 <td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
 </tr>
 </tbody></table>
@@ -6070,6 +6092,7 @@ x-cds-client-headers: string
           </span><span class="s2">"isEstimate"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
           </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"measureUnit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KWH"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"usage"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
           </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"calculationFactors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -6117,6 +6140,9 @@ x-cds-client-headers: string
         </span><span class="s2">"otherCharges"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"servicePointId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"invoiceNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ENVIRONMENTAL"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
         </span><span class="p">},</span><span class="w">
@@ -6332,7 +6358,7 @@ x-cds-client-headers: string
 <td>x-fapi-auth-date</td>
 <td>header</td>
 <td>string</td>
-<td>optional</td>
+<td>conditional</td>
 <td>The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.</td>
 </tr>
 <tr>
@@ -6346,7 +6372,7 @@ x-cds-client-headers: string
 <td>x-cds-client-headers</td>
 <td>header</td>
 <td><a href="#common-field-types">Base64</a></td>
-<td>optional</td>
+<td>conditional</td>
 <td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
 </tr>
 <tr>
@@ -6400,6 +6426,7 @@ x-cds-client-headers: string
           </span><span class="s2">"isEstimate"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
           </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"measureUnit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KWH"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"usage"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
           </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"calculationFactors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -6447,6 +6474,9 @@ x-cds-client-headers: string
         </span><span class="s2">"otherCharges"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"servicePointId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"invoiceNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ENVIRONMENTAL"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
         </span><span class="p">},</span><span class="w">
@@ -6535,7 +6565,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p><a class="schema-link" id="cdr-energy-api-schemas"></a></p>
 
-<h2 class="schema-toc" id="tocSenergyplanlistresponse">EnergyPlanListResponse</h2>
+<h3 class="schema-toc" id="tocSenergyplanlistresponse">EnergyPlanListResponse</h3>
 
 <p><a id="schemacdr-energy-apienergyplanlistresponse"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -6620,7 +6650,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSenergyplanresponse">EnergyPlanResponse</h2>
+<h3 class="schema-toc" id="tocSenergyplanresponse">EnergyPlanResponse</h3>
 
 <p><a id="schemacdr-energy-apienergyplanresponse"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -6754,7 +6784,7 @@ To perform this operation, you must be authenticated and authorised with the fol
           </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"scheme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PREMIUM"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"payerType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GOVERNMENT"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"tariffUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GOVERNMENT"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"tariffUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"singleTariff"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"singleTariff"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
           </span><span class="p">},</span><span class="w">
@@ -6776,6 +6806,7 @@ To perform this operation, you must be authenticated and authorised with the fol
       </span><span class="p">],</span><span class="w">
       </span><span class="s2">"tariffPeriod"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ENVIRONMENTAL"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -6788,6 +6819,7 @@ To perform this operation, you must be authenticated and authorised with the fol
             </span><span class="s2">"rates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
               </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"unitPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"measureUnit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KWH"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"volume"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
               </span><span class="p">}</span><span class="w">
             </span><span class="p">],</span><span class="w">
@@ -6800,6 +6832,7 @@ To perform this operation, you must be authenticated and authorised with the fol
               </span><span class="s2">"rates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
                 </span><span class="p">{</span><span class="w">
                   </span><span class="s2">"unitPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"measureUnit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KWH"</span><span class="p">,</span><span class="w">
                   </span><span class="s2">"volume"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
                 </span><span class="p">}</span><span class="w">
               </span><span class="p">],</span><span class="w">
@@ -6820,6 +6853,7 @@ To perform this operation, you must be authenticated and authorised with the fol
               </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"measureUnit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KWH"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"startTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"endTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"days"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -6939,7 +6973,7 @@ To perform this operation, you must be authenticated and authorised with the fol
           </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"scheme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PREMIUM"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"payerType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GOVERNMENT"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"tariffUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GOVERNMENT"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"tariffUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"singleTariff"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"singleTariff"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
           </span><span class="p">},</span><span class="w">
@@ -6961,6 +6995,7 @@ To perform this operation, you must be authenticated and authorised with the fol
       </span><span class="p">],</span><span class="w">
       </span><span class="s2">"tariffPeriod"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ENVIRONMENTAL"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -6973,6 +7008,7 @@ To perform this operation, you must be authenticated and authorised with the fol
             </span><span class="s2">"rates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
               </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"unitPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"measureUnit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KWH"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"volume"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
               </span><span class="p">}</span><span class="w">
             </span><span class="p">],</span><span class="w">
@@ -6985,6 +7021,7 @@ To perform this operation, you must be authenticated and authorised with the fol
               </span><span class="s2">"rates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
                 </span><span class="p">{</span><span class="w">
                   </span><span class="s2">"unitPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"measureUnit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KWH"</span><span class="p">,</span><span class="w">
                   </span><span class="s2">"volume"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
                 </span><span class="p">}</span><span class="w">
               </span><span class="p">],</span><span class="w">
@@ -7005,6 +7042,7 @@ To perform this operation, you must be authenticated and authorised with the fol
               </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"measureUnit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KWH"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"startTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"endTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"days"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -7067,7 +7105,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSenergyservicepointlistresponse">EnergyServicePointListResponse</h2>
+<h3 class="schema-toc" id="tocSenergyservicepointlistresponse">EnergyServicePointListResponse</h3>
 
 <p><a id="schemacdr-energy-apienergyservicepointlistresponse"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -7137,7 +7175,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSenergyservicepointdetailresponse">EnergyServicePointDetailResponse</h2>
+<h3 class="schema-toc" id="tocSenergyservicepointdetailresponse">EnergyServicePointDetailResponse</h3>
 
 <p><a id="schemacdr-energy-apienergyservicepointdetailresponse"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -7261,7 +7299,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSenergyusagelistresponse">EnergyUsageListResponse</h2>
+<h3 class="schema-toc" id="tocSenergyusagelistresponse">EnergyUsageListResponse</h3>
 
 <p><a id="schemacdr-energy-apienergyusagelistresponse"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -7342,7 +7380,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSenergyderlistresponse">EnergyDerListResponse</h2>
+<h3 class="schema-toc" id="tocSenergyderlistresponse">EnergyDerListResponse</h3>
 
 <p><a id="schemacdr-energy-apienergyderlistresponse"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -7449,7 +7487,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSenergyderdetailresponse">EnergyDerDetailResponse</h2>
+<h3 class="schema-toc" id="tocSenergyderdetailresponse">EnergyDerDetailResponse</h3>
 
 <p><a id="schemacdr-energy-apienergyderdetailresponse"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -7539,7 +7577,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSenergyaccountlistresponse">EnergyAccountListResponse</h2>
+<h3 class="schema-toc" id="tocSenergyaccountlistresponse">EnergyAccountListResponse</h3>
 
 <p><a id="schemacdr-energy-apienergyaccountlistresponse"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -7614,7 +7652,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSenergyaccountdetailresponse">EnergyAccountDetailResponse</h2>
+<h3 class="schema-toc" id="tocSenergyaccountdetailresponse">EnergyAccountDetailResponse</h3>
 
 <p><a id="schemacdr-energy-apienergyaccountdetailresponse"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -7739,7 +7777,7 @@ To perform this operation, you must be authenticated and authorised with the fol
                 </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"scheme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PREMIUM"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"payerType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GOVERNMENT"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"tariffUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GOVERNMENT"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"tariffUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"singleTariff"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"singleTariff"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
                   </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
                 </span><span class="p">},</span><span class="w">
@@ -7754,6 +7792,7 @@ To perform this operation, you must be authenticated and authorised with the fol
             </span><span class="p">],</span><span class="w">
             </span><span class="s2">"tariffPeriod"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
               </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ENVIRONMENTAL"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -7782,6 +7821,7 @@ To perform this operation, you must be authenticated and authorised with the fol
                     </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
                     </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
                     </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"measureUnit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KWH"</span><span class="p">,</span><span class="w">
                     </span><span class="s2">"startTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
                     </span><span class="s2">"endTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
                     </span><span class="s2">"days"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
@@ -7887,7 +7927,7 @@ To perform this operation, you must be authenticated and authorised with the fol
                 </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"scheme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PREMIUM"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"payerType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GOVERNMENT"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"tariffUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GOVERNMENT"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"tariffUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"singleTariff"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"singleTariff"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
                   </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
                 </span><span class="p">},</span><span class="w">
@@ -7902,6 +7942,7 @@ To perform this operation, you must be authenticated and authorised with the fol
             </span><span class="p">],</span><span class="w">
             </span><span class="s2">"tariffPeriod"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
               </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ENVIRONMENTAL"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -7930,6 +7971,7 @@ To perform this operation, you must be authenticated and authorised with the fol
                     </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
                     </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
                     </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"measureUnit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KWH"</span><span class="p">,</span><span class="w">
                     </span><span class="s2">"startTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
                     </span><span class="s2">"endTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
                     </span><span class="s2">"days"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
@@ -7992,7 +8034,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSenergypaymentscheduleresponse">EnergyPaymentScheduleResponse</h2>
+<h3 class="schema-toc" id="tocSenergypaymentscheduleresponse">EnergyPaymentScheduleResponse</h3>
 
 <p><a id="schemacdr-energy-apienergypaymentscheduleresponse"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -8050,7 +8092,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSenergyconcessionsresponse">EnergyConcessionsResponse</h2>
+<h3 class="schema-toc" id="tocSenergyconcessionsresponse">EnergyConcessionsResponse</h3>
 
 <p><a id="schemacdr-energy-apienergyconcessionsresponse"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -8110,7 +8152,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSenergybalancelistresponse">EnergyBalanceListResponse</h2>
+<h3 class="schema-toc" id="tocSenergybalancelistresponse">EnergyBalanceListResponse</h3>
 
 <p><a id="schemacdr-energy-apienergybalancelistresponse"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -8182,7 +8224,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSenergybalanceresponse">EnergyBalanceResponse</h2>
+<h3 class="schema-toc" id="tocSenergybalanceresponse">EnergyBalanceResponse</h3>
 
 <p><a id="schemacdr-energy-apienergybalanceresponse"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -8230,7 +8272,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSenergyinvoicelistresponse">EnergyInvoiceListResponse</h2>
+<h3 class="schema-toc" id="tocSenergyinvoicelistresponse">EnergyInvoiceListResponse</h3>
 
 <p><a id="schemacdr-energy-apienergyinvoicelistresponse"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -8263,6 +8305,7 @@ To perform this operation, you must be authenticated and authorised with the fol
           </span><span class="s2">"totalOnceOffDiscounts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"otherCharges"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
             </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ENVIRONMENTAL"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
             </span><span class="p">}</span><span class="w">
@@ -8276,6 +8319,7 @@ To perform this operation, you must be authenticated and authorised with the fol
           </span><span class="s2">"totalOnceOffDiscounts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"otherCharges"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
             </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ENVIRONMENTAL"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
             </span><span class="p">}</span><span class="w">
@@ -8339,7 +8383,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSenergybillinglistresponse">EnergyBillingListResponse</h2>
+<h3 class="schema-toc" id="tocSenergybillinglistresponse">EnergyBillingListResponse</h3>
 
 <p><a id="schemacdr-energy-apienergybillinglistresponse"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -8358,6 +8402,7 @@ To perform this operation, you must be authenticated and authorised with the fol
           </span><span class="s2">"isEstimate"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
           </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"measureUnit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KWH"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"usage"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
           </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"calculationFactors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -8405,6 +8450,9 @@ To perform this operation, you must be authenticated and authorised with the fol
         </span><span class="s2">"otherCharges"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"servicePointId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"invoiceNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ENVIRONMENTAL"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
         </span><span class="p">},</span><span class="w">
@@ -8463,7 +8511,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSerrorlistresponse">ErrorListResponse</h2>
+<h3 class="schema-toc" id="tocSerrorlistresponse">ErrorListResponse</h3>
 
 <p><a id="schemacdr-energy-apierrorlistresponse"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -8526,7 +8574,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSenergyplan">EnergyPlan</h2>
+<h3 class="schema-toc" id="tocSenergyplan">EnergyPlan</h3>
 
 <p><a id="schemacdr-energy-apienergyplan"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -8736,7 +8784,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSenergyplandetail">EnergyPlanDetail</h2>
+<h3 class="schema-toc" id="tocSenergyplandetail">EnergyPlanDetail</h3>
 
 <p><a id="schemacdr-energy-apienergyplandetail"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -8869,7 +8917,7 @@ To perform this operation, you must be authenticated and authorised with the fol
         </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"scheme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PREMIUM"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"payerType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GOVERNMENT"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"tariffUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GOVERNMENT"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"tariffUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"singleTariff"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"singleTariff"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
         </span><span class="p">},</span><span class="w">
@@ -8891,6 +8939,7 @@ To perform this operation, you must be authenticated and authorised with the fol
     </span><span class="p">],</span><span class="w">
     </span><span class="s2">"tariffPeriod"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ENVIRONMENTAL"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -8903,6 +8952,7 @@ To perform this operation, you must be authenticated and authorised with the fol
           </span><span class="s2">"rates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
             </span><span class="p">{</span><span class="w">
               </span><span class="s2">"unitPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"measureUnit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KWH"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"volume"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
             </span><span class="p">}</span><span class="w">
           </span><span class="p">],</span><span class="w">
@@ -8915,6 +8965,7 @@ To perform this operation, you must be authenticated and authorised with the fol
             </span><span class="s2">"rates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
               </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"unitPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"measureUnit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KWH"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"volume"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
               </span><span class="p">}</span><span class="w">
             </span><span class="p">],</span><span class="w">
@@ -8935,6 +8986,7 @@ To perform this operation, you must be authenticated and authorised with the fol
             </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"measureUnit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KWH"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"startTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"endTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"days"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -9054,7 +9106,7 @@ To perform this operation, you must be authenticated and authorised with the fol
         </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"scheme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PREMIUM"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"payerType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GOVERNMENT"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"tariffUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GOVERNMENT"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"tariffUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"singleTariff"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"singleTariff"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
         </span><span class="p">},</span><span class="w">
@@ -9076,6 +9128,7 @@ To perform this operation, you must be authenticated and authorised with the fol
     </span><span class="p">],</span><span class="w">
     </span><span class="s2">"tariffPeriod"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ENVIRONMENTAL"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -9088,6 +9141,7 @@ To perform this operation, you must be authenticated and authorised with the fol
           </span><span class="s2">"rates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
             </span><span class="p">{</span><span class="w">
               </span><span class="s2">"unitPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"measureUnit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KWH"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"volume"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
             </span><span class="p">}</span><span class="w">
           </span><span class="p">],</span><span class="w">
@@ -9100,6 +9154,7 @@ To perform this operation, you must be authenticated and authorised with the fol
             </span><span class="s2">"rates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
               </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"unitPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"measureUnit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KWH"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"volume"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
               </span><span class="p">}</span><span class="w">
             </span><span class="p">],</span><span class="w">
@@ -9120,6 +9175,7 @@ To perform this operation, you must be authenticated and authorised with the fol
             </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"measureUnit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KWH"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"startTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"endTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"days"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -9233,7 +9289,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSenergyplancontract">EnergyPlanContract</h2>
+<h3 class="schema-toc" id="tocSenergyplancontract">EnergyPlanContract</h3>
 
 <p><a id="schemacdr-energy-apienergyplancontract"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -9329,7 +9385,7 @@ To perform this operation, you must be authenticated and authorised with the fol
       </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"scheme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PREMIUM"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"payerType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GOVERNMENT"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"tariffUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GOVERNMENT"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"tariffUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"singleTariff"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"singleTariff"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
       </span><span class="p">},</span><span class="w">
@@ -9351,6 +9407,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="p">],</span><span class="w">
   </span><span class="s2">"tariffPeriod"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ENVIRONMENTAL"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -9363,6 +9420,7 @@ To perform this operation, you must be authenticated and authorised with the fol
         </span><span class="s2">"rates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
           </span><span class="p">{</span><span class="w">
             </span><span class="s2">"unitPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"measureUnit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KWH"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"volume"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
           </span><span class="p">}</span><span class="w">
         </span><span class="p">],</span><span class="w">
@@ -9375,6 +9433,7 @@ To perform this operation, you must be authenticated and authorised with the fol
           </span><span class="s2">"rates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
             </span><span class="p">{</span><span class="w">
               </span><span class="s2">"unitPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"measureUnit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KWH"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"volume"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
             </span><span class="p">}</span><span class="w">
           </span><span class="p">],</span><span class="w">
@@ -9395,6 +9454,7 @@ To perform this operation, you must be authenticated and authorised with the fol
           </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"measureUnit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KWH"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"startTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"endTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"days"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -9479,7 +9539,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>controlledLoad</td>
 <td><a href="#schemacdr-energy-apienergyplancontrolledload">EnergyPlanControlledLoad</a></td>
 <td>conditional</td>
-<td>Required if pricing model is SINGLE_RATE_CONT_LOAD or TIME_OF_USE_CONT_LOAD</td>
+<td>Required if pricing model is SINGLE_RATE_CONT_LOAD or TIME_OF_USE_CONT_LOAD or FLEXIBLE_CONT_LOAD</td>
 </tr>
 <tr>
 <td>incentives</td>
@@ -9569,7 +9629,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSenergyplancontractfull">EnergyPlanContractFull</h2>
+<h3 class="schema-toc" id="tocSenergyplancontractfull">EnergyPlanContractFull</h3>
 
 <p><a id="schemacdr-energy-apienergyplancontractfull"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -9665,7 +9725,7 @@ To perform this operation, you must be authenticated and authorised with the fol
       </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"scheme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PREMIUM"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"payerType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GOVERNMENT"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"tariffUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GOVERNMENT"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"tariffUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"singleTariff"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"singleTariff"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
       </span><span class="p">},</span><span class="w">
@@ -9687,6 +9747,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="p">],</span><span class="w">
   </span><span class="s2">"tariffPeriod"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ENVIRONMENTAL"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -9699,6 +9760,7 @@ To perform this operation, you must be authenticated and authorised with the fol
         </span><span class="s2">"rates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
           </span><span class="p">{</span><span class="w">
             </span><span class="s2">"unitPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"measureUnit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KWH"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"volume"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
           </span><span class="p">}</span><span class="w">
         </span><span class="p">],</span><span class="w">
@@ -9711,6 +9773,7 @@ To perform this operation, you must be authenticated and authorised with the fol
           </span><span class="s2">"rates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
             </span><span class="p">{</span><span class="w">
               </span><span class="s2">"unitPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"measureUnit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KWH"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"volume"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
             </span><span class="p">}</span><span class="w">
           </span><span class="p">],</span><span class="w">
@@ -9731,6 +9794,7 @@ To perform this operation, you must be authenticated and authorised with the fol
           </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"measureUnit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KWH"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"startTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"endTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"days"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -9867,7 +9931,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSenergyplancontrolledload">EnergyPlanControlledLoad</h2>
+<h3 class="schema-toc" id="tocSenergyplancontrolledload">EnergyPlanControlledLoad</h3>
 
 <p><a id="schemacdr-energy-apienergyplancontrolledload"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -9884,7 +9948,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
-<p><em>Required if pricing model is SINGLE_RATE_CONT_LOAD or TIME_OF_USE_CONT_LOAD</em></p>
+<p><em>Required if pricing model is SINGLE_RATE_CONT_LOAD or TIME_OF_USE_CONT_LOAD or FLEXIBLE_CONT_LOAD</em></p>
 <h3 id='properties-21'>Properties</h3>
 <table><thead>
 <tr>
@@ -9938,7 +10002,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSenergyplanincentives">EnergyPlanIncentives</h2>
+<h3 class="schema-toc" id="tocSenergyplanincentives">EnergyPlanIncentives</h3>
 
 <p><a id="schemacdr-energy-apienergyplanincentives"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
@@ -10007,7 +10071,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSenergyplandiscounts">EnergyPlanDiscounts</h2>
+<h3 class="schema-toc" id="tocSenergyplandiscounts">EnergyPlanDiscounts</h3>
 
 <p><a id="schemacdr-energy-apienergyplandiscounts"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
@@ -10189,7 +10253,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSenergyplangreenpowercharges">EnergyPlanGreenPowerCharges</h2>
+<h3 class="schema-toc" id="tocSenergyplangreenpowercharges">EnergyPlanGreenPowerCharges</h3>
 
 <p><a id="schemacdr-energy-apienergyplangreenpowercharges"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
@@ -10309,7 +10373,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSenergyplaneligibility">EnergyPlanEligibility</h2>
+<h3 class="schema-toc" id="tocSenergyplaneligibility">EnergyPlanEligibility</h3>
 
 <p><a id="schemacdr-energy-apienergyplaneligibility"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
@@ -10443,7 +10507,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSenergyplanfees">EnergyPlanFees</h2>
+<h3 class="schema-toc" id="tocSenergyplanfees">EnergyPlanFees</h3>
 
 <p><a id="schemacdr-energy-apienergyplanfees"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
@@ -10623,7 +10687,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSenergyplansolarfeedintariff">EnergyPlanSolarFeedInTariff</h2>
+<h3 class="schema-toc" id="tocSenergyplansolarfeedintariff">EnergyPlanSolarFeedInTariff</h3>
 
 <p><a id="schemacdr-energy-apienergyplansolarfeedintariff"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
@@ -10632,7 +10696,7 @@ To perform this operation, you must be authenticated and authorised with the fol
     </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"scheme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PREMIUM"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"payerType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GOVERNMENT"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"tariffUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GOVERNMENT"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"tariffUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"singleTariff"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"singleTariff"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
     </span><span class="p">},</span><span class="w">
@@ -10786,11 +10850,11 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>tariffUType</td>
-<td>GOVERNMENT</td>
+<td>singleTariff</td>
 </tr>
 <tr>
 <td>tariffUType</td>
-<td>RETAILER</td>
+<td>timeVaryingTariffs</td>
 </tr>
 <tr>
 <td>type</td>
@@ -10806,11 +10870,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSenergyplantariffperiod">EnergyPlanTariffPeriod</h2>
+<h3 class="schema-toc" id="tocSenergyplantariffperiod">EnergyPlanTariffPeriod</h3>
 
 <p><a id="schemacdr-energy-apienergyplantariffperiod"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ENVIRONMENTAL"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -10823,6 +10888,7 @@ To perform this operation, you must be authenticated and authorised with the fol
       </span><span class="s2">"rates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
           </span><span class="s2">"unitPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"measureUnit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KWH"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"volume"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">],</span><span class="w">
@@ -10835,6 +10901,7 @@ To perform this operation, you must be authenticated and authorised with the fol
         </span><span class="s2">"rates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
           </span><span class="p">{</span><span class="w">
             </span><span class="s2">"unitPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"measureUnit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KWH"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"volume"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
           </span><span class="p">}</span><span class="w">
         </span><span class="p">],</span><span class="w">
@@ -10855,6 +10922,7 @@ To perform this operation, you must be authenticated and authorised with the fol
         </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"measureUnit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KWH"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"startTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"endTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"days"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -10883,6 +10951,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </thead><tbody>
 <tr>
+<td>type</td>
+<td>string</td>
+<td>optional</td>
+<td>Type of charge. Assumed to be other if absent</td>
+</tr>
+<tr>
 <td>displayName</td>
 <td>string</td>
 <td>mandatory</td>
@@ -10903,8 +10977,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>dailySupplyCharges</td>
 <td><a href="#common-field-types">AmountString</a></td>
-<td>mandatory</td>
-<td>The amount of access charge for the tariff period, in cents per day exclusive of GST.</td>
+<td>optional</td>
+<td>The amount of access charge for the tariff period, in dollars per day exclusive of GST.</td>
 </tr>
 <tr>
 <td>rateBlockUType</td>
@@ -10934,7 +11008,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>» generalUnitPrice</td>
 <td><a href="#common-field-types">AmountString</a></td>
 <td>conditional</td>
-<td>The block rate (unit price) for any usage above the included fixed usage, in cents per kWh inclusive of GST.  Only required if pricingModel field is ‘QUOTA’</td>
+<td>The block rate (unit price) for any usage above the included fixed usage, in dollars per kWh inclusive of GST.  Only required if pricingModel field is ‘QUOTA’</td>
 </tr>
 <tr>
 <td>» rates</td>
@@ -10946,7 +11020,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>»» unitPrice</td>
 <td><a href="#common-field-types">AmountString</a></td>
 <td>mandatory</td>
-<td>Unit price of usage per kWh (exclusive of GST)</td>
+<td>Unit price of usage per measure unit (exclusive of GST)</td>
+</tr>
+<tr>
+<td>»» measureUnit</td>
+<td>string</td>
+<td>optional</td>
+<td>The measurement unit of rate. Assumed to be KWH if absent</td>
 </tr>
 <tr>
 <td>»» volume</td>
@@ -10988,7 +11068,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>»» unitPrice</td>
 <td><a href="#common-field-types">AmountString</a></td>
 <td>mandatory</td>
-<td>Unit price of usage per kWh (exclusive of GST)</td>
+<td>Unit price of usage per  measure unit (exclusive of GST)</td>
+</tr>
+<tr>
+<td>»» measureUnit</td>
+<td>string</td>
+<td>optional</td>
+<td>The measurement unit of rate. Assumed to be KWH if absent</td>
 </tr>
 <tr>
 <td>»» volume</td>
@@ -11048,7 +11134,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>» amount</td>
 <td><a href="#common-field-types">AmountString</a></td>
 <td>mandatory</td>
-<td>The charge amount per kWh exclusive of GST</td>
+<td>The charge amount per  measure unit exclusive of GST</td>
+</tr>
+<tr>
+<td>» measureUnit</td>
+<td>string</td>
+<td>optional</td>
+<td>The measurement unit of charge amount. Assumed to be KWH if absent</td>
 </tr>
 <tr>
 <td>» startTime</td>
@@ -11119,6 +11211,34 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </thead><tbody>
 <tr>
+<td>type</td>
+<td>ENVIRONMENTAL</td>
+</tr>
+<tr>
+<td>type</td>
+<td>REGULATED</td>
+</tr>
+<tr>
+<td>type</td>
+<td>NETWORK</td>
+</tr>
+<tr>
+<td>type</td>
+<td>METERING</td>
+</tr>
+<tr>
+<td>type</td>
+<td>RETAIL_SERVICE</td>
+</tr>
+<tr>
+<td>type</td>
+<td>RCTI</td>
+</tr>
+<tr>
+<td>type</td>
+<td>OTHER</td>
+</tr>
+<tr>
 <td>rateBlockUType</td>
 <td>singleRate</td>
 </tr>
@@ -11129,6 +11249,70 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>rateBlockUType</td>
 <td>demandCharges</td>
+</tr>
+<tr>
+<td>measureUnit</td>
+<td>KWH</td>
+</tr>
+<tr>
+<td>measureUnit</td>
+<td>KVA</td>
+</tr>
+<tr>
+<td>measureUnit</td>
+<td>KVAR</td>
+</tr>
+<tr>
+<td>measureUnit</td>
+<td>KVARH</td>
+</tr>
+<tr>
+<td>measureUnit</td>
+<td>KW</td>
+</tr>
+<tr>
+<td>measureUnit</td>
+<td>DAYS</td>
+</tr>
+<tr>
+<td>measureUnit</td>
+<td>METER</td>
+</tr>
+<tr>
+<td>measureUnit</td>
+<td>MONTH</td>
+</tr>
+<tr>
+<td>measureUnit</td>
+<td>KWH</td>
+</tr>
+<tr>
+<td>measureUnit</td>
+<td>KVA</td>
+</tr>
+<tr>
+<td>measureUnit</td>
+<td>KVAR</td>
+</tr>
+<tr>
+<td>measureUnit</td>
+<td>KVARH</td>
+</tr>
+<tr>
+<td>measureUnit</td>
+<td>KW</td>
+</tr>
+<tr>
+<td>measureUnit</td>
+<td>DAYS</td>
+</tr>
+<tr>
+<td>measureUnit</td>
+<td>METER</td>
+</tr>
+<tr>
+<td>measureUnit</td>
+<td>MONTH</td>
 </tr>
 <tr>
 <td>type</td>
@@ -11149,6 +11333,38 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>type</td>
 <td>SHOULDER2</td>
+</tr>
+<tr>
+<td>measureUnit</td>
+<td>KWH</td>
+</tr>
+<tr>
+<td>measureUnit</td>
+<td>KVA</td>
+</tr>
+<tr>
+<td>measureUnit</td>
+<td>KVAR</td>
+</tr>
+<tr>
+<td>measureUnit</td>
+<td>KVARH</td>
+</tr>
+<tr>
+<td>measureUnit</td>
+<td>KW</td>
+</tr>
+<tr>
+<td>measureUnit</td>
+<td>DAYS</td>
+</tr>
+<tr>
+<td>measureUnit</td>
+<td>METER</td>
+</tr>
+<tr>
+<td>measureUnit</td>
+<td>MONTH</td>
 </tr>
 <tr>
 <td>measurementPeriod</td>
@@ -11176,7 +11392,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSenergyservicepoint">EnergyServicePoint</h2>
+<h3 class="schema-toc" id="tocSenergyservicepoint">EnergyServicePoint</h3>
 
 <p><a id="schemacdr-energy-apienergyservicepoint"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -11383,7 +11599,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSenergyservicepointdetail">EnergyServicePointDetail</h2>
+<h3 class="schema-toc" id="tocSenergyservicepointdetail">EnergyServicePointDetail</h3>
 
 <p><a id="schemacdr-energy-apienergyservicepointdetail"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -12183,7 +12399,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSenergyusageread">EnergyUsageRead</h2>
+<h3 class="schema-toc" id="tocSenergyusageread">EnergyUsageRead</h3>
 
 <p><a id="schemacdr-energy-apienergyusageread"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -12371,7 +12587,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSenergyderrecord">EnergyDerRecord</h2>
+<h3 class="schema-toc" id="tocSenergyderrecord">EnergyDerRecord</h3>
 
 <p><a id="schemacdr-energy-apienergyderrecord"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -12761,7 +12977,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSenergyaccountbase">EnergyAccountBase</h2>
+<h3 class="schema-toc" id="tocSenergyaccountbase">EnergyAccountBase</h3>
 
 <p><a id="schemacdr-energy-apienergyaccountbase"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -12806,7 +13022,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSenergyaccount">EnergyAccount</h2>
+<h3 class="schema-toc" id="tocSenergyaccount">EnergyAccount</h3>
 
 <p><a id="schemacdr-energy-apienergyaccount"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -12908,7 +13124,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSenergyaccountdetail">EnergyAccountDetail</h2>
+<h3 class="schema-toc" id="tocSenergyaccountdetail">EnergyAccountDetail</h3>
 
 <p><a id="schemacdr-energy-apienergyaccountdetail"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -13032,7 +13248,7 @@ To perform this operation, you must be authenticated and authorised with the fol
               </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"scheme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PREMIUM"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"payerType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GOVERNMENT"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"tariffUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GOVERNMENT"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"tariffUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"singleTariff"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"singleTariff"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
               </span><span class="p">},</span><span class="w">
@@ -13051,6 +13267,7 @@ To perform this operation, you must be authenticated and authorised with the fol
           </span><span class="p">],</span><span class="w">
           </span><span class="s2">"tariffPeriod"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
             </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ENVIRONMENTAL"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -13063,6 +13280,7 @@ To perform this operation, you must be authenticated and authorised with the fol
                 </span><span class="s2">"rates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
                   </span><span class="p">{</span><span class="w">
                     </span><span class="s2">"unitPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"measureUnit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KWH"</span><span class="p">,</span><span class="w">
                     </span><span class="s2">"volume"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
                   </span><span class="p">}</span><span class="w">
                 </span><span class="p">],</span><span class="w">
@@ -13086,6 +13304,7 @@ To perform this operation, you must be authenticated and authorised with the fol
                   </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
                   </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
                   </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"measureUnit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KWH"</span><span class="p">,</span><span class="w">
                   </span><span class="s2">"startTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
                   </span><span class="s2">"endTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
                   </span><span class="s2">"days"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -13195,7 +13414,7 @@ To perform this operation, you must be authenticated and authorised with the fol
               </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"scheme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PREMIUM"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"payerType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GOVERNMENT"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"tariffUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GOVERNMENT"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"tariffUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"singleTariff"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"singleTariff"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
               </span><span class="p">},</span><span class="w">
@@ -13214,6 +13433,7 @@ To perform this operation, you must be authenticated and authorised with the fol
           </span><span class="p">],</span><span class="w">
           </span><span class="s2">"tariffPeriod"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
             </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ENVIRONMENTAL"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -13226,6 +13446,7 @@ To perform this operation, you must be authenticated and authorised with the fol
                 </span><span class="s2">"rates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
                   </span><span class="p">{</span><span class="w">
                     </span><span class="s2">"unitPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"measureUnit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KWH"</span><span class="p">,</span><span class="w">
                     </span><span class="s2">"volume"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
                   </span><span class="p">}</span><span class="w">
                 </span><span class="p">],</span><span class="w">
@@ -13249,6 +13470,7 @@ To perform this operation, you must be authenticated and authorised with the fol
                   </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
                   </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
                   </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"measureUnit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KWH"</span><span class="p">,</span><span class="w">
                   </span><span class="s2">"startTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
                   </span><span class="s2">"endTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
                   </span><span class="s2">"days"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -13482,7 +13704,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSenergypaymentschedule">EnergyPaymentSchedule</h2>
+<h3 class="schema-toc" id="tocSenergypaymentschedule">EnergyPaymentSchedule</h3>
 
 <p><a id="schemacdr-energy-apienergypaymentschedule"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -13668,7 +13890,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSenergyconcession">EnergyConcession</h2>
+<h3 class="schema-toc" id="tocSenergyconcession">EnergyConcession</h3>
 
 <p><a id="schemacdr-energy-apienergyconcession"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -13748,7 +13970,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSenergyinvoice">EnergyInvoice</h2>
+<h3 class="schema-toc" id="tocSenergyinvoice">EnergyInvoice</h3>
 
 <p><a id="schemacdr-energy-apienergyinvoice"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -13778,6 +14000,7 @@ To perform this operation, you must be authenticated and authorised with the fol
     </span><span class="s2">"totalOnceOffDiscounts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"otherCharges"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ENVIRONMENTAL"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
       </span><span class="p">}</span><span class="w">
@@ -13791,6 +14014,7 @@ To perform this operation, you must be authenticated and authorised with the fol
     </span><span class="s2">"totalOnceOffDiscounts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"otherCharges"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ENVIRONMENTAL"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
       </span><span class="p">}</span><span class="w">
@@ -13950,7 +14174,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSenergyinvoicegasusagecharges">EnergyInvoiceGasUsageCharges</h2>
+<h3 class="schema-toc" id="tocSenergyinvoicegasusagecharges">EnergyInvoiceGasUsageCharges</h3>
 
 <p><a id="schemacdr-energy-apienergyinvoicegasusagecharges"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -13960,6 +14184,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="s2">"totalOnceOffDiscounts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"otherCharges"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ENVIRONMENTAL"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
     </span><span class="p">}</span><span class="w">
@@ -14007,6 +14232,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Optional array of charges that may be part of the invoice (for e.g. environmental charges for C&amp;I consumers) (exclusive of GST)</td>
 </tr>
 <tr>
+<td>» type</td>
+<td>string</td>
+<td>optional</td>
+<td>Type of charge. Assumed to be other if absent</td>
+</tr>
+<tr>
 <td>» amount</td>
 <td><a href="#common-field-types">AmountString</a></td>
 <td>mandatory</td>
@@ -14025,8 +14256,44 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>The total GST for all electricity usage charges.  If absent then zero is assumed</td>
 </tr>
 </tbody></table>
+<h4 id='enumerated-values-19'>Enumerated Values</h4>
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>type</td>
+<td>ENVIRONMENTAL</td>
+</tr>
+<tr>
+<td>type</td>
+<td>REGULATED</td>
+</tr>
+<tr>
+<td>type</td>
+<td>NETWORK</td>
+</tr>
+<tr>
+<td>type</td>
+<td>METERING</td>
+</tr>
+<tr>
+<td>type</td>
+<td>RETAIL_SERVICE</td>
+</tr>
+<tr>
+<td>type</td>
+<td>RCTI</td>
+</tr>
+<tr>
+<td>type</td>
+<td>OTHER</td>
+</tr>
+</tbody></table>
 
-<h2 class="schema-toc" id="tocSenergyinvoiceelectricityusagecharges">EnergyInvoiceElectricityUsageCharges</h2>
+<h3 class="schema-toc" id="tocSenergyinvoiceelectricityusagecharges">EnergyInvoiceElectricityUsageCharges</h3>
 
 <p><a id="schemacdr-energy-apienergyinvoiceelectricityusagecharges"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -14036,6 +14303,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="s2">"totalOnceOffDiscounts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"otherCharges"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ENVIRONMENTAL"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
     </span><span class="p">}</span><span class="w">
@@ -14083,6 +14351,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Optional array of charges that may be part of the invoice (for e.g. environmental charges for C&amp;I consumers) (exclusive of GST)</td>
 </tr>
 <tr>
+<td>» type</td>
+<td>string</td>
+<td>optional</td>
+<td>Type of charge. Assumed to be other if absent</td>
+</tr>
+<tr>
 <td>» amount</td>
 <td><a href="#common-field-types">AmountString</a></td>
 <td>mandatory</td>
@@ -14101,8 +14375,44 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>The total GST for all electricity usage charges.  If absent then zero is assumed</td>
 </tr>
 </tbody></table>
+<h4 id='enumerated-values-20'>Enumerated Values</h4>
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>type</td>
+<td>ENVIRONMENTAL</td>
+</tr>
+<tr>
+<td>type</td>
+<td>REGULATED</td>
+</tr>
+<tr>
+<td>type</td>
+<td>NETWORK</td>
+</tr>
+<tr>
+<td>type</td>
+<td>METERING</td>
+</tr>
+<tr>
+<td>type</td>
+<td>RETAIL_SERVICE</td>
+</tr>
+<tr>
+<td>type</td>
+<td>RCTI</td>
+</tr>
+<tr>
+<td>type</td>
+<td>OTHER</td>
+</tr>
+</tbody></table>
 
-<h2 class="schema-toc" id="tocSenergyinvoiceaccountcharges">EnergyInvoiceAccountCharges</h2>
+<h3 class="schema-toc" id="tocSenergyinvoiceaccountcharges">EnergyInvoiceAccountCharges</h3>
 
 <p><a id="schemacdr-energy-apienergyinvoiceaccountcharges"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -14142,7 +14452,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSenergybillingtransaction">EnergyBillingTransaction</h2>
+<h3 class="schema-toc" id="tocSenergybillingtransaction">EnergyBillingTransaction</h3>
 
 <p><a id="schemacdr-energy-apienergybillingtransaction"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -14158,6 +14468,7 @@ To perform this operation, you must be authenticated and authorised with the fol
     </span><span class="s2">"isEstimate"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"measureUnit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KWH"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"usage"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
     </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"calculationFactors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -14205,6 +14516,9 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="s2">"otherCharges"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"servicePointId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"invoiceNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ENVIRONMENTAL"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
   </span><span class="p">},</span><span class="w">
@@ -14278,7 +14592,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Represents a payment to the account.  Mandatory if transactionUType is equal to payment</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-19'>Enumerated Values</h4>
+<h4 id='enumerated-values-21'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -14307,7 +14621,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSenergybillingusagetransaction">EnergyBillingUsageTransaction</h2>
+<h3 class="schema-toc" id="tocSenergybillingusagetransaction">EnergyBillingUsageTransaction</h3>
 
 <p><a id="schemacdr-energy-apienergybillingusagetransaction"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -14318,6 +14632,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="s2">"isEstimate"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
   </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"measureUnit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KWH"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"usage"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"calculationFactors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -14386,10 +14701,16 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Date and time when the usage period ends</td>
 </tr>
 <tr>
+<td>measureUnit</td>
+<td>string</td>
+<td>optional</td>
+<td>The measurement unit of rate. Assumed to be KWH if absent</td>
+</tr>
+<tr>
 <td>usage</td>
 <td>number</td>
 <td>mandatory</td>
-<td>The usage for the period in kWh.  A negative value indicates power generated</td>
+<td>The usage for the period in measure unit.  A negative value indicates power generated</td>
 </tr>
 <tr>
 <td>amount</td>
@@ -14434,7 +14755,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>A free text description of the adjustment</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-20'>Enumerated Values</h4>
+<h4 id='enumerated-values-22'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -14478,6 +14799,38 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>AGGREGATE</td>
 </tr>
 <tr>
+<td>measureUnit</td>
+<td>KWH</td>
+</tr>
+<tr>
+<td>measureUnit</td>
+<td>KVA</td>
+</tr>
+<tr>
+<td>measureUnit</td>
+<td>KVAR</td>
+</tr>
+<tr>
+<td>measureUnit</td>
+<td>KVARH</td>
+</tr>
+<tr>
+<td>measureUnit</td>
+<td>KW</td>
+</tr>
+<tr>
+<td>measureUnit</td>
+<td>DAYS</td>
+</tr>
+<tr>
+<td>measureUnit</td>
+<td>METER</td>
+</tr>
+<tr>
+<td>measureUnit</td>
+<td>MONTH</td>
+</tr>
+<tr>
 <td>type</td>
 <td>DLF</td>
 </tr>
@@ -14487,7 +14840,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSenergybillingdemandtransaction">EnergyBillingDemandTransaction</h2>
+<h3 class="schema-toc" id="tocSenergybillingdemandtransaction">EnergyBillingDemandTransaction</h3>
 
 <p><a id="schemacdr-energy-apienergybillingdemandtransaction"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -14614,7 +14967,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>A free text description of the adjustment</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-21'>Enumerated Values</h4>
+<h4 id='enumerated-values-23'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -14667,7 +15020,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSenergybillingonceofftransaction">EnergyBillingOnceOffTransaction</h2>
+<h3 class="schema-toc" id="tocSenergybillingonceofftransaction">EnergyBillingOnceOffTransaction</h3>
 
 <p><a id="schemacdr-energy-apienergybillingonceofftransaction"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -14712,12 +15065,15 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSenergybillingothertransaction">EnergyBillingOtherTransaction</h2>
+<h3 class="schema-toc" id="tocSenergybillingothertransaction">EnergyBillingOtherTransaction</h3>
 
 <p><a id="schemacdr-energy-apienergybillingothertransaction"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"servicePointId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"invoiceNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ENVIRONMENTAL"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -14744,6 +15100,24 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>The number of the invoice in which this transaction is included if it has been issued</td>
 </tr>
 <tr>
+<td>startDate</td>
+<td><a href="#common-field-types">DateString</a></td>
+<td>optional</td>
+<td>Optional start date for the application of the charge</td>
+</tr>
+<tr>
+<td>endDate</td>
+<td><a href="#common-field-types">DateString</a></td>
+<td>optional</td>
+<td>Optional end date for the application of the charge</td>
+</tr>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>optional</td>
+<td>Type of charge. Assumed to be other if absent</td>
+</tr>
+<tr>
 <td>amount</td>
 <td><a href="#common-field-types">AmountString</a></td>
 <td>mandatory</td>
@@ -14756,8 +15130,44 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>A free text description of the item</td>
 </tr>
 </tbody></table>
+<h4 id='enumerated-values-24'>Enumerated Values</h4>
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>type</td>
+<td>ENVIRONMENTAL</td>
+</tr>
+<tr>
+<td>type</td>
+<td>REGULATED</td>
+</tr>
+<tr>
+<td>type</td>
+<td>NETWORK</td>
+</tr>
+<tr>
+<td>type</td>
+<td>METERING</td>
+</tr>
+<tr>
+<td>type</td>
+<td>RETAIL_SERVICE</td>
+</tr>
+<tr>
+<td>type</td>
+<td>RCTI</td>
+</tr>
+<tr>
+<td>type</td>
+<td>OTHER</td>
+</tr>
+</tbody></table>
 
-<h2 class="schema-toc" id="tocSenergybillingpaymenttransaction">EnergyBillingPaymentTransaction</h2>
+<h3 class="schema-toc" id="tocSenergybillingpaymenttransaction">EnergyBillingPaymentTransaction</h3>
 
 <p><a id="schemacdr-energy-apienergybillingpaymenttransaction"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -14787,7 +15197,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>The method of payment</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-22'>Enumerated Values</h4>
+<h4 id='enumerated-values-25'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -14824,7 +15234,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSlinks">Links</h2>
+<h3 class="schema-toc" id="tocSlinks">Links</h3>
 
 <p><a id="schemacdr-energy-apilinks"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -14848,7 +15258,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSmeta">Meta</h2>
+<h3 class="schema-toc" id="tocSmeta">Meta</h3>
 
 <p><a id="schemacdr-energy-apimeta"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{}</span><span class="w">
@@ -14856,7 +15266,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </span></code></pre><h3 id='properties-49'>Properties</h3>
 <p><em>None</em></p>
 
-<h2 class="schema-toc" id="tocSlinkspaginated">LinksPaginated</h2>
+<h3 class="schema-toc" id="tocSlinkspaginated">LinksPaginated</h3>
 
 <p><a id="schemacdr-energy-apilinkspaginated"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -14908,7 +15318,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSmetapaginated">MetaPaginated</h2>
+<h3 class="schema-toc" id="tocSmetapaginated">MetaPaginated</h3>
 
 <p><a id="schemacdr-energy-apimetapaginated"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">

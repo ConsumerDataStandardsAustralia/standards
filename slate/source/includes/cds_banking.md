@@ -64,9 +64,9 @@ Obtain a list of accounts
 |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
 |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
 |x-fapi-interaction-id|header|string|optional|An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
-|x-fapi-auth-date|header|string|optional|The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
+|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended) if the customer has logged in. Not to be included for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|optional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
 
 #### Enumerated Values
 
@@ -138,15 +138,15 @@ Obtain a list of accounts
 |200|x-fapi-interaction-id|string||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 |4xx|x-fapi-interaction-id|string||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 
-
-
+  
+    
       <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">bank:accounts.basic:read</a>
 </aside>
 
-
-
+    
+  
 
 ## Get Bulk Balances
 
@@ -212,9 +212,9 @@ Obtain balances for multiple, filtered accounts
 |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
 |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
 |x-fapi-interaction-id|header|string|optional|An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
-|x-fapi-auth-date|header|string|optional|The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
+|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended) if the customer has logged in. Not to be included for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|optional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
 
 #### Enumerated Values
 
@@ -289,15 +289,15 @@ Obtain balances for multiple, filtered accounts
 |200|x-fapi-interaction-id|string||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 |4xx|x-fapi-interaction-id|string||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 
-
-
+  
+    
       <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">bank:accounts.basic:read</a>
 </aside>
 
-
-
+    
+  
 
 ## Get Balances For Specific Accounts
 
@@ -375,9 +375,9 @@ Obtain balances for a specified list of accounts
 |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
 |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
 |x-fapi-interaction-id|header|string|optional|An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
-|x-fapi-auth-date|header|string|optional|The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
+|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended) if the customer has logged in. Not to be included for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|optional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
 |body|body|[RequestAccountIds](#schemacdr-banking-apirequestaccountids)|mandatory|The list of account IDs to obtain balances for|
 
 > Example responses
@@ -433,15 +433,15 @@ Obtain balances for a specified list of accounts
 |200|x-fapi-interaction-id|string||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 |4xx|x-fapi-interaction-id|string||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 
-
-
+  
+    
       <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">bank:accounts.basic:read</a>
 </aside>
 
-
-
+    
+  
 
 ## Get Account Balance
 
@@ -503,9 +503,9 @@ Obtain the balance for a single specified account
 |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
 |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
 |x-fapi-interaction-id|header|string|optional|An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
-|x-fapi-auth-date|header|string|optional|The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
+|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended) if the customer has logged in. Not to be included for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|optional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
 
 > Example responses
 
@@ -549,15 +549,15 @@ Obtain the balance for a single specified account
 |200|x-fapi-interaction-id|string||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 |4xx|x-fapi-interaction-id|string||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 
-
-
+  
+    
       <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">bank:accounts.basic:read</a>
 </aside>
 
-
-
+    
+  
 
 ## Get Account Detail
 
@@ -604,7 +604,7 @@ $.ajax({
 
 `GET /banking/accounts/{accountId}`
 
-Obtain detailed information on a single account
+Obtain detailed information on a single account.
 
 Obsolete versions: [v1](includes/obsolete/get-account-detail-v1.html)
 
@@ -621,9 +621,9 @@ Obsolete versions: [v1](includes/obsolete/get-account-detail-v1.html)
 |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
 |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
 |x-fapi-interaction-id|header|string|optional|An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
-|x-fapi-auth-date|header|string|optional|The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
+|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended) if the customer has logged in. Not to be included for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|optional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
 
 > Example responses
 
@@ -834,7 +834,7 @@ Obsolete versions: [v1](includes/obsolete/get-account-detail-v1.html)
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingAccountByIdV2](#schemacdr-banking-apiresponsebankingaccountbyid)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingAccountByIdV2](#schemacdr-banking-apiresponsebankingaccountbyidv2)|
 |4xx|[**Client Error**](https://tools.ietf.org/html/rfc7231#section-6.5)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[404 - Unavailable Banking Account](#error-404-authorisation-unavailable-banking-account)</li><li>[404 - Invalid Banking Account](#error-404-authorisation-invalid-banking-account)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 
 ### Response Headers
@@ -845,15 +845,15 @@ Obsolete versions: [v1](includes/obsolete/get-account-detail-v1.html)
 |200|x-fapi-interaction-id|string||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 |4xx|x-fapi-interaction-id|string||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 
-
-
+  
+    
       <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">bank:accounts.detail:read</a>
 </aside>
 
-
-
+    
+  
 
 ## Get Transactions For Account
 
@@ -932,9 +932,9 @@ Some general notes that apply to all end points that retrieve transactions:
 |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
 |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
 |x-fapi-interaction-id|header|string|optional|An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
-|x-fapi-auth-date|header|string|optional|The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
+|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended) if the customer has logged in. Not to be included for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|optional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
 
 > Example responses
 
@@ -995,15 +995,15 @@ Some general notes that apply to all end points that retrieve transactions:
 |200|x-fapi-interaction-id|string||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 |4xx|x-fapi-interaction-id|string||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 
-
-
+  
+    
       <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">bank:transactions:read</a>
 </aside>
 
-
-
+    
+  
 
 ## Get Transaction Detail
 
@@ -1066,9 +1066,9 @@ Obtain detailed information on a transaction for a specific account
 |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
 |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
 |x-fapi-interaction-id|header|string|optional|An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
-|x-fapi-auth-date|header|string|optional|The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
+|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended) if the customer has logged in. Not to be included for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|optional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
 
 > Example responses
 
@@ -1129,15 +1129,15 @@ Obtain detailed information on a transaction for a specific account
 |200|x-fapi-interaction-id|string||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 |4xx|x-fapi-interaction-id|string||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 
-
-
+  
+    
       <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">bank:transactions:read</a>
 </aside>
 
-
-
+    
+  
 
 ## Get Direct Debits For Account
 
@@ -1201,9 +1201,9 @@ Obtain direct debit authorisations for a specific account
 |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
 |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
 |x-fapi-interaction-id|header|string|optional|An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
-|x-fapi-auth-date|header|string|optional|The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
+|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended) if the customer has logged in. Not to be included for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|optional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
 
 > Example responses
 
@@ -1256,15 +1256,15 @@ Obtain direct debit authorisations for a specific account
 |200|x-fapi-interaction-id|string||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 |4xx|x-fapi-interaction-id|string||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 
-
-
+  
+    
       <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">bank:regular_payments:read</a>
 </aside>
 
-
-
+    
+  
 
 ## Get Bulk Direct Debits
 
@@ -1330,9 +1330,9 @@ Obtain direct debit authorisations for multiple, filtered accounts
 |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
 |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
 |x-fapi-interaction-id|header|string|optional|An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
-|x-fapi-auth-date|header|string|optional|The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
+|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended) if the customer has logged in. Not to be included for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|optional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
 
 #### Enumerated Values
 
@@ -1405,15 +1405,15 @@ Obtain direct debit authorisations for multiple, filtered accounts
 |200|x-fapi-interaction-id|string||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 |4xx|x-fapi-interaction-id|string||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 
-
-
+  
+    
       <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">bank:regular_payments:read</a>
 </aside>
 
-
-
+    
+  
 
 ## Get Direct Debits For Specific Accounts
 
@@ -1491,9 +1491,9 @@ Obtain direct debit authorisations for a specified list of accounts
 |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
 |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
 |x-fapi-interaction-id|header|string|optional|An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
-|x-fapi-auth-date|header|string|optional|The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
+|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended) if the customer has logged in. Not to be included for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|optional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
 |body|body|[RequestAccountIds](#schemacdr-banking-apirequestaccountids)|mandatory|Array of specific accountIds to obtain authorisations for|
 
 > Example responses
@@ -1547,15 +1547,15 @@ Obtain direct debit authorisations for a specified list of accounts
 |200|x-fapi-interaction-id|string||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 |4xx|x-fapi-interaction-id|string||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 
-
-
+  
+    
       <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">bank:regular_payments:read</a>
 </aside>
 
-
-
+    
+  
 
 ## Get Scheduled Payments for Account
 
@@ -1619,9 +1619,9 @@ Obtain scheduled, outgoing payments for a specific account
 |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
 |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
 |x-fapi-interaction-id|header|string|optional|An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
-|x-fapi-auth-date|header|string|optional|The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
+|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended) if the customer has logged in. Not to be included for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|optional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
 
 > Example responses
 
@@ -1756,15 +1756,15 @@ Obtain scheduled, outgoing payments for a specific account
 |200|x-fapi-interaction-id|string||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 |4xx|x-fapi-interaction-id|string||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 
-
-
+  
+    
       <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">bank:regular_payments:read</a>
 </aside>
 
-
-
+    
+  
 
 ## Get Scheduled Payments Bulk
 
@@ -1830,9 +1830,9 @@ Obtain scheduled payments for multiple, filtered accounts that are the source of
 |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
 |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
 |x-fapi-interaction-id|header|string|optional|An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
-|x-fapi-auth-date|header|string|optional|The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
+|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended) if the customer has logged in. Not to be included for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|optional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
 
 #### Enumerated Values
 
@@ -1987,15 +1987,15 @@ Obtain scheduled payments for multiple, filtered accounts that are the source of
 |200|x-fapi-interaction-id|string||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 |4xx|x-fapi-interaction-id|string||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 
-
-
+  
+    
       <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">bank:regular_payments:read</a>
 </aside>
 
-
-
+    
+  
 
 ## Get Scheduled Payments For Specific Accounts
 
@@ -2073,9 +2073,9 @@ Obtain scheduled payments for a specified list of accounts
 |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
 |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
 |x-fapi-interaction-id|header|string|optional|An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
-|x-fapi-auth-date|header|string|optional|The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
+|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended) if the customer has logged in. Not to be included for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|optional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
 |body|body|[RequestAccountIds](#schemacdr-banking-apirequestaccountids)|mandatory|Array of specific accountIds to obtain scheduled payments for.  The accounts specified are the source of funds for the payments returned|
 
 > Example responses
@@ -2211,15 +2211,15 @@ Obtain scheduled payments for a specified list of accounts
 |200|x-fapi-interaction-id|string||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 |4xx|x-fapi-interaction-id|string||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 
-
-
+  
+    
       <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">bank:regular_payments:read</a>
 </aside>
 
-
-
+    
+  
 
 ## Get Payees
 
@@ -2266,12 +2266,14 @@ $.ajax({
 
 `GET /banking/payees`
 
-Obtain a list of pre-registered payees
+Obtain a list of pre-registered payees.
+
+Obsolete versions: [v1](includes/obsolete/get-payees-v1.html)
 
 ###Endpoint Version
 |   |  |
 |---|--|
-|Version|**1**
+|Version|**2**
 
 <h3 id="get-payees-parameters">Parameters</h3>
 
@@ -2283,9 +2285,9 @@ Obtain a list of pre-registered payees
 |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
 |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
 |x-fapi-interaction-id|header|string|optional|An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
-|x-fapi-auth-date|header|string|optional|The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
+|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended) if the customer has logged in. Not to be included for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|optional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
 
 #### Enumerated Values
 
@@ -2293,6 +2295,7 @@ Obtain a list of pre-registered payees
 |---|---|
 |type|ALL|
 |type|BILLER|
+|type|DIGITAL_WALLET|
 |type|DOMESTIC|
 |type|INTERNATIONAL|
 
@@ -2331,7 +2334,7 @@ Obtain a list of pre-registered payees
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingPayeeList](#schemacdr-banking-apiresponsebankingpayeelist)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingPayeeListV2](#schemacdr-banking-apiresponsebankingpayeelistv2)|
 |4xx|[**Client Error**](https://tools.ietf.org/html/rfc7231#section-6.5)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 
 ### Response Headers
@@ -2342,15 +2345,15 @@ Obtain a list of pre-registered payees
 |200|x-fapi-interaction-id|string||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 |4xx|x-fapi-interaction-id|string||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 
-
-
+  
+    
       <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">bank:payees:read</a>
 </aside>
 
-
-
+    
+  
 
 ## Get Payee Detail
 
@@ -2399,12 +2402,14 @@ $.ajax({
 
 Obtain detailed information on a single payee.
 
-Note that the payee sub-structure should be selected to represent the payment destination only rather than any known characteristics of the payment recipient
+Note that the payee sub-structure should be selected to represent the payment destination only rather than any known characteristics of the payment recipient.
+
+Obsolete versions: [v1](includes/obsolete/get-payee-detail-v1.html)
 
 ###Endpoint Version
 |   |  |
 |---|--|
-|Version|**1**
+|Version|**2**
 
 <h3 id="get-payee-detail-parameters">Parameters</h3>
 
@@ -2414,9 +2419,9 @@ Note that the payee sub-structure should be selected to represent the payment de
 |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
 |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
 |x-fapi-interaction-id|header|string|optional|An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
-|x-fapi-auth-date|header|string|optional|The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
+|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended) if the customer has logged in. Not to be included for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|optional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
 
 > Example responses
 
@@ -2431,6 +2436,11 @@ Note that the payee sub-structure should be selected to represent the payment de
     "type": "BILLER",
     "creationDate": "string",
     "payeeUType": "biller",
+    "biller": {
+      "billerCode": "string",
+      "crn": "string",
+      "billerName": "string"
+    },
     "domestic": {
       "payeeAccountUType": "account",
       "account": {
@@ -2447,10 +2457,11 @@ Note that the payee sub-structure should be selected to represent the payment de
         "type": "ABN"
       }
     },
-    "biller": {
-      "billerCode": "string",
-      "crn": "string",
-      "billerName": "string"
+    "digitalWallet": {
+      "name": "string",
+      "identifier": "string",
+      "type": "EMAIL",
+      "provider": "PAYPAL_AU"
     },
     "international": {
       "beneficiaryDetails": {
@@ -2485,7 +2496,7 @@ Note that the payee sub-structure should be selected to represent the payment de
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingPayeeById](#schemacdr-banking-apiresponsebankingpayeebyid)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingPayeeByIdV2](#schemacdr-banking-apiresponsebankingpayeebyidv2)|
 |4xx|[**Client Error**](https://tools.ietf.org/html/rfc7231#section-6.5)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[404 - Unavailable Resource](#error-404-resource-unavailable)</li><li>[404 - Invalid Resource](#error-404-resource-invalid)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 
 ### Response Headers
@@ -2496,15 +2507,15 @@ Note that the payee sub-structure should be selected to represent the payment de
 |200|x-fapi-interaction-id|string||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 |4xx|x-fapi-interaction-id|string||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 
-
-
+  
+    
       <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">bank:payees:read</a>
 </aside>
 
-
-
+    
+  
 
 ## Get Products
 
@@ -2621,51 +2632,20 @@ Obsolete versions: [v1](includes/obsolete/get-products-v1.html) [v2](includes/ob
 
 > Example responses
 
-> 200 Response
+> 4xx Response
 
 ```json
 {
-  "data": {
-    "products": [
-      {
-        "productId": "string",
-        "effectiveFrom": "string",
-        "effectiveTo": "string",
-        "lastUpdated": "string",
-        "productCategory": "BUSINESS_LOANS",
-        "name": "string",
-        "description": "string",
-        "brand": "string",
-        "brandName": "string",
-        "applicationUri": "string",
-        "isTailored": true,
-        "additionalInformation": {
-          "overviewUri": "string",
-          "termsUri": "string",
-          "eligibilityUri": "string",
-          "feesAndPricingUri": "string",
-          "bundleUri": "string"
-        },
-        "cardArt": [
-          {
-            "title": "string",
-            "imageUri": "string"
-          }
-        ]
+  "errors": [
+    {
+      "code": "string",
+      "title": "string",
+      "detail": "string",
+      "meta": {
+        "urn": "string"
       }
-    ]
-  },
-  "links": {
-    "self": "string",
-    "first": "string",
-    "prev": "string",
-    "next": "string",
-    "last": "string"
-  },
-  "meta": {
-    "totalRecords": 0,
-    "totalPages": 0
-  }
+    }
+  ]
 }
 ```
 
@@ -2673,8 +2653,10 @@ Obsolete versions: [v1](includes/obsolete/get-products-v1.html) [v2](includes/ob
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingProductList](#schemacdr-banking-apiresponsebankingproductlist)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|None|
 |4xx|[**Client Error**](https://tools.ietf.org/html/rfc7231#section-6.5)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
+
+<h3 id="get-products-responseschema">Response Schema</h3>
 
 ### Response Headers
 
@@ -2682,12 +2664,12 @@ Obsolete versions: [v1](includes/obsolete/get-products-v1.html) [v2](includes/ob
 |---|---|---|---|---|
 |200|x-v|string||The [version](#response-headers) of the API end point that the data holder has responded with.|
 
-
+  
     <aside class="success">
 This operation does not require authentication
 </aside>
 
-
+  
 
 ## Get Product Detail
 
@@ -2728,12 +2710,12 @@ $.ajax({
 
 Obtain detailed information on a single product offered openly to the market.
 
-Obsolete versions: [v1](includes/obsolete/get-product-detail-v1.html) [v2](includes/obsolete/get-product-detail-v2.html)
+Obsolete versions: [v1](includes/obsolete/get-product-detail-v1.html) [v2](includes/obsolete/get-product-detail-v2.html) [v3](includes/obsolete/get-product-detail-v3.html)
 
 ###Endpoint Version
 |   |  |
 |---|--|
-|Version|**3**
+|Version|**4**
 
 <h3 id="get-product-detail-parameters">Parameters</h3>
 
@@ -2766,7 +2748,37 @@ Obsolete versions: [v1](includes/obsolete/get-product-detail-v1.html) [v2](inclu
       "termsUri": "string",
       "eligibilityUri": "string",
       "feesAndPricingUri": "string",
-      "bundleUri": "string"
+      "bundleUri": "string",
+      "additionalOverviewUris": [
+        {
+          "description": "string",
+          "additionalInfoUri": "string"
+        }
+      ],
+      "additionalTermsUris": [
+        {
+          "description": "string",
+          "additionalInfoUri": "string"
+        }
+      ],
+      "additionalEligibilityUris": [
+        {
+          "description": "string",
+          "additionalInfoUri": "string"
+        }
+      ],
+      "additionalFeesAndPricingUris": [
+        {
+          "description": "string",
+          "additionalInfoUri": "string"
+        }
+      ],
+      "additionalBundleUris": [
+        {
+          "description": "string",
+          "additionalInfoUri": "string"
+        }
+      ]
     },
     "cardArt": [
       {
@@ -2914,7 +2926,7 @@ Obsolete versions: [v1](includes/obsolete/get-product-detail-v1.html) [v2](inclu
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingProductById](#schemacdr-banking-apiresponsebankingproductbyid)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingProductByIdV4](#schemacdr-banking-apiresponsebankingproductbyidv4)|
 |4xx|[**Client Error**](https://tools.ietf.org/html/rfc7231#section-6.5)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[404 - Unavailable Resource](#error-404-resource-unavailable)</li><li>[404 - Invalid Resource](#error-404-resource-invalid)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 
 ### Response Headers
@@ -2923,17 +2935,17 @@ Obsolete versions: [v1](includes/obsolete/get-product-detail-v1.html) [v2](inclu
 |---|---|---|---|---|
 |200|x-v|string||The [version](#response-headers) of the API end point that the data holder has responded with.|
 
-
+  
     <aside class="success">
 This operation does not require authentication
 </aside>
 
-
+  
 
 <h2 class="schema-heading" id="cdr-banking-api-schemas">Schemas</h2>
 <a class="schema-link" id="cdr-banking-api-schemas"></a>
 
-<h2 class="schema-toc" id="tocSrequestaccountids">RequestAccountIds</h2>
+<h3 class="schema-toc" id="tocSrequestaccountids">RequestAccountIds</h3>
 
 <a id="schemacdr-banking-apirequestaccountids"></a>
 
@@ -2957,9 +2969,9 @@ This operation does not require authentication
 |» accountIds|[string]|mandatory|none|
 |meta|[Meta](#schemacdr-banking-apimeta)|optional|none|
 
-<h2 class="schema-toc" id="tocSresponsebankingproductlist">ResponseBankingProductList</h2>
+<h3 class="schema-toc" id="tocSresponsebankingproductlistv2">ResponseBankingProductListV2</h3>
 
-<a id="schemacdr-banking-apiresponsebankingproductlist"></a>
+<a id="schemacdr-banking-apiresponsebankingproductlistv2"></a>
 
 ```json
 {
@@ -2982,7 +2994,37 @@ This operation does not require authentication
           "termsUri": "string",
           "eligibilityUri": "string",
           "feesAndPricingUri": "string",
-          "bundleUri": "string"
+          "bundleUri": "string",
+          "additionalOverviewUris": [
+            {
+              "description": "string",
+              "additionalInfoUri": "string"
+            }
+          ],
+          "additionalTermsUris": [
+            {
+              "description": "string",
+              "additionalInfoUri": "string"
+            }
+          ],
+          "additionalEligibilityUris": [
+            {
+              "description": "string",
+              "additionalInfoUri": "string"
+            }
+          ],
+          "additionalFeesAndPricingUris": [
+            {
+              "description": "string",
+              "additionalInfoUri": "string"
+            }
+          ],
+          "additionalBundleUris": [
+            {
+              "description": "string",
+              "additionalInfoUri": "string"
+            }
+          ]
         },
         "cardArt": [
           {
@@ -3013,13 +3055,13 @@ This operation does not require authentication
 |Name|Type|Required|Description|
 |---|---|---|---|
 |data|object|mandatory|none|
-|» products|[[BankingProductV3](#schemacdr-banking-apibankingproductv3)]|mandatory|The list of products returned.  If the filter results in an empty set then this array may have no records|
+|» products|[[BankingProductV4](#schemacdr-banking-apibankingproductv4)]|mandatory|The list of products returned.  If the filter results in an empty set then this array may have no records|
 |links|[LinksPaginated](#schemacdr-banking-apilinkspaginated)|mandatory|none|
 |meta|[MetaPaginated](#schemacdr-banking-apimetapaginated)|mandatory|none|
 
-<h2 class="schema-toc" id="tocSbankingproductv3">BankingProductV3</h2>
+<h3 class="schema-toc" id="tocSbankingproductv4">BankingProductV4</h3>
 
-<a id="schemacdr-banking-apibankingproductv3"></a>
+<a id="schemacdr-banking-apibankingproductv4"></a>
 
 ```json
 {
@@ -3039,7 +3081,37 @@ This operation does not require authentication
     "termsUri": "string",
     "eligibilityUri": "string",
     "feesAndPricingUri": "string",
-    "bundleUri": "string"
+    "bundleUri": "string",
+    "additionalOverviewUris": [
+      {
+        "description": "string",
+        "additionalInfoUri": "string"
+      }
+    ],
+    "additionalTermsUris": [
+      {
+        "description": "string",
+        "additionalInfoUri": "string"
+      }
+    ],
+    "additionalEligibilityUris": [
+      {
+        "description": "string",
+        "additionalInfoUri": "string"
+      }
+    ],
+    "additionalFeesAndPricingUris": [
+      {
+        "description": "string",
+        "additionalInfoUri": "string"
+      }
+    ],
+    "additionalBundleUris": [
+      {
+        "description": "string",
+        "additionalInfoUri": "string"
+      }
+    ]
   },
   "cardArt": [
     {
@@ -3066,19 +3138,95 @@ This operation does not require authentication
 |brandName|string|optional|An optional display name of the brand|
 |applicationUri|[URIString](#common-field-types)|optional|A link to an application web page where this product can be applied for.|
 |isTailored|[Boolean](#common-field-types)|mandatory|Indicates whether the product is specifically tailored to a circumstance.  In this case fees and prices are significantly negotiated depending on context. While all products are open to a degree of tailoring this flag indicates that tailoring is expected and thus that the provision of specific fees and rates is not applicable|
-|additionalInformation|object|optional|Object that contains links to additional information on specific topics|
-|» overviewUri|[URIString](#common-field-types)|optional|General overview of the product|
-|» termsUri|[URIString](#common-field-types)|optional|Terms and conditions for the product|
-|» eligibilityUri|[URIString](#common-field-types)|optional|Eligibility rules and criteria for the product|
-|» feesAndPricingUri|[URIString](#common-field-types)|optional|Description of fees, pricing, discounts, exemptions and bonuses for the product|
-|» bundleUri|[URIString](#common-field-types)|optional|Description of a bundle that this product can be part of|
+|additionalInformation|[BankingProductAdditionalInformationV2](#schemacdr-banking-apibankingproductadditionalinformationv2)|optional|Object that contains links to additional information on specific topics|
 |cardArt|[object]|optional|An array of card art images|
 |» title|string|optional|Display label for the specific image|
 |» imageUri|[URIString](#common-field-types)|mandatory|URI reference to a PNG, JPG or GIF image with proportions defined by ISO 7810 ID-1 and width no greater than 512 pixels. The URI reference may be a link or url-encoded data URI [RFC 2397](https://tools.ietf.org/html/rfc2397)|
 
-<h2 class="schema-toc" id="tocSresponsebankingproductbyid">ResponseBankingProductById</h2>
+<h3 class="schema-toc" id="tocSbankingproductadditionalinformationv2">BankingProductAdditionalInformationV2</h3>
 
-<a id="schemacdr-banking-apiresponsebankingproductbyid"></a>
+<a id="schemacdr-banking-apibankingproductadditionalinformationv2"></a>
+
+```json
+{
+  "overviewUri": "string",
+  "termsUri": "string",
+  "eligibilityUri": "string",
+  "feesAndPricingUri": "string",
+  "bundleUri": "string",
+  "additionalOverviewUris": [
+    {
+      "description": "string",
+      "additionalInfoUri": "string"
+    }
+  ],
+  "additionalTermsUris": [
+    {
+      "description": "string",
+      "additionalInfoUri": "string"
+    }
+  ],
+  "additionalEligibilityUris": [
+    {
+      "description": "string",
+      "additionalInfoUri": "string"
+    }
+  ],
+  "additionalFeesAndPricingUris": [
+    {
+      "description": "string",
+      "additionalInfoUri": "string"
+    }
+  ],
+  "additionalBundleUris": [
+    {
+      "description": "string",
+      "additionalInfoUri": "string"
+    }
+  ]
+}
+
+```
+
+*Object that contains links to additional information on specific topics*
+
+### Properties
+
+|Name|Type|Required|Description|
+|---|---|---|---|
+|overviewUri|[URIString](#common-field-types)|conditional|General overview of the product. Mandatory if `additionalOverviewUris` includes one or more supporting documents.|
+|termsUri|[URIString](#common-field-types)|conditional|Terms and conditions for the product. Mandatory if `additionalTermsUris` includes one or more supporting documents.|
+|eligibilityUri|[URIString](#common-field-types)|conditional|Eligibility rules and criteria for the product. Mandatory if `additionalEligibilityUris` includes one or more supporting documents.|
+|feesAndPricingUri|[URIString](#common-field-types)|conditional|Description of fees, pricing, discounts, exemptions and bonuses for the product. Mandatory if `additionalFeesAndPricingUris` includes one or more supporting documents.|
+|bundleUri|[URIString](#common-field-types)|conditional|Description of a bundle that this product can be part of. Mandatory if `additionalBundleUris` includes one or more supporting documents.|
+|additionalOverviewUris|[[BankingProductAdditionalInformationV2_additionalInformationUris](#schemacdr-banking-apibankingproductadditionalinformationv2_additionalinformationuris)]|optional|An array of additional general overviews for the product or features of the product, if applicable. To be treated as secondary documents to the `overviewUri`. Only to be used if there is a primary `overviewUri`.|
+|additionalTermsUris|[[BankingProductAdditionalInformationV2_additionalInformationUris](#schemacdr-banking-apibankingproductadditionalinformationv2_additionalinformationuris)]|optional|An array of additional terms and conditions for the product, if applicable. To be treated as secondary documents to the `termsUri`. Only to be used if there is a primary `termsUri`.|
+|additionalEligibilityUris|[[BankingProductAdditionalInformationV2_additionalInformationUris](#schemacdr-banking-apibankingproductadditionalinformationv2_additionalinformationuris)]|optional|An array of additional eligibility rules and criteria for the product, if applicable. To be treated as secondary documents to the `eligibilityUri`. Only to be used if there is a primary `eligibilityUri`.|
+|additionalFeesAndPricingUris|[[BankingProductAdditionalInformationV2_additionalInformationUris](#schemacdr-banking-apibankingproductadditionalinformationv2_additionalinformationuris)]|optional|An array of additional fees, pricing, discounts, exemptions and bonuses for the product, if applicable. To be treated as secondary documents to the `feesAndPricingUri`. Only to be used if there is a primary `feesAndPricingUri`.|
+|additionalBundleUris|[[BankingProductAdditionalInformationV2_additionalInformationUris](#schemacdr-banking-apibankingproductadditionalinformationv2_additionalinformationuris)]|optional|An array of additional bundles for the product, if applicable. To be treated as secondary documents to the `bundleUri`. Only to be used if there is a primary `bundleUri`.|
+
+<h3 class="schema-toc" id="tocSbankingproductadditionalinformationv2_additionalinformationuris">BankingProductAdditionalInformationV2_additionalInformationUris</h3>
+
+<a id="schemacdr-banking-apibankingproductadditionalinformationv2_additionalinformationuris"></a>
+
+```json
+{
+  "description": "string",
+  "additionalInfoUri": "string"
+}
+
+```
+
+### Properties
+
+|Name|Type|Required|Description|
+|---|---|---|---|
+|description|string|optional|Display text providing more information about the document URI|
+|additionalInfoUri|[URIString](#common-field-types)|mandatory|The URI describing the additional information|
+
+<h3 class="schema-toc" id="tocSresponsebankingproductbyidv4">ResponseBankingProductByIdV4</h3>
+
+<a id="schemacdr-banking-apiresponsebankingproductbyidv4"></a>
 
 ```json
 {
@@ -3099,7 +3247,37 @@ This operation does not require authentication
       "termsUri": "string",
       "eligibilityUri": "string",
       "feesAndPricingUri": "string",
-      "bundleUri": "string"
+      "bundleUri": "string",
+      "additionalOverviewUris": [
+        {
+          "description": "string",
+          "additionalInfoUri": "string"
+        }
+      ],
+      "additionalTermsUris": [
+        {
+          "description": "string",
+          "additionalInfoUri": "string"
+        }
+      ],
+      "additionalEligibilityUris": [
+        {
+          "description": "string",
+          "additionalInfoUri": "string"
+        }
+      ],
+      "additionalFeesAndPricingUris": [
+        {
+          "description": "string",
+          "additionalInfoUri": "string"
+        }
+      ],
+      "additionalBundleUris": [
+        {
+          "description": "string",
+          "additionalInfoUri": "string"
+        }
+      ]
     },
     "cardArt": [
       {
@@ -3248,13 +3426,13 @@ This operation does not require authentication
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|data|[BankingProductDetailV3](#schemacdr-banking-apibankingproductdetailv3)|mandatory|none|
+|data|[BankingProductDetailV4](#schemacdr-banking-apibankingproductdetailv4)|mandatory|none|
 |links|[Links](#schemacdr-banking-apilinks)|mandatory|none|
 |meta|[Meta](#schemacdr-banking-apimeta)|optional|none|
 
-<h2 class="schema-toc" id="tocSbankingproductdetailv3">BankingProductDetailV3</h2>
+<h3 class="schema-toc" id="tocSbankingproductdetailv4">BankingProductDetailV4</h3>
 
-<a id="schemacdr-banking-apibankingproductdetailv3"></a>
+<a id="schemacdr-banking-apibankingproductdetailv4"></a>
 
 ```json
 {
@@ -3274,7 +3452,37 @@ This operation does not require authentication
     "termsUri": "string",
     "eligibilityUri": "string",
     "feesAndPricingUri": "string",
-    "bundleUri": "string"
+    "bundleUri": "string",
+    "additionalOverviewUris": [
+      {
+        "description": "string",
+        "additionalInfoUri": "string"
+      }
+    ],
+    "additionalTermsUris": [
+      {
+        "description": "string",
+        "additionalInfoUri": "string"
+      }
+    ],
+    "additionalEligibilityUris": [
+      {
+        "description": "string",
+        "additionalInfoUri": "string"
+      }
+    ],
+    "additionalFeesAndPricingUris": [
+      {
+        "description": "string",
+        "additionalInfoUri": "string"
+      }
+    ],
+    "additionalBundleUris": [
+      {
+        "description": "string",
+        "additionalInfoUri": "string"
+      }
+    ]
   },
   "cardArt": [
     {
@@ -3420,7 +3628,7 @@ This operation does not require authentication
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|*anonymous*|[BankingProductV3](#schemacdr-banking-apibankingproductv3)|mandatory|none|
+|*anonymous*|[BankingProductV4](#schemacdr-banking-apibankingproductv4)|mandatory|none|
 
 *and*
 
@@ -3428,14 +3636,14 @@ This operation does not require authentication
 |---|---|---|---|
 |*anonymous*|object|mandatory|none|
 |» bundles|[[BankingProductBundle](#schemacdr-banking-apibankingproductbundle)]|optional|An array of bundles that this product participates in.  Each bundle is described by free form information but also by a list of product IDs of the other products that are included in the bundle.  It is assumed that the current product is included in the bundle also|
-|» features|[[BankingProductFeature](#schemacdr-banking-apibankingproductfeature)]|optional|Array of features available for the product|
+|» features|[[BankingProductFeatureV2](#schemacdr-banking-apibankingproductfeaturev2)]|optional|Array of features available for the product|
 |» constraints|[[BankingProductConstraint](#schemacdr-banking-apibankingproductconstraint)]|optional|Constraints on the application for or operation of the product such as minimum balances or limit thresholds|
 |» eligibility|[[BankingProductEligibility](#schemacdr-banking-apibankingproducteligibility)]|optional|Eligibility criteria for the product|
 |» fees|[[BankingProductFee](#schemacdr-banking-apibankingproductfee)]|optional|Fees applicable for the product|
 |» depositRates|[[BankingProductDepositRate](#schemacdr-banking-apibankingproductdepositrate)]|optional|Interest rates available for deposits|
 |» lendingRates|[[BankingProductLendingRateV2](#schemacdr-banking-apibankingproductlendingratev2)]|optional|Interest rates charged against lending balances|
 
-<h2 class="schema-toc" id="tocSbankingproductbundle">BankingProductBundle</h2>
+<h3 class="schema-toc" id="tocSbankingproductbundle">BankingProductBundle</h3>
 
 <a id="schemacdr-banking-apibankingproductbundle"></a>
 
@@ -3462,9 +3670,9 @@ This operation does not require authentication
 |additionalInfoUri|[URIString](#common-field-types)|optional|Link to a web page with more information on the bundle criteria and benefits|
 |productIds|[string]|optional|Array of product IDs for products included in the bundle that are available via the product end points.  Note that this array is not intended to represent a comprehensive model of the products included in the bundle and some products available for the bundle may not be available via the product reference end points|
 
-<h2 class="schema-toc" id="tocSbankingproductfeature">BankingProductFeature</h2>
+<h3 class="schema-toc" id="tocSbankingproductfeaturev2">BankingProductFeatureV2</h3>
 
-<a id="schemacdr-banking-apibankingproductfeature"></a>
+<a id="schemacdr-banking-apibankingproductfeaturev2"></a>
 
 ```json
 {
@@ -3494,13 +3702,18 @@ This operation does not require authentication
 |featureType|BILL_PAYMENT|
 |featureType|BONUS_REWARDS|
 |featureType|CARD_ACCESS|
+|featureType|CASHBACK_OFFER|
 |featureType|COMPLEMENTARY_PRODUCT_DISCOUNTS|
 |featureType|DIGITAL_BANKING|
 |featureType|DIGITAL_WALLET|
 |featureType|DONATE_INTEREST|
+|featureType|EXTRA_REPAYMENTS|
+|featureType|FRAUD_PROTECTION|
 |featureType|FREE_TXNS|
 |featureType|FREE_TXNS_ALLOWANCE|
+|featureType|GUARANTOR|
 |featureType|INSURANCE|
+|featureType|INSTALMENT_PLAN|
 |featureType|INTEREST_FREE|
 |featureType|INTEREST_FREE_TRANSFERS|
 |featureType|LOYALTY_PROGRAM|
@@ -3511,9 +3724,10 @@ This operation does not require authentication
 |featureType|OTHER|
 |featureType|OVERDRAFT|
 |featureType|REDRAW|
+|featureType|RELATIONSHIP_MANAGEMENT|
 |featureType|UNLIMITED_TXNS|
 
-<h2 class="schema-toc" id="tocSbankingproductconstraint">BankingProductConstraint</h2>
+<h3 class="schema-toc" id="tocSbankingproductconstraint">BankingProductConstraint</h3>
 
 <a id="schemacdr-banking-apibankingproductconstraint"></a>
 
@@ -3546,7 +3760,7 @@ This operation does not require authentication
 |constraintType|MIN_LIMIT|
 |constraintType|OPENING_BALANCE|
 
-<h2 class="schema-toc" id="tocSbankingproducteligibility">BankingProductEligibility</h2>
+<h3 class="schema-toc" id="tocSbankingproducteligibility">BankingProductEligibility</h3>
 
 <a id="schemacdr-banking-apibankingproducteligibility"></a>
 
@@ -3586,7 +3800,7 @@ This operation does not require authentication
 |eligibilityType|STAFF|
 |eligibilityType|STUDENT|
 
-<h2 class="schema-toc" id="tocSbankingproductfee">BankingProductFee</h2>
+<h3 class="schema-toc" id="tocSbankingproductfee">BankingProductFee</h3>
 
 <a id="schemacdr-banking-apibankingproductfee"></a>
 
@@ -3661,7 +3875,7 @@ This operation does not require authentication
 |feeType|VARIABLE|
 |feeType|WITHDRAWAL|
 
-<h2 class="schema-toc" id="tocSbankingproductdiscount">BankingProductDiscount</h2>
+<h3 class="schema-toc" id="tocSbankingproductdiscount">BankingProductDiscount</h3>
 
 <a id="schemacdr-banking-apibankingproductdiscount"></a>
 
@@ -3715,7 +3929,7 @@ This operation does not require authentication
 |discountType|FEE_CAP|
 |discountType|PAYMENTS|
 
-<h2 class="schema-toc" id="tocSbankingproductdiscounteligibility">BankingProductDiscountEligibility</h2>
+<h3 class="schema-toc" id="tocSbankingproductdiscounteligibility">BankingProductDiscountEligibility</h3>
 
 <a id="schemacdr-banking-apibankingproductdiscounteligibility"></a>
 
@@ -3756,7 +3970,7 @@ This operation does not require authentication
 |discountEligibilityType|STAFF|
 |discountEligibilityType|STUDENT|
 
-<h2 class="schema-toc" id="tocSbankingproductdepositrate">BankingProductDepositRate</h2>
+<h3 class="schema-toc" id="tocSbankingproductdepositrate">BankingProductDepositRate</h3>
 
 <a id="schemacdr-banking-apibankingproductdepositrate"></a>
 
@@ -3813,7 +4027,7 @@ This operation does not require authentication
 |depositRateType|MARKET_LINKED|
 |depositRateType|VARIABLE|
 
-<h2 class="schema-toc" id="tocSbankingproductlendingratev2">BankingProductLendingRateV2</h2>
+<h3 class="schema-toc" id="tocSbankingproductlendingratev2">BankingProductLendingRateV2</h3>
 
 <a id="schemacdr-banking-apibankingproductlendingratev2"></a>
 
@@ -3888,7 +4102,7 @@ This operation does not require authentication
 |loanPurpose|INVESTMENT|
 |loanPurpose|OWNER_OCCUPIED|
 
-<h2 class="schema-toc" id="tocSbankingproductratetierv3">BankingProductRateTierV3</h2>
+<h3 class="schema-toc" id="tocSbankingproductratetierv3">BankingProductRateTierV3</h3>
 
 <a id="schemacdr-banking-apibankingproductratetierv3"></a>
 
@@ -3935,7 +4149,7 @@ This operation does not require authentication
 |rateApplicationMethod|PER_TIER|
 |rateApplicationMethod|WHOLE_BALANCE|
 
-<h2 class="schema-toc" id="tocSbankingproductratecondition">BankingProductRateCondition</h2>
+<h3 class="schema-toc" id="tocSbankingproductratecondition">BankingProductRateCondition</h3>
 
 <a id="schemacdr-banking-apibankingproductratecondition"></a>
 
@@ -3956,7 +4170,7 @@ This operation does not require authentication
 |additionalInfo|string|optional|Display text providing more information on the condition|
 |additionalInfoUri|[URIString](#common-field-types)|optional|Link to a web page with more information on this condition|
 
-<h2 class="schema-toc" id="tocSresponsebankingaccountlist">ResponseBankingAccountList</h2>
+<h3 class="schema-toc" id="tocSresponsebankingaccountlist">ResponseBankingAccountList</h3>
 
 <a id="schemacdr-banking-apiresponsebankingaccountlist"></a>
 
@@ -4001,7 +4215,7 @@ This operation does not require authentication
 |links|[LinksPaginated](#schemacdr-banking-apilinkspaginated)|mandatory|none|
 |meta|[MetaPaginated](#schemacdr-banking-apimetapaginated)|mandatory|none|
 
-<h2 class="schema-toc" id="tocSbankingaccount">BankingAccount</h2>
+<h3 class="schema-toc" id="tocSbankingaccount">BankingAccount</h3>
 
 <a id="schemacdr-banking-apibankingaccount"></a>
 
@@ -4041,9 +4255,9 @@ This operation does not require authentication
 |openStatus|CLOSED|
 |openStatus|OPEN|
 
-<h2 class="schema-toc" id="tocSresponsebankingaccountbyid">ResponseBankingAccountById</h2>
+<h3 class="schema-toc" id="tocSresponsebankingaccountbyidv2">ResponseBankingAccountByIdV2</h3>
 
-<a id="schemacdr-banking-apiresponsebankingaccountbyid"></a>
+<a id="schemacdr-banking-apiresponsebankingaccountbyidv2"></a>
 
 ```json
 {
@@ -4251,13 +4465,13 @@ This operation does not require authentication
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|data|[BankingAccountDetail](#schemacdr-banking-apibankingaccountdetail)|mandatory|none|
+|data|[BankingAccountDetailV2](#schemacdr-banking-apibankingaccountdetailv2)|mandatory|none|
 |links|[Links](#schemacdr-banking-apilinks)|mandatory|none|
 |meta|[Meta](#schemacdr-banking-apimeta)|optional|none|
 
-<h2 class="schema-toc" id="tocSbankingaccountdetail">BankingAccountDetail</h2>
+<h3 class="schema-toc" id="tocSbankingaccountdetailv2">BankingAccountDetailV2</h3>
 
-<a id="schemacdr-banking-apibankingaccountdetail"></a>
+<a id="schemacdr-banking-apibankingaccountdetailv2"></a>
 
 ```json
 {
@@ -4474,7 +4688,7 @@ This operation does not require authentication
 |» specificAccountUType|string|optional|The type of structure to present account specific fields.|
 |» termDeposit|[[BankingTermDepositAccount](#schemacdr-banking-apibankingtermdepositaccount)]|conditional|none|
 |» creditCard|[BankingCreditCardAccount](#schemacdr-banking-apibankingcreditcardaccount)|conditional|none|
-|» loan|[BankingLoanAccount](#schemacdr-banking-apibankingloanaccount)|conditional|none|
+|» loan|[BankingLoanAccountV2](#schemacdr-banking-apibankingloanaccountv2)|conditional|none|
 |» depositRate|[RateString](#common-field-types)|optional|current rate to calculate interest earned being applied to deposit balances as it stands at the time of the API call|
 |» lendingRate|[RateString](#common-field-types)|optional|The current rate to calculate interest payable being applied to lending balances as it stands at the time of the API call|
 |» depositRates|[[BankingProductDepositRate](#schemacdr-banking-apibankingproductdepositrate)]|optional|Fully described deposit rates for this account based on the equivalent structure in Product Reference|
@@ -4485,7 +4699,7 @@ This operation does not require authentication
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|»» *anonymous*|[BankingProductFeature](#schemacdr-banking-apibankingproductfeature)|mandatory|none|
+|»» *anonymous*|[BankingProductFeatureV2](#schemacdr-banking-apibankingproductfeaturev2)|mandatory|none|
 
 *and*
 
@@ -4509,7 +4723,7 @@ This operation does not require authentication
 |specificAccountUType|loan|
 |specificAccountUType|termDeposit|
 
-<h2 class="schema-toc" id="tocSbankingtermdepositaccount">BankingTermDepositAccount</h2>
+<h3 class="schema-toc" id="tocSbankingtermdepositaccount">BankingTermDepositAccount</h3>
 
 <a id="schemacdr-banking-apibankingtermdepositaccount"></a>
 
@@ -4542,7 +4756,7 @@ This operation does not require authentication
 |maturityInstructions|PAID_OUT_AT_MATURITY|
 |maturityInstructions|ROLLED_OVER|
 
-<h2 class="schema-toc" id="tocSbankingcreditcardaccount">BankingCreditCardAccount</h2>
+<h3 class="schema-toc" id="tocSbankingcreditcardaccount">BankingCreditCardAccount</h3>
 
 <a id="schemacdr-banking-apibankingcreditcardaccount"></a>
 
@@ -4565,9 +4779,9 @@ This operation does not require authentication
 |paymentCurrency|[CurrencyString](#common-field-types)|optional|If absent assumes AUD|
 |paymentDueDate|[DateString](#common-field-types)|mandatory|Date that the next payment for the card is due|
 
-<h2 class="schema-toc" id="tocSbankingloanaccount">BankingLoanAccount</h2>
+<h3 class="schema-toc" id="tocSbankingloanaccountv2">BankingLoanAccountV2</h3>
 
-<a id="schemacdr-banking-apibankingloanaccount"></a>
+<a id="schemacdr-banking-apibankingloanaccountv2"></a>
 
 ```json
 {
@@ -4599,8 +4813,8 @@ This operation does not require authentication
 |originalStartDate|[DateString](#common-field-types)|optional|Optional original start date for the loan|
 |originalLoanAmount|[AmountString](#common-field-types)|optional|Optional original loan value|
 |originalLoanCurrency|[CurrencyString](#common-field-types)|optional|If absent assumes AUD|
-|loanEndDate|[DateString](#common-field-types)|mandatory|Date that the loan is due to be repaid in full|
-|nextInstalmentDate|[DateString](#common-field-types)|mandatory|Next date that an instalment is required|
+|loanEndDate|[DateString](#common-field-types)|optional|Date that the loan is due to be repaid in full|
+|nextInstalmentDate|[DateString](#common-field-types)|optional|Next date that an instalment is required|
 |minInstalmentAmount|[AmountString](#common-field-types)|optional|Minimum amount of next instalment|
 |minInstalmentCurrency|[CurrencyString](#common-field-types)|optional|If absent assumes AUD|
 |maxRedraw|[AmountString](#common-field-types)|optional|Maximum amount of funds that can be redrawn. If not present redraw is not available even if the feature exists for the account|
@@ -4610,7 +4824,7 @@ This operation does not require authentication
 |offsetAccountEnabled|[Boolean](#common-field-types)|optional|Set to true if one or more offset accounts are configured for this loan account|
 |offsetAccountIds|[string]|optional|The accountIDs of the configured offset accounts attached to this loan. Only offset accounts that can be accessed under the current authorisation should be included. It is expected behaviour that offsetAccountEnabled is set to true but the offsetAccountIds field is absent or empty. This represents a situation where an offset account exists but details can not be accessed under the current authorisation|
 |repaymentType|string|optional|Options in place for repayments. If absent defaults to PRINCIPAL_AND_INTEREST|
-|repaymentFrequency|[ExternalRef](#common-field-types)|mandatory|The expected or required repayment frequency. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
+|repaymentFrequency|[ExternalRef](#common-field-types)|optional|The expected or required repayment frequency. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
 
 #### Enumerated Values
 
@@ -4619,7 +4833,7 @@ This operation does not require authentication
 |repaymentType|INTEREST_ONLY|
 |repaymentType|PRINCIPAL_AND_INTEREST|
 
-<h2 class="schema-toc" id="tocSresponsebankingtransactionlist">ResponseBankingTransactionList</h2>
+<h3 class="schema-toc" id="tocSresponsebankingtransactionlist">ResponseBankingTransactionList</h3>
 
 <a id="schemacdr-banking-apiresponsebankingtransactionlist"></a>
 
@@ -4673,7 +4887,7 @@ This operation does not require authentication
 |links|[LinksPaginated](#schemacdr-banking-apilinkspaginated)|mandatory|none|
 |meta|[MetaPaginated](#schemacdr-banking-apimetapaginated)|mandatory|none|
 
-<h2 class="schema-toc" id="tocSbankingtransaction">BankingTransaction</h2>
+<h3 class="schema-toc" id="tocSbankingtransaction">BankingTransaction</h3>
 
 <a id="schemacdr-banking-apibankingtransaction"></a>
 
@@ -4739,7 +4953,7 @@ This operation does not require authentication
 |status|PENDING|
 |status|POSTED|
 
-<h2 class="schema-toc" id="tocSresponsebankingtransactionbyid">ResponseBankingTransactionById</h2>
+<h3 class="schema-toc" id="tocSresponsebankingtransactionbyid">ResponseBankingTransactionById</h3>
 
 <a id="schemacdr-banking-apiresponsebankingtransactionbyid"></a>
 
@@ -4792,7 +5006,7 @@ This operation does not require authentication
 |links|[Links](#schemacdr-banking-apilinks)|mandatory|none|
 |meta|[Meta](#schemacdr-banking-apimeta)|optional|none|
 
-<h2 class="schema-toc" id="tocSbankingtransactiondetail">BankingTransactionDetail</h2>
+<h3 class="schema-toc" id="tocSbankingtransactiondetail">BankingTransactionDetail</h3>
 
 <a id="schemacdr-banking-apibankingtransactiondetail"></a>
 
@@ -4861,7 +5075,7 @@ This operation does not require authentication
 |extensionUType|x2p101Payload|
 |service|X2P1.01|
 
-<h2 class="schema-toc" id="tocSresponsebankingaccountsbalancelist">ResponseBankingAccountsBalanceList</h2>
+<h3 class="schema-toc" id="tocSresponsebankingaccountsbalancelist">ResponseBankingAccountsBalanceList</h3>
 
 <a id="schemacdr-banking-apiresponsebankingaccountsbalancelist"></a>
 
@@ -4909,7 +5123,7 @@ This operation does not require authentication
 |links|[LinksPaginated](#schemacdr-banking-apilinkspaginated)|mandatory|none|
 |meta|[MetaPaginated](#schemacdr-banking-apimetapaginated)|mandatory|none|
 
-<h2 class="schema-toc" id="tocSresponsebankingaccountsbalancebyid">ResponseBankingAccountsBalanceById</h2>
+<h3 class="schema-toc" id="tocSresponsebankingaccountsbalancebyid">ResponseBankingAccountsBalanceById</h3>
 
 <a id="schemacdr-banking-apiresponsebankingaccountsbalancebyid"></a>
 
@@ -4945,7 +5159,7 @@ This operation does not require authentication
 |links|[Links](#schemacdr-banking-apilinks)|mandatory|none|
 |meta|[Meta](#schemacdr-banking-apimeta)|optional|none|
 
-<h2 class="schema-toc" id="tocSbankingbalance">BankingBalance</h2>
+<h3 class="schema-toc" id="tocSbankingbalance">BankingBalance</h3>
 
 <a id="schemacdr-banking-apibankingbalance"></a>
 
@@ -4979,7 +5193,7 @@ This operation does not require authentication
 |currency|[CurrencyString](#common-field-types)|optional|The currency for the balance amounts. If absent assumed to be AUD|
 |purses|[[BankingBalancePurse](#schemacdr-banking-apibankingbalancepurse)]|optional|Optional array of balances for the account in other currencies. Included to support accounts that support multi-currency purses such as Travel Cards|
 
-<h2 class="schema-toc" id="tocSbankingbalancepurse">BankingBalancePurse</h2>
+<h3 class="schema-toc" id="tocSbankingbalancepurse">BankingBalancePurse</h3>
 
 <a id="schemacdr-banking-apibankingbalancepurse"></a>
 
@@ -4998,9 +5212,9 @@ This operation does not require authentication
 |amount|[AmountString](#common-field-types)|mandatory|The balance available for this additional currency purse|
 |currency|[CurrencyString](#common-field-types)|optional|The currency for the purse|
 
-<h2 class="schema-toc" id="tocSresponsebankingpayeelist">ResponseBankingPayeeList</h2>
+<h3 class="schema-toc" id="tocSresponsebankingpayeelistv2">ResponseBankingPayeeListV2</h3>
 
-<a id="schemacdr-banking-apiresponsebankingpayeelist"></a>
+<a id="schemacdr-banking-apiresponsebankingpayeelistv2"></a>
 
 ```json
 {
@@ -5035,13 +5249,13 @@ This operation does not require authentication
 |Name|Type|Required|Description|
 |---|---|---|---|
 |data|object|mandatory|none|
-|» payees|[[BankingPayee](#schemacdr-banking-apibankingpayee)]|mandatory|The list of payees returned|
+|» payees|[[BankingPayeeV2](#schemacdr-banking-apibankingpayeev2)]|mandatory|The list of payees returned|
 |links|[LinksPaginated](#schemacdr-banking-apilinkspaginated)|mandatory|none|
 |meta|[MetaPaginated](#schemacdr-banking-apimetapaginated)|mandatory|none|
 
-<h2 class="schema-toc" id="tocSresponsebankingpayeebyid">ResponseBankingPayeeById</h2>
+<h3 class="schema-toc" id="tocSresponsebankingpayeebyidv2">ResponseBankingPayeeByIdV2</h3>
 
-<a id="schemacdr-banking-apiresponsebankingpayeebyid"></a>
+<a id="schemacdr-banking-apiresponsebankingpayeebyidv2"></a>
 
 ```json
 {
@@ -5052,6 +5266,11 @@ This operation does not require authentication
     "type": "BILLER",
     "creationDate": "string",
     "payeeUType": "biller",
+    "biller": {
+      "billerCode": "string",
+      "crn": "string",
+      "billerName": "string"
+    },
     "domestic": {
       "payeeAccountUType": "account",
       "account": {
@@ -5068,10 +5287,11 @@ This operation does not require authentication
         "type": "ABN"
       }
     },
-    "biller": {
-      "billerCode": "string",
-      "crn": "string",
-      "billerName": "string"
+    "digitalWallet": {
+      "name": "string",
+      "identifier": "string",
+      "type": "EMAIL",
+      "provider": "PAYPAL_AU"
     },
     "international": {
       "beneficiaryDetails": {
@@ -5107,13 +5327,13 @@ This operation does not require authentication
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|data|[BankingPayeeDetail](#schemacdr-banking-apibankingpayeedetail)|mandatory|none|
+|data|[BankingPayeeDetailV2](#schemacdr-banking-apibankingpayeedetailv2)|mandatory|none|
 |links|[Links](#schemacdr-banking-apilinks)|mandatory|none|
 |meta|[Meta](#schemacdr-banking-apimeta)|optional|none|
 
-<h2 class="schema-toc" id="tocSbankingpayee">BankingPayee</h2>
+<h3 class="schema-toc" id="tocSbankingpayeev2">BankingPayeeV2</h3>
 
-<a id="schemacdr-banking-apibankingpayee"></a>
+<a id="schemacdr-banking-apibankingpayeev2"></a>
 
 ```json
 {
@@ -5133,7 +5353,7 @@ This operation does not require authentication
 |payeeId|[ASCIIString](#common-field-types)|mandatory|ID of the payee adhering to the rules of ID permanence|
 |nickname|string|mandatory|The short display name of the payee as provided by the customer. Where a customer has not provided a nickname, a display name derived by the bank for the payee consistent with existing digital banking channels|
 |description|string|optional|A description of the payee provided by the customer|
-|type|string|mandatory|The type of payee. DOMESTIC means a registered payee for domestic payments including NPP. INTERNATIONAL means a registered payee for international payments. BILLER means a registered payee for BPAY|
+|type|string|mandatory|The type of payee.<br/>DOMESTIC means a registered payee for domestic payments including NPP. <br/>INTERNATIONAL means a registered payee for international payments. <br/>BILLER means a registered payee for BPAY. <br/>DIGITAL_WALLET means a registered payee for a bank's digital wallet|
 |creationDate|[DateString](#common-field-types)|optional|The date the payee was created by the customer|
 
 #### Enumerated Values
@@ -5141,12 +5361,13 @@ This operation does not require authentication
 |Property|Value|
 |---|---|
 |type|BILLER|
+|type|DIGITAL_WALLET|
 |type|DOMESTIC|
 |type|INTERNATIONAL|
 
-<h2 class="schema-toc" id="tocSbankingpayeedetail">BankingPayeeDetail</h2>
+<h3 class="schema-toc" id="tocSbankingpayeedetailv2">BankingPayeeDetailV2</h3>
 
-<a id="schemacdr-banking-apibankingpayeedetail"></a>
+<a id="schemacdr-banking-apibankingpayeedetailv2"></a>
 
 ```json
 {
@@ -5156,6 +5377,11 @@ This operation does not require authentication
   "type": "BILLER",
   "creationDate": "string",
   "payeeUType": "biller",
+  "biller": {
+    "billerCode": "string",
+    "crn": "string",
+    "billerName": "string"
+  },
   "domestic": {
     "payeeAccountUType": "account",
     "account": {
@@ -5172,10 +5398,11 @@ This operation does not require authentication
       "type": "ABN"
     }
   },
-  "biller": {
-    "billerCode": "string",
-    "crn": "string",
-    "billerName": "string"
+  "digitalWallet": {
+    "name": "string",
+    "identifier": "string",
+    "type": "EMAIL",
+    "provider": "PAYPAL_AU"
   },
   "international": {
     "beneficiaryDetails": {
@@ -5208,7 +5435,7 @@ This operation does not require authentication
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|*anonymous*|[BankingPayee](#schemacdr-banking-apibankingpayee)|mandatory|none|
+|*anonymous*|[BankingPayeeV2](#schemacdr-banking-apibankingpayeev2)|mandatory|none|
 
 *and*
 
@@ -5216,8 +5443,9 @@ This operation does not require authentication
 |---|---|---|---|
 |*anonymous*|object|mandatory|none|
 |» payeeUType|string|mandatory|Type of object included that describes the payee in detail|
-|» domestic|[BankingDomesticPayee](#schemacdr-banking-apibankingdomesticpayee)|conditional|none|
 |» biller|[BankingBillerPayee](#schemacdr-banking-apibankingbillerpayee)|conditional|none|
+|» domestic|[BankingDomesticPayee](#schemacdr-banking-apibankingdomesticpayee)|conditional|none|
+|» digitalWallet|[BankingDigitalWalletPayee](#schemacdr-banking-apibankingdigitalwalletpayee)|conditional|none|
 |» international|[BankingInternationalPayee](#schemacdr-banking-apibankinginternationalpayee)|conditional|none|
 
 #### Enumerated Values
@@ -5225,10 +5453,11 @@ This operation does not require authentication
 |Property|Value|
 |---|---|
 |payeeUType|biller|
+|payeeUType|digitalWallet|
 |payeeUType|domestic|
 |payeeUType|international|
 
-<h2 class="schema-toc" id="tocSbankingdomesticpayee">BankingDomesticPayee</h2>
+<h3 class="schema-toc" id="tocSbankingdomesticpayee">BankingDomesticPayee</h3>
 
 <a id="schemacdr-banking-apibankingdomesticpayee"></a>
 
@@ -5269,7 +5498,7 @@ This operation does not require authentication
 |payeeAccountUType|card|
 |payeeAccountUType|payId|
 
-<h2 class="schema-toc" id="tocSbankingdomesticpayeeaccount">BankingDomesticPayeeAccount</h2>
+<h3 class="schema-toc" id="tocSbankingdomesticpayeeaccount">BankingDomesticPayeeAccount</h3>
 
 <a id="schemacdr-banking-apibankingdomesticpayeeaccount"></a>
 
@@ -5290,7 +5519,7 @@ This operation does not require authentication
 |bsb|string|mandatory|BSB of the account to pay to|
 |accountNumber|string|mandatory|Number of the account to pay to|
 
-<h2 class="schema-toc" id="tocSbankingdomesticpayeecard">BankingDomesticPayeeCard</h2>
+<h3 class="schema-toc" id="tocSbankingdomesticpayeecard">BankingDomesticPayeeCard</h3>
 
 <a id="schemacdr-banking-apibankingdomesticpayeecard"></a>
 
@@ -5307,7 +5536,7 @@ This operation does not require authentication
 |---|---|---|---|
 |cardNumber|[MaskedPANString](#common-field-types)|mandatory|Name of the account to pay to|
 
-<h2 class="schema-toc" id="tocSbankingdomesticpayeepayid">BankingDomesticPayeePayId</h2>
+<h3 class="schema-toc" id="tocSbankingdomesticpayeepayid">BankingDomesticPayeePayId</h3>
 
 <a id="schemacdr-banking-apibankingdomesticpayeepayid"></a>
 
@@ -5337,7 +5566,7 @@ This operation does not require authentication
 |type|ORG_IDENTIFIER|
 |type|TELEPHONE|
 
-<h2 class="schema-toc" id="tocSbankingbillerpayee">BankingBillerPayee</h2>
+<h3 class="schema-toc" id="tocSbankingbillerpayee">BankingBillerPayee</h3>
 
 <a id="schemacdr-banking-apibankingbillerpayee"></a>
 
@@ -5358,7 +5587,7 @@ This operation does not require authentication
 |crn|string|conditional|BPAY CRN of the Biller (if available).<br/>Where the CRN contains sensitive information, it should be masked in line with how the Data Holder currently displays account identifiers in their existing online banking channels. If the contents of the CRN match the format of a Credit Card PAN they should be masked according to the rules applicable for MaskedPANString. If the contents are are otherwise sensitive, then it should be masked using the rules applicable for the MaskedAccountString common type.|
 |billerName|string|mandatory|Name of the Biller|
 
-<h2 class="schema-toc" id="tocSbankinginternationalpayee">BankingInternationalPayee</h2>
+<h3 class="schema-toc" id="tocSbankinginternationalpayee">BankingInternationalPayee</h3>
 
 <a id="schemacdr-banking-apibankinginternationalpayee"></a>
 
@@ -5408,7 +5637,40 @@ This operation does not require authentication
 |» routingNumber|string|optional|International bank routing number|
 |» legalEntityIdentifier|[ExternalRef](#common-field-types)|optional|The legal entity identifier (LEI) for the beneficiary.  Aligns with [ISO 17442](https://www.iso.org/standard/59771.html)|
 
-<h2 class="schema-toc" id="tocSresponsebankingdirectdebitauthorisationlist">ResponseBankingDirectDebitAuthorisationList</h2>
+<h3 class="schema-toc" id="tocSbankingdigitalwalletpayee">BankingDigitalWalletPayee</h3>
+
+<a id="schemacdr-banking-apibankingdigitalwalletpayee"></a>
+
+```json
+{
+  "name": "string",
+  "identifier": "string",
+  "type": "EMAIL",
+  "provider": "PAYPAL_AU"
+}
+
+```
+
+### Properties
+
+|Name|Type|Required|Description|
+|---|---|---|---|
+|name|string|mandatory|The name assigned to the digital wallet by the owner of the wallet, else the display name provided by the digital wallet provider|
+|identifier|string|mandatory|The identifier of the digital wallet (dependent on type)|
+|type|string|mandatory|The type of the digital wallet identifier|
+|provider|string|mandatory|The provider of the digital wallet|
+
+#### Enumerated Values
+
+|Property|Value|
+|---|---|
+|type|EMAIL|
+|type|CONTACT_NAME|
+|type|TELEPHONE|
+|provider|PAYPAL_AU|
+|provider|OTHER|
+
+<h3 class="schema-toc" id="tocSresponsebankingdirectdebitauthorisationlist">ResponseBankingDirectDebitAuthorisationList</h3>
 
 <a id="schemacdr-banking-apiresponsebankingdirectdebitauthorisationlist"></a>
 
@@ -5454,7 +5716,7 @@ This operation does not require authentication
 |links|[LinksPaginated](#schemacdr-banking-apilinkspaginated)|mandatory|none|
 |meta|[MetaPaginated](#schemacdr-banking-apimetapaginated)|mandatory|none|
 
-<h2 class="schema-toc" id="tocSbankingdirectdebit">BankingDirectDebit</h2>
+<h3 class="schema-toc" id="tocSbankingdirectdebit">BankingDirectDebit</h3>
 
 <a id="schemacdr-banking-apibankingdirectdebit"></a>
 
@@ -5483,7 +5745,7 @@ This operation does not require authentication
 |lastDebitDateTime|[DateTimeString](#common-field-types)|optional|The date and time of the last debit executed under this authorisation|
 |lastDebitAmount|[AmountString](#common-field-types)|optional|The amount of the last debit executed under this authorisation|
 
-<h2 class="schema-toc" id="tocSbankingauthorisedentity">BankingAuthorisedEntity</h2>
+<h3 class="schema-toc" id="tocSbankingauthorisedentity">BankingAuthorisedEntity</h3>
 
 <a id="schemacdr-banking-apibankingauthorisedentity"></a>
 
@@ -5508,7 +5770,7 @@ This operation does not require authentication
 |acn|string|optional|Australian Company Number for the authorised entity|
 |arbn|string|optional|Australian Registered Body Number for the authorised entity|
 
-<h2 class="schema-toc" id="tocSresponsebankingscheduledpaymentslist">ResponseBankingScheduledPaymentsList</h2>
+<h3 class="schema-toc" id="tocSresponsebankingscheduledpaymentslist">ResponseBankingScheduledPaymentsList</h3>
 
 <a id="schemacdr-banking-apiresponsebankingscheduledpaymentslist"></a>
 
@@ -5636,7 +5898,7 @@ This operation does not require authentication
 |links|[LinksPaginated](#schemacdr-banking-apilinkspaginated)|mandatory|none|
 |meta|[MetaPaginated](#schemacdr-banking-apimetapaginated)|mandatory|none|
 
-<h2 class="schema-toc" id="tocSbankingscheduledpayment">BankingScheduledPayment</h2>
+<h3 class="schema-toc" id="tocSbankingscheduledpayment">BankingScheduledPayment</h3>
 
 <a id="schemacdr-banking-apibankingscheduledpayment"></a>
 
@@ -5759,7 +6021,7 @@ This operation does not require authentication
 |status|INACTIVE|
 |status|SKIP|
 
-<h2 class="schema-toc" id="tocSbankingscheduledpaymentset">BankingScheduledPaymentSet</h2>
+<h3 class="schema-toc" id="tocSbankingscheduledpaymentset">BankingScheduledPaymentSet</h3>
 
 <a id="schemacdr-banking-apibankingscheduledpaymentset"></a>
 
@@ -5832,7 +6094,7 @@ This operation does not require authentication
 |amount|[AmountString](#common-field-types)|conditional|The amount of the next payment if known. Mandatory unless the isAmountCalculated field is set to true. Must be zero or positive if present|
 |currency|[CurrencyString](#common-field-types)|optional|The currency for the payment. AUD assumed if not present|
 
-<h2 class="schema-toc" id="tocSbankingscheduledpaymentto">BankingScheduledPaymentTo</h2>
+<h3 class="schema-toc" id="tocSbankingscheduledpaymentto">BankingScheduledPaymentTo</h3>
 
 <a id="schemacdr-banking-apibankingscheduledpaymentto"></a>
 
@@ -5914,7 +6176,7 @@ This operation does not require authentication
 |toUType|international|
 |toUType|payeeId|
 
-<h2 class="schema-toc" id="tocSbankingscheduledpaymentfrom">BankingScheduledPaymentFrom</h2>
+<h3 class="schema-toc" id="tocSbankingscheduledpaymentfrom">BankingScheduledPaymentFrom</h3>
 
 <a id="schemacdr-banking-apibankingscheduledpaymentfrom"></a>
 
@@ -5933,7 +6195,7 @@ This operation does not require authentication
 |---|---|---|---|
 |accountId|[ASCIIString](#common-field-types)|mandatory|ID of the account that is the source of funds for the payment|
 
-<h2 class="schema-toc" id="tocSbankingscheduledpaymentrecurrence">BankingScheduledPaymentRecurrence</h2>
+<h3 class="schema-toc" id="tocSbankingscheduledpaymentrecurrence">BankingScheduledPaymentRecurrence</h3>
 
 <a id="schemacdr-banking-apibankingscheduledpaymentrecurrence"></a>
 
@@ -5991,7 +6253,7 @@ This operation does not require authentication
 |recurrenceUType|lastWeekDay|
 |recurrenceUType|onceOff|
 
-<h2 class="schema-toc" id="tocSbankingscheduledpaymentrecurrenceonceoff">BankingScheduledPaymentRecurrenceOnceOff</h2>
+<h3 class="schema-toc" id="tocSbankingscheduledpaymentrecurrenceonceoff">BankingScheduledPaymentRecurrenceOnceOff</h3>
 
 <a id="schemacdr-banking-apibankingscheduledpaymentrecurrenceonceoff"></a>
 
@@ -6010,7 +6272,7 @@ This operation does not require authentication
 |---|---|---|---|
 |paymentDate|[DateString](#common-field-types)|mandatory|The scheduled date for the once off payment|
 
-<h2 class="schema-toc" id="tocSbankingscheduledpaymentrecurrenceintervalschedule">BankingScheduledPaymentRecurrenceIntervalSchedule</h2>
+<h3 class="schema-toc" id="tocSbankingscheduledpaymentrecurrenceintervalschedule">BankingScheduledPaymentRecurrenceIntervalSchedule</h3>
 
 <a id="schemacdr-banking-apibankingscheduledpaymentrecurrenceintervalschedule"></a>
 
@@ -6049,7 +6311,7 @@ This operation does not require authentication
 |nonBusinessDayTreatment|ON|
 |nonBusinessDayTreatment|ONLY|
 
-<h2 class="schema-toc" id="tocSbankingscheduledpaymentinterval">BankingScheduledPaymentInterval</h2>
+<h3 class="schema-toc" id="tocSbankingscheduledpaymentinterval">BankingScheduledPaymentInterval</h3>
 
 <a id="schemacdr-banking-apibankingscheduledpaymentinterval"></a>
 
@@ -6068,7 +6330,7 @@ This operation does not require authentication
 |interval|[ExternalRef](#common-field-types)|mandatory|An interval for the payment. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)  (excludes recurrence syntax) with components less than a day in length ignored. This duration defines the period between payments starting with nextPaymentDate|
 |dayInInterval|[ExternalRef](#common-field-types)|optional|Uses an interval to define the ordinal day within the interval defined by the interval field on which the payment occurs. If the resulting duration is 0 days in length or larger than the number of days in the interval then the payment will occur on the last day of the interval. A duration of 1 day indicates the first day of the interval. If absent the assumed value is P1D. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax) with components less than a day in length ignored. The first day of a week is considered to be Monday.|
 
-<h2 class="schema-toc" id="tocSbankingscheduledpaymentrecurrencelastweekday">BankingScheduledPaymentRecurrenceLastWeekday</h2>
+<h3 class="schema-toc" id="tocSbankingscheduledpaymentrecurrencelastweekday">BankingScheduledPaymentRecurrenceLastWeekday</h3>
 
 <a id="schemacdr-banking-apibankingscheduledpaymentrecurrencelastweekday"></a>
 
@@ -6111,7 +6373,7 @@ This operation does not require authentication
 |nonBusinessDayTreatment|ON|
 |nonBusinessDayTreatment|ONLY|
 
-<h2 class="schema-toc" id="tocSbankingscheduledpaymentrecurrenceeventbased">BankingScheduledPaymentRecurrenceEventBased</h2>
+<h3 class="schema-toc" id="tocSbankingscheduledpaymentrecurrenceeventbased">BankingScheduledPaymentRecurrenceEventBased</h3>
 
 <a id="schemacdr-banking-apibankingscheduledpaymentrecurrenceeventbased"></a>
 
@@ -6130,7 +6392,7 @@ This operation does not require authentication
 |---|---|---|---|
 |description|string|mandatory|Description of the event and conditions that will result in the payment. Expected to be formatted for display to a customer|
 
-<h2 class="schema-toc" id="tocScommonphysicaladdress">CommonPhysicalAddress</h2>
+<h3 class="schema-toc" id="tocScommonphysicaladdress">CommonPhysicalAddress</h3>
 
 <a id="schemacdr-banking-apicommonphysicaladdress"></a>
 
@@ -6190,7 +6452,7 @@ This operation does not require authentication
 |addressUType|paf|
 |addressUType|simple|
 
-<h2 class="schema-toc" id="tocScommonsimpleaddress">CommonSimpleAddress</h2>
+<h3 class="schema-toc" id="tocScommonsimpleaddress">CommonSimpleAddress</h3>
 
 <a id="schemacdr-banking-apicommonsimpleaddress"></a>
 
@@ -6221,7 +6483,7 @@ This operation does not require authentication
 |state|string|mandatory|Free text if the country is not Australia. If country is Australia then must be one of the values defined by the [State Type Abbreviation](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf) in the PAF file format. NSW, QLD, VIC, NT, WA, SA, TAS, ACT, AAT|
 |country|[ExternalRef](#common-field-types)|optional|A valid [ISO 3166 Alpha-3](https://www.iso.org/iso-3166-country-codes.html) country code. Australia (AUS) is assumed if country is not present.|
 
-<h2 class="schema-toc" id="tocScommonpafaddress">CommonPAFAddress</h2>
+<h3 class="schema-toc" id="tocScommonpafaddress">CommonPAFAddress</h3>
 
 <a id="schemacdr-banking-apicommonpafaddress"></a>
 
@@ -6282,7 +6544,7 @@ This operation does not require authentication
 |postcode|string|mandatory|Postcode for the locality|
 |state|string|mandatory|State in which the address belongs. Valid enumeration defined by Australia Post PAF code file [State Type Abbreviation](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf). NSW, QLD, VIC, NT, WA, SA, TAS, ACT, AAT|
 
-<h2 class="schema-toc" id="tocSlinks">Links</h2>
+<h3 class="schema-toc" id="tocSlinks">Links</h3>
 
 <a id="schemacdr-banking-apilinks"></a>
 
@@ -6299,7 +6561,7 @@ This operation does not require authentication
 |---|---|---|---|
 |self|[URIString](#common-field-types)|mandatory|Fully qualified link that generated the current response document|
 
-<h2 class="schema-toc" id="tocSmeta">Meta</h2>
+<h3 class="schema-toc" id="tocSmeta">Meta</h3>
 
 <a id="schemacdr-banking-apimeta"></a>
 
@@ -6312,7 +6574,7 @@ This operation does not require authentication
 
 *None*
 
-<h2 class="schema-toc" id="tocSlinkspaginated">LinksPaginated</h2>
+<h3 class="schema-toc" id="tocSlinkspaginated">LinksPaginated</h3>
 
 <a id="schemacdr-banking-apilinkspaginated"></a>
 
@@ -6337,7 +6599,7 @@ This operation does not require authentication
 |next|[URIString](#common-field-types)|conditional|URI to the next page of this set. Mandatory if this response is not the last page|
 |last|[URIString](#common-field-types)|conditional|URI to the last page of this set. Mandatory if this response is not the last page|
 
-<h2 class="schema-toc" id="tocSmetapaginated">MetaPaginated</h2>
+<h3 class="schema-toc" id="tocSmetapaginated">MetaPaginated</h3>
 
 <a id="schemacdr-banking-apimetapaginated"></a>
 
@@ -6356,7 +6618,7 @@ This operation does not require authentication
 |totalRecords|[NaturalNumber](#common-field-types)|mandatory|The total number of records in the full set. See [pagination](#pagination).|
 |totalPages|[NaturalNumber](#common-field-types)|mandatory|The total number of pages in the full set. See [pagination](#pagination).|
 
-<h2 class="schema-toc" id="tocSmetaerror">MetaError</h2>
+<h3 class="schema-toc" id="tocSmetaerror">MetaError</h3>
 
 <a id="schemacdr-banking-apimetaerror"></a>
 
@@ -6375,7 +6637,7 @@ This operation does not require authentication
 |---|---|---|---|
 |urn|string|conditional|The CDR error code URN which the application-specific error code extends. Mandatory if the error `code` is an application-specific error rather than a standardised error code.|
 
-<h2 class="schema-toc" id="tocSresponseerrorlistv2">ResponseErrorListV2</h2>
+<h3 class="schema-toc" id="tocSresponseerrorlistv2">ResponseErrorListV2</h3>
 
 <a id="schemacdr-banking-apiresponseerrorlistv2"></a>
 
@@ -6405,7 +6667,7 @@ This operation does not require authentication
 |» detail|string|mandatory|A human-readable explanation specific to this occurrence of the problem.|
 |» meta|[MetaError](#schemacdr-banking-apimetaerror)|optional|Additional data for customised error codes|
 
-<h2 class="schema-toc" id="tocSbankingproductcategory">BankingProductCategory</h2>
+<h3 class="schema-toc" id="tocSbankingproductcategory">BankingProductCategory</h3>
 
 <a id="schemacdr-banking-apibankingproductcategory"></a>
 
@@ -6438,3 +6700,4 @@ This operation does not require authentication
 |*anonymous*|TRADE_FINANCE|
 |*anonymous*|TRANS_AND_SAVINGS_ACCOUNTS|
 |*anonymous*|TRAVEL_CARDS|
+

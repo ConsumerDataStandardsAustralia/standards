@@ -123,8 +123,8 @@
 <td>x-fapi-auth-date</td>
 <td>header</td>
 <td>string</td>
-<td>optional</td>
-<td>The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.</td>
+<td>conditional</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended) if the customer has logged in. Not to be included for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
@@ -137,7 +137,7 @@
 <td>x-cds-client-headers</td>
 <td>header</td>
 <td><a href="#common-field-types">Base64</a></td>
-<td>optional</td>
+<td>conditional</td>
 <td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
 </tr>
 </tbody></table>
@@ -429,8 +429,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>x-fapi-auth-date</td>
 <td>header</td>
 <td>string</td>
-<td>optional</td>
-<td>The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.</td>
+<td>conditional</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended) if the customer has logged in. Not to be included for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
@@ -443,7 +443,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>x-cds-client-headers</td>
 <td>header</td>
 <td><a href="#common-field-types">Base64</a></td>
-<td>optional</td>
+<td>conditional</td>
 <td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
 </tr>
 </tbody></table>
@@ -731,8 +731,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>x-fapi-auth-date</td>
 <td>header</td>
 <td>string</td>
-<td>optional</td>
-<td>The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.</td>
+<td>conditional</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended) if the customer has logged in. Not to be included for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
@@ -745,7 +745,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>x-cds-client-headers</td>
 <td>header</td>
 <td><a href="#common-field-types">Base64</a></td>
-<td>optional</td>
+<td>conditional</td>
 <td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
 </tr>
 <tr>
@@ -951,8 +951,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>x-fapi-auth-date</td>
 <td>header</td>
 <td>string</td>
-<td>optional</td>
-<td>The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.</td>
+<td>conditional</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended) if the customer has logged in. Not to be included for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
@@ -965,7 +965,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>x-cds-client-headers</td>
 <td>header</td>
 <td><a href="#common-field-types">Base64</a></td>
-<td>optional</td>
+<td>conditional</td>
 <td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
 </tr>
 </tbody></table>
@@ -1096,7 +1096,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 </code></pre>
 <p><code>GET /banking/accounts/{accountId}</code></p>
 
-<p>Obtain detailed information on a single account</p>
+<p>Obtain detailed information on a single account.</p>
+
+<p>Obsolete versions: <a href="includes/obsolete/get-account-detail-v1.html">v1</a></p>
 <h3 id='endpoint-version-5'>Endpoint Version</h3>
 <table><thead>
 <tr>
@@ -1106,7 +1108,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>1</strong></td>
+<td><strong>2</strong></td>
 </tr>
 </tbody></table>
 
@@ -1153,8 +1155,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>x-fapi-auth-date</td>
 <td>header</td>
 <td>string</td>
-<td>optional</td>
-<td>The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.</td>
+<td>conditional</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended) if the customer has logged in. Not to be included for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
@@ -1167,7 +1169,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>x-cds-client-headers</td>
 <td>header</td>
 <td><a href="#common-field-types">Base64</a></td>
-<td>optional</td>
+<td>conditional</td>
 <td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
 </tr>
 </tbody></table>
@@ -1390,7 +1392,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>Success</td>
-<td><a href="#schemacdr-banking-apiresponsebankingaccountbyid">ResponseBankingAccountById</a></td>
+<td><a href="#schemacdr-banking-apiresponsebankingaccountbyidv2">ResponseBankingAccountByIdV2</a></td>
 </tr>
 <tr>
 <td>4xx</td>
@@ -1597,8 +1599,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>x-fapi-auth-date</td>
 <td>header</td>
 <td>string</td>
-<td>optional</td>
-<td>The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.</td>
+<td>conditional</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended) if the customer has logged in. Not to be included for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
@@ -1611,7 +1613,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>x-cds-client-headers</td>
 <td>header</td>
 <td><a href="#common-field-types">Base64</a></td>
-<td>optional</td>
+<td>conditional</td>
 <td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
 </tr>
 </tbody></table>
@@ -1823,8 +1825,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>x-fapi-auth-date</td>
 <td>header</td>
 <td>string</td>
-<td>optional</td>
-<td>The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.</td>
+<td>conditional</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended) if the customer has logged in. Not to be included for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
@@ -1837,7 +1839,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>x-cds-client-headers</td>
 <td>header</td>
 <td><a href="#common-field-types">Base64</a></td>
-<td>optional</td>
+<td>conditional</td>
 <td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
 </tr>
 </tbody></table>
@@ -2056,8 +2058,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>x-fapi-auth-date</td>
 <td>header</td>
 <td>string</td>
-<td>optional</td>
-<td>The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.</td>
+<td>conditional</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended) if the customer has logged in. Not to be included for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
@@ -2070,7 +2072,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>x-cds-client-headers</td>
 <td>header</td>
 <td><a href="#common-field-types">Base64</a></td>
-<td>optional</td>
+<td>conditional</td>
 <td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
 </tr>
 </tbody></table>
@@ -2295,8 +2297,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>x-fapi-auth-date</td>
 <td>header</td>
 <td>string</td>
-<td>optional</td>
-<td>The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.</td>
+<td>conditional</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended) if the customer has logged in. Not to be included for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
@@ -2309,7 +2311,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>x-cds-client-headers</td>
 <td>header</td>
 <td><a href="#common-field-types">Base64</a></td>
-<td>optional</td>
+<td>conditional</td>
 <td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
 </tr>
 </tbody></table>
@@ -2595,8 +2597,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>x-fapi-auth-date</td>
 <td>header</td>
 <td>string</td>
-<td>optional</td>
-<td>The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.</td>
+<td>conditional</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended) if the customer has logged in. Not to be included for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
@@ -2609,7 +2611,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>x-cds-client-headers</td>
 <td>header</td>
 <td><a href="#common-field-types">Base64</a></td>
-<td>optional</td>
+<td>conditional</td>
 <td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
 </tr>
 <tr>
@@ -2827,8 +2829,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>x-fapi-auth-date</td>
 <td>header</td>
 <td>string</td>
-<td>optional</td>
-<td>The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.</td>
+<td>conditional</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended) if the customer has logged in. Not to be included for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
@@ -2841,7 +2843,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>x-cds-client-headers</td>
 <td>header</td>
 <td><a href="#common-field-types">Base64</a></td>
-<td>optional</td>
+<td>conditional</td>
 <td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
 </tr>
 </tbody></table>
@@ -3148,8 +3150,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>x-fapi-auth-date</td>
 <td>header</td>
 <td>string</td>
-<td>optional</td>
-<td>The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.</td>
+<td>conditional</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended) if the customer has logged in. Not to be included for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
@@ -3162,7 +3164,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>x-cds-client-headers</td>
 <td>header</td>
 <td><a href="#common-field-types">Base64</a></td>
-<td>optional</td>
+<td>conditional</td>
 <td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
 </tr>
 </tbody></table>
@@ -3530,8 +3532,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>x-fapi-auth-date</td>
 <td>header</td>
 <td>string</td>
-<td>optional</td>
-<td>The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.</td>
+<td>conditional</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended) if the customer has logged in. Not to be included for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
@@ -3544,7 +3546,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>x-cds-client-headers</td>
 <td>header</td>
 <td><a href="#common-field-types">Base64</a></td>
-<td>optional</td>
+<td>conditional</td>
 <td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
 </tr>
 <tr>
@@ -3773,7 +3775,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 </code></pre>
 <p><code>GET /banking/payees</code></p>
 
-<p>Obtain a list of pre-registered payees</p>
+<p>Obtain a list of pre-registered payees.</p>
+
+<p>Obsolete versions: <a href="includes/obsolete/get-payees-v1.html">v1</a></p>
 <h3 id='endpoint-version-14'>Endpoint Version</h3>
 <table><thead>
 <tr>
@@ -3783,7 +3787,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>1</strong></td>
+<td><strong>2</strong></td>
 </tr>
 </tbody></table>
 
@@ -3844,8 +3848,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>x-fapi-auth-date</td>
 <td>header</td>
 <td>string</td>
-<td>optional</td>
-<td>The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.</td>
+<td>conditional</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended) if the customer has logged in. Not to be included for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
@@ -3858,7 +3862,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>x-cds-client-headers</td>
 <td>header</td>
 <td><a href="#common-field-types">Base64</a></td>
-<td>optional</td>
+<td>conditional</td>
 <td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
 </tr>
 </tbody></table>
@@ -3876,6 +3880,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>type</td>
 <td>BILLER</td>
+</tr>
+<tr>
+<td>type</td>
+<td>DIGITAL_WALLET</td>
 </tr>
 <tr>
 <td>type</td>
@@ -3931,7 +3939,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>Success</td>
-<td><a href="#schemacdr-banking-apiresponsebankingpayeelist">ResponseBankingPayeeList</a></td>
+<td><a href="#schemacdr-banking-apiresponsebankingpayeelistv2">ResponseBankingPayeeListV2</a></td>
 </tr>
 <tr>
 <td>4xx</td>
@@ -4019,7 +4027,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p>Obtain detailed information on a single payee.</p>
 
-<p>Note that the payee sub-structure should be selected to represent the payment destination only rather than any known characteristics of the payment recipient</p>
+<p>Note that the payee sub-structure should be selected to represent the payment destination only rather than any known characteristics of the payment recipient.</p>
+
+<p>Obsolete versions: <a href="includes/obsolete/get-payee-detail-v1.html">v1</a></p>
 <h3 id='endpoint-version-15'>Endpoint Version</h3>
 <table><thead>
 <tr>
@@ -4029,7 +4039,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>1</strong></td>
+<td><strong>2</strong></td>
 </tr>
 </tbody></table>
 
@@ -4076,8 +4086,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>x-fapi-auth-date</td>
 <td>header</td>
 <td>string</td>
-<td>optional</td>
-<td>The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.</td>
+<td>conditional</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended) if the customer has logged in. Not to be included for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
@@ -4090,7 +4100,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>x-cds-client-headers</td>
 <td>header</td>
 <td><a href="#common-field-types">Base64</a></td>
-<td>optional</td>
+<td>conditional</td>
 <td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
 </tr>
 </tbody></table>
@@ -4108,6 +4118,11 @@ To perform this operation, you must be authenticated and authorised with the fol
     </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BILLER"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"creationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"payeeUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"biller"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"biller"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"billerCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"crn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"billerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
     </span><span class="s2">"domestic"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"payeeAccountUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"account"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"account"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -4124,10 +4139,11 @@ To perform this operation, you must be authenticated and authorised with the fol
         </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ABN"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"biller"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"billerCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"crn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"billerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+    </span><span class="s2">"digitalWallet"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EMAIL"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"provider"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PAYPAL_AU"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"international"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"beneficiaryDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -4171,7 +4187,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>Success</td>
-<td><a href="#schemacdr-banking-apiresponsebankingpayeebyid">ResponseBankingPayeeById</a></td>
+<td><a href="#schemacdr-banking-apiresponsebankingpayeebyidv2">ResponseBankingPayeeByIdV2</a></td>
 </tr>
 <tr>
 <td>4xx</td>
@@ -4434,50 +4450,19 @@ To perform this operation, you must be authenticated and authorised with the fol
 <blockquote>
 <p>Example responses</p>
 
-<p>200 Response</p>
+<p>4xx Response</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"products"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"productId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"effectiveFrom"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"effectiveTo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"lastUpdated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"productCategory"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUSINESS_LOANS"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"brand"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"brandName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"applicationUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"isTailored"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"additionalInformation"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"overviewUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"termsUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"eligibilityUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"feesAndPricingUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"bundleUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="s2">"cardArt"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-          </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"imageUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-        </span><span class="p">]</span><span class="w">
+  </span><span class="s2">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"detail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"urn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
       </span><span class="p">}</span><span class="w">
-    </span><span class="p">]</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"first"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"prev"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"next"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"totalRecords"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"totalPages"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
-  </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <h3 id="get-products-responses">Responses</h3>
@@ -4494,7 +4479,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>Success</td>
-<td><a href="#schemacdr-banking-apiresponsebankingproductlist">ResponseBankingProductList</a></td>
+<td>None</td>
 </tr>
 <tr>
 <td>4xx</td>
@@ -4503,6 +4488,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td><a href="#schemacdr-banking-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 </tbody></table>
+
+<h3 id="get-products-responseschema">Response Schema</h3>
 <h3 id='response-headers-16'>Response Headers</h3>
 <table><thead>
 <tr>
@@ -4559,7 +4546,7 @@ This operation does not require authentication
 
 <p>Obtain detailed information on a single product offered openly to the market.</p>
 
-<p>Obsolete versions: <a href="includes/obsolete/get-product-detail-v1.html">v1</a> <a href="includes/obsolete/get-product-detail-v2.html">v2</a></p>
+<p>Obsolete versions: <a href="includes/obsolete/get-product-detail-v1.html">v1</a> <a href="includes/obsolete/get-product-detail-v2.html">v2</a> <a href="includes/obsolete/get-product-detail-v3.html">v3</a></p>
 <h3 id='endpoint-version-17'>Endpoint Version</h3>
 <table><thead>
 <tr>
@@ -4569,7 +4556,7 @@ This operation does not require authentication
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>3</strong></td>
+<td><strong>4</strong></td>
 </tr>
 </tbody></table>
 
@@ -4630,7 +4617,37 @@ This operation does not require authentication
       </span><span class="s2">"termsUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"eligibilityUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"feesAndPricingUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"bundleUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+      </span><span class="s2">"bundleUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"additionalOverviewUris"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"additionalTermsUris"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"additionalEligibilityUris"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"additionalFeesAndPricingUris"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"additionalBundleUris"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"cardArt"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
@@ -4787,7 +4804,7 @@ This operation does not require authentication
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>Success</td>
-<td><a href="#schemacdr-banking-apiresponsebankingproductbyid">ResponseBankingProductById</a></td>
+<td><a href="#schemacdr-banking-apiresponsebankingproductbyidv4">ResponseBankingProductByIdV4</a></td>
 </tr>
 <tr>
 <td>4xx</td>
@@ -4823,7 +4840,7 @@ This operation does not require authentication
 
 <p><a class="schema-link" id="cdr-banking-api-schemas"></a></p>
 
-<h2 class="schema-toc" id="tocSrequestaccountids">RequestAccountIds</h2>
+<h3 class="schema-toc" id="tocSrequestaccountids">RequestAccountIds</h3>
 
 <p><a id="schemacdr-banking-apirequestaccountids"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -4864,9 +4881,9 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSresponsebankingproductlist">ResponseBankingProductList</h2>
+<h3 class="schema-toc" id="tocSresponsebankingproductlistv2">ResponseBankingProductListV2</h3>
 
-<p><a id="schemacdr-banking-apiresponsebankingproductlist"></a></p>
+<p><a id="schemacdr-banking-apiresponsebankingproductlistv2"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"products"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -4887,7 +4904,37 @@ This operation does not require authentication
           </span><span class="s2">"termsUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"eligibilityUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"feesAndPricingUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"bundleUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+          </span><span class="s2">"bundleUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"additionalOverviewUris"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="s2">"additionalTermsUris"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="s2">"additionalEligibilityUris"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="s2">"additionalFeesAndPricingUris"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="s2">"additionalBundleUris"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">]</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="s2">"cardArt"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
           </span><span class="p">{</span><span class="w">
@@ -4928,7 +4975,7 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>» products</td>
-<td>[<a href="#schemacdr-banking-apibankingproductv3">BankingProductV3</a>]</td>
+<td>[<a href="#schemacdr-banking-apibankingproductv4">BankingProductV4</a>]</td>
 <td>mandatory</td>
 <td>The list of products returned.  If the filter results in an empty set then this array may have no records</td>
 </tr>
@@ -4946,9 +4993,9 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSbankingproductv3">BankingProductV3</h2>
+<h3 class="schema-toc" id="tocSbankingproductv4">BankingProductV4</h3>
 
-<p><a id="schemacdr-banking-apibankingproductv3"></a></p>
+<p><a id="schemacdr-banking-apibankingproductv4"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"productId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"effectiveFrom"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -4966,7 +5013,37 @@ This operation does not require authentication
     </span><span class="s2">"termsUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"eligibilityUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"feesAndPricingUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"bundleUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+    </span><span class="s2">"bundleUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"additionalOverviewUris"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"additionalTermsUris"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"additionalEligibilityUris"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"additionalFeesAndPricingUris"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"additionalBundleUris"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"cardArt"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
@@ -5053,39 +5130,9 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>additionalInformation</td>
-<td>object</td>
+<td><a href="#schemacdr-banking-apibankingproductadditionalinformationv2">BankingProductAdditionalInformationV2</a></td>
 <td>optional</td>
 <td>Object that contains links to additional information on specific topics</td>
-</tr>
-<tr>
-<td>» overviewUri</td>
-<td><a href="#common-field-types">URIString</a></td>
-<td>optional</td>
-<td>General overview of the product</td>
-</tr>
-<tr>
-<td>» termsUri</td>
-<td><a href="#common-field-types">URIString</a></td>
-<td>optional</td>
-<td>Terms and conditions for the product</td>
-</tr>
-<tr>
-<td>» eligibilityUri</td>
-<td><a href="#common-field-types">URIString</a></td>
-<td>optional</td>
-<td>Eligibility rules and criteria for the product</td>
-</tr>
-<tr>
-<td>» feesAndPricingUri</td>
-<td><a href="#common-field-types">URIString</a></td>
-<td>optional</td>
-<td>Description of fees, pricing, discounts, exemptions and bonuses for the product</td>
-</tr>
-<tr>
-<td>» bundleUri</td>
-<td><a href="#common-field-types">URIString</a></td>
-<td>optional</td>
-<td>Description of a bundle that this product can be part of</td>
 </tr>
 <tr>
 <td>cardArt</td>
@@ -5107,9 +5154,154 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSresponsebankingproductbyid">ResponseBankingProductById</h2>
+<h3 class="schema-toc" id="tocSbankingproductadditionalinformationv2">BankingProductAdditionalInformationV2</h3>
 
-<p><a id="schemacdr-banking-apiresponsebankingproductbyid"></a></p>
+<p><a id="schemacdr-banking-apibankingproductadditionalinformationv2"></a></p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"overviewUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"termsUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"eligibilityUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"feesAndPricingUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"bundleUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"additionalOverviewUris"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"additionalTermsUris"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"additionalEligibilityUris"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"additionalFeesAndPricingUris"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"additionalBundleUris"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<p><em>Object that contains links to additional information on specific topics</em></p>
+<h3 id='properties-4'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>overviewUri</td>
+<td><a href="#common-field-types">URIString</a></td>
+<td>conditional</td>
+<td>General overview of the product. Mandatory if <code>additionalOverviewUris</code> includes one or more supporting documents.</td>
+</tr>
+<tr>
+<td>termsUri</td>
+<td><a href="#common-field-types">URIString</a></td>
+<td>conditional</td>
+<td>Terms and conditions for the product. Mandatory if <code>additionalTermsUris</code> includes one or more supporting documents.</td>
+</tr>
+<tr>
+<td>eligibilityUri</td>
+<td><a href="#common-field-types">URIString</a></td>
+<td>conditional</td>
+<td>Eligibility rules and criteria for the product. Mandatory if <code>additionalEligibilityUris</code> includes one or more supporting documents.</td>
+</tr>
+<tr>
+<td>feesAndPricingUri</td>
+<td><a href="#common-field-types">URIString</a></td>
+<td>conditional</td>
+<td>Description of fees, pricing, discounts, exemptions and bonuses for the product. Mandatory if <code>additionalFeesAndPricingUris</code> includes one or more supporting documents.</td>
+</tr>
+<tr>
+<td>bundleUri</td>
+<td><a href="#common-field-types">URIString</a></td>
+<td>conditional</td>
+<td>Description of a bundle that this product can be part of. Mandatory if <code>additionalBundleUris</code> includes one or more supporting documents.</td>
+</tr>
+<tr>
+<td>additionalOverviewUris</td>
+<td>[<a href="#schemacdr-banking-apibankingproductadditionalinformationv2_additionalinformationuris">BankingProductAdditionalInformationV2_additionalInformationUris</a>]</td>
+<td>optional</td>
+<td>An array of additional general overviews for the product or features of the product, if applicable. To be treated as secondary documents to the <code>overviewUri</code>. Only to be used if there is a primary <code>overviewUri</code>.</td>
+</tr>
+<tr>
+<td>additionalTermsUris</td>
+<td>[<a href="#schemacdr-banking-apibankingproductadditionalinformationv2_additionalinformationuris">BankingProductAdditionalInformationV2_additionalInformationUris</a>]</td>
+<td>optional</td>
+<td>An array of additional terms and conditions for the product, if applicable. To be treated as secondary documents to the <code>termsUri</code>. Only to be used if there is a primary <code>termsUri</code>.</td>
+</tr>
+<tr>
+<td>additionalEligibilityUris</td>
+<td>[<a href="#schemacdr-banking-apibankingproductadditionalinformationv2_additionalinformationuris">BankingProductAdditionalInformationV2_additionalInformationUris</a>]</td>
+<td>optional</td>
+<td>An array of additional eligibility rules and criteria for the product, if applicable. To be treated as secondary documents to the <code>eligibilityUri</code>. Only to be used if there is a primary <code>eligibilityUri</code>.</td>
+</tr>
+<tr>
+<td>additionalFeesAndPricingUris</td>
+<td>[<a href="#schemacdr-banking-apibankingproductadditionalinformationv2_additionalinformationuris">BankingProductAdditionalInformationV2_additionalInformationUris</a>]</td>
+<td>optional</td>
+<td>An array of additional fees, pricing, discounts, exemptions and bonuses for the product, if applicable. To be treated as secondary documents to the <code>feesAndPricingUri</code>. Only to be used if there is a primary <code>feesAndPricingUri</code>.</td>
+</tr>
+<tr>
+<td>additionalBundleUris</td>
+<td>[<a href="#schemacdr-banking-apibankingproductadditionalinformationv2_additionalinformationuris">BankingProductAdditionalInformationV2_additionalInformationUris</a>]</td>
+<td>optional</td>
+<td>An array of additional bundles for the product, if applicable. To be treated as secondary documents to the <code>bundleUri</code>. Only to be used if there is a primary <code>bundleUri</code>.</td>
+</tr>
+</tbody></table>
+
+<h3 class="schema-toc" id="tocSbankingproductadditionalinformationv2_additionalinformationuris">BankingProductAdditionalInformationV2_additionalInformationUris</h3>
+
+<p><a id="schemacdr-banking-apibankingproductadditionalinformationv2_additionalinformationuris"></a></p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre><h3 id='properties-5'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>description</td>
+<td>string</td>
+<td>optional</td>
+<td>Display text providing more information about the document URI</td>
+</tr>
+<tr>
+<td>additionalInfoUri</td>
+<td><a href="#common-field-types">URIString</a></td>
+<td>mandatory</td>
+<td>The URI describing the additional information</td>
+</tr>
+</tbody></table>
+
+<h3 class="schema-toc" id="tocSresponsebankingproductbyidv4">ResponseBankingProductByIdV4</h3>
+
+<p><a id="schemacdr-banking-apiresponsebankingproductbyidv4"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"productId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -5128,7 +5320,37 @@ This operation does not require authentication
       </span><span class="s2">"termsUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"eligibilityUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"feesAndPricingUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"bundleUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+      </span><span class="s2">"bundleUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"additionalOverviewUris"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"additionalTermsUris"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"additionalEligibilityUris"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"additionalFeesAndPricingUris"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"additionalBundleUris"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"cardArt"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
@@ -5271,7 +5493,7 @@ This operation does not require authentication
   </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-4'>Properties</h3>
+</span></code></pre><h3 id='properties-6'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -5282,7 +5504,7 @@ This operation does not require authentication
 </thead><tbody>
 <tr>
 <td>data</td>
-<td><a href="#schemacdr-banking-apibankingproductdetailv3">BankingProductDetailV3</a></td>
+<td><a href="#schemacdr-banking-apibankingproductdetailv4">BankingProductDetailV4</a></td>
 <td>mandatory</td>
 <td>none</td>
 </tr>
@@ -5300,9 +5522,9 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSbankingproductdetailv3">BankingProductDetailV3</h2>
+<h3 class="schema-toc" id="tocSbankingproductdetailv4">BankingProductDetailV4</h3>
 
-<p><a id="schemacdr-banking-apibankingproductdetailv3"></a></p>
+<p><a id="schemacdr-banking-apibankingproductdetailv4"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"productId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"effectiveFrom"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -5320,7 +5542,37 @@ This operation does not require authentication
     </span><span class="s2">"termsUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"eligibilityUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"feesAndPricingUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"bundleUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+    </span><span class="s2">"bundleUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"additionalOverviewUris"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"additionalTermsUris"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"additionalEligibilityUris"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"additionalFeesAndPricingUris"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"additionalBundleUris"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"cardArt"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
@@ -5458,7 +5710,7 @@ This operation does not require authentication
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-5'>Properties</h3>
+</span></code></pre><h3 id='properties-7'>Properties</h3>
 <p><em>allOf</em></p>
 
 <table><thead>
@@ -5471,7 +5723,7 @@ This operation does not require authentication
 </thead><tbody>
 <tr>
 <td><em>anonymous</em></td>
-<td><a href="#schemacdr-banking-apibankingproductv3">BankingProductV3</a></td>
+<td><a href="#schemacdr-banking-apibankingproductv4">BankingProductV4</a></td>
 <td>mandatory</td>
 <td>none</td>
 </tr>
@@ -5501,7 +5753,7 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>» features</td>
-<td>[<a href="#schemacdr-banking-apibankingproductfeature">BankingProductFeature</a>]</td>
+<td>[<a href="#schemacdr-banking-apibankingproductfeaturev2">BankingProductFeatureV2</a>]</td>
 <td>optional</td>
 <td>Array of features available for the product</td>
 </tr>
@@ -5537,7 +5789,7 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSbankingproductbundle">BankingProductBundle</h2>
+<h3 class="schema-toc" id="tocSbankingproductbundle">BankingProductBundle</h3>
 
 <p><a id="schemacdr-banking-apibankingproductbundle"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -5550,7 +5802,7 @@ This operation does not require authentication
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-6'>Properties</h3>
+</span></code></pre><h3 id='properties-8'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -5591,9 +5843,9 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSbankingproductfeature">BankingProductFeature</h2>
+<h3 class="schema-toc" id="tocSbankingproductfeaturev2">BankingProductFeatureV2</h3>
 
-<p><a id="schemacdr-banking-apibankingproductfeature"></a></p>
+<p><a id="schemacdr-banking-apibankingproductfeaturev2"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"featureType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ADDITIONAL_CARDS"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -5601,7 +5853,7 @@ This operation does not require authentication
   </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-7'>Properties</h3>
+</span></code></pre><h3 id='properties-9'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -5664,6 +5916,10 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>featureType</td>
+<td>CASHBACK_OFFER</td>
+</tr>
+<tr>
+<td>featureType</td>
 <td>COMPLEMENTARY_PRODUCT_DISCOUNTS</td>
 </tr>
 <tr>
@@ -5680,6 +5936,14 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>featureType</td>
+<td>EXTRA_REPAYMENTS</td>
+</tr>
+<tr>
+<td>featureType</td>
+<td>FRAUD_PROTECTION</td>
+</tr>
+<tr>
+<td>featureType</td>
 <td>FREE_TXNS</td>
 </tr>
 <tr>
@@ -5688,7 +5952,15 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>featureType</td>
+<td>GUARANTOR</td>
+</tr>
+<tr>
+<td>featureType</td>
 <td>INSURANCE</td>
+</tr>
+<tr>
+<td>featureType</td>
+<td>INSTALMENT_PLAN</td>
 </tr>
 <tr>
 <td>featureType</td>
@@ -5732,11 +6004,15 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>featureType</td>
+<td>RELATIONSHIP_MANAGEMENT</td>
+</tr>
+<tr>
+<td>featureType</td>
 <td>UNLIMITED_TXNS</td>
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSbankingproductconstraint">BankingProductConstraint</h2>
+<h3 class="schema-toc" id="tocSbankingproductconstraint">BankingProductConstraint</h3>
 
 <p><a id="schemacdr-banking-apibankingproductconstraint"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -5746,7 +6022,7 @@ This operation does not require authentication
   </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-8'>Properties</h3>
+</span></code></pre><h3 id='properties-10'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -5809,7 +6085,7 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSbankingproducteligibility">BankingProductEligibility</h2>
+<h3 class="schema-toc" id="tocSbankingproducteligibility">BankingProductEligibility</h3>
 
 <p><a id="schemacdr-banking-apibankingproducteligibility"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -5819,7 +6095,7 @@ This operation does not require authentication
   </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-9'>Properties</h3>
+</span></code></pre><h3 id='properties-11'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -5910,7 +6186,7 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSbankingproductfee">BankingProductFee</h2>
+<h3 class="schema-toc" id="tocSbankingproductfee">BankingProductFee</h3>
 
 <p><a id="schemacdr-banking-apibankingproductfee"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -5949,7 +6225,7 @@ This operation does not require authentication
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-10'>Properties</h3>
+</span></code></pre><h3 id='properties-12'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -6080,7 +6356,7 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSbankingproductdiscount">BankingProductDiscount</h2>
+<h3 class="schema-toc" id="tocSbankingproductdiscount">BankingProductDiscount</h3>
 
 <p><a id="schemacdr-banking-apibankingproductdiscount"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -6104,7 +6380,7 @@ This operation does not require authentication
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-11'>Properties</h3>
+</span></code></pre><h3 id='properties-13'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -6209,7 +6485,7 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSbankingproductdiscounteligibility">BankingProductDiscountEligibility</h2>
+<h3 class="schema-toc" id="tocSbankingproductdiscounteligibility">BankingProductDiscountEligibility</h3>
 
 <p><a id="schemacdr-banking-apibankingproductdiscounteligibility"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -6219,7 +6495,7 @@ This operation does not require authentication
   </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-12'>Properties</h3>
+</span></code></pre><h3 id='properties-14'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -6314,7 +6590,7 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSbankingproductdepositrate">BankingProductDepositRate</h2>
+<h3 class="schema-toc" id="tocSbankingproductdepositrate">BankingProductDepositRate</h3>
 
 <p><a id="schemacdr-banking-apibankingproductdepositrate"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -6342,7 +6618,7 @@ This operation does not require authentication
   </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-13'>Properties</h3>
+</span></code></pre><h3 id='properties-15'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -6437,7 +6713,7 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSbankingproductlendingratev2">BankingProductLendingRateV2</h2>
+<h3 class="schema-toc" id="tocSbankingproductlendingratev2">BankingProductLendingRateV2</h3>
 
 <p><a id="schemacdr-banking-apibankingproductlendingratev2"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -6469,7 +6745,7 @@ This operation does not require authentication
   </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-14'>Properties</h3>
+</span></code></pre><h3 id='properties-16'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -6628,7 +6904,7 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSbankingproductratetierv3">BankingProductRateTierV3</h2>
+<h3 class="schema-toc" id="tocSbankingproductratetierv3">BankingProductRateTierV3</h3>
 
 <p><a id="schemacdr-banking-apibankingproductratetierv3"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -6647,7 +6923,7 @@ This operation does not require authentication
 
 </span></code></pre>
 <p><em>Defines the criteria and conditions for which a rate applies</em></p>
-<h3 id='properties-15'>Properties</h3>
+<h3 id='properties-17'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -6738,7 +7014,7 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSbankingproductratecondition">BankingProductRateCondition</h2>
+<h3 class="schema-toc" id="tocSbankingproductratecondition">BankingProductRateCondition</h3>
 
 <p><a id="schemacdr-banking-apibankingproductratecondition"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -6748,7 +7024,7 @@ This operation does not require authentication
 
 </span></code></pre>
 <p><em>Defines a condition for the applicability of a tiered rate</em></p>
-<h3 id='properties-16'>Properties</h3>
+<h3 id='properties-18'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -6771,7 +7047,7 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSresponsebankingaccountlist">ResponseBankingAccountList</h2>
+<h3 class="schema-toc" id="tocSresponsebankingaccountlist">ResponseBankingAccountList</h3>
 
 <p><a id="schemacdr-banking-apiresponsebankingaccountlist"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -6803,7 +7079,7 @@ This operation does not require authentication
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-17'>Properties</h3>
+</span></code></pre><h3 id='properties-19'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -6838,7 +7114,7 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSbankingaccount">BankingAccount</h2>
+<h3 class="schema-toc" id="tocSbankingaccount">BankingAccount</h3>
 
 <p><a id="schemacdr-banking-apibankingaccount"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -6853,7 +7129,7 @@ This operation does not require authentication
   </span><span class="s2">"productName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-18'>Properties</h3>
+</span></code></pre><h3 id='properties-20'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -6934,9 +7210,9 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSresponsebankingaccountbyid">ResponseBankingAccountById</h2>
+<h3 class="schema-toc" id="tocSresponsebankingaccountbyidv2">ResponseBankingAccountByIdV2</h3>
 
-<p><a id="schemacdr-banking-apiresponsebankingaccountbyid"></a></p>
+<p><a id="schemacdr-banking-apiresponsebankingaccountbyidv2"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -7136,7 +7412,7 @@ This operation does not require authentication
   </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-19'>Properties</h3>
+</span></code></pre><h3 id='properties-21'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -7147,7 +7423,7 @@ This operation does not require authentication
 </thead><tbody>
 <tr>
 <td>data</td>
-<td><a href="#schemacdr-banking-apibankingaccountdetail">BankingAccountDetail</a></td>
+<td><a href="#schemacdr-banking-apibankingaccountdetailv2">BankingAccountDetailV2</a></td>
 <td>mandatory</td>
 <td>none</td>
 </tr>
@@ -7165,9 +7441,9 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSbankingaccountdetail">BankingAccountDetail</h2>
+<h3 class="schema-toc" id="tocSbankingaccountdetailv2">BankingAccountDetailV2</h3>
 
-<p><a id="schemacdr-banking-apibankingaccountdetail"></a></p>
+<p><a id="schemacdr-banking-apibankingaccountdetailv2"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"creationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -7361,7 +7637,7 @@ This operation does not require authentication
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-20'>Properties</h3>
+</span></code></pre><h3 id='properties-22'>Properties</h3>
 <p><em>allOf</em></p>
 
 <table><thead>
@@ -7434,7 +7710,7 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>» loan</td>
-<td><a href="#schemacdr-banking-apibankingloanaccount">BankingLoanAccount</a></td>
+<td><a href="#schemacdr-banking-apibankingloanaccountv2">BankingLoanAccountV2</a></td>
 <td>conditional</td>
 <td>none</td>
 </tr>
@@ -7482,7 +7758,7 @@ This operation does not require authentication
 </thead><tbody>
 <tr>
 <td>»» <em>anonymous</em></td>
-<td><a href="#schemacdr-banking-apibankingproductfeature">BankingProductFeature</a></td>
+<td><a href="#schemacdr-banking-apibankingproductfeaturev2">BankingProductFeatureV2</a></td>
 <td>mandatory</td>
 <td>none</td>
 </tr>
@@ -7556,7 +7832,7 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSbankingtermdepositaccount">BankingTermDepositAccount</h2>
+<h3 class="schema-toc" id="tocSbankingtermdepositaccount">BankingTermDepositAccount</h3>
 
 <p><a id="schemacdr-banking-apibankingtermdepositaccount"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -7567,7 +7843,7 @@ This operation does not require authentication
   </span><span class="s2">"maturityInstructions"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HOLD_ON_MATURITY"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-21'>Properties</h3>
+</span></code></pre><h3 id='properties-23'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -7628,7 +7904,7 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSbankingcreditcardaccount">BankingCreditCardAccount</h2>
+<h3 class="schema-toc" id="tocSbankingcreditcardaccount">BankingCreditCardAccount</h3>
 
 <p><a id="schemacdr-banking-apibankingcreditcardaccount"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -7638,7 +7914,7 @@ This operation does not require authentication
   </span><span class="s2">"paymentDueDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-22'>Properties</h3>
+</span></code></pre><h3 id='properties-24'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -7673,9 +7949,9 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSbankingloanaccount">BankingLoanAccount</h2>
+<h3 class="schema-toc" id="tocSbankingloanaccountv2">BankingLoanAccountV2</h3>
 
-<p><a id="schemacdr-banking-apibankingloanaccount"></a></p>
+<p><a id="schemacdr-banking-apibankingloanaccountv2"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"originalStartDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"originalLoanAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -7696,7 +7972,7 @@ This operation does not require authentication
   </span><span class="s2">"repaymentFrequency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-23'>Properties</h3>
+</span></code></pre><h3 id='properties-25'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -7726,13 +8002,13 @@ This operation does not require authentication
 <tr>
 <td>loanEndDate</td>
 <td><a href="#common-field-types">DateString</a></td>
-<td>mandatory</td>
+<td>optional</td>
 <td>Date that the loan is due to be repaid in full</td>
 </tr>
 <tr>
 <td>nextInstalmentDate</td>
 <td><a href="#common-field-types">DateString</a></td>
-<td>mandatory</td>
+<td>optional</td>
 <td>Next date that an instalment is required</td>
 </tr>
 <tr>
@@ -7792,7 +8068,7 @@ This operation does not require authentication
 <tr>
 <td>repaymentFrequency</td>
 <td><a href="#common-field-types">ExternalRef</a></td>
-<td>mandatory</td>
+<td>optional</td>
 <td>The expected or required repayment frequency. Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 Durations</a> (excludes recurrence syntax)</td>
 </tr>
 </tbody></table>
@@ -7813,7 +8089,7 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSresponsebankingtransactionlist">ResponseBankingTransactionList</h2>
+<h3 class="schema-toc" id="tocSresponsebankingtransactionlist">ResponseBankingTransactionList</h3>
 
 <p><a id="schemacdr-banking-apiresponsebankingtransactionlist"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -7854,7 +8130,7 @@ This operation does not require authentication
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-24'>Properties</h3>
+</span></code></pre><h3 id='properties-26'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -7889,7 +8165,7 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSbankingtransaction">BankingTransaction</h2>
+<h3 class="schema-toc" id="tocSbankingtransaction">BankingTransaction</h3>
 
 <p><a id="schemacdr-banking-apibankingtransaction"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -7913,7 +8189,7 @@ This operation does not require authentication
   </span><span class="s2">"apcaNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-25'>Properties</h3>
+</span></code></pre><h3 id='properties-27'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -8080,7 +8356,7 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSresponsebankingtransactionbyid">ResponseBankingTransactionById</h2>
+<h3 class="schema-toc" id="tocSresponsebankingtransactionbyid">ResponseBankingTransactionById</h3>
 
 <p><a id="schemacdr-banking-apiresponsebankingtransactionbyid"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -8121,7 +8397,7 @@ This operation does not require authentication
   </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-26'>Properties</h3>
+</span></code></pre><h3 id='properties-28'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -8150,7 +8426,7 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSbankingtransactiondetail">BankingTransactionDetail</h2>
+<h3 class="schema-toc" id="tocSbankingtransactiondetail">BankingTransactionDetail</h3>
 
 <p><a id="schemacdr-banking-apibankingtransactiondetail"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -8185,7 +8461,7 @@ This operation does not require authentication
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-27'>Properties</h3>
+</span></code></pre><h3 id='properties-29'>Properties</h3>
 <p><em>allOf</em></p>
 
 <table><thead>
@@ -8292,7 +8568,7 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSresponsebankingaccountsbalancelist">ResponseBankingAccountsBalanceList</h2>
+<h3 class="schema-toc" id="tocSresponsebankingaccountsbalancelist">ResponseBankingAccountsBalanceList</h3>
 
 <p><a id="schemacdr-banking-apiresponsebankingaccountsbalancelist"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -8327,7 +8603,7 @@ This operation does not require authentication
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-28'>Properties</h3>
+</span></code></pre><h3 id='properties-30'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -8362,7 +8638,7 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSresponsebankingaccountsbalancebyid">ResponseBankingAccountsBalanceById</h2>
+<h3 class="schema-toc" id="tocSresponsebankingaccountsbalancebyid">ResponseBankingAccountsBalanceById</h3>
 
 <p><a id="schemacdr-banking-apiresponsebankingaccountsbalancebyid"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -8386,7 +8662,7 @@ This operation does not require authentication
   </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-29'>Properties</h3>
+</span></code></pre><h3 id='properties-31'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -8415,7 +8691,7 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSbankingbalance">BankingBalance</h2>
+<h3 class="schema-toc" id="tocSbankingbalance">BankingBalance</h3>
 
 <p><a id="schemacdr-banking-apibankingbalance"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -8433,7 +8709,7 @@ This operation does not require authentication
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-30'>Properties</h3>
+</span></code></pre><h3 id='properties-32'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -8486,7 +8762,7 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSbankingbalancepurse">BankingBalancePurse</h2>
+<h3 class="schema-toc" id="tocSbankingbalancepurse">BankingBalancePurse</h3>
 
 <p><a id="schemacdr-banking-apibankingbalancepurse"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -8494,7 +8770,7 @@ This operation does not require authentication
   </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-31'>Properties</h3>
+</span></code></pre><h3 id='properties-33'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -8517,9 +8793,9 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSresponsebankingpayeelist">ResponseBankingPayeeList</h2>
+<h3 class="schema-toc" id="tocSresponsebankingpayeelistv2">ResponseBankingPayeeListV2</h3>
 
-<p><a id="schemacdr-banking-apiresponsebankingpayeelist"></a></p>
+<p><a id="schemacdr-banking-apiresponsebankingpayeelistv2"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"payees"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -8545,7 +8821,7 @@ This operation does not require authentication
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-32'>Properties</h3>
+</span></code></pre><h3 id='properties-34'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -8562,7 +8838,7 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>» payees</td>
-<td>[<a href="#schemacdr-banking-apibankingpayee">BankingPayee</a>]</td>
+<td>[<a href="#schemacdr-banking-apibankingpayeev2">BankingPayeeV2</a>]</td>
 <td>mandatory</td>
 <td>The list of payees returned</td>
 </tr>
@@ -8580,9 +8856,9 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSresponsebankingpayeebyid">ResponseBankingPayeeById</h2>
+<h3 class="schema-toc" id="tocSresponsebankingpayeebyidv2">ResponseBankingPayeeByIdV2</h3>
 
-<p><a id="schemacdr-banking-apiresponsebankingpayeebyid"></a></p>
+<p><a id="schemacdr-banking-apiresponsebankingpayeebyidv2"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"payeeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -8591,6 +8867,11 @@ This operation does not require authentication
     </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BILLER"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"creationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"payeeUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"biller"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"biller"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"billerCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"crn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"billerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
     </span><span class="s2">"domestic"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"payeeAccountUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"account"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"account"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -8607,10 +8888,11 @@ This operation does not require authentication
         </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ABN"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"biller"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"billerCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"crn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"billerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+    </span><span class="s2">"digitalWallet"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EMAIL"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"provider"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PAYPAL_AU"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"international"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"beneficiaryDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -8640,7 +8922,7 @@ This operation does not require authentication
   </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-33'>Properties</h3>
+</span></code></pre><h3 id='properties-35'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -8651,7 +8933,7 @@ This operation does not require authentication
 </thead><tbody>
 <tr>
 <td>data</td>
-<td><a href="#schemacdr-banking-apibankingpayeedetail">BankingPayeeDetail</a></td>
+<td><a href="#schemacdr-banking-apibankingpayeedetailv2">BankingPayeeDetailV2</a></td>
 <td>mandatory</td>
 <td>none</td>
 </tr>
@@ -8669,9 +8951,9 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSbankingpayee">BankingPayee</h2>
+<h3 class="schema-toc" id="tocSbankingpayeev2">BankingPayeeV2</h3>
 
-<p><a id="schemacdr-banking-apibankingpayee"></a></p>
+<p><a id="schemacdr-banking-apibankingpayeev2"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"payeeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"nickname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -8680,7 +8962,7 @@ This operation does not require authentication
   </span><span class="s2">"creationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-34'>Properties</h3>
+</span></code></pre><h3 id='properties-36'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -8711,7 +8993,7 @@ This operation does not require authentication
 <td>type</td>
 <td>string</td>
 <td>mandatory</td>
-<td>The type of payee. DOMESTIC means a registered payee for domestic payments including NPP. INTERNATIONAL means a registered payee for international payments. BILLER means a registered payee for BPAY</td>
+<td>The type of payee.<br/>DOMESTIC means a registered payee for domestic payments including NPP. <br/>INTERNATIONAL means a registered payee for international payments. <br/>BILLER means a registered payee for BPAY. <br/>DIGITAL_WALLET means a registered payee for a bank&#39;s digital wallet</td>
 </tr>
 <tr>
 <td>creationDate</td>
@@ -8733,6 +9015,10 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>type</td>
+<td>DIGITAL_WALLET</td>
+</tr>
+<tr>
+<td>type</td>
 <td>DOMESTIC</td>
 </tr>
 <tr>
@@ -8741,9 +9027,9 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSbankingpayeedetail">BankingPayeeDetail</h2>
+<h3 class="schema-toc" id="tocSbankingpayeedetailv2">BankingPayeeDetailV2</h3>
 
-<p><a id="schemacdr-banking-apibankingpayeedetail"></a></p>
+<p><a id="schemacdr-banking-apibankingpayeedetailv2"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"payeeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"nickname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -8751,6 +9037,11 @@ This operation does not require authentication
   </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BILLER"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"creationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"payeeUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"biller"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"biller"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"billerCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"crn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"billerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
   </span><span class="s2">"domestic"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"payeeAccountUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"account"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"account"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -8767,10 +9058,11 @@ This operation does not require authentication
       </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ABN"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">},</span><span class="w">
-  </span><span class="s2">"biller"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"billerCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"crn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"billerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="s2">"digitalWallet"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EMAIL"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"provider"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PAYPAL_AU"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"international"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"beneficiaryDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -8795,7 +9087,7 @@ This operation does not require authentication
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-35'>Properties</h3>
+</span></code></pre><h3 id='properties-37'>Properties</h3>
 <p><em>allOf</em></p>
 
 <table><thead>
@@ -8808,7 +9100,7 @@ This operation does not require authentication
 </thead><tbody>
 <tr>
 <td><em>anonymous</em></td>
-<td><a href="#schemacdr-banking-apibankingpayee">BankingPayee</a></td>
+<td><a href="#schemacdr-banking-apibankingpayeev2">BankingPayeeV2</a></td>
 <td>mandatory</td>
 <td>none</td>
 </tr>
@@ -8837,14 +9129,20 @@ This operation does not require authentication
 <td>Type of object included that describes the payee in detail</td>
 </tr>
 <tr>
+<td>» biller</td>
+<td><a href="#schemacdr-banking-apibankingbillerpayee">BankingBillerPayee</a></td>
+<td>conditional</td>
+<td>none</td>
+</tr>
+<tr>
 <td>» domestic</td>
 <td><a href="#schemacdr-banking-apibankingdomesticpayee">BankingDomesticPayee</a></td>
 <td>conditional</td>
 <td>none</td>
 </tr>
 <tr>
-<td>» biller</td>
-<td><a href="#schemacdr-banking-apibankingbillerpayee">BankingBillerPayee</a></td>
+<td>» digitalWallet</td>
+<td><a href="#schemacdr-banking-apibankingdigitalwalletpayee">BankingDigitalWalletPayee</a></td>
 <td>conditional</td>
 <td>none</td>
 </tr>
@@ -8868,6 +9166,10 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>payeeUType</td>
+<td>digitalWallet</td>
+</tr>
+<tr>
+<td>payeeUType</td>
 <td>domestic</td>
 </tr>
 <tr>
@@ -8876,7 +9178,7 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSbankingdomesticpayee">BankingDomesticPayee</h2>
+<h3 class="schema-toc" id="tocSbankingdomesticpayee">BankingDomesticPayee</h3>
 
 <p><a id="schemacdr-banking-apibankingdomesticpayee"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -8896,7 +9198,7 @@ This operation does not require authentication
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-36'>Properties</h3>
+</span></code></pre><h3 id='properties-38'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -8951,7 +9253,7 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSbankingdomesticpayeeaccount">BankingDomesticPayeeAccount</h2>
+<h3 class="schema-toc" id="tocSbankingdomesticpayeeaccount">BankingDomesticPayeeAccount</h3>
 
 <p><a id="schemacdr-banking-apibankingdomesticpayeeaccount"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -8960,7 +9262,7 @@ This operation does not require authentication
   </span><span class="s2">"accountNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-37'>Properties</h3>
+</span></code></pre><h3 id='properties-39'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -8989,14 +9291,14 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSbankingdomesticpayeecard">BankingDomesticPayeeCard</h2>
+<h3 class="schema-toc" id="tocSbankingdomesticpayeecard">BankingDomesticPayeeCard</h3>
 
 <p><a id="schemacdr-banking-apibankingdomesticpayeecard"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"cardNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-38'>Properties</h3>
+</span></code></pre><h3 id='properties-40'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -9013,7 +9315,7 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSbankingdomesticpayeepayid">BankingDomesticPayeePayId</h2>
+<h3 class="schema-toc" id="tocSbankingdomesticpayeepayid">BankingDomesticPayeePayId</h3>
 
 <p><a id="schemacdr-banking-apibankingdomesticpayeepayid"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -9022,7 +9324,7 @@ This operation does not require authentication
   </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ABN"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-39'>Properties</h3>
+</span></code></pre><h3 id='properties-41'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -9075,7 +9377,7 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSbankingbillerpayee">BankingBillerPayee</h2>
+<h3 class="schema-toc" id="tocSbankingbillerpayee">BankingBillerPayee</h3>
 
 <p><a id="schemacdr-banking-apibankingbillerpayee"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -9084,7 +9386,7 @@ This operation does not require authentication
   </span><span class="s2">"billerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-40'>Properties</h3>
+</span></code></pre><h3 id='properties-42'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -9113,7 +9415,7 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSbankinginternationalpayee">BankingInternationalPayee</h2>
+<h3 class="schema-toc" id="tocSbankinginternationalpayee">BankingInternationalPayee</h3>
 
 <p><a id="schemacdr-banking-apibankinginternationalpayee"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -9138,7 +9440,7 @@ This operation does not require authentication
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-41'>Properties</h3>
+</span></code></pre><h3 id='properties-43'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -9245,7 +9547,80 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSresponsebankingdirectdebitauthorisationlist">ResponseBankingDirectDebitAuthorisationList</h2>
+<h3 class="schema-toc" id="tocSbankingdigitalwalletpayee">BankingDigitalWalletPayee</h3>
+
+<p><a id="schemacdr-banking-apibankingdigitalwalletpayee"></a></p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EMAIL"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"provider"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PAYPAL_AU"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre><h3 id='properties-44'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>mandatory</td>
+<td>The name assigned to the digital wallet by the owner of the wallet, else the display name provided by the digital wallet provider</td>
+</tr>
+<tr>
+<td>identifier</td>
+<td>string</td>
+<td>mandatory</td>
+<td>The identifier of the digital wallet (dependent on type)</td>
+</tr>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>mandatory</td>
+<td>The type of the digital wallet identifier</td>
+</tr>
+<tr>
+<td>provider</td>
+<td>string</td>
+<td>mandatory</td>
+<td>The provider of the digital wallet</td>
+</tr>
+</tbody></table>
+<h4 id='enumerated-values-26'>Enumerated Values</h4>
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>type</td>
+<td>EMAIL</td>
+</tr>
+<tr>
+<td>type</td>
+<td>CONTACT_NAME</td>
+</tr>
+<tr>
+<td>type</td>
+<td>TELEPHONE</td>
+</tr>
+<tr>
+<td>provider</td>
+<td>PAYPAL_AU</td>
+</tr>
+<tr>
+<td>provider</td>
+<td>OTHER</td>
+</tr>
+</tbody></table>
+
+<h3 class="schema-toc" id="tocSresponsebankingdirectdebitauthorisationlist">ResponseBankingDirectDebitAuthorisationList</h3>
 
 <p><a id="schemacdr-banking-apiresponsebankingdirectdebitauthorisationlist"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -9278,7 +9653,7 @@ This operation does not require authentication
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-42'>Properties</h3>
+</span></code></pre><h3 id='properties-45'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -9313,7 +9688,7 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSbankingdirectdebit">BankingDirectDebit</h2>
+<h3 class="schema-toc" id="tocSbankingdirectdebit">BankingDirectDebit</h3>
 
 <p><a id="schemacdr-banking-apibankingdirectdebit"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -9329,7 +9704,7 @@ This operation does not require authentication
   </span><span class="s2">"lastDebitAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-43'>Properties</h3>
+</span></code></pre><h3 id='properties-46'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -9364,7 +9739,7 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSbankingauthorisedentity">BankingAuthorisedEntity</h2>
+<h3 class="schema-toc" id="tocSbankingauthorisedentity">BankingAuthorisedEntity</h3>
 
 <p><a id="schemacdr-banking-apibankingauthorisedentity"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -9375,7 +9750,7 @@ This operation does not require authentication
   </span><span class="s2">"arbn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-44'>Properties</h3>
+</span></code></pre><h3 id='properties-47'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -9416,7 +9791,7 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSresponsebankingscheduledpaymentslist">ResponseBankingScheduledPaymentsList</h2>
+<h3 class="schema-toc" id="tocSresponsebankingscheduledpaymentslist">ResponseBankingScheduledPaymentsList</h3>
 
 <p><a id="schemacdr-banking-apiresponsebankingscheduledpaymentslist"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -9531,7 +9906,7 @@ This operation does not require authentication
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-45'>Properties</h3>
+</span></code></pre><h3 id='properties-48'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -9566,7 +9941,7 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSbankingscheduledpayment">BankingScheduledPayment</h2>
+<h3 class="schema-toc" id="tocSbankingscheduledpayment">BankingScheduledPayment</h3>
 
 <p><a id="schemacdr-banking-apibankingscheduledpayment"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -9664,7 +10039,7 @@ This operation does not require authentication
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-46'>Properties</h3>
+</span></code></pre><h3 id='properties-49'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -9722,7 +10097,7 @@ This operation does not require authentication
 <td>Object containing the detail of the schedule for the payment</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-26'>Enumerated Values</h4>
+<h4 id='enumerated-values-27'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -9743,7 +10118,7 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSbankingscheduledpaymentset">BankingScheduledPaymentSet</h2>
+<h3 class="schema-toc" id="tocSbankingscheduledpaymentset">BankingScheduledPaymentSet</h3>
 
 <p><a id="schemacdr-banking-apibankingscheduledpaymentset"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -9803,7 +10178,7 @@ This operation does not require authentication
 
 </span></code></pre>
 <p><em>The set of payment amounts and destination accounts for this payment accommodating multi-part payments. A single entry indicates a simple payment with one destination account. Must have at least one entry</em></p>
-<h3 id='properties-47'>Properties</h3>
+<h3 id='properties-50'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -9838,7 +10213,7 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSbankingscheduledpaymentto">BankingScheduledPaymentTo</h2>
+<h3 class="schema-toc" id="tocSbankingscheduledpaymentto">BankingScheduledPaymentTo</h3>
 
 <p><a id="schemacdr-banking-apibankingscheduledpaymentto"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -9893,7 +10268,7 @@ This operation does not require authentication
 
 </span></code></pre>
 <p><em>Object containing details of the destination of the payment. Used to specify a variety of payment destination types</em></p>
-<h3 id='properties-48'>Properties</h3>
+<h3 id='properties-51'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -9951,7 +10326,7 @@ This operation does not require authentication
 <td>none</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-27'>Enumerated Values</h4>
+<h4 id='enumerated-values-28'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -9980,7 +10355,7 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSbankingscheduledpaymentfrom">BankingScheduledPaymentFrom</h2>
+<h3 class="schema-toc" id="tocSbankingscheduledpaymentfrom">BankingScheduledPaymentFrom</h3>
 
 <p><a id="schemacdr-banking-apibankingscheduledpaymentfrom"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -9989,7 +10364,7 @@ This operation does not require authentication
 
 </span></code></pre>
 <p><em>Object containing details of the source of the payment. Currently only specifies an account ID but provided as an object to facilitate future extensibility and consistency with the to object</em></p>
-<h3 id='properties-49'>Properties</h3>
+<h3 id='properties-52'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -10006,7 +10381,7 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSbankingscheduledpaymentrecurrence">BankingScheduledPaymentRecurrence</h2>
+<h3 class="schema-toc" id="tocSbankingscheduledpaymentrecurrence">BankingScheduledPaymentRecurrence</h3>
 
 <p><a id="schemacdr-banking-apibankingscheduledpaymentrecurrence"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -10040,7 +10415,7 @@ This operation does not require authentication
 
 </span></code></pre>
 <p><em>Object containing the detail of the schedule for the payment</em></p>
-<h3 id='properties-50'>Properties</h3>
+<h3 id='properties-53'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -10086,7 +10461,7 @@ This operation does not require authentication
 <td>Indicates that the schedule of payments is defined according to an external event that cannot be predetermined. Mandatory if recurrenceUType is set to eventBased</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-28'>Enumerated Values</h4>
+<h4 id='enumerated-values-29'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -10111,7 +10486,7 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSbankingscheduledpaymentrecurrenceonceoff">BankingScheduledPaymentRecurrenceOnceOff</h2>
+<h3 class="schema-toc" id="tocSbankingscheduledpaymentrecurrenceonceoff">BankingScheduledPaymentRecurrenceOnceOff</h3>
 
 <p><a id="schemacdr-banking-apibankingscheduledpaymentrecurrenceonceoff"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -10120,7 +10495,7 @@ This operation does not require authentication
 
 </span></code></pre>
 <p><em>Indicates that the payment is a once off payment on a specific future date. Mandatory if recurrenceUType is set to onceOff</em></p>
-<h3 id='properties-51'>Properties</h3>
+<h3 id='properties-54'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -10137,7 +10512,7 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSbankingscheduledpaymentrecurrenceintervalschedule">BankingScheduledPaymentRecurrenceIntervalSchedule</h2>
+<h3 class="schema-toc" id="tocSbankingscheduledpaymentrecurrenceintervalschedule">BankingScheduledPaymentRecurrenceIntervalSchedule</h3>
 
 <p><a id="schemacdr-banking-apibankingscheduledpaymentrecurrenceintervalschedule"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -10154,7 +10529,7 @@ This operation does not require authentication
 
 </span></code></pre>
 <p><em>Indicates that the schedule of payments is defined by a series of intervals. Mandatory if recurrenceUType is set to intervalSchedule</em></p>
-<h3 id='properties-52'>Properties</h3>
+<h3 id='properties-55'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -10188,7 +10563,7 @@ This operation does not require authentication
 <td>An array of interval objects defining the payment schedule.  Each entry in the array is additive, in that it adds payments to the overall payment schedule.  If multiple intervals result in a payment on the same day then only one payment will be made. Must have at least one entry</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-29'>Enumerated Values</h4>
+<h4 id='enumerated-values-30'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -10213,7 +10588,7 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSbankingscheduledpaymentinterval">BankingScheduledPaymentInterval</h2>
+<h3 class="schema-toc" id="tocSbankingscheduledpaymentinterval">BankingScheduledPaymentInterval</h3>
 
 <p><a id="schemacdr-banking-apibankingscheduledpaymentinterval"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -10221,7 +10596,7 @@ This operation does not require authentication
   </span><span class="s2">"dayInInterval"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-53'>Properties</h3>
+</span></code></pre><h3 id='properties-56'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -10244,7 +10619,7 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSbankingscheduledpaymentrecurrencelastweekday">BankingScheduledPaymentRecurrenceLastWeekday</h2>
+<h3 class="schema-toc" id="tocSbankingscheduledpaymentrecurrencelastweekday">BankingScheduledPaymentRecurrenceLastWeekday</h3>
 
 <p><a id="schemacdr-banking-apibankingscheduledpaymentrecurrencelastweekday"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -10257,7 +10632,7 @@ This operation does not require authentication
 
 </span></code></pre>
 <p><em>Indicates that the schedule of payments is defined according to the last occurrence of a specific weekday in an interval. Mandatory if recurrenceUType is set to lastWeekDay</em></p>
-<h3 id='properties-54'>Properties</h3>
+<h3 id='properties-57'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -10297,7 +10672,7 @@ This operation does not require authentication
 <td>Enumerated field giving the treatment where a scheduled payment date is not a business day. If absent assumed to be ON.<br/><strong>AFTER</strong> - If a scheduled payment date is a non-business day the payment will be made on the first business day after the scheduled payment date.<br/><strong>BEFORE</strong> - If a scheduled payment date is a non-business day the payment will be made on the first business day before the scheduled payment date.<br/><strong>ON</strong> - If a scheduled payment date is a non-business day the payment will be made on that day regardless.<br/><strong>ONLY</strong> - Payments only occur on business days. If a scheduled payment date is a non-business day the payment will be ignored</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-30'>Enumerated Values</h4>
+<h4 id='enumerated-values-31'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -10350,7 +10725,7 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSbankingscheduledpaymentrecurrenceeventbased">BankingScheduledPaymentRecurrenceEventBased</h2>
+<h3 class="schema-toc" id="tocSbankingscheduledpaymentrecurrenceeventbased">BankingScheduledPaymentRecurrenceEventBased</h3>
 
 <p><a id="schemacdr-banking-apibankingscheduledpaymentrecurrenceeventbased"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -10359,7 +10734,7 @@ This operation does not require authentication
 
 </span></code></pre>
 <p><em>Indicates that the schedule of payments is defined according to an external event that cannot be predetermined. Mandatory if recurrenceUType is set to eventBased</em></p>
-<h3 id='properties-55'>Properties</h3>
+<h3 id='properties-58'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -10376,7 +10751,7 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocScommonphysicaladdress">CommonPhysicalAddress</h2>
+<h3 class="schema-toc" id="tocScommonphysicaladdress">CommonPhysicalAddress</h3>
 
 <p><a id="schemacdr-banking-apicommonphysicaladdress"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -10417,7 +10792,7 @@ This operation does not require authentication
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-56'>Properties</h3>
+</span></code></pre><h3 id='properties-59'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -10445,7 +10820,7 @@ This operation does not require authentication
 <td>Australian address formatted according to the file format defined by the <a href="https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf">PAF file format</a></td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-31'>Enumerated Values</h4>
+<h4 id='enumerated-values-32'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -10462,7 +10837,7 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocScommonsimpleaddress">CommonSimpleAddress</h2>
+<h3 class="schema-toc" id="tocScommonsimpleaddress">CommonSimpleAddress</h3>
 
 <p><a id="schemacdr-banking-apicommonsimpleaddress"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -10476,7 +10851,7 @@ This operation does not require authentication
   </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AUS"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-57'>Properties</h3>
+</span></code></pre><h3 id='properties-60'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -10535,7 +10910,7 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocScommonpafaddress">CommonPAFAddress</h2>
+<h3 class="schema-toc" id="tocScommonpafaddress">CommonPAFAddress</h3>
 
 <p><a id="schemacdr-banking-apicommonpafaddress"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -10565,7 +10940,7 @@ This operation does not require authentication
 
 </span></code></pre>
 <p><em>Australian address formatted according to the file format defined by the <a href="https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf">PAF file format</a></em></p>
-<h3 id='properties-58'>Properties</h3>
+<h3 id='properties-61'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -10708,14 +11083,14 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSlinks">Links</h2>
+<h3 class="schema-toc" id="tocSlinks">Links</h3>
 
 <p><a id="schemacdr-banking-apilinks"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-59'>Properties</h3>
+</span></code></pre><h3 id='properties-62'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -10732,15 +11107,15 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSmeta">Meta</h2>
+<h3 class="schema-toc" id="tocSmeta">Meta</h3>
 
 <p><a id="schemacdr-banking-apimeta"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{}</span><span class="w">
 
-</span></code></pre><h3 id='properties-60'>Properties</h3>
+</span></code></pre><h3 id='properties-63'>Properties</h3>
 <p><em>None</em></p>
 
-<h2 class="schema-toc" id="tocSlinkspaginated">LinksPaginated</h2>
+<h3 class="schema-toc" id="tocSlinkspaginated">LinksPaginated</h3>
 
 <p><a id="schemacdr-banking-apilinkspaginated"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -10751,7 +11126,7 @@ This operation does not require authentication
   </span><span class="s2">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-61'>Properties</h3>
+</span></code></pre><h3 id='properties-64'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -10792,7 +11167,7 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSmetapaginated">MetaPaginated</h2>
+<h3 class="schema-toc" id="tocSmetapaginated">MetaPaginated</h3>
 
 <p><a id="schemacdr-banking-apimetapaginated"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -10800,7 +11175,7 @@ This operation does not require authentication
   </span><span class="s2">"totalPages"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-62'>Properties</h3>
+</span></code></pre><h3 id='properties-65'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -10823,7 +11198,7 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSmetaerror">MetaError</h2>
+<h3 class="schema-toc" id="tocSmetaerror">MetaError</h3>
 
 <p><a id="schemacdr-banking-apimetaerror"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -10832,7 +11207,7 @@ This operation does not require authentication
 
 </span></code></pre>
 <p><em>Additional data for customised error codes</em></p>
-<h3 id='properties-63'>Properties</h3>
+<h3 id='properties-66'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -10849,7 +11224,7 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSresponseerrorlistv2">ResponseErrorListV2</h2>
+<h3 class="schema-toc" id="tocSresponseerrorlistv2">ResponseErrorListV2</h3>
 
 <p><a id="schemacdr-banking-apiresponseerrorlistv2"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -10865,7 +11240,7 @@ This operation does not require authentication
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-64'>Properties</h3>
+</span></code></pre><h3 id='properties-67'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -10906,14 +11281,14 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSbankingproductcategory">BankingProductCategory</h2>
+<h3 class="schema-toc" id="tocSbankingproductcategory">BankingProductCategory</h3>
 
 <p><a id="schemacdr-banking-apibankingproductcategory"></a></p>
 <pre class="highlight json tab-json"><code><span class="s2">"BUSINESS_LOANS"</span><span class="w">
 
 </span></code></pre>
 <p><em>The category to which a product or account belongs. See <a href="#product-categories">here</a> for more details</em></p>
-<h3 id='properties-65'>Properties</h3>
+<h3 id='properties-68'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -10929,7 +11304,7 @@ This operation does not require authentication
 <td>The category to which a product or account belongs. See <a href="#product-categories">here</a> for more details</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-32'>Enumerated Values</h4>
+<h4 id='enumerated-values-33'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>

@@ -72,9 +72,9 @@ For example, a person whose given names are "John Paul Winston" but the data hol
 |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
 |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
 |x-fapi-interaction-id|header|string|optional|An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
-|x-fapi-auth-date|header|string|optional|The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
+|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended) if the customer is currently logged. Otherwise optional where the customer has not logged in. Not to be included for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|optional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
 
 > Example responses
 
@@ -193,10 +193,12 @@ $.ajax({
 
 Obtain detailed information on the authorised customer within the current session.
 
+Obsolete versions: [v1](includes/obsolete/get-customer-detail-v1.html)
+
 ###Endpoint Version
 |   |  |
 |---|--|
-|Version|**1**
+|Version|**2**
 
 <h3 id="get-customer-detail-parameters">Parameters</h3>
 
@@ -205,9 +207,9 @@ Obtain detailed information on the authorised customer within the current sessio
 |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
 |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
 |x-fapi-interaction-id|header|string|optional|An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
-|x-fapi-auth-date|header|string|optional|The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
+|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended) if the customer is currently logged. Otherwise optional where the customer has not logged in. Not to be included for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|optional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
 
 > Example responses
 
@@ -356,7 +358,7 @@ Obtain detailed information on the authorised customer within the current sessio
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseCommonCustomerDetail](#schemacdr-common-apiresponsecommoncustomerdetail)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseCommonCustomerDetailV2](#schemacdr-common-apiresponsecommoncustomerdetailv2)|
 |4xx|[**Client Error**](https://tools.ietf.org/html/rfc7231#section-6.5)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-common-apiresponseerrorlistv2)|
 
 ### Response Headers
@@ -565,7 +567,7 @@ This operation does not require authentication
 <h2 class="schema-heading" id="cdr-common-api-schemas">Schemas</h2>
 <a class="schema-link" id="cdr-common-api-schemas"></a>
 
-<h2 class="schema-toc" id="tocSresponsecommondiscoverystatus">ResponseCommonDiscoveryStatus</h2>
+<h3 class="schema-toc" id="tocSresponsecommondiscoverystatus">ResponseCommonDiscoveryStatus</h3>
 
 <a id="schemacdr-common-apiresponsecommondiscoverystatus"></a>
 
@@ -608,7 +610,7 @@ This operation does not require authentication
 |status|SCHEDULED_OUTAGE|
 |status|UNAVAILABLE|
 
-<h2 class="schema-toc" id="tocSresponsediscoveryoutageslist">ResponseDiscoveryOutagesList</h2>
+<h3 class="schema-toc" id="tocSresponsediscoveryoutageslist">ResponseDiscoveryOutagesList</h3>
 
 <a id="schemacdr-common-apiresponsediscoveryoutageslist"></a>
 
@@ -641,7 +643,7 @@ This operation does not require authentication
 |links|[Links](#schemacdr-common-apilinks)|mandatory|none|
 |meta|[Meta](#schemacdr-common-apimeta)|optional|none|
 
-<h2 class="schema-toc" id="tocSdiscoveryoutage">DiscoveryOutage</h2>
+<h3 class="schema-toc" id="tocSdiscoveryoutage">DiscoveryOutage</h3>
 
 <a id="schemacdr-common-apidiscoveryoutage"></a>
 
@@ -664,7 +666,7 @@ This operation does not require authentication
 |isPartial|[Boolean](#common-field-types)|optional|Flag that indicates, if present and set to true, that the outage is only partial meaning that only a subset of normally available end points will be affected by the outage|
 |explanation|string|mandatory|Provides an explanation of the current outage that can be displayed to an end customer|
 
-<h2 class="schema-toc" id="tocSresponsecommoncustomer">ResponseCommonCustomer</h2>
+<h3 class="schema-toc" id="tocSresponsecommoncustomer">ResponseCommonCustomer</h3>
 
 <a id="schemacdr-common-apiresponsecommoncustomer"></a>
 
@@ -728,9 +730,9 @@ This operation does not require authentication
 |customerUType|organisation|
 |customerUType|person|
 
-<h2 class="schema-toc" id="tocSresponsecommoncustomerdetail">ResponseCommonCustomerDetail</h2>
+<h3 class="schema-toc" id="tocSresponsecommoncustomerdetailv2">ResponseCommonCustomerDetailV2</h3>
 
-<a id="schemacdr-common-apiresponsecommoncustomerdetail"></a>
+<a id="schemacdr-common-apiresponsecommoncustomerdetailv2"></a>
 
 ```json
 {
@@ -878,8 +880,8 @@ This operation does not require authentication
 |---|---|---|---|
 |data|object|mandatory|none|
 |» customerUType|string|mandatory|The type of customer object that is present|
-|» person|[CommonPersonDetail](#schemacdr-common-apicommonpersondetail)|conditional|Mandatory if `customerUType` is `person`|
-|» organisation|[CommonOrganisationDetail](#schemacdr-common-apicommonorganisationdetail)|conditional|Mandatory if `customerUType` is `organisation`|
+|» person|[CommonPersonDetailV2](#schemacdr-common-apicommonpersondetailv2)|conditional|Mandatory if `customerUType` is `person`|
+|» organisation|[CommonOrganisationDetailV2](#schemacdr-common-apicommonorganisationdetailv2)|conditional|Mandatory if `customerUType` is `organisation`|
 |links|[Links](#schemacdr-common-apilinks)|mandatory|none|
 |meta|[Meta](#schemacdr-common-apimeta)|optional|none|
 
@@ -890,7 +892,7 @@ This operation does not require authentication
 |customerUType|organisation|
 |customerUType|person|
 
-<h2 class="schema-toc" id="tocScommonperson">CommonPerson</h2>
+<h3 class="schema-toc" id="tocScommonperson">CommonPerson</h3>
 
 <a id="schemacdr-common-apicommonperson"></a>
 
@@ -932,9 +934,9 @@ This operation does not require authentication
 |occupationCodeVersion|ANZSCO_1220.0_2013_V1.2|
 |occupationCodeVersion|ANZSCO_1220.0_2013_V1.3|
 
-<h2 class="schema-toc" id="tocScommonpersondetail">CommonPersonDetail</h2>
+<h3 class="schema-toc" id="tocScommonpersondetailv2">CommonPersonDetailV2</h3>
 
-<a id="schemacdr-common-apicommonpersondetail"></a>
+<a id="schemacdr-common-apicommonpersondetailv2"></a>
 
 ```json
 {
@@ -1025,9 +1027,9 @@ This operation does not require authentication
 |*anonymous*|object|mandatory|none|
 |» phoneNumbers|[[CommonPhoneNumber](#schemacdr-common-apicommonphonenumber)]|mandatory|Array is mandatory but may be empty if no phone numbers are held|
 |» emailAddresses|[[CommonEmailAddress](#schemacdr-common-apicommonemailaddress)]|mandatory|May be empty|
-|» physicalAddresses|[[CommonPhysicalAddressWithPurpose](#schemacdr-common-apicommonphysicaladdresswithpurpose)]|mandatory|Must contain at least one address. One and only one address may have the purpose of REGISTERED. Zero or one, and no more than one, record may have the purpose of MAIL. If zero then the REGISTERED address is to be used for mail|
+|» physicalAddresses|[[CommonPhysicalAddressWithPurpose](#schemacdr-common-apicommonphysicaladdresswithpurpose)]|mandatory|Array is mandatory but may be empty if no valid addresses are held. One and only one address may have the purpose of REGISTERED. Zero or one, and no more than one, record may have the purpose of MAIL. If zero then the REGISTERED address is to be used for mail|
 
-<h2 class="schema-toc" id="tocScommonorganisation">CommonOrganisation</h2>
+<h3 class="schema-toc" id="tocScommonorganisation">CommonOrganisation</h3>
 
 <a id="schemacdr-common-apicommonorganisation"></a>
 
@@ -1085,9 +1087,9 @@ This operation does not require authentication
 |organisationType|SOLE_TRADER|
 |organisationType|TRUST|
 
-<h2 class="schema-toc" id="tocScommonorganisationdetail">CommonOrganisationDetail</h2>
+<h3 class="schema-toc" id="tocScommonorganisationdetailv2">CommonOrganisationDetailV2</h3>
 
-<a id="schemacdr-common-apicommonorganisationdetail"></a>
+<a id="schemacdr-common-apicommonorganisationdetailv2"></a>
 
 ```json
 {
@@ -1163,9 +1165,9 @@ This operation does not require authentication
 |Name|Type|Required|Description|
 |---|---|---|---|
 |*anonymous*|object|mandatory|none|
-|» physicalAddresses|[[CommonPhysicalAddressWithPurpose](#schemacdr-common-apicommonphysicaladdresswithpurpose)]|mandatory|Must contain at least one address. One and only one address may have the purpose of REGISTERED. Zero or one, and no more than one, record may have the purpose of MAIL. If zero then the REGISTERED address is to be used for mail|
+|» physicalAddresses|[[CommonPhysicalAddressWithPurpose](#schemacdr-common-apicommonphysicaladdresswithpurpose)]|mandatory|Array is mandatory but may be empty if no valid addresses are held. One and only one address may have the purpose of REGISTERED. Zero or one, and no more than one, record may have the purpose of MAIL. If zero then the REGISTERED address is to be used for mail|
 
-<h2 class="schema-toc" id="tocScommonphonenumber">CommonPhoneNumber</h2>
+<h3 class="schema-toc" id="tocScommonphonenumber">CommonPhoneNumber</h3>
 
 <a id="schemacdr-common-apicommonphonenumber"></a>
 
@@ -1205,7 +1207,7 @@ This operation does not require authentication
 |purpose|UNSPECIFIED|
 |purpose|WORK|
 
-<h2 class="schema-toc" id="tocScommonemailaddress">CommonEmailAddress</h2>
+<h3 class="schema-toc" id="tocScommonemailaddress">CommonEmailAddress</h3>
 
 <a id="schemacdr-common-apicommonemailaddress"></a>
 
@@ -1235,7 +1237,7 @@ This operation does not require authentication
 |purpose|UNSPECIFIED|
 |purpose|WORK|
 
-<h2 class="schema-toc" id="tocScommonphysicaladdresswithpurpose">CommonPhysicalAddressWithPurpose</h2>
+<h3 class="schema-toc" id="tocScommonphysicaladdresswithpurpose">CommonPhysicalAddressWithPurpose</h3>
 
 <a id="schemacdr-common-apicommonphysicaladdresswithpurpose"></a>
 
@@ -1306,7 +1308,7 @@ This operation does not require authentication
 |purpose|REGISTERED|
 |purpose|WORK|
 
-<h2 class="schema-toc" id="tocScommonphysicaladdress">CommonPhysicalAddress</h2>
+<h3 class="schema-toc" id="tocScommonphysicaladdress">CommonPhysicalAddress</h3>
 
 <a id="schemacdr-common-apicommonphysicaladdress"></a>
 
@@ -1366,7 +1368,7 @@ This operation does not require authentication
 |addressUType|paf|
 |addressUType|simple|
 
-<h2 class="schema-toc" id="tocScommonsimpleaddress">CommonSimpleAddress</h2>
+<h3 class="schema-toc" id="tocScommonsimpleaddress">CommonSimpleAddress</h3>
 
 <a id="schemacdr-common-apicommonsimpleaddress"></a>
 
@@ -1397,7 +1399,7 @@ This operation does not require authentication
 |state|string|mandatory|Free text if the country is not Australia. If country is Australia then must be one of the values defined by the [State Type Abbreviation](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf) in the PAF file format. NSW, QLD, VIC, NT, WA, SA, TAS, ACT, AAT|
 |country|[ExternalRef](#common-field-types)|optional|A valid [ISO 3166 Alpha-3](https://www.iso.org/iso-3166-country-codes.html) country code. Australia (AUS) is assumed if country is not present.|
 
-<h2 class="schema-toc" id="tocScommonpafaddress">CommonPAFAddress</h2>
+<h3 class="schema-toc" id="tocScommonpafaddress">CommonPAFAddress</h3>
 
 <a id="schemacdr-common-apicommonpafaddress"></a>
 
@@ -1458,7 +1460,7 @@ This operation does not require authentication
 |postcode|string|mandatory|Postcode for the locality|
 |state|string|mandatory|State in which the address belongs. Valid enumeration defined by Australia Post PAF code file [State Type Abbreviation](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf). NSW, QLD, VIC, NT, WA, SA, TAS, ACT, AAT|
 
-<h2 class="schema-toc" id="tocSlinks">Links</h2>
+<h3 class="schema-toc" id="tocSlinks">Links</h3>
 
 <a id="schemacdr-common-apilinks"></a>
 
@@ -1475,7 +1477,7 @@ This operation does not require authentication
 |---|---|---|---|
 |self|[URIString](#common-field-types)|mandatory|Fully qualified link that generated the current response document|
 
-<h2 class="schema-toc" id="tocSmeta">Meta</h2>
+<h3 class="schema-toc" id="tocSmeta">Meta</h3>
 
 <a id="schemacdr-common-apimeta"></a>
 
@@ -1488,7 +1490,7 @@ This operation does not require authentication
 
 *None*
 
-<h2 class="schema-toc" id="tocSmetaerror">MetaError</h2>
+<h3 class="schema-toc" id="tocSmetaerror">MetaError</h3>
 
 <a id="schemacdr-common-apimetaerror"></a>
 
@@ -1507,7 +1509,7 @@ This operation does not require authentication
 |---|---|---|---|
 |urn|string|conditional|The CDR error code URN which the application-specific error code extends. Mandatory if the error `code` is an application-specific error rather than a standardised error code.|
 
-<h2 class="schema-toc" id="tocSresponseerrorlistv2">ResponseErrorListV2</h2>
+<h3 class="schema-toc" id="tocSresponseerrorlistv2">ResponseErrorListV2</h3>
 
 <a id="schemacdr-common-apiresponseerrorlistv2"></a>
 

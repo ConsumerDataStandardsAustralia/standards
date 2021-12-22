@@ -42,7 +42,7 @@
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>undefined</strong></td>
+<td><strong>Versioning is not supported for this endpoint</strong></td>
 </tr>
 </tbody></table>
 
@@ -178,7 +178,7 @@ This operation does not require authentication
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>undefined</strong></td>
+<td><strong>Versioning is not supported for this endpoint</strong></td>
 </tr>
 </tbody></table>
 
@@ -352,7 +352,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>undefined</strong></td>
+<td><strong>Versioning is not supported for this endpoint</strong></td>
 </tr>
 </tbody></table>
 
@@ -532,7 +532,7 @@ Authorization: string
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>undefined</strong></td>
+<td><strong>Versioning is not supported for this endpoint</strong></td>
 </tr>
 </tbody></table>
 
@@ -626,7 +626,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p><a class="schema-link" id="cdr-dynamic-client-registration-api-schemas"></a></p>
 
-<h2 class="schema-toc" id="tocSclientregistrationrequest">ClientRegistrationRequest</h2>
+<h3 class="schema-toc" id="tocSclientregistrationrequest">ClientRegistrationRequest</h3>
 
 <p><a id="schemacdr-dynamic-client-registration-apiclientregistrationrequest"></a></p>
 <pre class="highlight json tab-json"><code><span class="s2">"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."</span><span class="w">
@@ -650,7 +650,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSregistrationproperties">RegistrationProperties</h2>
+<h3 class="schema-toc" id="tocSregistrationproperties">RegistrationProperties</h3>
 
 <p><a id="schemacdr-dynamic-client-registration-apiregistrationproperties"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -924,7 +924,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSclientregistration">ClientRegistration</h2>
+<h3 class="schema-toc" id="tocSclientregistration">ClientRegistration</h3>
 
 <p><a id="schemacdr-dynamic-client-registration-apiclientregistration"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -1039,7 +1039,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSregistrationerror">RegistrationError</h2>
+<h3 class="schema-toc" id="tocSregistrationerror">RegistrationError</h3>
 
 <p><a id="schemacdr-dynamic-client-registration-apiregistrationerror"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">

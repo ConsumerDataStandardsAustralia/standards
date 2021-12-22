@@ -38,7 +38,7 @@ Endpoint used by participants to discover the CDR Register OpenID configuration 
 ###Endpoint Version
 |   |  |
 |---|--|
-|Version|**undefined**
+|Version|**Versioning is not supported for this endpoint**
 
 > Example responses
 
@@ -131,7 +131,7 @@ JWKS endpoint containing the public keys used by the CDR Register to validate th
 ###Endpoint Version
 |   |  |
 |---|--|
-|Version|**undefined**
+|Version|**Versioning is not supported for this endpoint**
 
 > Example responses
 
@@ -877,7 +877,7 @@ This operation does not require authentication
 <h2 class="schema-heading" id="cdr-participant-discovery-api-schemas">Schemas</h2>
 <a class="schema-link" id="cdr-participant-discovery-api-schemas"></a>
 
-<h2 class="schema-toc" id="tocSresponseopenidproviderconfigmetadata">ResponseOpenIDProviderConfigMetadata</h2>
+<h3 class="schema-toc" id="tocSresponseopenidproviderconfigmetadata">ResponseOpenIDProviderConfigMetadata</h3>
 
 <a id="schemacdr-participant-discovery-apiresponseopenidproviderconfigmetadata"></a>
 
@@ -938,7 +938,7 @@ This operation does not require authentication
 |tls_client_certificate_bound_access_tokens|boolean|mandatory|Boolean value indicating server support for mutual TLS client certificate bound access tokens|
 |request_object_signing_alg_values_supported|[string]|mandatory|JSON array containing a list of the JWS signing algorithms (alg values) supported by the CDR Register for Request Objects.|
 
-<h2 class="schema-toc" id="tocSresponsejwks">ResponseJWKS</h2>
+<h3 class="schema-toc" id="tocSresponsejwks">ResponseJWKS</h3>
 
 <a id="schemacdr-participant-discovery-apiresponsejwks"></a>
 
@@ -968,7 +968,7 @@ This operation does not require authentication
 |---|---|---|---|
 |keys|[[JWK](#schemacdr-participant-discovery-apijwk)]|mandatory|The value of the "keys" parameter is an array of JWK values|
 
-<h2 class="schema-toc" id="tocSjwk">JWK</h2>
+<h3 class="schema-toc" id="tocSjwk">JWK</h3>
 
 <a id="schemacdr-participant-discovery-apijwk"></a>
 
@@ -999,7 +999,7 @@ This operation does not require authentication
 |kty|string|mandatory|The "kty" (key type) parameter identifies the cryptographic algorithm family used with the key|
 |n|string|mandatory|The "n" RSA public modulus parameter|
 
-<h2 class="schema-toc" id="tocSresponseregisterdataholderbrandlist">ResponseRegisterDataHolderBrandList</h2>
+<h3 class="schema-toc" id="tocSresponseregisterdataholderbrandlist">ResponseRegisterDataHolderBrandList</h3>
 
 <a id="schemacdr-participant-discovery-apiresponseregisterdataholderbrandlist"></a>
 
@@ -1067,7 +1067,7 @@ This operation does not require authentication
 |links|[LinksPaginated](#schemacdr-participant-discovery-apilinkspaginated)|mandatory|none|
 |meta|[MetaPaginated](#schemacdr-participant-discovery-apimetapaginated)|mandatory|none|
 
-<h2 class="schema-toc" id="tocSregisterdataholderbrand">RegisterDataHolderBrand</h2>
+<h3 class="schema-toc" id="tocSregisterdataholderbrand">RegisterDataHolderBrand</h3>
 
 <a id="schemacdr-participant-discovery-apiregisterdataholderbrand"></a>
 
@@ -1133,7 +1133,7 @@ This operation does not require authentication
 |status|INACTIVE|
 |status|REMOVED|
 
-<h2 class="schema-toc" id="tocSdataholdersstatuslist">DataHoldersStatusList</h2>
+<h3 class="schema-toc" id="tocSdataholdersstatuslist">DataHoldersStatusList</h3>
 
 <a id="schemacdr-participant-discovery-apidataholdersstatuslist"></a>
 
@@ -1161,7 +1161,7 @@ This operation does not require authentication
 |links|[Links](#schemacdr-participant-discovery-apilinks)|mandatory|none|
 |meta|[Meta](#schemacdr-participant-discovery-apimeta)|mandatory|none|
 
-<h2 class="schema-toc" id="tocSdataholderstatus">DataHolderStatus</h2>
+<h3 class="schema-toc" id="tocSdataholderstatus">DataHolderStatus</h3>
 
 <a id="schemacdr-participant-discovery-apidataholderstatus"></a>
 
@@ -1187,7 +1187,7 @@ This operation does not require authentication
 |status|ACTIVE|
 |status|REMOVED|
 
-<h2 class="schema-toc" id="tocSsoftwareproductsstatuslist">SoftwareProductsStatusList</h2>
+<h3 class="schema-toc" id="tocSsoftwareproductsstatuslist">SoftwareProductsStatusList</h3>
 
 <a id="schemacdr-participant-discovery-apisoftwareproductsstatuslist"></a>
 
@@ -1215,7 +1215,7 @@ This operation does not require authentication
 |links|[Links](#schemacdr-participant-discovery-apilinks)|mandatory|none|
 |meta|[Meta](#schemacdr-participant-discovery-apimeta)|mandatory|none|
 
-<h2 class="schema-toc" id="tocSsoftwareproductstatus">SoftwareProductStatus</h2>
+<h3 class="schema-toc" id="tocSsoftwareproductstatus">SoftwareProductStatus</h3>
 
 <a id="schemacdr-participant-discovery-apisoftwareproductstatus"></a>
 
@@ -1242,7 +1242,7 @@ This operation does not require authentication
 |status|INACTIVE|
 |status|REMOVED|
 
-<h2 class="schema-toc" id="tocSdatarecipientsstatuslist">DataRecipientsStatusList</h2>
+<h3 class="schema-toc" id="tocSdatarecipientsstatuslist">DataRecipientsStatusList</h3>
 
 <a id="schemacdr-participant-discovery-apidatarecipientsstatuslist"></a>
 
@@ -1270,7 +1270,7 @@ This operation does not require authentication
 |links|[Links](#schemacdr-participant-discovery-apilinks)|mandatory|none|
 |meta|[Meta](#schemacdr-participant-discovery-apimeta)|mandatory|none|
 
-<h2 class="schema-toc" id="tocSdatarecipientstatus">DataRecipientStatus</h2>
+<h3 class="schema-toc" id="tocSdatarecipientstatus">DataRecipientStatus</h3>
 
 <a id="schemacdr-participant-discovery-apidatarecipientstatus"></a>
 
@@ -1298,7 +1298,7 @@ This operation does not require authentication
 |status|REVOKED|
 |status|SURRENDERED|
 
-<h2 class="schema-toc" id="tocSresponseregisterdatarecipientlist">ResponseRegisterDataRecipientList</h2>
+<h3 class="schema-toc" id="tocSresponseregisterdatarecipientlist">ResponseRegisterDataRecipientList</h3>
 
 <a id="schemacdr-participant-discovery-apiresponseregisterdatarecipientlist"></a>
 
@@ -1350,7 +1350,7 @@ This operation does not require authentication
 |links|[Links](#schemacdr-participant-discovery-apilinks)|mandatory|none|
 |meta|[Meta](#schemacdr-participant-discovery-apimeta)|mandatory|none|
 
-<h2 class="schema-toc" id="tocSregisterdatarecipient">RegisterDataRecipient</h2>
+<h3 class="schema-toc" id="tocSregisterdatarecipient">RegisterDataRecipient</h3>
 
 <a id="schemacdr-participant-discovery-apiregisterdatarecipient"></a>
 
@@ -1408,7 +1408,7 @@ This operation does not require authentication
 |status|REVOKED|
 |status|SURRENDERED|
 
-<h2 class="schema-toc" id="tocSdatarecipientbrandmetadata">DataRecipientBrandMetaData</h2>
+<h3 class="schema-toc" id="tocSdatarecipientbrandmetadata">DataRecipientBrandMetaData</h3>
 
 <a id="schemacdr-participant-discovery-apidatarecipientbrandmetadata"></a>
 
@@ -1451,7 +1451,7 @@ This operation does not require authentication
 |status|INACTIVE|
 |status|REMOVED|
 
-<h2 class="schema-toc" id="tocSsoftwareproductmetadata">SoftwareProductMetaData</h2>
+<h3 class="schema-toc" id="tocSsoftwareproductmetadata">SoftwareProductMetaData</h3>
 
 <a id="schemacdr-participant-discovery-apisoftwareproductmetadata"></a>
 
@@ -1486,7 +1486,7 @@ This operation does not require authentication
 |status|INACTIVE|
 |status|REMOVED|
 
-<h2 class="schema-toc" id="tocSlegalentitydetail">LegalEntityDetail</h2>
+<h3 class="schema-toc" id="tocSlegalentitydetail">LegalEntityDetail</h3>
 
 <a id="schemacdr-participant-discovery-apilegalentitydetail"></a>
 
@@ -1536,7 +1536,7 @@ This operation does not require authentication
 |organisationType|GOVERNMENT_ENTITY|
 |organisationType|OTHER|
 
-<h2 class="schema-toc" id="tocSregisterdataholderbrandserviceendpoint">RegisterDataHolderBrandServiceEndpoint</h2>
+<h3 class="schema-toc" id="tocSregisterdataholderbrandserviceendpoint">RegisterDataHolderBrandServiceEndpoint</h3>
 
 <a id="schemacdr-participant-discovery-apiregisterdataholderbrandserviceendpoint"></a>
 
@@ -1565,7 +1565,7 @@ This operation does not require authentication
 |extensionBaseUri|[URIString](#common-field-types)|optional|Base URI for the Data Holder extension endpoints to the Consumer Data Standard (optional)|
 |websiteUri|[URIString](#common-field-types)|mandatory|Publicly available website or web resource URI|
 
-<h2 class="schema-toc" id="tocSregisterdataholderauth">RegisterDataHolderAuth</h2>
+<h3 class="schema-toc" id="tocSregisterdataholderauth">RegisterDataHolderAuth</h3>
 
 <a id="schemacdr-participant-discovery-apiregisterdataholderauth"></a>
 
@@ -1592,7 +1592,7 @@ This operation does not require authentication
 |---|---|
 |registerUType|SIGNED-JWT|
 
-<h2 class="schema-toc" id="tocSlinkspaginated">LinksPaginated</h2>
+<h3 class="schema-toc" id="tocSlinkspaginated">LinksPaginated</h3>
 
 <a id="schemacdr-participant-discovery-apilinkspaginated"></a>
 
@@ -1617,7 +1617,7 @@ This operation does not require authentication
 |prev|string|optional|URI to the previous page of this set. Mandatory if this response is not the first page|
 |self|string|mandatory|Fully qualified link to this API call|
 
-<h2 class="schema-toc" id="tocSmetapaginated">MetaPaginated</h2>
+<h3 class="schema-toc" id="tocSmetapaginated">MetaPaginated</h3>
 
 <a id="schemacdr-participant-discovery-apimetapaginated"></a>
 
@@ -1636,7 +1636,7 @@ This operation does not require authentication
 |totalPages|integer(int32)|mandatory|The total number of pages in the full set|
 |totalRecords|integer(int32)|mandatory|The total number of records in the full set|
 
-<h2 class="schema-toc" id="tocSlinks">Links</h2>
+<h3 class="schema-toc" id="tocSlinks">Links</h3>
 
 <a id="schemacdr-participant-discovery-apilinks"></a>
 
@@ -1653,7 +1653,7 @@ This operation does not require authentication
 |---|---|---|---|
 |self|string|mandatory|Fully qualified link to this API call|
 
-<h2 class="schema-toc" id="tocSmeta">Meta</h2>
+<h3 class="schema-toc" id="tocSmeta">Meta</h3>
 
 <a id="schemacdr-participant-discovery-apimeta"></a>
 
@@ -1666,7 +1666,7 @@ This operation does not require authentication
 
 *None*
 
-<h2 class="schema-toc" id="tocSmetaerror">MetaError</h2>
+<h3 class="schema-toc" id="tocSmetaerror">MetaError</h3>
 
 <a id="schemacdr-participant-discovery-apimetaerror"></a>
 
@@ -1685,7 +1685,7 @@ This operation does not require authentication
 |---|---|---|---|
 |urn|string|conditional|The CDR error code URN which the application-specific error code extends. Mandatory if the error `code` is an application-specific error rather than a standardised error code.|
 
-<h2 class="schema-toc" id="tocSresponseerrorlistv2">ResponseErrorListV2</h2>
+<h3 class="schema-toc" id="tocSresponseerrorlistv2">ResponseErrorListV2</h3>
 
 <a id="schemacdr-participant-discovery-apiresponseerrorlistv2"></a>
 
@@ -1711,7 +1711,7 @@ This operation does not require authentication
 |---|---|---|---|
 |errors|[[ResponseErrorListV2_errors](#schemacdr-participant-discovery-apiresponseerrorlistv2_errors)]|mandatory|none|
 
-<h2 class="schema-toc" id="tocSresponseerrorlistv2_errors">ResponseErrorListV2_errors</h2>
+<h3 class="schema-toc" id="tocSresponseerrorlistv2_errors">ResponseErrorListV2_errors</h3>
 
 <a id="schemacdr-participant-discovery-apiresponseerrorlistv2_errors"></a>
 
@@ -1736,7 +1736,7 @@ This operation does not require authentication
 |detail|string|mandatory|A human-readable explanation specific to this occurrence of the problem.|
 |meta|[MetaError](#schemacdr-participant-discovery-apimetaerror)|optional|Additional data for customised error codes|
 
-<h2 class="schema-toc" id="tocSresponseerrorlist">ResponseErrorList</h2>
+<h3 class="schema-toc" id="tocSresponseerrorlist">ResponseErrorList</h3>
 
 <a id="schemacdr-participant-discovery-apiresponseerrorlist"></a>
 
@@ -1760,7 +1760,7 @@ This operation does not require authentication
 |---|---|---|---|
 |errors|[[Error](#schemacdr-participant-discovery-apierror)]|mandatory|none|
 
-<h2 class="schema-toc" id="tocSerror">Error</h2>
+<h3 class="schema-toc" id="tocSerror">Error</h3>
 
 <a id="schemacdr-participant-discovery-apierror"></a>
 

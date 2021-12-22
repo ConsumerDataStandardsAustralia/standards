@@ -496,7 +496,7 @@ This operation may only be called by the CDR Register
 
 <p><a class="schema-link" id="cdr-admin-api-schemas"></a></p>
 
-<h2 class="schema-toc" id="tocSrequestmetadataupdate">RequestMetaDataUpdate</h2>
+<h3 class="schema-toc" id="tocSrequestmetadataupdate">RequestMetaDataUpdate</h3>
 
 <p><a id="schemacdr-admin-apirequestmetadataupdate"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -547,7 +547,7 @@ This operation may only be called by the CDR Register
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSresponsemetricslistv3">ResponseMetricsListV3</h2>
+<h3 class="schema-toc" id="tocSresponsemetricslistv3">ResponseMetricsListV3</h3>
 
 <p><a id="schemacdr-admin-apiresponsemetricslistv3"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -821,7 +821,7 @@ This operation may only be called by the CDR Register
 <td>» secondaryHolder</td>
 <td><a href="#schemacdr-admin-apisecondaryholdermetrics">SecondaryHolderMetrics</a></td>
 <td>conditional</td>
-<td>Errors and rejections received by the primary data holder from the secondary data holder.  Mandatory for data holders designated for a secondary responsibility request data cluster</td>
+<td>Errors and rejections received by the primary data holder from the secondary data holder.  Mandatory for data holders designated for a Shared Responsibility Data Request data cluster</td>
 </tr>
 <tr>
 <td>links</td>
@@ -837,7 +837,7 @@ This operation may only be called by the CDR Register
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSavailabilitymetrics">AvailabilityMetrics</h2>
+<h3 class="schema-toc" id="tocSavailabilitymetrics">AvailabilityMetrics</h3>
 
 <p><a id="schemacdr-admin-apiavailabilitymetrics"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -872,7 +872,7 @@ This operation may only be called by the CDR Register
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSperformancemetrics">PerformanceMetrics</h2>
+<h3 class="schema-toc" id="tocSperformancemetrics">PerformanceMetrics</h3>
 
 <p><a id="schemacdr-admin-apiperformancemetrics"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -907,7 +907,7 @@ This operation may only be called by the CDR Register
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSinvocationmetricsv2">InvocationMetricsV2</h2>
+<h3 class="schema-toc" id="tocSinvocationmetricsv2">InvocationMetricsV2</h3>
 
 <p><a id="schemacdr-admin-apiinvocationmetricsv2"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -1060,7 +1060,7 @@ This operation may only be called by the CDR Register
 <td>secondary</td>
 <td>object</td>
 <td>conditional</td>
-<td>API call counts for the secondary responsibility requests tier.  Mandatory for data holders designated for a secondary responsibility request data cluster</td>
+<td>API call counts for the Shared Responsibility Data Requests tier.  Mandatory for data holders designated for a Shared Responsibility Data Request data cluster</td>
 </tr>
 <tr>
 <td>» currentDay</td>
@@ -1078,7 +1078,7 @@ This operation may only be called by the CDR Register
 <td>largeSecondary</td>
 <td>object</td>
 <td>conditional</td>
-<td>API call counts for the large secondary responsibility requests tier.  Mandatory for data holders designated for a secondary responsibility request data cluster</td>
+<td>API call counts for the large Shared Responsibility Data Requests tier.  Mandatory for data holders designated for a Shared Responsibility Data Request data cluster</td>
 </tr>
 <tr>
 <td>» currentDay</td>
@@ -1094,7 +1094,7 @@ This operation may only be called by the CDR Register
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSaverageresponsemetricsv2">AverageResponseMetricsV2</h2>
+<h3 class="schema-toc" id="tocSaverageresponsemetricsv2">AverageResponseMetricsV2</h3>
 
 <p><a id="schemacdr-admin-apiaverageresponsemetricsv2"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -1263,7 +1263,7 @@ This operation may only be called by the CDR Register
 <td>secondary</td>
 <td>object</td>
 <td>conditional</td>
-<td>Average response time for the secondary tier.  Mandatory for data holders designated for a secondary responsibility request data cluster</td>
+<td>Average response time for the secondary tier.  Mandatory for data holders designated for a Shared Responsibility Data Request data cluster</td>
 </tr>
 <tr>
 <td>» primary</td>
@@ -1305,7 +1305,7 @@ This operation may only be called by the CDR Register
 <td>» largeSecondary</td>
 <td>object</td>
 <td>conditional</td>
-<td>Average response time for the large payload tier.  Mandatory for data holders designated for a secondary responsibility request data cluster</td>
+<td>Average response time for the large payload tier.  Mandatory for data holders designated for a Shared Responsibility Data Request data cluster</td>
 </tr>
 <tr>
 <td>»» primary</td>
@@ -1345,7 +1345,7 @@ This operation may only be called by the CDR Register
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSsessioncountmetrics">SessionCountMetrics</h2>
+<h3 class="schema-toc" id="tocSsessioncountmetrics">SessionCountMetrics</h3>
 
 <p><a id="schemacdr-admin-apisessioncountmetrics"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -1380,7 +1380,7 @@ This operation may only be called by the CDR Register
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSaveragetpsmetrics">AverageTPSMetrics</h2>
+<h3 class="schema-toc" id="tocSaveragetpsmetrics">AverageTPSMetrics</h3>
 
 <p><a id="schemacdr-admin-apiaveragetpsmetrics"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -1415,7 +1415,7 @@ This operation may only be called by the CDR Register
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSpeaktpsmetrics">PeakTPSMetrics</h2>
+<h3 class="schema-toc" id="tocSpeaktpsmetrics">PeakTPSMetrics</h3>
 
 <p><a id="schemacdr-admin-apipeaktpsmetrics"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -1450,7 +1450,7 @@ This operation may only be called by the CDR Register
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSerrormetrics">ErrorMetrics</h2>
+<h3 class="schema-toc" id="tocSerrormetrics">ErrorMetrics</h3>
 
 <p><a id="schemacdr-admin-apierrormetrics"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -1485,7 +1485,7 @@ This operation may only be called by the CDR Register
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSrejectionmetricsv2">RejectionMetricsV2</h2>
+<h3 class="schema-toc" id="tocSrejectionmetricsv2">RejectionMetricsV2</h3>
 
 <p><a id="schemacdr-admin-apirejectionmetricsv2"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -1552,7 +1552,7 @@ This operation may only be called by the CDR Register
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSsecondaryholdermetrics">SecondaryHolderMetrics</h2>
+<h3 class="schema-toc" id="tocSsecondaryholdermetrics">SecondaryHolderMetrics</h3>
 
 <p><a id="schemacdr-admin-apisecondaryholdermetrics"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -1571,7 +1571,7 @@ This operation may only be called by the CDR Register
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
-<p><em>Errors and rejections received by the primary data holder from the secondary data holder.  Mandatory for data holders designated for a secondary responsibility request data cluster</em></p>
+<p><em>Errors and rejections received by the primary data holder from the secondary data holder.  Mandatory for data holders designated for a Shared Responsibility Data Request data cluster</em></p>
 <h3 id='properties-12'>Properties</h3>
 <table><thead>
 <tr>
@@ -1619,7 +1619,7 @@ This operation may only be called by the CDR Register
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSlinks">Links</h2>
+<h3 class="schema-toc" id="tocSlinks">Links</h3>
 
 <p><a id="schemacdr-admin-apilinks"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -1643,7 +1643,7 @@ This operation may only be called by the CDR Register
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSmeta">Meta</h2>
+<h3 class="schema-toc" id="tocSmeta">Meta</h3>
 
 <p><a id="schemacdr-admin-apimeta"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{}</span><span class="w">

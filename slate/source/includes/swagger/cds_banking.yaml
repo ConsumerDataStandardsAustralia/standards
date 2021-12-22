@@ -94,9 +94,10 @@ paths:
         type: string
       - name: x-fapi-auth-date
         in: header
-        description: The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.
+        description: The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended) if the customer has logged in. Not to be included for unauthenticated calls.
         required: false
         type: string
+        x-conditional: true
       - name: x-fapi-customer-ip-address
         in: header
         description: The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.
@@ -107,6 +108,7 @@ paths:
         description: "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls."
         required: false
         type: string
+        x-conditional: true
         x-cds-type: Base64
       responses:
         "200":
@@ -205,9 +207,10 @@ paths:
         type: string
       - name: x-fapi-auth-date
         in: header
-        description: The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.
+        description: The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended) if the customer has logged in. Not to be included for unauthenticated calls.
         required: false
         type: string
+        x-conditional: true
       - name: x-fapi-customer-ip-address
         in: header
         description: The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.
@@ -218,6 +221,7 @@ paths:
         description: "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls."
         required: false
         type: string
+        x-conditional: true
         x-cds-type: Base64
       responses:
         "200":
@@ -287,9 +291,10 @@ paths:
         type: string
       - name: x-fapi-auth-date
         in: header
-        description: The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.
+        description: The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended) if the customer has logged in. Not to be included for unauthenticated calls.
         required: false
         type: string
+        x-conditional: true
       - name: x-fapi-customer-ip-address
         in: header
         description: The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.
@@ -300,6 +305,7 @@ paths:
         description: "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls."
         required: false
         type: string
+        x-conditional: true
         x-cds-type: Base64
       responses:
         "200":
@@ -356,9 +362,10 @@ paths:
         type: string
       - name: x-fapi-auth-date
         in: header
-        description: The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.
+        description: The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended) if the customer has logged in. Not to be included for unauthenticated calls.
         required: false
         type: string
+        x-conditional: true
       - name: x-fapi-customer-ip-address
         in: header
         description: The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.
@@ -369,6 +376,7 @@ paths:
         description: "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls."
         required: false
         type: string
+        x-conditional: true
         x-cds-type: Base64
       responses:
         "200":
@@ -399,7 +407,7 @@ paths:
       - Banking
       - Accounts
       summary: Get Account Detail
-      description: Obtain detailed information on a single account
+      description: "Obtain detailed information on a single account.\n\nObsolete versions: [v1](includes/obsolete/get-account-detail-v1.html)"
       operationId: getAccountDetail
       parameters:
       - name: accountId
@@ -425,9 +433,10 @@ paths:
         type: string
       - name: x-fapi-auth-date
         in: header
-        description: The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.
+        description: The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended) if the customer has logged in. Not to be included for unauthenticated calls.
         required: false
         type: string
+        x-conditional: true
       - name: x-fapi-customer-ip-address
         in: header
         description: The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.
@@ -438,6 +447,7 @@ paths:
         description: "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls."
         required: false
         type: string
+        x-conditional: true
         x-cds-type: Base64
       responses:
         "200":
@@ -450,7 +460,7 @@ paths:
               type: string
               description: "An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction."
           schema:
-            $ref: '#/definitions/ResponseBankingAccountById'
+            $ref: '#/definitions/ResponseBankingAccountByIdV2'
         "4xx":
           description: "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[404 - Unavailable Banking Account](#error-404-authorisation-unavailable-banking-account)</li><li>[404 - Invalid Banking Account](#error-404-authorisation-invalid-banking-account)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>"
           headers:
@@ -461,7 +471,7 @@ paths:
             $ref: '#/definitions/ResponseErrorListV2'
       x-scopes:
       - bank:accounts.detail:read
-      x-version: "1"
+      x-version: "2"
   /banking/accounts/{accountId}/transactions:
     get:
       tags:
@@ -537,9 +547,10 @@ paths:
         type: string
       - name: x-fapi-auth-date
         in: header
-        description: The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.
+        description: The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended) if the customer has logged in. Not to be included for unauthenticated calls.
         required: false
         type: string
+        x-conditional: true
       - name: x-fapi-customer-ip-address
         in: header
         description: The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.
@@ -550,6 +561,7 @@ paths:
         description: "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls."
         required: false
         type: string
+        x-conditional: true
         x-cds-type: Base64
       responses:
         "200":
@@ -612,9 +624,10 @@ paths:
         type: string
       - name: x-fapi-auth-date
         in: header
-        description: The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.
+        description: The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended) if the customer has logged in. Not to be included for unauthenticated calls.
         required: false
         type: string
+        x-conditional: true
       - name: x-fapi-customer-ip-address
         in: header
         description: The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.
@@ -625,6 +638,7 @@ paths:
         description: "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls."
         required: false
         type: string
+        x-conditional: true
         x-cds-type: Base64
       responses:
         "200":
@@ -695,9 +709,10 @@ paths:
         type: string
       - name: x-fapi-auth-date
         in: header
-        description: The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.
+        description: The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended) if the customer has logged in. Not to be included for unauthenticated calls.
         required: false
         type: string
+        x-conditional: true
       - name: x-fapi-customer-ip-address
         in: header
         description: The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.
@@ -708,6 +723,7 @@ paths:
         description: "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls."
         required: false
         type: string
+        x-conditional: true
         x-cds-type: Base64
       responses:
         "200":
@@ -806,9 +822,10 @@ paths:
         type: string
       - name: x-fapi-auth-date
         in: header
-        description: The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.
+        description: The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended) if the customer has logged in. Not to be included for unauthenticated calls.
         required: false
         type: string
+        x-conditional: true
       - name: x-fapi-customer-ip-address
         in: header
         description: The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.
@@ -819,6 +836,7 @@ paths:
         description: "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls."
         required: false
         type: string
+        x-conditional: true
         x-cds-type: Base64
       responses:
         "200":
@@ -888,9 +906,10 @@ paths:
         type: string
       - name: x-fapi-auth-date
         in: header
-        description: The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.
+        description: The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended) if the customer has logged in. Not to be included for unauthenticated calls.
         required: false
         type: string
+        x-conditional: true
       - name: x-fapi-customer-ip-address
         in: header
         description: The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.
@@ -901,6 +920,7 @@ paths:
         description: "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls."
         required: false
         type: string
+        x-conditional: true
         x-cds-type: Base64
       responses:
         "200":
@@ -971,9 +991,10 @@ paths:
         type: string
       - name: x-fapi-auth-date
         in: header
-        description: The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.
+        description: The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended) if the customer has logged in. Not to be included for unauthenticated calls.
         required: false
         type: string
+        x-conditional: true
       - name: x-fapi-customer-ip-address
         in: header
         description: The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.
@@ -984,6 +1005,7 @@ paths:
         description: "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls."
         required: false
         type: string
+        x-conditional: true
         x-cds-type: Base64
       responses:
         "200":
@@ -1082,9 +1104,10 @@ paths:
         type: string
       - name: x-fapi-auth-date
         in: header
-        description: The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.
+        description: The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended) if the customer has logged in. Not to be included for unauthenticated calls.
         required: false
         type: string
+        x-conditional: true
       - name: x-fapi-customer-ip-address
         in: header
         description: The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.
@@ -1095,6 +1118,7 @@ paths:
         description: "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls."
         required: false
         type: string
+        x-conditional: true
         x-cds-type: Base64
       responses:
         "200":
@@ -1164,9 +1188,10 @@ paths:
         type: string
       - name: x-fapi-auth-date
         in: header
-        description: The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.
+        description: The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended) if the customer has logged in. Not to be included for unauthenticated calls.
         required: false
         type: string
+        x-conditional: true
       - name: x-fapi-customer-ip-address
         in: header
         description: The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.
@@ -1177,6 +1202,7 @@ paths:
         description: "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls."
         required: false
         type: string
+        x-conditional: true
         x-cds-type: Base64
       responses:
         "200":
@@ -1207,7 +1233,7 @@ paths:
       - Banking
       - Payees
       summary: Get Payees
-      description: Obtain a list of pre-registered payees
+      description: "Obtain a list of pre-registered payees.\n\nObsolete versions: [v1](includes/obsolete/get-payees-v1.html)"
       operationId: listPayees
       parameters:
       - name: type
@@ -1219,6 +1245,7 @@ paths:
         enum:
         - ALL
         - BILLER
+        - DIGITAL_WALLET
         - DOMESTIC
         - INTERNATIONAL
       - name: page
@@ -1252,9 +1279,10 @@ paths:
         type: string
       - name: x-fapi-auth-date
         in: header
-        description: The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.
+        description: The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended) if the customer has logged in. Not to be included for unauthenticated calls.
         required: false
         type: string
+        x-conditional: true
       - name: x-fapi-customer-ip-address
         in: header
         description: The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.
@@ -1265,6 +1293,7 @@ paths:
         description: "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls."
         required: false
         type: string
+        x-conditional: true
         x-cds-type: Base64
       responses:
         "200":
@@ -1277,7 +1306,7 @@ paths:
               type: string
               description: "An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction."
           schema:
-            $ref: '#/definitions/ResponseBankingPayeeList'
+            $ref: '#/definitions/ResponseBankingPayeeListV2'
         "4xx":
           description: "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>"
           headers:
@@ -1288,17 +1317,14 @@ paths:
             $ref: '#/definitions/ResponseErrorListV2'
       x-scopes:
       - bank:payees:read
-      x-version: "1"
+      x-version: "2"
   /banking/payees/{payeeId}:
     get:
       tags:
       - Banking
       - Payees
       summary: Get Payee Detail
-      description: |-
-        Obtain detailed information on a single payee.
-
-        Note that the payee sub-structure should be selected to represent the payment destination only rather than any known characteristics of the payment recipient
+      description: "Obtain detailed information on a single payee.\n\nNote that the payee sub-structure should be selected to represent the payment destination only rather than any known characteristics of the payment recipient.\n\nObsolete versions: [v1](includes/obsolete/get-payee-detail-v1.html)"
       operationId: getPayeeDetail
       parameters:
       - name: payeeId
@@ -1324,9 +1350,10 @@ paths:
         type: string
       - name: x-fapi-auth-date
         in: header
-        description: The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.
+        description: The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended) if the customer has logged in. Not to be included for unauthenticated calls.
         required: false
         type: string
+        x-conditional: true
       - name: x-fapi-customer-ip-address
         in: header
         description: The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.
@@ -1337,6 +1364,7 @@ paths:
         description: "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls."
         required: false
         type: string
+        x-conditional: true
         x-cds-type: Base64
       responses:
         "200":
@@ -1349,7 +1377,7 @@ paths:
               type: string
               description: "An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction."
           schema:
-            $ref: '#/definitions/ResponseBankingPayeeById'
+            $ref: '#/definitions/ResponseBankingPayeeByIdV2'
         "4xx":
           description: "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[404 - Unavailable Resource](#error-404-resource-unavailable)</li><li>[404 - Invalid Resource](#error-404-resource-invalid)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>"
           headers:
@@ -1360,7 +1388,7 @@ paths:
             $ref: '#/definitions/ResponseErrorListV2'
       x-scopes:
       - bank:payees:read
-      x-version: "1"
+      x-version: "2"
   /banking/products:
     get:
       tags:
@@ -1453,7 +1481,7 @@ paths:
       - Banking
       - Products
       summary: Get Product Detail
-      description: "Obtain detailed information on a single product offered openly to the market.\n\nObsolete versions: [v1](includes/obsolete/get-product-detail-v1.html) [v2](includes/obsolete/get-product-detail-v2.html)"
+      description: "Obtain detailed information on a single product offered openly to the market.\n\nObsolete versions: [v1](includes/obsolete/get-product-detail-v1.html) [v2](includes/obsolete/get-product-detail-v2.html) [v3](includes/obsolete/get-product-detail-v3.html)"
       operationId: getProductDetail
       parameters:
       - name: productId
@@ -1480,12 +1508,12 @@ paths:
               type: string
               description: "The [version](#response-headers) of the API end point that the data holder has responded with."
           schema:
-            $ref: '#/definitions/ResponseBankingProductById'
+            $ref: '#/definitions/ResponseBankingProductByIdV4'
         "4xx":
           description: "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[404 - Unavailable Resource](#error-404-resource-unavailable)</li><li>[404 - Invalid Resource](#error-404-resource-invalid)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>"
           schema:
             $ref: '#/definitions/ResponseErrorListV2'
-      x-version: "3"
+      x-version: "4"
 definitions:
   RequestAccountIds:
     type: object
@@ -1496,7 +1524,7 @@ definitions:
         $ref: '#/definitions/RequestAccountIds_data'
       meta:
         $ref: '#/definitions/Meta'
-  ResponseBankingProductList:
+  ResponseBankingProductListV2:
     type: object
     required:
     - data
@@ -1504,12 +1532,12 @@ definitions:
     - meta
     properties:
       data:
-        $ref: '#/definitions/ResponseBankingProductList_data'
+        $ref: '#/definitions/ResponseBankingProductListV2_data'
       links:
         $ref: '#/definitions/LinksPaginated'
       meta:
         $ref: '#/definitions/MetaPaginated'
-  BankingProductV3:
+  BankingProductV4:
     type: object
     required:
     - brand
@@ -1559,27 +1587,94 @@ definitions:
         description: Indicates whether the product is specifically tailored to a circumstance.  In this case fees and prices are significantly negotiated depending on context. While all products are open to a degree of tailoring this flag indicates that tailoring is expected and thus that the provision of specific fees and rates is not applicable
         x-cds-type: Boolean
       additionalInformation:
-        $ref: '#/definitions/BankingProductV3_additionalInformation'
+        $ref: '#/definitions/BankingProductAdditionalInformationV2'
       cardArt:
         type: array
         description: An array of card art images
         items:
-          $ref: '#/definitions/BankingProductV3_cardArt'
-  ResponseBankingProductById:
+          $ref: '#/definitions/BankingProductV4_cardArt'
+  BankingProductAdditionalInformationV2:
+    type: object
+    properties:
+      overviewUri:
+        type: string
+        description: General overview of the product. Mandatory if `additionalOverviewUris` includes one or more supporting documents.
+        x-cds-type: URIString
+      termsUri:
+        type: string
+        description: Terms and conditions for the product. Mandatory if `additionalTermsUris` includes one or more supporting documents.
+        x-cds-type: URIString
+      eligibilityUri:
+        type: string
+        description: Eligibility rules and criteria for the product. Mandatory if `additionalEligibilityUris` includes one or more supporting documents.
+        x-cds-type: URIString
+      feesAndPricingUri:
+        type: string
+        description: "Description of fees, pricing, discounts, exemptions and bonuses for the product. Mandatory if `additionalFeesAndPricingUris` includes one or more supporting documents."
+        x-cds-type: URIString
+      bundleUri:
+        type: string
+        description: Description of a bundle that this product can be part of. Mandatory if `additionalBundleUris` includes one or more supporting documents.
+        x-cds-type: URIString
+      additionalOverviewUris:
+        type: array
+        description: "An array of additional general overviews for the product or features of the product, if applicable. To be treated as secondary documents to the `overviewUri`. Only to be used if there is a primary `overviewUri`."
+        items:
+          $ref: '#/definitions/BankingProductAdditionalInformationV2_additionalInformationUris'
+      additionalTermsUris:
+        type: array
+        description: "An array of additional terms and conditions for the product, if applicable. To be treated as secondary documents to the `termsUri`. Only to be used if there is a primary `termsUri`."
+        items:
+          $ref: '#/definitions/BankingProductAdditionalInformationV2_additionalInformationUris'
+      additionalEligibilityUris:
+        type: array
+        description: "An array of additional eligibility rules and criteria for the product, if applicable. To be treated as secondary documents to the `eligibilityUri`. Only to be used if there is a primary `eligibilityUri`."
+        items:
+          $ref: '#/definitions/BankingProductAdditionalInformationV2_additionalInformationUris'
+      additionalFeesAndPricingUris:
+        type: array
+        description: "An array of additional fees, pricing, discounts, exemptions and bonuses for the product, if applicable. To be treated as secondary documents to the `feesAndPricingUri`. Only to be used if there is a primary `feesAndPricingUri`."
+        items:
+          $ref: '#/definitions/BankingProductAdditionalInformationV2_additionalInformationUris'
+      additionalBundleUris:
+        type: array
+        description: "An array of additional bundles for the product, if applicable. To be treated as secondary documents to the `bundleUri`. Only to be used if there is a primary `bundleUri`."
+        items:
+          $ref: '#/definitions/BankingProductAdditionalInformationV2_additionalInformationUris'
+    description: Object that contains links to additional information on specific topics
+    x-conditional:
+    - overviewUri
+    - termsUri
+    - eligibilityUri
+    - feesAndPricingUri
+    - bundleUri
+  BankingProductAdditionalInformationV2_additionalInformationUris:
+    type: object
+    required:
+    - additionalInfoUri
+    properties:
+      description:
+        type: string
+        description: Display text providing more information about the document URI
+      additionalInfoUri:
+        type: string
+        description: The URI describing the additional information
+        x-cds-type: URIString
+  ResponseBankingProductByIdV4:
     type: object
     required:
     - data
     - links
     properties:
       data:
-        $ref: '#/definitions/BankingProductDetailV3'
+        $ref: '#/definitions/BankingProductDetailV4'
       links:
         $ref: '#/definitions/Links'
       meta:
         $ref: '#/definitions/Meta'
-  BankingProductDetailV3:
+  BankingProductDetailV4:
     allOf:
-    - $ref: '#/definitions/BankingProductV3'
+    - $ref: '#/definitions/BankingProductV4'
     - type: object
       properties:
         bundles:
@@ -1591,7 +1686,7 @@ definitions:
           type: array
           description: Array of features available for the product
           items:
-            $ref: '#/definitions/BankingProductFeature'
+            $ref: '#/definitions/BankingProductFeatureV2'
         constraints:
           type: array
           description: Constraints on the application for or operation of the product such as minimum balances or limit thresholds
@@ -1642,7 +1737,7 @@ definitions:
         items:
           type: string
           x-cds-type: ASCIIString
-  BankingProductFeature:
+  BankingProductFeatureV2:
     type: object
     required:
     - featureType
@@ -1656,13 +1751,18 @@ definitions:
         - BILL_PAYMENT
         - BONUS_REWARDS
         - CARD_ACCESS
+        - CASHBACK_OFFER
         - COMPLEMENTARY_PRODUCT_DISCOUNTS
         - DIGITAL_BANKING
         - DIGITAL_WALLET
         - DONATE_INTEREST
+        - EXTRA_REPAYMENTS
+        - FRAUD_PROTECTION
         - FREE_TXNS
         - FREE_TXNS_ALLOWANCE
+        - GUARANTOR
         - INSURANCE
+        - INSTALMENT_PLAN
         - INTEREST_FREE
         - INTEREST_FREE_TRANSFERS
         - LOYALTY_PROGRAM
@@ -1673,6 +1773,7 @@ definitions:
         - OTHER
         - OVERDRAFT
         - REDRAW
+        - RELATIONSHIP_MANAGEMENT
         - UNLIMITED_TXNS
       additionalValue:
         type: string
@@ -2139,19 +2240,19 @@ definitions:
       productName:
         type: string
         description: The unique identifier of the account as defined by the data holder (akin to model number for the account)
-  ResponseBankingAccountById:
+  ResponseBankingAccountByIdV2:
     type: object
     required:
     - data
     - links
     properties:
       data:
-        $ref: '#/definitions/BankingAccountDetail'
+        $ref: '#/definitions/BankingAccountDetailV2'
       links:
         $ref: '#/definitions/Links'
       meta:
         $ref: '#/definitions/Meta'
-  BankingAccountDetail:
+  BankingAccountDetailV2:
     allOf:
     - $ref: '#/definitions/BankingAccount'
     - type: object
@@ -2179,7 +2280,7 @@ definitions:
         creditCard:
           $ref: '#/definitions/BankingCreditCardAccount'
         loan:
-          $ref: '#/definitions/BankingLoanAccount'
+          $ref: '#/definitions/BankingLoanAccountV2'
         depositRate:
           type: string
           description: current rate to calculate interest earned being applied to deposit balances as it stands at the time of the API call
@@ -2204,7 +2305,7 @@ definitions:
           items:
             type: object
             allOf:
-            - $ref: '#/definitions/BankingProductFeature'
+            - $ref: '#/definitions/BankingProductFeatureV2'
             - type: object
               properties:
                 isActivated:
@@ -2279,12 +2380,8 @@ definitions:
         type: string
         description: Date that the next payment for the card is due
         x-cds-type: DateString
-  BankingLoanAccount:
+  BankingLoanAccountV2:
     type: object
-    required:
-    - loanEndDate
-    - nextInstalmentDate
-    - repaymentFrequency
     properties:
       originalStartDate:
         type: string
@@ -2547,7 +2644,7 @@ definitions:
         type: string
         description: The currency for the purse
         x-cds-type: CurrencyString
-  ResponseBankingPayeeList:
+  ResponseBankingPayeeListV2:
     type: object
     required:
     - data
@@ -2555,24 +2652,24 @@ definitions:
     - meta
     properties:
       data:
-        $ref: '#/definitions/ResponseBankingPayeeList_data'
+        $ref: '#/definitions/ResponseBankingPayeeListV2_data'
       links:
         $ref: '#/definitions/LinksPaginated'
       meta:
         $ref: '#/definitions/MetaPaginated'
-  ResponseBankingPayeeById:
+  ResponseBankingPayeeByIdV2:
     type: object
     required:
     - data
     - links
     properties:
       data:
-        $ref: '#/definitions/BankingPayeeDetail'
+        $ref: '#/definitions/BankingPayeeDetailV2'
       links:
         $ref: '#/definitions/Links'
       meta:
         $ref: '#/definitions/Meta'
-  BankingPayee:
+  BankingPayeeV2:
     type: object
     required:
     - nickname
@@ -2591,18 +2688,19 @@ definitions:
         description: A description of the payee provided by the customer
       type:
         type: string
-        description: The type of payee. DOMESTIC means a registered payee for domestic payments including NPP. INTERNATIONAL means a registered payee for international payments. BILLER means a registered payee for BPAY
+        description: The type of payee.<br/>DOMESTIC means a registered payee for domestic payments including NPP. <br/>INTERNATIONAL means a registered payee for international payments. <br/>BILLER means a registered payee for BPAY. <br/>DIGITAL_WALLET means a registered payee for a bank's digital wallet
         enum:
         - BILLER
+        - DIGITAL_WALLET
         - DOMESTIC
         - INTERNATIONAL
       creationDate:
         type: string
         description: The date the payee was created by the customer
         x-cds-type: DateString
-  BankingPayeeDetail:
+  BankingPayeeDetailV2:
     allOf:
-    - $ref: '#/definitions/BankingPayee'
+    - $ref: '#/definitions/BankingPayeeV2'
     - type: object
       required:
       - payeeUType
@@ -2612,17 +2710,21 @@ definitions:
           description: Type of object included that describes the payee in detail
           enum:
           - biller
+          - digitalWallet
           - domestic
           - international
-        domestic:
-          $ref: '#/definitions/BankingDomesticPayee'
         biller:
           $ref: '#/definitions/BankingBillerPayee'
+        domestic:
+          $ref: '#/definitions/BankingDomesticPayee'
+        digitalWallet:
+          $ref: '#/definitions/BankingDigitalWalletPayee'
         international:
           $ref: '#/definitions/BankingInternationalPayee'
       x-conditional:
-      - domestic
       - biller
+      - digitalWallet
+      - domestic
       - international
   BankingDomesticPayee:
     type: object
@@ -2717,6 +2819,33 @@ definitions:
         $ref: '#/definitions/BankingInternationalPayee_beneficiaryDetails'
       bankDetails:
         $ref: '#/definitions/BankingInternationalPayee_bankDetails'
+  BankingDigitalWalletPayee:
+    type: object
+    required:
+    - identifier
+    - name
+    - provider
+    - type
+    properties:
+      name:
+        type: string
+        description: "The name assigned to the digital wallet by the owner of the wallet, else the display name provided by the digital wallet provider"
+      identifier:
+        type: string
+        description: The identifier of the digital wallet (dependent on type)
+      type:
+        type: string
+        description: The type of the digital wallet identifier
+        enum:
+        - EMAIL
+        - CONTACT_NAME
+        - TELEPHONE
+      provider:
+        type: string
+        description: The provider of the digital wallet
+        enum:
+        - PAYPAL_AU
+        - OTHER
   ResponseBankingDirectDebitAuthorisationList:
     type: object
     required:
@@ -3262,7 +3391,7 @@ definitions:
           type: string
           description: Array of specific accountIds to obtain authorisations for
           x-cds-type: ASCIIString
-  ResponseBankingProductList_data:
+  ResponseBankingProductListV2_data:
     type: object
     required:
     - products
@@ -3271,32 +3400,8 @@ definitions:
         type: array
         description: The list of products returned.  If the filter results in an empty set then this array may have no records
         items:
-          $ref: '#/definitions/BankingProductV3'
-  BankingProductV3_additionalInformation:
-    type: object
-    properties:
-      overviewUri:
-        type: string
-        description: General overview of the product
-        x-cds-type: URIString
-      termsUri:
-        type: string
-        description: Terms and conditions for the product
-        x-cds-type: URIString
-      eligibilityUri:
-        type: string
-        description: Eligibility rules and criteria for the product
-        x-cds-type: URIString
-      feesAndPricingUri:
-        type: string
-        description: "Description of fees, pricing, discounts, exemptions and bonuses for the product"
-        x-cds-type: URIString
-      bundleUri:
-        type: string
-        description: Description of a bundle that this product can be part of
-        x-cds-type: URIString
-    description: Object that contains links to additional information on specific topics
-  BankingProductV3_cardArt:
+          $ref: '#/definitions/BankingProductV4'
+  BankingProductV4_cardArt:
     type: object
     required:
     - imageUri
@@ -3378,7 +3483,7 @@ definitions:
         description: The list of balances returned
         items:
           $ref: '#/definitions/BankingBalance'
-  ResponseBankingPayeeList_data:
+  ResponseBankingPayeeListV2_data:
     type: object
     required:
     - payees
@@ -3387,7 +3492,7 @@ definitions:
         type: array
         description: The list of payees returned
         items:
-          $ref: '#/definitions/BankingPayee'
+          $ref: '#/definitions/BankingPayeeV2'
   BankingInternationalPayee_beneficiaryDetails:
     type: object
     required:
@@ -3510,9 +3615,10 @@ parameters:
   RequestHeader_x-fapi-auth-date:
     name: x-fapi-auth-date
     in: header
-    description: The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.
+    description: The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended) if the customer has logged in. Not to be included for unauthenticated calls.
     required: false
     type: string
+    x-conditional: true
   RequestHeader_x-fapi-customer-ip-address:
     name: x-fapi-customer-ip-address
     in: header
@@ -3525,6 +3631,7 @@ parameters:
     description: "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls."
     required: false
     type: string
+    x-conditional: true
     x-cds-type: Base64
   ParamAccountOpenStatus:
     name: open-status

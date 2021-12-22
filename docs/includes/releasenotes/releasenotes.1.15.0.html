@@ -248,6 +248,16 @@
 <th>Link</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>Data Quality NFRs</td>
+<td>Updated the data quality definitions regarding consumer data to align to upstream CDR Privacy Safeguards based on OAIC feedback</td>
+<td><a href="../../#data-quality">Data Quality</a></td>
+</tr>
+<tr>
+<td>Navigation</td>
+<td>Added schema list menu navigation and accordion to improve scrolling and usability</td>
+<td>N/A</td>
+</tr>
 </tbody></table>
 <h2 id='api-end-points'>API End Points</h2>
 <table><thead>
@@ -257,6 +267,91 @@
 <th>Link</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>All authenticated resource endpoints</td>
+<td>Updated the schema to indicate the x-fapi-auth-date header is mandatory for authenticated endpoints</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>Get Account Detail v2</td>
+<td>Changes to accomodate lending products without an instalment date or repayment frequency</td>
+<td><a href="../../#get-account-detail">Get Account Details</a></td>
+</tr>
+<tr>
+<td>Register APIs</td>
+<td>Corrected GetDataHolderBrands <code>registerUType</code> and <code>jwksEndpoint</code> schema definitions to clarify their usage in DH to ADR client authentication</td>
+<td><a href="../../#register-apis">Register APIs</a></td>
+</tr>
+<tr>
+<td>Register APIs</td>
+<td>Corrected Register Discovery Document definition defect renaming <code>request_object_signing_alg_values_supported</code> to <code>token_endpoint_auth_signing_alg_values_supported</code></td>
+<td><a href="../../#register-apis">Register APIs</a></td>
+</tr>
+<tr>
+<td>Energy schema</td>
+<td>Fixed a schema bug which included an extraneous comma that caused OAS3 validation issues</td>
+<td><a href="../../#energy-apis">Energy Schema</a></td>
+</tr>
+<tr>
+<td>Energy schema</td>
+<td>Updated EnergyPlanTariffPeriod schema in Energy Accounts and otherCharges objects in Billing and Invoice schemas to cater for C&amp;I tariffs and charges</td>
+<td><a href="../../#energy-apis">Energy Schema</a></td>
+</tr>
+<tr>
+<td>Register APIs</td>
+<td>Updated register swagger definitions to accomodate new endpoint versions covering multiple CDR sectors</td>
+<td><a href="../../#register-apis">Register APIs</a></td>
+</tr>
+<tr>
+<td>Additional document URIs for Banking PRD</td>
+<td>Support for secondary additional information URIs for banking product references</td>
+<td><a href="../../#get-products">Get Products</a></td>
+</tr>
+<tr>
+<td>Binding Energy standards</td>
+<td>Updated energy standards to remove non-binding notices and made changes to reflect &quot;Shared Responsibility Requests&quot; in line with the Rules where previously they were referred to as &quot;Secondary Responsibility Requests&quot;</td>
+<td><a href="../../#energy-apis">Energy Schema</a></td>
+</tr>
+<tr>
+<td>Energy schema</td>
+<td>Made EnergyPlanTariffPeriod.dailySupplyCharges optional to cater for C&amp;I customers</td>
+<td><a href="../../#energy-apis">Energy Schema</a></td>
+</tr>
+<tr>
+<td>Energy schema</td>
+<td>Updated EnergyPlanSolarFeedInTariff.tariffUType with correct ENUM values</td>
+<td><a href="../../#energy-apis">Energy Schema</a></td>
+</tr>
+<tr>
+<td>Energy schema</td>
+<td>Updated EnergyBillingUsageTransaction and EnergyBillingOtherTransaction to accomodate C&amp;I customers</td>
+<td><a href="../../#energy-apis">Energy Schema</a></td>
+</tr>
+<tr>
+<td>Energy schema</td>
+<td>Updated Energy controlledLoad attribute description and Energy bulk balance endpoint menu text for clarity and consistency</td>
+<td><a href="../../#energy-apis">Energy Schema</a></td>
+</tr>
+<tr>
+<td>Energy schema</td>
+<td>Update the list of mandatory attributes in EnergyInvoice schema with correct values and update swagger version to 1.15.0</td>
+<td><a href="../../#energy-apis">Energy Schema</a></td>
+</tr>
+<tr>
+<td>Extended Banking Product feature support</td>
+<td>Changes to accomodate additional enumerated product features</td>
+<td><a href="../../#get-account-detail">Get Account Details</a>, and <br/><a href="../../#get-product-detail">Get Product Details</a></td>
+</tr>
+<tr>
+<td>Digital Wallet Payees</td>
+<td>Changes to accomodate digital wallet payees</td>
+<td><a href="../../#get-payees">Get Payees</a>, and<br/><a href="../../#get-payee-detail">Get Payee Detail</a></td>
+</tr>
+<tr>
+<td>Get Customer Detail v2</td>
+<td>Changes to accomodate customer detail without a valid physical address for individual and non-individual consumers</td>
+<td><a href="../../#get-customer-detail">Get Customer Detail</a></td>
+</tr>
 </tbody></table>
 <h2 id='information-security-profile'>Information Security Profile</h2>
 <table><thead>
@@ -266,6 +361,56 @@
 <th>Link</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>Adoption of FAPI 1.0 Final</td>
+<td>FAPI 1.0 adoption is introduced across three phases in accordance with Decision 209:<ul><li>Phase 1: Voluntary FAPI 1.0 support &amp; hygiene enhancements</li><li>Phase 2: FAPI 1.0 Final (Baseline &amp; Advanced)</li><li>Phase 3: Retire Hybrid Flow</li></ul></td>
+<td><a href="../../#security-profile">Security Profile</a></td>
+</tr>
+<tr>
+<td>Authorisation Scopes</td>
+<td>Added scope <code>cdr-register:read</code> to accommodate authenticated Register calls for participants outside of the banking sector</td>
+<td><a href="../../#authorisation-scopes">Authorisation Scopes</a></td>
+</tr>
+<tr>
+<td>Self-Signed JWT Audience</td>
+<td>An immediate change to re-instate interoperability for Data Holders calling the Data Recipient&#39;s CDR Arrangement Revocation endpoint to revoke consent has been introduced. A phasing out of the multiple audience value support in favour of only the &quot;resource path&quot; for the end point being accessed is also introduced.</td>
+<td><a href="../../#self-signed-jwt-client-authentication">Self-Signed JWT Client Authentication</a></td>
+</tr>
+<tr>
+<td>Data Recipient CDR Arrangement Endpoint</td>
+<td>Armoured the Data Recipient hosted CDR arrangement endpoint by requiring the Data Holder to present the <code>cdr_arrangement_id</code> in a signed JWT</td>
+<td><a href="../../#cdr-arrangement-revocation-end-point">CDR Arrangement Revocation End Point</a></td>
+</tr>
+<tr>
+<td>OIDC Profile Scope</td>
+<td>Added supporting requirements and standards for presenting the OIDC profile scope and individual claims</td>
+<td><a href="../../#scopes-and-claims">Scopes and Claims</a></td>
+</tr>
+<tr>
+<td>Registration Validation</td>
+<td>Added clarification that registration validation and responses must adhere to NFRs</td>
+<td><a href="../../#client_registration">Registration Validation</a></td>
+</tr>
+<tr>
+<td>Data Holder Responsibilities</td>
+<td>Added requirements for CDR Register and Data Holders to cater for missing statuses in Register API responses</td>
+<td><a href="../../#data-holder-responsibilities">Data Holder Responsibilities</a></td>
+</tr>
+<tr>
+<td>Certificate Mangement</td>
+<td>Fixed broken links to statically hosted certificate trust chain files</td>
+<td><a href="../../#certificate-management">Certificate Management</a></td>
+</tr>
+<tr>
+<td>Registration Validation</td>
+<td>Provided clarification on registration request validation JWKS endpoint usage</td>
+<td><a href="../../#registration-validation">Registration Validation</a></td>
+</tr>
+<tr>
+<td>Authorization non-normative example</td>
+<td>Updated the non-normative example to show the request of the <code>sharing_expires_at</code> and <code>refresh_token_expires_at</code> claims</td>
+<td><a href="../../#authorisation-end-point">Authorisation End Point</a></td>
+</tr>
 </tbody></table>
 <h2 id='consumer-experience'>Consumer Experience</h2>
 <table><thead>
@@ -275,6 +420,16 @@
 <th>Link</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>OIDC Profile Scope</td>
+<td>Added CX data language standards for presenting the OIDC profile scope and individual claims</td>
+<td><a href="../../#profile-scope">Profile scope CX</a></td>
+</tr>
+<tr>
+<td>Joint Account CX Standards</td>
+<td>Added the CX standards arising from Decision 162 in support of joint accounts and DOMS</td>
+<td><a href="../../#"></a></td>
+</tr>
 </tbody></table>
 
       </div>

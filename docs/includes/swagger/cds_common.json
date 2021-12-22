@@ -47,9 +47,10 @@
         }, {
           "name" : "x-fapi-auth-date",
           "in" : "header",
-          "description" : "The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.",
+          "description" : "The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended) if the customer is currently logged. Otherwise optional where the customer has not logged in. Not to be included for unauthenticated calls.",
           "required" : false,
-          "type" : "string"
+          "type" : "string",
+          "x-conditional" : true
         }, {
           "name" : "x-fapi-customer-ip-address",
           "in" : "header",
@@ -62,6 +63,7 @@
           "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
           "required" : false,
           "type" : "string",
+          "x-conditional" : true,
           "x-cds-type" : "Base64"
         } ],
         "responses" : {
@@ -102,7 +104,7 @@
       "get" : {
         "tags" : [ "Common", "Customer" ],
         "summary" : "Get Customer Detail",
-        "description" : "Obtain detailed information on the authorised customer within the current session.",
+        "description" : "Obtain detailed information on the authorised customer within the current session.\n\nObsolete versions: [v1](includes/obsolete/get-customer-detail-v1.html)",
         "operationId" : "getCustomerDetail",
         "parameters" : [ {
           "name" : "x-v",
@@ -125,9 +127,10 @@
         }, {
           "name" : "x-fapi-auth-date",
           "in" : "header",
-          "description" : "The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.",
+          "description" : "The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended) if the customer is currently logged. Otherwise optional where the customer has not logged in. Not to be included for unauthenticated calls.",
           "required" : false,
-          "type" : "string"
+          "type" : "string",
+          "x-conditional" : true
         }, {
           "name" : "x-fapi-customer-ip-address",
           "in" : "header",
@@ -140,6 +143,7 @@
           "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
           "required" : false,
           "type" : "string",
+          "x-conditional" : true,
           "x-cds-type" : "Base64"
         } ],
         "responses" : {
@@ -156,7 +160,7 @@
               }
             },
             "schema" : {
-              "$ref" : "#/definitions/ResponseCommonCustomerDetail"
+              "$ref" : "#/definitions/ResponseCommonCustomerDetailV2"
             }
           },
           "4xx" : {
@@ -173,7 +177,7 @@
           }
         },
         "x-scopes" : [ "common:customer.detail:read" ],
-        "x-version" : "1"
+        "x-version" : "2"
       }
     },
     "/discovery/status" : {
@@ -332,12 +336,12 @@
         }
       }
     },
-    "ResponseCommonCustomerDetail" : {
+    "ResponseCommonCustomerDetailV2" : {
       "type" : "object",
       "required" : [ "data", "links" ],
       "properties" : {
         "data" : {
-          "$ref" : "#/definitions/ResponseCommonCustomerDetail_data"
+          "$ref" : "#/definitions/ResponseCommonCustomerDetailV2_data"
         },
         "links" : {
           "$ref" : "#/definitions/Links"
@@ -393,7 +397,7 @@
       },
       "x-conditional" : [ "occupationCodeVersion" ]
     },
-    "CommonPersonDetail" : {
+    "CommonPersonDetailV2" : {
       "allOf" : [ {
         "$ref" : "#/definitions/CommonPerson"
       }, {
@@ -416,7 +420,7 @@
           },
           "physicalAddresses" : {
             "type" : "array",
-            "description" : "Must contain at least one address. One and only one address may have the purpose of REGISTERED. Zero or one, and no more than one, record may have the purpose of MAIL. If zero then the REGISTERED address is to be used for mail",
+            "description" : "Array is mandatory but may be empty if no valid addresses are held. One and only one address may have the purpose of REGISTERED. Zero or one, and no more than one, record may have the purpose of MAIL. If zero then the REGISTERED address is to be used for mail",
             "items" : {
               "$ref" : "#/definitions/CommonPhysicalAddressWithPurpose"
             }
@@ -499,7 +503,7 @@
       },
       "x-conditional" : [ "industryCodeVersion" ]
     },
-    "CommonOrganisationDetail" : {
+    "CommonOrganisationDetailV2" : {
       "allOf" : [ {
         "$ref" : "#/definitions/CommonOrganisation"
       }, {
@@ -508,7 +512,7 @@
         "properties" : {
           "physicalAddresses" : {
             "type" : "array",
-            "description" : "Must contain at least one address. One and only one address may have the purpose of REGISTERED. Zero or one, and no more than one, record may have the purpose of MAIL. If zero then the REGISTERED address is to be used for mail",
+            "description" : "Array is mandatory but may be empty if no valid addresses are held. One and only one address may have the purpose of REGISTERED. Zero or one, and no more than one, record may have the purpose of MAIL. If zero then the REGISTERED address is to be used for mail",
             "items" : {
               "$ref" : "#/definitions/CommonPhysicalAddressWithPurpose"
             }
@@ -850,7 +854,7 @@
       },
       "x-conditional" : [ "person", "organisation" ]
     },
-    "ResponseCommonCustomerDetail_data" : {
+    "ResponseCommonCustomerDetailV2_data" : {
       "type" : "object",
       "required" : [ "customerUType" ],
       "properties" : {
@@ -861,11 +865,11 @@
         },
         "person" : {
           "description" : "Mandatory if `customerUType` is `person`",
-          "$ref" : "#/definitions/CommonPersonDetail"
+          "$ref" : "#/definitions/CommonPersonDetailV2"
         },
         "organisation" : {
           "description" : "Mandatory if `customerUType` is `organisation`",
-          "$ref" : "#/definitions/CommonOrganisationDetail"
+          "$ref" : "#/definitions/CommonOrganisationDetailV2"
         }
       },
       "x-conditional" : [ "person", "organisation" ]
@@ -917,9 +921,10 @@
     "RequestHeader_x-fapi-auth-date" : {
       "name" : "x-fapi-auth-date",
       "in" : "header",
-      "description" : "The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.",
+      "description" : "The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended) if the customer is currently logged. Otherwise optional where the customer has not logged in. Not to be included for unauthenticated calls.",
       "required" : false,
-      "type" : "string"
+      "type" : "string",
+      "x-conditional" : true
     },
     "RequestHeader_x-fapi-customer-ip-address" : {
       "name" : "x-fapi-customer-ip-address",
@@ -934,6 +939,7 @@
       "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
       "required" : false,
       "type" : "string",
+      "x-conditional" : true,
       "x-cds-type" : "Base64"
     }
   }
