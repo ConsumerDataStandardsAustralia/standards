@@ -3533,7 +3533,7 @@
                         ]
                     },
                     "amount": {
-                        "description": "The amount of the charge in cents",
+                        "description": "The amount of the charge",
                         "type": "string",
                         "x-cds-type": "AmountString"
                     },
