@@ -214,14 +214,38 @@
       <ul id="toc" class="toc-list-h1">
           <li>
             <a href="#endpoint-version-schedule" class="toc-h1 toc-link" data-title="Endpoint Version Schedule">Endpoint Version Schedule</a>
+          </li>
+          <li>
+            <a href="#data-holders" class="toc-h1 toc-link" data-title="Data Holders">Data Holders</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#data-holders" class="toc-h2 toc-link" data-title="Data Holders">Data Holders</a>
+                    <a href="#banking-apis" class="toc-h2 toc-link" data-title="Banking APIs">Banking APIs</a>
                   </li>
                   <li>
-                    <a href="#data-recipients" class="toc-h2 toc-link" data-title="Data Recipients">Data Recipients</a>
+                    <a href="#energy-apis" class="toc-h2 toc-link" data-title="Energy APIs">Energy APIs</a>
+                  </li>
+                  <li>
+                    <a href="#energy-shared-responsibility-apis" class="toc-h2 toc-link" data-title="Energy Shared Responsibility APIs">Energy Shared Responsibility APIs</a>
+                  </li>
+                  <li>
+                    <a href="#dynamic-client-registration-apis" class="toc-h2 toc-link" data-title="Dynamic Client Registration APIs">Dynamic Client Registration APIs</a>
+                  </li>
+                  <li>
+                    <a href="#security-apis" class="toc-h2 toc-link" data-title="Security APIs">Security APIs</a>
+                  </li>
+                  <li>
+                    <a href="#common-apis" class="toc-h2 toc-link" data-title="Common APIs">Common APIs</a>
+                  </li>
+                  <li>
+                    <a href="#admin-apis" class="toc-h2 toc-link" data-title="Admin APIs">Admin APIs</a>
                   </li>
               </ul>
+          </li>
+          <li>
+            <a href="#cdr-register-apis" class="toc-h1 toc-link" data-title="CDR Register APIs">CDR Register APIs</a>
+          </li>
+          <li>
+            <a href="#data-recipients" class="toc-h1 toc-link" data-title="Data Recipients">Data Recipients</a>
           </li>
       </ul>
         <ul class="toc-footer">
@@ -240,9 +264,9 @@
 <p><strong>Date Introduced</strong> indicates the release of the standards, including release date, when the endpoint version was first introduced. This is not the Binding Date.</p>
 
 <p><strong>Date Deprecated</strong> indicates the release of the standards, including release date, when the endpoint version was first marked for deprecation. This is not the Retirement Date.</p>
-<h2 id='data-holders'>Data Holders</h2>
+<h1 id='data-holders'>Data Holders</h1>
 <p>The following versioning schedule is reflective of the endpoints hosted by Data Holders. Data Holders should take into account their phasing obligations in accordance with the CDR Rules as well as any exemptions granted, when determining which API versions are considered applicable.</p>
-
+<h2 id='banking-apis'>Banking APIs</h2>
 <table><thead>
 <tr>
 <th>Section</th>
@@ -259,8 +283,8 @@
 <tr>
 <td>Banking APIs</td>
 <td>Get Products</td>
-<td>/banking/products</td>
-<td>GET</td>
+<td><code>/banking/products</code></td>
+<td><span class="method get">GET</span></td>
 <td>V1</td>
 <td>2020-02-01</td>
 <td>2020-09-29</td>
@@ -269,9 +293,9 @@
 </tr>
 <tr>
 <td>Banking APIs</td>
-<td>Get Products</td>
-<td>/banking/products</td>
-<td>GET</td>
+<td>GetProducts</td>
+<td><code>/banking/products</code></td>
+<td><span class="method get">GET</span></td>
 <td>V2</td>
 <td>2020-07-31</td>
 <td>2021-05-31</td>
@@ -280,9 +304,9 @@
 </tr>
 <tr>
 <td>Banking APIs</td>
-<td>Get Products</td>
-<td>/banking/products</td>
-<td>GET</td>
+<td>GetProducts</td>
+<td><code>/banking/products</code></td>
+<td><span class="method get">GET</span></td>
 <td>V3</td>
 <td>2021-02-28</td>
 <td>N/A</td>
@@ -291,9 +315,9 @@
 </tr>
 <tr>
 <td>Banking APIs</td>
-<td>Get Product Detail</td>
-<td>/banking/product/{productId}</td>
-<td>GET</td>
+<td>GetProduct Detail</td>
+<td><code>/banking/product/{productId}</code></td>
+<td><span class="method get">GET</span></td>
 <td>V1</td>
 <td>2020-02-01</td>
 <td>2020-09-29</td>
@@ -302,9 +326,9 @@
 </tr>
 <tr>
 <td>Banking APIs</td>
-<td>Get Product Detail</td>
-<td>/banking/product/{productId}</td>
-<td>GET</td>
+<td>GetProduct Detail</td>
+<td><code>/banking/product/{productId}</code></td>
+<td><span class="method get">GET</span></td>
 <td>V2</td>
 <td>2020-07-31</td>
 <td>2021-05-31</td>
@@ -313,20 +337,31 @@
 </tr>
 <tr>
 <td>Banking APIs</td>
-<td>Get Product Detail</td>
-<td>/banking/product/{productId}</td>
-<td>GET</td>
+<td>GetProduct Detail</td>
+<td><code>/banking/product/{productId}</code></td>
+<td><span class="method get">GET</span></td>
 <td>V3</td>
 <td>2021-02-28</td>
-<td>N/A</td>
+<td>2023-02-28</td>
 <td>2020-04-17, V1.3.0</td>
+<td>2021-12-23, V1.15.0</td>
+</tr>
+<tr>
+<td>Banking APIs</td>
+<td>GetProduct Detail</td>
+<td><code>/banking/product/{productId}</code></td>
+<td><span class="method get">GET</span></td>
+<td>V4</td>
+<td>2022-11-31</td>
+<td>N/A</td>
+<td>2021-12-23, V1.15.0</td>
 <td>N/A</td>
 </tr>
 <tr>
 <td>Banking APIs</td>
-<td>Get Accounts</td>
-<td>/banking/accounts/</td>
-<td>GET</td>
+<td>GetAccounts</td>
+<td><code>/banking/accounts/</code></td>
+<td><span class="method get">GET</span></td>
 <td>V1</td>
 <td>2020-07-01</td>
 <td>N/A</td>
@@ -335,9 +370,9 @@
 </tr>
 <tr>
 <td>Banking APIs</td>
-<td>Get Account Balances</td>
-<td>/banking/accounts/balances</td>
-<td>GET</td>
+<td>GetAccount Balances</td>
+<td><code>/banking/accounts/balances</code></td>
+<td><span class="method get">GET</span></td>
 <td>V1</td>
 <td>2020-07-01</td>
 <td>N/A</td>
@@ -346,9 +381,9 @@
 </tr>
 <tr>
 <td>Banking APIs</td>
-<td>Get Balances For Specific Accounts</td>
-<td>/banking/accounts/balances</td>
-<td>POST</td>
+<td>GetBalances For Specific Accounts</td>
+<td><code>/banking/accounts/balances</code></td>
+<td><span class="method post">POST</span></td>
 <td>V1</td>
 <td>2020-07-01</td>
 <td>N/A</td>
@@ -357,9 +392,9 @@
 </tr>
 <tr>
 <td>Banking APIs</td>
-<td>Get Account Balance</td>
-<td>/banking/accounts/{accountId}/balance</td>
-<td>GET</td>
+<td>GetAccount Balance</td>
+<td><code>/banking/accounts/{accountId}/balance</code></td>
+<td><span class="method get">GET</span></td>
 <td>V1</td>
 <td>2020-07-01</td>
 <td>N/A</td>
@@ -368,20 +403,31 @@
 </tr>
 <tr>
 <td>Banking APIs</td>
-<td>Get Account Detail</td>
-<td>/banking/accounts/{accountId}/</td>
-<td>GET</td>
+<td>GetAccount Detail</td>
+<td><code>/banking/accounts/{accountId}</code></td>
+<td><span class="method get">GET</span></td>
 <td>V1</td>
 <td>2020-11-01</td>
-<td>N/A</td>
+<td>2023-02-28</td>
 <td>2019-09-30, V1.0.0</td>
+<td>2021-12-23, V1.15.0</td>
+</tr>
+<tr>
+<td>Banking APIs</td>
+<td>GetAccount Detail</td>
+<td><code>/banking/accounts/{accountId}</code></td>
+<td><span class="method get">GET</span></td>
+<td>V2</td>
+<td>2022-11-31</td>
+<td>N/A</td>
+<td>2021-12-23, V1.15.0</td>
 <td>N/A</td>
 </tr>
 <tr>
 <td>Banking APIs</td>
-<td>Get Transactions For Account</td>
-<td>/banking/accounts/{accountId}/transactions</td>
-<td>GET</td>
+<td>GetTransactions For Account</td>
+<td><code>/banking/accounts/{accountId}/transactions</code></td>
+<td><span class="method get">GET</span></td>
 <td>V1</td>
 <td>2020-07-01</td>
 <td>N/A</td>
@@ -390,9 +436,9 @@
 </tr>
 <tr>
 <td>Banking APIs</td>
-<td>Get Transaction Detail</td>
-<td>/banking/accounts/{accountId}/transactions/{transactionId}</td>
-<td>GET</td>
+<td>GetTransaction Detail</td>
+<td><code>/banking/accounts/{accountId}/</code><br/><code>transactions/{transactionId}</code></td>
+<td><span class="method get">GET</span></td>
 <td>V1</td>
 <td>2020-07-01</td>
 <td>N/A</td>
@@ -401,9 +447,9 @@
 </tr>
 <tr>
 <td>Banking APIs</td>
-<td>Get Direct Debits For Account</td>
-<td>/banking/accounts/{accountId}/direct-debits</td>
-<td>GET</td>
+<td>GetDirect Debits For Account</td>
+<td><code>/banking/accounts/{accountId}/direct-debits</code></td>
+<td><span class="method get">GET</span></td>
 <td>V1</td>
 <td>2020-11-01</td>
 <td>N/A</td>
@@ -412,9 +458,9 @@
 </tr>
 <tr>
 <td>Banking APIs</td>
-<td>Get Bulk Direct Debits</td>
-<td>/banking/accounts/direct-debits</td>
-<td>GET</td>
+<td>GetBulk Direct Debits</td>
+<td><code>/banking/accounts/direct-debits</code></td>
+<td><span class="method get">GET</span></td>
 <td>V1</td>
 <td>2020-11-01</td>
 <td>N/A</td>
@@ -423,9 +469,9 @@
 </tr>
 <tr>
 <td>Banking APIs</td>
-<td>Get Direct Debits For Specific Accounts</td>
-<td>/banking/accounts/direct-debits</td>
-<td>POST</td>
+<td>GetDirect Debits For Specific Accounts</td>
+<td><code>/banking/accounts/direct-debits</code></td>
+<td><span class="method post">POST</span></td>
 <td>V1</td>
 <td>2020-11-01</td>
 <td>N/A</td>
@@ -434,9 +480,9 @@
 </tr>
 <tr>
 <td>Banking APIs</td>
-<td>Get Scheduled Payments For Account</td>
-<td>/banking/accounts/{accountId}/payments/scheduled</td>
-<td>GET</td>
+<td>GetScheduled Payments For Account</td>
+<td><code>/banking/accounts/{accountId}/</code><br/><code>payments/scheduled</code></td>
+<td><span class="method get">GET</span></td>
 <td>V1</td>
 <td>2020-11-01</td>
 <td>N/A</td>
@@ -445,9 +491,9 @@
 </tr>
 <tr>
 <td>Banking APIs</td>
-<td>Get Scheduled Payments Bulk</td>
-<td>/banking/payments/scheduled</td>
-<td>GET</td>
+<td>GetScheduled Payments Bulk</td>
+<td><code>/banking/payments/scheduled</code></td>
+<td><span class="method get">GET</span></td>
 <td>V1</td>
 <td>2020-11-01</td>
 <td>N/A</td>
@@ -456,9 +502,9 @@
 </tr>
 <tr>
 <td>Banking APIs</td>
-<td>Get Scheduled Payments For Specific Accounts</td>
-<td>/banking/payments/scheduled</td>
-<td>POST</td>
+<td>GetScheduled Payments For Specific Accounts</td>
+<td><code>/banking/payments/scheduled</code></td>
+<td><span class="method post">POST</span></td>
 <td>V1</td>
 <td>2020-11-01</td>
 <td>N/A</td>
@@ -467,31 +513,440 @@
 </tr>
 <tr>
 <td>Banking APIs</td>
-<td>Get Payees</td>
-<td>/banking/payees</td>
-<td>GET</td>
+<td>GetPayees</td>
+<td><code>/banking/payees</code></td>
+<td><span class="method get">GET</span></td>
 <td>V1</td>
 <td>2020-11-01</td>
+<td>2022-08-31</td>
+<td>2019-09-30, V1.0.0</td>
+<td>2021-12-23, V1.15.0</td>
+</tr>
+<tr>
+<td>Banking APIs</td>
+<td>GetPayees</td>
+<td><code>/banking/payees</code></td>
+<td><span class="method get">GET</span></td>
+<td>V2</td>
+<td>2022-07-31</td>
 <td>N/A</td>
 <td>2019-09-30, V1.0.0</td>
 <td>N/A</td>
 </tr>
 <tr>
 <td>Banking APIs</td>
-<td>Get Payee Detail</td>
-<td>/banking/payees/{payeeId}</td>
-<td>GET</td>
+<td>GetPayee Detail</td>
+<td><code>/banking/payees/{payeeId}</code></td>
+<td><span class="method get">GET</span></td>
 <td>V1</td>
 <td>2020-11-01</td>
-<td>N/A</td>
+<td>2022-08-31</td>
 <td>2019-09-30, V1.0.0</td>
+<td>2021-12-23, V1.15.0</td>
+</tr>
+<tr>
+<td>Banking APIs</td>
+<td>GetPayee Detail</td>
+<td><code>/banking/payees/{payeeId}</code></td>
+<td><span class="method get">GET</span></td>
+<td>V2</td>
+<td>2022-07-31</td>
+<td>N/A</td>
+<td>2021-12-23, V1.15.0</td>
 <td>N/A</td>
 </tr>
+</tbody></table>
+<h2 id='energy-apis'>Energy APIs</h2>
+<table><thead>
+<tr>
+<th>Section</th>
+<th>Sub-section</th>
+<th>Endpoint</th>
+<th>Method</th>
+<th>Version</th>
+<th>Binding Date</th>
+<th>Retirement Date</th>
+<th>Date Introduced</th>
+<th>Date Deprecated</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Energy APIs</td>
+<td>Get Generic Plans</td>
+<td><code>/energy/plans</code></td>
+<td><span class="method get">GET</span></td>
+<td>V1</td>
+<td>2022-10-01</td>
+<td>N/A</td>
+<td>2021-10-29, V1.14.0</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>Energy APIs</td>
+<td>Get Generic Plan Detail</td>
+<td><code>/energy/plans/{planId}</code></td>
+<td><span class="method get">GET</span></td>
+<td>V1</td>
+<td>2022-10-01</td>
+<td>N/A</td>
+<td>2021-10-29, V1.14.0</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>Energy APIs</td>
+<td>Get Energy Accounts</td>
+<td><code>/energy/accounts</code></td>
+<td><span class="method get">GET</span></td>
+<td>V1</td>
+<td>2022-11-15</td>
+<td>N/A</td>
+<td>2021-10-29, V1.14.0</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>Energy APIs</td>
+<td>Get Energy Account Detail</td>
+<td><code>/energy/accounts/{accountId}</code></td>
+<td><span class="method get">GET</span></td>
+<td>V1</td>
+<td>2022-11-15</td>
+<td>N/A</td>
+<td>2021-10-29, V1.14.0</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>Energy APIs</td>
+<td>Get Agreed Payment Schedule</td>
+<td><code>/energy/accounts/{accountId}/payment-schedule</code></td>
+<td><span class="method get">GET</span></td>
+<td>V1</td>
+<td>2022-11-15</td>
+<td>N/A</td>
+<td>2021-10-29, V1.14.0</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>Energy APIs</td>
+<td>Get Concessions</td>
+<td><code>/energy/accounts/{accountId}/concessions</code></td>
+<td><span class="method get">GET</span></td>
+<td>V1</td>
+<td>2022-11-15</td>
+<td>N/A</td>
+<td>2021-10-29, V1.14.0</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>Energy APIs</td>
+<td>Get Balance For Energy Account</td>
+<td><code>/energy/accounts/{accountId}/balance</code></td>
+<td><span class="method get">GET</span></td>
+<td>V1</td>
+<td>2022-11-15</td>
+<td>N/A</td>
+<td>2021-10-29, V1.14.0</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>Energy APIs</td>
+<td>Get Bulk Balances (Energy)</td>
+<td><code>/energy/accounts/balances</code></td>
+<td><span class="method get">GET</span></td>
+<td>V1</td>
+<td>2022-11-15</td>
+<td>N/A</td>
+<td>2021-10-29, V1.14.0</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>Energy APIs</td>
+<td>Get Balances For Specific Energy Accounts</td>
+<td><code>/energy/accounts/balances</code></td>
+<td><span class="method get">GET</span></td>
+<td>V1</td>
+<td>2022-11-15</td>
+<td>N/A</td>
+<td>2021-10-29, V1.14.0</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>Energy APIs</td>
+<td>Get Invoices For Account</td>
+<td><code>/energy/accounts/{accountId}/invoices</code></td>
+<td><span class="method get">GET</span></td>
+<td>V1</td>
+<td>2022-11-15</td>
+<td>N/A</td>
+<td>2021-10-29, V1.14.0</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>Energy APIs</td>
+<td>Get Bulk Invoices</td>
+<td><code>/energy/accounts/invoices</code></td>
+<td><span class="method get">GET</span></td>
+<td>V1</td>
+<td>2022-11-15</td>
+<td>N/A</td>
+<td>2021-10-29, V1.14.0</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>Energy APIs</td>
+<td>Get Invoices For Specific Accounts</td>
+<td><code>/energy/accounts/invoices</code></td>
+<td><span class="method post">POST</span></td>
+<td>V1</td>
+<td>2022-11-15</td>
+<td>N/A</td>
+<td>2021-10-29, V1.14.0</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>Energy APIs</td>
+<td>Get Billing For Account</td>
+<td><code>/energy/accounts/{accountId}/billing</code></td>
+<td><span class="method get">GET</span></td>
+<td>V1</td>
+<td>2022-11-15</td>
+<td>N/A</td>
+<td>2021-10-29, V1.14.0</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>Energy APIs</td>
+<td>Get Bulk Billing</td>
+<td><code>/energy/accounts/billing</code></td>
+<td><span class="method get">GET</span></td>
+<td>V1</td>
+<td>2022-11-15</td>
+<td>N/A</td>
+<td>2021-10-29, V1.14.0</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>Energy APIs</td>
+<td>Get Billing For Specific Accounts</td>
+<td><code>/energy/accounts/billing</code></td>
+<td><span class="method post">POST</span></td>
+<td>V1</td>
+<td>2022-11-15</td>
+<td>N/A</td>
+<td>2021-10-29, V1.14.0</td>
+<td>N/A</td>
+</tr>
+</tbody></table>
+<h2 id='energy-shared-responsibility-apis'>Energy Shared Responsibility APIs</h2>
+<table><thead>
+<tr>
+<th>Section</th>
+<th>Sub-section</th>
+<th>Endpoint</th>
+<th>Method</th>
+<th>Version</th>
+<th>Binding Date</th>
+<th>Retirement Date</th>
+<th>Date Introduced</th>
+<th>Date Deprecated</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Energy APIs</td>
+<td>Get Service Points</td>
+<td><code>/energy/electricity/servicepoints</code></td>
+<td><span class="method get">GET</span></td>
+<td>V1</td>
+<td>2022-11-15</td>
+<td>N/A</td>
+<td>2021-10-29, V1.14.0</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>Energy APIs</td>
+<td>Get Service Point Detail</td>
+<td><code>/energy/electricity/servicepoints/{servicePointId}</code></td>
+<td><span class="method get">GET</span></td>
+<td>V1</td>
+<td>2022-11-15</td>
+<td>N/A</td>
+<td>2021-10-29, V1.14.0</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>Energy APIs</td>
+<td>Get Usage For Service Point</td>
+<td><code>/energy/electricity/servicepoints/&lt;br/&gt;{servicePointId}/usage</code></td>
+<td><span class="method get">GET</span></td>
+<td>V1</td>
+<td>2022-11-15</td>
+<td>N/A</td>
+<td>2021-10-29, V1.14.0</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>Energy APIs</td>
+<td>Get Bulk Usage</td>
+<td><code>/energy/electricity/servicepoints/usage</code></td>
+<td><span class="method get">GET</span></td>
+<td>V1</td>
+<td>2022-11-15</td>
+<td>N/A</td>
+<td>2021-10-29, V1.14.0</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>Energy APIs</td>
+<td>Get Usage For Specific Service Points</td>
+<td><code>/energy/electricity/servicepoints/usage</code></td>
+<td><span class="method get">GET</span></td>
+<td>V1</td>
+<td>2022-11-15</td>
+<td>N/A</td>
+<td>2021-10-29, V1.14.0</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>Energy APIs</td>
+<td>Get DER For Service Point</td>
+<td><code>/energy/electricity/servicepoints/</code><br/><code>{servicePointId}/der</code></td>
+<td><span class="method get">GET</span></td>
+<td>V1</td>
+<td>2022-11-15</td>
+<td>N/A</td>
+<td>2021-10-29, V1.14.0</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>Energy APIs</td>
+<td>Get Bulk DER</td>
+<td><code>/energy/electricity/servicepoints/der</code></td>
+<td><span class="method get">GET</span></td>
+<td>V1</td>
+<td>2022-11-15</td>
+<td>N/A</td>
+<td>2021-10-29, V1.14.0</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>Energy APIs</td>
+<td>Get DER For Specific Service Points</td>
+<td><code>/energy/electricity/servicepoints/der</code></td>
+<td><span class="method post">POST</span></td>
+<td>V1</td>
+<td>2022-11-15</td>
+<td>N/A</td>
+<td>2021-10-29, V1.14.0</td>
+<td>N/A</td>
+</tr>
+</tbody></table>
+<h2 id='dynamic-client-registration-apis'>Dynamic Client Registration APIs</h2>
+<table><thead>
+<tr>
+<th>Section</th>
+<th>Sub-section</th>
+<th>Endpoint</th>
+<th>Method</th>
+<th>Version</th>
+<th>Binding Date</th>
+<th>Retirement Date</th>
+<th>Date Introduced</th>
+<th>Date Deprecated</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>DCR APIs</td>
+<td>Register Data Recipient oAuth Client</td>
+<td><code>/register</code></td>
+<td><span class="method post">POST</span></td>
+<td>None</td>
+<td>2021-10-29*</td>
+<td>N/A</td>
+<td>2021-10-29, V1.14.0*</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>DCR APIs</td>
+<td>Get oAuth Client Registration</td>
+<td><code>/register/{ClientId}</code></td>
+<td><span class="method get">GET</span></td>
+<td>None</td>
+<td>2021-10-29*</td>
+<td>N/A</td>
+<td>2021-10-29, V1.14.0*</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>DCR APIs</td>
+<td>Update Data Recipient Registration</td>
+<td><code>/register/{ClientId}</code></td>
+<td><span class="method put">PUT</span></td>
+<td>None</td>
+<td>2021-10-29*</td>
+<td>N/A</td>
+<td>2021-10-29, V1.14.0*</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>DCR APIs</td>
+<td>Delete Data Recipient oAuth Client Registration</td>
+<td><code>/register/{ClientId}</code></td>
+<td><span class="method delete">DELETE</span></td>
+<td>None</td>
+<td>2021-10-29*</td>
+<td>N/A</td>
+<td>2021-10-29, V1.14.0*</td>
+<td>N/A</td>
+</tr>
+</tbody></table>
+
+<p><strong>NOTE:</strong> The CDR Register standards including Dynamic Client Registration were introduced into the Consumer Data Standards in v1.14.0. Prior to this the CDR Register specifications were hosted by the ACCC.</p>
+<h2 id='security-apis'>Security APIs</h2>
+<table><thead>
+<tr>
+<th>Section</th>
+<th>Sub-section</th>
+<th>Endpoint</th>
+<th>Method</th>
+<th>Version</th>
+<th>Binding Date</th>
+<th>Retirement Date</th>
+<th>Date Introduced</th>
+<th>Date Deprecated</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>InfoSec Profile</td>
+<td>Security Endpoints &gt; CDR Arrangement Revocation Endpoint</td>
+<td><code>&lt;cdr_arrangement_revocation_endpoint&gt;</code></td>
+<td><span class="method post">POST</span></td>
+<td>1.5.0</td>
+<td>2020-11-01</td>
+<td>N/A</td>
+<td>2020-04-17, V1.2.0</td>
+<td>N/A</td>
+</tr>
+</tbody></table>
+
+<p><strong>NOTE</strong> Endpoints defined in normative references are not provided here.</p>
+<h2 id='common-apis'>Common APIs</h2>
+<table><thead>
+<tr>
+<th>Section</th>
+<th>Sub-section</th>
+<th>Endpoint</th>
+<th>Method</th>
+<th>Version</th>
+<th>Binding Date</th>
+<th>Retirement Date</th>
+<th>Date Introduced</th>
+<th>Date Deprecated</th>
+</tr>
+</thead><tbody>
 <tr>
 <td>Common APIs</td>
 <td>Get Customer</td>
-<td>/common/customer</td>
-<td>GET</td>
+<td><code>/common/customer</code></td>
+<td><span class="method get">GET</span></td>
 <td>V1</td>
 <td>2020-07-01</td>
 <td>N/A</td>
@@ -501,19 +956,30 @@
 <tr>
 <td>Common APIs</td>
 <td>Get Customer Detail</td>
-<td>/common/customer/detail</td>
-<td>GET</td>
+<td><code>/common/customer/detail</code></td>
+<td><span class="method get">GET</span></td>
 <td>V1</td>
 <td>2020-11-01</td>
-<td>N/A</td>
+<td>2023-02-28</td>
 <td>2019-09-30, V1.0.0</td>
+<td>2021-12-23, V1.15.0</td>
+</tr>
+<tr>
+<td>Common APIs</td>
+<td>Get Customer Detail</td>
+<td><code>/common/customer/detail</code></td>
+<td><span class="method get">GET</span></td>
+<td>V2</td>
+<td>2022-11-31</td>
+<td>N/A</td>
+<td>2021-12-23, V1.15.0</td>
 <td>N/A</td>
 </tr>
 <tr>
 <td>Common APIs</td>
 <td>Get Status</td>
-<td>/discovery/status</td>
-<td>GET</td>
+<td><code>/discovery/status</code></td>
+<td><span class="method get">GET</span></td>
 <td>V1</td>
 <td>2020-07-01</td>
 <td>N/A</td>
@@ -523,19 +989,34 @@
 <tr>
 <td>Common APIs</td>
 <td>Get Outages</td>
-<td>/discovery/outages</td>
-<td>GET</td>
+<td><code>/discovery/outages</code></td>
+<td><span class="method get">GET</span></td>
 <td>V1</td>
 <td>2020-07-01</td>
 <td>N/A</td>
 <td>2019-09-30, V1.0.0</td>
 <td>N/A</td>
 </tr>
+</tbody></table>
+<h2 id='admin-apis'>Admin APIs</h2>
+<table><thead>
+<tr>
+<th>Section</th>
+<th>Sub-section</th>
+<th>Endpoint</th>
+<th>Method</th>
+<th>Version</th>
+<th>Binding Date</th>
+<th>Retirement Date</th>
+<th>Date Introduced</th>
+<th>Date Deprecated</th>
+</tr>
+</thead><tbody>
 <tr>
 <td>Admin APIs</td>
 <td>Metadata Update</td>
-<td>/admin/register/metadata</td>
-<td>POST</td>
+<td><code>/admin/register/metadata</code></td>
+<td><span class="method post">POST</span></td>
 <td>V1</td>
 <td>2020-07-01</td>
 <td>N/A</td>
@@ -545,8 +1026,8 @@
 <tr>
 <td>Admin APIs</td>
 <td>Get Metrics</td>
-<td>/admin/metrics</td>
-<td>GET</td>
+<td><code>/admin/metrics</code></td>
+<td><span class="method get">GET</span></td>
 <td>V1</td>
 <td>2020-07-01</td>
 <td>2021-10-31</td>
@@ -556,8 +1037,8 @@
 <tr>
 <td>Admin APIs</td>
 <td>Get Metrics</td>
-<td>/admin/metrics</td>
-<td>GET</td>
+<td><code>/admin/metrics</code></td>
+<td><span class="method get">GET</span></td>
 <td>V2</td>
 <td>2021-07-31</td>
 <td>2022-12-05</td>
@@ -567,27 +1048,186 @@
 <tr>
 <td>Admin APIs</td>
 <td>Get Metrics</td>
-<td>/admin/metrics</td>
-<td>GET</td>
+<td><code>/admin/metrics</code></td>
+<td><span class="method get">GET</span></td>
 <td>V3</td>
 <td>2022-10-01</td>
 <td>N/A</td>
 <td>2021-10-06, V1.12.0</td>
 <td>N/A</td>
 </tr>
+</tbody></table>
+<h1 id='cdr-register-apis'>CDR Register APIs</h1>
+<aside class="warning">
+  These endpoints are not implemented by Data Holders and Data Recipients. They are hosted by the Register for consumption by participants.
+  Data Holders and Data Recipient Software Products are required to call these endpoints to obtain metadata that enables connection and registration between participants as well as obtaining the status of participants in the CDR.
+  These statuses are provided authoritatively by the Register to allow participants to determine whether a connecting third-party is permitted to perform registration requests or data sharing requests.
+</aside>
+
+<table><thead>
 <tr>
-<td>InfoSec Profile</td>
-<td>Endpoints</td>
-<td>CDR Arrangement Revocation Endpoint</td>
-<td>POST</td>
-<td>1.5.0</td>
-<td>2020-11-01</td>
+<th>Section</th>
+<th>Sub-section</th>
+<th>Endpoint</th>
+<th>Method</th>
+<th>Version</th>
+<th>Binding Date</th>
+<th>Retirement Date</th>
+<th>Date Introduced</th>
+<th>Date Deprecated</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>CDR Register APIs</td>
+<td>Get OpenId Provider Config</td>
+<td><code>/.well-known/openid-configuration</code></td>
+<td><span class="method get">GET</span></td>
+<td>None</td>
+<td>2021-10-29&dagger;</td>
 <td>N/A</td>
-<td>2020-04-17, V1.2.0</td>
+<td>2021-10-29, V1.14.0&dagger;</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>CDR Register APIs</td>
+<td>Get JWKS</td>
+<td><code>/jwks</code></td>
+<td><span class="method get">GET</span></td>
+<td>None</td>
+<td>2021-10-29&dagger;</td>
+<td>N/A</td>
+<td>2021-10-29, V1.14.0&dagger;</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>CDR Register APIs</td>
+<td>Get Data Holder Brands</td>
+<td><code>/{industry}/data-holders/brands</code></td>
+<td><span class="method get">GET</span></td>
+<td>V1</td>
+<td>2021-10-29&dagger;</td>
+<td>N/A</td>
+<td>2021-10-29, V1.14.0&dagger;</td>
+<td>2021-12-23, V1.15.0</td>
+</tr>
+<tr>
+<td>CDR Register APIs</td>
+<td>Get Data Holder Brands</td>
+<td><code>/{industry}/data-holders/brands</code></td>
+<td><span class="method get">GET</span></td>
+<td>V2</td>
+<td>2022-08-30&Dagger;</td>
+<td>N/A</td>
+<td>2021-12-23, V1.15.0*</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>CDR Register APIs</td>
+<td>Get Software Statement Assertion (SSA)</td>
+<td><code>/{industry}/data-recipients/</code><br/><code>brands/{dataRecipientBrandId}/</code><br/><code>software-products/{softwareProductId}/ssa</code></td>
+<td><span class="method get">GET</span></td>
+<td>V2</td>
+<td>2021-10-29&dagger;</td>
+<td>N/A</td>
+<td>2021-10-29, V1.14.0&dagger;</td>
+<td>2021-12-23, V1.15.0</td>
+</tr>
+<tr>
+<td>CDR Register APIs</td>
+<td>Get Software Statement Assertion (SSA)</td>
+<td><code>/{industry}/data-recipients/</code><br/><code>brands/{dataRecipientBrandId}/</code><br/><code>software-products/{softwareProductId}/ssa</code></td>
+<td><span class="method get">GET</span></td>
+<td>V3</td>
+<td>2022-08-30&Dagger;</td>
+<td>N/A</td>
+<td>2021-12-23, V1.15.0</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>CDR Register APIs</td>
+<td>Get Software Products Statuses</td>
+<td><code>/{industry}/data-recipients/</code><br/><code>brands/software-products/status</code></td>
+<td><span class="method get">GET</span></td>
+<td>V1</td>
+<td>2021-10-29&dagger;</td>
+<td>N/A</td>
+<td>2021-10-29, V1.14.0&dagger;</td>
+<td>2021-12-23, V1.15.0</td>
+</tr>
+<tr>
+<td>CDR Register APIs</td>
+<td>Get Software Products Statuses</td>
+<td><code>/{industry}/data-recipients/</code><br/><code>brands/software-products/status</code></td>
+<td><span class="method get">GET</span></td>
+<td>V2</td>
+<td>2022-08-30&Dagger;</td>
+<td>N/A</td>
+<td>2021-12-23, V1.15.0</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>CDR Register APIs</td>
+<td>Get Data Recipient Statuses</td>
+<td><code>/{industry}/data-recipients/status</code></td>
+<td><span class="method get">GET</span></td>
+<td>V1</td>
+<td>2021-10-29&dagger;</td>
+<td>N/A</td>
+<td>2021-10-29, V1.14.0&dagger;</td>
+<td>2021-12-23, V1.15.0</td>
+</tr>
+<tr>
+<td>CDR Register APIs</td>
+<td>Get Data Recipient Statuses</td>
+<td><code>/{industry}/data-recipients/status</code></td>
+<td><span class="method get">GET</span></td>
+<td>V2</td>
+<td>2022-08-30&Dagger;</td>
+<td>N/A</td>
+<td>2021-12-23, V1.15.0</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>CDR Register APIs</td>
+<td>Get Data Recipients</td>
+<td><code>/{industry}/data-recipients</code></td>
+<td><span class="method get">GET</span></td>
+<td>V2</td>
+<td>2021-10-29&dagger;</td>
+<td>N/A</td>
+<td>2021-10-29, V1.14.0&dagger;</td>
+<td>2021-12-23, V1.15.0</td>
+</tr>
+<tr>
+<td>CDR Register APIs</td>
+<td>Get Data Recipients</td>
+<td><code>/{industry}/data-recipients</code></td>
+<td><span class="method get">GET</span></td>
+<td>V3</td>
+<td>2022-08-30&Dagger;</td>
+<td>N/A</td>
+<td>2021-12-23, V1.15.0</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>CDR Register APIs</td>
+<td>Get Data Holder Statuses</td>
+<td><code>/{industry}/data-holders/status</code></td>
+<td><span class="method get">GET</span></td>
+<td>V1</td>
+<td>2022-08-30&Dagger;</td>
+<td>N/A</td>
+<td>2021-12-23, V1.15.0</td>
 <td>N/A</td>
 </tr>
 </tbody></table>
-<h2 id='data-recipients'>Data Recipients</h2>
+
+<p><strong>&dagger;NOTE:</strong> The CDR Register standards were introduced into the Consumer Data Standards in v1.14.0. Prior to this the CDR Register specifications were hosted by the ACCC.</p>
+
+<p><strong>&Dagger;NOTE:</strong> This date has been defined to give certainty to Data Recipient and Data Holder participants but it is yet to be confirmed by the ACCC.</p>
+
+<p><strong>*NOTE:</strong> Data Holder Brands V2 definition is still subject to change</p>
+<h1 id='data-recipients'>Data Recipients</h1>
 <p>The following versioning schedule is reflective of the endpoints hosted by Data Recipient Software Products.
 Data Recipients should take into account their commencement date within the CDR, relevant obligations in accordance with the CDR Rules, as well as any exemptions granted when factoring in which API versions are considered applicable.</p>
 
@@ -606,9 +1246,9 @@ Data Recipients should take into account their commencement date within the CDR,
 </thead><tbody>
 <tr>
 <td>InfoSec Profile</td>
-<td>Endpoints</td>
-<td>ADR Token Revocation Endpoint</td>
-<td>POST</td>
+<td>Security Endpoints &gt; ADR Token Revocation Endpoint</td>
+<td><code>/token/revoke</code></td>
+<td><span class="method post">POST</span></td>
 <td>1.5.0</td>
 <td>2020-07-01</td>
 <td>2021-02-01</td>
@@ -617,9 +1257,9 @@ Data Recipients should take into account their commencement date within the CDR,
 </tr>
 <tr>
 <td>InfoSec Profile</td>
-<td>Endpoints</td>
-<td>CDR Arrangement Revocation Endpoint</td>
-<td>POST</td>
+<td>Security Endpoints &gt;  CDR Arrangement Revocation Endpoint</td>
+<td><code>&lt;RecipientBaseUri&gt;/arrangements/revoke</code></td>
+<td><span class="method post">POST</span></td>
 <td>1.5.0</td>
 <td>2020-11-01</td>
 <td>N/A</td>

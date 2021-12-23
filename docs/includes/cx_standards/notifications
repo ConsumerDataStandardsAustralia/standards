@@ -1,0 +1,74 @@
+<h2 id='notification-standards'>Notification Standards</h2><pre class="highlight diff tab-diff"><code>The Notification Standards has been added
+</code></pre>
+<p>The standards in this section apply where a relevant joint account holder is about to take an action that may or, where a data holder leverages rule 4A.15 and allows a vulnerable joint account holder to share joint account data as if it were from an individual account, may not result in the other joint account holder(s) being notified.</p>
+<h3 id='notifications-joint-account-alerts'>Notifications: Joint Account Alerts</h3>
+<table><thead>
+<tr>
+<th>Area</th>
+<th>CX Standard</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>Joint account notifications:</strong><br/>Contextual alert</td>
+<td><p>Data holders <strong>MUST</strong> alert a joint account holder where an action they are about to perform may result in the other joint account holder(s) being notified.</p><p>This standard applies to the authorisation flow, consumer dashboards, and the disclosure option management service where notifications to the other joint account holder(s) may be triggered.</p><p>The precise wording of this notification is at the discretion of the data holder.</p></td>
+</tr>
+<tr>
+<td><strong>Joint account notifications:</strong><br/>Rule 4A.15 exemptions</td>
+<td><p>Where rule 4A.15 is leveraged to allow a vulnerable requester to share their joint account data as if it were an individual account, the data holder <strong>MUST</strong> alert the requester, in the context of the authorisation flow, that the other joint account holder(s) will not be notified.</p><p>This alert <strong>SHOULD</strong> be applied where appropriate for joint account management in general, including the consumer dashboard and the Disclosure Option Management Service (DOMS).</p></td>
+</tr>
+<tr>
+<td><strong>Joint account notifications:</strong><br/>Further information</td>
+<td>In relation to the joint account alert standards in this section, data holders <strong>MAY</strong> provide further information about any services or processes in place for supporting vulnerable consumers or reporting risks of physical, psychological, or financial harm or abuse to the data holder.</td>
+</tr>
+</tbody></table>
+<h3 id='alternative-notification-schedules-for-joint-accounts'>Alternative Notification Schedules for Joint Accounts</h3>
+<p>Rule 4A.14(3) requires data holders to
+(a) provide for alternative notification schedules (including reducing the frequency of notifications or not receiving notifications) and
+(b) give each joint account holder a means of selecting such an alternative, and of changing an election.</p>
+
+<p>Alternative settings under 4A.14(3) only apply to the following notifications in 4A.14(1):</p>
+
+<ol>
+<li>The requester has given, amended, or withdrawn an authorisation</li>
+<li>Expiration of an authorisation</li>
+<li>A relevant account holder hasn&#39;t given approval within the relevant time frame</li>
+<li>A relevant account holder has withdrawn an approval</li>
+</ol>
+
+<p>The standards in this section provide a non-exhaustive list of options that data holders may implement to support their compliance with these rules. The specific implementation of an alternative notification schedule and offering, which may or may not include options listed here, are at the data holder&#39;s discretion. It is the data holder&#39;s responsibility to ensure it is meeting its obligations under the CDR Rules. Compliance with the CDR Rules on alternative notification schedules would require, at a minimum, implementation of a combination of options (being a combination of options listed below, other measures, or both).</p>
+
+<table><thead>
+<tr>
+<th>Area</th>
+<th>CX Standard</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>Joint account notifications:</strong><br/>Reduced frequency</td>
+<td><p>Data holders <strong>MAY</strong> offer consumers the ability to receive their joint account notifications less frequently and as a periodic summary.</p><p>This <strong>MAY</strong>, for example, outline all joint account activity at a frequency determined by the data holder and consumer, such as the previous quarter, month, fortnight, and so on.</p><p>This <strong>MAY</strong> also, for example, be provided with or in relation to other CDR notifications such as a CDR Receipt, which is optional for data holders.</p></td>
+</tr>
+<tr>
+<td><strong>Joint account notifications:</strong><br/>Granular control</td>
+<td><p>Data holders <strong>MAY</strong> offer consumers the ability to specify which joint account notifications they do and do not want to receive.</p><p>This <strong>MAY</strong>, for example, allow a relevant joint account holder to only receive notifications when the requester gives or amends an authorisation.</p></td>
+</tr>
+<tr>
+<td><strong>Joint account notifications:</strong><br/>Turn off notifications</td>
+<td><p>Data holders <strong>MAY</strong> allow consumers to elect to no longer receive any joint account notifications.</p></td>
+</tr>
+<tr>
+<td><strong>Joint account notifications:</strong><br/>Consequences of amendment</td>
+<td><p>Data holders <strong>MAY</strong> inform the consumer of the consequences of amending their joint account notification schedule.</p><p>This notification <strong>MAY</strong> include instructions for how to amend this schedule or reverse the amendment.</p></td>
+</tr>
+<tr>
+<td><strong>Joint account notifications:</strong><br/>Contextual amendment</td>
+<td><p>Data holders <strong>MAY</strong> provide a mechanism or entry point for a notification schedule to be amended from or in relation to the notification itself.</p><p>This <strong>MAY</strong>, for example, allow a consumer to stop receiving the type of notification(s) from the notification itself.</p><p>The notification <strong>MAY</strong> also, for example, include a link to amend the notification schedule or instructions to direct the consumer to the appropriate place.</p></td>
+</tr>
+<tr>
+<td><strong>Joint account notifications:</strong><br/>Amendment channels</td>
+<td><p>Data holders <strong>MAY</strong> allow a consumer to amend their notification schedule in line with existing notification management channels and experiences.</p><p>This <strong>MAY</strong>, for example, allow the joint account notification schedule to be amended in the same location as other notifications.</p></td>
+</tr>
+<tr>
+<td><strong>Joint account notifications:</strong><br/>Notification content</td>
+<td><p>For the content of the approval notification, data holders <strong>MAY</strong> provide the consumer with instructions for how any relevant authorisation(s) or approval(s) can be reviewed.</p></td>
+</tr>
+</tbody></table>

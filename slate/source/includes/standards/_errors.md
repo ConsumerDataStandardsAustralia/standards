@@ -222,6 +222,14 @@ Content-Type: application/json
 
 ```
 
+```diff
+Added additional errors:
++ urn:au-cds:error:cds-energy:Authorisation/InvalidEnergyAccount
++ urn:au-cds:error:cds-energy:Authorisation/UnavailableEnergyAccount
++ urn:au-cds:error:cds-energy:Authorisation/InvalidServicePoint
++ urn:au-cds:error:cds-energy:Authorisation/UnavailableServicePoint
+```
+
 | Error Title      | Error Code            | Description |  
 | :--------------- | :-------------------- | :---------- |  
 | <a id="error-404-resource-not-implemented"></a>Resource Not Implemented | <code>urn:au-cds:error:cds-all:<br/>Resource/NotImplemented</code> | The requested resource URL is a valid API endpoint defined by the Consumer Data Standards, but it is not implemented or not currently supported.<br/><br/>This error code **SHOULD** be supported for unimplemented APIs.|
@@ -230,6 +238,11 @@ Content-Type: application/json
 | <a id="error-404-resource-unavailable"></a>Unavailable Resource | <code>urn:au-cds:error:cds-all:<br/>Resource/Unavailable</code> | The requested resource identifier is temporarily unavailable. Subsequent requests for the resource may be successful. Applies when the resource ID is provided in the URI.<br/><br/>The error `detail` is the resource ID of the resource being requested.<br/><br/>This error code **MUST** be supported for unauthenticated and authenticated APIs. |
 | <a id="error-404-authorisation-invalid-banking-account"></a>Invalid Banking Account | <code>urn:au-cds:error:cds-banking:<br/>Authorisation/InvalidBankingAccount</code> | The requested bank account is permanently unavailable. No subsequent request for the account will be successful. Applies when the account ID is provided in the URI.<br/><br/>The error `detail` is the account ID of the resource being requested.<br/><br/>This error code **MUST** be supported for authenticated APIs. |
 | <a id="error-404-authorisation-unavailable-banking-account"></a>Unavailable Banking Account | <code>urn:au-cds:error:cds-banking:<br/>Authorisation/UnavailableBankingAccount</code> | The requested bank account is temporarily unavailable. Subsequent requests for the account may be successful. Applies when the account ID is provided in the URI.<br/><br/>The error `detail` is the account ID of the resource being requested.<br/><br/>This error code **MUST** be supported for authenticated APIs. |
+| <a id="error-404-invalid-energy-account"></a>Invalid Energy Account | <code>urn:au-cds:error:cds-energy:<br/>Authorisation/InvalidEnergyAccount</code> | The requested energy account is permanently unavailable. No subsequent request for the account will be successful. Applies when the account ID is provided in the URI.<br/><br/>The error `detail` is the account ID of the resource being requested.<br/><br/>This error code **MUST** be supported for authenticated APIs. |
+| <a id="error-404-unavailable-energy-account"></a>Unavailable Energy Account | <code>urn:au-cds:error:cds-energy:<br/>Authorisation/UnavailableEnergyAccount</code> | The requested energy account is temporarily unavailable. Subsequent requests for the account may be successful. Applies when the account ID is provided in the URI.<br/><br/>The error `detail` is the account ID of the resource being requested.<br/><br/>This error code **MUST** be supported for authenticated APIs. |
+| <a id="error-404-invalid-service-point"></a>Invalid Service Point | <code>urn:au-cds:error:cds-energy:<br/>Authorisation/InvalidServicePoint</code> | The requested service point is permanently unavailable. No subsequent request for the service point will be successful. Applies when the service point is provided in the URI.<br/><br/>The error `detail` is the service point ID of the resource being requested.<br/><br/>This error code **MUST** be supported for authenticated APIs. |
+| <a id="error-404-unavailable-service-point"></a>Unavailable Service Point | <code>urn:au-cds:error:cds-energy:<br/>Authorisation/UnavailableServicePoint</code> | The requested service point is temporarily unavailable. Subsequent requests for the service point may be successful. Applies when the service point ID is provided in the URI.<br/><br/>The error `detail` is the service point ID of the resource being requested.<br/><br/>This error code **MUST** be supported for authenticated APIs. |
+
 
 #### 406 (Not Acceptable) Errors
 

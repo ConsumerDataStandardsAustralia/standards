@@ -27,6 +27,8 @@ echo "*** Output Format: " $OUTPUT_FORMAT
 echo "*** Output Extension" $OUTPUT_EXT
 echo "*** Output Dir:" $OUTPUT_DIR
 
+mkdir $SWAGGER_CODEGEN_OUTPUT
+
 #codegen validator
 echo "*** Checking Swagger Validator ***"
 VALID_SWAGGER=$(java -jar $SWAGGER_CODEGEN/swagger-codegen-cli.jar validate -i $INPUT_SWAGGER )
@@ -41,7 +43,7 @@ echo "*** OAS Validator: " $VALID_OAS
 
 # generate
 echo "*** Generating $OUTPUT_FORMAT"
-java -jar $SWAGGER_CODEGEN/swagger-codegen-cli.jar generate -i $INPUT_SWAGGER -l $OUTPUT_FORMAT -o $SWAGGER_CODEGEN_OUTPUT
+java -jar $SWAGGER_CODEGEN/swagger-codegen-cli.jar generate -i $INPUT_SWAGGER -l $OUTPUT_FORMAT -o $SWAGGER_CODEGEN_OUTPUT > $SWAGGER_CODEGEN_OUTPUT/log.txt 2>&1
 
 echo `cat $SWAGGER_CODEGEN_OUTPUT/README.md`
 
@@ -61,3 +63,4 @@ rm -Rf $SWAGGER_CODEGEN_OUTPUT
 
 
 echo "*** Complete ***"
+echo

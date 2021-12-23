@@ -2,7 +2,7 @@
   "swagger" : "2.0",
   "info" : {
     "description" : "Consumer Data Standards APIs created by the Data Standards Body (DSB), with the Data Standards Chair as the decision maker to meet the needs of the Consumer Data Right",
-    "version" : "1.14.0",
+    "version" : "1.15.0",
     "title" : "CDR Banking API",
     "contact" : {
       "name" : "Consumer Data Standards",
@@ -85,9 +85,10 @@
         }, {
           "name" : "x-fapi-auth-date",
           "in" : "header",
-          "description" : "The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.",
+          "description" : "The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended) if the customer has logged in. Not to be included for unauthenticated calls.",
           "required" : false,
-          "type" : "string"
+          "type" : "string",
+          "x-conditional" : true
         }, {
           "name" : "x-fapi-customer-ip-address",
           "in" : "header",
@@ -100,6 +101,7 @@
           "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
           "required" : false,
           "type" : "string",
+          "x-conditional" : true,
           "x-cds-type" : "Base64"
         } ],
         "responses" : {
@@ -201,9 +203,10 @@
         }, {
           "name" : "x-fapi-auth-date",
           "in" : "header",
-          "description" : "The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.",
+          "description" : "The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended) if the customer has logged in. Not to be included for unauthenticated calls.",
           "required" : false,
-          "type" : "string"
+          "type" : "string",
+          "x-conditional" : true
         }, {
           "name" : "x-fapi-customer-ip-address",
           "in" : "header",
@@ -216,6 +219,7 @@
           "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
           "required" : false,
           "type" : "string",
+          "x-conditional" : true,
           "x-cds-type" : "Base64"
         } ],
         "responses" : {
@@ -301,9 +305,10 @@
         }, {
           "name" : "x-fapi-auth-date",
           "in" : "header",
-          "description" : "The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.",
+          "description" : "The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended) if the customer has logged in. Not to be included for unauthenticated calls.",
           "required" : false,
-          "type" : "string"
+          "type" : "string",
+          "x-conditional" : true
         }, {
           "name" : "x-fapi-customer-ip-address",
           "in" : "header",
@@ -316,6 +321,7 @@
           "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
           "required" : false,
           "type" : "string",
+          "x-conditional" : true,
           "x-cds-type" : "Base64"
         } ],
         "responses" : {
@@ -386,9 +392,10 @@
         }, {
           "name" : "x-fapi-auth-date",
           "in" : "header",
-          "description" : "The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.",
+          "description" : "The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended) if the customer has logged in. Not to be included for unauthenticated calls.",
           "required" : false,
-          "type" : "string"
+          "type" : "string",
+          "x-conditional" : true
         }, {
           "name" : "x-fapi-customer-ip-address",
           "in" : "header",
@@ -401,6 +408,7 @@
           "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
           "required" : false,
           "type" : "string",
+          "x-conditional" : true,
           "x-cds-type" : "Base64"
         } ],
         "responses" : {
@@ -441,7 +449,7 @@
       "get" : {
         "tags" : [ "Banking", "Accounts" ],
         "summary" : "Get Account Detail",
-        "description" : "Obtain detailed information on a single account",
+        "description" : "Obtain detailed information on a single account.\n\nObsolete versions: [v1](includes/obsolete/get-account-detail-v1.html)",
         "operationId" : "getAccountDetail",
         "parameters" : [ {
           "name" : "accountId",
@@ -471,9 +479,10 @@
         }, {
           "name" : "x-fapi-auth-date",
           "in" : "header",
-          "description" : "The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.",
+          "description" : "The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended) if the customer has logged in. Not to be included for unauthenticated calls.",
           "required" : false,
-          "type" : "string"
+          "type" : "string",
+          "x-conditional" : true
         }, {
           "name" : "x-fapi-customer-ip-address",
           "in" : "header",
@@ -486,6 +495,7 @@
           "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
           "required" : false,
           "type" : "string",
+          "x-conditional" : true,
           "x-cds-type" : "Base64"
         } ],
         "responses" : {
@@ -502,7 +512,7 @@
               }
             },
             "schema" : {
-              "$ref" : "#/definitions/ResponseBankingAccountById"
+              "$ref" : "#/definitions/ResponseBankingAccountByIdV2"
             }
           },
           "4xx" : {
@@ -519,7 +529,7 @@
           }
         },
         "x-scopes" : [ "bank:accounts.detail:read" ],
-        "x-version" : "1"
+        "x-version" : "2"
       }
     },
     "/banking/accounts/{accountId}/transactions" : {
@@ -606,9 +616,10 @@
         }, {
           "name" : "x-fapi-auth-date",
           "in" : "header",
-          "description" : "The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.",
+          "description" : "The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended) if the customer has logged in. Not to be included for unauthenticated calls.",
           "required" : false,
-          "type" : "string"
+          "type" : "string",
+          "x-conditional" : true
         }, {
           "name" : "x-fapi-customer-ip-address",
           "in" : "header",
@@ -621,6 +632,7 @@
           "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
           "required" : false,
           "type" : "string",
+          "x-conditional" : true,
           "x-cds-type" : "Base64"
         } ],
         "responses" : {
@@ -698,9 +710,10 @@
         }, {
           "name" : "x-fapi-auth-date",
           "in" : "header",
-          "description" : "The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.",
+          "description" : "The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended) if the customer has logged in. Not to be included for unauthenticated calls.",
           "required" : false,
-          "type" : "string"
+          "type" : "string",
+          "x-conditional" : true
         }, {
           "name" : "x-fapi-customer-ip-address",
           "in" : "header",
@@ -713,6 +726,7 @@
           "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
           "required" : false,
           "type" : "string",
+          "x-conditional" : true,
           "x-cds-type" : "Base64"
         } ],
         "responses" : {
@@ -799,9 +813,10 @@
         }, {
           "name" : "x-fapi-auth-date",
           "in" : "header",
-          "description" : "The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.",
+          "description" : "The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended) if the customer has logged in. Not to be included for unauthenticated calls.",
           "required" : false,
-          "type" : "string"
+          "type" : "string",
+          "x-conditional" : true
         }, {
           "name" : "x-fapi-customer-ip-address",
           "in" : "header",
@@ -814,6 +829,7 @@
           "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
           "required" : false,
           "type" : "string",
+          "x-conditional" : true,
           "x-cds-type" : "Base64"
         } ],
         "responses" : {
@@ -915,9 +931,10 @@
         }, {
           "name" : "x-fapi-auth-date",
           "in" : "header",
-          "description" : "The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.",
+          "description" : "The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended) if the customer has logged in. Not to be included for unauthenticated calls.",
           "required" : false,
-          "type" : "string"
+          "type" : "string",
+          "x-conditional" : true
         }, {
           "name" : "x-fapi-customer-ip-address",
           "in" : "header",
@@ -930,6 +947,7 @@
           "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
           "required" : false,
           "type" : "string",
+          "x-conditional" : true,
           "x-cds-type" : "Base64"
         } ],
         "responses" : {
@@ -1015,9 +1033,10 @@
         }, {
           "name" : "x-fapi-auth-date",
           "in" : "header",
-          "description" : "The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.",
+          "description" : "The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended) if the customer has logged in. Not to be included for unauthenticated calls.",
           "required" : false,
-          "type" : "string"
+          "type" : "string",
+          "x-conditional" : true
         }, {
           "name" : "x-fapi-customer-ip-address",
           "in" : "header",
@@ -1030,6 +1049,7 @@
           "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
           "required" : false,
           "type" : "string",
+          "x-conditional" : true,
           "x-cds-type" : "Base64"
         } ],
         "responses" : {
@@ -1116,9 +1136,10 @@
         }, {
           "name" : "x-fapi-auth-date",
           "in" : "header",
-          "description" : "The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.",
+          "description" : "The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended) if the customer has logged in. Not to be included for unauthenticated calls.",
           "required" : false,
-          "type" : "string"
+          "type" : "string",
+          "x-conditional" : true
         }, {
           "name" : "x-fapi-customer-ip-address",
           "in" : "header",
@@ -1131,6 +1152,7 @@
           "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
           "required" : false,
           "type" : "string",
+          "x-conditional" : true,
           "x-cds-type" : "Base64"
         } ],
         "responses" : {
@@ -1232,9 +1254,10 @@
         }, {
           "name" : "x-fapi-auth-date",
           "in" : "header",
-          "description" : "The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.",
+          "description" : "The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended) if the customer has logged in. Not to be included for unauthenticated calls.",
           "required" : false,
-          "type" : "string"
+          "type" : "string",
+          "x-conditional" : true
         }, {
           "name" : "x-fapi-customer-ip-address",
           "in" : "header",
@@ -1247,6 +1270,7 @@
           "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
           "required" : false,
           "type" : "string",
+          "x-conditional" : true,
           "x-cds-type" : "Base64"
         } ],
         "responses" : {
@@ -1332,9 +1356,10 @@
         }, {
           "name" : "x-fapi-auth-date",
           "in" : "header",
-          "description" : "The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.",
+          "description" : "The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended) if the customer has logged in. Not to be included for unauthenticated calls.",
           "required" : false,
-          "type" : "string"
+          "type" : "string",
+          "x-conditional" : true
         }, {
           "name" : "x-fapi-customer-ip-address",
           "in" : "header",
@@ -1347,6 +1372,7 @@
           "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
           "required" : false,
           "type" : "string",
+          "x-conditional" : true,
           "x-cds-type" : "Base64"
         } ],
         "responses" : {
@@ -1387,7 +1413,7 @@
       "get" : {
         "tags" : [ "Banking", "Payees" ],
         "summary" : "Get Payees",
-        "description" : "Obtain a list of pre-registered payees",
+        "description" : "Obtain a list of pre-registered payees.\n\nObsolete versions: [v1](includes/obsolete/get-payees-v1.html)",
         "operationId" : "listPayees",
         "parameters" : [ {
           "name" : "type",
@@ -1396,7 +1422,7 @@
           "required" : false,
           "type" : "string",
           "default" : "ALL",
-          "enum" : [ "ALL", "BILLER", "DOMESTIC", "INTERNATIONAL" ]
+          "enum" : [ "ALL", "BILLER", "DIGITAL_WALLET", "DOMESTIC", "INTERNATIONAL" ]
         }, {
           "name" : "page",
           "in" : "query",
@@ -1434,9 +1460,10 @@
         }, {
           "name" : "x-fapi-auth-date",
           "in" : "header",
-          "description" : "The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.",
+          "description" : "The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended) if the customer has logged in. Not to be included for unauthenticated calls.",
           "required" : false,
-          "type" : "string"
+          "type" : "string",
+          "x-conditional" : true
         }, {
           "name" : "x-fapi-customer-ip-address",
           "in" : "header",
@@ -1449,6 +1476,7 @@
           "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
           "required" : false,
           "type" : "string",
+          "x-conditional" : true,
           "x-cds-type" : "Base64"
         } ],
         "responses" : {
@@ -1465,7 +1493,7 @@
               }
             },
             "schema" : {
-              "$ref" : "#/definitions/ResponseBankingPayeeList"
+              "$ref" : "#/definitions/ResponseBankingPayeeListV2"
             }
           },
           "4xx" : {
@@ -1482,14 +1510,14 @@
           }
         },
         "x-scopes" : [ "bank:payees:read" ],
-        "x-version" : "1"
+        "x-version" : "2"
       }
     },
     "/banking/payees/{payeeId}" : {
       "get" : {
         "tags" : [ "Banking", "Payees" ],
         "summary" : "Get Payee Detail",
-        "description" : "Obtain detailed information on a single payee.\n\nNote that the payee sub-structure should be selected to represent the payment destination only rather than any known characteristics of the payment recipient",
+        "description" : "Obtain detailed information on a single payee.\n\nNote that the payee sub-structure should be selected to represent the payment destination only rather than any known characteristics of the payment recipient.\n\nObsolete versions: [v1](includes/obsolete/get-payee-detail-v1.html)",
         "operationId" : "getPayeeDetail",
         "parameters" : [ {
           "name" : "payeeId",
@@ -1519,9 +1547,10 @@
         }, {
           "name" : "x-fapi-auth-date",
           "in" : "header",
-          "description" : "The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.",
+          "description" : "The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended) if the customer has logged in. Not to be included for unauthenticated calls.",
           "required" : false,
-          "type" : "string"
+          "type" : "string",
+          "x-conditional" : true
         }, {
           "name" : "x-fapi-customer-ip-address",
           "in" : "header",
@@ -1534,6 +1563,7 @@
           "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
           "required" : false,
           "type" : "string",
+          "x-conditional" : true,
           "x-cds-type" : "Base64"
         } ],
         "responses" : {
@@ -1550,7 +1580,7 @@
               }
             },
             "schema" : {
-              "$ref" : "#/definitions/ResponseBankingPayeeById"
+              "$ref" : "#/definitions/ResponseBankingPayeeByIdV2"
             }
           },
           "4xx" : {
@@ -1567,7 +1597,7 @@
           }
         },
         "x-scopes" : [ "bank:payees:read" ],
-        "x-version" : "1"
+        "x-version" : "2"
       }
     },
     "/banking/products" : {
@@ -1660,7 +1690,7 @@
       "get" : {
         "tags" : [ "Banking", "Products" ],
         "summary" : "Get Product Detail",
-        "description" : "Obtain detailed information on a single product offered openly to the market.\n\nObsolete versions: [v1](includes/obsolete/get-product-detail-v1.html) [v2](includes/obsolete/get-product-detail-v2.html)",
+        "description" : "Obtain detailed information on a single product offered openly to the market.\n\nObsolete versions: [v1](includes/obsolete/get-product-detail-v1.html) [v2](includes/obsolete/get-product-detail-v2.html) [v3](includes/obsolete/get-product-detail-v3.html)",
         "operationId" : "getProductDetail",
         "parameters" : [ {
           "name" : "productId",
@@ -1692,7 +1722,7 @@
               }
             },
             "schema" : {
-              "$ref" : "#/definitions/ResponseBankingProductById"
+              "$ref" : "#/definitions/ResponseBankingProductByIdV4"
             }
           },
           "4xx" : {
@@ -1702,7 +1732,7 @@
             }
           }
         },
-        "x-version" : "3"
+        "x-version" : "4"
       }
     }
   },
@@ -1719,12 +1749,12 @@
         }
       }
     },
-    "ResponseBankingProductList" : {
+    "ResponseBankingProductListV2" : {
       "type" : "object",
       "required" : [ "data", "links", "meta" ],
       "properties" : {
         "data" : {
-          "$ref" : "#/definitions/ResponseBankingProductList_data"
+          "$ref" : "#/definitions/ResponseBankingProductListV2_data"
         },
         "links" : {
           "$ref" : "#/definitions/LinksPaginated"
@@ -1734,7 +1764,7 @@
         }
       }
     },
-    "BankingProductV3" : {
+    "BankingProductV4" : {
       "type" : "object",
       "required" : [ "brand", "description", "isTailored", "lastUpdated", "name", "productCategory", "productId" ],
       "properties" : {
@@ -1788,23 +1818,105 @@
           "x-cds-type" : "Boolean"
         },
         "additionalInformation" : {
-          "$ref" : "#/definitions/BankingProductV3_additionalInformation"
+          "$ref" : "#/definitions/BankingProductAdditionalInformationV2"
         },
         "cardArt" : {
           "type" : "array",
           "description" : "An array of card art images",
           "items" : {
-            "$ref" : "#/definitions/BankingProductV3_cardArt"
+            "$ref" : "#/definitions/BankingProductV4_cardArt"
           }
         }
       }
     },
-    "ResponseBankingProductById" : {
+    "BankingProductAdditionalInformationV2" : {
+      "type" : "object",
+      "properties" : {
+        "overviewUri" : {
+          "type" : "string",
+          "description" : "General overview of the product. Mandatory if `additionalOverviewUris` includes one or more supporting documents.",
+          "x-cds-type" : "URIString"
+        },
+        "termsUri" : {
+          "type" : "string",
+          "description" : "Terms and conditions for the product. Mandatory if `additionalTermsUris` includes one or more supporting documents.",
+          "x-cds-type" : "URIString"
+        },
+        "eligibilityUri" : {
+          "type" : "string",
+          "description" : "Eligibility rules and criteria for the product. Mandatory if `additionalEligibilityUris` includes one or more supporting documents.",
+          "x-cds-type" : "URIString"
+        },
+        "feesAndPricingUri" : {
+          "type" : "string",
+          "description" : "Description of fees, pricing, discounts, exemptions and bonuses for the product. Mandatory if `additionalFeesAndPricingUris` includes one or more supporting documents.",
+          "x-cds-type" : "URIString"
+        },
+        "bundleUri" : {
+          "type" : "string",
+          "description" : "Description of a bundle that this product can be part of. Mandatory if `additionalBundleUris` includes one or more supporting documents.",
+          "x-cds-type" : "URIString"
+        },
+        "additionalOverviewUris" : {
+          "type" : "array",
+          "description" : "An array of additional general overviews for the product or features of the product, if applicable. To be treated as secondary documents to the `overviewUri`. Only to be used if there is a primary `overviewUri`.",
+          "items" : {
+            "$ref" : "#/definitions/BankingProductAdditionalInformationV2_additionalInformationUris"
+          }
+        },
+        "additionalTermsUris" : {
+          "type" : "array",
+          "description" : "An array of additional terms and conditions for the product, if applicable. To be treated as secondary documents to the `termsUri`. Only to be used if there is a primary `termsUri`.",
+          "items" : {
+            "$ref" : "#/definitions/BankingProductAdditionalInformationV2_additionalInformationUris"
+          }
+        },
+        "additionalEligibilityUris" : {
+          "type" : "array",
+          "description" : "An array of additional eligibility rules and criteria for the product, if applicable. To be treated as secondary documents to the `eligibilityUri`. Only to be used if there is a primary `eligibilityUri`.",
+          "items" : {
+            "$ref" : "#/definitions/BankingProductAdditionalInformationV2_additionalInformationUris"
+          }
+        },
+        "additionalFeesAndPricingUris" : {
+          "type" : "array",
+          "description" : "An array of additional fees, pricing, discounts, exemptions and bonuses for the product, if applicable. To be treated as secondary documents to the `feesAndPricingUri`. Only to be used if there is a primary `feesAndPricingUri`.",
+          "items" : {
+            "$ref" : "#/definitions/BankingProductAdditionalInformationV2_additionalInformationUris"
+          }
+        },
+        "additionalBundleUris" : {
+          "type" : "array",
+          "description" : "An array of additional bundles for the product, if applicable. To be treated as secondary documents to the `bundleUri`. Only to be used if there is a primary `bundleUri`.",
+          "items" : {
+            "$ref" : "#/definitions/BankingProductAdditionalInformationV2_additionalInformationUris"
+          }
+        }
+      },
+      "description" : "Object that contains links to additional information on specific topics",
+      "x-conditional" : [ "overviewUri", "termsUri", "eligibilityUri", "feesAndPricingUri", "bundleUri" ]
+    },
+    "BankingProductAdditionalInformationV2_additionalInformationUris" : {
+      "type" : "object",
+      "required" : [ "additionalInfoUri" ],
+      "properties" : {
+        "description" : {
+          "type" : "string",
+          "description" : "Display text providing more information about the document URI"
+        },
+        "additionalInfoUri" : {
+          "type" : "string",
+          "description" : "The URI describing the additional information",
+          "x-cds-type" : "URIString"
+        }
+      }
+    },
+    "ResponseBankingProductByIdV4" : {
       "type" : "object",
       "required" : [ "data", "links" ],
       "properties" : {
         "data" : {
-          "$ref" : "#/definitions/BankingProductDetailV3"
+          "$ref" : "#/definitions/BankingProductDetailV4"
         },
         "links" : {
           "$ref" : "#/definitions/Links"
@@ -1814,9 +1926,9 @@
         }
       }
     },
-    "BankingProductDetailV3" : {
+    "BankingProductDetailV4" : {
       "allOf" : [ {
-        "$ref" : "#/definitions/BankingProductV3"
+        "$ref" : "#/definitions/BankingProductV4"
       }, {
         "type" : "object",
         "properties" : {
@@ -1831,7 +1943,7 @@
             "type" : "array",
             "description" : "Array of features available for the product",
             "items" : {
-              "$ref" : "#/definitions/BankingProductFeature"
+              "$ref" : "#/definitions/BankingProductFeatureV2"
             }
           },
           "constraints" : {
@@ -1903,14 +2015,14 @@
         }
       }
     },
-    "BankingProductFeature" : {
+    "BankingProductFeatureV2" : {
       "type" : "object",
       "required" : [ "featureType" ],
       "properties" : {
         "featureType" : {
           "type" : "string",
           "description" : "The type of feature described",
-          "enum" : [ "ADDITIONAL_CARDS", "BALANCE_TRANSFERS", "BILL_PAYMENT", "BONUS_REWARDS", "CARD_ACCESS", "COMPLEMENTARY_PRODUCT_DISCOUNTS", "DIGITAL_BANKING", "DIGITAL_WALLET", "DONATE_INTEREST", "FREE_TXNS", "FREE_TXNS_ALLOWANCE", "INSURANCE", "INTEREST_FREE", "INTEREST_FREE_TRANSFERS", "LOYALTY_PROGRAM", "NOTIFICATIONS", "NPP_ENABLED", "NPP_PAYID", "OFFSET", "OTHER", "OVERDRAFT", "REDRAW", "UNLIMITED_TXNS" ]
+          "enum" : [ "ADDITIONAL_CARDS", "BALANCE_TRANSFERS", "BILL_PAYMENT", "BONUS_REWARDS", "CARD_ACCESS", "CASHBACK_OFFER", "COMPLEMENTARY_PRODUCT_DISCOUNTS", "DIGITAL_BANKING", "DIGITAL_WALLET", "DONATE_INTEREST", "EXTRA_REPAYMENTS", "FRAUD_PROTECTION", "FREE_TXNS", "FREE_TXNS_ALLOWANCE", "GUARANTOR", "INSURANCE", "INSTALMENT_PLAN", "INTEREST_FREE", "INTEREST_FREE_TRANSFERS", "LOYALTY_PROGRAM", "NOTIFICATIONS", "NPP_ENABLED", "NPP_PAYID", "OFFSET", "OTHER", "OVERDRAFT", "REDRAW", "RELATIONSHIP_MANAGEMENT", "UNLIMITED_TXNS" ]
         },
         "additionalValue" : {
           "type" : "string",
@@ -2365,12 +2477,12 @@
         }
       }
     },
-    "ResponseBankingAccountById" : {
+    "ResponseBankingAccountByIdV2" : {
       "type" : "object",
       "required" : [ "data", "links" ],
       "properties" : {
         "data" : {
-          "$ref" : "#/definitions/BankingAccountDetail"
+          "$ref" : "#/definitions/BankingAccountDetailV2"
         },
         "links" : {
           "$ref" : "#/definitions/Links"
@@ -2380,7 +2492,7 @@
         }
       }
     },
-    "BankingAccountDetail" : {
+    "BankingAccountDetailV2" : {
       "allOf" : [ {
         "$ref" : "#/definitions/BankingAccount"
       }, {
@@ -2413,7 +2525,7 @@
             "$ref" : "#/definitions/BankingCreditCardAccount"
           },
           "loan" : {
-            "$ref" : "#/definitions/BankingLoanAccount"
+            "$ref" : "#/definitions/BankingLoanAccountV2"
           },
           "depositRate" : {
             "type" : "string",
@@ -2445,7 +2557,7 @@
             "items" : {
               "type" : "object",
               "allOf" : [ {
-                "$ref" : "#/definitions/BankingProductFeature"
+                "$ref" : "#/definitions/BankingProductFeatureV2"
               }, {
                 "type" : "object",
                 "properties" : {
@@ -2534,9 +2646,8 @@
         }
       }
     },
-    "BankingLoanAccount" : {
+    "BankingLoanAccountV2" : {
       "type" : "object",
-      "required" : [ "loanEndDate", "nextInstalmentDate", "repaymentFrequency" ],
       "properties" : {
         "originalStartDate" : {
           "type" : "string",
@@ -2839,12 +2950,12 @@
         }
       }
     },
-    "ResponseBankingPayeeList" : {
+    "ResponseBankingPayeeListV2" : {
       "type" : "object",
       "required" : [ "data", "links", "meta" ],
       "properties" : {
         "data" : {
-          "$ref" : "#/definitions/ResponseBankingPayeeList_data"
+          "$ref" : "#/definitions/ResponseBankingPayeeListV2_data"
         },
         "links" : {
           "$ref" : "#/definitions/LinksPaginated"
@@ -2854,12 +2965,12 @@
         }
       }
     },
-    "ResponseBankingPayeeById" : {
+    "ResponseBankingPayeeByIdV2" : {
       "type" : "object",
       "required" : [ "data", "links" ],
       "properties" : {
         "data" : {
-          "$ref" : "#/definitions/BankingPayeeDetail"
+          "$ref" : "#/definitions/BankingPayeeDetailV2"
         },
         "links" : {
           "$ref" : "#/definitions/Links"
@@ -2869,7 +2980,7 @@
         }
       }
     },
-    "BankingPayee" : {
+    "BankingPayeeV2" : {
       "type" : "object",
       "required" : [ "nickname", "payeeId", "type" ],
       "properties" : {
@@ -2888,8 +2999,8 @@
         },
         "type" : {
           "type" : "string",
-          "description" : "The type of payee. DOMESTIC means a registered payee for domestic payments including NPP. INTERNATIONAL means a registered payee for international payments. BILLER means a registered payee for BPAY",
-          "enum" : [ "BILLER", "DOMESTIC", "INTERNATIONAL" ]
+          "description" : "The type of payee.<br/>DOMESTIC means a registered payee for domestic payments including NPP. <br/>INTERNATIONAL means a registered payee for international payments. <br/>BILLER means a registered payee for BPAY. <br/>DIGITAL_WALLET means a registered payee for a bank's digital wallet",
+          "enum" : [ "BILLER", "DIGITAL_WALLET", "DOMESTIC", "INTERNATIONAL" ]
         },
         "creationDate" : {
           "type" : "string",
@@ -2898,9 +3009,9 @@
         }
       }
     },
-    "BankingPayeeDetail" : {
+    "BankingPayeeDetailV2" : {
       "allOf" : [ {
-        "$ref" : "#/definitions/BankingPayee"
+        "$ref" : "#/definitions/BankingPayeeV2"
       }, {
         "type" : "object",
         "required" : [ "payeeUType" ],
@@ -2908,19 +3019,22 @@
           "payeeUType" : {
             "type" : "string",
             "description" : "Type of object included that describes the payee in detail",
-            "enum" : [ "biller", "domestic", "international" ]
+            "enum" : [ "biller", "digitalWallet", "domestic", "international" ]
+          },
+          "biller" : {
+            "$ref" : "#/definitions/BankingBillerPayee"
           },
           "domestic" : {
             "$ref" : "#/definitions/BankingDomesticPayee"
           },
-          "biller" : {
-            "$ref" : "#/definitions/BankingBillerPayee"
+          "digitalWallet" : {
+            "$ref" : "#/definitions/BankingDigitalWalletPayee"
           },
           "international" : {
             "$ref" : "#/definitions/BankingInternationalPayee"
           }
         },
-        "x-conditional" : [ "domestic", "biller", "international" ]
+        "x-conditional" : [ "biller", "digitalWallet", "domestic", "international" ]
       } ]
     },
     "BankingDomesticPayee" : {
@@ -3020,6 +3134,30 @@
         },
         "bankDetails" : {
           "$ref" : "#/definitions/BankingInternationalPayee_bankDetails"
+        }
+      }
+    },
+    "BankingDigitalWalletPayee" : {
+      "type" : "object",
+      "required" : [ "identifier", "name", "provider", "type" ],
+      "properties" : {
+        "name" : {
+          "type" : "string",
+          "description" : "The name assigned to the digital wallet by the owner of the wallet, else the display name provided by the digital wallet provider"
+        },
+        "identifier" : {
+          "type" : "string",
+          "description" : "The identifier of the digital wallet (dependent on type)"
+        },
+        "type" : {
+          "type" : "string",
+          "description" : "The type of the digital wallet identifier",
+          "enum" : [ "EMAIL", "CONTACT_NAME", "TELEPHONE" ]
+        },
+        "provider" : {
+          "type" : "string",
+          "description" : "The provider of the digital wallet",
+          "enum" : [ "PAYPAL_AU", "OTHER" ]
         }
       }
     },
@@ -3618,7 +3756,7 @@
         }
       }
     },
-    "ResponseBankingProductList_data" : {
+    "ResponseBankingProductListV2_data" : {
       "type" : "object",
       "required" : [ "products" ],
       "properties" : {
@@ -3626,43 +3764,12 @@
           "type" : "array",
           "description" : "The list of products returned.  If the filter results in an empty set then this array may have no records",
           "items" : {
-            "$ref" : "#/definitions/BankingProductV3"
+            "$ref" : "#/definitions/BankingProductV4"
           }
         }
       }
     },
-    "BankingProductV3_additionalInformation" : {
-      "type" : "object",
-      "properties" : {
-        "overviewUri" : {
-          "type" : "string",
-          "description" : "General overview of the product",
-          "x-cds-type" : "URIString"
-        },
-        "termsUri" : {
-          "type" : "string",
-          "description" : "Terms and conditions for the product",
-          "x-cds-type" : "URIString"
-        },
-        "eligibilityUri" : {
-          "type" : "string",
-          "description" : "Eligibility rules and criteria for the product",
-          "x-cds-type" : "URIString"
-        },
-        "feesAndPricingUri" : {
-          "type" : "string",
-          "description" : "Description of fees, pricing, discounts, exemptions and bonuses for the product",
-          "x-cds-type" : "URIString"
-        },
-        "bundleUri" : {
-          "type" : "string",
-          "description" : "Description of a bundle that this product can be part of",
-          "x-cds-type" : "URIString"
-        }
-      },
-      "description" : "Object that contains links to additional information on specific topics"
-    },
-    "BankingProductV3_cardArt" : {
+    "BankingProductV4_cardArt" : {
       "type" : "object",
       "required" : [ "imageUri" ],
       "properties" : {
@@ -3761,7 +3868,7 @@
         }
       }
     },
-    "ResponseBankingPayeeList_data" : {
+    "ResponseBankingPayeeListV2_data" : {
       "type" : "object",
       "required" : [ "payees" ],
       "properties" : {
@@ -3769,7 +3876,7 @@
           "type" : "array",
           "description" : "The list of payees returned",
           "items" : {
-            "$ref" : "#/definitions/BankingPayee"
+            "$ref" : "#/definitions/BankingPayeeV2"
           }
         }
       }
@@ -3924,9 +4031,10 @@
     "RequestHeader_x-fapi-auth-date" : {
       "name" : "x-fapi-auth-date",
       "in" : "header",
-      "description" : "The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.",
+      "description" : "The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended) if the customer has logged in. Not to be included for unauthenticated calls.",
       "required" : false,
-      "type" : "string"
+      "type" : "string",
+      "x-conditional" : true
     },
     "RequestHeader_x-fapi-customer-ip-address" : {
       "name" : "x-fapi-customer-ip-address",
@@ -3941,6 +4049,7 @@
       "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
       "required" : false,
       "type" : "string",
+      "x-conditional" : true,
       "x-cds-type" : "Base64"
     },
     "ParamAccountOpenStatus" : {

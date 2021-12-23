@@ -30,12 +30,22 @@ under the License.
 
     $(".lang-selector a").removeClass('active');
     $(".lang-selector a[data-language-name='" + language + "']").addClass('active');
-    for (var i=0; i < languages.length; i++) {
-      $(".highlight.tab-" + languages[i]).hide();
-      $(".lang-specific." + languages[i]).hide();
+
+    if (language == 'diff') {
+        $("blockquote").hide();
+        $(".highlight").hide();
+        $(".highlight.tab-" + language).show();
+        $(".lang-specific." + language).show();
+    } else {
+        $(".highlight").show();
+        $("blockquote").show();
+        for (var i=0; i < languages.length; i++) {
+          $(".highlight.tab-" + languages[i]).hide();
+          $(".lang-specific." + languages[i]).hide();
+        }
+        $(".highlight.tab-" + language).show();
+        $(".lang-specific." + language).show();
     }
-    $(".highlight.tab-" + language).show();
-    $(".lang-specific." + language).show();
 
     window.recacheHeights();
 

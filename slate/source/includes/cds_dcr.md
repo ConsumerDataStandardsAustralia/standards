@@ -42,7 +42,7 @@ Register a client using a CDR Register issued Software Statement Assertion.
 ###Endpoint Version
 |   |  |
 |---|--|
-|Version|**undefined**
+|Version|**Versioning is not supported for this endpoint**
 
 <h3 id="register-data-recipient-oauth-client-parameters">Parameters</h3>
 
@@ -150,7 +150,7 @@ Get a Client Registration for a given Client ID.
 ###Endpoint Version
 |   |  |
 |---|--|
-|Version|**undefined**
+|Version|**Versioning is not supported for this endpoint**
 
 <h3 id="get-oauth-client-registration-parameters">Parameters</h3>
 
@@ -273,7 +273,7 @@ Update a Client Registration for a given Client ID.
 ###Endpoint Version
 |   |  |
 |---|--|
-|Version|**undefined**
+|Version|**Versioning is not supported for this endpoint**
 
 <h3 id="update-data-recipient-registration-parameters">Parameters</h3>
 
@@ -393,7 +393,7 @@ Delete a Client Registration for a given Client ID.
 ###Endpoint Version
 |   |  |
 |---|--|
-|Version|**undefined**
+|Version|**Versioning is not supported for this endpoint**
 
 <h3 id="delete-data-recipient-oauth-client-registration-parameters">Parameters</h3>
 
@@ -430,7 +430,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h2 class="schema-heading" id="cdr-dynamic-client-registration-api-schemas">Schemas</h2>
 <a class="schema-link" id="cdr-dynamic-client-registration-api-schemas"></a>
 
-<h2 class="schema-toc" id="tocSclientregistrationrequest">ClientRegistrationRequest</h2>
+<h3 class="schema-toc" id="tocSclientregistrationrequest">ClientRegistrationRequest</h3>
 
 <a id="schemacdr-dynamic-client-registration-apiclientregistrationrequest"></a>
 
@@ -447,7 +447,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |---|---|---|---|
 |*anonymous*|string(JWT)|mandatory|The registration request JWT to be used to register with a Data Holder.|
 
-<h2 class="schema-toc" id="tocSregistrationproperties">RegistrationProperties</h2>
+<h3 class="schema-toc" id="tocSregistrationproperties">RegistrationProperties</h3>
 
 <a id="schemacdr-dynamic-client-registration-apiregistrationproperties"></a>
 
@@ -542,7 +542,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |request_object_signing_alg|PS256|
 |request_object_signing_alg|ES256|
 
-<h2 class="schema-toc" id="tocSclientregistration">ClientRegistration</h2>
+<h3 class="schema-toc" id="tocSclientregistration">ClientRegistration</h3>
 
 <a id="schemacdr-dynamic-client-registration-apiclientregistration"></a>
 
@@ -613,7 +613,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |---|---|---|---|
 |*anonymous*|[RegistrationProperties](#schemacdr-dynamic-client-registration-apiregistrationproperties)|mandatory|none|
 
-<h2 class="schema-toc" id="tocSregistrationerror">RegistrationError</h2>
+<h3 class="schema-toc" id="tocSregistrationerror">RegistrationError</h3>
 
 <a id="schemacdr-dynamic-client-registration-apiregistrationerror"></a>
 

@@ -10,6 +10,78 @@ This specification defines the APIs for Data Holders exposing Banking endpoints.
 <tr><td><a href='./includes/swagger/cds_banking.yaml'>Banking Swagger (YAML)</a></td></tr>
 </table>
 
+```diff
+Below are the changes to the Banking APIs section of the
+standards.
+
+
+Bumped the version of the `Get Account Detail` endpoint (and associated
+models) from v1 to v2.
+
+
+Made the `loanEndDate`, `nextInstalmentDate` and `repaymentFrequency`
+fields of the `BankingLoanAccountV2` model optional.
+
+
+Bumped the version of the `Get Payees` endpoint (and associated
+models) from v1 to v2.
+
+
+Bumped the version of the `Get Payee Detail` endpoint (and associated
+models) from v1 to v2.
+
+
+Add the following enum value to the `type` query parameter for
+the `Get Payees` endpoint:
++ DIGITAL_WALLET
+
+
+Modified the description of the `type` field in the `BankingPayeeV2` model:
+- The type of payee. DOMESTIC means a registered payee for domestic payments including NPP. INTERNATIONAL means a registered payee for international payments. BILLER means a registered payee for BPAY
+to:
++ The type of payee.<br/>DOMESTIC means a registered payee for domestic payments including NPP. <br/>INTERNATIONAL means a registered payee for international payments. <br/>BILLER means a registered payee for BPAY. <br/>DIGITAL_WALLET means a registered payee for a bank's digital wallet
+Also addition the following enum value to tye `type` field:
++ DIGITAL_WALLET
+
+
+Add the following enum value to the `payeeUType` field in \
+the `BankingPayeeDetailV2` model:
++ digitalWallet
+
+
+Added the `digitalWallet` field to the `BankingPayeeDetailV2` model.
+
+
+Modified the `BankingProductV3` model to `BankingProductV4` and
+amended the `additionalInformation` object as follows:
+  Add the `additionalOverviewUris` array
+  Add the `additionalTermsUris` array
+  Add the `additionalEligibilityUris` array
+  Add the `additionalFeesAndPricingUris` array
+  Add the `additionalBundleUris` array
+
+
+Modified the description of the `x-fapi-auth-date` request header from:
+- The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.
+to:
++ The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended) if the customer is currently logged. Otherwise optional where the customer has not logged in. Not to be included for unauthenticated calls.
+
+
+Updated the `BankingProductFeature` model to `BankingProductFeatureV2`
+and added the following enum values:
++ CASHBACK_OFFER
++ EXTRA_REPAYMENTS
++ FRAUD_PROTECTION
++ GUARANTOR
++ INSTALMENT_PLAN
++ RELATIONSHIP_MANAGEMENT
+
+
+Made the `x-fapi-auth-date` and `x-cds-client-headers` request headers conditional.
+
+```
+
+
 <%= partial "includes/cds_banking.md" %>
 <%= partial "includes/banking/_product_categories.md" %>
 <%= partial "includes/banking/_product_components.md" %>

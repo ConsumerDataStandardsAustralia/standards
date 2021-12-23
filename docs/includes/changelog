@@ -10,6 +10,12 @@
 </tr>
 </thead><tbody>
 <tr>
+<td>23/12/2021</td>
+<td>1.15.0</td>
+<td>Changes arising from Decision 199 (Binding Energy Standards), Decision 162 (Joint Account CX standards), Decision 209 (FAPI 1.0 migration), Decision 216 (OIDC Profile Scope) and Decision 212 (Maintenance Iteration 9 change requests)</td>
+<td>See <a href="includes/releasenotes/releasenotes.1.15.0.html">release notes</a>, <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/199">Decision 199</a>, <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/162">Decision 162</a>, <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/209">Decision 209</a>, <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/212">Decision 212</a>, and <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/216">Decision 216</a> for details</td>
+</tr>
+<tr>
 <td>29/10/2021</td>
 <td>1.14.0</td>
 <td>Inclusion of full candidate level standards for the energy sector</td>

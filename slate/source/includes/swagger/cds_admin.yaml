@@ -2,7 +2,7 @@
 swagger: "2.0"
 info:
   description: "Data Holder Consumer Data Standards Administration End Points created by the Data Standards Body (DSB), with the Data Standards Chair as the decision maker"
-  version: 1.14.0
+  version: 1.15.0
   title: CDR Admin API
   contact:
     name: Consumer Data Standards Administration End Points
@@ -286,7 +286,7 @@ definitions:
         $ref: '#/definitions/SecondaryHolderMetrics_errors'
       rejections:
         $ref: '#/definitions/SecondaryHolderMetrics_rejections'
-    description: Errors and rejections received by the primary data holder from the secondary data holder.  Mandatory for data holders designated for a secondary responsibility request data cluster
+    description: Errors and rejections received by the primary data holder from the secondary data holder.  Mandatory for data holders designated for a Shared Responsibility Data Request data cluster
   Links:
     type: object
     required:
@@ -443,7 +443,7 @@ definitions:
         description: API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available
         items:
           type: number
-    description: API call counts for the secondary responsibility requests tier.  Mandatory for data holders designated for a secondary responsibility request data cluster
+    description: API call counts for the Shared Responsibility Data Requests tier.  Mandatory for data holders designated for a Shared Responsibility Data Request data cluster
     x-conditional:
     - currentDay
     - previousDays
@@ -458,7 +458,7 @@ definitions:
         description: API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available
         items:
           type: number
-    description: API call counts for the large secondary responsibility requests tier.  Mandatory for data holders designated for a secondary responsibility request data cluster
+    description: API call counts for the large Shared Responsibility Data Requests tier.  Mandatory for data holders designated for a Shared Responsibility Data Request data cluster
     x-conditional:
     - currentDay
     - previousDays
@@ -577,7 +577,7 @@ definitions:
         $ref: '#/definitions/AverageResponseMetricsV2_secondary_primary'
       secondary:
         $ref: '#/definitions/AverageResponseMetricsV2_secondary_secondary'
-    description: Average response time for the secondary tier.  Mandatory for data holders designated for a secondary responsibility request data cluster
+    description: Average response time for the secondary tier.  Mandatory for data holders designated for a Shared Responsibility Data Request data cluster
   AverageResponseMetricsV2_largeSecondary:
     type: object
     required:
@@ -588,7 +588,7 @@ definitions:
         $ref: '#/definitions/AverageResponseMetricsV2_secondary_primary'
       secondary:
         $ref: '#/definitions/AverageResponseMetricsV2_secondary_secondary'
-    description: Average response time for the large payload tier.  Mandatory for data holders designated for a secondary responsibility request data cluster
+    description: Average response time for the large payload tier.  Mandatory for data holders designated for a Shared Responsibility Data Request data cluster
   RejectionMetricsV2_authenticated:
     type: object
     properties:

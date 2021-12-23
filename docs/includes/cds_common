@@ -98,8 +98,8 @@
 <td>x-fapi-auth-date</td>
 <td>header</td>
 <td>string</td>
-<td>optional</td>
-<td>The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.</td>
+<td>conditional</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended) if the customer is currently logged. Otherwise optional where the customer has not logged in. Not to be included for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
@@ -112,7 +112,7 @@
 <td>x-cds-client-headers</td>
 <td>header</td>
 <td><a href="#common-field-types">Base64</a></td>
-<td>optional</td>
+<td>conditional</td>
 <td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
 </tr>
 </tbody></table>
@@ -262,6 +262,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 <p><code>GET /common/customer/detail</code></p>
 
 <p>Obtain detailed information on the authorised customer within the current session.</p>
+
+<p>Obsolete versions: <a href="includes/obsolete/get-customer-detail-v1.html">v1</a></p>
 <h3 id='endpoint-version-2'>Endpoint Version</h3>
 <table><thead>
 <tr>
@@ -271,7 +273,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>1</strong></td>
+<td><strong>2</strong></td>
 </tr>
 </tbody></table>
 
@@ -311,8 +313,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>x-fapi-auth-date</td>
 <td>header</td>
 <td>string</td>
-<td>optional</td>
-<td>The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.</td>
+<td>conditional</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended) if the customer is currently logged. Otherwise optional where the customer has not logged in. Not to be included for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
@@ -325,7 +327,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>x-cds-client-headers</td>
 <td>header</td>
 <td><a href="#common-field-types">Base64</a></td>
-<td>optional</td>
+<td>conditional</td>
 <td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
 </tr>
 </tbody></table>
@@ -486,7 +488,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>Success</td>
-<td><a href="#schemacdr-common-apiresponsecommoncustomerdetail">ResponseCommonCustomerDetail</a></td>
+<td><a href="#schemacdr-common-apiresponsecommoncustomerdetailv2">ResponseCommonCustomerDetailV2</a></td>
 </tr>
 <tr>
 <td>4xx</td>
@@ -814,7 +816,7 @@ This operation does not require authentication
 
 <p><a class="schema-link" id="cdr-common-api-schemas"></a></p>
 
-<h2 class="schema-toc" id="tocSresponsecommondiscoverystatus">ResponseCommonDiscoveryStatus</h2>
+<h3 class="schema-toc" id="tocSresponsecommondiscoverystatus">ResponseCommonDiscoveryStatus</h3>
 
 <p><a id="schemacdr-common-apiresponsecommondiscoverystatus"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -914,7 +916,7 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSresponsediscoveryoutageslist">ResponseDiscoveryOutagesList</h2>
+<h3 class="schema-toc" id="tocSresponsediscoveryoutageslist">ResponseDiscoveryOutagesList</h3>
 
 <p><a id="schemacdr-common-apiresponsediscoveryoutageslist"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -969,7 +971,7 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSdiscoveryoutage">DiscoveryOutage</h2>
+<h3 class="schema-toc" id="tocSdiscoveryoutage">DiscoveryOutage</h3>
 
 <p><a id="schemacdr-common-apidiscoveryoutage"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -1014,7 +1016,7 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSresponsecommoncustomer">ResponseCommonCustomer</h2>
+<h3 class="schema-toc" id="tocSresponsecommoncustomer">ResponseCommonCustomer</h3>
 
 <p><a id="schemacdr-common-apiresponsecommoncustomer"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -1119,9 +1121,9 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSresponsecommoncustomerdetail">ResponseCommonCustomerDetail</h2>
+<h3 class="schema-toc" id="tocSresponsecommoncustomerdetailv2">ResponseCommonCustomerDetailV2</h3>
 
-<p><a id="schemacdr-common-apiresponsecommoncustomerdetail"></a></p>
+<p><a id="schemacdr-common-apiresponsecommoncustomerdetailv2"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"customerUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"organisation"</span><span class="p">,</span><span class="w">
@@ -1282,13 +1284,13 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>» person</td>
-<td><a href="#schemacdr-common-apicommonpersondetail">CommonPersonDetail</a></td>
+<td><a href="#schemacdr-common-apicommonpersondetailv2">CommonPersonDetailV2</a></td>
 <td>conditional</td>
 <td>Mandatory if <code>customerUType</code> is <code>person</code></td>
 </tr>
 <tr>
 <td>» organisation</td>
-<td><a href="#schemacdr-common-apicommonorganisationdetail">CommonOrganisationDetail</a></td>
+<td><a href="#schemacdr-common-apicommonorganisationdetailv2">CommonOrganisationDetailV2</a></td>
 <td>conditional</td>
 <td>Mandatory if <code>customerUType</code> is <code>organisation</code></td>
 </tr>
@@ -1322,7 +1324,7 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocScommonperson">CommonPerson</h2>
+<h3 class="schema-toc" id="tocScommonperson">CommonPerson</h3>
 
 <p><a id="schemacdr-common-apicommonperson"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -1421,9 +1423,9 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocScommonpersondetail">CommonPersonDetail</h2>
+<h3 class="schema-toc" id="tocScommonpersondetailv2">CommonPersonDetailV2</h3>
 
-<p><a id="schemacdr-common-apicommonpersondetail"></a></p>
+<p><a id="schemacdr-common-apicommonpersondetailv2"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"lastUpdateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -1546,11 +1548,11 @@ This operation does not require authentication
 <td>» physicalAddresses</td>
 <td>[<a href="#schemacdr-common-apicommonphysicaladdresswithpurpose">CommonPhysicalAddressWithPurpose</a>]</td>
 <td>mandatory</td>
-<td>Must contain at least one address. One and only one address may have the purpose of REGISTERED. Zero or one, and no more than one, record may have the purpose of MAIL. If zero then the REGISTERED address is to be used for mail</td>
+<td>Array is mandatory but may be empty if no valid addresses are held. One and only one address may have the purpose of REGISTERED. Zero or one, and no more than one, record may have the purpose of MAIL. If zero then the REGISTERED address is to be used for mail</td>
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocScommonorganisation">CommonOrganisation</h2>
+<h3 class="schema-toc" id="tocScommonorganisation">CommonOrganisation</h3>
 
 <p><a id="schemacdr-common-apicommonorganisation"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -1712,9 +1714,9 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocScommonorganisationdetail">CommonOrganisationDetail</h2>
+<h3 class="schema-toc" id="tocScommonorganisationdetailv2">CommonOrganisationDetailV2</h3>
 
-<p><a id="schemacdr-common-apicommonorganisationdetail"></a></p>
+<p><a id="schemacdr-common-apicommonorganisationdetailv2"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"lastUpdateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"agentFirstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -1812,11 +1814,11 @@ This operation does not require authentication
 <td>» physicalAddresses</td>
 <td>[<a href="#schemacdr-common-apicommonphysicaladdresswithpurpose">CommonPhysicalAddressWithPurpose</a>]</td>
 <td>mandatory</td>
-<td>Must contain at least one address. One and only one address may have the purpose of REGISTERED. Zero or one, and no more than one, record may have the purpose of MAIL. If zero then the REGISTERED address is to be used for mail</td>
+<td>Array is mandatory but may be empty if no valid addresses are held. One and only one address may have the purpose of REGISTERED. Zero or one, and no more than one, record may have the purpose of MAIL. If zero then the REGISTERED address is to be used for mail</td>
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocScommonphonenumber">CommonPhoneNumber</h2>
+<h3 class="schema-toc" id="tocScommonphonenumber">CommonPhoneNumber</h3>
 
 <p><a id="schemacdr-common-apicommonphonenumber"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -1914,7 +1916,7 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocScommonemailaddress">CommonEmailAddress</h2>
+<h3 class="schema-toc" id="tocScommonemailaddress">CommonEmailAddress</h3>
 
 <p><a id="schemacdr-common-apicommonemailaddress"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -1976,7 +1978,7 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocScommonphysicaladdresswithpurpose">CommonPhysicalAddressWithPurpose</h2>
+<h3 class="schema-toc" id="tocScommonphysicaladdresswithpurpose">CommonPhysicalAddressWithPurpose</h3>
 
 <p><a id="schemacdr-common-apicommonphysicaladdresswithpurpose"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -2089,7 +2091,7 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocScommonphysicaladdress">CommonPhysicalAddress</h2>
+<h3 class="schema-toc" id="tocScommonphysicaladdress">CommonPhysicalAddress</h3>
 
 <p><a id="schemacdr-common-apicommonphysicaladdress"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -2175,7 +2177,7 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocScommonsimpleaddress">CommonSimpleAddress</h2>
+<h3 class="schema-toc" id="tocScommonsimpleaddress">CommonSimpleAddress</h3>
 
 <p><a id="schemacdr-common-apicommonsimpleaddress"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -2248,7 +2250,7 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocScommonpafaddress">CommonPAFAddress</h2>
+<h3 class="schema-toc" id="tocScommonpafaddress">CommonPAFAddress</h3>
 
 <p><a id="schemacdr-common-apicommonpafaddress"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -2421,7 +2423,7 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSlinks">Links</h2>
+<h3 class="schema-toc" id="tocSlinks">Links</h3>
 
 <p><a id="schemacdr-common-apilinks"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -2445,7 +2447,7 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSmeta">Meta</h2>
+<h3 class="schema-toc" id="tocSmeta">Meta</h3>
 
 <p><a id="schemacdr-common-apimeta"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{}</span><span class="w">
@@ -2453,7 +2455,7 @@ This operation does not require authentication
 </span></code></pre><h3 id='properties-17'>Properties</h3>
 <p><em>None</em></p>
 
-<h2 class="schema-toc" id="tocSmetaerror">MetaError</h2>
+<h3 class="schema-toc" id="tocSmetaerror">MetaError</h3>
 
 <p><a id="schemacdr-common-apimetaerror"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -2479,7 +2481,7 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSresponseerrorlistv2">ResponseErrorListV2</h2>
+<h3 class="schema-toc" id="tocSresponseerrorlistv2">ResponseErrorListV2</h3>
 
 <p><a id="schemacdr-common-apiresponseerrorlistv2"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">

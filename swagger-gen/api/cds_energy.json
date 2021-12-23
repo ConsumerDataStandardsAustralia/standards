@@ -3,7 +3,7 @@
 	"info": {
 		"title": "CDR Energy API",
 		"description": "Consumer Data Right end points and payloads for the Energy sector",
-		"version": "1.14.0"
+		"version": "1.15.0"
 	},
 	"components": {
 		"schemas": {
@@ -125,7 +125,7 @@
                                 "type": "array",
                                 "items": {
                                     "$ref": "#/components/schemas/EnergyUsageRead"
-                                },
+                                }
                             }
                         }
                     },
@@ -818,7 +818,7 @@
             },
             "EnergyPlanControlledLoad": {
                 "type": "object",
-                "description": "Required if pricing model is SINGLE_RATE_CONT_LOAD or TIME_OF_USE_CONT_LOAD",
+                "description": "Required if pricing model is SINGLE_RATE_CONT_LOAD or TIME_OF_USE_CONT_LOAD or FLEXIBLE_CONT_LOAD",
                 "required": ["displayName", "dailyCharge", "period", "rates"],
                 "properties": {
                     "displayName": {
@@ -1198,8 +1198,8 @@
                         "tariffUType": {
                             "type": "string",
                             "description": "The type of the payer",
-                            "enum": ["GOVERNMENT",
-                                "RETAILER"
+                            "enum": ["singleTariff",
+                                "timeVaryingTariffs"
                             ]
                         },
                         "singleTariff": {
@@ -1277,9 +1277,22 @@
                 "type": "array",
                 "items": {
                     "type": "object",
-                    "required": ["displayName", "startDate", "endDate", "dailySupplyCharges", "rateBlockUType"],
+                    "required": ["displayName", "startDate", "endDate", "rateBlockUType"],
                     "x-conditional": ["singleRate", "timeOfUseRates", "demandCharges"],
                     "properties": {
+                        "type": {
+                            "description": "Type of charge. Assumed to be other if absent",
+                            "type": "string",
+                            "enum": [
+                                "ENVIRONMENTAL",
+                                "REGULATED",
+                                "NETWORK",
+                                "METERING",
+                                "RETAIL_SERVICE",
+                                "RCTI",
+                                "OTHER"
+                            ]
+                        },
                         "displayName": {
                             "type": "string",
                             "description": "The name of the tariff period"
@@ -1295,7 +1308,7 @@
                         "dailySupplyCharges": {
                             "type": "string",
                             "x-cds-type": "AmountString",
-                            "description": "The amount of access charge for the tariff period, in cents per day exclusive of GST."
+                            "description": "The amount of access charge for the tariff period, in dollars per day exclusive of GST."
                         },
                         "rateBlockUType": {
                             "type": "string",
@@ -1322,7 +1335,7 @@
                                 "generalUnitPrice": {
                                     "type": "string",
                                     "x-cds-type": "AmountString",
-                                    "description": "The block rate (unit price) for any usage above the included fixed usage, in cents per kWh inclusive of GST.  Only required if pricingModel field is ‘QUOTA’"
+                                    "description": "The block rate (unit price) for any usage above the included fixed usage, in dollars per kWh inclusive of GST.  Only required if pricingModel field is ‘QUOTA’"
                                 },
                                 "rates": {
                                     "description": "Array of controlled load rates in order of usage volume",
@@ -1334,8 +1347,20 @@
                                             "unitPrice": {
                                                 "type": "string",
                                                 "x-cds-type": "AmountString",
-                                                "description": "Unit price of usage per kWh (exclusive of GST)"
+                                                "description": "Unit price of usage per measure unit (exclusive of GST)"
                                             },
+                                            "measureUnit": {
+                                                "type": "string",
+                                                "description": "The measurement unit of rate. Assumed to be KWH if absent",
+                                                "enum": ["KWH",
+                                                    "KVA",
+                                                    "KVAR",
+                                                    "KVARH",
+                                                    "KW",
+                                                    "DAYS",
+                                                    "METER",
+                                                    "MONTH"]
+                                            },                                                
                                             "volume": {
                                                 "type": "number",
                                                 "description": "Volume in kWh that this rate applies to.  Only applicable for ‘stepped’ rates where different rates apply for different volumes of usage in a period"
@@ -1375,8 +1400,20 @@
                                                 "unitPrice": {
                                                     "type": "string",
                                                     "x-cds-type": "AmountString",
-                                                    "description": "Unit price of usage per kWh (exclusive of GST)"
+                                                    "description": "Unit price of usage per  measure unit (exclusive of GST)"
                                                 },
+                                                "measureUnit": {
+                                                    "type": "string",
+                                                    "description": "The measurement unit of rate. Assumed to be KWH if absent",
+                                                    "enum": ["KWH",
+                                                        "KVA",
+                                                        "KVAR",
+                                                        "KVARH",
+                                                        "KW",
+                                                        "DAYS",
+                                                        "METER",
+                                                        "MONTH"]
+                                                },  
                                                 "volume": {
                                                     "type": "number",
                                                     "description": "Volume in kWh that this rate applies to.  Only applicable for ‘stepped’ rates where different rates apply for different volumes of usage in a period"
@@ -1456,8 +1493,20 @@
                                     "amount": {
                                         "type": "string",
                                         "x-cds-type": "AmountString",
-                                        "description": "The charge amount per kWh exclusive of GST"
+                                        "description": "The charge amount per  measure unit exclusive of GST"
                                     },
+                                    "measureUnit": {
+                                        "type": "string",
+                                        "description": "The measurement unit of charge amount. Assumed to be KWH if absent",
+                                        "enum": ["KWH",
+                                            "KVA",
+                                            "KVAR",
+                                            "KVARH",
+                                            "KW",
+                                            "DAYS",
+                                            "METER",
+                                            "MONTH"]
+                                    },  
                                     "startTime": {
                                         "type": "string",
                                         "description": "Start of the period in HHMM format using 24 hour clock format"
@@ -2844,11 +2893,8 @@
                     "accountId",
                     "invoiceNumber",
                     "issueDate",
-                    "amountDue",
                     "balanceAtIssue",
                     "servicePoints",
-                    "totalAccountCharges",
-                    "totalAccountDiscounts",
                     "paymentStatus"
                 ],
                 "x-conditional": [
@@ -3001,6 +3047,19 @@
                                 "description"
                             ],
                             "properties": {
+                                "type": {
+                                    "description": "Type of charge. Assumed to be other if absent",
+                                    "type": "string",
+                                    "enum": [
+                                        "ENVIRONMENTAL",
+                                        "REGULATED",
+                                        "NETWORK",
+                                        "METERING",
+                                        "RETAIL_SERVICE",
+                                        "RCTI",
+                                        "OTHER"
+                                    ]
+                                },
                                 "amount": {
                                     "description": "The aggregate total of charges for this item (exclusive of GST)",
                                     "type": "string",
@@ -3059,6 +3118,19 @@
                                 "description"
                             ],
                             "properties": {
+                                "type": {
+                                    "description": "Type of charge. Assumed to be other if absent",
+                                    "type": "string",
+                                    "enum": [
+                                        "ENVIRONMENTAL",
+                                        "REGULATED",
+                                        "NETWORK",
+                                        "METERING",
+                                        "RETAIL_SERVICE",
+                                        "RCTI",
+                                        "OTHER"
+                                    ]
+                                },
                                 "amount": {
                                     "description": "The aggregate total of charges for this item (exclusive of GST)",
                                     "type": "string",
@@ -3214,8 +3286,20 @@
                         "type": "string",
                         "x-cds-type": "DateTimeString"
                     },
+                    "measureUnit": {
+                        "type": "string",
+                        "description": "The measurement unit of rate. Assumed to be KWH if absent",
+                        "enum": ["KWH",
+                            "KVA",
+                            "KVAR",
+                            "KVARH",
+                            "KW",
+                            "DAYS",
+                            "METER",
+                            "MONTH"]
+                    },    
                     "usage": {
-                        "description": "The usage for the period in kWh.  A negative value indicates power generated",
+                        "description": "The usage for the period in measure unit.  A negative value indicates power generated",
                         "type": "number"
                     },
                     "amount": {
@@ -3421,6 +3505,29 @@
                     "invoiceNumber": {
                         "description": "The number of the invoice in which this transaction is included if it has been issued",
                         "type": "string"
+                    },
+                    "startDate": {
+                        "description": "Optional start date for the application of the charge",
+                        "type": "string",
+                        "x-cds-type": "DateString"
+                    },
+                    "endDate": {
+                        "description": "Optional end date for the application of the charge",
+                        "type": "string",
+                        "x-cds-type": "DateString"
+                    },
+                    "type": {
+                        "description": "Type of charge. Assumed to be other if absent",
+                        "type": "string",
+                        "enum": [
+                            "ENVIRONMENTAL",
+                            "REGULATED",
+                            "NETWORK",
+                            "METERING",
+                            "RETAIL_SERVICE",
+                            "RCTI",
+                            "OTHER"
+                        ]
                     },
                     "amount": {
                         "description": "The amount of the charge",
@@ -3639,6 +3746,7 @@
 				"description": "The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.",
 				"in": "header",
 				"required": false,
+				"x-conditional": true,
 				"schema": {
 					"type": "string"
 				}
@@ -3657,6 +3765,7 @@
 				"description": "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
 				"in": "header",
 				"required": false,
+				"x-conditional": true,
 				"schema": {
 					"type": "string"
 				},
@@ -4359,7 +4468,7 @@
 						"$ref": "#/components/responses/servicePointDetail"
                     },
                     "4xx": {
-                        "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Unavailable Service Point](#error-422-unavailable-service-point)</li><li>[422 - Invalid Service Point](#error-422-invalid-service-point)</li></ul>",
+                        "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[404 - Unavailable Service Point](#error-404-unavailable-service-point)</li><li>[404 - Invalid Service Point](#error-404-invalid-service-point)</li></ul>",
                         "headers": {
                             "x-fapi-interaction-id": {
                                 "schema": {
@@ -4431,7 +4540,7 @@
 						"$ref": "#/components/responses/usageList"
                     },
                     "4xx": {
-                        "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Invalid Page](#error-422-field-invalid-page)</li><li>[422 - Unavailable Service Point](#error-422-unavailable-service-point)</li><li>[422 - Invalid Service Point](#error-422-invalid-service-point)</li></ul>",
+                        "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Invalid Page](#error-422-field-invalid-page)</li><li>[404 - Unavailable Service Point](#error-404-unavailable-service-point)</li><li>[404 - Invalid Service Point](#error-404-invalid-service-point)</li></ul>",
                         "headers": {
                             "x-fapi-interaction-id": {
                                 "schema": {
@@ -4630,7 +4739,7 @@
 						"$ref": "#/components/responses/derDetail"
                     },
                     "4xx": {
-                        "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Unavailable Service Point](#error-422-unavailable-service-point)</li><li>[422 - Invalid Service Point](#error-422-invalid-service-point)</li></ul>",
+                        "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[404 - Unavailable Service Point](#error-404-unavailable-service-point)</li><li>[404 - Invalid Service Point](#error-404-invalid-service-point)</li></ul>",
                         "headers": {
                             "x-fapi-interaction-id": {
                                 "schema": {
@@ -4880,7 +4989,7 @@
 						"$ref": "#/components/responses/accountDetail"
                     },
                     "4xx": {
-                        "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Unavailable Energy Account](#error-422-unavailable-energy-account)</li><li>[422 - Invalid Energy Account](#error-422-invalid-energy-account)</li></ul>",
+                        "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[404 - Unavailable Energy Account](#error-404-unavailable-energy-account)</li><li>[404 - Invalid Energy Account](#error-404-invalid-energy-account)</li></ul>",
                         "headers": {
                             "x-fapi-interaction-id": {
                                 "schema": {
@@ -4940,7 +5049,7 @@
 						"$ref": "#/components/responses/accountPaymentScheduleDetail"
                     },
                     "4xx": {
-                        "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Unavailable Energy Account](#error-422-unavailable-energy-account)</li><li>[422 - Invalid Energy Account](#error-422-invalid-energy-account)</li></ul>",
+                        "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[404 - Unavailable Energy Account](#error-404-unavailable-energy-account)</li><li>[404 - Invalid Energy Account](#error-404-invalid-energy-account)</li></ul>",
                         "headers": {
                             "x-fapi-interaction-id": {
                                 "schema": {
@@ -4964,7 +5073,7 @@
 			"get": {
 				"summary": "Get Concessions",
 				"operationId": "getConcessions",
-				"description": "Obtain the details of any concessions or hardship arrangements applied to a specific energy account",
+				"description": "Obtain the details of any concessions or arrangements applied to a specific energy account",
                 "x-scopes": [
                     "energy:accounts.concessions:read"
                 ],
@@ -5000,7 +5109,7 @@
 						"$ref": "#/components/responses/accountConcessionsDetail"
                     },
                     "4xx": {
-                        "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Unavailable Energy Account](#error-422-unavailable-energy-account)</li><li>[422 - Invalid Energy Account](#error-422-invalid-energy-account)</li></ul>",
+                        "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[404 - Unavailable Energy Account](#error-404-unavailable-energy-account)</li><li>[404 - Invalid Energy Account](#error-404-invalid-energy-account)</li></ul>",
                         "headers": {
                             "x-fapi-interaction-id": {
                                 "schema": {
@@ -5060,7 +5169,7 @@
 						"$ref": "#/components/responses/balanceDetail"
                     },
                     "4xx": {
-                        "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Unavailable Energy Account](#error-422-unavailable-energy-account)</li><li>[422 - Invalid Energy Account](#error-422-invalid-energy-account)</li></ul>",
+                        "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[404 - Unavailable Energy Account](#error-404-unavailable-energy-account)</li><li>[404 - Invalid Energy Account](#error-404-invalid-energy-account)</li></ul>",
                         "headers": {
                             "x-fapi-interaction-id": {
                                 "schema": {
@@ -5082,7 +5191,7 @@
 		},
 		"/energy/accounts/balances": {
 			"get": {
-				"summary": "Get Bulk Balances (Energy)",
+				"summary": "Get Bulk Balances for Energy",
 				"operationId": "listBalancesBulk",
 				"description": "Obtain the current balance for all accounts",
                 "x-scopes": [
@@ -5259,7 +5368,7 @@
 						"$ref": "#/components/responses/invoiceList"
                     },
                     "4xx": {
-                        "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Invalid Page](#error-422-field-invalid-page)</li><li>[422 - Unavailable Energy Account](#error-422-unavailable-energy-account)</li><li>[422 - Invalid Energy Account](#error-422-invalid-energy-account)</li></ul>",
+                        "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Invalid Page](#error-422-field-invalid-page)</li><li>[404 - Unavailable Energy Account](#error-404-unavailable-energy-account)</li><li>[404 - Invalid Energy Account](#error-404-invalid-energy-account)</li></ul>",
                         "headers": {
                             "x-fapi-interaction-id": {
                                 "schema": {
@@ -5470,7 +5579,7 @@
 						"$ref": "#/components/responses/billingList"
                     },
                     "4xx": {
-                        "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Invalid Page](#error-422-field-invalid-page)</li><li>[422 - Unavailable Energy Account](#error-422-unavailable-energy-account)</li><li>[422 - Invalid Energy Account](#error-422-invalid-energy-account)</li></ul>",
+                        "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Invalid Page](#error-422-field-invalid-page)</li><li>[404 - Unavailable Energy Account](#error-404-unavailable-energy-account)</li><li>[404 - Invalid Energy Account](#error-404-invalid-energy-account)</li></ul>",
                         "headers": {
                             "x-fapi-interaction-id": {
                                 "schema": {

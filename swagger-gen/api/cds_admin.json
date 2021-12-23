@@ -3,7 +3,7 @@
 	"info": {
 		"title": "CDR Admin API",
 		"description": "Data Holder Consumer Data Standards Administration End Points created by the Data Standards Body (DSB), with the Data Standards Chair as the decision maker",
-		"version": "1.14.0",
+		"version": "1.15.0",
 		"contact": {
 			"name": "Consumer Data Standards Administration End Points",
 			"url": "https://consumerdatastandards.gov.au",
@@ -411,7 +411,7 @@
 					}
 				},
 				"secondary": {
-					"description": "API call counts for the secondary responsibility requests tier.  Mandatory for data holders designated for a secondary responsibility request data cluster",
+					"description": "API call counts for the Shared Responsibility Data Requests tier.  Mandatory for data holders designated for a Shared Responsibility Data Request data cluster",
 					"x-conditional": [
 						"currentDay",
 						"previousDays"
@@ -431,7 +431,7 @@
 					}
 				},
 				"largeSecondary": {
-					"description": "API call counts for the large secondary responsibility requests tier.  Mandatory for data holders designated for a secondary responsibility request data cluster",
+					"description": "API call counts for the large Shared Responsibility Data Requests tier.  Mandatory for data holders designated for a Shared Responsibility Data Request data cluster",
 					"x-conditional": [
 						"currentDay",
 						"previousDays"
@@ -568,7 +568,7 @@
 					}
 				},
 				"secondary": {
-					"description": "Average response time for the secondary tier.  Mandatory for data holders designated for a secondary responsibility request data cluster",
+					"description": "Average response time for the secondary tier.  Mandatory for data holders designated for a Shared Responsibility Data Request data cluster",
 					"required": [
 						"primary",
 						"secondary"
@@ -617,7 +617,7 @@
 					}
 				},
 				"largeSecondary": {
-					"description": "Average response time for the large payload tier.  Mandatory for data holders designated for a secondary responsibility request data cluster",
+					"description": "Average response time for the large payload tier.  Mandatory for data holders designated for a Shared Responsibility Data Request data cluster",
 					"required": [
 						"primary",
 						"secondary"
@@ -797,7 +797,7 @@
 			}
 		},
 		"SecondaryHolderMetrics": {
-			"description": "Errors and rejections received by the primary data holder from the secondary data holder.  Mandatory for data holders designated for a secondary responsibility request data cluster",
+			"description": "Errors and rejections received by the primary data holder from the secondary data holder.  Mandatory for data holders designated for a Shared Responsibility Data Request data cluster",
 			"required": [
 				"errors",
 				"rejections"

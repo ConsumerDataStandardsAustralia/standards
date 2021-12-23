@@ -4,14 +4,102 @@
 
 This specification defines the APIs for Data Holders exposing Energy endpoints.
 
-<aside class="notice">
-Note that the energy sector endpoints are currently considered non-binding.  This status will be changed by a decision of the Chair after the CDR rules relating to the energy sector are finalised.
-</aside>
+```diff
+Removed the statement of non-binding for energy
+```
 
-<br>
 <table>
 <tr><td><a href='./includes/swagger/cds_energy.json'>Energy Swagger (JSON)</a></td></tr>
 <tr><td><a href='./includes/swagger/cds_energy.yaml'>Energy Swagger (YAML)</a></td></tr>
 </table>
+
+```diff
+
+Below are the changes to the Energy APIs section of the
+standards.
+
+The description for the `EnergyPlanControlledLoad` model
+was changed from:
+- Required if pricing model is SINGLE_RATE_CONT_LOAD or TIME_OF_USE_CONT_LOAD
+to:
++ Required if pricing model is SINGLE_RATE_CONT_LOAD or TIME_OF_USE_CONT_LOAD or FLEXIBLE_CONT_LOAD
+
+
+The title of the bulk balances API changed from:
+- Get Bulk Balances (Energy)
+to:
++ Get Bulk Balances for Energy
+
+
+The enum values for the `tariffUType` field in the
+`EnergyPlanSolarFeedInTariff` model changed from:
+- GOVERNMENT
+- RETAILER
+to:
++ singleTariff
++ timeVaryingTariffs
+
+
+Made the `dailySupplyCharges` in the `EnergyPlanTariffPeriod` model
+optional rather than mandatory.
+
+
+Added the `type` enumeration field to the following:
+  `EnergyPlanTariffPeriod` model
+  `otherCharges` object in the `EnergyInvoiceGasUsageCharges` model
+  `otherCharges` object in the `EnergyInvoiceElectricityUsageCharges` model
+  `EnergyBillingOtherTransaction` model
+The `type` field has the following enumeration values;
++ ENVIRONMENTAL
++ REGULATED
++ NETWORK
++ METERING
++ RETAIL_SERVICE
++ RCTI
++ OTHER
+
+
+Added the `measureUnit` enumeration field to the following:
+  `singleRate` object in the `EnergyPlanTariffPeriod` model
+  `timeOfUseRates` object in the `EnergyPlanTariffPeriod` model
+  `demandCharges` object in the `EnergyPlanTariffPeriod` model
+  `EnergyBillingUsageTransaction` model
+The `measureUnit` field has the following enumeration values;
++ KVA
++ KVAR
++ KVARH
++ KW
++ DAYS
++ METER
++ MONTH
+
+
+Addition of `startDate` and `endDate` fields to the
+`EnergyBillingOtherTransaction` model.
+
+
+Modified the description of the `dailySupplyCharges` field from:
+- The amount of access charge for the tariff period, in cents per day exclusive of GST.
+to:
++ The amount of access charge for the tariff period, in dollars per day exclusive of GST.
+
+
+Modified the description of the `generalUnitPrice` field from:
+- The block rate (unit price) for any usage above the included fixed usage, in cents per kWh inclusive of GST.  Only required if pricingModel field is ‘QUOTA’
+to:
++ The block rate (unit price) for any usage above the included fixed usage, in dollars per kWh inclusive of GST.  Only required if pricingModel field is ‘QUOTA’
+
+
+Made the `x-cds-client-headers` and `x-fapi-auth-date` headers conditional.
+
+Added additional errors for 404 status code:
+  urn:au-cds:error:cds-energy:Authorisation/InvalidEnergyAccount
+  urn:au-cds:error:cds-energy:Authorisation/UnavailableEnergyAccount
+  urn:au-cds:error:cds-energy:Authorisation/InvalidServicePoint
+  urn:au-cds:error:cds-energy:Authorisation/UnavailableServicePoint
+
+Removed references to hardship in descriptions.
+
+```
 
 <%= partial "includes/cds_energy.md" %>

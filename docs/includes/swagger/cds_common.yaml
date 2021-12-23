@@ -2,7 +2,7 @@
 swagger: "2.0"
 info:
   description: "Consumer Data Standards APIs created by the Data Standards Body (DSB), with the Data Standards Chair as the decision maker to meet the needs of the Consumer Data Right"
-  version: 1.14.0
+  version: 1.15.0
   title: CDR Common API
   contact:
     name: Consumer Data Standards
@@ -46,9 +46,10 @@ paths:
         type: string
       - name: x-fapi-auth-date
         in: header
-        description: The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.
+        description: The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended) if the customer is currently logged. Otherwise optional where the customer has not logged in. Not to be included for unauthenticated calls.
         required: false
         type: string
+        x-conditional: true
       - name: x-fapi-customer-ip-address
         in: header
         description: The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.
@@ -59,6 +60,7 @@ paths:
         description: "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls."
         required: false
         type: string
+        x-conditional: true
         x-cds-type: Base64
       responses:
         "200":
@@ -89,7 +91,7 @@ paths:
       - Common
       - Customer
       summary: Get Customer Detail
-      description: Obtain detailed information on the authorised customer within the current session.
+      description: "Obtain detailed information on the authorised customer within the current session.\n\nObsolete versions: [v1](includes/obsolete/get-customer-detail-v1.html)"
       operationId: getCustomerDetail
       parameters:
       - name: x-v
@@ -109,9 +111,10 @@ paths:
         type: string
       - name: x-fapi-auth-date
         in: header
-        description: The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.
+        description: The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended) if the customer is currently logged. Otherwise optional where the customer has not logged in. Not to be included for unauthenticated calls.
         required: false
         type: string
+        x-conditional: true
       - name: x-fapi-customer-ip-address
         in: header
         description: The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.
@@ -122,6 +125,7 @@ paths:
         description: "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls."
         required: false
         type: string
+        x-conditional: true
         x-cds-type: Base64
       responses:
         "200":
@@ -134,7 +138,7 @@ paths:
               type: string
               description: "An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction."
           schema:
-            $ref: '#/definitions/ResponseCommonCustomerDetail'
+            $ref: '#/definitions/ResponseCommonCustomerDetailV2'
         "4xx":
           description: "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>"
           headers:
@@ -145,7 +149,7 @@ paths:
             $ref: '#/definitions/ResponseErrorListV2'
       x-scopes:
       - common:customer.detail:read
-      x-version: "1"
+      x-version: "2"
   /discovery/status:
     get:
       tags:
@@ -271,14 +275,14 @@ definitions:
         $ref: '#/definitions/Links'
       meta:
         $ref: '#/definitions/Meta'
-  ResponseCommonCustomerDetail:
+  ResponseCommonCustomerDetailV2:
     type: object
     required:
     - data
     - links
     properties:
       data:
-        $ref: '#/definitions/ResponseCommonCustomerDetail_data'
+        $ref: '#/definitions/ResponseCommonCustomerDetailV2_data'
       links:
         $ref: '#/definitions/Links'
       meta:
@@ -325,7 +329,7 @@ definitions:
         - ANZSCO_1220.0_2013_V1.3
     x-conditional:
     - occupationCodeVersion
-  CommonPersonDetail:
+  CommonPersonDetailV2:
     allOf:
     - $ref: '#/definitions/CommonPerson'
     - type: object
@@ -346,7 +350,7 @@ definitions:
             $ref: '#/definitions/CommonEmailAddress'
         physicalAddresses:
           type: array
-          description: "Must contain at least one address. One and only one address may have the purpose of REGISTERED. Zero or one, and no more than one, record may have the purpose of MAIL. If zero then the REGISTERED address is to be used for mail"
+          description: "Array is mandatory but may be empty if no valid addresses are held. One and only one address may have the purpose of REGISTERED. Zero or one, and no more than one, record may have the purpose of MAIL. If zero then the REGISTERED address is to be used for mail"
           items:
             $ref: '#/definitions/CommonPhysicalAddressWithPurpose'
   CommonOrganisation:
@@ -420,7 +424,7 @@ definitions:
         x-cds-type: DateString
     x-conditional:
     - industryCodeVersion
-  CommonOrganisationDetail:
+  CommonOrganisationDetailV2:
     allOf:
     - $ref: '#/definitions/CommonOrganisation'
     - type: object
@@ -429,7 +433,7 @@ definitions:
       properties:
         physicalAddresses:
           type: array
-          description: "Must contain at least one address. One and only one address may have the purpose of REGISTERED. Zero or one, and no more than one, record may have the purpose of MAIL. If zero then the REGISTERED address is to be used for mail"
+          description: "Array is mandatory but may be empty if no valid addresses are held. One and only one address may have the purpose of REGISTERED. Zero or one, and no more than one, record may have the purpose of MAIL. If zero then the REGISTERED address is to be used for mail"
           items:
             $ref: '#/definitions/CommonPhysicalAddressWithPurpose'
   CommonPhoneNumber:
@@ -732,7 +736,7 @@ definitions:
     x-conditional:
     - person
     - organisation
-  ResponseCommonCustomerDetail_data:
+  ResponseCommonCustomerDetailV2_data:
     type: object
     required:
     - customerUType
@@ -745,10 +749,10 @@ definitions:
         - person
       person:
         description: Mandatory if `customerUType` is `person`
-        $ref: '#/definitions/CommonPersonDetail'
+        $ref: '#/definitions/CommonPersonDetailV2'
       organisation:
         description: Mandatory if `customerUType` is `organisation`
-        $ref: '#/definitions/CommonOrganisationDetail'
+        $ref: '#/definitions/CommonOrganisationDetailV2'
     x-conditional:
     - person
     - organisation
@@ -792,9 +796,10 @@ parameters:
   RequestHeader_x-fapi-auth-date:
     name: x-fapi-auth-date
     in: header
-    description: The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.
+    description: The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended) if the customer is currently logged. Otherwise optional where the customer has not logged in. Not to be included for unauthenticated calls.
     required: false
     type: string
+    x-conditional: true
   RequestHeader_x-fapi-customer-ip-address:
     name: x-fapi-customer-ip-address
     in: header
@@ -807,4 +812,5 @@ parameters:
     description: "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls."
     required: false
     type: string
+    x-conditional: true
     x-cds-type: Base64
