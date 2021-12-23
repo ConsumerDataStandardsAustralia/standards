@@ -413,10 +413,86 @@ This version is will remain valid until a deprecation schedule is set.
 </tr>
 </tbody></table>
 
-<p><aside class="notice">
+<aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">cdr-register:bank:read</a>
-</aside></p>
+</aside>
+
+<h2 class="schema-toc" id="tocSresponseerrorlist">ResponseErrorList</h2>
+
+<p><a id="schemacdr-participant-discovery-apiresponseerrorlist"></a></p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"detail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre><h3 id='properties'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>errors</td>
+<td>[<a href="#schemacdr-participant-discovery-apierror">Error</a>]</td>
+<td>mandatory</td>
+<td>none</td>
+</tr>
+</tbody></table>
+
+<h2 class="schema-toc" id="tocSerror">Error</h2>
+
+<p><a id="schemacdr-participant-discovery-apierror"></a></p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"detail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre><h3 id='properties-2'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>code</td>
+<td>string</td>
+<td>mandatory</td>
+<td>Error code</td>
+</tr>
+<tr>
+<td>title</td>
+<td>string</td>
+<td>mandatory</td>
+<td>Error title</td>
+</tr>
+<tr>
+<td>detail</td>
+<td>string</td>
+<td>mandatory</td>
+<td>Error detail</td>
+</tr>
+<tr>
+<td>meta</td>
+<td>object</td>
+<td>optional</td>
+<td>Optional additional data for specific error types</td>
+</tr>
+</tbody></table>
 
       </div>
       <div class="dark-box">

@@ -405,6 +405,408 @@ This version is will remain valid until a deprecation schedule is set.
 This operation does not require authentication
 </aside></p>
 
+<h2 class="schema-toc" id="tocSresponseregisterdatarecipientlist">ResponseRegisterDataRecipientList</h2>
+
+<p><a id="schemacdr-participant-discovery-apiresponseregisterdatarecipientlist"></a></p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"legalEntityId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"legalEntityName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"accreditationNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"industry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"banking"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"logoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"dataRecipientBrands"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"dataRecipientBrandId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"brandName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"logoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"softwareProducts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"softwareProductId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"softwareProductName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"softwareProductDescription"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"logoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"lastUpdated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<p><em>Response containing a list of Data Recipients in the CDR Register</em></p>
+<h3 id='properties'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>data</td>
+<td>[<a href="#schemacdr-participant-discovery-apiregisterdatarecipient">RegisterDataRecipient</a>]</td>
+<td>mandatory</td>
+<td>Response data for the query</td>
+</tr>
+</tbody></table>
+
+<h2 class="schema-toc" id="tocSregisterdatarecipient">RegisterDataRecipient</h2>
+
+<p><a id="schemacdr-participant-discovery-apiregisterdatarecipient"></a></p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"legalEntityId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"legalEntityName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"accreditationNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"industry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"banking"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"logoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"dataRecipientBrands"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"dataRecipientBrandId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"brandName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"logoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"softwareProducts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"softwareProductId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"softwareProductName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"softwareProductDescription"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"logoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"lastUpdated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre><h3 id='properties-2'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>legalEntityId</td>
+<td>string</td>
+<td>mandatory</td>
+<td>Unique id of the Data Recipient Legal Entity issued by the CDR Register</td>
+</tr>
+<tr>
+<td>legalEntityName</td>
+<td>string</td>
+<td>mandatory</td>
+<td>Legal name of the Data Recipient</td>
+</tr>
+<tr>
+<td>accreditationNumber</td>
+<td>string</td>
+<td>mandatory</td>
+<td>CDR Register issued human readable unique number given to Data Recipients upon accreditation</td>
+</tr>
+<tr>
+<td>industry</td>
+<td>string</td>
+<td>mandatory</td>
+<td>none</td>
+</tr>
+<tr>
+<td>logoUri</td>
+<td><a href="#common-field-types">URIString</a></td>
+<td>mandatory</td>
+<td>Legal Entity logo URI</td>
+</tr>
+<tr>
+<td>dataRecipientBrands</td>
+<td>[<a href="#schemacdr-participant-discovery-apidatarecipientbrandmetadata">DataRecipientBrandMetaData</a>]</td>
+<td>optional</td>
+<td>[Metadata related to Data Recipient Brand]</td>
+</tr>
+<tr>
+<td>status</td>
+<td>string</td>
+<td>mandatory</td>
+<td>none</td>
+</tr>
+<tr>
+<td>lastUpdated</td>
+<td><a href="#common-field-types">DateTimeString</a></td>
+<td>mandatory</td>
+<td>The date/time that the Legal Entity was last updated in the CDR Register</td>
+</tr>
+</tbody></table>
+<h4 id='enumerated-values-2'>Enumerated Values</h4>
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>industry</td>
+<td>banking</td>
+</tr>
+<tr>
+<td>status</td>
+<td>ACTIVE</td>
+</tr>
+<tr>
+<td>status</td>
+<td>SUSPENDED</td>
+</tr>
+<tr>
+<td>status</td>
+<td>REVOKED</td>
+</tr>
+<tr>
+<td>status</td>
+<td>SURRENDERED</td>
+</tr>
+</tbody></table>
+
+<h2 class="schema-toc" id="tocSdatarecipientbrandmetadata">DataRecipientBrandMetaData</h2>
+
+<p><a id="schemacdr-participant-discovery-apidatarecipientbrandmetadata"></a></p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"dataRecipientBrandId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"brandName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"logoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"softwareProducts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"softwareProductId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"softwareProductName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"softwareProductDescription"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"logoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<p><em>Metadata related to Data Recipient Brand</em></p>
+<h3 id='properties-3'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>dataRecipientBrandId</td>
+<td>string</td>
+<td>mandatory</td>
+<td>Unique id of the Data Recipient brand issued by the CDR Register</td>
+</tr>
+<tr>
+<td>brandName</td>
+<td>string</td>
+<td>mandatory</td>
+<td>Data Recipient Brand name</td>
+</tr>
+<tr>
+<td>logoUri</td>
+<td><a href="#common-field-types">URIString</a></td>
+<td>mandatory</td>
+<td>Data Recipient Brand logo URI</td>
+</tr>
+<tr>
+<td>softwareProducts</td>
+<td>[<a href="#schemacdr-participant-discovery-apisoftwareproductmetadata">SoftwareProductMetaData</a>]</td>
+<td>optional</td>
+<td>[Data Recipient Brand Software Products]</td>
+</tr>
+<tr>
+<td>status</td>
+<td>string</td>
+<td>mandatory</td>
+<td>none</td>
+</tr>
+</tbody></table>
+<h4 id='enumerated-values-3'>Enumerated Values</h4>
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>ACTIVE</td>
+</tr>
+<tr>
+<td>status</td>
+<td>INACTIVE</td>
+</tr>
+<tr>
+<td>status</td>
+<td>REMOVED</td>
+</tr>
+</tbody></table>
+
+<h2 class="schema-toc" id="tocSsoftwareproductmetadata">SoftwareProductMetaData</h2>
+
+<p><a id="schemacdr-participant-discovery-apisoftwareproductmetadata"></a></p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"softwareProductId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"softwareProductName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"softwareProductDescription"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"logoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<p><em>Data Recipient Brand Software Products</em></p>
+<h3 id='properties-4'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>softwareProductId</td>
+<td>string</td>
+<td>mandatory</td>
+<td>Unique id of the Data Recipient software product issued by the CDR Register</td>
+</tr>
+<tr>
+<td>softwareProductName</td>
+<td>string</td>
+<td>mandatory</td>
+<td>Name of the software product</td>
+</tr>
+<tr>
+<td>softwareProductDescription</td>
+<td>string</td>
+<td>optional</td>
+<td>Description of the software product</td>
+</tr>
+<tr>
+<td>logoUri</td>
+<td><a href="#common-field-types">URIString</a></td>
+<td>mandatory</td>
+<td>Software product logo URI</td>
+</tr>
+<tr>
+<td>status</td>
+<td>string</td>
+<td>mandatory</td>
+<td>none</td>
+</tr>
+</tbody></table>
+<h4 id='enumerated-values-4'>Enumerated Values</h4>
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>ACTIVE</td>
+</tr>
+<tr>
+<td>status</td>
+<td>INACTIVE</td>
+</tr>
+<tr>
+<td>status</td>
+<td>REMOVED</td>
+</tr>
+</tbody></table>
+
+<h2 class="schema-toc" id="tocSresponseerrorlist">ResponseErrorList</h2>
+
+<p><a id="schemacdr-participant-discovery-apiresponseerrorlist"></a></p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"detail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre><h3 id='properties-5'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>errors</td>
+<td>[<a href="#schemacdr-participant-discovery-apierror">Error</a>]</td>
+<td>mandatory</td>
+<td>none</td>
+</tr>
+</tbody></table>
+
+<h2 class="schema-toc" id="tocSerror">Error</h2>
+
+<p><a id="schemacdr-participant-discovery-apierror"></a></p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"detail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre><h3 id='properties-6'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>code</td>
+<td>string</td>
+<td>mandatory</td>
+<td>Error code</td>
+</tr>
+<tr>
+<td>title</td>
+<td>string</td>
+<td>mandatory</td>
+<td>Error title</td>
+</tr>
+<tr>
+<td>detail</td>
+<td>string</td>
+<td>mandatory</td>
+<td>Error detail</td>
+</tr>
+<tr>
+<td>meta</td>
+<td>object</td>
+<td>optional</td>
+<td>Optional additional data for specific error types</td>
+</tr>
+</tbody></table>
+
       </div>
       <div class="dark-box">
       </div>

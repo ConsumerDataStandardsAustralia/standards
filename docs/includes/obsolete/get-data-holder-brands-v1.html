@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>Get Data Holders V1</title>
+    <title>Get Data Holder Brands V1</title>
     <link href="../../images/favicon.ico" rel="icon" type="image/ico" />
 
     <style>
@@ -202,7 +202,7 @@
       <script src="../../javascripts/all_nosearch.js"></script>
   </head>
 
-  <body class="includes includes_obsolete includes_obsolete_get-data-holders-v1" data-languages="[]">
+  <body class="includes includes_obsolete includes_obsolete_get-data-holder-brands-v1" data-languages="[]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -213,7 +213,7 @@
       <img src="../../images/logo.png" class="logo" alt="Logo" />
       <ul id="toc" class="toc-list-h1">
             <li class="toc-child">
-              <a href="#get-data-holders-v1" class="toc-h1 toc-link" data-title="Get Data Holders V1">Get Data Holders V1</a>
+              <a href="#get-data-holder-brands-v1" class="toc-h1 toc-link" data-title="Get Data Holder Brands V1">Get Data Holder Brands V1</a>
               <ul class="toc-list-h2">
                       <li>
                         <a href="#get-data-holder-brands" class="toc-h2 toc-link" data-title="Get Data Holder Brands">Get Data Holder Brands</a>
@@ -228,8 +228,8 @@
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id='get-data-holders-v1'>Get Data Holders V1</h1>
-<p>This page documents the obsolete <strong>version 1</strong> of the Get Data Holders end point.</p>
+        <h1 id='get-data-holder-brands-v1'>Get Data Holder Brands V1</h1>
+<p>This page documents the obsolete <strong>version 1</strong> of the Get Data Holder Brands end point.</p>
 
 <aside class="info">
 This version is will remain valid until a deprecation schedule is set.
@@ -675,60 +675,26 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSdataholdersstatuslist">DataHoldersStatusList</h2>
+<h2 class="schema-toc" id="tocSlegalentitydetail">LegalEntityDetail</h2>
 
-<p><a id="schemacdr-participant-discovery-apidataholdersstatuslist"></a></p>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"legalEntityId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">],</span><span class="w">
-  </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-
-</span></code></pre><h3 id='properties-3'>Properties</h3>
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>data</td>
-<td>[<a href="#schemacdr-participant-discovery-apidataholderstatus">DataHolderStatus</a>]</td>
-<td>mandatory</td>
-<td>Response data for the query</td>
-</tr>
-<tr>
-<td>links</td>
-<td><a href="#schemacdr-participant-discovery-apilinks">Links</a></td>
-<td>mandatory</td>
-<td>none</td>
-</tr>
-<tr>
-<td>meta</td>
-<td><a href="#schemacdr-participant-discovery-apimeta">Meta</a></td>
-<td>mandatory</td>
-<td>none</td>
-</tr>
-</tbody></table>
-
-<h2 class="schema-toc" id="tocSdataholderstatus">DataHolderStatus</h2>
-
-<p><a id="schemacdr-participant-discovery-apidataholderstatus"></a></p>
+<p><a id="schemacdr-participant-discovery-apilegalentitydetail"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"legalEntityId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="w">
+  </span><span class="s2">"legalEntityName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"logoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"registrationNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"registrationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"registeredCountry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"abn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"acn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"arbn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"industryCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"organisationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SOLE_TRADER"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-4'>Properties</h3>
+</span></code></pre>
+<p><em>The data that is common to all organisations, regardless of the type (e.g. company, trust, partnership, government)</em></p>
+<h3 id='properties-3'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -741,13 +707,67 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>legalEntityId</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Unique id of the Data Holdert Legal Entity issued by the CDR Register.</td>
+<td>Unique id of the organisation issued by the CDR Register</td>
 </tr>
 <tr>
-<td>status</td>
+<td>legalEntityName</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Data Holder status in the CDR Register</td>
+<td>Unique legal name of the organisation</td>
+</tr>
+<tr>
+<td>logoUri</td>
+<td><a href="#common-field-types">URIString</a></td>
+<td>mandatory</td>
+<td>Legal Entity logo URI</td>
+</tr>
+<tr>
+<td>registrationNumber</td>
+<td>string</td>
+<td>optional</td>
+<td>Unique registration number (if the company is registered outside Australia)</td>
+</tr>
+<tr>
+<td>registrationDate</td>
+<td><a href="#common-field-types">DateString</a></td>
+<td>optional</td>
+<td>Date of registration (if the company is registered outside Australia)</td>
+</tr>
+<tr>
+<td>registeredCountry</td>
+<td>string</td>
+<td>optional</td>
+<td>Country of registeration (if the company is registered outside Australia)</td>
+</tr>
+<tr>
+<td>abn</td>
+<td>string</td>
+<td>optional</td>
+<td>Australian Business Number for the organisation</td>
+</tr>
+<tr>
+<td>acn</td>
+<td>string</td>
+<td>optional</td>
+<td>Australian Company Number for the organisation</td>
+</tr>
+<tr>
+<td>arbn</td>
+<td>string</td>
+<td>optional</td>
+<td>Australian Registered Body Number.  ARBNs are issued to registrable Australian bodies and foreign companies</td>
+</tr>
+<tr>
+<td>industryCode</td>
+<td>string</td>
+<td>optional</td>
+<td>Industry Code for the organisation. <a href="http://www.abs.gov.au/anzsic">ANZSIC (2006)</a></td>
+</tr>
+<tr>
+<td>organisationType</td>
+<td>string</td>
+<td>optional</td>
+<td>Legal organisation type</td>
 </tr>
 </tbody></table>
 <h4 id='enumerated-values-3'>Enumerated Values</h4>
@@ -758,12 +778,293 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </thead><tbody>
 <tr>
-<td>status</td>
-<td>ACTIVE</td>
+<td>organisationType</td>
+<td>SOLE_TRADER</td>
 </tr>
 <tr>
-<td>status</td>
-<td>REMOVED</td>
+<td>organisationType</td>
+<td>COMPANY</td>
+</tr>
+<tr>
+<td>organisationType</td>
+<td>PARTNERSHIP</td>
+</tr>
+<tr>
+<td>organisationType</td>
+<td>TRUST</td>
+</tr>
+<tr>
+<td>organisationType</td>
+<td>GOVERNMENT_ENTITY</td>
+</tr>
+<tr>
+<td>organisationType</td>
+<td>OTHER</td>
+</tr>
+</tbody></table>
+
+<h2 class="schema-toc" id="tocSregisterdataholderbrandserviceendpoint">RegisterDataHolderBrandServiceEndpoint</h2>
+
+<p><a id="schemacdr-participant-discovery-apiregisterdataholderbrandserviceendpoint"></a></p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"publicBaseUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"resourceBaseUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"infosecBaseUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"extensionBaseUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"websiteUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<p><em>Endpoints related to Data Holder Brand services</em></p>
+<h3 id='properties-4'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>version</td>
+<td>string</td>
+<td>mandatory</td>
+<td>The major version of the high level standards. This is not the version of the endpoint or the payload being requested but the version of the overall standards being applied. This version number will be &quot;v&quot; followed by the major version of the standards as a positive integer (e.g. v1, v12 or v76)</td>
+</tr>
+<tr>
+<td>publicBaseUri</td>
+<td><a href="#common-field-types">URIString</a></td>
+<td>mandatory</td>
+<td>Base URI for the Data Holder&#39;s Consumer Data Standard public endpoints</td>
+</tr>
+<tr>
+<td>resourceBaseUri</td>
+<td><a href="#common-field-types">URIString</a></td>
+<td>mandatory</td>
+<td>Base URI for the Data Holder&#39;s Consumer Data Standard resource endpoints</td>
+</tr>
+<tr>
+<td>infosecBaseUri</td>
+<td><a href="#common-field-types">URIString</a></td>
+<td>mandatory</td>
+<td>Base URI for the Data Holder&#39;s Consumer Data Standard information security endpoints</td>
+</tr>
+<tr>
+<td>extensionBaseUri</td>
+<td><a href="#common-field-types">URIString</a></td>
+<td>optional</td>
+<td>Base URI for the Data Holder extension endpoints to the Consumer Data Standard (optional)</td>
+</tr>
+<tr>
+<td>websiteUri</td>
+<td><a href="#common-field-types">URIString</a></td>
+<td>mandatory</td>
+<td>Publicly available website or web resource URI</td>
+</tr>
+</tbody></table>
+
+<h2 class="schema-toc" id="tocSregisterdataholderauth">RegisterDataHolderAuth</h2>
+
+<p><a id="schemacdr-participant-discovery-apiregisterdataholderauth"></a></p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"registerUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SIGNED-JWT"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"jwksEndpoint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<p><em>Provides details of authorisation endpoints for Data Holders</em></p>
+<h3 id='properties-5'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>registerUType</td>
+<td>string</td>
+<td>mandatory</td>
+<td>The type of authentication and authorisation mechanism in use</td>
+</tr>
+<tr>
+<td>jwksEndpoint</td>
+<td><a href="#common-field-types">URIString</a></td>
+<td>mandatory</td>
+<td>JWKS endpoint for private_key_jwt client authentication with Data Recipient</td>
+</tr>
+</tbody></table>
+<h4 id='enumerated-values-4'>Enumerated Values</h4>
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>registerUType</td>
+<td>SIGNED-JWT</td>
+</tr>
+</tbody></table>
+
+<h2 class="schema-toc" id="tocSlinkspaginated">LinksPaginated</h2>
+
+<p><a id="schemacdr-participant-discovery-apilinkspaginated"></a></p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"first"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"next"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"prev"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre><h3 id='properties-6'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>first</td>
+<td>string</td>
+<td>optional</td>
+<td>URI to the first page of this set. Mandatory if this response is not the first page</td>
+</tr>
+<tr>
+<td>last</td>
+<td>string</td>
+<td>optional</td>
+<td>URI to the last page of this set. Mandatory if this response is not the last page</td>
+</tr>
+<tr>
+<td>next</td>
+<td>string</td>
+<td>optional</td>
+<td>URI to the next page of this set. Mandatory if this response is not the last page</td>
+</tr>
+<tr>
+<td>prev</td>
+<td>string</td>
+<td>optional</td>
+<td>URI to the previous page of this set. Mandatory if this response is not the first page</td>
+</tr>
+<tr>
+<td>self</td>
+<td>string</td>
+<td>mandatory</td>
+<td>Fully qualified link to this API call</td>
+</tr>
+</tbody></table>
+
+<h2 class="schema-toc" id="tocSmetapaginated">MetaPaginated</h2>
+
+<p><a id="schemacdr-participant-discovery-apimetapaginated"></a></p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"totalPages"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"totalRecords"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre><h3 id='properties-7'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>totalPages</td>
+<td>integer(int32)</td>
+<td>mandatory</td>
+<td>The total number of pages in the full set</td>
+</tr>
+<tr>
+<td>totalRecords</td>
+<td>integer(int32)</td>
+<td>mandatory</td>
+<td>The total number of records in the full set</td>
+</tr>
+</tbody></table>
+
+<h2 class="schema-toc" id="tocSresponseerrorlist">ResponseErrorList</h2>
+
+<p><a id="schemacdr-participant-discovery-apiresponseerrorlist"></a></p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"detail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre><h3 id='properties-8'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>errors</td>
+<td>[<a href="#schemacdr-participant-discovery-apierror">Error</a>]</td>
+<td>mandatory</td>
+<td>none</td>
+</tr>
+</tbody></table>
+
+<h2 class="schema-toc" id="tocSerror">Error</h2>
+
+<p><a id="schemacdr-participant-discovery-apierror"></a></p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"detail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre><h3 id='properties-9'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>code</td>
+<td>string</td>
+<td>mandatory</td>
+<td>Error code</td>
+</tr>
+<tr>
+<td>title</td>
+<td>string</td>
+<td>mandatory</td>
+<td>Error title</td>
+</tr>
+<tr>
+<td>detail</td>
+<td>string</td>
+<td>mandatory</td>
+<td>Error detail</td>
+</tr>
+<tr>
+<td>meta</td>
+<td>object</td>
+<td>optional</td>
+<td>Optional additional data for specific error types</td>
 </tr>
 </tbody></table>
 

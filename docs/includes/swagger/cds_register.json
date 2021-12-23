@@ -48,7 +48,7 @@
       "get" : {
         "tags" : [ "Register" ],
         "summary" : "Get Data Holder Brands",
-        "description" : "Allows Data Recipients to discover data holder brands available in the CDR ecosystem.\n\nObsolete versions: [v1](includes/obsolete/get-data-holders-v1.html)",
+        "description" : "Allows Data Recipients to discover Data Holder Brands available in the CDR ecosystem.\n\nObsolete versions: [v1](includes/obsolete/get-data-holder-brands-v1.html)",
         "operationId" : "GetDataHolderBrands",
         "consumes" : [ "application/json" ],
         "produces" : [ "application/json" ],
@@ -60,9 +60,27 @@
           "type" : "string",
           "enum" : [ "banking", "energy", "telco", "all" ]
         }, {
+          "name" : "Authorization",
+          "in" : "header",
+          "description" : "An Authorisation Token as per [RFC6750](https://tools.ietf.org/html/rfc6750).",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "x-v",
+          "in" : "header",
+          "description" : "The version of the API end point requested by the client. Must be set to a positive integer.",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "x-min-v",
+          "in" : "header",
+          "description" : "The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided.",
+          "required" : false,
+          "type" : "string"
+        }, {
           "name" : "updated-since",
           "in" : "query",
-          "description" : "query filter returns data holder brands updated since the specified date-time",
+          "description" : "query filter returns results updated since the specified date-time",
           "required" : false,
           "type" : "string",
           "format" : "date-time"
@@ -80,18 +98,6 @@
           "required" : false,
           "type" : "integer",
           "format" : "int32"
-        }, {
-          "name" : "Authorization",
-          "in" : "header",
-          "description" : "An Authorisation Token as per [RFC6750](https://tools.ietf.org/html/rfc6750).",
-          "required" : true,
-          "type" : "string"
-        }, {
-          "name" : "x-v",
-          "in" : "header",
-          "description" : "The version of the API end point requested by the client. Must be set to a positive integer.",
-          "required" : true,
-          "type" : "string"
         } ],
         "responses" : {
           "200" : {
@@ -107,16 +113,22 @@
             }
           },
           "400" : {
-            "description" : "Bad Request</br>Invalid industry path parameter",
+            "description" : "Missing Required Header / Invalid Version / Invalid Path Parameter",
             "schema" : {
-              "$ref" : "#/definitions/ResponseErrorList"
+              "$ref" : "#/definitions/ResponseErrorListV2"
             }
           },
           "401" : {
-            "description" : "Invalid Bearer Token"
+            "description" : "Invalid Bearer Token",
+            "schema" : {
+              "$ref" : "#/definitions/ResponseErrorListV2"
+            }
           },
           "406" : {
-            "description" : "Invalid x-v header</br>Invalid Accept header"
+            "description" : "Unsupported Version",
+            "schema" : {
+              "$ref" : "#/definitions/ResponseErrorListV2"
+            }
           }
         },
         "x-version" : "2",
@@ -138,6 +150,18 @@
           "required" : true,
           "type" : "string",
           "enum" : [ "banking", "energy", "telco", "all" ]
+        }, {
+          "name" : "x-v",
+          "in" : "header",
+          "description" : "The version of the API end point requested by the client. Must be set to a positive integer.",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "x-min-v",
+          "in" : "header",
+          "description" : "The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided.",
+          "required" : false,
+          "type" : "string"
         }, {
           "name" : "dataRecipientBrandId",
           "in" : "path",
@@ -194,6 +218,12 @@
               "$ref" : "#/definitions/ResponseErrorListV2"
             }
           },
+          "406" : {
+            "description" : "Unsupported Version",
+            "schema" : {
+              "$ref" : "#/definitions/ResponseErrorListV2"
+            }
+          },
           "422" : {
             "description" : "SSA validation failed",
             "schema" : {
@@ -209,7 +239,7 @@
       "get" : {
         "tags" : [ "Register" ],
         "summary" : "Get Data Holder Statuses",
-        "description" : "Endpoint used by participants to discover the statuses for Data Holders from the CDR Register. \n\nObsolete versions: [v1](includes/obsolete/get-data-holder-statuses-v1.html)",
+        "description" : "Endpoint used by participants to discover the statuses for Data Holders from the CDR Register",
         "operationId" : "GetDataHolderStatuses",
         "produces" : [ "application/json" ],
         "parameters" : [ {
@@ -277,7 +307,7 @@
             }
           }
         },
-        "x-version" : "2"
+        "x-version" : "1"
       }
     },
     "/cdr-register/v1/{industry}/data-recipients/brands/software-products/status" : {
@@ -651,6 +681,7 @@
         "data" : {
           "type" : "array",
           "description" : "Response data for the query",
+          "uniqueItems" : true,
           "items" : {
             "$ref" : "#/definitions/RegisterDataHolderBrand"
           }
@@ -666,24 +697,31 @@
     },
     "RegisterDataHolderBrand" : {
       "type" : "object",
-      "required" : [ "authDetails", "brandName", "dataHolderBrandId", "endpointDetail", "industry", "lastUpdated", "legalEntity", "logoUri", "status" ],
+      "required" : [ "authDetails", "brandName", "dataHolderBrandId", "endpointDetail", "industries", "lastUpdated", "legalEntity", "logoUri", "status" ],
       "properties" : {
         "dataHolderBrandId" : {
           "type" : "string",
-          "description" : "Unique id of the Data Holder Brand issued by the CDR Register"
+          "description" : "Unique id of the Data Holder Brand issued by the CDR Register",
+          "maxLength" : 36
         },
         "brandName" : {
           "type" : "string",
-          "description" : "The name of Data Holder Brand"
+          "description" : "The name of Data Holder Brand",
+          "maxLength" : 200
         },
-        "industry" : {
-          "type" : "string",
-          "description" : "The industry the participant is retrieving data for (Banking, etc)",
-          "enum" : [ "banking", "energy", "telco", "all" ]
+        "industries" : {
+          "type" : "array",
+          "description" : "The industries the Data Holder Brand belongs to. Please note that the CDR Register entity model is constrained to one industry per brand which is planned to be relaxed in the future.",
+          "uniqueItems" : true,
+          "items" : {
+            "type" : "string",
+            "enum" : [ "banking", "energy", "telco" ]
+          }
         },
         "logoUri" : {
           "type" : "string",
           "description" : "Brand logo URI",
+          "maxLength" : 1000,
           "x-cds-type" : "URIString"
         },
         "legalEntity" : {
@@ -698,6 +736,7 @@
         },
         "authDetails" : {
           "type" : "array",
+          "uniqueItems" : true,
           "items" : {
             "$ref" : "#/definitions/RegisterDataHolderAuth"
           }
@@ -808,7 +847,7 @@
       "properties" : {
         "legalEntityId" : {
           "type" : "string",
-          "description" : "Unique id of the Data Recipient issued by the CDR Register",
+          "description" : "Unique id of the Data Recipient Legal Entity issued by the CDR Register",
           "maxLength" : 36
         },
         "status" : {
@@ -959,19 +998,22 @@
     },
     "LegalEntityDetail" : {
       "type" : "object",
-      "required" : [ "legalEntityId", "legalEntityName", "logoUri" ],
+      "required" : [ "legalEntityId", "legalEntityName", "logoUri", "status" ],
       "properties" : {
         "legalEntityId" : {
           "type" : "string",
-          "description" : "Unique id of the organisation issued by the CDR Register"
+          "description" : "Unique id of the organisation issued by the CDR Register",
+          "maxLength" : 36
         },
         "legalEntityName" : {
           "type" : "string",
-          "description" : "Unique legal name of the organisation"
+          "description" : "Unique legal name of the organisation",
+          "maxLength" : 36
         },
         "logoUri" : {
           "type" : "string",
           "description" : "Legal Entity logo URI",
+          "maxLength" : 1000,
           "x-cds-type" : "URIString"
         },
         "registrationNumber" : {
@@ -986,28 +1028,37 @@
         },
         "registeredCountry" : {
           "type" : "string",
-          "description" : "Country of registeration (if the company is registered outside Australia)"
+          "description" : "Country of registeration (if the company is registered outside Australia)",
+          "maxLength" : 100
         },
         "abn" : {
           "type" : "string",
-          "description" : "Australian Business Number for the organisation"
+          "description" : "Australian Business Number for the organisation",
+          "maxLength" : 11
         },
         "acn" : {
           "type" : "string",
-          "description" : "Australian Company Number for the organisation"
+          "description" : "Australian Company Number for the organisation",
+          "maxLength" : 9
         },
         "arbn" : {
           "type" : "string",
-          "description" : "Australian Registered Body Number.  ARBNs are issued to registrable Australian bodies and foreign companies"
+          "description" : "Australian Registered Body Number.  ARBNs are issued to registrable Australian bodies and foreign companies",
+          "maxLength" : 9
         },
-        "industryCode" : {
+        "anzsicDivision" : {
           "type" : "string",
-          "description" : "Industry Code for the organisation. [ANZSIC (2006)](http://www.abs.gov.au/anzsic)"
+          "description" : "ANZSIC division of the organisation. [ANZSIC (2006)](http://www.abs.gov.au/anzsic)",
+          "maxLength" : 100
         },
         "organisationType" : {
           "type" : "string",
           "description" : "Legal organisation type",
           "enum" : [ "SOLE_TRADER", "COMPANY", "PARTNERSHIP", "TRUST", "GOVERNMENT_ENTITY", "OTHER" ]
+        },
+        "status" : {
+          "type" : "string",
+          "enum" : [ "ACTIVE", "REMOVED" ]
         }
       },
       "description" : "The data that is common to all organisations, regardless of the type (e.g. company, trust, partnership, government)"
@@ -1023,26 +1074,31 @@
         "publicBaseUri" : {
           "type" : "string",
           "description" : "Base URI for the Data Holder's Consumer Data Standard public endpoints",
+          "maxLength" : 1000,
           "x-cds-type" : "URIString"
         },
         "resourceBaseUri" : {
           "type" : "string",
           "description" : "Base URI for the Data Holder's Consumer Data Standard resource endpoints",
+          "maxLength" : 1000,
           "x-cds-type" : "URIString"
         },
         "infosecBaseUri" : {
           "type" : "string",
           "description" : "Base URI for the Data Holder's Consumer Data Standard information security endpoints",
+          "maxLength" : 1000,
           "x-cds-type" : "URIString"
         },
         "extensionBaseUri" : {
           "type" : "string",
           "description" : "Base URI for the Data Holder extension endpoints to the Consumer Data Standard (optional)",
+          "maxLength" : 1000,
           "x-cds-type" : "URIString"
         },
         "websiteUri" : {
           "type" : "string",
           "description" : "Publicly available website or web resource URI",
+          "maxLength" : 1000,
           "x-cds-type" : "URIString"
         }
       },
@@ -1060,6 +1116,7 @@
         "jwksEndpoint" : {
           "type" : "string",
           "description" : "JWKS endpoint for private_key_jwt client authentication with Data Recipient",
+          "maxLength" : 1000,
           "x-cds-type" : "URIString"
         }
       },
@@ -1165,41 +1222,6 @@
           "$ref" : "#/definitions/MetaError"
         }
       }
-    },
-    "ResponseErrorList" : {
-      "type" : "object",
-      "required" : [ "errors" ],
-      "properties" : {
-        "errors" : {
-          "type" : "array",
-          "items" : {
-            "$ref" : "#/definitions/Error"
-          }
-        }
-      }
-    },
-    "Error" : {
-      "type" : "object",
-      "required" : [ "code", "detail", "title" ],
-      "properties" : {
-        "code" : {
-          "type" : "string",
-          "description" : "Error code"
-        },
-        "title" : {
-          "type" : "string",
-          "description" : "Error title"
-        },
-        "detail" : {
-          "type" : "string",
-          "description" : "Error detail"
-        },
-        "meta" : {
-          "type" : "object",
-          "description" : "Optional additional data for specific error types",
-          "properties" : { }
-        }
-      }
     }
   },
   "parameters" : {
@@ -1238,6 +1260,30 @@
       "description" : "Makes the request method conditional on a recipient cache or origin server not having any current representation of the target resource with an entity-tag that does not match any of those listed in the field-value.",
       "required" : false,
       "type" : "string"
+    },
+    "UpdatedSince" : {
+      "name" : "updated-since",
+      "in" : "query",
+      "description" : "query filter returns results updated since the specified date-time",
+      "required" : false,
+      "type" : "string",
+      "format" : "date-time"
+    },
+    "Page" : {
+      "name" : "page",
+      "in" : "query",
+      "description" : "the page number to return",
+      "required" : false,
+      "type" : "integer",
+      "format" : "int32"
+    },
+    "PageSize" : {
+      "name" : "page-size",
+      "in" : "query",
+      "description" : "the number of records to return per page",
+      "required" : false,
+      "type" : "integer",
+      "format" : "int32"
     }
   },
   "responses" : {
