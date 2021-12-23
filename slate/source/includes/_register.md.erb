@@ -94,11 +94,17 @@ to:
 
 Added the new endpoint `Get Data Holder Statuses`.
 
+Bumped `Get Data Holder Brands` from v1 to v2. v2 includes:
+  Aligned payloads to standard CDR structure
+  Support for multiple industries
+  Addition of the `x-v` and `x-min-v` header
+  Uplift of error structure to latest CDR error structures
+  Additional support scope: `cdr-register:read`
 
 Bumped `Get Software Statement Assertion (SSA)` from v2 to v3. v3 includes:
   Aligned payloads to standard CDR structure
   Support for multiple industries
-  Removal of the `x-v` header
+  Support for HTTP response 406
   Uplift of error structure to latest CDR error structures
   Additional support scope: `cdr-register:read`
 
@@ -133,6 +139,11 @@ Bumped `Get Data Recipients` from v2 to v3. v3 includes:
   Uplift of error structure to latest CDR error structures
 
 
+
+In the `RegisterDataHolderBrand` model changed the name of
+the `industry` field to `industries`.
+
+
 In the `SoftwareProductStatus` model changed the name of
 the `softwareProductStatus` field to `status`.
 
@@ -150,6 +161,12 @@ In the `RegisterDataRecipient` model removed the 'industry' field.
 
 In the `RegisterDataRecipient` model added the 'accreditationLevel'
 field.
+
+In the `LegalEntityDetail` model, added the `status` field
+
+
+Removed older error structures `ResponseErrorList` and `Error`
+
 ```
 
 <%= partial "includes/cds_register.md" %>
