@@ -108,3 +108,99 @@ Endpoint used by participants to discover the statuses for software products fro
 This operation does not require authentication
 </aside>
 
+<h2 class="schema-toc" id="tocSsoftwareproductsstatuslist">SoftwareProductsStatusList</h2>
+
+<a id="schemacdr-participant-discovery-apisoftwareproductsstatuslist"></a>
+
+```json
+{
+  "softwareProducts": [
+    {
+      "softwareProductId": "string",
+      "softwareProductStatus": "ACTIVE"
+    }
+  ]
+}
+
+```
+
+### Properties
+
+|Name|Type|Required|Description|
+|---|---|---|---|
+|softwareProducts|[[SoftwareProductStatus](#schemacdr-participant-discovery-apisoftwareproductstatus)]|mandatory|none|
+
+<h2 class="schema-toc" id="tocSsoftwareproductstatus">SoftwareProductStatus</h2>
+
+<a id="schemacdr-participant-discovery-apisoftwareproductstatus"></a>
+
+```json
+{
+  "softwareProductId": "string",
+  "softwareProductStatus": "ACTIVE"
+}
+
+```
+
+### Properties
+
+|Name|Type|Required|Description|
+|---|---|---|---|
+|softwareProductId|string|mandatory|Unique id of the software product issued by the CDR Register|
+|softwareProductStatus|string|mandatory|Software product status in the CDR Register|
+
+#### Enumerated Values
+
+|Property|Value|
+|---|---|
+|softwareProductStatus|ACTIVE|
+|softwareProductStatus|INACTIVE|
+|softwareProductStatus|REMOVED|
+
+
+<h2 class="schema-toc" id="tocSresponseerrorlist">ResponseErrorList</h2>
+
+<a id="schemacdr-participant-discovery-apiresponseerrorlist"></a>
+
+```json
+{
+  "errors": [
+    {
+      "code": "string",
+      "title": "string",
+      "detail": "string",
+      "meta": {}
+    }
+  ]
+}
+
+```
+
+### Properties
+
+|Name|Type|Required|Description|
+|---|---|---|---|
+|errors|[[Error](#schemacdr-participant-discovery-apierror)]|mandatory|none|
+
+<h2 class="schema-toc" id="tocSerror">Error</h2>
+
+<a id="schemacdr-participant-discovery-apierror"></a>
+
+```json
+{
+  "code": "string",
+  "title": "string",
+  "detail": "string",
+  "meta": {}
+}
+
+```
+
+### Properties
+
+|Name|Type|Required|Description|
+|---|---|---|---|
+|code|string|mandatory|Error code|
+|title|string|mandatory|Error title|
+|detail|string|mandatory|Error detail|
+|meta|object|optional|Optional additional data for specific error types|

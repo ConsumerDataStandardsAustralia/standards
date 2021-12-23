@@ -107,4 +107,102 @@ Endpoint used by participants to discover the statuses for Data Recipients from 
 This operation does not require authentication
 </aside>
 
-  
+
+<h2 class="schema-toc" id="tocSdatarecipientsstatuslist">DataRecipientsStatusList</h2>
+
+<a id="schemacdr-participant-discovery-apidatarecipientsstatuslist"></a>
+
+```json
+{
+  "dataRecipients": [
+    {
+      "dataRecipientId": "string",
+      "dataRecipientStatus": "ACTIVE"
+    }
+  ]
+}
+
+```
+
+### Properties
+
+|Name|Type|Required|Description|
+|---|---|---|---|
+|dataRecipients|[[DataRecipientStatus](#schemacdr-participant-discovery-apidatarecipientstatus)]|mandatory|none|
+
+<h2 class="schema-toc" id="tocSdatarecipientstatus">DataRecipientStatus</h2>
+
+<a id="schemacdr-participant-discovery-apidatarecipientstatus"></a>
+
+```json
+{
+  "dataRecipientId": "string",
+  "dataRecipientStatus": "ACTIVE"
+}
+
+```
+
+### Properties
+
+|Name|Type|Required|Description|
+|---|---|---|---|
+|dataRecipientId|string|mandatory|Unique id of the Data Recipient issued by the CDR Register|
+|dataRecipientStatus|string|mandatory|Data Recipient status in the CDR Register|
+
+#### Enumerated Values
+
+|Property|Value|
+|---|---|
+|dataRecipientStatus|ACTIVE|
+|dataRecipientStatus|SUSPENDED|
+|dataRecipientStatus|REVOKED|
+|dataRecipientStatus|SURRENDERED|
+
+
+
+<h2 class="schema-toc" id="tocSresponseerrorlist">ResponseErrorList</h2>
+
+<a id="schemacdr-participant-discovery-apiresponseerrorlist"></a>
+
+```json
+{
+  "errors": [
+    {
+      "code": "string",
+      "title": "string",
+      "detail": "string",
+      "meta": {}
+    }
+  ]
+}
+
+```
+
+### Properties
+
+|Name|Type|Required|Description|
+|---|---|---|---|
+|errors|[[Error](#schemacdr-participant-discovery-apierror)]|mandatory|none|
+
+<h2 class="schema-toc" id="tocSerror">Error</h2>
+
+<a id="schemacdr-participant-discovery-apierror"></a>
+
+```json
+{
+  "code": "string",
+  "title": "string",
+  "detail": "string",
+  "meta": {}
+}
+
+```
+
+### Properties
+
+|Name|Type|Required|Description|
+|---|---|---|---|
+|code|string|mandatory|Error code|
+|title|string|mandatory|Error title|
+|detail|string|mandatory|Error detail|
+|meta|object|optional|Optional additional data for specific error types|

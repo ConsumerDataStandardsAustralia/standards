@@ -106,9 +106,58 @@ Get a Software Statement Assertion (SSA) for a Data Recipient software product o
 
 
 
-      <aside class="notice">
+<aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">cdr-register:bank:read</a>
 </aside>
 
-    
+
+
+<h2 class="schema-toc" id="tocSresponseerrorlist">ResponseErrorList</h2>
+
+<a id="schemacdr-participant-discovery-apiresponseerrorlist"></a>
+
+```json
+{
+  "errors": [
+    {
+      "code": "string",
+      "title": "string",
+      "detail": "string",
+      "meta": {}
+    }
+  ]
+}
+
+```
+
+### Properties
+
+|Name|Type|Required|Description|
+|---|---|---|---|
+|errors|[[Error](#schemacdr-participant-discovery-apierror)]|mandatory|none|
+
+<h2 class="schema-toc" id="tocSerror">Error</h2>
+
+<a id="schemacdr-participant-discovery-apierror"></a>
+
+```json
+{
+  "code": "string",
+  "title": "string",
+  "detail": "string",
+  "meta": {}
+}
+
+```
+
+### Properties
+
+|Name|Type|Required|Description|
+|---|---|---|---|
+|code|string|mandatory|Error code|
+|title|string|mandatory|Error title|
+|detail|string|mandatory|Error detail|
+|meta|object|optional|Optional additional data for specific error types|
+
+

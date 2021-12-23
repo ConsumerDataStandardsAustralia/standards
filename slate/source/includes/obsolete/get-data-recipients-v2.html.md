@@ -129,3 +129,235 @@ Endpoint used by participants to discover data recipients and associated brands 
     <aside class="success">
 This operation does not require authentication
 </aside>
+
+
+
+<h2 class="schema-toc" id="tocSresponseregisterdatarecipientlist">ResponseRegisterDataRecipientList</h2>
+
+<a id="schemacdr-participant-discovery-apiresponseregisterdatarecipientlist"></a>
+
+```json
+{
+  "data": [
+    {
+      "legalEntityId": "string",
+      "legalEntityName": "string",
+      "accreditationNumber": "string",
+      "industry": "banking",
+      "logoUri": "string",
+      "dataRecipientBrands": [
+        {
+          "dataRecipientBrandId": "string",
+          "brandName": "string",
+          "logoUri": "string",
+          "softwareProducts": [
+            {
+              "softwareProductId": "string",
+              "softwareProductName": "string",
+              "softwareProductDescription": "string",
+              "logoUri": "string",
+              "status": "ACTIVE"
+            }
+          ],
+          "status": "ACTIVE"
+        }
+      ],
+      "status": "ACTIVE",
+      "lastUpdated": "2019-08-24T14:15:22Z"
+    }
+  ]
+}
+
+```
+
+*Response containing a list of Data Recipients in the CDR Register*
+
+### Properties
+
+|Name|Type|Required|Description|
+|---|---|---|---|
+|data|[[RegisterDataRecipient](#schemacdr-participant-discovery-apiregisterdatarecipient)]|mandatory|Response data for the query|
+
+<h2 class="schema-toc" id="tocSregisterdatarecipient">RegisterDataRecipient</h2>
+
+<a id="schemacdr-participant-discovery-apiregisterdatarecipient"></a>
+
+```json
+{
+  "legalEntityId": "string",
+  "legalEntityName": "string",
+  "accreditationNumber": "string",
+  "industry": "banking",
+  "logoUri": "string",
+  "dataRecipientBrands": [
+    {
+      "dataRecipientBrandId": "string",
+      "brandName": "string",
+      "logoUri": "string",
+      "softwareProducts": [
+        {
+          "softwareProductId": "string",
+          "softwareProductName": "string",
+          "softwareProductDescription": "string",
+          "logoUri": "string",
+          "status": "ACTIVE"
+        }
+      ],
+      "status": "ACTIVE"
+    }
+  ],
+  "status": "ACTIVE",
+  "lastUpdated": "2019-08-24T14:15:22Z"
+}
+
+```
+
+### Properties
+
+|Name|Type|Required|Description|
+|---|---|---|---|
+|legalEntityId|string|mandatory|Unique id of the Data Recipient Legal Entity issued by the CDR Register|
+|legalEntityName|string|mandatory|Legal name of the Data Recipient|
+|accreditationNumber|string|mandatory|CDR Register issued human readable unique number given to Data Recipients upon accreditation|
+|industry|string|mandatory|none|
+|logoUri|[URIString](#common-field-types)|mandatory|Legal Entity logo URI|
+|dataRecipientBrands|[[DataRecipientBrandMetaData](#schemacdr-participant-discovery-apidatarecipientbrandmetadata)]|optional|[Metadata related to Data Recipient Brand]|
+|status|string|mandatory|none|
+|lastUpdated|[DateTimeString](#common-field-types)|mandatory|The date/time that the Legal Entity was last updated in the CDR Register|
+
+#### Enumerated Values
+
+|Property|Value|
+|---|---|
+|industry|banking|
+|status|ACTIVE|
+|status|SUSPENDED|
+|status|REVOKED|
+|status|SURRENDERED|
+
+<h2 class="schema-toc" id="tocSdatarecipientbrandmetadata">DataRecipientBrandMetaData</h2>
+
+<a id="schemacdr-participant-discovery-apidatarecipientbrandmetadata"></a>
+
+```json
+{
+  "dataRecipientBrandId": "string",
+  "brandName": "string",
+  "logoUri": "string",
+  "softwareProducts": [
+    {
+      "softwareProductId": "string",
+      "softwareProductName": "string",
+      "softwareProductDescription": "string",
+      "logoUri": "string",
+      "status": "ACTIVE"
+    }
+  ],
+  "status": "ACTIVE"
+}
+
+```
+
+*Metadata related to Data Recipient Brand*
+
+### Properties
+
+|Name|Type|Required|Description|
+|---|---|---|---|
+|dataRecipientBrandId|string|mandatory|Unique id of the Data Recipient brand issued by the CDR Register|
+|brandName|string|mandatory|Data Recipient Brand name|
+|logoUri|[URIString](#common-field-types)|mandatory|Data Recipient Brand logo URI|
+|softwareProducts|[[SoftwareProductMetaData](#schemacdr-participant-discovery-apisoftwareproductmetadata)]|optional|[Data Recipient Brand Software Products]|
+|status|string|mandatory|none|
+
+#### Enumerated Values
+
+|Property|Value|
+|---|---|
+|status|ACTIVE|
+|status|INACTIVE|
+|status|REMOVED|
+
+<h2 class="schema-toc" id="tocSsoftwareproductmetadata">SoftwareProductMetaData</h2>
+
+<a id="schemacdr-participant-discovery-apisoftwareproductmetadata"></a>
+
+```json
+{
+  "softwareProductId": "string",
+  "softwareProductName": "string",
+  "softwareProductDescription": "string",
+  "logoUri": "string",
+  "status": "ACTIVE"
+}
+
+```
+
+*Data Recipient Brand Software Products*
+
+### Properties
+
+|Name|Type|Required|Description|
+|---|---|---|---|
+|softwareProductId|string|mandatory|Unique id of the Data Recipient software product issued by the CDR Register|
+|softwareProductName|string|mandatory|Name of the software product|
+|softwareProductDescription|string|optional|Description of the software product|
+|logoUri|[URIString](#common-field-types)|mandatory|Software product logo URI|
+|status|string|mandatory|none|
+
+#### Enumerated Values
+
+|Property|Value|
+|---|---|
+|status|ACTIVE|
+|status|INACTIVE|
+|status|REMOVED|
+
+
+
+<h2 class="schema-toc" id="tocSresponseerrorlist">ResponseErrorList</h2>
+
+<a id="schemacdr-participant-discovery-apiresponseerrorlist"></a>
+
+```json
+{
+  "errors": [
+    {
+      "code": "string",
+      "title": "string",
+      "detail": "string",
+      "meta": {}
+    }
+  ]
+}
+
+```
+
+### Properties
+
+|Name|Type|Required|Description|
+|---|---|---|---|
+|errors|[[Error](#schemacdr-participant-discovery-apierror)]|mandatory|none|
+
+<h2 class="schema-toc" id="tocSerror">Error</h2>
+
+<a id="schemacdr-participant-discovery-apierror"></a>
+
+```json
+{
+  "code": "string",
+  "title": "string",
+  "detail": "string",
+  "meta": {}
+}
+
+```
+
+### Properties
+
+|Name|Type|Required|Description|
+|---|---|---|---|
+|code|string|mandatory|Error code|
+|title|string|mandatory|Error title|
+|detail|string|mandatory|Error detail|
+|meta|object|optional|Optional additional data for specific error types|
