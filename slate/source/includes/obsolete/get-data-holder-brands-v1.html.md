@@ -1,5 +1,5 @@
 ---
-title: Get Data Holders V1
+title: Get Data Holder Brands V1
 #language_tabs: # must be one of https://git.io/vQNgJ
 #  - shell
 #  - javascript
@@ -10,12 +10,13 @@ toc_footers:
 search: false
 ---
 
-# Get Data Holders V1
-This page documents the obsolete **version 1** of the Get Data Holders end point.
+# Get Data Holder Brands V1
+This page documents the obsolete **version 1** of the Get Data Holder Brands end point.
 
 <aside class="info">
 This version is will remain valid until a deprecation schedule is set.
 </aside>
+
 
 ## Get Data Holder Brands
 
@@ -157,6 +158,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <a href="#authorisation-scopes">cdr-register:bank:read</a>
 </aside>
 
+
 <h2 class="schema-toc" id="tocSresponseregisterdataholderbrandlist">ResponseRegisterDataHolderBrandList</h2>
 
 <a id="schemacdr-participant-discovery-apiresponseregisterdataholderbrandlist"></a>
@@ -291,21 +293,192 @@ To perform this operation, you must be authenticated and authorised with the fol
 |status|INACTIVE|
 |status|REMOVED|
 
-<h2 class="schema-toc" id="tocSdataholdersstatuslist">DataHoldersStatusList</h2>
+<h2 class="schema-toc" id="tocSlegalentitydetail">LegalEntityDetail</h2>
 
-<a id="schemacdr-participant-discovery-apidataholdersstatuslist"></a>
+<a id="schemacdr-participant-discovery-apilegalentitydetail"></a>
 
 ```json
 {
-  "data": [
+  "legalEntityId": "string",
+  "legalEntityName": "string",
+  "logoUri": "string",
+  "registrationNumber": "string",
+  "registrationDate": "2019-08-24",
+  "registeredCountry": "string",
+  "abn": "string",
+  "acn": "string",
+  "arbn": "string",
+  "industryCode": "string",
+  "organisationType": "SOLE_TRADER"
+}
+
+```
+
+*The data that is common to all organisations, regardless of the type (e.g. company, trust, partnership, government)*
+
+### Properties
+
+|Name|Type|Required|Description|
+|---|---|---|---|
+|legalEntityId|string|mandatory|Unique id of the organisation issued by the CDR Register|
+|legalEntityName|string|mandatory|Unique legal name of the organisation|
+|logoUri|[URIString](#common-field-types)|mandatory|Legal Entity logo URI|
+|registrationNumber|string|optional|Unique registration number (if the company is registered outside Australia)|
+|registrationDate|[DateString](#common-field-types)|optional|Date of registration (if the company is registered outside Australia)|
+|registeredCountry|string|optional|Country of registeration (if the company is registered outside Australia)|
+|abn|string|optional|Australian Business Number for the organisation|
+|acn|string|optional|Australian Company Number for the organisation|
+|arbn|string|optional|Australian Registered Body Number.  ARBNs are issued to registrable Australian bodies and foreign companies|
+|industryCode|string|optional|Industry Code for the organisation. [ANZSIC (2006)](http://www.abs.gov.au/anzsic)|
+|organisationType|string|optional|Legal organisation type|
+
+#### Enumerated Values
+
+|Property|Value|
+|---|---|
+|organisationType|SOLE_TRADER|
+|organisationType|COMPANY|
+|organisationType|PARTNERSHIP|
+|organisationType|TRUST|
+|organisationType|GOVERNMENT_ENTITY|
+|organisationType|OTHER|
+
+
+<h2 class="schema-toc" id="tocSregisterdataholderbrandserviceendpoint">RegisterDataHolderBrandServiceEndpoint</h2>
+
+<a id="schemacdr-participant-discovery-apiregisterdataholderbrandserviceendpoint"></a>
+
+```json
+{
+  "version": "string",
+  "publicBaseUri": "string",
+  "resourceBaseUri": "string",
+  "infosecBaseUri": "string",
+  "extensionBaseUri": "string",
+  "websiteUri": "string"
+}
+
+```
+
+*Endpoints related to Data Holder Brand services*
+
+### Properties
+
+|Name|Type|Required|Description|
+|---|---|---|---|
+|version|string|mandatory|The major version of the high level standards. This is not the version of the endpoint or the payload being requested but the version of the overall standards being applied. This version number will be "v" followed by the major version of the standards as a positive integer (e.g. v1, v12 or v76)|
+|publicBaseUri|[URIString](#common-field-types)|mandatory|Base URI for the Data Holder's Consumer Data Standard public endpoints|
+|resourceBaseUri|[URIString](#common-field-types)|mandatory|Base URI for the Data Holder's Consumer Data Standard resource endpoints|
+|infosecBaseUri|[URIString](#common-field-types)|mandatory|Base URI for the Data Holder's Consumer Data Standard information security endpoints|
+|extensionBaseUri|[URIString](#common-field-types)|optional|Base URI for the Data Holder extension endpoints to the Consumer Data Standard (optional)|
+|websiteUri|[URIString](#common-field-types)|mandatory|Publicly available website or web resource URI|
+
+<h2 class="schema-toc" id="tocSregisterdataholderauth">RegisterDataHolderAuth</h2>
+
+<a id="schemacdr-participant-discovery-apiregisterdataholderauth"></a>
+
+```json
+{
+  "registerUType": "SIGNED-JWT",
+  "jwksEndpoint": "string"
+}
+
+```
+
+*Provides details of authorisation endpoints for Data Holders*
+
+### Properties
+
+|Name|Type|Required|Description|
+|---|---|---|---|
+|registerUType|string|mandatory|The type of authentication and authorisation mechanism in use|
+|jwksEndpoint|[URIString](#common-field-types)|mandatory|JWKS endpoint for private_key_jwt client authentication with Data Recipient|
+
+#### Enumerated Values
+
+|Property|Value|
+|---|---|
+|registerUType|SIGNED-JWT|
+
+
+
+<h2 class="schema-toc" id="tocSlinkspaginated">LinksPaginated</h2>
+
+<a id="schemacdr-participant-discovery-apilinkspaginated"></a>
+
+```json
+{
+  "first": "string",
+  "last": "string",
+  "next": "string",
+  "prev": "string",
+  "self": "string"
+}
+
+```
+
+### Properties
+
+|Name|Type|Required|Description|
+|---|---|---|---|
+|first|string|optional|URI to the first page of this set. Mandatory if this response is not the first page|
+|last|string|optional|URI to the last page of this set. Mandatory if this response is not the last page|
+|next|string|optional|URI to the next page of this set. Mandatory if this response is not the last page|
+|prev|string|optional|URI to the previous page of this set. Mandatory if this response is not the first page|
+|self|string|mandatory|Fully qualified link to this API call|
+
+<h2 class="schema-toc" id="tocSmetapaginated">MetaPaginated</h2>
+
+<a id="schemacdr-participant-discovery-apimetapaginated"></a>
+
+```json
+{
+  "totalPages": 0,
+  "totalRecords": 0
+}
+
+```
+
+### Properties
+
+|Name|Type|Required|Description|
+|---|---|---|---|
+|totalPages|integer(int32)|mandatory|The total number of pages in the full set|
+|totalRecords|integer(int32)|mandatory|The total number of records in the full set|
+
+<h2 class="schema-toc" id="tocSresponseerrorlist">ResponseErrorList</h2>
+
+<a id="schemacdr-participant-discovery-apiresponseerrorlist"></a>
+
+```json
+{
+  "errors": [
     {
-      "legalEntityId": "string",
-      "status": "ACTIVE"
+      "code": "string",
+      "title": "string",
+      "detail": "string",
+      "meta": {}
     }
-  ],
-  "links": {
-    "self": "string"
-  },
+  ]
+}
+
+```
+
+### Properties
+
+|Name|Type|Required|Description|
+|---|---|---|---|
+|errors|[[Error](#schemacdr-participant-discovery-apierror)]|mandatory|none|
+
+<h2 class="schema-toc" id="tocSerror">Error</h2>
+
+<a id="schemacdr-participant-discovery-apierror"></a>
+
+```json
+{
+  "code": "string",
+  "title": "string",
+  "detail": "string",
   "meta": {}
 }
 
@@ -315,32 +488,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|data|[[DataHolderStatus](#schemacdr-participant-discovery-apidataholderstatus)]|mandatory|Response data for the query|
-|links|[Links](#schemacdr-participant-discovery-apilinks)|mandatory|none|
-|meta|[Meta](#schemacdr-participant-discovery-apimeta)|mandatory|none|
-
-<h2 class="schema-toc" id="tocSdataholderstatus">DataHolderStatus</h2>
-
-<a id="schemacdr-participant-discovery-apidataholderstatus"></a>
-
-```json
-{
-  "legalEntityId": "string",
-  "status": "ACTIVE"
-}
-
-```
-
-### Properties
-
-|Name|Type|Required|Description|
-|---|---|---|---|
-|legalEntityId|string|mandatory|Unique id of the Data Holdert Legal Entity issued by the CDR Register.|
-|status|string|mandatory|Data Holder status in the CDR Register|
-
-#### Enumerated Values
-
-|Property|Value|
-|---|---|
-|status|ACTIVE|
-|status|REMOVED|
+|code|string|mandatory|Error code|
+|title|string|mandatory|Error title|
+|detail|string|mandatory|Error detail|
+|meta|object|optional|Optional additional data for specific error types|

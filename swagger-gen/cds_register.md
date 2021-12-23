@@ -179,6 +179,7 @@ GET https://<register-base-url>/cdr-register/v1/{industry}/data-holders/brands H
 Accept: application/json
 Authorization: string
 x-v: string
+x-min-v: string
 
 ```
 
@@ -186,7 +187,8 @@ x-v: string
 var headers = {
   'Accept':'application/json',
   'Authorization':'string',
-  'x-v':'string'
+  'x-v':'string',
+  'x-min-v':'string'
 
 };
 
@@ -204,9 +206,9 @@ $.ajax({
 
 `GET /cdr-register/v1/{industry}/data-holders/brands`
 
-Allows Data Recipients to discover data holder brands available in the CDR ecosystem.
+Allows Data Recipients to discover Data Holder Brands available in the CDR ecosystem.
 
-Obsolete versions: [v1](includes/obsolete/get-data-holders-v1.html)
+Obsolete versions: [v1](includes/obsolete/get-data-holder-brands-v1.html)
 
 ###Endpoint Version
 |   |  |
@@ -218,11 +220,12 @@ Obsolete versions: [v1](includes/obsolete/get-data-holders-v1.html)
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |industry|path|string|mandatory|The industry the participant is retrieving data for (Banking, etc)|
-|updated-since|query|string(date-time)|optional|query filter returns data holder brands updated since the specified date-time|
-|page|query|integer(int32)|optional|the page number to return|
-|page-size|query|integer(int32)|optional|the number of records to return per page|
 |Authorization|header|string|mandatory|An Authorisation Token as per [RFC6750](https://tools.ietf.org/html/rfc6750).|
 |x-v|header|string|mandatory|The version of the API end point requested by the client. Must be set to a positive integer.|
+|x-min-v|header|string|optional|The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided.|
+|updated-since|query|string(date-time)|optional|query filter returns results updated since the specified date-time|
+|page|query|integer(int32)|optional|the page number to return|
+|page-size|query|integer(int32)|optional|the number of records to return per page|
 
 #### Enumerated Values
 
@@ -243,7 +246,9 @@ Obsolete versions: [v1](includes/obsolete/get-data-holders-v1.html)
     {
       "dataHolderBrandId": "string",
       "brandName": "string",
-      "industry": "banking",
+      "industries": [
+        "banking"
+      ],
       "logoUri": "string",
       "legalEntity": {
         "legalEntityId": "string",
@@ -255,8 +260,9 @@ Obsolete versions: [v1](includes/obsolete/get-data-holders-v1.html)
         "abn": "string",
         "acn": "string",
         "arbn": "string",
-        "industryCode": "string",
-        "organisationType": "SOLE_TRADER"
+        "anzsicDivision": "string",
+        "organisationType": "SOLE_TRADER",
+        "status": "ACTIVE"
       },
       "status": "ACTIVE",
       "endpointDetail": {
@@ -290,14 +296,16 @@ Obsolete versions: [v1](includes/obsolete/get-data-holders-v1.html)
 }
 ```
 
+> 400 Response
+
 <h3 id="get-data-holder-brands-responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseRegisterDataHolderBrandList](#schemacdr-participant-discovery-apiresponseregisterdataholderbrandlist)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Bad Request</br>Invalid industry path parameter|[ResponseErrorList](#schemacdr-participant-discovery-apiresponseerrorlist)|
-|401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Invalid Bearer Token|None|
-|406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|Invalid x-v header</br>Invalid Accept header|None|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Missing Required Header / Invalid Version / Invalid Path Parameter|[ResponseErrorListV2](#schemacdr-participant-discovery-apiresponseerrorlistv2)|
+|401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Invalid Bearer Token|[ResponseErrorListV2](#schemacdr-participant-discovery-apiresponseerrorlistv2)|
+|406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|Unsupported Version|[ResponseErrorListV2](#schemacdr-participant-discovery-apiresponseerrorlistv2)|
 
 ### Response Headers
 
@@ -326,6 +334,8 @@ cdr-register:read</a>
 GET https://<register-base-url>/cdr-register/v1/{industry}/data-recipients/brands/{dataRecipientBrandId}/software-products/{softwareProductId}/ssa HTTP/1.1
 
 Accept: application/json
+x-v: string
+x-min-v: string
 Authorization: string
 
 ```
@@ -333,6 +343,8 @@ Authorization: string
 ```javascript
 var headers = {
   'Accept':'application/json',
+  'x-v':'string',
+  'x-min-v':'string',
   'Authorization':'string'
 
 };
@@ -365,6 +377,8 @@ Obsolete versions: [v2](includes/obsolete/get-software-statement-assertion-v2.ht
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |industry|path|string|mandatory|The industry the participant is retrieving data for (Banking, etc)|
+|x-v|header|string|mandatory|The version of the API end point requested by the client. Must be set to a positive integer.|
+|x-min-v|header|string|optional|The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided.|
 |dataRecipientBrandId|path|string|mandatory|Unique id for the Accredited Data Recipient Brand that the Software Product is associated with in the CDR Register|
 |softwareProductId|path|string|mandatory|Unique id for the Accredited Data Recipient Software Product in the CDR Register|
 |Authorization|header|string|mandatory|An Authorisation Token as per [RFC6750](https://tools.ietf.org/html/rfc6750).|
@@ -397,6 +411,7 @@ Obsolete versions: [v2](includes/obsolete/get-software-statement-assertion-v2.ht
 |401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Invalid Bearer Token|[ResponseErrorListV2](#schemacdr-participant-discovery-apiresponseerrorlistv2)|
 |403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Invalid BrandId|[ResponseErrorListV2](#schemacdr-participant-discovery-apiresponseerrorlistv2)|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Invalid Software Product|[ResponseErrorListV2](#schemacdr-participant-discovery-apiresponseerrorlistv2)|
+|406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|Unsupported Version|[ResponseErrorListV2](#schemacdr-participant-discovery-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|SSA validation failed|[ResponseErrorListV2](#schemacdr-participant-discovery-apiresponseerrorlistv2)|
 
 ### Response Headers
@@ -455,14 +470,12 @@ $.ajax({
 
 `GET /cdr-register/v1/{industry}/data-holders/status`
 
-Endpoint used by participants to discover the statuses for Data Holders from the CDR Register. 
-
-Obsolete versions: [v1](includes/obsolete/get-data-holder-statuses-v1.html)
+Endpoint used by participants to discover the statuses for Data Holders from the CDR Register
 
 ###Endpoint Version
 |   |  |
 |---|--|
-|Version|**2**
+|Version|**1**
 
 <h3 id="get-data-holder-statuses-parameters">Parameters</h3>
 
@@ -1017,7 +1030,9 @@ This operation does not require authentication
     {
       "dataHolderBrandId": "string",
       "brandName": "string",
-      "industry": "banking",
+      "industries": [
+        "banking"
+      ],
       "logoUri": "string",
       "legalEntity": {
         "legalEntityId": "string",
@@ -1029,8 +1044,9 @@ This operation does not require authentication
         "abn": "string",
         "acn": "string",
         "arbn": "string",
-        "industryCode": "string",
-        "organisationType": "SOLE_TRADER"
+        "anzsicDivision": "string",
+        "organisationType": "SOLE_TRADER",
+        "status": "ACTIVE"
       },
       "status": "ACTIVE",
       "endpointDetail": {
@@ -1083,7 +1099,9 @@ This operation does not require authentication
 {
   "dataHolderBrandId": "string",
   "brandName": "string",
-  "industry": "banking",
+  "industries": [
+    "banking"
+  ],
   "logoUri": "string",
   "legalEntity": {
     "legalEntityId": "string",
@@ -1095,8 +1113,9 @@ This operation does not require authentication
     "abn": "string",
     "acn": "string",
     "arbn": "string",
-    "industryCode": "string",
-    "organisationType": "SOLE_TRADER"
+    "anzsicDivision": "string",
+    "organisationType": "SOLE_TRADER",
+    "status": "ACTIVE"
   },
   "status": "ACTIVE",
   "endpointDetail": {
@@ -1124,7 +1143,7 @@ This operation does not require authentication
 |---|---|---|---|
 |dataHolderBrandId|string|mandatory|Unique id of the Data Holder Brand issued by the CDR Register|
 |brandName|string|mandatory|The name of Data Holder Brand|
-|industry|string|mandatory|The industry the participant is retrieving data for (Banking, etc)|
+|industries|[string]|mandatory|The industries the Data Holder Brand belongs to. Please note that the CDR Register entity model is constrained to one industry per brand which is planned to be relaxed in the future.|
 |logoUri|[URIString](#common-field-types)|mandatory|Brand logo URI|
 |legalEntity|[LegalEntityDetail](#schemacdr-participant-discovery-apilegalentitydetail)|mandatory|The data that is common to all organisations, regardless of the type (e.g. company, trust, partnership, government)|
 |status|string|mandatory|none|
@@ -1136,10 +1155,6 @@ This operation does not require authentication
 
 |Property|Value|
 |---|---|
-|industry|banking|
-|industry|energy|
-|industry|telco|
-|industry|all|
 |status|ACTIVE|
 |status|INACTIVE|
 |status|REMOVED|
@@ -1297,7 +1312,7 @@ This operation does not require authentication
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|legalEntityId|string|mandatory|Unique id of the Data Recipient issued by the CDR Register|
+|legalEntityId|string|mandatory|Unique id of the Data Recipient Legal Entity issued by the CDR Register|
 |status|string|mandatory|Data Recipient status in the CDR Register|
 
 #### Enumerated Values
@@ -1512,8 +1527,9 @@ This operation does not require authentication
   "abn": "string",
   "acn": "string",
   "arbn": "string",
-  "industryCode": "string",
-  "organisationType": "SOLE_TRADER"
+  "anzsicDivision": "string",
+  "organisationType": "SOLE_TRADER",
+  "status": "ACTIVE"
 }
 
 ```
@@ -1533,8 +1549,9 @@ This operation does not require authentication
 |abn|string|optional|Australian Business Number for the organisation|
 |acn|string|optional|Australian Company Number for the organisation|
 |arbn|string|optional|Australian Registered Body Number.  ARBNs are issued to registrable Australian bodies and foreign companies|
-|industryCode|string|optional|Industry Code for the organisation. [ANZSIC (2006)](http://www.abs.gov.au/anzsic)|
+|anzsicDivision|string|optional|ANZSIC division of the organisation. [ANZSIC (2006)](http://www.abs.gov.au/anzsic)|
 |organisationType|string|optional|Legal organisation type|
+|status|string|mandatory|none|
 
 #### Enumerated Values
 
@@ -1546,6 +1563,8 @@ This operation does not require authentication
 |organisationType|TRUST|
 |organisationType|GOVERNMENT_ENTITY|
 |organisationType|OTHER|
+|status|ACTIVE|
+|status|REMOVED|
 
 <h3 class="schema-toc" id="tocSregisterdataholderbrandserviceendpoint">RegisterDataHolderBrandServiceEndpoint</h3>
 
@@ -1746,51 +1765,4 @@ This operation does not require authentication
 |title|string|mandatory|A short, human-readable summary of the problem that MUST NOT change from occurrence to occurrence of the problem represented by the error code.|
 |detail|string|mandatory|A human-readable explanation specific to this occurrence of the problem.|
 |meta|[MetaError](#schemacdr-participant-discovery-apimetaerror)|optional|Additional data for customised error codes|
-
-<h3 class="schema-toc" id="tocSresponseerrorlist">ResponseErrorList</h3>
-
-<a id="schemacdr-participant-discovery-apiresponseerrorlist"></a>
-
-```json
-{
-  "errors": [
-    {
-      "code": "string",
-      "title": "string",
-      "detail": "string",
-      "meta": {}
-    }
-  ]
-}
-
-```
-
-### Properties
-
-|Name|Type|Required|Description|
-|---|---|---|---|
-|errors|[[Error](#schemacdr-participant-discovery-apierror)]|mandatory|none|
-
-<h3 class="schema-toc" id="tocSerror">Error</h3>
-
-<a id="schemacdr-participant-discovery-apierror"></a>
-
-```json
-{
-  "code": "string",
-  "title": "string",
-  "detail": "string",
-  "meta": {}
-}
-
-```
-
-### Properties
-
-|Name|Type|Required|Description|
-|---|---|---|---|
-|code|string|mandatory|Error code|
-|title|string|mandatory|Error title|
-|detail|string|mandatory|Error detail|
-|meta|object|optional|Optional additional data for specific error types|
 
