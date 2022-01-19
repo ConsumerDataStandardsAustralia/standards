@@ -20,7 +20,7 @@ There are a number ofways to contribute to these standards:
 
 * **[The standards maintenance repository](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance)** - This repository is used to manage minor changes to established aspects of the standards.  Contributors are encouraged to raise new issues in this repository that will then be prioritised for resolution in a series of multi-week iterations.  Outcomes of these iterations will then be submitted to the Data Standards Chair for approval on this repository as a decision.  The [Consumer Data Right Support Portal](https://cdr-support.zendesk.com/hc/en-us) is the preferred way to search for answers, raise questions and request clarification of the standards.
 
-* **[Via Email](mailto:cdr-data61@csiro.au)** - If you would like to submit a confidential question or item of feedback, or if GitHub feels unfamiliar, the DSB welcome email correspondence related to the standards and the standards development process.
+* **[Via Email](mailto:contact@consumerdatastandards.gov.au)** - If you would like to submit a confidential question or item of feedback, or if GitHub feels unfamiliar, the DSB welcome email correspondence related to the standards and the standards development process.
 
 
 ## Rules of engagement for this repository
