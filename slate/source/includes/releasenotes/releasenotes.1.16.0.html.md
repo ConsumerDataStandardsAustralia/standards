@@ -29,6 +29,7 @@ This release minor errata and documentation fixes.
 
 |Change|Description|Link|
 |------|-----------|----|
+| Authentication Flows | Clarified requirements for Data Recipient Software Products S256 code challenge method | [Authentication Flows](../../#authentication-flows) |
 
 ## Consumer Experience
 
