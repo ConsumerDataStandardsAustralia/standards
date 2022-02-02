@@ -29,6 +29,8 @@ This release minor errata and documentation fixes.
 
 |Change|Description|Link|
 |------|-----------|----|
+| Client Authentication | Removed duplicate section: **Data Holders calling Data Recipients** | [Client Authentication](../../#client-authentication)|
+
 
 ## Consumer Experience
 
