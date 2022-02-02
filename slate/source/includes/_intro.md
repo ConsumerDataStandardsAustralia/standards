@@ -31,7 +31,7 @@ The standards are required to be published. The obligations on CDR participants 
 
 ## Version
 
-These standards represent version 1.15.0 of the high level standards.  See the [versioning section](#versioning) for more information on how versions are managed in the standard.
+These standards represent version 1.16.0 of the high level standards.  See the [versioning section](#versioning) for more information on how versions are managed in the standard.
 
 ## Interpretation
 
