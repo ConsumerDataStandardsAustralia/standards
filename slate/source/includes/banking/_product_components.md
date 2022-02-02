@@ -5,15 +5,6 @@
 
 Description of the usage of the featureType field as it applies to products.
 
-```diff
-Added table rows for the following new values:
-+ CASHBACK_OFFER
-+ EXTRA_REPAYMENTS
-+ FRAUD_PROTECTION
-+ GUARANTOR
-+ INSTALMENT_PLAN
-+ RELATIONSHIP_MANAGEMENT
-```
 
 |Value|Description|Use of additionalValue Field|
 |-----|-----------|----------------------------|
