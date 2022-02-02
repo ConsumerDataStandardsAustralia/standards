@@ -23,6 +23,7 @@ This release minor errata and documentation fixes.
 
 |Change|Description|Link|
 |------|-----------|----|
+| Energy schema | Change type of page and page-size in Energy APIs to PositiveInteger | [Energy Schema](../../#energy-apis) |
 
 
 ## Information Security Profile
