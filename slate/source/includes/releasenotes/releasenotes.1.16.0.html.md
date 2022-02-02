@@ -18,6 +18,7 @@ This release minor errata and documentation fixes.
 
 |Change|Description|Link|
 |------|-----------|----|
+| Introduction | Corrected link for RFC2119 | [Introduction](../../#introduction) |
 
 ## API End Points
 
