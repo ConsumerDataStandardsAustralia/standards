@@ -1,8 +1,9 @@
 ## Consent Standards
-|Disclosure Consent: Insight Descriptions|
-|--------------------------------------------------|
-|The standards in this section outline insight description requirements that apply where an insight disclosure consent is being sought and may also feature in CDR Receipts and Dashboards. These standards do not alter any existing rules obligations for CDR receipts or dashboards.|
-|**Note:** The use of the term ‘data recipients’ to refer to accredited data recipients is consistent with the data standards nomenclature. Where these standards refer to ‘data recipient’, this should not be taken to mean a non-accredited person or trusted adviser.|
+**Disclosure Consent: Insight Descriptions**
+<br><br>
+The standards in this section outline insight description requirements that apply where an insight disclosure consent is being sought and may also feature in CDR Receipts and Dashboards. These standards do not alter any existing rules obligations for CDR receipts or dashboards.
+<br><br>
+**Note:** The use of the term ‘data recipients’ to refer to accredited data recipients is consistent with the data standards nomenclature. Where these standards refer to ‘data recipient’, this should not be taken to mean a non-accredited person or trusted adviser.
 
 |Area|CX Standard|
 |-------------------|------------------------------|
@@ -11,10 +12,11 @@
 |**Insight disclosure:** <br>Purpose of insight |Data recipients **SHOULD** explain the purpose of generating the insight.|
 |**Insight disclosure:** <br>Insight generation|Data recipients **MAY** explain how the insight will be generated using plain and concise language, which **MAY** include: <ul><li>what method(s) would be used to generate the insight(s);<li>who would be involved in generating the insight(s), such as the specific actor(s); and</li><li>what information sources would be used to generate the insight, such as the specific dataset(s)</li></ul></ol>|
 
-|Disclosure Consent: Non-Accredited Person Disclosure Notification|
-|--------------------------------------------------|
-|The standards in this section outline requirements that apply when a disclosure consent is being sought to disclose data to a non-accredited person, which includes insight disclosure consents and trusted adviser disclosure consents.<br><br>These standards will feature where such a disclosure consent is being sought and may, as stated in any accompanying notes, also feature in CDR Receipts and Dashboards.|
-|**Note:** The use of the term ‘data recipients’ to refer to accredited data recipients is consistent with the data standards nomenclature. Where these standards refer to ‘data recipient’, this should not be taken to mean a non-accredited person or trusted adviser.|
+**Disclosure Consent: Non-Accredited Person Disclosure Notification**
+<br><br>
+The standards in this section outline requirements that apply when a disclosure consent is being sought to disclose data to a non-accredited person, which includes insight disclosure consents and trusted adviser disclosure consents.<br><br>These standards will feature where such a disclosure consent is being sought and may, as stated in any accompanying notes, also feature in CDR Receipts and Dashboards.
+<br><br>
+**Note:** The use of the term ‘data recipients’ to refer to accredited data recipients is consistent with the data standards nomenclature. Where these standards refer to ‘data recipient’, this should not be taken to mean a non-accredited person or trusted adviser.
 
 |Area|CX Standard|
 |-------------------|------------------------------|
