@@ -1,12 +1,6 @@
 
 ## Withdrawal Standards
 
-```diff
-
-The following table rows were added:
-+ |**Withdrawal:**<br>Joint accounts| As part of the process of removing a joint account approval or changing to a more restrictive disclosure option, the data holder **MUST** advise the consumer:<br/><ol><li>that doing this may impact existing services, including arrangements initiated by the other account holder(s)</li><li>when removing an approval:<br/><ul><li>that even though sharing for this service has now stopped, the other account holder(s) can still create new data sharing arrangements for the joint account</li><li>how to change their disclosure option</li></ul></li></ol><p>**Note:** The exact phrasing of the withdrawal message is at the discretion of the data holder. This standard does not affect data holders’ other notification obligations, including under rule 4A.7(3).</p> |
-
-```
 |Area|CX Standard|
 |-------------------|------------------------------|
 |**Withdrawing consent**|If a Data Recipient does not have a general policy to delete redundant data, and the consumer has not already requested that their redundant data be deleted: <ul><li>Data Recipients **MUST** allow consumers to elect to have their redundant data deleted as part of the withdrawal process prior to the final withdrawal step. </li><li>Data Recipients **SHOULD** consider prompting consumers to exercise this right at appropriate times (e.g. when inaction on the part of the consumer may cause them to lose the opportunity to exercise the right to delete their redundant data).</li></ul>|
