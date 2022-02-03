@@ -37,5 +37,23 @@ These endpoints are exposed by the Register and consumed by Data Holders and Dat
 |**Production mTLS**|https://secure.api.cdr.gov.au|
 
 
+```diff
+
+Below are the changes to the Register APIs section of the
+standards.
+
+Modified the description of the `RegisterDataHolderAuth` object from:
+- Provides details of authorisation endpoints for Data Holders
+to:
++ Defines the mechanism used and associated endpoints for Data Holder to Data Recipient authentication
+
+
+Modified the description of the `jwksEndpoint` field from:
+- JWKS endpoint for private_key_jwt client authentication with Data Recipient
+to:
++ JWKS endpoint used for authentication by the Data Holder with the Data Recipient
+
+```
+
 
 <%= partial "includes/cds_register.md" %>
