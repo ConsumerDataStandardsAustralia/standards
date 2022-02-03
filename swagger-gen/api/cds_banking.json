@@ -1282,7 +1282,7 @@
               }
             },
             "schema": {
-              "$ref": "#/definitions/ResponseBankingProductList"
+              "$ref": "#/definitions/ResponseBankingProductListV2"
             }
           },
           "4xx": {
@@ -1683,7 +1683,7 @@
             "$ref": "#/definitions/BankingProductAdditionalInformationV2_additionalInformationUris"
           }
         },
-       "additionalEligibilityUris": {
+        "additionalEligibilityUris": {
           "type": "array",
           "description": "An array of additional eligibility rules and criteria for the product, if applicable. To be treated as secondary documents to the `eligibilityUri`. Only to be used if there is a primary `eligibilityUri`.",
           "items": {
@@ -1707,19 +1707,21 @@
       }
     },
     "BankingProductAdditionalInformationV2_additionalInformationUris": {
-        "type": "object",
-        "required": ["additionalInfoUri"],
-        "properties": {
-          "description": {
-            "type": "string",
-            "description": "Display text providing more information about the document URI"
-          },
-          "additionalInfoUri": {
-            "type": "string",
-            "description": "The URI describing the additional information",
-            "x-cds-type": "URIString"
-          }
-       }
+      "type": "object",
+      "required": [
+        "additionalInfoUri"
+      ],
+      "properties": {
+        "description": {
+          "type": "string",
+          "description": "Display text providing more information about the document URI"
+        },
+        "additionalInfoUri": {
+          "type": "string",
+          "description": "The URI describing the additional information",
+          "x-cds-type": "URIString"
+        }
+      }
     },
     "ResponseBankingProductByIdV4": {
       "type": "object",
@@ -3907,7 +3909,8 @@
             "SUN",
             "THU",
             "TUE",
-            "WED"          ]
+            "WED"
+          ]
         },
         "nonBusinessDayTreatment": {
           "type": "string",
@@ -4185,14 +4188,16 @@
       }
     },
     "MetaError": {
-      "type" : "object",
-      "x-conditional" : [ "urn" ],
-      "description" : "Additional data for customised error codes",
-      "properties" : {
-         "urn": {
-            "type": "string",
-            "description": "The CDR error code URN which the application-specific error code extends. Mandatory if the error `code` is an application-specific error rather than a standardised error code."
-         }
+      "type": "object",
+      "x-conditional": [
+        "urn"
+      ],
+      "description": "Additional data for customised error codes",
+      "properties": {
+        "urn": {
+          "type": "string",
+          "description": "The CDR error code URN which the application-specific error code extends. Mandatory if the error `code` is an application-specific error rather than a standardised error code."
+        }
       }
     },
     "ResponseErrorListV2": {
@@ -4200,7 +4205,9 @@
       "required": [
         "errors"
       ],
-      "x-conditional": [ "meta" ],
+      "x-conditional": [
+        "meta"
+      ],
       "properties": {
         "errors": {
           "type": "array",

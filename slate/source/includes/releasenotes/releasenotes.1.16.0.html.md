@@ -23,7 +23,7 @@ This release minor errata and documentation fixes.
 
 |Change|Description|Link|
 |------|-----------|----|
-
+| Banking APIs | Corrected GetProducts response reference from `ResponseBankingProductList` to `ResponseBankingProductListV2` | [Banking APIs](../../#banking-apis)|
 
 ## Information Security Profile
 
