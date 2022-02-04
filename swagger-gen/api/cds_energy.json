@@ -3700,9 +3700,10 @@
 				"in": "query",
 				"required": false,
 				"schema": {
-					"type": "number",
+                    "type": "integer",
 					"default": "1"
-				}
+				},
+                "x-cds-type": "PositiveInteger"
 			},
 			"page-size": {
 				"name": "page-size",
@@ -3710,9 +3711,10 @@
 				"in": "query",
 				"required": false,
 				"schema": {
-					"type": "number",
+                    "type": "integer",
 					"default": "25"
-				}
+				},
+                "x-cds-type": "PositiveInteger"
 			},
 			"x-v": {
 				"name": "x-v",
