@@ -22,9 +22,6 @@ The CDR utilises a private certificate trust chain for all Register CA secured e
 
 This trust chain encompasses a set of root and intermediate CAs issued for the test and production environments.
 
-```diff
-Corrected the links for the test and production certificates.
-```
 |||
 |---|---|
 |**Test Environment**|[CA Root Test](includes/register/certificates/test/ca_root_test.cer)</br>[CA Intermediate Test](includes/register/certificates/test/ca_intermediate_test.cer)|

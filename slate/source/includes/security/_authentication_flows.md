@@ -1,14 +1,6 @@
 ## Authentication Flows
 This profile supports the authentication flows specified by [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) **[OIDC]** as constrained further by [FAPI](https://openid.net/wg/fapi/) **[FAPI]**.
 
-```diff
-Replaced the statements:
-- Specifically the Hybrid Flow outlined at [section 3.3](https://openid.net/specs/openid-connect-core-1_0.html#HybridFlowAuth) of **[OIDC]**.
-with:
-+ Specifically the OIDC Hybrid Flow outlined at [section 3.3](https://openid.net/specs/openid-connect-core-1_0.html#HybridFlowAuth) of **[OIDC]**.
-+
-+ From July 4th 2022, OIDC Authorization Code Flow outlined at [section 3.1](https://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth)  of **[OIDC]** is supported.
-```
 
 Specifically the OIDC Hybrid Flow outlined at [section 3.3](https://openid.net/specs/openid-connect-core-1_0.html#HybridFlowAuth) of **[OIDC]**.
 
@@ -16,9 +8,6 @@ From July 4th 2022, OIDC Authorization Code Flow outlined at [section 3.1](https
 
 No other flows are currently supported.
 
-```diff
-Added the Baseline Security Provisions section
-```
 
 ### Baseline Security Provisions
 
@@ -50,11 +39,17 @@ Added the Baseline Security Provisions section
 *	Data Recipient Software Products **SHOULD NOT** reuse "authorization_code" values, and if reused, it will be rejected.
 * Data Recipient Software Products **MAY** send requests with a "x-fapi-customer-ip-address" header containing a valid IPv4 or IPv6 address.
 
+```diff
+Replaced the statement:
+- Data Recipient Software Products MUST use [RFC9126] (PAR) with [PKCE] (RFC7636) and, if supported, MUST use S256 as the code challenge method.
+with:
++ Data Recipient Software Products MUST use [RFC9126] (PAR) with [PKCE] (RFC7636) and MUST use S256 as the code challenge method.
+```
 
 **From September 16th 2022**, the following requirements apply in addition to the FAPI 1.0 Migration Phase 1 requirements:
 
 *	Data Recipient Software Products **MUST** support FAPI 1.0 Advanced Profile (**[FAPI-1.0-Advanced]**).
-* Data Recipient Software Products **MUST** use **[RFC9126]** (PAR) with **[PKCE]** (RFC7636) and, if supported, **MUST** use S256 as the code challenge method.
+*   Data Recipient Software Products **MUST** use **[RFC9126]** (PAR) with **[PKCE]** (RFC7636) and **MUST** use S256 as the code challenge method.
 *	Data Recipient Software Products **SHOULD** use OIDC Authorization Code Flow.
 
 <a id="hybrid-flow"></a>
@@ -65,12 +60,6 @@ Holder’s Authorisation end point in the context of an **[OIDC]** authenticatio
 request. The OIDC Hybrid Flow incorporates aspects of the both the implicit flow and
 authorisation code flow detailed under **[OIDC]**.
 
-```diff
-Replaced the statement:
-- Only a `response_type` (see [section 3](https://openid.net/specs/openid-connect-core-1_0.html#Authentication) of **[OIDC]**) of `code id_token` SHALL be allowed.
-with:
-+ Only a `response_type` (see [section 3.3](https://openid.net/specs/openid-connect-core-1_0.html#HybridFlowAuth) of **[OIDC]**) of `code id_token` **SHALL** be allowed.
-```
 
 Only a `response_type` (see [section 3.3](https://openid.net/specs/openid-connect-core-1_0.html#HybridFlowAuth) of **[OIDC]**) of `code id_token` **SHALL** be allowed.
 
@@ -99,9 +88,6 @@ In line with CDR Rule 4.24 on restrictions when asking CDR consumers to authoris
 
 Additional requirements and guidelines for this flow are contained in the [Consumer Experience](#consumer-experience) section.
 
-```diff
-Added the OIDC Authorization Code Flow section.
-```
 
 <a id="authorization-code-flow"></a>
 ### OIDC Authorization Code Flow

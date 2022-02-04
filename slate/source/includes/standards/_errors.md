@@ -222,13 +222,6 @@ Content-Type: application/json
 
 ```
 
-```diff
-Added additional errors:
-+ urn:au-cds:error:cds-energy:Authorisation/InvalidEnergyAccount
-+ urn:au-cds:error:cds-energy:Authorisation/UnavailableEnergyAccount
-+ urn:au-cds:error:cds-energy:Authorisation/InvalidServicePoint
-+ urn:au-cds:error:cds-energy:Authorisation/UnavailableServicePoint
-```
 
 | Error Title      | Error Code            | Description |  
 | :--------------- | :-------------------- | :---------- |  

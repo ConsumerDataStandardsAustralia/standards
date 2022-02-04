@@ -97,14 +97,14 @@ x-fapi-interaction-id: string
 <tr>
 <td>page</td>
 <td>query</td>
-<td>number</td>
+<td><a href="#common-field-types">PositiveInteger</a></td>
 <td>optional</td>
 <td>Page of results to request (standard pagination)</td>
 </tr>
 <tr>
 <td>page-size</td>
 <td>query</td>
-<td>number</td>
+<td><a href="#common-field-types">PositiveInteger</a></td>
 <td>optional</td>
 <td>Page size to request.  Default is 25 (standard pagination)</td>
 </tr>
@@ -938,14 +938,14 @@ x-cds-client-headers: string
 <tr>
 <td>page</td>
 <td>query</td>
-<td>number</td>
+<td><a href="#common-field-types">PositiveInteger</a></td>
 <td>optional</td>
 <td>Page of results to request (standard pagination)</td>
 </tr>
 <tr>
 <td>page-size</td>
 <td>query</td>
-<td>number</td>
+<td><a href="#common-field-types">PositiveInteger</a></td>
 <td>optional</td>
 <td>Page size to request.  Default is 25 (standard pagination)</td>
 </tr>
@@ -1452,14 +1452,14 @@ x-cds-client-headers: string
 <tr>
 <td>page</td>
 <td>query</td>
-<td>number</td>
+<td><a href="#common-field-types">PositiveInteger</a></td>
 <td>optional</td>
 <td>Page of results to request (standard pagination)</td>
 </tr>
 <tr>
 <td>page-size</td>
 <td>query</td>
-<td>number</td>
+<td><a href="#common-field-types">PositiveInteger</a></td>
 <td>optional</td>
 <td>Page size to request.  Default is 25 (standard pagination)</td>
 </tr>
@@ -1697,14 +1697,14 @@ x-cds-client-headers: string
 <tr>
 <td>page</td>
 <td>query</td>
-<td>number</td>
+<td><a href="#common-field-types">PositiveInteger</a></td>
 <td>optional</td>
 <td>Page of results to request (standard pagination)</td>
 </tr>
 <tr>
 <td>page-size</td>
 <td>query</td>
-<td>number</td>
+<td><a href="#common-field-types">PositiveInteger</a></td>
 <td>optional</td>
 <td>Page size to request.  Default is 25 (standard pagination)</td>
 </tr>
@@ -1956,14 +1956,14 @@ x-cds-client-headers: string
 <tr>
 <td>page</td>
 <td>query</td>
-<td>number</td>
+<td><a href="#common-field-types">PositiveInteger</a></td>
 <td>optional</td>
 <td>Page of results to request (standard pagination)</td>
 </tr>
 <tr>
 <td>page-size</td>
 <td>query</td>
-<td>number</td>
+<td><a href="#common-field-types">PositiveInteger</a></td>
 <td>optional</td>
 <td>Page size to request.  Default is 25 (standard pagination)</td>
 </tr>
@@ -2454,14 +2454,14 @@ x-cds-client-headers: string
 <tr>
 <td>page</td>
 <td>query</td>
-<td>number</td>
+<td><a href="#common-field-types">PositiveInteger</a></td>
 <td>optional</td>
 <td>Page of results to request (standard pagination)</td>
 </tr>
 <tr>
 <td>page-size</td>
 <td>query</td>
-<td>number</td>
+<td><a href="#common-field-types">PositiveInteger</a></td>
 <td>optional</td>
 <td>Page size to request.  Default is 25 (standard pagination)</td>
 </tr>
@@ -2725,14 +2725,14 @@ x-cds-client-headers: string
 <tr>
 <td>page</td>
 <td>query</td>
-<td>number</td>
+<td><a href="#common-field-types">PositiveInteger</a></td>
 <td>optional</td>
 <td>Page of results to request (standard pagination)</td>
 </tr>
 <tr>
 <td>page-size</td>
 <td>query</td>
-<td>number</td>
+<td><a href="#common-field-types">PositiveInteger</a></td>
 <td>optional</td>
 <td>Page size to request.  Default is 25 (standard pagination)</td>
 </tr>
@@ -3010,14 +3010,14 @@ x-cds-client-headers: string
 <tr>
 <td>page</td>
 <td>query</td>
-<td>number</td>
+<td><a href="#common-field-types">PositiveInteger</a></td>
 <td>optional</td>
 <td>Page of results to request (standard pagination)</td>
 </tr>
 <tr>
 <td>page-size</td>
 <td>query</td>
-<td>number</td>
+<td><a href="#common-field-types">PositiveInteger</a></td>
 <td>optional</td>
 <td>Page size to request.  Default is 25 (standard pagination)</td>
 </tr>
@@ -4367,14 +4367,14 @@ x-cds-client-headers: string
 <tr>
 <td>page</td>
 <td>query</td>
-<td>number</td>
+<td><a href="#common-field-types">PositiveInteger</a></td>
 <td>optional</td>
 <td>Page of results to request (standard pagination)</td>
 </tr>
 <tr>
 <td>page-size</td>
 <td>query</td>
-<td>number</td>
+<td><a href="#common-field-types">PositiveInteger</a></td>
 <td>optional</td>
 <td>Page size to request.  Default is 25 (standard pagination)</td>
 </tr>
@@ -4591,14 +4591,14 @@ x-cds-client-headers: string
 <tr>
 <td>page</td>
 <td>query</td>
-<td>number</td>
+<td><a href="#common-field-types">PositiveInteger</a></td>
 <td>optional</td>
 <td>Page of results to request (standard pagination)</td>
 </tr>
 <tr>
 <td>page-size</td>
 <td>query</td>
-<td>number</td>
+<td><a href="#common-field-types">PositiveInteger</a></td>
 <td>optional</td>
 <td>Page size to request.  Default is 25 (standard pagination)</td>
 </tr>
@@ -4850,14 +4850,14 @@ x-cds-client-headers: string
 <tr>
 <td>page</td>
 <td>query</td>
-<td>number</td>
+<td><a href="#common-field-types">PositiveInteger</a></td>
 <td>optional</td>
 <td>Page of results to request (standard pagination)</td>
 </tr>
 <tr>
 <td>page-size</td>
 <td>query</td>
-<td>number</td>
+<td><a href="#common-field-types">PositiveInteger</a></td>
 <td>optional</td>
 <td>Page size to request.  Default is 25 (standard pagination)</td>
 </tr>
@@ -5125,14 +5125,14 @@ x-cds-client-headers: string
 <tr>
 <td>page</td>
 <td>query</td>
-<td>number</td>
+<td><a href="#common-field-types">PositiveInteger</a></td>
 <td>optional</td>
 <td>Page of results to request (standard pagination)</td>
 </tr>
 <tr>
 <td>page-size</td>
 <td>query</td>
-<td>number</td>
+<td><a href="#common-field-types">PositiveInteger</a></td>
 <td>optional</td>
 <td>Page size to request.  Default is 25 (standard pagination)</td>
 </tr>
@@ -5414,14 +5414,14 @@ x-cds-client-headers: string
 <tr>
 <td>page</td>
 <td>query</td>
-<td>number</td>
+<td><a href="#common-field-types">PositiveInteger</a></td>
 <td>optional</td>
 <td>Page of results to request (standard pagination)</td>
 </tr>
 <tr>
 <td>page-size</td>
 <td>query</td>
-<td>number</td>
+<td><a href="#common-field-types">PositiveInteger</a></td>
 <td>optional</td>
 <td>Page size to request.  Default is 25 (standard pagination)</td>
 </tr>
@@ -5724,14 +5724,14 @@ x-cds-client-headers: string
 <tr>
 <td>page</td>
 <td>query</td>
-<td>number</td>
+<td><a href="#common-field-types">PositiveInteger</a></td>
 <td>optional</td>
 <td>Page of results to request (standard pagination)</td>
 </tr>
 <tr>
 <td>page-size</td>
 <td>query</td>
-<td>number</td>
+<td><a href="#common-field-types">PositiveInteger</a></td>
 <td>optional</td>
 <td>Page size to request.  Default is 25 (standard pagination)</td>
 </tr>
@@ -6016,14 +6016,14 @@ x-cds-client-headers: string
 <tr>
 <td>page</td>
 <td>query</td>
-<td>number</td>
+<td><a href="#common-field-types">PositiveInteger</a></td>
 <td>optional</td>
 <td>Page of results to request (standard pagination)</td>
 </tr>
 <tr>
 <td>page-size</td>
 <td>query</td>
-<td>number</td>
+<td><a href="#common-field-types">PositiveInteger</a></td>
 <td>optional</td>
 <td>Page size to request.  Default is 25 (standard pagination)</td>
 </tr>
@@ -6322,14 +6322,14 @@ x-cds-client-headers: string
 <tr>
 <td>page</td>
 <td>query</td>
-<td>number</td>
+<td><a href="#common-field-types">PositiveInteger</a></td>
 <td>optional</td>
 <td>Page of results to request (standard pagination)</td>
 </tr>
 <tr>
 <td>page-size</td>
 <td>query</td>
-<td>number</td>
+<td><a href="#common-field-types">PositiveInteger</a></td>
 <td>optional</td>
 <td>Page size to request.  Default is 25 (standard pagination)</td>
 </tr>

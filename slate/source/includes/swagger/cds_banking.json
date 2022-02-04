@@ -2,7 +2,7 @@
   "swagger" : "2.0",
   "info" : {
     "description" : "Consumer Data Standards APIs created by the Data Standards Body (DSB), with the Data Standards Chair as the decision maker to meet the needs of the Consumer Data Right",
-    "version" : "1.15.0",
+    "version" : "1.16.0",
     "title" : "CDR Banking API",
     "contact" : {
       "name" : "Consumer Data Standards",
@@ -1673,7 +1673,7 @@
               }
             },
             "schema" : {
-              "$ref" : "#/definitions/ResponseBankingProductList"
+              "$ref" : "#/definitions/ResponseBankingProductListV2"
             }
           },
           "4xx" : {

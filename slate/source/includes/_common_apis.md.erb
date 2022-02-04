@@ -10,35 +10,6 @@ This specification defines the Common APIs that apply to Data Holders multiple s
 <tr><td><a href='./includes/swagger/cds_common.yaml'>Common Swagger (YAML)</a></td></tr>
 </table>
 
-```diff
-Below are the changes to the Common APIs section of the
-standards.
 
-
-Bumped the version of the `Get Customer Detail` endpoint from v1 to v2.
-
-
-The description of the 'physicalAddresses' array in both the
-`CommonPersonDetail` model and the `CommonOrganisationDetail` model
-changed from:
-- Must contain at least one address. One and only one address may have the purpose of REGISTERED. Zero or one, and no more than one, record may have the purpose of MAIL. If zero then the REGISTERED address is to be used for mail
-to:
-+ Array is mandatory but may be empty if no valid addresses are held. One and only one address may have the purpose of REGISTERED. Zero or one, and no more than one, record may have the purpose of MAIL. If zero then the REGISTERED address is to be used for mail
-
-
-`CommonPersonDetail` model updated to `CommonPersonDetailV2`.
-
-
-`CommonOrganisationDetail` model updated to `CommonOrganisationDetailV2`.
-
-Modified the description of the `x-fapi-auth-date` request header from:
-- The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.
-to:
-+ The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended) if the customer is currently logged. Otherwise optional where the customer has not logged in. Not to be included for unauthenticated calls.
-
-
-Made the `x-fapi-auth-date` and `x-cds-client-headers` request headers conditional.
-
-```
 
 <%= partial "includes/cds_common.md" %>

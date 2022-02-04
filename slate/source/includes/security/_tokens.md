@@ -19,13 +19,6 @@
 }
 ```
 
-```diff
-Replaced the statements:
-- ID Tokens are specified in [section 2](https://openid.net/specs/openid-connect-core-1_0.html#IDToken) of the **[OIDC]** standard.  In accordance with **[FAPI-RW]**, ID Tokens must be signed and encrypted when returned
-- to a Data Recipient Software Product from both the Authorisation End Point and Token End Point.
-with:
-+ ID Tokens are specified in [section 2](https://openid.net/specs/openid-connect-core-1_0.html#IDToken) of the **[OIDC]** standard.
-```
 
 ID Tokens are specified in [section 2](https://openid.net/specs/openid-connect-core-1_0.html#IDToken) of the **[OIDC]** standard.
 
@@ -34,20 +27,12 @@ In addition to the mandatory claims specified in [section 2](https://openid.net/
 
 ID Tokens **MUST** be signed by Data Holders as specified in [section 8.6](https://openid.net/specs/openid-financial-api-part-2.html#jws-algorithm-considerations) of **[FAPI-RW-Draft]**.
 
-```diff
-Removed the statement:
-- The ID Token returned from the Authorisation End Point MUST NOT contain any Personal Information (PI) claims.
 
-Added the FAPI 1.0 Migration Phase 2 section.
-```
 
 **From September 16th 2022 (FAPI 1.0 Migration Phase 2)**, the following requirements apply:
 
 * ID Tokens **MUST** be signed and **MAY** be encrypted when returned to a Data Recipient Software Product from the Token End Point, if the Data Holder supports the OIDC Authorization Code Flow in accordance with **[FAPI-1.0-Advanced]**.
 
-```diff
-Added the OIDC Hybrid Flow requirements section
-```
 
 #### OIDC Hybrid Flow requirements
 
@@ -55,9 +40,6 @@ In accordance with **[FAPI-RW-Draft]**, ID Tokens **MUST** be signed and encrypt
 
 The ID Token returned from the Authorisation End Point **MUST NOT** contain any Personal Information (PI) claims.
 
-```diff
-Added the OIDC Authorization Code Flow requirements section
-```
 
 ### OIDC Authorization Code Flow requirements
 
@@ -75,9 +57,6 @@ An Access Token **MUST** expire between **2 minutes** to **10 minutes** after th
 
 The process for refreshing an Access Token is described in [section 12.1](https://openid.net/specs/openid-connect-core-1_0.html#RefreshingAccessToken) of **[OIDC]**.
 
-```diff
-Added the FAPI 1.0 Migration Phase 1 section.
-```
 
 **From July 4th 2022 (FAPI 1.0 Migration Phase 1)**, the following requirements apply:
 
@@ -97,9 +76,6 @@ Refresh Token expiration **MAY** be any length of time greater than 28 days but 
 
 * Data Holders **MAY** cycle Refresh Tokens when an Access Token is issued.  If Refresh Token cycling is not performed then the Refresh Token **MUST NOT** expire before the expiration of the sharing consented by the Customer.
 
-```diff
-Added the FAPI 1.0 Migration Phase 2 section.
-```
 
 **From September 16th 2022 (FAPI 1.0 Migration Phase 2)**:
 
@@ -110,13 +86,6 @@ The expiry time for issued access tokens and refresh tokens **MUST** be determin
 
 In order to achieve this:
 
-```diff
-Replaced the statement:
-- - The Data Holder **MUST** indicate the lifetime in seconds of the access token in the `expires_in` field of the JSON object returned by the token end-point (see [section 4.2.2] (https://tools.ietf.org/html/rfc6749#section-4.2.2) of **[OAUTH2]**).
-with:
-+ - **Until September 16th 2022**: The Data Holder **MUST** indicate the expiration time of the refresh token using the `refresh_token_expires_at` claim.
-+ - **From September 16th 2022 (FAPI 1.0 Migration Phase 2)** Data Holders **MAY** retire "sharing_expires_at" and "refresh_token_expires_at" claims.
-```
 
 - The Data Holder **MUST** indicate the lifetime in seconds of the access token in the `expires_in` field of the JSON object returned by the token end-point (see [section 4.2.2] (https://tools.ietf.org/html/rfc6749#section-4.2.2) of **[OAUTH2]**).
 - **Until September 16th 2022**: The Data Holder **MUST** indicate the expiration time of the refresh token using the `refresh_token_expires_at` claim.

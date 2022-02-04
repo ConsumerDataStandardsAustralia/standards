@@ -74,7 +74,7 @@ Endpoint used by participants to discover the CDR Register OpenID configuration 
     "string"
   ],
   "tls_client_certificate_bound_access_tokens": true,
-  "request_object_signing_alg_values_supported": [
+  "token_endpoint_auth_signing_alg_values_supported": [
     "string"
   ]
 }
@@ -932,7 +932,7 @@ This operation does not require authentication
     "string"
   ],
   "tls_client_certificate_bound_access_tokens": true,
-  "request_object_signing_alg_values_supported": [
+  "token_endpoint_auth_signing_alg_values_supported": [
     "string"
   ]
 }
@@ -957,7 +957,7 @@ This operation does not require authentication
 |grant_types_supported|[string]|mandatory|JSON array containing a list of the OAuth 2.0 Grant Type values that the CDR Register supports|
 |token_endpoint_auth_methods_supported|[string]|mandatory|JSON array containing a list of Client Authentication methods supported by this Token Endpoint|
 |tls_client_certificate_bound_access_tokens|boolean|mandatory|Boolean value indicating server support for mutual TLS client certificate bound access tokens|
-|request_object_signing_alg_values_supported|[string]|mandatory|JSON array containing a list of the JWS signing algorithms (alg values) supported by the CDR Register for Request Objects.|
+|token_endpoint_auth_signing_alg_values_supported|[string]|mandatory|JSON array containing a list of the JWS signing algorithms (alg values) supported by the token endpoint for the signature on the JWT [JWT] used to authenticate the client at the token endpoint for the \"private_key_jwt\" authentication method|
 
 <h3 class="schema-toc" id="tocSresponsejwks">ResponseJWKS</h3>
 
@@ -1148,7 +1148,7 @@ This operation does not require authentication
 |legalEntity|[LegalEntityDetail](#schemacdr-participant-discovery-apilegalentitydetail)|mandatory|The data that is common to all organisations, regardless of the type (e.g. company, trust, partnership, government)|
 |status|string|mandatory|none|
 |endpointDetail|[RegisterDataHolderBrandServiceEndpoint](#schemacdr-participant-discovery-apiregisterdataholderbrandserviceendpoint)|mandatory|Endpoints related to Data Holder Brand services|
-|authDetails|[[RegisterDataHolderAuth](#schemacdr-participant-discovery-apiregisterdataholderauth)]|mandatory|[Provides details of authorisation endpoints for Data Holders]|
+|authDetails|[[RegisterDataHolderAuth](#schemacdr-participant-discovery-apiregisterdataholderauth)]|mandatory|[Defines the mechanism used and associated endpoints for Data Holder to Data Recipient authentication]|
 |lastUpdated|[DateTimeString](#common-field-types)|mandatory|The date/time that the Data Holder Brand data was last updated in the Register|
 
 #### Enumerated Values
@@ -1607,14 +1607,14 @@ This operation does not require authentication
 
 ```
 
-*Provides details of authorisation endpoints for Data Holders*
+*Defines the mechanism used and associated endpoints for Data Holder to Data Recipient authentication*
 
 ### Properties
 
 |Name|Type|Required|Description|
 |---|---|---|---|
 |registerUType|string|mandatory|The type of authentication and authorisation mechanism in use|
-|jwksEndpoint|[URIString](#common-field-types)|mandatory|JWKS endpoint for private_key_jwt client authentication with Data Recipient|
+|jwksEndpoint|[URIString](#common-field-types)|mandatory|JWKS endpoint used for authentication by the Data Holder with the Data Recipient|
 
 #### Enumerated Values
 

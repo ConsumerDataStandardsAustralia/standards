@@ -12,9 +12,6 @@ This end point is used by the Data Holder to provide the public keys they will u
 
 Data Holders MUST support a JWKS End Point.
 
-```diff
-Added the JWKS URIs section.
-```
 
 #### JWKS URIs
 

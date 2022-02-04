@@ -1,19 +1,9 @@
 ## Normative References
 
 ```diff
-Ordered the normative references table alphabetically.
-
-Modified [FAPI-R] to [FAPI-R-Draft].
-Modified [FAPI-RW] to [FAPI-RW-Draft].
-
-Added [FAPI-1.0-Baseline].
-Added [FAPI-1.0-Advanced].
-Added [JARM].
-Added [RFC4627].
-Added [RFC5322].
-Added [PKCE].
-Added [RFC9126].
++ Added normative reference link to RFC9126
 ```
+
 
 | **Reference**  | **Description**  | **Version** |
 | --- | --- | --- |
@@ -43,16 +33,10 @@ Added [RFC9126].
 | <a id="RFC7009"></a>**[RFC7009]**  | OAuth 2.0 Token Revocation: <https://tools.ietf.org/html/rfc7009>                                                                                                             |Aug 2013
 | <a id="RFC7523"></a>**[RFC7523]**  | JSON Web Token (JWT) Profile for OAuth 2.0 Client Authentication and Authorization Grants: <https://tools.ietf.org/html/rfc7523>                                              |May 2015
 | <a id="RFC7662"></a>**[RFC7662]**  | OAuth 2.0 Token Introspection: <https://tools.ietf.org/html/rfc7662>                                                                                                          |Oct 2015
-| <a id="RFC9126"></a>**[RFC9126]**          | OAuth 2.0 Pushed Authorization Requests: <OAuth 2.0 Pushed Authorization Requests>                                                                                |Sep 2021
+| <a id="RFC9126"></a>**[RFC9126]**  | OAuth 2.0 Pushed Authorization Requests: <https://tools.ietf.org/html/rfc9126>                                                                                                |Sep 2021
 
 ## Informative References
 
-```diff
-Ordered the informative references table alphabetically.
-
-Added [E.164].
-Added [RFC3966].
-```
 
 | **Reference**  | **Description**                                                                                                                                                                   |
 |----------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|

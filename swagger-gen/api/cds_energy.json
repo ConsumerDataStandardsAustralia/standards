@@ -3,7 +3,7 @@
 	"info": {
 		"title": "CDR Energy API",
 		"description": "Consumer Data Right end points and payloads for the Energy sector",
-		"version": "1.15.0"
+		"version": "1.16.0"
 	},
 	"components": {
 		"schemas": {
@@ -1360,7 +1360,7 @@
                                                     "DAYS",
                                                     "METER",
                                                     "MONTH"]
-                                            },                                                
+                                            },
                                             "volume": {
                                                 "type": "number",
                                                 "description": "Volume in kWh that this rate applies to.  Only applicable for ‘stepped’ rates where different rates apply for different volumes of usage in a period"
@@ -1413,7 +1413,7 @@
                                                         "DAYS",
                                                         "METER",
                                                         "MONTH"]
-                                                },  
+                                                },
                                                 "volume": {
                                                     "type": "number",
                                                     "description": "Volume in kWh that this rate applies to.  Only applicable for ‘stepped’ rates where different rates apply for different volumes of usage in a period"
@@ -1506,7 +1506,7 @@
                                             "DAYS",
                                             "METER",
                                             "MONTH"]
-                                    },  
+                                    },
                                     "startTime": {
                                         "type": "string",
                                         "description": "Start of the period in HHMM format using 24 hour clock format"
@@ -3297,7 +3297,7 @@
                             "DAYS",
                             "METER",
                             "MONTH"]
-                    },    
+                    },
                     "usage": {
                         "description": "The usage for the period in measure unit.  A negative value indicates power generated",
                         "type": "number"
@@ -3700,9 +3700,10 @@
 				"in": "query",
 				"required": false,
 				"schema": {
-					"type": "number",
+                    "type": "integer",
 					"default": "1"
-				}
+				},
+                "x-cds-type": "PositiveInteger"
 			},
 			"page-size": {
 				"name": "page-size",
@@ -3710,9 +3711,10 @@
 				"in": "query",
 				"required": false,
 				"schema": {
-					"type": "number",
+                    "type": "integer",
 					"default": "25"
-				}
+				},
+                "x-cds-type": "PositiveInteger"
 			},
 			"x-v": {
 				"name": "x-v",
