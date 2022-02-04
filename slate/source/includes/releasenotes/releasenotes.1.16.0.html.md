@@ -31,8 +31,8 @@ This release minor errata and documentation fixes.
 
 |Change|Description|Link|
 |------|-----------|----|
+| Authentication Flows | Clarified requirements for Data Recipient Software Products S256 code challenge method | [Authentication Flows](../../#authentication-flows) |
 | Normative References | Updated the normative reference for RFC9126 to add the link to the associated standard |  [Normative References](../../#normative-references) |
-
 
 ## Consumer Experience
 
