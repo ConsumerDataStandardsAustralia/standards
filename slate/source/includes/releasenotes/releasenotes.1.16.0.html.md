@@ -26,6 +26,7 @@ This release minor errata and documentation fixes.
 
 |Change|Description|Link|
 |------|-----------|----|
+| Register APIs | Corrected GetDataHolderBrands `RegisterDataHolderAuth` and `jwksEndpoint` schema definitions to clarify their usage in DH to ADR client authentication | [Register APIs](../../#register-apis)|
 | Register APIs | Corrected Register OpenId Provider Config Document definition defect renaming `request_object_signing_alg_values_supported` to `token_endpoint_auth_signing_alg_values_supported` | [Register APIs](../../#register-apis)|
 | Banking APIs | Corrected GetProducts response reference from `ResponseBankingProductList` to `ResponseBankingProductListV2` | [Banking APIs](../../#banking-apis)|
 | Energy schema | Change type of page and page-size in Energy APIs to PositiveInteger | [Energy Schema](../../#energy-apis) |
