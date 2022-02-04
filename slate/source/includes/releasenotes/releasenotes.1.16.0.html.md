@@ -30,6 +30,8 @@ This release minor errata and documentation fixes.
 
 |Change|Description|Link|
 |------|-----------|----|
+| Normative References | Updated the normative reference for RFC9126 to add the link to the associated standard |  [Normative References](../../#normative-references) |
+
 
 ## Consumer Experience
 
