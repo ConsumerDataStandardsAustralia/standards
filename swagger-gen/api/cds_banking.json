@@ -1282,7 +1282,7 @@
               }
             },
             "schema": {
-              "$ref": "#/definitions/ResponseBankingProductList"
+              "$ref": "#/definitions/ResponseBankingProductListV2"
             }
           },
           "4xx": {
