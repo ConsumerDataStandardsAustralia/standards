@@ -132,6 +132,14 @@ If the Data Holder supports the [Private Key JWT Client Authentication](#private
 
 If the Data Holder supports the [Self-signed JWT Client Authentication](#self-signed-jwt-client-authentication) method for authenticating the CDR Register, the client ID **MUST** be set to a value of `cdr-register`.
 
+
+```diff
+- Removed the following duplicate section
+Data Holders calling Data Recipients
+If the Data Holder supports the Self-signed JWT Client Authentication method for authenticating the CDR Register, the client ID MUST be set to a value of cdr-register.
+```
+
+
 ### Data Holders calling Data Recipients
 
 > Non-Normative Example - Data Holder calls the Data Recipient Software Product's CDR Arrangement Revocation end point (note that the "aud" claim is "resource path" to the revocation end point).
@@ -159,12 +167,6 @@ cdr_arrangement_jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsImtpZCI6IjEyNDU2In0.ey .
    "jti":"dba86502-7cf5-4719-9638-c5339a0ddb06"
 }
 ```
-
-If the Data Holder supports the [Self-signed JWT Client Authentication](#self-signed-jwt-client-authentication) method for authenticating the CDR Register, the client ID **MUST** be set to a value of ‘cdr-register’.
-
-
-
-### Data Holders calling Data Recipients
 
 
 > Non-Normative Example - Data Recipient Software Product calls Data Holder's token end point.
