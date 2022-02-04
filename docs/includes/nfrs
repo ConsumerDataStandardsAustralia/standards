@@ -13,10 +13,6 @@
 
 <p>In the following definition of NFRs specific terms have the following meanings:</p>
 
-<pre class="highlight diff tab-diff"><code>Replaced the definition `secondary responsibility requests` with
-`Shared Responsibility Data Requests`.
-</code></pre>
-
 <ul>
 <li><strong>Data Recipient Software Product</strong>: For the purposes of these NFRs a Data Recipient Software Product is defined, inline with the definition given in the <a href="#cdr-federation">CDR Federation</a>, as a configured application presented in the register meta data.  This acknowledges that a single accredited entity may be able to register multiple independent services (or apps) that can obtain authorisations from consumers independently of each other.</li>
 <li><strong>Shared Responsibility Data Request</strong>: A request made to a secondary data holder by a Data Holder for designated data to fulfil a Consumer Data Request made by a Data Recipient Software Product.</li>
@@ -53,10 +49,6 @@
 <li>Published to Data Recipient Software Products with at least one week lead time for normal outages,</li>
 <li>May occur without notification if the change is to resolve a critical service or security issue.</li>
 </ul>
-
-<pre class="highlight diff tab-diff"><code>Replaced the phrase `secondary responsibility requests` with
-`Shared Responsibility Data Requests`.
-</code></pre>
 
 <p>The unavailability of a secondary data holder will mean that some requests cannot be fulfilled by a data holder making a Shared Responsibility Data Request.  This will not be taken to mean that the data holder is unavailable.</p>
 
@@ -209,23 +201,10 @@
 
 <p>For example, for a Bank that provides a mobile application as their primary digital experience, a balance presented via one of the balance end points should be the same as the balance presented through the mobile application.</p>
 
-<pre class="highlight diff tab-diff"><code>Replaced the phrase `secondary responsibility requests` with
-`Shared Responsibility Data Requests`.
-</code></pre>
-
 <p>To be able to manage network efficiency using normal mechanisms, a data holder making Shared Responsibility Data Requests may cache the results from the secondary data holder for a short period of time to accommodate repeated, duplicate, calls from the Data Recipient Software Product.  Any such cache should be short lived.</p>
 
-<h2 id='data-quality'>Data Quality</h2><pre class="highlight diff tab-diff"><code>Modified the following statements:
-<span class="gd">- Data holders are required to take reasonable steps to ensure that CDR data, having regard to the purpose for which it is held, is accurate and up to date.
--
-- A data holder is required to be able to demonstrate that reasonable steps to maintain data quality are being undertaken.
-</span>to:
-<span class="gi">+ If a Data Holder of CDR data is required or authorised under the Consumer Data Rules to disclose product data, the Data Holder must take reasonable steps to ensure that the product data is, having regard to the purpose for which it is held, accurate, up to date and complete.
-+
-+ Data Holders are required to be able to demonstrate that reasonable steps to maintain data quality of product data are being undertaken.
-+
-+ Note: For the data quality requirements that apply to CDR data for which there are one or more CDR consumers, see Privacy Safeguard 11 (section 56EN of the Competition and Consumer Act 2010). There are requirements in Privacy Safeguard 11 for both Data Holders and Data Recipients. See [Chapter 11 (Privacy Safeguard 11)](https://www.oaic.gov.au/consumer-data-right/cdr-privacy-safeguard-guidelines/chapter-11-privacy-safeguard-11-quality-of-cdr-data/) of the OAIC’s CDR Privacy Safeguard Guidelines for further information.
-</span></code></pre>
+<h2 id='data-quality'>Data Quality</h2>
+
 <p>If a Data Holder of CDR data is required or authorised under the Consumer Data Rules to disclose product data, the Data Holder must take reasonable steps to ensure that the product data is, having regard to the purpose for which it is held, accurate, up to date and complete.</p>
 
 <p>Data Holders are required to be able to demonstrate that reasonable steps to maintain data quality of product data are being undertaken.</p>

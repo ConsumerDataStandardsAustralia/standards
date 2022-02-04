@@ -74,7 +74,7 @@ Accept: application/json
     </span><span class="s2">"string"</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="s2">"tls_client_certificate_bound_access_tokens"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"request_object_signing_alg_values_supported"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+  </span><span class="s2">"token_endpoint_auth_signing_alg_values_supported"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="s2">"string"</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -1547,7 +1547,7 @@ This operation does not require authentication
     </span><span class="s2">"string"</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="s2">"tls_client_certificate_bound_access_tokens"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"request_object_signing_alg_values_supported"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+  </span><span class="s2">"token_endpoint_auth_signing_alg_values_supported"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="s2">"string"</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -1636,10 +1636,10 @@ This operation does not require authentication
 <td>Boolean value indicating server support for mutual TLS client certificate bound access tokens</td>
 </tr>
 <tr>
-<td>request_object_signing_alg_values_supported</td>
+<td>token_endpoint_auth_signing_alg_values_supported</td>
 <td>[string]</td>
 <td>mandatory</td>
-<td>JSON array containing a list of the JWS signing algorithms (alg values) supported by the CDR Register for Request Objects.</td>
+<td>JSON array containing a list of the JWS signing algorithms (alg values) supported by the token endpoint for the signature on the JWT [JWT] used to authenticate the client at the token endpoint for the \&quot;private_key_jwt\&quot; authentication method</td>
 </tr>
 </tbody></table>
 
@@ -1928,7 +1928,7 @@ This operation does not require authentication
 <td>authDetails</td>
 <td>[<a href="#schemacdr-participant-discovery-apiregisterdataholderauth">RegisterDataHolderAuth</a>]</td>
 <td>mandatory</td>
-<td>[Provides details of authorisation endpoints for Data Holders]</td>
+<td>[Defines the mechanism used and associated endpoints for Data Holder to Data Recipient authentication]</td>
 </tr>
 <tr>
 <td>lastUpdated</td>
@@ -2805,7 +2805,7 @@ This operation does not require authentication
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
-<p><em>Provides details of authorisation endpoints for Data Holders</em></p>
+<p><em>Defines the mechanism used and associated endpoints for Data Holder to Data Recipient authentication</em></p>
 <h3 id='properties-18'>Properties</h3>
 <table><thead>
 <tr>
@@ -2825,7 +2825,7 @@ This operation does not require authentication
 <td>jwksEndpoint</td>
 <td><a href="#common-field-types">URIString</a></td>
 <td>mandatory</td>
-<td>JWKS endpoint for private_key_jwt client authentication with Data Recipient</td>
+<td>JWKS endpoint used for authentication by the Data Holder with the Data Recipient</td>
 </tr>
 </tbody></table>
 <h4 id='enumerated-values-15'>Enumerated Values</h4>

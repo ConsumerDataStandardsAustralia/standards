@@ -3,7 +3,7 @@
   "info" : {
     "description" : "Consumer Data Right end points and payloads for the Energy sector",
     "title" : "CDR Energy API",
-    "version" : "1.15.0"
+    "version" : "1.16.0"
   },
   "servers" : [ {
     "url" : "/"
@@ -77,9 +77,10 @@
           "name" : "page",
           "required" : false,
           "schema" : {
-            "type" : "number"
+            "type" : "integer"
           },
-          "style" : "form"
+          "style" : "form",
+          "x-cds-type" : "PositiveInteger"
         }, {
           "description" : "Page size to request.  Default is 25 (standard pagination)",
           "explode" : true,
@@ -87,9 +88,10 @@
           "name" : "page-size",
           "required" : false,
           "schema" : {
-            "type" : "number"
+            "type" : "integer"
           },
-          "style" : "form"
+          "style" : "form",
+          "x-cds-type" : "PositiveInteger"
         }, {
           "description" : "Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
           "explode" : false,
@@ -287,9 +289,10 @@
           "name" : "page",
           "required" : false,
           "schema" : {
-            "type" : "number"
+            "type" : "integer"
           },
-          "style" : "form"
+          "style" : "form",
+          "x-cds-type" : "PositiveInteger"
         }, {
           "description" : "Page size to request.  Default is 25 (standard pagination)",
           "explode" : true,
@@ -297,9 +300,10 @@
           "name" : "page-size",
           "required" : false,
           "schema" : {
-            "type" : "number"
+            "type" : "integer"
           },
-          "style" : "form"
+          "style" : "form",
+          "x-cds-type" : "PositiveInteger"
         }, {
           "description" : "Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
           "explode" : false,
@@ -597,9 +601,10 @@
           "name" : "page",
           "required" : false,
           "schema" : {
-            "type" : "number"
+            "type" : "integer"
           },
-          "style" : "form"
+          "style" : "form",
+          "x-cds-type" : "PositiveInteger"
         }, {
           "description" : "Page size to request.  Default is 25 (standard pagination)",
           "explode" : true,
@@ -607,9 +612,10 @@
           "name" : "page-size",
           "required" : false,
           "schema" : {
-            "type" : "number"
+            "type" : "integer"
           },
-          "style" : "form"
+          "style" : "form",
+          "x-cds-type" : "PositiveInteger"
         }, {
           "description" : "Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
           "explode" : false,
@@ -763,9 +769,10 @@
           "name" : "page",
           "required" : false,
           "schema" : {
-            "type" : "number"
+            "type" : "integer"
           },
-          "style" : "form"
+          "style" : "form",
+          "x-cds-type" : "PositiveInteger"
         }, {
           "description" : "Page size to request.  Default is 25 (standard pagination)",
           "explode" : true,
@@ -773,9 +780,10 @@
           "name" : "page-size",
           "required" : false,
           "schema" : {
-            "type" : "number"
+            "type" : "integer"
           },
-          "style" : "form"
+          "style" : "form",
+          "x-cds-type" : "PositiveInteger"
         }, {
           "description" : "Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
           "explode" : false,
@@ -927,9 +935,10 @@
           "name" : "page",
           "required" : false,
           "schema" : {
-            "type" : "number"
+            "type" : "integer"
           },
-          "style" : "form"
+          "style" : "form",
+          "x-cds-type" : "PositiveInteger"
         }, {
           "description" : "Page size to request.  Default is 25 (standard pagination)",
           "explode" : true,
@@ -937,9 +946,10 @@
           "name" : "page-size",
           "required" : false,
           "schema" : {
-            "type" : "number"
+            "type" : "integer"
           },
-          "style" : "form"
+          "style" : "form",
+          "x-cds-type" : "PositiveInteger"
         }, {
           "description" : "Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
           "explode" : false,
@@ -1208,9 +1218,10 @@
           "name" : "page",
           "required" : false,
           "schema" : {
-            "type" : "number"
+            "type" : "integer"
           },
-          "style" : "form"
+          "style" : "form",
+          "x-cds-type" : "PositiveInteger"
         }, {
           "description" : "Page size to request.  Default is 25 (standard pagination)",
           "explode" : true,
@@ -1218,9 +1229,10 @@
           "name" : "page-size",
           "required" : false,
           "schema" : {
-            "type" : "number"
+            "type" : "integer"
           },
-          "style" : "form"
+          "style" : "form",
+          "x-cds-type" : "PositiveInteger"
         }, {
           "description" : "Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
           "explode" : false,
@@ -1350,9 +1362,10 @@
           "name" : "page",
           "required" : false,
           "schema" : {
-            "type" : "number"
+            "type" : "integer"
           },
-          "style" : "form"
+          "style" : "form",
+          "x-cds-type" : "PositiveInteger"
         }, {
           "description" : "Page size to request.  Default is 25 (standard pagination)",
           "explode" : true,
@@ -1360,9 +1373,10 @@
           "name" : "page-size",
           "required" : false,
           "schema" : {
-            "type" : "number"
+            "type" : "integer"
           },
-          "style" : "form"
+          "style" : "form",
+          "x-cds-type" : "PositiveInteger"
         }, {
           "description" : "Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
           "explode" : false,
@@ -1497,9 +1511,10 @@
           "name" : "page",
           "required" : false,
           "schema" : {
-            "type" : "number"
+            "type" : "integer"
           },
-          "style" : "form"
+          "style" : "form",
+          "x-cds-type" : "PositiveInteger"
         }, {
           "description" : "Page size to request.  Default is 25 (standard pagination)",
           "explode" : true,
@@ -1507,9 +1522,10 @@
           "name" : "page-size",
           "required" : false,
           "schema" : {
-            "type" : "number"
+            "type" : "integer"
           },
-          "style" : "form"
+          "style" : "form",
+          "x-cds-type" : "PositiveInteger"
         }, {
           "description" : "Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
           "explode" : false,
@@ -2177,9 +2193,10 @@
           "name" : "page",
           "required" : false,
           "schema" : {
-            "type" : "number"
+            "type" : "integer"
           },
-          "style" : "form"
+          "style" : "form",
+          "x-cds-type" : "PositiveInteger"
         }, {
           "description" : "Page size to request.  Default is 25 (standard pagination)",
           "explode" : true,
@@ -2187,9 +2204,10 @@
           "name" : "page-size",
           "required" : false,
           "schema" : {
-            "type" : "number"
+            "type" : "integer"
           },
-          "style" : "form"
+          "style" : "form",
+          "x-cds-type" : "PositiveInteger"
         }, {
           "description" : "Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
           "explode" : false,
@@ -2319,9 +2337,10 @@
           "name" : "page",
           "required" : false,
           "schema" : {
-            "type" : "number"
+            "type" : "integer"
           },
-          "style" : "form"
+          "style" : "form",
+          "x-cds-type" : "PositiveInteger"
         }, {
           "description" : "Page size to request.  Default is 25 (standard pagination)",
           "explode" : true,
@@ -2329,9 +2348,10 @@
           "name" : "page-size",
           "required" : false,
           "schema" : {
-            "type" : "number"
+            "type" : "integer"
           },
-          "style" : "form"
+          "style" : "form",
+          "x-cds-type" : "PositiveInteger"
         }, {
           "description" : "Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
           "explode" : false,
@@ -2498,9 +2518,10 @@
           "name" : "page",
           "required" : false,
           "schema" : {
-            "type" : "number"
+            "type" : "integer"
           },
-          "style" : "form"
+          "style" : "form",
+          "x-cds-type" : "PositiveInteger"
         }, {
           "description" : "Page size to request.  Default is 25 (standard pagination)",
           "explode" : true,
@@ -2508,9 +2529,10 @@
           "name" : "page-size",
           "required" : false,
           "schema" : {
-            "type" : "number"
+            "type" : "integer"
           },
-          "style" : "form"
+          "style" : "form",
+          "x-cds-type" : "PositiveInteger"
         }, {
           "description" : "Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
           "explode" : false,
@@ -2664,9 +2686,10 @@
           "name" : "page",
           "required" : false,
           "schema" : {
-            "type" : "number"
+            "type" : "integer"
           },
-          "style" : "form"
+          "style" : "form",
+          "x-cds-type" : "PositiveInteger"
         }, {
           "description" : "Page size to request.  Default is 25 (standard pagination)",
           "explode" : true,
@@ -2674,9 +2697,10 @@
           "name" : "page-size",
           "required" : false,
           "schema" : {
-            "type" : "number"
+            "type" : "integer"
           },
-          "style" : "form"
+          "style" : "form",
+          "x-cds-type" : "PositiveInteger"
         }, {
           "description" : "Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
           "explode" : false,
@@ -2828,9 +2852,10 @@
           "name" : "page",
           "required" : false,
           "schema" : {
-            "type" : "number"
+            "type" : "integer"
           },
-          "style" : "form"
+          "style" : "form",
+          "x-cds-type" : "PositiveInteger"
         }, {
           "description" : "Page size to request.  Default is 25 (standard pagination)",
           "explode" : true,
@@ -2838,9 +2863,10 @@
           "name" : "page-size",
           "required" : false,
           "schema" : {
-            "type" : "number"
+            "type" : "integer"
           },
-          "style" : "form"
+          "style" : "form",
+          "x-cds-type" : "PositiveInteger"
         }, {
           "description" : "Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
           "explode" : false,
@@ -3007,9 +3033,10 @@
           "name" : "page",
           "required" : false,
           "schema" : {
-            "type" : "number"
+            "type" : "integer"
           },
-          "style" : "form"
+          "style" : "form",
+          "x-cds-type" : "PositiveInteger"
         }, {
           "description" : "Page size to request.  Default is 25 (standard pagination)",
           "explode" : true,
@@ -3017,9 +3044,10 @@
           "name" : "page-size",
           "required" : false,
           "schema" : {
-            "type" : "number"
+            "type" : "integer"
           },
-          "style" : "form"
+          "style" : "form",
+          "x-cds-type" : "PositiveInteger"
         }, {
           "description" : "Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
           "explode" : false,
@@ -3173,9 +3201,10 @@
           "name" : "page",
           "required" : false,
           "schema" : {
-            "type" : "number"
+            "type" : "integer"
           },
-          "style" : "form"
+          "style" : "form",
+          "x-cds-type" : "PositiveInteger"
         }, {
           "description" : "Page size to request.  Default is 25 (standard pagination)",
           "explode" : true,
@@ -3183,9 +3212,10 @@
           "name" : "page-size",
           "required" : false,
           "schema" : {
-            "type" : "number"
+            "type" : "integer"
           },
-          "style" : "form"
+          "style" : "form",
+          "x-cds-type" : "PositiveInteger"
         }, {
           "description" : "Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
           "explode" : false,
@@ -3337,9 +3367,10 @@
           "name" : "page",
           "required" : false,
           "schema" : {
-            "type" : "number"
+            "type" : "integer"
           },
-          "style" : "form"
+          "style" : "form",
+          "x-cds-type" : "PositiveInteger"
         }, {
           "description" : "Page size to request.  Default is 25 (standard pagination)",
           "explode" : true,
@@ -3347,9 +3378,10 @@
           "name" : "page-size",
           "required" : false,
           "schema" : {
-            "type" : "number"
+            "type" : "integer"
           },
-          "style" : "form"
+          "style" : "form",
+          "x-cds-type" : "PositiveInteger"
         }, {
           "description" : "Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
           "explode" : false,
@@ -3553,9 +3585,10 @@
         "name" : "page",
         "required" : false,
         "schema" : {
-          "type" : "number"
+          "type" : "integer"
         },
-        "style" : "form"
+        "style" : "form",
+        "x-cds-type" : "PositiveInteger"
       },
       "page-size" : {
         "description" : "Page size to request.  Default is 25 (standard pagination)",
@@ -3564,9 +3597,10 @@
         "name" : "page-size",
         "required" : false,
         "schema" : {
-          "type" : "number"
+          "type" : "integer"
         },
-        "style" : "form"
+        "style" : "form",
+        "x-cds-type" : "PositiveInteger"
       },
       "x-v" : {
         "description" : "Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",

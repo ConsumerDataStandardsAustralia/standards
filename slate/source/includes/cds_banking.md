@@ -2632,20 +2632,81 @@ Obsolete versions: [v1](includes/obsolete/get-products-v1.html) [v2](includes/ob
 
 > Example responses
 
-> 4xx Response
+> 200 Response
 
 ```json
 {
-  "errors": [
-    {
-      "code": "string",
-      "title": "string",
-      "detail": "string",
-      "meta": {
-        "urn": "string"
+  "data": {
+    "products": [
+      {
+        "productId": "string",
+        "effectiveFrom": "string",
+        "effectiveTo": "string",
+        "lastUpdated": "string",
+        "productCategory": "BUSINESS_LOANS",
+        "name": "string",
+        "description": "string",
+        "brand": "string",
+        "brandName": "string",
+        "applicationUri": "string",
+        "isTailored": true,
+        "additionalInformation": {
+          "overviewUri": "string",
+          "termsUri": "string",
+          "eligibilityUri": "string",
+          "feesAndPricingUri": "string",
+          "bundleUri": "string",
+          "additionalOverviewUris": [
+            {
+              "description": "string",
+              "additionalInfoUri": "string"
+            }
+          ],
+          "additionalTermsUris": [
+            {
+              "description": "string",
+              "additionalInfoUri": "string"
+            }
+          ],
+          "additionalEligibilityUris": [
+            {
+              "description": "string",
+              "additionalInfoUri": "string"
+            }
+          ],
+          "additionalFeesAndPricingUris": [
+            {
+              "description": "string",
+              "additionalInfoUri": "string"
+            }
+          ],
+          "additionalBundleUris": [
+            {
+              "description": "string",
+              "additionalInfoUri": "string"
+            }
+          ]
+        },
+        "cardArt": [
+          {
+            "title": "string",
+            "imageUri": "string"
+          }
+        ]
       }
-    }
-  ]
+    ]
+  },
+  "links": {
+    "self": "string",
+    "first": "string",
+    "prev": "string",
+    "next": "string",
+    "last": "string"
+  },
+  "meta": {
+    "totalRecords": 0,
+    "totalPages": 0
+  }
 }
 ```
 
@@ -2653,10 +2714,8 @@ Obsolete versions: [v1](includes/obsolete/get-products-v1.html) [v2](includes/ob
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|None|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingProductListV2](#schemacdr-banking-apiresponsebankingproductlistv2)|
 |4xx|[**Client Error**](https://tools.ietf.org/html/rfc7231#section-6.5)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
-
-<h3 id="get-products-responseschema">Response Schema</h3>
 
 ### Response Headers
 

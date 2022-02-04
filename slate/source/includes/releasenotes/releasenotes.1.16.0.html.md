@@ -45,3 +45,4 @@ This release minor errata and documentation fixes.
 
 |Change|Description|Link|
 |------|-----------|----|
+| Insights and Trusted Adviser | Added the CX standards arising from Decision 222 to support Insights and Trusted Adviser Disclosure Consents | [Consent Standards](../../#consent-standards)|
