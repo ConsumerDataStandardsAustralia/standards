@@ -35,8 +35,11 @@ These standards represent version 1.16.0 of the high level standards.  See the [
 
 ## Interpretation
 
-Note that, in these standards, the key words **MUST**, **MUST NOT**, **REQUIRED**, **SHALL**, **SHALL NOT**, **SHOULD**, **SHOULD NOT**, **RECOMMENDED**, **MAY**, and **OPTIONAL** are to be interpreted as described in [RFC2119](http://tools.ietf.org/html/rfc2119).
+Note that, in these standards, the key words **MUST**, **MUST NOT**, **REQUIRED**, **SHALL**, **SHALL NOT**, **SHOULD**, **SHOULD NOT**, **RECOMMENDED**, **MAY**, and **OPTIONAL** are to be interpreted as described in [RFC2119](https://datatracker.ietf.org/doc/html/rfc2119).
 
+```diff
+Corrected link for RFC2119
+```
 
 ## Future Dated Obligations
 

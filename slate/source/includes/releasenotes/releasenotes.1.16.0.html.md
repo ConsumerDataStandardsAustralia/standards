@@ -18,6 +18,8 @@ This release minor errata and documentation fixes.
 
 |Change|Description|Link|
 |------|-----------|----|
+| Introduction | Corrected link for RFC2119 | [Introduction](../../#introduction) |
+| Energy endpoint versioning | Updated description of energy bulk balance API in endpoint version schedule from "Get Bulk Balances (Energy)" to "Get Bulk Balances for Energy" to align with standards | [Endpoint Versioning Schedule](../endpoint-version-schedule/)
 
 ## API End Points
 
@@ -30,6 +32,7 @@ This release minor errata and documentation fixes.
 |Change|Description|Link|
 |------|-----------|----|
 | Authentication Flows | Clarified requirements for Data Recipient Software Products S256 code challenge method | [Authentication Flows](../../#authentication-flows) |
+| Normative References | Updated the normative reference for RFC9126 to add the link to the associated standard |  [Normative References](../../#normative-references) |
 
 ## Consumer Experience
 
