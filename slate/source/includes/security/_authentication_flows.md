@@ -39,11 +39,17 @@ No other flows are currently supported.
 *	Data Recipient Software Products **SHOULD NOT** reuse "authorization_code" values, and if reused, it will be rejected.
 * Data Recipient Software Products **MAY** send requests with a "x-fapi-customer-ip-address" header containing a valid IPv4 or IPv6 address.
 
+```diff
+Replaced the statement:
+- Data Recipient Software Products MUST use [RFC9126] (PAR) with [PKCE] (RFC7636) and, if supported, MUST use S256 as the code challenge method.
+with:
++ Data Recipient Software Products MUST use [RFC9126] (PAR) with [PKCE] (RFC7636) and MUST use S256 as the code challenge method.
+```
 
 **From September 16th 2022**, the following requirements apply in addition to the FAPI 1.0 Migration Phase 1 requirements:
 
 *	Data Recipient Software Products **MUST** support FAPI 1.0 Advanced Profile (**[FAPI-1.0-Advanced]**).
-* Data Recipient Software Products **MUST** use **[RFC9126]** (PAR) with **[PKCE]** (RFC7636) and, if supported, **MUST** use S256 as the code challenge method.
+*   Data Recipient Software Products **MUST** use **[RFC9126]** (PAR) with **[PKCE]** (RFC7636) and **MUST** use S256 as the code challenge method.
 *	Data Recipient Software Products **SHOULD** use OIDC Authorization Code Flow.
 
 <a id="hybrid-flow"></a>

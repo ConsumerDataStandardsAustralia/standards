@@ -550,7 +550,7 @@
         "grant_types_supported",
         "token_endpoint_auth_methods_supported",
         "tls_client_certificate_bound_access_tokens",
-        "request_object_signing_alg_values_supported"
+        "token_endpoint_auth_signing_alg_values_supported"
       ],
       "type": "object",
       "properties": {
@@ -626,12 +626,12 @@
           "type": "boolean",
           "description": "Boolean value indicating server support for mutual TLS client certificate bound access tokens"
         },
-        "request_object_signing_alg_values_supported": {
+        "token_endpoint_auth_signing_alg_values_supported": {
           "type": "array",
           "items": {
             "type": "string"
           },
-          "description": "JSON array containing a list of the JWS signing algorithms (alg values) supported by the CDR Register for Request Objects."
+          "description": "JSON array containing a list of the JWS signing algorithms (alg values) supported by the token endpoint for the signature on the JWT [JWT] used to authenticate the client at the token endpoint for the \\\"private_key_jwt\\\" authentication method"
         }
       }
     },

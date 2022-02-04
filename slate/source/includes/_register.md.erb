@@ -38,7 +38,6 @@ These endpoints are exposed by the Register and consumed by Data Holders and Dat
 
 
 ```diff
-
 Below are the changes to the Register APIs section of the
 standards.
 
@@ -53,7 +52,16 @@ Modified the description of the `jwksEndpoint` field from:
 to:
 + JWKS endpoint used for authentication by the Data Holder with the Data Recipient
 
-```
 
+In the `ResponseOpenIDProviderConfigMetadata` schema changed
+field name from:
+- request_object_signing_alg_values_supported
+to:
++ token_endpoint_auth_signing_alg_values_supported
+The description of this field changed from:
+- JSON array containing a list of the JWS signing algorithms (alg values) supported by the CDR Register for Request Objects.
+to:
++ JSON array containing a list of the JWS signing algorithms (alg values) supported by the token endpoint for the signature on the JWT [JWT] used to authenticate the client at the token endpoint for the \"private_key_jwt\" authentication method
+```
 
 <%= partial "includes/cds_register.md" %>
