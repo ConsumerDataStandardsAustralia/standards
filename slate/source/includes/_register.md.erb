@@ -37,5 +37,21 @@ These endpoints are exposed by the Register and consumed by Data Holders and Dat
 |**Production mTLS**|https://secure.api.cdr.gov.au|
 
 
+```diff
+
+Below are the changes to the Register APIs section of the
+standards.
+
+In the `ResponseOpenIDProviderConfigMetadata` schema changed
+field name from:
+- request_object_signing_alg_values_supported
+to:
++ token_endpoint_auth_signing_alg_values_supported
+The description of this field changed from:
+- JSON array containing a list of the JWS signing algorithms (alg values) supported by the CDR Register for Request Objects.
+to:
++ JSON array containing a list of the JWS signing algorithms (alg values) supported by the token endpoint for the signature on the JWT [JWT] used to authenticate the client at the token endpoint for the \"private_key_jwt\" authentication method
+
+```
 
 <%= partial "includes/cds_register.md" %>
