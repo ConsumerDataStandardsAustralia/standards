@@ -1,452 +1,545 @@
 {
-  "swagger" : "2.0",
+  "openapi" : "3.0.3",
   "info" : {
     "description" : "This specification defines the APIs for Data Holders exposing Dynamic Client Registration endpoints.",
-    "version" : "1.16.0",
-    "title" : "CDR Dynamic Client Registration API"
+    "title" : "CDR Dynamic Client Registration API",
+    "version" : "1.16.0"
   },
-  "host" : "data.holder.com.au",
-  "basePath" : "/register",
-  "schemes" : [ "https" ],
-  "consumes" : [ "application/jwt" ],
-  "produces" : [ "application/json" ],
+  "servers" : [ {
+    "url" : "https://data.holder.com.au/register"
+  } ],
   "paths" : {
     "/register" : {
       "post" : {
-        "tags" : [ "Client Registration" ],
-        "summary" : "Register Data Recipient oAuth Client",
         "description" : "Register a client using a CDR Register issued Software Statement Assertion.",
         "operationId" : "PostDataRecipientRegistration",
-        "parameters" : [ {
-          "in" : "body",
-          "name" : "ClientRegistrationRequest",
-          "description" : "The registration request JWT to be used to register with a Data Holder.",
-          "required" : true,
-          "schema" : {
-            "$ref" : "#/definitions/ClientRegistrationRequest"
-          }
-        } ],
-        "responses" : {
-          "201" : {
-            "description" : "Client registration success",
-            "schema" : {
-              "$ref" : "#/definitions/RegistrationProperties"
+        "requestBody" : {
+          "content" : {
+            "application/jwt" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/ClientRegistrationRequest"
+              }
             }
           },
+          "description" : "The registration request JWT to be used to register with a Data Holder.",
+          "required" : true
+        },
+        "responses" : {
+          "201" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/RegistrationProperties"
+                }
+              }
+            },
+            "description" : "Client registration success"
+          },
           "400" : {
-            "description" : "Request failed due to client error",
-            "schema" : {
-              "$ref" : "#/definitions/RegistrationError"
-            }
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/RegistrationError"
+                }
+              }
+            },
+            "description" : "Request failed due to client error"
           }
-        }
+        },
+        "summary" : "Register Data Recipient oAuth Client",
+        "tags" : [ "Client Registration" ],
+        "x-codegen-request-body-name" : "ClientRegistrationRequest"
       }
     },
     "/register/{ClientId}" : {
-      "get" : {
-        "tags" : [ "Client Registration" ],
-        "summary" : "Get oAuth Client Registration",
-        "description" : "Get a Client Registration for a given Client ID.",
-        "operationId" : "GetClientRegistration",
-        "parameters" : [ {
-          "name" : "ClientId",
-          "in" : "path",
-          "description" : "The client ID issued by the target Data Holder",
-          "required" : true,
-          "type" : "string"
-        }, {
-          "name" : "Authorization",
-          "in" : "header",
-          "description" : "An Authorisation Token as per [RFC6750](https://tools.ietf.org/html/rfc6750)",
-          "required" : true,
-          "type" : "string"
-        } ],
-        "responses" : {
-          "200" : {
-            "description" : "Client registration retrieval success",
-            "schema" : {
-              "$ref" : "#/definitions/RegistrationProperties"
-            }
-          },
-          "401" : {
-            "description" : "Request failed due to unknown or invalid Client or invalid access token",
-            "headers" : {
-              "WWW-Authenticate" : {
-                "type" : "string",
-                "description" : "The Response Header Field as per [RFC6750](https://tools.ietf.org/html/rfc6750)",
-                "pattern" : "^Bearer .*"
-              }
-            }
-          },
-          "403" : {
-            "description" : "The client does not have permission to read, update or delete the Client"
-          }
-        },
-        "x-scopes" : [ "cdr:registration" ]
-      },
-      "put" : {
-        "tags" : [ "Client Registration" ],
-        "summary" : "Update Data Recipient Registration",
-        "description" : "Update a Client Registration for a given Client ID.",
-        "operationId" : "PutDataRecipientRegistration",
-        "parameters" : [ {
-          "in" : "body",
-          "name" : "ClientRegistrationRequest",
-          "description" : "The registration request JWT to be used to register with a Data Holder.",
-          "required" : true,
-          "schema" : {
-            "$ref" : "#/definitions/ClientRegistrationRequest"
-          }
-        }, {
-          "name" : "ClientId",
-          "in" : "path",
-          "description" : "The client ID issued by the target Data Holder",
-          "required" : true,
-          "type" : "string"
-        }, {
-          "name" : "Authorization",
-          "in" : "header",
-          "description" : "An Authorisation Token as per [RFC6750](https://tools.ietf.org/html/rfc6750)",
-          "required" : true,
-          "type" : "string"
-        } ],
-        "responses" : {
-          "200" : {
-            "description" : "Client registration update success",
-            "schema" : {
-              "$ref" : "#/definitions/RegistrationProperties"
-            }
-          },
-          "400" : {
-            "description" : "Request failed due to client error",
-            "schema" : {
-              "$ref" : "#/definitions/RegistrationError"
-            }
-          },
-          "401" : {
-            "description" : "Request failed due to unknown or invalid Client or invalid access token",
-            "headers" : {
-              "WWW-Authenticate" : {
-                "type" : "string",
-                "description" : "The Response Header Field as per [RFC6750](https://tools.ietf.org/html/rfc6750)",
-                "pattern" : "^Bearer .*"
-              }
-            }
-          },
-          "403" : {
-            "description" : "The client does not have permission to read, update or delete the Client"
-          }
-        },
-        "x-scopes" : [ "cdr:registration" ]
-      },
       "delete" : {
-        "tags" : [ "Client Registration" ],
-        "summary" : "Delete Data Recipient oAuth Client Registration",
         "description" : "Delete a Client Registration for a given Client ID.",
         "operationId" : "DeleteDataRecipientRegistration",
         "parameters" : [ {
-          "name" : "ClientId",
-          "in" : "path",
           "description" : "The client ID issued by the target Data Holder",
+          "explode" : false,
+          "in" : "path",
+          "name" : "ClientId",
           "required" : true,
-          "type" : "string"
+          "schema" : {
+            "type" : "string"
+          },
+          "style" : "simple"
         }, {
-          "name" : "Authorization",
-          "in" : "header",
           "description" : "An Authorisation Token as per [RFC6750](https://tools.ietf.org/html/rfc6750)",
+          "explode" : false,
+          "in" : "header",
+          "name" : "Authorization",
           "required" : true,
-          "type" : "string"
+          "schema" : {
+            "type" : "string"
+          },
+          "style" : "simple"
         } ],
         "responses" : {
           "204" : {
+            "content" : { },
             "description" : "Client deleted"
           },
           "401" : {
+            "content" : { },
             "description" : "Request failed due to unknown or invalid Client or invalid access token",
             "headers" : {
               "WWW-Authenticate" : {
-                "type" : "string",
                 "description" : "The Response Header Field as per [RFC6750](https://tools.ietf.org/html/rfc6750)",
-                "pattern" : "^Bearer .*"
+                "explode" : false,
+                "schema" : {
+                  "pattern" : "^Bearer .*",
+                  "type" : "string"
+                },
+                "style" : "simple"
               }
             }
           },
           "403" : {
+            "content" : { },
             "description" : "The client does not have permission to read, update or delete the Client"
           },
           "405" : {
+            "content" : { },
             "description" : "Method Not Allowed. The requested method is unsupported"
           }
         },
+        "summary" : "Delete Data Recipient oAuth Client Registration",
+        "tags" : [ "Client Registration" ],
         "x-scopes" : [ "cdr:registration" ]
+      },
+      "get" : {
+        "description" : "Get a Client Registration for a given Client ID.",
+        "operationId" : "GetClientRegistration",
+        "parameters" : [ {
+          "description" : "The client ID issued by the target Data Holder",
+          "explode" : false,
+          "in" : "path",
+          "name" : "ClientId",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          },
+          "style" : "simple"
+        }, {
+          "description" : "An Authorisation Token as per [RFC6750](https://tools.ietf.org/html/rfc6750)",
+          "explode" : false,
+          "in" : "header",
+          "name" : "Authorization",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          },
+          "style" : "simple"
+        } ],
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/RegistrationProperties"
+                }
+              }
+            },
+            "description" : "Client registration retrieval success"
+          },
+          "401" : {
+            "content" : { },
+            "description" : "Request failed due to unknown or invalid Client or invalid access token",
+            "headers" : {
+              "WWW-Authenticate" : {
+                "description" : "The Response Header Field as per [RFC6750](https://tools.ietf.org/html/rfc6750)",
+                "explode" : false,
+                "schema" : {
+                  "pattern" : "^Bearer .*",
+                  "type" : "string"
+                },
+                "style" : "simple"
+              }
+            }
+          },
+          "403" : {
+            "content" : { },
+            "description" : "The client does not have permission to read, update or delete the Client"
+          }
+        },
+        "summary" : "Get oAuth Client Registration",
+        "tags" : [ "Client Registration" ],
+        "x-scopes" : [ "cdr:registration" ]
+      },
+      "put" : {
+        "description" : "Update a Client Registration for a given Client ID.",
+        "operationId" : "PutDataRecipientRegistration",
+        "parameters" : [ {
+          "description" : "The client ID issued by the target Data Holder",
+          "explode" : false,
+          "in" : "path",
+          "name" : "ClientId",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          },
+          "style" : "simple"
+        }, {
+          "description" : "An Authorisation Token as per [RFC6750](https://tools.ietf.org/html/rfc6750)",
+          "explode" : false,
+          "in" : "header",
+          "name" : "Authorization",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          },
+          "style" : "simple"
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/jwt" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/ClientRegistrationRequest"
+              }
+            }
+          },
+          "description" : "The registration request JWT to be used to register with a Data Holder.",
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/RegistrationProperties"
+                }
+              }
+            },
+            "description" : "Client registration update success"
+          },
+          "400" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/RegistrationError"
+                }
+              }
+            },
+            "description" : "Request failed due to client error"
+          },
+          "401" : {
+            "content" : { },
+            "description" : "Request failed due to unknown or invalid Client or invalid access token",
+            "headers" : {
+              "WWW-Authenticate" : {
+                "description" : "The Response Header Field as per [RFC6750](https://tools.ietf.org/html/rfc6750)",
+                "explode" : false,
+                "schema" : {
+                  "pattern" : "^Bearer .*",
+                  "type" : "string"
+                },
+                "style" : "simple"
+              }
+            }
+          },
+          "403" : {
+            "content" : { },
+            "description" : "The client does not have permission to read, update or delete the Client"
+          }
+        },
+        "summary" : "Update Data Recipient Registration",
+        "tags" : [ "Client Registration" ],
+        "x-scopes" : [ "cdr:registration" ],
+        "x-codegen-request-body-name" : "ClientRegistrationRequest"
       }
     }
   },
-  "definitions" : {
-    "ClientRegistrationRequest" : {
-      "type" : "string",
-      "format" : "JWT",
-      "description" : "The registration request JWT to be used to register with a Data Holder.",
-      "example" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
-    },
-    "RegistrationProperties" : {
-      "type" : "object",
-      "required" : [ "client_description", "client_id", "client_name", "client_uri", "grant_types", "id_token_encrypted_response_alg", "id_token_encrypted_response_enc", "jwks_uri", "logo_uri", "org_id", "org_name", "redirect_uris", "request_object_signing_alg", "response_types", "scope", "software_id", "software_statement", "token_endpoint_auth_method", "token_endpoint_auth_signing_alg" ],
-      "properties" : {
-        "client_id" : {
-          "type" : "string",
-          "example" : "35a5a70b-5b8d-41f4-9cbd-96cfbc15c58a",
-          "description" : "Data Holder issued client identifier string"
+  "components" : {
+    "parameters" : {
+      "Authorization" : {
+        "description" : "An Authorisation Token as per [RFC6750](https://tools.ietf.org/html/rfc6750)",
+        "explode" : false,
+        "in" : "header",
+        "name" : "Authorization",
+        "required" : true,
+        "schema" : {
+          "type" : "string"
         },
-        "client_id_issued_at" : {
-          "type" : "integer",
-          "format" : "int32",
-          "example" : 1571808167,
-          "description" : "Time at which the client identifier was issued expressed as seconds since 1970-01-01T00:00:00Z as measured in UTC"
+        "style" : "simple"
+      },
+      "ClientId" : {
+        "description" : "The client ID issued by the target Data Holder",
+        "explode" : false,
+        "in" : "path",
+        "name" : "ClientId",
+        "required" : true,
+        "schema" : {
+          "type" : "string"
         },
-        "client_name" : {
-          "type" : "string",
-          "example" : "Mock Software",
-          "description" : "Human-readable string name of the software product to be presented to the end-user during authorization"
-        },
-        "client_description" : {
-          "type" : "string",
-          "example" : "A mock software product",
-          "description" : "Human-readable string name of the software product description to be presented to the end user during authorization"
-        },
-        "client_uri" : {
-          "type" : "string",
-          "example" : "https://www.mockcompany.com.au",
-          "description" : "URL string of a web page providing information about the client"
-        },
-        "legal_entity_id" : {
-          "type" : "string",
-          "example" : "344F0E809-BDBE-4F8E-BD30-5E6C3CB78D7B",
-          "description" : "A unique identifier string assigned by the CDR Register that identifies the Accredited Data Recipient Legal Entity"
-        },
-        "legal_entity_name" : {
-          "type" : "string",
-          "example" : "Mock Company Pty Ltd.",
-          "description" : "Human-readable string name of the Accredited Data Recipient Legal Entity"
-        },
-        "org_id" : {
-          "type" : "string",
-          "example" : "3B0B0A7B-3E7B-4A2C-9497-E357A71D07C8",
-          "description" : "A unique identifier string assigned by the CDR Register that identifies the Accredited Data Recipient Brand"
-        },
-        "org_name" : {
-          "type" : "string",
-          "example" : "Mock Company Brand.",
-          "description" : "Human-readable string name of the Accredited Data Recipient to be presented to the end user during authorization"
-        },
-        "redirect_uris" : {
-          "type" : "array",
-          "example" : [ "https://www.mockcompany.com.au/redirects/redirect1", "https://www.mockcompany.com.au/redirects/redirect2" ],
-          "description" : "Array of redirection URI strings for use in redirect-based flows. If used, redirect_uris MUST match or be a subset of the redirect_uris as defined in the SSA",
-          "items" : {
-            "type" : "string",
-            "format" : "uri"
-          }
-        },
-        "sector_identifier_uri" : {
-          "type" : "string",
-          "example" : "https://www.mockcompany.com.au/sector_identifier.json",
-          "description" : "URL string referencing the client sector identifier URI, used as an optional input to the Pairwise Identifier"
-        },
-        "logo_uri" : {
-          "type" : "string",
-          "example" : "https://www.mockcompany.com.au/logos/logo1.png",
-          "description" : "URL string that references a logo for the client. If present, the server SHOULD display this image to the end-user during approval"
-        },
-        "tos_uri" : {
-          "type" : "string",
-          "example" : "https://www.mockcompany.com.au/tos.html",
-          "description" : "URL string that points to a human-readable terms of service document for the Software Product"
-        },
-        "policy_uri" : {
-          "type" : "string",
-          "example" : "https://www.mockcompany.com.au/policy.html",
-          "description" : "URL string that points to a human-readable policy document for the Software Product"
-        },
-        "jwks_uri" : {
-          "type" : "string",
-          "example" : "https://www.mockcompany.com.au/jwks",
-          "description" : "URL string referencing the client JSON Web Key (JWK) Set [RFC7517] document, which contains the client public keys"
-        },
-        "revocation_uri" : {
-          "type" : "string",
-          "example" : "https://www.mockcompany.com.au/revocation",
-          "description" : "URI string that references the location of the Software Product consent revocation endpoint"
-        },
-        "recipient_base_uri" : {
-          "type" : "string",
-          "example" : "https://www.mockcompany.com.au",
-          "description" : "Base URI for the Consumer Data Standard Data Recipient endpoints. This should be the base to provide reference to all other Data Recipient Endpoints"
-        },
-        "token_endpoint_auth_method" : {
-          "type" : "string",
-          "description" : "The requested authentication method for the token endpoint",
-          "enum" : [ "private_key_jwt" ]
-        },
-        "token_endpoint_auth_signing_alg" : {
-          "type" : "string",
-          "description" : "The algorithm used for signing the JWT",
-          "enum" : [ "PS256", "ES256" ]
-        },
-        "grant_types" : {
-          "type" : "array",
-          "description" : "Array of OAuth 2.0 grant type strings that the client can use at the token endpoint",
-          "items" : {
-            "type" : "string",
-            "enum" : [ "client_credentials", "authorization_code", "refresh_token" ]
-          }
-        },
-        "response_types" : {
-          "type" : "array",
-          "description" : "Array of the OAuth 2.0 response type strings that the client can use at the authorization endpoint.",
-          "items" : {
-            "type" : "string",
-            "enum" : [ "code id_token" ]
-          }
-        },
-        "application_type" : {
-          "type" : "string",
-          "description" : "Kind of the application. The only supported application type will be `web`",
-          "enum" : [ "web" ]
-        },
-        "id_token_signed_response_alg" : {
-          "type" : "string",
-          "description" : "Algorithm with which an id_token is to be signed",
-          "enum" : [ "PS256", "ES256" ]
-        },
-        "id_token_encrypted_response_alg" : {
-          "type" : "string",
-          "example" : "RSA-OAEP",
-          "description" : "JWE `alg` algorithm with which an id_token is to be encrypted"
-        },
-        "id_token_encrypted_response_enc" : {
-          "type" : "string",
-          "example" : "A256GCM",
-          "description" : "JWE `enc` algorithm with which an id_token is to be encrypted"
-        },
-        "request_object_signing_alg" : {
-          "type" : "string",
-          "description" : "Algorithm which the ADR expects to sign the request object if a request object will be part of the authorization request sent to the Data Holder",
-          "enum" : [ "PS256", "ES256" ]
-        },
-        "software_statement" : {
-          "type" : "string",
-          "format" : "JWT",
-          "description" : "The Software Statement Assertion, as defined in CDR standards"
-        },
-        "software_id" : {
-          "type" : "string",
-          "example" : "740C368F-ECF9-4D29-A2EA-0514A66B0CDE",
-          "description" : "String representing a unique identifier assigned by the Register and used by registration endpoints to identify the software product to be dynamically registered. </br></br>The \"software_id\" will remain the same for the lifetime of the product, across multiple updates and versions"
-        },
-        "software_roles" : {
-          "type" : "string",
-          "example" : "data-recipient-software-product",
-          "description" : "String containing a role of the software in the CDR Regime. Initially the only value used with be `data-recipient-software-product`"
-        },
-        "scope" : {
-          "type" : "string",
-          "example" : "openid profile bank:accounts.basic:read bank:accounts.detail:read bank:transactions:read bank:payees:read bank:regular_payments:read common:customer.basic:read common:customer.detail:read cdr:registration",
-          "description" : "String containing a space-separated list of scope values that the client can use when requesting access tokens."
-        }
+        "style" : "simple"
       }
     },
-    "ClientRegistration" : {
-      "allOf" : [ {
-        "type" : "object",
-        "required" : [ "aud", "exp", "iat", "iss", "jti" ],
+    "responses" : {
+      "400Error" : {
+        "content" : {
+          "application/json" : {
+            "schema" : {
+              "$ref" : "#/components/schemas/RegistrationError"
+            }
+          }
+        },
+        "description" : "Request failed due to client error"
+      },
+      "401Error" : {
+        "content" : { },
+        "description" : "Request failed due to unknown or invalid Client or invalid access token",
+        "headers" : {
+          "WWW-Authenticate" : {
+            "description" : "The Response Header Field as per [RFC6750](https://tools.ietf.org/html/rfc6750)",
+            "explode" : false,
+            "schema" : {
+              "pattern" : "^Bearer .*",
+              "type" : "string"
+            },
+            "style" : "simple"
+          }
+        }
+      },
+      "403Error" : {
+        "content" : { },
+        "description" : "The client does not have permission to read, update or delete the Client"
+      },
+      "405Error" : {
+        "content" : { },
+        "description" : "Method Not Allowed. The requested method is unsupported"
+      }
+    },
+    "schemas" : {
+      "ClientRegistrationRequest" : {
+        "description" : "The registration request JWT to be used to register with a Data Holder.",
+        "example" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+        "format" : "JWT",
+        "type" : "string"
+      },
+      "RegistrationProperties" : {
+        "properties" : {
+          "client_id" : {
+            "description" : "Data Holder issued client identifier string",
+            "example" : "35a5a70b-5b8d-41f4-9cbd-96cfbc15c58a",
+            "type" : "string"
+          },
+          "client_id_issued_at" : {
+            "description" : "Time at which the client identifier was issued expressed as seconds since 1970-01-01T00:00:00Z as measured in UTC",
+            "example" : 1571808167,
+            "format" : "int32",
+            "type" : "integer"
+          },
+          "client_name" : {
+            "description" : "Human-readable string name of the software product to be presented to the end-user during authorization",
+            "example" : "Mock Software",
+            "type" : "string"
+          },
+          "client_description" : {
+            "description" : "Human-readable string name of the software product description to be presented to the end user during authorization",
+            "example" : "A mock software product",
+            "type" : "string"
+          },
+          "client_uri" : {
+            "description" : "URL string of a web page providing information about the client",
+            "example" : "https://www.mockcompany.com.au",
+            "type" : "string"
+          },
+          "legal_entity_id" : {
+            "description" : "A unique identifier string assigned by the CDR Register that identifies the Accredited Data Recipient Legal Entity",
+            "example" : "344F0E809-BDBE-4F8E-BD30-5E6C3CB78D7B",
+            "type" : "string"
+          },
+          "legal_entity_name" : {
+            "description" : "Human-readable string name of the Accredited Data Recipient Legal Entity",
+            "example" : "Mock Company Pty Ltd.",
+            "type" : "string"
+          },
+          "org_id" : {
+            "description" : "A unique identifier string assigned by the CDR Register that identifies the Accredited Data Recipient Brand",
+            "example" : "3B0B0A7B-3E7B-4A2C-9497-E357A71D07C8",
+            "type" : "string"
+          },
+          "org_name" : {
+            "description" : "Human-readable string name of the Accredited Data Recipient to be presented to the end user during authorization",
+            "example" : "Mock Company Brand.",
+            "type" : "string"
+          },
+          "redirect_uris" : {
+            "description" : "Array of redirection URI strings for use in redirect-based flows. If used, redirect_uris MUST match or be a subset of the redirect_uris as defined in the SSA",
+            "example" : [ "https://www.mockcompany.com.au/redirects/redirect1", "https://www.mockcompany.com.au/redirects/redirect2" ],
+            "items" : {
+              "format" : "uri",
+              "type" : "string"
+            },
+            "type" : "array"
+          },
+          "sector_identifier_uri" : {
+            "description" : "URL string referencing the client sector identifier URI, used as an optional input to the Pairwise Identifier",
+            "example" : "https://www.mockcompany.com.au/sector_identifier.json",
+            "type" : "string"
+          },
+          "logo_uri" : {
+            "description" : "URL string that references a logo for the client. If present, the server SHOULD display this image to the end-user during approval",
+            "example" : "https://www.mockcompany.com.au/logos/logo1.png",
+            "type" : "string"
+          },
+          "tos_uri" : {
+            "description" : "URL string that points to a human-readable terms of service document for the Software Product",
+            "example" : "https://www.mockcompany.com.au/tos.html",
+            "type" : "string"
+          },
+          "policy_uri" : {
+            "description" : "URL string that points to a human-readable policy document for the Software Product",
+            "example" : "https://www.mockcompany.com.au/policy.html",
+            "type" : "string"
+          },
+          "jwks_uri" : {
+            "description" : "URL string referencing the client JSON Web Key (JWK) Set [RFC7517] document, which contains the client public keys",
+            "example" : "https://www.mockcompany.com.au/jwks",
+            "type" : "string"
+          },
+          "revocation_uri" : {
+            "description" : "URI string that references the location of the Software Product consent revocation endpoint",
+            "example" : "https://www.mockcompany.com.au/revocation",
+            "type" : "string"
+          },
+          "recipient_base_uri" : {
+            "description" : "Base URI for the Consumer Data Standard Data Recipient endpoints. This should be the base to provide reference to all other Data Recipient Endpoints",
+            "example" : "https://www.mockcompany.com.au",
+            "type" : "string"
+          },
+          "token_endpoint_auth_method" : {
+            "description" : "The requested authentication method for the token endpoint",
+            "enum" : [ "private_key_jwt" ],
+            "type" : "string"
+          },
+          "token_endpoint_auth_signing_alg" : {
+            "description" : "The algorithm used for signing the JWT",
+            "enum" : [ "PS256", "ES256" ],
+            "type" : "string"
+          },
+          "grant_types" : {
+            "description" : "Array of OAuth 2.0 grant type strings that the client can use at the token endpoint",
+            "items" : {
+              "enum" : [ "client_credentials", "authorization_code", "refresh_token" ],
+              "type" : "string"
+            },
+            "type" : "array"
+          },
+          "response_types" : {
+            "description" : "Array of the OAuth 2.0 response type strings that the client can use at the authorization endpoint.",
+            "items" : {
+              "enum" : [ "code id_token" ],
+              "type" : "string"
+            },
+            "type" : "array"
+          },
+          "application_type" : {
+            "description" : "Kind of the application. The only supported application type will be `web`",
+            "enum" : [ "web" ],
+            "type" : "string"
+          },
+          "id_token_signed_response_alg" : {
+            "description" : "Algorithm with which an id_token is to be signed",
+            "enum" : [ "PS256", "ES256" ],
+            "type" : "string"
+          },
+          "id_token_encrypted_response_alg" : {
+            "description" : "JWE `alg` algorithm with which an id_token is to be encrypted",
+            "example" : "RSA-OAEP",
+            "type" : "string"
+          },
+          "id_token_encrypted_response_enc" : {
+            "description" : "JWE `enc` algorithm with which an id_token is to be encrypted",
+            "example" : "A256GCM",
+            "type" : "string"
+          },
+          "request_object_signing_alg" : {
+            "description" : "Algorithm which the ADR expects to sign the request object if a request object will be part of the authorization request sent to the Data Holder",
+            "enum" : [ "PS256", "ES256" ],
+            "type" : "string"
+          },
+          "software_statement" : {
+            "description" : "The Software Statement Assertion, as defined in CDR standards",
+            "format" : "JWT",
+            "type" : "string"
+          },
+          "software_id" : {
+            "description" : "String representing a unique identifier assigned by the Register and used by registration endpoints to identify the software product to be dynamically registered. </br></br>The \"software_id\" will remain the same for the lifetime of the product, across multiple updates and versions",
+            "example" : "740C368F-ECF9-4D29-A2EA-0514A66B0CDE",
+            "type" : "string"
+          },
+          "software_roles" : {
+            "description" : "String containing a role of the software in the CDR Regime. Initially the only value used with be `data-recipient-software-product`",
+            "example" : "data-recipient-software-product",
+            "type" : "string"
+          },
+          "scope" : {
+            "description" : "String containing a space-separated list of scope values that the client can use when requesting access tokens.",
+            "example" : "openid profile bank:accounts.basic:read bank:accounts.detail:read bank:transactions:read bank:payees:read bank:regular_payments:read common:customer.basic:read common:customer.detail:read cdr:registration",
+            "type" : "string"
+          }
+        },
+        "required" : [ "client_description", "client_id", "client_name", "client_uri", "grant_types", "id_token_encrypted_response_alg", "id_token_encrypted_response_enc", "jwks_uri", "logo_uri", "org_id", "org_name", "redirect_uris", "request_object_signing_alg", "response_types", "scope", "software_id", "software_statement", "token_endpoint_auth_method", "token_endpoint_auth_signing_alg" ],
+        "type" : "object"
+      },
+      "ClientRegistration" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/ClientRegistration_allOf"
+        }, {
+          "$ref" : "#/components/schemas/RegistrationProperties"
+        } ]
+      },
+      "RegistrationError" : {
+        "properties" : {
+          "error" : {
+            "description" : "Predefined error code as described in [section 3.3 OIDC Dynamic Client Registration](https://openid.net/specs/openid-connect-registration-1_0.html)",
+            "enum" : [ "invalid_redirect_uri", "invalid_client_metadata", "invalid_software_statement", "unapproved_software_statement" ],
+            "type" : "string"
+          },
+          "error_description" : {
+            "description" : "Additional text description of the error for debugging.",
+            "type" : "string"
+          }
+        },
+        "required" : [ "error" ],
+        "type" : "object"
+      },
+      "ClientRegistration_allOf" : {
         "properties" : {
           "iss" : {
-            "type" : "string",
+            "description" : "Contains the identifier for the ADR Software Product (SoftwareProductId) as defined in the CDR Register",
             "example" : "CDR Software Product ID",
-            "description" : "Contains the identifier for the ADR Software Product (SoftwareProductId) as defined in the CDR Register"
+            "type" : "string"
           },
           "iat" : {
-            "type" : "integer",
-            "format" : "int32",
+            "description" : "The time at which the request was issued by the Data Recipient  expressed as seconds since 1970-01-01T00:00:00Z as measured in UTC",
             "example" : 1571808167,
-            "description" : "The time at which the request was issued by the Data Recipient  expressed as seconds since 1970-01-01T00:00:00Z as measured in UTC"
+            "format" : "int32",
+            "type" : "integer"
           },
           "exp" : {
-            "type" : "integer",
-            "format" : "int32",
+            "description" : "The time at which the request expires expressed as seconds since 1970-01-01T00:00:00Z as measured in UTC",
             "example" : 2147483646,
-            "description" : "The time at which the request expires expressed as seconds since 1970-01-01T00:00:00Z as measured in UTC"
+            "format" : "int32",
+            "type" : "integer"
           },
           "jti" : {
-            "type" : "string",
+            "description" : "Unique identifier for the JWT, used to prevent replay of the token",
             "example" : "37747cd1c10545699f754adf28b73e31",
-            "description" : "Unique identifier for the JWT, used to prevent replay of the token"
+            "type" : "string"
           },
           "aud" : {
-            "type" : "string",
+            "description" : "'Contains the Data Holder issuer value as described in the OIDC Discovery Document",
             "example" : "https://secure.api.dataholder.com/issuer",
-            "description" : "'Contains the Data Holder issuer value as described in the OIDC Discovery Document"
+            "type" : "string"
           }
-        }
-      }, {
-        "$ref" : "#/definitions/RegistrationProperties"
-      } ]
-    },
-    "RegistrationError" : {
-      "type" : "object",
-      "required" : [ "error" ],
-      "properties" : {
-        "error" : {
-          "type" : "string",
-          "description" : "Predefined error code as described in [section 3.3 OIDC Dynamic Client Registration](https://openid.net/specs/openid-connect-registration-1_0.html)",
-          "enum" : [ "invalid_redirect_uri", "invalid_client_metadata", "invalid_software_statement", "unapproved_software_statement" ]
         },
-        "error_description" : {
-          "type" : "string",
-          "description" : "Additional text description of the error for debugging."
-        }
+        "required" : [ "aud", "exp", "iat", "iss", "jti" ],
+        "type" : "object"
       }
-    }
-  },
-  "parameters" : {
-    "Authorization" : {
-      "name" : "Authorization",
-      "in" : "header",
-      "description" : "An Authorisation Token as per [RFC6750](https://tools.ietf.org/html/rfc6750)",
-      "required" : true,
-      "type" : "string"
-    },
-    "ClientId" : {
-      "name" : "ClientId",
-      "in" : "path",
-      "description" : "The client ID issued by the target Data Holder",
-      "required" : true,
-      "type" : "string"
-    }
-  },
-  "responses" : {
-    "400Error" : {
-      "description" : "Request failed due to client error",
-      "schema" : {
-        "$ref" : "#/definitions/RegistrationError"
-      }
-    },
-    "401Error" : {
-      "description" : "Request failed due to unknown or invalid Client or invalid access token",
-      "headers" : {
-        "WWW-Authenticate" : {
-          "type" : "string",
-          "description" : "The Response Header Field as per [RFC6750](https://tools.ietf.org/html/rfc6750)",
-          "pattern" : "^Bearer .*"
-        }
-      }
-    },
-    "403Error" : {
-      "description" : "The client does not have permission to read, update or delete the Client"
-    },
-    "405Error" : {
-      "description" : "Method Not Allowed. The requested method is unsupported"
     }
   }
 }
