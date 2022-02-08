@@ -55,7 +55,11 @@
         },
         "responses" : {
           "200" : {
-            "content" : { },
+            "content" : {
+              "application/json" : {
+                "schema" : { }
+              }
+            },
             "description" : "Success",
             "headers" : {
               "x-v" : {
@@ -68,7 +72,7 @@
               }
             }
           },
-          "4xx" : {
+          "400" : {
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -76,7 +80,17 @@
                 }
               }
             },
-            "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>"
+            "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>"
+          },
+          "406" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ResponseErrorListV2"
+                }
+              }
+            },
+            "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>"
           }
         },
         "summary" : "Metadata Update",
@@ -145,7 +159,7 @@
               }
             }
           },
-          "4xx" : {
+          "400" : {
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -153,7 +167,17 @@
                 }
               }
             },
-            "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>"
+            "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>"
+          },
+          "406" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ResponseErrorListV2"
+                }
+              }
+            },
+            "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>"
           }
         },
         "summary" : "Get Metrics",
