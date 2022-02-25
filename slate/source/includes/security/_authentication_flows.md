@@ -1,5 +1,5 @@
 ## Authentication Flows
-This profile supports the authentication flows specified by [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) **[[OIDC]](#nref-OIDC)** as constrained further by [FAPI](https://openid.net/wg/fapi/) **[[FAPI]](#nref-FAPI)**.
+This profile supports the authentication flows specified by [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) **[[OIDC]](#nref-OIDC)** as constrained further by **[[FAPI]](#iref-FAPI)**.
 
 ```diff
 Replaced the statements:
