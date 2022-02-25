@@ -59,4 +59,4 @@ Host: www.holder.com.au
 | Client Authentication Required| No|
 | Bearer Token Required| No|
 
-The requirements for the Authorisation End Point are specified in [section 3.3.2](https://openid.net/specs/openid-connect-core-1_0.html#HybridAuthorizationEndpoint) of **[OIDC]** and further specified under section [5.2.2](https://openid.net/specs/openid-financial-api-part-2.html#authorization-server) of **[FAPI-RW-Draft]**.  This end point is invoked as part of the [Hybrid Authentication flow](#hybrid-flow).
+The requirements for the Authorisation End Point are specified in [section 3.3.2](https://openid.net/specs/openid-connect-core-1_0.html#HybridAuthorizationEndpoint) of **[[OIDC]](#nref-OIDC)** and further specified under section [5.2.2](https://openid.net/specs/openid-financial-api-part-2.html#authorization-server) of **[[FAPI-RW-Draft]](#nref-FAPI-RW-Draft)**.  This end point is invoked as part of the [Hybrid Authentication flow](#hybrid-flow).

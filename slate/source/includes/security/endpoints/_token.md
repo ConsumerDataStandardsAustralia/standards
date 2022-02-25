@@ -6,7 +6,7 @@
 | Client Authentication Required| Yes|
 | Bearer Token Required| No|
 
-The requirements for the Token End Point are specified in [section 3.3.3](https://openid.net/specs/openid-connect-core-1_0.html#HybridTokenEndpoint) of **[OIDC]**.
+The requirements for the Token End Point are specified in [section 3.3.3](https://openid.net/specs/openid-connect-core-1_0.html#HybridTokenEndpoint) of **[[OIDC]](#nref-OIDC)**.
 
 To obtain an Access Token, an ID Token, and a Refresh Token, the Data Recipient Software Product sends a Token Request to the Token End Point.
 

@@ -523,12 +523,12 @@
         },
         "occupationCode" : {
           "type": "string",
-          "description": "Value is a valid [ANZSCO](http://www.abs.gov.au/ANZSCO) Standard Occupation classification code. If the occupation code held by the data holder is not one of the supported [ANZSCO](http://www.abs.gov.au/ANZSCO) versions, then it must not be supplied.",
+          "description": "Value is a valid **[[ANZSCO]](#iref-ANZSCO)** Standard Occupation classification code. If the occupation code held by the data holder is not one of the supported [ANZSCO](http://www.abs.gov.au/ANZSCO) versions, then it must not be supplied.",
           "x-cds-type": "ExternalRef"
         },
         "occupationCodeVersion": {
           "type": "string",
-          "description": "The applicable [ANZSCO](http://www.abs.gov.au/ANZSCO) release version of the occupation code provided. Mandatory if an ``occupationCode`` is supplied. If ``occupationCode`` is supplied but ``occupationCodeVersion`` is absent, default is ``ANZSCO_1220.0_2013_V1.2``",
+          "description": "The applicable **[[ANZSCO]](#iref-ANZSCO)** release version of the occupation code provided. Mandatory if an ``occupationCode`` is supplied. If ``occupationCode`` is supplied but ``occupationCodeVersion`` is absent, default is ``ANZSCO_1220.0_2013_V1.2``",
           "enum": [
             "ANZSCO_1220.0_2006_V1.0",
             "ANZSCO_1220.0_2006_V1.1",
@@ -633,12 +633,12 @@
         },
         "industryCode" : {
           "type" : "string",
-          "description" : "A valid [ANZSIC](http://www.abs.gov.au/ANZSIC) code for the organisation. If the industry code held by the data holder is not one of the supported [ANZSIC](http://www.abs.gov.au/ANZSIC) versions, then it must not be supplied.",
+          "description" : "A valid **[[ANZSIC-2006]](#iref-ANZSIC-2006)** code for the organisation. If the industry code held by the data holder is not one of the supported **[[ANZSIC-2006]](#iref-ANZSIC-2006)** versions, then it must not be supplied.",
           "x-cds-type": "ExternalRef"
         },
         "industryCodeVersion" : {
           "type" : "string",
-          "description" : "The applicable [ANZSIC](http://www.abs.gov.au/ANZSIC) release version of the industry code provided. Should only be supplied if ``industryCode`` is also supplied. If ``industryCode`` is supplied but ``industryCodeVersion`` is absent, default is ``ANZSIC_1292.0_2006_V2.0``",
+          "description" : "The applicable **[[ANZSIC-2006]](#iref-ANZSIC-2006)** release version of the industry code provided. Should only be supplied if ``industryCode`` is also supplied. If ``industryCode`` is supplied but ``industryCodeVersion`` is absent, default is ``ANZSIC_1292.0_2006_V2.0``",
           "enum" : [
             "ANZSIC_1292.0_2006_V1.0",
             "ANZSIC_1292.0_2006_V2.0"
@@ -737,7 +737,7 @@
         },
         "fullNumber": {
           "type": "string",
-          "description": "Fully formatted phone number with country code, area code, number and extension incorporated. Formatted according to section 5.1.4. of [RFC 3966](https://www.ietf.org/rfc/rfc3966.txt)",
+          "description": "Fully formatted phone number with country code, area code, number and extension incorporated. Formatted according to section 5.1.4. of **[[RFC3966]](#nref-RFC3966)**",
           "x-cds-type": "ExternalRef"
         }
       }
@@ -766,7 +766,7 @@
         },
         "address": {
           "type": "string",
-          "description": "A correctly formatted email address, as defined by the addr_spec format in [RFC 5322](https://www.ietf.org/rfc/rfc5322.txt)",
+          "description": "A correctly formatted email address, as defined by the addr_spec format in **[[RFC5322]](#nref-RFC5322)**",
           "x-cds-type": "ExternalRef"
         }
       }

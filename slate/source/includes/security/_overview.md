@@ -4,14 +4,14 @@
 
 **Until September 16th 2022**
 
-This information security profile builds upon the foundations of the [Financial-grade API Read Write Profile](https://openid.net/specs/openid-financial-api-part-2.html) **[FAPI-RW-Draft]** and other standards relating to
-[Open ID Connect 1.0](http://openid.net/specs/openid-connect-core-1_0.html) **[OIDC]**.
+This information security profile builds upon the foundations of the [Financial-grade API Read Write Profile](https://openid.net/specs/openid-financial-api-part-2.html) **[[FAPI-RW-Draft]](#nref-FAPI-RW-Draft)** and other standards relating to
+[Open ID Connect 1.0](http://openid.net/specs/openid-connect-core-1_0.html) **[[OIDC]](#nref-OIDC)**.
 
 
 **From September 16th 2022**
 
-This information security profile builds upon the foundations of the [Financial-grade API Advanced Profile](https://openid.net/specs/openid-financial-api-part-2-1_0.html) **[FAPI-1.0-Advanced]** and other standards relating to
-[Open ID Connect 1.0](http://openid.net/specs/openid-connect-core-1_0.html) **[OIDC]**.
+This information security profile builds upon the foundations of the [Financial-grade API Advanced Profile](https://openid.net/specs/openid-financial-api-part-2-1_0.html) **[[FAPI-1.0-Advanced]](#nref-FAPI-1.0-Advanced)** and other standards relating to
+[Open ID Connect 1.0](http://openid.net/specs/openid-connect-core-1_0.html) **[[OIDC]](#nref-OIDC)**.
 
 For information on the specific normative references that underpin this profile refer to the [Normative References section](#normative-references).
 

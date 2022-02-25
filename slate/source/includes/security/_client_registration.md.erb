@@ -1,19 +1,19 @@
 ## Client Registration
 
 ### Dynamic Client Registration
-Data Recipients register with Data Holders according to **[DCR]** to obtain client credentials used to retrieve consumer data on behalf of a consumer.
+Data Recipients register with Data Holders according to **[[DCR]](#nref-DCR)** to obtain client credentials used to retrieve consumer data on behalf of a consumer.
 
 #### Software Statement Assertion (SSA)
 
-As per **[DCR]**, a Software Statement is defined in as: *A digitally signed JSON Web Token (JWT) created in accordance with [JWT] that asserts metadata values about the client software*
-> An SSA is a digitally signed JSON Web Token (JWT) created in accordance with **[JWT]** that asserts metadata values about the client software.
+As per **[[DCR]](#nref-DCR)**, a Software Statement is defined in as: _A digitally signed JSON Web Token (JWT) created in accordance with **[[JWT]](#nref-JWT)** that asserts metadata values about the client software_
+> An SSA is a digitally signed JSON Web Token (JWT) created in accordance with **[[JWT]](#nref-JWT)** that asserts metadata values about the client software.
 
 Such that:
 
 * The CDR Register **MUST** issue Software Statements to **active** Data Recipients for **active** Software Products
 * The CDR Register **MUST** issue distinct Software Statements for each `Software Product ID`
 * Software Statements are issued with a **10 minute** expiry time
-* As per **[FAPI-RW-Draft]**, SSAs are signed by the CDR Register using **PS256**
+* As per **[[FAPI-RW-Draft]](#nref-FAPI-RW-Draft)**, SSAs are signed by the CDR Register using **PS256**
 * CDR Register public keys are exposed on a dedicated JWKS URI endpoint
 * The CDR Register [JWKS](#get-jwks) is an unauthenticated endpoint, using TLS
 * Data Recipients **MUST** present a valid SSA when undertaking dynamic client registration
@@ -103,7 +103,7 @@ Decoded SSA
 
 ```
 
-The SSA will conform to the requirements of **[DCR]** with the following clarifications:
+The SSA will conform to the requirements of **[[DCR]](#nref-DCR)** with the following clarifications:
 
 | Client Metadata | Required | Modifiable | Description
 |--------------|-------|-------|----------------------------------------------------------------------------------------
@@ -119,11 +119,11 @@ The SSA will conform to the requirements of **[DCR]** with the following clarifi
 |**client_description**|	Required | <i class="icon-check"></i> | Human-readable string name of the software product description to be presented to the end user during authorization
 |**client_uri**|	Required | <i class="icon-check"></i> | URL string of a web page providing information about the client
 |**redirect_uris**|	Required | <i class="icon-check"></i> | Array of redirection URI strings for use in redirect-based flows
-|**sector_identifier_uri**| Optional | <i class="icon-check"></i>  | URL string referencing the client's sector identifier URI, used as an optional input to the Pairwise Identifier as described in described in [section 8](https://openid.net/specs/openid-connect-core-1_0.html#SubjectIDTypes) of **[OIDC]**
+|**sector_identifier_uri**| Optional | <i class="icon-check"></i>  | URL string referencing the client's sector identifier URI, used as an optional input to the Pairwise Identifier as described in described in [section 8](https://openid.net/specs/openid-connect-core-1_0.html#SubjectIDTypes) of **[[OIDC]](#nref-OIDC)**
 |**logo_uri**|	Required | <i class="icon-check"></i> | URL string that references a logo for the client software product. The server **SHOULD** display this image to the end-user during approval
 |**tos_uri**|	Optional | <i class="icon-check"></i> | URL string that points to a human-readable terms of service document for the Software Product
 |**policy_uri**|	Optional | <i class="icon-check"></i> | URL string that points to a human-readable policy document for the Software Product
-|**jwks_uri**|	Required | <i class="icon-check"></i> | URL string referencing the client's JSON Web Key (JWK) Set **[RFC7517]** document, which contains the client's public keys
+|**jwks_uri**|	Required | <i class="icon-check"></i> | URL string referencing the client's JSON Web Key (JWK) Set **[[RFC7517]](#nref-RFC7517)** document, which contains the client's public keys
 |**revocation_uri**| Required | <i class="icon-check"></i>  | URI string that references the location of the Software Product consent revocation endpoint as per Consumer Data Standards [Endpoints](https://consumerdatastandardsaustralia.github.io/standards/#end-points)
 |**recipient_base_uri**| Required | <i class="icon-check"></i>  | Base URI for the Consumer Data Standard Data Recipient endpoints. This **SHOULD** be the base to provide reference to all other [Data Recipient Endpoints](https://consumerdatastandardsaustralia.github.io/standards/#end-points)
 |**software_id**|	Required | | String representing a unique identifier assigned by the Register and used by registration endpoints to identify the software product to be dynamically registered. </br></br>The `software_id` will remain the same across multiple updates or versions of the same piece of software.</br>The `software_id` **SHOULD** be used as the primary external identifier for the client to prevent duplicate client registrations
@@ -179,9 +179,9 @@ Accept: application/json
 
 To register with a Data Holder, the Data Recipient sends an HTTP POST to the Data Holder registration endpoint.
 
-* The request **MUST** be presented in the format of a **[RFC7519]** compliant JWT.
+* The request **MUST** be presented in the format of a **[[RFC7519]](#nref-RFC7519)** compliant JWT.
 * The request **MUST** use the HTTP POST method, using the `application/jwt` content type.
-* The JWT **MUST** be signed using algorithms specified in [section 8.6](https://openid.net/specs/openid-financial-api-part-2.html#jws-algorithm-considerations) of **[FAPI-RW-Draft]**
+* The JWT **MUST** be signed using algorithms specified in [section 8.6](https://openid.net/specs/openid-financial-api-part-2.html#jws-algorithm-considerations) of **[[FAPI-RW-Draft]](#nref-FAPI-RW-Draft)**
 
 The client registration request **MUST** contain the following claims in the JWT payload unless designated as Optional:
 
@@ -198,10 +198,10 @@ The client registration request **MUST** contain the following claims in the JWT
 |**grant_types**|	Required | Array of OAuth 2.0 grant type strings that the client can use at the token endpoint. Supported values: **[client_credentials, authorization_code, refresh_token]**
 |**response_types**|	Required | Array of the OAuth 2.0 response type strings that the client can use at the authorization endpoint. **value: [code id_token]**
 |**application_type**|	Optional | Kind of the application. The only supported application type will be **web**
-|**id_token_signed_response_alg**| Required | Algorithm with which an id_token is to be signed</br></br>Supported values as constrained by **[FAPI-RW-Draft]**
+|**id_token_signed_response_alg**| Required | Algorithm with which an id_token is to be signed</br></br>Supported values as constrained by **[[FAPI-RW-Draft]](#nref-FAPI-RW-Draft)**
 |**id_token_encrypted_response_alg**| Required | JWE `alg` algorithm with which an id_token is to be encrypted
 |**id_token_encrypted_response_enc**| Required | JWE `enc` algorithm with which an id_token is to be encrypted
-|**request_object_signing_alg**| Optional | Algorithm which the ADR expects to sign the request object if a request object will be part of the authorization request sent to the Data Holder</br></br>If field not present in the request, data holders are expected to respond with an appropriate default value</br></br>Supported values as constrained by **[FAPI-RW-Draft]**
+|**request_object_signing_alg**| Optional | Algorithm which the ADR expects to sign the request object if a request object will be part of the authorization request sent to the Data Holder</br></br>If field not present in the request, data holders are expected to respond with an appropriate default value</br></br>Supported values as constrained by **[[FAPI-RW-Draft]](#nref-FAPI-RW-Draft)**
 |**software_statement**|	Required | Software statement assertion issued by the CDR Register
 
 #### ID Token Algorithm Selection Considerations
@@ -214,7 +214,7 @@ Participants **MUST** support, at a minimum, the following ID Token algorithms:
 
 
 ### Registration Validation
-Validation and use of the JWT and the claims described above **MUST** be performed in accordance with **[JWT]**.
+Validation and use of the JWT and the claims described above **MUST** be performed in accordance with **[[JWT]](#nref-JWT)**.
 
 SSA JWT signatures **MUST** be verified against the associated JWK published at the CDR Register [JWKS endpoint](#get-jwks).
 
@@ -285,14 +285,14 @@ Content-Type: application/json
 }
 ```
 
-On successful registration, the response **MUST** be returned to the  Data Recipient conforming to [Section 3.2.1](https://tools.ietf.org/html/rfc7591#section-3.2.1) of **[DCR]**.
+On successful registration, the response **MUST** be returned to the  Data Recipient conforming to [Section 3.2.1](https://tools.ietf.org/html/rfc7591#section-3.2.1) of **[[DCR]](#nref-DCR)**.
 
 | Claim | Required | Description
 |--------------|-------|-----------------------------------------------------------------------------------------------
 |**client_id**|	Required | Contains the dynamically generated identifier for the Software Product issued by the Data Holder
 |**client_id_issued_at**|	Optional | Time at which the client identifier was issued
 
-As per [Section 3.2.1](https://tools.ietf.org/html/rfc7591#section-3.2.1) of **[DCR]**, additionally, the authorisation server **MUST** return all registered metadata about this client, including any fields provisioned by the authorisation server itself.
+As per [Section 3.2.1](https://tools.ietf.org/html/rfc7591#section-3.2.1) of **[[DCR]](#nref-DCR)**, additionally, the authorisation server **MUST** return all registered metadata about this client, including any fields provisioned by the authorisation server itself.
 
 The Software Statement value **MUST** be returned unmodified. Client metadata elements used from the software statement **MUST** also be returned directly as top-level client metadata values in the registration response.
 
@@ -315,13 +315,13 @@ Content-Type: application/json
 }
 ```
 
-When an error condition occurs during a registration request, the response **MUST** be returned to the Accredited Data Recipient conforming to [Section 3.2.2](https://tools.ietf.org/html/rfc7591#section-3.2.2) of **[DCR]**.
+When an error condition occurs during a registration request, the response **MUST** be returned to the Accredited Data Recipient conforming to [Section 3.2.2](https://tools.ietf.org/html/rfc7591#section-3.2.2) of **[[DCR]](#nref-DCR)**.
 
 Duplicate registrations are not permitted so attempts to create a registration which already exists **MUST** return an HTTP 400 error.
 
 Registration error responses schemas are defined in the [DCR APIs](#dcr-apis) section.
 
-For those Registration errors which do not map to [Section 3.2.2](https://tools.ietf.org/html/rfc7591#section-3.2.2) of **[DCR]**, [HTTP Response Codes](https://consumerdatastandardsaustralia.github.io/standards/#http-response-codes) in the Consumer Data Standards **SHOULD** be used.
+For those Registration errors which do not map to [Section 3.2.2](https://tools.ietf.org/html/rfc7591#section-3.2.2) of **[[DCR]](#nref-DCR)**, [HTTP Response Codes](https://consumerdatastandardsaustralia.github.io/standards/#http-response-codes) in the Consumer Data Standards **SHOULD** be used.
 
 
 ### Registration Management

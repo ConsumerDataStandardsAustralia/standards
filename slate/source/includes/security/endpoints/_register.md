@@ -1,6 +1,6 @@
 ### Register Endpoints
 
-The CDR Register exposes an OIDC Configuration Endpoint with associated JWKS and token endpoints to faciliate issuance of access tokens to consume the protected Register APIs.
+The CDR Register exposes an OIDC Configuration Endpoint with associated JWKS and token endpoints to facilitate issuance of access tokens to consume the protected Register APIs.
 
 > Retrieve CDR Register OIDC Discovery Endpoint
 
