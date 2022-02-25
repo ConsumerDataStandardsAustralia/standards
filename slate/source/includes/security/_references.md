@@ -10,8 +10,8 @@
 | <a id="nref-DCR"></a>**[DCR]**          | OAuth 2.0 Dynamic Client Registration Protocol: <https://datatracker.ietf.org/doc/html/rfc7591>                                                                                |Jul 2015
 | <a id="nref-FAPI-R-Draft"></a>**[FAPI-R-Draft]**    | Financial-grade API - Part 1: Read Only API Security Profile: <https://openid.net/specs/openid-financial-api-part-1-ID2.html>                                                     |Draft-06
 | <a id="nref-FAPI-RW-Draft"></a>**[FAPI-RW-Draft]**  | Financial-grade API - Part 2: Read and Write API Security Profile: <https://openid.net/specs/openid-financial-api-part-2-ID2.html>                                                |Draft-06
-| <a id="nref-FAPI-1.0-Baseline"></a>**[FAPI-1.0-Baseline]**  | Financial-grade API Security Profile 1.0 - Part 1: Baseline: <https://openid.net/specs/openid-financial-api-part-1-1_0.html> | March 2021
-| <a id="nref-FAPI-1.0-Advanced"></a>**[FAPI-1.0-Advanced]**  | Financial-grade API Security Profile 1.0 - Part 2: Advanced: <https://openid.net/specs/openid-financial-api-part-2-1_0.html> | March 2021
+| <a id="nref-FAPI-1-0-Baseline"></a>**[FAPI-1.0-Baseline]**  | Financial-grade API Security Profile 1.0 - Part 1: Baseline: <https://openid.net/specs/openid-financial-api-part-1-1_0.html> | March 2021
+| <a id="nref-FAPI-1-0-Advanced"></a>**[FAPI-1.0-Advanced]**  | Financial-grade API Security Profile 1.0 - Part 2: Advanced: <https://openid.net/specs/openid-financial-api-part-2-1_0.html> | March 2021
 | <a id="nref-JARM"></a>**[JARM]**        | Financial-grade API: JWT Secured Authorization Response Mode for OAuth 2.0 (JARM): <https://bitbucket.org/openid/fapi/src/master/Financial_API_JWT_Secured_Authorization_Response_Mode.md>                                                                          |October 2020
 | <a id="nref-RFC8259"></a><a id="nref-JSON"></a>**[JSON]**        | The JavaScript Object Notation (JSON) Data Interchange Format: <https://tools.ietf.org/html/rfc8259>                                                                          |Dec 2017
 | <a id="nref-RFC7518"></a><a id="nref-JWA"></a>**[JWA]**          | JSON Web Algorithms (JWA): <https://tools.ietf.org/html/rfc7518>                                                                                                              |May 2015
@@ -49,7 +49,7 @@
 | <a id="iref-ANZSIC-2006"></a>**[ANZSIC-2006]**  | 1292.0 - Australian and New Zealand Standard Industrial Classification (ANZSIC), 2006 (Revision 2.0)  : <http://www.abs.gov.au/anzsic> |
 | <a id="iref-BCP195"></a>**[BCP195]**    | Recommendations for Secure Use of Transport Layer Security (TLS) and Datagram Transport Layer Security (DTLS): <https://tools.ietf.org/html/bcp195>
 | <a id="iref-CDR"></a>**[CDR]**          | Consumer Data Right: <https://www.accc.gov.au/focus-areas/consumer-data-right>                                                                                                    |
-| <a id="iref-E.164"></a>**[E.164]**      | The international public telecommunication numbering plan: <http://www.itu.int/rec/T-REC-E.164-201011-I/en>        |
+| <a id="iref-E-164"></a>**[E.164]**      | The international public telecommunication numbering plan: <http://www.itu.int/rec/T-REC-E.164-201011-I/en>        |
 | <a id="iref-FAPI"></a>**[FAPI]**        | Financial-Grade API - Home Page <https://openid.net/wg/fapi/>                                                                                                     |
 | <a id="iref-RFC3966"></a>**[RFC3966]**  | The tel URI for Telephone Numbers: <https://tools.ietf.org/html/rfc3966>                                            |
 | <a id="iref-RFC7231"></a>**[RFC7231]**  | Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content: <https://tools.ietf.org/html/rfc7231>  | |

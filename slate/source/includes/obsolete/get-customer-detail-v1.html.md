@@ -773,7 +773,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |areaCode|string|conditional|Required for non Mobile Phones, if field is present and refers to Australian code - the leading 0 should be omitted.|
 |number|string|mandatory|The actual phone number, with leading zeros as appropriate|
 |extension|string|optional|An extension number (if applicable)|
-|fullNumber|[ExternalRef](#common-field-types)|mandatory|Fully formatted phone number with country code, area code, number and extension incorporated. Formatted according to section 5.1.4. of [RFC 3966](https://www.ietf.org/rfc/rfc3966.txt)|
+|fullNumber|[ExternalRef](#common-field-types)|mandatory|Fully formatted phone number with country code, area code, number and extension incorporated. Formatted according to section 5.1.4. of **[[RFC3966]](#iref-RFC3966)**|
 
 #### Enumerated Values
 

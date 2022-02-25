@@ -737,7 +737,7 @@
         },
         "fullNumber": {
           "type": "string",
-          "description": "Fully formatted phone number with country code, area code, number and extension incorporated. Formatted according to section 5.1.4. of **[[RFC3966]](#nref-RFC3966)**",
+          "description": "Fully formatted phone number with country code, area code, number and extension incorporated. Formatted according to section 5.1.4. of **[[RFC3966]](#iref-RFC3966)**",
           "x-cds-type": "ExternalRef"
         }
       }

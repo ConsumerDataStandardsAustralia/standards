@@ -31,7 +31,7 @@ ID Tokens **MUST** be signed by Data Holders as specified in [section 8.6](https
 
 **From September 16th 2022 (FAPI 1.0 Migration Phase 2)**, the following requirements apply:
 
-* ID Tokens **MUST** be signed and **MAY** be encrypted when returned to a Data Recipient Software Product from the Token End Point, if the Data Holder supports the OIDC Authorization Code Flow in accordance with **[[FAPI-1.0-Advanced]](#nref-FAPI-1.0-Advanced)**.
+* ID Tokens **MUST** be signed and **MAY** be encrypted when returned to a Data Recipient Software Product from the Token End Point, if the Data Holder supports the OIDC Authorization Code Flow in accordance with **[[FAPI-1.0-Advanced]](#nref-FAPI-1-0-Advanced)**.
 
 
 #### OIDC Hybrid Flow requirements
@@ -43,7 +43,7 @@ The ID Token returned from the Authorisation End Point **MUST NOT** contain any 
 
 ### OIDC Authorization Code Flow requirements
 
-**From September 16th 2022**, if the Data Holder supports the OIDC Authorization Code Flow in accordance with **[[FAPI-1.0-Advanced]](#nref-FAPI-1.0-Advanced)**, ID Tokens **MUST** be signed and **MAY** encrypted when returned to a Data Recipient Software Product from the Token End Point.
+**From September 16th 2022**, if the Data Holder supports the OIDC Authorization Code Flow in accordance with **[[FAPI-1.0-Advanced]](#nref-FAPI-1-0-Advanced)**, ID Tokens **MUST** be signed and **MAY** encrypted when returned to a Data Recipient Software Product from the Token End Point.
 
 #### Hashing value for state and authorisation code
 The `c_hash` value **MUST** be generated according to [section 3.3.2.11](https://openid.net/specs/openid-connect-core-1_0.html#HybridIDToken) of **[[OIDC]](#nref-OIDC)**.
@@ -60,7 +60,7 @@ The process for refreshing an Access Token is described in [section 12.1](https:
 
 **From July 4th 2022 (FAPI 1.0 Migration Phase 1)**, the following requirements apply:
 
-* Data Holders **MUST** reject token request with an authorization code (Section 1.3.1 of **[RFC6749]**) if it has been previously used
+* Data Holders **MUST** reject token request with an authorization code (Section 1.3.1 of **[[RFC6749]](#nref-RFC6749)**) if it has been previously used
 
 
 ### Refresh Token
