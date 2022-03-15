@@ -18,7 +18,8 @@ This release minor errata and documentation fixes.
 
 |Change|Description|Link|
 |------|-----------|----|
-
+| Normative and Informative Tooltips | Added tooltips for all normative and informative references to assist in quick translation of references to the upstream document reference | [Normative References](../../##normative-references) |
+| Moved Normative and Informative references | Moved normative and informative references out of the Security standards section into the Introduction section to cover all standards | [Normative References](../../##normative-references) |
 
 ## API End Points
 
