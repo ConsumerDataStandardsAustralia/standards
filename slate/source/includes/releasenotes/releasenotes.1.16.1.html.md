@@ -18,7 +18,7 @@ This release minor errata and documentation fixes.
 
 |Change|Description|Link|
 |------|-----------|----|
-
+| Link to Endpoint Versioning | Added a link to the Endpoint Versioning Schedule in the High Level Standards's Versioning section | [Versioning](../../#versioning) |
 
 ## API End Points
 
