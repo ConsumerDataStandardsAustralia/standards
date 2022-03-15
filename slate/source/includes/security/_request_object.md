@@ -90,7 +90,7 @@ Data Holders **MUST** support Pushed Authorisation Requests (PAR) via the pushed
 
 **From September 16th 2022 (FAPI 1.0 Migration Phase 2)**, the following requirements apply in addition to the FAPI 1.0 Migration Phase 1 requirements:
 
-* Data Holders **MUST** support **[[RFC9126]](#nref-RFC9126)** (PAR) using **[[PKCE]](#nref-PKCE)** (RFC7636) with S256 as the code challenge method in accordance with **[[FAPI-1.0-Advanced]](#nref-FAPI-1-0-Advanced)** [section 5.2.2](https://openid.net/specs/openid-financial-api-part-2-1_0.html#authorization-server).
+* Data Holders **MUST** support **[[RFC9126]](#nref-RFC9126)** (PAR) using **[[PKCE]](#nref-PKCE)** (**[[RFC7636]](#nref-RFC7636)**) with S256 as the code challenge method in accordance with **[[FAPI-1.0-Advanced]](#nref-FAPI-1-0-Advanced)** [section 5.2.2](https://openid.net/specs/openid-financial-api-part-2-1_0.html#authorization-server).
 *	Data Holders **MUST** require PAR for authorisation request data in accordance with **[[RFC9126]](#nref-RFC9126)** where "require_pushed_authorization_requests" parameter is set to "true".
 *	Data Holders **MUST** require the request object to contain an "exp" claim that has a lifetime of no longer than 60 minutes after the "nbf" claim in accordance with **[[FAPI-1.0-Advanced]](#nref-FAPI-1-0-Advanced)** [section 5.2.2](https://openid.net/specs/openid-financial-api-part-2-1_0.html#authorization-server).
 * Authorisation request data **MUST only** be accepted using PAR.
@@ -107,11 +107,11 @@ Request objects which contain the ``cdr_arrangement_id`` claim **MUST ONLY** be 
 
 * Data Recipient Software Products **SHOULD** ONLY send authorisation requests using PAR in accordance with [section 5.2.3](https://openid.net/specs/openid-financial-api-part-2-1_0.html#confidential-client) of **[[FAPI-1.0-Advanced]](#nref-FAPI-1-0-Advanced)**.
 * Data Recipients **MUST only** send request object data using PAR, and **MUST NOT** send request object data to the Data Holder's Authorization endpoint, if the Data Holder's "require_pushed_authorization_requests" parameter is set to "true".
-*	Data Recipients Software Products **SHOULD** support **[[PKCE]](#nref-PKCE)** (RFC7636) and, if supported, **MUST** use S256 as the code challenge method.
+*	Data Recipients Software Products **SHOULD** support **[[PKCE]](#nref-PKCE)** (**[[RFC7636]](#nref-RFC7636)**) and, if supported, **MUST** use S256 as the code challenge method.
 *	Data Recipients Software Products **MUST** send request object containing a "nbf" claim and an "exp" claim that has a lifetime of no longer than 60 minutes after the "nbf" claim.
 * Data Recipient Software Products **MUST** ONLY use a "request_uri" value once
 
 **From September 16th 2022**, the following requirements apply in addition to the FAPI 1.0 Migration Phase 1 requirements:
 
-* Data Recipients **MUST** ONLY send authorisation request data using **[[RFC9126]](#nref-RFC9126)** (PAR) and use **[[PKCE]](#nref-PKCE)** (RFC7636) in accordance with **[[FAPI-1.0-Advanced]](#nref-FAPI-1-0-Advanced)**.
-*	Data Recipients Software Products **MUST** support **[[PKCE]](#nref-PKCE)** (RFC7636) and **MUST** use S256 as the code challenge method.
+* Data Recipients **MUST** ONLY send authorisation request data using **[[RFC9126]](#nref-RFC9126)** (PAR) and use **[[PKCE]](#nref-PKCE)** (**[[RFC7636]](#nref-RFC7636)**) in accordance with **[[FAPI-1.0-Advanced]](#nref-FAPI-1-0-Advanced)**.
+*	Data Recipients Software Products **MUST** support **[[PKCE]](#nref-PKCE)** (**[[RFC7636]](#nref-RFC7636)**) and **MUST** use S256 as the code challenge method.

@@ -28,14 +28,14 @@ Added the Baseline Security Provisions section
 *	Data Holders that do not support **[[PKCE]](#nref-PKCE)** **MUST** ignore PKCE claims and **MUST NOT** reject clients sending PKCE claims.
 * Data Holders **MUST NOT** reject requests with a "x-fapi-customer-ip-address" header containing a valid IPv4 or IPv6 address.
 *	Data Holders **MAY** support FAPI 1.0 Advanced Profile (**[[FAPI-1.0-Advanced]](#nref-FAPI-1-0-Advanced)**).
-*	Data Holders **MAY** support **[[PKCE]](#nref-PKCE)** (RFC7636).
+*	Data Holders **MAY** support **[[PKCE]](#nref-PKCE)** (**[[RFC7636]](#nref-RFC7636)**).
 *	Data Holders **MAY** allow the OIDC Authorization Code Flow, if supported, in accordance with FAPI 1.0 Advanced and **MUST** require **[[JARM]](#nref-JARM)** and **[[PKCE]](#nref-PKCE)**.
 
 **From September 16th 2022 (FAPI 1.0 Migration Phase 2)**, the following requirements apply in addition to the FAPI 1.0 Migration Phase 1 requirements:
 
 *	Data Holders **MUST** support the OIDC Hybrid Flow.
 *	Data Holders **MUST** support FAPI 1.0 Advanced Profile (**[[FAPI-1.0-Advanced]](#nref-FAPI-1-0-Advanced)**).
-*	Data Holders **MAY** support **[[PKCE]](#nref-PKCE)** (RFC7636).
+*	Data Holders **MAY** support **[[PKCE]](#nref-PKCE)** (**[[RFC7636]](#nref-RFC7636)**).
 *	Data Holders **SHOULD** support OIDC Authorization Code Flow.
 
 **From April 7th 2023 (FAPI 1.0 Migration Phase 3)**, the following requirements apply in addition to the FAPI 1.0 Migration Phase 2 requirements:
@@ -54,7 +54,7 @@ Added the Baseline Security Provisions section
 **From September 16th 2022**, the following requirements apply in addition to the FAPI 1.0 Migration Phase 1 requirements:
 
 *	Data Recipient Software Products **MUST** support FAPI 1.0 Advanced Profile (**[[FAPI-1.0-Advanced]](#nref-FAPI-1-0-Advanced)**).
-* Data Recipient Software Products **MUST** use **[[RFC9126]](#nref-RFC9126)** (PAR) with **[[PKCE]](#nref-PKCE)** (RFC7636) and, if supported, **MUST** use S256 as the code challenge method.
+* Data Recipient Software Products **MUST** use **[[RFC9126]](#nref-RFC9126)** (PAR) with **[[PKCE]](#nref-PKCE)** (**[[RFC7636]](#nref-RFC7636)**) and, if supported, **MUST** use S256 as the code challenge method.
 *	Data Recipient Software Products **SHOULD** use OIDC Authorization Code Flow.
 
 <a id="hybrid-flow"></a>
