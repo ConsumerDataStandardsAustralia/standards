@@ -82,7 +82,7 @@ Data Holders **MUST** support Pushed Authorisation Requests (PAR) via the pushed
 **From July 4th 2022 (FAPI 1.0 Migration Phase 1)**, the following requirements apply:
 
 * Data Holders **SHOULD** support **[[RFC9126]](#nref-RFC9126)**.
-* Data Holders, if **[[RFC9126]](#nref-RFC9126)** is supported, **MUST** use **[[PKCE]](#nref-PKCE)** and "code_challenge_methods_supported" as defined in **[RFC8414]** with S256 as the code challenge method.
+* Data Holders, if **[[RFC9126]](#nref-RFC9126)** is supported, **MUST** use **[[PKCE]](#nref-PKCE)** and "code_challenge_methods_supported" as defined in **[[RFC8414]](#nref-RFC8414)** with S256 as the code challenge method.
 *	Data Holders **SHOULD** reject the reuse of "request_uri" values.
 * Data Holders **SHOULD** reject authorisation request containing "request" parameter.
 * Data Holders **MAY** require **[[RFC9126]](#nref-RFC9126)** (PAR) using "require_pushed_authorization_requests" set to "true" in accordance with [section 5](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-par#section-5) of **[[RFC9126]](#nref-RFC9126)**.

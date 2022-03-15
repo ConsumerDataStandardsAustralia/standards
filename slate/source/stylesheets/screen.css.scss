@@ -665,6 +665,8 @@ html, body {
     color: #fff;
     text-decoration: none;
     text-align: center;
+    max-width: 25em;
+    word-wrap: break-word;
     background: rgba(0,0,0,0.85);
     -webkit-border-radius: 6px;
     -moz-border-radius: 6px;

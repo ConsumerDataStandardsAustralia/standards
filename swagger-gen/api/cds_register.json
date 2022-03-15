@@ -560,7 +560,7 @@
         },
         "jwks_uri": {
           "type": "string",
-          "description": "URL of the CDR Register's JSON Web Key Set [JWK] document. This contains the signing key(s) used to validate access tokens issued from the CDR Register. Note that this differs from the JWKS endpoint used to validate SSAs and CDR Register client authentication"
+          "description": "URL of the CDR Register's JSON Web Key Set **[[JWK]](#nref-JWK)** document. This contains the signing key(s) used to validate access tokens issued from the CDR Register. Note that this differs from the JWKS endpoint used to validate SSAs and CDR Register client authentication"
         },
         "token_endpoint": {
           "type": "string",
@@ -631,7 +631,7 @@
           "items": {
             "type": "string"
           },
-          "description": "JSON array containing a list of the JWS signing algorithms (alg values) supported by the token endpoint for the signature on the JWT (according to **[[JWT]](#nref-JWT)**) used to authenticate the client at the token endpoint for the \\\"private_key_jwt\\\" authentication method"
+          "description": "JSON array containing a list of the JWS signing algorithms (alg values) supported by the token endpoint for the signature on the JWT (according to **[[JWT]](#nref-JWT)**) used to authenticate the client at the token endpoint for the ``private_key_jwt`` authentication method"
         }
       }
     },

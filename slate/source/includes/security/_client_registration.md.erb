@@ -15,7 +15,7 @@ Such that:
 * Software Statements are issued with a **10 minute** expiry time
 * As per **[[FAPI-RW-Draft]](#nref-FAPI-RW-Draft)**, SSAs are signed by the CDR Register using **PS256**
 * CDR Register public keys are exposed on a dedicated JWKS URI endpoint
-* The CDR Register [JWKS](#get-jwks) is an unauthenticated endpoint, using TLS
+* The CDR Register [JWKS endpoint](#get-jwks) is an unauthenticated endpoint, using TLS
 * Data Recipients **MUST** present a valid SSA when undertaking dynamic client registration
 * Data Holders **MUST NOT** register Data Recipient software products unless they present a verified [Registration Request](#registration-request-using-jwt) with a verified [SSA](#ssa-definition)
 
