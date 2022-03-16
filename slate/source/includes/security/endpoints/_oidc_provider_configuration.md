@@ -35,7 +35,8 @@ Content-Type: application/json
   "request_object_signing_alg_values_supported": ["ES256", "PS256"],
   "token_endpoint_auth_methods_supported": ["private_key_jwt"],
   "tls_client_certificate_bound_access_tokens": true,
-  "claims_supported": ["name", "given_name", "family_name", "acr", "auth_time", "sub", "refresh_token_expires_at", "sharing_expires_at"]
+  "claims_supported": ["name", "given_name", "family_name", "acr", "auth_time", "sub", "refresh_token_expires_at", "sharing_expires_at"],
+  "code_challenge_methods_supported": "S256"
 }
 ```
 
