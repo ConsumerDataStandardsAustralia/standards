@@ -801,7 +801,7 @@
                                 }
                             },
                             "coolingOffDays": {
-                                "type": "string",
+                                "type": "integer",
                                 "x-cds-type": "PositiveInteger",
                                 "description": "Number of days in the cooling off period for the contract.  Mandatory for plans with type of MARKET "
                             },
@@ -2180,7 +2180,7 @@
                         "properties": {
                             "readIntervalLength": {
                                 "description": "Read interval length in minutes",
-                                "type": "string",
+                                "type": "integer",
                                 "x-cds-type": "PositiveInteger"
                             },
                             "aggregateValue": {
@@ -2346,7 +2346,7 @@
 								},
 								"count": {
 									"description": "Number of AC Connections in the group. For the suite of AC Connections to be considered as a group, all of the AC Connections included must have the same attributes",
-									"type": "string",
+									"type": "integer",
 									"x-cds-type": "PositiveInteger"
 								},
 								"equipmentType": {
