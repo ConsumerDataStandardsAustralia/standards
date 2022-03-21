@@ -75,7 +75,7 @@ See below for the data language standards for the payees scope:
 
 |Data cluster language|Permission language|Authorisation Scopes|
 |----------------------|------------------------------|-------------------|
-|**Saved payees**|Names and details of accounts you have saved; *(e.g. their BSB and Account Number, BPay CRN and Biller code, or NPP PayID)&dagger;*|bank:payees:read|
+|**Saved payees**|Names and details of accounts you have saved; *(e.g. their BSB and Account Number, BPAY CRN and Biller code, or NPP PayID)&dagger;*|bank:payees:read|
 
 <br/>
 
