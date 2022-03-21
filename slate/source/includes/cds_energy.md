@@ -137,7 +137,9 @@ Note that the results returned by this end point are expected to be ordered in d
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyPlanListResponse](#schemacdr-energy-apienergyplanlistresponse)|
-|4xx|[**Client Error**](https://tools.ietf.org/html/rfc7231#section-6.5)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
+|406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
+|422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
 
 ### Response Headers
 
@@ -145,7 +147,9 @@ Note that the results returned by this end point are expected to be ordered in d
 |---|---|---|---|---|
 |200|x-v|string||none|
 |200|x-fapi-interaction-id|string||none|
-|4xx|x-fapi-interaction-id|string||none|
+|400|x-fapi-interaction-id|string||none|
+|406|x-fapi-interaction-id|string||none|
+|422|x-fapi-interaction-id|string||none|
 
   
     <aside class="success">
@@ -643,7 +647,9 @@ Obtain detailed information on a single energy plan offered openly to the market
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyPlanResponse](#schemacdr-energy-apienergyplanresponse)|
-|4xx|[**Client Error**](https://tools.ietf.org/html/rfc7231#section-6.5)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[404 - Invalid Resource](#error-404-resource-invalid)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
+|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[404 - Invalid Resource](#error-404-resource-invalid)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
+|406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
 
 ### Response Headers
 
@@ -651,7 +657,9 @@ Obtain detailed information on a single energy plan offered openly to the market
 |---|---|---|---|---|
 |200|x-v|string||none|
 |200|x-fapi-interaction-id|string||none|
-|4xx|x-fapi-interaction-id|string||none|
+|400|x-fapi-interaction-id|string||none|
+|404|x-fapi-interaction-id|string||none|
+|406|x-fapi-interaction-id|string||none|
 
   
     <aside class="success">
@@ -768,7 +776,9 @@ Obtain a list of service points owned by the customer that has authorised the cu
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyServicePointListResponse](#schemacdr-energy-apienergyservicepointlistresponse)|
-|4xx|[**Client Error**](https://tools.ietf.org/html/rfc7231#section-6.5)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
+|406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
+|422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
 
 ### Response Headers
 
@@ -776,7 +786,9 @@ Obtain a list of service points owned by the customer that has authorised the cu
 |---|---|---|---|---|
 |200|x-v|string||none|
 |200|x-fapi-interaction-id|string||none|
-|4xx|x-fapi-interaction-id|string||none|
+|400|x-fapi-interaction-id|string||none|
+|406|x-fapi-interaction-id|string||none|
+|422|x-fapi-interaction-id|string||none|
 
   
     
@@ -955,7 +967,9 @@ Obtain detailed standing information for a specific service point that is owned 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyServicePointDetailResponse](#schemacdr-energy-apienergyservicepointdetailresponse)|
-|4xx|[**Client Error**](https://tools.ietf.org/html/rfc7231#section-6.5)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[404 - Unavailable Service Point](#error-404-unavailable-service-point)</li><li>[404 - Invalid Service Point](#error-404-invalid-service-point)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
+|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[404 - Unavailable Service Point](#error-404-unavailable-service-point)</li><li>[404 - Invalid Service Point](#error-404-invalid-service-point)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
+|406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
 
 ### Response Headers
 
@@ -963,7 +977,9 @@ Obtain detailed standing information for a specific service point that is owned 
 |---|---|---|---|---|
 |200|x-v|string||none|
 |200|x-fapi-interaction-id|string||none|
-|4xx|x-fapi-interaction-id|string||none|
+|400|x-fapi-interaction-id|string||none|
+|404|x-fapi-interaction-id|string||none|
+|406|x-fapi-interaction-id|string||none|
 
   
     
@@ -1097,7 +1113,10 @@ Obtain a list of electricity usage data from a particular service point
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyUsageListResponse](#schemacdr-energy-apienergyusagelistresponse)|
-|4xx|[**Client Error**](https://tools.ietf.org/html/rfc7231#section-6.5)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Invalid Page](#error-422-field-invalid-page)</li><li>[404 - Unavailable Service Point](#error-404-unavailable-service-point)</li><li>[404 - Invalid Service Point](#error-404-invalid-service-point)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
+|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[404 - Unavailable Service Point](#error-404-unavailable-service-point)</li><li>[404 - Invalid Service Point](#error-404-invalid-service-point)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
+|406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
+|422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
 
 ### Response Headers
 
@@ -1105,7 +1124,10 @@ Obtain a list of electricity usage data from a particular service point
 |---|---|---|---|---|
 |200|x-v|string||none|
 |200|x-fapi-interaction-id|string||none|
-|4xx|x-fapi-interaction-id|string||none|
+|400|x-fapi-interaction-id|string||none|
+|404|x-fapi-interaction-id|string||none|
+|406|x-fapi-interaction-id|string||none|
+|422|x-fapi-interaction-id|string||none|
 
   
     
@@ -1238,7 +1260,9 @@ Obtain usage data for all service points associated with the customer
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyUsageListResponse](#schemacdr-energy-apienergyusagelistresponse)|
-|4xx|[**Client Error**](https://tools.ietf.org/html/rfc7231#section-6.5)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
+|406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
+|422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
 
 ### Response Headers
 
@@ -1246,7 +1270,9 @@ Obtain usage data for all service points associated with the customer
 |---|---|---|---|---|
 |200|x-v|string||none|
 |200|x-fapi-interaction-id|string||none|
-|4xx|x-fapi-interaction-id|string||none|
+|400|x-fapi-interaction-id|string||none|
+|406|x-fapi-interaction-id|string||none|
+|422|x-fapi-interaction-id|string||none|
 
   
     
@@ -1398,7 +1424,9 @@ Obtain the electricity usage data for a specific set of service points
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyUsageListResponse](#schemacdr-energy-apienergyusagelistresponse)|
-|4xx|[**Client Error**](https://tools.ietf.org/html/rfc7231#section-6.5)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Invalid Page](#error-422-field-invalid-page)</li><li>[422 - Unavailable Service Point](#error-422-unavailable-service-point)</li><li>[422 - Invalid Service Point](#error-422-invalid-service-point)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
+|406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
+|422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li><li>[422 - Unavailable Service Point](#error-422-unavailable-service-point)</li><li>[422 - Invalid Service Point](#error-422-invalid-service-point)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
 
 ### Response Headers
 
@@ -1406,7 +1434,9 @@ Obtain the electricity usage data for a specific set of service points
 |---|---|---|---|---|
 |200|x-v|string||none|
 |200|x-fapi-interaction-id|string||none|
-|4xx|x-fapi-interaction-id|string||none|
+|400|x-fapi-interaction-id|string||none|
+|406|x-fapi-interaction-id|string||none|
+|422|x-fapi-interaction-id|string||none|
 
   
     
@@ -1551,7 +1581,9 @@ Obtain a list of DER data from a particular service point
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyDerDetailResponse](#schemacdr-energy-apienergyderdetailresponse)|
-|4xx|[**Client Error**](https://tools.ietf.org/html/rfc7231#section-6.5)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[404 - Unavailable Service Point](#error-404-unavailable-service-point)</li><li>[404 - Invalid Service Point](#error-404-invalid-service-point)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
+|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[404 - Unavailable Service Point](#error-404-unavailable-service-point)</li><li>[404 - Invalid Service Point](#error-404-invalid-service-point)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
+|406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
 
 ### Response Headers
 
@@ -1559,7 +1591,9 @@ Obtain a list of DER data from a particular service point
 |---|---|---|---|---|
 |200|x-v|string||none|
 |200|x-fapi-interaction-id|string||none|
-|4xx|x-fapi-interaction-id|string||none|
+|400|x-fapi-interaction-id|string||none|
+|404|x-fapi-interaction-id|string||none|
+|406|x-fapi-interaction-id|string||none|
 
   
     
@@ -1716,7 +1750,9 @@ Obtain DER data for all service points associated with the customer
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyDerListResponse](#schemacdr-energy-apienergyderlistresponse)|
-|4xx|[**Client Error**](https://tools.ietf.org/html/rfc7231#section-6.5)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
+|406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
+|422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
 
 ### Response Headers
 
@@ -1724,7 +1760,9 @@ Obtain DER data for all service points associated with the customer
 |---|---|---|---|---|
 |200|x-v|string||none|
 |200|x-fapi-interaction-id|string||none|
-|4xx|x-fapi-interaction-id|string||none|
+|400|x-fapi-interaction-id|string||none|
+|406|x-fapi-interaction-id|string||none|
+|422|x-fapi-interaction-id|string||none|
 
   
     
@@ -1900,7 +1938,9 @@ Obtain DER data for a specific set of service points
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyDerListResponse](#schemacdr-energy-apienergyderlistresponse)|
-|4xx|[**Client Error**](https://tools.ietf.org/html/rfc7231#section-6.5)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Invalid Page](#error-422-field-invalid-page)</li><li>[422 - Unavailable Service Point](#error-422-unavailable-service-point)</li><li>[422 - Invalid Service Point](#error-422-invalid-service-point)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
+|406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
+|422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li><li>[422 - Unavailable Service Point](#error-422-unavailable-service-point)</li><li>[422 - Invalid Service Point](#error-422-invalid-service-point)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
 
 ### Response Headers
 
@@ -1908,7 +1948,9 @@ Obtain DER data for a specific set of service points
 |---|---|---|---|---|
 |200|x-v|string||none|
 |200|x-fapi-interaction-id|string||none|
-|4xx|x-fapi-interaction-id|string||none|
+|400|x-fapi-interaction-id|string||none|
+|406|x-fapi-interaction-id|string||none|
+|422|x-fapi-interaction-id|string||none|
 
   
     
@@ -2033,7 +2075,9 @@ Obtain the list of energy accounts available under the authorised consent
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyAccountListResponse](#schemacdr-energy-apienergyaccountlistresponse)|
-|4xx|[**Client Error**](https://tools.ietf.org/html/rfc7231#section-6.5)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
+|406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
+|422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
 
 ### Response Headers
 
@@ -2041,7 +2085,9 @@ Obtain the list of energy accounts available under the authorised consent
 |---|---|---|---|---|
 |200|x-v|string||none|
 |200|x-fapi-interaction-id|string||none|
-|4xx|x-fapi-interaction-id|string||none|
+|400|x-fapi-interaction-id|string||none|
+|406|x-fapi-interaction-id|string||none|
+|422|x-fapi-interaction-id|string||none|
 
   
     
@@ -2478,7 +2524,9 @@ Obtain detailed information for a specific energy account
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyAccountDetailResponse](#schemacdr-energy-apienergyaccountdetailresponse)|
-|4xx|[**Client Error**](https://tools.ietf.org/html/rfc7231#section-6.5)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[404 - Unavailable Energy Account](#error-404-unavailable-energy-account)</li><li>[404 - Invalid Energy Account](#error-404-invalid-energy-account)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
+|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[404 - Unavailable Energy Account](#error-404-unavailable-energy-account)</li><li>[404 - Invalid Energy Account](#error-404-invalid-energy-account)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
+|406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
 
 ### Response Headers
 
@@ -2486,7 +2534,9 @@ Obtain detailed information for a specific energy account
 |---|---|---|---|---|
 |200|x-v|string||none|
 |200|x-fapi-interaction-id|string||none|
-|4xx|x-fapi-interaction-id|string||none|
+|400|x-fapi-interaction-id|string||none|
+|404|x-fapi-interaction-id|string||none|
+|406|x-fapi-interaction-id|string||none|
 
   
     
@@ -2599,7 +2649,9 @@ Obtain the agreed payment schedule and details, if any, for a specific energy ac
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyPaymentScheduleResponse](#schemacdr-energy-apienergypaymentscheduleresponse)|
-|4xx|[**Client Error**](https://tools.ietf.org/html/rfc7231#section-6.5)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[404 - Unavailable Energy Account](#error-404-unavailable-energy-account)</li><li>[404 - Invalid Energy Account](#error-404-invalid-energy-account)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
+|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[404 - Unavailable Energy Account](#error-404-unavailable-energy-account)</li><li>[404 - Invalid Energy Account](#error-404-invalid-energy-account)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
+|406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
 
 ### Response Headers
 
@@ -2607,7 +2659,9 @@ Obtain the agreed payment schedule and details, if any, for a specific energy ac
 |---|---|---|---|---|
 |200|x-v|string||none|
 |200|x-fapi-interaction-id|string||none|
-|4xx|x-fapi-interaction-id|string||none|
+|400|x-fapi-interaction-id|string||none|
+|404|x-fapi-interaction-id|string||none|
+|406|x-fapi-interaction-id|string||none|
 
   
     
@@ -2716,7 +2770,9 @@ Obtain the details of any concessions or arrangements applied to a specific ener
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyConcessionsResponse](#schemacdr-energy-apienergyconcessionsresponse)|
-|4xx|[**Client Error**](https://tools.ietf.org/html/rfc7231#section-6.5)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[404 - Unavailable Energy Account](#error-404-unavailable-energy-account)</li><li>[404 - Invalid Energy Account](#error-404-invalid-energy-account)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
+|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[404 - Unavailable Energy Account](#error-404-unavailable-energy-account)</li><li>[404 - Invalid Energy Account](#error-404-invalid-energy-account)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
+|406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
 
 ### Response Headers
 
@@ -2724,7 +2780,9 @@ Obtain the details of any concessions or arrangements applied to a specific ener
 |---|---|---|---|---|
 |200|x-v|string||none|
 |200|x-fapi-interaction-id|string||none|
-|4xx|x-fapi-interaction-id|string||none|
+|400|x-fapi-interaction-id|string||none|
+|404|x-fapi-interaction-id|string||none|
+|406|x-fapi-interaction-id|string||none|
 
   
     
@@ -2821,7 +2879,9 @@ Obtain the current balance for a specific account
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyBalanceResponse](#schemacdr-energy-apienergybalanceresponse)|
-|4xx|[**Client Error**](https://tools.ietf.org/html/rfc7231#section-6.5)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[404 - Unavailable Energy Account](#error-404-unavailable-energy-account)</li><li>[404 - Invalid Energy Account](#error-404-invalid-energy-account)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
+|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[404 - Unavailable Energy Account](#error-404-unavailable-energy-account)</li><li>[404 - Invalid Energy Account](#error-404-invalid-energy-account)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
+|406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
 
 ### Response Headers
 
@@ -2829,7 +2889,9 @@ Obtain the current balance for a specific account
 |---|---|---|---|---|
 |200|x-v|string||none|
 |200|x-fapi-interaction-id|string||none|
-|4xx|x-fapi-interaction-id|string||none|
+|400|x-fapi-interaction-id|string||none|
+|404|x-fapi-interaction-id|string||none|
+|406|x-fapi-interaction-id|string||none|
 
   
     
@@ -2939,7 +3001,9 @@ Obtain the current balance for all accounts
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyBalanceListResponse](#schemacdr-energy-apienergybalancelistresponse)|
-|4xx|[**Client Error**](https://tools.ietf.org/html/rfc7231#section-6.5)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
+|406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
+|422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
 
 ### Response Headers
 
@@ -2947,7 +3011,9 @@ Obtain the current balance for all accounts
 |---|---|---|---|---|
 |200|x-v|string||none|
 |200|x-fapi-interaction-id|string||none|
-|4xx|x-fapi-interaction-id|string||none|
+|400|x-fapi-interaction-id|string||none|
+|406|x-fapi-interaction-id|string||none|
+|422|x-fapi-interaction-id|string||none|
 
   
     
@@ -3076,7 +3142,9 @@ Obtain the current balance for a specified set of accounts
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyBalanceListResponse](#schemacdr-energy-apienergybalancelistresponse)|
-|4xx|[**Client Error**](https://tools.ietf.org/html/rfc7231#section-6.5)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Invalid Page](#error-422-field-invalid-page)</li><li>[422 - Unavailable Energy Account](#error-422-unavailable-energy-account)</li><li>[422 - Invalid Energy Account](#error-422-invalid-energy-account)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
+|406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
+|422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li><li>[422 - Unavailable Energy Account](#error-422-unavailable-energy-account)</li><li>[422 - Invalid Energy Account](#error-422-invalid-energy-account)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
 
 ### Response Headers
 
@@ -3084,7 +3152,9 @@ Obtain the current balance for a specified set of accounts
 |---|---|---|---|---|
 |200|x-v|string||none|
 |200|x-fapi-interaction-id|string||none|
-|4xx|x-fapi-interaction-id|string||none|
+|400|x-fapi-interaction-id|string||none|
+|406|x-fapi-interaction-id|string||none|
+|422|x-fapi-interaction-id|string||none|
 
   
     
@@ -3248,7 +3318,10 @@ Obtain the invoices for a specific account
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyInvoiceListResponse](#schemacdr-energy-apienergyinvoicelistresponse)|
-|4xx|[**Client Error**](https://tools.ietf.org/html/rfc7231#section-6.5)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Invalid Page](#error-422-field-invalid-page)</li><li>[404 - Unavailable Energy Account](#error-404-unavailable-energy-account)</li><li>[404 - Invalid Energy Account](#error-404-invalid-energy-account)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
+|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[404 - Unavailable Energy Account](#error-404-unavailable-energy-account)</li><li>[404 - Invalid Energy Account](#error-404-invalid-energy-account)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
+|406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
+|422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
 
 ### Response Headers
 
@@ -3256,7 +3329,10 @@ Obtain the invoices for a specific account
 |---|---|---|---|---|
 |200|x-v|string||none|
 |200|x-fapi-interaction-id|string||none|
-|4xx|x-fapi-interaction-id|string||none|
+|400|x-fapi-interaction-id|string||none|
+|404|x-fapi-interaction-id|string||none|
+|406|x-fapi-interaction-id|string||none|
+|422|x-fapi-interaction-id|string||none|
 
   
     
@@ -3419,7 +3495,9 @@ Obtain the invoices for all accounts
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyInvoiceListResponse](#schemacdr-energy-apienergyinvoicelistresponse)|
-|4xx|[**Client Error**](https://tools.ietf.org/html/rfc7231#section-6.5)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
+|406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
+|422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
 
 ### Response Headers
 
@@ -3427,7 +3505,9 @@ Obtain the invoices for all accounts
 |---|---|---|---|---|
 |200|x-v|string||none|
 |200|x-fapi-interaction-id|string||none|
-|4xx|x-fapi-interaction-id|string||none|
+|400|x-fapi-interaction-id|string||none|
+|406|x-fapi-interaction-id|string||none|
+|422|x-fapi-interaction-id|string||none|
 
   
     
@@ -3609,7 +3689,9 @@ Obtain invoices for a specified set of accounts
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyInvoiceListResponse](#schemacdr-energy-apienergyinvoicelistresponse)|
-|4xx|[**Client Error**](https://tools.ietf.org/html/rfc7231#section-6.5)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Invalid Page](#error-422-field-invalid-page)</li><li>[422 - Unavailable Energy Account](#error-422-unavailable-energy-account)</li><li>[422 - Invalid Energy Account](#error-422-invalid-energy-account)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
+|406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
+|422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li><li>[422 - Unavailable Energy Account](#error-422-unavailable-energy-account)</li><li>[422 - Invalid Energy Account](#error-422-invalid-energy-account)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
 
 ### Response Headers
 
@@ -3617,7 +3699,9 @@ Obtain invoices for a specified set of accounts
 |---|---|---|---|---|
 |200|x-v|string||none|
 |200|x-fapi-interaction-id|string||none|
-|4xx|x-fapi-interaction-id|string||none|
+|400|x-fapi-interaction-id|string||none|
+|406|x-fapi-interaction-id|string||none|
+|422|x-fapi-interaction-id|string||none|
 
   
     
@@ -3798,7 +3882,10 @@ Obtain the billing transactions for a specific account
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyBillingListResponse](#schemacdr-energy-apienergybillinglistresponse)|
-|4xx|[**Client Error**](https://tools.ietf.org/html/rfc7231#section-6.5)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Invalid Page](#error-422-field-invalid-page)</li><li>[404 - Unavailable Energy Account](#error-404-unavailable-energy-account)</li><li>[404 - Invalid Energy Account](#error-404-invalid-energy-account)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
+|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[404 - Unavailable Energy Account](#error-404-unavailable-energy-account)</li><li>[404 - Invalid Energy Account](#error-404-invalid-energy-account)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
+|406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
+|422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
 
 ### Response Headers
 
@@ -3806,7 +3893,10 @@ Obtain the billing transactions for a specific account
 |---|---|---|---|---|
 |200|x-v|string||none|
 |200|x-fapi-interaction-id|string||none|
-|4xx|x-fapi-interaction-id|string||none|
+|400|x-fapi-interaction-id|string||none|
+|404|x-fapi-interaction-id|string||none|
+|406|x-fapi-interaction-id|string||none|
+|422|x-fapi-interaction-id|string||none|
 
   
     
@@ -3986,7 +4076,9 @@ Obtain billing transactions for all accounts
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyBillingListResponse](#schemacdr-energy-apienergybillinglistresponse)|
-|4xx|[**Client Error**](https://tools.ietf.org/html/rfc7231#section-6.5)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
+|406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
+|422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
 
 ### Response Headers
 
@@ -3994,7 +4086,9 @@ Obtain billing transactions for all accounts
 |---|---|---|---|---|
 |200|x-v|string||none|
 |200|x-fapi-interaction-id|string||none|
-|4xx|x-fapi-interaction-id|string||none|
+|400|x-fapi-interaction-id|string||none|
+|406|x-fapi-interaction-id|string||none|
+|422|x-fapi-interaction-id|string||none|
 
   
     
@@ -4193,7 +4287,9 @@ Obtain billing for a specified set of accounts
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyBillingListResponse](#schemacdr-energy-apienergybillinglistresponse)|
-|4xx|[**Client Error**](https://tools.ietf.org/html/rfc7231#section-6.5)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Invalid Page](#error-422-field-invalid-page)</li><li>[422 - Unavailable Energy Account](#error-422-unavailable-energy-account)</li><li>[422 - Invalid Energy Account](#error-422-invalid-energy-account)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
+|406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
+|422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li><li>[422 - Unavailable Energy Account](#error-422-unavailable-energy-account)</li><li>[422 - Invalid Energy Account](#error-422-invalid-energy-account)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
 
 ### Response Headers
 
@@ -4201,7 +4297,9 @@ Obtain billing for a specified set of accounts
 |---|---|---|---|---|
 |200|x-v|string||none|
 |200|x-fapi-interaction-id|string||none|
-|4xx|x-fapi-interaction-id|string||none|
+|400|x-fapi-interaction-id|string||none|
+|406|x-fapi-interaction-id|string||none|
+|422|x-fapi-interaction-id|string||none|
 
   
     

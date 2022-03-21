@@ -126,7 +126,8 @@ For example, a person whose given names are "John Paul Winston" but the data hol
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseCommonCustomer](#schemacdr-common-apiresponsecommoncustomer)|
-|4xx|[**Client Error**](https://tools.ietf.org/html/rfc7231#section-6.5)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-common-apiresponseerrorlistv2)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-common-apiresponseerrorlistv2)|
+|406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-common-apiresponseerrorlistv2)|
 
 ### Response Headers
 
@@ -134,7 +135,8 @@ For example, a person whose given names are "John Paul Winston" but the data hol
 |---|---|---|---|---|
 |200|x-v|string||The [version](#response-headers) of the API end point that the data holder has responded with.|
 |200|x-fapi-interaction-id|string||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
-|4xx|x-fapi-interaction-id|string||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
+|400|x-fapi-interaction-id|string||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
+|406|x-fapi-interaction-id|string||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 
 
 
@@ -359,7 +361,8 @@ Obsolete versions: [v1](includes/obsolete/get-customer-detail-v1.html)
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseCommonCustomerDetailV2](#schemacdr-common-apiresponsecommoncustomerdetailv2)|
-|4xx|[**Client Error**](https://tools.ietf.org/html/rfc7231#section-6.5)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-common-apiresponseerrorlistv2)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-common-apiresponseerrorlistv2)|
+|406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-common-apiresponseerrorlistv2)|
 
 ### Response Headers
 
@@ -367,7 +370,8 @@ Obsolete versions: [v1](includes/obsolete/get-customer-detail-v1.html)
 |---|---|---|---|---|
 |200|x-v|string||The [version](#response-headers) of the API end point that the data holder has responded with.|
 |200|x-fapi-interaction-id|string||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
-|4xx|x-fapi-interaction-id|string||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
+|400|x-fapi-interaction-id|string||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
+|406|x-fapi-interaction-id|string||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 
 
 
@@ -455,7 +459,8 @@ Obtain a health check status for the implementation
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseCommonDiscoveryStatus](#schemacdr-common-apiresponsecommondiscoverystatus)|
-|4xx|[**Client Error**](https://tools.ietf.org/html/rfc7231#section-6.5)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-common-apiresponseerrorlistv2)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-common-apiresponseerrorlistv2)|
+|406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-common-apiresponseerrorlistv2)|
 
 ### Response Headers
 
@@ -549,7 +554,8 @@ Obtain a list of scheduled outages for the implementation
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseDiscoveryOutagesList](#schemacdr-common-apiresponsediscoveryoutageslist)|
-|4xx|[**Client Error**](https://tools.ietf.org/html/rfc7231#section-6.5)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-common-apiresponseerrorlistv2)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-common-apiresponseerrorlistv2)|
+|406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-common-apiresponseerrorlistv2)|
 
 ### Response Headers
 
@@ -718,8 +724,8 @@ This operation does not require authentication
 |---|---|---|---|
 |data|object|mandatory|none|
 |» customerUType|string|mandatory|The type of customer object that is present|
-|» person|[CommonPerson](#schemacdr-common-apicommonperson)|conditional|Mandatory if `customerUType` is `person`|
-|» organisation|[CommonOrganisation](#schemacdr-common-apicommonorganisation)|conditional|Mandatory if `customerUType` is `organisation`|
+|» person|[CommonPerson](#schemacdr-common-apicommonperson)|conditional|none|
+|» organisation|[CommonOrganisation](#schemacdr-common-apicommonorganisation)|conditional|none|
 |links|[Links](#schemacdr-common-apilinks)|mandatory|none|
 |meta|[Meta](#schemacdr-common-apimeta)|optional|none|
 
@@ -880,8 +886,8 @@ This operation does not require authentication
 |---|---|---|---|
 |data|object|mandatory|none|
 |» customerUType|string|mandatory|The type of customer object that is present|
-|» person|[CommonPersonDetailV2](#schemacdr-common-apicommonpersondetailv2)|conditional|Mandatory if `customerUType` is `person`|
-|» organisation|[CommonOrganisationDetailV2](#schemacdr-common-apicommonorganisationdetailv2)|conditional|Mandatory if `customerUType` is `organisation`|
+|» person|[CommonPersonDetailV2](#schemacdr-common-apicommonpersondetailv2)|conditional|none|
+|» organisation|[CommonOrganisationDetailV2](#schemacdr-common-apicommonorganisationdetailv2)|conditional|none|
 |links|[Links](#schemacdr-common-apilinks)|mandatory|none|
 |meta|[Meta](#schemacdr-common-apimeta)|optional|none|
 

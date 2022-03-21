@@ -1,9 +1,8 @@
 {
-  "swagger": "2.0",
+  "openapi": "3.0.3",
   "info": {
     "title": "CDR Common API",
     "description": "Consumer Data Standards APIs created by the Data Standards Body (DSB), with the Data Standards Chair as the decision maker to meet the needs of the Consumer Data Right",
-    "version": "1.16.0",
     "contact": {
       "name": "Consumer Data Standards",
       "url": "https://consumerdatastandards.gov.au",
@@ -12,50 +11,79 @@
     "license": {
       "name": "MIT License",
       "url": "https://opensource.org/licenses/MIT"
-    }
+    },
+    "version": "1.16.0"
   },
-  "host": "data.holder.com.au",
-  "basePath": "/cds-au/v1",
-  "schemes": [
-    "https"
-  ],
-  "consumes": [
-    "application/json"
-  ],
-  "produces": [
-    "application/json"
+  "servers": [
+    {
+      "url": "https://data.holder.com.au/cds-au/v1"
+    }
   ],
   "paths": {
     "/common/customer": {
       "get": {
-        "summary": "Get Customer",
-        "description": "Obtain basic information on the customer that has authorised the current session\n\n### Conventions\nIn the customer payloads relevant conventions are explained here, in one place.\n\n#### Given Names\n\n`firstName` represents the first of a person's given names.\n\n`middleNames` represents a collection of given names if the person has more than one given name.\n\nWhere a data holder holds a person's given names as a single string in source systems, it may not possible in some situations to reliably split these given names into their component first and middle names. In these situations, data holders MAY use the `firstName` field to return the single string of given names and an empty `middleNames` array.\n\nFor example, a person whose given names are \"John Paul Winston\" but the data holder cannot determine what is the first name, can return `\"firstName\": \"John Paul Winston\"`.",
-        "operationId": "getCustomer",
-        "x-scopes": [
-          "common:customer.basic:read"
-        ],
         "tags": [
           "Common",
           "Customer"
         ],
+        "summary": "Get Customer",
+        "description": "Obtain basic information on the customer that has authorised the current session\n\n### Conventions\nIn the customer payloads relevant conventions are explained here, in one place.\n\n#### Given Names\n\n`firstName` represents the first of a person's given names.\n\n`middleNames` represents a collection of given names if the person has more than one given name.\n\nWhere a data holder holds a person's given names as a single string in source systems, it may not possible in some situations to reliably split these given names into their component first and middle names. In these situations, data holders MAY use the `firstName` field to return the single string of given names and an empty `middleNames` array.\n\nFor example, a person whose given names are \"John Paul Winston\" but the data holder cannot determine what is the first name, can return `\"firstName\": \"John Paul Winston\"`.",
+        "operationId": "getCustomer",
         "parameters": [
           {
-            "$ref": "#/parameters/RequestHeader_x-v"
+            "name": "x-v",
+            "in": "header",
+            "description": "Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           },
           {
-            "$ref": "#/parameters/RequestHeader_x-min-v"
+            "name": "x-min-v",
+            "in": "header",
+            "description": "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.",
+            "schema": {
+              "type": "string"
+            }
           },
           {
-            "$ref": "#/parameters/RequestHeader_x-fapi-interaction-id"
+            "name": "x-fapi-interaction-id",
+            "in": "header",
+            "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
+            "schema": {
+              "type": "string"
+            }
           },
           {
-            "$ref": "#/parameters/RequestHeader_x-fapi-auth-date"
+            "name": "x-fapi-auth-date",
+            "in": "header",
+            "description": "The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended) if the customer is currently logged. Otherwise optional where the customer has not logged in. Not to be included for unauthenticated calls.",
+            "schema": {
+              "type": "string",
+              "x-conditional": true
+            },
+            "x-conditional": true
           },
           {
-            "$ref": "#/parameters/RequestHeader_x-fapi-customer-ip-address"
+            "name": "x-fapi-customer-ip-address",
+            "in": "header",
+            "description": "The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
+            "schema": {
+              "type": "string"
+            }
           },
           {
-            "$ref": "#/parameters/RequestHeader_x-cds-client-headers"
+            "name": "x-cds-client-headers",
+            "in": "header",
+            "description": "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
+            "schema": {
+              "type": "string",
+              "x-conditional": true,
+              "x-cds-type": "Base64"
+            },
+            "x-conditional": true,
+            "x-cds-type": "Base64"
           }
         ],
         "responses": {
@@ -63,64 +91,133 @@
             "description": "Success",
             "headers": {
               "x-v": {
-                "type": "string",
-                "description": "The [version](#response-headers) of the API end point that the data holder has responded with."
+                "description": "The [version](#response-headers) of the API end point that the data holder has responded with.",
+                "schema": {
+                  "type": "string"
+                }
               },
               "x-fapi-interaction-id": {
-                "type": "string",
-                "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
+                "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
+                "schema": {
+                  "type": "string"
+                }
               }
             },
-            "schema": {
-              "$ref": "#/definitions/ResponseCommonCustomer"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseCommonCustomer"
+                }
+              }
             }
           },
-          "4xx": {
-            "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
+          "400": {
+            "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
             "headers": {
               "x-fapi-interaction-id": {
-                "type": "string",
-                "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
+                "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
+                "schema": {
+                  "type": "string"
+                }
               }
             },
-            "schema": {
-              "$ref": "#/definitions/ResponseErrorListV2"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseErrorListV2"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
+            "headers": {
+              "x-fapi-interaction-id": {
+                "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseErrorListV2"
+                }
+              }
             }
           }
         },
+        "x-scopes": [
+          "common:customer.basic:read"
+        ],
         "x-version": "1"
       }
     },
     "/common/customer/detail": {
       "get": {
-        "summary": "Get Customer Detail",
-        "description": "Obtain detailed information on the authorised customer within the current session.\n\nObsolete versions: [v1](includes/obsolete/get-customer-detail-v1.html)",
-        "operationId": "getCustomerDetail",
-        "x-scopes": [
-          "common:customer.detail:read"
-        ],
         "tags": [
           "Common",
           "Customer"
         ],
+        "summary": "Get Customer Detail",
+        "description": "Obtain detailed information on the authorised customer within the current session.\n\nObsolete versions: [v1](includes/obsolete/get-customer-detail-v1.html)",
+        "operationId": "getCustomerDetail",
         "parameters": [
           {
-            "$ref": "#/parameters/RequestHeader_x-v"
+            "name": "x-v",
+            "in": "header",
+            "description": "Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           },
           {
-            "$ref": "#/parameters/RequestHeader_x-min-v"
+            "name": "x-min-v",
+            "in": "header",
+            "description": "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.",
+            "schema": {
+              "type": "string"
+            }
           },
           {
-            "$ref": "#/parameters/RequestHeader_x-fapi-interaction-id"
+            "name": "x-fapi-interaction-id",
+            "in": "header",
+            "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
+            "schema": {
+              "type": "string"
+            }
           },
           {
-            "$ref": "#/parameters/RequestHeader_x-fapi-auth-date"
+            "name": "x-fapi-auth-date",
+            "in": "header",
+            "description": "The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended) if the customer is currently logged. Otherwise optional where the customer has not logged in. Not to be included for unauthenticated calls.",
+            "schema": {
+              "type": "string",
+              "x-conditional": true
+            },
+            "x-conditional": true
           },
           {
-            "$ref": "#/parameters/RequestHeader_x-fapi-customer-ip-address"
+            "name": "x-fapi-customer-ip-address",
+            "in": "header",
+            "description": "The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
+            "schema": {
+              "type": "string"
+            }
           },
           {
-            "$ref": "#/parameters/RequestHeader_x-cds-client-headers"
+            "name": "x-cds-client-headers",
+            "in": "header",
+            "description": "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
+            "schema": {
+              "type": "string",
+              "x-conditional": true,
+              "x-cds-type": "Base64"
+            },
+            "x-conditional": true,
+            "x-cds-type": "Base64"
           }
         ],
         "responses": {
@@ -128,49 +225,95 @@
             "description": "Success",
             "headers": {
               "x-v": {
-                "type": "string",
-                "description": "The [version](#response-headers) of the API end point that the data holder has responded with."
+                "description": "The [version](#response-headers) of the API end point that the data holder has responded with.",
+                "schema": {
+                  "type": "string"
+                }
               },
               "x-fapi-interaction-id": {
-                "type": "string",
-                "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
+                "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
+                "schema": {
+                  "type": "string"
+                }
               }
             },
-            "schema": {
-              "$ref": "#/definitions/ResponseCommonCustomerDetailV2"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseCommonCustomerDetailV2"
+                }
+              }
             }
           },
-          "4xx": {
-            "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
+          "400": {
+            "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
             "headers": {
               "x-fapi-interaction-id": {
-                "type": "string",
-                "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
+                "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
+                "schema": {
+                  "type": "string"
+                }
               }
             },
-            "schema": {
-              "$ref": "#/definitions/ResponseErrorListV2"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseErrorListV2"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
+            "headers": {
+              "x-fapi-interaction-id": {
+                "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseErrorListV2"
+                }
+              }
             }
           }
         },
+        "x-scopes": [
+          "common:customer.detail:read"
+        ],
         "x-version": "2"
       }
     },
     "/discovery/status": {
       "get": {
-        "summary": "Get Status",
-        "description": "Obtain a health check status for the implementation",
-        "operationId": "getStatus",
         "tags": [
           "Common",
           "Discovery"
         ],
+        "summary": "Get Status",
+        "description": "Obtain a health check status for the implementation",
+        "operationId": "getStatus",
         "parameters": [
           {
-            "$ref": "#/parameters/RequestHeader_x-v"
+            "name": "x-v",
+            "in": "header",
+            "description": "Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           },
           {
-            "$ref": "#/parameters/RequestHeader_x-min-v"
+            "name": "x-min-v",
+            "in": "header",
+            "description": "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.",
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -178,18 +321,38 @@
             "description": "Success",
             "headers": {
               "x-v": {
-                "type": "string",
-                "description": "The [version](#response-headers) of the API end point that the data holder has responded with."
+                "description": "The [version](#response-headers) of the API end point that the data holder has responded with.",
+                "schema": {
+                  "type": "string"
+                }
               }
             },
-            "schema": {
-              "$ref": "#/definitions/ResponseCommonDiscoveryStatus"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseCommonDiscoveryStatus"
+                }
+              }
             }
           },
-          "4xx": {
-            "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
-            "schema": {
-              "$ref": "#/definitions/ResponseErrorListV2"
+          "400": {
+            "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseErrorListV2"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseErrorListV2"
+                }
+              }
             }
           }
         },
@@ -198,19 +361,30 @@
     },
     "/discovery/outages": {
       "get": {
-        "summary": "Get Outages",
-        "description": "Obtain a list of scheduled outages for the implementation",
-        "operationId": "getOutages",
         "tags": [
           "Common",
           "Discovery"
         ],
+        "summary": "Get Outages",
+        "description": "Obtain a list of scheduled outages for the implementation",
+        "operationId": "getOutages",
         "parameters": [
           {
-            "$ref": "#/parameters/RequestHeader_x-v"
+            "name": "x-v",
+            "in": "header",
+            "description": "Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           },
           {
-            "$ref": "#/parameters/RequestHeader_x-min-v"
+            "name": "x-min-v",
+            "in": "header",
+            "description": "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.",
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -218,18 +392,38 @@
             "description": "Success",
             "headers": {
               "x-v": {
-                "type": "string",
-                "description": "The [version](#response-headers) of the API end point that the data holder has responded with."
+                "description": "The [version](#response-headers) of the API end point that the data holder has responded with.",
+                "schema": {
+                  "type": "string"
+                }
               }
             },
-            "schema": {
-              "$ref": "#/definitions/ResponseDiscoveryOutagesList"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseDiscoveryOutagesList"
+                }
+              }
             }
           },
-          "4xx": {
-            "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
-            "schema": {
-              "$ref": "#/definitions/ResponseErrorListV2"
+          "400": {
+            "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseErrorListV2"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseErrorListV2"
+                }
+              }
             }
           }
         },
@@ -237,804 +431,819 @@
       }
     }
   },
-  "parameters": {
-    "RequestHeader_x-v": {
-      "name": "x-v",
-      "description": "Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
-      "in": "header",
-      "type": "string",
-      "required": true
-    },
-    "RequestHeader_x-min-v": {
-      "name": "x-min-v",
-      "description": "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.",
-      "in": "header",
-      "type": "string"
-    },
-    "RequestHeader_x-fapi-interaction-id": {
-      "name": "x-fapi-interaction-id",
-      "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
-      "in": "header",
-      "type": "string"
-    },
-    "RequestHeader_x-fapi-auth-date": {
-      "name": "x-fapi-auth-date",
-      "description": "The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended) if the customer is currently logged. Otherwise optional where the customer has not logged in. Not to be included for unauthenticated calls.",
-      "in": "header",
-      "required": false,
-      "x-conditional": true,
-      "type": "string"
-    },
-    "RequestHeader_x-fapi-customer-ip-address": {
-      "name": "x-fapi-customer-ip-address",
-      "description": "The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
-      "in": "header",
-      "type": "string"
-    },
-    "RequestHeader_x-cds-client-headers": {
-      "name": "x-cds-client-headers",
-      "description": "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
-      "in": "header",
-      "required": false,
-      "x-conditional": true,
-      "type": "string",
-      "x-cds-type": "Base64"
-    }
-  },
-  "definitions": {
-    "ResponseCommonDiscoveryStatus": {
-      "type": "object",
-      "required": [
-        "data",
-        "links"
-      ],
-      "properties": {
-        "data": {
-          "type": "object",
-          "required": [
-            "status",
-            "updateTime"
-          ],
-          "x-conditional": [
-            "explanation"
-          ],
-          "properties": {
-            "status": {
-              "type": "string",
-              "description": "Enumeration with values. OK (implementation is fully functional). PARTIAL_FAILURE (one or more end points are unexpectedly unavailable). UNAVAILABLE (the full implementation is unexpectedly unavailable). SCHEDULED_OUTAGE (an advertised outage is in effect)",
-              "enum": [
-                "OK",
-                "PARTIAL_FAILURE",
-                "SCHEDULED_OUTAGE",
-                "UNAVAILABLE"
-              ]
-            },
-            "explanation": {
-              "type": "string",
-              "description": "Provides an explanation of the current outage that can be displayed to an end customer. Mandatory if the status property is any value other than OK"
-            },
-            "detectionTime": {
-              "type": "string",
-              "description": "The date and time that the current outage was detected. Should only be present if the status property is PARTIAL_FAILURE or UNAVAILABLE",
-              "x-cds-type": "DateTimeString"
-            },
-            "expectedResolutionTime": {
-              "type": "string",
-              "description": "The date and time that full service is expected to resume (if known). Should not be present if the status property has a value of OK.",
-              "x-cds-type": "DateTimeString"
-            },
-            "updateTime": {
-              "type": "string",
-              "description": "The date and time that this status was last updated by the Data Holder.",
-              "x-cds-type": "DateTimeString"
-            }
-          }
-        },
-        "links": {
-          "$ref": "#/definitions/Links"
-        },
-        "meta": {
-          "$ref": "#/definitions/Meta"
-        }
-      }
-    },
-    "ResponseDiscoveryOutagesList": {
-      "type": "object",
-      "required": [
-        "data",
-        "links"
-      ],
-      "properties": {
-        "data": {
-          "type": "object",
-          "required": [
-            "outages"
-          ],
-          "properties": {
-            "outages": {
-              "description": "List of scheduled outages. Property is mandatory but may contain and empty list if no outages are scheduled",
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/DiscoveryOutage"
-              }
-            }
-          }
-        },
-        "links": {
-          "$ref": "#/definitions/Links"
-        },
-        "meta": {
-          "$ref": "#/definitions/Meta"
-        }
-      }
-    },
-    "DiscoveryOutage": {
-      "type": "object",
-      "required": [
-        "outageTime",
-        "duration",
-        "explanation"
-      ],
-      "properties": {
-        "outageTime": {
-          "type": "string",
-          "description": "Date and time that the outage is scheduled to begin",
-          "x-cds-type": "DateTimeString"
-        },
-        "duration": {
-          "type": "string",
-          "description": "Planned duration of the outage. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)",
-          "x-cds-type": "ExternalRef"
-        },
-        "isPartial": {
-          "type": "boolean",
-          "description": "Flag that indicates, if present and set to true, that the outage is only partial meaning that only a subset of normally available end points will be affected by the outage",
-          "x-cds-type":  "Boolean"
-        },
-        "explanation": {
-          "type": "string",
-          "description": "Provides an explanation of the current outage that can be displayed to an end customer"
-        }
-      }
-    },
-    "ResponseCommonCustomer": {
-      "type": "object",
-      "required": [
-        "data",
-        "links"
-      ],
-      "properties": {
-        "data": {
-          "type": "object",
-          "required": [
-            "customerUType"
-          ],
-          "x-conditional": [
-            "person",
-            "organisation"
-          ],
-          "properties": {
-            "customerUType": {
-              "type": "string",
-              "description": "The type of customer object that is present",
-              "enum": [
-                "organisation",
-                "person"
-              ]
-            },
-            "person": {
-              "description": "Mandatory if `customerUType` is `person`",
-              "$ref": "#/definitions/CommonPerson"
-            },
-            "organisation": {
-              "description": "Mandatory if `customerUType` is `organisation`",
-              "$ref": "#/definitions/CommonOrganisation"
-            }
-          }
-        },
-        "links": {
-          "$ref": "#/definitions/Links"
-        },
-        "meta": {
-          "$ref": "#/definitions/Meta"
-        }
-      }
-    },
-    "ResponseCommonCustomerDetailV2": {
-      "type": "object",
-      "required": [
-        "data",
-        "links"
-      ],
-      "properties": {
-        "data": {
-          "type": "object",
-          "required": [
-            "customerUType"
-          ],
-          "x-conditional": [
-            "person",
-            "organisation"
-          ],
-          "properties": {
-            "customerUType": {
-              "type": "string",
-              "description": "The type of customer object that is present",
-              "enum": [
-                "organisation",
-                "person"
-              ]
-            },
-            "person": {
-              "description": "Mandatory if `customerUType` is `person`",
-              "$ref": "#/definitions/CommonPersonDetailV2"
-            },
-            "organisation": {
-              "description": "Mandatory if `customerUType` is `organisation`",
-              "$ref": "#/definitions/CommonOrganisationDetailV2"
-            }
-          }
-        },
-        "links": {
-          "$ref": "#/definitions/Links"
-        },
-        "meta": {
-          "$ref": "#/definitions/Meta"
-        }
-      }
-    },
-    "CommonPerson": {
-      "type": "object",
-      "required": [
-        "lastName",
-        "middleNames"
-      ],
-      "x-conditional": [
-        "occupationCodeVersion"
-      ],
-      "properties": {
-        "lastUpdateTime": {
-          "type": "string",
-          "description": "The date and time that this record was last updated by the customer.  If no update has occurred then this date should reflect the initial creation date for the data",
-          "x-cds-type": "DateTimeString"
-        },
-        "firstName": {
-          "type": "string",
-          "description": "For people with single names this field need not be present. The single name should be in the lastName field. Where a data holder cannot determine first and middle names from a collection of given names, a single string representing all given names MAY be provided."
-        },
-        "lastName": {
-          "type": "string",
-          "description": "For people with single names the single name should be in this field"
-        },
-        "middleNames": {
-          "type": "array",
-          "description": "Field is mandatory but array may be empty",
-          "items": {
-            "type": "string"
-          }
-        },
-        "prefix": {
-          "type": "string",
-          "description": "Also known as title or salutation.  The prefix to the name (e.g. Mr, Mrs, Ms, Miss, Sir, etc)"
-        },
-        "suffix": {
-          "type": "string",
-          "description": "Used for a trailing suffix to the name (e.g. Jr)"
-        },
-        "occupationCode" : {
-          "type": "string",
-          "description": "Value is a valid **[[ANZSCO]](#iref-ANZSCO)** Standard Occupation classification code. If the occupation code held by the data holder is not one of the supported **[[ANZSCO]](#iref-ANZSCO)** versions, then it must not be supplied.",
-          "x-cds-type": "ExternalRef"
-        },
-        "occupationCodeVersion": {
-          "type": "string",
-          "description": "The applicable **[[ANZSCO]](#iref-ANZSCO)** release version of the occupation code provided. Mandatory if an ``occupationCode`` is supplied. If ``occupationCode`` is supplied but ``occupationCodeVersion`` is absent, default is ``ANZSCO_1220.0_2013_V1.2``",
-          "enum": [
-            "ANZSCO_1220.0_2006_V1.0",
-            "ANZSCO_1220.0_2006_V1.1",
-            "ANZSCO_1220.0_2013_V1.2",
-            "ANZSCO_1220.0_2013_V1.3"
+  "components": {
+    "schemas": {
+      "ResponseCommonDiscoveryStatus": {
+        "required": [
+          "data",
+          "links"
+        ],
+        "type": "object",
+        "properties": {
+          "data": {
+            "required": [
+              "status",
+              "updateTime"
             ],
-            "default": "ANZSCO_1220.0_2013_V1.2"
-        }
-      }
-    },
-    "CommonPersonDetailV2": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/CommonPerson"
-        },
-        {
-          "type": "object",
-          "required": [
-            "phoneNumbers",
-            "emailAddresses",
-            "physicalAddresses"
-          ],
-          "properties": {
-            "phoneNumbers": {
-              "type": "array",
-              "description": "Array is mandatory but may be empty if no phone numbers are held",
-              "items": {
-                "$ref": "#/definitions/CommonPhoneNumber"
+            "type": "object",
+            "properties": {
+              "status": {
+                "type": "string",
+                "description": "Enumeration with values. OK (implementation is fully functional). PARTIAL_FAILURE (one or more end points are unexpectedly unavailable). UNAVAILABLE (the full implementation is unexpectedly unavailable). SCHEDULED_OUTAGE (an advertised outage is in effect)",
+                "enum": [
+                  "OK",
+                  "PARTIAL_FAILURE",
+                  "SCHEDULED_OUTAGE",
+                  "UNAVAILABLE"
+                ]
+              },
+              "explanation": {
+                "type": "string",
+                "description": "Provides an explanation of the current outage that can be displayed to an end customer. Mandatory if the status property is any value other than OK"
+              },
+              "detectionTime": {
+                "type": "string",
+                "description": "The date and time that the current outage was detected. Should only be present if the status property is PARTIAL_FAILURE or UNAVAILABLE",
+                "x-cds-type": "DateTimeString"
+              },
+              "expectedResolutionTime": {
+                "type": "string",
+                "description": "The date and time that full service is expected to resume (if known). Should not be present if the status property has a value of OK.",
+                "x-cds-type": "DateTimeString"
+              },
+              "updateTime": {
+                "type": "string",
+                "description": "The date and time that this status was last updated by the Data Holder.",
+                "x-cds-type": "DateTimeString"
               }
             },
-            "emailAddresses": {
-              "type": "array",
-              "description": "May be empty",
-              "items": {
-                "$ref": "#/definitions/CommonEmailAddress"
+            "x-conditional": [
+              "explanation"
+            ]
+          },
+          "links": {
+            "$ref": "#/components/schemas/Links"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta"
+          }
+        }
+      },
+      "ResponseDiscoveryOutagesList": {
+        "required": [
+          "data",
+          "links"
+        ],
+        "type": "object",
+        "properties": {
+          "data": {
+            "required": [
+              "outages"
+            ],
+            "type": "object",
+            "properties": {
+              "outages": {
+                "type": "array",
+                "description": "List of scheduled outages. Property is mandatory but may contain and empty list if no outages are scheduled",
+                "items": {
+                  "$ref": "#/components/schemas/DiscoveryOutage"
+                }
+              }
+            }
+          },
+          "links": {
+            "$ref": "#/components/schemas/Links"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta"
+          }
+        }
+      },
+      "DiscoveryOutage": {
+        "required": [
+          "duration",
+          "explanation",
+          "outageTime"
+        ],
+        "type": "object",
+        "properties": {
+          "outageTime": {
+            "type": "string",
+            "description": "Date and time that the outage is scheduled to begin",
+            "x-cds-type": "DateTimeString"
+          },
+          "duration": {
+            "type": "string",
+            "description": "Planned duration of the outage. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)",
+            "x-cds-type": "ExternalRef"
+          },
+          "isPartial": {
+            "type": "boolean",
+            "description": "Flag that indicates, if present and set to true, that the outage is only partial meaning that only a subset of normally available end points will be affected by the outage",
+            "x-cds-type": "Boolean"
+          },
+          "explanation": {
+            "type": "string",
+            "description": "Provides an explanation of the current outage that can be displayed to an end customer"
+          }
+        }
+      },
+      "ResponseCommonCustomer": {
+        "required": [
+          "data",
+          "links"
+        ],
+        "type": "object",
+        "properties": {
+          "data": {
+            "required": [
+              "customerUType"
+            ],
+            "type": "object",
+            "properties": {
+              "customerUType": {
+                "type": "string",
+                "description": "The type of customer object that is present",
+                "enum": [
+                  "organisation",
+                  "person"
+                ]
+              },
+              "person": {
+                "$ref": "#/components/schemas/CommonPerson"
+              },
+              "organisation": {
+                "$ref": "#/components/schemas/CommonOrganisation"
               }
             },
-            "physicalAddresses": {
-              "type": "array",
-              "description": "Array is mandatory but may be empty if no valid addresses are held. One and only one address may have the purpose of REGISTERED. Zero or one, and no more than one, record may have the purpose of MAIL. If zero then the REGISTERED address is to be used for mail",
-              "items": {
-                "$ref": "#/definitions/CommonPhysicalAddressWithPurpose"
+            "x-conditional": [
+              "person",
+              "organisation"
+            ]
+          },
+          "links": {
+            "$ref": "#/components/schemas/Links"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta"
+          }
+        }
+      },
+      "ResponseCommonCustomerDetailV2": {
+        "required": [
+          "data",
+          "links"
+        ],
+        "type": "object",
+        "properties": {
+          "data": {
+            "required": [
+              "customerUType"
+            ],
+            "type": "object",
+            "properties": {
+              "customerUType": {
+                "type": "string",
+                "description": "The type of customer object that is present",
+                "enum": [
+                  "organisation",
+                  "person"
+                ]
+              },
+              "person": {
+                "$ref": "#/components/schemas/CommonPersonDetailV2"
+              },
+              "organisation": {
+                "$ref": "#/components/schemas/CommonOrganisationDetailV2"
+              }
+            },
+            "x-conditional": [
+              "person",
+              "organisation"
+            ]
+          },
+          "links": {
+            "$ref": "#/components/schemas/Links"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta"
+          }
+        }
+      },
+      "CommonPerson": {
+        "required": [
+          "lastName",
+          "middleNames"
+        ],
+        "type": "object",
+        "properties": {
+          "lastUpdateTime": {
+            "type": "string",
+            "description": "The date and time that this record was last updated by the customer.  If no update has occurred then this date should reflect the initial creation date for the data",
+            "x-cds-type": "DateTimeString"
+          },
+          "firstName": {
+            "type": "string",
+            "description": "For people with single names this field need not be present. The single name should be in the lastName field. Where a data holder cannot determine first and middle names from a collection of given names, a single string representing all given names MAY be provided."
+          },
+          "lastName": {
+            "type": "string",
+            "description": "For people with single names the single name should be in this field"
+          },
+          "middleNames": {
+            "type": "array",
+            "description": "Field is mandatory but array may be empty",
+            "items": {
+              "type": "string"
+            }
+          },
+          "prefix": {
+            "type": "string",
+            "description": "Also known as title or salutation.  The prefix to the name (e.g. Mr, Mrs, Ms, Miss, Sir, etc)"
+          },
+          "suffix": {
+            "type": "string",
+            "description": "Used for a trailing suffix to the name (e.g. Jr)"
+          },
+          "occupationCode": {
+            "type": "string",
+            "description": "Value is a valid **[[ANZSCO]](#iref-ANZSCO)** Standard Occupation classification code. If the occupation code held by the data holder is not one of the supported **[[ANZSCO]](#iref-ANZSCO)** versions, then it must not be supplied.",
+            "x-cds-type": "ExternalRef"
+          },
+          "occupationCodeVersion": {
+            "type": "string",
+            "description": "The applicable **[[ANZSCO]](#iref-ANZSCO)** release version of the occupation code provided. Mandatory if an ``occupationCode`` is supplied. If ``occupationCode`` is supplied but ``occupationCodeVersion`` is absent, default is ``ANZSCO_1220.0_2013_V1.2``",
+            "default": "ANZSCO_1220.0_2013_V1.2",
+            "enum": [
+              "ANZSCO_1220.0_2006_V1.0",
+              "ANZSCO_1220.0_2006_V1.1",
+              "ANZSCO_1220.0_2013_V1.2",
+              "ANZSCO_1220.0_2013_V1.3"
+            ]
+          }
+        },
+        "x-conditional": [
+          "occupationCodeVersion"
+        ]
+      },
+      "CommonPersonDetailV2": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/CommonPerson"
+          },
+          {
+            "required": [
+              "emailAddresses",
+              "phoneNumbers",
+              "physicalAddresses"
+            ],
+            "type": "object",
+            "properties": {
+              "phoneNumbers": {
+                "type": "array",
+                "description": "Array is mandatory but may be empty if no phone numbers are held",
+                "items": {
+                  "$ref": "#/components/schemas/CommonPhoneNumber"
+                }
+              },
+              "emailAddresses": {
+                "type": "array",
+                "description": "May be empty",
+                "items": {
+                  "$ref": "#/components/schemas/CommonEmailAddress"
+                }
+              },
+              "physicalAddresses": {
+                "type": "array",
+                "description": "Array is mandatory but may be empty if no valid addresses are held. One and only one address may have the purpose of REGISTERED. Zero or one, and no more than one, record may have the purpose of MAIL. If zero then the REGISTERED address is to be used for mail",
+                "items": {
+                  "$ref": "#/components/schemas/CommonPhysicalAddressWithPurpose"
+                }
               }
             }
           }
-        }
-      ]
-    },
-    "CommonOrganisation": {
-      "type": "object",
-      "required": [
-        "agentLastName",
-        "agentRole",
-        "businessName",
-        "organisationType"
-      ],
-      "x-conditional": [
-        "industryCodeVersion"
-      ],
-      "properties": {
-        "lastUpdateTime": {
-          "type": "string",
-          "description": "The date and time that this record was last updated by the customer. If no update has occurred then this date should reflect the initial creation date for the data",
-          "x-cds-type": "DateTimeString"
+        ]
+      },
+      "CommonOrganisation": {
+        "required": [
+          "agentLastName",
+          "agentRole",
+          "businessName",
+          "organisationType"
+        ],
+        "type": "object",
+        "properties": {
+          "lastUpdateTime": {
+            "type": "string",
+            "description": "The date and time that this record was last updated by the customer. If no update has occurred then this date should reflect the initial creation date for the data",
+            "x-cds-type": "DateTimeString"
+          },
+          "agentFirstName": {
+            "type": "string",
+            "description": "The first name of the individual providing access on behalf of the organisation. For people with single names this field need not be present.  The single name should be in the lastName field"
+          },
+          "agentLastName": {
+            "type": "string",
+            "description": "The last name of the individual providing access on behalf of the organisation. For people with single names the single name should be in this field"
+          },
+          "agentRole": {
+            "type": "string",
+            "description": "The role of the individual identified as the agent who is providing authorisation.  Expected to be used for display. Default to Unspecified if the role is not known"
+          },
+          "businessName": {
+            "type": "string",
+            "description": "Name of the organisation"
+          },
+          "legalName": {
+            "type": "string",
+            "description": "Legal name, if different to the business name"
+          },
+          "shortName": {
+            "type": "string",
+            "description": "Short name used for communication, if different to the business name"
+          },
+          "abn": {
+            "type": "string",
+            "description": "Australian Business Number for the organisation"
+          },
+          "acn": {
+            "type": "string",
+            "description": "Australian Company Number for the organisation. Required only if an ACN is applicable for the organisation type"
+          },
+          "isACNCRegistered": {
+            "type": "boolean",
+            "description": "True if registered with the ACNC.  False if not. Absent or null if not confirmed.",
+            "x-cds-type": "Boolean"
+          },
+          "industryCode": {
+            "type": "string",
+            "description": "A valid [ANZSIC](http://www.abs.gov.au/ANZSIC) code for the organisation. If the industry code held by the data holder is not one of the supported [ANZSIC](http://www.abs.gov.au/ANZSIC) versions, then it must not be supplied.",
+            "x-cds-type": "ExternalRef"
+          },
+          "industryCodeVersion": {
+            "type": "string",
+            "description": "The applicable [ANZSIC](http://www.abs.gov.au/ANZSIC) release version of the industry code provided. Should only be supplied if ``industryCode`` is also supplied. If ``industryCode`` is supplied but ``industryCodeVersion`` is absent, default is ``ANZSIC_1292.0_2006_V2.0``",
+            "default": "ANZSIC_1292.0_2006_V2.0",
+            "enum": [
+              "ANZSIC_1292.0_2006_V1.0",
+              "ANZSIC_1292.0_2006_V2.0"
+            ]
+          },
+          "organisationType": {
+            "type": "string",
+            "description": "Legal organisation type",
+            "enum": [
+              "COMPANY",
+              "GOVERNMENT_ENTITY",
+              "OTHER",
+              "PARTNERSHIP",
+              "SOLE_TRADER",
+              "TRUST"
+            ]
+          },
+          "registeredCountry": {
+            "type": "string",
+            "description": "Enumeration with values from [ISO 3166 Alpha-3](https://www.iso.org/iso-3166-country-codes.html) country codes.  Assumed to be AUS if absent",
+            "x-cds-type": "ExternalRef"
+          },
+          "establishmentDate": {
+            "type": "string",
+            "description": "The date the organisation described was established",
+            "x-cds-type": "DateString"
+          }
         },
-        "agentFirstName": {
-          "type": "string",
-          "description": "The first name of the individual providing access on behalf of the organisation. For people with single names this field need not be present.  The single name should be in the lastName field"
-        },
-        "agentLastName": {
-          "type": "string",
-          "description": "The last name of the individual providing access on behalf of the organisation. For people with single names the single name should be in this field"
-        },
-        "agentRole": {
-          "type": "string",
-          "description": "The role of the individual identified as the agent who is providing authorisation.  Expected to be used for display. Default to Unspecified if the role is not known"
-        },
-        "businessName": {
-          "type": "string",
-          "description": "Name of the organisation"
-        },
-        "legalName": {
-          "type": "string",
-          "description": "Legal name, if different to the business name"
-        },
-        "shortName": {
-          "type": "string",
-          "description": "Short name used for communication, if different to the business name"
-        },
-        "abn": {
-          "type": "string",
-          "description": "Australian Business Number for the organisation"
-        },
-        "acn": {
-          "type": "string",
-          "description": "Australian Company Number for the organisation. Required only if an ACN is applicable for the organisation type"
-        },
-        "isACNCRegistered": {
-          "type": "boolean",
-          "description": "True if registered with the ACNC.  False if not. Absent or null if not confirmed.",
-          "x-cds-type": "Boolean"
-        },
-        "industryCode" : {
-          "type" : "string",
-          "description" : "A valid **[[ANZSIC-2006]](#iref-ANZSIC-2006)** code for the organisation. If the industry code held by the data holder is not one of the supported **[[ANZSIC-2006]](#iref-ANZSIC-2006)** versions, then it must not be supplied.",
-          "x-cds-type": "ExternalRef"
-        },
-        "industryCodeVersion" : {
-          "type" : "string",
-          "description" : "The applicable **[[ANZSIC-2006]](#iref-ANZSIC-2006)** release version of the industry code provided. Should only be supplied if ``industryCode`` is also supplied. If ``industryCode`` is supplied but ``industryCodeVersion`` is absent, default is ``ANZSIC_1292.0_2006_V2.0``",
-          "enum" : [
-            "ANZSIC_1292.0_2006_V1.0",
-            "ANZSIC_1292.0_2006_V2.0"
-          ],
-          "default": "ANZSIC_1292.0_2006_V2.0"
-        },
-        "organisationType": {
-          "type": "string",
-          "description": "Legal organisation type",
-          "enum": [
-            "COMPANY",
-            "GOVERNMENT_ENTITY",
-            "OTHER",
-            "PARTNERSHIP",
-            "SOLE_TRADER",
-            "TRUST"
-          ]
-        },
-        "registeredCountry": {
-          "type": "string",
-          "description": "Enumeration with values from [ISO 3166 Alpha-3](https://www.iso.org/iso-3166-country-codes.html) country codes.  Assumed to be AUS if absent",
-          "x-cds-type": "ExternalRef"
-        },
-        "establishmentDate": {
-          "type": "string",
-          "description": "The date the organisation described was established",
-          "x-cds-type": "DateString"
-        }
-      }
-    },
-    "CommonOrganisationDetailV2": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/CommonOrganisation"
-        },
-        {
-          "type": "object",
-          "required": [
-            "physicalAddresses"
-          ],
-          "properties": {
-            "physicalAddresses": {
-              "type": "array",
-              "description": "Array is mandatory but may be empty if no valid addresses are held. One and only one address may have the purpose of REGISTERED. Zero or one, and no more than one, record may have the purpose of MAIL. If zero then the REGISTERED address is to be used for mail",
-              "items": {
-                "$ref": "#/definitions/CommonPhysicalAddressWithPurpose"
+        "x-conditional": [
+          "industryCodeVersion"
+        ]
+      },
+      "CommonOrganisationDetailV2": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/CommonOrganisation"
+          },
+          {
+            "required": [
+              "physicalAddresses"
+            ],
+            "type": "object",
+            "properties": {
+              "physicalAddresses": {
+                "type": "array",
+                "description": "Array is mandatory but may be empty if no valid addresses are held. One and only one address may have the purpose of REGISTERED. Zero or one, and no more than one, record may have the purpose of MAIL. If zero then the REGISTERED address is to be used for mail",
+                "items": {
+                  "$ref": "#/components/schemas/CommonPhysicalAddressWithPurpose"
+                }
               }
             }
           }
-        }
-      ]
-    },
-    "CommonPhoneNumber": {
-      "type": "object",
-      "required": [
-        "purpose",
-        "number",
-        "fullNumber"
-      ],
-      "x-conditional": [
-        "areaCode"
-      ],
-      "properties": {
-        "isPreferred": {
-          "type": "boolean",
-          "description": "May be true for one and only one entry to indicate the preferred phone number. Assumed to be 'false' if not present",
-          "x-cds-type": "Boolean"
+        ]
+      },
+      "CommonPhoneNumber": {
+        "required": [
+          "fullNumber",
+          "number",
+          "purpose"
+        ],
+        "type": "object",
+        "properties": {
+          "isPreferred": {
+            "type": "boolean",
+            "description": "May be true for one and only one entry to indicate the preferred phone number. Assumed to be 'false' if not present",
+            "x-cds-type": "Boolean"
+          },
+          "purpose": {
+            "type": "string",
+            "description": "The purpose of the number as specified by the customer",
+            "enum": [
+              "HOME",
+              "INTERNATIONAL",
+              "MOBILE",
+              "OTHER",
+              "UNSPECIFIED",
+              "WORK"
+            ]
+          },
+          "countryCode": {
+            "type": "string",
+            "description": "If absent, assumed to be Australia (+61). The + should be included"
+          },
+          "areaCode": {
+            "type": "string",
+            "description": "Required for non Mobile Phones, if field is present and refers to Australian code - the leading 0 should be omitted."
+          },
+          "number": {
+            "type": "string",
+            "description": "The actual phone number, with leading zeros as appropriate"
+          },
+          "extension": {
+            "type": "string",
+            "description": "An extension number (if applicable)"
+          },
+          "fullNumber": {
+            "type": "string",
+            "description": "Fully formatted phone number with country code, area code, number and extension incorporated. Formatted according to section 5.1.4. of [RFC 3966](https://www.ietf.org/rfc/rfc3966.txt)",
+            "x-cds-type": "ExternalRef"
+          }
         },
-        "purpose": {
-          "type": "string",
-          "description": "The purpose of the number as specified by the customer",
-          "enum": [
-            "HOME",
-            "INTERNATIONAL",
-            "MOBILE",
-            "OTHER",
-            "UNSPECIFIED",
-            "WORK"
-          ]
-        },
-        "countryCode": {
-          "type": "string",
-          "description": "If absent, assumed to be Australia (+61). The + should be included"
-        },
-        "areaCode": {
-          "type": "string",
-          "description": "Required for non Mobile Phones, if field is present and refers to Australian code - the leading 0 should be omitted."
-        },
-        "number": {
-          "type": "string",
-          "description": "The actual phone number, with leading zeros as appropriate"
-        },
-        "extension": {
-          "type": "string",
-          "description": "An extension number (if applicable)"
-        },
-        "fullNumber": {
-          "type": "string",
-          "description": "Fully formatted phone number with country code, area code, number and extension incorporated. Formatted according to section 5.1.4. of **[[RFC3966]](#iref-RFC3966)**",
-          "x-cds-type": "ExternalRef"
-        }
-      }
-    },
-    "CommonEmailAddress": {
-      "type": "object",
-      "required": [
-        "purpose",
-        "address"
-      ],
-      "properties": {
-        "isPreferred": {
-          "type": "boolean",
-          "description": "May be true for one and only one email record in the collection. Denotes the default email address",
-          "x-cds-type": "Boolean"
-        },
-        "purpose": {
-          "type": "string",
-          "description": "The purpose for the email, as specified by the customer (Enumeration)",
-          "enum": [
-            "HOME",
-            "OTHER",
-            "UNSPECIFIED",
-            "WORK"
-          ]
-        },
-        "address": {
-          "type": "string",
-          "description": "A correctly formatted email address, as defined by the addr_spec format in **[[RFC5322]](#nref-RFC5322)**",
-          "x-cds-type": "ExternalRef"
-        }
-      }
-    },
-    "CommonPhysicalAddressWithPurpose": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/CommonPhysicalAddress"
-        },
-        {
-          "type": "object",
-          "required": [
-            "purpose"
-          ],
-          "properties": {
-            "purpose": {
-              "type": "string",
-              "description": "Enumeration of values indicating the purpose of the physical address",
-              "enum": [
-                "MAIL",
-                "OTHER",
-                "PHYSICAL",
-                "REGISTERED",
-                "WORK"
-              ]
-            }
+        "x-conditional": [
+          "areaCode"
+        ]
+      },
+      "CommonEmailAddress": {
+        "required": [
+          "address",
+          "purpose"
+        ],
+        "type": "object",
+        "properties": {
+          "isPreferred": {
+            "type": "boolean",
+            "description": "May be true for one and only one email record in the collection. Denotes the default email address",
+            "x-cds-type": "Boolean"
+          },
+          "purpose": {
+            "type": "string",
+            "description": "The purpose for the email, as specified by the customer (Enumeration)",
+            "enum": [
+              "HOME",
+              "OTHER",
+              "UNSPECIFIED",
+              "WORK"
+            ]
+          },
+          "address": {
+            "type": "string",
+            "description": "A correctly formatted email address, as defined by the addr_spec format in **[[RFC5322]](#nref-RFC5322)**",
+            "x-cds-type": "ExternalRef"
           }
         }
-      ]
-    },
-    "CommonPhysicalAddress": {
-      "type": "object",
-      "required": [
-        "addressUType"
-      ],
-      "x-conditional": [
-        "simple",
-        "paf"
-      ],
-      "properties": {
-        "addressUType": {
-          "type": "string",
-          "description": "The type of address object present",
-          "enum": [
-            "paf",
-            "simple"
-          ]
+      },
+      "CommonPhysicalAddressWithPurpose": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/CommonPhysicalAddress"
+          },
+          {
+            "required": [
+              "purpose"
+            ],
+            "type": "object",
+            "properties": {
+              "purpose": {
+                "type": "string",
+                "description": "Enumeration of values indicating the purpose of the physical address",
+                "enum": [
+                  "MAIL",
+                  "OTHER",
+                  "PHYSICAL",
+                  "REGISTERED",
+                  "WORK"
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "CommonPhysicalAddress": {
+        "required": [
+          "addressUType"
+        ],
+        "type": "object",
+        "properties": {
+          "addressUType": {
+            "type": "string",
+            "description": "The type of address object present",
+            "enum": [
+              "paf",
+              "simple"
+            ]
+          },
+          "simple": {
+            "$ref": "#/components/schemas/CommonSimpleAddress"
+          },
+          "paf": {
+            "$ref": "#/components/schemas/CommonPAFAddress"
+          }
         },
-        "simple": {
-          "$ref": "#/definitions/CommonSimpleAddress"
+        "x-conditional": [
+          "simple",
+          "paf"
+        ]
+      },
+      "CommonSimpleAddress": {
+        "required": [
+          "addressLine1",
+          "city",
+          "state"
+        ],
+        "type": "object",
+        "properties": {
+          "mailingName": {
+            "type": "string",
+            "description": "Name of the individual or business formatted for inclusion in an address used for physical mail"
+          },
+          "addressLine1": {
+            "type": "string",
+            "description": "First line of the standard address object"
+          },
+          "addressLine2": {
+            "type": "string",
+            "description": "Second line of the standard address object"
+          },
+          "addressLine3": {
+            "type": "string",
+            "description": "Third line of the standard address object"
+          },
+          "postcode": {
+            "type": "string",
+            "description": "Mandatory for Australian addresses"
+          },
+          "city": {
+            "type": "string",
+            "description": "Name of the city or locality"
+          },
+          "state": {
+            "type": "string",
+            "description": "Free text if the country is not Australia. If country is Australia then must be one of the values defined by the [State Type Abbreviation](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf) in the PAF file format. NSW, QLD, VIC, NT, WA, SA, TAS, ACT, AAT"
+          },
+          "country": {
+            "type": "string",
+            "description": "A valid [ISO 3166 Alpha-3](https://www.iso.org/iso-3166-country-codes.html) country code. Australia (AUS) is assumed if country is not present.",
+            "default": "AUS",
+            "x-cds-type": "ExternalRef"
+          }
         },
-        "paf": {
-          "$ref": "#/definitions/CommonPAFAddress"
+        "x-conditional": [
+          "postcode"
+        ]
+      },
+      "CommonPAFAddress": {
+        "required": [
+          "localityName",
+          "postcode",
+          "state"
+        ],
+        "type": "object",
+        "properties": {
+          "dpid": {
+            "type": "string",
+            "description": "Unique identifier for an address as defined by Australia Post.  Also known as Delivery Point Identifier"
+          },
+          "thoroughfareNumber1": {
+            "type": "integer",
+            "description": "Thoroughfare number for a property (first number in a property ranged address)",
+            "x-cds-type": "PositiveInteger"
+          },
+          "thoroughfareNumber1Suffix": {
+            "type": "string",
+            "description": "Suffix for the thoroughfare number. Only relevant is thoroughfareNumber1 is populated"
+          },
+          "thoroughfareNumber2": {
+            "type": "integer",
+            "description": "Second thoroughfare number (only used if the property has a ranged address eg 23-25)",
+            "x-cds-type": "PositiveInteger"
+          },
+          "thoroughfareNumber2Suffix": {
+            "type": "string",
+            "description": "Suffix for the second thoroughfare number. Only relevant is thoroughfareNumber2 is populated"
+          },
+          "flatUnitType": {
+            "type": "string",
+            "description": "Type of flat or unit for the address"
+          },
+          "flatUnitNumber": {
+            "type": "string",
+            "description": "Unit number (including suffix, if applicable)"
+          },
+          "floorLevelType": {
+            "type": "string",
+            "description": "Type of floor or level for the address"
+          },
+          "floorLevelNumber": {
+            "type": "string",
+            "description": "Floor or level number (including alpha characters)"
+          },
+          "lotNumber": {
+            "type": "string",
+            "description": "Allotment number for the address"
+          },
+          "buildingName1": {
+            "type": "string",
+            "description": "Building/Property name 1"
+          },
+          "buildingName2": {
+            "type": "string",
+            "description": "Building/Property name 2"
+          },
+          "streetName": {
+            "type": "string",
+            "description": "The name of the street"
+          },
+          "streetType": {
+            "type": "string",
+            "description": "The street type. Valid enumeration defined by Australia Post PAF code file"
+          },
+          "streetSuffix": {
+            "type": "string",
+            "description": "The street type suffix. Valid enumeration defined by Australia Post PAF code file"
+          },
+          "postalDeliveryType": {
+            "type": "string",
+            "description": "Postal delivery type. (eg. PO BOX). Valid enumeration defined by Australia Post PAF code file"
+          },
+          "postalDeliveryNumber": {
+            "type": "integer",
+            "description": "Postal delivery number if the address is a postal delivery type",
+            "x-cds-type": "PositiveInteger"
+          },
+          "postalDeliveryNumberPrefix": {
+            "type": "string",
+            "description": "Postal delivery number prefix related to the postal delivery number"
+          },
+          "postalDeliveryNumberSuffix": {
+            "type": "string",
+            "description": "Postal delivery number suffix related to the postal delivery number"
+          },
+          "localityName": {
+            "type": "string",
+            "description": "Full name of locality"
+          },
+          "postcode": {
+            "type": "string",
+            "description": "Postcode for the locality"
+          },
+          "state": {
+            "type": "string",
+            "description": "State in which the address belongs. Valid enumeration defined by Australia Post PAF code file [State Type Abbreviation](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf). NSW, QLD, VIC, NT, WA, SA, TAS, ACT, AAT"
+          }
+        },
+        "description": "Australian address formatted according to the file format defined by the [PAF file format](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf)"
+      },
+      "Links": {
+        "required": [
+          "self"
+        ],
+        "type": "object",
+        "properties": {
+          "self": {
+            "type": "string",
+            "description": "Fully qualified link that generated the current response document",
+            "x-cds-type": "URIString"
+          }
         }
-      }
-    },
-    "CommonSimpleAddress": {
-      "type": "object",
-      "required": [
-        "addressLine1",
-        "city",
-        "state"
-      ],
-      "x-conditional": [
-        "postcode"
-      ],
-      "properties": {
-        "mailingName": {
-          "type": "string",
-          "description": "Name of the individual or business formatted for inclusion in an address used for physical mail"
-        },
-        "addressLine1": {
-          "type": "string",
-          "description": "First line of the standard address object"
-        },
-        "addressLine2": {
-          "type": "string",
-          "description": "Second line of the standard address object"
-        },
-        "addressLine3": {
-          "type": "string",
-          "description": "Third line of the standard address object"
-        },
-        "postcode": {
-          "type": "string",
-          "description": "Mandatory for Australian addresses"
-        },
-        "city": {
-          "type": "string",
-          "description": "Name of the city or locality"
-        },
-        "state": {
-          "type": "string",
-          "description": "Free text if the country is not Australia. If country is Australia then must be one of the values defined by the [State Type Abbreviation](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf) in the PAF file format. NSW, QLD, VIC, NT, WA, SA, TAS, ACT, AAT"
-        },
-        "country": {
-          "type": "string",
-          "description": "A valid [ISO 3166 Alpha-3](https://www.iso.org/iso-3166-country-codes.html) country code. Australia (AUS) is assumed if country is not present.",
-          "x-cds-type": "ExternalRef",
-          "default": "AUS"
-        }
-      }
-    },
-    "CommonPAFAddress": {
-      "type": "object",
-      "description": "Australian address formatted according to the file format defined by the [PAF file format](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf)",
-      "required": [
-        "localityName",
-        "postcode",
-        "state"
-      ],
-      "properties": {
-        "dpid": {
-          "type": "string",
-          "description": "Unique identifier for an address as defined by Australia Post.  Also known as Delivery Point Identifier"
-        },
-        "thoroughfareNumber1": {
-          "type": "integer",
-          "description": "Thoroughfare number for a property (first number in a property ranged address)",
-          "x-cds-type": "PositiveInteger"
-        },
-        "thoroughfareNumber1Suffix": {
-          "type": "string",
-          "description": "Suffix for the thoroughfare number. Only relevant is thoroughfareNumber1 is populated"
-        },
-        "thoroughfareNumber2": {
-          "type": "integer",
-          "description": "Second thoroughfare number (only used if the property has a ranged address eg 23-25)",
-          "x-cds-type": "PositiveInteger"
-        },
-        "thoroughfareNumber2Suffix": {
-          "type": "string",
-          "description": "Suffix for the second thoroughfare number. Only relevant is thoroughfareNumber2 is populated"
-        },
-        "flatUnitType": {
-          "type": "string",
-          "description": "Type of flat or unit for the address"
-        },
-        "flatUnitNumber": {
-          "type": "string",
-          "description": "Unit number (including suffix, if applicable)"
-        },
-        "floorLevelType": {
-          "type": "string",
-          "description": "Type of floor or level for the address"
-        },
-        "floorLevelNumber": {
-          "type": "string",
-          "description": "Floor or level number (including alpha characters)"
-        },
-        "lotNumber": {
-          "type": "string",
-          "description": "Allotment number for the address"
-        },
-        "buildingName1": {
-          "type": "string",
-          "description": "Building/Property name 1"
-        },
-        "buildingName2": {
-          "type": "string",
-          "description": "Building/Property name 2"
-        },
-        "streetName": {
-          "type": "string",
-          "description": "The name of the street"
-        },
-        "streetType": {
-          "type": "string",
-          "description": "The street type. Valid enumeration defined by Australia Post PAF code file"
-        },
-        "streetSuffix": {
-          "type": "string",
-          "description": "The street type suffix. Valid enumeration defined by Australia Post PAF code file"
-        },
-        "postalDeliveryType": {
-          "type": "string",
-          "description": "Postal delivery type. (eg. PO BOX). Valid enumeration defined by Australia Post PAF code file"
-        },
-        "postalDeliveryNumber": {
-          "type": "integer",
-          "description": "Postal delivery number if the address is a postal delivery type",
-          "x-cds-type": "PositiveInteger"
-        },
-        "postalDeliveryNumberPrefix": {
-          "type": "string",
-          "description": "Postal delivery number prefix related to the postal delivery number"
-        },
-        "postalDeliveryNumberSuffix": {
-          "type": "string",
-          "description": "Postal delivery number suffix related to the postal delivery number"
-        },
-        "localityName": {
-          "type": "string",
-          "description": "Full name of locality"
-        },
-        "postcode": {
-          "type": "string",
-          "description": "Postcode for the locality"
-        },
-        "state": {
-          "type": "string",
-          "description": "State in which the address belongs. Valid enumeration defined by Australia Post PAF code file [State Type Abbreviation](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf). NSW, QLD, VIC, NT, WA, SA, TAS, ACT, AAT"
-        }
-      }
-    },
-    "Links": {
-      "type": "object",
-      "required": [
-        "self"
-      ],
-      "properties": {
-        "self": {
-          "type": "string",
-          "description": "Fully qualified link that generated the current response document",
-          "x-cds-type": "URIString"
-        }
-      }
-    },
-    "Meta": {
-      "type": "object"
-    },
-    "MetaError": {
-      "type" : "object",
-      "x-conditional" : [ "urn" ],
-      "description" : "Additional data for customised error codes",
-      "properties" : {
-         "urn": {
+      },
+      "Meta": {
+        "type": "object"
+      },
+      "MetaError": {
+        "type": "object",
+        "properties": {
+          "urn": {
             "type": "string",
             "description": "The CDR error code URN which the application-specific error code extends. Mandatory if the error `code` is an application-specific error rather than a standardised error code."
-         }
-      }
-    },
-    "ResponseErrorListV2": {
-      "type": "object",
-      "required": [
-        "errors"
-      ],
-      "x-conditional": [ "meta" ],
-      "properties": {
-        "errors": {
-          "type": "array",
-          "description": "",
-          "items": {
-            "type": "object",
-            "required": [
-              "code",
-              "title",
-              "detail"
-            ],
-            "properties": {
-              "code": {
-                "type": "string",
-                "description": "The code of the error encountered. Where the error is specific to the respondent, an application-specific error code, expressed as a string value. If the error is application-specific, the URN code that the specific error extends must be provided in the meta object. Otherwise, the value is the error code URN."
-              },
-              "title": {
-                "type": "string",
-                "description": "A short, human-readable summary of the problem that MUST NOT change from occurrence to occurrence of the problem represented by the error code."
-              },
-              "detail": {
-                "type": "string",
-                "description": "A human-readable explanation specific to this occurrence of the problem."
-              },
-              "meta": {
-                "$ref": "#/definitions/MetaError"
+          }
+        },
+        "description": "Additional data for customised error codes",
+        "x-conditional": [
+          "urn"
+        ]
+      },
+      "ResponseErrorListV2": {
+        "required": [
+          "errors"
+        ],
+        "type": "object",
+        "properties": {
+          "errors": {
+            "type": "array",
+            "description": "",
+            "items": {
+              "required": [
+                "code",
+                "detail",
+                "title"
+              ],
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "string",
+                  "description": "The code of the error encountered. Where the error is specific to the respondent, an application-specific error code, expressed as a string value. If the error is application-specific, the URN code that the specific error extends must be provided in the meta object. Otherwise, the value is the error code URN."
+                },
+                "title": {
+                  "type": "string",
+                  "description": "A short, human-readable summary of the problem that MUST NOT change from occurrence to occurrence of the problem represented by the error code."
+                },
+                "detail": {
+                  "type": "string",
+                  "description": "A human-readable explanation specific to this occurrence of the problem."
+                },
+                "meta": {
+                  "$ref": "#/components/schemas/MetaError"
+                }
               }
             }
           }
+        },
+        "x-conditional": [
+          "meta"
+        ]
+      }
+    },
+    "parameters": {
+      "RequestHeader_x-v": {
+        "name": "x-v",
+        "in": "header",
+        "description": "Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
+        "required": true,
+        "schema": {
+          "type": "string"
         }
+      },
+      "RequestHeader_x-min-v": {
+        "name": "x-min-v",
+        "in": "header",
+        "description": "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "RequestHeader_x-fapi-interaction-id": {
+        "name": "x-fapi-interaction-id",
+        "in": "header",
+        "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "RequestHeader_x-fapi-auth-date": {
+        "name": "x-fapi-auth-date",
+        "in": "header",
+        "description": "The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended) if the customer is currently logged. Otherwise optional where the customer has not logged in. Not to be included for unauthenticated calls.",
+        "schema": {
+          "type": "string",
+          "x-conditional": true
+        },
+        "x-conditional": true
+      },
+      "RequestHeader_x-fapi-customer-ip-address": {
+        "name": "x-fapi-customer-ip-address",
+        "in": "header",
+        "description": "The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "RequestHeader_x-cds-client-headers": {
+        "name": "x-cds-client-headers",
+        "in": "header",
+        "description": "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
+        "schema": {
+          "type": "string",
+          "x-conditional": true,
+          "x-cds-type": "Base64"
+        },
+        "x-conditional": true,
+        "x-cds-type": "Base64"
       }
     }
   }
