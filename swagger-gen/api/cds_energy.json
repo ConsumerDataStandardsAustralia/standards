@@ -2788,7 +2788,7 @@
                         "properties": {
                             "isTokenised": {
                                 "description": "Flag indicating that the account details are tokenised and cannot be shared.  False if absent.  If false then bsb and accountNumber should not be expected to be included",
-                                "type": "string"
+                                "type": "boolean"
                             },
                             "bsb": {
                                 "description": "The unmasked BSB for the account to be debited. Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces.  Is required if isTokenised is absent or false",
