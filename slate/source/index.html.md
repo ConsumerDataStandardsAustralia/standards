@@ -34,6 +34,7 @@ includes:
   - admin
   - separator
   - secondary_responsibility
+  - energy_apis_sdh
   - separator
   - known-issues
   - changelog

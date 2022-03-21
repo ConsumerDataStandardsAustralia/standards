@@ -10,6 +10,10 @@
       "tags": ["Energy"]
     },
     {
+      "title": "Energy Secondary Data Holder APIs",
+      "tags": ["Energy-SDH"]
+    },
+    {
       "title": "Common APIs",
       "tags": ["Common"]
     },
