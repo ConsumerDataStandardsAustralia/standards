@@ -18,7 +18,7 @@ The Data Holder (DH) is a system entity that authenticates a Customer
 (resource owner or user), as part of an authorisation process initiated by a Data
 Recipient, and issues an authorisation for that Data Recipient to access the Customer's data via published APIs.
 
-A Data Holder assumes the role of an **[OIDC]** [OpenID Provider](https://openid.net/specs/openid-connect-core-1_0.html#Overview).
+A Data Holder assumes the role of an **[[OIDC]](#nref-OIDC)** [OpenID Provider](https://openid.net/specs/openid-connect-core-1_0.html#Overview).
 
 For the purposes of this standard a single designated organisation **MAY** be represented via the Register as multiple separate Data Holders to support multiple brands or market identities.
 
@@ -52,7 +52,7 @@ A Software Product **MUST** be registered with the Registrar and approved for us
 
 A Software Product **MAY** be registered for use across one or more sectors (e.g. banking and energy).
 
-A Software Product assumes the role of an **[OIDC]** [Relying Party (Client)](https://openid.net/specs/openid-connect-core-1_0.html#Overview).
+A Software Product assumes the role of an **[[OIDC]](#nref-OIDC)** [Relying Party (Client)](https://openid.net/specs/openid-connect-core-1_0.html#Overview).
 
 ### Register
 

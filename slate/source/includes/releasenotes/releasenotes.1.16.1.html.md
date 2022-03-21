@@ -19,6 +19,8 @@ This release minor errata and documentation fixes.
 |Change|Description|Link|
 |------|-----------|----|
 | Link to Endpoint Versioning | Added a link to the Endpoint Versioning Schedule in the High Level Standards's Versioning section | [Versioning](../../#versioning) |
+| Normative and Informative Tooltips | Added tooltips for all normative and informative references to assist in quick translation of references to the upstream document reference | [Normative References](../../##normative-references) |
+| Moved Normative and Informative references | Moved normative and informative references out of the Security standards section into the Introduction section to cover all standards | [Normative References](../../##normative-references) |
 
 ## API End Points
 

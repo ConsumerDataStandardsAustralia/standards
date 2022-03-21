@@ -1,30 +1,41 @@
 ## Authentication Flows
-This profile supports the authentication flows specified by [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) **[OIDC]** as constrained further by [FAPI](https://openid.net/wg/fapi/) **[FAPI]**.
+This profile supports the authentication flows specified by [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) **[[OIDC]](#nref-OIDC)** as constrained further by **[[FAPI]](#iref-FAPI)**.
 
+```diff
+Replaced the statements:
+- Specifically the Hybrid Flow outlined at [section 3.3](https://openid.net/specs/openid-connect-core-1_0.html#HybridFlowAuth) of **[[OIDC]](#nref-OIDC)**.
+with:
++ Specifically the OIDC Hybrid Flow outlined at [section 3.3](https://openid.net/specs/openid-connect-core-1_0.html#HybridFlowAuth) of **[[OIDC]](#nref-OIDC)**.
++
++ From July 4th 2022, OIDC Authorization Code Flow outlined at [section 3.1](https://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth)  of **[[OIDC]](#nref-OIDC)** is supported.
+```
 
-Specifically the OIDC Hybrid Flow outlined at [section 3.3](https://openid.net/specs/openid-connect-core-1_0.html#HybridFlowAuth) of **[OIDC]**.
+Specifically the OIDC Hybrid Flow outlined at [section 3.3](https://openid.net/specs/openid-connect-core-1_0.html#HybridFlowAuth) of **[[OIDC]](#nref-OIDC)**.
 
-From July 4th 2022, OIDC Authorization Code Flow outlined at [section 3.1](https://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth)  of **[OIDC]** is supported.
+From July 4th 2022, OIDC Authorization Code Flow outlined at [section 3.1](https://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth)  of **[[OIDC]](#nref-OIDC)** is supported.
 
 No other flows are currently supported.
 
+```diff
+Added the Baseline Security Provisions section
+```
 
 ### Baseline Security Provisions
 
 #### Data Holders
 **From July 4th 2022 (FAPI 1.0 Migration Phase 1)**, the following requirements apply:
 
-*	Data Holders that do not support **[PKCE]** **MUST** ignore PKCE claims and **MUST NOT** reject clients sending PKCE claims.
+*	Data Holders that do not support **[[PKCE]](#nref-PKCE)** **MUST** ignore PKCE claims and **MUST NOT** reject clients sending PKCE claims.
 * Data Holders **MUST NOT** reject requests with a "x-fapi-customer-ip-address" header containing a valid IPv4 or IPv6 address.
-*	Data Holders **MAY** support FAPI 1.0 Advanced Profile (**[FAPI-1.0-Advanced]**).
-*	Data Holders **MAY** support **[PKCE]** (RFC7636).
-*	Data Holders **MAY** allow the OIDC Authorization Code Flow, if supported, in accordance with FAPI 1.0 Advanced and **MUST** require **[JARM]** and **[PKCE]**.
+*	Data Holders **MAY** support FAPI 1.0 Advanced Profile (**[[FAPI-1.0-Advanced]](#nref-FAPI-1-0-Advanced)**).
+*	Data Holders **MAY** support **[[PKCE]](#nref-PKCE)** (**[[RFC7636]](#nref-RFC7636)**).
+*	Data Holders **MAY** allow the OIDC Authorization Code Flow, if supported, in accordance with FAPI 1.0 Advanced and **MUST** require **[[JARM]](#nref-JARM)** and **[[PKCE]](#nref-PKCE)**.
 
 **From September 16th 2022 (FAPI 1.0 Migration Phase 2)**, the following requirements apply in addition to the FAPI 1.0 Migration Phase 1 requirements:
 
 *	Data Holders **MUST** support the OIDC Hybrid Flow.
-*	Data Holders **MUST** support FAPI 1.0 Advanced Profile (**[FAPI-1.0-Advanced]**).
-*	Data Holders **MAY** support **[PKCE]** (RFC7636).
+*	Data Holders **MUST** support FAPI 1.0 Advanced Profile (**[[FAPI-1.0-Advanced]](#nref-FAPI-1-0-Advanced)**).
+*	Data Holders **MAY** support **[[PKCE]](#nref-PKCE)** (**[[RFC7636]](#nref-RFC7636)**).
 *	Data Holders **SHOULD** support OIDC Authorization Code Flow.
 
 **From April 7th 2023 (FAPI 1.0 Migration Phase 3)**, the following requirements apply in addition to the FAPI 1.0 Migration Phase 2 requirements:
@@ -39,29 +50,29 @@ No other flows are currently supported.
 *	Data Recipient Software Products **SHOULD NOT** reuse "authorization_code" values, and if reused, it will be rejected.
 * Data Recipient Software Products **MAY** send requests with a "x-fapi-customer-ip-address" header containing a valid IPv4 or IPv6 address.
 
-```diff
-Replaced the statement:
-- Data Recipient Software Products MUST use [RFC9126] (PAR) with [PKCE] (RFC7636) and, if supported, MUST use S256 as the code challenge method.
-with:
-+ Data Recipient Software Products MUST use [RFC9126] (PAR) with [PKCE] (RFC7636) and MUST use S256 as the code challenge method.
-```
 
 **From September 16th 2022**, the following requirements apply in addition to the FAPI 1.0 Migration Phase 1 requirements:
 
-*	Data Recipient Software Products **MUST** support FAPI 1.0 Advanced Profile (**[FAPI-1.0-Advanced]**).
-*   Data Recipient Software Products **MUST** use **[RFC9126]** (PAR) with **[PKCE]** (RFC7636) and **MUST** use S256 as the code challenge method.
+*	Data Recipient Software Products **MUST** support FAPI 1.0 Advanced Profile (**[[FAPI-1.0-Advanced]](#nref-FAPI-1-0-Advanced)**).
+* Data Recipient Software Products **MUST** use **[[RFC9126]](#nref-RFC9126)** (PAR) with **[[PKCE]](#nref-PKCE)** (**[[RFC7636]](#nref-RFC7636)**) and, if supported, **MUST** use S256 as the code challenge method.
 *	Data Recipient Software Products **SHOULD** use OIDC Authorization Code Flow.
 
 <a id="hybrid-flow"></a>
 ### OIDC Hybrid Flow
-The **[OIDC]** Hybrid Flow is a type of redirection flow where the consumer's user
+The **[[OIDC]](#nref-OIDC)** Hybrid Flow is a type of redirection flow where the consumer's user
 agent is redirected from a Data Recipient Software Product’s (Relying Party) web site to a Data
-Holder’s Authorisation end point in the context of an **[OIDC]** authentication
+Holder’s Authorisation end point in the context of an **[[OIDC]](#nref-OIDC)** authentication
 request. The OIDC Hybrid Flow incorporates aspects of the both the implicit flow and
-authorisation code flow detailed under **[OIDC]**.
+authorisation code flow detailed under **[[OIDC]](#nref-OIDC)**.
 
+```diff
+Replaced the statement:
+- Only a `response_type` (see [section 3](https://openid.net/specs/openid-connect-core-1_0.html#Authentication) of **[[OIDC]](#nref-OIDC)**) of `code id_token` SHALL be allowed.
+with:
++ Only a `response_type` (see [section 3.3](https://openid.net/specs/openid-connect-core-1_0.html#HybridFlowAuth) of **[[OIDC]](#nref-OIDC)**) of `code id_token` **SHALL** be allowed.
+```
 
-Only a `response_type` (see [section 3.3](https://openid.net/specs/openid-connect-core-1_0.html#HybridFlowAuth) of **[OIDC]**) of `code id_token` **SHALL** be allowed.
+Only a `response_type` (see [section 3.3](https://openid.net/specs/openid-connect-core-1_0.html#HybridFlowAuth) of **[[OIDC]](#nref-OIDC)**) of `code id_token` **SHALL** be allowed.
 
 The `request_uri` parameter is only supported if the Data Holder supports PAR.
 
@@ -88,15 +99,18 @@ In line with CDR Rule 4.24 on restrictions when asking CDR consumers to authoris
 
 Additional requirements and guidelines for this flow are contained in the [Consumer Experience](#consumer-experience) section.
 
+```diff
+Added the OIDC Authorization Code Flow section.
+```
 
 <a id="authorization-code-flow"></a>
 ### OIDC Authorization Code Flow
 
 From July 4th 2022,
-* Data Holders **MAY** support OIDC Authorization Code Flow according to **[FAPI-1.0-Advanced]**
-* Data Recipient Software Products **MAY** use OIDC Authorization Code Flow according to **[FAPI-1.0-Advanced]** if the Data Holder supports it.
+* Data Holders **MAY** support OIDC Authorization Code Flow according to **[[FAPI-1.0-Advanced]](#nref-FAPI-1-0-Advanced)**
+* Data Recipient Software Products **MAY** use OIDC Authorization Code Flow according to **[[FAPI-1.0-Advanced]](#nref-FAPI-1-0-Advanced)** if the Data Holder supports it.
 
 In addition, the following statements are applicable for this flow:
 
-* Only a response_type (see [section 3.1](https://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth) of **[OIDC]**) of code **SHALL** be allowed.
-* Data Holders **MUST** also support **[JARM]** and **[PKCE]**
+* Only a response_type (see [section 3.1](https://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth) of **[[OIDC]](#nref-OIDC)**) of code **SHALL** be allowed.
+* Data Holders **MUST** also support **[[JARM]](#nref-JARM)** and **[[PKCE]](#nref-PKCE)**

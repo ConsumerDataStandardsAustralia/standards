@@ -136,15 +136,15 @@ For example, a person whose given names are "John Paul Winston" but the data hol
 |200|x-fapi-interaction-id|string||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 |4xx|x-fapi-interaction-id|string||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 
-  
-    
+
+
       <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">common:customer.basic:read</a>
 </aside>
 
-    
-  
+
+
 
 ## Get Customer Detail
 
@@ -369,15 +369,15 @@ Obsolete versions: [v1](includes/obsolete/get-customer-detail-v1.html)
 |200|x-fapi-interaction-id|string||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 |4xx|x-fapi-interaction-id|string||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 
-  
-    
+
+
       <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">common:customer.detail:read</a>
 </aside>
 
-    
-  
+
+
 
 ## Get Status
 
@@ -463,12 +463,12 @@ Obtain a health check status for the implementation
 |---|---|---|---|---|
 |200|x-v|string||The [version](#response-headers) of the API end point that the data holder has responded with.|
 
-  
+
     <aside class="success">
 This operation does not require authentication
 </aside>
 
-  
+
 
 ## Get Outages
 
@@ -557,12 +557,12 @@ Obtain a list of scheduled outages for the implementation
 |---|---|---|---|---|
 |200|x-v|string||The [version](#response-headers) of the API end point that the data holder has responded with.|
 
-  
+
     <aside class="success">
 This operation does not require authentication
 </aside>
 
-  
+
 
 <h2 class="schema-heading" id="cdr-common-api-schemas">Schemas</h2>
 <a class="schema-link" id="cdr-common-api-schemas"></a>
@@ -1538,4 +1538,3 @@ This operation does not require authentication
 |» title|string|mandatory|A short, human-readable summary of the problem that MUST NOT change from occurrence to occurrence of the problem represented by the error code.|
 |» detail|string|mandatory|A human-readable explanation specific to this occurrence of the problem.|
 |» meta|[MetaError](#schemacdr-common-apimetaerror)|optional|Additional data for customised error codes|
-
