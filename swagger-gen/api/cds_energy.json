@@ -42,8 +42,7 @@
                 "type": "object",
                 "required": [
                     "data",
-                    "links",
-                    "meta"
+                    "links"
                 ],
                 "properties": {
                     "data": {
@@ -91,8 +90,7 @@
                 "type": "object",
                 "required": [
                     "data",
-                    "links",
-                    "meta"
+                    "links"
                 ],
                 "properties": {
                     "data": {
@@ -172,8 +170,7 @@
                 "type": "object",
                 "required": [
                     "data",
-                    "links",
-                    "meta"
+                    "links"
                 ],
                 "properties": {
                     "data": {
@@ -222,8 +219,7 @@
                 "type": "object",
                 "required": [
                     "data",
-                    "links",
-                    "meta"
+                    "links"
                 ],
                 "properties": {
                     "data": {
@@ -241,8 +237,7 @@
                 "type": "object",
                 "required": [
                     "data",
-                    "links",
-                    "meta"
+                    "links"
                 ],
                 "properties": {
                     "data": {
@@ -260,8 +255,7 @@
                 "type": "object",
                 "required": [
                     "data",
-                    "links",
-                    "meta"
+                    "links"
                 ],
                 "properties": {
                     "data": {
@@ -337,8 +331,7 @@
                 "type": "object",
                 "required": [
                     "data",
-                    "links",
-                    "meta"
+                    "links"
                 ],
                 "properties": {
                     "data": {
