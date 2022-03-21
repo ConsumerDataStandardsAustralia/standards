@@ -25,3 +25,11 @@ The high level standard will be versioned as described above.  The major compone
 
 ###End Point Versioning
 Each end point will have multiple versions independent of other end points.  A specific end point version will be requested by a client using a HTTP header. This header will be supported by all end points under the API standards.  See the section on [HTTP Headers](#http-headers) for more information on how versions are requested and supplied under the standards.
+
+A table-view of all endpoint versioning is available <a href='includes/endpoint-version-schedule/'>here</a>.
+
+```diff
+Added link to the Endpoint Versioning Schedule:
+
++ A table-view of all endpoint versioning is available <a href='includes/endpoint-version-schedule/'>here</a>.
+```
