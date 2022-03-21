@@ -61,7 +61,7 @@
                 "required": [
                     "data",
                     "links",
-                    "meta"
+                    "me"
                 ],
                 "properties": {
                     "data": {
@@ -170,7 +170,8 @@
                 "type": "object",
                 "required": [
                     "data",
-                    "links"
+                    "links",
+                    "meta"
                 ],
                 "properties": {
                     "data": {
@@ -219,7 +220,8 @@
                 "type": "object",
                 "required": [
                     "data",
-                    "links"
+                    "links",
+                    "meta"
                 ],
                 "properties": {
                     "data": {
@@ -237,7 +239,8 @@
                 "type": "object",
                 "required": [
                     "data",
-                    "links"
+                    "links",
+                    "meta"
                 ],
                 "properties": {
                     "data": {
@@ -255,7 +258,8 @@
                 "type": "object",
                 "required": [
                     "data",
-                    "links"
+                    "links",
+                    "meta"
                 ],
                 "properties": {
                     "data": {
@@ -331,7 +335,8 @@
                 "type": "object",
                 "required": [
                     "data",
-                    "links"
+                    "links",
+                    "meta"
                 ],
                 "properties": {
                     "data": {
@@ -3848,12 +3853,6 @@
                             "type": "string",
                             "description": "The [version](#response-headers) of the API end point that the data holder has responded with."
                         }
-                    },
-                    "x-fapi-interaction-id": {
-                        "schema": {
-                            "type": "string",
-                            "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
-                        }
                     }
                 },
 				"content": {
@@ -3871,12 +3870,6 @@
                         "schema": {
                             "type": "string",
                             "description": "The [version](#response-headers) of the API end point that the data holder has responded with."
-                        }
-                    },
-                    "x-fapi-interaction-id": {
-                        "schema": {
-                            "type": "string",
-                            "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
                         }
                     }
                 },
@@ -4276,9 +4269,6 @@
 					},
 					{
 						"$ref": "#/components/parameters/x-min-v"
-					},
-					{
-						"$ref": "#/components/parameters/x-fapi-interaction-id"
 					}
 				],
 				"responses": {
@@ -4366,9 +4356,6 @@
 					},
 					{
 						"$ref": "#/components/parameters/x-min-v"
-					},
-					{
-						"$ref": "#/components/parameters/x-fapi-interaction-id"
 					}
 				],
 				"responses": {
