@@ -37,7 +37,7 @@ The request MUST include the following parameters using the ``application/x-www-
 
 - ``cdr_arrangement_jwt``: A signed JWT that includes the ``cdr_arrangement_id``.
 
-The `cdr_arrangement_jwt` MUST be a newly signed JWT with the following parameters in accordance with **[JWT]**:
+The `cdr_arrangement_jwt` MUST be a newly signed JWT with the following parameters in accordance with **[[JWT]](#nref-JWT)**:
 
 - ``cdr_arrangement_id``: The ID of the arrangement that the client wants to revoke.
 

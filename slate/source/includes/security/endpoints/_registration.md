@@ -1,8 +1,8 @@
 ### Dynamic Client Registration Endpoints
 
-Data Holders MUST expose the following endpoints in accordance with **[DCR]**.
+Data Holders MUST expose the following endpoints in accordance with **[[DCR]](#nref-DCR)**.
 
-For more details of these endpoints see the [DCR Apis](#dcr-apis) section.
+For more details of these endpoints see the [DCR APIs](#dcr-apis) section.
 
 For additional statements on the operation of these endpoint during client registration see the [Client Registration](#client-registration) section.
 
@@ -13,7 +13,7 @@ For additional statements on the operation of these endpoint during client regis
 |**PUT /register/{clientID}**|	Required | <i class="icon-check"></i> | <i class="icon-check"></i> | Client Credentials | cdr:registration
 |**DELETE /register/{clientID}**|	Optional | <i class="icon-check"></i> | <i class="icon-check"></i> | Client Credentials | cdr:registration
 
-Additional statements regarding these endpoings:
+Additional statements regarding these endpoints:
 
 * During registration management requests, Data Holders MUST validate that the scope of access tokens provided includes `cdr:registration`
 * Registration requests and responses must conform to the specification in the [DCR APIs](#dcr-apis) section.

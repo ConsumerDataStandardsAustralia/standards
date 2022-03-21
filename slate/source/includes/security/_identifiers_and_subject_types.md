@@ -1,14 +1,14 @@
 <a id="identifiers"></a>
 ## Identifiers and Subject Types  
 ### sub claim
-The identifier for an authenticated end-user (subject) **MUST** be passed in the `sub` claim of an [ID Token](https://openid.net/specs/openid-connect-core-1_0.html#IDToken) and [UserInfo response](https://openid.net/specs/openid-connect-core-1_0.html#UserInfoResponse) as defined by **[OIDC]**.
+The identifier for an authenticated end-user (subject) **MUST** be passed in the `sub` claim of an [ID Token](https://openid.net/specs/openid-connect-core-1_0.html#IDToken) and [UserInfo response](https://openid.net/specs/openid-connect-core-1_0.html#UserInfoResponse) as defined by **[[OIDC]](#nref-OIDC)**.
 
-The Data Holder **MUST** generate the `sub` value as a Pairwise Pseudonymous Identifier (PPID) as described in [section 8](https://openid.net/specs/openid-connect-core-1_0.html#SubjectIDTypes) of **[OIDC]**. Furthermore, the identifier **MUST** be unique per customer as per the definition of customer in the CDR Federation section of this profile.
+The Data Holder **MUST** generate the `sub` value as a Pairwise Pseudonymous Identifier (PPID) as described in [section 8](https://openid.net/specs/openid-connect-core-1_0.html#SubjectIDTypes) of **[[OIDC]](#nref-OIDC)**. Furthermore, the identifier **MUST** be unique per customer as per the definition of customer in the CDR Federation section of this profile.
 
-The Data Holder **MUST** support the `sector_identifier_uri` in PPID generation according to **[OIDC]** if this field was supplied by the client during registration.
+The Data Holder **MUST** support the `sector_identifier_uri` in PPID generation according to **[[OIDC]](#nref-OIDC)** if this field was supplied by the client during registration.
 
 It is RECOMMENDED that the `sub` value is generated as a version 4 Universally Unique
-Identifier (UUID) **[RFC4122]**.
+Identifier (UUID) **[[RFC4122]](#nref-RFC4122)**.
 
 
 ### CDR Arrangement ID
