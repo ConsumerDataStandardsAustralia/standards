@@ -7,7 +7,7 @@
 | Client Authentication Required| Yes|
 | Bearer Token Required| No|
 
-Data Holders MUST implement an Introspection End Point to allow Data Recipient Software Products to determine the status and expiry date of Refresh Tokens.  The requirements for an Introspection End Point are described in [section 2](https://tools.ietf.org/html/rfc7662#section-2) of **[RFC7662]**.
+Data Holders MUST implement an Introspection End Point to allow Data Recipient Software Products to determine the status and expiry date of Refresh Tokens.  The requirements for an Introspection End Point are described in [section 2](https://tools.ietf.org/html/rfc7662#section-2) of **[[RFC7662]](#nref-RFC7662)**.
 
 Introspection of Refresh Tokens MUST be supported.
 
@@ -21,4 +21,4 @@ A Token Introspection End Point Response SHALL include, at least, the following 
 - `scope`: A JSON string containing a space-separated list of scopes associated with this token.
 - `cdr_arrangement_id`: A unique identifier of the CDR arrangement related to the authorisation.
 
-A Token Introspection End Point Response MAY include claims defined in Section 2.2 of **[RFC7662]** but ``username`` SHALL NOT be allowed.
+A Token Introspection End Point Response MAY include claims defined in Section 2.2 of **[[RFC7662]](#nref-RFC7662)** but ``username`` SHALL NOT be allowed.
