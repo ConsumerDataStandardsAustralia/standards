@@ -119,8 +119,8 @@ paths:
         style: simple
       - description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
           id. If provided, the data holder must play back this value in the x-fapi-interaction-id
-          response header. If not provided a [RFC4122] UUID value is required to be
-          provided in the response header to track the interaction.
+          response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value
+          is required to be provided in the response header to track the interaction.
         explode: false
         in: header
         name: x-fapi-interaction-id
@@ -222,7 +222,7 @@ paths:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
                 id. If provided, the data holder must play back this value in the
-                x-fapi-interaction-id response header. If not provided a [RFC4122]
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
                 UUID value is required to be provided in the response header to track
                 the interaction.
               explode: false
@@ -240,7 +240,7 @@ paths:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
                 id. If provided, the data holder must play back this value in the
-                x-fapi-interaction-id response header. If not provided a [RFC4122]
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
                 UUID value is required to be provided in the response header to track
                 the interaction.
               explode: false
@@ -358,8 +358,8 @@ paths:
         style: simple
       - description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
           id. If provided, the data holder must play back this value in the x-fapi-interaction-id
-          response header. If not provided a [RFC4122] UUID value is required to be
-          provided in the response header to track the interaction.
+          response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value
+          is required to be provided in the response header to track the interaction.
         explode: false
         in: header
         name: x-fapi-interaction-id
@@ -461,7 +461,7 @@ paths:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
                 id. If provided, the data holder must play back this value in the
-                x-fapi-interaction-id response header. If not provided a [RFC4122]
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
                 UUID value is required to be provided in the response header to track
                 the interaction.
               explode: false
@@ -479,7 +479,7 @@ paths:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
                 id. If provided, the data holder must play back this value in the
-                x-fapi-interaction-id response header. If not provided a [RFC4122]
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
                 UUID value is required to be provided in the response header to track
                 the interaction.
               explode: false
@@ -547,8 +547,8 @@ paths:
         style: simple
       - description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
           id. If provided, the data holder must play back this value in the x-fapi-interaction-id
-          response header. If not provided a [RFC4122] UUID value is required to be
-          provided in the response header to track the interaction.
+          response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value
+          is required to be provided in the response header to track the interaction.
         explode: false
         in: header
         name: x-fapi-interaction-id
@@ -657,7 +657,7 @@ paths:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
                 id. If provided, the data holder must play back this value in the
-                x-fapi-interaction-id response header. If not provided a [RFC4122]
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
                 UUID value is required to be provided in the response header to track
                 the interaction.
               explode: false
@@ -677,7 +677,7 @@ paths:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
                 id. If provided, the data holder must play back this value in the
-                x-fapi-interaction-id response header. If not provided a [RFC4122]
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
                 UUID value is required to be provided in the response header to track
                 the interaction.
               explode: false
@@ -735,8 +735,8 @@ paths:
         style: simple
       - description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
           id. If provided, the data holder must play back this value in the x-fapi-interaction-id
-          response header. If not provided a [RFC4122] UUID value is required to be
-          provided in the response header to track the interaction.
+          response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value
+          is required to be provided in the response header to track the interaction.
         explode: false
         in: header
         name: x-fapi-interaction-id
@@ -838,7 +838,7 @@ paths:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
                 id. If provided, the data holder must play back this value in the
-                x-fapi-interaction-id response header. If not provided a [RFC4122]
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
                 UUID value is required to be provided in the response header to track
                 the interaction.
               explode: false
@@ -856,7 +856,7 @@ paths:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
                 id. If provided, the data holder must play back this value in the
-                x-fapi-interaction-id response header. If not provided a [RFC4122]
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
                 UUID value is required to be provided in the response header to track
                 the interaction.
               explode: false
@@ -917,8 +917,8 @@ paths:
         style: simple
       - description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
           id. If provided, the data holder must play back this value in the x-fapi-interaction-id
-          response header. If not provided a [RFC4122] UUID value is required to be
-          provided in the response header to track the interaction.
+          response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value
+          is required to be provided in the response header to track the interaction.
         explode: false
         in: header
         name: x-fapi-interaction-id
@@ -1020,7 +1020,7 @@ paths:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
                 id. If provided, the data holder must play back this value in the
-                x-fapi-interaction-id response header. If not provided a [RFC4122]
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
                 UUID value is required to be provided in the response header to track
                 the interaction.
               explode: false
@@ -1038,7 +1038,7 @@ paths:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
                 id. If provided, the data holder must play back this value in the
-                x-fapi-interaction-id response header. If not provided a [RFC4122]
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
                 UUID value is required to be provided in the response header to track
                 the interaction.
               explode: false
@@ -1189,8 +1189,8 @@ paths:
         style: simple
       - description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
           id. If provided, the data holder must play back this value in the x-fapi-interaction-id
-          response header. If not provided a [RFC4122] UUID value is required to be
-          provided in the response header to track the interaction.
+          response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value
+          is required to be provided in the response header to track the interaction.
         explode: false
         in: header
         name: x-fapi-interaction-id
@@ -1294,7 +1294,7 @@ paths:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
                 id. If provided, the data holder must play back this value in the
-                x-fapi-interaction-id response header. If not provided a [RFC4122]
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
                 UUID value is required to be provided in the response header to track
                 the interaction.
               explode: false
@@ -1312,7 +1312,7 @@ paths:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
                 id. If provided, the data holder must play back this value in the
-                x-fapi-interaction-id response header. If not provided a [RFC4122]
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
                 UUID value is required to be provided in the response header to track
                 the interaction.
               explode: false
@@ -1330,7 +1330,7 @@ paths:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
                 id. If provided, the data holder must play back this value in the
-                x-fapi-interaction-id response header. If not provided a [RFC4122]
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
                 UUID value is required to be provided in the response header to track
                 the interaction.
               explode: false
@@ -1399,8 +1399,8 @@ paths:
         style: simple
       - description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
           id. If provided, the data holder must play back this value in the x-fapi-interaction-id
-          response header. If not provided a [RFC4122] UUID value is required to be
-          provided in the response header to track the interaction.
+          response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value
+          is required to be provided in the response header to track the interaction.
         explode: false
         in: header
         name: x-fapi-interaction-id
@@ -1504,7 +1504,7 @@ paths:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
                 id. If provided, the data holder must play back this value in the
-                x-fapi-interaction-id response header. If not provided a [RFC4122]
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
                 UUID value is required to be provided in the response header to track
                 the interaction.
               explode: false
@@ -1522,7 +1522,7 @@ paths:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
                 id. If provided, the data holder must play back this value in the
-                x-fapi-interaction-id response header. If not provided a [RFC4122]
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
                 UUID value is required to be provided in the response header to track
                 the interaction.
               explode: false
@@ -1602,8 +1602,8 @@ paths:
         style: simple
       - description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
           id. If provided, the data holder must play back this value in the x-fapi-interaction-id
-          response header. If not provided a [RFC4122] UUID value is required to be
-          provided in the response header to track the interaction.
+          response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value
+          is required to be provided in the response header to track the interaction.
         explode: false
         in: header
         name: x-fapi-interaction-id
@@ -1706,7 +1706,7 @@ paths:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
                 id. If provided, the data holder must play back this value in the
-                x-fapi-interaction-id response header. If not provided a [RFC4122]
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
                 UUID value is required to be provided in the response header to track
                 the interaction.
               explode: false
@@ -1724,7 +1724,7 @@ paths:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
                 id. If provided, the data holder must play back this value in the
-                x-fapi-interaction-id response header. If not provided a [RFC4122]
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
                 UUID value is required to be provided in the response header to track
                 the interaction.
               explode: false
@@ -1742,7 +1742,7 @@ paths:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
                 id. If provided, the data holder must play back this value in the
-                x-fapi-interaction-id response header. If not provided a [RFC4122]
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
                 UUID value is required to be provided in the response header to track
                 the interaction.
               explode: false
@@ -1860,8 +1860,8 @@ paths:
         style: simple
       - description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
           id. If provided, the data holder must play back this value in the x-fapi-interaction-id
-          response header. If not provided a [RFC4122] UUID value is required to be
-          provided in the response header to track the interaction.
+          response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value
+          is required to be provided in the response header to track the interaction.
         explode: false
         in: header
         name: x-fapi-interaction-id
@@ -1963,7 +1963,7 @@ paths:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
                 id. If provided, the data holder must play back this value in the
-                x-fapi-interaction-id response header. If not provided a [RFC4122]
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
                 UUID value is required to be provided in the response header to track
                 the interaction.
               explode: false
@@ -1981,7 +1981,7 @@ paths:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
                 id. If provided, the data holder must play back this value in the
-                x-fapi-interaction-id response header. If not provided a [RFC4122]
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
                 UUID value is required to be provided in the response header to track
                 the interaction.
               explode: false
@@ -2049,8 +2049,8 @@ paths:
         style: simple
       - description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
           id. If provided, the data holder must play back this value in the x-fapi-interaction-id
-          response header. If not provided a [RFC4122] UUID value is required to be
-          provided in the response header to track the interaction.
+          response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value
+          is required to be provided in the response header to track the interaction.
         explode: false
         in: header
         name: x-fapi-interaction-id
@@ -2159,7 +2159,7 @@ paths:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
                 id. If provided, the data holder must play back this value in the
-                x-fapi-interaction-id response header. If not provided a [RFC4122]
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
                 UUID value is required to be provided in the response header to track
                 the interaction.
               explode: false
@@ -2179,7 +2179,7 @@ paths:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
                 id. If provided, the data holder must play back this value in the
-                x-fapi-interaction-id response header. If not provided a [RFC4122]
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
                 UUID value is required to be provided in the response header to track
                 the interaction.
               explode: false
@@ -2261,8 +2261,8 @@ paths:
         style: simple
       - description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
           id. If provided, the data holder must play back this value in the x-fapi-interaction-id
-          response header. If not provided a [RFC4122] UUID value is required to be
-          provided in the response header to track the interaction.
+          response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value
+          is required to be provided in the response header to track the interaction.
         explode: false
         in: header
         name: x-fapi-interaction-id
@@ -2365,7 +2365,7 @@ paths:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
                 id. If provided, the data holder must play back this value in the
-                x-fapi-interaction-id response header. If not provided a [RFC4122]
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
                 UUID value is required to be provided in the response header to track
                 the interaction.
               explode: false
@@ -2383,7 +2383,7 @@ paths:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
                 id. If provided, the data holder must play back this value in the
-                x-fapi-interaction-id response header. If not provided a [RFC4122]
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
                 UUID value is required to be provided in the response header to track
                 the interaction.
               explode: false
@@ -2401,7 +2401,7 @@ paths:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
                 id. If provided, the data holder must play back this value in the
-                x-fapi-interaction-id response header. If not provided a [RFC4122]
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
                 UUID value is required to be provided in the response header to track
                 the interaction.
               explode: false
@@ -2520,8 +2520,8 @@ paths:
         style: simple
       - description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
           id. If provided, the data holder must play back this value in the x-fapi-interaction-id
-          response header. If not provided a [RFC4122] UUID value is required to be
-          provided in the response header to track the interaction.
+          response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value
+          is required to be provided in the response header to track the interaction.
         explode: false
         in: header
         name: x-fapi-interaction-id
@@ -2623,7 +2623,7 @@ paths:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
                 id. If provided, the data holder must play back this value in the
-                x-fapi-interaction-id response header. If not provided a [RFC4122]
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
                 UUID value is required to be provided in the response header to track
                 the interaction.
               explode: false
@@ -2641,7 +2641,7 @@ paths:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
                 id. If provided, the data holder must play back this value in the
-                x-fapi-interaction-id response header. If not provided a [RFC4122]
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
                 UUID value is required to be provided in the response header to track
                 the interaction.
               explode: false
@@ -2709,8 +2709,8 @@ paths:
         style: simple
       - description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
           id. If provided, the data holder must play back this value in the x-fapi-interaction-id
-          response header. If not provided a [RFC4122] UUID value is required to be
-          provided in the response header to track the interaction.
+          response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value
+          is required to be provided in the response header to track the interaction.
         explode: false
         in: header
         name: x-fapi-interaction-id
@@ -2820,7 +2820,7 @@ paths:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
                 id. If provided, the data holder must play back this value in the
-                x-fapi-interaction-id response header. If not provided a [RFC4122]
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
                 UUID value is required to be provided in the response header to track
                 the interaction.
               explode: false
@@ -2840,7 +2840,7 @@ paths:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
                 id. If provided, the data holder must play back this value in the
-                x-fapi-interaction-id response header. If not provided a [RFC4122]
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
                 UUID value is required to be provided in the response header to track
                 the interaction.
               explode: false
@@ -2930,8 +2930,8 @@ paths:
         style: simple
       - description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
           id. If provided, the data holder must play back this value in the x-fapi-interaction-id
-          response header. If not provided a [RFC4122] UUID value is required to be
-          provided in the response header to track the interaction.
+          response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value
+          is required to be provided in the response header to track the interaction.
         explode: false
         in: header
         name: x-fapi-interaction-id
@@ -3033,7 +3033,7 @@ paths:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
                 id. If provided, the data holder must play back this value in the
-                x-fapi-interaction-id response header. If not provided a [RFC4122]
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
                 UUID value is required to be provided in the response header to track
                 the interaction.
               explode: false
@@ -3051,7 +3051,7 @@ paths:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
                 id. If provided, the data holder must play back this value in the
-                x-fapi-interaction-id response header. If not provided a [RFC4122]
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
                 UUID value is required to be provided in the response header to track
                 the interaction.
               explode: false
@@ -3113,8 +3113,8 @@ paths:
         style: simple
       - description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
           id. If provided, the data holder must play back this value in the x-fapi-interaction-id
-          response header. If not provided a [RFC4122] UUID value is required to be
-          provided in the response header to track the interaction.
+          response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value
+          is required to be provided in the response header to track the interaction.
         explode: false
         in: header
         name: x-fapi-interaction-id
@@ -3217,7 +3217,7 @@ paths:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
                 id. If provided, the data holder must play back this value in the
-                x-fapi-interaction-id response header. If not provided a [RFC4122]
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
                 UUID value is required to be provided in the response header to track
                 the interaction.
               explode: false
@@ -3235,7 +3235,7 @@ paths:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
                 id. If provided, the data holder must play back this value in the
-                x-fapi-interaction-id response header. If not provided a [RFC4122]
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
                 UUID value is required to be provided in the response header to track
                 the interaction.
               explode: false
@@ -3253,7 +3253,7 @@ paths:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
                 id. If provided, the data holder must play back this value in the
-                x-fapi-interaction-id response header. If not provided a [RFC4122]
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
                 UUID value is required to be provided in the response header to track
                 the interaction.
               explode: false

@@ -1587,7 +1587,7 @@ This operation does not require authentication
 |»»» unitOfMeasure|string|optional|The unit of measure for data held in this register|
 |»»» timeOfDay|string|optional|Code to identify the time validity of register contents|
 |»»» multiplier|number|optional|Multiplier required to take a register value and turn it into a value representing billable energy|
-|»»» controlledLoad|boolean|optional|Indicates whether the energy recorded by this register is created under a Controlled Load regime. ControlledLoad field will have 'No' if register does not relate to a Controlled Load.  If the register relates to a Controlled Load, it should contain a description of the Controlled Load regime. ControlledLoad field will have 'No' if register does not relate to a Controlled Load, “Yes” if register relates to a Controlled Load If absent the status is unknown.|
+|»»» controlledLoad|boolean|optional|Indicates whether the energy recorded by this register is created under a Controlled Load regime|
 |»»» consumptionType|string|optional|Actual/Subtractive Indicator. Note the details of enumeration values below: <ul><li>**ACTUAL** implies volume of energy actually metered between two dates</li><li>**CUMULATIVE** indicates a meter reading for a specific date. A second Meter Reading is required to determine the consumption between those two Meter Reading dates</li></ul>|
 
 #### Enumerated Values
@@ -1701,7 +1701,7 @@ This operation does not require authentication
 |registerId|string|optional|Register ID of the meter register where the meter reads are obtained|
 |registerSuffix|string|mandatory|Register suffix of the meter register where the meter reads are obtained|
 |meterID|string|optional|Meter id/serial number as it appears in customer’s bill. ID permanence rules do not apply.|
-|controlledLoad|boolean|optional|Indicates whether the energy recorded by this register is created under a Controlled Load regime. ControlledLoad field will have 'No if register does not relate to a Controlled Load, “Yes” if register relates to a Controlled Load If absent the status is unknown.|
+|controlledLoad|boolean|optional|Indicates whether the energy recorded by this register is created under a Controlled Load regime|
 |readStartDate|[DateString](#common-field-types)|mandatory|Date time when the meter reads start|
 |readEndDate|[DateString](#common-field-types)|optional|Date time when the meter reads end.  If absent then assumed to be equal to readStartDate.  In this case the entry represents data for a single date specified by readStartDate|
 |unitOfMeasure|string|optional|Unit of measure of the meter reads. Refer to Appendix B of <a href='https://www.aemo.com.au/-/media/files/stakeholder_consultation/consultations/nem-consultations/2019/5ms-metering-package-2/final-determination/mdff-specification-nem12-nem13-v21-final-determination-clean.pdf?la=en&hash=03FCBA0D60E091DE00F2361AE76206EA'>MDFF Specification NEM12 NEM13 v2.1</a> for a list of possible values|

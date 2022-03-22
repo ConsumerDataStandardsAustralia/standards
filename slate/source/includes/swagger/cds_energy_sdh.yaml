@@ -122,11 +122,11 @@ paths:
             x-fapi-interaction-id:
               explode: false
               schema:
-                description: An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID
-                  used as a correlation id. If provided, the data holder must play
-                  back this value in the x-fapi-interaction-id response header. If
-                  not provided a [RFC4122] UUID value is required to be provided in
-                  the response header to track the interaction.
+                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+                  id. If provided, the data holder must play back this value in the
+                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                  UUID value is required to be provided in the response header to
+                  track the interaction.
                 type: string
               style: simple
         "406":
@@ -140,11 +140,11 @@ paths:
             x-fapi-interaction-id:
               explode: false
               schema:
-                description: An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID
-                  used as a correlation id. If provided, the data holder must play
-                  back this value in the x-fapi-interaction-id response header. If
-                  not provided a [RFC4122] UUID value is required to be provided in
-                  the response header to track the interaction.
+                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+                  id. If provided, the data holder must play back this value in the
+                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                  UUID value is required to be provided in the response header to
+                  track the interaction.
                 type: string
               style: simple
         "422":
@@ -274,11 +274,11 @@ paths:
             x-fapi-interaction-id:
               explode: false
               schema:
-                description: An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID
-                  used as a correlation id. If provided, the data holder must play
-                  back this value in the x-fapi-interaction-id response header. If
-                  not provided a [RFC4122] UUID value is required to be provided in
-                  the response header to track the interaction.
+                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+                  id. If provided, the data holder must play back this value in the
+                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                  UUID value is required to be provided in the response header to
+                  track the interaction.
                 type: string
               style: simple
         "404":
@@ -293,11 +293,11 @@ paths:
             x-fapi-interaction-id:
               explode: false
               schema:
-                description: An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID
-                  used as a correlation id. If provided, the data holder must play
-                  back this value in the x-fapi-interaction-id response header. If
-                  not provided a [RFC4122] UUID value is required to be provided in
-                  the response header to track the interaction.
+                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+                  id. If provided, the data holder must play back this value in the
+                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                  UUID value is required to be provided in the response header to
+                  track the interaction.
                 type: string
               style: simple
         "406":
@@ -468,11 +468,11 @@ paths:
             x-fapi-interaction-id:
               explode: false
               schema:
-                description: An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID
-                  used as a correlation id. If provided, the data holder must play
-                  back this value in the x-fapi-interaction-id response header. If
-                  not provided a [RFC4122] UUID value is required to be provided in
-                  the response header to track the interaction.
+                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+                  id. If provided, the data holder must play back this value in the
+                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                  UUID value is required to be provided in the response header to
+                  track the interaction.
                 type: string
               style: simple
         "404":
@@ -487,11 +487,11 @@ paths:
             x-fapi-interaction-id:
               explode: false
               schema:
-                description: An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID
-                  used as a correlation id. If provided, the data holder must play
-                  back this value in the x-fapi-interaction-id response header. If
-                  not provided a [RFC4122] UUID value is required to be provided in
-                  the response header to track the interaction.
+                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+                  id. If provided, the data holder must play back this value in the
+                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                  UUID value is required to be provided in the response header to
+                  track the interaction.
                 type: string
               style: simple
         "406":
@@ -505,11 +505,11 @@ paths:
             x-fapi-interaction-id:
               explode: false
               schema:
-                description: An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID
-                  used as a correlation id. If provided, the data holder must play
-                  back this value in the x-fapi-interaction-id response header. If
-                  not provided a [RFC4122] UUID value is required to be provided in
-                  the response header to track the interaction.
+                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+                  id. If provided, the data holder must play back this value in the
+                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                  UUID value is required to be provided in the response header to
+                  track the interaction.
                 type: string
               style: simple
         "422":
@@ -672,11 +672,11 @@ paths:
             x-fapi-interaction-id:
               explode: false
               schema:
-                description: An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID
-                  used as a correlation id. If provided, the data holder must play
-                  back this value in the x-fapi-interaction-id response header. If
-                  not provided a [RFC4122] UUID value is required to be provided in
-                  the response header to track the interaction.
+                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+                  id. If provided, the data holder must play back this value in the
+                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                  UUID value is required to be provided in the response header to
+                  track the interaction.
                 type: string
               style: simple
         "406":
@@ -690,11 +690,11 @@ paths:
             x-fapi-interaction-id:
               explode: false
               schema:
-                description: An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID
-                  used as a correlation id. If provided, the data holder must play
-                  back this value in the x-fapi-interaction-id response header. If
-                  not provided a [RFC4122] UUID value is required to be provided in
-                  the response header to track the interaction.
+                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+                  id. If provided, the data holder must play back this value in the
+                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                  UUID value is required to be provided in the response header to
+                  track the interaction.
                 type: string
               style: simple
         "422":
@@ -825,11 +825,11 @@ paths:
             x-fapi-interaction-id:
               explode: false
               schema:
-                description: An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID
-                  used as a correlation id. If provided, the data holder must play
-                  back this value in the x-fapi-interaction-id response header. If
-                  not provided a [RFC4122] UUID value is required to be provided in
-                  the response header to track the interaction.
+                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+                  id. If provided, the data holder must play back this value in the
+                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                  UUID value is required to be provided in the response header to
+                  track the interaction.
                 type: string
               style: simple
         "404":
@@ -844,11 +844,11 @@ paths:
             x-fapi-interaction-id:
               explode: false
               schema:
-                description: An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID
-                  used as a correlation id. If provided, the data holder must play
-                  back this value in the x-fapi-interaction-id response header. If
-                  not provided a [RFC4122] UUID value is required to be provided in
-                  the response header to track the interaction.
+                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+                  id. If provided, the data holder must play back this value in the
+                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                  UUID value is required to be provided in the response header to
+                  track the interaction.
                 type: string
               style: simple
         "406":
@@ -988,11 +988,11 @@ paths:
             x-fapi-interaction-id:
               explode: false
               schema:
-                description: An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID
-                  used as a correlation id. If provided, the data holder must play
-                  back this value in the x-fapi-interaction-id response header. If
-                  not provided a [RFC4122] UUID value is required to be provided in
-                  the response header to track the interaction.
+                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+                  id. If provided, the data holder must play back this value in the
+                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                  UUID value is required to be provided in the response header to
+                  track the interaction.
                 type: string
               style: simple
         "406":
@@ -1006,11 +1006,11 @@ paths:
             x-fapi-interaction-id:
               explode: false
               schema:
-                description: An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID
-                  used as a correlation id. If provided, the data holder must play
-                  back this value in the x-fapi-interaction-id response header. If
-                  not provided a [RFC4122] UUID value is required to be provided in
-                  the response header to track the interaction.
+                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+                  id. If provided, the data holder must play back this value in the
+                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                  UUID value is required to be provided in the response header to
+                  track the interaction.
                 type: string
               style: simple
         "422":
@@ -2122,10 +2122,8 @@ components:
             permanence rules do not apply.
           type: string
         controlledLoad:
-          description: 'Indicates whether the energy recorded by this register is
-            created under a Controlled Load regime. ControlledLoad field will have
-            ''No if register does not relate to a Controlled Load, “Yes” if register
-            relates to a Controlled Load If absent the status is unknown. '
+          description: Indicates whether the energy recorded by this register is created
+            under a Controlled Load regime
           type: boolean
         readStartDate:
           description: Date time when the meter reads start
@@ -3084,13 +3082,8 @@ components:
             a value representing billable energy
           type: number
         controlledLoad:
-          description: 'Indicates whether the energy recorded by this register is
-            created under a Controlled Load regime. ControlledLoad field will have
-            ''No'' if register does not relate to a Controlled Load.  If the register
-            relates to a Controlled Load, it should contain a description of the Controlled
-            Load regime. ControlledLoad field will have ''No'' if register does not
-            relate to a Controlled Load, “Yes” if register relates to a Controlled
-            Load If absent the status is unknown. '
+          description: Indicates whether the energy recorded by this register is created
+            under a Controlled Load regime
           type: boolean
         consumptionType:
           description: 'Actual/Subtractive Indicator. Note the details of enumeration

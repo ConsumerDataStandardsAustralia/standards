@@ -2934,7 +2934,7 @@ This operation does not require authentication
 <td>»»» controlledLoad</td>
 <td>boolean</td>
 <td>optional</td>
-<td>Indicates whether the energy recorded by this register is created under a Controlled Load regime. ControlledLoad field will have &#39;No&#39; if register does not relate to a Controlled Load.  If the register relates to a Controlled Load, it should contain a description of the Controlled Load regime. ControlledLoad field will have &#39;No&#39; if register does not relate to a Controlled Load, “Yes” if register relates to a Controlled Load If absent the status is unknown.</td>
+<td>Indicates whether the energy recorded by this register is created under a Controlled Load regime</td>
 </tr>
 <tr>
 <td>»»» consumptionType</td>
@@ -3278,7 +3278,7 @@ This operation does not require authentication
 <td>controlledLoad</td>
 <td>boolean</td>
 <td>optional</td>
-<td>Indicates whether the energy recorded by this register is created under a Controlled Load regime. ControlledLoad field will have &#39;No if register does not relate to a Controlled Load, “Yes” if register relates to a Controlled Load If absent the status is unknown.</td>
+<td>Indicates whether the energy recorded by this register is created under a Controlled Load regime</td>
 </tr>
 <tr>
 <td>readStartDate</td>

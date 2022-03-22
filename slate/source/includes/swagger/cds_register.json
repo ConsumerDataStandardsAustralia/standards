@@ -64,7 +64,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "An Authorisation Token as per [RFC6750](https://tools.ietf.org/html/rfc6750).",
+          "description" : "An Authorisation Token as per **[[RFC6750]](#nref-RFC6750)**.",
           "explode" : false,
           "in" : "header",
           "name" : "Authorization",
@@ -241,7 +241,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "An Authorisation Token as per [RFC6750](https://tools.ietf.org/html/rfc6750).",
+          "description" : "An Authorisation Token as per **[[RFC6750]](#nref-RFC6750)**.",
           "explode" : false,
           "in" : "header",
           "name" : "Authorization",
@@ -803,7 +803,7 @@
   "components" : {
     "parameters" : {
       "Authorization" : {
-        "description" : "An Authorisation Token as per [RFC6750](https://tools.ietf.org/html/rfc6750).",
+        "description" : "An Authorisation Token as per **[[RFC6750]](#nref-RFC6750)**.",
         "explode" : false,
         "in" : "header",
         "name" : "Authorization",
