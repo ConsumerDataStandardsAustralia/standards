@@ -1,10 +1,5 @@
 ## Normative References
 
-```diff
-+ Added normative reference link to RFC9126
-```
-
-
 | **Reference**  | **Description**  | **Version** |
 | --- | --- | --- |
 | <a id="nref-DCR"></a>**[DCR]**          | OAuth 2.0 Dynamic Client Registration Protocol: <https://datatracker.ietf.org/doc/html/rfc7591>                                                                                |Jul 2015

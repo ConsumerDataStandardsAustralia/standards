@@ -41,10 +41,6 @@ The table below highlights these areas of the standards.
 |[Get Customer Detail V1](#get-customer-detail)|Data holders may obsolete version 1 of this end point from February 28th 2023.  Data recipients must upgrade their implementations to use version 2 by this time|February 28th 2023|
 |[Information Security profile](#security-profile) | FAPI 1.0 adoption is introduced across three phases.<br/><strong>Phase 3: Retire Hybrid Flow</strong> includes, amongst other changes:<ul><li>Data Holders MUST support Authorization Code Flow</li><li>Data Holders MAY retire Hybrid Flow</li></ul> | April 7th 2023 |
 
-```diff
-Added tooltips for RFC links
-```
-
 **&dagger;NOTE:** Further consultation required with the ACCC to confirm this obligation date
 
 **&Dagger;NOTE:** Get Data Holder Brands V2 definition is still subject to change

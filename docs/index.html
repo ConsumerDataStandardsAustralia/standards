@@ -1374,16 +1374,12 @@ being auto generated from OpenAPI specification files.
 <li>where the standards are specified as binding standards as required by the Consumer Data Right rules for the purposes of s56FA of the legislation, they apply as under contract between a data holder and an accredited data recipient.  The legal effect of binding standards as between data holders and accredited data recipients is fully set out in s56FD and s56FE of the legislation.</li>
 </ul>
 
-<h2 id='version'>Version</h2>
-
+<p><pre class="highlight diff tab-diff"><code>Note that in v1.16.1 of the standards tooltips have been added whenever
+a normative, or informative, reference is referred to in the standards
+</code></pre><h2 id='version'>Version</h2>
 <p>These standards represent version 1.16.1 of the high level standards.  See the <a href="#versioning">versioning section</a> for more information on how versions are managed in the standard.</p>
-
 <h2 id='interpretation'>Interpretation</h2>
-
-<p>Note that, in these standards, the key words <strong>MUST</strong>, <strong>MUST NOT</strong>, <strong>REQUIRED</strong>, <strong>SHALL</strong>, <strong>SHALL NOT</strong>, <strong>SHOULD</strong>, <strong>SHOULD NOT</strong>, <strong>RECOMMENDED</strong>, <strong>MAY</strong>, and <strong>OPTIONAL</strong> are to be interpreted as described in <strong><a href="#nref-RFC2119">[RFC2119]</a></strong>.</p>
-
-<pre class="highlight diff tab-diff"><code><span class="gi">+ Added tooltips for RFC2119 link
-</span></code></pre>
+<p>Note that, in these standards, the key words <strong>MUST</strong>, <strong>MUST NOT</strong>, <strong>REQUIRED</strong>, <strong>SHALL</strong>, <strong>SHALL NOT</strong>, <strong>SHOULD</strong>, <strong>SHOULD NOT</strong>, <strong>RECOMMENDED</strong>, <strong>MAY</strong>, and <strong>OPTIONAL</strong> are to be interpreted as described in <strong><a href="#nref-RFC2119">[RFC2119]</a></strong>.</p></p>
 
 <h2 id='future-dated-obligations'>Future Dated Obligations</h2>
 
@@ -1570,9 +1566,6 @@ being auto generated from OpenAPI specification files.
 </tr>
 </tbody></table>
 
-<pre class="highlight diff tab-diff"><code>Added tooltips for RFC links
-</code></pre>
-
 <p><strong>&dagger;NOTE:</strong> Further consultation required with the ACCC to confirm this obligation date</p>
 
 <p><strong>&Dagger;NOTE:</strong> Get Data Holder Brands V2 definition is still subject to change</p>
@@ -1581,8 +1574,8 @@ being auto generated from OpenAPI specification files.
 
 <p>A table-view of all endpoint versioning is available <a href='includes/endpoint-version-schedule/'>here</a>.</p>
 
-<h2 id='normative-references'>Normative References</h2><pre class="highlight diff tab-diff"><code><span class="gi">+ Added normative reference link to RFC9126
-</span></code></pre>
+<h2 id='normative-references'>Normative References</h2>
+
 <table><thead>
 <tr>
 <th><strong>Reference</strong></th>
@@ -1751,6 +1744,7 @@ being auto generated from OpenAPI specification files.
 <td>Sep 2021</td>
 </tr>
 </tbody></table>
+
 <h2 id='informative-references'>Informative References</h2>
 
 <table><thead>
@@ -3596,7 +3590,9 @@ standards</li>
 </tbody></table>
 <h3 id='payees'>Payees</h3>
 <p>See below for the data language standards for the payees scope:</p>
-
+<pre class="highlight diff tab-diff"><code>Corrected the capitalisation of BPAY (from BPay) to reflect that
+organisation's branding guidelines
+</code></pre>
 <table><thead>
 <tr>
 <th>Data cluster language</th>
@@ -4278,22 +4274,13 @@ Recipients. Data Holders and Data Recipients <strong>MUST</strong> be created as
 
 <p>This profile supports the authentication flows specified by <a href="https://openid.net/specs/openid-connect-core-1_0.html">OpenID Connect</a> <strong><a href="#nref-OIDC">[OIDC]</a></strong> as constrained further by <strong><a href="#iref-FAPI">[FAPI]</a></strong>.</p>
 
-<pre class="highlight diff tab-diff"><code>Replaced the statements:
-<span class="gd">- Specifically the Hybrid Flow outlined at [section 3.3](https://openid.net/specs/openid-connect-core-1_0.html#HybridFlowAuth) of **[[OIDC]](#nref-OIDC)**.
-</span>with:
-<span class="gi">+ Specifically the OIDC Hybrid Flow outlined at [section 3.3](https://openid.net/specs/openid-connect-core-1_0.html#HybridFlowAuth) of **[[OIDC]](#nref-OIDC)**.
-+
-+ From July 4th 2022, OIDC Authorization Code Flow outlined at [section 3.1](https://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth)  of **[[OIDC]](#nref-OIDC)** is supported.
-</span></code></pre>
-
 <p>Specifically the OIDC Hybrid Flow outlined at <a href="https://openid.net/specs/openid-connect-core-1_0.html#HybridFlowAuth">section 3.3</a> of <strong><a href="#nref-OIDC">[OIDC]</a></strong>.</p>
 
 <p>From July 4th 2022, OIDC Authorization Code Flow outlined at <a href="https://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth">section 3.1</a>  of <strong><a href="#nref-OIDC">[OIDC]</a></strong> is supported.</p>
 
 <p>No other flows are currently supported.</p>
 
-<pre class="highlight diff tab-diff"><code>Added the Baseline Security Provisions section
-</code></pre><h3 id='baseline-security-provisions'>Baseline Security Provisions</h3><h4 id='data-holders'>Data Holders</h4>
+<h3 id='baseline-security-provisions'>Baseline Security Provisions</h3><h4 id='data-holders'>Data Holders</h4>
 <p><strong>From July 4th 2022 (FAPI 1.0 Migration Phase 1)</strong>, the following requirements apply:</p>
 
 <ul>
@@ -4337,16 +4324,12 @@ Recipients. Data Holders and Data Recipients <strong>MUST</strong> be created as
 
 <p><a id="hybrid-flow"></a></p>
 <h3 id='oidc-hybrid-flow'>OIDC Hybrid Flow</h3>
+
 <p>The <strong><a href="#nref-OIDC">[OIDC]</a></strong> Hybrid Flow is a type of redirection flow where the consumer&#39;s user
 agent is redirected from a Data Recipient Software Product’s (Relying Party) web site to a Data
 Holder’s Authorisation end point in the context of an <strong><a href="#nref-OIDC">[OIDC]</a></strong> authentication
 request. The OIDC Hybrid Flow incorporates aspects of the both the implicit flow and
 authorisation code flow detailed under <strong><a href="#nref-OIDC">[OIDC]</a></strong>.</p>
-<pre class="highlight diff tab-diff"><code>Replaced the statement:
-<span class="gd">- Only a `response_type` (see [section 3](https://openid.net/specs/openid-connect-core-1_0.html#Authentication) of **[[OIDC]](#nref-OIDC)**) of `code id_token` SHALL be allowed.
-</span>with:
-<span class="gi">+ Only a `response_type` (see [section 3.3](https://openid.net/specs/openid-connect-core-1_0.html#HybridFlowAuth) of **[[OIDC]](#nref-OIDC)**) of `code id_token` **SHALL** be allowed.
-</span></code></pre>
 
 <p>Only a <code>response_type</code> (see <a href="https://openid.net/specs/openid-connect-core-1_0.html#HybridFlowAuth">section 3.3</a> of <strong><a href="#nref-OIDC">[OIDC]</a></strong>) of <code>code id_token</code> <strong>SHALL</strong> be allowed.</p>
 
@@ -4378,9 +4361,6 @@ authorisation code flow detailed under <strong><a href="#nref-OIDC">[OIDC]</a></
 </ul>
 
 <p>Additional requirements and guidelines for this flow are contained in the <a href="#consumer-experience">Consumer Experience</a> section.</p>
-
-<pre class="highlight diff tab-diff"><code>Added the OIDC Authorization Code Flow section.
-</code></pre>
 
 <p><a id="authorization-code-flow"></a></p>
 
@@ -4547,13 +4527,12 @@ Authorization: Bearer eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNDU2In0.ey
 
 <p>If the Data Holder supports the <a href="#self-signed-jwt-client-authentication">Self-signed JWT Client Authentication</a> method for authenticating the CDR Register, the client ID <strong>MUST</strong> be set to a value of <code>cdr-register</code>.</p>
 
-<pre class="highlight diff tab-diff"><code><span class="gd">- Removed the following duplicate section
-</span>Data Holders calling Data Recipients
-If the Data Holder supports the Self-signed JWT Client Authentication method for authenticating the CDR Register, the client ID MUST be set to a value of cdr-register.
-</code></pre><h3 id='data-holders-calling-data-recipients'>Data Holders calling Data Recipients</h3>
+<h3 id='data-holders-calling-data-recipients'>Data Holders calling Data Recipients</h3>
+
 <blockquote>
 <p>Non-Normative Example - Data Holder calls the Data Recipient Software Product&#39;s CDR Arrangement Revocation end point (note that the &quot;aud&quot; claim is &quot;resource path&quot; to the revocation end point).</p>
 </blockquote>
+
 <pre class="highlight plaintext"><code>POST https://data.recipient.com.au/arrangements/revoke HTTP/1.1
 Host: data.recipient.com.au
 Content-Type: application/x-www-form-urlencoded
@@ -6864,7 +6843,11 @@ Host: cdr.register
 <tr><td><a href='./includes/swagger/cds_dcr.json'>DCR Swagger (JSON)</a></td></tr>
 <tr><td><a href='./includes/swagger/cds_dcr.yaml'>DCR Swagger (YAML)</a></td></tr>
 </table></p>
+<pre class="highlight diff tab-diff"><code>Below are the changes to the DCR APIs section of the
+standards.
 
+Upgraded swagger to OpenAPI Specification 3
+</code></pre>
 <h2 id='register-data-recipient-oauth-client'>Register Data Recipient oAuth Client</h2>
 
 <p><a id="opIdPostDataRecipientRegistration"></a></p>
@@ -8112,28 +8095,8 @@ These endpoints are exposed by the Register and consumed by Data Holders and Dat
 <pre class="highlight diff tab-diff"><code>Below are the changes to the Register APIs section of the
 standards.
 
-Modified the description of the `RegisterDataHolderAuth` object from:
-<span class="gd">- Provides details of authorisation endpoints for Data Holders
-</span>to:
-<span class="gi">+ Defines the mechanism used and associated endpoints for Data Holder to Data Recipient authentication
-</span>
-
-Modified the description of the `jwksEndpoint` field from:
-<span class="gd">- JWKS endpoint for private_key_jwt client authentication with Data Recipient
-</span>to:
-<span class="gi">+ JWKS endpoint used for authentication by the Data Holder with the Data Recipient
-</span>
-
-In the `ResponseOpenIDProviderConfigMetadata` schema changed
-field name from:
-<span class="gd">- request_object_signing_alg_values_supported
-</span>to:
-<span class="gi">+ token_endpoint_auth_signing_alg_values_supported
-</span>The description of this field changed from:
-<span class="gd">- JSON array containing a list of the JWS signing algorithms (alg values) supported by the CDR Register for Request Objects.
-</span>to:
-<span class="gi">+ JSON array containing a list of the JWS signing algorithms (alg values) supported by the token endpoint for the signature on the JWT [JWT] used to authenticate the client at the token endpoint for the \"private_key_jwt\" authentication method
-</span></code></pre>
+Upgraded swagger to OpenAPI Specification 3
+</code></pre>
 <h2 id='get-openid-provider-config'>Get OpenId Provider Config</h2>
 
 <p><a id="opIdGetOpenIdProviderConfig"></a></p>
@@ -11732,7 +11695,7 @@ This operation does not require authentication
 <pre class="highlight diff tab-diff"><code>Below are the changes to the Banking APIs section of the
 standards.
 
-Corrected GetProducts response reference from `ResponseBankingProductList` to `ResponseBankingProductListV2`
+Upgraded swagger to OpenAPI Specification 3
 </code></pre>
 <h2 id='get-accounts'>Get Accounts</h2>
 
@@ -24546,7 +24509,21 @@ This operation does not require authentication
 <tr><td><a href='./includes/swagger/cds_energy.json'>Energy Swagger (JSON)</a></td></tr>
 <tr><td><a href='./includes/swagger/cds_energy.yaml'>Energy Swagger (YAML)</a></td></tr>
 </table>
+<pre class="highlight diff tab-diff"><code>Below are the changes to the Banking APIs section of the
+standards.
 
+The following minor corrections have been made:
+
+* The `isTokenised` field has been corrected to be a boolean type
+
+* Fields of common type `positiveInteger` have been corrected to be of 'integer' type in OAS
+
+* The optional/mandatory status of meta objects has been aligned with standard practice for CDR
+
+* `x-fapi-iteraction-id` has been removed from the publi Tariff endpoints
+
+* Correct the bug where arrays of enums were not being listed with their enumeration values
+</code></pre>
 <h2 id='get-generic-plans'>Get Generic Plans</h2>
 
 <p><a id="opIdlistPlans"></a></p>
@@ -40844,7 +40821,11 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr><td><a href='./includes/swagger/cds_common.json'>Common Swagger (JSON)</a></td></tr>
 <tr><td><a href='./includes/swagger/cds_common.yaml'>Common Swagger (YAML)</a></td></tr>
 </table></p>
+<pre class="highlight diff tab-diff"><code>Below are the changes to the Common APIs section of the
+standards.
 
+Upgraded swagger to OpenAPI Specification 3
+</code></pre>
 <h2 id='get-customer'>Get Customer</h2>
 
 <p><a id="opIdgetCustomer"></a></p>
@@ -45410,7 +45391,12 @@ the Data Holder. In this scenario the retailer MUST call AEMO multiple times and
 <tr><td><a href='./includes/swagger/cds_energy_sdh.json'>Energy Secondary Data Holder Swagger (JSON)</a></td></tr>
 <tr><td><a href='./includes/swagger/cds_energy_sdh.yaml'>Energy Secondary Data Holder Swagger (YAML)</a></td></tr>
 </table>
+<pre class="highlight diff tab-diff"><code>This is a new section added to the standards to support implementation.
 
+It does not represent a change to the standards. The swagger included are
+based on the current energy swagger document with modifications aligned
+to the statements in the Shared Responsibility section of the standards
+</code></pre>
 <h2 id='get-service-points'>Get Service Points</h2>
 
 <p><a id="opIdlistServicePoints"></a></p>
@@ -49658,6 +49644,11 @@ To perform this operation, you must be authenticated and authorised with the fol
 <th>Description</th>
 </tr>
 </thead><tbody>
+<tr>
+<td><a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.16.0/'>04/02/2022</a></td>
+<td>1.16.0</td>
+<td><a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.16.0/'>Changes arising from Decision 222 (Insights and Trusted Adviser Disclosure Consents CX Standards)</a></td>
+</tr>
 <tr>
 <td><a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.15.0/'>23/12/2021</a></td>
 <td>1.15.0</td>

@@ -12,7 +12,7 @@ search: false
 # V1.16.1 Release Notes
 Release notes for version v1.16.1 of the [CDR Standards](../../index.html).
 
-This release minor errata and documentation fixes.
+This release contains minor errata and documentation fixes as well as upgrades of swagger files to OpenAPI specification v3
 
 ## High Level Standards
 
@@ -26,15 +26,18 @@ This release minor errata and documentation fixes.
 
 |Change|Description|Link|
 |------|-----------|----|
-
+| isTokenised type | The `isTokenised` field has been corrected to be a boolean type | [Energy APIs](../../#energy-apis)|
+| positiveInteger types | Fields of common type `positiveInteger` have been corrected to be of 'integer' type in OAS | [Energy APIs](../../#energy-apis)|
+| Optionality of Meta Objects | The optional/mandatory status of meta objects has been aligned with standard practice for CDR | [Energy APIs](../../#energy-apis)|
+| x-fapi-iteraction-id | `x-fapi-iteraction-id` has been removed from the public Tariff endpoints | [Energy APIs](../../#energy-apis)|
+| Enum Array Bug | Correct the bug where arrays of enums were not being listed with their enumeration values | [Energy APIs](../../#energy-apis)|
 
 ## Information Security Profile
 
-|Change|Description|Link|
-|------|-----------|----|
-
+No changes
 
 ## Consumer Experience
 
 |Change|Description|Link|
 |------|-----------|----|
+| BPAY capitalisation | Corrected the capitalisation of BPAY (from BPay) | [Banking Language](../../#banking-language)|

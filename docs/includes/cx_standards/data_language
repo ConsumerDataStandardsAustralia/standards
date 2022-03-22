@@ -156,7 +156,9 @@
 </tbody></table>
 <h3 id='payees'>Payees</h3>
 <p>See below for the data language standards for the payees scope:</p>
-
+<pre class="highlight diff tab-diff"><code>Corrected the capitalisation of BPAY (from BPay) to reflect that
+organisation's branding guidelines
+</code></pre>
 <table><thead>
 <tr>
 <th>Data cluster language</th>

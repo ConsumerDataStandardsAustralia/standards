@@ -41,27 +41,7 @@ These endpoints are exposed by the Register and consumed by Data Holders and Dat
 Below are the changes to the Register APIs section of the
 standards.
 
-Modified the description of the `RegisterDataHolderAuth` object from:
-- Provides details of authorisation endpoints for Data Holders
-to:
-+ Defines the mechanism used and associated endpoints for Data Holder to Data Recipient authentication
-
-
-Modified the description of the `jwksEndpoint` field from:
-- JWKS endpoint for private_key_jwt client authentication with Data Recipient
-to:
-+ JWKS endpoint used for authentication by the Data Holder with the Data Recipient
-
-
-In the `ResponseOpenIDProviderConfigMetadata` schema changed
-field name from:
-- request_object_signing_alg_values_supported
-to:
-+ token_endpoint_auth_signing_alg_values_supported
-The description of this field changed from:
-- JSON array containing a list of the JWS signing algorithms (alg values) supported by the CDR Register for Request Objects.
-to:
-+ JSON array containing a list of the JWS signing algorithms (alg values) supported by the token endpoint for the signature on the JWT [JWT] used to authenticate the client at the token endpoint for the \"private_key_jwt\" authentication method
+Upgraded swagger to OpenAPI Specification 3
 ```
 
 <%= partial "includes/cds_register.md" %>

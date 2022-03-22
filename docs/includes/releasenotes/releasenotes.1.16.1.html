@@ -239,7 +239,7 @@
         <h1 id='v1-16-1-release-notes'>V1.16.1 Release Notes</h1>
 <p>Release notes for version v1.16.1 of the <a href="../../">CDR Standards</a>.</p>
 
-<p>This release minor errata and documentation fixes.</p>
+<p>This release contains minor errata and documentation fixes as well as upgrades of swagger files to OpenAPI specification v3</p>
 <h2 id='high-level-standards'>High Level Standards</h2>
 <table><thead>
 <tr>
@@ -272,16 +272,34 @@
 <th>Link</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>isTokenised type</td>
+<td>The <code>isTokenised</code> field has been corrected to be a boolean type</td>
+<td><a href="../../#energy-apis">Energy APIs</a></td>
+</tr>
+<tr>
+<td>positiveInteger types</td>
+<td>Fields of common type <code>positiveInteger</code> have been corrected to be of &#39;integer&#39; type in OAS</td>
+<td><a href="../../#energy-apis">Energy APIs</a></td>
+</tr>
+<tr>
+<td>Optionality of Meta Objects</td>
+<td>The optional/mandatory status of meta objects has been aligned with standard practice for CDR</td>
+<td><a href="../../#energy-apis">Energy APIs</a></td>
+</tr>
+<tr>
+<td>x-fapi-iteraction-id</td>
+<td><code>x-fapi-iteraction-id</code> has been removed from the public Tariff endpoints</td>
+<td><a href="../../#energy-apis">Energy APIs</a></td>
+</tr>
+<tr>
+<td>Enum Array Bug</td>
+<td>Correct the bug where arrays of enums were not being listed with their enumeration values</td>
+<td><a href="../../#energy-apis">Energy APIs</a></td>
+</tr>
 </tbody></table>
 <h2 id='information-security-profile'>Information Security Profile</h2>
-<table><thead>
-<tr>
-<th>Change</th>
-<th>Description</th>
-<th>Link</th>
-</tr>
-</thead><tbody>
-</tbody></table>
+<p>No changes</p>
 <h2 id='consumer-experience'>Consumer Experience</h2>
 <table><thead>
 <tr>
@@ -290,6 +308,11 @@
 <th>Link</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>BPAY capitalisation</td>
+<td>Corrected the capitalisation of BPAY (from BPay)</td>
+<td><a href="../../#banking-language">Banking Language</a></td>
+</tr>
 </tbody></table>
 
       </div>

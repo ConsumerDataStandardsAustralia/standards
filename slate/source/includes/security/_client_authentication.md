@@ -133,12 +133,6 @@ If the Data Holder supports the [Private Key JWT Client Authentication](#private
 If the Data Holder supports the [Self-signed JWT Client Authentication](#self-signed-jwt-client-authentication) method for authenticating the CDR Register, the client ID **MUST** be set to a value of `cdr-register`.
 
 
-```diff
-- Removed the following duplicate section
-Data Holders calling Data Recipients
-If the Data Holder supports the Self-signed JWT Client Authentication method for authenticating the CDR Register, the client ID MUST be set to a value of cdr-register.
-```
-
 
 ### Data Holders calling Data Recipients
 
