@@ -66,7 +66,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "An Authorisation Token as per [RFC6750](https://tools.ietf.org/html/rfc6750)",
+          "description" : "An Authorisation Token as per **[[RFC6750]](#nref-RFC6750)**",
           "explode" : false,
           "in" : "header",
           "name" : "Authorization",
@@ -86,7 +86,7 @@
             "description" : "Request failed due to unknown or invalid Client or invalid access token",
             "headers" : {
               "WWW-Authenticate" : {
-                "description" : "The Response Header Field as per [RFC6750](https://tools.ietf.org/html/rfc6750)",
+                "description" : "The Response Header Field as per **[[RFC6750]](#nref-RFC6750)**",
                 "explode" : false,
                 "schema" : {
                   "pattern" : "^Bearer .*",
@@ -123,7 +123,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "An Authorisation Token as per [RFC6750](https://tools.ietf.org/html/rfc6750)",
+          "description" : "An Authorisation Token as per **[[RFC6750]](#nref-RFC6750)**",
           "explode" : false,
           "in" : "header",
           "name" : "Authorization",
@@ -149,7 +149,7 @@
             "description" : "Request failed due to unknown or invalid Client or invalid access token",
             "headers" : {
               "WWW-Authenticate" : {
-                "description" : "The Response Header Field as per [RFC6750](https://tools.ietf.org/html/rfc6750)",
+                "description" : "The Response Header Field as per **[[RFC6750]](#nref-RFC6750)**",
                 "explode" : false,
                 "schema" : {
                   "pattern" : "^Bearer .*",
@@ -182,7 +182,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "An Authorisation Token as per [RFC6750](https://tools.ietf.org/html/rfc6750)",
+          "description" : "An Authorisation Token as per **[[RFC6750]](#nref-RFC6750)**",
           "explode" : false,
           "in" : "header",
           "name" : "Authorization",
@@ -229,7 +229,7 @@
             "description" : "Request failed due to unknown or invalid Client or invalid access token",
             "headers" : {
               "WWW-Authenticate" : {
-                "description" : "The Response Header Field as per [RFC6750](https://tools.ietf.org/html/rfc6750)",
+                "description" : "The Response Header Field as per **[[RFC6750]](#nref-RFC6750)**",
                 "explode" : false,
                 "schema" : {
                   "pattern" : "^Bearer .*",
@@ -254,7 +254,7 @@
   "components" : {
     "parameters" : {
       "Authorization" : {
-        "description" : "An Authorisation Token as per [RFC6750](https://tools.ietf.org/html/rfc6750)",
+        "description" : "An Authorisation Token as per **[[RFC6750]](#nref-RFC6750)**",
         "explode" : false,
         "in" : "header",
         "name" : "Authorization",
@@ -292,7 +292,7 @@
         "description" : "Request failed due to unknown or invalid Client or invalid access token",
         "headers" : {
           "WWW-Authenticate" : {
-            "description" : "The Response Header Field as per [RFC6750](https://tools.ietf.org/html/rfc6750)",
+            "description" : "The Response Header Field as per **[[RFC6750]](#nref-RFC6750)**",
             "explode" : false,
             "schema" : {
               "pattern" : "^Bearer .*",
@@ -396,7 +396,7 @@
             "type" : "string"
           },
           "jwks_uri" : {
-            "description" : "URL string referencing the client JSON Web Key (JWK) Set [RFC7517] document, which contains the client public keys",
+            "description" : "URL string referencing the client JSON Web Key (JWK) Set **[[RFC7517]](#nref-RFC7517)** document, which contains the client public keys",
             "example" : "https://www.mockcompany.com.au/jwks",
             "type" : "string"
           },

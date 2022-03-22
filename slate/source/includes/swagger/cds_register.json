@@ -950,7 +950,7 @@
             "type" : "string"
           },
           "jwks_uri" : {
-            "description" : "URL of the CDR Register's JSON Web Key Set [JWK] document. This contains the signing key(s) used to validate access tokens issued from the CDR Register. Note that this differs from the JWKS endpoint used to validate SSAs and CDR Register client authentication",
+            "description" : "URL of the CDR Register's JSON Web Key Set **[[JWK]](#nref-JWK)** document. This contains the signing key(s) used to validate access tokens issued from the CDR Register. Note that this differs from the JWKS endpoint used to validate SSAs and CDR Register client authentication",
             "type" : "string"
           },
           "token_endpoint" : {
@@ -979,14 +979,14 @@
             "type" : "array"
           },
           "code_challenge_methods_supported" : {
-            "description" : "JSON array containing a list of Proof Key for Code Exchange (PKCE) [RFC7636] code challenge methods supported by this authorization server. Given the CDR Register does not support PKCE, this field can be safely ignored",
+            "description" : "JSON array containing a list of Proof Key for Code Exchange (PKCE) **[[RFC7636]](#nref-RFC7636)** code challenge methods supported by this authorization server. Given the CDR Register does not support PKCE, this field can be safely ignored",
             "items" : {
               "type" : "string"
             },
             "type" : "array"
           },
           "scopes_supported" : {
-            "description" : "JSON array containing a list of the OAuth 2.0 [RFC6749] scope values that the CDR Register supports",
+            "description" : "JSON array containing a list of the OAuth 2.0 **[[RFC6749]](#nref-RFC6749)** scope values that the CDR Register supports",
             "items" : {
               "type" : "string"
             },
@@ -1018,7 +1018,7 @@
             "type" : "boolean"
           },
           "token_endpoint_auth_signing_alg_values_supported" : {
-            "description" : "JSON array containing a list of the JWS signing algorithms (alg values) supported by the token endpoint for the signature on the JWT [JWT] used to authenticate the client at the token endpoint for the \\\"private_key_jwt\\\" authentication method",
+            "description" : "JSON array containing a list of the JWS signing algorithms (alg values) supported by the token endpoint for the signature on the JWT **[[JWT]](#nref-JWT)** used to authenticate the client at the token endpoint for the \\\"private_key_jwt\\\" authentication method",
             "items" : {
               "type" : "string"
             },
@@ -1448,7 +1448,7 @@
             "type" : "string"
           },
           "anzsicDivision" : {
-            "description" : "ANZSIC division of the organisation. [ANZSIC (2006)](http://www.abs.gov.au/anzsic)",
+            "description" : "ANZSIC division of the organisation. **[[ANZSIC-2006]](#iref-ANZSIC-2006)**",
             "maxLength" : 100,
             "type" : "string"
           },

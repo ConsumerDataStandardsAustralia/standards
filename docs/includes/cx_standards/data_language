@@ -166,7 +166,7 @@
 </thead><tbody>
 <tr>
 <td><strong>Saved payees</strong></td>
-<td>Names and details of accounts you have saved; <em>(e.g. their BSB and Account Number, BPay CRN and Biller code, or NPP PayID)&dagger;</em></td>
+<td>Names and details of accounts you have saved; <em>(e.g. their BSB and Account Number, BPAY CRN and Biller code, or NPP PayID)&dagger;</em></td>
 <td>bank:payees:read</td>
 </tr>
 </tbody></table>

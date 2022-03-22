@@ -50,7 +50,7 @@ paths:
         schema:
           type: string
         style: simple
-      - description: An Authorisation Token as per [RFC6750](https://tools.ietf.org/html/rfc6750)
+      - description: An Authorisation Token as per **[[RFC6750]](#nref-RFC6750)**
         explode: false
         in: header
         name: Authorization
@@ -68,7 +68,7 @@ paths:
             access token
           headers:
             WWW-Authenticate:
-              description: The Response Header Field as per [RFC6750](https://tools.ietf.org/html/rfc6750)
+              description: The Response Header Field as per **[[RFC6750]](#nref-RFC6750)**
               explode: false
               schema:
                 pattern: ^Bearer .*
@@ -98,7 +98,7 @@ paths:
         schema:
           type: string
         style: simple
-      - description: An Authorisation Token as per [RFC6750](https://tools.ietf.org/html/rfc6750)
+      - description: An Authorisation Token as per **[[RFC6750]](#nref-RFC6750)**
         explode: false
         in: header
         name: Authorization
@@ -119,7 +119,7 @@ paths:
             access token
           headers:
             WWW-Authenticate:
-              description: The Response Header Field as per [RFC6750](https://tools.ietf.org/html/rfc6750)
+              description: The Response Header Field as per **[[RFC6750]](#nref-RFC6750)**
               explode: false
               schema:
                 pattern: ^Bearer .*
@@ -146,7 +146,7 @@ paths:
         schema:
           type: string
         style: simple
-      - description: An Authorisation Token as per [RFC6750](https://tools.ietf.org/html/rfc6750)
+      - description: An Authorisation Token as per **[[RFC6750]](#nref-RFC6750)**
         explode: false
         in: header
         name: Authorization
@@ -181,7 +181,7 @@ paths:
             access token
           headers:
             WWW-Authenticate:
-              description: The Response Header Field as per [RFC6750](https://tools.ietf.org/html/rfc6750)
+              description: The Response Header Field as per **[[RFC6750]](#nref-RFC6750)**
               explode: false
               schema:
                 pattern: ^Bearer .*
@@ -200,7 +200,7 @@ paths:
 components:
   parameters:
     Authorization:
-      description: An Authorisation Token as per [RFC6750](https://tools.ietf.org/html/rfc6750)
+      description: An Authorisation Token as per **[[RFC6750]](#nref-RFC6750)**
       explode: false
       in: header
       name: Authorization
@@ -230,7 +230,7 @@ components:
         token
       headers:
         WWW-Authenticate:
-          description: The Response Header Field as per [RFC6750](https://tools.ietf.org/html/rfc6750)
+          description: The Response Header Field as per **[[RFC6750]](#nref-RFC6750)**
           explode: false
           schema:
             pattern: ^Bearer .*
@@ -367,7 +367,7 @@ components:
           example: https://www.mockcompany.com.au/policy.html
           type: string
         jwks_uri:
-          description: URL string referencing the client JSON Web Key (JWK) Set [RFC7517]
+          description: URL string referencing the client JSON Web Key (JWK) Set **[[RFC7517]](#nref-RFC7517)**
             document, which contains the client public keys
           example: https://www.mockcompany.com.au/jwks
           type: string
