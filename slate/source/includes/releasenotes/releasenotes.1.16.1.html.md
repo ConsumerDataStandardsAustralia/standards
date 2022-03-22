@@ -31,6 +31,7 @@ This release contains minor errata and documentation fixes as well as upgrades o
 | Optionality of Meta Objects | The optional/mandatory status of meta objects has been aligned with standard practice for CDR | [Energy APIs](../../#energy-apis)|
 | x-fapi-iteraction-id | `x-fapi-iteraction-id` has been removed from the public Tariff endpoints | [Energy APIs](../../#energy-apis)|
 | Enum Array Bug | Correct the bug where arrays of enums were not being listed with their enumeration values | [Energy APIs](../../#energy-apis)|
+| controlledLoad flag | Corrected the description of the controlledLoad flag to match previous agreement with AEMO (applies to SDH endpoints also) | [Energy APIs](../../#energy-apis)|
 
 ## Information Security Profile
 
