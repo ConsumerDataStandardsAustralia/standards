@@ -1412,7 +1412,7 @@
 	"paths": {
 		"/secondary/energy/electricity/servicepoints": {
 			"post": {
-				"summary": "Get Service Points",
+				"summary": "Get Service Points (SR)",
 				"description": "Obtain a list of service points owned by the customer that has authorised the current session",
 				"operationId": "listServicePoints",
 				"x-scopes": [
@@ -1472,7 +1472,7 @@
 		},
 		"/secondary/energy/electricity/servicepoints/{servicePointId}": {
 			"get": {
-				"summary": "Get Service Point Detail",
+				"summary": "Get Service Point Detail (SR)",
 				"operationId": "getServicePoint",
 				"x-scopes": [
 					"energy:electricity.servicepoints.detail:read"
@@ -1526,7 +1526,7 @@
 		},
 		"/secondary/energy/electricity/servicepoints/{servicePointId}/usage": {
 			"get": {
-				"summary": "Get Usage For Service Point",
+				"summary": "Get Usage For Service Point (SR)",
 				"operationId": "getUsageForServicePoint",
                 "x-scopes": [
 					"energy:electricity.usage:read"
@@ -1592,7 +1592,7 @@
 		},
 		"/secondary/energy/electricity/servicepoints/usage": {
 			"post": {
-				"summary": "Get Usage For Specific Service Points",
+				"summary": "Get Usage For Specific Service Points (SR)",
 				"operationId": "listUsageForServicePoints",
                 "x-scopes": [
 					"energy:electricity.usage:read"
@@ -1658,7 +1658,7 @@
 		},
 		"/secondary/energy/electricity/servicepoints/{servicePointId}/der": {
 			"get": {
-				"summary": "Get DER For Service Point",
+				"summary": "Get DER For Service Point (SR)",
 				"operationId": "getDERForServicePoint",
 				"description": "Obtain a list of DER data from a particular service point",
 				"x-scopes": [
@@ -1712,7 +1712,7 @@
 		},
 		"/secondary/energy/electricity/servicepoints/der": {
 			"post": {
-				"summary": "Get DER For Specific Service Points",
+				"summary": "Get DER For Specific Service Points (SR)",
 				"operationId": "listDERForServicePoints",
 				"description": "Obtain DER data for a specific set of service points",
 				"x-scopes": [

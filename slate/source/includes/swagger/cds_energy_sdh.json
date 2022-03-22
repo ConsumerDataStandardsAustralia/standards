@@ -127,7 +127,7 @@
             }
           }
         },
-        "summary" : "Get Service Points",
+        "summary" : "Get Service Points (SR)",
         "tags" : [ "Energy-SDH", "NMI Standing Data" ],
         "x-scopes" : [ "energy:electricity.servicepoints.basic:read" ],
         "x-version" : "1"
@@ -238,7 +238,7 @@
             }
           }
         },
-        "summary" : "Get Service Point Detail",
+        "summary" : "Get Service Point Detail (SR)",
         "tags" : [ "Energy-SDH", "NMI Standing Data" ],
         "x-scopes" : [ "energy:electricity.servicepoints.detail:read" ],
         "x-version" : "1"
@@ -391,7 +391,7 @@
             }
           }
         },
-        "summary" : "Get Usage For Service Point",
+        "summary" : "Get Usage For Service Point (SR)",
         "tags" : [ "Energy-SDH", "Electricity Usage" ],
         "x-scopes" : [ "energy:electricity.usage:read" ],
         "x-version" : "1"
@@ -537,7 +537,7 @@
             }
           }
         },
-        "summary" : "Get Usage For Specific Service Points",
+        "summary" : "Get Usage For Specific Service Points (SR)",
         "tags" : [ "Energy-SDH", "Electricity Usage" ],
         "x-scopes" : [ "energy:electricity.usage:read" ],
         "x-version" : "1"
@@ -648,7 +648,7 @@
             }
           }
         },
-        "summary" : "Get DER For Service Point",
+        "summary" : "Get DER For Service Point (SR)",
         "tags" : [ "Energy-SDH", "Distributed Energy Resources" ],
         "x-scopes" : [ "energy:electricity.der:read" ],
         "x-version" : "1"
@@ -772,7 +772,7 @@
             }
           }
         },
-        "summary" : "Get DER For Specific Service Points",
+        "summary" : "Get DER For Specific Service Points (SR)",
         "tags" : [ "Energy-SDH", "Distributed Energy Resources" ],
         "x-scopes" : [ "energy:electricity.der:read" ],
         "x-version" : "1"

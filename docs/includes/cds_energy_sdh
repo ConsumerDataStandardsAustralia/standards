@@ -1,4 +1,4 @@
-<h2 id='get-service-points'>Get Service Points</h2>
+<h2 id='get-service-points-sr'>Get Service Points (SR)</h2>
 <p><a id="opIdlistServicePoints"></a></p>
 
 <blockquote>
@@ -62,7 +62,7 @@ x-cds-arrangement: string
 </tr>
 </tbody></table>
 
-<h3 id="get-service-points-parameters">Parameters</h3>
+<h3 id="get-service-points-(sr)-parameters">Parameters</h3>
 
 <table><thead>
 <tr>
@@ -182,7 +182,7 @@ x-cds-arrangement: string
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id="get-service-points-responses">Responses</h3>
+<h3 id="get-service-points-(sr)-responses">Responses</h3>
 
 <table><thead>
 <tr>
@@ -242,7 +242,7 @@ x-cds-arrangement: string
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">energy:electricity.servicepoints.basic:read</a>
 </aside></p>
-<h2 id='get-service-point-detail'>Get Service Point Detail</h2>
+<h2 id='get-service-point-detail-sr'>Get Service Point Detail (SR)</h2>
 <p><a id="opIdgetServicePoint"></a></p>
 
 <blockquote>
@@ -292,7 +292,7 @@ x-cds-arrangement: string
 </tr>
 </tbody></table>
 
-<h3 id="get-service-point-detail-parameters">Parameters</h3>
+<h3 id="get-service-point-detail-(sr)-parameters">Parameters</h3>
 
 <table><thead>
 <tr>
@@ -437,7 +437,7 @@ x-cds-arrangement: string
   </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id="get-service-point-detail-responses">Responses</h3>
+<h3 id="get-service-point-detail-(sr)-responses">Responses</h3>
 
 <table><thead>
 <tr>
@@ -497,7 +497,7 @@ x-cds-arrangement: string
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">energy:electricity.servicepoints.detail:read</a>
 </aside></p>
-<h2 id='get-usage-for-service-point'>Get Usage For Service Point</h2>
+<h2 id='get-usage-for-service-point-sr'>Get Usage For Service Point (SR)</h2>
 <p><a id="opIdgetUsageForServicePoint"></a></p>
 
 <blockquote>
@@ -547,7 +547,7 @@ x-cds-arrangement: string
 </tr>
 </tbody></table>
 
-<h3 id="get-usage-for-service-point-parameters">Parameters</h3>
+<h3 id="get-usage-for-service-point-(sr)-parameters">Parameters</h3>
 
 <table><thead>
 <tr>
@@ -671,7 +671,7 @@ x-cds-arrangement: string
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id="get-usage-for-service-point-responses">Responses</h3>
+<h3 id="get-usage-for-service-point-(sr)-responses">Responses</h3>
 
 <table><thead>
 <tr>
@@ -731,7 +731,7 @@ x-cds-arrangement: string
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">energy:electricity.usage:read</a>
 </aside></p>
-<h2 id='get-usage-for-specific-service-points'>Get Usage For Specific Service Points</h2>
+<h2 id='get-usage-for-specific-service-points-sr'>Get Usage For Specific Service Points (SR)</h2>
 <p><a id="opIdlistUsageForServicePoints"></a></p>
 
 <blockquote>
@@ -795,7 +795,7 @@ x-cds-arrangement: string
 </tr>
 </tbody></table>
 
-<h3 id="get-usage-for-specific-service-points-parameters">Parameters</h3>
+<h3 id="get-usage-for-specific-service-points-(sr)-parameters">Parameters</h3>
 
 <table><thead>
 <tr>
@@ -940,7 +940,7 @@ x-cds-arrangement: string
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id="get-usage-for-specific-service-points-responses">Responses</h3>
+<h3 id="get-usage-for-specific-service-points-(sr)-responses">Responses</h3>
 
 <table><thead>
 <tr>
@@ -1000,7 +1000,7 @@ x-cds-arrangement: string
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">energy:electricity.usage:read</a>
 </aside></p>
-<h2 id='get-der-for-service-point'>Get DER For Service Point</h2>
+<h2 id='get-der-for-service-point-sr'>Get DER For Service Point (SR)</h2>
 <p><a id="opIdgetDERForServicePoint"></a></p>
 
 <blockquote>
@@ -1050,7 +1050,7 @@ x-cds-arrangement: string
 </tr>
 </tbody></table>
 
-<h3 id="get-der-for-service-point-parameters">Parameters</h3>
+<h3 id="get-der-for-service-point-(sr)-parameters">Parameters</h3>
 
 <table><thead>
 <tr>
@@ -1161,7 +1161,7 @@ x-cds-arrangement: string
   </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id="get-der-for-service-point-responses">Responses</h3>
+<h3 id="get-der-for-service-point-(sr)-responses">Responses</h3>
 
 <table><thead>
 <tr>
@@ -1221,7 +1221,7 @@ x-cds-arrangement: string
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">energy:electricity.der:read</a>
 </aside></p>
-<h2 id='get-der-for-specific-service-points'>Get DER For Specific Service Points</h2>
+<h2 id='get-der-for-specific-service-points-sr'>Get DER For Specific Service Points (SR)</h2>
 <p><a id="opIdlistDERForServicePoints"></a></p>
 
 <blockquote>
@@ -1285,7 +1285,7 @@ x-cds-arrangement: string
 </tr>
 </tbody></table>
 
-<h3 id="get-der-for-specific-service-points-parameters">Parameters</h3>
+<h3 id="get-der-for-specific-service-points-(sr)-parameters">Parameters</h3>
 
 <table><thead>
 <tr>
@@ -1442,7 +1442,7 @@ x-cds-arrangement: string
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id="get-der-for-specific-service-points-responses">Responses</h3>
+<h3 id="get-der-for-specific-service-points-(sr)-responses">Responses</h3>
 
 <table><thead>
 <tr>

@@ -1,6 +1,6 @@
 
 
-## Get Service Points
+## Get Service Points (SR)
 
 <a id="opIdlistServicePoints"></a>
 
@@ -63,7 +63,7 @@ Obtain a list of service points owned by the customer that has authorised the cu
 |---|--|
 |Version|**1**
 
-<h3 id="get-service-points-parameters">Parameters</h3>
+<h3 id="get-service-points-(sr)-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -116,7 +116,7 @@ Obtain a list of service points owned by the customer that has authorised the cu
 }
 ```
 
-<h3 id="get-service-points-responses">Responses</h3>
+<h3 id="get-service-points-(sr)-responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -141,7 +141,7 @@ To perform this operation, you must be authenticated and authorised with the fol
     
   
 
-## Get Service Point Detail
+## Get Service Point Detail (SR)
 
 <a id="opIdgetServicePoint"></a>
 
@@ -189,7 +189,7 @@ Obtain detailed standing information for a specific service point that is owned 
 |---|--|
 |Version|**1**
 
-<h3 id="get-service-point-detail-parameters">Parameters</h3>
+<h3 id="get-service-point-detail-(sr)-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -297,7 +297,7 @@ Obtain detailed standing information for a specific service point that is owned 
 }
 ```
 
-<h3 id="get-service-point-detail-responses">Responses</h3>
+<h3 id="get-service-point-detail-(sr)-responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -322,7 +322,7 @@ To perform this operation, you must be authenticated and authorised with the fol
     
   
 
-## Get Usage For Service Point
+## Get Usage For Service Point (SR)
 
 <a id="opIdgetUsageForServicePoint"></a>
 
@@ -370,7 +370,7 @@ Obtain a list of electricity usage data from a particular service point
 |---|--|
 |Version|**1**
 
-<h3 id="get-usage-for-service-point-parameters">Parameters</h3>
+<h3 id="get-usage-for-service-point-(sr)-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -433,7 +433,7 @@ Obtain a list of electricity usage data from a particular service point
 }
 ```
 
-<h3 id="get-usage-for-service-point-responses">Responses</h3>
+<h3 id="get-usage-for-service-point-(sr)-responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -458,7 +458,7 @@ To perform this operation, you must be authenticated and authorised with the fol
     
   
 
-## Get Usage For Specific Service Points
+## Get Usage For Specific Service Points (SR)
 
 <a id="opIdlistUsageForServicePoints"></a>
 
@@ -521,7 +521,7 @@ Obtain the electricity usage data for a specific set of service points
 |---|--|
 |Version|**1**
 
-<h3 id="get-usage-for-specific-service-points-parameters">Parameters</h3>
+<h3 id="get-usage-for-specific-service-points-(sr)-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -587,7 +587,7 @@ Obtain the electricity usage data for a specific set of service points
 }
 ```
 
-<h3 id="get-usage-for-specific-service-points-responses">Responses</h3>
+<h3 id="get-usage-for-specific-service-points-(sr)-responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -612,7 +612,7 @@ To perform this operation, you must be authenticated and authorised with the fol
     
   
 
-## Get DER For Service Point
+## Get DER For Service Point (SR)
 
 <a id="opIdgetDERForServicePoint"></a>
 
@@ -660,7 +660,7 @@ Obtain a list of DER data from a particular service point
 |---|--|
 |Version|**1**
 
-<h3 id="get-der-for-service-point-parameters">Parameters</h3>
+<h3 id="get-der-for-service-point-(sr)-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -734,7 +734,7 @@ Obtain a list of DER data from a particular service point
 }
 ```
 
-<h3 id="get-der-for-service-point-responses">Responses</h3>
+<h3 id="get-der-for-service-point-(sr)-responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -759,7 +759,7 @@ To perform this operation, you must be authenticated and authorised with the fol
     
   
 
-## Get DER For Specific Service Points
+## Get DER For Specific Service Points (SR)
 
 <a id="opIdlistDERForServicePoints"></a>
 
@@ -822,7 +822,7 @@ Obtain DER data for a specific set of service points
 |---|--|
 |Version|**1**
 
-<h3 id="get-der-for-specific-service-points-parameters">Parameters</h3>
+<h3 id="get-der-for-specific-service-points-(sr)-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -912,7 +912,7 @@ Obtain DER data for a specific set of service points
 }
 ```
 
-<h3 id="get-der-for-specific-service-points-responses">Responses</h3>
+<h3 id="get-der-for-specific-service-points-(sr)-responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
