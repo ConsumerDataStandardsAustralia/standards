@@ -82,7 +82,7 @@
           {
             "name": "Authorization",
             "in": "header",
-            "description": "An Authorisation Token as per [RFC6750](https://tools.ietf.org/html/rfc6750).",
+            "description": "An Authorisation Token as per **[[RFC6750]](#nref-RFC6750)**.",
             "required": true,
             "schema": {
               "type": "string"
@@ -252,7 +252,7 @@
           {
             "name": "Authorization",
             "in": "header",
-            "description": "An Authorisation Token as per [RFC6750](https://tools.ietf.org/html/rfc6750).",
+            "description": "An Authorisation Token as per **[[RFC6750]](#nref-RFC6750)**.",
             "required": true,
             "schema": {
               "type": "string"
@@ -1684,7 +1684,7 @@
       "Authorization": {
         "name": "Authorization",
         "in": "header",
-        "description": "An Authorisation Token as per [RFC6750](https://tools.ietf.org/html/rfc6750).",
+        "description": "An Authorisation Token as per **[[RFC6750]](#nref-RFC6750)**.",
         "required": true,
         "schema": {
           "type": "string"
