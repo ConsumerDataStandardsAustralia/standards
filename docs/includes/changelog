@@ -10,9 +10,9 @@
 </tr>
 </thead><tbody>
 <tr>
-<td>TBA</td>
+<td>22/03/2022</td>
 <td>1.16.1</td>
-<td>Minor errata and documentation fixes</td>
+<td>Minor errata and documentation fixes.  Update of swagger files to OAS3</td>
 <td>See <a href="includes/releasenotes/releasenotes.1.16.1.html">release notes</a> for details</td>
 </tr>
 <tr>
