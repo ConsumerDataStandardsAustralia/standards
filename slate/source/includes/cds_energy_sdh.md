@@ -67,11 +67,11 @@ Obtain a list of service points owned by the customer that has authorised the cu
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|page|query|number|optional|Page of results to request (standard pagination)|
-|page-size|query|number|optional|Page size to request.  Default is 25 (standard pagination)|
+|page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
+|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request.  Default is 25 (standard pagination)|
 |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
 |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
-|x-fapi-interaction-id|header|string|optional|An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
+|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |x-cds-arrangement|header|string|mandatory|A unique string representing a consent arrangement between a Data Recipient Software Product and Data Holder for a given consumer. The identifier MUST be unique per customer according to the definition of customer in the CDR Federation section of this profile. The x-cds-arrangement should contain the arrangement ID for the consent that the request is being made under and will be used for tracing and audit purposes. This field MUST be populated but AEMO MUST NOT seek to validate the consent associated with the arrangement|
 |body|body|[servicePointIdList](#schemacdr-energy-secondary-data-holder-apiservicepointidlist)|mandatory|Request payload containing list of specific Service Points to obtain data for|
 |» data|body|object|mandatory|none|
@@ -121,7 +121,9 @@ Obtain a list of service points owned by the customer that has authorised the cu
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyServicePointListResponse](#schemacdr-energy-secondary-data-holder-apienergyservicepointlistresponse)|
-|4xx|[**Client Error**](https://tools.ietf.org/html/rfc7231#section-6.5)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ErrorListResponse](#schemacdr-energy-secondary-data-holder-apierrorlistresponse)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ErrorListResponse](#schemacdr-energy-secondary-data-holder-apierrorlistresponse)|
+|406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ErrorListResponse](#schemacdr-energy-secondary-data-holder-apierrorlistresponse)|
+|422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ErrorListResponse](#schemacdr-energy-secondary-data-holder-apierrorlistresponse)|
 
 ### Response Headers
 
@@ -129,7 +131,9 @@ Obtain a list of service points owned by the customer that has authorised the cu
 |---|---|---|---|---|
 |200|x-v|string||none|
 |200|x-fapi-interaction-id|string||none|
-|4xx|x-fapi-interaction-id|string||none|
+|400|x-fapi-interaction-id|string||none|
+|406|x-fapi-interaction-id|string||none|
+|422|x-fapi-interaction-id|string||none|
 
   
     
@@ -196,7 +200,7 @@ Obtain detailed standing information for a specific service point that is owned 
 |servicePointId|path|string|mandatory|The independent ID of the service point, known in the industry as the NMI. The  servicePointId will be replaced with NMI for all interactions between Data Holder and AEMO.|
 |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
 |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
-|x-fapi-interaction-id|header|string|optional|An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
+|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |x-cds-arrangement|header|string|mandatory|A unique string representing a consent arrangement between a Data Recipient Software Product and Data Holder for a given consumer. The identifier MUST be unique per customer according to the definition of customer in the CDR Federation section of this profile. The x-cds-arrangement should contain the arrangement ID for the consent that the request is being made under and will be used for tracing and audit purposes. This field MUST be populated but AEMO MUST NOT seek to validate the consent associated with the arrangement|
 
 > Example responses
@@ -302,7 +306,9 @@ Obtain detailed standing information for a specific service point that is owned 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyServicePointDetailResponse](#schemacdr-energy-secondary-data-holder-apienergyservicepointdetailresponse)|
-|4xx|[**Client Error**](https://tools.ietf.org/html/rfc7231#section-6.5)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[404 - Unavailable Service Point](#error-404-unavailable-service-point)</li><li>[404 - Invalid Service Point](#error-404-invalid-service-point)</li></ul>|[ErrorListResponse](#schemacdr-energy-secondary-data-holder-apierrorlistresponse)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ErrorListResponse](#schemacdr-energy-secondary-data-holder-apierrorlistresponse)|
+|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[404 - Unavailable Service Point](#error-404-unavailable-service-point)</li><li>[404 - Invalid Service Point](#error-404-invalid-service-point)</li></ul>|[ErrorListResponse](#schemacdr-energy-secondary-data-holder-apierrorlistresponse)|
+|406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ErrorListResponse](#schemacdr-energy-secondary-data-holder-apierrorlistresponse)|
 
 ### Response Headers
 
@@ -310,7 +316,9 @@ Obtain detailed standing information for a specific service point that is owned 
 |---|---|---|---|---|
 |200|x-v|string||none|
 |200|x-fapi-interaction-id|string||none|
-|4xx|x-fapi-interaction-id|string||none|
+|400|x-fapi-interaction-id|string||none|
+|404|x-fapi-interaction-id|string||none|
+|406|x-fapi-interaction-id|string||none|
 
   
     
@@ -377,11 +385,11 @@ Obtain a list of electricity usage data from a particular service point
 |servicePointId|path|string|mandatory|The independent ID of the service point, known in the industry as the NMI. The  servicePointId will be replaced with NMI for all interactions between Data Holder and AEMO.|
 |oldest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with effective date at or after this date. If absent defaults to newest-date minus 24 months days.  Format is aligned to DateString common type|
 |newest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with effective date at or before this date.  If absent defaults to current date.  Format is aligned to DateString common type|
-|page|query|number|optional|Page of results to request (standard pagination)|
-|page-size|query|number|optional|Page size to request.  Default is 25 (standard pagination)|
+|page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
+|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request.  Default is 25 (standard pagination)|
 |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
 |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
-|x-fapi-interaction-id|header|string|optional|An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
+|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |x-cds-arrangement|header|string|mandatory|A unique string representing a consent arrangement between a Data Recipient Software Product and Data Holder for a given consumer. The identifier MUST be unique per customer according to the definition of customer in the CDR Federation section of this profile. The x-cds-arrangement should contain the arrangement ID for the consent that the request is being made under and will be used for tracing and audit purposes. This field MUST be populated but AEMO MUST NOT seek to validate the consent associated with the arrangement|
 
 > Example responses
@@ -407,7 +415,7 @@ Obtain a list of electricity usage data from a particular service point
           "value": 0
         },
         "intervalRead": {
-          "readIntervalLength": "string",
+          "readIntervalLength": 0,
           "aggregateValue": 0,
           "intervalReads": [
             {
@@ -438,7 +446,10 @@ Obtain a list of electricity usage data from a particular service point
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyUsageListResponse](#schemacdr-energy-secondary-data-holder-apienergyusagelistresponse)|
-|4xx|[**Client Error**](https://tools.ietf.org/html/rfc7231#section-6.5)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Invalid Page](#error-422-field-invalid-page)</li><li>[404 - Unavailable Service Point](#error-404-unavailable-service-point)</li><li>[404 - Invalid Service Point](#error-404-invalid-service-point)</li></ul>|[ErrorListResponse](#schemacdr-energy-secondary-data-holder-apierrorlistresponse)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ErrorListResponse](#schemacdr-energy-secondary-data-holder-apierrorlistresponse)|
+|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[404 - Unavailable Service Point](#error-404-unavailable-service-point)</li><li>[404 - Invalid Service Point](#error-404-invalid-service-point)</li></ul>|[ErrorListResponse](#schemacdr-energy-secondary-data-holder-apierrorlistresponse)|
+|406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ErrorListResponse](#schemacdr-energy-secondary-data-holder-apierrorlistresponse)|
+|422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ErrorListResponse](#schemacdr-energy-secondary-data-holder-apierrorlistresponse)|
 
 ### Response Headers
 
@@ -446,7 +457,10 @@ Obtain a list of electricity usage data from a particular service point
 |---|---|---|---|---|
 |200|x-v|string||none|
 |200|x-fapi-interaction-id|string||none|
-|4xx|x-fapi-interaction-id|string||none|
+|400|x-fapi-interaction-id|string||none|
+|404|x-fapi-interaction-id|string||none|
+|406|x-fapi-interaction-id|string||none|
+|422|x-fapi-interaction-id|string||none|
 
   
     
@@ -527,11 +541,11 @@ Obtain the electricity usage data for a specific set of service points
 |---|---|---|---|---|
 |oldest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with effective date at or after this date. If absent defaults to newest-date minus 24 months days.  Format is aligned to DateString common type|
 |newest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with effective date at or before this date.  If absent defaults to current date.  Format is aligned to DateString common type|
-|page|query|number|optional|Page of results to request (standard pagination)|
-|page-size|query|number|optional|Page size to request.  Default is 25 (standard pagination)|
+|page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
+|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request.  Default is 25 (standard pagination)|
 |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
 |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
-|x-fapi-interaction-id|header|string|optional|An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
+|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |x-cds-arrangement|header|string|mandatory|A unique string representing a consent arrangement between a Data Recipient Software Product and Data Holder for a given consumer. The identifier MUST be unique per customer according to the definition of customer in the CDR Federation section of this profile. The x-cds-arrangement should contain the arrangement ID for the consent that the request is being made under and will be used for tracing and audit purposes. This field MUST be populated but AEMO MUST NOT seek to validate the consent associated with the arrangement|
 |body|body|[servicePointIdList](#schemacdr-energy-secondary-data-holder-apiservicepointidlist)|mandatory|Request payload containing list of specific Service Points to obtain data for|
 |» data|body|object|mandatory|none|
@@ -561,7 +575,7 @@ Obtain the electricity usage data for a specific set of service points
           "value": 0
         },
         "intervalRead": {
-          "readIntervalLength": "string",
+          "readIntervalLength": 0,
           "aggregateValue": 0,
           "intervalReads": [
             {
@@ -592,7 +606,9 @@ Obtain the electricity usage data for a specific set of service points
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyUsageListResponse](#schemacdr-energy-secondary-data-holder-apienergyusagelistresponse)|
-|4xx|[**Client Error**](https://tools.ietf.org/html/rfc7231#section-6.5)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Invalid Page](#error-422-field-invalid-page)</li><li>[422 - Unavailable Service Point](#error-422-unavailable-service-point)</li><li>[422 - Invalid Service Point](#error-422-invalid-service-point)</li></ul>|[ErrorListResponse](#schemacdr-energy-secondary-data-holder-apierrorlistresponse)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ErrorListResponse](#schemacdr-energy-secondary-data-holder-apierrorlistresponse)|
+|406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ErrorListResponse](#schemacdr-energy-secondary-data-holder-apierrorlistresponse)|
+|422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li><li>[422 - Unavailable Service Point](#error-422-unavailable-service-point)</li><li>[422 - Invalid Service Point](#error-422-invalid-service-point)</li></ul>|[ErrorListResponse](#schemacdr-energy-secondary-data-holder-apierrorlistresponse)|
 
 ### Response Headers
 
@@ -600,7 +616,9 @@ Obtain the electricity usage data for a specific set of service points
 |---|---|---|---|---|
 |200|x-v|string||none|
 |200|x-fapi-interaction-id|string||none|
-|4xx|x-fapi-interaction-id|string||none|
+|400|x-fapi-interaction-id|string||none|
+|406|x-fapi-interaction-id|string||none|
+|422|x-fapi-interaction-id|string||none|
 
   
     
@@ -667,7 +685,7 @@ Obtain a list of DER data from a particular service point
 |servicePointId|path|string|mandatory|The independent ID of the service point, known in the industry as the NMI. The  servicePointId will be replaced with NMI for all interactions between Data Holder and AEMO.|
 |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
 |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
-|x-fapi-interaction-id|header|string|optional|An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
+|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |x-cds-arrangement|header|string|mandatory|A unique string representing a consent arrangement between a Data Recipient Software Product and Data Holder for a given consumer. The identifier MUST be unique per customer according to the definition of customer in the CDR Federation section of this profile. The x-cds-arrangement should contain the arrangement ID for the consent that the request is being made under and will be used for tracing and audit purposes. This field MUST be populated but AEMO MUST NOT seek to validate the consent associated with the arrangement|
 
 > Example responses
@@ -703,7 +721,7 @@ Obtain a list of DER data from a particular service point
     "acConnections": [
       {
         "connectionIdentifier": 0,
-        "count": "string",
+        "count": 0,
         "equipmentType": "INVERTER",
         "manufacturerName": "string",
         "inverterSeries": "string",
@@ -739,7 +757,9 @@ Obtain a list of DER data from a particular service point
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyDerDetailResponse](#schemacdr-energy-secondary-data-holder-apienergyderdetailresponse)|
-|4xx|[**Client Error**](https://tools.ietf.org/html/rfc7231#section-6.5)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[404 - Unavailable Service Point](#error-404-unavailable-service-point)</li><li>[404 - Invalid Service Point](#error-404-invalid-service-point)</li></ul>|[ErrorListResponse](#schemacdr-energy-secondary-data-holder-apierrorlistresponse)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ErrorListResponse](#schemacdr-energy-secondary-data-holder-apierrorlistresponse)|
+|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[404 - Unavailable Service Point](#error-404-unavailable-service-point)</li><li>[404 - Invalid Service Point](#error-404-invalid-service-point)</li></ul>|[ErrorListResponse](#schemacdr-energy-secondary-data-holder-apierrorlistresponse)|
+|406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ErrorListResponse](#schemacdr-energy-secondary-data-holder-apierrorlistresponse)|
 
 ### Response Headers
 
@@ -747,7 +767,9 @@ Obtain a list of DER data from a particular service point
 |---|---|---|---|---|
 |200|x-v|string||none|
 |200|x-fapi-interaction-id|string||none|
-|4xx|x-fapi-interaction-id|string||none|
+|400|x-fapi-interaction-id|string||none|
+|404|x-fapi-interaction-id|string||none|
+|406|x-fapi-interaction-id|string||none|
 
   
     
@@ -826,11 +848,11 @@ Obtain DER data for a specific set of service points
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|page|query|number|optional|Page of results to request (standard pagination)|
-|page-size|query|number|optional|Page size to request.  Default is 25 (standard pagination)|
+|page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
+|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request.  Default is 25 (standard pagination)|
 |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
 |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
-|x-fapi-interaction-id|header|string|optional|An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
+|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |x-cds-arrangement|header|string|mandatory|A unique string representing a consent arrangement between a Data Recipient Software Product and Data Holder for a given consumer. The identifier MUST be unique per customer according to the definition of customer in the CDR Federation section of this profile. The x-cds-arrangement should contain the arrangement ID for the consent that the request is being made under and will be used for tracing and audit purposes. This field MUST be populated but AEMO MUST NOT seek to validate the consent associated with the arrangement|
 |body|body|[servicePointIdList](#schemacdr-energy-secondary-data-holder-apiservicepointidlist)|mandatory|Request payload containing list of specific Service Points to obtain data for|
 |» data|body|object|mandatory|none|
@@ -872,7 +894,7 @@ Obtain DER data for a specific set of service points
         "acConnections": [
           {
             "connectionIdentifier": 0,
-            "count": "string",
+            "count": 0,
             "equipmentType": "INVERTER",
             "manufacturerName": "string",
             "inverterSeries": "string",
@@ -917,7 +939,9 @@ Obtain DER data for a specific set of service points
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyDerListResponse](#schemacdr-energy-secondary-data-holder-apienergyderlistresponse)|
-|4xx|[**Client Error**](https://tools.ietf.org/html/rfc7231#section-6.5)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Invalid Page](#error-422-field-invalid-page)</li><li>[422 - Unavailable Service Point](#error-422-unavailable-service-point)</li><li>[422 - Invalid Service Point](#error-422-invalid-service-point)</li></ul>|[ErrorListResponse](#schemacdr-energy-secondary-data-holder-apierrorlistresponse)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ErrorListResponse](#schemacdr-energy-secondary-data-holder-apierrorlistresponse)|
+|406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ErrorListResponse](#schemacdr-energy-secondary-data-holder-apierrorlistresponse)|
+|422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li><li>[422 - Unavailable Service Point](#error-422-unavailable-service-point)</li><li>[422 - Invalid Service Point](#error-422-invalid-service-point)</li></ul>|[ErrorListResponse](#schemacdr-energy-secondary-data-holder-apierrorlistresponse)|
 
 ### Response Headers
 
@@ -925,7 +949,9 @@ Obtain DER data for a specific set of service points
 |---|---|---|---|---|
 |200|x-v|string||none|
 |200|x-fapi-interaction-id|string||none|
-|4xx|x-fapi-interaction-id|string||none|
+|400|x-fapi-interaction-id|string||none|
+|406|x-fapi-interaction-id|string||none|
+|422|x-fapi-interaction-id|string||none|
 
   
     
@@ -1093,7 +1119,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |---|---|---|---|
 |data|[EnergyServicePointDetail](#schemacdr-energy-secondary-data-holder-apienergyservicepointdetail)|mandatory|none|
 |links|[Links](#schemacdr-energy-secondary-data-holder-apilinks)|mandatory|none|
-|meta|[Meta](#schemacdr-energy-secondary-data-holder-apimeta)|mandatory|none|
+|meta|[Meta](#schemacdr-energy-secondary-data-holder-apimeta)|optional|none|
 
 <h3 class="schema-toc" id="tocSenergyusagelistresponse">EnergyUsageListResponse</h3>
 
@@ -1118,7 +1144,7 @@ To perform this operation, you must be authenticated and authorised with the fol
           "value": 0
         },
         "intervalRead": {
-          "readIntervalLength": "string",
+          "readIntervalLength": 0,
           "aggregateValue": 0,
           "intervalReads": [
             {
@@ -1189,7 +1215,7 @@ To perform this operation, you must be authenticated and authorised with the fol
         "acConnections": [
           {
             "connectionIdentifier": 0,
-            "count": "string",
+            "count": 0,
             "equipmentType": "INVERTER",
             "manufacturerName": "string",
             "inverterSeries": "string",
@@ -1272,7 +1298,7 @@ To perform this operation, you must be authenticated and authorised with the fol
     "acConnections": [
       {
         "connectionIdentifier": 0,
-        "count": "string",
+        "count": 0,
         "equipmentType": "INVERTER",
         "manufacturerName": "string",
         "inverterSeries": "string",
@@ -1672,7 +1698,7 @@ To perform this operation, you must be authenticated and authorised with the fol
     "value": 0
   },
   "intervalRead": {
-    "readIntervalLength": "string",
+    "readIntervalLength": 0,
     "aggregateValue": 0,
     "intervalReads": [
       {
@@ -1753,7 +1779,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   "acConnections": [
     {
       "connectionIdentifier": 0,
-      "count": "string",
+      "count": 0,
       "equipmentType": "INVERTER",
       "manufacturerName": "string",
       "inverterSeries": "string",
