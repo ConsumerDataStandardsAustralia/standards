@@ -881,7 +881,7 @@
           },
           "fullNumber": {
             "type": "string",
-            "description": "Fully formatted phone number with country code, area code, number and extension incorporated. Formatted according to section 5.1.4. of [RFC 3966](https://www.ietf.org/rfc/rfc3966.txt)",
+            "description": "Fully formatted phone number with country code, area code, number and extension incorporated. Formatted according to section 5.1.4. of **[[RFC3966]](#iref-RFC3966)**",
             "x-cds-type": "ExternalRef"
           }
         },
