@@ -136,13 +136,10 @@ Obtain a list of service points owned by the customer that has authorised the cu
 |422|x-fapi-interaction-id|string||none|
 
   
-    
-      <aside class="notice">
-To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">energy:electricity.servicepoints.basic:read</a>
+    <aside class="success">
+This operation does not require authentication
 </aside>
 
-    
   
 
 ## Get Service Point Detail (SR)
@@ -321,13 +318,10 @@ Obtain detailed standing information for a specific service point that is owned 
 |406|x-fapi-interaction-id|string||none|
 
   
-    
-      <aside class="notice">
-To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">energy:electricity.servicepoints.detail:read</a>
+    <aside class="success">
+This operation does not require authentication
 </aside>
 
-    
   
 
 ## Get Usage For Service Point (SR)
@@ -463,13 +457,10 @@ Obtain a list of electricity usage data from a particular service point
 |422|x-fapi-interaction-id|string||none|
 
   
-    
-      <aside class="notice">
-To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">energy:electricity.usage:read</a>
+    <aside class="success">
+This operation does not require authentication
 </aside>
 
-    
   
 
 ## Get Usage For Specific Service Points (SR)
@@ -621,13 +612,10 @@ Obtain the electricity usage data for a specific set of service points
 |422|x-fapi-interaction-id|string||none|
 
   
-    
-      <aside class="notice">
-To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">energy:electricity.usage:read</a>
+    <aside class="success">
+This operation does not require authentication
 </aside>
 
-    
   
 
 ## Get DER For Service Point (SR)
@@ -772,13 +760,10 @@ Obtain a list of DER data from a particular service point
 |406|x-fapi-interaction-id|string||none|
 
   
-    
-      <aside class="notice">
-To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">energy:electricity.der:read</a>
+    <aside class="success">
+This operation does not require authentication
 </aside>
 
-    
   
 
 ## Get DER For Specific Service Points (SR)
@@ -954,13 +939,10 @@ Obtain DER data for a specific set of service points
 |422|x-fapi-interaction-id|string||none|
 
   
-    
-      <aside class="notice">
-To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">energy:electricity.der:read</a>
+    <aside class="success">
+This operation does not require authentication
 </aside>
 
-    
   
 
 <h2 class="schema-heading" id="cdr-energy-secondary-data-holder-api-schemas">Schemas</h2>

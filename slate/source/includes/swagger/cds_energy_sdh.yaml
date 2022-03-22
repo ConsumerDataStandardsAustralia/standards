@@ -169,8 +169,6 @@ paths:
       tags:
       - Energy-SDH
       - NMI Standing Data
-      x-scopes:
-      - energy:electricity.servicepoints.basic:read
       x-version: "1"
   /secondary/energy/electricity/servicepoints/{servicePointId}:
     get:
@@ -324,8 +322,6 @@ paths:
       tags:
       - Energy-SDH
       - NMI Standing Data
-      x-scopes:
-      - energy:electricity.servicepoints.detail:read
       x-version: "1"
   /secondary/energy/electricity/servicepoints/{servicePointId}/usage:
     get:
@@ -538,8 +534,6 @@ paths:
       tags:
       - Energy-SDH
       - Electricity Usage
-      x-scopes:
-      - energy:electricity.usage:read
       x-version: "1"
   /secondary/energy/electricity/servicepoints/usage:
     post:
@@ -727,8 +721,6 @@ paths:
       tags:
       - Energy-SDH
       - Electricity Usage
-      x-scopes:
-      - energy:electricity.usage:read
       x-version: "1"
   /secondary/energy/electricity/servicepoints/{servicePointId}/der:
     get:
@@ -881,8 +873,6 @@ paths:
       tags:
       - Energy-SDH
       - Distributed Energy Resources
-      x-scopes:
-      - energy:electricity.der:read
       x-version: "1"
   /secondary/energy/electricity/servicepoints/der:
     post:
@@ -1047,8 +1037,6 @@ paths:
       tags:
       - Energy-SDH
       - Distributed Energy Resources
-      x-scopes:
-      - energy:electricity.der:read
       x-version: "1"
 components:
   parameters:

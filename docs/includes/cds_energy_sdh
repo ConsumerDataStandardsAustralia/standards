@@ -264,9 +264,8 @@ x-cds-arrangement: string
 </tr>
 </tbody></table>
 
-<p><aside class="notice">
-To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">energy:electricity.servicepoints.basic:read</a>
+<p><aside class="success">
+This operation does not require authentication
 </aside></p>
 <h2 id='get-service-point-detail-sr'>Get Service Point Detail (SR)</h2>
 <p><a id="opIdgetServicePoint"></a></p>
@@ -545,9 +544,8 @@ x-cds-arrangement: string
 </tr>
 </tbody></table>
 
-<p><aside class="notice">
-To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">energy:electricity.servicepoints.detail:read</a>
+<p><aside class="success">
+This operation does not require authentication
 </aside></p>
 <h2 id='get-usage-for-service-point-sr'>Get Usage For Service Point (SR)</h2>
 <p><a id="opIdgetUsageForServicePoint"></a></p>
@@ -818,9 +816,8 @@ x-cds-arrangement: string
 </tr>
 </tbody></table>
 
-<p><aside class="notice">
-To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">energy:electricity.usage:read</a>
+<p><aside class="success">
+This operation does not require authentication
 </aside></p>
 <h2 id='get-usage-for-specific-service-points-sr'>Get Usage For Specific Service Points (SR)</h2>
 <p><a id="opIdlistUsageForServicePoints"></a></p>
@@ -1113,9 +1110,8 @@ x-cds-arrangement: string
 </tr>
 </tbody></table>
 
-<p><aside class="notice">
-To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">energy:electricity.usage:read</a>
+<p><aside class="success">
+This operation does not require authentication
 </aside></p>
 <h2 id='get-der-for-service-point-sr'>Get DER For Service Point (SR)</h2>
 <p><a id="opIdgetDERForServicePoint"></a></p>
@@ -1360,9 +1356,8 @@ x-cds-arrangement: string
 </tr>
 </tbody></table>
 
-<p><aside class="notice">
-To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">energy:electricity.der:read</a>
+<p><aside class="success">
+This operation does not require authentication
 </aside></p>
 <h2 id='get-der-for-specific-service-points-sr'>Get DER For Specific Service Points (SR)</h2>
 <p><a id="opIdlistDERForServicePoints"></a></p>
@@ -1667,9 +1662,8 @@ x-cds-arrangement: string
 </tr>
 </tbody></table>
 
-<p><aside class="notice">
-To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">energy:electricity.der:read</a>
+<p><aside class="success">
+This operation does not require authentication
 </aside></p>
 
 <h2 class="schema-heading" id="cdr-energy-secondary-data-holder-api-schemas">Schemas</h2>

@@ -1416,9 +1416,6 @@
 				"summary": "Get Service Points (SR)",
                 "description": "Obtain a list of service points owned by the customer that has authorised the current session",
 				"operationId": "listServicePoints",
-				"x-scopes": [
-					"energy:electricity.servicepoints.basic:read"
-				],
 				"tags": [
                     "Energy-SDH",
 					"NMI Standing Data"
@@ -1511,9 +1508,6 @@
 			"get": {
 				"summary": "Get Service Point Detail (SR)",
 				"operationId": "getServicePoint",
-				"x-scopes": [
-					"energy:electricity.servicepoints.detail:read"
-				],
 				"description": "Obtain detailed standing information for a specific service point that is owned by the customer that has authorised the current session",
 				"tags": [
                     "Energy-SDH",
@@ -1601,9 +1595,6 @@
 			"get": {
 				"summary": "Get Usage For Service Point (SR)",
 				"operationId": "getUsageForServicePoint",
-                "x-scopes": [
-					"energy:electricity.usage:read"
-				],
 				"description": "Obtain a list of electricity usage data from a particular service point",
 				"tags": [
                     "Energy-SDH",
@@ -1721,9 +1712,6 @@
 			"post": {
 				"summary": "Get Usage For Specific Service Points (SR)",
 				"operationId": "listUsageForServicePoints",
-                "x-scopes": [
-					"energy:electricity.usage:read"
-                ],
 				"description": "Obtain the electricity usage data for a specific set of service points",
 				"tags": [
                     "Energy-SDH",
@@ -1824,9 +1812,6 @@
 				"summary": "Get DER For Service Point (SR)",
 				"operationId": "getDERForServicePoint",
 				"description": "Obtain a list of DER data from a particular service point",
-				"x-scopes": [
-                    "energy:electricity.der:read"
-                ],
 				"tags": [
                     "Energy-SDH",
 					"Distributed Energy Resources"
@@ -1914,9 +1899,6 @@
 				"summary": "Get DER For Specific Service Points (SR)",
 				"operationId": "listDERForServicePoints",
 				"description": "Obtain DER data for a specific set of service points",
-				"x-scopes": [
-                    "energy:electricity.der:read"
-                ],
 				"tags": [
                     "Energy-SDH",
 					"Distributed Energy Resources"
@@ -2001,7 +1983,7 @@
         						}
         					}
         				}
-                    }      
+                    }
 				}
 			}
 		}
