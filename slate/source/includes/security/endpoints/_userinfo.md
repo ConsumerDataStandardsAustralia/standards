@@ -6,6 +6,6 @@
 | Client Authentication Required| No|
 | Bearer Token Required| Yes|
 
-The requirements for the UserInfo End Point are specified in [section 5.3](https://openid.net/specs/openid-connect-core-1_0.html#UserInfo) of **[OIDC]**.
+The requirements for the UserInfo End Point are specified in [section 5.3](https://openid.net/specs/openid-connect-core-1_0.html#UserInfo) of **[[OIDC]](#nref-OIDC)**.
 
 Data Holders MUST support a UserInfo End Point.

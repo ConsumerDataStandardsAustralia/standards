@@ -46,7 +46,7 @@ Content-Type: application/json
 | Client Authentication Required| No|
 | Bearer Token Required| No|
 
-Data Holders MUST make their OpenID Provider Metadata available via a configuration end point as outlined in [Section 3 and 4 of the OpenID Connect Discovery standards](https://openid.net/specs/openid-connect-discovery-1_0.html) **[OIDD]**.
+Data Holders MUST make their OpenID Provider Metadata available via a configuration end point as outlined in [Section 3 and 4 of the OpenID Connect Discovery standards](https://openid.net/specs/openid-connect-discovery-1_0.html) **[[OIDD]](#nref-OIDD)**.
 
 At a minimum, the Data Holder metadata MUST include:
 
@@ -61,7 +61,7 @@ At a minimum, the Data Holder metadata MUST include:
 - `claims_supported`:  The list of supported claims.
 - `acr_values_supported`:  The supported ACR values.
 - `jwks_uri`: The JSON Web Key Set for the data holder.
-- `id_token_encryption_alg_values_supported`: The list of the supported JWE algorithms for securing the issued ID tokens. Must conform to **[FAPI-RW-Draft]** and **[OIDD]**.
+- `id_token_encryption_alg_values_supported`: The list of the supported JWE algorithms for securing the issued ID tokens. Must conform to **[[FAPI-RW-Draft]](#nref-FAPI-RW-Draft)** and **[[OIDD]](#nref-OIDD)**.
 - `id_token_encryption_enc_values_supported`: The list of the supported JWE encryption methods for securing the issued ID tokens.
 - ``cdr_arrangement_revocation_endpoint``: The URL of the CDR Arrangement Revocation End Point for consent revocation
-- `pushed_authorization_request_endpoint`: URL of the Pushed Authorisation End Point used to support **[PAR]**.
+- `pushed_authorization_request_endpoint`: URL of the Pushed Authorisation End Point used to support **[[PAR]](#nref-PAR)**.

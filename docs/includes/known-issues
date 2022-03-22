@@ -8,10 +8,6 @@
 </tr>
 </thead><tbody>
 <tr>
-<td style="text-align: left">Banking and Common swagger is combined</td>
-<td style="text-align: left">Common entity definitions to be split out into a separate swagger which can be leveraged by Banking, Energy and Register APIs. This will create a separate Banking APIs swagger that references the common swagger specification.</td>
-</tr>
-<tr>
 <td style="text-align: left">Register APIs use local version of common definitions</td>
 <td style="text-align: left">The Register APIs use a locally defined version of common schema definitions such as <code>ResponseErrorList</code> for error responses. These need to be updated to reference common swagger specifications inherited by the Common Swagger spec.</td>
 </tr>

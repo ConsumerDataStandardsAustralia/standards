@@ -10,6 +10,12 @@
 </tr>
 </thead><tbody>
 <tr>
+<td>22/03/2022</td>
+<td>1.16.1</td>
+<td>Minor errata and documentation fixes.  Update of swagger files to OAS3</td>
+<td>See <a href="includes/releasenotes/releasenotes.1.16.1.html">release notes</a> for details</td>
+</tr>
+<tr>
 <td>04/02/2022</td>
 <td>1.16.0</td>
 <td>Changes arising from Decision 222 (Insights and Trusted Adviser Disclosure Consents CX Standards)</td>

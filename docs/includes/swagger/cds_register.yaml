@@ -1,1168 +1,1870 @@
----
-swagger: "2.0"
+openapi: 3.0.3
 info:
-  version: 1.16.0
   title: CDR Participant Discovery API
-host: <register-base-url>
-tags: []
-schemes:
-- https
+  version: 1.16.1
+servers:
+- url: https://<register-base-url>/
 paths:
   /.well-known/openid-configuration:
     get:
-      tags:
-      - Register
-      summary: Get OpenId Provider Config
-      description: "Endpoint used by participants to discover the CDR Register OpenID configuration and obtain information needed to interact with it, including its OAuth 2.0 endpoint locations."
+      description: Endpoint used by participants to discover the CDR Register OpenID
+        configuration and obtain information needed to interact with it, including
+        its OAuth 2.0 endpoint locations.
       operationId: GetOpenIdProviderConfig
-      produces:
-      - application/json
-      parameters: []
       responses:
         "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseOpenIDProviderConfigMetadata'
           description: The OpenID Provider Configuration Metadata values
-          schema:
-            $ref: '#/definitions/ResponseOpenIDProviderConfigMetadata'
+      summary: Get OpenId Provider Config
+      tags:
+      - Register
   /jwks:
     get:
-      tags:
-      - Register
-      summary: Get JWKS
-      description: JWKS endpoint containing the public keys used by the CDR Register to validate the signature of issued SSAs and authenticate outbound calls to participants in the CDR.
+      description: JWKS endpoint containing the public keys used by the CDR Register
+        to validate the signature of issued SSAs and authenticate outbound calls to
+        participants in the CDR.
       operationId: Get JWKS
-      produces:
-      - application/json
-      parameters: []
       responses:
         "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseJWKS'
           description: A JSON object that represents a set of JWKs
-          schema:
-            $ref: '#/definitions/ResponseJWKS'
+      summary: Get JWKS
+      tags:
+      - Register
   /cdr-register/v1/{industry}/data-holders/brands:
     get:
-      tags:
-      - Register
-      summary: Get Data Holder Brands
-      description: "Allows Data Recipients to discover Data Holder Brands available in the CDR ecosystem.\n\nObsolete versions: [v1](includes/obsolete/get-data-holder-brands-v1.html)"
+      description: |-
+        Allows Data Recipients to discover Data Holder Brands available in the CDR ecosystem.
+
+        Obsolete versions: [v1](includes/obsolete/get-data-holder-brands-v1.html)
       operationId: GetDataHolderBrands
-      consumes:
-      - application/json
-      produces:
-      - application/json
       parameters:
-      - name: industry
+      - description: The industry the participant is retrieving data for (Banking,
+          etc)
+        explode: false
         in: path
-        description: "The industry the participant is retrieving data for (Banking, etc)"
+        name: industry
         required: true
-        type: string
-        enum:
-        - banking
-        - energy
-        - telco
-        - all
-      - name: Authorization
+        schema:
+          enum:
+          - banking
+          - energy
+          - telco
+          - all
+          type: string
+        style: simple
+      - description: An Authorisation Token as per **[[RFC6750]](#nref-RFC6750)**.
+        explode: false
         in: header
-        description: "An Authorisation Token as per [RFC6750](https://tools.ietf.org/html/rfc6750)."
+        name: Authorization
         required: true
-        type: string
-      - name: x-v
+        schema:
+          type: string
+        style: simple
+      - description: The version of the API end point requested by the client. Must
+          be set to a positive integer.
+        explode: false
         in: header
-        description: The version of the API end point requested by the client. Must be set to a positive integer.
+        name: x-v
         required: true
-        type: string
-      - name: x-min-v
+        schema:
+          type: string
+        style: simple
+      - description: The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers)
+          of the API end point requested by the client. Must be set to a positive
+          integer if provided.
+        explode: false
         in: header
-        description: "The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided."
+        name: x-min-v
         required: false
-        type: string
-      - name: updated-since
+        schema:
+          type: string
+        style: simple
+      - description: query filter returns results updated since the specified date-time
+        explode: true
         in: query
-        description: query filter returns results updated since the specified date-time
+        name: updated-since
         required: false
-        type: string
-        format: date-time
-      - name: page
+        schema:
+          format: date-time
+          type: string
+        style: form
+      - description: the page number to return
+        explode: true
         in: query
-        description: the page number to return
+        name: page
         required: false
-        type: integer
-        format: int32
-      - name: page-size
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - description: the number of records to return per page
+        explode: true
         in: query
-        description: the number of records to return per page
+        name: page-size
         required: false
-        type: integer
-        format: int32
+        schema:
+          format: int32
+          type: integer
+        style: form
       responses:
         "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseRegisterDataHolderBrandList'
           description: Success
           headers:
             x-v:
-              type: string
-              description: The version of the API end point that the CDR Register has responded with.
-          schema:
-            $ref: '#/definitions/ResponseRegisterDataHolderBrandList'
+              description: The version of the API end point that the CDR Register
+                has responded with.
+              explode: false
+              schema:
+                type: string
+              style: simple
         "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: Missing Required Header / Invalid Version / Invalid Path Parameter
-          schema:
-            $ref: '#/definitions/ResponseErrorListV2'
         "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: Invalid Bearer Token
-          schema:
-            $ref: '#/definitions/ResponseErrorListV2'
         "406":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: Unsupported Version
-          schema:
-            $ref: '#/definitions/ResponseErrorListV2'
+      summary: Get Data Holder Brands
+      tags:
+      - Register
       x-version: "2"
       x-scopes:
       - cdr-register:bank:read
       - cdr-register:read
   /cdr-register/v1/{industry}/data-recipients/brands/{dataRecipientBrandId}/software-products/{softwareProductId}/ssa:
     get:
-      tags:
-      - Register
-      summary: Get Software Statement Assertion (SSA)
-      description: "Get a Software Statement Assertion (SSA) for a software product on the CDR Register to be used for Dynamic Client Registration with a Data Holder Brand.\n\nObsolete versions: [v2](includes/obsolete/get-software-statement-assertion-v2.html)"
+      description: |-
+        Get a Software Statement Assertion (SSA) for a software product on the CDR Register to be used for Dynamic Client Registration with a Data Holder Brand.
+
+        Obsolete versions: [v2](includes/obsolete/get-software-statement-assertion-v2.html)
       operationId: GetSoftwareStatementAssertion
-      consumes:
-      - application/json
-      produces:
-      - application/json
       parameters:
-      - name: industry
+      - description: The industry the participant is retrieving data for (Banking,
+          etc)
+        explode: false
         in: path
-        description: "The industry the participant is retrieving data for (Banking, etc)"
+        name: industry
         required: true
-        type: string
-        enum:
-        - banking
-        - energy
-        - telco
-        - all
-      - name: x-v
+        schema:
+          enum:
+          - banking
+          - energy
+          - telco
+          - all
+          type: string
+        style: simple
+      - description: The version of the API end point requested by the client. Must
+          be set to a positive integer.
+        explode: false
         in: header
-        description: The version of the API end point requested by the client. Must be set to a positive integer.
+        name: x-v
         required: true
-        type: string
-      - name: x-min-v
+        schema:
+          type: string
+        style: simple
+      - description: The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers)
+          of the API end point requested by the client. Must be set to a positive
+          integer if provided.
+        explode: false
         in: header
-        description: "The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided."
+        name: x-min-v
         required: false
-        type: string
-      - name: dataRecipientBrandId
+        schema:
+          type: string
+        style: simple
+      - description: Unique id for the Accredited Data Recipient Brand that the Software
+          Product is associated with in the CDR Register
+        explode: false
         in: path
-        description: Unique id for the Accredited Data Recipient Brand that the Software Product is associated with in the CDR Register
+        name: dataRecipientBrandId
         required: true
-        type: string
-      - name: softwareProductId
+        schema:
+          type: string
+        style: simple
+      - description: Unique id for the Accredited Data Recipient Software Product
+          in the CDR Register
+        explode: false
         in: path
-        description: Unique id for the Accredited Data Recipient Software Product in the CDR Register
+        name: softwareProductId
         required: true
-        type: string
-      - name: Authorization
+        schema:
+          type: string
+        style: simple
+      - description: An Authorisation Token as per **[[RFC6750]](#nref-RFC6750)**.
+        explode: false
         in: header
-        description: "An Authorisation Token as per [RFC6750](https://tools.ietf.org/html/rfc6750)."
+        name: Authorization
         required: true
-        type: string
+        schema:
+          type: string
+        style: simple
       responses:
         "200":
+          content:
+            application/json:
+              schema:
+                type: string
           description: Success
           headers:
             x-v:
-              type: string
-              description: The version of the API end point that the CDR Register has responded with.
-          schema:
-            type: string
+              description: The version of the API end point that the CDR Register
+                has responded with.
+              explode: false
+              schema:
+                type: string
+              style: simple
         "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: Missing Required Header / Invalid Version / Invalid Path Parameter
-          schema:
-            $ref: '#/definitions/ResponseErrorListV2'
         "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: Invalid Bearer Token
-          schema:
-            $ref: '#/definitions/ResponseErrorListV2'
         "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: Invalid BrandId
-          schema:
-            $ref: '#/definitions/ResponseErrorListV2'
         "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: Invalid Software Product
-          schema:
-            $ref: '#/definitions/ResponseErrorListV2'
         "406":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: Unsupported Version
-          schema:
-            $ref: '#/definitions/ResponseErrorListV2'
         "422":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: SSA validation failed
-          schema:
-            $ref: '#/definitions/ResponseErrorListV2'
+      summary: Get Software Statement Assertion (SSA)
+      tags:
+      - Register
       x-version: "3"
       x-scopes:
       - cdr-register:bank:read
       - cdr-register:read
   /cdr-register/v1/{industry}/data-holders/status:
     get:
-      tags:
-      - Register
-      summary: Get Data Holder Statuses
-      description: Endpoint used by participants to discover the statuses for Data Holders from the CDR Register
+      description: Endpoint used by participants to discover the statuses for Data
+        Holders from the CDR Register
       operationId: GetDataHolderStatuses
-      produces:
-      - application/json
       parameters:
-      - name: industry
+      - description: The industry the participant is retrieving data for (Banking,
+          etc)
+        explode: false
         in: path
-        description: "The industry the participant is retrieving data for (Banking, etc)"
+        name: industry
         required: true
-        type: string
-        enum:
-        - banking
-        - energy
-        - telco
-        - all
-      - name: x-v
-        in: header
-        description: The version of the API end point requested by the client. Must be set to a positive integer.
-        required: true
-        type: string
-      - name: x-min-v
-        in: header
-        description: "The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided."
-        required: false
-        type: string
-      - name: If-None-Match
-        in: header
-        description: Makes the request method conditional on a recipient cache or origin server not having any current representation of the target resource with an entity-tag that does not match any of those listed in the field-value.
-        required: false
-        type: string
-      responses:
-        "200":
-          description: Success
-          headers:
-            x-v:
-              type: string
-              description: The version of the API end point that the CDR Register has responded with.
-            Etag:
-              type: string
-              description: Entity tag that uniquely represents the requested resource.
-          schema:
-            $ref: '#/definitions/DataHoldersStatusList'
-        "304":
-          description: Not Modified - The current representation of the target resource matches with the entity-tag provided in the If-None-Match request header
-          headers:
-            Etag:
-              type: string
-              description: Entity tag that uniquely represents the requested resource.
-        "400":
-          description: Missing Required Header / Invalid Version / Invalid Path Parameter
-          schema:
-            $ref: '#/definitions/ResponseErrorListV2'
-        "406":
-          description: Unsupported Version
-          schema:
-            $ref: '#/definitions/ResponseErrorListV2'
-      x-version: "1"
-  /cdr-register/v1/{industry}/data-recipients/brands/software-products/status:
-    get:
-      tags:
-      - Register
-      summary: Get Software Products Statuses
-      description: "Endpoint used by participants to discover the statuses for software products from the CDR Register.\n\nObsolete versions: [v1](includes/obsolete/get-software-product-statuses-v1.html)"
-      operationId: GetSoftwareProductsStatuses
-      consumes:
-      - application/json
-      produces:
-      - application/json
-      parameters:
-      - name: industry
-        in: path
-        description: "The industry the participant is retrieving data for (Banking, etc)"
-        required: true
-        type: string
-        enum:
-        - banking
-        - energy
-        - telco
-        - all
-      - name: x-v
-        in: header
-        description: The version of the API end point requested by the client. Must be set to a positive integer.
-        required: true
-        type: string
-      - name: x-min-v
-        in: header
-        description: "The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided."
-        required: false
-        type: string
-      - name: If-None-Match
-        in: header
-        description: Makes the request method conditional on a recipient cache or origin server not having any current representation of the target resource with an entity-tag that does not match any of those listed in the field-value.
-        required: false
-        type: string
-      responses:
-        "200":
-          description: Success
-          headers:
-            x-v:
-              type: string
-              description: The version of the API end point that the CDR Register has responded with.
-            Etag:
-              type: string
-              description: Entity tag that uniquely represents the requested resource.
-          schema:
-            $ref: '#/definitions/SoftwareProductsStatusList'
-        "304":
-          description: Not Modified - The current representation of the target resource matches with the entity-tag provided in the If-None-Match request header
-          headers:
-            Etag:
-              type: string
-              description: Entity tag that uniquely represents the requested resource.
-        "400":
-          description: Missing Required Header / Invalid Version / Invalid Path Parameter
-          schema:
-            $ref: '#/definitions/ResponseErrorListV2'
-        "406":
-          description: Unsupported Version
-          schema:
-            $ref: '#/definitions/ResponseErrorListV2'
-      x-version: "2"
-  /cdr-register/v1/{industry}/data-recipients/status:
-    get:
-      tags:
-      - Register
-      summary: Get Data Recipients Statuses
-      description: "Endpoint used by participants to discover the statuses for Data Recipients from the CDR Register.\n\nObsolete versions: [v1](includes/obsolete/get-data-recipient-statuses-v1.html)"
-      operationId: GetDataRecipientsStatuses
-      consumes:
-      - application/json
-      produces:
-      - application/json
-      parameters:
-      - name: industry
-        in: path
-        description: "The industry the participant is retrieving data for (Banking, etc)"
-        required: true
-        type: string
-        enum:
-        - banking
-        - energy
-        - telco
-        - all
-      - name: x-v
-        in: header
-        description: The version of the API end point requested by the client. Must be set to a positive integer.
-        required: true
-        type: string
-      - name: x-min-v
-        in: header
-        description: "The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided."
-        required: false
-        type: string
-      - name: If-None-Match
-        in: header
-        description: Makes the request method conditional on a recipient cache or origin server not having any current representation of the target resource with an entity-tag that does not match any of those listed in the field-value.
-        required: false
-        type: string
-      responses:
-        "200":
-          description: Success
-          headers:
-            x-v:
-              type: string
-              description: The version of the API end point that the CDR Register has responded with.
-            Etag:
-              type: string
-              description: Entity tag that uniquely represents the requested resource.
-          schema:
-            $ref: '#/definitions/DataRecipientsStatusList'
-        "304":
-          description: Not Modified - The current representation of the target resource matches with the entity-tag provided in the If-None-Match request header
-          headers:
-            Etag:
-              type: string
-              description: Entity tag that uniquely represents the requested resource.
-        "400":
-          description: Missing Required Header / Invalid Version / Invalid Path Parameter
-          schema:
-            $ref: '#/definitions/ResponseErrorListV2'
-        "406":
-          description: Unsupported Version
-          schema:
-            $ref: '#/definitions/ResponseErrorListV2'
-      x-version: "2"
-  /cdr-register/v1/{industry}/data-recipients:
-    get:
-      tags:
-      - Register
-      summary: Get Data Recipients
-      description: "Endpoint used by participants to discover data recipients and associated brands and software products, available in the CDR ecosystem.\n\nObsolete versions: [v2](includes/obsolete/get-data-recipients-v2.html)"
-      operationId: GetDataRecipients
-      consumes:
-      - application/json
-      produces:
-      - application/json
-      parameters:
-      - name: industry
-        in: path
-        description: "The industry the participant is retrieving data for (Banking, etc)"
-        required: true
-        type: string
-        enum:
-        - banking
-        - energy
-        - telco
-        - all
-      - name: x-v
-        in: header
-        description: The version of the API end point requested by the client. Must be set to a positive integer.
-        required: true
-        type: string
-      - name: x-min-v
-        in: header
-        description: "The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided."
-        required: false
-        type: string
-      - name: If-None-Match
-        in: header
-        description: Makes the request method conditional on a recipient cache or origin server not having any current representation of the target resource with an entity-tag that does not match any of those listed in the field-value.
-        required: false
-        type: string
-      responses:
-        "200":
-          description: Success
-          headers:
-            x-v:
-              type: string
-              description: The version of the API end point that the CDR Register has responded with.
-            Etag:
-              type: string
-              description: Entity tag that uniquely represents the requested resource.
-          schema:
-            $ref: '#/definitions/ResponseRegisterDataRecipientList'
-        "304":
-          description: Not Modified - The current representation of the target resource matches with the entity-tag provided in the If-None-Match request header
-          headers:
-            Etag:
-              type: string
-              description: Entity tag that uniquely represents the requested resource.
-        "400":
-          description: Missing Required Header / Invalid Version / Invalid Path Parameter
-          schema:
-            $ref: '#/definitions/ResponseErrorListV2'
-        "406":
-          description: Unsupported Version
-          schema:
-            $ref: '#/definitions/ResponseErrorListV2'
-      x-version: "3"
-definitions:
-  ResponseOpenIDProviderConfigMetadata:
-    type: object
-    required:
-    - claims_supported
-    - code_challenge_methods_supported
-    - grant_types_supported
-    - id_token_signing_alg_values_supported
-    - issuer
-    - jwks_uri
-    - response_types_supported
-    - scopes_supported
-    - subject_types_supported
-    - tls_client_certificate_bound_access_tokens
-    - token_endpoint
-    - token_endpoint_auth_methods_supported
-    - token_endpoint_auth_signing_alg_values_supported
-    properties:
-      issuer:
-        type: string
-        description: URL using the https scheme with no query or fragment component that the CDR Register asserts as its Issuer Identifier
-      jwks_uri:
-        type: string
-        description: "URL of the CDR Register's JSON Web Key Set [JWK] document. This contains the signing key(s) used to validate access tokens issued from the CDR Register. Note that this differs from the JWKS endpoint used to validate SSAs and CDR Register client authentication"
-      token_endpoint:
-        type: string
-        description: URL of the CDR Register's OAuth 2.0 Token Endpoint
-      claims_supported:
-        type: array
-        description: JSON array containing a list of the Claim Names of the Claims that the CDR Register supplies values for
-        items:
-          type: string
-      id_token_signing_alg_values_supported:
-        type: array
-        description: "JSON array containing a list of the JWS signing algorithms (alg values) supported by the CDR Register for the ID Token to encode the Claims in a JWT. Given the CDR Register does not issue ID tokens, this field can be safely ignored"
-        items:
-          type: string
-      subject_types_supported:
-        type: array
-        description: "JSON array containing a list of the Subject Identifier types that the CDR Register supports. Given the CDR Register does not issue ID tokens, this field can be safely ignored"
-        items:
-          type: string
-      code_challenge_methods_supported:
-        type: array
-        description: "JSON array containing a list of Proof Key for Code Exchange (PKCE) [RFC7636] code challenge methods supported by this authorization server. Given the CDR Register does not support PKCE, this field can be safely ignored"
-        items:
-          type: string
-      scopes_supported:
-        type: array
-        description: "JSON array containing a list of the OAuth 2.0 [RFC6749] scope values that the CDR Register supports"
-        items:
-          type: string
-      response_types_supported:
-        type: array
-        description: JSON array containing a list of the OAuth 2.0 response_type values that the CDR Registrer supports
-        items:
-          type: string
-      grant_types_supported:
-        type: array
-        description: JSON array containing a list of the OAuth 2.0 Grant Type values that the CDR Register supports
-        items:
-          type: string
-      token_endpoint_auth_methods_supported:
-        type: array
-        description: JSON array containing a list of Client Authentication methods supported by this Token Endpoint
-        items:
-          type: string
-      tls_client_certificate_bound_access_tokens:
-        type: boolean
-        description: Boolean value indicating server support for mutual TLS client certificate bound access tokens
-      token_endpoint_auth_signing_alg_values_supported:
-        type: array
-        description: "JSON array containing a list of the JWS signing algorithms (alg values) supported by the token endpoint for the signature on the JWT [JWT] used to authenticate the client at the token endpoint for the \\\"private_key_jwt\\\" authentication method"
-        items:
-          type: string
-    description: Response containing the Open ID Provider Configuration Metadata
-  ResponseJWKS:
-    type: object
-    required:
-    - keys
-    properties:
-      keys:
-        type: array
-        description: The value of the "keys" parameter is an array of JWK values
-        items:
-          $ref: '#/definitions/JWK'
-    description: Response containing the JSON Web Key Set
-  JWK:
-    type: object
-    required:
-    - alg
-    - e
-    - key_ops
-    - kid
-    - kty
-    - "n"
-    properties:
-      alg:
-        type: string
-        description: The "alg" (algorithm) parameter identifies the algorithm intended for use with the key
-      e:
-        type: string
-        description: The "e" RSA public exponent parameter
-      key_ops:
-        type: array
-        description: The "key_ops" (key operations) parameter identifies the operation(s) for which the key is intended to be used
-        items:
-          type: string
-      kid:
-        type: string
-        description: The "kid" (key ID) parameter is partially used to match a specific key. Note the "kid" parameter is not guaranteed unique and additional parameters should be used to progressively to identify a key within a set
-      kty:
-        type: string
-        description: The "kty" (key type) parameter identifies the cryptographic algorithm family used with the key
-      n:
-        type: string
-        description: The "n" RSA public modulus parameter
-    description: Object representing a JSON Web Key
-  ResponseRegisterDataHolderBrandList:
-    type: object
-    required:
-    - data
-    - links
-    - meta
-    properties:
-      data:
-        type: array
-        description: Response data for the query
-        uniqueItems: true
-        items:
-          $ref: '#/definitions/RegisterDataHolderBrand'
-      links:
-        $ref: '#/definitions/LinksPaginated'
-      meta:
-        $ref: '#/definitions/MetaPaginated'
-    description: Response containing a list of CDR Register Data Holder Brand objects
-  RegisterDataHolderBrand:
-    type: object
-    required:
-    - authDetails
-    - brandName
-    - dataHolderBrandId
-    - endpointDetail
-    - industries
-    - lastUpdated
-    - legalEntity
-    - logoUri
-    - status
-    properties:
-      dataHolderBrandId:
-        type: string
-        description: Unique id of the Data Holder Brand issued by the CDR Register
-        maxLength: 36
-      brandName:
-        type: string
-        description: The name of Data Holder Brand
-        maxLength: 200
-      industries:
-        type: array
-        description: The industries the Data Holder Brand belongs to. Please note that the CDR Register entity model is constrained to one industry per brand which is planned to be relaxed in the future.
-        uniqueItems: true
-        items:
-          type: string
+        schema:
           enum:
           - banking
           - energy
           - telco
-      logoUri:
+          - all
+          type: string
+        style: simple
+      - description: The version of the API end point requested by the client. Must
+          be set to a positive integer.
+        explode: false
+        in: header
+        name: x-v
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers)
+          of the API end point requested by the client. Must be set to a positive
+          integer if provided.
+        explode: false
+        in: header
+        name: x-min-v
+        required: false
+        schema:
+          type: string
+        style: simple
+      - description: Makes the request method conditional on a recipient cache or
+          origin server not having any current representation of the target resource
+          with an entity-tag that does not match any of those listed in the field-value.
+        explode: false
+        in: header
+        name: If-None-Match
+        required: false
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataHoldersStatusList'
+          description: Success
+          headers:
+            x-v:
+              description: The version of the API end point that the CDR Register
+                has responded with.
+              explode: false
+              schema:
+                type: string
+              style: simple
+            Etag:
+              description: Entity tag that uniquely represents the requested resource.
+              explode: false
+              schema:
+                type: string
+              style: simple
+        "304":
+          content: {}
+          description: Not Modified - The current representation of the target resource
+            matches with the entity-tag provided in the If-None-Match request header
+          headers:
+            Etag:
+              description: Entity tag that uniquely represents the requested resource.
+              explode: false
+              schema:
+                type: string
+              style: simple
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseErrorListV2'
+          description: Missing Required Header / Invalid Version / Invalid Path Parameter
+        "406":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseErrorListV2'
+          description: Unsupported Version
+      summary: Get Data Holder Statuses
+      tags:
+      - Register
+      x-version: "1"
+  /cdr-register/v1/{industry}/data-recipients/brands/software-products/status:
+    get:
+      description: |-
+        Endpoint used by participants to discover the statuses for software products from the CDR Register.
+
+        Obsolete versions: [v1](includes/obsolete/get-software-product-statuses-v1.html)
+      operationId: GetSoftwareProductsStatuses
+      parameters:
+      - description: The industry the participant is retrieving data for (Banking,
+          etc)
+        explode: false
+        in: path
+        name: industry
+        required: true
+        schema:
+          enum:
+          - banking
+          - energy
+          - telco
+          - all
+          type: string
+        style: simple
+      - description: The version of the API end point requested by the client. Must
+          be set to a positive integer.
+        explode: false
+        in: header
+        name: x-v
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers)
+          of the API end point requested by the client. Must be set to a positive
+          integer if provided.
+        explode: false
+        in: header
+        name: x-min-v
+        required: false
+        schema:
+          type: string
+        style: simple
+      - description: Makes the request method conditional on a recipient cache or
+          origin server not having any current representation of the target resource
+          with an entity-tag that does not match any of those listed in the field-value.
+        explode: false
+        in: header
+        name: If-None-Match
+        required: false
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SoftwareProductsStatusList'
+          description: Success
+          headers:
+            x-v:
+              description: The version of the API end point that the CDR Register
+                has responded with.
+              explode: false
+              schema:
+                type: string
+              style: simple
+            Etag:
+              description: Entity tag that uniquely represents the requested resource.
+              explode: false
+              schema:
+                type: string
+              style: simple
+        "304":
+          content: {}
+          description: Not Modified - The current representation of the target resource
+            matches with the entity-tag provided in the If-None-Match request header
+          headers:
+            Etag:
+              description: Entity tag that uniquely represents the requested resource.
+              explode: false
+              schema:
+                type: string
+              style: simple
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseErrorListV2'
+          description: Missing Required Header / Invalid Version / Invalid Path Parameter
+        "406":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseErrorListV2'
+          description: Unsupported Version
+      summary: Get Software Products Statuses
+      tags:
+      - Register
+      x-version: "2"
+  /cdr-register/v1/{industry}/data-recipients/status:
+    get:
+      description: |-
+        Endpoint used by participants to discover the statuses for Data Recipients from the CDR Register.
+
+        Obsolete versions: [v1](includes/obsolete/get-data-recipient-statuses-v1.html)
+      operationId: GetDataRecipientsStatuses
+      parameters:
+      - description: The industry the participant is retrieving data for (Banking,
+          etc)
+        explode: false
+        in: path
+        name: industry
+        required: true
+        schema:
+          enum:
+          - banking
+          - energy
+          - telco
+          - all
+          type: string
+        style: simple
+      - description: The version of the API end point requested by the client. Must
+          be set to a positive integer.
+        explode: false
+        in: header
+        name: x-v
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers)
+          of the API end point requested by the client. Must be set to a positive
+          integer if provided.
+        explode: false
+        in: header
+        name: x-min-v
+        required: false
+        schema:
+          type: string
+        style: simple
+      - description: Makes the request method conditional on a recipient cache or
+          origin server not having any current representation of the target resource
+          with an entity-tag that does not match any of those listed in the field-value.
+        explode: false
+        in: header
+        name: If-None-Match
+        required: false
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataRecipientsStatusList'
+          description: Success
+          headers:
+            x-v:
+              description: The version of the API end point that the CDR Register
+                has responded with.
+              explode: false
+              schema:
+                type: string
+              style: simple
+            Etag:
+              description: Entity tag that uniquely represents the requested resource.
+              explode: false
+              schema:
+                type: string
+              style: simple
+        "304":
+          content: {}
+          description: Not Modified - The current representation of the target resource
+            matches with the entity-tag provided in the If-None-Match request header
+          headers:
+            Etag:
+              description: Entity tag that uniquely represents the requested resource.
+              explode: false
+              schema:
+                type: string
+              style: simple
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseErrorListV2'
+          description: Missing Required Header / Invalid Version / Invalid Path Parameter
+        "406":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseErrorListV2'
+          description: Unsupported Version
+      summary: Get Data Recipients Statuses
+      tags:
+      - Register
+      x-version: "2"
+  /cdr-register/v1/{industry}/data-recipients:
+    get:
+      description: |-
+        Endpoint used by participants to discover data recipients and associated brands and software products, available in the CDR ecosystem.
+
+        Obsolete versions: [v2](includes/obsolete/get-data-recipients-v2.html)
+      operationId: GetDataRecipients
+      parameters:
+      - description: The industry the participant is retrieving data for (Banking,
+          etc)
+        explode: false
+        in: path
+        name: industry
+        required: true
+        schema:
+          enum:
+          - banking
+          - energy
+          - telco
+          - all
+          type: string
+        style: simple
+      - description: The version of the API end point requested by the client. Must
+          be set to a positive integer.
+        explode: false
+        in: header
+        name: x-v
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers)
+          of the API end point requested by the client. Must be set to a positive
+          integer if provided.
+        explode: false
+        in: header
+        name: x-min-v
+        required: false
+        schema:
+          type: string
+        style: simple
+      - description: Makes the request method conditional on a recipient cache or
+          origin server not having any current representation of the target resource
+          with an entity-tag that does not match any of those listed in the field-value.
+        explode: false
+        in: header
+        name: If-None-Match
+        required: false
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseRegisterDataRecipientList'
+          description: Success
+          headers:
+            x-v:
+              description: The version of the API end point that the CDR Register
+                has responded with.
+              explode: false
+              schema:
+                type: string
+              style: simple
+            Etag:
+              description: Entity tag that uniquely represents the requested resource.
+              explode: false
+              schema:
+                type: string
+              style: simple
+        "304":
+          content: {}
+          description: Not Modified - The current representation of the target resource
+            matches with the entity-tag provided in the If-None-Match request header
+          headers:
+            Etag:
+              description: Entity tag that uniquely represents the requested resource.
+              explode: false
+              schema:
+                type: string
+              style: simple
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseErrorListV2'
+          description: Missing Required Header / Invalid Version / Invalid Path Parameter
+        "406":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseErrorListV2'
+          description: Unsupported Version
+      summary: Get Data Recipients
+      tags:
+      - Register
+      x-version: "3"
+components:
+  parameters:
+    Authorization:
+      description: An Authorisation Token as per **[[RFC6750]](#nref-RFC6750)**.
+      explode: false
+      in: header
+      name: Authorization
+      required: true
+      schema:
         type: string
-        description: Brand logo URI
-        maxLength: 1000
-        x-cds-type: URIString
-      legalEntity:
-        $ref: '#/definitions/LegalEntityDetail'
-      status:
+      style: simple
+    XV:
+      description: The version of the API end point requested by the client. Must
+        be set to a positive integer.
+      explode: false
+      in: header
+      name: x-v
+      required: true
+      schema:
         type: string
+      style: simple
+    Industry:
+      description: The industry the participant is retrieving data for (Banking, etc)
+      explode: false
+      in: path
+      name: industry
+      required: true
+      schema:
         enum:
-        - ACTIVE
-        - INACTIVE
-        - REMOVED
-      endpointDetail:
-        $ref: '#/definitions/RegisterDataHolderBrandServiceEndpoint'
-      authDetails:
-        type: array
-        uniqueItems: true
-        items:
-          $ref: '#/definitions/RegisterDataHolderAuth'
-      lastUpdated:
+        - banking
+        - energy
+        - telco
+        - all
         type: string
+      style: simple
+    XMinV:
+      description: The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers)
+        of the API end point requested by the client. Must be set to a positive integer
+        if provided.
+      explode: false
+      in: header
+      name: x-min-v
+      required: false
+      schema:
+        type: string
+      style: simple
+    IfNoneMatch:
+      description: Makes the request method conditional on a recipient cache or origin
+        server not having any current representation of the target resource with an
+        entity-tag that does not match any of those listed in the field-value.
+      explode: false
+      in: header
+      name: If-None-Match
+      required: false
+      schema:
+        type: string
+      style: simple
+    UpdatedSince:
+      description: query filter returns results updated since the specified date-time
+      explode: true
+      in: query
+      name: updated-since
+      required: false
+      schema:
         format: date-time
-        description: The date/time that the Data Holder Brand data was last updated in the Register
-        x-cds-type: DateTimeString
-  DataHoldersStatusList:
-    type: object
-    required:
-    - data
-    - links
-    - meta
-    properties:
-      data:
-        type: array
-        description: Response data for the query
-        uniqueItems: true
-        items:
-          $ref: '#/definitions/DataHolderStatus'
-      links:
-        $ref: '#/definitions/Links'
-      meta:
-        $ref: '#/definitions/Meta'
-  DataHolderStatus:
-    type: object
-    required:
-    - legalEntityId
-    - status
-    properties:
-      legalEntityId:
         type: string
-        description: Unique id of the Data Holder Legal Entity issued by the CDR Register.
-        maxLength: 36
-      status:
-        type: string
-        description: Data Holder status in the CDR Register
-        enum:
-        - ACTIVE
-        - REMOVED
-  SoftwareProductsStatusList:
-    type: object
-    required:
-    - data
-    - links
-    - meta
-    properties:
-      data:
-        type: array
-        description: Response data for the query
-        uniqueItems: true
-        items:
-          $ref: '#/definitions/SoftwareProductStatus'
-      links:
-        $ref: '#/definitions/Links'
-      meta:
-        $ref: '#/definitions/Meta'
-  SoftwareProductStatus:
-    type: object
-    required:
-    - softwareProductId
-    - status
-    properties:
-      softwareProductId:
-        type: string
-        description: Unique id of the software product issued by the CDR Register
-        maxLength: 36
-      status:
-        type: string
-        description: Software product status in the CDR Register
-        enum:
-        - ACTIVE
-        - INACTIVE
-        - REMOVED
-  DataRecipientsStatusList:
-    type: object
-    required:
-    - data
-    - links
-    - meta
-    properties:
-      data:
-        type: array
-        description: Response data for the query
-        uniqueItems: true
-        items:
-          $ref: '#/definitions/DataRecipientStatus'
-      links:
-        $ref: '#/definitions/Links'
-      meta:
-        $ref: '#/definitions/Meta'
-  DataRecipientStatus:
-    type: object
-    required:
-    - legalEntityId
-    - status
-    properties:
-      legalEntityId:
-        type: string
-        description: Unique id of the Data Recipient Legal Entity issued by the CDR Register
-        maxLength: 36
-      status:
-        type: string
-        description: Data Recipient status in the CDR Register
-        enum:
-        - ACTIVE
-        - SUSPENDED
-        - REVOKED
-        - SURRENDERED
-  ResponseRegisterDataRecipientList:
-    type: object
-    required:
-    - data
-    - links
-    - meta
-    properties:
-      data:
-        type: array
-        description: Response data for the query
-        uniqueItems: true
-        items:
-          $ref: '#/definitions/RegisterDataRecipient'
-      links:
-        $ref: '#/definitions/Links'
-      meta:
-        $ref: '#/definitions/Meta'
-    description: Response containing a list of Data Recipients in the CDR Register
-  RegisterDataRecipient:
-    type: object
-    required:
-    - accreditationLevel
-    - accreditationNumber
-    - lastUpdated
-    - legalEntityId
-    - legalEntityName
-    - logoUri
-    - status
-    properties:
-      legalEntityId:
-        type: string
-        description: Unique id of the Data Recipient Legal Entity issued by the CDR Register.
-        maxLength: 36
-      legalEntityName:
-        type: string
-        description: Legal name of the Data Recipient
-        maxLength: 200
-      accreditationNumber:
-        type: string
-        description: CDR Register issued human readable unique number given to Data Recipients upon accreditation
-        maxLength: 100
-      accreditationLevel:
-        type: string
-        description: Accreditation level of the Data Recipient in the CDR Register
-        enum:
-        - UNRESTRICTED
-        - SPONSORED
-      logoUri:
-        type: string
-        description: Legal Entity logo URI
-        maxLength: 1000
-        x-cds-type: URIString
-      dataRecipientBrands:
-        type: array
-        uniqueItems: true
-        items:
-          $ref: '#/definitions/DataRecipientBrandMetaData'
-      status:
-        type: string
-        description: Data Recipient status in the CDR Register
-        enum:
-        - ACTIVE
-        - SUSPENDED
-        - REVOKED
-        - SURRENDERED
-      lastUpdated:
-        type: string
-        format: date-time
-        description: The date/time that the Legal Entity was last updated in the CDR Register
-        x-cds-type: DateTimeString
-  DataRecipientBrandMetaData:
-    type: object
-    required:
-    - brandName
-    - dataRecipientBrandId
-    - logoUri
-    - status
-    properties:
-      dataRecipientBrandId:
-        type: string
-        description: Unique id of the Data Recipient brand issued by the CDR Register
-        maxLength: 36
-      brandName:
-        type: string
-        description: Data Recipient Brand name
-        maxLength: 200
-      logoUri:
-        type: string
-        description: Data Recipient Brand logo URI
-        maxLength: 1000
-        x-cds-type: URIString
-      softwareProducts:
-        type: array
-        uniqueItems: true
-        items:
-          $ref: '#/definitions/SoftwareProductMetaData'
-      status:
-        type: string
-        description: Data Recipient Brand status in the CDR Register
-        enum:
-        - ACTIVE
-        - INACTIVE
-        - REMOVED
-    description: Metadata related to Data Recipient Brand
-  SoftwareProductMetaData:
-    type: object
-    required:
-    - logoUri
-    - softwareProductId
-    - softwareProductName
-    - status
-    properties:
-      softwareProductId:
-        type: string
-        description: Unique id of the Data Recipient software product issued by the CDR Register
-        maxLength: 36
-      softwareProductName:
-        type: string
-        description: Name of the software product
-        maxLength: 200
-      softwareProductDescription:
-        type: string
-        description: Description of the software product
-        maxLength: 4000
-      logoUri:
-        type: string
-        description: Software product logo URI
-        maxLength: 1000
-        x-cds-type: URIString
-      status:
-        type: string
-        description: Software Product status in the CDR Register
-        enum:
-        - ACTIVE
-        - INACTIVE
-        - REMOVED
-    description: Data Recipient Brand Software Products
-  LegalEntityDetail:
-    type: object
-    required:
-    - legalEntityId
-    - legalEntityName
-    - logoUri
-    - status
-    properties:
-      legalEntityId:
-        type: string
-        description: Unique id of the organisation issued by the CDR Register
-        maxLength: 36
-      legalEntityName:
-        type: string
-        description: Unique legal name of the organisation
-        maxLength: 36
-      logoUri:
-        type: string
-        description: Legal Entity logo URI
-        maxLength: 1000
-        x-cds-type: URIString
-      registrationNumber:
-        type: string
-        description: Unique registration number (if the company is registered outside Australia)
-      registrationDate:
-        type: string
-        format: date
-        description: Date of registration (if the company is registered outside Australia)
-        x-cds-type: DateString
-      registeredCountry:
-        type: string
-        description: Country of registeration (if the company is registered outside Australia)
-        maxLength: 100
-      abn:
-        type: string
-        description: Australian Business Number for the organisation
-        maxLength: 11
-      acn:
-        type: string
-        description: Australian Company Number for the organisation
-        maxLength: 9
-      arbn:
-        type: string
-        description: Australian Registered Body Number.  ARBNs are issued to registrable Australian bodies and foreign companies
-        maxLength: 9
-      anzsicDivision:
-        type: string
-        description: "ANZSIC division of the organisation. [ANZSIC (2006)](http://www.abs.gov.au/anzsic)"
-        maxLength: 100
-      organisationType:
-        type: string
-        description: Legal organisation type
-        enum:
-        - SOLE_TRADER
-        - COMPANY
-        - PARTNERSHIP
-        - TRUST
-        - GOVERNMENT_ENTITY
-        - OTHER
-      status:
-        type: string
-        enum:
-        - ACTIVE
-        - REMOVED
-    description: "The data that is common to all organisations, regardless of the type (e.g. company, trust, partnership, government)"
-  RegisterDataHolderBrandServiceEndpoint:
-    type: object
-    required:
-    - infosecBaseUri
-    - publicBaseUri
-    - resourceBaseUri
-    - version
-    - websiteUri
-    properties:
-      version:
-        type: string
-        description: "The major version of the high level standards. This is not the version of the endpoint or the payload being requested but the version of the overall standards being applied. This version number will be \"v\" followed by the major version of the standards as a positive integer (e.g. v1, v12 or v76)"
-      publicBaseUri:
-        type: string
-        description: Base URI for the Data Holder's Consumer Data Standard public endpoints
-        maxLength: 1000
-        x-cds-type: URIString
-      resourceBaseUri:
-        type: string
-        description: Base URI for the Data Holder's Consumer Data Standard resource endpoints
-        maxLength: 1000
-        x-cds-type: URIString
-      infosecBaseUri:
-        type: string
-        description: Base URI for the Data Holder's Consumer Data Standard information security endpoints
-        maxLength: 1000
-        x-cds-type: URIString
-      extensionBaseUri:
-        type: string
-        description: Base URI for the Data Holder extension endpoints to the Consumer Data Standard (optional)
-        maxLength: 1000
-        x-cds-type: URIString
-      websiteUri:
-        type: string
-        description: Publicly available website or web resource URI
-        maxLength: 1000
-        x-cds-type: URIString
-    description: Endpoints related to Data Holder Brand services
-  RegisterDataHolderAuth:
-    type: object
-    required:
-    - jwksEndpoint
-    - registerUType
-    properties:
-      registerUType:
-        type: string
-        description: The type of authentication and authorisation mechanism in use
-        enum:
-        - SIGNED-JWT
-      jwksEndpoint:
-        type: string
-        description: JWKS endpoint used for authentication by the Data Holder with the Data Recipient
-        maxLength: 1000
-        x-cds-type: URIString
-    description: Defines the mechanism used and associated endpoints for Data Holder to Data Recipient authentication
-  LinksPaginated:
-    type: object
-    required:
-    - self
-    properties:
-      first:
-        type: string
-        description: URI to the first page of this set. Mandatory if this response is not the first page
-      last:
-        type: string
-        description: URI to the last page of this set. Mandatory if this response is not the last page
-      next:
-        type: string
-        description: URI to the next page of this set. Mandatory if this response is not the last page
-      prev:
-        type: string
-        description: URI to the previous page of this set. Mandatory if this response is not the first page
-      self:
-        type: string
-        description: Fully qualified link to this API call
-  MetaPaginated:
-    type: object
-    required:
-    - totalPages
-    - totalRecords
-    properties:
-      totalPages:
-        type: integer
+      style: form
+    Page:
+      description: the page number to return
+      explode: true
+      in: query
+      name: page
+      required: false
+      schema:
         format: int32
-        description: The total number of pages in the full set
-      totalRecords:
         type: integer
+      style: form
+    PageSize:
+      description: the number of records to return per page
+      explode: true
+      in: query
+      name: page-size
+      required: false
+      schema:
         format: int32
-        description: The total number of records in the full set
-  Links:
-    type: object
-    required:
-    - self
-    properties:
-      self:
-        type: string
-        description: Fully qualified link to this API call
-  Meta:
-    type: object
-  MetaError:
-    type: object
-    properties:
-      urn:
-        type: string
-        description: The CDR error code URN which the application-specific error code extends. Mandatory if the error `code` is an application-specific error rather than a standardised error code.
-    description: Additional data for customised error codes
-    x-conditional:
-    - urn
-  ResponseErrorListV2:
-    type: object
-    required:
-    - errors
-    properties:
-      errors:
-        type: array
-        description: ""
-        items:
-          $ref: '#/definitions/ResponseErrorListV2_errors'
-    x-conditional:
-    - meta
-  ResponseErrorListV2_errors:
-    type: object
-    required:
-    - code
-    - detail
-    - title
-    properties:
-      code:
-        type: string
-        description: "The code of the error encountered. Where the error is specific to the respondent, an application-specific error code, expressed as a string value. If the error is application-specific, the URN code that the specific error extends must be provided in the meta object. Otherwise, the value is the error code URN."
-      title:
-        type: string
-        description: "A short, human-readable summary of the problem that MUST NOT change from occurrence to occurrence of the problem represented by the error code."
-      detail:
-        type: string
-        description: A human-readable explanation specific to this occurrence of the problem.
-      meta:
-        $ref: '#/definitions/MetaError'
-parameters:
-  Authorization:
-    name: Authorization
-    in: header
-    description: "An Authorisation Token as per [RFC6750](https://tools.ietf.org/html/rfc6750)."
-    required: true
-    type: string
-  XV:
-    name: x-v
-    in: header
-    description: The version of the API end point requested by the client. Must be set to a positive integer.
-    required: true
-    type: string
-  Industry:
-    name: industry
-    in: path
-    description: "The industry the participant is retrieving data for (Banking, etc)"
-    required: true
-    type: string
-    enum:
-    - banking
-    - energy
-    - telco
-    - all
-  XMinV:
-    name: x-min-v
-    in: header
-    description: "The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided."
-    required: false
-    type: string
-  IfNoneMatch:
-    name: If-None-Match
-    in: header
-    description: Makes the request method conditional on a recipient cache or origin server not having any current representation of the target resource with an entity-tag that does not match any of those listed in the field-value.
-    required: false
-    type: string
-  UpdatedSince:
-    name: updated-since
-    in: query
-    description: query filter returns results updated since the specified date-time
-    required: false
-    type: string
-    format: date-time
-  Page:
-    name: page
-    in: query
-    description: the page number to return
-    required: false
-    type: integer
-    format: int32
-  PageSize:
-    name: page-size
-    in: query
-    description: the number of records to return per page
-    required: false
-    type: integer
-    format: int32
-responses:
-  BadRequest:
-    description: Missing Required Header / Invalid Version / Invalid Path Parameter
-    schema:
-      $ref: '#/definitions/ResponseErrorListV2'
-  InvalidBearerToken:
-    description: Invalid Bearer Token
-    schema:
-      $ref: '#/definitions/ResponseErrorListV2'
-  NotModified:
-    description: Not Modified - The current representation of the target resource matches with the entity-tag provided in the If-None-Match request header
-    headers:
-      Etag:
-        type: string
-        description: Entity tag that uniquely represents the requested resource.
-  UnsupportedVersion:
-    description: Unsupported Version
-    schema:
-      $ref: '#/definitions/ResponseErrorListV2'
+        type: integer
+      style: form
+  responses:
+    BadRequest:
+      content:
+        '*/*':
+          schema:
+            $ref: '#/components/schemas/ResponseErrorListV2'
+      description: Missing Required Header / Invalid Version / Invalid Path Parameter
+    InvalidBearerToken:
+      content:
+        '*/*':
+          schema:
+            $ref: '#/components/schemas/ResponseErrorListV2'
+      description: Invalid Bearer Token
+    NotModified:
+      content: {}
+      description: Not Modified - The current representation of the target resource
+        matches with the entity-tag provided in the If-None-Match request header
+      headers:
+        Etag:
+          description: Entity tag that uniquely represents the requested resource.
+          explode: false
+          schema:
+            type: string
+          style: simple
+    UnsupportedVersion:
+      content:
+        '*/*':
+          schema:
+            $ref: '#/components/schemas/ResponseErrorListV2'
+      description: Unsupported Version
+  schemas:
+    ResponseOpenIDProviderConfigMetadata:
+      description: Response containing the Open ID Provider Configuration Metadata
+      example:
+        response_types_supported:
+        - response_types_supported
+        - response_types_supported
+        grant_types_supported:
+        - grant_types_supported
+        - grant_types_supported
+        scopes_supported:
+        - scopes_supported
+        - scopes_supported
+        issuer: issuer
+        token_endpoint_auth_signing_alg_values_supported:
+        - token_endpoint_auth_signing_alg_values_supported
+        - token_endpoint_auth_signing_alg_values_supported
+        claims_supported:
+        - claims_supported
+        - claims_supported
+        code_challenge_methods_supported:
+        - code_challenge_methods_supported
+        - code_challenge_methods_supported
+        jwks_uri: jwks_uri
+        subject_types_supported:
+        - subject_types_supported
+        - subject_types_supported
+        id_token_signing_alg_values_supported:
+        - id_token_signing_alg_values_supported
+        - id_token_signing_alg_values_supported
+        token_endpoint_auth_methods_supported:
+        - token_endpoint_auth_methods_supported
+        - token_endpoint_auth_methods_supported
+        tls_client_certificate_bound_access_tokens: true
+        token_endpoint: token_endpoint
+      properties:
+        issuer:
+          description: URL using the https scheme with no query or fragment component
+            that the CDR Register asserts as its Issuer Identifier
+          type: string
+        jwks_uri:
+          description: URL of the CDR Register's JSON Web Key Set **[[JWK]](#nref-JWK)**
+            document. This contains the signing key(s) used to validate access tokens
+            issued from the CDR Register. Note that this differs from the JWKS endpoint
+            used to validate SSAs and CDR Register client authentication
+          type: string
+        token_endpoint:
+          description: URL of the CDR Register's OAuth 2.0 Token Endpoint
+          type: string
+        claims_supported:
+          description: JSON array containing a list of the Claim Names of the Claims
+            that the CDR Register supplies values for
+          items:
+            type: string
+          type: array
+        id_token_signing_alg_values_supported:
+          description: JSON array containing a list of the JWS signing algorithms
+            (alg values) supported by the CDR Register for the ID Token to encode
+            the Claims in a JWT. Given the CDR Register does not issue ID tokens,
+            this field can be safely ignored
+          items:
+            type: string
+          type: array
+        subject_types_supported:
+          description: JSON array containing a list of the Subject Identifier types
+            that the CDR Register supports. Given the CDR Register does not issue
+            ID tokens, this field can be safely ignored
+          items:
+            type: string
+          type: array
+        code_challenge_methods_supported:
+          description: JSON array containing a list of Proof Key for Code Exchange
+            (PKCE) **[[RFC7636]](#nref-RFC7636)** code challenge methods supported
+            by this authorization server. Given the CDR Register does not support
+            PKCE, this field can be safely ignored
+          items:
+            type: string
+          type: array
+        scopes_supported:
+          description: JSON array containing a list of the OAuth 2.0 **[[RFC6749]](#nref-RFC6749)**
+            scope values that the CDR Register supports
+          items:
+            type: string
+          type: array
+        response_types_supported:
+          description: JSON array containing a list of the OAuth 2.0 response_type
+            values that the CDR Registrer supports
+          items:
+            type: string
+          type: array
+        grant_types_supported:
+          description: JSON array containing a list of the OAuth 2.0 Grant Type values
+            that the CDR Register supports
+          items:
+            type: string
+          type: array
+        token_endpoint_auth_methods_supported:
+          description: JSON array containing a list of Client Authentication methods
+            supported by this Token Endpoint
+          items:
+            type: string
+          type: array
+        tls_client_certificate_bound_access_tokens:
+          description: Boolean value indicating server support for mutual TLS client
+            certificate bound access tokens
+          type: boolean
+        token_endpoint_auth_signing_alg_values_supported:
+          description: JSON array containing a list of the JWS signing algorithms
+            (alg values) supported by the token endpoint for the signature on the
+            JWT **[[JWT]](#nref-JWT)** used to authenticate the client at the token
+            endpoint for the \"private_key_jwt\" authentication method
+          items:
+            type: string
+          type: array
+      required:
+      - claims_supported
+      - code_challenge_methods_supported
+      - grant_types_supported
+      - id_token_signing_alg_values_supported
+      - issuer
+      - jwks_uri
+      - response_types_supported
+      - scopes_supported
+      - subject_types_supported
+      - tls_client_certificate_bound_access_tokens
+      - token_endpoint
+      - token_endpoint_auth_methods_supported
+      - token_endpoint_auth_signing_alg_values_supported
+      type: object
+    ResponseJWKS:
+      description: Response containing the JSON Web Key Set
+      example:
+        keys:
+        - kty: kty
+          e: e
+          kid: kid
+          key_ops:
+          - key_ops
+          - key_ops
+          alg: alg
+          n: "n"
+        - kty: kty
+          e: e
+          kid: kid
+          key_ops:
+          - key_ops
+          - key_ops
+          alg: alg
+          n: "n"
+      properties:
+        keys:
+          description: The value of the "keys" parameter is an array of JWK values
+          items:
+            $ref: '#/components/schemas/JWK'
+          type: array
+      required:
+      - keys
+      type: object
+    JWK:
+      description: Object representing a JSON Web Key
+      example:
+        kty: kty
+        e: e
+        kid: kid
+        key_ops:
+        - key_ops
+        - key_ops
+        alg: alg
+        n: "n"
+      properties:
+        alg:
+          description: The "alg" (algorithm) parameter identifies the algorithm intended
+            for use with the key
+          type: string
+        e:
+          description: The "e" RSA public exponent parameter
+          type: string
+        key_ops:
+          description: The "key_ops" (key operations) parameter identifies the operation(s)
+            for which the key is intended to be used
+          items:
+            type: string
+          type: array
+        kid:
+          description: The "kid" (key ID) parameter is partially used to match a specific
+            key. Note the "kid" parameter is not guaranteed unique and additional
+            parameters should be used to progressively to identify a key within a
+            set
+          type: string
+        kty:
+          description: The "kty" (key type) parameter identifies the cryptographic
+            algorithm family used with the key
+          type: string
+        n:
+          description: The "n" RSA public modulus parameter
+          type: string
+      required:
+      - alg
+      - e
+      - key_ops
+      - kid
+      - kty
+      - "n"
+      type: object
+    ResponseRegisterDataHolderBrandList:
+      description: Response containing a list of CDR Register Data Holder Brand objects
+      example:
+        data:
+        - lastUpdated: 2000-01-23T04:56:07.000+00:00
+          brandName: brandName
+          industries:
+          - banking
+          - banking
+          dataHolderBrandId: dataHolderBrandId
+          endpointDetail:
+            websiteUri: websiteUri
+            publicBaseUri: publicBaseUri
+            infosecBaseUri: infosecBaseUri
+            extensionBaseUri: extensionBaseUri
+            resourceBaseUri: resourceBaseUri
+            version: version
+          logoUri: logoUri
+          authDetails:
+          - registerUType: SIGNED-JWT
+            jwksEndpoint: jwksEndpoint
+          - registerUType: SIGNED-JWT
+            jwksEndpoint: jwksEndpoint
+          legalEntity:
+            arbn: arbn
+            anzsicDivision: anzsicDivision
+            legalEntityId: legalEntityId
+            registrationNumber: registrationNumber
+            registrationDate: 2000-01-23
+            legalEntityName: legalEntityName
+            logoUri: logoUri
+            registeredCountry: registeredCountry
+            abn: abn
+            acn: acn
+            organisationType: SOLE_TRADER
+            status: ACTIVE
+          status: ACTIVE
+        - lastUpdated: 2000-01-23T04:56:07.000+00:00
+          brandName: brandName
+          industries:
+          - banking
+          - banking
+          dataHolderBrandId: dataHolderBrandId
+          endpointDetail:
+            websiteUri: websiteUri
+            publicBaseUri: publicBaseUri
+            infosecBaseUri: infosecBaseUri
+            extensionBaseUri: extensionBaseUri
+            resourceBaseUri: resourceBaseUri
+            version: version
+          logoUri: logoUri
+          authDetails:
+          - registerUType: SIGNED-JWT
+            jwksEndpoint: jwksEndpoint
+          - registerUType: SIGNED-JWT
+            jwksEndpoint: jwksEndpoint
+          legalEntity:
+            arbn: arbn
+            anzsicDivision: anzsicDivision
+            legalEntityId: legalEntityId
+            registrationNumber: registrationNumber
+            registrationDate: 2000-01-23
+            legalEntityName: legalEntityName
+            logoUri: logoUri
+            registeredCountry: registeredCountry
+            abn: abn
+            acn: acn
+            organisationType: SOLE_TRADER
+            status: ACTIVE
+          status: ACTIVE
+        meta:
+          totalRecords: 6
+          totalPages: 0
+        links:
+          next: next
+          last: last
+          prev: prev
+          self: self
+          first: first
+      properties:
+        data:
+          description: Response data for the query
+          items:
+            $ref: '#/components/schemas/RegisterDataHolderBrand'
+          type: array
+          uniqueItems: true
+        links:
+          $ref: '#/components/schemas/LinksPaginated'
+        meta:
+          $ref: '#/components/schemas/MetaPaginated'
+      required:
+      - data
+      - links
+      - meta
+      type: object
+    RegisterDataHolderBrand:
+      example:
+        lastUpdated: 2000-01-23T04:56:07.000+00:00
+        brandName: brandName
+        industries:
+        - banking
+        - banking
+        dataHolderBrandId: dataHolderBrandId
+        endpointDetail:
+          websiteUri: websiteUri
+          publicBaseUri: publicBaseUri
+          infosecBaseUri: infosecBaseUri
+          extensionBaseUri: extensionBaseUri
+          resourceBaseUri: resourceBaseUri
+          version: version
+        logoUri: logoUri
+        authDetails:
+        - registerUType: SIGNED-JWT
+          jwksEndpoint: jwksEndpoint
+        - registerUType: SIGNED-JWT
+          jwksEndpoint: jwksEndpoint
+        legalEntity:
+          arbn: arbn
+          anzsicDivision: anzsicDivision
+          legalEntityId: legalEntityId
+          registrationNumber: registrationNumber
+          registrationDate: 2000-01-23
+          legalEntityName: legalEntityName
+          logoUri: logoUri
+          registeredCountry: registeredCountry
+          abn: abn
+          acn: acn
+          organisationType: SOLE_TRADER
+          status: ACTIVE
+        status: ACTIVE
+      properties:
+        dataHolderBrandId:
+          description: Unique id of the Data Holder Brand issued by the CDR Register
+          maxLength: 36
+          type: string
+        brandName:
+          description: The name of Data Holder Brand
+          maxLength: 200
+          type: string
+        industries:
+          description: The industries the Data Holder Brand belongs to. Please note
+            that the CDR Register entity model is constrained to one industry per
+            brand which is planned to be relaxed in the future.
+          items:
+            enum:
+            - banking
+            - energy
+            - telco
+            type: string
+          type: array
+          uniqueItems: true
+        logoUri:
+          description: Brand logo URI
+          maxLength: 1000
+          type: string
+          x-cds-type: URIString
+        legalEntity:
+          $ref: '#/components/schemas/LegalEntityDetail'
+        status:
+          enum:
+          - ACTIVE
+          - INACTIVE
+          - REMOVED
+          type: string
+        endpointDetail:
+          $ref: '#/components/schemas/RegisterDataHolderBrandServiceEndpoint'
+        authDetails:
+          items:
+            $ref: '#/components/schemas/RegisterDataHolderAuth'
+          type: array
+          uniqueItems: true
+        lastUpdated:
+          description: The date/time that the Data Holder Brand data was last updated
+            in the Register
+          format: date-time
+          type: string
+          x-cds-type: DateTimeString
+      required:
+      - authDetails
+      - brandName
+      - dataHolderBrandId
+      - endpointDetail
+      - industries
+      - lastUpdated
+      - legalEntity
+      - logoUri
+      - status
+      type: object
+    DataHoldersStatusList:
+      example:
+        data:
+        - legalEntityId: legalEntityId
+          status: ACTIVE
+        - legalEntityId: legalEntityId
+          status: ACTIVE
+        meta: '{}'
+        links:
+          self: self
+      properties:
+        data:
+          description: Response data for the query
+          items:
+            $ref: '#/components/schemas/DataHolderStatus'
+          type: array
+          uniqueItems: true
+        links:
+          $ref: '#/components/schemas/Links'
+        meta:
+          type: object
+      required:
+      - data
+      - links
+      - meta
+      type: object
+    DataHolderStatus:
+      example:
+        legalEntityId: legalEntityId
+        status: ACTIVE
+      properties:
+        legalEntityId:
+          description: Unique id of the Data Holder Legal Entity issued by the CDR
+            Register.
+          maxLength: 36
+          type: string
+        status:
+          description: Data Holder status in the CDR Register
+          enum:
+          - ACTIVE
+          - REMOVED
+          type: string
+      required:
+      - legalEntityId
+      - status
+      type: object
+    SoftwareProductsStatusList:
+      example:
+        data:
+        - softwareProductId: softwareProductId
+          status: ACTIVE
+        - softwareProductId: softwareProductId
+          status: ACTIVE
+        meta: '{}'
+        links:
+          self: self
+      properties:
+        data:
+          description: Response data for the query
+          items:
+            $ref: '#/components/schemas/SoftwareProductStatus'
+          type: array
+          uniqueItems: true
+        links:
+          $ref: '#/components/schemas/Links'
+        meta:
+          type: object
+      required:
+      - data
+      - links
+      - meta
+      type: object
+    SoftwareProductStatus:
+      example:
+        softwareProductId: softwareProductId
+        status: ACTIVE
+      properties:
+        softwareProductId:
+          description: Unique id of the software product issued by the CDR Register
+          maxLength: 36
+          type: string
+        status:
+          description: Software product status in the CDR Register
+          enum:
+          - ACTIVE
+          - INACTIVE
+          - REMOVED
+          type: string
+      required:
+      - softwareProductId
+      - status
+      type: object
+    DataRecipientsStatusList:
+      example:
+        data:
+        - legalEntityId: legalEntityId
+          status: ACTIVE
+        - legalEntityId: legalEntityId
+          status: ACTIVE
+        meta: '{}'
+        links:
+          self: self
+      properties:
+        data:
+          description: Response data for the query
+          items:
+            $ref: '#/components/schemas/DataRecipientStatus'
+          type: array
+          uniqueItems: true
+        links:
+          $ref: '#/components/schemas/Links'
+        meta:
+          type: object
+      required:
+      - data
+      - links
+      - meta
+      type: object
+    DataRecipientStatus:
+      example:
+        legalEntityId: legalEntityId
+        status: ACTIVE
+      properties:
+        legalEntityId:
+          description: Unique id of the Data Recipient Legal Entity issued by the
+            CDR Register
+          maxLength: 36
+          type: string
+        status:
+          description: Data Recipient status in the CDR Register
+          enum:
+          - ACTIVE
+          - SUSPENDED
+          - REVOKED
+          - SURRENDERED
+          type: string
+      required:
+      - legalEntityId
+      - status
+      type: object
+    ResponseRegisterDataRecipientList:
+      description: Response containing a list of Data Recipients in the CDR Register
+      example:
+        data:
+        - accreditationLevel: UNRESTRICTED
+          lastUpdated: 2000-01-23T04:56:07.000+00:00
+          dataRecipientBrands:
+          - brandName: brandName
+            softwareProducts:
+            - softwareProductId: softwareProductId
+              softwareProductName: softwareProductName
+              logoUri: logoUri
+              softwareProductDescription: softwareProductDescription
+              status: ACTIVE
+            - softwareProductId: softwareProductId
+              softwareProductName: softwareProductName
+              logoUri: logoUri
+              softwareProductDescription: softwareProductDescription
+              status: ACTIVE
+            dataRecipientBrandId: dataRecipientBrandId
+            logoUri: logoUri
+            status: ACTIVE
+          - brandName: brandName
+            softwareProducts:
+            - softwareProductId: softwareProductId
+              softwareProductName: softwareProductName
+              logoUri: logoUri
+              softwareProductDescription: softwareProductDescription
+              status: ACTIVE
+            - softwareProductId: softwareProductId
+              softwareProductName: softwareProductName
+              logoUri: logoUri
+              softwareProductDescription: softwareProductDescription
+              status: ACTIVE
+            dataRecipientBrandId: dataRecipientBrandId
+            logoUri: logoUri
+            status: ACTIVE
+          legalEntityId: legalEntityId
+          legalEntityName: legalEntityName
+          logoUri: logoUri
+          accreditationNumber: accreditationNumber
+          status: ACTIVE
+        - accreditationLevel: UNRESTRICTED
+          lastUpdated: 2000-01-23T04:56:07.000+00:00
+          dataRecipientBrands:
+          - brandName: brandName
+            softwareProducts:
+            - softwareProductId: softwareProductId
+              softwareProductName: softwareProductName
+              logoUri: logoUri
+              softwareProductDescription: softwareProductDescription
+              status: ACTIVE
+            - softwareProductId: softwareProductId
+              softwareProductName: softwareProductName
+              logoUri: logoUri
+              softwareProductDescription: softwareProductDescription
+              status: ACTIVE
+            dataRecipientBrandId: dataRecipientBrandId
+            logoUri: logoUri
+            status: ACTIVE
+          - brandName: brandName
+            softwareProducts:
+            - softwareProductId: softwareProductId
+              softwareProductName: softwareProductName
+              logoUri: logoUri
+              softwareProductDescription: softwareProductDescription
+              status: ACTIVE
+            - softwareProductId: softwareProductId
+              softwareProductName: softwareProductName
+              logoUri: logoUri
+              softwareProductDescription: softwareProductDescription
+              status: ACTIVE
+            dataRecipientBrandId: dataRecipientBrandId
+            logoUri: logoUri
+            status: ACTIVE
+          legalEntityId: legalEntityId
+          legalEntityName: legalEntityName
+          logoUri: logoUri
+          accreditationNumber: accreditationNumber
+          status: ACTIVE
+        meta: '{}'
+        links:
+          self: self
+      properties:
+        data:
+          description: Response data for the query
+          items:
+            $ref: '#/components/schemas/RegisterDataRecipient'
+          type: array
+          uniqueItems: true
+        links:
+          $ref: '#/components/schemas/Links'
+        meta:
+          type: object
+      required:
+      - data
+      - links
+      - meta
+      type: object
+    RegisterDataRecipient:
+      example:
+        accreditationLevel: UNRESTRICTED
+        lastUpdated: 2000-01-23T04:56:07.000+00:00
+        dataRecipientBrands:
+        - brandName: brandName
+          softwareProducts:
+          - softwareProductId: softwareProductId
+            softwareProductName: softwareProductName
+            logoUri: logoUri
+            softwareProductDescription: softwareProductDescription
+            status: ACTIVE
+          - softwareProductId: softwareProductId
+            softwareProductName: softwareProductName
+            logoUri: logoUri
+            softwareProductDescription: softwareProductDescription
+            status: ACTIVE
+          dataRecipientBrandId: dataRecipientBrandId
+          logoUri: logoUri
+          status: ACTIVE
+        - brandName: brandName
+          softwareProducts:
+          - softwareProductId: softwareProductId
+            softwareProductName: softwareProductName
+            logoUri: logoUri
+            softwareProductDescription: softwareProductDescription
+            status: ACTIVE
+          - softwareProductId: softwareProductId
+            softwareProductName: softwareProductName
+            logoUri: logoUri
+            softwareProductDescription: softwareProductDescription
+            status: ACTIVE
+          dataRecipientBrandId: dataRecipientBrandId
+          logoUri: logoUri
+          status: ACTIVE
+        legalEntityId: legalEntityId
+        legalEntityName: legalEntityName
+        logoUri: logoUri
+        accreditationNumber: accreditationNumber
+        status: ACTIVE
+      properties:
+        legalEntityId:
+          description: Unique id of the Data Recipient Legal Entity issued by the
+            CDR Register.
+          maxLength: 36
+          type: string
+        legalEntityName:
+          description: Legal name of the Data Recipient
+          maxLength: 200
+          type: string
+        accreditationNumber:
+          description: CDR Register issued human readable unique number given to Data
+            Recipients upon accreditation
+          maxLength: 100
+          type: string
+        accreditationLevel:
+          description: Accreditation level of the Data Recipient in the CDR Register
+          enum:
+          - UNRESTRICTED
+          - SPONSORED
+          type: string
+        logoUri:
+          description: Legal Entity logo URI
+          maxLength: 1000
+          type: string
+          x-cds-type: URIString
+        dataRecipientBrands:
+          items:
+            $ref: '#/components/schemas/DataRecipientBrandMetaData'
+          type: array
+          uniqueItems: true
+        status:
+          description: Data Recipient status in the CDR Register
+          enum:
+          - ACTIVE
+          - SUSPENDED
+          - REVOKED
+          - SURRENDERED
+          type: string
+        lastUpdated:
+          description: The date/time that the Legal Entity was last updated in the
+            CDR Register
+          format: date-time
+          type: string
+          x-cds-type: DateTimeString
+      required:
+      - accreditationLevel
+      - accreditationNumber
+      - lastUpdated
+      - legalEntityId
+      - legalEntityName
+      - logoUri
+      - status
+      type: object
+    DataRecipientBrandMetaData:
+      description: Metadata related to Data Recipient Brand
+      example:
+        brandName: brandName
+        softwareProducts:
+        - softwareProductId: softwareProductId
+          softwareProductName: softwareProductName
+          logoUri: logoUri
+          softwareProductDescription: softwareProductDescription
+          status: ACTIVE
+        - softwareProductId: softwareProductId
+          softwareProductName: softwareProductName
+          logoUri: logoUri
+          softwareProductDescription: softwareProductDescription
+          status: ACTIVE
+        dataRecipientBrandId: dataRecipientBrandId
+        logoUri: logoUri
+        status: ACTIVE
+      properties:
+        dataRecipientBrandId:
+          description: Unique id of the Data Recipient brand issued by the CDR Register
+          maxLength: 36
+          type: string
+        brandName:
+          description: Data Recipient Brand name
+          maxLength: 200
+          type: string
+        logoUri:
+          description: Data Recipient Brand logo URI
+          maxLength: 1000
+          type: string
+          x-cds-type: URIString
+        softwareProducts:
+          items:
+            $ref: '#/components/schemas/SoftwareProductMetaData'
+          type: array
+          uniqueItems: true
+        status:
+          description: Data Recipient Brand status in the CDR Register
+          enum:
+          - ACTIVE
+          - INACTIVE
+          - REMOVED
+          type: string
+      required:
+      - brandName
+      - dataRecipientBrandId
+      - logoUri
+      - status
+      type: object
+    SoftwareProductMetaData:
+      description: Data Recipient Brand Software Products
+      example:
+        softwareProductId: softwareProductId
+        softwareProductName: softwareProductName
+        logoUri: logoUri
+        softwareProductDescription: softwareProductDescription
+        status: ACTIVE
+      properties:
+        softwareProductId:
+          description: Unique id of the Data Recipient software product issued by
+            the CDR Register
+          maxLength: 36
+          type: string
+        softwareProductName:
+          description: Name of the software product
+          maxLength: 200
+          type: string
+        softwareProductDescription:
+          description: Description of the software product
+          maxLength: 4000
+          type: string
+        logoUri:
+          description: Software product logo URI
+          maxLength: 1000
+          type: string
+          x-cds-type: URIString
+        status:
+          description: Software Product status in the CDR Register
+          enum:
+          - ACTIVE
+          - INACTIVE
+          - REMOVED
+          type: string
+      required:
+      - logoUri
+      - softwareProductId
+      - softwareProductName
+      - status
+      type: object
+    LegalEntityDetail:
+      description: The data that is common to all organisations, regardless of the
+        type (e.g. company, trust, partnership, government)
+      example:
+        arbn: arbn
+        anzsicDivision: anzsicDivision
+        legalEntityId: legalEntityId
+        registrationNumber: registrationNumber
+        registrationDate: 2000-01-23
+        legalEntityName: legalEntityName
+        logoUri: logoUri
+        registeredCountry: registeredCountry
+        abn: abn
+        acn: acn
+        organisationType: SOLE_TRADER
+        status: ACTIVE
+      properties:
+        legalEntityId:
+          description: Unique id of the organisation issued by the CDR Register
+          maxLength: 36
+          type: string
+        legalEntityName:
+          description: Unique legal name of the organisation
+          maxLength: 36
+          type: string
+        logoUri:
+          description: Legal Entity logo URI
+          maxLength: 1000
+          type: string
+          x-cds-type: URIString
+        registrationNumber:
+          description: Unique registration number (if the company is registered outside
+            Australia)
+          type: string
+        registrationDate:
+          description: Date of registration (if the company is registered outside
+            Australia)
+          format: date
+          type: string
+          x-cds-type: DateString
+        registeredCountry:
+          description: Country of registeration (if the company is registered outside
+            Australia)
+          maxLength: 100
+          type: string
+        abn:
+          description: Australian Business Number for the organisation
+          maxLength: 11
+          type: string
+        acn:
+          description: Australian Company Number for the organisation
+          maxLength: 9
+          type: string
+        arbn:
+          description: Australian Registered Body Number.  ARBNs are issued to registrable
+            Australian bodies and foreign companies
+          maxLength: 9
+          type: string
+        anzsicDivision:
+          description: ANZSIC division of the organisation. **[[ANZSIC-2006]](#iref-ANZSIC-2006)**
+          maxLength: 100
+          type: string
+        organisationType:
+          description: Legal organisation type
+          enum:
+          - SOLE_TRADER
+          - COMPANY
+          - PARTNERSHIP
+          - TRUST
+          - GOVERNMENT_ENTITY
+          - OTHER
+          type: string
+        status:
+          enum:
+          - ACTIVE
+          - REMOVED
+          type: string
+      required:
+      - legalEntityId
+      - legalEntityName
+      - logoUri
+      - status
+      type: object
+    RegisterDataHolderBrandServiceEndpoint:
+      description: Endpoints related to Data Holder Brand services
+      example:
+        websiteUri: websiteUri
+        publicBaseUri: publicBaseUri
+        infosecBaseUri: infosecBaseUri
+        extensionBaseUri: extensionBaseUri
+        resourceBaseUri: resourceBaseUri
+        version: version
+      properties:
+        version:
+          description: The major version of the high level standards. This is not
+            the version of the endpoint or the payload being requested but the version
+            of the overall standards being applied. This version number will be "v"
+            followed by the major version of the standards as a positive integer (e.g.
+            v1, v12 or v76)
+          type: string
+        publicBaseUri:
+          description: Base URI for the Data Holder's Consumer Data Standard public
+            endpoints
+          maxLength: 1000
+          type: string
+          x-cds-type: URIString
+        resourceBaseUri:
+          description: Base URI for the Data Holder's Consumer Data Standard resource
+            endpoints
+          maxLength: 1000
+          type: string
+          x-cds-type: URIString
+        infosecBaseUri:
+          description: Base URI for the Data Holder's Consumer Data Standard information
+            security endpoints
+          maxLength: 1000
+          type: string
+          x-cds-type: URIString
+        extensionBaseUri:
+          description: Base URI for the Data Holder extension endpoints to the Consumer
+            Data Standard (optional)
+          maxLength: 1000
+          type: string
+          x-cds-type: URIString
+        websiteUri:
+          description: Publicly available website or web resource URI
+          maxLength: 1000
+          type: string
+          x-cds-type: URIString
+      required:
+      - infosecBaseUri
+      - publicBaseUri
+      - resourceBaseUri
+      - version
+      - websiteUri
+      type: object
+    RegisterDataHolderAuth:
+      description: Defines the mechanism used and associated endpoints for Data Holder
+        to Data Recipient authentication
+      example:
+        registerUType: SIGNED-JWT
+        jwksEndpoint: jwksEndpoint
+      properties:
+        registerUType:
+          description: The type of authentication and authorisation mechanism in use
+          enum:
+          - SIGNED-JWT
+          type: string
+        jwksEndpoint:
+          description: JWKS endpoint used for authentication by the Data Holder with
+            the Data Recipient
+          maxLength: 1000
+          type: string
+          x-cds-type: URIString
+      required:
+      - jwksEndpoint
+      - registerUType
+      type: object
+    LinksPaginated:
+      example:
+        next: next
+        last: last
+        prev: prev
+        self: self
+        first: first
+      properties:
+        first:
+          description: URI to the first page of this set. Mandatory if this response
+            is not the first page
+          type: string
+        last:
+          description: URI to the last page of this set. Mandatory if this response
+            is not the last page
+          type: string
+        next:
+          description: URI to the next page of this set. Mandatory if this response
+            is not the last page
+          type: string
+        prev:
+          description: URI to the previous page of this set. Mandatory if this response
+            is not the first page
+          type: string
+        self:
+          description: Fully qualified link to this API call
+          type: string
+      required:
+      - self
+      type: object
+    MetaPaginated:
+      example:
+        totalRecords: 6
+        totalPages: 0
+      properties:
+        totalPages:
+          description: The total number of pages in the full set
+          format: int32
+          type: integer
+        totalRecords:
+          description: The total number of records in the full set
+          format: int32
+          type: integer
+      required:
+      - totalPages
+      - totalRecords
+      type: object
+    Links:
+      example:
+        self: self
+      properties:
+        self:
+          description: Fully qualified link to this API call
+          type: string
+      required:
+      - self
+      type: object
+    Meta:
+      type: object
+    MetaError:
+      description: Additional data for customised error codes
+      properties:
+        urn:
+          description: The CDR error code URN which the application-specific error
+            code extends. Mandatory if the error `code` is an application-specific
+            error rather than a standardised error code.
+          type: string
+      type: object
+      x-conditional:
+      - urn
+    ResponseErrorListV2:
+      properties:
+        errors:
+          items:
+            $ref: '#/components/schemas/ResponseErrorListV2_errors'
+          type: array
+      required:
+      - errors
+      type: object
+      x-conditional:
+      - meta
+    ResponseErrorListV2_errors:
+      properties:
+        code:
+          description: The code of the error encountered. Where the error is specific
+            to the respondent, an application-specific error code, expressed as a
+            string value. If the error is application-specific, the URN code that
+            the specific error extends must be provided in the meta object. Otherwise,
+            the value is the error code URN.
+          type: string
+        title:
+          description: A short, human-readable summary of the problem that MUST NOT
+            change from occurrence to occurrence of the problem represented by the
+            error code.
+          type: string
+        detail:
+          description: A human-readable explanation specific to this occurrence of
+            the problem.
+          type: string
+        meta:
+          $ref: '#/components/schemas/MetaError'
+      required:
+      - code
+      - detail
+      - title
+      type: object

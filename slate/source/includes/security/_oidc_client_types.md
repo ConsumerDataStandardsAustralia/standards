@@ -1,7 +1,7 @@
 ## OIDC Client Types
 Only Confidential Clients **SHALL** be supported under this profile. Therefore, Public clients **SHALL NOT** be supported.
 
-In reference to the client types referenced in [section 2.1] (https://tools.ietf.org/html/rfc6749#section-2.1) of **[OAUTH2]**:
+In reference to the client types referenced in [section 2.1] (https://tools.ietf.org/html/rfc6749#section-2.1) of **[[OAUTH2]](#nref-OAUTH2)**:
 
 - Confidential Clients **MUST** be supported under this profile.
 - Public clients **MUST** NOT be supported.

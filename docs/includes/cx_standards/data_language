@@ -156,7 +156,9 @@
 </tbody></table>
 <h3 id='payees'>Payees</h3>
 <p>See below for the data language standards for the payees scope:</p>
-
+<pre class="highlight diff tab-diff"><code>Corrected the capitalisation of BPAY (from BPay) to reflect that
+organisation's branding guidelines
+</code></pre>
 <table><thead>
 <tr>
 <th>Data cluster language</th>
@@ -166,7 +168,7 @@
 </thead><tbody>
 <tr>
 <td><strong>Saved payees</strong></td>
-<td>Names and details of accounts you have saved; <em>(e.g. their BSB and Account Number, BPay CRN and Biller code, or NPP PayID)&dagger;</em></td>
+<td>Names and details of accounts you have saved; <em>(e.g. their BSB and Account Number, BPAY CRN and Biller code, or NPP PayID)&dagger;</em></td>
 <td>bank:payees:read</td>
 </tr>
 </tbody></table>

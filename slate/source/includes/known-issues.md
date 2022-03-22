@@ -4,7 +4,6 @@ There are certain aspects of the standards that are actively under review. These
 
 Issue | Description
 :---- | :----------
-Banking and Common swagger is combined | Common entity definitions to be split out into a separate swagger which can be leveraged by Banking, Energy and Register APIs. This will create a separate Banking APIs swagger that references the common swagger specification.
 Register APIs use local version of common definitions | The Register APIs use a locally defined version of common schema definitions such as `ResponseErrorList` for error responses. These need to be updated to reference common swagger specifications inherited by the Common Swagger spec.
 Register APIs don't specify standardised CDR error codes | The Register APIs need to be changed to support common CDR error codes to be consistent with the rest of the data standards.
 Register APIs use different field type definitions | The Register APIs define their own field types that are not consistent with the [Common Field Types](#common-field-types) defined in the data standards. As part of porting the Register standards across to the primary data standards, the field types need to be re-aligned to use the common field type definitions. For example, `string (data-time)` should be changed to `DataTime` and `integer(int32)` should be changed to `PositiveInteger`.
