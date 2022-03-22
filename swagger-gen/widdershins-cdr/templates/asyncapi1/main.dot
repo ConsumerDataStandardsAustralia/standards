@@ -144,6 +144,11 @@ Delimiter: {{= data.api.stream.framing.delimiter||'\r\n'}}
            enums.push({name:p.name,value:e});
          }
        }
+       if (p.schema.items && p.schema.items.enum) {
+         for (var e of p.schema.items.enum) {
+           enums.push({name:p.name,value:e});
+         }
+       }
      }
    }
 }}
