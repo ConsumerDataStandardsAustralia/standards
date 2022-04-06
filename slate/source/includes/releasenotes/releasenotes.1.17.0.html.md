@@ -24,7 +24,7 @@ This release contains minor errata and documentation fixes
 
 |Change|Description|Link|
 |------|-----------|----|
-
+| Energy schema | Changed percentOfBill, percentOfUse, fixedAmount and percentOverThreshold attributes from optional to conditional within EnergyPlanDiscounts schema | [Energy Schema](../../#energy-apis) |
 
 ## Information Security Profile
 
