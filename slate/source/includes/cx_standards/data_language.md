@@ -73,11 +73,6 @@ See below for the data language standards for the regular payments scope:
 ### Payees
 See below for the data language standards for the payees scope:
 
-```diff
-Corrected the capitalisation of BPAY (from BPay) to reflect that
-organisation's branding guidelines
-```
-
 |Data cluster language|Permission language|Authorisation Scopes|
 |----------------------|------------------------------|-------------------|
 |**Saved payees**|Names and details of accounts you have saved; *(e.g. their BSB and Account Number, BPAY CRN and Biller code, or NPP PayID)&dagger;*|bank:payees:read|
