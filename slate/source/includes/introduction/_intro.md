@@ -26,14 +26,10 @@ The standards are required to be published. The obligations on CDR participants 
 - where the rules require compliance with the standards, non-compliance with the standards may constitute a breach of the rules.
 - where the standards are specified as binding standards as required by the Consumer Data Right rules for the purposes of s56FA of the legislation, they apply as under contract between a data holder and an accredited data recipient.  The legal effect of binding standards as between data holders and accredited data recipients is fully set out in s56FD and s56FE of the legislation.
 
-```diff
-Note that in v1.16.1 of the standards tooltips have been added whenever
-a normative, or informative, reference is referred to in the standards
-```
 
 ## Version
 
-These standards represent version 1.16.1 of the high level standards.  See the [versioning section](#versioning) for more information on how versions are managed in the standard.
+These standards represent version 1.17.0 of the high level standards.  See the [versioning section](#versioning) for more information on how versions are managed in the standard.
 
 ## Interpretation
 
