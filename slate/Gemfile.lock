@@ -90,7 +90,7 @@ GEM
       rouge (~> 2.0)
     mini_portile2 (2.8.0)
     minitest (5.11.3)
-    nokogiri (1.13.3)
+    nokogiri (1.13.4)
       mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
     padrino-helpers (0.13.3.4)
@@ -133,7 +133,7 @@ DEPENDENCIES
   middleman-livereload (~> 3.4.6)
   middleman-sprockets (~> 4.1.0)
   middleman-syntax (~> 3.0.0)
-  nokogiri (~> 1.13.2)
+  nokogiri (~> 1.13.4)
   redcarpet (~> 3.4.0)
   rouge (~> 2.0.5)
 
