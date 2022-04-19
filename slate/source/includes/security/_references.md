@@ -1,9 +1,5 @@
 ## Normative References
 
-```diff
-Added tooltip support for all inline references to normative and informative references. Tooltips will provide details to the title of the referenced document when users hover over the link with their mouse.
-```
-
 | **Reference**  | **Description**  | **Version** |
 | --- | --- | --- |
 | <a id="nref-DCR"></a>**[DCR]**          | OAuth 2.0 Dynamic Client Registration Protocol: <https://datatracker.ietf.org/doc/html/rfc7591>                                                                                |Jul 2015
