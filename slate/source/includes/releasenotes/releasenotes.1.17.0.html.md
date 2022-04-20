@@ -18,6 +18,7 @@ This release contains minor errata and documentation fixes
 
 |Change|Description|Link|
 |------|-----------|----|
+| Scrollable diffs and examples | Added previous and next buttons to support easy scrolling between all diffs and non-normative examples. This feature is context dependent on the tab being viewed | N/A |
 
 
 ## API End Points
