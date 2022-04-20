@@ -30,6 +30,7 @@ This release contains minor errata and documentation fixes
 
 |Change|Description|Link|
 |------|-----------|----|
+| CDR Arrangement Revocation End Point | Corrected the documentation to include CDR Arrangement Form Parameter and CDR Arrangement JWT methods. Previous versions did not include this documentation correctly. | [CDR Arrangement Revocation End Point](../../#cdr-arrangement-revocation-end-point)
 
 ## Consumer Experience
 

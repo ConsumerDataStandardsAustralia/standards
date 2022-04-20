@@ -30,17 +30,26 @@ Content-Type: application/x-www-form-urlencoded
 Data Holders and Data Recipient Software Products MUST implement a CDR Arrangement Revocation End Point that can be used to revoke an existing sharing arrangement.
 
 <br/>
+
+```diff
+
+Corrected documentation to include CDR Arrangement Form Parameter method and CDR Arrangement JWT method description. This was previously omitted.
+
+```
+
 **CDR Arrangement Form Parameter method**
+
+The request **MUST** include the following parameters using the ``application/x-www-form-urlencoded`` format in the HTTP request entity-body:
+
+* ``cdr_arrangement_id``: The ID of the arrangement that the client wants to revoke.
+
+**CDR Arrangement JWT method**
 
 The request MUST include the following parameters using the ``application/x-www-form-urlencoded`` format in the HTTP request entity-body:
 
-
-- ``cdr_arrangement_jwt``: A signed JWT that includes the ``cdr_arrangement_id``.
-
-The `cdr_arrangement_jwt` MUST be a newly signed JWT with the following parameters in accordance with **[[JWT]](#nref-JWT)**:
-
-- ``cdr_arrangement_id``: The ID of the arrangement that the client wants to revoke.
-
+* ``cdr_arrangement_jwt``: A signed JWT that includes the ``cdr_arrangement_id``.<br/>  
+  The `cdr_arrangement_jwt` **MUST** be a newly signed JWT with the following parameters in accordance with **[[JWT]](#nref-JWT)**:  
+  * ``cdr_arrangement_id``: The ID of the arrangement that the client wants to revoke.
 
 **Data Holder hosted endpoint**
 
