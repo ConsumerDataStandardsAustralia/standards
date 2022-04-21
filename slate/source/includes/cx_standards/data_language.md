@@ -15,6 +15,20 @@ In accordance with CDR Rule 8.11 (1)(d), a data standard must be made to provide
 
 ## Profile Scope and OpenID Connect Standard Claims
 
+```diff
+
+Removed ambiguous language for Contact Details authorisation scope data language:
+- "OIDC Profile scope and/or"
+
+Table columns:
++ Added "Required" column to highlight which claims and OIDC scopes must be supported
+
+Changed title of this section:
+- "Profile Scope"
++ "Profile Scope and OpenID Connect Standard Claims"
+
+```
+
 
 In accordance with **[[OIDC]](#nref-OIDC)** [section 5.4](https://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims) and [section 5.5](https://openid.net/specs/openid-connect-core-1_0.html#ClaimsParameter), this language refers to the **[[OIDC]](#nref-OIDC)** `profile` scope and request of individual claims for the authenticated End-User.
 
