@@ -6,7 +6,7 @@
   function scroll(classNames) {
     var $allElements = {};
     $.each(classNames, function(index, value) {
-        $allElements[value] = {'elts': $('.tab-'+value), 'last': 0, 'currentIndex': -1 };
+        $allElements[value] = {'elts': $('.tab-'+value), 'last': 0 };
         $allElements[value].last = $allElements[value].elts.length - 1;
     });
 
