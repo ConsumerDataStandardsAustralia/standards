@@ -24,7 +24,7 @@ This release contains minor errata and documentation fixes
 
 |Change|Description|Link|
 |------|-----------|----|
-
+| Energy schema | Made EnergyPlanSolarFeedInTariff.timeVaryingTariffs.timeVariations.days mandatory | [Energy Schema](../../#energy-apis) |
 
 ## Information Security Profile
 
