@@ -18,9 +18,7 @@ toc_footers:
 search: false
 ---
 
-```diff
-+ Added obligation date highlighting functionality. This feature allows users to select a target obligation date using a date picker and all relevant obligations will be displayed. 
-```
+
 <div id="date-picker">
   <div class="input-group">
     <div class="input-group-prepend">
