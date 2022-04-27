@@ -1,0 +1,251 @@
+@import '../variables';
+
+/*!
+ * Datepicker v1.0.10
+ * https://fengyuanchen.github.io/datepicker
+ *
+ * Copyright 2014-present Chen Fengyuan
+ * Released under the MIT license
+ *
+ * Date: 2020-09-29T14:46:09.037Z
+ */.datepicker-container{background-color:#fff;direction:ltr;font-size:12px;left:0;line-height:30px;position:fixed;-webkit-tap-highlight-color:transparent;top:0;-ms-touch-action:none;touch-action:none;-webkit-touch-callout:none;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;width:210px;z-index:-1}.datepicker-container:after,.datepicker-container:before{border:5px solid transparent;content:" ";display:block;height:0;position:absolute;width:0}.datepicker-dropdown{border:1px solid #ccc;-webkit-box-shadow:0 3px 6px #ccc;box-shadow:0 3px 6px #ccc;-webkit-box-sizing:content-box;box-sizing:content-box;position:absolute;z-index:1}.datepicker-inline{position:static}.datepicker-top-left,.datepicker-top-right{border-top-color:#39f}.datepicker-top-left:after,.datepicker-top-left:before,.datepicker-top-right:after,.datepicker-top-right:before{border-top:0;left:10px;top:-5px}.datepicker-top-left:before,.datepicker-top-right:before{border-bottom-color:#39f}.datepicker-top-left:after,.datepicker-top-right:after{border-bottom-color:#fff;top:-4px}.datepicker-bottom-left,.datepicker-bottom-right{border-bottom-color:#39f}.datepicker-bottom-left:after,.datepicker-bottom-left:before,.datepicker-bottom-right:after,.datepicker-bottom-right:before{border-bottom:0;bottom:-5px;left:10px}.datepicker-bottom-left:before,.datepicker-bottom-right:before{border-top-color:#39f}.datepicker-bottom-left:after,.datepicker-bottom-right:after{border-top-color:#fff;bottom:-4px}.datepicker-bottom-right:after,.datepicker-bottom-right:before,.datepicker-top-right:after,.datepicker-top-right:before{left:auto;right:10px}.datepicker-panel>ul{margin:0;padding:0;width:102%}.datepicker-panel>ul:after,.datepicker-panel>ul:before{content:" ";display:table}.datepicker-panel>ul:after{clear:both}.datepicker-panel>ul>li{background-color:#fff;cursor:pointer;float:left;height:30px;list-style:none;margin:0;padding:0;text-align:center;width:30px}.datepicker-panel>ul>li:hover{background-color:#e5f2ff}.datepicker-panel>ul>li.muted,.datepicker-panel>ul>li.muted:hover{color:#999}.datepicker-panel>ul>li.highlighted{background-color:#e5f2ff}.datepicker-panel>ul>li.highlighted:hover{background-color:#cce5ff}.datepicker-panel>ul>li.picked,.datepicker-panel>ul>li.picked:hover{color:#39f}.datepicker-panel>ul>li.disabled,.datepicker-panel>ul>li.disabled:hover{background-color:#fff;color:#ccc;cursor:default}.datepicker-panel>ul>li.disabled.highlighted,.datepicker-panel>ul>li.disabled:hover.highlighted{background-color:#e5f2ff}.datepicker-panel>ul>li[data-view="month next"],.datepicker-panel>ul>li[data-view="month prev"],.datepicker-panel>ul>li[data-view="year next"],.datepicker-panel>ul>li[data-view="year prev"],.datepicker-panel>ul>li[data-view="years next"],.datepicker-panel>ul>li[data-view="years prev"],.datepicker-panel>ul>li[data-view=next]{font-size:18px}.datepicker-panel>ul>li[data-view="month current"],.datepicker-panel>ul>li[data-view="year current"],.datepicker-panel>ul>li[data-view="years current"]{width:150px}.datepicker-panel>ul[data-view=months]>li,.datepicker-panel>ul[data-view=years]>li{height:52.5px;line-height:52.5px;width:52.5px}.datepicker-panel>ul[data-view=week]>li,.datepicker-panel>ul[data-view=week]>li:hover{background-color:#fff;cursor:default}.datepicker-hide{display:none}
+
+@media (min-width: $tablet-width) {
+    .content {
+        -webkit-transform: initial !important;
+
+         .input-group-text {
+            padding: .375rem .75rem;
+            margin-bottom: 0;
+            font-size: 0.8rem;
+            font-weight: 400;
+            line-height: 1.5;
+            color: #495057;
+            text-align: center;
+            white-space: nowrap;
+            background-color: #e9ecef;
+            border: 1px solid #ced4da;
+            border-radius: .25rem;
+        }
+        .input-group>.input-group-prepend>.input-group-text {
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+        #date-picker {
+            position: fixed;
+            right: 0;
+            top: 0;
+            z-index: 9999;
+
+            &.date-chosen {
+                .cancel {
+                    float: right;
+                    display: block;
+                    background-color: #ddd;
+                    border-radius: 30px;
+                    padding: 3px 4px 4px 4px;
+                    z-index: 999;
+                    right: 16px;
+                    top: 16px;
+                    position: absolute;
+                    line-height: 8px;
+                    font-size: 11px;
+                    font-weight: bold;
+                    color: #666;
+                    cursor: pointer;
+                }
+            }
+            .cancel.hide { display: none; }
+        }
+        .input-group {
+            background: #fdfdfd;
+            padding: 13px 10px 10px 10px;
+            border: 1px solid #fdfdfd;
+            border-radius: 4px;
+            float: right;
+        }
+        .input-group>.form-control:not(:first-child) {
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+        }
+        .input-group>input:not(:last-of-type) {
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+        .input-group>.form-control:last-child {
+            padding-right: 22px;
+        }
+        .input-group>.form-control, .input-group>.form-control-plaintext {
+            position: relative;
+            min-width: 0;
+            margin-bottom: 0;
+        }
+        .form-control, .input-group-prepend { 
+            float: left; 
+            display: block;
+            z-index: 2;
+            position: relative;
+        }
+        .form-control {
+            display: block;
+            position: relative;
+            top: -3px;
+            left: -1px;
+            height: calc(0.8rem + 1px);
+            padding: .4rem;
+            font-size: 0.8rem;
+            font-weight: 400;
+            line-height: 1.5;
+            color: #495057;
+            background-color: #fff;
+            background-clip: padding-box;
+            border: 1px solid #ced4da;
+            border-radius: .25rem;
+            width: 6em;
+            border-left: 0;
+            transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+        }
+
+        .obligations tr.active-obligation td {
+            background-color: rgb(205, 249, 205) !important;
+            border-top-color: lightgreen;
+            font-weight: bold;
+            color: green;
+        }
+        .obligations tr.inactive-obligation td {
+            background-color: #eee !important;
+            border-top-color: #ccc;
+            color: #999;
+            font-weight: normal;
+
+            .method.get, .method.delete, .method.put, .method.post {background-color: #ccc !important;}
+        }
+        .obligations tr.retired-obligation td {
+            background-color: #eee !important;
+            border-top-color: #ccc;
+            color: #999;
+            font-weight: normal;
+            text-decoration: line-through;
+            font-style: italic;
+            .method.get, .method.delete, .method.put, .method.post {background-color: #ccc !important;}
+        }
+        .obligations tr.retired-obligation-red td {
+            background-color: rgb(252, 234, 234) !important;
+            border-top-color: lightpink;
+            color: red;
+            text-decoration: line-through;
+            font-style: italic;
+            font-weight: normal;
+            .method.get, .method.delete, .method.put, .method.post {background-color: lightpink !important;}
+        }
+        .obligations tr.deprecated-obligation td {
+            background-color: rgb(255, 238, 205) !important;
+            border-top-color: orange;
+            font-weight: normal;
+        }
+        .obligations tr.future-obligation td {
+            background-color: rgb(177, 199, 250) !important;
+            border-top-color: darkblue;
+            font-style: italic;
+            font-weight: normal;
+        }
+        .obligations tr.emerging-obligation td {
+            background-color: #6ff7ed !important;
+            border-top-color: darkblue;
+            font-style: italic;
+            font-weight: normal;
+        }
+
+         /* basic positioning */
+        .legend { width: 30%; }
+        .input-group .legend-title { 
+            text-transform: uppercase;
+            font-size: 0.8em;
+            font-weight: bold;
+            background-color: #e9ecef;
+            line-height: 20px;
+            border-bottom-left-radius: 3px;
+            border-bottom-right-radius: 3px;
+
+            a {color: #666; text-decoration: none; padding: 0 0 2px 12px;} 
+        }
+
+        .lightbox .legend-title { 
+            text-transform: uppercase;
+            font-size: 0.8em;
+            background: #ddd;
+            padding: 10px 0 8px 12px;
+            border-bottom: 1px solid #999;
+            font-weight: bold;
+            line-height: 20px;
+        }
+
+        .legend ul { 
+            list-style: none; 
+            margin: 10vh auto 0; 
+            width: 100%;
+            margin-block-start: 0;
+            margin-block-end: 0;
+            margin-inline-start: 0;
+            padding-inline-start: 0;
+        }
+        .legend li { float: left; margin-right: 10px; background: #fdfdfd;width: 100%; padding: 12px 6px 8px 12px; }
+        .legend li span { border: 1px solid; border-radius: 3px; float: left; width: 12px; height: 12px; margin: 4px 6px 2px 2px; }
+        /* your colors */
+        .legend .legend-future-obligations { background-color: rgb(177, 199, 250) !important; border-color: darkblue; }
+        .legend .legend-emerging-obligations { background-color: #6ff7ed !important; border-color: darkblue; }
+        .legend .legend-active-obligations { background-color: rgb(205, 249, 205) !important; border-color: lightgreen; }
+        .legend .legend-deprecated-obligations { background-color: rgb(255, 238, 205) !important; border-color: orange; }  
+        .legend .legend-retired-obligations { background-color: #eee !important; border-color: #ccc; }  
+
+        /** LIGHTBOX MARKUP **/
+
+        .lightbox {
+          /* Default to hidden */
+          display: none;
+
+          /* Overlay entire screen */
+          position: fixed;
+          z-index: 99999;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          
+          /* A bit of padding around image */
+          padding: 1em;
+
+          /* Translucent background */
+          background: rgba(0, 0, 0, 0.8);
+        }
+        /* Unhide the lightbox when it's the target */
+        .lightbox:target {
+          display: block;
+        }
+
+        .lightbox .legend {
+          /* Full width and height */
+            width: 50%;
+            height: auto;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+            margin: 0 auto;
+            margin: 10vh auto 0;
+            border-radius: 3px;
+            overflow: hidden;
+            border: 1px solid #000;
+            box-shadow: 0 0 8px 2px rgba(0,0,0,0.8);
+        }
+
+        .defocus {
+            width: 100%;
+            height: 100%;
+            display: block;
+            position: absolute;
+            z-index: 1;
+            background: none;
+            text-decoration: none;
+        }
+    }
+}
