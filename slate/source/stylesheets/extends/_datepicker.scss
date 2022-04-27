@@ -85,6 +85,10 @@
             display: block;
             z-index: 2;
             position: relative;
+
+            .input-group-text {
+                border-bottom: 1px solid #bbb;
+            }
         }
         .form-control {
             display: block;
@@ -104,6 +108,7 @@
             width: 6em;
             border-left: 0;
             transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+            border-bottom: 1px solid #bbb;
         }
 
         .obligations tr.active-obligation td {
@@ -149,6 +154,15 @@
             font-style: italic;
             font-weight: normal;
         }
+
+        .obligations.collapse-obligations {
+            tr.inactive-obligation td, 
+            tr.retired-obligation td, 
+            tr.deprecated-obligation td, 
+            tr.future-obligation {
+                display:none;
+            }
+        }
         .obligations tr.emerging-obligation td {
             background-color: #6ff7ed !important;
             border-top-color: darkblue;
@@ -160,12 +174,18 @@
         .legend { width: 30%; }
         .input-group .legend-title { 
             text-transform: uppercase;
-            font-size: 0.8em;
+            font-size: 0.6em;
             font-weight: bold;
-            background-color: #e9ecef;
+            background-color: #d3d7da;
             line-height: 20px;
             border-bottom-left-radius: 3px;
             border-bottom-right-radius: 3px;
+            clear: both;
+            position: relative;
+            top: -5px;
+            padding: 2px 0 4px;
+            border: 1px solid #ccc;
+            border-top-width: 0;
 
             a {color: #666; text-decoration: none; padding: 0 0 2px 12px;} 
         }
@@ -246,6 +266,88 @@
             z-index: 1;
             background: none;
             text-decoration: none;
+        }
+
+        .collapse-obligations-toggle {
+            background-color: #d3d7da;
+            border: 1px solid #ccc;
+            clear:both;
+            top: -5px;
+            position: relative;
+            padding: 14px 0 10px 12px;
+
+            .toggle-title { 
+                text-transform: uppercase;
+                font-size: 0.6em;
+                font-weight: bold;
+                line-height: 0.6em;
+                color: #666;
+            }
+
+            /* The switch - the box around the slider */
+            .switch {
+              position: absolute;
+              display: inline-block;
+              width: 30px;
+              height: 17px;
+              top: 8px;
+              right: 0.5em;
+            }
+
+            /* Hide default HTML checkbox */
+            .switch input {
+              opacity: 0;
+              width: 0;
+              height: 0;
+            }
+
+            /* The slider */
+            .slider {
+              position: absolute;
+              cursor: pointer;
+              top: 0;
+              left: 0;
+              right: 0;
+              bottom: 0;
+              background-color: #999;
+              -webkit-transition: .4s;
+              transition: .4s;
+            }
+
+            .slider:before {
+              position: absolute;
+              content: "";
+              height: 13px;
+              width: 13px;
+              left: 2px;
+              bottom: 2px;
+              background-color: white;
+              -webkit-transition: .4s;
+              transition: .4s;
+            }
+
+            input:checked + .slider {
+              background-color: #2196F3;
+            }
+
+            input:focus + .slider {
+              box-shadow: 0 0 1px #2196F3;
+            }
+
+            input:checked + .slider:before {
+              -webkit-transform: translateX(13px);
+              -ms-transform: translateX(13px);
+              transform: translateX(13px);
+            }
+
+            /* Rounded sliders */
+            .slider.round {
+              border-radius: 17px;
+            }
+
+            .slider.round:before {
+              border-radius: 50%;
+            }
         }
     }
 }

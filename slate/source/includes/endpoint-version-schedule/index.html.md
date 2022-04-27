@@ -25,6 +25,14 @@ search: false
       <span class="input-group-text">Obligations @</span>
     </div>
     <input type="text" id="end-date" placeholder="End date" aria-label="End date" class="form-control end-date date-picker-input">
+    <div class="collapse-obligations-toggle">
+      <div class="toggle-title">Collapse obligations</div>
+        <!-- Rounded switch -->
+      <label class="switch">
+        <input type="checkbox">
+        <span class="slider round"></span>
+      </label>
+    </div>
     <div class="legend-title"><a href="#legend">Legend &#9432;</a></div>
   </div>
   <span class="cancel hide">×</span>

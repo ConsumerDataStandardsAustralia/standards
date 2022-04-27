@@ -123,6 +123,11 @@
         highlight(endDate, $participantObligations);
       });
 
+      $(".collapse-obligations-toggle input").on('click', function () {
+        console.log(new Date().getTime()+": toggle");
+        $(".obligations").toggleClass('collapse-obligations');
+      });
+
   }
 
 })();
