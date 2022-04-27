@@ -18,7 +18,7 @@ This release contains minor errata and documentation fixes
 
 |Change|Description|Link|
 |------|-----------|----|
-
+| Obligation date highlighting | Highlighting based on a date pickers has been added for the Endpoint versioning schedule to enhance documentation functionality. This feature allows users to select a target date and determine what obligations apply at that date. | [Endpoint versioning schedule](../../includes/endpoint-version-schedule/)
 
 ## API End Points
 
