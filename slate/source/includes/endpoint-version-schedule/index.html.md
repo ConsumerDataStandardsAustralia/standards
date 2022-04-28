@@ -18,6 +18,44 @@ toc_footers:
 search: false
 ---
 
+# Obligation Dates Schedule
+The following schedule represents future obligation dates. This includes a set of bi-monthly obligation milestone windows and historically assigned obligation dates.
+
+The calendar of obligation milestones are published to provide predictability. This calendar does not mean that any obligations exist at these dates however when addressing the future dating of obligations for any breaking changes, this calendar will be used to pin those obligations to pre-determined obligation milestones.
+
+These dates may be subject to change depending upon new or changed legislative and policy dates as well as optimisation and streamlining based on community feedback.
+
+| Obligation Milestone | Milestone Date | # Obligations Assigned |
+| :------------------- | :------------: | :--------------------: |
+| **Legacy FDO** | 01/07/2021 | 1 |
+| **Legacy FDO** | 31/07/2021 | 1 |
+| **Legacy FDO** | 31/10/2021 | 1 |
+| **Legacy FDO** | 01/11/2021 | 2 |
+| **Legacy FDO** | 01/02/2022 | 2 |
+| **Y22 #1** | 31/03/2022 | 1 |
+| **Legacy FDO** | 01/07/2022 | 2 |
+| **Y22 #2** | 04/07/2022 | 1 |
+| **Legacy FDO** | 31/07/2022 | 4 |
+| **Legacy FDO** | 30/07/2022 | 6 |
+| **Y22 #3** | 31/08/2022 | 2 |
+| **Legacy FDO** | 16/09/2022 | 1 |
+| **Legacy FDO** | 01/10/2022 | 1 |
+| **Y22 #4** | 15/11/2022 | 0 |
+| **Legacy FDO** | 30/11/2022 | 3 |
+| **Legacy FDO** | 05/12/2022 | 1 |
+| **Legacy FDO** | 28/02/2023 | 3 |
+| **Y23 #1** | 07/04/2023 | 1 |
+| **Y23 #2** | 08/05/2023 | 0 |
+| **Y23 #3** | 10/07/2023 | 0 |
+| **Y23 #4** | 11/09/2023 | 0 |
+| **Y23 #5** | 13/11/2023 | 0 |
+| **Y24 #1** | 11/03/2024 | 0 |
+| **Y24 #2** | 13/05/2024 | 0 |
+| **Y24 #3** | 15/07/2024 | 0 |
+| **Y24 #4** | 09/09/2024 | 0 |
+| **Y24 #5** | 11/11/2024 | 0 |
+
+
 # Endpoint Version Schedule
 The following tables describe the endpoint versions and the dates they become binding within the data standards.
 
