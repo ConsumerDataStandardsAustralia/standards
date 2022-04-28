@@ -17,8 +17,12 @@ In accordance with CDR Rule 8.11 (1)(d), a data standard must be made to provide
 
 ```diff
 
-Removed ambiguous language for Contact Details authorisation scope data language:
+Removed ambiguous language for Contact Details data cluster data language Authorisation Scopes description:
 - "OIDC Profile scope and/or"
+
+Changed ambiguous language for Name data cluster data language Authorisation Scopes description:
+- "OIDC Profile scope and/or one or more of these standard [OIDC] claims"
++ "OIDC Profile scope or one or more of these standard [OIDC] claims"
 
 Table columns:
 + Added "Required" column to highlight which claims and OIDC scopes must be supported
