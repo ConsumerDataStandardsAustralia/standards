@@ -47,8 +47,9 @@ The request **MUST** include the following parameters using the ``application/x-
 
 The request MUST include the following parameters using the ``application/x-www-form-urlencoded`` format in the HTTP request entity-body:
 
-* ``cdr_arrangement_jwt``: A signed JWT that includes the ``cdr_arrangement_id``.<br/>  
-  The `cdr_arrangement_jwt` **MUST** be a newly signed JWT with the following parameters in accordance with **[[JWT]](#nref-JWT)**:  
+* ``cdr_arrangement_jwt``: A signed JWT that includes the ``cdr_arrangement_id``.  
+* ``cdr_arrangement_jwt``: A newly signed JWT with the following parameters in accordance with **[[JWT]](#nref-JWT)**:  
+  * All parameters in accordance with Data Holders calling Data Recipients using [Self-Signed JWT Client Authentication](https://consumerdatastandardsaustralia.github.io/standards/#self-signed-jwt-client-authentication).
   * ``cdr_arrangement_id``: The ID of the arrangement that the client wants to revoke.
 
 **Data Holder hosted endpoint**
