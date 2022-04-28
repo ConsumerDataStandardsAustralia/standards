@@ -13,7 +13,7 @@ In accordance with CDR Rule 8.11 (1)(d), a data standard must be made to provide
 
 <br/>
 
-## Profile Scope and OpenID Connect Standard Claims
+## Profile Scope and Standard Claims
 
 ```diff
 
@@ -25,7 +25,7 @@ Table columns:
 
 Changed title of this section:
 - "Profile Scope"
-+ "Profile Scope and OpenID Connect Standard Claims"
++ "Profile Scope and Standard Claims"
 
 ```
 
@@ -34,7 +34,7 @@ In accordance with **[[OIDC]](#nref-OIDC)** [section 5.4](https://openid.net/spe
 
 |Data cluster language |<div style="width:250px">Permission language</div> |Authorisation Scopes|Required|
 |----------------------|---------------------------------------------------|--------------------|--------|
-| **Name**                 | Full name and title(s)                            |[OIDC Profile scope](https://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims) and/or one or more of these standard **[[OIDC]](#nref-OIDC)** claims\*:<br/>`name`<br/>`given_name`<br/>`family_name`<br/>`updated_at`<br/><br/>\*See [5.4. Requesting Claims using Scope Values on the OIDC website](https://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims) for more information. | Required |
+| **Name**                 | Full name and title(s)                            |[OIDC Profile scope](https://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims) or one or more of these standard **[[OIDC]](#nref-OIDC)** claims\*:<br/>`name`<br/>`given_name`<br/>`family_name`<br/>`updated_at`<br/><br/>\*See [5.4. Requesting Claims using Scope Values on the OIDC website](https://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims) for more information. | Required |
 | **Contact Details**      | Phone number;<br/>Email address;<br/>Mail address; |One or more of these standard **[[OIDC]](#nref-OIDC)** claims\*:<br/>`email`<br/>`email_verified`<br/>`phone_number`<br/>`phone_number_verified`<br/>`address`<br/><br/>\*See [5.4. Requesting Claims using Scope Values on the OIDC website](https://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims) for more information. | Optional |
 
 **Note:** For non-individual consumers, claims available via the profile scope will only return the details of the authenticated End-User and not the organisation or non-individual consumer.
