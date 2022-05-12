@@ -44,8 +44,8 @@ This release addresses the following Decision Proposals published on [Standards]
 
 |Change|Description|Link|
 |------|-----------|----|
-| Self-signed JWT Client Authentication non-normative example | Updated self-signed JWT client authentication non-normative example `alg` field from HS256 to PS256 | [Client Authentication](file:///Users/ivan/work/accc/documentation/standards-staging/docs/index.html#client-authentication) |
-| CDR Arrangement Revocation End Point non-normative example | Updated data recipient hosted CDR Arrangement Revocation End Point non-normative example `alg` field from HS256 to PS256 | [Security Endpoints](file:///Users/ivan/work/accc/documentation/standards-staging/docs/index.html#security-endpoints) |
+| Self-signed JWT Client Authentication non-normative example | [**Standards Maintenance #482**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/482): Updated self-signed JWT client authentication non-normative example `alg` field from HS256 to PS256 | [Client Authentication](../../index.html#client-authentication) |
+| CDR Arrangement Revocation End Point non-normative example | [**Standards Maintenance #482**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/482): Updated data recipient hosted CDR Arrangement Revocation End Point non-normative example `alg` field from HS256 to PS256 | [Security Endpoints](../../index.html#security-endpoints) |
 
 ## Consumer Experience
 
