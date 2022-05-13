@@ -3535,7 +3535,55 @@
                     "description": {
                         "description": "A free text description of the item",
                         "type": "string"
+                    },
+                    "calculationFactors": {
+                        "description": "Additional calculation factors that inform the transaction",
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "required": [
+                                "value",
+                                "type"
+                            ],
+                            "properties": {
+                                "value": {
+                                    "description": "The value of the calculation factor",
+                                    "type": "number"
+                                },
+                                "type": {
+                                    "description": "The type of the calculation factor",
+                                    "type": "string",
+                                    "enum": [
+                                        "DLF",
+                                        "MLF"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "adjustments": {
+                        "description": "Optional array of adjustments arising for this transaction",
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "required": [
+                                "amount",
+                                "description"
+                            ],
+                            "properties": {
+                                "amount": {
+                                    "description": "The amount of the adjustment",
+                                    "type": "string",
+                                    "x-cds-type": "AmountString"
+                                },
+                                "description": {
+                                    "description": "A free text description of the adjustment",
+                                    "type": "string"
+                                }
+                            }
+                        }
                     }
+
                 }
             },
             "EnergyBillingPaymentTransaction": {
