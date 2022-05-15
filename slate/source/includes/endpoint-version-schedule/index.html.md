@@ -55,8 +55,39 @@ These dates may be subject to change depending upon new or changed legislative a
 | **Y24 #4** | 09/09/2024 | 0 |
 | **Y24 #5** | 11/11/2024 | 0 |
 
+<div id="date-picker">
+  <div class="input-group">
+    <div class="input-group-prepend">
+      <span class="input-group-text">Obligations @</span>
+    </div>
+    <input type="text" id="end-date" placeholder="End date" aria-label="End date" class="form-control end-date date-picker-input">
+    <div class="collapse-obligations-toggle">
+      <div class="toggle-title">Collapse obligations</div>
+        <!-- Rounded switch -->
+      <label class="switch">
+        <input type="checkbox">
+        <span class="slider round"></span>
+      </label>
+    </div>
+    <div class="legend-title"><a href="#legend">Legend &#9432;</a></div>
+  </div>
+  <span class="cancel hide">×</span>
+</div>
+<div class="lightbox" id="legend"><a href="#" class="defocus"></a>
+  <div class="legend">
+      <div class="legend-title">Legend</div>
+      <ul>
+        <li><span class="legend-future-obligations"></span> <b>Future:</b> obligations that are due more than three months into the future.</li>
+        <li><span class="legend-emerging-obligations"></span> <b>Emerging:</b> obligations that are due within the next three months.</li>
+        <li><span class="legend-active-obligations"></span> <b>Active:</b> obligations that must currently be supported.</li>
+        <li><span class="legend-deprecated-obligations"></span> <b>Deprecated:</b> obligations that are being phased out and have entered into a deprecation phase before being retired.</li>
+        <li><span class="legend-retired-obligations"></span> <b>Retired:</b> obligations that have expired or are superceded and no longer need to be supported.</li>
+      </ul>
+  </div>
+</div>
 
 # Endpoint Version Schedule
+
 The following tables describe the endpoint versions and the dates they become binding within the data standards.
 
 **Binding Date** indicates the dates the particular version of an endpoint becomes binding in the data standards.
