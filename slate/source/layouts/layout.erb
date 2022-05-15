@@ -129,13 +129,17 @@ under the License.
           <div class="lang-selector">
             <% language_tabs.each do |lang| %>
               <% if lang.is_a? Hash %>
-                <a href="#" data-language-name="<%= lang.keys.first %>"><%= lang.values.first %></a>
+                <a href="#" class="tab-selector" data-language-name="<%= lang.keys.first %>"><%= lang.values.first %></a>
               <% else %>
-                <a href="#" data-language-name="<%= lang %>"><%= lang %></a>
+                <a href="#" class="tab-selector" data-language-name="<%= lang %>"><%= lang %></a>
               <% end %>
             <% end %>
           </div>
         <% end %>
+        <div id="diff-scroll-buttons" class="scroll-buttons">
+          <a href="#" id="scroll-prev" title="Previous" class="scroll-button previous round">&#8249;</a>
+          <a href="#" id="scroll-next" title="Next" class="scroll-button next round">&#8250;</a>
+        </div>
       </div>
     </div>
   </body>
