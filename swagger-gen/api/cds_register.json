@@ -430,8 +430,7 @@
                   "type": "string"
                 }
               }
-            },
-            "content": {}
+            }
           },
           "400": {
             "description": "Missing Required Header / Invalid Version / Invalid Path Parameter",
@@ -541,8 +540,7 @@
                   "type": "string"
                 }
               }
-            },
-            "content": {}
+            }
           },
           "400": {
             "description": "Missing Required Header / Invalid Version / Invalid Path Parameter",
@@ -652,8 +650,7 @@
                   "type": "string"
                 }
               }
-            },
-            "content": {}
+            }
           },
           "400": {
             "description": "Missing Required Header / Invalid Version / Invalid Path Parameter",
@@ -763,8 +760,7 @@
                   "type": "string"
                 }
               }
-            },
-            "content": {}
+            }
           },
           "400": {
             "description": "Missing Required Header / Invalid Version / Invalid Path Parameter",
@@ -1666,8 +1662,7 @@
               "type": "string"
             }
           }
-        },
-        "content": {}
+        }
       },
       "UnsupportedVersion": {
         "description": "Unsupported Version",
