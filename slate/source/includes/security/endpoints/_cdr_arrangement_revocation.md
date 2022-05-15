@@ -98,13 +98,18 @@ Authorization: Bearer eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNDU2In0.ey
 ## Decoded cdr_arrangement_jwt JWT
 {
   "typ": "JWT",
-  "alg": "HS256",
+  "alg": "PS256",
   "kid":"12456"
 }
 {
   "cdr_arrangement_id": "5a1bf696-ee03-408b-b315-97955415d1f0"
 }
 ```
+
+```diff
+Updated Data Recipient end point non-normative example `alg` field from HS256 to PS256
+```
+
 
 **Data Recipient hosted endpoint**
 
