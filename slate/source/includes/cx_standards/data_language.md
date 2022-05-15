@@ -13,15 +13,33 @@ In accordance with CDR Rule 8.11 (1)(d), a data standard must be made to provide
 
 <br/>
 
-## Profile Scope
+## Profile Scope and Standard Claims
+
+```diff
+
+Removed ambiguous language for Contact Details data cluster data language Authorisation Scopes description:
+- "OIDC Profile scope and/or"
+
+Changed ambiguous language for Name data cluster data language Authorisation Scopes description:
+- "OIDC Profile scope and/or one or more of these standard [OIDC] claims"
++ "OIDC Profile scope or one or more of these standard [OIDC] claims"
+
+Table columns:
++ Added "Required" column to highlight which claims and OIDC scopes must be supported
+
+Changed title of this section:
+- "Profile Scope"
++ "Profile Scope and Standard Claims"
+
+```
 
 
-In accordance with **[OIDC]** [section 5.4](https://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims) and [section 5.5](https://openid.net/specs/openid-connect-core-1_0.html#ClaimsParameter), this language refers to the **[OIDC]** profile scope and request of individual claims for the authenticated End-User.
+In accordance with **[[OIDC]](#nref-OIDC)** [section 5.4](https://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims) and [section 5.5](https://openid.net/specs/openid-connect-core-1_0.html#ClaimsParameter), this language refers to the **[[OIDC]](#nref-OIDC)** `profile` scope and request of individual claims for the authenticated End-User.
 
-|Data cluster language |<div style="width:250px">Permission language</div> |Authorisation Scopes|
-|----------------------|---------------------------------------------------|--------------------|
-| **Name**                 | Full name and title(s)                            |[OIDC Profile scope](https://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims) and/or one or more of these claims:<br/>`name`<br/>`given_name`<br/>`family_name`<br/>`updated_at` |
-| **Contact Details**      | Phone number;<br/>Email address;<br/>Mail address; |[OIDC Profile scope](https://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims) and/or one or more of these claims:<br/>`email`<br/>`email_verified`<br/>`phone_number`<br/>`phone_number_verified`<br/>`address` |
+|Data cluster language |<div style="width:250px">Permission language</div> |Authorisation Scopes|Required|
+|----------------------|---------------------------------------------------|--------------------|--------|
+| **Name**                 | Full name and title(s)                            |[OIDC Profile scope](https://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims) or one or more of these standard **[[OIDC]](#nref-OIDC)** claims\*:<br/>`name`<br/>`given_name`<br/>`family_name`<br/>`updated_at`<br/><br/>\*See [5.4. Requesting Claims using Scope Values on the OIDC website](https://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims) for more information. | Required |
+| **Contact Details**      | Phone number;<br/>Email address;<br/>Mail address; |One or more of these standard **[[OIDC]](#nref-OIDC)** claims\*:<br/>`email`<br/>`email_verified`<br/>`phone_number`<br/>`phone_number_verified`<br/>`address`<br/><br/>\*See [5.4. Requesting Claims using Scope Values on the OIDC website](https://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims) for more information. | Optional |
 
 **Note:** For non-individual consumers, claims available via the profile scope will only return the details of the authenticated End-User and not the organisation or non-individual consumer.
 
