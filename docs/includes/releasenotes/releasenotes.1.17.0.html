@@ -1,0 +1,345 @@
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Consumer Data Standards - v1.17.0 Release Notes</title>
+    <link href="../../images/favicon.ico" rel="icon" type="image/ico" />
+
+    <style>
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .gh {
+  color: #999999;
+}
+.highlight .sr {
+  color: #f6aa11;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .nb {
+  color: #f6aa11;
+}
+.highlight .cm {
+  color: #75715e;
+}
+.highlight .cp {
+  color: #75715e;
+}
+.highlight .c1 {
+  color: #75715e;
+}
+.highlight .cs {
+  color: #75715e;
+}
+.highlight .c, .highlight .cd {
+  color: #75715e;
+}
+.highlight .err {
+  color: #960050;
+}
+.highlight .gr {
+  color: #960050;
+}
+.highlight .gt {
+  color: #960050;
+}
+.highlight .gd {
+  color: #49483e;
+}
+.highlight .gi {
+  color: #49483e;
+}
+.highlight .ge {
+  color: #49483e;
+}
+.highlight .kc {
+  color: #66d9ef;
+}
+.highlight .kd {
+  color: #66d9ef;
+}
+.highlight .kr {
+  color: #66d9ef;
+}
+.highlight .no {
+  color: #66d9ef;
+}
+.highlight .kt {
+  color: #66d9ef;
+}
+.highlight .mf {
+  color: #ae81ff;
+}
+.highlight .mh {
+  color: #ae81ff;
+}
+.highlight .il {
+  color: #ae81ff;
+}
+.highlight .mi {
+  color: #ae81ff;
+}
+.highlight .mo {
+  color: #ae81ff;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #ae81ff;
+}
+.highlight .sc {
+  color: #ae81ff;
+}
+.highlight .se {
+  color: #ae81ff;
+}
+.highlight .ss {
+  color: #ae81ff;
+}
+.highlight .sd {
+  color: #e6db74;
+}
+.highlight .s2 {
+  color: #e6db74;
+}
+.highlight .sb {
+  color: #e6db74;
+}
+.highlight .sh {
+  color: #e6db74;
+}
+.highlight .si {
+  color: #e6db74;
+}
+.highlight .sx {
+  color: #e6db74;
+}
+.highlight .s1 {
+  color: #e6db74;
+}
+.highlight .s {
+  color: #e6db74;
+}
+.highlight .na {
+  color: #a6e22e;
+}
+.highlight .nc {
+  color: #a6e22e;
+}
+.highlight .nd {
+  color: #a6e22e;
+}
+.highlight .ne {
+  color: #a6e22e;
+}
+.highlight .nf {
+  color: #a6e22e;
+}
+.highlight .vc {
+  color: #ffffff;
+}
+.highlight .nn {
+  color: #ffffff;
+}
+.highlight .nl {
+  color: #ffffff;
+}
+.highlight .ni {
+  color: #ffffff;
+}
+.highlight .bp {
+  color: #ffffff;
+}
+.highlight .vg {
+  color: #ffffff;
+}
+.highlight .vi {
+  color: #ffffff;
+}
+.highlight .nv {
+  color: #ffffff;
+}
+.highlight .w {
+  color: #ffffff;
+}
+.highlight {
+  color: #ffffff;
+}
+.highlight .n, .highlight .py, .highlight .nx {
+  color: #ffffff;
+}
+.highlight .ow {
+  color: #f92672;
+}
+.highlight .nt {
+  color: #f92672;
+}
+.highlight .k, .highlight .kv {
+  color: #f92672;
+}
+.highlight .kn {
+  color: #f92672;
+}
+.highlight .kp {
+  color: #f92672;
+}
+.highlight .o {
+  color: #f92672;
+}
+    </style>
+    <link href="../../stylesheets/screen.css" rel="stylesheet" media="screen" />
+    <link href="../../stylesheets/print.css" rel="stylesheet" media="print" />
+      <script src="../../javascripts/all_nosearch.js"></script>
+  </head>
+
+  <body class="no-code-layout includes includes_releasenotes includes_releasenotes_releasenotes" data-languages="[]">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="../../images/navbar.png" alt="Navbar" />
+      </span>
+    </a>
+    <div class="toc-wrapper">
+      <img src="../../images/logo.png" class="logo" alt="Logo" />
+      <ul id="toc" class="toc-list-h1">
+          <li>
+            <a href="#v1-17-0-release-notes" class="toc-h1 toc-link" data-title="V1.17.0 Release Notes">V1.17.0 Release Notes</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#changes-made" class="toc-h2 toc-link" data-title="Changes Made">Changes Made</a>
+                  </li>
+                  <li>
+                    <a href="#high-level-standards" class="toc-h2 toc-link" data-title="High Level Standards">High Level Standards</a>
+                  </li>
+                  <li>
+                    <a href="#api-end-points" class="toc-h2 toc-link" data-title="API End Points">API End Points</a>
+                  </li>
+                  <li>
+                    <a href="#information-security-profile" class="toc-h2 toc-link" data-title="Information Security Profile">Information Security Profile</a>
+                  </li>
+                  <li>
+                    <a href="#consumer-experience" class="toc-h2 toc-link" data-title="Consumer Experience">Consumer Experience</a>
+                  </li>
+              </ul>
+          </li>
+      </ul>
+        <ul class="toc-footer">
+            <li><a href='../../index.html'>Consumer Data Standards</a></li>
+        </ul>
+    </div>
+    <div class="page-wrapper">
+      <div class="content">
+        <h1 id='v1-17-0-release-notes'>V1.17.0 Release Notes</h1>
+<p>Release notes for version v1.17.0 of the <a href="../../">CDR Standards</a>.</p>
+<h2 id='changes-made'>Changes Made</h2><h3 id='change-requests'>Change Requests</h3>
+<p>This release addresses the following change requests raised on <a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues">Standards Maintenance</a>:</p>
+
+<ul>
+<li><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/503">Standards Maintenance Issue 503: Fix documentation defect for CDR Arrangement JWT method</a></li>
+<li><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/504">Standards Maintenance Issue 504: Correct Data Language for Contact Details (profile scope and individual claims)</a></li>
+<li><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/438">Standards Maintenance Issue 438: Representing adjustment transactions within the Billing Payload for C&amp;I customers</a></li>
+<li><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/457">Standards Maintenance Issue 457: Energy - Get Service Point Detail register suffix should be optional</a></li>
+<li><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/482">Standards Maintenance Issue 482: JWT signing non-normative examples use unsupported signing algorithm)</a></li>
+</ul>
+<h3 id='decision-proposals'>Decision Proposals</h3>
+<p>This release addresses the following Decision Proposals published on <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues">Standards</a>:</p>
+
+<ul>
+<li><a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/237">Decision Proposal 237 - Maintenance Iteration 10</a></li>
+</ul>
+<h2 id='high-level-standards'>High Level Standards</h2>
+<table><thead>
+<tr>
+<th>Change</th>
+<th>Description</th>
+<th>Link</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Energy schema</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/438"><strong>Standards Maintenance #438</strong></a> Added &#39;calculationFactors&#39; and &#39;adjustments&#39; objects to <a href="../../#tocSenergybillingothertransaction">&#39;EnergyBillingOtherTransaction&#39;</a> model to allow consistent representation of any calculation factors (i.e. DLF or MLF) used for deriving other charges and any adjustments arising from other types of charges such as environmental charge.</td>
+<td><a href="../../#energy-apis">Energy Schema</a></td>
+</tr>
+<tr>
+<td>Obligation date highlighting</td>
+<td>Highlighting based on a date pickers has been added for the Endpoint versioning schedule to enhance documentation functionality. This feature allows users to select a target date and determine what obligations apply at that date.</td>
+<td><a href="../../includes/endpoint-version-schedule/">Endpoint versioning schedule</a></td>
+</tr>
+<tr>
+<td>Obligation Dates Table</td>
+<td>A series of fixed obligation milestones were agreed in Maintenance Iteration 10. This set of milestones will be used to pin breaking changes to a deterministic series of possible obligation dates.</td>
+<td><a href="#">Obligation Dates</a></td>
+</tr>
+<tr>
+<td>Scrollable diffs and examples</td>
+<td>Added previous and next buttons to support easy scrolling between all diffs and non-normative examples. This feature is context dependent on the tab being viewed</td>
+<td>N/A</td>
+</tr>
+</tbody></table>
+<h2 id='api-end-points'>API End Points</h2>
+<table><thead>
+<tr>
+<th>Change</th>
+<th>Description</th>
+<th>Link</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Energy schema</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/457"><strong>Standards Maintenance #457</strong></a> Made EnergyServicePointDetail.meters.registers.registerSuffix field optional</td>
+<td><a href="../../#energy-apis">Energy Schema</a></td>
+</tr>
+</tbody></table>
+<h2 id='information-security-profile'>Information Security Profile</h2>
+<table><thead>
+<tr>
+<th>Change</th>
+<th>Description</th>
+<th>Link</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>CDR Arrangement Revocation End Point</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/503">Standards Maintenance Issue 503</a>: Corrected the documentation to include CDR Arrangement Form Parameter and CDR Arrangement JWT methods. Previous versions did not include this documentation correctly.</td>
+<td><a href="../../#cdr-arrangement-revocation-end-point">CDR Arrangement Revocation End Point</a></td>
+</tr>
+<tr>
+<td>Self-signed JWT Client Authentication non-normative example</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/482"><strong>Standards Maintenance #482</strong></a>: Updated self-signed JWT client authentication non-normative example <code>alg</code> field from HS256 to PS256</td>
+<td><a href="../../#client-authentication">Client Authentication</a></td>
+</tr>
+<tr>
+<td>CDR Arrangement Revocation End Point non-normative example</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/482"><strong>Standards Maintenance #482</strong></a>: Updated data recipient hosted CDR Arrangement Revocation End Point non-normative example <code>alg</code> field from HS256 to PS256</td>
+<td><a href="../../#security-endpoints">Security Endpoints</a></td>
+</tr>
+</tbody></table>
+<h2 id='consumer-experience'>Consumer Experience</h2>
+<table><thead>
+<tr>
+<th>Change</th>
+<th>Description</th>
+<th>Link</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>OIDC Contact Detail claims</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/504"><strong>Standards Maintenance #504</strong></a>: Data language standards have been corrected to clarify that individual OIDC standard contact detail claims must be requested individually and not using the OIDC profile scope. These claims are optional for the Data Holder support and Data Recipients should check the Data Holder&#39;s OIDD discovery document to determine which claims are supported by inspecting the <code>claims_supported</code> parameter.</td>
+<td><a href="../../#profile-scope">Profile scope</a></td>
+</tr>
+</tbody></table>
+
+      </div>
+    </div>
+  </body>
+</html>

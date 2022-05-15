@@ -256,7 +256,7 @@ x-min-v: string
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>An Authorisation Token as per <a href="https://tools.ietf.org/html/rfc6750">RFC6750</a>.</td>
+<td>An Authorisation Token as per <strong><a href="#nref-RFC6750">[RFC6750]</a></strong>.</td>
 </tr>
 <tr>
 <td>x-v</td>
@@ -378,10 +378,6 @@ x-min-v: string
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<blockquote>
-<p>400 Response</p>
-</blockquote>
-
 <h3 id="get-data-holder-brands-responses">Responses</h3>
 
 <table><thead>
@@ -542,7 +538,7 @@ Authorization: string
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>An Authorisation Token as per <a href="https://tools.ietf.org/html/rfc6750">RFC6750</a>.</td>
+<td>An Authorisation Token as per <strong><a href="#nref-RFC6750">[RFC6750]</a></strong>.</td>
 </tr>
 </tbody></table>
 <h4 id='enumerated-values-2'>Enumerated Values</h4>
@@ -577,10 +573,6 @@ Authorization: string
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="s2">"string"</span><span class="w">
 </span></code></pre>
-<blockquote>
-<p>400 Response</p>
-</blockquote>
-
 <h3 id="get-software-statement-assertion-(ssa)-responses">Responses</h3>
 
 <table><thead>
@@ -789,10 +781,6 @@ If-None-Match: string
   </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<blockquote>
-<p>400 Response</p>
-</blockquote>
-
 <h3 id="get-data-holder-statuses-responses">Responses</h3>
 
 <table><thead>
@@ -997,10 +985,6 @@ If-None-Match: string
   </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<blockquote>
-<p>400 Response</p>
-</blockquote>
-
 <h3 id="get-software-products-statuses-responses">Responses</h3>
 
 <table><thead>
@@ -1205,10 +1189,6 @@ If-None-Match: string
   </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<blockquote>
-<p>400 Response</p>
-</blockquote>
-
 <h3 id="get-data-recipients-statuses-responses">Responses</h3>
 
 <table><thead>
@@ -1435,10 +1415,6 @@ If-None-Match: string
   </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<blockquote>
-<p>400 Response</p>
-</blockquote>
-
 <h3 id="get-data-recipients-responses">Responses</h3>
 
 <table><thead>
@@ -1573,7 +1549,7 @@ This operation does not require authentication
 <td>jwks_uri</td>
 <td>string</td>
 <td>mandatory</td>
-<td>URL of the CDR Register&#39;s JSON Web Key Set [JWK] document. This contains the signing key(s) used to validate access tokens issued from the CDR Register. Note that this differs from the JWKS endpoint used to validate SSAs and CDR Register client authentication</td>
+<td>URL of the CDR Register&#39;s JSON Web Key Set <strong><a href="#nref-JWK">[JWK]</a></strong> document. This contains the signing key(s) used to validate access tokens issued from the CDR Register. Note that this differs from the JWKS endpoint used to validate SSAs and CDR Register client authentication</td>
 </tr>
 <tr>
 <td>token_endpoint</td>
@@ -1603,13 +1579,13 @@ This operation does not require authentication
 <td>code_challenge_methods_supported</td>
 <td>[string]</td>
 <td>mandatory</td>
-<td>JSON array containing a list of Proof Key for Code Exchange (PKCE) [RFC7636] code challenge methods supported by this authorization server. Given the CDR Register does not support PKCE, this field can be safely ignored</td>
+<td>JSON array containing a list of Proof Key for Code Exchange (PKCE) <strong><a href="#nref-RFC7636">[RFC7636]</a></strong> code challenge methods supported by this authorization server. Given the CDR Register does not support PKCE, this field can be safely ignored</td>
 </tr>
 <tr>
 <td>scopes_supported</td>
 <td>[string]</td>
 <td>mandatory</td>
-<td>JSON array containing a list of the OAuth 2.0 [RFC6749] scope values that the CDR Register supports</td>
+<td>JSON array containing a list of the OAuth 2.0 <strong><a href="#nref-RFC6749">[RFC6749]</a></strong> scope values that the CDR Register supports</td>
 </tr>
 <tr>
 <td>response_types_supported</td>
@@ -1639,7 +1615,7 @@ This operation does not require authentication
 <td>token_endpoint_auth_signing_alg_values_supported</td>
 <td>[string]</td>
 <td>mandatory</td>
-<td>JSON array containing a list of the JWS signing algorithms (alg values) supported by the token endpoint for the signature on the JWT [JWT] used to authenticate the client at the token endpoint for the \&quot;private_key_jwt\&quot; authentication method</td>
+<td>JSON array containing a list of the JWS signing algorithms (alg values) supported by the token endpoint for the signature on the JWT <strong><a href="#nref-JWT">[JWT]</a></strong> used to authenticate the client at the token endpoint for the \&quot;private_key_jwt\&quot; authentication method</td>
 </tr>
 </tbody></table>
 
@@ -1944,6 +1920,18 @@ This operation does not require authentication
 <th>Value</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>industries</td>
+<td>banking</td>
+</tr>
+<tr>
+<td>industries</td>
+<td>energy</td>
+</tr>
+<tr>
+<td>industries</td>
+<td>telco</td>
+</tr>
 <tr>
 <td>status</td>
 <td>ACTIVE</td>
@@ -2679,7 +2667,7 @@ This operation does not require authentication
 <td>anzsicDivision</td>
 <td>string</td>
 <td>optional</td>
-<td>ANZSIC division of the organisation. <a href="http://www.abs.gov.au/anzsic">ANZSIC (2006)</a></td>
+<td>ANZSIC division of the organisation. <strong><a href="#iref-ANZSIC-2006">[ANZSIC-2006]</a></strong></td>
 </tr>
 <tr>
 <td>organisationType</td>

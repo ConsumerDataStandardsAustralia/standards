@@ -23,25 +23,43 @@
 </tbody></table>
 
 <p><br/></p>
-<h2 id='profile-scope'>Profile Scope</h2>
-<p>In accordance with <strong>[OIDC]</strong> <a href="https://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims">section 5.4</a> and <a href="https://openid.net/specs/openid-connect-core-1_0.html#ClaimsParameter">section 5.5</a>, this language refers to the <strong>[OIDC]</strong> profile scope and request of individual claims for the authenticated End-User.</p>
+<h2 id='profile-scope-and-standard-claims'>Profile Scope and Standard Claims</h2><pre class="highlight diff tab-diff"><code>
+Removed ambiguous language for Contact Details data cluster data language Authorisation Scopes description:
+<span class="gd">- "OIDC Profile scope and/or"
+</span>
+Changed ambiguous language for Name data cluster data language Authorisation Scopes description:
+<span class="gd">- "OIDC Profile scope and/or one or more of these standard [OIDC] claims"
+</span><span class="gi">+ "OIDC Profile scope or one or more of these standard [OIDC] claims"
+</span>
+Table columns:
+<span class="gi">+ Added "Required" column to highlight which claims and OIDC scopes must be supported
+</span>
+Changed title of this section:
+<span class="gd">- "Profile Scope"
+</span><span class="gi">+ "Profile Scope and Standard Claims"
+</span>
+</code></pre>
+<p>In accordance with <strong><a href="#nref-OIDC">[OIDC]</a></strong> <a href="https://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims">section 5.4</a> and <a href="https://openid.net/specs/openid-connect-core-1_0.html#ClaimsParameter">section 5.5</a>, this language refers to the <strong><a href="#nref-OIDC">[OIDC]</a></strong> <code>profile</code> scope and request of individual claims for the authenticated End-User.</p>
 
 <table><thead>
 <tr>
 <th>Data cluster language</th>
 <th><div style="width:250px">Permission language</div></th>
 <th>Authorisation Scopes</th>
+<th>Required</th>
 </tr>
 </thead><tbody>
 <tr>
 <td><strong>Name</strong></td>
 <td>Full name and title(s)</td>
-<td><a href="https://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims">OIDC Profile scope</a> and/or one or more of these claims:<br/><code>name</code><br/><code>given_name</code><br/><code>family_name</code><br/><code>updated_at</code></td>
+<td><a href="https://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims">OIDC Profile scope</a> or one or more of these standard <strong><a href="#nref-OIDC">[OIDC]</a></strong> claims*:<br/><code>name</code><br/><code>given_name</code><br/><code>family_name</code><br/><code>updated_at</code><br/><br/>*See <a href="https://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims">5.4. Requesting Claims using Scope Values on the OIDC website</a> for more information.</td>
+<td>Required</td>
 </tr>
 <tr>
 <td><strong>Contact Details</strong></td>
 <td>Phone number;<br/>Email address;<br/>Mail address;</td>
-<td><a href="https://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims">OIDC Profile scope</a> and/or one or more of these claims:<br/><code>email</code><br/><code>email_verified</code><br/><code>phone_number</code><br/><code>phone_number_verified</code><br/><code>address</code></td>
+<td>One or more of these standard <strong><a href="#nref-OIDC">[OIDC]</a></strong> claims*:<br/><code>email</code><br/><code>email_verified</code><br/><code>phone_number</code><br/><code>phone_number_verified</code><br/><code>address</code><br/><br/>*See <a href="https://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims">5.4. Requesting Claims using Scope Values on the OIDC website</a> for more information.</td>
+<td>Optional</td>
 </tr>
 </tbody></table>
 
@@ -156,9 +174,7 @@
 </tbody></table>
 <h3 id='payees'>Payees</h3>
 <p>See below for the data language standards for the payees scope:</p>
-<pre class="highlight diff tab-diff"><code>Corrected the capitalisation of BPAY (from BPay) to reflect that
-organisation's branding guidelines
-</code></pre>
+
 <table><thead>
 <tr>
 <th>Data cluster language</th>

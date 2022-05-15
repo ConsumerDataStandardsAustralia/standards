@@ -3,7 +3,7 @@
   "info" : {
     "description" : "Consumer Data Right end points and payloads for the Energy sector",
     "title" : "CDR Energy API",
-    "version" : "1.16.1"
+    "version" : "1.17.0"
   },
   "servers" : [ {
     "url" : "/"
@@ -6767,6 +6767,20 @@
           "description" : {
             "description" : "A free text description of the item",
             "type" : "string"
+          },
+          "calculationFactors" : {
+            "description" : "Additional calculation factors that inform the transaction",
+            "items" : {
+              "$ref" : "#/components/schemas/EnergyBillingUsageTransaction_calculationFactors"
+            },
+            "type" : "array"
+          },
+          "adjustments" : {
+            "description" : "Optional array of adjustments arising for this transaction",
+            "items" : {
+              "$ref" : "#/components/schemas/EnergyBillingUsageTransaction_adjustments"
+            },
+            "type" : "array"
           }
         },
         "required" : [ "amount", "description" ],
@@ -7476,7 +7490,7 @@
             "type" : "string"
           }
         },
-        "required" : [ "registerConsumptionType", "registerId", "registerSuffix" ],
+        "required" : [ "registerConsumptionType", "registerId" ],
         "type" : "object"
       },
       "EnergyServicePointDetail_meters" : {
