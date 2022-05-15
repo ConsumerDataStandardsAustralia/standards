@@ -2,6 +2,7 @@
 //= require ./app/_toc
 //= require ./app/_lang
 //= require ./app/_tooltips
+//= require ./app/_datepicker
 //= require ./app/_scroll
 
 $(function() {
