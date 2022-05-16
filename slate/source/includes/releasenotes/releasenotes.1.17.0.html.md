@@ -39,13 +39,14 @@ This release addresses the following Decision Proposals published on [Standards]
 | Obligation date highlighting | Highlighting based on a date pickers has been added for the Endpoint versioning schedule to enhance documentation functionality. This feature allows users to select a target date and determine what obligations apply at that date. | [Endpoint versioning schedule](../../includes/endpoint-version-schedule/)
 | Obligation Dates Table | A series of fixed obligation milestones were agreed in Maintenance Iteration 10. This set of milestones will be used to pin breaking changes to a deterministic series of possible obligation dates. | [Obligation Dates]() |
 | Scrollable diffs and examples | Added previous and next buttons to support easy scrolling between all diffs and non-normative examples. This feature is context dependent on the tab being viewed | N/A |
+| RateString description | [**Standards Maintenance #476**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/476): Changed RateString type to represent generic percentages. | [Common Field Types](../../#common-field-types)
 
 ## API End Points
 
 |Change|Description|Link|
 |------|-----------|----|
 | Energy schema | [**Standards Maintenance #457**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/457) Made EnergyServicePointDetail.meters.registers.registerSuffix field optional | [Energy Schema](../../#energy-apis) |
-| Energy schema | [**Standards Maintenance #476**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/476) <ul><li>Updated EnergyConcession model to allow representation of concessions that are calculated based on variable parameters.</li> <li>Changed RateString type to represent generic percentages.</li></ul> | [Energy Schema](../../#energy-apis) |
+| Energy schema | [**Standards Maintenance #476**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/476): Updated EnergyConcession model to allow representation of concessions that are calculated based on variable parameters | [Energy Schema](../../#energy-apis) |
 
 ## Information Security Profile
 
