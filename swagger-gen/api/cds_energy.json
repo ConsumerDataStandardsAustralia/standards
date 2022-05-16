@@ -1308,6 +1308,13 @@
                             "x-cds-type": "AmountString",
                             "description": "The amount of access charge for the tariff period, in dollars per day exclusive of GST."
                         },
+                        "timeZone": {
+                            "type": "string",
+                            "description": "Specifies the charge specific time zone for calculation of the time of use thresholds. If absent, timezone defined in EnergyPlanContract is assumed if provided.",
+                            "enum": ["LOCAL",
+                                "AEST"
+                            ]
+                        },
                         "rateBlockUType": {
                             "type": "string",
                             "description": "Specifies the type of rate applicable to this tariff period",

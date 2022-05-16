@@ -19,6 +19,7 @@ This release addresses the following change requests raised on [Standards Mainte
 
 - [Standards Maintenance Issue 503: Fix documentation defect for CDR Arrangement JWT method](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/503)
 - [Standards Maintenance Issue 504: Correct Data Language for Contact Details (profile scope and individual claims)](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/504)
+- [Standards Maintenance Issue 439: Review Pricing Model & Time Zone attributes within Account Detail Payload](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/439)
 
 ### Decision Proposals
 
@@ -37,7 +38,7 @@ This release addresses the following Decision Proposals published on [Standards]
 
 |Change|Description|Link|
 |------|-----------|----|
-
+| Energy schema | [**Standards Maintenance #439**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/439) Added timezone field to EnergyPlanTariffPeriod | [Energy Schema](../../#energy-apis) |
 
 ## Information Security Profile
 
