@@ -1,3 +1,5 @@
+//= require ../lib/_jquery
+
 ;(function () {
   'use strict';
 
