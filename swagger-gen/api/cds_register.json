@@ -185,7 +185,6 @@
         },
         "x-version": "2",
         "x-scopes": [
-          "cdr-register:bank:read",
           "cdr-register:read"
         ]
       }
@@ -341,7 +340,6 @@
         },
         "x-version": "3",
         "x-scopes": [
-          "cdr-register:bank:read",
           "cdr-register:read"
         ]
       }
