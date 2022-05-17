@@ -22,6 +22,7 @@ This release addresses the following change requests raised on [Standards Mainte
 - [Standards Maintenance Issue 438: Representing adjustment transactions within the Billing Payload for C&I customers](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/438)
 - [Standards Maintenance Issue 457: Energy - Get Service Point Detail register suffix should be optional](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/457)
 - [Standards Maintenance Issue 482: JWT signing non-normative examples use unsupported signing algorithm)](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/482)
+- [Standards Maintenance Issue 453: Consider an upper bound on trusting entity statuses when they go missing](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/453)
 
 ### Decision Proposals
 
@@ -52,6 +53,7 @@ This release addresses the following Decision Proposals published on [Standards]
 | CDR Arrangement Revocation End Point | [Standards Maintenance Issue 503](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/503): Corrected the documentation to include CDR Arrangement Form Parameter and CDR Arrangement JWT methods. Previous versions did not include this documentation correctly. | [CDR Arrangement Revocation End Point](../../#cdr-arrangement-revocation-end-point)
 | Self-signed JWT Client Authentication non-normative example | [**Standards Maintenance #482**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/482): Updated self-signed JWT client authentication non-normative example `alg` field from HS256 to PS256 | [Client Authentication](../../index.html#client-authentication) |
 | CDR Arrangement Revocation End Point non-normative example | [**Standards Maintenance #482**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/482): Updated data recipient hosted CDR Arrangement Revocation End Point non-normative example `alg` field from HS256 to PS256 | [Security Endpoints](../../index.html#security-endpoints) |
+| Data Holder Responsibilities | [**Standards Maintenance #453**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/453): Added clarification that when statuses are not received or recognised from the CDR Register, the ACCC can inform Data Holders of statuses to trust using an alternative mechanism. There is **no** upper bound for how long previous status values should remain trusted. | [Data Holder Responsibilities](../../index.html#participant-statuses) |
 
 ## Consumer Experience
 
