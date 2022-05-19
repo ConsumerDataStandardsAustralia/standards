@@ -40,6 +40,11 @@ Scope Name | Scope ID |Description
 **Detailed Customer Data** | common:customer.detail:read | The scope would allow the third party to access more detailed information about the customer.  Includes the data available with the Basic Customer Data scope plus contact details.<br/><br/>Includes basic data plus phone, email and address information.
 
 ## Admin &amp; Registration
+
+```diff
++ Added endpoint versions that cdr-register:bank:read and cdr-register:read apply to.
+```
+
 The following scopes are used for administrative interactions.  These scopes MUST never be included in the same access token as a CDR Data scope.
 
 
