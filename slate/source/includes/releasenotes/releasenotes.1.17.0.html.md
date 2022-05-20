@@ -19,10 +19,13 @@ This release addresses the following change requests raised on [Standards Mainte
 
 - [Standards Maintenance Issue 503: Fix documentation defect for CDR Arrangement JWT method](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/503)
 - [Standards Maintenance Issue 504: Correct Data Language for Contact Details (profile scope and individual claims)](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/504)
+- [Standards Maintenance Issue 501: Register API x-v headers moving to mandatory impacts compatibility with older versions of these APIs](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/501)
 - [Standards Maintenance Issue 438: Representing adjustment transactions within the Billing Payload for C&I customers](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/438)
 - [Standards Maintenance Issue 457: Energy - Get Service Point Detail register suffix should be optional](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/457)
 - [Standards Maintenance Issue 482: JWT signing non-normative examples use unsupported signing algorithm)](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/482)
 - [Standards Maintenance Issue 476: Modify Energy concessions structure to allow non-fixed (e.g. daily, monthly etc.) concessions](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/476)
+- [Standards Maintenance Issue 488: Data holder behaviour clarification required when receiving registrations with unsupported authorisation scopes](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/488)
+- [Standards Maintenance Issue 465: Confirm Register API 2022 release dates](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/465)
 
 ### Decision Proposals
 
@@ -40,11 +43,13 @@ This release addresses the following Decision Proposals published on [Standards]
 | Obligation Dates Table | A series of fixed obligation milestones were agreed in Maintenance Iteration 10. This set of milestones will be used to pin breaking changes to a deterministic series of possible obligation dates. | [Obligation Dates]() |
 | Scrollable diffs and examples | Added previous and next buttons to support easy scrolling between all diffs and non-normative examples. This feature is context dependent on the tab being viewed | N/A |
 | RateString description | [**Standards Maintenance #476**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/476): Changed RateString type to represent generic percentages. | [Common Field Types](../../#common-field-types)
+| Introduction | [**Standards Maintenance #465**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/465) Moved Register FDOs to the Register dependency schedule to differentiate Register delivery from Participant future dated obligations. </br> Register API versions now have dependency dates of **15th November 2022**, aligned to Energy | [Register Dependencies Schedule](../../#register-dependencies-schedule) |
 
 ## API End Points
 
 |Change|Description|Link|
 |------|-----------|----|
+| Register APIs | [**Standards Maintenance #501**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/501): `x-v` header requirements for versioned Register APIs moved from mandatory to optional | [Register APIs](../../index.html#register-apis) | 
 | Energy schema | [**Standards Maintenance #457**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/457) Made EnergyServicePointDetail.meters.registers.registerSuffix field optional | [Energy Schema](../../#energy-apis) |
 | Energy schema | [**Standards Maintenance #476**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/476): Updated EnergyConcession model to allow representation of concessions that are calculated based on variable parameters | [Energy Schema](../../#energy-apis) |
 
@@ -55,6 +60,7 @@ This release addresses the following Decision Proposals published on [Standards]
 | CDR Arrangement Revocation End Point | [Standards Maintenance Issue 503](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/503): Corrected the documentation to include CDR Arrangement Form Parameter and CDR Arrangement JWT methods. Previous versions did not include this documentation correctly. | [CDR Arrangement Revocation End Point](../../#cdr-arrangement-revocation-end-point)
 | Self-signed JWT Client Authentication non-normative example | [**Standards Maintenance #482**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/482): Updated self-signed JWT client authentication non-normative example `alg` field from HS256 to PS256 | [Client Authentication](../../index.html#client-authentication) |
 | CDR Arrangement Revocation End Point non-normative example | [**Standards Maintenance #482**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/482): Updated data recipient hosted CDR Arrangement Revocation End Point non-normative example `alg` field from HS256 to PS256 | [Security Endpoints](../../index.html#security-endpoints) |
+| Registration Validation | [**Standards Maintenance #488**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/488): Added requirement for data holders to ignore unsupported authorisation scopes | [Registration Validation](../../index.html#registration-validation) |
 
 ## Consumer Experience
 

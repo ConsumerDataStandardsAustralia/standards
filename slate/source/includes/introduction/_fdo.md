@@ -1,5 +1,11 @@
 ## Future Dated Obligations
 
+```diff
++ Added Registration Validation obligation for November 15th 2022
+
+- Moved Register FDOs to the Register dependency schedule to differentiate Register delivery from Participant future dated obligations
+```
+
 The standards, as published from time to time, may include specific statements indicating that a specific section of the standards will not take effect until a future date or may cease to have effect on some future date.
 
 The table below highlights these areas of the standards.
@@ -23,15 +29,10 @@ The table below highlights these areas of the standards.
 |[Self-Signed JWT Client Authentication](#self-signed-jwt-client-authentication) | Until July 31st 2022, Data Recipients MUST accept the [Resource Path](#uri-resource-path) for the endpoint and the ``<RecipientBaseURI>`` as a valid audience value. From July 31st 2022, Data Holders MUST use an audience value matching the Resource Path for the endpoint and the Data Recipient MUST verify the audience matches the Resource Path for the endpoint. | July 31st 2022 |
 |[Get Payees V1](#get-payees)|Data holders may obsolete version 1 of this end point from August 31st 2022.  Data recipients must upgrade their implementations to use version 2 by this time|August 31st 2022|
 |[Get Payee Detail V1](#get-payee-detail)|Data holders may obsolete version 1 of this end point from August 31st 2022.  Data recipients must upgrade their implementations to use version 2 by this time|August 31st 2022|
-|[Get Data Holder Brands V2](#get-data-holder-brands)&Dagger;|CDR Register must introduce version 2 of this end point by August 30th 2022&dagger;.  Data recipients may upgrade their implementations to use this version from this time|August 30th 2022&dagger;|
-|[Get Software Statement Assertion (SSA) V3](#get-software-statement-assertion-ssa)|CDR Register must introduce version 3 of this end point by August 30th 2022&dagger;.  Data recipients may upgrade their implementations to use this version from this time|August 30th 2022&dagger;|
-|[Get Software Products Statuses V2](#get-software-products-statuses)|CDR Register must introduce version 2 of this end point by August 30th 2022&dagger;.  Data holders may upgrade their implementations to use this version from this time|August 30th 2022&dagger;|
-|[Get Data Recipient Statuses V2](#get-data-recipients-statuses)|CDR Register must introduce version 2 of this end point by August 30th 2022&dagger;.  Data holders may upgrade their implementations to use this version from this time|August 30th 2022&dagger;|
-|[Get Data Recipients V3](#get-data-recipients)|CDR Register must introduce version 3 of this end point by August 30th 2022&dagger;.  Data holders may upgrade their implementations to use this version from this time|August 30th 2022&dagger;|
-|[Get Data Holder Statuses V1](#get-data-holder-statuses)|CDR Register must introduce version 3 of this end point by August 30th 2022&dagger;|August 30th 2022&dagger;|
 |[Information Security profile](#security-profile) | FAPI 1.0 adoption is introduced across three phases.<br/><strong>Phase 2: FAPI 1.0 Final (Baseline & Advanced)</strong> includes, amongst other changes:<ul><li>Enforces additional requirements for authorisation code, token and request object use</li><li>Enforces PAR-only authorisation request data submission</li><li>Refresh token cycling is not permitted</li><li>Data Holders and Data Recipients MUST support FAPI 1.0 Final including **[[RFC9126]](#nref-RFC9126)**, **[[RFC7636]](#nref-RFC7636)** and **[[JARM]](#nref-JARM)**</li><li>Data Holders SHOULD support of Authorization Code Flow in conjunction with Hybrid Flow</li></ul> | September 16th 2022 |
 |[Get Metrics V3](#get-metrics)|Version 3 of this end point must be made available by affected data holders by October 1st 2022|October 1st 2022|
 |[Standard Error Codes](#error-codes) | Data Holders MAY retire application-specific error codes in favour of standard error codes from November 1st 2022 | November 1st 2022 |
+|[Registration Validation](#registration-validation) | Data Holders **MUST** ignore unsupported authorisation scopes presented in the SSA for the creation and update of client registrations from November 15th 2022 | November 15th 2022 |
 |[Get Account Detail V2](#get-account-detail)|Version 2 of this end point must be made available by affected data holders by November 30th 2022|November 30th 2022|
 |[Get Customer Detail V2](#get-customer-detail)|Version 2 of this end point must be made available by affected data holders by November 30th 2022|November 30th 2022|
 |[Get Product Detail V4](#get-product-detail)|Version 4 of this end point must be made available by affected data holders by November 30th 2022|November 30th 2022|
@@ -41,6 +42,3 @@ The table below highlights these areas of the standards.
 |[Get Customer Detail V1](#get-customer-detail)|Data holders may obsolete version 1 of this end point from February 28th 2023.  Data recipients must upgrade their implementations to use version 2 by this time|February 28th 2023|
 |[Information Security profile](#security-profile) | FAPI 1.0 adoption is introduced across three phases.<br/><strong>Phase 3: Retire Hybrid Flow</strong> includes, amongst other changes:<ul><li>Data Holders MUST support Authorization Code Flow</li><li>Data Holders MAY retire Hybrid Flow</li></ul> | April 7th 2023 |
 
-**&dagger;NOTE:** Further consultation required with the ACCC to confirm this obligation date
-
-**&Dagger;NOTE:** Get Data Holder Brands V2 definition is still subject to change
