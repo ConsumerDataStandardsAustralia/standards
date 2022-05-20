@@ -13,8 +13,25 @@ This specification defines the APIs for Data Holders exposing Energy endpoints.
 
 ```diff
 
-* The `EnergyPlanSolarFeedInTariff.timeVaryingTariffs.timeVariations.days` field has 
-  been made mandatory 
+The `EnergyPlanSolarFeedInTariff.timeVaryingTariffs.timeVariations.days` field has been made mandatory 
+
+The following objects were added to EnergyBillingOtherTransaction model
++ calculationFactors
++ adjustments
+
+The `EnergyServicePointDetail.meters.registers.registerSuffix` field has been made optional
+
+The following changes were made to EnergyConcession model
+* Made additionalInfo field conditional
++ type
++ discountFrequency
++ amount
++ percentage
++ appliedTo
+- dailyDiscount
+- monthlyDiscount
+- yearlyDiscount
+- percentageDiscount
 ```
 
 <%= partial "includes/cds_energy.md" %>

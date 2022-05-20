@@ -220,7 +220,7 @@ Obsolete versions: [v1](includes/obsolete/get-data-holder-brands-v1.html)
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |industry|path|string|mandatory|The industry the participant is retrieving data for (Banking, etc)|
-|Authorization|header|string|mandatory|An Authorisation Token as per [RFC6750](https://tools.ietf.org/html/rfc6750).|
+|Authorization|header|string|mandatory|An Authorisation Token as per **[[RFC6750]](#nref-RFC6750)**.|
 |x-v|header|string|mandatory|The version of the API end point requested by the client. Must be set to a positive integer.|
 |x-min-v|header|string|optional|The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided.|
 |updated-since|query|string(date-time)|optional|query filter returns results updated since the specified date-time|
@@ -295,8 +295,6 @@ Obsolete versions: [v1](includes/obsolete/get-data-holder-brands-v1.html)
   }
 }
 ```
-
-> 400 Response
 
 <h3 id="get-data-holder-brands-responses">Responses</h3>
 
@@ -381,7 +379,7 @@ Obsolete versions: [v2](includes/obsolete/get-software-statement-assertion-v2.ht
 |x-min-v|header|string|optional|The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided.|
 |dataRecipientBrandId|path|string|mandatory|Unique id for the Accredited Data Recipient Brand that the Software Product is associated with in the CDR Register|
 |softwareProductId|path|string|mandatory|Unique id for the Accredited Data Recipient Software Product in the CDR Register|
-|Authorization|header|string|mandatory|An Authorisation Token as per [RFC6750](https://tools.ietf.org/html/rfc6750).|
+|Authorization|header|string|mandatory|An Authorisation Token as per **[[RFC6750]](#nref-RFC6750)**.|
 
 #### Enumerated Values
 
@@ -399,8 +397,6 @@ Obsolete versions: [v2](includes/obsolete/get-software-statement-assertion-v2.ht
 ```json
 "string"
 ```
-
-> 400 Response
 
 <h3 id="get-software-statement-assertion-(ssa)-responses">Responses</h3>
 
@@ -514,8 +510,6 @@ Endpoint used by participants to discover the statuses for Data Holders from the
 }
 ```
 
-> 400 Response
-
 <h3 id="get-data-holder-statuses-responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
@@ -625,8 +619,6 @@ Obsolete versions: [v1](includes/obsolete/get-software-product-statuses-v1.html)
 }
 ```
 
-> 400 Response
-
 <h3 id="get-software-products-statuses-responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
@@ -735,8 +727,6 @@ Obsolete versions: [v1](includes/obsolete/get-data-recipient-statuses-v1.html)
   "meta": {}
 }
 ```
-
-> 400 Response
 
 <h3 id="get-data-recipients-statuses-responses">Responses</h3>
 
@@ -869,8 +859,6 @@ Obsolete versions: [v2](includes/obsolete/get-data-recipients-v2.html)
 }
 ```
 
-> 400 Response
-
 <h3 id="get-data-recipients-responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
@@ -946,18 +934,18 @@ This operation does not require authentication
 |Name|Type|Required|Description|
 |---|---|---|---|
 |issuer|string|mandatory|URL using the https scheme with no query or fragment component that the CDR Register asserts as its Issuer Identifier|
-|jwks_uri|string|mandatory|URL of the CDR Register's JSON Web Key Set [JWK] document. This contains the signing key(s) used to validate access tokens issued from the CDR Register. Note that this differs from the JWKS endpoint used to validate SSAs and CDR Register client authentication|
+|jwks_uri|string|mandatory|URL of the CDR Register's JSON Web Key Set **[[JWK]](#nref-JWK)** document. This contains the signing key(s) used to validate access tokens issued from the CDR Register. Note that this differs from the JWKS endpoint used to validate SSAs and CDR Register client authentication|
 |token_endpoint|string|mandatory|URL of the CDR Register's OAuth 2.0 Token Endpoint|
 |claims_supported|[string]|mandatory|JSON array containing a list of the Claim Names of the Claims that the CDR Register supplies values for|
 |id_token_signing_alg_values_supported|[string]|mandatory|JSON array containing a list of the JWS signing algorithms (alg values) supported by the CDR Register for the ID Token to encode the Claims in a JWT. Given the CDR Register does not issue ID tokens, this field can be safely ignored|
 |subject_types_supported|[string]|mandatory|JSON array containing a list of the Subject Identifier types that the CDR Register supports. Given the CDR Register does not issue ID tokens, this field can be safely ignored|
-|code_challenge_methods_supported|[string]|mandatory|JSON array containing a list of Proof Key for Code Exchange (PKCE) [RFC7636] code challenge methods supported by this authorization server. Given the CDR Register does not support PKCE, this field can be safely ignored|
-|scopes_supported|[string]|mandatory|JSON array containing a list of the OAuth 2.0 [RFC6749] scope values that the CDR Register supports|
+|code_challenge_methods_supported|[string]|mandatory|JSON array containing a list of Proof Key for Code Exchange (PKCE) **[[RFC7636]](#nref-RFC7636)** code challenge methods supported by this authorization server. Given the CDR Register does not support PKCE, this field can be safely ignored|
+|scopes_supported|[string]|mandatory|JSON array containing a list of the OAuth 2.0 **[[RFC6749]](#nref-RFC6749)** scope values that the CDR Register supports|
 |response_types_supported|[string]|mandatory|JSON array containing a list of the OAuth 2.0 response_type values that the CDR Registrer supports|
 |grant_types_supported|[string]|mandatory|JSON array containing a list of the OAuth 2.0 Grant Type values that the CDR Register supports|
 |token_endpoint_auth_methods_supported|[string]|mandatory|JSON array containing a list of Client Authentication methods supported by this Token Endpoint|
 |tls_client_certificate_bound_access_tokens|boolean|mandatory|Boolean value indicating server support for mutual TLS client certificate bound access tokens|
-|token_endpoint_auth_signing_alg_values_supported|[string]|mandatory|JSON array containing a list of the JWS signing algorithms (alg values) supported by the token endpoint for the signature on the JWT [JWT] used to authenticate the client at the token endpoint for the \"private_key_jwt\" authentication method|
+|token_endpoint_auth_signing_alg_values_supported|[string]|mandatory|JSON array containing a list of the JWS signing algorithms (alg values) supported by the token endpoint for the signature on the JWT **[[JWT]](#nref-JWT)** used to authenticate the client at the token endpoint for the \"private_key_jwt\" authentication method|
 
 <h3 class="schema-toc" id="tocSresponsejwks">ResponseJWKS</h3>
 
@@ -1155,6 +1143,9 @@ This operation does not require authentication
 
 |Property|Value|
 |---|---|
+|industries|banking|
+|industries|energy|
+|industries|telco|
 |status|ACTIVE|
 |status|INACTIVE|
 |status|REMOVED|
@@ -1549,7 +1540,7 @@ This operation does not require authentication
 |abn|string|optional|Australian Business Number for the organisation|
 |acn|string|optional|Australian Company Number for the organisation|
 |arbn|string|optional|Australian Registered Body Number.  ARBNs are issued to registrable Australian bodies and foreign companies|
-|anzsicDivision|string|optional|ANZSIC division of the organisation. [ANZSIC (2006)](http://www.abs.gov.au/anzsic)|
+|anzsicDivision|string|optional|ANZSIC division of the organisation. **[[ANZSIC-2006]](#iref-ANZSIC-2006)**|
 |organisationType|string|optional|Legal organisation type|
 |status|string|mandatory|none|
 
