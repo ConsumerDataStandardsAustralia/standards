@@ -92,7 +92,6 @@
             "name": "x-v",
             "in": "header",
             "description": "The version of the API end point requested by the client. Must be set to a positive integer.",
-            "required": true,
             "schema": {
               "type": "string"
             }
@@ -217,7 +216,6 @@
             "name": "x-v",
             "in": "header",
             "description": "The version of the API end point requested by the client. Must be set to a positive integer.",
-            "required": true,
             "schema": {
               "type": "string"
             }
@@ -372,7 +370,6 @@
             "name": "x-v",
             "in": "header",
             "description": "The version of the API end point requested by the client. Must be set to a positive integer.",
-            "required": true,
             "schema": {
               "type": "string"
             }
@@ -482,7 +479,6 @@
             "name": "x-v",
             "in": "header",
             "description": "The version of the API end point requested by the client. Must be set to a positive integer.",
-            "required": true,
             "schema": {
               "type": "string"
             }
@@ -592,7 +588,6 @@
             "name": "x-v",
             "in": "header",
             "description": "The version of the API end point requested by the client. Must be set to a positive integer.",
-            "required": true,
             "schema": {
               "type": "string"
             }
@@ -702,7 +697,6 @@
             "name": "x-v",
             "in": "header",
             "description": "The version of the API end point requested by the client. Must be set to a positive integer.",
-            "required": true,
             "schema": {
               "type": "string"
             }
@@ -1687,7 +1681,6 @@
         "name": "x-v",
         "in": "header",
         "description": "The version of the API end point requested by the client. Must be set to a positive integer.",
-        "required": true,
         "schema": {
           "type": "string"
         }
