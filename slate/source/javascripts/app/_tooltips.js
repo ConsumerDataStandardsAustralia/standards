@@ -1,3 +1,5 @@
+//= require ../lib/_jquery
+
 ;(function () {
   'use strict';
 
@@ -5,7 +7,6 @@
 
   function tooltips($elements) {
     $elements.each(function() {
-//    $('.ref-link.tooltip').each(function() {
       $(this).addClass('ref-link').addClass('tooltip');
       var ref = $(this).attr('href');
       if (ref != 'undefined') {

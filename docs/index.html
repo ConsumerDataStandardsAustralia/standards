@@ -294,7 +294,7 @@
                         <a href="#data-language-standards-common" class="toc-h2 toc-link" data-title="Data Language Standards: Common">Data Language Standards: Common</a>
                       </li>
                       <li>
-                        <a href="#profile-scope" class="toc-h2 toc-link" data-title="Profile Scope">Profile Scope</a>
+                        <a href="#profile-scope-and-standard-claims" class="toc-h2 toc-link" data-title="Profile Scope and Standard Claims">Profile Scope and Standard Claims</a>
                       </li>
                       <li>
                         <a href="#banking-language" class="toc-h2 toc-link" data-title="Banking Language">Banking Language</a>
@@ -1346,9 +1346,7 @@
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='introduction'>Introduction</h1>
-<pre class="highlight diff tab-diff"><code>The Version Delta tab can be used to see in context changes between
-this version of the standards and the immediately previous version
-of the standards.
+<pre class="highlight diff tab-diff"><code>The Version Delta tab can be used to see in context changes between this version of the standards and the immediately previous version of the standards.
 
 This text is an example of a new addition to the standards:
 <span class="gi">+ New text added here
@@ -1356,9 +1354,7 @@ This text is an example of a new addition to the standards:
 This text is an example of text removed from the standards:
 <span class="gd">- Old text removed
 </span>
-Note: changes to request and response payloads are listed at the
-beginning of the relevant API section due to the documentation
-being auto generated from OpenAPI specification files.
+Note: changes to request and response payloads are listed at the beginning of the relevant API section due to the documentation being auto generated from OpenAPI specification files.
 </code></pre>
 
 <p>These standards have been developed as part of the Australian Government&#39;s introduction of the <a href="https://www.accc.gov.au/focus-areas/consumer-data-right" title="ACCC Consumer Data Right webpage">Consumer Data Right</a> legislation to give Australians greater control over their data.</p>
@@ -1374,14 +1370,16 @@ being auto generated from OpenAPI specification files.
 <li>where the standards are specified as binding standards as required by the Consumer Data Right rules for the purposes of s56FA of the legislation, they apply as under contract between a data holder and an accredited data recipient.  The legal effect of binding standards as between data holders and accredited data recipients is fully set out in s56FD and s56FE of the legislation.</li>
 </ul>
 
-<pre class="highlight diff tab-diff"><code>Note that in v1.16.1 of the standards tooltips have been added whenever
-a normative, or informative, reference is referred to in the standards
-</code></pre><h2 id='version'>Version</h2>
-<p>These standards represent version 1.16.1 of the high level standards.  See the <a href="#versioning">versioning section</a> for more information on how versions are managed in the standard.</p>
+<h2 id='version'>Version</h2>
+
+<p>These standards represent version 1.17.0 of the high level standards.  See the <a href="#versioning">versioning section</a> for more information on how versions are managed in the standard.</p>
+
 <h2 id='interpretation'>Interpretation</h2>
+
 <p>Note that, in these standards, the key words <strong>MUST</strong>, <strong>MUST NOT</strong>, <strong>REQUIRED</strong>, <strong>SHALL</strong>, <strong>SHALL NOT</strong>, <strong>SHOULD</strong>, <strong>SHOULD NOT</strong>, <strong>RECOMMENDED</strong>, <strong>MAY</strong>, and <strong>OPTIONAL</strong> are to be interpreted as described in <strong><a href="#nref-RFC2119">[RFC2119]</a></strong>.</p>
 
 <h2 id='future-dated-obligations'>Future Dated Obligations</h2>
+
 <p>The standards, as published from time to time, may include specific statements indicating that a specific section of the standards will not take effect until a future date or may cease to have effect on some future date.</p>
 
 <p>The table below highlights these areas of the standards.</p>
@@ -1570,10 +1568,10 @@ a normative, or informative, reference is referred to in the standards
 <p><strong>&Dagger;NOTE:</strong> Get Data Holder Brands V2 definition is still subject to change</p>
 
 <h2 id='endpoint-version-schedule'>Endpoint Version Schedule</h2>
+
 <p>A table-view of all endpoint versioning is available <a href='includes/endpoint-version-schedule/'>here</a>.</p>
 
-<h2 id='normative-references'>Normative References</h2><pre class="highlight diff tab-diff"><code>Added tooltip support for all inline references to normative and informative references. Tooltips will provide details to the title of the referenced document when users hover over the link with their mouse.
-</code></pre>
+<h2 id='normative-references'>Normative References</h2>
 
 <table><thead>
 <tr>
@@ -1939,14 +1937,12 @@ always align to current consumer preferences.</p>
 
 <p>A table-view of all endpoint versioning is available <a href='includes/endpoint-version-schedule/'>here</a>.</p>
 
-<pre class="highlight diff tab-diff"><code>Added link to the Endpoint Versioning Schedule:
-
-<span class="gi">+ A table-view of all endpoint versioning is available &lt;a href='includes/endpoint-version-schedule/'&gt;here&lt;/a&gt;.
-</span></code></pre>
 <h2 id='uri-structure'>URI Structure</h2>
+
 <blockquote>
 <p>Some example URIs that meet this standard are:  </p>
 </blockquote>
+
 <pre class="highlight plaintext"><code>1. https://www.bank.com.au/api/cds-au/v1/banking/accounts  
 2. https://www.bank.com.au/api/cds-au/v1/banking/accounts/abc123/transactions/?x=y#bar  
 3. https://www.bank.com.au/complex/uri/taxonomy/cds-au/v1/banking/products?page=2  
@@ -3454,33 +3450,49 @@ standards</li>
 
 <p><br/></p>
 
-<h2 id='profile-scope'>Profile Scope</h2>
-
-<p>In accordance with <strong>[OIDC]</strong> <a href="https://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims">section 5.4</a> and <a href="https://openid.net/specs/openid-connect-core-1_0.html#ClaimsParameter">section 5.5</a>, this language refers to the <strong>[OIDC]</strong> profile scope and request of individual claims for the authenticated End-User.</p>
+<h2 id='profile-scope-and-standard-claims'>Profile Scope and Standard Claims</h2><pre class="highlight diff tab-diff"><code>
+Removed ambiguous language for Contact Details data cluster data language Authorisation Scopes description:
+<span class="gd">- "OIDC Profile scope and/or"
+</span>
+Changed ambiguous language for Name data cluster data language Authorisation Scopes description:
+<span class="gd">- "OIDC Profile scope and/or one or more of these standard [OIDC] claims"
+</span><span class="gi">+ "OIDC Profile scope or one or more of these standard [OIDC] claims"
+</span>
+Table columns:
+<span class="gi">+ Added "Required" column to highlight which claims and OIDC scopes must be supported
+</span>
+Changed title of this section:
+<span class="gd">- "Profile Scope"
+</span><span class="gi">+ "Profile Scope and Standard Claims"
+</span>
+</code></pre>
+<p>In accordance with <strong><a href="#nref-OIDC">[OIDC]</a></strong> <a href="https://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims">section 5.4</a> and <a href="https://openid.net/specs/openid-connect-core-1_0.html#ClaimsParameter">section 5.5</a>, this language refers to the <strong><a href="#nref-OIDC">[OIDC]</a></strong> <code>profile</code> scope and request of individual claims for the authenticated End-User.</p>
 
 <table><thead>
 <tr>
 <th>Data cluster language</th>
 <th><div style="width:250px">Permission language</div></th>
 <th>Authorisation Scopes</th>
+<th>Required</th>
 </tr>
 </thead><tbody>
 <tr>
 <td><strong>Name</strong></td>
 <td>Full name and title(s)</td>
-<td><a href="https://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims">OIDC Profile scope</a> and/or one or more of these claims:<br/><code>name</code><br/><code>given_name</code><br/><code>family_name</code><br/><code>updated_at</code></td>
+<td><a href="https://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims">OIDC Profile scope</a> or one or more of these standard <strong><a href="#nref-OIDC">[OIDC]</a></strong> claims*:<br/><code>name</code><br/><code>given_name</code><br/><code>family_name</code><br/><code>updated_at</code><br/><br/>*See <a href="https://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims">5.4. Requesting Claims using Scope Values on the OIDC website</a> for more information.</td>
+<td>Required</td>
 </tr>
 <tr>
 <td><strong>Contact Details</strong></td>
 <td>Phone number;<br/>Email address;<br/>Mail address;</td>
-<td><a href="https://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims">OIDC Profile scope</a> and/or one or more of these claims:<br/><code>email</code><br/><code>email_verified</code><br/><code>phone_number</code><br/><code>phone_number_verified</code><br/><code>address</code></td>
+<td>One or more of these standard <strong><a href="#nref-OIDC">[OIDC]</a></strong> claims*:<br/><code>email</code><br/><code>email_verified</code><br/><code>phone_number</code><br/><code>phone_number_verified</code><br/><code>address</code><br/><br/>*See <a href="https://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims">5.4. Requesting Claims using Scope Values on the OIDC website</a> for more information.</td>
+<td>Optional</td>
 </tr>
 </tbody></table>
 
 <p><strong>Note:</strong> For non-individual consumers, claims available via the profile scope will only return the details of the authenticated End-User and not the organisation or non-individual consumer.</p>
 
 <p><br/></p>
-
 <h2 id='banking-language'>Banking Language</h2><h3 id='individual-consumer'>Individual Consumer</h3>
 <table><thead>
 <tr>
@@ -3589,9 +3601,7 @@ standards</li>
 </tbody></table>
 <h3 id='payees'>Payees</h3>
 <p>See below for the data language standards for the payees scope:</p>
-<pre class="highlight diff tab-diff"><code>Corrected the capitalisation of BPAY (from BPay) to reflect that
-organisation's branding guidelines
-</code></pre>
+
 <table><thead>
 <tr>
 <th>Data cluster language</th>
@@ -4470,7 +4480,7 @@ Authorization: Bearer eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNDU2In0.ey
 
 ## Decoded Bearer token JWT
 {
-   "alg":"HS256",
+   "alg":"PS256",
    "typ":"JWT",
    "kid":"12456"
 }
@@ -4482,6 +4492,7 @@ Authorization: Bearer eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNDU2In0.ey
    "exp":1516239322,
    "jti":"32358102-a44f-43cc-ad7c-42443d01507a"
 }
+</code></pre><pre class="highlight diff tab-diff"><code>Updated self-signed JWT client authentication non-normative example `alg` field from HS256 to PS256
 </code></pre>
 
 <p>Data Recipient Software Products and Data Holders supporting the self-signed JWT authentication of clients using a signed JWT <strong>MUST</strong> do so according to the following requirements:</p>
@@ -6451,19 +6462,33 @@ Content-Type: application/x-www-form-urlencoded
 
 <p>Data Holders and Data Recipient Software Products MUST implement a CDR Arrangement Revocation End Point that can be used to revoke an existing sharing arrangement.</p>
 
-<p><br/>
-<strong>CDR Arrangement Form Parameter method</strong></p>
+<p><br/></p>
+
+<pre class="highlight diff tab-diff"><code>
+Corrected documentation to include CDR Arrangement Form Parameter method and CDR Arrangement JWT method description. This was previously omitted.
+
+</code></pre>
+
+<p><strong>CDR Arrangement Form Parameter method</strong></p>
+
+<p>The request <strong>MUST</strong> include the following parameters using the <code>application/x-www-form-urlencoded</code> format in the HTTP request entity-body:</p>
+
+<ul>
+<li><code>cdr_arrangement_id</code>: The ID of the arrangement that the client wants to revoke.</li>
+</ul>
+
+<p><strong>CDR Arrangement JWT method</strong></p>
 
 <p>The request MUST include the following parameters using the <code>application/x-www-form-urlencoded</code> format in the HTTP request entity-body:</p>
 
 <ul>
-<li><code>cdr_arrangement_jwt</code>: A signed JWT that includes the <code>cdr_arrangement_id</code>.</li>
-</ul>
-
-<p>The <code>cdr_arrangement_jwt</code> MUST be a newly signed JWT with the following parameters in accordance with <strong><a href="#nref-JWT">[JWT]</a></strong>:</p>
+<li><code>cdr_arrangement_jwt</code>: A signed JWT that includes the <code>cdr_arrangement_id</code>.<br></li>
+<li><code>cdr_arrangement_jwt</code>: A newly signed JWT with the following parameters in accordance with <strong><a href="#nref-JWT">[JWT]</a></strong>:<br>
 
 <ul>
+<li>All parameters in accordance with Data Holders calling Data Recipients using <a href="https://consumerdatastandardsaustralia.github.io/standards/#self-signed-jwt-client-authentication">Self-Signed JWT Client Authentication</a>.</li>
 <li><code>cdr_arrangement_id</code>: The ID of the arrangement that the client wants to revoke.</li>
+</ul></li>
 </ul>
 
 <p><strong>Data Holder hosted endpoint</strong></p>
@@ -6514,12 +6539,13 @@ Authorization: Bearer eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNDU2In0.ey
 ## Decoded cdr_arrangement_jwt JWT
 {
   "typ": "JWT",
-  "alg": "HS256",
+  "alg": "PS256",
   "kid":"12456"
 }
 {
   "cdr_arrangement_id": "5a1bf696-ee03-408b-b315-97955415d1f0"
 }
+</code></pre><pre class="highlight diff tab-diff"><code>Updated Data Recipient end point non-normative example `alg` field from HS256 to PS256
 </code></pre>
 
 <p><strong>Data Recipient hosted endpoint</strong></p>
@@ -6842,11 +6868,7 @@ Host: cdr.register
 <tr><td><a href='./includes/swagger/cds_dcr.json'>DCR OpenAPI Specification (JSON)</a></td></tr>
 <tr><td><a href='./includes/swagger/cds_dcr.yaml'>DCR OpenAPI Specification (YAML)</a></td></tr>
 </table></p>
-<pre class="highlight diff tab-diff"><code>Below are the changes to the DCR APIs section of the
-standards.
 
-Upgraded swagger to OpenAPI Specification 3
-</code></pre>
 <h2 id='register-data-recipient-oauth-client'>Register Data Recipient oAuth Client</h2>
 
 <p><a id="opIdPostDataRecipientRegistration"></a></p>
@@ -7067,7 +7089,7 @@ This operation does not require authentication
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>An Authorisation Token as per <a href="https://tools.ietf.org/html/rfc6750">RFC6750</a></td>
+<td>An Authorisation Token as per <strong><a href="#nref-RFC6750">[RFC6750]</a></strong></td>
 </tr>
 </tbody></table>
 
@@ -7164,7 +7186,7 @@ This operation does not require authentication
 <td>WWW-Authenticate</td>
 <td>string</td>
 <td></td>
-<td>The Response Header Field as per <a href="https://tools.ietf.org/html/rfc6750">RFC6750</a></td>
+<td>The Response Header Field as per <strong><a href="#nref-RFC6750">[RFC6750]</a></strong></td>
 </tr>
 </tbody></table>
 
@@ -7251,7 +7273,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>An Authorisation Token as per <a href="https://tools.ietf.org/html/rfc6750">RFC6750</a></td>
+<td>An Authorisation Token as per <strong><a href="#nref-RFC6750">[RFC6750]</a></strong></td>
 </tr>
 <tr>
 <td>body</td>
@@ -7361,7 +7383,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>WWW-Authenticate</td>
 <td>string</td>
 <td></td>
-<td>The Response Header Field as per <a href="https://tools.ietf.org/html/rfc6750">RFC6750</a></td>
+<td>The Response Header Field as per <strong><a href="#nref-RFC6750">[RFC6750]</a></strong></td>
 </tr>
 </tbody></table>
 
@@ -7441,7 +7463,7 @@ Authorization: string
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>An Authorisation Token as per <a href="https://tools.ietf.org/html/rfc6750">RFC6750</a></td>
+<td>An Authorisation Token as per <strong><a href="#nref-RFC6750">[RFC6750]</a></strong></td>
 </tr>
 </tbody></table>
 
@@ -7497,7 +7519,7 @@ Authorization: string
 <td>WWW-Authenticate</td>
 <td>string</td>
 <td></td>
-<td>The Response Header Field as per <a href="https://tools.ietf.org/html/rfc6750">RFC6750</a></td>
+<td>The Response Header Field as per <strong><a href="#nref-RFC6750">[RFC6750]</a></strong></td>
 </tr>
 </tbody></table>
 
@@ -7679,7 +7701,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>jwks_uri</td>
 <td>string</td>
 <td>mandatory</td>
-<td>URL string referencing the client JSON Web Key (JWK) Set [RFC7517] document, which contains the client public keys</td>
+<td>URL string referencing the client JSON Web Key (JWK) Set <strong><a href="#nref-RFC7517">[RFC7517]</a></strong> document, which contains the client public keys</td>
 </tr>
 <tr>
 <td>revocation_uri</td>
@@ -7790,6 +7812,22 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>token_endpoint_auth_signing_alg</td>
 <td>ES256</td>
+</tr>
+<tr>
+<td>grant_types</td>
+<td>client_credentials</td>
+</tr>
+<tr>
+<td>grant_types</td>
+<td>authorization_code</td>
+</tr>
+<tr>
+<td>grant_types</td>
+<td>refresh_token</td>
+</tr>
+<tr>
+<td>response_types</td>
+<td>code id_token</td>
 </tr>
 <tr>
 <td>application_type</td>
@@ -8091,11 +8129,7 @@ These endpoints are exposed by the Register and consumed by Data Holders and Dat
 <td>https://secure.api.cdr.gov.au</td>
 </tr>
 </tbody></table>
-<pre class="highlight diff tab-diff"><code>Below are the changes to the Register APIs section of the
-standards.
 
-Upgraded swagger to OpenAPI Specification 3
-</code></pre>
 <h2 id='get-openid-provider-config'>Get OpenId Provider Config</h2>
 
 <p><a id="opIdGetOpenIdProviderConfig"></a></p>
@@ -8375,7 +8409,7 @@ x-min-v: string
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>An Authorisation Token as per <a href="https://tools.ietf.org/html/rfc6750">RFC6750</a>.</td>
+<td>An Authorisation Token as per <strong><a href="#nref-RFC6750">[RFC6750]</a></strong>.</td>
 </tr>
 <tr>
 <td>x-v</td>
@@ -8500,10 +8534,6 @@ x-min-v: string
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-
-<blockquote>
-<p>400 Response</p>
-</blockquote>
 
 <h3 id="get-data-holder-brands-responses">Responses</h3>
 
@@ -8673,7 +8703,7 @@ Authorization: string
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>An Authorisation Token as per <a href="https://tools.ietf.org/html/rfc6750">RFC6750</a>.</td>
+<td>An Authorisation Token as per <strong><a href="#nref-RFC6750">[RFC6750]</a></strong>.</td>
 </tr>
 </tbody></table>
 
@@ -8711,10 +8741,6 @@ Authorization: string
 
 <pre class="highlight json tab-json"><code><span class="s2">"string"</span><span class="w">
 </span></code></pre>
-
-<blockquote>
-<p>400 Response</p>
-</blockquote>
 
 <h3 id="get-software-statement-assertion-(ssa)-responses">Responses</h3>
 
@@ -8936,10 +8962,6 @@ If-None-Match: string
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<blockquote>
-<p>400 Response</p>
-</blockquote>
-
 <h3 id="get-data-holder-statuses-responses">Responses</h3>
 
 <table><thead>
@@ -9156,10 +9178,6 @@ If-None-Match: string
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<blockquote>
-<p>400 Response</p>
-</blockquote>
-
 <h3 id="get-software-products-statuses-responses">Responses</h3>
 
 <table><thead>
@@ -9375,10 +9393,6 @@ If-None-Match: string
   </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-
-<blockquote>
-<p>400 Response</p>
-</blockquote>
 
 <h3 id="get-data-recipients-statuses-responses">Responses</h3>
 
@@ -9618,10 +9632,6 @@ If-None-Match: string
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<blockquote>
-<p>400 Response</p>
-</blockquote>
-
 <h3 id="get-data-recipients-responses">Responses</h3>
 
 <table><thead>
@@ -9762,7 +9772,7 @@ This operation does not require authentication
 <td>jwks_uri</td>
 <td>string</td>
 <td>mandatory</td>
-<td>URL of the CDR Register&#39;s JSON Web Key Set [JWK] document. This contains the signing key(s) used to validate access tokens issued from the CDR Register. Note that this differs from the JWKS endpoint used to validate SSAs and CDR Register client authentication</td>
+<td>URL of the CDR Register&#39;s JSON Web Key Set <strong><a href="#nref-JWK">[JWK]</a></strong> document. This contains the signing key(s) used to validate access tokens issued from the CDR Register. Note that this differs from the JWKS endpoint used to validate SSAs and CDR Register client authentication</td>
 </tr>
 <tr>
 <td>token_endpoint</td>
@@ -9792,13 +9802,13 @@ This operation does not require authentication
 <td>code_challenge_methods_supported</td>
 <td>[string]</td>
 <td>mandatory</td>
-<td>JSON array containing a list of Proof Key for Code Exchange (PKCE) [RFC7636] code challenge methods supported by this authorization server. Given the CDR Register does not support PKCE, this field can be safely ignored</td>
+<td>JSON array containing a list of Proof Key for Code Exchange (PKCE) <strong><a href="#nref-RFC7636">[RFC7636]</a></strong> code challenge methods supported by this authorization server. Given the CDR Register does not support PKCE, this field can be safely ignored</td>
 </tr>
 <tr>
 <td>scopes_supported</td>
 <td>[string]</td>
 <td>mandatory</td>
-<td>JSON array containing a list of the OAuth 2.0 [RFC6749] scope values that the CDR Register supports</td>
+<td>JSON array containing a list of the OAuth 2.0 <strong><a href="#nref-RFC6749">[RFC6749]</a></strong> scope values that the CDR Register supports</td>
 </tr>
 <tr>
 <td>response_types_supported</td>
@@ -9828,7 +9838,7 @@ This operation does not require authentication
 <td>token_endpoint_auth_signing_alg_values_supported</td>
 <td>[string]</td>
 <td>mandatory</td>
-<td>JSON array containing a list of the JWS signing algorithms (alg values) supported by the token endpoint for the signature on the JWT [JWT] used to authenticate the client at the token endpoint for the \&quot;private_key_jwt\&quot; authentication method</td>
+<td>JSON array containing a list of the JWS signing algorithms (alg values) supported by the token endpoint for the signature on the JWT <strong><a href="#nref-JWT">[JWT]</a></strong> used to authenticate the client at the token endpoint for the \&quot;private_key_jwt\&quot; authentication method</td>
 </tr>
 </tbody></table>
 
@@ -10146,6 +10156,18 @@ This operation does not require authentication
 <th>Value</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>industries</td>
+<td>banking</td>
+</tr>
+<tr>
+<td>industries</td>
+<td>energy</td>
+</tr>
+<tr>
+<td>industries</td>
+<td>telco</td>
+</tr>
 <tr>
 <td>status</td>
 <td>ACTIVE</td>
@@ -10900,7 +10922,7 @@ This operation does not require authentication
 <td>anzsicDivision</td>
 <td>string</td>
 <td>optional</td>
-<td>ANZSIC division of the organisation. <a href="http://www.abs.gov.au/anzsic">ANZSIC (2006)</a></td>
+<td>ANZSIC division of the organisation. <strong><a href="#iref-ANZSIC-2006">[ANZSIC-2006]</a></strong></td>
 </tr>
 <tr>
 <td>organisationType</td>
@@ -11691,11 +11713,7 @@ This operation does not require authentication
 <tr><td><a href='./includes/swagger/cds_banking.json'>Banking OpenAPI Specification (JSON)</a></td></tr>
 <tr><td><a href='./includes/swagger/cds_banking.yaml'>Banking OpenAPI Specification (YAML)</a></td></tr>
 </table></p>
-<pre class="highlight diff tab-diff"><code>Below are the changes to the Banking APIs section of the
-standards.
 
-Upgraded swagger to OpenAPI Specification 3
-</code></pre>
 <h2 id='get-accounts'>Get Accounts</h2>
 
 <p><a id="opIdlistAccounts"></a></p>
@@ -24508,22 +24526,11 @@ This operation does not require authentication
 <tr><td><a href='./includes/swagger/cds_energy.json'>Energy OpenAPI Specification (JSON)</a></td></tr>
 <tr><td><a href='./includes/swagger/cds_energy.yaml'>Energy OpenAPI Specification (YAML)</a></td></tr>
 </table>
-<pre class="highlight diff tab-diff"><code>Below are the changes to the Banking APIs section of the
-standards.
-
-The following minor corrections have been made:
-
-* The `isTokenised` field has been corrected to be a boolean type
-
-* Fields of common type `positiveInteger` have been corrected to be of 'integer' type in OAS
-
-* The optional/mandatory status of meta objects has been aligned with standard practice for CDR
-
-* `x-fapi-iteraction-id` has been removed from the publi Tariff endpoints
-
-* Correct the bug where arrays of enums were not being listed with their enumeration values
-
-* Corrected the description of the controlledLoad flag to indicate that the field is a pure boolean flag
+<pre class="highlight diff tab-diff"><code>The following objects were added to EnergyBillingOtherTransaction model
+<span class="gi">+ calculationFactors
++ adjustments
+</span>
+The `EnergyServicePointDetail.meters.registers.registerSuffix` field has been made optional
 </code></pre>
 <h2 id='get-generic-plans'>Get Generic Plans</h2>
 
@@ -31093,7 +31100,19 @@ x-cds-client-headers: string
           </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ENVIRONMENTAL"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+          </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"calculationFactors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DLF"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="s2">"adjustments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">]</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="s2">"payment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -31434,7 +31453,19 @@ x-cds-client-headers: string
           </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ENVIRONMENTAL"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+          </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"calculationFactors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DLF"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="s2">"adjustments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">]</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="s2">"payment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -31802,7 +31833,19 @@ x-cds-client-headers: string
           </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ENVIRONMENTAL"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+          </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"calculationFactors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DLF"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="s2">"adjustments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">]</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="s2">"payment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -33808,7 +33851,19 @@ To perform this operation, you must be authenticated and authorised with the fol
           </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ENVIRONMENTAL"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+          </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"calculationFactors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DLF"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="s2">"adjustments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">]</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="s2">"payment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -37530,7 +37585,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>»»» registerSuffix</td>
 <td>string</td>
-<td>mandatory</td>
+<td>optional</td>
 <td>Register suffix of the meter register where the meter reads are obtained</td>
 </tr>
 <tr>
@@ -39976,7 +40031,19 @@ To perform this operation, you must be authenticated and authorised with the fol
     </span><span class="s2">&quot;endDate&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span><span class="w">
     </span><span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ENVIRONMENTAL&quot;</span><span class="p">,</span><span class="w">
     </span><span class="s2">&quot;amount&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span><span class="w">
-    </span><span class="s2">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="w">
+    </span><span class="s2">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;calculationFactors&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DLF&quot;</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">&quot;adjustments&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">&quot;amount&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">&quot;payment&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">&quot;amount&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span><span class="w">
@@ -40535,7 +40602,19 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="s2">&quot;endDate&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span><span class="w">
   </span><span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ENVIRONMENTAL&quot;</span><span class="p">,</span><span class="w">
   </span><span class="s2">&quot;amount&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span><span class="w">
-  </span><span class="s2">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="w">
+  </span><span class="s2">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="s2">&quot;calculationFactors&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DLF&quot;</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">&quot;adjustments&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">&quot;amount&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="s2">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w"></p>
 
 <p></span></code></pre><h3 id='properties-46'>Properties</h3>
@@ -40589,6 +40668,42 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>mandatory</td>
 <td>A free text description of the item</td>
 </tr>
+<tr>
+<td>calculationFactors</td>
+<td>[object]</td>
+<td>optional</td>
+<td>Additional calculation factors that inform the transaction</td>
+</tr>
+<tr>
+<td>» value</td>
+<td>number</td>
+<td>mandatory</td>
+<td>The value of the calculation factor</td>
+</tr>
+<tr>
+<td>» type</td>
+<td>string</td>
+<td>mandatory</td>
+<td>The type of the calculation factor</td>
+</tr>
+<tr>
+<td>adjustments</td>
+<td>[object]</td>
+<td>optional</td>
+<td>Optional array of adjustments arising for this transaction</td>
+</tr>
+<tr>
+<td>» amount</td>
+<td><a href="#common-field-types">AmountString</a></td>
+<td>mandatory</td>
+<td>The amount of the adjustment</td>
+</tr>
+<tr>
+<td>» description</td>
+<td>string</td>
+<td>mandatory</td>
+<td>A free text description of the adjustment</td>
+</tr>
 </tbody></table>
 <h4 id='enumerated-values-24'>Enumerated Values</h4>
 <table><thead>
@@ -40624,6 +40739,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>type</td>
 <td>OTHER</td>
+</tr>
+<tr>
+<td>type</td>
+<td>DLF</td>
+</tr>
+<tr>
+<td>type</td>
+<td>MLF</td>
 </tr>
 </tbody></table></p>
 
@@ -40822,11 +40945,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr><td><a href='./includes/swagger/cds_common.json'>Common OpenAPI Specification (JSON)</a></td></tr>
 <tr><td><a href='./includes/swagger/cds_common.yaml'>Common OpenAPI Specification (YAML)</a></td></tr>
 </table></p>
-<pre class="highlight diff tab-diff"><code>Below are the changes to the Common APIs section of the
-standards.
 
-Upgraded swagger to OpenAPI Specification 3
-</code></pre>
 <h2 id='get-customer'>Get Customer</h2>
 
 <p><a id="opIdgetCustomer"></a></p>
@@ -45392,16 +45511,8 @@ the Data Holder. In this scenario the retailer MUST call AEMO multiple times and
 <tr><td><a href='./includes/swagger/cds_energy_sdh.json'>Energy Secondary Data Holder OpenAPI Specification (JSON)</a></td></tr>
 <tr><td><a href='./includes/swagger/cds_energy_sdh.yaml'>Energy Secondary Data Holder OpenAPI Specification (YAML)</a></td></tr>
 </table>
-<pre class="highlight diff tab-diff"><code>This is a new section added to the standards to support implementation.
-
-It does not represent a change to the standards. The swagger included are
-based on the current energy swagger document with modifications aligned
-to the statements in the Shared Responsibility section of the standards
+<pre class="highlight diff tab-diff"><code>The `EnergyServicePointDetail.meters.registers.registerSuffix` field has been made optional 
 </code></pre>
-<p>Note that in the documentation of the Secondary Data Holder endpoints below it is indicated the no authentication is required.</p>
-
-<p>This should be understood to mean that there is no authentication documented in these standards.  The actual security requirements for invocation of the AEMO hosted endpoints will be defined by AEMO as staged in the <a href="#energy">Energy Shared Responsibility</a> section.</p>
-
 <h2 id='get-service-points-sr'>Get Service Points (SR)</h2>
 
 <p><a id="opIdlistServicePoints"></a></p>
@@ -48356,7 +48467,7 @@ This operation does not require authentication
 <tr>
 <td>»»» registerSuffix</td>
 <td>string</td>
-<td>mandatory</td>
+<td>optional</td>
 <td>Register suffix of the meter register where the meter reads are obtained</td>
 </tr>
 <tr>
@@ -49414,6 +49525,12 @@ This operation does not require authentication
 </tr>
 </thead><tbody>
 <tr>
+<td>TBD</td>
+<td>1.17.0</td>
+<td>Changes arising from Decision 237 (Maintenance Iteration 10)</td>
+<td>See <a href="includes/releasenotes/releasenotes.1.17.0.html">release notes</a> and <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/237">Decision 237</a> for details</td>
+</tr>
+<tr>
 <td>22/03/2022</td>
 <td>1.16.1</td>
 <td>Minor errata and documentation fixes.  Update of swagger files to OAS3</td>
@@ -49809,6 +49926,11 @@ This operation does not require authentication
 </tr>
 </thead><tbody>
 <tr>
+<td><a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.16.1/'>22/03/2022</a></td>
+<td>1.16.1</td>
+<td><a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.16.1/'>Minor errata and documentation fixes.  Update of swagger files to OAS3</a></td>
+</tr>
+<tr>
 <td><a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.16.0/'>04/02/2022</a></td>
 <td>1.16.0</td>
 <td><a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.16.0/'>Changes arising from Decision 222 (Insights and Trusted Adviser Disclosure Consents CX Standards)</a></td>
@@ -49938,9 +50060,13 @@ This operation does not require authentication
       </div>
       <div class="dark-box">
           <div class="lang-selector">
-                <a href="#" data-language-name="examples">Non-normative Examples</a>
-                <a href="#" data-language-name="diff">Version Delta</a>
+                <a href="#" class="tab-selector" data-language-name="examples">Non-normative Examples</a>
+                <a href="#" class="tab-selector" data-language-name="diff">Version Delta</a>
           </div>
+        <div id="diff-scroll-buttons" class="scroll-buttons">
+          <a href="#" id="scroll-prev" title="Previous" class="scroll-button previous round">&#8249;</a>
+          <a href="#" id="scroll-next" title="Next" class="scroll-button next round">&#8250;</a>
+        </div>
       </div>
     </div>
   </body>

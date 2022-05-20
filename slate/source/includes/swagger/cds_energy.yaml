@@ -2,7 +2,7 @@ openapi: 3.0.3
 info:
   description: Consumer Data Right end points and payloads for the Energy sector
   title: CDR Energy API
-  version: 1.16.1
+  version: 1.17.0
 servers:
 - url: /
 paths:
@@ -5818,10 +5818,20 @@ components:
               description: description
             otherCharges:
               amount: amount
+              adjustments:
+              - amount: amount
+                description: description
+              - amount: amount
+                description: description
               endDate: endDate
               servicePointId: servicePointId
               invoiceNumber: invoiceNumber
               description: description
+              calculationFactors:
+              - type: DLF
+                value: 6.027456183070403
+              - type: DLF
+                value: 6.027456183070403
               type: ENVIRONMENTAL
               startDate: startDate
             usage:
@@ -5879,10 +5889,20 @@ components:
               description: description
             otherCharges:
               amount: amount
+              adjustments:
+              - amount: amount
+                description: description
+              - amount: amount
+                description: description
               endDate: endDate
               servicePointId: servicePointId
               invoiceNumber: invoiceNumber
               description: description
+              calculationFactors:
+              - type: DLF
+                value: 6.027456183070403
+              - type: DLF
+                value: 6.027456183070403
               type: ENVIRONMENTAL
               startDate: startDate
             usage:
@@ -8382,10 +8402,20 @@ components:
           description: description
         otherCharges:
           amount: amount
+          adjustments:
+          - amount: amount
+            description: description
+          - amount: amount
+            description: description
           endDate: endDate
           servicePointId: servicePointId
           invoiceNumber: invoiceNumber
           description: description
+          calculationFactors:
+          - type: DLF
+            value: 6.027456183070403
+          - type: DLF
+            value: 6.027456183070403
           type: ENVIRONMENTAL
           startDate: startDate
         usage:
@@ -8690,10 +8720,20 @@ components:
     EnergyBillingOtherTransaction:
       example:
         amount: amount
+        adjustments:
+        - amount: amount
+          description: description
+        - amount: amount
+          description: description
         endDate: endDate
         servicePointId: servicePointId
         invoiceNumber: invoiceNumber
         description: description
+        calculationFactors:
+        - type: DLF
+          value: 6.027456183070403
+        - type: DLF
+          value: 6.027456183070403
         type: ENVIRONMENTAL
         startDate: startDate
       properties:
@@ -8731,6 +8771,16 @@ components:
         description:
           description: A free text description of the item
           type: string
+        calculationFactors:
+          description: Additional calculation factors that inform the transaction
+          items:
+            $ref: '#/components/schemas/EnergyBillingUsageTransaction_calculationFactors'
+          type: array
+        adjustments:
+          description: Optional array of adjustments arising for this transaction
+          items:
+            $ref: '#/components/schemas/EnergyBillingUsageTransaction_adjustments'
+          type: array
       required:
       - amount
       - description
@@ -9356,10 +9406,20 @@ components:
             description: description
           otherCharges:
             amount: amount
+            adjustments:
+            - amount: amount
+              description: description
+            - amount: amount
+              description: description
             endDate: endDate
             servicePointId: servicePointId
             invoiceNumber: invoiceNumber
             description: description
+            calculationFactors:
+            - type: DLF
+              value: 6.027456183070403
+            - type: DLF
+              value: 6.027456183070403
             type: ENVIRONMENTAL
             startDate: startDate
           usage:
@@ -9417,10 +9477,20 @@ components:
             description: description
           otherCharges:
             amount: amount
+            adjustments:
+            - amount: amount
+              description: description
+            - amount: amount
+              description: description
             endDate: endDate
             servicePointId: servicePointId
             invoiceNumber: invoiceNumber
             description: description
+            calculationFactors:
+            - type: DLF
+              value: 6.027456183070403
+            - type: DLF
+              value: 6.027456183070403
             type: ENVIRONMENTAL
             startDate: startDate
           usage:
@@ -10145,7 +10215,6 @@ components:
       required:
       - registerConsumptionType
       - registerId
-      - registerSuffix
       type: object
     EnergyServicePointDetail_meters:
       example:

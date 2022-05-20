@@ -3846,7 +3846,19 @@ Obtain the billing transactions for a specific account
           "endDate": "string",
           "type": "ENVIRONMENTAL",
           "amount": "string",
-          "description": "string"
+          "description": "string",
+          "calculationFactors": [
+            {
+              "value": 0,
+              "type": "DLF"
+            }
+          ],
+          "adjustments": [
+            {
+              "amount": "string",
+              "description": "string"
+            }
+          ]
         },
         "payment": {
           "amount": "string",
@@ -4040,7 +4052,19 @@ Obtain billing transactions for all accounts
           "endDate": "string",
           "type": "ENVIRONMENTAL",
           "amount": "string",
-          "description": "string"
+          "description": "string",
+          "calculationFactors": [
+            {
+              "value": 0,
+              "type": "DLF"
+            }
+          ],
+          "adjustments": [
+            {
+              "amount": "string",
+              "description": "string"
+            }
+          ]
         },
         "payment": {
           "amount": "string",
@@ -4251,7 +4275,19 @@ Obtain billing for a specified set of accounts
           "endDate": "string",
           "type": "ENVIRONMENTAL",
           "amount": "string",
-          "description": "string"
+          "description": "string",
+          "calculationFactors": [
+            {
+              "value": 0,
+              "type": "DLF"
+            }
+          ],
+          "adjustments": [
+            {
+              "amount": "string",
+              "description": "string"
+            }
+          ]
         },
         "payment": {
           "amount": "string",
@@ -5904,7 +5940,19 @@ To perform this operation, you must be authenticated and authorised with the fol
           "endDate": "string",
           "type": "ENVIRONMENTAL",
           "amount": "string",
-          "description": "string"
+          "description": "string",
+          "calculationFactors": [
+            {
+              "value": 0,
+              "type": "DLF"
+            }
+          ],
+          "adjustments": [
+            {
+              "amount": "string",
+              "description": "string"
+            }
+          ]
         },
         "payment": {
           "amount": "string",
@@ -7730,7 +7778,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |»»» nextScheduledReadDate|[DateString](#common-field-types)|optional|This date is the next scheduled meter read date (NSRD) if a manual Meter Reading is required|
 |»» registers|object|mandatory|Usage data registers available from the meter|
 |»»» registerId|string|mandatory|Unique identifier of the register within this service point.  Is not globally unique|
-|»»» registerSuffix|string|mandatory|Register suffix of the meter register where the meter reads are obtained|
+|»»» registerSuffix|string|optional|Register suffix of the meter register where the meter reads are obtained|
 |»»» averagedDailyLoad|number|optional|The energy delivered through a connection point or metering point over an extended period normalised to a 'per day' basis (kWh). This value is calculated annually.|
 |»»» registerConsumptionType|string|mandatory|Indicates the consumption type of register|
 |»»» networkTariffCode|string|optional|The Network Tariff Code is a free text field containing a code supplied and published by the local network service provider|
@@ -8889,7 +8937,19 @@ To perform this operation, you must be authenticated and authorised with the fol
     "endDate": "string",
     "type": "ENVIRONMENTAL",
     "amount": "string",
-    "description": "string"
+    "description": "string",
+    "calculationFactors": [
+      {
+        "value": 0,
+        "type": "DLF"
+      }
+    ],
+    "adjustments": [
+      {
+        "amount": "string",
+        "description": "string"
+      }
+    ]
   },
   "payment": {
     "amount": "string",
@@ -9102,7 +9162,19 @@ To perform this operation, you must be authenticated and authorised with the fol
   "endDate": "string",
   "type": "ENVIRONMENTAL",
   "amount": "string",
-  "description": "string"
+  "description": "string",
+  "calculationFactors": [
+    {
+      "value": 0,
+      "type": "DLF"
+    }
+  ],
+  "adjustments": [
+    {
+      "amount": "string",
+      "description": "string"
+    }
+  ]
 }
 
 ```
@@ -9118,6 +9190,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 |type|string|optional|Type of charge. Assumed to be other if absent|
 |amount|[AmountString](#common-field-types)|mandatory|The amount of the charge|
 |description|string|mandatory|A free text description of the item|
+|calculationFactors|[object]|optional|Additional calculation factors that inform the transaction|
+|» value|number|mandatory|The value of the calculation factor|
+|» type|string|mandatory|The type of the calculation factor|
+|adjustments|[object]|optional|Optional array of adjustments arising for this transaction|
+|» amount|[AmountString](#common-field-types)|mandatory|The amount of the adjustment|
+|» description|string|mandatory|A free text description of the adjustment|
 
 #### Enumerated Values
 
@@ -9130,6 +9208,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |type|RETAIL_SERVICE|
 |type|RCTI|
 |type|OTHER|
+|type|DLF|
+|type|MLF|
 
 <h3 class="schema-toc" id="tocSenergybillingpaymenttransaction">EnergyBillingPaymentTransaction</h3>
 
