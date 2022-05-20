@@ -3,7 +3,7 @@ info:
   description: This specification defines the APIs for Data Holders exposing Dynamic
     Client Registration endpoints.
   title: CDR Dynamic Client Registration API
-  version: 1.16.1
+  version: 1.17.0
 servers:
 - url: https://data.holder.com.au/register
 paths:
@@ -60,10 +60,8 @@ paths:
         style: simple
       responses:
         "204":
-          content: {}
           description: Client deleted
         "401":
-          content: {}
           description: Request failed due to unknown or invalid Client or invalid
             access token
           headers:
@@ -75,11 +73,9 @@ paths:
                 type: string
               style: simple
         "403":
-          content: {}
           description: The client does not have permission to read, update or delete
             the Client
         "405":
-          content: {}
           description: Method Not Allowed. The requested method is unsupported
       summary: Delete Data Recipient oAuth Client Registration
       tags:
@@ -114,7 +110,6 @@ paths:
                 $ref: '#/components/schemas/RegistrationProperties'
           description: Client registration retrieval success
         "401":
-          content: {}
           description: Request failed due to unknown or invalid Client or invalid
             access token
           headers:
@@ -126,7 +121,6 @@ paths:
                 type: string
               style: simple
         "403":
-          content: {}
           description: The client does not have permission to read, update or delete
             the Client
       summary: Get oAuth Client Registration
@@ -176,7 +170,6 @@ paths:
                 $ref: '#/components/schemas/RegistrationError'
           description: Request failed due to client error
         "401":
-          content: {}
           description: Request failed due to unknown or invalid Client or invalid
             access token
           headers:
@@ -188,7 +181,6 @@ paths:
                 type: string
               style: simple
         "403":
-          content: {}
           description: The client does not have permission to read, update or delete
             the Client
       summary: Update Data Recipient Registration
@@ -225,7 +217,6 @@ components:
             $ref: '#/components/schemas/RegistrationError'
       description: Request failed due to client error
     "401Error":
-      content: {}
       description: Request failed due to unknown or invalid Client or invalid access
         token
       headers:
@@ -237,11 +228,9 @@ components:
             type: string
           style: simple
     "403Error":
-      content: {}
       description: The client does not have permission to read, update or delete the
         Client
     "405Error":
-      content: {}
       description: Method Not Allowed. The requested method is unsupported
   schemas:
     ClientRegistrationRequest:

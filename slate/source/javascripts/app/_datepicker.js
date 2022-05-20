@@ -1,5 +1,5 @@
 //= require ../lib/_jquery
-//= require ../lib/_datepicker
+//= require ../lib/_datepicker.min
 
 ;(function () {
   'use strict';
@@ -17,8 +17,6 @@
 
                 var retirementDateString = $(this).find("td").eq(6).text()
                 var retirementDate = stringToDate(retirementDateString, 3,2,1);
-
-                //var deprecationDate = stringToDate($(this).find("td").eq(7).text(), 3,2,1);
 
                 var today = new Date();
                 var threeMonthsAgo = new Date(); threeMonthsAgo.setMonth(threeMonthsAgo.getMonth() - 3);
@@ -57,7 +55,7 @@
     return !isNaN(dateObject.valueOf());
   }
 
-  function isDate(dateString, dayPosition=1, monthPosition=2, yearPosition=3) {
+  function isDate(dateString, dayPosition, monthPosition, yearPosition) {
 
     var dateObject = stringToDate(dateString, dayPosition, monthPosition, yearPosition)
 
@@ -65,7 +63,7 @@
   }
 
 
-  function stringToDate(dateString, dayPosition=1, monthPosition=2, yearPosition=3) {
+  function stringToDate(dateString, dayPosition, monthPosition, yearPosition) {
     if (Math.min(dayPosition, monthPosition, yearPosition) != 1 || 
         Math.max(dayPosition, monthPosition, yearPosition) != 3 ) { return new Date("NaN"); }
 
@@ -80,7 +78,7 @@
   }
 
   function eltToDate($dateObject) {
-    return isDate($dateObject.val()) ? $dateObject.datepicker('getDate') : new Date("NaN");
+    return isDate($dateObject.val(),1,2,3) ? $dateObject.datepicker('getDate') : new Date("NaN");
   }
 
 
@@ -91,9 +89,9 @@
       var $endDate = $('#end-date');
 
       var options = {
-        autoHide: true,
-        language: 'en-GB',
-        format: 'dd/mm/yyyy'
+        'autoHide': true,
+        'language': 'en-GB',
+        'format': 'dd/mm/yyyy'
       }
 
       $endDate.datepicker(options);
@@ -124,7 +122,6 @@
       });
 
       $(".collapse-obligations-toggle input").on('click', function () {
-        console.log(new Date().getTime()+": toggle");
         $(".obligations").toggleClass('collapse-obligations');
       });
 
