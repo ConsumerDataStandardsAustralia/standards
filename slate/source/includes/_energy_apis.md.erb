@@ -17,8 +17,13 @@ standards.
 
 The following minor corrections have been made:
 
-* The `percentOfBill`. `percentOfUse`, `fixedAmount` and `percentOverThreshold` 
-fields have been corrected to be condtitional 
+* The `percentOfBill`. `percentOfUse`, `fixedAmount` and `percentOverThreshold` fields in `EnergyPlanDiscounts` model have been made condtitional
+
+The following objects were added to EnergyBillingOtherTransaction model
++ calculationFactors
++ adjustments
+
+The `EnergyServicePointDetail.meters.registers.registerSuffix` field has been made optional
 ```
 
 <%= partial "includes/cds_energy.md" %>

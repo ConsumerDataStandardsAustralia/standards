@@ -92,7 +92,6 @@
             "name": "x-v",
             "in": "header",
             "description": "The version of the API end point requested by the client. Must be set to a positive integer.",
-            "required": true,
             "schema": {
               "type": "string"
             }
@@ -218,7 +217,6 @@
             "name": "x-v",
             "in": "header",
             "description": "The version of the API end point requested by the client. Must be set to a positive integer.",
-            "required": true,
             "schema": {
               "type": "string"
             }
@@ -374,7 +372,6 @@
             "name": "x-v",
             "in": "header",
             "description": "The version of the API end point requested by the client. Must be set to a positive integer.",
-            "required": true,
             "schema": {
               "type": "string"
             }
@@ -430,8 +427,7 @@
                   "type": "string"
                 }
               }
-            },
-            "content": {}
+            }
           },
           "400": {
             "description": "Missing Required Header / Invalid Version / Invalid Path Parameter",
@@ -485,7 +481,6 @@
             "name": "x-v",
             "in": "header",
             "description": "The version of the API end point requested by the client. Must be set to a positive integer.",
-            "required": true,
             "schema": {
               "type": "string"
             }
@@ -541,8 +536,7 @@
                   "type": "string"
                 }
               }
-            },
-            "content": {}
+            }
           },
           "400": {
             "description": "Missing Required Header / Invalid Version / Invalid Path Parameter",
@@ -596,7 +590,6 @@
             "name": "x-v",
             "in": "header",
             "description": "The version of the API end point requested by the client. Must be set to a positive integer.",
-            "required": true,
             "schema": {
               "type": "string"
             }
@@ -652,8 +645,7 @@
                   "type": "string"
                 }
               }
-            },
-            "content": {}
+            }
           },
           "400": {
             "description": "Missing Required Header / Invalid Version / Invalid Path Parameter",
@@ -707,7 +699,6 @@
             "name": "x-v",
             "in": "header",
             "description": "The version of the API end point requested by the client. Must be set to a positive integer.",
-            "required": true,
             "schema": {
               "type": "string"
             }
@@ -763,8 +754,7 @@
                   "type": "string"
                 }
               }
-            },
-            "content": {}
+            }
           },
           "400": {
             "description": "Missing Required Header / Invalid Version / Invalid Path Parameter",
@@ -1666,8 +1656,7 @@
               "type": "string"
             }
           }
-        },
-        "content": {}
+        }
       },
       "UnsupportedVersion": {
         "description": "Unsupported Version",
@@ -1694,7 +1683,6 @@
         "name": "x-v",
         "in": "header",
         "description": "The version of the API end point requested by the client. Must be set to a positive integer.",
-        "required": true,
         "schema": {
           "type": "string"
         }

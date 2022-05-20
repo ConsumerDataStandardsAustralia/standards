@@ -3,7 +3,7 @@
   "info" : {
     "description" : "This specification defines the APIs for Data Holders exposing Dynamic Client Registration endpoints.",
     "title" : "CDR Dynamic Client Registration API",
-    "version" : "1.16.1"
+    "version" : "1.17.0"
   },
   "servers" : [ {
     "url" : "https://data.holder.com.au/register"
@@ -78,11 +78,9 @@
         } ],
         "responses" : {
           "204" : {
-            "content" : { },
             "description" : "Client deleted"
           },
           "401" : {
-            "content" : { },
             "description" : "Request failed due to unknown or invalid Client or invalid access token",
             "headers" : {
               "WWW-Authenticate" : {
@@ -97,11 +95,9 @@
             }
           },
           "403" : {
-            "content" : { },
             "description" : "The client does not have permission to read, update or delete the Client"
           },
           "405" : {
-            "content" : { },
             "description" : "Method Not Allowed. The requested method is unsupported"
           }
         },
@@ -145,7 +141,6 @@
             "description" : "Client registration retrieval success"
           },
           "401" : {
-            "content" : { },
             "description" : "Request failed due to unknown or invalid Client or invalid access token",
             "headers" : {
               "WWW-Authenticate" : {
@@ -160,7 +155,6 @@
             }
           },
           "403" : {
-            "content" : { },
             "description" : "The client does not have permission to read, update or delete the Client"
           }
         },
@@ -225,7 +219,6 @@
             "description" : "Request failed due to client error"
           },
           "401" : {
-            "content" : { },
             "description" : "Request failed due to unknown or invalid Client or invalid access token",
             "headers" : {
               "WWW-Authenticate" : {
@@ -240,7 +233,6 @@
             }
           },
           "403" : {
-            "content" : { },
             "description" : "The client does not have permission to read, update or delete the Client"
           }
         },
@@ -288,7 +280,6 @@
         "description" : "Request failed due to client error"
       },
       "401Error" : {
-        "content" : { },
         "description" : "Request failed due to unknown or invalid Client or invalid access token",
         "headers" : {
           "WWW-Authenticate" : {
@@ -303,11 +294,9 @@
         }
       },
       "403Error" : {
-        "content" : { },
         "description" : "The client does not have permission to read, update or delete the Client"
       },
       "405Error" : {
-        "content" : { },
         "description" : "Method Not Allowed. The requested method is unsupported"
       }
     },
