@@ -38,7 +38,7 @@ This release addresses the following Decision Proposals published on [Standards]
 
 |Change|Description|Link|
 |------|-----------|----|
-| Energy schema | [**Standards Maintenance #439**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/439) Added timezone field to EnergyPlanTariffPeriod | [Energy Schema](../../#energy-apis) |
+| Energy schema | [**Standards Maintenance #439**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/439) Added timezone field to EnergyPlanTariffPeriod. Updated description of EnergyPlanContract.timezone to specify default value of AEST | [Energy Schema](../../#energy-apis) |
 
 ## Information Security Profile
 

@@ -687,7 +687,7 @@
                     },
                     "timeZone": {
                         "type": "string",
-                        "description": "Required if pricingModel is set to TIME_OF_USE.  Defines the time zone to use for calculation of the time of use thresholds",
+                        "description": "Required if pricingModel is set to TIME_OF_USE.  Defines the time zone to use for calculation of the time of use thresholds. Defaults to AEST if absent",
                         "enum": ["LOCAL",
                             "AEST"
                         ]
@@ -1310,7 +1310,7 @@
                         },
                         "timeZone": {
                             "type": "string",
-                            "description": "Specifies the charge specific time zone for calculation of the time of use thresholds. If absent, timezone defined in EnergyPlanContract is assumed if provided.",
+                            "description": "Specifies the charge specific time zone for calculation of the time of use thresholds. If absent, timezone value in EnergyPlanContract is assumed.",
                             "enum": ["LOCAL",
                                 "AEST"
                             ]

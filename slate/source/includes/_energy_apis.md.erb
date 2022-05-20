@@ -13,6 +13,12 @@ This specification defines the APIs for Data Holders exposing Energy endpoints.
 ```diff
 * Added the following attribute to EnergyPlanTariffPeriod
 + timeZone
+
+Changed description of EnergyPlanContract.timezone from:
+- Required if pricingModel is set to TIME_OF_USE.  Defines the time zone to use for calculation of the time of use thresholds
+to:
++ Required if pricingModel is set to TIME_OF_USE.  Defines the time zone to use for calculation of the time of use thresholds. Defaults to AEST if absent
+
 ```
 
 
