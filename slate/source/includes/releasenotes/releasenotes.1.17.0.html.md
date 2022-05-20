@@ -23,6 +23,7 @@ This release addresses the following change requests raised on [Standards Mainte
 - [Standards Maintenance Issue 438: Representing adjustment transactions within the Billing Payload for C&I customers](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/438)
 - [Standards Maintenance Issue 457: Energy - Get Service Point Detail register suffix should be optional](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/457)
 - [Standards Maintenance Issue 482: JWT signing non-normative examples use unsupported signing algorithm)](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/482)
+- [Standards Maintenance Issue 476: Modify Energy concessions structure to allow non-fixed (e.g. daily, monthly etc.) concessions](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/476)
 - [Standards Maintenance Issue 488: Data holder behaviour clarification required when receiving registrations with unsupported authorisation scopes](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/488)
 - [Standards Maintenance Issue 465: Confirm Register API 2022 release dates](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/465)
 
@@ -41,6 +42,7 @@ This release addresses the following Decision Proposals published on [Standards]
 | Obligation date highlighting | Highlighting based on a date pickers has been added for the Endpoint versioning schedule to enhance documentation functionality. This feature allows users to select a target date and determine what obligations apply at that date. | [Endpoint versioning schedule](../../includes/endpoint-version-schedule/)
 | Obligation Dates Table | A series of fixed obligation milestones were agreed in Maintenance Iteration 10. This set of milestones will be used to pin breaking changes to a deterministic series of possible obligation dates. | [Obligation Dates]() |
 | Scrollable diffs and examples | Added previous and next buttons to support easy scrolling between all diffs and non-normative examples. This feature is context dependent on the tab being viewed | N/A |
+| RateString description | [**Standards Maintenance #476**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/476): Changed RateString type to represent generic percentages. | [Common Field Types](../../#common-field-types)
 | Introduction | [**Standards Maintenance #465**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/465) Moved Register FDOs to the Register dependency schedule to differentiate Register delivery from Participant future dated obligations. </br> Register API versions now have dependency dates of **15th November 2022**, aligned to Energy | [Register Dependencies Schedule](../../#register-dependencies-schedule) |
 
 ## API End Points
@@ -49,6 +51,7 @@ This release addresses the following Decision Proposals published on [Standards]
 |------|-----------|----|
 | Register APIs | [**Standards Maintenance #501**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/501): `x-v` header requirements for versioned Register APIs moved from mandatory to optional | [Register APIs](../../index.html#register-apis) | 
 | Energy schema | [**Standards Maintenance #457**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/457) Made EnergyServicePointDetail.meters.registers.registerSuffix field optional | [Energy Schema](../../#energy-apis) |
+| Energy schema | [**Standards Maintenance #476**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/476): Updated EnergyConcession model to allow representation of concessions that are calculated based on variable parameters | [Energy Schema](../../#energy-apis) |
 
 ## Information Security Profile
 
