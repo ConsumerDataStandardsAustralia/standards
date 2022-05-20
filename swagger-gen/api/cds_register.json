@@ -92,7 +92,6 @@
             "name": "x-v",
             "in": "header",
             "description": "The version of the API end point requested by the client. Must be set to a positive integer.",
-            "required": true,
             "schema": {
               "type": "string"
             }
@@ -185,7 +184,6 @@
         },
         "x-version": "2",
         "x-scopes": [
-          "cdr-register:bank:read",
           "cdr-register:read"
         ]
       }
@@ -328,7 +326,6 @@
             "name": "x-v",
             "in": "header",
             "description": "The version of the API end point requested by the client. Must be set to a positive integer.",
-            "required": true,
             "schema": {
               "type": "string"
             }
@@ -451,7 +448,6 @@
         },
         "x-version": "3",
         "x-scopes": [
-          "cdr-register:bank:read",
           "cdr-register:read"
         ]
       }
@@ -484,7 +480,6 @@
             "name": "x-v",
             "in": "header",
             "description": "The version of the API end point requested by the client. Must be set to a positive integer.",
-            "required": true,
             "schema": {
               "type": "string"
             }
@@ -594,7 +589,6 @@
             "name": "x-v",
             "in": "header",
             "description": "The version of the API end point requested by the client. Must be set to a positive integer.",
-            "required": true,
             "schema": {
               "type": "string"
             }
@@ -704,7 +698,6 @@
             "name": "x-v",
             "in": "header",
             "description": "The version of the API end point requested by the client. Must be set to a positive integer.",
-            "required": true,
             "schema": {
               "type": "string"
             }
@@ -814,7 +807,6 @@
             "name": "x-v",
             "in": "header",
             "description": "The version of the API end point requested by the client. Must be set to a positive integer.",
-            "required": true,
             "schema": {
               "type": "string"
             }
@@ -1898,7 +1890,6 @@
         "name": "x-v",
         "in": "header",
         "description": "The version of the API end point requested by the client. Must be set to a positive integer.",
-        "required": true,
         "schema": {
           "type": "string"
         }
