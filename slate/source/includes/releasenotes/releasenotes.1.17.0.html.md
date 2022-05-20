@@ -30,6 +30,7 @@ This release addresses the following change requests raised on [Standards Mainte
 - [Standards Maintenance Issue 476: Modify Energy concessions structure to allow non-fixed (e.g. daily, monthly etc.) concessions](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/476)
 - [Standards Maintenance Issue 488: Data holder behaviour clarification required when receiving registrations with unsupported authorisation scopes](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/488)
 - [Standards Maintenance Issue 465: Confirm Register API 2022 release dates](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/465)
+- [Standards Staging Issue 170: Fix documentation defect for meters and registers object in EnergyServicePointDetail model](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/170)
 
 
 ### Decision Proposals
@@ -60,6 +61,7 @@ This release addresses the following Decision Proposals published on [Standards]
 | Register APIs | [**Standards Maintenance #444**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/444) Added GetDataHolderBrandsSummary API to expose public details of Data Holder Brands from the CDR Register to public clients | [Register APIs](../../#register-apis) |
 | Register APIs | [**Standards Maintenance #498**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/498) New authenticated endpoints only require `cdr-register:read` as the authorisation scope | [Register APIs](../../#register-apis) |
 | Energy schema | [**Standards Maintenance #476**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/476): Updated EnergyConcession model to allow representation of concessions that are calculated based on variable parameters | [Energy Schema](../../#energy-apis) |
+| Energy schema | [**Standards Staging #170**](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/170): The EnergyServicePointDetail.meters and EnergyServicePointDetail.meters.registers have been made into arrays, correcting a technical documentation issue | [Energy Schema](../../#energy-apis) |
 
 
 ## Information Security Profile
