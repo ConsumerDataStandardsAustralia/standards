@@ -19,6 +19,7 @@ This release addresses the following change requests raised on [Standards Mainte
 
 - [Standards Maintenance Issue 503: Fix documentation defect for CDR Arrangement JWT method](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/503)
 - [Standards Maintenance Issue 504: Correct Data Language for Contact Details (profile scope and individual claims)](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/504)
+- [Standards Maintenance Issue 501: Register API x-v headers moving to mandatory impacts compatibility with older versions of these APIs](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/501)
 - [Standards Maintenance Issue 438: Representing adjustment transactions within the Billing Payload for C&I customers](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/438)
 - [Standards Maintenance Issue 457: Energy - Get Service Point Detail register suffix should be optional](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/457)
 - [Standards Maintenance Issue 482: JWT signing non-normative examples use unsupported signing algorithm)](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/482)
@@ -43,6 +44,7 @@ This release addresses the following Decision Proposals published on [Standards]
 
 |Change|Description|Link|
 |------|-----------|----|
+| Register APIs | [**Standards Maintenance #501**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/501): `x-v` header requirements for versioned Register APIs moved from mandatory to optional | [Register APIs](../../index.html#register-apis) | 
 | Energy schema | [**Standards Maintenance #457**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/457) Made EnergyServicePointDetail.meters.registers.registerSuffix field optional | [Energy Schema](../../#energy-apis) |
 
 ## Information Security Profile
