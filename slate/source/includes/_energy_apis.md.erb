@@ -10,17 +10,45 @@ This specification defines the APIs for Data Holders exposing Energy endpoints.
 <tr><td><a href='./includes/swagger/cds_energy.yaml'>Energy OpenAPI Specification (YAML)</a></td></tr>
 </table>
 
-
 ```diff
-The following objects were added to EnergyBillingOtherTransaction model
-+ calculationFactors
-+ adjustments
+Below are the changes to the Energy APIs section of the
+standards.
+
+Added the following attribute to EnergyPlanTariffPeriod
++ timeZone
+
+Changed description of EnergyPlanContract.timezone from:
+- Required if pricingModel is set to TIME_OF_USE.  Defines the time zone to use for calculation of the time of use thresholds
+to:
++ Required if pricingModel is set to TIME_OF_USE.  Defines the time zone to use for calculation of the time of use thresholds. Defaults to AEST if absent
+
+The `EnergyPlanSolarFeedInTariff.timeVaryingTariffs.timeVariations.days` field has been made mandatory 
+
+The `percentOfBill`. `percentOfUse`, `fixedAmount` and `percentOverThreshold` fields in `EnergyPlanDiscounts` model have been made condtitional
+
+The `EnergyServicePointDetail.meters.registers.registerSuffix` field has been made optional
 
 The `EnergyServicePointDetail.meters` and `EnergyServicePointDetail.meters.registers` fields have been made optional
 
 Updated description of `EnergyServicePointDetail.meters` and `EnergyServicePointDetail.meters.registers` fields
 
 The `EnergyServicePointDetail.meters.registers.registerSuffix` field has been made optional
+
+The following objects were added to EnergyBillingOtherTransaction model
++ calculationFactors
++ adjustments
+
+The following changes were made to EnergyConcession model
+* Made additionalInfo field conditional
++ type
++ discountFrequency
++ amount
++ percentage
++ appliedTo
+- dailyDiscount
+- monthlyDiscount
+- yearlyDiscount
+- percentageDiscount
 ```
 
 <%= partial "includes/cds_energy.md" %>

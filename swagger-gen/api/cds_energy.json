@@ -687,7 +687,7 @@
                     },
                     "timeZone": {
                         "type": "string",
-                        "description": "Required if pricingModel is set to TIME_OF_USE.  Defines the time zone to use for calculation of the time of use thresholds",
+                        "description": "Required if pricingModel is set to TIME_OF_USE.  Defines the time zone to use for calculation of the time of use thresholds. Defaults to AEST if absent",
                         "enum": ["LOCAL",
                             "AEST"
                         ]
@@ -894,6 +894,7 @@
                 "items": {
                     "type": "object",
                     "required": ["displayName", "type", "methodUType"],
+                    "x-conditional": ["percentOfBill", "percentOfUse", "fixedAmount", "percentOverThreshold"],
                     "properties": {
                         "displayName": {
                             "type": "string",
@@ -1236,6 +1237,7 @@
                                     "type": "array",
                                     "items": {
                                         "type": "object",
+                                        "required": ["days"],
                                         "properties": {
                                             "days": {
                                                 "type": "object",
@@ -1307,6 +1309,13 @@
                             "type": "string",
                             "x-cds-type": "AmountString",
                             "description": "The amount of access charge for the tariff period, in dollars per day exclusive of GST."
+                        },
+                        "timeZone": {
+                            "type": "string",
+                            "description": "Specifies the charge specific time zone for calculation of the time of use thresholds. If absent, timezone value in EnergyPlanContract is assumed.",
+                            "enum": ["LOCAL",
+                                "AEST"
+                            ]
                         },
                         "rateBlockUType": {
                             "type": "string",
@@ -2829,21 +2838,31 @@
             "EnergyConcession": {
                 "type": "object",
                 "required": [
+                    "type",
                     "displayName"
                 ],
                 "x-conditional": [
-                    "dailyDiscount",
-                    "monthlyDiscount",
-                    "yearlyDiscount",
-                    "percentageDiscount"
+                    "additionalInfo",
+                    "discountFrequency",
+                    "amount",
+                    "percentage"
                 ],
                 "properties": {
+                    "type": {
+                        "description": "Indicator of the method of concession calculation",
+                        "type": "string",
+                        "enum": [
+                            "FIXED_AMOUNT",
+                            "FIXED_PERCENTAGE",
+                            "VARIABLE"
+                        ]
+                    },
                     "displayName": {
                         "description": "The display name of the concession",
                         "type": "string"
                     },
                     "additionalInfo": {
-                        "description": "Display text providing more information on the concession",
+                        "description": "Display text providing more information on the concession. Mandatory if type is VARIABLE",
                         "type": "string"
                     },
                     "additionalInfoUri": {
@@ -2861,25 +2880,33 @@
                         "type": "string",
                         "x-cds-type": "DateString"
                     },
-                    "dailyDiscount": {
-                        "description": "Daily discount value due to the concession.  At least one dailyDiscount, monthlyDiscount, yearlyDiscount and percentageDiscount must be provided",
+                    "discountFrequency": {
+                        "description": "Conditional attribute for frequency at which a concession is applied. Required if type is FIXED_AMOUNT or FIXED_PERCENTAGE. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)",
+                        "type": "string",
+                        "x-cds-type": "ExternalRef"
+                    },
+                    "amount": {
+                        "description": "Conditional attribute for the amount of discount for the concession- required if type is FIXED_AMOUNT",
                         "type": "string",
                         "x-cds-type": "AmountString"
                     },
-                    "monthlyDiscount": {
-                        "description": "Monthly discount value due to the concession.  At least one dailyDiscount, monthlyDiscount, yearlyDiscount and percentageDiscount must be provided",
-                        "type": "string",
-                        "x-cds-type": "AmountString"
-                    },
-                    "yearlyDiscount": {
-                        "description": "Annual discount value due to the concession.  At least one dailyDiscount, monthlyDiscount, yearlyDiscount and percentageDiscount must be provided",
-                        "type": "string",
-                        "x-cds-type": "AmountString"
-                    },
-                    "percentageDiscount": {
-                        "description": "Percentage of each invoice to be discounted due to the concession.  At least one dailyDiscount, monthlyDiscount, yearlyDiscount and percentageDiscount must be provided",
+                    "percentage": {
+                        "description": "Conditional attribute for the percentage of discount of concession - required if type is FIXED_PERCENTAGE",
                         "type": "string",
                         "x-cds-type": "RateString"
+                    },
+                    "appliedTo": {
+                        "description": "Array of ENUM's to specify what the concession applies to. Multiple ENUM values can be provided. If absent, USAGE is assumed",
+                        "type": "array",
+                        "items": {
+                            "type": "string",
+                            "enum": [
+                                "INVOICE", 
+                                "USAGE", 
+                                "SERVICE_CHARGE", 
+                                "CONTROLLED_LOAD"
+                            ]
+                        }
                     }
                 }
             },
