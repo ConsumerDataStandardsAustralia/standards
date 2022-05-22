@@ -95,3 +95,49 @@ $tab-border-color: lightgray !default;
   }
 }
 
+.tab-diff code {
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+
+.scroll-buttons {
+  float: right;
+  position: fixed;
+  right: 0.5em;
+  z-index: 99999;
+}
+
+a.scroll-button {
+  text-decoration: none !important;
+  display: inline-block !important;
+  padding: 0 9px !important;
+  margin: 3px 3px 3px 0;
+  line-height: 24px !important;
+  font-size: 12px;
+  font-weight: bold;
+  background-color: #999;
+  color: white !important;
+}
+
+a.scroll-button:hover {
+  background-color: #f1f1f1;
+  color: black !important;
+}
+
+.scroll-button.round {
+  border-radius: 50%;
+}
+
+.scroll-buttons {
+  display: none;
+}
+
+@media (min-width: $tablet-width) {
+  .scroll-buttons {
+    display: block;
+  }
+}
+
+

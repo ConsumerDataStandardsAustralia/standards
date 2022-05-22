@@ -635,7 +635,6 @@
                                 "description": "Usage data registers available from the meter",
                                 "required": [
                                     "registerId",
-                                    "registerSuffix",
                                     "registerConsumptionType"
                                 ],
                                 "properties": {

@@ -2,7 +2,7 @@
   "openapi" : "3.0.3",
   "info" : {
     "title" : "CDR Participant Discovery API",
-    "version" : "1.16.1"
+    "version" : "1.17.0"
   },
   "servers" : [ {
     "url" : "https://<register-base-url>/"
@@ -415,7 +415,6 @@
             }
           },
           "304" : {
-            "content" : { },
             "description" : "Not Modified - The current representation of the target resource matches with the entity-tag provided in the If-None-Match request header",
             "headers" : {
               "Etag" : {
@@ -530,7 +529,6 @@
             }
           },
           "304" : {
-            "content" : { },
             "description" : "Not Modified - The current representation of the target resource matches with the entity-tag provided in the If-None-Match request header",
             "headers" : {
               "Etag" : {
@@ -645,7 +643,6 @@
             }
           },
           "304" : {
-            "content" : { },
             "description" : "Not Modified - The current representation of the target resource matches with the entity-tag provided in the If-None-Match request header",
             "headers" : {
               "Etag" : {
@@ -760,7 +757,6 @@
             }
           },
           "304" : {
-            "content" : { },
             "description" : "Not Modified - The current representation of the target resource matches with the entity-tag provided in the If-None-Match request header",
             "headers" : {
               "Etag" : {
@@ -917,7 +913,6 @@
         "description" : "Invalid Bearer Token"
       },
       "NotModified" : {
-        "content" : { },
         "description" : "Not Modified - The current representation of the target resource matches with the entity-tag provided in the If-None-Match request header",
         "headers" : {
           "Etag" : {

@@ -30,17 +30,27 @@ Content-Type: application/x-www-form-urlencoded
 Data Holders and Data Recipient Software Products MUST implement a CDR Arrangement Revocation End Point that can be used to revoke an existing sharing arrangement.
 
 <br/>
+
+```diff
+
+Corrected documentation to include CDR Arrangement Form Parameter method and CDR Arrangement JWT method description. This was previously omitted.
+
+```
+
 **CDR Arrangement Form Parameter method**
+
+The request **MUST** include the following parameters using the ``application/x-www-form-urlencoded`` format in the HTTP request entity-body:
+
+* ``cdr_arrangement_id``: The ID of the arrangement that the client wants to revoke.
+
+**CDR Arrangement JWT method**
 
 The request MUST include the following parameters using the ``application/x-www-form-urlencoded`` format in the HTTP request entity-body:
 
-
-- ``cdr_arrangement_jwt``: A signed JWT that includes the ``cdr_arrangement_id``.
-
-The `cdr_arrangement_jwt` MUST be a newly signed JWT with the following parameters in accordance with **[[JWT]](#nref-JWT)**:
-
-- ``cdr_arrangement_id``: The ID of the arrangement that the client wants to revoke.
-
+* ``cdr_arrangement_jwt``: A signed JWT that includes the ``cdr_arrangement_id``.  
+* ``cdr_arrangement_jwt``: A newly signed JWT with the following parameters in accordance with **[[JWT]](#nref-JWT)**:  
+  * All parameters in accordance with Data Holders calling Data Recipients using [Self-Signed JWT Client Authentication](https://consumerdatastandardsaustralia.github.io/standards/#self-signed-jwt-client-authentication).
+  * ``cdr_arrangement_id``: The ID of the arrangement that the client wants to revoke.
 
 **Data Holder hosted endpoint**
 
@@ -88,13 +98,18 @@ Authorization: Bearer eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNDU2In0.ey
 ## Decoded cdr_arrangement_jwt JWT
 {
   "typ": "JWT",
-  "alg": "HS256",
+  "alg": "PS256",
   "kid":"12456"
 }
 {
   "cdr_arrangement_id": "5a1bf696-ee03-408b-b315-97955415d1f0"
 }
 ```
+
+```diff
+Updated Data Recipient end point non-normative example `alg` field from HS256 to PS256
+```
+
 
 **Data Recipient hosted endpoint**
 

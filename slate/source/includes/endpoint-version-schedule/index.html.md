@@ -18,7 +18,76 @@ toc_footers:
 search: false
 ---
 
+# Obligation Dates Schedule
+The following schedule represents future obligation dates. This includes a set of bi-monthly obligation milestone windows and historically assigned obligation dates.
+
+The calendar of obligation milestones are published to provide predictability. This calendar does not mean that any obligations exist at these dates however when addressing the future dating of obligations for any breaking changes, this calendar will be used to pin those obligations to pre-determined obligation milestones.
+
+These dates may be subject to change depending upon new or changed legislative and policy dates as well as optimisation and streamlining based on community feedback.
+
+| Obligation Milestone | Milestone Date | # Obligations Assigned |
+| :------------------- | :------------: | :--------------------: |
+| **Legacy FDO** | 01/07/2021 | 1 |
+| **Legacy FDO** | 31/07/2021 | 1 |
+| **Legacy FDO** | 31/10/2021 | 1 |
+| **Legacy FDO** | 01/11/2021 | 2 |
+| **Legacy FDO** | 01/02/2022 | 2 |
+| **Y22 #1** | 31/03/2022 | 1 |
+| **Legacy FDO** | 01/07/2022 | 2 |
+| **Y22 #2** | 04/07/2022 | 1 |
+| **Legacy FDO** | 31/07/2022 | 4 |
+| **Legacy FDO** | 30/07/2022 | 6 |
+| **Y22 #3** | 31/08/2022 | 2 |
+| **Legacy FDO** | 16/09/2022 | 1 |
+| **Legacy FDO** | 01/10/2022 | 1 |
+| **Y22 #4** | 15/11/2022 | 0 |
+| **Legacy FDO** | 30/11/2022 | 3 |
+| **Legacy FDO** | 05/12/2022 | 1 |
+| **Legacy FDO** | 28/02/2023 | 3 |
+| **Y23 #1** | 07/04/2023 | 1 |
+| **Y23 #2** | 08/05/2023 | 0 |
+| **Y23 #3** | 10/07/2023 | 0 |
+| **Y23 #4** | 11/09/2023 | 0 |
+| **Y23 #5** | 13/11/2023 | 0 |
+| **Y24 #1** | 11/03/2024 | 0 |
+| **Y24 #2** | 13/05/2024 | 0 |
+| **Y24 #3** | 15/07/2024 | 0 |
+| **Y24 #4** | 09/09/2024 | 0 |
+| **Y24 #5** | 11/11/2024 | 0 |
+
+<div id="date-picker">
+  <div class="input-group">
+    <div class="input-group-prepend">
+      <span class="input-group-text">Obligations @</span>
+    </div>
+    <input type="text" id="end-date" placeholder="End date" aria-label="End date" class="form-control end-date date-picker-input">
+    <div class="collapse-obligations-toggle">
+      <div class="toggle-title">Collapse obligations</div>
+        <!-- Rounded switch -->
+      <label class="switch">
+        <input type="checkbox">
+        <span class="slider round"></span>
+      </label>
+    </div>
+    <div class="legend-title"><a href="#legend">Legend &#9432;</a></div>
+  </div>
+  <span class="cancel hide">×</span>
+</div>
+<div class="lightbox" id="legend"><a href="#" class="defocus"></a>
+  <div class="legend">
+      <div class="legend-title">Legend</div>
+      <ul>
+        <li><span class="legend-future-obligations"></span> <b>Future:</b> obligations that are due more than three months into the future.</li>
+        <li><span class="legend-emerging-obligations"></span> <b>Emerging:</b> obligations that are due within the next three months.</li>
+        <li><span class="legend-active-obligations"></span> <b>Active:</b> obligations that must currently be supported.</li>
+        <li><span class="legend-deprecated-obligations"></span> <b>Deprecated:</b> obligations that are being phased out and have entered into a deprecation phase before being retired.</li>
+        <li><span class="legend-retired-obligations"></span> <b>Retired:</b> obligations that have expired or are superceded and no longer need to be supported.</li>
+      </ul>
+  </div>
+</div>
+
 # Endpoint Version Schedule
+
 The following tables describe the endpoint versions and the dates they become binding within the data standards.
 
 **Binding Date** indicates the dates the particular version of an endpoint becomes binding in the data standards.
