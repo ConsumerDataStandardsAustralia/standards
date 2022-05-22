@@ -1675,8 +1675,7 @@
                     "lastUpdateDateTime",
                     "distributionLossFactor",
                     "relatedParticipants",
-                    "location",
-                    "meters"
+                    "location"
                 ],
                 "properties": {
                     "servicePointId": {
@@ -1959,10 +1958,10 @@
                     },
                     "meters": {
                         "type": "object",
+                        "description": "The meters associated with the service point. This may be empty where there are no meters physically installed at the service point",
                         "required": [
                             "meterId",
-                            "specifications",
-                            "registers"
+                            "specifications"
                         ],
                         "properties": {
                             "meterId": {
@@ -2024,7 +2023,7 @@
                             },
                             "registers": {
                                 "type": "object",
-                                "description": "Usage data registers available from the meter",
+                                "description": "Usage data registers available from the meter. This may be empty where there are no meters physically installed at the service point",
                                 "required": [
                                     "registerId",
                                     "registerConsumptionType"
