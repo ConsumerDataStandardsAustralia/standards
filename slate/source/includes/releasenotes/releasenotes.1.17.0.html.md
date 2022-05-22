@@ -30,6 +30,7 @@ This release addresses the following change requests raised on [Standards Mainte
 - [Standards Maintenance Issue 476: Modify Energy concessions structure to allow non-fixed (e.g. daily, monthly etc.) concessions](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/476)
 - [Standards Maintenance Issue 488: Data holder behaviour clarification required when receiving registrations with unsupported authorisation scopes](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/488)
 - [Standards Maintenance Issue 465: Confirm Register API 2022 release dates](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/465)
+- [Standards Maintenance Issue 448: EnergyPlanDiscounts contains optional fields that should be conditional](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/448)
 
 
 ### Decision Proposals
@@ -53,6 +54,7 @@ This release addresses the following Decision Proposals published on [Standards]
 
 |Change|Description|Link|
 |------|-----------|----|
+| Energy schema | [**Standards Maintenance #448**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/448): Changed percentOfBill, percentOfUse, fixedAmount and percentOverThreshold attributes from optional to conditional within [EnergyPlanDiscounts](../../#tocSenergyplandiscounts) schema | [Energy Schema](../../#energy-apis) |
 | Energy schema | [**Standards Maintenance #438**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/438): Added 'calculationFactors' and 'adjustments' objects to ['EnergyBillingOtherTransaction'](../../#tocSenergybillingothertransaction) model to allow consistent representation of any calculation factors (i.e. DLF or MLF) used for deriving other charges and any adjustments arising from other types of charges such as environmental charge. | [Energy Schema](../../#energy-apis) |
 | Register APIs | [**Standards Maintenance #501**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/501): `x-v` header requirements for versioned Register APIs moved from mandatory to optional | [Register APIs](../../index.html#register-apis) | 
 | Energy schema | [**Standards Maintenance #457**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/457) Made EnergyServicePointDetail.meters.registers.registerSuffix field optional | [Energy Schema](../../#energy-apis) |
