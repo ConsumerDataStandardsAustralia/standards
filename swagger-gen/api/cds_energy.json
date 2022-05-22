@@ -894,6 +894,7 @@
                 "items": {
                     "type": "object",
                     "required": ["displayName", "type", "methodUType"],
+                    "x-conditional": ["percentOfBill", "percentOfUse", "fixedAmount", "percentOverThreshold"],
                     "properties": {
                         "displayName": {
                             "type": "string",
