@@ -1,9 +1,10 @@
 ## Future Dated Obligations
 
 ```diff
++ Added Registration Validation obligation for November 15th 2022
+
 - Moved Register FDOs to the Register dependency schedule to differentiate Register delivery from Participant future dated obligations
 ```
-
 
 The standards, as published from time to time, may include specific statements indicating that a specific section of the standards will not take effect until a future date or may cease to have effect on some future date.
 
@@ -31,6 +32,7 @@ The table below highlights these areas of the standards.
 |[Information Security profile](#security-profile) | FAPI 1.0 adoption is introduced across three phases.<br/><strong>Phase 2: FAPI 1.0 Final (Baseline & Advanced)</strong> includes, amongst other changes:<ul><li>Enforces additional requirements for authorisation code, token and request object use</li><li>Enforces PAR-only authorisation request data submission</li><li>Refresh token cycling is not permitted</li><li>Data Holders and Data Recipients MUST support FAPI 1.0 Final including **[[RFC9126]](#nref-RFC9126)**, **[[RFC7636]](#nref-RFC7636)** and **[[JARM]](#nref-JARM)**</li><li>Data Holders SHOULD support of Authorization Code Flow in conjunction with Hybrid Flow</li></ul> | September 16th 2022 |
 |[Get Metrics V3](#get-metrics)|Version 3 of this end point must be made available by affected data holders by October 1st 2022|October 1st 2022|
 |[Standard Error Codes](#error-codes) | Data Holders MAY retire application-specific error codes in favour of standard error codes from November 1st 2022 | November 1st 2022 |
+|[Registration Validation](#registration-validation) | Data Holders **MUST** ignore unsupported authorisation scopes presented in the SSA for the creation and update of client registrations from November 15th 2022 | November 15th 2022 |
 |[Get Account Detail V2](#get-account-detail)|Version 2 of this end point must be made available by affected data holders by November 30th 2022|November 30th 2022|
 |[Get Customer Detail V2](#get-customer-detail)|Version 2 of this end point must be made available by affected data holders by November 30th 2022|November 30th 2022|
 |[Get Product Detail V4](#get-product-detail)|Version 4 of this end point must be made available by affected data holders by November 30th 2022|November 30th 2022|

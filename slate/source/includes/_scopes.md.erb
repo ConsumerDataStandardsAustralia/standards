@@ -40,6 +40,11 @@ Scope Name | Scope ID |Description
 **Detailed Customer Data** | common:customer.detail:read | The scope would allow the third party to access more detailed information about the customer.  Includes the data available with the Basic Customer Data scope plus contact details.<br/><br/>Includes basic data plus phone, email and address information.
 
 ## Admin &amp; Registration
+
+```diff
++ Added endpoint versions that cdr-register:bank:read and cdr-register:read apply to.
+```
+
 The following scopes are used for administrative interactions.  These scopes MUST never be included in the same access token as a CDR Data scope.
 
 
@@ -47,6 +52,6 @@ Scope Name | Scope ID |Description
 -----------|----------|-----------
 **Basic Admin Metrics Data** | admin:metrics.basic:read | Metrics data accessible ONLY to the CDR Register. If the Data Holder uses Private Key JWT Client Authentication to authenticate the CDR Register, this scope is required.<br/><br/>Includes access to basic Metrics data.
 **Admin Metadata Update Data** | admin:metadata:update | Update notification accessible ONLY to the CDR Register. If the Data Holder uses Private Key JWT Client Authentication to authenticate the CDR Register, this scope is required.<br/><br/>Includes permission to notify Data Holders of changes to Data Recipient metadata held by the CDR Register.
-**Bank Participant Data** | cdr-register:bank:read | This scope would allow Data Recipients and Data Holders access to participant metadata in the banking sector, held by the CDR Register.
-**Participant Data** | cdr-register:read | This scope would allow Data Recipients and Data Holders access to participant metadata held by the CDR Register.
+**Bank Participant Data** | cdr-register:bank:read | This scope would allow Data Recipients and Data Holders access to participant metadata in the banking sector, held by the CDR Register. <br/>This scope is valid for the following endpoint versions:<ul><li>GetDataHolderBrands [**V1**](includes/obsolete/get-data-holder-brands-v1.html#get-data-holder-brands-v1)</li><li>GetSoftwareStatementAssertion [**V2**](includes/obsolete/get-software-statement-assertion-v2.html#get-software-statement-assertion-ssa-v2)</li></ul>This scope is replaced by `cdr-register:read` for newer versions of these endpoints.
+**Participant Data** | cdr-register:read | This scope would allow Data Recipients and Data Holders access to participant metadata held by the CDR Register. <br/> Replaces `cdr-register:bank:read` for the following endpoint versions:<ul><li>GetDataHolderBrands [**V2**](#get-data-holder-brands)</li><li>GetSoftwareStatementAssertion [**V3**](#get-software-statement-assertion-ssa)</li></ul>
 **Register Client** | cdr:registration | This scope would allow a Data Recipient to register or manage a software product client with a Data Holder.
