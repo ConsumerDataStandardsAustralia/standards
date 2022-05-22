@@ -687,7 +687,7 @@
                     },
                     "timeZone": {
                         "type": "string",
-                        "description": "Required if pricingModel is set to TIME_OF_USE.  Defines the time zone to use for calculation of the time of use thresholds",
+                        "description": "Required if pricingModel is set to TIME_OF_USE.  Defines the time zone to use for calculation of the time of use thresholds. Defaults to AEST if absent",
                         "enum": ["LOCAL",
                             "AEST"
                         ]
@@ -1309,6 +1309,13 @@
                             "type": "string",
                             "x-cds-type": "AmountString",
                             "description": "The amount of access charge for the tariff period, in dollars per day exclusive of GST."
+                        },
+                        "timeZone": {
+                            "type": "string",
+                            "description": "Specifies the charge specific time zone for calculation of the time of use thresholds. If absent, timezone value in EnergyPlanContract is assumed.",
+                            "enum": ["LOCAL",
+                                "AEST"
+                            ]
                         },
                         "rateBlockUType": {
                             "type": "string",

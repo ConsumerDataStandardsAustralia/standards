@@ -19,6 +19,7 @@ This release addresses the following change requests raised on [Standards Mainte
 
 - [Standards Maintenance Issue 503: Fix documentation defect for CDR Arrangement JWT method](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/503)
 - [Standards Maintenance Issue 504: Correct Data Language for Contact Details (profile scope and individual claims)](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/504)
+- [Standards Maintenance Issue 439: Review Pricing Model & Time Zone attributes within Account Detail Payload](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/439)
 - [Standards Maintenance Issue 501: Register API x-v headers moving to mandatory impacts compatibility with older versions of these APIs](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/501)
 - [Standards Maintenance Issue 438: Representing adjustment transactions within the Billing Payload for C&I customers](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/438)
 - [Standards Maintenance Issue 457: Energy - Get Service Point Detail register suffix should be optional](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/457)
@@ -54,6 +55,7 @@ This release addresses the following Decision Proposals published on [Standards]
 
 |Change|Description|Link|
 |------|-----------|----|
+| Energy schema | [**Standards Maintenance #439**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/439) Added timezone field to EnergyPlanTariffPeriod. Updated description of EnergyPlanContract.timezone to specify default value of AEST | [Energy Schema](../../#energy-apis) |
 | Energy schema | [**Standards Maintenance #449**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/449): Made EnergyPlanSolarFeedInTariff.timeVaryingTariffs.timeVariations.days mandatory | [Energy Schema](../../#energy-apis) |
 | Energy schema | [**Standards Maintenance #448**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/448): Changed percentOfBill, percentOfUse, fixedAmount and percentOverThreshold attributes from optional to conditional within [EnergyPlanDiscounts](../../#tocSenergyplandiscounts) schema | [Energy Schema](../../#energy-apis) |
 | Energy schema | [**Standards Maintenance #438**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/438): Added 'calculationFactors' and 'adjustments' objects to ['EnergyBillingOtherTransaction'](../../#tocSenergybillingothertransaction) model to allow consistent representation of any calculation factors (i.e. DLF or MLF) used for deriving other charges and any adjustments arising from other types of charges such as environmental charge. | [Energy Schema](../../#energy-apis) |
@@ -63,7 +65,6 @@ This release addresses the following Decision Proposals published on [Standards]
 | Register APIs | [**Standards Maintenance #444**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/444) Added GetDataHolderBrandsSummary API to expose public details of Data Holder Brands from the CDR Register to public clients | [Register APIs](../../#register-apis) |
 | Register APIs | [**Standards Maintenance #498**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/498) New authenticated endpoints only require `cdr-register:read` as the authorisation scope | [Register APIs](../../#register-apis) |
 | Energy schema | [**Standards Maintenance #476**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/476): Updated EnergyConcession model to allow representation of concessions that are calculated based on variable parameters | [Energy Schema](../../#energy-apis) |
-
 
 ## Information Security Profile
 
