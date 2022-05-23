@@ -221,7 +221,7 @@ Obsolete versions: [v1](includes/obsolete/get-data-holder-brands-v1.html)
 |---|---|---|---|---|
 |industry|path|string|mandatory|The industry the participant is retrieving data for (Banking, etc)|
 |Authorization|header|string|mandatory|An Authorisation Token as per **[[RFC6750]](#nref-RFC6750)**.|
-|x-v|header|string|mandatory|The version of the API end point requested by the client. Must be set to a positive integer.|
+|x-v|header|string|optional|The version of the API end point requested by the client. Must be set to a positive integer.|
 |x-min-v|header|string|optional|The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided.|
 |updated-since|query|string(date-time)|optional|query filter returns results updated since the specified date-time|
 |page|query|integer(int32)|optional|the page number to return|
@@ -315,8 +315,7 @@ Obsolete versions: [v1](includes/obsolete/get-data-holder-brands-v1.html)
     
       <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">cdr-register:bank:read,
-cdr-register:read</a>
+<a href="#authorisation-scopes">cdr-register:read</a>
 </aside>
 
     
@@ -373,7 +372,7 @@ Endpoint used by participants to discover public details of Data Holder Brands f
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |industry|path|string|mandatory|The industry the participant is retrieving data for (Banking, etc)|
-|x-v|header|string|optional|The version of the API end point requested by the client. Must be set to a positive integer.|
+|x-v|header|string|mandatory|The version of the API end point requested by the client. Must be set to a positive integer.|
 |x-min-v|header|string|optional|The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided.|
 |If-None-Match|header|string|optional|Makes the request method conditional on a recipient cache or origin server not having any current representation of the target resource with an entity-tag that does not match any of those listed in the field-value.|
 
@@ -422,6 +421,7 @@ Endpoint used by participants to discover public details of Data Holder Brands f
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseDataHoldersBrandSummaryList](#schemacdr-participant-discovery-apiresponsedataholdersbrandsummarylist)|
 |304|[Not Modified](https://tools.ietf.org/html/rfc7232#section-4.1)|Not Modified - The current representation of the target resource matches with the entity-tag provided in the If-None-Match request header|None|
 |400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Missing Required Header / Invalid Version / Invalid Path Parameter|[ResponseErrorListV2](#schemacdr-participant-discovery-apiresponseerrorlistv2)|
+|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Industry Not Found / Data Holder Brand Not Found|[ResponseErrorListV2](#schemacdr-participant-discovery-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|Unsupported Version|[ResponseErrorListV2](#schemacdr-participant-discovery-apiresponseerrorlistv2)|
 
 ### Response Headers
@@ -492,7 +492,7 @@ Obsolete versions: [v2](includes/obsolete/get-software-statement-assertion-v2.ht
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |industry|path|string|mandatory|The industry the participant is retrieving data for (Banking, etc)|
-|x-v|header|string|mandatory|The version of the API end point requested by the client. Must be set to a positive integer.|
+|x-v|header|string|optional|The version of the API end point requested by the client. Must be set to a positive integer.|
 |x-min-v|header|string|optional|The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided.|
 |dataRecipientBrandId|path|string|mandatory|Unique id for the Accredited Data Recipient Brand that the Software Product is associated with in the CDR Register|
 |softwareProductId|path|string|mandatory|Unique id for the Accredited Data Recipient Software Product in the CDR Register|
@@ -537,8 +537,7 @@ Obsolete versions: [v2](includes/obsolete/get-software-statement-assertion-v2.ht
     
       <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">cdr-register:bank:read,
-cdr-register:read</a>
+<a href="#authorisation-scopes">cdr-register:read</a>
 </aside>
 
     
@@ -595,7 +594,7 @@ Endpoint used by participants to discover the statuses for Data Holders from the
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |industry|path|string|mandatory|The industry the participant is retrieving data for (Banking, etc)|
-|x-v|header|string|mandatory|The version of the API end point requested by the client. Must be set to a positive integer.|
+|x-v|header|string|optional|The version of the API end point requested by the client. Must be set to a positive integer.|
 |x-min-v|header|string|optional|The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided.|
 |If-None-Match|header|string|optional|Makes the request method conditional on a recipient cache or origin server not having any current representation of the target resource with an entity-tag that does not match any of those listed in the field-value.|
 
@@ -704,7 +703,7 @@ Obsolete versions: [v1](includes/obsolete/get-software-product-statuses-v1.html)
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |industry|path|string|mandatory|The industry the participant is retrieving data for (Banking, etc)|
-|x-v|header|string|mandatory|The version of the API end point requested by the client. Must be set to a positive integer.|
+|x-v|header|string|optional|The version of the API end point requested by the client. Must be set to a positive integer.|
 |x-min-v|header|string|optional|The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided.|
 |If-None-Match|header|string|optional|Makes the request method conditional on a recipient cache or origin server not having any current representation of the target resource with an entity-tag that does not match any of those listed in the field-value.|
 
@@ -813,7 +812,7 @@ Obsolete versions: [v1](includes/obsolete/get-data-recipient-statuses-v1.html)
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |industry|path|string|mandatory|The industry the participant is retrieving data for (Banking, etc)|
-|x-v|header|string|mandatory|The version of the API end point requested by the client. Must be set to a positive integer.|
+|x-v|header|string|optional|The version of the API end point requested by the client. Must be set to a positive integer.|
 |x-min-v|header|string|optional|The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided.|
 |If-None-Match|header|string|optional|Makes the request method conditional on a recipient cache or origin server not having any current representation of the target resource with an entity-tag that does not match any of those listed in the field-value.|
 
@@ -922,7 +921,7 @@ Obsolete versions: [v2](includes/obsolete/get-data-recipients-v2.html)
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |industry|path|string|mandatory|The industry the participant is retrieving data for (Banking, etc)|
-|x-v|header|string|mandatory|The version of the API end point requested by the client. Must be set to a positive integer.|
+|x-v|header|string|optional|The version of the API end point requested by the client. Must be set to a positive integer.|
 |x-min-v|header|string|optional|The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided.|
 |If-None-Match|header|string|optional|Makes the request method conditional on a recipient cache or origin server not having any current representation of the target resource with an entity-tag that does not match any of those listed in the field-value.|
 
