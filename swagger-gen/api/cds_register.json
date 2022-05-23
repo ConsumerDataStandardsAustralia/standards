@@ -92,7 +92,6 @@
             "name": "x-v",
             "in": "header",
             "description": "The version of the API end point requested by the client. Must be set to a positive integer.",
-            "required": true,
             "schema": {
               "type": "string"
             }
@@ -185,9 +184,118 @@
         },
         "x-version": "2",
         "x-scopes": [
-          "cdr-register:bank:read",
           "cdr-register:read"
         ]
+      }
+    },
+    "/cdr-register/v1/{industry}/data-holders/brands/summary": {
+      "get": {
+        "tags": [
+          "Register"
+        ],
+        "summary": "Get Data Holder Brands Summary",
+        "description": "Endpoint used by participants to discover public details of Data Holder Brands from the CDR Register",
+        "operationId": "GetDataHolderBrandsSummary",
+        "parameters": [
+          {
+            "name": "industry",
+            "in": "path",
+            "description": "The industry the participant is retrieving data for (Banking, etc)",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "banking",
+                "energy",
+                "telco",
+                "all"
+              ]
+            }
+          },
+          {
+            "name": "x-v",
+            "in": "header",
+            "description": "The version of the API end point requested by the client. Must be set to a positive integer.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-min-v",
+            "in": "header",
+            "description": "The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "If-None-Match",
+            "in": "header",
+            "description": "Makes the request method conditional on a recipient cache or origin server not having any current representation of the target resource with an entity-tag that does not match any of those listed in the field-value.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "headers": {
+              "x-v": {
+                "description": "The version of the API end point that the CDR Register has responded with.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Etag": {
+                "description": "Entity tag that uniquely represents the requested resource.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseDataHoldersBrandSummaryList"
+                }
+              }
+            }
+          },
+          "304": {
+            "description": "Not Modified - The current representation of the target resource matches with the entity-tag provided in the If-None-Match request header",
+            "headers": {
+              "Etag": {
+                "description": "Entity tag that uniquely represents the requested resource.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Missing Required Header / Invalid Version / Invalid Path Parameter",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseErrorListV2"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": "Unsupported Version",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseErrorListV2"
+                }
+              }
+            }
+          }
+        },
+        "x-version": "1"
       }
     },
     "/cdr-register/v1/{industry}/data-recipients/brands/{dataRecipientBrandId}/software-products/{softwareProductId}/ssa": {
@@ -218,7 +326,6 @@
             "name": "x-v",
             "in": "header",
             "description": "The version of the API end point requested by the client. Must be set to a positive integer.",
-            "required": true,
             "schema": {
               "type": "string"
             }
@@ -341,7 +448,6 @@
         },
         "x-version": "3",
         "x-scopes": [
-          "cdr-register:bank:read",
           "cdr-register:read"
         ]
       }
@@ -374,7 +480,6 @@
             "name": "x-v",
             "in": "header",
             "description": "The version of the API end point requested by the client. Must be set to a positive integer.",
-            "required": true,
             "schema": {
               "type": "string"
             }
@@ -484,7 +589,6 @@
             "name": "x-v",
             "in": "header",
             "description": "The version of the API end point requested by the client. Must be set to a positive integer.",
-            "required": true,
             "schema": {
               "type": "string"
             }
@@ -594,7 +698,6 @@
             "name": "x-v",
             "in": "header",
             "description": "The version of the API end point requested by the client. Must be set to a positive integer.",
-            "required": true,
             "schema": {
               "type": "string"
             }
@@ -704,7 +807,6 @@
             "name": "x-v",
             "in": "header",
             "description": "The version of the API end point requested by the client. Must be set to a positive integer.",
-            "required": true,
             "schema": {
               "type": "string"
             }
@@ -1040,6 +1142,105 @@
             "description": "The date/time that the Data Holder Brand data was last updated in the Register",
             "format": "date-time",
             "x-cds-type": "DateTimeString"
+          }
+        }
+      },
+      "ResponseDataHoldersBrandSummaryList": {
+        "required": [
+          "data",
+          "links",
+          "meta"
+        ],
+        "type": "object",
+        "properties": {
+          "data": {
+            "uniqueItems": true,
+            "type": "array",
+            "description": "Response data for the query",
+            "items": {
+              "$ref": "#/components/schemas/DataHolderBrandSummary"
+            }
+          },
+          "links": {
+            "$ref": "#/components/schemas/Links"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta"
+          }
+        }
+      },
+      "DataHolderBrandSummary": {
+        "required": [
+          "brandName",
+          "publicBaseUri",
+          "logoUri",
+          "industries",
+          "lastUpdated"
+        ],
+        "type": "object",
+        "properties": {
+          "dataHolderBrandId": {
+            "maxLength": 36,
+            "type": "string",
+            "x-conditional": true,
+            "description": "Unique id of the Data Holder Brand issued by the CDR Register"
+          },
+          "interimId": {
+            "maxLength": 36,
+            "type": "string",
+            "x-conditional": true,
+            "description": "Interim id of the Data Holder Brand issued by the CDR Register. This is to be used to uniquely identify the record when dataHolderBrandId is not populated and is not to be reused"
+          },
+          "brandName": {
+            "maxLength": 200,
+            "type": "string",
+            "description": "The name of Data Holder Brand"
+          },
+          "publicBaseUri": {
+            "maxLength": 1000,
+            "type": "string",
+            "description": "Base URI for the Data Holder's Consumer Data Standard public endpoints",
+            "x-cds-type": "URIString"
+          },
+          "logoUri": {
+            "maxLength": 1000,
+            "type": "string",
+            "description": "Brand logo URI",
+            "x-cds-type": "URIString"
+          },
+          "industries": {
+            "uniqueItems": true,
+            "type": "array",
+            "description": "The industries the Data Holder Brand belongs to. Please note that the CDR Register entity model is constrained to one industry per brand which is planned to be relaxed in the future.",
+            "items": {
+              "type": "string",
+              "enum": [
+                "banking",
+                "energy",
+                "telco"
+              ]
+            }
+          },
+          "lastUpdated": {
+            "type": "string",
+            "description": "The date/time that the Data Holder Brand data was last updated in the Register",
+            "format": "date-time",
+            "x-cds-type": "DateTimeString"
+          },
+          "abn": {
+            "maxLength": 11,
+            "type": "string",
+            "description": "Australian Business Number for the organisation"
+          },
+          "acn": {
+            "maxLength": 9,
+            "type": "string",
+            "description": "Australian Company Number for the organisation"
+          },
+          "arbn": {
+            "maxLength": 9,
+            "type": "string",
+            "description": "Australian Registered Body Number.  ARBNs are issued to registrable Australian bodies and foreign companies"
           }
         }
       },
@@ -1689,7 +1890,6 @@
         "name": "x-v",
         "in": "header",
         "description": "The version of the API end point requested by the client. Must be set to a positive integer.",
-        "required": true,
         "schema": {
           "type": "string"
         }
