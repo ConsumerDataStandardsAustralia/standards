@@ -284,6 +284,16 @@
               }
             }
           },
+          "404": {
+            "description": "Industry Not Found / Data Holder Brand Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseErrorListV2"
+                }
+              }
+            }
+          },
           "406": {
             "description": "Unsupported Version",
             "content": {
