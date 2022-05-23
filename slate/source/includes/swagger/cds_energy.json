@@ -7508,7 +7508,7 @@
             "type" : "string"
           }
         },
-        "required" : [ "registerConsumptionType", "registerId", "registerSuffix" ],
+        "required" : [ "registerConsumptionType", "registerId" ],
         "type" : "object"
       },
       "EnergyServicePointDetail_meters" : {

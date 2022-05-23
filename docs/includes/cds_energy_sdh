@@ -2705,7 +2705,7 @@ This operation does not require authentication
 <tr>
 <td>»» registerSuffix</td>
 <td>string</td>
-<td>mandatory</td>
+<td>optional</td>
 <td>Register suffix of the meter register where the meter reads are obtained</td>
 </tr>
 <tr>

@@ -7779,7 +7779,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |»» nextScheduledReadDate|[DateString](#common-field-types)|optional|This date is the next scheduled meter read date (NSRD) if a manual Meter Reading is required|
 |» registers|[object]|optional|Usage data registers available from the meter. This may be empty where there are no meters physically installed at the service point|
 |»» registerId|string|mandatory|Unique identifier of the register within this service point.  Is not globally unique|
-|»» registerSuffix|string|mandatory|Register suffix of the meter register where the meter reads are obtained|
+|»» registerSuffix|string|optional|Register suffix of the meter register where the meter reads are obtained|
 |»» averagedDailyLoad|number|optional|The energy delivered through a connection point or metering point over an extended period normalised to a 'per day' basis (kWh). This value is calculated annually.|
 |»» registerConsumptionType|string|mandatory|Indicates the consumption type of register|
 |»» networkTariffCode|string|optional|The Network Tariff Code is a free text field containing a code supplied and published by the local network service provider|

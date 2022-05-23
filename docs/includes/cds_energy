@@ -12630,7 +12630,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>»» registerSuffix</td>
 <td>string</td>
-<td>mandatory</td>
+<td>optional</td>
 <td>Register suffix of the meter register where the meter reads are obtained</td>
 </tr>
 <tr>

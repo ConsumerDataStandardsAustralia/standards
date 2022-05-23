@@ -3177,7 +3177,6 @@ components:
       required:
       - registerConsumptionType
       - registerId
-      - registerSuffix
       type: object
     EnergyServicePointDetail_meters:
       example:

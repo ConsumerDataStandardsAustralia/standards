@@ -1878,7 +1878,6 @@
                                         "type": "object",
                                         "required": [
                                             "registerId",
-                                            "registerSuffix",
                                             "registerConsumptionType"
                                         ],
                                         "properties": {
@@ -2756,9 +2755,9 @@
                         "items": {
                             "type": "string",
                             "enum": [
-                                "INVOICE", 
-                                "USAGE", 
-                                "SERVICE_CHARGE", 
+                                "INVOICE",
+                                "USAGE",
+                                "SERVICE_CHARGE",
                                 "CONTROLLED_LOAD"
                             ]
                         }

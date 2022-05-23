@@ -486,7 +486,6 @@
                                         "type": "object",
                                         "required": [
                                             "registerId",
-                                            "registerSuffix",
                                             "registerConsumptionType"
                                         ],
                                         "properties": {
@@ -1101,7 +1100,7 @@
                     "description": "State in which the address belongs. Valid enumeration defined by Australia Post PAF code file [State Type Abbreviation](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf). NSW, QLD, VIC, NT, WA, SA, TAS, ACT, AAT"
                   }
                 }
-            },            
+            },
 			"Links": {
 				"type": "object",
 				"required": ["self"],
@@ -1262,7 +1261,7 @@
 			},
 			"x-fapi-interaction-id": {
 				"name": "x-fapi-interaction-id",
-				"description": "The x-fapi-interaction-id header value provided by the Data Recipient. If not supplied by the Data Recipient, the primary Data Holder MUST create a unique **[[RFC4122]](#nref-RFC4122)** UUID value for the x-fapi-interaction-id header.", 
+				"description": "The x-fapi-interaction-id header value provided by the Data Recipient. If not supplied by the Data Recipient, the primary Data Holder MUST create a unique **[[RFC4122]](#nref-RFC4122)** UUID value for the x-fapi-interaction-id header.",
 				"in": "header",
 				"required": true,
 				"schema": {
