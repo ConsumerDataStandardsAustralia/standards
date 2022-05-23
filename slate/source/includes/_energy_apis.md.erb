@@ -10,15 +10,52 @@ This specification defines the APIs for Data Holders exposing Energy endpoints.
 <tr><td><a href='./includes/swagger/cds_energy.yaml'>Energy OpenAPI Specification (YAML)</a></td></tr>
 </table>
 
-
 ```diff
+Below are the changes to the Energy APIs section of the
+standards.
+
+Added the following attribute to EnergyPlanTariffPeriod
++ timeZone
+
+Changed description of EnergyPlanContract.timezone from:
+- Required if pricingModel is set to TIME_OF_USE.  Defines the time zone to use for calculation of the time of use thresholds
+to:
++ Required if pricingModel is set to TIME_OF_USE.  Defines the time zone to use for calculation of the time of use thresholds. Defaults to AEST if absent
+
+The `EnergyPlanSolarFeedInTariff.timeVaryingTariffs.timeVariations.days` field has been made mandatory 
+
+The `percentOfBill`. `percentOfUse`, `fixedAmount` and `percentOverThreshold` fields in `EnergyPlanDiscounts` model have been made condtitional
+
+The `EnergyServicePointDetail.meters.registers.registerSuffix` field has been made optional
+
+The `EnergyServicePointDetail.meters` and `EnergyServicePointDetail.meters.registers` fields have been made optional
+
+Updated description of `EnergyServicePointDetail.meters` and `EnergyServicePointDetail.meters.registers` fields
+
+The location model in `EnergyServicePointDetail` has been modified to CommonPhysicalAddress model
+
 The following objects were added to EnergyBillingOtherTransaction model
 + calculationFactors
 + adjustments
 
-The `EnergyServicePointDetail.meters.registers.registerSuffix` field has been made optional
+Modified the description of `oldest-date` from:
+- Constrain the request to records with effective date at or after this date. If absent defaults to newest-date minus 24 months days. Format is aligned to DateString common type
+to:
++ Constrain the request to records with effective date at or after this date. If absent defaults to newest-date minus 24 months. Format is aligned to DateString common type
 
-The location model in `EnergyServicePointDetail` has been modified to CommonPhysicalAddress model
+The following changes were made to EnergyConcession model
+* Made additionalInfo field conditional
++ type
++ discountFrequency
++ amount
++ percentage
++ appliedTo
+- dailyDiscount
+- monthlyDiscount
+- yearlyDiscount
+- percentageDiscount
+
+`EnergyServicePointDetail.meters` and `EnergyServicePointDetail.meters.registers` have been converted into arrays
 ```
 
 <%= partial "includes/cds_energy.md" %>
