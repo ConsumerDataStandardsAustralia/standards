@@ -37,6 +37,7 @@ This release addresses the following change requests raised on [Standards Mainte
 - [Standards Staging Issue 170: Fix documentation defect for meters and registers object in EnergyServicePointDetail model](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/170)
 - [Standards Staging Issue 133: Delete 'days' from applicable period for energy APIs](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/133)
 - [Standards Staging Issue 131: Minor edit - replace 'as a query parameter' with 'a path'](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/131)
+- [Standards Staging Issue 167: Fix documentation defect to make x-fapi-interaction-id as mandatory in Energy SDH APIs](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/167)
 
 ### Decision Proposals
 
@@ -73,6 +74,7 @@ This release addresses the following Decision Proposals published on [Standards]
 | Register APIs | [**Standards Maintenance #498**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/498) New authenticated endpoints only require `cdr-register:read` as the authorisation scope | [Register APIs](../../#register-apis) |
 | Energy schema | [**Standards Maintenance #476**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/476): Updated EnergyConcession model to allow representation of concessions that are calculated based on variable parameters | [Energy Schema](../../#energy-apis) |
 | Energy schema | [**Standards Staging #170**](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/170): The EnergyServicePointDetail.meters and EnergyServicePointDetail.meters.registers have been made into arrays, correcting a technical documentation issue | [Energy Schema](../../#energy-apis) |
+| Energy schema | [**Standards Staging #167**](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/167): Made x-fapi-interaction-id header mandatory in Energy secondary data holder APIs, correcting a technical documentation issue | [Energy Schema](../../#energy-apis) |
 
 ## Information Security Profile
 
