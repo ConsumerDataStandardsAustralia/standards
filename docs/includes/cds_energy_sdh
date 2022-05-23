@@ -105,8 +105,8 @@ x-cds-arrangement: string
 <td>x-fapi-interaction-id</td>
 <td>header</td>
 <td>string</td>
-<td>optional</td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+<td>mandatory</td>
+<td>The x-fapi-interaction-id header value provided by the Data Recipient. If not supplied by the Data Recipient, the primary Data Holder MUST create a unique <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value for the x-fapi-interaction-id header.</td>
 </tr>
 <tr>
 <td>x-cds-arrangement</td>
@@ -353,8 +353,8 @@ x-cds-arrangement: string
 <td>x-fapi-interaction-id</td>
 <td>header</td>
 <td>string</td>
-<td>optional</td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+<td>mandatory</td>
+<td>The x-fapi-interaction-id header value provided by the Data Recipient. If not supplied by the Data Recipient, the primary Data Holder MUST create a unique <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value for the x-fapi-interaction-id header.</td>
 </tr>
 <tr>
 <td>x-cds-arrangement</td>
@@ -665,8 +665,8 @@ x-cds-arrangement: string
 <td>x-fapi-interaction-id</td>
 <td>header</td>
 <td>string</td>
-<td>optional</td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+<td>mandatory</td>
+<td>The x-fapi-interaction-id header value provided by the Data Recipient. If not supplied by the Data Recipient, the primary Data Holder MUST create a unique <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value for the x-fapi-interaction-id header.</td>
 </tr>
 <tr>
 <td>x-cds-arrangement</td>
@@ -944,8 +944,8 @@ x-cds-arrangement: string
 <td>x-fapi-interaction-id</td>
 <td>header</td>
 <td>string</td>
-<td>optional</td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+<td>mandatory</td>
+<td>The x-fapi-interaction-id header value provided by the Data Recipient. If not supplied by the Data Recipient, the primary Data Holder MUST create a unique <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value for the x-fapi-interaction-id header.</td>
 </tr>
 <tr>
 <td>x-cds-arrangement</td>
@@ -1203,8 +1203,8 @@ x-cds-arrangement: string
 <td>x-fapi-interaction-id</td>
 <td>header</td>
 <td>string</td>
-<td>optional</td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+<td>mandatory</td>
+<td>The x-fapi-interaction-id header value provided by the Data Recipient. If not supplied by the Data Recipient, the primary Data Holder MUST create a unique <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value for the x-fapi-interaction-id header.</td>
 </tr>
 <tr>
 <td>x-cds-arrangement</td>
@@ -1470,8 +1470,8 @@ x-cds-arrangement: string
 <td>x-fapi-interaction-id</td>
 <td>header</td>
 <td>string</td>
-<td>optional</td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+<td>mandatory</td>
+<td>The x-fapi-interaction-id header value provided by the Data Recipient. If not supplied by the Data Recipient, the primary Data Holder MUST create a unique <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value for the x-fapi-interaction-id header.</td>
 </tr>
 <tr>
 <td>x-cds-arrangement</td>

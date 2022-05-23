@@ -291,7 +291,7 @@
                 }
               }
             },
-            "description" : "Industry Not Found / Data Holder Brand Not Found"
+            "description" : "Industry Not Found"
           },
           "406" : {
             "content" : {

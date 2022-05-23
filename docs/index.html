@@ -1623,8 +1623,6 @@ Note: changes to request and response payloads are listed at the beginning of th
 
 <p>The actual release dates for the Register APIs are expected to occur prior to these dates and are not defined by the Standards.</p>
 
-<p>The Register API release schedule will be made available in the future.</p>
-
 <h2 id='endpoint-version-schedule'>Endpoint Version Schedule</h2>
 
 <p>A table-view of all endpoint versioning is available <a href='includes/endpoint-version-schedule/'>here</a>.</p>
@@ -5117,7 +5115,8 @@ Accept: application/json
 <td>A256GCM</br>A128CBC-HS256</td>
 </tr>
 </tbody></table>
-<h3 id='registration-validation'>Registration Validation</h3><pre class="highlight diff tab-diff"><code><span class="gi">+ Added requirement for data holders to ignore unsupported authorisation scopes
+<h3 id='registration-validation'>Registration Validation</h3><pre class="highlight diff tab-diff"><code>Added the following requirement:
+<span class="gi">+ Data Holders MUST ignore unsupported authorisation scopes presented in the SSA for the creation and update of client registrations.
 </span></code></pre>
 <p>Validation and use of the JWT and the claims described above <strong>MUST</strong> be performed in accordance with <strong><a href="#nref-JWT">[JWT]</a></strong>.</p>
 
@@ -5393,7 +5392,8 @@ grant_type=client_credentials&amp;
 <td>Removed</td>
 </tr>
 </tbody></table>
-<h3 id='data-holder-responsibilities'>Data Holder Responsibilities</h3><pre class="highlight diff tab-diff"><code><span class="gi">+ Added clarification that when statuses are not received or recognised from the CDR Register, the ACCC can inform Data Holders of statuses to trust using an alternative mechanism. There is no upper bound for how long previous status values should remain trusted.
+<h3 id='data-holder-responsibilities'>Data Holder Responsibilities</h3><pre class="highlight diff tab-diff"><code>Added the following requirement:
+<span class="gi">+ Data Holders SHOULD continue to use the previous status value until a valid value is returned by the CDR Register or the ACCC informs the Data Holder using an alternative mechanism. There is no upper bound for how long previous status values should remain trusted.
 </span></code></pre>
 <p>The CDR Registrar has the ability to change the status of a Software Product independently of the Data Recipient&#39;s accreditation status. Therefore, both the Data Recipient and Software Product statuses <strong>SHOULD</strong> be referenced, to determine the Data Holder&#39;s responsibilities for data disclosure, consent and registration management.</p>
 
@@ -8205,8 +8205,7 @@ standards.
 
 <span class="gi">+ Added GetDataHolderBrandsSummary API to expose public details of Data Holder Brands from the CDR Register to public clients
 </span>
-* x-v header requirements for versioned Register APIs moved from mandatory to optional
-
+x-v header requirements for versioned Register APIs moved from mandatory to optional
 </code></pre>
 <h2 id='get-openid-provider-config'>Get OpenId Provider Config</h2>
 
@@ -8855,7 +8854,7 @@ If-None-Match: string
 <tr>
 <td>404</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.4">Not Found</a></td>
-<td>Industry Not Found / Data Holder Brand Not Found</td>
+<td>Industry Not Found</td>
 <td><a href="#schemacdr-participant-discovery-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
@@ -46262,6 +46261,8 @@ The `EnergyServicePointDetail.meters.registers.registerSuffix` field has been ma
 The location model in `EnergyServicePointDetail` has been modified to CommonPhysicalAddress model
 
 Updated description of `EnergyServicePointDetail.meters` and `EnergyServicePointDetail.meters.registers` fields
+
+`x-fapi-interaction-id` header has been made mandatory
 </code></pre>
 <h2 id='get-service-points-sr'>Get Service Points (SR)</h2>
 
@@ -46374,8 +46375,8 @@ x-cds-arrangement: string
 <td>x-fapi-interaction-id</td>
 <td>header</td>
 <td>string</td>
-<td>optional</td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+<td>mandatory</td>
+<td>The x-fapi-interaction-id header value provided by the Data Recipient. If not supplied by the Data Recipient, the primary Data Holder MUST create a unique <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value for the x-fapi-interaction-id header.</td>
 </tr>
 <tr>
 <td>x-cds-arrangement</td>
@@ -46631,8 +46632,8 @@ x-cds-arrangement: string
 <td>x-fapi-interaction-id</td>
 <td>header</td>
 <td>string</td>
-<td>optional</td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+<td>mandatory</td>
+<td>The x-fapi-interaction-id header value provided by the Data Recipient. If not supplied by the Data Recipient, the primary Data Holder MUST create a unique <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value for the x-fapi-interaction-id header.</td>
 </tr>
 <tr>
 <td>x-cds-arrangement</td>
@@ -46953,8 +46954,8 @@ x-cds-arrangement: string
 <td>x-fapi-interaction-id</td>
 <td>header</td>
 <td>string</td>
-<td>optional</td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+<td>mandatory</td>
+<td>The x-fapi-interaction-id header value provided by the Data Recipient. If not supplied by the Data Recipient, the primary Data Holder MUST create a unique <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value for the x-fapi-interaction-id header.</td>
 </tr>
 <tr>
 <td>x-cds-arrangement</td>
@@ -47241,8 +47242,8 @@ x-cds-arrangement: string
 <td>x-fapi-interaction-id</td>
 <td>header</td>
 <td>string</td>
-<td>optional</td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+<td>mandatory</td>
+<td>The x-fapi-interaction-id header value provided by the Data Recipient. If not supplied by the Data Recipient, the primary Data Holder MUST create a unique <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value for the x-fapi-interaction-id header.</td>
 </tr>
 <tr>
 <td>x-cds-arrangement</td>
@@ -47509,8 +47510,8 @@ x-cds-arrangement: string
 <td>x-fapi-interaction-id</td>
 <td>header</td>
 <td>string</td>
-<td>optional</td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+<td>mandatory</td>
+<td>The x-fapi-interaction-id header value provided by the Data Recipient. If not supplied by the Data Recipient, the primary Data Holder MUST create a unique <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value for the x-fapi-interaction-id header.</td>
 </tr>
 <tr>
 <td>x-cds-arrangement</td>
@@ -47785,8 +47786,8 @@ x-cds-arrangement: string
 <td>x-fapi-interaction-id</td>
 <td>header</td>
 <td>string</td>
-<td>optional</td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+<td>mandatory</td>
+<td>The x-fapi-interaction-id header value provided by the Data Recipient. If not supplied by the Data Recipient, the primary Data Holder MUST create a unique <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value for the x-fapi-interaction-id header.</td>
 </tr>
 <tr>
 <td>x-cds-arrangement</td>

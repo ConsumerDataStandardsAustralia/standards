@@ -56,11 +56,11 @@
           },
           "style" : "simple"
         }, {
-          "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
+          "description" : "The x-fapi-interaction-id header value provided by the Data Recipient. If not supplied by the Data Recipient, the primary Data Holder MUST create a unique **[[RFC4122]](#nref-RFC4122)** UUID value for the x-fapi-interaction-id header.",
           "explode" : false,
           "in" : "header",
           "name" : "x-fapi-interaction-id",
-          "required" : false,
+          "required" : true,
           "schema" : {
             "type" : "string"
           },
@@ -209,11 +209,11 @@
           },
           "style" : "simple"
         }, {
-          "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
+          "description" : "The x-fapi-interaction-id header value provided by the Data Recipient. If not supplied by the Data Recipient, the primary Data Holder MUST create a unique **[[RFC4122]](#nref-RFC4122)** UUID value for the x-fapi-interaction-id header.",
           "explode" : false,
           "in" : "header",
           "name" : "x-fapi-interaction-id",
-          "required" : false,
+          "required" : true,
           "schema" : {
             "type" : "string"
           },
@@ -403,11 +403,11 @@
           },
           "style" : "simple"
         }, {
-          "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
+          "description" : "The x-fapi-interaction-id header value provided by the Data Recipient. If not supplied by the Data Recipient, the primary Data Holder MUST create a unique **[[RFC4122]](#nref-RFC4122)** UUID value for the x-fapi-interaction-id header.",
           "explode" : false,
           "in" : "header",
           "name" : "x-fapi-interaction-id",
-          "required" : false,
+          "required" : true,
           "schema" : {
             "type" : "string"
           },
@@ -607,11 +607,11 @@
           },
           "style" : "simple"
         }, {
-          "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
+          "description" : "The x-fapi-interaction-id header value provided by the Data Recipient. If not supplied by the Data Recipient, the primary Data Holder MUST create a unique **[[RFC4122]](#nref-RFC4122)** UUID value for the x-fapi-interaction-id header.",
           "explode" : false,
           "in" : "header",
           "name" : "x-fapi-interaction-id",
-          "required" : false,
+          "required" : true,
           "schema" : {
             "type" : "string"
           },
@@ -760,11 +760,11 @@
           },
           "style" : "simple"
         }, {
-          "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
+          "description" : "The x-fapi-interaction-id header value provided by the Data Recipient. If not supplied by the Data Recipient, the primary Data Holder MUST create a unique **[[RFC4122]](#nref-RFC4122)** UUID value for the x-fapi-interaction-id header.",
           "explode" : false,
           "in" : "header",
           "name" : "x-fapi-interaction-id",
-          "required" : false,
+          "required" : true,
           "schema" : {
             "type" : "string"
           },
@@ -922,11 +922,11 @@
           },
           "style" : "simple"
         }, {
-          "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
+          "description" : "The x-fapi-interaction-id header value provided by the Data Recipient. If not supplied by the Data Recipient, the primary Data Holder MUST create a unique **[[RFC4122]](#nref-RFC4122)** UUID value for the x-fapi-interaction-id header.",
           "explode" : false,
           "in" : "header",
           "name" : "x-fapi-interaction-id",
-          "required" : false,
+          "required" : true,
           "schema" : {
             "type" : "string"
           },
@@ -1149,11 +1149,11 @@
         "style" : "simple"
       },
       "x-fapi-interaction-id" : {
-        "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
+        "description" : "The x-fapi-interaction-id header value provided by the Data Recipient. If not supplied by the Data Recipient, the primary Data Holder MUST create a unique **[[RFC4122]](#nref-RFC4122)** UUID value for the x-fapi-interaction-id header.",
         "explode" : false,
         "in" : "header",
         "name" : "x-fapi-interaction-id",
-        "required" : false,
+        "required" : true,
         "schema" : {
           "type" : "string"
         },

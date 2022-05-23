@@ -608,7 +608,7 @@ If-None-Match: string
 <tr>
 <td>404</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.4">Not Found</a></td>
-<td>Industry Not Found / Data Holder Brand Not Found</td>
+<td>Industry Not Found</td>
 <td><a href="#schemacdr-participant-discovery-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
