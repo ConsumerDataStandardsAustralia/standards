@@ -38,6 +38,7 @@ This release addresses the following change requests raised on [Standards Mainte
 - [Standards Staging Issue 153: Modifiy Energy 'location' to be a CommonPhysicalAddress model](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/153)
 - [Standards Staging Issue 133: Delete 'days' from applicable period for energy APIs](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/133)
 - [Standards Staging Issue 131: Minor edit - replace 'as a query parameter' with 'a path'](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/131)
+- [Standards Staging Issue 167: Fix documentation defect to make x-fapi-interaction-id as mandatory in Energy SDH APIs](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/167)
 
 ### Decision Proposals
 
@@ -71,6 +72,7 @@ This release addresses the following Decision Proposals published on [Standards]
 | Energy schema | [**Standards Maintenance #478**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/478) Made EnergyServicePointDetail.meters and EnergyServicePointDetail.meters.registers fields optional | [Energy Schema](../../#energy-apis) |
 | Energy schema | [**Standards Maintenance #476**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/476): Updated EnergyConcession model to allow representation of concessions that are calculated based on variable parameters | [Energy Schema](../../#energy-apis) |
 | Energy schema | [**Standards Staging #170**](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/170): The EnergyServicePointDetail.meters and EnergyServicePointDetail.meters.registers have been made into arrays, correcting a technical documentation issue | [Energy Schema](../../#energy-apis) |
+| Energy schema | [**Standards Staging #167**](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/167): Made x-fapi-interaction-id header mandatory in Energy secondary data holder APIs, correcting a technical documentation issue | [Energy Schema](../../#energy-apis) |
 | CDR Register APIs Endpoint Version Schedule | [**Standards Maintenance #452**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/452) Set retirement dates for outstanding deprecated Register APIs| [Endpoint Version Schedule](../endpoint-version-schedule/index.html#cdr-register-apis) |
 | Register APIs | [**Standards Maintenance #501**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/501): `x-v` header requirements for versioned Register APIs moved from mandatory to optional | [Register APIs](../../index.html#register-apis) |
 | Register APIs | [**Standards Maintenance #444**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/444) Added GetDataHolderBrandsSummary API to expose public details of Data Holder Brands from the CDR Register to public clients | [Register APIs](../../#register-apis) |
