@@ -22,6 +22,7 @@ This release addresses the following change requests raised on [Standards Mainte
 - [Standards Maintenance Issue 438: Representing adjustment transactions within the Billing Payload for C&I customers](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/438)
 - [Standards Maintenance Issue 457: Energy - Get Service Point Detail register suffix should be optional](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/457)
 - [Standards Maintenance Issue 482: JWT signing non-normative examples use unsupported signing algorithm)](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/482)
+- [Standards Staging Issue 153: Modifiy Energy 'location' to be a CommonPhysicalAddress model](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/153)
 
 ### Decision Proposals
 
@@ -44,6 +45,7 @@ This release addresses the following Decision Proposals published on [Standards]
 |Change|Description|Link|
 |------|-----------|----|
 | Energy schema | [**Standards Maintenance #457**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/457) Made EnergyServicePointDetail.meters.registers.registerSuffix field optional | [Energy Schema](../../#energy-apis) |
+| Energy schema | [**Standards Staging #153**](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/153): Modified Energy 'location' to be a CommonPhysicalAddress model | [Energy Schema](../../#energy-apis) |
 
 ## Information Security Profile
 
