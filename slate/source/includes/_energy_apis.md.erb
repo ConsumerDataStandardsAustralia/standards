@@ -32,11 +32,14 @@ The `EnergyServicePointDetail.meters` and `EnergyServicePointDetail.meters.regis
 
 Updated description of `EnergyServicePointDetail.meters` and `EnergyServicePointDetail.meters.registers` fields
 
-The `EnergyServicePointDetail.meters.registers.registerSuffix` field has been made optional
-
 The following objects were added to EnergyBillingOtherTransaction model
 + calculationFactors
 + adjustments
+
+Modified the description of `oldest-date` from:
+- Constrain the request to records with effective date at or after this date. If absent defaults to newest-date minus 24 months days. Format is aligned to DateString common type
+to:
++ Constrain the request to records with effective date at or after this date. If absent defaults to newest-date minus 24 months. Format is aligned to DateString common type
 
 The following changes were made to EnergyConcession model
 * Made additionalInfo field conditional
