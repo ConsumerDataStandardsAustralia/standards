@@ -283,8 +283,7 @@
                     "lastUpdateDateTime",
                     "distributionLossFactor",
                     "relatedParticipants",
-                    "location",
-                    "meters"
+                    "location"
                 ],
                 "properties": {
                     "servicePointId": {
@@ -566,138 +565,145 @@
                         }
                     },
                     "meters": {
-                        "type": "object",
-                        "required": [
-                            "meterId",
-                            "specifications",
-                            "registers"
-                        ],
-                        "properties": {
-                            "meterId": {
-                                "type": "string",
-                                "description": "The meter ID uniquely identifies a meter for a given service point.  It is unique in the context of the service point.  It is not globally unique"
-                            },
-                            "specifications": {
-                                "type": "object",
-                                "description": "Technical characteristics of the meter",
-                                "required": [
-                                    "status",
-                                    "installationType"
-                                ],
-                                "properties": {
-                                    "status": {
-                                        "type": "string",
-                                        "description": "A code to denote the status of the meter. Note the details of enumeration values below: <ul><li>**CURRENT** -Applies when a meter is current and not disconnected</li><li>**DISCONNECTED** - Applies when a meter is present but has been remotely disconnected</li></ul>",
-                                        "enum": ["CURRENT",
-                                            "DISCONNECTED"
-                                        ]
-                                    },
-                                    "installationType": {
-                                        "type": "string",
-                                        "description": "The metering Installation type code indicates whether the metering installation has to be manually read. Note the details of enumeration values below: <ul><li>**BASIC** - Accumulation Meter – Type 6</li><li>**COMMS1** - Interval Meter with communications – Type 1</li><li>**COMMS2** - Interval Meter with communications – Type 2</li><li>**COMMS3** - Interval Meter with communications – Type 3</li><li>**COMMS4** - Interval Meter with communications – Type 4</li><li>**COMMS4C** - CT connected metering installation that meets the minimum services specifications</li><li>**COMMS4D** - Whole current metering installation that meets the minimum services specifications</li><li>**MRAM** - Small customer metering installation – Type 4A</li><li>**MRIM** - Manually Read Interval Meter – Type 5</li><li>**UMCP** - Unmetered Supply – Type 7</li><li>**VICAMI** - A relevant metering installation as defined in clause 9.9C of the NER</li><li>**NCONUML** - Non-contestable unmeter load - Introduced as part of Global Settlement</li></ul>",
-                                        "enum": ["BASIC",
-                                            "COMMS1",
-                                            "COMMS2",
-                                            "COMMS3",
-                                            "COMMS4",
-                                            "COMMS4C",
-                                            "COMMS4D",
-                                            "MRAM",
-                                            "MRIM",
-                                            "PROF",
-                                            "SAMPLE",
-                                            "UMCP",
-                                            "VICAMI",
-                                            "NCOLNUML"
-                                        ]
-                                    },
-                                    "manufacturer": {
-                                        "type": "string",
-                                        "description": "Free text field to identify the manufacturer of the installed meter"
-                                    },
-                                    "model": {
-                                        "type": "string",
-                                        "description": "Free text field to identify the meter manufacturer’s designation for the meter model"
-                                    },
-                                    "readType": {
-                                        "type": "string",
-                                        "description": "Code to denote the method and frequency of Meter Reading. The value is formatted as follows: <ul><li>First Character = Remote (R) or Manual (M)</li><li>Second Character = Mode: T = telephone W = wireless P = powerline I = infra-red G = galvanic V = visual </li><li>Third Character = Frequency of Scheduled Meter Readings: 1 = Twelve times per year 2 = Six times per year 3 = Four times per year D = Daily or weekly</li><li>Optional Fourth Character = to identify what interval length the meter is capable of reading. This includes five, 15 and 30 minute granularity as the following: A – 5 minute B – 15 minute C – 30 minute D – Cannot convert to 5 minute (i.e. due to metering installation de-energised) M - Manually Read Accumulation Meter</li></ul> For example, <ul><li>MV3 = Manual, Visual, Quarterly</li> <li>MV3M = Manual, Visual, Quarterly, Manually Read Accumulation Meter</li> <li>RWDC = Remote, Wireless, Daily, 30 minutes interval</li></ul>"
-                                    },
-                                    "nextScheduledReadDate": {
-                                        "type": "string",
-                                        "x-cds-type": "DateString",
-                                        "description": "This date is the next scheduled meter read date (NSRD) if a manual Meter Reading is required"
+                        "description": "The meters associated with the service point. This may be empty where there are no meters physically installed at the service point",
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "required": [
+                                "meterId",
+                                "specifications"
+                            ],
+                            "properties": {
+                                "meterId": {
+                                    "type": "string",
+                                    "description": "The meter ID uniquely identifies a meter for a given service point.  It is unique in the context of the service point.  It is not globally unique"
+                                },
+                                "specifications": {
+                                    "type": "object",
+                                    "description": "Technical characteristics of the meter",
+                                    "required": [
+                                        "status",
+                                        "installationType"
+                                    ],
+                                    "properties": {
+                                        "status": {
+                                            "type": "string",
+                                            "description": "A code to denote the status of the meter. Note the details of enumeration values below: <ul><li>**CURRENT** -Applies when a meter is current and not disconnected</li><li>**DISCONNECTED** - Applies when a meter is present but has been remotely disconnected</li></ul>",
+                                            "enum": ["CURRENT",
+                                                "DISCONNECTED"
+                                            ]
+                                        },
+                                        "installationType": {
+                                            "type": "string",
+                                            "description": "The metering Installation type code indicates whether the metering installation has to be manually read. Note the details of enumeration values below: <ul><li>**BASIC** - Accumulation Meter – Type 6</li><li>**COMMS1** - Interval Meter with communications – Type 1</li><li>**COMMS2** - Interval Meter with communications – Type 2</li><li>**COMMS3** - Interval Meter with communications – Type 3</li><li>**COMMS4** - Interval Meter with communications – Type 4</li><li>**COMMS4C** - CT connected metering installation that meets the minimum services specifications</li><li>**COMMS4D** - Whole current metering installation that meets the minimum services specifications</li><li>**MRAM** - Small customer metering installation – Type 4A</li><li>**MRIM** - Manually Read Interval Meter – Type 5</li><li>**UMCP** - Unmetered Supply – Type 7</li><li>**VICAMI** - A relevant metering installation as defined in clause 9.9C of the NER</li><li>**NCONUML** - Non-contestable unmeter load - Introduced as part of Global Settlement</li></ul>",
+                                            "enum": ["BASIC",
+                                                "COMMS1",
+                                                "COMMS2",
+                                                "COMMS3",
+                                                "COMMS4",
+                                                "COMMS4C",
+                                                "COMMS4D",
+                                                "MRAM",
+                                                "MRIM",
+                                                "PROF",
+                                                "SAMPLE",
+                                                "UMCP",
+                                                "VICAMI",
+                                                "NCOLNUML"
+                                            ]
+                                        },
+                                        "manufacturer": {
+                                            "type": "string",
+                                            "description": "Free text field to identify the manufacturer of the installed meter"
+                                        },
+                                        "model": {
+                                            "type": "string",
+                                            "description": "Free text field to identify the meter manufacturer’s designation for the meter model"
+                                        },
+                                        "readType": {
+                                            "type": "string",
+                                            "description": "Code to denote the method and frequency of Meter Reading. The value is formatted as follows: <ul><li>First Character = Remote (R) or Manual (M)</li><li>Second Character = Mode: T = telephone W = wireless P = powerline I = infra-red G = galvanic V = visual </li><li>Third Character = Frequency of Scheduled Meter Readings: 1 = Twelve times per year 2 = Six times per year 3 = Four times per year D = Daily or weekly</li><li>Optional Fourth Character = to identify what interval length the meter is capable of reading. This includes five, 15 and 30 minute granularity as the following: A – 5 minute B – 15 minute C – 30 minute D – Cannot convert to 5 minute (i.e. due to metering installation de-energised) M - Manually Read Accumulation Meter</li></ul> For example, <ul><li>MV3 = Manual, Visual, Quarterly</li> <li>MV3M = Manual, Visual, Quarterly, Manually Read Accumulation Meter</li> <li>RWDC = Remote, Wireless, Daily, 30 minutes interval</li></ul>"
+                                        },
+                                        "nextScheduledReadDate": {
+                                            "type": "string",
+                                            "x-cds-type": "DateString",
+                                            "description": "This date is the next scheduled meter read date (NSRD) if a manual Meter Reading is required"
+                                        }
                                     }
-                                }
-                            },
-                            "registers": {
-                                "type": "object",
-                                "description": "Usage data registers available from the meter",
-                                "required": [
-                                    "registerId",
-                                    "registerConsumptionType"
-                                ],
-                                "properties": {
-                                    "registerId": {
-                                        "type": "string",
-                                        "description": "Unique identifier of the register within this service point.  Is not globally unique"
-                                    },
-                                    "registerSuffix": {
-                                        "type": "string",
-                                        "description": "Register suffix of the meter register where the meter reads are obtained"
-                                    },
-                                    "averagedDailyLoad": {
-                                        "type": "number",
-                                        "description": "The energy delivered through a connection point or metering point over an extended period normalised to a 'per day' basis (kWh). This value is calculated annually."
-                                    },
-                                    "registerConsumptionType": {
-                                        "type": "string",
-                                        "description": "Indicates the consumption type of register",
-                                        "enum": ["INTERVAL",
-                                            "BASIC",
-                                            "PROFILE_DATA",
-                                            "ACTIVE_IMPORT",
-                                            "ACTIVE",
-                                            "REACTIVE_IMPORT",
-                                            "REACTIVE"
-                                        ]
-                                    },
-                                    "networkTariffCode": {
-                                        "type": "string",
-                                        "description": "The Network Tariff Code is a free text field containing a code supplied and published by the local network service provider"
-                                    },
-                                    "unitOfMeasure": {
-                                        "type": "string",
-                                        "description": "The unit of measure for data held in this register"
-                                    },
-                                    "timeOfDay": {
-                                        "type": "string",
-                                        "description": "Code to identify the time validity of register contents",
-                                        "enum": ["ALLDAY",
-                                            "INTERVAL",
-                                            "PEAK",
-                                            "BUSINESS",
-                                            "SHOULDER",
-                                            "EVENING",
-                                            "OFFPEAK",
-                                            "CONTROLLED",
-                                            "DEMAND"
-                                        ]
-                                    },
-                                    "multiplier": {
-                                        "type": "number",
-                                        "description": "Multiplier required to take a register value and turn it into a value representing billable energy"
-                                    },
-                                    "controlledLoad": {
-                                        "type": "boolean",
-                                        "description": "Indicates whether the energy recorded by this register is created under a Controlled Load regime"
-                                    },
-                                    "consumptionType": {
-                                        "type": "string",
-                                        "description": "Actual/Subtractive Indicator. Note the details of enumeration values below: <ul><li>**ACTUAL** implies volume of energy actually metered between two dates</li><li>**CUMULATIVE** indicates a meter reading for a specific date. A second Meter Reading is required to determine the consumption between those two Meter Reading dates</li></ul>",
-                                        "enum": ["ACTUAL",
-                                            "CUMULATIVE"
-                                        ]
+                                },
+                                "registers": {
+                                    "description": "Usage data registers available from the meter. This may be empty where there are no meters physically installed at the service point",
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "required": [
+                                            "registerId",
+                                            "registerSuffix",
+                                            "registerConsumptionType"
+                                        ],
+                                        "properties": {
+                                            "registerId": {
+                                                "type": "string",
+                                                "description": "Unique identifier of the register within this service point.  Is not globally unique"
+                                            },
+                                            "registerSuffix": {
+                                                "type": "string",
+                                                "description": "Register suffix of the meter register where the meter reads are obtained"
+                                            },
+                                            "averagedDailyLoad": {
+                                                "type": "number",
+                                                "description": "The energy delivered through a connection point or metering point over an extended period normalised to a 'per day' basis (kWh). This value is calculated annually."
+                                            },
+                                            "registerConsumptionType": {
+                                                "type": "string",
+                                                "description": "Indicates the consumption type of register",
+                                                "enum": ["INTERVAL",
+                                                    "BASIC",
+                                                    "PROFILE_DATA",
+                                                    "ACTIVE_IMPORT",
+                                                    "ACTIVE",
+                                                    "REACTIVE_IMPORT",
+                                                    "REACTIVE"
+                                                ]
+                                            },
+                                            "networkTariffCode": {
+                                                "type": "string",
+                                                "description": "The Network Tariff Code is a free text field containing a code supplied and published by the local network service provider"
+                                            },
+                                            "unitOfMeasure": {
+                                                "type": "string",
+                                                "description": "The unit of measure for data held in this register"
+                                            },
+                                            "timeOfDay": {
+                                                "type": "string",
+                                                "description": "Code to identify the time validity of register contents",
+                                                "enum": ["ALLDAY",
+                                                    "INTERVAL",
+                                                    "PEAK",
+                                                    "BUSINESS",
+                                                    "SHOULDER",
+                                                    "EVENING",
+                                                    "OFFPEAK",
+                                                    "CONTROLLED",
+                                                    "DEMAND"
+                                                ]
+                                            },
+                                            "multiplier": {
+                                                "type": "number",
+                                                "description": "Multiplier required to take a register value and turn it into a value representing billable energy"
+                                            },
+                                            "controlledLoad": {
+                                                "type": "boolean",
+                                                "description": "Indicates whether the energy recorded by this register is created under a Controlled Load regime"
+                                            },
+                                            "consumptionType": {
+                                                "type": "string",
+                                                "description": "Actual/Subtractive Indicator. Note the details of enumeration values below: <ul><li>**ACTUAL** implies volume of energy actually metered between two dates</li><li>**CUMULATIVE** indicates a meter reading for a specific date. A second Meter Reading is required to determine the consumption between those two Meter Reading dates</li></ul>",
+                                                "enum": ["ACTUAL",
+                                                    "CUMULATIVE"
+                                                ]
+                                            }
+                                        }
                                     }
                                 }
                             }
@@ -1183,7 +1189,7 @@
 			"oldest-date": {
 				"name": "oldest-date",
 				"in": "query",
-				"description": "Constrain the request to records with effective date at or after this date. If absent defaults to newest-date minus 24 months days.  Format is aligned to DateString common type",
+				"description": "Constrain the request to records with effective date at or after this date. If absent defaults to newest-date minus 24 months.  Format is aligned to DateString common type",
 				"required": false,
 				"schema": {
 					"type": "string"
