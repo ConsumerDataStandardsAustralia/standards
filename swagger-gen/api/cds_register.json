@@ -285,7 +285,7 @@
             }
           },
           "404": {
-            "description": "Industry Not Found / Data Holder Brand Not Found",
+            "description": "Industry Not Found",
             "content": {
               "application/json": {
                 "schema": {
