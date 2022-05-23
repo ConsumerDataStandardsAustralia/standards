@@ -71,7 +71,7 @@ Obtain a list of service points owned by the customer that has authorised the cu
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request.  Default is 25 (standard pagination)|
 |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
 |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
-|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|x-fapi-interaction-id|header|string|mandatory|The x-fapi-interaction-id header value provided by the Data Recipient. If not supplied by the Data Recipient, the primary Data Holder MUST create a unique **[[RFC4122]](#nref-RFC4122)** UUID value for the x-fapi-interaction-id header.|
 |x-cds-arrangement|header|string|mandatory|A unique string representing a consent arrangement between a Data Recipient Software Product and Data Holder for a given consumer. The identifier MUST be unique per customer according to the definition of customer in the CDR Federation section of this profile. The x-cds-arrangement should contain the arrangement ID for the consent that the request is being made under and will be used for tracing and audit purposes. This field MUST be populated but AEMO MUST NOT seek to validate the consent associated with the arrangement|
 |body|body|[servicePointIdList](#schemacdr-energy-secondary-data-holder-apiservicepointidlist)|mandatory|Request payload containing list of specific Service Points to obtain data for|
 |» data|body|object|mandatory|none|
@@ -197,7 +197,7 @@ Obtain detailed standing information for a specific service point that is owned 
 |servicePointId|path|string|mandatory|The independent ID of the service point, known in the industry as the NMI. The  servicePointId will be replaced with NMI for all interactions between Data Holder and AEMO.|
 |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
 |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
-|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|x-fapi-interaction-id|header|string|mandatory|The x-fapi-interaction-id header value provided by the Data Recipient. If not supplied by the Data Recipient, the primary Data Holder MUST create a unique **[[RFC4122]](#nref-RFC4122)** UUID value for the x-fapi-interaction-id header.|
 |x-cds-arrangement|header|string|mandatory|A unique string representing a consent arrangement between a Data Recipient Software Product and Data Holder for a given consumer. The identifier MUST be unique per customer according to the definition of customer in the CDR Federation section of this profile. The x-cds-arrangement should contain the arrangement ID for the consent that the request is being made under and will be used for tracing and audit purposes. This field MUST be populated but AEMO MUST NOT seek to validate the consent associated with the arrangement|
 
 > Example responses
@@ -231,7 +231,7 @@ Obtain detailed standing information for a specific service point that is owned 
       }
     ],
     "location": {
-      "addressUType": "simple",
+      "addressUType": "paf",
       "simple": {
         "mailingName": "string",
         "addressLine1": "string",
@@ -267,29 +267,33 @@ Obtain detailed standing information for a specific service point that is owned 
         "state": "string"
       }
     },
-    "meters": {
-      "meterId": "string",
-      "specifications": {
-        "status": "CURRENT",
-        "installationType": "BASIC",
-        "manufacturer": "string",
-        "model": "string",
-        "readType": "string",
-        "nextScheduledReadDate": "string"
-      },
-      "registers": {
-        "registerId": "string",
-        "registerSuffix": "string",
-        "averagedDailyLoad": 0,
-        "registerConsumptionType": "INTERVAL",
-        "networkTariffCode": "string",
-        "unitOfMeasure": "string",
-        "timeOfDay": "ALLDAY",
-        "multiplier": 0,
-        "controlledLoad": true,
-        "consumptionType": "ACTUAL"
+    "meters": [
+      {
+        "meterId": "string",
+        "specifications": {
+          "status": "CURRENT",
+          "installationType": "BASIC",
+          "manufacturer": "string",
+          "model": "string",
+          "readType": "string",
+          "nextScheduledReadDate": "string"
+        },
+        "registers": [
+          {
+            "registerId": "string",
+            "registerSuffix": "string",
+            "averagedDailyLoad": 0,
+            "registerConsumptionType": "INTERVAL",
+            "networkTariffCode": "string",
+            "unitOfMeasure": "string",
+            "timeOfDay": "ALLDAY",
+            "multiplier": 0,
+            "controlledLoad": true,
+            "consumptionType": "ACTUAL"
+          }
+        ]
       }
-    }
+    ]
   },
   "links": {
     "self": "string"
@@ -377,13 +381,13 @@ Obtain a list of electricity usage data from a particular service point
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |servicePointId|path|string|mandatory|The independent ID of the service point, known in the industry as the NMI. The  servicePointId will be replaced with NMI for all interactions between Data Holder and AEMO.|
-|oldest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with effective date at or after this date. If absent defaults to newest-date minus 24 months days.  Format is aligned to DateString common type|
+|oldest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with effective date at or after this date. If absent defaults to newest-date minus 24 months.  Format is aligned to DateString common type|
 |newest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with effective date at or before this date.  If absent defaults to current date.  Format is aligned to DateString common type|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request.  Default is 25 (standard pagination)|
 |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
 |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
-|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|x-fapi-interaction-id|header|string|mandatory|The x-fapi-interaction-id header value provided by the Data Recipient. If not supplied by the Data Recipient, the primary Data Holder MUST create a unique **[[RFC4122]](#nref-RFC4122)** UUID value for the x-fapi-interaction-id header.|
 |x-cds-arrangement|header|string|mandatory|A unique string representing a consent arrangement between a Data Recipient Software Product and Data Holder for a given consumer. The identifier MUST be unique per customer according to the definition of customer in the CDR Federation section of this profile. The x-cds-arrangement should contain the arrangement ID for the consent that the request is being made under and will be used for tracing and audit purposes. This field MUST be populated but AEMO MUST NOT seek to validate the consent associated with the arrangement|
 
 > Example responses
@@ -530,13 +534,13 @@ Obtain the electricity usage data for a specific set of service points
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|oldest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with effective date at or after this date. If absent defaults to newest-date minus 24 months days.  Format is aligned to DateString common type|
+|oldest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with effective date at or after this date. If absent defaults to newest-date minus 24 months.  Format is aligned to DateString common type|
 |newest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with effective date at or before this date.  If absent defaults to current date.  Format is aligned to DateString common type|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request.  Default is 25 (standard pagination)|
 |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
 |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
-|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|x-fapi-interaction-id|header|string|mandatory|The x-fapi-interaction-id header value provided by the Data Recipient. If not supplied by the Data Recipient, the primary Data Holder MUST create a unique **[[RFC4122]](#nref-RFC4122)** UUID value for the x-fapi-interaction-id header.|
 |x-cds-arrangement|header|string|mandatory|A unique string representing a consent arrangement between a Data Recipient Software Product and Data Holder for a given consumer. The identifier MUST be unique per customer according to the definition of customer in the CDR Federation section of this profile. The x-cds-arrangement should contain the arrangement ID for the consent that the request is being made under and will be used for tracing and audit purposes. This field MUST be populated but AEMO MUST NOT seek to validate the consent associated with the arrangement|
 |body|body|[servicePointIdList](#schemacdr-energy-secondary-data-holder-apiservicepointidlist)|mandatory|Request payload containing list of specific Service Points to obtain data for|
 |» data|body|object|mandatory|none|
@@ -673,7 +677,7 @@ Obtain a list of DER data from a particular service point
 |servicePointId|path|string|mandatory|The independent ID of the service point, known in the industry as the NMI. The  servicePointId will be replaced with NMI for all interactions between Data Holder and AEMO.|
 |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
 |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
-|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|x-fapi-interaction-id|header|string|mandatory|The x-fapi-interaction-id header value provided by the Data Recipient. If not supplied by the Data Recipient, the primary Data Holder MUST create a unique **[[RFC4122]](#nref-RFC4122)** UUID value for the x-fapi-interaction-id header.|
 |x-cds-arrangement|header|string|mandatory|A unique string representing a consent arrangement between a Data Recipient Software Product and Data Holder for a given consumer. The identifier MUST be unique per customer according to the definition of customer in the CDR Federation section of this profile. The x-cds-arrangement should contain the arrangement ID for the consent that the request is being made under and will be used for tracing and audit purposes. This field MUST be populated but AEMO MUST NOT seek to validate the consent associated with the arrangement|
 
 > Example responses
@@ -837,7 +841,7 @@ Obtain DER data for a specific set of service points
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request.  Default is 25 (standard pagination)|
 |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
 |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
-|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|x-fapi-interaction-id|header|string|mandatory|The x-fapi-interaction-id header value provided by the Data Recipient. If not supplied by the Data Recipient, the primary Data Holder MUST create a unique **[[RFC4122]](#nref-RFC4122)** UUID value for the x-fapi-interaction-id header.|
 |x-cds-arrangement|header|string|mandatory|A unique string representing a consent arrangement between a Data Recipient Software Product and Data Holder for a given consumer. The identifier MUST be unique per customer according to the definition of customer in the CDR Federation section of this profile. The x-cds-arrangement should contain the arrangement ID for the consent that the request is being made under and will be used for tracing and audit purposes. This field MUST be populated but AEMO MUST NOT seek to validate the consent associated with the arrangement|
 |body|body|[servicePointIdList](#schemacdr-energy-secondary-data-holder-apiservicepointidlist)|mandatory|Request payload containing list of specific Service Points to obtain data for|
 |» data|body|object|mandatory|none|
@@ -1027,7 +1031,7 @@ This operation does not require authentication
       }
     ],
     "location": {
-      "addressUType": "simple",
+      "addressUType": "paf",
       "simple": {
         "mailingName": "string",
         "addressLine1": "string",
@@ -1063,29 +1067,33 @@ This operation does not require authentication
         "state": "string"
       }
     },
-    "meters": {
-      "meterId": "string",
-      "specifications": {
-        "status": "CURRENT",
-        "installationType": "BASIC",
-        "manufacturer": "string",
-        "model": "string",
-        "readType": "string",
-        "nextScheduledReadDate": "string"
-      },
-      "registers": {
-        "registerId": "string",
-        "registerSuffix": "string",
-        "averagedDailyLoad": 0,
-        "registerConsumptionType": "INTERVAL",
-        "networkTariffCode": "string",
-        "unitOfMeasure": "string",
-        "timeOfDay": "ALLDAY",
-        "multiplier": 0,
-        "controlledLoad": true,
-        "consumptionType": "ACTUAL"
+    "meters": [
+      {
+        "meterId": "string",
+        "specifications": {
+          "status": "CURRENT",
+          "installationType": "BASIC",
+          "manufacturer": "string",
+          "model": "string",
+          "readType": "string",
+          "nextScheduledReadDate": "string"
+        },
+        "registers": [
+          {
+            "registerId": "string",
+            "registerSuffix": "string",
+            "averagedDailyLoad": 0,
+            "registerConsumptionType": "INTERVAL",
+            "networkTariffCode": "string",
+            "unitOfMeasure": "string",
+            "timeOfDay": "ALLDAY",
+            "multiplier": 0,
+            "controlledLoad": true,
+            "consumptionType": "ACTUAL"
+          }
+        ]
       }
-    }
+    ]
   },
   "links": {
     "self": "string"
@@ -1450,7 +1458,7 @@ This operation does not require authentication
     }
   ],
   "location": {
-    "addressUType": "simple",
+    "addressUType": "paf",
     "simple": {
       "mailingName": "string",
       "addressLine1": "string",
@@ -1486,29 +1494,33 @@ This operation does not require authentication
       "state": "string"
     }
   },
-  "meters": {
-    "meterId": "string",
-    "specifications": {
-      "status": "CURRENT",
-      "installationType": "BASIC",
-      "manufacturer": "string",
-      "model": "string",
-      "readType": "string",
-      "nextScheduledReadDate": "string"
-    },
-    "registers": {
-      "registerId": "string",
-      "registerSuffix": "string",
-      "averagedDailyLoad": 0,
-      "registerConsumptionType": "INTERVAL",
-      "networkTariffCode": "string",
-      "unitOfMeasure": "string",
-      "timeOfDay": "ALLDAY",
-      "multiplier": 0,
-      "controlledLoad": true,
-      "consumptionType": "ACTUAL"
+  "meters": [
+    {
+      "meterId": "string",
+      "specifications": {
+        "status": "CURRENT",
+        "installationType": "BASIC",
+        "manufacturer": "string",
+        "model": "string",
+        "readType": "string",
+        "nextScheduledReadDate": "string"
+      },
+      "registers": [
+        {
+          "registerId": "string",
+          "registerSuffix": "string",
+          "averagedDailyLoad": 0,
+          "registerConsumptionType": "INTERVAL",
+          "networkTariffCode": "string",
+          "unitOfMeasure": "string",
+          "timeOfDay": "ALLDAY",
+          "multiplier": 0,
+          "controlledLoad": true,
+          "consumptionType": "ACTUAL"
+        }
+      ]
     }
-  }
+  ]
 }
 
 ```
@@ -1535,60 +1547,27 @@ This operation does not require authentication
 |relatedParticipants|[object]|mandatory|none|
 |» party|string|mandatory|The name of the party/orginsation related to this service point|
 |» role|string|mandatory|The role performed by this participant in relation to the service point. Note the details of enumeration values below: <ul><li>**FRMP** - Financially Responsible Market Participant</li><li>**LNSP** - Local Network Service Provider or Embedded Network Manager for child connection points</li><li>**DRSP** - wholesale Demand Response and/or market ancillary Service Provider and note that where it is not relevant for a NMI it will not be included</li></ul>|
-|location|object|mandatory|none|
-|» addressUType|string|mandatory|The type of address object present|
-|» simple|object|conditional|The address of the service point.  Mandatory if addressUType is set to simple|
-|»» mailingName|string|optional|Name of the individual or business formatted for inclusion in an address used for physical mail|
-|»» addressLine1|string|mandatory|First line of the standard address object|
-|»» addressLine2|string|optional|Second line of the standard address object|
-|»» addressLine3|string|optional|Third line of the standard address object|
-|»» postcode|string|conditional|Mandatory for Australian addresses|
-|»» city|string|mandatory|Name of the city or locality|
-|»» state|string|mandatory|Free text if the country is not Australia. If country is Australia then must be one of the values defined by the [State Type Abbreviation](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf) in the PAF file format. NSW, QLD, VIC, NT, WA, SA, TAS, ACT, AAT|
-|»» country|[ExternalRef](#common-field-types)|optional|A valid [ISO 3166 Alpha-3](https://www.iso.org/iso-3166-country-codes.html) country code. Australia (AUS) is assumed if country is not present.|
-|» paf|object|conditional|The address of the service point.  Mandatory if addressUType is set to paf. Formatted according to the file format defined by the [PAF file format](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf)|
-|»» dpid|string|optional|Unique identifier for an address as defined by Australia Post.  Also known as Delivery Point Identifier|
-|»» thoroughfareNumber1|[PositiveInteger](#common-field-types)|optional|Thoroughfare number for a property (first number in a property ranged address)|
-|»» thoroughfareNumber1Suffix|string|optional|Suffix for the thoroughfare number. Only relevant is thoroughfareNumber1 is populated|
-|»» thoroughfareNumber2|[PositiveInteger](#common-field-types)|optional|Second thoroughfare number (only used if the property has a ranged address eg 23-25)|
-|»» thoroughfareNumber2Suffix|string|optional|Suffix for the second thoroughfare number. Only relevant is thoroughfareNumber2 is populated|
-|»» flatUnitType|string|optional|Type of flat or unit for the address|
-|»» flatUnitNumber|string|optional|Unit number (including suffix, if applicable)|
-|»» floorLevelType|string|optional|Type of floor or level for the address|
-|»» floorLevelNumber|string|optional|Floor or level number (including alpha characters)|
-|»» lotNumber|string|optional|Allotment number for the address|
-|»» buildingName1|string|optional|Building/Property name 1|
-|»» buildingName2|string|optional|Building/Property name 2|
-|»» streetName|string|optional|The name of the street|
-|»» streetType|string|optional|The street type. Valid enumeration defined by Australia Post PAF code file|
-|»» streetSuffix|string|optional|The street type suffix. Valid enumeration defined by Australia Post PAF code file|
-|»» postalDeliveryType|string|optional|Postal delivery type. (eg. PO BOX). Valid enumeration defined by Australia Post PAF code file|
-|»» postalDeliveryNumber|[PositiveInteger](#common-field-types)|optional|Postal delivery number if the address is a postal delivery type|
-|»» postalDeliveryNumberPrefix|string|optional|Postal delivery number prefix related to the postal delivery number|
-|»» postalDeliveryNumberSuffix|string|optional|Postal delivery number suffix related to the postal delivery number|
-|»» localityName|string|mandatory|Full name of locality|
-|»» postcode|string|mandatory|Postcode for the locality|
-|»» state|string|mandatory|State in which the address belongs. Valid enumeration defined by Australia Post PAF code file [State Type Abbreviation](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf). NSW, QLD, VIC, NT, WA, SA, TAS, ACT, AAT|
-|» meters|object|mandatory|none|
-|»» meterId|string|mandatory|The meter ID uniquely identifies a meter for a given service point.  It is unique in the context of the service point.  It is not globally unique|
-|»» specifications|object|mandatory|Technical characteristics of the meter|
-|»»» status|string|mandatory|A code to denote the status of the meter. Note the details of enumeration values below: <ul><li>**CURRENT** -Applies when a meter is current and not disconnected</li><li>**DISCONNECTED** - Applies when a meter is present but has been remotely disconnected</li></ul>|
-|»»» installationType|string|mandatory|The metering Installation type code indicates whether the metering installation has to be manually read. Note the details of enumeration values below: <ul><li>**BASIC** - Accumulation Meter – Type 6</li><li>**COMMS1** - Interval Meter with communications – Type 1</li><li>**COMMS2** - Interval Meter with communications – Type 2</li><li>**COMMS3** - Interval Meter with communications – Type 3</li><li>**COMMS4** - Interval Meter with communications – Type 4</li><li>**COMMS4C** - CT connected metering installation that meets the minimum services specifications</li><li>**COMMS4D** - Whole current metering installation that meets the minimum services specifications</li><li>**MRAM** - Small customer metering installation – Type 4A</li><li>**MRIM** - Manually Read Interval Meter – Type 5</li><li>**UMCP** - Unmetered Supply – Type 7</li><li>**VICAMI** - A relevant metering installation as defined in clause 9.9C of the NER</li><li>**NCONUML** - Non-contestable unmeter load - Introduced as part of Global Settlement</li></ul>|
-|»»» manufacturer|string|optional|Free text field to identify the manufacturer of the installed meter|
-|»»» model|string|optional|Free text field to identify the meter manufacturer’s designation for the meter model|
-|»»» readType|string|optional|Code to denote the method and frequency of Meter Reading. The value is formatted as follows: <ul><li>First Character = Remote (R) or Manual (M)</li><li>Second Character = Mode: T = telephone W = wireless P = powerline I = infra-red G = galvanic V = visual </li><li>Third Character = Frequency of Scheduled Meter Readings: 1 = Twelve times per year 2 = Six times per year 3 = Four times per year D = Daily or weekly</li><li>Optional Fourth Character = to identify what interval length the meter is capable of reading. This includes five, 15 and 30 minute granularity as the following: A – 5 minute B – 15 minute C – 30 minute D – Cannot convert to 5 minute (i.e. due to metering installation de-energised) M - Manually Read Accumulation Meter</li></ul> For example, <ul><li>MV3 = Manual, Visual, Quarterly</li> <li>MV3M = Manual, Visual, Quarterly, Manually Read Accumulation Meter</li> <li>RWDC = Remote, Wireless, Daily, 30 minutes interval</li></ul>|
-|»»» nextScheduledReadDate|[DateString](#common-field-types)|optional|This date is the next scheduled meter read date (NSRD) if a manual Meter Reading is required|
-|»» registers|object|mandatory|Usage data registers available from the meter|
-|»»» registerId|string|mandatory|Unique identifier of the register within this service point.  Is not globally unique|
-|»»» registerSuffix|string|mandatory|Register suffix of the meter register where the meter reads are obtained|
-|»»» averagedDailyLoad|number|optional|The energy delivered through a connection point or metering point over an extended period normalised to a 'per day' basis (kWh). This value is calculated annually.|
-|»»» registerConsumptionType|string|mandatory|Indicates the consumption type of register|
-|»»» networkTariffCode|string|optional|The Network Tariff Code is a free text field containing a code supplied and published by the local network service provider|
-|»»» unitOfMeasure|string|optional|The unit of measure for data held in this register|
-|»»» timeOfDay|string|optional|Code to identify the time validity of register contents|
-|»»» multiplier|number|optional|Multiplier required to take a register value and turn it into a value representing billable energy|
-|»»» controlledLoad|boolean|optional|Indicates whether the energy recorded by this register is created under a Controlled Load regime|
-|»»» consumptionType|string|optional|Actual/Subtractive Indicator. Note the details of enumeration values below: <ul><li>**ACTUAL** implies volume of energy actually metered between two dates</li><li>**CUMULATIVE** indicates a meter reading for a specific date. A second Meter Reading is required to determine the consumption between those two Meter Reading dates</li></ul>|
+|location|[CommonPhysicalAddress](#schemacdr-energy-secondary-data-holder-apicommonphysicaladdress)|mandatory|Location of the servicepoint|
+|meters|[object]|optional|The meters associated with the service point. This may be empty where there are no meters physically installed at the service point|
+|» meterId|string|mandatory|The meter ID uniquely identifies a meter for a given service point.  It is unique in the context of the service point.  It is not globally unique|
+|» specifications|object|mandatory|Technical characteristics of the meter|
+|»» status|string|mandatory|A code to denote the status of the meter. Note the details of enumeration values below: <ul><li>**CURRENT** -Applies when a meter is current and not disconnected</li><li>**DISCONNECTED** - Applies when a meter is present but has been remotely disconnected</li></ul>|
+|»» installationType|string|mandatory|The metering Installation type code indicates whether the metering installation has to be manually read. Note the details of enumeration values below: <ul><li>**BASIC** - Accumulation Meter – Type 6</li><li>**COMMS1** - Interval Meter with communications – Type 1</li><li>**COMMS2** - Interval Meter with communications – Type 2</li><li>**COMMS3** - Interval Meter with communications – Type 3</li><li>**COMMS4** - Interval Meter with communications – Type 4</li><li>**COMMS4C** - CT connected metering installation that meets the minimum services specifications</li><li>**COMMS4D** - Whole current metering installation that meets the minimum services specifications</li><li>**MRAM** - Small customer metering installation – Type 4A</li><li>**MRIM** - Manually Read Interval Meter – Type 5</li><li>**UMCP** - Unmetered Supply – Type 7</li><li>**VICAMI** - A relevant metering installation as defined in clause 9.9C of the NER</li><li>**NCONUML** - Non-contestable unmeter load - Introduced as part of Global Settlement</li></ul>|
+|»» manufacturer|string|optional|Free text field to identify the manufacturer of the installed meter|
+|»» model|string|optional|Free text field to identify the meter manufacturer’s designation for the meter model|
+|»» readType|string|optional|Code to denote the method and frequency of Meter Reading. The value is formatted as follows: <ul><li>First Character = Remote (R) or Manual (M)</li><li>Second Character = Mode: T = telephone W = wireless P = powerline I = infra-red G = galvanic V = visual </li><li>Third Character = Frequency of Scheduled Meter Readings: 1 = Twelve times per year 2 = Six times per year 3 = Four times per year D = Daily or weekly</li><li>Optional Fourth Character = to identify what interval length the meter is capable of reading. This includes five, 15 and 30 minute granularity as the following: A – 5 minute B – 15 minute C – 30 minute D – Cannot convert to 5 minute (i.e. due to metering installation de-energised) M - Manually Read Accumulation Meter</li></ul> For example, <ul><li>MV3 = Manual, Visual, Quarterly</li> <li>MV3M = Manual, Visual, Quarterly, Manually Read Accumulation Meter</li> <li>RWDC = Remote, Wireless, Daily, 30 minutes interval</li></ul>|
+|»» nextScheduledReadDate|[DateString](#common-field-types)|optional|This date is the next scheduled meter read date (NSRD) if a manual Meter Reading is required|
+|» registers|[object]|optional|Usage data registers available from the meter. This may be empty where there are no meters physically installed at the service point|
+|»» registerId|string|mandatory|Unique identifier of the register within this service point.  Is not globally unique|
+|»» registerSuffix|string|optional|Register suffix of the meter register where the meter reads are obtained|
+|»» averagedDailyLoad|number|optional|The energy delivered through a connection point or metering point over an extended period normalised to a 'per day' basis (kWh). This value is calculated annually.|
+|»» registerConsumptionType|string|mandatory|Indicates the consumption type of register|
+|»» networkTariffCode|string|optional|The Network Tariff Code is a free text field containing a code supplied and published by the local network service provider|
+|»» unitOfMeasure|string|optional|The unit of measure for data held in this register|
+|»» timeOfDay|string|optional|Code to identify the time validity of register contents|
+|»» multiplier|number|optional|Multiplier required to take a register value and turn it into a value representing billable energy|
+|»» controlledLoad|boolean|optional|Indicates whether the energy recorded by this register is created under a Controlled Load regime|
+|»» consumptionType|string|optional|Actual/Subtractive Indicator. Note the details of enumeration values below: <ul><li>**ACTUAL** implies volume of energy actually metered between two dates</li><li>**CUMULATIVE** indicates a meter reading for a specific date. A second Meter Reading is required to determine the consumption between those two Meter Reading dates</li></ul>|
 
 #### Enumerated Values
 
@@ -1623,8 +1602,6 @@ This operation does not require authentication
 |role|FRMP|
 |role|LNSP|
 |role|DRSP|
-|addressUType|simple|
-|addressUType|paf|
 |status|CURRENT|
 |status|DISCONNECTED|
 |installationType|BASIC|
@@ -1855,6 +1832,160 @@ This operation does not require authentication
 |type|GEOTHERMAL|
 |type|STORAGE|
 |type|OTHER|
+
+<h3 class="schema-toc" id="tocScommonphysicaladdress">CommonPhysicalAddress</h3>
+
+<a id="schemacdr-energy-secondary-data-holder-apicommonphysicaladdress"></a>
+
+```json
+{
+  "addressUType": "paf",
+  "simple": {
+    "mailingName": "string",
+    "addressLine1": "string",
+    "addressLine2": "string",
+    "addressLine3": "string",
+    "postcode": "string",
+    "city": "string",
+    "state": "string",
+    "country": "AUS"
+  },
+  "paf": {
+    "dpid": "string",
+    "thoroughfareNumber1": 0,
+    "thoroughfareNumber1Suffix": "string",
+    "thoroughfareNumber2": 0,
+    "thoroughfareNumber2Suffix": "string",
+    "flatUnitType": "string",
+    "flatUnitNumber": "string",
+    "floorLevelType": "string",
+    "floorLevelNumber": "string",
+    "lotNumber": "string",
+    "buildingName1": "string",
+    "buildingName2": "string",
+    "streetName": "string",
+    "streetType": "string",
+    "streetSuffix": "string",
+    "postalDeliveryType": "string",
+    "postalDeliveryNumber": 0,
+    "postalDeliveryNumberPrefix": "string",
+    "postalDeliveryNumberSuffix": "string",
+    "localityName": "string",
+    "postcode": "string",
+    "state": "string"
+  }
+}
+
+```
+
+### Properties
+
+|Name|Type|Required|Description|
+|---|---|---|---|
+|addressUType|string|mandatory|The type of address object present|
+|simple|[CommonSimpleAddress](#schemacdr-energy-secondary-data-holder-apicommonsimpleaddress)|conditional|Required if addressUType is set to simple|
+|paf|[CommonPAFAddress](#schemacdr-energy-secondary-data-holder-apicommonpafaddress)|conditional|Australian address formatted according to the file format defined by the [PAF file format](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf). Required if addressUType is set to paf|
+
+#### Enumerated Values
+
+|Property|Value|
+|---|---|
+|addressUType|paf|
+|addressUType|simple|
+
+<h3 class="schema-toc" id="tocScommonsimpleaddress">CommonSimpleAddress</h3>
+
+<a id="schemacdr-energy-secondary-data-holder-apicommonsimpleaddress"></a>
+
+```json
+{
+  "mailingName": "string",
+  "addressLine1": "string",
+  "addressLine2": "string",
+  "addressLine3": "string",
+  "postcode": "string",
+  "city": "string",
+  "state": "string",
+  "country": "AUS"
+}
+
+```
+
+*Required if addressUType is set to simple*
+
+### Properties
+
+|Name|Type|Required|Description|
+|---|---|---|---|
+|mailingName|string|optional|Name of the individual or business formatted for inclusion in an address used for physical mail|
+|addressLine1|string|mandatory|First line of the standard address object|
+|addressLine2|string|optional|Second line of the standard address object|
+|addressLine3|string|optional|Third line of the standard address object|
+|postcode|string|conditional|Mandatory for Australian addresses|
+|city|string|mandatory|Name of the city or locality|
+|state|string|mandatory|Free text if the country is not Australia. If country is Australia then must be one of the values defined by the [State Type Abbreviation](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf) in the PAF file format. NSW, QLD, VIC, NT, WA, SA, TAS, ACT, AAT|
+|country|[ExternalRef](#common-field-types)|optional|A valid [ISO 3166 Alpha-3](https://www.iso.org/iso-3166-country-codes.html) country code. Australia (AUS) is assumed if country is not present.|
+
+<h3 class="schema-toc" id="tocScommonpafaddress">CommonPAFAddress</h3>
+
+<a id="schemacdr-energy-secondary-data-holder-apicommonpafaddress"></a>
+
+```json
+{
+  "dpid": "string",
+  "thoroughfareNumber1": 0,
+  "thoroughfareNumber1Suffix": "string",
+  "thoroughfareNumber2": 0,
+  "thoroughfareNumber2Suffix": "string",
+  "flatUnitType": "string",
+  "flatUnitNumber": "string",
+  "floorLevelType": "string",
+  "floorLevelNumber": "string",
+  "lotNumber": "string",
+  "buildingName1": "string",
+  "buildingName2": "string",
+  "streetName": "string",
+  "streetType": "string",
+  "streetSuffix": "string",
+  "postalDeliveryType": "string",
+  "postalDeliveryNumber": 0,
+  "postalDeliveryNumberPrefix": "string",
+  "postalDeliveryNumberSuffix": "string",
+  "localityName": "string",
+  "postcode": "string",
+  "state": "string"
+}
+
+```
+
+*Australian address formatted according to the file format defined by the [PAF file format](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf). Required if addressUType is set to paf*
+
+### Properties
+
+|Name|Type|Required|Description|
+|---|---|---|---|
+|dpid|string|optional|Unique identifier for an address as defined by Australia Post.  Also known as Delivery Point Identifier|
+|thoroughfareNumber1|[PositiveInteger](#common-field-types)|optional|Thoroughfare number for a property (first number in a property ranged address)|
+|thoroughfareNumber1Suffix|string|optional|Suffix for the thoroughfare number. Only relevant is thoroughfareNumber1 is populated|
+|thoroughfareNumber2|[PositiveInteger](#common-field-types)|optional|Second thoroughfare number (only used if the property has a ranged address eg 23-25)|
+|thoroughfareNumber2Suffix|string|optional|Suffix for the second thoroughfare number. Only relevant is thoroughfareNumber2 is populated|
+|flatUnitType|string|optional|Type of flat or unit for the address|
+|flatUnitNumber|string|optional|Unit number (including suffix, if applicable)|
+|floorLevelType|string|optional|Type of floor or level for the address|
+|floorLevelNumber|string|optional|Floor or level number (including alpha characters)|
+|lotNumber|string|optional|Allotment number for the address|
+|buildingName1|string|optional|Building/Property name 1|
+|buildingName2|string|optional|Building/Property name 2|
+|streetName|string|optional|The name of the street|
+|streetType|string|optional|The street type. Valid enumeration defined by Australia Post PAF code file|
+|streetSuffix|string|optional|The street type suffix. Valid enumeration defined by Australia Post PAF code file|
+|postalDeliveryType|string|optional|Postal delivery type. (eg. PO BOX). Valid enumeration defined by Australia Post PAF code file|
+|postalDeliveryNumber|[PositiveInteger](#common-field-types)|optional|Postal delivery number if the address is a postal delivery type|
+|postalDeliveryNumberPrefix|string|optional|Postal delivery number prefix related to the postal delivery number|
+|postalDeliveryNumberSuffix|string|optional|Postal delivery number suffix related to the postal delivery number|
+|localityName|string|mandatory|Full name of locality|
+|postcode|string|mandatory|Postcode for the locality|
+|state|string|mandatory|State in which the address belongs. Valid enumeration defined by Australia Post PAF code file [State Type Abbreviation](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf). NSW, QLD, VIC, NT, WA, SA, TAS, ACT, AAT|
 
 <h3 class="schema-toc" id="tocSlinks">Links</h3>
 

@@ -3,7 +3,7 @@
   "info" : {
     "description" : "Consumer Data Right end points and payloads for Secondary Data Holder for the Energy sector",
     "title" : "CDR Energy Secondary Data Holder API",
-    "version" : "1.16.1"
+    "version" : "1.17.0"
   },
   "servers" : [ {
     "url" : "/"
@@ -56,11 +56,11 @@
           },
           "style" : "simple"
         }, {
-          "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
+          "description" : "The x-fapi-interaction-id header value provided by the Data Recipient. If not supplied by the Data Recipient, the primary Data Holder MUST create a unique **[[RFC4122]](#nref-RFC4122)** UUID value for the x-fapi-interaction-id header.",
           "explode" : false,
           "in" : "header",
           "name" : "x-fapi-interaction-id",
-          "required" : false,
+          "required" : true,
           "schema" : {
             "type" : "string"
           },
@@ -209,11 +209,11 @@
           },
           "style" : "simple"
         }, {
-          "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
+          "description" : "The x-fapi-interaction-id header value provided by the Data Recipient. If not supplied by the Data Recipient, the primary Data Holder MUST create a unique **[[RFC4122]](#nref-RFC4122)** UUID value for the x-fapi-interaction-id header.",
           "explode" : false,
           "in" : "header",
           "name" : "x-fapi-interaction-id",
-          "required" : false,
+          "required" : true,
           "schema" : {
             "type" : "string"
           },
@@ -339,7 +339,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "Constrain the request to records with effective date at or after this date. If absent defaults to newest-date minus 24 months days.  Format is aligned to DateString common type",
+          "description" : "Constrain the request to records with effective date at or after this date. If absent defaults to newest-date minus 24 months.  Format is aligned to DateString common type",
           "explode" : true,
           "in" : "query",
           "name" : "oldest-date",
@@ -403,11 +403,11 @@
           },
           "style" : "simple"
         }, {
-          "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
+          "description" : "The x-fapi-interaction-id header value provided by the Data Recipient. If not supplied by the Data Recipient, the primary Data Holder MUST create a unique **[[RFC4122]](#nref-RFC4122)** UUID value for the x-fapi-interaction-id header.",
           "explode" : false,
           "in" : "header",
           "name" : "x-fapi-interaction-id",
-          "required" : false,
+          "required" : true,
           "schema" : {
             "type" : "string"
           },
@@ -543,7 +543,7 @@
         "description" : "Obtain the electricity usage data for a specific set of service points",
         "operationId" : "listUsageForServicePoints",
         "parameters" : [ {
-          "description" : "Constrain the request to records with effective date at or after this date. If absent defaults to newest-date minus 24 months days.  Format is aligned to DateString common type",
+          "description" : "Constrain the request to records with effective date at or after this date. If absent defaults to newest-date minus 24 months.  Format is aligned to DateString common type",
           "explode" : true,
           "in" : "query",
           "name" : "oldest-date",
@@ -607,11 +607,11 @@
           },
           "style" : "simple"
         }, {
-          "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
+          "description" : "The x-fapi-interaction-id header value provided by the Data Recipient. If not supplied by the Data Recipient, the primary Data Holder MUST create a unique **[[RFC4122]](#nref-RFC4122)** UUID value for the x-fapi-interaction-id header.",
           "explode" : false,
           "in" : "header",
           "name" : "x-fapi-interaction-id",
-          "required" : false,
+          "required" : true,
           "schema" : {
             "type" : "string"
           },
@@ -760,11 +760,11 @@
           },
           "style" : "simple"
         }, {
-          "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
+          "description" : "The x-fapi-interaction-id header value provided by the Data Recipient. If not supplied by the Data Recipient, the primary Data Holder MUST create a unique **[[RFC4122]](#nref-RFC4122)** UUID value for the x-fapi-interaction-id header.",
           "explode" : false,
           "in" : "header",
           "name" : "x-fapi-interaction-id",
-          "required" : false,
+          "required" : true,
           "schema" : {
             "type" : "string"
           },
@@ -922,11 +922,11 @@
           },
           "style" : "simple"
         }, {
-          "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
+          "description" : "The x-fapi-interaction-id header value provided by the Data Recipient. If not supplied by the Data Recipient, the primary Data Holder MUST create a unique **[[RFC4122]](#nref-RFC4122)** UUID value for the x-fapi-interaction-id header.",
           "explode" : false,
           "in" : "header",
           "name" : "x-fapi-interaction-id",
-          "required" : false,
+          "required" : true,
           "schema" : {
             "type" : "string"
           },
@@ -1091,7 +1091,7 @@
         "x-cds-type" : "DateString"
       },
       "oldest-date" : {
-        "description" : "Constrain the request to records with effective date at or after this date. If absent defaults to newest-date minus 24 months days.  Format is aligned to DateString common type",
+        "description" : "Constrain the request to records with effective date at or after this date. If absent defaults to newest-date minus 24 months.  Format is aligned to DateString common type",
         "explode" : true,
         "in" : "query",
         "name" : "oldest-date",
@@ -1149,11 +1149,11 @@
         "style" : "simple"
       },
       "x-fapi-interaction-id" : {
-        "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
+        "description" : "The x-fapi-interaction-id header value provided by the Data Recipient. If not supplied by the Data Recipient, the primary Data Holder MUST create a unique **[[RFC4122]](#nref-RFC4122)** UUID value for the x-fapi-interaction-id header.",
         "explode" : false,
         "in" : "header",
         "name" : "x-fapi-interaction-id",
-        "required" : false,
+        "required" : true,
         "schema" : {
           "type" : "string"
         },
@@ -1532,13 +1532,17 @@
             "type" : "array"
           },
           "location" : {
-            "$ref" : "#/components/schemas/EnergyServicePointDetail_location"
+            "$ref" : "#/components/schemas/CommonPhysicalAddress"
           },
           "meters" : {
-            "$ref" : "#/components/schemas/EnergyServicePointDetail_meters"
+            "description" : "The meters associated with the service point. This may be empty where there are no meters physically installed at the service point",
+            "items" : {
+              "$ref" : "#/components/schemas/EnergyServicePointDetail_meters"
+            },
+            "type" : "array"
           }
         },
-        "required" : [ "distributionLossFactor", "jurisdictionCode", "lastUpdateDateTime", "location", "meters", "nationalMeteringId", "relatedParticipants", "servicePointClassification", "servicePointId", "servicePointStatus", "validFromDate" ]
+        "required" : [ "distributionLossFactor", "jurisdictionCode", "lastUpdateDateTime", "location", "nationalMeteringId", "relatedParticipants", "servicePointClassification", "servicePointId", "servicePointStatus", "validFromDate" ]
       },
       "EnergyUsageRead" : {
         "properties" : {
@@ -1632,6 +1636,164 @@
         "required" : [ "acConnections", "approvedCapacity", "availablePhasesCount", "installedPhasesCount", "islandableInstallation", "servicePointId" ],
         "type" : "object",
         "x-conditional" : [ "protectionMode" ]
+      },
+      "CommonPhysicalAddress" : {
+        "properties" : {
+          "addressUType" : {
+            "description" : "The type of address object present",
+            "enum" : [ "paf", "simple" ],
+            "type" : "string"
+          },
+          "simple" : {
+            "$ref" : "#/components/schemas/CommonSimpleAddress"
+          },
+          "paf" : {
+            "$ref" : "#/components/schemas/CommonPAFAddress"
+          }
+        },
+        "required" : [ "addressUType" ],
+        "type" : "object",
+        "x-conditional" : [ "simple", "paf" ]
+      },
+      "CommonSimpleAddress" : {
+        "description" : "Required if addressUType is set to simple",
+        "properties" : {
+          "mailingName" : {
+            "description" : "Name of the individual or business formatted for inclusion in an address used for physical mail",
+            "type" : "string"
+          },
+          "addressLine1" : {
+            "description" : "First line of the standard address object",
+            "type" : "string"
+          },
+          "addressLine2" : {
+            "description" : "Second line of the standard address object",
+            "type" : "string"
+          },
+          "addressLine3" : {
+            "description" : "Third line of the standard address object",
+            "type" : "string"
+          },
+          "postcode" : {
+            "description" : "Mandatory for Australian addresses",
+            "type" : "string"
+          },
+          "city" : {
+            "description" : "Name of the city or locality",
+            "type" : "string"
+          },
+          "state" : {
+            "description" : "Free text if the country is not Australia. If country is Australia then must be one of the values defined by the [State Type Abbreviation](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf) in the PAF file format. NSW, QLD, VIC, NT, WA, SA, TAS, ACT, AAT",
+            "type" : "string"
+          },
+          "country" : {
+            "default" : "AUS",
+            "description" : "A valid [ISO 3166 Alpha-3](https://www.iso.org/iso-3166-country-codes.html) country code. Australia (AUS) is assumed if country is not present.",
+            "type" : "string",
+            "x-cds-type" : "ExternalRef"
+          }
+        },
+        "required" : [ "addressLine1", "city", "state" ],
+        "type" : "object",
+        "x-conditional" : [ "postcode" ]
+      },
+      "CommonPAFAddress" : {
+        "description" : "Australian address formatted according to the file format defined by the [PAF file format](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf). Required if addressUType is set to paf",
+        "properties" : {
+          "dpid" : {
+            "description" : "Unique identifier for an address as defined by Australia Post.  Also known as Delivery Point Identifier",
+            "type" : "string"
+          },
+          "thoroughfareNumber1" : {
+            "description" : "Thoroughfare number for a property (first number in a property ranged address)",
+            "type" : "integer",
+            "x-cds-type" : "PositiveInteger"
+          },
+          "thoroughfareNumber1Suffix" : {
+            "description" : "Suffix for the thoroughfare number. Only relevant is thoroughfareNumber1 is populated",
+            "type" : "string"
+          },
+          "thoroughfareNumber2" : {
+            "description" : "Second thoroughfare number (only used if the property has a ranged address eg 23-25)",
+            "type" : "integer",
+            "x-cds-type" : "PositiveInteger"
+          },
+          "thoroughfareNumber2Suffix" : {
+            "description" : "Suffix for the second thoroughfare number. Only relevant is thoroughfareNumber2 is populated",
+            "type" : "string"
+          },
+          "flatUnitType" : {
+            "description" : "Type of flat or unit for the address",
+            "type" : "string"
+          },
+          "flatUnitNumber" : {
+            "description" : "Unit number (including suffix, if applicable)",
+            "type" : "string"
+          },
+          "floorLevelType" : {
+            "description" : "Type of floor or level for the address",
+            "type" : "string"
+          },
+          "floorLevelNumber" : {
+            "description" : "Floor or level number (including alpha characters)",
+            "type" : "string"
+          },
+          "lotNumber" : {
+            "description" : "Allotment number for the address",
+            "type" : "string"
+          },
+          "buildingName1" : {
+            "description" : "Building/Property name 1",
+            "type" : "string"
+          },
+          "buildingName2" : {
+            "description" : "Building/Property name 2",
+            "type" : "string"
+          },
+          "streetName" : {
+            "description" : "The name of the street",
+            "type" : "string"
+          },
+          "streetType" : {
+            "description" : "The street type. Valid enumeration defined by Australia Post PAF code file",
+            "type" : "string"
+          },
+          "streetSuffix" : {
+            "description" : "The street type suffix. Valid enumeration defined by Australia Post PAF code file",
+            "type" : "string"
+          },
+          "postalDeliveryType" : {
+            "description" : "Postal delivery type. (eg. PO BOX). Valid enumeration defined by Australia Post PAF code file",
+            "type" : "string"
+          },
+          "postalDeliveryNumber" : {
+            "description" : "Postal delivery number if the address is a postal delivery type",
+            "type" : "integer",
+            "x-cds-type" : "PositiveInteger"
+          },
+          "postalDeliveryNumberPrefix" : {
+            "description" : "Postal delivery number prefix related to the postal delivery number",
+            "type" : "string"
+          },
+          "postalDeliveryNumberSuffix" : {
+            "description" : "Postal delivery number suffix related to the postal delivery number",
+            "type" : "string"
+          },
+          "localityName" : {
+            "description" : "Full name of locality",
+            "type" : "string"
+          },
+          "postcode" : {
+            "description" : "Postcode for the locality",
+            "type" : "string"
+          },
+          "state" : {
+            "description" : "State in which the address belongs. Valid enumeration defined by Australia Post PAF code file [State Type Abbreviation](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf). NSW, QLD, VIC, NT, WA, SA, TAS, ACT, AAT",
+            "type" : "string"
+          }
+        },
+        "required" : [ "localityName", "postcode", "state" ],
+        "type" : "object"
       },
       "Links" : {
         "properties" : {
@@ -1813,165 +1975,7 @@
         "required" : [ "location", "party", "role" ],
         "type" : "object"
       },
-      "EnergyServicePointDetail_location_simple" : {
-        "description" : "The address of the service point.  Mandatory if addressUType is set to simple",
-        "properties" : {
-          "mailingName" : {
-            "description" : "Name of the individual or business formatted for inclusion in an address used for physical mail",
-            "type" : "string"
-          },
-          "addressLine1" : {
-            "description" : "First line of the standard address object",
-            "type" : "string"
-          },
-          "addressLine2" : {
-            "description" : "Second line of the standard address object",
-            "type" : "string"
-          },
-          "addressLine3" : {
-            "description" : "Third line of the standard address object",
-            "type" : "string"
-          },
-          "postcode" : {
-            "description" : "Mandatory for Australian addresses",
-            "type" : "string"
-          },
-          "city" : {
-            "description" : "Name of the city or locality",
-            "type" : "string"
-          },
-          "state" : {
-            "description" : "Free text if the country is not Australia. If country is Australia then must be one of the values defined by the [State Type Abbreviation](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf) in the PAF file format. NSW, QLD, VIC, NT, WA, SA, TAS, ACT, AAT",
-            "type" : "string"
-          },
-          "country" : {
-            "default" : "AUS",
-            "description" : "A valid [ISO 3166 Alpha-3](https://www.iso.org/iso-3166-country-codes.html) country code. Australia (AUS) is assumed if country is not present.",
-            "type" : "string",
-            "x-cds-type" : "ExternalRef"
-          }
-        },
-        "required" : [ "addressLine1", "city", "state" ],
-        "type" : "object",
-        "x-conditional" : [ "postcode" ]
-      },
-      "EnergyServicePointDetail_location_paf" : {
-        "description" : "The address of the service point.  Mandatory if addressUType is set to paf. Formatted according to the file format defined by the [PAF file format](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf)",
-        "properties" : {
-          "dpid" : {
-            "description" : "Unique identifier for an address as defined by Australia Post.  Also known as Delivery Point Identifier",
-            "type" : "string"
-          },
-          "thoroughfareNumber1" : {
-            "description" : "Thoroughfare number for a property (first number in a property ranged address)",
-            "type" : "integer",
-            "x-cds-type" : "PositiveInteger"
-          },
-          "thoroughfareNumber1Suffix" : {
-            "description" : "Suffix for the thoroughfare number. Only relevant is thoroughfareNumber1 is populated",
-            "type" : "string"
-          },
-          "thoroughfareNumber2" : {
-            "description" : "Second thoroughfare number (only used if the property has a ranged address eg 23-25)",
-            "type" : "integer",
-            "x-cds-type" : "PositiveInteger"
-          },
-          "thoroughfareNumber2Suffix" : {
-            "description" : "Suffix for the second thoroughfare number. Only relevant is thoroughfareNumber2 is populated",
-            "type" : "string"
-          },
-          "flatUnitType" : {
-            "description" : "Type of flat or unit for the address",
-            "type" : "string"
-          },
-          "flatUnitNumber" : {
-            "description" : "Unit number (including suffix, if applicable)",
-            "type" : "string"
-          },
-          "floorLevelType" : {
-            "description" : "Type of floor or level for the address",
-            "type" : "string"
-          },
-          "floorLevelNumber" : {
-            "description" : "Floor or level number (including alpha characters)",
-            "type" : "string"
-          },
-          "lotNumber" : {
-            "description" : "Allotment number for the address",
-            "type" : "string"
-          },
-          "buildingName1" : {
-            "description" : "Building/Property name 1",
-            "type" : "string"
-          },
-          "buildingName2" : {
-            "description" : "Building/Property name 2",
-            "type" : "string"
-          },
-          "streetName" : {
-            "description" : "The name of the street",
-            "type" : "string"
-          },
-          "streetType" : {
-            "description" : "The street type. Valid enumeration defined by Australia Post PAF code file",
-            "type" : "string"
-          },
-          "streetSuffix" : {
-            "description" : "The street type suffix. Valid enumeration defined by Australia Post PAF code file",
-            "type" : "string"
-          },
-          "postalDeliveryType" : {
-            "description" : "Postal delivery type. (eg. PO BOX). Valid enumeration defined by Australia Post PAF code file",
-            "type" : "string"
-          },
-          "postalDeliveryNumber" : {
-            "description" : "Postal delivery number if the address is a postal delivery type",
-            "type" : "integer",
-            "x-cds-type" : "PositiveInteger"
-          },
-          "postalDeliveryNumberPrefix" : {
-            "description" : "Postal delivery number prefix related to the postal delivery number",
-            "type" : "string"
-          },
-          "postalDeliveryNumberSuffix" : {
-            "description" : "Postal delivery number suffix related to the postal delivery number",
-            "type" : "string"
-          },
-          "localityName" : {
-            "description" : "Full name of locality",
-            "type" : "string"
-          },
-          "postcode" : {
-            "description" : "Postcode for the locality",
-            "type" : "string"
-          },
-          "state" : {
-            "description" : "State in which the address belongs. Valid enumeration defined by Australia Post PAF code file [State Type Abbreviation](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf). NSW, QLD, VIC, NT, WA, SA, TAS, ACT, AAT",
-            "type" : "string"
-          }
-        },
-        "required" : [ "localityName", "postcode", "state" ],
-        "type" : "object"
-      },
-      "EnergyServicePointDetail_location" : {
-        "properties" : {
-          "addressUType" : {
-            "description" : "The type of address object present",
-            "enum" : [ "simple", "paf" ],
-            "type" : "string"
-          },
-          "simple" : {
-            "$ref" : "#/components/schemas/EnergyServicePointDetail_location_simple"
-          },
-          "paf" : {
-            "$ref" : "#/components/schemas/EnergyServicePointDetail_location_paf"
-          }
-        },
-        "required" : [ "addressUType" ],
-        "type" : "object",
-        "x-conditional" : [ "simple", "paf" ]
-      },
-      "EnergyServicePointDetail_meters_specifications" : {
+      "EnergyServicePointDetail_specifications" : {
         "description" : "Technical characteristics of the meter",
         "properties" : {
           "status" : {
@@ -2005,8 +2009,7 @@
         "required" : [ "installationType", "status" ],
         "type" : "object"
       },
-      "EnergyServicePointDetail_meters_registers" : {
-        "description" : "Usage data registers available from the meter",
+      "EnergyServicePointDetail_registers" : {
         "properties" : {
           "registerId" : {
             "description" : "Unique identifier of the register within this service point.  Is not globally unique",
@@ -2052,7 +2055,7 @@
             "type" : "string"
           }
         },
-        "required" : [ "registerConsumptionType", "registerId", "registerSuffix" ],
+        "required" : [ "registerConsumptionType", "registerId" ],
         "type" : "object"
       },
       "EnergyServicePointDetail_meters" : {
@@ -2062,13 +2065,17 @@
             "type" : "string"
           },
           "specifications" : {
-            "$ref" : "#/components/schemas/EnergyServicePointDetail_meters_specifications"
+            "$ref" : "#/components/schemas/EnergyServicePointDetail_specifications"
           },
           "registers" : {
-            "$ref" : "#/components/schemas/EnergyServicePointDetail_meters_registers"
+            "description" : "Usage data registers available from the meter. This may be empty where there are no meters physically installed at the service point",
+            "items" : {
+              "$ref" : "#/components/schemas/EnergyServicePointDetail_registers"
+            },
+            "type" : "array"
           }
         },
-        "required" : [ "meterId", "registers", "specifications" ],
+        "required" : [ "meterId", "specifications" ],
         "type" : "object"
       },
       "EnergyUsageRead_basicRead" : {

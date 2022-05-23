@@ -105,8 +105,8 @@ x-cds-arrangement: string
 <td>x-fapi-interaction-id</td>
 <td>header</td>
 <td>string</td>
-<td>optional</td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+<td>mandatory</td>
+<td>The x-fapi-interaction-id header value provided by the Data Recipient. If not supplied by the Data Recipient, the primary Data Holder MUST create a unique <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value for the x-fapi-interaction-id header.</td>
 </tr>
 <tr>
 <td>x-cds-arrangement</td>
@@ -353,8 +353,8 @@ x-cds-arrangement: string
 <td>x-fapi-interaction-id</td>
 <td>header</td>
 <td>string</td>
-<td>optional</td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+<td>mandatory</td>
+<td>The x-fapi-interaction-id header value provided by the Data Recipient. If not supplied by the Data Recipient, the primary Data Holder MUST create a unique <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value for the x-fapi-interaction-id header.</td>
 </tr>
 <tr>
 <td>x-cds-arrangement</td>
@@ -396,7 +396,7 @@ x-cds-arrangement: string
       </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
     </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"addressUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"simple"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"addressUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"paf"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"simple"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"mailingName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"addressLine1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -432,29 +432,33 @@ x-cds-arrangement: string
         </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"meters"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"meterId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"specifications"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CURRENT"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"installationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BASIC"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"manufacturer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"readType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"nextScheduledReadDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="s2">"registers"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"registerId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"registerSuffix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"averagedDailyLoad"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"registerConsumptionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INTERVAL"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"networkTariffCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"unitOfMeasure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"timeOfDay"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ALLDAY"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"multiplier"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"controlledLoad"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"consumptionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTUAL"</span><span class="w">
+    </span><span class="s2">"meters"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"meterId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"specifications"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CURRENT"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"installationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BASIC"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"manufacturer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"readType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"nextScheduledReadDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"registers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"registerId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"registerSuffix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"averagedDailyLoad"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"registerConsumptionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INTERVAL"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"networkTariffCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"unitOfMeasure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"timeOfDay"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ALLDAY"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"multiplier"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"controlledLoad"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"consumptionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTUAL"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
       </span><span class="p">}</span><span class="w">
-    </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
@@ -620,7 +624,7 @@ x-cds-arrangement: string
 <td>query</td>
 <td><a href="#common-field-types">DateString</a></td>
 <td>optional</td>
-<td>Constrain the request to records with effective date at or after this date. If absent defaults to newest-date minus 24 months days.  Format is aligned to DateString common type</td>
+<td>Constrain the request to records with effective date at or after this date. If absent defaults to newest-date minus 24 months.  Format is aligned to DateString common type</td>
 </tr>
 <tr>
 <td>newest-date</td>
@@ -661,8 +665,8 @@ x-cds-arrangement: string
 <td>x-fapi-interaction-id</td>
 <td>header</td>
 <td>string</td>
-<td>optional</td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+<td>mandatory</td>
+<td>The x-fapi-interaction-id header value provided by the Data Recipient. If not supplied by the Data Recipient, the primary Data Holder MUST create a unique <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value for the x-fapi-interaction-id header.</td>
 </tr>
 <tr>
 <td>x-cds-arrangement</td>
@@ -899,7 +903,7 @@ x-cds-arrangement: string
 <td>query</td>
 <td><a href="#common-field-types">DateString</a></td>
 <td>optional</td>
-<td>Constrain the request to records with effective date at or after this date. If absent defaults to newest-date minus 24 months days.  Format is aligned to DateString common type</td>
+<td>Constrain the request to records with effective date at or after this date. If absent defaults to newest-date minus 24 months.  Format is aligned to DateString common type</td>
 </tr>
 <tr>
 <td>newest-date</td>
@@ -940,8 +944,8 @@ x-cds-arrangement: string
 <td>x-fapi-interaction-id</td>
 <td>header</td>
 <td>string</td>
-<td>optional</td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+<td>mandatory</td>
+<td>The x-fapi-interaction-id header value provided by the Data Recipient. If not supplied by the Data Recipient, the primary Data Holder MUST create a unique <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value for the x-fapi-interaction-id header.</td>
 </tr>
 <tr>
 <td>x-cds-arrangement</td>
@@ -1199,8 +1203,8 @@ x-cds-arrangement: string
 <td>x-fapi-interaction-id</td>
 <td>header</td>
 <td>string</td>
-<td>optional</td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+<td>mandatory</td>
+<td>The x-fapi-interaction-id header value provided by the Data Recipient. If not supplied by the Data Recipient, the primary Data Holder MUST create a unique <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value for the x-fapi-interaction-id header.</td>
 </tr>
 <tr>
 <td>x-cds-arrangement</td>
@@ -1466,8 +1470,8 @@ x-cds-arrangement: string
 <td>x-fapi-interaction-id</td>
 <td>header</td>
 <td>string</td>
-<td>optional</td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+<td>mandatory</td>
+<td>The x-fapi-interaction-id header value provided by the Data Recipient. If not supplied by the Data Recipient, the primary Data Holder MUST create a unique <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value for the x-fapi-interaction-id header.</td>
 </tr>
 <tr>
 <td>x-cds-arrangement</td>
@@ -1769,7 +1773,7 @@ This operation does not require authentication
       </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
     </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"addressUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"simple"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"addressUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"paf"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"simple"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"mailingName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"addressLine1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -1805,29 +1809,33 @@ This operation does not require authentication
         </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"meters"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"meterId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"specifications"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CURRENT"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"installationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BASIC"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"manufacturer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"readType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"nextScheduledReadDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="s2">"registers"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"registerId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"registerSuffix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"averagedDailyLoad"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"registerConsumptionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INTERVAL"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"networkTariffCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"unitOfMeasure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"timeOfDay"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ALLDAY"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"multiplier"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"controlledLoad"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"consumptionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTUAL"</span><span class="w">
+    </span><span class="s2">"meters"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"meterId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"specifications"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CURRENT"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"installationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BASIC"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"manufacturer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"readType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"nextScheduledReadDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"registers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"registerId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"registerSuffix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"averagedDailyLoad"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"registerConsumptionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INTERVAL"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"networkTariffCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"unitOfMeasure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"timeOfDay"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ALLDAY"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"multiplier"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"controlledLoad"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"consumptionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTUAL"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
       </span><span class="p">}</span><span class="w">
-    </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
@@ -2440,7 +2448,7 @@ This operation does not require authentication
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"addressUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"simple"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"addressUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"paf"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"simple"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"mailingName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"addressLine1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -2476,29 +2484,33 @@ This operation does not require authentication
       </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">},</span><span class="w">
-  </span><span class="s2">"meters"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"meterId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"specifications"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CURRENT"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"installationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BASIC"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"manufacturer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"readType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"nextScheduledReadDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"registers"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"registerId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"registerSuffix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"averagedDailyLoad"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"registerConsumptionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INTERVAL"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"networkTariffCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"unitOfMeasure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"timeOfDay"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ALLDAY"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"multiplier"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"controlledLoad"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"consumptionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTUAL"</span><span class="w">
+  </span><span class="s2">"meters"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"meterId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"specifications"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CURRENT"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"installationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BASIC"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"manufacturer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"readType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"nextScheduledReadDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"registers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"registerId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"registerSuffix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"averagedDailyLoad"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"registerConsumptionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INTERVAL"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"networkTariffCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"unitOfMeasure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"timeOfDay"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ALLDAY"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"multiplier"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"controlledLoad"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"consumptionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTUAL"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
     </span><span class="p">}</span><span class="w">
-  </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre><h3 id='properties-8'>Properties</h3>
@@ -2620,324 +2632,126 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>location</td>
-<td>object</td>
+<td><a href="#schemacdr-energy-secondary-data-holder-apicommonphysicaladdress">CommonPhysicalAddress</a></td>
 <td>mandatory</td>
-<td>none</td>
+<td>Location of the servicepoint</td>
 </tr>
 <tr>
-<td>» addressUType</td>
-<td>string</td>
-<td>mandatory</td>
-<td>The type of address object present</td>
-</tr>
-<tr>
-<td>» simple</td>
-<td>object</td>
-<td>conditional</td>
-<td>The address of the service point.  Mandatory if addressUType is set to simple</td>
-</tr>
-<tr>
-<td>»» mailingName</td>
-<td>string</td>
+<td>meters</td>
+<td>[object]</td>
 <td>optional</td>
-<td>Name of the individual or business formatted for inclusion in an address used for physical mail</td>
+<td>The meters associated with the service point. This may be empty where there are no meters physically installed at the service point</td>
 </tr>
 <tr>
-<td>»» addressLine1</td>
-<td>string</td>
-<td>mandatory</td>
-<td>First line of the standard address object</td>
-</tr>
-<tr>
-<td>»» addressLine2</td>
-<td>string</td>
-<td>optional</td>
-<td>Second line of the standard address object</td>
-</tr>
-<tr>
-<td>»» addressLine3</td>
-<td>string</td>
-<td>optional</td>
-<td>Third line of the standard address object</td>
-</tr>
-<tr>
-<td>»» postcode</td>
-<td>string</td>
-<td>conditional</td>
-<td>Mandatory for Australian addresses</td>
-</tr>
-<tr>
-<td>»» city</td>
-<td>string</td>
-<td>mandatory</td>
-<td>Name of the city or locality</td>
-</tr>
-<tr>
-<td>»» state</td>
-<td>string</td>
-<td>mandatory</td>
-<td>Free text if the country is not Australia. If country is Australia then must be one of the values defined by the <a href="https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf">State Type Abbreviation</a> in the PAF file format. NSW, QLD, VIC, NT, WA, SA, TAS, ACT, AAT</td>
-</tr>
-<tr>
-<td>»» country</td>
-<td><a href="#common-field-types">ExternalRef</a></td>
-<td>optional</td>
-<td>A valid <a href="https://www.iso.org/iso-3166-country-codes.html">ISO 3166 Alpha-3</a> country code. Australia (AUS) is assumed if country is not present.</td>
-</tr>
-<tr>
-<td>» paf</td>
-<td>object</td>
-<td>conditional</td>
-<td>The address of the service point.  Mandatory if addressUType is set to paf. Formatted according to the file format defined by the <a href="https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf">PAF file format</a></td>
-</tr>
-<tr>
-<td>»» dpid</td>
-<td>string</td>
-<td>optional</td>
-<td>Unique identifier for an address as defined by Australia Post.  Also known as Delivery Point Identifier</td>
-</tr>
-<tr>
-<td>»» thoroughfareNumber1</td>
-<td><a href="#common-field-types">PositiveInteger</a></td>
-<td>optional</td>
-<td>Thoroughfare number for a property (first number in a property ranged address)</td>
-</tr>
-<tr>
-<td>»» thoroughfareNumber1Suffix</td>
-<td>string</td>
-<td>optional</td>
-<td>Suffix for the thoroughfare number. Only relevant is thoroughfareNumber1 is populated</td>
-</tr>
-<tr>
-<td>»» thoroughfareNumber2</td>
-<td><a href="#common-field-types">PositiveInteger</a></td>
-<td>optional</td>
-<td>Second thoroughfare number (only used if the property has a ranged address eg 23-25)</td>
-</tr>
-<tr>
-<td>»» thoroughfareNumber2Suffix</td>
-<td>string</td>
-<td>optional</td>
-<td>Suffix for the second thoroughfare number. Only relevant is thoroughfareNumber2 is populated</td>
-</tr>
-<tr>
-<td>»» flatUnitType</td>
-<td>string</td>
-<td>optional</td>
-<td>Type of flat or unit for the address</td>
-</tr>
-<tr>
-<td>»» flatUnitNumber</td>
-<td>string</td>
-<td>optional</td>
-<td>Unit number (including suffix, if applicable)</td>
-</tr>
-<tr>
-<td>»» floorLevelType</td>
-<td>string</td>
-<td>optional</td>
-<td>Type of floor or level for the address</td>
-</tr>
-<tr>
-<td>»» floorLevelNumber</td>
-<td>string</td>
-<td>optional</td>
-<td>Floor or level number (including alpha characters)</td>
-</tr>
-<tr>
-<td>»» lotNumber</td>
-<td>string</td>
-<td>optional</td>
-<td>Allotment number for the address</td>
-</tr>
-<tr>
-<td>»» buildingName1</td>
-<td>string</td>
-<td>optional</td>
-<td>Building/Property name 1</td>
-</tr>
-<tr>
-<td>»» buildingName2</td>
-<td>string</td>
-<td>optional</td>
-<td>Building/Property name 2</td>
-</tr>
-<tr>
-<td>»» streetName</td>
-<td>string</td>
-<td>optional</td>
-<td>The name of the street</td>
-</tr>
-<tr>
-<td>»» streetType</td>
-<td>string</td>
-<td>optional</td>
-<td>The street type. Valid enumeration defined by Australia Post PAF code file</td>
-</tr>
-<tr>
-<td>»» streetSuffix</td>
-<td>string</td>
-<td>optional</td>
-<td>The street type suffix. Valid enumeration defined by Australia Post PAF code file</td>
-</tr>
-<tr>
-<td>»» postalDeliveryType</td>
-<td>string</td>
-<td>optional</td>
-<td>Postal delivery type. (eg. PO BOX). Valid enumeration defined by Australia Post PAF code file</td>
-</tr>
-<tr>
-<td>»» postalDeliveryNumber</td>
-<td><a href="#common-field-types">PositiveInteger</a></td>
-<td>optional</td>
-<td>Postal delivery number if the address is a postal delivery type</td>
-</tr>
-<tr>
-<td>»» postalDeliveryNumberPrefix</td>
-<td>string</td>
-<td>optional</td>
-<td>Postal delivery number prefix related to the postal delivery number</td>
-</tr>
-<tr>
-<td>»» postalDeliveryNumberSuffix</td>
-<td>string</td>
-<td>optional</td>
-<td>Postal delivery number suffix related to the postal delivery number</td>
-</tr>
-<tr>
-<td>»» localityName</td>
-<td>string</td>
-<td>mandatory</td>
-<td>Full name of locality</td>
-</tr>
-<tr>
-<td>»» postcode</td>
-<td>string</td>
-<td>mandatory</td>
-<td>Postcode for the locality</td>
-</tr>
-<tr>
-<td>»» state</td>
-<td>string</td>
-<td>mandatory</td>
-<td>State in which the address belongs. Valid enumeration defined by Australia Post PAF code file <a href="https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf">State Type Abbreviation</a>. NSW, QLD, VIC, NT, WA, SA, TAS, ACT, AAT</td>
-</tr>
-<tr>
-<td>» meters</td>
-<td>object</td>
-<td>mandatory</td>
-<td>none</td>
-</tr>
-<tr>
-<td>»» meterId</td>
+<td>» meterId</td>
 <td>string</td>
 <td>mandatory</td>
 <td>The meter ID uniquely identifies a meter for a given service point.  It is unique in the context of the service point.  It is not globally unique</td>
 </tr>
 <tr>
-<td>»» specifications</td>
+<td>» specifications</td>
 <td>object</td>
 <td>mandatory</td>
 <td>Technical characteristics of the meter</td>
 </tr>
 <tr>
-<td>»»» status</td>
+<td>»» status</td>
 <td>string</td>
 <td>mandatory</td>
 <td>A code to denote the status of the meter. Note the details of enumeration values below: <ul><li><strong>CURRENT</strong> -Applies when a meter is current and not disconnected</li><li><strong>DISCONNECTED</strong> - Applies when a meter is present but has been remotely disconnected</li></ul></td>
 </tr>
 <tr>
-<td>»»» installationType</td>
+<td>»» installationType</td>
 <td>string</td>
 <td>mandatory</td>
 <td>The metering Installation type code indicates whether the metering installation has to be manually read. Note the details of enumeration values below: <ul><li><strong>BASIC</strong> - Accumulation Meter – Type 6</li><li><strong>COMMS1</strong> - Interval Meter with communications – Type 1</li><li><strong>COMMS2</strong> - Interval Meter with communications – Type 2</li><li><strong>COMMS3</strong> - Interval Meter with communications – Type 3</li><li><strong>COMMS4</strong> - Interval Meter with communications – Type 4</li><li><strong>COMMS4C</strong> - CT connected metering installation that meets the minimum services specifications</li><li><strong>COMMS4D</strong> - Whole current metering installation that meets the minimum services specifications</li><li><strong>MRAM</strong> - Small customer metering installation – Type 4A</li><li><strong>MRIM</strong> - Manually Read Interval Meter – Type 5</li><li><strong>UMCP</strong> - Unmetered Supply – Type 7</li><li><strong>VICAMI</strong> - A relevant metering installation as defined in clause 9.9C of the NER</li><li><strong>NCONUML</strong> - Non-contestable unmeter load - Introduced as part of Global Settlement</li></ul></td>
 </tr>
 <tr>
-<td>»»» manufacturer</td>
+<td>»» manufacturer</td>
 <td>string</td>
 <td>optional</td>
 <td>Free text field to identify the manufacturer of the installed meter</td>
 </tr>
 <tr>
-<td>»»» model</td>
+<td>»» model</td>
 <td>string</td>
 <td>optional</td>
 <td>Free text field to identify the meter manufacturer’s designation for the meter model</td>
 </tr>
 <tr>
-<td>»»» readType</td>
+<td>»» readType</td>
 <td>string</td>
 <td>optional</td>
 <td>Code to denote the method and frequency of Meter Reading. The value is formatted as follows: <ul><li>First Character = Remote (R) or Manual (M)</li><li>Second Character = Mode: T = telephone W = wireless P = powerline I = infra-red G = galvanic V = visual </li><li>Third Character = Frequency of Scheduled Meter Readings: 1 = Twelve times per year 2 = Six times per year 3 = Four times per year D = Daily or weekly</li><li>Optional Fourth Character = to identify what interval length the meter is capable of reading. This includes five, 15 and 30 minute granularity as the following: A – 5 minute B – 15 minute C – 30 minute D – Cannot convert to 5 minute (i.e. due to metering installation de-energised) M - Manually Read Accumulation Meter</li></ul> For example, <ul><li>MV3 = Manual, Visual, Quarterly</li> <li>MV3M = Manual, Visual, Quarterly, Manually Read Accumulation Meter</li> <li>RWDC = Remote, Wireless, Daily, 30 minutes interval</li></ul></td>
 </tr>
 <tr>
-<td>»»» nextScheduledReadDate</td>
+<td>»» nextScheduledReadDate</td>
 <td><a href="#common-field-types">DateString</a></td>
 <td>optional</td>
 <td>This date is the next scheduled meter read date (NSRD) if a manual Meter Reading is required</td>
 </tr>
 <tr>
-<td>»» registers</td>
-<td>object</td>
-<td>mandatory</td>
-<td>Usage data registers available from the meter</td>
+<td>» registers</td>
+<td>[object]</td>
+<td>optional</td>
+<td>Usage data registers available from the meter. This may be empty where there are no meters physically installed at the service point</td>
 </tr>
 <tr>
-<td>»»» registerId</td>
+<td>»» registerId</td>
 <td>string</td>
 <td>mandatory</td>
 <td>Unique identifier of the register within this service point.  Is not globally unique</td>
 </tr>
 <tr>
-<td>»»» registerSuffix</td>
+<td>»» registerSuffix</td>
 <td>string</td>
-<td>mandatory</td>
+<td>optional</td>
 <td>Register suffix of the meter register where the meter reads are obtained</td>
 </tr>
 <tr>
-<td>»»» averagedDailyLoad</td>
+<td>»» averagedDailyLoad</td>
 <td>number</td>
 <td>optional</td>
 <td>The energy delivered through a connection point or metering point over an extended period normalised to a &#39;per day&#39; basis (kWh). This value is calculated annually.</td>
 </tr>
 <tr>
-<td>»»» registerConsumptionType</td>
+<td>»» registerConsumptionType</td>
 <td>string</td>
 <td>mandatory</td>
 <td>Indicates the consumption type of register</td>
 </tr>
 <tr>
-<td>»»» networkTariffCode</td>
+<td>»» networkTariffCode</td>
 <td>string</td>
 <td>optional</td>
 <td>The Network Tariff Code is a free text field containing a code supplied and published by the local network service provider</td>
 </tr>
 <tr>
-<td>»»» unitOfMeasure</td>
+<td>»» unitOfMeasure</td>
 <td>string</td>
 <td>optional</td>
 <td>The unit of measure for data held in this register</td>
 </tr>
 <tr>
-<td>»»» timeOfDay</td>
+<td>»» timeOfDay</td>
 <td>string</td>
 <td>optional</td>
 <td>Code to identify the time validity of register contents</td>
 </tr>
 <tr>
-<td>»»» multiplier</td>
+<td>»» multiplier</td>
 <td>number</td>
 <td>optional</td>
 <td>Multiplier required to take a register value and turn it into a value representing billable energy</td>
 </tr>
 <tr>
-<td>»»» controlledLoad</td>
+<td>»» controlledLoad</td>
 <td>boolean</td>
 <td>optional</td>
 <td>Indicates whether the energy recorded by this register is created under a Controlled Load regime</td>
 </tr>
 <tr>
-<td>»»» consumptionType</td>
+<td>»» consumptionType</td>
 <td>string</td>
 <td>optional</td>
 <td>Actual/Subtractive Indicator. Note the details of enumeration values below: <ul><li><strong>ACTUAL</strong> implies volume of energy actually metered between two dates</li><li><strong>CUMULATIVE</strong> indicates a meter reading for a specific date. A second Meter Reading is required to determine the consumption between those two Meter Reading dates</li></ul></td>
@@ -3065,14 +2879,6 @@ This operation does not require authentication
 <tr>
 <td>role</td>
 <td>DRSP</td>
-</tr>
-<tr>
-<td>addressUType</td>
-<td>simple</td>
-</tr>
-<tr>
-<td>addressUType</td>
-<td>paf</td>
 </tr>
 <tr>
 <td>status</td>
@@ -3790,6 +3596,340 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
+<h3 class="schema-toc" id="tocScommonphysicaladdress">CommonPhysicalAddress</h3>
+
+<p><a id="schemacdr-energy-secondary-data-holder-apicommonphysicaladdress"></a></p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"addressUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"paf"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"simple"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"mailingName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"addressLine1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"addressLine2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"addressLine3"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AUS"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"paf"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"dpid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"thoroughfareNumber1"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"thoroughfareNumber1Suffix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"thoroughfareNumber2"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"thoroughfareNumber2Suffix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"flatUnitType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"flatUnitNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"floorLevelType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"floorLevelNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"lotNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"buildingName1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"buildingName2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"streetName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"streetType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"streetSuffix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"postalDeliveryType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"postalDeliveryNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"postalDeliveryNumberPrefix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"postalDeliveryNumberSuffix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"localityName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre><h3 id='properties-11'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>addressUType</td>
+<td>string</td>
+<td>mandatory</td>
+<td>The type of address object present</td>
+</tr>
+<tr>
+<td>simple</td>
+<td><a href="#schemacdr-energy-secondary-data-holder-apicommonsimpleaddress">CommonSimpleAddress</a></td>
+<td>conditional</td>
+<td>Required if addressUType is set to simple</td>
+</tr>
+<tr>
+<td>paf</td>
+<td><a href="#schemacdr-energy-secondary-data-holder-apicommonpafaddress">CommonPAFAddress</a></td>
+<td>conditional</td>
+<td>Australian address formatted according to the file format defined by the <a href="https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf">PAF file format</a>. Required if addressUType is set to paf</td>
+</tr>
+</tbody></table>
+<h4 id='enumerated-values-5'>Enumerated Values</h4>
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>addressUType</td>
+<td>paf</td>
+</tr>
+<tr>
+<td>addressUType</td>
+<td>simple</td>
+</tr>
+</tbody></table>
+
+<h3 class="schema-toc" id="tocScommonsimpleaddress">CommonSimpleAddress</h3>
+
+<p><a id="schemacdr-energy-secondary-data-holder-apicommonsimpleaddress"></a></p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"mailingName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"addressLine1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"addressLine2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"addressLine3"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AUS"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<p><em>Required if addressUType is set to simple</em></p>
+<h3 id='properties-12'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>mailingName</td>
+<td>string</td>
+<td>optional</td>
+<td>Name of the individual or business formatted for inclusion in an address used for physical mail</td>
+</tr>
+<tr>
+<td>addressLine1</td>
+<td>string</td>
+<td>mandatory</td>
+<td>First line of the standard address object</td>
+</tr>
+<tr>
+<td>addressLine2</td>
+<td>string</td>
+<td>optional</td>
+<td>Second line of the standard address object</td>
+</tr>
+<tr>
+<td>addressLine3</td>
+<td>string</td>
+<td>optional</td>
+<td>Third line of the standard address object</td>
+</tr>
+<tr>
+<td>postcode</td>
+<td>string</td>
+<td>conditional</td>
+<td>Mandatory for Australian addresses</td>
+</tr>
+<tr>
+<td>city</td>
+<td>string</td>
+<td>mandatory</td>
+<td>Name of the city or locality</td>
+</tr>
+<tr>
+<td>state</td>
+<td>string</td>
+<td>mandatory</td>
+<td>Free text if the country is not Australia. If country is Australia then must be one of the values defined by the <a href="https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf">State Type Abbreviation</a> in the PAF file format. NSW, QLD, VIC, NT, WA, SA, TAS, ACT, AAT</td>
+</tr>
+<tr>
+<td>country</td>
+<td><a href="#common-field-types">ExternalRef</a></td>
+<td>optional</td>
+<td>A valid <a href="https://www.iso.org/iso-3166-country-codes.html">ISO 3166 Alpha-3</a> country code. Australia (AUS) is assumed if country is not present.</td>
+</tr>
+</tbody></table>
+
+<h3 class="schema-toc" id="tocScommonpafaddress">CommonPAFAddress</h3>
+
+<p><a id="schemacdr-energy-secondary-data-holder-apicommonpafaddress"></a></p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"dpid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"thoroughfareNumber1"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"thoroughfareNumber1Suffix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"thoroughfareNumber2"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"thoroughfareNumber2Suffix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"flatUnitType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"flatUnitNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"floorLevelType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"floorLevelNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"lotNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"buildingName1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"buildingName2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"streetName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"streetType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"streetSuffix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"postalDeliveryType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"postalDeliveryNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"postalDeliveryNumberPrefix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"postalDeliveryNumberSuffix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"localityName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<p><em>Australian address formatted according to the file format defined by the <a href="https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf">PAF file format</a>. Required if addressUType is set to paf</em></p>
+<h3 id='properties-13'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>dpid</td>
+<td>string</td>
+<td>optional</td>
+<td>Unique identifier for an address as defined by Australia Post.  Also known as Delivery Point Identifier</td>
+</tr>
+<tr>
+<td>thoroughfareNumber1</td>
+<td><a href="#common-field-types">PositiveInteger</a></td>
+<td>optional</td>
+<td>Thoroughfare number for a property (first number in a property ranged address)</td>
+</tr>
+<tr>
+<td>thoroughfareNumber1Suffix</td>
+<td>string</td>
+<td>optional</td>
+<td>Suffix for the thoroughfare number. Only relevant is thoroughfareNumber1 is populated</td>
+</tr>
+<tr>
+<td>thoroughfareNumber2</td>
+<td><a href="#common-field-types">PositiveInteger</a></td>
+<td>optional</td>
+<td>Second thoroughfare number (only used if the property has a ranged address eg 23-25)</td>
+</tr>
+<tr>
+<td>thoroughfareNumber2Suffix</td>
+<td>string</td>
+<td>optional</td>
+<td>Suffix for the second thoroughfare number. Only relevant is thoroughfareNumber2 is populated</td>
+</tr>
+<tr>
+<td>flatUnitType</td>
+<td>string</td>
+<td>optional</td>
+<td>Type of flat or unit for the address</td>
+</tr>
+<tr>
+<td>flatUnitNumber</td>
+<td>string</td>
+<td>optional</td>
+<td>Unit number (including suffix, if applicable)</td>
+</tr>
+<tr>
+<td>floorLevelType</td>
+<td>string</td>
+<td>optional</td>
+<td>Type of floor or level for the address</td>
+</tr>
+<tr>
+<td>floorLevelNumber</td>
+<td>string</td>
+<td>optional</td>
+<td>Floor or level number (including alpha characters)</td>
+</tr>
+<tr>
+<td>lotNumber</td>
+<td>string</td>
+<td>optional</td>
+<td>Allotment number for the address</td>
+</tr>
+<tr>
+<td>buildingName1</td>
+<td>string</td>
+<td>optional</td>
+<td>Building/Property name 1</td>
+</tr>
+<tr>
+<td>buildingName2</td>
+<td>string</td>
+<td>optional</td>
+<td>Building/Property name 2</td>
+</tr>
+<tr>
+<td>streetName</td>
+<td>string</td>
+<td>optional</td>
+<td>The name of the street</td>
+</tr>
+<tr>
+<td>streetType</td>
+<td>string</td>
+<td>optional</td>
+<td>The street type. Valid enumeration defined by Australia Post PAF code file</td>
+</tr>
+<tr>
+<td>streetSuffix</td>
+<td>string</td>
+<td>optional</td>
+<td>The street type suffix. Valid enumeration defined by Australia Post PAF code file</td>
+</tr>
+<tr>
+<td>postalDeliveryType</td>
+<td>string</td>
+<td>optional</td>
+<td>Postal delivery type. (eg. PO BOX). Valid enumeration defined by Australia Post PAF code file</td>
+</tr>
+<tr>
+<td>postalDeliveryNumber</td>
+<td><a href="#common-field-types">PositiveInteger</a></td>
+<td>optional</td>
+<td>Postal delivery number if the address is a postal delivery type</td>
+</tr>
+<tr>
+<td>postalDeliveryNumberPrefix</td>
+<td>string</td>
+<td>optional</td>
+<td>Postal delivery number prefix related to the postal delivery number</td>
+</tr>
+<tr>
+<td>postalDeliveryNumberSuffix</td>
+<td>string</td>
+<td>optional</td>
+<td>Postal delivery number suffix related to the postal delivery number</td>
+</tr>
+<tr>
+<td>localityName</td>
+<td>string</td>
+<td>mandatory</td>
+<td>Full name of locality</td>
+</tr>
+<tr>
+<td>postcode</td>
+<td>string</td>
+<td>mandatory</td>
+<td>Postcode for the locality</td>
+</tr>
+<tr>
+<td>state</td>
+<td>string</td>
+<td>mandatory</td>
+<td>State in which the address belongs. Valid enumeration defined by Australia Post PAF code file <a href="https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf">State Type Abbreviation</a>. NSW, QLD, VIC, NT, WA, SA, TAS, ACT, AAT</td>
+</tr>
+</tbody></table>
+
 <h3 class="schema-toc" id="tocSlinks">Links</h3>
 
 <p><a id="schemacdr-energy-secondary-data-holder-apilinks"></a></p>
@@ -3797,7 +3937,7 @@ This operation does not require authentication
   </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-11'>Properties</h3>
+</span></code></pre><h3 id='properties-14'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -3819,7 +3959,7 @@ This operation does not require authentication
 <p><a id="schemacdr-energy-secondary-data-holder-apimeta"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{}</span><span class="w">
 
-</span></code></pre><h3 id='properties-12'>Properties</h3>
+</span></code></pre><h3 id='properties-15'>Properties</h3>
 <p><em>None</em></p>
 
 <h3 class="schema-toc" id="tocSlinkspaginated">LinksPaginated</h3>
@@ -3833,7 +3973,7 @@ This operation does not require authentication
   </span><span class="s2">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-13'>Properties</h3>
+</span></code></pre><h3 id='properties-16'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -3882,7 +4022,7 @@ This operation does not require authentication
   </span><span class="s2">"totalPages"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-14'>Properties</h3>
+</span></code></pre><h3 id='properties-17'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>

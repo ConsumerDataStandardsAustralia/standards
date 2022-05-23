@@ -10,16 +10,25 @@ This specification defines the APIs for Data Holders exposing Energy Secondary D
 <tr><td><a href='./includes/swagger/cds_energy_sdh.yaml'>Energy Secondary Data Holder OpenAPI Specification (YAML)</a></td></tr>
 </table>
 
-```diff
-This is a new section added to the standards to support implementation.
 
-It does not represent a change to the standards. The swagger included are
-based on the current energy swagger document with modifications aligned
-to the statements in the Shared Responsibility section of the standards
+```diff
+Modified the description of `oldest-date` from:
+- Constrain the request to records with effective date at or after this date. If absent defaults to newest-date minus 24 months days. Format is aligned to DateString common type
+to:
++ Constrain the request to records with effective date at or after this date. If absent defaults to newest-date minus 24 months. Format is aligned to DateString common type
+
+The `EnergyServicePointDetail.meters` and `EnergyServicePointDetail.meters.registers` fields have been made optional
+
+`EnergyServicePointDetail.meters` and `EnergyServicePointDetail.meters.registers` have been converted into arrays
+
+The `EnergyServicePointDetail.meters.registers.registerSuffix` field has been made optional
+
+The location model in `EnergyServicePointDetail` has been modified to CommonPhysicalAddress model
+
+Updated description of `EnergyServicePointDetail.meters` and `EnergyServicePointDetail.meters.registers` fields
+
+`x-fapi-interaction-id` header has been made mandatory
 ```
 
-Note that in the documentation of the Secondary Data Holder endpoints below it is indicated the no authentication is required.
-
-This should be understood to mean that there is no authentication documented in these standards.  The actual security requirements for invocation of the AEMO hosted endpoints will be defined by AEMO as staged in the [Energy Shared Responsibility](#energy) section.
 
 <%= partial "includes/cds_energy_sdh.md" %>

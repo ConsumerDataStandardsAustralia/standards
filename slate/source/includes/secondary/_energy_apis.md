@@ -31,7 +31,7 @@ The following variations to the endpoints published by AEMO from the energy sect
 * The `x-fapi-customer-ip-address` header MUST NOT be passed to AEMO and AEMO MUST NOT require this header
 * The `x-cds-client-headers` header MUST NOT be passed to AEMO and AEMO MUST NOT require this header
 * A new header named `x-cds-arrangement` must be passed to AEMO for every invocation. This header should contain the arrangement ID for the consent that the request is being made under and will be used for tracing and audit purposes. This field MUST be populated but AEMO MUST NOT seek to validate the consent associated with the arrangement
-* All occurrences of the `servicePointId` field, whether in a request, a response, or as a query parameter should be populated with the equivalent `NationalMeteringId` in plain text
+* All occurrences of the `servicePointId` field, whether in a request, a response, or as an input parameter (such as path parameter or query parameter) should be populated with the equivalent `NationalMeteringId` in plain text
 * Fields in the links object for all responses MUST be translated by the Data Holder into
 values that are valid for a Data Recipient to be able to call back to the Data Holder
 * The *Get Service Points* end point MUST be changed from a GET to a POST and will have the same request payload as the *Get Usage For Specific Service Points* endpoint

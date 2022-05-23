@@ -369,6 +369,7 @@ Obtain detailed information on a single energy plan offered openly to the market
           "startDate": "string",
           "endDate": "string",
           "dailySupplyCharges": "string",
+          "timeZone": "LOCAL",
           "rateBlockUType": "singleRate",
           "singleRate": {
             "displayName": "string",
@@ -558,6 +559,7 @@ Obtain detailed information on a single energy plan offered openly to the market
           "startDate": "string",
           "endDate": "string",
           "dailySupplyCharges": "string",
+          "timeZone": "LOCAL",
           "rateBlockUType": "singleRate",
           "singleRate": {
             "displayName": "string",
@@ -887,7 +889,7 @@ Obtain detailed standing information for a specific service point that is owned 
       }
     ],
     "location": {
-      "addressUType": "simple",
+      "addressUType": "paf",
       "simple": {
         "mailingName": "string",
         "addressLine1": "string",
@@ -923,29 +925,33 @@ Obtain detailed standing information for a specific service point that is owned 
         "state": "string"
       }
     },
-    "meters": {
-      "meterId": "string",
-      "specifications": {
-        "status": "CURRENT",
-        "installationType": "BASIC",
-        "manufacturer": "string",
-        "model": "string",
-        "readType": "string",
-        "nextScheduledReadDate": "string"
-      },
-      "registers": {
-        "registerId": "string",
-        "registerSuffix": "string",
-        "averagedDailyLoad": 0,
-        "registerConsumptionType": "INTERVAL",
-        "networkTariffCode": "string",
-        "unitOfMeasure": "string",
-        "timeOfDay": "ALLDAY",
-        "multiplier": 0,
-        "controlledLoad": true,
-        "consumptionType": "ACTUAL"
+    "meters": [
+      {
+        "meterId": "string",
+        "specifications": {
+          "status": "CURRENT",
+          "installationType": "BASIC",
+          "manufacturer": "string",
+          "model": "string",
+          "readType": "string",
+          "nextScheduledReadDate": "string"
+        },
+        "registers": [
+          {
+            "registerId": "string",
+            "registerSuffix": "string",
+            "averagedDailyLoad": 0,
+            "registerConsumptionType": "INTERVAL",
+            "networkTariffCode": "string",
+            "unitOfMeasure": "string",
+            "timeOfDay": "ALLDAY",
+            "multiplier": 0,
+            "controlledLoad": true,
+            "consumptionType": "ACTUAL"
+          }
+        ]
       }
-    }
+    ]
   },
   "links": {
     "self": "string"
@@ -1040,7 +1046,7 @@ Obtain a list of electricity usage data from a particular service point
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |servicePointId|path|string|mandatory|ID of the specific service point requested.  This is a tokenised ID previous obtained from the Service Point List Data end point.  Note that it is not a nationalMeteringId.|
-|oldest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with effective date at or after this date. If absent defaults to newest-date minus 24 months days.  Format is aligned to DateString common type|
+|oldest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with effective date at or after this date. If absent defaults to newest-date minus 24 months.  Format is aligned to DateString common type|
 |newest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with effective date at or before this date.  If absent defaults to current date.  Format is aligned to DateString common type|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request.  Default is 25 (standard pagination)|
@@ -1187,7 +1193,7 @@ Obtain usage data for all service points associated with the customer
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|oldest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with effective date at or after this date. If absent defaults to newest-date minus 24 months days.  Format is aligned to DateString common type|
+|oldest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with effective date at or after this date. If absent defaults to newest-date minus 24 months.  Format is aligned to DateString common type|
 |newest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with effective date at or before this date.  If absent defaults to current date.  Format is aligned to DateString common type|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request.  Default is 25 (standard pagination)|
@@ -1347,7 +1353,7 @@ Obtain the electricity usage data for a specific set of service points
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|oldest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with effective date at or after this date. If absent defaults to newest-date minus 24 months days.  Format is aligned to DateString common type|
+|oldest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with effective date at or after this date. If absent defaults to newest-date minus 24 months.  Format is aligned to DateString common type|
 |newest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with effective date at or before this date.  If absent defaults to current date.  Format is aligned to DateString common type|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request.  Default is 25 (standard pagination)|
@@ -2302,6 +2308,7 @@ Obtain detailed information for a specific energy account
                 "startDate": "string",
                 "endDate": "string",
                 "dailySupplyCharges": "string",
+                "timeZone": "LOCAL",
                 "rateBlockUType": "singleRate",
                 "singleRate": {
                   "displayName": "string",
@@ -2452,6 +2459,7 @@ Obtain detailed information for a specific energy account
                 "startDate": "string",
                 "endDate": "string",
                 "dailySupplyCharges": "string",
+                "timeZone": "LOCAL",
                 "rateBlockUType": "singleRate",
                 "singleRate": {
                   "displayName": "string",
@@ -2738,15 +2746,18 @@ Obtain the details of any concessions or arrangements applied to a specific ener
   "data": {
     "concessions": [
       {
+        "type": "FIXED_AMOUNT",
         "displayName": "string",
         "additionalInfo": "string",
         "additionalInfoUri": "string",
         "startDate": "string",
         "endDate": "string",
-        "dailyDiscount": "string",
-        "monthlyDiscount": "string",
-        "yearlyDiscount": "string",
-        "percentageDiscount": "string"
+        "discountFrequency": "string",
+        "amount": "string",
+        "percentage": "string",
+        "appliedTo": [
+          "INVOICE"
+        ]
       }
     ]
   },
@@ -3216,7 +3227,7 @@ Obtain the invoices for a specific account
 |---|---|---|---|---|
 |accountId|path|string|mandatory|ID of a specific account to obtain data for.  This is a tokenised ID previous obtained from the Account List end point.|
 |newest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with effective date at or before this date.  If absent defaults to current date.  Format is aligned to DateString common type|
-|oldest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with effective date at or after this date. If absent defaults to newest-date minus 24 months days.  Format is aligned to DateString common type|
+|oldest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with effective date at or after this date. If absent defaults to newest-date minus 24 months.  Format is aligned to DateString common type|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request.  Default is 25 (standard pagination)|
 |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
@@ -3393,7 +3404,7 @@ Obtain the invoices for all accounts
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |newest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with effective date at or before this date.  If absent defaults to current date.  Format is aligned to DateString common type|
-|oldest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with effective date at or after this date. If absent defaults to newest-date minus 24 months days.  Format is aligned to DateString common type|
+|oldest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with effective date at or after this date. If absent defaults to newest-date minus 24 months.  Format is aligned to DateString common type|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request.  Default is 25 (standard pagination)|
 |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
@@ -3583,7 +3594,7 @@ Obtain invoices for a specified set of accounts
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |newest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with effective date at or before this date.  If absent defaults to current date.  Format is aligned to DateString common type|
-|oldest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with effective date at or after this date. If absent defaults to newest-date minus 24 months days.  Format is aligned to DateString common type|
+|oldest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with effective date at or after this date. If absent defaults to newest-date minus 24 months.  Format is aligned to DateString common type|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request.  Default is 25 (standard pagination)|
 |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
@@ -3846,7 +3857,19 @@ Obtain the billing transactions for a specific account
           "endDate": "string",
           "type": "ENVIRONMENTAL",
           "amount": "string",
-          "description": "string"
+          "description": "string",
+          "calculationFactors": [
+            {
+              "value": 0,
+              "type": "DLF"
+            }
+          ],
+          "adjustments": [
+            {
+              "amount": "string",
+              "description": "string"
+            }
+          ]
         },
         "payment": {
           "amount": "string",
@@ -4040,7 +4063,19 @@ Obtain billing transactions for all accounts
           "endDate": "string",
           "type": "ENVIRONMENTAL",
           "amount": "string",
-          "description": "string"
+          "description": "string",
+          "calculationFactors": [
+            {
+              "value": 0,
+              "type": "DLF"
+            }
+          ],
+          "adjustments": [
+            {
+              "amount": "string",
+              "description": "string"
+            }
+          ]
         },
         "payment": {
           "amount": "string",
@@ -4251,7 +4286,19 @@ Obtain billing for a specified set of accounts
           "endDate": "string",
           "type": "ENVIRONMENTAL",
           "amount": "string",
-          "description": "string"
+          "description": "string",
+          "calculationFactors": [
+            {
+              "value": 0,
+              "type": "DLF"
+            }
+          ],
+          "adjustments": [
+            {
+              "amount": "string",
+              "description": "string"
+            }
+          ]
         },
         "payment": {
           "amount": "string",
@@ -4532,6 +4579,7 @@ To perform this operation, you must be authenticated and authorised with the fol
           "startDate": "string",
           "endDate": "string",
           "dailySupplyCharges": "string",
+          "timeZone": "LOCAL",
           "rateBlockUType": "singleRate",
           "singleRate": {
             "displayName": "string",
@@ -4721,6 +4769,7 @@ To perform this operation, you must be authenticated and authorised with the fol
           "startDate": "string",
           "endDate": "string",
           "dailySupplyCharges": "string",
+          "timeZone": "LOCAL",
           "rateBlockUType": "singleRate",
           "singleRate": {
             "displayName": "string",
@@ -4886,7 +4935,7 @@ To perform this operation, you must be authenticated and authorised with the fol
       }
     ],
     "location": {
-      "addressUType": "simple",
+      "addressUType": "paf",
       "simple": {
         "mailingName": "string",
         "addressLine1": "string",
@@ -4922,29 +4971,33 @@ To perform this operation, you must be authenticated and authorised with the fol
         "state": "string"
       }
     },
-    "meters": {
-      "meterId": "string",
-      "specifications": {
-        "status": "CURRENT",
-        "installationType": "BASIC",
-        "manufacturer": "string",
-        "model": "string",
-        "readType": "string",
-        "nextScheduledReadDate": "string"
-      },
-      "registers": {
-        "registerId": "string",
-        "registerSuffix": "string",
-        "averagedDailyLoad": 0,
-        "registerConsumptionType": "INTERVAL",
-        "networkTariffCode": "string",
-        "unitOfMeasure": "string",
-        "timeOfDay": "ALLDAY",
-        "multiplier": 0,
-        "controlledLoad": true,
-        "consumptionType": "ACTUAL"
+    "meters": [
+      {
+        "meterId": "string",
+        "specifications": {
+          "status": "CURRENT",
+          "installationType": "BASIC",
+          "manufacturer": "string",
+          "model": "string",
+          "readType": "string",
+          "nextScheduledReadDate": "string"
+        },
+        "registers": [
+          {
+            "registerId": "string",
+            "registerSuffix": "string",
+            "averagedDailyLoad": 0,
+            "registerConsumptionType": "INTERVAL",
+            "networkTariffCode": "string",
+            "unitOfMeasure": "string",
+            "timeOfDay": "ALLDAY",
+            "multiplier": 0,
+            "controlledLoad": true,
+            "consumptionType": "ACTUAL"
+          }
+        ]
       }
-    }
+    ]
   },
   "links": {
     "self": "string"
@@ -5379,6 +5432,7 @@ To perform this operation, you must be authenticated and authorised with the fol
                 "startDate": "string",
                 "endDate": "string",
                 "dailySupplyCharges": "string",
+                "timeZone": "LOCAL",
                 "rateBlockUType": "singleRate",
                 "singleRate": {
                   "displayName": "string",
@@ -5529,6 +5583,7 @@ To perform this operation, you must be authenticated and authorised with the fol
                 "startDate": "string",
                 "endDate": "string",
                 "dailySupplyCharges": "string",
+                "timeZone": "LOCAL",
                 "rateBlockUType": "singleRate",
                 "singleRate": {
                   "displayName": "string",
@@ -5647,15 +5702,18 @@ To perform this operation, you must be authenticated and authorised with the fol
   "data": {
     "concessions": [
       {
+        "type": "FIXED_AMOUNT",
         "displayName": "string",
         "additionalInfo": "string",
         "additionalInfoUri": "string",
         "startDate": "string",
         "endDate": "string",
-        "dailyDiscount": "string",
-        "monthlyDiscount": "string",
-        "yearlyDiscount": "string",
-        "percentageDiscount": "string"
+        "discountFrequency": "string",
+        "amount": "string",
+        "percentage": "string",
+        "appliedTo": [
+          "INVOICE"
+        ]
       }
     ]
   },
@@ -5904,7 +5962,19 @@ To perform this operation, you must be authenticated and authorised with the fol
           "endDate": "string",
           "type": "ENVIRONMENTAL",
           "amount": "string",
-          "description": "string"
+          "description": "string",
+          "calculationFactors": [
+            {
+              "value": 0,
+              "type": "DLF"
+            }
+          ],
+          "adjustments": [
+            {
+              "amount": "string",
+              "description": "string"
+            }
+          ]
         },
         "payment": {
           "amount": "string",
@@ -6206,6 +6276,7 @@ To perform this operation, you must be authenticated and authorised with the fol
         "startDate": "string",
         "endDate": "string",
         "dailySupplyCharges": "string",
+        "timeZone": "LOCAL",
         "rateBlockUType": "singleRate",
         "singleRate": {
           "displayName": "string",
@@ -6395,6 +6466,7 @@ To perform this operation, you must be authenticated and authorised with the fol
         "startDate": "string",
         "endDate": "string",
         "dailySupplyCharges": "string",
+        "timeZone": "LOCAL",
         "rateBlockUType": "singleRate",
         "singleRate": {
           "displayName": "string",
@@ -6615,6 +6687,7 @@ To perform this operation, you must be authenticated and authorised with the fol
       "startDate": "string",
       "endDate": "string",
       "dailySupplyCharges": "string",
+      "timeZone": "LOCAL",
       "rateBlockUType": "singleRate",
       "singleRate": {
         "displayName": "string",
@@ -6683,7 +6756,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |---|---|---|---|
 |additionalFeeInformation|string|optional|Free text field containing additional information of the fees for this contract|
 |pricingModel|string|mandatory|The pricing model for the contract.  Contracts for gas must use SINGLE_RATE.  Note that the detail for the enumeration values are:<ul><li>**SINGLE_RATE** - all energy usage is charged at a single unit rate no matter when it is consumed. Multiple unit rates may exist that correspond to varying volumes of usage i.e. a ‘block’ or ‘step’ tariff (first 50kWh @ X cents, next 50kWh at Y cents etc.</li><li>**SINGLE_RATE_CONT_LOAD** - as above, but with an additional, separate unit rate charged for all energy usage from a controlled load i.e. separately metered appliance like hot water service, pool pump etc.</li><li>**TIME_OF_USE** - energy usage is charged at unit rates that vary dependent on time of day and day of week that the energy is consumed</li><li>**TIME_OF_USE_CONT_LOAD** - as above, but with an additional, separate unit rate charged for all energy usage from a controlled load i.e. separately metered appliance like hot water service, pool pump etc.</li><li>**FLEXIBLE** - energy usage is charged at unit rates that vary based on external factors</li><li>**FLEXIBLE_CONT_LOAD** - as above, but with an additional, separate unit rate charged for all energy usage from a controlled load i.e. separately metered appliance like hot water service, pool pump etc.</li><li>**QUOTA** - all energy usage is charged at a single fixed rate, up to a specified usage quota/allowance. All excess usage beyond the allowance is then charged at a single unit rate (may not be the best way to explain it but it is essentially a ‘subscription’ or telco style product i.e. $50/month for up to 150kWh included usage</li></ul>|
-|timeZone|string|conditional|Required if pricingModel is set to TIME_OF_USE.  Defines the time zone to use for calculation of the time of use thresholds|
+|timeZone|string|conditional|Required if pricingModel is set to TIME_OF_USE.  Defines the time zone to use for calculation of the time of use thresholds. Defaults to AEST if absent|
 |isFixed|boolean|mandatory|Flag indicating whether prices are fixed or variable|
 |variation|string|conditional|Free text description of price variation policy and conditions for the contract.  Mandatory if isFixed is true|
 |onExpiryDescription|string|optional|Free text field that describes what will occur on or prior to expiry of the fixed contract term or benefit period|
@@ -6843,6 +6916,7 @@ To perform this operation, you must be authenticated and authorised with the fol
       "startDate": "string",
       "endDate": "string",
       "dailySupplyCharges": "string",
+      "timeZone": "LOCAL",
       "rateBlockUType": "singleRate",
       "singleRate": {
         "displayName": "string",
@@ -7059,13 +7133,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 |category|string|optional|The type of the discount.  Mandatory if the discount type is CONDITIONAL|
 |endDate|[DateString](#common-field-types)|optional|Optional end date for the discount after which the discount is no longer available|
 |methodUType|string|mandatory|The method of calculation of the discount|
-|percentOfBill|object|optional|Required if methodUType is percentOfBill|
+|percentOfBill|object|conditional|Required if methodUType is percentOfBill|
 |» rate|[RateString](#common-field-types)|mandatory|The rate of the discount applied to the bill amount|
-|percentOfUse|object|optional|Required if methodUType is percentOfUse|
+|percentOfUse|object|conditional|Required if methodUType is percentOfUse|
 |» rate|[RateString](#common-field-types)|mandatory|The rate of the discount applied to the usageamount|
-|fixedAmount|object|optional|Required if methodUType is fixedAmount|
+|fixedAmount|object|conditional|Required if methodUType is fixedAmount|
 |» amount|[AmountString](#common-field-types)|mandatory|The amount of the discount|
-|percentOverThreshold|object|optional|Required if methodUType is percentOverThreshold|
+|percentOverThreshold|object|conditional|Required if methodUType is percentOverThreshold|
 |» rate|[RateString](#common-field-types)|mandatory|The rate of the discount over the usage amount|
 |» usageAmount|[AmountString](#common-field-types)|mandatory|The usage amount threshold above which the discount applies|
 
@@ -7301,7 +7375,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |» type|string|optional|The type of the charging time period. If absent applies to all periods|
 |» amount|[AmountString](#common-field-types)|mandatory|The tariff amount|
 |» timeVariations|[object]|mandatory|Array of time periods for which this tariff is applicable|
-|»» days|object|optional|none|
+|»» days|object|mandatory|none|
 |»»» weekdays|boolean|mandatory|Indicates whether the tariff is applicable Monday to Friday|
 |»»» weekend|boolean|mandatory|Indicates whether the tariff is applicable Saturday and Sunday|
 |»» startTime|[TimeString](#common-field-types)|optional|The beginning of the time period per day for which the tariff applies.  If absent assumes start of day (ie. midnight)|
@@ -7333,6 +7407,7 @@ To perform this operation, you must be authenticated and authorised with the fol
     "startDate": "string",
     "endDate": "string",
     "dailySupplyCharges": "string",
+    "timeZone": "LOCAL",
     "rateBlockUType": "singleRate",
     "singleRate": {
       "displayName": "string",
@@ -7405,6 +7480,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |startDate|string|mandatory|The start date of the tariff period in a calendar year.  Formatted in mm-dd format|
 |endDate|string|mandatory|The end date of the tariff period in a calendar year.  Formatted in mm-dd format|
 |dailySupplyCharges|[AmountString](#common-field-types)|optional|The amount of access charge for the tariff period, in dollars per day exclusive of GST.|
+|timeZone|string|optional|Specifies the charge specific time zone for calculation of the time of use thresholds. If absent, timezone value in EnergyPlanContract is assumed.|
 |rateBlockUType|string|mandatory|Specifies the type of rate applicable to this tariff period|
 |singleRate|object|conditional|Object representing a single rate.  Required if rateBlockUType is singleRate|
 |» displayName|string|mandatory|Display name of the rate|
@@ -7454,6 +7530,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |type|RETAIL_SERVICE|
 |type|RCTI|
 |type|OTHER|
+|timeZone|LOCAL|
+|timeZone|AEST|
 |rateBlockUType|singleRate|
 |rateBlockUType|timeOfUseRates|
 |rateBlockUType|demandCharges|
@@ -7600,7 +7678,7 @@ To perform this operation, you must be authenticated and authorised with the fol
     }
   ],
   "location": {
-    "addressUType": "simple",
+    "addressUType": "paf",
     "simple": {
       "mailingName": "string",
       "addressLine1": "string",
@@ -7636,29 +7714,33 @@ To perform this operation, you must be authenticated and authorised with the fol
       "state": "string"
     }
   },
-  "meters": {
-    "meterId": "string",
-    "specifications": {
-      "status": "CURRENT",
-      "installationType": "BASIC",
-      "manufacturer": "string",
-      "model": "string",
-      "readType": "string",
-      "nextScheduledReadDate": "string"
-    },
-    "registers": {
-      "registerId": "string",
-      "registerSuffix": "string",
-      "averagedDailyLoad": 0,
-      "registerConsumptionType": "INTERVAL",
-      "networkTariffCode": "string",
-      "unitOfMeasure": "string",
-      "timeOfDay": "ALLDAY",
-      "multiplier": 0,
-      "controlledLoad": true,
-      "consumptionType": "ACTUAL"
+  "meters": [
+    {
+      "meterId": "string",
+      "specifications": {
+        "status": "CURRENT",
+        "installationType": "BASIC",
+        "manufacturer": "string",
+        "model": "string",
+        "readType": "string",
+        "nextScheduledReadDate": "string"
+      },
+      "registers": [
+        {
+          "registerId": "string",
+          "registerSuffix": "string",
+          "averagedDailyLoad": 0,
+          "registerConsumptionType": "INTERVAL",
+          "networkTariffCode": "string",
+          "unitOfMeasure": "string",
+          "timeOfDay": "ALLDAY",
+          "multiplier": 0,
+          "controlledLoad": true,
+          "consumptionType": "ACTUAL"
+        }
+      ]
     }
-  }
+  ]
 }
 
 ```
@@ -7685,60 +7767,27 @@ To perform this operation, you must be authenticated and authorised with the fol
 |relatedParticipants|[object]|mandatory|none|
 |» party|string|mandatory|The name of the party/orginsation related to this service point|
 |» role|string|mandatory|The role performed by this participant in relation to the service point. Note the details of enumeration values below: <ul><li>**FRMP** - Financially Responsible Market Participant</li><li>**LNSP** - Local Network Service Provider or Embedded Network Manager for child connection points</li><li>**DRSP** - wholesale Demand Response and/or market ancillary Service Provider and note that where it is not relevant for a NMI it will not be included</li></ul>|
-|location|object|mandatory|none|
-|» addressUType|string|mandatory|The type of address object present|
-|» simple|object|conditional|The address of the service point.  Mandatory if addressUType is set to simple|
-|»» mailingName|string|optional|Name of the individual or business formatted for inclusion in an address used for physical mail|
-|»» addressLine1|string|mandatory|First line of the standard address object|
-|»» addressLine2|string|optional|Second line of the standard address object|
-|»» addressLine3|string|optional|Third line of the standard address object|
-|»» postcode|string|conditional|Mandatory for Australian addresses|
-|»» city|string|mandatory|Name of the city or locality|
-|»» state|string|mandatory|Free text if the country is not Australia. If country is Australia then must be one of the values defined by the [State Type Abbreviation](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf) in the PAF file format. NSW, QLD, VIC, NT, WA, SA, TAS, ACT, AAT|
-|»» country|[ExternalRef](#common-field-types)|optional|A valid [ISO 3166 Alpha-3](https://www.iso.org/iso-3166-country-codes.html) country code. Australia (AUS) is assumed if country is not present.|
-|» paf|object|conditional|The address of the service point.  Mandatory if addressUType is set to paf. Formatted according to the file format defined by the [PAF file format](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf)|
-|»» dpid|string|optional|Unique identifier for an address as defined by Australia Post.  Also known as Delivery Point Identifier|
-|»» thoroughfareNumber1|[PositiveInteger](#common-field-types)|optional|Thoroughfare number for a property (first number in a property ranged address)|
-|»» thoroughfareNumber1Suffix|string|optional|Suffix for the thoroughfare number. Only relevant is thoroughfareNumber1 is populated|
-|»» thoroughfareNumber2|[PositiveInteger](#common-field-types)|optional|Second thoroughfare number (only used if the property has a ranged address eg 23-25)|
-|»» thoroughfareNumber2Suffix|string|optional|Suffix for the second thoroughfare number. Only relevant is thoroughfareNumber2 is populated|
-|»» flatUnitType|string|optional|Type of flat or unit for the address|
-|»» flatUnitNumber|string|optional|Unit number (including suffix, if applicable)|
-|»» floorLevelType|string|optional|Type of floor or level for the address|
-|»» floorLevelNumber|string|optional|Floor or level number (including alpha characters)|
-|»» lotNumber|string|optional|Allotment number for the address|
-|»» buildingName1|string|optional|Building/Property name 1|
-|»» buildingName2|string|optional|Building/Property name 2|
-|»» streetName|string|optional|The name of the street|
-|»» streetType|string|optional|The street type. Valid enumeration defined by Australia Post PAF code file|
-|»» streetSuffix|string|optional|The street type suffix. Valid enumeration defined by Australia Post PAF code file|
-|»» postalDeliveryType|string|optional|Postal delivery type. (eg. PO BOX). Valid enumeration defined by Australia Post PAF code file|
-|»» postalDeliveryNumber|[PositiveInteger](#common-field-types)|optional|Postal delivery number if the address is a postal delivery type|
-|»» postalDeliveryNumberPrefix|string|optional|Postal delivery number prefix related to the postal delivery number|
-|»» postalDeliveryNumberSuffix|string|optional|Postal delivery number suffix related to the postal delivery number|
-|»» localityName|string|mandatory|Full name of locality|
-|»» postcode|string|mandatory|Postcode for the locality|
-|»» state|string|mandatory|State in which the address belongs. Valid enumeration defined by Australia Post PAF code file [State Type Abbreviation](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf). NSW, QLD, VIC, NT, WA, SA, TAS, ACT, AAT|
-|» meters|object|mandatory|none|
-|»» meterId|string|mandatory|The meter ID uniquely identifies a meter for a given service point.  It is unique in the context of the service point.  It is not globally unique|
-|»» specifications|object|mandatory|Technical characteristics of the meter|
-|»»» status|string|mandatory|A code to denote the status of the meter. Note the details of enumeration values below: <ul><li>**CURRENT** -Applies when a meter is current and not disconnected</li><li>**DISCONNECTED** - Applies when a meter is present but has been remotely disconnected</li></ul>|
-|»»» installationType|string|mandatory|The metering Installation type code indicates whether the metering installation has to be manually read. Note the details of enumeration values below: <ul><li>**BASIC** - Accumulation Meter – Type 6</li><li>**COMMS1** - Interval Meter with communications – Type 1</li><li>**COMMS2** - Interval Meter with communications – Type 2</li><li>**COMMS3** - Interval Meter with communications – Type 3</li><li>**COMMS4** - Interval Meter with communications – Type 4</li><li>**COMMS4C** - CT connected metering installation that meets the minimum services specifications</li><li>**COMMS4D** - Whole current metering installation that meets the minimum services specifications</li><li>**MRAM** - Small customer metering installation – Type 4A</li><li>**MRIM** - Manually Read Interval Meter – Type 5</li><li>**UMCP** - Unmetered Supply – Type 7</li><li>**VICAMI** - A relevant metering installation as defined in clause 9.9C of the NER</li><li>**NCONUML** - Non-contestable unmeter load - Introduced as part of Global Settlement</li></ul>|
-|»»» manufacturer|string|optional|Free text field to identify the manufacturer of the installed meter|
-|»»» model|string|optional|Free text field to identify the meter manufacturer’s designation for the meter model|
-|»»» readType|string|optional|Code to denote the method and frequency of Meter Reading. The value is formatted as follows: <ul><li>First Character = Remote (R) or Manual (M)</li><li>Second Character = Mode: T = telephone W = wireless P = powerline I = infra-red G = galvanic V = visual </li><li>Third Character = Frequency of Scheduled Meter Readings: 1 = Twelve times per year 2 = Six times per year 3 = Four times per year D = Daily or weekly</li><li>Optional Fourth Character = to identify what interval length the meter is capable of reading. This includes five, 15 and 30 minute granularity as the following: A – 5 minute B – 15 minute C – 30 minute D – Cannot convert to 5 minute (i.e. due to metering installation de-energised) M - Manually Read Accumulation Meter</li></ul> For example, <ul><li>MV3 = Manual, Visual, Quarterly</li> <li>MV3M = Manual, Visual, Quarterly, Manually Read Accumulation Meter</li> <li>RWDC = Remote, Wireless, Daily, 30 minutes interval</li></ul>|
-|»»» nextScheduledReadDate|[DateString](#common-field-types)|optional|This date is the next scheduled meter read date (NSRD) if a manual Meter Reading is required|
-|»» registers|object|mandatory|Usage data registers available from the meter|
-|»»» registerId|string|mandatory|Unique identifier of the register within this service point.  Is not globally unique|
-|»»» registerSuffix|string|mandatory|Register suffix of the meter register where the meter reads are obtained|
-|»»» averagedDailyLoad|number|optional|The energy delivered through a connection point or metering point over an extended period normalised to a 'per day' basis (kWh). This value is calculated annually.|
-|»»» registerConsumptionType|string|mandatory|Indicates the consumption type of register|
-|»»» networkTariffCode|string|optional|The Network Tariff Code is a free text field containing a code supplied and published by the local network service provider|
-|»»» unitOfMeasure|string|optional|The unit of measure for data held in this register|
-|»»» timeOfDay|string|optional|Code to identify the time validity of register contents|
-|»»» multiplier|number|optional|Multiplier required to take a register value and turn it into a value representing billable energy|
-|»»» controlledLoad|boolean|optional|Indicates whether the energy recorded by this register is created under a Controlled Load regime|
-|»»» consumptionType|string|optional|Actual/Subtractive Indicator. Note the details of enumeration values below: <ul><li>**ACTUAL** implies volume of energy actually metered between two dates</li><li>**CUMULATIVE** indicates a meter reading for a specific date. A second Meter Reading is required to determine the consumption between those two Meter Reading dates</li></ul>|
+|location|[CommonPhysicalAddress](#schemacdr-energy-apicommonphysicaladdress)|mandatory|Location of the servicepoint|
+|meters|[object]|optional|The meters associated with the service point. This may be empty where there are no meters physically installed at the service point|
+|» meterId|string|mandatory|The meter ID uniquely identifies a meter for a given service point.  It is unique in the context of the service point.  It is not globally unique|
+|» specifications|object|mandatory|Technical characteristics of the meter|
+|»» status|string|mandatory|A code to denote the status of the meter. Note the details of enumeration values below: <ul><li>**CURRENT** -Applies when a meter is current and not disconnected</li><li>**DISCONNECTED** - Applies when a meter is present but has been remotely disconnected</li></ul>|
+|»» installationType|string|mandatory|The metering Installation type code indicates whether the metering installation has to be manually read. Note the details of enumeration values below: <ul><li>**BASIC** - Accumulation Meter – Type 6</li><li>**COMMS1** - Interval Meter with communications – Type 1</li><li>**COMMS2** - Interval Meter with communications – Type 2</li><li>**COMMS3** - Interval Meter with communications – Type 3</li><li>**COMMS4** - Interval Meter with communications – Type 4</li><li>**COMMS4C** - CT connected metering installation that meets the minimum services specifications</li><li>**COMMS4D** - Whole current metering installation that meets the minimum services specifications</li><li>**MRAM** - Small customer metering installation – Type 4A</li><li>**MRIM** - Manually Read Interval Meter – Type 5</li><li>**UMCP** - Unmetered Supply – Type 7</li><li>**VICAMI** - A relevant metering installation as defined in clause 9.9C of the NER</li><li>**NCONUML** - Non-contestable unmeter load - Introduced as part of Global Settlement</li></ul>|
+|»» manufacturer|string|optional|Free text field to identify the manufacturer of the installed meter|
+|»» model|string|optional|Free text field to identify the meter manufacturer’s designation for the meter model|
+|»» readType|string|optional|Code to denote the method and frequency of Meter Reading. The value is formatted as follows: <ul><li>First Character = Remote (R) or Manual (M)</li><li>Second Character = Mode: T = telephone W = wireless P = powerline I = infra-red G = galvanic V = visual </li><li>Third Character = Frequency of Scheduled Meter Readings: 1 = Twelve times per year 2 = Six times per year 3 = Four times per year D = Daily or weekly</li><li>Optional Fourth Character = to identify what interval length the meter is capable of reading. This includes five, 15 and 30 minute granularity as the following: A – 5 minute B – 15 minute C – 30 minute D – Cannot convert to 5 minute (i.e. due to metering installation de-energised) M - Manually Read Accumulation Meter</li></ul> For example, <ul><li>MV3 = Manual, Visual, Quarterly</li> <li>MV3M = Manual, Visual, Quarterly, Manually Read Accumulation Meter</li> <li>RWDC = Remote, Wireless, Daily, 30 minutes interval</li></ul>|
+|»» nextScheduledReadDate|[DateString](#common-field-types)|optional|This date is the next scheduled meter read date (NSRD) if a manual Meter Reading is required|
+|» registers|[object]|optional|Usage data registers available from the meter. This may be empty where there are no meters physically installed at the service point|
+|»» registerId|string|mandatory|Unique identifier of the register within this service point.  Is not globally unique|
+|»» registerSuffix|string|optional|Register suffix of the meter register where the meter reads are obtained|
+|»» averagedDailyLoad|number|optional|The energy delivered through a connection point or metering point over an extended period normalised to a 'per day' basis (kWh). This value is calculated annually.|
+|»» registerConsumptionType|string|mandatory|Indicates the consumption type of register|
+|»» networkTariffCode|string|optional|The Network Tariff Code is a free text field containing a code supplied and published by the local network service provider|
+|»» unitOfMeasure|string|optional|The unit of measure for data held in this register|
+|»» timeOfDay|string|optional|Code to identify the time validity of register contents|
+|»» multiplier|number|optional|Multiplier required to take a register value and turn it into a value representing billable energy|
+|»» controlledLoad|boolean|optional|Indicates whether the energy recorded by this register is created under a Controlled Load regime|
+|»» consumptionType|string|optional|Actual/Subtractive Indicator. Note the details of enumeration values below: <ul><li>**ACTUAL** implies volume of energy actually metered between two dates</li><li>**CUMULATIVE** indicates a meter reading for a specific date. A second Meter Reading is required to determine the consumption between those two Meter Reading dates</li></ul>|
 
 #### Enumerated Values
 
@@ -7773,8 +7822,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 |role|FRMP|
 |role|LNSP|
 |role|DRSP|
-|addressUType|simple|
-|addressUType|paf|
 |status|CURRENT|
 |status|DISCONNECTED|
 |installationType|BASIC|
@@ -8227,6 +8274,7 @@ To perform this operation, you must be authenticated and authorised with the fol
               "startDate": "string",
               "endDate": "string",
               "dailySupplyCharges": "string",
+              "timeZone": "LOCAL",
               "rateBlockUType": "singleRate",
               "singleRate": {
                 "displayName": "string",
@@ -8393,6 +8441,7 @@ To perform this operation, you must be authenticated and authorised with the fol
               "startDate": "string",
               "endDate": "string",
               "dailySupplyCharges": "string",
+              "timeZone": "LOCAL",
               "rateBlockUType": "singleRate",
               "singleRate": {
                 "displayName": "string",
@@ -8578,15 +8627,18 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```json
 {
+  "type": "FIXED_AMOUNT",
   "displayName": "string",
   "additionalInfo": "string",
   "additionalInfoUri": "string",
   "startDate": "string",
   "endDate": "string",
-  "dailyDiscount": "string",
-  "monthlyDiscount": "string",
-  "yearlyDiscount": "string",
-  "percentageDiscount": "string"
+  "discountFrequency": "string",
+  "amount": "string",
+  "percentage": "string",
+  "appliedTo": [
+    "INVOICE"
+  ]
 }
 
 ```
@@ -8595,15 +8647,28 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
+|type|string|mandatory|Indicator of the method of concession calculation|
 |displayName|string|mandatory|The display name of the concession|
-|additionalInfo|string|optional|Display text providing more information on the concession|
+|additionalInfo|string|conditional|Display text providing more information on the concession. Mandatory if type is VARIABLE|
 |additionalInfoUri|[URIString](#common-field-types)|optional|Optional link to additional information regarding the concession|
 |startDate|[DateString](#common-field-types)|optional|Optional start date for the application of the concession|
 |endDate|[DateString](#common-field-types)|optional|Optional end date for the application of the concession|
-|dailyDiscount|[AmountString](#common-field-types)|conditional|Daily discount value due to the concession.  At least one dailyDiscount, monthlyDiscount, yearlyDiscount and percentageDiscount must be provided|
-|monthlyDiscount|[AmountString](#common-field-types)|conditional|Monthly discount value due to the concession.  At least one dailyDiscount, monthlyDiscount, yearlyDiscount and percentageDiscount must be provided|
-|yearlyDiscount|[AmountString](#common-field-types)|conditional|Annual discount value due to the concession.  At least one dailyDiscount, monthlyDiscount, yearlyDiscount and percentageDiscount must be provided|
-|percentageDiscount|[RateString](#common-field-types)|conditional|Percentage of each invoice to be discounted due to the concession.  At least one dailyDiscount, monthlyDiscount, yearlyDiscount and percentageDiscount must be provided|
+|discountFrequency|[ExternalRef](#common-field-types)|conditional|Conditional attribute for frequency at which a concession is applied. Required if type is FIXED_AMOUNT or FIXED_PERCENTAGE. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
+|amount|[AmountString](#common-field-types)|conditional|Conditional attribute for the amount of discount for the concession- required if type is FIXED_AMOUNT|
+|percentage|[RateString](#common-field-types)|conditional|Conditional attribute for the percentage of discount of concession - required if type is FIXED_PERCENTAGE|
+|appliedTo|[string]|optional|Array of ENUM's to specify what the concession applies to. Multiple ENUM values can be provided. If absent, USAGE is assumed|
+
+#### Enumerated Values
+
+|Property|Value|
+|---|---|
+|type|FIXED_AMOUNT|
+|type|FIXED_PERCENTAGE|
+|type|VARIABLE|
+|appliedTo|INVOICE|
+|appliedTo|USAGE|
+|appliedTo|SERVICE_CHARGE|
+|appliedTo|CONTROLLED_LOAD|
 
 <h3 class="schema-toc" id="tocSenergyinvoice">EnergyInvoice</h3>
 
@@ -8889,7 +8954,19 @@ To perform this operation, you must be authenticated and authorised with the fol
     "endDate": "string",
     "type": "ENVIRONMENTAL",
     "amount": "string",
-    "description": "string"
+    "description": "string",
+    "calculationFactors": [
+      {
+        "value": 0,
+        "type": "DLF"
+      }
+    ],
+    "adjustments": [
+      {
+        "amount": "string",
+        "description": "string"
+      }
+    ]
   },
   "payment": {
     "amount": "string",
@@ -9102,7 +9179,19 @@ To perform this operation, you must be authenticated and authorised with the fol
   "endDate": "string",
   "type": "ENVIRONMENTAL",
   "amount": "string",
-  "description": "string"
+  "description": "string",
+  "calculationFactors": [
+    {
+      "value": 0,
+      "type": "DLF"
+    }
+  ],
+  "adjustments": [
+    {
+      "amount": "string",
+      "description": "string"
+    }
+  ]
 }
 
 ```
@@ -9118,6 +9207,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 |type|string|optional|Type of charge. Assumed to be other if absent|
 |amount|[AmountString](#common-field-types)|mandatory|The amount of the charge|
 |description|string|mandatory|A free text description of the item|
+|calculationFactors|[object]|optional|Additional calculation factors that inform the transaction|
+|» value|number|mandatory|The value of the calculation factor|
+|» type|string|mandatory|The type of the calculation factor|
+|adjustments|[object]|optional|Optional array of adjustments arising for this transaction|
+|» amount|[AmountString](#common-field-types)|mandatory|The amount of the adjustment|
+|» description|string|mandatory|A free text description of the adjustment|
 
 #### Enumerated Values
 
@@ -9130,6 +9225,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |type|RETAIL_SERVICE|
 |type|RCTI|
 |type|OTHER|
+|type|DLF|
+|type|MLF|
 
 <h3 class="schema-toc" id="tocSenergybillingpaymenttransaction">EnergyBillingPaymentTransaction</h3>
 
@@ -9161,6 +9258,160 @@ To perform this operation, you must be authenticated and authorised with the fol
 |method|CASH|
 |method|CHEQUE|
 |method|OTHER|
+
+<h3 class="schema-toc" id="tocScommonphysicaladdress">CommonPhysicalAddress</h3>
+
+<a id="schemacdr-energy-apicommonphysicaladdress"></a>
+
+```json
+{
+  "addressUType": "paf",
+  "simple": {
+    "mailingName": "string",
+    "addressLine1": "string",
+    "addressLine2": "string",
+    "addressLine3": "string",
+    "postcode": "string",
+    "city": "string",
+    "state": "string",
+    "country": "AUS"
+  },
+  "paf": {
+    "dpid": "string",
+    "thoroughfareNumber1": 0,
+    "thoroughfareNumber1Suffix": "string",
+    "thoroughfareNumber2": 0,
+    "thoroughfareNumber2Suffix": "string",
+    "flatUnitType": "string",
+    "flatUnitNumber": "string",
+    "floorLevelType": "string",
+    "floorLevelNumber": "string",
+    "lotNumber": "string",
+    "buildingName1": "string",
+    "buildingName2": "string",
+    "streetName": "string",
+    "streetType": "string",
+    "streetSuffix": "string",
+    "postalDeliveryType": "string",
+    "postalDeliveryNumber": 0,
+    "postalDeliveryNumberPrefix": "string",
+    "postalDeliveryNumberSuffix": "string",
+    "localityName": "string",
+    "postcode": "string",
+    "state": "string"
+  }
+}
+
+```
+
+### Properties
+
+|Name|Type|Required|Description|
+|---|---|---|---|
+|addressUType|string|mandatory|The type of address object present|
+|simple|[CommonSimpleAddress](#schemacdr-energy-apicommonsimpleaddress)|conditional|Required if addressUType is set to simple|
+|paf|[CommonPAFAddress](#schemacdr-energy-apicommonpafaddress)|conditional|Australian address formatted according to the file format defined by the [PAF file format](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf). Required if addressUType is set to paf|
+
+#### Enumerated Values
+
+|Property|Value|
+|---|---|
+|addressUType|paf|
+|addressUType|simple|
+
+<h3 class="schema-toc" id="tocScommonsimpleaddress">CommonSimpleAddress</h3>
+
+<a id="schemacdr-energy-apicommonsimpleaddress"></a>
+
+```json
+{
+  "mailingName": "string",
+  "addressLine1": "string",
+  "addressLine2": "string",
+  "addressLine3": "string",
+  "postcode": "string",
+  "city": "string",
+  "state": "string",
+  "country": "AUS"
+}
+
+```
+
+*Required if addressUType is set to simple*
+
+### Properties
+
+|Name|Type|Required|Description|
+|---|---|---|---|
+|mailingName|string|optional|Name of the individual or business formatted for inclusion in an address used for physical mail|
+|addressLine1|string|mandatory|First line of the standard address object|
+|addressLine2|string|optional|Second line of the standard address object|
+|addressLine3|string|optional|Third line of the standard address object|
+|postcode|string|conditional|Mandatory for Australian addresses|
+|city|string|mandatory|Name of the city or locality|
+|state|string|mandatory|Free text if the country is not Australia. If country is Australia then must be one of the values defined by the [State Type Abbreviation](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf) in the PAF file format. NSW, QLD, VIC, NT, WA, SA, TAS, ACT, AAT|
+|country|[ExternalRef](#common-field-types)|optional|A valid [ISO 3166 Alpha-3](https://www.iso.org/iso-3166-country-codes.html) country code. Australia (AUS) is assumed if country is not present.|
+
+<h3 class="schema-toc" id="tocScommonpafaddress">CommonPAFAddress</h3>
+
+<a id="schemacdr-energy-apicommonpafaddress"></a>
+
+```json
+{
+  "dpid": "string",
+  "thoroughfareNumber1": 0,
+  "thoroughfareNumber1Suffix": "string",
+  "thoroughfareNumber2": 0,
+  "thoroughfareNumber2Suffix": "string",
+  "flatUnitType": "string",
+  "flatUnitNumber": "string",
+  "floorLevelType": "string",
+  "floorLevelNumber": "string",
+  "lotNumber": "string",
+  "buildingName1": "string",
+  "buildingName2": "string",
+  "streetName": "string",
+  "streetType": "string",
+  "streetSuffix": "string",
+  "postalDeliveryType": "string",
+  "postalDeliveryNumber": 0,
+  "postalDeliveryNumberPrefix": "string",
+  "postalDeliveryNumberSuffix": "string",
+  "localityName": "string",
+  "postcode": "string",
+  "state": "string"
+}
+
+```
+
+*Australian address formatted according to the file format defined by the [PAF file format](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf). Required if addressUType is set to paf*
+
+### Properties
+
+|Name|Type|Required|Description|
+|---|---|---|---|
+|dpid|string|optional|Unique identifier for an address as defined by Australia Post.  Also known as Delivery Point Identifier|
+|thoroughfareNumber1|[PositiveInteger](#common-field-types)|optional|Thoroughfare number for a property (first number in a property ranged address)|
+|thoroughfareNumber1Suffix|string|optional|Suffix for the thoroughfare number. Only relevant is thoroughfareNumber1 is populated|
+|thoroughfareNumber2|[PositiveInteger](#common-field-types)|optional|Second thoroughfare number (only used if the property has a ranged address eg 23-25)|
+|thoroughfareNumber2Suffix|string|optional|Suffix for the second thoroughfare number. Only relevant is thoroughfareNumber2 is populated|
+|flatUnitType|string|optional|Type of flat or unit for the address|
+|flatUnitNumber|string|optional|Unit number (including suffix, if applicable)|
+|floorLevelType|string|optional|Type of floor or level for the address|
+|floorLevelNumber|string|optional|Floor or level number (including alpha characters)|
+|lotNumber|string|optional|Allotment number for the address|
+|buildingName1|string|optional|Building/Property name 1|
+|buildingName2|string|optional|Building/Property name 2|
+|streetName|string|optional|The name of the street|
+|streetType|string|optional|The street type. Valid enumeration defined by Australia Post PAF code file|
+|streetSuffix|string|optional|The street type suffix. Valid enumeration defined by Australia Post PAF code file|
+|postalDeliveryType|string|optional|Postal delivery type. (eg. PO BOX). Valid enumeration defined by Australia Post PAF code file|
+|postalDeliveryNumber|[PositiveInteger](#common-field-types)|optional|Postal delivery number if the address is a postal delivery type|
+|postalDeliveryNumberPrefix|string|optional|Postal delivery number prefix related to the postal delivery number|
+|postalDeliveryNumberSuffix|string|optional|Postal delivery number suffix related to the postal delivery number|
+|localityName|string|mandatory|Full name of locality|
+|postcode|string|mandatory|Postcode for the locality|
+|state|string|mandatory|State in which the address belongs. Valid enumeration defined by Australia Post PAF code file [State Type Abbreviation](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf). NSW, QLD, VIC, NT, WA, SA, TAS, ACT, AAT|
 
 <h3 class="schema-toc" id="tocSlinks">Links</h3>
 

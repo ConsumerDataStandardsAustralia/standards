@@ -2,7 +2,7 @@ openapi: 3.0.3
 info:
   description: Consumer Data Right end points and payloads for the Energy sector
   title: CDR Energy API
-  version: 1.16.1
+  version: 1.17.0
 servers:
 - url: /
 paths:
@@ -689,8 +689,8 @@ paths:
           type: string
         style: simple
       - description: Constrain the request to records with effective date at or after
-          this date. If absent defaults to newest-date minus 24 months days.  Format
-          is aligned to DateString common type
+          this date. If absent defaults to newest-date minus 24 months.  Format is
+          aligned to DateString common type
         explode: true
         in: query
         name: oldest-date
@@ -912,8 +912,8 @@ paths:
       operationId: listUsageBulk
       parameters:
       - description: Constrain the request to records with effective date at or after
-          this date. If absent defaults to newest-date minus 24 months days.  Format
-          is aligned to DateString common type
+          this date. If absent defaults to newest-date minus 24 months.  Format is
+          aligned to DateString common type
         explode: true
         in: query
         name: oldest-date
@@ -1116,8 +1116,8 @@ paths:
       operationId: listUsageForServicePoints
       parameters:
       - description: Constrain the request to records with effective date at or after
-          this date. If absent defaults to newest-date minus 24 months days.  Format
-          is aligned to DateString common type
+          this date. If absent defaults to newest-date minus 24 months.  Format is
+          aligned to DateString common type
         explode: true
         in: query
         name: oldest-date
@@ -3129,8 +3129,8 @@ paths:
         style: form
         x-cds-type: DateString
       - description: Constrain the request to records with effective date at or after
-          this date. If absent defaults to newest-date minus 24 months days.  Format
-          is aligned to DateString common type
+          this date. If absent defaults to newest-date minus 24 months.  Format is
+          aligned to DateString common type
         explode: true
         in: query
         name: oldest-date
@@ -3352,8 +3352,8 @@ paths:
         style: form
         x-cds-type: DateString
       - description: Constrain the request to records with effective date at or after
-          this date. If absent defaults to newest-date minus 24 months days.  Format
-          is aligned to DateString common type
+          this date. If absent defaults to newest-date minus 24 months.  Format is
+          aligned to DateString common type
         explode: true
         in: query
         name: oldest-date
@@ -3555,8 +3555,8 @@ paths:
         style: form
         x-cds-type: DateString
       - description: Constrain the request to records with effective date at or after
-          this date. If absent defaults to newest-date minus 24 months days.  Format
-          is aligned to DateString common type
+          this date. If absent defaults to newest-date minus 24 months.  Format is
+          aligned to DateString common type
         explode: true
         in: query
         name: oldest-date
@@ -4450,8 +4450,8 @@ components:
       x-cds-type: DateString
     oldest-date:
       description: Constrain the request to records with effective date at or after
-        this date. If absent defaults to newest-date minus 24 months days.  Format
-        is aligned to DateString common type
+        this date. If absent defaults to newest-date minus 24 months.  Format is aligned
+        to DateString common type
       explode: true
       in: query
       name: oldest-date
@@ -5108,9 +5108,48 @@ components:
           servicePointStatus: ACTIVE
           servicePointClassification: EXTERNAL_PROFILE
           meters:
-            meterId: meterId
+          - meterId: meterId
             registers:
-              unitOfMeasure: unitOfMeasure
+            - unitOfMeasure: unitOfMeasure
+              registerId: registerId
+              consumptionType: ACTUAL
+              averagedDailyLoad: 5.962133916683182
+              multiplier: 5.637376656633329
+              registerConsumptionType: INTERVAL
+              networkTariffCode: networkTariffCode
+              registerSuffix: registerSuffix
+              controlledLoad: true
+              timeOfDay: ALLDAY
+            - unitOfMeasure: unitOfMeasure
+              registerId: registerId
+              consumptionType: ACTUAL
+              averagedDailyLoad: 5.962133916683182
+              multiplier: 5.637376656633329
+              registerConsumptionType: INTERVAL
+              networkTariffCode: networkTariffCode
+              registerSuffix: registerSuffix
+              controlledLoad: true
+              timeOfDay: ALLDAY
+            specifications:
+              installationType: BASIC
+              nextScheduledReadDate: nextScheduledReadDate
+              model: model
+              readType: readType
+              status: CURRENT
+              manufacturer: manufacturer
+          - meterId: meterId
+            registers:
+            - unitOfMeasure: unitOfMeasure
+              registerId: registerId
+              consumptionType: ACTUAL
+              averagedDailyLoad: 5.962133916683182
+              multiplier: 5.637376656633329
+              registerConsumptionType: INTERVAL
+              networkTariffCode: networkTariffCode
+              registerSuffix: registerSuffix
+              controlledLoad: true
+              timeOfDay: ALLDAY
+            - unitOfMeasure: unitOfMeasure
               registerId: registerId
               consumptionType: ACTUAL
               averagedDailyLoad: 5.962133916683182
@@ -5162,7 +5201,7 @@ components:
               addressLine3: addressLine3
               state: state
               mailingName: mailingName
-            addressUType: simple
+            addressUType: paf
           nationalMeteringId: nationalMeteringId
           isGenerator: true
         meta: '{}'
@@ -5604,24 +5643,30 @@ components:
       example:
         data:
           concessions:
-          - percentageDiscount: percentageDiscount
+          - amount: amount
             additionalInfoUri: additionalInfoUri
             endDate: endDate
             displayName: displayName
+            appliedTo:
+            - INVOICE
+            - INVOICE
+            percentage: percentage
             additionalInfo: additionalInfo
-            dailyDiscount: dailyDiscount
-            monthlyDiscount: monthlyDiscount
+            type: FIXED_AMOUNT
+            discountFrequency: discountFrequency
             startDate: startDate
-            yearlyDiscount: yearlyDiscount
-          - percentageDiscount: percentageDiscount
+          - amount: amount
             additionalInfoUri: additionalInfoUri
             endDate: endDate
             displayName: displayName
+            appliedTo:
+            - INVOICE
+            - INVOICE
+            percentage: percentage
             additionalInfo: additionalInfo
-            dailyDiscount: dailyDiscount
-            monthlyDiscount: monthlyDiscount
+            type: FIXED_AMOUNT
+            discountFrequency: discountFrequency
             startDate: startDate
-            yearlyDiscount: yearlyDiscount
         meta: '{}'
         links:
           self: self
@@ -5818,10 +5863,20 @@ components:
               description: description
             otherCharges:
               amount: amount
+              adjustments:
+              - amount: amount
+                description: description
+              - amount: amount
+                description: description
               endDate: endDate
               servicePointId: servicePointId
               invoiceNumber: invoiceNumber
               description: description
+              calculationFactors:
+              - type: DLF
+                value: 6.027456183070403
+              - type: DLF
+                value: 6.027456183070403
               type: ENVIRONMENTAL
               startDate: startDate
             usage:
@@ -5879,10 +5934,20 @@ components:
               description: description
             otherCharges:
               amount: amount
+              adjustments:
+              - amount: amount
+                description: description
+              - amount: amount
+                description: description
               endDate: endDate
               servicePointId: servicePointId
               invoiceNumber: invoiceNumber
               description: description
+              calculationFactors:
+              - type: DLF
+                value: 6.027456183070403
+              - type: DLF
+                value: 6.027456183070403
               type: ENVIRONMENTAL
               startDate: startDate
             usage:
@@ -6107,7 +6172,8 @@ components:
           type: string
         timeZone:
           description: Required if pricingModel is set to TIME_OF_USE.  Defines the
-            time zone to use for calculation of the time of use thresholds
+            time zone to use for calculation of the time of use thresholds. Defaults
+            to AEST if absent
           enum:
           - LOCAL
           - AEST
@@ -6255,6 +6321,11 @@ components:
             - methodUType
             - type
             type: object
+            x-conditional:
+            - percentOfBill
+            - percentOfUse
+            - fixedAmount
+            - percentOverThreshold
           type: array
         greenPowerCharges:
           description: Optional list of charges applicable to green power
@@ -6507,6 +6578,8 @@ components:
                             one second before midnight)
                           type: string
                           x-cds-type: TimeString
+                      required:
+                      - days
                       type: object
                     type: array
                 required:
@@ -6554,6 +6627,14 @@ components:
                   dollars per day exclusive of GST.
                 type: string
                 x-cds-type: AmountString
+              timeZone:
+                description: Specifies the charge specific time zone for calculation
+                  of the time of use thresholds. If absent, timezone value in EnergyPlanContract
+                  is assumed.
+                enum:
+                - LOCAL
+                - AEST
+                type: string
               rateBlockUType:
                 description: Specifies the type of rate applicable to this tariff
                   period
@@ -6976,6 +7057,11 @@ components:
         - methodUType
         - type
         type: object
+        x-conditional:
+        - percentOfBill
+        - percentOfUse
+        - fixedAmount
+        - percentOverThreshold
       type: array
     EnergyPlanGreenPowerCharges:
       description: Optional list of charges applicable to green power
@@ -7227,6 +7313,8 @@ components:
                         before midnight)
                       type: string
                       x-cds-type: TimeString
+                  required:
+                  - days
                   type: object
                 type: array
             required:
@@ -7274,6 +7362,14 @@ components:
               per day exclusive of GST.
             type: string
             x-cds-type: AmountString
+          timeZone:
+            description: Specifies the charge specific time zone for calculation of
+              the time of use thresholds. If absent, timezone value in EnergyPlanContract
+              is assumed.
+            enum:
+            - LOCAL
+            - AEST
+            type: string
           rateBlockUType:
             description: Specifies the type of rate applicable to this tariff period
             enum:
@@ -7640,9 +7736,48 @@ components:
         servicePointStatus: ACTIVE
         servicePointClassification: EXTERNAL_PROFILE
         meters:
-          meterId: meterId
+        - meterId: meterId
           registers:
-            unitOfMeasure: unitOfMeasure
+          - unitOfMeasure: unitOfMeasure
+            registerId: registerId
+            consumptionType: ACTUAL
+            averagedDailyLoad: 5.962133916683182
+            multiplier: 5.637376656633329
+            registerConsumptionType: INTERVAL
+            networkTariffCode: networkTariffCode
+            registerSuffix: registerSuffix
+            controlledLoad: true
+            timeOfDay: ALLDAY
+          - unitOfMeasure: unitOfMeasure
+            registerId: registerId
+            consumptionType: ACTUAL
+            averagedDailyLoad: 5.962133916683182
+            multiplier: 5.637376656633329
+            registerConsumptionType: INTERVAL
+            networkTariffCode: networkTariffCode
+            registerSuffix: registerSuffix
+            controlledLoad: true
+            timeOfDay: ALLDAY
+          specifications:
+            installationType: BASIC
+            nextScheduledReadDate: nextScheduledReadDate
+            model: model
+            readType: readType
+            status: CURRENT
+            manufacturer: manufacturer
+        - meterId: meterId
+          registers:
+          - unitOfMeasure: unitOfMeasure
+            registerId: registerId
+            consumptionType: ACTUAL
+            averagedDailyLoad: 5.962133916683182
+            multiplier: 5.637376656633329
+            registerConsumptionType: INTERVAL
+            networkTariffCode: networkTariffCode
+            registerSuffix: registerSuffix
+            controlledLoad: true
+            timeOfDay: ALLDAY
+          - unitOfMeasure: unitOfMeasure
             registerId: registerId
             consumptionType: ACTUAL
             averagedDailyLoad: 5.962133916683182
@@ -7694,7 +7829,7 @@ components:
             addressLine3: addressLine3
             state: state
             mailingName: mailingName
-          addressUType: simple
+          addressUType: paf
         nationalMeteringId: nationalMeteringId
         isGenerator: true
       properties:
@@ -7776,15 +7911,18 @@ components:
             $ref: '#/components/schemas/EnergyServicePointDetail_relatedParticipants'
           type: array
         location:
-          $ref: '#/components/schemas/EnergyServicePointDetail_location'
+          $ref: '#/components/schemas/CommonPhysicalAddress'
         meters:
-          $ref: '#/components/schemas/EnergyServicePointDetail_meters'
+          description: The meters associated with the service point. This may be empty
+            where there are no meters physically installed at the service point
+          items:
+            $ref: '#/components/schemas/EnergyServicePointDetail_meters'
+          type: array
       required:
       - distributionLossFactor
       - jurisdictionCode
       - lastUpdateDateTime
       - location
-      - meters
       - nationalMeteringId
       - relatedParticipants
       - servicePointClassification
@@ -8068,21 +8206,32 @@ components:
       - manualPayment
     EnergyConcession:
       example:
-        percentageDiscount: percentageDiscount
+        amount: amount
         additionalInfoUri: additionalInfoUri
         endDate: endDate
         displayName: displayName
+        appliedTo:
+        - INVOICE
+        - INVOICE
+        percentage: percentage
         additionalInfo: additionalInfo
-        dailyDiscount: dailyDiscount
-        monthlyDiscount: monthlyDiscount
+        type: FIXED_AMOUNT
+        discountFrequency: discountFrequency
         startDate: startDate
-        yearlyDiscount: yearlyDiscount
       properties:
+        type:
+          description: Indicator of the method of concession calculation
+          enum:
+          - FIXED_AMOUNT
+          - FIXED_PERCENTAGE
+          - VARIABLE
+          type: string
         displayName:
           description: The display name of the concession
           type: string
         additionalInfo:
-          description: Display text providing more information on the concession
+          description: Display text providing more information on the concession.
+            Mandatory if type is VARIABLE
           type: string
         additionalInfoUri:
           description: Optional link to additional information regarding the concession
@@ -8096,37 +8245,43 @@ components:
           description: Optional end date for the application of the concession
           type: string
           x-cds-type: DateString
-        dailyDiscount:
-          description: Daily discount value due to the concession.  At least one dailyDiscount,
-            monthlyDiscount, yearlyDiscount and percentageDiscount must be provided
+        discountFrequency:
+          description: Conditional attribute for frequency at which a concession is
+            applied. Required if type is FIXED_AMOUNT or FIXED_PERCENTAGE. Formatted
+            according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)
+            (excludes recurrence syntax)
+          type: string
+          x-cds-type: ExternalRef
+        amount:
+          description: Conditional attribute for the amount of discount for the concession-
+            required if type is FIXED_AMOUNT
           type: string
           x-cds-type: AmountString
-        monthlyDiscount:
-          description: Monthly discount value due to the concession.  At least one
-            dailyDiscount, monthlyDiscount, yearlyDiscount and percentageDiscount
-            must be provided
-          type: string
-          x-cds-type: AmountString
-        yearlyDiscount:
-          description: Annual discount value due to the concession.  At least one
-            dailyDiscount, monthlyDiscount, yearlyDiscount and percentageDiscount
-            must be provided
-          type: string
-          x-cds-type: AmountString
-        percentageDiscount:
-          description: Percentage of each invoice to be discounted due to the concession.  At
-            least one dailyDiscount, monthlyDiscount, yearlyDiscount and percentageDiscount
-            must be provided
+        percentage:
+          description: Conditional attribute for the percentage of discount of concession
+            - required if type is FIXED_PERCENTAGE
           type: string
           x-cds-type: RateString
+        appliedTo:
+          description: Array of ENUM's to specify what the concession applies to.
+            Multiple ENUM values can be provided. If absent, USAGE is assumed
+          items:
+            enum:
+            - INVOICE
+            - USAGE
+            - SERVICE_CHARGE
+            - CONTROLLED_LOAD
+            type: string
+          type: array
       required:
       - displayName
+      - type
       type: object
       x-conditional:
-      - dailyDiscount
-      - monthlyDiscount
-      - yearlyDiscount
-      - percentageDiscount
+      - additionalInfo
+      - discountFrequency
+      - amount
+      - percentage
     EnergyInvoice:
       example:
         gstAmount: gstAmount
@@ -8382,10 +8537,20 @@ components:
           description: description
         otherCharges:
           amount: amount
+          adjustments:
+          - amount: amount
+            description: description
+          - amount: amount
+            description: description
           endDate: endDate
           servicePointId: servicePointId
           invoiceNumber: invoiceNumber
           description: description
+          calculationFactors:
+          - type: DLF
+            value: 6.027456183070403
+          - type: DLF
+            value: 6.027456183070403
           type: ENVIRONMENTAL
           startDate: startDate
         usage:
@@ -8690,10 +8855,20 @@ components:
     EnergyBillingOtherTransaction:
       example:
         amount: amount
+        adjustments:
+        - amount: amount
+          description: description
+        - amount: amount
+          description: description
         endDate: endDate
         servicePointId: servicePointId
         invoiceNumber: invoiceNumber
         description: description
+        calculationFactors:
+        - type: DLF
+          value: 6.027456183070403
+        - type: DLF
+          value: 6.027456183070403
         type: ENVIRONMENTAL
         startDate: startDate
       properties:
@@ -8731,6 +8906,16 @@ components:
         description:
           description: A free text description of the item
           type: string
+        calculationFactors:
+          description: Additional calculation factors that inform the transaction
+          items:
+            $ref: '#/components/schemas/EnergyBillingUsageTransaction_calculationFactors'
+          type: array
+        adjustments:
+          description: Optional array of adjustments arising for this transaction
+          items:
+            $ref: '#/components/schemas/EnergyBillingUsageTransaction_adjustments'
+          type: array
       required:
       - amount
       - description
@@ -8758,6 +8943,222 @@ components:
       required:
       - amount
       - method
+      type: object
+    CommonPhysicalAddress:
+      example:
+        paf:
+          streetType: streetType
+          floorLevelNumber: floorLevelNumber
+          thoroughfareNumber1Suffix: thoroughfareNumber1Suffix
+          postalDeliveryNumber: 1
+          dpid: dpid
+          thoroughfareNumber2: 6
+          postcode: postcode
+          thoroughfareNumber1: 0
+          flatUnitNumber: flatUnitNumber
+          lotNumber: lotNumber
+          buildingName1: buildingName1
+          buildingName2: buildingName2
+          streetName: streetName
+          localityName: localityName
+          flatUnitType: flatUnitType
+          floorLevelType: floorLevelType
+          postalDeliveryNumberSuffix: postalDeliveryNumberSuffix
+          postalDeliveryType: postalDeliveryType
+          streetSuffix: streetSuffix
+          state: state
+          postalDeliveryNumberPrefix: postalDeliveryNumberPrefix
+          thoroughfareNumber2Suffix: thoroughfareNumber2Suffix
+        simple:
+          country: AUS
+          city: city
+          postcode: postcode
+          addressLine1: addressLine1
+          addressLine2: addressLine2
+          addressLine3: addressLine3
+          state: state
+          mailingName: mailingName
+        addressUType: paf
+      properties:
+        addressUType:
+          description: The type of address object present
+          enum:
+          - paf
+          - simple
+          type: string
+        simple:
+          $ref: '#/components/schemas/CommonSimpleAddress'
+        paf:
+          $ref: '#/components/schemas/CommonPAFAddress'
+      required:
+      - addressUType
+      type: object
+      x-conditional:
+      - simple
+      - paf
+    CommonSimpleAddress:
+      description: Required if addressUType is set to simple
+      example:
+        country: AUS
+        city: city
+        postcode: postcode
+        addressLine1: addressLine1
+        addressLine2: addressLine2
+        addressLine3: addressLine3
+        state: state
+        mailingName: mailingName
+      properties:
+        mailingName:
+          description: Name of the individual or business formatted for inclusion
+            in an address used for physical mail
+          type: string
+        addressLine1:
+          description: First line of the standard address object
+          type: string
+        addressLine2:
+          description: Second line of the standard address object
+          type: string
+        addressLine3:
+          description: Third line of the standard address object
+          type: string
+        postcode:
+          description: Mandatory for Australian addresses
+          type: string
+        city:
+          description: Name of the city or locality
+          type: string
+        state:
+          description: Free text if the country is not Australia. If country is Australia
+            then must be one of the values defined by the [State Type Abbreviation](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf)
+            in the PAF file format. NSW, QLD, VIC, NT, WA, SA, TAS, ACT, AAT
+          type: string
+        country:
+          default: AUS
+          description: A valid [ISO 3166 Alpha-3](https://www.iso.org/iso-3166-country-codes.html)
+            country code. Australia (AUS) is assumed if country is not present.
+          type: string
+          x-cds-type: ExternalRef
+      required:
+      - addressLine1
+      - city
+      - state
+      type: object
+      x-conditional:
+      - postcode
+    CommonPAFAddress:
+      description: Australian address formatted according to the file format defined
+        by the [PAF file format](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf).
+        Required if addressUType is set to paf
+      example:
+        streetType: streetType
+        floorLevelNumber: floorLevelNumber
+        thoroughfareNumber1Suffix: thoroughfareNumber1Suffix
+        postalDeliveryNumber: 1
+        dpid: dpid
+        thoroughfareNumber2: 6
+        postcode: postcode
+        thoroughfareNumber1: 0
+        flatUnitNumber: flatUnitNumber
+        lotNumber: lotNumber
+        buildingName1: buildingName1
+        buildingName2: buildingName2
+        streetName: streetName
+        localityName: localityName
+        flatUnitType: flatUnitType
+        floorLevelType: floorLevelType
+        postalDeliveryNumberSuffix: postalDeliveryNumberSuffix
+        postalDeliveryType: postalDeliveryType
+        streetSuffix: streetSuffix
+        state: state
+        postalDeliveryNumberPrefix: postalDeliveryNumberPrefix
+        thoroughfareNumber2Suffix: thoroughfareNumber2Suffix
+      properties:
+        dpid:
+          description: Unique identifier for an address as defined by Australia Post.  Also
+            known as Delivery Point Identifier
+          type: string
+        thoroughfareNumber1:
+          description: Thoroughfare number for a property (first number in a property
+            ranged address)
+          type: integer
+          x-cds-type: PositiveInteger
+        thoroughfareNumber1Suffix:
+          description: Suffix for the thoroughfare number. Only relevant is thoroughfareNumber1
+            is populated
+          type: string
+        thoroughfareNumber2:
+          description: Second thoroughfare number (only used if the property has a
+            ranged address eg 23-25)
+          type: integer
+          x-cds-type: PositiveInteger
+        thoroughfareNumber2Suffix:
+          description: Suffix for the second thoroughfare number. Only relevant is
+            thoroughfareNumber2 is populated
+          type: string
+        flatUnitType:
+          description: Type of flat or unit for the address
+          type: string
+        flatUnitNumber:
+          description: Unit number (including suffix, if applicable)
+          type: string
+        floorLevelType:
+          description: Type of floor or level for the address
+          type: string
+        floorLevelNumber:
+          description: Floor or level number (including alpha characters)
+          type: string
+        lotNumber:
+          description: Allotment number for the address
+          type: string
+        buildingName1:
+          description: Building/Property name 1
+          type: string
+        buildingName2:
+          description: Building/Property name 2
+          type: string
+        streetName:
+          description: The name of the street
+          type: string
+        streetType:
+          description: The street type. Valid enumeration defined by Australia Post
+            PAF code file
+          type: string
+        streetSuffix:
+          description: The street type suffix. Valid enumeration defined by Australia
+            Post PAF code file
+          type: string
+        postalDeliveryType:
+          description: Postal delivery type. (eg. PO BOX). Valid enumeration defined
+            by Australia Post PAF code file
+          type: string
+        postalDeliveryNumber:
+          description: Postal delivery number if the address is a postal delivery
+            type
+          type: integer
+          x-cds-type: PositiveInteger
+        postalDeliveryNumberPrefix:
+          description: Postal delivery number prefix related to the postal delivery
+            number
+          type: string
+        postalDeliveryNumberSuffix:
+          description: Postal delivery number suffix related to the postal delivery
+            number
+          type: string
+        localityName:
+          description: Full name of locality
+          type: string
+        postcode:
+          description: Postcode for the locality
+          type: string
+        state:
+          description: State in which the address belongs. Valid enumeration defined
+            by Australia Post PAF code file [State Type Abbreviation](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf).
+            NSW, QLD, VIC, NT, WA, SA, TAS, ACT, AAT
+          type: string
+      required:
+      - localityName
+      - postcode
+      - state
       type: object
     Links:
       example:
@@ -9163,24 +9564,30 @@ components:
     EnergyConcessionsResponse_data:
       example:
         concessions:
-        - percentageDiscount: percentageDiscount
+        - amount: amount
           additionalInfoUri: additionalInfoUri
           endDate: endDate
           displayName: displayName
+          appliedTo:
+          - INVOICE
+          - INVOICE
+          percentage: percentage
           additionalInfo: additionalInfo
-          dailyDiscount: dailyDiscount
-          monthlyDiscount: monthlyDiscount
+          type: FIXED_AMOUNT
+          discountFrequency: discountFrequency
           startDate: startDate
-          yearlyDiscount: yearlyDiscount
-        - percentageDiscount: percentageDiscount
+        - amount: amount
           additionalInfoUri: additionalInfoUri
           endDate: endDate
           displayName: displayName
+          appliedTo:
+          - INVOICE
+          - INVOICE
+          percentage: percentage
           additionalInfo: additionalInfo
-          dailyDiscount: dailyDiscount
-          monthlyDiscount: monthlyDiscount
+          type: FIXED_AMOUNT
+          discountFrequency: discountFrequency
           startDate: startDate
-          yearlyDiscount: yearlyDiscount
       properties:
         concessions:
           description: Array may be empty if no concessions exist
@@ -9356,10 +9763,20 @@ components:
             description: description
           otherCharges:
             amount: amount
+            adjustments:
+            - amount: amount
+              description: description
+            - amount: amount
+              description: description
             endDate: endDate
             servicePointId: servicePointId
             invoiceNumber: invoiceNumber
             description: description
+            calculationFactors:
+            - type: DLF
+              value: 6.027456183070403
+            - type: DLF
+              value: 6.027456183070403
             type: ENVIRONMENTAL
             startDate: startDate
           usage:
@@ -9417,10 +9834,20 @@ components:
             description: description
           otherCharges:
             amount: amount
+            adjustments:
+            - amount: amount
+              description: description
+            - amount: amount
+              description: description
             endDate: endDate
             servicePointId: servicePointId
             invoiceNumber: invoiceNumber
             description: description
+            calculationFactors:
+            - type: DLF
+              value: 6.027456183070403
+            - type: DLF
+              value: 6.027456183070403
             type: ENVIRONMENTAL
             startDate: startDate
           usage:
@@ -9767,224 +10194,7 @@ components:
       - party
       - role
       type: object
-    EnergyServicePointDetail_location_simple:
-      description: The address of the service point.  Mandatory if addressUType is
-        set to simple
-      example:
-        country: AUS
-        city: city
-        postcode: postcode
-        addressLine1: addressLine1
-        addressLine2: addressLine2
-        addressLine3: addressLine3
-        state: state
-        mailingName: mailingName
-      properties:
-        mailingName:
-          description: Name of the individual or business formatted for inclusion
-            in an address used for physical mail
-          type: string
-        addressLine1:
-          description: First line of the standard address object
-          type: string
-        addressLine2:
-          description: Second line of the standard address object
-          type: string
-        addressLine3:
-          description: Third line of the standard address object
-          type: string
-        postcode:
-          description: Mandatory for Australian addresses
-          type: string
-        city:
-          description: Name of the city or locality
-          type: string
-        state:
-          description: Free text if the country is not Australia. If country is Australia
-            then must be one of the values defined by the [State Type Abbreviation](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf)
-            in the PAF file format. NSW, QLD, VIC, NT, WA, SA, TAS, ACT, AAT
-          type: string
-        country:
-          default: AUS
-          description: A valid [ISO 3166 Alpha-3](https://www.iso.org/iso-3166-country-codes.html)
-            country code. Australia (AUS) is assumed if country is not present.
-          type: string
-          x-cds-type: ExternalRef
-      required:
-      - addressLine1
-      - city
-      - state
-      type: object
-      x-conditional:
-      - postcode
-    EnergyServicePointDetail_location_paf:
-      description: The address of the service point.  Mandatory if addressUType is
-        set to paf. Formatted according to the file format defined by the [PAF file
-        format](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf)
-      example:
-        streetType: streetType
-        floorLevelNumber: floorLevelNumber
-        thoroughfareNumber1Suffix: thoroughfareNumber1Suffix
-        postalDeliveryNumber: 1
-        dpid: dpid
-        thoroughfareNumber2: 6
-        postcode: postcode
-        thoroughfareNumber1: 0
-        flatUnitNumber: flatUnitNumber
-        lotNumber: lotNumber
-        buildingName1: buildingName1
-        buildingName2: buildingName2
-        streetName: streetName
-        localityName: localityName
-        flatUnitType: flatUnitType
-        floorLevelType: floorLevelType
-        postalDeliveryNumberSuffix: postalDeliveryNumberSuffix
-        postalDeliveryType: postalDeliveryType
-        streetSuffix: streetSuffix
-        state: state
-        postalDeliveryNumberPrefix: postalDeliveryNumberPrefix
-        thoroughfareNumber2Suffix: thoroughfareNumber2Suffix
-      properties:
-        dpid:
-          description: Unique identifier for an address as defined by Australia Post.  Also
-            known as Delivery Point Identifier
-          type: string
-        thoroughfareNumber1:
-          description: Thoroughfare number for a property (first number in a property
-            ranged address)
-          type: integer
-          x-cds-type: PositiveInteger
-        thoroughfareNumber1Suffix:
-          description: Suffix for the thoroughfare number. Only relevant is thoroughfareNumber1
-            is populated
-          type: string
-        thoroughfareNumber2:
-          description: Second thoroughfare number (only used if the property has a
-            ranged address eg 23-25)
-          type: integer
-          x-cds-type: PositiveInteger
-        thoroughfareNumber2Suffix:
-          description: Suffix for the second thoroughfare number. Only relevant is
-            thoroughfareNumber2 is populated
-          type: string
-        flatUnitType:
-          description: Type of flat or unit for the address
-          type: string
-        flatUnitNumber:
-          description: Unit number (including suffix, if applicable)
-          type: string
-        floorLevelType:
-          description: Type of floor or level for the address
-          type: string
-        floorLevelNumber:
-          description: Floor or level number (including alpha characters)
-          type: string
-        lotNumber:
-          description: Allotment number for the address
-          type: string
-        buildingName1:
-          description: Building/Property name 1
-          type: string
-        buildingName2:
-          description: Building/Property name 2
-          type: string
-        streetName:
-          description: The name of the street
-          type: string
-        streetType:
-          description: The street type. Valid enumeration defined by Australia Post
-            PAF code file
-          type: string
-        streetSuffix:
-          description: The street type suffix. Valid enumeration defined by Australia
-            Post PAF code file
-          type: string
-        postalDeliveryType:
-          description: Postal delivery type. (eg. PO BOX). Valid enumeration defined
-            by Australia Post PAF code file
-          type: string
-        postalDeliveryNumber:
-          description: Postal delivery number if the address is a postal delivery
-            type
-          type: integer
-          x-cds-type: PositiveInteger
-        postalDeliveryNumberPrefix:
-          description: Postal delivery number prefix related to the postal delivery
-            number
-          type: string
-        postalDeliveryNumberSuffix:
-          description: Postal delivery number suffix related to the postal delivery
-            number
-          type: string
-        localityName:
-          description: Full name of locality
-          type: string
-        postcode:
-          description: Postcode for the locality
-          type: string
-        state:
-          description: State in which the address belongs. Valid enumeration defined
-            by Australia Post PAF code file [State Type Abbreviation](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf).
-            NSW, QLD, VIC, NT, WA, SA, TAS, ACT, AAT
-          type: string
-      required:
-      - localityName
-      - postcode
-      - state
-      type: object
-    EnergyServicePointDetail_location:
-      example:
-        paf:
-          streetType: streetType
-          floorLevelNumber: floorLevelNumber
-          thoroughfareNumber1Suffix: thoroughfareNumber1Suffix
-          postalDeliveryNumber: 1
-          dpid: dpid
-          thoroughfareNumber2: 6
-          postcode: postcode
-          thoroughfareNumber1: 0
-          flatUnitNumber: flatUnitNumber
-          lotNumber: lotNumber
-          buildingName1: buildingName1
-          buildingName2: buildingName2
-          streetName: streetName
-          localityName: localityName
-          flatUnitType: flatUnitType
-          floorLevelType: floorLevelType
-          postalDeliveryNumberSuffix: postalDeliveryNumberSuffix
-          postalDeliveryType: postalDeliveryType
-          streetSuffix: streetSuffix
-          state: state
-          postalDeliveryNumberPrefix: postalDeliveryNumberPrefix
-          thoroughfareNumber2Suffix: thoroughfareNumber2Suffix
-        simple:
-          country: AUS
-          city: city
-          postcode: postcode
-          addressLine1: addressLine1
-          addressLine2: addressLine2
-          addressLine3: addressLine3
-          state: state
-          mailingName: mailingName
-        addressUType: simple
-      properties:
-        addressUType:
-          description: The type of address object present
-          enum:
-          - simple
-          - paf
-          type: string
-        simple:
-          $ref: '#/components/schemas/EnergyServicePointDetail_location_simple'
-        paf:
-          $ref: '#/components/schemas/EnergyServicePointDetail_location_paf'
-      required:
-      - addressUType
-      type: object
-      x-conditional:
-      - simple
-      - paf
-    EnergyServicePointDetail_meters_specifications:
+    EnergyServicePointDetail_specifications:
       description: Technical characteristics of the meter
       example:
         installationType: BASIC
@@ -10066,8 +10276,7 @@ components:
       - installationType
       - status
       type: object
-    EnergyServicePointDetail_meters_registers:
-      description: Usage data registers available from the meter
+    EnergyServicePointDetail_registers:
       example:
         unitOfMeasure: unitOfMeasure
         registerId: registerId
@@ -10145,13 +10354,22 @@ components:
       required:
       - registerConsumptionType
       - registerId
-      - registerSuffix
       type: object
     EnergyServicePointDetail_meters:
       example:
         meterId: meterId
         registers:
-          unitOfMeasure: unitOfMeasure
+        - unitOfMeasure: unitOfMeasure
+          registerId: registerId
+          consumptionType: ACTUAL
+          averagedDailyLoad: 5.962133916683182
+          multiplier: 5.637376656633329
+          registerConsumptionType: INTERVAL
+          networkTariffCode: networkTariffCode
+          registerSuffix: registerSuffix
+          controlledLoad: true
+          timeOfDay: ALLDAY
+        - unitOfMeasure: unitOfMeasure
           registerId: registerId
           consumptionType: ACTUAL
           averagedDailyLoad: 5.962133916683182
@@ -10175,12 +10393,15 @@ components:
             unique
           type: string
         specifications:
-          $ref: '#/components/schemas/EnergyServicePointDetail_meters_specifications'
+          $ref: '#/components/schemas/EnergyServicePointDetail_specifications'
         registers:
-          $ref: '#/components/schemas/EnergyServicePointDetail_meters_registers'
+          description: Usage data registers available from the meter. This may be
+            empty where there are no meters physically installed at the service point
+          items:
+            $ref: '#/components/schemas/EnergyServicePointDetail_registers'
+          type: array
       required:
       - meterId
-      - registers
       - specifications
       type: object
     EnergyUsageRead_basicRead:

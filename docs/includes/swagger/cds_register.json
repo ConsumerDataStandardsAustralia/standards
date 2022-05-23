@@ -2,7 +2,7 @@
   "openapi" : "3.0.3",
   "info" : {
     "title" : "CDR Participant Discovery API",
-    "version" : "1.16.1"
+    "version" : "1.17.0"
   },
   "servers" : [ {
     "url" : "https://<register-base-url>/"
@@ -78,7 +78,7 @@
           "explode" : false,
           "in" : "header",
           "name" : "x-v",
-          "required" : true,
+          "required" : false,
           "schema" : {
             "type" : "string"
           },
@@ -182,7 +182,131 @@
         "summary" : "Get Data Holder Brands",
         "tags" : [ "Register" ],
         "x-version" : "2",
-        "x-scopes" : [ "cdr-register:bank:read", "cdr-register:read" ]
+        "x-scopes" : [ "cdr-register:read" ]
+      }
+    },
+    "/cdr-register/v1/{industry}/data-holders/brands/summary" : {
+      "get" : {
+        "description" : "Endpoint used by participants to discover public details of Data Holder Brands from the CDR Register",
+        "operationId" : "GetDataHolderBrandsSummary",
+        "parameters" : [ {
+          "description" : "The industry the participant is retrieving data for (Banking, etc)",
+          "explode" : false,
+          "in" : "path",
+          "name" : "industry",
+          "required" : true,
+          "schema" : {
+            "enum" : [ "banking", "energy", "telco", "all" ],
+            "type" : "string"
+          },
+          "style" : "simple"
+        }, {
+          "description" : "The version of the API end point requested by the client. Must be set to a positive integer.",
+          "explode" : false,
+          "in" : "header",
+          "name" : "x-v",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          },
+          "style" : "simple"
+        }, {
+          "description" : "The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided.",
+          "explode" : false,
+          "in" : "header",
+          "name" : "x-min-v",
+          "required" : false,
+          "schema" : {
+            "type" : "string"
+          },
+          "style" : "simple"
+        }, {
+          "description" : "Makes the request method conditional on a recipient cache or origin server not having any current representation of the target resource with an entity-tag that does not match any of those listed in the field-value.",
+          "explode" : false,
+          "in" : "header",
+          "name" : "If-None-Match",
+          "required" : false,
+          "schema" : {
+            "type" : "string"
+          },
+          "style" : "simple"
+        } ],
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ResponseDataHoldersBrandSummaryList"
+                }
+              }
+            },
+            "description" : "Success",
+            "headers" : {
+              "x-v" : {
+                "description" : "The version of the API end point that the CDR Register has responded with.",
+                "explode" : false,
+                "schema" : {
+                  "type" : "string"
+                },
+                "style" : "simple"
+              },
+              "Etag" : {
+                "description" : "Entity tag that uniquely represents the requested resource.",
+                "explode" : false,
+                "schema" : {
+                  "type" : "string"
+                },
+                "style" : "simple"
+              }
+            }
+          },
+          "304" : {
+            "description" : "Not Modified - The current representation of the target resource matches with the entity-tag provided in the If-None-Match request header",
+            "headers" : {
+              "Etag" : {
+                "description" : "Entity tag that uniquely represents the requested resource.",
+                "explode" : false,
+                "schema" : {
+                  "type" : "string"
+                },
+                "style" : "simple"
+              }
+            }
+          },
+          "400" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ResponseErrorListV2"
+                }
+              }
+            },
+            "description" : "Missing Required Header / Invalid Version / Invalid Path Parameter"
+          },
+          "404" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ResponseErrorListV2"
+                }
+              }
+            },
+            "description" : "Industry Not Found"
+          },
+          "406" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ResponseErrorListV2"
+                }
+              }
+            },
+            "description" : "Unsupported Version"
+          }
+        },
+        "summary" : "Get Data Holder Brands Summary",
+        "tags" : [ "Register" ],
+        "x-version" : "1"
       }
     },
     "/cdr-register/v1/{industry}/data-recipients/brands/{dataRecipientBrandId}/software-products/{softwareProductId}/ssa" : {
@@ -205,7 +329,7 @@
           "explode" : false,
           "in" : "header",
           "name" : "x-v",
-          "required" : true,
+          "required" : false,
           "schema" : {
             "type" : "string"
           },
@@ -336,7 +460,7 @@
         "summary" : "Get Software Statement Assertion (SSA)",
         "tags" : [ "Register" ],
         "x-version" : "3",
-        "x-scopes" : [ "cdr-register:bank:read", "cdr-register:read" ]
+        "x-scopes" : [ "cdr-register:read" ]
       }
     },
     "/cdr-register/v1/{industry}/data-holders/status" : {
@@ -359,7 +483,7 @@
           "explode" : false,
           "in" : "header",
           "name" : "x-v",
-          "required" : true,
+          "required" : false,
           "schema" : {
             "type" : "string"
           },
@@ -415,7 +539,6 @@
             }
           },
           "304" : {
-            "content" : { },
             "description" : "Not Modified - The current representation of the target resource matches with the entity-tag provided in the If-None-Match request header",
             "headers" : {
               "Etag" : {
@@ -474,7 +597,7 @@
           "explode" : false,
           "in" : "header",
           "name" : "x-v",
-          "required" : true,
+          "required" : false,
           "schema" : {
             "type" : "string"
           },
@@ -530,7 +653,6 @@
             }
           },
           "304" : {
-            "content" : { },
             "description" : "Not Modified - The current representation of the target resource matches with the entity-tag provided in the If-None-Match request header",
             "headers" : {
               "Etag" : {
@@ -589,7 +711,7 @@
           "explode" : false,
           "in" : "header",
           "name" : "x-v",
-          "required" : true,
+          "required" : false,
           "schema" : {
             "type" : "string"
           },
@@ -645,7 +767,6 @@
             }
           },
           "304" : {
-            "content" : { },
             "description" : "Not Modified - The current representation of the target resource matches with the entity-tag provided in the If-None-Match request header",
             "headers" : {
               "Etag" : {
@@ -704,7 +825,7 @@
           "explode" : false,
           "in" : "header",
           "name" : "x-v",
-          "required" : true,
+          "required" : false,
           "schema" : {
             "type" : "string"
           },
@@ -760,7 +881,6 @@
             }
           },
           "304" : {
-            "content" : { },
             "description" : "Not Modified - The current representation of the target resource matches with the entity-tag provided in the If-None-Match request header",
             "headers" : {
               "Etag" : {
@@ -818,7 +938,7 @@
         "explode" : false,
         "in" : "header",
         "name" : "x-v",
-        "required" : true,
+        "required" : false,
         "schema" : {
           "type" : "string"
         },
@@ -917,7 +1037,6 @@
         "description" : "Invalid Bearer Token"
       },
       "NotModified" : {
-        "content" : { },
         "description" : "Not Modified - The current representation of the target resource matches with the entity-tag provided in the If-None-Match request header",
         "headers" : {
           "Etag" : {
@@ -1149,6 +1268,91 @@
           }
         },
         "required" : [ "authDetails", "brandName", "dataHolderBrandId", "endpointDetail", "industries", "lastUpdated", "legalEntity", "logoUri", "status" ],
+        "type" : "object"
+      },
+      "ResponseDataHoldersBrandSummaryList" : {
+        "properties" : {
+          "data" : {
+            "description" : "Response data for the query",
+            "items" : {
+              "$ref" : "#/components/schemas/DataHolderBrandSummary"
+            },
+            "type" : "array",
+            "uniqueItems" : true
+          },
+          "links" : {
+            "$ref" : "#/components/schemas/Links"
+          },
+          "meta" : {
+            "$ref" : "#/components/schemas/Meta"
+          }
+        },
+        "required" : [ "data", "links", "meta" ],
+        "type" : "object"
+      },
+      "DataHolderBrandSummary" : {
+        "properties" : {
+          "dataHolderBrandId" : {
+            "description" : "Unique id of the Data Holder Brand issued by the CDR Register",
+            "maxLength" : 36,
+            "type" : "string",
+            "x-conditional" : true
+          },
+          "interimId" : {
+            "description" : "Interim id of the Data Holder Brand issued by the CDR Register. This is to be used to uniquely identify the record when dataHolderBrandId is not populated and is not to be reused",
+            "maxLength" : 36,
+            "type" : "string",
+            "x-conditional" : true
+          },
+          "brandName" : {
+            "description" : "The name of Data Holder Brand",
+            "maxLength" : 200,
+            "type" : "string"
+          },
+          "publicBaseUri" : {
+            "description" : "Base URI for the Data Holder's Consumer Data Standard public endpoints",
+            "maxLength" : 1000,
+            "type" : "string",
+            "x-cds-type" : "URIString"
+          },
+          "logoUri" : {
+            "description" : "Brand logo URI",
+            "maxLength" : 1000,
+            "type" : "string",
+            "x-cds-type" : "URIString"
+          },
+          "industries" : {
+            "description" : "The industries the Data Holder Brand belongs to. Please note that the CDR Register entity model is constrained to one industry per brand which is planned to be relaxed in the future.",
+            "items" : {
+              "enum" : [ "banking", "energy", "telco" ],
+              "type" : "string"
+            },
+            "type" : "array",
+            "uniqueItems" : true
+          },
+          "lastUpdated" : {
+            "description" : "The date/time that the Data Holder Brand data was last updated in the Register",
+            "format" : "date-time",
+            "type" : "string",
+            "x-cds-type" : "DateTimeString"
+          },
+          "abn" : {
+            "description" : "Australian Business Number for the organisation",
+            "maxLength" : 11,
+            "type" : "string"
+          },
+          "acn" : {
+            "description" : "Australian Company Number for the organisation",
+            "maxLength" : 9,
+            "type" : "string"
+          },
+          "arbn" : {
+            "description" : "Australian Registered Body Number.  ARBNs are issued to registrable Australian bodies and foreign companies",
+            "maxLength" : 9,
+            "type" : "string"
+          }
+        },
+        "required" : [ "brandName", "industries", "lastUpdated", "logoUri", "publicBaseUri" ],
         "type" : "object"
       },
       "DataHoldersStatusList" : {

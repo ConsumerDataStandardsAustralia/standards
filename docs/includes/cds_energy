@@ -547,6 +547,7 @@ x-min-v: string
           </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"dailySupplyCharges"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"timeZone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LOCAL"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"rateBlockUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"singleRate"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"singleRate"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -736,6 +737,7 @@ x-min-v: string
           </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"dailySupplyCharges"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"timeZone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LOCAL"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"rateBlockUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"singleRate"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"singleRate"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -1283,7 +1285,7 @@ x-cds-client-headers: string
       </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
     </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"addressUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"simple"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"addressUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"paf"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"simple"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"mailingName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"addressLine1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -1319,29 +1321,33 @@ x-cds-client-headers: string
         </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"meters"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"meterId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"specifications"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CURRENT"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"installationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BASIC"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"manufacturer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"readType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"nextScheduledReadDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="s2">"registers"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"registerId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"registerSuffix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"averagedDailyLoad"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"registerConsumptionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INTERVAL"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"networkTariffCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"unitOfMeasure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"timeOfDay"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ALLDAY"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"multiplier"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"controlledLoad"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"consumptionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTUAL"</span><span class="w">
+    </span><span class="s2">"meters"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"meterId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"specifications"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CURRENT"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"installationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BASIC"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"manufacturer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"readType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"nextScheduledReadDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"registers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"registerId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"registerSuffix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"averagedDailyLoad"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"registerConsumptionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INTERVAL"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"networkTariffCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"unitOfMeasure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"timeOfDay"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ALLDAY"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"multiplier"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"controlledLoad"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"consumptionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTUAL"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
       </span><span class="p">}</span><span class="w">
-    </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
@@ -1512,7 +1518,7 @@ x-cds-client-headers: string
 <td>query</td>
 <td><a href="#common-field-types">DateString</a></td>
 <td>optional</td>
-<td>Constrain the request to records with effective date at or after this date. If absent defaults to newest-date minus 24 months days.  Format is aligned to DateString common type</td>
+<td>Constrain the request to records with effective date at or after this date. If absent defaults to newest-date minus 24 months.  Format is aligned to DateString common type</td>
 </tr>
 <tr>
 <td>newest-date</td>
@@ -1796,7 +1802,7 @@ x-cds-client-headers: string
 <td>query</td>
 <td><a href="#common-field-types">DateString</a></td>
 <td>optional</td>
-<td>Constrain the request to records with effective date at or after this date. If absent defaults to newest-date minus 24 months days.  Format is aligned to DateString common type</td>
+<td>Constrain the request to records with effective date at or after this date. If absent defaults to newest-date minus 24 months.  Format is aligned to DateString common type</td>
 </tr>
 <tr>
 <td>newest-date</td>
@@ -2081,7 +2087,7 @@ x-cds-client-headers: string
 <td>query</td>
 <td><a href="#common-field-types">DateString</a></td>
 <td>optional</td>
-<td>Constrain the request to records with effective date at or after this date. If absent defaults to newest-date minus 24 months days.  Format is aligned to DateString common type</td>
+<td>Constrain the request to records with effective date at or after this date. If absent defaults to newest-date minus 24 months.  Format is aligned to DateString common type</td>
 </tr>
 <tr>
 <td>newest-date</td>
@@ -3697,6 +3703,7 @@ x-cds-client-headers: string
                 </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"dailySupplyCharges"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"timeZone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LOCAL"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"rateBlockUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"singleRate"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"singleRate"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
                   </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -3847,6 +3854,7 @@ x-cds-client-headers: string
                 </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"dailySupplyCharges"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"timeZone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LOCAL"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"rateBlockUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"singleRate"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"singleRate"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
                   </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -4349,15 +4357,18 @@ x-cds-client-headers: string
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"concessions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FIXED_AMOUNT"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"dailyDiscount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"monthlyDiscount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"yearlyDiscount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"percentageDiscount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+        </span><span class="s2">"discountFrequency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"percentage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"appliedTo"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="s2">"INVOICE"</span><span class="w">
+        </span><span class="p">]</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
   </span><span class="p">},</span><span class="w">
@@ -5268,7 +5279,7 @@ x-cds-client-headers: string
 <td>query</td>
 <td><a href="#common-field-types">DateString</a></td>
 <td>optional</td>
-<td>Constrain the request to records with effective date at or after this date. If absent defaults to newest-date minus 24 months days.  Format is aligned to DateString common type</td>
+<td>Constrain the request to records with effective date at or after this date. If absent defaults to newest-date minus 24 months.  Format is aligned to DateString common type</td>
 </tr>
 <tr>
 <td>page</td>
@@ -5582,7 +5593,7 @@ x-cds-client-headers: string
 <td>query</td>
 <td><a href="#common-field-types">DateString</a></td>
 <td>optional</td>
-<td>Constrain the request to records with effective date at or after this date. If absent defaults to newest-date minus 24 months days.  Format is aligned to DateString common type</td>
+<td>Constrain the request to records with effective date at or after this date. If absent defaults to newest-date minus 24 months.  Format is aligned to DateString common type</td>
 </tr>
 <tr>
 <td>page</td>
@@ -5897,7 +5908,7 @@ x-cds-client-headers: string
 <td>query</td>
 <td><a href="#common-field-types">DateString</a></td>
 <td>optional</td>
-<td>Constrain the request to records with effective date at or after this date. If absent defaults to newest-date minus 24 months days.  Format is aligned to DateString common type</td>
+<td>Constrain the request to records with effective date at or after this date. If absent defaults to newest-date minus 24 months.  Format is aligned to DateString common type</td>
 </tr>
 <tr>
 <td>page</td>
@@ -6366,7 +6377,19 @@ x-cds-client-headers: string
           </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ENVIRONMENTAL"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+          </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"calculationFactors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DLF"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="s2">"adjustments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">]</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="s2">"payment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -6697,7 +6720,19 @@ x-cds-client-headers: string
           </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ENVIRONMENTAL"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+          </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"calculationFactors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DLF"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="s2">"adjustments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">]</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="s2">"payment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -7057,7 +7092,19 @@ x-cds-client-headers: string
           </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ENVIRONMENTAL"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+          </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"calculationFactors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DLF"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="s2">"adjustments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">]</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="s2">"payment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -7416,6 +7463,7 @@ To perform this operation, you must be authenticated and authorised with the fol
           </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"dailySupplyCharges"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"timeZone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LOCAL"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"rateBlockUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"singleRate"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"singleRate"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -7605,6 +7653,7 @@ To perform this operation, you must be authenticated and authorised with the fol
           </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"dailySupplyCharges"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"timeZone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LOCAL"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"rateBlockUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"singleRate"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"singleRate"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -7809,7 +7858,7 @@ To perform this operation, you must be authenticated and authorised with the fol
       </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
     </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"addressUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"simple"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"addressUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"paf"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"simple"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"mailingName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"addressLine1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -7845,29 +7894,33 @@ To perform this operation, you must be authenticated and authorised with the fol
         </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"meters"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"meterId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"specifications"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CURRENT"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"installationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BASIC"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"manufacturer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"readType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"nextScheduledReadDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="s2">"registers"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"registerId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"registerSuffix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"averagedDailyLoad"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"registerConsumptionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INTERVAL"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"networkTariffCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"unitOfMeasure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"timeOfDay"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ALLDAY"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"multiplier"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"controlledLoad"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"consumptionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTUAL"</span><span class="w">
+    </span><span class="s2">"meters"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"meterId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"specifications"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CURRENT"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"installationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BASIC"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"manufacturer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"readType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"nextScheduledReadDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"registers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"registerId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"registerSuffix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"averagedDailyLoad"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"registerConsumptionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INTERVAL"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"networkTariffCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"unitOfMeasure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"timeOfDay"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ALLDAY"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"multiplier"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"controlledLoad"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"consumptionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTUAL"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
       </span><span class="p">}</span><span class="w">
-    </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
@@ -8402,6 +8455,7 @@ To perform this operation, you must be authenticated and authorised with the fol
                 </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"dailySupplyCharges"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"timeZone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LOCAL"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"rateBlockUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"singleRate"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"singleRate"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
                   </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -8552,6 +8606,7 @@ To perform this operation, you must be authenticated and authorised with the fol
                 </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"dailySupplyCharges"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"timeZone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LOCAL"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"rateBlockUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"singleRate"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"singleRate"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
                   </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -8704,15 +8759,18 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"concessions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FIXED_AMOUNT"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"dailyDiscount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"monthlyDiscount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"yearlyDiscount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"percentageDiscount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+        </span><span class="s2">"discountFrequency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"percentage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"appliedTo"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="s2">"INVOICE"</span><span class="w">
+        </span><span class="p">]</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
   </span><span class="p">},</span><span class="w">
@@ -9059,7 +9117,19 @@ To perform this operation, you must be authenticated and authorised with the fol
           </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ENVIRONMENTAL"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+          </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"calculationFactors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DLF"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="s2">"adjustments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">]</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="s2">"payment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -9549,6 +9619,7 @@ To perform this operation, you must be authenticated and authorised with the fol
         </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"dailySupplyCharges"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"timeZone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LOCAL"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"rateBlockUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"singleRate"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"singleRate"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -9738,6 +9809,7 @@ To perform this operation, you must be authenticated and authorised with the fol
         </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"dailySupplyCharges"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"timeZone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LOCAL"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"rateBlockUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"singleRate"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"singleRate"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -10017,6 +10089,7 @@ To perform this operation, you must be authenticated and authorised with the fol
       </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"dailySupplyCharges"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"timeZone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LOCAL"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"rateBlockUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"singleRate"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"singleRate"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -10102,7 +10175,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>timeZone</td>
 <td>string</td>
 <td>conditional</td>
-<td>Required if pricingModel is set to TIME_OF_USE.  Defines the time zone to use for calculation of the time of use thresholds</td>
+<td>Required if pricingModel is set to TIME_OF_USE.  Defines the time zone to use for calculation of the time of use thresholds. Defaults to AEST if absent</td>
 </tr>
 <tr>
 <td>isFixed</td>
@@ -10377,6 +10450,7 @@ To perform this operation, you must be authenticated and authorised with the fol
       </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"dailySupplyCharges"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"timeZone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LOCAL"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"rateBlockUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"singleRate"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"singleRate"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -10773,7 +10847,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>percentOfBill</td>
 <td>object</td>
-<td>optional</td>
+<td>conditional</td>
 <td>Required if methodUType is percentOfBill</td>
 </tr>
 <tr>
@@ -10785,7 +10859,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>percentOfUse</td>
 <td>object</td>
-<td>optional</td>
+<td>conditional</td>
 <td>Required if methodUType is percentOfUse</td>
 </tr>
 <tr>
@@ -10797,7 +10871,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>fixedAmount</td>
 <td>object</td>
-<td>optional</td>
+<td>conditional</td>
 <td>Required if methodUType is fixedAmount</td>
 </tr>
 <tr>
@@ -10809,7 +10883,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>percentOverThreshold</td>
 <td>object</td>
-<td>optional</td>
+<td>conditional</td>
 <td>Required if methodUType is percentOverThreshold</td>
 </tr>
 <tr>
@@ -11422,7 +11496,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>»» days</td>
 <td>object</td>
-<td>optional</td>
+<td>mandatory</td>
 <td>none</td>
 </tr>
 <tr>
@@ -11505,6 +11579,7 @@ To perform this operation, you must be authenticated and authorised with the fol
     </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"dailySupplyCharges"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"timeZone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LOCAL"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"rateBlockUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"singleRate"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"singleRate"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -11604,6 +11679,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td><a href="#common-field-types">AmountString</a></td>
 <td>optional</td>
 <td>The amount of access charge for the tariff period, in dollars per day exclusive of GST.</td>
+</tr>
+<tr>
+<td>timeZone</td>
+<td>string</td>
+<td>optional</td>
+<td>Specifies the charge specific time zone for calculation of the time of use thresholds. If absent, timezone value in EnergyPlanContract is assumed.</td>
 </tr>
 <tr>
 <td>rateBlockUType</td>
@@ -11862,6 +11943,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>type</td>
 <td>OTHER</td>
+</tr>
+<tr>
+<td>timeZone</td>
+<td>LOCAL</td>
+</tr>
+<tr>
+<td>timeZone</td>
+<td>AEST</td>
 </tr>
 <tr>
 <td>rateBlockUType</td>
@@ -12284,7 +12373,7 @@ To perform this operation, you must be authenticated and authorised with the fol
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"addressUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"simple"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"addressUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"paf"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"simple"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"mailingName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"addressLine1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -12320,29 +12409,33 @@ To perform this operation, you must be authenticated and authorised with the fol
       </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">},</span><span class="w">
-  </span><span class="s2">"meters"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"meterId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"specifications"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CURRENT"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"installationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BASIC"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"manufacturer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"readType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"nextScheduledReadDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"registers"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"registerId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"registerSuffix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"averagedDailyLoad"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"registerConsumptionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INTERVAL"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"networkTariffCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"unitOfMeasure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"timeOfDay"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ALLDAY"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"multiplier"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"controlledLoad"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"consumptionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTUAL"</span><span class="w">
+  </span><span class="s2">"meters"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"meterId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"specifications"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CURRENT"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"installationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BASIC"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"manufacturer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"readType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"nextScheduledReadDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"registers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"registerId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"registerSuffix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"averagedDailyLoad"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"registerConsumptionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INTERVAL"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"networkTariffCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"unitOfMeasure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"timeOfDay"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ALLDAY"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"multiplier"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"controlledLoad"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"consumptionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTUAL"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
     </span><span class="p">}</span><span class="w">
-  </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre><h3 id='properties-30'>Properties</h3>
@@ -12464,324 +12557,126 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>location</td>
-<td>object</td>
+<td><a href="#schemacdr-energy-apicommonphysicaladdress">CommonPhysicalAddress</a></td>
 <td>mandatory</td>
-<td>none</td>
+<td>Location of the servicepoint</td>
 </tr>
 <tr>
-<td>» addressUType</td>
-<td>string</td>
-<td>mandatory</td>
-<td>The type of address object present</td>
-</tr>
-<tr>
-<td>» simple</td>
-<td>object</td>
-<td>conditional</td>
-<td>The address of the service point.  Mandatory if addressUType is set to simple</td>
-</tr>
-<tr>
-<td>»» mailingName</td>
-<td>string</td>
+<td>meters</td>
+<td>[object]</td>
 <td>optional</td>
-<td>Name of the individual or business formatted for inclusion in an address used for physical mail</td>
+<td>The meters associated with the service point. This may be empty where there are no meters physically installed at the service point</td>
 </tr>
 <tr>
-<td>»» addressLine1</td>
-<td>string</td>
-<td>mandatory</td>
-<td>First line of the standard address object</td>
-</tr>
-<tr>
-<td>»» addressLine2</td>
-<td>string</td>
-<td>optional</td>
-<td>Second line of the standard address object</td>
-</tr>
-<tr>
-<td>»» addressLine3</td>
-<td>string</td>
-<td>optional</td>
-<td>Third line of the standard address object</td>
-</tr>
-<tr>
-<td>»» postcode</td>
-<td>string</td>
-<td>conditional</td>
-<td>Mandatory for Australian addresses</td>
-</tr>
-<tr>
-<td>»» city</td>
-<td>string</td>
-<td>mandatory</td>
-<td>Name of the city or locality</td>
-</tr>
-<tr>
-<td>»» state</td>
-<td>string</td>
-<td>mandatory</td>
-<td>Free text if the country is not Australia. If country is Australia then must be one of the values defined by the <a href="https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf">State Type Abbreviation</a> in the PAF file format. NSW, QLD, VIC, NT, WA, SA, TAS, ACT, AAT</td>
-</tr>
-<tr>
-<td>»» country</td>
-<td><a href="#common-field-types">ExternalRef</a></td>
-<td>optional</td>
-<td>A valid <a href="https://www.iso.org/iso-3166-country-codes.html">ISO 3166 Alpha-3</a> country code. Australia (AUS) is assumed if country is not present.</td>
-</tr>
-<tr>
-<td>» paf</td>
-<td>object</td>
-<td>conditional</td>
-<td>The address of the service point.  Mandatory if addressUType is set to paf. Formatted according to the file format defined by the <a href="https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf">PAF file format</a></td>
-</tr>
-<tr>
-<td>»» dpid</td>
-<td>string</td>
-<td>optional</td>
-<td>Unique identifier for an address as defined by Australia Post.  Also known as Delivery Point Identifier</td>
-</tr>
-<tr>
-<td>»» thoroughfareNumber1</td>
-<td><a href="#common-field-types">PositiveInteger</a></td>
-<td>optional</td>
-<td>Thoroughfare number for a property (first number in a property ranged address)</td>
-</tr>
-<tr>
-<td>»» thoroughfareNumber1Suffix</td>
-<td>string</td>
-<td>optional</td>
-<td>Suffix for the thoroughfare number. Only relevant is thoroughfareNumber1 is populated</td>
-</tr>
-<tr>
-<td>»» thoroughfareNumber2</td>
-<td><a href="#common-field-types">PositiveInteger</a></td>
-<td>optional</td>
-<td>Second thoroughfare number (only used if the property has a ranged address eg 23-25)</td>
-</tr>
-<tr>
-<td>»» thoroughfareNumber2Suffix</td>
-<td>string</td>
-<td>optional</td>
-<td>Suffix for the second thoroughfare number. Only relevant is thoroughfareNumber2 is populated</td>
-</tr>
-<tr>
-<td>»» flatUnitType</td>
-<td>string</td>
-<td>optional</td>
-<td>Type of flat or unit for the address</td>
-</tr>
-<tr>
-<td>»» flatUnitNumber</td>
-<td>string</td>
-<td>optional</td>
-<td>Unit number (including suffix, if applicable)</td>
-</tr>
-<tr>
-<td>»» floorLevelType</td>
-<td>string</td>
-<td>optional</td>
-<td>Type of floor or level for the address</td>
-</tr>
-<tr>
-<td>»» floorLevelNumber</td>
-<td>string</td>
-<td>optional</td>
-<td>Floor or level number (including alpha characters)</td>
-</tr>
-<tr>
-<td>»» lotNumber</td>
-<td>string</td>
-<td>optional</td>
-<td>Allotment number for the address</td>
-</tr>
-<tr>
-<td>»» buildingName1</td>
-<td>string</td>
-<td>optional</td>
-<td>Building/Property name 1</td>
-</tr>
-<tr>
-<td>»» buildingName2</td>
-<td>string</td>
-<td>optional</td>
-<td>Building/Property name 2</td>
-</tr>
-<tr>
-<td>»» streetName</td>
-<td>string</td>
-<td>optional</td>
-<td>The name of the street</td>
-</tr>
-<tr>
-<td>»» streetType</td>
-<td>string</td>
-<td>optional</td>
-<td>The street type. Valid enumeration defined by Australia Post PAF code file</td>
-</tr>
-<tr>
-<td>»» streetSuffix</td>
-<td>string</td>
-<td>optional</td>
-<td>The street type suffix. Valid enumeration defined by Australia Post PAF code file</td>
-</tr>
-<tr>
-<td>»» postalDeliveryType</td>
-<td>string</td>
-<td>optional</td>
-<td>Postal delivery type. (eg. PO BOX). Valid enumeration defined by Australia Post PAF code file</td>
-</tr>
-<tr>
-<td>»» postalDeliveryNumber</td>
-<td><a href="#common-field-types">PositiveInteger</a></td>
-<td>optional</td>
-<td>Postal delivery number if the address is a postal delivery type</td>
-</tr>
-<tr>
-<td>»» postalDeliveryNumberPrefix</td>
-<td>string</td>
-<td>optional</td>
-<td>Postal delivery number prefix related to the postal delivery number</td>
-</tr>
-<tr>
-<td>»» postalDeliveryNumberSuffix</td>
-<td>string</td>
-<td>optional</td>
-<td>Postal delivery number suffix related to the postal delivery number</td>
-</tr>
-<tr>
-<td>»» localityName</td>
-<td>string</td>
-<td>mandatory</td>
-<td>Full name of locality</td>
-</tr>
-<tr>
-<td>»» postcode</td>
-<td>string</td>
-<td>mandatory</td>
-<td>Postcode for the locality</td>
-</tr>
-<tr>
-<td>»» state</td>
-<td>string</td>
-<td>mandatory</td>
-<td>State in which the address belongs. Valid enumeration defined by Australia Post PAF code file <a href="https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf">State Type Abbreviation</a>. NSW, QLD, VIC, NT, WA, SA, TAS, ACT, AAT</td>
-</tr>
-<tr>
-<td>» meters</td>
-<td>object</td>
-<td>mandatory</td>
-<td>none</td>
-</tr>
-<tr>
-<td>»» meterId</td>
+<td>» meterId</td>
 <td>string</td>
 <td>mandatory</td>
 <td>The meter ID uniquely identifies a meter for a given service point.  It is unique in the context of the service point.  It is not globally unique</td>
 </tr>
 <tr>
-<td>»» specifications</td>
+<td>» specifications</td>
 <td>object</td>
 <td>mandatory</td>
 <td>Technical characteristics of the meter</td>
 </tr>
 <tr>
-<td>»»» status</td>
+<td>»» status</td>
 <td>string</td>
 <td>mandatory</td>
 <td>A code to denote the status of the meter. Note the details of enumeration values below: <ul><li><strong>CURRENT</strong> -Applies when a meter is current and not disconnected</li><li><strong>DISCONNECTED</strong> - Applies when a meter is present but has been remotely disconnected</li></ul></td>
 </tr>
 <tr>
-<td>»»» installationType</td>
+<td>»» installationType</td>
 <td>string</td>
 <td>mandatory</td>
 <td>The metering Installation type code indicates whether the metering installation has to be manually read. Note the details of enumeration values below: <ul><li><strong>BASIC</strong> - Accumulation Meter – Type 6</li><li><strong>COMMS1</strong> - Interval Meter with communications – Type 1</li><li><strong>COMMS2</strong> - Interval Meter with communications – Type 2</li><li><strong>COMMS3</strong> - Interval Meter with communications – Type 3</li><li><strong>COMMS4</strong> - Interval Meter with communications – Type 4</li><li><strong>COMMS4C</strong> - CT connected metering installation that meets the minimum services specifications</li><li><strong>COMMS4D</strong> - Whole current metering installation that meets the minimum services specifications</li><li><strong>MRAM</strong> - Small customer metering installation – Type 4A</li><li><strong>MRIM</strong> - Manually Read Interval Meter – Type 5</li><li><strong>UMCP</strong> - Unmetered Supply – Type 7</li><li><strong>VICAMI</strong> - A relevant metering installation as defined in clause 9.9C of the NER</li><li><strong>NCONUML</strong> - Non-contestable unmeter load - Introduced as part of Global Settlement</li></ul></td>
 </tr>
 <tr>
-<td>»»» manufacturer</td>
+<td>»» manufacturer</td>
 <td>string</td>
 <td>optional</td>
 <td>Free text field to identify the manufacturer of the installed meter</td>
 </tr>
 <tr>
-<td>»»» model</td>
+<td>»» model</td>
 <td>string</td>
 <td>optional</td>
 <td>Free text field to identify the meter manufacturer’s designation for the meter model</td>
 </tr>
 <tr>
-<td>»»» readType</td>
+<td>»» readType</td>
 <td>string</td>
 <td>optional</td>
 <td>Code to denote the method and frequency of Meter Reading. The value is formatted as follows: <ul><li>First Character = Remote (R) or Manual (M)</li><li>Second Character = Mode: T = telephone W = wireless P = powerline I = infra-red G = galvanic V = visual </li><li>Third Character = Frequency of Scheduled Meter Readings: 1 = Twelve times per year 2 = Six times per year 3 = Four times per year D = Daily or weekly</li><li>Optional Fourth Character = to identify what interval length the meter is capable of reading. This includes five, 15 and 30 minute granularity as the following: A – 5 minute B – 15 minute C – 30 minute D – Cannot convert to 5 minute (i.e. due to metering installation de-energised) M - Manually Read Accumulation Meter</li></ul> For example, <ul><li>MV3 = Manual, Visual, Quarterly</li> <li>MV3M = Manual, Visual, Quarterly, Manually Read Accumulation Meter</li> <li>RWDC = Remote, Wireless, Daily, 30 minutes interval</li></ul></td>
 </tr>
 <tr>
-<td>»»» nextScheduledReadDate</td>
+<td>»» nextScheduledReadDate</td>
 <td><a href="#common-field-types">DateString</a></td>
 <td>optional</td>
 <td>This date is the next scheduled meter read date (NSRD) if a manual Meter Reading is required</td>
 </tr>
 <tr>
-<td>»» registers</td>
-<td>object</td>
-<td>mandatory</td>
-<td>Usage data registers available from the meter</td>
+<td>» registers</td>
+<td>[object]</td>
+<td>optional</td>
+<td>Usage data registers available from the meter. This may be empty where there are no meters physically installed at the service point</td>
 </tr>
 <tr>
-<td>»»» registerId</td>
+<td>»» registerId</td>
 <td>string</td>
 <td>mandatory</td>
 <td>Unique identifier of the register within this service point.  Is not globally unique</td>
 </tr>
 <tr>
-<td>»»» registerSuffix</td>
+<td>»» registerSuffix</td>
 <td>string</td>
-<td>mandatory</td>
+<td>optional</td>
 <td>Register suffix of the meter register where the meter reads are obtained</td>
 </tr>
 <tr>
-<td>»»» averagedDailyLoad</td>
+<td>»» averagedDailyLoad</td>
 <td>number</td>
 <td>optional</td>
 <td>The energy delivered through a connection point or metering point over an extended period normalised to a &#39;per day&#39; basis (kWh). This value is calculated annually.</td>
 </tr>
 <tr>
-<td>»»» registerConsumptionType</td>
+<td>»» registerConsumptionType</td>
 <td>string</td>
 <td>mandatory</td>
 <td>Indicates the consumption type of register</td>
 </tr>
 <tr>
-<td>»»» networkTariffCode</td>
+<td>»» networkTariffCode</td>
 <td>string</td>
 <td>optional</td>
 <td>The Network Tariff Code is a free text field containing a code supplied and published by the local network service provider</td>
 </tr>
 <tr>
-<td>»»» unitOfMeasure</td>
+<td>»» unitOfMeasure</td>
 <td>string</td>
 <td>optional</td>
 <td>The unit of measure for data held in this register</td>
 </tr>
 <tr>
-<td>»»» timeOfDay</td>
+<td>»» timeOfDay</td>
 <td>string</td>
 <td>optional</td>
 <td>Code to identify the time validity of register contents</td>
 </tr>
 <tr>
-<td>»»» multiplier</td>
+<td>»» multiplier</td>
 <td>number</td>
 <td>optional</td>
 <td>Multiplier required to take a register value and turn it into a value representing billable energy</td>
 </tr>
 <tr>
-<td>»»» controlledLoad</td>
+<td>»» controlledLoad</td>
 <td>boolean</td>
 <td>optional</td>
 <td>Indicates whether the energy recorded by this register is created under a Controlled Load regime</td>
 </tr>
 <tr>
-<td>»»» consumptionType</td>
+<td>»» consumptionType</td>
 <td>string</td>
 <td>optional</td>
 <td>Actual/Subtractive Indicator. Note the details of enumeration values below: <ul><li><strong>ACTUAL</strong> implies volume of energy actually metered between two dates</li><li><strong>CUMULATIVE</strong> indicates a meter reading for a specific date. A second Meter Reading is required to determine the consumption between those two Meter Reading dates</li></ul></td>
@@ -12909,14 +12804,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>role</td>
 <td>DRSP</td>
-</tr>
-<tr>
-<td>addressUType</td>
-<td>simple</td>
-</tr>
-<tr>
-<td>addressUType</td>
-<td>paf</td>
 </tr>
 <tr>
 <td>status</td>
@@ -13929,6 +13816,7 @@ To perform this operation, you must be authenticated and authorised with the fol
               </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"dailySupplyCharges"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"timeZone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LOCAL"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"rateBlockUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"singleRate"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"singleRate"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -14095,6 +13983,7 @@ To perform this operation, you must be authenticated and authorised with the fol
               </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"dailySupplyCharges"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"timeZone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LOCAL"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"rateBlockUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"singleRate"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"singleRate"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -14551,15 +14440,18 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p><a id="schemacdr-energy-apienergyconcession"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FIXED_AMOUNT"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"dailyDiscount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"monthlyDiscount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"yearlyDiscount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"percentageDiscount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="s2">"discountFrequency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"percentage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"appliedTo"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"INVOICE"</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre><h3 id='properties-37'>Properties</h3>
@@ -14572,6 +14464,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </thead><tbody>
 <tr>
+<td>type</td>
+<td>string</td>
+<td>mandatory</td>
+<td>Indicator of the method of concession calculation</td>
+</tr>
+<tr>
 <td>displayName</td>
 <td>string</td>
 <td>mandatory</td>
@@ -14580,8 +14478,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>additionalInfo</td>
 <td>string</td>
-<td>optional</td>
-<td>Display text providing more information on the concession</td>
+<td>conditional</td>
+<td>Display text providing more information on the concession. Mandatory if type is VARIABLE</td>
 </tr>
 <tr>
 <td>additionalInfoUri</td>
@@ -14602,28 +14500,64 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Optional end date for the application of the concession</td>
 </tr>
 <tr>
-<td>dailyDiscount</td>
-<td><a href="#common-field-types">AmountString</a></td>
+<td>discountFrequency</td>
+<td><a href="#common-field-types">ExternalRef</a></td>
 <td>conditional</td>
-<td>Daily discount value due to the concession.  At least one dailyDiscount, monthlyDiscount, yearlyDiscount and percentageDiscount must be provided</td>
+<td>Conditional attribute for frequency at which a concession is applied. Required if type is FIXED_AMOUNT or FIXED_PERCENTAGE. Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 Durations</a> (excludes recurrence syntax)</td>
 </tr>
 <tr>
-<td>monthlyDiscount</td>
+<td>amount</td>
 <td><a href="#common-field-types">AmountString</a></td>
 <td>conditional</td>
-<td>Monthly discount value due to the concession.  At least one dailyDiscount, monthlyDiscount, yearlyDiscount and percentageDiscount must be provided</td>
+<td>Conditional attribute for the amount of discount for the concession- required if type is FIXED_AMOUNT</td>
 </tr>
 <tr>
-<td>yearlyDiscount</td>
-<td><a href="#common-field-types">AmountString</a></td>
-<td>conditional</td>
-<td>Annual discount value due to the concession.  At least one dailyDiscount, monthlyDiscount, yearlyDiscount and percentageDiscount must be provided</td>
-</tr>
-<tr>
-<td>percentageDiscount</td>
+<td>percentage</td>
 <td><a href="#common-field-types">RateString</a></td>
 <td>conditional</td>
-<td>Percentage of each invoice to be discounted due to the concession.  At least one dailyDiscount, monthlyDiscount, yearlyDiscount and percentageDiscount must be provided</td>
+<td>Conditional attribute for the percentage of discount of concession - required if type is FIXED_PERCENTAGE</td>
+</tr>
+<tr>
+<td>appliedTo</td>
+<td>[string]</td>
+<td>optional</td>
+<td>Array of ENUM&#39;s to specify what the concession applies to. Multiple ENUM values can be provided. If absent, USAGE is assumed</td>
+</tr>
+</tbody></table>
+<h4 id='enumerated-values-18'>Enumerated Values</h4>
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>type</td>
+<td>FIXED_AMOUNT</td>
+</tr>
+<tr>
+<td>type</td>
+<td>FIXED_PERCENTAGE</td>
+</tr>
+<tr>
+<td>type</td>
+<td>VARIABLE</td>
+</tr>
+<tr>
+<td>appliedTo</td>
+<td>INVOICE</td>
+</tr>
+<tr>
+<td>appliedTo</td>
+<td>USAGE</td>
+</tr>
+<tr>
+<td>appliedTo</td>
+<td>SERVICE_CHARGE</td>
+</tr>
+<tr>
+<td>appliedTo</td>
+<td>CONTROLLED_LOAD</td>
 </tr>
 </tbody></table>
 
@@ -14810,7 +14744,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Indicator of the payment status for the invoice</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-18'>Enumerated Values</h4>
+<h4 id='enumerated-values-19'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -14913,7 +14847,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>The total GST for all electricity usage charges.  If absent then zero is assumed</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-19'>Enumerated Values</h4>
+<h4 id='enumerated-values-20'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -15032,7 +14966,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>The total GST for all electricity usage charges.  If absent then zero is assumed</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-20'>Enumerated Values</h4>
+<h4 id='enumerated-values-21'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -15177,7 +15111,19 @@ To perform this operation, you must be authenticated and authorised with the fol
     </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ENVIRONMENTAL"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"calculationFactors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DLF"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"adjustments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"payment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -15249,7 +15195,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Represents a payment to the account.  Mandatory if transactionUType is equal to payment</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-21'>Enumerated Values</h4>
+<h4 id='enumerated-values-22'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -15412,7 +15358,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>A free text description of the adjustment</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-22'>Enumerated Values</h4>
+<h4 id='enumerated-values-23'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -15624,7 +15570,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>A free text description of the adjustment</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-23'>Enumerated Values</h4>
+<h4 id='enumerated-values-24'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -15732,7 +15678,19 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ENVIRONMENTAL"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"calculationFactors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DLF"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"adjustments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre><h3 id='properties-46'>Properties</h3>
@@ -15786,8 +15744,44 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>mandatory</td>
 <td>A free text description of the item</td>
 </tr>
+<tr>
+<td>calculationFactors</td>
+<td>[object]</td>
+<td>optional</td>
+<td>Additional calculation factors that inform the transaction</td>
+</tr>
+<tr>
+<td>» value</td>
+<td>number</td>
+<td>mandatory</td>
+<td>The value of the calculation factor</td>
+</tr>
+<tr>
+<td>» type</td>
+<td>string</td>
+<td>mandatory</td>
+<td>The type of the calculation factor</td>
+</tr>
+<tr>
+<td>adjustments</td>
+<td>[object]</td>
+<td>optional</td>
+<td>Optional array of adjustments arising for this transaction</td>
+</tr>
+<tr>
+<td>» amount</td>
+<td><a href="#common-field-types">AmountString</a></td>
+<td>mandatory</td>
+<td>The amount of the adjustment</td>
+</tr>
+<tr>
+<td>» description</td>
+<td>string</td>
+<td>mandatory</td>
+<td>A free text description of the adjustment</td>
+</tr>
 </tbody></table>
-<h4 id='enumerated-values-24'>Enumerated Values</h4>
+<h4 id='enumerated-values-25'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -15822,6 +15816,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>type</td>
 <td>OTHER</td>
 </tr>
+<tr>
+<td>type</td>
+<td>DLF</td>
+</tr>
+<tr>
+<td>type</td>
+<td>MLF</td>
+</tr>
 </tbody></table>
 
 <h3 class="schema-toc" id="tocSenergybillingpaymenttransaction">EnergyBillingPaymentTransaction</h3>
@@ -15854,7 +15856,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>The method of payment</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-25'>Enumerated Values</h4>
+<h4 id='enumerated-values-26'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -15891,6 +15893,340 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
+<h3 class="schema-toc" id="tocScommonphysicaladdress">CommonPhysicalAddress</h3>
+
+<p><a id="schemacdr-energy-apicommonphysicaladdress"></a></p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"addressUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"paf"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"simple"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"mailingName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"addressLine1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"addressLine2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"addressLine3"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AUS"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"paf"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"dpid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"thoroughfareNumber1"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"thoroughfareNumber1Suffix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"thoroughfareNumber2"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"thoroughfareNumber2Suffix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"flatUnitType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"flatUnitNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"floorLevelType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"floorLevelNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"lotNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"buildingName1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"buildingName2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"streetName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"streetType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"streetSuffix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"postalDeliveryType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"postalDeliveryNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"postalDeliveryNumberPrefix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"postalDeliveryNumberSuffix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"localityName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre><h3 id='properties-48'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>addressUType</td>
+<td>string</td>
+<td>mandatory</td>
+<td>The type of address object present</td>
+</tr>
+<tr>
+<td>simple</td>
+<td><a href="#schemacdr-energy-apicommonsimpleaddress">CommonSimpleAddress</a></td>
+<td>conditional</td>
+<td>Required if addressUType is set to simple</td>
+</tr>
+<tr>
+<td>paf</td>
+<td><a href="#schemacdr-energy-apicommonpafaddress">CommonPAFAddress</a></td>
+<td>conditional</td>
+<td>Australian address formatted according to the file format defined by the <a href="https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf">PAF file format</a>. Required if addressUType is set to paf</td>
+</tr>
+</tbody></table>
+<h4 id='enumerated-values-27'>Enumerated Values</h4>
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>addressUType</td>
+<td>paf</td>
+</tr>
+<tr>
+<td>addressUType</td>
+<td>simple</td>
+</tr>
+</tbody></table>
+
+<h3 class="schema-toc" id="tocScommonsimpleaddress">CommonSimpleAddress</h3>
+
+<p><a id="schemacdr-energy-apicommonsimpleaddress"></a></p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"mailingName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"addressLine1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"addressLine2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"addressLine3"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AUS"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<p><em>Required if addressUType is set to simple</em></p>
+<h3 id='properties-49'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>mailingName</td>
+<td>string</td>
+<td>optional</td>
+<td>Name of the individual or business formatted for inclusion in an address used for physical mail</td>
+</tr>
+<tr>
+<td>addressLine1</td>
+<td>string</td>
+<td>mandatory</td>
+<td>First line of the standard address object</td>
+</tr>
+<tr>
+<td>addressLine2</td>
+<td>string</td>
+<td>optional</td>
+<td>Second line of the standard address object</td>
+</tr>
+<tr>
+<td>addressLine3</td>
+<td>string</td>
+<td>optional</td>
+<td>Third line of the standard address object</td>
+</tr>
+<tr>
+<td>postcode</td>
+<td>string</td>
+<td>conditional</td>
+<td>Mandatory for Australian addresses</td>
+</tr>
+<tr>
+<td>city</td>
+<td>string</td>
+<td>mandatory</td>
+<td>Name of the city or locality</td>
+</tr>
+<tr>
+<td>state</td>
+<td>string</td>
+<td>mandatory</td>
+<td>Free text if the country is not Australia. If country is Australia then must be one of the values defined by the <a href="https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf">State Type Abbreviation</a> in the PAF file format. NSW, QLD, VIC, NT, WA, SA, TAS, ACT, AAT</td>
+</tr>
+<tr>
+<td>country</td>
+<td><a href="#common-field-types">ExternalRef</a></td>
+<td>optional</td>
+<td>A valid <a href="https://www.iso.org/iso-3166-country-codes.html">ISO 3166 Alpha-3</a> country code. Australia (AUS) is assumed if country is not present.</td>
+</tr>
+</tbody></table>
+
+<h3 class="schema-toc" id="tocScommonpafaddress">CommonPAFAddress</h3>
+
+<p><a id="schemacdr-energy-apicommonpafaddress"></a></p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"dpid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"thoroughfareNumber1"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"thoroughfareNumber1Suffix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"thoroughfareNumber2"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"thoroughfareNumber2Suffix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"flatUnitType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"flatUnitNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"floorLevelType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"floorLevelNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"lotNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"buildingName1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"buildingName2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"streetName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"streetType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"streetSuffix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"postalDeliveryType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"postalDeliveryNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"postalDeliveryNumberPrefix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"postalDeliveryNumberSuffix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"localityName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<p><em>Australian address formatted according to the file format defined by the <a href="https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf">PAF file format</a>. Required if addressUType is set to paf</em></p>
+<h3 id='properties-50'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>dpid</td>
+<td>string</td>
+<td>optional</td>
+<td>Unique identifier for an address as defined by Australia Post.  Also known as Delivery Point Identifier</td>
+</tr>
+<tr>
+<td>thoroughfareNumber1</td>
+<td><a href="#common-field-types">PositiveInteger</a></td>
+<td>optional</td>
+<td>Thoroughfare number for a property (first number in a property ranged address)</td>
+</tr>
+<tr>
+<td>thoroughfareNumber1Suffix</td>
+<td>string</td>
+<td>optional</td>
+<td>Suffix for the thoroughfare number. Only relevant is thoroughfareNumber1 is populated</td>
+</tr>
+<tr>
+<td>thoroughfareNumber2</td>
+<td><a href="#common-field-types">PositiveInteger</a></td>
+<td>optional</td>
+<td>Second thoroughfare number (only used if the property has a ranged address eg 23-25)</td>
+</tr>
+<tr>
+<td>thoroughfareNumber2Suffix</td>
+<td>string</td>
+<td>optional</td>
+<td>Suffix for the second thoroughfare number. Only relevant is thoroughfareNumber2 is populated</td>
+</tr>
+<tr>
+<td>flatUnitType</td>
+<td>string</td>
+<td>optional</td>
+<td>Type of flat or unit for the address</td>
+</tr>
+<tr>
+<td>flatUnitNumber</td>
+<td>string</td>
+<td>optional</td>
+<td>Unit number (including suffix, if applicable)</td>
+</tr>
+<tr>
+<td>floorLevelType</td>
+<td>string</td>
+<td>optional</td>
+<td>Type of floor or level for the address</td>
+</tr>
+<tr>
+<td>floorLevelNumber</td>
+<td>string</td>
+<td>optional</td>
+<td>Floor or level number (including alpha characters)</td>
+</tr>
+<tr>
+<td>lotNumber</td>
+<td>string</td>
+<td>optional</td>
+<td>Allotment number for the address</td>
+</tr>
+<tr>
+<td>buildingName1</td>
+<td>string</td>
+<td>optional</td>
+<td>Building/Property name 1</td>
+</tr>
+<tr>
+<td>buildingName2</td>
+<td>string</td>
+<td>optional</td>
+<td>Building/Property name 2</td>
+</tr>
+<tr>
+<td>streetName</td>
+<td>string</td>
+<td>optional</td>
+<td>The name of the street</td>
+</tr>
+<tr>
+<td>streetType</td>
+<td>string</td>
+<td>optional</td>
+<td>The street type. Valid enumeration defined by Australia Post PAF code file</td>
+</tr>
+<tr>
+<td>streetSuffix</td>
+<td>string</td>
+<td>optional</td>
+<td>The street type suffix. Valid enumeration defined by Australia Post PAF code file</td>
+</tr>
+<tr>
+<td>postalDeliveryType</td>
+<td>string</td>
+<td>optional</td>
+<td>Postal delivery type. (eg. PO BOX). Valid enumeration defined by Australia Post PAF code file</td>
+</tr>
+<tr>
+<td>postalDeliveryNumber</td>
+<td><a href="#common-field-types">PositiveInteger</a></td>
+<td>optional</td>
+<td>Postal delivery number if the address is a postal delivery type</td>
+</tr>
+<tr>
+<td>postalDeliveryNumberPrefix</td>
+<td>string</td>
+<td>optional</td>
+<td>Postal delivery number prefix related to the postal delivery number</td>
+</tr>
+<tr>
+<td>postalDeliveryNumberSuffix</td>
+<td>string</td>
+<td>optional</td>
+<td>Postal delivery number suffix related to the postal delivery number</td>
+</tr>
+<tr>
+<td>localityName</td>
+<td>string</td>
+<td>mandatory</td>
+<td>Full name of locality</td>
+</tr>
+<tr>
+<td>postcode</td>
+<td>string</td>
+<td>mandatory</td>
+<td>Postcode for the locality</td>
+</tr>
+<tr>
+<td>state</td>
+<td>string</td>
+<td>mandatory</td>
+<td>State in which the address belongs. Valid enumeration defined by Australia Post PAF code file <a href="https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf">State Type Abbreviation</a>. NSW, QLD, VIC, NT, WA, SA, TAS, ACT, AAT</td>
+</tr>
+</tbody></table>
+
 <h3 class="schema-toc" id="tocSlinks">Links</h3>
 
 <p><a id="schemacdr-energy-apilinks"></a></p>
@@ -15898,7 +16234,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-48'>Properties</h3>
+</span></code></pre><h3 id='properties-51'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -15920,7 +16256,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <p><a id="schemacdr-energy-apimeta"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{}</span><span class="w">
 
-</span></code></pre><h3 id='properties-49'>Properties</h3>
+</span></code></pre><h3 id='properties-52'>Properties</h3>
 <p><em>None</em></p>
 
 <h3 class="schema-toc" id="tocSlinkspaginated">LinksPaginated</h3>
@@ -15934,7 +16270,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="s2">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-50'>Properties</h3>
+</span></code></pre><h3 id='properties-53'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -15983,7 +16319,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="s2">"totalPages"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-51'>Properties</h3>
+</span></code></pre><h3 id='properties-54'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
