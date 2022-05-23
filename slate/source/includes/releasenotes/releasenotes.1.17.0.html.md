@@ -36,6 +36,7 @@ This release addresses the following change requests raised on [Standards Mainte
 - [Standards Maintenance Issue 438: Representing adjustment transactions within the Billing Payload for C&I customers](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/438)
 - [Standards Staging Issue 170: Fix documentation defect for meters and registers object in EnergyServicePointDetail model](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/170)
 - [Standards Staging Issue 133: Delete 'days' from applicable period for energy APIs](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/133)
+- [Standards Staging Issue 131: Minor edit - replace 'as a query parameter' with 'a path'](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/131)
 
 ### Decision Proposals
 
@@ -54,6 +55,7 @@ This release addresses the following Decision Proposals published on [Standards]
 | oldest-date description | [**Standards Staging #133:**](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/133) Corrected description of 'oldest-date' by removing the word 'days'. | [Energy Schema](../../#energy-apis) |
 | RateString description | [**Standards Maintenance #476**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/476): Changed RateString type to represent generic percentages. | [Common Field Types](../../#common-field-types)
 | Introduction | [**Standards Maintenance #465**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/465) Moved Register FDOs to the Register dependency schedule to differentiate Register delivery from Participant future dated obligations. </br> Register API versions now have dependency dates of **15th November 2022**, aligned to Energy | [Register Dependencies Schedule](../../#register-dependencies-schedule) |
+| Shared Responsibility-Energy | [**Standards Staging #131**](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/131): Updated fifth bullet-point in Energy Endpoint Variations section to clarify that servicePointId should be replaced with NMI in path parameter as well | [Energy](../../#energy) |
 
 ## API End Points
 
