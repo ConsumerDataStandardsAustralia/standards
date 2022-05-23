@@ -1801,160 +1801,8 @@
                     },
                     "location": {
                         "type": "object",
-                        "required": ["addressUType"],
-                        "x-conditional": [
-                            "simple",
-                            "paf"
-                        ],
-                        "properties": {
-                            "addressUType": {
-                                "type": "string",
-                                "description": "The type of address object present",
-                                "enum": ["simple",
-                                    "paf"
-                                ]
-                            },
-                            "simple": {
-                                "description": "The address of the service point.  Mandatory if addressUType is set to simple",
-                                "type": "object",
-                                "required": ["addressLine1", "city", "state"],
-                                "x-conditional": ["postcode"],
-                                "properties": {
-                                    "mailingName": {
-                                        "type": "string",
-                                        "description": "Name of the individual or business formatted for inclusion in an address used for physical mail"
-                                    },
-                                    "addressLine1": {
-                                        "type": "string",
-                                        "description": "First line of the standard address object"
-                                    },
-                                    "addressLine2": {
-                                        "type": "string",
-                                        "description": "Second line of the standard address object"
-                                    },
-                                    "addressLine3": {
-                                        "type": "string",
-                                        "description": "Third line of the standard address object"
-                                    },
-                                    "postcode": {
-                                        "type": "string",
-                                        "description": "Mandatory for Australian addresses"
-                                    },
-                                    "city": {
-                                        "type": "string",
-                                        "description": "Name of the city or locality"
-                                    },
-                                    "state": {
-                                        "type": "string",
-                                        "description": "Free text if the country is not Australia. If country is Australia then must be one of the values defined by the [State Type Abbreviation](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf) in the PAF file format. NSW, QLD, VIC, NT, WA, SA, TAS, ACT, AAT"
-                                    },
-                                    "country": {
-                                        "type": "string",
-                                        "description": "A valid [ISO 3166 Alpha-3](https://www.iso.org/iso-3166-country-codes.html) country code. Australia (AUS) is assumed if country is not present.",
-                                        "default": "AUS",
-                                        "x-cds-type": "ExternalRef"
-                                    }
-                                }
-                            },
-                            "paf": {
-                                "description": "The address of the service point.  Mandatory if addressUType is set to paf. Formatted according to the file format defined by the [PAF file format](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf)",
-                                "type": "object",
-                                "required": ["localityName", "postcode", "state"],
-                                "properties": {
-                                    "dpid": {
-                                        "type": "string",
-                                        "description": "Unique identifier for an address as defined by Australia Post.  Also known as Delivery Point Identifier"
-                                    },
-                                    "thoroughfareNumber1": {
-                                        "type": "integer",
-                                        "description": "Thoroughfare number for a property (first number in a property ranged address)",
-                                        "x-cds-type": "PositiveInteger"
-                                    },
-                                    "thoroughfareNumber1Suffix": {
-                                        "type": "string",
-                                        "description": "Suffix for the thoroughfare number. Only relevant is thoroughfareNumber1 is populated"
-                                    },
-                                    "thoroughfareNumber2": {
-                                        "type": "integer",
-                                        "description": "Second thoroughfare number (only used if the property has a ranged address eg 23-25)",
-                                        "x-cds-type": "PositiveInteger"
-                                    },
-                                    "thoroughfareNumber2Suffix": {
-                                        "type": "string",
-                                        "description": "Suffix for the second thoroughfare number. Only relevant is thoroughfareNumber2 is populated"
-                                    },
-                                    "flatUnitType": {
-                                        "type": "string",
-                                        "description": "Type of flat or unit for the address"
-                                    },
-                                    "flatUnitNumber": {
-                                        "type": "string",
-                                        "description": "Unit number (including suffix, if applicable)"
-                                    },
-                                    "floorLevelType": {
-                                        "type": "string",
-                                        "description": "Type of floor or level for the address"
-                                    },
-                                    "floorLevelNumber": {
-                                        "type": "string",
-                                        "description": "Floor or level number (including alpha characters)"
-                                    },
-                                    "lotNumber": {
-                                        "type": "string",
-                                        "description": "Allotment number for the address"
-                                    },
-                                    "buildingName1": {
-                                        "type": "string",
-                                        "description": "Building/Property name 1"
-                                    },
-                                    "buildingName2": {
-                                        "type": "string",
-                                        "description": "Building/Property name 2"
-                                    },
-                                    "streetName": {
-                                        "type": "string",
-                                        "description": "The name of the street"
-                                    },
-                                    "streetType": {
-                                        "type": "string",
-                                        "description": "The street type. Valid enumeration defined by Australia Post PAF code file"
-                                    },
-                                    "streetSuffix": {
-                                        "type": "string",
-                                        "description": "The street type suffix. Valid enumeration defined by Australia Post PAF code file"
-                                    },
-                                    "postalDeliveryType": {
-                                        "type": "string",
-                                        "description": "Postal delivery type. (eg. PO BOX). Valid enumeration defined by Australia Post PAF code file"
-                                    },
-                                    "postalDeliveryNumber": {
-                                        "type": "integer",
-                                        "description": "Postal delivery number if the address is a postal delivery type",
-                                        "x-cds-type": "PositiveInteger"
-                                    },
-                                    "postalDeliveryNumberPrefix": {
-                                        "type": "string",
-                                        "description": "Postal delivery number prefix related to the postal delivery number"
-                                    },
-                                    "postalDeliveryNumberSuffix": {
-                                        "type": "string",
-                                        "description": "Postal delivery number suffix related to the postal delivery number"
-                                    },
-                                    "localityName": {
-                                        "type": "string",
-                                        "description": "Full name of locality"
-                                    },
-                                    "postcode": {
-                                        "type": "string",
-                                        "description": "Postcode for the locality"
-                                    },
-                                    "state": {
-                                        "type": "string",
-                                        "description": "State in which the address belongs. Valid enumeration defined by Australia Post PAF code file [State Type Abbreviation](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf). NSW, QLD, VIC, NT, WA, SA, TAS, ACT, AAT"
-                                    }
-                                }
-                            }
-                        }
+                        "description": "Location of the servicepoint",
+                        "$ref": "#/components/schemas/CommonPhysicalAddress"
                     },
                     "meters": {
                         "description": "The meters associated with the service point. This may be empty where there are no meters physically installed at the service point",
@@ -3643,6 +3491,182 @@
                             "OTHER"
                         ]
                     }
+                }
+            },
+            "CommonPhysicalAddress": {
+                "required": [
+                  "addressUType"
+                ],
+                "type": "object",
+                "properties": {
+                  "addressUType": {
+                    "type": "string",
+                    "description": "The type of address object present",
+                    "enum": [
+                      "paf",
+                      "simple"
+                    ]
+                  },
+                  "simple": {
+                    "$ref": "#/components/schemas/CommonSimpleAddress"
+                  },
+                  "paf": {
+                    "$ref": "#/components/schemas/CommonPAFAddress"
+                  }
+                },
+                "x-conditional": [
+                  "simple",
+                  "paf"
+                ]
+            },
+            "CommonSimpleAddress": {
+                "description": "Required if addressUType is set to simple",
+                "required": [
+                  "addressLine1",
+                  "city",
+                  "state"
+                ],
+                "type": "object",
+                "properties": {
+                  "mailingName": {
+                    "type": "string",
+                    "description": "Name of the individual or business formatted for inclusion in an address used for physical mail"
+                  },
+                  "addressLine1": {
+                    "type": "string",
+                    "description": "First line of the standard address object"
+                  },
+                  "addressLine2": {
+                    "type": "string",
+                    "description": "Second line of the standard address object"
+                  },
+                  "addressLine3": {
+                    "type": "string",
+                    "description": "Third line of the standard address object"
+                  },
+                  "postcode": {
+                    "type": "string",
+                    "description": "Mandatory for Australian addresses"
+                  },
+                  "city": {
+                    "type": "string",
+                    "description": "Name of the city or locality"
+                  },
+                  "state": {
+                    "type": "string",
+                    "description": "Free text if the country is not Australia. If country is Australia then must be one of the values defined by the [State Type Abbreviation](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf) in the PAF file format. NSW, QLD, VIC, NT, WA, SA, TAS, ACT, AAT"
+                  },
+                  "country": {
+                    "type": "string",
+                    "description": "A valid [ISO 3166 Alpha-3](https://www.iso.org/iso-3166-country-codes.html) country code. Australia (AUS) is assumed if country is not present.",
+                    "default": "AUS",
+                    "x-cds-type": "ExternalRef"
+                  }
+                },
+                "x-conditional": [
+                  "postcode"
+                ]
+            },
+              "CommonPAFAddress": {
+                "description": "Australian address formatted according to the file format defined by the [PAF file format](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf). Required if addressUType is set to paf",
+                "required": [
+                  "localityName",
+                  "postcode",
+                  "state"
+                ],
+                "type": "object",
+                "properties": {
+                  "dpid": {
+                    "type": "string",
+                    "description": "Unique identifier for an address as defined by Australia Post.  Also known as Delivery Point Identifier"
+                  },
+                  "thoroughfareNumber1": {
+                    "type": "integer",
+                    "description": "Thoroughfare number for a property (first number in a property ranged address)",
+                    "x-cds-type": "PositiveInteger"
+                  },
+                  "thoroughfareNumber1Suffix": {
+                    "type": "string",
+                    "description": "Suffix for the thoroughfare number. Only relevant is thoroughfareNumber1 is populated"
+                  },
+                  "thoroughfareNumber2": {
+                    "type": "integer",
+                    "description": "Second thoroughfare number (only used if the property has a ranged address eg 23-25)",
+                    "x-cds-type": "PositiveInteger"
+                  },
+                  "thoroughfareNumber2Suffix": {
+                    "type": "string",
+                    "description": "Suffix for the second thoroughfare number. Only relevant is thoroughfareNumber2 is populated"
+                  },
+                  "flatUnitType": {
+                    "type": "string",
+                    "description": "Type of flat or unit for the address"
+                  },
+                  "flatUnitNumber": {
+                    "type": "string",
+                    "description": "Unit number (including suffix, if applicable)"
+                  },
+                  "floorLevelType": {
+                    "type": "string",
+                    "description": "Type of floor or level for the address"
+                  },
+                  "floorLevelNumber": {
+                    "type": "string",
+                    "description": "Floor or level number (including alpha characters)"
+                  },
+                  "lotNumber": {
+                    "type": "string",
+                    "description": "Allotment number for the address"
+                  },
+                  "buildingName1": {
+                    "type": "string",
+                    "description": "Building/Property name 1"
+                  },
+                  "buildingName2": {
+                    "type": "string",
+                    "description": "Building/Property name 2"
+                  },
+                  "streetName": {
+                    "type": "string",
+                    "description": "The name of the street"
+                  },
+                  "streetType": {
+                    "type": "string",
+                    "description": "The street type. Valid enumeration defined by Australia Post PAF code file"
+                  },
+                  "streetSuffix": {
+                    "type": "string",
+                    "description": "The street type suffix. Valid enumeration defined by Australia Post PAF code file"
+                  },
+                  "postalDeliveryType": {
+                    "type": "string",
+                    "description": "Postal delivery type. (eg. PO BOX). Valid enumeration defined by Australia Post PAF code file"
+                  },
+                  "postalDeliveryNumber": {
+                    "type": "integer",
+                    "description": "Postal delivery number if the address is a postal delivery type",
+                    "x-cds-type": "PositiveInteger"
+                  },
+                  "postalDeliveryNumberPrefix": {
+                    "type": "string",
+                    "description": "Postal delivery number prefix related to the postal delivery number"
+                  },
+                  "postalDeliveryNumberSuffix": {
+                    "type": "string",
+                    "description": "Postal delivery number suffix related to the postal delivery number"
+                  },
+                  "localityName": {
+                    "type": "string",
+                    "description": "Full name of locality"
+                  },
+                  "postcode": {
+                    "type": "string",
+                    "description": "Postcode for the locality"
+                  },
+                  "state": {
+                    "type": "string",
+                    "description": "State in which the address belongs. Valid enumeration defined by Australia Post PAF code file [State Type Abbreviation](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf). NSW, QLD, VIC, NT, WA, SA, TAS, ACT, AAT"
+                  }
                 }
             },
 			"Links": {
