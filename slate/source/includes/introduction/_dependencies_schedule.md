@@ -23,5 +23,3 @@ The table below highlights these dependency dates.
 
 
 The actual release dates for the Register APIs are expected to occur prior to these dates and are not defined by the Standards.
-
-The Register API release schedule will be made available in the future.
