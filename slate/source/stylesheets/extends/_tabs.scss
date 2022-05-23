@@ -96,7 +96,7 @@ $tab-border-color: lightgray !default;
 }
 
 .tab-diff code {
-  word-wrap: break-word;
+  word-wrap: break-word !important;
   white-space: pre-wrap;
   word-break: break-word;
 }
