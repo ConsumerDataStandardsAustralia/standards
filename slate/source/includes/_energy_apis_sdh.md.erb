@@ -12,9 +12,18 @@ This specification defines the APIs for Data Holders exposing Energy Secondary D
 
 
 ```diff
-The `EnergyServicePointDetail.meters.registers.registerSuffix` field has been made optional
+Modified the description of `oldest-date` from:
+- Constrain the request to records with effective date at or after this date. If absent defaults to newest-date minus 24 months days. Format is aligned to DateString common type
+to:
++ Constrain the request to records with effective date at or after this date. If absent defaults to newest-date minus 24 months. Format is aligned to DateString common type
+
+The `EnergyServicePointDetail.meters` and `EnergyServicePointDetail.meters.registers` fields have been made optional
 
 `EnergyServicePointDetail.meters` and `EnergyServicePointDetail.meters.registers` have been converted into arrays
+
+The `EnergyServicePointDetail.meters.registers.registerSuffix` field has been made optional
+
+Updated description of `EnergyServicePointDetail.meters` and `EnergyServicePointDetail.meters.registers` fields
 ```
 
 

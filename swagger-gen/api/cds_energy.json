@@ -687,7 +687,7 @@
                     },
                     "timeZone": {
                         "type": "string",
-                        "description": "Required if pricingModel is set to TIME_OF_USE.  Defines the time zone to use for calculation of the time of use thresholds",
+                        "description": "Required if pricingModel is set to TIME_OF_USE.  Defines the time zone to use for calculation of the time of use thresholds. Defaults to AEST if absent",
                         "enum": ["LOCAL",
                             "AEST"
                         ]
@@ -894,6 +894,7 @@
                 "items": {
                     "type": "object",
                     "required": ["displayName", "type", "methodUType"],
+                    "x-conditional": ["percentOfBill", "percentOfUse", "fixedAmount", "percentOverThreshold"],
                     "properties": {
                         "displayName": {
                             "type": "string",
@@ -1236,6 +1237,7 @@
                                     "type": "array",
                                     "items": {
                                         "type": "object",
+                                        "required": ["days"],
                                         "properties": {
                                             "days": {
                                                 "type": "object",
@@ -1307,6 +1309,13 @@
                             "type": "string",
                             "x-cds-type": "AmountString",
                             "description": "The amount of access charge for the tariff period, in dollars per day exclusive of GST."
+                        },
+                        "timeZone": {
+                            "type": "string",
+                            "description": "Specifies the charge specific time zone for calculation of the time of use thresholds. If absent, timezone value in EnergyPlanContract is assumed.",
+                            "enum": ["LOCAL",
+                                "AEST"
+                            ]
                         },
                         "rateBlockUType": {
                             "type": "string",
@@ -1666,8 +1675,7 @@
                     "lastUpdateDateTime",
                     "distributionLossFactor",
                     "relatedParticipants",
-                    "location",
-                    "meters"
+                    "location"
                 ],
                 "properties": {
                     "servicePointId": {
@@ -1955,8 +1963,7 @@
                             "type": "object",
                             "required": [
                                 "meterId",
-                                "specifications",
-                                "registers"
+                                "specifications"
                             ],
                             "properties": {
                                 "meterId": {
@@ -3758,7 +3765,7 @@
 			"oldest-date": {
 				"name": "oldest-date",
 				"in": "query",
-				"description": "Constrain the request to records with effective date at or after this date. If absent defaults to newest-date minus 24 months days.  Format is aligned to DateString common type",
+				"description": "Constrain the request to records with effective date at or after this date. If absent defaults to newest-date minus 24 months.  Format is aligned to DateString common type",
 				"required": false,
 				"schema": {
 					"type": "string"

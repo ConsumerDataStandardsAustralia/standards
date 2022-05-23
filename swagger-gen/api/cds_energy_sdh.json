@@ -283,8 +283,7 @@
                     "lastUpdateDateTime",
                     "distributionLossFactor",
                     "relatedParticipants",
-                    "location",
-                    "meters"
+                    "location"
                 ],
                 "properties": {
                     "servicePointId": {
@@ -572,8 +571,7 @@
                             "type": "object",
                             "required": [
                                 "meterId",
-                                "specifications",
-                                "registers"
+                                "specifications"
                             ],
                             "properties": {
                                 "meterId": {
@@ -1191,7 +1189,7 @@
 			"oldest-date": {
 				"name": "oldest-date",
 				"in": "query",
-				"description": "Constrain the request to records with effective date at or after this date. If absent defaults to newest-date minus 24 months days.  Format is aligned to DateString common type",
+				"description": "Constrain the request to records with effective date at or after this date. If absent defaults to newest-date minus 24 months.  Format is aligned to DateString common type",
 				"required": false,
 				"schema": {
 					"type": "string"
