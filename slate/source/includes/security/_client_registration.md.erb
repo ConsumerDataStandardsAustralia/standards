@@ -215,11 +215,6 @@ Participants **MUST** support, at a minimum, the following ID Token algorithms:
 
 ### Registration Validation
 
-```diff
-Added the following requirement:
-+ Data Holders MUST ignore unsupported authorisation scopes presented in the SSA for the creation and update of client registrations.
-```
-
 Validation and use of the JWT and the claims described above **MUST** be performed in accordance with **[[JWT]](#nref-JWT)**.
 
 SSA JWT signatures **MUST** be verified against the associated JWK published at the CDR Register [JWKS endpoint](#get-jwks).

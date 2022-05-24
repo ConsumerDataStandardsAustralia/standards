@@ -4,6 +4,7 @@ The following table lists the changes made to these standards in reverse date or
 
 |Change Date|Version|Description|Detail Of change|
 |-----------|-------|-----------|----------------|
+|TBA| 1.18.0 | Draft release | Draft release | 
 |23/05/2022| 1.17.0 | Changes arising from Decision 237 (Maintenance Iteration 10) | See [release notes](includes/releasenotes/releasenotes.1.17.0.html) and [Decision 237](https://github.com/ConsumerDataStandardsAustralia/standards/issues/237) for details | 
 |22/03/2022| 1.16.1 | Minor errata and documentation fixes.  Update of swagger files to OAS3 | See [release notes](includes/releasenotes/releasenotes.1.16.1.html) for details |
 |04/02/2022| 1.16.0 | Changes arising from Decision 222 (Insights and Trusted Adviser Disclosure Consents CX Standards) | See [release notes](includes/releasenotes/releasenotes.1.16.0.html), [Decision 222](https://github.com/ConsumerDataStandardsAustralia/standards/issues/222) for details |

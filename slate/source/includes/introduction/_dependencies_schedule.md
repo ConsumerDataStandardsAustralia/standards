@@ -1,10 +1,5 @@
 ## Register Dependency Schedule
 
-```diff
-+ Added Register dependency schedule table to differentiate Register delivery from Participant future dated obligations
-+ Added Get Data Holder Brands Summary API to the dependency schedule
-```
-
 The Register APIs dependency schedule specifies the latest dates the CDR Register can release API versions. Delivery past these dates may impact the ability for data holders and data recipients to meet their future dated obligations.
 
 

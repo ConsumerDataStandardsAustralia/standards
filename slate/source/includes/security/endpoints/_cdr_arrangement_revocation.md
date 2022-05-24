@@ -31,12 +31,6 @@ Data Holders and Data Recipient Software Products MUST implement a CDR Arrangeme
 
 <br/>
 
-```diff
-
-Corrected documentation to include CDR Arrangement Form Parameter method and CDR Arrangement JWT method description. This was previously omitted.
-
-```
-
 **CDR Arrangement Form Parameter method**
 
 The request **MUST** include the following parameters using the ``application/x-www-form-urlencoded`` format in the HTTP request entity-body:
@@ -104,10 +98,6 @@ Authorization: Bearer eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNDU2In0.ey
 {
   "cdr_arrangement_id": "5a1bf696-ee03-408b-b315-97955415d1f0"
 }
-```
-
-```diff
-Updated Data Recipient end point non-normative example `alg` field from HS256 to PS256
 ```
 
 
