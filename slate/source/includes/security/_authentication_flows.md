@@ -86,7 +86,8 @@ Additional requirements and guidelines for this flow are contained in the [Consu
 <a id="authorization-code-flow"></a>
 ### OIDC Authorization Code Flow
 
-From July 4th 2022,
+From July 4th 2022:
+
 * Data Holders **MAY** support OIDC Authorization Code Flow according to **[[FAPI-1.0-Advanced]](#nref-FAPI-1-0-Advanced)**
 * Data Recipient Software Products **MAY** use OIDC Authorization Code Flow according to **[[FAPI-1.0-Advanced]](#nref-FAPI-1-0-Advanced)** if the Data Holder supports it.
 
