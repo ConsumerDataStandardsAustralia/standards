@@ -47,6 +47,8 @@ This release addresses the following Decision Proposals published on [Standards]
 |------|-----------|----|
 | Profile scope data language link | [**Standards Maintenance #511**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/511): Fixed the link in the "OpenID Connect End-User Data" section linking to the CX Data Language: Profile Scope section. Addresses [Issue 511 comment](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/511#issuecomment-1135390550). | [Authorisation Scopes](../../#authorisation-scopes) |
 | Formatting for Authorisation Code Flow | [**Standards Maintenance #511**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/511): Corrected the formatting of a bullet point list in the Authorisation Code Flow section obligations. Addresses [Issue 511 comment](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/511#issuecomment-1131001514). | [Authentication Flows](../../#authentication-flows) |
+| Formatting for Mandatory Fields | [**Standards Maintenance #511**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/511): Corrected the formatting of a bullet point list in the Array Conventions' Mandatory Fields section. Addresses [Issue 511 comment](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/511#issuecomment-1138437892). | [Payload Conventions: Array Conventions - Mandatory Fields](../../#yload-conventions) |
+
 
 ## Consumer Experience
 
