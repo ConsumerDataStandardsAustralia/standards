@@ -54,7 +54,7 @@ Host: www.holder.com.au
 
 > Non-Normative Example
 > This example demonstrates how an ADR may send a staged authorisation request (using PAR) in the back-channel to the Data Holder
-> This example demonstrates a FAPI 1.0 Final compliant authorisation request using PAR, PKCE and JARM
+> This example demonstrates a FAPI 1.0 Final compliant authorisation request using the OIDC Hybrid Flow, PAR, PKCE and JARM
 ```
 ## Request
 

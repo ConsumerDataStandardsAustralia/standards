@@ -2,6 +2,19 @@
 
 > Non-Normative Example
 
+```diff
+Updated non-normative example.
+
+Updated parameters:
+response_types_supported
+response_modes_supported
+
+Added PKCE and JARM parameters:
++ code_challenge_methods_supported
++ authorization_signing_alg_values_supported
+
+```
+
 ```
 ## Request
 
@@ -22,8 +35,8 @@ Content-Type: application/json
   "registration_endpoint": "https://www.dh.com.au/register",
   "jwks_uri": "https://www.dh.com.au/jwks",
   "scopes_supported": ["openid", "profile", "..."],
-  "response_types_supported": ["code id_token"],
-  "response_modes_supported": ["fragment"],
+  "response_types_supported": ["code id_token", "code"],
+  "response_modes_supported": ["fragment", "jwt"],
   "grant_types_supported": ["authorization_code", "client_credentials", "urn:openid:params:modrna:grant-type:backchannel_request"],
   "acr_values_supported": ["urn:cds.au:cdr:2","urn:cds.au:cdr:3"],
   "subject_types_supported": ["pairwise"],
@@ -36,7 +49,8 @@ Content-Type: application/json
   "token_endpoint_auth_methods_supported": ["private_key_jwt"],
   "tls_client_certificate_bound_access_tokens": true,
   "claims_supported": ["name", "given_name", "family_name", "acr", "auth_time", "sub", "refresh_token_expires_at", "sharing_expires_at"],
-  "code_challenge_methods_supported": "S256"
+  "code_challenge_methods_supported": "S256",
+  "authorization_signing_alg_values_supported": ["ES256", "PS256"]
 }
 ```
 

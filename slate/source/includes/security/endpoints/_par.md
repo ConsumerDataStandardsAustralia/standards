@@ -2,6 +2,7 @@
 ### Pushed Authorisation End Point
 
 > Non-Normative Example
+> Utilising PAR Draft 01 specification and OIDC Hybrid Flow
 
 
 > Request
@@ -60,12 +61,85 @@ Cache-Control: no-cache, no-store
 
 ```
 ## This is used by the ADR in the subsequent authorisation request as follows
-## (note that until PAR is an RFC standard, the mandatory oAuth parameters as
-## per FAPI R/W for confidential clients must be replayed in the request URL):
+## (note this example is pre-RFC using Draft 01 of the PAR standard, hence it includes 
+## the mandatory oAuth parameters as per FAPI R/W for confidential clients must be 
+## replayed in the request URL):
 
 GET /authorise?client_id=s6BhdRkqt3&
    response_type=code%20id_token&
    scope=openid%20profile%20bank:accounts.basic:read%20bank:accounts.detail:read&
+   request_uri=urn%3Adata.holder.com.au%3Abwc4JK-ESC0w8acc191e-Y1LTC2
+HTTP/1.1
+Host: data.holder.com.au
+```
+
+
+> Non-Normative Example
+> Utilising FAPI 1.0 Final, PAR RFC 9126, PKCE and Authorization Code Flow
+
+
+> Request
+
+```
+POST /par HTTP/1.1
+     Host: data.holder.com.au
+     Content-Type: application/x-www-form-urlencoded
+
+request=eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyMyJ9.ey...
+```
+
+> Decoded Request
+
+```
+{
+  "iss": "s6BhdRkqt3",
+  "exp": 1516239322,
+  "aud": "https://www.recipient.com.au",
+  "response_type": "code",
+  "response_mode": "jwt",
+  "client_id": "s6BhdRkqt3",
+  "redirect_uri": "https://www.recipient.com.au/coolstuff",
+  "scope": "openid profile bank:accounts.basic:read
+            bank:accounts.detail:read",
+  "nonce": "n-0S6_WzA2Mj",
+  "state": "af0ifjsldkj",
+  "claims": {
+    "sharing_duration": 7776000,
+    "cdr_arrangement_id": "02e7c9d9-cfe7-4c3e-8f64-e91173c84ecb",
+    "id_token": {
+      "acr": {
+        "essential": true,
+        "values": ["urn:cds.au:cdr:3"]
+      }
+    },
+    "userinfo": {
+      "given_name": null,
+      "family_name": null
+    }
+  },
+  "code_challenge": "",
+  "code_challenge_method": "S256"
+}
+```
+
+> Response
+
+```
+HTTP/1.1 201 Created
+Content-Type: application/json
+Cache-Control: no-cache, no-store
+{
+  "request_uri": "urn:data.holder.com.au:bwc4JK-ESC0w8acc191e-Y1LTC2",
+  "expires_in": 3600
+}
+```
+> Authorise
+
+```
+## This is used by the ADR in the subsequent authorisation request as follows
+## (this example uses PAR RFC 9126 and Authorization Code Flow):
+
+GET /authorise?client_id=s6BhdRkqt3&
    request_uri=urn%3Adata.holder.com.au%3Abwc4JK-ESC0w8acc191e-Y1LTC2
 HTTP/1.1
 Host: data.holder.com.au
