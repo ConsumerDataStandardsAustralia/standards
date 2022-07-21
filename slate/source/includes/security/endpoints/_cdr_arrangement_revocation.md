@@ -132,6 +132,7 @@ This end point will be implemented according to the following:
 * Data Recipient Software Products **MUST NOT** reject requests including the `cdr_arragement_id` as a form parameter. 
 * If the `cdr_arrangement_id` is presented as a form parameter, Data Recipient Software Products **SHOULD** validate it is identical to the `cdr_arrangement_id` presented in the "CDR Arrangement JWT".
 * **From November 15th 2022**, if the `cdr_arrangement_id` is presented as a form parameter, Data Recipient Software Products **MUST** validate it is identical to the `cdr_arrangement_id` presented in the "CDR Arrangement JWT".
+* **From November 15th 2022**, if the Self-Signed JWT claims are presented in the "CDR Arrangement JWT", Data Recipient Software Products **MUST** validate in accordance with Data Holders calling Data Recipients using [Self-Signed JWT Client Authentication](#self-signed-jwt-client-authentication).
 
 **Response Codes**
 
