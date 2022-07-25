@@ -2,7 +2,7 @@
   "openapi": "3.0.3",
   "info": {
     "title": "CDR Participant Discovery API",
-    "version": "1.17.0"
+    "version": "1.18.0"
   },
   "servers": [
     {
@@ -314,7 +314,7 @@
           "Register"
         ],
         "summary": "Get Software Statement Assertion (SSA)",
-        "description": "Get a Software Statement Assertion (SSA) for a software product on the CDR Register to be used for Dynamic Client Registration with a Data Holder Brand.\n\nObsolete versions: [v2](includes/obsolete/get-software-statement-assertion-v2.html)",
+        "description": "Get a Software Statement Assertion (SSA) for a software product on the CDR Register to be used for Dynamic Client Registration with a Data Holder Brand.\n\nObsolete versions: [v1](includes/obsolete/get-software-statement-assertion-v1.html), [v2](includes/obsolete/get-software-statement-assertion-v2.html)",
         "operationId": "GetSoftwareStatementAssertion",
         "parameters": [
           {
