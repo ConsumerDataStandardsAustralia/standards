@@ -17,12 +17,12 @@ Release notes for version v1.18.0 of the [CDR Standards](../../index.html).
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
+- [Standards Maintenance Issue 510: Register API error codes need to be aligned with the CDS standardised error codes](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/510)
 
 
 ### Decision Proposals
 
 This release addresses the following Decision Proposals published on [Standards](https://github.com/ConsumerDataStandardsAustralia/standards/issues):
-
 
 
 
@@ -52,3 +52,9 @@ This release addresses the following Decision Proposals published on [Standards]
 |------|-----------|----|
 | | | |
 
+
+## Known Issues
+
+|Change|Description|Link|
+|------|-----------|----|
+| Future improvements | [**Standards Maintenance #510**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/510): Added future improvement Register API error codes need to be aligned with the CDS standardised error codes | [Known Issues](../../index.html#known-issues) |
