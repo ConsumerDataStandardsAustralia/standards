@@ -125,9 +125,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 
 
-<h2 class="schema-toc" id="tocSresponseerrorlist">ResponseErrorList</h2>
+<h2 id="tocSresponseerrorlist">ResponseErrorList</h2>
 
 <a id="schemacdr-participant-discovery-apiresponseerrorlist"></a>
+
 
 ```json
 {
@@ -149,7 +150,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |---|---|---|---|
 |errors|[[Error](#schemacdr-participant-discovery-apierror)]|mandatory|none|
 
-<h2 class="schema-toc" id="tocSerror">Error</h2>
+<h2 id="tocSerror">Error</h2>
 
 <a id="schemacdr-participant-discovery-apierror"></a>
 
