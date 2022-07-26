@@ -93,7 +93,8 @@
             "in": "header",
             "description": "The version of the API end point requested by the client. Must be set to a positive integer.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "default": "1"
             }
           },
           {
@@ -337,7 +338,8 @@
             "in": "header",
             "description": "The version of the API end point requested by the client. Must be set to a positive integer.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "default": "1"
             }
           },
           {
@@ -491,7 +493,8 @@
             "in": "header",
             "description": "The version of the API end point requested by the client. Must be set to a positive integer.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "default": "1"
             }
           },
           {
@@ -600,7 +603,8 @@
             "in": "header",
             "description": "The version of the API end point requested by the client. Must be set to a positive integer.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "default": "1"
             }
           },
           {
@@ -709,7 +713,8 @@
             "in": "header",
             "description": "The version of the API end point requested by the client. Must be set to a positive integer.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "default": "1"
             }
           },
           {
@@ -818,7 +823,8 @@
             "in": "header",
             "description": "The version of the API end point requested by the client. Must be set to a positive integer.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "default": "1"
             }
           },
           {
