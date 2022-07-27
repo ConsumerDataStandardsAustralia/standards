@@ -17,6 +17,7 @@ Release notes for version v1.18.0 of the [CDR Standards](../../index.html).
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
+- [Standards Maintenance Issue 472: Modify Energy Plans structure to allow Time of Use based Controlled Load rates](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/472)
 
 
 ### Decision Proposals
@@ -36,7 +37,7 @@ This release addresses the following Decision Proposals published on [Standards]
 
 |Change|Description|Link|
 |------|-----------|----|
-| | | |
+| Energy schema | [**Standards Maintenance #472**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/472) Made EnergyPlanControlledLoad into an array and updated structure to allow representation of time of use based rates. | [Energy Schema](../../#energy-apis) |
 
 
 ## Information Security Profile
