@@ -23,7 +23,7 @@ This release addresses the following change requests raised on [Standards Mainte
 
 This release addresses the following Decision Proposals published on [Standards](https://github.com/ConsumerDataStandardsAustralia/standards/issues):
 
-
+- [Standards Maintenance Issue 514: Get Usage For ... Shared Responsibility APIs Payload size](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/514)
 
 
 ## High Level Standards
@@ -36,7 +36,7 @@ This release addresses the following Decision Proposals published on [Standards]
 
 |Change|Description|Link|
 |------|-----------|----|
-| | | |
+| Energy schema | [**Standards Maintenance #514**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/514) Made changes to `EnergyUsageRead` structure of both primary and secondary data holder to optimise sharing of large volume of interval read data. The change also includes adding a new `interval-reads` query parameter to usage APIs. | [Energy Schema](../../#energy-apis) |
 
 
 ## Information Security Profile
