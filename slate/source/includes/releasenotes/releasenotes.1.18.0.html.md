@@ -30,7 +30,7 @@ This release addresses the following Decision Proposals published on [Standards]
 
 |Change|Description|Link|
 |------|-----------|----|
-| | | |
+| Array Conventions - Payload Conventions | Fixed the HTML rendering for the Markdown bullet point list in the array conventions | [Payload Conventions](../../#payload-conventions)|
 
 ## API End Points
 
