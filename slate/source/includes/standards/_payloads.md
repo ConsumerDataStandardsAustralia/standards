@@ -223,7 +223,7 @@ Unless otherwise stated within the data standards, arrays are explicitly express
 In objects where an array field is defined as having 0..n values, the array field must be explicitly expressed as an array in the payload, even if it only contains one item or is empty.
 
 ```diff
-Fixed bullet point list to render correctly.
+Fixed HTML rendering of the bullet point list 
 ```
 
 This applies equally for object arrays. Where a field is defined as an array value, the response should be:
