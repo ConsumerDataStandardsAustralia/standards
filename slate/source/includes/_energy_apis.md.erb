@@ -10,4 +10,15 @@ This specification defines the APIs for Data Holders exposing Energy endpoints.
 <tr><td><a href='./includes/swagger/cds_energy.yaml'>Energy OpenAPI Specification (YAML)</a></td></tr>
 </table>
 
+```diff
+Converted `EnergyPlanSolarFeedInTariff.timeVaryingTariffs.timeVariations.days`` and `EnergyPlanTariffPeriod.demandCharges.days` into ENUM with following values:
++ ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT", "PUBLIC_HOLIDAYS"]
+
+Update ENUM value for EnergyPlanTariffPeriod.timeOfUseRates.timeOfUse.days
+from:
+- ["SUNDAY", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "BUSINESS_DAYS"]
+to:
++ ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT", "PUBLIC_HOLIDAYS"]
+```
+
 <%= partial "includes/cds_energy.md" %>

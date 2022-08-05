@@ -23,7 +23,7 @@ This release addresses the following change requests raised on [Standards Mainte
 
 This release addresses the following Decision Proposals published on [Standards](https://github.com/ConsumerDataStandardsAustralia/standards/issues):
 
-
+- [Standards Maintenance Issue 502: Review ENUM values for representation of days in Energy Standards](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/502)
 
 
 ## High Level Standards
@@ -36,7 +36,7 @@ This release addresses the following Decision Proposals published on [Standards]
 
 |Change|Description|Link|
 |------|-----------|----|
-| | | |
+| Energy schema | [**Standards Maintenance #502**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/502) Converted `EnergyPlanSolarFeedInTariff.timeVaryingTariffs.timeVariations.days` and `EnergyPlanTariffPeriod.demandCharges.days` into ENUM. Updated ENUM values for `EnergyPlanTariffPeriod.timeOfUseRates.timeOfUse.days` to the same as the other `days` fields. | [Energy Schema](../../#energy-apis) |
 
 
 ## Information Security Profile
