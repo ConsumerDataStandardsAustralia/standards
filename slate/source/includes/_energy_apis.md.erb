@@ -10,4 +10,12 @@ This specification defines the APIs for Data Holders exposing Energy endpoints.
 <tr><td><a href='./includes/swagger/cds_energy.yaml'>Energy OpenAPI Specification (YAML)</a></td></tr>
 </table>
 
+```diff
+Converted the type of following fields to TimeString:
+  `timeOfUseRates.timeOfUse.startTime`
+  `timeOfUseRates.timeOfUse.endTime`
+  `demandCharges.startTime`
+  `demandCharges.endTime`
+```
+
 <%= partial "includes/cds_energy.md" %>
