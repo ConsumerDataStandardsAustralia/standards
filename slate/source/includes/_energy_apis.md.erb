@@ -10,4 +10,15 @@ This specification defines the APIs for Data Holders exposing Energy endpoints.
 <tr><td><a href='./includes/swagger/cds_energy.yaml'>Energy OpenAPI Specification (YAML)</a></td></tr>
 </table>
 
+```diff
+Added notes to clarify intent of Get Agreed Payment Schedule API.
+
+Made `EnergyPaymentScheduleResponse` into an array.
+
+Added following to the `EnergyPaymentSchedule` structure:
++digitalWallet (object)
+
+Updated description of `isTokenised` by removing conditional statements related to `bsb` and `accountNumber` fields.
+```
+
 <%= partial "includes/cds_energy.md" %>
