@@ -17,7 +17,7 @@ Release notes for version v1.18.0 of the [CDR Standards](../../index.html).
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
-
+- [Standards Staging Issue 192: Incorrect property name in EnergyServicePointListResponse definition](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/192)
 
 ### Decision Proposals
 
@@ -36,7 +36,7 @@ This release addresses the following Decision Proposals published on [Standards]
 
 |Change|Description|Link|
 |------|-----------|----|
-| | | |
+| Energy schema | [**Standards Staging #192**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/192) Fixed property value name in EnergyServicePointListResponse from `me` to `meta`. | [Energy Schema](../../#energy-apis) |
 
 
 ## Information Security Profile
