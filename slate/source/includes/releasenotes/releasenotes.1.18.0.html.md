@@ -17,6 +17,7 @@ Release notes for version v1.18.0 of the [CDR Standards](../../index.html).
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
+- [Standards Staging Issue 200: Update documentation clarifying sort date for energy invoices](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/200)
 
 
 ### Decision Proposals
@@ -36,7 +37,7 @@ This release addresses the following Decision Proposals published on [Standards]
 
 |Change|Description|Link|
 |------|-----------|----|
-| | | |
+| Energy schema | [**Standards Staging #200**](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/200): Update the description of EnergyInvoice in EnergyInvoiceListResponse to clarify the sorting is done by issueDate | [Energy Schema](../../#energy-apis) |
 
 
 ## Information Security Profile
