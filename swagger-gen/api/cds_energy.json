@@ -61,7 +61,7 @@
                 "required": [
                     "data",
                     "links",
-                    "me"
+                    "meta"
                 ],
                 "properties": {
                     "data": {
@@ -244,7 +244,19 @@
                 ],
                 "properties": {
                     "data": {
-                        "$ref": "#/components/schemas/EnergyPaymentSchedule"
+                        "type": "object",
+                        "required": [
+                            "paymentSchedules"
+                        ],
+                        "properties": {
+                            "paymentSchedules": {
+                                "description": "Array may be empty if no payment schedule exist",
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/EnergyPaymentSchedule"
+                                }
+                            }
+                        }
                     },
                     "links": {
                         "$ref": "#/components/schemas/Links"
@@ -376,7 +388,7 @@
                         ],
                         "properties": {
                             "invoices": {
-                                "description": "Array of invoices sorted by date in descending order",
+                                "description": "Array of invoices sorted by issue date in descending order",
                                 "type": "array",
                                 "items": {
                                     "$ref": "#/components/schemas/EnergyInvoice"
@@ -698,7 +710,7 @@
                     },
                     "variation": {
                         "type": "string",
-                        "description": "Free text description of price variation policy and conditions for the contract.  Mandatory if isFixed is true"
+                        "description": "Free text description of price variation policy and conditions for the contract.  Mandatory if `isFixed` is false"
                     },
                     "onExpiryDescription": {
                         "type": "string",
@@ -1386,20 +1398,22 @@
                                         "type": "object",
                                         "required": ["days"],
                                         "properties": {
-                                            "days": {
-                                                "type": "object",
-                                                "required": ["weekdays", "weekend"],
-                                                "properties": {
-                                                    "weekdays": {
-                                						"description": "Indicates whether the tariff is applicable Monday to Friday",
-                                						"type": "boolean"
-                                					},
-                                                    "weekend": {
-                                						"description": "Indicates whether the tariff is applicable Saturday and Sunday",
-                                						"type": "boolean"
-                                					}
-                                                }
-                                            },
+                                                "days": {
+                                                    "description": "The days that the tariff applies to. At least one entry required",
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string",
+                                                        "enum": ["SUN",
+                                                            "MON",
+                                                            "TUE",
+                                                            "WED",
+                                                            "THU",
+                                                            "FRI",
+                                                            "SAT",
+                                                            "PUBLIC_HOLIDAYS"
+                                                        ]
+                                                    }
+                                                },
                                             "startTime": {
                                                 "description": "The beginning of the time period per day for which the tariff applies.  If absent assumes start of day (ie. midnight)",
                                                 "type": "string",
@@ -1587,24 +1601,26 @@
                                                     "type": "array",
                                                     "items": {
                                                         "type": "string",
-                                                        "enum": ["SUNDAY",
-                                                            "MONDAY",
-                                                            "TUESDAY",
-                                                            "WEDNESDAY",
-                                                            "THURSDAY",
-                                                            "FRIDAY",
-                                                            "SATURDAY",
-                                                            "BUSINESS_DAYS"
+                                                        "enum": ["SUN",
+                                                            "MON",
+                                                            "TUE",
+                                                            "WED",
+                                                            "THU",
+                                                            "FRI",
+                                                            "SAT",
+                                                            "PUBLIC_HOLIDAYS"
                                                         ]
                                                     }
                                                 },
                                                 "startTime": {
                                                     "type": "string",
-                                                    "description": "Start of the period in HHMM format using 24 hour clock format"
+                                                    "x-cds-type": "TimeString",
+                                                    "description": "Start of the period"
                                                 },
                                                 "endTime": {
                                                     "type": "string",
-                                                    "description": "End of the period in HHMM format using 24 hour clock format"
+                                                    "x-cds-type": "TimeString",
+                                                    "description": "End of the period"
                                                 }
                                             }
                                         }
@@ -1663,29 +1679,28 @@
                                     },
                                     "startTime": {
                                         "type": "string",
-                                        "description": "Start of the period in HHMM format using 24 hour clock format"
+                                        "x-cds-type": "TimeString",
+                                        "description": "Start of the period"
                                     },
                                     "endTime": {
                                         "type": "string",
-                                        "description": "End of the period in HHMM format using 24 hour clock format"
+                                        "x-cds-type": "TimeString",
+                                        "description": "End of the period"
                                     },
                                     "days": {
-                                        "description": "Object containing demand tariff by day of week",
-                                        "type": "object",
-                                        "required": ["weekdays", "saturday", "sunday"],
-                                        "properties": {
-                                            "weekdays": {
-                        						"description": "Indicates the demand tariff is applicable on weekdays",
-                        						"type": "boolean"
-                        					},
-                                            "saturday": {
-                        						"description": "Indicates the demand tariff is applicable on Saturdays",
-                        						"type": "boolean"
-                        					},
-                                            "sunday": {
-                        						"description": "Indicates the demand tariff is applicable on Sundays",
-                        						"type": "boolean"
-                        					}
+                                        "description": "The days that the demand tariff applies to",
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string",
+                                            "enum": ["SUN",
+                                                "MON",
+                                                "TUE",
+                                                "WED",
+                                                "THU",
+                                                "FRI",
+                                                "SAT",
+                                                "PUBLIC_HOLIDAYS"
+                                            ]
                                         }
                                     },
                                     "minDemand": {
@@ -1928,7 +1943,7 @@
                         "type": "array",
                         "items": {
                             "type": "object",
-                            "required": ["party", "role", "location"],
+                            "required": ["party", "role"],
                             "properties": {
 
                                 "party": {
@@ -2748,7 +2763,8 @@
                 "x-conditional": [
                     "cardDebit",
                     "directDebit",
-                    "manualPayment"
+                    "manualPayment",
+                    "digitalWallet"
                 ],
                 "properties": {
                     "amount": {
@@ -2762,7 +2778,8 @@
                         "enum": [
                             "cardDebit",
                             "directDebit",
-                            "manualPayment"
+                            "manualPayment",
+                            "digitalWallet"
                         ]
                     },
                     "cardDebit": {
@@ -2815,7 +2832,7 @@
                         ],
                         "properties": {
                             "isTokenised": {
-                                "description": "Flag indicating that the account details are tokenised and cannot be shared.  False if absent.  If false then bsb and accountNumber should not be expected to be included",
+                                "description": "Flag indicating that the account details are tokenised and cannot be shared.  False if absent",
                                 "type": "boolean"
                             },
                             "bsb": {
@@ -2825,6 +2842,59 @@
                             "accountNumber": {
                                 "description": "The unmasked account number for the account to be debited. Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces.  Is required if isTokenised is absent or false",
                                 "type": "string"
+                            },
+                            "paymentFrequency": {
+                                "description": "The frequency that payments will occur.  Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)",
+                                "type": "string",
+                                "x-cds-type": "ExternalRef"
+                            },
+                            "calculationType": {
+                                "description": "The mechanism by which the payment amount is calculated.  Explanation of values are as follows:<br/><ul><li>**STATIC** - Indicates a consistent, static amount, per payment</li><li>**BALANCE** - Indicates that the outstanding balance for the account is paid per period</li><li>**CALCULATED** - Indicates that the payment amount is variable and calculated using a pre-defined algorithm</li></ul>",
+                                "type": "string",
+                                "enum": [
+                                    "STATIC",
+                                    "BALANCE",
+                                    "CALCULATED"
+                                ]
+                            }
+                        }
+                    },
+                    "digitalWallet": {
+                        "description": "Represents a regular payment from a digital wallet. Mandatory if paymentScheduleUType is set to digitalWallet",
+                        "type": "object",
+                        "required": [
+                            "name",
+                            "identifier",
+                            "type",
+                            "provider",
+                            "paymentFrequency",
+                            "calculationType"
+                        ],
+                        "properties": {
+                            "name": {
+                                "type": "string",
+                                "description": "The name assigned to the digital wallet by the owner of the wallet, else the display name provided by the digital wallet provider"
+                            },
+                            "identifier": {
+                                "type": "string",
+                                "description": "The identifier of the digital wallet (dependent on type)"
+                            },
+                            "type": {
+                                "type": "string",
+                                "description": "The type of the digital wallet identifier",
+                                "enum": [
+                                  "EMAIL",
+                                  "CONTACT_NAME",
+                                  "TELEPHONE"
+                                ]
+                            },
+                            "provider": {
+                                "type": "string",
+                                "description": "The provider of the digital wallet",
+                                "enum": [
+                                  "PAYPAL_AU",
+                                  "OTHER"
+                                ]
                             },
                             "paymentFrequency": {
                                 "description": "The frequency that payments will occur.  Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)",
@@ -5737,7 +5807,7 @@
 			"get": {
 				"summary": "Get Agreed Payment Schedule",
 				"operationId": "getPaymentSchedule",
-				"description": "Obtain the agreed payment schedule and details, if any, for a specific energy account",
+				"description": "Obtain the agreed payment schedule and details, if any, for a specific energy account. \n\nSome general notes about this end point:\n\n <ul><li>This API describes how the consumer has elected to pay for their account</li><li>Payments initiated by the consumer are classified as manual payments. The billing frequency is captured for manual payments. The consumer may choose to pay on a different schedule/frequency. The payment method and frequency is not captured for manual payments</li><li>Payments that can be initiated by the retailer, based on a consumer's preferences and permission, include payments based on a direct debit, card debit or digital wallet setup. Each of these requires a payment frequency to be provided along with other relevant fields</li><li>Information about payment plans related to debt repayments or arrangements due to hardship is not captured within this API</li></ul>",
                 "x-scopes": [
                     "energy:accounts.paymentschedule:read"
                 ],

@@ -17,6 +17,11 @@ Release notes for version v1.18.0 of the [CDR Standards](../../index.html).
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
+- [Standards Staging Issue 200: Update documentation clarifying sort date for energy invoices](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/200)
+- [Standards Staging Issue 192: Incorrect property name in EnergyServicePointListResponse definition](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/192)
+- [Standards Maintenance Issue 495: Energy - GetAgreedPaymentSchedule API - manualPayment section should have paymentFrequency instead of billFrequency field](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/495)
+- [Standards Maintenance Issue 461: Documentation Improvement: EnergyPlanContract.variation](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/461)
+- [Standards Maintenance Issue 499: Unknown field in Energy Secondary Data Holder OpenAPI spec](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/499)
 - [Standards Maintenance Issue 511: Iteration 11 Holistic Feedback](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/511)
 - [Response payload structure description error](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/494)
 - [Standards Maintenance Issue 497: CommonEmailAddress - address format documentation](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/497)
@@ -30,10 +35,13 @@ This release addresses the following change requests raised on [Standards Mainte
 - [Standards Maintenance Issue 507: FDO for data holders ignoring unsupported authorisation scopes to be set earlier than energy release date](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/507)
 - [Standards Maintenance Issue 481: Provide timeline of when multiple sectors per data holder brand will be supported](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/481)
 
+
 ### Decision Proposals
 
 This release addresses the following Decision Proposals published on [Standards](https://github.com/ConsumerDataStandardsAustralia/standards/issues):
 
+- [Standards Maintenance Issue 505: Representation of time within EnergyPlanDetail Schema](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/505)
+- [Standards Maintenance Issue 502: Review ENUM values for representation of days in Energy Standards](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/502)
 - [Standards Maintenance Issue 514: Get Usage For ... Shared Responsibility APIs Payload size](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/514)
 
 ## Introduction
@@ -47,12 +55,21 @@ This release addresses the following Decision Proposals published on [Standards]
 |Change|Description|Link|
 |------|-----------|----|
 | Response Payload Structure | [**Standards Maintenance #494**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/494): Corrected documentation to refer to the API response, not request. | [Payload Conventions](../../#payload-conventions) |
+| Introduction | Updated the introduction to include correct links to CDR agencies. | [Introduction](../../#introduction) |
+| Informative References | Updated the informative reference for CDR and added new informative references for Treasury, ACCC and the OAIC. | [Introduction](../../#informative-references) |
 | Array Conventions - Payload Conventions | Fixed the HTML rendering for the Markdown bullet point list in the array conventions | [Payload Conventions](../../#payload-conventions)|
 
 ## API End Points
 
 |Change|Description|Link|
 |------|-----------|----|
+| Energy schema | [**Standards Staging #200**](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/200): Update the description of EnergyInvoice in EnergyInvoiceListResponse to clarify the sorting is done by issueDate | [Energy Schema](../../#energy-apis) |
+| Energy schema | [**Standards Staging #192**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/192) Fixed property value name in EnergyServicePointListResponse from `me` to `meta`. | [Energy Schema](../../#energy-apis) |
+| Energy schema | [**Standards Maintenance #505**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/505): Converted `timeOfUseRates.timeOfUse.startTime`, `timeOfUseRates.timeOfUse.endTime`,`demandCharges.startTime` and `demandCharges.endTime` to TimeString type | [Energy Schema](../../#energy-apis) |
+| Energy schema | [**Standards Maintenance #502**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/502) Converted `EnergyPlanSolarFeedInTariff.timeVaryingTariffs.timeVariations.days` and `EnergyPlanTariffPeriod.demandCharges.days` into ENUM. Updated ENUM values for `EnergyPlanTariffPeriod.timeOfUseRates.timeOfUse.days` to the same as the other `days` fields. | [Energy Schema](../../#energy-apis) |
+| Energy schema | [**Standards Maintenance #495**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/495): <ul><li>Added notes to clarify intent of Get Agreed Payment Schedule API</li><li>Made `EnergyPaymentScheduleResponse` into an array</li><li>Added `digitalWallet` structure to `EnergyPaymentSchedule`</li><li>Updated description of `isTokenised` by removing conditional statements for `bsb` and `accountNumber` fields</li></ul> | [Energy Schema](../../#energy-apis) |
+| (Energy) Fix conditional statement for contract variation | [**Standards Maintenance Issue #461**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/461): Corrected the EnergyPlanContract_variation conditional statement such that the `variation` is required if the `isFixed` property is `false`. | [Get Generic Plan Detail](../../#get-generic-plan-detail) and [Get Energy Account Detail](../../#get-energy-account-detail) |
+| (Energy) Fix incorrect required reference in relatedParticipants | [**Standards Maintenance Issue #499**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/499): Corrected an issue with the EnergyServicePointDetail_relatedParticipants object that incorrectly referenced the `location` of a sibling object. This issue occurs in both consumer facing and Energy Secondary DH APIs. | [Get Service Point Detail](../../#get-service-point-detail) |
 | CommonEmailAddress | [**Standards Maintenance #497**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/497): Fixed external reference for email format to be "addr-spec". | [Common APIs](../../#common-apis) |
 | `x-fapi-auth-date` references in resource APIs | [**Standards Maintenance #489**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/489): Corrected the documentation for `x-fapi-auth-date` references. | [Banking APIs](../../#banking-apis) and [Energy APIs](../../#energy-apis)|
 | DCR Non Normative Examples | [**Standards Maintenance #487**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/487): Fixed the URL for DCR examples to remove an extraneous /register/ path component | [DCR APIs](../..//#dcr-apis) |
