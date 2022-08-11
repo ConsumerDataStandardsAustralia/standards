@@ -4,6 +4,13 @@
 
 This specification defines the APIs for Data Holders exposing Energy endpoints.
 
+```diff
+Corrections:
+
+- Changed the conditional statement for EnergyPlanContract_variation such that the field is mandatory if the EnergyPlanContract_isFixed flag is `false`.
+- Removed `location` as a required property. It is included outside of the EnergyServicePointDetail_relatedParticipants object but incorrectly "required" by the sibling object.
+
+```
 
 <table>
 <tr><td><a href='./includes/swagger/cds_energy.json'>Energy OpenAPI Specification (JSON)</a></td></tr>
@@ -19,6 +26,34 @@ Added following to the `EnergyPaymentSchedule` structure:
 +digitalWallet (object)
 
 Updated description of `isTokenised` by removing conditional statements related to `bsb` and `accountNumber` fields.
+
+Corrected description for `x-fapi-auth-date` references
+
+Added the following query parameter to `Get Usage For Service Points`, `Get Bulk Usage` and `Get Usage For Specific Service Points` endpoints:
++ interval-reads
+
+Converted `EnergyUsageRead.intervalRead.intervalReads` into an array of values
+
+Added/Removed the following to EnergyUsageRead structure:
++ readQualities (object)
+- quality (field)
+- value (field)
+
+Made the following conditional:
+* EnergyUsageRead.intervalRead.readIntervalLength
+* EnergyUsageRead.intervalRead.intervalReads
+* EnergyUsageRead.intervalRead.intervalReads.readQualities
+
+Made the EnergyPlanControlledLoad into an array.
+
+Added/Removed the following to EnergyPlanControlledLoad:
++ rateBlockUType (field)
++ startDate (field)
++ endDate (field)
++ singleRate (object)
++ timeOfUseRates (object)
+- dailyCharge (field)
+- period (field)
 ```
 
 <%= partial "includes/cds_energy.md" %>
