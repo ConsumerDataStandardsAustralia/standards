@@ -39,12 +39,17 @@ The request **MUST** include the following parameters using the ``application/x-
 
 **CDR Arrangement JWT method**
 
-The request MUST include the following parameters using the ``application/x-www-form-urlencoded`` format in the HTTP request entity-body:
+The request **MUST** include the following parameters using the application/x-www-form-urlencoded format in the HTTP request entity-body:
 
-* ``cdr_arrangement_jwt``: A signed JWT that includes the ``cdr_arrangement_id``.  
-* ``cdr_arrangement_jwt``: A newly signed JWT with the following parameters in accordance with **[[JWT]](#nref-JWT)**:  
-  * All parameters in accordance with Data Holders calling Data Recipients using [Self-Signed JWT Client Authentication](https://consumerdatastandardsaustralia.github.io/standards/#self-signed-jwt-client-authentication).
+* ``cdr_arrangement_jwt``: A signed JWT that includes the ``cdr_arrangement_id``.
+* ``cdr_arrangement_jwt``: A newly signed JWT with the following parameters in accordance with **[[JWT]](#nref-JWT)**:
   * ``cdr_arrangement_id``: The ID of the arrangement that the client wants to revoke.
+
+```diff
+Changed requirements for Data Holders to advise the CDR Arrangement JWT should include all Self-Signed JWT claims
+```
+
+The ``cdr_arrangement_jwt`` **SHOULD** include all parameters in accordance with Data Holders calling Data Recipients using [Self-Signed JWT Client Authentication](https://consumerdatastandardsaustralia.github.io/standards/#self-signed-jwt-client-authentication).
 
 **Data Holder hosted endpoint**
 
@@ -87,6 +92,7 @@ Host: data.recipient.com.au
 Content-Type: application/x-www-form-urlencoded
 Authorization: Bearer eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNDU2In0.ey ...
 
+  cdr_arrangement_id=5a1bf696-ee03-408b-b315-97955415d1f0&
   cdr_arrangement_jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsImtpZCI6IjEyNDU2In0.ey ...
 
 ## Decoded cdr_arrangement_jwt JWT
@@ -96,10 +102,20 @@ Authorization: Bearer eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNDU2In0.ey
   "kid":"12456"
 }
 {
-  "cdr_arrangement_id": "5a1bf696-ee03-408b-b315-97955415d1f0"
+  "cdr_arrangement_id": "5a1bf696-ee03-408b-b315-97955415d1f0",
+  "iss":"dataholderbrand-123",
+  "sub":"dataholderbrand-123",
+  "aud":"https://data.recipient.com.au/arrangements/revoke",
+  "iat":1516239022,
+  "exp":1516239322,
+  "jti":"dba86502-7cf5-4719-9638-c5339a0ddb06"
 }
 ```
 
+```diff
++ Added November 15th 2022 transition for ADR validation of the cdr_arrangement_id
+Changed requirements to allow Data Holders to additionally send the cdr_arrangement_id as a form parameter
+```
 
 **Data Recipient hosted endpoint**
 
@@ -107,13 +123,16 @@ The location of the Data Recipient Software Product CDR Arrangement Revocation E
 
 This end point will be implemented according to the following:
 
-* Data Recipient Software Products MUST expose their CDR Arrangement Revocation End Point under their `recipient_base_uri` published in their Software Statement Assertion
+* Data Recipient Software Products **MUST** expose their CDR Arrangement Revocation End Point under their `recipient_base_uri` published in their Software Statement Assertion.
 * Data Holders must be authenticated when they call this end point according to the guidance in the Client Authentication section.
-* If the ``cdr_arrangement_id`` is not related to the client making the call it MUST be rejected
-* **From March 31st 2022**, Data Recipients MUST support "CDR Arrangement JWT" method.
-* **Until July 31st 2022**, Data Recipients MUST support both "CDR Arrangement Form Parameter" method and "CDR Arrangement JWT" method presented to their CDR Arrangement Revocation Endpoint.
-* **From July 31st 2022**, Data Recipients MUST only support "CDR Arrangement JWT" method and MUST reject "CDR Arrangement Form Parameter" method.
-
+* If the `cdr_arrangement_id` is not related to the client making the call it **MUST** be rejected.
+* **From March 31st 2022**, Data Recipients **MUST** support the "CDR Arrangement JWT" method.
+* **From July 31st 2022**, Data Holders **MUST** send the `cdr_arrangement_id` using the "CDR Arrangement JWT" method.
+* Data Holders **MAY** additionally send a duplicate of the `cdr_arrangement_id` as a form parameter.
+* Data Recipient Software Products **MUST NOT** reject requests including the `cdr_arragement_id` as a form parameter. 
+* If the `cdr_arrangement_id` is presented as a form parameter, Data Recipient Software Products **SHOULD** validate it is identical to the `cdr_arrangement_id` presented in the "CDR Arrangement JWT".
+* **From November 15th 2022**, if the `cdr_arrangement_id` is presented as a form parameter, Data Recipient Software Products **MUST** validate it is identical to the `cdr_arrangement_id` presented in the "CDR Arrangement JWT".
+* **From November 15th 2022**, if the Self-Signed JWT claims are presented in the "CDR Arrangement JWT", Data Recipient Software Products **MUST** validate in accordance with Data Holders calling Data Recipients using [Self-Signed JWT Client Authentication](#self-signed-jwt-client-authentication).
 
 **Response Codes**
 
