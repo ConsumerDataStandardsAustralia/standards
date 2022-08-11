@@ -190,6 +190,8 @@ This operation may only be called by the CDR Register
 
 <p>This end point allows the ACCC to obtain operational statistics from the Data Holder on the operation of their CDR compliant implementation. The statistics obtainable from this end point are determined by the non-functional requirements for the CDR regime.</p>
 
+<p>This end point is not required to be implemented by the Australian Energy Market Operator, the Australian Energy Regulator or the Department of State administered by the Minister of Victoria administering the National Electricity (Victoria) Act 2005 (Vic).</p>
+
 <p>NOTE: This version must be implemented by <strong>October 1st 2022</strong></p>
 
 <p>Obsolete versions: <a href="includes/obsolete/get-metrics-v1.html">v1</a> <a href="includes/obsolete/get-metrics-v2.html">v2</a>.</p>

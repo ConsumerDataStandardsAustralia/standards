@@ -35,15 +35,16 @@ This release addresses the following change requests raised on [Standards Mainte
 - [Standards Maintenance Issue 491: ID Token algorithm support requirements are ambiguous](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/491)
 - [Standards Maintenance Issue 507: FDO for data holders ignoring unsupported authorisation scopes to be set earlier than energy release date](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/507)
 - [Standards Maintenance Issue 481: Provide timeline of when multiple sectors per data holder brand will be supported](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/481)
+- [Standards Maintenance Issue 505: Representation of time within EnergyPlanDetail Schema](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/505)
+- [Standards Maintenance Issue 502: Review ENUM values for representation of days in Energy Standards](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/502)
+- [Standards Maintenance Issue 514: Get Usage For ... Shared Responsibility APIs Payload size](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/514)
 
 
 ### Decision Proposals
 
 This release addresses the following Decision Proposals published on [Standards](https://github.com/ConsumerDataStandardsAustralia/standards/issues):
 
-- [Standards Maintenance Issue 505: Representation of time within EnergyPlanDetail Schema](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/505)
-- [Standards Maintenance Issue 502: Review ENUM values for representation of days in Energy Standards](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/502)
-- [Standards Maintenance Issue 514: Get Usage For ... Shared Responsibility APIs Payload size](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/514)
+- [Decision Proposal 249 - Maintenance Iteration 11](https://github.com/ConsumerDataStandardsAustralia/standards/issues/249)
 
 ## Introduction
 
@@ -79,6 +80,7 @@ This release addresses the following Decision Proposals published on [Standards]
 | Get Software Statement Assertion (SSA) | [**Standards Maintenance #486**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/486): Added reference to obsolete v1 of the GetSSA API | [Get Software Statement Assertion (SSA)](../../index.html#get-software-statement-assertion-ssa) |
 | CDR Register APIs Endpoint Version Schedule | [**Standards Maintenance #486**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/486): Added version schedule for obsolete v1 of the GetSSA API | [Endpoint Version Schedule](../../includes/endpoint-version-schedule/#cdr-register-apis) |
 | Register APIs | [**Standards Maintenance #481**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/481): Removed constraint that data holder brands only map to a single industry | [Register APIs](../../index.html#register-apis) |
+| Get Metric Applicability | [**Standards Maintenance #515**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/515): Clarified that AEMO, AER and DELWP do not need to implement Get Metrics | [Admin APIs](../../index.html#get-metrics) |
 
 
 ## Information Security Profile
