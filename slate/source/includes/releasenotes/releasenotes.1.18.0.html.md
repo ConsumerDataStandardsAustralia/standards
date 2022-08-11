@@ -17,6 +17,7 @@ Release notes for version v1.18.0 of the [CDR Standards](../../index.html).
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
+- [Standards Maintenance Issue 499: Unknown field in Energy Secondary Data Holder OpenAPI spec](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/499)
 - [Standards Maintenance Issue 511: Iteration 11 Holistic Feedback](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/511)
 - [Standards Maintenance Issue 497: CommonEmailAddress - address format documentation](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/497)
 - [Standards Maintenance Issue 489: v1.15.0 More ambiguity into x-fapi-auth-date not less](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/489)
@@ -51,6 +52,7 @@ This release addresses the following Decision Proposals published on [Standards]
 
 |Change|Description|Link|
 |------|-----------|----|
+| (Energy) Fix incorrect required reference in relatedParticipants | [**Standards Maintenance Issue #499**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/499): Corrected an issue with the EnergyServicePointDetail_relatedParticipants object that incorrectly referenced the `location` of a sibling object. This issue occurs in both consumer facing and Energy Secondary DH APIs. | [Get Service Point Detail](../../#get-service-point-detail) |
 | CommonEmailAddress | [**Standards Maintenance #497**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/497): Fixed external reference for email format to be "addr-spec". | [Common APIs](../../#common-apis) |
 | `x-fapi-auth-date` references in resource APIs | [**Standards Maintenance #489**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/489): Corrected the documentation for `x-fapi-auth-date` references. | [Banking APIs](../../#banking-apis) and [Energy APIs](../../#energy-apis)|
 | DCR Non Normative Examples | [**Standards Maintenance #487**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/487): Fixed the URL for DCR examples to remove an extraneous /register/ path component | [DCR APIs](../..//#dcr-apis) |

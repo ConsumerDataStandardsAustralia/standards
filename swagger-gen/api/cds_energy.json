@@ -1928,7 +1928,7 @@
                         "type": "array",
                         "items": {
                             "type": "object",
-                            "required": ["party", "role", "location"],
+                            "required": ["party", "role"],
                             "properties": {
 
                                 "party": {
