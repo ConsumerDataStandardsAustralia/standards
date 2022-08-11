@@ -388,7 +388,7 @@
                         ],
                         "properties": {
                             "invoices": {
-                                "description": "Array of invoices sorted by date in descending order",
+                                "description": "Array of invoices sorted by issue date in descending order",
                                 "type": "array",
                                 "items": {
                                     "$ref": "#/components/schemas/EnergyInvoice"
