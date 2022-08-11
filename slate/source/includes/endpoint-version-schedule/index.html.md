@@ -40,7 +40,7 @@ These dates may be subject to change depending upon new or changed legislative a
 | **Y22 #3** | 31/08/2022 | 2 |
 | **Legacy FDO** | 16/09/2022 | 1 |
 | **Legacy FDO** | 01/10/2022 | 1 |
-| **Y22 #4** | 15/11/2022 | 0 |
+| **Y22 #4** | 15/11/2022 | 1 |
 | **Legacy FDO** | 30/11/2022 | 3 |
 | **Legacy FDO** | 05/12/2022 | 1 |
 | **Legacy FDO** | 28/02/2023 | 3 |
