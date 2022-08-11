@@ -375,9 +375,10 @@ paths:
         schema:
           type: string
         style: simple
-      - description: The time when the customer last logged in to the data recipient.
-          Required for all resource calls (customer present and unattended). Not to
-          be included for unauthenticated calls.
+      - description: The time when the customer last logged in to the Data Recipient
+          Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required
+          for all resource calls (customer present and unattended). Not required for
+          unauthenticated calls.
         explode: false
         in: header
         name: x-fapi-auth-date
@@ -550,9 +551,10 @@ paths:
         schema:
           type: string
         style: simple
-      - description: The time when the customer last logged in to the data recipient.
-          Required for all resource calls (customer present and unattended). Not to
-          be included for unauthenticated calls.
+      - description: The time when the customer last logged in to the Data Recipient
+          Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required
+          for all resource calls (customer present and unattended). Not required for
+          unauthenticated calls.
         explode: false
         in: header
         name: x-fapi-auth-date
@@ -710,6 +712,20 @@ paths:
           type: string
         style: form
         x-cds-type: DateString
+      - description: Type of interval reads. Any one of the valid values for this
+          field can be supplied. If absent defaults to NONE
+        explode: true
+        in: query
+        name: interval-reads
+        required: false
+        schema:
+          default: NONE
+          enum:
+          - NONE
+          - MIN_30
+          - FULL
+          type: string
+        style: form
       - description: Page of results to request (standard pagination)
         explode: true
         in: query
@@ -765,9 +781,10 @@ paths:
         schema:
           type: string
         style: simple
-      - description: The time when the customer last logged in to the data recipient.
-          Required for all resource calls (customer present and unattended). Not to
-          be included for unauthenticated calls.
+      - description: The time when the customer last logged in to the Data Recipient
+          Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required
+          for all resource calls (customer present and unattended). Not required for
+          unauthenticated calls.
         explode: false
         in: header
         name: x-fapi-auth-date
@@ -911,6 +928,20 @@ paths:
       description: Obtain usage data for all service points associated with the customer
       operationId: listUsageBulk
       parameters:
+      - description: Type of interval reads. Any one of the valid values for this
+          field can be supplied. If absent defaults to NONE
+        explode: true
+        in: query
+        name: interval-reads
+        required: false
+        schema:
+          default: NONE
+          enum:
+          - NONE
+          - MIN_30
+          - FULL
+          type: string
+        style: form
       - description: Constrain the request to records with effective date at or after
           this date. If absent defaults to newest-date minus 24 months.  Format is
           aligned to DateString common type
@@ -988,9 +1019,10 @@ paths:
         schema:
           type: string
         style: simple
-      - description: The time when the customer last logged in to the data recipient.
-          Required for all resource calls (customer present and unattended). Not to
-          be included for unauthenticated calls.
+      - description: The time when the customer last logged in to the Data Recipient
+          Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required
+          for all resource calls (customer present and unattended). Not required for
+          unauthenticated calls.
         explode: false
         in: header
         name: x-fapi-auth-date
@@ -1137,6 +1169,20 @@ paths:
           type: string
         style: form
         x-cds-type: DateString
+      - description: Type of interval reads. Any one of the valid values for this
+          field can be supplied. If absent defaults to NONE
+        explode: true
+        in: query
+        name: interval-reads
+        required: false
+        schema:
+          default: NONE
+          enum:
+          - NONE
+          - MIN_30
+          - FULL
+          type: string
+        style: form
       - description: Page of results to request (standard pagination)
         explode: true
         in: query
@@ -1192,9 +1238,10 @@ paths:
         schema:
           type: string
         style: simple
-      - description: The time when the customer last logged in to the data recipient.
-          Required for all resource calls (customer present and unattended). Not to
-          be included for unauthenticated calls.
+      - description: The time when the customer last logged in to the Data Recipient
+          Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required
+          for all resource calls (customer present and unattended). Not required for
+          unauthenticated calls.
         explode: false
         in: header
         name: x-fapi-auth-date
@@ -1370,9 +1417,10 @@ paths:
         schema:
           type: string
         style: simple
-      - description: The time when the customer last logged in to the data recipient.
-          Required for all resource calls (customer present and unattended). Not to
-          be included for unauthenticated calls.
+      - description: The time when the customer last logged in to the Data Recipient
+          Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required
+          for all resource calls (customer present and unattended). Not required for
+          unauthenticated calls.
         explode: false
         in: header
         name: x-fapi-auth-date
@@ -1552,9 +1600,10 @@ paths:
         schema:
           type: string
         style: simple
-      - description: The time when the customer last logged in to the data recipient.
-          Required for all resource calls (customer present and unattended). Not to
-          be included for unauthenticated calls.
+      - description: The time when the customer last logged in to the Data Recipient
+          Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required
+          for all resource calls (customer present and unattended). Not required for
+          unauthenticated calls.
         explode: false
         in: header
         name: x-fapi-auth-date
@@ -1733,9 +1782,10 @@ paths:
         schema:
           type: string
         style: simple
-      - description: The time when the customer last logged in to the data recipient.
-          Required for all resource calls (customer present and unattended). Not to
-          be included for unauthenticated calls.
+      - description: The time when the customer last logged in to the Data Recipient
+          Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required
+          for all resource calls (customer present and unattended). Not required for
+          unauthenticated calls.
         explode: false
         in: header
         name: x-fapi-auth-date
@@ -1920,9 +1970,10 @@ paths:
         schema:
           type: string
         style: simple
-      - description: The time when the customer last logged in to the data recipient.
-          Required for all resource calls (customer present and unattended). Not to
-          be included for unauthenticated calls.
+      - description: The time when the customer last logged in to the Data Recipient
+          Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required
+          for all resource calls (customer present and unattended). Not required for
+          unauthenticated calls.
         explode: false
         in: header
         name: x-fapi-auth-date
@@ -2093,9 +2144,10 @@ paths:
         schema:
           type: string
         style: simple
-      - description: The time when the customer last logged in to the data recipient.
-          Required for all resource calls (customer present and unattended). Not to
-          be included for unauthenticated calls.
+      - description: The time when the customer last logged in to the Data Recipient
+          Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required
+          for all resource calls (customer present and unattended). Not required for
+          unauthenticated calls.
         explode: false
         in: header
         name: x-fapi-auth-date
@@ -2217,8 +2269,19 @@ paths:
       x-version: "1"
   /energy/accounts/{accountId}/payment-schedule:
     get:
-      description: Obtain the agreed payment schedule and details, if any, for a specific
-        energy account
+      description: "Obtain the agreed payment schedule and details, if any, for a\
+        \ specific energy account. \n\nSome general notes about this end point:\n\n\
+        \ <ul><li>This API describes how the consumer has elected to pay for their\
+        \ account</li><li>Payments initiated by the consumer are classified as manual\
+        \ payments. The billing frequency is captured for manual payments. The consumer\
+        \ may choose to pay on a different schedule/frequency. The payment method\
+        \ and frequency is not captured for manual payments</li><li>Payments that\
+        \ can be initiated by the retailer, based on a consumer's preferences and\
+        \ permission, include payments based on a direct debit, card debit or digital\
+        \ wallet setup. Each of these requires a payment frequency to be provided\
+        \ along with other relevant fields</li><li>Information about payment plans\
+        \ related to debt repayments or arrangements due to hardship is not captured\
+        \ within this API</li></ul>"
       operationId: getPaymentSchedule
       parameters:
       - description: ID of a specific account to obtain data for.  This is a tokenised
@@ -2267,9 +2330,10 @@ paths:
         schema:
           type: string
         style: simple
-      - description: The time when the customer last logged in to the data recipient.
-          Required for all resource calls (customer present and unattended). Not to
-          be included for unauthenticated calls.
+      - description: The time when the customer last logged in to the Data Recipient
+          Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required
+          for all resource calls (customer present and unattended). Not required for
+          unauthenticated calls.
         explode: false
         in: header
         name: x-fapi-auth-date
@@ -2441,9 +2505,10 @@ paths:
         schema:
           type: string
         style: simple
-      - description: The time when the customer last logged in to the data recipient.
-          Required for all resource calls (customer present and unattended). Not to
-          be included for unauthenticated calls.
+      - description: The time when the customer last logged in to the Data Recipient
+          Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required
+          for all resource calls (customer present and unattended). Not required for
+          unauthenticated calls.
         explode: false
         in: header
         name: x-fapi-auth-date
@@ -2614,9 +2679,10 @@ paths:
         schema:
           type: string
         style: simple
-      - description: The time when the customer last logged in to the data recipient.
-          Required for all resource calls (customer present and unattended). Not to
-          be included for unauthenticated calls.
+      - description: The time when the customer last logged in to the Data Recipient
+          Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required
+          for all resource calls (customer present and unattended). Not required for
+          unauthenticated calls.
         explode: false
         in: header
         name: x-fapi-auth-date
@@ -2796,9 +2862,10 @@ paths:
         schema:
           type: string
         style: simple
-      - description: The time when the customer last logged in to the data recipient.
-          Required for all resource calls (customer present and unattended). Not to
-          be included for unauthenticated calls.
+      - description: The time when the customer last logged in to the Data Recipient
+          Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required
+          for all resource calls (customer present and unattended). Not required for
+          unauthenticated calls.
         explode: false
         in: header
         name: x-fapi-auth-date
@@ -2977,9 +3044,10 @@ paths:
         schema:
           type: string
         style: simple
-      - description: The time when the customer last logged in to the data recipient.
-          Required for all resource calls (customer present and unattended). Not to
-          be included for unauthenticated calls.
+      - description: The time when the customer last logged in to the Data Recipient
+          Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required
+          for all resource calls (customer present and unattended). Not required for
+          unauthenticated calls.
         explode: false
         in: header
         name: x-fapi-auth-date
@@ -3194,9 +3262,10 @@ paths:
         schema:
           type: string
         style: simple
-      - description: The time when the customer last logged in to the data recipient.
-          Required for all resource calls (customer present and unattended). Not to
-          be included for unauthenticated calls.
+      - description: The time when the customer last logged in to the Data Recipient
+          Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required
+          for all resource calls (customer present and unattended). Not required for
+          unauthenticated calls.
         explode: false
         in: header
         name: x-fapi-auth-date
@@ -3417,9 +3486,10 @@ paths:
         schema:
           type: string
         style: simple
-      - description: The time when the customer last logged in to the data recipient.
-          Required for all resource calls (customer present and unattended). Not to
-          be included for unauthenticated calls.
+      - description: The time when the customer last logged in to the Data Recipient
+          Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required
+          for all resource calls (customer present and unattended). Not required for
+          unauthenticated calls.
         explode: false
         in: header
         name: x-fapi-auth-date
@@ -3620,9 +3690,10 @@ paths:
         schema:
           type: string
         style: simple
-      - description: The time when the customer last logged in to the data recipient.
-          Required for all resource calls (customer present and unattended). Not to
-          be included for unauthenticated calls.
+      - description: The time when the customer last logged in to the Data Recipient
+          Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required
+          for all resource calls (customer present and unattended). Not required for
+          unauthenticated calls.
         explode: false
         in: header
         name: x-fapi-auth-date
@@ -3837,9 +3908,10 @@ paths:
         schema:
           type: string
         style: simple
-      - description: The time when the customer last logged in to the data recipient.
-          Required for all resource calls (customer present and unattended). Not to
-          be included for unauthenticated calls.
+      - description: The time when the customer last logged in to the Data Recipient
+          Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required
+          for all resource calls (customer present and unattended). Not required for
+          unauthenticated calls.
         explode: false
         in: header
         name: x-fapi-auth-date
@@ -4060,9 +4132,10 @@ paths:
         schema:
           type: string
         style: simple
-      - description: The time when the customer last logged in to the data recipient.
-          Required for all resource calls (customer present and unattended). Not to
-          be included for unauthenticated calls.
+      - description: The time when the customer last logged in to the Data Recipient
+          Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required
+          for all resource calls (customer present and unattended). Not required for
+          unauthenticated calls.
         explode: false
         in: header
         name: x-fapi-auth-date
@@ -4263,9 +4336,10 @@ paths:
         schema:
           type: string
         style: simple
-      - description: The time when the customer last logged in to the data recipient.
-          Required for all resource calls (customer present and unattended). Not to
-          be included for unauthenticated calls.
+      - description: The time when the customer last logged in to the Data Recipient
+          Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required
+          for all resource calls (customer present and unattended). Not required for
+          unauthenticated calls.
         explode: false
         in: header
         name: x-fapi-auth-date
@@ -4412,6 +4486,21 @@ components:
       schema:
         type: string
       style: simple
+    interval-reads:
+      description: Type of interval reads. Any one of the valid values for this field
+        can be supplied. If absent defaults to NONE
+      explode: true
+      in: query
+      name: interval-reads
+      required: false
+      schema:
+        default: NONE
+        enum:
+        - NONE
+        - MIN_30
+        - FULL
+        type: string
+      style: form
     newest-time:
       description: Constrain the request to records with effective time at or before
         this date/time.  If absent defaults to current date/time.  Format is aligned
@@ -4521,9 +4610,10 @@ components:
         type: string
       style: simple
     x-fapi-auth-date:
-      description: The time when the customer last logged in to the data recipient.
-        Required for all resource calls (customer present and unattended). Not to
-        be included for unauthenticated calls.
+      description: The time when the customer last logged in to the Data Recipient
+        Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required
+        for all resource calls (customer present and unattended). Not required for
+        unauthenticated calls.
       explode: false
       in: header
       name: x-fapi-auth-date
@@ -5086,7 +5176,7 @@ components:
       required:
       - data
       - links
-      - me
+      - meta
       type: object
     EnergyServicePointDetailResponse:
       example:
@@ -5227,14 +5317,16 @@ components:
               quality: ACTUAL
             unitOfMeasure: unitOfMeasure
             registerId: registerId
-            meterID: meterID
+            meterId: meterId
             intervalRead:
               readIntervalLength: 6
               intervalReads:
-              - value: 5.962133916683182
-                quality: ACTUAL
-              - value: 5.962133916683182
-                quality: ACTUAL
+              - 5.962133916683182
+              - 5.962133916683182
+              readQualities:
+                startInterval: 5
+                endInterval: 2
+                quality: SUBSTITUTE
               aggregateValue: 1.4658129805029452
             servicePointId: servicePointId
             registerSuffix: registerSuffix
@@ -5247,14 +5339,16 @@ components:
               quality: ACTUAL
             unitOfMeasure: unitOfMeasure
             registerId: registerId
-            meterID: meterID
+            meterId: meterId
             intervalRead:
               readIntervalLength: 6
               intervalReads:
-              - value: 5.962133916683182
-                quality: ACTUAL
-              - value: 5.962133916683182
-                quality: ACTUAL
+              - 5.962133916683182
+              - 5.962133916683182
+              readQualities:
+                startInterval: 5
+                endInterval: 2
+                quality: SUBSTITUTE
               aggregateValue: 1.4658129805029452
             servicePointId: servicePointId
             registerSuffix: registerSuffix
@@ -5291,7 +5385,7 @@ components:
               interTripScheme: interTripScheme
               underFrequencyProtectionDelay: 2.3021358869347655
               underVoltageProtection: 3.616076749251911
-              exportLimitkva: 5.962133916683182
+              exportLimitKva: 5.962133916683182
               overFrequencyProtectionDelay: 9.301444243932576
               overFrequencyProtection: 7.061401241503109
               overVoltageProtectionDelay: 7.386281948385884
@@ -5303,9 +5397,9 @@ components:
               neutralVoltageDisplacement: 7.457744773683766
               sustainedOverVoltage: 1.2315135367772556
               voltageVectorShift: 6.84685269835264
-            installedPhasesCount: 1.4658129805029452
-            availablePhasesCount: 6.027456183070403
-            islandableInstallation: islandableInstallation
+            installedPhasesCount: 1
+            availablePhasesCount: 2
+            islandableInstallation: true
             servicePointId: servicePointId
             approvedCapacity: 0.8008281904610115
             hasCentralProtectionControl: false
@@ -5322,7 +5416,7 @@ components:
                 deviceIdentifier: 9.965781217890562
                 nominalStorageCapacity: 8.762042012749001
                 subtype: subtype
-                count: 9.369310271410669
+                count: 9
                 modelNumber: modelNumber
                 type: FOSSIL
                 manufacturer: manufacturer
@@ -5331,7 +5425,7 @@ components:
                 deviceIdentifier: 9.965781217890562
                 nominalStorageCapacity: 8.762042012749001
                 subtype: subtype
-                count: 9.369310271410669
+                count: 9
                 modelNumber: modelNumber
                 type: FOSSIL
                 manufacturer: manufacturer
@@ -5350,7 +5444,7 @@ components:
                 deviceIdentifier: 9.965781217890562
                 nominalStorageCapacity: 8.762042012749001
                 subtype: subtype
-                count: 9.369310271410669
+                count: 9
                 modelNumber: modelNumber
                 type: FOSSIL
                 manufacturer: manufacturer
@@ -5359,7 +5453,7 @@ components:
                 deviceIdentifier: 9.965781217890562
                 nominalStorageCapacity: 8.762042012749001
                 subtype: subtype
-                count: 9.369310271410669
+                count: 9
                 modelNumber: modelNumber
                 type: FOSSIL
                 manufacturer: manufacturer
@@ -5370,7 +5464,7 @@ components:
               interTripScheme: interTripScheme
               underFrequencyProtectionDelay: 2.3021358869347655
               underVoltageProtection: 3.616076749251911
-              exportLimitkva: 5.962133916683182
+              exportLimitKva: 5.962133916683182
               overFrequencyProtectionDelay: 9.301444243932576
               overFrequencyProtection: 7.061401241503109
               overVoltageProtectionDelay: 7.386281948385884
@@ -5382,9 +5476,9 @@ components:
               neutralVoltageDisplacement: 7.457744773683766
               sustainedOverVoltage: 1.2315135367772556
               voltageVectorShift: 6.84685269835264
-            installedPhasesCount: 1.4658129805029452
-            availablePhasesCount: 6.027456183070403
-            islandableInstallation: islandableInstallation
+            installedPhasesCount: 1
+            availablePhasesCount: 2
+            islandableInstallation: true
             servicePointId: servicePointId
             approvedCapacity: 0.8008281904610115
             hasCentralProtectionControl: false
@@ -5401,7 +5495,7 @@ components:
                 deviceIdentifier: 9.965781217890562
                 nominalStorageCapacity: 8.762042012749001
                 subtype: subtype
-                count: 9.369310271410669
+                count: 9
                 modelNumber: modelNumber
                 type: FOSSIL
                 manufacturer: manufacturer
@@ -5410,7 +5504,7 @@ components:
                 deviceIdentifier: 9.965781217890562
                 nominalStorageCapacity: 8.762042012749001
                 subtype: subtype
-                count: 9.369310271410669
+                count: 9
                 modelNumber: modelNumber
                 type: FOSSIL
                 manufacturer: manufacturer
@@ -5429,7 +5523,7 @@ components:
                 deviceIdentifier: 9.965781217890562
                 nominalStorageCapacity: 8.762042012749001
                 subtype: subtype
-                count: 9.369310271410669
+                count: 9
                 modelNumber: modelNumber
                 type: FOSSIL
                 manufacturer: manufacturer
@@ -5438,7 +5532,7 @@ components:
                 deviceIdentifier: 9.965781217890562
                 nominalStorageCapacity: 8.762042012749001
                 subtype: subtype
-                count: 9.369310271410669
+                count: 9
                 modelNumber: modelNumber
                 type: FOSSIL
                 manufacturer: manufacturer
@@ -5473,7 +5567,7 @@ components:
             interTripScheme: interTripScheme
             underFrequencyProtectionDelay: 2.3021358869347655
             underVoltageProtection: 3.616076749251911
-            exportLimitkva: 5.962133916683182
+            exportLimitKva: 5.962133916683182
             overFrequencyProtectionDelay: 9.301444243932576
             overFrequencyProtection: 7.061401241503109
             overVoltageProtectionDelay: 7.386281948385884
@@ -5485,9 +5579,9 @@ components:
             neutralVoltageDisplacement: 7.457744773683766
             sustainedOverVoltage: 1.2315135367772556
             voltageVectorShift: 6.84685269835264
-          installedPhasesCount: 1.4658129805029452
-          availablePhasesCount: 6.027456183070403
-          islandableInstallation: islandableInstallation
+          installedPhasesCount: 1
+          availablePhasesCount: 2
+          islandableInstallation: true
           servicePointId: servicePointId
           approvedCapacity: 0.8008281904610115
           hasCentralProtectionControl: false
@@ -5504,7 +5598,7 @@ components:
               deviceIdentifier: 9.965781217890562
               nominalStorageCapacity: 8.762042012749001
               subtype: subtype
-              count: 9.369310271410669
+              count: 9
               modelNumber: modelNumber
               type: FOSSIL
               manufacturer: manufacturer
@@ -5513,7 +5607,7 @@ components:
               deviceIdentifier: 9.965781217890562
               nominalStorageCapacity: 8.762042012749001
               subtype: subtype
-              count: 9.369310271410669
+              count: 9
               modelNumber: modelNumber
               type: FOSSIL
               manufacturer: manufacturer
@@ -5532,7 +5626,7 @@ components:
               deviceIdentifier: 9.965781217890562
               nominalStorageCapacity: 8.762042012749001
               subtype: subtype
-              count: 9.369310271410669
+              count: 9
               modelNumber: modelNumber
               type: FOSSIL
               manufacturer: manufacturer
@@ -5541,7 +5635,7 @@ components:
               deviceIdentifier: 9.965781217890562
               nominalStorageCapacity: 8.762042012749001
               subtype: subtype
-              count: 9.369310271410669
+              count: 9
               modelNumber: modelNumber
               type: FOSSIL
               manufacturer: manufacturer
@@ -5610,26 +5704,55 @@ components:
     EnergyPaymentScheduleResponse:
       example:
         data:
-          manualPayment:
-            billFrequency: billFrequency
-          amount: amount
-          cardDebit:
-            calculationType: STATIC
-            cardScheme: VISA
-            paymentFrequency: paymentFrequency
-          directDebit:
-            bsb: bsb
-            calculationType: STATIC
-            accountNumber: accountNumber
-            paymentFrequency: paymentFrequency
-            isTokenised: true
-          paymentScheduleUType: cardDebit
+          paymentSchedules:
+          - manualPayment:
+              billFrequency: billFrequency
+            amount: amount
+            digitalWallet:
+              calculationType: STATIC
+              identifier: identifier
+              provider: PAYPAL_AU
+              name: name
+              type: EMAIL
+              paymentFrequency: paymentFrequency
+            cardDebit:
+              calculationType: STATIC
+              cardScheme: VISA
+              paymentFrequency: paymentFrequency
+            directDebit:
+              bsb: bsb
+              calculationType: STATIC
+              accountNumber: accountNumber
+              paymentFrequency: paymentFrequency
+              isTokenised: true
+            paymentScheduleUType: cardDebit
+          - manualPayment:
+              billFrequency: billFrequency
+            amount: amount
+            digitalWallet:
+              calculationType: STATIC
+              identifier: identifier
+              provider: PAYPAL_AU
+              name: name
+              type: EMAIL
+              paymentFrequency: paymentFrequency
+            cardDebit:
+              calculationType: STATIC
+              cardScheme: VISA
+              paymentFrequency: paymentFrequency
+            directDebit:
+              bsb: bsb
+              calculationType: STATIC
+              accountNumber: accountNumber
+              paymentFrequency: paymentFrequency
+              isTokenised: true
+            paymentScheduleUType: cardDebit
         meta: '{}'
         links:
           self: self
       properties:
         data:
-          $ref: '#/components/schemas/EnergyPaymentSchedule'
+          $ref: '#/components/schemas/EnergyPaymentScheduleResponse_data'
         links:
           $ref: '#/components/schemas/Links'
         meta:
@@ -6183,7 +6306,7 @@ components:
           type: boolean
         variation:
           description: Free text description of price variation policy and conditions
-            for the contract.  Mandatory if isFixed is true
+            for the contract.  Mandatory if `isFixed` is false
           type: string
         onExpiryDescription:
           description: Free text field that describes what will occur on or prior
@@ -6203,7 +6326,198 @@ components:
         intrinsicGreenPower:
           $ref: '#/components/schemas/EnergyPlanContract_intrinsicGreenPower'
         controlledLoad:
-          $ref: '#/components/schemas/EnergyPlanControlledLoad'
+          description: Required if pricing model is SINGLE_RATE_CONT_LOAD or TIME_OF_USE_CONT_LOAD
+            or FLEXIBLE_CONT_LOAD
+          items:
+            properties:
+              displayName:
+                description: A display name for the controlled load
+                type: string
+              rateBlockUType:
+                description: 'Specifies the type of controlloed load rate '
+                enum:
+                - singleRate
+                - timeOfUseRates
+                type: string
+              startDate:
+                description: Optional start date of the application of the controlled
+                  load rate
+                type: string
+                x-cds-type: DateString
+              endDate:
+                description: Optional end date of the application of the controlled
+                  load rate
+                type: string
+                x-cds-type: DateString
+              singleRate:
+                description: Object representing a single controlled load rate.  Required
+                  if rateBlockUType is singleRate
+                properties:
+                  displayName:
+                    description: Display name of the controlled load rate
+                    type: string
+                  description:
+                    description: Description of the controlled load rate
+                    type: string
+                  dailySupplyCharge:
+                    description: The daily supply charge (exclusive of GST) for this
+                      controlled load tier
+                    type: string
+                    x-cds-type: AmountString
+                  rates:
+                    description: Array of controlled load rates in order of usage
+                      volume
+                    items:
+                      properties:
+                        unitPrice:
+                          description: Unit price of usage per  measure unit (exclusive
+                            of GST)
+                          type: string
+                          x-cds-type: AmountString
+                        measureUnit:
+                          description: The measurement unit of rate. Assumed to be
+                            KWH if absent
+                          enum:
+                          - KWH
+                          - KVA
+                          - KVAR
+                          - KVARH
+                          - KW
+                          - DAYS
+                          - METER
+                          - MONTH
+                          type: string
+                        volume:
+                          description: Volume in kWh that this rate applies to.  Only
+                            applicable for ‘stepped’ rates where different rates apply
+                            for different volumes of usage in a period
+                          type: number
+                      required:
+                      - unitPrice
+                      type: object
+                    type: array
+                required:
+                - displayName
+                - rates
+                type: object
+              timeOfUseRates:
+                description: Array of objects representing time of use rates.  Required
+                  if rateBlockUType is timeOfUseRates
+                items:
+                  properties:
+                    displayName:
+                      description: Display name of the controlled load rate
+                      type: string
+                    description:
+                      description: Description of the controlled load rate
+                      type: string
+                    dailySupplyCharge:
+                      description: The daily supply charge (exclusive of GST) for
+                        this controlled load tier
+                      type: string
+                      x-cds-type: AmountString
+                    rates:
+                      description: Array of controlled load rates in order of usage
+                        volume
+                      items:
+                        properties:
+                          unitPrice:
+                            description: Unit price of usage per  measure unit (exclusive
+                              of GST)
+                            type: string
+                            x-cds-type: AmountString
+                          measureUnit:
+                            description: The measurement unit of rate. Assumed to
+                              be KWH if absent
+                            enum:
+                            - KWH
+                            - KVA
+                            - KVAR
+                            - KVARH
+                            - KW
+                            - DAYS
+                            - METER
+                            - MONTH
+                            type: string
+                          volume:
+                            description: Volume in kWh that this rate applies to.  Only
+                              applicable for ‘stepped’ rates where different rates
+                              apply for different volumes of usage in a period
+                            type: number
+                        required:
+                        - unitPrice
+                        type: object
+                      type: array
+                    timeOfUse:
+                      description: Array of times of use.
+                      items:
+                        properties:
+                          days:
+                            description: The days that the rate applies to
+                            items:
+                              enum:
+                              - SUN
+                              - MON
+                              - TUE
+                              - WED
+                              - THU
+                              - FRI
+                              - SAT
+                              - PUBLIC_HOLIDAYS
+                              type: string
+                            type: array
+                          startTime:
+                            description: The beginning of the time period per day
+                              for which the controlled load rate applies. Required
+                              if endTime provided
+                            type: string
+                            x-cds-type: TimeString
+                          endTime:
+                            description: The end of the time period per day for which
+                              the controlled load rate applies. Required if startTime
+                              provided
+                            type: string
+                            x-cds-type: TimeString
+                          additionalInfo:
+                            description: Display text providing more information on
+                              the contrlled load, for e.g. controlled load availability
+                              if specific day/time is not known. Required if startTime
+                              and endTime absent or if additionalInfoUri provided
+                            type: string
+                          additionalInfoUri:
+                            description: Optional link to additional information regarding
+                              the controlled load
+                            type: string
+                            x-cds-type: URIString
+                        type: object
+                        x-conditional:
+                        - startTime
+                        - endTime
+                        - additionalInfo
+                      type: array
+                    type:
+                      description: The type of usage that the rate applies to
+                      enum:
+                      - PEAK
+                      - OFF_PEAK
+                      - SHOULDER
+                      - SOLAR_SPONGE
+                      type: string
+                  required:
+                  - displayName
+                  - rates
+                  - timeOfUse
+                  - type
+                  type: object
+                type: array
+            required:
+            - displayName
+            - rateBlockUType
+            type: object
+            x-conditional:
+            - singleRate
+            - timeOfUseRates
+          type: array
         incentives:
           description: Optional list of incentives available for the contract
           items:
@@ -6553,19 +6867,20 @@ components:
                     items:
                       properties:
                         days:
-                          properties:
-                            weekdays:
-                              description: Indicates whether the tariff is applicable
-                                Monday to Friday
-                              type: boolean
-                            weekend:
-                              description: Indicates whether the tariff is applicable
-                                Saturday and Sunday
-                              type: boolean
-                          required:
-                          - weekdays
-                          - weekend
-                          type: object
+                          description: The days that the tariff applies to. At least
+                            one entry required
+                          items:
+                            enum:
+                            - SUN
+                            - MON
+                            - TUE
+                            - WED
+                            - THU
+                            - FRI
+                            - SAT
+                            - PUBLIC_HOLIDAYS
+                            type: string
+                          type: array
                         startTime:
                           description: The beginning of the time period per day for
                             which the tariff applies.  If absent assumes start of
@@ -6754,24 +7069,24 @@ components:
                             description: The days that the rate applies to
                             items:
                               enum:
-                              - SUNDAY
-                              - MONDAY
-                              - TUESDAY
-                              - WEDNESDAY
-                              - THURSDAY
-                              - FRIDAY
-                              - SATURDAY
-                              - BUSINESS_DAYS
+                              - SUN
+                              - MON
+                              - TUE
+                              - WED
+                              - THU
+                              - FRI
+                              - SAT
+                              - PUBLIC_HOLIDAYS
                               type: string
                             type: array
                           startTime:
-                            description: Start of the period in HHMM format using
-                              24 hour clock format
+                            description: Start of the period
                             type: string
+                            x-cds-type: TimeString
                           endTime:
-                            description: End of the period in HHMM format using 24
-                              hour clock format
+                            description: End of the period
                             type: string
+                            x-cds-type: TimeString
                         required:
                         - days
                         - endTime
@@ -6824,33 +7139,27 @@ components:
                       - MONTH
                       type: string
                     startTime:
-                      description: Start of the period in HHMM format using 24 hour
-                        clock format
+                      description: Start of the period
                       type: string
+                      x-cds-type: TimeString
                     endTime:
-                      description: End of the period in HHMM format using 24 hour
-                        clock format
+                      description: End of the period
                       type: string
+                      x-cds-type: TimeString
                     days:
-                      description: Object containing demand tariff by day of week
-                      properties:
-                        weekdays:
-                          description: Indicates the demand tariff is applicable on
-                            weekdays
-                          type: boolean
-                        saturday:
-                          description: Indicates the demand tariff is applicable on
-                            Saturdays
-                          type: boolean
-                        sunday:
-                          description: Indicates the demand tariff is applicable on
-                            Sundays
-                          type: boolean
-                      required:
-                      - saturday
-                      - sunday
-                      - weekdays
-                      type: object
+                      description: The days that the demand tariff applies to
+                      items:
+                        enum:
+                        - SUN
+                        - MON
+                        - TUE
+                        - WED
+                        - THU
+                        - FRI
+                        - SAT
+                        - PUBLIC_HOLIDAYS
+                        type: string
+                      type: array
                     minDemand:
                       description: Minimum demand for this demand tariff in kW.  If
                         absent then 0 is assumed
@@ -6912,35 +7221,194 @@ components:
     EnergyPlanControlledLoad:
       description: Required if pricing model is SINGLE_RATE_CONT_LOAD or TIME_OF_USE_CONT_LOAD
         or FLEXIBLE_CONT_LOAD
-      properties:
-        displayName:
-          description: A display name for the controlled load tier
-          type: string
-        description:
-          description: A description of the controlled load tier
-          type: string
-        dailyCharge:
-          description: The daily supply charge (exclusive of GST) for this controlled
-            load tier
-          type: string
-          x-cds-type: AmountString
-        period:
-          description: The period for which the controlled load rate applies. Formatted
-            according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)
-            (excludes recurrence syntax)
-          type: string
-          x-cds-type: ExternalRef
-        rates:
-          description: Array of controlled load rates in order of usage volume
-          items:
-            $ref: '#/components/schemas/EnergyPlanControlledLoad_rates'
-          type: array
-      required:
-      - dailyCharge
-      - displayName
-      - period
-      - rates
-      type: object
+      items:
+        properties:
+          displayName:
+            description: A display name for the controlled load
+            type: string
+          rateBlockUType:
+            description: 'Specifies the type of controlloed load rate '
+            enum:
+            - singleRate
+            - timeOfUseRates
+            type: string
+          startDate:
+            description: Optional start date of the application of the controlled
+              load rate
+            type: string
+            x-cds-type: DateString
+          endDate:
+            description: Optional end date of the application of the controlled load
+              rate
+            type: string
+            x-cds-type: DateString
+          singleRate:
+            description: Object representing a single controlled load rate.  Required
+              if rateBlockUType is singleRate
+            properties:
+              displayName:
+                description: Display name of the controlled load rate
+                type: string
+              description:
+                description: Description of the controlled load rate
+                type: string
+              dailySupplyCharge:
+                description: The daily supply charge (exclusive of GST) for this controlled
+                  load tier
+                type: string
+                x-cds-type: AmountString
+              rates:
+                description: Array of controlled load rates in order of usage volume
+                items:
+                  properties:
+                    unitPrice:
+                      description: Unit price of usage per  measure unit (exclusive
+                        of GST)
+                      type: string
+                      x-cds-type: AmountString
+                    measureUnit:
+                      description: The measurement unit of rate. Assumed to be KWH
+                        if absent
+                      enum:
+                      - KWH
+                      - KVA
+                      - KVAR
+                      - KVARH
+                      - KW
+                      - DAYS
+                      - METER
+                      - MONTH
+                      type: string
+                    volume:
+                      description: Volume in kWh that this rate applies to.  Only
+                        applicable for ‘stepped’ rates where different rates apply
+                        for different volumes of usage in a period
+                      type: number
+                  required:
+                  - unitPrice
+                  type: object
+                type: array
+            required:
+            - displayName
+            - rates
+            type: object
+          timeOfUseRates:
+            description: Array of objects representing time of use rates.  Required
+              if rateBlockUType is timeOfUseRates
+            items:
+              properties:
+                displayName:
+                  description: Display name of the controlled load rate
+                  type: string
+                description:
+                  description: Description of the controlled load rate
+                  type: string
+                dailySupplyCharge:
+                  description: The daily supply charge (exclusive of GST) for this
+                    controlled load tier
+                  type: string
+                  x-cds-type: AmountString
+                rates:
+                  description: Array of controlled load rates in order of usage volume
+                  items:
+                    properties:
+                      unitPrice:
+                        description: Unit price of usage per  measure unit (exclusive
+                          of GST)
+                        type: string
+                        x-cds-type: AmountString
+                      measureUnit:
+                        description: The measurement unit of rate. Assumed to be KWH
+                          if absent
+                        enum:
+                        - KWH
+                        - KVA
+                        - KVAR
+                        - KVARH
+                        - KW
+                        - DAYS
+                        - METER
+                        - MONTH
+                        type: string
+                      volume:
+                        description: Volume in kWh that this rate applies to.  Only
+                          applicable for ‘stepped’ rates where different rates apply
+                          for different volumes of usage in a period
+                        type: number
+                    required:
+                    - unitPrice
+                    type: object
+                  type: array
+                timeOfUse:
+                  description: Array of times of use.
+                  items:
+                    properties:
+                      days:
+                        description: The days that the rate applies to
+                        items:
+                          enum:
+                          - SUN
+                          - MON
+                          - TUE
+                          - WED
+                          - THU
+                          - FRI
+                          - SAT
+                          - PUBLIC_HOLIDAYS
+                          type: string
+                        type: array
+                      startTime:
+                        description: The beginning of the time period per day for
+                          which the controlled load rate applies. Required if endTime
+                          provided
+                        type: string
+                        x-cds-type: TimeString
+                      endTime:
+                        description: The end of the time period per day for which
+                          the controlled load rate applies. Required if startTime
+                          provided
+                        type: string
+                        x-cds-type: TimeString
+                      additionalInfo:
+                        description: Display text providing more information on the
+                          contrlled load, for e.g. controlled load availability if
+                          specific day/time is not known. Required if startTime and
+                          endTime absent or if additionalInfoUri provided
+                        type: string
+                      additionalInfoUri:
+                        description: Optional link to additional information regarding
+                          the controlled load
+                        type: string
+                        x-cds-type: URIString
+                    type: object
+                    x-conditional:
+                    - startTime
+                    - endTime
+                    - additionalInfo
+                  type: array
+                type:
+                  description: The type of usage that the rate applies to
+                  enum:
+                  - PEAK
+                  - OFF_PEAK
+                  - SHOULDER
+                  - SOLAR_SPONGE
+                  type: string
+              required:
+              - displayName
+              - rates
+              - timeOfUse
+              - type
+              type: object
+            type: array
+        required:
+        - displayName
+        - rateBlockUType
+        type: object
+        x-conditional:
+        - singleRate
+        - timeOfUseRates
+      type: array
     EnergyPlanIncentives:
       description: Optional list of incentives available for the contract
       items:
@@ -7289,19 +7757,20 @@ components:
                 items:
                   properties:
                     days:
-                      properties:
-                        weekdays:
-                          description: Indicates whether the tariff is applicable
-                            Monday to Friday
-                          type: boolean
-                        weekend:
-                          description: Indicates whether the tariff is applicable
-                            Saturday and Sunday
-                          type: boolean
-                      required:
-                      - weekdays
-                      - weekend
-                      type: object
+                      description: The days that the tariff applies to. At least one
+                        entry required
+                      items:
+                        enum:
+                        - SUN
+                        - MON
+                        - TUE
+                        - WED
+                        - THU
+                        - FRI
+                        - SAT
+                        - PUBLIC_HOLIDAYS
+                        type: string
+                      type: array
                     startTime:
                       description: The beginning of the time period per day for which
                         the tariff applies.  If absent assumes start of day (ie. midnight)
@@ -7486,24 +7955,24 @@ components:
                         description: The days that the rate applies to
                         items:
                           enum:
-                          - SUNDAY
-                          - MONDAY
-                          - TUESDAY
-                          - WEDNESDAY
-                          - THURSDAY
-                          - FRIDAY
-                          - SATURDAY
-                          - BUSINESS_DAYS
+                          - SUN
+                          - MON
+                          - TUE
+                          - WED
+                          - THU
+                          - FRI
+                          - SAT
+                          - PUBLIC_HOLIDAYS
                           type: string
                         type: array
                       startTime:
-                        description: Start of the period in HHMM format using 24 hour
-                          clock format
+                        description: Start of the period
                         type: string
+                        x-cds-type: TimeString
                       endTime:
-                        description: End of the period in HHMM format using 24 hour
-                          clock format
+                        description: End of the period
                         type: string
+                        x-cds-type: TimeString
                     required:
                     - days
                     - endTime
@@ -7554,30 +8023,27 @@ components:
                   - MONTH
                   type: string
                 startTime:
-                  description: Start of the period in HHMM format using 24 hour clock
-                    format
+                  description: Start of the period
                   type: string
+                  x-cds-type: TimeString
                 endTime:
-                  description: End of the period in HHMM format using 24 hour clock
-                    format
+                  description: End of the period
                   type: string
+                  x-cds-type: TimeString
                 days:
-                  description: Object containing demand tariff by day of week
-                  properties:
-                    weekdays:
-                      description: Indicates the demand tariff is applicable on weekdays
-                      type: boolean
-                    saturday:
-                      description: Indicates the demand tariff is applicable on Saturdays
-                      type: boolean
-                    sunday:
-                      description: Indicates the demand tariff is applicable on Sundays
-                      type: boolean
-                  required:
-                  - saturday
-                  - sunday
-                  - weekdays
-                  type: object
+                  description: The days that the demand tariff applies to
+                  items:
+                    enum:
+                    - SUN
+                    - MON
+                    - TUE
+                    - WED
+                    - THU
+                    - FRI
+                    - SAT
+                    - PUBLIC_HOLIDAYS
+                    type: string
+                  type: array
                 minDemand:
                   description: Minimum demand for this demand tariff in kW.  If absent
                     then 0 is assumed
@@ -7936,14 +8402,16 @@ components:
           quality: ACTUAL
         unitOfMeasure: unitOfMeasure
         registerId: registerId
-        meterID: meterID
+        meterId: meterId
         intervalRead:
           readIntervalLength: 6
           intervalReads:
-          - value: 5.962133916683182
-            quality: ACTUAL
-          - value: 5.962133916683182
-            quality: ACTUAL
+          - 5.962133916683182
+          - 5.962133916683182
+          readQualities:
+            startInterval: 5
+            endInterval: 2
+            quality: SUBSTITUTE
           aggregateValue: 1.4658129805029452
         servicePointId: servicePointId
         registerSuffix: registerSuffix
@@ -7965,7 +8433,7 @@ components:
           description: Register suffix of the meter register where the meter reads
             are obtained
           type: string
-        meterID:
+        meterId:
           description: Meter id/serial number as it appears in customer’s bill. ID
             permanence rules do not apply.
           type: string
@@ -7974,20 +8442,22 @@ components:
             under a Controlled Load regime
           type: boolean
         readStartDate:
-          description: Date time when the meter reads start
+          description: Date when the meter reads start in AEST and assumed to start
+            from 12:00 am AEST.
           type: string
           x-cds-type: DateString
         readEndDate:
-          description: Date time when the meter reads end.  If absent then assumed
+          description: Date when the meter reads end in AEST.  If absent then assumed
             to be equal to readStartDate.  In this case the entry represents data
-            for a single date specified by readStartDate
+            for a single date specified by readStartDate.
           type: string
           x-cds-type: DateString
         unitOfMeasure:
           description: Unit of measure of the meter reads. Refer to Appendix B of
             <a href='https://www.aemo.com.au/-/media/files/stakeholder_consultation/consultations/nem-consultations/2019/5ms-metering-package-2/final-determination/mdff-specification-nem12-nem13-v21-final-determination-clean.pdf?la=en&hash=03FCBA0D60E091DE00F2361AE76206EA'>MDFF
-            Specification NEM12 NEM13 v2.1</a> for a list of possible values
+            Specification NEM12 NEM13 v2.1</a> for a list of possible values.
           type: string
+          x-cds-type: ExternalRef
         readUType:
           description: Specify the type of the meter read data
           enum:
@@ -8013,7 +8483,7 @@ components:
           interTripScheme: interTripScheme
           underFrequencyProtectionDelay: 2.3021358869347655
           underVoltageProtection: 3.616076749251911
-          exportLimitkva: 5.962133916683182
+          exportLimitKva: 5.962133916683182
           overFrequencyProtectionDelay: 9.301444243932576
           overFrequencyProtection: 7.061401241503109
           overVoltageProtectionDelay: 7.386281948385884
@@ -8025,9 +8495,9 @@ components:
           neutralVoltageDisplacement: 7.457744773683766
           sustainedOverVoltage: 1.2315135367772556
           voltageVectorShift: 6.84685269835264
-        installedPhasesCount: 1.4658129805029452
-        availablePhasesCount: 6.027456183070403
-        islandableInstallation: islandableInstallation
+        installedPhasesCount: 1
+        availablePhasesCount: 2
+        islandableInstallation: true
         servicePointId: servicePointId
         approvedCapacity: 0.8008281904610115
         hasCentralProtectionControl: false
@@ -8044,7 +8514,7 @@ components:
             deviceIdentifier: 9.965781217890562
             nominalStorageCapacity: 8.762042012749001
             subtype: subtype
-            count: 9.369310271410669
+            count: 9
             modelNumber: modelNumber
             type: FOSSIL
             manufacturer: manufacturer
@@ -8053,7 +8523,7 @@ components:
             deviceIdentifier: 9.965781217890562
             nominalStorageCapacity: 8.762042012749001
             subtype: subtype
-            count: 9.369310271410669
+            count: 9
             modelNumber: modelNumber
             type: FOSSIL
             manufacturer: manufacturer
@@ -8072,7 +8542,7 @@ components:
             deviceIdentifier: 9.965781217890562
             nominalStorageCapacity: 8.762042012749001
             subtype: subtype
-            count: 9.369310271410669
+            count: 9
             modelNumber: modelNumber
             type: FOSSIL
             manufacturer: manufacturer
@@ -8081,7 +8551,7 @@ components:
             deviceIdentifier: 9.965781217890562
             nominalStorageCapacity: 8.762042012749001
             subtype: subtype
-            count: 9.369310271410669
+            count: 9
             modelNumber: modelNumber
             type: FOSSIL
             manufacturer: manufacturer
@@ -8099,15 +8569,24 @@ components:
             in the connection agreement, expressed in kVA
           type: number
         availablePhasesCount:
-          description: The number of phases available for the installation of DER
-          type: number
+          description: The number of phases available for the installation of DER.
+            Acceptable values are 1, 2 or 3.
+          maximum: 3
+          minimum: 1
+          type: integer
+          x-cds-type: PositiveInteger
         installedPhasesCount:
-          description: The number of phases that DER is connected to
-          type: number
+          description: The number of phases that DER is connected to. Acceptable values
+            are 1, 2 or 3.
+          maximum: 3
+          minimum: 1
+          type: integer
+          x-cds-type: PositiveInteger
         islandableInstallation:
           description: For identification of small generating units designed with
             the ability to operate in an islanded mode
-          type: string
+          type: boolean
+          x-cds-type: Boolean
         hasCentralProtectionControl:
           default: false
           description: For DER installations where NSPs specify the need for additional
@@ -8167,6 +8646,13 @@ components:
         manualPayment:
           billFrequency: billFrequency
         amount: amount
+        digitalWallet:
+          calculationType: STATIC
+          identifier: identifier
+          provider: PAYPAL_AU
+          name: name
+          type: EMAIL
+          paymentFrequency: paymentFrequency
         cardDebit:
           calculationType: STATIC
           cardScheme: VISA
@@ -8190,11 +8676,14 @@ components:
           - cardDebit
           - directDebit
           - manualPayment
+          - digitalWallet
           type: string
         cardDebit:
           $ref: '#/components/schemas/EnergyPaymentSchedule_cardDebit'
         directDebit:
           $ref: '#/components/schemas/EnergyPaymentSchedule_directDebit'
+        digitalWallet:
+          $ref: '#/components/schemas/EnergyPaymentSchedule_digitalWallet'
         manualPayment:
           $ref: '#/components/schemas/EnergyPaymentSchedule_manualPayment'
       required:
@@ -8204,6 +8693,7 @@ components:
       - cardDebit
       - directDebit
       - manualPayment
+      - digitalWallet
     EnergyConcession:
       example:
         amount: amount
@@ -9333,14 +9823,16 @@ components:
             quality: ACTUAL
           unitOfMeasure: unitOfMeasure
           registerId: registerId
-          meterID: meterID
+          meterId: meterId
           intervalRead:
             readIntervalLength: 6
             intervalReads:
-            - value: 5.962133916683182
-              quality: ACTUAL
-            - value: 5.962133916683182
-              quality: ACTUAL
+            - 5.962133916683182
+            - 5.962133916683182
+            readQualities:
+              startInterval: 5
+              endInterval: 2
+              quality: SUBSTITUTE
             aggregateValue: 1.4658129805029452
           servicePointId: servicePointId
           registerSuffix: registerSuffix
@@ -9353,14 +9845,16 @@ components:
             quality: ACTUAL
           unitOfMeasure: unitOfMeasure
           registerId: registerId
-          meterID: meterID
+          meterId: meterId
           intervalRead:
             readIntervalLength: 6
             intervalReads:
-            - value: 5.962133916683182
-              quality: ACTUAL
-            - value: 5.962133916683182
-              quality: ACTUAL
+            - 5.962133916683182
+            - 5.962133916683182
+            readQualities:
+              startInterval: 5
+              endInterval: 2
+              quality: SUBSTITUTE
             aggregateValue: 1.4658129805029452
           servicePointId: servicePointId
           registerSuffix: registerSuffix
@@ -9370,7 +9864,8 @@ components:
           readUType: basicRead
       properties:
         reads:
-          description: Array of meter reads
+          description: Array of meter reads sorted by NMI in ascending order followed
+            by readStartDate in descending order
           items:
             $ref: '#/components/schemas/EnergyUsageRead'
           type: array
@@ -9384,7 +9879,7 @@ components:
             interTripScheme: interTripScheme
             underFrequencyProtectionDelay: 2.3021358869347655
             underVoltageProtection: 3.616076749251911
-            exportLimitkva: 5.962133916683182
+            exportLimitKva: 5.962133916683182
             overFrequencyProtectionDelay: 9.301444243932576
             overFrequencyProtection: 7.061401241503109
             overVoltageProtectionDelay: 7.386281948385884
@@ -9396,9 +9891,9 @@ components:
             neutralVoltageDisplacement: 7.457744773683766
             sustainedOverVoltage: 1.2315135367772556
             voltageVectorShift: 6.84685269835264
-          installedPhasesCount: 1.4658129805029452
-          availablePhasesCount: 6.027456183070403
-          islandableInstallation: islandableInstallation
+          installedPhasesCount: 1
+          availablePhasesCount: 2
+          islandableInstallation: true
           servicePointId: servicePointId
           approvedCapacity: 0.8008281904610115
           hasCentralProtectionControl: false
@@ -9415,7 +9910,7 @@ components:
               deviceIdentifier: 9.965781217890562
               nominalStorageCapacity: 8.762042012749001
               subtype: subtype
-              count: 9.369310271410669
+              count: 9
               modelNumber: modelNumber
               type: FOSSIL
               manufacturer: manufacturer
@@ -9424,7 +9919,7 @@ components:
               deviceIdentifier: 9.965781217890562
               nominalStorageCapacity: 8.762042012749001
               subtype: subtype
-              count: 9.369310271410669
+              count: 9
               modelNumber: modelNumber
               type: FOSSIL
               manufacturer: manufacturer
@@ -9443,7 +9938,7 @@ components:
               deviceIdentifier: 9.965781217890562
               nominalStorageCapacity: 8.762042012749001
               subtype: subtype
-              count: 9.369310271410669
+              count: 9
               modelNumber: modelNumber
               type: FOSSIL
               manufacturer: manufacturer
@@ -9452,7 +9947,7 @@ components:
               deviceIdentifier: 9.965781217890562
               nominalStorageCapacity: 8.762042012749001
               subtype: subtype
-              count: 9.369310271410669
+              count: 9
               modelNumber: modelNumber
               type: FOSSIL
               manufacturer: manufacturer
@@ -9463,7 +9958,7 @@ components:
             interTripScheme: interTripScheme
             underFrequencyProtectionDelay: 2.3021358869347655
             underVoltageProtection: 3.616076749251911
-            exportLimitkva: 5.962133916683182
+            exportLimitKva: 5.962133916683182
             overFrequencyProtectionDelay: 9.301444243932576
             overFrequencyProtection: 7.061401241503109
             overVoltageProtectionDelay: 7.386281948385884
@@ -9475,9 +9970,9 @@ components:
             neutralVoltageDisplacement: 7.457744773683766
             sustainedOverVoltage: 1.2315135367772556
             voltageVectorShift: 6.84685269835264
-          installedPhasesCount: 1.4658129805029452
-          availablePhasesCount: 6.027456183070403
-          islandableInstallation: islandableInstallation
+          installedPhasesCount: 1
+          availablePhasesCount: 2
+          islandableInstallation: true
           servicePointId: servicePointId
           approvedCapacity: 0.8008281904610115
           hasCentralProtectionControl: false
@@ -9494,7 +9989,7 @@ components:
               deviceIdentifier: 9.965781217890562
               nominalStorageCapacity: 8.762042012749001
               subtype: subtype
-              count: 9.369310271410669
+              count: 9
               modelNumber: modelNumber
               type: FOSSIL
               manufacturer: manufacturer
@@ -9503,7 +9998,7 @@ components:
               deviceIdentifier: 9.965781217890562
               nominalStorageCapacity: 8.762042012749001
               subtype: subtype
-              count: 9.369310271410669
+              count: 9
               modelNumber: modelNumber
               type: FOSSIL
               manufacturer: manufacturer
@@ -9522,7 +10017,7 @@ components:
               deviceIdentifier: 9.965781217890562
               nominalStorageCapacity: 8.762042012749001
               subtype: subtype
-              count: 9.369310271410669
+              count: 9
               modelNumber: modelNumber
               type: FOSSIL
               manufacturer: manufacturer
@@ -9531,7 +10026,7 @@ components:
               deviceIdentifier: 9.965781217890562
               nominalStorageCapacity: 8.762042012749001
               subtype: subtype
-              count: 9.369310271410669
+              count: 9
               modelNumber: modelNumber
               type: FOSSIL
               manufacturer: manufacturer
@@ -9560,6 +10055,60 @@ components:
           type: array
       required:
       - accounts
+      type: object
+    EnergyPaymentScheduleResponse_data:
+      example:
+        paymentSchedules:
+        - manualPayment:
+            billFrequency: billFrequency
+          amount: amount
+          digitalWallet:
+            calculationType: STATIC
+            identifier: identifier
+            provider: PAYPAL_AU
+            name: name
+            type: EMAIL
+            paymentFrequency: paymentFrequency
+          cardDebit:
+            calculationType: STATIC
+            cardScheme: VISA
+            paymentFrequency: paymentFrequency
+          directDebit:
+            bsb: bsb
+            calculationType: STATIC
+            accountNumber: accountNumber
+            paymentFrequency: paymentFrequency
+            isTokenised: true
+          paymentScheduleUType: cardDebit
+        - manualPayment:
+            billFrequency: billFrequency
+          amount: amount
+          digitalWallet:
+            calculationType: STATIC
+            identifier: identifier
+            provider: PAYPAL_AU
+            name: name
+            type: EMAIL
+            paymentFrequency: paymentFrequency
+          cardDebit:
+            calculationType: STATIC
+            cardScheme: VISA
+            paymentFrequency: paymentFrequency
+          directDebit:
+            bsb: bsb
+            calculationType: STATIC
+            accountNumber: accountNumber
+            paymentFrequency: paymentFrequency
+            isTokenised: true
+          paymentScheduleUType: cardDebit
+      properties:
+        paymentSchedules:
+          description: Array may be empty if no payment schedule exist
+          items:
+            $ref: '#/components/schemas/EnergyPaymentSchedule'
+          type: array
+      required:
+      - paymentSchedules
       type: object
     EnergyConcessionsResponse_data:
       example:
@@ -9745,7 +10294,7 @@ components:
           paymentStatus: PAID
       properties:
         invoices:
-          description: Array of invoices sorted by date in descending order
+          description: Array of invoices sorted by issue date in descending order
           items:
             $ref: '#/components/schemas/EnergyInvoice'
           type: array
@@ -10103,20 +10652,6 @@ components:
       - benefitPeriod
       - variation
       - coolingOffDays
-    EnergyPlanControlledLoad_rates:
-      properties:
-        unitPrice:
-          description: Unit price of usage per kWh (exclusive of GST)
-          type: string
-          x-cds-type: AmountString
-        volume:
-          description: Volume in kWh that this rate applies to.  Only applicable for
-            ‘stepped’ rates where different rates apply for different volumes of usage
-            in a period
-          type: number
-      required:
-      - unitPrice
-      type: object
     EnergyServicePoint_consumerProfile:
       example:
         threshold: LOW
@@ -10190,7 +10725,6 @@ components:
           - DRSP
           type: string
       required:
-      - location
       - party
       - role
       type: object
@@ -10426,40 +10960,52 @@ components:
       required:
       - value
       type: object
-    EnergyUsageRead_intervalRead_intervalReads:
+    EnergyUsageRead_intervalRead_readQualities:
+      description: ' Specifies quality of reads that are not ACTUAL.  For read indices
+        that are not specified, quality is assumed to be ACTUAL. If not present, all
+        quality of all reads are assumed to be actual. Required when interval-reads
+        query parameter equals FULL or MIN_30'
       example:
-        value: 5.962133916683182
-        quality: ACTUAL
+        startInterval: 5
+        endInterval: 2
+        quality: SUBSTITUTE
       properties:
+        startInterval:
+          description: Start interval for read quality flag. First read begins at
+            1
+          type: integer
+          x-cds-type: PositiveInteger
+        endInterval:
+          description: End interval for read quality flag
+          type: integer
+          x-cds-type: PositiveInteger
         quality:
-          default: ACTUAL
-          description: The quality of the read taken.  If absent then assumed to be
-            ACTUAL
+          description: The quality of the read taken
           enum:
-          - ACTUAL
           - SUBSTITUTE
           - FINAL_SUBSTITUTE
           type: string
-        value:
-          description: Interval value.  If positive then it means consumption, if
-            negative it means export
-          type: number
       required:
-      - value
+      - endInterval
+      - quality
+      - startInterval
       type: object
     EnergyUsageRead_intervalRead:
       description: Mandatory if readUType is set to intervalRead
       example:
         readIntervalLength: 6
         intervalReads:
-        - value: 5.962133916683182
-          quality: ACTUAL
-        - value: 5.962133916683182
-          quality: ACTUAL
+        - 5.962133916683182
+        - 5.962133916683182
+        readQualities:
+          startInterval: 5
+          endInterval: 2
+          quality: SUBSTITUTE
         aggregateValue: 1.4658129805029452
       properties:
         readIntervalLength:
-          description: Read interval length in minutes
+          description: Read interval length in minutes. Required when interval-reads
+            query parameter equals FULL or MIN_30
           type: integer
           x-cds-type: PositiveInteger
         aggregateValue:
@@ -10467,18 +11013,24 @@ components:
             then it means net consumption, if negative it means net export
           type: number
         intervalReads:
-          description: Array of reads with each element indicating the read for the
+          description: Array of Interval read values. If positive then it means consumption,
+            if negative it means export. Required when interval-reads query parameter
+            equals FULL or  MIN_30.<br>Each read value indicates the read for the
             interval specified by readIntervalLength beginning at midnight of readStartDate
             (for example 00:00 to 00:30 would be the first reading in a 30 minute
             Interval)
           items:
-            $ref: '#/components/schemas/EnergyUsageRead_intervalRead_intervalReads'
+            type: number
           type: array
+        readQualities:
+          $ref: '#/components/schemas/EnergyUsageRead_intervalRead_readQualities'
       required:
       - aggregateValue
-      - intervalReads
-      - readIntervalLength
       type: object
+      x-conditional:
+      - readIntervalLength
+      - intervalReads
+      - readQualities
     EnergyDerRecord_protectionMode:
       description: Required only when the hasCentralProtectionAndControl flag is set
         to true.  One or more of the object fields will be provided to describe the
@@ -10487,7 +11039,7 @@ components:
         interTripScheme: interTripScheme
         underFrequencyProtectionDelay: 2.3021358869347655
         underVoltageProtection: 3.616076749251911
-        exportLimitkva: 5.962133916683182
+        exportLimitKva: 5.962133916683182
         overFrequencyProtectionDelay: 9.301444243932576
         overFrequencyProtection: 7.061401241503109
         overVoltageProtectionDelay: 7.386281948385884
@@ -10500,7 +11052,7 @@ components:
         sustainedOverVoltage: 1.2315135367772556
         voltageVectorShift: 6.84685269835264
       properties:
-        exportLimitkva:
+        exportLimitKva:
           description: Maximum amount of power (kVA) that may be exported from a connection
             point to the grid, as monitored by a control / relay function. An absent
             value indicates no limit
@@ -10533,7 +11085,7 @@ components:
           description: Sustained over voltage.
           type: number
         sustainedOverVoltageDelay:
-          description: Trip delay time in seconds.
+          description: Sustained Over voltage protection delay in seconds.
           type: number
         frequencyRateOfChange:
           description: Rate of change of frequency trip point (Hz/s).
@@ -10554,7 +11106,7 @@ components:
         deviceIdentifier: 9.965781217890562
         nominalStorageCapacity: 8.762042012749001
         subtype: subtype
-        count: 9.369310271410669
+        count: 9
         modelNumber: modelNumber
         type: FOSSIL
         manufacturer: manufacturer
@@ -10567,7 +11119,8 @@ components:
           type: number
         count:
           description: Number of devices in the group of DER devices
-          type: number
+          type: integer
+          x-cds-type: PositiveInteger
         manufacturer:
           description: The name of the device manufacturer. If absent then assumed
             to be “unknown”
@@ -10635,7 +11188,7 @@ components:
           deviceIdentifier: 9.965781217890562
           nominalStorageCapacity: 8.762042012749001
           subtype: subtype
-          count: 9.369310271410669
+          count: 9
           modelNumber: modelNumber
           type: FOSSIL
           manufacturer: manufacturer
@@ -10644,7 +11197,7 @@ components:
           deviceIdentifier: 9.965781217890562
           nominalStorageCapacity: 8.762042012749001
           subtype: subtype
-          count: 9.369310271410669
+          count: 9
           modelNumber: modelNumber
           type: FOSSIL
           manufacturer: manufacturer
@@ -10911,8 +11464,7 @@ components:
       properties:
         isTokenised:
           description: Flag indicating that the account details are tokenised and
-            cannot be shared.  False if absent.  If false then bsb and accountNumber
-            should not be expected to be included
+            cannot be shared.  False if absent
           type: boolean
         bsb:
           description: The unmasked BSB for the account to be debited. Is expected
@@ -10950,6 +11502,63 @@ components:
       x-conditional:
       - bsb
       - accountNumber
+    EnergyPaymentSchedule_digitalWallet:
+      description: Represents a regular payment from a digital wallet. Mandatory if
+        paymentScheduleUType is set to digitalWallet
+      example:
+        calculationType: STATIC
+        identifier: identifier
+        provider: PAYPAL_AU
+        name: name
+        type: EMAIL
+        paymentFrequency: paymentFrequency
+      properties:
+        name:
+          description: The name assigned to the digital wallet by the owner of the
+            wallet, else the display name provided by the digital wallet provider
+          type: string
+        identifier:
+          description: The identifier of the digital wallet (dependent on type)
+          type: string
+        type:
+          description: The type of the digital wallet identifier
+          enum:
+          - EMAIL
+          - CONTACT_NAME
+          - TELEPHONE
+          type: string
+        provider:
+          description: The provider of the digital wallet
+          enum:
+          - PAYPAL_AU
+          - OTHER
+          type: string
+        paymentFrequency:
+          description: The frequency that payments will occur.  Formatted according
+            to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)
+            (excludes recurrence syntax)
+          type: string
+          x-cds-type: ExternalRef
+        calculationType:
+          description: The mechanism by which the payment amount is calculated.  Explanation
+            of values are as follows:<br/><ul><li>**STATIC** - Indicates a consistent,
+            static amount, per payment</li><li>**BALANCE** - Indicates that the outstanding
+            balance for the account is paid per period</li><li>**CALCULATED** - Indicates
+            that the payment amount is variable and calculated using a pre-defined
+            algorithm</li></ul>
+          enum:
+          - STATIC
+          - BALANCE
+          - CALCULATED
+          type: string
+      required:
+      - calculationType
+      - identifier
+      - name
+      - paymentFrequency
+      - provider
+      - type
+      type: object
     EnergyPaymentSchedule_manualPayment:
       description: Represents a manual payment schedule where the customer pays in
         response to a delivered statement. Mandatory if paymentScheduleUType is set

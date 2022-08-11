@@ -383,12 +383,21 @@ Obtain a list of electricity usage data from a particular service point
 |servicePointId|path|string|mandatory|The independent ID of the service point, known in the industry as the NMI. The  servicePointId will be replaced with NMI for all interactions between Data Holder and AEMO.|
 |oldest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with effective date at or after this date. If absent defaults to newest-date minus 24 months.  Format is aligned to DateString common type|
 |newest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with effective date at or before this date.  If absent defaults to current date.  Format is aligned to DateString common type|
+|interval-reads|query|string|optional|Type of interval reads. Any one of the valid values for this field can be supplied. If absent defaults to NONE|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request.  Default is 25 (standard pagination)|
 |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
 |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
 |x-fapi-interaction-id|header|string|mandatory|The x-fapi-interaction-id header value provided by the Data Recipient. If not supplied by the Data Recipient, the primary Data Holder MUST create a unique **[[RFC4122]](#nref-RFC4122)** UUID value for the x-fapi-interaction-id header.|
 |x-cds-arrangement|header|string|mandatory|A unique string representing a consent arrangement between a Data Recipient Software Product and Data Holder for a given consumer. The identifier MUST be unique per customer according to the definition of customer in the CDR Federation section of this profile. The x-cds-arrangement should contain the arrangement ID for the consent that the request is being made under and will be used for tracing and audit purposes. This field MUST be populated but AEMO MUST NOT seek to validate the consent associated with the arrangement|
+
+#### Enumerated Values
+
+|Parameter|Value|
+|---|---|
+|interval-reads|NONE|
+|interval-reads|MIN_30|
+|interval-reads|FULL|
 
 > Example responses
 
@@ -416,11 +425,13 @@ Obtain a list of electricity usage data from a particular service point
           "readIntervalLength": 0,
           "aggregateValue": 0,
           "intervalReads": [
-            {
-              "quality": "ACTUAL",
-              "value": 0
-            }
-          ]
+            0
+          ],
+          "readQualities": {
+            "startInterval": 0,
+            "endInterval": 0,
+            "quality": "SUBSTITUTE"
+          }
         }
       }
     ]
@@ -536,6 +547,7 @@ Obtain the electricity usage data for a specific set of service points
 |---|---|---|---|---|
 |oldest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with effective date at or after this date. If absent defaults to newest-date minus 24 months.  Format is aligned to DateString common type|
 |newest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with effective date at or before this date.  If absent defaults to current date.  Format is aligned to DateString common type|
+|interval-reads|query|string|optional|Type of interval reads. Any one of the valid values for this field can be supplied. If absent defaults to NONE|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request.  Default is 25 (standard pagination)|
 |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
@@ -546,6 +558,14 @@ Obtain the electricity usage data for a specific set of service points
 |» data|body|object|mandatory|none|
 |»» servicePointIds|body|[string]|mandatory|Array of specific NMIs to obtain data for|
 |» meta|body|[Meta](#schemacdr-energy-secondary-data-holder-apimeta)|mandatory|none|
+
+#### Enumerated Values
+
+|Parameter|Value|
+|---|---|
+|interval-reads|NONE|
+|interval-reads|MIN_30|
+|interval-reads|FULL|
 
 > Example responses
 
@@ -573,11 +593,13 @@ Obtain the electricity usage data for a specific set of service points
           "readIntervalLength": 0,
           "aggregateValue": 0,
           "intervalReads": [
-            {
-              "quality": "ACTUAL",
-              "value": 0
-            }
-          ]
+            0
+          ],
+          "readQualities": {
+            "startInterval": 0,
+            "endInterval": 0,
+            "quality": "SUBSTITUTE"
+          }
         }
       }
     ]
@@ -1137,11 +1159,13 @@ This operation does not require authentication
           "readIntervalLength": 0,
           "aggregateValue": 0,
           "intervalReads": [
-            {
-              "quality": "ACTUAL",
-              "value": 0
-            }
-          ]
+            0
+          ],
+          "readQualities": {
+            "startInterval": 0,
+            "endInterval": 0,
+            "quality": "SUBSTITUTE"
+          }
         }
       }
     ]
@@ -1166,7 +1190,7 @@ This operation does not require authentication
 |Name|Type|Required|Description|
 |---|---|---|---|
 |data|object|mandatory|none|
-|» reads|[[EnergyUsageRead](#schemacdr-energy-secondary-data-holder-apienergyusageread)]|mandatory|Array of meter reads|
+|» reads|[[EnergyUsageRead](#schemacdr-energy-secondary-data-holder-apienergyusageread)]|mandatory|Array of meter reads sorted by NMI in ascending order followed by readStartDate in descending order|
 |links|[LinksPaginated](#schemacdr-energy-secondary-data-holder-apilinkspaginated)|mandatory|none|
 |meta|[MetaPaginated](#schemacdr-energy-secondary-data-holder-apimetapaginated)|mandatory|none|
 
@@ -1660,11 +1684,13 @@ This operation does not require authentication
     "readIntervalLength": 0,
     "aggregateValue": 0,
     "intervalReads": [
-      {
-        "quality": "ACTUAL",
-        "value": 0
-      }
-    ]
+      0
+    ],
+    "readQualities": {
+      "startInterval": 0,
+      "endInterval": 0,
+      "quality": "SUBSTITUTE"
+    }
   }
 }
 
@@ -1687,11 +1713,13 @@ This operation does not require authentication
 |» quality|string|optional|The quality of the read taken.  If absent then assumed to be ACTUAL|
 |» value|number|mandatory|Meter read value.  If positive then it means consumption, if negative it means export|
 |intervalRead|object|conditional|Mandatory if readUType is set to intervalRead|
-|» readIntervalLength|[PositiveInteger](#common-field-types)|mandatory|Read interval length in minutes|
+|» readIntervalLength|[PositiveInteger](#common-field-types)|conditional|Read interval length in minutes. Required when interval-reads query parameter equals FULL or MIN_30|
 |» aggregateValue|number|mandatory|The aggregate sum of the interval read values. If positive then it means net consumption, if negative it means net export|
-|» intervalReads|[object]|mandatory|Array of reads with each element indicating the read for the interval specified by readIntervalLength beginning at midnight of readStartDate (for example 00:00 to 00:30 would be the first reading in a 30 minute Interval)|
-|»» quality|string|optional|The quality of the read taken.  If absent then assumed to be ACTUAL|
-|»» value|number|mandatory|Interval value.  If positive then it means consumption, if negative it means export|
+|» intervalReads|[number]|conditional|Array of Interval read values. If positive then it means consumption, if negative it means export. Required when interval-reads query parameter equals FULL or  MIN_30.<br>Each read value indicates the read for the interval specified by readIntervalLength beginning at midnight of readStartDate (for example 00:00 to 00:30 would be the first reading in a 30 minute Interval)|
+|» readQualities|object|conditional|Specifies quality of reads that are not ACTUAL.  For read indices that are not specified, quality is assumed to be ACTUAL. If not present, all quality of all reads are assumed to be actual. Required when interval-reads query parameter equals FULL or MIN_30|
+|»» startInterval|[PositiveInteger](#common-field-types)|mandatory|Start interval for read quality flag. First read begins at 1|
+|»» endInterval|[PositiveInteger](#common-field-types)|mandatory|End interval for read quality flag|
+|»» quality|string|mandatory|The quality of the read taken|
 
 #### Enumerated Values
 
@@ -1702,7 +1730,6 @@ This operation does not require authentication
 |quality|ACTUAL|
 |quality|SUBSTITUTE|
 |quality|FINAL_SUBSTITUTE|
-|quality|ACTUAL|
 |quality|SUBSTITUTE|
 |quality|FINAL_SUBSTITUTE|
 

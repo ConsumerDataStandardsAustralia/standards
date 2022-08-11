@@ -37,15 +37,27 @@
 
 ## Informative References
 
+```diff
+Added the following references:
++ ACCC
++ OAIC
++ Treasury
 
+Updated the following references:
+> CDR
+
+```
 | **Reference**  | **Description**                                                                                                                                                                   |
 |----------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| <a id="iref-ANZSCO"></a>**[ANZSCO]**  | ANZSCO - Australian and New Zealand Standard Classification of Occupations : <http://www.abs.gov.au/ANZSCO> |
+| <a id="iref-ACCC"></a>**[ACCC]**                | The Australian Competition and Consumer Commission is responsible for accrediting data recipients to participate in CDR, building and maintaining the Register of data recipients and data holders, providing support and guidance to participants and promoting compliance with the CDR rules and standards, including taking enforcement action where necessary.<br/><https://www.accc.gov.au/focus-areas/consumer-data-right-cdr-0> |
+| <a id="iref-ANZSCO"></a>**[ANZSCO]**            | ANZSCO - Australian and New Zealand Standard Classification of Occupations : <http://www.abs.gov.au/ANZSCO> |
 | <a id="iref-ANZSIC-2006"></a>**[ANZSIC-2006]**  | 1292.0 - Australian and New Zealand Standard Industrial Classification (ANZSIC), 2006 (Revision 2.0)  : <http://www.abs.gov.au/anzsic> |
-| <a id="iref-BCP195"></a>**[BCP195]**    | Recommendations for Secure Use of Transport Layer Security (TLS) and Datagram Transport Layer Security (DTLS): <https://tools.ietf.org/html/bcp195>
-| <a id="iref-CDR"></a>**[CDR]**          | Consumer Data Right: <https://www.accc.gov.au/focus-areas/consumer-data-right>                                                                                                    |
-| <a id="iref-E-164"></a>**[E.164]**      | The international public telecommunication numbering plan: <http://www.itu.int/rec/T-REC-E.164-201011-I/en>        |
-| <a id="iref-FAPI"></a>**[FAPI]**        | Financial-Grade API - Home Page <https://openid.net/wg/fapi/>                                                                                                     |
-| <a id="iref-RFC3966"></a>**[RFC3966]**  | The tel URI for Telephone Numbers: <https://tools.ietf.org/html/rfc3966>                                            |
-| <a id="iref-RFC7231"></a>**[RFC7231]**  | Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content: <https://tools.ietf.org/html/rfc7231>  | |
-| <a id="iref-X.1254"></a>**[X.1254]**    | X.1254 - Entity authentication assurance framework: <https://www.itu.int/rec/T-REC-X1254-201209-I/en> |
+| <a id="iref-BCP195"></a>**[BCP195]**            | Recommendations for Secure Use of Transport Layer Security (TLS) and Datagram Transport Layer Security (DTLS): <https://tools.ietf.org/html/bcp195> |
+| <a id="iref-CDR"></a>**[CDR]**                  | Consumer Data Right: <http://cdr.gov.au>|
+| <a id="iref-E-164"></a>**[E.164]**              | The international public telecommunication numbering plan: <http://www.itu.int/rec/T-REC-E.164-201011-I/en> |
+| <a id="iref-FAPI"></a>**[FAPI]**                | Financial-Grade API - Home Page <https://openid.net/wg/fapi/>|
+| <a id="iref-OAIC"></a>**[OAIC]**                | The Office of the Australian Information Commissioner is responsible for regulating privacy and confidentiality under the CDR. The OAIC also handles complaints and notifications of eligible data breaches relating to CDR data.<br/><https://www.oaic.gov.au/consumer-data-right> |
+| <a id="iref-RFC3966"></a>**[RFC3966]**          | The tel URI for Telephone Numbers: <https://tools.ietf.org/html/rfc3966> |
+| <a id="iref-RFC7231"></a>**[RFC7231]**          | Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content: <https://tools.ietf.org/html/rfc7231>  |
+| <a id="iref-Treasury"></a>**[Treasury]**        | The Treasury leads CDR policy, including development of rules and advice to Government on which sectors the CDR should apply to in the future. The DSB within Treasury is responsible for the creation of the technical standards for the sharing of product and consumer data.<br/><https://treasury.gov.au/consumer-data-right> | |
+| <a id="iref-X.1254"></a>**[X.1254]**            | X.1254 - Entity authentication assurance framework: <https://www.itu.int/rec/T-REC-X1254-201209-I/en> |

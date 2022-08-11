@@ -361,6 +361,20 @@ paths:
           type: string
         style: form
         x-cds-type: DateString
+      - description: Type of interval reads. Any one of the valid values for this
+          field can be supplied. If absent defaults to NONE
+        explode: true
+        in: query
+        name: interval-reads
+        required: false
+        schema:
+          default: NONE
+          enum:
+          - NONE
+          - MIN_30
+          - FULL
+          type: string
+        style: form
       - description: Page of results to request (standard pagination)
         explode: true
         in: query
@@ -563,6 +577,20 @@ paths:
           type: string
         style: form
         x-cds-type: DateString
+      - description: Type of interval reads. Any one of the valid values for this
+          field can be supplied. If absent defaults to NONE
+        explode: true
+        in: query
+        name: interval-reads
+        required: false
+        schema:
+          default: NONE
+          enum:
+          - NONE
+          - MIN_30
+          - FULL
+          type: string
+        style: form
       - description: Page of results to request (standard pagination)
         explode: true
         in: query
@@ -1051,6 +1079,21 @@ components:
       schema:
         type: string
       style: simple
+    interval-reads:
+      description: Type of interval reads. Any one of the valid values for this field
+        can be supplied. If absent defaults to NONE
+      explode: true
+      in: query
+      name: interval-reads
+      required: false
+      schema:
+        default: NONE
+        enum:
+        - NONE
+        - MIN_30
+        - FULL
+        type: string
+      style: form
     newest-time:
       description: Constrain the request to records with effective time at or before
         this date/time.  If absent defaults to current date/time.  Format is aligned
@@ -1511,10 +1554,12 @@ components:
             intervalRead:
               readIntervalLength: 6
               intervalReads:
-              - value: 5.962133916683182
-                quality: ACTUAL
-              - value: 5.962133916683182
-                quality: ACTUAL
+              - 5.962133916683182
+              - 5.962133916683182
+              readQualities:
+                startInterval: 5
+                endInterval: 2
+                quality: SUBSTITUTE
               aggregateValue: 1.4658129805029452
             servicePointId: servicePointId
             registerSuffix: registerSuffix
@@ -1531,10 +1576,12 @@ components:
             intervalRead:
               readIntervalLength: 6
               intervalReads:
-              - value: 5.962133916683182
-                quality: ACTUAL
-              - value: 5.962133916683182
-                quality: ACTUAL
+              - 5.962133916683182
+              - 5.962133916683182
+              readQualities:
+                startInterval: 5
+                endInterval: 2
+                quality: SUBSTITUTE
               aggregateValue: 1.4658129805029452
             servicePointId: servicePointId
             registerSuffix: registerSuffix
@@ -2173,10 +2220,12 @@ components:
         intervalRead:
           readIntervalLength: 6
           intervalReads:
-          - value: 5.962133916683182
-            quality: ACTUAL
-          - value: 5.962133916683182
-            quality: ACTUAL
+          - 5.962133916683182
+          - 5.962133916683182
+          readQualities:
+            startInterval: 5
+            endInterval: 2
+            quality: SUBSTITUTE
           aggregateValue: 1.4658129805029452
         servicePointId: servicePointId
         registerSuffix: registerSuffix
@@ -2694,10 +2743,12 @@ components:
           intervalRead:
             readIntervalLength: 6
             intervalReads:
-            - value: 5.962133916683182
-              quality: ACTUAL
-            - value: 5.962133916683182
-              quality: ACTUAL
+            - 5.962133916683182
+            - 5.962133916683182
+            readQualities:
+              startInterval: 5
+              endInterval: 2
+              quality: SUBSTITUTE
             aggregateValue: 1.4658129805029452
           servicePointId: servicePointId
           registerSuffix: registerSuffix
@@ -2714,10 +2765,12 @@ components:
           intervalRead:
             readIntervalLength: 6
             intervalReads:
-            - value: 5.962133916683182
-              quality: ACTUAL
-            - value: 5.962133916683182
-              quality: ACTUAL
+            - 5.962133916683182
+            - 5.962133916683182
+            readQualities:
+              startInterval: 5
+              endInterval: 2
+              quality: SUBSTITUTE
             aggregateValue: 1.4658129805029452
           servicePointId: servicePointId
           registerSuffix: registerSuffix
@@ -2727,7 +2780,8 @@ components:
           readUType: basicRead
       properties:
         reads:
-          description: Array of meter reads
+          description: Array of meter reads sorted by NMI in ascending order followed
+            by readStartDate in descending order
           items:
             $ref: '#/components/schemas/EnergyUsageRead'
           type: array
@@ -3013,7 +3067,6 @@ components:
           - DRSP
           type: string
       required:
-      - location
       - party
       - role
       type: object
@@ -3249,40 +3302,52 @@ components:
       required:
       - value
       type: object
-    EnergyUsageRead_intervalRead_intervalReads:
+    EnergyUsageRead_intervalRead_readQualities:
+      description: ' Specifies quality of reads that are not ACTUAL.  For read indices
+        that are not specified, quality is assumed to be ACTUAL. If not present, all
+        quality of all reads are assumed to be actual. Required when interval-reads
+        query parameter equals FULL or MIN_30'
       example:
-        value: 5.962133916683182
-        quality: ACTUAL
+        startInterval: 5
+        endInterval: 2
+        quality: SUBSTITUTE
       properties:
+        startInterval:
+          description: Start interval for read quality flag. First read begins at
+            1
+          type: integer
+          x-cds-type: PositiveInteger
+        endInterval:
+          description: End interval for read quality flag
+          type: integer
+          x-cds-type: PositiveInteger
         quality:
-          default: ACTUAL
-          description: The quality of the read taken.  If absent then assumed to be
-            ACTUAL
+          description: The quality of the read taken
           enum:
-          - ACTUAL
           - SUBSTITUTE
           - FINAL_SUBSTITUTE
           type: string
-        value:
-          description: Interval value.  If positive then it means consumption, if
-            negative it means export
-          type: number
       required:
-      - value
+      - endInterval
+      - quality
+      - startInterval
       type: object
     EnergyUsageRead_intervalRead:
       description: Mandatory if readUType is set to intervalRead
       example:
         readIntervalLength: 6
         intervalReads:
-        - value: 5.962133916683182
-          quality: ACTUAL
-        - value: 5.962133916683182
-          quality: ACTUAL
+        - 5.962133916683182
+        - 5.962133916683182
+        readQualities:
+          startInterval: 5
+          endInterval: 2
+          quality: SUBSTITUTE
         aggregateValue: 1.4658129805029452
       properties:
         readIntervalLength:
-          description: Read interval length in minutes
+          description: Read interval length in minutes. Required when interval-reads
+            query parameter equals FULL or MIN_30
           type: integer
           x-cds-type: PositiveInteger
         aggregateValue:
@@ -3290,18 +3355,24 @@ components:
             then it means net consumption, if negative it means net export
           type: number
         intervalReads:
-          description: Array of reads with each element indicating the read for the
+          description: Array of Interval read values. If positive then it means consumption,
+            if negative it means export. Required when interval-reads query parameter
+            equals FULL or  MIN_30.<br>Each read value indicates the read for the
             interval specified by readIntervalLength beginning at midnight of readStartDate
             (for example 00:00 to 00:30 would be the first reading in a 30 minute
             Interval)
           items:
-            $ref: '#/components/schemas/EnergyUsageRead_intervalRead_intervalReads'
+            type: number
           type: array
+        readQualities:
+          $ref: '#/components/schemas/EnergyUsageRead_intervalRead_readQualities'
       required:
       - aggregateValue
-      - intervalReads
-      - readIntervalLength
       type: object
+      x-conditional:
+      - readIntervalLength
+      - intervalReads
+      - readQualities
     EnergyDerRecord_protectionMode:
       description: Required only when the hasCentralProtectionAndControl flag is set
         to true.  One or more of the object fields will be provided to describe the

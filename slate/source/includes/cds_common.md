@@ -1232,7 +1232,7 @@ This operation does not require authentication
 |---|---|---|---|
 |isPreferred|[Boolean](#common-field-types)|optional|May be true for one and only one email record in the collection. Denotes the default email address|
 |purpose|string|mandatory|The purpose for the email, as specified by the customer (Enumeration)|
-|address|[ExternalRef](#common-field-types)|mandatory|A correctly formatted email address, as defined by the addr_spec format in **[[RFC5322]](#nref-RFC5322)**|
+|address|[ExternalRef](#common-field-types)|mandatory|A correctly formatted email address, as defined by the addr-spec format in **[[RFC5322]](#nref-RFC5322)**|
 
 #### Enumerated Values
 

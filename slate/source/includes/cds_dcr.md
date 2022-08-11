@@ -7,7 +7,7 @@
 > Code samples
 
 ```http
-POST https://data.holder.com.au/register/register HTTP/1.1
+POST https://data.holder.com.au/register HTTP/1.1
 Host: data.holder.com.au
 Content-Type: application/jwt
 Accept: application/json
@@ -22,7 +22,7 @@ var headers = {
 };
 
 $.ajax({
-  url: 'https://data.holder.com.au/register/register',
+  url: 'https://data.holder.com.au/register',
   method: 'post',
 
   headers: headers,
@@ -117,7 +117,7 @@ This operation does not require authentication
 > Code samples
 
 ```http
-GET https://data.holder.com.au/register/register/{ClientId} HTTP/1.1
+GET https://data.holder.com.au/register/{ClientId} HTTP/1.1
 Host: data.holder.com.au
 Accept: application/json
 Authorization: string
@@ -132,7 +132,7 @@ var headers = {
 };
 
 $.ajax({
-  url: 'https://data.holder.com.au/register/register/{ClientId}',
+  url: 'https://data.holder.com.au/register/{ClientId}',
   method: 'get',
 
   headers: headers,
@@ -236,7 +236,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 > Code samples
 
 ```http
-PUT https://data.holder.com.au/register/register/{ClientId} HTTP/1.1
+PUT https://data.holder.com.au/register/{ClientId} HTTP/1.1
 Host: data.holder.com.au
 Content-Type: application/jwt
 Accept: application/json
@@ -253,7 +253,7 @@ var headers = {
 };
 
 $.ajax({
-  url: 'https://data.holder.com.au/register/register/{ClientId}',
+  url: 'https://data.holder.com.au/register/{ClientId}',
   method: 'put',
 
   headers: headers,
@@ -361,7 +361,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 > Code samples
 
 ```http
-DELETE https://data.holder.com.au/register/register/{ClientId} HTTP/1.1
+DELETE https://data.holder.com.au/register/{ClientId} HTTP/1.1
 Host: data.holder.com.au
 
 Authorization: string
@@ -375,7 +375,7 @@ var headers = {
 };
 
 $.ajax({
-  url: 'https://data.holder.com.au/register/register/{ClientId}',
+  url: 'https://data.holder.com.au/register/{ClientId}',
   method: 'delete',
 
   headers: headers,

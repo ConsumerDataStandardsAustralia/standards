@@ -124,7 +124,7 @@
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td>The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended) if the customer has logged in. Not to be included for unauthenticated calls.</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-R-Draft">[FAPI-R-Draft]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
@@ -456,7 +456,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td>The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended) if the customer has logged in. Not to be included for unauthenticated calls.</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-R-Draft">[FAPI-R-Draft]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
@@ -784,7 +784,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td>The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended) if the customer has logged in. Not to be included for unauthenticated calls.</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-R-Draft">[FAPI-R-Draft]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
@@ -1030,7 +1030,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td>The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended) if the customer has logged in. Not to be included for unauthenticated calls.</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-R-Draft">[FAPI-R-Draft]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
@@ -1260,7 +1260,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td>The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended) if the customer has logged in. Not to be included for unauthenticated calls.</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-R-Draft">[FAPI-R-Draft]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
@@ -1730,7 +1730,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td>The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended) if the customer has logged in. Not to be included for unauthenticated calls.</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-R-Draft">[FAPI-R-Draft]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
@@ -1995,7 +1995,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td>The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended) if the customer has logged in. Not to be included for unauthenticated calls.</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-R-Draft">[FAPI-R-Draft]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
@@ -2254,7 +2254,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td>The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended) if the customer has logged in. Not to be included for unauthenticated calls.</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-R-Draft">[FAPI-R-Draft]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
@@ -2532,7 +2532,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td>The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended) if the customer has logged in. Not to be included for unauthenticated calls.</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-R-Draft">[FAPI-R-Draft]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
@@ -2858,7 +2858,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td>The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended) if the customer has logged in. Not to be included for unauthenticated calls.</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-R-Draft">[FAPI-R-Draft]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
@@ -3116,7 +3116,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td>The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended) if the customer has logged in. Not to be included for unauthenticated calls.</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-R-Draft">[FAPI-R-Draft]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
@@ -3476,7 +3476,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td>The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended) if the customer has logged in. Not to be included for unauthenticated calls.</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-R-Draft">[FAPI-R-Draft]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
@@ -3884,7 +3884,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td>The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended) if the customer has logged in. Not to be included for unauthenticated calls.</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-R-Draft">[FAPI-R-Draft]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
@@ -4226,7 +4226,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td>The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended) if the customer has logged in. Not to be included for unauthenticated calls.</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-R-Draft">[FAPI-R-Draft]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
@@ -4490,7 +4490,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td>The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended) if the customer has logged in. Not to be included for unauthenticated calls.</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-R-Draft">[FAPI-R-Draft]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
