@@ -61,7 +61,7 @@
                 "required": [
                     "data",
                     "links",
-                    "me"
+                    "meta"
                 ],
                 "properties": {
                     "data": {
