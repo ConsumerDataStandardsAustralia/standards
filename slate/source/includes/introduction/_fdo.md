@@ -1,5 +1,13 @@
 ## Future Dated Obligations
 
+```diff
+Registration validation future obligation date changed from
+- 15th November 2022
+to
++ 31st August 2022
+```
+
+
 The standards, as published from time to time, may include specific statements indicating that a specific section of the standards will not take effect until a future date or may cease to have effect on some future date.
 
 The table below highlights these areas of the standards.
@@ -27,7 +35,7 @@ The table below highlights these areas of the standards.
 |[Get Metrics V3](#get-metrics)|Version 3 of this end point must be made available by affected data holders by October 1st 2022|October 1st 2022|
 |[Standard Error Codes](#error-codes) | Data Holders MAY retire application-specific error codes in favour of standard error codes from November 1st 2022 | November 1st 2022 |
 |[Data Recipient CDR Arrangement Endpoint](#cdr-arrangement-revocation-end-point) | From November 15th 2022, Data Recipients **MUST** validate the `cdr_arrangement_id`, if presented, is the same as the value included in the "CDR Arrangement JWT".| November 15th 2022 |
-|[Registration Validation](#registration-validation) | Data Holders **MUST** ignore unsupported authorisation scopes presented in the SSA for the creation and update of client registrations from November 15th 2022 | November 15th 2022 |
+|[Registration Validation](#registration-validation) | Data Holders **MUST** ignore unsupported authorisation scopes presented in the SSA for the creation and update of client registrations from August 31st 2022 | August 31st 2022 |
 |[Get Account Detail V2](#get-account-detail)|Version 2 of this end point must be made available by affected data holders by November 30th 2022|November 30th 2022|
 |[Get Customer Detail V2](#get-customer-detail)|Version 2 of this end point must be made available by affected data holders by November 30th 2022|November 30th 2022|
 |[Get Product Detail V4](#get-product-detail)|Version 4 of this end point must be made available by affected data holders by November 30th 2022|November 30th 2022|
