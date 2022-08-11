@@ -15,4 +15,34 @@ Corrected related...
 <tr><td><a href='./includes/swagger/cds_energy.yaml'>Energy OpenAPI Specification (YAML)</a></td></tr>
 </table>
 
+```diff
+Corrected description for `x-fapi-auth-date` references
+
+Added the following query parameter to `Get Usage For Service Points`, `Get Bulk Usage` and `Get Usage For Specific Service Points` endpoints:
++ interval-reads
+
+Converted `EnergyUsageRead.intervalRead.intervalReads` into an array of values
+
+Added/Removed the following to EnergyUsageRead structure:
++ readQualities (object)
+- quality (field)
+- value (field)
+
+Made the following conditional:
+* EnergyUsageRead.intervalRead.readIntervalLength
+* EnergyUsageRead.intervalRead.intervalReads
+* EnergyUsageRead.intervalRead.intervalReads.readQualities
+
+Made the EnergyPlanControlledLoad into an array.
+
+Added/Removed the following to EnergyPlanControlledLoad:
++ rateBlockUType (field)
++ startDate (field)
++ endDate (field)
++ singleRate (object)
++ timeOfUseRates (object)
+- dailyCharge (field)
+- period (field)
+```
+
 <%= partial "includes/cds_energy.md" %>
