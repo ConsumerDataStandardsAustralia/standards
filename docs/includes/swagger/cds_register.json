@@ -2,7 +2,7 @@
   "openapi" : "3.0.3",
   "info" : {
     "title" : "CDR Participant Discovery API",
-    "version" : "1.17.0"
+    "version" : "1.18.0"
   },
   "servers" : [ {
     "url" : "https://<register-base-url>/"
@@ -80,6 +80,7 @@
           "name" : "x-v",
           "required" : false,
           "schema" : {
+            "default" : "1",
             "type" : "string"
           },
           "style" : "simple"
@@ -311,7 +312,7 @@
     },
     "/cdr-register/v1/{industry}/data-recipients/brands/{dataRecipientBrandId}/software-products/{softwareProductId}/ssa" : {
       "get" : {
-        "description" : "Get a Software Statement Assertion (SSA) for a software product on the CDR Register to be used for Dynamic Client Registration with a Data Holder Brand.\n\nObsolete versions: [v2](includes/obsolete/get-software-statement-assertion-v2.html)",
+        "description" : "Get a Software Statement Assertion (SSA) for a software product on the CDR Register to be used for Dynamic Client Registration with a Data Holder Brand.\n\nObsolete versions: [v1](includes/obsolete/get-software-statement-assertion-v1.html), [v2](includes/obsolete/get-software-statement-assertion-v2.html)",
         "operationId" : "GetSoftwareStatementAssertion",
         "parameters" : [ {
           "description" : "The industry the participant is retrieving data for (Banking, etc)",
@@ -331,6 +332,7 @@
           "name" : "x-v",
           "required" : false,
           "schema" : {
+            "default" : "1",
             "type" : "string"
           },
           "style" : "simple"
@@ -485,6 +487,7 @@
           "name" : "x-v",
           "required" : false,
           "schema" : {
+            "default" : "1",
             "type" : "string"
           },
           "style" : "simple"
@@ -599,6 +602,7 @@
           "name" : "x-v",
           "required" : false,
           "schema" : {
+            "default" : "1",
             "type" : "string"
           },
           "style" : "simple"
@@ -713,6 +717,7 @@
           "name" : "x-v",
           "required" : false,
           "schema" : {
+            "default" : "1",
             "type" : "string"
           },
           "style" : "simple"
@@ -827,6 +832,7 @@
           "name" : "x-v",
           "required" : false,
           "schema" : {
+            "default" : "1",
             "type" : "string"
           },
           "style" : "simple"
@@ -1229,7 +1235,7 @@
             "type" : "string"
           },
           "industries" : {
-            "description" : "The industries the Data Holder Brand belongs to. Please note that the CDR Register entity model is constrained to one industry per brand which is planned to be relaxed in the future.",
+            "description" : "The industries the Data Holder Brand belongs to",
             "items" : {
               "enum" : [ "banking", "energy", "telco" ],
               "type" : "string"
@@ -1322,7 +1328,7 @@
             "x-cds-type" : "URIString"
           },
           "industries" : {
-            "description" : "The industries the Data Holder Brand belongs to. Please note that the CDR Register entity model is constrained to one industry per brand which is planned to be relaxed in the future.",
+            "description" : "The industries the Data Holder Brand belongs to",
             "items" : {
               "enum" : [ "banking", "energy", "telco" ],
               "type" : "string"

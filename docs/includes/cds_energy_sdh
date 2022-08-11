@@ -634,6 +634,13 @@ x-cds-arrangement: string
 <td>Constrain the request to records with effective date at or before this date.  If absent defaults to current date.  Format is aligned to DateString common type</td>
 </tr>
 <tr>
+<td>interval-reads</td>
+<td>query</td>
+<td>string</td>
+<td>optional</td>
+<td>Type of interval reads. Any one of the valid values for this field can be supplied. If absent defaults to NONE</td>
+</tr>
+<tr>
 <td>page</td>
 <td>query</td>
 <td><a href="#common-field-types">PositiveInteger</a></td>
@@ -676,6 +683,26 @@ x-cds-arrangement: string
 <td>A unique string representing a consent arrangement between a Data Recipient Software Product and Data Holder for a given consumer. The identifier MUST be unique per customer according to the definition of customer in the CDR Federation section of this profile. The x-cds-arrangement should contain the arrangement ID for the consent that the request is being made under and will be used for tracing and audit purposes. This field MUST be populated but AEMO MUST NOT seek to validate the consent associated with the arrangement</td>
 </tr>
 </tbody></table>
+<h4 id='enumerated-values'>Enumerated Values</h4>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>interval-reads</td>
+<td>NONE</td>
+</tr>
+<tr>
+<td>interval-reads</td>
+<td>MIN_30</td>
+</tr>
+<tr>
+<td>interval-reads</td>
+<td>FULL</td>
+</tr>
+</tbody></table>
 
 <blockquote>
 <p>Example responses</p>
@@ -703,11 +730,13 @@ x-cds-arrangement: string
           </span><span class="s2">"readIntervalLength"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
           </span><span class="s2">"aggregateValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
           </span><span class="s2">"intervalReads"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-              </span><span class="s2">"quality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTUAL"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-          </span><span class="p">]</span><span class="w">
+            </span><span class="mi">0</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="s2">"readQualities"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"startInterval"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"endInterval"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"quality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUBSTITUTE"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
@@ -913,6 +942,13 @@ x-cds-arrangement: string
 <td>Constrain the request to records with effective date at or before this date.  If absent defaults to current date.  Format is aligned to DateString common type</td>
 </tr>
 <tr>
+<td>interval-reads</td>
+<td>query</td>
+<td>string</td>
+<td>optional</td>
+<td>Type of interval reads. Any one of the valid values for this field can be supplied. If absent defaults to NONE</td>
+</tr>
+<tr>
 <td>page</td>
 <td>query</td>
 <td><a href="#common-field-types">PositiveInteger</a></td>
@@ -983,6 +1019,26 @@ x-cds-arrangement: string
 <td>none</td>
 </tr>
 </tbody></table>
+<h4 id='enumerated-values-2'>Enumerated Values</h4>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>interval-reads</td>
+<td>NONE</td>
+</tr>
+<tr>
+<td>interval-reads</td>
+<td>MIN_30</td>
+</tr>
+<tr>
+<td>interval-reads</td>
+<td>FULL</td>
+</tr>
+</tbody></table>
 
 <blockquote>
 <p>Example responses</p>
@@ -1010,11 +1066,13 @@ x-cds-arrangement: string
           </span><span class="s2">"readIntervalLength"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
           </span><span class="s2">"aggregateValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
           </span><span class="s2">"intervalReads"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-              </span><span class="s2">"quality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTUAL"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-          </span><span class="p">]</span><span class="w">
+            </span><span class="mi">0</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="s2">"readQualities"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"startInterval"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"endInterval"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"quality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUBSTITUTE"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
@@ -1896,11 +1954,13 @@ This operation does not require authentication
           </span><span class="s2">"readIntervalLength"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
           </span><span class="s2">"aggregateValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
           </span><span class="s2">"intervalReads"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-              </span><span class="s2">"quality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTUAL"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-          </span><span class="p">]</span><span class="w">
+            </span><span class="mi">0</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="s2">"readQualities"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"startInterval"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"endInterval"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"quality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUBSTITUTE"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
@@ -1937,7 +1997,7 @@ This operation does not require authentication
 <td>» reads</td>
 <td>[<a href="#schemacdr-energy-secondary-data-holder-apienergyusageread">EnergyUsageRead</a>]</td>
 <td>mandatory</td>
-<td>Array of meter reads</td>
+<td>Array of meter reads sorted by NMI in ascending order followed by readStartDate in descending order</td>
 </tr>
 <tr>
 <td>links</td>
@@ -2307,7 +2367,7 @@ This operation does not require authentication
 <td>A code that defines the consumption threshold as defined in the National Energy Retail Regulations, or in overriding Jurisdictional instruments. Note the details of enumeration values below: <ul><li><strong>LOW</strong> - Consumption is less than the ‘lower consumption threshold’ as defined in the National Energy Retail Regulations</li><li><strong>MEDIUM</strong> - Consumption is equal to or greater than the ‘lower consumption threshold’, but less than the ‘upper consumption threshold’, as defined in the National Energy Retail Regulations</li><li><strong>HIGH</strong> - Consumption is equal to or greater than the ‘upper consumption threshold’ as defined in the National Energy Retail Regulations</li></ul></td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values'>Enumerated Values</h4>
+<h4 id='enumerated-values-3'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -2757,7 +2817,7 @@ This operation does not require authentication
 <td>Actual/Subtractive Indicator. Note the details of enumeration values below: <ul><li><strong>ACTUAL</strong> implies volume of energy actually metered between two dates</li><li><strong>CUMULATIVE</strong> indicates a meter reading for a specific date. A second Meter Reading is required to determine the consumption between those two Meter Reading dates</li></ul></td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-2'>Enumerated Values</h4>
+<h4 id='enumerated-values-4'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -3039,11 +3099,13 @@ This operation does not require authentication
     </span><span class="s2">"readIntervalLength"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
     </span><span class="s2">"aggregateValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
     </span><span class="s2">"intervalReads"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"quality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTUAL"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">]</span><span class="w">
+      </span><span class="mi">0</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"readQualities"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"startInterval"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"endInterval"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"quality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUBSTITUTE"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
@@ -3137,8 +3199,8 @@ This operation does not require authentication
 <tr>
 <td>» readIntervalLength</td>
 <td><a href="#common-field-types">PositiveInteger</a></td>
-<td>mandatory</td>
-<td>Read interval length in minutes</td>
+<td>conditional</td>
+<td>Read interval length in minutes. Required when interval-reads query parameter equals FULL or MIN_30</td>
 </tr>
 <tr>
 <td>» aggregateValue</td>
@@ -3148,24 +3210,36 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>» intervalReads</td>
-<td>[object]</td>
+<td>[number]</td>
+<td>conditional</td>
+<td>Array of Interval read values. If positive then it means consumption, if negative it means export. Required when interval-reads query parameter equals FULL or  MIN_30.<br>Each read value indicates the read for the interval specified by readIntervalLength beginning at midnight of readStartDate (for example 00:00 to 00:30 would be the first reading in a 30 minute Interval)</td>
+</tr>
+<tr>
+<td>» readQualities</td>
+<td>object</td>
+<td>conditional</td>
+<td>Specifies quality of reads that are not ACTUAL.  For read indices that are not specified, quality is assumed to be ACTUAL. If not present, all quality of all reads are assumed to be actual. Required when interval-reads query parameter equals FULL or MIN_30</td>
+</tr>
+<tr>
+<td>»» startInterval</td>
+<td><a href="#common-field-types">PositiveInteger</a></td>
 <td>mandatory</td>
-<td>Array of reads with each element indicating the read for the interval specified by readIntervalLength beginning at midnight of readStartDate (for example 00:00 to 00:30 would be the first reading in a 30 minute Interval)</td>
+<td>Start interval for read quality flag. First read begins at 1</td>
+</tr>
+<tr>
+<td>»» endInterval</td>
+<td><a href="#common-field-types">PositiveInteger</a></td>
+<td>mandatory</td>
+<td>End interval for read quality flag</td>
 </tr>
 <tr>
 <td>»» quality</td>
 <td>string</td>
-<td>optional</td>
-<td>The quality of the read taken.  If absent then assumed to be ACTUAL</td>
-</tr>
-<tr>
-<td>»» value</td>
-<td>number</td>
 <td>mandatory</td>
-<td>Interval value.  If positive then it means consumption, if negative it means export</td>
+<td>The quality of the read taken</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-3'>Enumerated Values</h4>
+<h4 id='enumerated-values-5'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -3191,10 +3265,6 @@ This operation does not require authentication
 <tr>
 <td>quality</td>
 <td>FINAL_SUBSTITUTE</td>
-</tr>
-<tr>
-<td>quality</td>
-<td>ACTUAL</td>
 </tr>
 <tr>
 <td>quality</td>
@@ -3523,7 +3593,7 @@ This operation does not require authentication
 <td>Maximum storage capacity in kVAh. This refers to the capacity of each storage module within the device group. Mandatory if type is equal to “STORAGE”</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-4'>Enumerated Values</h4>
+<h4 id='enumerated-values-6'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -3665,7 +3735,7 @@ This operation does not require authentication
 <td>Australian address formatted according to the file format defined by the <a href="https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf">PAF file format</a>. Required if addressUType is set to paf</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-5'>Enumerated Values</h4>
+<h4 id='enumerated-values-7'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>

@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>Get Software Statement Assertion (SSA) V2</title>
+    <title>Get Software Statement Assertion (SSA) V1</title>
     <link href="../../images/favicon.ico" rel="icon" type="image/ico" />
 
     <style>
@@ -202,7 +202,7 @@
       <script src="../../javascripts/all_nosearch.js"></script>
   </head>
 
-  <body class="includes includes_obsolete includes_obsolete_get-software-statement-assertion-v2" data-languages="[]">
+  <body class="includes includes_obsolete includes_obsolete_get-software-statement-assertion-v1" data-languages="[]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -213,10 +213,10 @@
       <img src="../../images/logo.png" class="logo" alt="Logo" />
       <ul id="toc" class="toc-list-h1">
             <li class="toc-child">
-              <a href="#get-software-statement-assertion-ssa-v2" class="toc-h1 toc-link" data-title="Get Software Statement Assertion (SSA) V2">Get Software Statement Assertion (SSA) V2</a>
+              <a href="#get-software-statement-assertion-ssa-v1" class="toc-h1 toc-link" data-title="Get Software Statement Assertion (SSA) V1">Get Software Statement Assertion (SSA) V1</a>
               <ul class="toc-list-h2">
                       <li>
-                        <a href="#get-software-statement-assertion-ssa" class="toc-h2 toc-link" data-title="Get  Software Statement Assertion (SSA)">Get  Software Statement Assertion (SSA)</a>
+                        <a href="#getsoftwarestatementassertion-ssa" class="toc-h2 toc-link" data-title="GetSoftwareStatementAssertion (SSA)">GetSoftwareStatementAssertion (SSA)</a>
                       </li>
                       <li>
                         <a href="#tocSresponseerrorlist" class="toc-h2 toc-link" data-title="ResponseErrorList">ResponseErrorList</a>
@@ -234,8 +234,8 @@
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id='get-software-statement-assertion-ssa-v2'>Get Software Statement Assertion (SSA) V2</h1>
-<p>This page documents the obsolete <strong>version 2</strong> of the Get Software Statement Assertion (SSA) end point.</p>
+        <h1 id='get-software-statement-assertion-ssa-v1'>Get Software Statement Assertion (SSA) V1</h1>
+<p>This page documents the obsolete <strong>version 1</strong> of the Get Software Statement Assertion (SSA) end point.</p>
 <pre class="highlight diff tab-diff"><code><span class="gi">+ Added deprecatiopn date of 23rd December 2021 and retirement date of 7th April 2023
 </span>
 <span class="gi">+ Added explicit authorisation scopes returned within the SSA scopes claim
@@ -259,39 +259,8 @@ This version was deprecated on 23rd December 2021 and will be retired on 7th Apr
 <td>profile<br />openid<br /><br />bank:accounts.basic:read<br />bank:accounts.detail:read<br />bank:transactions:read<br />bank:payees:read<br />bank:regular_payments:read<br /><br />common:customer.basic:read<br />   common:customer.detail:read<br /><br />cdr:registration</td>
 </tr>
 </tbody></table>
-<h2 id='get-software-statement-assertion-ssa'>Get  Software Statement Assertion (SSA)</h2>
-<p><a id="opIdGetSoftwareStatementAssertion"></a></p>
-
-<blockquote>
-<p>Code samples</p>
-</blockquote>
-<pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://&lt;register-base-url&gt;/cdr-register/v1/{industry}/data-recipients/brands/{dataRecipientBrandId}/software-products/{softwareProductId}/ssa</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="p">:</span> <span class="s">&lt;register-base-url&gt;</span>
-<span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
-<span class="na">Authorization</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
-
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
-  <span class="s1">'Authorization Endpoint (Register)'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span>
-
-<span class="p">};</span>
-
-<span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
-  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://&lt;register-base-url&gt;/cdr-register/v1/{industry}/data-recipients/brands/{dataRecipientBrandId}/software-products/{softwareProductId}/ssa'</span><span class="p">,</span>
-  <span class="na">method</span><span class="p">:</span> <span class="s1">'get'</span><span class="p">,</span>
-
-  <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span><span class="p">,</span>
-  <span class="na">success</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">data</span><span class="p">));</span>
-  <span class="p">}</span>
-<span class="p">})</span>
-
-</code></pre>
-<p><code>GET /{industry}/data-recipients/brands/{dataRecipientBrandId}/software-products/{softwareProductId}/ssa</code></p>
-
-<p>Get a Software Statement Assertion (SSA) for a Data Recipient software product on the CDR Register to be used for Dynamic Client Registration with a Data Holder Brand.</p>
+<h2 id='getsoftwarestatementassertion-ssa'>GetSoftwareStatementAssertion (SSA)</h2>
+<p>Get a Software Statement Assertion (SSA) for a software product on the CDR Register to be used for Dynamic Registration with a Data Holder</p>
 <h3 id='endpoint-version'>Endpoint Version</h3>
 <table><thead>
 <tr>
@@ -301,11 +270,25 @@ This version was deprecated on 23rd December 2021 and will be retired on 7th Apr
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>2</strong></td>
+<td><strong>1</strong></td>
 </tr>
 </tbody></table>
 
-<h3 id="get-data-recipient-software-statement-assertion-(ssa)-parameters">Parameters</h3>
+<p><a id="opIdGetSoftwareStatementAssertion"></a></p>
+
+<blockquote>
+<p>Code samples</p>
+</blockquote>
+<pre class="highlight plaintext"><code>GET https://&lt;register-base-url&gt;/cdr-register/v1/{industry}/data-recipients/brands/{dataRecipientBrandId}/software-products/{softwareProductId}/ssa HTTP/1.1
+Host: &lt;register-base-url&gt;
+Accept: application/json
+Authorization: Bearer &lt;access-token&gt;
+x-v: string
+
+</code></pre>
+<p><code>GET /{industry}/data-recipients/brands/{dataRecipientBrandId}/software-products/{softwareProductId}/ssa</code></p>
+
+<h3 id="get-a-software-statement-assertion-(ssa)-for-a-software-product-on-the-cdr-register-to-be-used-for-dynamic-client-registration-with-a-data-holder-parameters">Parameters</h3>
 
 <table><thead>
 <tr>
@@ -320,36 +303,36 @@ This version was deprecated on 23rd December 2021 and will be retired on 7th Apr
 <td>industry</td>
 <td>path</td>
 <td>string</td>
-<td>mandatory</td>
+<td>true</td>
 <td>The industry the participant is retrieving data for (Banking, etc)</td>
 </tr>
 <tr>
 <td>dataRecipientBrandId</td>
 <td>path</td>
 <td>string</td>
-<td>mandatory</td>
+<td>true</td>
 <td>Unique id for the Accredited Data Recipient Brand that the Software Product is associated with in the CDR Register</td>
 </tr>
 <tr>
 <td>softwareProductId</td>
 <td>path</td>
 <td>string</td>
-<td>mandatory</td>
+<td>true</td>
 <td>Unique id for the Accredited Data Recipient Software Product in the CDR Register</td>
 </tr>
 <tr>
-<td>Authorization Endpoint (Register)</td>
+<td>Authorization</td>
 <td>header</td>
 <td>string</td>
-<td>mandatory</td>
-<td>An Authorisation Token as per <a href="https://tools.ietf.org/html/rfc6750">RFC6750</a>.</td>
+<td>true</td>
+<td>An Authorisation Token as per <a href="https://tools.ietf.org/html/rfc6750">RFC6750</a></td>
 </tr>
 <tr>
 <td>x-v</td>
 <td>header</td>
 <td>string</td>
-<td>optional</td>
-<td>The version of the API end point requested by the client. Must be set to a positive integer.</td>
+<td>false</td>
+<td>none</td>
 </tr>
 </tbody></table>
 <h4 id='enumerated-values'>Enumerated Values</h4>
@@ -372,7 +355,7 @@ This version was deprecated on 23rd December 2021 and will be retired on 7th Apr
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="s2">"string"</span><span class="w">
 </span></code></pre>
-<h3 id="get-data-recipient-software-statement-assertion-(ssa)-responses">Responses</h3>
+<h3 id="get-a-software-statement-assertion-(ssa)-for-a-software-product-on-the-cdr-register-to-be-used-for-dynamic-client-registration-with-a-data-holder-responses">Responses</h3>
 
 <table><thead>
 <tr>
@@ -391,61 +374,36 @@ This version was deprecated on 23rd December 2021 and will be retired on 7th Apr
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>Invalid industry path parameter</br>Invalid SoftwareProductId</td>
-<td><a href="#schemacdr-participant-discovery-apiresponseerrorlist">ResponseErrorList</a></td>
+<td>Bad Request</td>
+<td><a href="#schemaresponseerrorlist">ResponseErrorList</a></td>
 </tr>
 <tr>
 <td>401</td>
 <td><a href="https://tools.ietf.org/html/rfc7235#section-3.1">Unauthorized</a></td>
-<td>Invalid Bearer Token</td>
+<td>Unauthorized</td>
 <td>None</td>
 </tr>
 <tr>
 <td>403</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.3">Forbidden</a></td>
-<td>Invalid BrandId</td>
-<td><a href="#schemacdr-participant-discovery-apiresponseerrorlist">ResponseErrorList</a></td>
+<td>Forbidden</td>
+<td><a href="#schemaresponseerrorlist">ResponseErrorList</a></td>
 </tr>
 <tr>
 <td>406</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.6">Not Acceptable</a></td>
-<td>Invalid x-v header</br>Invalid Accept header</td>
+<td>Not Acceptable</td>
 <td>None</td>
-</tr>
-<tr>
-<td>422</td>
-<td><a href="https://tools.ietf.org/html/rfc2518#section-10.3">Unprocessable Entity</a></td>
-<td>SSA fields invalid or incomplete</td>
-<td><a href="#schemacdr-participant-discovery-apiresponseerrorlist">ResponseErrorList</a></td>
-</tr>
-</tbody></table>
-<h3 id='response-headers'>Response Headers</h3>
-<table><thead>
-<tr>
-<th>Status</th>
-<th>Header</th>
-<th>Type</th>
-<th>Format</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>200</td>
-<td>x-v</td>
-<td>string</td>
-<td></td>
-<td>The version of the API end point that the CDR Register has responded with.</td>
 </tr>
 </tbody></table>
 
 <aside class="notice">
-To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">cdr-register:bank:read</a>
+To perform this operation, you must be authenticated and authorised with the following scope: <span class="bold">cdr-register:bank:read</span>
 </aside>
 
 <h2 id="tocSresponseerrorlist">ResponseErrorList</h2>
 
-<p><a id="schemacdr-participant-discovery-apiresponseerrorlist"></a></p>
+<p><a id="schemaresponseerrorlist"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
@@ -463,20 +421,22 @@ To perform this operation, you must be authenticated and authorised with the fol
 <th>Name</th>
 <th>Type</th>
 <th>Required</th>
+<th>Restrictions</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>errors</td>
-<td>[<a href="#schemacdr-participant-discovery-apierror">Error</a>]</td>
-<td>mandatory</td>
+<td>[<a href="#schemaerror">Error</a>]</td>
+<td>true</td>
+<td>none</td>
 <td>none</td>
 </tr>
 </tbody></table>
 
 <h2 id="tocSerror">Error</h2>
 
-<p><a id="schemacdr-participant-discovery-apierror"></a></p>
+<p><a id="schemaerror"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -490,31 +450,36 @@ To perform this operation, you must be authenticated and authorised with the fol
 <th>Name</th>
 <th>Type</th>
 <th>Required</th>
+<th>Restrictions</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>code</td>
 <td>string</td>
-<td>mandatory</td>
+<td>true</td>
+<td>none</td>
 <td>Error code</td>
 </tr>
 <tr>
 <td>title</td>
 <td>string</td>
-<td>mandatory</td>
+<td>true</td>
+<td>none</td>
 <td>Error title</td>
 </tr>
 <tr>
 <td>detail</td>
 <td>string</td>
-<td>mandatory</td>
+<td>true</td>
+<td>none</td>
 <td>Error detail</td>
 </tr>
 <tr>
 <td>meta</td>
 <td>object</td>
-<td>optional</td>
+<td>false</td>
+<td>none</td>
 <td>Optional additional data for specific error types</td>
 </tr>
 </tbody></table>

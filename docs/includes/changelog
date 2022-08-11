@@ -10,6 +10,12 @@
 </tr>
 </thead><tbody>
 <tr>
+<td>TBA</td>
+<td>1.18.0</td>
+<td>Draft release</td>
+<td>Draft release. See <a href="includes/releasenotes/releasenotes.1.18.0.html">release notes</a> for details</td>
+</tr>
+<tr>
 <td>23/05/2022</td>
 <td>1.17.0</td>
 <td>Changes arising from Decision 237 (Maintenance Iteration 10)</td>

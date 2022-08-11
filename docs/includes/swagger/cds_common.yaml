@@ -926,7 +926,7 @@ components:
           - WORK
           type: string
         address:
-          description: A correctly formatted email address, as defined by the addr_spec
+          description: A correctly formatted email address, as defined by the addr-spec
             format in **[[RFC5322]](#nref-RFC5322)**
           type: string
           x-cds-type: ExternalRef
