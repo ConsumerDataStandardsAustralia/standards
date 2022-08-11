@@ -1116,7 +1116,7 @@
           "industries": {
             "uniqueItems": true,
             "type": "array",
-            "description": "The industries the Data Holder Brand belongs to. Please note that the CDR Register entity model is constrained to one industry per brand which is planned to be relaxed in the future.",
+            "description": "The industries the Data Holder Brand belongs to",
             "items": {
               "type": "string",
               "enum": [
@@ -1227,7 +1227,7 @@
           "industries": {
             "uniqueItems": true,
             "type": "array",
-            "description": "The industries the Data Holder Brand belongs to. Please note that the CDR Register entity model is constrained to one industry per brand which is planned to be relaxed in the future.",
+            "description": "The industries the Data Holder Brand belongs to",
             "items": {
               "type": "string",
               "enum": [
