@@ -19,6 +19,8 @@ This release addresses the following change requests raised on [Standards Mainte
 
 - [Standards Maintenance Issue 511: Iteration 11 Holistic Feedback](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/511)
 - [Standards Maintenance Issue 497: CommonEmailAddress - address format documentation](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/497)
+- [Standards Maintenance Issue 489: v1.15.0 More ambiguity into x-fapi-auth-date not less](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/489)
+- [Standards Maintenance Issue 487: DCR APIs non-normative examples would benefit from clarification](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/487)
 
 
 
@@ -33,13 +35,15 @@ This release addresses the following Decision Proposals published on [Standards]
 
 |Change|Description|Link|
 |------|-----------|----|
-| | | |
+| Array Conventions - Payload Conventions | Fixed the HTML rendering for the Markdown bullet point list in the array conventions | [Payload Conventions](../../#payload-conventions)|
 
 ## API End Points
 
 |Change|Description|Link|
 |------|-----------|----|
 | CommonEmailAddress | [**Standards Maintenance #497**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/497): Fixed external reference for email format to be "addr-spec". | [Common APIs](../../#common-apis) |
+| `x-fapi-auth-date` references in resource APIs | [**Standards Maintenance #489**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/489): Corrected the documentation for `x-fapi-auth-date` references. | [Banking APIs](../../#banking-apis) and [Energy APIs](../../#energy-apis)|
+| DCR Non Normative Examples | [**Standards Maintenance #487**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/487): Fixed the URL for DCR examples to remove an extraneous /register/ path component | [DCR APIs](../..//#dcr-apis) |
 
 
 ## Information Security Profile
@@ -48,6 +52,9 @@ This release addresses the following Decision Proposals published on [Standards]
 |------|-----------|----|
 | Profile scope data language link | [**Standards Maintenance #511**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/511): Fixed the link in the "OpenID Connect End-User Data" section linking to the CX Data Language: Profile Scope section. Addresses [Issue 511 comment](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/511#issuecomment-1135390550). | [Authorisation Scopes](../../#authorisation-scopes) |
 | Formatting for Authorisation Code Flow | [**Standards Maintenance #511**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/511): Corrected the formatting of a bullet point list in the Authorisation Code Flow section obligations. Addresses [Issue 511 comment](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/511#issuecomment-1131001514). | [Authentication Flows](../../#authentication-flows) |
+| Formatting for Mandatory Fields | [**Standards Maintenance #511**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/511): Corrected the formatting of a bullet point list in the Array Conventions' Mandatory Fields section. Addresses [Issue 511 comment](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/511#issuecomment-1138437892). | [Payload Conventions: Array Conventions - Mandatory Fields](../../#payload-conventions) |
+| Schema typing for Energy APIs | [**Standards Maintenance #511**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/511): Corrected Updates for the Energy schema types, description and formatting. Addresses [Issue 511 comment](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/511#issuecomment-1178626247). | [Energy APIs](../../#energy-apis) |
+| Sort order for Energy Usage Reads | [**Standards Maintenance #511**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/511): Updated description of EnergyUsageListResponse in Energy Data Holder and Secondary Data Holders endpoints with sort order. Addresses [Issue 511 comment](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/511#issuecomment-1138013171). | [Energy APIs](../../#energy-apis) |
 
 ## Consumer Experience
 
