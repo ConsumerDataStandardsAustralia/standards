@@ -38,4 +38,20 @@ These endpoints are exposed by the Register and consumed by Data Holders and Dat
 |**Production TLS**|https://api.cdr.gov.au|
 |**Production mTLS**|https://secure.api.cdr.gov.au|
 
+```diff
+Below are the changes to the Register APIs section of the
+standards.
+
+Changed description of RegisterDataHolderBrand.industries from:
+- The industries the Data Holder Brand belongs to. Please note that the CDR Register entity model is constrained to one industry per brand which is planned to be relaxed in the future.
+to:
++ The industries the Data Holder Brand belongs to.
+
+Changed description of DataHolderBrandSummary.industries from:
+- The industries the Data Holder Brand belongs to. Please note that the CDR Register entity model is constrained to one industry per brand which is planned to be relaxed in the future.
+to:
++ The industries the Data Holder Brand belongs to.
+
+```
+
 <%= partial "includes/cds_register.md" %>
