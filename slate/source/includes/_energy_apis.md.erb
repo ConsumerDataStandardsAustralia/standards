@@ -72,6 +72,30 @@ Added/Removed the following to EnergyPlanControlledLoad:
 
 Added the following string array field to EnergyPlan.geography object:
 + distributors
+
+Made following changes to EnergyDerRecord:
+* Changed availablePhasesCount and installedPhasesCount fields to PositiveInteger and update the description to state the acceptable values are 1, 2 and 3.
+* Changed acConnections.derDevices.count into PositiveInteger
+* Changed islandableInstallation to Boolean
+* Changed protectionMode.exportLimitkva to camelCase
++ exportLimitKva
+* Updated description of protectionMode.sustainedOverVoltageDelay 
+from:
+- Trip delay time in seconds.
+to:
++ Sustained Over voltage protection delay in seconds.
+* Updated description of readStartDate
+from:
+- Date time when the meter reads start
+to:
++ Date when the meter reads start in AEST and assumed to start from 12:00 am AEST.
+* Updated description of readEndDate
+from:
+- Date time when the meter reads end. If absent then assumed to be equal to readStartDate. In this case the entry represents data for a single date specified by readStartDate
+to:
++ Date when the meter reads end in AEST. If absent then assumed to be equal to readStartDate. In this case the entry represents data for a single date specified by readStartDate.
+* Changed meterID to meterId (lowercase d)
+* Changed type of unitOfMeasure to ExternalRef.
 ```
 
 <%= partial "includes/cds_energy.md" %>
