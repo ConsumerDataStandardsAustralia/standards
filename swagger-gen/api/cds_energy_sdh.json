@@ -70,7 +70,7 @@
                         ],
                         "properties": {
                             "reads": {
-                                "description": "Array of meter reads",
+                                "description": "Array of meter reads sorted by NMI in ascending order followed by readStartDate in descending order",
                                 "type": "array",
                                 "items": {
                                     "$ref": "#/components/schemas/EnergyUsageRead"
