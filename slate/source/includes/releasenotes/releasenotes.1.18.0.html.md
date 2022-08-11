@@ -17,6 +17,7 @@ Release notes for version v1.18.0 of the [CDR Standards](../../index.html).
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
+- [Standards Maintenance Issue 521: Transition of required parameters in the CDR Arrangement JWT](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/521)
 - [Standards Maintenance Issue 472: Modify Energy Plans structure to allow Time of Use based Controlled Load rates](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/472)
 - [Standards Maintenance Issue 486: Allow ADRs to specify scopes for a Software Statement Assertion (SSA) to support cross industry software products](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/486)
 - [Standards Maintenance Issue 510: Register API error codes need to be aligned with the CDS standardised error codes](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/510)
@@ -57,6 +58,7 @@ This release addresses the following Decision Proposals published on [Standards]
 
 |Change|Description|Link|
 |------|-----------|----|
+| ADR hosted CDR Arrangement Revocation Endpoint | [**Standards Maintenance #521**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/521): Updates to accomodate JWT transition for lodgement of the CDR Arrangement ID and validation logic for ADRs. | [CDR Arrangement Revocation Endpoint](../../#security-endpoints) |
 | Client Registration | [**Standards Maintenance #486**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/486): Get Software Statement Assertion API v1 & v2 has the scope claim explicitly defined | [Get Software Statement Assertion (SSA)](../../index.html#get-software-statement-assertion-ssa) |
 | ID Token Algorithm Selection Considerations | [**Standards Maintenance #491**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/491): Added clarification on algorithm coverage required for data holders and data recipients | [Client Registration](../../index.html#client-registration) |
 
