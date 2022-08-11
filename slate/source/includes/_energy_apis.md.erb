@@ -18,6 +18,12 @@ Corrections:
 </table>
 
 ```diff
+Converted the type of following fields to TimeString:
+  `timeOfUseRates.timeOfUse.startTime`
+  `timeOfUseRates.timeOfUse.endTime`
+  `demandCharges.startTime`
+  `demandCharges.endTime`
+
 Converted `EnergyPlanSolarFeedInTariff.timeVaryingTariffs.timeVariations.days`` and `EnergyPlanTariffPeriod.demandCharges.days` into ENUM with following values:
 + ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT", "PUBLIC_HOLIDAYS"]
 

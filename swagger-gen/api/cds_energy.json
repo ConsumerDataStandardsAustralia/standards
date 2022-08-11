@@ -1614,11 +1614,13 @@
                                                 },
                                                 "startTime": {
                                                     "type": "string",
-                                                    "description": "Start of the period in HHMM format using 24 hour clock format"
+                                                    "x-cds-type": "TimeString",
+                                                    "description": "Start of the period"
                                                 },
                                                 "endTime": {
                                                     "type": "string",
-                                                    "description": "End of the period in HHMM format using 24 hour clock format"
+                                                    "x-cds-type": "TimeString",
+                                                    "description": "End of the period"
                                                 }
                                             }
                                         }
@@ -1677,11 +1679,13 @@
                                     },
                                     "startTime": {
                                         "type": "string",
-                                        "description": "Start of the period in HHMM format using 24 hour clock format"
+                                        "x-cds-type": "TimeString",
+                                        "description": "Start of the period"
                                     },
                                     "endTime": {
                                         "type": "string",
-                                        "description": "End of the period in HHMM format using 24 hour clock format"
+                                        "x-cds-type": "TimeString",
+                                        "description": "End of the period"
                                     },
                                     "days": {
                                         "description": "The days that the demand tariff applies to",

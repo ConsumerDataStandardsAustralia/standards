@@ -36,6 +36,7 @@ This release addresses the following change requests raised on [Standards Mainte
 
 This release addresses the following Decision Proposals published on [Standards](https://github.com/ConsumerDataStandardsAustralia/standards/issues):
 
+- [Standards Maintenance Issue 505: Representation of time within EnergyPlanDetail Schema](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/505)
 - [Standards Maintenance Issue 502: Review ENUM values for representation of days in Energy Standards](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/502)
 - [Standards Maintenance Issue 514: Get Usage For ... Shared Responsibility APIs Payload size](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/514)
 
@@ -57,6 +58,7 @@ This release addresses the following Decision Proposals published on [Standards]
 
 |Change|Description|Link|
 |------|-----------|----|
+| Energy schema | [**Standards Maintenance #505**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/505): Converted `timeOfUseRates.timeOfUse.startTime`, `timeOfUseRates.timeOfUse.endTime`,`demandCharges.startTime` and `demandCharges.endTime` to TimeString type | [Energy Schema](../../#energy-apis) |
 | Energy schema | [**Standards Maintenance #502**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/502) Converted `EnergyPlanSolarFeedInTariff.timeVaryingTariffs.timeVariations.days` and `EnergyPlanTariffPeriod.demandCharges.days` into ENUM. Updated ENUM values for `EnergyPlanTariffPeriod.timeOfUseRates.timeOfUse.days` to the same as the other `days` fields. | [Energy Schema](../../#energy-apis) |
 | Energy schema | [**Standards Maintenance #495**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/495): <ul><li>Added notes to clarify intent of Get Agreed Payment Schedule API</li><li>Made `EnergyPaymentScheduleResponse` into an array</li><li>Added `digitalWallet` structure to `EnergyPaymentSchedule`</li><li>Updated description of `isTokenised` by removing conditional statements for `bsb` and `accountNumber` fields</li></ul> | [Energy Schema](../../#energy-apis) |
 | (Energy) Fix conditional statement for contract variation | [**Standards Maintenance Issue #461**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/461): Corrected the EnergyPlanContract_variation conditional statement such that the `variation` is required if the `isFixed` property is `false`. | [Get Generic Plan Detail](../../#get-generic-plan-detail) and [Get Energy Account Detail](../../#get-energy-account-detail) |
