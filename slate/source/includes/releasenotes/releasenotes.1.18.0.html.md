@@ -64,6 +64,7 @@ This release addresses the following Decision Proposals published on [Standards]
 | Introduction | Updated the introduction to include correct links to CDR agencies. | [Introduction](../../#introduction) |
 | Informative References | Updated the informative reference for CDR and added new informative references for Treasury, ACCC and the OAIC. | [Introduction](../../#informative-references) |
 | Array Conventions - Payload Conventions | Fixed the HTML rendering for the Markdown bullet point list in the array conventions | [Payload Conventions](../../#payload-conventions)|
+| SHOULD/MUST Language | The language for some of the common types (e.g. MaskedPANString) use 'should' inconsistently with RFC2119 as their language predates the use of the RFC. This has been corrected | [Common Field Types](../../#common-field-types)|
 
 ## API End Points
 

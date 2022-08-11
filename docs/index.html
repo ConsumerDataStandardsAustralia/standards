@@ -2635,7 +2635,8 @@ For instance, if a Data Holder holds data in digital form for a Customer that is
 
 <h2 id='common-field-types'>Common Field Types</h2>
 <p>The following table outlines the common data types for fields used in the standard.</p>
-
+<pre class="highlight diff tab-diff"><code>Replaced loose use of lowercase 'should' with RFC2119 compliant "MUST'
+</code></pre>
 <table><thead>
 <tr>
 <th>Type</th>
@@ -2660,7 +2661,7 @@ For instance, if a Data Holder holds data in digital form for a Customer that is
 </tr>
 <tr>
 <td>Enum</td>
-<td>String representing an option from a defined list of values<br/>- All possible values should be provided<br/>- Values should be in all caps<br/>- Spaces should be replaced with under bars &#39;_&#39;<br/>- Values should be limited to the ASCII character set</td>
+<td>String representing an option from a defined list of values<br/>- All possible values MUST be provided<br/>- Values MUST be in all caps<br/>- Spaces MUST be replaced with under bars &#39;_&#39;<br/>- Values MUST be limited to the ASCII character set</td>
 <td>“OPTION1”<br/>“ANOTHER_OPTION”<br/>“VAL_ABC_123”</td>
 </tr>
 <tr>
@@ -2695,7 +2696,7 @@ For instance, if a Data Holder holds data in digital form for a Customer that is
 </tr>
 <tr>
 <td>DateTimeString</td>
-<td>Combined Date and Time string as per <strong><a href="#nref-RFC3339">[RFC3339]</a></strong> (labelled date-time in the RFC). As specified in <strong><a href="#nref-RFC3339">[RFC3339]</a></strong> times should be offset relative to UTC</td>
+<td>Combined Date and Time string as per <strong><a href="#nref-RFC3339">[RFC3339]</a></strong> (labelled date-time in the RFC). As specified in <strong><a href="#nref-RFC3339">[RFC3339]</a></strong> times MUST be offset relative to UTC</td>
 <td>“2007-05-01T15:43:00.12345Z”<br/>“2012-12-25T15:43:00-08:00”<br/>“1997-01-12T15:43:00.121Z”</td>
 </tr>
 <tr>
@@ -2705,7 +2706,7 @@ For instance, if a Data Holder holds data in digital form for a Customer that is
 </tr>
 <tr>
 <td>TimeString</td>
-<td>Time string as per <strong><a href="#nref-RFC3339">[RFC3339]</a></strong> (labelled full-time in the RFC). As specified in <strong><a href="#nref-RFC3339">[RFC3339]</a></strong> times should be offset relative to UTC</td>
+<td>Time string as per <strong><a href="#nref-RFC3339">[RFC3339]</a></strong> (labelled full-time in the RFC). As specified in <strong><a href="#nref-RFC3339">[RFC3339]</a></strong> times MUST be offset relative to UTC</td>
 <td>“15:43:00.12345Z”<br/>“15:43:00-12:00”</td>
 </tr>
 <tr>
@@ -2720,17 +2721,17 @@ For instance, if a Data Holder holds data in digital form for a Customer that is
 </tr>
 <tr>
 <td>AmountString</td>
-<td>A string representing an amount of currency.<br/>- A positive, zero or negative number<br/>- Negative numbers identified with a ‘-‘<br/>- No currency symbols should be supplied<br/>- At least 1 and up to a total of 16 significant digits before decimal point<br/>- Minimum 2 digits following a decimal point (more digits allowable but only if required)<br/>- No additional formatting, eg thousand separating commas</td>
+<td>A string representing an amount of currency.<br/>- A positive, zero or negative number<br/>- Negative numbers identified with a ‘-‘<br/>- Currency symbols MUST NOT be supplied<br/>- At least 1 and up to a total of 16 significant digits before decimal point<br/>- Minimum 2 digits following a decimal point (more digits allowable but only if required)<br/>- No additional formatting, eg thousand separating commas</td>
 <td>“0.01”<br/>“10.00”<br/>“1234567.89”<br/>“-1001.23”<br/>“1.999”</td>
 </tr>
 <tr>
 <td>MaskedPANString</td>
-<td>Masked credit card number. Lower case ‘x’ should be used to mask numbers and only the last four digits should be exposed to facilitate identification. This type is expected to be used for display so the format should be logical for this context</td>
+<td>Masked credit card number. Lower case ‘x’ MUST be used to mask numbers and only the last four digits MUST be exposed to facilitate identification. This type is expected to be used for display so the format MUST be logical for this context</td>
 <td>&quot;xxxx xxxx xxxx 1234&quot;</td>
 </tr>
 <tr>
 <td>MaskedAccountString</td>
-<td>Masked bank account number genericised for a variety of account types.  Should be represented as the full account number would normally be represented for display (including formatting) but with all digits except the last four replaced with a lowercase x. This type is expected to be used for display so the format should be logical for this context</td>
+<td>Masked bank account number genericised for a variety of account types.  MUST be represented as the full account number would normally be represented for display (including formatting) but with all digits except the last four replaced with a lowercase x. This type is expected to be used for display so the format MUST be logical for this context</td>
 <td>&quot;xxxx xxxx xxxx 1234&quot;<br/>&quot;xxx-xxx xxxxx1234&quot;</td>
 </tr>
 <tr>
