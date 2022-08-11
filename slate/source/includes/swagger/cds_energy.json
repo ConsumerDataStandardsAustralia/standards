@@ -3,7 +3,7 @@
   "info" : {
     "description" : "Consumer Data Right end points and payloads for the Energy sector",
     "title" : "CDR Energy API",
-    "version" : "1.17.0"
+    "version" : "1.18.0"
   },
   "servers" : [ {
     "url" : "/"

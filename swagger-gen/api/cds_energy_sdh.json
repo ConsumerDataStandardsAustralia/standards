@@ -3,7 +3,7 @@
 	"info": {
 		"title": "CDR Energy Secondary Data Holder API",
 		"description": "Consumer Data Right end points and payloads for Secondary Data Holder for the Energy sector",
-		"version": "1.17.0"
+		"version": "1.18.0"
 	},
 	"components": {
 		"schemas": {
@@ -692,7 +692,7 @@
                                         ]
                                     }
                                 }
-                            }      
+                            }
                         }
                     }
                 }
@@ -1202,7 +1202,7 @@
                     "default": "NONE",
                     "enum": ["NONE", "MIN_30", "FULL"]
                 }
-			},            
+			},
 			"newest-time": {
 				"name": "newest-time",
 				"in": "query",
