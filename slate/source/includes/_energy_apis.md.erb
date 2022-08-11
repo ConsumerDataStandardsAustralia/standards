@@ -11,6 +11,21 @@ This specification defines the APIs for Data Holders exposing Energy endpoints.
 </table>
 
 ```diff
+Added the following query parameter to `Get Usage For Service Points`, `Get Bulk Usage` and `Get Usage For Specific Service Points` endpoints:
++ interval-reads
+
+Converted `EnergyUsageRead.intervalRead.intervalReads` into an array of values
+
+Added/Removed the following to EnergyUsageRead structure:
++ readQualities (object)
+- quality (field)
+- value (field)
+
+Made the following conditional:
+* EnergyUsageRead.intervalRead.readIntervalLength
+* EnergyUsageRead.intervalRead.intervalReads
+* EnergyUsageRead.intervalRead.intervalReads.readQualities
+
 Made the EnergyPlanControlledLoad into an array.
 
 Added/Removed the following to EnergyPlanControlledLoad:
@@ -21,6 +36,7 @@ Added/Removed the following to EnergyPlanControlledLoad:
 + timeOfUseRates (object)
 - dailyCharge (field)
 - period (field)
+
 ```
 
 <%= partial "includes/cds_energy.md" %>

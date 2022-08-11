@@ -28,6 +28,7 @@ This release addresses the following change requests raised on [Standards Mainte
 
 This release addresses the following Decision Proposals published on [Standards](https://github.com/ConsumerDataStandardsAustralia/standards/issues):
 
+- [Standards Maintenance Issue 514: Get Usage For ... Shared Responsibility APIs Payload size](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/514)
 
 ## Introduction
 
@@ -45,6 +46,7 @@ This release addresses the following Decision Proposals published on [Standards]
 
 |Change|Description|Link|
 |------|-----------|----|
+| Energy schema | [**Standards Maintenance #514**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/514) Made changes to `EnergyUsageRead` structure of both primary and secondary data holder to optimise sharing of large volume of interval read data. The change also includes adding a new `interval-reads` query parameter to usage APIs. | [Energy Schema](../../#energy-apis) |
 | Energy schema | [**Standards Maintenance #472**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/472) Made EnergyPlanControlledLoad into an array and updated structure to allow representation of time of use based rates. | [Energy Schema](../../#energy-apis) |
 | Get Software Statement Assertion (SSA) | [**Standards Maintenance #486**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/486): Added reference to obsolete v1 of the GetSSA API | [Get Software Statement Assertion (SSA)](../../index.html#get-software-statement-assertion-ssa) |
 | CDR Register APIs Endpoint Version Schedule | [**Standards Maintenance #486**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/486): Added version schedule for obsolete v1 of the GetSSA API | [Endpoint Version Schedule](../../includes/endpoint-version-schedule/#cdr-register-apis) |
