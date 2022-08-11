@@ -1398,20 +1398,22 @@
                                         "type": "object",
                                         "required": ["days"],
                                         "properties": {
-                                            "days": {
-                                                "type": "object",
-                                                "required": ["weekdays", "weekend"],
-                                                "properties": {
-                                                    "weekdays": {
-                                						"description": "Indicates whether the tariff is applicable Monday to Friday",
-                                						"type": "boolean"
-                                					},
-                                                    "weekend": {
-                                						"description": "Indicates whether the tariff is applicable Saturday and Sunday",
-                                						"type": "boolean"
-                                					}
-                                                }
-                                            },
+                                                "days": {
+                                                    "description": "The days that the tariff applies to. At least one entry required",
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string",
+                                                        "enum": ["SUN",
+                                                            "MON",
+                                                            "TUE",
+                                                            "WED",
+                                                            "THU",
+                                                            "FRI",
+                                                            "SAT",
+                                                            "PUBLIC_HOLIDAYS"
+                                                        ]
+                                                    }
+                                                },
                                             "startTime": {
                                                 "description": "The beginning of the time period per day for which the tariff applies.  If absent assumes start of day (ie. midnight)",
                                                 "type": "string",
@@ -1599,14 +1601,14 @@
                                                     "type": "array",
                                                     "items": {
                                                         "type": "string",
-                                                        "enum": ["SUNDAY",
-                                                            "MONDAY",
-                                                            "TUESDAY",
-                                                            "WEDNESDAY",
-                                                            "THURSDAY",
-                                                            "FRIDAY",
-                                                            "SATURDAY",
-                                                            "BUSINESS_DAYS"
+                                                        "enum": ["SUN",
+                                                            "MON",
+                                                            "TUE",
+                                                            "WED",
+                                                            "THU",
+                                                            "FRI",
+                                                            "SAT",
+                                                            "PUBLIC_HOLIDAYS"
                                                         ]
                                                     }
                                                 },
@@ -1682,22 +1684,19 @@
                                         "description": "End of the period in HHMM format using 24 hour clock format"
                                     },
                                     "days": {
-                                        "description": "Object containing demand tariff by day of week",
-                                        "type": "object",
-                                        "required": ["weekdays", "saturday", "sunday"],
-                                        "properties": {
-                                            "weekdays": {
-                        						"description": "Indicates the demand tariff is applicable on weekdays",
-                        						"type": "boolean"
-                        					},
-                                            "saturday": {
-                        						"description": "Indicates the demand tariff is applicable on Saturdays",
-                        						"type": "boolean"
-                        					},
-                                            "sunday": {
-                        						"description": "Indicates the demand tariff is applicable on Sundays",
-                        						"type": "boolean"
-                        					}
+                                        "description": "The days that the demand tariff applies to",
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string",
+                                            "enum": ["SUN",
+                                                "MON",
+                                                "TUE",
+                                                "WED",
+                                                "THU",
+                                                "FRI",
+                                                "SAT",
+                                                "PUBLIC_HOLIDAYS"
+                                            ]
                                         }
                                     },
                                     "minDemand": {

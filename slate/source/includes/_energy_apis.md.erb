@@ -18,6 +18,15 @@ Corrections:
 </table>
 
 ```diff
+Converted `EnergyPlanSolarFeedInTariff.timeVaryingTariffs.timeVariations.days`` and `EnergyPlanTariffPeriod.demandCharges.days` into ENUM with following values:
++ ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT", "PUBLIC_HOLIDAYS"]
+
+Update ENUM value for EnergyPlanTariffPeriod.timeOfUseRates.timeOfUse.days
+from:
+- ["SUNDAY", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "BUSINESS_DAYS"]
+to:
++ ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT", "PUBLIC_HOLIDAYS"]
+
 Added notes to clarify intent of Get Agreed Payment Schedule API.
 
 Made `EnergyPaymentScheduleResponse` into an array.
