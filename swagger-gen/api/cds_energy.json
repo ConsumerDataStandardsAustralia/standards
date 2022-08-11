@@ -590,6 +590,9 @@
                     },
                     "geography": {
                         "type": "object",
+                        "required": [
+                            "distributors"
+                        ],
                         "description": "Describes the geographical area that the plan is available for.  If absent then it is assumed the plan is not geographically limited",
                         "properties": {
                             "excludedPostcodes": {
@@ -601,6 +604,13 @@
                             },
                             "includedPostcodes": {
                                 "description": "Array of valid Australian post codes that are included from the plan.  If absent defaults to all non-excluded post codes.  Each element is a single four digit postcode (e.g. 3000) or a range of postcodes defined by two four digit postcodes and a hyphen (e.g. 3000-3999)",
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "distributors": {
+                                "description": "Array of distributors for the plan. Must have at least one entry",
                                 "type": "array",
                                 "items": {
                                     "type": "string"
