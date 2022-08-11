@@ -10,5 +10,21 @@ This specification defines the APIs for Data Holders exposing Energy Secondary D
 <tr><td><a href='./includes/swagger/cds_energy_sdh.yaml'>Energy Secondary Data Holder OpenAPI Specification (YAML)</a></td></tr>
 </table>
 
+```diff
+Added the following query parameter to `Get Usage For Service Point (SR)` and `Get Usage For Specific Service Points (SR)` endpoints:
++ interval-reads
+
+Converted `EnergyUsageRead.intervalRead.intervalReads` into an array of values
+
+Added/Removed the following to EnergyUsageRead structure:
++ readQualities (object)
+- quality (field)
+- value (field)
+
+Made the following conditional:
+* EnergyUsageRead.intervalRead.readIntervalLength
+* EnergyUsageRead.intervalRead.intervalReads
+* EnergyUsageRead.intervalRead.intervalReads.readQualities
+```
 
 <%= partial "includes/cds_energy_sdh.md" %>
