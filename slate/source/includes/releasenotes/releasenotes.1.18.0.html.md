@@ -31,6 +31,7 @@ This release addresses the following change requests raised on [Standards Mainte
 - [Standards Maintenance Issue 487: DCR APIs non-normative examples would benefit from clarification](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/487)
 - [Standards Maintenance Issue 489: v1.15.0 More ambiguity into x-fapi-auth-date not less](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/489)
 - [Standards Maintenance Issue 491: ID Token algorithm support requirements are ambiguous](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/491)
+- [Standards Maintenance Issue 493: Get Transaction Detail - Client Error documentation](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/493)
 - [Standards Maintenance Issue 494: Response payload structure description error](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/494)
 - [Standards Maintenance Issue 495: Energy - GetAgreedPaymentSchedule API - manualPayment section should have paymentFrequency instead of billFrequency field](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/495)
 - [Standards Maintenance Issue 497: CommonEmailAddress - address format documentation](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/497)
@@ -42,7 +43,6 @@ This release addresses the following change requests raised on [Standards Mainte
 - [Standards Maintenance Issue 511: Iteration 11 Holistic Feedback](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/511)
 - [Standards Maintenance Issue 514: Get Usage For ... Shared Responsibility APIs Payload size](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/514)
 - [Standards Maintenance Issue 521: Transition of required parameters in the CDR Arrangement JWT](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/521)
-
 
 ### Decision Proposals
 
@@ -69,6 +69,7 @@ This release addresses the following Decision Proposals published on [Standards]
 
 |Change|Description|Link|
 |------|-----------|----|
+| Banking - Get Transaction Detail API error list | **[Standards Maintenance Issue 493](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/493)**: Fixed error codes presented in the Responses section to display the HTTP status code for Unavailable Resource and Invalid Resource errors | [Get Transaction Detail](../../#get-transaction-detail) |
 | Energy schema | [**Standards Staging #200**](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/200): Update the description of EnergyInvoice in EnergyInvoiceListResponse to clarify the sorting is done by issueDate | [Energy Schema](../../#energy-apis) |
 | Energy schema | [**Standards Staging #192**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/192) Fixed property value name in EnergyServicePointListResponse from `me` to `meta`. | [Energy Schema](../../#energy-apis) |
 | Energy schema | [**Standards Maintenance #505**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/505): Converted `timeOfUseRates.timeOfUse.startTime`, `timeOfUseRates.timeOfUse.endTime`,`demandCharges.startTime` and `demandCharges.endTime` to TimeString type | [Energy Schema](../../#energy-apis) |
