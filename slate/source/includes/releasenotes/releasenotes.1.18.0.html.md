@@ -15,36 +15,40 @@ Release notes for version v1.18.0 of the [CDR Standards](../../index.html).
 ## Changes Made
 ### Change Requests
 
+This release addresses the following minor defects raised on [Standards Staging](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues):
+
+- [Standards Staging Issue 192: Incorrect property name in EnergyServicePointListResponse definition](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/192)
+- [Standards Staging Issue 200: Update documentation clarifying sort date for energy invoices](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/200)
+
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
-- [Standards Maintenance Issue 485: Common Data Clusters altered for Energy Data Language](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/485)
-- [Standards Staging Issue 200: Update documentation clarifying sort date for energy invoices](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/200)
-- [Standards Staging Issue 192: Incorrect property name in EnergyServicePointListResponse definition](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/192)
-- [Standards Maintenance Issue 495: Energy - GetAgreedPaymentSchedule API - manualPayment section should have paymentFrequency instead of billFrequency field](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/495)
 - [Standards Maintenance Issue 461: Documentation Improvement: EnergyPlanContract.variation](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/461)
-- [Standards Maintenance Issue 499: Unknown field in Energy Secondary Data Holder OpenAPI spec](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/499)
-- [Standards Maintenance Issue 511: Iteration 11 Holistic Feedback](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/511)
-- [Response payload structure description error](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/494)
-- [Standards Maintenance Issue 497: CommonEmailAddress - address format documentation](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/497)
-- [Standards Maintenance Issue 489: v1.15.0 More ambiguity into x-fapi-auth-date not less](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/489)
-- [Standards Maintenance Issue 487: DCR APIs non-normative examples would benefit from clarification](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/487)
-- [Standards Maintenance Issue 521: Transition of required parameters in the CDR Arrangement JWT](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/521)
 - [Standards Maintenance Issue 472: Modify Energy Plans structure to allow Time of Use based Controlled Load rates](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/472)
-- [Standards Maintenance Issue 486: Allow ADRs to specify scopes for a Software Statement Assertion (SSA) to support cross industry software products](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/486)
-- [Standards Maintenance Issue 510: Register API error codes need to be aligned with the CDS standardised error codes](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/510)
-- [Standards Maintenance Issue 491: ID Token algorithm support requirements are ambiguous](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/491)
-- [Standards Maintenance Issue 507: FDO for data holders ignoring unsupported authorisation scopes to be set earlier than energy release date](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/507)
 - [Standards Maintenance Issue 481: Provide timeline of when multiple sectors per data holder brand will be supported](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/481)
+- [Standards Maintenance Issue 485: Common Data Clusters altered for Energy Data Language](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/485)
+- [Standards Maintenance Issue 486: Allow ADRs to specify scopes for a Software Statement Assertion (SSA) to support cross industry software products](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/486)
+- [Standards Maintenance Issue 487: DCR APIs non-normative examples would benefit from clarification](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/487)
+- [Standards Maintenance Issue 489: v1.15.0 More ambiguity into x-fapi-auth-date not less](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/489)
+- [Standards Maintenance Issue 491: ID Token algorithm support requirements are ambiguous](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/491)
+- [Standards Maintenance Issue 493: Get Transaction Detail - Client Error documentation](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/493)
+- [Standards Maintenance Issue 494: Response payload structure description error](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/494)
+- [Standards Maintenance Issue 495: Energy - GetAgreedPaymentSchedule API - manualPayment section should have paymentFrequency instead of billFrequency field](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/495)
+- [Standards Maintenance Issue 497: CommonEmailAddress - address format documentation](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/497)
+- [Standards Maintenance Issue 499: Unknown field in Energy Secondary Data Holder OpenAPI spec](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/499)
+- [Standards Maintenance Issue 502: Review ENUM values for representation of days in Energy Standards](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/502)
+- [Standards Maintenance Issue 505: Representation of time within EnergyPlanDetail Schema](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/505)
+- [Standards Maintenance Issue 507: FDO for data holders ignoring unsupported authorisation scopes to be set earlier than energy release date](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/507)
+- [Standards Maintenance Issue 510: Register API error codes need to be aligned with the CDS standardised error codes](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/510)
+- [Standards Maintenance Issue 511: Iteration 11 Holistic Feedback](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/511)
 - [Standards Maintenance Issue 512: Distributor needed for EnergyPlan.geography object](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/512)
-
+- [Standards Maintenance Issue 514: Get Usage For ... Shared Responsibility APIs Payload size](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/514)
+- [Standards Maintenance Issue 521: Transition of required parameters in the CDR Arrangement JWT](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/521)
 
 ### Decision Proposals
 
 This release addresses the following Decision Proposals published on [Standards](https://github.com/ConsumerDataStandardsAustralia/standards/issues):
 
-- [Standards Maintenance Issue 505: Representation of time within EnergyPlanDetail Schema](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/505)
-- [Standards Maintenance Issue 502: Review ENUM values for representation of days in Energy Standards](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/502)
-- [Standards Maintenance Issue 514: Get Usage For ... Shared Responsibility APIs Payload size](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/514)
+- [Decision Proposal 249 - Maintenance Iteration 11](https://github.com/ConsumerDataStandardsAustralia/standards/issues/249)
 
 ## Introduction
 
@@ -60,11 +64,13 @@ This release addresses the following Decision Proposals published on [Standards]
 | Introduction | Updated the introduction to include correct links to CDR agencies. | [Introduction](../../#introduction) |
 | Informative References | Updated the informative reference for CDR and added new informative references for Treasury, ACCC and the OAIC. | [Introduction](../../#informative-references) |
 | Array Conventions - Payload Conventions | Fixed the HTML rendering for the Markdown bullet point list in the array conventions | [Payload Conventions](../../#payload-conventions)|
+| SHOULD/MUST Language | The language for some of the common types (e.g. MaskedPANString) use 'should' inconsistently with RFC2119 as their language predates the use of the RFC. This has been corrected | [Common Field Types](../../#common-field-types)|
 
 ## API End Points
 
 |Change|Description|Link|
 |------|-----------|----|
+| Banking - Get Transaction Detail API error list | **[Standards Maintenance Issue 493](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/493)**: Fixed error codes presented in the Responses section to display the HTTP status code for Unavailable Resource and Invalid Resource errors | [Get Transaction Detail](../../#get-transaction-detail) |
 | Energy schema | [**Standards Staging #200**](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/200): Update the description of EnergyInvoice in EnergyInvoiceListResponse to clarify the sorting is done by issueDate | [Energy Schema](../../#energy-apis) |
 | Energy schema | [**Standards Staging #192**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/192) Fixed property value name in EnergyServicePointListResponse from `me` to `meta`. | [Energy Schema](../../#energy-apis) |
 | Energy schema | [**Standards Maintenance #505**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/505): Converted `timeOfUseRates.timeOfUse.startTime`, `timeOfUseRates.timeOfUse.endTime`,`demandCharges.startTime` and `demandCharges.endTime` to TimeString type | [Energy Schema](../../#energy-apis) |
@@ -81,7 +87,7 @@ This release addresses the following Decision Proposals published on [Standards]
 | Get Software Statement Assertion (SSA) | [**Standards Maintenance #486**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/486): Added reference to obsolete v1 of the GetSSA API | [Get Software Statement Assertion (SSA)](../../index.html#get-software-statement-assertion-ssa) |
 | CDR Register APIs Endpoint Version Schedule | [**Standards Maintenance #486**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/486): Added version schedule for obsolete v1 of the GetSSA API | [Endpoint Version Schedule](../../includes/endpoint-version-schedule/#cdr-register-apis) |
 | Register APIs | [**Standards Maintenance #481**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/481): Removed constraint that data holder brands only map to a single industry | [Register APIs](../../index.html#register-apis) |
-
+| Get Metric Applicability | [**Standards Maintenance #515**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/515): Clarified that AEMO, AER and DELWP do not need to implement Get Metrics | [Admin APIs](../../index.html#get-metrics) |
 
 ## Information Security Profile
 
@@ -96,13 +102,11 @@ This release addresses the following Decision Proposals published on [Standards]
 | Client Registration | [**Standards Maintenance #486**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/486): Get Software Statement Assertion API v1 & v2 has the scope claim explicitly defined | [Get Software Statement Assertion (SSA)](../../index.html#get-software-statement-assertion-ssa) |
 | ID Token Algorithm Selection Considerations | [**Standards Maintenance #491**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/491): Added clarification on algorithm coverage required for data holders and data recipients | [Client Registration](../../index.html#client-registration) |
 
-
 ## Consumer Experience
 
 |Change|Description|Link|
 |------|-----------|----|
 | Customer Data Language | [**Standards Maintenance #485**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/485): Customer data language standards removed from sector-specific banking and energy sections and added to the common area of the CX standards titled [Customer Language: Common](../../#customer-language-common). Title for [profile scope section](../../#profile-scope-and-standard-claims-common) amended by adding "Common" to maintain consistency between common areas of the data language standards | [Consumer Experience](../../#consumer-experience) |
-
 
 ## Known Issues
 
