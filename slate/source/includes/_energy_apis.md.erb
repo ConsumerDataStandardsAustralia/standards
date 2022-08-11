@@ -10,4 +10,17 @@ This specification defines the APIs for Data Holders exposing Energy endpoints.
 <tr><td><a href='./includes/swagger/cds_energy.yaml'>Energy OpenAPI Specification (YAML)</a></td></tr>
 </table>
 
+```diff
+Made the EnergyPlanControlledLoad into an array.
+
+Added/Removed the following to EnergyPlanControlledLoad:
++ rateBlockUType (field)
++ startDate (field)
++ endDate (field)
++ singleRate (object)
++ timeOfUseRates (object)
+- dailyCharge (field)
+- period (field)
+```
+
 <%= partial "includes/cds_energy.md" %>
