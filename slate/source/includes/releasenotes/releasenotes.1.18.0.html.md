@@ -17,6 +17,7 @@ Release notes for version v1.18.0 of the [CDR Standards](../../index.html).
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
+- [Standards Maintenance Issue 485: Common Data Clusters altered for Energy Data Language](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/485)
 - [Standards Staging Issue 200: Update documentation clarifying sort date for energy invoices](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/200)
 - [Standards Staging Issue 192: Incorrect property name in EnergyServicePointListResponse definition](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/192)
 - [Standards Maintenance Issue 495: Energy - GetAgreedPaymentSchedule API - manualPayment section should have paymentFrequency instead of billFrequency field](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/495)
@@ -98,7 +99,7 @@ This release addresses the following Decision Proposals published on [Standards]
 
 |Change|Description|Link|
 |------|-----------|----|
-| | | |
+| Customer Data Language | [**Standards Maintenance #485**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/485): Customer data language standards removed from sector-specific banking and energy sections and added to the common area of the CX standards titled [Customer Language: Common](../../#customer-language-common). Title for [profile scope section](../../#profile-scope-and-standard-claims-common) amended by adding "Common" to maintain consistency between common areas of the data language standards | [Consumer Experience](../../#consumer-experience) |
 
 
 ## Known Issues
