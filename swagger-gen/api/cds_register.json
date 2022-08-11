@@ -2,7 +2,7 @@
   "openapi": "3.0.3",
   "info": {
     "title": "CDR Participant Discovery API",
-    "version": "1.17.0"
+    "version": "1.18.0"
   },
   "servers": [
     {
@@ -93,7 +93,8 @@
             "in": "header",
             "description": "The version of the API end point requested by the client. Must be set to a positive integer.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "default": "1"
             }
           },
           {
@@ -314,7 +315,7 @@
           "Register"
         ],
         "summary": "Get Software Statement Assertion (SSA)",
-        "description": "Get a Software Statement Assertion (SSA) for a software product on the CDR Register to be used for Dynamic Client Registration with a Data Holder Brand.\n\nObsolete versions: [v2](includes/obsolete/get-software-statement-assertion-v2.html)",
+        "description": "Get a Software Statement Assertion (SSA) for a software product on the CDR Register to be used for Dynamic Client Registration with a Data Holder Brand.\n\nObsolete versions: [v1](includes/obsolete/get-software-statement-assertion-v1.html), [v2](includes/obsolete/get-software-statement-assertion-v2.html)",
         "operationId": "GetSoftwareStatementAssertion",
         "parameters": [
           {
@@ -337,7 +338,8 @@
             "in": "header",
             "description": "The version of the API end point requested by the client. Must be set to a positive integer.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "default": "1"
             }
           },
           {
@@ -491,7 +493,8 @@
             "in": "header",
             "description": "The version of the API end point requested by the client. Must be set to a positive integer.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "default": "1"
             }
           },
           {
@@ -600,7 +603,8 @@
             "in": "header",
             "description": "The version of the API end point requested by the client. Must be set to a positive integer.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "default": "1"
             }
           },
           {
@@ -709,7 +713,8 @@
             "in": "header",
             "description": "The version of the API end point requested by the client. Must be set to a positive integer.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "default": "1"
             }
           },
           {
@@ -818,7 +823,8 @@
             "in": "header",
             "description": "The version of the API end point requested by the client. Must be set to a positive integer.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "default": "1"
             }
           },
           {
@@ -1110,7 +1116,7 @@
           "industries": {
             "uniqueItems": true,
             "type": "array",
-            "description": "The industries the Data Holder Brand belongs to. Please note that the CDR Register entity model is constrained to one industry per brand which is planned to be relaxed in the future.",
+            "description": "The industries the Data Holder Brand belongs to",
             "items": {
               "type": "string",
               "enum": [
@@ -1221,7 +1227,7 @@
           "industries": {
             "uniqueItems": true,
             "type": "array",
-            "description": "The industries the Data Holder Brand belongs to. Please note that the CDR Register entity model is constrained to one industry per brand which is planned to be relaxed in the future.",
+            "description": "The industries the Data Holder Brand belongs to",
             "items": {
               "type": "string",
               "enum": [
