@@ -23,6 +23,7 @@ This release addresses the following change requests raised on [Standards Mainte
 - [Standards Maintenance Issue 461: Documentation Improvement: EnergyPlanContract.variation](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/461)
 - [Standards Maintenance Issue 499: Unknown field in Energy Secondary Data Holder OpenAPI spec](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/499)
 - [Standards Maintenance Issue 511: Iteration 11 Holistic Feedback](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/511)
+- [Response payload structure description error](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/494)
 - [Standards Maintenance Issue 497: CommonEmailAddress - address format documentation](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/497)
 - [Standards Maintenance Issue 489: v1.15.0 More ambiguity into x-fapi-auth-date not less](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/489)
 - [Standards Maintenance Issue 487: DCR APIs non-normative examples would benefit from clarification](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/487)
@@ -53,6 +54,7 @@ This release addresses the following Decision Proposals published on [Standards]
 
 |Change|Description|Link|
 |------|-----------|----|
+| Response Payload Structure | [**Standards Maintenance #494**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/494): Corrected documentation to refer to the API response, not request. | [Payload Conventions](../../#payload-conventions) |
 | Introduction | Updated the introduction to include correct links to CDR agencies. | [Introduction](../../#introduction) |
 | Informative References | Updated the informative reference for CDR and added new informative references for Treasury, ACCC and the OAIC. | [Introduction](../../#informative-references) |
 | Array Conventions - Payload Conventions | Fixed the HTML rendering for the Markdown bullet point list in the array conventions | [Payload Conventions](../../#payload-conventions)|

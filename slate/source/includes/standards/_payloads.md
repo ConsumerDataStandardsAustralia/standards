@@ -61,7 +61,14 @@ The definition of the contents for the `data` object and `meta` object will be d
 }
 ```
 
-Each API request payload MUST have a JSON object at the root level known as the **root object**.
+```diff
+Corrected the description to refer to the paylow response not request
+
+- Each API request payload MUST have a JSON object at the root level known as the root object.
++ Each API response payload MUST have a JSON object at the root level known as the root object.
+
+```
+Each API response payload MUST have a JSON object at the root level known as the **root object**.
 
 The contents of the root object are as follows:
 
