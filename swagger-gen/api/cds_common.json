@@ -913,7 +913,7 @@
           },
           "address": {
             "type": "string",
-            "description": "A correctly formatted email address, as defined by the addr_spec format in **[[RFC5322]](#nref-RFC5322)**",
+            "description": "A correctly formatted email address, as defined by the addr-spec format in **[[RFC5322]](#nref-RFC5322)**",
             "x-cds-type": "ExternalRef"
           }
         }
