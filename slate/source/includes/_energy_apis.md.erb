@@ -25,6 +25,18 @@ Made the following conditional:
 * EnergyUsageRead.intervalRead.readIntervalLength
 * EnergyUsageRead.intervalRead.intervalReads
 * EnergyUsageRead.intervalRead.intervalReads.readQualities
+
+Made the EnergyPlanControlledLoad into an array.
+
+Added/Removed the following to EnergyPlanControlledLoad:
++ rateBlockUType (field)
++ startDate (field)
++ endDate (field)
++ singleRate (object)
++ timeOfUseRates (object)
+- dailyCharge (field)
+- period (field)
+
 ```
 
 <%= partial "includes/cds_energy.md" %>
