@@ -119,7 +119,7 @@
                         ],
                         "properties": {
                             "reads": {
-                                "description": "Array of meter reads",
+                                "description": "Array of meter reads sorted by NMI in ascending order followed by readStartDate in descending order",
                                 "type": "array",
                                 "items": {
                                     "$ref": "#/components/schemas/EnergyUsageRead"
@@ -1975,7 +1975,7 @@
                         "description": "Register suffix of the meter register where the meter reads are obtained",
                         "type": "string"
                     },
-                    "meterID": {
+                    "meterId": {
                         "description": "Meter id/serial number as it appears in customer’s bill. ID permanence rules do not apply.",
                         "type": "string"
                     },
@@ -1984,18 +1984,19 @@
                         "type": "boolean"
                     },
                     "readStartDate": {
-                        "description": "Date time when the meter reads start",
+                        "description": "Date when the meter reads start in AEST and assumed to start from 12:00 am AEST.",
                         "type": "string",
                         "x-cds-type": "DateString"
                     },
                     "readEndDate": {
-                        "description": "Date time when the meter reads end.  If absent then assumed to be equal to readStartDate.  In this case the entry represents data for a single date specified by readStartDate",
+                        "description": "Date when the meter reads end in AEST.  If absent then assumed to be equal to readStartDate.  In this case the entry represents data for a single date specified by readStartDate.",
                         "type": "string",
                         "x-cds-type": "DateString"
                     },
                     "unitOfMeasure": {
-                        "description": "Unit of measure of the meter reads. Refer to Appendix B of <a href='https://www.aemo.com.au/-/media/files/stakeholder_consultation/consultations/nem-consultations/2019/5ms-metering-package-2/final-determination/mdff-specification-nem12-nem13-v21-final-determination-clean.pdf?la=en&hash=03FCBA0D60E091DE00F2361AE76206EA'>MDFF Specification NEM12 NEM13 v2.1</a> for a list of possible values",
-                        "type": "string"
+                        "description": "Unit of measure of the meter reads. Refer to Appendix B of <a href='https://www.aemo.com.au/-/media/files/stakeholder_consultation/consultations/nem-consultations/2019/5ms-metering-package-2/final-determination/mdff-specification-nem12-nem13-v21-final-determination-clean.pdf?la=en&hash=03FCBA0D60E091DE00F2361AE76206EA'>MDFF Specification NEM12 NEM13 v2.1</a> for a list of possible values.",
+                        "type": "string",
+                        "x-cds-type": "ExternalRef"
                     },
                     "readUType": {
                         "description": "Specify the type of the meter read data",
@@ -2099,16 +2100,23 @@
 						"type": "number"
 					},
 					"availablePhasesCount": {
-						"description": "The number of phases available for the installation of DER",
-						"type": "number"
+						"description": "The number of phases available for the installation of DER. Acceptable values are 1, 2 or 3.",
+                        "type": "integer",
+                        "x-cds-type": "PositiveInteger",
+                        "minimum" : 1,
+                        "maximum": 3
 					},
 					"installedPhasesCount": {
-						"description": "The number of phases that DER is connected to",
-						"type": "number"
+						"description": "The number of phases that DER is connected to. Acceptable values are 1, 2 or 3.",
+						"type": "integer",
+                        "x-cds-type": "PositiveInteger",
+                        "minimum" : 1,
+                        "maximum": 3
 					},
 					"islandableInstallation": {
 						"description": "For identification of small generating units designed with the ability to operate in an islanded mode",
-						"type": "string"
+						"type": "boolean",
+                        "x-cds-type": "Boolean"
 					},
 					"hasCentralProtectionControl": {
 						"description": "For DER installations where NSPs specify the need for additional forms of protection above those inbuilt in an inverter.  If absent then assumed to be false",
@@ -2119,7 +2127,7 @@
 						"description": "Required only when the hasCentralProtectionAndControl flag is set to true.  One or more of the object fields will be provided to describe the protection modes in place",
 						"type": "object",
 						"properties": {
-							"exportLimitkva": {
+							"exportLimitKva": {
 								"description": "Maximum amount of power (kVA) that may be exported from a connection point to the grid, as monitored by a control / relay function. An absent value indicates no limit",
 								"type": "number"
 							},
@@ -2160,7 +2168,7 @@
 								"type": "number"
 							},
 							"sustainedOverVoltageDelay": {
-								"description": "Trip delay time in seconds.",
+								"description": "Sustained Over voltage protection delay in seconds.",
 								"type": "number"
 							},
 							"frequencyRateOfChange": {
@@ -2264,7 +2272,8 @@
 											},
 											"count": {
 												"description": "Number of devices in the group of DER devices",
-												"type": "number"
+												"type": "integer",
+                                                "x-cds-type": "PositiveInteger"
 											},
 											"manufacturer": {
 												"description": "The name of the device manufacturer. If absent then assumed to be “unknown”",
@@ -3846,7 +3855,7 @@
 			},
 			"x-fapi-auth-date": {
 				"name": "x-fapi-auth-date",
-				"description": "The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.",
+				"description": "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
 				"in": "header",
 				"required": false,
 				"x-conditional": true,
