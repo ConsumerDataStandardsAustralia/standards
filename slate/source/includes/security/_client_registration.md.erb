@@ -103,6 +103,10 @@ Decoded SSA
 
 ```
 
+``` diff
++ Added statement: Get Software Statement Assertion API v1 & v2 has the scope claim explicitly defined.
+```
+
 The SSA will conform to the requirements of **[[DCR]](#nref-DCR)** with the following clarifications:
 
 | Client Metadata | Required | Modifiable | Description
@@ -129,6 +133,10 @@ The SSA will conform to the requirements of **[[DCR]](#nref-DCR)** with the foll
 |**software_id**|	Required | | String representing a unique identifier assigned by the Register and used by registration endpoints to identify the software product to be dynamically registered. </br></br>The `software_id` will remain the same across multiple updates or versions of the same piece of software.</br>The `software_id` **SHOULD** be used as the primary external identifier for the client to prevent duplicate client registrations
 |**software_roles**| Required | | String containing a role of the software in the CDR Regime. Initially the only value used with be **“data-recipient-software-product”**
 |**scope**|	Required | <i class="icon-check"></i> | String containing a space-separated list of scope values that the client can use when requesting access tokens. </br>These CDS scope values are defined at: [Authorisation Scopes](https://consumerdatastandardsaustralia.github.io/standards/#authorisation-scopes)</br>The DCR scope value is defined at: [Client Registration Management](#client-registration-management)</br></br>As per the [CDS Scopes and Claims](https://consumerdatastandardsaustralia.github.io/standards/#scopes-and-claims), **openid** and **profile** are included in the SSA
+
+Get Software Statement Assertion API [v1](includes/obsolete/get-software-statement-assertion-v1.html) & [v2](includes/obsolete/get-software-statement-assertion-v2.html) has the scope claim explicitly defined.
+
+
 
 
 ### Registration Request using JWT
