@@ -208,6 +208,9 @@ x-min-v: string
           </span><span class="p">],</span><span class="w">
           </span><span class="s2">"includedPostcodes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
             </span><span class="s2">"string"</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="s2">"distributors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"string"</span><span class="w">
           </span><span class="p">]</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">}</span><span class="w">
@@ -415,6 +418,9 @@ x-min-v: string
         </span><span class="s2">"string"</span><span class="w">
       </span><span class="p">],</span><span class="w">
       </span><span class="s2">"includedPostcodes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"string"</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"distributors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="s2">"string"</span><span class="w">
       </span><span class="p">]</span><span class="w">
     </span><span class="p">},</span><span class="w">
@@ -7442,6 +7448,9 @@ To perform this operation, you must be authenticated and authorised with the fol
           </span><span class="p">],</span><span class="w">
           </span><span class="s2">"includedPostcodes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
             </span><span class="s2">"string"</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="s2">"distributors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"string"</span><span class="w">
           </span><span class="p">]</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">}</span><span class="w">
@@ -7524,6 +7533,9 @@ To perform this operation, you must be authenticated and authorised with the fol
         </span><span class="s2">"string"</span><span class="w">
       </span><span class="p">],</span><span class="w">
       </span><span class="s2">"includedPostcodes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"string"</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"distributors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="s2">"string"</span><span class="w">
       </span><span class="p">]</span><span class="w">
     </span><span class="p">},</span><span class="w">
@@ -9581,6 +9593,9 @@ To perform this operation, you must be authenticated and authorised with the fol
     </span><span class="p">],</span><span class="w">
     </span><span class="s2">"includedPostcodes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="s2">"string"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"distributors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"string"</span><span class="w">
     </span><span class="p">]</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -9720,6 +9735,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>optional</td>
 <td>Array of valid Australian post codes that are included from the plan.  If absent defaults to all non-excluded post codes.  Each element is a single four digit postcode (e.g. 3000) or a range of postcodes defined by two four digit postcodes and a hyphen (e.g. 3000-3999)</td>
 </tr>
+<tr>
+<td>» distributors</td>
+<td>[string]</td>
+<td>mandatory</td>
+<td>Array of distributors for the plan. Must have at least one entry</td>
+</tr>
 </tbody></table>
 <h4 id='enumerated-values-5'>Enumerated Values</h4>
 <table><thead>
@@ -9790,6 +9811,9 @@ To perform this operation, you must be authenticated and authorised with the fol
       </span><span class="s2">"string"</span><span class="w">
     </span><span class="p">],</span><span class="w">
     </span><span class="s2">"includedPostcodes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"string"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"distributors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="s2">"string"</span><span class="w">
     </span><span class="p">]</span><span class="w">
   </span><span class="p">},</span><span class="w">

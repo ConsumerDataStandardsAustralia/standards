@@ -1550,7 +1550,7 @@ components:
               quality: ACTUAL
             unitOfMeasure: unitOfMeasure
             registerId: registerId
-            meterID: meterID
+            meterId: meterId
             intervalRead:
               readIntervalLength: 6
               intervalReads:
@@ -1572,7 +1572,7 @@ components:
               quality: ACTUAL
             unitOfMeasure: unitOfMeasure
             registerId: registerId
-            meterID: meterID
+            meterId: meterId
             intervalRead:
               readIntervalLength: 6
               intervalReads:
@@ -1618,7 +1618,7 @@ components:
               interTripScheme: interTripScheme
               underFrequencyProtectionDelay: 2.3021358869347655
               underVoltageProtection: 3.616076749251911
-              exportLimitkva: 5.962133916683182
+              exportLimitKva: 5.962133916683182
               overFrequencyProtectionDelay: 9.301444243932576
               overFrequencyProtection: 7.061401241503109
               overVoltageProtectionDelay: 7.386281948385884
@@ -1630,9 +1630,9 @@ components:
               neutralVoltageDisplacement: 7.457744773683766
               sustainedOverVoltage: 1.2315135367772556
               voltageVectorShift: 6.84685269835264
-            installedPhasesCount: 1.4658129805029452
-            availablePhasesCount: 6.027456183070403
-            islandableInstallation: islandableInstallation
+            installedPhasesCount: 1
+            availablePhasesCount: 2
+            islandableInstallation: true
             servicePointId: servicePointId
             approvedCapacity: 0.8008281904610115
             hasCentralProtectionControl: false
@@ -1649,7 +1649,7 @@ components:
                 deviceIdentifier: 9.965781217890562
                 nominalStorageCapacity: 8.762042012749001
                 subtype: subtype
-                count: 9.369310271410669
+                count: 9
                 modelNumber: modelNumber
                 type: FOSSIL
                 manufacturer: manufacturer
@@ -1658,7 +1658,7 @@ components:
                 deviceIdentifier: 9.965781217890562
                 nominalStorageCapacity: 8.762042012749001
                 subtype: subtype
-                count: 9.369310271410669
+                count: 9
                 modelNumber: modelNumber
                 type: FOSSIL
                 manufacturer: manufacturer
@@ -1677,7 +1677,7 @@ components:
                 deviceIdentifier: 9.965781217890562
                 nominalStorageCapacity: 8.762042012749001
                 subtype: subtype
-                count: 9.369310271410669
+                count: 9
                 modelNumber: modelNumber
                 type: FOSSIL
                 manufacturer: manufacturer
@@ -1686,7 +1686,7 @@ components:
                 deviceIdentifier: 9.965781217890562
                 nominalStorageCapacity: 8.762042012749001
                 subtype: subtype
-                count: 9.369310271410669
+                count: 9
                 modelNumber: modelNumber
                 type: FOSSIL
                 manufacturer: manufacturer
@@ -1697,7 +1697,7 @@ components:
               interTripScheme: interTripScheme
               underFrequencyProtectionDelay: 2.3021358869347655
               underVoltageProtection: 3.616076749251911
-              exportLimitkva: 5.962133916683182
+              exportLimitKva: 5.962133916683182
               overFrequencyProtectionDelay: 9.301444243932576
               overFrequencyProtection: 7.061401241503109
               overVoltageProtectionDelay: 7.386281948385884
@@ -1709,9 +1709,9 @@ components:
               neutralVoltageDisplacement: 7.457744773683766
               sustainedOverVoltage: 1.2315135367772556
               voltageVectorShift: 6.84685269835264
-            installedPhasesCount: 1.4658129805029452
-            availablePhasesCount: 6.027456183070403
-            islandableInstallation: islandableInstallation
+            installedPhasesCount: 1
+            availablePhasesCount: 2
+            islandableInstallation: true
             servicePointId: servicePointId
             approvedCapacity: 0.8008281904610115
             hasCentralProtectionControl: false
@@ -1728,7 +1728,7 @@ components:
                 deviceIdentifier: 9.965781217890562
                 nominalStorageCapacity: 8.762042012749001
                 subtype: subtype
-                count: 9.369310271410669
+                count: 9
                 modelNumber: modelNumber
                 type: FOSSIL
                 manufacturer: manufacturer
@@ -1737,7 +1737,7 @@ components:
                 deviceIdentifier: 9.965781217890562
                 nominalStorageCapacity: 8.762042012749001
                 subtype: subtype
-                count: 9.369310271410669
+                count: 9
                 modelNumber: modelNumber
                 type: FOSSIL
                 manufacturer: manufacturer
@@ -1756,7 +1756,7 @@ components:
                 deviceIdentifier: 9.965781217890562
                 nominalStorageCapacity: 8.762042012749001
                 subtype: subtype
-                count: 9.369310271410669
+                count: 9
                 modelNumber: modelNumber
                 type: FOSSIL
                 manufacturer: manufacturer
@@ -1765,7 +1765,7 @@ components:
                 deviceIdentifier: 9.965781217890562
                 nominalStorageCapacity: 8.762042012749001
                 subtype: subtype
-                count: 9.369310271410669
+                count: 9
                 modelNumber: modelNumber
                 type: FOSSIL
                 manufacturer: manufacturer
@@ -1800,7 +1800,7 @@ components:
             interTripScheme: interTripScheme
             underFrequencyProtectionDelay: 2.3021358869347655
             underVoltageProtection: 3.616076749251911
-            exportLimitkva: 5.962133916683182
+            exportLimitKva: 5.962133916683182
             overFrequencyProtectionDelay: 9.301444243932576
             overFrequencyProtection: 7.061401241503109
             overVoltageProtectionDelay: 7.386281948385884
@@ -1812,9 +1812,9 @@ components:
             neutralVoltageDisplacement: 7.457744773683766
             sustainedOverVoltage: 1.2315135367772556
             voltageVectorShift: 6.84685269835264
-          installedPhasesCount: 1.4658129805029452
-          availablePhasesCount: 6.027456183070403
-          islandableInstallation: islandableInstallation
+          installedPhasesCount: 1
+          availablePhasesCount: 2
+          islandableInstallation: true
           servicePointId: servicePointId
           approvedCapacity: 0.8008281904610115
           hasCentralProtectionControl: false
@@ -1831,7 +1831,7 @@ components:
               deviceIdentifier: 9.965781217890562
               nominalStorageCapacity: 8.762042012749001
               subtype: subtype
-              count: 9.369310271410669
+              count: 9
               modelNumber: modelNumber
               type: FOSSIL
               manufacturer: manufacturer
@@ -1840,7 +1840,7 @@ components:
               deviceIdentifier: 9.965781217890562
               nominalStorageCapacity: 8.762042012749001
               subtype: subtype
-              count: 9.369310271410669
+              count: 9
               modelNumber: modelNumber
               type: FOSSIL
               manufacturer: manufacturer
@@ -1859,7 +1859,7 @@ components:
               deviceIdentifier: 9.965781217890562
               nominalStorageCapacity: 8.762042012749001
               subtype: subtype
-              count: 9.369310271410669
+              count: 9
               modelNumber: modelNumber
               type: FOSSIL
               manufacturer: manufacturer
@@ -1868,7 +1868,7 @@ components:
               deviceIdentifier: 9.965781217890562
               nominalStorageCapacity: 8.762042012749001
               subtype: subtype
-              count: 9.369310271410669
+              count: 9
               modelNumber: modelNumber
               type: FOSSIL
               manufacturer: manufacturer
@@ -2216,7 +2216,7 @@ components:
           quality: ACTUAL
         unitOfMeasure: unitOfMeasure
         registerId: registerId
-        meterID: meterID
+        meterId: meterId
         intervalRead:
           readIntervalLength: 6
           intervalReads:
@@ -2247,7 +2247,7 @@ components:
           description: Register suffix of the meter register where the meter reads
             are obtained
           type: string
-        meterID:
+        meterId:
           description: Meter id/serial number as it appears in customer’s bill. ID
             permanence rules do not apply.
           type: string
@@ -2256,13 +2256,14 @@ components:
             under a Controlled Load regime
           type: boolean
         readStartDate:
-          description: Date time when the meter reads start
+          description: Date when the meter reads start in AEST and assumed to start
+            from 12:00 am AEST.
           type: string
           x-cds-type: DateString
         readEndDate:
-          description: Date time when the meter reads end.  If absent then assumed
+          description: Date when the meter reads end in AEST.  If absent then assumed
             to be equal to readStartDate.  In this case the entry represents data
-            for a single date specified by readStartDate
+            for a single date specified by readStartDate.
           type: string
           x-cds-type: DateString
         unitOfMeasure:
@@ -2270,6 +2271,7 @@ components:
             <a href='https://www.aemo.com.au/-/media/files/stakeholder_consultation/consultations/nem-consultations/2019/5ms-metering-package-2/final-determination/mdff-specification-nem12-nem13-v21-final-determination-clean.pdf?la=en&hash=03FCBA0D60E091DE00F2361AE76206EA'>MDFF
             Specification NEM12 NEM13 v2.1</a> for a list of possible values
           type: string
+          x-cds-type: ExternalRef
         readUType:
           description: Specify the type of the meter read data
           enum:
@@ -2295,7 +2297,7 @@ components:
           interTripScheme: interTripScheme
           underFrequencyProtectionDelay: 2.3021358869347655
           underVoltageProtection: 3.616076749251911
-          exportLimitkva: 5.962133916683182
+          exportLimitKva: 5.962133916683182
           overFrequencyProtectionDelay: 9.301444243932576
           overFrequencyProtection: 7.061401241503109
           overVoltageProtectionDelay: 7.386281948385884
@@ -2307,9 +2309,9 @@ components:
           neutralVoltageDisplacement: 7.457744773683766
           sustainedOverVoltage: 1.2315135367772556
           voltageVectorShift: 6.84685269835264
-        installedPhasesCount: 1.4658129805029452
-        availablePhasesCount: 6.027456183070403
-        islandableInstallation: islandableInstallation
+        installedPhasesCount: 1
+        availablePhasesCount: 2
+        islandableInstallation: true
         servicePointId: servicePointId
         approvedCapacity: 0.8008281904610115
         hasCentralProtectionControl: false
@@ -2326,7 +2328,7 @@ components:
             deviceIdentifier: 9.965781217890562
             nominalStorageCapacity: 8.762042012749001
             subtype: subtype
-            count: 9.369310271410669
+            count: 9
             modelNumber: modelNumber
             type: FOSSIL
             manufacturer: manufacturer
@@ -2335,7 +2337,7 @@ components:
             deviceIdentifier: 9.965781217890562
             nominalStorageCapacity: 8.762042012749001
             subtype: subtype
-            count: 9.369310271410669
+            count: 9
             modelNumber: modelNumber
             type: FOSSIL
             manufacturer: manufacturer
@@ -2354,7 +2356,7 @@ components:
             deviceIdentifier: 9.965781217890562
             nominalStorageCapacity: 8.762042012749001
             subtype: subtype
-            count: 9.369310271410669
+            count: 9
             modelNumber: modelNumber
             type: FOSSIL
             manufacturer: manufacturer
@@ -2363,7 +2365,7 @@ components:
             deviceIdentifier: 9.965781217890562
             nominalStorageCapacity: 8.762042012749001
             subtype: subtype
-            count: 9.369310271410669
+            count: 9
             modelNumber: modelNumber
             type: FOSSIL
             manufacturer: manufacturer
@@ -2381,15 +2383,24 @@ components:
             in the connection agreement, expressed in kVA
           type: number
         availablePhasesCount:
-          description: The number of phases available for the installation of DER
-          type: number
+          description: The number of phases available for the installation of DER.
+            Acceptable values are 1, 2 or 3.
+          maximum: 3
+          minimum: 1
+          type: integer
+          x-cds-type: PositiveInteger
         installedPhasesCount:
-          description: The number of phases that DER is connected to
-          type: number
+          description: The number of phases that DER is connected to. Acceptable values
+            are 1, 2 or 3.
+          maximum: 3
+          minimum: 1
+          type: integer
+          x-cds-type: PositiveInteger
         islandableInstallation:
           description: For identification of small generating units designed with
             the ability to operate in an islanded mode
-          type: string
+          type: boolean
+          x-cds-type: Boolean
         hasCentralProtectionControl:
           default: false
           description: For DER installations where NSPs specify the need for additional
@@ -2739,7 +2750,7 @@ components:
             quality: ACTUAL
           unitOfMeasure: unitOfMeasure
           registerId: registerId
-          meterID: meterID
+          meterId: meterId
           intervalRead:
             readIntervalLength: 6
             intervalReads:
@@ -2761,7 +2772,7 @@ components:
             quality: ACTUAL
           unitOfMeasure: unitOfMeasure
           registerId: registerId
-          meterID: meterID
+          meterId: meterId
           intervalRead:
             readIntervalLength: 6
             intervalReads:
@@ -2795,7 +2806,7 @@ components:
             interTripScheme: interTripScheme
             underFrequencyProtectionDelay: 2.3021358869347655
             underVoltageProtection: 3.616076749251911
-            exportLimitkva: 5.962133916683182
+            exportLimitKva: 5.962133916683182
             overFrequencyProtectionDelay: 9.301444243932576
             overFrequencyProtection: 7.061401241503109
             overVoltageProtectionDelay: 7.386281948385884
@@ -2807,9 +2818,9 @@ components:
             neutralVoltageDisplacement: 7.457744773683766
             sustainedOverVoltage: 1.2315135367772556
             voltageVectorShift: 6.84685269835264
-          installedPhasesCount: 1.4658129805029452
-          availablePhasesCount: 6.027456183070403
-          islandableInstallation: islandableInstallation
+          installedPhasesCount: 1
+          availablePhasesCount: 2
+          islandableInstallation: true
           servicePointId: servicePointId
           approvedCapacity: 0.8008281904610115
           hasCentralProtectionControl: false
@@ -2826,7 +2837,7 @@ components:
               deviceIdentifier: 9.965781217890562
               nominalStorageCapacity: 8.762042012749001
               subtype: subtype
-              count: 9.369310271410669
+              count: 9
               modelNumber: modelNumber
               type: FOSSIL
               manufacturer: manufacturer
@@ -2835,7 +2846,7 @@ components:
               deviceIdentifier: 9.965781217890562
               nominalStorageCapacity: 8.762042012749001
               subtype: subtype
-              count: 9.369310271410669
+              count: 9
               modelNumber: modelNumber
               type: FOSSIL
               manufacturer: manufacturer
@@ -2854,7 +2865,7 @@ components:
               deviceIdentifier: 9.965781217890562
               nominalStorageCapacity: 8.762042012749001
               subtype: subtype
-              count: 9.369310271410669
+              count: 9
               modelNumber: modelNumber
               type: FOSSIL
               manufacturer: manufacturer
@@ -2863,7 +2874,7 @@ components:
               deviceIdentifier: 9.965781217890562
               nominalStorageCapacity: 8.762042012749001
               subtype: subtype
-              count: 9.369310271410669
+              count: 9
               modelNumber: modelNumber
               type: FOSSIL
               manufacturer: manufacturer
@@ -2874,7 +2885,7 @@ components:
             interTripScheme: interTripScheme
             underFrequencyProtectionDelay: 2.3021358869347655
             underVoltageProtection: 3.616076749251911
-            exportLimitkva: 5.962133916683182
+            exportLimitKva: 5.962133916683182
             overFrequencyProtectionDelay: 9.301444243932576
             overFrequencyProtection: 7.061401241503109
             overVoltageProtectionDelay: 7.386281948385884
@@ -2886,9 +2897,9 @@ components:
             neutralVoltageDisplacement: 7.457744773683766
             sustainedOverVoltage: 1.2315135367772556
             voltageVectorShift: 6.84685269835264
-          installedPhasesCount: 1.4658129805029452
-          availablePhasesCount: 6.027456183070403
-          islandableInstallation: islandableInstallation
+          installedPhasesCount: 1
+          availablePhasesCount: 2
+          islandableInstallation: true
           servicePointId: servicePointId
           approvedCapacity: 0.8008281904610115
           hasCentralProtectionControl: false
@@ -2905,7 +2916,7 @@ components:
               deviceIdentifier: 9.965781217890562
               nominalStorageCapacity: 8.762042012749001
               subtype: subtype
-              count: 9.369310271410669
+              count: 9
               modelNumber: modelNumber
               type: FOSSIL
               manufacturer: manufacturer
@@ -2914,7 +2925,7 @@ components:
               deviceIdentifier: 9.965781217890562
               nominalStorageCapacity: 8.762042012749001
               subtype: subtype
-              count: 9.369310271410669
+              count: 9
               modelNumber: modelNumber
               type: FOSSIL
               manufacturer: manufacturer
@@ -2933,7 +2944,7 @@ components:
               deviceIdentifier: 9.965781217890562
               nominalStorageCapacity: 8.762042012749001
               subtype: subtype
-              count: 9.369310271410669
+              count: 9
               modelNumber: modelNumber
               type: FOSSIL
               manufacturer: manufacturer
@@ -2942,7 +2953,7 @@ components:
               deviceIdentifier: 9.965781217890562
               nominalStorageCapacity: 8.762042012749001
               subtype: subtype
-              count: 9.369310271410669
+              count: 9
               modelNumber: modelNumber
               type: FOSSIL
               manufacturer: manufacturer
@@ -3381,7 +3392,7 @@ components:
         interTripScheme: interTripScheme
         underFrequencyProtectionDelay: 2.3021358869347655
         underVoltageProtection: 3.616076749251911
-        exportLimitkva: 5.962133916683182
+        exportLimitKva: 5.962133916683182
         overFrequencyProtectionDelay: 9.301444243932576
         overFrequencyProtection: 7.061401241503109
         overVoltageProtectionDelay: 7.386281948385884
@@ -3394,7 +3405,7 @@ components:
         sustainedOverVoltage: 1.2315135367772556
         voltageVectorShift: 6.84685269835264
       properties:
-        exportLimitkva:
+        exportLimitKva:
           description: Maximum amount of power (kVA) that may be exported from a connection
             point to the grid, as monitored by a control / relay function. An absent
             value indicates no limit
@@ -3427,7 +3438,7 @@ components:
           description: Sustained over voltage.
           type: number
         sustainedOverVoltageDelay:
-          description: Trip delay time in seconds.
+          description: Sustained Over voltage protection delay in seconds.
           type: number
         frequencyRateOfChange:
           description: Rate of change of frequency trip point (Hz/s).
@@ -3448,7 +3459,7 @@ components:
         deviceIdentifier: 9.965781217890562
         nominalStorageCapacity: 8.762042012749001
         subtype: subtype
-        count: 9.369310271410669
+        count: 9
         modelNumber: modelNumber
         type: FOSSIL
         manufacturer: manufacturer
@@ -3461,7 +3472,8 @@ components:
           type: number
         count:
           description: Number of devices in the group of DER devices
-          type: number
+          type: integer
+          x-cds-type: PositiveInteger
         manufacturer:
           description: The name of the device manufacturer. If absent then assumed
             to be “unknown”
@@ -3529,7 +3541,7 @@ components:
           deviceIdentifier: 9.965781217890562
           nominalStorageCapacity: 8.762042012749001
           subtype: subtype
-          count: 9.369310271410669
+          count: 9
           modelNumber: modelNumber
           type: FOSSIL
           manufacturer: manufacturer
@@ -3538,7 +3550,7 @@ components:
           deviceIdentifier: 9.965781217890562
           nominalStorageCapacity: 8.762042012749001
           subtype: subtype
-          count: 9.369310271410669
+          count: 9
           modelNumber: modelNumber
           type: FOSSIL
           manufacturer: manufacturer

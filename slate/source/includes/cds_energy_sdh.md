@@ -411,7 +411,7 @@ Obtain a list of electricity usage data from a particular service point
         "servicePointId": "string",
         "registerId": "string",
         "registerSuffix": "string",
-        "meterID": "string",
+        "meterId": "string",
         "controlledLoad": true,
         "readStartDate": "string",
         "readEndDate": "string",
@@ -579,7 +579,7 @@ Obtain the electricity usage data for a specific set of service points
         "servicePointId": "string",
         "registerId": "string",
         "registerSuffix": "string",
-        "meterID": "string",
+        "meterId": "string",
         "controlledLoad": true,
         "readStartDate": "string",
         "readEndDate": "string",
@@ -711,12 +711,12 @@ Obtain a list of DER data from a particular service point
   "data": {
     "servicePointId": "string",
     "approvedCapacity": 0,
-    "availablePhasesCount": 0,
-    "installedPhasesCount": 0,
-    "islandableInstallation": "string",
+    "availablePhasesCount": 1,
+    "installedPhasesCount": 1,
+    "islandableInstallation": true,
     "hasCentralProtectionControl": false,
     "protectionMode": {
-      "exportLimitkva": 0,
+      "exportLimitKva": 0,
       "underFrequencyProtection": 0,
       "underFrequencyProtectionDelay": 0,
       "overFrequencyProtection": 0,
@@ -881,12 +881,12 @@ Obtain DER data for a specific set of service points
       {
         "servicePointId": "string",
         "approvedCapacity": 0,
-        "availablePhasesCount": 0,
-        "installedPhasesCount": 0,
-        "islandableInstallation": "string",
+        "availablePhasesCount": 1,
+        "installedPhasesCount": 1,
+        "islandableInstallation": true,
         "hasCentralProtectionControl": false,
         "protectionMode": {
-          "exportLimitkva": 0,
+          "exportLimitKva": 0,
           "underFrequencyProtection": 0,
           "underFrequencyProtectionDelay": 0,
           "overFrequencyProtection": 0,
@@ -1145,7 +1145,7 @@ This operation does not require authentication
         "servicePointId": "string",
         "registerId": "string",
         "registerSuffix": "string",
-        "meterID": "string",
+        "meterId": "string",
         "controlledLoad": true,
         "readStartDate": "string",
         "readEndDate": "string",
@@ -1205,12 +1205,12 @@ This operation does not require authentication
       {
         "servicePointId": "string",
         "approvedCapacity": 0,
-        "availablePhasesCount": 0,
-        "installedPhasesCount": 0,
-        "islandableInstallation": "string",
+        "availablePhasesCount": 1,
+        "installedPhasesCount": 1,
+        "islandableInstallation": true,
         "hasCentralProtectionControl": false,
         "protectionMode": {
-          "exportLimitkva": 0,
+          "exportLimitKva": 0,
           "underFrequencyProtection": 0,
           "underFrequencyProtectionDelay": 0,
           "overFrequencyProtection": 0,
@@ -1288,12 +1288,12 @@ This operation does not require authentication
   "data": {
     "servicePointId": "string",
     "approvedCapacity": 0,
-    "availablePhasesCount": 0,
-    "installedPhasesCount": 0,
-    "islandableInstallation": "string",
+    "availablePhasesCount": 1,
+    "installedPhasesCount": 1,
+    "islandableInstallation": true,
     "hasCentralProtectionControl": false,
     "protectionMode": {
-      "exportLimitkva": 0,
+      "exportLimitKva": 0,
       "underFrequencyProtection": 0,
       "underFrequencyProtectionDelay": 0,
       "overFrequencyProtection": 0,
@@ -1670,7 +1670,7 @@ This operation does not require authentication
   "servicePointId": "string",
   "registerId": "string",
   "registerSuffix": "string",
-  "meterID": "string",
+  "meterId": "string",
   "controlledLoad": true,
   "readStartDate": "string",
   "readEndDate": "string",
@@ -1703,11 +1703,11 @@ This operation does not require authentication
 |servicePointId|string|mandatory|The independent ID of the service point, known in the industry as the National Meter Identifier (NMI). Note that the servicePointId will be replaced with NMI for all interactions between Data Holder and AEMO.|
 |registerId|string|optional|Register ID of the meter register where the meter reads are obtained|
 |registerSuffix|string|mandatory|Register suffix of the meter register where the meter reads are obtained|
-|meterID|string|optional|Meter id/serial number as it appears in customer’s bill. ID permanence rules do not apply.|
+|meterId|string|optional|Meter id/serial number as it appears in customer’s bill. ID permanence rules do not apply.|
 |controlledLoad|boolean|optional|Indicates whether the energy recorded by this register is created under a Controlled Load regime|
-|readStartDate|[DateString](#common-field-types)|mandatory|Date time when the meter reads start|
-|readEndDate|[DateString](#common-field-types)|optional|Date time when the meter reads end.  If absent then assumed to be equal to readStartDate.  In this case the entry represents data for a single date specified by readStartDate|
-|unitOfMeasure|string|optional|Unit of measure of the meter reads. Refer to Appendix B of <a href='https://www.aemo.com.au/-/media/files/stakeholder_consultation/consultations/nem-consultations/2019/5ms-metering-package-2/final-determination/mdff-specification-nem12-nem13-v21-final-determination-clean.pdf?la=en&hash=03FCBA0D60E091DE00F2361AE76206EA'>MDFF Specification NEM12 NEM13 v2.1</a> for a list of possible values|
+|readStartDate|[DateString](#common-field-types)|mandatory|Date when the meter reads start in AEST and assumed to start from 12:00 am AEST.|
+|readEndDate|[DateString](#common-field-types)|optional|Date when the meter reads end in AEST.  If absent then assumed to be equal to readStartDate.  In this case the entry represents data for a single date specified by readStartDate.|
+|unitOfMeasure|[ExternalRef](#common-field-types)|optional|Unit of measure of the meter reads. Refer to Appendix B of <a href='https://www.aemo.com.au/-/media/files/stakeholder_consultation/consultations/nem-consultations/2019/5ms-metering-package-2/final-determination/mdff-specification-nem12-nem13-v21-final-determination-clean.pdf?la=en&hash=03FCBA0D60E091DE00F2361AE76206EA'>MDFF Specification NEM12 NEM13 v2.1</a> for a list of possible values|
 |readUType|string|mandatory|Specify the type of the meter read data|
 |basicRead|object|conditional|Mandatory if readUType is set to basicRead|
 |» quality|string|optional|The quality of the read taken.  If absent then assumed to be ACTUAL|
@@ -1741,12 +1741,12 @@ This operation does not require authentication
 {
   "servicePointId": "string",
   "approvedCapacity": 0,
-  "availablePhasesCount": 0,
-  "installedPhasesCount": 0,
-  "islandableInstallation": "string",
+  "availablePhasesCount": 1,
+  "installedPhasesCount": 1,
+  "islandableInstallation": true,
   "hasCentralProtectionControl": false,
   "protectionMode": {
-    "exportLimitkva": 0,
+    "exportLimitKva": 0,
     "underFrequencyProtection": 0,
     "underFrequencyProtectionDelay": 0,
     "overFrequencyProtection": 0,
@@ -1798,12 +1798,12 @@ This operation does not require authentication
 |---|---|---|---|
 |servicePointId|string|mandatory|The independent ID of the service point, known in the industry as the National Meter Identifier (NMI). Note that the servicePointId will be replaced with NMI for all interactions between Data Holder and AEMO.|
 |approvedCapacity|number|mandatory|Approved small generating unit capacity as agreed with NSP in the connection agreement, expressed in kVA|
-|availablePhasesCount|number|mandatory|The number of phases available for the installation of DER|
-|installedPhasesCount|number|mandatory|The number of phases that DER is connected to|
-|islandableInstallation|string|mandatory|For identification of small generating units designed with the ability to operate in an islanded mode|
+|availablePhasesCount|[PositiveInteger](#common-field-types)|mandatory|The number of phases available for the installation of DER. Acceptable values are 1, 2 or 3.|
+|installedPhasesCount|[PositiveInteger](#common-field-types)|mandatory|The number of phases that DER is connected to. Acceptable values are 1, 2 or 3.|
+|islandableInstallation|[Boolean](#common-field-types)|mandatory|For identification of small generating units designed with the ability to operate in an islanded mode|
 |hasCentralProtectionControl|boolean|optional|For DER installations where NSPs specify the need for additional forms of protection above those inbuilt in an inverter.  If absent then assumed to be false|
 |protectionMode|object|conditional|Required only when the hasCentralProtectionAndControl flag is set to true.  One or more of the object fields will be provided to describe the protection modes in place|
-|» exportLimitkva|number|optional|Maximum amount of power (kVA) that may be exported from a connection point to the grid, as monitored by a control / relay function. An absent value indicates no limit|
+|» exportLimitKva|number|optional|Maximum amount of power (kVA) that may be exported from a connection point to the grid, as monitored by a control / relay function. An absent value indicates no limit|
 |» underFrequencyProtection|number|optional|Protective function limit in Hz.|
 |» underFrequencyProtectionDelay|number|optional|Trip delay time in seconds.|
 |» overFrequencyProtection|number|optional|Protective function limit in Hz.|
@@ -1813,7 +1813,7 @@ This operation does not require authentication
 |» overVoltageProtection|number|optional|Protective function limit in V.|
 |» overVoltageProtectionDelay|number|optional|Trip delay time in seconds.|
 |» sustainedOverVoltage|number|optional|Sustained over voltage.|
-|» sustainedOverVoltageDelay|number|optional|Trip delay time in seconds.|
+|» sustainedOverVoltageDelay|number|optional|Sustained Over voltage protection delay in seconds.|
 |» frequencyRateOfChange|number|optional|Rate of change of frequency trip point (Hz/s).|
 |» voltageVectorShift|number|optional|Trip angle in degrees.|
 |» interTripScheme|string|optional|Description of the form of inter-trip (e.g. 'from local substation').|
@@ -1830,7 +1830,7 @@ This operation does not require authentication
 |» inverterDeviceCapacity|number|conditional|The rated AC output power that is listed in the product specified by the manufacturer. Mandatory if equipmentType is INVERTER|
 |» derDevices|[object]|mandatory|none|
 |»» deviceIdentifier|number|mandatory|Unique identifier for a single DER device or a group of DER devices with the same attributes. Does not align with CDR ID permanence standards|
-|»» count|number|mandatory|Number of devices in the group of DER devices|
+|»» count|[PositiveInteger](#common-field-types)|mandatory|Number of devices in the group of DER devices|
 |»» manufacturer|string|optional|The name of the device manufacturer. If absent then assumed to be “unknown”|
 |»» modelNumber|string|optional|The model number of the device. If absent then assumed to be “unknown”|
 |»» status|string|optional|Code used to indicate the status of the device. This will be used to identify if an inverter is active or inactive or decommissioned|

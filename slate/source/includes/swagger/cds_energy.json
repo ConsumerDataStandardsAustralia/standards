@@ -7453,8 +7453,16 @@
               "type" : "string"
             },
             "type" : "array"
+          },
+          "distributors" : {
+            "description" : "Array of distributors for the plan. Must have at least one entry",
+            "items" : {
+              "type" : "string"
+            },
+            "type" : "array"
           }
         },
+        "required" : [ "distributors" ],
         "type" : "object"
       },
       "EnergyPlanDetail_allOf_meteringCharges" : {

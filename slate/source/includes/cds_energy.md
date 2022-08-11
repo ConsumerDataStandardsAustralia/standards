@@ -110,6 +110,9 @@ Note that the results returned by this end point are expected to be ordered in d
           ],
           "includedPostcodes": [
             "string"
+          ],
+          "distributors": [
+            "string"
           ]
         }
       }
@@ -237,6 +240,9 @@ Obtain detailed information on a single energy plan offered openly to the market
         "string"
       ],
       "includedPostcodes": [
+        "string"
+      ],
+      "distributors": [
         "string"
       ]
     },
@@ -4526,6 +4532,9 @@ To perform this operation, you must be authenticated and authorised with the fol
           ],
           "includedPostcodes": [
             "string"
+          ],
+          "distributors": [
+            "string"
           ]
         }
       }
@@ -4586,6 +4595,9 @@ To perform this operation, you must be authenticated and authorised with the fol
         "string"
       ],
       "includedPostcodes": [
+        "string"
+      ],
+      "distributors": [
         "string"
       ]
     },
@@ -6313,6 +6325,9 @@ To perform this operation, you must be authenticated and authorised with the fol
     ],
     "includedPostcodes": [
       "string"
+    ],
+    "distributors": [
+      "string"
     ]
   }
 }
@@ -6344,6 +6359,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |geography|object|optional|Describes the geographical area that the plan is available for.  If absent then it is assumed the plan is not geographically limited|
 |» excludedPostcodes|[string]|optional|Array of valid Australian post codes that are specifically excluded from the plan.  Each element is a single four digit postcode (e.g. 3000) or a range of postcodes defined by two four digit postcodes and a hyphen (e.g. 3000-3999)|
 |» includedPostcodes|[string]|optional|Array of valid Australian post codes that are included from the plan.  If absent defaults to all non-excluded post codes.  Each element is a single four digit postcode (e.g. 3000) or a range of postcodes defined by two four digit postcodes and a hyphen (e.g. 3000-3999)|
+|» distributors|[string]|mandatory|Array of distributors for the plan. Must have at least one entry|
 
 #### Enumerated Values
 
@@ -6388,6 +6404,9 @@ To perform this operation, you must be authenticated and authorised with the fol
       "string"
     ],
     "includedPostcodes": [
+      "string"
+    ],
+    "distributors": [
       "string"
     ]
   },
