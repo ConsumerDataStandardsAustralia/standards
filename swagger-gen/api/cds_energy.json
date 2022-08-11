@@ -698,7 +698,7 @@
                     },
                     "variation": {
                         "type": "string",
-                        "description": "Free text description of price variation policy and conditions for the contract.  Mandatory if isFixed is true"
+                        "description": "Free text description of price variation policy and conditions for the contract.  Mandatory if `isFixed` is false"
                     },
                     "onExpiryDescription": {
                         "type": "string",

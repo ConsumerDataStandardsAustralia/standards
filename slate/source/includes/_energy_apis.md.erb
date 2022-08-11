@@ -5,7 +5,9 @@
 This specification defines the APIs for Data Holders exposing Energy endpoints.
 
 ```diff
-Corrected related...
+Corrections:
+
+- Changed the conditional statement for EnergyPlanContract_variation such that the field is mandatory if the EnergyPlanContract_isFixed flag is `false`.
 - Removed `location` as a required property. It is included outside of the EnergyServicePointDetail_relatedParticipants object but incorrectly "required" by the sibling object.
 
 ```
