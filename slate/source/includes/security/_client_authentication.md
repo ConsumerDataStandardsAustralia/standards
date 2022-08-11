@@ -93,11 +93,6 @@ Authorization: Bearer eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNDU2In0.ey
 }
 ```
 
-```diff
-Updated self-signed JWT client authentication non-normative example `alg` field from HS256 to PS256
-```
-
-
 
 Data Recipient Software Products and Data Holders supporting the self-signed JWT authentication of clients using a signed JWT **MUST** do so according to the following requirements:
 

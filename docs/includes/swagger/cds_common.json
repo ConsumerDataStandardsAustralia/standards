@@ -12,7 +12,7 @@
       "url" : "https://opensource.org/licenses/MIT"
     },
     "title" : "CDR Common API",
-    "version" : "1.17.0"
+    "version" : "1.18.0"
   },
   "servers" : [ {
     "url" : "https://data.holder.com.au/cds-au/v1"
@@ -804,7 +804,7 @@
             "type" : "string"
           },
           "address" : {
-            "description" : "A correctly formatted email address, as defined by the addr_spec format in **[[RFC5322]](#nref-RFC5322)**",
+            "description" : "A correctly formatted email address, as defined by the addr-spec format in **[[RFC5322]](#nref-RFC5322)**",
             "type" : "string",
             "x-cds-type" : "ExternalRef"
           }

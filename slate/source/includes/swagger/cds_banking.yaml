@@ -11,7 +11,7 @@ info:
     name: MIT License
     url: https://opensource.org/licenses/MIT
   title: CDR Banking API
-  version: 1.17.0
+  version: 1.18.0
 servers:
 - url: https://data.holder.com.au/cds-au/v1
 paths:
@@ -129,9 +129,9 @@ paths:
           type: string
         style: simple
       - description: The time when the customer last logged in to the Data Recipient
-          Software Product. Required for all resource calls (customer present and
-          unattended) if the customer has logged in. Not to be included for unauthenticated
-          calls.
+          Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required
+          for all resource calls (customer present and unattended). Not required for
+          unauthenticated calls.
         explode: false
         in: header
         name: x-fapi-auth-date
@@ -368,9 +368,9 @@ paths:
           type: string
         style: simple
       - description: The time when the customer last logged in to the Data Recipient
-          Software Product. Required for all resource calls (customer present and
-          unattended) if the customer has logged in. Not to be included for unauthenticated
-          calls.
+          Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required
+          for all resource calls (customer present and unattended). Not required for
+          unauthenticated calls.
         explode: false
         in: header
         name: x-fapi-auth-date
@@ -557,9 +557,9 @@ paths:
           type: string
         style: simple
       - description: The time when the customer last logged in to the Data Recipient
-          Software Product. Required for all resource calls (customer present and
-          unattended) if the customer has logged in. Not to be included for unauthenticated
-          calls.
+          Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required
+          for all resource calls (customer present and unattended). Not required for
+          unauthenticated calls.
         explode: false
         in: header
         name: x-fapi-auth-date
@@ -745,9 +745,9 @@ paths:
           type: string
         style: simple
       - description: The time when the customer last logged in to the Data Recipient
-          Software Product. Required for all resource calls (customer present and
-          unattended) if the customer has logged in. Not to be included for unauthenticated
-          calls.
+          Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required
+          for all resource calls (customer present and unattended). Not required for
+          unauthenticated calls.
         explode: false
         in: header
         name: x-fapi-auth-date
@@ -927,9 +927,9 @@ paths:
           type: string
         style: simple
       - description: The time when the customer last logged in to the Data Recipient
-          Software Product. Required for all resource calls (customer present and
-          unattended) if the customer has logged in. Not to be included for unauthenticated
-          calls.
+          Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required
+          for all resource calls (customer present and unattended). Not required for
+          unauthenticated calls.
         explode: false
         in: header
         name: x-fapi-auth-date
@@ -1199,9 +1199,9 @@ paths:
           type: string
         style: simple
       - description: The time when the customer last logged in to the Data Recipient
-          Software Product. Required for all resource calls (customer present and
-          unattended) if the customer has logged in. Not to be included for unauthenticated
-          calls.
+          Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required
+          for all resource calls (customer present and unattended). Not required for
+          unauthenticated calls.
         explode: false
         in: header
         name: x-fapi-auth-date
@@ -1409,9 +1409,9 @@ paths:
           type: string
         style: simple
       - description: The time when the customer last logged in to the Data Recipient
-          Software Product. Required for all resource calls (customer present and
-          unattended) if the customer has logged in. Not to be included for unauthenticated
-          calls.
+          Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required
+          for all resource calls (customer present and unattended). Not required for
+          unauthenticated calls.
         explode: false
         in: header
         name: x-fapi-auth-date
@@ -1498,8 +1498,9 @@ paths:
                 $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[404
             - Unavailable Banking Account](#error-404-authorisation-unavailable-banking-account)</li><li>[404
-            - Invalid Banking Account](#error-404-authorisation-invalid-banking-account)</li><li>[Unavailable
-            Resource](#error-404-resource-unavailable)</li><li>[Invalid Resource](#error-404-resource-invalid)</li></ul>
+            - Invalid Banking Account](#error-404-authorisation-invalid-banking-account)</li><li>[404
+            - Unavailable Resource](#error-404-resource-unavailable)</li><li>[404
+            - Invalid Resource](#error-404-resource-invalid)</li></ul>
           headers:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
@@ -1612,9 +1613,9 @@ paths:
           type: string
         style: simple
       - description: The time when the customer last logged in to the Data Recipient
-          Software Product. Required for all resource calls (customer present and
-          unattended) if the customer has logged in. Not to be included for unauthenticated
-          calls.
+          Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required
+          for all resource calls (customer present and unattended). Not required for
+          unauthenticated calls.
         explode: false
         in: header
         name: x-fapi-auth-date
@@ -1870,9 +1871,9 @@ paths:
           type: string
         style: simple
       - description: The time when the customer last logged in to the Data Recipient
-          Software Product. Required for all resource calls (customer present and
-          unattended) if the customer has logged in. Not to be included for unauthenticated
-          calls.
+          Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required
+          for all resource calls (customer present and unattended). Not required for
+          unauthenticated calls.
         explode: false
         in: header
         name: x-fapi-auth-date
@@ -2059,9 +2060,9 @@ paths:
           type: string
         style: simple
       - description: The time when the customer last logged in to the Data Recipient
-          Software Product. Required for all resource calls (customer present and
-          unattended) if the customer has logged in. Not to be included for unauthenticated
-          calls.
+          Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required
+          for all resource calls (customer present and unattended). Not required for
+          unauthenticated calls.
         explode: false
         in: header
         name: x-fapi-auth-date
@@ -2271,9 +2272,9 @@ paths:
           type: string
         style: simple
       - description: The time when the customer last logged in to the Data Recipient
-          Software Product. Required for all resource calls (customer present and
-          unattended) if the customer has logged in. Not to be included for unauthenticated
-          calls.
+          Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required
+          for all resource calls (customer present and unattended). Not required for
+          unauthenticated calls.
         explode: false
         in: header
         name: x-fapi-auth-date
@@ -2530,9 +2531,9 @@ paths:
           type: string
         style: simple
       - description: The time when the customer last logged in to the Data Recipient
-          Software Product. Required for all resource calls (customer present and
-          unattended) if the customer has logged in. Not to be included for unauthenticated
-          calls.
+          Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required
+          for all resource calls (customer present and unattended). Not required for
+          unauthenticated calls.
         explode: false
         in: header
         name: x-fapi-auth-date
@@ -2719,9 +2720,9 @@ paths:
           type: string
         style: simple
       - description: The time when the customer last logged in to the Data Recipient
-          Software Product. Required for all resource calls (customer present and
-          unattended) if the customer has logged in. Not to be included for unauthenticated
-          calls.
+          Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required
+          for all resource calls (customer present and unattended). Not required for
+          unauthenticated calls.
         explode: false
         in: header
         name: x-fapi-auth-date
@@ -2940,9 +2941,9 @@ paths:
           type: string
         style: simple
       - description: The time when the customer last logged in to the Data Recipient
-          Software Product. Required for all resource calls (customer present and
-          unattended) if the customer has logged in. Not to be included for unauthenticated
-          calls.
+          Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required
+          for all resource calls (customer present and unattended). Not required for
+          unauthenticated calls.
         explode: false
         in: header
         name: x-fapi-auth-date
@@ -3123,9 +3124,9 @@ paths:
           type: string
         style: simple
       - description: The time when the customer last logged in to the Data Recipient
-          Software Product. Required for all resource calls (customer present and
-          unattended) if the customer has logged in. Not to be included for unauthenticated
-          calls.
+          Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required
+          for all resource calls (customer present and unattended). Not required for
+          unauthenticated calls.
         explode: false
         in: header
         name: x-fapi-auth-date
@@ -3588,8 +3589,9 @@ components:
       style: simple
     RequestHeader_x-fapi-auth-date:
       description: The time when the customer last logged in to the Data Recipient
-        Software Product. Required for all resource calls (customer present and unattended)
-        if the customer has logged in. Not to be included for unauthenticated calls.
+        Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required
+        for all resource calls (customer present and unattended). Not required for
+        unauthenticated calls.
       explode: false
       in: header
       name: x-fapi-auth-date

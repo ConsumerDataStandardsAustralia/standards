@@ -1988,7 +1988,7 @@ This operation does not require authentication
 <td>address</td>
 <td><a href="#common-field-types">ExternalRef</a></td>
 <td>mandatory</td>
-<td>A correctly formatted email address, as defined by the addr_spec format in <strong><a href="#nref-RFC5322">[RFC5322]</a></strong></td>
+<td>A correctly formatted email address, as defined by the addr-spec format in <strong><a href="#nref-RFC5322">[RFC5322]</a></strong></td>
 </tr>
 </tbody></table>
 <h4 id='enumerated-values-7'>Enumerated Values</h4>

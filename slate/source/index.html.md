@@ -12,6 +12,8 @@ toc_footers:
   - <a href='https://cdr-support.zendesk.com/'>CDR Support Portal</a>
   - <a href='https://github.com/ConsumerDataStandardsAustralia/standards'>CDR Standards on GitHub</a>
   - <a href='https://github.com/ConsumerDataStandardsAustralia/standards-maintenance'>CDR Maintenance on GitHub</a>
+  - <a href='https://consumerdatastandardsaustralia.github.io/standards-testing/latest'>Test Documentation</a>
+  -
 
 includes:
   - intro

@@ -1,0 +1,517 @@
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Consumer Data Standards - v1.18.0 Release Notes</title>
+    <link href="../../images/favicon.ico" rel="icon" type="image/ico" />
+
+    <style>
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .gh {
+  color: #999999;
+}
+.highlight .sr {
+  color: #f6aa11;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .nb {
+  color: #f6aa11;
+}
+.highlight .cm {
+  color: #75715e;
+}
+.highlight .cp {
+  color: #75715e;
+}
+.highlight .c1 {
+  color: #75715e;
+}
+.highlight .cs {
+  color: #75715e;
+}
+.highlight .c, .highlight .cd {
+  color: #75715e;
+}
+.highlight .err {
+  color: #960050;
+}
+.highlight .gr {
+  color: #960050;
+}
+.highlight .gt {
+  color: #960050;
+}
+.highlight .gd {
+  color: #49483e;
+}
+.highlight .gi {
+  color: #49483e;
+}
+.highlight .ge {
+  color: #49483e;
+}
+.highlight .kc {
+  color: #66d9ef;
+}
+.highlight .kd {
+  color: #66d9ef;
+}
+.highlight .kr {
+  color: #66d9ef;
+}
+.highlight .no {
+  color: #66d9ef;
+}
+.highlight .kt {
+  color: #66d9ef;
+}
+.highlight .mf {
+  color: #ae81ff;
+}
+.highlight .mh {
+  color: #ae81ff;
+}
+.highlight .il {
+  color: #ae81ff;
+}
+.highlight .mi {
+  color: #ae81ff;
+}
+.highlight .mo {
+  color: #ae81ff;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #ae81ff;
+}
+.highlight .sc {
+  color: #ae81ff;
+}
+.highlight .se {
+  color: #ae81ff;
+}
+.highlight .ss {
+  color: #ae81ff;
+}
+.highlight .sd {
+  color: #e6db74;
+}
+.highlight .s2 {
+  color: #e6db74;
+}
+.highlight .sb {
+  color: #e6db74;
+}
+.highlight .sh {
+  color: #e6db74;
+}
+.highlight .si {
+  color: #e6db74;
+}
+.highlight .sx {
+  color: #e6db74;
+}
+.highlight .s1 {
+  color: #e6db74;
+}
+.highlight .s {
+  color: #e6db74;
+}
+.highlight .na {
+  color: #a6e22e;
+}
+.highlight .nc {
+  color: #a6e22e;
+}
+.highlight .nd {
+  color: #a6e22e;
+}
+.highlight .ne {
+  color: #a6e22e;
+}
+.highlight .nf {
+  color: #a6e22e;
+}
+.highlight .vc {
+  color: #ffffff;
+}
+.highlight .nn {
+  color: #ffffff;
+}
+.highlight .nl {
+  color: #ffffff;
+}
+.highlight .ni {
+  color: #ffffff;
+}
+.highlight .bp {
+  color: #ffffff;
+}
+.highlight .vg {
+  color: #ffffff;
+}
+.highlight .vi {
+  color: #ffffff;
+}
+.highlight .nv {
+  color: #ffffff;
+}
+.highlight .w {
+  color: #ffffff;
+}
+.highlight {
+  color: #ffffff;
+}
+.highlight .n, .highlight .py, .highlight .nx {
+  color: #ffffff;
+}
+.highlight .ow {
+  color: #f92672;
+}
+.highlight .nt {
+  color: #f92672;
+}
+.highlight .k, .highlight .kv {
+  color: #f92672;
+}
+.highlight .kn {
+  color: #f92672;
+}
+.highlight .kp {
+  color: #f92672;
+}
+.highlight .o {
+  color: #f92672;
+}
+    </style>
+    <link href="../../stylesheets/screen.css" rel="stylesheet" media="screen" />
+    <link href="../../stylesheets/print.css" rel="stylesheet" media="print" />
+      <script src="../../javascripts/all_nosearch.js"></script>
+  </head>
+
+  <body class="no-code-layout includes includes_releasenotes includes_releasenotes_releasenotes" data-languages="[]">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="../../images/navbar.png" alt="Navbar" />
+      </span>
+    </a>
+    <div class="toc-wrapper">
+      <img src="../../images/logo.png" class="logo" alt="Logo" />
+      <ul id="toc" class="toc-list-h1">
+          <li>
+            <a href="#v1-18-0-release-notes" class="toc-h1 toc-link" data-title="V1.18.0 Release Notes">V1.18.0 Release Notes</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#changes-made" class="toc-h2 toc-link" data-title="Changes Made">Changes Made</a>
+                  </li>
+                  <li>
+                    <a href="#introduction" class="toc-h2 toc-link" data-title="Introduction">Introduction</a>
+                  </li>
+                  <li>
+                    <a href="#high-level-standards" class="toc-h2 toc-link" data-title="High Level Standards">High Level Standards</a>
+                  </li>
+                  <li>
+                    <a href="#api-end-points" class="toc-h2 toc-link" data-title="API End Points">API End Points</a>
+                  </li>
+                  <li>
+                    <a href="#information-security-profile" class="toc-h2 toc-link" data-title="Information Security Profile">Information Security Profile</a>
+                  </li>
+                  <li>
+                    <a href="#consumer-experience" class="toc-h2 toc-link" data-title="Consumer Experience">Consumer Experience</a>
+                  </li>
+                  <li>
+                    <a href="#known-issues" class="toc-h2 toc-link" data-title="Known Issues">Known Issues</a>
+                  </li>
+              </ul>
+          </li>
+      </ul>
+        <ul class="toc-footer">
+            <li><a href='../../index.html'>Consumer Data Standards</a></li>
+        </ul>
+    </div>
+    <div class="page-wrapper">
+      <div class="content">
+        <h1 id='v1-18-0-release-notes'>V1.18.0 Release Notes</h1>
+<p>Release notes for version v1.18.0 of the <a href="../../">CDR Standards</a>.</p>
+<h2 id='changes-made'>Changes Made</h2><h3 id='change-requests'>Change Requests</h3>
+<p>This release addresses the following minor defects raised on <a href="https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues">Standards Staging</a>:</p>
+
+<ul>
+<li><a href="https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/192">Standards Staging Issue 192: Incorrect property name in EnergyServicePointListResponse definition</a></li>
+<li><a href="https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/200">Standards Staging Issue 200: Update documentation clarifying sort date for energy invoices</a></li>
+</ul>
+
+<p>This release addresses the following change requests raised on <a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues">Standards Maintenance</a>:</p>
+
+<ul>
+<li><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/461">Standards Maintenance Issue 461: Documentation Improvement: EnergyPlanContract.variation</a></li>
+<li><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/472">Standards Maintenance Issue 472: Modify Energy Plans structure to allow Time of Use based Controlled Load rates</a></li>
+<li><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/481">Standards Maintenance Issue 481: Provide timeline of when multiple sectors per data holder brand will be supported</a></li>
+<li><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/485">Standards Maintenance Issue 485: Common Data Clusters altered for Energy Data Language</a></li>
+<li><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/486">Standards Maintenance Issue 486: Allow ADRs to specify scopes for a Software Statement Assertion (SSA) to support cross industry software products</a></li>
+<li><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/487">Standards Maintenance Issue 487: DCR APIs non-normative examples would benefit from clarification</a></li>
+<li><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/489">Standards Maintenance Issue 489: v1.15.0 More ambiguity into x-fapi-auth-date not less</a></li>
+<li><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/491">Standards Maintenance Issue 491: ID Token algorithm support requirements are ambiguous</a></li>
+<li><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/493">Standards Maintenance Issue 493: Get Transaction Detail - Client Error documentation</a></li>
+<li><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/494">Standards Maintenance Issue 494: Response payload structure description error</a></li>
+<li><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/495">Standards Maintenance Issue 495: Energy - GetAgreedPaymentSchedule API - manualPayment section should have paymentFrequency instead of billFrequency field</a></li>
+<li><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/497">Standards Maintenance Issue 497: CommonEmailAddress - address format documentation</a></li>
+<li><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/499">Standards Maintenance Issue 499: Unknown field in Energy Secondary Data Holder OpenAPI spec</a></li>
+<li><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/502">Standards Maintenance Issue 502: Review ENUM values for representation of days in Energy Standards</a></li>
+<li><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/505">Standards Maintenance Issue 505: Representation of time within EnergyPlanDetail Schema</a></li>
+<li><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/507">Standards Maintenance Issue 507: FDO for data holders ignoring unsupported authorisation scopes to be set earlier than energy release date</a></li>
+<li><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/510">Standards Maintenance Issue 510: Register API error codes need to be aligned with the CDS standardised error codes</a></li>
+<li><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/511">Standards Maintenance Issue 511: Iteration 11 Holistic Feedback</a></li>
+<li><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/512">Standards Maintenance Issue 512: Distributor needed for EnergyPlan.geography object</a></li>
+<li><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/514">Standards Maintenance Issue 514: Get Usage For ... Shared Responsibility APIs Payload size</a></li>
+<li><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/521">Standards Maintenance Issue 521: Transition of required parameters in the CDR Arrangement JWT</a></li>
+</ul>
+<h3 id='decision-proposals'>Decision Proposals</h3>
+<p>This release addresses the following Decision Proposals published on <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues">Standards</a>:</p>
+
+<ul>
+<li><a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/249">Decision Proposal 249 - Maintenance Iteration 11</a></li>
+</ul>
+<h2 id='introduction'>Introduction</h2>
+<table><thead>
+<tr>
+<th>Change</th>
+<th>Description</th>
+<th>Link</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Future Dated Obligations</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/507"><strong>Standards Maintenance #507</strong></a>: Registration validation future obligation date changed from 15th November 2022 to 31st August 2022</td>
+<td><a href="../../#future-dated-obligations">Future Dated Obligations</a></td>
+</tr>
+</tbody></table>
+<h2 id='high-level-standards'>High Level Standards</h2>
+<table><thead>
+<tr>
+<th>Change</th>
+<th>Description</th>
+<th>Link</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Response Payload Structure</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/494"><strong>Standards Maintenance #494</strong></a>: Corrected documentation to refer to the API response, not request.</td>
+<td><a href="../../#payload-conventions">Payload Conventions</a></td>
+</tr>
+<tr>
+<td>Introduction</td>
+<td>Updated the introduction to include correct links to CDR agencies.</td>
+<td><a href="../../#introduction">Introduction</a></td>
+</tr>
+<tr>
+<td>Informative References</td>
+<td>Updated the informative reference for CDR and added new informative references for Treasury, ACCC and the OAIC.</td>
+<td><a href="../../#informative-references">Introduction</a></td>
+</tr>
+<tr>
+<td>Array Conventions - Payload Conventions</td>
+<td>Fixed the HTML rendering for the Markdown bullet point list in the array conventions</td>
+<td><a href="../../#payload-conventions">Payload Conventions</a></td>
+</tr>
+<tr>
+<td>SHOULD/MUST Language</td>
+<td>The language for some of the common types (e.g. MaskedPANString) use &#39;should&#39; inconsistently with RFC2119 as their language predates the use of the RFC. This has been corrected</td>
+<td><a href="../../#common-field-types">Common Field Types</a></td>
+</tr>
+</tbody></table>
+<h2 id='api-end-points'>API End Points</h2>
+<table><thead>
+<tr>
+<th>Change</th>
+<th>Description</th>
+<th>Link</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Banking - Get Transaction Detail API error list</td>
+<td><strong><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/493">Standards Maintenance Issue 493</a></strong>: Fixed error codes presented in the Responses section to display the HTTP status code for Unavailable Resource and Invalid Resource errors</td>
+<td><a href="../../#get-transaction-detail">Get Transaction Detail</a></td>
+</tr>
+<tr>
+<td>Energy schema</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/200"><strong>Standards Staging #200</strong></a>: Update the description of EnergyInvoice in EnergyInvoiceListResponse to clarify the sorting is done by issueDate</td>
+<td><a href="../../#energy-apis">Energy Schema</a></td>
+</tr>
+<tr>
+<td>Energy schema</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/192"><strong>Standards Staging #192</strong></a> Fixed property value name in EnergyServicePointListResponse from <code>me</code> to <code>meta</code>.</td>
+<td><a href="../../#energy-apis">Energy Schema</a></td>
+</tr>
+<tr>
+<td>Energy schema</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/505"><strong>Standards Maintenance #505</strong></a>: Converted <code>timeOfUseRates.timeOfUse.startTime</code>, <code>timeOfUseRates.timeOfUse.endTime</code>,<code>demandCharges.startTime</code> and <code>demandCharges.endTime</code> to TimeString type</td>
+<td><a href="../../#energy-apis">Energy Schema</a></td>
+</tr>
+<tr>
+<td>Energy schema</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/502"><strong>Standards Maintenance #502</strong></a> Converted <code>EnergyPlanSolarFeedInTariff.timeVaryingTariffs.timeVariations.days</code> and <code>EnergyPlanTariffPeriod.demandCharges.days</code> into ENUM. Updated ENUM values for <code>EnergyPlanTariffPeriod.timeOfUseRates.timeOfUse.days</code> to the same as the other <code>days</code> fields.</td>
+<td><a href="../../#energy-apis">Energy Schema</a></td>
+</tr>
+<tr>
+<td>Energy schema</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/495"><strong>Standards Maintenance #495</strong></a>: <ul><li>Added notes to clarify intent of Get Agreed Payment Schedule API</li><li>Made <code>EnergyPaymentScheduleResponse</code> into an array</li><li>Added <code>digitalWallet</code> structure to <code>EnergyPaymentSchedule</code></li><li>Updated description of <code>isTokenised</code> by removing conditional statements for <code>bsb</code> and <code>accountNumber</code> fields</li></ul></td>
+<td><a href="../../#energy-apis">Energy Schema</a></td>
+</tr>
+<tr>
+<td>Energy schema</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/512"><strong>Standards Maintenance #512</strong></a> Added <code>distributors</code> string array field to <code>EnergyPlan.geography</code> object</td>
+<td><a href="../../#energy-apis">Energy Schema</a></td>
+</tr>
+<tr>
+<td>(Energy) Fix conditional statement for contract variation</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/461"><strong>Standards Maintenance Issue #461</strong></a>: Corrected the EnergyPlanContract_variation conditional statement such that the <code>variation</code> is required if the <code>isFixed</code> property is <code>false</code>.</td>
+<td><a href="../../#get-generic-plan-detail">Get Generic Plan Detail</a> and <a href="../../#get-energy-account-detail">Get Energy Account Detail</a></td>
+</tr>
+<tr>
+<td>(Energy) Fix incorrect required reference in relatedParticipants</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/499"><strong>Standards Maintenance Issue #499</strong></a>: Corrected an issue with the EnergyServicePointDetail_relatedParticipants object that incorrectly referenced the <code>location</code> of a sibling object. This issue occurs in both consumer facing and Energy Secondary DH APIs.</td>
+<td><a href="../../#get-service-point-detail">Get Service Point Detail</a></td>
+</tr>
+<tr>
+<td>CommonEmailAddress</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/497"><strong>Standards Maintenance #497</strong></a>: Fixed external reference for email format to be &quot;addr-spec&quot;.</td>
+<td><a href="../../#common-apis">Common APIs</a></td>
+</tr>
+<tr>
+<td><code>x-fapi-auth-date</code> references in resource APIs</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/489"><strong>Standards Maintenance #489</strong></a>: Corrected the documentation for <code>x-fapi-auth-date</code> references.</td>
+<td><a href="../../#banking-apis">Banking APIs</a> and <a href="../../#energy-apis">Energy APIs</a></td>
+</tr>
+<tr>
+<td>DCR Non Normative Examples</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/487"><strong>Standards Maintenance #487</strong></a>: Fixed the URL for DCR examples to remove an extraneous /register/ path component</td>
+<td><a href="../..//#dcr-apis">DCR APIs</a></td>
+</tr>
+<tr>
+<td>Energy schema</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/514"><strong>Standards Maintenance #514</strong></a> Made changes to <code>EnergyUsageRead</code> structure of both primary and secondary data holder to optimise sharing of large volume of interval read data. The change also includes adding a new <code>interval-reads</code> query parameter to usage APIs.</td>
+<td><a href="../../#energy-apis">Energy Schema</a></td>
+</tr>
+<tr>
+<td>Energy schema</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/472"><strong>Standards Maintenance #472</strong></a> Made EnergyPlanControlledLoad into an array and updated structure to allow representation of time of use based rates.</td>
+<td><a href="../../#energy-apis">Energy Schema</a></td>
+</tr>
+<tr>
+<td>Get Software Statement Assertion (SSA)</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/486"><strong>Standards Maintenance #486</strong></a>: Added reference to obsolete v1 of the GetSSA API</td>
+<td><a href="../../#get-software-statement-assertion-ssa">Get Software Statement Assertion (SSA)</a></td>
+</tr>
+<tr>
+<td>CDR Register APIs Endpoint Version Schedule</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/486"><strong>Standards Maintenance #486</strong></a>: Added version schedule for obsolete v1 of the GetSSA API</td>
+<td><a href="../../includes/endpoint-version-schedule/#cdr-register-apis">Endpoint Version Schedule</a></td>
+</tr>
+<tr>
+<td>Register APIs</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/481"><strong>Standards Maintenance #481</strong></a>: Removed constraint that data holder brands only map to a single industry</td>
+<td><a href="../../#register-apis">Register APIs</a></td>
+</tr>
+<tr>
+<td>Get Metric Applicability</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/515"><strong>Standards Maintenance #515</strong></a>: Clarified that AEMO, AER and DELWP do not need to implement Get Metrics</td>
+<td><a href="../../#get-metrics">Admin APIs</a></td>
+</tr>
+</tbody></table>
+<h2 id='information-security-profile'>Information Security Profile</h2>
+<table><thead>
+<tr>
+<th>Change</th>
+<th>Description</th>
+<th>Link</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Profile scope data language link</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/511"><strong>Standards Maintenance #511</strong></a>: Fixed the link in the &quot;OpenID Connect End-User Data&quot; section linking to the CX Data Language: Profile Scope section. Addresses <a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/511#issuecomment-1135390550">Issue 511 comment</a>.</td>
+<td><a href="../../#authorisation-scopes">Authorisation Scopes</a></td>
+</tr>
+<tr>
+<td>Formatting for Authorisation Code Flow</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/511"><strong>Standards Maintenance #511</strong></a>: Corrected the formatting of a bullet point list in the Authorisation Code Flow section obligations. Addresses <a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/511#issuecomment-1131001514">Issue 511 comment</a>.</td>
+<td><a href="../../#authentication-flows">Authentication Flows</a></td>
+</tr>
+<tr>
+<td>Formatting for Mandatory Fields</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/511"><strong>Standards Maintenance #511</strong></a>: Corrected the formatting of a bullet point list in the Array Conventions&#39; Mandatory Fields section. Addresses <a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/511#issuecomment-1138437892">Issue 511 comment</a>.</td>
+<td><a href="../../#payload-conventions">Payload Conventions: Array Conventions - Mandatory Fields</a></td>
+</tr>
+<tr>
+<td>Schema typing for Energy APIs</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/511"><strong>Standards Maintenance #511</strong></a>: Corrected Updates for the Energy schema types, description and formatting. Addresses <a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/511#issuecomment-1178626247">Issue 511 comment</a>.</td>
+<td><a href="../../#energy-apis">Energy APIs</a></td>
+</tr>
+<tr>
+<td>Sort order for Energy Usage Reads</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/511"><strong>Standards Maintenance #511</strong></a>: Updated description of EnergyUsageListResponse in Energy Data Holder and Secondary Data Holders endpoints with sort order. Addresses <a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/511#issuecomment-1138013171">Issue 511 comment</a>.</td>
+<td><a href="../../#energy-apis">Energy APIs</a></td>
+</tr>
+<tr>
+<td>ADR hosted CDR Arrangement Revocation Endpoint</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/521"><strong>Standards Maintenance #521</strong></a>: Updates to accomodate JWT transition for lodgement of the CDR Arrangement ID and validation logic for ADRs.</td>
+<td><a href="../../#security-endpoints">CDR Arrangement Revocation Endpoint</a></td>
+</tr>
+<tr>
+<td>Client Registration</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/486"><strong>Standards Maintenance #486</strong></a>: Get Software Statement Assertion API v1 &amp; v2 has the scope claim explicitly defined</td>
+<td><a href="../../#get-software-statement-assertion-ssa">Get Software Statement Assertion (SSA)</a></td>
+</tr>
+<tr>
+<td>ID Token Algorithm Selection Considerations</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/491"><strong>Standards Maintenance #491</strong></a>: Added clarification on algorithm coverage required for data holders and data recipients</td>
+<td><a href="../../#client-registration">Client Registration</a></td>
+</tr>
+</tbody></table>
+<h2 id='consumer-experience'>Consumer Experience</h2>
+<table><thead>
+<tr>
+<th>Change</th>
+<th>Description</th>
+<th>Link</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Customer Data Language</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/485"><strong>Standards Maintenance #485</strong></a>: Customer data language standards removed from sector-specific banking and energy sections and added to the common area of the CX standards titled <a href="../../#customer-language-common">Customer Language: Common</a>. Title for <a href="../../#profile-scope-and-standard-claims-common">profile scope section</a> amended by adding &quot;Common&quot; to maintain consistency between common areas of the data language standards</td>
+<td><a href="../../#consumer-experience">Consumer Experience</a></td>
+</tr>
+</tbody></table>
+<h2 id='known-issues'>Known Issues</h2>
+<table><thead>
+<tr>
+<th>Change</th>
+<th>Description</th>
+<th>Link</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Future improvements</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/510"><strong>Standards Maintenance #510</strong></a>: Added future improvement Register API error codes need to be aligned with the CDS standardised error codes</td>
+<td><a href="../../#known-issues">Known Issues</a></td>
+</tr>
+</tbody></table>
+
+      </div>
+    </div>
+  </body>
+</html>

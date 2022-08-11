@@ -56,11 +56,6 @@ The table below outlines the end state for each Register entry type:
 
 ### Data Holder Responsibilities
 
-```diff
-Added the following requirement:
-+ Data Holders SHOULD continue to use the previous status value until a valid value is returned by the CDR Register or the ACCC informs the Data Holder using an alternative mechanism. There is no upper bound for how long previous status values should remain trusted.
-```
-
 The CDR Registrar has the ability to change the status of a Software Product independently of the Data Recipient's accreditation status. Therefore, both the Data Recipient and Software Product statuses **SHOULD** be referenced, to determine the Data Holder's responsibilities for data disclosure, consent and registration management.
 
 |**Data Recipient<br/>Status**|**Software Product<br/>Status**|**Disclose of CDR Data**|**Facilitate Consent Authorisation**|**Facilitate Consent Withdrawal**|**Invalidate Consents**|**Cleanup Registration**|

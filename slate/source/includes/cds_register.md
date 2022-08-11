@@ -178,7 +178,7 @@ GET https://<register-base-url>/cdr-register/v1/{industry}/data-holders/brands H
 
 Accept: application/json
 Authorization: string
-x-v: string
+x-v: 1
 x-min-v: string
 
 ```
@@ -187,7 +187,7 @@ x-min-v: string
 var headers = {
   'Accept':'application/json',
   'Authorization':'string',
-  'x-v':'string',
+  'x-v':'1',
   'x-min-v':'string'
 
 };
@@ -449,7 +449,7 @@ This operation does not require authentication
 GET https://<register-base-url>/cdr-register/v1/{industry}/data-recipients/brands/{dataRecipientBrandId}/software-products/{softwareProductId}/ssa HTTP/1.1
 
 Accept: application/json
-x-v: string
+x-v: 1
 x-min-v: string
 Authorization: string
 
@@ -458,7 +458,7 @@ Authorization: string
 ```javascript
 var headers = {
   'Accept':'application/json',
-  'x-v':'string',
+  'x-v':'1',
   'x-min-v':'string',
   'Authorization':'string'
 
@@ -480,7 +480,7 @@ $.ajax({
 
 Get a Software Statement Assertion (SSA) for a software product on the CDR Register to be used for Dynamic Client Registration with a Data Holder Brand.
 
-Obsolete versions: [v2](includes/obsolete/get-software-statement-assertion-v2.html)
+Obsolete versions: [v1](includes/obsolete/get-software-statement-assertion-v1.html), [v2](includes/obsolete/get-software-statement-assertion-v2.html)
 
 ###Endpoint Version
 |   |  |
@@ -553,7 +553,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 GET https://<register-base-url>/cdr-register/v1/{industry}/data-holders/status HTTP/1.1
 
 Accept: application/json
-x-v: string
+x-v: 1
 x-min-v: string
 If-None-Match: string
 
@@ -562,7 +562,7 @@ If-None-Match: string
 ```javascript
 var headers = {
   'Accept':'application/json',
-  'x-v':'string',
+  'x-v':'1',
   'x-min-v':'string',
   'If-None-Match':'string'
 
@@ -660,7 +660,7 @@ This operation does not require authentication
 GET https://<register-base-url>/cdr-register/v1/{industry}/data-recipients/brands/software-products/status HTTP/1.1
 
 Accept: application/json
-x-v: string
+x-v: 1
 x-min-v: string
 If-None-Match: string
 
@@ -669,7 +669,7 @@ If-None-Match: string
 ```javascript
 var headers = {
   'Accept':'application/json',
-  'x-v':'string',
+  'x-v':'1',
   'x-min-v':'string',
   'If-None-Match':'string'
 
@@ -769,7 +769,7 @@ This operation does not require authentication
 GET https://<register-base-url>/cdr-register/v1/{industry}/data-recipients/status HTTP/1.1
 
 Accept: application/json
-x-v: string
+x-v: 1
 x-min-v: string
 If-None-Match: string
 
@@ -778,7 +778,7 @@ If-None-Match: string
 ```javascript
 var headers = {
   'Accept':'application/json',
-  'x-v':'string',
+  'x-v':'1',
   'x-min-v':'string',
   'If-None-Match':'string'
 
@@ -878,7 +878,7 @@ This operation does not require authentication
 GET https://<register-base-url>/cdr-register/v1/{industry}/data-recipients HTTP/1.1
 
 Accept: application/json
-x-v: string
+x-v: 1
 x-min-v: string
 If-None-Match: string
 
@@ -887,7 +887,7 @@ If-None-Match: string
 ```javascript
 var headers = {
   'Accept':'application/json',
-  'x-v':'string',
+  'x-v':'1',
   'x-min-v':'string',
   'If-None-Match':'string'
 
@@ -1247,7 +1247,7 @@ This operation does not require authentication
 |---|---|---|---|
 |dataHolderBrandId|string|mandatory|Unique id of the Data Holder Brand issued by the CDR Register|
 |brandName|string|mandatory|The name of Data Holder Brand|
-|industries|[string]|mandatory|The industries the Data Holder Brand belongs to. Please note that the CDR Register entity model is constrained to one industry per brand which is planned to be relaxed in the future.|
+|industries|[string]|mandatory|The industries the Data Holder Brand belongs to|
 |logoUri|[URIString](#common-field-types)|mandatory|Brand logo URI|
 |legalEntity|[LegalEntityDetail](#schemacdr-participant-discovery-apilegalentitydetail)|mandatory|The data that is common to all organisations, regardless of the type (e.g. company, trust, partnership, government)|
 |status|string|mandatory|none|
@@ -1335,7 +1335,7 @@ This operation does not require authentication
 |brandName|string|mandatory|The name of Data Holder Brand|
 |publicBaseUri|[URIString](#common-field-types)|mandatory|Base URI for the Data Holder's Consumer Data Standard public endpoints|
 |logoUri|[URIString](#common-field-types)|mandatory|Brand logo URI|
-|industries|[string]|mandatory|The industries the Data Holder Brand belongs to. Please note that the CDR Register entity model is constrained to one industry per brand which is planned to be relaxed in the future.|
+|industries|[string]|mandatory|The industries the Data Holder Brand belongs to|
 |lastUpdated|[DateTimeString](#common-field-types)|mandatory|The date/time that the Data Holder Brand data was last updated in the Register|
 |abn|string|optional|Australian Business Number for the organisation|
 |acn|string|optional|Australian Company Number for the organisation|

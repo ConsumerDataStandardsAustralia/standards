@@ -383,12 +383,21 @@ Obtain a list of electricity usage data from a particular service point
 |servicePointId|path|string|mandatory|The independent ID of the service point, known in the industry as the NMI. The  servicePointId will be replaced with NMI for all interactions between Data Holder and AEMO.|
 |oldest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with effective date at or after this date. If absent defaults to newest-date minus 24 months.  Format is aligned to DateString common type|
 |newest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with effective date at or before this date.  If absent defaults to current date.  Format is aligned to DateString common type|
+|interval-reads|query|string|optional|Type of interval reads. Any one of the valid values for this field can be supplied. If absent defaults to NONE|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request.  Default is 25 (standard pagination)|
 |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
 |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
 |x-fapi-interaction-id|header|string|mandatory|The x-fapi-interaction-id header value provided by the Data Recipient. If not supplied by the Data Recipient, the primary Data Holder MUST create a unique **[[RFC4122]](#nref-RFC4122)** UUID value for the x-fapi-interaction-id header.|
 |x-cds-arrangement|header|string|mandatory|A unique string representing a consent arrangement between a Data Recipient Software Product and Data Holder for a given consumer. The identifier MUST be unique per customer according to the definition of customer in the CDR Federation section of this profile. The x-cds-arrangement should contain the arrangement ID for the consent that the request is being made under and will be used for tracing and audit purposes. This field MUST be populated but AEMO MUST NOT seek to validate the consent associated with the arrangement|
+
+#### Enumerated Values
+
+|Parameter|Value|
+|---|---|
+|interval-reads|NONE|
+|interval-reads|MIN_30|
+|interval-reads|FULL|
 
 > Example responses
 
@@ -402,7 +411,7 @@ Obtain a list of electricity usage data from a particular service point
         "servicePointId": "string",
         "registerId": "string",
         "registerSuffix": "string",
-        "meterID": "string",
+        "meterId": "string",
         "controlledLoad": true,
         "readStartDate": "string",
         "readEndDate": "string",
@@ -416,11 +425,13 @@ Obtain a list of electricity usage data from a particular service point
           "readIntervalLength": 0,
           "aggregateValue": 0,
           "intervalReads": [
-            {
-              "quality": "ACTUAL",
-              "value": 0
-            }
-          ]
+            0
+          ],
+          "readQualities": {
+            "startInterval": 0,
+            "endInterval": 0,
+            "quality": "SUBSTITUTE"
+          }
         }
       }
     ]
@@ -536,6 +547,7 @@ Obtain the electricity usage data for a specific set of service points
 |---|---|---|---|---|
 |oldest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with effective date at or after this date. If absent defaults to newest-date minus 24 months.  Format is aligned to DateString common type|
 |newest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with effective date at or before this date.  If absent defaults to current date.  Format is aligned to DateString common type|
+|interval-reads|query|string|optional|Type of interval reads. Any one of the valid values for this field can be supplied. If absent defaults to NONE|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request.  Default is 25 (standard pagination)|
 |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
@@ -546,6 +558,14 @@ Obtain the electricity usage data for a specific set of service points
 |» data|body|object|mandatory|none|
 |»» servicePointIds|body|[string]|mandatory|Array of specific NMIs to obtain data for|
 |» meta|body|[Meta](#schemacdr-energy-secondary-data-holder-apimeta)|mandatory|none|
+
+#### Enumerated Values
+
+|Parameter|Value|
+|---|---|
+|interval-reads|NONE|
+|interval-reads|MIN_30|
+|interval-reads|FULL|
 
 > Example responses
 
@@ -559,7 +579,7 @@ Obtain the electricity usage data for a specific set of service points
         "servicePointId": "string",
         "registerId": "string",
         "registerSuffix": "string",
-        "meterID": "string",
+        "meterId": "string",
         "controlledLoad": true,
         "readStartDate": "string",
         "readEndDate": "string",
@@ -573,11 +593,13 @@ Obtain the electricity usage data for a specific set of service points
           "readIntervalLength": 0,
           "aggregateValue": 0,
           "intervalReads": [
-            {
-              "quality": "ACTUAL",
-              "value": 0
-            }
-          ]
+            0
+          ],
+          "readQualities": {
+            "startInterval": 0,
+            "endInterval": 0,
+            "quality": "SUBSTITUTE"
+          }
         }
       }
     ]
@@ -689,12 +711,12 @@ Obtain a list of DER data from a particular service point
   "data": {
     "servicePointId": "string",
     "approvedCapacity": 0,
-    "availablePhasesCount": 0,
-    "installedPhasesCount": 0,
-    "islandableInstallation": "string",
+    "availablePhasesCount": 1,
+    "installedPhasesCount": 1,
+    "islandableInstallation": true,
     "hasCentralProtectionControl": false,
     "protectionMode": {
-      "exportLimitkva": 0,
+      "exportLimitKva": 0,
       "underFrequencyProtection": 0,
       "underFrequencyProtectionDelay": 0,
       "overFrequencyProtection": 0,
@@ -859,12 +881,12 @@ Obtain DER data for a specific set of service points
       {
         "servicePointId": "string",
         "approvedCapacity": 0,
-        "availablePhasesCount": 0,
-        "installedPhasesCount": 0,
-        "islandableInstallation": "string",
+        "availablePhasesCount": 1,
+        "installedPhasesCount": 1,
+        "islandableInstallation": true,
         "hasCentralProtectionControl": false,
         "protectionMode": {
-          "exportLimitkva": 0,
+          "exportLimitKva": 0,
           "underFrequencyProtection": 0,
           "underFrequencyProtectionDelay": 0,
           "overFrequencyProtection": 0,
@@ -1123,7 +1145,7 @@ This operation does not require authentication
         "servicePointId": "string",
         "registerId": "string",
         "registerSuffix": "string",
-        "meterID": "string",
+        "meterId": "string",
         "controlledLoad": true,
         "readStartDate": "string",
         "readEndDate": "string",
@@ -1137,11 +1159,13 @@ This operation does not require authentication
           "readIntervalLength": 0,
           "aggregateValue": 0,
           "intervalReads": [
-            {
-              "quality": "ACTUAL",
-              "value": 0
-            }
-          ]
+            0
+          ],
+          "readQualities": {
+            "startInterval": 0,
+            "endInterval": 0,
+            "quality": "SUBSTITUTE"
+          }
         }
       }
     ]
@@ -1166,7 +1190,7 @@ This operation does not require authentication
 |Name|Type|Required|Description|
 |---|---|---|---|
 |data|object|mandatory|none|
-|» reads|[[EnergyUsageRead](#schemacdr-energy-secondary-data-holder-apienergyusageread)]|mandatory|Array of meter reads|
+|» reads|[[EnergyUsageRead](#schemacdr-energy-secondary-data-holder-apienergyusageread)]|mandatory|Array of meter reads sorted by NMI in ascending order followed by readStartDate in descending order|
 |links|[LinksPaginated](#schemacdr-energy-secondary-data-holder-apilinkspaginated)|mandatory|none|
 |meta|[MetaPaginated](#schemacdr-energy-secondary-data-holder-apimetapaginated)|mandatory|none|
 
@@ -1181,12 +1205,12 @@ This operation does not require authentication
       {
         "servicePointId": "string",
         "approvedCapacity": 0,
-        "availablePhasesCount": 0,
-        "installedPhasesCount": 0,
-        "islandableInstallation": "string",
+        "availablePhasesCount": 1,
+        "installedPhasesCount": 1,
+        "islandableInstallation": true,
         "hasCentralProtectionControl": false,
         "protectionMode": {
-          "exportLimitkva": 0,
+          "exportLimitKva": 0,
           "underFrequencyProtection": 0,
           "underFrequencyProtectionDelay": 0,
           "overFrequencyProtection": 0,
@@ -1264,12 +1288,12 @@ This operation does not require authentication
   "data": {
     "servicePointId": "string",
     "approvedCapacity": 0,
-    "availablePhasesCount": 0,
-    "installedPhasesCount": 0,
-    "islandableInstallation": "string",
+    "availablePhasesCount": 1,
+    "installedPhasesCount": 1,
+    "islandableInstallation": true,
     "hasCentralProtectionControl": false,
     "protectionMode": {
-      "exportLimitkva": 0,
+      "exportLimitKva": 0,
       "underFrequencyProtection": 0,
       "underFrequencyProtectionDelay": 0,
       "overFrequencyProtection": 0,
@@ -1646,7 +1670,7 @@ This operation does not require authentication
   "servicePointId": "string",
   "registerId": "string",
   "registerSuffix": "string",
-  "meterID": "string",
+  "meterId": "string",
   "controlledLoad": true,
   "readStartDate": "string",
   "readEndDate": "string",
@@ -1660,11 +1684,13 @@ This operation does not require authentication
     "readIntervalLength": 0,
     "aggregateValue": 0,
     "intervalReads": [
-      {
-        "quality": "ACTUAL",
-        "value": 0
-      }
-    ]
+      0
+    ],
+    "readQualities": {
+      "startInterval": 0,
+      "endInterval": 0,
+      "quality": "SUBSTITUTE"
+    }
   }
 }
 
@@ -1677,21 +1703,23 @@ This operation does not require authentication
 |servicePointId|string|mandatory|The independent ID of the service point, known in the industry as the National Meter Identifier (NMI). Note that the servicePointId will be replaced with NMI for all interactions between Data Holder and AEMO.|
 |registerId|string|optional|Register ID of the meter register where the meter reads are obtained|
 |registerSuffix|string|mandatory|Register suffix of the meter register where the meter reads are obtained|
-|meterID|string|optional|Meter id/serial number as it appears in customer’s bill. ID permanence rules do not apply.|
+|meterId|string|optional|Meter id/serial number as it appears in customer’s bill. ID permanence rules do not apply.|
 |controlledLoad|boolean|optional|Indicates whether the energy recorded by this register is created under a Controlled Load regime|
-|readStartDate|[DateString](#common-field-types)|mandatory|Date time when the meter reads start|
-|readEndDate|[DateString](#common-field-types)|optional|Date time when the meter reads end.  If absent then assumed to be equal to readStartDate.  In this case the entry represents data for a single date specified by readStartDate|
-|unitOfMeasure|string|optional|Unit of measure of the meter reads. Refer to Appendix B of <a href='https://www.aemo.com.au/-/media/files/stakeholder_consultation/consultations/nem-consultations/2019/5ms-metering-package-2/final-determination/mdff-specification-nem12-nem13-v21-final-determination-clean.pdf?la=en&hash=03FCBA0D60E091DE00F2361AE76206EA'>MDFF Specification NEM12 NEM13 v2.1</a> for a list of possible values|
+|readStartDate|[DateString](#common-field-types)|mandatory|Date when the meter reads start in AEST and assumed to start from 12:00 am AEST.|
+|readEndDate|[DateString](#common-field-types)|optional|Date when the meter reads end in AEST.  If absent then assumed to be equal to readStartDate.  In this case the entry represents data for a single date specified by readStartDate.|
+|unitOfMeasure|[ExternalRef](#common-field-types)|optional|Unit of measure of the meter reads. Refer to Appendix B of <a href='https://www.aemo.com.au/-/media/files/stakeholder_consultation/consultations/nem-consultations/2019/5ms-metering-package-2/final-determination/mdff-specification-nem12-nem13-v21-final-determination-clean.pdf?la=en&hash=03FCBA0D60E091DE00F2361AE76206EA'>MDFF Specification NEM12 NEM13 v2.1</a> for a list of possible values|
 |readUType|string|mandatory|Specify the type of the meter read data|
 |basicRead|object|conditional|Mandatory if readUType is set to basicRead|
 |» quality|string|optional|The quality of the read taken.  If absent then assumed to be ACTUAL|
 |» value|number|mandatory|Meter read value.  If positive then it means consumption, if negative it means export|
 |intervalRead|object|conditional|Mandatory if readUType is set to intervalRead|
-|» readIntervalLength|[PositiveInteger](#common-field-types)|mandatory|Read interval length in minutes|
+|» readIntervalLength|[PositiveInteger](#common-field-types)|conditional|Read interval length in minutes. Required when interval-reads query parameter equals FULL or MIN_30|
 |» aggregateValue|number|mandatory|The aggregate sum of the interval read values. If positive then it means net consumption, if negative it means net export|
-|» intervalReads|[object]|mandatory|Array of reads with each element indicating the read for the interval specified by readIntervalLength beginning at midnight of readStartDate (for example 00:00 to 00:30 would be the first reading in a 30 minute Interval)|
-|»» quality|string|optional|The quality of the read taken.  If absent then assumed to be ACTUAL|
-|»» value|number|mandatory|Interval value.  If positive then it means consumption, if negative it means export|
+|» intervalReads|[number]|conditional|Array of Interval read values. If positive then it means consumption, if negative it means export. Required when interval-reads query parameter equals FULL or  MIN_30.<br>Each read value indicates the read for the interval specified by readIntervalLength beginning at midnight of readStartDate (for example 00:00 to 00:30 would be the first reading in a 30 minute Interval)|
+|» readQualities|object|conditional|Specifies quality of reads that are not ACTUAL.  For read indices that are not specified, quality is assumed to be ACTUAL. If not present, all quality of all reads are assumed to be actual. Required when interval-reads query parameter equals FULL or MIN_30|
+|»» startInterval|[PositiveInteger](#common-field-types)|mandatory|Start interval for read quality flag. First read begins at 1|
+|»» endInterval|[PositiveInteger](#common-field-types)|mandatory|End interval for read quality flag|
+|»» quality|string|mandatory|The quality of the read taken|
 
 #### Enumerated Values
 
@@ -1702,7 +1730,6 @@ This operation does not require authentication
 |quality|ACTUAL|
 |quality|SUBSTITUTE|
 |quality|FINAL_SUBSTITUTE|
-|quality|ACTUAL|
 |quality|SUBSTITUTE|
 |quality|FINAL_SUBSTITUTE|
 
@@ -1714,12 +1741,12 @@ This operation does not require authentication
 {
   "servicePointId": "string",
   "approvedCapacity": 0,
-  "availablePhasesCount": 0,
-  "installedPhasesCount": 0,
-  "islandableInstallation": "string",
+  "availablePhasesCount": 1,
+  "installedPhasesCount": 1,
+  "islandableInstallation": true,
   "hasCentralProtectionControl": false,
   "protectionMode": {
-    "exportLimitkva": 0,
+    "exportLimitKva": 0,
     "underFrequencyProtection": 0,
     "underFrequencyProtectionDelay": 0,
     "overFrequencyProtection": 0,
@@ -1771,12 +1798,12 @@ This operation does not require authentication
 |---|---|---|---|
 |servicePointId|string|mandatory|The independent ID of the service point, known in the industry as the National Meter Identifier (NMI). Note that the servicePointId will be replaced with NMI for all interactions between Data Holder and AEMO.|
 |approvedCapacity|number|mandatory|Approved small generating unit capacity as agreed with NSP in the connection agreement, expressed in kVA|
-|availablePhasesCount|number|mandatory|The number of phases available for the installation of DER|
-|installedPhasesCount|number|mandatory|The number of phases that DER is connected to|
-|islandableInstallation|string|mandatory|For identification of small generating units designed with the ability to operate in an islanded mode|
+|availablePhasesCount|[PositiveInteger](#common-field-types)|mandatory|The number of phases available for the installation of DER. Acceptable values are 1, 2 or 3.|
+|installedPhasesCount|[PositiveInteger](#common-field-types)|mandatory|The number of phases that DER is connected to. Acceptable values are 1, 2 or 3.|
+|islandableInstallation|[Boolean](#common-field-types)|mandatory|For identification of small generating units designed with the ability to operate in an islanded mode|
 |hasCentralProtectionControl|boolean|optional|For DER installations where NSPs specify the need for additional forms of protection above those inbuilt in an inverter.  If absent then assumed to be false|
 |protectionMode|object|conditional|Required only when the hasCentralProtectionAndControl flag is set to true.  One or more of the object fields will be provided to describe the protection modes in place|
-|» exportLimitkva|number|optional|Maximum amount of power (kVA) that may be exported from a connection point to the grid, as monitored by a control / relay function. An absent value indicates no limit|
+|» exportLimitKva|number|optional|Maximum amount of power (kVA) that may be exported from a connection point to the grid, as monitored by a control / relay function. An absent value indicates no limit|
 |» underFrequencyProtection|number|optional|Protective function limit in Hz.|
 |» underFrequencyProtectionDelay|number|optional|Trip delay time in seconds.|
 |» overFrequencyProtection|number|optional|Protective function limit in Hz.|
@@ -1786,7 +1813,7 @@ This operation does not require authentication
 |» overVoltageProtection|number|optional|Protective function limit in V.|
 |» overVoltageProtectionDelay|number|optional|Trip delay time in seconds.|
 |» sustainedOverVoltage|number|optional|Sustained over voltage.|
-|» sustainedOverVoltageDelay|number|optional|Trip delay time in seconds.|
+|» sustainedOverVoltageDelay|number|optional|Sustained Over voltage protection delay in seconds.|
 |» frequencyRateOfChange|number|optional|Rate of change of frequency trip point (Hz/s).|
 |» voltageVectorShift|number|optional|Trip angle in degrees.|
 |» interTripScheme|string|optional|Description of the form of inter-trip (e.g. 'from local substation').|
@@ -1803,7 +1830,7 @@ This operation does not require authentication
 |» inverterDeviceCapacity|number|conditional|The rated AC output power that is listed in the product specified by the manufacturer. Mandatory if equipmentType is INVERTER|
 |» derDevices|[object]|mandatory|none|
 |»» deviceIdentifier|number|mandatory|Unique identifier for a single DER device or a group of DER devices with the same attributes. Does not align with CDR ID permanence standards|
-|»» count|number|mandatory|Number of devices in the group of DER devices|
+|»» count|[PositiveInteger](#common-field-types)|mandatory|Number of devices in the group of DER devices|
 |»» manufacturer|string|optional|The name of the device manufacturer. If absent then assumed to be “unknown”|
 |»» modelNumber|string|optional|The model number of the device. If absent then assumed to be “unknown”|
 |»» status|string|optional|Code used to indicate the status of the device. This will be used to identify if an inverter is active or inactive or decommissioned|

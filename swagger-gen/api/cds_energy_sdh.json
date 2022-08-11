@@ -3,7 +3,7 @@
 	"info": {
 		"title": "CDR Energy Secondary Data Holder API",
 		"description": "Consumer Data Right end points and payloads for Secondary Data Holder for the Energy sector",
-		"version": "1.17.0"
+		"version": "1.18.0"
 	},
 	"components": {
 		"schemas": {
@@ -70,7 +70,7 @@
                         ],
                         "properties": {
                             "reads": {
-                                "description": "Array of meter reads",
+                                "description": "Array of meter reads sorted by NMI in ascending order followed by readStartDate in descending order",
                                 "type": "array",
                                 "items": {
                                     "$ref": "#/components/schemas/EnergyUsageRead"
@@ -389,7 +389,7 @@
                         "type": "array",
                         "items": {
                             "type": "object",
-                            "required": ["party", "role", "location"],
+                            "required": ["party", "role"],
                             "properties": {
 
                                 "party": {
@@ -583,7 +583,7 @@
                         "description": "Register suffix of the meter register where the meter reads are obtained",
                         "type": "string"
                     },
-                    "meterID": {
+                    "meterId": {
                         "description": "Meter id/serial number as it appears in customer’s bill. ID permanence rules do not apply.",
                         "type": "string"
                     },
@@ -592,18 +592,19 @@
                         "type": "boolean"
                     },
                     "readStartDate": {
-                        "description": "Date time when the meter reads start",
+                        "description": "Date when the meter reads start in AEST and assumed to start from 12:00 am AEST.",
                         "type": "string",
                         "x-cds-type": "DateString"
                     },
                     "readEndDate": {
-                        "description": "Date time when the meter reads end.  If absent then assumed to be equal to readStartDate.  In this case the entry represents data for a single date specified by readStartDate",
+                        "description": "Date when the meter reads end in AEST.  If absent then assumed to be equal to readStartDate.  In this case the entry represents data for a single date specified by readStartDate.",
                         "type": "string",
                         "x-cds-type": "DateString"
                     },
                     "unitOfMeasure": {
                         "description": "Unit of measure of the meter reads. Refer to Appendix B of <a href='https://www.aemo.com.au/-/media/files/stakeholder_consultation/consultations/nem-consultations/2019/5ms-metering-package-2/final-determination/mdff-specification-nem12-nem13-v21-final-determination-clean.pdf?la=en&hash=03FCBA0D60E091DE00F2361AE76206EA'>MDFF Specification NEM12 NEM13 v2.1</a> for a list of possible values",
-                        "type": "string"
+                        "type": "string",
+                        "x-cds-type": "ExternalRef"
                     },
                     "readUType": {
                         "description": "Specify the type of the meter read data",
@@ -640,13 +641,16 @@
                         "description": "Mandatory if readUType is set to intervalRead",
                         "type": "object",
                         "required": [
+                            "aggregateValue"
+                        ],
+                        "x-conditional": [
                             "readIntervalLength",
-                            "aggregateValue",
-                            "intervalReads"
+                            "intervalReads",
+                            "readQualities"
                         ],
                         "properties": {
                             "readIntervalLength": {
-                                "description": "Read interval length in minutes",
+                                "description": "Read interval length in minutes. Required when interval-reads query parameter equals FULL or MIN_30",
                                 "type": "integer",
                                 "x-cds-type": "PositiveInteger"
                             },
@@ -655,28 +659,38 @@
                                 "type": "number"
                             },
                             "intervalReads": {
-                                "description": "Array of reads with each element indicating the read for the interval specified by readIntervalLength beginning at midnight of readStartDate (for example 00:00 to 00:30 would be the first reading in a 30 minute Interval)",
+                                "description": "Array of Interval read values. If positive then it means consumption, if negative it means export. Required when interval-reads query parameter equals FULL or  MIN_30.<br>Each read value indicates the read for the interval specified by readIntervalLength beginning at midnight of readStartDate (for example 00:00 to 00:30 would be the first reading in a 30 minute Interval)",
                                 "type": "array",
                                 "items": {
-                                    "type": "object",
-                                    "required": [
-                                        "value"
-                                    ],
-                                    "properties": {
-                                        "quality": {
-                                            "description": "The quality of the read taken.  If absent then assumed to be ACTUAL",
-                                            "type": "string",
-                                            "enum": [
-                                                "ACTUAL",
-                                                "SUBSTITUTE",
-                                                "FINAL_SUBSTITUTE"
-                                            ],
-                                            "default": "ACTUAL"
-                                        },
-                                        "value": {
-                                            "description": "Interval value.  If positive then it means consumption, if negative it means export",
-                                            "type": "number"
-                                        }
+                                    "type": "number"
+                                }
+                            },
+                            "readQualities": {
+                                "description": " Specifies quality of reads that are not ACTUAL.  For read indices that are not specified, quality is assumed to be ACTUAL. If not present, all quality of all reads are assumed to be actual. Required when interval-reads query parameter equals FULL or MIN_30",
+                                "type": "object",
+                                "required": [
+                                    "startInterval",
+                                    "endInterval",
+                                    "quality"
+                                ],
+                                "properties": {
+                                    "startInterval": {
+                                        "description": "Start interval for read quality flag. First read begins at 1",
+                                        "type": "integer",
+                                        "x-cds-type": "PositiveInteger"
+                                    },
+                                    "endInterval": {
+                                        "description": "End interval for read quality flag",
+                                        "type": "integer",
+                                        "x-cds-type": "PositiveInteger"
+                                    },
+                                    "quality": {
+                                        "description": "The quality of the read taken",
+                                        "type": "string",
+                                        "enum": [
+                                            "SUBSTITUTE",
+                                            "FINAL_SUBSTITUTE"
+                                        ]
                                     }
                                 }
                             }
@@ -707,16 +721,23 @@
 						"type": "number"
 					},
 					"availablePhasesCount": {
-						"description": "The number of phases available for the installation of DER",
-						"type": "number"
+						"description": "The number of phases available for the installation of DER. Acceptable values are 1, 2 or 3.",
+                        "type": "integer",
+                        "x-cds-type": "PositiveInteger",
+                        "minimum" : 1,
+                        "maximum": 3
 					},
 					"installedPhasesCount": {
-						"description": "The number of phases that DER is connected to",
-						"type": "number"
+						"description": "The number of phases that DER is connected to. Acceptable values are 1, 2 or 3.",
+						"type": "integer",
+                        "x-cds-type": "PositiveInteger",
+                        "minimum" : 1,
+                        "maximum": 3
 					},
 					"islandableInstallation": {
 						"description": "For identification of small generating units designed with the ability to operate in an islanded mode",
-						"type": "string"
+						"type": "boolean",
+                        "x-cds-type": "Boolean"
 					},
 					"hasCentralProtectionControl": {
 						"description": "For DER installations where NSPs specify the need for additional forms of protection above those inbuilt in an inverter.  If absent then assumed to be false",
@@ -727,7 +748,7 @@
 						"description": "Required only when the hasCentralProtectionAndControl flag is set to true.  One or more of the object fields will be provided to describe the protection modes in place",
 						"type": "object",
 						"properties": {
-							"exportLimitkva": {
+							"exportLimitKva": {
 								"description": "Maximum amount of power (kVA) that may be exported from a connection point to the grid, as monitored by a control / relay function. An absent value indicates no limit",
 								"type": "number"
 							},
@@ -768,7 +789,7 @@
 								"type": "number"
 							},
 							"sustainedOverVoltageDelay": {
-								"description": "Trip delay time in seconds.",
+								"description": "Sustained Over voltage protection delay in seconds.",
 								"type": "number"
 							},
 							"frequencyRateOfChange": {
@@ -872,7 +893,8 @@
 											},
 											"count": {
 												"description": "Number of devices in the group of DER devices",
-												"type": "number"
+												"type": "integer",
+                                                "x-cds-type": "PositiveInteger"
 											},
 											"manufacturer": {
 												"description": "The name of the device manufacturer. If absent then assumed to be “unknown”",
@@ -1178,6 +1200,17 @@
 				"schema": {
 					"type": "string"
 				}
+			},
+            "interval-reads": {
+				"name": "interval-reads",
+				"description": "Type of interval reads. Any one of the valid values for this field can be supplied. If absent defaults to NONE",
+				"in": "query",
+                "required": false,
+                "schema": {
+                    "type": "string",
+                    "default": "NONE",
+                    "enum": ["NONE", "MIN_30", "FULL"]
+                }
 			},
 			"newest-time": {
 				"name": "newest-time",
@@ -1638,6 +1671,9 @@
 					{
 						"$ref": "#/components/parameters/newest-date"
 					},
+                    {
+						"$ref": "#/components/parameters/interval-reads"
+					},
 					{
 						"$ref": "#/components/parameters/page"
 					},
@@ -1752,6 +1788,9 @@
                     {
                         "$ref": "#/components/parameters/newest-date"
                     },
+                    {
+						"$ref": "#/components/parameters/interval-reads"
+					},
                     {
 						"$ref": "#/components/parameters/page"
 					},

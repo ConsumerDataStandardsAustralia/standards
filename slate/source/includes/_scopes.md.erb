@@ -12,9 +12,13 @@ Scope Name | Scope ID |Description
 These scopes are used to access [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims) scopes and individually requested claims of the authenticated End-User.
 
 
+```diff
+Fixed link to "CX Data Language: Profile Scope" section.
+```
+
 Scope Name | Scope ID |Description
 -----------|----------|-----------
-**Profile Data** | profile | This scope would allow for the third party to access basic profile information of the authenticated End-User. Further details are provided in [CX Data Language: Profile Scope](#profile-scope) section.|
+**Profile Data** | profile | This scope would allow for the third party to access basic profile information of the authenticated End-User. Further details are provided in [CX Data Language: Profile Scope](#profile-scope-and-standard-claims) section.|
 
 ## CDR Data
 These scopes are used to access authenticated resource endpoints that can be used to obtain CDR Data.
@@ -40,10 +44,6 @@ Scope Name | Scope ID |Description
 **Detailed Customer Data** | common:customer.detail:read | The scope would allow the third party to access more detailed information about the customer.  Includes the data available with the Basic Customer Data scope plus contact details.<br/><br/>Includes basic data plus phone, email and address information.
 
 ## Admin &amp; Registration
-
-```diff
-+ Added endpoint versions that cdr-register:bank:read and cdr-register:read apply to.
-```
 
 The following scopes are used for administrative interactions.  These scopes MUST never be included in the same access token as a CDR Data scope.
 
