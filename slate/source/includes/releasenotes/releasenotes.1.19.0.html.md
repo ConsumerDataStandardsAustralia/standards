@@ -20,6 +20,8 @@ This release addresses the following minor defects raised on [Standards Staging]
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
+- [Standards Staging Issue 447: CORS typos in CDR](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/447)
+
 
 ### Decision Proposals
 
@@ -50,7 +52,7 @@ This release addresses the following Decision Proposals published on [Standards]
 
 |Change|Description|Link|
 |------|-----------|----|
-| | | |
+| CORS typos | [**Standards Maintenance #447**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/447): Corrected the CORS protections to make clear they must be disabled for public APIs | [CORS](../../#cors) |
 
 
 ## Consumer Experience
