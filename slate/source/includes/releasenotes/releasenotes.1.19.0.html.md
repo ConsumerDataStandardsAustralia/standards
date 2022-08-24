@@ -20,6 +20,8 @@ This release addresses the following minor defects raised on [Standards Staging]
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
+- [Standards Maintenance Issue 411: Clarification of x-fapi-interaction-id header](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/411)
+
 
 ### Decision Proposals
 
@@ -36,7 +38,7 @@ This release addresses the following Decision Proposals published on [Standards]
 
 |Change|Description|Link|
 |------|-----------|----|
-| | | |
+| `x-fapi-interaction-id` header | [**Standards Maintenance #411**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/411): Additional clarification that the `x-fapi-interaction-id` request header is not required for unauthenticated APIs. | [HTTP Headers](../../#http-headers) |
 
 
 ## API End Points
