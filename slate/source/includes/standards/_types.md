@@ -2,10 +2,6 @@
 
 The following table outlines the common data types for fields used in the standard.
 
-```diff
-Replaced loose use of lowercase 'should' with RFC2119 compliant "MUST'
-```
-
 Type | Description | Valid Examples
 -----|-------------|---------------
 String | Standard UTF-8 string but unrestricted in content. Any valid Unicode character can be used. |

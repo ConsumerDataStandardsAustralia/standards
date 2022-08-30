@@ -37,16 +37,6 @@
 
 ## Informative References
 
-```diff
-Added the following references:
-+ ACCC
-+ OAIC
-+ Treasury
-
-Updated the following references:
-> CDR
-
-```
 | **Reference**  | **Description**                                                                                                                                                                   |
 |----------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | <a id="iref-ACCC"></a>**[ACCC]**                | The Australian Competition and Consumer Commission is responsible for accrediting data recipients to participate in CDR, building and maintaining the Register of data recipients and data holders, providing support and guidance to participants and promoting compliance with the CDR rules and standards, including taking enforcement action where necessary.<br/><https://www.accc.gov.au/focus-areas/consumer-data-right-cdr-0> |
