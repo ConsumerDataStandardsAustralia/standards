@@ -4710,20 +4710,20 @@
                   },
                   "extensionUType": {
                     "type": "string",
-                    "description": "Optional extended data provided specific to transaction originated via NPP",
+                    "description": "Optional extended data specific to transactions originated via NPP",
                     "enum": [
                       "x2p101Payload"
                     ]
                   },
                   "x2p101Payload": {
-                    "required": [
+                    "x-conditional": [
                       "extendedDescription"
                     ],
                     "type": "object",
                     "properties": {
                       "extendedDescription": {
                         "type": "string",
-                        "description": "An extended string description. Only present if specified by the extensionUType field"
+                        "description": "An extended string description. Required if the extensionUType field is `x2p101Payload`"
                       },
                       "endToEndId": {
                         "type": "string",
@@ -4746,7 +4746,7 @@
                 "x-conditional": [
                   "payer",
                   "payee",
-                  "extendedDescription"
+                  "x2p101Payload"
                 ]
               }
             }

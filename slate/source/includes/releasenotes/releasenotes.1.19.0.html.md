@@ -20,6 +20,7 @@ This release addresses the following minor defects raised on [Standards Staging]
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
+- [Standards Maintenance Issue 414: Properties in BankingTransactionDetail objects](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/414)
 
 ### Decision Proposals
 
@@ -43,7 +44,8 @@ This release addresses the following Decision Proposals published on [Standards]
 
 |Change|Description|Link|
 |------|-----------|----|
-| | | |
+| BankingTransactionDetail schema fix | [**Standards Maintenance #414**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/414): Fixed the BankingTransactionDetail object to correctly show it as conditional based on the extensionUType. | [BankingTransactionDetail](../../#tocSbankingtransactiondetail) |
+
 
 
 ## Information Security Profile
