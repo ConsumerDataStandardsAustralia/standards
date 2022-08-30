@@ -1,13 +1,5 @@
 ## Future Dated Obligations
 
-```diff
-Registration validation future obligation date changed from
-- 15th November 2022
-to
-+ 31st August 2022
-```
-
-
 The standards, as published from time to time, may include specific statements indicating that a specific section of the standards will not take effect until a future date or may cease to have effect on some future date.
 
 The table below highlights these areas of the standards.
