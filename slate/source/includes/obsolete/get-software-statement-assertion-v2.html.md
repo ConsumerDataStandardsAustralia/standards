@@ -13,12 +13,6 @@ search: false
 # Get Software Statement Assertion (SSA) V2
 This page documents the obsolete **version 2** of the Get Software Statement Assertion (SSA) end point.
 
-```diff
-+ Added deprecatiopn date of 23rd December 2021 and retirement date of 7th April 2023
-
-+ Added explicit authorisation scopes returned within the SSA scopes claim
-```
-
 <aside class="info">
 This version was deprecated on 23rd December 2021 and will be retired on 7th April 2023 
 </aside>
