@@ -58,7 +58,7 @@ This release addresses the following Decision Proposals published on [Standards]
 
 |Change|Description|Link|
 |------|-----------|----|
-| Energy Data Language | [**Standards Maintenance #429**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/429): 'Energy Account' and 'Billing' data language standards removed reference to 'NMI' in permission language.<br>'Stored Payment Information' changed to 'Payment preferences' and the permission language was updated | [Energy Language](../../#energy-language) |
+| Energy Data Language | [**Standards Maintenance #529**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/529): 'Energy Account' and 'Billing' data language standards removed reference to 'NMI' in permission language.<br>'Stored Payment Information' changed to 'Payment preferences' and the permission language was updated | [Energy Language](../../#energy-language) |
 
 
 ## Known Issues

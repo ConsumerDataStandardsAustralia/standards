@@ -82,13 +82,10 @@ See below for the data language standards for the payees scope:
 <br/>
 
 ```diff
-Removed Energy data language were made:
+Energy data language changes were made:
 
 - Removed all references to 'NMI' in permission language in Energy Accounts (energy:accounts.basic:read and energy:accounts.detail:read scopes)
 - Removed reference to 'NMI' in permission language in Billing (energy:billing:read scope)
-
-Changes to Energy data language were made:
-
 Replaced 'Stored payment information' with 'Payment preferences'
 - Stored payment information: Payment details; Scheduled payment amount;
 + Payment preferences: Payment and billing frequency; Any scheduled payment details;
