@@ -9,7 +9,7 @@ toc_footers:
 search: false
 ---
 
-# V1.18.0 Release Notes
+# V1.19.0 Release Notes
 Release notes for version v1.19.0 of the [CDR Standards](../../index.html).
 
 ## Changes Made
