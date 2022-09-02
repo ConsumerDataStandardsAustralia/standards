@@ -2514,7 +2514,9 @@
             "EnergyAccountBase": {
                 "type": "object",
                 "required": [
-                    "accountId",
+                    "accountId"
+                ],
+                "x-conditional": [
                     "creationDate"
                 ],
                 "properties": {
@@ -2530,8 +2532,17 @@
                         "description": "An optional display name for the account if one exists or can be derived.  The content of this field is at the discretion of the data holder",
                         "type": "string"
                     },
+                    "openStatus": {
+                        "type": "string",
+                        "description": "Open or closed status for the account. If not present then OPEN is assumed",
+                        "default": "OPEN",
+                        "enum": [
+                          "CLOSED",
+                          "OPEN"
+                        ]
+                      },
                     "creationDate": {
-                        "description": "The date that the account was created or opened",
+                        "description": "The date that the account was created or opened. Mandatory if openStatus is OPEN",
                         "type": "string",
                         "x-cds-type": "DateString"
                     }
@@ -2555,7 +2566,9 @@
                                 "items": {
                                     "type": "object",
                                     "required": [
-                                        "servicePointIds",
+                                        "servicePointIds"
+                                    ],
+                                    "x-conditional": [
                                         "planOverview"
                                     ],
                                     "properties": {
@@ -2571,6 +2584,7 @@
                                             }
                                         },
                                         "planOverview": {
+                                            "description": "Mandatory if openStatus is OPEN",
                                             "type": "object",
                                             "required": [
                                                 "startDate"
@@ -2617,7 +2631,9 @@
                                 "items": {
                                     "type": "object",
                                     "required": [
-                                        "servicePointIds",
+                                        "servicePointIds"
+                                    ],
+                                    "x-conditional": [
                                         "planOverview",
                                         "planDetail"
                                     ],
@@ -2634,6 +2650,7 @@
                                             }
                                         },
                                         "planOverview": {
+                                            "description": "Mandatory if openStatus is OPEN",
                                             "type": "object",
                                             "required": [
                                                 "startDate"
@@ -2656,7 +2673,7 @@
                                             }
                                         },
                                         "planDetail": {
-                                            "description": "Detail on the plan applicable to this account",
+                                            "description": "Detail on the plan applicable to this account. Mandatory if openStatus is OPEN",
                                             "type": "object",
                                             "required": [
                                                 "fuelType"
@@ -4004,6 +4021,16 @@
 					"type": "string"
 				}
 			},
+            "open-status": {
+                "name": "open-status",
+                "in": "query",
+                "description": "Used to filter results according to open/closed status. Values can be OPEN, CLOSED or ALL. If absent then ALL is assumed",
+                "schema": {
+                  "type": "string",
+                  "default": "ALL",
+                  "enum": ["ALL", "CLOSED","OPEN"]
+                }
+              },
             "interval-reads": {
 				"name": "interval-reads",
 				"description": "Type of interval reads. Any one of the valid values for this field can be supplied. If absent defaults to NONE",
@@ -5632,6 +5659,9 @@
 				],
                 "x-version": "1",
 				"parameters": [{
+                    "$ref": "#/components/parameters/open-status"
+                    },
+                    {
 						"$ref": "#/components/parameters/page"
 					},
 					{
@@ -5733,6 +5763,9 @@
 				"parameters": [{
 						"$ref": "#/components/parameters/accountId"
 					},
+                    {
+                        "$ref": "#/components/parameters/open-status"
+                    },
 					{
 						"$ref": "#/components/parameters/x-v"
 					},
