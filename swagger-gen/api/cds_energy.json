@@ -3,7 +3,7 @@
 	"info": {
 		"title": "CDR Energy API",
 		"description": "Consumer Data Right end points and payloads for the Energy sector",
-		"version": "1.18.0"
+		"version": "1.19.0"
 	},
 	"components": {
 		"schemas": {
@@ -185,7 +185,7 @@
                     }
                 }
             },
-            "EnergyAccountListResponse": {
+            "EnergyAccountListResponseV2": {
                 "type": "object",
                 "required": [
                     "data",
@@ -203,7 +203,7 @@
                                 "description": "Array of accounts",
                                 "type": "array",
                                 "items": {
-                                    "$ref": "#/components/schemas/EnergyAccount"
+                                    "$ref": "#/components/schemas/EnergyAccountV2"
                                 }
                             }
                         }
@@ -216,7 +216,7 @@
                     }
                 }
             },
-            "EnergyAccountDetailResponse": {
+            "EnergyAccountDetailResponseV2": {
                 "type": "object",
                 "required": [
                     "data",
@@ -225,7 +225,7 @@
                 ],
                 "properties": {
                     "data": {
-                        "$ref": "#/components/schemas/EnergyAccountDetail"
+                        "$ref": "#/components/schemas/EnergyAccountDetailV2"
                     },
                     "links": {
                         "$ref": "#/components/schemas/Links"
@@ -2548,7 +2548,7 @@
                     }
                 }
             },
-            "EnergyAccount": {
+            "EnergyAccountV2": {
                 "allOf": [
                     {
                         "$ref": "#/components/schemas/EnergyAccountBase"
@@ -2613,7 +2613,7 @@
                     }
                 ]
             },
-            "EnergyAccountDetail": {
+            "EnergyAccountDetailV2": {
                 "allOf": [
                     {
                         "$ref": "#/components/schemas/EnergyAccountBase"
@@ -4391,7 +4391,7 @@
 					}
 				}
 			},
-			"accountList": {
+			"accountListV2": {
 				"description": "Successful response",
                 "headers": {
                     "x-v": {
@@ -4410,12 +4410,12 @@
 				"content": {
 					"application/json": {
                         "schema": {
-                            "$ref": "#/components/schemas/EnergyAccountListResponse"
+                            "$ref": "#/components/schemas/EnergyAccountListResponseV2"
 						}
 					}
 				}
 			},
-			"accountDetail": {
+			"accountDetailV2": {
 				"description": "Successful response",
                 "headers": {
                     "x-v": {
@@ -4434,7 +4434,7 @@
 				"content": {
 					"application/json": {
                         "schema": {
-                            "$ref": "#/components/schemas/EnergyAccountDetailResponse"
+                            "$ref": "#/components/schemas/EnergyAccountDetailResponseV2"
 						}
 					}
 				}
@@ -5657,7 +5657,7 @@
                     "Energy",
 					"Energy Accounts"
 				],
-                "x-version": "1",
+                "x-version": "2",
 				"parameters": [{
                     "$ref": "#/components/parameters/open-status"
                     },
@@ -5688,7 +5688,7 @@
 				],
 				"responses": {
 					"200": {
-						"$ref": "#/components/responses/accountList"
+						"$ref": "#/components/responses/accountListV2"
                     },
                     "400": {
                         "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
@@ -5759,7 +5759,7 @@
                     "Energy",
 					"Energy Accounts"
 				],
-                "x-version": "1",
+                "x-version": "2",
 				"parameters": [{
 						"$ref": "#/components/parameters/accountId"
 					},
@@ -5787,7 +5787,7 @@
 				],
 				"responses": {
 					"200": {
-						"$ref": "#/components/responses/accountDetail"
+						"$ref": "#/components/responses/accountDetailV2"
                     },
                     "400": {
                         "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
