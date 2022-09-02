@@ -1,9 +1,5 @@
 # Known Issues
 
-``` diff
-- Removed Register APIs don't specify standardised CDR error codes as this is now captured in future improvements
-```
-
 There are certain aspects of the standards that are actively under review. These known issues are articulated in the following table.
 
 Issue | Description
@@ -15,20 +11,10 @@ DCR and Register Swagger naming conventions | The DCR and Register naming conven
 
 ## Future improvements
 
-```diff
-+ Added Future improvements section
-```
-
 
 The following improvements will be incorporated into future versions of the Standards
 
 ### Standardise Register API Error Codes
-
-```diff
-+ Added Standardise Register API Error Codes section
-
-+ Added Future versions of the CDR Register API error codes
-```
 
 Future versions of the CDR Register API error codes are to be aligned to the [Standards high-level error codes](#error-codes) as follows:
 

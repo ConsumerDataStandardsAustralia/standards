@@ -45,10 +45,6 @@ The request **MUST** include the following parameters using the application/x-ww
 * ``cdr_arrangement_jwt``: A newly signed JWT with the following parameters in accordance with **[[JWT]](#nref-JWT)**:
   * ``cdr_arrangement_id``: The ID of the arrangement that the client wants to revoke.
 
-```diff
-Changed requirements for Data Holders to advise the CDR Arrangement JWT should include all Self-Signed JWT claims
-```
-
 The ``cdr_arrangement_jwt`` **SHOULD** include all parameters in accordance with Data Holders calling Data Recipients using [Self-Signed JWT Client Authentication](https://consumerdatastandardsaustralia.github.io/standards/#self-signed-jwt-client-authentication).
 
 **Data Holder hosted endpoint**
@@ -110,11 +106,6 @@ Authorization: Bearer eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNDU2In0.ey
   "exp":1516239322,
   "jti":"dba86502-7cf5-4719-9638-c5339a0ddb06"
 }
-```
-
-```diff
-+ Added November 15th 2022 transition for ADR validation of the cdr_arrangement_id
-Changed requirements to allow Data Holders to additionally send the cdr_arrangement_id as a form parameter
 ```
 
 **Data Recipient hosted endpoint**

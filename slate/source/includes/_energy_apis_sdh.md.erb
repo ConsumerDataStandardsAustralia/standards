@@ -4,56 +4,10 @@
 
 This specification defines the APIs for Data Holders exposing Energy Secondary Data Holder endpoints.
 
-```diff
-Correcteions:
-- Removed `location` as a required property. It is included outside of the EnergyServicePointDetail_relatedParticipants object but incorrectly "required" by the sibling object.
-
-```
-
 <table>
 <tr><td><a href='./includes/swagger/cds_energy_sdh.json'>Energy Secondary Data Holder OpenAPI Specification (JSON)</a></td></tr>
 <tr><td><a href='./includes/swagger/cds_energy_sdh.yaml'>Energy Secondary Data Holder OpenAPI Specification (YAML)</a></td></tr>
 </table>
 
-```diff
-Added the following query parameter to `Get Usage For Service Point (SR)` and `Get Usage For Specific Service Points (SR)` endpoints:
-+ interval-reads
-
-Converted `EnergyUsageRead.intervalRead.intervalReads` into an array of values
-
-Added/Removed the following to EnergyUsageRead structure:
-+ readQualities (object)
-- quality (field)
-- value (field)
-
-Made the following conditional:
-* EnergyUsageRead.intervalRead.readIntervalLength
-* EnergyUsageRead.intervalRead.intervalReads
-* EnergyUsageRead.intervalRead.intervalReads.readQualities
-
-Made following changes to EnergyDerRecord:
-* Changed availablePhasesCount and installedPhasesCount fields to PositiveInteger and update the description to state the acceptable values are 1, 2 and 3.
-* Changed acConnections.derDevices.count into PositiveInteger
-* Changed islandableInstallation to Boolean
-* Changed protectionMode.exportLimitkva to camelCase
-+ exportLimitKva
-* Updated description of protectionMode.sustainedOverVoltageDelay 
-from:
-- Trip delay time in seconds.
-to:
-+ Sustained Over voltage protection delay in seconds.
-* Updated description of readStartDate
-from:
-- Date time when the meter reads start
-to:
-+ Date when the meter reads start in AEST and assumed to start from 12:00 am AEST.
-* Updated description of readEndDate
-from:
-- Date time when the meter reads end. If absent then assumed to be equal to readStartDate. In this case the entry represents data for a single date specified by readStartDate
-to:
-+ Date when the meter reads end in AEST. If absent then assumed to be equal to readStartDate. In this case the entry represents data for a single date specified by readStartDate.
-* Changed meterID to meterId (lowercase d)
-* Changed type of unitOfMeasure to ExternalRef.
-```
 
 <%= partial "includes/cds_energy_sdh.md" %>
