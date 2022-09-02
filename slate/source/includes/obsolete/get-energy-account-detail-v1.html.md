@@ -14,8 +14,8 @@ search: false
 # Get Energy Account Detail V1
 This page documents version 1 of the Get Energy Account Detail end point. 
 
-* Data Holders **MAY** go-live on November 15 2022 with this version. 
-* Data Holders **SHOULD** implement Get Energy Account Detail v2 as soon as possible. 
+* Data Holders **MAY** go-live on November 15th 2022 with this version. 
+* Data Holder **MUST** implement Get Energy Account Detail v2 by **April 7th 2023**.
 * Data Holders **MAY** decommission Get Energy Account Detail v1 as soon as Get Energy Accounts v2 is supported.
 * Data Holders **MUST** provide values for all mandatory fields and select reasonable default values if the data is not available for closed accounts
 
@@ -1415,47 +1415,3 @@ To perform this operation, you must be authenticated and authorised with the fol
 ### Properties
 
 *None*
-
-<h2 id="tocSlinkspaginated">LinksPaginated</h2>
-
-<a id="schemacdr-energy-apilinkspaginated"></a>
-
-```json
-{
-  "self": "string",
-  "first": "string",
-  "prev": "string",
-  "next": "string",
-  "last": "string"
-}
-
-```
-
-### Properties
-
-|Name|Type|Required|Description|
-|---|---|---|---|
-|self|[URIString](#common-field-types)|mandatory|Fully qualified link that generated the current response document|
-|first|[URIString](#common-field-types)|conditional|URI to the first page of this set. Mandatory if this response is not the first page|
-|prev|[URIString](#common-field-types)|conditional|URI to the previous page of this set. Mandatory if this response is not the first page|
-|next|[URIString](#common-field-types)|conditional|URI to the next page of this set. Mandatory if this response is not the last page|
-|last|[URIString](#common-field-types)|conditional|URI to the last page of this set. Mandatory if this response is not the last page|
-
-<h2 id="tocSmetapaginated">MetaPaginated</h2>
-
-<a id="schemacdr-energy-apimetapaginated"></a>
-
-```json
-{
-  "totalRecords": 0,
-  "totalPages": 0
-}
-
-```
-
-### Properties
-
-|Name|Type|Required|Description|
-|---|---|---|---|
-|totalRecords|[NaturalNumber](#common-field-types)|mandatory|The total number of records in the full set. See [pagination](#pagination).|
-|totalPages|[NaturalNumber](#common-field-types)|mandatory|The total number of pages in the full set. See [pagination](#pagination).|

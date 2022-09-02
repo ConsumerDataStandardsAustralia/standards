@@ -2511,7 +2511,7 @@
 					}
 				}
 			},
-            "EnergyAccountBase": {
+            "EnergyAccountBaseV2": {
                 "type": "object",
                 "required": [
                     "accountId"
@@ -2551,7 +2551,7 @@
             "EnergyAccountV2": {
                 "allOf": [
                     {
-                        "$ref": "#/components/schemas/EnergyAccountBase"
+                        "$ref": "#/components/schemas/EnergyAccountBaseV2"
                     },
                     {
                         "description": "The array of plans containing service points and associated plan details",
@@ -2616,7 +2616,7 @@
             "EnergyAccountDetailV2": {
                 "allOf": [
                     {
-                        "$ref": "#/components/schemas/EnergyAccountBase"
+                        "$ref": "#/components/schemas/EnergyAccountBaseV2"
                     },
                     {
                         "description": "The array of plans containing service points and associated plan details",
@@ -5649,7 +5649,7 @@
 			"get": {
 				"summary": "Get Energy Accounts",
 				"operationId": "listAccounts",
-				"description": "Obtain the list of energy accounts available under the authorised consent",
+				"description": "Obtain the list of energy accounts available under the authorised consent\n\nOther Versions: [v1](includes/obsolete/get-energy-accounts-v1.html)",
                 "x-scopes": [
                     "energy:accounts.basic:read"
                 ],
@@ -5751,7 +5751,7 @@
 			"get": {
 				"summary": "Get Energy Account Detail",
 				"operationId": "getAccount",
-				"description": "Obtain detailed information for a specific energy account",
+				"description": "Obtain detailed information for a specific energy account\n\nOther Versions: [v1](includes/obsolete/get-energy-account-detail-v1.html)",
                 "x-scopes": [
                     "energy:accounts.detail:read"
                 ],

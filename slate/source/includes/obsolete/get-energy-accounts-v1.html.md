@@ -15,7 +15,7 @@ search: false
 This page documents version 1 of the Get Energy Account end point. 
 
 * Data Holders **MAY** go-live on November 15 2022 with this version. 
-* Data Holders **SHOULD** implement Get Energy Accounts v2 as soon as possible. 
+* Data Holder **MUST** implement Get Energy Accounts v2 by **April 7th 2023**.
 * Data Holders **MAY** decommission Get Energy Accounts v1 as soon as Get Energy Accounts v2 is supported.
 * Data Holders **MUST** provide values for all mandatory fields and select reasonable default values if the data is not available for closed accounts
 
@@ -277,36 +277,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 |accountNumber|string|optional|Optional identifier of the account as defined by the data holder.  This must be the value presented on physical statements (if it exists) and must not be used for the value of accountId|
 |displayName|string|optional|An optional display name for the account if one exists or can be derived.  The content of this field is at the discretion of the data holder|
 |creationDate|[DateString](#common-field-types)|mandatory|The date that the account was created or opened|
-
-<h2 id="tocSlinks">Links</h2>
-
-<a id="schemacdr-energy-apilinks"></a>
-
-```json
-{
-  "self": "string"
-}
-
-```
-
-### Properties
-
-|Name|Type|Required|Description|
-|---|---|---|---|
-|self|[URIString](#common-field-types)|mandatory|Fully qualified link that generated the current response document|
-
-<h2 id="tocSmeta">Meta</h2>
-
-<a id="schemacdr-energy-apimeta"></a>
-
-```json
-{}
-
-```
-
-### Properties
-
-*None*
 
 <h2 id="tocSlinkspaginated">LinksPaginated</h2>
 
