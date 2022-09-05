@@ -30,7 +30,7 @@ This release addresses the following Decision Proposals published on [Standards]
 
 |Change|Description|Link|
 |------|-----------|----|
-| | | |
+| Fixed OAIC link in the Introduction | Corrected the OAIC link to remove an extra bracket. | [Introduction](../../#introduction) |
 
 ## High Level Standards
 
