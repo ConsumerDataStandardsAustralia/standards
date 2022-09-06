@@ -15,7 +15,7 @@ search: false
 This page documents version 1 of the Get Energy Account end point. 
 
 * Data Holders **MAY** go-live on November 15 2022 with this version. 
-* Data Holder **MUST** implement Get Energy Accounts v2 by **April 7th 2023**.
+* Data Holders **MUST** implement Get Energy Accounts v2 by **April 7th 2023**.
 * Data Holders **MAY** decommission Get Energy Accounts v1 as soon as Get Energy Accounts v2 is supported.
 * Data Holders **MUST** provide values for all mandatory fields and select reasonable default values if the data is not available for closed accounts
 
