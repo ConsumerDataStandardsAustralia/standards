@@ -4,6 +4,7 @@ The following table lists archived versions of the Consumer Data Standards.  The
 
 |Releases Date|Version|Description|
 |-------------|-------|-----------|
+|<a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.19.0/'>TBC</a>|1.19.0|<a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.19.0/'>TBC</a>|
 |<a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.18.0/'>11/08/2022</a>|1.18.0|<a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.18.0/'>Changes arising from Decision 249 (Maintenance Iteration 11)</a>|
 |<a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.17.0/'>23/05/2022</a>|1.17.0|<a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.17.0/'>Changes arising from Decision 237 (Maintenance Iteration 10)</a>|
 |<a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.16.1/'>22/03/2022</a>|1.16.1|<a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.16.1/'>Minor errata and documentation fixes.  Update of swagger files to OAS3</a>|
