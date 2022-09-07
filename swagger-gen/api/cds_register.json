@@ -2,7 +2,7 @@
   "openapi": "3.0.3",
   "info": {
     "title": "CDR Participant Discovery API",
-    "version": "1.18.0"
+    "version": "1.19.0"
   },
   "servers": [
     {
@@ -1541,6 +1541,7 @@
           "logoUri",
           "softwareProductId",
           "softwareProductName",
+          "softwareProductDescription",
           "status"
         ],
         "type": "object",

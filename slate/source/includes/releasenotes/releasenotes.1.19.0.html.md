@@ -20,6 +20,7 @@ This release addresses the following minor defects raised on [Standards Staging]
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
+- [Standards Maintenance Issue 525: softwareProductDescription should be marked as mandatory](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/525)
 
 ### Decision Proposals
 
@@ -43,7 +44,7 @@ This release addresses the following Decision Proposals published on [Standards]
 
 |Change|Description|Link|
 |------|-----------|----|
-| | | |
+| Get Data Recipients API | [**Standards Maintenance #525**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/525): Corrected response payload returned by the CDR Register to denote the `softwareProductDescription` as a required field. | [Get Data Recipients](../../#get-data-recipients) |
 
 
 ## Information Security Profile
