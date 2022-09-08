@@ -25,6 +25,7 @@ This release addresses the following change requests raised on [Standards Mainte
 
 This release addresses the following Decision Proposals published on [Standards](https://github.com/ConsumerDataStandardsAustralia/standards/issues):
 
+- [Decision Proposal 260 - Energy Closed Accounts](https://github.com/ConsumerDataStandardsAustralia/standards/issues/260)
 
 ## Introduction
 
@@ -43,7 +44,7 @@ This release addresses the following Decision Proposals published on [Standards]
 
 |Change|Description|Link|
 |------|-----------|----|
-| | | |
+| Energy schema | [**Decision Proposal #260**](https://github.com/ConsumerDataStandardsAustralia/standards/issues/260): Introduced v2 of Get Energy Accounts and v2 of Get Energy Account Details APIs | [Energy Schema](../../#energy-apis) |
 
 
 ## Information Security Profile
