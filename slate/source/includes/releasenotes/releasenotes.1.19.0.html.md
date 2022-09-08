@@ -17,8 +17,11 @@ Release notes for version v1.19.0 of the [CDR Standards](../../index.html).
 
 This release addresses the following minor defects raised on [Standards Staging](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues):
 
+- No issues
+
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
+
 - [Standards Maintenance Issue 529: CX - Energy Data Language Standards - NMI and Scheduled Payments](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/529)
 
 
