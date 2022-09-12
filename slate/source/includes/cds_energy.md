@@ -2108,15 +2108,18 @@ $.ajax({
 
 Obtain the list of energy accounts available under the authorised consent
 
+Other Versions: [v1](includes/obsolete/get-energy-accounts-v1.html)
+
 ###Endpoint Version
 |   |  |
 |---|--|
-|Version|**1**
+|Version|**2**
 
 <h3 id="get-energy-accounts-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
+|open-status|query|string|optional|Used to filter results according to open/closed status. Values can be OPEN, CLOSED or ALL. If absent then ALL is assumed|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request.  Default is 25 (standard pagination)|
 |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
@@ -2125,6 +2128,14 @@ Obtain the list of energy accounts available under the authorised consent
 |x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
 |x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
+
+#### Enumerated Values
+
+|Parameter|Value|
+|---|---|
+|open-status|ALL|
+|open-status|CLOSED|
+|open-status|OPEN|
 
 > Example responses
 
@@ -2138,6 +2149,7 @@ Obtain the list of energy accounts available under the authorised consent
         "accountId": "string",
         "accountNumber": "string",
         "displayName": "string",
+        "openStatus": "CLOSED",
         "creationDate": "string",
         "plans": [
           {
@@ -2173,7 +2185,7 @@ Obtain the list of energy accounts available under the authorised consent
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyAccountListResponse](#schemacdr-energy-apienergyaccountlistresponse)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyAccountListResponseV2](#schemacdr-energy-apienergyaccountlistresponsev2)|
 |400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
@@ -2245,22 +2257,33 @@ $.ajax({
 
 Obtain detailed information for a specific energy account
 
+Other Versions: [v1](includes/obsolete/get-energy-account-detail-v1.html)
+
 ###Endpoint Version
 |   |  |
 |---|--|
-|Version|**1**
+|Version|**2**
 
 <h3 id="get-energy-account-detail-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |accountId|path|string|mandatory|ID of a specific account to obtain data for.  This is a tokenised ID previous obtained from the Account List end point.|
+|open-status|query|string|optional|Used to filter results according to open/closed status. Values can be OPEN, CLOSED or ALL. If absent then ALL is assumed|
 |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
 |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
 |x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
 |x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
+
+#### Enumerated Values
+
+|Parameter|Value|
+|---|---|
+|open-status|ALL|
+|open-status|CLOSED|
+|open-status|OPEN|
 
 > Example responses
 
@@ -2272,6 +2295,7 @@ Obtain detailed information for a specific energy account
     "accountId": "string",
     "accountNumber": "string",
     "displayName": "string",
+    "openStatus": "CLOSED",
     "creationDate": "string",
     "plans": [
       {
@@ -2652,7 +2676,7 @@ Obtain detailed information for a specific energy account
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyAccountDetailResponse](#schemacdr-energy-apienergyaccountdetailresponse)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyAccountDetailResponseV2](#schemacdr-energy-apienergyaccountdetailresponsev2)|
 |400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[404 - Unavailable Energy Account](#error-404-unavailable-energy-account)</li><li>[404 - Invalid Energy Account](#error-404-invalid-energy-account)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ErrorListResponse](#schemacdr-energy-apierrorlistresponse)|
@@ -5447,9 +5471,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 |links|[Links](#schemacdr-energy-apilinks)|mandatory|none|
 |meta|[Meta](#schemacdr-energy-apimeta)|mandatory|none|
 
-<h3 class="schema-toc" id="tocSenergyaccountlistresponse">EnergyAccountListResponse</h3>
+<h3 class="schema-toc" id="tocSenergyaccountlistresponsev2">EnergyAccountListResponseV2</h3>
 
-<a id="schemacdr-energy-apienergyaccountlistresponse"></a>
+<a id="schemacdr-energy-apienergyaccountlistresponsev2"></a>
 
 ```json
 {
@@ -5459,6 +5483,7 @@ To perform this operation, you must be authenticated and authorised with the fol
         "accountId": "string",
         "accountNumber": "string",
         "displayName": "string",
+        "openStatus": "CLOSED",
         "creationDate": "string",
         "plans": [
           {
@@ -5496,13 +5521,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 |Name|Type|Required|Description|
 |---|---|---|---|
 |data|object|mandatory|none|
-|» accounts|[[EnergyAccount](#schemacdr-energy-apienergyaccount)]|mandatory|Array of accounts|
+|» accounts|[[EnergyAccountV2](#schemacdr-energy-apienergyaccountv2)]|mandatory|Array of accounts|
 |links|[LinksPaginated](#schemacdr-energy-apilinkspaginated)|mandatory|none|
 |meta|[MetaPaginated](#schemacdr-energy-apimetapaginated)|mandatory|none|
 
-<h3 class="schema-toc" id="tocSenergyaccountdetailresponse">EnergyAccountDetailResponse</h3>
+<h3 class="schema-toc" id="tocSenergyaccountdetailresponsev2">EnergyAccountDetailResponseV2</h3>
 
-<a id="schemacdr-energy-apienergyaccountdetailresponse"></a>
+<a id="schemacdr-energy-apienergyaccountdetailresponsev2"></a>
 
 ```json
 {
@@ -5510,6 +5535,7 @@ To perform this operation, you must be authenticated and authorised with the fol
     "accountId": "string",
     "accountNumber": "string",
     "displayName": "string",
+    "openStatus": "CLOSED",
     "creationDate": "string",
     "plans": [
       {
@@ -5891,7 +5917,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|data|[EnergyAccountDetail](#schemacdr-energy-apienergyaccountdetail)|mandatory|none|
+|data|[EnergyAccountDetailV2](#schemacdr-energy-apienergyaccountdetailv2)|mandatory|none|
 |links|[Links](#schemacdr-energy-apilinks)|mandatory|none|
 |meta|[Meta](#schemacdr-energy-apimeta)|mandatory|none|
 
@@ -8540,15 +8566,16 @@ To perform this operation, you must be authenticated and authorised with the fol
 |type|STORAGE|
 |type|OTHER|
 
-<h3 class="schema-toc" id="tocSenergyaccountbase">EnergyAccountBase</h3>
+<h3 class="schema-toc" id="tocSenergyaccountbasev2">EnergyAccountBaseV2</h3>
 
-<a id="schemacdr-energy-apienergyaccountbase"></a>
+<a id="schemacdr-energy-apienergyaccountbasev2"></a>
 
 ```json
 {
   "accountId": "string",
   "accountNumber": "string",
   "displayName": "string",
+  "openStatus": "CLOSED",
   "creationDate": "string"
 }
 
@@ -8561,17 +8588,26 @@ To perform this operation, you must be authenticated and authorised with the fol
 |accountId|string|mandatory|The ID of the account.  To be created in accordance with CDR ID permanence requirements|
 |accountNumber|string|optional|Optional identifier of the account as defined by the data holder.  This must be the value presented on physical statements (if it exists) and must not be used for the value of accountId|
 |displayName|string|optional|An optional display name for the account if one exists or can be derived.  The content of this field is at the discretion of the data holder|
-|creationDate|[DateString](#common-field-types)|mandatory|The date that the account was created or opened|
+|openStatus|string|optional|Open or closed status for the account. If not present then OPEN is assumed|
+|creationDate|[DateString](#common-field-types)|conditional|The date that the account was created or opened. Mandatory if openStatus is OPEN|
 
-<h3 class="schema-toc" id="tocSenergyaccount">EnergyAccount</h3>
+#### Enumerated Values
 
-<a id="schemacdr-energy-apienergyaccount"></a>
+|Property|Value|
+|---|---|
+|openStatus|CLOSED|
+|openStatus|OPEN|
+
+<h3 class="schema-toc" id="tocSenergyaccountv2">EnergyAccountV2</h3>
+
+<a id="schemacdr-energy-apienergyaccountv2"></a>
 
 ```json
 {
   "accountId": "string",
   "accountNumber": "string",
   "displayName": "string",
+  "openStatus": "CLOSED",
   "creationDate": "string",
   "plans": [
     {
@@ -8596,7 +8632,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|*anonymous*|[EnergyAccountBase](#schemacdr-energy-apienergyaccountbase)|mandatory|none|
+|*anonymous*|[EnergyAccountBaseV2](#schemacdr-energy-apienergyaccountbasev2)|mandatory|none|
 
 *and*
 
@@ -8606,20 +8642,21 @@ To perform this operation, you must be authenticated and authorised with the fol
 |» plans|[object]|mandatory|The array of plans containing service points and associated plan details|
 |»» nickname|string|optional|Optional display name for the plan provided by the customer to help differentiate multiple plans|
 |»» servicePointIds|[string]|mandatory|An array of servicePointIds, representing NMIs, that this plan is linked to.  If there are no service points allocated to this plan then an empty array would be expected|
-|»» planOverview|object|mandatory|none|
+|»» planOverview|object|conditional|Mandatory if openStatus is OPEN|
 |»»» displayName|string|optional|The name of the plan if one exists|
 |»»» startDate|[DateString](#common-field-types)|mandatory|The start date of the applicability of this plan|
 |»»» endDate|[DateString](#common-field-types)|optional|The end date of the applicability of this plan|
 
-<h3 class="schema-toc" id="tocSenergyaccountdetail">EnergyAccountDetail</h3>
+<h3 class="schema-toc" id="tocSenergyaccountdetailv2">EnergyAccountDetailV2</h3>
 
-<a id="schemacdr-energy-apienergyaccountdetail"></a>
+<a id="schemacdr-energy-apienergyaccountdetailv2"></a>
 
 ```json
 {
   "accountId": "string",
   "accountNumber": "string",
   "displayName": "string",
+  "openStatus": "CLOSED",
   "creationDate": "string",
   "plans": [
     {
@@ -9042,7 +9079,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|*anonymous*|[EnergyAccountBase](#schemacdr-energy-apienergyaccountbase)|mandatory|none|
+|*anonymous*|[EnergyAccountBaseV2](#schemacdr-energy-apienergyaccountbasev2)|mandatory|none|
 
 *and*
 
@@ -9052,11 +9089,11 @@ To perform this operation, you must be authenticated and authorised with the fol
 |» plans|[object]|mandatory|The array of plans containing service points and associated plan details|
 |»» nickname|string|optional|Optional display name for the plan provided by the customer to help differentiate multiple plans|
 |»» servicePointIds|[string]|mandatory|An array of servicePointIds, representing NMIs, that this account is linked to|
-|»» planOverview|object|mandatory|none|
+|»» planOverview|object|conditional|Mandatory if openStatus is OPEN|
 |»»» displayName|string|optional|The name of the plan if one exists|
 |»»» startDate|[DateString](#common-field-types)|mandatory|The start date of the applicability of this plan|
 |»»» endDate|[DateString](#common-field-types)|optional|The end date of the applicability of this plan|
-|»» planDetail|object|mandatory|Detail on the plan applicable to this account|
+|»» planDetail|object|conditional|Detail on the plan applicable to this account. Mandatory if openStatus is OPEN|
 |»»» fuelType|string|mandatory|The fuel types covered by the plan|
 |»»» isContingentPlan|boolean|optional|Flag that indicates that the plan is contingent on the customer taking up an alternate fuel plan from the same retailer (for instance, if the fuelType is ELECTRICITY then a GAS plan from the same retailer must be taken up). Has no meaning if the plan has a fuelType of DUAL. If absent the value is assumed to be false|
 |»»» meteringCharges|[object]|optional|Charges for metering included in the plan|
