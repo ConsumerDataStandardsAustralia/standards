@@ -39,10 +39,7 @@ This release addresses the following Decision Proposals published on [Standards]
 
 ## High Level Standards
 
-|Change|Description|Link|
-|------|-----------|----|
-| | | |
-
+No Change
 
 ## API End Points
 
@@ -53,9 +50,7 @@ This release addresses the following Decision Proposals published on [Standards]
 
 ## Information Security Profile
 
-|Change|Description|Link|
-|------|-----------|----|
-| | | |
+No Change
 
 
 ## Consumer Experience
@@ -67,7 +62,4 @@ This release addresses the following Decision Proposals published on [Standards]
 
 ## Known Issues
 
-|Change|Description|Link|
-|------|-----------|----|
-| | | |
-
+No Change
