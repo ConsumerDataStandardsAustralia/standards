@@ -82,10 +82,6 @@ In line with CDR Rule 4.24 on restrictions when asking CDR consumers to authoris
 
 Additional requirements and guidelines for this flow are contained in the [Consumer Experience](#consumer-experience) section.
 
-```diff
-Fixed bullet point list for July 4th 2022 obigations to render correctly.
-```
-
 <a id="authorization-code-flow"></a>
 ### OIDC Authorization Code Flow
 
