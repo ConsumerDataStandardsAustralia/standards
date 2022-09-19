@@ -10,31 +10,4 @@ This specification defines the APIs for Data Holders exposing Energy endpoints.
 <tr><td><a href='./includes/swagger/cds_energy.yaml'>Energy OpenAPI Specification (YAML)</a></td></tr>
 </table>
 
-```diff
-Added the following to v2 of Get Energy Accounts and v2 of Get Energy Account Detail APIs
-+ open-status	(query parameter)
-
-Updated the following structures
-from:
- - EnergyAccount
- - EnergyAccountBase
- - EnergyAccountListResponse
- - EnergyAccountDetailResponse
- - EnergyAccountDetail
-to:
-+ EnergyAccountV2
-+ EnergyAccountBaseV2
-+ EnergyAccountListResponseV2
-+ EnergyAccountDetailResponseV2
-+ EnergyAccountDetailV2
-
-Added the following fields to EnergyAccountBaseV2
-+ openStatus
-
-Made the following changes to EnergyAccountV2
- made planOverview conditional
-
-Made the following changes to EnergyAccountDetailV2
- made planOverview and planDetail conditional
-```
 <%= partial "includes/cds_energy.md" %>

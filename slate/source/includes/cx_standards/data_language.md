@@ -86,12 +86,6 @@ See below for the data language standards for the payees scope:
 ### Energy Accounts
 See below for the data language standards for the energy accounts scopes:
 
-```diff
-Energy data language changes were made:
-
-- Removed all references to 'NMI' in permission language in Energy Accounts (energy:accounts.basic:read and energy:accounts.detail:read scopes)
-```
-
 |Data cluster language|Permission language|Authorisation Scopes|
 |----------------------|------------------------------|-------------------|
 |**Accounts and plans**|Account and plan information;|energy:accounts.basic:read|
@@ -108,11 +102,6 @@ See below for the data language standards for the concession scope:
 ### Payments
 See below for the data language standards for the payments schedule scope:
 
-```diff
-Replaced 'Stored payment information' with 'Payment preferences'
-- Stored payment information: Payment details; Scheduled payment amount;
-+ Payment preferences: Payment and billing frequency; Any scheduled payment details;
-```
 |Data cluster language|Permission language|Authorisation Scopes|
 |----------------------|------------------------------|-------------------|
 |**Payment preferences**|Payment and billing frequency;<br>Any scheduled payment details;|energy:accounts.paymentschedule:read|
@@ -120,9 +109,6 @@ Replaced 'Stored payment information' with 'Payment preferences'
 ### Billing
 See below for the data language standards for the billing scope:
 
-```diff
-- Removed reference to 'NMI' in permission language in Billing (energy:billing:read scope)
-```
 |Data cluster language|Permission language|Authorisation Scopes|
 |----------------------|------------------------------|-------------------|
 |**Billing payments and history**|Account balance;<br>Payment method;<br>Payment status;<br>Charges, discounts, credits;<br>Billing date;<br>Usage for billing period;<br>Payment date;<br>Invoice number;|energy:billing:read|
