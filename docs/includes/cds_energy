@@ -3385,6 +3385,8 @@ x-cds-client-headers: string
 <p><code>GET /energy/accounts</code></p>
 
 <p>Obtain the list of energy accounts available under the authorised consent</p>
+
+<p>Other Versions: <a href="includes/obsolete/get-energy-accounts-v1.html">v1</a></p>
 <h3 id='endpoint-version-11'>Endpoint Version</h3>
 <table><thead>
 <tr>
@@ -3394,7 +3396,7 @@ x-cds-client-headers: string
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>1</strong></td>
+<td><strong>2</strong></td>
 </tr>
 </tbody></table>
 
@@ -3409,6 +3411,13 @@ x-cds-client-headers: string
 <th>Description</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>open-status</td>
+<td>query</td>
+<td>string</td>
+<td>optional</td>
+<td>Used to filter results according to open/closed status. Values can be OPEN, CLOSED or ALL. If absent then ALL is assumed</td>
+</tr>
 <tr>
 <td>page</td>
 <td>query</td>
@@ -3466,6 +3475,26 @@ x-cds-client-headers: string
 <td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
 </tr>
 </tbody></table>
+<h4 id='enumerated-values-5'>Enumerated Values</h4>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>open-status</td>
+<td>ALL</td>
+</tr>
+<tr>
+<td>open-status</td>
+<td>CLOSED</td>
+</tr>
+<tr>
+<td>open-status</td>
+<td>OPEN</td>
+</tr>
+</tbody></table>
 
 <blockquote>
 <p>Example responses</p>
@@ -3479,6 +3508,7 @@ x-cds-client-headers: string
         </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"accountNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"openStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CLOSED"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"creationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"plans"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
           </span><span class="p">{</span><span class="w">
@@ -3523,7 +3553,7 @@ x-cds-client-headers: string
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>Successful response</td>
-<td><a href="#schemacdr-energy-apienergyaccountlistresponse">EnergyAccountListResponse</a></td>
+<td><a href="#schemacdr-energy-apienergyaccountlistresponsev2">EnergyAccountListResponseV2</a></td>
 </tr>
 <tr>
 <td>400</td>
@@ -3636,6 +3666,8 @@ x-cds-client-headers: string
 <p><code>GET /energy/accounts/{accountId}</code></p>
 
 <p>Obtain detailed information for a specific energy account</p>
+
+<p>Other Versions: <a href="includes/obsolete/get-energy-account-detail-v1.html">v1</a></p>
 <h3 id='endpoint-version-12'>Endpoint Version</h3>
 <table><thead>
 <tr>
@@ -3645,7 +3677,7 @@ x-cds-client-headers: string
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>1</strong></td>
+<td><strong>2</strong></td>
 </tr>
 </tbody></table>
 
@@ -3721,6 +3753,7 @@ x-cds-client-headers: string
     </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"accountNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"openStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CLOSED"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"creationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"plans"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
@@ -4110,7 +4143,7 @@ x-cds-client-headers: string
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>Successful response</td>
-<td><a href="#schemacdr-energy-apienergyaccountdetailresponse">EnergyAccountDetailResponse</a></td>
+<td><a href="#schemacdr-energy-apienergyaccountdetailresponsev2">EnergyAccountDetailResponseV2</a></td>
 </tr>
 <tr>
 <td>400</td>
@@ -8504,9 +8537,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSenergyaccountlistresponse">EnergyAccountListResponse</h3>
+<h3 class="schema-toc" id="tocSenergyaccountlistresponsev2">EnergyAccountListResponseV2</h3>
 
-<p><a id="schemacdr-energy-apienergyaccountlistresponse"></a></p>
+<p><a id="schemacdr-energy-apienergyaccountlistresponsev2"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"accounts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -8514,6 +8547,7 @@ To perform this operation, you must be authenticated and authorised with the fol
         </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"accountNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"openStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CLOSED"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"creationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"plans"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
           </span><span class="p">{</span><span class="w">
@@ -8561,7 +8595,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>» accounts</td>
-<td>[<a href="#schemacdr-energy-apienergyaccount">EnergyAccount</a>]</td>
+<td>[<a href="#schemacdr-energy-apienergyaccountv2">EnergyAccountV2</a>]</td>
 <td>mandatory</td>
 <td>Array of accounts</td>
 </tr>
@@ -8579,14 +8613,15 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSenergyaccountdetailresponse">EnergyAccountDetailResponse</h3>
+<h3 class="schema-toc" id="tocSenergyaccountdetailresponsev2">EnergyAccountDetailResponseV2</h3>
 
-<p><a id="schemacdr-energy-apienergyaccountdetailresponse"></a></p>
+<p><a id="schemacdr-energy-apienergyaccountdetailresponsev2"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"accountNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"openStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CLOSED"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"creationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"plans"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
@@ -8973,7 +9008,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </thead><tbody>
 <tr>
 <td>data</td>
-<td><a href="#schemacdr-energy-apienergyaccountdetail">EnergyAccountDetail</a></td>
+<td><a href="#schemacdr-energy-apienergyaccountdetailv2">EnergyAccountDetailV2</a></td>
 <td>mandatory</td>
 <td>none</td>
 </tr>
@@ -9742,7 +9777,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Array of distributors for the plan. Must have at least one entry</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-5'>Enumerated Values</h4>
+<h4 id='enumerated-values-6'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -10682,7 +10717,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Array of tariff periods</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-6'>Enumerated Values</h4>
+<h4 id='enumerated-values-7'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -11044,7 +11079,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>An array of the available billing schedules for this contract. Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 Durations</a> (excludes recurrence syntax)</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-7'>Enumerated Values</h4>
+<h4 id='enumerated-values-8'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -11305,7 +11340,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>The type of usage that the rate applies to</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-8'>Enumerated Values</h4>
+<h4 id='enumerated-values-9'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -11482,7 +11517,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>A display message outlining an eligibility criteria that may apply</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-9'>Enumerated Values</h4>
+<h4 id='enumerated-values-10'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -11632,7 +11667,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>The usage amount threshold above which the discount applies</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-10'>Enumerated Values</h4>
+<h4 id='enumerated-values-11'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -11764,7 +11799,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>The amount of the charge if the type implies the application of a fixed amount</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-11'>Enumerated Values</h4>
+<h4 id='enumerated-values-12'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -11846,7 +11881,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>A description of the eligibility restriction</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-12'>Enumerated Values</h4>
+<h4 id='enumerated-values-13'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -11994,7 +12029,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>A description of the fee</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-13'>Enumerated Values</h4>
+<h4 id='enumerated-values-14'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -12244,7 +12279,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>The end of the time period per day for which the tariff applies.  If absent assumes end of day (ie. one second before midnight)</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-14'>Enumerated Values</h4>
+<h4 id='enumerated-values-15'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -12641,7 +12676,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Charge period for the demand tariff</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-15'>Enumerated Values</h4>
+<h4 id='enumerated-values-16'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -12996,7 +13031,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>A code that defines the consumption threshold as defined in the National Energy Retail Regulations, or in overriding Jurisdictional instruments. Note the details of enumeration values below: <ul><li><strong>LOW</strong> - Consumption is less than the ‘lower consumption threshold’ as defined in the National Energy Retail Regulations</li><li><strong>MEDIUM</strong> - Consumption is equal to or greater than the ‘lower consumption threshold’, but less than the ‘upper consumption threshold’, as defined in the National Energy Retail Regulations</li><li><strong>HIGH</strong> - Consumption is equal to or greater than the ‘upper consumption threshold’ as defined in the National Energy Retail Regulations</li></ul></td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-16'>Enumerated Values</h4>
+<h4 id='enumerated-values-17'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -13446,7 +13481,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Actual/Subtractive Indicator. Note the details of enumeration values below: <ul><li><strong>ACTUAL</strong> implies volume of energy actually metered between two dates</li><li><strong>CUMULATIVE</strong> indicates a meter reading for a specific date. A second Meter Reading is required to determine the consumption between those two Meter Reading dates</li></ul></td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-17'>Enumerated Values</h4>
+<h4 id='enumerated-values-18'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -13868,7 +13903,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>The quality of the read taken</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-18'>Enumerated Values</h4>
+<h4 id='enumerated-values-19'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -14222,7 +14257,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Maximum storage capacity in kVAh. This refers to the capacity of each storage module within the device group. Mandatory if type is equal to “STORAGE”</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-19'>Enumerated Values</h4>
+<h4 id='enumerated-values-20'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -14295,13 +14330,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSenergyaccountbase">EnergyAccountBase</h3>
+<h3 class="schema-toc" id="tocSenergyaccountbasev2">EnergyAccountBaseV2</h3>
 
-<p><a id="schemacdr-energy-apienergyaccountbase"></a></p>
+<p><a id="schemacdr-energy-apienergyaccountbasev2"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"accountNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"openStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CLOSED"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"creationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
@@ -14333,20 +14369,43 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>An optional display name for the account if one exists or can be derived.  The content of this field is at the discretion of the data holder</td>
 </tr>
 <tr>
+<td>openStatus</td>
+<td>string</td>
+<td>optional</td>
+<td>Open or closed status for the account. If not present then OPEN is assumed</td>
+</tr>
+<tr>
 <td>creationDate</td>
 <td><a href="#common-field-types">DateString</a></td>
-<td>mandatory</td>
-<td>The date that the account was created or opened</td>
+<td>conditional</td>
+<td>The date that the account was created or opened. Mandatory if openStatus is OPEN</td>
+</tr>
+</tbody></table>
+<h4 id='enumerated-values-21'>Enumerated Values</h4>
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>openStatus</td>
+<td>CLOSED</td>
+</tr>
+<tr>
+<td>openStatus</td>
+<td>OPEN</td>
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSenergyaccount">EnergyAccount</h3>
+<h3 class="schema-toc" id="tocSenergyaccountv2">EnergyAccountV2</h3>
 
-<p><a id="schemacdr-energy-apienergyaccount"></a></p>
+<p><a id="schemacdr-energy-apienergyaccountv2"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"accountNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"openStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CLOSED"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"creationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"plans"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
@@ -14376,7 +14435,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </thead><tbody>
 <tr>
 <td><em>anonymous</em></td>
-<td><a href="#schemacdr-energy-apienergyaccountbase">EnergyAccountBase</a></td>
+<td><a href="#schemacdr-energy-apienergyaccountbasev2">EnergyAccountBaseV2</a></td>
 <td>mandatory</td>
 <td>none</td>
 </tr>
@@ -14419,8 +14478,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>»» planOverview</td>
 <td>object</td>
-<td>mandatory</td>
-<td>none</td>
+<td>conditional</td>
+<td>Mandatory if openStatus is OPEN</td>
 </tr>
 <tr>
 <td>»»» displayName</td>
@@ -14442,13 +14501,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSenergyaccountdetail">EnergyAccountDetail</h3>
+<h3 class="schema-toc" id="tocSenergyaccountdetailv2">EnergyAccountDetailV2</h3>
 
-<p><a id="schemacdr-energy-apienergyaccountdetail"></a></p>
+<p><a id="schemacdr-energy-apienergyaccountdetailv2"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"accountNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"openStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CLOSED"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"creationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"plans"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
@@ -14876,7 +14936,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </thead><tbody>
 <tr>
 <td><em>anonymous</em></td>
-<td><a href="#schemacdr-energy-apienergyaccountbase">EnergyAccountBase</a></td>
+<td><a href="#schemacdr-energy-apienergyaccountbasev2">EnergyAccountBaseV2</a></td>
 <td>mandatory</td>
 <td>none</td>
 </tr>
@@ -14919,8 +14979,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>»» planOverview</td>
 <td>object</td>
-<td>mandatory</td>
-<td>none</td>
+<td>conditional</td>
+<td>Mandatory if openStatus is OPEN</td>
 </tr>
 <tr>
 <td>»»» displayName</td>
@@ -14943,8 +15003,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>»» planDetail</td>
 <td>object</td>
-<td>mandatory</td>
-<td>Detail on the plan applicable to this account</td>
+<td>conditional</td>
+<td>Detail on the plan applicable to this account. Mandatory if openStatus is OPEN</td>
 </tr>
 <tr>
 <td>»»» fuelType</td>
@@ -15043,7 +15103,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Used for a trailing suffix to the name (e.g. Jr)</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-20'>Enumerated Values</h4>
+<h4 id='enumerated-values-22'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -15231,7 +15291,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>The frequency with which a bill will be issued.  Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 Durations</a> (excludes recurrence syntax)</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-21'>Enumerated Values</h4>
+<h4 id='enumerated-values-23'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -15424,7 +15484,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Array of ENUM&#39;s to specify what the concession applies to. Multiple ENUM values can be provided. If absent, USAGE is assumed</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-22'>Enumerated Values</h4>
+<h4 id='enumerated-values-24'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -15644,7 +15704,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Indicator of the payment status for the invoice</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-23'>Enumerated Values</h4>
+<h4 id='enumerated-values-25'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -15747,7 +15807,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>The total GST for all electricity usage charges.  If absent then zero is assumed</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-24'>Enumerated Values</h4>
+<h4 id='enumerated-values-26'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -15866,7 +15926,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>The total GST for all electricity usage charges.  If absent then zero is assumed</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-25'>Enumerated Values</h4>
+<h4 id='enumerated-values-27'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -16095,7 +16155,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Represents a payment to the account.  Mandatory if transactionUType is equal to payment</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-26'>Enumerated Values</h4>
+<h4 id='enumerated-values-28'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -16258,7 +16318,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>A free text description of the adjustment</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-27'>Enumerated Values</h4>
+<h4 id='enumerated-values-29'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -16470,7 +16530,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>A free text description of the adjustment</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-28'>Enumerated Values</h4>
+<h4 id='enumerated-values-30'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -16681,7 +16741,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>A free text description of the adjustment</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-29'>Enumerated Values</h4>
+<h4 id='enumerated-values-31'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -16756,7 +16816,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>The method of payment</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-30'>Enumerated Values</h4>
+<h4 id='enumerated-values-32'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -16862,7 +16922,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Australian address formatted according to the file format defined by the <a href="https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf">PAF file format</a>. Required if addressUType is set to paf</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-31'>Enumerated Values</h4>
+<h4 id='enumerated-values-33'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>

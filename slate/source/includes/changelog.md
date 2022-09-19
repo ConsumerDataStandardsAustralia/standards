@@ -5,7 +5,7 @@ The following table lists the changes made to these standards in reverse date or
 |Change Date|Version|Description|Detail Of change|
 |-----------|-------|-----------|----------------|
 |TBA| 1.20.0 | Changes arising from Decision 259 (Maintenance iteration 12) | See [release notes](includes/releasenotes/releasenotes.1.19.0.html) and [Decision 259](https://github.com/ConsumerDataStandardsAustralia/standards/issues/259) for details |
-|TBA| 1.19.0 | Changes arising from Decision 259 (Maintenance iteration 12) | See [release notes](includes/releasenotes/releasenotes.1.19.0.html) and [Decision 259](https://github.com/ConsumerDataStandardsAustralia/standards/issues/259) for details |
+|13/09/2022| 1.19.0 | Changes arising from Decision 260 (Energy Closed Accounts) | See [release notes](includes/releasenotes/releasenotes.1.19.0.html) and [Decision 260](https://github.com/ConsumerDataStandardsAustralia/standards/issues/260) for details |
 |11/08/2022| 1.18.0 | Changes arising from Decision 249 (Maintenance iteration 11) | See [release notes](includes/releasenotes/releasenotes.1.18.0.html) and [Decision 249](https://github.com/ConsumerDataStandardsAustralia/standards/issues/249) for details |
 |23/05/2022| 1.17.0 | Changes arising from Decision 237 (Maintenance Iteration 10) | See [release notes](includes/releasenotes/releasenotes.1.17.0.html) and [Decision 237](https://github.com/ConsumerDataStandardsAustralia/standards/issues/237) for details |
 |22/03/2022| 1.16.1 | Minor errata and documentation fixes.  Update of swagger files to OAS3 | See [release notes](includes/releasenotes/releasenotes.1.16.1.html) for details |
