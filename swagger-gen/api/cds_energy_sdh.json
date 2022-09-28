@@ -872,7 +872,7 @@
 									]
 								},
 								"inverterDeviceCapacity": {
-									"description": "The rated AC output power that is listed in the product specified by the manufacturer. Mandatory if equipmentType is INVERTER",
+									"description": "The rated AC output power that is listed in the product specified by the manufacturer. Mandatory if equipmentType is INVERTER. Default is 0 if value not known",
 									"type": "number"
 								},
 								"derDevices": {
@@ -932,11 +932,11 @@
 												"type": "string"
 											},
 											"nominalRatedCapacity": {
-												"description": "Maximum output in kVA that is listed in the product specification by the manufacturer. This refers to the capacity of each unit within the device group",
+												"description": "Maximum output in kVA that is listed in the product specification by the manufacturer. This refers to the capacity of each unit within the device group. Default is 0 if value not known",
 												"type": "number"
 											},
 											"nominalStorageCapacity": {
-												"description": "Maximum storage capacity in kVAh. This refers to the capacity of each storage module within the device group. Mandatory if type is equal to “STORAGE”",
+												"description": "Maximum storage capacity in kVAh. This refers to the capacity of each storage module within the device group. Mandatory if type is equal to “STORAGE”. Default is 0 if value not known",
 												"type": "number"
 											}
 										}

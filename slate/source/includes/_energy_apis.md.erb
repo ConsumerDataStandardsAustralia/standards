@@ -10,4 +10,13 @@ This specification defines the APIs for Data Holders exposing Energy endpoints.
 <tr><td><a href='./includes/swagger/cds_energy.yaml'>Energy OpenAPI Specification (YAML)</a></td></tr>
 </table>
 
+```diff
+Updated description of below fields in `EnergyDerRecord.acConnections`: 
+• `inverterDeviceCapacity`
+• `derDevices.nominalRatedCapacity`
+• `derDevices.nominalStorageCapacity`
+to include
++ Default is 0 if value not known
+```
+
 <%= partial "includes/cds_energy.md" %>
