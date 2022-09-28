@@ -20,6 +20,7 @@ This release addresses the following minor defects raised on [Standards Staging]
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
+- [Standards Maintenance Issue 526: Energy / Get DER for Service Point - allow for no data](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/526)
 
 ### Decision Proposals
 
@@ -45,7 +46,7 @@ This release addresses the following Decision Proposals published on [Standards]
 
 |Change|Description|Link|
 |------|-----------|----|
-| | | |
+| Energy schema | [**Standards Maintenance #526**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/526): <ul><li>Changed type of `EnergyDerRecord.availablePhasesCount` and `EnergyDerRecord.installedPhasesCount` fields to `NaturalNumber`</li><li>Updated description of `approvedCapacity`, `availablePhasesCount` and `installedPhasesCount` in `EnergyDerRecord` to note a 0 value indicates no DER record is available</li></ul> | [Energy Schema](../../#energy-apis) |
 
 
 ## Information Security Profile

@@ -2281,21 +2281,21 @@
 						"type": "string"
 					},
 					"approvedCapacity": {
-						"description": "Approved small generating unit capacity as agreed with NSP in the connection agreement, expressed in kVA",
+						"description": "Approved small generating unit capacity as agreed with NSP in the connection agreement, expressed in kVA. Value of 0 indicates no DER record exists for the given servicePointId",
 						"type": "number"
 					},
 					"availablePhasesCount": {
-						"description": "The number of phases available for the installation of DER. Acceptable values are 1, 2 or 3.",
+						"description": "The number of phases available for the installation of DER. Acceptable values are 0, 1, 2 or 3. Value of 0 indicates no DER record exists for the given servicePointId",
                         "type": "integer",
-                        "x-cds-type": "PositiveInteger",
-                        "minimum" : 1,
+                        "x-cds-type": "NaturalNumber",
+                        "minimum" : 0,
                         "maximum": 3
 					},
 					"installedPhasesCount": {
-						"description": "The number of phases that DER is connected to. Acceptable values are 1, 2 or 3.",
+						"description": "The number of phases that DER is connected to. Acceptable values are 0, 1, 2 or 3. Value of 0 indicates no DER record exists for the given servicePointId",
 						"type": "integer",
-                        "x-cds-type": "PositiveInteger",
-                        "minimum" : 1,
+                        "x-cds-type": "NaturalNumber",
+                        "minimum" : 0,
                         "maximum": 3
 					},
 					"islandableInstallation": {
