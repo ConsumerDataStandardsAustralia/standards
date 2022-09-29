@@ -20,6 +20,8 @@ This release addresses the following minor defects raised on [Standards Staging]
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
+- [Standards Maintenance Issue 506: Energy error codes for issues in data received by DH from SDH](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/506)
+
 
 ### Decision Proposals
 
@@ -38,7 +40,7 @@ This release addresses the following Decision Proposals published on [Standards]
 
 |Change|Description|Link|
 |------|-----------|----|
-| | | |
+| Error Codes - Error Response Structure|[**Standards Maintenance #506**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/506): Added `isSecondaryDataHolderError` Boolean field to Error Response Structure and updated [Future Date Obligation](../../#future-dated-obligations) section with the FDO date for the change. | [Error Codes](../../#error-codes) |
 
 
 ## API End Points
