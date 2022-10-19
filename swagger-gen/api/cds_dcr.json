@@ -70,7 +70,8 @@
             "description": "The client ID issued by the target Data Holder",
             "required": true,
             "schema": {
-              "type": "string"
+              "type": "string",
+              "x-cds-type": "String"
             }
           },
           {
@@ -79,7 +80,8 @@
             "description": "An Authorisation Token as per **[[RFC6750]](#nref-RFC6750)**",
             "required": true,
             "schema": {
-              "type": "string"
+              "type": "string",
+              "x-cds-type": "ExternalRef"
             }
           }
         ],
@@ -101,7 +103,8 @@
                 "description": "The Response Header Field as per **[[RFC6750]](#nref-RFC6750)**",
                 "schema": {
                   "pattern": "^Bearer .*",
-                  "type": "string"
+                  "type": "string",
+              "x-cds-type": "ExternalRef"
                 }
               }
             }
@@ -128,7 +131,8 @@
             "description": "The client ID issued by the target Data Holder",
             "required": true,
             "schema": {
-              "type": "string"
+              "type": "string",
+              "x-cds-type": "String"
             }
           },
           {
@@ -137,7 +141,8 @@
             "description": "An Authorisation Token as per **[[RFC6750]](#nref-RFC6750)**",
             "required": true,
             "schema": {
-              "type": "string"
+              "type": "string",
+              "x-cds-type": "ExternalRef"
             }
           }
         ],
@@ -180,7 +185,8 @@
                 "description": "The Response Header Field as per **[[RFC6750]](#nref-RFC6750)**",
                 "schema": {
                   "pattern": "^Bearer .*",
-                  "type": "string"
+                  "type": "string",
+              "x-cds-type": "ExternalRef"
                 }
               }
             }
@@ -208,7 +214,8 @@
             "description": "The client ID issued by the target Data Holder",
             "required": true,
             "schema": {
-              "type": "string"
+              "type": "string",
+              "x-cds-type": "String"
             }
           },
           {
@@ -217,7 +224,8 @@
             "description": "An Authorisation Token as per **[[RFC6750]](#nref-RFC6750)**",
             "required": true,
             "schema": {
-              "type": "string"
+              "type": "string",
+              "x-cds-type": "ExternalRef"
             }
           }
         ],
@@ -232,7 +240,8 @@
                 "description": "The Response Header Field as per **[[RFC6750]](#nref-RFC6750)**",
                 "schema": {
                   "pattern": "^Bearer .*",
-                  "type": "string"
+                  "type": "string",
+              "x-cds-type": "ExternalRef"
                 }
               }
             }
@@ -285,48 +294,57 @@
           "client_id": {
             "type": "string",
             "description": "Data Holder issued client identifier string",
-            "example": "35a5a70b-5b8d-41f4-9cbd-96cfbc15c58a"
+            "example": "35a5a70b-5b8d-41f4-9cbd-96cfbc15c58a",
+              "x-cds-type": "String"
           },
           "client_id_issued_at": {
             "type": "integer",
             "description": "Time at which the client identifier was issued expressed as seconds since 1970-01-01T00:00:00Z as measured in UTC",
             "format": "int32",
-            "example": 1571808167
+            "example": 1571808167,
+            "x-cds-type": "PositiveInteger"
           },
           "client_name": {
             "type": "string",
             "description": "Human-readable string name of the software product to be presented to the end-user during authorization",
-            "example": "Mock Software"
+            "example": "Mock Software",
+            "x-cds-type": "String"
           },
           "client_description": {
             "type": "string",
             "description": "Human-readable string name of the software product description to be presented to the end user during authorization",
-            "example": "A mock software product"
+            "example": "A mock software product",
+              "x-cds-type": "String"
           },
           "client_uri": {
             "type": "string",
             "description": "URL string of a web page providing information about the client",
-            "example": "https://www.mockcompany.com.au"
+            "example": "https://www.mockcompany.com.au",
+              "x-cds-type": "URIString"
           },
           "legal_entity_id": {
             "type": "string",
             "description": "A unique identifier string assigned by the CDR Register that identifies the Accredited Data Recipient Legal Entity",
-            "example": "344F0E809-BDBE-4F8E-BD30-5E6C3CB78D7B"
+            "example": "344F0E809-BDBE-4F8E-BD30-5E6C3CB78D7B",
+              "x-cds-type": "String"
           },
           "legal_entity_name": {
             "type": "string",
             "description": "Human-readable string name of the Accredited Data Recipient Legal Entity",
-            "example": "Mock Company Pty Ltd."
+            "example": "Mock Company Pty Ltd.",
+              "x-cds-type": "String"
           },
           "org_id": {
             "type": "string",
             "description": "A unique identifier string assigned by the CDR Register that identifies the Accredited Data Recipient Brand",
-            "example": "3B0B0A7B-3E7B-4A2C-9497-E357A71D07C8"
+            "example": "3B0B0A7B-3E7B-4A2C-9497-E357A71D07C8",
+              "x-cds-type": "String"
           },
           "org_name": {
             "type": "string",
             "description": "Human-readable string name of the Accredited Data Recipient to be presented to the end user during authorization",
-            "example": "Mock Company Brand."
+            "example": "Mock Company Brand.",
+              "x-cds-type": "String"
           },
           "redirect_uris": {
             "type": "array",
@@ -335,45 +353,54 @@
               "https://www.mockcompany.com.au/redirects/redirect1",
               "https://www.mockcompany.com.au/redirects/redirect2"
             ],
+            "x-cds-type": "URIString",
             "items": {
               "type": "string",
-              "format": "uri"
+              "format": "uri",
+              "x-cds-type": "URIString"
             }
           },
           "sector_identifier_uri": {
             "type": "string",
             "description": "URL string referencing the client sector identifier URI, used as an optional input to the Pairwise Identifier",
-            "example": "https://www.mockcompany.com.au/sector_identifier.json"
+            "example": "https://www.mockcompany.com.au/sector_identifier.json",
+              "x-cds-type": "URIString"
           },
           "logo_uri": {
             "type": "string",
             "description": "URL string that references a logo for the client. If present, the server SHOULD display this image to the end-user during approval",
-            "example": "https://www.mockcompany.com.au/logos/logo1.png"
+            "example": "https://www.mockcompany.com.au/logos/logo1.png",
+              "x-cds-type": "URIString"
           },
           "tos_uri": {
             "type": "string",
             "description": "URL string that points to a human-readable terms of service document for the Software Product",
-            "example": "https://www.mockcompany.com.au/tos.html"
+            "example": "https://www.mockcompany.com.au/tos.html",
+              "x-cds-type": "URIString"
           },
           "policy_uri": {
             "type": "string",
             "description": "URL string that points to a human-readable policy document for the Software Product",
-            "example": "https://www.mockcompany.com.au/policy.html"
+            "example": "https://www.mockcompany.com.au/policy.html",
+              "x-cds-type": "URIString"
           },
           "jwks_uri": {
             "type": "string",
             "description": "URL string referencing the client JSON Web Key (JWK) Set **[[RFC7517]](#nref-RFC7517)** document, which contains the client public keys",
-            "example": "https://www.mockcompany.com.au/jwks"
+            "example": "https://www.mockcompany.com.au/jwks",
+              "x-cds-type": "URIString"
           },
           "revocation_uri": {
             "type": "string",
             "description": "URI string that references the location of the Software Product consent revocation endpoint",
-            "example": "https://www.mockcompany.com.au/revocation"
+            "example": "https://www.mockcompany.com.au/revocation",
+              "x-cds-type": "URIString"
           },
           "recipient_base_uri": {
             "type": "string",
             "description": "Base URI for the Consumer Data Standard Data Recipient endpoints. This should be the base to provide reference to all other Data Recipient Endpoints",
-            "example": "https://www.mockcompany.com.au"
+            "example": "https://www.mockcompany.com.au",
+              "x-cds-type": "URIString"
           },
           "token_endpoint_auth_method": {
             "type": "string",
@@ -430,12 +457,14 @@
           "id_token_encrypted_response_alg": {
             "type": "string",
             "description": "JWE `alg` algorithm with which an id_token is to be encrypted",
-            "example": "RSA-OAEP"
+            "example": "RSA-OAEP",
+              "x-cds-type": "ExternalRef"
           },
           "id_token_encrypted_response_enc": {
             "type": "string",
             "description": "JWE `enc` algorithm with which an id_token is to be encrypted",
-            "example": "A256GCM"
+            "example": "A256GCM",
+              "x-cds-type": "ExternalRef"
           },
           "request_object_signing_alg": {
             "type": "string",
@@ -453,17 +482,22 @@
           "software_id": {
             "type": "string",
             "description": "String representing a unique identifier assigned by the Register and used by registration endpoints to identify the software product to be dynamically registered. </br></br>The \"software_id\" will remain the same for the lifetime of the product, across multiple updates and versions",
-            "example": "740C368F-ECF9-4D29-A2EA-0514A66B0CDE"
+            "example": "740C368F-ECF9-4D29-A2EA-0514A66B0CDE",
+              "x-cds-type": "String"
           },
           "software_roles": {
             "type": "string",
             "description": "String containing a role of the software in the CDR Regime. Initially the only value used with be `data-recipient-software-product`",
-            "example": "data-recipient-software-product"
+            "example": "data-recipient-software-product",
+            "enum": [
+              "data-recipient-software-product"
+            ]
           },
           "scope": {
             "type": "string",
             "description": "String containing a space-separated list of scope values that the client can use when requesting access tokens.",
-            "example": "openid profile bank:accounts.basic:read bank:accounts.detail:read bank:transactions:read bank:payees:read bank:regular_payments:read common:customer.basic:read common:customer.detail:read cdr:registration"
+            "example": "openid profile bank:accounts.basic:read bank:accounts.detail:read bank:transactions:read bank:payees:read bank:regular_payments:read common:customer.basic:read common:customer.detail:read cdr:registration",
+              "x-cds-type": "String"
           }
         }
       },
@@ -482,29 +516,34 @@
               "iss": {
                 "type": "string",
                 "description": "Contains the identifier for the ADR Software Product (SoftwareProductId) as defined in the CDR Register",
-                "example": "CDR Software Product ID"
+                "example": "CDR Software Product ID",
+                "x-cds-type": "String"
               },
               "iat": {
                 "type": "integer",
                 "description": "The time at which the request was issued by the Data Recipient  expressed as seconds since 1970-01-01T00:00:00Z as measured in UTC",
                 "format": "int32",
-                "example": 1571808167
+                "example": 1571808167,
+                "x-cds-type": "PositiveInteger"
               },
               "exp": {
                 "type": "integer",
                 "description": "The time at which the request expires expressed as seconds since 1970-01-01T00:00:00Z as measured in UTC",
                 "format": "int32",
-                "example": 2147483646
+                "example": 2147483646,
+                "x-cds-type": "PositiveInteger"
               },
               "jti": {
                 "type": "string",
                 "description": "Unique identifier for the JWT, used to prevent replay of the token",
-                "example": "37747cd1c10545699f754adf28b73e31"
+                "example": "37747cd1c10545699f754adf28b73e31",
+                "x-cds-type": "String"
               },
               "aud": {
                 "type": "string",
                 "description": "'Contains the Data Holder issuer value as described in the OIDC Discovery Document",
-                "example": "https://secure.api.dataholder.com/issuer"
+                "example": "https://secure.api.dataholder.com/issuer",
+                "x-cds-type": "String"
               }
             }
           },
@@ -531,7 +570,8 @@
           },
           "error_description": {
             "type": "string",
-            "description": "Additional text description of the error for debugging."
+            "description": "Additional text description of the error for debugging.",
+            "x-cds-type": "String"
           }
         }
       }
@@ -554,7 +594,8 @@
             "description": "The Response Header Field as per **[[RFC6750]](#nref-RFC6750)**",
             "schema": {
               "pattern": "^Bearer .*",
-              "type": "string"
+              "type": "string",
+              "x-cds-type": "ExternalRef"
             }
           }
         }
@@ -573,7 +614,8 @@
         "description": "An Authorisation Token as per **[[RFC6750]](#nref-RFC6750)**",
         "required": true,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cds-type": "ExternalRef"
         }
       },
       "ClientId": {
@@ -582,7 +624,8 @@
         "description": "The client ID issued by the target Data Holder",
         "required": true,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cds-type": "String"
         }
       }
     }

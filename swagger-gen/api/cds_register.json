@@ -85,7 +85,8 @@
             "description": "An Authorisation Token as per **[[RFC6750]](#nref-RFC6750)**.",
             "required": true,
             "schema": {
-              "type": "string"
+              "type": "string",
+              "x-cds-type": "ExternalRef"
             }
           },
           {
@@ -93,8 +94,9 @@
             "in": "header",
             "description": "The version of the API end point requested by the client. Must be set to a positive integer.",
             "schema": {
-              "type": "string",
-              "default": "1"
+              "type": "integer",
+              "default": "1",
+              "x-cds-type": "PositiveInteger"
             }
           },
           {
@@ -102,7 +104,8 @@
             "in": "header",
             "description": "The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided.",
             "schema": {
-              "type": "string"
+              "type": "integer",
+              "x-cds-type": "PositiveInteger"
             }
           },
           {
@@ -111,7 +114,8 @@
             "description": "query filter returns results updated since the specified date-time",
             "schema": {
               "type": "string",
-              "format": "date-time"
+              "format": "date-time",
+              "x-cds-type": "DateTimeString"
             }
           },
           {
@@ -120,7 +124,8 @@
             "description": "the page number to return",
             "schema": {
               "type": "integer",
-              "format": "int32"
+              "format": "int32",
+              "x-cds-type": "PositiveInteger"
             }
           },
           {
@@ -129,7 +134,8 @@
             "description": "the number of records to return per page",
             "schema": {
               "type": "integer",
-              "format": "int32"
+              "format": "int32",
+              "x-cds-type": "PositiveInteger"
             }
           }
         ],
@@ -140,7 +146,8 @@
               "x-v": {
                 "description": "The version of the API end point that the CDR Register has responded with.",
                 "schema": {
-                  "type": "string"
+                  "type": "integer",
+                  "x-cds-type": "PositiveInteger"
                 }
               }
             },
@@ -219,7 +226,8 @@
             "description": "The version of the API end point requested by the client. Must be set to a positive integer.",
             "required": true,
             "schema": {
-              "type": "string"
+              "type": "integer",
+              "x-cds-type": "PositiveInteger"
             }
           },
           {
@@ -227,7 +235,8 @@
             "in": "header",
             "description": "The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided.",
             "schema": {
-              "type": "string"
+              "type": "integer",
+              "x-cds-type": "PositiveInteger"
             }
           },
           {
@@ -235,7 +244,8 @@
             "in": "header",
             "description": "Makes the request method conditional on a recipient cache or origin server not having any current representation of the target resource with an entity-tag that does not match any of those listed in the field-value.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "x-cds-type": "String"
             }
           }
         ],
@@ -246,13 +256,15 @@
               "x-v": {
                 "description": "The version of the API end point that the CDR Register has responded with.",
                 "schema": {
-                  "type": "string"
+                  "type": "integer",
+              "x-cds-type": "PositiveInteger"
                 }
               },
               "Etag": {
                 "description": "Entity tag that uniquely represents the requested resource.",
                 "schema": {
-                  "type": "string"
+                  "type": "string",
+              "x-cds-type": "String"
                 }
               }
             },
@@ -270,7 +282,8 @@
               "Etag": {
                 "description": "Entity tag that uniquely represents the requested resource.",
                 "schema": {
-                  "type": "string"
+                  "type": "string",
+              "x-cds-type": "String"
                 }
               }
             }
@@ -338,8 +351,9 @@
             "in": "header",
             "description": "The version of the API end point requested by the client. Must be set to a positive integer.",
             "schema": {
-              "type": "string",
-              "default": "1"
+              "type": "integer",
+              "default": "1",
+              "x-cds-type": "PositiveInteger"
             }
           },
           {
@@ -347,7 +361,8 @@
             "in": "header",
             "description": "The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided.",
             "schema": {
-              "type": "string"
+              "type": "integer",
+              "x-cds-type": "PositiveInteger"
             }
           },
           {
@@ -356,7 +371,8 @@
             "description": "Unique id for the Accredited Data Recipient Brand that the Software Product is associated with in the CDR Register",
             "required": true,
             "schema": {
-              "type": "string"
+              "type": "string",
+              "x-cds-type": "String"
             }
           },
           {
@@ -365,7 +381,8 @@
             "description": "Unique id for the Accredited Data Recipient Software Product in the CDR Register",
             "required": true,
             "schema": {
-              "type": "string"
+              "type": "string",
+              "x-cds-type": "String"
             }
           },
           {
@@ -374,7 +391,8 @@
             "description": "An Authorisation Token as per **[[RFC6750]](#nref-RFC6750)**.",
             "required": true,
             "schema": {
-              "type": "string"
+              "type": "string",
+              "x-cds-type": "ExternalRef"
             }
           }
         ],
@@ -385,7 +403,8 @@
               "x-v": {
                 "description": "The version of the API end point that the CDR Register has responded with.",
                 "schema": {
-                  "type": "string"
+                  "type": "integer",
+              "x-cds-type": "PositiveInteger"
                 }
               }
             },
@@ -493,8 +512,9 @@
             "in": "header",
             "description": "The version of the API end point requested by the client. Must be set to a positive integer.",
             "schema": {
-              "type": "string",
-              "default": "1"
+              "type": "integer",
+              "default": "1",
+              "x-cds-type": "PositiveInteger"
             }
           },
           {
@@ -502,7 +522,8 @@
             "in": "header",
             "description": "The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided.",
             "schema": {
-              "type": "string"
+              "type": "integer",
+              "x-cds-type": "PositiveInteger"
             }
           },
           {
@@ -510,7 +531,8 @@
             "in": "header",
             "description": "Makes the request method conditional on a recipient cache or origin server not having any current representation of the target resource with an entity-tag that does not match any of those listed in the field-value.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "x-cds-type": "String"
             }
           }
         ],
@@ -521,13 +543,15 @@
               "x-v": {
                 "description": "The version of the API end point that the CDR Register has responded with.",
                 "schema": {
-                  "type": "string"
+                  "type": "integer",
+              "x-cds-type": "PositiveInteger"
                 }
               },
               "Etag": {
                 "description": "Entity tag that uniquely represents the requested resource.",
                 "schema": {
-                  "type": "string"
+                  "type": "string",
+              "x-cds-type": "String"
                 }
               }
             },
@@ -545,7 +569,8 @@
               "Etag": {
                 "description": "Entity tag that uniquely represents the requested resource.",
                 "schema": {
-                  "type": "string"
+                  "type": "string",
+              "x-cds-type": "String"
                 }
               }
             }
@@ -603,8 +628,9 @@
             "in": "header",
             "description": "The version of the API end point requested by the client. Must be set to a positive integer.",
             "schema": {
-              "type": "string",
-              "default": "1"
+              "type": "integer",
+              "default": "1",
+              "x-cds-type": "PositiveInteger"
             }
           },
           {
@@ -612,7 +638,8 @@
             "in": "header",
             "description": "The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided.",
             "schema": {
-              "type": "string"
+              "type": "integer",
+              "x-cds-type": "PositiveInteger"
             }
           },
           {
@@ -620,7 +647,8 @@
             "in": "header",
             "description": "Makes the request method conditional on a recipient cache or origin server not having any current representation of the target resource with an entity-tag that does not match any of those listed in the field-value.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "x-cds-type": "String"
             }
           }
         ],
@@ -631,13 +659,15 @@
               "x-v": {
                 "description": "The version of the API end point that the CDR Register has responded with.",
                 "schema": {
-                  "type": "string"
+                  "type": "integer",
+              "x-cds-type": "PositiveInteger"
                 }
               },
               "Etag": {
                 "description": "Entity tag that uniquely represents the requested resource.",
                 "schema": {
-                  "type": "string"
+                  "type": "string",
+              "x-cds-type": "String"
                 }
               }
             },
@@ -655,7 +685,8 @@
               "Etag": {
                 "description": "Entity tag that uniquely represents the requested resource.",
                 "schema": {
-                  "type": "string"
+                  "type": "string",
+              "x-cds-type": "String"
                 }
               }
             }
@@ -713,8 +744,9 @@
             "in": "header",
             "description": "The version of the API end point requested by the client. Must be set to a positive integer.",
             "schema": {
-              "type": "string",
-              "default": "1"
+              "type": "integer",
+              "default": "1",
+              "x-cds-type": "PositiveInteger"
             }
           },
           {
@@ -722,7 +754,8 @@
             "in": "header",
             "description": "The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided.",
             "schema": {
-              "type": "string"
+              "type": "integer",
+              "x-cds-type": "PositiveInteger"
             }
           },
           {
@@ -730,7 +763,8 @@
             "in": "header",
             "description": "Makes the request method conditional on a recipient cache or origin server not having any current representation of the target resource with an entity-tag that does not match any of those listed in the field-value.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "x-cds-type": "String"
             }
           }
         ],
@@ -741,13 +775,15 @@
               "x-v": {
                 "description": "The version of the API end point that the CDR Register has responded with.",
                 "schema": {
-                  "type": "string"
+                  "type": "integer",
+              "x-cds-type": "PositiveInteger"
                 }
               },
               "Etag": {
                 "description": "Entity tag that uniquely represents the requested resource.",
                 "schema": {
-                  "type": "string"
+                  "type": "string",
+              "x-cds-type": "String"
                 }
               }
             },
@@ -765,7 +801,8 @@
               "Etag": {
                 "description": "Entity tag that uniquely represents the requested resource.",
                 "schema": {
-                  "type": "string"
+                  "type": "string",
+              "x-cds-type": "String"
                 }
               }
             }
@@ -823,8 +860,9 @@
             "in": "header",
             "description": "The version of the API end point requested by the client. Must be set to a positive integer.",
             "schema": {
-              "type": "string",
-              "default": "1"
+              "type": "integer",
+              "default": "1",
+              "x-cds-type": "PositiveInteger"
             }
           },
           {
@@ -832,7 +870,8 @@
             "in": "header",
             "description": "The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided.",
             "schema": {
-              "type": "string"
+              "type": "integer",
+              "x-cds-type": "PositiveInteger"
             }
           },
           {
@@ -840,7 +879,8 @@
             "in": "header",
             "description": "Makes the request method conditional on a recipient cache or origin server not having any current representation of the target resource with an entity-tag that does not match any of those listed in the field-value.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "x-cds-type": "String"
             }
           }
         ],
@@ -851,13 +891,15 @@
               "x-v": {
                 "description": "The version of the API end point that the CDR Register has responded with.",
                 "schema": {
-                  "type": "string"
+                  "type": "integer",
+              "x-cds-type": "PositiveInteger"
                 }
               },
               "Etag": {
                 "description": "Entity tag that uniquely represents the requested resource.",
                 "schema": {
-                  "type": "string"
+                  "type": "string",
+              "x-cds-type": "String"
                 }
               }
             },
@@ -875,7 +917,8 @@
               "Etag": {
                 "description": "Entity tag that uniquely represents the requested resource.",
                 "schema": {
-                  "type": "string"
+                  "type": "string",
+              "x-cds-type": "String"
                 }
               }
             }
@@ -927,81 +970,94 @@
         "properties": {
           "issuer": {
             "type": "string",
-            "description": "URL using the https scheme with no query or fragment component that the CDR Register asserts as its Issuer Identifier"
+            "description": "URL using the https scheme with no query or fragment component that the CDR Register asserts as its Issuer Identifier",
+              "x-cds-type": "String"
           },
           "jwks_uri": {
             "type": "string",
-            "description": "URL of the CDR Register's JSON Web Key Set **[[JWK]](#nref-JWK)** document. This contains the signing key(s) used to validate access tokens issued from the CDR Register. Note that this differs from the JWKS endpoint used to validate SSAs and CDR Register client authentication"
+            "description": "URL of the CDR Register's JSON Web Key Set **[[JWK]](#nref-JWK)** document. This contains the signing key(s) used to validate access tokens issued from the CDR Register. Note that this differs from the JWKS endpoint used to validate SSAs and CDR Register client authentication",
+              "x-cds-type": "URIString"
           },
           "token_endpoint": {
             "type": "string",
-            "description": "URL of the CDR Register's OAuth 2.0 Token Endpoint"
+            "description": "URL of the CDR Register's OAuth 2.0 Token Endpoint",
+              "x-cds-type": "URIString"
           },
           "claims_supported": {
             "type": "array",
             "description": "JSON array containing a list of the Claim Names of the Claims that the CDR Register supplies values for",
             "items": {
-              "type": "string"
+              "type": "string",
+              "x-cds-type": "String"
             }
           },
           "id_token_signing_alg_values_supported": {
             "type": "array",
             "description": "JSON array containing a list of the JWS signing algorithms (alg values) supported by the CDR Register for the ID Token to encode the Claims in a JWT. Given the CDR Register does not issue ID tokens, this field can be safely ignored",
             "items": {
-              "type": "string"
+              "type": "string",
+              "x-cds-type": "String"
             }
           },
           "subject_types_supported": {
             "type": "array",
             "description": "JSON array containing a list of the Subject Identifier types that the CDR Register supports. Given the CDR Register does not issue ID tokens, this field can be safely ignored",
             "items": {
-              "type": "string"
+              "type": "string",
+              "x-cds-type": "String"
             }
           },
           "code_challenge_methods_supported": {
             "type": "array",
             "description": "JSON array containing a list of Proof Key for Code Exchange (PKCE) **[[RFC7636]](#nref-RFC7636)** code challenge methods supported by this authorization server. Given the CDR Register does not support PKCE, this field can be safely ignored",
             "items": {
-              "type": "string"
+              "type": "string",
+              "x-cds-type": "String"
             }
           },
           "scopes_supported": {
             "type": "array",
             "description": "JSON array containing a list of the OAuth 2.0 **[[RFC6749]](#nref-RFC6749)** scope values that the CDR Register supports",
             "items": {
-              "type": "string"
+              "type": "string",
+              "x-cds-type": "String"
             }
           },
           "response_types_supported": {
             "type": "array",
             "description": "JSON array containing a list of the OAuth 2.0 response_type values that the CDR Registrer supports",
             "items": {
-              "type": "string"
+              "type": "string",
+              "x-cds-type": "String"
             }
           },
           "grant_types_supported": {
             "type": "array",
             "description": "JSON array containing a list of the OAuth 2.0 Grant Type values that the CDR Register supports",
             "items": {
-              "type": "string"
+              "type": "string",
+              "x-cds-type": "String"
             }
           },
           "token_endpoint_auth_methods_supported": {
             "type": "array",
             "description": "JSON array containing a list of Client Authentication methods supported by this Token Endpoint",
             "items": {
-              "type": "string"
+              "type": "string",
+              "x-cds-type": "String"
             }
           },
           "tls_client_certificate_bound_access_tokens": {
             "type": "boolean",
-            "description": "Boolean value indicating server support for mutual TLS client certificate bound access tokens"
+            "description": "Boolean value indicating server support for mutual TLS client certificate bound access tokens",
+              "x-cds-type": "Boolean"
           },
           "token_endpoint_auth_signing_alg_values_supported": {
             "type": "array",
             "description": "JSON array containing a list of the JWS signing algorithms (alg values) supported by the token endpoint for the signature on the JWT **[[JWT]](#nref-JWT)** used to authenticate the client at the token endpoint for the \\\"private_key_jwt\\\" authentication method",
             "items": {
-              "type": "string"
+              "type": "string",
+              "x-cds-type": "String"
             }
           }
         },
@@ -1036,30 +1092,36 @@
         "properties": {
           "alg": {
             "type": "string",
-            "description": "The \"alg\" (algorithm) parameter identifies the algorithm intended for use with the key"
+            "description": "The \"alg\" (algorithm) parameter identifies the algorithm intended for use with the key",
+              "x-cds-type": "String"
           },
           "e": {
             "type": "string",
-            "description": "The \"e\" RSA public exponent parameter"
+            "description": "The \"e\" RSA public exponent parameter",
+              "x-cds-type": "String"
           },
           "key_ops": {
             "type": "array",
             "description": "The \"key_ops\" (key operations) parameter identifies the operation(s) for which the key is intended to be used",
             "items": {
-              "type": "string"
+              "type": "string",
+              "x-cds-type": "String"
             }
           },
           "kid": {
             "type": "string",
-            "description": "The \"kid\" (key ID) parameter is partially used to match a specific key. Note the \"kid\" parameter is not guaranteed unique and additional parameters should be used to progressively to identify a key within a set"
+            "description": "The \"kid\" (key ID) parameter is partially used to match a specific key. Note the \"kid\" parameter is not guaranteed unique and additional parameters should be used to progressively to identify a key within a set",
+              "x-cds-type": "String"
           },
           "kty": {
             "type": "string",
-            "description": "The \"kty\" (key type) parameter identifies the cryptographic algorithm family used with the key"
+            "description": "The \"kty\" (key type) parameter identifies the cryptographic algorithm family used with the key",
+              "x-cds-type": "String"
           },
           "n": {
             "type": "string",
-            "description": "The \"n\" RSA public modulus parameter"
+            "description": "The \"n\" RSA public modulus parameter",
+              "x-cds-type": "String"
           }
         },
         "description": "Object representing a JSON Web Key"
@@ -1106,12 +1168,14 @@
           "dataHolderBrandId": {
             "maxLength": 36,
             "type": "string",
-            "description": "Unique id of the Data Holder Brand issued by the CDR Register"
+            "description": "Unique id of the Data Holder Brand issued by the CDR Register",
+              "x-cds-type": "String"
           },
           "brandName": {
             "maxLength": 200,
             "type": "string",
-            "description": "The name of Data Holder Brand"
+            "description": "The name of Data Holder Brand",
+              "x-cds-type": "String"
           },
           "industries": {
             "uniqueItems": true,
@@ -1198,18 +1262,21 @@
           "dataHolderBrandId": {
             "maxLength": 36,
             "type": "string",
+              "x-cds-type": "String",
             "x-conditional": true,
             "description": "Unique id of the Data Holder Brand issued by the CDR Register"
           },
           "interimId": {
             "maxLength": 36,
             "type": "string",
+              "x-cds-type": "String",
             "x-conditional": true,
             "description": "Interim id of the Data Holder Brand issued by the CDR Register. This is to be used to uniquely identify the record when dataHolderBrandId is not populated and is not to be reused"
           },
           "brandName": {
             "maxLength": 200,
             "type": "string",
+              "x-cds-type": "String",
             "description": "The name of Data Holder Brand"
           },
           "publicBaseUri": {
@@ -1246,16 +1313,19 @@
           "abn": {
             "maxLength": 11,
             "type": "string",
+              "x-cds-type": "String",
             "description": "Australian Business Number for the organisation"
           },
           "acn": {
             "maxLength": 9,
             "type": "string",
+              "x-cds-type": "String",
             "description": "Australian Company Number for the organisation"
           },
           "arbn": {
             "maxLength": 9,
             "type": "string",
+              "x-cds-type": "String",
             "description": "Australian Registered Body Number.  ARBNs are issued to registrable Australian bodies and foreign companies"
           }
         }
@@ -1294,6 +1364,7 @@
           "legalEntityId": {
             "maxLength": 36,
             "type": "string",
+              "x-cds-type": "String",
             "description": "Unique id of the Data Holder Legal Entity issued by the CDR Register."
           },
           "status": {
@@ -1340,6 +1411,7 @@
           "softwareProductId": {
             "maxLength": 36,
             "type": "string",
+              "x-cds-type": "String",
             "description": "Unique id of the software product issued by the CDR Register"
           },
           "status": {
@@ -1387,6 +1459,7 @@
           "legalEntityId": {
             "maxLength": 36,
             "type": "string",
+              "x-cds-type": "String",
             "description": "Unique id of the Data Recipient Legal Entity issued by the CDR Register"
           },
           "status": {
@@ -1441,16 +1514,19 @@
           "legalEntityId": {
             "maxLength": 36,
             "type": "string",
+              "x-cds-type": "String",
             "description": "Unique id of the Data Recipient Legal Entity issued by the CDR Register."
           },
           "legalEntityName": {
             "maxLength": 200,
             "type": "string",
+              "x-cds-type": "String",
             "description": "Legal name of the Data Recipient"
           },
           "accreditationNumber": {
             "maxLength": 100,
             "type": "string",
+              "x-cds-type": "String",
             "description": "CDR Register issued human readable unique number given to Data Recipients upon accreditation"
           },
           "accreditationLevel": {
@@ -1504,11 +1580,13 @@
           "dataRecipientBrandId": {
             "maxLength": 36,
             "type": "string",
+              "x-cds-type": "String",
             "description": "Unique id of the Data Recipient brand issued by the CDR Register"
           },
           "brandName": {
             "maxLength": 200,
             "type": "string",
+              "x-cds-type": "String",
             "description": "Data Recipient Brand name"
           },
           "logoUri": {
@@ -1548,16 +1626,19 @@
           "softwareProductId": {
             "maxLength": 36,
             "type": "string",
+              "x-cds-type": "String",
             "description": "Unique id of the Data Recipient software product issued by the CDR Register"
           },
           "softwareProductName": {
             "maxLength": 200,
             "type": "string",
+              "x-cds-type": "String",
             "description": "Name of the software product"
           },
           "softwareProductDescription": {
             "maxLength": 4000,
             "type": "string",
+              "x-cds-type": "String",
             "description": "Description of the software product"
           },
           "logoUri": {
@@ -1590,11 +1671,13 @@
           "legalEntityId": {
             "maxLength": 36,
             "type": "string",
+              "x-cds-type": "String",
             "description": "Unique id of the organisation issued by the CDR Register"
           },
           "legalEntityName": {
             "maxLength": 36,
             "type": "string",
+              "x-cds-type": "String",
             "description": "Unique legal name of the organisation"
           },
           "logoUri": {
@@ -1605,6 +1688,7 @@
           },
           "registrationNumber": {
             "type": "string",
+              "x-cds-type": "String",
             "description": "Unique registration number (if the company is registered outside Australia)"
           },
           "registrationDate": {
@@ -1616,26 +1700,31 @@
           "registeredCountry": {
             "maxLength": 100,
             "type": "string",
+              "x-cds-type": "String",
             "description": "Country of registeration (if the company is registered outside Australia)"
           },
           "abn": {
             "maxLength": 11,
             "type": "string",
+              "x-cds-type": "String",
             "description": "Australian Business Number for the organisation"
           },
           "acn": {
             "maxLength": 9,
             "type": "string",
+              "x-cds-type": "String",
             "description": "Australian Company Number for the organisation"
           },
           "arbn": {
             "maxLength": 9,
             "type": "string",
+              "x-cds-type": "String",
             "description": "Australian Registered Body Number.  ARBNs are issued to registrable Australian bodies and foreign companies"
           },
           "anzsicDivision": {
             "maxLength": 100,
             "type": "string",
+              "x-cds-type": "ExternalRef",
             "description": "ANZSIC division of the organisation. **[[ANZSIC-2006]](#iref-ANZSIC-2006)**"
           },
           "organisationType": {
@@ -1672,6 +1761,7 @@
         "properties": {
           "version": {
             "type": "string",
+              "x-cds-type": "String",
             "description": "The major version of the high level standards. This is not the version of the endpoint or the payload being requested but the version of the overall standards being applied. This version number will be \"v\" followed by the major version of the standards as a positive integer (e.g. v1, v12 or v76)"
           },
           "publicBaseUri": {
@@ -1738,22 +1828,27 @@
         "properties": {
           "first": {
             "type": "string",
+            "x-cds-type": "URIString",
             "description": "URI to the first page of this set. Mandatory if this response is not the first page"
           },
           "last": {
             "type": "string",
+            "x-cds-type": "URIString",
             "description": "URI to the last page of this set. Mandatory if this response is not the last page"
           },
           "next": {
             "type": "string",
+            "x-cds-type": "URIString",
             "description": "URI to the next page of this set. Mandatory if this response is not the last page"
           },
           "prev": {
             "type": "string",
+            "x-cds-type": "URIString",
             "description": "URI to the previous page of this set. Mandatory if this response is not the first page"
           },
           "self": {
             "type": "string",
+            "x-cds-type": "URIString",
             "description": "Fully qualified link to this API call"
           }
         }
@@ -1768,12 +1863,14 @@
           "totalPages": {
             "type": "integer",
             "description": "The total number of pages in the full set",
-            "format": "int32"
+            "format": "int32",
+            "x-cds-type": "PositiveInteger"
           },
           "totalRecords": {
             "type": "integer",
             "description": "The total number of records in the full set",
-            "format": "int32"
+            "format": "int32",
+            "x-cds-type": "PositiveInteger"
           }
         }
       },
@@ -1785,6 +1882,7 @@
         "properties": {
           "self": {
             "type": "string",
+            "x-cds-type": "URIString",
             "description": "Fully qualified link to this API call"
           }
         }
@@ -1797,6 +1895,7 @@
         "properties": {
           "urn": {
             "type": "string",
+            "x-cds-type": "String",
             "description": "The CDR error code URN which the application-specific error code extends. Mandatory if the error `code` is an application-specific error rather than a standardised error code."
           }
         },
@@ -1833,14 +1932,17 @@
         "properties": {
           "code": {
             "type": "string",
+            "x-cds-type": "String",
             "description": "The code of the error encountered. Where the error is specific to the respondent, an application-specific error code, expressed as a string value. If the error is application-specific, the URN code that the specific error extends must be provided in the meta object. Otherwise, the value is the error code URN."
           },
           "title": {
             "type": "string",
+            "x-cds-type": "String",
             "description": "A short, human-readable summary of the problem that MUST NOT change from occurrence to occurrence of the problem represented by the error code."
           },
           "detail": {
             "type": "string",
+            "x-cds-type": "String",
             "description": "A human-readable explanation specific to this occurrence of the problem."
           },
           "meta": {
@@ -1876,7 +1978,8 @@
           "Etag": {
             "description": "Entity tag that uniquely represents the requested resource.",
             "schema": {
-              "type": "string"
+              "type": "string",
+            "x-cds-type": "String"
             }
           }
         }
@@ -1899,7 +2002,8 @@
         "description": "An Authorisation Token as per **[[RFC6750]](#nref-RFC6750)**.",
         "required": true,
         "schema": {
-          "type": "string"
+          "type": "string",
+            "x-cds-type": "ExternalRef"
         }
       },
       "XV": {
@@ -1907,7 +2011,8 @@
         "in": "header",
         "description": "The version of the API end point requested by the client. Must be set to a positive integer.",
         "schema": {
-          "type": "string"
+          "type": "integer",
+            "x-cds-type": "PositiveInteger"
         }
       },
       "Industry": {
@@ -1930,7 +2035,8 @@
         "in": "header",
         "description": "The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided.",
         "schema": {
-          "type": "string"
+          "type": "integer",
+            "x-cds-type": "PositiveInteger"
         }
       },
       "IfNoneMatch": {
@@ -1938,7 +2044,8 @@
         "in": "header",
         "description": "Makes the request method conditional on a recipient cache or origin server not having any current representation of the target resource with an entity-tag that does not match any of those listed in the field-value.",
         "schema": {
-          "type": "string"
+          "type": "string",
+            "x-cds-type": "String"
         }
       },
       "UpdatedSince": {
@@ -1947,7 +2054,8 @@
         "description": "query filter returns results updated since the specified date-time",
         "schema": {
           "type": "string",
-          "format": "date-time"
+          "format": "date-time",
+            "x-cds-type": "DateTimeString"
         }
       },
       "Page": {
@@ -1956,7 +2064,8 @@
         "description": "the page number to return",
         "schema": {
           "type": "integer",
-          "format": "int32"
+          "format": "int32",
+            "x-cds-type": "PositiveInteger"
         }
       },
       "PageSize": {
@@ -1965,7 +2074,8 @@
         "description": "the number of records to return per page",
         "schema": {
           "type": "integer",
-          "format": "int32"
+          "format": "int32",
+            "x-cds-type": "PositiveInteger"
         }
       }
     }
