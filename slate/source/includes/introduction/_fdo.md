@@ -44,4 +44,4 @@ The table below highlights these areas of the standards.
 |[Get Energy Account Detail V1](#get-energy-account-detail)|<ul><li>Data Holders **MAY** go-live on November 15 2022 with v1 of this endopint</li><li>Data Holders **MAY** decommission v1 of this endopint as soon v2 is supported</li></ul>
 |[Get Energy Accounts V2](#get-energy-accounts)|Data Holder **MUST** implement v2 of this endpoint by **April 7th 2023**
 |[Get Energy Account Detail V2](#get-energy-account-detail)|Data Holder **MUST** implement v2 of this endpoint by **April 7th 2023**
-|[Error Codes: Secondary Data Holder flag](#error-codes)|<ul><li>Data Holders **MAY** implement the `isSecondaryDataHolderError` field on **November 15 2022**</li><li>Affected Data Holders **MUST** implement `isSecondaryDataHolderError` field by **April 7 2023**</li></ul> | April 7th 2023 |
+|[Error Codes: Secondary Data Holder flag](#error-codes)|<ul><li>Data Holders **MAY** implement the `isSecondaryDataHolderError` field on **November 15 2022**</li><li>Affected Data Holders **MUST** implement `isSecondaryDataHolderError` field by **May 15 2023**</li></ul> | May 15th 2023 |
