@@ -47,7 +47,6 @@ No Change
 |Change|Description|Link|
 |------|-----------|----|
 | Energy schema | [**Decision Proposal #260**](https://github.com/ConsumerDataStandardsAustralia/standards/issues/260): Introduced v2 of Get Energy Accounts and v2 of Get Energy Account Details APIs | [Energy Schema](../../#energy-apis) |
->>>>>>> release/1.20.0
 
 
 ## Information Security Profile
