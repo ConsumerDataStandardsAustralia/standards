@@ -2,7 +2,7 @@ openapi: 3.0.3
 info:
   description: Consumer Data Right end points and payloads for the Energy sector
   title: CDR Energy API
-  version: 1.18.0
+  version: 1.19.0
 servers:
 - url: /
 paths:
@@ -1911,10 +1911,26 @@ paths:
       x-version: "1"
   /energy/accounts:
     get:
-      description: Obtain the list of energy accounts available under the authorised
-        consent
+      description: |-
+        Obtain the list of energy accounts available under the authorised consent
+
+        Other Versions: [v1](includes/obsolete/get-energy-accounts-v1.html)
       operationId: listAccounts
       parameters:
+      - description: Used to filter results according to open/closed status. Values
+          can be OPEN, CLOSED or ALL. If absent then ALL is assumed
+        explode: true
+        in: query
+        name: open-status
+        required: false
+        schema:
+          default: ALL
+          enum:
+          - ALL
+          - CLOSED
+          - OPEN
+          type: string
+        style: form
       - description: Page of results to request (standard pagination)
         explode: true
         in: query
@@ -2011,7 +2027,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EnergyAccountListResponse'
+                $ref: '#/components/schemas/EnergyAccountListResponseV2'
           description: Successful response
           headers:
             x-v:
@@ -2092,10 +2108,13 @@ paths:
       - Energy Accounts
       x-scopes:
       - energy:accounts.basic:read
-      x-version: "1"
+      x-version: "2"
   /energy/accounts/{accountId}:
     get:
-      description: Obtain detailed information for a specific energy account
+      description: |-
+        Obtain detailed information for a specific energy account
+
+        Other Versions: [v1](includes/obsolete/get-energy-account-detail-v1.html)
       operationId: getAccount
       parameters:
       - description: ID of a specific account to obtain data for.  This is a tokenised
@@ -2107,6 +2126,20 @@ paths:
         schema:
           type: string
         style: simple
+      - description: Used to filter results according to open/closed status. Values
+          can be OPEN, CLOSED or ALL. If absent then ALL is assumed
+        explode: true
+        in: query
+        name: open-status
+        required: false
+        schema:
+          default: ALL
+          enum:
+          - ALL
+          - CLOSED
+          - OPEN
+          type: string
+        style: form
       - description: Version of the API end point requested by the client. Must be
           set to a positive integer. The data holder should respond with the highest
           supported version between [x-min-v](#request-headers) and [x-v](#request-headers).
@@ -2185,7 +2218,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EnergyAccountDetailResponse'
+                $ref: '#/components/schemas/EnergyAccountDetailResponseV2'
           description: Successful response
           headers:
             x-v:
@@ -2266,7 +2299,7 @@ paths:
       - Energy Accounts
       x-scopes:
       - energy:accounts.detail:read
-      x-version: "1"
+      x-version: "2"
   /energy/accounts/{accountId}/payment-schedule:
     get:
       description: "Obtain the agreed payment schedule and details, if any, for a\
@@ -4486,6 +4519,21 @@ components:
       schema:
         type: string
       style: simple
+    open-status:
+      description: Used to filter results according to open/closed status. Values
+        can be OPEN, CLOSED or ALL. If absent then ALL is assumed
+      explode: true
+      in: query
+      name: open-status
+      required: false
+      schema:
+        default: ALL
+        enum:
+        - ALL
+        - CLOSED
+        - OPEN
+        type: string
+      style: form
     interval-reads:
       description: Type of interval reads. Any one of the valid values for this field
         can be supplied. If absent defaults to NONE
@@ -4847,11 +4895,11 @@ components:
               interaction.
             type: string
           style: simple
-    accountList:
+    accountListV2:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/EnergyAccountListResponse'
+            $ref: '#/components/schemas/EnergyAccountListResponseV2'
       description: Successful response
       headers:
         x-v:
@@ -4871,11 +4919,11 @@ components:
               interaction.
             type: string
           style: simple
-    accountDetail:
+    accountDetailV2:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/EnergyAccountDetailResponse'
+            $ref: '#/components/schemas/EnergyAccountDetailResponseV2'
       description: Successful response
       headers:
         x-v:
@@ -5663,7 +5711,7 @@ components:
       - links
       - meta
       type: object
-    EnergyAccountListResponse:
+    EnergyAccountListResponseV2:
       example:
         data:
           accounts:
@@ -5680,7 +5728,7 @@ components:
           first: first
       properties:
         data:
-          $ref: '#/components/schemas/EnergyAccountListResponse_data'
+          $ref: '#/components/schemas/EnergyAccountListResponseV2_data'
         links:
           $ref: '#/components/schemas/LinksPaginated'
         meta:
@@ -5690,14 +5738,14 @@ components:
       - links
       - meta
       type: object
-    EnergyAccountDetailResponse:
+    EnergyAccountDetailResponseV2:
       example:
         meta: '{}'
         links:
           self: self
       properties:
         data:
-          $ref: '#/components/schemas/EnergyAccountDetail'
+          $ref: '#/components/schemas/EnergyAccountDetailV2'
         links:
           $ref: '#/components/schemas/Links'
         meta:
@@ -8618,7 +8666,7 @@ components:
       type: object
       x-conditional:
       - protectionMode
-    EnergyAccountBase:
+    EnergyAccountBaseV2:
       properties:
         accountId:
           description: The ID of the account.  To be created in accordance with CDR
@@ -8634,22 +8682,32 @@ components:
             be derived.  The content of this field is at the discretion of the data
             holder
           type: string
+        openStatus:
+          default: OPEN
+          description: Open or closed status for the account. If not present then
+            OPEN is assumed
+          enum:
+          - CLOSED
+          - OPEN
+          type: string
         creationDate:
-          description: The date that the account was created or opened
+          description: The date that the account was created or opened. Mandatory
+            if openStatus is OPEN
           type: string
           x-cds-type: DateString
       required:
       - accountId
-      - creationDate
       type: object
-    EnergyAccount:
+      x-conditional:
+      - creationDate
+    EnergyAccountV2:
       allOf:
-      - $ref: '#/components/schemas/EnergyAccountBase'
-      - $ref: '#/components/schemas/EnergyAccount_allOf'
-    EnergyAccountDetail:
+      - $ref: '#/components/schemas/EnergyAccountBaseV2'
+      - $ref: '#/components/schemas/EnergyAccountV2_allOf'
+    EnergyAccountDetailV2:
       allOf:
-      - $ref: '#/components/schemas/EnergyAccountBase'
-      - $ref: '#/components/schemas/EnergyAccountDetail_allOf'
+      - $ref: '#/components/schemas/EnergyAccountBaseV2'
+      - $ref: '#/components/schemas/EnergyAccountDetailV2_allOf'
     EnergyPaymentSchedule:
       example:
         manualPayment:
@@ -10057,7 +10115,7 @@ components:
       required:
       - derRecords
       type: object
-    EnergyAccountListResponse_data:
+    EnergyAccountListResponseV2_data:
       example:
         accounts:
         - null
@@ -10066,7 +10124,7 @@ components:
         accounts:
           description: Array of accounts
           items:
-            $ref: '#/components/schemas/EnergyAccount'
+            $ref: '#/components/schemas/EnergyAccountV2'
           type: array
       required:
       - accounts
@@ -11291,7 +11349,8 @@ components:
       - inverterSeries
       - inverterModelNumber
       - inverterDeviceCapacity
-    EnergyAccount_allOf_planOverview:
+    EnergyAccountV2_allOf_planOverview:
+      description: Mandatory if openStatus is OPEN
       properties:
         displayName:
           description: The name of the plan if one exists
@@ -11307,7 +11366,7 @@ components:
       required:
       - startDate
       type: object
-    EnergyAccount_allOf_plans:
+    EnergyAccountV2_allOf_plans:
       properties:
         nickname:
           description: Optional display name for the plan provided by the customer
@@ -11321,12 +11380,13 @@ components:
             type: string
           type: array
         planOverview:
-          $ref: '#/components/schemas/EnergyAccount_allOf_planOverview'
+          $ref: '#/components/schemas/EnergyAccountV2_allOf_planOverview'
       required:
-      - planOverview
       - servicePointIds
       type: object
-    EnergyAccount_allOf:
+      x-conditional:
+      - planOverview
+    EnergyAccountV2_allOf:
       description: The array of plans containing service points and associated plan
         details
       properties:
@@ -11334,13 +11394,14 @@ components:
           description: The array of plans containing service points and associated
             plan details
           items:
-            $ref: '#/components/schemas/EnergyAccount_allOf_plans'
+            $ref: '#/components/schemas/EnergyAccountV2_allOf_plans'
           type: array
       required:
       - plans
       type: object
-    EnergyAccountDetail_allOf_planDetail:
-      description: Detail on the plan applicable to this account
+    EnergyAccountDetailV2_allOf_planDetail:
+      description: Detail on the plan applicable to this account. Mandatory if openStatus
+        is OPEN
       properties:
         fuelType:
           description: The fuel types covered by the plan
@@ -11372,7 +11433,7 @@ components:
       x-conditional:
       - gasContract
       - electricityContract
-    EnergyAccountDetail_allOf_authorisedContacts:
+    EnergyAccountDetailV2_allOf_authorisedContacts:
       properties:
         firstName:
           description: For people with single names this field need not be present.
@@ -11397,7 +11458,7 @@ components:
       required:
       - lastName
       type: object
-    EnergyAccountDetail_allOf_plans:
+    EnergyAccountDetailV2_allOf_plans:
       properties:
         nickname:
           description: Optional display name for the plan provided by the customer
@@ -11410,21 +11471,22 @@ components:
             type: string
           type: array
         planOverview:
-          $ref: '#/components/schemas/EnergyAccount_allOf_planOverview'
+          $ref: '#/components/schemas/EnergyAccountV2_allOf_planOverview'
         planDetail:
-          $ref: '#/components/schemas/EnergyAccountDetail_allOf_planDetail'
+          $ref: '#/components/schemas/EnergyAccountDetailV2_allOf_planDetail'
         authorisedContacts:
           description: An array of additional contacts that are authorised to act
             on this account
           items:
-            $ref: '#/components/schemas/EnergyAccountDetail_allOf_authorisedContacts'
+            $ref: '#/components/schemas/EnergyAccountDetailV2_allOf_authorisedContacts'
           type: array
       required:
-      - planDetail
-      - planOverview
       - servicePointIds
       type: object
-    EnergyAccountDetail_allOf:
+      x-conditional:
+      - planOverview
+      - planDetail
+    EnergyAccountDetailV2_allOf:
       description: The array of plans containing service points and associated plan
         details
       properties:
@@ -11432,7 +11494,7 @@ components:
           description: The array of plans containing service points and associated
             plan details
           items:
-            $ref: '#/components/schemas/EnergyAccountDetail_allOf_plans'
+            $ref: '#/components/schemas/EnergyAccountDetailV2_allOf_plans'
           type: array
       required:
       - plans
