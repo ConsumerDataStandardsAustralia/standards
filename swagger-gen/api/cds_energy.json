@@ -3,7 +3,7 @@
 	"info": {
 		"title": "CDR Energy API",
 		"description": "Consumer Data Right end points and payloads for the Energy sector",
-		"version": "1.18.0"
+		"version": "1.19.0"
 	},
 	"components": {
 		"schemas": {
@@ -185,7 +185,7 @@
                     }
                 }
             },
-            "EnergyAccountListResponse": {
+            "EnergyAccountListResponseV2": {
                 "type": "object",
                 "required": [
                     "data",
@@ -203,7 +203,7 @@
                                 "description": "Array of accounts",
                                 "type": "array",
                                 "items": {
-                                    "$ref": "#/components/schemas/EnergyAccount"
+                                    "$ref": "#/components/schemas/EnergyAccountV2"
                                 }
                             }
                         }
@@ -216,7 +216,7 @@
                     }
                 }
             },
-            "EnergyAccountDetailResponse": {
+            "EnergyAccountDetailResponseV2": {
                 "type": "object",
                 "required": [
                     "data",
@@ -225,7 +225,7 @@
                 ],
                 "properties": {
                     "data": {
-                        "$ref": "#/components/schemas/EnergyAccountDetail"
+                        "$ref": "#/components/schemas/EnergyAccountDetailV2"
                     },
                     "links": {
                         "$ref": "#/components/schemas/Links"
@@ -2511,10 +2511,12 @@
 					}
 				}
 			},
-            "EnergyAccountBase": {
+            "EnergyAccountBaseV2": {
                 "type": "object",
                 "required": [
-                    "accountId",
+                    "accountId"
+                ],
+                "x-conditional": [
                     "creationDate"
                 ],
                 "properties": {
@@ -2530,17 +2532,26 @@
                         "description": "An optional display name for the account if one exists or can be derived.  The content of this field is at the discretion of the data holder",
                         "type": "string"
                     },
+                    "openStatus": {
+                        "type": "string",
+                        "description": "Open or closed status for the account. If not present then OPEN is assumed",
+                        "default": "OPEN",
+                        "enum": [
+                          "CLOSED",
+                          "OPEN"
+                        ]
+                      },
                     "creationDate": {
-                        "description": "The date that the account was created or opened",
+                        "description": "The date that the account was created or opened. Mandatory if openStatus is OPEN",
                         "type": "string",
                         "x-cds-type": "DateString"
                     }
                 }
             },
-            "EnergyAccount": {
+            "EnergyAccountV2": {
                 "allOf": [
                     {
-                        "$ref": "#/components/schemas/EnergyAccountBase"
+                        "$ref": "#/components/schemas/EnergyAccountBaseV2"
                     },
                     {
                         "description": "The array of plans containing service points and associated plan details",
@@ -2555,7 +2566,9 @@
                                 "items": {
                                     "type": "object",
                                     "required": [
-                                        "servicePointIds",
+                                        "servicePointIds"
+                                    ],
+                                    "x-conditional": [
                                         "planOverview"
                                     ],
                                     "properties": {
@@ -2571,6 +2584,7 @@
                                             }
                                         },
                                         "planOverview": {
+                                            "description": "Mandatory if openStatus is OPEN",
                                             "type": "object",
                                             "required": [
                                                 "startDate"
@@ -2599,10 +2613,10 @@
                     }
                 ]
             },
-            "EnergyAccountDetail": {
+            "EnergyAccountDetailV2": {
                 "allOf": [
                     {
-                        "$ref": "#/components/schemas/EnergyAccountBase"
+                        "$ref": "#/components/schemas/EnergyAccountBaseV2"
                     },
                     {
                         "description": "The array of plans containing service points and associated plan details",
@@ -2617,7 +2631,9 @@
                                 "items": {
                                     "type": "object",
                                     "required": [
-                                        "servicePointIds",
+                                        "servicePointIds"
+                                    ],
+                                    "x-conditional": [
                                         "planOverview",
                                         "planDetail"
                                     ],
@@ -2634,6 +2650,7 @@
                                             }
                                         },
                                         "planOverview": {
+                                            "description": "Mandatory if openStatus is OPEN",
                                             "type": "object",
                                             "required": [
                                                 "startDate"
@@ -2656,7 +2673,7 @@
                                             }
                                         },
                                         "planDetail": {
-                                            "description": "Detail on the plan applicable to this account",
+                                            "description": "Detail on the plan applicable to this account. Mandatory if openStatus is OPEN",
                                             "type": "object",
                                             "required": [
                                                 "fuelType"
@@ -4004,6 +4021,16 @@
 					"type": "string"
 				}
 			},
+            "open-status": {
+                "name": "open-status",
+                "in": "query",
+                "description": "Used to filter results according to open/closed status. Values can be OPEN, CLOSED or ALL. If absent then ALL is assumed",
+                "schema": {
+                  "type": "string",
+                  "default": "ALL",
+                  "enum": ["ALL", "CLOSED","OPEN"]
+                }
+              },
             "interval-reads": {
 				"name": "interval-reads",
 				"description": "Type of interval reads. Any one of the valid values for this field can be supplied. If absent defaults to NONE",
@@ -4364,7 +4391,7 @@
 					}
 				}
 			},
-			"accountList": {
+			"accountListV2": {
 				"description": "Successful response",
                 "headers": {
                     "x-v": {
@@ -4383,12 +4410,12 @@
 				"content": {
 					"application/json": {
                         "schema": {
-                            "$ref": "#/components/schemas/EnergyAccountListResponse"
+                            "$ref": "#/components/schemas/EnergyAccountListResponseV2"
 						}
 					}
 				}
 			},
-			"accountDetail": {
+			"accountDetailV2": {
 				"description": "Successful response",
                 "headers": {
                     "x-v": {
@@ -4407,7 +4434,7 @@
 				"content": {
 					"application/json": {
                         "schema": {
-                            "$ref": "#/components/schemas/EnergyAccountDetailResponse"
+                            "$ref": "#/components/schemas/EnergyAccountDetailResponseV2"
 						}
 					}
 				}
@@ -5622,7 +5649,7 @@
 			"get": {
 				"summary": "Get Energy Accounts",
 				"operationId": "listAccounts",
-				"description": "Obtain the list of energy accounts available under the authorised consent",
+				"description": "Obtain the list of energy accounts available under the authorised consent\n\nOther Versions: [v1](includes/obsolete/get-energy-accounts-v1.html)",
                 "x-scopes": [
                     "energy:accounts.basic:read"
                 ],
@@ -5630,8 +5657,11 @@
                     "Energy",
 					"Energy Accounts"
 				],
-                "x-version": "1",
+                "x-version": "2",
 				"parameters": [{
+                    "$ref": "#/components/parameters/open-status"
+                    },
+                    {
 						"$ref": "#/components/parameters/page"
 					},
 					{
@@ -5658,7 +5688,7 @@
 				],
 				"responses": {
 					"200": {
-						"$ref": "#/components/responses/accountList"
+						"$ref": "#/components/responses/accountListV2"
                     },
                     "400": {
                         "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
@@ -5721,7 +5751,7 @@
 			"get": {
 				"summary": "Get Energy Account Detail",
 				"operationId": "getAccount",
-				"description": "Obtain detailed information for a specific energy account",
+				"description": "Obtain detailed information for a specific energy account\n\nOther Versions: [v1](includes/obsolete/get-energy-account-detail-v1.html)",
                 "x-scopes": [
                     "energy:accounts.detail:read"
                 ],
@@ -5729,10 +5759,13 @@
                     "Energy",
 					"Energy Accounts"
 				],
-                "x-version": "1",
+                "x-version": "2",
 				"parameters": [{
 						"$ref": "#/components/parameters/accountId"
 					},
+                    {
+                        "$ref": "#/components/parameters/open-status"
+                    },
 					{
 						"$ref": "#/components/parameters/x-v"
 					},
@@ -5754,7 +5787,7 @@
 				],
 				"responses": {
 					"200": {
-						"$ref": "#/components/responses/accountDetail"
+						"$ref": "#/components/responses/accountDetailV2"
                     },
                     "400": {
                         "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
