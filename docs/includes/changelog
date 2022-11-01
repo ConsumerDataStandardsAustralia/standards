@@ -10,6 +10,12 @@
 </tr>
 </thead><tbody>
 <tr>
+<td>13/09/2022</td>
+<td>1.19.0</td>
+<td>Changes arising from Decision 260 (Energy Closed Accounts)</td>
+<td>See <a href="includes/releasenotes/releasenotes.1.19.0.html">release notes</a> and <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/260">Decision 260</a> for details</td>
+</tr>
+<tr>
 <td>11/08/2022</td>
 <td>1.18.0</td>
 <td>Changes arising from Decision 249 (Maintenance iteration 11)</td>
