@@ -21,34 +21,9 @@
 <td><p>If a scenario requires it, Data Holders and Data Recipients <strong>MUST</strong> merge and amend <em>Basic</em> and <em>Detailed</em> data cluster and permission language to show that <em>Detailed</em> scopes include <em>Basic</em> data.</p><p>Data Holders and Data Recipients <strong>MUST</strong> use the alternative language denoted with an &#39;&Dagger;&#39; for the relevant scope(s). See the <a href="#banking-language">Banking Language</a> section for banking data and the <a href="#energy-language">Energy Language</a> section for energy data.</p><p><strong>Example:</strong> A Data Recipient presents the <em>Detailed</em> data cluster in a data request to a consumer, but does not present the <em>Basic</em> data cluster. The <em>Detailed</em> scope includes <em>Basic</em> data, but this is not apparent to the consumer based on the data cluster language and permissions used for the <em>Detailed</em> scope.</p></td>
 </tr>
 </tbody></table>
-
-<p><br/></p>
-<h2 id='profile-scope'>Profile Scope</h2>
-<p>In accordance with <strong>[OIDC]</strong> <a href="https://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims">section 5.4</a> and <a href="https://openid.net/specs/openid-connect-core-1_0.html#ClaimsParameter">section 5.5</a>, this language refers to the <strong>[OIDC]</strong> profile scope and request of individual claims for the authenticated End-User.</p>
-
-<table><thead>
-<tr>
-<th>Data cluster language</th>
-<th><div style="width:250px">Permission language</div></th>
-<th>Authorisation Scopes</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><strong>Name</strong></td>
-<td>Full name and title(s)</td>
-<td><a href="https://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims">OIDC Profile scope</a> and/or one or more of these claims:<br/><code>name</code><br/><code>given_name</code><br/><code>family_name</code><br/><code>updated_at</code></td>
-</tr>
-<tr>
-<td><strong>Contact Details</strong></td>
-<td>Phone number;<br/>Email address;<br/>Mail address;</td>
-<td><a href="https://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims">OIDC Profile scope</a> and/or one or more of these claims:<br/><code>email</code><br/><code>email_verified</code><br/><code>phone_number</code><br/><code>phone_number_verified</code><br/><code>address</code></td>
-</tr>
-</tbody></table>
-
-<p><strong>Note:</strong> For non-individual consumers, claims available via the profile scope will only return the details of the authenticated End-User and not the organisation or non-individual consumer.</p>
-
-<p><br/></p>
-<h2 id='banking-language'>Banking Language</h2><h3 id='individual-consumer'>Individual Consumer</h3>
+<h2 id='customer-language-common'>Customer Language: Common</h2>
+<p>See below for the customer data language standards, which are common across all sectors.</p>
+<h3 id='individual-consumer'>Individual Consumer</h3>
 <table><thead>
 <tr>
 <th>Data cluster language</th>
@@ -96,7 +71,37 @@
 <td>common:customer.detail:read</td>
 </tr>
 </tbody></table>
-<h3 id='banking-accounts'>Banking Accounts</h3>
+
+<p><br/></p>
+<h2 id='profile-scope-and-standard-claims-common'>Profile Scope and Standard Claims: Common</h2>
+<p>In accordance with <strong><a href="#nref-OIDC">[OIDC]</a></strong> <a href="https://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims">section 5.4</a> and <a href="https://openid.net/specs/openid-connect-core-1_0.html#ClaimsParameter">section 5.5</a>, this language refers to the <strong><a href="#nref-OIDC">[OIDC]</a></strong> <code>profile</code> scope and request of individual claims for the authenticated End-User.</p>
+
+<table><thead>
+<tr>
+<th>Data cluster language</th>
+<th><div style="width:250px">Permission language</div></th>
+<th>Authorisation Scopes</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>Name</strong></td>
+<td>Full name and title(s)</td>
+<td><a href="https://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims">OIDC Profile scope</a> or one or more of these standard <strong><a href="#nref-OIDC">[OIDC]</a></strong> claims*:<br/><code>name</code><br/><code>given_name</code><br/><code>family_name</code><br/><code>updated_at</code><br/><br/>*See <a href="https://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims">5.4. Requesting Claims using Scope Values on the OIDC website</a> for more information.</td>
+<td>Required</td>
+</tr>
+<tr>
+<td><strong>Contact Details</strong></td>
+<td>Phone number;<br/>Email address;<br/>Mail address;</td>
+<td>One or more of these standard <strong><a href="#nref-OIDC">[OIDC]</a></strong> claims*:<br/><code>email</code><br/><code>email_verified</code><br/><code>phone_number</code><br/><code>phone_number_verified</code><br/><code>address</code><br/><br/>*See <a href="https://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims">5.4. Requesting Claims using Scope Values on the OIDC website</a> for more information.</td>
+<td>Optional</td>
+</tr>
+</tbody></table>
+
+<p><strong>Note:</strong> For non-individual consumers, claims available via the profile scope will only return the details of the authenticated End-User and not the organisation or non-individual consumer.</p>
+
+<p><br/></p>
+<h2 id='banking-language'>Banking Language</h2><h3 id='banking-accounts'>Banking Accounts</h3>
 <p>See below for the data language standards for the banking account scopes:</p>
 
 <table><thead>
@@ -166,63 +171,18 @@
 </thead><tbody>
 <tr>
 <td><strong>Saved payees</strong></td>
-<td>Names and details of accounts you have saved; <em>(e.g. their BSB and Account Number, BPay CRN and Biller code, or NPP PayID)&dagger;</em></td>
+<td>Names and details of accounts you have saved; <em>(e.g. their BSB and Account Number, BPAY CRN and Biller code, or NPP PayID)&dagger;</em></td>
 <td>bank:payees:read</td>
 </tr>
 </tbody></table>
 
 <p><br/></p>
-<h2 id='energy-language'>Energy Language</h2><h3 id='individual-consumer-2'>Individual Consumer</h3>
-<table><thead>
-<tr>
-<th>Data cluster language</th>
-<th>Permission language</th>
-<th>Authorisation Scopes</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><strong>Name</strong></td>
-<td>Name</td>
-<td>common:customer.basic:read</td>
-</tr>
-<tr>
-<td><strong>Contact Details</strong></td>
-<td>Phone;<br>Email address;<br>Mail address;<br>Residential address;</td>
-<td>common:customer.detail:read</td>
-</tr>
-<tr>
-<td><strong>Name and contact details &Dagger;</strong></td>
-<td>Name;<br>Phone;<br>Email address;<br>Mail address;<br>Residential address;</td>
-<td>common:customer.detail:read</td>
-</tr>
-</tbody></table>
-<h3 id='business-consumer-2'>Business consumer</h3>
-<table><thead>
-<tr>
-<th>Data cluster language</th>
-<th>Permission language</th>
-<th>Authorisation Scopes</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><strong>Organisation profile</strong> *</td>
-<td>Agent name and role;<br>Organisation name;<br>Organisation numbers (<i>ABN or ACN</i>);&dagger;</td>
-<td>common:customer.basic:read</td>
-</tr>
-<tr>
-<td><strong>Organisation contact details</strong> *</td>
-<td>Organisation address;<br>Mail address;<br>Phone number;</td>
-<td>common:customer.detail:read</td>
-</tr>
-<tr>
-<td><strong>Organisation profile and contact details</strong> *&Dagger;</td>
-<td>Agent name and role;<br>Organisation name;<br>Organisation numbers (<i>ABN or ACN</i>);&dagger;<br>Organisation address;<br>Mail address;<br>Phone number;<br></td>
-<td>common:customer.detail:read</td>
-</tr>
-</tbody></table>
-<h3 id='energy-accounts'>Energy Accounts</h3>
+<h2 id='energy-language'>Energy Language</h2><h3 id='energy-accounts'>Energy Accounts</h3>
 <p>See below for the data language standards for the energy accounts scopes:</p>
+<pre class="highlight diff tab-diff"><code>Energy data language changes were made:
 
+<span class="gd">- Removed all references to 'NMI' in permission language in Energy Accounts (energy:accounts.basic:read and energy:accounts.detail:read scopes)
+</span></code></pre>
 <table><thead>
 <tr>
 <th>Data cluster language</th>
@@ -232,7 +192,7 @@
 </thead><tbody>
 <tr>
 <td><strong>Accounts and plans</strong></td>
-<td>Account and plan information;<br>National Meter Identifier (NMI);</td>
+<td>Account and plan information;</td>
 <td>energy:accounts.basic:read</td>
 </tr>
 <tr>
@@ -242,7 +202,7 @@
 </tr>
 <tr>
 <td><strong>Account and plan details</strong> &Dagger;</td>
-<td>Account and plan information;<br>National Meter Identifier (NMI);<br>Account type;<br>Fees, features, rates, and discounts;<br>Additional account users;</td>
+<td>Account and plan information;<br>Account type;<br>Fees, features, rates, and discounts;<br>Additional account users;</td>
 <td>energy:accounts.detail:read</td>
 </tr>
 </tbody></table>
@@ -264,7 +224,10 @@
 </tbody></table>
 <h3 id='payments'>Payments</h3>
 <p>See below for the data language standards for the payments schedule scope:</p>
-
+<pre class="highlight diff tab-diff"><code>Replaced 'Stored payment information' with 'Payment preferences'
+<span class="gd">- Stored payment information: Payment details; Scheduled payment amount;
+</span><span class="gi">+ Payment preferences: Payment and billing frequency; Any scheduled payment details;
+</span></code></pre>
 <table><thead>
 <tr>
 <th>Data cluster language</th>
@@ -273,14 +236,15 @@
 </tr>
 </thead><tbody>
 <tr>
-<td><strong>Stored payment information</strong></td>
-<td>Payment details;<br>Scheduled payment amount;</td>
+<td><strong>Payment preferences</strong></td>
+<td>Payment and billing frequency;<br>Any scheduled payment details;</td>
 <td>energy:accounts.paymentschedule:read</td>
 </tr>
 </tbody></table>
 <h3 id='billing'>Billing</h3>
 <p>See below for the data language standards for the billing scope:</p>
-
+<pre class="highlight diff tab-diff"><code><span class="gd">- Removed reference to 'NMI' in permission language in Billing (energy:billing:read scope)
+</span></code></pre>
 <table><thead>
 <tr>
 <th>Data cluster language</th>
@@ -290,7 +254,7 @@
 </thead><tbody>
 <tr>
 <td><strong>Billing payments and history</strong></td>
-<td>Account balance;<br>National Meter Identifier (NMI);<br>Payment method;<br>Payment status;<br>Charges, discounts, credits;<br>Billing date;<br>Usage for billing period;<br>Payment date;<br>Invoice number;</td>
+<td>Account balance;<br>Payment method;<br>Payment status;<br>Charges, discounts, credits;<br>Billing date;<br>Usage for billing period;<br>Payment date;<br>Invoice number;</td>
 <td>energy:billing:read</td>
 </tr>
 </tbody></table>

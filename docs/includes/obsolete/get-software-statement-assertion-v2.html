@@ -218,6 +218,12 @@
                       <li>
                         <a href="#get-software-statement-assertion-ssa" class="toc-h2 toc-link" data-title="Get  Software Statement Assertion (SSA)">Get  Software Statement Assertion (SSA)</a>
                       </li>
+                      <li>
+                        <a href="#tocSresponseerrorlist" class="toc-h2 toc-link" data-title="ResponseErrorList">ResponseErrorList</a>
+                      </li>
+                      <li>
+                        <a href="#tocSerror" class="toc-h2 toc-link" data-title="Error">Error</a>
+                      </li>
               </ul>
           </li>
       </ul>
@@ -232,8 +238,24 @@
 <p>This page documents the obsolete <strong>version 2</strong> of the Get Software Statement Assertion (SSA) end point.</p>
 
 <aside class="info">
-This version is will remain valid until a deprecation schedule is set.
+This version was deprecated on 23rd December 2021 and will be retired on 7th April 2023 
 </aside>
+
+<p>The authorisation scopes returned in <strong>v1</strong> and <strong>v2</strong> of the Get Software Statement Assertion endpoint are explicitly defined as follows:</p>
+
+<table><thead>
+<tr>
+<th>GetSSA Version</th>
+<th>Categories returned</th>
+<th>Authorisation Scopes returned in SSA</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>v1 &amp; v2</td>
+<td>OIDC<br />Banking<br />Common<br />Registration</td>
+<td>profile<br />openid<br /><br />bank:accounts.basic:read<br />bank:accounts.detail:read<br />bank:transactions:read<br />bank:payees:read<br />bank:regular_payments:read<br /><br />common:customer.basic:read<br />   common:customer.detail:read<br /><br />cdr:registration</td>
+</tr>
+</tbody></table>
 <h2 id='get-software-statement-assertion-ssa'>Get  Software Statement Assertion (SSA)</h2>
 <p><a id="opIdGetSoftwareStatementAssertion"></a></p>
 
@@ -418,7 +440,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <a href="#authorisation-scopes">cdr-register:bank:read</a>
 </aside>
 
-<h2 class="schema-toc" id="tocSresponseerrorlist">ResponseErrorList</h2>
+<h2 id="tocSresponseerrorlist">ResponseErrorList</h2>
 
 <p><a id="schemacdr-participant-discovery-apiresponseerrorlist"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -449,7 +471,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSerror">Error</h2>
+<h2 id="tocSerror">Error</h2>
 
 <p><a id="schemacdr-participant-discovery-apierror"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -496,6 +518,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
       </div>
       <div class="dark-box">
+        <div id="diff-scroll-buttons" class="scroll-buttons">
+          <a href="#" id="scroll-prev" title="Previous" class="scroll-button previous round">&#8249;</a>
+          <a href="#" id="scroll-next" title="Next" class="scroll-button next round">&#8250;</a>
+        </div>
       </div>
     </div>
   </body>

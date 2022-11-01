@@ -10,6 +10,30 @@
 </tr>
 </thead><tbody>
 <tr>
+<td>13/09/2022</td>
+<td>1.19.0</td>
+<td>Changes arising from Decision 260 (Energy Closed Accounts)</td>
+<td>See <a href="includes/releasenotes/releasenotes.1.19.0.html">release notes</a> and <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/260">Decision 260</a> for details</td>
+</tr>
+<tr>
+<td>11/08/2022</td>
+<td>1.18.0</td>
+<td>Changes arising from Decision 249 (Maintenance iteration 11)</td>
+<td>See <a href="includes/releasenotes/releasenotes.1.18.0.html">release notes</a> and <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/249">Decision 249</a> for details</td>
+</tr>
+<tr>
+<td>23/05/2022</td>
+<td>1.17.0</td>
+<td>Changes arising from Decision 237 (Maintenance Iteration 10)</td>
+<td>See <a href="includes/releasenotes/releasenotes.1.17.0.html">release notes</a> and <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/237">Decision 237</a> for details</td>
+</tr>
+<tr>
+<td>22/03/2022</td>
+<td>1.16.1</td>
+<td>Minor errata and documentation fixes.  Update of swagger files to OAS3</td>
+<td>See <a href="includes/releasenotes/releasenotes.1.16.1.html">release notes</a> for details</td>
+</tr>
+<tr>
 <td>04/02/2022</td>
 <td>1.16.0</td>
 <td>Changes arising from Decision 222 (Insights and Trusted Adviser Disclosure Consents CX Standards)</td>

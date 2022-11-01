@@ -20,10 +20,10 @@ and the management of change. Documentation includes a developer portal, API doc
 and a security profile. More information is published by AEMO.
 
 
-The e-Hub platform and associated mechanisms (**[EHUB]**) will be considered a normative standard for the requesting of data from AEMO to fulfil Shared Responsibility Data Requests.
+The e-Hub platform and associated mechanisms (**[[EHUB]](#nref-EHUB)**) will be considered a normative standard for the requesting of data from AEMO to fulfil Shared Responsibility Data Requests.
 
 #### Normative References
 
 | **Reference**  | **Description**  | **Version** |
 | --- | --- | --- |
-| **[EHUB]**    | AEMO e-Hub [business to business procedures](https://aemo.com.au/en/energy-systems/market-it-systems/electricity-system-guides/participant-it-interfaces)| Standards dated 9/4/2021
+| <a id="nref-EHUB"></a>**[EHUB]** | AEMO e-Hub [business to business procedures](https://aemo.com.au/en/energy-systems/market-it-systems/electricity-system-guides/participant-it-interfaces)| Standards dated 9/4/2021

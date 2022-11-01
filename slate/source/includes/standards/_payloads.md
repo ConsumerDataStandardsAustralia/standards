@@ -61,7 +61,7 @@ The definition of the contents for the `data` object and `meta` object will be d
 }
 ```
 
-Each API request payload MUST have a JSON object at the root level known as the **root object**.
+Each API response payload MUST have a JSON object at the root level known as the **root object**.
 
 The contents of the root object are as follows:
 
@@ -223,6 +223,7 @@ Unless otherwise stated within the data standards, arrays are explicitly express
 In objects where an array field is defined as having 0..n values, the array field must be explicitly expressed as an array in the payload, even if it only contains one item or is empty.
 
 This applies equally for object arrays. Where a field is defined as an array value, the response should be:
+
 * an array of objects,
 * an array of values, or
 * an empty array (``[]``).

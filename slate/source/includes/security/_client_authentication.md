@@ -3,7 +3,7 @@
 
 This section outlines how participants in the CDR regime will authenticate clients seeking access to end points.
 
-Note that, while **[MTLS]** is utilised for transaction security and as a Holder of Key mechanism, the PKI Mutual TLS OAuth Client Authentication Method SHALL NOT be supported as the mechanism for client authentication.
+Note that, while **[[MTLS]](#nref-MTLS)** is utilised for transaction security and as a Holder of Key mechanism, the PKI Mutual TLS OAuth Client Authentication Method SHALL NOT be supported as the mechanism for client authentication.
 
 The following authentication methods are supported:
 
@@ -47,13 +47,13 @@ grant_type=client_credentials&
 
 Authorisation Servers supporting `private_key_jwt` Client Authentication of clients **MUST** support the following requirements:
 
-* Authorisation Servers **MUST** support the authentication of clients using the `private_key_jwt` Client Authentication method specified at [section 9](https://openid.net/specs/openid-connect-core-1_0.html#ClientAuthentication) of **[OIDC]**.
-* The `private_key_jwt` authentication method is enabled through the delivery of an encoded **[JWT]** signed using the Data Recipient Software Product's private key and thus facilitates non-repudiation.
-* Client public keys are obtained from the **[JWKS]** endpoints.
-* For the client authentication assertion, the **[JWT]** represents an assertion that **MUST** contain the following REQUIRED Claim Values and **MAY** contain the following OPTIONAL Claim Values:
+* Authorisation Servers **MUST** support the authentication of clients using the `private_key_jwt` Client Authentication method specified at [section 9](https://openid.net/specs/openid-connect-core-1_0.html#ClientAuthentication) of **[[OIDC]](#nref-OIDC)**.
+* The `private_key_jwt` authentication method is enabled through the delivery of an encoded **[[JWT]](#nref-JWT)** signed using the Data Recipient Software Product's private key and thus facilitates non-repudiation.
+* Client public keys are obtained from the **[[JWKS]](#nref-JWKS)** endpoints.
+* For the client authentication assertion, the **[[JWT]](#nref-JWT)** represents an assertion that **MUST** contain the following REQUIRED Claim Values and **MAY** contain the following OPTIONAL Claim Values:
     * `iss` - REQUIRED. Issuer Identifier for the Issuer of the response. The client ID of the bearer.
     * `sub` - REQUIRED. Subject Identifier. The client ID of the bearer.
-    * `aud` - REQUIRED. Audience(s) that the JWT is intended for. The issuer identifier URL of the authorisation server according to **[RFC8414]** **SHOULD** be used as the value of the audience. In order to facilitate interoperability, the authorisation server **MUST** accept its Issuer Identifier, Token Endpoint URL, or the URI of the endpoint being invoked as values that identify it as an intended audience.
+    * `aud` - REQUIRED. Audience(s) that the JWT is intended for. The issuer identifier URL of the authorisation server according to **[[RFC8414]](#nref-RFC8414)** **SHOULD** be used as the value of the audience. In order to facilitate interoperability, the authorisation server **MUST** accept its Issuer Identifier, Token Endpoint URL, or the URI of the endpoint being invoked as values that identify it as an intended audience.
     * `jti` - REQUIRED. JWT ID. A unique identifier for the token, which can be used to prevent reuse of the token. These tokens **MUST** only be used once.
     * `exp` - REQUIRED. Expiration time on or after which the ID Token **MUST NOT** be accepted for processing. Value is a JSON number representing the number of seconds from 1970-01-01T00:00:00Z to the UTC expiry time.
     * `iat` - OPTIONAL. Time at which the JWT was issued. Value is a JSON number representing the number of seconds from 1970-01-01T00:00:00Z to the UTC issued at time.
@@ -65,7 +65,7 @@ Authorisation Servers supporting `private_key_jwt` Client Authentication of clie
     * `client_id` - REQUIRED. The client ID of the bearer.
     * `client_assertion_type` - REQUIRED. This **MUST** be set to `urn:ietf:params:oauth:client-assertion-type:jwt-bearer`.
     * `client_assertion` - REQUIRED. The encoded assertion JWT.
-    * `scope` - OPTIONAL. The requested scope as described in [Section 3.3](https://tools.ietf.org/html/rfc6749#section-3.3) of **[RFC6749]**.
+    * `scope` - OPTIONAL. The requested scope as described in [Section 3.3](https://tools.ietf.org/html/rfc6749#section-3.3) of **[[RFC6749]](#nref-RFC6749)**.
 
 #### Self-signed JWT Client Authentication
 > Self-signed JWT Client Authentication Non-Normative Example - CDR Register calls the Data holder's Get Metrics end point using self-signed JWT Client Authentication (note that the “aud” claim represents the AdminBaseUri as defined in CDR Register Participant Endpoints).
@@ -79,7 +79,7 @@ Authorization: Bearer eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNDU2In0.ey
 
 ## Decoded Bearer token JWT
 {
-   "alg":"HS256",
+   "alg":"PS256",
    "typ":"JWT",
    "kid":"12456"
 }
@@ -93,6 +93,7 @@ Authorization: Bearer eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNDU2In0.ey
 }
 ```
 
+
 Data Recipient Software Products and Data Holders supporting the self-signed JWT authentication of clients using a signed JWT **MUST** do so according to the following requirements:
 
 
@@ -104,8 +105,8 @@ Data Recipient Software Products and Data Holders supporting the self-signed JWT
     * `exp` - REQUIRED. Expiration time on or after which the ID Token **MUST NOT** be accepted for processing. Value is a JSON number representing the number of seconds from 1970-01-01T00:00:00Z to the UTC expiry time.
     * `iat` - OPTIONAL. Time at which the JWT was issued. Value is a JSON number representing the number of seconds from 1970-01-01T00:00:00Z to the UTC issued at time.
 
-*	Validation and use of the JWT and the claims described above **MUST** be performed in accordance with **[JWT]**.  
-*	The JWT **MUST** be accepted from the client at the requested endpoint using the "Authorization Request Header Field" mechanism as described in [section 2.1](https://tools.ietf.org/html/rfc6750#section-2.1) of **[RFC6750]**.
+*	Validation and use of the JWT and the claims described above **MUST** be performed in accordance with **[[JWT]](#nref-JWT)**.  
+*	The JWT **MUST** be accepted from the client at the requested endpoint using the "Authorization Request Header Field" mechanism as described in [section 2.1](https://tools.ietf.org/html/rfc6750#section-2.1) of **[[RFC6750]](#nref-RFC6750)**.
 
 
 
@@ -126,18 +127,12 @@ If the Data Holder supports the [Private Key JWT Client Authentication](#private
 * Data Holders **MUST** issue a client ID that is provided to the CDR Register. The client ID is issued to the CDR Register during out of band registration processes, including, Data Holder onboarding. This **MAY** be a static client ID value of ‘cdr-register’.
 * The authorisation grant's `grant_type` parameter **MUST** be set to `client_credentials`.  
 * The authorisation grant's `scope` parameter **MUST** be provided and **MUST** be set to the scope of the resource endpoint to be accessed.
-* Upon successful authentication, Data Holders **MUST** issue an Access Token to the CDR Register. In accordance with [section 4.4](https://tools.ietf.org/html/rfc6749#section-4.4) of **[RFC6749]** an Refresh Token **SHOULD** NOT be included.
+* Upon successful authentication, Data Holders **MUST** issue an Access Token to the CDR Register. In accordance with [section 4.4](https://tools.ietf.org/html/rfc6749#section-4.4) of **[[RFC6749]](#nref-RFC6749)** an Refresh Token **SHOULD** NOT be included.
 
 #### Self-signed JWT authentication
 
 If the Data Holder supports the [Self-signed JWT Client Authentication](#self-signed-jwt-client-authentication) method for authenticating the CDR Register, the client ID **MUST** be set to a value of `cdr-register`.
 
-
-```diff
-- Removed the following duplicate section
-Data Holders calling Data Recipients
-If the Data Holder supports the Self-signed JWT Client Authentication method for authenticating the CDR Register, the client ID MUST be set to a value of cdr-register.
-```
 
 
 ### Data Holders calling Data Recipients

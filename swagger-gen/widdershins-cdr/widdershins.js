@@ -179,4 +179,3 @@ else {
     let s = fs.readFileSync(input,'utf8');
     doit(s);
 }
-

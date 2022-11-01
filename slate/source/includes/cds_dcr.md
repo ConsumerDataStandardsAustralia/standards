@@ -7,7 +7,7 @@
 > Code samples
 
 ```http
-POST https://data.holder.com.au/register/register HTTP/1.1
+POST https://data.holder.com.au/register HTTP/1.1
 Host: data.holder.com.au
 Content-Type: application/jwt
 Accept: application/json
@@ -22,7 +22,7 @@ var headers = {
 };
 
 $.ajax({
-  url: 'https://data.holder.com.au/register/register',
+  url: 'https://data.holder.com.au/register',
   method: 'post',
 
   headers: headers,
@@ -117,7 +117,7 @@ This operation does not require authentication
 > Code samples
 
 ```http
-GET https://data.holder.com.au/register/register/{ClientId} HTTP/1.1
+GET https://data.holder.com.au/register/{ClientId} HTTP/1.1
 Host: data.holder.com.au
 Accept: application/json
 Authorization: string
@@ -132,7 +132,7 @@ var headers = {
 };
 
 $.ajax({
-  url: 'https://data.holder.com.au/register/register/{ClientId}',
+  url: 'https://data.holder.com.au/register/{ClientId}',
   method: 'get',
 
   headers: headers,
@@ -157,7 +157,7 @@ Get a Client Registration for a given Client ID.
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |ClientId|path|string|mandatory|The client ID issued by the target Data Holder|
-|Authorization|header|string|mandatory|An Authorisation Token as per [RFC6750](https://tools.ietf.org/html/rfc6750)|
+|Authorization|header|string|mandatory|An Authorisation Token as per **[[RFC6750]](#nref-RFC6750)**|
 
 > Example responses
 
@@ -217,7 +217,7 @@ Get a Client Registration for a given Client ID.
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
-|401|WWW-Authenticate|string||The Response Header Field as per [RFC6750](https://tools.ietf.org/html/rfc6750)|
+|401|WWW-Authenticate|string||The Response Header Field as per **[[RFC6750]](#nref-RFC6750)**|
 
   
     
@@ -236,7 +236,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 > Code samples
 
 ```http
-PUT https://data.holder.com.au/register/register/{ClientId} HTTP/1.1
+PUT https://data.holder.com.au/register/{ClientId} HTTP/1.1
 Host: data.holder.com.au
 Content-Type: application/jwt
 Accept: application/json
@@ -253,7 +253,7 @@ var headers = {
 };
 
 $.ajax({
-  url: 'https://data.holder.com.au/register/register/{ClientId}',
+  url: 'https://data.holder.com.au/register/{ClientId}',
   method: 'put',
 
   headers: headers,
@@ -280,7 +280,7 @@ Update a Client Registration for a given Client ID.
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |ClientId|path|string|mandatory|The client ID issued by the target Data Holder|
-|Authorization|header|string|mandatory|An Authorisation Token as per [RFC6750](https://tools.ietf.org/html/rfc6750)|
+|Authorization|header|string|mandatory|An Authorisation Token as per **[[RFC6750]](#nref-RFC6750)**|
 |body|body|[ClientRegistrationRequest](#schemacdr-dynamic-client-registration-apiclientregistrationrequest)|mandatory|The registration request JWT to be used to register with a Data Holder.|
 
 > Example responses
@@ -342,7 +342,7 @@ Update a Client Registration for a given Client ID.
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
-|401|WWW-Authenticate|string||The Response Header Field as per [RFC6750](https://tools.ietf.org/html/rfc6750)|
+|401|WWW-Authenticate|string||The Response Header Field as per **[[RFC6750]](#nref-RFC6750)**|
 
   
     
@@ -361,7 +361,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 > Code samples
 
 ```http
-DELETE https://data.holder.com.au/register/register/{ClientId} HTTP/1.1
+DELETE https://data.holder.com.au/register/{ClientId} HTTP/1.1
 Host: data.holder.com.au
 
 Authorization: string
@@ -375,7 +375,7 @@ var headers = {
 };
 
 $.ajax({
-  url: 'https://data.holder.com.au/register/register/{ClientId}',
+  url: 'https://data.holder.com.au/register/{ClientId}',
   method: 'delete',
 
   headers: headers,
@@ -400,7 +400,7 @@ Delete a Client Registration for a given Client ID.
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |ClientId|path|string|mandatory|The client ID issued by the target Data Holder|
-|Authorization|header|string|mandatory|An Authorisation Token as per [RFC6750](https://tools.ietf.org/html/rfc6750)|
+|Authorization|header|string|mandatory|An Authorisation Token as per **[[RFC6750]](#nref-RFC6750)**|
 
 <h3 id="delete-data-recipient-oauth-client-registration-responses">Responses</h3>
 
@@ -415,7 +415,7 @@ Delete a Client Registration for a given Client ID.
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
-|401|WWW-Authenticate|string||The Response Header Field as per [RFC6750](https://tools.ietf.org/html/rfc6750)|
+|401|WWW-Authenticate|string||The Response Header Field as per **[[RFC6750]](#nref-RFC6750)**|
 
   
     
@@ -512,7 +512,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |logo_uri|string|mandatory|URL string that references a logo for the client. If present, the server SHOULD display this image to the end-user during approval|
 |tos_uri|string|optional|URL string that points to a human-readable terms of service document for the Software Product|
 |policy_uri|string|optional|URL string that points to a human-readable policy document for the Software Product|
-|jwks_uri|string|mandatory|URL string referencing the client JSON Web Key (JWK) Set [RFC7517] document, which contains the client public keys|
+|jwks_uri|string|mandatory|URL string referencing the client JSON Web Key (JWK) Set **[[RFC7517]](#nref-RFC7517)** document, which contains the client public keys|
 |revocation_uri|string|optional|URI string that references the location of the Software Product consent revocation endpoint|
 |recipient_base_uri|string|optional|Base URI for the Consumer Data Standard Data Recipient endpoints. This should be the base to provide reference to all other Data Recipient Endpoints|
 |token_endpoint_auth_method|string|mandatory|The requested authentication method for the token endpoint|
@@ -536,6 +536,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 |token_endpoint_auth_method|private_key_jwt|
 |token_endpoint_auth_signing_alg|PS256|
 |token_endpoint_auth_signing_alg|ES256|
+|grant_types|client_credentials|
+|grant_types|authorization_code|
+|grant_types|refresh_token|
+|response_types|code id_token|
 |application_type|web|
 |id_token_signed_response_alg|PS256|
 |id_token_signed_response_alg|ES256|

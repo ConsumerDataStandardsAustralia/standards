@@ -1,865 +1,1016 @@
 {
-	"swagger": "2.0",
-	"info": {
-		"title": "CDR Admin API",
-		"description": "Data Holder Consumer Data Standards Administration End Points created by the Data Standards Body (DSB), with the Data Standards Chair as the decision maker",
-		"version": "1.16.0",
-		"contact": {
-			"name": "Consumer Data Standards Administration End Points",
-			"url": "https://consumerdatastandards.gov.au",
-			"email": "contact@consumerdatastandards.gov.au"
-		},
-		"license": {
-			"name": "MIT License",
-			"url": "https://opensource.org/licenses/MIT"
-		}
-	},
-	"host": "data.holder.com.au",
-	"basePath": "/cds-au/v1",
-	"schemes": [
-		"https"
-	],
-	"consumes": [
-		"application/json"
-	],
-	"produces": [
-		"application/json"
-	],
-	"paths": {
-		"/admin/register/metadata": {
-			"post": {
-				"summary": "Metadata Update",
-				"description": "Indicate that a critical update to the metadata for Accredited Data Recipients has been made and should be obtained",
-				"operationId": "metadataUpdate",
-				"tags": [
-					"Admin",
-					"Register"
-				],
-				"x-scopes": [
-					"admin:metadata:update"
-				],
-				"x-restricted-access": true,
-				"parameters": [{
-						"in": "body",
-						"name": "action",
-						"required": true,
-						"schema": {
-							"$ref": "#/definitions/RequestMetaDataUpdate"
-						}
-					},
-					{
-						"$ref": "#/parameters/RequestHeader_x-v"
-					},
-					{
-						"$ref": "#/parameters/RequestHeader_x-min-v"
-					}
-				],
-				"responses": {
-					"200": {
-						"description": "Success",
-						"headers": {
-							"x-v": {
-								"type": "string",
-								"description": "The [version](#response-headers) of the API end point that the data holder has responded with."
-							}
-						}
-					},
-					"4xx": {
-						"description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
-						"schema": {
-							"$ref": "#/definitions/ResponseErrorListV2"
-						}
-					}
-				},
-				"x-version": "1"
-			}
-		},
-		"/admin/metrics": {
-			"get": {
-				"summary": "Get Metrics",
-				"description": "This end point allows the ACCC to obtain operational statistics from the Data Holder on the operation of their CDR compliant implementation. The statistics obtainable from this end point are determined by the non-functional requirements for the CDR regime.\n\nNOTE: This version must be implemented by **October 1st 2022**\n\nObsolete versions: [v1](includes/obsolete/get-metrics-v1.html) [v2](includes/obsolete/get-metrics-v2.html).\n\nIf the Data Holder supports private_key_jwt client authentication they MUST validate the scope.",
-				"operationId": "getMetrics",
-				"x-scopes": [
-					"admin:metrics.basic:read"
-				],
-				"x-restricted-access": true,
-				"tags": [
-					"Admin",
-					"Metrics"
-				],
-				"parameters": [{
-						"name": "period",
-						"in": "query",
-						"type": "string",
-						"description": "The period of metrics to be requested. Values can be CURRENT (meaning metrics for current day), HISTORIC (meaning metrics for previous days or months) or ALL. If absent the default is ALL.",
-						"enum": [
-							"CURRENT",
-							"HISTORIC",
-							"ALL"
-						],
-						"default": "ALL"
-					},
-					{
-						"$ref": "#/parameters/RequestHeader_x-v"
-					},
-					{
-						"$ref": "#/parameters/RequestHeader_x-min-v"
-					}
-				],
-				"responses": {
-					"200": {
-						"description": "Success",
-						"headers": {
-							"x-v": {
-								"type": "string",
-								"description": "The [version](#response-headers) of the API end point that the data holder has responded with."
-							}
-						},
-						"schema": {
-							"$ref": "#/definitions/ResponseMetricsListV3"
-						}
-					},
-					"4xx": {
-						"description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
-						"schema": {
-							"$ref": "#/definitions/ResponseErrorListV2"
-						}
-					}
-				},
-				"x-version": "3"
-			}
-		}
-	},
-	"parameters": {
-		"RequestHeader_x-v": {
-			"name": "x-v",
-			"description": "Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
-			"in": "header",
-			"type": "string",
-			"required": true
-		},
-		"RequestHeader_x-min-v": {
-			"name": "x-min-v",
-			"description": "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.",
-			"in": "header",
-			"type": "string"
-		}
-	},
-	"definitions": {
-		"RequestMetaDataUpdate": {
-			"type": "object",
-			"required": [
-				"data"
-			],
-			"properties": {
-				"data": {
-					"type": "object",
-					"required": [
-						"action"
-					],
-					"properties": {
-						"action": {
-							"type": "string",
-							"description": "The action to take for the meta data. At the moment the only option is REFRESH which requires the data holder to call the ACCC to refresh meta data as soon as practicable",
-							"enum": [
-								"REFRESH"
-							],
-							"default": "REFRESH"
-						}
-					}
-				},
-				"meta": {
-					"$ref": "#/definitions/Meta"
-				}
-			}
-		},
-		"ResponseMetricsListV3": {
-			"type": "object",
-			"required": [
-				"data",
-				"links"
-			],
-			"properties": {
-				"data": {
-					"type": "object",
-					"required": [
-						"requestTime",
-						"availability",
-						"performance",
-						"invocations",
-						"averageResponse",
-						"sessionCount",
-						"averageTps",
-						"peakTps",
-						"errors",
-						"rejections",
-						"customerCount",
-						"recipientCount"
-					],
-					"x-conditional": [
-						"secondaryHolder"
-					],
-					"properties": {
-						"requestTime": {
-							"type": "string",
-							"description": "The date and time that the metrics in this payload were requested.",
-							"x-cds-type": "DateTimeString"
-						},
-						"availability": {
-							"$ref": "#/definitions/AvailabilityMetrics"
-						},
-						"performance": {
-							"$ref": "#/definitions/PerformanceMetrics"
-						},
-						"invocations": {
-							"$ref": "#/definitions/InvocationMetricsV2"
-						},
-						"averageResponse": {
-							"$ref": "#/definitions/AverageResponseMetricsV2"
-						},
-						"sessionCount": {
-							"$ref": "#/definitions/SessionCountMetrics"
-						},
-						"averageTps": {
-							"$ref": "#/definitions/AverageTPSMetrics"
-						},
-						"peakTps": {
-							"$ref": "#/definitions/PeakTPSMetrics"
-						},
-						"errors": {
-							"$ref": "#/definitions/ErrorMetrics"
-						},
-						"rejections": {
-							"$ref": "#/definitions/RejectionMetricsV2"
-						},
-						"customerCount": {
-							"type": "integer",
-							"description": "Number of customers with active authorisations at the time of the call"
-						},
-						"recipientCount": {
-							"type": "integer",
-							"description": "Number of Data Recipient Software Products with active authorisations at the time of the call"
-						},
-						"secondaryHolder": {
-							"$ref": "#/definitions/SecondaryHolderMetrics"
-						}
-					}
-				},
-				"links": {
-					"$ref": "#/definitions/Links"
-				},
-				"meta": {
-					"$ref": "#/definitions/Meta"
-				}
-			}
-		},
-		"AvailabilityMetrics": {
-			"type": "object",
-			"description": "Percentage availability of the CDR platform over time",
-			"x-conditional": [
-				"currentMonth",
-				"previousMonths"
-			],
-			"properties": {
-				"currentMonth": {
-					"type": "number",
-					"description": "Percentage availability of the CDR platform so far for the current calendar month. 0.0 means 0%. 1.0 means 100%."
-				},
-				"previousMonths": {
-					"description": "Percentage availability of the CDR platform for previous calendar months. The first element indicates the last month and so on. A maximum of twelve entries is required if available. 0.0 means 0%. 1.0 means 100%.",
-					"type": "array",
-					"items": {
-						"type": "number"
-					}
-				}
-			}
-		},
-		"PerformanceMetrics": {
-			"type": "object",
-			"description": "Percentage of calls within the performance thresholds",
-			"x-conditional": [
-				"currentDay",
-				"previousDays"
-			],
-			"properties": {
-				"currentDay": {
-					"type": "number",
-					"description": "Percentage of calls within the performance threshold for the current day. 0.0 means 0%. 1.0 means 100%"
-				},
-				"previousDays": {
-					"type": "array",
-					"description": "Percentage of calls within the performance threshold for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. 0.0 means 0%. 1.0 means 100%",
-					"items": {
-						"type": "number"
-					}
-				}
-			}
-		},
-		"InvocationMetricsV2": {
-			"description": "Number of API calls in each performance tier over time",
-			"type": "object",
-			"required": [
-				"unauthenticated",
-				"highPriority",
-				"lowPriority",
-				"unattended",
-				"largePayload"
-			],
-			"x-conditional": [
-				"secondary",
-				"largeSecondary"
-			],
-			"properties": {
-				"unauthenticated": {
-					"description": "API call counts for the unauthenticated tier",
-					"x-conditional": [
-						"currentDay",
-						"previousDays"
-					],
-					"properties": {
-						"currentDay": {
-							"type": "number",
-							"description": "API call counts for current day"
-						},
-						"previousDays": {
-							"type": "array",
-							"description": "API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
-							"items": {
-								"type": "number"
-							}
-						}
-					}
-				},
-				"highPriority": {
-					"description": "API call counts for the high priority tier",
-					"x-conditional": [
-						"currentDay",
-						"previousDays"
-					],
-					"properties": {
-						"currentDay": {
-							"type": "number",
-							"description": "API call counts for current day"
-						},
-						"previousDays": {
-							"type": "array",
-							"description": "API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
-							"items": {
-								"type": "number"
-							}
-						}
-					}
-				},
-				"lowPriority": {
-					"description": "API call counts for the low priority tier",
-					"x-conditional": [
-						"currentDay",
-						"previousDays"
-					],
-					"properties": {
-						"currentDay": {
-							"type": "number",
-							"description": "API call counts for current day"
-						},
-						"previousDays": {
-							"type": "array",
-							"description": "API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
-							"items": {
-								"type": "number"
-							}
-						}
-					}
-				},
-				"unattended": {
-					"description": "API call counts for the unattended tier",
-					"x-conditional": [
-						"currentDay",
-						"previousDays"
-					],
-					"properties": {
-						"currentDay": {
-							"type": "number",
-							"description": "API call counts for current day"
-						},
-						"previousDays": {
-							"type": "array",
-							"description": "API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
-							"items": {
-								"type": "number"
-							}
-						}
-					}
-				},
-				"largePayload": {
-					"description": "API call counts for the large payload tier",
-					"x-conditional": [
-						"currentDay",
-						"previousDays"
-					],
-					"properties": {
-						"currentDay": {
-							"type": "number",
-							"description": "API call counts for current day"
-						},
-						"previousDays": {
-							"type": "array",
-							"description": "API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
-							"items": {
-								"type": "number"
-							}
-						}
-					}
-				},
-				"secondary": {
-					"description": "API call counts for the Shared Responsibility Data Requests tier.  Mandatory for data holders designated for a Shared Responsibility Data Request data cluster",
-					"x-conditional": [
-						"currentDay",
-						"previousDays"
-					],
-					"properties": {
-						"currentDay": {
-							"type": "number",
-							"description": "API call counts for current day"
-						},
-						"previousDays": {
-							"type": "array",
-							"description": "API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
-							"items": {
-								"type": "number"
-							}
-						}
-					}
-				},
-				"largeSecondary": {
-					"description": "API call counts for the large Shared Responsibility Data Requests tier.  Mandatory for data holders designated for a Shared Responsibility Data Request data cluster",
-					"x-conditional": [
-						"currentDay",
-						"previousDays"
-					],
-					"properties": {
-						"currentDay": {
-							"type": "number",
-							"description": "API call counts for current day"
-						},
-						"previousDays": {
-							"type": "array",
-							"description": "API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
-							"items": {
-								"type": "number"
-							}
-						}
-					}
-				}
-			}
-		},
-		"AverageResponseMetricsV2": {
-			"description": "Average response time in seconds, at millisecond resolution, within each performance tier",
-			"type": "object",
-			"required": [
-				"unauthenticated",
-				"highPriority",
-				"lowPriority",
-				"unattended",
-				"largePayload"
-			],
-			"x-conditional": [
-				"secondary",
-				"largeSecondary"
-			],
-			"properties": {
-				"unauthenticated": {
-					"description": "Average response time for the unauthenticated tier",
-					"x-conditional": [
-						"currentDay",
-						"previousDays"
-					],
-					"properties": {
-						"currentDay": {
-							"type": "number",
-							"description": "Average response time for current day"
-						},
-						"previousDays": {
-							"type": "array",
-							"description": "Average response time for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.",
-							"items": {
-								"type": "number"
-							}
-						}
-					}
-				},
-				"highPriority": {
-					"description": "Average response time for the high priority tier",
-					"x-conditional": [
-						"currentDay",
-						"previousDays"
-					],
-					"properties": {
-						"currentDay": {
-							"type": "number",
-							"description": "Average response time for current day"
-						},
-						"previousDays": {
-							"type": "array",
-							"description": "Average response time for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.",
-							"items": {
-								"type": "number"
-							}
-						}
-					}
-				},
-				"lowPriority": {
-					"description": "Average response time for the low priority tier",
-					"x-conditional": [
-						"currentDay",
-						"previousDays"
-					],
-					"properties": {
-						"currentDay": {
-							"type": "number",
-							"description": "Average response time for current day"
-						},
-						"previousDays": {
-							"type": "array",
-							"description": "Average response time for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.",
-							"items": {
-								"type": "number"
-							}
-						}
-					}
-				},
-				"unattended": {
-					"description": "Average response time for the unattended tier",
-					"x-conditional": [
-						"currentDay",
-						"previousDays"
-					],
-					"properties": {
-						"currentDay": {
-							"type": "number",
-							"description": "Average response time for current day"
-						},
-						"previousDays": {
-							"type": "array",
-							"description": "Average response time for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.",
-							"items": {
-								"type": "number"
-							}
-						}
-					}
-				},
-				"largePayload": {
-					"description": "Average response time for the large payload tier",
-					"x-conditional": [
-						"currentDay",
-						"previousDays"
-					],
-					"properties": {
-						"currentDay": {
-							"type": "number",
-							"description": "Average response time for current day"
-						},
-						"previousDays": {
-							"type": "array",
-							"description": "Average response time for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.",
-							"items": {
-								"type": "number"
-							}
-						}
-					}
-				},
-				"secondary": {
-					"description": "Average response time for the secondary tier.  Mandatory for data holders designated for a Shared Responsibility Data Request data cluster",
-					"required": [
-						"primary",
-						"secondary"
-					],
-					"properties": {
-						"primary": {
-							"description": "Average response time as measured for the primary data holder",
-							"x-conditional": [
-								"currentDay",
-								"previousDays"
-							],
-							"properties": {
-								"currentDay": {
-									"type": "number",
-									"description": "Average response time for current day"
-								},
-								"previousDays": {
-									"type": "array",
-									"description": "Average response time for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.",
-									"items": {
-										"type": "number"
-									}
-								}
-							}
-						},
-						"secondary": {
-							"description": "Average response time as measured for the secondary data holder",
-							"x-conditional": [
-								"currentDay",
-								"previousDays"
-							],
-							"properties": {
-								"currentDay": {
-									"type": "number",
-									"description": "Average response time for current day"
-								},
-								"previousDays": {
-									"type": "array",
-									"description": "Average response time for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.",
-									"items": {
-										"type": "number"
-									}
-								}
-							}
-						}
-					}
-				},
-				"largeSecondary": {
-					"description": "Average response time for the large payload tier.  Mandatory for data holders designated for a Shared Responsibility Data Request data cluster",
-					"required": [
-						"primary",
-						"secondary"
-					],
-					"properties": {
-						"primary": {
-							"description": "Average response time as measured for the primary data holder",
-							"x-conditional": [
-								"currentDay",
-								"previousDays"
-							],
-							"properties": {
-								"currentDay": {
-									"type": "number",
-									"description": "Average response time for current day"
-								},
-								"previousDays": {
-									"type": "array",
-									"description": "Average response time for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.",
-									"items": {
-										"type": "number"
-									}
-								}
-							}
-						},
-						"secondary": {
-							"description": "Average response time as measured for the secondary data holder",
-							"x-conditional": [
-								"currentDay",
-								"previousDays"
-							],
-							"properties": {
-								"currentDay": {
-									"type": "number",
-									"description": "Average response time for current day"
-								},
-								"previousDays": {
-									"type": "array",
-									"description": "Average response time for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.",
-									"items": {
-										"type": "number"
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-		},
-		"SessionCountMetrics": {
-			"description": "Session counts over time. Note that a session is defined as the provisioning of an Access Token.",
-			"x-conditional": [
-				"currentDay",
-				"previousDays"
-			],
-			"properties": {
-				"currentDay": {
-					"type": "number",
-					"description": "Session count for current day"
-				},
-				"previousDays": {
-					"type": "array",
-					"description": "Session count for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
-					"items": {
-						"type": "number"
-					}
-				}
-			}
-		},
-		"AverageTPSMetrics": {
-			"description": "Transactions per second over time",
-			"x-conditional": [
-				"currentDay",
-				"previousDays"
-			],
-			"properties": {
-				"currentDay": {
-					"type": "number",
-					"description": "Average TPS for current day"
-				},
-				"previousDays": {
-					"type": "array",
-					"description": "Average TPS for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
-					"items": {
-						"type": "number"
-					}
-				}
-			}
-		},
-		"PeakTPSMetrics": {
-			"description": "Maximum record transactions per second over time",
-			"x-conditional": [
-				"currentDay",
-				"previousDays"
-			],
-			"properties": {
-				"currentDay": {
-					"type": "number",
-					"description": "Peak TPS for current day"
-				},
-				"previousDays": {
-					"type": "array",
-					"description": "Peak TPS for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
-					"items": {
-						"type": "number"
-					}
-				}
-			}
-		},
-		"ErrorMetrics": {
-			"description": "Number of calls resulting in error due to server execution over time",
-			"x-conditional": [
-				"currentDay",
-				"previousDays"
-			],
-			"properties": {
-				"currentDay": {
-					"type": "number",
-					"description": "Number of errors for current day"
-				},
-				"previousDays": {
-					"type": "array",
-					"description": "Number of errors for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
-					"items": {
-						"type": "number"
-					}
-				}
-			}
-		},
-		"RejectionMetricsV2": {
-			"description": "Number of calls rejected due to traffic thresholds over time",
-			"required": [
-				"authenticated",
-				"unauthenticated"
-			],
-			"properties": {
-				"authenticated": {
-					"description": "Rejection counts for all authenticated end points",
-					"x-conditional": [
-						"currentDay",
-						"previousDays"
-					],
-					"properties": {
-						"currentDay": {
-							"type": "number",
-							"description": "Number of calls rejected for current day"
-						},
-						"previousDays": {
-							"type": "array",
-							"description": "Number of calls rejected for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.",
-							"items": {
-								"type": "number"
-							}
-						}
-					}
-				},
-				"unauthenticated": {
-					"description": "Rejection counts for all uauthenticated end points",
-					"x-conditional": [
-						"currentDay",
-						"previousDays"
-					],
-					"properties": {
-						"currentDay": {
-							"type": "number",
-							"description": "Number of calls rejected for current day"
-						},
-						"previousDays": {
-							"type": "array",
-							"description": "Number of calls rejected for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.",
-							"items": {
-								"type": "number"
-							}
-						}
-					}
-				}
-			}
-		},
-		"SecondaryHolderMetrics": {
-			"description": "Errors and rejections received by the primary data holder from the secondary data holder.  Mandatory for data holders designated for a Shared Responsibility Data Request data cluster",
-			"required": [
-				"errors",
-				"rejections"
-			],
-			"properties": {
-				"errors": {
-					"description": "Number of calls resulting in error due to server execution over time",
-					"x-conditional": [
-						"currentDay",
-						"previousDays"
-					],
-					"properties": {
-						"currentDay": {
-							"type": "number",
-							"description": "Number of errors for current day"
-						},
-						"previousDays": {
-							"type": "array",
-							"description": "Number of errors for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
-							"items": {
-								"type": "number"
-							}
-						}
-					}
-				},
-				"rejections": {
-					"description": "Number of calls resulting in a rejection due to server execution over time",
-					"x-conditional": [
-						"currentDay",
-						"previousDays"
-					],
-					"properties": {
-						"currentDay": {
-							"type": "number",
-							"description": "Number of rejections for current day"
-						},
-						"previousDays": {
-							"type": "array",
-							"description": "Number of rejections for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
-							"items": {
-								"type": "number"
-							}
-						}
-					}
-				}
-			}
-		},
-		"Links": {
-			"type": "object",
-			"required": [
-				"self"
-			],
-			"properties": {
-				"self": {
-					"type": "string",
-					"description": "Fully qualified link to this API call",
-					"x-cds-type": "URIString"
-				}
-			}
-		},
-		"Meta": {
-			"type": "object"
-		}
-	}
+  "openapi": "3.0.3",
+  "info": {
+    "title": "CDR Admin API",
+    "description": "Data Holder Consumer Data Standards Administration End Points created by the Data Standards Body (DSB), with the Data Standards Chair as the decision maker",
+    "contact": {
+      "name": "Consumer Data Standards Administration End Points",
+      "url": "https://consumerdatastandards.gov.au",
+      "email": "contact@consumerdatastandards.gov.au"
+    },
+    "license": {
+      "name": "MIT License",
+      "url": "https://opensource.org/licenses/MIT"
+    },
+    "version": "1.20.0"
+  },
+  "servers": [
+    {
+      "url": "https://data.holder.com.au/cds-au/v1"
+    }
+  ],
+  "paths": {
+    "/admin/register/metadata": {
+      "post": {
+        "tags": [
+          "Admin",
+          "Register"
+        ],
+        "summary": "Metadata Update",
+        "description": "Indicate that a critical update to the metadata for Accredited Data Recipients has been made and should be obtained",
+        "operationId": "metadataUpdate",
+        "parameters": [
+          {
+            "name": "x-v",
+            "in": "header",
+            "description": "Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-min-v",
+            "in": "header",
+            "description": "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestMetaDataUpdate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "headers": {
+              "x-v": {
+                "description": "The [version](#response-headers) of the API end point that the data holder has responded with.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "400": {
+            "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseErrorListV2"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseErrorListV2"
+                }
+              }
+            }
+          }
+        },
+        "x-scopes": [
+          "admin:metadata:update"
+        ],
+        "x-restricted-access": true,
+        "x-version": "1",
+        "x-codegen-request-body-name": "action"
+      }
+    },
+    "/admin/metrics": {
+      "get": {
+        "tags": [
+          "Admin",
+          "Metrics"
+        ],
+        "summary": "Get Metrics",
+        "description": "This end point allows the ACCC to obtain operational statistics from the Data Holder on the operation of their CDR compliant implementation. The statistics obtainable from this end point are determined by the non-functional requirements for the CDR regime.\n\nThis end point is not required to be implemented by the Australian Energy Market Operator, the Australian Energy Regulator or the Department of State administered by the Minister of Victoria administering the National Electricity (Victoria) Act 2005 (Vic).\n\nNOTE: This version must be implemented by **October 1st 2022**\n\nObsolete versions: [v1](includes/obsolete/get-metrics-v1.html) [v2](includes/obsolete/get-metrics-v2.html).\n\nIf the Data Holder supports private_key_jwt client authentication they MUST validate the scope.",
+        "operationId": "getMetrics",
+        "parameters": [
+          {
+            "name": "period",
+            "in": "query",
+            "description": "The period of metrics to be requested. Values can be CURRENT (meaning metrics for current day), HISTORIC (meaning metrics for previous days or months) or ALL. If absent the default is ALL.",
+            "schema": {
+              "type": "string",
+              "default": "ALL",
+              "enum": [
+                "CURRENT",
+                "HISTORIC",
+                "ALL"
+              ]
+            }
+          },
+          {
+            "name": "x-v",
+            "in": "header",
+            "description": "Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-min-v",
+            "in": "header",
+            "description": "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "headers": {
+              "x-v": {
+                "description": "The [version](#response-headers) of the API end point that the data holder has responded with.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseMetricsListV3"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseErrorListV2"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseErrorListV2"
+                }
+              }
+            }
+          }
+        },
+        "x-scopes": [
+          "admin:metrics.basic:read"
+        ],
+        "x-restricted-access": true,
+        "x-version": "3"
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "RequestMetaDataUpdate": {
+        "required": [
+          "data"
+        ],
+        "type": "object",
+        "properties": {
+          "data": {
+            "required": [
+              "action"
+            ],
+            "type": "object",
+            "properties": {
+              "action": {
+                "type": "string",
+                "description": "The action to take for the meta data. At the moment the only option is REFRESH which requires the data holder to call the ACCC to refresh meta data as soon as practicable",
+                "default": "REFRESH",
+                "enum": [
+                  "REFRESH"
+                ]
+              }
+            }
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta"
+          }
+        }
+      },
+      "ResponseMetricsListV3": {
+        "required": [
+          "data",
+          "links"
+        ],
+        "type": "object",
+        "properties": {
+          "data": {
+            "required": [
+              "availability",
+              "averageResponse",
+              "averageTps",
+              "customerCount",
+              "errors",
+              "invocations",
+              "peakTps",
+              "performance",
+              "recipientCount",
+              "rejections",
+              "requestTime",
+              "sessionCount"
+            ],
+            "type": "object",
+            "properties": {
+              "requestTime": {
+                "type": "string",
+                "description": "The date and time that the metrics in this payload were requested.",
+                "x-cds-type": "DateTimeString"
+              },
+              "availability": {
+                "$ref": "#/components/schemas/AvailabilityMetrics"
+              },
+              "performance": {
+                "$ref": "#/components/schemas/PerformanceMetrics"
+              },
+              "invocations": {
+                "$ref": "#/components/schemas/InvocationMetricsV2"
+              },
+              "averageResponse": {
+                "$ref": "#/components/schemas/AverageResponseMetricsV2"
+              },
+              "sessionCount": {
+                "$ref": "#/components/schemas/SessionCountMetrics"
+              },
+              "averageTps": {
+                "$ref": "#/components/schemas/AverageTPSMetrics"
+              },
+              "peakTps": {
+                "$ref": "#/components/schemas/PeakTPSMetrics"
+              },
+              "errors": {
+                "$ref": "#/components/schemas/ErrorMetrics"
+              },
+              "rejections": {
+                "$ref": "#/components/schemas/RejectionMetricsV2"
+              },
+              "customerCount": {
+                "type": "integer",
+                "description": "Number of customers with active authorisations at the time of the call"
+              },
+              "recipientCount": {
+                "type": "integer",
+                "description": "Number of Data Recipient Software Products with active authorisations at the time of the call"
+              },
+              "secondaryHolder": {
+                "$ref": "#/components/schemas/SecondaryHolderMetrics"
+              }
+            },
+            "x-conditional": [
+              "secondaryHolder"
+            ]
+          },
+          "links": {
+            "$ref": "#/components/schemas/Links"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta"
+          }
+        }
+      },
+      "AvailabilityMetrics": {
+        "type": "object",
+        "properties": {
+          "currentMonth": {
+            "type": "number",
+            "description": "Percentage availability of the CDR platform so far for the current calendar month. 0.0 means 0%. 1.0 means 100%."
+          },
+          "previousMonths": {
+            "type": "array",
+            "description": "Percentage availability of the CDR platform for previous calendar months. The first element indicates the last month and so on. A maximum of twelve entries is required if available. 0.0 means 0%. 1.0 means 100%.",
+            "items": {
+              "type": "number"
+            }
+          }
+        },
+        "description": "Percentage availability of the CDR platform over time",
+        "x-conditional": [
+          "currentMonth",
+          "previousMonths"
+        ]
+      },
+      "PerformanceMetrics": {
+        "type": "object",
+        "properties": {
+          "currentDay": {
+            "type": "number",
+            "description": "Percentage of calls within the performance threshold for the current day. 0.0 means 0%. 1.0 means 100%"
+          },
+          "previousDays": {
+            "type": "array",
+            "description": "Percentage of calls within the performance threshold for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. 0.0 means 0%. 1.0 means 100%",
+            "items": {
+              "type": "number"
+            }
+          }
+        },
+        "description": "Percentage of calls within the performance thresholds",
+        "x-conditional": [
+          "currentDay",
+          "previousDays"
+        ]
+      },
+      "InvocationMetricsV2": {
+        "required": [
+          "highPriority",
+          "largePayload",
+          "lowPriority",
+          "unattended",
+          "unauthenticated"
+        ],
+        "type": "object",
+        "properties": {
+          "unauthenticated": {
+            "type": "object",
+            "properties": {
+              "currentDay": {
+                "type": "number",
+                "description": "API call counts for current day"
+              },
+              "previousDays": {
+                "type": "array",
+                "description": "API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
+                "items": {
+                  "type": "number"
+                }
+              }
+            },
+            "description": "API call counts for the unauthenticated tier",
+            "x-conditional": [
+              "currentDay",
+              "previousDays"
+            ]
+          },
+          "highPriority": {
+            "type": "object",
+            "properties": {
+              "currentDay": {
+                "type": "number",
+                "description": "API call counts for current day"
+              },
+              "previousDays": {
+                "type": "array",
+                "description": "API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
+                "items": {
+                  "type": "number"
+                }
+              }
+            },
+            "description": "API call counts for the high priority tier",
+            "x-conditional": [
+              "currentDay",
+              "previousDays"
+            ]
+          },
+          "lowPriority": {
+            "type": "object",
+            "properties": {
+              "currentDay": {
+                "type": "number",
+                "description": "API call counts for current day"
+              },
+              "previousDays": {
+                "type": "array",
+                "description": "API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
+                "items": {
+                  "type": "number"
+                }
+              }
+            },
+            "description": "API call counts for the low priority tier",
+            "x-conditional": [
+              "currentDay",
+              "previousDays"
+            ]
+          },
+          "unattended": {
+            "type": "object",
+            "properties": {
+              "currentDay": {
+                "type": "number",
+                "description": "API call counts for current day"
+              },
+              "previousDays": {
+                "type": "array",
+                "description": "API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
+                "items": {
+                  "type": "number"
+                }
+              }
+            },
+            "description": "API call counts for the unattended tier",
+            "x-conditional": [
+              "currentDay",
+              "previousDays"
+            ]
+          },
+          "largePayload": {
+            "type": "object",
+            "properties": {
+              "currentDay": {
+                "type": "number",
+                "description": "API call counts for current day"
+              },
+              "previousDays": {
+                "type": "array",
+                "description": "API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
+                "items": {
+                  "type": "number"
+                }
+              }
+            },
+            "description": "API call counts for the large payload tier",
+            "x-conditional": [
+              "currentDay",
+              "previousDays"
+            ]
+          },
+          "secondary": {
+            "type": "object",
+            "properties": {
+              "currentDay": {
+                "type": "number",
+                "description": "API call counts for current day"
+              },
+              "previousDays": {
+                "type": "array",
+                "description": "API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
+                "items": {
+                  "type": "number"
+                }
+              }
+            },
+            "description": "API call counts for the Shared Responsibility Data Requests tier.  Mandatory for data holders designated for a Shared Responsibility Data Request data cluster",
+            "x-conditional": [
+              "currentDay",
+              "previousDays"
+            ]
+          },
+          "largeSecondary": {
+            "type": "object",
+            "properties": {
+              "currentDay": {
+                "type": "number",
+                "description": "API call counts for current day"
+              },
+              "previousDays": {
+                "type": "array",
+                "description": "API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
+                "items": {
+                  "type": "number"
+                }
+              }
+            },
+            "description": "API call counts for the large Shared Responsibility Data Requests tier.  Mandatory for data holders designated for a Shared Responsibility Data Request data cluster",
+            "x-conditional": [
+              "currentDay",
+              "previousDays"
+            ]
+          }
+        },
+        "description": "Number of API calls in each performance tier over time",
+        "x-conditional": [
+          "secondary",
+          "largeSecondary"
+        ]
+      },
+      "AverageResponseMetricsV2": {
+        "required": [
+          "highPriority",
+          "largePayload",
+          "lowPriority",
+          "unattended",
+          "unauthenticated"
+        ],
+        "type": "object",
+        "properties": {
+          "unauthenticated": {
+            "type": "object",
+            "properties": {
+              "currentDay": {
+                "type": "number",
+                "description": "Average response time for current day"
+              },
+              "previousDays": {
+                "type": "array",
+                "description": "Average response time for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.",
+                "items": {
+                  "type": "number"
+                }
+              }
+            },
+            "description": "Average response time for the unauthenticated tier",
+            "x-conditional": [
+              "currentDay",
+              "previousDays"
+            ]
+          },
+          "highPriority": {
+            "type": "object",
+            "properties": {
+              "currentDay": {
+                "type": "number",
+                "description": "Average response time for current day"
+              },
+              "previousDays": {
+                "type": "array",
+                "description": "Average response time for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.",
+                "items": {
+                  "type": "number"
+                }
+              }
+            },
+            "description": "Average response time for the high priority tier",
+            "x-conditional": [
+              "currentDay",
+              "previousDays"
+            ]
+          },
+          "lowPriority": {
+            "type": "object",
+            "properties": {
+              "currentDay": {
+                "type": "number",
+                "description": "Average response time for current day"
+              },
+              "previousDays": {
+                "type": "array",
+                "description": "Average response time for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.",
+                "items": {
+                  "type": "number"
+                }
+              }
+            },
+            "description": "Average response time for the low priority tier",
+            "x-conditional": [
+              "currentDay",
+              "previousDays"
+            ]
+          },
+          "unattended": {
+            "type": "object",
+            "properties": {
+              "currentDay": {
+                "type": "number",
+                "description": "Average response time for current day"
+              },
+              "previousDays": {
+                "type": "array",
+                "description": "Average response time for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.",
+                "items": {
+                  "type": "number"
+                }
+              }
+            },
+            "description": "Average response time for the unattended tier",
+            "x-conditional": [
+              "currentDay",
+              "previousDays"
+            ]
+          },
+          "largePayload": {
+            "type": "object",
+            "properties": {
+              "currentDay": {
+                "type": "number",
+                "description": "Average response time for current day"
+              },
+              "previousDays": {
+                "type": "array",
+                "description": "Average response time for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.",
+                "items": {
+                  "type": "number"
+                }
+              }
+            },
+            "description": "Average response time for the large payload tier",
+            "x-conditional": [
+              "currentDay",
+              "previousDays"
+            ]
+          },
+          "secondary": {
+            "required": [
+              "primary",
+              "secondary"
+            ],
+            "type": "object",
+            "properties": {
+              "primary": {
+                "type": "object",
+                "properties": {
+                  "currentDay": {
+                    "type": "number",
+                    "description": "Average response time for current day"
+                  },
+                  "previousDays": {
+                    "type": "array",
+                    "description": "Average response time for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.",
+                    "items": {
+                      "type": "number"
+                    }
+                  }
+                },
+                "description": "Average response time as measured for the primary data holder",
+                "x-conditional": [
+                  "currentDay",
+                  "previousDays"
+                ]
+              },
+              "secondary": {
+                "type": "object",
+                "properties": {
+                  "currentDay": {
+                    "type": "number",
+                    "description": "Average response time for current day"
+                  },
+                  "previousDays": {
+                    "type": "array",
+                    "description": "Average response time for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.",
+                    "items": {
+                      "type": "number"
+                    }
+                  }
+                },
+                "description": "Average response time as measured for the secondary data holder",
+                "x-conditional": [
+                  "currentDay",
+                  "previousDays"
+                ]
+              }
+            },
+            "description": "Average response time for the secondary tier.  Mandatory for data holders designated for a Shared Responsibility Data Request data cluster"
+          },
+          "largeSecondary": {
+            "required": [
+              "primary",
+              "secondary"
+            ],
+            "type": "object",
+            "properties": {
+              "primary": {
+                "type": "object",
+                "properties": {
+                  "currentDay": {
+                    "type": "number",
+                    "description": "Average response time for current day"
+                  },
+                  "previousDays": {
+                    "type": "array",
+                    "description": "Average response time for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.",
+                    "items": {
+                      "type": "number"
+                    }
+                  }
+                },
+                "description": "Average response time as measured for the primary data holder",
+                "x-conditional": [
+                  "currentDay",
+                  "previousDays"
+                ]
+              },
+              "secondary": {
+                "type": "object",
+                "properties": {
+                  "currentDay": {
+                    "type": "number",
+                    "description": "Average response time for current day"
+                  },
+                  "previousDays": {
+                    "type": "array",
+                    "description": "Average response time for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.",
+                    "items": {
+                      "type": "number"
+                    }
+                  }
+                },
+                "description": "Average response time as measured for the secondary data holder",
+                "x-conditional": [
+                  "currentDay",
+                  "previousDays"
+                ]
+              }
+            },
+            "description": "Average response time for the large payload tier.  Mandatory for data holders designated for a Shared Responsibility Data Request data cluster"
+          }
+        },
+        "description": "Average response time in seconds, at millisecond resolution, within each performance tier",
+        "x-conditional": [
+          "secondary",
+          "largeSecondary"
+        ]
+      },
+      "SessionCountMetrics": {
+        "type": "object",
+        "properties": {
+          "currentDay": {
+            "type": "number",
+            "description": "Session count for current day"
+          },
+          "previousDays": {
+            "type": "array",
+            "description": "Session count for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
+            "items": {
+              "type": "number"
+            }
+          }
+        },
+        "description": "Session counts over time. Note that a session is defined as the provisioning of an Access Token.",
+        "x-conditional": [
+          "currentDay",
+          "previousDays"
+        ]
+      },
+      "AverageTPSMetrics": {
+        "type": "object",
+        "properties": {
+          "currentDay": {
+            "type": "number",
+            "description": "Average TPS for current day"
+          },
+          "previousDays": {
+            "type": "array",
+            "description": "Average TPS for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
+            "items": {
+              "type": "number"
+            }
+          }
+        },
+        "description": "Transactions per second over time",
+        "x-conditional": [
+          "currentDay",
+          "previousDays"
+        ]
+      },
+      "PeakTPSMetrics": {
+        "type": "object",
+        "properties": {
+          "currentDay": {
+            "type": "number",
+            "description": "Peak TPS for current day"
+          },
+          "previousDays": {
+            "type": "array",
+            "description": "Peak TPS for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
+            "items": {
+              "type": "number"
+            }
+          }
+        },
+        "description": "Maximum record transactions per second over time",
+        "x-conditional": [
+          "currentDay",
+          "previousDays"
+        ]
+      },
+      "ErrorMetrics": {
+        "type": "object",
+        "properties": {
+          "currentDay": {
+            "type": "number",
+            "description": "Number of errors for current day"
+          },
+          "previousDays": {
+            "type": "array",
+            "description": "Number of errors for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
+            "items": {
+              "type": "number"
+            }
+          }
+        },
+        "description": "Number of calls resulting in error due to server execution over time",
+        "x-conditional": [
+          "currentDay",
+          "previousDays"
+        ]
+      },
+      "RejectionMetricsV2": {
+        "required": [
+          "authenticated",
+          "unauthenticated"
+        ],
+        "type": "object",
+        "properties": {
+          "authenticated": {
+            "type": "object",
+            "properties": {
+              "currentDay": {
+                "type": "number",
+                "description": "Number of calls rejected for current day"
+              },
+              "previousDays": {
+                "type": "array",
+                "description": "Number of calls rejected for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.",
+                "items": {
+                  "type": "number"
+                }
+              }
+            },
+            "description": "Rejection counts for all authenticated end points",
+            "x-conditional": [
+              "currentDay",
+              "previousDays"
+            ]
+          },
+          "unauthenticated": {
+            "type": "object",
+            "properties": {
+              "currentDay": {
+                "type": "number",
+                "description": "Number of calls rejected for current day"
+              },
+              "previousDays": {
+                "type": "array",
+                "description": "Number of calls rejected for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.",
+                "items": {
+                  "type": "number"
+                }
+              }
+            },
+            "description": "Rejection counts for all uauthenticated end points",
+            "x-conditional": [
+              "currentDay",
+              "previousDays"
+            ]
+          }
+        },
+        "description": "Number of calls rejected due to traffic thresholds over time"
+      },
+      "SecondaryHolderMetrics": {
+        "required": [
+          "errors",
+          "rejections"
+        ],
+        "type": "object",
+        "properties": {
+          "errors": {
+            "type": "object",
+            "properties": {
+              "currentDay": {
+                "type": "number",
+                "description": "Number of errors for current day"
+              },
+              "previousDays": {
+                "type": "array",
+                "description": "Number of errors for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
+                "items": {
+                  "type": "number"
+                }
+              }
+            },
+            "description": "Number of calls resulting in error due to server execution over time",
+            "x-conditional": [
+              "currentDay",
+              "previousDays"
+            ]
+          },
+          "rejections": {
+            "type": "object",
+            "properties": {
+              "currentDay": {
+                "type": "number",
+                "description": "Number of rejections for current day"
+              },
+              "previousDays": {
+                "type": "array",
+                "description": "Number of rejections for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
+                "items": {
+                  "type": "number"
+                }
+              }
+            },
+            "description": "Number of calls resulting in a rejection due to server execution over time",
+            "x-conditional": [
+              "currentDay",
+              "previousDays"
+            ]
+          }
+        },
+        "description": "Errors and rejections received by the primary data holder from the secondary data holder.  Mandatory for data holders designated for a Shared Responsibility Data Request data cluster"
+      },
+      "Links": {
+        "required": [
+          "self"
+        ],
+        "type": "object",
+        "properties": {
+          "self": {
+            "type": "string",
+            "description": "Fully qualified link to this API call",
+            "x-cds-type": "URIString"
+          }
+        }
+      },
+      "Meta": {
+        "type": "object"
+      },
+      "MetaError": {
+        "type": "object",
+        "properties": {
+          "urn": {
+            "type": "string",
+            "description": "The CDR error code URN which the application-specific error code extends. Mandatory if the error `code` is an application-specific error rather than a standardised error code."
+          }
+        },
+        "description": "Additional data for customised error codes",
+        "x-conditional": [
+          "urn"
+        ]
+      },
+      "ResponseErrorListV2": {
+        "required": [
+          "errors"
+        ],
+        "type": "object",
+        "properties": {
+          "errors": {
+            "type": "array",
+            "description": "",
+            "items": {
+              "required": [
+                "code",
+                "detail",
+                "title"
+              ],
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "string",
+                  "description": "The code of the error encountered. Where the error is specific to the respondent, an application-specific error code, expressed as a string value. If the error is application-specific, the URN code that the specific error extends must be provided in the meta object. Otherwise, the value is the error code URN."
+                },
+                "title": {
+                  "type": "string",
+                  "description": "A short, human-readable summary of the problem that MUST NOT change from occurrence to occurrence of the problem represented by the error code."
+                },
+                "detail": {
+                  "type": "string",
+                  "description": "A human-readable explanation specific to this occurrence of the problem."
+                },
+                "meta": {
+                  "$ref": "#/components/schemas/MetaError"
+                }
+              }
+            }
+          }
+        },
+        "x-conditional": [
+          "meta"
+        ]
+      }
+    },
+    "parameters": {
+      "RequestHeader_x-v": {
+        "name": "x-v",
+        "in": "header",
+        "description": "Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
+        "required": true,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "RequestHeader_x-min-v": {
+        "name": "x-min-v",
+        "in": "header",
+        "description": "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.",
+        "schema": {
+          "type": "string"
+        }
+      }
+    }
+  }
 }

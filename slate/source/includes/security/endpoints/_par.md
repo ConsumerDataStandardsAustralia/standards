@@ -153,10 +153,9 @@ Host: data.holder.com.au
 | Bearer Token Required| No |
 
 
-Data Holders **MUST** support Pushed Authorisation Requests (PAR) via the pushed authorisation end point according to **[PAR]**.
+Data Holders **MUST** support Pushed Authorisation Requests (PAR) via the pushed authorisation end point according to **[[PAR]](#nref-PAR)**.
 
 
-Data Recipient Software Products **MAY** send authorisation requests using **[PAR]** if supported by the Data Holder.
+Data Recipient Software Products **MAY** send authorisation requests using **[[PAR]](#nref-PAR)** if supported by the Data Holder.
 
 The Data Holder response provides the Data Recipient Software Product with a Request URI in the response. The Request URI is then passed to the Data Holder’s Authorisation End Point to initiate an authorisation flow.
-

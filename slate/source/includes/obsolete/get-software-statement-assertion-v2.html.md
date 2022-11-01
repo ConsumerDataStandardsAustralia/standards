@@ -14,8 +14,14 @@ search: false
 This page documents the obsolete **version 2** of the Get Software Statement Assertion (SSA) end point.
 
 <aside class="info">
-This version is will remain valid until a deprecation schedule is set.
+This version was deprecated on 23rd December 2021 and will be retired on 7th April 2023 
 </aside>
+
+The authorisation scopes returned in **v1** and **v2** of the Get Software Statement Assertion endpoint are explicitly defined as follows:
+
+GetSSA Version | Categories returned | Authorisation Scopes returned in SSA
+-- | -- | --
+v1 & v2 | OIDC<br />Banking<br />Common<br />Registration | profile<br />openid<br /><br />bank:accounts.basic:read<br />bank:accounts.detail:read<br />bank:transactions:read<br />bank:payees:read<br />bank:regular_payments:read<br /><br />common:customer.basic:read<br />   common:customer.detail:read<br /><br />cdr:registration
 
 
 
@@ -113,9 +119,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 
 
-<h2 class="schema-toc" id="tocSresponseerrorlist">ResponseErrorList</h2>
+<h2 id="tocSresponseerrorlist">ResponseErrorList</h2>
 
 <a id="schemacdr-participant-discovery-apiresponseerrorlist"></a>
+
 
 ```json
 {
@@ -137,7 +144,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |---|---|---|---|
 |errors|[[Error](#schemacdr-participant-discovery-apierror)]|mandatory|none|
 
-<h2 class="schema-toc" id="tocSerror">Error</h2>
+<h2 id="tocSerror">Error</h2>
 
 <a id="schemacdr-participant-discovery-apierror"></a>
 
