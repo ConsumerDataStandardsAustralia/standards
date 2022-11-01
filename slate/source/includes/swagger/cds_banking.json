@@ -12,7 +12,7 @@
       "url" : "https://opensource.org/licenses/MIT"
     },
     "title" : "CDR Banking API",
-    "version" : "1.18.0"
+    "version" : "1.19.0"
   },
   "servers" : [ {
     "url" : "https://data.holder.com.au/cds-au/v1"

@@ -1,5 +1,4 @@
-<h1 id='known-issues'>Known Issues</h1><pre class="highlight diff tab-diff"><code><span class="gd">- Removed Register APIs don't specify standardised CDR error codes as this is now captured in future improvements
-</span></code></pre>
+<h1 id='known-issues'>Known Issues</h1>
 <p>There are certain aspects of the standards that are actively under review. These known issues are articulated in the following table.</p>
 
 <table><thead>
@@ -21,13 +20,9 @@
 <td style="text-align: left">The DCR and Register naming conventions are not consistent with the broader data standards. Field names should be standardised to camelCase and snake_case inline with the data standards</td>
 </tr>
 </tbody></table>
-<h2 id='future-improvements'>Future improvements</h2><pre class="highlight diff tab-diff"><code><span class="gi">+ Added Future improvements section
-</span></code></pre>
+<h2 id='future-improvements'>Future improvements</h2>
 <p>The following improvements will be incorporated into future versions of the Standards</p>
-<h3 id='standardise-register-api-error-codes'>Standardise Register API Error Codes</h3><pre class="highlight diff tab-diff"><code><span class="gi">+ Added Standardise Register API Error Codes section
-</span>
-<span class="gi">+ Added Future versions of the CDR Register API error codes
-</span></code></pre>
+<h3 id='standardise-register-api-error-codes'>Standardise Register API Error Codes</h3>
 <p>Future versions of the CDR Register API error codes are to be aligned to the <a href="#error-codes">Standards high-level error codes</a> as follows:</p>
 
 <table><thead>
