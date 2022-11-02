@@ -1,4 +1,4 @@
-<h2 id='get-products'>Get Products</h2>
+<h2 id='get-telco-products'>Get Telco Products</h2>
 <p><a id="opIdlistProducts"></a></p>
 
 <blockquote>
@@ -46,7 +46,7 @@
 </tr>
 </tbody></table>
 
-<h3 id="get-products-parameters">Parameters</h3>
+<h3 id="get-telco-products-parameters">Parameters</h3>
 
 <table><thead>
 <tr>
@@ -227,7 +227,7 @@
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id="get-products-responses">Responses</h3>
+<h3 id="get-telco-products-responses">Responses</h3>
 
 <table><thead>
 <tr>
@@ -305,7 +305,7 @@
 <p><aside class="success">
 This operation does not require authentication
 </aside></p>
-<h2 id='get-product-detail'>Get Product Detail</h2>
+<h2 id='get-telco-product-detail'>Get Telco Product Detail</h2>
 <p><a id="opIdgetProduct"></a></p>
 
 <blockquote>
@@ -351,7 +351,7 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h3 id="get-product-detail-parameters">Parameters</h3>
+<h3 id="get-telco-product-detail-parameters">Parameters</h3>
 
 <table><thead>
 <tr>
@@ -497,7 +497,7 @@ This operation does not require authentication
   </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id="get-product-detail-responses">Responses</h3>
+<h3 id="get-telco-product-detail-responses">Responses</h3>
 
 <table><thead>
 <tr>
@@ -2120,7 +2120,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">telco:accounts.detail:read</a>
 </aside></p>
-<h2 id='get-agreed-payment-schedule'>Get Agreed Payment Schedule</h2>
+<h2 id='get-telco-agreed-payment-schedule'>Get Telco Agreed Payment Schedule</h2>
 <p><a id="opIdgetPaymentSchedule"></a></p>
 
 <blockquote>
@@ -2178,7 +2178,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h3 id="get-agreed-payment-schedule-parameters">Parameters</h3>
+<h3 id="get-telco-agreed-payment-schedule-parameters">Parameters</h3>
 
 <table><thead>
 <tr>
@@ -2283,7 +2283,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id="get-agreed-payment-schedule-responses">Responses</h3>
+<h3 id="get-telco-agreed-payment-schedule-responses">Responses</h3>
 
 <table><thead>
 <tr>
@@ -2369,7 +2369,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">telco:accounts.paymentschedule:read</a>
 </aside></p>
-<h2 id='get-concessions'>Get Concessions</h2>
+<h2 id='get-telco-concessions'>Get Telco Concessions</h2>
 <p><a id="opIdgetConcessions"></a></p>
 
 <blockquote>
@@ -2423,7 +2423,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h3 id="get-concessions-parameters">Parameters</h3>
+<h3 id="get-telco-concessions-parameters">Parameters</h3>
 
 <table><thead>
 <tr>
@@ -2515,7 +2515,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id="get-concessions-responses">Responses</h3>
+<h3 id="get-telco-concessions-responses">Responses</h3>
 
 <table><thead>
 <tr>
@@ -3499,7 +3499,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">telco:billing:read</a>
 </aside></p>
-<h2 id='get-invoices-for-account'>Get Invoices For Account</h2>
+<h2 id='get-invoices-for-telco-account'>Get Invoices For Telco Account</h2>
 <p><a id="opIdgetInvoicesForAccount"></a></p>
 
 <blockquote>
@@ -3553,7 +3553,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h3 id="get-invoices-for-account-parameters">Parameters</h3>
+<h3 id="get-invoices-for-telco-account-parameters">Parameters</h3>
 
 <table><thead>
 <tr>
@@ -3742,7 +3742,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id="get-invoices-for-account-responses">Responses</h3>
+<h3 id="get-invoices-for-telco-account-responses">Responses</h3>
 
 <table><thead>
 <tr>
@@ -3841,7 +3841,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">telco:billing:read</a>
 </aside></p>
-<h2 id='get-invoices'>Get Invoices</h2>
+<h2 id='get-telco-invoices'>Get Telco Invoices</h2>
 <p><a id="opIdlistInvoices"></a></p>
 
 <blockquote>
@@ -3895,7 +3895,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h3 id="get-invoices-parameters">Parameters</h3>
+<h3 id="get-telco-invoices-parameters">Parameters</h3>
 
 <table><thead>
 <tr>
@@ -4077,7 +4077,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id="get-invoices-responses">Responses</h3>
+<h3 id="get-telco-invoices-responses">Responses</h3>
 
 <table><thead>
 <tr>
@@ -4163,7 +4163,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">telco:billing:read</a>
 </aside></p>
-<h2 id='get-invoices-for-specific-accounts'>Get Invoices For Specific Accounts</h2>
+<h2 id='get-invoices-for-specific-telco-accounts'>Get Invoices For Specific Telco Accounts</h2>
 <p><a id="opIdlistInvoicesForAccounts"></a></p>
 
 <blockquote>
@@ -4231,7 +4231,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h3 id="get-invoices-for-specific-accounts-parameters">Parameters</h3>
+<h3 id="get-invoices-for-specific-telco-accounts-parameters">Parameters</h3>
 
 <table><thead>
 <tr>
@@ -4448,7 +4448,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id="get-invoices-for-specific-accounts-responses">Responses</h3>
+<h3 id="get-invoices-for-specific-telco-accounts-responses">Responses</h3>
 
 <table><thead>
 <tr>
@@ -4534,7 +4534,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">telco:billing:read</a>
 </aside></p>
-<h2 id='get-transactions-for-account'>Get Transactions For Account</h2>
+<h2 id='get-transactions-for-telco-account'>Get Transactions For Telco Account</h2>
 <p><a id="opIdgetTransactionsForAccount"></a></p>
 
 <blockquote>
@@ -4588,7 +4588,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h3 id="get-transactions-for-account-parameters">Parameters</h3>
+<h3 id="get-transactions-for-telco-account-parameters">Parameters</h3>
 
 <table><thead>
 <tr>
@@ -4746,7 +4746,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id="get-transactions-for-account-responses">Responses</h3>
+<h3 id="get-transactions-for-telco-account-responses">Responses</h3>
 
 <table><thead>
 <tr>
@@ -4845,7 +4845,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">telco:billing:read</a>
 </aside></p>
-<h2 id='get-transactions'>Get Transactions</h2>
+<h2 id='get-telco-transactions'>Get Telco Transactions</h2>
 <p><a id="opIdlistTransactions"></a></p>
 
 <blockquote>
@@ -4899,7 +4899,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h3 id="get-transactions-parameters">Parameters</h3>
+<h3 id="get-telco-transactions-parameters">Parameters</h3>
 
 <table><thead>
 <tr>
@@ -5050,7 +5050,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id="get-transactions-responses">Responses</h3>
+<h3 id="get-telco-transactions-responses">Responses</h3>
 
 <table><thead>
 <tr>
@@ -5136,7 +5136,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">telco:billing:read</a>
 </aside></p>
-<h2 id='get-transactions-for-specific-accounts'>Get Transactions For Specific Accounts</h2>
+<h2 id='get-transactions-for-specific-telco-accounts'>Get Transactions For Specific Telco Accounts</h2>
 <p><a id="opIdlistBillingForAccounts"></a></p>
 
 <blockquote>
@@ -5204,7 +5204,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h3 id="get-transactions-for-specific-accounts-parameters">Parameters</h3>
+<h3 id="get-transactions-for-specific-telco-accounts-parameters">Parameters</h3>
 
 <table><thead>
 <tr>
@@ -5390,7 +5390,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id="get-transactions-for-specific-accounts-responses">Responses</h3>
+<h3 id="get-transactions-for-specific-telco-accounts-responses">Responses</h3>
 
 <table><thead>
 <tr>
@@ -6713,7 +6713,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>productId</td>
 <td><a href="#common-field-types">ASCIIString</a></td>
 <td>mandatory</td>
-<td>The ID of the specific plan</td>
+<td>The ID of the specific product</td>
 </tr>
 <tr>
 <td>effectiveFrom</td>
@@ -6760,7 +6760,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>billingType</td>
 <td>string</td>
-<td>optional</td>
+<td>mandatory</td>
 <td>The type of product</td>
 </tr>
 <tr>
