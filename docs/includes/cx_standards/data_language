@@ -179,10 +179,7 @@
 <p><br/></p>
 <h2 id='energy-language'>Energy Language</h2><h3 id='energy-accounts'>Energy Accounts</h3>
 <p>See below for the data language standards for the energy accounts scopes:</p>
-<pre class="highlight diff tab-diff"><code>Energy data language changes were made:
 
-<span class="gd">- Removed all references to 'NMI' in permission language in Energy Accounts (energy:accounts.basic:read and energy:accounts.detail:read scopes)
-</span></code></pre>
 <table><thead>
 <tr>
 <th>Data cluster language</th>
@@ -224,10 +221,7 @@
 </tbody></table>
 <h3 id='payments'>Payments</h3>
 <p>See below for the data language standards for the payments schedule scope:</p>
-<pre class="highlight diff tab-diff"><code>Replaced 'Stored payment information' with 'Payment preferences'
-<span class="gd">- Stored payment information: Payment details; Scheduled payment amount;
-</span><span class="gi">+ Payment preferences: Payment and billing frequency; Any scheduled payment details;
-</span></code></pre>
+
 <table><thead>
 <tr>
 <th>Data cluster language</th>
@@ -243,8 +237,7 @@
 </tbody></table>
 <h3 id='billing'>Billing</h3>
 <p>See below for the data language standards for the billing scope:</p>
-<pre class="highlight diff tab-diff"><code><span class="gd">- Removed reference to 'NMI' in permission language in Billing (energy:billing:read scope)
-</span></code></pre>
+
 <table><thead>
 <tr>
 <th>Data cluster language</th>

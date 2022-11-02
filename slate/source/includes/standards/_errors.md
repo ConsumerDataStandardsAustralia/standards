@@ -22,12 +22,18 @@ These standards define a standard list of error codes that Data Recipient Softwa
   ]
 }
 ```
+```diff
+Added following optional Boolean field to Error Response Structure: 
++ `isSecondaryDataHolderError` 
+```
+
 <a name="error_payload"></a>The `errors` object will be an array of zero or more unnamed objects. The fields in each of these objects will be as follows:
 
 * `code` field **MUST** be present: holds an end point specific error code. This **MAY** be a standard CDR error code or an application-specific error code.
 * `title` field **MUST** be present: holds a human readable label of the error that is constant
 per `code`
 * `detail` field **MUST** be present: holds a human readable description of this specific error
+* `isSecondaryDataHolderError` field **MAY** be present: an optional Boolean flag which indicates the error is propagated from a designated secondary data holder
 * `meta` object **MAY** be present: holds additional end point specific data relevant to the error
 
 If a Data Recipient Software Product or Data Holder responds with an application-specific error code, the standard CDR URN error code **MUST** be provided in the `MetaError` object.
