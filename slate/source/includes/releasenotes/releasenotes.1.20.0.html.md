@@ -20,6 +20,7 @@ This release addresses the following minor defects raised on [Standards Staging]
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
+- [Standards Maintenance Issue 525: softwareProductDescription should be marked as mandatory](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/525)
 - [Standards Maintenance Issue 411: Clarification of x-fapi-interaction-id header](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/411)
 - [Standards Staging Issue 447: CORS typos in CDR](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/447)
 - [Standards Maintenance Issue 414: Properties in BankingTransactionDetail objects](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/414)
@@ -52,6 +53,7 @@ This release addresses the following Decision Proposals published on [Standards]
 
 |Change|Description|Link|
 |------|-----------|----|
+| Get Data Recipients API | [**Standards Maintenance #525**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/525): Corrected response payload returned by the CDR Register to denote the `softwareProductDescription` as a required field. | [Get Data Recipients](../../#get-data-recipients) |
 | BankingTransactionDetail schema fix | [**Standards Maintenance #414**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/414): Fixed the BankingTransactionDetail object to correctly show it as conditional based on the extensionUType. | [BankingTransactionDetail](../../#tocSbankingtransactiondetail) |
 | Energy schema | [**Standards Maintenance #526**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/526): <ul><li>Changed type of `EnergyDerRecord.availablePhasesCount` and `EnergyDerRecord.installedPhasesCount` fields to `NaturalNumber`</li><li>Updated description of `approvedCapacity`, `availablePhasesCount` and `installedPhasesCount` in `EnergyDerRecord` to note a 0 value indicates no DER record is available</li></ul> | [Energy Schema](../../#energy-apis) |
 | Energy schema | [**Standards Maintenance #524**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/524): Updated description of `inverterDeviceCapacity`, `derDevices.nominalRatedCapacity` and `derDevices.nominalStorageCapacity` fields in `EnergyDerRecord.acConnections` noting 0 as the default when value not known | [Energy Schema](../../#energy-apis) |

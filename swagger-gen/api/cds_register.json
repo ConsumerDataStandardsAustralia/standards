@@ -1541,6 +1541,7 @@
           "logoUri",
           "softwareProductId",
           "softwareProductName",
+          "softwareProductDescription",
           "status"
         ],
         "type": "object",
