@@ -1620,8 +1620,8 @@ Obtain a list of DER data from a particular service point
   "data": {
     "servicePointId": "string",
     "approvedCapacity": 0,
-    "availablePhasesCount": 1,
-    "installedPhasesCount": 1,
+    "availablePhasesCount": 3,
+    "installedPhasesCount": 3,
     "islandableInstallation": true,
     "hasCentralProtectionControl": false,
     "protectionMode": {
@@ -1780,8 +1780,8 @@ Obtain DER data for all service points associated with the customer
       {
         "servicePointId": "string",
         "approvedCapacity": 0,
-        "availablePhasesCount": 1,
-        "installedPhasesCount": 1,
+        "availablePhasesCount": 3,
+        "installedPhasesCount": 3,
         "islandableInstallation": true,
         "hasCentralProtectionControl": false,
         "protectionMode": {
@@ -1968,8 +1968,8 @@ Obtain DER data for a specific set of service points
       {
         "servicePointId": "string",
         "approvedCapacity": 0,
-        "availablePhasesCount": 1,
-        "installedPhasesCount": 1,
+        "availablePhasesCount": 3,
+        "installedPhasesCount": 3,
         "islandableInstallation": true,
         "hasCentralProtectionControl": false,
         "protectionMode": {
@@ -5324,8 +5324,8 @@ To perform this operation, you must be authenticated and authorised with the fol
       {
         "servicePointId": "string",
         "approvedCapacity": 0,
-        "availablePhasesCount": 1,
-        "installedPhasesCount": 1,
+        "availablePhasesCount": 3,
+        "installedPhasesCount": 3,
         "islandableInstallation": true,
         "hasCentralProtectionControl": false,
         "protectionMode": {
@@ -5407,8 +5407,8 @@ To perform this operation, you must be authenticated and authorised with the fol
   "data": {
     "servicePointId": "string",
     "approvedCapacity": 0,
-    "availablePhasesCount": 1,
-    "installedPhasesCount": 1,
+    "availablePhasesCount": 3,
+    "installedPhasesCount": 3,
     "islandableInstallation": true,
     "hasCentralProtectionControl": false,
     "protectionMode": {
@@ -8447,8 +8447,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 {
   "servicePointId": "string",
   "approvedCapacity": 0,
-  "availablePhasesCount": 1,
-  "installedPhasesCount": 1,
+  "availablePhasesCount": 3,
+  "installedPhasesCount": 3,
   "islandableInstallation": true,
   "hasCentralProtectionControl": false,
   "protectionMode": {
@@ -8503,9 +8503,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 |Name|Type|Required|Description|
 |---|---|---|---|
 |servicePointId|string|mandatory|Tokenised ID of the service point to be used for referring to the service point in the CDR API suite.  To be created in accordance with CDR ID permanence requirements|
-|approvedCapacity|number|mandatory|Approved small generating unit capacity as agreed with NSP in the connection agreement, expressed in kVA|
-|availablePhasesCount|[PositiveInteger](#common-field-types)|mandatory|The number of phases available for the installation of DER. Acceptable values are 1, 2 or 3.|
-|installedPhasesCount|[PositiveInteger](#common-field-types)|mandatory|The number of phases that DER is connected to. Acceptable values are 1, 2 or 3.|
+|approvedCapacity|number|mandatory|Approved small generating unit capacity as agreed with NSP in the connection agreement, expressed in kVA. Value of 0 indicates no DER record exists for the given servicePointId|
+|availablePhasesCount|[NaturalNumber](#common-field-types)|mandatory|The number of phases available for the installation of DER. Acceptable values are 0, 1, 2 or 3. Value of 0 indicates no DER record exists for the given servicePointId|
+|installedPhasesCount|[NaturalNumber](#common-field-types)|mandatory|The number of phases that DER is connected to. Acceptable values are 0, 1, 2 or 3. Value of 0 indicates no DER record exists for the given servicePointId|
 |islandableInstallation|[Boolean](#common-field-types)|mandatory|For identification of small generating units designed with the ability to operate in an islanded mode|
 |hasCentralProtectionControl|boolean|optional|For DER installations where NSPs specify the need for additional forms of protection above those inbuilt in an inverter.  If absent then assumed to be false|
 |protectionMode|object|conditional|Required only when the hasCentralProtectionAndControl flag is set to true.  One or more of the object fields will be provided to describe the protection modes in place|
@@ -8533,7 +8533,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |» inverterModelNumber|string|conditional|The inverter model number. Mandatory if equipmentType is INVERTER|
 |» commissioningDate|[DateString](#common-field-types)|mandatory|The date that the DER installation is commissioned|
 |» status|string|mandatory|Code used to indicate the status of the Inverter. This will be used to identify if an inverter is active or inactive or decommissioned|
-|» inverterDeviceCapacity|number|conditional|The rated AC output power that is listed in the product specified by the manufacturer. Mandatory if equipmentType is INVERTER|
+|» inverterDeviceCapacity|number|conditional|The rated AC output power that is listed in the product specified by the manufacturer. Mandatory if equipmentType is INVERTER. Default is 0 if value not known|
 |» derDevices|[object]|mandatory|none|
 |»» deviceIdentifier|number|mandatory|Unique identifier for a single DER device or a group of DER devices with the same attributes. Does not align with CDR ID permanence standards|
 |»» count|[PositiveInteger](#common-field-types)|mandatory|Number of devices in the group of DER devices|
@@ -8542,8 +8542,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |»» status|string|optional|Code used to indicate the status of the device. This will be used to identify if an inverter is active or inactive or decommissioned|
 |»» type|string|mandatory|Used to indicate the primary technology used in the DER device|
 |»» subtype|string|optional|Used to indicate the primary technology used in the DER device. This field is also used to record for example the battery chemistry, or the type of PV panel. It is also used to record if a battery is contained in an electric vehicle connected in a vehicle-to-grid arrangement. If absent then assumed to be “other”|
-|»» nominalRatedCapacity|number|mandatory|Maximum output in kVA that is listed in the product specification by the manufacturer. This refers to the capacity of each unit within the device group|
-|»» nominalStorageCapacity|number|conditional|Maximum storage capacity in kVAh. This refers to the capacity of each storage module within the device group. Mandatory if type is equal to “STORAGE”|
+|»» nominalRatedCapacity|number|mandatory|Maximum output in kVA that is listed in the product specification by the manufacturer. This refers to the capacity of each unit within the device group. Default is 0 if value not known|
+|»» nominalStorageCapacity|number|conditional|Maximum storage capacity in kVAh. This refers to the capacity of each storage module within the device group. Mandatory if type is equal to “STORAGE”. Default is 0 if value not known|
 
 #### Enumerated Values
 
