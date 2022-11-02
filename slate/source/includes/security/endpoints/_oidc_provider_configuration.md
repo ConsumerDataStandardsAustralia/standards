@@ -6,13 +6,21 @@
 Updated non-normative example.
 
 Updated parameters:
-response_types_supported
-response_modes_supported
+"response_types_supported" to support Authorization Code Flow ("code")
+"response_modes_supported" to support "jwt" for JARM. Note that "fragment" is also a supported JWT response mode
 
-Added PKCE and JARM parameters:
+Added required PAR parameter:
++ require_pushed_authorization_requests set to true
+
+Added requied PKCE parameter:
 + code_challenge_methods_supported
+
+Added requied JARM parameter:
 + authorization_signing_alg_values_supported
 
+Added JARM parameters where authorisation response encryption is supported (refer to https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/479 for further details):
++ authorization_encryption_alg_values_supported
++ authorization_encryption_enc_values_supported
 ```
 
 ```
@@ -49,8 +57,11 @@ Content-Type: application/json
   "token_endpoint_auth_methods_supported": ["private_key_jwt"],
   "tls_client_certificate_bound_access_tokens": true,
   "claims_supported": ["name", "given_name", "family_name", "acr", "auth_time", "sub", "refresh_token_expires_at", "sharing_expires_at"],
+  "require_pushed_authorization_requests": true,
   "code_challenge_methods_supported": "S256",
-  "authorization_signing_alg_values_supported": ["ES256", "PS256"]
+  "authorization_signing_alg_values_supported": ["ES256", "PS256"],
+  "authorization_encryption_alg_values_supported": ["RSA-OAEP", "RSA-OAEP-256"],
+  "authorization_encryption_enc_values_supported": ["A256GCM", "A128CBC-HS256"]
 }
 ```
 

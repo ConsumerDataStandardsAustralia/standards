@@ -19,7 +19,6 @@
 }
 ```
 
-
 ID Tokens are specified in [section 2](https://openid.net/specs/openid-connect-core-1_0.html#IDToken) of the **[[OIDC]](#nref-OIDC)** standard.
 
 #### Baseline ID Token requirements
