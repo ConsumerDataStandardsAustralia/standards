@@ -20,6 +20,7 @@ This release addresses the following minor defects raised on [Standards Staging]
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
+- [Standards Maintenance Issue 411: Clarification of x-fapi-interaction-id header](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/411)
 - [Standards Staging Issue 447: CORS typos in CDR](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/447)
 - [Standards Maintenance Issue 414: Properties in BankingTransactionDetail objects](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/414)
 - [Standards Maintenance Issue 506: Energy error codes for issues in data received by DH from SDH](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/506)
@@ -43,6 +44,7 @@ This release addresses the following Decision Proposals published on [Standards]
 
 |Change|Description|Link|
 |------|-----------|----|
+| `x-fapi-interaction-id` header | [**Standards Maintenance #411**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/411): Additional clarification that the `x-fapi-interaction-id` request header is not required for unauthenticated APIs. | [HTTP Headers](../../#http-headers) |
 | Error Codes - Error Response Structure|[**Standards Maintenance #506**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/506): Added `isSecondaryDataHolderError` Boolean field to Error Response Structure and updated [Future Date Obligation](../../#future-dated-obligations) section with the FDO date for the change. | [Error Codes](../../#error-codes) |
 
 
