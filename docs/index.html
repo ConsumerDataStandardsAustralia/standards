@@ -1401,9 +1401,6 @@ Note: changes to request and response payloads are listed at the beginning of th
 
 <p>The Consumer Data Right (CDR) is intended to be applied sector by sector across the whole economy, beginning in the banking, energy and telecommunications sectors.  These standards have been developed to facilitate the Consumer Data Right by acting as a specific baseline for implementation.</p>
 
-<pre class="highlight diff tab-diff"><code>Corrected link for OAIC
-</code></pre>
-
 <p>These standards are maintained by the <a href="https://www.directory.gov.au/portfolios/treasury/data-standards-body">Data Standards Body</a> (DSB) within <a href="#iref-Treasury"><strong>Treasury</strong></a>, with the Data Standards Chair as the independent decision maker. The work of standards development is conducted in consultation with the <a href="https://www.accc.gov.au/focus-areas/consumer-data-right-cdr-0">Australian Competition and Consumer Commission</a> (<a href="#iref-ACCC"><strong>ACCC</strong></a>) and <a href="https://www.oaic.gov.au/consumer-data-right/about-the-consumer-data-right/">Office of the Australian Information Commissioner</a>) (<a href="#iref-OAIC"><strong>OAIC</strong></a>) as co-regulators of the Consumer Data Right (<a href="#iref-CDR"><strong>CDR</strong></a>).</p>
 
 <p>The standards are required to be published. The obligations on CDR participants to apply the published standards commence on the commencement of the Consumer Data Right rules:</p>
@@ -1415,14 +1412,14 @@ Note: changes to request and response payloads are listed at the beginning of th
 
 <h2 id='version'>Version</h2>
 
-<p>These standards represent version 1.19.0 of the high level standards.  See the <a href="#versioning">versioning section</a> for more information on how versions are managed in the standard.</p>
+<p>These standards represent version 1.20.0 of the high level standards.  See the <a href="#versioning">versioning section</a> for more information on how versions are managed in the standard.</p>
 
 <h2 id='interpretation'>Interpretation</h2>
 
 <p>Note that, in these standards, the key words <strong>MUST</strong>, <strong>MUST NOT</strong>, <strong>REQUIRED</strong>, <strong>SHALL</strong>, <strong>SHALL NOT</strong>, <strong>SHOULD</strong>, <strong>SHOULD NOT</strong>, <strong>RECOMMENDED</strong>, <strong>MAY</strong>, and <strong>OPTIONAL</strong> are to be interpreted as described in <strong><a href="#nref-RFC2119">[RFC2119]</a></strong>.</p>
 
-<h2 id='future-dated-obligations'>Future Dated Obligations</h2>
-
+<h2 id='future-dated-obligations'>Future Dated Obligations</h2><pre class="highlight diff tab-diff"><code>Added FDO date for Error Codes: Secondary Data Holder flag change
+</code></pre>
 <p>The standards, as published from time to time, may include specific statements indicating that a specific section of the standards will not take effect until a future date or may cease to have effect on some future date.</p>
 
 <p>The table below highlights these areas of the standards.</p>
@@ -1603,6 +1600,11 @@ Note: changes to request and response payloads are listed at the beginning of th
 <td><a href="#get-energy-account-detail">Get Energy Account Detail V2</a></td>
 <td>Data Holder <strong>MUST</strong> implement v2 of this endpoint by <strong>April 7th 2023</strong></td>
 <td></td>
+</tr>
+<tr>
+<td><a href="#error-codes">Error Codes: Secondary Data Holder flag</a></td>
+<td><ul><li>Data Holders <strong>MAY</strong> implement the <code>isSecondaryDataHolderError</code> field on <strong>November 15 2022</strong></li><li>Affected Data Holders <strong>MUST</strong> implement <code>isSecondaryDataHolderError</code> field by <strong>May 15 2023</strong></li></ul></td>
+<td>May 15th 2023</td>
 </tr>
 </tbody></table>
 
@@ -2839,7 +2841,9 @@ obtain detail for that resource or to change the state of the resource.</li>
     }
   ]
 }
-</code></pre>
+</code></pre><pre class="highlight diff tab-diff"><code>Added following optional Boolean field to Error Response Structure: 
+<span class="gi">+ `isSecondaryDataHolderError` 
+</span></code></pre>
 <p><a name="error_payload"></a>The <code>errors</code> object will be an array of zero or more unnamed objects. The fields in each of these objects will be as follows:</p>
 
 <ul>
@@ -2847,6 +2851,7 @@ obtain detail for that resource or to change the state of the resource.</li>
 <li><code>title</code> field <strong>MUST</strong> be present: holds a human readable label of the error that is constant
 per <code>code</code></li>
 <li><code>detail</code> field <strong>MUST</strong> be present: holds a human readable description of this specific error</li>
+<li><code>isSecondaryDataHolderError</code> field <strong>MAY</strong> be present: an optional Boolean flag which indicates the error is propagated from a designated secondary data holder</li>
 <li><code>meta</code> object <strong>MAY</strong> be present: holds additional end point specific data relevant to the error</li>
 </ul>
 
@@ -3720,10 +3725,7 @@ standards</li>
 <p><br/></p>
 <h2 id='energy-language'>Energy Language</h2><h3 id='energy-accounts'>Energy Accounts</h3>
 <p>See below for the data language standards for the energy accounts scopes:</p>
-<pre class="highlight diff tab-diff"><code>Energy data language changes were made:
 
-<span class="gd">- Removed all references to 'NMI' in permission language in Energy Accounts (energy:accounts.basic:read and energy:accounts.detail:read scopes)
-</span></code></pre>
 <table><thead>
 <tr>
 <th>Data cluster language</th>
@@ -3765,10 +3767,7 @@ standards</li>
 </tbody></table>
 <h3 id='payments'>Payments</h3>
 <p>See below for the data language standards for the payments schedule scope:</p>
-<pre class="highlight diff tab-diff"><code>Replaced 'Stored payment information' with 'Payment preferences'
-<span class="gd">- Stored payment information: Payment details; Scheduled payment amount;
-</span><span class="gi">+ Payment preferences: Payment and billing frequency; Any scheduled payment details;
-</span></code></pre>
+
 <table><thead>
 <tr>
 <th>Data cluster language</th>
@@ -3784,8 +3783,7 @@ standards</li>
 </tbody></table>
 <h3 id='billing'>Billing</h3>
 <p>See below for the data language standards for the billing scope:</p>
-<pre class="highlight diff tab-diff"><code><span class="gd">- Removed reference to 'NMI' in permission language in Billing (energy:billing:read scope)
-</span></code></pre>
+
 <table><thead>
 <tr>
 <th>Data cluster language</th>
@@ -25003,32 +25001,26 @@ This operation does not require authentication
 <tr><td><a href='./includes/swagger/cds_energy.json'>Energy OpenAPI Specification (JSON)</a></td></tr>
 <tr><td><a href='./includes/swagger/cds_energy.yaml'>Energy OpenAPI Specification (YAML)</a></td></tr>
 </table>
-<pre class="highlight diff tab-diff"><code>Added the following to v2 of Get Energy Accounts and v2 of Get Energy Account Detail APIs
-<span class="gi">+ open-status   (query parameter)
-</span>
-Updated the following structures
+<pre class="highlight diff tab-diff"><code>Changed type of `EnergyDerRecord.availablePhasesCount` and `EnergyDerRecord.installedPhasesCount` fields
 from:
- - EnergyAccount
- - EnergyAccountBase
- - EnergyAccountListResponse
- - EnergyAccountDetailResponse
- - EnergyAccountDetail
-to:
-<span class="gi">+ EnergyAccountV2
-+ EnergyAccountBaseV2
-+ EnergyAccountListResponseV2
-+ EnergyAccountDetailResponseV2
-+ EnergyAccountDetailV2
+<span class="gd">- PositiveInteger
+</span>to:
+<span class="gi">+ NaturalNumber
 </span>
-Added the following fields to EnergyAccountBaseV2
-<span class="gi">+ openStatus
+Updated description of below fields in `EnergyDerRecord`
+• `approvedCapacity` 
+• `availablePhasesCount`
+• `installedPhasesCount`
+to include:
+<span class="gi">+ Value of 0 indicates no DER record exists for the given servicePointId
 </span>
-Made the following changes to EnergyAccountV2
- made planOverview conditional
-
-Made the following changes to EnergyAccountDetailV2
- made planOverview and planDetail conditional
-</code></pre>
+Updated description of below fields in `EnergyDerRecord.acConnections`: 
+• `inverterDeviceCapacity`
+• `derDevices.nominalRatedCapacity`
+• `derDevices.nominalStorageCapacity`
+to include
+<span class="gi">+ Default is 0 if value not known
+</span></code></pre>
 <h2 id='get-generic-plans'>Get Generic Plans</h2>
 
 <p><a id="opIdlistPlans"></a></p>
@@ -28850,6 +28842,13 @@ x-cds-client-headers: string
 <td>ID of a specific account to obtain data for.  This is a tokenised ID previous obtained from the Account List end point.</td>
 </tr>
 <tr>
+<td>open-status</td>
+<td>query</td>
+<td>string</td>
+<td>optional</td>
+<td>Used to filter results according to open/closed status. Values can be OPEN, CLOSED or ALL. If absent then ALL is assumed</td>
+</tr>
+<tr>
 <td>x-v</td>
 <td>header</td>
 <td>string</td>
@@ -28890,6 +28889,28 @@ x-cds-client-headers: string
 <td><a href="#common-field-types">Base64</a></td>
 <td>conditional</td>
 <td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
+</tr>
+</tbody></table>
+
+<h4 id='enumerated-values-6'>Enumerated Values</h4>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>open-status</td>
+<td>ALL</td>
+</tr>
+<tr>
+<td>open-status</td>
+<td>CLOSED</td>
+</tr>
+<tr>
+<td>open-status</td>
+<td>OPEN</td>
 </tr>
 </tbody></table>
 
@@ -35036,7 +35057,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Array of distributors for the plan. Must have at least one entry</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-6'>Enumerated Values</h4>
+<h4 id='enumerated-values-7'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -35976,7 +35997,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Array of tariff periods</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-7'>Enumerated Values</h4>
+<h4 id='enumerated-values-8'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -36338,7 +36359,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>An array of the available billing schedules for this contract. Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 Durations</a> (excludes recurrence syntax)</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-8'>Enumerated Values</h4>
+<h4 id='enumerated-values-9'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -36603,7 +36624,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h4 id='enumerated-values-9'>Enumerated Values</h4>
+<h4 id='enumerated-values-10'>Enumerated Values</h4>
 
 <table><thead>
 <tr>
@@ -36786,7 +36807,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h4 id='enumerated-values-10'>Enumerated Values</h4>
+<h4 id='enumerated-values-11'>Enumerated Values</h4>
 
 <table><thead>
 <tr>
@@ -36942,7 +36963,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h4 id='enumerated-values-11'>Enumerated Values</h4>
+<h4 id='enumerated-values-12'>Enumerated Values</h4>
 
 <table><thead>
 <tr>
@@ -37080,7 +37101,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h4 id='enumerated-values-12'>Enumerated Values</h4>
+<h4 id='enumerated-values-13'>Enumerated Values</h4>
 
 <table><thead>
 <tr>
@@ -37168,7 +37189,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h4 id='enumerated-values-13'>Enumerated Values</h4>
+<h4 id='enumerated-values-14'>Enumerated Values</h4>
 
 <table><thead>
 <tr>
@@ -37322,7 +37343,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h4 id='enumerated-values-14'>Enumerated Values</h4>
+<h4 id='enumerated-values-15'>Enumerated Values</h4>
 
 <table><thead>
 <tr>
@@ -37578,7 +37599,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h4 id='enumerated-values-15'>Enumerated Values</h4>
+<h4 id='enumerated-values-16'>Enumerated Values</h4>
 
 <table><thead>
 <tr>
@@ -37981,7 +38002,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h4 id='enumerated-values-16'>Enumerated Values</h4>
+<h4 id='enumerated-values-17'>Enumerated Values</h4>
 
 <table><thead>
 <tr>
@@ -38338,7 +38359,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>A code that defines the consumption threshold as defined in the National Energy Retail Regulations, or in overriding Jurisdictional instruments. Note the details of enumeration values below: <ul><li><strong>LOW</strong> - Consumption is less than the ‘lower consumption threshold’ as defined in the National Energy Retail Regulations</li><li><strong>MEDIUM</strong> - Consumption is equal to or greater than the ‘lower consumption threshold’, but less than the ‘upper consumption threshold’, as defined in the National Energy Retail Regulations</li><li><strong>HIGH</strong> - Consumption is equal to or greater than the ‘upper consumption threshold’ as defined in the National Energy Retail Regulations</li></ul></td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-17'>Enumerated Values</h4>
+<h4 id='enumerated-values-18'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -38788,7 +38809,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Actual/Subtractive Indicator. Note the details of enumeration values below: <ul><li><strong>ACTUAL</strong> implies volume of energy actually metered between two dates</li><li><strong>CUMULATIVE</strong> indicates a meter reading for a specific date. A second Meter Reading is required to determine the consumption between those two Meter Reading dates</li></ul></td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-18'>Enumerated Values</h4>
+<h4 id='enumerated-values-19'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -39210,7 +39231,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>The quality of the read taken</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-19'>Enumerated Values</h4>
+<h4 id='enumerated-values-20'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -39564,7 +39585,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Maximum storage capacity in kVAh. This refers to the capacity of each storage module within the device group. Mandatory if type is equal to “STORAGE”</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-20'>Enumerated Values</h4>
+<h4 id='enumerated-values-21'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -39688,7 +39709,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>The date that the account was created or opened. Mandatory if openStatus is OPEN</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-21'>Enumerated Values</h4>
+<h4 id='enumerated-values-22'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -40410,7 +40431,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Used for a trailing suffix to the name (e.g. Jr)</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-22'>Enumerated Values</h4>
+<h4 id='enumerated-values-23'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -40598,7 +40619,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>The frequency with which a bill will be issued.  Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 Durations</a> (excludes recurrence syntax)</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-23'>Enumerated Values</h4>
+<h4 id='enumerated-values-24'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -40791,7 +40812,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Array of ENUM&#39;s to specify what the concession applies to. Multiple ENUM values can be provided. If absent, USAGE is assumed</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-24'>Enumerated Values</h4>
+<h4 id='enumerated-values-25'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -41011,7 +41032,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Indicator of the payment status for the invoice</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-25'>Enumerated Values</h4>
+<h4 id='enumerated-values-26'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -41114,7 +41135,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>The total GST for all electricity usage charges.  If absent then zero is assumed</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-26'>Enumerated Values</h4>
+<h4 id='enumerated-values-27'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -41233,7 +41254,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>The total GST for all electricity usage charges.  If absent then zero is assumed</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-27'>Enumerated Values</h4>
+<h4 id='enumerated-values-28'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -41466,7 +41487,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Represents a payment to the account.  Mandatory if transactionUType is equal to payment</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-28'>Enumerated Values</h4>
+<h4 id='enumerated-values-29'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -41629,7 +41650,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>A free text description of the adjustment</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-29'>Enumerated Values</h4>
+<h4 id='enumerated-values-30'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -41841,7 +41862,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>A free text description of the adjustment</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-30'>Enumerated Values</h4>
+<h4 id='enumerated-values-31'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -42052,7 +42073,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>A free text description of the adjustment</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-31'>Enumerated Values</h4>
+<h4 id='enumerated-values-32'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -42127,7 +42148,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>The method of payment</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-32'>Enumerated Values</h4>
+<h4 id='enumerated-values-33'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -42233,7 +42254,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Australian address formatted according to the file format defined by the <a href="https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf">PAF file format</a>. Required if addressUType is set to paf</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-33'>Enumerated Values</h4>
+<h4 id='enumerated-values-34'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -47200,7 +47221,26 @@ the Data Holder. In this scenario the retailer MUST call AEMO multiple times and
 <tr><td><a href='./includes/swagger/cds_energy_sdh.json'>Energy Secondary Data Holder OpenAPI Specification (JSON)</a></td></tr>
 <tr><td><a href='./includes/swagger/cds_energy_sdh.yaml'>Energy Secondary Data Holder OpenAPI Specification (YAML)</a></td></tr>
 </table>
-
+<pre class="highlight diff tab-diff"><code>Changed type of `EnergyDerRecord.availablePhasesCount` and `EnergyDerRecord.installedPhasesCount` fields
+from:
+<span class="gd">- PositiveInteger
+</span>to:
+<span class="gi">+ NaturalNumber
+</span>
+Updated description of below fields in `EnergyDerRecord`
+• `approvedCapacity` 
+• `availablePhasesCount`
+• `installedPhasesCount`
+to include:
+<span class="gi">+ Value of 0 indicates no DER record exists for the given servicePointId
+</span>
+Updated description of below fields in `EnergyDerRecord.acConnections`: 
+• `inverterDeviceCapacity`
+• `derDevices.nominalRatedCapacity`
+• `derDevices.nominalStorageCapacity`
+to include
+<span class="gi">+ Default is 0 if value not known
+</span></code></pre>
 <h2 id='get-service-points-sr'>Get Service Points (SR)</h2>
 
 <p><a id="opIdlistServicePoints"></a></p>
@@ -51462,6 +51502,12 @@ This operation does not require authentication
 </tr>
 </thead><tbody>
 <tr>
+<td>TBA</td>
+<td>1.20.0</td>
+<td>Changes arising from Decision 259 (Maintenance iteration 12)</td>
+<td>See <a href="includes/releasenotes/releasenotes.1.12.0.html">release notes</a> and <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/259">Decision 259</a> for details</td>
+</tr>
+<tr>
 <td>13/09/2022</td>
 <td>1.19.0</td>
 <td>Changes arising from Decision 260 (Energy Closed Accounts)</td>
@@ -51874,6 +51920,11 @@ This operation does not require authentication
 <th>Description</th>
 </tr>
 </thead><tbody>
+<tr>
+<td><a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.19.0/'>13/09/2022</a></td>
+<td>1.19.0</td>
+<td><a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.19.0/'>13/09/2022</a></td>
+</tr>
 <tr>
 <td><a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.18.0/'>11/08/2022</a></td>
 <td>1.18.0</td>

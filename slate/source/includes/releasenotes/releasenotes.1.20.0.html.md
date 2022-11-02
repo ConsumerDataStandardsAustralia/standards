@@ -50,6 +50,7 @@ This release addresses the following Decision Proposals published on [Standards]
 |------|-----------|----|
 | Energy schema | [**Standards Maintenance #526**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/526): <ul><li>Changed type of `EnergyDerRecord.availablePhasesCount` and `EnergyDerRecord.installedPhasesCount` fields to `NaturalNumber`</li><li>Updated description of `approvedCapacity`, `availablePhasesCount` and `installedPhasesCount` in `EnergyDerRecord` to note a 0 value indicates no DER record is available</li></ul> | [Energy Schema](../../#energy-apis) |
 | Energy schema | [**Standards Maintenance #524**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/524): Updated description of `inverterDeviceCapacity`, `derDevices.nominalRatedCapacity` and `derDevices.nominalStorageCapacity` fields in `EnergyDerRecord.acConnections` noting 0 as the default when value not known | [Energy Schema](../../#energy-apis) |
+| Draft Telco standards | [**Decision Proposal #275**](https://github.com/ConsumerDataStandardsAustralia/standards/issues/275): Publish of draft (ie. non-binding) technical standards for the Telco sector for holistic review | [Telco Schema](../../#telco-apis) |
 
 
 ## Information Security Profile
@@ -71,4 +72,3 @@ This release addresses the following Decision Proposals published on [Standards]
 |Change|Description|Link|
 |------|-----------|----|
 | | | |
-

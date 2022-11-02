@@ -28,6 +28,12 @@ echo "*** Generate cds_energy_sdh.md"
 
 diff -w cds_energy_sdh.md ../slate/source/includes/cds_energy_sdh.md > diff_energy_sdh.txt
 
+echo "*** Generate cds_telco.md"
+{
+  node ./widdershins-cdr/widdershins.js --environment ./widdershins-cdr/cdr_widdershins.json --search false --language_tabs 'http:HTTP' 'javascript:Javascript' --summary api/cds_telco.json -o cds_telco.md >> create-markdown-log.txt
+} >> create-markdown-log.txt 2>&1
+
+diff -w cds_telco.md ../slate/source/includes/cds_telco.md > diff_telco.txt
 
 echo "*** Generate cds_common.md"
 {

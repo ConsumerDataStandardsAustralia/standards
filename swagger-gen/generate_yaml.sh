@@ -8,3 +8,4 @@ set -o errexit #abort if any command fails
 ./oas_generate.sh api/cds_admin.json openapi-yaml yaml ../slate/source/includes/swagger
 ./oas_generate.sh api/cds_register.json openapi-yaml yaml ../slate/source/includes/swagger
 ./oas_generate.sh api/cds_dcr.json openapi-yaml yaml ../slate/source/includes/swagger
+./oas_generate.sh api/cds_telco.json openapi-yaml yaml ../slate/source/includes/swagger
