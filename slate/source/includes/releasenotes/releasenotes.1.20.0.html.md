@@ -20,6 +20,7 @@ This release addresses the following minor defects raised on [Standards Staging]
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
+- [Standards Staging Issue 447: CORS typos in CDR](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/447)
 - [Standards Maintenance Issue 414: Properties in BankingTransactionDetail objects](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/414)
 - [Standards Maintenance Issue 506: Energy error codes for issues in data received by DH from SDH](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/506)
 - [Standards Maintenance Issue 526: Energy / Get DER for Service Point - allow for no data](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/526)
@@ -59,7 +60,7 @@ This release addresses the following Decision Proposals published on [Standards]
 
 |Change|Description|Link|
 |------|-----------|----|
-| | | |
+| CORS typos | [**Standards Maintenance #447**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/447): Corrected the CORS protections to make clear they must be disabled for public APIs | [CORS](../../#cors) |
 
 
 ## Consumer Experience
