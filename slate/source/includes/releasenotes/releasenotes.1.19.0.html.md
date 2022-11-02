@@ -24,7 +24,6 @@ This release addresses the following change requests raised on [Standards Mainte
 
 - [Standards Maintenance Issue 529: CX - Energy Data Language Standards - NMI and Scheduled Payments](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/529)
 
-
 ### Decision Proposals
 
 This release addresses the following Decision Proposals published on [Standards](https://github.com/ConsumerDataStandardsAustralia/standards/issues):
