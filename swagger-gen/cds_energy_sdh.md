@@ -427,11 +427,13 @@ Obtain a list of electricity usage data from a particular service point
           "intervalReads": [
             0
           ],
-          "readQualities": {
-            "startInterval": 0,
-            "endInterval": 0,
-            "quality": "SUBSTITUTE"
-          }
+          "readQualities": [
+            {
+              "startInterval": 0,
+              "endInterval": 0,
+              "quality": "SUBSTITUTE"
+            }
+          ]
         }
       }
     ]
@@ -595,11 +597,13 @@ Obtain the electricity usage data for a specific set of service points
           "intervalReads": [
             0
           ],
-          "readQualities": {
-            "startInterval": 0,
-            "endInterval": 0,
-            "quality": "SUBSTITUTE"
-          }
+          "readQualities": [
+            {
+              "startInterval": 0,
+              "endInterval": 0,
+              "quality": "SUBSTITUTE"
+            }
+          ]
         }
       }
     ]
@@ -1161,11 +1165,13 @@ This operation does not require authentication
           "intervalReads": [
             0
           ],
-          "readQualities": {
-            "startInterval": 0,
-            "endInterval": 0,
-            "quality": "SUBSTITUTE"
-          }
+          "readQualities": [
+            {
+              "startInterval": 0,
+              "endInterval": 0,
+              "quality": "SUBSTITUTE"
+            }
+          ]
         }
       }
     ]
@@ -1686,11 +1692,13 @@ This operation does not require authentication
     "intervalReads": [
       0
     ],
-    "readQualities": {
-      "startInterval": 0,
-      "endInterval": 0,
-      "quality": "SUBSTITUTE"
-    }
+    "readQualities": [
+      {
+        "startInterval": 0,
+        "endInterval": 0,
+        "quality": "SUBSTITUTE"
+      }
+    ]
   }
 }
 
@@ -1716,7 +1724,7 @@ This operation does not require authentication
 |» readIntervalLength|[PositiveInteger](#common-field-types)|conditional|Read interval length in minutes. Required when interval-reads query parameter equals FULL or MIN_30|
 |» aggregateValue|number|mandatory|The aggregate sum of the interval read values. If positive then it means net consumption, if negative it means net export|
 |» intervalReads|[number]|conditional|Array of Interval read values. If positive then it means consumption, if negative it means export. Required when interval-reads query parameter equals FULL or  MIN_30.<br>Each read value indicates the read for the interval specified by readIntervalLength beginning at midnight of readStartDate (for example 00:00 to 00:30 would be the first reading in a 30 minute Interval)|
-|» readQualities|object|conditional|Specifies quality of reads that are not ACTUAL.  For read indices that are not specified, quality is assumed to be ACTUAL. If not present, all quality of all reads are assumed to be actual. Required when interval-reads query parameter equals FULL or MIN_30|
+|» readQualities|[object]|conditional|Specifies quality of reads that are not ACTUAL.  For read indices that are not specified, quality is assumed to be ACTUAL. If not present, all quality of all reads are assumed to be actual. Required when interval-reads query parameter equals FULL or MIN_30|
 |»» startInterval|[PositiveInteger](#common-field-types)|mandatory|Start interval for read quality flag. First read begins at 1|
 |»» endInterval|[PositiveInteger](#common-field-types)|mandatory|End interval for read quality flag|
 |»» quality|string|mandatory|The quality of the read taken|

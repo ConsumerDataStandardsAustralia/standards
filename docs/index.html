@@ -4819,7 +4819,8 @@ cdr_arrangement_jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsImtpZCI6IjEyNDU2In0.ey .
 </code></pre>
 
 <blockquote>
-<p>Non-Normative Example - Data Recipient Software Product calls Data Holder&#39;s token end point.</p>
+<p>Non-Normative Example - Data Recipient Software Product calls Data Holder&#39;s token end point.
+This example uses PKCE to send the code_verifier which was previously encrypted in the request object submission as the code_challenge using S256 as the code_challenge_method</p>
 </blockquote>
 
 <pre class="highlight plaintext"><code>POST /token HTTP/1.1
@@ -4829,6 +4830,7 @@ Content-Type: application/x-www-form-urlencoded
 grant_type=authorization_code&amp;
   code=i1WsRn1uB1&amp;
   client_id=s6BhdRkqt3&amp;
+  code_verifier=4d9213fb-d68b-49d1-a2c9-486e5a0b4e14&amp;
   client_assertion_type=urn%3Aietf%3Aparams%3Aoauth%3Aclient-assertion-type%3Ajwt-bearer&amp;
   client_assertion=eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNDU2In0.ey ...
 
@@ -5156,7 +5158,8 @@ grant_type=client_credentials&amp;
 <p>Get Software Statement Assertion API <a href="includes/obsolete/get-software-statement-assertion-v1.html">v1</a> &amp; <a href="includes/obsolete/get-software-statement-assertion-v2.html">v2</a> has the scope claim explicitly defined.</p>
 <h3 id='registration-request-using-jwt'>Registration Request using JWT</h3>
 <blockquote>
-<p>Example Request</p>
+<p>Example Request
+Client registration with OpenID Hybrid Flow</p>
 </blockquote>
 <pre class="highlight plaintext"><code>HTTP/1.1 POST /register
 Content-Type: application/jwt
@@ -5191,6 +5194,53 @@ Accept: application/json
    "id_token_encrypted_response_alg":"RSA-OAEP",
    "id_token_encrypted_response_enc:"A256GCM",
    "request_object_signing_alg":"PS256",
+   "authorization_signed_response_alg": "PS256",
+   "authorization_encrypted_response_alg": "RSA-OAEP",
+   "authorization_encrypted_response_enc": "A256GCM",
+   "software_statement":…
+}
+{
+  "signature":...
+}
+</code></pre>
+<blockquote>
+<p>Example Request
+This example creates a FAPI 1.0 Phase 3 client registration that uses Authorization Code Flow with JARM encryption</p>
+</blockquote>
+<pre class="highlight plaintext"><code>HTTP/1.1 POST /register
+Content-Type: application/jwt
+Accept: application/json
+
+### Non-normative Decoded JWT
+{
+   "alg":"PS256",
+   "typ":"JWT",
+   "kid":"12456"
+}
+{
+   "iss":"CDR Software Product ID",
+   "iat":1571808167,
+   "exp":2147483646,
+   "jti":"37747cd1c10545699f754adf28b73e31",
+   "aud":"https://secure.api.dataholder.com/issuer",
+   "redirect_uris":[
+      "https://www.mockcompany.com.au/redirects/redirect1",
+      "https://www.mockcompany.com.au/redirects/redirect2"
+   ],
+   "token_endpoint_auth_signing_alg":"PS256",
+   "token_endpoint_auth_method":"private_key_jwt",
+   "grant_types":[
+      "client_credentials",
+      "authorization_code",
+      "refresh_token"
+   ],
+   "response_types":["code"],
+   "application_type":"web",
+   "id_token_signed_response_alg":"PS256",
+   "request_object_signing_alg":"PS256",
+   "authorization_signed_response_alg": "PS256",
+   "authorization_encrypted_response_alg": "RSA-OAEP",
+   "authorization_encrypted_response_enc": "A256GCM",
    "software_statement":…
 }
 {
@@ -5331,7 +5381,8 @@ Accept: application/json
 <p>Data Holders <strong>MUST</strong> adhere to the <a href="#performance-requirements">NFR performance requirements</a> when validating and responding to registration requests. Additional validation processes (such as outbound white-listing of data recipient endpoints) <strong>MUST NOT</strong> prevent specified response times being met.</p>
 <h3 id='registration-response'>Registration Response</h3>
 <blockquote>
-<p>Example Created Response</p>
+<p>Example Created Response
+OIDC Hybrid Flow</p>
 </blockquote>
 <pre class="highlight plaintext"><code>HTTP/1.1 201 Created
 Content-Type: application/json
@@ -5355,6 +5406,65 @@ Content-Type: application/json
    "id_token_signed_response_alg":"PS256",
    "id_token_encrypted_response_alg":"RSA-OAEP",
    "id_token_encrypted_response_enc:"A256GCM",
+   "request_object_signing_alg":"PS256",
+   "software_statement":"…",
+   "legal_entity_id": "3B0B0A7B-3E7B-4A2C-9497-E357A71D07C7",
+   "legal_entity_name": "Mock Company Pty Ltd",
+   "org_id": "3B0B0A7B-3E7B-4A2C-9497-E357A71D07C8",
+   "org_name": "Mock Company Brand",
+   "client_name": "Mock Software",
+   "client_description": "A mock software product for testing SSA",
+   "client_uri": "https://www.mockcompany.com.au",
+   "logo_uri": "https://www.mockcompany.com.au/logos/logo1.png",
+   "tos_uri": "https://www.mockcompany.com.au/tos.html",
+   "policy_uri": "https://www.mockcompany.com.au/policy.html",
+   "jwks_uri": "https://www.mockcompany.com.au/jwks",
+   "revocation_uri": "https://www.mockcompany.com.au/revocation",
+   "recipient_base_uri": "https://www.mockcompany.com.au",
+   "sector_identifier_uri": "https://www.mockcompany.com.au/sector_identifier"
+   "software_id": "740C368F-ECF9-4D29-A2EA-0514A66B0CDE",
+   "software_roles": "data-recipient-software-product",
+   "scope":
+         "openid
+          profile
+          bank:accounts.basic:read
+          bank:accounts.detail:read
+          bank:transactions:read
+          bank:payees:read
+          bank:regular_payments:read
+          common:customer.basic:read
+          common:customer.detail:read
+          cdr:registration"
+}
+</code></pre>
+<blockquote>
+<p>Example Created Response
+Authorization Code Flow
+This example creates a FAPI 1.0 Phase 3 client registration that uses Authorization Code Flow with JARM encryption</p>
+</blockquote>
+<pre class="highlight plaintext"><code>HTTP/1.1 201 Created
+Content-Type: application/json
+
+{
+  "client_id": "2cfefa98-7d4a-4bcb-95da-47063b84d410",
+  "client_id_issued_at": 1574398823,
+  "redirect_uris": [
+     "https://www.mockcompany.com.au/redirects/redirect1",
+     "https://www.mockcompany.com.au/redirects/redirect2"
+   ],
+   "token_endpoint_auth_signing_alg":"PS256",
+   "token_endpoint_auth_method":"private_key_jwt",
+   "grant_types":[
+      "client_credentials",
+      "authorization_code",
+      "refresh_token"
+   ],
+   "response_types":["code"],
+   "application_type":"web",
+   "id_token_signed_response_alg":"PS256",
+   "authorization_signed_response_alg": "PS256",
+   "authorization_encrypted_response_alg": "RSA-OAEP",
+   "authorization_encrypted_response_enc": "A256GCM",
    "request_object_signing_alg":"PS256",
    "software_statement":"…",
    "legal_entity_id": "3B0B0A7B-3E7B-4A2C-9497-E357A71D07C7",
@@ -5812,6 +5922,22 @@ Data Holders <strong>SHOULD</strong> explicitly capture Claims requested by the 
   "refresh_token_expires_at": 1311281970,
   "sharing_expires_at": 1311281970
 }
+</code></pre><pre class="highlight diff tab-diff"><code>Added FAPI 1.0 Final Phase 3 Obligation example
+</code></pre>
+<blockquote>
+<p>Non-Normative Example - FAPI 1.0 Final Phase 3 Obligations</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+  "iss": "https://www.holder.com.au",
+  "sub": "a9ebbef6-1f0b-44eb-96cf-0c5b51b37ab2",
+  "aud": "12345",
+  "nonce": "n-0S6_WzA2Mj",
+  "exp": 1311281970,
+  "iat": 1311280970,
+  "nbf": 1311280970,
+  "auth_time": 1311280969,
+  "acr": "urn:cds.au:cdr:2"
+}
 </code></pre>
 <p>ID Tokens are specified in <a href="https://openid.net/specs/openid-connect-core-1_0.html#IDToken">section 2</a> of the <strong><a href="#nref-OIDC">[OIDC]</a></strong> standard.</p>
 <h4 id='baseline-id-token-requirements'>Baseline ID Token requirements</h4>
@@ -5930,6 +6056,22 @@ client_id=s6BhdRkqt3
   "acr": "urn:cds.au:cdr:3",
   "refresh_token_expires_at": 1311281970,
   "sharing_expires_at": 1311281970
+}
+</code></pre><pre class="highlight diff tab-diff"><code>Added FAPI 1.0 Final Phase 3 Obligation example
+</code></pre>
+<blockquote>
+<p>Decoded JWT - FAPI 1.0 Final Phase 3 Obligation  </p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+  "iss": "https://data.holder.com.au",
+  "sub": "a9ebbef6-1f0b-44eb-96cf-0c5b51b37ab2",
+  "aud": "12345",
+  "nonce": "n-0S6_WzA2Mj",
+  "exp": 1311281970,
+  "iat": 1311280970,
+  "nbf": 1311280970,
+  "auth_time": 1311280969,
+  "acr": "urn:cds.au:cdr:3"
 }
 </code></pre>
 <blockquote>
@@ -6226,6 +6368,44 @@ client_id=s6BhdRkqt3
     }
   }
 }
+</code></pre><pre class="highlight diff tab-diff"><code>Added FAPI 1.0 Final Phase 3 Obligation example
+</code></pre>
+
+<blockquote>
+<p>Non-Normative Example - FAPI 1.0 Final Phase 3 Obligation  </p>
+</blockquote>
+
+<pre class="highlight plaintext"><code>#Decoded Request Object JWT
+
+{
+  "iss": "s6BhdRkqt3",
+  "exp": 1680832800,
+  "nbf": 1680829200,
+  "aud": "https://www.recipient.com.au",
+  "response_type": "code",
+  "client_id": "s6BhdRkqt3",
+  "redirect_uri": "https://www.recipient.com.au/coolstuff",
+  "scope": "openid profile bank:accounts.basic:read
+            bank:accounts.detail:read",
+  "nonce": "n-0S6_WzA2Mj",
+  "state": "af0ifjsldkj",
+  "claims": {
+    "sharing_duration": 7776000,
+    "cdr_arrangement_id": "02e7c9d9-cfe7-4c3e-8f64-e91173c84ecb",
+    "id_token": {
+      "acr": {
+        "essential": true,
+        "values": ["urn:cds.au:cdr:3"]
+      }
+    },
+    "userinfo": {
+      "given_name": null,
+      "family_name": null
+    }
+  },
+  "code_challenge": "ZTA2ZmFkYjUyMjA2NDNhZGVkYzE1M2I5OTYzZDAxNGI2NWNiZjAxMzVhNDlmMTk2NTlmZWE0OWVhOTQxZjhmZg==",
+  "code_challenge_method": "S256"
+}
 </code></pre>
 
 <p>The Request Object is a signed and encoded JWT specified in <a href="https://openid.net/specs/openid-connect-core-1_0.html#RequestObject">section 6.1</a> of <strong>[OIDC]</strong>.  As per <strong><a href="#nref-FAPI-RW-Draft">[FAPI-RW-Draft]</a></strong> <a href="https://openid.net/specs/openid-financial-api-part-2.html#authorization-server">section 5.2.2</a>, the <code>request</code> parameter <strong>MUST</strong> be present on requests to the <strong>[OIDC]</strong> Hybrid Authorisation End Point. The Request Object enables <strong>[OIDC]</strong> requests to be passed in a single and self-contained parameter.</p>
@@ -6331,12 +6511,30 @@ client_id=s6BhdRkqt3
 <p>Non-Normative Example</p>
 </blockquote>
 
-<pre class="highlight plaintext"><code>## Request
+<pre class="highlight diff tab-diff"><code>Updated non-normative example - FAPI 1.0 Final Phase 3 Obligations.
+
+Updated parameters:
+"response_types_supported" to support Authorization Code Flow ("code")
+"response_modes_supported" to support "jwt" for JARM. Note that "fragment" is also a supported JWT response mode
+
+Added required PAR parameter:
+<span class="gi">+ require_pushed_authorization_requests set to true
+</span>
+Added requied PKCE parameter:
+<span class="gi">+ code_challenge_methods_supported
+</span>
+Added requied JARM parameter:
+<span class="gi">+ authorization_signing_alg_values_supported
+</span>
+Added JARM parameters where authorisation response encryption is supported (refer to https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/479 for further details):
+<span class="gi">+ authorization_encryption_alg_values_supported
++ authorization_encryption_enc_values_supported
+</span></code></pre><pre class="highlight plaintext"><code>## Request
 
 GET /.well-known/openid-configuration HTTP/1.1
 Host: www.dh.com.au
 
-## Response
+## Response - FAPI 1.0 Final Phase 3 Obligations
 
 HTTP/1.1 200 OK
 Content-Type: application/json
@@ -6350,8 +6548,8 @@ Content-Type: application/json
   "registration_endpoint": "https://www.dh.com.au/register",
   "jwks_uri": "https://www.dh.com.au/jwks",
   "scopes_supported": ["openid", "profile", "..."],
-  "response_types_supported": ["code id_token"],
-  "response_modes_supported": ["fragment"],
+  "response_types_supported": ["code id_token", "code"],
+  "response_modes_supported": ["fragment", "jwt"],
   "grant_types_supported": ["authorization_code", "client_credentials", "urn:openid:params:modrna:grant-type:backchannel_request"],
   "acr_values_supported": ["urn:cds.au:cdr:2","urn:cds.au:cdr:3"],
   "subject_types_supported": ["pairwise"],
@@ -6363,7 +6561,12 @@ Content-Type: application/json
   "request_object_signing_alg_values_supported": ["ES256", "PS256"],
   "token_endpoint_auth_methods_supported": ["private_key_jwt"],
   "tls_client_certificate_bound_access_tokens": true,
-  "claims_supported": ["name", "given_name", "family_name", "acr", "auth_time", "sub", "refresh_token_expires_at", "sharing_expires_at"]
+  "claims_supported": ["name", "given_name", "family_name", "acr", "auth_time", "sub", "refresh_token_expires_at", "sharing_expires_at"],
+  "require_pushed_authorization_requests": true,
+  "code_challenge_methods_supported": "S256",
+  "authorization_signing_alg_values_supported": ["ES256", "PS256"],
+  "authorization_encryption_alg_values_supported": ["RSA-OAEP", "RSA-OAEP-256"],
+  "authorization_encryption_enc_values_supported": ["A256GCM", "A128CBC-HS256"]
 }
 </code></pre>
 
@@ -6418,7 +6621,8 @@ Content-Type: application/json
 <h3 id='authorisation-end-point'>Authorisation End Point</h3>
 
 <blockquote>
-<p>Non-Normative Example</p>
+<p>Non-Normative Example<br>
+This example demonstrates how an ADR may send an authorisation request object by value in the front-channel to the Data Holder.</p>
 </blockquote>
 
 <pre class="highlight plaintext"><code>## Request
@@ -6466,6 +6670,24 @@ Host: www.holder.com.au
     }
   }
 }
+
+</code></pre><pre class="highlight diff tab-diff"><code>Added FAPI 1.0 Final Phase 3 Obligation example
+</code></pre>
+
+<blockquote>
+<p>Non-Normative Example - FAPI 1.0 Final Phase 3 Obligation
+This example demonstrates how an ADR may send a staged authorisation request (using PAR) in the back-channel to the Data Holder.   </p>
+
+<p>It demonstrates a FAPI 1.0 Final compliant authorisation request using the PAR to first submit the authorisation request object.  </p>
+</blockquote>
+
+<pre class="highlight plaintext"><code>## Request
+
+GET /authorize?client_id=12345&amp;
+     scope=openid&amp;
+     request_uri=urn%3Aietf%3Aparams%3Aoauth%3Arequest_uri%3A6esc_11ACC5bwc014ltc14eY22c
+HTTP/1.1
+Host: www.holder.com.au
 
 </code></pre>
 
@@ -6863,7 +7085,8 @@ Authorization: Bearer eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNDU2In0.ey
 <h3 id='pushed-authorisation-end-point'>Pushed Authorisation End Point</h3>
 
 <blockquote>
-<p>Non-Normative Example</p>
+<p>Non-Normative Example<br>
+Utilising PAR Draft 01 specification and OIDC Hybrid Flow</p>
 
 <p>Request</p>
 </blockquote>
@@ -6876,7 +7099,8 @@ request=eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyMyJ9.ey...
 </code></pre>
 
 <blockquote>
-<p>Decoded Request</p>
+<p>Decoded Request<br>
+This example shows an authorisation request using the OIDC Hybrid Flow</p>
 </blockquote>
 
 <pre class="highlight plaintext"><code>{
@@ -6924,9 +7148,10 @@ Cache-Control: no-cache, no-store
 <p>Authorise</p>
 </blockquote>
 
-<pre class="highlight plaintext"><code>## This is used by the ADR in the subsequent authorisation request as follows
-## (note that until PAR is an RFC standard, the mandatory oAuth parameters as
-## per FAPI R/W for confidential clients must be replayed in the request URL):
+<pre class="highlight plaintext"><code>## The request_uri is used by the ADR in the subsequent authorisation request as follows
+## (note this example is pre-RFC using Draft 01 of the PAR standard, hence it includes 
+## the mandatory oAuth parameters as per FAPI R/W for confidential clients must be 
+## replayed in the request URL):
 
 GET /authorise?client_id=s6BhdRkqt3&amp;
    response_type=code%20id_token&amp;
@@ -6934,6 +7159,103 @@ GET /authorise?client_id=s6BhdRkqt3&amp;
    request_uri=urn%3Adata.holder.com.au%3Abwc4JK-ESC0w8acc191e-Y1LTC2
 HTTP/1.1
 Host: data.holder.com.au
+</code></pre><pre class="highlight diff tab-diff"><code>Added FAPI 1.0 Final Phase 3 Obligation example
+</code></pre>
+
+<blockquote>
+<p>Non-Normative Example - FAPI 1.0 Final Phase 3 Obligations<br>
+Utilising FAPI 1.0 Final, PAR RFC9126, PKCE, JARM and Authorization Code Flow</p>
+
+<p>Request</p>
+</blockquote>
+
+<pre class="highlight plaintext"><code>POST /par HTTP/1.1
+     Host: data.holder.com.au
+     Content-Type: application/x-www-form-urlencoded
+
+request=eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyMyJ9.ey...
+</code></pre>
+
+<blockquote>
+<p>Decoded Request - FAPI 1.0 Final Phase 3 Obligation<br>
+This example shows an authorisation request using the Authorisation Code Flow (FAPI 1.0 migration Phase 3)</p>
+</blockquote>
+
+<pre class="highlight plaintext"><code>{
+  "iss": "s6BhdRkqt3",
+  "exp": 1680832800,
+  "nbf": 1680829200,
+  "aud": "https://www.recipient.com.au",
+  "response_type": "code",
+  "client_id": "s6BhdRkqt3",
+  "redirect_uri": "https://www.recipient.com.au/coolstuff",
+  "scope": "openid profile bank:accounts.basic:read
+            bank:accounts.detail:read",
+  "nonce": "n-0S6_WzA2Mj",
+  "state": "af0ifjsldkj",
+  "claims": {
+    "sharing_duration": 7776000,
+    "cdr_arrangement_id": "02e7c9d9-cfe7-4c3e-8f64-e91173c84ecb",
+    "id_token": {
+      "acr": {
+        "essential": true,
+        "values": ["urn:cds.au:cdr:3"]
+      }
+    },
+    "userinfo": {
+      "given_name": null,
+      "family_name": null
+    }
+  },
+  "code_challenge": "ZTA2ZmFkYjUyMjA2NDNhZGVkYzE1M2I5OTYzZDAxNGI2NWNiZjAxMzVhNDlmMTk2NTlmZWE0OWVhOTQxZjhmZg==",
+  "code_challenge_method": "S256"
+}
+</code></pre>
+
+<blockquote>
+<p>Response - FAPI 1.0 Final Phase 3 Obligation  </p>
+</blockquote>
+
+<pre class="highlight plaintext"><code>HTTP/1.1 201 Created
+Content-Type: application/json
+Cache-Control: no-cache, no-store
+{
+  "request_uri": "urn:data.holder.com.au:bwc4JK-ESC0w8acc191e-Y1LTC2",
+  "expires_in": 3600
+}
+</code></pre>
+
+<blockquote>
+<p>Authorise - FAPI 1.0 Final Phase 3 Obligation  </p>
+</blockquote>
+
+<pre class="highlight plaintext"><code>## This is used by the ADR in the subsequent authorisation request as follows
+## (this example uses PAR RFC 9126 and Authorization Code Flow):
+
+GET /authorise?client_id=s6BhdRkqt3&amp;
+   request_uri=urn%3Adata.holder.com.au%3Abwc4JK-ESC0w8acc191e-Y1LTC2
+HTTP/1.1
+Host: data.holder.com.au
+</code></pre>
+
+<blockquote>
+<p>Authorisation response using JARM response encryption - FAPI 1.0 Final Phase 3 Obligation  </p>
+</blockquote>
+
+<pre class="highlight plaintext"><code>eyJraWQiOiIwZWQ3YTNkZi1hMGJlLTRhZjQtOTk0YS1jNDBhODc0ODQwNjMiLCJhbGciOiJQUzI1NiJ9.eyJhdWQiOiIxMjM0NSIsImNvZGUiOiJpMVdzUm4xdUIxIiwiaXNzIjoiaHR0cHM6Ly9kYXRhLmhvbGRlci5jb20uYXUvIiwic3RhdGUiOiJhZjBpZmpzbGRraiIsImV4cCI6MTY2NzI2ODAwMH0.flBD3bTUHUFiNMbfgt-Uqt4wnEFHY79QYx0f9qrqPGPZLB-RBb-F20aPTyB9XaJ1JJ3ie1m0YxdMC7t6aiXSchZZQXBmYpIjvlbTceOVBYlr88llqeLAfQ5nCDD4p2axqyedpA83OgPF8i_Ngw0oRsCwBTueo6C40wYeI3ZT_n0hucQqGHcSoR1im7IY1rY0x99EZjJI3pxVtGwst6e-msomipnYedCdkNuPHE_Rnj0g897zi_NdK6m3dhxcpwaoMXcaYfMkkkzTlbz5_Ic9lWMx_z01C2wRNjRBArEJsNXW0Q8Vdhk_vtOAmO92Pr3cI8BpTr5KdY2O1iD-yRnkug
+
+## Decoded Response
+{
+  "kid": "0ed7a3df-a0be-4af4-994a-c40a87484063",
+  "alg": "PS256"
+}
+{
+  "aud": "12345",
+  "code": "i1WsRn1uB1",
+  "iss": "https://data.holder.com.au/",
+  "state": "af0ifjsldkj",
+  "exp": 1667268000
+}
 </code></pre>
 
 <table><thead>
@@ -25203,19 +25525,21 @@ from:
 <span class="gi">+ NaturalNumber
 </span>
 Updated description of below fields in `EnergyDerRecord`
-• `approvedCapacity` 
+• `approvedCapacity`
 • `availablePhasesCount`
 • `installedPhasesCount`
 to include:
 <span class="gi">+ Value of 0 indicates no DER record exists for the given servicePointId
 </span>
-Updated description of below fields in `EnergyDerRecord.acConnections`: 
+Updated description of below fields in `EnergyDerRecord.acConnections`:
 • `inverterDeviceCapacity`
 • `derDevices.nominalRatedCapacity`
 • `derDevices.nominalStorageCapacity`
 to include
 <span class="gi">+ Default is 0 if value not known
-</span></code></pre>
+</span>
+Defect fix for readQualities to make it an array instead of an object
+</code></pre>
 <h2 id='get-generic-plans'>Get Generic Plans</h2>
 
 <p><a id="opIdlistPlans"></a></p>
@@ -43310,15 +43634,6 @@ This operation does not require authentication
       </span><span class="s2">"pricingUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"bundleUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"meteringCharges"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"minimumValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"maximumValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"period"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">],</span><span class="w">
     </span><span class="s2">"bundles"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -48661,15 +48976,6 @@ To perform this operation, you must be authenticated and authorised with the fol
       </span><span class="s2">"pricingUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"bundleUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"meteringCharges"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"minimumValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"maximumValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"period"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">],</span><span class="w">
     </span><span class="s2">"bundles"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -50106,15 +50412,6 @@ To perform this operation, you must be authenticated and authorised with the fol
     </span><span class="s2">"pricingUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"bundleUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
   </span><span class="p">},</span><span class="w">
-  </span><span class="s2">"meteringCharges"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"minimumValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"maximumValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"period"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">],</span><span class="w">
   </span><span class="s2">"bundles"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -50204,42 +50501,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>object</td>
 <td>mandatory</td>
 <td>none</td>
-</tr>
-<tr>
-<td>» meteringCharges</td>
-<td>[object]</td>
-<td>optional</td>
-<td>Charges for metering included in the plan</td>
-</tr>
-<tr>
-<td>»» displayName</td>
-<td>string</td>
-<td>mandatory</td>
-<td>Display name of the charge</td>
-</tr>
-<tr>
-<td>»» description</td>
-<td>string</td>
-<td>optional</td>
-<td>Description of the charge</td>
-</tr>
-<tr>
-<td>»» minimumValue</td>
-<td><a href="#common-field-types">AmountString</a></td>
-<td>mandatory</td>
-<td>Minimum value of the charge if the charge is a range or the absolute value of the charge if no range is specified</td>
-</tr>
-<tr>
-<td>»» maximumValue</td>
-<td><a href="#common-field-types">AmountString</a></td>
-<td>optional</td>
-<td>The upper limit of the charge if the charge could occur in a range</td>
-</tr>
-<tr>
-<td>»» period</td>
-<td><a href="#common-field-types">ExternalRef</a></td>
-<td>optional</td>
-<td>The charges that occur on a schedule indicates the frequency. Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 Durations</a> (excludes recurrence syntax)</td>
 </tr>
 <tr>
 <td>» bundles</td>
@@ -51076,7 +51337,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>»»» charges</td>
 <td>[object]</td>
 <td>optional</td>
-<td>Charges for metering included in the plan</td>
+<td>Charges included in the plan</td>
 </tr>
 <tr>
 <td>»»»» displayName</td>
@@ -51473,7 +51734,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>startDate</td>
 <td><a href="#common-field-types">DateString</a></td>
 <td>mandatory</td>
-<td>Optional start date for the application of the concession</td>
+<td>Start date for the application of the concession</td>
 </tr>
 <tr>
 <td>endDate</td>
@@ -58076,19 +58337,21 @@ from:
 <span class="gi">+ NaturalNumber
 </span>
 Updated description of below fields in `EnergyDerRecord`
-• `approvedCapacity` 
+• `approvedCapacity`
 • `availablePhasesCount`
 • `installedPhasesCount`
 to include:
 <span class="gi">+ Value of 0 indicates no DER record exists for the given servicePointId
 </span>
-Updated description of below fields in `EnergyDerRecord.acConnections`: 
+Updated description of below fields in `EnergyDerRecord.acConnections`:
 • `inverterDeviceCapacity`
 • `derDevices.nominalRatedCapacity`
 • `derDevices.nominalStorageCapacity`
 to include
 <span class="gi">+ Default is 0 if value not known
-</span></code></pre>
+</span>
+Defect fix for readQualities to make it an array instead of an object
+</code></pre>
 <h2 id='get-service-points-sr'>Get Service Points (SR)</h2>
 
 <p><a id="opIdlistServicePoints"></a></p>
@@ -58849,11 +59112,13 @@ x-cds-arrangement: string
           </span><span class="s2">"intervalReads"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
             </span><span class="mi">0</span><span class="w">
           </span><span class="p">],</span><span class="w">
-          </span><span class="s2">"readQualities"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"startInterval"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"endInterval"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"quality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUBSTITUTE"</span><span class="w">
-          </span><span class="p">}</span><span class="w">
+          </span><span class="s2">"readQualities"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"startInterval"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"endInterval"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"quality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUBSTITUTE"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">]</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
@@ -59193,11 +59458,13 @@ x-cds-arrangement: string
           </span><span class="s2">"intervalReads"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
             </span><span class="mi">0</span><span class="w">
           </span><span class="p">],</span><span class="w">
-          </span><span class="s2">"readQualities"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"startInterval"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"endInterval"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"quality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUBSTITUTE"</span><span class="w">
-          </span><span class="p">}</span><span class="w">
+          </span><span class="s2">"readQualities"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"startInterval"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"endInterval"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"quality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUBSTITUTE"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">]</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
@@ -60103,11 +60370,13 @@ This operation does not require authentication
           </span><span class="s2">"intervalReads"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
             </span><span class="mi">0</span><span class="w">
           </span><span class="p">],</span><span class="w">
-          </span><span class="s2">"readQualities"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"startInterval"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"endInterval"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"quality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUBSTITUTE"</span><span class="w">
-          </span><span class="p">}</span><span class="w">
+          </span><span class="s2">"readQualities"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"startInterval"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"endInterval"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"quality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUBSTITUTE"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">]</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
@@ -61248,11 +61517,13 @@ This operation does not require authentication
     </span><span class="s2">"intervalReads"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="mi">0</span><span class="w">
     </span><span class="p">],</span><span class="w">
-    </span><span class="s2">"readQualities"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"startInterval"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"endInterval"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"quality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUBSTITUTE"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
+    </span><span class="s2">"readQualities"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"startInterval"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"endInterval"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"quality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUBSTITUTE"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
@@ -61363,7 +61634,7 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>» readQualities</td>
-<td>object</td>
+<td>[object]</td>
 <td>conditional</td>
 <td>Specifies quality of reads that are not ACTUAL.  For read indices that are not specified, quality is assumed to be ACTUAL. If not present, all quality of all reads are assumed to be actual. Required when interval-reads query parameter equals FULL or MIN_30</td>
 </tr>
@@ -62350,10 +62621,10 @@ This operation does not require authentication
 </tr>
 </thead><tbody>
 <tr>
-<td>TBA</td>
+<td>03/11/2022</td>
 <td>1.20.0</td>
 <td>Changes arising from Decision 259 (Maintenance iteration 12)</td>
-<td>See <a href="includes/releasenotes/releasenotes.1.12.0.html">release notes</a> and <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/259">Decision 259</a> for details</td>
+<td>See <a href="includes/releasenotes/releasenotes.1.20.0.html">release notes</a> and <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/259">Decision 259</a> for details.  Also includes first draft of Telco standards</td>
 </tr>
 <tr>
 <td>13/09/2022</td>
@@ -62771,7 +63042,7 @@ This operation does not require authentication
 <tr>
 <td><a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.19.0/'>13/09/2022</a></td>
 <td>1.19.0</td>
-<td><a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.19.0/'>13/09/2022</a></td>
+<td><a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.19.0/'>Changes arising from Decision 260 (Energy Closed Accounts)</a></td>
 </tr>
 <tr>
 <td><a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.18.0/'>11/08/2022</a></td>

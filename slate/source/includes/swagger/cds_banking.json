@@ -12,7 +12,7 @@
       "url" : "https://opensource.org/licenses/MIT"
     },
     "title" : "CDR Banking API",
-    "version" : "1.19.0"
+    "version" : "1.20.0"
   },
   "servers" : [ {
     "url" : "https://data.holder.com.au/cds-au/v1"
@@ -5733,7 +5733,7 @@
       "BankingTransactionDetail_allOf_extendedData_x2p101Payload" : {
         "properties" : {
           "extendedDescription" : {
-            "description" : "An extended string description. Only present if specified by the extensionUType field",
+            "description" : "An extended string description. Required if the extensionUType field is `x2p101Payload`",
             "type" : "string"
           },
           "endToEndId" : {
@@ -5745,8 +5745,8 @@
             "type" : "string"
           }
         },
-        "required" : [ "extendedDescription" ],
-        "type" : "object"
+        "type" : "object",
+        "x-conditional" : [ "extendedDescription" ]
       },
       "BankingTransactionDetail_allOf_extendedData" : {
         "properties" : {
@@ -5759,7 +5759,7 @@
             "type" : "string"
           },
           "extensionUType" : {
-            "description" : "Optional extended data provided specific to transaction originated via NPP",
+            "description" : "Optional extended data specific to transactions originated via NPP",
             "enum" : [ "x2p101Payload" ],
             "type" : "string"
           },
@@ -5774,7 +5774,7 @@
         },
         "required" : [ "service" ],
         "type" : "object",
-        "x-conditional" : [ "payer", "payee", "extendedDescription" ]
+        "x-conditional" : [ "payer", "payee", "x2p101Payload" ]
       },
       "BankingTransactionDetail_allOf" : {
         "properties" : {

@@ -3,7 +3,7 @@ info:
   description: Consumer Data Right end points and payloads for Secondary Data Holder
     for the Energy sector
   title: CDR Energy Secondary Data Holder API
-  version: 1.19.0
+  version: 1.20.0
 servers:
 - url: /
 paths:
@@ -1557,7 +1557,10 @@ components:
               - 5.962133916683182
               - 5.962133916683182
               readQualities:
-                startInterval: 5
+              - startInterval: 5
+                endInterval: 2
+                quality: SUBSTITUTE
+              - startInterval: 5
                 endInterval: 2
                 quality: SUBSTITUTE
               aggregateValue: 1.4658129805029452
@@ -1579,7 +1582,10 @@ components:
               - 5.962133916683182
               - 5.962133916683182
               readQualities:
-                startInterval: 5
+              - startInterval: 5
+                endInterval: 2
+                quality: SUBSTITUTE
+              - startInterval: 5
                 endInterval: 2
                 quality: SUBSTITUTE
               aggregateValue: 1.4658129805029452
@@ -1630,8 +1636,8 @@ components:
               neutralVoltageDisplacement: 7.457744773683766
               sustainedOverVoltage: 1.2315135367772556
               voltageVectorShift: 6.84685269835264
-            installedPhasesCount: 1
-            availablePhasesCount: 2
+            installedPhasesCount: 0
+            availablePhasesCount: 1
             islandableInstallation: true
             servicePointId: servicePointId
             approvedCapacity: 0.8008281904610115
@@ -1709,8 +1715,8 @@ components:
               neutralVoltageDisplacement: 7.457744773683766
               sustainedOverVoltage: 1.2315135367772556
               voltageVectorShift: 6.84685269835264
-            installedPhasesCount: 1
-            availablePhasesCount: 2
+            installedPhasesCount: 0
+            availablePhasesCount: 1
             islandableInstallation: true
             servicePointId: servicePointId
             approvedCapacity: 0.8008281904610115
@@ -1812,8 +1818,8 @@ components:
             neutralVoltageDisplacement: 7.457744773683766
             sustainedOverVoltage: 1.2315135367772556
             voltageVectorShift: 6.84685269835264
-          installedPhasesCount: 1
-          availablePhasesCount: 2
+          installedPhasesCount: 0
+          availablePhasesCount: 1
           islandableInstallation: true
           servicePointId: servicePointId
           approvedCapacity: 0.8008281904610115
@@ -2223,7 +2229,10 @@ components:
           - 5.962133916683182
           - 5.962133916683182
           readQualities:
-            startInterval: 5
+          - startInterval: 5
+            endInterval: 2
+            quality: SUBSTITUTE
+          - startInterval: 5
             endInterval: 2
             quality: SUBSTITUTE
           aggregateValue: 1.4658129805029452
@@ -2309,8 +2318,8 @@ components:
           neutralVoltageDisplacement: 7.457744773683766
           sustainedOverVoltage: 1.2315135367772556
           voltageVectorShift: 6.84685269835264
-        installedPhasesCount: 1
-        availablePhasesCount: 2
+        installedPhasesCount: 0
+        availablePhasesCount: 1
         islandableInstallation: true
         servicePointId: servicePointId
         approvedCapacity: 0.8008281904610115
@@ -2380,22 +2389,25 @@ components:
           type: string
         approvedCapacity:
           description: Approved small generating unit capacity as agreed with NSP
-            in the connection agreement, expressed in kVA
+            in the connection agreement, expressed in kVA. Value of 0 indicates no
+            DER record exists for the given servicePointId
           type: number
         availablePhasesCount:
           description: The number of phases available for the installation of DER.
-            Acceptable values are 1, 2 or 3.
+            Acceptable values are 0, 1, 2 or 3. Value of 0 indicates no DER record
+            exists for the given servicePointId
           maximum: 3
-          minimum: 1
+          minimum: 0
           type: integer
-          x-cds-type: PositiveInteger
+          x-cds-type: NaturalNumber
         installedPhasesCount:
           description: The number of phases that DER is connected to. Acceptable values
-            are 1, 2 or 3.
+            are 0, 1, 2 or 3. Value of 0 indicates no DER record exists for the given
+            servicePointId
           maximum: 3
-          minimum: 1
+          minimum: 0
           type: integer
-          x-cds-type: PositiveInteger
+          x-cds-type: NaturalNumber
         islandableInstallation:
           description: For identification of small generating units designed with
             the ability to operate in an islanded mode
@@ -2757,7 +2769,10 @@ components:
             - 5.962133916683182
             - 5.962133916683182
             readQualities:
-              startInterval: 5
+            - startInterval: 5
+              endInterval: 2
+              quality: SUBSTITUTE
+            - startInterval: 5
               endInterval: 2
               quality: SUBSTITUTE
             aggregateValue: 1.4658129805029452
@@ -2779,7 +2794,10 @@ components:
             - 5.962133916683182
             - 5.962133916683182
             readQualities:
-              startInterval: 5
+            - startInterval: 5
+              endInterval: 2
+              quality: SUBSTITUTE
+            - startInterval: 5
               endInterval: 2
               quality: SUBSTITUTE
             aggregateValue: 1.4658129805029452
@@ -2818,8 +2836,8 @@ components:
             neutralVoltageDisplacement: 7.457744773683766
             sustainedOverVoltage: 1.2315135367772556
             voltageVectorShift: 6.84685269835264
-          installedPhasesCount: 1
-          availablePhasesCount: 2
+          installedPhasesCount: 0
+          availablePhasesCount: 1
           islandableInstallation: true
           servicePointId: servicePointId
           approvedCapacity: 0.8008281904610115
@@ -2897,8 +2915,8 @@ components:
             neutralVoltageDisplacement: 7.457744773683766
             sustainedOverVoltage: 1.2315135367772556
             voltageVectorShift: 6.84685269835264
-          installedPhasesCount: 1
-          availablePhasesCount: 2
+          installedPhasesCount: 0
+          availablePhasesCount: 1
           islandableInstallation: true
           servicePointId: servicePointId
           approvedCapacity: 0.8008281904610115
@@ -3314,10 +3332,6 @@ components:
       - value
       type: object
     EnergyUsageRead_intervalRead_readQualities:
-      description: ' Specifies quality of reads that are not ACTUAL.  For read indices
-        that are not specified, quality is assumed to be ACTUAL. If not present, all
-        quality of all reads are assumed to be actual. Required when interval-reads
-        query parameter equals FULL or MIN_30'
       example:
         startInterval: 5
         endInterval: 2
@@ -3351,7 +3365,10 @@ components:
         - 5.962133916683182
         - 5.962133916683182
         readQualities:
-          startInterval: 5
+        - startInterval: 5
+          endInterval: 2
+          quality: SUBSTITUTE
+        - startInterval: 5
           endInterval: 2
           quality: SUBSTITUTE
         aggregateValue: 1.4658129805029452
@@ -3376,7 +3393,13 @@ components:
             type: number
           type: array
         readQualities:
-          $ref: '#/components/schemas/EnergyUsageRead_intervalRead_readQualities'
+          description: ' Specifies quality of reads that are not ACTUAL.  For read
+            indices that are not specified, quality is assumed to be ACTUAL. If not
+            present, all quality of all reads are assumed to be actual. Required when
+            interval-reads query parameter equals FULL or MIN_30'
+          items:
+            $ref: '#/components/schemas/EnergyUsageRead_intervalRead_readQualities'
+          type: array
       required:
       - aggregateValue
       type: object
@@ -3512,12 +3535,12 @@ components:
         nominalRatedCapacity:
           description: Maximum output in kVA that is listed in the product specification
             by the manufacturer. This refers to the capacity of each unit within the
-            device group
+            device group. Default is 0 if value not known
           type: number
         nominalStorageCapacity:
           description: Maximum storage capacity in kVAh. This refers to the capacity
             of each storage module within the device group. Mandatory if type is equal
-            to “STORAGE”
+            to “STORAGE”. Default is 0 if value not known
           type: number
       required:
       - count
@@ -3600,7 +3623,8 @@ components:
           type: string
         inverterDeviceCapacity:
           description: The rated AC output power that is listed in the product specified
-            by the manufacturer. Mandatory if equipmentType is INVERTER
+            by the manufacturer. Mandatory if equipmentType is INVERTER. Default is
+            0 if value not known
           type: number
         derDevices:
           items:

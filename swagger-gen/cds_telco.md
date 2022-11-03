@@ -4849,7 +4849,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |displayName|string|mandatory|The display name of the concession|
 |additionalInfo|string|optional|Display text providing more information on the concession|
 |additionalInfoUri|[URIString](#common-field-types)|optional|Optional link to additional information regarding the concession|
-|startDate|[DateString](#common-field-types)|mandatory|Optional start date for the application of the concession|
+|startDate|[DateString](#common-field-types)|mandatory|Start date for the application of the concession|
 |endDate|[DateString](#common-field-types)|optional|Optional end date for the application of the concession|
 |discountFrequency|[ExternalRef](#common-field-types)|conditional|Conditional attribute for frequency at which a concession is applied. Required if type is FIXED_AMOUNT or FIXED_PERCENTAGE. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
 |amount|[AmountString](#common-field-types)|conditional|Conditional attribute for the amount of discount for the concession- required if type is FIXED_AMOUNT|

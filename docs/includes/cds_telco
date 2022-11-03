@@ -8364,7 +8364,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>startDate</td>
 <td><a href="#common-field-types">DateString</a></td>
 <td>mandatory</td>
-<td>Optional start date for the application of the concession</td>
+<td>Start date for the application of the concession</td>
 </tr>
 <tr>
 <td>endDate</td>

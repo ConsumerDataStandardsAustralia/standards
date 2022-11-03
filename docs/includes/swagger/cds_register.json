@@ -2,7 +2,7 @@
   "openapi" : "3.0.3",
   "info" : {
     "title" : "CDR Participant Discovery API",
-    "version" : "1.19.0"
+    "version" : "1.20.0"
   },
   "servers" : [ {
     "url" : "https://<register-base-url>/"
@@ -1605,7 +1605,7 @@
             "type" : "string"
           }
         },
-        "required" : [ "logoUri", "softwareProductId", "softwareProductName", "status" ],
+        "required" : [ "logoUri", "softwareProductDescription", "softwareProductId", "softwareProductName", "status" ],
         "type" : "object"
       },
       "LegalEntityDetail" : {
