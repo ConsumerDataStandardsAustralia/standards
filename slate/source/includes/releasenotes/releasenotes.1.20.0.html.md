@@ -23,7 +23,7 @@ This release addresses the following change requests raised on [Standards Mainte
 - [Standards Maintenance Issue 458 - FAPI 1.0 Non Normative Examples](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/458)
 - [Standards Maintenance Issue 525: softwareProductDescription should be marked as mandatory](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/525)
 - [Standards Maintenance Issue 411: Clarification of x-fapi-interaction-id header](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/411)
-- [Standards Staging Issue 447: CORS typos in CDR](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/447)
+- [Standards Maintenance Issue 447: CORS typos in CDR](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/447)
 - [Standards Maintenance Issue 414: Properties in BankingTransactionDetail objects](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/414)
 - [Standards Maintenance Issue 506: Energy error codes for issues in data received by DH from SDH](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/506)
 - [Standards Maintenance Issue 526: Energy / Get DER for Service Point - allow for no data](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/526)
