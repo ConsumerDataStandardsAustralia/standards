@@ -5067,8 +5067,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |»»»» amount|[AmountString](#common-field-types)|mandatory|Cost amount of SMS messages. Including premium SMS services|
 |»»» mms|object|mandatory|Summary of MMS usage|
 |»»»» national|number|mandatory|Number of national MMS messages sent|
-|»»»» international|number|mandatory|ber of international MMS messages sent|
-|»»»» roaming|number|mandatory|Number of roaming SMS messages sent. Including premium SMS services|
+|»»»» international|number|mandatory|Number of international MMS messages sent|
+|»»»» roaming|number|mandatory|Number of roaming MMS messages sent. Including premium MMS services|
 |»»»» amount|[AmountString](#common-field-types)|mandatory|Cost amount of MMS messages|
 
 <h3 class="schema-toc" id="tocStelcoinvoiceaccountcharges">TelcoInvoiceAccountCharges</h3>

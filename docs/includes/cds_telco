@@ -8881,13 +8881,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>»»»» international</td>
 <td>number</td>
 <td>mandatory</td>
-<td>ber of international MMS messages sent</td>
+<td>Number of international MMS messages sent</td>
 </tr>
 <tr>
 <td>»»»» roaming</td>
 <td>number</td>
 <td>mandatory</td>
-<td>Number of roaming SMS messages sent. Including premium SMS services</td>
+<td>Number of roaming MMS messages sent. Including premium MMS services</td>
 </tr>
 <tr>
 <td>»»»» amount</td>

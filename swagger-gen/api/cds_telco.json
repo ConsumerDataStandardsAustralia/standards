@@ -2042,12 +2042,12 @@
                   },
                   "international":
                   {
-                    "description": "ber of international MMS messages sent",
+                    "description": "Number of international MMS messages sent",
                     "type": "number"
                   },
                   "roaming":
                   {
-                    "description": "Number of roaming SMS messages sent. Including premium SMS services",
+                    "description": "Number of roaming MMS messages sent. Including premium MMS services",
                     "type": "number"
                   },
                   "amount":
