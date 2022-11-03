@@ -277,14 +277,14 @@ components:
             secondary:
               secondary:
                 previousDays:
-                - 2.8841621266687802
-                - 2.8841621266687802
-                currentDay: 1.284659006116532
-              primary:
-                previousDays:
                 - 6.878052220127876
                 - 6.878052220127876
                 currentDay: 6.778324963048013
+              primary:
+                previousDays:
+                - 2.8841621266687802
+                - 2.8841621266687802
+                currentDay: 1.284659006116532
             highPriority:
               previousDays:
               - 9.369310271410669
@@ -308,14 +308,14 @@ components:
             largeSecondary:
               secondary:
                 previousDays:
-                - 2.8841621266687802
-                - 2.8841621266687802
-                currentDay: 1.284659006116532
-              primary:
-                previousDays:
                 - 6.878052220127876
                 - 6.878052220127876
                 currentDay: 6.778324963048013
+              primary:
+                previousDays:
+                - 2.8841621266687802
+                - 2.8841621266687802
+                currentDay: 1.284659006116532
           invocations:
             unattended:
               previousDays:
@@ -505,14 +505,14 @@ components:
         secondary:
           secondary:
             previousDays:
-            - 2.8841621266687802
-            - 2.8841621266687802
-            currentDay: 1.284659006116532
-          primary:
-            previousDays:
             - 6.878052220127876
             - 6.878052220127876
             currentDay: 6.778324963048013
+          primary:
+            previousDays:
+            - 2.8841621266687802
+            - 2.8841621266687802
+            currentDay: 1.284659006116532
         highPriority:
           previousDays:
           - 9.369310271410669
@@ -536,14 +536,14 @@ components:
         largeSecondary:
           secondary:
             previousDays:
-            - 2.8841621266687802
-            - 2.8841621266687802
-            currentDay: 1.284659006116532
-          primary:
-            previousDays:
             - 6.878052220127876
             - 6.878052220127876
             currentDay: 6.778324963048013
+          primary:
+            previousDays:
+            - 2.8841621266687802
+            - 2.8841621266687802
+            currentDay: 1.284659006116532
       properties:
         unauthenticated:
           $ref: '#/components/schemas/AverageResponseMetricsV2_unauthenticated'
@@ -799,14 +799,14 @@ components:
           secondary:
             secondary:
               previousDays:
-              - 2.8841621266687802
-              - 2.8841621266687802
-              currentDay: 1.284659006116532
-            primary:
-              previousDays:
               - 6.878052220127876
               - 6.878052220127876
               currentDay: 6.778324963048013
+            primary:
+              previousDays:
+              - 2.8841621266687802
+              - 2.8841621266687802
+              currentDay: 1.284659006116532
           highPriority:
             previousDays:
             - 9.369310271410669
@@ -830,14 +830,14 @@ components:
           largeSecondary:
             secondary:
               previousDays:
-              - 2.8841621266687802
-              - 2.8841621266687802
-              currentDay: 1.284659006116532
-            primary:
-              previousDays:
               - 6.878052220127876
               - 6.878052220127876
               currentDay: 6.778324963048013
+            primary:
+              previousDays:
+              - 2.8841621266687802
+              - 2.8841621266687802
+              currentDay: 1.284659006116532
         invocations:
           unattended:
             previousDays:
@@ -1202,8 +1202,8 @@ components:
       x-conditional:
       - currentDay
       - previousDays
-    AverageResponseMetricsV2_secondary_secondary:
-      description: Average response time as measured for the secondary data holder
+    AverageResponseMetricsV2_secondary_primary:
+      description: Average response time as measured for the primary data holder
       example:
         previousDays:
         - 2.8841621266687802
@@ -1224,8 +1224,8 @@ components:
       x-conditional:
       - currentDay
       - previousDays
-    AverageResponseMetricsV2_secondary_primary:
-      description: Average response time as measured for the primary data holder
+    AverageResponseMetricsV2_secondary_secondary:
+      description: Average response time as measured for the secondary data holder
       example:
         previousDays:
         - 6.878052220127876
@@ -1252,19 +1252,19 @@ components:
       example:
         secondary:
           previousDays:
-          - 2.8841621266687802
-          - 2.8841621266687802
-          currentDay: 1.284659006116532
-        primary:
-          previousDays:
           - 6.878052220127876
           - 6.878052220127876
           currentDay: 6.778324963048013
+        primary:
+          previousDays:
+          - 2.8841621266687802
+          - 2.8841621266687802
+          currentDay: 1.284659006116532
       properties:
-        secondary:
-          $ref: '#/components/schemas/AverageResponseMetricsV2_secondary_secondary'
         primary:
           $ref: '#/components/schemas/AverageResponseMetricsV2_secondary_primary'
+        secondary:
+          $ref: '#/components/schemas/AverageResponseMetricsV2_secondary_secondary'
       required:
       - primary
       - secondary
@@ -1275,19 +1275,19 @@ components:
       example:
         secondary:
           previousDays:
-          - 2.8841621266687802
-          - 2.8841621266687802
-          currentDay: 1.284659006116532
-        primary:
-          previousDays:
           - 6.878052220127876
           - 6.878052220127876
           currentDay: 6.778324963048013
+        primary:
+          previousDays:
+          - 2.8841621266687802
+          - 2.8841621266687802
+          currentDay: 1.284659006116532
       properties:
-        secondary:
-          $ref: '#/components/schemas/AverageResponseMetricsV2_secondary_secondary'
         primary:
           $ref: '#/components/schemas/AverageResponseMetricsV2_secondary_primary'
+        secondary:
+          $ref: '#/components/schemas/AverageResponseMetricsV2_secondary_secondary'
       required:
       - primary
       - secondary

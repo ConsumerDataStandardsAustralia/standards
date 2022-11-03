@@ -625,33 +625,13 @@
             ]
           },
           "secondary": {
+            "type": "object",
+            "description": "Average response time for the secondary tier.  Mandatory for data holders designated for a Shared Responsibility Data Request data cluster",
             "required": [
               "primary",
               "secondary"
             ],
-            "type": "object",
             "properties": {
-              "secondary": {
-                "type": "object",
-                "properties": {
-                  "currentDay": {
-                    "type": "number",
-                    "description": "Average response time for current day"
-                  },
-                  "previousDays": {
-                    "type": "array",
-                    "description": "Average response time for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.",
-                    "items": {
-                      "type": "number"
-                    }
-                  }
-                },
-                "description": "Average response time as measured for the secondary data holder",
-                "x-conditional": [
-                  "currentDay",
-                  "previousDays"
-                ]
-              },
               "primary": {
                 "type": "object",
                 "properties": {
@@ -672,9 +652,29 @@
                   "currentDay",
                   "previousDays"
                 ]
+              },
+              "secondary": {
+                "type": "object",
+                "description": "Average response time as measured for the secondary data holder",
+                "properties": {
+                  "currentDay": {
+                    "type": "number",
+                    "description": "Average response time for current day"
+                  },
+                  "previousDays": {
+                    "type": "array",
+                    "description": "Average response time for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.",
+                    "items": {
+                      "type": "number"
+                    }
+                  }
+                },
+                "x-conditional": [
+                  "currentDay",
+                  "previousDays"
+                ]
               }
-            },
-            "description": "Average response time for the secondary tier.  Mandatory for data holders designated for a Shared Responsibility Data Request data cluster"
+            }
           },
           "largeSecondary": {
             "required": [
@@ -683,27 +683,6 @@
             ],
             "type": "object",
             "properties": {
-              "secondary": {
-                "type": "object",
-                "properties": {
-                  "currentDay": {
-                    "type": "number",
-                    "description": "Average response time for current day"
-                  },
-                  "previousDays": {
-                    "type": "array",
-                    "description": "Average response time for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.",
-                    "items": {
-                      "type": "number"
-                    }
-                  }
-                },
-                "description": "Average response time as measured for the secondary data holder",
-                "x-conditional": [
-                  "currentDay",
-                  "previousDays"
-                ]
-              },
               "primary": {
                 "type": "object",
                 "properties": {
@@ -720,6 +699,27 @@
                   }
                 },
                 "description": "Average response time as measured for the primary data holder",
+                "x-conditional": [
+                  "currentDay",
+                  "previousDays"
+                ]
+              },
+              "secondary": {
+                "type": "object",
+                "properties": {
+                  "currentDay": {
+                    "type": "number",
+                    "description": "Average response time for current day"
+                  },
+                  "previousDays": {
+                    "type": "array",
+                    "description": "Average response time for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.",
+                    "items": {
+                      "type": "number"
+                    }
+                  }
+                },
+                "description": "Average response time as measured for the secondary data holder",
                 "x-conditional": [
                   "currentDay",
                   "previousDays"

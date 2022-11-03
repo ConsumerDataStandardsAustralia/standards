@@ -1061,7 +1061,7 @@ This operation does not require authentication
 |grant_types_supported|[string]|mandatory|JSON array containing a list of the OAuth 2.0 Grant Type values that the CDR Register supports|
 |token_endpoint_auth_methods_supported|[string]|mandatory|JSON array containing a list of Client Authentication methods supported by this Token Endpoint|
 |tls_client_certificate_bound_access_tokens|boolean|mandatory|Boolean value indicating server support for mutual TLS client certificate bound access tokens|
-|token_endpoint_auth_signing_alg_values_supported|[string]|mandatory|JSON array containing a list of the JWS signing algorithms (alg values) supported by the token endpoint for the signature on the JWT **[[JWT]](#nref-JWT)** used to authenticate the client at the token endpoint for the \"private_key_jwt\" authentication method|
+|token_endpoint_auth_signing_alg_values_supported|[string]|mandatory|JSON array containing a list of the JWS signing algorithms (alg values) supported by the token endpoint for the signature on the JWT **[[JWT]](#nref-JWT)** used to authenticate the client at the token endpoint for the "private_key_jwt" authentication method|
 
 <h3 class="schema-toc" id="tocSresponsejwks">ResponseJWKS</h3>
 

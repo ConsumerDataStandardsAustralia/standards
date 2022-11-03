@@ -14,7 +14,7 @@ These standards are maintained by the Data Standards Body (DSB), with the Data S
 
 Consultation on the standards as they evolve is performed transparently with any interested contributor invited to participate in accordance with the rules of engagement described below.
 
-There are a number ofways to contribute to these standards:
+There are a number of ways to contribute to these standards:
 
 * **[Issues posted on this repository](https://github.com/ConsumerDataStandardsAustralia/standards/issues)** - The issues posted on this repository are used for formal consultation of specific decision proposals that are to be considered by the Data Standards Chair.  These decisions constitute significant changes to the standards and are raised as required.  These issues constitute an audit trail of the decisions taken by the Data Standards Chair.  As this is the case it is requested that contributors do not raise new issues and instead contribute comments to the issues created by the DSB.
 

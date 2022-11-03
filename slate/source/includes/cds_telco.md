@@ -342,7 +342,7 @@ This operation does not require authentication
 
   
 
-## Get Usage For a Service
+## Get Usage For A Service
 
 <a id="opIdgetUsageForService"></a>
 
@@ -518,7 +518,7 @@ To perform this operation, you must be authenticated and authorised with the fol
     
   
 
-## Get Usage
+## Get Bulk Telco Usage
 
 <a id="opIdlistUsage"></a>
 
@@ -570,7 +570,7 @@ Obtain usage data for all services associated with the customer
 |---|--|
 |Version|**1**
 
-<h3 id="get-usage-parameters">Parameters</h3>
+<h3 id="get-bulk-telco-usage-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -666,7 +666,7 @@ Obtain usage data for all services associated with the customer
 }
 ```
 
-<h3 id="get-usage-responses">Responses</h3>
+<h3 id="get-bulk-telco-usage-responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -695,7 +695,7 @@ To perform this operation, you must be authenticated and authorised with the fol
     
   
 
-## Get Usage For a Specific Service
+## Get Usage For Specific Services
 
 <a id="opIdlistUsageForService"></a>
 
@@ -742,7 +742,7 @@ $.ajax({
 
 `POST /telco/accounts/usage`
 
-Obtain usage data for a specific service
+Obtain usage data for a specific set of service
 
 > Body parameter
 
@@ -762,7 +762,7 @@ Obtain usage data for a specific service
 |---|--|
 |Version|**1**
 
-<h3 id="get-usage-for-a-specific-service-parameters">Parameters</h3>
+<h3 id="get-usage-for-specific-services-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -863,7 +863,7 @@ Obtain usage data for a specific service
 }
 ```
 
-<h3 id="get-usage-for-a-specific-service-responses">Responses</h3>
+<h3 id="get-usage-for-specific-services-responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -2205,7 +2205,7 @@ To perform this operation, you must be authenticated and authorised with the fol
     
   
 
-## Get Telco Invoices
+## Get Bulk Telco Invoices
 
 <a id="opIdlistInvoices"></a>
 
@@ -2257,7 +2257,7 @@ Obtain the invoices for all accounts
 |---|--|
 |Version|**1**
 
-<h3 id="get-telco-invoices-parameters">Parameters</h3>
+<h3 id="get-bulk-telco-invoices-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -2372,7 +2372,7 @@ Obtain the invoices for all accounts
 }
 ```
 
-<h3 id="get-telco-invoices-responses">Responses</h3>
+<h3 id="get-bulk-telco-invoices-responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -2785,7 +2785,7 @@ To perform this operation, you must be authenticated and authorised with the fol
     
   
 
-## Get Telco Transactions
+## Get Bulk Telco Transactions
 
 <a id="opIdlistTransactions"></a>
 
@@ -2837,7 +2837,7 @@ Obtain billing transactions for all accounts
 |---|--|
 |Version|**1**
 
-<h3 id="get-telco-transactions-parameters">Parameters</h3>
+<h3 id="get-bulk-telco-transactions-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -2921,7 +2921,7 @@ Obtain billing transactions for all accounts
 }
 ```
 
-<h3 id="get-telco-transactions-responses">Responses</h3>
+<h3 id="get-bulk-telco-transactions-responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|

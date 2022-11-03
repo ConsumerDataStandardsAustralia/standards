@@ -1129,13 +1129,13 @@
                         <a href="#get-telco-product-detail" class="toc-h2 toc-link" data-title="Get Telco Product Detail">Get Telco Product Detail</a>
                       </li>
                       <li>
-                        <a href="#get-usage-for-a-service" class="toc-h2 toc-link" data-title="Get Usage For a Service">Get Usage For a Service</a>
+                        <a href="#get-usage-for-a-service" class="toc-h2 toc-link" data-title="Get Usage For A Service">Get Usage For A Service</a>
                       </li>
                       <li>
-                        <a href="#get-usage" class="toc-h2 toc-link" data-title="Get Usage">Get Usage</a>
+                        <a href="#get-bulk-telco-usage" class="toc-h2 toc-link" data-title="Get Bulk Telco Usage">Get Bulk Telco Usage</a>
                       </li>
                       <li>
-                        <a href="#get-usage-for-a-specific-service" class="toc-h2 toc-link" data-title="Get Usage For a Specific Service">Get Usage For a Specific Service</a>
+                        <a href="#get-usage-for-specific-services" class="toc-h2 toc-link" data-title="Get Usage For Specific Services">Get Usage For Specific Services</a>
                       </li>
                       <li>
                         <a href="#get-telco-accounts" class="toc-h2 toc-link" data-title="Get Telco Accounts">Get Telco Accounts</a>
@@ -1162,7 +1162,7 @@
                         <a href="#get-invoices-for-telco-account" class="toc-h2 toc-link" data-title="Get Invoices For Telco Account">Get Invoices For Telco Account</a>
                       </li>
                       <li>
-                        <a href="#get-telco-invoices" class="toc-h2 toc-link" data-title="Get Telco Invoices">Get Telco Invoices</a>
+                        <a href="#get-bulk-telco-invoices" class="toc-h2 toc-link" data-title="Get Bulk Telco Invoices">Get Bulk Telco Invoices</a>
                       </li>
                       <li>
                         <a href="#get-invoices-for-specific-telco-accounts" class="toc-h2 toc-link" data-title="Get Invoices For Specific Telco Accounts">Get Invoices For Specific Telco Accounts</a>
@@ -1171,7 +1171,7 @@
                         <a href="#get-transactions-for-telco-account" class="toc-h2 toc-link" data-title="Get Transactions For Telco Account">Get Transactions For Telco Account</a>
                       </li>
                       <li>
-                        <a href="#get-telco-transactions" class="toc-h2 toc-link" data-title="Get Telco Transactions">Get Telco Transactions</a>
+                        <a href="#get-bulk-telco-transactions" class="toc-h2 toc-link" data-title="Get Bulk Telco Transactions">Get Bulk Telco Transactions</a>
                       </li>
                       <li>
                         <a href="#get-transactions-for-specific-telco-accounts" class="toc-h2 toc-link" data-title="Get Transactions For Specific Telco Accounts">Get Transactions For Specific Telco Accounts</a>
@@ -1624,22 +1624,22 @@ Note: changes to request and response payloads are listed at the beginning of th
 </thead><tbody>
 <tr>
 <td><a href="#error-codes">Standard Error Codes</a></td>
-<td>Data Recipients and Data Holders MAY implement the standard error codes from July 1st 2021</td>
+<td>Data Recipients and Data Holders <strong>MAY</strong> implement the standard error codes from July 1st 2021</td>
 <td>July 1st 2021</td>
 </tr>
 <tr>
 <td><a href="#get-metrics">Get Metrics V2</a></td>
-<td>Version 2 of this end point must be made available by affected data holders by the end of July 2021</td>
+<td>Version 2 of this end point <strong>MUST</strong> be made available by affected data holders by the end of July 2021</td>
 <td>July 31st 2021</td>
 </tr>
 <tr>
 <td><a href="#get-metrics">Get Metrics V1</a></td>
-<td>Data holders may obsolete version 1 of this end point from October 31st 2021. Data Holders who go live with consumer data sharing from July 1st 2021 MAY go live with only Get Metrics v2 support. The CDR Register must upgrade their implementation to use version 2 by this time</td>
+<td>Data holders <strong>MAY</strong> obsolete version 1 of this end point from October 31st 2021. Data Holders who go live with consumer data sharing from July 1st 2021 <strong>MAY</strong> go live with only Get Metrics v2 support. The CDR Register <strong>MUST</strong> upgrade their implementation to use version 2 by this time</td>
 <td>October 31st 2021</td>
 </tr>
 <tr>
 <td><a href="#amending-authorisation-standards">Amending Consent</a></td>
-<td>Data Holders MUST implement the following standards from November 1st 2021 when a CDR consumer is invited to amend a current authorisation as per rule 4.22A and the ADR has supplied a <code>cdr_arrangement_id</code></td>
+<td>Data Holders <strong>MUST</strong> implement the following standards from November 1st 2021 when a CDR consumer is invited to amend a current authorisation as per rule 4.22A and the ADR has supplied a <code>cdr_arrangement_id</code></td>
 <td>November 1st 2021</td>
 </tr>
 <tr>
@@ -1654,7 +1654,7 @@ Note: changes to request and response payloads are listed at the beginning of th
 </tr>
 <tr>
 <td><a href="#error-codes">Standard Error Codes</a></td>
-<td>Data Recipients and Data Holders MUST implement the standard error codes from February 1st 2022</td>
+<td>Data Recipients and Data Holders <strong>MUST</strong> implement the standard error codes from February 1st 2022</td>
 <td>February 1st 2022</td>
 </tr>
 <tr>
@@ -1663,23 +1663,23 @@ Note: changes to request and response payloads are listed at the beginning of th
 <td>March 31st 2022</td>
 </tr>
 <tr>
-<td><a href="#profile-scope">Profile Scope Data Language</a></td>
+<td><a href="#profile-scope-and-standard-claims-common">Profile Scope Data Language</a></td>
 <td>For new and amended consents and authorisations only, CDR participants <strong>SHOULD</strong> comply with the following standards from 1 February 2022, but <strong>MUST</strong> comply by 1 July 2022:<ul><li>Technical Standards: Revised Claims</li><li>CX Standards: Profile Scope - Data Language Standards</li></ul><strong>Note:</strong> These standards changes <strong>do not</strong> apply to existing consents and authorisations unless they are amended on or following the compliance dates.</td>
 <td>July 1st 2022</td>
 </tr>
 <tr>
 <td><a href="#consumer-experience">CX Standards: Joint Accounts</a></td>
-<td>Data holders MUST implement the following data standards from 1 July 2022:<ul><li>Notifications: Alternative notification schedules for joint accounts</li><li>Notifications: Joint account alerts</li><li>Authorisation: Pending status</li><li>Withdrawal: Joint accounts</li></ul></td>
+<td>Data holders <strong>MUST</strong> implement the following data standards from 1 July 2022:<ul><li>Notifications: Alternative notification schedules for joint accounts</li><li>Notifications: Joint account alerts</li><li>Authorisation: Pending status</li><li>Withdrawal: Joint accounts</li></ul></td>
 <td>July 1st 2022</td>
 </tr>
 <tr>
 <td><a href="#security-profile">Information Security profile</a></td>
-<td>FAPI 1.0 adoption is introduced across three phases.<br/><strong>Phase 1: Voluntary FAPI 1.0 support &amp; hygiene enhancements</strong> includes, amongst other changes:<ul><li>Enforces requirements for authorisation code, token and request object use</li><li>Data Holders MAY support of FAPI 1.0 Final</li><li>Data Holders MAY support of Authorization Code Flow (including <strong><a href="#nref-PKCE">[PKCE]</a></strong> and <strong><a href="#nref-JARM">[JARM]</a></strong>) in conjunction with Hybrid Flow</li></ul></td>
+<td>FAPI 1.0 adoption is introduced across three phases.<br/><strong>Phase 1: Voluntary FAPI 1.0 support &amp; hygiene enhancements</strong> includes, amongst other changes:<ul><li>Enforces requirements for authorisation code, token and request object use</li><li>Data Holders <strong>MAY</strong> support of FAPI 1.0 Final</li><li>Data Holders <strong>MAY</strong> support of Authorization Code Flow (including <strong><a href="#nref-PKCE">[PKCE]</a></strong> and <strong><a href="#nref-JARM">[JARM]</a></strong>) in conjunction with Hybrid Flow</li></ul></td>
 <td>July 4th 2022</td>
 </tr>
 <tr>
 <td><a href="#get-payee-detail">Get Payee Detail V2</a></td>
-<td>Version 2 of this end point must be made available by affected data holders by July 31st 2022</td>
+<td>Version 2 of this end point <strong>MUST</strong> be made available by affected data holders by July 31st 2022</td>
 <td>July 31st 2022</td>
 </tr>
 <tr>
@@ -1689,37 +1689,37 @@ Note: changes to request and response payloads are listed at the beginning of th
 </tr>
 <tr>
 <td><a href="#get-payees">Get Payees V2</a></td>
-<td>Version 2 of this end point must be made available by affected data holders by July 31st 2022</td>
+<td>Version 2 of this end point <strong>MUST</strong> be made available by affected data holders by July 31st 2022</td>
 <td>July 31st 2022</td>
 </tr>
 <tr>
 <td><a href="#self-signed-jwt-client-authentication">Self-Signed JWT Client Authentication</a></td>
-<td>Until July 31st 2022, Data Recipients MUST accept the <a href="#uri-resource-path">Resource Path</a> for the endpoint and the <code>&lt;RecipientBaseURI&gt;</code> as a valid audience value. From July 31st 2022, Data Holders MUST use an audience value matching the Resource Path for the endpoint and the Data Recipient MUST verify the audience matches the Resource Path for the endpoint.</td>
+<td>Until July 31st 2022, Data Recipients <strong>MUST</strong> accept the <a href="#uri-resource-path">Resource Path</a> for the endpoint and the <code>&lt;RecipientBaseURI&gt;</code> as a valid audience value. From July 31st 2022, Data Holders <strong>MUST</strong> use an audience value matching the Resource Path for the endpoint and the Data Recipient <strong>MUST</strong> verify the audience matches the Resource Path for the endpoint.</td>
 <td>July 31st 2022</td>
 </tr>
 <tr>
 <td><a href="#get-payees">Get Payees V1</a></td>
-<td>Data holders may obsolete version 1 of this end point from August 31st 2022.  Data recipients must upgrade their implementations to use version 2 by this time</td>
+<td>Data holders <strong>MAY</strong> obsolete version 1 of this end point from August 31st 2022.  Data recipients <strong>MUST</strong> upgrade their implementations to use version 2 by this time</td>
 <td>August 31st 2022</td>
 </tr>
 <tr>
 <td><a href="#get-payee-detail">Get Payee Detail V1</a></td>
-<td>Data holders may obsolete version 1 of this end point from August 31st 2022.  Data recipients must upgrade their implementations to use version 2 by this time</td>
+<td>Data holders <strong>MAY</strong> obsolete version 1 of this end point from August 31st 2022.  Data recipients <strong>MUST</strong> upgrade their implementations to use version 2 by this time</td>
 <td>August 31st 2022</td>
 </tr>
 <tr>
 <td><a href="#security-profile">Information Security profile</a></td>
-<td>FAPI 1.0 adoption is introduced across three phases.<br/><strong>Phase 2: FAPI 1.0 Final (Baseline &amp; Advanced)</strong> includes, amongst other changes:<ul><li>Enforces additional requirements for authorisation code, token and request object use</li><li>Enforces PAR-only authorisation request data submission</li><li>Refresh token cycling is not permitted</li><li>Data Holders and Data Recipients MUST support FAPI 1.0 Final including <strong><a href="#nref-RFC9126">[RFC9126]</a></strong>, <strong><a href="#nref-RFC7636">[RFC7636]</a></strong> and <strong><a href="#nref-JARM">[JARM]</a></strong></li><li>Data Holders SHOULD support of Authorization Code Flow in conjunction with Hybrid Flow</li></ul></td>
+<td>FAPI 1.0 adoption is introduced across three phases.<br/><strong>Phase 2: FAPI 1.0 Final (Baseline &amp; Advanced)</strong> includes, amongst other changes:<ul><li>Enforces additional requirements for authorisation code, token and request object use</li><li>Enforces PAR-only authorisation request data submission</li><li>Refresh token cycling is not permitted</li><li>Data Holders and Data Recipients <strong>MUST</strong> support FAPI 1.0 Final including <strong><a href="#nref-RFC9126">[RFC9126]</a></strong>, <strong><a href="#nref-RFC7636">[RFC7636]</a></strong> and <strong><a href="#nref-JARM">[JARM]</a></strong></li><li>Data Holders SHOULD support of Authorization Code Flow in conjunction with Hybrid Flow</li></ul></td>
 <td>September 16th 2022</td>
 </tr>
 <tr>
 <td><a href="#get-metrics">Get Metrics V3</a></td>
-<td>Version 3 of this end point must be made available by affected data holders by October 1st 2022</td>
+<td>Version 3 of this end point <strong>MUST</strong> be made available by affected data holders by October 1st 2022</td>
 <td>October 1st 2022</td>
 </tr>
 <tr>
 <td><a href="#error-codes">Standard Error Codes</a></td>
-<td>Data Holders MAY retire application-specific error codes in favour of standard error codes from November 1st 2022</td>
+<td>Data Holders <strong>MAY</strong> retire application-specific error codes in favour of standard error codes from November 1st 2022</td>
 <td>November 1st 2022</td>
 </tr>
 <tr>
@@ -1734,42 +1734,42 @@ Note: changes to request and response payloads are listed at the beginning of th
 </tr>
 <tr>
 <td><a href="#get-account-detail">Get Account Detail V2</a></td>
-<td>Version 2 of this end point must be made available by affected data holders by November 30th 2022</td>
+<td>Version 2 of this end point <strong>MUST</strong> be made available by affected data holders by November 30th 2022</td>
 <td>November 30th 2022</td>
 </tr>
 <tr>
 <td><a href="#get-customer-detail">Get Customer Detail V2</a></td>
-<td>Version 2 of this end point must be made available by affected data holders by November 30th 2022</td>
+<td>Version 2 of this end point <strong>MUST</strong> be made available by affected data holders by November 30th 2022</td>
 <td>November 30th 2022</td>
 </tr>
 <tr>
 <td><a href="#get-product-detail">Get Product Detail V4</a></td>
-<td>Version 4 of this end point must be made available by affected data holders by November 30th 2022</td>
+<td>Version 4 of this end point <strong>MUST</strong> be made available by affected data holders by November 30th 2022</td>
 <td>November 30th 2022</td>
 </tr>
 <tr>
 <td><a href="#get-metrics">Get Metrics V2</a></td>
-<td>Data holders may obsolete version 2 of this end point from December 5th 2022. Data Holders in the energy sector MAY go live with only Get Metrics v3 support. The CDR Register must upgrade their implementation to use version 3 by this time</td>
+<td>Data holders <strong>MAY</strong> obsolete version 2 of this end point from December 5th 2022. Data Holders in the energy sector <strong>MAY</strong> go live with only Get Metrics v3 support. The CDR Register <strong>MUST</strong> upgrade their implementation to use version 3 by this time</td>
 <td>December 5th 2022</td>
 </tr>
 <tr>
 <td><a href="#get-account-detail">Get Account Detail V1</a></td>
-<td>Data holders may obsolete version 1 of this end point from February 28th 2023.  Data recipients must upgrade their implementations to use version 2 by this time</td>
+<td>Data holders <strong>MAY</strong> obsolete version 1 of this end point from February 28th 2023.  Data recipients <strong>MUST</strong> upgrade their implementations to use version 2 by this time</td>
 <td>February 28th 2023</td>
 </tr>
 <tr>
 <td><a href="#get-product-detail">Get Product Detail V3</a></td>
-<td>Data holders may obsolete version 3 of this end point from February 28th 2023.  Data recipients must upgrade their implementations to use version 4 by this time</td>
+<td>Data holders <strong>MAY</strong> obsolete version 3 of this end point from February 28th 2023.  Data recipients <strong>MUST</strong> upgrade their implementations to use version 4 by this time</td>
 <td>February 28th 2023</td>
 </tr>
 <tr>
 <td><a href="#get-customer-detail">Get Customer Detail V1</a></td>
-<td>Data holders may obsolete version 1 of this end point from February 28th 2023.  Data recipients must upgrade their implementations to use version 2 by this time</td>
+<td>Data holders <strong>MAY</strong> obsolete version 1 of this end point from February 28th 2023.  Data recipients <strong>MUST</strong> upgrade their implementations to use version 2 by this time</td>
 <td>February 28th 2023</td>
 </tr>
 <tr>
 <td><a href="#security-profile">Information Security profile</a></td>
-<td>FAPI 1.0 adoption is introduced across three phases.<br/><strong>Phase 3: Retire Hybrid Flow</strong> includes, amongst other changes:<ul><li>Data Holders MUST support Authorization Code Flow</li><li>Data Holders MAY retire Hybrid Flow</li></ul></td>
+<td>FAPI 1.0 adoption is introduced across three phases.<br/><strong>Phase 3: Retire Hybrid Flow</strong> includes, amongst other changes:<ul><li>Data Holders <strong>MUST</strong> support Authorization Code Flow</li><li>Data Holders <strong>MAY</strong> retire Hybrid Flow</li></ul></td>
 <td>April 7th 2023</td>
 </tr>
 <tr>
@@ -1813,6 +1813,11 @@ Note: changes to request and response payloads are listed at the beginning of th
 </tr>
 </thead><tbody>
 <tr>
+<td><a href="#get-data-holder-brands-summary">Get Data Holder Brands Summary V1</a></td>
+<td>CDR Register must introduce version 1 of this end point by October 1st 2022</td>
+<td>October 1st 2022</td>
+</tr>
+<tr>
 <td><a href="#get-data-holder-brands">Get Data Holder Brands V2</a></td>
 <td>CDR Register must introduce version 2 of this end point by November 15th 2022</td>
 <td>November 15th 2022</td>
@@ -1841,11 +1846,6 @@ Note: changes to request and response payloads are listed at the beginning of th
 <td><a href="#get-data-holder-statuses">Get Data Holder Statuses V1</a></td>
 <td>CDR Register must introduce version 1 of this end point by November 15th 2022</td>
 <td>November 15th 2022</td>
-</tr>
-<tr>
-<td><a href="#get-data-holder-brands-summary">Get Data Holder Brands Summary V1</a></td>
-<td>CDR Register must introduce version 1 of this end point by October 1st 2022</td>
-<td>October 1st 2022</td>
 </tr>
 </tbody></table>
 
@@ -7441,13 +7441,13 @@ Host: cdr.register
 <td><strong>RecipientBaseUri</strong></td>
 <td></td>
 <td><i class="icon-check"></i></td>
-<td>Base URI for the Consumer Data Standard Data Recipient Software Product endpoints. </br>This should be the base to provide reference to <a href="#end-points">Data Recipient Endpoints</a></td>
+<td>Base URI for the Consumer Data Standard Data Recipient Software Product endpoints. </br>This should be the base to provide reference to <a href="#get-data-recipients">Data Recipient Endpoints</a></td>
 </tr>
 <tr>
 <td><strong>JwksUri</strong></td>
 <td><i class="icon-check"></i></td>
 <td><i class="icon-check"></i></td>
-<td><strong>DH:</strong> Used for client authentication for DH -&gt; DRSP communication and is populated in the <a href="#getdataholderbrands">GetDataHolderBrands API</a></br> <strong>DR:</strong> Used for client authentication for DRSP -&gt; DH &amp; Register communication and is populated in the <a href="#dynamic-client-registration">SSA</a></td>
+<td><strong>DH:</strong> Used for client authentication for DH -&gt; DRSP communication and is populated in the <a href="#get-data-holder-brands">GetDataHolderBrands API</a></br> <strong>DR:</strong> Used for client authentication for DRSP -&gt; DH &amp; Register communication and is populated in the <a href="#dynamic-client-registration">SSA</a></td>
 </tr>
 </tbody></table>
 <h1 id='dcr-apis'>DCR APIs</h1>
@@ -10665,7 +10665,7 @@ This operation does not require authentication
 <td>token_endpoint_auth_signing_alg_values_supported</td>
 <td>[string]</td>
 <td>mandatory</td>
-<td>JSON array containing a list of the JWS signing algorithms (alg values) supported by the token endpoint for the signature on the JWT <strong><a href="#nref-JWT">[JWT]</a></strong> used to authenticate the client at the token endpoint for the \&quot;private_key_jwt\&quot; authentication method</td>
+<td>JSON array containing a list of the JWS signing algorithms (alg values) supported by the token endpoint for the signature on the JWT <strong><a href="#nref-JWT">[JWT]</a></strong> used to authenticate the client at the token endpoint for the &quot;private_key_jwt&quot; authentication method</td>
 </tr>
 </tbody></table>
 
@@ -25539,6 +25539,8 @@ to include
 <span class="gi">+ Default is 0 if value not known
 </span>
 Defect fix for readQualities to make it an array instead of an object
+
+Clarified that date filtering of invoices should be done via issue date
 </code></pre>
 <h2 id='get-generic-plans'>Get Generic Plans</h2>
 
@@ -31258,14 +31260,14 @@ x-cds-client-headers: string
 <td>query</td>
 <td><a href="#common-field-types">DateString</a></td>
 <td>optional</td>
-<td>Constrain the request to records with effective date at or before this date.  If absent defaults to current date.  Format is aligned to DateString common type</td>
+<td>Constrain the request to records with issue date at or before this date.  If absent defaults to current date.  Format is aligned to DateString common type</td>
 </tr>
 <tr>
 <td>oldest-date</td>
 <td>query</td>
 <td><a href="#common-field-types">DateString</a></td>
 <td>optional</td>
-<td>Constrain the request to records with effective date at or after this date. If absent defaults to newest-date minus 24 months.  Format is aligned to DateString common type</td>
+<td>Constrain the request to records with issue date at or after this date. If absent defaults to newest-date minus 24 months.  Format is aligned to DateString common type</td>
 </tr>
 <tr>
 <td>page</td>
@@ -31582,14 +31584,14 @@ x-cds-client-headers: string
 <td>query</td>
 <td><a href="#common-field-types">DateString</a></td>
 <td>optional</td>
-<td>Constrain the request to records with effective date at or before this date.  If absent defaults to current date.  Format is aligned to DateString common type</td>
+<td>Constrain the request to records with issue date at or before this date.  If absent defaults to current date.  Format is aligned to DateString common type</td>
 </tr>
 <tr>
 <td>oldest-date</td>
 <td>query</td>
 <td><a href="#common-field-types">DateString</a></td>
 <td>optional</td>
-<td>Constrain the request to records with effective date at or after this date. If absent defaults to newest-date minus 24 months.  Format is aligned to DateString common type</td>
+<td>Constrain the request to records with issue date at or after this date. If absent defaults to newest-date minus 24 months.  Format is aligned to DateString common type</td>
 </tr>
 <tr>
 <td>page</td>
@@ -31906,14 +31908,14 @@ x-cds-client-headers: string
 <td>query</td>
 <td><a href="#common-field-types">DateString</a></td>
 <td>optional</td>
-<td>Constrain the request to records with effective date at or before this date.  If absent defaults to current date.  Format is aligned to DateString common type</td>
+<td>Constrain the request to records with issue date at or before this date.  If absent defaults to current date.  Format is aligned to DateString common type</td>
 </tr>
 <tr>
 <td>oldest-date</td>
 <td>query</td>
 <td><a href="#common-field-types">DateString</a></td>
 <td>optional</td>
-<td>Constrain the request to records with effective date at or after this date. If absent defaults to newest-date minus 24 months.  Format is aligned to DateString common type</td>
+<td>Constrain the request to records with issue date at or after this date. If absent defaults to newest-date minus 24 months.  Format is aligned to DateString common type</td>
 </tr>
 <tr>
 <td>page</td>
@@ -38859,7 +38861,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>validFromDate</td>
 <td><a href="#common-field-types">DateString</a></td>
 <td>mandatory</td>
-<td>The start date from which this service point first became valid</td>
+<td>The latest start date from which the constituent data sets of this service point became valid</td>
 </tr>
 <tr>
 <td>lastUpdateDateTime</td>
@@ -39141,7 +39143,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>validFromDate</td>
 <td><a href="#common-field-types">DateString</a></td>
 <td>mandatory</td>
-<td>The start date from which this service point first became valid</td>
+<td>The latest start date from which the constituent data sets of this service point became valid</td>
 </tr>
 <tr>
 <td>lastUpdateDateTime</td>
@@ -43776,7 +43778,7 @@ This operation does not require authentication
 This operation does not require authentication
 </aside></p>
 
-<h2 id='get-usage-for-a-service'>Get Usage For a Service</h2>
+<h2 id='get-usage-for-a-service'>Get Usage For A Service</h2>
 
 <p><a id="opIdgetUsageForService"></a></p>
 
@@ -44105,7 +44107,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <a href="#authorisation-scopes">telco:billing:read</a>
 </aside></p>
 
-<h2 id='get-usage'>Get Usage</h2>
+<h2 id='get-bulk-telco-usage'>Get Bulk Telco Usage</h2>
 
 <p><a id="opIdlistUsage"></a></p>
 
@@ -44164,7 +44166,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h3 id="get-usage-parameters">Parameters</h3>
+<h3 id="get-bulk-telco-usage-parameters">Parameters</h3>
 
 <table><thead>
 <tr>
@@ -44329,7 +44331,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<h3 id="get-usage-responses">Responses</h3>
+<h3 id="get-bulk-telco-usage-responses">Responses</h3>
 
 <table><thead>
 <tr>
@@ -44418,7 +44420,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <a href="#authorisation-scopes">telco:billing:read</a>
 </aside></p>
 
-<h2 id='get-usage-for-a-specific-service'>Get Usage For a Specific Service</h2>
+<h2 id='get-usage-for-specific-services'>Get Usage For Specific Services</h2>
 
 <p><a id="opIdlistUsageForService"></a></p>
 
@@ -44463,7 +44465,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p><code>POST /telco/accounts/usage</code></p>
 
-<p>Obtain usage data for a specific service</p>
+<p>Obtain usage data for a specific set of service</p>
 
 <blockquote>
 <p>Body parameter</p>
@@ -44490,7 +44492,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h3 id="get-usage-for-a-specific-service-parameters">Parameters</h3>
+<h3 id="get-usage-for-specific-services-parameters">Parameters</h3>
 
 <table><thead>
 <tr>
@@ -44689,7 +44691,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<h3 id="get-usage-for-a-specific-service-responses">Responses</h3>
+<h3 id="get-usage-for-specific-services-responses">Responses</h3>
 
 <table><thead>
 <tr>
@@ -47155,7 +47157,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <a href="#authorisation-scopes">telco:billing:read</a>
 </aside></p>
 
-<h2 id='get-telco-invoices'>Get Telco Invoices</h2>
+<h2 id='get-bulk-telco-invoices'>Get Bulk Telco Invoices</h2>
 
 <p><a id="opIdlistInvoices"></a></p>
 
@@ -47214,7 +47216,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h3 id="get-telco-invoices-parameters">Parameters</h3>
+<h3 id="get-bulk-telco-invoices-parameters">Parameters</h3>
 
 <table><thead>
 <tr>
@@ -47398,7 +47400,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<h3 id="get-telco-invoices-responses">Responses</h3>
+<h3 id="get-bulk-telco-invoices-responses">Responses</h3>
 
 <table><thead>
 <tr>
@@ -48187,7 +48189,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <a href="#authorisation-scopes">telco:billing:read</a>
 </aside></p>
 
-<h2 id='get-telco-transactions'>Get Telco Transactions</h2>
+<h2 id='get-bulk-telco-transactions'>Get Bulk Telco Transactions</h2>
 
 <p><a id="opIdlistTransactions"></a></p>
 
@@ -48246,7 +48248,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h3 id="get-telco-transactions-parameters">Parameters</h3>
+<h3 id="get-bulk-telco-transactions-parameters">Parameters</h3>
 
 <table><thead>
 <tr>
@@ -48399,7 +48401,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<h3 id="get-telco-transactions-responses">Responses</h3>
+<h3 id="get-bulk-telco-transactions-responses">Responses</h3>
 
 <table><thead>
 <tr>
@@ -56779,13 +56781,13 @@ This operation may only be called by the CDR Register
         </span><span class="p">]</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="s2">"secondary"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"secondary"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"primary"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"currentDay"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
           </span><span class="s2">"previousDays"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
             </span><span class="mi">0</span><span class="w">
           </span><span class="p">]</span><span class="w">
         </span><span class="p">},</span><span class="w">
-        </span><span class="s2">"primary"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"secondary"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"currentDay"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
           </span><span class="s2">"previousDays"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
             </span><span class="mi">0</span><span class="w">
@@ -56793,13 +56795,13 @@ This operation may only be called by the CDR Register
         </span><span class="p">}</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="s2">"largeSecondary"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"secondary"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"primary"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"currentDay"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
           </span><span class="s2">"previousDays"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
             </span><span class="mi">0</span><span class="w">
           </span><span class="p">]</span><span class="w">
         </span><span class="p">},</span><span class="w">
-        </span><span class="s2">"primary"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"secondary"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"currentDay"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
           </span><span class="s2">"previousDays"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
             </span><span class="mi">0</span><span class="w">
@@ -57079,13 +57081,13 @@ This operation may only be called by the CDR Register
         </span><span class="p">]</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="s2">"secondary"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"secondary"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"primary"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"currentDay"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
           </span><span class="s2">"previousDays"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
             </span><span class="mi">0</span><span class="w">
           </span><span class="p">]</span><span class="w">
         </span><span class="p">},</span><span class="w">
-        </span><span class="s2">"primary"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"secondary"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"currentDay"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
           </span><span class="s2">"previousDays"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
             </span><span class="mi">0</span><span class="w">
@@ -57093,13 +57095,13 @@ This operation may only be called by the CDR Register
         </span><span class="p">}</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="s2">"largeSecondary"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"secondary"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"primary"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"currentDay"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
           </span><span class="s2">"previousDays"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
             </span><span class="mi">0</span><span class="w">
           </span><span class="p">]</span><span class="w">
         </span><span class="p">},</span><span class="w">
-        </span><span class="s2">"primary"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"secondary"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"currentDay"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
           </span><span class="s2">"previousDays"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
             </span><span class="mi">0</span><span class="w">
@@ -57579,13 +57581,13 @@ This operation may only be called by the CDR Register
     </span><span class="p">]</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"secondary"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"secondary"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"primary"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"currentDay"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
       </span><span class="s2">"previousDays"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="mi">0</span><span class="w">
       </span><span class="p">]</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"primary"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"secondary"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"currentDay"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
       </span><span class="s2">"previousDays"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="mi">0</span><span class="w">
@@ -57593,13 +57595,13 @@ This operation may only be called by the CDR Register
     </span><span class="p">}</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"largeSecondary"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"secondary"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"primary"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"currentDay"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
       </span><span class="s2">"previousDays"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="mi">0</span><span class="w">
       </span><span class="p">]</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"primary"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"secondary"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"currentDay"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
       </span><span class="s2">"previousDays"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="mi">0</span><span class="w">
@@ -57719,10 +57721,10 @@ This operation may only be called by the CDR Register
 <td>Average response time for the secondary tier.  Mandatory for data holders designated for a Shared Responsibility Data Request data cluster</td>
 </tr>
 <tr>
-<td>» secondary</td>
+<td>» primary</td>
 <td>object</td>
 <td>mandatory</td>
-<td>Average response time as measured for the secondary data holder</td>
+<td>Average response time as measured for the primary data holder</td>
 </tr>
 <tr>
 <td>»» currentDay</td>
@@ -57737,10 +57739,10 @@ This operation may only be called by the CDR Register
 <td>Average response time for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.</td>
 </tr>
 <tr>
-<td>» primary</td>
+<td>» secondary</td>
 <td>object</td>
 <td>mandatory</td>
-<td>Average response time as measured for the primary data holder</td>
+<td>Average response time as measured for the secondary data holder</td>
 </tr>
 <tr>
 <td>»» currentDay</td>
@@ -57761,10 +57763,10 @@ This operation may only be called by the CDR Register
 <td>Average response time for the large payload tier.  Mandatory for data holders designated for a Shared Responsibility Data Request data cluster</td>
 </tr>
 <tr>
-<td>»» secondary</td>
+<td>»» primary</td>
 <td>object</td>
 <td>mandatory</td>
-<td>Average response time as measured for the secondary data holder</td>
+<td>Average response time as measured for the primary data holder</td>
 </tr>
 <tr>
 <td>»»» currentDay</td>
@@ -57779,10 +57781,10 @@ This operation may only be called by the CDR Register
 <td>Average response time for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.</td>
 </tr>
 <tr>
-<td>»» primary</td>
+<td>»» secondary</td>
 <td>object</td>
 <td>mandatory</td>
-<td>Average response time as measured for the primary data holder</td>
+<td>Average response time as measured for the secondary data holder</td>
 </tr>
 <tr>
 <td>»»» currentDay</td>
@@ -60756,7 +60758,7 @@ This operation does not require authentication
 <td>validFromDate</td>
 <td><a href="#common-field-types">DateString</a></td>
 <td>mandatory</td>
-<td>The start date from which this service point first became valid</td>
+<td>The latest start date from which the constituent data sets of this service point became valid</td>
 </tr>
 <tr>
 <td>lastUpdateDateTime</td>
@@ -61038,7 +61040,7 @@ This operation does not require authentication
 <td>validFromDate</td>
 <td><a href="#common-field-types">DateString</a></td>
 <td>mandatory</td>
-<td>The start date from which this service point first became valid</td>
+<td>The latest start date from which the constituent data sets of this service point became valid</td>
 </tr>
 <tr>
 <td>lastUpdateDateTime</td>

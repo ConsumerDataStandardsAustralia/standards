@@ -268,13 +268,13 @@ If the Data Holder supports private_key_jwt client authentication they MUST vali
         ]
       },
       "secondary": {
-        "secondary": {
+        "primary": {
           "currentDay": 0,
           "previousDays": [
             0
           ]
         },
-        "primary": {
+        "secondary": {
           "currentDay": 0,
           "previousDays": [
             0
@@ -282,13 +282,13 @@ If the Data Holder supports private_key_jwt client authentication they MUST vali
         }
       },
       "largeSecondary": {
-        "secondary": {
+        "primary": {
           "currentDay": 0,
           "previousDays": [
             0
           ]
         },
-        "primary": {
+        "secondary": {
           "currentDay": 0,
           "previousDays": [
             0
@@ -514,13 +514,13 @@ This operation may only be called by the CDR Register
         ]
       },
       "secondary": {
-        "secondary": {
+        "primary": {
           "currentDay": 0,
           "previousDays": [
             0
           ]
         },
-        "primary": {
+        "secondary": {
           "currentDay": 0,
           "previousDays": [
             0
@@ -528,13 +528,13 @@ This operation may only be called by the CDR Register
         }
       },
       "largeSecondary": {
-        "secondary": {
+        "primary": {
           "currentDay": 0,
           "previousDays": [
             0
           ]
         },
-        "primary": {
+        "secondary": {
           "currentDay": 0,
           "previousDays": [
             0
@@ -789,13 +789,13 @@ This operation may only be called by the CDR Register
     ]
   },
   "secondary": {
-    "secondary": {
+    "primary": {
       "currentDay": 0,
       "previousDays": [
         0
       ]
     },
-    "primary": {
+    "secondary": {
       "currentDay": 0,
       "previousDays": [
         0
@@ -803,13 +803,13 @@ This operation may only be called by the CDR Register
     }
   },
   "largeSecondary": {
-    "secondary": {
+    "primary": {
       "currentDay": 0,
       "previousDays": [
         0
       ]
     },
-    "primary": {
+    "secondary": {
       "currentDay": 0,
       "previousDays": [
         0
@@ -842,17 +842,17 @@ This operation may only be called by the CDR Register
 |» currentDay|number|conditional|Average response time for current day|
 |» previousDays|[number]|conditional|Average response time for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.|
 |secondary|object|conditional|Average response time for the secondary tier.  Mandatory for data holders designated for a Shared Responsibility Data Request data cluster|
-|» secondary|object|mandatory|Average response time as measured for the secondary data holder|
-|»» currentDay|number|conditional|Average response time for current day|
-|»» previousDays|[number]|conditional|Average response time for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.|
 |» primary|object|mandatory|Average response time as measured for the primary data holder|
 |»» currentDay|number|conditional|Average response time for current day|
 |»» previousDays|[number]|conditional|Average response time for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.|
+|» secondary|object|mandatory|Average response time as measured for the secondary data holder|
+|»» currentDay|number|conditional|Average response time for current day|
+|»» previousDays|[number]|conditional|Average response time for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.|
 |» largeSecondary|object|conditional|Average response time for the large payload tier.  Mandatory for data holders designated for a Shared Responsibility Data Request data cluster|
-|»» secondary|object|mandatory|Average response time as measured for the secondary data holder|
+|»» primary|object|mandatory|Average response time as measured for the primary data holder|
 |»»» currentDay|number|conditional|Average response time for current day|
 |»»» previousDays|[number]|conditional|Average response time for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.|
-|»» primary|object|mandatory|Average response time as measured for the primary data holder|
+|»» secondary|object|mandatory|Average response time as measured for the secondary data holder|
 |»»» currentDay|number|conditional|Average response time for current day|
 |»»» previousDays|[number]|conditional|Average response time for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.|
 

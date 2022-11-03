@@ -545,7 +545,7 @@ paths:
               schema:
                 type: string
               style: simple
-      summary: Get Usage For a Service
+      summary: Get Usage For A Service
       tags:
       - Telco
       - Billing
@@ -751,7 +751,7 @@ paths:
               schema:
                 type: string
               style: simple
-      summary: Get Usage
+      summary: Get Bulk Telco Usage
       tags:
       - Telco
       - Billing
@@ -760,7 +760,7 @@ paths:
       - telco:billing:read
       x-version: "1"
     post:
-      description: Obtain usage data for a specific service
+      description: Obtain usage data for a specific set of service
       operationId: listUsageForService
       parameters:
       - description: A seperated array of account IDs of specific accounts to obtain
@@ -970,7 +970,7 @@ paths:
               schema:
                 type: string
               style: simple
-      summary: Get Usage For a Specific Service
+      summary: Get Usage For Specific Services
       tags:
       - Telco
       - Usage
@@ -2717,7 +2717,7 @@ paths:
               schema:
                 type: string
               style: simple
-      summary: Get Telco Invoices
+      summary: Get Bulk Telco Invoices
       tags:
       - Telco
       - Billing
@@ -3376,7 +3376,7 @@ paths:
               schema:
                 type: string
               style: simple
-      summary: Get Telco Transactions
+      summary: Get Bulk Telco Transactions
       tags:
       - Telco
       - Billing

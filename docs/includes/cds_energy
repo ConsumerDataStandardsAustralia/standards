@@ -5537,14 +5537,14 @@ x-cds-client-headers: string
 <td>query</td>
 <td><a href="#common-field-types">DateString</a></td>
 <td>optional</td>
-<td>Constrain the request to records with effective date at or before this date.  If absent defaults to current date.  Format is aligned to DateString common type</td>
+<td>Constrain the request to records with issue date at or before this date.  If absent defaults to current date.  Format is aligned to DateString common type</td>
 </tr>
 <tr>
 <td>oldest-date</td>
 <td>query</td>
 <td><a href="#common-field-types">DateString</a></td>
 <td>optional</td>
-<td>Constrain the request to records with effective date at or after this date. If absent defaults to newest-date minus 24 months.  Format is aligned to DateString common type</td>
+<td>Constrain the request to records with issue date at or after this date. If absent defaults to newest-date minus 24 months.  Format is aligned to DateString common type</td>
 </tr>
 <tr>
 <td>page</td>
@@ -5851,14 +5851,14 @@ x-cds-client-headers: string
 <td>query</td>
 <td><a href="#common-field-types">DateString</a></td>
 <td>optional</td>
-<td>Constrain the request to records with effective date at or before this date.  If absent defaults to current date.  Format is aligned to DateString common type</td>
+<td>Constrain the request to records with issue date at or before this date.  If absent defaults to current date.  Format is aligned to DateString common type</td>
 </tr>
 <tr>
 <td>oldest-date</td>
 <td>query</td>
 <td><a href="#common-field-types">DateString</a></td>
 <td>optional</td>
-<td>Constrain the request to records with effective date at or after this date. If absent defaults to newest-date minus 24 months.  Format is aligned to DateString common type</td>
+<td>Constrain the request to records with issue date at or after this date. If absent defaults to newest-date minus 24 months.  Format is aligned to DateString common type</td>
 </tr>
 <tr>
 <td>page</td>
@@ -6166,14 +6166,14 @@ x-cds-client-headers: string
 <td>query</td>
 <td><a href="#common-field-types">DateString</a></td>
 <td>optional</td>
-<td>Constrain the request to records with effective date at or before this date.  If absent defaults to current date.  Format is aligned to DateString common type</td>
+<td>Constrain the request to records with issue date at or before this date.  If absent defaults to current date.  Format is aligned to DateString common type</td>
 </tr>
 <tr>
 <td>oldest-date</td>
 <td>query</td>
 <td><a href="#common-field-types">DateString</a></td>
 <td>optional</td>
-<td>Constrain the request to records with effective date at or after this date. If absent defaults to newest-date minus 24 months.  Format is aligned to DateString common type</td>
+<td>Constrain the request to records with issue date at or after this date. If absent defaults to newest-date minus 24 months.  Format is aligned to DateString common type</td>
 </tr>
 <tr>
 <td>page</td>
@@ -13039,7 +13039,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>validFromDate</td>
 <td><a href="#common-field-types">DateString</a></td>
 <td>mandatory</td>
-<td>The start date from which this service point first became valid</td>
+<td>The latest start date from which the constituent data sets of this service point became valid</td>
 </tr>
 <tr>
 <td>lastUpdateDateTime</td>
@@ -13321,7 +13321,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>validFromDate</td>
 <td><a href="#common-field-types">DateString</a></td>
 <td>mandatory</td>
-<td>The start date from which this service point first became valid</td>
+<td>The latest start date from which the constituent data sets of this service point became valid</td>
 </tr>
 <tr>
 <td>lastUpdateDateTime</td>

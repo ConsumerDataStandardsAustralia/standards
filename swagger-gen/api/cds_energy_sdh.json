@@ -244,7 +244,7 @@
                     "validFromDate": {
                         "type": "string",
                         "x-cds-type": "DateString",
-                        "description": "The start date from which this service point first became valid"
+                        "description": "The latest start date from which the constituent data sets of this service point became valid"
                     },
                     "lastUpdateDateTime": {
                         "type": "string",
@@ -337,7 +337,7 @@
                     "validFromDate": {
                         "type": "string",
                         "x-cds-type": "DateString",
-                        "description": "The start date from which this service point first became valid"
+                        "description": "The latest start date from which the constituent data sets of this service point became valid"
                     },
                     "lastUpdateDateTime": {
                         "type": "string",

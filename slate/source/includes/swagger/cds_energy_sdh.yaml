@@ -1978,7 +1978,8 @@ components:
             on site generation by consumer
           type: boolean
         validFromDate:
-          description: The start date from which this service point first became valid
+          description: The latest start date from which the constituent data sets
+            of this service point became valid
           type: string
           x-cds-type: DateString
         lastUpdateDateTime:
@@ -2175,7 +2176,8 @@ components:
             on site generation by consumer
           type: boolean
         validFromDate:
-          description: The start date from which this service point first became valid
+          description: The latest start date from which the constituent data sets
+            of this service point became valid
           type: string
           x-cds-type: DateString
         lastUpdateDateTime:

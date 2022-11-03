@@ -58,6 +58,7 @@ No changes
 | Energy schema | [**Standards Maintenance #524**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/524): Updated description of `inverterDeviceCapacity`, `derDevices.nominalRatedCapacity` and `derDevices.nominalStorageCapacity` fields in `EnergyDerRecord.acConnections` noting 0 as the default when value not known | [Energy Schema](../../#energy-apis) |
 | Energy Swagger Defect | Defect fix for readQualities to make it an array instead of an object | [EnergyUsageRead Model](../../#tocSenergyservicepointdetail) |
 | Energy Swagger Defect | Defect fix for readQualities to make it an array instead of an object (Secondary Holder version) | [EnergyUsageRead Model](../../##cdr-energy-secondary-data-holder-api-schemas) |
+| Invoice Filtering | Clarified that date filtering of invoices should be done via issue date | [Energy APIs](../../#energy-apis) |
 | Draft Telco standards | [**Decision Proposal #275**](https://github.com/ConsumerDataStandardsAustralia/standards/issues/275): Publish of draft (ie. non-binding) technical standards for the Telco sector for holistic review | [Telco Schema](../../#telco-apis) |
 
 

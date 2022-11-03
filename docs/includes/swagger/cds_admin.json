@@ -749,8 +749,8 @@
         "type" : "object",
         "x-conditional" : [ "currentDay", "previousDays" ]
       },
-      "AverageResponseMetricsV2_secondary_secondary" : {
-        "description" : "Average response time as measured for the secondary data holder",
+      "AverageResponseMetricsV2_secondary_primary" : {
+        "description" : "Average response time as measured for the primary data holder",
         "properties" : {
           "currentDay" : {
             "description" : "Average response time for current day",
@@ -767,8 +767,8 @@
         "type" : "object",
         "x-conditional" : [ "currentDay", "previousDays" ]
       },
-      "AverageResponseMetricsV2_secondary_primary" : {
-        "description" : "Average response time as measured for the primary data holder",
+      "AverageResponseMetricsV2_secondary_secondary" : {
+        "description" : "Average response time as measured for the secondary data holder",
         "properties" : {
           "currentDay" : {
             "description" : "Average response time for current day",
@@ -788,11 +788,11 @@
       "AverageResponseMetricsV2_secondary" : {
         "description" : "Average response time for the secondary tier.  Mandatory for data holders designated for a Shared Responsibility Data Request data cluster",
         "properties" : {
-          "secondary" : {
-            "$ref" : "#/components/schemas/AverageResponseMetricsV2_secondary_secondary"
-          },
           "primary" : {
             "$ref" : "#/components/schemas/AverageResponseMetricsV2_secondary_primary"
+          },
+          "secondary" : {
+            "$ref" : "#/components/schemas/AverageResponseMetricsV2_secondary_secondary"
           }
         },
         "required" : [ "primary", "secondary" ],
@@ -801,11 +801,11 @@
       "AverageResponseMetricsV2_largeSecondary" : {
         "description" : "Average response time for the large payload tier.  Mandatory for data holders designated for a Shared Responsibility Data Request data cluster",
         "properties" : {
-          "secondary" : {
-            "$ref" : "#/components/schemas/AverageResponseMetricsV2_secondary_secondary"
-          },
           "primary" : {
             "$ref" : "#/components/schemas/AverageResponseMetricsV2_secondary_primary"
+          },
+          "secondary" : {
+            "$ref" : "#/components/schemas/AverageResponseMetricsV2_secondary_secondary"
           }
         },
         "required" : [ "primary", "secondary" ],

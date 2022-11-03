@@ -1143,7 +1143,7 @@
             "type" : "boolean"
           },
           "token_endpoint_auth_signing_alg_values_supported" : {
-            "description" : "JSON array containing a list of the JWS signing algorithms (alg values) supported by the token endpoint for the signature on the JWT **[[JWT]](#nref-JWT)** used to authenticate the client at the token endpoint for the \\\"private_key_jwt\\\" authentication method",
+            "description" : "JSON array containing a list of the JWS signing algorithms (alg values) supported by the token endpoint for the signature on the JWT **[[JWT]](#nref-JWT)** used to authenticate the client at the token endpoint for the \"private_key_jwt\" authentication method",
             "items" : {
               "type" : "string"
             },

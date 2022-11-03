@@ -3971,7 +3971,7 @@
     {
       "get":
       {
-        "summary": "Get Usage For a Service",
+        "summary": "Get Usage For A Service",
         "operationId": "getUsageForService",
         "x-scopes": [
           "telco:billing:read"
@@ -4129,7 +4129,7 @@
     {
       "get":
       {
-        "summary": "Get Usage",
+        "summary": "Get Bulk Telco Usage",
         "operationId": "listUsage",
         "x-scopes": [
           "telco:billing:read"
@@ -4256,12 +4256,12 @@
       },
       "post":
       {
-        "summary": "Get Usage For a Specific Service",
+        "summary": "Get Usage For Specific Services",
         "operationId": "listUsageForService",
         "x-scopes": [
           "telco:billing:read"
         ],
-        "description": "Obtain usage data for a specific service",
+        "description": "Obtain usage data for a specific set of service",
         "tags": [
           "Telco", "Usage"
         ],
@@ -5419,7 +5419,7 @@
     {
       "get":
       {
-        "summary": "Get Telco Invoices",
+        "summary": "Get Bulk Telco Invoices",
         "operationId": "listInvoices",
         "description": "Obtain the invoices for all accounts",
         "x-scopes": [
@@ -5841,7 +5841,7 @@
     {
       "get":
       {
-        "summary": "Get Telco Transactions",
+        "summary": "Get Bulk Telco Transactions",
         "operationId": "listTransactions",
         "description": "Obtain billing transactions for all accounts",
         "x-scopes": [

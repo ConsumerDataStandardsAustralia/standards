@@ -1808,7 +1808,7 @@
                     "validFromDate": {
                         "type": "string",
                         "x-cds-type": "DateString",
-                        "description": "The start date from which this service point first became valid"
+                        "description": "The latest start date from which the constituent data sets of this service point became valid"
                     },
                     "lastUpdateDateTime": {
                         "type": "string",
@@ -1901,7 +1901,7 @@
                     "validFromDate": {
                         "type": "string",
                         "x-cds-type": "DateString",
-                        "description": "The start date from which this service point first became valid"
+                        "description": "The latest start date from which the constituent data sets of this service point became valid"
                     },
                     "lastUpdateDateTime": {
                         "type": "string",
@@ -4079,6 +4079,26 @@
 				"name": "oldest-date",
 				"in": "query",
 				"description": "Constrain the request to records with effective date at or after this date. If absent defaults to newest-date minus 24 months.  Format is aligned to DateString common type",
+				"required": false,
+				"schema": {
+					"type": "string"
+				},
+				"x-cds-type": "DateString"
+			},
+      "newest-date-invoices": {
+				"name": "newest-date",
+				"in": "query",
+				"description": "Constrain the request to records with issue date at or before this date.  If absent defaults to current date.  Format is aligned to DateString common type",
+				"required": false,
+				"schema": {
+					"type": "string"
+				},
+				"x-cds-type": "DateString"
+			},
+			"oldest-date-invoices": {
+				"name": "oldest-date",
+				"in": "query",
+				"description": "Constrain the request to records with issue date at or after this date. If absent defaults to newest-date minus 24 months.  Format is aligned to DateString common type",
 				"required": false,
 				"schema": {
 					"type": "string"
@@ -6353,10 +6373,10 @@
 						"$ref": "#/components/parameters/accountId"
 					},
 					{
-						"$ref": "#/components/parameters/newest-date"
+						"$ref": "#/components/parameters/newest-date-invoices"
 					},
 					{
-						"$ref": "#/components/parameters/oldest-date"
+						"$ref": "#/components/parameters/oldest-date-invoices"
 					},
 					{
 						"$ref": "#/components/parameters/page"
@@ -6476,10 +6496,10 @@
 				],
                 "x-version": "1",
 				"parameters": [{
-						"$ref": "#/components/parameters/newest-date"
+						"$ref": "#/components/parameters/newest-date-invoices"
 					},
 					{
-						"$ref": "#/components/parameters/oldest-date"
+						"$ref": "#/components/parameters/oldest-date-invoices"
 					},
 					{
 						"$ref": "#/components/parameters/page"
@@ -6579,10 +6599,10 @@
 				],
                 "x-version": "1",
 				"parameters": [{
-						"$ref": "#/components/parameters/newest-date"
+						"$ref": "#/components/parameters/newest-date-invoices"
 					},
 					{
-						"$ref": "#/components/parameters/oldest-date"
+						"$ref": "#/components/parameters/oldest-date-invoices"
 					},
 					{
 						"$ref": "#/components/parameters/page"

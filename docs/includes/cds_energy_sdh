@@ -2346,7 +2346,7 @@ This operation does not require authentication
 <td>validFromDate</td>
 <td><a href="#common-field-types">DateString</a></td>
 <td>mandatory</td>
-<td>The start date from which this service point first became valid</td>
+<td>The latest start date from which the constituent data sets of this service point became valid</td>
 </tr>
 <tr>
 <td>lastUpdateDateTime</td>
@@ -2628,7 +2628,7 @@ This operation does not require authentication
 <td>validFromDate</td>
 <td><a href="#common-field-types">DateString</a></td>
 <td>mandatory</td>
-<td>The start date from which this service point first became valid</td>
+<td>The latest start date from which the constituent data sets of this service point became valid</td>
 </tr>
 <tr>
 <td>lastUpdateDateTime</td>

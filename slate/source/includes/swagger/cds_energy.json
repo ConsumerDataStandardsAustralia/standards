@@ -3214,7 +3214,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "Constrain the request to records with effective date at or before this date.  If absent defaults to current date.  Format is aligned to DateString common type",
+          "description" : "Constrain the request to records with issue date at or before this date.  If absent defaults to current date.  Format is aligned to DateString common type",
           "explode" : true,
           "in" : "query",
           "name" : "newest-date",
@@ -3225,7 +3225,7 @@
           "style" : "form",
           "x-cds-type" : "DateString"
         }, {
-          "description" : "Constrain the request to records with effective date at or after this date. If absent defaults to newest-date minus 24 months.  Format is aligned to DateString common type",
+          "description" : "Constrain the request to records with issue date at or after this date. If absent defaults to newest-date minus 24 months.  Format is aligned to DateString common type",
           "explode" : true,
           "in" : "query",
           "name" : "oldest-date",
@@ -3442,7 +3442,7 @@
         "description" : "Obtain the invoices for all accounts",
         "operationId" : "listInvoicesBulk",
         "parameters" : [ {
-          "description" : "Constrain the request to records with effective date at or before this date.  If absent defaults to current date.  Format is aligned to DateString common type",
+          "description" : "Constrain the request to records with issue date at or before this date.  If absent defaults to current date.  Format is aligned to DateString common type",
           "explode" : true,
           "in" : "query",
           "name" : "newest-date",
@@ -3453,7 +3453,7 @@
           "style" : "form",
           "x-cds-type" : "DateString"
         }, {
-          "description" : "Constrain the request to records with effective date at or after this date. If absent defaults to newest-date minus 24 months.  Format is aligned to DateString common type",
+          "description" : "Constrain the request to records with issue date at or after this date. If absent defaults to newest-date minus 24 months.  Format is aligned to DateString common type",
           "explode" : true,
           "in" : "query",
           "name" : "oldest-date",
@@ -3648,7 +3648,7 @@
         "description" : "Obtain invoices for a specified set of accounts",
         "operationId" : "listInvoicesForAccounts",
         "parameters" : [ {
-          "description" : "Constrain the request to records with effective date at or before this date.  If absent defaults to current date.  Format is aligned to DateString common type",
+          "description" : "Constrain the request to records with issue date at or before this date.  If absent defaults to current date.  Format is aligned to DateString common type",
           "explode" : true,
           "in" : "query",
           "name" : "newest-date",
@@ -3659,7 +3659,7 @@
           "style" : "form",
           "x-cds-type" : "DateString"
         }, {
-          "description" : "Constrain the request to records with effective date at or after this date. If absent defaults to newest-date minus 24 months.  Format is aligned to DateString common type",
+          "description" : "Constrain the request to records with issue date at or after this date. If absent defaults to newest-date minus 24 months.  Format is aligned to DateString common type",
           "explode" : true,
           "in" : "query",
           "name" : "oldest-date",
@@ -4598,6 +4598,30 @@
       },
       "oldest-date" : {
         "description" : "Constrain the request to records with effective date at or after this date. If absent defaults to newest-date minus 24 months.  Format is aligned to DateString common type",
+        "explode" : true,
+        "in" : "query",
+        "name" : "oldest-date",
+        "required" : false,
+        "schema" : {
+          "type" : "string"
+        },
+        "style" : "form",
+        "x-cds-type" : "DateString"
+      },
+      "newest-date-invoices" : {
+        "description" : "Constrain the request to records with issue date at or before this date.  If absent defaults to current date.  Format is aligned to DateString common type",
+        "explode" : true,
+        "in" : "query",
+        "name" : "newest-date",
+        "required" : false,
+        "schema" : {
+          "type" : "string"
+        },
+        "style" : "form",
+        "x-cds-type" : "DateString"
+      },
+      "oldest-date-invoices" : {
+        "description" : "Constrain the request to records with issue date at or after this date. If absent defaults to newest-date minus 24 months.  Format is aligned to DateString common type",
         "explode" : true,
         "in" : "query",
         "name" : "oldest-date",
@@ -6309,7 +6333,7 @@
             "type" : "boolean"
           },
           "validFromDate" : {
-            "description" : "The start date from which this service point first became valid",
+            "description" : "The latest start date from which the constituent data sets of this service point became valid",
             "type" : "string",
             "x-cds-type" : "DateString"
           },
@@ -6355,7 +6379,7 @@
             "type" : "boolean"
           },
           "validFromDate" : {
-            "description" : "The start date from which this service point first became valid",
+            "description" : "The latest start date from which the constituent data sets of this service point became valid",
             "type" : "string",
             "x-cds-type" : "DateString"
           },
