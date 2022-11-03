@@ -253,6 +253,11 @@
 <p>This release addresses the following change requests raised on <a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues">Standards Maintenance</a>:</p>
 
 <ul>
+<li><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/458">Standards Maintenance Issue 458 - FAPI 1.0 Non Normative Examples</a></li>
+<li><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/525">Standards Maintenance Issue 525: softwareProductDescription should be marked as mandatory</a></li>
+<li><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/411">Standards Maintenance Issue 411: Clarification of x-fapi-interaction-id header</a></li>
+<li><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/447">Standards Staging Issue 447: CORS typos in CDR</a></li>
+<li><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/414">Standards Maintenance Issue 414: Properties in BankingTransactionDetail objects</a></li>
 <li><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/506">Standards Maintenance Issue 506: Energy error codes for issues in data received by DH from SDH</a></li>
 <li><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/526">Standards Maintenance Issue 526: Energy / Get DER for Service Point - allow for no data</a></li>
 <li><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/524">Standards Maintenance Issue 524: EnergyDerRecord - mandatory values not available in AEMO&#39;s DER register</a></li>
@@ -286,6 +291,11 @@
 </tr>
 </thead><tbody>
 <tr>
+<td><code>x-fapi-interaction-id</code> header</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/411"><strong>Standards Maintenance #411</strong></a>: Additional clarification that the <code>x-fapi-interaction-id</code> request header is not required for unauthenticated APIs.</td>
+<td><a href="../../#http-headers">HTTP Headers</a></td>
+</tr>
+<tr>
 <td>Error Codes - Error Response Structure</td>
 <td><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/506"><strong>Standards Maintenance #506</strong></a>: Added <code>isSecondaryDataHolderError</code> Boolean field to Error Response Structure and updated <a href="../../#future-dated-obligations">Future Date Obligation</a> section with the FDO date for the change.</td>
 <td><a href="../../#error-codes">Error Codes</a></td>
@@ -299,6 +309,16 @@
 <th>Link</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>Get Data Recipients API</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/525"><strong>Standards Maintenance #525</strong></a>: Corrected response payload returned by the CDR Register to denote the <code>softwareProductDescription</code> as a required field.</td>
+<td><a href="../../#get-data-recipients">Get Data Recipients</a></td>
+</tr>
+<tr>
+<td>BankingTransactionDetail schema fix</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/414"><strong>Standards Maintenance #414</strong></a>: Fixed the BankingTransactionDetail object to correctly show it as conditional based on the extensionUType.</td>
+<td><a href="../../#tocSbankingtransactiondetail">BankingTransactionDetail</a></td>
+</tr>
 <tr>
 <td>Energy schema</td>
 <td><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/526"><strong>Standards Maintenance #526</strong></a>: <ul><li>Changed type of <code>EnergyDerRecord.availablePhasesCount</code> and <code>EnergyDerRecord.installedPhasesCount</code> fields to <code>NaturalNumber</code></li><li>Updated description of <code>approvedCapacity</code>, <code>availablePhasesCount</code> and <code>installedPhasesCount</code> in <code>EnergyDerRecord</code> to note a 0 value indicates no DER record is available</li></ul></td>
@@ -324,9 +344,14 @@
 </tr>
 </thead><tbody>
 <tr>
-<td></td>
-<td></td>
-<td></td>
+<td>Non-normative examples</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/458"><strong>Standards Maintenance Issue 458</strong></a>: Updated InfoSec non-normative examples with FAPI 1.0 Phase 3 flows</td>
+<td><a href="../../#security-profile">Security Profile</a></td>
+</tr>
+<tr>
+<td>CORS typos</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/447"><strong>Standards Maintenance #447</strong></a>: Corrected the CORS protections to make clear they must be disabled for public APIs</td>
+<td><a href="../../#cors">CORS</a></td>
 </tr>
 </tbody></table>
 <h2 id='consumer-experience'>Consumer Experience</h2>

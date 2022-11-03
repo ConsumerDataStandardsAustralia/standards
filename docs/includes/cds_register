@@ -2923,7 +2923,7 @@ This operation does not require authentication
 <tr>
 <td>softwareProductDescription</td>
 <td>string</td>
-<td>optional</td>
+<td>mandatory</td>
 <td>Description of the software product</td>
 </tr>
 <tr>

@@ -1690,7 +1690,7 @@ This operation does not require authentication
 |---|---|---|---|
 |softwareProductId|string|mandatory|Unique id of the Data Recipient software product issued by the CDR Register|
 |softwareProductName|string|mandatory|Name of the software product|
-|softwareProductDescription|string|optional|Description of the software product|
+|softwareProductDescription|string|mandatory|Description of the software product|
 |logoUri|[URIString](#common-field-types)|mandatory|Software product logo URI|
 |status|string|mandatory|Software Product status in the CDR Register|
 

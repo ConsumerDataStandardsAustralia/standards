@@ -256,15 +256,6 @@ Obtain detailed information on a single telco prouct offered openly to the marke
       "pricingUri": "string",
       "bundleUri": "string"
     },
-    "meteringCharges": [
-      {
-        "displayName": "string",
-        "description": "string",
-        "minimumValue": "string",
-        "maximumValue": "string",
-        "period": "string"
-      }
-    ],
     "bundles": [
       {
         "displayName": "string",
@@ -1559,6 +1550,7 @@ Obtain the current balance for a specific account
           "phoneNumber": "string",
           "startDate": "string",
           "endDate": "string",
+          "totalBalance": "string",
           "balances": {
             "data": {
               "planType": "METERED",
@@ -1725,6 +1717,7 @@ Obtain the current balance for all accounts
               "phoneNumber": "string",
               "startDate": "string",
               "endDate": "string",
+              "totalBalance": "string",
               "balances": {
                 "data": {
                   "planType": "METERED",
@@ -1920,6 +1913,7 @@ Obtain the current balance for a specified set of accounts
               "phoneNumber": "string",
               "startDate": "string",
               "endDate": "string",
+              "totalBalance": "string",
               "balances": {
                 "data": {
                   "planType": "METERED",
@@ -3211,7 +3205,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|data|[TelcoProductListResponse_data](#schemacdr-telco-apitelcoproductlistresponse_data)|mandatory|none|
+|data|object|mandatory|none|
+|» plans|[[TelcoProduct](#schemacdr-telco-apitelcoproduct)]|mandatory|Array of Products|
 |links|[LinksPaginated](#schemacdr-telco-apilinkspaginated)|mandatory|none|
 |meta|[MetaPaginated](#schemacdr-telco-apimetapaginated)|mandatory|none|
 
@@ -3258,15 +3253,6 @@ To perform this operation, you must be authenticated and authorised with the fol
       "pricingUri": "string",
       "bundleUri": "string"
     },
-    "meteringCharges": [
-      {
-        "displayName": "string",
-        "description": "string",
-        "minimumValue": "string",
-        "maximumValue": "string",
-        "period": "string"
-      }
-    ],
     "bundles": [
       {
         "displayName": "string",
@@ -3423,7 +3409,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|data|[TelcoUsageListResponse_data](#schemacdr-telco-apitelcousagelistresponse_data)|mandatory|none|
+|data|object|mandatory|none|
+|» accounts|[[TelcoAccountUsage](#schemacdr-telco-apitelcoaccountusage)]|mandatory|Array of services for the account|
 |links|[LinksPaginated](#schemacdr-telco-apilinkspaginated)|mandatory|none|
 |meta|[MetaPaginated](#schemacdr-telco-apimetapaginated)|mandatory|none|
 
@@ -3565,7 +3552,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|data|[TelcoAccountListResponse_data](#schemacdr-telco-apitelcoaccountlistresponse_data)|mandatory|none|
+|data|object|mandatory|none|
+|» accounts|[[TelcoAccount](#schemacdr-telco-apitelcoaccount)]|mandatory|Array of accounts|
 |links|[LinksPaginated](#schemacdr-telco-apilinkspaginated)|mandatory|none|
 |meta|[MetaPaginated](#schemacdr-telco-apimetapaginated)|mandatory|none|
 
@@ -3684,7 +3672,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|data|[TelcoPaymentScheduleResponse_data](#schemacdr-telco-apitelcopaymentscheduleresponse_data)|mandatory|none|
+|data|object|mandatory|none|
+|» paymentSchedules|[[TelcoPaymentSchedule](#schemacdr-telco-apitelcopaymentschedule)]|mandatory|Array may be empty if no payment schedule exist|
 |links|[Links](#schemacdr-telco-apilinks)|mandatory|none|
 |meta|[Meta](#schemacdr-telco-apimeta)|mandatory|none|
 
@@ -3724,7 +3713,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|data|[TelcoConcessionsResponse_data](#schemacdr-telco-apitelcoconcessionsresponse_data)|mandatory|none|
+|data|object|mandatory|none|
+|» concessions|[[TelcoConcession](#schemacdr-telco-apitelcoconcession)]|mandatory|Array may be empty if no concessions exist|
 |links|[Links](#schemacdr-telco-apilinks)|mandatory|none|
 |meta|[Meta](#schemacdr-telco-apimeta)|mandatory|none|
 
@@ -3746,6 +3736,7 @@ To perform this operation, you must be authenticated and authorised with the fol
               "phoneNumber": "string",
               "startDate": "string",
               "endDate": "string",
+              "totalBalance": "string",
               "balances": {
                 "data": {
                   "planType": "METERED",
@@ -3814,9 +3805,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|data|[TelcoBalanceListResponse_data](#schemacdr-telco-apitelcobalancelistresponse_data)|mandatory|none|
-|links|[LinksPaginated](#schemacdr-telco-apilinkspaginated)|mandatory|none|
-|meta|[MetaPaginated](#schemacdr-telco-apimetapaginated)|mandatory|none|
+|data|object|mandatory|none|
+|» balances|[object]|mandatory|Array of account balances|
+|»» accountId|string|mandatory|The ID of the account|
+|»» balance|[TelcoBalance](#schemacdr-telco-apitelcobalance)|mandatory|Object containing Telco account balance|
+|» links|[LinksPaginated](#schemacdr-telco-apilinkspaginated)|mandatory|none|
+|» meta|[MetaPaginated](#schemacdr-telco-apimetapaginated)|mandatory|none|
 
 <h3 class="schema-toc" id="tocStelcobalanceresponse">TelcoBalanceResponse</h3>
 
@@ -3834,6 +3828,7 @@ To perform this operation, you must be authenticated and authorised with the fol
           "phoneNumber": "string",
           "startDate": "string",
           "endDate": "string",
+          "totalBalance": "string",
           "balances": {
             "data": {
               "planType": "METERED",
@@ -3893,7 +3888,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|data|[TelcoBalanceResponse_data](#schemacdr-telco-apitelcobalanceresponse_data)|mandatory|none|
+|data|object|mandatory|none|
+|» accountId|string|optional|The ID of the account|
+|» balance|[TelcoBalance](#schemacdr-telco-apitelcobalance)|mandatory|Object containing Telco account balance|
 |links|[Links](#schemacdr-telco-apilinks)|mandatory|none|
 |meta|[Meta](#schemacdr-telco-apimeta)|mandatory|none|
 
@@ -4002,7 +3999,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|data|[TelcoInvoiceListResponse_data](#schemacdr-telco-apitelcoinvoicelistresponse_data)|mandatory|none|
+|data|object|mandatory|none|
+|» invoices|[[TelcoInvoice](#schemacdr-telco-apitelcoinvoice)]|mandatory|Array of invoices sorted by issue date in descending order|
 |links|[LinksPaginated](#schemacdr-telco-apilinkspaginated)|mandatory|none|
 |meta|[MetaPaginated](#schemacdr-telco-apimetapaginated)|mandatory|none|
 
@@ -4080,7 +4078,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|data|[TelcoTransactionListResponse_data](#schemacdr-telco-apitelcotransactionlistresponse_data)|mandatory|none|
+|data|object|mandatory|none|
+|» transactions|[[TelcoBillingTransaction](#schemacdr-telco-apitelcobillingtransaction)]|mandatory|Array of transactions sorted by date and time in descending order|
 |links|[LinksPaginated](#schemacdr-telco-apilinkspaginated)|mandatory|none|
 |meta|[MetaPaginated](#schemacdr-telco-apimetapaginated)|mandatory|none|
 
@@ -4108,7 +4107,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|errors|[[ErrorListResponse_errors](#schemacdr-telco-apierrorlistresponse_errors)]|mandatory|none|
+|errors|[object]|mandatory|none|
+|» code|string|mandatory|The code of the error encountered. Where the error is specific to the respondent, an application-specific error code, expressed as a string value. If the error is application-specific, the URN code that the specific error extends must be provided in the meta object. Otherwise, the value is the error code URN.|
+|» title|string|mandatory|A short, human-readable summary of the problem that MUST NOT change from occurrence to occurrence of the problem represented by the error code.|
+|» detail|string|mandatory|A human-readable explanation specific to this occurrence of the problem.|
+|» meta|object|optional|Additional data for customised error codes|
+|»» urn|string|conditional|The CDR error code URN which the application-specific error code extends. Mandatory if the error `code` is an application-specific error rather than a standardised error code.|
 
 <h3 class="schema-toc" id="tocStelcoproduct">TelcoProduct</h3>
 
@@ -4168,16 +4172,25 @@ To perform this operation, you must be authenticated and authorised with the fol
 |description|string|optional|A description of the product|
 |type|string|mandatory|The type of product|
 |purpose|string|optional|The purpose type of the product. If absent, then the value PERSONAL is assumed|
-|billingType|string|mandatory|The type of product|
+|billingType|string|optional|The type of product|
 |contract|[TelcoContract](#schemacdr-telco-apitelcocontract)|conditional|Summary of the contract details. Required if a contract is required|
 |bundle|boolean|optional|Required if part of a bundle. If not present FALSE is assumed|
 |brand|string|mandatory|The ID of the brand under which this product is offered|
 |brandName|string|mandatory|The display name of the brand under which this product is offered|
-|pricing|[[TelcoProduct_pricing](#schemacdr-telco-apitelcoproduct_pricing)]|mandatory|List of pricing details for the product plan|
+|pricing|[object]|mandatory|List of pricing details for the product plan|
+|» name|string|mandatory|The display name of the pricing|
+|» description|string|mandatory|The description of the pricing|
+|» period|[ExternalRef](#common-field-types)|optional|The duration that occurs on a pricing schedule indicates the frequency. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
+|» chargeAmount|[AmountString](#common-field-types)|mandatory|The amount charged for the duration period|
 |thirdPartyAgentId|string|optional|The ID of the Third Party through which this product may be originated|
 |thirdPartyAgentName|string|optional|The display name of the Third Party through which this product may be originated|
 |applicationUri|[URIString](#common-field-types)|optional|A link to an application web page where this plan can be applied for|
-|additionalInformation|[TelcoProduct_additionalInformation](#schemacdr-telco-apitelcoproduct_additionalinformation)|optional|Object that contains links to additional information on specific topics|
+|additionalInformation|object|optional|Object that contains links to additional information on specific topics|
+|» overviewUri|[URIString](#common-field-types)|optional|A link to a general overview of the plan|
+|» termsUri|[URIString](#common-field-types)|optional|A link to terms and conditions for the plan|
+|» eligibilityUri|[URIString](#common-field-types)|optional|A link to detail on eligibility criteria for the plan|
+|» pricingUri|[URIString](#common-field-types)|optional|A link to detail on pricing for the plan|
+|» bundleUri|[URIString](#common-field-types)|optional|A link to detail on bundles that this plan can be a part of|
 
 #### Enumerated Values
 
@@ -4235,15 +4248,6 @@ To perform this operation, you must be authenticated and authorised with the fol
     "pricingUri": "string",
     "bundleUri": "string"
   },
-  "meteringCharges": [
-    {
-      "displayName": "string",
-      "description": "string",
-      "minimumValue": "string",
-      "maximumValue": "string",
-      "period": "string"
-    }
-  ],
   "bundles": [
     {
       "displayName": "string",
@@ -4313,7 +4317,51 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|*anonymous*|[TelcoProductDetail_allOf](#schemacdr-telco-apitelcoproductdetail_allof)|mandatory|none|
+|*anonymous*|object|mandatory|none|
+|» bundles|[object]|optional|Bundles the product can be part of|
+|»» displayName|string|mandatory|The display name of the product bundle|
+|»» description|string|optional|The description of the product bundle|
+|»» bundleUri|[URIString](#common-field-types)|optional|The URI of the product bundle|
+|»» features|[object]|optional|Optional list of features of the bundle|
+|»»» displayName|string|mandatory|The display name of the feature|
+|»»» description|string|optional|The description of the feature|
+|»»» category|string|optional|The type of the feature|
+|»» plans|[object]|optional|Plans associated to the product|
+|»»» displayName|string|mandatory|The display name of the product plan|
+|»»» description|string|optional|The display name of the product plan|
+|»»» planUri|[URIString](#common-field-types)|optional|The URI of the product plan|
+|»»» features|[object]|optional|Optional list of features of the plan|
+|»»»» displayName|string|mandatory|The display name of the feature|
+|»»»» description|string|optional|The description of the feature|
+|»»» discounts|[object]|optional|Discounts associated to the product|
+|»»»» displayName|string|mandatory|The display name of the product plan|
+|»»»» description|string|optional|The description name of the product plan|
+|»»»» discountUri|[URIString](#common-field-types)|optional|The URI of the discount|
+|»»»» features|[object]|optional|Optional list of features of the discount|
+|»»»»» displayName|string|mandatory|The display name of the discount feature|
+|»»»»» description|string|optional|The description of the discount feature|
+|»»»» incentives|[object]|optional|Incentives associated to the product|
+|»»»»» displayName|string|mandatory|The display name of the incentive|
+|»»»»» description|string|optional|The description of the incentive|
+|»»»»» incentiveUri|[URIString](#common-field-types)|optional|The URI of the incentive|
+|»»»»» features|[object]|optional|Optional list of features of the incentive|
+|»»»»»» displayName|string|mandatory|The display name of the incentive feature|
+|»»»»»» description|string|optional|The description of the incentive feature|
+
+#### Enumerated Values
+
+|Property|Value|
+|---|---|
+|category|DATA|
+|category|VOICE|
+|category|MESSAGING|
+|category|HANDSET|
+|category|DEVICE|
+|category|NETWORK|
+|category|ENTERTAINMENT|
+|category|SUBSCRIPTION|
+|category|SOFTWARE|
+|category|OTHER|
 
 <h3 class="schema-toc" id="tocStelcocontract">TelcoContract</h3>
 
@@ -4427,7 +4475,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |Name|Type|Required|Description|
 |---|---|---|---|
 |accountId|string|optional|Tokenised ID of the account. In accordance with CDR ID permanence requirements|
-|services|[[TelcoAccountUsage_services](#schemacdr-telco-apitelcoaccountusage_services)]|optional|List of services that are part of the account|
+|services|[object]|optional|List of services that are part of the account|
+|» service|[TelcoServiceUsage](#schemacdr-telco-apitelcoserviceusage)|mandatory|none|
 
 <h3 class="schema-toc" id="tocStelcoserviceusage">TelcoServiceUsage</h3>
 
@@ -4519,10 +4568,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|accountId|string|optional|The ID of the account. To be created in accordance with CDR ID permanence requirements|
+|accountId|string|mandatory|The ID of the account. To be created in accordance with CDR ID permanence requirements|
 |accountNumber|string|conditional|Masked identifier of the account as defined by the data holder. This must be the value presented on physical statements (required if it exists) and must not be used for the value of the accountId|
 |displayName|string|optional|An optional display name for the account if one exists or can be derived. The content of this field is at the discretion of the data holder|
-|creationDate|[DateString](#common-field-types)|optional|The date that the account was created or opened. Mandatory if openStatus is OPEN|
+|creationDate|[DateString](#common-field-types)|mandatory|The date that the account was created or opened. Mandatory if openStatus is OPEN|
 |lastUpdated|[DateString](#common-field-types)|optional|The date and time which the account was last updated|
 |brand|string|optional|The retail name of the brand|
 |openStatus|string|optional|Open or closed status for the account. If not present then OPEN is assumed|
@@ -4577,7 +4626,22 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|*anonymous*|[TelcoAccount_allOf](#schemacdr-telco-apitelcoaccount_allof)|mandatory|The array of plans containing services and associated plan details|
+|*anonymous*|object|mandatory|The array of plans containing services and associated plan details|
+|» plans|[object]|mandatory|The array of plans containing service and associated plan details|
+|»» nickname|string|optional|Optional display name for the plan provided by the customer to help differentiate multiple plans|
+|»» type|string|optional|The type of the plan|
+|»» serviceIds|[string]|mandatory|An array of serviceId’s representing a unique service identifier such as a mobile (MSISDN) or internet service (e.g NBN or ADSL) If there are no serviceIds allocated to this plan then an empty array would be expected|
+|»» planOverview|object|conditional|Mandatory if openStatus is OPEN|
+|»»» displayName|string|optional|The name of the plan if one exists|
+|»»» startDate|[DateString](#common-field-types)|mandatory|The start date of the applicability of this plan|
+|»»» endDate|[DateString](#common-field-types)|optional|The end date of the applicability of this plan|
+
+#### Enumerated Values
+
+|Property|Value|
+|---|---|
+|type|MOBILE|
+|type|BROADBAND|
 
 <h3 class="schema-toc" id="tocStelcoaccountdetail">TelcoAccountDetail</h3>
 
@@ -4643,7 +4707,27 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|*anonymous*|[TelcoAccountDetail_allOf](#schemacdr-telco-apitelcoaccountdetail_allof)|mandatory|The array of plans containing services and associated plan details|
+|*anonymous*|object|mandatory|The array of plans containing services and associated plan details|
+|» plans|[object]|mandatory|The array of plans containing services and associated plan details|
+|»» nickname|string|optional|Optional display name for the plan provided by the customer to help differentiate multiple plans|
+|»» serviceIds|[string]|mandatory|An array of serviceId’s representing a unique service identifier such as a mobile (MSISDN) or internet service (e.g NBN or ADSL) If there are no serviceIds allocated to this plan then an empty array would be expected|
+|»» planOverview|object|conditional|Mandatory if openStatus is OPEN|
+|»»» displayName|string|optional|The name of the plan if one exists|
+|»»» startDate|[DateString](#common-field-types)|mandatory|The start date of the applicability of this plan|
+|»»» endDate|[DateString](#common-field-types)|optional|The end date of the applicability of this plan|
+|»» planDetail|object|conditional|Detail on the plan applicable to this account. Mandatory if openStatus is OPEN|
+|»»» charges|[object]|optional|Charges included in the plan|
+|»»»» displayName|string|mandatory|Display name of the charge|
+|»»»» description|string|optional|Description of the charge|
+|»»»» minimumValue|[AmountString](#common-field-types)|mandatory|Minimum value of the charge if the charge is a range or the absolute value of the charge if no range is specified|
+|»»»» maximumValue|[AmountString](#common-field-types)|optional|The upper limit of the charge if the charge could occur in a range|
+|»»»» period|[ExternalRef](#common-field-types)|optional|The charges that occur on a schedule indicates the frequency. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
+|»»» authorisedContacts|[object]|optional|An array of additional contacts that are authorised to act on this account|
+|»»»» firstName|string|optional|For people with single names this field need not be present. The single name should be in the lastName field|
+|»»»» lastName|string|mandatory|For people with single names the single name should be in this field|
+|»»»» middleNames|[string]|optional|Field is mandatory but array may be empty|
+|»»»» prefix|string|optional|Also known as title or salutation. The prefix to the name (e.g. Mr, Mrs, Ms, Miss, Sir, etc)|
+|»»»» suffix|string|optional|Used for a trailing suffix to the name (e.g. Jr)|
 
 <h3 class="schema-toc" id="tocStelcopaymentschedule">TelcoPaymentSchedule</h3>
 
@@ -4686,10 +4770,25 @@ To perform this operation, you must be authenticated and authorised with the fol
 |---|---|---|---|
 |amount|[AmountString](#common-field-types)|optional|Optional payment amount indicating that a constant payment amount is scheduled to be paid (used in bill smooting scenarios)|
 |paymentScheduleUType|string|mandatory|The type of object present in this response|
-|cardDebit|[TelcoPaymentSchedule_cardDebit](#schemacdr-telco-apitelcopaymentschedule_carddebit)|conditional|Represents a regular credit card payment schedule. Mandatory if paymentScheduleUType is set to cardDebit|
-|directDebit|[TelcoPaymentSchedule_directDebit](#schemacdr-telco-apitelcopaymentschedule_directdebit)|conditional|Represents a regular direct debit from a specified bank account. Mandatory if paymentScheduleUType is set to directDebit|
-|digitalWallet|[TelcoPaymentSchedule_digitalWallet](#schemacdr-telco-apitelcopaymentschedule_digitalwallet)|conditional|Represents a regular payment from a digital wallet. Mandatory if paymentScheduleUType is set to digitalWallet|
-|manualPayment|[TelcoPaymentSchedule_manualPayment](#schemacdr-telco-apitelcopaymentschedule_manualpayment)|conditional|Represents a manual payment schedule where the customer pays in response to a delivered statement. Mandatory if paymentScheduleUType is set to manualPayment|
+|cardDebit|object|conditional|Represents a regular credit card payment schedule. Mandatory if paymentScheduleUType is set to cardDebit|
+|» cardScheme|string|mandatory|The type of credit card held on file|
+|» paymentFrequency|[ExternalRef](#common-field-types)|mandatory|The frequency that payments will occur.  Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
+|» calculationType|string|mandatory|The mechanism by which the payment amount is calculated.  Explanation of values are as follows:<br/><ul><li>**STATIC** - Indicates a consistent, static amount, per payment</li><li>**BALANCE** - Indicates that the outstanding balance for the account is paid per period</li><li>**CALCULATED** - Indicates that the payment amount is variable and calculated using a pre-defined algorithm</li></ul>|
+|directDebit|object|conditional|Represents a regular direct debit from a specified bank account. Mandatory if paymentScheduleUType is set to directDebit|
+|» isTokenised|boolean|optional|Flag indicating that the account details are tokenised and cannot be shared.  False if absent|
+|» bsb|string|conditional|The unmasked BSB for the account to be debited. Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces.  Is required if isTokenised is absent or false|
+|» accountNumber|string|conditional|The unmasked account number for the account to be debited. Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces.  Is required if isTokenised is absent or false|
+|» paymentFrequency|[ExternalRef](#common-field-types)|mandatory|The frequency that payments will occur.  Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
+|» calculationType|string|mandatory|The mechanism by which the payment amount is calculated.  Explanation of values are as follows:<br/><ul><li>**STATIC** - Indicates a consistent, static amount, per payment</li><li>**BALANCE** - Indicates that the outstanding balance for the account is paid per period</li><li>**CALCULATED** - Indicates that the payment amount is variable and calculated using a pre-defined algorithm</li></ul>|
+|digitalWallet|object|conditional|Represents a regular payment from a digital wallet. Mandatory if paymentScheduleUType is set to digitalWallet|
+|» name|string|mandatory|The name assigned to the digital wallet by the owner of the wallet, else the display name provided by the digital wallet provider|
+|» identifier|string|mandatory|The identifier of the digital wallet (dependent on type)|
+|» type|string|mandatory|The type of the digital wallet identifier|
+|» provider|string|mandatory|The provider of the digital wallet|
+|» paymentFrequency|[ExternalRef](#common-field-types)|mandatory|The frequency that payments will occur.  Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
+|» calculationType|string|mandatory|The mechanism by which the payment amount is calculated.  Explanation of values are as follows:<br/><ul><li>**STATIC** - Indicates a consistent, static amount, per payment</li><li>**BALANCE** - Indicates that the outstanding balance for the account is paid per period</li><li>**CALCULATED** - Indicates that the payment amount is variable and calculated using a pre-defined algorithm</li></ul>|
+|manualPayment|object|conditional|Represents a manual payment schedule where the customer pays in response to a delivered statement. Mandatory if paymentScheduleUType is set to manualPayment|
+|» billFrequency|[ExternalRef](#common-field-types)|mandatory|The frequency with which a bill will be issued.  Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
 
 #### Enumerated Values
 
@@ -4699,6 +4798,26 @@ To perform this operation, you must be authenticated and authorised with the fol
 |paymentScheduleUType|directDebit|
 |paymentScheduleUType|manualPayment|
 |paymentScheduleUType|digitalWallet|
+|cardScheme|VISA|
+|cardScheme|MASTERCARD|
+|cardScheme|AMEX|
+|cardScheme|DINERS|
+|cardScheme|OTHER|
+|cardScheme|UNKNOWN|
+|calculationType|STATIC|
+|calculationType|BALANCE|
+|calculationType|CALCULATED|
+|calculationType|STATIC|
+|calculationType|BALANCE|
+|calculationType|CALCULATED|
+|type|EMAIL|
+|type|CONTACT_NAME|
+|type|TELEPHONE|
+|provider|PAYPAL_AU|
+|provider|OTHER|
+|calculationType|STATIC|
+|calculationType|BALANCE|
+|calculationType|CALCULATED|
 
 <h3 class="schema-toc" id="tocStelcoconcession">TelcoConcession</h3>
 
@@ -4839,14 +4958,19 @@ To perform this operation, you must be authenticated and authorised with the fol
 |invoiceNumber|string|mandatory|The number assigned to this invoice by the telco Retailer|
 |issueDate|[DateString](#common-field-types)|mandatory|The date that the invoice was actually issued (as opposed to generated or calculated)|
 |dueDate|[DateString](#common-field-types)|optional|The date that the invoice is due to be paid|
-|period|[TelcoInvoice_period](#schemacdr-telco-apitelcoinvoice_period)|conditional|Object containing the start and end date for the period covered by the invoice. Mandatory if any usage based charges are included in the invoice|
+|period|object|conditional|Object containing the start and end date for the period covered by the invoice. Mandatory if any usage based charges are included in the invoice|
+|» startDate|[DateString](#common-field-types)|mandatory|The start date of the period covered by this invoice|
+|» endDate|[DateString](#common-field-types)|mandatory|The end date of the period covered by this invoice|
 |invoiceAmount|[AmountString](#common-field-types)|optional|The net amount due for this invoice regardless of previous balance|
 |gstAmount|[AmountString](#common-field-types)|optional|The total GST amount for this invoice.  If absent then zero is assumed|
-|payOnTimeDiscount|[TelcoInvoice_payOnTimeDiscount](#schemacdr-telco-apitelcoinvoice_payontimediscount)|optional|A discount for on time payment|
+|payOnTimeDiscount|object|optional|A discount for on time payment|
+|» discountAmount|[AmountString](#common-field-types)|mandatory|The amount that will be discounted if the invoice is paid by the date specified|
+|» gstAmount|[AmountString](#common-field-types)|optional|The GST amount that will be discounted if the invoice is paid by the date specified.  If absent then zero is assumed|
+|» date|[DateString](#common-field-types)|mandatory|The date by which the invoice must be paid to receive the pay on time discount|
 |balanceAtIssue|[AmountString](#common-field-types)|mandatory|The account balance at the time the invoice was issued|
 |services|[string]|mandatory|An array of service IDs to which this invoice applies. May be empty if the invoice contains no usage related charges|
-|accountCharges|[TelcoInvoiceAccountCharges](#schemacdr-telco-apitelcoinvoiceaccountcharges)|optional|Object contain charges and credits related to usage|
-|accountUsage|[TelcoUsage](#schemacdr-telco-apitelcousage)|optional|Object containing usage summary|
+|accountCharges|[TelcoInvoiceAccountCharges](#schemacdr-telco-apitelcoinvoiceaccountcharges)|optional|An array of service IDs to which this invoice applies. May be empty if the invoice contains no usage related charges|
+|accountUsage|[TelcoUsage](#schemacdr-telco-apitelcousage)|optional|Usage summary for the invoice. May be empty if the invoice contains no usage data|
 |paymentStatus|string|mandatory|Indicator of the payment status for the invoice|
 
 #### Enumerated Values
@@ -4914,9 +5038,38 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|data|[TelcoUsage_data](#schemacdr-telco-apitelcousage_data)|mandatory|Summary of data usage|
-|voice|[TelcoUsage_voice](#schemacdr-telco-apitelcousage_voice)|conditional|Summary of voice calls. Required if voice calls are included in product plan|
-|messaging|[TelcoUsage_messaging](#schemacdr-telco-apitelcousage_messaging)|conditional|Summary of messaging. Required if messaging services is included in the product plan|
+|data|object|mandatory|Summary of data usage|
+|» upload|number|mandatory|Amount of data uploaded in megabytes (MB)|
+|» download|number|mandatory|Amount of data downloaded in megabytes (MB)|
+|» sessions|number|optional|Number of data sessions|
+|» amount|[AmountString](#common-field-types)|mandatory|Cost amount of data usage|
+|» roaming|object|mandatory|Roaming Data Usage|
+|»» download|number|conditional|Amount of data used while roaming in megabytes (MB)|
+|»» amount|[AmountString](#common-field-types)|conditional|Amount value of data roaming charges|
+|» voice|object|conditional|Summary of voice calls. Required if voice calls are included in product plan|
+|»» national|object|mandatory|National voice calls|
+|»»» duration|[TimeString](#common-field-types)|mandatory|Total duration (hours, minutes, and seconds) of national voice calls. Not limited to 24hrs|
+|»»» number|number|mandatory|Number of national voice calls|
+|»»» amount|[AmountString](#common-field-types)|mandatory|Cost amount of national calls|
+|»» international|object|mandatory|International voice calls|
+|»»» duration|[TimeString](#common-field-types)|mandatory|Total duration (hours, minutes, and seconds) of international voice calls. Not limited to 24hrs|
+|»»» number|number|mandatory|Number of international voice calls|
+|»»» amount|[AmountString](#common-field-types)|mandatory|Cost amount of international voice calls|
+|»» roaming|object|mandatory|Roaming voice calls|
+|»»» duration|[TimeString](#common-field-types)|mandatory|Total duration (hours, minutes, and seconds) of roaming voice calls. Not limited to 24hrs|
+|»»» number|number|mandatory|Number of roaming voice calls|
+|»»» amount|[AmountString](#common-field-types)|mandatory|Cost amount of roaming voice calls|
+|»» messaging|object|conditional|Summary of messaging. Required if messaging services is included in the product plan|
+|»»» sms|object|mandatory|Summary of SMS usage|
+|»»»» national|number|mandatory|Number of national SMS messages sent. Including premium SMS services|
+|»»»» international|number|mandatory|Number of international SMS messages sent. Including premium SMS services|
+|»»»» roaming|number|mandatory|Number of roaming SMS messages sent. Including premium SMS services|
+|»»»» amount|[AmountString](#common-field-types)|mandatory|Cost amount of SMS messages. Including premium SMS services|
+|»»» mms|object|mandatory|Summary of MMS usage|
+|»»»» national|number|mandatory|Number of national MMS messages sent|
+|»»»» international|number|mandatory|ber of international MMS messages sent|
+|»»»» roaming|number|mandatory|Number of roaming SMS messages sent. Including premium SMS services|
+|»»»» amount|[AmountString](#common-field-types)|mandatory|Cost amount of MMS messages|
 
 <h3 class="schema-toc" id="tocStelcoinvoiceaccountcharges">TelcoInvoiceAccountCharges</h3>
 
@@ -4946,8 +5099,25 @@ To perform this operation, you must be authenticated and authorised with the fol
 |totalUsageCharges|[AmountString](#common-field-types)|mandatory|The aggregate total of usage charges for the period covered by the invoice (exclusive of GST)|
 |totalOnceOffCharges|[AmountString](#common-field-types)|mandatory|The aggregate total of any once off charges arising from usage for the period covered by the invoice (exclusive of GST)|
 |totalDiscounts|[AmountString](#common-field-types)|mandatory|The aggregate total of account level discounts or credits for the period covered by the invoice|
-|otherCharges|[TelcoInvoiceAccountCharges_otherCharges](#schemacdr-telco-apitelcoinvoiceaccountcharges_othercharges)|optional|Optional array of charges that may be part of the invoice (for example services fees) (exclusive of GST)|
+|otherCharges|object|optional|Optional array of charges that may be part of the invoice (for example services fees) (exclusive of GST)|
+|» amount|[AmountString](#common-field-types)|mandatory|The aggregate total of charges for this item (exclusive of GST)|
+|» description|[AmountString](#common-field-types)|mandatory|A free text description of the charge|
+|» type|string|optional|A free text description of the charge|
 |totalGst|[AmountString](#common-field-types)|optional|The total GST for all account level charges.  If absent then zero is assumed|
+
+#### Enumerated Values
+
+|Property|Value|
+|---|---|
+|type|SERVICE|
+|type|EQUIPMENT|
+|type|NETWORK|
+|type|HANDSET|
+|type|DEVICE|
+|type|ENTERTAINMENT|
+|type|SUBSCRIPTION|
+|type|SOFTWARE|
+|type|OTHER|
 
 <h3 class="schema-toc" id="tocStelcobillingtransaction">TelcoBillingTransaction</h3>
 
@@ -5010,10 +5180,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 |executionDateTime|[DateTimeString](#common-field-types)|mandatory|The date and time that the transaction occurred|
 |gst|[AmountString](#common-field-types)|optional|The GST incurred in the transaction.  Should not be included for credits or payments.  If absent zero is assumed|
 |transactionUType|string|mandatory|Indicator of the type of transaction object present in this record|
-|account|[TelcoBillingAccountTransaction](#schemacdr-telco-apitelcobillingaccounttransaction)|optional|none|
-|onceOff|[TelcoBillingOnceOffTransaction](#schemacdr-telco-apitelcobillingonceofftransaction)|conditional|none|
-|otherCharges|[TelcoBillingOtherTransaction](#schemacdr-telco-apitelcobillingothertransaction)|optional|none|
-|payment|[TelcoBillingPaymentTransaction](#schemacdr-telco-apitelcobillingpaymenttransaction)|conditional|none|
+|account|[TelcoBillingAccountTransaction](#schemacdr-telco-apitelcobillingaccounttransaction)|optional|Represents an account bill charge.  Mandatory if transactionUType is equal to account|
+|onceOff|[TelcoBillingOnceOffTransaction](#schemacdr-telco-apitelcobillingonceofftransaction)|conditional|Represents a once off charge or credit.  Mandatory if transactionUType is equal to onceOff|
+|otherCharges|[TelcoBillingOtherTransaction](#schemacdr-telco-apitelcobillingothertransaction)|optional|Represents charge other than usage and once off.  Mandatory if transactionUType is equal to otherCharge|
+|payment|[TelcoBillingPaymentTransaction](#schemacdr-telco-apitelcobillingpaymenttransaction)|conditional|Represents a payment to the account.  Mandatory if transactionUType is equal to payment|
 
 #### Enumerated Values
 
@@ -5056,7 +5226,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 |startDate|[DateTimeString](#common-field-types)|mandatory|Date and time when the usage period starts|
 |endDate|[DateTimeString](#common-field-types)|mandatory|Date and time when the usage period ends|
 |amount|[AmountString](#common-field-types)|mandatory|The amount charged or credited for this transaction prior to any adjustments being applied.  A negative value indicates a credit|
-|adjustments|[[TelcoBillingAccountTransaction_adjustments](#schemacdr-telco-apitelcobillingaccounttransaction_adjustments)]|optional|Optional array of adjustments arising for this transaction|
+|adjustments|[object]|optional|Optional array of adjustments arising for this transaction|
+|» amount|[AmountString](#common-field-types)|mandatory|The amount of the adjustment|
+|» description|string|mandatory|A free text description of the adjustment|
 
 <h3 class="schema-toc" id="tocStelcobillingonceofftransaction">TelcoBillingOnceOffTransaction</h3>
 
@@ -5115,7 +5287,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 |type|string|optional|Type of charge. Assumed to be OTHER if absent|
 |amount|[AmountString](#common-field-types)|mandatory|The amount of the charge|
 |description|string|mandatory|A free text description of the item|
-|adjustments|[[TelcoBillingAccountTransaction_adjustments](#schemacdr-telco-apitelcobillingaccounttransaction_adjustments)]|optional|Optional array of adjustments arising for this transaction|
+|adjustments|[object]|optional|Optional array of adjustments arising for this transaction|
+|» amount|[AmountString](#common-field-types)|mandatory|The amount of the adjustment|
+|» description|string|mandatory|A free text description of the adjustment|
 
 #### Enumerated Values
 
@@ -5172,6 +5346,7 @@ To perform this operation, you must be authenticated and authorised with the fol
       "phoneNumber": "string",
       "startDate": "string",
       "endDate": "string",
+      "totalBalance": "string",
       "balances": {
         "data": {
           "planType": "METERED",
@@ -5221,13 +5396,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-*Object containing account usage summary*
+*Object containing Telco account balance*
 
 ### Properties
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|services|[[TelcoServiceBalance](#schemacdr-telco-apitelcoservicebalance)]|mandatory|Summary of data usage|
+|services|[[TelcoServiceBalance](#schemacdr-telco-apitelcoservicebalance)]|mandatory|Summary of balance for a Telco service|
 
 <h3 class="schema-toc" id="tocStelcoservicebalance">TelcoServiceBalance</h3>
 
@@ -5240,6 +5415,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   "phoneNumber": "string",
   "startDate": "string",
   "endDate": "string",
+  "totalBalance": "string",
   "balances": {
     "data": {
       "planType": "METERED",
@@ -5293,12 +5469,46 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|serviceId|string|optional|The serviceId representing a unique service identifier such as a mobile (MSISDN) or internet service (e.g NBN or ADSL)|
+|serviceId|string|mandatory|The serviceId representing a unique service identifier such as a mobile (MSISDN) or internet service (e.g NBN or ADSL)|
 |displayName|string|optional|Optional description of the service used for display purposes|
 |phoneNumber|string|conditional|Required if the service includes a phone number|
-|startDate|[DateTimeString](#common-field-types)|optional|Date when the balance period started|
+|startDate|[DateTimeString](#common-field-types)|mandatory|Date when the balance period started|
 |endDate|[DateTimeString](#common-field-types)|optional|Date when the balance period ends|
-|balances|[TelcoServiceBalance_balances](#schemacdr-telco-apitelcoservicebalance_balances)|optional|The serviceId representing a unique service identifier such as a mobile (MSISDN) or internet service (e.g NBN or ADSL)|
+|totalBalance|[AmountString](#common-field-types)|mandatory|The current amount owing for the account as a whole|
+|balances|object|mandatory|The serviceId representing a unique service identifier such as a mobile (MSISDN) or internet service (e.g NBN or ADSL)|
+|» data|object|optional|Summary of data balances|
+|»» planType|[TelcoPlanType](#schemacdr-telco-apitelcoplantype)|optional|Plan type for this feature. METERED: A plan is charged by usage for the feature. UNMETERED: A plan with no limits for a feature. LIMITED: Where plan limit inclusions apply. UNSUPPORTED: Feature is not supported|
+|»» description|string|conditional|An overview of plan limits. Required unless planType is UNSUPPORTED|
+|»» upload|number|optional|Remaining upload data in megabytes (MB). Required unless planType is UNSUPPORTED or UNMETERED|
+|»» download|number|optional|Remaining download data in megabytes (MB). Required unless planType is UNSUPPORTED or UNMETERED|
+|»» amount|[AmountString](#common-field-types)|conditional|Remaining value amount of data available. Required unless planType is UNSUPPORTED or UNMETERED|
+|»» roaming|object|optional|Balance of data roaming charges. Required unless planType is UNSUPPORTED|
+|»»» download|number|conditional|Amount of data used overseas in megabytes (MB). Required unless planType is UNSUPPORTED|
+|»»» amount|[AmountString](#common-field-types)|conditional|Amount value of data roaming charges. Required unless planType is UNSUPPORTED|
+|»» voice|object|optional|Summary of voice balances. Required if voice calls are included in product plan|
+|»»» planType|[TelcoPlanType](#schemacdr-telco-apitelcoplantype)|optional|Plan type for this feature. METERED: A plan is charged by usage for the feature. UNMETERED: A plan with no limits for a feature. LIMITED: Where plan limit inclusions apply. UNSUPPORTED: Feature is not supported|
+|»»» national|object|optional|National voice calls|
+|»»»» description|string|conditional|An overview of plan limits. Required unless planType is UNSUPPORTED|
+|»»»» duration|[TimeString](#common-field-types)|conditional|Total duration (hours, minutes, and seconds) of national voice calls. Not limited to 24hrs. Required unless planType is UNSUPPORTED or UNMETERED|
+|»»»» number|number|conditional|Number of national voice calls. Required unless planType is UNSUPPORTED or UNMETERED|
+|»»»» amount|[AmountString](#common-field-types)|conditional|Amount balance of national calls. Required unless planType is UNSUPPORTED or UNMETERED|
+|»»» international|object|optional|National voice calls|
+|»»»» description|string|conditional|An overview of plan limits. Required unless planType is UNSUPPORTED|
+|»»»» duration|[TimeString](#common-field-types)|optional|Total duration (hours, minutes, and seconds) of international voice calls available. Not limited to 24hrs. Required unless planType is UNSUPPORTED or UNMETERED|
+|»»»» number|number|optional|Number of international voice calls available Required unless planType is UNSUPPORTED or UNMETERED|
+|»»»» amount|[AmountString](#common-field-types)|conditional|Amount value of international calls available. Required unless planType is UNSUPPORTED or UNMETERED|
+|»»» messaging|object|optional|Summary of messaging. Required if messaging services is included in the product plan|
+|»»»» planType|[TelcoPlanType](#schemacdr-telco-apitelcoplantype)|optional|Plan type for this feature. METERED: A plan is charged by usage for the feature. UNMETERED: A plan with no limits for a feature. LIMITED: Where plan limit inclusions apply. UNSUPPORTED: Feature is not supported|
+|»»»» sms|object|mandatory|Required if the service plan supports SMS messaging|
+|»»»»» description|string|conditional|An overview of plan limits. Required unless planType is UNSUPPORTED|
+|»»»»» national|number|conditional|Number of national SMS messages remaining. Required unless planType is UNSUPPORTED or UNMETERED|
+|»»»»» international|number|conditional|Number of international SMS messages remaining. Required unless planType is UNSUPPORTED or UNMETERED|
+|»»»»» amount|[AmountString](#common-field-types)|conditional|Amount value of SMS messages remaining. Required unless planType is UNSUPPORTED or UNMETERED|
+|»»»» mms|object|mandatory|Summary of MMS usage|
+|»»»»» description|string|conditional|An overview of plan limits. Required unless planType is UNSUPPORTED|
+|»»»»» national|number|conditional|Number of national MMS messages remaining. Required unless planType is UNSUPPORTED or UNMETERED|
+|»»»»» international|number|conditional|Number of international MMS messages remaining. Required unless planType is UNSUPPORTED or UNMETERED|
+|»»»»» amount|[AmountString](#common-field-types)|conditional|Amount value of MMS messages remaining. Required unless planType is UNSUPPORTED or UNMETERED|
 
 <h3 class="schema-toc" id="tocStelcoplantype">TelcoPlanType</h3>
 
@@ -5553,2100 +5763,4 @@ To perform this operation, you must be authenticated and authorised with the fol
 |---|---|---|---|
 |totalRecords|[NaturalNumber](#common-field-types)|mandatory|The total number of records in the full set. See [pagination](#pagination).|
 |totalPages|[NaturalNumber](#common-field-types)|mandatory|The total number of pages in the full set. See [pagination](#pagination).|
-
-<h3 class="schema-toc" id="tocStelcoproductlistresponse_data">TelcoProductListResponse_data</h3>
-
-<a id="schemacdr-telco-apitelcoproductlistresponse_data"></a>
-
-```json
-{
-  "plans": [
-    {
-      "productId": "string",
-      "effectiveFrom": "string",
-      "effectiveTo": "string",
-      "lastUpdated": "string",
-      "displayName": "string",
-      "description": "string",
-      "type": "MOBILE",
-      "purpose": "PERSONAL",
-      "billingType": "PRE_PAID",
-      "contract": {
-        "name": "string",
-        "description": "string",
-        "duration": 0,
-        "contractURI": "string"
-      },
-      "bundle": true,
-      "brand": "string",
-      "brandName": "string",
-      "pricing": [
-        {
-          "name": "string",
-          "description": "string",
-          "period": "string",
-          "chargeAmount": "string"
-        }
-      ],
-      "thirdPartyAgentId": "string",
-      "thirdPartyAgentName": "string",
-      "applicationUri": "string",
-      "additionalInformation": {
-        "overviewUri": "string",
-        "termsUri": "string",
-        "eligibilityUri": "string",
-        "pricingUri": "string",
-        "bundleUri": "string"
-      }
-    }
-  ]
-}
-
-```
-
-### Properties
-
-|Name|Type|Required|Description|
-|---|---|---|---|
-|plans|[[TelcoProduct](#schemacdr-telco-apitelcoproduct)]|mandatory|Array of Products|
-
-<h3 class="schema-toc" id="tocStelcousagelistresponse_data">TelcoUsageListResponse_data</h3>
-
-<a id="schemacdr-telco-apitelcousagelistresponse_data"></a>
-
-```json
-{
-  "accounts": [
-    {
-      "accountId": "string",
-      "services": [
-        {
-          "service": {
-            "serviceId": "string",
-            "displayName": "string",
-            "phoneNumber": "string",
-            "startDate": "string",
-            "endDate": "string",
-            "usage": {
-              "data": {
-                "upload": 0,
-                "download": 0,
-                "sessions": 0,
-                "amount": "string",
-                "roaming": {
-                  "download": 0,
-                  "amount": "string"
-                }
-              },
-              "voice": {
-                "national": {
-                  "duration": "string",
-                  "number": 0,
-                  "amount": "string"
-                },
-                "international": {
-                  "duration": "string",
-                  "number": 0,
-                  "amount": "string"
-                },
-                "roaming": {
-                  "duration": "string",
-                  "number": 0,
-                  "amount": "string"
-                }
-              },
-              "messaging": {
-                "sms": {
-                  "national": 0,
-                  "international": 0,
-                  "roaming": 0,
-                  "amount": "string"
-                },
-                "mms": {
-                  "national": 0,
-                  "international": 0,
-                  "roaming": 0,
-                  "amount": "string"
-                }
-              }
-            }
-          }
-        }
-      ]
-    }
-  ]
-}
-
-```
-
-### Properties
-
-|Name|Type|Required|Description|
-|---|---|---|---|
-|accounts|[[TelcoAccountUsage](#schemacdr-telco-apitelcoaccountusage)]|mandatory|Array of services for the account|
-
-<h3 class="schema-toc" id="tocStelcoaccountlistresponse_data">TelcoAccountListResponse_data</h3>
-
-<a id="schemacdr-telco-apitelcoaccountlistresponse_data"></a>
-
-```json
-{
-  "accounts": [
-    {
-      "accountId": "string",
-      "accountNumber": "string",
-      "displayName": "string",
-      "creationDate": "string",
-      "lastUpdated": "string",
-      "brand": "string",
-      "openStatus": "CLOSED",
-      "plans": [
-        {
-          "nickname": "string",
-          "type": "MOBILE",
-          "serviceIds": [
-            "string"
-          ],
-          "planOverview": {
-            "displayName": "string",
-            "startDate": "string",
-            "endDate": "string"
-          }
-        }
-      ]
-    }
-  ]
-}
-
-```
-
-### Properties
-
-|Name|Type|Required|Description|
-|---|---|---|---|
-|accounts|[[TelcoAccount](#schemacdr-telco-apitelcoaccount)]|mandatory|Array of accounts|
-
-<h3 class="schema-toc" id="tocStelcopaymentscheduleresponse_data">TelcoPaymentScheduleResponse_data</h3>
-
-<a id="schemacdr-telco-apitelcopaymentscheduleresponse_data"></a>
-
-```json
-{
-  "paymentSchedules": [
-    {
-      "amount": "string",
-      "paymentScheduleUType": "cardDebit",
-      "cardDebit": {
-        "cardScheme": "VISA",
-        "paymentFrequency": "string",
-        "calculationType": "STATIC"
-      },
-      "directDebit": {
-        "isTokenised": true,
-        "bsb": "string",
-        "accountNumber": "string",
-        "paymentFrequency": "string",
-        "calculationType": "STATIC"
-      },
-      "digitalWallet": {
-        "name": "string",
-        "identifier": "string",
-        "type": "EMAIL",
-        "provider": "PAYPAL_AU",
-        "paymentFrequency": "string",
-        "calculationType": "STATIC"
-      },
-      "manualPayment": {
-        "billFrequency": "string"
-      }
-    }
-  ]
-}
-
-```
-
-### Properties
-
-|Name|Type|Required|Description|
-|---|---|---|---|
-|paymentSchedules|[[TelcoPaymentSchedule](#schemacdr-telco-apitelcopaymentschedule)]|mandatory|Array may be empty if no payment schedule exist|
-
-<h3 class="schema-toc" id="tocStelcoconcessionsresponse_data">TelcoConcessionsResponse_data</h3>
-
-<a id="schemacdr-telco-apitelcoconcessionsresponse_data"></a>
-
-```json
-{
-  "concessions": [
-    {
-      "type": "CONCESSION",
-      "displayName": "string",
-      "additionalInfo": "string",
-      "additionalInfoUri": "string",
-      "startDate": "string",
-      "endDate": "string",
-      "discountFrequency": "string",
-      "amount": "string",
-      "percentage": "string",
-      "appliedTo": [
-        "INVOICE"
-      ]
-    }
-  ]
-}
-
-```
-
-### Properties
-
-|Name|Type|Required|Description|
-|---|---|---|---|
-|concessions|[[TelcoConcession](#schemacdr-telco-apitelcoconcession)]|mandatory|Array may be empty if no concessions exist|
-
-<h3 class="schema-toc" id="tocStelcobalancelistresponse_data_balances">TelcoBalanceListResponse_data_balances</h3>
-
-<a id="schemacdr-telco-apitelcobalancelistresponse_data_balances"></a>
-
-```json
-{
-  "accountId": "string",
-  "balance": {
-    "services": [
-      {
-        "serviceId": "string",
-        "displayName": "string",
-        "phoneNumber": "string",
-        "startDate": "string",
-        "endDate": "string",
-        "balances": {
-          "data": {
-            "planType": "METERED",
-            "description": "string",
-            "upload": 0,
-            "download": 0,
-            "amount": "string",
-            "roaming": {
-              "download": 0,
-              "amount": "string"
-            }
-          },
-          "voice": {
-            "planType": "METERED",
-            "national": {
-              "description": "string",
-              "duration": "string",
-              "number": 0,
-              "amount": "string"
-            },
-            "international": {
-              "description": "string",
-              "duration": "string",
-              "number": 0,
-              "amount": "string"
-            }
-          },
-          "messaging": {
-            "planType": "METERED",
-            "sms": {
-              "description": "string",
-              "national": 0,
-              "international": 0,
-              "amount": "string"
-            },
-            "mms": {
-              "description": "string",
-              "national": 0,
-              "international": 0,
-              "amount": "string"
-            }
-          }
-        }
-      }
-    ]
-  }
-}
-
-```
-
-### Properties
-
-|Name|Type|Required|Description|
-|---|---|---|---|
-|accountId|string|mandatory|The ID of the account|
-|balance|[TelcoBalance](#schemacdr-telco-apitelcobalance)|mandatory|Object containing account usage summary|
-
-<h3 class="schema-toc" id="tocStelcobalancelistresponse_data">TelcoBalanceListResponse_data</h3>
-
-<a id="schemacdr-telco-apitelcobalancelistresponse_data"></a>
-
-```json
-{
-  "balances": [
-    {
-      "accountId": "string",
-      "balance": {
-        "services": [
-          {
-            "serviceId": "string",
-            "displayName": "string",
-            "phoneNumber": "string",
-            "startDate": "string",
-            "endDate": "string",
-            "balances": {
-              "data": {
-                "planType": "METERED",
-                "description": "string",
-                "upload": 0,
-                "download": 0,
-                "amount": "string",
-                "roaming": {
-                  "download": 0,
-                  "amount": "string"
-                }
-              },
-              "voice": {
-                "planType": "METERED",
-                "national": {
-                  "description": "string",
-                  "duration": "string",
-                  "number": 0,
-                  "amount": "string"
-                },
-                "international": {
-                  "description": "string",
-                  "duration": "string",
-                  "number": 0,
-                  "amount": "string"
-                }
-              },
-              "messaging": {
-                "planType": "METERED",
-                "sms": {
-                  "description": "string",
-                  "national": 0,
-                  "international": 0,
-                  "amount": "string"
-                },
-                "mms": {
-                  "description": "string",
-                  "national": 0,
-                  "international": 0,
-                  "amount": "string"
-                }
-              }
-            }
-          }
-        ]
-      }
-    }
-  ]
-}
-
-```
-
-### Properties
-
-|Name|Type|Required|Description|
-|---|---|---|---|
-|balances|[[TelcoBalanceListResponse_data_balances](#schemacdr-telco-apitelcobalancelistresponse_data_balances)]|mandatory|Array of account balances|
-
-<h3 class="schema-toc" id="tocStelcobalanceresponse_data">TelcoBalanceResponse_data</h3>
-
-<a id="schemacdr-telco-apitelcobalanceresponse_data"></a>
-
-```json
-{
-  "accountId": "string",
-  "balance": {
-    "services": [
-      {
-        "serviceId": "string",
-        "displayName": "string",
-        "phoneNumber": "string",
-        "startDate": "string",
-        "endDate": "string",
-        "balances": {
-          "data": {
-            "planType": "METERED",
-            "description": "string",
-            "upload": 0,
-            "download": 0,
-            "amount": "string",
-            "roaming": {
-              "download": 0,
-              "amount": "string"
-            }
-          },
-          "voice": {
-            "planType": "METERED",
-            "national": {
-              "description": "string",
-              "duration": "string",
-              "number": 0,
-              "amount": "string"
-            },
-            "international": {
-              "description": "string",
-              "duration": "string",
-              "number": 0,
-              "amount": "string"
-            }
-          },
-          "messaging": {
-            "planType": "METERED",
-            "sms": {
-              "description": "string",
-              "national": 0,
-              "international": 0,
-              "amount": "string"
-            },
-            "mms": {
-              "description": "string",
-              "national": 0,
-              "international": 0,
-              "amount": "string"
-            }
-          }
-        }
-      }
-    ]
-  }
-}
-
-```
-
-### Properties
-
-|Name|Type|Required|Description|
-|---|---|---|---|
-|accountId|string|optional|The ID of the account|
-|balance|[TelcoBalance](#schemacdr-telco-apitelcobalance)|mandatory|Object containing account usage summary|
-
-<h3 class="schema-toc" id="tocStelcoinvoicelistresponse_data">TelcoInvoiceListResponse_data</h3>
-
-<a id="schemacdr-telco-apitelcoinvoicelistresponse_data"></a>
-
-```json
-{
-  "invoices": [
-    {
-      "accountId": "string",
-      "invoiceNumber": "string",
-      "issueDate": "string",
-      "dueDate": "string",
-      "period": {
-        "startDate": "string",
-        "endDate": "string"
-      },
-      "invoiceAmount": "string",
-      "gstAmount": "string",
-      "payOnTimeDiscount": {
-        "discountAmount": "string",
-        "gstAmount": "string",
-        "date": "string"
-      },
-      "balanceAtIssue": "string",
-      "services": [
-        "string"
-      ],
-      "accountCharges": {
-        "totalUsageCharges": "string",
-        "totalOnceOffCharges": "string",
-        "totalDiscounts": "string",
-        "otherCharges": {
-          "amount": "string",
-          "description": "string",
-          "type": "SERVICE"
-        },
-        "totalGst": "string"
-      },
-      "accountUsage": {
-        "data": {
-          "upload": 0,
-          "download": 0,
-          "sessions": 0,
-          "amount": "string",
-          "roaming": {
-            "download": 0,
-            "amount": "string"
-          }
-        },
-        "voice": {
-          "national": {
-            "duration": "string",
-            "number": 0,
-            "amount": "string"
-          },
-          "international": {
-            "duration": "string",
-            "number": 0,
-            "amount": "string"
-          },
-          "roaming": {
-            "duration": "string",
-            "number": 0,
-            "amount": "string"
-          }
-        },
-        "messaging": {
-          "sms": {
-            "national": 0,
-            "international": 0,
-            "roaming": 0,
-            "amount": "string"
-          },
-          "mms": {
-            "national": 0,
-            "international": 0,
-            "roaming": 0,
-            "amount": "string"
-          }
-        }
-      },
-      "paymentStatus": "PAID"
-    }
-  ]
-}
-
-```
-
-### Properties
-
-|Name|Type|Required|Description|
-|---|---|---|---|
-|invoices|[[TelcoInvoice](#schemacdr-telco-apitelcoinvoice)]|mandatory|Array of invoices sorted by issue date in descending order|
-
-<h3 class="schema-toc" id="tocStelcotransactionlistresponse_data">TelcoTransactionListResponse_data</h3>
-
-<a id="schemacdr-telco-apitelcotransactionlistresponse_data"></a>
-
-```json
-{
-  "transactions": [
-    {
-      "accountId": "string",
-      "executionDateTime": "string",
-      "gst": "string",
-      "transactionUType": "account",
-      "account": {
-        "serviceIds": "string",
-        "invoiceNumber": "string",
-        "description": "string",
-        "startDate": "string",
-        "endDate": "string",
-        "amount": "string",
-        "adjustments": [
-          {
-            "amount": "string",
-            "description": "string"
-          }
-        ]
-      },
-      "onceOff": {
-        "serviceId": "string",
-        "invoiceNumber": "string",
-        "amount": "string",
-        "description": "string"
-      },
-      "otherCharges": {
-        "serviceId": "string",
-        "invoiceNumber": "string",
-        "startDate": "string",
-        "endDate": "string",
-        "type": "SERVICE",
-        "amount": "string",
-        "description": "string",
-        "adjustments": [
-          {
-            "amount": "string",
-            "description": "string"
-          }
-        ]
-      },
-      "payment": {
-        "amount": "string",
-        "method": "DIRECT_DEBIT"
-      }
-    }
-  ]
-}
-
-```
-
-### Properties
-
-|Name|Type|Required|Description|
-|---|---|---|---|
-|transactions|[[TelcoBillingTransaction](#schemacdr-telco-apitelcobillingtransaction)]|mandatory|Array of transactions sorted by date and time in descending order|
-
-<h3 class="schema-toc" id="tocSerrorlistresponse_meta">ErrorListResponse_meta</h3>
-
-<a id="schemacdr-telco-apierrorlistresponse_meta"></a>
-
-```json
-{
-  "urn": "string"
-}
-
-```
-
-*Additional data for customised error codes*
-
-### Properties
-
-|Name|Type|Required|Description|
-|---|---|---|---|
-|urn|string|conditional|The CDR error code URN which the application-specific error code extends. Mandatory if the error `code` is an application-specific error rather than a standardised error code.|
-
-<h3 class="schema-toc" id="tocSerrorlistresponse_errors">ErrorListResponse_errors</h3>
-
-<a id="schemacdr-telco-apierrorlistresponse_errors"></a>
-
-```json
-{
-  "code": "string",
-  "title": "string",
-  "detail": "string",
-  "meta": {
-    "urn": "string"
-  }
-}
-
-```
-
-### Properties
-
-|Name|Type|Required|Description|
-|---|---|---|---|
-|code|string|mandatory|The code of the error encountered. Where the error is specific to the respondent, an application-specific error code, expressed as a string value. If the error is application-specific, the URN code that the specific error extends must be provided in the meta object. Otherwise, the value is the error code URN.|
-|title|string|mandatory|A short, human-readable summary of the problem that MUST NOT change from occurrence to occurrence of the problem represented by the error code.|
-|detail|string|mandatory|A human-readable explanation specific to this occurrence of the problem.|
-|meta|[ErrorListResponse_meta](#schemacdr-telco-apierrorlistresponse_meta)|optional|Additional data for customised error codes|
-
-<h3 class="schema-toc" id="tocStelcoproduct_pricing">TelcoProduct_pricing</h3>
-
-<a id="schemacdr-telco-apitelcoproduct_pricing"></a>
-
-```json
-{
-  "name": "string",
-  "description": "string",
-  "period": "string",
-  "chargeAmount": "string"
-}
-
-```
-
-### Properties
-
-|Name|Type|Required|Description|
-|---|---|---|---|
-|name|string|mandatory|The display name of the pricing|
-|description|string|mandatory|The description of the pricing|
-|period|[ExternalRef](#common-field-types)|optional|The duration that occurs on a pricing schedule indicates the frequency. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
-|chargeAmount|[AmountString](#common-field-types)|mandatory|The amount charged for the duration period|
-
-<h3 class="schema-toc" id="tocStelcoproduct_additionalinformation">TelcoProduct_additionalInformation</h3>
-
-<a id="schemacdr-telco-apitelcoproduct_additionalinformation"></a>
-
-```json
-{
-  "overviewUri": "string",
-  "termsUri": "string",
-  "eligibilityUri": "string",
-  "pricingUri": "string",
-  "bundleUri": "string"
-}
-
-```
-
-*Object that contains links to additional information on specific topics*
-
-### Properties
-
-|Name|Type|Required|Description|
-|---|---|---|---|
-|overviewUri|[URIString](#common-field-types)|optional|A link to a general overview of the plan|
-|termsUri|[URIString](#common-field-types)|optional|A link to terms and conditions for the plan|
-|eligibilityUri|[URIString](#common-field-types)|optional|A link to detail on eligibility criteria for the plan|
-|pricingUri|[URIString](#common-field-types)|optional|A link to detail on pricing for the plan|
-|bundleUri|[URIString](#common-field-types)|optional|A link to detail on bundles that this plan can be a part of|
-
-<h3 class="schema-toc" id="tocStelcoproductdetail_allof_meteringcharges">TelcoProductDetail_allOf_meteringCharges</h3>
-
-<a id="schemacdr-telco-apitelcoproductdetail_allof_meteringcharges"></a>
-
-```json
-{
-  "displayName": "string",
-  "description": "string",
-  "minimumValue": "string",
-  "maximumValue": "string",
-  "period": "string"
-}
-
-```
-
-### Properties
-
-|Name|Type|Required|Description|
-|---|---|---|---|
-|displayName|string|mandatory|Display name of the charge|
-|description|string|optional|Description of the charge|
-|minimumValue|[AmountString](#common-field-types)|mandatory|Minimum value of the charge if the charge is a range or the absolute value of the charge if no range is specified|
-|maximumValue|[AmountString](#common-field-types)|optional|The upper limit of the charge if the charge could occur in a range|
-|period|[ExternalRef](#common-field-types)|optional|The charges that occur on a schedule indicates the frequency. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
-
-<h3 class="schema-toc" id="tocStelcoproductdetail_allof_features">TelcoProductDetail_allOf_features</h3>
-
-<a id="schemacdr-telco-apitelcoproductdetail_allof_features"></a>
-
-```json
-{
-  "displayName": "string",
-  "description": "string",
-  "category": "DATA"
-}
-
-```
-
-### Properties
-
-|Name|Type|Required|Description|
-|---|---|---|---|
-|displayName|string|mandatory|The display name of the feature|
-|description|string|optional|The description of the feature|
-|category|string|optional|The type of the feature|
-
-#### Enumerated Values
-
-|Property|Value|
-|---|---|
-|category|DATA|
-|category|VOICE|
-|category|MESSAGING|
-|category|HANDSET|
-|category|DEVICE|
-|category|NETWORK|
-|category|ENTERTAINMENT|
-|category|SUBSCRIPTION|
-|category|SOFTWARE|
-|category|OTHER|
-
-<h3 class="schema-toc" id="tocStelcoproductdetail_allof_bundles">TelcoProductDetail_allOf_bundles</h3>
-
-<a id="schemacdr-telco-apitelcoproductdetail_allof_bundles"></a>
-
-```json
-{
-  "displayName": "string",
-  "description": "string",
-  "bundleUri": "string",
-  "features": [
-    {
-      "displayName": "string",
-      "description": "string",
-      "category": "DATA"
-    }
-  ]
-}
-
-```
-
-### Properties
-
-|Name|Type|Required|Description|
-|---|---|---|---|
-|displayName|string|mandatory|The display name of the product bundle|
-|description|string|optional|The description of the product bundle|
-|bundleUri|[URIString](#common-field-types)|optional|The URI of the product bundle|
-|features|[[TelcoProductDetail_allOf_features](#schemacdr-telco-apitelcoproductdetail_allof_features)]|optional|Optional list of features of the bundle|
-
-<h3 class="schema-toc" id="tocStelcoproductdetail_allof_features_1">TelcoProductDetail_allOf_features_1</h3>
-
-<a id="schemacdr-telco-apitelcoproductdetail_allof_features_1"></a>
-
-```json
-{
-  "displayName": "string",
-  "description": "string"
-}
-
-```
-
-### Properties
-
-|Name|Type|Required|Description|
-|---|---|---|---|
-|displayName|string|mandatory|The display name of the feature|
-|description|string|optional|The description of the feature|
-
-<h3 class="schema-toc" id="tocStelcoproductdetail_allof_plans">TelcoProductDetail_allOf_plans</h3>
-
-<a id="schemacdr-telco-apitelcoproductdetail_allof_plans"></a>
-
-```json
-{
-  "displayName": "string",
-  "description": "string",
-  "planUri": "string",
-  "features": [
-    {
-      "displayName": "string",
-      "description": "string"
-    }
-  ]
-}
-
-```
-
-### Properties
-
-|Name|Type|Required|Description|
-|---|---|---|---|
-|displayName|string|mandatory|The display name of the product plan|
-|description|string|optional|The display name of the product plan|
-|planUri|[URIString](#common-field-types)|optional|The URI of the product plan|
-|features|[[TelcoProductDetail_allOf_features_1](#schemacdr-telco-apitelcoproductdetail_allof_features_1)]|optional|Optional list of features of the plan|
-
-<h3 class="schema-toc" id="tocStelcoproductdetail_allof_features_2">TelcoProductDetail_allOf_features_2</h3>
-
-<a id="schemacdr-telco-apitelcoproductdetail_allof_features_2"></a>
-
-```json
-{
-  "displayName": "string",
-  "description": "string"
-}
-
-```
-
-### Properties
-
-|Name|Type|Required|Description|
-|---|---|---|---|
-|displayName|string|mandatory|The display name of the discount feature|
-|description|string|optional|The description of the discount feature|
-
-<h3 class="schema-toc" id="tocStelcoproductdetail_allof_discounts">TelcoProductDetail_allOf_discounts</h3>
-
-<a id="schemacdr-telco-apitelcoproductdetail_allof_discounts"></a>
-
-```json
-{
-  "displayName": "string",
-  "description": "string",
-  "discountUri": "string",
-  "features": [
-    {
-      "displayName": "string",
-      "description": "string"
-    }
-  ]
-}
-
-```
-
-### Properties
-
-|Name|Type|Required|Description|
-|---|---|---|---|
-|displayName|string|mandatory|The display name of the product plan|
-|description|string|optional|The description name of the product plan|
-|discountUri|[URIString](#common-field-types)|optional|The URI of the discount|
-|features|[[TelcoProductDetail_allOf_features_2](#schemacdr-telco-apitelcoproductdetail_allof_features_2)]|optional|Optional list of features of the discount|
-
-<h3 class="schema-toc" id="tocStelcoproductdetail_allof_features_3">TelcoProductDetail_allOf_features_3</h3>
-
-<a id="schemacdr-telco-apitelcoproductdetail_allof_features_3"></a>
-
-```json
-{
-  "displayName": "string",
-  "description": "string"
-}
-
-```
-
-### Properties
-
-|Name|Type|Required|Description|
-|---|---|---|---|
-|displayName|string|mandatory|The display name of the incentive feature|
-|description|string|optional|The description of the incentive feature|
-
-<h3 class="schema-toc" id="tocStelcoproductdetail_allof_incentives">TelcoProductDetail_allOf_incentives</h3>
-
-<a id="schemacdr-telco-apitelcoproductdetail_allof_incentives"></a>
-
-```json
-{
-  "displayName": "string",
-  "description": "string",
-  "incentiveUri": "string",
-  "features": [
-    {
-      "displayName": "string",
-      "description": "string"
-    }
-  ]
-}
-
-```
-
-### Properties
-
-|Name|Type|Required|Description|
-|---|---|---|---|
-|displayName|string|mandatory|The display name of the incentive|
-|description|string|optional|The description of the incentive|
-|incentiveUri|[URIString](#common-field-types)|optional|The URI of the incentive|
-|features|[[TelcoProductDetail_allOf_features_3](#schemacdr-telco-apitelcoproductdetail_allof_features_3)]|optional|Optional list of features of the incentive|
-
-<h3 class="schema-toc" id="tocStelcoproductdetail_allof">TelcoProductDetail_allOf</h3>
-
-<a id="schemacdr-telco-apitelcoproductdetail_allof"></a>
-
-```json
-{
-  "meteringCharges": [
-    {
-      "displayName": "string",
-      "description": "string",
-      "minimumValue": "string",
-      "maximumValue": "string",
-      "period": "string"
-    }
-  ],
-  "bundles": [
-    {
-      "displayName": "string",
-      "description": "string",
-      "bundleUri": "string",
-      "features": [
-        {
-          "displayName": "string",
-          "description": "string",
-          "category": "DATA"
-        }
-      ]
-    }
-  ],
-  "plans": [
-    {
-      "displayName": "string",
-      "description": "string",
-      "planUri": "string",
-      "features": [
-        {
-          "displayName": "string",
-          "description": "string"
-        }
-      ]
-    }
-  ],
-  "discounts": [
-    {
-      "displayName": "string",
-      "description": "string",
-      "discountUri": "string",
-      "features": [
-        {
-          "displayName": "string",
-          "description": "string"
-        }
-      ]
-    }
-  ],
-  "incentives": [
-    {
-      "displayName": "string",
-      "description": "string",
-      "incentiveUri": "string",
-      "features": [
-        {
-          "displayName": "string",
-          "description": "string"
-        }
-      ]
-    }
-  ]
-}
-
-```
-
-### Properties
-
-|Name|Type|Required|Description|
-|---|---|---|---|
-|meteringCharges|[[TelcoProductDetail_allOf_meteringCharges](#schemacdr-telco-apitelcoproductdetail_allof_meteringcharges)]|optional|Charges for metering included in the plan|
-|bundles|[[TelcoProductDetail_allOf_bundles](#schemacdr-telco-apitelcoproductdetail_allof_bundles)]|optional|Bundles the product can be part of|
-|plans|[[TelcoProductDetail_allOf_plans](#schemacdr-telco-apitelcoproductdetail_allof_plans)]|optional|Plans associated to the product|
-|discounts|[[TelcoProductDetail_allOf_discounts](#schemacdr-telco-apitelcoproductdetail_allof_discounts)]|optional|Discounts associated to the product|
-|incentives|[[TelcoProductDetail_allOf_incentives](#schemacdr-telco-apitelcoproductdetail_allof_incentives)]|optional|Incentives associated to the product|
-
-<h3 class="schema-toc" id="tocStelcoaccountusage_services">TelcoAccountUsage_services</h3>
-
-<a id="schemacdr-telco-apitelcoaccountusage_services"></a>
-
-```json
-{
-  "service": {
-    "serviceId": "string",
-    "displayName": "string",
-    "phoneNumber": "string",
-    "startDate": "string",
-    "endDate": "string",
-    "usage": {
-      "data": {
-        "upload": 0,
-        "download": 0,
-        "sessions": 0,
-        "amount": "string",
-        "roaming": {
-          "download": 0,
-          "amount": "string"
-        }
-      },
-      "voice": {
-        "national": {
-          "duration": "string",
-          "number": 0,
-          "amount": "string"
-        },
-        "international": {
-          "duration": "string",
-          "number": 0,
-          "amount": "string"
-        },
-        "roaming": {
-          "duration": "string",
-          "number": 0,
-          "amount": "string"
-        }
-      },
-      "messaging": {
-        "sms": {
-          "national": 0,
-          "international": 0,
-          "roaming": 0,
-          "amount": "string"
-        },
-        "mms": {
-          "national": 0,
-          "international": 0,
-          "roaming": 0,
-          "amount": "string"
-        }
-      }
-    }
-  }
-}
-
-```
-
-### Properties
-
-|Name|Type|Required|Description|
-|---|---|---|---|
-|service|[TelcoServiceUsage](#schemacdr-telco-apitelcoserviceusage)|mandatory|none|
-
-<h3 class="schema-toc" id="tocStelcoaccount_allof_planoverview">TelcoAccount_allOf_planOverview</h3>
-
-<a id="schemacdr-telco-apitelcoaccount_allof_planoverview"></a>
-
-```json
-{
-  "displayName": "string",
-  "startDate": "string",
-  "endDate": "string"
-}
-
-```
-
-*Mandatory if openStatus is OPEN*
-
-### Properties
-
-|Name|Type|Required|Description|
-|---|---|---|---|
-|displayName|string|optional|The name of the plan if one exists|
-|startDate|[DateString](#common-field-types)|mandatory|The start date of the applicability of this plan|
-|endDate|[DateString](#common-field-types)|optional|The end date of the applicability of this plan|
-
-<h3 class="schema-toc" id="tocStelcoaccount_allof_plans">TelcoAccount_allOf_plans</h3>
-
-<a id="schemacdr-telco-apitelcoaccount_allof_plans"></a>
-
-```json
-{
-  "nickname": "string",
-  "type": "MOBILE",
-  "serviceIds": [
-    "string"
-  ],
-  "planOverview": {
-    "displayName": "string",
-    "startDate": "string",
-    "endDate": "string"
-  }
-}
-
-```
-
-### Properties
-
-|Name|Type|Required|Description|
-|---|---|---|---|
-|nickname|string|optional|Optional display name for the plan provided by the customer to help differentiate multiple plans|
-|type|string|optional|The type of the plan|
-|serviceIds|[string]|mandatory|An array of serviceId’s representing a unique service identifier such as a mobile (MSISDN) or internet service (e.g NBN or ADSL) If there are no serviceIds allocated to this plan then an empty array would be expected|
-|planOverview|[TelcoAccount_allOf_planOverview](#schemacdr-telco-apitelcoaccount_allof_planoverview)|conditional|Mandatory if openStatus is OPEN|
-
-#### Enumerated Values
-
-|Property|Value|
-|---|---|
-|type|MOBILE|
-|type|BROADBAND|
-
-<h3 class="schema-toc" id="tocStelcoaccount_allof">TelcoAccount_allOf</h3>
-
-<a id="schemacdr-telco-apitelcoaccount_allof"></a>
-
-```json
-{
-  "plans": [
-    {
-      "nickname": "string",
-      "type": "MOBILE",
-      "serviceIds": [
-        "string"
-      ],
-      "planOverview": {
-        "displayName": "string",
-        "startDate": "string",
-        "endDate": "string"
-      }
-    }
-  ]
-}
-
-```
-
-*The array of plans containing services and associated plan details*
-
-### Properties
-
-|Name|Type|Required|Description|
-|---|---|---|---|
-|plans|[[TelcoAccount_allOf_plans](#schemacdr-telco-apitelcoaccount_allof_plans)]|mandatory|The array of plans containing service and associated plan details|
-
-<h3 class="schema-toc" id="tocStelcoaccountdetail_allof_plandetail">TelcoAccountDetail_allOf_planDetail</h3>
-
-<a id="schemacdr-telco-apitelcoaccountdetail_allof_plandetail"></a>
-
-```json
-{
-  "charges": [
-    {
-      "displayName": "string",
-      "description": "string",
-      "minimumValue": "string",
-      "maximumValue": "string",
-      "period": "string"
-    }
-  ]
-}
-
-```
-
-*Detail on the plan applicable to this account. Mandatory if openStatus is OPEN*
-
-### Properties
-
-|Name|Type|Required|Description|
-|---|---|---|---|
-|charges|[[TelcoProductDetail_allOf_meteringCharges](#schemacdr-telco-apitelcoproductdetail_allof_meteringcharges)]|optional|Charges for metering included in the plan|
-
-<h3 class="schema-toc" id="tocStelcoaccountdetail_allof_authorisedcontacts">TelcoAccountDetail_allOf_authorisedContacts</h3>
-
-<a id="schemacdr-telco-apitelcoaccountdetail_allof_authorisedcontacts"></a>
-
-```json
-{
-  "firstName": "string",
-  "lastName": "string",
-  "middleNames": [
-    "string"
-  ],
-  "prefix": "string",
-  "suffix": "string"
-}
-
-```
-
-### Properties
-
-|Name|Type|Required|Description|
-|---|---|---|---|
-|firstName|string|optional|For people with single names this field need not be present. The single name should be in the lastName field|
-|lastName|string|mandatory|For people with single names the single name should be in this field|
-|middleNames|[string]|optional|Field is mandatory but array may be empty|
-|prefix|string|optional|Also known as title or salutation. The prefix to the name (e.g. Mr, Mrs, Ms, Miss, Sir, etc)|
-|suffix|string|optional|Used for a trailing suffix to the name (e.g. Jr)|
-
-<h3 class="schema-toc" id="tocStelcoaccountdetail_allof_plans">TelcoAccountDetail_allOf_plans</h3>
-
-<a id="schemacdr-telco-apitelcoaccountdetail_allof_plans"></a>
-
-```json
-{
-  "nickname": "string",
-  "serviceIds": [
-    "string"
-  ],
-  "planOverview": {
-    "displayName": "string",
-    "startDate": "string",
-    "endDate": "string"
-  },
-  "planDetail": {
-    "charges": [
-      {
-        "displayName": "string",
-        "description": "string",
-        "minimumValue": "string",
-        "maximumValue": "string",
-        "period": "string"
-      }
-    ]
-  },
-  "authorisedContacts": [
-    {
-      "firstName": "string",
-      "lastName": "string",
-      "middleNames": [
-        "string"
-      ],
-      "prefix": "string",
-      "suffix": "string"
-    }
-  ]
-}
-
-```
-
-### Properties
-
-|Name|Type|Required|Description|
-|---|---|---|---|
-|nickname|string|optional|Optional display name for the plan provided by the customer to help differentiate multiple plans|
-|serviceIds|[string]|mandatory|An array of serviceId’s representing a unique service identifier such as a mobile (MSISDN) or internet service (e.g NBN or ADSL) If there are no serviceIds allocated to this plan then an empty array would be expected|
-|planOverview|[TelcoAccount_allOf_planOverview](#schemacdr-telco-apitelcoaccount_allof_planoverview)|conditional|Mandatory if openStatus is OPEN|
-|planDetail|[TelcoAccountDetail_allOf_planDetail](#schemacdr-telco-apitelcoaccountdetail_allof_plandetail)|conditional|Detail on the plan applicable to this account. Mandatory if openStatus is OPEN|
-|authorisedContacts|[[TelcoAccountDetail_allOf_authorisedContacts](#schemacdr-telco-apitelcoaccountdetail_allof_authorisedcontacts)]|optional|An array of additional contacts that are authorised to act on this account|
-
-<h3 class="schema-toc" id="tocStelcoaccountdetail_allof">TelcoAccountDetail_allOf</h3>
-
-<a id="schemacdr-telco-apitelcoaccountdetail_allof"></a>
-
-```json
-{
-  "plans": [
-    {
-      "nickname": "string",
-      "serviceIds": [
-        "string"
-      ],
-      "planOverview": {
-        "displayName": "string",
-        "startDate": "string",
-        "endDate": "string"
-      },
-      "planDetail": {
-        "charges": [
-          {
-            "displayName": "string",
-            "description": "string",
-            "minimumValue": "string",
-            "maximumValue": "string",
-            "period": "string"
-          }
-        ]
-      },
-      "authorisedContacts": [
-        {
-          "firstName": "string",
-          "lastName": "string",
-          "middleNames": [
-            "string"
-          ],
-          "prefix": "string",
-          "suffix": "string"
-        }
-      ]
-    }
-  ]
-}
-
-```
-
-*The array of plans containing services and associated plan details*
-
-### Properties
-
-|Name|Type|Required|Description|
-|---|---|---|---|
-|plans|[[TelcoAccountDetail_allOf_plans](#schemacdr-telco-apitelcoaccountdetail_allof_plans)]|mandatory|The array of plans containing services and associated plan details|
-
-<h3 class="schema-toc" id="tocStelcopaymentschedule_carddebit">TelcoPaymentSchedule_cardDebit</h3>
-
-<a id="schemacdr-telco-apitelcopaymentschedule_carddebit"></a>
-
-```json
-{
-  "cardScheme": "VISA",
-  "paymentFrequency": "string",
-  "calculationType": "STATIC"
-}
-
-```
-
-*Represents a regular credit card payment schedule. Mandatory if paymentScheduleUType is set to cardDebit*
-
-### Properties
-
-|Name|Type|Required|Description|
-|---|---|---|---|
-|cardScheme|string|mandatory|The type of credit card held on file|
-|paymentFrequency|[ExternalRef](#common-field-types)|mandatory|The frequency that payments will occur.  Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
-|calculationType|string|mandatory|The mechanism by which the payment amount is calculated.  Explanation of values are as follows:<br/><ul><li>**STATIC** - Indicates a consistent, static amount, per payment</li><li>**BALANCE** - Indicates that the outstanding balance for the account is paid per period</li><li>**CALCULATED** - Indicates that the payment amount is variable and calculated using a pre-defined algorithm</li></ul>|
-
-#### Enumerated Values
-
-|Property|Value|
-|---|---|
-|cardScheme|VISA|
-|cardScheme|MASTERCARD|
-|cardScheme|AMEX|
-|cardScheme|DINERS|
-|cardScheme|OTHER|
-|cardScheme|UNKNOWN|
-|calculationType|STATIC|
-|calculationType|BALANCE|
-|calculationType|CALCULATED|
-
-<h3 class="schema-toc" id="tocStelcopaymentschedule_directdebit">TelcoPaymentSchedule_directDebit</h3>
-
-<a id="schemacdr-telco-apitelcopaymentschedule_directdebit"></a>
-
-```json
-{
-  "isTokenised": true,
-  "bsb": "string",
-  "accountNumber": "string",
-  "paymentFrequency": "string",
-  "calculationType": "STATIC"
-}
-
-```
-
-*Represents a regular direct debit from a specified bank account. Mandatory if paymentScheduleUType is set to directDebit*
-
-### Properties
-
-|Name|Type|Required|Description|
-|---|---|---|---|
-|isTokenised|boolean|optional|Flag indicating that the account details are tokenised and cannot be shared.  False if absent|
-|bsb|string|conditional|The unmasked BSB for the account to be debited. Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces.  Is required if isTokenised is absent or false|
-|accountNumber|string|conditional|The unmasked account number for the account to be debited. Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces.  Is required if isTokenised is absent or false|
-|paymentFrequency|[ExternalRef](#common-field-types)|mandatory|The frequency that payments will occur.  Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
-|calculationType|string|mandatory|The mechanism by which the payment amount is calculated.  Explanation of values are as follows:<br/><ul><li>**STATIC** - Indicates a consistent, static amount, per payment</li><li>**BALANCE** - Indicates that the outstanding balance for the account is paid per period</li><li>**CALCULATED** - Indicates that the payment amount is variable and calculated using a pre-defined algorithm</li></ul>|
-
-#### Enumerated Values
-
-|Property|Value|
-|---|---|
-|calculationType|STATIC|
-|calculationType|BALANCE|
-|calculationType|CALCULATED|
-
-<h3 class="schema-toc" id="tocStelcopaymentschedule_digitalwallet">TelcoPaymentSchedule_digitalWallet</h3>
-
-<a id="schemacdr-telco-apitelcopaymentschedule_digitalwallet"></a>
-
-```json
-{
-  "name": "string",
-  "identifier": "string",
-  "type": "EMAIL",
-  "provider": "PAYPAL_AU",
-  "paymentFrequency": "string",
-  "calculationType": "STATIC"
-}
-
-```
-
-*Represents a regular payment from a digital wallet. Mandatory if paymentScheduleUType is set to digitalWallet*
-
-### Properties
-
-|Name|Type|Required|Description|
-|---|---|---|---|
-|name|string|mandatory|The name assigned to the digital wallet by the owner of the wallet, else the display name provided by the digital wallet provider|
-|identifier|string|mandatory|The identifier of the digital wallet (dependent on type)|
-|type|string|mandatory|The type of the digital wallet identifier|
-|provider|string|mandatory|The provider of the digital wallet|
-|paymentFrequency|[ExternalRef](#common-field-types)|mandatory|The frequency that payments will occur.  Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
-|calculationType|string|mandatory|The mechanism by which the payment amount is calculated.  Explanation of values are as follows:<br/><ul><li>**STATIC** - Indicates a consistent, static amount, per payment</li><li>**BALANCE** - Indicates that the outstanding balance for the account is paid per period</li><li>**CALCULATED** - Indicates that the payment amount is variable and calculated using a pre-defined algorithm</li></ul>|
-
-#### Enumerated Values
-
-|Property|Value|
-|---|---|
-|type|EMAIL|
-|type|CONTACT_NAME|
-|type|TELEPHONE|
-|provider|PAYPAL_AU|
-|provider|OTHER|
-|calculationType|STATIC|
-|calculationType|BALANCE|
-|calculationType|CALCULATED|
-
-<h3 class="schema-toc" id="tocStelcopaymentschedule_manualpayment">TelcoPaymentSchedule_manualPayment</h3>
-
-<a id="schemacdr-telco-apitelcopaymentschedule_manualpayment"></a>
-
-```json
-{
-  "billFrequency": "string"
-}
-
-```
-
-*Represents a manual payment schedule where the customer pays in response to a delivered statement. Mandatory if paymentScheduleUType is set to manualPayment*
-
-### Properties
-
-|Name|Type|Required|Description|
-|---|---|---|---|
-|billFrequency|[ExternalRef](#common-field-types)|mandatory|The frequency with which a bill will be issued.  Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
-
-<h3 class="schema-toc" id="tocStelcoinvoice_period">TelcoInvoice_period</h3>
-
-<a id="schemacdr-telco-apitelcoinvoice_period"></a>
-
-```json
-{
-  "startDate": "string",
-  "endDate": "string"
-}
-
-```
-
-*Object containing the start and end date for the period covered by the invoice. Mandatory if any usage based charges are included in the invoice*
-
-### Properties
-
-|Name|Type|Required|Description|
-|---|---|---|---|
-|startDate|[DateString](#common-field-types)|mandatory|The start date of the period covered by this invoice|
-|endDate|[DateString](#common-field-types)|mandatory|The end date of the period covered by this invoice|
-
-<h3 class="schema-toc" id="tocStelcoinvoice_payontimediscount">TelcoInvoice_payOnTimeDiscount</h3>
-
-<a id="schemacdr-telco-apitelcoinvoice_payontimediscount"></a>
-
-```json
-{
-  "discountAmount": "string",
-  "gstAmount": "string",
-  "date": "string"
-}
-
-```
-
-*A discount for on time payment*
-
-### Properties
-
-|Name|Type|Required|Description|
-|---|---|---|---|
-|discountAmount|[AmountString](#common-field-types)|mandatory|The amount that will be discounted if the invoice is paid by the date specified|
-|gstAmount|[AmountString](#common-field-types)|optional|The GST amount that will be discounted if the invoice is paid by the date specified.  If absent then zero is assumed|
-|date|[DateString](#common-field-types)|mandatory|The date by which the invoice must be paid to receive the pay on time discount|
-
-<h3 class="schema-toc" id="tocStelcousage_data_roaming">TelcoUsage_data_roaming</h3>
-
-<a id="schemacdr-telco-apitelcousage_data_roaming"></a>
-
-```json
-{
-  "download": 0,
-  "amount": "string"
-}
-
-```
-
-*Roaming Data Usage*
-
-### Properties
-
-|Name|Type|Required|Description|
-|---|---|---|---|
-|download|number|conditional|Amount of data used while roaming in megabytes (MB)|
-|amount|[AmountString](#common-field-types)|conditional|Amount value of data roaming charges|
-
-<h3 class="schema-toc" id="tocStelcousage_data">TelcoUsage_data</h3>
-
-<a id="schemacdr-telco-apitelcousage_data"></a>
-
-```json
-{
-  "upload": 0,
-  "download": 0,
-  "sessions": 0,
-  "amount": "string",
-  "roaming": {
-    "download": 0,
-    "amount": "string"
-  }
-}
-
-```
-
-*Summary of data usage*
-
-### Properties
-
-|Name|Type|Required|Description|
-|---|---|---|---|
-|upload|number|mandatory|Amount of data uploaded in megabytes (MB)|
-|download|number|mandatory|Amount of data downloaded in megabytes (MB)|
-|sessions|number|optional|Number of data sessions|
-|amount|[AmountString](#common-field-types)|mandatory|Cost amount of data usage|
-|roaming|[TelcoUsage_data_roaming](#schemacdr-telco-apitelcousage_data_roaming)|mandatory|Roaming Data Usage|
-
-<h3 class="schema-toc" id="tocStelcousage_voice_national">TelcoUsage_voice_national</h3>
-
-<a id="schemacdr-telco-apitelcousage_voice_national"></a>
-
-```json
-{
-  "duration": "string",
-  "number": 0,
-  "amount": "string"
-}
-
-```
-
-*National voice calls*
-
-### Properties
-
-|Name|Type|Required|Description|
-|---|---|---|---|
-|duration|[TimeString](#common-field-types)|mandatory|Total duration (hours, minutes, and seconds) of national voice calls. Not limited to 24hrs|
-|number|number|mandatory|Number of national voice calls|
-|amount|[AmountString](#common-field-types)|mandatory|Cost amount of national calls|
-
-<h3 class="schema-toc" id="tocStelcousage_voice_international">TelcoUsage_voice_international</h3>
-
-<a id="schemacdr-telco-apitelcousage_voice_international"></a>
-
-```json
-{
-  "duration": "string",
-  "number": 0,
-  "amount": "string"
-}
-
-```
-
-*International voice calls*
-
-### Properties
-
-|Name|Type|Required|Description|
-|---|---|---|---|
-|duration|[TimeString](#common-field-types)|mandatory|Total duration (hours, minutes, and seconds) of international voice calls. Not limited to 24hrs|
-|number|number|mandatory|Number of international voice calls|
-|amount|[AmountString](#common-field-types)|mandatory|Cost amount of international voice calls|
-
-<h3 class="schema-toc" id="tocStelcousage_voice_roaming">TelcoUsage_voice_roaming</h3>
-
-<a id="schemacdr-telco-apitelcousage_voice_roaming"></a>
-
-```json
-{
-  "duration": "string",
-  "number": 0,
-  "amount": "string"
-}
-
-```
-
-*Roaming voice calls*
-
-### Properties
-
-|Name|Type|Required|Description|
-|---|---|---|---|
-|duration|[TimeString](#common-field-types)|mandatory|Total duration (hours, minutes, and seconds) of roaming voice calls. Not limited to 24hrs|
-|number|number|mandatory|Number of roaming voice calls|
-|amount|[AmountString](#common-field-types)|mandatory|Cost amount of roaming voice calls|
-
-<h3 class="schema-toc" id="tocStelcousage_voice">TelcoUsage_voice</h3>
-
-<a id="schemacdr-telco-apitelcousage_voice"></a>
-
-```json
-{
-  "national": {
-    "duration": "string",
-    "number": 0,
-    "amount": "string"
-  },
-  "international": {
-    "duration": "string",
-    "number": 0,
-    "amount": "string"
-  },
-  "roaming": {
-    "duration": "string",
-    "number": 0,
-    "amount": "string"
-  }
-}
-
-```
-
-*Summary of voice calls. Required if voice calls are included in product plan*
-
-### Properties
-
-|Name|Type|Required|Description|
-|---|---|---|---|
-|national|[TelcoUsage_voice_national](#schemacdr-telco-apitelcousage_voice_national)|mandatory|National voice calls|
-|international|[TelcoUsage_voice_international](#schemacdr-telco-apitelcousage_voice_international)|mandatory|International voice calls|
-|roaming|[TelcoUsage_voice_roaming](#schemacdr-telco-apitelcousage_voice_roaming)|mandatory|Roaming voice calls|
-
-<h3 class="schema-toc" id="tocStelcousage_messaging_sms">TelcoUsage_messaging_sms</h3>
-
-<a id="schemacdr-telco-apitelcousage_messaging_sms"></a>
-
-```json
-{
-  "national": 0,
-  "international": 0,
-  "roaming": 0,
-  "amount": "string"
-}
-
-```
-
-*Summary of SMS usage*
-
-### Properties
-
-|Name|Type|Required|Description|
-|---|---|---|---|
-|national|number|mandatory|Number of national SMS messages sent. Including premium SMS services|
-|international|number|mandatory|Number of international SMS messages sent. Including premium SMS services|
-|roaming|number|mandatory|Number of roaming SMS messages sent. Including premium SMS services|
-|amount|[AmountString](#common-field-types)|mandatory|Cost amount of SMS messages. Including premium SMS services|
-
-<h3 class="schema-toc" id="tocStelcousage_messaging_mms">TelcoUsage_messaging_mms</h3>
-
-<a id="schemacdr-telco-apitelcousage_messaging_mms"></a>
-
-```json
-{
-  "national": 0,
-  "international": 0,
-  "roaming": 0,
-  "amount": "string"
-}
-
-```
-
-*Summary of MMS usage*
-
-### Properties
-
-|Name|Type|Required|Description|
-|---|---|---|---|
-|national|number|mandatory|Number of national MMS messages sent|
-|international|number|mandatory|ber of international MMS messages sent|
-|roaming|number|mandatory|Number of roaming SMS messages sent. Including premium SMS services|
-|amount|[AmountString](#common-field-types)|mandatory|Cost amount of MMS messages|
-
-<h3 class="schema-toc" id="tocStelcousage_messaging">TelcoUsage_messaging</h3>
-
-<a id="schemacdr-telco-apitelcousage_messaging"></a>
-
-```json
-{
-  "sms": {
-    "national": 0,
-    "international": 0,
-    "roaming": 0,
-    "amount": "string"
-  },
-  "mms": {
-    "national": 0,
-    "international": 0,
-    "roaming": 0,
-    "amount": "string"
-  }
-}
-
-```
-
-*Summary of messaging. Required if messaging services is included in the product plan*
-
-### Properties
-
-|Name|Type|Required|Description|
-|---|---|---|---|
-|sms|[TelcoUsage_messaging_sms](#schemacdr-telco-apitelcousage_messaging_sms)|mandatory|Summary of SMS usage|
-|mms|[TelcoUsage_messaging_mms](#schemacdr-telco-apitelcousage_messaging_mms)|mandatory|Summary of MMS usage|
-
-<h3 class="schema-toc" id="tocStelcoinvoiceaccountcharges_othercharges">TelcoInvoiceAccountCharges_otherCharges</h3>
-
-<a id="schemacdr-telco-apitelcoinvoiceaccountcharges_othercharges"></a>
-
-```json
-{
-  "amount": "string",
-  "description": "string",
-  "type": "SERVICE"
-}
-
-```
-
-*Optional array of charges that may be part of the invoice (for example services fees) (exclusive of GST)*
-
-### Properties
-
-|Name|Type|Required|Description|
-|---|---|---|---|
-|amount|[AmountString](#common-field-types)|mandatory|The aggregate total of charges for this item (exclusive of GST)|
-|description|[AmountString](#common-field-types)|mandatory|A free text description of the charge|
-|type|string|optional|A free text description of the charge|
-
-#### Enumerated Values
-
-|Property|Value|
-|---|---|
-|type|SERVICE|
-|type|EQUIPMENT|
-|type|NETWORK|
-|type|HANDSET|
-|type|DEVICE|
-|type|ENTERTAINMENT|
-|type|SUBSCRIPTION|
-|type|SOFTWARE|
-|type|OTHER|
-
-<h3 class="schema-toc" id="tocStelcobillingaccounttransaction_adjustments">TelcoBillingAccountTransaction_adjustments</h3>
-
-<a id="schemacdr-telco-apitelcobillingaccounttransaction_adjustments"></a>
-
-```json
-{
-  "amount": "string",
-  "description": "string"
-}
-
-```
-
-### Properties
-
-|Name|Type|Required|Description|
-|---|---|---|---|
-|amount|[AmountString](#common-field-types)|mandatory|The amount of the adjustment|
-|description|string|mandatory|A free text description of the adjustment|
-
-<h3 class="schema-toc" id="tocStelcoservicebalance_balances_data_roaming">TelcoServiceBalance_balances_data_roaming</h3>
-
-<a id="schemacdr-telco-apitelcoservicebalance_balances_data_roaming"></a>
-
-```json
-{
-  "download": 0,
-  "amount": "string"
-}
-
-```
-
-*Balance of data roaming charges. Required unless planType is UNSUPPORTED*
-
-### Properties
-
-|Name|Type|Required|Description|
-|---|---|---|---|
-|download|number|conditional|Amount of data used overseas in megabytes (MB). Required unless planType is UNSUPPORTED|
-|amount|[AmountString](#common-field-types)|conditional|Amount value of data roaming charges. Required unless planType is UNSUPPORTED|
-
-<h3 class="schema-toc" id="tocStelcoservicebalance_balances_data">TelcoServiceBalance_balances_data</h3>
-
-<a id="schemacdr-telco-apitelcoservicebalance_balances_data"></a>
-
-```json
-{
-  "planType": "METERED",
-  "description": "string",
-  "upload": 0,
-  "download": 0,
-  "amount": "string",
-  "roaming": {
-    "download": 0,
-    "amount": "string"
-  }
-}
-
-```
-
-*Summary of data balances*
-
-### Properties
-
-|Name|Type|Required|Description|
-|---|---|---|---|
-|planType|[TelcoPlanType](#schemacdr-telco-apitelcoplantype)|optional|Plan type for this feature. METERED: A plan is charged by usage for the feature. UNMETERED: A plan with no limits for a feature. LIMITED: Where plan limit inclusions apply. UNSUPPORTED: Feature is not supported|
-|description|string|conditional|An overview of plan limits. Required unless planType is UNSUPPORTED|
-|upload|number|optional|Remaining upload data in megabytes (MB). Required unless planType is UNSUPPORTED or UNMETERED|
-|download|number|optional|Remaining download data in megabytes (MB). Required unless planType is UNSUPPORTED or UNMETERED|
-|amount|[AmountString](#common-field-types)|conditional|Remaining value amount of data available. Required unless planType is UNSUPPORTED or UNMETERED|
-|roaming|[TelcoServiceBalance_balances_data_roaming](#schemacdr-telco-apitelcoservicebalance_balances_data_roaming)|optional|Balance of data roaming charges. Required unless planType is UNSUPPORTED|
-
-<h3 class="schema-toc" id="tocStelcoservicebalance_balances_voice_national">TelcoServiceBalance_balances_voice_national</h3>
-
-<a id="schemacdr-telco-apitelcoservicebalance_balances_voice_national"></a>
-
-```json
-{
-  "description": "string",
-  "duration": "string",
-  "number": 0,
-  "amount": "string"
-}
-
-```
-
-*National voice calls*
-
-### Properties
-
-|Name|Type|Required|Description|
-|---|---|---|---|
-|description|string|conditional|An overview of plan limits. Required unless planType is UNSUPPORTED|
-|duration|[TimeString](#common-field-types)|conditional|Total duration (hours, minutes, and seconds) of national voice calls. Not limited to 24hrs. Required unless planType is UNSUPPORTED or UNMETERED|
-|number|number|conditional|Number of national voice calls. Required unless planType is UNSUPPORTED or UNMETERED|
-|amount|[AmountString](#common-field-types)|conditional|Amount balance of national calls. Required unless planType is UNSUPPORTED or UNMETERED|
-
-<h3 class="schema-toc" id="tocStelcoservicebalance_balances_voice_international">TelcoServiceBalance_balances_voice_international</h3>
-
-<a id="schemacdr-telco-apitelcoservicebalance_balances_voice_international"></a>
-
-```json
-{
-  "description": "string",
-  "duration": "string",
-  "number": 0,
-  "amount": "string"
-}
-
-```
-
-*National voice calls*
-
-### Properties
-
-|Name|Type|Required|Description|
-|---|---|---|---|
-|description|string|conditional|An overview of plan limits. Required unless planType is UNSUPPORTED|
-|duration|[TimeString](#common-field-types)|optional|Total duration (hours, minutes, and seconds) of international voice calls available. Not limited to 24hrs. Required unless planType is UNSUPPORTED or UNMETERED|
-|number|number|optional|Number of international voice calls available Required unless planType is UNSUPPORTED or UNMETERED|
-|amount|[AmountString](#common-field-types)|conditional|Amount value of international calls available. Required unless planType is UNSUPPORTED or UNMETERED|
-
-<h3 class="schema-toc" id="tocStelcoservicebalance_balances_voice">TelcoServiceBalance_balances_voice</h3>
-
-<a id="schemacdr-telco-apitelcoservicebalance_balances_voice"></a>
-
-```json
-{
-  "planType": "METERED",
-  "national": {
-    "description": "string",
-    "duration": "string",
-    "number": 0,
-    "amount": "string"
-  },
-  "international": {
-    "description": "string",
-    "duration": "string",
-    "number": 0,
-    "amount": "string"
-  }
-}
-
-```
-
-*Summary of voice balances. Required if voice calls are included in product plan*
-
-### Properties
-
-|Name|Type|Required|Description|
-|---|---|---|---|
-|planType|[TelcoPlanType](#schemacdr-telco-apitelcoplantype)|optional|Plan type for this feature. METERED: A plan is charged by usage for the feature. UNMETERED: A plan with no limits for a feature. LIMITED: Where plan limit inclusions apply. UNSUPPORTED: Feature is not supported|
-|national|[TelcoServiceBalance_balances_voice_national](#schemacdr-telco-apitelcoservicebalance_balances_voice_national)|optional|National voice calls|
-|international|[TelcoServiceBalance_balances_voice_international](#schemacdr-telco-apitelcoservicebalance_balances_voice_international)|optional|National voice calls|
-
-<h3 class="schema-toc" id="tocStelcoservicebalance_balances_messaging_sms">TelcoServiceBalance_balances_messaging_sms</h3>
-
-<a id="schemacdr-telco-apitelcoservicebalance_balances_messaging_sms"></a>
-
-```json
-{
-  "description": "string",
-  "national": 0,
-  "international": 0,
-  "amount": "string"
-}
-
-```
-
-*Required if the service plan supports SMS messaging*
-
-### Properties
-
-|Name|Type|Required|Description|
-|---|---|---|---|
-|description|string|conditional|An overview of plan limits. Required unless planType is UNSUPPORTED|
-|national|number|conditional|Number of national SMS messages remaining. Required unless planType is UNSUPPORTED or UNMETERED|
-|international|number|conditional|Number of international SMS messages remaining. Required unless planType is UNSUPPORTED or UNMETERED|
-|amount|[AmountString](#common-field-types)|conditional|Amount value of SMS messages remaining. Required unless planType is UNSUPPORTED or UNMETERED|
-
-<h3 class="schema-toc" id="tocStelcoservicebalance_balances_messaging_mms">TelcoServiceBalance_balances_messaging_mms</h3>
-
-<a id="schemacdr-telco-apitelcoservicebalance_balances_messaging_mms"></a>
-
-```json
-{
-  "description": "string",
-  "national": 0,
-  "international": 0,
-  "amount": "string"
-}
-
-```
-
-*Summary of MMS usage*
-
-### Properties
-
-|Name|Type|Required|Description|
-|---|---|---|---|
-|description|string|conditional|An overview of plan limits. Required unless planType is UNSUPPORTED|
-|national|number|conditional|Number of national MMS messages remaining. Required unless planType is UNSUPPORTED or UNMETERED|
-|international|number|conditional|Number of international MMS messages remaining. Required unless planType is UNSUPPORTED or UNMETERED|
-|amount|[AmountString](#common-field-types)|conditional|Amount value of MMS messages remaining. Required unless planType is UNSUPPORTED or UNMETERED|
-
-<h3 class="schema-toc" id="tocStelcoservicebalance_balances_messaging">TelcoServiceBalance_balances_messaging</h3>
-
-<a id="schemacdr-telco-apitelcoservicebalance_balances_messaging"></a>
-
-```json
-{
-  "planType": "METERED",
-  "sms": {
-    "description": "string",
-    "national": 0,
-    "international": 0,
-    "amount": "string"
-  },
-  "mms": {
-    "description": "string",
-    "national": 0,
-    "international": 0,
-    "amount": "string"
-  }
-}
-
-```
-
-*Summary of messaging. Required if messaging services is included in the product plan*
-
-### Properties
-
-|Name|Type|Required|Description|
-|---|---|---|---|
-|planType|[TelcoPlanType](#schemacdr-telco-apitelcoplantype)|optional|Plan type for this feature. METERED: A plan is charged by usage for the feature. UNMETERED: A plan with no limits for a feature. LIMITED: Where plan limit inclusions apply. UNSUPPORTED: Feature is not supported|
-|sms|[TelcoServiceBalance_balances_messaging_sms](#schemacdr-telco-apitelcoservicebalance_balances_messaging_sms)|mandatory|Required if the service plan supports SMS messaging|
-|mms|[TelcoServiceBalance_balances_messaging_mms](#schemacdr-telco-apitelcoservicebalance_balances_messaging_mms)|mandatory|Summary of MMS usage|
-
-<h3 class="schema-toc" id="tocStelcoservicebalance_balances">TelcoServiceBalance_balances</h3>
-
-<a id="schemacdr-telco-apitelcoservicebalance_balances"></a>
-
-```json
-{
-  "data": {
-    "planType": "METERED",
-    "description": "string",
-    "upload": 0,
-    "download": 0,
-    "amount": "string",
-    "roaming": {
-      "download": 0,
-      "amount": "string"
-    }
-  },
-  "voice": {
-    "planType": "METERED",
-    "national": {
-      "description": "string",
-      "duration": "string",
-      "number": 0,
-      "amount": "string"
-    },
-    "international": {
-      "description": "string",
-      "duration": "string",
-      "number": 0,
-      "amount": "string"
-    }
-  },
-  "messaging": {
-    "planType": "METERED",
-    "sms": {
-      "description": "string",
-      "national": 0,
-      "international": 0,
-      "amount": "string"
-    },
-    "mms": {
-      "description": "string",
-      "national": 0,
-      "international": 0,
-      "amount": "string"
-    }
-  }
-}
-
-```
-
-*The serviceId representing a unique service identifier such as a mobile (MSISDN) or internet service (e.g NBN or ADSL)*
-
-### Properties
-
-|Name|Type|Required|Description|
-|---|---|---|---|
-|data|[TelcoServiceBalance_balances_data](#schemacdr-telco-apitelcoservicebalance_balances_data)|optional|Summary of data balances|
-|voice|[TelcoServiceBalance_balances_voice](#schemacdr-telco-apitelcoservicebalance_balances_voice)|optional|Summary of voice balances. Required if voice calls are included in product plan|
-|messaging|[TelcoServiceBalance_balances_messaging](#schemacdr-telco-apitelcoservicebalance_balances_messaging)|optional|Summary of messaging. Required if messaging services is included in the product plan|
 
