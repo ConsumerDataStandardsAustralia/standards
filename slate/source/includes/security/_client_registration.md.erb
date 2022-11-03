@@ -142,6 +142,7 @@ Get Software Statement Assertion API [v1](includes/obsolete/get-software-stateme
 ### Registration Request using JWT
 
 > Example Request
+> Client registration with OpenID Hybrid Flow
 
 ```
 HTTP/1.1 POST /register
@@ -177,6 +178,53 @@ Accept: application/json
    "id_token_encrypted_response_alg":"RSA-OAEP",
    "id_token_encrypted_response_enc:"A256GCM",
    "request_object_signing_alg":"PS256",
+   "authorization_signed_response_alg": "PS256",
+   "authorization_encrypted_response_alg": "RSA-OAEP",
+   "authorization_encrypted_response_enc": "A256GCM",
+   "software_statement":…
+}
+{
+  "signature":...
+}
+```
+> Example Request
+> This example creates a FAPI 1.0 Phase 3 client registration that uses Authorization Code Flow with JARM encryption
+
+```
+HTTP/1.1 POST /register
+Content-Type: application/jwt
+Accept: application/json
+
+### Non-normative Decoded JWT
+{
+   "alg":"PS256",
+   "typ":"JWT",
+   "kid":"12456"
+}
+{
+   "iss":"CDR Software Product ID",
+   "iat":1571808167,
+   "exp":2147483646,
+   "jti":"37747cd1c10545699f754adf28b73e31",
+   "aud":"https://secure.api.dataholder.com/issuer",
+   "redirect_uris":[
+      "https://www.mockcompany.com.au/redirects/redirect1",
+      "https://www.mockcompany.com.au/redirects/redirect2"
+   ],
+   "token_endpoint_auth_signing_alg":"PS256",
+   "token_endpoint_auth_method":"private_key_jwt",
+   "grant_types":[
+      "client_credentials",
+      "authorization_code",
+      "refresh_token"
+   ],
+   "response_types":["code"],
+   "application_type":"web",
+   "id_token_signed_response_alg":"PS256",
+   "request_object_signing_alg":"PS256",
+   "authorization_signed_response_alg": "PS256",
+   "authorization_encrypted_response_alg": "RSA-OAEP",
+   "authorization_encrypted_response_enc": "A256GCM",
    "software_statement":…
 }
 {
@@ -245,6 +293,7 @@ Data Holders **MUST** adhere to the [NFR performance requirements](#performance-
 
 >
 Example Created Response
+OIDC Hybrid Flow
 
 ```
 HTTP/1.1 201 Created
@@ -269,6 +318,67 @@ Content-Type: application/json
    "id_token_signed_response_alg":"PS256",
    "id_token_encrypted_response_alg":"RSA-OAEP",
    "id_token_encrypted_response_enc:"A256GCM",
+   "request_object_signing_alg":"PS256",
+   "software_statement":"…",
+   "legal_entity_id": "3B0B0A7B-3E7B-4A2C-9497-E357A71D07C7",
+   "legal_entity_name": "Mock Company Pty Ltd",
+   "org_id": "3B0B0A7B-3E7B-4A2C-9497-E357A71D07C8",
+   "org_name": "Mock Company Brand",
+   "client_name": "Mock Software",
+   "client_description": "A mock software product for testing SSA",
+   "client_uri": "https://www.mockcompany.com.au",
+   "logo_uri": "https://www.mockcompany.com.au/logos/logo1.png",
+   "tos_uri": "https://www.mockcompany.com.au/tos.html",
+   "policy_uri": "https://www.mockcompany.com.au/policy.html",
+   "jwks_uri": "https://www.mockcompany.com.au/jwks",
+   "revocation_uri": "https://www.mockcompany.com.au/revocation",
+   "recipient_base_uri": "https://www.mockcompany.com.au",
+   "sector_identifier_uri": "https://www.mockcompany.com.au/sector_identifier"
+   "software_id": "740C368F-ECF9-4D29-A2EA-0514A66B0CDE",
+   "software_roles": "data-recipient-software-product",
+   "scope":
+         "openid
+          profile
+          bank:accounts.basic:read
+          bank:accounts.detail:read
+          bank:transactions:read
+          bank:payees:read
+          bank:regular_payments:read
+          common:customer.basic:read
+          common:customer.detail:read
+          cdr:registration"
+}
+```
+
+>
+Example Created Response
+Authorization Code Flow
+This example creates a FAPI 1.0 Phase 3 client registration that uses Authorization Code Flow with JARM encryption
+
+```
+HTTP/1.1 201 Created
+Content-Type: application/json
+
+{
+  "client_id": "2cfefa98-7d4a-4bcb-95da-47063b84d410",
+  "client_id_issued_at": 1574398823,
+  "redirect_uris": [
+     "https://www.mockcompany.com.au/redirects/redirect1",
+     "https://www.mockcompany.com.au/redirects/redirect2"
+   ],
+   "token_endpoint_auth_signing_alg":"PS256",
+   "token_endpoint_auth_method":"private_key_jwt",
+   "grant_types":[
+      "client_credentials",
+      "authorization_code",
+      "refresh_token"
+   ],
+   "response_types":["code"],
+   "application_type":"web",
+   "id_token_signed_response_alg":"PS256",
+   "authorization_signed_response_alg": "PS256",
+   "authorization_encrypted_response_alg": "RSA-OAEP",
+   "authorization_encrypted_response_enc": "A256GCM",
    "request_object_signing_alg":"PS256",
    "software_statement":"…",
    "legal_entity_id": "3B0B0A7B-3E7B-4A2C-9497-E357A71D07C7",

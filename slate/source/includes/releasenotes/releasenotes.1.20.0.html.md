@@ -20,6 +20,7 @@ This release addresses the following minor defects raised on [Standards Staging]
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
+- [Standards Maintenance Issue 458 - FAPI 1.0 Non Normative Examples](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/458)
 - [Standards Maintenance Issue 525: softwareProductDescription should be marked as mandatory](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/525)
 - [Standards Maintenance Issue 411: Clarification of x-fapi-interaction-id header](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/411)
 - [Standards Staging Issue 447: CORS typos in CDR](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/447)
@@ -64,6 +65,7 @@ This release addresses the following Decision Proposals published on [Standards]
 
 |Change|Description|Link|
 |------|-----------|----|
+| Non-normative examples | [**Standards Maintenance Issue 458**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/458): Updated InfoSec non-normative examples with FAPI 1.0 Phase 3 flows | [Security Profile](../../#security-profile) |
 | CORS typos | [**Standards Maintenance #447**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/447): Corrected the CORS protections to make clear they must be disabled for public APIs | [CORS](../../#cors) |
 
 

@@ -1,7 +1,8 @@
 <a id="authorisation-endpoint"></a>
 ### Authorisation End Point
 
-> Non-Normative Example
+> Non-Normative Example  
+> This example demonstrates how an ADR may send an authorisation request object by value in the front-channel to the Data Holder.
 
 ```
 ## Request
@@ -49,6 +50,26 @@ Host: www.holder.com.au
     }
   }
 }
+
+```
+
+```diff
+Added FAPI 1.0 Final Phase 3 Obligation example
+```
+
+> Non-Normative Example - FAPI 1.0 Final Phase 3 Obligation
+> This example demonstrates how an ADR may send a staged authorisation request (using PAR) in the back-channel to the Data Holder.   
+> 
+> It demonstrates a FAPI 1.0 Final compliant authorisation request using the PAR to first submit the authorisation request object.  
+
+```
+## Request
+
+GET /authorize?client_id=12345&
+     scope=openid&
+     request_uri=urn%3Aietf%3Aparams%3Aoauth%3Arequest_uri%3A6esc_11ACC5bwc014ltc14eY22c
+HTTP/1.1
+Host: www.holder.com.au
 
 ```
 

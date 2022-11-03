@@ -165,6 +165,7 @@ cdr_arrangement_jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsImtpZCI6IjEyNDU2In0.ey .
 
 
 > Non-Normative Example - Data Recipient Software Product calls Data Holder's token end point.
+This example uses PKCE to send the code_verifier which was previously encrypted in the request object submission as the code_challenge using S256 as the code_challenge_method
 
 ```
 POST /token HTTP/1.1
@@ -174,6 +175,7 @@ Content-Type: application/x-www-form-urlencoded
 grant_type=authorization_code&
   code=i1WsRn1uB1&
   client_id=s6BhdRkqt3&
+  code_verifier=4d9213fb-d68b-49d1-a2c9-486e5a0b4e14&
   client_assertion_type=urn%3Aietf%3Aparams%3Aoauth%3Aclient-assertion-type%3Ajwt-bearer&
   client_assertion=eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNDU2In0.ey ...
 
