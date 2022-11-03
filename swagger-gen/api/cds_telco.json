@@ -3313,10 +3313,10 @@
         {
           "x-v":
           {
+            "description": "The [version](#response-headers) of the API end point that the data holder has responded with.",
             "schema":
             {
-              "type": "string",
-              "description": "The [version](#response-headers) of the API end point that the data holder has responded with."
+              "type": "string"
             }
           }
         },
@@ -3338,10 +3338,10 @@
         {
           "x-v":
           {
+            "description": "The [version](#response-headers) of the API end point that the data holder has responded with.",
             "schema":
             {
-              "type": "string",
-              "description": "The [version](#response-headers) of the API end point that the data holder has responded with."
+              "type": "string"
             }
           }
         },
@@ -3363,18 +3363,18 @@
         {
           "x-v":
           {
+            "description": "The [version](#response-headers) of the API end point that the data holder has responded with.",
             "schema":
             {
-              "type": "string",
-              "description": "The [version](#response-headers) of the API end point that the data holder has responded with."
+              "type": "string"
             }
           },
           "x-fapi-interaction-id":
           {
+            "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
             "schema":
             {
-              "type": "string",
-              "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
+              "type": "string"
             }
           }
         },
@@ -3396,18 +3396,18 @@
         {
           "x-v":
           {
+            "description": "The [version](#response-headers) of the API end point that the data holder has responded with.",
             "schema":
             {
-              "type": "string",
-              "description": "The [version](#response-headers) of the API end point that the data holder has responded with."
+              "type": "string"
             }
           },
           "x-fapi-interaction-id":
           {
+            "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
             "schema":
             {
-              "type": "string",
-              "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
+              "type": "string"
             }
           }
         },
@@ -3429,18 +3429,18 @@
         {
           "x-v":
           {
+            "description": "The [version](#response-headers) of the API end point that the data holder has responded with.",
             "schema":
             {
-              "type": "string",
-              "description": "The [version](#response-headers) of the API end point that the data holder has responded with."
+              "type": "string"
             }
           },
           "x-fapi-interaction-id":
           {
+            "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
             "schema":
             {
-              "type": "string",
-              "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
+              "type": "string"
             }
           }
         },
@@ -3462,18 +3462,18 @@
         {
           "x-v":
           {
+            "description": "The [version](#response-headers) of the API end point that the data holder has responded with.",
             "schema":
             {
-              "type": "string",
-              "description": "The [version](#response-headers) of the API end point that the data holder has responded with."
+              "type": "string"
             }
           },
           "x-fapi-interaction-id":
           {
+            "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
             "schema":
             {
-              "type": "string",
-              "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
+              "type": "string"
             }
           }
         },
@@ -3495,18 +3495,18 @@
         {
           "x-v":
           {
+            "description": "The [version](#response-headers) of the API end point that the data holder has responded with.",
             "schema":
             {
-              "type": "string",
-              "description": "The [version](#response-headers) of the API end point that the data holder has responded with."
+              "type": "string"
             }
           },
           "x-fapi-interaction-id":
           {
+            "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
             "schema":
             {
-              "type": "string",
-              "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
+              "type": "string"
             }
           }
         },
@@ -3528,18 +3528,18 @@
         {
           "x-v":
           {
+            "description": "The [version](#response-headers) of the API end point that the data holder has responded with.",
             "schema":
             {
-              "type": "string",
-              "description": "The [version](#response-headers) of the API end point that the data holder has responded with."
+              "type": "string"
             }
           },
           "x-fapi-interaction-id":
           {
+            "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
             "schema":
             {
-              "type": "string",
-              "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
+              "type": "string"
             }
           }
         },
@@ -3561,18 +3561,18 @@
         {
           "x-v":
           {
+            "description": "The [version](#response-headers) of the API end point that the data holder has responded with.",
             "schema":
             {
-              "type": "string",
-              "description": "The [version](#response-headers) of the API end point that the data holder has responded with."
+              "type": "string"
             }
           },
           "x-fapi-interaction-id":
           {
+            "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
             "schema":
             {
-              "type": "string",
-              "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
+              "type": "string"
             }
           }
         },
@@ -3594,18 +3594,18 @@
         {
           "x-v":
           {
+            "description": "The [version](#response-headers) of the API end point that the data holder has responded with.",
             "schema":
             {
-              "type": "string",
-              "description": "The [version](#response-headers) of the API end point that the data holder has responded with."
+              "type": "string"
             }
           },
           "x-fapi-interaction-id":
           {
+            "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
             "schema":
             {
-              "type": "string",
-              "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
+              "type": "string"
             }
           }
         },
@@ -3627,18 +3627,18 @@
         {
           "x-v":
           {
+            "description": "The [version](#response-headers) of the API end point that the data holder has responded with.",
             "schema":
             {
-              "type": "string",
-              "description": "The [version](#response-headers) of the API end point that the data holder has responded with."
+              "type": "string"
             }
           },
           "x-fapi-interaction-id":
           {
+            "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
             "schema":
             {
-              "type": "string",
-              "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
+              "type": "string"
             }
           }
         },
@@ -3660,18 +3660,18 @@
         {
           "x-v":
           {
+            "description": "The [version](#response-headers) of the API end point that the data holder has responded with.",
             "schema":
             {
-              "type": "string",
-              "description": "The [version](#response-headers) of the API end point that the data holder has responded with."
+              "type": "string"
             }
           },
           "x-fapi-interaction-id":
           {
+            "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
             "schema":
             {
-              "type": "string",
-              "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
+              "type": "string"
             }
           }
         },
@@ -3783,10 +3783,10 @@
             {
               "x-fapi-interaction-id":
               {
+                "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "schema":
                 {
-                  "type": "string",
-                  "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
+                  "type": "string"
                 }
               }
             },
@@ -3808,10 +3808,10 @@
             {
               "x-fapi-interaction-id":
               {
+                "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "schema":
                 {
-                  "type": "string",
-                  "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
+                  "type": "string"
                 }
               }
             },
@@ -3833,10 +3833,10 @@
             {
               "x-fapi-interaction-id":
               {
+                "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "schema":
                 {
-                  "type": "string",
-                  "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
+                  "type": "string"
                 }
               }
             },
@@ -3896,10 +3896,10 @@
             {
               "x-fapi-interaction-id":
               {
+                "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "schema":
                 {
-                  "type": "string",
-                  "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
+                  "type": "string"
                 }
               }
             },
@@ -3921,10 +3921,10 @@
             {
               "x-fapi-interaction-id":
               {
+                "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "schema":
                 {
-                  "type": "string",
-                  "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
+                  "type": "string"
                 }
               }
             },
@@ -3946,10 +3946,10 @@
             {
               "x-fapi-interaction-id":
               {
+                "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "schema":
                 {
-                  "type": "string",
-                  "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
+                  "type": "string"
                 }
               }
             },
@@ -4029,10 +4029,10 @@
             {
               "x-fapi-interaction-id":
               {
+                "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "schema":
                 {
-                  "type": "string",
-                  "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
+                  "type": "string"
                 }
               }
             },
@@ -4054,10 +4054,10 @@
             {
               "x-fapi-interaction-id":
               {
+                "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "schema":
                 {
-                  "type": "string",
-                  "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
+                  "type": "string"
                 }
               }
             },
@@ -4079,10 +4079,10 @@
             {
               "x-fapi-interaction-id":
               {
+                "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "schema":
                 {
-                  "type": "string",
-                  "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
+                  "type": "string"
                 }
               }
             },
@@ -4104,10 +4104,10 @@
             {
               "x-fapi-interaction-id":
               {
+                "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "schema":
                 {
-                  "type": "string",
-                  "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
+                  "type": "string"
                 }
               }
             },
@@ -4184,10 +4184,10 @@
             {
               "x-fapi-interaction-id":
               {
+                "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "schema":
                 {
-                  "type": "string",
-                  "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
+                  "type": "string"
                 }
               }
             },
@@ -4209,10 +4209,10 @@
             {
               "x-fapi-interaction-id":
               {
+                "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "schema":
                 {
-                  "type": "string",
-                  "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
+                  "type": "string"
                 }
               }
             },
@@ -4234,10 +4234,10 @@
             {
               "x-fapi-interaction-id":
               {
+                "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "schema":
                 {
-                  "type": "string",
-                  "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
+                  "type": "string"
                 }
               }
             },
@@ -4319,10 +4319,10 @@
             {
               "x-fapi-interaction-id":
               {
+                "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "schema":
                 {
-                  "type": "string",
-                  "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
+                  "type": "string"
                 }
               }
             },
@@ -4344,10 +4344,10 @@
             {
               "x-fapi-interaction-id":
               {
+                "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "schema":
                 {
-                  "type": "string",
-                  "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
+                  "type": "string"
                 }
               }
             },
@@ -4369,10 +4369,10 @@
             {
               "x-fapi-interaction-id":
               {
+                "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "schema":
                 {
-                  "type": "string",
-                  "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
+                  "type": "string"
                 }
               }
             },
@@ -4446,10 +4446,10 @@
             {
               "x-fapi-interaction-id":
               {
+                "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "schema":
                 {
-                  "type": "string",
-                  "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
+                  "type": "string"
                 }
               }
             },
@@ -4471,10 +4471,10 @@
             {
               "x-fapi-interaction-id":
               {
+                "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "schema":
                 {
-                  "type": "string",
-                  "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
+                  "type": "string"
                 }
               }
             },
@@ -4496,10 +4496,10 @@
             {
               "x-fapi-interaction-id":
               {
+                "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "schema":
                 {
-                  "type": "string",
-                  "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
+                  "type": "string"
                 }
               }
             },
@@ -4570,10 +4570,10 @@
             {
               "x-fapi-interaction-id":
               {
+                "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "schema":
                 {
-                  "type": "string",
-                  "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
+                  "type": "string"
                 }
               }
             },
@@ -4595,10 +4595,10 @@
             {
               "x-fapi-interaction-id":
               {
+                "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "schema":
                 {
-                  "type": "string",
-                  "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
+                  "type": "string"
                 }
               }
             },
@@ -4620,10 +4620,10 @@
             {
               "x-fapi-interaction-id":
               {
+                "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "schema":
                 {
-                  "type": "string",
-                  "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
+                  "type": "string"
                 }
               }
             },
@@ -4691,10 +4691,10 @@
             {
               "x-fapi-interaction-id":
               {
+                "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "schema":
                 {
-                  "type": "string",
-                  "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
+                  "type": "string"
                 }
               }
             },
@@ -4716,10 +4716,10 @@
             {
               "x-fapi-interaction-id":
               {
+                "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "schema":
                 {
-                  "type": "string",
-                  "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
+                  "type": "string"
                 }
               }
             },
@@ -4741,10 +4741,10 @@
             {
               "x-fapi-interaction-id":
               {
+                "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "schema":
                 {
-                  "type": "string",
-                  "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
+                  "type": "string"
                 }
               }
             },
@@ -4812,10 +4812,10 @@
             {
               "x-fapi-interaction-id":
               {
+                "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "schema":
                 {
-                  "type": "string",
-                  "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
+                  "type": "string"
                 }
               }
             },
@@ -4837,10 +4837,10 @@
             {
               "x-fapi-interaction-id":
               {
+                "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "schema":
                 {
-                  "type": "string",
-                  "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
+                  "type": "string"
                 }
               }
             },
@@ -4862,10 +4862,10 @@
             {
               "x-fapi-interaction-id":
               {
+                "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "schema":
                 {
-                  "type": "string",
-                  "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
+                  "type": "string"
                 }
               }
             },
@@ -4933,10 +4933,10 @@
             {
               "x-fapi-interaction-id":
               {
+                "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "schema":
                 {
-                  "type": "string",
-                  "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
+                  "type": "string"
                 }
               }
             },
@@ -4958,10 +4958,10 @@
             {
               "x-fapi-interaction-id":
               {
+                "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "schema":
                 {
-                  "type": "string",
-                  "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
+                  "type": "string"
                 }
               }
             },
@@ -4983,10 +4983,10 @@
             {
               "x-fapi-interaction-id":
               {
+                "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "schema":
                 {
-                  "type": "string",
-                  "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
+                  "type": "string"
                 }
               }
             },
@@ -5058,10 +5058,10 @@
             {
               "x-fapi-interaction-id":
               {
+                "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "schema":
                 {
-                  "type": "string",
-                  "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
+                  "type": "string"
                 }
               }
             },
@@ -5083,10 +5083,10 @@
             {
               "x-fapi-interaction-id":
               {
+                "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "schema":
                 {
-                  "type": "string",
-                  "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
+                  "type": "string"
                 }
               }
             },
@@ -5108,10 +5108,10 @@
             {
               "x-fapi-interaction-id":
               {
+                "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "schema":
                 {
-                  "type": "string",
-                  "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
+                  "type": "string"
                 }
               }
             },
@@ -5186,10 +5186,10 @@
             {
               "x-fapi-interaction-id":
               {
+                "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "schema":
                 {
-                  "type": "string",
-                  "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
+                  "type": "string"
                 }
               }
             },
@@ -5211,10 +5211,10 @@
             {
               "x-fapi-interaction-id":
               {
+                "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "schema":
                 {
-                  "type": "string",
-                  "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
+                  "type": "string"
                 }
               }
             },
@@ -5236,10 +5236,10 @@
             {
               "x-fapi-interaction-id":
               {
+                "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "schema":
                 {
-                  "type": "string",
-                  "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
+                  "type": "string"
                 }
               }
             },
@@ -5319,10 +5319,10 @@
             {
               "x-fapi-interaction-id":
               {
+                "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "schema":
                 {
-                  "type": "string",
-                  "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
+                  "type": "string"
                 }
               }
             },
@@ -5344,10 +5344,10 @@
             {
               "x-fapi-interaction-id":
               {
+                "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "schema":
                 {
-                  "type": "string",
-                  "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
+                  "type": "string"
                 }
               }
             },
@@ -5369,10 +5369,10 @@
             {
               "x-fapi-interaction-id":
               {
+                "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "schema":
                 {
-                  "type": "string",
-                  "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
+                  "type": "string"
                 }
               }
             },
@@ -5394,10 +5394,10 @@
             {
               "x-fapi-interaction-id":
               {
+                "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "schema":
                 {
-                  "type": "string",
-                  "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
+                  "type": "string"
                 }
               }
             },
@@ -5474,10 +5474,10 @@
             {
               "x-fapi-interaction-id":
               {
+                "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "schema":
                 {
-                  "type": "string",
-                  "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
+                  "type": "string"
                 }
               }
             },
@@ -5499,10 +5499,10 @@
             {
               "x-fapi-interaction-id":
               {
+                "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "schema":
                 {
-                  "type": "string",
-                  "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
+                  "type": "string"
                 }
               }
             },
@@ -5524,10 +5524,10 @@
             {
               "x-fapi-interaction-id":
               {
+                "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "schema":
                 {
-                  "type": "string",
-                  "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
+                  "type": "string"
                 }
               }
             },
@@ -5608,10 +5608,10 @@
             {
               "x-fapi-interaction-id":
               {
+                "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "schema":
                 {
-                  "type": "string",
-                  "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
+                  "type": "string"
                 }
               }
             },
@@ -5633,10 +5633,10 @@
             {
               "x-fapi-interaction-id":
               {
+                "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "schema":
                 {
-                  "type": "string",
-                  "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
+                  "type": "string"
                 }
               }
             },
@@ -5658,10 +5658,10 @@
             {
               "x-fapi-interaction-id":
               {
+                "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "schema":
                 {
-                  "type": "string",
-                  "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
+                  "type": "string"
                 }
               }
             },
@@ -5741,10 +5741,10 @@
             {
               "x-fapi-interaction-id":
               {
+                "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "schema":
                 {
-                  "type": "string",
-                  "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
+                  "type": "string"
                 }
               }
             },
@@ -5766,10 +5766,10 @@
             {
               "x-fapi-interaction-id":
               {
+                "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "schema":
                 {
-                  "type": "string",
-                  "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
+                  "type": "string"
                 }
               }
             },
@@ -5791,10 +5791,10 @@
             {
               "x-fapi-interaction-id":
               {
+                "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "schema":
                 {
-                  "type": "string",
-                  "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
+                  "type": "string"
                 }
               }
             },
@@ -5816,10 +5816,10 @@
             {
               "x-fapi-interaction-id":
               {
+                "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "schema":
                 {
-                  "type": "string",
-                  "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
+                  "type": "string"
                 }
               }
             },
@@ -5896,10 +5896,10 @@
             {
               "x-fapi-interaction-id":
               {
+                "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "schema":
                 {
-                  "type": "string",
-                  "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
+                  "type": "string"
                 }
               }
             },
@@ -5921,10 +5921,10 @@
             {
               "x-fapi-interaction-id":
               {
+                "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "schema":
                 {
-                  "type": "string",
-                  "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
+                  "type": "string"
                 }
               }
             },
@@ -5946,10 +5946,10 @@
             {
               "x-fapi-interaction-id":
               {
+                "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "schema":
                 {
-                  "type": "string",
-                  "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
+                  "type": "string"
                 }
               }
             },
@@ -6030,10 +6030,10 @@
             {
               "x-fapi-interaction-id":
               {
+                "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "schema":
                 {
-                  "type": "string",
-                  "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
+                  "type": "string"
                 }
               }
             },
@@ -6055,10 +6055,10 @@
             {
               "x-fapi-interaction-id":
               {
+                "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "schema":
                 {
-                  "type": "string",
-                  "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
+                  "type": "string"
                 }
               }
             },
@@ -6080,10 +6080,10 @@
             {
               "x-fapi-interaction-id":
               {
+                "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "schema":
                 {
-                  "type": "string",
-                  "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
+                  "type": "string"
                 }
               }
             },

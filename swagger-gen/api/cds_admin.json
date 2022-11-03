@@ -631,27 +631,6 @@
             ],
             "type": "object",
             "properties": {
-              "primary": {
-                "type": "object",
-                "properties": {
-                  "currentDay": {
-                    "type": "number",
-                    "description": "Average response time for current day"
-                  },
-                  "previousDays": {
-                    "type": "array",
-                    "description": "Average response time for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.",
-                    "items": {
-                      "type": "number"
-                    }
-                  }
-                },
-                "description": "Average response time as measured for the primary data holder",
-                "x-conditional": [
-                  "currentDay",
-                  "previousDays"
-                ]
-              },
               "secondary": {
                 "type": "object",
                 "properties": {
@@ -668,6 +647,27 @@
                   }
                 },
                 "description": "Average response time as measured for the secondary data holder",
+                "x-conditional": [
+                  "currentDay",
+                  "previousDays"
+                ]
+              },
+              "primary": {
+                "type": "object",
+                "properties": {
+                  "currentDay": {
+                    "type": "number",
+                    "description": "Average response time for current day"
+                  },
+                  "previousDays": {
+                    "type": "array",
+                    "description": "Average response time for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.",
+                    "items": {
+                      "type": "number"
+                    }
+                  }
+                },
+                "description": "Average response time as measured for the primary data holder",
                 "x-conditional": [
                   "currentDay",
                   "previousDays"
@@ -683,27 +683,6 @@
             ],
             "type": "object",
             "properties": {
-              "primary": {
-                "type": "object",
-                "properties": {
-                  "currentDay": {
-                    "type": "number",
-                    "description": "Average response time for current day"
-                  },
-                  "previousDays": {
-                    "type": "array",
-                    "description": "Average response time for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.",
-                    "items": {
-                      "type": "number"
-                    }
-                  }
-                },
-                "description": "Average response time as measured for the primary data holder",
-                "x-conditional": [
-                  "currentDay",
-                  "previousDays"
-                ]
-              },
               "secondary": {
                 "type": "object",
                 "properties": {
@@ -720,6 +699,27 @@
                   }
                 },
                 "description": "Average response time as measured for the secondary data holder",
+                "x-conditional": [
+                  "currentDay",
+                  "previousDays"
+                ]
+              },
+              "primary": {
+                "type": "object",
+                "properties": {
+                  "currentDay": {
+                    "type": "number",
+                    "description": "Average response time for current day"
+                  },
+                  "previousDays": {
+                    "type": "array",
+                    "description": "Average response time for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.",
+                    "items": {
+                      "type": "number"
+                    }
+                  }
+                },
+                "description": "Average response time as measured for the primary data holder",
                 "x-conditional": [
                   "currentDay",
                   "previousDays"
