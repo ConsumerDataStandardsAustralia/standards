@@ -19,6 +19,27 @@
 }
 ```
 
+```diff
+Added FAPI 1.0 Final Phase 3 Obligation example
+```
+
+> Non-Normative Example - FAPI 1.0 Final Phase 3 Obligations
+
+```
+{
+  "iss": "https://www.holder.com.au",
+  "sub": "a9ebbef6-1f0b-44eb-96cf-0c5b51b37ab2",
+  "aud": "12345",
+  "nonce": "n-0S6_WzA2Mj",
+  "exp": 1311281970,
+  "iat": 1311280970,
+  "nbf": 1311280970,
+  "auth_time": 1311280969,
+  "acr": "urn:cds.au:cdr:2"
+}
+```
+
+
 ID Tokens are specified in [section 2](https://openid.net/specs/openid-connect-core-1_0.html#IDToken) of the **[[OIDC]](#nref-OIDC)** standard.
 
 #### Baseline ID Token requirements

@@ -20,6 +20,7 @@ This release addresses the following minor defects raised on [Standards Staging]
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
+* [Standards Maintenance Issue 458 - FAPI 1.0 Non Normative Examples](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/458)
 
 ### Decision Proposals
 
@@ -52,7 +53,7 @@ This release addresses the following Decision Proposals published on [Standards]
 
 |Change|Description|Link|
 |------|-----------|----|
-| | | |
+| Non-normative examples | [**Standards Maintenance Issue 458**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/458): Updated InfoSec non-normative examples with FAPI 1.0 Phase 3 flows | [Security Profile](../../#security-profile) |
 
 
 ## Consumer Experience

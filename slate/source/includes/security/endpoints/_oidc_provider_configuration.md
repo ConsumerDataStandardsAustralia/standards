@@ -3,7 +3,7 @@
 > Non-Normative Example
 
 ```diff
-Updated non-normative example.
+Updated non-normative example - FAPI 1.0 Final Phase 3 Obligations.
 
 Updated parameters:
 "response_types_supported" to support Authorization Code Flow ("code")
@@ -29,7 +29,7 @@ Added JARM parameters where authorisation response encryption is supported (refe
 GET /.well-known/openid-configuration HTTP/1.1
 Host: www.dh.com.au
 
-## Response
+## Response - FAPI 1.0 Final Phase 3 Obligations
 
 HTTP/1.1 200 OK
 Content-Type: application/json
