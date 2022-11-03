@@ -2,13 +2,34 @@
 
 > Non-Normative Example
 
+```diff
+Updated non-normative example - FAPI 1.0 Final Phase 3 Obligations.
+
+Updated parameters:
+"response_types_supported" to support Authorization Code Flow ("code")
+"response_modes_supported" to support "jwt" for JARM. Note that "fragment" is also a supported JWT response mode
+
+Added required PAR parameter:
++ require_pushed_authorization_requests set to true
+
+Added requied PKCE parameter:
++ code_challenge_methods_supported
+
+Added requied JARM parameter:
++ authorization_signing_alg_values_supported
+
+Added JARM parameters where authorisation response encryption is supported (refer to https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/479 for further details):
++ authorization_encryption_alg_values_supported
++ authorization_encryption_enc_values_supported
+```
+
 ```
 ## Request
 
 GET /.well-known/openid-configuration HTTP/1.1
 Host: www.dh.com.au
 
-## Response
+## Response - FAPI 1.0 Final Phase 3 Obligations
 
 HTTP/1.1 200 OK
 Content-Type: application/json
@@ -22,8 +43,8 @@ Content-Type: application/json
   "registration_endpoint": "https://www.dh.com.au/register",
   "jwks_uri": "https://www.dh.com.au/jwks",
   "scopes_supported": ["openid", "profile", "..."],
-  "response_types_supported": ["code id_token"],
-  "response_modes_supported": ["fragment"],
+  "response_types_supported": ["code id_token", "code"],
+  "response_modes_supported": ["fragment", "jwt"],
   "grant_types_supported": ["authorization_code", "client_credentials", "urn:openid:params:modrna:grant-type:backchannel_request"],
   "acr_values_supported": ["urn:cds.au:cdr:2","urn:cds.au:cdr:3"],
   "subject_types_supported": ["pairwise"],
@@ -35,7 +56,12 @@ Content-Type: application/json
   "request_object_signing_alg_values_supported": ["ES256", "PS256"],
   "token_endpoint_auth_methods_supported": ["private_key_jwt"],
   "tls_client_certificate_bound_access_tokens": true,
-  "claims_supported": ["name", "given_name", "family_name", "acr", "auth_time", "sub", "refresh_token_expires_at", "sharing_expires_at"]
+  "claims_supported": ["name", "given_name", "family_name", "acr", "auth_time", "sub", "refresh_token_expires_at", "sharing_expires_at"],
+  "require_pushed_authorization_requests": true,
+  "code_challenge_methods_supported": "S256",
+  "authorization_signing_alg_values_supported": ["ES256", "PS256"],
+  "authorization_encryption_alg_values_supported": ["RSA-OAEP", "RSA-OAEP-256"],
+  "authorization_encryption_enc_values_supported": ["A256GCM", "A128CBC-HS256"]
 }
 ```
 

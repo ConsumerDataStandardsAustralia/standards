@@ -9043,19 +9043,19 @@ This operation does not require authentication
 <td>»» extensionUType</td>
 <td>string</td>
 <td>optional</td>
-<td>Optional extended data provided specific to transaction originated via NPP</td>
+<td>Optional extended data specific to transactions originated via NPP</td>
 </tr>
 <tr>
 <td>»» x2p101Payload</td>
 <td>object</td>
-<td>optional</td>
+<td>conditional</td>
 <td>none</td>
 </tr>
 <tr>
 <td>»»» extendedDescription</td>
 <td>string</td>
-<td>mandatory</td>
-<td>An extended string description. Only present if specified by the extensionUType field</td>
+<td>conditional</td>
+<td>An extended string description. Required if the extensionUType field is <code>x2p101Payload</code></td>
 </tr>
 <tr>
 <td>»»» endToEndId</td>

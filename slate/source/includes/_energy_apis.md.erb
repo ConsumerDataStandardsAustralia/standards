@@ -11,30 +11,29 @@ This specification defines the APIs for Data Holders exposing Energy endpoints.
 </table>
 
 ```diff
-Added the following to v2 of Get Energy Accounts and v2 of Get Energy Account Detail APIs
-+ open-status	(query parameter)
-
-Updated the following structures
+Changed type of `EnergyDerRecord.availablePhasesCount` and `EnergyDerRecord.installedPhasesCount` fields
 from:
- - EnergyAccount
- - EnergyAccountBase
- - EnergyAccountListResponse
- - EnergyAccountDetailResponse
- - EnergyAccountDetail
+- PositiveInteger
 to:
-+ EnergyAccountV2
-+ EnergyAccountBaseV2
-+ EnergyAccountListResponseV2
-+ EnergyAccountDetailResponseV2
-+ EnergyAccountDetailV2
++ NaturalNumber
 
-Added the following fields to EnergyAccountBaseV2
-+ openStatus
+Updated description of below fields in `EnergyDerRecord`
+• `approvedCapacity`
+• `availablePhasesCount`
+• `installedPhasesCount`
+to include:
++ Value of 0 indicates no DER record exists for the given servicePointId
 
-Made the following changes to EnergyAccountV2
- made planOverview conditional
+Updated description of below fields in `EnergyDerRecord.acConnections`:
+• `inverterDeviceCapacity`
+• `derDevices.nominalRatedCapacity`
+• `derDevices.nominalStorageCapacity`
+to include
++ Default is 0 if value not known
 
-Made the following changes to EnergyAccountDetailV2
- made planOverview and planDetail conditional
+Defect fix for readQualities to make it an array instead of an object
+
+Clarified that date filtering of invoices should be done via issue date
 ```
+
 <%= partial "includes/cds_energy.md" %>

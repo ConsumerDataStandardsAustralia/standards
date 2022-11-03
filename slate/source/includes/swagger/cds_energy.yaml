@@ -2,7 +2,7 @@ openapi: 3.0.3
 info:
   description: Consumer Data Right end points and payloads for the Energy sector
   title: CDR Energy API
-  version: 1.19.0
+  version: 1.20.0
 servers:
 - url: /
 paths:
@@ -134,10 +134,10 @@ paths:
           description: Successful response
           headers:
             x-v:
+              description: The [version](#response-headers) of the API end point that
+                the data holder has responded with.
               explode: false
               schema:
-                description: The [version](#response-headers) of the API end point
-                  that the data holder has responded with.
                 type: string
               style: simple
         "400":
@@ -150,13 +150,13 @@ paths:
             Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
           headers:
             x-fapi-interaction-id:
+              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+                id. If provided, the data holder must play back this value in the
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                UUID value is required to be provided in the response header to track
+                the interaction.
               explode: false
               schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
                 type: string
               style: simple
         "406":
@@ -168,13 +168,13 @@ paths:
             - Unsupported Version](#error-406-header-unsupported-version)</li></ul>
           headers:
             x-fapi-interaction-id:
+              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+                id. If provided, the data holder must play back this value in the
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                UUID value is required to be provided in the response header to track
+                the interaction.
               explode: false
               schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
                 type: string
               style: simple
         "422":
@@ -186,13 +186,13 @@ paths:
             - Invalid Page](#error-422-field-invalid-page)</li></ul>
           headers:
             x-fapi-interaction-id:
+              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+                id. If provided, the data holder must play back this value in the
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                UUID value is required to be provided in the response header to track
+                the interaction.
               explode: false
               schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
                 type: string
               style: simple
       summary: Get Generic Plans
@@ -249,10 +249,10 @@ paths:
           description: Successful response
           headers:
             x-v:
+              description: The [version](#response-headers) of the API end point that
+                the data holder has responded with.
               explode: false
               schema:
-                description: The [version](#response-headers) of the API end point
-                  that the data holder has responded with.
                 type: string
               style: simple
         "400":
@@ -264,13 +264,13 @@ paths:
             - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
           headers:
             x-fapi-interaction-id:
+              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+                id. If provided, the data holder must play back this value in the
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                UUID value is required to be provided in the response header to track
+                the interaction.
               explode: false
               schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
                 type: string
               style: simple
         "404":
@@ -282,13 +282,13 @@ paths:
             - Invalid Resource](#error-404-resource-invalid)</li></ul>
           headers:
             x-fapi-interaction-id:
+              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+                id. If provided, the data holder must play back this value in the
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                UUID value is required to be provided in the response header to track
+                the interaction.
               explode: false
               schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
                 type: string
               style: simple
         "406":
@@ -300,13 +300,13 @@ paths:
             - Unsupported Version](#error-406-header-unsupported-version)</li></ul>
           headers:
             x-fapi-interaction-id:
+              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+                id. If provided, the data holder must play back this value in the
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                UUID value is required to be provided in the response header to track
+                the interaction.
               explode: false
               schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
                 type: string
               style: simple
       summary: Get Generic Plan Detail
@@ -420,20 +420,20 @@ paths:
           description: Successful response
           headers:
             x-v:
+              description: The [version](#response-headers) of the API end point that
+                the data holder has responded with.
               explode: false
               schema:
-                description: The [version](#response-headers) of the API end point
-                  that the data holder has responded with.
                 type: string
               style: simple
             x-fapi-interaction-id:
+              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+                id. If provided, the data holder must play back this value in the
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                UUID value is required to be provided in the response header to track
+                the interaction.
               explode: false
               schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
                 type: string
               style: simple
         "400":
@@ -446,13 +446,13 @@ paths:
             Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
           headers:
             x-fapi-interaction-id:
+              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+                id. If provided, the data holder must play back this value in the
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                UUID value is required to be provided in the response header to track
+                the interaction.
               explode: false
               schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
                 type: string
               style: simple
         "406":
@@ -464,13 +464,13 @@ paths:
             - Unsupported Version](#error-406-header-unsupported-version)</li></ul>
           headers:
             x-fapi-interaction-id:
+              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+                id. If provided, the data holder must play back this value in the
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                UUID value is required to be provided in the response header to track
+                the interaction.
               explode: false
               schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
                 type: string
               style: simple
         "422":
@@ -482,13 +482,13 @@ paths:
             - Invalid Page](#error-422-field-invalid-page)</li></ul>
           headers:
             x-fapi-interaction-id:
+              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+                id. If provided, the data holder must play back this value in the
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                UUID value is required to be provided in the response header to track
+                the interaction.
               explode: false
               schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
                 type: string
               style: simple
       summary: Get Service Points
@@ -596,20 +596,20 @@ paths:
           description: Successful response
           headers:
             x-v:
+              description: The [version](#response-headers) of the API end point that
+                the data holder has responded with.
               explode: false
               schema:
-                description: The [version](#response-headers) of the API end point
-                  that the data holder has responded with.
                 type: string
               style: simple
             x-fapi-interaction-id:
+              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+                id. If provided, the data holder must play back this value in the
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                UUID value is required to be provided in the response header to track
+                the interaction.
               explode: false
               schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
                 type: string
               style: simple
         "400":
@@ -621,13 +621,13 @@ paths:
             - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
           headers:
             x-fapi-interaction-id:
+              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+                id. If provided, the data holder must play back this value in the
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                UUID value is required to be provided in the response header to track
+                the interaction.
               explode: false
               schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
                 type: string
               style: simple
         "404":
@@ -640,13 +640,13 @@ paths:
             - Invalid Service Point](#error-404-invalid-service-point)</li></ul>
           headers:
             x-fapi-interaction-id:
+              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+                id. If provided, the data holder must play back this value in the
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                UUID value is required to be provided in the response header to track
+                the interaction.
               explode: false
               schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
                 type: string
               style: simple
         "406":
@@ -658,13 +658,13 @@ paths:
             - Unsupported Version](#error-406-header-unsupported-version)</li></ul>
           headers:
             x-fapi-interaction-id:
+              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+                id. If provided, the data holder must play back this value in the
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                UUID value is required to be provided in the response header to track
+                the interaction.
               explode: false
               schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
                 type: string
               style: simple
       summary: Get Service Point Detail
@@ -826,20 +826,20 @@ paths:
           description: Successful response
           headers:
             x-v:
+              description: The [version](#response-headers) of the API end point that
+                the data holder has responded with.
               explode: false
               schema:
-                description: The [version](#response-headers) of the API end point
-                  that the data holder has responded with.
                 type: string
               style: simple
             x-fapi-interaction-id:
+              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+                id. If provided, the data holder must play back this value in the
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                UUID value is required to be provided in the response header to track
+                the interaction.
               explode: false
               schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
                 type: string
               style: simple
         "400":
@@ -852,13 +852,13 @@ paths:
             Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
           headers:
             x-fapi-interaction-id:
+              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+                id. If provided, the data holder must play back this value in the
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                UUID value is required to be provided in the response header to track
+                the interaction.
               explode: false
               schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
                 type: string
               style: simple
         "404":
@@ -871,13 +871,13 @@ paths:
             - Invalid Service Point](#error-404-invalid-service-point)</li></ul>
           headers:
             x-fapi-interaction-id:
+              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+                id. If provided, the data holder must play back this value in the
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                UUID value is required to be provided in the response header to track
+                the interaction.
               explode: false
               schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
                 type: string
               style: simple
         "406":
@@ -889,13 +889,13 @@ paths:
             - Unsupported Version](#error-406-header-unsupported-version)</li></ul>
           headers:
             x-fapi-interaction-id:
+              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+                id. If provided, the data holder must play back this value in the
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                UUID value is required to be provided in the response header to track
+                the interaction.
               explode: false
               schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
                 type: string
               style: simple
         "422":
@@ -907,13 +907,13 @@ paths:
             - Invalid Page](#error-422-field-invalid-page)</li></ul>
           headers:
             x-fapi-interaction-id:
+              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+                id. If provided, the data holder must play back this value in the
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                UUID value is required to be provided in the response header to track
+                the interaction.
               explode: false
               schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
                 type: string
               style: simple
       summary: Get Usage For Service Point
@@ -1064,20 +1064,20 @@ paths:
           description: Successful response
           headers:
             x-v:
+              description: The [version](#response-headers) of the API end point that
+                the data holder has responded with.
               explode: false
               schema:
-                description: The [version](#response-headers) of the API end point
-                  that the data holder has responded with.
                 type: string
               style: simple
             x-fapi-interaction-id:
+              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+                id. If provided, the data holder must play back this value in the
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                UUID value is required to be provided in the response header to track
+                the interaction.
               explode: false
               schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
                 type: string
               style: simple
         "400":
@@ -1090,13 +1090,13 @@ paths:
             Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
           headers:
             x-fapi-interaction-id:
+              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+                id. If provided, the data holder must play back this value in the
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                UUID value is required to be provided in the response header to track
+                the interaction.
               explode: false
               schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
                 type: string
               style: simple
         "406":
@@ -1108,13 +1108,13 @@ paths:
             - Unsupported Version](#error-406-header-unsupported-version)</li></ul>
           headers:
             x-fapi-interaction-id:
+              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+                id. If provided, the data holder must play back this value in the
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                UUID value is required to be provided in the response header to track
+                the interaction.
               explode: false
               schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
                 type: string
               style: simple
         "422":
@@ -1126,13 +1126,13 @@ paths:
             - Invalid Page](#error-422-field-invalid-page)</li></ul>
           headers:
             x-fapi-interaction-id:
+              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+                id. If provided, the data holder must play back this value in the
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                UUID value is required to be provided in the response header to track
+                the interaction.
               explode: false
               schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
                 type: string
               style: simple
       summary: Get Bulk Usage
@@ -1285,20 +1285,20 @@ paths:
           description: Successful response
           headers:
             x-v:
+              description: The [version](#response-headers) of the API end point that
+                the data holder has responded with.
               explode: false
               schema:
-                description: The [version](#response-headers) of the API end point
-                  that the data holder has responded with.
                 type: string
               style: simple
             x-fapi-interaction-id:
+              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+                id. If provided, the data holder must play back this value in the
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                UUID value is required to be provided in the response header to track
+                the interaction.
               explode: false
               schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
                 type: string
               style: simple
         "400":
@@ -1311,13 +1311,13 @@ paths:
             Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
           headers:
             x-fapi-interaction-id:
+              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+                id. If provided, the data holder must play back this value in the
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                UUID value is required to be provided in the response header to track
+                the interaction.
               explode: false
               schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
                 type: string
               style: simple
         "406":
@@ -1329,13 +1329,13 @@ paths:
             - Unsupported Version](#error-406-header-unsupported-version)</li></ul>
           headers:
             x-fapi-interaction-id:
+              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+                id. If provided, the data holder must play back this value in the
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                UUID value is required to be provided in the response header to track
+                the interaction.
               explode: false
               schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
                 type: string
               style: simple
         "422":
@@ -1349,13 +1349,13 @@ paths:
             Service Point](#error-422-invalid-service-point)</li></ul>
           headers:
             x-fapi-interaction-id:
+              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+                id. If provided, the data holder must play back this value in the
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                UUID value is required to be provided in the response header to track
+                the interaction.
               explode: false
               schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
                 type: string
               style: simple
       summary: Get Usage For Specific Service Points
@@ -1462,20 +1462,20 @@ paths:
           description: Successful response
           headers:
             x-v:
+              description: The [version](#response-headers) of the API end point that
+                the data holder has responded with.
               explode: false
               schema:
-                description: The [version](#response-headers) of the API end point
-                  that the data holder has responded with.
                 type: string
               style: simple
             x-fapi-interaction-id:
+              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+                id. If provided, the data holder must play back this value in the
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                UUID value is required to be provided in the response header to track
+                the interaction.
               explode: false
               schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
                 type: string
               style: simple
         "400":
@@ -1487,13 +1487,13 @@ paths:
             - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
           headers:
             x-fapi-interaction-id:
+              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+                id. If provided, the data holder must play back this value in the
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                UUID value is required to be provided in the response header to track
+                the interaction.
               explode: false
               schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
                 type: string
               style: simple
         "404":
@@ -1506,13 +1506,13 @@ paths:
             - Invalid Service Point](#error-404-invalid-service-point)</li></ul>
           headers:
             x-fapi-interaction-id:
+              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+                id. If provided, the data holder must play back this value in the
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                UUID value is required to be provided in the response header to track
+                the interaction.
               explode: false
               schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
                 type: string
               style: simple
         "406":
@@ -1524,13 +1524,13 @@ paths:
             - Unsupported Version](#error-406-header-unsupported-version)</li></ul>
           headers:
             x-fapi-interaction-id:
+              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+                id. If provided, the data holder must play back this value in the
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                UUID value is required to be provided in the response header to track
+                the interaction.
               explode: false
               schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
                 type: string
               style: simple
       summary: Get DER For Service Point
@@ -1645,20 +1645,20 @@ paths:
           description: Successful response
           headers:
             x-v:
+              description: The [version](#response-headers) of the API end point that
+                the data holder has responded with.
               explode: false
               schema:
-                description: The [version](#response-headers) of the API end point
-                  that the data holder has responded with.
                 type: string
               style: simple
             x-fapi-interaction-id:
+              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+                id. If provided, the data holder must play back this value in the
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                UUID value is required to be provided in the response header to track
+                the interaction.
               explode: false
               schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
                 type: string
               style: simple
         "400":
@@ -1671,13 +1671,13 @@ paths:
             Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
           headers:
             x-fapi-interaction-id:
+              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+                id. If provided, the data holder must play back this value in the
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                UUID value is required to be provided in the response header to track
+                the interaction.
               explode: false
               schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
                 type: string
               style: simple
         "406":
@@ -1689,13 +1689,13 @@ paths:
             - Unsupported Version](#error-406-header-unsupported-version)</li></ul>
           headers:
             x-fapi-interaction-id:
+              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+                id. If provided, the data holder must play back this value in the
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                UUID value is required to be provided in the response header to track
+                the interaction.
               explode: false
               schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
                 type: string
               style: simple
         "422":
@@ -1707,13 +1707,13 @@ paths:
             - Invalid Page](#error-422-field-invalid-page)</li></ul>
           headers:
             x-fapi-interaction-id:
+              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+                id. If provided, the data holder must play back this value in the
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                UUID value is required to be provided in the response header to track
+                the interaction.
               explode: false
               schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
                 type: string
               style: simple
       summary: Get Bulk DER
@@ -1829,20 +1829,20 @@ paths:
           description: Successful response
           headers:
             x-v:
+              description: The [version](#response-headers) of the API end point that
+                the data holder has responded with.
               explode: false
               schema:
-                description: The [version](#response-headers) of the API end point
-                  that the data holder has responded with.
                 type: string
               style: simple
             x-fapi-interaction-id:
+              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+                id. If provided, the data holder must play back this value in the
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                UUID value is required to be provided in the response header to track
+                the interaction.
               explode: false
               schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
                 type: string
               style: simple
         "400":
@@ -1855,13 +1855,13 @@ paths:
             Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
           headers:
             x-fapi-interaction-id:
+              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+                id. If provided, the data holder must play back this value in the
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                UUID value is required to be provided in the response header to track
+                the interaction.
               explode: false
               schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
                 type: string
               style: simple
         "406":
@@ -1873,13 +1873,13 @@ paths:
             - Unsupported Version](#error-406-header-unsupported-version)</li></ul>
           headers:
             x-fapi-interaction-id:
+              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+                id. If provided, the data holder must play back this value in the
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                UUID value is required to be provided in the response header to track
+                the interaction.
               explode: false
               schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
                 type: string
               style: simple
         "422":
@@ -1893,13 +1893,13 @@ paths:
             Service Point](#error-422-invalid-service-point)</li></ul>
           headers:
             x-fapi-interaction-id:
+              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+                id. If provided, the data holder must play back this value in the
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                UUID value is required to be provided in the response header to track
+                the interaction.
               explode: false
               schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
                 type: string
               style: simple
       summary: Get DER For Specific Service Points
@@ -2031,20 +2031,20 @@ paths:
           description: Successful response
           headers:
             x-v:
+              description: The [version](#response-headers) of the API end point that
+                the data holder has responded with.
               explode: false
               schema:
-                description: The [version](#response-headers) of the API end point
-                  that the data holder has responded with.
                 type: string
               style: simple
             x-fapi-interaction-id:
+              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+                id. If provided, the data holder must play back this value in the
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                UUID value is required to be provided in the response header to track
+                the interaction.
               explode: false
               schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
                 type: string
               style: simple
         "400":
@@ -2057,13 +2057,13 @@ paths:
             Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
           headers:
             x-fapi-interaction-id:
+              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+                id. If provided, the data holder must play back this value in the
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                UUID value is required to be provided in the response header to track
+                the interaction.
               explode: false
               schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
                 type: string
               style: simple
         "406":
@@ -2075,13 +2075,13 @@ paths:
             - Unsupported Version](#error-406-header-unsupported-version)</li></ul>
           headers:
             x-fapi-interaction-id:
+              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+                id. If provided, the data holder must play back this value in the
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                UUID value is required to be provided in the response header to track
+                the interaction.
               explode: false
               schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
                 type: string
               style: simple
         "422":
@@ -2093,13 +2093,13 @@ paths:
             - Invalid Page](#error-422-field-invalid-page)</li></ul>
           headers:
             x-fapi-interaction-id:
+              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+                id. If provided, the data holder must play back this value in the
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                UUID value is required to be provided in the response header to track
+                the interaction.
               explode: false
               schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
                 type: string
               style: simple
       summary: Get Energy Accounts
@@ -2222,20 +2222,20 @@ paths:
           description: Successful response
           headers:
             x-v:
+              description: The [version](#response-headers) of the API end point that
+                the data holder has responded with.
               explode: false
               schema:
-                description: The [version](#response-headers) of the API end point
-                  that the data holder has responded with.
                 type: string
               style: simple
             x-fapi-interaction-id:
+              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+                id. If provided, the data holder must play back this value in the
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                UUID value is required to be provided in the response header to track
+                the interaction.
               explode: false
               schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
                 type: string
               style: simple
         "400":
@@ -2247,13 +2247,13 @@ paths:
             - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
           headers:
             x-fapi-interaction-id:
+              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+                id. If provided, the data holder must play back this value in the
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                UUID value is required to be provided in the response header to track
+                the interaction.
               explode: false
               schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
                 type: string
               style: simple
         "404":
@@ -2266,13 +2266,13 @@ paths:
             - Invalid Energy Account](#error-404-invalid-energy-account)</li></ul>
           headers:
             x-fapi-interaction-id:
+              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+                id. If provided, the data holder must play back this value in the
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                UUID value is required to be provided in the response header to track
+                the interaction.
               explode: false
               schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
                 type: string
               style: simple
         "406":
@@ -2284,13 +2284,13 @@ paths:
             - Unsupported Version](#error-406-header-unsupported-version)</li></ul>
           headers:
             x-fapi-interaction-id:
+              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+                id. If provided, the data holder must play back this value in the
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                UUID value is required to be provided in the response header to track
+                the interaction.
               explode: false
               schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
                 type: string
               style: simple
       summary: Get Energy Account Detail
@@ -2408,20 +2408,20 @@ paths:
           description: Successful response
           headers:
             x-v:
+              description: The [version](#response-headers) of the API end point that
+                the data holder has responded with.
               explode: false
               schema:
-                description: The [version](#response-headers) of the API end point
-                  that the data holder has responded with.
                 type: string
               style: simple
             x-fapi-interaction-id:
+              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+                id. If provided, the data holder must play back this value in the
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                UUID value is required to be provided in the response header to track
+                the interaction.
               explode: false
               schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
                 type: string
               style: simple
         "400":
@@ -2433,13 +2433,13 @@ paths:
             - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
           headers:
             x-fapi-interaction-id:
+              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+                id. If provided, the data holder must play back this value in the
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                UUID value is required to be provided in the response header to track
+                the interaction.
               explode: false
               schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
                 type: string
               style: simple
         "404":
@@ -2452,13 +2452,13 @@ paths:
             - Invalid Energy Account](#error-404-invalid-energy-account)</li></ul>
           headers:
             x-fapi-interaction-id:
+              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+                id. If provided, the data holder must play back this value in the
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                UUID value is required to be provided in the response header to track
+                the interaction.
               explode: false
               schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
                 type: string
               style: simple
         "406":
@@ -2470,13 +2470,13 @@ paths:
             - Unsupported Version](#error-406-header-unsupported-version)</li></ul>
           headers:
             x-fapi-interaction-id:
+              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+                id. If provided, the data holder must play back this value in the
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                UUID value is required to be provided in the response header to track
+                the interaction.
               explode: false
               schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
                 type: string
               style: simple
       summary: Get Agreed Payment Schedule
@@ -2583,20 +2583,20 @@ paths:
           description: Successful response
           headers:
             x-v:
+              description: The [version](#response-headers) of the API end point that
+                the data holder has responded with.
               explode: false
               schema:
-                description: The [version](#response-headers) of the API end point
-                  that the data holder has responded with.
                 type: string
               style: simple
             x-fapi-interaction-id:
+              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+                id. If provided, the data holder must play back this value in the
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                UUID value is required to be provided in the response header to track
+                the interaction.
               explode: false
               schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
                 type: string
               style: simple
         "400":
@@ -2608,13 +2608,13 @@ paths:
             - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
           headers:
             x-fapi-interaction-id:
+              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+                id. If provided, the data holder must play back this value in the
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                UUID value is required to be provided in the response header to track
+                the interaction.
               explode: false
               schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
                 type: string
               style: simple
         "404":
@@ -2627,13 +2627,13 @@ paths:
             - Invalid Energy Account](#error-404-invalid-energy-account)</li></ul>
           headers:
             x-fapi-interaction-id:
+              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+                id. If provided, the data holder must play back this value in the
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                UUID value is required to be provided in the response header to track
+                the interaction.
               explode: false
               schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
                 type: string
               style: simple
         "406":
@@ -2645,13 +2645,13 @@ paths:
             - Unsupported Version](#error-406-header-unsupported-version)</li></ul>
           headers:
             x-fapi-interaction-id:
+              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+                id. If provided, the data holder must play back this value in the
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                UUID value is required to be provided in the response header to track
+                the interaction.
               explode: false
               schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
                 type: string
               style: simple
       summary: Get Concessions
@@ -2757,20 +2757,20 @@ paths:
           description: Successful response
           headers:
             x-v:
+              description: The [version](#response-headers) of the API end point that
+                the data holder has responded with.
               explode: false
               schema:
-                description: The [version](#response-headers) of the API end point
-                  that the data holder has responded with.
                 type: string
               style: simple
             x-fapi-interaction-id:
+              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+                id. If provided, the data holder must play back this value in the
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                UUID value is required to be provided in the response header to track
+                the interaction.
               explode: false
               schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
                 type: string
               style: simple
         "400":
@@ -2782,13 +2782,13 @@ paths:
             - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
           headers:
             x-fapi-interaction-id:
+              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+                id. If provided, the data holder must play back this value in the
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                UUID value is required to be provided in the response header to track
+                the interaction.
               explode: false
               schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
                 type: string
               style: simple
         "404":
@@ -2801,13 +2801,13 @@ paths:
             - Invalid Energy Account](#error-404-invalid-energy-account)</li></ul>
           headers:
             x-fapi-interaction-id:
+              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+                id. If provided, the data holder must play back this value in the
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                UUID value is required to be provided in the response header to track
+                the interaction.
               explode: false
               schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
                 type: string
               style: simple
         "406":
@@ -2819,13 +2819,13 @@ paths:
             - Unsupported Version](#error-406-header-unsupported-version)</li></ul>
           headers:
             x-fapi-interaction-id:
+              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+                id. If provided, the data holder must play back this value in the
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                UUID value is required to be provided in the response header to track
+                the interaction.
               explode: false
               schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
                 type: string
               style: simple
       summary: Get Balance For Energy Account
@@ -2940,20 +2940,20 @@ paths:
           description: Successful response
           headers:
             x-v:
+              description: The [version](#response-headers) of the API end point that
+                the data holder has responded with.
               explode: false
               schema:
-                description: The [version](#response-headers) of the API end point
-                  that the data holder has responded with.
                 type: string
               style: simple
             x-fapi-interaction-id:
+              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+                id. If provided, the data holder must play back this value in the
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                UUID value is required to be provided in the response header to track
+                the interaction.
               explode: false
               schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
                 type: string
               style: simple
         "400":
@@ -2966,13 +2966,13 @@ paths:
             Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
           headers:
             x-fapi-interaction-id:
+              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+                id. If provided, the data holder must play back this value in the
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                UUID value is required to be provided in the response header to track
+                the interaction.
               explode: false
               schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
                 type: string
               style: simple
         "406":
@@ -2984,13 +2984,13 @@ paths:
             - Unsupported Version](#error-406-header-unsupported-version)</li></ul>
           headers:
             x-fapi-interaction-id:
+              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+                id. If provided, the data holder must play back this value in the
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                UUID value is required to be provided in the response header to track
+                the interaction.
               explode: false
               schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
                 type: string
               style: simple
         "422":
@@ -3002,13 +3002,13 @@ paths:
             - Invalid Page](#error-422-field-invalid-page)</li></ul>
           headers:
             x-fapi-interaction-id:
+              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+                id. If provided, the data holder must play back this value in the
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                UUID value is required to be provided in the response header to track
+                the interaction.
               explode: false
               schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
                 type: string
               style: simple
       summary: Get Bulk Balances for Energy
@@ -3124,20 +3124,20 @@ paths:
           description: Successful response
           headers:
             x-v:
+              description: The [version](#response-headers) of the API end point that
+                the data holder has responded with.
               explode: false
               schema:
-                description: The [version](#response-headers) of the API end point
-                  that the data holder has responded with.
                 type: string
               style: simple
             x-fapi-interaction-id:
+              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+                id. If provided, the data holder must play back this value in the
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                UUID value is required to be provided in the response header to track
+                the interaction.
               explode: false
               schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
                 type: string
               style: simple
         "400":
@@ -3150,13 +3150,13 @@ paths:
             Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
           headers:
             x-fapi-interaction-id:
+              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+                id. If provided, the data holder must play back this value in the
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                UUID value is required to be provided in the response header to track
+                the interaction.
               explode: false
               schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
                 type: string
               style: simple
         "406":
@@ -3168,13 +3168,13 @@ paths:
             - Unsupported Version](#error-406-header-unsupported-version)</li></ul>
           headers:
             x-fapi-interaction-id:
+              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+                id. If provided, the data holder must play back this value in the
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                UUID value is required to be provided in the response header to track
+                the interaction.
               explode: false
               schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
                 type: string
               style: simple
         "422":
@@ -3188,13 +3188,13 @@ paths:
             Invalid Energy Account](#error-422-invalid-energy-account)</li></ul>
           headers:
             x-fapi-interaction-id:
+              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+                id. If provided, the data holder must play back this value in the
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                UUID value is required to be provided in the response header to track
+                the interaction.
               explode: false
               schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
                 type: string
               style: simple
       summary: Get Balances For Specific Energy Accounts
@@ -3218,7 +3218,7 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Constrain the request to records with effective date at or before
+      - description: Constrain the request to records with issue date at or before
           this date.  If absent defaults to current date.  Format is aligned to DateString
           common type
         explode: true
@@ -3229,7 +3229,7 @@ paths:
           type: string
         style: form
         x-cds-type: DateString
-      - description: Constrain the request to records with effective date at or after
+      - description: Constrain the request to records with issue date at or after
           this date. If absent defaults to newest-date minus 24 months.  Format is
           aligned to DateString common type
         explode: true
@@ -3340,20 +3340,20 @@ paths:
           description: Successful response
           headers:
             x-v:
+              description: The [version](#response-headers) of the API end point that
+                the data holder has responded with.
               explode: false
               schema:
-                description: The [version](#response-headers) of the API end point
-                  that the data holder has responded with.
                 type: string
               style: simple
             x-fapi-interaction-id:
+              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+                id. If provided, the data holder must play back this value in the
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                UUID value is required to be provided in the response header to track
+                the interaction.
               explode: false
               schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
                 type: string
               style: simple
         "400":
@@ -3366,13 +3366,13 @@ paths:
             Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
           headers:
             x-fapi-interaction-id:
+              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+                id. If provided, the data holder must play back this value in the
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                UUID value is required to be provided in the response header to track
+                the interaction.
               explode: false
               schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
                 type: string
               style: simple
         "404":
@@ -3385,13 +3385,13 @@ paths:
             - Invalid Energy Account](#error-404-invalid-energy-account)</li></ul>
           headers:
             x-fapi-interaction-id:
+              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+                id. If provided, the data holder must play back this value in the
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                UUID value is required to be provided in the response header to track
+                the interaction.
               explode: false
               schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
                 type: string
               style: simple
         "406":
@@ -3403,13 +3403,13 @@ paths:
             - Unsupported Version](#error-406-header-unsupported-version)</li></ul>
           headers:
             x-fapi-interaction-id:
+              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+                id. If provided, the data holder must play back this value in the
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                UUID value is required to be provided in the response header to track
+                the interaction.
               explode: false
               schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
                 type: string
               style: simple
         "422":
@@ -3421,13 +3421,13 @@ paths:
             - Invalid Page](#error-422-field-invalid-page)</li></ul>
           headers:
             x-fapi-interaction-id:
+              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+                id. If provided, the data holder must play back this value in the
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                UUID value is required to be provided in the response header to track
+                the interaction.
               explode: false
               schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
                 type: string
               style: simple
       summary: Get Invoices For Account
@@ -3442,7 +3442,7 @@ paths:
       description: Obtain the invoices for all accounts
       operationId: listInvoicesBulk
       parameters:
-      - description: Constrain the request to records with effective date at or before
+      - description: Constrain the request to records with issue date at or before
           this date.  If absent defaults to current date.  Format is aligned to DateString
           common type
         explode: true
@@ -3453,7 +3453,7 @@ paths:
           type: string
         style: form
         x-cds-type: DateString
-      - description: Constrain the request to records with effective date at or after
+      - description: Constrain the request to records with issue date at or after
           this date. If absent defaults to newest-date minus 24 months.  Format is
           aligned to DateString common type
         explode: true
@@ -3564,20 +3564,20 @@ paths:
           description: Successful response
           headers:
             x-v:
+              description: The [version](#response-headers) of the API end point that
+                the data holder has responded with.
               explode: false
               schema:
-                description: The [version](#response-headers) of the API end point
-                  that the data holder has responded with.
                 type: string
               style: simple
             x-fapi-interaction-id:
+              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+                id. If provided, the data holder must play back this value in the
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                UUID value is required to be provided in the response header to track
+                the interaction.
               explode: false
               schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
                 type: string
               style: simple
         "400":
@@ -3590,13 +3590,13 @@ paths:
             Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
           headers:
             x-fapi-interaction-id:
+              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+                id. If provided, the data holder must play back this value in the
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                UUID value is required to be provided in the response header to track
+                the interaction.
               explode: false
               schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
                 type: string
               style: simple
         "406":
@@ -3608,13 +3608,13 @@ paths:
             - Unsupported Version](#error-406-header-unsupported-version)</li></ul>
           headers:
             x-fapi-interaction-id:
+              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+                id. If provided, the data holder must play back this value in the
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                UUID value is required to be provided in the response header to track
+                the interaction.
               explode: false
               schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
                 type: string
               style: simple
         "422":
@@ -3626,13 +3626,13 @@ paths:
             - Invalid Page](#error-422-field-invalid-page)</li></ul>
           headers:
             x-fapi-interaction-id:
+              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+                id. If provided, the data holder must play back this value in the
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                UUID value is required to be provided in the response header to track
+                the interaction.
               explode: false
               schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
                 type: string
               style: simple
       summary: Get Bulk Invoices
@@ -3646,7 +3646,7 @@ paths:
       description: Obtain invoices for a specified set of accounts
       operationId: listInvoicesForAccounts
       parameters:
-      - description: Constrain the request to records with effective date at or before
+      - description: Constrain the request to records with issue date at or before
           this date.  If absent defaults to current date.  Format is aligned to DateString
           common type
         explode: true
@@ -3657,7 +3657,7 @@ paths:
           type: string
         style: form
         x-cds-type: DateString
-      - description: Constrain the request to records with effective date at or after
+      - description: Constrain the request to records with issue date at or after
           this date. If absent defaults to newest-date minus 24 months.  Format is
           aligned to DateString common type
         explode: true
@@ -3770,20 +3770,20 @@ paths:
           description: Successful response
           headers:
             x-v:
+              description: The [version](#response-headers) of the API end point that
+                the data holder has responded with.
               explode: false
               schema:
-                description: The [version](#response-headers) of the API end point
-                  that the data holder has responded with.
                 type: string
               style: simple
             x-fapi-interaction-id:
+              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+                id. If provided, the data holder must play back this value in the
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                UUID value is required to be provided in the response header to track
+                the interaction.
               explode: false
               schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
                 type: string
               style: simple
         "400":
@@ -3796,13 +3796,13 @@ paths:
             Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
           headers:
             x-fapi-interaction-id:
+              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+                id. If provided, the data holder must play back this value in the
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                UUID value is required to be provided in the response header to track
+                the interaction.
               explode: false
               schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
                 type: string
               style: simple
         "406":
@@ -3814,13 +3814,13 @@ paths:
             - Unsupported Version](#error-406-header-unsupported-version)</li></ul>
           headers:
             x-fapi-interaction-id:
+              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+                id. If provided, the data holder must play back this value in the
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                UUID value is required to be provided in the response header to track
+                the interaction.
               explode: false
               schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
                 type: string
               style: simple
         "422":
@@ -3834,13 +3834,13 @@ paths:
             Invalid Energy Account](#error-422-invalid-energy-account)</li></ul>
           headers:
             x-fapi-interaction-id:
+              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+                id. If provided, the data holder must play back this value in the
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                UUID value is required to be provided in the response header to track
+                the interaction.
               explode: false
               schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
                 type: string
               style: simple
       summary: Get Invoices For Specific Accounts
@@ -3986,20 +3986,20 @@ paths:
           description: Successful response
           headers:
             x-v:
+              description: The [version](#response-headers) of the API end point that
+                the data holder has responded with.
               explode: false
               schema:
-                description: The [version](#response-headers) of the API end point
-                  that the data holder has responded with.
                 type: string
               style: simple
             x-fapi-interaction-id:
+              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+                id. If provided, the data holder must play back this value in the
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                UUID value is required to be provided in the response header to track
+                the interaction.
               explode: false
               schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
                 type: string
               style: simple
         "400":
@@ -4012,13 +4012,13 @@ paths:
             Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
           headers:
             x-fapi-interaction-id:
+              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+                id. If provided, the data holder must play back this value in the
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                UUID value is required to be provided in the response header to track
+                the interaction.
               explode: false
               schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
                 type: string
               style: simple
         "404":
@@ -4031,13 +4031,13 @@ paths:
             - Invalid Energy Account](#error-404-invalid-energy-account)</li></ul>
           headers:
             x-fapi-interaction-id:
+              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+                id. If provided, the data holder must play back this value in the
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                UUID value is required to be provided in the response header to track
+                the interaction.
               explode: false
               schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
                 type: string
               style: simple
         "406":
@@ -4049,13 +4049,13 @@ paths:
             - Unsupported Version](#error-406-header-unsupported-version)</li></ul>
           headers:
             x-fapi-interaction-id:
+              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+                id. If provided, the data holder must play back this value in the
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                UUID value is required to be provided in the response header to track
+                the interaction.
               explode: false
               schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
                 type: string
               style: simple
         "422":
@@ -4067,13 +4067,13 @@ paths:
             - Invalid Page](#error-422-field-invalid-page)</li></ul>
           headers:
             x-fapi-interaction-id:
+              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+                id. If provided, the data holder must play back this value in the
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                UUID value is required to be provided in the response header to track
+                the interaction.
               explode: false
               schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
                 type: string
               style: simple
       summary: Get Billing For Account
@@ -4210,20 +4210,20 @@ paths:
           description: Successful response
           headers:
             x-v:
+              description: The [version](#response-headers) of the API end point that
+                the data holder has responded with.
               explode: false
               schema:
-                description: The [version](#response-headers) of the API end point
-                  that the data holder has responded with.
                 type: string
               style: simple
             x-fapi-interaction-id:
+              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+                id. If provided, the data holder must play back this value in the
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                UUID value is required to be provided in the response header to track
+                the interaction.
               explode: false
               schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
                 type: string
               style: simple
         "400":
@@ -4236,13 +4236,13 @@ paths:
             Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
           headers:
             x-fapi-interaction-id:
+              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+                id. If provided, the data holder must play back this value in the
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                UUID value is required to be provided in the response header to track
+                the interaction.
               explode: false
               schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
                 type: string
               style: simple
         "406":
@@ -4254,13 +4254,13 @@ paths:
             - Unsupported Version](#error-406-header-unsupported-version)</li></ul>
           headers:
             x-fapi-interaction-id:
+              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+                id. If provided, the data holder must play back this value in the
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                UUID value is required to be provided in the response header to track
+                the interaction.
               explode: false
               schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
                 type: string
               style: simple
         "422":
@@ -4272,13 +4272,13 @@ paths:
             - Invalid Page](#error-422-field-invalid-page)</li></ul>
           headers:
             x-fapi-interaction-id:
+              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+                id. If provided, the data holder must play back this value in the
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                UUID value is required to be provided in the response header to track
+                the interaction.
               explode: false
               schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
                 type: string
               style: simple
       summary: Get Bulk Billing
@@ -4416,20 +4416,20 @@ paths:
           description: Successful response
           headers:
             x-v:
+              description: The [version](#response-headers) of the API end point that
+                the data holder has responded with.
               explode: false
               schema:
-                description: The [version](#response-headers) of the API end point
-                  that the data holder has responded with.
                 type: string
               style: simple
             x-fapi-interaction-id:
+              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+                id. If provided, the data holder must play back this value in the
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                UUID value is required to be provided in the response header to track
+                the interaction.
               explode: false
               schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
                 type: string
               style: simple
         "400":
@@ -4442,13 +4442,13 @@ paths:
             Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
           headers:
             x-fapi-interaction-id:
+              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+                id. If provided, the data holder must play back this value in the
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                UUID value is required to be provided in the response header to track
+                the interaction.
               explode: false
               schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
                 type: string
               style: simple
         "406":
@@ -4460,13 +4460,13 @@ paths:
             - Unsupported Version](#error-406-header-unsupported-version)</li></ul>
           headers:
             x-fapi-interaction-id:
+              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+                id. If provided, the data holder must play back this value in the
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                UUID value is required to be provided in the response header to track
+                the interaction.
               explode: false
               schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
                 type: string
               style: simple
         "422":
@@ -4480,13 +4480,13 @@ paths:
             Invalid Energy Account](#error-422-invalid-energy-account)</li></ul>
           headers:
             x-fapi-interaction-id:
+              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+                id. If provided, the data holder must play back this value in the
+                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                UUID value is required to be provided in the response header to track
+                the interaction.
               explode: false
               schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
                 type: string
               style: simple
       summary: Get Billing For Specific Accounts
@@ -4588,6 +4588,30 @@ components:
     oldest-date:
       description: Constrain the request to records with effective date at or after
         this date. If absent defaults to newest-date minus 24 months.  Format is aligned
+        to DateString common type
+      explode: true
+      in: query
+      name: oldest-date
+      required: false
+      schema:
+        type: string
+      style: form
+      x-cds-type: DateString
+    newest-date-invoices:
+      description: Constrain the request to records with issue date at or before this
+        date.  If absent defaults to current date.  Format is aligned to DateString
+        common type
+      explode: true
+      in: query
+      name: newest-date
+      required: false
+      schema:
+        type: string
+      style: form
+      x-cds-type: DateString
+    oldest-date-invoices:
+      description: Constrain the request to records with issue date at or after this
+        date. If absent defaults to newest-date minus 24 months.  Format is aligned
         to DateString common type
       explode: true
       in: query
@@ -4755,10 +4779,10 @@ components:
       description: Successful response
       headers:
         x-v:
+          description: The [version](#response-headers) of the API end point that
+            the data holder has responded with.
           explode: false
           schema:
-            description: The [version](#response-headers) of the API end point that
-              the data holder has responded with.
             type: string
           style: simple
     planDetail:
@@ -4769,10 +4793,10 @@ components:
       description: Successful response
       headers:
         x-v:
+          description: The [version](#response-headers) of the API end point that
+            the data holder has responded with.
           explode: false
           schema:
-            description: The [version](#response-headers) of the API end point that
-              the data holder has responded with.
             type: string
           style: simple
     servicePointList:
@@ -4783,20 +4807,19 @@ components:
       description: Successful response
       headers:
         x-v:
+          description: The [version](#response-headers) of the API end point that
+            the data holder has responded with.
           explode: false
           schema:
-            description: The [version](#response-headers) of the API end point that
-              the data holder has responded with.
             type: string
           style: simple
         x-fapi-interaction-id:
+          description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+            id. If provided, the data holder must play back this value in the x-fapi-interaction-id
+            response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID
+            value is required to be provided in the response header to track the interaction.
           explode: false
           schema:
-            description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-              id. If provided, the data holder must play back this value in the x-fapi-interaction-id
-              response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID
-              value is required to be provided in the response header to track the
-              interaction.
             type: string
           style: simple
     servicePointDetail:
@@ -4807,20 +4830,19 @@ components:
       description: Successful response
       headers:
         x-v:
+          description: The [version](#response-headers) of the API end point that
+            the data holder has responded with.
           explode: false
           schema:
-            description: The [version](#response-headers) of the API end point that
-              the data holder has responded with.
             type: string
           style: simple
         x-fapi-interaction-id:
+          description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+            id. If provided, the data holder must play back this value in the x-fapi-interaction-id
+            response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID
+            value is required to be provided in the response header to track the interaction.
           explode: false
           schema:
-            description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-              id. If provided, the data holder must play back this value in the x-fapi-interaction-id
-              response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID
-              value is required to be provided in the response header to track the
-              interaction.
             type: string
           style: simple
     usageList:
@@ -4831,20 +4853,19 @@ components:
       description: Successful response
       headers:
         x-v:
+          description: The [version](#response-headers) of the API end point that
+            the data holder has responded with.
           explode: false
           schema:
-            description: The [version](#response-headers) of the API end point that
-              the data holder has responded with.
             type: string
           style: simple
         x-fapi-interaction-id:
+          description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+            id. If provided, the data holder must play back this value in the x-fapi-interaction-id
+            response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID
+            value is required to be provided in the response header to track the interaction.
           explode: false
           schema:
-            description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-              id. If provided, the data holder must play back this value in the x-fapi-interaction-id
-              response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID
-              value is required to be provided in the response header to track the
-              interaction.
             type: string
           style: simple
     derList:
@@ -4855,20 +4876,19 @@ components:
       description: Successful response
       headers:
         x-v:
+          description: The [version](#response-headers) of the API end point that
+            the data holder has responded with.
           explode: false
           schema:
-            description: The [version](#response-headers) of the API end point that
-              the data holder has responded with.
             type: string
           style: simple
         x-fapi-interaction-id:
+          description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+            id. If provided, the data holder must play back this value in the x-fapi-interaction-id
+            response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID
+            value is required to be provided in the response header to track the interaction.
           explode: false
           schema:
-            description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-              id. If provided, the data holder must play back this value in the x-fapi-interaction-id
-              response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID
-              value is required to be provided in the response header to track the
-              interaction.
             type: string
           style: simple
     derDetail:
@@ -4879,20 +4899,19 @@ components:
       description: Successful response
       headers:
         x-v:
+          description: The [version](#response-headers) of the API end point that
+            the data holder has responded with.
           explode: false
           schema:
-            description: The [version](#response-headers) of the API end point that
-              the data holder has responded with.
             type: string
           style: simple
         x-fapi-interaction-id:
+          description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+            id. If provided, the data holder must play back this value in the x-fapi-interaction-id
+            response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID
+            value is required to be provided in the response header to track the interaction.
           explode: false
           schema:
-            description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-              id. If provided, the data holder must play back this value in the x-fapi-interaction-id
-              response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID
-              value is required to be provided in the response header to track the
-              interaction.
             type: string
           style: simple
     accountListV2:
@@ -4903,20 +4922,19 @@ components:
       description: Successful response
       headers:
         x-v:
+          description: The [version](#response-headers) of the API end point that
+            the data holder has responded with.
           explode: false
           schema:
-            description: The [version](#response-headers) of the API end point that
-              the data holder has responded with.
             type: string
           style: simple
         x-fapi-interaction-id:
+          description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+            id. If provided, the data holder must play back this value in the x-fapi-interaction-id
+            response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID
+            value is required to be provided in the response header to track the interaction.
           explode: false
           schema:
-            description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-              id. If provided, the data holder must play back this value in the x-fapi-interaction-id
-              response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID
-              value is required to be provided in the response header to track the
-              interaction.
             type: string
           style: simple
     accountDetailV2:
@@ -4927,20 +4945,19 @@ components:
       description: Successful response
       headers:
         x-v:
+          description: The [version](#response-headers) of the API end point that
+            the data holder has responded with.
           explode: false
           schema:
-            description: The [version](#response-headers) of the API end point that
-              the data holder has responded with.
             type: string
           style: simple
         x-fapi-interaction-id:
+          description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+            id. If provided, the data holder must play back this value in the x-fapi-interaction-id
+            response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID
+            value is required to be provided in the response header to track the interaction.
           explode: false
           schema:
-            description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-              id. If provided, the data holder must play back this value in the x-fapi-interaction-id
-              response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID
-              value is required to be provided in the response header to track the
-              interaction.
             type: string
           style: simple
     accountPaymentScheduleDetail:
@@ -4951,20 +4968,19 @@ components:
       description: Successful response
       headers:
         x-v:
+          description: The [version](#response-headers) of the API end point that
+            the data holder has responded with.
           explode: false
           schema:
-            description: The [version](#response-headers) of the API end point that
-              the data holder has responded with.
             type: string
           style: simple
         x-fapi-interaction-id:
+          description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+            id. If provided, the data holder must play back this value in the x-fapi-interaction-id
+            response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID
+            value is required to be provided in the response header to track the interaction.
           explode: false
           schema:
-            description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-              id. If provided, the data holder must play back this value in the x-fapi-interaction-id
-              response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID
-              value is required to be provided in the response header to track the
-              interaction.
             type: string
           style: simple
     accountConcessionsDetail:
@@ -4975,20 +4991,19 @@ components:
       description: Successful response
       headers:
         x-v:
+          description: The [version](#response-headers) of the API end point that
+            the data holder has responded with.
           explode: false
           schema:
-            description: The [version](#response-headers) of the API end point that
-              the data holder has responded with.
             type: string
           style: simple
         x-fapi-interaction-id:
+          description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+            id. If provided, the data holder must play back this value in the x-fapi-interaction-id
+            response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID
+            value is required to be provided in the response header to track the interaction.
           explode: false
           schema:
-            description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-              id. If provided, the data holder must play back this value in the x-fapi-interaction-id
-              response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID
-              value is required to be provided in the response header to track the
-              interaction.
             type: string
           style: simple
     balanceList:
@@ -4999,20 +5014,19 @@ components:
       description: Successful response
       headers:
         x-v:
+          description: The [version](#response-headers) of the API end point that
+            the data holder has responded with.
           explode: false
           schema:
-            description: The [version](#response-headers) of the API end point that
-              the data holder has responded with.
             type: string
           style: simple
         x-fapi-interaction-id:
+          description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+            id. If provided, the data holder must play back this value in the x-fapi-interaction-id
+            response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID
+            value is required to be provided in the response header to track the interaction.
           explode: false
           schema:
-            description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-              id. If provided, the data holder must play back this value in the x-fapi-interaction-id
-              response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID
-              value is required to be provided in the response header to track the
-              interaction.
             type: string
           style: simple
     balanceDetail:
@@ -5023,20 +5037,19 @@ components:
       description: Successful response
       headers:
         x-v:
+          description: The [version](#response-headers) of the API end point that
+            the data holder has responded with.
           explode: false
           schema:
-            description: The [version](#response-headers) of the API end point that
-              the data holder has responded with.
             type: string
           style: simple
         x-fapi-interaction-id:
+          description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+            id. If provided, the data holder must play back this value in the x-fapi-interaction-id
+            response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID
+            value is required to be provided in the response header to track the interaction.
           explode: false
           schema:
-            description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-              id. If provided, the data holder must play back this value in the x-fapi-interaction-id
-              response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID
-              value is required to be provided in the response header to track the
-              interaction.
             type: string
           style: simple
     invoiceList:
@@ -5047,20 +5060,19 @@ components:
       description: Successful response
       headers:
         x-v:
+          description: The [version](#response-headers) of the API end point that
+            the data holder has responded with.
           explode: false
           schema:
-            description: The [version](#response-headers) of the API end point that
-              the data holder has responded with.
             type: string
           style: simple
         x-fapi-interaction-id:
+          description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+            id. If provided, the data holder must play back this value in the x-fapi-interaction-id
+            response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID
+            value is required to be provided in the response header to track the interaction.
           explode: false
           schema:
-            description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-              id. If provided, the data holder must play back this value in the x-fapi-interaction-id
-              response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID
-              value is required to be provided in the response header to track the
-              interaction.
             type: string
           style: simple
     billingList:
@@ -5071,20 +5083,19 @@ components:
       description: Successful response
       headers:
         x-v:
+          description: The [version](#response-headers) of the API end point that
+            the data holder has responded with.
           explode: false
           schema:
-            description: The [version](#response-headers) of the API end point that
-              the data holder has responded with.
             type: string
           style: simple
         x-fapi-interaction-id:
+          description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+            id. If provided, the data holder must play back this value in the x-fapi-interaction-id
+            response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID
+            value is required to be provided in the response header to track the interaction.
           explode: false
           schema:
-            description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-              id. If provided, the data holder must play back this value in the x-fapi-interaction-id
-              response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID
-              value is required to be provided in the response header to track the
-              interaction.
             type: string
           style: simple
   schemas:
@@ -5378,7 +5389,10 @@ components:
               - 5.962133916683182
               - 5.962133916683182
               readQualities:
-                startInterval: 5
+              - startInterval: 5
+                endInterval: 2
+                quality: SUBSTITUTE
+              - startInterval: 5
                 endInterval: 2
                 quality: SUBSTITUTE
               aggregateValue: 1.4658129805029452
@@ -5400,7 +5414,10 @@ components:
               - 5.962133916683182
               - 5.962133916683182
               readQualities:
-                startInterval: 5
+              - startInterval: 5
+                endInterval: 2
+                quality: SUBSTITUTE
+              - startInterval: 5
                 endInterval: 2
                 quality: SUBSTITUTE
               aggregateValue: 1.4658129805029452
@@ -5451,8 +5468,8 @@ components:
               neutralVoltageDisplacement: 7.457744773683766
               sustainedOverVoltage: 1.2315135367772556
               voltageVectorShift: 6.84685269835264
-            installedPhasesCount: 1
-            availablePhasesCount: 2
+            installedPhasesCount: 0
+            availablePhasesCount: 1
             islandableInstallation: true
             servicePointId: servicePointId
             approvedCapacity: 0.8008281904610115
@@ -5530,8 +5547,8 @@ components:
               neutralVoltageDisplacement: 7.457744773683766
               sustainedOverVoltage: 1.2315135367772556
               voltageVectorShift: 6.84685269835264
-            installedPhasesCount: 1
-            availablePhasesCount: 2
+            installedPhasesCount: 0
+            availablePhasesCount: 1
             islandableInstallation: true
             servicePointId: servicePointId
             approvedCapacity: 0.8008281904610115
@@ -5633,8 +5650,8 @@ components:
             neutralVoltageDisplacement: 7.457744773683766
             sustainedOverVoltage: 1.2315135367772556
             voltageVectorShift: 6.84685269835264
-          installedPhasesCount: 1
-          availablePhasesCount: 2
+          installedPhasesCount: 0
+          availablePhasesCount: 1
           islandableInstallation: true
           servicePointId: servicePointId
           approvedCapacity: 0.8008281904610115
@@ -8221,7 +8238,8 @@ components:
             on site generation by consumer
           type: boolean
         validFromDate:
-          description: The start date from which this service point first became valid
+          description: The latest start date from which the constituent data sets
+            of this service point became valid
           type: string
           x-cds-type: DateString
         lastUpdateDateTime:
@@ -8417,7 +8435,8 @@ components:
             on site generation by consumer
           type: boolean
         validFromDate:
-          description: The start date from which this service point first became valid
+          description: The latest start date from which the constituent data sets
+            of this service point became valid
           type: string
           x-cds-type: DateString
         lastUpdateDateTime:
@@ -8466,7 +8485,10 @@ components:
           - 5.962133916683182
           - 5.962133916683182
           readQualities:
-            startInterval: 5
+          - startInterval: 5
+            endInterval: 2
+            quality: SUBSTITUTE
+          - startInterval: 5
             endInterval: 2
             quality: SUBSTITUTE
           aggregateValue: 1.4658129805029452
@@ -8552,8 +8574,8 @@ components:
           neutralVoltageDisplacement: 7.457744773683766
           sustainedOverVoltage: 1.2315135367772556
           voltageVectorShift: 6.84685269835264
-        installedPhasesCount: 1
-        availablePhasesCount: 2
+        installedPhasesCount: 0
+        availablePhasesCount: 1
         islandableInstallation: true
         servicePointId: servicePointId
         approvedCapacity: 0.8008281904610115
@@ -8623,22 +8645,25 @@ components:
           type: string
         approvedCapacity:
           description: Approved small generating unit capacity as agreed with NSP
-            in the connection agreement, expressed in kVA
+            in the connection agreement, expressed in kVA. Value of 0 indicates no
+            DER record exists for the given servicePointId
           type: number
         availablePhasesCount:
           description: The number of phases available for the installation of DER.
-            Acceptable values are 1, 2 or 3.
+            Acceptable values are 0, 1, 2 or 3. Value of 0 indicates no DER record
+            exists for the given servicePointId
           maximum: 3
-          minimum: 1
+          minimum: 0
           type: integer
-          x-cds-type: PositiveInteger
+          x-cds-type: NaturalNumber
         installedPhasesCount:
           description: The number of phases that DER is connected to. Acceptable values
-            are 1, 2 or 3.
+            are 0, 1, 2 or 3. Value of 0 indicates no DER record exists for the given
+            servicePointId
           maximum: 3
-          minimum: 1
+          minimum: 0
           type: integer
-          x-cds-type: PositiveInteger
+          x-cds-type: NaturalNumber
         islandableInstallation:
           description: For identification of small generating units designed with
             the ability to operate in an islanded mode
@@ -9903,7 +9928,10 @@ components:
             - 5.962133916683182
             - 5.962133916683182
             readQualities:
-              startInterval: 5
+            - startInterval: 5
+              endInterval: 2
+              quality: SUBSTITUTE
+            - startInterval: 5
               endInterval: 2
               quality: SUBSTITUTE
             aggregateValue: 1.4658129805029452
@@ -9925,7 +9953,10 @@ components:
             - 5.962133916683182
             - 5.962133916683182
             readQualities:
-              startInterval: 5
+            - startInterval: 5
+              endInterval: 2
+              quality: SUBSTITUTE
+            - startInterval: 5
               endInterval: 2
               quality: SUBSTITUTE
             aggregateValue: 1.4658129805029452
@@ -9964,8 +9995,8 @@ components:
             neutralVoltageDisplacement: 7.457744773683766
             sustainedOverVoltage: 1.2315135367772556
             voltageVectorShift: 6.84685269835264
-          installedPhasesCount: 1
-          availablePhasesCount: 2
+          installedPhasesCount: 0
+          availablePhasesCount: 1
           islandableInstallation: true
           servicePointId: servicePointId
           approvedCapacity: 0.8008281904610115
@@ -10043,8 +10074,8 @@ components:
             neutralVoltageDisplacement: 7.457744773683766
             sustainedOverVoltage: 1.2315135367772556
             voltageVectorShift: 6.84685269835264
-          installedPhasesCount: 1
-          availablePhasesCount: 2
+          installedPhasesCount: 0
+          availablePhasesCount: 1
           islandableInstallation: true
           servicePointId: servicePointId
           approvedCapacity: 0.8008281904610115
@@ -11045,10 +11076,6 @@ components:
       - value
       type: object
     EnergyUsageRead_intervalRead_readQualities:
-      description: ' Specifies quality of reads that are not ACTUAL.  For read indices
-        that are not specified, quality is assumed to be ACTUAL. If not present, all
-        quality of all reads are assumed to be actual. Required when interval-reads
-        query parameter equals FULL or MIN_30'
       example:
         startInterval: 5
         endInterval: 2
@@ -11082,7 +11109,10 @@ components:
         - 5.962133916683182
         - 5.962133916683182
         readQualities:
-          startInterval: 5
+        - startInterval: 5
+          endInterval: 2
+          quality: SUBSTITUTE
+        - startInterval: 5
           endInterval: 2
           quality: SUBSTITUTE
         aggregateValue: 1.4658129805029452
@@ -11107,7 +11137,13 @@ components:
             type: number
           type: array
         readQualities:
-          $ref: '#/components/schemas/EnergyUsageRead_intervalRead_readQualities'
+          description: ' Specifies quality of reads that are not ACTUAL.  For read
+            indices that are not specified, quality is assumed to be ACTUAL. If not
+            present, all quality of all reads are assumed to be actual. Required when
+            interval-reads query parameter equals FULL or MIN_30'
+          items:
+            $ref: '#/components/schemas/EnergyUsageRead_intervalRead_readQualities'
+          type: array
       required:
       - aggregateValue
       type: object
@@ -11243,12 +11279,12 @@ components:
         nominalRatedCapacity:
           description: Maximum output in kVA that is listed in the product specification
             by the manufacturer. This refers to the capacity of each unit within the
-            device group
+            device group. Default is 0 if value not known
           type: number
         nominalStorageCapacity:
           description: Maximum storage capacity in kVAh. This refers to the capacity
             of each storage module within the device group. Mandatory if type is equal
-            to “STORAGE”
+            to “STORAGE”. Default is 0 if value not known
           type: number
       required:
       - count
@@ -11331,7 +11367,8 @@ components:
           type: string
         inverterDeviceCapacity:
           description: The rated AC output power that is listed in the product specified
-            by the manufacturer. Mandatory if equipmentType is INVERTER
+            by the manufacturer. Mandatory if equipmentType is INVERTER. Default is
+            0 if value not known
           type: number
         derDevices:
           items:

@@ -1831,7 +1831,7 @@ This operation does not require authentication
 <td>token_endpoint_auth_signing_alg_values_supported</td>
 <td>[string]</td>
 <td>mandatory</td>
-<td>JSON array containing a list of the JWS signing algorithms (alg values) supported by the token endpoint for the signature on the JWT <strong><a href="#nref-JWT">[JWT]</a></strong> used to authenticate the client at the token endpoint for the \&quot;private_key_jwt\&quot; authentication method</td>
+<td>JSON array containing a list of the JWS signing algorithms (alg values) supported by the token endpoint for the signature on the JWT <strong><a href="#nref-JWT">[JWT]</a></strong> used to authenticate the client at the token endpoint for the &quot;private_key_jwt&quot; authentication method</td>
 </tr>
 </tbody></table>
 
@@ -2923,7 +2923,7 @@ This operation does not require authentication
 <tr>
 <td>softwareProductDescription</td>
 <td>string</td>
-<td>optional</td>
+<td>mandatory</td>
 <td>Description of the software product</td>
 </tr>
 <tr>

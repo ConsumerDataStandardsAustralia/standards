@@ -145,10 +145,10 @@ Note that the results returned by this end point are expected to be ordered in d
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
-|200|x-v|string||none|
-|400|x-fapi-interaction-id|string||none|
-|406|x-fapi-interaction-id|string||none|
-|422|x-fapi-interaction-id|string||none|
+|200|x-v|string||The [version](#response-headers) of the API end point that the data holder has responded with.|
+|400|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|406|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|422|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     <aside class="success">
@@ -718,10 +718,10 @@ Obtain detailed information on a single energy plan offered openly to the market
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
-|200|x-v|string||none|
-|400|x-fapi-interaction-id|string||none|
-|404|x-fapi-interaction-id|string||none|
-|406|x-fapi-interaction-id|string||none|
+|200|x-v|string||The [version](#response-headers) of the API end point that the data holder has responded with.|
+|400|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|404|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|406|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     <aside class="success">
@@ -846,11 +846,11 @@ Obtain a list of service points owned by the customer that has authorised the cu
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
-|200|x-v|string||none|
-|200|x-fapi-interaction-id|string||none|
-|400|x-fapi-interaction-id|string||none|
-|406|x-fapi-interaction-id|string||none|
-|422|x-fapi-interaction-id|string||none|
+|200|x-v|string||The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|400|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|406|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|422|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     
@@ -1041,11 +1041,11 @@ Obtain detailed standing information for a specific service point that is owned 
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
-|200|x-v|string||none|
-|200|x-fapi-interaction-id|string||none|
-|400|x-fapi-interaction-id|string||none|
-|404|x-fapi-interaction-id|string||none|
-|406|x-fapi-interaction-id|string||none|
+|200|x-v|string||The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|400|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|404|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|406|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     
@@ -1162,11 +1162,13 @@ Obtain a list of electricity usage data from a particular service point
           "intervalReads": [
             0
           ],
-          "readQualities": {
-            "startInterval": 0,
-            "endInterval": 0,
-            "quality": "SUBSTITUTE"
-          }
+          "readQualities": [
+            {
+              "startInterval": 0,
+              "endInterval": 0,
+              "quality": "SUBSTITUTE"
+            }
+          ]
         }
       }
     ]
@@ -1199,12 +1201,12 @@ Obtain a list of electricity usage data from a particular service point
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
-|200|x-v|string||none|
-|200|x-fapi-interaction-id|string||none|
-|400|x-fapi-interaction-id|string||none|
-|404|x-fapi-interaction-id|string||none|
-|406|x-fapi-interaction-id|string||none|
-|422|x-fapi-interaction-id|string||none|
+|200|x-v|string||The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|400|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|404|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|406|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|422|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     
@@ -1320,11 +1322,13 @@ Obtain usage data for all service points associated with the customer
           "intervalReads": [
             0
           ],
-          "readQualities": {
-            "startInterval": 0,
-            "endInterval": 0,
-            "quality": "SUBSTITUTE"
-          }
+          "readQualities": [
+            {
+              "startInterval": 0,
+              "endInterval": 0,
+              "quality": "SUBSTITUTE"
+            }
+          ]
         }
       }
     ]
@@ -1356,11 +1360,11 @@ Obtain usage data for all service points associated with the customer
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
-|200|x-v|string||none|
-|200|x-fapi-interaction-id|string||none|
-|400|x-fapi-interaction-id|string||none|
-|406|x-fapi-interaction-id|string||none|
-|422|x-fapi-interaction-id|string||none|
+|200|x-v|string||The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|400|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|406|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|422|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     
@@ -1495,11 +1499,13 @@ Obtain the electricity usage data for a specific set of service points
           "intervalReads": [
             0
           ],
-          "readQualities": {
-            "startInterval": 0,
-            "endInterval": 0,
-            "quality": "SUBSTITUTE"
-          }
+          "readQualities": [
+            {
+              "startInterval": 0,
+              "endInterval": 0,
+              "quality": "SUBSTITUTE"
+            }
+          ]
         }
       }
     ]
@@ -1531,11 +1537,11 @@ Obtain the electricity usage data for a specific set of service points
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
-|200|x-v|string||none|
-|200|x-fapi-interaction-id|string||none|
-|400|x-fapi-interaction-id|string||none|
-|406|x-fapi-interaction-id|string||none|
-|422|x-fapi-interaction-id|string||none|
+|200|x-v|string||The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|400|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|406|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|422|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     
@@ -1620,8 +1626,8 @@ Obtain a list of DER data from a particular service point
   "data": {
     "servicePointId": "string",
     "approvedCapacity": 0,
-    "availablePhasesCount": 1,
-    "installedPhasesCount": 1,
+    "availablePhasesCount": 3,
+    "installedPhasesCount": 3,
     "islandableInstallation": true,
     "hasCentralProtectionControl": false,
     "protectionMode": {
@@ -1688,11 +1694,11 @@ Obtain a list of DER data from a particular service point
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
-|200|x-v|string||none|
-|200|x-fapi-interaction-id|string||none|
-|400|x-fapi-interaction-id|string||none|
-|404|x-fapi-interaction-id|string||none|
-|406|x-fapi-interaction-id|string||none|
+|200|x-v|string||The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|400|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|404|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|406|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     
@@ -1780,8 +1786,8 @@ Obtain DER data for all service points associated with the customer
       {
         "servicePointId": "string",
         "approvedCapacity": 0,
-        "availablePhasesCount": 1,
-        "installedPhasesCount": 1,
+        "availablePhasesCount": 3,
+        "installedPhasesCount": 3,
         "islandableInstallation": true,
         "hasCentralProtectionControl": false,
         "protectionMode": {
@@ -1857,11 +1863,11 @@ Obtain DER data for all service points associated with the customer
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
-|200|x-v|string||none|
-|200|x-fapi-interaction-id|string||none|
-|400|x-fapi-interaction-id|string||none|
-|406|x-fapi-interaction-id|string||none|
-|422|x-fapi-interaction-id|string||none|
+|200|x-v|string||The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|400|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|406|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|422|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     
@@ -1968,8 +1974,8 @@ Obtain DER data for a specific set of service points
       {
         "servicePointId": "string",
         "approvedCapacity": 0,
-        "availablePhasesCount": 1,
-        "installedPhasesCount": 1,
+        "availablePhasesCount": 3,
+        "installedPhasesCount": 3,
         "islandableInstallation": true,
         "hasCentralProtectionControl": false,
         "protectionMode": {
@@ -2045,11 +2051,11 @@ Obtain DER data for a specific set of service points
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
-|200|x-v|string||none|
-|200|x-fapi-interaction-id|string||none|
-|400|x-fapi-interaction-id|string||none|
-|406|x-fapi-interaction-id|string||none|
-|422|x-fapi-interaction-id|string||none|
+|200|x-v|string||The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|400|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|406|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|422|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     
@@ -2194,11 +2200,11 @@ Other Versions: [v1](includes/obsolete/get-energy-accounts-v1.html)
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
-|200|x-v|string||none|
-|200|x-fapi-interaction-id|string||none|
-|400|x-fapi-interaction-id|string||none|
-|406|x-fapi-interaction-id|string||none|
-|422|x-fapi-interaction-id|string||none|
+|200|x-v|string||The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|400|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|406|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|422|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     
@@ -2685,11 +2691,11 @@ Other Versions: [v1](includes/obsolete/get-energy-account-detail-v1.html)
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
-|200|x-v|string||none|
-|200|x-fapi-interaction-id|string||none|
-|400|x-fapi-interaction-id|string||none|
-|404|x-fapi-interaction-id|string||none|
-|406|x-fapi-interaction-id|string||none|
+|200|x-v|string||The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|400|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|404|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|406|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     
@@ -2826,11 +2832,11 @@ Some general notes about this end point:
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
-|200|x-v|string||none|
-|200|x-fapi-interaction-id|string||none|
-|400|x-fapi-interaction-id|string||none|
-|404|x-fapi-interaction-id|string||none|
-|406|x-fapi-interaction-id|string||none|
+|200|x-v|string||The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|400|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|404|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|406|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     
@@ -2950,11 +2956,11 @@ Obtain the details of any concessions or arrangements applied to a specific ener
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
-|200|x-v|string||none|
-|200|x-fapi-interaction-id|string||none|
-|400|x-fapi-interaction-id|string||none|
-|404|x-fapi-interaction-id|string||none|
-|406|x-fapi-interaction-id|string||none|
+|200|x-v|string||The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|400|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|404|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|406|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     
@@ -3059,11 +3065,11 @@ Obtain the current balance for a specific account
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
-|200|x-v|string||none|
-|200|x-fapi-interaction-id|string||none|
-|400|x-fapi-interaction-id|string||none|
-|404|x-fapi-interaction-id|string||none|
-|406|x-fapi-interaction-id|string||none|
+|200|x-v|string||The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|400|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|404|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|406|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     
@@ -3181,11 +3187,11 @@ Obtain the current balance for all accounts
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
-|200|x-v|string||none|
-|200|x-fapi-interaction-id|string||none|
-|400|x-fapi-interaction-id|string||none|
-|406|x-fapi-interaction-id|string||none|
-|422|x-fapi-interaction-id|string||none|
+|200|x-v|string||The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|400|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|406|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|422|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     
@@ -3322,11 +3328,11 @@ Obtain the current balance for a specified set of accounts
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
-|200|x-v|string||none|
-|200|x-fapi-interaction-id|string||none|
-|400|x-fapi-interaction-id|string||none|
-|406|x-fapi-interaction-id|string||none|
-|422|x-fapi-interaction-id|string||none|
+|200|x-v|string||The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|400|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|406|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|422|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     
@@ -3395,8 +3401,8 @@ Obtain the invoices for a specific account
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |accountId|path|string|mandatory|ID of a specific account to obtain data for.  This is a tokenised ID previous obtained from the Account List end point.|
-|newest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with effective date at or before this date.  If absent defaults to current date.  Format is aligned to DateString common type|
-|oldest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with effective date at or after this date. If absent defaults to newest-date minus 24 months.  Format is aligned to DateString common type|
+|newest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with issue date at or before this date.  If absent defaults to current date.  Format is aligned to DateString common type|
+|oldest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with issue date at or after this date. If absent defaults to newest-date minus 24 months.  Format is aligned to DateString common type|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request.  Default is 25 (standard pagination)|
 |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
@@ -3499,12 +3505,12 @@ Obtain the invoices for a specific account
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
-|200|x-v|string||none|
-|200|x-fapi-interaction-id|string||none|
-|400|x-fapi-interaction-id|string||none|
-|404|x-fapi-interaction-id|string||none|
-|406|x-fapi-interaction-id|string||none|
-|422|x-fapi-interaction-id|string||none|
+|200|x-v|string||The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|400|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|404|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|406|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|422|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     
@@ -3572,8 +3578,8 @@ Obtain the invoices for all accounts
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|newest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with effective date at or before this date.  If absent defaults to current date.  Format is aligned to DateString common type|
-|oldest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with effective date at or after this date. If absent defaults to newest-date minus 24 months.  Format is aligned to DateString common type|
+|newest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with issue date at or before this date.  If absent defaults to current date.  Format is aligned to DateString common type|
+|oldest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with issue date at or after this date. If absent defaults to newest-date minus 24 months.  Format is aligned to DateString common type|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request.  Default is 25 (standard pagination)|
 |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
@@ -3675,11 +3681,11 @@ Obtain the invoices for all accounts
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
-|200|x-v|string||none|
-|200|x-fapi-interaction-id|string||none|
-|400|x-fapi-interaction-id|string||none|
-|406|x-fapi-interaction-id|string||none|
-|422|x-fapi-interaction-id|string||none|
+|200|x-v|string||The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|400|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|406|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|422|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     
@@ -3762,8 +3768,8 @@ Obtain invoices for a specified set of accounts
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|newest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with effective date at or before this date.  If absent defaults to current date.  Format is aligned to DateString common type|
-|oldest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with effective date at or after this date. If absent defaults to newest-date minus 24 months.  Format is aligned to DateString common type|
+|newest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with issue date at or before this date.  If absent defaults to current date.  Format is aligned to DateString common type|
+|oldest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with issue date at or after this date. If absent defaults to newest-date minus 24 months.  Format is aligned to DateString common type|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request.  Default is 25 (standard pagination)|
 |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
@@ -3869,11 +3875,11 @@ Obtain invoices for a specified set of accounts
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
-|200|x-v|string||none|
-|200|x-fapi-interaction-id|string||none|
-|400|x-fapi-interaction-id|string||none|
-|406|x-fapi-interaction-id|string||none|
-|422|x-fapi-interaction-id|string||none|
+|200|x-v|string||The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|400|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|406|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|422|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     
@@ -4075,12 +4081,12 @@ Obtain the billing transactions for a specific account
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
-|200|x-v|string||none|
-|200|x-fapi-interaction-id|string||none|
-|400|x-fapi-interaction-id|string||none|
-|404|x-fapi-interaction-id|string||none|
-|406|x-fapi-interaction-id|string||none|
-|422|x-fapi-interaction-id|string||none|
+|200|x-v|string||The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|400|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|404|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|406|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|422|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     
@@ -4280,11 +4286,11 @@ Obtain billing transactions for all accounts
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
-|200|x-v|string||none|
-|200|x-fapi-interaction-id|string||none|
-|400|x-fapi-interaction-id|string||none|
-|406|x-fapi-interaction-id|string||none|
-|422|x-fapi-interaction-id|string||none|
+|200|x-v|string||The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|400|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|406|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|422|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     
@@ -4503,11 +4509,11 @@ Obtain billing for a specified set of accounts
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
-|200|x-v|string||none|
-|200|x-fapi-interaction-id|string||none|
-|400|x-fapi-interaction-id|string||none|
-|406|x-fapi-interaction-id|string||none|
-|422|x-fapi-interaction-id|string||none|
+|200|x-v|string||The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|400|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|406|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|422|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     
@@ -5280,11 +5286,13 @@ To perform this operation, you must be authenticated and authorised with the fol
           "intervalReads": [
             0
           ],
-          "readQualities": {
-            "startInterval": 0,
-            "endInterval": 0,
-            "quality": "SUBSTITUTE"
-          }
+          "readQualities": [
+            {
+              "startInterval": 0,
+              "endInterval": 0,
+              "quality": "SUBSTITUTE"
+            }
+          ]
         }
       }
     ]
@@ -5324,8 +5332,8 @@ To perform this operation, you must be authenticated and authorised with the fol
       {
         "servicePointId": "string",
         "approvedCapacity": 0,
-        "availablePhasesCount": 1,
-        "installedPhasesCount": 1,
+        "availablePhasesCount": 3,
+        "installedPhasesCount": 3,
         "islandableInstallation": true,
         "hasCentralProtectionControl": false,
         "protectionMode": {
@@ -5407,8 +5415,8 @@ To perform this operation, you must be authenticated and authorised with the fol
   "data": {
     "servicePointId": "string",
     "approvedCapacity": 0,
-    "availablePhasesCount": 1,
-    "installedPhasesCount": 1,
+    "availablePhasesCount": 3,
+    "installedPhasesCount": 3,
     "islandableInstallation": true,
     "hasCentralProtectionControl": false,
     "protectionMode": {
@@ -8121,7 +8129,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |servicePointStatus|string|mandatory|Code used to indicate the status of the service point. Note the details for the enumeration values below:<ul><li>**ACTIVE** - An active, energised, service point</li><li>**DE_ENERGISED** - The service point exists but is deenergised</li><li>**EXTINCT** - The service point has been permanently decommissioned</li><li>**GREENFIELD** - Applies to a service point that has never been energised</li><li>**OFF_MARKET** - Applies when the service point is no longer settled in the NEM</li></ul>|
 |jurisdictionCode|string|mandatory|Jurisdiction code to which the service point belongs.This code defines the jurisdictional rules which apply to the service point. Note the details of enumeration values below:<ul><li>**ALL** - All Jurisdictions</li><li>**ACT** - Australian Capital Territory</li><li>**NEM** - National Electricity Market</li><li>**NSW** - New South Wales</li><li>**QLD** - Queensland</li><li>**SA** - South Australia</li><li>**TAS** - Tasmania</li><li>**VIC** - Victoria</li></ul>|
 |isGenerator|boolean|optional|This flag determines whether the energy at this connection point is to be treated as consumer load or as a generating unit(this may include generator auxiliary loads). If absent defaults to false. <br>**Note:** Only applicable for scheduled or semischeduled generators, does not indicate on site generation by consumer|
-|validFromDate|[DateString](#common-field-types)|mandatory|The start date from which this service point first became valid|
+|validFromDate|[DateString](#common-field-types)|mandatory|The latest start date from which the constituent data sets of this service point became valid|
 |lastUpdateDateTime|[DateTimeString](#common-field-types)|mandatory|The date and time that the information for this service point was modified|
 |consumerProfile|object|optional|none|
 |» classification|string|optional|A code that defines the consumer class as defined in the National Energy Retail Regulations, or in overriding Jurisdictional instruments|
@@ -8265,7 +8273,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |servicePointStatus|string|mandatory|Code used to indicate the status of the service point. Note the details for the enumeration values below:<ul><li>**ACTIVE** - An active, energised, service point</li><li>**DE_ENERGISED** - The service point exists but is deenergised</li><li>**EXTINCT** - The service point has been permanently decommissioned</li><li>**GREENFIELD** - Applies to a service point that has never been energised</li><li>**OFF_MARKET** - Applies when the service point is no longer settled in the NEM</li></ul>|
 |jurisdictionCode|string|mandatory|Jurisdiction code to which the service point belongs.This code defines the jurisdictional rules which apply to the service point. Note the details of enumeration values below:<ul><li>**ALL** - All Jurisdictions</li><li>**ACT** - Australian Capital Territory</li><li>**NEM** - National Electricity Market</li><li>**NSW** - New South Wales</li><li>**QLD** - Queensland</li><li>**SA** - South Australia</li><li>**TAS** - Tasmania</li><li>**VIC** - Victoria</li></ul>|
 |isGenerator|boolean|optional|This flag determines whether the energy at this connection point is to be treated as consumer load or as a generating unit(this may include generator auxiliary loads). If absent defaults to false. <br>**Note:** Only applicable for scheduled or semischeduled generators, does not indicate on site generation by consumer|
-|validFromDate|[DateString](#common-field-types)|mandatory|The start date from which this service point first became valid|
+|validFromDate|[DateString](#common-field-types)|mandatory|The latest start date from which the constituent data sets of this service point became valid|
 |lastUpdateDateTime|[DateTimeString](#common-field-types)|mandatory|The date and time that the information for this service point was modified|
 |consumerProfile|object|optional|none|
 |» classification|string|optional|A code that defines the consumer class as defined in the National Energy Retail Regulations, or in overriding Jurisdictional instruments|
@@ -8392,11 +8400,13 @@ To perform this operation, you must be authenticated and authorised with the fol
     "intervalReads": [
       0
     ],
-    "readQualities": {
-      "startInterval": 0,
-      "endInterval": 0,
-      "quality": "SUBSTITUTE"
-    }
+    "readQualities": [
+      {
+        "startInterval": 0,
+        "endInterval": 0,
+        "quality": "SUBSTITUTE"
+      }
+    ]
   }
 }
 
@@ -8422,7 +8432,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |» readIntervalLength|[PositiveInteger](#common-field-types)|conditional|Read interval length in minutes. Required when interval-reads query parameter equals FULL or MIN_30|
 |» aggregateValue|number|mandatory|The aggregate sum of the interval read values. If positive then it means net consumption, if negative it means net export|
 |» intervalReads|[number]|conditional|Array of Interval read values. If positive then it means consumption, if negative it means export. Required when interval-reads query parameter equals FULL or  MIN_30.<br>Each read value indicates the read for the interval specified by readIntervalLength beginning at midnight of readStartDate (for example 00:00 to 00:30 would be the first reading in a 30 minute Interval)|
-|» readQualities|object|conditional|Specifies quality of reads that are not ACTUAL.  For read indices that are not specified, quality is assumed to be ACTUAL. If not present, all quality of all reads are assumed to be actual. Required when interval-reads query parameter equals FULL or MIN_30|
+|» readQualities|[object]|conditional|Specifies quality of reads that are not ACTUAL.  For read indices that are not specified, quality is assumed to be ACTUAL. If not present, all quality of all reads are assumed to be actual. Required when interval-reads query parameter equals FULL or MIN_30|
 |»» startInterval|[PositiveInteger](#common-field-types)|mandatory|Start interval for read quality flag. First read begins at 1|
 |»» endInterval|[PositiveInteger](#common-field-types)|mandatory|End interval for read quality flag|
 |»» quality|string|mandatory|The quality of the read taken|
@@ -8447,8 +8457,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 {
   "servicePointId": "string",
   "approvedCapacity": 0,
-  "availablePhasesCount": 1,
-  "installedPhasesCount": 1,
+  "availablePhasesCount": 3,
+  "installedPhasesCount": 3,
   "islandableInstallation": true,
   "hasCentralProtectionControl": false,
   "protectionMode": {
@@ -8503,9 +8513,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 |Name|Type|Required|Description|
 |---|---|---|---|
 |servicePointId|string|mandatory|Tokenised ID of the service point to be used for referring to the service point in the CDR API suite.  To be created in accordance with CDR ID permanence requirements|
-|approvedCapacity|number|mandatory|Approved small generating unit capacity as agreed with NSP in the connection agreement, expressed in kVA|
-|availablePhasesCount|[PositiveInteger](#common-field-types)|mandatory|The number of phases available for the installation of DER. Acceptable values are 1, 2 or 3.|
-|installedPhasesCount|[PositiveInteger](#common-field-types)|mandatory|The number of phases that DER is connected to. Acceptable values are 1, 2 or 3.|
+|approvedCapacity|number|mandatory|Approved small generating unit capacity as agreed with NSP in the connection agreement, expressed in kVA. Value of 0 indicates no DER record exists for the given servicePointId|
+|availablePhasesCount|[NaturalNumber](#common-field-types)|mandatory|The number of phases available for the installation of DER. Acceptable values are 0, 1, 2 or 3. Value of 0 indicates no DER record exists for the given servicePointId|
+|installedPhasesCount|[NaturalNumber](#common-field-types)|mandatory|The number of phases that DER is connected to. Acceptable values are 0, 1, 2 or 3. Value of 0 indicates no DER record exists for the given servicePointId|
 |islandableInstallation|[Boolean](#common-field-types)|mandatory|For identification of small generating units designed with the ability to operate in an islanded mode|
 |hasCentralProtectionControl|boolean|optional|For DER installations where NSPs specify the need for additional forms of protection above those inbuilt in an inverter.  If absent then assumed to be false|
 |protectionMode|object|conditional|Required only when the hasCentralProtectionAndControl flag is set to true.  One or more of the object fields will be provided to describe the protection modes in place|
@@ -8533,7 +8543,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |» inverterModelNumber|string|conditional|The inverter model number. Mandatory if equipmentType is INVERTER|
 |» commissioningDate|[DateString](#common-field-types)|mandatory|The date that the DER installation is commissioned|
 |» status|string|mandatory|Code used to indicate the status of the Inverter. This will be used to identify if an inverter is active or inactive or decommissioned|
-|» inverterDeviceCapacity|number|conditional|The rated AC output power that is listed in the product specified by the manufacturer. Mandatory if equipmentType is INVERTER|
+|» inverterDeviceCapacity|number|conditional|The rated AC output power that is listed in the product specified by the manufacturer. Mandatory if equipmentType is INVERTER. Default is 0 if value not known|
 |» derDevices|[object]|mandatory|none|
 |»» deviceIdentifier|number|mandatory|Unique identifier for a single DER device or a group of DER devices with the same attributes. Does not align with CDR ID permanence standards|
 |»» count|[PositiveInteger](#common-field-types)|mandatory|Number of devices in the group of DER devices|
@@ -8542,8 +8552,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |»» status|string|optional|Code used to indicate the status of the device. This will be used to identify if an inverter is active or inactive or decommissioned|
 |»» type|string|mandatory|Used to indicate the primary technology used in the DER device|
 |»» subtype|string|optional|Used to indicate the primary technology used in the DER device. This field is also used to record for example the battery chemistry, or the type of PV panel. It is also used to record if a battery is contained in an electric vehicle connected in a vehicle-to-grid arrangement. If absent then assumed to be “other”|
-|»» nominalRatedCapacity|number|mandatory|Maximum output in kVA that is listed in the product specification by the manufacturer. This refers to the capacity of each unit within the device group|
-|»» nominalStorageCapacity|number|conditional|Maximum storage capacity in kVAh. This refers to the capacity of each storage module within the device group. Mandatory if type is equal to “STORAGE”|
+|»» nominalRatedCapacity|number|mandatory|Maximum output in kVA that is listed in the product specification by the manufacturer. This refers to the capacity of each unit within the device group. Default is 0 if value not known|
+|»» nominalStorageCapacity|number|conditional|Maximum storage capacity in kVAh. This refers to the capacity of each storage module within the device group. Mandatory if type is equal to “STORAGE”. Default is 0 if value not known|
 
 #### Enumerated Values
 
