@@ -9,5 +9,26 @@ This specification defines the APIs for Data Holders exposing Energy Secondary D
 <tr><td><a href='./includes/swagger/cds_energy_sdh.yaml'>Energy Secondary Data Holder OpenAPI Specification (YAML)</a></td></tr>
 </table>
 
+```diff
+Changed type of `EnergyDerRecord.availablePhasesCount` and `EnergyDerRecord.installedPhasesCount` fields
+from:
+- PositiveInteger
+to:
++ NaturalNumber
+
+Updated description of below fields in `EnergyDerRecord`
+• `approvedCapacity` 
+• `availablePhasesCount`
+• `installedPhasesCount`
+to include:
++ Value of 0 indicates no DER record exists for the given servicePointId
+
+Updated description of below fields in `EnergyDerRecord.acConnections`: 
+• `inverterDeviceCapacity`
+• `derDevices.nominalRatedCapacity`
+• `derDevices.nominalStorageCapacity`
+to include
++ Default is 0 if value not known
+```
 
 <%= partial "includes/cds_energy_sdh.md" %>
