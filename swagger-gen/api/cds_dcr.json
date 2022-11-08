@@ -353,7 +353,6 @@
               "https://www.mockcompany.com.au/redirects/redirect1",
               "https://www.mockcompany.com.au/redirects/redirect2"
             ],
-            "x-cds-type": "URIString",
             "items": {
               "type": "string",
               "format": "uri",
