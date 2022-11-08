@@ -1262,21 +1262,21 @@
           "dataHolderBrandId": {
             "maxLength": 36,
             "type": "string",
-              "x-cds-type": "String",
+            "x-cds-type": "String",
             "x-conditional": true,
             "description": "Unique id of the Data Holder Brand issued by the CDR Register"
           },
           "interimId": {
             "maxLength": 36,
             "type": "string",
-              "x-cds-type": "String",
+            "x-cds-type": "String",
             "x-conditional": true,
             "description": "Interim id of the Data Holder Brand issued by the CDR Register. This is to be used to uniquely identify the record when dataHolderBrandId is not populated and is not to be reused"
           },
           "brandName": {
             "maxLength": 200,
             "type": "string",
-              "x-cds-type": "String",
+             "x-cds-type": "String",
             "description": "The name of Data Holder Brand"
           },
           "publicBaseUri": {
@@ -1313,19 +1313,19 @@
           "abn": {
             "maxLength": 11,
             "type": "string",
-              "x-cds-type": "String",
+            "x-cds-type": "String",
             "description": "Australian Business Number for the organisation"
           },
           "acn": {
             "maxLength": 9,
             "type": "string",
-              "x-cds-type": "String",
+            "x-cds-type": "String",
             "description": "Australian Company Number for the organisation"
           },
           "arbn": {
             "maxLength": 9,
             "type": "string",
-              "x-cds-type": "String",
+            "x-cds-type": "String",
             "description": "Australian Registered Body Number.  ARBNs are issued to registrable Australian bodies and foreign companies"
           }
         }
@@ -1364,7 +1364,7 @@
           "legalEntityId": {
             "maxLength": 36,
             "type": "string",
-              "x-cds-type": "String",
+            "x-cds-type": "String",
             "description": "Unique id of the Data Holder Legal Entity issued by the CDR Register."
           },
           "status": {
@@ -1411,7 +1411,7 @@
           "softwareProductId": {
             "maxLength": 36,
             "type": "string",
-              "x-cds-type": "String",
+            "x-cds-type": "String",
             "description": "Unique id of the software product issued by the CDR Register"
           },
           "status": {
@@ -1459,7 +1459,7 @@
           "legalEntityId": {
             "maxLength": 36,
             "type": "string",
-              "x-cds-type": "String",
+            "x-cds-type": "String",
             "description": "Unique id of the Data Recipient Legal Entity issued by the CDR Register"
           },
           "status": {
@@ -1514,19 +1514,19 @@
           "legalEntityId": {
             "maxLength": 36,
             "type": "string",
-              "x-cds-type": "String",
+            "x-cds-type": "String",
             "description": "Unique id of the Data Recipient Legal Entity issued by the CDR Register."
           },
           "legalEntityName": {
             "maxLength": 200,
             "type": "string",
-              "x-cds-type": "String",
+            "x-cds-type": "String",
             "description": "Legal name of the Data Recipient"
           },
           "accreditationNumber": {
             "maxLength": 100,
             "type": "string",
-              "x-cds-type": "String",
+            "x-cds-type": "String",
             "description": "CDR Register issued human readable unique number given to Data Recipients upon accreditation"
           },
           "accreditationLevel": {
@@ -1580,13 +1580,13 @@
           "dataRecipientBrandId": {
             "maxLength": 36,
             "type": "string",
-              "x-cds-type": "String",
+            "x-cds-type": "String",
             "description": "Unique id of the Data Recipient brand issued by the CDR Register"
           },
           "brandName": {
             "maxLength": 200,
             "type": "string",
-              "x-cds-type": "String",
+            "x-cds-type": "String",
             "description": "Data Recipient Brand name"
           },
           "logoUri": {
@@ -1627,19 +1627,19 @@
           "softwareProductId": {
             "maxLength": 36,
             "type": "string",
-              "x-cds-type": "String",
+            "x-cds-type": "String",
             "description": "Unique id of the Data Recipient software product issued by the CDR Register"
           },
           "softwareProductName": {
             "maxLength": 200,
             "type": "string",
-              "x-cds-type": "String",
+            "x-cds-type": "String",
             "description": "Name of the software product"
           },
           "softwareProductDescription": {
             "maxLength": 4000,
             "type": "string",
-              "x-cds-type": "String",
+            "x-cds-type": "String",
             "description": "Description of the software product"
           },
           "logoUri": {
@@ -1672,13 +1672,13 @@
           "legalEntityId": {
             "maxLength": 36,
             "type": "string",
-              "x-cds-type": "String",
+            "x-cds-type": "String",
             "description": "Unique id of the organisation issued by the CDR Register"
           },
           "legalEntityName": {
             "maxLength": 36,
             "type": "string",
-              "x-cds-type": "String",
+            "x-cds-type": "String",
             "description": "Unique legal name of the organisation"
           },
           "logoUri": {
@@ -1689,7 +1689,7 @@
           },
           "registrationNumber": {
             "type": "string",
-              "x-cds-type": "String",
+            "x-cds-type": "String",
             "description": "Unique registration number (if the company is registered outside Australia)"
           },
           "registrationDate": {
@@ -1701,31 +1701,31 @@
           "registeredCountry": {
             "maxLength": 100,
             "type": "string",
-              "x-cds-type": "String",
+            "x-cds-type": "String",
             "description": "Country of registeration (if the company is registered outside Australia)"
           },
           "abn": {
             "maxLength": 11,
             "type": "string",
-              "x-cds-type": "String",
+            "x-cds-type": "String",
             "description": "Australian Business Number for the organisation"
           },
           "acn": {
             "maxLength": 9,
             "type": "string",
-              "x-cds-type": "String",
+            "x-cds-type": "String",
             "description": "Australian Company Number for the organisation"
           },
           "arbn": {
             "maxLength": 9,
             "type": "string",
-              "x-cds-type": "String",
+            "x-cds-type": "String",
             "description": "Australian Registered Body Number.  ARBNs are issued to registrable Australian bodies and foreign companies"
           },
           "anzsicDivision": {
             "maxLength": 100,
             "type": "string",
-              "x-cds-type": "ExternalRef",
+            "x-cds-type": "ExternalRef",
             "description": "ANZSIC division of the organisation. **[[ANZSIC-2006]](#iref-ANZSIC-2006)**"
           },
           "organisationType": {
@@ -1762,7 +1762,7 @@
         "properties": {
           "version": {
             "type": "string",
-              "x-cds-type": "String",
+            "x-cds-type": "String",
             "description": "The major version of the high level standards. This is not the version of the endpoint or the payload being requested but the version of the overall standards being applied. This version number will be \"v\" followed by the major version of the standards as a positive integer (e.g. v1, v12 or v76)"
           },
           "publicBaseUri": {
@@ -1979,7 +1979,7 @@
           "Etag": {
             "description": "Entity tag that uniquely represents the requested resource.",
             "schema": {
-              "type": "string",
+            "type": "string",
             "x-cds-type": "String"
             }
           }
@@ -2004,7 +2004,7 @@
         "required": true,
         "schema": {
           "type": "string",
-            "x-cds-type": "ExternalRef"
+          "x-cds-type": "ExternalRef"
         }
       },
       "XV": {
@@ -2013,7 +2013,7 @@
         "description": "The version of the API end point requested by the client. Must be set to a positive integer.",
         "schema": {
           "type": "integer",
-            "x-cds-type": "PositiveInteger"
+          "x-cds-type": "PositiveInteger"
         }
       },
       "Industry": {
@@ -2037,7 +2037,7 @@
         "description": "The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided.",
         "schema": {
           "type": "integer",
-            "x-cds-type": "PositiveInteger"
+          "x-cds-type": "PositiveInteger"
         }
       },
       "IfNoneMatch": {
@@ -2046,7 +2046,7 @@
         "description": "Makes the request method conditional on a recipient cache or origin server not having any current representation of the target resource with an entity-tag that does not match any of those listed in the field-value.",
         "schema": {
           "type": "string",
-            "x-cds-type": "String"
+          "x-cds-type": "String"
         }
       },
       "UpdatedSince": {
@@ -2056,7 +2056,7 @@
         "schema": {
           "type": "string",
           "format": "date-time",
-            "x-cds-type": "DateTimeString"
+          "x-cds-type": "DateTimeString"
         }
       },
       "Page": {
@@ -2066,7 +2066,7 @@
         "schema": {
           "type": "integer",
           "format": "int32",
-            "x-cds-type": "PositiveInteger"
+          "x-cds-type": "PositiveInteger"
         }
       },
       "PageSize": {
@@ -2076,7 +2076,7 @@
         "schema": {
           "type": "integer",
           "format": "int32",
-            "x-cds-type": "PositiveInteger"
+          "x-cds-type": "PositiveInteger"
         }
       }
     }
