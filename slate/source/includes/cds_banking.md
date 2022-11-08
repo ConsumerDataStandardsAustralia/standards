@@ -5192,9 +5192,9 @@ This operation does not require authentication
 |» extendedData|object|mandatory|none|
 |»» payer|string|conditional|Label of the originating payer. Mandatory for inbound payment|
 |»» payee|string|conditional|Label of the target PayID.  Mandatory for an outbound payment. The name assigned to the BSB/Account Number or PayID (by the owner of the PayID)|
-|»» extensionUType|string|optional|Optional extended data provided specific to transaction originated via NPP|
-|»» x2p101Payload|object|optional|none|
-|»»» extendedDescription|string|mandatory|An extended string description. Only present if specified by the extensionUType field|
+|»» extensionUType|string|optional|Optional extended data specific to transactions originated via NPP|
+|»» x2p101Payload|object|conditional|none|
+|»»» extendedDescription|string|conditional|An extended string description. Required if the extensionUType field is `x2p101Payload`|
 |»»» endToEndId|string|optional|An end to end ID for the payment created at initiation|
 |»»» purposeCode|string|optional|Purpose of the payment.  Format is defined by NPP standards for the x2p1.01 overlay service|
 |»» service|string|mandatory|Identifier of the applicable overlay service. Valid values are: X2P1.01|

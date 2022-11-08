@@ -232,35 +232,35 @@ x-cds-arrangement: string
 <td>x-v</td>
 <td>string</td>
 <td></td>
-<td>none</td>
+<td>The <a href="#response-headers">version</a> of the API end point that the data holder has responded with.</td>
 </tr>
 <tr>
 <td>200</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
 <td></td>
-<td>none</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>400</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
 <td></td>
-<td>none</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>406</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
 <td></td>
-<td>none</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>422</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
 <td></td>
-<td>none</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 </tbody></table>
 
@@ -516,35 +516,35 @@ x-cds-arrangement: string
 <td>x-v</td>
 <td>string</td>
 <td></td>
-<td>none</td>
+<td>The <a href="#response-headers">version</a> of the API end point that the data holder has responded with.</td>
 </tr>
 <tr>
 <td>200</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
 <td></td>
-<td>none</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>400</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
 <td></td>
-<td>none</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>404</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
 <td></td>
-<td>none</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>406</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
 <td></td>
-<td>none</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 </tbody></table>
 
@@ -732,11 +732,13 @@ x-cds-arrangement: string
           </span><span class="s2">"intervalReads"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
             </span><span class="mi">0</span><span class="w">
           </span><span class="p">],</span><span class="w">
-          </span><span class="s2">"readQualities"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"startInterval"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"endInterval"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"quality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUBSTITUTE"</span><span class="w">
-          </span><span class="p">}</span><span class="w">
+          </span><span class="s2">"readQualities"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"startInterval"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"endInterval"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"quality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUBSTITUTE"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">]</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
@@ -810,42 +812,42 @@ x-cds-arrangement: string
 <td>x-v</td>
 <td>string</td>
 <td></td>
-<td>none</td>
+<td>The <a href="#response-headers">version</a> of the API end point that the data holder has responded with.</td>
 </tr>
 <tr>
 <td>200</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
 <td></td>
-<td>none</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>400</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
 <td></td>
-<td>none</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>404</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
 <td></td>
-<td>none</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>406</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
 <td></td>
-<td>none</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>422</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
 <td></td>
-<td>none</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 </tbody></table>
 
@@ -1068,11 +1070,13 @@ x-cds-arrangement: string
           </span><span class="s2">"intervalReads"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
             </span><span class="mi">0</span><span class="w">
           </span><span class="p">],</span><span class="w">
-          </span><span class="s2">"readQualities"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"startInterval"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"endInterval"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"quality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUBSTITUTE"</span><span class="w">
-          </span><span class="p">}</span><span class="w">
+          </span><span class="s2">"readQualities"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"startInterval"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"endInterval"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"quality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUBSTITUTE"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">]</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
@@ -1140,35 +1144,35 @@ x-cds-arrangement: string
 <td>x-v</td>
 <td>string</td>
 <td></td>
-<td>none</td>
+<td>The <a href="#response-headers">version</a> of the API end point that the data holder has responded with.</td>
 </tr>
 <tr>
 <td>200</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
 <td></td>
-<td>none</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>400</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
 <td></td>
-<td>none</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>406</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
 <td></td>
-<td>none</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>422</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
 <td></td>
-<td>none</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 </tbody></table>
 
@@ -1282,8 +1286,8 @@ x-cds-arrangement: string
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"servicePointId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"approvedCapacity"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"availablePhasesCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"installedPhasesCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"availablePhasesCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"installedPhasesCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
     </span><span class="s2">"islandableInstallation"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="s2">"hasCentralProtectionControl"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="s2">"protectionMode"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -1386,35 +1390,35 @@ x-cds-arrangement: string
 <td>x-v</td>
 <td>string</td>
 <td></td>
-<td>none</td>
+<td>The <a href="#response-headers">version</a> of the API end point that the data holder has responded with.</td>
 </tr>
 <tr>
 <td>200</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
 <td></td>
-<td>none</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>400</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
 <td></td>
-<td>none</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>404</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
 <td></td>
-<td>none</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>406</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
 <td></td>
-<td>none</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 </tbody></table>
 
@@ -1579,8 +1583,8 @@ x-cds-arrangement: string
       </span><span class="p">{</span><span class="w">
         </span><span class="s2">"servicePointId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"approvedCapacity"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"availablePhasesCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"installedPhasesCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"availablePhasesCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"installedPhasesCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
         </span><span class="s2">"islandableInstallation"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
         </span><span class="s2">"hasCentralProtectionControl"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
         </span><span class="s2">"protectionMode"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -1692,35 +1696,35 @@ x-cds-arrangement: string
 <td>x-v</td>
 <td>string</td>
 <td></td>
-<td>none</td>
+<td>The <a href="#response-headers">version</a> of the API end point that the data holder has responded with.</td>
 </tr>
 <tr>
 <td>200</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
 <td></td>
-<td>none</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>400</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
 <td></td>
-<td>none</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>406</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
 <td></td>
-<td>none</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>422</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
 <td></td>
-<td>none</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 </tbody></table>
 
@@ -1956,11 +1960,13 @@ This operation does not require authentication
           </span><span class="s2">"intervalReads"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
             </span><span class="mi">0</span><span class="w">
           </span><span class="p">],</span><span class="w">
-          </span><span class="s2">"readQualities"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"startInterval"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"endInterval"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"quality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUBSTITUTE"</span><span class="w">
-          </span><span class="p">}</span><span class="w">
+          </span><span class="s2">"readQualities"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"startInterval"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"endInterval"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"quality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUBSTITUTE"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">]</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
@@ -2022,8 +2028,8 @@ This operation does not require authentication
       </span><span class="p">{</span><span class="w">
         </span><span class="s2">"servicePointId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"approvedCapacity"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"availablePhasesCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"installedPhasesCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"availablePhasesCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"installedPhasesCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
         </span><span class="s2">"islandableInstallation"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
         </span><span class="s2">"hasCentralProtectionControl"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
         </span><span class="s2">"protectionMode"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -2127,8 +2133,8 @@ This operation does not require authentication
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"servicePointId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"approvedCapacity"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"availablePhasesCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"installedPhasesCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"availablePhasesCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"installedPhasesCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
     </span><span class="s2">"islandableInstallation"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="s2">"hasCentralProtectionControl"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="s2">"protectionMode"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -2340,7 +2346,7 @@ This operation does not require authentication
 <td>validFromDate</td>
 <td><a href="#common-field-types">DateString</a></td>
 <td>mandatory</td>
-<td>The start date from which this service point first became valid</td>
+<td>The latest start date from which the constituent data sets of this service point became valid</td>
 </tr>
 <tr>
 <td>lastUpdateDateTime</td>
@@ -2622,7 +2628,7 @@ This operation does not require authentication
 <td>validFromDate</td>
 <td><a href="#common-field-types">DateString</a></td>
 <td>mandatory</td>
-<td>The start date from which this service point first became valid</td>
+<td>The latest start date from which the constituent data sets of this service point became valid</td>
 </tr>
 <tr>
 <td>lastUpdateDateTime</td>
@@ -3101,11 +3107,13 @@ This operation does not require authentication
     </span><span class="s2">"intervalReads"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="mi">0</span><span class="w">
     </span><span class="p">],</span><span class="w">
-    </span><span class="s2">"readQualities"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"startInterval"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"endInterval"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"quality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUBSTITUTE"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
+    </span><span class="s2">"readQualities"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"startInterval"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"endInterval"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"quality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUBSTITUTE"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
@@ -3216,7 +3224,7 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>» readQualities</td>
-<td>object</td>
+<td>[object]</td>
 <td>conditional</td>
 <td>Specifies quality of reads that are not ACTUAL.  For read indices that are not specified, quality is assumed to be ACTUAL. If not present, all quality of all reads are assumed to be actual. Required when interval-reads query parameter equals FULL or MIN_30</td>
 </tr>
@@ -3282,8 +3290,8 @@ This operation does not require authentication
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"servicePointId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"approvedCapacity"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"availablePhasesCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"installedPhasesCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"availablePhasesCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"installedPhasesCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
   </span><span class="s2">"islandableInstallation"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
   </span><span class="s2">"hasCentralProtectionControl"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
   </span><span class="s2">"protectionMode"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -3350,19 +3358,19 @@ This operation does not require authentication
 <td>approvedCapacity</td>
 <td>number</td>
 <td>mandatory</td>
-<td>Approved small generating unit capacity as agreed with NSP in the connection agreement, expressed in kVA</td>
+<td>Approved small generating unit capacity as agreed with NSP in the connection agreement, expressed in kVA. Value of 0 indicates no DER record exists for the given servicePointId</td>
 </tr>
 <tr>
 <td>availablePhasesCount</td>
-<td><a href="#common-field-types">PositiveInteger</a></td>
+<td><a href="#common-field-types">NaturalNumber</a></td>
 <td>mandatory</td>
-<td>The number of phases available for the installation of DER. Acceptable values are 1, 2 or 3.</td>
+<td>The number of phases available for the installation of DER. Acceptable values are 0, 1, 2 or 3. Value of 0 indicates no DER record exists for the given servicePointId</td>
 </tr>
 <tr>
 <td>installedPhasesCount</td>
-<td><a href="#common-field-types">PositiveInteger</a></td>
+<td><a href="#common-field-types">NaturalNumber</a></td>
 <td>mandatory</td>
-<td>The number of phases that DER is connected to. Acceptable values are 1, 2 or 3.</td>
+<td>The number of phases that DER is connected to. Acceptable values are 0, 1, 2 or 3. Value of 0 indicates no DER record exists for the given servicePointId</td>
 </tr>
 <tr>
 <td>islandableInstallation</td>
@@ -3530,7 +3538,7 @@ This operation does not require authentication
 <td>» inverterDeviceCapacity</td>
 <td>number</td>
 <td>conditional</td>
-<td>The rated AC output power that is listed in the product specified by the manufacturer. Mandatory if equipmentType is INVERTER</td>
+<td>The rated AC output power that is listed in the product specified by the manufacturer. Mandatory if equipmentType is INVERTER. Default is 0 if value not known</td>
 </tr>
 <tr>
 <td>» derDevices</td>
@@ -3584,13 +3592,13 @@ This operation does not require authentication
 <td>»» nominalRatedCapacity</td>
 <td>number</td>
 <td>mandatory</td>
-<td>Maximum output in kVA that is listed in the product specification by the manufacturer. This refers to the capacity of each unit within the device group</td>
+<td>Maximum output in kVA that is listed in the product specification by the manufacturer. This refers to the capacity of each unit within the device group. Default is 0 if value not known</td>
 </tr>
 <tr>
 <td>»» nominalStorageCapacity</td>
 <td>number</td>
 <td>conditional</td>
-<td>Maximum storage capacity in kVAh. This refers to the capacity of each storage module within the device group. Mandatory if type is equal to “STORAGE”</td>
+<td>Maximum storage capacity in kVAh. This refers to the capacity of each storage module within the device group. Mandatory if type is equal to “STORAGE”. Default is 0 if value not known</td>
 </tr>
 </tbody></table>
 <h4 id='enumerated-values-6'>Enumerated Values</h4>

@@ -12,7 +12,7 @@
       "name": "MIT License",
       "url": "https://opensource.org/licenses/MIT"
     },
-    "version": "1.19.0"
+    "version": "1.20.0"
   },
   "servers": [
     {
@@ -625,11 +625,12 @@
             ]
           },
           "secondary": {
+            "type": "object",
+            "description": "Average response time for the secondary tier.  Mandatory for data holders designated for a Shared Responsibility Data Request data cluster",
             "required": [
               "primary",
               "secondary"
             ],
-            "type": "object",
             "properties": {
               "primary": {
                 "type": "object",
@@ -654,6 +655,7 @@
               },
               "secondary": {
                 "type": "object",
+                "description": "Average response time as measured for the secondary data holder",
                 "properties": {
                   "currentDay": {
                     "type": "number",
@@ -667,14 +669,12 @@
                     }
                   }
                 },
-                "description": "Average response time as measured for the secondary data holder",
                 "x-conditional": [
                   "currentDay",
                   "previousDays"
                 ]
               }
-            },
-            "description": "Average response time for the secondary tier.  Mandatory for data holders designated for a Shared Responsibility Data Request data cluster"
+            }
           },
           "largeSecondary": {
             "required": [

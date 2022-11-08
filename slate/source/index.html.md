@@ -32,6 +32,7 @@ includes:
   - separator
   - banking_apis
   - energy_apis
+  - telco_apis
   - common_apis
   - admin
   - separator

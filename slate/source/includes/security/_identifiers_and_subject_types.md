@@ -60,6 +60,26 @@ client_id=s6BhdRkqt3
 }
 ```
 
+```diff
+Added FAPI 1.0 Final Phase 3 Obligation example
+```
+
+> Decoded JWT - FAPI 1.0 Final Phase 3 Obligation  
+
+```
+{
+  "iss": "https://data.holder.com.au",
+  "sub": "a9ebbef6-1f0b-44eb-96cf-0c5b51b37ab2",
+  "aud": "12345",
+  "nonce": "n-0S6_WzA2Mj",
+  "exp": 1311281970,
+  "iat": 1311280970,
+  "nbf": 1311280970,
+  "auth_time": 1311280969,
+  "acr": "urn:cds.au:cdr:3"
+}
+```
+
 > Non-normative example: Token Introspection Endpoint hydration
 
 > Request
