@@ -1,31 +1,33 @@
 {
-  "openapi": "3.0.3",
-  "info": {
-    "title": "CDR Participant Discovery API",
-    "version": "1.21.0"
+  "openapi":"3.0.3",
+  "info":{
+    "title":"CDR Participant Discovery API",
+    "version":"1.21.0"
   },
-  "servers": [
+  "servers":[
     {
-      "url": "https://<register-base-url>/"
+      "url":"https://<register-base-url>/"
     }
   ],
-  "tags": [],
-  "paths": {
-    "/.well-known/openid-configuration": {
-      "get": {
-        "tags": [
+  "tags":[
+    
+  ],
+  "paths":{
+    "/.well-known/openid-configuration":{
+      "get":{
+        "tags":[
           "Register"
         ],
-        "summary": "Get OpenId Provider Config",
-        "description": "Endpoint used by participants to discover the CDR Register OpenID configuration and obtain information needed to interact with it, including its OAuth 2.0 endpoint locations.",
-        "operationId": "GetOpenIdProviderConfig",
-        "responses": {
-          "200": {
-            "description": "The OpenID Provider Configuration Metadata values",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResponseOpenIDProviderConfigMetadata"
+        "summary":"Get OpenId Provider Config",
+        "description":"Endpoint used by participants to discover the CDR Register OpenID configuration and obtain information needed to interact with it, including its OAuth 2.0 endpoint locations.",
+        "operationId":"GetOpenIdProviderConfig",
+        "responses":{
+          "200":{
+            "description":"The OpenID Provider Configuration Metadata values",
+            "content":{
+              "application/json":{
+                "schema":{
+                  "$ref":"#/components/schemas/ResponseOpenIDProviderConfigMetadata"
                 }
               }
             }
@@ -33,21 +35,21 @@
         }
       }
     },
-    "/jwks": {
-      "get": {
-        "tags": [
+    "/jwks":{
+      "get":{
+        "tags":[
           "Register"
         ],
-        "summary": "Get JWKS",
-        "description": "JWKS endpoint containing the public keys used by the CDR Register to validate the signature of issued SSAs and authenticate outbound calls to participants in the CDR.",
-        "operationId": "Get JWKS",
-        "responses": {
-          "200": {
-            "description": "A JSON object that represents a set of JWKs",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResponseJWKS"
+        "summary":"Get JWKS",
+        "description":"JWKS endpoint containing the public keys used by the CDR Register to validate the signature of issued SSAs and authenticate outbound calls to participants in the CDR.",
+        "operationId":"Get JWKS",
+        "responses":{
+          "200":{
+            "description":"A JSON object that represents a set of JWKs",
+            "content":{
+              "application/json":{
+                "schema":{
+                  "$ref":"#/components/schemas/ResponseJWKS"
                 }
               }
             }
@@ -55,24 +57,24 @@
         }
       }
     },
-    "/cdr-register/v1/{industry}/data-holders/brands": {
-      "get": {
-        "tags": [
+    "/cdr-register/v1/{industry}/data-holders/brands":{
+      "get":{
+        "tags":[
           "Register"
         ],
-        "summary": "Get Data Holder Brands",
-        "description": "Allows Data Recipients to discover Data Holder Brands available in the CDR ecosystem.\n\nObsolete versions: [v1](includes/obsolete/get-data-holder-brands-v1.html)",
-        "operationId": "GetDataHolderBrands",
-        "parameters": [
+        "summary":"Get Data Holder Brands",
+        "description":"Allows Data Recipients to discover Data Holder Brands available in the CDR ecosystem.\n\nObsolete versions: [v1](includes/obsolete/get-data-holder-brands-v1.html)",
+        "operationId":"GetDataHolderBrands",
+        "parameters":[
           {
-            "name": "industry",
-            "in": "path",
-            "description": "The industry the participant is retrieving data for (Banking, etc)",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "x-cds-type": "Enum",
-              "enum": [
+            "name":"industry",
+            "in":"path",
+            "description":"The industry the participant is retrieving data for (Banking, etc)",
+            "required":true,
+            "schema":{
+              "type":"string",
+              "x-cds-type":"Enum",
+              "enum":[
                 "banking",
                 "energy",
                 "telco",
@@ -81,140 +83,140 @@
             }
           },
           {
-            "name": "Authorization",
-            "in": "header",
-            "description": "An Authorisation Token as per **[[RFC6750]](#nref-RFC6750)**.",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "x-cds-type": "ExternalRef"
+            "name":"Authorization",
+            "in":"header",
+            "description":"An Authorisation Token as per **[[RFC6750]](#nref-RFC6750)**.",
+            "required":true,
+            "schema":{
+              "type":"string",
+              "x-cds-type":"ExternalRef"
             }
           },
           {
-            "name": "x-v",
-            "in": "header",
-            "description": "The version of the API end point requested by the client. Must be set to a positive integer.",
-            "schema": {
-              "type": "integer",
-              "default": "1",
-              "x-cds-type": "PositiveInteger"
+            "name":"x-v",
+            "in":"header",
+            "description":"The version of the API end point requested by the client. Must be set to a positive integer.",
+            "schema":{
+              "type":"integer",
+              "default":"1",
+              "x-cds-type":"PositiveInteger"
             }
           },
           {
-            "name": "x-min-v",
-            "in": "header",
-            "description": "The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided.",
-            "schema": {
-              "type": "integer",
-              "x-cds-type": "PositiveInteger"
+            "name":"x-min-v",
+            "in":"header",
+            "description":"The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided.",
+            "schema":{
+              "type":"integer",
+              "x-cds-type":"PositiveInteger"
             }
           },
           {
-            "name": "updated-since",
-            "in": "query",
-            "description": "query filter returns results updated since the specified date-time",
-            "schema": {
-              "type": "string",
-              "format": "date-time",
-              "x-cds-type": "DateTimeString"
+            "name":"updated-since",
+            "in":"query",
+            "description":"query filter returns results updated since the specified date-time",
+            "schema":{
+              "type":"string",
+              "format":"date-time",
+              "x-cds-type":"DateTimeString"
             }
           },
           {
-            "name": "page",
-            "in": "query",
-            "description": "the page number to return",
-            "schema": {
-              "type": "integer",
-              "format": "int32",
-              "x-cds-type": "PositiveInteger"
+            "name":"page",
+            "in":"query",
+            "description":"the page number to return",
+            "schema":{
+              "type":"integer",
+              "format":"int32",
+              "x-cds-type":"PositiveInteger"
             }
           },
           {
-            "name": "page-size",
-            "in": "query",
-            "description": "the number of records to return per page",
-            "schema": {
-              "type": "integer",
-              "format": "int32",
-              "x-cds-type": "PositiveInteger"
+            "name":"page-size",
+            "in":"query",
+            "description":"the number of records to return per page",
+            "schema":{
+              "type":"integer",
+              "format":"int32",
+              "x-cds-type":"PositiveInteger"
             }
           }
         ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "headers": {
-              "x-v": {
-                "description": "The version of the API end point that the CDR Register has responded with.",
-                "schema": {
-                  "type": "integer",
-                  "x-cds-type": "PositiveInteger"
+        "responses":{
+          "200":{
+            "description":"Success",
+            "headers":{
+              "x-v":{
+                "description":"The version of the API end point that the CDR Register has responded with.",
+                "schema":{
+                  "type":"integer",
+                  "x-cds-type":"PositiveInteger"
                 }
               }
             },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResponseRegisterDataHolderBrandList"
+            "content":{
+              "application/json":{
+                "schema":{
+                  "$ref":"#/components/schemas/ResponseRegisterDataHolderBrandList"
                 }
               }
             }
           },
-          "400": {
-            "description": "Missing Required Header / Invalid Version / Invalid Path Parameter",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResponseErrorListV2"
+          "400":{
+            "description":"Missing Required Header / Invalid Version / Invalid Path Parameter",
+            "content":{
+              "application/json":{
+                "schema":{
+                  "$ref":"#/components/schemas/ResponseErrorListV2"
                 }
               }
             }
           },
-          "401": {
-            "description": "Invalid Bearer Token",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResponseErrorListV2"
+          "401":{
+            "description":"Invalid Bearer Token",
+            "content":{
+              "application/json":{
+                "schema":{
+                  "$ref":"#/components/schemas/ResponseErrorListV2"
                 }
               }
             }
           },
-          "406": {
-            "description": "Unsupported Version",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResponseErrorListV2"
+          "406":{
+            "description":"Unsupported Version",
+            "content":{
+              "application/json":{
+                "schema":{
+                  "$ref":"#/components/schemas/ResponseErrorListV2"
                 }
               }
             }
           }
         },
-        "x-version": "2",
-        "x-scopes": [
+        "x-version":"2",
+        "x-scopes":[
           "cdr-register:read"
         ]
       }
     },
-    "/cdr-register/v1/{industry}/data-holders/brands/summary": {
-      "get": {
-        "tags": [
+    "/cdr-register/v1/{industry}/data-holders/brands/summary":{
+      "get":{
+        "tags":[
           "Register"
         ],
-        "summary": "Get Data Holder Brands Summary",
-        "description": "Endpoint used by participants to discover public details of Data Holder Brands from the CDR Register",
-        "operationId": "GetDataHolderBrandsSummary",
-        "parameters": [
+        "summary":"Get Data Holder Brands Summary",
+        "description":"Endpoint used by participants to discover public details of Data Holder Brands from the CDR Register",
+        "operationId":"GetDataHolderBrandsSummary",
+        "parameters":[
           {
-            "name": "industry",
-            "in": "path",
-            "description": "The industry the participant is retrieving data for (Banking, etc)",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "x-cds-type": "Enum",
-              "enum": [
+            "name":"industry",
+            "in":"path",
+            "description":"The industry the participant is retrieving data for (Banking, etc)",
+            "required":true,
+            "schema":{
+              "type":"string",
+              "x-cds-type":"Enum",
+              "enum":[
                 "banking",
                 "energy",
                 "telco",
@@ -223,125 +225,125 @@
             }
           },
           {
-            "name": "x-v",
-            "in": "header",
-            "description": "The version of the API end point requested by the client. Must be set to a positive integer.",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "x-cds-type": "PositiveInteger"
+            "name":"x-v",
+            "in":"header",
+            "description":"The version of the API end point requested by the client. Must be set to a positive integer.",
+            "required":true,
+            "schema":{
+              "type":"integer",
+              "x-cds-type":"PositiveInteger"
             }
           },
           {
-            "name": "x-min-v",
-            "in": "header",
-            "description": "The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided.",
-            "schema": {
-              "type": "integer",
-              "x-cds-type": "PositiveInteger"
+            "name":"x-min-v",
+            "in":"header",
+            "description":"The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided.",
+            "schema":{
+              "type":"integer",
+              "x-cds-type":"PositiveInteger"
             }
           },
           {
-            "name": "If-None-Match",
-            "in": "header",
-            "description": "Makes the request method conditional on a recipient cache or origin server not having any current representation of the target resource with an entity-tag that does not match any of those listed in the field-value.",
-            "schema": {
-              "type": "string",
-              "x-cds-type": "String"
+            "name":"If-None-Match",
+            "in":"header",
+            "description":"Makes the request method conditional on a recipient cache or origin server not having any current representation of the target resource with an entity-tag that does not match any of those listed in the field-value.",
+            "schema":{
+              "type":"string",
+              "x-cds-type":"String"
             }
           }
         ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "headers": {
-              "x-v": {
-                "description": "The version of the API end point that the CDR Register has responded with.",
-                "schema": {
-                  "type": "integer",
-              "x-cds-type": "PositiveInteger"
+        "responses":{
+          "200":{
+            "description":"Success",
+            "headers":{
+              "x-v":{
+                "description":"The version of the API end point that the CDR Register has responded with.",
+                "schema":{
+                  "type":"integer",
+                  "x-cds-type":"PositiveInteger"
                 }
               },
-              "Etag": {
-                "description": "Entity tag that uniquely represents the requested resource.",
-                "schema": {
-                  "type": "string",
-              "x-cds-type": "String"
+              "Etag":{
+                "description":"Entity tag that uniquely represents the requested resource.",
+                "schema":{
+                  "type":"string",
+                  "x-cds-type":"String"
                 }
               }
             },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResponseDataHoldersBrandSummaryList"
+            "content":{
+              "application/json":{
+                "schema":{
+                  "$ref":"#/components/schemas/ResponseDataHoldersBrandSummaryList"
                 }
               }
             }
           },
-          "304": {
-            "description": "Not Modified - The current representation of the target resource matches with the entity-tag provided in the If-None-Match request header",
-            "headers": {
-              "Etag": {
-                "description": "Entity tag that uniquely represents the requested resource.",
-                "schema": {
-                  "type": "string",
-              "x-cds-type": "String"
+          "304":{
+            "description":"Not Modified - The current representation of the target resource matches with the entity-tag provided in the If-None-Match request header",
+            "headers":{
+              "Etag":{
+                "description":"Entity tag that uniquely represents the requested resource.",
+                "schema":{
+                  "type":"string",
+                  "x-cds-type":"String"
                 }
               }
             }
           },
-          "400": {
-            "description": "Missing Required Header / Invalid Version / Invalid Path Parameter",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResponseErrorListV2"
+          "400":{
+            "description":"Missing Required Header / Invalid Version / Invalid Path Parameter",
+            "content":{
+              "application/json":{
+                "schema":{
+                  "$ref":"#/components/schemas/ResponseErrorListV2"
                 }
               }
             }
           },
-          "404": {
-            "description": "Industry Not Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResponseErrorListV2"
+          "404":{
+            "description":"Industry Not Found",
+            "content":{
+              "application/json":{
+                "schema":{
+                  "$ref":"#/components/schemas/ResponseErrorListV2"
                 }
               }
             }
           },
-          "406": {
-            "description": "Unsupported Version",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResponseErrorListV2"
+          "406":{
+            "description":"Unsupported Version",
+            "content":{
+              "application/json":{
+                "schema":{
+                  "$ref":"#/components/schemas/ResponseErrorListV2"
                 }
               }
             }
           }
         },
-        "x-version": "1"
+        "x-version":"1"
       }
     },
-    "/cdr-register/v1/{industry}/data-recipients/brands/{dataRecipientBrandId}/software-products/{softwareProductId}/ssa": {
-      "get": {
-        "tags": [
+    "/cdr-register/v1/{industry}/data-recipients/brands/{dataRecipientBrandId}/software-products/{softwareProductId}/ssa":{
+      "get":{
+        "tags":[
           "Register"
         ],
-        "summary": "Get Software Statement Assertion (SSA)",
-        "description": "Get a Software Statement Assertion (SSA) for a software product on the CDR Register to be used for Dynamic Client Registration with a Data Holder Brand.\n\nObsolete versions: [v1](includes/obsolete/get-software-statement-assertion-v1.html), [v2](includes/obsolete/get-software-statement-assertion-v2.html)",
-        "operationId": "GetSoftwareStatementAssertion",
-        "parameters": [
+        "summary":"Get Software Statement Assertion (SSA)",
+        "description":"Get a Software Statement Assertion (SSA) for a software product on the CDR Register to be used for Dynamic Client Registration with a Data Holder Brand.\n\nObsolete versions: [v1](includes/obsolete/get-software-statement-assertion-v1.html), [v2](includes/obsolete/get-software-statement-assertion-v2.html)",
+        "operationId":"GetSoftwareStatementAssertion",
+        "parameters":[
           {
-            "name": "industry",
-            "in": "path",
-            "description": "The industry the participant is retrieving data for (Banking, etc)",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "x-cds-type": "Enum",
-              "enum": [
+            "name":"industry",
+            "in":"path",
+            "description":"The industry the participant is retrieving data for (Banking, etc)",
+            "required":true,
+            "schema":{
+              "type":"string",
+              "x-cds-type":"Enum",
+              "enum":[
                 "banking",
                 "energy",
                 "telco",
@@ -350,160 +352,160 @@
             }
           },
           {
-            "name": "x-v",
-            "in": "header",
-            "description": "The version of the API end point requested by the client. Must be set to a positive integer.",
-            "schema": {
-              "type": "integer",
-              "default": "1",
-              "x-cds-type": "PositiveInteger"
+            "name":"x-v",
+            "in":"header",
+            "description":"The version of the API end point requested by the client. Must be set to a positive integer.",
+            "schema":{
+              "type":"integer",
+              "default":"1",
+              "x-cds-type":"PositiveInteger"
             }
           },
           {
-            "name": "x-min-v",
-            "in": "header",
-            "description": "The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided.",
-            "schema": {
-              "type": "integer",
-              "x-cds-type": "PositiveInteger"
+            "name":"x-min-v",
+            "in":"header",
+            "description":"The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided.",
+            "schema":{
+              "type":"integer",
+              "x-cds-type":"PositiveInteger"
             }
           },
           {
-            "name": "dataRecipientBrandId",
-            "in": "path",
-            "description": "Unique id for the Accredited Data Recipient Brand that the Software Product is associated with in the CDR Register",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "x-cds-type": "String"
+            "name":"dataRecipientBrandId",
+            "in":"path",
+            "description":"Unique id for the Accredited Data Recipient Brand that the Software Product is associated with in the CDR Register",
+            "required":true,
+            "schema":{
+              "type":"string",
+              "x-cds-type":"String"
             }
           },
           {
-            "name": "softwareProductId",
-            "in": "path",
-            "description": "Unique id for the Accredited Data Recipient Software Product in the CDR Register",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "x-cds-type": "String"
+            "name":"softwareProductId",
+            "in":"path",
+            "description":"Unique id for the Accredited Data Recipient Software Product in the CDR Register",
+            "required":true,
+            "schema":{
+              "type":"string",
+              "x-cds-type":"String"
             }
           },
           {
-            "name": "Authorization",
-            "in": "header",
-            "description": "An Authorisation Token as per **[[RFC6750]](#nref-RFC6750)**.",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "x-cds-type": "ExternalRef"
+            "name":"Authorization",
+            "in":"header",
+            "description":"An Authorisation Token as per **[[RFC6750]](#nref-RFC6750)**.",
+            "required":true,
+            "schema":{
+              "type":"string",
+              "x-cds-type":"ExternalRef"
             }
           }
         ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "headers": {
-              "x-v": {
-                "description": "The version of the API end point that the CDR Register has responded with.",
-                "schema": {
-                  "type": "integer",
-              "x-cds-type": "PositiveInteger"
+        "responses":{
+          "200":{
+            "description":"Success",
+            "headers":{
+              "x-v":{
+                "description":"The version of the API end point that the CDR Register has responded with.",
+                "schema":{
+                  "type":"integer",
+                  "x-cds-type":"PositiveInteger"
                 }
               }
             },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "string"
+            "content":{
+              "application/json":{
+                "schema":{
+                  "type":"string"
                 }
               }
             }
           },
-          "400": {
-            "description": "Missing Required Header / Invalid Version / Invalid Path Parameter",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResponseErrorListV2"
+          "400":{
+            "description":"Missing Required Header / Invalid Version / Invalid Path Parameter",
+            "content":{
+              "application/json":{
+                "schema":{
+                  "$ref":"#/components/schemas/ResponseErrorListV2"
                 }
               }
             }
           },
-          "401": {
-            "description": "Invalid Bearer Token",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResponseErrorListV2"
+          "401":{
+            "description":"Invalid Bearer Token",
+            "content":{
+              "application/json":{
+                "schema":{
+                  "$ref":"#/components/schemas/ResponseErrorListV2"
                 }
               }
             }
           },
-          "403": {
-            "description": "Invalid BrandId",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResponseErrorListV2"
+          "403":{
+            "description":"Invalid BrandId",
+            "content":{
+              "application/json":{
+                "schema":{
+                  "$ref":"#/components/schemas/ResponseErrorListV2"
                 }
               }
             }
           },
-          "404": {
-            "description": "Invalid Software Product",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResponseErrorListV2"
+          "404":{
+            "description":"Invalid Software Product",
+            "content":{
+              "application/json":{
+                "schema":{
+                  "$ref":"#/components/schemas/ResponseErrorListV2"
                 }
               }
             }
           },
-          "406": {
-            "description": "Unsupported Version",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResponseErrorListV2"
+          "406":{
+            "description":"Unsupported Version",
+            "content":{
+              "application/json":{
+                "schema":{
+                  "$ref":"#/components/schemas/ResponseErrorListV2"
                 }
               }
             }
           },
-          "422": {
-            "description": "SSA validation failed",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResponseErrorListV2"
+          "422":{
+            "description":"SSA validation failed",
+            "content":{
+              "application/json":{
+                "schema":{
+                  "$ref":"#/components/schemas/ResponseErrorListV2"
                 }
               }
             }
           }
         },
-        "x-version": "3",
-        "x-scopes": [
+        "x-version":"3",
+        "x-scopes":[
           "cdr-register:read"
         ]
       }
     },
-    "/cdr-register/v1/{industry}/data-holders/status": {
-      "get": {
-        "tags": [
+    "/cdr-register/v1/{industry}/data-holders/status":{
+      "get":{
+        "tags":[
           "Register"
         ],
-        "summary": "Get Data Holder Statuses",
-        "description": "Endpoint used by participants to discover the statuses for Data Holders from the CDR Register",
-        "operationId": "GetDataHolderStatuses",
-        "parameters": [
+        "summary":"Get Data Holder Statuses",
+        "description":"Endpoint used by participants to discover the statuses for Data Holders from the CDR Register",
+        "operationId":"GetDataHolderStatuses",
+        "parameters":[
           {
-            "name": "industry",
-            "in": "path",
-            "description": "The industry the participant is retrieving data for (Banking, etc)",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "x-cds-type": "Enum",
-              "enum": [
+            "name":"industry",
+            "in":"path",
+            "description":"The industry the participant is retrieving data for (Banking, etc)",
+            "required":true,
+            "schema":{
+              "type":"string",
+              "x-cds-type":"Enum",
+              "enum":[
                 "banking",
                 "energy",
                 "telco",
@@ -512,115 +514,115 @@
             }
           },
           {
-            "name": "x-v",
-            "in": "header",
-            "description": "The version of the API end point requested by the client. Must be set to a positive integer.",
-            "schema": {
-              "type": "integer",
-              "default": "1",
-              "x-cds-type": "PositiveInteger"
+            "name":"x-v",
+            "in":"header",
+            "description":"The version of the API end point requested by the client. Must be set to a positive integer.",
+            "schema":{
+              "type":"integer",
+              "default":"1",
+              "x-cds-type":"PositiveInteger"
             }
           },
           {
-            "name": "x-min-v",
-            "in": "header",
-            "description": "The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided.",
-            "schema": {
-              "type": "integer",
-              "x-cds-type": "PositiveInteger"
+            "name":"x-min-v",
+            "in":"header",
+            "description":"The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided.",
+            "schema":{
+              "type":"integer",
+              "x-cds-type":"PositiveInteger"
             }
           },
           {
-            "name": "If-None-Match",
-            "in": "header",
-            "description": "Makes the request method conditional on a recipient cache or origin server not having any current representation of the target resource with an entity-tag that does not match any of those listed in the field-value.",
-            "schema": {
-              "type": "string",
-              "x-cds-type": "String"
+            "name":"If-None-Match",
+            "in":"header",
+            "description":"Makes the request method conditional on a recipient cache or origin server not having any current representation of the target resource with an entity-tag that does not match any of those listed in the field-value.",
+            "schema":{
+              "type":"string",
+              "x-cds-type":"String"
             }
           }
         ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "headers": {
-              "x-v": {
-                "description": "The version of the API end point that the CDR Register has responded with.",
-                "schema": {
-                  "type": "integer",
-              "x-cds-type": "PositiveInteger"
+        "responses":{
+          "200":{
+            "description":"Success",
+            "headers":{
+              "x-v":{
+                "description":"The version of the API end point that the CDR Register has responded with.",
+                "schema":{
+                  "type":"integer",
+                  "x-cds-type":"PositiveInteger"
                 }
               },
-              "Etag": {
-                "description": "Entity tag that uniquely represents the requested resource.",
-                "schema": {
-                  "type": "string",
-              "x-cds-type": "String"
+              "Etag":{
+                "description":"Entity tag that uniquely represents the requested resource.",
+                "schema":{
+                  "type":"string",
+                  "x-cds-type":"String"
                 }
               }
             },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/DataHoldersStatusList"
+            "content":{
+              "application/json":{
+                "schema":{
+                  "$ref":"#/components/schemas/DataHoldersStatusList"
                 }
               }
             }
           },
-          "304": {
-            "description": "Not Modified - The current representation of the target resource matches with the entity-tag provided in the If-None-Match request header",
-            "headers": {
-              "Etag": {
-                "description": "Entity tag that uniquely represents the requested resource.",
-                "schema": {
-                  "type": "string",
-              "x-cds-type": "String"
+          "304":{
+            "description":"Not Modified - The current representation of the target resource matches with the entity-tag provided in the If-None-Match request header",
+            "headers":{
+              "Etag":{
+                "description":"Entity tag that uniquely represents the requested resource.",
+                "schema":{
+                  "type":"string",
+                  "x-cds-type":"String"
                 }
               }
             }
           },
-          "400": {
-            "description": "Missing Required Header / Invalid Version / Invalid Path Parameter",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResponseErrorListV2"
+          "400":{
+            "description":"Missing Required Header / Invalid Version / Invalid Path Parameter",
+            "content":{
+              "application/json":{
+                "schema":{
+                  "$ref":"#/components/schemas/ResponseErrorListV2"
                 }
               }
             }
           },
-          "406": {
-            "description": "Unsupported Version",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResponseErrorListV2"
+          "406":{
+            "description":"Unsupported Version",
+            "content":{
+              "application/json":{
+                "schema":{
+                  "$ref":"#/components/schemas/ResponseErrorListV2"
                 }
               }
             }
           }
         },
-        "x-version": "1"
+        "x-version":"1"
       }
     },
-    "/cdr-register/v1/{industry}/data-recipients/brands/software-products/status": {
-      "get": {
-        "tags": [
+    "/cdr-register/v1/{industry}/data-recipients/brands/software-products/status":{
+      "get":{
+        "tags":[
           "Register"
         ],
-        "summary": "Get Software Products Statuses",
-        "description": "Endpoint used by participants to discover the statuses for software products from the CDR Register.\n\nObsolete versions: [v1](includes/obsolete/get-software-product-statuses-v1.html)",
-        "operationId": "GetSoftwareProductsStatuses",
-        "parameters": [
+        "summary":"Get Software Products Statuses",
+        "description":"Endpoint used by participants to discover the statuses for software products from the CDR Register.\n\nObsolete versions: [v1](includes/obsolete/get-software-product-statuses-v1.html)",
+        "operationId":"GetSoftwareProductsStatuses",
+        "parameters":[
           {
-            "name": "industry",
-            "in": "path",
-            "description": "The industry the participant is retrieving data for (Banking, etc)",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "x-cds-type": "Enum",
-              "enum": [
+            "name":"industry",
+            "in":"path",
+            "description":"The industry the participant is retrieving data for (Banking, etc)",
+            "required":true,
+            "schema":{
+              "type":"string",
+              "x-cds-type":"Enum",
+              "enum":[
                 "banking",
                 "energy",
                 "telco",
@@ -629,115 +631,115 @@
             }
           },
           {
-            "name": "x-v",
-            "in": "header",
-            "description": "The version of the API end point requested by the client. Must be set to a positive integer.",
-            "schema": {
-              "type": "integer",
-              "default": "1",
-              "x-cds-type": "PositiveInteger"
+            "name":"x-v",
+            "in":"header",
+            "description":"The version of the API end point requested by the client. Must be set to a positive integer.",
+            "schema":{
+              "type":"integer",
+              "default":"1",
+              "x-cds-type":"PositiveInteger"
             }
           },
           {
-            "name": "x-min-v",
-            "in": "header",
-            "description": "The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided.",
-            "schema": {
-              "type": "integer",
-              "x-cds-type": "PositiveInteger"
+            "name":"x-min-v",
+            "in":"header",
+            "description":"The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided.",
+            "schema":{
+              "type":"integer",
+              "x-cds-type":"PositiveInteger"
             }
           },
           {
-            "name": "If-None-Match",
-            "in": "header",
-            "description": "Makes the request method conditional on a recipient cache or origin server not having any current representation of the target resource with an entity-tag that does not match any of those listed in the field-value.",
-            "schema": {
-              "type": "string",
-              "x-cds-type": "String"
+            "name":"If-None-Match",
+            "in":"header",
+            "description":"Makes the request method conditional on a recipient cache or origin server not having any current representation of the target resource with an entity-tag that does not match any of those listed in the field-value.",
+            "schema":{
+              "type":"string",
+              "x-cds-type":"String"
             }
           }
         ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "headers": {
-              "x-v": {
-                "description": "The version of the API end point that the CDR Register has responded with.",
-                "schema": {
-                  "type": "integer",
-              "x-cds-type": "PositiveInteger"
+        "responses":{
+          "200":{
+            "description":"Success",
+            "headers":{
+              "x-v":{
+                "description":"The version of the API end point that the CDR Register has responded with.",
+                "schema":{
+                  "type":"integer",
+                  "x-cds-type":"PositiveInteger"
                 }
               },
-              "Etag": {
-                "description": "Entity tag that uniquely represents the requested resource.",
-                "schema": {
-                  "type": "string",
-              "x-cds-type": "String"
+              "Etag":{
+                "description":"Entity tag that uniquely represents the requested resource.",
+                "schema":{
+                  "type":"string",
+                  "x-cds-type":"String"
                 }
               }
             },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/SoftwareProductsStatusList"
+            "content":{
+              "application/json":{
+                "schema":{
+                  "$ref":"#/components/schemas/SoftwareProductsStatusList"
                 }
               }
             }
           },
-          "304": {
-            "description": "Not Modified - The current representation of the target resource matches with the entity-tag provided in the If-None-Match request header",
-            "headers": {
-              "Etag": {
-                "description": "Entity tag that uniquely represents the requested resource.",
-                "schema": {
-                  "type": "string",
-              "x-cds-type": "String"
+          "304":{
+            "description":"Not Modified - The current representation of the target resource matches with the entity-tag provided in the If-None-Match request header",
+            "headers":{
+              "Etag":{
+                "description":"Entity tag that uniquely represents the requested resource.",
+                "schema":{
+                  "type":"string",
+                  "x-cds-type":"String"
                 }
               }
             }
           },
-          "400": {
-            "description": "Missing Required Header / Invalid Version / Invalid Path Parameter",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResponseErrorListV2"
+          "400":{
+            "description":"Missing Required Header / Invalid Version / Invalid Path Parameter",
+            "content":{
+              "application/json":{
+                "schema":{
+                  "$ref":"#/components/schemas/ResponseErrorListV2"
                 }
               }
             }
           },
-          "406": {
-            "description": "Unsupported Version",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResponseErrorListV2"
+          "406":{
+            "description":"Unsupported Version",
+            "content":{
+              "application/json":{
+                "schema":{
+                  "$ref":"#/components/schemas/ResponseErrorListV2"
                 }
               }
             }
           }
         },
-        "x-version": "2"
+        "x-version":"2"
       }
     },
-    "/cdr-register/v1/{industry}/data-recipients/status": {
-      "get": {
-        "tags": [
+    "/cdr-register/v1/{industry}/data-recipients/status":{
+      "get":{
+        "tags":[
           "Register"
         ],
-        "summary": "Get Data Recipients Statuses",
-        "description": "Endpoint used by participants to discover the statuses for Data Recipients from the CDR Register.\n\nObsolete versions: [v1](includes/obsolete/get-data-recipient-statuses-v1.html)",
-        "operationId": "GetDataRecipientsStatuses",
-        "parameters": [
+        "summary":"Get Data Recipients Statuses",
+        "description":"Endpoint used by participants to discover the statuses for Data Recipients from the CDR Register.\n\nObsolete versions: [v1](includes/obsolete/get-data-recipient-statuses-v1.html)",
+        "operationId":"GetDataRecipientsStatuses",
+        "parameters":[
           {
-            "name": "industry",
-            "in": "path",
-            "description": "The industry the participant is retrieving data for (Banking, etc)",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "x-cds-type": "Enum",
-              "enum": [
+            "name":"industry",
+            "in":"path",
+            "description":"The industry the participant is retrieving data for (Banking, etc)",
+            "required":true,
+            "schema":{
+              "type":"string",
+              "x-cds-type":"Enum",
+              "enum":[
                 "banking",
                 "energy",
                 "telco",
@@ -746,115 +748,115 @@
             }
           },
           {
-            "name": "x-v",
-            "in": "header",
-            "description": "The version of the API end point requested by the client. Must be set to a positive integer.",
-            "schema": {
-              "type": "integer",
-              "default": "1",
-              "x-cds-type": "PositiveInteger"
+            "name":"x-v",
+            "in":"header",
+            "description":"The version of the API end point requested by the client. Must be set to a positive integer.",
+            "schema":{
+              "type":"integer",
+              "default":"1",
+              "x-cds-type":"PositiveInteger"
             }
           },
           {
-            "name": "x-min-v",
-            "in": "header",
-            "description": "The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided.",
-            "schema": {
-              "type": "integer",
-              "x-cds-type": "PositiveInteger"
+            "name":"x-min-v",
+            "in":"header",
+            "description":"The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided.",
+            "schema":{
+              "type":"integer",
+              "x-cds-type":"PositiveInteger"
             }
           },
           {
-            "name": "If-None-Match",
-            "in": "header",
-            "description": "Makes the request method conditional on a recipient cache or origin server not having any current representation of the target resource with an entity-tag that does not match any of those listed in the field-value.",
-            "schema": {
-              "type": "string",
-              "x-cds-type": "String"
+            "name":"If-None-Match",
+            "in":"header",
+            "description":"Makes the request method conditional on a recipient cache or origin server not having any current representation of the target resource with an entity-tag that does not match any of those listed in the field-value.",
+            "schema":{
+              "type":"string",
+              "x-cds-type":"String"
             }
           }
         ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "headers": {
-              "x-v": {
-                "description": "The version of the API end point that the CDR Register has responded with.",
-                "schema": {
-                  "type": "integer",
-              "x-cds-type": "PositiveInteger"
+        "responses":{
+          "200":{
+            "description":"Success",
+            "headers":{
+              "x-v":{
+                "description":"The version of the API end point that the CDR Register has responded with.",
+                "schema":{
+                  "type":"integer",
+                  "x-cds-type":"PositiveInteger"
                 }
               },
-              "Etag": {
-                "description": "Entity tag that uniquely represents the requested resource.",
-                "schema": {
-                  "type": "string",
-              "x-cds-type": "String"
+              "Etag":{
+                "description":"Entity tag that uniquely represents the requested resource.",
+                "schema":{
+                  "type":"string",
+                  "x-cds-type":"String"
                 }
               }
             },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/DataRecipientsStatusList"
+            "content":{
+              "application/json":{
+                "schema":{
+                  "$ref":"#/components/schemas/DataRecipientsStatusList"
                 }
               }
             }
           },
-          "304": {
-            "description": "Not Modified - The current representation of the target resource matches with the entity-tag provided in the If-None-Match request header",
-            "headers": {
-              "Etag": {
-                "description": "Entity tag that uniquely represents the requested resource.",
-                "schema": {
-                  "type": "string",
-              "x-cds-type": "String"
+          "304":{
+            "description":"Not Modified - The current representation of the target resource matches with the entity-tag provided in the If-None-Match request header",
+            "headers":{
+              "Etag":{
+                "description":"Entity tag that uniquely represents the requested resource.",
+                "schema":{
+                  "type":"string",
+                  "x-cds-type":"String"
                 }
               }
             }
           },
-          "400": {
-            "description": "Missing Required Header / Invalid Version / Invalid Path Parameter",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResponseErrorListV2"
+          "400":{
+            "description":"Missing Required Header / Invalid Version / Invalid Path Parameter",
+            "content":{
+              "application/json":{
+                "schema":{
+                  "$ref":"#/components/schemas/ResponseErrorListV2"
                 }
               }
             }
           },
-          "406": {
-            "description": "Unsupported Version",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResponseErrorListV2"
+          "406":{
+            "description":"Unsupported Version",
+            "content":{
+              "application/json":{
+                "schema":{
+                  "$ref":"#/components/schemas/ResponseErrorListV2"
                 }
               }
             }
           }
         },
-        "x-version": "2"
+        "x-version":"2"
       }
     },
-    "/cdr-register/v1/{industry}/data-recipients": {
-      "get": {
-        "tags": [
+    "/cdr-register/v1/{industry}/data-recipients":{
+      "get":{
+        "tags":[
           "Register"
         ],
-        "summary": "Get Data Recipients",
-        "description": "Endpoint used by participants to discover data recipients and associated brands and software products, available in the CDR ecosystem.\n\nObsolete versions: [v2](includes/obsolete/get-data-recipients-v2.html)",
-        "operationId": "GetDataRecipients",
-        "parameters": [
+        "summary":"Get Data Recipients",
+        "description":"Endpoint used by participants to discover data recipients and associated brands and software products, available in the CDR ecosystem.\n\nObsolete versions: [v2](includes/obsolete/get-data-recipients-v2.html)",
+        "operationId":"GetDataRecipients",
+        "parameters":[
           {
-            "name": "industry",
-            "in": "path",
-            "description": "The industry the participant is retrieving data for (Banking, etc)",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "x-cds-type": "Enum",
-              "enum": [
+            "name":"industry",
+            "in":"path",
+            "description":"The industry the participant is retrieving data for (Banking, etc)",
+            "required":true,
+            "schema":{
+              "type":"string",
+              "x-cds-type":"Enum",
+              "enum":[
                 "banking",
                 "energy",
                 "telco",
@@ -863,102 +865,102 @@
             }
           },
           {
-            "name": "x-v",
-            "in": "header",
-            "description": "The version of the API end point requested by the client. Must be set to a positive integer.",
-            "schema": {
-              "type": "integer",
-              "default": "1",
-              "x-cds-type": "PositiveInteger"
+            "name":"x-v",
+            "in":"header",
+            "description":"The version of the API end point requested by the client. Must be set to a positive integer.",
+            "schema":{
+              "type":"integer",
+              "default":"1",
+              "x-cds-type":"PositiveInteger"
             }
           },
           {
-            "name": "x-min-v",
-            "in": "header",
-            "description": "The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided.",
-            "schema": {
-              "type": "integer",
-              "x-cds-type": "PositiveInteger"
+            "name":"x-min-v",
+            "in":"header",
+            "description":"The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided.",
+            "schema":{
+              "type":"integer",
+              "x-cds-type":"PositiveInteger"
             }
           },
           {
-            "name": "If-None-Match",
-            "in": "header",
-            "description": "Makes the request method conditional on a recipient cache or origin server not having any current representation of the target resource with an entity-tag that does not match any of those listed in the field-value.",
-            "schema": {
-              "type": "string",
-              "x-cds-type": "String"
+            "name":"If-None-Match",
+            "in":"header",
+            "description":"Makes the request method conditional on a recipient cache or origin server not having any current representation of the target resource with an entity-tag that does not match any of those listed in the field-value.",
+            "schema":{
+              "type":"string",
+              "x-cds-type":"String"
             }
           }
         ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "headers": {
-              "x-v": {
-                "description": "The version of the API end point that the CDR Register has responded with.",
-                "schema": {
-                  "type": "integer",
-              "x-cds-type": "PositiveInteger"
+        "responses":{
+          "200":{
+            "description":"Success",
+            "headers":{
+              "x-v":{
+                "description":"The version of the API end point that the CDR Register has responded with.",
+                "schema":{
+                  "type":"integer",
+                  "x-cds-type":"PositiveInteger"
                 }
               },
-              "Etag": {
-                "description": "Entity tag that uniquely represents the requested resource.",
-                "schema": {
-                  "type": "string",
-              "x-cds-type": "String"
+              "Etag":{
+                "description":"Entity tag that uniquely represents the requested resource.",
+                "schema":{
+                  "type":"string",
+                  "x-cds-type":"String"
                 }
               }
             },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResponseRegisterDataRecipientList"
+            "content":{
+              "application/json":{
+                "schema":{
+                  "$ref":"#/components/schemas/ResponseRegisterDataRecipientList"
                 }
               }
             }
           },
-          "304": {
-            "description": "Not Modified - The current representation of the target resource matches with the entity-tag provided in the If-None-Match request header",
-            "headers": {
-              "Etag": {
-                "description": "Entity tag that uniquely represents the requested resource.",
-                "schema": {
-                  "type": "string",
-              "x-cds-type": "String"
+          "304":{
+            "description":"Not Modified - The current representation of the target resource matches with the entity-tag provided in the If-None-Match request header",
+            "headers":{
+              "Etag":{
+                "description":"Entity tag that uniquely represents the requested resource.",
+                "schema":{
+                  "type":"string",
+                  "x-cds-type":"String"
                 }
               }
             }
           },
-          "400": {
-            "description": "Missing Required Header / Invalid Version / Invalid Path Parameter",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResponseErrorListV2"
+          "400":{
+            "description":"Missing Required Header / Invalid Version / Invalid Path Parameter",
+            "content":{
+              "application/json":{
+                "schema":{
+                  "$ref":"#/components/schemas/ResponseErrorListV2"
                 }
               }
             }
           },
-          "406": {
-            "description": "Unsupported Version",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResponseErrorListV2"
+          "406":{
+            "description":"Unsupported Version",
+            "content":{
+              "application/json":{
+                "schema":{
+                  "$ref":"#/components/schemas/ResponseErrorListV2"
                 }
               }
             }
           }
         },
-        "x-version": "3"
+        "x-version":"3"
       }
     }
   },
-  "components": {
-    "schemas": {
-      "ResponseOpenIDProviderConfigMetadata": {
-        "required": [
+  "components":{
+    "schemas":{
+      "ResponseOpenIDProviderConfigMetadata":{
+        "required":[
           "claims_supported",
           "code_challenge_methods_supported",
           "grant_types_supported",
@@ -973,121 +975,121 @@
           "token_endpoint_auth_methods_supported",
           "token_endpoint_auth_signing_alg_values_supported"
         ],
-        "type": "object",
-        "properties": {
-          "issuer": {
-            "type": "string",
-            "description": "URL using the https scheme with no query or fragment component that the CDR Register asserts as its Issuer Identifier",
-              "x-cds-type": "String"
+        "type":"object",
+        "properties":{
+          "issuer":{
+            "type":"string",
+            "description":"URL using the https scheme with no query or fragment component that the CDR Register asserts as its Issuer Identifier",
+            "x-cds-type":"String"
           },
-          "jwks_uri": {
-            "type": "string",
-            "description": "URL of the CDR Register's JSON Web Key Set **[[JWK]](#nref-JWK)** document. This contains the signing key(s) used to validate access tokens issued from the CDR Register. Note that this differs from the JWKS endpoint used to validate SSAs and CDR Register client authentication",
-              "x-cds-type": "URIString"
+          "jwks_uri":{
+            "type":"string",
+            "description":"URL of the CDR Register's JSON Web Key Set **[[JWK]](#nref-JWK)** document. This contains the signing key(s) used to validate access tokens issued from the CDR Register. Note that this differs from the JWKS endpoint used to validate SSAs and CDR Register client authentication",
+            "x-cds-type":"URIString"
           },
-          "token_endpoint": {
-            "type": "string",
-            "description": "URL of the CDR Register's OAuth 2.0 Token Endpoint",
-              "x-cds-type": "URIString"
+          "token_endpoint":{
+            "type":"string",
+            "description":"URL of the CDR Register's OAuth 2.0 Token Endpoint",
+            "x-cds-type":"URIString"
           },
-          "claims_supported": {
-            "type": "array",
-            "description": "JSON array containing a list of the Claim Names of the Claims that the CDR Register supplies values for",
-            "items": {
-              "type": "string",
-              "x-cds-type": "String"
+          "claims_supported":{
+            "type":"array",
+            "description":"JSON array containing a list of the Claim Names of the Claims that the CDR Register supplies values for",
+            "items":{
+              "type":"string",
+              "x-cds-type":"String"
             }
           },
-          "id_token_signing_alg_values_supported": {
-            "type": "array",
-            "description": "JSON array containing a list of the JWS signing algorithms (alg values) supported by the CDR Register for the ID Token to encode the Claims in a JWT. Given the CDR Register does not issue ID tokens, this field can be safely ignored",
-            "items": {
-              "type": "string",
-              "x-cds-type": "String"
+          "id_token_signing_alg_values_supported":{
+            "type":"array",
+            "description":"JSON array containing a list of the JWS signing algorithms (alg values) supported by the CDR Register for the ID Token to encode the Claims in a JWT. Given the CDR Register does not issue ID tokens, this field can be safely ignored",
+            "items":{
+              "type":"string",
+              "x-cds-type":"String"
             }
           },
-          "subject_types_supported": {
-            "type": "array",
-            "description": "JSON array containing a list of the Subject Identifier types that the CDR Register supports. Given the CDR Register does not issue ID tokens, this field can be safely ignored",
-            "items": {
-              "type": "string",
-              "x-cds-type": "String"
+          "subject_types_supported":{
+            "type":"array",
+            "description":"JSON array containing a list of the Subject Identifier types that the CDR Register supports. Given the CDR Register does not issue ID tokens, this field can be safely ignored",
+            "items":{
+              "type":"string",
+              "x-cds-type":"String"
             }
           },
-          "code_challenge_methods_supported": {
-            "type": "array",
-            "description": "JSON array containing a list of Proof Key for Code Exchange (PKCE) **[[RFC7636]](#nref-RFC7636)** code challenge methods supported by this authorization server. Given the CDR Register does not support PKCE, this field can be safely ignored",
-            "items": {
-              "type": "string",
-              "x-cds-type": "String"
+          "code_challenge_methods_supported":{
+            "type":"array",
+            "description":"JSON array containing a list of Proof Key for Code Exchange (PKCE) **[[RFC7636]](#nref-RFC7636)** code challenge methods supported by this authorization server. Given the CDR Register does not support PKCE, this field can be safely ignored",
+            "items":{
+              "type":"string",
+              "x-cds-type":"String"
             }
           },
-          "scopes_supported": {
-            "type": "array",
-            "description": "JSON array containing a list of the OAuth 2.0 **[[RFC6749]](#nref-RFC6749)** scope values that the CDR Register supports",
-            "items": {
-              "type": "string",
-              "x-cds-type": "String"
+          "scopes_supported":{
+            "type":"array",
+            "description":"JSON array containing a list of the OAuth 2.0 **[[RFC6749]](#nref-RFC6749)** scope values that the CDR Register supports",
+            "items":{
+              "type":"string",
+              "x-cds-type":"String"
             }
           },
-          "response_types_supported": {
-            "type": "array",
-            "description": "JSON array containing a list of the OAuth 2.0 response_type values that the CDR Registrer supports",
-            "items": {
-              "type": "string",
-              "x-cds-type": "String"
+          "response_types_supported":{
+            "type":"array",
+            "description":"JSON array containing a list of the OAuth 2.0 response_type values that the CDR Registrer supports",
+            "items":{
+              "type":"string",
+              "x-cds-type":"String"
             }
           },
-          "grant_types_supported": {
-            "type": "array",
-            "description": "JSON array containing a list of the OAuth 2.0 Grant Type values that the CDR Register supports",
-            "items": {
-              "type": "string",
-              "x-cds-type": "String"
+          "grant_types_supported":{
+            "type":"array",
+            "description":"JSON array containing a list of the OAuth 2.0 Grant Type values that the CDR Register supports",
+            "items":{
+              "type":"string",
+              "x-cds-type":"String"
             }
           },
-          "token_endpoint_auth_methods_supported": {
-            "type": "array",
-            "description": "JSON array containing a list of Client Authentication methods supported by this Token Endpoint",
-            "items": {
-              "type": "string",
-              "x-cds-type": "String"
+          "token_endpoint_auth_methods_supported":{
+            "type":"array",
+            "description":"JSON array containing a list of Client Authentication methods supported by this Token Endpoint",
+            "items":{
+              "type":"string",
+              "x-cds-type":"String"
             }
           },
-          "tls_client_certificate_bound_access_tokens": {
-            "type": "boolean",
-            "description": "Boolean value indicating server support for mutual TLS client certificate bound access tokens",
-              "x-cds-type": "Boolean"
+          "tls_client_certificate_bound_access_tokens":{
+            "type":"boolean",
+            "description":"Boolean value indicating server support for mutual TLS client certificate bound access tokens",
+            "x-cds-type":"Boolean"
           },
-          "token_endpoint_auth_signing_alg_values_supported": {
-            "type": "array",
-            "description": "JSON array containing a list of the JWS signing algorithms (alg values) supported by the token endpoint for the signature on the JWT **[[JWT]](#nref-JWT)** used to authenticate the client at the token endpoint for the \"private_key_jwt\" authentication method",
-            "items": {
-              "type": "string",
-              "x-cds-type": "String"
+          "token_endpoint_auth_signing_alg_values_supported":{
+            "type":"array",
+            "description":"JSON array containing a list of the JWS signing algorithms (alg values) supported by the token endpoint for the signature on the JWT **[[JWT]](#nref-JWT)** used to authenticate the client at the token endpoint for the \"private_key_jwt\" authentication method",
+            "items":{
+              "type":"string",
+              "x-cds-type":"String"
             }
           }
         },
-        "description": "Response containing the Open ID Provider Configuration Metadata"
+        "description":"Response containing the Open ID Provider Configuration Metadata"
       },
-      "ResponseJWKS": {
-        "required": [
+      "ResponseJWKS":{
+        "required":[
           "keys"
         ],
-        "type": "object",
-        "properties": {
-          "keys": {
-            "type": "array",
-            "description": "The value of the \"keys\" parameter is an array of JWK values",
-            "items": {
-              "$ref": "#/components/schemas/JWK"
+        "type":"object",
+        "properties":{
+          "keys":{
+            "type":"array",
+            "description":"The value of the \"keys\" parameter is an array of JWK values",
+            "items":{
+              "$ref":"#/components/schemas/JWK"
             }
           }
         },
-        "description": "Response containing the JSON Web Key Set"
+        "description":"Response containing the JSON Web Key Set"
       },
-      "JWK": {
-        "required": [
+      "JWK":{
+        "required":[
           "alg",
           "e",
           "key_ops",
@@ -1095,71 +1097,71 @@
           "kty",
           "n"
         ],
-        "type": "object",
-        "properties": {
-          "alg": {
-            "type": "string",
-            "description": "The \"alg\" (algorithm) parameter identifies the algorithm intended for use with the key",
-              "x-cds-type": "String"
+        "type":"object",
+        "properties":{
+          "alg":{
+            "type":"string",
+            "description":"The \"alg\" (algorithm) parameter identifies the algorithm intended for use with the key",
+            "x-cds-type":"String"
           },
-          "e": {
-            "type": "string",
-            "description": "The \"e\" RSA public exponent parameter",
-              "x-cds-type": "String"
+          "e":{
+            "type":"string",
+            "description":"The \"e\" RSA public exponent parameter",
+            "x-cds-type":"String"
           },
-          "key_ops": {
-            "type": "array",
-            "description": "The \"key_ops\" (key operations) parameter identifies the operation(s) for which the key is intended to be used",
-            "items": {
-              "type": "string",
-              "x-cds-type": "String"
+          "key_ops":{
+            "type":"array",
+            "description":"The \"key_ops\" (key operations) parameter identifies the operation(s) for which the key is intended to be used",
+            "items":{
+              "type":"string",
+              "x-cds-type":"String"
             }
           },
-          "kid": {
-            "type": "string",
-            "description": "The \"kid\" (key ID) parameter is partially used to match a specific key. Note the \"kid\" parameter is not guaranteed unique and additional parameters should be used to progressively to identify a key within a set",
-              "x-cds-type": "String"
+          "kid":{
+            "type":"string",
+            "description":"The \"kid\" (key ID) parameter is partially used to match a specific key. Note the \"kid\" parameter is not guaranteed unique and additional parameters should be used to progressively to identify a key within a set",
+            "x-cds-type":"String"
           },
-          "kty": {
-            "type": "string",
-            "description": "The \"kty\" (key type) parameter identifies the cryptographic algorithm family used with the key",
-              "x-cds-type": "String"
+          "kty":{
+            "type":"string",
+            "description":"The \"kty\" (key type) parameter identifies the cryptographic algorithm family used with the key",
+            "x-cds-type":"String"
           },
-          "n": {
-            "type": "string",
-            "description": "The \"n\" RSA public modulus parameter",
-              "x-cds-type": "String"
+          "n":{
+            "type":"string",
+            "description":"The \"n\" RSA public modulus parameter",
+            "x-cds-type":"String"
           }
         },
-        "description": "Object representing a JSON Web Key"
+        "description":"Object representing a JSON Web Key"
       },
-      "ResponseRegisterDataHolderBrandList": {
-        "required": [
+      "ResponseRegisterDataHolderBrandList":{
+        "required":[
           "data",
           "links",
           "meta"
         ],
-        "type": "object",
-        "properties": {
-          "data": {
-            "uniqueItems": true,
-            "type": "array",
-            "description": "Response data for the query",
-            "items": {
-              "$ref": "#/components/schemas/RegisterDataHolderBrand"
+        "type":"object",
+        "properties":{
+          "data":{
+            "uniqueItems":true,
+            "type":"array",
+            "description":"Response data for the query",
+            "items":{
+              "$ref":"#/components/schemas/RegisterDataHolderBrand"
             }
           },
-          "links": {
-            "$ref": "#/components/schemas/LinksPaginated"
+          "links":{
+            "$ref":"#/components/schemas/LinksPaginated"
           },
-          "meta": {
-            "$ref": "#/components/schemas/MetaPaginated"
+          "meta":{
+            "$ref":"#/components/schemas/MetaPaginated"
           }
         },
-        "description": "Response containing a list of CDR Register Data Holder Brand objects"
+        "description":"Response containing a list of CDR Register Data Holder Brand objects"
       },
-      "RegisterDataHolderBrand": {
-        "required": [
+      "RegisterDataHolderBrand":{
+        "required":[
           "authDetails",
           "brandName",
           "dataHolderBrandId",
@@ -1170,266 +1172,266 @@
           "logoUri",
           "status"
         ],
-        "type": "object",
-        "properties": {
-          "dataHolderBrandId": {
-            "maxLength": 36,
-            "type": "string",
-            "description": "Unique id of the Data Holder Brand issued by the CDR Register",
-              "x-cds-type": "String"
+        "type":"object",
+        "properties":{
+          "dataHolderBrandId":{
+            "maxLength":36,
+            "type":"string",
+            "description":"Unique id of the Data Holder Brand issued by the CDR Register",
+            "x-cds-type":"String"
           },
-          "brandName": {
-            "maxLength": 200,
-            "type": "string",
-            "description": "The name of Data Holder Brand",
-              "x-cds-type": "String"
+          "brandName":{
+            "maxLength":200,
+            "type":"string",
+            "description":"The name of Data Holder Brand",
+            "x-cds-type":"String"
           },
-          "industries": {
-            "uniqueItems": true,
-            "type": "array",
-            "description": "The industries the Data Holder Brand belongs to",
-            "items": {
-              "type": "string",
-              "x-cds-type": "Enum",
-              "enum": [
+          "industries":{
+            "uniqueItems":true,
+            "type":"array",
+            "description":"The industries the Data Holder Brand belongs to",
+            "items":{
+              "type":"string",
+              "x-cds-type":"Enum",
+              "enum":[
                 "banking",
                 "energy",
                 "telco"
               ]
             }
           },
-          "logoUri": {
-            "maxLength": 1000,
-            "type": "string",
-            "description": "Brand logo URI",
-            "x-cds-type": "URIString"
+          "logoUri":{
+            "maxLength":1000,
+            "type":"string",
+            "description":"Brand logo URI",
+            "x-cds-type":"URIString"
           },
-          "legalEntity": {
-            "$ref": "#/components/schemas/LegalEntityDetail"
+          "legalEntity":{
+            "$ref":"#/components/schemas/LegalEntityDetail"
           },
-          "status": {
-            "type": "string",
-            "x-cds-type": "Enum",
-            "enum": [
+          "status":{
+            "type":"string",
+            "x-cds-type":"Enum",
+            "enum":[
               "ACTIVE",
               "INACTIVE",
               "REMOVED"
             ]
           },
-          "endpointDetail": {
-            "$ref": "#/components/schemas/RegisterDataHolderBrandServiceEndpoint"
+          "endpointDetail":{
+            "$ref":"#/components/schemas/RegisterDataHolderBrandServiceEndpoint"
           },
-          "authDetails": {
-            "uniqueItems": true,
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/RegisterDataHolderAuth"
+          "authDetails":{
+            "uniqueItems":true,
+            "type":"array",
+            "items":{
+              "$ref":"#/components/schemas/RegisterDataHolderAuth"
             }
           },
-          "lastUpdated": {
-            "type": "string",
-            "description": "The date/time that the Data Holder Brand data was last updated in the Register",
-            "format": "date-time",
-            "x-cds-type": "DateTimeString"
+          "lastUpdated":{
+            "type":"string",
+            "description":"The date/time that the Data Holder Brand data was last updated in the Register",
+            "format":"date-time",
+            "x-cds-type":"DateTimeString"
           }
         }
       },
-      "ResponseDataHoldersBrandSummaryList": {
-        "required": [
+      "ResponseDataHoldersBrandSummaryList":{
+        "required":[
           "data",
           "links",
           "meta"
         ],
-        "type": "object",
-        "properties": {
-          "data": {
-            "uniqueItems": true,
-            "type": "array",
-            "description": "Response data for the query",
-            "items": {
-              "$ref": "#/components/schemas/DataHolderBrandSummary"
+        "type":"object",
+        "properties":{
+          "data":{
+            "uniqueItems":true,
+            "type":"array",
+            "description":"Response data for the query",
+            "items":{
+              "$ref":"#/components/schemas/DataHolderBrandSummary"
             }
           },
-          "links": {
-            "$ref": "#/components/schemas/Links"
+          "links":{
+            "$ref":"#/components/schemas/Links"
           },
-          "meta": {
-            "$ref": "#/components/schemas/Meta"
+          "meta":{
+            "$ref":"#/components/schemas/Meta"
           }
         }
       },
-      "DataHolderBrandSummary": {
-        "required": [
+      "DataHolderBrandSummary":{
+        "required":[
           "brandName",
           "publicBaseUri",
           "logoUri",
           "industries",
           "lastUpdated"
         ],
-        "type": "object",
-        "properties": {
-          "dataHolderBrandId": {
-            "maxLength": 36,
-            "type": "string",
-            "x-cds-type": "String",
-            "x-conditional": true,
-            "description": "Unique id of the Data Holder Brand issued by the CDR Register"
+        "type":"object",
+        "properties":{
+          "dataHolderBrandId":{
+            "maxLength":36,
+            "type":"string",
+            "x-cds-type":"String",
+            "x-conditional":true,
+            "description":"Unique id of the Data Holder Brand issued by the CDR Register"
           },
-          "interimId": {
-            "maxLength": 36,
-            "type": "string",
-            "x-cds-type": "String",
-            "x-conditional": true,
-            "description": "Interim id of the Data Holder Brand issued by the CDR Register. This is to be used to uniquely identify the record when dataHolderBrandId is not populated and is not to be reused"
+          "interimId":{
+            "maxLength":36,
+            "type":"string",
+            "x-cds-type":"String",
+            "x-conditional":true,
+            "description":"Interim id of the Data Holder Brand issued by the CDR Register. This is to be used to uniquely identify the record when dataHolderBrandId is not populated and is not to be reused"
           },
-          "brandName": {
-            "maxLength": 200,
-            "type": "string",
-             "x-cds-type": "String",
-            "description": "The name of Data Holder Brand"
+          "brandName":{
+            "maxLength":200,
+            "type":"string",
+            "x-cds-type":"String",
+            "description":"The name of Data Holder Brand"
           },
-          "publicBaseUri": {
-            "maxLength": 1000,
-            "type": "string",
-            "description": "Base URI for the Data Holder's Consumer Data Standard public endpoints",
-            "x-cds-type": "URIString"
+          "publicBaseUri":{
+            "maxLength":1000,
+            "type":"string",
+            "description":"Base URI for the Data Holder's Consumer Data Standard public endpoints",
+            "x-cds-type":"URIString"
           },
-          "logoUri": {
-            "maxLength": 1000,
-            "type": "string",
-            "description": "Brand logo URI",
-            "x-cds-type": "URIString"
+          "logoUri":{
+            "maxLength":1000,
+            "type":"string",
+            "description":"Brand logo URI",
+            "x-cds-type":"URIString"
           },
-          "industries": {
-            "uniqueItems": true,
-            "type": "array",
-            "description": "The industries the Data Holder Brand belongs to",
-            "items": {
-              "type": "string",
-              "x-cds-type": "Enum",
-              "enum": [
+          "industries":{
+            "uniqueItems":true,
+            "type":"array",
+            "description":"The industries the Data Holder Brand belongs to",
+            "items":{
+              "type":"string",
+              "x-cds-type":"Enum",
+              "enum":[
                 "banking",
                 "energy",
                 "telco"
               ]
             }
           },
-          "lastUpdated": {
-            "type": "string",
-            "description": "The date/time that the Data Holder Brand data was last updated in the Register",
-            "format": "date-time",
-            "x-cds-type": "DateTimeString"
+          "lastUpdated":{
+            "type":"string",
+            "description":"The date/time that the Data Holder Brand data was last updated in the Register",
+            "format":"date-time",
+            "x-cds-type":"DateTimeString"
           },
-          "abn": {
-            "maxLength": 11,
-            "type": "string",
-            "x-cds-type": "String",
-            "description": "Australian Business Number for the organisation"
+          "abn":{
+            "maxLength":11,
+            "type":"string",
+            "x-cds-type":"String",
+            "description":"Australian Business Number for the organisation"
           },
-          "acn": {
-            "maxLength": 9,
-            "type": "string",
-            "x-cds-type": "String",
-            "description": "Australian Company Number for the organisation"
+          "acn":{
+            "maxLength":9,
+            "type":"string",
+            "x-cds-type":"String",
+            "description":"Australian Company Number for the organisation"
           },
-          "arbn": {
-            "maxLength": 9,
-            "type": "string",
-            "x-cds-type": "String",
-            "description": "Australian Registered Body Number.  ARBNs are issued to registrable Australian bodies and foreign companies"
+          "arbn":{
+            "maxLength":9,
+            "type":"string",
+            "x-cds-type":"String",
+            "description":"Australian Registered Body Number.  ARBNs are issued to registrable Australian bodies and foreign companies"
           }
         }
       },
-      "DataHoldersStatusList": {
-        "required": [
+      "DataHoldersStatusList":{
+        "required":[
           "data",
           "links",
           "meta"
         ],
-        "type": "object",
-        "properties": {
-          "data": {
-            "uniqueItems": true,
-            "type": "array",
-            "description": "Response data for the query",
-            "items": {
-              "$ref": "#/components/schemas/DataHolderStatus"
+        "type":"object",
+        "properties":{
+          "data":{
+            "uniqueItems":true,
+            "type":"array",
+            "description":"Response data for the query",
+            "items":{
+              "$ref":"#/components/schemas/DataHolderStatus"
             }
           },
-          "links": {
-            "$ref": "#/components/schemas/Links"
+          "links":{
+            "$ref":"#/components/schemas/Links"
           },
-          "meta": {
-            "$ref": "#/components/schemas/Meta"
+          "meta":{
+            "$ref":"#/components/schemas/Meta"
           }
         }
       },
-      "DataHolderStatus": {
-        "required": [
+      "DataHolderStatus":{
+        "required":[
           "legalEntityId",
           "status"
         ],
-        "type": "object",
-        "properties": {
-          "legalEntityId": {
-            "maxLength": 36,
-            "type": "string",
-            "x-cds-type": "String",
-            "description": "Unique id of the Data Holder Legal Entity issued by the CDR Register."
+        "type":"object",
+        "properties":{
+          "legalEntityId":{
+            "maxLength":36,
+            "type":"string",
+            "x-cds-type":"String",
+            "description":"Unique id of the Data Holder Legal Entity issued by the CDR Register."
           },
-          "status": {
-            "type": "string",
-            "x-cds-type": "Enum",
-            "description": "Data Holder status in the CDR Register",
-            "enum": [
+          "status":{
+            "type":"string",
+            "x-cds-type":"Enum",
+            "description":"Data Holder status in the CDR Register",
+            "enum":[
               "ACTIVE",
               "REMOVED"
             ]
           }
         }
       },
-      "SoftwareProductsStatusList": {
-        "required": [
+      "SoftwareProductsStatusList":{
+        "required":[
           "data",
           "links",
           "meta"
         ],
-        "type": "object",
-        "properties": {
-          "data": {
-            "uniqueItems": true,
-            "type": "array",
-            "description": "Response data for the query",
-            "items": {
-              "$ref": "#/components/schemas/SoftwareProductStatus"
+        "type":"object",
+        "properties":{
+          "data":{
+            "uniqueItems":true,
+            "type":"array",
+            "description":"Response data for the query",
+            "items":{
+              "$ref":"#/components/schemas/SoftwareProductStatus"
             }
           },
-          "links": {
-            "$ref": "#/components/schemas/Links"
+          "links":{
+            "$ref":"#/components/schemas/Links"
           },
-          "meta": {
-            "$ref": "#/components/schemas/Meta"
+          "meta":{
+            "$ref":"#/components/schemas/Meta"
           }
         }
       },
-      "SoftwareProductStatus": {
-        "required": [
+      "SoftwareProductStatus":{
+        "required":[
           "softwareProductId",
           "status"
         ],
-        "type": "object",
-        "properties": {
-          "softwareProductId": {
-            "maxLength": 36,
-            "type": "string",
-            "x-cds-type": "String",
-            "description": "Unique id of the software product issued by the CDR Register"
+        "type":"object",
+        "properties":{
+          "softwareProductId":{
+            "maxLength":36,
+            "type":"string",
+            "x-cds-type":"String",
+            "description":"Unique id of the software product issued by the CDR Register"
           },
-          "status": {
-            "type": "string",
-            "x-cds-type": "Enum",
-            "description": "Software product status in the CDR Register",
-            "enum": [
+          "status":{
+            "type":"string",
+            "x-cds-type":"Enum",
+            "description":"Software product status in the CDR Register",
+            "enum":[
               "ACTIVE",
               "INACTIVE",
               "REMOVED"
@@ -1437,48 +1439,48 @@
           }
         }
       },
-      "DataRecipientsStatusList": {
-        "required": [
+      "DataRecipientsStatusList":{
+        "required":[
           "data",
           "links",
           "meta"
         ],
-        "type": "object",
-        "properties": {
-          "data": {
-            "uniqueItems": true,
-            "type": "array",
-            "description": "Response data for the query",
-            "items": {
-              "$ref": "#/components/schemas/DataRecipientStatus"
+        "type":"object",
+        "properties":{
+          "data":{
+            "uniqueItems":true,
+            "type":"array",
+            "description":"Response data for the query",
+            "items":{
+              "$ref":"#/components/schemas/DataRecipientStatus"
             }
           },
-          "links": {
-            "$ref": "#/components/schemas/Links"
+          "links":{
+            "$ref":"#/components/schemas/Links"
           },
-          "meta": {
-            "$ref": "#/components/schemas/Meta"
+          "meta":{
+            "$ref":"#/components/schemas/Meta"
           }
         }
       },
-      "DataRecipientStatus": {
-        "required": [
+      "DataRecipientStatus":{
+        "required":[
           "legalEntityId",
           "status"
         ],
-        "type": "object",
-        "properties": {
-          "legalEntityId": {
-            "maxLength": 36,
-            "type": "string",
-            "x-cds-type": "String",
-            "description": "Unique id of the Data Recipient Legal Entity issued by the CDR Register"
+        "type":"object",
+        "properties":{
+          "legalEntityId":{
+            "maxLength":36,
+            "type":"string",
+            "x-cds-type":"String",
+            "description":"Unique id of the Data Recipient Legal Entity issued by the CDR Register"
           },
-          "status": {
-            "type": "string",
-            "x-cds-type": "Enum",
-            "description": "Data Recipient status in the CDR Register",
-            "enum": [
+          "status":{
+            "type":"string",
+            "x-cds-type":"Enum",
+            "description":"Data Recipient status in the CDR Register",
+            "enum":[
               "ACTIVE",
               "SUSPENDED",
               "REVOKED",
@@ -1487,33 +1489,33 @@
           }
         }
       },
-      "ResponseRegisterDataRecipientList": {
-        "required": [
+      "ResponseRegisterDataRecipientList":{
+        "required":[
           "data",
           "links",
           "meta"
         ],
-        "type": "object",
-        "properties": {
-          "data": {
-            "uniqueItems": true,
-            "type": "array",
-            "description": "Response data for the query",
-            "items": {
-              "$ref": "#/components/schemas/RegisterDataRecipient"
+        "type":"object",
+        "properties":{
+          "data":{
+            "uniqueItems":true,
+            "type":"array",
+            "description":"Response data for the query",
+            "items":{
+              "$ref":"#/components/schemas/RegisterDataRecipient"
             }
           },
-          "links": {
-            "$ref": "#/components/schemas/Links"
+          "links":{
+            "$ref":"#/components/schemas/Links"
           },
-          "meta": {
-            "$ref": "#/components/schemas/Meta"
+          "meta":{
+            "$ref":"#/components/schemas/Meta"
           }
         },
-        "description": "Response containing a list of Data Recipients in the CDR Register"
+        "description":"Response containing a list of Data Recipients in the CDR Register"
       },
-      "RegisterDataRecipient": {
-        "required": [
+      "RegisterDataRecipient":{
+        "required":[
           "accreditationLevel",
           "accreditationNumber",
           "lastUpdated",
@@ -1522,234 +1524,234 @@
           "logoUri",
           "status"
         ],
-        "type": "object",
-        "properties": {
-          "legalEntityId": {
-            "maxLength": 36,
-            "type": "string",
-            "x-cds-type": "String",
-            "description": "Unique id of the Data Recipient Legal Entity issued by the CDR Register."
+        "type":"object",
+        "properties":{
+          "legalEntityId":{
+            "maxLength":36,
+            "type":"string",
+            "x-cds-type":"String",
+            "description":"Unique id of the Data Recipient Legal Entity issued by the CDR Register."
           },
-          "legalEntityName": {
-            "maxLength": 200,
-            "type": "string",
-            "x-cds-type": "String",
-            "description": "Legal name of the Data Recipient"
+          "legalEntityName":{
+            "maxLength":200,
+            "type":"string",
+            "x-cds-type":"String",
+            "description":"Legal name of the Data Recipient"
           },
-          "accreditationNumber": {
-            "maxLength": 100,
-            "type": "string",
-            "x-cds-type": "String",
-            "description": "CDR Register issued human readable unique number given to Data Recipients upon accreditation"
+          "accreditationNumber":{
+            "maxLength":100,
+            "type":"string",
+            "x-cds-type":"String",
+            "description":"CDR Register issued human readable unique number given to Data Recipients upon accreditation"
           },
-          "accreditationLevel": {
-            "type": "string",
-            "x-cds-type": "Enum",
-            "description": "Accreditation level of the Data Recipient in the CDR Register",
-            "enum": [
+          "accreditationLevel":{
+            "type":"string",
+            "x-cds-type":"Enum",
+            "description":"Accreditation level of the Data Recipient in the CDR Register",
+            "enum":[
               "UNRESTRICTED",
               "SPONSORED"
             ]
           },
-          "logoUri": {
-            "maxLength": 1000,
-            "type": "string",
-            "description": "Legal Entity logo URI",
-            "x-cds-type": "URIString"
+          "logoUri":{
+            "maxLength":1000,
+            "type":"string",
+            "description":"Legal Entity logo URI",
+            "x-cds-type":"URIString"
           },
-          "dataRecipientBrands": {
-            "uniqueItems": true,
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/DataRecipientBrandMetaData"
+          "dataRecipientBrands":{
+            "uniqueItems":true,
+            "type":"array",
+            "items":{
+              "$ref":"#/components/schemas/DataRecipientBrandMetaData"
             }
           },
-          "status": {
-            "type": "string",
-            "x-cds-type": "Enum",
-            "description": "Data Recipient status in the CDR Register",
-            "enum": [
+          "status":{
+            "type":"string",
+            "x-cds-type":"Enum",
+            "description":"Data Recipient status in the CDR Register",
+            "enum":[
               "ACTIVE",
               "SUSPENDED",
               "REVOKED",
               "SURRENDERED"
             ]
           },
-          "lastUpdated": {
-            "type": "string",
-            "description": "The date/time that the Legal Entity was last updated in the CDR Register",
-            "format": "date-time",
-            "x-cds-type": "DateTimeString"
+          "lastUpdated":{
+            "type":"string",
+            "description":"The date/time that the Legal Entity was last updated in the CDR Register",
+            "format":"date-time",
+            "x-cds-type":"DateTimeString"
           }
         }
       },
-      "DataRecipientBrandMetaData": {
-        "required": [
+      "DataRecipientBrandMetaData":{
+        "required":[
           "brandName",
           "dataRecipientBrandId",
           "logoUri",
           "status"
         ],
-        "type": "object",
-        "properties": {
-          "dataRecipientBrandId": {
-            "maxLength": 36,
-            "type": "string",
-            "x-cds-type": "String",
-            "description": "Unique id of the Data Recipient brand issued by the CDR Register"
+        "type":"object",
+        "properties":{
+          "dataRecipientBrandId":{
+            "maxLength":36,
+            "type":"string",
+            "x-cds-type":"String",
+            "description":"Unique id of the Data Recipient brand issued by the CDR Register"
           },
-          "brandName": {
-            "maxLength": 200,
-            "type": "string",
-            "x-cds-type": "String",
-            "description": "Data Recipient Brand name"
+          "brandName":{
+            "maxLength":200,
+            "type":"string",
+            "x-cds-type":"String",
+            "description":"Data Recipient Brand name"
           },
-          "logoUri": {
-            "maxLength": 1000,
-            "type": "string",
-            "description": "Data Recipient Brand logo URI",
-            "x-cds-type": "URIString"
+          "logoUri":{
+            "maxLength":1000,
+            "type":"string",
+            "description":"Data Recipient Brand logo URI",
+            "x-cds-type":"URIString"
           },
-          "softwareProducts": {
-            "uniqueItems": true,
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/SoftwareProductMetaData"
+          "softwareProducts":{
+            "uniqueItems":true,
+            "type":"array",
+            "items":{
+              "$ref":"#/components/schemas/SoftwareProductMetaData"
             }
           },
-          "status": {
-            "type": "string",
-            "x-cds-type": "Enum",
-            "description": "Data Recipient Brand status in the CDR Register",
-            "enum": [
+          "status":{
+            "type":"string",
+            "x-cds-type":"Enum",
+            "description":"Data Recipient Brand status in the CDR Register",
+            "enum":[
               "ACTIVE",
               "INACTIVE",
               "REMOVED"
             ]
           }
         },
-        "description": "Metadata related to Data Recipient Brand"
+        "description":"Metadata related to Data Recipient Brand"
       },
-      "SoftwareProductMetaData": {
-        "required": [
+      "SoftwareProductMetaData":{
+        "required":[
           "logoUri",
           "softwareProductId",
           "softwareProductName",
           "softwareProductDescription",
           "status"
         ],
-        "type": "object",
-        "properties": {
-          "softwareProductId": {
-            "maxLength": 36,
-            "type": "string",
-            "x-cds-type": "String",
-            "description": "Unique id of the Data Recipient software product issued by the CDR Register"
+        "type":"object",
+        "properties":{
+          "softwareProductId":{
+            "maxLength":36,
+            "type":"string",
+            "x-cds-type":"String",
+            "description":"Unique id of the Data Recipient software product issued by the CDR Register"
           },
-          "softwareProductName": {
-            "maxLength": 200,
-            "type": "string",
-            "x-cds-type": "String",
-            "description": "Name of the software product"
+          "softwareProductName":{
+            "maxLength":200,
+            "type":"string",
+            "x-cds-type":"String",
+            "description":"Name of the software product"
           },
-          "softwareProductDescription": {
-            "maxLength": 4000,
-            "type": "string",
-            "x-cds-type": "String",
-            "description": "Description of the software product"
+          "softwareProductDescription":{
+            "maxLength":4000,
+            "type":"string",
+            "x-cds-type":"String",
+            "description":"Description of the software product"
           },
-          "logoUri": {
-            "maxLength": 1000,
-            "type": "string",
-            "description": "Software product logo URI",
-            "x-cds-type": "URIString"
+          "logoUri":{
+            "maxLength":1000,
+            "type":"string",
+            "description":"Software product logo URI",
+            "x-cds-type":"URIString"
           },
-          "status": {
-            "type": "string",
-            "x-cds-type": "Enum",
-            "description": "Software Product status in the CDR Register",
-            "enum": [
+          "status":{
+            "type":"string",
+            "x-cds-type":"Enum",
+            "description":"Software Product status in the CDR Register",
+            "enum":[
               "ACTIVE",
               "INACTIVE",
               "REMOVED"
             ]
           }
         },
-        "description": "Data Recipient Brand Software Products"
+        "description":"Data Recipient Brand Software Products"
       },
-      "LegalEntityDetail": {
-        "required": [
+      "LegalEntityDetail":{
+        "required":[
           "legalEntityId",
           "legalEntityName",
           "logoUri",
           "status"
         ],
-        "type": "object",
-        "properties": {
-          "legalEntityId": {
-            "maxLength": 36,
-            "type": "string",
-            "x-cds-type": "String",
-            "description": "Unique id of the organisation issued by the CDR Register"
+        "type":"object",
+        "properties":{
+          "legalEntityId":{
+            "maxLength":36,
+            "type":"string",
+            "x-cds-type":"String",
+            "description":"Unique id of the organisation issued by the CDR Register"
           },
-          "legalEntityName": {
-            "maxLength": 36,
-            "type": "string",
-            "x-cds-type": "String",
-            "description": "Unique legal name of the organisation"
+          "legalEntityName":{
+            "maxLength":36,
+            "type":"string",
+            "x-cds-type":"String",
+            "description":"Unique legal name of the organisation"
           },
-          "logoUri": {
-            "maxLength": 1000,
-            "type": "string",
-            "description": "Legal Entity logo URI",
-            "x-cds-type": "URIString"
+          "logoUri":{
+            "maxLength":1000,
+            "type":"string",
+            "description":"Legal Entity logo URI",
+            "x-cds-type":"URIString"
           },
-          "registrationNumber": {
-            "type": "string",
-            "x-cds-type": "String",
-            "description": "Unique registration number (if the company is registered outside Australia)"
+          "registrationNumber":{
+            "type":"string",
+            "x-cds-type":"String",
+            "description":"Unique registration number (if the company is registered outside Australia)"
           },
-          "registrationDate": {
-            "type": "string",
-            "description": "Date of registration (if the company is registered outside Australia)",
-            "format": "date",
-            "x-cds-type": "DateString"
+          "registrationDate":{
+            "type":"string",
+            "description":"Date of registration (if the company is registered outside Australia)",
+            "format":"date",
+            "x-cds-type":"DateString"
           },
-          "registeredCountry": {
-            "maxLength": 100,
-            "type": "string",
-            "x-cds-type": "String",
-            "description": "Country of registeration (if the company is registered outside Australia)"
+          "registeredCountry":{
+            "maxLength":100,
+            "type":"string",
+            "x-cds-type":"String",
+            "description":"Country of registeration (if the company is registered outside Australia)"
           },
-          "abn": {
-            "maxLength": 11,
-            "type": "string",
-            "x-cds-type": "String",
-            "description": "Australian Business Number for the organisation"
+          "abn":{
+            "maxLength":11,
+            "type":"string",
+            "x-cds-type":"String",
+            "description":"Australian Business Number for the organisation"
           },
-          "acn": {
-            "maxLength": 9,
-            "type": "string",
-            "x-cds-type": "String",
-            "description": "Australian Company Number for the organisation"
+          "acn":{
+            "maxLength":9,
+            "type":"string",
+            "x-cds-type":"String",
+            "description":"Australian Company Number for the organisation"
           },
-          "arbn": {
-            "maxLength": 9,
-            "type": "string",
-            "x-cds-type": "String",
-            "description": "Australian Registered Body Number.  ARBNs are issued to registrable Australian bodies and foreign companies"
+          "arbn":{
+            "maxLength":9,
+            "type":"string",
+            "x-cds-type":"String",
+            "description":"Australian Registered Body Number.  ARBNs are issued to registrable Australian bodies and foreign companies"
           },
-          "anzsicDivision": {
-            "maxLength": 100,
-            "type": "string",
-            "x-cds-type": "ExternalRef",
-            "description": "ANZSIC division of the organisation. **[[ANZSIC-2006]](#iref-ANZSIC-2006)**"
+          "anzsicDivision":{
+            "maxLength":100,
+            "type":"string",
+            "x-cds-type":"ExternalRef",
+            "description":"ANZSIC division of the organisation. **[[ANZSIC-2006]](#iref-ANZSIC-2006)**"
           },
-          "organisationType": {
-            "type": "string",
-            "x-cds-type": "Enum",
-            "description": "Legal organisation type",
-            "enum": [
+          "organisationType":{
+            "type":"string",
+            "x-cds-type":"Enum",
+            "description":"Legal organisation type",
+            "enum":[
               "SOLE_TRADER",
               "COMPANY",
               "PARTNERSHIP",
@@ -1758,293 +1760,293 @@
               "OTHER"
             ]
           },
-          "status": {
-            "type": "string",
-            "x-cds-type": "Enum",
-            "enum": [
+          "status":{
+            "type":"string",
+            "x-cds-type":"Enum",
+            "enum":[
               "ACTIVE",
               "REMOVED"
             ]
           }
         },
-        "description": "The data that is common to all organisations, regardless of the type (e.g. company, trust, partnership, government)"
+        "description":"The data that is common to all organisations, regardless of the type (e.g. company, trust, partnership, government)"
       },
-      "RegisterDataHolderBrandServiceEndpoint": {
-        "required": [
+      "RegisterDataHolderBrandServiceEndpoint":{
+        "required":[
           "infosecBaseUri",
           "publicBaseUri",
           "resourceBaseUri",
           "version",
           "websiteUri"
         ],
-        "type": "object",
-        "properties": {
-          "version": {
-            "type": "string",
-            "x-cds-type": "String",
-            "description": "The major version of the high level standards. This is not the version of the endpoint or the payload being requested but the version of the overall standards being applied. This version number will be \"v\" followed by the major version of the standards as a positive integer (e.g. v1, v12 or v76)"
+        "type":"object",
+        "properties":{
+          "version":{
+            "type":"string",
+            "x-cds-type":"String",
+            "description":"The major version of the high level standards. This is not the version of the endpoint or the payload being requested but the version of the overall standards being applied. This version number will be \"v\" followed by the major version of the standards as a positive integer (e.g. v1, v12 or v76)"
           },
-          "publicBaseUri": {
-            "maxLength": 1000,
-            "type": "string",
-            "description": "Base URI for the Data Holder's Consumer Data Standard public endpoints",
-            "x-cds-type": "URIString"
+          "publicBaseUri":{
+            "maxLength":1000,
+            "type":"string",
+            "description":"Base URI for the Data Holder's Consumer Data Standard public endpoints",
+            "x-cds-type":"URIString"
           },
-          "resourceBaseUri": {
-            "maxLength": 1000,
-            "type": "string",
-            "description": "Base URI for the Data Holder's Consumer Data Standard resource endpoints",
-            "x-cds-type": "URIString"
+          "resourceBaseUri":{
+            "maxLength":1000,
+            "type":"string",
+            "description":"Base URI for the Data Holder's Consumer Data Standard resource endpoints",
+            "x-cds-type":"URIString"
           },
-          "infosecBaseUri": {
-            "maxLength": 1000,
-            "type": "string",
-            "description": "Base URI for the Data Holder's Consumer Data Standard information security endpoints",
-            "x-cds-type": "URIString"
+          "infosecBaseUri":{
+            "maxLength":1000,
+            "type":"string",
+            "description":"Base URI for the Data Holder's Consumer Data Standard information security endpoints",
+            "x-cds-type":"URIString"
           },
-          "extensionBaseUri": {
-            "maxLength": 1000,
-            "type": "string",
-            "description": "Base URI for the Data Holder extension endpoints to the Consumer Data Standard (optional)",
-            "x-cds-type": "URIString"
+          "extensionBaseUri":{
+            "maxLength":1000,
+            "type":"string",
+            "description":"Base URI for the Data Holder extension endpoints to the Consumer Data Standard (optional)",
+            "x-cds-type":"URIString"
           },
-          "websiteUri": {
-            "maxLength": 1000,
-            "type": "string",
-            "description": "Publicly available website or web resource URI",
-            "x-cds-type": "URIString"
+          "websiteUri":{
+            "maxLength":1000,
+            "type":"string",
+            "description":"Publicly available website or web resource URI",
+            "x-cds-type":"URIString"
           }
         },
-        "description": "Endpoints related to Data Holder Brand services"
+        "description":"Endpoints related to Data Holder Brand services"
       },
-      "RegisterDataHolderAuth": {
-        "required": [
+      "RegisterDataHolderAuth":{
+        "required":[
           "jwksEndpoint",
           "registerUType"
         ],
-        "type": "object",
-        "properties": {
-          "registerUType": {
-            "type": "string",
-            "x-cds-type": "Enum",
-            "description": "The type of authentication and authorisation mechanism in use",
-            "enum": [
+        "type":"object",
+        "properties":{
+          "registerUType":{
+            "type":"string",
+            "x-cds-type":"Enum",
+            "description":"The type of authentication and authorisation mechanism in use",
+            "enum":[
               "SIGNED-JWT"
             ]
           },
-          "jwksEndpoint": {
-            "maxLength": 1000,
-            "type": "string",
-            "description": "JWKS endpoint used for authentication by the Data Holder with the Data Recipient",
-            "x-cds-type": "URIString"
+          "jwksEndpoint":{
+            "maxLength":1000,
+            "type":"string",
+            "description":"JWKS endpoint used for authentication by the Data Holder with the Data Recipient",
+            "x-cds-type":"URIString"
           }
         },
-        "description": "Defines the mechanism used and associated endpoints for Data Holder to Data Recipient authentication"
+        "description":"Defines the mechanism used and associated endpoints for Data Holder to Data Recipient authentication"
       },
-      "LinksPaginated": {
-        "required": [
+      "LinksPaginated":{
+        "required":[
           "self"
         ],
-        "type": "object",
-        "properties": {
-          "first": {
-            "type": "string",
-            "x-cds-type": "URIString",
-            "description": "URI to the first page of this set. Mandatory if this response is not the first page"
+        "type":"object",
+        "properties":{
+          "first":{
+            "type":"string",
+            "x-cds-type":"URIString",
+            "description":"URI to the first page of this set. Mandatory if this response is not the first page"
           },
-          "last": {
-            "type": "string",
-            "x-cds-type": "URIString",
-            "description": "URI to the last page of this set. Mandatory if this response is not the last page"
+          "last":{
+            "type":"string",
+            "x-cds-type":"URIString",
+            "description":"URI to the last page of this set. Mandatory if this response is not the last page"
           },
-          "next": {
-            "type": "string",
-            "x-cds-type": "URIString",
-            "description": "URI to the next page of this set. Mandatory if this response is not the last page"
+          "next":{
+            "type":"string",
+            "x-cds-type":"URIString",
+            "description":"URI to the next page of this set. Mandatory if this response is not the last page"
           },
-          "prev": {
-            "type": "string",
-            "x-cds-type": "URIString",
-            "description": "URI to the previous page of this set. Mandatory if this response is not the first page"
+          "prev":{
+            "type":"string",
+            "x-cds-type":"URIString",
+            "description":"URI to the previous page of this set. Mandatory if this response is not the first page"
           },
-          "self": {
-            "type": "string",
-            "x-cds-type": "URIString",
-            "description": "Fully qualified link to this API call"
+          "self":{
+            "type":"string",
+            "x-cds-type":"URIString",
+            "description":"Fully qualified link to this API call"
           }
         }
       },
-      "MetaPaginated": {
-        "required": [
+      "MetaPaginated":{
+        "required":[
           "totalPages",
           "totalRecords"
         ],
-        "type": "object",
-        "properties": {
-          "totalPages": {
-            "type": "integer",
-            "description": "The total number of pages in the full set",
-            "format": "int32",
-            "x-cds-type": "PositiveInteger"
+        "type":"object",
+        "properties":{
+          "totalPages":{
+            "type":"integer",
+            "description":"The total number of pages in the full set",
+            "format":"int32",
+            "x-cds-type":"PositiveInteger"
           },
-          "totalRecords": {
-            "type": "integer",
-            "description": "The total number of records in the full set",
-            "format": "int32",
-            "x-cds-type": "PositiveInteger"
+          "totalRecords":{
+            "type":"integer",
+            "description":"The total number of records in the full set",
+            "format":"int32",
+            "x-cds-type":"PositiveInteger"
           }
         }
       },
-      "Links": {
-        "required": [
+      "Links":{
+        "required":[
           "self"
         ],
-        "type": "object",
-        "properties": {
-          "self": {
-            "type": "string",
-            "x-cds-type": "URIString",
-            "description": "Fully qualified link to this API call"
+        "type":"object",
+        "properties":{
+          "self":{
+            "type":"string",
+            "x-cds-type":"URIString",
+            "description":"Fully qualified link to this API call"
           }
         }
       },
-      "Meta": {
-        "type": "object"
+      "Meta":{
+        "type":"object"
       },
-      "MetaError": {
-        "type": "object",
-        "properties": {
-          "urn": {
-            "type": "string",
-            "x-cds-type": "String",
-            "description": "The CDR error code URN which the application-specific error code extends. Mandatory if the error `code` is an application-specific error rather than a standardised error code."
+      "MetaError":{
+        "type":"object",
+        "properties":{
+          "urn":{
+            "type":"string",
+            "x-cds-type":"String",
+            "description":"The CDR error code URN which the application-specific error code extends. Mandatory if the error `code` is an application-specific error rather than a standardised error code."
           }
         },
-        "description": "Additional data for customised error codes",
-        "x-conditional": [
+        "description":"Additional data for customised error codes",
+        "x-conditional":[
           "urn"
         ]
       },
-      "ResponseErrorListV2": {
-        "required": [
+      "ResponseErrorListV2":{
+        "required":[
           "errors"
         ],
-        "type": "object",
-        "properties": {
-          "errors": {
-            "type": "array",
-            "description": "",
-            "items": {
-              "$ref": "#/components/schemas/ResponseErrorListV2_errors"
+        "type":"object",
+        "properties":{
+          "errors":{
+            "type":"array",
+            "description":"",
+            "items":{
+              "$ref":"#/components/schemas/ResponseErrorListV2_errors"
             }
           }
         },
-        "x-conditional": [
+        "x-conditional":[
           "meta"
         ]
       },
-      "ResponseErrorListV2_errors": {
-        "required": [
+      "ResponseErrorListV2_errors":{
+        "required":[
           "code",
           "detail",
           "title"
         ],
-        "type": "object",
-        "properties": {
-          "code": {
-            "type": "string",
-            "x-cds-type": "String",
-            "description": "The code of the error encountered. Where the error is specific to the respondent, an application-specific error code, expressed as a string value. If the error is application-specific, the URN code that the specific error extends must be provided in the meta object. Otherwise, the value is the error code URN."
+        "type":"object",
+        "properties":{
+          "code":{
+            "type":"string",
+            "x-cds-type":"String",
+            "description":"The code of the error encountered. Where the error is specific to the respondent, an application-specific error code, expressed as a string value. If the error is application-specific, the URN code that the specific error extends must be provided in the meta object. Otherwise, the value is the error code URN."
           },
-          "title": {
-            "type": "string",
-            "x-cds-type": "String",
-            "description": "A short, human-readable summary of the problem that MUST NOT change from occurrence to occurrence of the problem represented by the error code."
+          "title":{
+            "type":"string",
+            "x-cds-type":"String",
+            "description":"A short, human-readable summary of the problem that MUST NOT change from occurrence to occurrence of the problem represented by the error code."
           },
-          "detail": {
-            "type": "string",
-            "x-cds-type": "String",
-            "description": "A human-readable explanation specific to this occurrence of the problem."
+          "detail":{
+            "type":"string",
+            "x-cds-type":"String",
+            "description":"A human-readable explanation specific to this occurrence of the problem."
           },
-          "meta": {
-            "$ref": "#/components/schemas/MetaError"
+          "meta":{
+            "$ref":"#/components/schemas/MetaError"
           }
         }
       }
     },
-    "responses": {
-      "BadRequest": {
-        "description": "Missing Required Header / Invalid Version / Invalid Path Parameter",
-        "content": {
-          "*/*": {
-            "schema": {
-              "$ref": "#/components/schemas/ResponseErrorListV2"
+    "responses":{
+      "BadRequest":{
+        "description":"Missing Required Header / Invalid Version / Invalid Path Parameter",
+        "content":{
+          "*/*":{
+            "schema":{
+              "$ref":"#/components/schemas/ResponseErrorListV2"
             }
           }
         }
       },
-      "InvalidBearerToken": {
-        "description": "Invalid Bearer Token",
-        "content": {
-          "*/*": {
-            "schema": {
-              "$ref": "#/components/schemas/ResponseErrorListV2"
+      "InvalidBearerToken":{
+        "description":"Invalid Bearer Token",
+        "content":{
+          "*/*":{
+            "schema":{
+              "$ref":"#/components/schemas/ResponseErrorListV2"
             }
           }
         }
       },
-      "NotModified": {
-        "description": "Not Modified - The current representation of the target resource matches with the entity-tag provided in the If-None-Match request header",
-        "headers": {
-          "Etag": {
-            "description": "Entity tag that uniquely represents the requested resource.",
-            "schema": {
-            "type": "string",
-            "x-cds-type": "String"
+      "NotModified":{
+        "description":"Not Modified - The current representation of the target resource matches with the entity-tag provided in the If-None-Match request header",
+        "headers":{
+          "Etag":{
+            "description":"Entity tag that uniquely represents the requested resource.",
+            "schema":{
+              "type":"string",
+              "x-cds-type":"String"
             }
           }
         }
       },
-      "UnsupportedVersion": {
-        "description": "Unsupported Version",
-        "content": {
-          "*/*": {
-            "schema": {
-              "$ref": "#/components/schemas/ResponseErrorListV2"
+      "UnsupportedVersion":{
+        "description":"Unsupported Version",
+        "content":{
+          "*/*":{
+            "schema":{
+              "$ref":"#/components/schemas/ResponseErrorListV2"
             }
           }
         }
       }
     },
-    "parameters": {
-      "Authorization": {
-        "name": "Authorization",
-        "in": "header",
-        "description": "An Authorisation Token as per **[[RFC6750]](#nref-RFC6750)**.",
-        "required": true,
-        "schema": {
-          "type": "string",
-          "x-cds-type": "ExternalRef"
+    "parameters":{
+      "Authorization":{
+        "name":"Authorization",
+        "in":"header",
+        "description":"An Authorisation Token as per **[[RFC6750]](#nref-RFC6750)**.",
+        "required":true,
+        "schema":{
+          "type":"string",
+          "x-cds-type":"ExternalRef"
         }
       },
-      "XV": {
-        "name": "x-v",
-        "in": "header",
-        "description": "The version of the API end point requested by the client. Must be set to a positive integer.",
-        "schema": {
-          "type": "integer",
-          "x-cds-type": "PositiveInteger"
+      "XV":{
+        "name":"x-v",
+        "in":"header",
+        "description":"The version of the API end point requested by the client. Must be set to a positive integer.",
+        "schema":{
+          "type":"integer",
+          "x-cds-type":"PositiveInteger"
         }
       },
-      "Industry": {
-        "name": "industry",
-        "in": "path",
-        "description": "The industry the participant is retrieving data for (Banking, etc)",
-        "required": true,
-        "schema": {
-          "type": "string",
-          "x-cds-type": "Enum",
-          "enum": [
+      "Industry":{
+        "name":"industry",
+        "in":"path",
+        "description":"The industry the participant is retrieving data for (Banking, etc)",
+        "required":true,
+        "schema":{
+          "type":"string",
+          "x-cds-type":"Enum",
+          "enum":[
             "banking",
             "energy",
             "telco",
@@ -2052,52 +2054,52 @@
           ]
         }
       },
-      "XMinV": {
-        "name": "x-min-v",
-        "in": "header",
-        "description": "The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided.",
-        "schema": {
-          "type": "integer",
-          "x-cds-type": "PositiveInteger"
+      "XMinV":{
+        "name":"x-min-v",
+        "in":"header",
+        "description":"The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided.",
+        "schema":{
+          "type":"integer",
+          "x-cds-type":"PositiveInteger"
         }
       },
-      "IfNoneMatch": {
-        "name": "If-None-Match",
-        "in": "header",
-        "description": "Makes the request method conditional on a recipient cache or origin server not having any current representation of the target resource with an entity-tag that does not match any of those listed in the field-value.",
-        "schema": {
-          "type": "string",
-          "x-cds-type": "String"
+      "IfNoneMatch":{
+        "name":"If-None-Match",
+        "in":"header",
+        "description":"Makes the request method conditional on a recipient cache or origin server not having any current representation of the target resource with an entity-tag that does not match any of those listed in the field-value.",
+        "schema":{
+          "type":"string",
+          "x-cds-type":"String"
         }
       },
-      "UpdatedSince": {
-        "name": "updated-since",
-        "in": "query",
-        "description": "query filter returns results updated since the specified date-time",
-        "schema": {
-          "type": "string",
-          "format": "date-time",
-          "x-cds-type": "DateTimeString"
+      "UpdatedSince":{
+        "name":"updated-since",
+        "in":"query",
+        "description":"query filter returns results updated since the specified date-time",
+        "schema":{
+          "type":"string",
+          "format":"date-time",
+          "x-cds-type":"DateTimeString"
         }
       },
-      "Page": {
-        "name": "page",
-        "in": "query",
-        "description": "the page number to return",
-        "schema": {
-          "type": "integer",
-          "format": "int32",
-          "x-cds-type": "PositiveInteger"
+      "Page":{
+        "name":"page",
+        "in":"query",
+        "description":"the page number to return",
+        "schema":{
+          "type":"integer",
+          "format":"int32",
+          "x-cds-type":"PositiveInteger"
         }
       },
-      "PageSize": {
-        "name": "page-size",
-        "in": "query",
-        "description": "the number of records to return per page",
-        "schema": {
-          "type": "integer",
-          "format": "int32",
-          "x-cds-type": "PositiveInteger"
+      "PageSize":{
+        "name":"page-size",
+        "in":"query",
+        "description":"the number of records to return per page",
+        "schema":{
+          "type":"integer",
+          "format":"int32",
+          "x-cds-type":"PositiveInteger"
         }
       }
     }
