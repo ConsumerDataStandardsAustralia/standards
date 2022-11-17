@@ -543,7 +543,7 @@
                 "type": "string",
                 "description": "'Contains the Data Holder issuer value as described in the OIDC Discovery Document",
                 "example": "https://secure.api.dataholder.com/issuer",
-                "x-cds-type": "String"
+                "x-cds-type": "URIString"
               }
             }
           },
@@ -572,7 +572,7 @@
           "error_description": {
             "type": "string",
             "description": "Additional text description of the error for debugging.",
-            "x-cds-type": "String"
+            "x-cds-type": "ASCIIString"
           }
         }
       }

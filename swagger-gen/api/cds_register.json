@@ -124,7 +124,8 @@
             "description": "the page number to return",
             "schema": {
               "type": "integer",
-              "x-cds-type": "PositiveInteger"
+              "x-cds-type": "PositiveInteger",
+              "default": 1
             }
           },
           {
@@ -133,7 +134,8 @@
             "description": "the number of records to return per page",
             "schema": {
               "type": "integer",
-              "x-cds-type": "PositiveInteger"
+              "x-cds-type": "PositiveInteger",
+              "default": 25
             }
           }
         ],
@@ -244,7 +246,7 @@
             "description": "Makes the request method conditional on a recipient cache or origin server not having any current representation of the target resource with an entity-tag that does not match any of those listed in the field-value.",
             "schema": {
               "type": "string",
-              "x-cds-type": "String"
+              "x-cds-type": "ASCIIString"
             }
           }
         ],
@@ -263,7 +265,7 @@
                 "description": "Entity tag that uniquely represents the requested resource.",
                 "schema": {
                   "type": "string",
-                  "x-cds-type": "String"
+                  "x-cds-type": "ASCIIString"
                 }
               }
             },
@@ -282,7 +284,7 @@
                 "description": "Entity tag that uniquely represents the requested resource.",
                 "schema": {
                   "type": "string",
-                  "x-cds-type": "String"
+                  "x-cds-type": "ASCIIString"
                 }
               }
             }
@@ -533,7 +535,7 @@
             "description": "Makes the request method conditional on a recipient cache or origin server not having any current representation of the target resource with an entity-tag that does not match any of those listed in the field-value.",
             "schema": {
               "type": "string",
-              "x-cds-type": "String"
+              "x-cds-type": "ASCIIString"
             }
           }
         ],
@@ -552,7 +554,7 @@
                 "description": "Entity tag that uniquely represents the requested resource.",
                 "schema": {
                   "type": "string",
-                  "x-cds-type": "String"
+                  "x-cds-type": "ASCIIString"
                 }
               }
             },
@@ -571,7 +573,7 @@
                 "description": "Entity tag that uniquely represents the requested resource.",
                 "schema": {
                   "type": "string",
-                  "x-cds-type": "String"
+                  "x-cds-type": "ASCIIString"
                 }
               }
             }
@@ -650,7 +652,7 @@
             "description": "Makes the request method conditional on a recipient cache or origin server not having any current representation of the target resource with an entity-tag that does not match any of those listed in the field-value.",
             "schema": {
               "type": "string",
-              "x-cds-type": "String"
+              "x-cds-type": "ASCIIString"
             }
           }
         ],
@@ -669,7 +671,7 @@
                 "description": "Entity tag that uniquely represents the requested resource.",
                 "schema": {
                   "type": "string",
-                  "x-cds-type": "String"
+                  "x-cds-type": "ASCIIString"
                 }
               }
             },
@@ -688,7 +690,7 @@
                 "description": "Entity tag that uniquely represents the requested resource.",
                 "schema": {
                   "type": "string",
-                  "x-cds-type": "String"
+                  "x-cds-type": "ASCIIString"
                 }
               }
             }
@@ -767,7 +769,7 @@
             "description": "Makes the request method conditional on a recipient cache or origin server not having any current representation of the target resource with an entity-tag that does not match any of those listed in the field-value.",
             "schema": {
               "type": "string",
-              "x-cds-type": "String"
+              "x-cds-type": "ASCIIString"
             }
           }
         ],
@@ -786,7 +788,7 @@
                 "description": "Entity tag that uniquely represents the requested resource.",
                 "schema": {
                   "type": "string",
-                  "x-cds-type": "String"
+                  "x-cds-type": "ASCIIString"
                 }
               }
             },
@@ -805,7 +807,7 @@
                 "description": "Entity tag that uniquely represents the requested resource.",
                 "schema": {
                   "type": "string",
-                  "x-cds-type": "String"
+                  "x-cds-type": "ASCIIString"
                 }
               }
             }
@@ -884,7 +886,7 @@
             "description": "Makes the request method conditional on a recipient cache or origin server not having any current representation of the target resource with an entity-tag that does not match any of those listed in the field-value.",
             "schema": {
               "type": "string",
-              "x-cds-type": "String"
+              "x-cds-type": "ASCIIString"
             }
           }
         ],
@@ -903,7 +905,7 @@
                 "description": "Entity tag that uniquely represents the requested resource.",
                 "schema": {
                   "type": "string",
-                  "x-cds-type": "String"
+                  "x-cds-type": "ASCIIString"
                 }
               }
             },
@@ -922,7 +924,7 @@
                 "description": "Entity tag that uniquely represents the requested resource.",
                 "schema": {
                   "type": "string",
-                  "x-cds-type": "String"
+                  "x-cds-type": "ASCIIString"
                 }
               }
             }
@@ -975,7 +977,7 @@
           "issuer": {
             "type": "string",
             "description": "URL using the https scheme with no query or fragment component that the CDR Register asserts as its Issuer Identifier",
-            "x-cds-type": "String"
+            "x-cds-type": "URIString"
           },
           "jwks_uri": {
             "type": "string",
@@ -1877,12 +1879,12 @@
           "totalPages": {
             "type": "integer",
             "description": "The total number of pages in the full set",
-            "x-cds-type": "PositiveInteger"
+            "x-cds-type": "NaturalNumber"
           },
           "totalRecords": {
             "type": "integer",
             "description": "The total number of records in the full set",
-            "x-cds-type": "PositiveInteger"
+            "x-cds-type": "NaturalNumber"
           }
         }
       },
@@ -1991,7 +1993,7 @@
             "description": "Entity tag that uniquely represents the requested resource.",
             "schema": {
               "type": "string",
-              "x-cds-type": "String"
+              "x-cds-type": "ASCIIString"
             }
           }
         }
@@ -2058,7 +2060,7 @@
         "description": "Makes the request method conditional on a recipient cache or origin server not having any current representation of the target resource with an entity-tag that does not match any of those listed in the field-value.",
         "schema": {
           "type": "string",
-          "x-cds-type": "String"
+          "x-cds-type": "ASCIIString"
         }
       },
       "UpdatedSince": {
@@ -2076,7 +2078,8 @@
         "description": "the page number to return",
         "schema": {
           "type": "integer",
-          "x-cds-type": "PositiveInteger"
+          "x-cds-type": "PositiveInteger",
+          "default": 1
         }
       },
       "PageSize": {
@@ -2085,7 +2088,8 @@
         "description": "the number of records to return per page",
         "schema": {
           "type": "integer",
-          "x-cds-type": "PositiveInteger"
+          "x-cds-type": "PositiveInteger",
+          "default": 25
         }
       }
     }
