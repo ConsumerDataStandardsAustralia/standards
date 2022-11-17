@@ -71,7 +71,7 @@
             "required":true,
             "schema":{
               "type":"string",
-              "x-cds-type":"String"
+              "x-cds-type":"ExternalRef"
             }
           },
           {
@@ -131,7 +131,7 @@
             "required":true,
             "schema":{
               "type":"string",
-              "x-cds-type":"String"
+              "x-cds-type":"ExternalRef"
             }
           },
           {
@@ -213,7 +213,7 @@
             "required":true,
             "schema":{
               "type":"string",
-              "x-cds-type":"String"
+              "x-cds-type":"ExternalRef"
             }
           },
           {
@@ -297,7 +297,6 @@
           "client_id_issued_at":{
             "type":"integer",
             "description":"Time at which the client identifier was issued expressed as seconds since 1970-01-01T00:00:00Z as measured in UTC",
-            "format":"int32",
             "example":1571808167,
             "x-cds-type":"ExternalRef"
           },
@@ -352,7 +351,6 @@
             ],
             "items":{
               "type":"string",
-              "format":"uri",
               "x-cds-type":"URIString"
             }
           },
@@ -526,14 +524,12 @@
               "iat":{
                 "type":"integer",
                 "description":"The time at which the request was issued by the Data Recipient  expressed as seconds since 1970-01-01T00:00:00Z as measured in UTC",
-                "format":"int32",
                 "example":1571808167,
                 "x-cds-type":"ExternalRef"
               },
               "exp":{
                 "type":"integer",
                 "description":"The time at which the request expires expressed as seconds since 1970-01-01T00:00:00Z as measured in UTC",
-                "format":"int32",
                 "example":2147483646,
                 "x-cds-type":"ExternalRef"
               },
@@ -629,7 +625,7 @@
         "required":true,
         "schema":{
           "type":"string",
-          "x-cds-type":"String"
+          "x-cds-type":"ExternalRef"
         }
       }
     }

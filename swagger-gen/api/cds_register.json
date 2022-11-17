@@ -117,7 +117,6 @@
             "description":"query filter returns results updated since the specified date-time",
             "schema":{
               "type":"string",
-              "format":"date-time",
               "x-cds-type":"DateTimeString"
             }
           },
@@ -127,7 +126,6 @@
             "description":"the page number to return",
             "schema":{
               "type":"integer",
-              "format":"int32",
               "x-cds-type":"PositiveInteger"
             }
           },
@@ -137,7 +135,6 @@
             "description":"the number of records to return per page",
             "schema":{
               "type":"integer",
-              "format":"int32",
               "x-cds-type":"PositiveInteger"
             }
           }
@@ -1231,7 +1228,6 @@
           "lastUpdated":{
             "type":"string",
             "description":"The date/time that the Data Holder Brand data was last updated in the Register",
-            "format":"date-time",
             "x-cds-type":"DateTimeString"
           }
         }
@@ -1319,7 +1315,6 @@
           "lastUpdated":{
             "type":"string",
             "description":"The date/time that the Data Holder Brand data was last updated in the Register",
-            "format":"date-time",
             "x-cds-type":"DateTimeString"
           },
           "abn":{
@@ -1580,7 +1575,6 @@
           "lastUpdated":{
             "type":"string",
             "description":"The date/time that the Legal Entity was last updated in the CDR Register",
-            "format":"date-time",
             "x-cds-type":"DateTimeString"
           }
         }
@@ -1714,7 +1708,6 @@
           "registrationDate":{
             "type":"string",
             "description":"Date of registration (if the company is registered outside Australia)",
-            "format":"date",
             "x-cds-type":"DateString"
           },
           "registeredCountry":{
@@ -1886,13 +1879,11 @@
           "totalPages":{
             "type":"integer",
             "description":"The total number of pages in the full set",
-            "format":"int32",
             "x-cds-type":"PositiveInteger"
           },
           "totalRecords":{
             "type":"integer",
             "description":"The total number of records in the full set",
-            "format":"int32",
             "x-cds-type":"PositiveInteger"
           }
         }
@@ -2078,7 +2069,6 @@
         "description":"query filter returns results updated since the specified date-time",
         "schema":{
           "type":"string",
-          "format":"date-time",
           "x-cds-type":"DateTimeString"
         }
       },
@@ -2088,7 +2078,6 @@
         "description":"the page number to return",
         "schema":{
           "type":"integer",
-          "format":"int32",
           "x-cds-type":"PositiveInteger"
         }
       },
@@ -2098,7 +2087,6 @@
         "description":"the number of records to return per page",
         "schema":{
           "type":"integer",
-          "format":"int32",
           "x-cds-type":"PositiveInteger"
         }
       }
