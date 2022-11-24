@@ -2,26 +2,6 @@
 
 > Non-Normative Example
 
-```diff
-Updated non-normative example - FAPI 1.0 Final Phase 3 Obligations.
-
-Updated parameters:
-"response_types_supported" to support Authorization Code Flow ("code")
-"response_modes_supported" to support "jwt" for JARM. Note that "fragment" is also a supported JWT response mode
-
-Added required PAR parameter:
-+ require_pushed_authorization_requests set to true
-
-Added requied PKCE parameter:
-+ code_challenge_methods_supported
-
-Added requied JARM parameter:
-+ authorization_signing_alg_values_supported
-
-Added JARM parameters where authorisation response encryption is supported (refer to https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/479 for further details):
-+ authorization_encryption_alg_values_supported
-+ authorization_encryption_enc_values_supported
-```
 
 ```
 ## Request

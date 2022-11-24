@@ -19,10 +19,6 @@
 }
 ```
 
-```diff
-Added FAPI 1.0 Final Phase 3 Obligation example
-```
-
 > Non-Normative Example - FAPI 1.0 Final Phase 3 Obligations
 
 ```

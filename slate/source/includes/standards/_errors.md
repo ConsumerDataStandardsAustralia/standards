@@ -22,10 +22,6 @@ These standards define a standard list of error codes that Data Recipient Softwa
   ]
 }
 ```
-```diff
-Added following optional Boolean field to Error Response Structure: 
-+ `isSecondaryDataHolderError` 
-```
 
 <a name="error_payload"></a>The `errors` object will be an array of zero or more unnamed objects. The fields in each of these objects will be as follows:
 
