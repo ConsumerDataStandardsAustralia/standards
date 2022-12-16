@@ -32,6 +32,8 @@ This release addresses the following Decision Proposals published on [Standards]
 
 ## Introduction
 
+|Change|Description|Link|
+|------|-----------|----|
 | Obligation Dates Schedule | [Decision Proposal 282](https://github.com/ConsumerDataStandardsAustralia/standards/issues/282): obligation date schedule from 7th April to 14th April 2023. | [Obligation Dates Schedule](../../includes/endpoint-version-schedule/#obligation-dates-schedule) |
 
 ## High Level Standards
@@ -41,6 +43,8 @@ No changes
 
 ## API End Points
 
+|Change|Description|Link|
+|------|-----------|----|
 | Get Energy Accounts V2 and Get Energy Account Detail V2 | [Decision Proposal 282](https://github.com/ConsumerDataStandardsAustralia/standards/issues/282): Updated obligation dates from 7th April to 14th April 2023 to align with the changed obligation mileston. | [Energy APIs](../../#energy-apis) |
 
 
