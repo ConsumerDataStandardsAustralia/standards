@@ -2239,28 +2239,28 @@ always align to current consumer preferences.</p>
 <p>Some example URIs that meet this standard are:  </p>
 </blockquote>
 
-<pre class="highlight plaintext"><code>1. https://www.bank.com.au/api/cds-au/v1/banking/accounts
-2. https://www.bank.com.au/api/cds-au/v1/banking/accounts/abc123/transactions/?x=y#bar
-3. https://www.bank.com.au/complex/uri/taxonomy/cds-au/v1/banking/products?page=2
-4. https://www.energyretailer.com.au/api/cds-au/v1/energy/usage
-5. https://www.energyretailer.com.au/api/cds-au/v1/ACME/apply
+<pre class="highlight plaintext"><code>1. https://www.bank.com.au/api/cds-au/v1/banking/accounts  
+2. https://www.bank.com.au/api/cds-au/v1/banking/accounts/abc123/transactions/?x=y#bar  
+3. https://www.bank.com.au/complex/uri/taxonomy/cds-au/v1/banking/products?page=2  
+4. https://www.energyretailer.com.au/api/cds-au/v1/energy/usage  
+5. https://www.energyretailer.com.au/api/cds-au/v1/ACME/apply  
 </code></pre>
 <blockquote>
 <p>The holder path for each example is:  </p>
 </blockquote>
-<pre class="highlight plaintext"><code>1. www.bank.com.au/api
-2. www.bank.com.au/api
-3. www.bank.com.au/complex/uri/taxonomy
-4. www.energyretailer.com.au/api
+<pre class="highlight plaintext"><code>1. www.bank.com.au/api  
+2. www.bank.com.au/api   
+3. www.bank.com.au/complex/uri/taxonomy  
+4. www.energyretailer.com.au/api  
 5. www.energyretailer.com.au/api
 </code></pre>
 <blockquote>
 <p>The Base Path for each example is:  </p>
 </blockquote>
-<pre class="highlight plaintext"><code>1. https://www.bank.com.au/api/cds-au/v1/banking
-2. https://www.bank.com.au/api/cds-au/v1/banking
-3. https://www.bank.com.au/complex/uri/taxonomy/cds-au/v1/banking
-4. https://www.energyretailer.com.au/api/cds-au/v1/energy
+<pre class="highlight plaintext"><code>1. https://www.bank.com.au/api/cds-au/v1/banking  
+2. https://www.bank.com.au/api/cds-au/v1/banking   
+3. https://www.bank.com.au/complex/uri/taxonomy/cds-au/v1/banking  
+4. https://www.energyretailer.com.au/api/cds-au/v1/energy  
 5. https://www.energyretailer.com.au/api/cds-au/v1/ACME
 </code></pre>
 <blockquote>
@@ -3033,8 +3033,8 @@ obtain detail for that resource or to change the state of the resource.</li>
     }
   ]
 }
-</code></pre><pre class="highlight diff tab-diff"><code>Added following optional Boolean field to Error Response Structure:
-<span class="gi">+ `isSecondaryDataHolderError`
+</code></pre><pre class="highlight diff tab-diff"><code>Added following optional Boolean field to Error Response Structure: 
+<span class="gi">+ `isSecondaryDataHolderError` 
 </span></code></pre>
 <p><a name="error_payload"></a>The <code>errors</code> object will be an array of zero or more unnamed objects. The fields in each of these objects will be as follows:</p>
 
@@ -3588,7 +3588,7 @@ Content-Type: application/json
 
 { "errors": [
   {
-    "code": "urn:au-cds:error:cdr-all:Header/UnsupportedVersion",
+    "code": "urn:au-cds:error:cdr-all:Header/UnsupportedVersion",    
     "title": "Unsupported Version",
     "detail": "'x-v' **MUST** be greater than or equal to '2'"
   }
@@ -7149,8 +7149,8 @@ Cache-Control: no-cache, no-store
 </blockquote>
 
 <pre class="highlight plaintext"><code>## The request_uri is used by the ADR in the subsequent authorisation request as follows
-## (note this example is pre-RFC using Draft 01 of the PAR standard, hence it includes
-## the mandatory oAuth parameters as per FAPI R/W for confidential clients must be
+## (note this example is pre-RFC using Draft 01 of the PAR standard, hence it includes 
+## the mandatory oAuth parameters as per FAPI R/W for confidential clients must be 
 ## replayed in the request URL):
 
 GET /authorise?client_id=s6BhdRkqt3&amp;
@@ -43295,7 +43295,6 @@ Note that the standards for the telecommunications sector are currently in draft
 <td>Page of results to request (standard pagination)</td>
 </tr>
 <tr>
-  
 <td>page-size</td>
 <td>query</td>
 <td><a href="#common-field-types">PositiveInteger</a></td>
