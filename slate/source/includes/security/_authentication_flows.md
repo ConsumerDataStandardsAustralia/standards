@@ -60,6 +60,7 @@ In line with CDR Rule 4.24 on restrictions when asking CDR consumers to authoris
 * Data Holders **MUST** support the OIDC Hybrid Flow.
 
 **From July 10th 2023 (FAPI 1.0 Migration Phase 4),**   
+
 * Data Holders **MAY** retire support for the OIDC Hybrid Flow.
 
 
