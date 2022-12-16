@@ -26,7 +26,8 @@ This release addresses the following change requests raised on [Standards Mainte
 
 ### Decision Proposals
 
-This release addresses the following Decision Proposals published on [Standards](https://github.com/ConsumerDataStandardsAustralia/standards/issues):
+This release addresses the following Decision Proposals published on [Standards](https://github.com/ConsumerDataStandardsAustralia/standards/issues):  
+
 - [Decision Proposal 282](https://github.com/ConsumerDataStandardsAustralia/standards/issues/282)
 
 
