@@ -10,6 +10,12 @@
 </tr>
 </thead><tbody>
 <tr>
+<td>16/12/2022</td>
+<td>1.21.0</td>
+<td>Changes arising from Decision 282</td>
+<td>See <a href="includes/releasenotes/releasenotes.1.21.0.html">release notes</a> and <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/282">Decision 282</a> for details.</td>
+</tr>
+<tr>
 <td>03/11/2022</td>
 <td>1.20.0</td>
 <td>Changes arising from Decision 259 (Maintenance iteration 12)</td>

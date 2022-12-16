@@ -1603,17 +1603,22 @@ Note: changes to request and response payloads are listed at the beginning of th
 
 <h2 id='version'>Version</h2>
 
-<p>These standards represent version 1.20.0 of the high level standards.  See the <a href="#versioning">versioning section</a> for more information on how versions are managed in the standard.</p>
+<p>These standards represent version 1.21.0 of the high level standards.  See the <a href="#versioning">versioning section</a> for more information on how versions are managed in the standard.</p>
 
 <h2 id='interpretation'>Interpretation</h2>
 
 <p>Note that, in these standards, the key words <strong>MUST</strong>, <strong>MUST NOT</strong>, <strong>REQUIRED</strong>, <strong>SHALL</strong>, <strong>SHALL NOT</strong>, <strong>SHOULD</strong>, <strong>SHOULD NOT</strong>, <strong>RECOMMENDED</strong>, <strong>MAY</strong>, and <strong>OPTIONAL</strong> are to be interpreted as described in <strong><a href="#nref-RFC2119">[RFC2119]</a></strong>.</p>
 
-<h2 id='future-dated-obligations'>Future Dated Obligations</h2><pre class="highlight diff tab-diff"><code>Added FDO date for Error Codes: Secondary Data Holder flag change
-</code></pre>
+<h2 id='future-dated-obligations'>Future Dated Obligations</h2>
+
 <p>The standards, as published from time to time, may include specific statements indicating that a specific section of the standards will not take effect until a future date or may cease to have effect on some future date.</p>
 
 <p>The table below highlights these areas of the standards.</p>
+
+<pre class="highlight diff tab-diff"><code>Updated obligation dates for FAPI 1.0 Phase 3
+<span class="gi">+ Added obligation dates for FAPI 1.0 Phase 4
+</span>Updated Get Energy Accounts V2 and Get Energy Account Detail V2 obligation dates in line with the change to FY23 #3 obligation mileston
+</code></pre>
 
 <table><thead>
 <tr>
@@ -1768,11 +1773,6 @@ Note: changes to request and response payloads are listed at the beginning of th
 <td>February 28th 2023</td>
 </tr>
 <tr>
-<td><a href="#security-profile">Information Security profile</a></td>
-<td>FAPI 1.0 adoption is introduced across three phases.<br/><strong>Phase 3: Retire Hybrid Flow</strong> includes, amongst other changes:<ul><li>Data Holders <strong>MUST</strong> support Authorization Code Flow</li><li>Data Holders <strong>MAY</strong> retire Hybrid Flow</li></ul></td>
-<td>April 7th 2023</td>
-</tr>
-<tr>
 <td><a href="#get-energy-accounts">Get Energy Accounts V1</a></td>
 <td><ul><li>Data Holders <strong>MAY</strong> go-live on November 15 2022 with v1 of this endopint</li><li>Data Holders <strong>MAY</strong> decommission v1 of this endopint as soon v2 is supported</li></ul></td>
 <td>November 15th 2022</td>
@@ -1783,19 +1783,29 @@ Note: changes to request and response payloads are listed at the beginning of th
 <td>November 15th 2022</td>
 </tr>
 <tr>
-<td><a href="#get-energy-accounts">Get Energy Accounts V2</a></td>
-<td>Data Holder <strong>MUST</strong> implement v2 of this endpoint by <strong>April 7th 2023</strong></td>
-<td>April 7th 2023</td>
-</tr>
-<tr>
-<td><a href="#get-energy-account-detail">Get Energy Account Detail V2</a></td>
-<td>Data Holder <strong>MUST</strong> implement v2 of this endpoint by <strong>April 7th 2023</strong></td>
-<td>April 7th 2023</td>
-</tr>
-<tr>
 <td><a href="#error-codes">Error Codes: Secondary Data Holder flag</a></td>
 <td><ul><li>Data Holders <strong>MAY</strong> implement the <code>isSecondaryDataHolderError</code> field on <strong>November 15 2022</strong></li><li>Affected Data Holders <strong>MUST</strong> implement <code>isSecondaryDataHolderError</code> field by <strong>May 15 2023</strong></li></ul></td>
 <td>May 15th 2023</td>
+</tr>
+<tr>
+<td><a href="#get-energy-accounts">Get Energy Accounts V2</a></td>
+<td>Data Holder <strong>MUST</strong> implement v2 of this endpoint by <strong>April 14th 2023</strong></td>
+<td>April 14th 2023</td>
+</tr>
+<tr>
+<td><a href="#get-energy-account-detail">Get Energy Account Detail V2</a></td>
+<td>Data Holder <strong>MUST</strong> implement v2 of this endpoint by <strong>April 14th 2023</strong></td>
+<td>April 14th 2023</td>
+</tr>
+<tr>
+<td><a href="#security-profile">Information Security profile</a></td>
+<td>FAPI 1.0 adoption is introduced across four phases.<br/><strong>Phase 3: Support Authorization Code Flow and Hybrid Flow</strong> includes, amongst other changes:<ul><li>Data Holders <strong>MUST</strong> support Authorization Code Flow</li><li>Data Holders <strong>MUST</strong> retire Hybrid Flow</li></ul></td>
+<td>April 14th 2023</td>
+</tr>
+<tr>
+<td><a href="#security-profile">Information Security profile</a></td>
+<td>FAPI 1.0 adoption is introduced across four phases.<br/><strong>Phase 4: Retire Hybrid Flow</strong>:<ul><li>Data Holders <strong>MAY</strong> retire Hybrid Flow</li></ul></td>
+<td>July 10th 2023</td>
 </tr>
 </tbody></table>
 
@@ -2375,8 +2385,7 @@ The Resource Path is intended to be the portion of the URL including the Base Pa
 <code>Accept-Encoding: charset=UTF-8</code><br>
 <code>Accept: AppliCAtion/JSon;Charset=uTf-8</code>  </p>
 </blockquote>
-<pre class="highlight diff tab-diff"><code>Clarified that the x-fapi-interaction-id is not required for authenticated resource APIs
-</code></pre>
+
 <table><thead>
 <tr>
 <th>Header Field</th>
@@ -3033,9 +3042,7 @@ obtain detail for that resource or to change the state of the resource.</li>
     }
   ]
 }
-</code></pre><pre class="highlight diff tab-diff"><code>Added following optional Boolean field to Error Response Structure: 
-<span class="gi">+ `isSecondaryDataHolderError` 
-</span></code></pre>
+</code></pre>
 <p><a name="error_payload"></a>The <code>errors</code> object will be an array of zero or more unnamed objects. The fields in each of these objects will be as follows:</p>
 
 <ul>
@@ -4383,7 +4390,8 @@ The standards in this section outline requirements that apply when a disclosure 
 </tr>
 </tbody></table>
 <h1 style="display:none"></h1>
-<h1 id='security-profile'>Security Profile</h1>
+<h1 id='security-profile'>Security Profile</h1><pre class="highlight diff tab-diff"><code>Where “OIDC Authorization Code Flow” is referenced, change to be “Authorization Code Flow”.
+</code></pre>
 <h2 id='overview'>Overview</h2>
 
 <p><strong>Until September 16th 2022</strong></p>
@@ -4535,11 +4543,40 @@ Recipients. Data Holders and Data Recipients <strong>MUST</strong> be created as
 
 <p>Specifically the OIDC Hybrid Flow outlined at <a href="https://openid.net/specs/openid-connect-core-1_0.html#HybridFlowAuth">section 3.3</a> of <strong><a href="#nref-OIDC">[OIDC]</a></strong>.</p>
 
-<p>From July 4th 2022, OIDC Authorization Code Flow outlined at <a href="https://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth">section 3.1</a>  of <strong><a href="#nref-OIDC">[OIDC]</a></strong> is supported.</p>
+<p>From July 4th 2022, Authorization Code Flow outlined at <a href="https://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth">section 3.1</a>  of <strong><a href="#nref-OIDC">[OIDC]</a></strong> is supported.</p>
 
 <p>No other flows are currently supported.</p>
 
-<h3 id='baseline-security-provisions'>Baseline Security Provisions</h3><h4 id='data-holders'>Data Holders</h4>
+<h3 id='baseline-security-provisions'>Baseline Security Provisions</h3><pre class="highlight diff tab-diff"><code>Moved baseline requirements applicable to both he OIDC Hybrid Flow and Authorization Code Flow outside of the OIDC Hybrid Flow section
+Updated obligation dates
+Require Data Holders to support both OIDC Hybrid Flow and Authorization Code Flow for a 3 month period. OIDC Hybrid Flow may be retired after July 10th 2023
+</code></pre><h4 id='data-holders'>Data Holders</h4>
+<p>The <code>request_uri</code> parameter is only supported if the Data Holder supports PAR.</p>
+
+<p>In addition, the following statements are applicable to both the OIDC Hybrid Flow and Authorization Code Flow:</p>
+
+<ul>
+<li>Data Holders <strong>MUST</strong> request a user identifier that can uniquely identify the customer and that is already known by the customer in the redirected page</li>
+<li>Data Holders <strong>MUST NOT</strong> request that the customer enter an existing password in the redirected page</li>
+<li>Data Holders <strong>MUST</strong> provide a one-time password (OTP) to the customer through an existing channel or mechanism that the customer can then enter into the redirected page</li>
+<li>The delivery mechanism for the OTP is at the discretion of the Data Holder but <strong>MUST</strong> align to existing and preferred channels for the customer and <strong>MUST NOT</strong> introduce unwarranted friction into the authentication process</li>
+<li>Data Holders <strong>SHOULD</strong> implement additional controls to minimise the risk of interception of the OTP through the selected delivery mechanism</li>
+<li>The provided OTP <strong>MUST</strong> be used only for authentication for CDR based sharing and <strong>MUST NOT</strong> be usable for the authorisation of other transactions or actions</li>
+<li>The provided OTP <strong>MUST</strong> be invalidated after a period of time at the discretion of the Data Holder.  This expiry period <strong>SHOULD</strong> facilitate enough time for the customer to reasonably complete the authorisation process</li>
+<li>The provided OTP <strong>MUST</strong> be numeric digits and be between 4 and 6 digits in length</li>
+<li>The algorithm for the creation of the OTP is at the discretion of the Data Holder but <strong>SHOULD</strong> incorporate a level of pseudorandomness appropriate for the use case</li>
+<li>Data Holders <strong>SHOULD</strong> implement additional controls to minimise the risk of enumeration attacks via the redirect page</li>
+</ul>
+
+<p>In line with CDR Rule 4.24 on restrictions when asking CDR consumers to authorise disclosure of CDR data, unwarranted friction for OTP delivery is considered to include:</p>
+
+<ul>
+<li>the addition of any requirements beyond normal data holder practices for verification code delivery</li>
+<li>providing or requesting additional information beyond normal data holder practices for verification code delivery</li>
+<li>offering additional or alternative services</li>
+<li>reference or inclusion of other documents</li>
+</ul>
+
 <p><strong>From July 4th 2022 (FAPI 1.0 Migration Phase 1)</strong>, the following requirements apply:</p>
 
 <ul>
@@ -4547,7 +4584,7 @@ Recipients. Data Holders and Data Recipients <strong>MUST</strong> be created as
 <li>Data Holders <strong>MUST NOT</strong> reject requests with a &quot;x-fapi-customer-ip-address&quot; header containing a valid IPv4 or IPv6 address.</li>
 <li>  Data Holders <strong>MAY</strong> support FAPI 1.0 Advanced Profile (<strong><a href="#nref-FAPI-1-0-Advanced">[FAPI-1.0-Advanced]</a></strong>).</li>
 <li>  Data Holders <strong>MAY</strong> support <strong><a href="#nref-PKCE">[PKCE]</a></strong> (<strong><a href="#nref-RFC7636">[RFC7636]</a></strong>).</li>
-<li>  Data Holders <strong>MAY</strong> allow the OIDC Authorization Code Flow, if supported, in accordance with FAPI 1.0 Advanced and <strong>MUST</strong> require <strong><a href="#nref-JARM">[JARM]</a></strong> and <strong><a href="#nref-PKCE">[PKCE]</a></strong>.</li>
+<li>  Data Holders <strong>MAY</strong> allow the Authorization Code Flow, if supported, in accordance with FAPI 1.0 Advanced and <strong>MUST</strong> require <strong><a href="#nref-JARM">[JARM]</a></strong> and <strong><a href="#nref-PKCE">[PKCE]</a></strong>.</li>
 </ul>
 
 <p><strong>From September 16th 2022 (FAPI 1.0 Migration Phase 2)</strong>, the following requirements apply in addition to the FAPI 1.0 Migration Phase 1 requirements:</p>
@@ -4556,16 +4593,22 @@ Recipients. Data Holders and Data Recipients <strong>MUST</strong> be created as
 <li>  Data Holders <strong>MUST</strong> support the OIDC Hybrid Flow.</li>
 <li>  Data Holders <strong>MUST</strong> support FAPI 1.0 Advanced Profile (<strong><a href="#nref-FAPI-1-0-Advanced">[FAPI-1.0-Advanced]</a></strong>).</li>
 <li>  Data Holders <strong>MAY</strong> support <strong><a href="#nref-PKCE">[PKCE]</a></strong> (<strong><a href="#nref-RFC7636">[RFC7636]</a></strong>).</li>
-<li>  Data Holders <strong>SHOULD</strong> support OIDC Authorization Code Flow.</li>
+<li>  Data Holders <strong>SHOULD</strong> support Authorization Code Flow.</li>
 </ul>
 
-<p><strong>From April 7th 2023 (FAPI 1.0 Migration Phase 3)</strong>, the following requirements apply in addition to the FAPI 1.0 Migration Phase 2 requirements:</p>
+<p><strong>From April 14th 2023 (FAPI 1.0 Migration Phase 3),</strong> the following requirements apply in addition to the FAPI 1.0 Migration Phase 2 requirements:<br>
+* Data Holders <strong>MUST</strong> support Authorization Code Flow.
+* Data Holders <strong>MUST</strong> support the OIDC Hybrid Flow.</p>
+
+<p><strong>From July 10th 2023 (FAPI 1.0 Migration Phase 4),</strong><br>
+* Data Holders <strong>MAY</strong> retire support for the OIDC Hybrid Flow.</p>
+<h4 id='data-recipient-software-products'>Data Recipient Software Products</h4>
+<p>The following statements are applicable to both the OIDC Hybrid Flow and Authorization Code Flow:</p>
 
 <ul>
-<li>  Data Holders <strong>MUST</strong> support OIDC Authorization Code Flow.</li>
-<li>  Data Holders <strong>MAY</strong> support the OIDC Hybrid Flow.</li>
+<li>Data Recipient Software Products <strong>SHOULD</strong> record the following information each time an authorisation flow is executed: username (consumer’s ID at the Data Recipient Software Product), timestamp, IP, consent scopes and duration.</li>
 </ul>
-<h4 id='data-recipient-software-products'>Data Recipient Software Products</h4>
+
 <p><strong>From July 4th 2022 (FAPI 1.0 Migration Phase 1)</strong>, the following requirements apply:</p>
 
 <ul>
@@ -4578,7 +4621,7 @@ Recipients. Data Holders and Data Recipients <strong>MUST</strong> be created as
 <ul>
 <li>  Data Recipient Software Products <strong>MUST</strong> support FAPI 1.0 Advanced Profile (<strong><a href="#nref-FAPI-1-0-Advanced">[FAPI-1.0-Advanced]</a></strong>).</li>
 <li>Data Recipient Software Products <strong>MUST</strong> use <strong><a href="#nref-RFC9126">[RFC9126]</a></strong> (PAR) with <strong><a href="#nref-PKCE">[PKCE]</a></strong> (<strong><a href="#nref-RFC7636">[RFC7636]</a></strong>) and, if supported, <strong>MUST</strong> use S256 as the code challenge method.</li>
-<li>  Data Recipient Software Products <strong>SHOULD</strong> use OIDC Authorization Code Flow.</li>
+<li>  Data Recipient Software Products <strong>SHOULD</strong> use Authorization Code Flow.</li>
 </ul>
 
 <p><a id="hybrid-flow"></a></p>
@@ -4592,57 +4635,49 @@ authorisation code flow detailed under <strong><a href="#nref-OIDC">[OIDC]</a></
 
 <p>Only a <code>response_type</code> (see <a href="https://openid.net/specs/openid-connect-core-1_0.html#HybridFlowAuth">section 3.3</a> of <strong><a href="#nref-OIDC">[OIDC]</a></strong>) of <code>code id_token</code> <strong>SHALL</strong> be allowed.</p>
 
-<p>The <code>request_uri</code> parameter is only supported if the Data Holder supports PAR.</p>
-
-<p>In addition, the following statements are applicable for this flow:</p>
-
-<ul>
-<li>Data Holders <strong>MUST</strong> request a user identifier that can uniquely identify the customer and that is already known by the customer in the redirected page</li>
-<li>Data Holders <strong>MUST NOT</strong> request that the customer enter an existing password in the redirected page</li>
-<li>Data Holders <strong>MUST</strong> provide a one-time password (OTP) to the customer through an existing channel or mechanism that the customer can then enter into the redirected page</li>
-<li>The delivery mechanism for the OTP is at the discretion of the Data Holder but <strong>MUST</strong> align to existing and preferred channels for the customer and <strong>MUST NOT</strong> introduce unwarranted friction into the authentication process</li>
-<li>Data Holders <strong>SHOULD</strong> implement additional controls to minimise the risk of interception of the OTP through the selected delivery mechanism</li>
-<li>The provided OTP <strong>MUST</strong> be used only for authentication for CDR based sharing and <strong>MUST NOT</strong> be usable for the authorisation of other transactions or actions</li>
-<li>The provided OTP <strong>MUST</strong> be invalidated after a period of time at the discretion of the Data Holder.  This expiry period <strong>SHOULD</strong> facilitate enough time for the customer to reasonably complete the authorisation process</li>
-<li>The provided OTP <strong>MUST</strong> be numeric digits and be between 4 and 6 digits in length</li>
-<li>The algorithm for the creation of the OTP is at the discretion of the Data Holder but <strong>SHOULD</strong> incorporate a level of pseudorandomness appropriate for the use case</li>
-<li>Data Holders <strong>SHOULD</strong> implement additional controls to minimise the risk of enumeration attacks via the redirect page</li>
-<li>Data Recipient Software Products <strong>SHOULD</strong> record the following information each time an authorisation flow is executed: username (consumer’s ID at the Data Recipient Software Product), timestamp, IP, consent scopes and duration.</li>
-</ul>
-
-<p>In line with CDR Rule 4.24 on restrictions when asking CDR consumers to authorise disclosure of CDR data, unwarranted friction for OTP delivery is considered to include:</p>
-
-<ul>
-<li>the addition of any requirements beyond normal data holder practices for verification code delivery</li>
-<li>providing or requesting additional information beyond normal data holder practices for verification code delivery</li>
-<li>offering additional or alternative services</li>
-<li>reference or inclusion of other documents</li>
-</ul>
-
-<p>Additional requirements and guidelines for this flow are contained in the <a href="#consumer-experience">Consumer Experience</a> section.</p>
-
 <p><a id="authorization-code-flow"></a></p>
 
-<h3 id='oidc-authorization-code-flow'>OIDC Authorization Code Flow</h3>
-
-<p>From July 4th 2022:</p>
-
-<ul>
-<li>Data Holders <strong>MAY</strong> support OIDC Authorization Code Flow according to <strong><a href="#nref-FAPI-1-0-Advanced">[FAPI-1.0-Advanced]</a></strong></li>
-<li>Data Recipient Software Products <strong>MAY</strong> use OIDC Authorization Code Flow according to <strong><a href="#nref-FAPI-1-0-Advanced">[FAPI-1.0-Advanced]</a></strong> if the Data Holder supports it.</li>
-</ul>
-
-<p>In addition, the following statements are applicable for this flow:</p>
+<h3 id='authorization-code-flow'>Authorization Code Flow</h3><pre class="highlight diff tab-diff"><code><span class="gi">+ Added requriements in relation to authorisation response encryption
+</span><span class="gd">- Removed legacy July 4th 2022 requirements
+</span></code></pre>
+<p>The following statements are applicable for this flow:</p>
 
 <ul>
 <li>Only a response_type (see <a href="https://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth">section 3.1</a> of <strong><a href="#nref-OIDC">[OIDC]</a></strong>) of code <strong>SHALL</strong> be allowed.</li>
 <li>Data Holders <strong>MUST</strong> also support <strong><a href="#nref-JARM">[JARM]</a></strong> and <strong><a href="#nref-PKCE">[PKCE]</a></strong></li>
 </ul>
+<h4 id='data-holders-2'>Data Holders</h4>
+<p>Data Holders MUST support <strong><a href="#nref-JARM">[JARM]</a></strong> in accordance with <strong><a href="#nref-FAPI-1-0-Advanced">[FAPI-1.0-Advanced]</a></strong> <a href="https://openid.net/specs/openid-financial-api-part-2-1_0.html#jarm">section 5.2.2.2</a>.</p>
+
+<blockquote>
+<p><strong>JWT Secured Authorization Response Mode for OAuth 2.0 (JARM)</strong>
+Data Holders <strong>MAY</strong> support Authorisation Response encryption.</p>
+
+<p>However, at present, there is no confidential information in the authorization response, hence encryption of the authorization response is not required for the purposes of security or confidentiality. In addition, whilst response encryption <strong>MAY</strong> be used, to achieve greater interoperability, it is not recommended to use encryption in this case at this time.</p>
+</blockquote>
+
+<p>In addition,</p>
+
+<ul>
+<li>Data Holders <strong>MAY</strong> advertise they do not support authorisation response encryption: either by omitting these values from their OpenID Provider Metadata, or by presenting an empty array for the supported parameters.</li>
+<li>If the Data Holder supports authorisation response encryption and the <code>authorization_encrypted_response_alg</code> is omitted from the registration request, the Data Holder <strong>MAY</strong> require response encryption by returning a client registration response with the chosen “authorization_encrypted_response_alg” value.</li>
+</ul>
+<h4 id='data-recipient-software-products-2'>Data Recipient Software Products</h4>
+<p>Data Recipients <strong>MUST</strong> support <strong><a href="#nref-JARM">[JARM]</a></strong> in accordance with <strong><a href="#nref-FAPI-1-0-Advanced">[FAPI-1.0-Advanced]</a></strong> <a href="https://openid.net/specs/openid-financial-api-part-2-1_0.html#jarm-1">section 5.2.3.2</a>.</p>
+
+<p>In addition, </p>
+
+<ul>
+<li>Data Recipients <strong>MUST</strong> request authorisation response signing using one of the <code>authorization_signing_alg_values_supported</code> values offered by the Data Holder.</li>
+<li>Data Recipients <strong>MAY</strong> request response encryption using one of the advertised encryption sets. </li>
+<li>Data Recipients <strong>MAY</strong> request no response encryption by omitting the values in their client registration.</li>
+<li>If <code>authorization_signed_response_alg</code> is omitted, the default algorithm is &quot;PS256&quot;.</li>
+</ul>
+
+<p>Additional requirements and guidelines for the authentication flows are contained in the <a href="#consumer-experience">Consumer Experience</a> section.</p>
 
 <p><a id="client-authentication"></a></p>
-
 <h2 id='client-authentication'>Client Authentication</h2>
-
 <p>This section outlines how participants in the CDR regime will authenticate clients seeking access to end points.</p>
 
 <p>Note that, while <strong><a href="#nref-MTLS">[MTLS]</a></strong> is utilised for transaction security and as a Holder of Key mechanism, the PKI Mutual TLS OAuth Client Authentication Method SHALL NOT be supported as the mechanism for client authentication.</p>
@@ -4659,13 +4694,10 @@ authorisation code flow detailed under <strong><a href="#nref-OIDC">[OIDC]</a></
 <li><p>Data Holders and the CDR Register <strong>MUST</strong> authenticate Data Recipient Software Products using the <a href="#private-key-jwt-client-authentication">Private Key JWT Client Authentication</a> method.</p></li>
 <li><p>Data Recipient Software Products <strong>MUST</strong> authenticate Data Holders and the CDR Register using the <a href="#self-signed-jwt-client-authentication">Self-signed JWT Client Authentication</a> method.</p></li>
 </ul>
-
 <h4 id='private-key-jwt-client-authentication'>Private Key JWT Client Authentication</h4>
-
 <blockquote>
 <p>Private Key JWT Client Authentication Non-Normative Example - CDR Register calls the Data Holder&#39;s token end point to obtain an Access Token for the purposes of calling the Data Holder&#39;s Get Metrics endpoint.</p>
 </blockquote>
-
 <pre class="highlight plaintext"><code>POST /token HTTP/1.1
 Host: www.holder.com.au
 Content-Type: application/x-www-form-urlencoded
@@ -4691,7 +4723,6 @@ grant_type=client_credentials&amp;
   "jti": "37747cd1-c105-4569-9f75-4adf28b73e31"
 }
 </code></pre>
-
 <p>Authorisation Servers supporting <code>private_key_jwt</code> Client Authentication of clients <strong>MUST</strong> support the following requirements:</p>
 
 <ul>
@@ -4718,13 +4749,10 @@ grant_type=client_credentials&amp;
 <li><code>scope</code> - OPTIONAL. The requested scope as described in <a href="https://tools.ietf.org/html/rfc6749#section-3.3">Section 3.3</a> of <strong><a href="#nref-RFC6749">[RFC6749]</a></strong>.</li>
 </ul></li>
 </ul>
-
 <h4 id='self-signed-jwt-client-authentication'>Self-signed JWT Client Authentication</h4>
-
 <blockquote>
 <p>Self-signed JWT Client Authentication Non-Normative Example - CDR Register calls the Data holder&#39;s Get Metrics end point using self-signed JWT Client Authentication (note that the “aud” claim represents the AdminBaseUri as defined in CDR Register Participant Endpoints).</p>
 </blockquote>
-
 <pre class="highlight plaintext"><code>GET https://admin.data.holder.com.au/cds-au/v1/admin/metrics HTTP:/1.1
 Host: admin.data.holder.com.au
 x-v: string
@@ -4746,7 +4774,6 @@ Authorization: Bearer eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNDU2In0.ey
    "jti":"32358102-a44f-43cc-ad7c-42443d01507a"
 }
 </code></pre>
-
 <p>Data Recipient Software Products and Data Holders supporting the self-signed JWT authentication of clients using a signed JWT <strong>MUST</strong> do so according to the following requirements:</p>
 
 <ul>
@@ -4765,7 +4792,6 @@ Authorization: Bearer eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNDU2In0.ey
 </ul>
 
 <p><strong>Note:</strong> In accordance with <code>jti</code> requirements, self-signed JWTs are one-time use only. The authenticating server <strong>MUST</strong> reject JWTs reuse.</p>
-
 <h3 id='cdr-register-calling-data-holders'>CDR Register calling Data Holders</h3>
 
 <p>Data Holders <strong>MUST</strong> support either <a href="#private-key-jwt-client-authentication">Private Key JWT Client Authentication</a> or <a href="#self-signed-jwt-client-authentication">Self-signed JWT Client Authentication</a> of the CDR Register.</p>
@@ -5256,7 +5282,9 @@ Accept: application/json
 </ul>
 
 <p>The client registration request <strong>MUST</strong> contain the following claims in the JWT payload unless designated as Optional:</p>
-
+<pre class="highlight diff tab-diff"><code><span class="gi">+ Added JARM parameters
+</span>Updated ID Token encryption parameter descriptions
+</code></pre>
 <table><thead>
 <tr>
 <th>Claim</th>
@@ -5312,7 +5340,7 @@ Accept: application/json
 <tr>
 <td><strong>response_types</strong></td>
 <td>Required</td>
-<td>Array of the OAuth 2.0 response type strings that the client can use at the authorization endpoint. <strong>value: [code id_token]</strong></td>
+<td>Array of the OAuth 2.0 response type strings that the client can use at the authorization endpoint. <strong>values: [&quot;code&quot;, &quot;code id_token&quot;]</strong><br><br>Response type value “code” is required for Authorization Code Flow. Response type value “code id_token” is required for OIDC Hybrid Flow.</td>
 </tr>
 <tr>
 <td><strong>application_type</strong></td>
@@ -5322,30 +5350,39 @@ Accept: application/json
 <tr>
 <td><strong>id_token_signed_response_alg</strong></td>
 <td>Required</td>
-<td>Algorithm with which an id_token is to be signed</br></br>Supported values as constrained by <strong><a href="#nref-FAPI-RW-Draft">[FAPI-RW-Draft]</a></strong></td>
+<td>Algorithm with which an id_token is to be signed</br></br>Supported values as constrained by <strong><a href="#nref-FAPI-1-0-Advanced">[FAPI-1.0-Advanced]</a></strong>. Required for both Authorization Code Flow (response_type “code”) and OIDC Hybrid Flow (response_type “code id_token”).</td>
 </tr>
 <tr>
 <td><strong>id_token_encrypted_response_alg</strong></td>
 <td>Required</td>
-<td>JWE <code>alg</code> algorithm with which an id_token is to be encrypted</td>
+<td>JWE <code>alg</code> algorithm with which an id_token is to be encrypted.<br><br>Required if OIDC Hybrid Flow (response_type “code id_token”) is registered. Must be ignored for Authorization Code Flow.</td>
 </tr>
 <tr>
 <td><strong>id_token_encrypted_response_enc</strong></td>
 <td>Required</td>
-<td>JWE <code>enc</code> algorithm with which an id_token is to be encrypted</td>
+<td>JWE <code>enc</code> algorithm with which an id_token is to be encrypted.<br><br>Required if OIDC Hybrid Flow (response_type “code id_token”) is registered. Must be ignored for Authorization Code Flow.</td>
 </tr>
 <tr>
-<td><strong>request_object_signing_alg</strong></td>
-<td>Optional</td>
-<td>Algorithm which the ADR expects to sign the request object if a request object will be part of the authorization request sent to the Data Holder</br></br>If field not present in the request, data holders are expected to respond with an appropriate default value</br></br>Supported values as constrained by <strong><a href="#nref-FAPI-RW-Draft">[FAPI-RW-Draft]</a></strong></td>
+<td><strong>authorization_signed_response_alg</strong></td>
+<td>Conditional</td>
+<td>The JWS alg algorithm required for signing authorization responses. If this is specified, the response will be signed using JWS and the configured algorithm. The algorithm “none” is not allowed.<br><br>Required if response_type of “code” is registered by the client.</td>
 </tr>
 <tr>
-<td><strong>software_statement</strong></td>
-<td>Required</td>
-<td>Software statement assertion issued by the CDR Register</td>
+<td><strong>authorization_encrypted_response_alg</strong></td>
+<td>Conditional</td>
+<td>The JWE alg algorithm required for encrypting authorization responses.</td>
 </tr>
 </tbody></table>
-<h4 id='id-token-algorithm-selection-considerations'>ID Token Algorithm Selection Considerations</h4>
+
+<p>If unspecified, the default is that no encryption is performed.<br><br>Required if “authorization_encrypted_
+response_enc” is included.
+|<strong>authorization_encrypted_response_enc</strong>|Optional|The JWE enc algorithm required for encrypting authorization responses. If “authorization_encrypted_response_alg” is specified, the default for this value is “A128CBC-HS256”.
+|<strong>request_object_signing_alg</strong>| Optional | Algorithm which the ADR expects to sign the request object if a request object will be part of the authorization request sent to the Data Holder</br></br>If field not present in the request, data holders are expected to respond with an appropriate default value</br></br>Supported values as constrained by <strong><a href="#nref-FAPI-RW-Draft">[FAPI-RW-Draft]</a></strong>
+|<strong>software_statement</strong>|    Required | Software statement assertion issued by the CDR Register</p>
+<h4 id='id-token-algorithm-selection-considerations'>ID Token Algorithm Selection Considerations</h4><pre class="highlight diff tab-diff"><code>Updated the section to make clear these requirements must be applied for OIDC Hybrid Flow
+</code></pre>
+<p>When requiring ID Token encryption, the following requirements are applicable.</p>
+
 <p>Participants <strong>MUST</strong> support, at a minimum, the following ID Token algorithms:</p>
 
 <table><thead>
@@ -5367,6 +5404,29 @@ Accept: application/json
 <p>Data Holders <strong>MUST</strong> support at a minimum, 1 algorithm for each claim.</p>
 
 <p>Data Recipients <strong>MUST</strong> support all the algorithms used in the ecosystem to ensure they can communicate with all Data Holders.</p>
+
+<p>ID Token algorithm considerations remain relevant where the OIDC Hybrid Flow is leveraged as defined in the Consumer Data Standards and in accordance with sections <a href="https://openid.net/specs/openid-financial-api-part-2-1_0.html#id-token-as-detached-signature">5.1.1</a>, <a href="https://openid.net/specs/openid-financial-api-part-2-1_0.html#id-token-as-detached-signature-1">5.2.2.1</a>, and <a href="https://openid.net/specs/openid-financial-api-part-2-1_0.html#id-token-as-detached-signature-2">5.2.3.1</a> of <strong><a href="#nref-FAPI-1-0-Advanced">[FAPI-1.0-Advanced]</a></strong>.</p>
+<h4 id='jarm-response-encryption-considerations'>JARM Response Encryption Considerations</h4><pre class="highlight diff tab-diff"><code><span class="gi">+ Added JARM response encryption considerations
+</span></code></pre>
+<p>If Data Holders support authorisation response encryption, they <strong>MUST</strong> support, at a minimum, one of each of the following alg and enc algorithms:</p>
+
+<table><thead>
+<tr>
+<th>Claim</th>
+<th>Values</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>authorization_encryption_alg_values_supported</strong></td>
+<td>RSA-OAEP<br/>RSA-OAEP-256</td>
+</tr>
+<tr>
+<td><strong>authorization_encryption_enc_values_supported</strong></td>
+<td>A256GCM <br/>A128CBC-HS256</td>
+</tr>
+</tbody></table>
+
+<p>Data Recipients <strong>MUST</strong> support the minimum required algorithms.</p>
 <h3 id='registration-validation'>Registration Validation</h3>
 <p>Validation and use of the JWT and the claims described above <strong>MUST</strong> be performed in accordance with <strong><a href="#nref-JWT">[JWT]</a></strong>.</p>
 
@@ -5922,7 +5982,6 @@ Data Holders <strong>SHOULD</strong> explicitly capture Claims requested by the 
   "refresh_token_expires_at": 1311281970,
   "sharing_expires_at": 1311281970
 }
-</code></pre><pre class="highlight diff tab-diff"><code>Added FAPI 1.0 Final Phase 3 Obligation example
 </code></pre>
 <blockquote>
 <p>Non-Normative Example - FAPI 1.0 Final Phase 3 Obligations</p>
@@ -5938,28 +5997,28 @@ Data Holders <strong>SHOULD</strong> explicitly capture Claims requested by the 
   "auth_time": 1311280969,
   "acr": "urn:cds.au:cdr:2"
 }
+</code></pre><pre class="highlight diff tab-diff"><code>Updated heading levels to be consistent
+Moved hashing requirements underneath OIDC Hybrid Flow
+Clarified ID Token encryption requirements apply only to the OIDC Hybrid Flow
 </code></pre>
 <p>ID Tokens are specified in <a href="https://openid.net/specs/openid-connect-core-1_0.html#IDToken">section 2</a> of the <strong><a href="#nref-OIDC">[OIDC]</a></strong> standard.</p>
 <h4 id='baseline-id-token-requirements'>Baseline ID Token requirements</h4>
 <p>In addition to the mandatory claims specified in <a href="https://openid.net/specs/openid-connect-core-1_0.html#IDToken">section 2</a> of the <strong><a href="#nref-OIDC">[OIDC]</a></strong> standard, required claims for ID Tokens as part of Hybrid Flow authentication <strong>MUST</strong> align to <a href="https://openid.net/specs/openid-connect-core-1_0.html#HybridFlowAuth">section 3.3</a> (Authentication using the Hybrid Flow) of the <strong><a href="#nref-OIDC">[OIDC]</a></strong> standards and <a href="https://openid.net/specs/openid-financial-api-part-2.html#authorization-server">section 5.2.2</a> and <a href="https://openid.net/specs/openid-financial-api-part-2.html#authorization-response-parameter-injection-attack">section 8.4.3</a> of the <strong><a href="#nref-FAPI-RW-Draft">[FAPI-RW-Draft]</a></strong> profile.</p>
 
 <p>ID Tokens <strong>MUST</strong> be signed by Data Holders as specified in <a href="https://openid.net/specs/openid-financial-api-part-2.html#jws-algorithm-considerations">section 8.6</a> of <strong><a href="#nref-FAPI-RW-Draft">[FAPI-RW-Draft]</a></strong>.</p>
-
-<p><strong>From September 16th 2022 (FAPI 1.0 Migration Phase 2)</strong>, the following requirements apply:</p>
-
-<ul>
-<li>ID Tokens <strong>MUST</strong> be signed and <strong>MAY</strong> be encrypted when returned to a Data Recipient Software Product from the Token End Point, if the Data Holder supports the OIDC Authorization Code Flow in accordance with <strong><a href="#nref-FAPI-1-0-Advanced">[FAPI-1.0-Advanced]</a></strong>.</li>
-</ul>
 <h4 id='oidc-hybrid-flow-requirements'>OIDC Hybrid Flow requirements</h4>
 <p>In accordance with <strong><a href="#nref-FAPI-RW-Draft">[FAPI-RW-Draft]</a></strong>, ID Tokens <strong>MUST</strong> be signed and encrypted when returned to a Data Recipient Software Product from both the Authorisation End Point and Token End Point.</p>
 
 <p>The ID Token returned from the Authorisation End Point <strong>MUST NOT</strong> contain any Personal Information (PI) claims.</p>
-<h3 id='oidc-authorization-code-flow-requirements'>OIDC Authorization Code Flow requirements</h3>
-<p><strong>From September 16th 2022</strong>, if the Data Holder supports the OIDC Authorization Code Flow in accordance with <strong><a href="#nref-FAPI-1-0-Advanced">[FAPI-1.0-Advanced]</a></strong>, ID Tokens <strong>MUST</strong> be signed and <strong>MAY</strong> encrypted when returned to a Data Recipient Software Product from the Token End Point.</p>
-<h4 id='hashing-value-for-state-and-authorisation-code'>Hashing value for state and authorisation code</h4>
-<p>The <code>c_hash</code> value <strong>MUST</strong> be generated according to <a href="https://openid.net/specs/openid-connect-core-1_0.html#HybridIDToken">section 3.3.2.11</a> of <strong><a href="#nref-OIDC">[OIDC]</a></strong>.</p>
+<h5 id='hashing-value-for-state-and-authorisation-code'>Hashing value for state and authorisation code</h5>
+<p>The following requirements apply to the OIDC Hybrid Flow:</p>
 
-<p>The <code>s_hash</code> value <strong>MUST</strong> be generated according to <a href="https://openid.net/specs/openid-financial-api-part-2.html#introduction">section 5.1</a> of <strong><a href="#nref-FAPI-RW-Draft">[FAPI-RW-Draft]</a></strong>.</p>
+<ul>
+<li>The <code>c_hash</code> value <strong>MUST</strong> be generated according to <a href="https://openid.net/specs/openid-connect-core-1_0.html#HybridIDToken">section 3.3.2.11</a> of <strong><a href="#nref-OIDC">[OIDC]</a></strong>.</li>
+<li>The <code>s_hash</code> value <strong>MUST</strong> be generated according to <a href="https://openid.net/specs/openid-financial-api-part-2-1_0.html#id-token-as-detached-signature">section 5.1.1</a> of <strong><a href="#nref-FAPI-1-0-Advanced">[FAPI-1.0-Advanced]</a></strong>.</li>
+</ul>
+<h4 id='authorization-code-flow-requirements'>Authorization Code Flow requirements</h4>
+<p>For response_type “code”, in accordance with <strong><a href="#nref-FAPI-1-0-Advanced">[FAPI-1.0-Advanced]</a></strong>, ID Tokens <strong>MUST</strong> be signed and <strong>MUST NOT</strong> be encrypted when returned to a Data Recipient Software Product from the Token End Point. </p>
 <h3 id='access-token'>Access Token</h3>
 <p>Access Tokens <strong>MUST</strong> be used as specified in <a href="https://tools.ietf.org/html/rfc6749#section-10.3">section 10.3</a> of <strong><a href="#nref-OAUTH2">[OAUTH2]</a></strong>.</p>
 
@@ -6057,7 +6116,6 @@ client_id=s6BhdRkqt3
   "refresh_token_expires_at": 1311281970,
   "sharing_expires_at": 1311281970
 }
-</code></pre><pre class="highlight diff tab-diff"><code>Added FAPI 1.0 Final Phase 3 Obligation example
 </code></pre>
 <blockquote>
 <p>Decoded JWT - FAPI 1.0 Final Phase 3 Obligation  </p>
@@ -6320,8 +6378,7 @@ client_id=s6BhdRkqt3
 <h3 id='ocsp-stapling'>OCSP stapling</h3>
 <p>The use of OCSP Stapling within the CDR ecosystem is not recommended.</p>
 
-<pre class="highlight diff tab-diff"><code>Documentation fix to note that CORS must be enabled for the endpoints listed
-</code></pre><h2 id='cors'>CORS</h2>
+<h2 id='cors'>CORS</h2>
 
 <p>Cross-origin resource sharing (CORS) protections must be disabled (ie. <code>Access-Control-Allow-Origin</code> set to &quot;*&quot;) for the following end points:</p>
 
@@ -6368,7 +6425,6 @@ client_id=s6BhdRkqt3
     }
   }
 }
-</code></pre><pre class="highlight diff tab-diff"><code>Added FAPI 1.0 Final Phase 3 Obligation example
 </code></pre>
 
 <blockquote>
@@ -6511,25 +6567,7 @@ client_id=s6BhdRkqt3
 <p>Non-Normative Example</p>
 </blockquote>
 
-<pre class="highlight diff tab-diff"><code>Updated non-normative example - FAPI 1.0 Final Phase 3 Obligations.
-
-Updated parameters:
-"response_types_supported" to support Authorization Code Flow ("code")
-"response_modes_supported" to support "jwt" for JARM. Note that "fragment" is also a supported JWT response mode
-
-Added required PAR parameter:
-<span class="gi">+ require_pushed_authorization_requests set to true
-</span>
-Added requied PKCE parameter:
-<span class="gi">+ code_challenge_methods_supported
-</span>
-Added requied JARM parameter:
-<span class="gi">+ authorization_signing_alg_values_supported
-</span>
-Added JARM parameters where authorisation response encryption is supported (refer to https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/479 for further details):
-<span class="gi">+ authorization_encryption_alg_values_supported
-+ authorization_encryption_enc_values_supported
-</span></code></pre><pre class="highlight plaintext"><code>## Request
+<pre class="highlight plaintext"><code>## Request
 
 GET /.well-known/openid-configuration HTTP/1.1
 Host: www.dh.com.au
@@ -6610,10 +6648,13 @@ Content-Type: application/json
 <li><code>claims_supported</code>:  The list of supported claims.</li>
 <li><code>acr_values_supported</code>:  The supported ACR values.</li>
 <li><code>jwks_uri</code>: The JSON Web Key Set for the data holder.</li>
-<li><code>id_token_encryption_alg_values_supported</code>: The list of the supported JWE algorithms for securing the issued ID tokens. Must conform to <strong><a href="#nref-FAPI-RW-Draft">[FAPI-RW-Draft]</a></strong> and <strong><a href="#nref-OIDD">[OIDD]</a></strong>.</li>
-<li><code>id_token_encryption_enc_values_supported</code>: The list of the supported JWE encryption methods for securing the issued ID tokens.</li>
+<li><code>id_token_encryption_alg_values_supported</code>: The list of the supported JWE algorithms for securing the issued ID tokens. Must conform to <strong><a href="#nref-FAPI-RW-Draft">[FAPI-RW-Draft]</a></strong> and <strong><a href="#nref-OIDD">[OIDD]</a></strong>. Required for Data Holders supporting OIDC Hybrid Flow.</li>
+<li><code>id_token_encryption_enc_values_supported</code>: The list of the supported JWE encryption methods for securing the issued ID tokens. Required for Data Holders supporting OIDC Hybrid Flow.</li>
 <li><code>cdr_arrangement_revocation_endpoint</code>: The URL of the CDR Arrangement Revocation End Point for consent revocation</li>
 <li><code>pushed_authorization_request_endpoint</code>: URL of the Pushed Authorisation End Point used to support <strong><a href="#nref-PAR">[PAR]</a></strong>.</li>
+<li><code>authorization_signing_alg_values_supported</code>: A JSON array containing a list of the JWS signing algorithms (alg values) supported by the authorization endpoint to sign the response. Required if Authorization Code Flow (response_type “code”) is supported.</li>
+<li><code>authorization_encryption_alg_values_supported</code>: A JSON array containing a list of the JWE encryption algorithms (alg values) supported by the authorization endpoint to encrypt the response. If response encryption is used, Data Holders must support at least one of &quot;RSA-OAEP&quot; or &quot;RSA-OAEP-256&quot;.</li>
+<li><code>authorization_encryption_enc_values_supported</code>: A JSON array containing a list of the JWE encryption algorithms (enc values) supported by the authorization endpoint to encrypt the response. Required if “authorization_encryption_alg_values_supported” is provided. If response encryption is used, Data Holders must support at least one of &quot;A256GCM&quot; or &quot;A128CBC-HS256&quot;.</li>
 </ul>
 
 <p><a id="authorisation-endpoint"></a></p>
@@ -6671,7 +6712,6 @@ Host: www.holder.com.au
   }
 }
 
-</code></pre><pre class="highlight diff tab-diff"><code>Added FAPI 1.0 Final Phase 3 Obligation example
 </code></pre>
 
 <blockquote>
@@ -7159,7 +7199,6 @@ GET /authorise?client_id=s6BhdRkqt3&amp;
    request_uri=urn%3Adata.holder.com.au%3Abwc4JK-ESC0w8acc191e-Y1LTC2
 HTTP/1.1
 Host: data.holder.com.au
-</code></pre><pre class="highlight diff tab-diff"><code>Added FAPI 1.0 Final Phase 3 Obligation example
 </code></pre>
 
 <blockquote>
@@ -7565,12 +7604,15 @@ Host: cdr.register
     </span><span class="s2">"client_credentials"</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="s2">"response_types"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="s2">"code id_token"</span><span class="w">
+    </span><span class="s2">"code"</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="s2">"application_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"web"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"id_token_signed_response_alg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PS256"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"id_token_encrypted_response_alg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RSA-OAEP"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"id_token_encrypted_response_enc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A256GCM"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"authorization_signed_response_alg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PS256"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"authorization_encrypted_response_alg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RSA-OAEP"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"authorization_encrypted_response_enc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A128CBC-HS256"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"request_object_signing_alg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PS256"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"software_statement"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"software_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"740C368F-ECF9-4D29-A2EA-0514A66B0CDE"</span><span class="p">,</span><span class="w">
@@ -7716,12 +7758,15 @@ This operation does not require authentication
     </span><span class="s2">"client_credentials"</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="s2">"response_types"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="s2">"code id_token"</span><span class="w">
+    </span><span class="s2">"code"</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="s2">"application_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"web"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"id_token_signed_response_alg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PS256"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"id_token_encrypted_response_alg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RSA-OAEP"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"id_token_encrypted_response_enc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A256GCM"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"authorization_signed_response_alg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PS256"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"authorization_encrypted_response_alg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RSA-OAEP"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"authorization_encrypted_response_enc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A128CBC-HS256"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"request_object_signing_alg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PS256"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"software_statement"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"software_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"740C368F-ECF9-4D29-A2EA-0514A66B0CDE"</span><span class="p">,</span><span class="w">
@@ -7907,12 +7952,15 @@ To perform this operation, you must be authenticated and authorised with the fol
     </span><span class="s2">"client_credentials"</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="s2">"response_types"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="s2">"code id_token"</span><span class="w">
+    </span><span class="s2">"code"</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="s2">"application_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"web"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"id_token_signed_response_alg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PS256"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"id_token_encrypted_response_alg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RSA-OAEP"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"id_token_encrypted_response_enc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A256GCM"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"authorization_signed_response_alg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PS256"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"authorization_encrypted_response_alg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RSA-OAEP"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"authorization_encrypted_response_enc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A128CBC-HS256"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"request_object_signing_alg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PS256"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"software_statement"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"software_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"740C368F-ECF9-4D29-A2EA-0514A66B0CDE"</span><span class="p">,</span><span class="w">
@@ -8181,12 +8229,15 @@ To perform this operation, you must be authenticated and authorised with the fol
     </span><span class="s2">&quot;client_credentials&quot;</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="s2">&quot;response_types&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="s2">&quot;code id_token&quot;</span><span class="w">
+    </span><span class="s2">&quot;code&quot;</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="s2">&quot;application_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;web&quot;</span><span class="p">,</span><span class="w">
   </span><span class="s2">&quot;id_token_signed_response_alg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PS256&quot;</span><span class="p">,</span><span class="w">
   </span><span class="s2">&quot;id_token_encrypted_response_alg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;RSA-OAEP&quot;</span><span class="p">,</span><span class="w">
   </span><span class="s2">&quot;id_token_encrypted_response_enc&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;A256GCM&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="s2">&quot;authorization_signed_response_alg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PS256&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="s2">&quot;authorization_encrypted_response_alg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;RSA-OAEP&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="s2">&quot;authorization_encrypted_response_enc&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;A128CBC-HS256&quot;</span><span class="p">,</span><span class="w">
   </span><span class="s2">&quot;request_object_signing_alg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PS256&quot;</span><span class="p">,</span><span class="w">
   </span><span class="s2">&quot;software_statement&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span><span class="w">
   </span><span class="s2">&quot;software_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;740C368F-ECF9-4D29-A2EA-0514A66B0CDE&quot;</span><span class="p">,</span><span class="w">
@@ -8327,7 +8378,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>response_types</td>
 <td>[string]</td>
 <td>mandatory</td>
-<td>Array of the OAuth 2.0 response type strings that the client can use at the authorization endpoint.</td>
+<td>Array of the OAuth 2.0 response type strings that the client can use at the authorization endpoint.<br><br>Response type value <code>code</code> is required for Authorization Code Flow. Response type value <code>code id_token</code> is required for OIDC Hybrid Flow.</td>
 </tr>
 <tr>
 <td>application_type</td>
@@ -8338,7 +8389,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>id_token_signed_response_alg</td>
 <td>string</td>
-<td>optional</td>
+<td>mandatory</td>
 <td>Algorithm with which an id_token is to be signed</td>
 </tr>
 <tr>
@@ -8352,6 +8403,24 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>string</td>
 <td>mandatory</td>
 <td>JWE <code>enc</code> algorithm with which an id_token is to be encrypted</td>
+</tr>
+<tr>
+<td>authorization_signed_response_alg</td>
+<td>string</td>
+<td>optional</td>
+<td>The JWS <code>alg</code> algorithm required for signing authorization responses. If this is specified, the response will be signed using JWS and the configured algorithm. The algorithm “none” is not allowed.<br><br>Required if response_type of “code” is registered by the client.</td>
+</tr>
+<tr>
+<td>authorization_encrypted_response_alg</td>
+<td>string</td>
+<td>optional</td>
+<td>The JWE <code>alg</code> algorithm required for encrypting authorization responses. If unspecified, the default is that no encryption is performed.<br><br>Required if “authorization_encrypted_response_enc” is included.</td>
+</tr>
+<tr>
+<td>authorization_encrypted_response_enc</td>
+<td>string</td>
+<td>optional</td>
+<td>The JWE <code>enc</code> algorithm required for encrypting authorization responses. If “authorization_encrypted_response_alg” is specified, the default for this value is “A128CBC-HS256”.</td>
 </tr>
 <tr>
 <td>request_object_signing_alg</td>
@@ -8417,6 +8486,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>response_types</td>
+<td>code</td>
+</tr>
+<tr>
+<td>response_types</td>
 <td>code id_token</td>
 </tr>
 <tr>
@@ -8430,6 +8503,30 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>id_token_signed_response_alg</td>
 <td>ES256</td>
+</tr>
+<tr>
+<td>authorization_signed_response_alg</td>
+<td>PS256</td>
+</tr>
+<tr>
+<td>authorization_signed_response_alg</td>
+<td>ES256</td>
+</tr>
+<tr>
+<td>authorization_encrypted_response_alg</td>
+<td>RSA-OAEP</td>
+</tr>
+<tr>
+<td>authorization_encrypted_response_alg</td>
+<td>RSA-OAEP-256</td>
+</tr>
+<tr>
+<td>authorization_encrypted_response_enc</td>
+<td>A256GCM</td>
+</tr>
+<tr>
+<td>authorization_encrypted_response_enc</td>
+<td>A128CBC-HS256</td>
 </tr>
 <tr>
 <td>request_object_signing_alg</td>
@@ -8477,12 +8574,15 @@ To perform this operation, you must be authenticated and authorised with the fol
     </span><span class="s2">&quot;client_credentials&quot;</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="s2">&quot;response_types&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="s2">&quot;code id_token&quot;</span><span class="w">
+    </span><span class="s2">&quot;code&quot;</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="s2">&quot;application_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;web&quot;</span><span class="p">,</span><span class="w">
   </span><span class="s2">&quot;id_token_signed_response_alg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PS256&quot;</span><span class="p">,</span><span class="w">
   </span><span class="s2">&quot;id_token_encrypted_response_alg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;RSA-OAEP&quot;</span><span class="p">,</span><span class="w">
   </span><span class="s2">&quot;id_token_encrypted_response_enc&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;A256GCM&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="s2">&quot;authorization_signed_response_alg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PS256&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="s2">&quot;authorization_encrypted_response_alg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;RSA-OAEP&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="s2">&quot;authorization_encrypted_response_enc&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;A128CBC-HS256&quot;</span><span class="p">,</span><span class="w">
   </span><span class="s2">&quot;request_object_signing_alg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PS256&quot;</span><span class="p">,</span><span class="w">
   </span><span class="s2">&quot;software_statement&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span><span class="w">
   </span><span class="s2">&quot;software_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;740C368F-ECF9-4D29-A2EA-0514A66B0CDE&quot;</span><span class="p">,</span><span class="w">
@@ -8612,8 +8712,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>unapproved_software_statement</td>
 </tr>
 </tbody></table></p>
-<h1 id='register-apis'>Register APIs</h1><pre class="highlight diff tab-diff"><code><span class="gi">+ 'softwareProductDescription' in 'SoftwareProductMetaData' was made mandatory in the response payload for the 'Get Data Recipients' API
-</span></code></pre>
+<h1 id='register-apis'>Register APIs</h1>
 <p>This following provides an overview of the Register APIs for Data Holders and Data Recipients to collect participant metadata exclusively for the banking sector.
 These endpoints are exposed by the Register and consumed by Data Holders and Data Recipients.</p>
 
@@ -12704,8 +12803,7 @@ This operation does not require authentication
 <tr><td><a href='./includes/swagger/cds_banking.json'>Banking OpenAPI Specification (JSON)</a></td></tr>
 <tr><td><a href='./includes/swagger/cds_banking.yaml'>Banking OpenAPI Specification (YAML)</a></td></tr>
 </table></p>
-<pre class="highlight diff tab-diff"><code>Fixed the 'BankingTransactionDetail' schema to treat the 'extendedDescription' as conditional
-</code></pre>
+
 <h2 id='get-accounts'>Get Accounts</h2>
 
 <p><a id="opIdlistAccounts"></a></p>
@@ -25518,30 +25616,7 @@ This operation does not require authentication
 <tr><td><a href='./includes/swagger/cds_energy.json'>Energy OpenAPI Specification (JSON)</a></td></tr>
 <tr><td><a href='./includes/swagger/cds_energy.yaml'>Energy OpenAPI Specification (YAML)</a></td></tr>
 </table>
-<pre class="highlight diff tab-diff"><code>Changed type of `EnergyDerRecord.availablePhasesCount` and `EnergyDerRecord.installedPhasesCount` fields
-from:
-<span class="gd">- PositiveInteger
-</span>to:
-<span class="gi">+ NaturalNumber
-</span>
-Updated description of below fields in `EnergyDerRecord`
-• `approvedCapacity`
-• `availablePhasesCount`
-• `installedPhasesCount`
-to include:
-<span class="gi">+ Value of 0 indicates no DER record exists for the given servicePointId
-</span>
-Updated description of below fields in `EnergyDerRecord.acConnections`:
-• `inverterDeviceCapacity`
-• `derDevices.nominalRatedCapacity`
-• `derDevices.nominalStorageCapacity`
-to include
-<span class="gi">+ Default is 0 if value not known
-</span>
-Defect fix for readQualities to make it an array instead of an object
 
-Clarified that date filtering of invoices should be done via issue date
-</code></pre>
 <h2 id='get-generic-plans'>Get Generic Plans</h2>
 
 <p><a id="opIdlistPlans"></a></p>
@@ -43186,8 +43261,7 @@ Note that the standards for the telecommunications sector are currently in draft
 <tr><td><a href='./includes/swagger/cds_telco.json'>Telco OpenAPI Specification (JSON)</a></td></tr>
 <tr><td><a href='./includes/swagger/cds_telco.yaml'>Telco OpenAPI Specification (YAML)</a></td></tr>
 </table>
-<pre class="highlight diff tab-diff"><code><span class="gi">+ First version of Telco standards published
-</span></code></pre>
+
 <h2 id='get-telco-products'>Get Telco Products</h2>
 
 <p><a id="opIdlistProducts"></a></p>
@@ -58332,28 +58406,7 @@ the Data Holder. In this scenario the retailer MUST call AEMO multiple times and
 <tr><td><a href='./includes/swagger/cds_energy_sdh.json'>Energy Secondary Data Holder OpenAPI Specification (JSON)</a></td></tr>
 <tr><td><a href='./includes/swagger/cds_energy_sdh.yaml'>Energy Secondary Data Holder OpenAPI Specification (YAML)</a></td></tr>
 </table>
-<pre class="highlight diff tab-diff"><code>Changed type of `EnergyDerRecord.availablePhasesCount` and `EnergyDerRecord.installedPhasesCount` fields
-from:
-<span class="gd">- PositiveInteger
-</span>to:
-<span class="gi">+ NaturalNumber
-</span>
-Updated description of below fields in `EnergyDerRecord`
-• `approvedCapacity`
-• `availablePhasesCount`
-• `installedPhasesCount`
-to include:
-<span class="gi">+ Value of 0 indicates no DER record exists for the given servicePointId
-</span>
-Updated description of below fields in `EnergyDerRecord.acConnections`:
-• `inverterDeviceCapacity`
-• `derDevices.nominalRatedCapacity`
-• `derDevices.nominalStorageCapacity`
-to include
-<span class="gi">+ Default is 0 if value not known
-</span>
-Defect fix for readQualities to make it an array instead of an object
-</code></pre>
+
 <h2 id='get-service-points-sr'>Get Service Points (SR)</h2>
 
 <p><a id="opIdlistServicePoints"></a></p>
@@ -62623,6 +62676,12 @@ This operation does not require authentication
 </tr>
 </thead><tbody>
 <tr>
+<td>16/12/2022</td>
+<td>1.21.0</td>
+<td>Changes arising from Decision 282</td>
+<td>See <a href="includes/releasenotes/releasenotes.1.21.0.html">release notes</a> and <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/282">Decision 282</a> for details.</td>
+</tr>
+<tr>
 <td>03/11/2022</td>
 <td>1.20.0</td>
 <td>Changes arising from Decision 259 (Maintenance iteration 12)</td>
@@ -63041,6 +63100,11 @@ This operation does not require authentication
 <th>Description</th>
 </tr>
 </thead><tbody>
+<tr>
+<td><a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.20.0/'>13/11/2022</a></td>
+<td>1.20.0</td>
+<td><a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.20.0/'>Changes arising from Decision 259 (Maintenance iteration 12)</a></td>
+</tr>
 <tr>
 <td><a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.19.0/'>13/09/2022</a></td>
 <td>1.19.0</td>
