@@ -1799,7 +1799,7 @@ Note: changes to request and response payloads are listed at the beginning of th
 </tr>
 <tr>
 <td><a href="#security-profile">Information Security profile</a></td>
-<td>FAPI 1.0 adoption is introduced across four phases.<br/><strong>Phase 3: Support Authorization Code Flow and Hybrid Flow</strong> includes, amongst other changes:<ul><li>Data Holders <strong>MUST</strong> support Authorization Code Flow</li><li>Data Holders <strong>MUST</strong> retire Hybrid Flow</li></ul></td>
+<td>FAPI 1.0 adoption is introduced across four phases.<br/><strong>Phase 3: Support Authorization Code Flow and Hybrid Flow</strong> includes, amongst other changes:<ul><li>Data Holders <strong>MUST</strong> support Authorization Code Flow</li><li>Data Holders <strong>MUST</strong> support Hybrid Flow</li></ul></td>
 <td>April 14th 2023</td>
 </tr>
 <tr>
@@ -4597,11 +4597,14 @@ Require Data Holders to support both OIDC Hybrid Flow and Authorization Code Flo
 </ul>
 
 <p><strong>From April 14th 2023 (FAPI 1.0 Migration Phase 3),</strong> the following requirements apply in addition to the FAPI 1.0 Migration Phase 2 requirements:<br>
-* Data Holders <strong>MUST</strong> support Authorization Code Flow.
+* Data Holders <strong>MUST</strong> support Authorization Code Flow.<br>
 * Data Holders <strong>MUST</strong> support the OIDC Hybrid Flow.</p>
 
-<p><strong>From July 10th 2023 (FAPI 1.0 Migration Phase 4),</strong><br>
-* Data Holders <strong>MAY</strong> retire support for the OIDC Hybrid Flow.</p>
+<p><strong>From July 10th 2023 (FAPI 1.0 Migration Phase 4),</strong>   </p>
+
+<ul>
+<li>Data Holders <strong>MAY</strong> retire support for the OIDC Hybrid Flow.</li>
+</ul>
 <h4 id='data-recipient-software-products'>Data Recipient Software Products</h4>
 <p>The following statements are applicable to both the OIDC Hybrid Flow and Authorization Code Flow:</p>
 
@@ -4643,11 +4646,11 @@ authorisation code flow detailed under <strong><a href="#nref-OIDC">[OIDC]</a></
 <p>The following statements are applicable for this flow:</p>
 
 <ul>
-<li>Only a response_type (see <a href="https://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth">section 3.1</a> of <strong><a href="#nref-OIDC">[OIDC]</a></strong>) of code <strong>SHALL</strong> be allowed.</li>
+<li>Only a <code>response_type</code> (see <a href="https://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth">section 3.1</a> of <strong><a href="#nref-OIDC">[OIDC]</a></strong>) of <code>code</code> <strong>SHALL</strong> be allowed.</li>
 <li>Data Holders <strong>MUST</strong> also support <strong><a href="#nref-JARM">[JARM]</a></strong> and <strong><a href="#nref-PKCE">[PKCE]</a></strong></li>
 </ul>
 <h4 id='data-holders-2'>Data Holders</h4>
-<p>Data Holders MUST support <strong><a href="#nref-JARM">[JARM]</a></strong> in accordance with <strong><a href="#nref-FAPI-1-0-Advanced">[FAPI-1.0-Advanced]</a></strong> <a href="https://openid.net/specs/openid-financial-api-part-2-1_0.html#jarm">section 5.2.2.2</a>.</p>
+<p>Data Holders <strong>MUST</strong> support <strong><a href="#nref-JARM">[JARM]</a></strong> in accordance with <strong><a href="#nref-FAPI-1-0-Advanced">[FAPI-1.0-Advanced]</a></strong> <a href="https://openid.net/specs/openid-financial-api-part-2-1_0.html#jarm">section 5.2.2.2</a>.</p>
 
 <blockquote>
 <p><strong>JWT Secured Authorization Response Mode for OAuth 2.0 (JARM)</strong>
@@ -5350,7 +5353,7 @@ Accept: application/json
 <tr>
 <td><strong>id_token_signed_response_alg</strong></td>
 <td>Required</td>
-<td>Algorithm with which an id_token is to be signed</br></br>Supported values as constrained by <strong><a href="#nref-FAPI-1-0-Advanced">[FAPI-1.0-Advanced]</a></strong>. Required for both Authorization Code Flow (response_type “code”) and OIDC Hybrid Flow (response_type “code id_token”).</td>
+<td>Algorithm with which an id_token is to be signed</br></br>Supported values as constrained by <strong><a href="#nref-FAPI-1-0-Advanced">[FAPI-1.0-Advanced]</a></strong>. Required for both Authorization Code Flow (<code>response_type</code> “code”) and OIDC Hybrid Flow (<code>response_type</code> “code id_token”).</td>
 </tr>
 <tr>
 <td><strong>id_token_encrypted_response_alg</strong></td>
@@ -5370,15 +5373,24 @@ Accept: application/json
 <tr>
 <td><strong>authorization_encrypted_response_alg</strong></td>
 <td>Conditional</td>
-<td>The JWE alg algorithm required for encrypting authorization responses.</td>
+<td>The JWE alg algorithm required for encrypting authorization responses. If unspecified, the default is that no encryption is performed.<br><br>Required if “authorization_encrypted_response_enc” is included.</td>
+</tr>
+<tr>
+<td><strong>authorization_encrypted_response_enc</strong></td>
+<td>Optional</td>
+<td>The JWE enc algorithm required for encrypting authorization responses. If “authorization_encrypted_response_alg” is specified, the default for this value is “A128CBC-HS256”.</td>
+</tr>
+<tr>
+<td><strong>request_object_signing_alg</strong></td>
+<td>Optional</td>
+<td>Algorithm which the ADR expects to sign the request object if a request object will be part of the authorization request sent to the Data Holder</br></br>If field not present in the request, data holders are expected to respond with an appropriate default value</br></br>Supported values as constrained by <strong><a href="#nref-FAPI-RW-Draft">[FAPI-RW-Draft]</a></strong></td>
+</tr>
+<tr>
+<td><strong>software_statement</strong></td>
+<td>Required</td>
+<td>Software statement assertion issued by the CDR Register</td>
 </tr>
 </tbody></table>
-
-<p>If unspecified, the default is that no encryption is performed.<br><br>Required if “authorization_encrypted_
-response_enc” is included.
-|<strong>authorization_encrypted_response_enc</strong>|Optional|The JWE enc algorithm required for encrypting authorization responses. If “authorization_encrypted_response_alg” is specified, the default for this value is “A128CBC-HS256”.
-|<strong>request_object_signing_alg</strong>| Optional | Algorithm which the ADR expects to sign the request object if a request object will be part of the authorization request sent to the Data Holder</br></br>If field not present in the request, data holders are expected to respond with an appropriate default value</br></br>Supported values as constrained by <strong><a href="#nref-FAPI-RW-Draft">[FAPI-RW-Draft]</a></strong>
-|<strong>software_statement</strong>|    Required | Software statement assertion issued by the CDR Register</p>
 <h4 id='id-token-algorithm-selection-considerations'>ID Token Algorithm Selection Considerations</h4><pre class="highlight diff tab-diff"><code>Updated the section to make clear these requirements must be applied for OIDC Hybrid Flow
 </code></pre>
 <p>When requiring ID Token encryption, the following requirements are applicable.</p>
@@ -5408,7 +5420,7 @@ response_enc” is included.
 <p>ID Token algorithm considerations remain relevant where the OIDC Hybrid Flow is leveraged as defined in the Consumer Data Standards and in accordance with sections <a href="https://openid.net/specs/openid-financial-api-part-2-1_0.html#id-token-as-detached-signature">5.1.1</a>, <a href="https://openid.net/specs/openid-financial-api-part-2-1_0.html#id-token-as-detached-signature-1">5.2.2.1</a>, and <a href="https://openid.net/specs/openid-financial-api-part-2-1_0.html#id-token-as-detached-signature-2">5.2.3.1</a> of <strong><a href="#nref-FAPI-1-0-Advanced">[FAPI-1.0-Advanced]</a></strong>.</p>
 <h4 id='jarm-response-encryption-considerations'>JARM Response Encryption Considerations</h4><pre class="highlight diff tab-diff"><code><span class="gi">+ Added JARM response encryption considerations
 </span></code></pre>
-<p>If Data Holders support authorisation response encryption, they <strong>MUST</strong> support, at a minimum, one of each of the following alg and enc algorithms:</p>
+<p>If Data Holders support authorisation response encryption, they <strong>MUST</strong> support, at a minimum, one of each of the following <code>alg</code> and <code>enc</code> algorithms:</p>
 
 <table><thead>
 <tr>
