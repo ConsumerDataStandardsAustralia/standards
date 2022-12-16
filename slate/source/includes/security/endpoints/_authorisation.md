@@ -53,10 +53,6 @@ Host: www.holder.com.au
 
 ```
 
-```diff
-Added FAPI 1.0 Final Phase 3 Obligation example
-```
-
 > Non-Normative Example - FAPI 1.0 Final Phase 3 Obligation
 > This example demonstrates how an ADR may send a staged authorisation request (using PAR) in the back-channel to the Data Holder.   
 > 

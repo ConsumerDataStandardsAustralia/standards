@@ -74,10 +74,6 @@ HTTP/1.1
 Host: data.holder.com.au
 ```
 
-```diff
-Added FAPI 1.0 Final Phase 3 Obligation example
-```
-
 > Non-Normative Example - FAPI 1.0 Final Phase 3 Obligations  
 > Utilising FAPI 1.0 Final, PAR RFC9126, PKCE, JARM and Authorization Code Flow
 

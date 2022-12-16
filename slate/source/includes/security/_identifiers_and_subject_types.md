@@ -60,10 +60,6 @@ client_id=s6BhdRkqt3
 }
 ```
 
-```diff
-Added FAPI 1.0 Final Phase 3 Obligation example
-```
-
 > Decoded JWT - FAPI 1.0 Final Phase 3 Obligation  
 
 ```
