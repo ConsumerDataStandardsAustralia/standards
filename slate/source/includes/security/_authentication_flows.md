@@ -56,10 +56,10 @@ In line with CDR Rule 4.24 on restrictions when asking CDR consumers to authoris
 *	Data Holders **SHOULD** support Authorization Code Flow.
 
 **From April 14th 2023 (FAPI 1.0 Migration Phase 3),** the following requirements apply in addition to the FAPI 1.0 Migration Phase 2 requirements:  
-* Data Holders **MUST** support Authorization Code Flow.
+* Data Holders **MUST** support Authorization Code Flow.  
 * Data Holders **MUST** support the OIDC Hybrid Flow.
 
-**From July 10th 2023 (FAPI 1.0 Migration Phase 4),**  
+**From July 10th 2023 (FAPI 1.0 Migration Phase 4),**   
 * Data Holders **MAY** retire support for the OIDC Hybrid Flow.
 
 
@@ -102,11 +102,11 @@ Only a `response_type` (see [section 3.3](https://openid.net/specs/openid-connec
 
 The following statements are applicable for this flow:
 
-* Only a response_type (see [section 3.1](https://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth) of **[[OIDC]](#nref-OIDC)**) of code **SHALL** be allowed.
+* Only a `response_type` (see [section 3.1](https://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth) of **[[OIDC]](#nref-OIDC)**) of `code` **SHALL** be allowed.
 * Data Holders **MUST** also support **[[JARM]](#nref-JARM)** and **[[PKCE]](#nref-PKCE)**
 
 #### Data Holders
-Data Holders MUST support **[[JARM]](#nref-JARM)** in accordance with **[[FAPI-1.0-Advanced]](#nref-FAPI-1-0-Advanced)** [section 5.2.2.2](https://openid.net/specs/openid-financial-api-part-2-1_0.html#jarm).
+Data Holders **MUST** support **[[JARM]](#nref-JARM)** in accordance with **[[FAPI-1.0-Advanced]](#nref-FAPI-1-0-Advanced)** [section 5.2.2.2](https://openid.net/specs/openid-financial-api-part-2-1_0.html#jarm).
 
 > **JWT Secured Authorization Response Mode for OAuth 2.0 (JARM)**
 > Data Holders **MAY** support Authorisation Response encryption.
