@@ -6,13 +6,13 @@
       "name" : "Consumer Data Standards",
       "url" : "https://consumerdatastandards.gov.au"
     },
-    "description" : "Consumer Data Standards Telco APIs",
+    "description" : "Consumer Data Standards APIs created by the Data Standards Body (DSB), with the Data Standards Chair as the decision maker to meet the needs of the Consumer Data Right",
     "license" : {
       "name" : "MIT License",
       "url" : "https://opensource.org/licenses/MIT"
     },
     "title" : "CDR Telco API",
-    "version" : "1.20.0"
+    "version" : "1.22.0"
   },
   "servers" : [ {
     "url" : "https://data.holder.com.au/cds-au/v1"
@@ -132,9 +132,9 @@
             "description" : "Successful response",
             "headers" : {
               "x-v" : {
-                "description" : "The [version](#response-headers) of the API end point that the data holder has responded with.",
                 "explode" : false,
                 "schema" : {
+                  "description" : "The [version](#response-headers) of the API end point that the data holder has responded with.",
                   "type" : "string"
                 },
                 "style" : "simple"
@@ -152,9 +152,9 @@
             "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "explode" : false,
                 "schema" : {
+                  "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                   "type" : "string"
                 },
                 "style" : "simple"
@@ -172,9 +172,9 @@
             "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "explode" : false,
                 "schema" : {
+                  "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                   "type" : "string"
                 },
                 "style" : "simple"
@@ -192,9 +192,9 @@
             "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "explode" : false,
                 "schema" : {
+                  "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                   "type" : "string"
                 },
                 "style" : "simple"
@@ -254,9 +254,9 @@
             "description" : "Successful response",
             "headers" : {
               "x-v" : {
-                "description" : "The [version](#response-headers) of the API end point that the data holder has responded with.",
                 "explode" : false,
                 "schema" : {
+                  "description" : "The [version](#response-headers) of the API end point that the data holder has responded with.",
                   "type" : "string"
                 },
                 "style" : "simple"
@@ -274,9 +274,9 @@
             "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "explode" : false,
                 "schema" : {
+                  "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                   "type" : "string"
                 },
                 "style" : "simple"
@@ -294,9 +294,9 @@
             "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[404 - Invalid Resource](#error-404-resource-invalid)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "explode" : false,
                 "schema" : {
+                  "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                   "type" : "string"
                 },
                 "style" : "simple"
@@ -314,9 +314,9 @@
             "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "explode" : false,
                 "schema" : {
+                  "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                   "type" : "string"
                 },
                 "style" : "simple"
@@ -329,12 +329,12 @@
         "x-version" : "1"
       }
     },
-    "/telco/account/{serviceId}/usage" : {
+    "/telco/accounts/{serviceId}/usage" : {
       "get" : {
         "description" : "Obtain a usage data from a particular service Id",
         "operationId" : "getUsageForService",
         "parameters" : [ {
-          "description" : "ID of the specific service requested.  This is a tokenised ID returned from thhe account.",
+          "description" : "ID of the specific service requested.  This is a tokenised ID returned from the account. In accordance with [CDR ID permanence](#id-permanence) requirements",
           "explode" : false,
           "in" : "path",
           "name" : "serviceId",
@@ -456,24 +456,24 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/TelcoUsageResponse"
+                  "$ref" : "#/components/schemas/TelcoServiceUsageResponse"
                 }
               }
             },
             "description" : "Successful response",
             "headers" : {
               "x-v" : {
-                "description" : "The [version](#response-headers) of the API end point that the data holder has responded with.",
                 "explode" : false,
                 "schema" : {
+                  "description" : "The [version](#response-headers) of the API end point that the data holder has responded with.",
                   "type" : "string"
                 },
                 "style" : "simple"
               },
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "explode" : false,
                 "schema" : {
+                  "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                   "type" : "string"
                 },
                 "style" : "simple"
@@ -491,9 +491,9 @@
             "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "explode" : false,
                 "schema" : {
+                  "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                   "type" : "string"
                 },
                 "style" : "simple"
@@ -511,9 +511,9 @@
             "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[404 - Unavailable Service Point](#error-404-unavailable-service-point)</li><li>[404 - Invalid Service Point](#error-404-invalid-service-point)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "explode" : false,
                 "schema" : {
+                  "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                   "type" : "string"
                 },
                 "style" : "simple"
@@ -531,9 +531,9 @@
             "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "explode" : false,
                 "schema" : {
+                  "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                   "type" : "string"
                 },
                 "style" : "simple"
@@ -551,9 +551,9 @@
             "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "explode" : false,
                 "schema" : {
+                  "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                   "type" : "string"
                 },
                 "style" : "simple"
@@ -561,7 +561,7 @@
             }
           }
         },
-        "summary" : "Get Usage For A Service",
+        "summary" : "Get Usage For Telco Service",
         "tags" : [ "Telco", "Billing", "Usage" ],
         "x-scopes" : [ "telco:billing:read" ],
         "x-version" : "1"
@@ -691,17 +691,17 @@
             "description" : "Successful response",
             "headers" : {
               "x-v" : {
-                "description" : "The [version](#response-headers) of the API end point that the data holder has responded with.",
                 "explode" : false,
                 "schema" : {
+                  "description" : "The [version](#response-headers) of the API end point that the data holder has responded with.",
                   "type" : "string"
                 },
                 "style" : "simple"
               },
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "explode" : false,
                 "schema" : {
+                  "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                   "type" : "string"
                 },
                 "style" : "simple"
@@ -719,9 +719,9 @@
             "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "explode" : false,
                 "schema" : {
+                  "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                   "type" : "string"
                 },
                 "style" : "simple"
@@ -739,9 +739,9 @@
             "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "explode" : false,
                 "schema" : {
+                  "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                   "type" : "string"
                 },
                 "style" : "simple"
@@ -759,9 +759,9 @@
             "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "explode" : false,
                 "schema" : {
+                  "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                   "type" : "string"
                 },
                 "style" : "simple"
@@ -769,25 +769,15 @@
             }
           }
         },
-        "summary" : "Get Bulk Telco Usage",
+        "summary" : "Get Usage",
         "tags" : [ "Telco", "Billing", "Usage" ],
         "x-scopes" : [ "telco:billing:read" ],
         "x-version" : "1"
       },
       "post" : {
-        "description" : "Obtain usage data for a specific set of service",
+        "description" : "Obtain usage data for a specific service",
         "operationId" : "listUsageForService",
         "parameters" : [ {
-          "description" : "A seperated array of account IDs of specific accounts to obtain data for. This is a tokenised ID previous obtained from the Account List end point.",
-          "explode" : false,
-          "in" : "path",
-          "name" : "accountIds",
-          "required" : true,
-          "schema" : {
-            "type" : "string"
-          },
-          "style" : "simple"
-        }, {
           "description" : "Constrain the request to records with effective date at or after this date. If absent defaults to newest-date minus 24 months.  Format is aligned to DateString common type",
           "explode" : true,
           "in" : "query",
@@ -903,24 +893,24 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/TelcoUsageListResponse"
+                  "$ref" : "#/components/schemas/TelcoServiceUsageListResponse"
                 }
               }
             },
             "description" : "Successful response",
             "headers" : {
               "x-v" : {
-                "description" : "The [version](#response-headers) of the API end point that the data holder has responded with.",
                 "explode" : false,
                 "schema" : {
+                  "description" : "The [version](#response-headers) of the API end point that the data holder has responded with.",
                   "type" : "string"
                 },
                 "style" : "simple"
               },
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "explode" : false,
                 "schema" : {
+                  "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                   "type" : "string"
                 },
                 "style" : "simple"
@@ -938,9 +928,9 @@
             "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "explode" : false,
                 "schema" : {
+                  "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                   "type" : "string"
                 },
                 "style" : "simple"
@@ -958,9 +948,9 @@
             "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "explode" : false,
                 "schema" : {
+                  "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                   "type" : "string"
                 },
                 "style" : "simple"
@@ -978,9 +968,9 @@
             "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li><li>[422 - Unavailable Service Point](#error-422-unavailable-service-point)</li><li>[422 - Invalid Service Point](#error-422-invalid-service-point)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "explode" : false,
                 "schema" : {
+                  "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                   "type" : "string"
                 },
                 "style" : "simple"
@@ -988,7 +978,7 @@
             }
           }
         },
-        "summary" : "Get Usage For Specific Services",
+        "summary" : "Get Usage For Specific Telco Service",
         "tags" : [ "Telco", "Usage" ],
         "x-scopes" : [ "telco:billing:read" ],
         "x-version" : "1"
@@ -1108,17 +1098,17 @@
             "description" : "Successful response",
             "headers" : {
               "x-v" : {
-                "description" : "The [version](#response-headers) of the API end point that the data holder has responded with.",
                 "explode" : false,
                 "schema" : {
+                  "description" : "The [version](#response-headers) of the API end point that the data holder has responded with.",
                   "type" : "string"
                 },
                 "style" : "simple"
               },
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "explode" : false,
                 "schema" : {
+                  "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                   "type" : "string"
                 },
                 "style" : "simple"
@@ -1136,9 +1126,9 @@
             "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "explode" : false,
                 "schema" : {
+                  "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                   "type" : "string"
                 },
                 "style" : "simple"
@@ -1156,9 +1146,9 @@
             "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "explode" : false,
                 "schema" : {
+                  "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                   "type" : "string"
                 },
                 "style" : "simple"
@@ -1176,9 +1166,9 @@
             "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "explode" : false,
                 "schema" : {
+                  "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                   "type" : "string"
                 },
                 "style" : "simple"
@@ -1188,8 +1178,8 @@
         },
         "summary" : "Get Telco Accounts",
         "tags" : [ "Telco", "Accounts" ],
-        "x-scopes" : [ "telco:accounts.basic:read" ],
-        "x-version" : "2"
+        "x-scopes" : [ "telco:accounts:basic:read" ],
+        "x-version" : "1"
       }
     },
     "/telco/accounts/{accountId}" : {
@@ -1197,7 +1187,7 @@
         "description" : "Obtain detailed information for a specific telco account\n\nOther Versions: [v1](includes/obsolete/get-telco-account-detail-v1.html)",
         "operationId" : "getAccount",
         "parameters" : [ {
-          "description" : "ID of a specific account to obtain data for.  This is a tokenised ID previous obtained from the Account List end point.",
+          "description" : "ID of a specific account to obtain data for.  This is a tokenised ID previously obtained from the Account List end point. In accordance with [CDR ID permanence](#id-permanence) requirements",
           "explode" : false,
           "in" : "path",
           "name" : "accountId",
@@ -1294,17 +1284,17 @@
             "description" : "Successful response",
             "headers" : {
               "x-v" : {
-                "description" : "The [version](#response-headers) of the API end point that the data holder has responded with.",
                 "explode" : false,
                 "schema" : {
+                  "description" : "The [version](#response-headers) of the API end point that the data holder has responded with.",
                   "type" : "string"
                 },
                 "style" : "simple"
               },
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "explode" : false,
                 "schema" : {
+                  "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                   "type" : "string"
                 },
                 "style" : "simple"
@@ -1322,9 +1312,9 @@
             "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "explode" : false,
                 "schema" : {
+                  "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                   "type" : "string"
                 },
                 "style" : "simple"
@@ -1342,9 +1332,9 @@
             "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[404 - Unavailable Telco Account](#error-404-unavailable-telco-account)</li><li>[404 - Invalid Telco Account](#error-404-invalid-telco-account)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "explode" : false,
                 "schema" : {
+                  "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                   "type" : "string"
                 },
                 "style" : "simple"
@@ -1362,9 +1352,9 @@
             "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "explode" : false,
                 "schema" : {
+                  "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                   "type" : "string"
                 },
                 "style" : "simple"
@@ -1374,8 +1364,8 @@
         },
         "summary" : "Get Telco Account Detail",
         "tags" : [ "Telco", "Accounts" ],
-        "x-scopes" : [ "telco:accounts.detail:read" ],
-        "x-version" : "2"
+        "x-scopes" : [ "telco:accounts:detail:read" ],
+        "x-version" : "1"
       }
     },
     "/telco/accounts/{accountId}/payment-schedule" : {
@@ -1383,7 +1373,7 @@
         "description" : "Obtain the agreed payment schedule and details, if any, for a specific telco account. \n\nSome general notes about this end point:\n\n <ul><li>This API describes how the consumer has elected to pay for their account</li><li>Payments initiated by the consumer are classified as manual payments. The billing frequency is captured for manual payments. The consumer may choose to pay on a different schedule/frequency. The payment method and frequency is not captured for manual payments</li><li>Payments that can be initiated by the retailer, based on a consumer's preferences and permission, include payments based on a direct debit, card debit or digital wallet setup. Each of these requires a payment frequency to be provided along with other relevant fields</li><li>Information about payment plans related to debt repayments or arrangements due to hardship is not captured within this API</li></ul>",
         "operationId" : "getPaymentSchedule",
         "parameters" : [ {
-          "description" : "ID of a specific account to obtain data for.  This is a tokenised ID previous obtained from the Account List end point.",
+          "description" : "ID of a specific account to obtain data for.  This is a tokenised ID previously obtained from the Account List end point. In accordance with [CDR ID permanence](#id-permanence) requirements",
           "explode" : false,
           "in" : "path",
           "name" : "accountId",
@@ -1468,17 +1458,17 @@
             "description" : "Successful response",
             "headers" : {
               "x-v" : {
-                "description" : "The [version](#response-headers) of the API end point that the data holder has responded with.",
                 "explode" : false,
                 "schema" : {
+                  "description" : "The [version](#response-headers) of the API end point that the data holder has responded with.",
                   "type" : "string"
                 },
                 "style" : "simple"
               },
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "explode" : false,
                 "schema" : {
+                  "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                   "type" : "string"
                 },
                 "style" : "simple"
@@ -1496,9 +1486,9 @@
             "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "explode" : false,
                 "schema" : {
+                  "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                   "type" : "string"
                 },
                 "style" : "simple"
@@ -1516,9 +1506,9 @@
             "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[404 - Unavailable Telco Account](#error-404-unavailable-telco-account)</li><li>[404 - Invalid Telco Account](#error-404-invalid-telco-account)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "explode" : false,
                 "schema" : {
+                  "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                   "type" : "string"
                 },
                 "style" : "simple"
@@ -1536,9 +1526,9 @@
             "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "explode" : false,
                 "schema" : {
+                  "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                   "type" : "string"
                 },
                 "style" : "simple"
@@ -1548,7 +1538,7 @@
         },
         "summary" : "Get Telco Agreed Payment Schedule",
         "tags" : [ "Telco", "Accounts" ],
-        "x-scopes" : [ "telco:accounts.paymentschedule:read" ],
+        "x-scopes" : [ "telco:accounts:paymentschedule:read" ],
         "x-version" : "1"
       }
     },
@@ -1557,7 +1547,7 @@
         "description" : "Obtain the details of any concessions or arrangements applied to a specific telco account",
         "operationId" : "getConcessions",
         "parameters" : [ {
-          "description" : "ID of a specific account to obtain data for.  This is a tokenised ID previous obtained from the Account List end point.",
+          "description" : "ID of a specific account to obtain data for.  This is a tokenised ID previously obtained from the Account List end point. In accordance with [CDR ID permanence](#id-permanence) requirements",
           "explode" : false,
           "in" : "path",
           "name" : "accountId",
@@ -1642,17 +1632,17 @@
             "description" : "Successful response",
             "headers" : {
               "x-v" : {
-                "description" : "The [version](#response-headers) of the API end point that the data holder has responded with.",
                 "explode" : false,
                 "schema" : {
+                  "description" : "The [version](#response-headers) of the API end point that the data holder has responded with.",
                   "type" : "string"
                 },
                 "style" : "simple"
               },
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "explode" : false,
                 "schema" : {
+                  "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                   "type" : "string"
                 },
                 "style" : "simple"
@@ -1670,9 +1660,9 @@
             "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "explode" : false,
                 "schema" : {
+                  "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                   "type" : "string"
                 },
                 "style" : "simple"
@@ -1690,9 +1680,9 @@
             "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[404 - Unavailable Telco Account](#error-404-unavailable-telco-account)</li><li>[404 - Invalid Telco Account](#error-404-invalid-telco-account)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "explode" : false,
                 "schema" : {
+                  "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                   "type" : "string"
                 },
                 "style" : "simple"
@@ -1710,9 +1700,9 @@
             "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "explode" : false,
                 "schema" : {
+                  "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                   "type" : "string"
                 },
                 "style" : "simple"
@@ -1731,7 +1721,7 @@
         "description" : "Obtain the current balance for a specific account",
         "operationId" : "getBalanceForAccount",
         "parameters" : [ {
-          "description" : "ID of a specific account to obtain data for.  This is a tokenised ID previous obtained from the Account List end point.",
+          "description" : "ID of a specific account to obtain data for.  This is a tokenised ID previously obtained from the Account List end point. In accordance with [CDR ID permanence](#id-permanence) requirements",
           "explode" : false,
           "in" : "path",
           "name" : "accountId",
@@ -1816,17 +1806,17 @@
             "description" : "Successful response",
             "headers" : {
               "x-v" : {
-                "description" : "The [version](#response-headers) of the API end point that the data holder has responded with.",
                 "explode" : false,
                 "schema" : {
+                  "description" : "The [version](#response-headers) of the API end point that the data holder has responded with.",
                   "type" : "string"
                 },
                 "style" : "simple"
               },
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "explode" : false,
                 "schema" : {
+                  "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                   "type" : "string"
                 },
                 "style" : "simple"
@@ -1844,9 +1834,9 @@
             "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "explode" : false,
                 "schema" : {
+                  "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                   "type" : "string"
                 },
                 "style" : "simple"
@@ -1864,9 +1854,9 @@
             "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[404 - Unavailable Telco Account](#error-404-unavailable-telco-account)</li><li>[404 - Invalid Telco Account](#error-404-invalid-telco-account)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "explode" : false,
                 "schema" : {
+                  "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                   "type" : "string"
                 },
                 "style" : "simple"
@@ -1884,9 +1874,9 @@
             "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "explode" : false,
                 "schema" : {
+                  "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                   "type" : "string"
                 },
                 "style" : "simple"
@@ -2002,17 +1992,17 @@
             "description" : "Successful response",
             "headers" : {
               "x-v" : {
-                "description" : "The [version](#response-headers) of the API end point that the data holder has responded with.",
                 "explode" : false,
                 "schema" : {
+                  "description" : "The [version](#response-headers) of the API end point that the data holder has responded with.",
                   "type" : "string"
                 },
                 "style" : "simple"
               },
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "explode" : false,
                 "schema" : {
+                  "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                   "type" : "string"
                 },
                 "style" : "simple"
@@ -2030,9 +2020,9 @@
             "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "explode" : false,
                 "schema" : {
+                  "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                   "type" : "string"
                 },
                 "style" : "simple"
@@ -2050,9 +2040,9 @@
             "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "explode" : false,
                 "schema" : {
+                  "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                   "type" : "string"
                 },
                 "style" : "simple"
@@ -2070,9 +2060,9 @@
             "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "explode" : false,
                 "schema" : {
+                  "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                   "type" : "string"
                 },
                 "style" : "simple"
@@ -2080,7 +2070,7 @@
             }
           }
         },
-        "summary" : "Get Balances for Telco Accounts",
+        "summary" : "Get Bulk Telco Balances",
         "tags" : [ "Telco", "Billing", "Balance" ],
         "x-scopes" : [ "telco:billing:read" ],
         "x-version" : "1"
@@ -2089,16 +2079,6 @@
         "description" : "Obtain the current balance for a specified set of accounts",
         "operationId" : "listBalancesForAccounts",
         "parameters" : [ {
-          "description" : "A seperated array of account IDs of specific accounts to obtain data for. This is a tokenised ID previous obtained from the Account List end point.",
-          "explode" : false,
-          "in" : "path",
-          "name" : "accountIds",
-          "required" : true,
-          "schema" : {
-            "type" : "string"
-          },
-          "style" : "simple"
-        }, {
           "description" : "Page of results to request (standard pagination)",
           "explode" : true,
           "in" : "query",
@@ -2199,17 +2179,17 @@
             "description" : "Successful response",
             "headers" : {
               "x-v" : {
-                "description" : "The [version](#response-headers) of the API end point that the data holder has responded with.",
                 "explode" : false,
                 "schema" : {
+                  "description" : "The [version](#response-headers) of the API end point that the data holder has responded with.",
                   "type" : "string"
                 },
                 "style" : "simple"
               },
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "explode" : false,
                 "schema" : {
+                  "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                   "type" : "string"
                 },
                 "style" : "simple"
@@ -2227,9 +2207,9 @@
             "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "explode" : false,
                 "schema" : {
+                  "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                   "type" : "string"
                 },
                 "style" : "simple"
@@ -2247,9 +2227,9 @@
             "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "explode" : false,
                 "schema" : {
+                  "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                   "type" : "string"
                 },
                 "style" : "simple"
@@ -2267,9 +2247,9 @@
             "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li><li>[422 - Unavailable Telco Account](#error-422-unavailable-telco-account)</li><li>[422 - Invalid Telco Account](#error-422-invalid-telco-account)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "explode" : false,
                 "schema" : {
+                  "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                   "type" : "string"
                 },
                 "style" : "simple"
@@ -2288,7 +2268,7 @@
         "description" : "Obtain the invoices for a specific account",
         "operationId" : "getInvoicesForAccount",
         "parameters" : [ {
-          "description" : "ID of a specific account to obtain data for.  This is a tokenised ID previous obtained from the Account List end point.",
+          "description" : "ID of a specific account to obtain data for.  This is a tokenised ID previously obtained from the Account List end point. In accordance with [CDR ID permanence](#id-permanence) requirements",
           "explode" : false,
           "in" : "path",
           "name" : "accountId",
@@ -2417,17 +2397,17 @@
             "description" : "Successful response",
             "headers" : {
               "x-v" : {
-                "description" : "The [version](#response-headers) of the API end point that the data holder has responded with.",
                 "explode" : false,
                 "schema" : {
+                  "description" : "The [version](#response-headers) of the API end point that the data holder has responded with.",
                   "type" : "string"
                 },
                 "style" : "simple"
               },
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "explode" : false,
                 "schema" : {
+                  "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                   "type" : "string"
                 },
                 "style" : "simple"
@@ -2445,9 +2425,9 @@
             "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "explode" : false,
                 "schema" : {
+                  "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                   "type" : "string"
                 },
                 "style" : "simple"
@@ -2465,9 +2445,9 @@
             "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[404 - Unavailable Telco Account](#error-404-unavailable-telco-account)</li><li>[404 - Invalid Telco Account](#error-404-invalid-telco-account)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "explode" : false,
                 "schema" : {
+                  "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                   "type" : "string"
                 },
                 "style" : "simple"
@@ -2485,9 +2465,9 @@
             "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "explode" : false,
                 "schema" : {
+                  "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                   "type" : "string"
                 },
                 "style" : "simple"
@@ -2505,9 +2485,9 @@
             "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "explode" : false,
                 "schema" : {
+                  "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                   "type" : "string"
                 },
                 "style" : "simple"
@@ -2645,17 +2625,17 @@
             "description" : "Successful response",
             "headers" : {
               "x-v" : {
-                "description" : "The [version](#response-headers) of the API end point that the data holder has responded with.",
                 "explode" : false,
                 "schema" : {
+                  "description" : "The [version](#response-headers) of the API end point that the data holder has responded with.",
                   "type" : "string"
                 },
                 "style" : "simple"
               },
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "explode" : false,
                 "schema" : {
+                  "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                   "type" : "string"
                 },
                 "style" : "simple"
@@ -2673,9 +2653,9 @@
             "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "explode" : false,
                 "schema" : {
+                  "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                   "type" : "string"
                 },
                 "style" : "simple"
@@ -2693,9 +2673,9 @@
             "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "explode" : false,
                 "schema" : {
+                  "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                   "type" : "string"
                 },
                 "style" : "simple"
@@ -2713,9 +2693,9 @@
             "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "explode" : false,
                 "schema" : {
+                  "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                   "type" : "string"
                 },
                 "style" : "simple"
@@ -2723,7 +2703,7 @@
             }
           }
         },
-        "summary" : "Get Bulk Telco Invoices",
+        "summary" : "Get Telco Invoices",
         "tags" : [ "Telco", "Billing", "Invoices" ],
         "x-scopes" : [ "telco:billing:read" ],
         "x-version" : "1"
@@ -2732,16 +2712,6 @@
         "description" : "Obtain invoices for a specified set of accounts",
         "operationId" : "listInvoicesForAccounts",
         "parameters" : [ {
-          "description" : "A seperated array of account IDs of specific accounts to obtain data for. This is a tokenised ID previous obtained from the Account List end point.",
-          "explode" : false,
-          "in" : "path",
-          "name" : "accountIds",
-          "required" : true,
-          "schema" : {
-            "type" : "string"
-          },
-          "style" : "simple"
-        }, {
           "description" : "Constrain the request to records with effective date at or before this date.  If absent defaults to current date.  Format is aligned to DateString common type",
           "explode" : true,
           "in" : "query",
@@ -2864,17 +2834,17 @@
             "description" : "Successful response",
             "headers" : {
               "x-v" : {
-                "description" : "The [version](#response-headers) of the API end point that the data holder has responded with.",
                 "explode" : false,
                 "schema" : {
+                  "description" : "The [version](#response-headers) of the API end point that the data holder has responded with.",
                   "type" : "string"
                 },
                 "style" : "simple"
               },
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "explode" : false,
                 "schema" : {
+                  "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                   "type" : "string"
                 },
                 "style" : "simple"
@@ -2892,9 +2862,9 @@
             "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "explode" : false,
                 "schema" : {
+                  "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                   "type" : "string"
                 },
                 "style" : "simple"
@@ -2912,9 +2882,9 @@
             "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "explode" : false,
                 "schema" : {
+                  "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                   "type" : "string"
                 },
                 "style" : "simple"
@@ -2932,9 +2902,9 @@
             "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li><li>[422 - Unavailable Telco Account](#error-422-unavailable-telco-account)</li><li>[422 - Invalid Telco Account](#error-422-invalid-telco-account)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "explode" : false,
                 "schema" : {
+                  "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                   "type" : "string"
                 },
                 "style" : "simple"
@@ -2953,7 +2923,7 @@
         "description" : "Obtain the billing transactions for a specific account",
         "operationId" : "getTransactionsForAccount",
         "parameters" : [ {
-          "description" : "ID of a specific account to obtain data for.  This is a tokenised ID previous obtained from the Account List end point.",
+          "description" : "ID of a specific account to obtain data for.  This is a tokenised ID previously obtained from the Account List end point. In accordance with [CDR ID permanence](#id-permanence) requirements",
           "explode" : false,
           "in" : "path",
           "name" : "accountId",
@@ -3082,17 +3052,17 @@
             "description" : "Successful response",
             "headers" : {
               "x-v" : {
-                "description" : "The [version](#response-headers) of the API end point that the data holder has responded with.",
                 "explode" : false,
                 "schema" : {
+                  "description" : "The [version](#response-headers) of the API end point that the data holder has responded with.",
                   "type" : "string"
                 },
                 "style" : "simple"
               },
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "explode" : false,
                 "schema" : {
+                  "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                   "type" : "string"
                 },
                 "style" : "simple"
@@ -3110,9 +3080,9 @@
             "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "explode" : false,
                 "schema" : {
+                  "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                   "type" : "string"
                 },
                 "style" : "simple"
@@ -3130,9 +3100,9 @@
             "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[404 - Unavailable Telco Account](#error-404-unavailable-telco-account)</li><li>[404 - Invalid Telco Account](#error-404-invalid-telco-account)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "explode" : false,
                 "schema" : {
+                  "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                   "type" : "string"
                 },
                 "style" : "simple"
@@ -3150,9 +3120,9 @@
             "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "explode" : false,
                 "schema" : {
+                  "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                   "type" : "string"
                 },
                 "style" : "simple"
@@ -3170,9 +3140,9 @@
             "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "explode" : false,
                 "schema" : {
+                  "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                   "type" : "string"
                 },
                 "style" : "simple"
@@ -3310,17 +3280,17 @@
             "description" : "Successful response",
             "headers" : {
               "x-v" : {
-                "description" : "The [version](#response-headers) of the API end point that the data holder has responded with.",
                 "explode" : false,
                 "schema" : {
+                  "description" : "The [version](#response-headers) of the API end point that the data holder has responded with.",
                   "type" : "string"
                 },
                 "style" : "simple"
               },
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "explode" : false,
                 "schema" : {
+                  "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                   "type" : "string"
                 },
                 "style" : "simple"
@@ -3338,9 +3308,9 @@
             "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "explode" : false,
                 "schema" : {
+                  "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                   "type" : "string"
                 },
                 "style" : "simple"
@@ -3358,9 +3328,9 @@
             "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "explode" : false,
                 "schema" : {
+                  "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                   "type" : "string"
                 },
                 "style" : "simple"
@@ -3378,9 +3348,9 @@
             "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "explode" : false,
                 "schema" : {
+                  "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                   "type" : "string"
                 },
                 "style" : "simple"
@@ -3388,7 +3358,7 @@
             }
           }
         },
-        "summary" : "Get Bulk Telco Transactions",
+        "summary" : "Get Telco Transactions",
         "tags" : [ "Telco", "Billing", "Transactions" ],
         "x-scopes" : [ "telco:billing:read" ],
         "x-version" : "1"
@@ -3397,16 +3367,6 @@
         "description" : "Obtain transactions for a specified set of accounts",
         "operationId" : "listBillingForAccounts",
         "parameters" : [ {
-          "description" : "A seperated array of account IDs of specific accounts to obtain data for. This is a tokenised ID previous obtained from the Account List end point.",
-          "explode" : false,
-          "in" : "path",
-          "name" : "accountIds",
-          "required" : true,
-          "schema" : {
-            "type" : "string"
-          },
-          "style" : "simple"
-        }, {
           "description" : "Constrain the request to records with effective time at or before this date/time.  If absent defaults to current date/time.  Format is aligned to DateTimeString common type",
           "explode" : true,
           "in" : "query",
@@ -3529,17 +3489,17 @@
             "description" : "Successful response",
             "headers" : {
               "x-v" : {
-                "description" : "The [version](#response-headers) of the API end point that the data holder has responded with.",
                 "explode" : false,
                 "schema" : {
+                  "description" : "The [version](#response-headers) of the API end point that the data holder has responded with.",
                   "type" : "string"
                 },
                 "style" : "simple"
               },
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "explode" : false,
                 "schema" : {
+                  "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                   "type" : "string"
                 },
                 "style" : "simple"
@@ -3557,9 +3517,9 @@
             "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "explode" : false,
                 "schema" : {
+                  "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                   "type" : "string"
                 },
                 "style" : "simple"
@@ -3577,9 +3537,9 @@
             "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "explode" : false,
                 "schema" : {
+                  "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                   "type" : "string"
                 },
                 "style" : "simple"
@@ -3597,9 +3557,9 @@
             "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li><li>[422 - Unavailable Telco Account](#error-422-unavailable-telco-account)</li><li>[422 - Invalid Telco Account](#error-422-invalid-telco-account)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                 "explode" : false,
                 "schema" : {
+                  "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
                   "type" : "string"
                 },
                 "style" : "simple"
@@ -3617,7 +3577,7 @@
   "components" : {
     "parameters" : {
       "serviceId" : {
-        "description" : "ID of the specific service requested.  This is a tokenised ID returned from thhe account.",
+        "description" : "ID of the specific service requested.  This is a tokenised ID returned from the account. In accordance with [CDR ID permanence](#id-permanence) requirements",
         "explode" : false,
         "in" : "path",
         "name" : "serviceId",
@@ -3628,7 +3588,7 @@
         "style" : "simple"
       },
       "accountId" : {
-        "description" : "ID of a specific account to obtain data for.  This is a tokenised ID previous obtained from the Account List end point.",
+        "description" : "ID of a specific account to obtain data for.  This is a tokenised ID previously obtained from the Account List end point. In accordance with [CDR ID permanence](#id-permanence) requirements",
         "explode" : false,
         "in" : "path",
         "name" : "accountId",
@@ -3639,7 +3599,7 @@
         "style" : "simple"
       },
       "accountIds" : {
-        "description" : "A seperated array of account IDs of specific accounts to obtain data for. This is a tokenised ID previous obtained from the Account List end point.",
+        "description" : "A seperated array of account IDs of specific accounts to obtain data for. This is a tokenised ID previously obtained from the Account List end point. In accordance with [CDR ID permanence](#id-permanence) requirements",
         "explode" : false,
         "in" : "path",
         "name" : "accountIds",
@@ -3813,7 +3773,7 @@
                 "data" : {
                   "properties" : {
                     "serviceIds" : {
-                      "description" : "Array of specific serviceIds to obtain data for",
+                      "description" : "Array of specific serviceIds to obtain data for. In accordance with [CDR ID permanence](#id-permanence) requirements",
                       "items" : {
                         "type" : "string"
                       },
@@ -3843,7 +3803,7 @@
                 "data" : {
                   "properties" : {
                     "accountIds" : {
-                      "description" : "Array of specific accountIds to obtain data for",
+                      "description" : "Array of specific accountIds to obtain data for. In accordance with [CDR ID permanence](#id-permanence) requirements",
                       "items" : {
                         "type" : "string"
                       },
@@ -3878,9 +3838,9 @@
         "description" : "Successful response",
         "headers" : {
           "x-v" : {
-            "description" : "The [version](#response-headers) of the API end point that the data holder has responded with.",
             "explode" : false,
             "schema" : {
+              "description" : "The [version](#response-headers) of the API end point that the data holder has responded with.",
               "type" : "string"
             },
             "style" : "simple"
@@ -3898,9 +3858,9 @@
         "description" : "Successful response",
         "headers" : {
           "x-v" : {
-            "description" : "The [version](#response-headers) of the API end point that the data holder has responded with.",
             "explode" : false,
             "schema" : {
+              "description" : "The [version](#response-headers) of the API end point that the data holder has responded with.",
               "type" : "string"
             },
             "style" : "simple"
@@ -3918,17 +3878,17 @@
         "description" : "Successful response",
         "headers" : {
           "x-v" : {
-            "description" : "The [version](#response-headers) of the API end point that the data holder has responded with.",
             "explode" : false,
             "schema" : {
+              "description" : "The [version](#response-headers) of the API end point that the data holder has responded with.",
               "type" : "string"
             },
             "style" : "simple"
           },
           "x-fapi-interaction-id" : {
-            "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
             "explode" : false,
             "schema" : {
+              "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
               "type" : "string"
             },
             "style" : "simple"
@@ -3946,17 +3906,17 @@
         "description" : "Successful response",
         "headers" : {
           "x-v" : {
-            "description" : "The [version](#response-headers) of the API end point that the data holder has responded with.",
             "explode" : false,
             "schema" : {
+              "description" : "The [version](#response-headers) of the API end point that the data holder has responded with.",
               "type" : "string"
             },
             "style" : "simple"
           },
           "x-fapi-interaction-id" : {
-            "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
             "explode" : false,
             "schema" : {
+              "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
               "type" : "string"
             },
             "style" : "simple"
@@ -3974,17 +3934,17 @@
         "description" : "Successful response",
         "headers" : {
           "x-v" : {
-            "description" : "The [version](#response-headers) of the API end point that the data holder has responded with.",
             "explode" : false,
             "schema" : {
+              "description" : "The [version](#response-headers) of the API end point that the data holder has responded with.",
               "type" : "string"
             },
             "style" : "simple"
           },
           "x-fapi-interaction-id" : {
-            "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
             "explode" : false,
             "schema" : {
+              "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
               "type" : "string"
             },
             "style" : "simple"
@@ -4002,17 +3962,17 @@
         "description" : "Successful response",
         "headers" : {
           "x-v" : {
-            "description" : "The [version](#response-headers) of the API end point that the data holder has responded with.",
             "explode" : false,
             "schema" : {
+              "description" : "The [version](#response-headers) of the API end point that the data holder has responded with.",
               "type" : "string"
             },
             "style" : "simple"
           },
           "x-fapi-interaction-id" : {
-            "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
             "explode" : false,
             "schema" : {
+              "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
               "type" : "string"
             },
             "style" : "simple"
@@ -4030,17 +3990,17 @@
         "description" : "Successful response",
         "headers" : {
           "x-v" : {
-            "description" : "The [version](#response-headers) of the API end point that the data holder has responded with.",
             "explode" : false,
             "schema" : {
+              "description" : "The [version](#response-headers) of the API end point that the data holder has responded with.",
               "type" : "string"
             },
             "style" : "simple"
           },
           "x-fapi-interaction-id" : {
-            "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
             "explode" : false,
             "schema" : {
+              "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
               "type" : "string"
             },
             "style" : "simple"
@@ -4058,17 +4018,17 @@
         "description" : "Successful response",
         "headers" : {
           "x-v" : {
-            "description" : "The [version](#response-headers) of the API end point that the data holder has responded with.",
             "explode" : false,
             "schema" : {
+              "description" : "The [version](#response-headers) of the API end point that the data holder has responded with.",
               "type" : "string"
             },
             "style" : "simple"
           },
           "x-fapi-interaction-id" : {
-            "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
             "explode" : false,
             "schema" : {
+              "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
               "type" : "string"
             },
             "style" : "simple"
@@ -4086,17 +4046,17 @@
         "description" : "Successful response",
         "headers" : {
           "x-v" : {
-            "description" : "The [version](#response-headers) of the API end point that the data holder has responded with.",
             "explode" : false,
             "schema" : {
+              "description" : "The [version](#response-headers) of the API end point that the data holder has responded with.",
               "type" : "string"
             },
             "style" : "simple"
           },
           "x-fapi-interaction-id" : {
-            "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
             "explode" : false,
             "schema" : {
+              "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
               "type" : "string"
             },
             "style" : "simple"
@@ -4114,17 +4074,17 @@
         "description" : "Successful response",
         "headers" : {
           "x-v" : {
-            "description" : "The [version](#response-headers) of the API end point that the data holder has responded with.",
             "explode" : false,
             "schema" : {
+              "description" : "The [version](#response-headers) of the API end point that the data holder has responded with.",
               "type" : "string"
             },
             "style" : "simple"
           },
           "x-fapi-interaction-id" : {
-            "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
             "explode" : false,
             "schema" : {
+              "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
               "type" : "string"
             },
             "style" : "simple"
@@ -4142,17 +4102,17 @@
         "description" : "Successful response",
         "headers" : {
           "x-v" : {
-            "description" : "The [version](#response-headers) of the API end point that the data holder has responded with.",
             "explode" : false,
             "schema" : {
+              "description" : "The [version](#response-headers) of the API end point that the data holder has responded with.",
               "type" : "string"
             },
             "style" : "simple"
           },
           "x-fapi-interaction-id" : {
-            "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
             "explode" : false,
             "schema" : {
+              "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
               "type" : "string"
             },
             "style" : "simple"
@@ -4170,17 +4130,17 @@
         "description" : "Successful response",
         "headers" : {
           "x-v" : {
-            "description" : "The [version](#response-headers) of the API end point that the data holder has responded with.",
             "explode" : false,
             "schema" : {
+              "description" : "The [version](#response-headers) of the API end point that the data holder has responded with.",
               "type" : "string"
             },
             "style" : "simple"
           },
           "x-fapi-interaction-id" : {
-            "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
             "explode" : false,
             "schema" : {
+              "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
               "type" : "string"
             },
             "style" : "simple"
@@ -4192,7 +4152,7 @@
       "TelcoProductListResponse" : {
         "properties" : {
           "data" : {
-            "$ref" : "#/components/schemas/TelcoProductListResponse_data"
+            "$ref" : "#/components/schemas/TelcoProductListResponseData"
           },
           "links" : {
             "$ref" : "#/components/schemas/LinksPaginated"
@@ -4207,7 +4167,11 @@
       "TelcoProductResponse" : {
         "properties" : {
           "data" : {
-            "$ref" : "#/components/schemas/TelcoProductDetail"
+            "allOf" : [ {
+              "$ref" : "#/components/schemas/TelcoProduct"
+            }, {
+              "$ref" : "#/components/schemas/TelcoProductDetail"
+            } ]
           },
           "links" : {
             "$ref" : "#/components/schemas/Links"
@@ -4217,21 +4181,6 @@
           }
         },
         "required" : [ "data", "links" ],
-        "type" : "object"
-      },
-      "TelcoUsageListResponse" : {
-        "properties" : {
-          "data" : {
-            "$ref" : "#/components/schemas/TelcoUsageListResponse_data"
-          },
-          "links" : {
-            "$ref" : "#/components/schemas/LinksPaginated"
-          },
-          "meta" : {
-            "$ref" : "#/components/schemas/MetaPaginated"
-          }
-        },
-        "required" : [ "data", "links", "meta" ],
         "type" : "object"
       },
       "TelcoUsageResponse" : {
@@ -4249,10 +4198,43 @@
         "required" : [ "data", "links", "meta" ],
         "type" : "object"
       },
+      "TelcoServiceUsageResponse" : {
+        "properties" : {
+          "data" : {
+            "$ref" : "#/components/schemas/TelcoServiceUsage"
+          },
+          "links" : {
+            "$ref" : "#/components/schemas/LinksPaginated"
+          },
+          "meta" : {
+            "$ref" : "#/components/schemas/MetaPaginated"
+          }
+        },
+        "required" : [ "data", "links", "meta" ],
+        "type" : "object"
+      },
+      "TelcoServiceUsageListResponse" : {
+        "properties" : {
+          "data" : {
+            "items" : {
+              "$ref" : "#/components/schemas/TelcoServiceUsage"
+            },
+            "type" : "array"
+          },
+          "links" : {
+            "$ref" : "#/components/schemas/LinksPaginated"
+          },
+          "meta" : {
+            "$ref" : "#/components/schemas/MetaPaginated"
+          }
+        },
+        "required" : [ "data", "links", "meta" ],
+        "type" : "object"
+      },
       "TelcoAccountListResponse" : {
         "properties" : {
           "data" : {
-            "$ref" : "#/components/schemas/TelcoAccountListResponse_data"
+            "$ref" : "#/components/schemas/TelcoAccountListResponseData"
           },
           "links" : {
             "$ref" : "#/components/schemas/LinksPaginated"
@@ -4267,7 +4249,11 @@
       "TelcoAccountDetailResponse" : {
         "properties" : {
           "data" : {
-            "$ref" : "#/components/schemas/TelcoAccountDetail"
+            "allOf" : [ {
+              "$ref" : "#/components/schemas/TelcoAccount"
+            }, {
+              "$ref" : "#/components/schemas/TelcoAccountDetail"
+            } ]
           },
           "links" : {
             "$ref" : "#/components/schemas/Links"
@@ -4282,7 +4268,7 @@
       "TelcoPaymentScheduleResponse" : {
         "properties" : {
           "data" : {
-            "$ref" : "#/components/schemas/TelcoPaymentScheduleResponse_data"
+            "$ref" : "#/components/schemas/TelcoPaymentScheduleResponseData"
           },
           "links" : {
             "$ref" : "#/components/schemas/Links"
@@ -4297,7 +4283,7 @@
       "TelcoConcessionsResponse" : {
         "properties" : {
           "data" : {
-            "$ref" : "#/components/schemas/TelcoConcessionsResponse_data"
+            "$ref" : "#/components/schemas/TelcoConcessionsResponseData"
           },
           "links" : {
             "$ref" : "#/components/schemas/Links"
@@ -4312,7 +4298,7 @@
       "TelcoBalanceListResponse" : {
         "properties" : {
           "data" : {
-            "$ref" : "#/components/schemas/TelcoBalanceListResponse_data"
+            "$ref" : "#/components/schemas/TelcoBalanceListResponseBalances"
           },
           "links" : {
             "$ref" : "#/components/schemas/LinksPaginated"
@@ -4327,7 +4313,7 @@
       "TelcoBalanceResponse" : {
         "properties" : {
           "data" : {
-            "$ref" : "#/components/schemas/TelcoBalanceResponse_data"
+            "$ref" : "#/components/schemas/TelcoBalance"
           },
           "links" : {
             "$ref" : "#/components/schemas/Links"
@@ -4339,25 +4325,10 @@
         "required" : [ "data", "links", "meta" ],
         "type" : "object"
       },
-      "TelcoInvoiceListResponse" : {
-        "properties" : {
-          "data" : {
-            "$ref" : "#/components/schemas/TelcoInvoiceListResponse_data"
-          },
-          "links" : {
-            "$ref" : "#/components/schemas/LinksPaginated"
-          },
-          "meta" : {
-            "$ref" : "#/components/schemas/MetaPaginated"
-          }
-        },
-        "required" : [ "data", "links", "meta" ],
-        "type" : "object"
-      },
       "TelcoTransactionListResponse" : {
         "properties" : {
           "data" : {
-            "$ref" : "#/components/schemas/TelcoTransactionListResponse_data"
+            "$ref" : "#/components/schemas/TelcoTransactionListResponseData"
           },
           "links" : {
             "$ref" : "#/components/schemas/LinksPaginated"
@@ -4373,7 +4344,7 @@
         "properties" : {
           "errors" : {
             "items" : {
-              "$ref" : "#/components/schemas/ErrorListResponse_errors"
+              "$ref" : "#/components/schemas/ErrorListResponsErrors"
             },
             "type" : "array"
           }
@@ -4445,7 +4416,7 @@
           "pricing" : {
             "description" : "List of pricing details for the product plan",
             "items" : {
-              "$ref" : "#/components/schemas/TelcoProduct_pricing"
+              "$ref" : "#/components/schemas/TelcoProductPricing"
             },
             "type" : "array"
           },
@@ -4463,19 +4434,12 @@
             "x-cds-type" : "URIString"
           },
           "additionalInformation" : {
-            "$ref" : "#/components/schemas/TelcoProduct_additionalInformation"
+            "$ref" : "#/components/schemas/TelcoAdditionalInformation"
           }
         },
-        "required" : [ "brand", "brandName", "name", "pricing", "productId", "type", "usage" ],
+        "required" : [ "billingType", "brand", "brandName", "name", "pricing", "productId", "type", "usage" ],
         "type" : "object",
         "x-conditional" : [ "contract" ]
-      },
-      "TelcoProductDetail" : {
-        "allOf" : [ {
-          "$ref" : "#/components/schemas/TelcoProduct"
-        }, {
-          "$ref" : "#/components/schemas/TelcoProductDetail_allOf"
-        } ]
       },
       "TelcoContract" : {
         "description" : "Summary of the contract details. Required if a contract is required",
@@ -4490,9 +4454,10 @@
           },
           "duration" : {
             "description" : "Minimum contract duration in months",
-            "type" : "number"
+            "type" : "number",
+            "x-cds-type" : "Number"
           },
-          "contractURI" : {
+          "contractUri" : {
             "description" : "URI of the contract conditions",
             "type" : "string",
             "x-cds-type" : "URIString"
@@ -4504,7 +4469,7 @@
       "TelcoServiceDetail" : {
         "properties" : {
           "serviceId" : {
-            "description" : "The tokenised ID of the service for use in the CDR APIs.  Created according to the CDR rules for ID permanence",
+            "description" : "The tokenised ID of the service for use in the CDR APIs.  Created according to the CDR rules for [CDR ID permanence](#id-permanence)",
             "type" : "string"
           }
         },
@@ -4513,13 +4478,13 @@
       "TelcoAccountUsage" : {
         "properties" : {
           "accountId" : {
-            "description" : "Tokenised ID of the account. In accordance with CDR ID permanence requirements",
+            "description" : "Tokenised ID of the account. In accordance with [CDR ID permanence](#id-permanence) requirements",
             "type" : "string"
           },
           "services" : {
             "description" : "List of services that are part of the account",
             "items" : {
-              "$ref" : "#/components/schemas/TelcoAccountUsage_services"
+              "$ref" : "#/components/schemas/TelcoAccountUsageServices"
             },
             "type" : "array"
           }
@@ -4531,7 +4496,7 @@
       "TelcoServiceUsage" : {
         "properties" : {
           "serviceId" : {
-            "description" : "Tokenised ID of the service.  To be created in accordance with CDR ID permanence requirements",
+            "description" : "Tokenised ID of the service.  To be created in accordance with [CDR ID permanence](#id-permanence) requirements",
             "type" : "string"
           },
           "displayName" : {
@@ -4563,7 +4528,7 @@
       "TelcoAccountBase" : {
         "properties" : {
           "accountId" : {
-            "description" : "The ID of the account. To be created in accordance with CDR ID permanence requirements",
+            "description" : "The ID of the account. To be created in accordance with [CDR ID permanence](#id-permanence) requirements",
             "type" : "string"
           },
           "accountNumber" : {
@@ -4595,22 +4560,15 @@
             "type" : "string"
           }
         },
-        "required" : [ "accountId", "creationDate", "lastUpdateDateTime" ],
+        "required" : [ "accountId, creationDate, lastUpdateDateTime" ],
         "type" : "object",
         "x-conditional" : [ "accountNumber" ]
       },
-      "TelcoAccount" : {
+      "TelcoAccountResponse" : {
         "allOf" : [ {
           "$ref" : "#/components/schemas/TelcoAccountBase"
         }, {
-          "$ref" : "#/components/schemas/TelcoAccount_allOf"
-        } ]
-      },
-      "TelcoAccountDetail" : {
-        "allOf" : [ {
-          "$ref" : "#/components/schemas/TelcoAccountBase"
-        }, {
-          "$ref" : "#/components/schemas/TelcoAccountDetail_allOf"
+          "$ref" : "#/components/schemas/TelcoAccount"
         } ]
       },
       "TelcoPaymentSchedule" : {
@@ -4626,16 +4584,16 @@
             "type" : "string"
           },
           "cardDebit" : {
-            "$ref" : "#/components/schemas/TelcoPaymentSchedule_cardDebit"
+            "$ref" : "#/components/schemas/TelcoPaymentScheduleCardDebit"
           },
           "directDebit" : {
-            "$ref" : "#/components/schemas/TelcoPaymentSchedule_directDebit"
+            "$ref" : "#/components/schemas/TelcoPaymentScheduleDirectDebit"
           },
           "digitalWallet" : {
-            "$ref" : "#/components/schemas/TelcoPaymentSchedule_digitalWallet"
+            "$ref" : "#/components/schemas/TelcoPaymentScheduleDigitalWallet"
           },
           "manualPayment" : {
-            "$ref" : "#/components/schemas/TelcoPaymentSchedule_manualPayment"
+            "$ref" : "#/components/schemas/TelcoPaymentScheduleManualPayment"
           }
         },
         "required" : [ "paymentScheduleUType" ],
@@ -4664,7 +4622,7 @@
             "x-cds-type" : "URIString"
           },
           "startDate" : {
-            "description" : "Start date for the application of the concession",
+            "description" : "Optional start date for the application of the concession",
             "type" : "string",
             "x-cds-type" : "DateString"
           },
@@ -4704,7 +4662,7 @@
       "TelcoInvoice" : {
         "properties" : {
           "accountId" : {
-            "description" : "The ID of the account for which the invoice was issued. accountId must comply in accordance with CDR ID permanence",
+            "description" : "The ID of the account for which the invoice was issued. accountId must comply in accordance with [CDR ID permanence](#id-permanence)",
             "type" : "string"
           },
           "invoiceNumber" : {
@@ -4722,7 +4680,7 @@
             "x-cds-type" : "DateString"
           },
           "period" : {
-            "$ref" : "#/components/schemas/TelcoInvoice_period"
+            "$ref" : "#/components/schemas/TelcoInvoicePeriod"
           },
           "invoiceAmount" : {
             "description" : "The net amount due for this invoice regardless of previous balance",
@@ -4735,7 +4693,7 @@
             "x-cds-type" : "AmountString"
           },
           "payOnTimeDiscount" : {
-            "$ref" : "#/components/schemas/TelcoInvoice_payOnTimeDiscount"
+            "$ref" : "#/components/schemas/TelcoInvoicePayOnTimeDiscount"
           },
           "balanceAtIssue" : {
             "description" : "The account balance at the time the invoice was issued",
@@ -4769,13 +4727,13 @@
         "description" : "Object containing usage summary",
         "properties" : {
           "data" : {
-            "$ref" : "#/components/schemas/TelcoUsage_data"
+            "$ref" : "#/components/schemas/TelcoUsageData"
           },
           "voice" : {
-            "$ref" : "#/components/schemas/TelcoUsage_voice"
+            "$ref" : "#/components/schemas/TelcoUsageVoice"
           },
           "messaging" : {
-            "$ref" : "#/components/schemas/TelcoUsage_messaging"
+            "$ref" : "#/components/schemas/TelcoUsageMessaging"
           }
         },
         "required" : [ "data" ],
@@ -4801,7 +4759,7 @@
             "x-cds-type" : "AmountString"
           },
           "otherCharges" : {
-            "$ref" : "#/components/schemas/TelcoInvoiceAccountCharges_otherCharges"
+            "$ref" : "#/components/schemas/TelcoInvoiceAccountChargesOtherCharges"
           },
           "totalGst" : {
             "description" : "The total GST for all account level charges.  If absent then zero is assumed",
@@ -4815,7 +4773,7 @@
       "TelcoBillingTransaction" : {
         "properties" : {
           "accountId" : {
-            "description" : "The ID of the account for which the transaction occurred. accountId must comply in accordance with CDR ID permanence",
+            "description" : "The ID of the account for which the transaction occurred. accountId must comply in accordance with [CDR ID permanence](#id-permanence)",
             "type" : "string"
           },
           "executionDateTime" : {
@@ -4853,7 +4811,7 @@
       "TelcoBillingAccountTransaction" : {
         "properties" : {
           "serviceIds" : {
-            "description" : "Array list of services IDs to which this transaction applies if any",
+            "description" : "Array list of services IDs to which this transaction applies if any. In accordance with [CDR ID permanence](#id-permanence) requirements",
             "type" : "string"
           },
           "invoiceNumber" : {
@@ -4882,7 +4840,7 @@
           "adjustments" : {
             "description" : "Optional array of adjustments arising for this transaction",
             "items" : {
-              "$ref" : "#/components/schemas/TelcoBillingAccountTransaction_adjustments"
+              "$ref" : "#/components/schemas/TelcoBillingAccountTransactionAdjustments"
             },
             "type" : "array"
           }
@@ -4893,7 +4851,7 @@
       "TelcoBillingOnceOffTransaction" : {
         "properties" : {
           "serviceId" : {
-            "description" : "The ID of the service to which this transaction applies if any",
+            "description" : "The ID of the service to which this transaction applies if any.  In accordance with [CDR ID permanence](#id-permanence) requirements",
             "type" : "string"
           },
           "invoiceNumber" : {
@@ -4916,7 +4874,7 @@
       "TelcoBillingOtherTransaction" : {
         "properties" : {
           "serviceId" : {
-            "description" : "The ID of the service to which this transaction applies if any",
+            "description" : "The ID of the service to which this transaction applies if any. In accordance with [CDR ID permanence](#id-permanence) requirements",
             "type" : "string"
           },
           "invoiceNumber" : {
@@ -4950,7 +4908,7 @@
           "adjustments" : {
             "description" : "Optional array of adjustments arising for this transaction",
             "items" : {
-              "$ref" : "#/components/schemas/TelcoBillingAccountTransaction_adjustments"
+              "$ref" : "#/components/schemas/TelcoBillingAccountTransactionAdjustments"
             },
             "type" : "array"
           }
@@ -4975,12 +4933,14 @@
         "type" : "object"
       },
       "TelcoBalance" : {
-        "description" : "Object containing Telco account balance",
+        "description" : "Object containing account service usage summary",
         "properties" : {
           "services" : {
-            "description" : "Summary of balance for a Telco service",
+            "description" : "Summary of balances",
             "items" : {
-              "$ref" : "#/components/schemas/TelcoServiceBalance"
+              "allOf" : [ {
+                "$ref" : "#/components/schemas/TelcoServiceBalance"
+              } ]
             },
             "type" : "array"
           }
@@ -4993,7 +4953,7 @@
         "description" : "Telco balances for a service",
         "properties" : {
           "serviceId" : {
-            "description" : "The serviceId representing a unique service identifier such as a mobile (MSISDN) or internet service (e.g NBN or ADSL)",
+            "description" : "The serviceId representing a unique service identifier such as a mobile [MSISDN](https://www.etsi.org/deliver/etsi_gts/03/0303/05.00.00_60/gsmts_0303v050000p.pdf), [FNN](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf) or internet service (e.g NBN [AVC Service ID](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf). In accordance with [CDR ID permanence](#id-permanence) requirements",
             "type" : "string"
           },
           "displayName" : {
@@ -5014,16 +4974,11 @@
             "type" : "string",
             "x-cds-type" : "DateTimeString"
           },
-          "totalBalance" : {
-            "description" : "The current amount owing for the account as a whole",
-            "type" : "string",
-            "x-cds-type" : "AmountString"
-          },
-          "balances" : {
-            "$ref" : "#/components/schemas/TelcoServiceBalance_balances"
+          "balance" : {
+            "$ref" : "#/components/schemas/TelcoServiceBalances"
           }
         },
-        "required" : [ "balances", "planType", "serviceId", "startDate", "totalBalance" ],
+        "required" : [ "serviceId, startDate, planType, balances" ],
         "type" : "object",
         "x-conditional" : [ "phoneNumber" ]
       },
@@ -5252,7 +5207,7 @@
         "required" : [ "totalPages", "totalRecords" ],
         "type" : "object"
       },
-      "TelcoProductListResponse_data" : {
+      "TelcoProductListResponseData" : {
         "properties" : {
           "plans" : {
             "description" : "Array of Products",
@@ -5265,7 +5220,7 @@
         "required" : [ "plans" ],
         "type" : "object"
       },
-      "TelcoUsageListResponse_data" : {
+      "TelcoUsageListResponse" : {
         "properties" : {
           "accounts" : {
             "description" : "Array of services for the account",
@@ -5278,12 +5233,12 @@
         "required" : [ "accounts" ],
         "type" : "object"
       },
-      "TelcoAccountListResponse_data" : {
+      "TelcoAccountListResponseData" : {
         "properties" : {
           "accounts" : {
             "description" : "Array of accounts",
             "items" : {
-              "$ref" : "#/components/schemas/TelcoAccount"
+              "$ref" : "#/components/schemas/TelcoAccountResponse"
             },
             "type" : "array"
           }
@@ -5291,7 +5246,7 @@
         "required" : [ "accounts" ],
         "type" : "object"
       },
-      "TelcoPaymentScheduleResponse_data" : {
+      "TelcoPaymentScheduleResponseData" : {
         "properties" : {
           "paymentSchedules" : {
             "description" : "Array may be empty if no payment schedule exist",
@@ -5304,7 +5259,7 @@
         "required" : [ "paymentSchedules" ],
         "type" : "object"
       },
-      "TelcoConcessionsResponse_data" : {
+      "TelcoConcessionsResponseData" : {
         "properties" : {
           "concessions" : {
             "description" : "Array may be empty if no concessions exist",
@@ -5317,25 +5272,12 @@
         "required" : [ "concessions" ],
         "type" : "object"
       },
-      "TelcoBalanceListResponse_data_balances" : {
-        "properties" : {
-          "accountId" : {
-            "description" : "The ID of the account",
-            "type" : "string"
-          },
-          "balance" : {
-            "$ref" : "#/components/schemas/TelcoBalance"
-          }
-        },
-        "required" : [ "accountId", "balance" ],
-        "type" : "object"
-      },
-      "TelcoBalanceListResponse_data" : {
+      "TelcoBalanceListResponseBalances" : {
         "properties" : {
           "balances" : {
             "description" : "Array of account balances",
             "items" : {
-              "$ref" : "#/components/schemas/TelcoBalanceListResponse_data_balances"
+              "$ref" : "#/components/schemas/TelcoBalanceResponseData"
             },
             "type" : "array"
           }
@@ -5343,20 +5285,20 @@
         "required" : [ "balances" ],
         "type" : "object"
       },
-      "TelcoBalanceResponse_data" : {
+      "TelcoBalanceResponseData" : {
         "properties" : {
           "accountId" : {
-            "description" : "The ID of the account",
+            "description" : "The ID of the account. In accordance with [CDR ID permanence](#id-permanence) requirements",
             "type" : "string"
           },
           "balance" : {
             "$ref" : "#/components/schemas/TelcoBalance"
           }
         },
-        "required" : [ "balance" ],
+        "required" : [ "accountId, balance" ],
         "type" : "object"
       },
-      "TelcoInvoiceListResponse_data" : {
+      "TelcoInvoiceListResponse" : {
         "properties" : {
           "invoices" : {
             "description" : "Array of invoices sorted by issue date in descending order",
@@ -5369,7 +5311,7 @@
         "required" : [ "invoices" ],
         "type" : "object"
       },
-      "TelcoTransactionListResponse_data" : {
+      "TelcoTransactionListResponseData" : {
         "properties" : {
           "transactions" : {
             "description" : "Array of transactions sorted by date and time in descending order",
@@ -5382,7 +5324,7 @@
         "required" : [ "transactions" ],
         "type" : "object"
       },
-      "ErrorListResponse_meta" : {
+      "ErrorListResponseMeta" : {
         "description" : "Additional data for customised error codes",
         "properties" : {
           "urn" : {
@@ -5393,7 +5335,7 @@
         "type" : "object",
         "x-conditional" : [ "urn" ]
       },
-      "ErrorListResponse_errors" : {
+      "ErrorListResponsErrors" : {
         "properties" : {
           "code" : {
             "description" : "The code of the error encountered. Where the error is specific to the respondent, an application-specific error code, expressed as a string value. If the error is application-specific, the URN code that the specific error extends must be provided in the meta object. Otherwise, the value is the error code URN.",
@@ -5408,13 +5350,13 @@
             "type" : "string"
           },
           "meta" : {
-            "$ref" : "#/components/schemas/ErrorListResponse_meta"
+            "$ref" : "#/components/schemas/ErrorListResponseMeta"
           }
         },
         "required" : [ "code", "detail", "title" ],
         "type" : "object"
       },
-      "TelcoProduct_pricing" : {
+      "TelcoProductPricing" : {
         "properties" : {
           "name" : {
             "description" : "The display name of the pricing",
@@ -5438,7 +5380,7 @@
         "required" : [ "chargeAmount", "description", "name" ],
         "type" : "object"
       },
-      "TelcoProduct_additionalInformation" : {
+      "TelcoAdditionalInformation" : {
         "description" : "Object that contains links to additional information on specific topics",
         "properties" : {
           "overviewUri" : {
@@ -5469,276 +5411,7 @@
         },
         "type" : "object"
       },
-      "TelcoProductDetail_allOf_features" : {
-        "properties" : {
-          "displayName" : {
-            "description" : "The display name of the feature",
-            "type" : "string"
-          },
-          "description" : {
-            "description" : "The description of the feature",
-            "type" : "string"
-          },
-          "category" : {
-            "description" : "The type of the feature",
-            "enum" : [ "DATA", "VOICE", "MESSAGING", "HANDSET", "DEVICE", "NETWORK", "ENTERTAINMENT", "SUBSCRIPTION", "SOFTWARE", "OTHER" ],
-            "type" : "string"
-          }
-        },
-        "required" : [ "displayName" ],
-        "type" : "object"
-      },
-      "TelcoProductDetail_allOf_bundles" : {
-        "properties" : {
-          "displayName" : {
-            "description" : "The display name of the product bundle",
-            "type" : "string"
-          },
-          "description" : {
-            "description" : "The description of the product bundle",
-            "type" : "string"
-          },
-          "bundleUri" : {
-            "description" : "The URI of the product bundle",
-            "type" : "string",
-            "x-cds-type" : "URIString"
-          },
-          "features" : {
-            "description" : "Optional list of features of the bundle",
-            "items" : {
-              "$ref" : "#/components/schemas/TelcoProductDetail_allOf_features"
-            },
-            "type" : "array"
-          }
-        },
-        "required" : [ "displayName" ],
-        "type" : "object"
-      },
-      "TelcoProductDetail_allOf_features_1" : {
-        "properties" : {
-          "displayName" : {
-            "description" : "The display name of the feature",
-            "type" : "string"
-          },
-          "description" : {
-            "description" : "The description of the feature",
-            "type" : "string"
-          }
-        },
-        "required" : [ "displayName" ],
-        "type" : "object"
-      },
-      "TelcoProductDetail_allOf_plans" : {
-        "properties" : {
-          "displayName" : {
-            "description" : "The display name of the product plan",
-            "type" : "string"
-          },
-          "description" : {
-            "description" : "The display name of the product plan",
-            "type" : "string"
-          },
-          "planUri" : {
-            "description" : "The URI of the product plan",
-            "type" : "string",
-            "x-cds-type" : "URIString"
-          },
-          "features" : {
-            "description" : "Optional list of features of the plan",
-            "items" : {
-              "$ref" : "#/components/schemas/TelcoProductDetail_allOf_features_1"
-            },
-            "type" : "array"
-          }
-        },
-        "required" : [ "displayName" ],
-        "type" : "object"
-      },
-      "TelcoProductDetail_allOf_features_2" : {
-        "properties" : {
-          "displayName" : {
-            "description" : "The display name of the discount feature",
-            "type" : "string"
-          },
-          "description" : {
-            "description" : "The description of the discount feature",
-            "type" : "string"
-          }
-        },
-        "required" : [ "displayName" ],
-        "type" : "object"
-      },
-      "TelcoProductDetail_allOf_discounts" : {
-        "properties" : {
-          "displayName" : {
-            "description" : "The display name of the product plan",
-            "type" : "string"
-          },
-          "description" : {
-            "description" : "The description name of the product plan",
-            "type" : "string"
-          },
-          "discountUri" : {
-            "description" : "The URI of the discount",
-            "type" : "string",
-            "x-cds-type" : "URIString"
-          },
-          "features" : {
-            "description" : "Optional list of features of the discount",
-            "items" : {
-              "$ref" : "#/components/schemas/TelcoProductDetail_allOf_features_2"
-            },
-            "type" : "array"
-          }
-        },
-        "required" : [ "displayName" ],
-        "type" : "object"
-      },
-      "TelcoProductDetail_allOf_features_3" : {
-        "properties" : {
-          "displayName" : {
-            "description" : "The display name of the incentive feature",
-            "type" : "string"
-          },
-          "description" : {
-            "description" : "The description of the incentive feature",
-            "type" : "string"
-          }
-        },
-        "required" : [ "displayName" ],
-        "type" : "object"
-      },
-      "TelcoProductDetail_allOf_incentives" : {
-        "properties" : {
-          "displayName" : {
-            "description" : "The display name of the incentive",
-            "type" : "string"
-          },
-          "description" : {
-            "description" : "The description of the incentive",
-            "type" : "string"
-          },
-          "incentiveUri" : {
-            "description" : "The URI of the incentive",
-            "type" : "string",
-            "x-cds-type" : "URIString"
-          },
-          "features" : {
-            "description" : "Optional list of features of the incentive",
-            "items" : {
-              "$ref" : "#/components/schemas/TelcoProductDetail_allOf_features_3"
-            },
-            "type" : "array"
-          }
-        },
-        "required" : [ "displayName" ],
-        "type" : "object"
-      },
-      "TelcoProductDetail_allOf" : {
-        "properties" : {
-          "bundles" : {
-            "description" : "Bundles the product can be part of",
-            "items" : {
-              "$ref" : "#/components/schemas/TelcoProductDetail_allOf_bundles"
-            },
-            "type" : "array"
-          },
-          "plans" : {
-            "description" : "Plans associated to the product",
-            "items" : {
-              "$ref" : "#/components/schemas/TelcoProductDetail_allOf_plans"
-            },
-            "type" : "array"
-          },
-          "discounts" : {
-            "description" : "Discounts associated to the product",
-            "items" : {
-              "$ref" : "#/components/schemas/TelcoProductDetail_allOf_discounts"
-            },
-            "type" : "array"
-          },
-          "incentives" : {
-            "description" : "Incentives associated to the product",
-            "items" : {
-              "$ref" : "#/components/schemas/TelcoProductDetail_allOf_incentives"
-            },
-            "type" : "array"
-          }
-        },
-        "type" : "object"
-      },
-      "TelcoAccountUsage_services" : {
-        "properties" : {
-          "service" : {
-            "$ref" : "#/components/schemas/TelcoServiceUsage"
-          }
-        },
-        "required" : [ "service" ],
-        "type" : "object"
-      },
-      "TelcoAccount_allOf_planOverview" : {
-        "description" : "Mandatory if openStatus is OPEN",
-        "properties" : {
-          "displayName" : {
-            "description" : "The name of the plan if one exists",
-            "type" : "string"
-          },
-          "startDate" : {
-            "description" : "The start date of the applicability of this plan",
-            "type" : "string",
-            "x-cds-type" : "DateString"
-          },
-          "endDate" : {
-            "description" : "The end date of the applicability of this plan",
-            "type" : "string",
-            "x-cds-type" : "DateString"
-          }
-        },
-        "required" : [ "startDate" ],
-        "type" : "object"
-      },
-      "TelcoAccount_allOf_plans" : {
-        "properties" : {
-          "nickname" : {
-            "description" : "Optional display name for the plan provided by the customer to help differentiate multiple plans",
-            "type" : "string"
-          },
-          "type" : {
-            "description" : "The type of the plan",
-            "enum" : [ "MOBILE", "BROADBAND" ],
-            "type" : "string"
-          },
-          "serviceIds" : {
-            "description" : "An array of serviceId’s representing a unique service identifier such as a mobile (MSISDN) or internet service (e.g NBN or ADSL) If there are no serviceIds allocated to this plan then an empty array would be expected",
-            "items" : {
-              "type" : "string"
-            },
-            "type" : "array"
-          },
-          "planOverview" : {
-            "$ref" : "#/components/schemas/TelcoAccount_allOf_planOverview"
-          }
-        },
-        "required" : [ "serviceIds" ],
-        "type" : "object",
-        "x-conditional" : [ "planOverview" ]
-      },
-      "TelcoAccount_allOf" : {
-        "description" : "The array of plans containing services and associated plan details",
-        "properties" : {
-          "plans" : {
-            "description" : "The array of plans containing service and associated plan details",
-            "items" : {
-              "$ref" : "#/components/schemas/TelcoAccount_allOf_plans"
-            },
-            "type" : "array"
-          }
-        },
-        "required" : [ "plans" ],
-        "type" : "object",
-        "x-conditional" : [ "planOverview" ]
-      },
-      "TelcoAccountDetail_allOf_planDetail_charges" : {
+      "TelcoProductDetailMeteringCharges" : {
         "properties" : {
           "displayName" : {
             "description" : "Display name of the charge",
@@ -5767,22 +5440,303 @@
         "required" : [ "displayName", "minimumValue" ],
         "type" : "object"
       },
-      "TelcoAccountDetail_allOf_planDetail" : {
-        "description" : "Detail on the plan applicable to this account. Mandatory if openStatus is OPEN",
+      "TelcoProductDetailFeature" : {
         "properties" : {
-          "charges" : {
-            "description" : "Charges included in the plan",
+          "displayName" : {
+            "description" : "The display name of the feature",
+            "type" : "string"
+          },
+          "description" : {
+            "description" : "The description of the feature",
+            "type" : "string"
+          },
+          "category" : {
+            "description" : "The type of the feature",
+            "enum" : [ "DATA", "VOICE", "MESSAGING", "HANDSET", "DEVICE", "NETWORK", "ENTERTAINMENT", "SUBSCRIPTION", "SOFTWARE", "OTHER" ],
+            "type" : "string"
+          }
+        },
+        "required" : [ "displayName" ],
+        "type" : "object"
+      },
+      "TelcoProductDetailBundles" : {
+        "properties" : {
+          "displayName" : {
+            "description" : "The display name of the product bundle",
+            "type" : "string"
+          },
+          "description" : {
+            "description" : "The description of the product bundle",
+            "type" : "string"
+          },
+          "bundleUri" : {
+            "description" : "The URI of the product bundle",
+            "type" : "string",
+            "x-cds-type" : "URIString"
+          },
+          "features" : {
+            "description" : "Optional list of features of the bundle",
             "items" : {
-              "$ref" : "#/components/schemas/TelcoAccountDetail_allOf_planDetail_charges"
+              "$ref" : "#/components/schemas/TelcoProductDetailFeature"
             },
             "type" : "array"
           }
         },
-        "required" : [ "fuelType" ],
+        "required" : [ "displayName" ],
+        "type" : "object"
+      },
+      "TelcoProductDetailPlan" : {
+        "properties" : {
+          "displayName" : {
+            "description" : "The display name of the product plan",
+            "type" : "string"
+          },
+          "description" : {
+            "description" : "The display name of the product plan",
+            "type" : "string"
+          },
+          "planUri" : {
+            "description" : "The URI of the product plan",
+            "type" : "string",
+            "x-cds-type" : "URIString"
+          },
+          "features" : {
+            "description" : "Optional list of features of the plan",
+            "items" : {
+              "$ref" : "#/components/schemas/TelcoProductDetailPlanFeature"
+            },
+            "type" : "array"
+          }
+        },
+        "required" : [ "displayName" ],
+        "type" : "object"
+      },
+      "TelcoProductDetailPlanFeature" : {
+        "properties" : {
+          "displayName" : {
+            "description" : "The display name of the feature",
+            "type" : "string"
+          },
+          "description" : {
+            "description" : "The description of the feature",
+            "type" : "string"
+          }
+        },
+        "required" : [ "displayName" ],
+        "type" : "object"
+      },
+      "TelcoProductDetailDiscountFeature" : {
+        "properties" : {
+          "displayName" : {
+            "description" : "The display name of the discount feature",
+            "type" : "string"
+          },
+          "description" : {
+            "description" : "The description of the discount feature",
+            "type" : "string"
+          }
+        },
+        "required" : [ "displayName" ],
+        "type" : "object"
+      },
+      "TelcoProductDetailDiscounts" : {
+        "properties" : {
+          "displayName" : {
+            "description" : "The display name of the product plan",
+            "type" : "string"
+          },
+          "description" : {
+            "description" : "The description name of the product plan",
+            "type" : "string"
+          },
+          "discountUri" : {
+            "description" : "The URI of the discount",
+            "type" : "string",
+            "x-cds-type" : "URIString"
+          },
+          "features" : {
+            "description" : "Optional list of features of the discount",
+            "items" : {
+              "$ref" : "#/components/schemas/TelcoProductDetailDiscountFeature"
+            },
+            "type" : "array"
+          }
+        },
+        "required" : [ "displayName" ],
+        "type" : "object"
+      },
+      "TelcoProductDetailIncentiveFeature" : {
+        "properties" : {
+          "displayName" : {
+            "description" : "The display name of the incentive feature",
+            "type" : "string"
+          },
+          "description" : {
+            "description" : "The description of the incentive feature",
+            "type" : "string"
+          }
+        },
+        "required" : [ "displayName" ],
+        "type" : "object"
+      },
+      "TelcoProductDetailIncentives" : {
+        "properties" : {
+          "displayName" : {
+            "description" : "The display name of the incentive",
+            "type" : "string"
+          },
+          "description" : {
+            "description" : "The description of the incentive",
+            "type" : "string"
+          },
+          "incentiveUri" : {
+            "description" : "The URI of the incentive",
+            "type" : "string",
+            "x-cds-type" : "URIString"
+          },
+          "features" : {
+            "description" : "Optional list of features of the incentive",
+            "items" : {
+              "$ref" : "#/components/schemas/TelcoProductDetailIncentiveFeature"
+            },
+            "type" : "array"
+          }
+        },
+        "required" : [ "displayName" ],
+        "type" : "object"
+      },
+      "TelcoProductDetail" : {
+        "properties" : {
+          "meteringCharges" : {
+            "description" : "Charges for metering included in the plan",
+            "items" : {
+              "$ref" : "#/components/schemas/TelcoProductDetailMeteringCharges"
+            },
+            "type" : "array"
+          },
+          "bundles" : {
+            "description" : "Bundles the product can be part of",
+            "items" : {
+              "$ref" : "#/components/schemas/TelcoProductDetailBundles"
+            },
+            "type" : "array"
+          },
+          "plans" : {
+            "description" : "Plans associated to the product",
+            "items" : {
+              "$ref" : "#/components/schemas/TelcoProductDetailPlan"
+            },
+            "type" : "array"
+          },
+          "discounts" : {
+            "description" : "Discounts associated to the product",
+            "items" : {
+              "$ref" : "#/components/schemas/TelcoProductDetailDiscounts"
+            },
+            "type" : "array"
+          },
+          "incentives" : {
+            "description" : "Incentives associated to the product",
+            "items" : {
+              "$ref" : "#/components/schemas/TelcoProductDetailIncentives"
+            },
+            "type" : "array"
+          }
+        },
+        "type" : "object"
+      },
+      "TelcoAccountUsageServices" : {
+        "properties" : {
+          "service" : {
+            "$ref" : "#/components/schemas/TelcoServiceUsage"
+          }
+        },
+        "required" : [ "service" ],
+        "type" : "object"
+      },
+      "TelcoAccountPlanOverview" : {
+        "description" : "Mandatory if openStatus is OPEN",
+        "properties" : {
+          "displayName" : {
+            "description" : "The name of the plan if one exists",
+            "type" : "string"
+          },
+          "startDate" : {
+            "description" : "The start date of the applicability of this plan",
+            "type" : "string",
+            "x-cds-type" : "DateString"
+          },
+          "endDate" : {
+            "description" : "The end date of the applicability of this plan",
+            "type" : "string",
+            "x-cds-type" : "DateString"
+          }
+        },
+        "required" : [ "startDate" ],
+        "type" : "object"
+      },
+      "TelcoAccountPlans" : {
+        "properties" : {
+          "nickname" : {
+            "description" : "Optional display name for the plan provided by the customer to help differentiate multiple plans",
+            "type" : "string"
+          },
+          "type" : {
+            "description" : "The type of the plan",
+            "enum" : [ "MOBILE", "BROADBAND" ],
+            "type" : "string"
+          },
+          "billingType" : {
+            "description" : "The billing type of then plan",
+            "enum" : [ "PRE_PAID", "POST_PAID", "UPFRONT_PAID", "OTHER" ],
+            "type" : "string"
+          },
+          "serviceIds" : {
+            "description" : "An array of serviceId’s representing a unique service identifier such as a mobile (MSISDN) or internet service (e.g NBN or ADSL) If there are no serviceIds allocated to this plan then an empty array would be expected. In accordance with [CDR ID permanence](#id-permanence) requirements",
+            "items" : {
+              "type" : "string"
+            },
+            "type" : "array"
+          },
+          "planOverview" : {
+            "$ref" : "#/components/schemas/TelcoAccountPlanOverview"
+          }
+        },
+        "required" : [ "serviceIds" ],
+        "type" : "object",
+        "x-conditional" : [ "planOverview" ]
+      },
+      "TelcoAccount" : {
+        "description" : "The array of plans containing services and associated plan details",
+        "properties" : {
+          "plans" : {
+            "description" : "The array of plans containing service and associated plan details",
+            "items" : {
+              "$ref" : "#/components/schemas/TelcoAccountPlans"
+            },
+            "type" : "array"
+          }
+        },
+        "required" : [ "plans" ],
+        "type" : "object",
+        "x-conditional" : [ "planOverview" ]
+      },
+      "TelcoAccountDetailPlanDetail" : {
+        "description" : "Detail on the plan applicable to this account. Mandatory if openStatus is OPEN",
+        "properties" : {
+          "charges" : {
+            "description" : "Charges for metering included in the plan",
+            "items" : {
+              "$ref" : "#/components/schemas/TelcoProductDetailMeteringCharges"
+            },
+            "type" : "array"
+          }
+        },
+        "required" : [ "charges" ],
         "type" : "object",
         "x-conditional" : [ ]
       },
-      "TelcoAccountDetail_allOf_authorisedContacts" : {
+      "TelcoAccountDetailAuthorisedContacts" : {
         "properties" : {
           "firstName" : {
             "description" : "For people with single names this field need not be present. The single name should be in the lastName field",
@@ -5811,29 +5765,29 @@
         "required" : [ "lastName" ],
         "type" : "object"
       },
-      "TelcoAccountDetail_allOf_plans" : {
+      "TelcoAccountDetailPlans" : {
         "properties" : {
           "nickname" : {
             "description" : "Optional display name for the plan provided by the customer to help differentiate multiple plans",
             "type" : "string"
           },
           "serviceIds" : {
-            "description" : "An array of serviceId’s representing a unique service identifier such as a mobile (MSISDN) or internet service (e.g NBN or ADSL) If there are no serviceIds allocated to this plan then an empty array would be expected",
+            "description" : "An array of serviceId’s representing a unique service identifier such as a mobile (MSISDN) or internet service (e.g NBN or ADSL) If there are no serviceIds allocated to this plan then an empty array would be expected. In accordance with [CDR ID permanence](#id-permanence) requirements",
             "items" : {
               "type" : "string"
             },
             "type" : "array"
           },
           "planOverview" : {
-            "$ref" : "#/components/schemas/TelcoAccount_allOf_planOverview"
+            "$ref" : "#/components/schemas/TelcoAccountPlanOverview"
           },
           "planDetail" : {
-            "$ref" : "#/components/schemas/TelcoAccountDetail_allOf_planDetail"
+            "$ref" : "#/components/schemas/TelcoAccountDetailPlanDetail"
           },
           "authorisedContacts" : {
             "description" : "An array of additional contacts that are authorised to act on this account",
             "items" : {
-              "$ref" : "#/components/schemas/TelcoAccountDetail_allOf_authorisedContacts"
+              "$ref" : "#/components/schemas/TelcoAccountDetailAuthorisedContacts"
             },
             "type" : "array"
           }
@@ -5842,13 +5796,13 @@
         "type" : "object",
         "x-conditional" : [ "planOverview", "planDetail" ]
       },
-      "TelcoAccountDetail_allOf" : {
+      "TelcoAccountDetail" : {
         "description" : "The array of plans containing services and associated plan details",
         "properties" : {
           "plans" : {
             "description" : "The array of plans containing services and associated plan details",
             "items" : {
-              "$ref" : "#/components/schemas/TelcoAccountDetail_allOf_plans"
+              "$ref" : "#/components/schemas/TelcoAccountDetailPlans"
             },
             "type" : "array"
           }
@@ -5857,7 +5811,7 @@
         "type" : "object",
         "x-conditional" : [ "planOverview, planDetail" ]
       },
-      "TelcoPaymentSchedule_cardDebit" : {
+      "TelcoPaymentScheduleCardDebit" : {
         "description" : "Represents a regular credit card payment schedule. Mandatory if paymentScheduleUType is set to cardDebit",
         "properties" : {
           "cardScheme" : {
@@ -5879,7 +5833,7 @@
         "required" : [ "calculationType", "cardScheme", "paymentFrequency" ],
         "type" : "object"
       },
-      "TelcoPaymentSchedule_directDebit" : {
+      "TelcoPaymentScheduleDirectDebit" : {
         "description" : "Represents a regular direct debit from a specified bank account. Mandatory if paymentScheduleUType is set to directDebit",
         "properties" : {
           "isTokenised" : {
@@ -5909,7 +5863,7 @@
         "type" : "object",
         "x-conditional" : [ "bsb", "accountNumber" ]
       },
-      "TelcoPaymentSchedule_digitalWallet" : {
+      "TelcoPaymentScheduleDigitalWallet" : {
         "description" : "Represents a regular payment from a digital wallet. Mandatory if paymentScheduleUType is set to digitalWallet",
         "properties" : {
           "name" : {
@@ -5944,7 +5898,7 @@
         "required" : [ "calculationType", "identifier", "name", "paymentFrequency", "provider", "type" ],
         "type" : "object"
       },
-      "TelcoPaymentSchedule_manualPayment" : {
+      "TelcoPaymentScheduleManualPayment" : {
         "description" : "Represents a manual payment schedule where the customer pays in response to a delivered statement. Mandatory if paymentScheduleUType is set to manualPayment",
         "properties" : {
           "billFrequency" : {
@@ -5956,7 +5910,7 @@
         "required" : [ "billFrequency" ],
         "type" : "object"
       },
-      "TelcoInvoice_period" : {
+      "TelcoInvoicePeriod" : {
         "description" : "Object containing the start and end date for the period covered by the invoice. Mandatory if any usage based charges are included in the invoice",
         "properties" : {
           "startDate" : {
@@ -5973,7 +5927,7 @@
         "required" : [ "endDate", "startDate" ],
         "type" : "object"
       },
-      "TelcoInvoice_payOnTimeDiscount" : {
+      "TelcoInvoicePayOnTimeDiscount" : {
         "description" : "A discount for on time payment",
         "properties" : {
           "discountAmount" : {
@@ -5995,12 +5949,13 @@
         "required" : [ "date", "discountAmount" ],
         "type" : "object"
       },
-      "TelcoUsage_data_roaming" : {
+      "TelcoUsageDatRoaming" : {
         "description" : "Roaming Data Usage",
         "properties" : {
           "download" : {
             "description" : "Amount of data used while roaming in megabytes (MB)",
-            "type" : "number"
+            "type" : "number",
+            "x-cds-type" : "Number"
           },
           "amount" : {
             "description" : "Amount value of data roaming charges",
@@ -6011,20 +5966,23 @@
         "type" : "object",
         "x-conditional" : [ "download", "amount" ]
       },
-      "TelcoUsage_data" : {
+      "TelcoUsageData" : {
         "description" : "Summary of data usage",
         "properties" : {
           "upload" : {
             "description" : "Amount of data uploaded in megabytes (MB)",
-            "type" : "number"
+            "type" : "number",
+            "x-cds-type" : "Number"
           },
           "download" : {
             "description" : "Amount of data downloaded in megabytes (MB)",
-            "type" : "number"
+            "type" : "number",
+            "x-cds-type" : "Number"
           },
           "sessions" : {
             "description" : "Number of data sessions",
-            "type" : "number"
+            "type" : "number",
+            "x-cds-type" : "Number"
           },
           "amount" : {
             "description" : "Cost amount of data usage",
@@ -6032,13 +5990,24 @@
             "x-cds-type" : "AmountString"
           },
           "roaming" : {
-            "$ref" : "#/components/schemas/TelcoUsage_data_roaming"
+            "properties" : {
+              "download" : {
+                "description" : "Amount of data downloaded in megabytes (MB)",
+                "type" : "number",
+                "x-cds-type" : "Number"
+              },
+              "amount" : {
+                "description" : "Cost amount of data usage",
+                "type" : "string",
+                "x-cds-type" : "AmountString"
+              }
+            }
           }
         },
         "required" : [ "amount", "download", "roaming", "upload" ],
         "type" : "object"
       },
-      "TelcoUsage_voice_national" : {
+      "TelcoUsageVoiceNational" : {
         "description" : "National voice calls",
         "properties" : {
           "duration" : {
@@ -6048,7 +6017,8 @@
           },
           "number" : {
             "description" : "Number of national voice calls",
-            "type" : "number"
+            "type" : "number",
+            "x-cds-type" : "Number"
           },
           "amount" : {
             "description" : "Cost amount of national calls",
@@ -6060,7 +6030,7 @@
         "type" : "object",
         "x-conditional" : [ ]
       },
-      "TelcoUsage_voice_international" : {
+      "TelcoUsageVoiceInternational" : {
         "description" : "International voice calls",
         "properties" : {
           "duration" : {
@@ -6070,7 +6040,8 @@
           },
           "number" : {
             "description" : "Number of international voice calls",
-            "type" : "number"
+            "type" : "number",
+            "x-cds-type" : "Number"
           },
           "amount" : {
             "description" : "Cost amount of international voice calls",
@@ -6082,7 +6053,7 @@
         "type" : "object",
         "x-conditional" : [ ]
       },
-      "TelcoUsage_voice_roaming" : {
+      "TelcoUsageVoiceRoaming" : {
         "description" : "Roaming voice calls",
         "properties" : {
           "duration" : {
@@ -6092,7 +6063,8 @@
           },
           "number" : {
             "description" : "Number of roaming voice calls",
-            "type" : "number"
+            "type" : "number",
+            "x-cds-type" : "Number"
           },
           "amount" : {
             "description" : "Cost amount of roaming voice calls",
@@ -6104,36 +6076,39 @@
         "type" : "object",
         "x-conditional" : [ ]
       },
-      "TelcoUsage_voice" : {
+      "TelcoUsageVoice" : {
         "description" : "Summary of voice calls. Required if voice calls are included in product plan",
         "properties" : {
           "national" : {
-            "$ref" : "#/components/schemas/TelcoUsage_voice_national"
+            "$ref" : "#/components/schemas/TelcoUsageVoiceNational"
           },
           "international" : {
-            "$ref" : "#/components/schemas/TelcoUsage_voice_international"
+            "$ref" : "#/components/schemas/TelcoUsageVoiceInternational"
           },
           "roaming" : {
-            "$ref" : "#/components/schemas/TelcoUsage_voice_roaming"
+            "$ref" : "#/components/schemas/TelcoUsageVoiceRoaming"
           }
         },
         "required" : [ "amount", "international", "national", "roaming" ],
         "type" : "object"
       },
-      "TelcoUsage_messaging_sms" : {
+      "TelcoUsageMessagingSms" : {
         "description" : "Summary of SMS usage",
         "properties" : {
           "national" : {
             "description" : "Number of national SMS messages sent. Including premium SMS services",
-            "type" : "number"
+            "type" : "number",
+            "x-cds-type" : "Number"
           },
           "international" : {
             "description" : "Number of international SMS messages sent. Including premium SMS services",
-            "type" : "number"
+            "type" : "number",
+            "x-cds-type" : "Number"
           },
           "roaming" : {
             "description" : "Number of roaming SMS messages sent. Including premium SMS services",
-            "type" : "number"
+            "type" : "number",
+            "x-cds-type" : "Number"
           },
           "amount" : {
             "description" : "Cost amount of SMS messages. Including premium SMS services",
@@ -6145,20 +6120,23 @@
         "type" : "object",
         "x-conditional" : [ ]
       },
-      "TelcoUsage_messaging_mms" : {
+      "TelcoUsageMessagingMms" : {
         "description" : "Summary of MMS usage",
         "properties" : {
           "national" : {
             "description" : "Number of national MMS messages sent",
-            "type" : "number"
+            "type" : "number",
+            "x-cds-type" : "Number"
           },
           "international" : {
-            "description" : "Number of international MMS messages sent",
-            "type" : "number"
+            "description" : "ber of international MMS messages sent",
+            "type" : "number",
+            "x-cds-type" : "Number"
           },
           "roaming" : {
-            "description" : "Number of roaming MMS messages sent. Including premium MMS services",
-            "type" : "number"
+            "description" : "Number of roaming SMS messages sent. Including premium SMS services",
+            "type" : "number",
+            "x-cds-type" : "Number"
           },
           "amount" : {
             "description" : "Cost amount of MMS messages",
@@ -6170,20 +6148,20 @@
         "type" : "object",
         "x-conditional" : [ ]
       },
-      "TelcoUsage_messaging" : {
+      "TelcoUsageMessaging" : {
         "description" : "Summary of messaging. Required if messaging services is included in the product plan",
         "properties" : {
           "sms" : {
-            "$ref" : "#/components/schemas/TelcoUsage_messaging_sms"
+            "$ref" : "#/components/schemas/TelcoUsageMessagingSms"
           },
           "mms" : {
-            "$ref" : "#/components/schemas/TelcoUsage_messaging_mms"
+            "$ref" : "#/components/schemas/TelcoUsageMessagingMms"
           }
         },
         "required" : [ "mms", "sms" ],
         "type" : "object"
       },
-      "TelcoInvoiceAccountCharges_otherCharges" : {
+      "TelcoInvoiceAccountChargesOtherCharges" : {
         "description" : "Optional array of charges that may be part of the invoice (for example services fees) (exclusive of GST)",
         "properties" : {
           "amount" : {
@@ -6205,7 +6183,7 @@
         "required" : [ "amount", "description" ],
         "type" : "object"
       },
-      "TelcoBillingAccountTransaction_adjustments" : {
+      "TelcoBillingAccountTransactionAdjustments" : {
         "properties" : {
           "amount" : {
             "description" : "The amount of the adjustment",
@@ -6220,12 +6198,17 @@
         "required" : [ "amount", "description" ],
         "type" : "object"
       },
-      "TelcoServiceBalance_balances_data_roaming" : {
+      "TelcoServiceBalanceDataRoaming" : {
         "description" : "Balance of data roaming charges. Required unless planType is UNSUPPORTED",
         "properties" : {
+          "description" : {
+            "description" : "An overview of plan limits. Required unless planType is UNSUPPORTED",
+            "type" : "string"
+          },
           "download" : {
             "description" : "Amount of data used overseas in megabytes (MB). Required unless planType is UNSUPPORTED",
-            "type" : "number"
+            "type" : "number",
+            "x-cds-type" : "Number"
           },
           "amount" : {
             "description" : "Amount value of data roaming charges. Required unless planType is UNSUPPORTED",
@@ -6236,7 +6219,7 @@
         "type" : "object",
         "x-conditional" : [ "download", "amount" ]
       },
-      "TelcoServiceBalance_balances_data" : {
+      "TelcoServiceBalanceData" : {
         "description" : "Summary of data balances",
         "properties" : {
           "planType" : {
@@ -6248,11 +6231,13 @@
           },
           "upload" : {
             "description" : "Remaining upload data in megabytes (MB). Required unless planType is UNSUPPORTED or UNMETERED",
-            "type" : "number"
+            "type" : "number",
+            "x-cds-type" : "Number"
           },
           "download" : {
             "description" : "Remaining download data in megabytes (MB). Required unless planType is UNSUPPORTED or UNMETERED",
-            "type" : "number"
+            "type" : "number",
+            "x-cds-type" : "Number"
           },
           "amount" : {
             "description" : "Remaining value amount of data available. Required unless planType is UNSUPPORTED or UNMETERED",
@@ -6260,13 +6245,13 @@
             "x-cds-type" : "AmountString"
           },
           "roaming" : {
-            "$ref" : "#/components/schemas/TelcoServiceBalance_balances_data_roaming"
+            "$ref" : "#/components/schemas/TelcoServiceBalanceDataRoaming"
           }
         },
         "type" : "object",
         "x-conditional" : [ "description", "national", "international", "amount" ]
       },
-      "TelcoServiceBalance_balances_voice_national" : {
+      "TelcoServiceBalanceVoiceNational" : {
         "description" : "National voice calls",
         "properties" : {
           "description" : {
@@ -6280,7 +6265,8 @@
           },
           "number" : {
             "description" : "Number of national voice calls. Required unless planType is UNSUPPORTED or UNMETERED",
-            "type" : "number"
+            "type" : "number",
+            "x-cds-type" : "Number"
           },
           "amount" : {
             "description" : "Amount balance of national calls. Required unless planType is UNSUPPORTED or UNMETERED",
@@ -6291,8 +6277,8 @@
         "type" : "object",
         "x-conditional" : [ "description", "duration", "number", "amount" ]
       },
-      "TelcoServiceBalance_balances_voice_international" : {
-        "description" : "National voice calls",
+      "TelcoServiceBalanceVoiceInternational" : {
+        "description" : "International voice calls",
         "properties" : {
           "description" : {
             "description" : "An overview of plan limits. Required unless planType is UNSUPPORTED",
@@ -6305,7 +6291,8 @@
           },
           "number" : {
             "description" : "Number of international voice calls available Required unless planType is UNSUPPORTED or UNMETERED",
-            "type" : "number"
+            "type" : "number",
+            "x-cds-type" : "Number"
           },
           "amount" : {
             "description" : "Amount value of international calls available. Required unless planType is UNSUPPORTED or UNMETERED",
@@ -6316,23 +6303,52 @@
         "type" : "object",
         "x-conditional" : [ "description", "national", "international", "amount" ]
       },
-      "TelcoServiceBalance_balances_voice" : {
+      "TelcoServiceBalanceVoiceRoaming" : {
+        "description" : "Roaming voice calls",
+        "properties" : {
+          "description" : {
+            "description" : "An overview of plan limits. Required unless planType is UNSUPPORTED",
+            "type" : "string"
+          },
+          "duration" : {
+            "description" : "Total duration (hours, minutes, and seconds) of roaming voice calls available. Not limited to 24hrs. Required unless planType is UNSUPPORTED or UNMETERED",
+            "type" : "string",
+            "x-cds-type" : "TimeString"
+          },
+          "number" : {
+            "description" : "Number of roaming voice calls available Required unless planType is UNSUPPORTED or UNMETERED",
+            "type" : "number",
+            "x-cds-type" : "Number"
+          },
+          "amount" : {
+            "description" : "Amount value of roaming calls available. Required unless planType is UNSUPPORTED or UNMETERED",
+            "type" : "string",
+            "x-cds-type" : "AmountString"
+          }
+        },
+        "type" : "object",
+        "x-conditional" : [ "description", "national", "international", "amount" ]
+      },
+      "TelcoServiceBalanceVoice" : {
         "description" : "Summary of voice balances. Required if voice calls are included in product plan",
         "properties" : {
           "planType" : {
             "$ref" : "#/components/schemas/TelcoPlanType"
           },
           "national" : {
-            "$ref" : "#/components/schemas/TelcoServiceBalance_balances_voice_national"
+            "$ref" : "#/components/schemas/TelcoServiceBalanceVoiceNational"
           },
           "international" : {
-            "$ref" : "#/components/schemas/TelcoServiceBalance_balances_voice_international"
+            "$ref" : "#/components/schemas/TelcoServiceBalanceVoiceInternational"
+          },
+          "roaming" : {
+            "$ref" : "#/components/schemas/TelcoServiceBalanceVoiceRoaming"
           }
         },
         "type" : "object"
       },
-      "TelcoServiceBalance_balances_messaging_sms" : {
-        "description" : "Required if the service plan supports SMS messaging",
+      "TelcoServiceBalanceMessagingSms" : {
+        "description" : "Summary of SMS Balance. Required if the service plan supports SMS messaging",
         "properties" : {
           "description" : {
             "description" : "An overview of plan limits. Required unless planType is UNSUPPORTED",
@@ -6340,11 +6356,18 @@
           },
           "national" : {
             "description" : "Number of national SMS messages remaining. Required unless planType is UNSUPPORTED or UNMETERED",
-            "type" : "number"
+            "type" : "number",
+            "x-cds-type" : "Number"
           },
           "international" : {
             "description" : "Number of international SMS messages remaining. Required unless planType is UNSUPPORTED or UNMETERED",
-            "type" : "number"
+            "type" : "number",
+            "x-cds-type" : "Number"
+          },
+          "roaming" : {
+            "description" : "Number of roaming SMS messages remaining. Required unless planType is UNSUPPORTED or UNMETERED",
+            "type" : "number",
+            "x-cds-type" : "Number"
           },
           "amount" : {
             "description" : "Amount value of SMS messages remaining. Required unless planType is UNSUPPORTED or UNMETERED",
@@ -6353,10 +6376,10 @@
           }
         },
         "type" : "object",
-        "x-conditional" : [ "description", "national", "international", "amount" ]
+        "x-conditional" : [ "description", "national", "international", "roaming", "amount" ]
       },
-      "TelcoServiceBalance_balances_messaging_mms" : {
-        "description" : "Summary of MMS usage",
+      "TelcoServiceBalanceMessagingMms" : {
+        "description" : "Summary of MMS Balance. Required if the service plan supports MMS messaging",
         "properties" : {
           "description" : {
             "description" : "An overview of plan limits. Required unless planType is UNSUPPORTED",
@@ -6364,11 +6387,18 @@
           },
           "national" : {
             "description" : "Number of national MMS messages remaining. Required unless planType is UNSUPPORTED or UNMETERED",
-            "type" : "number"
+            "type" : "number",
+            "x-cds-type" : "Number"
           },
           "international" : {
             "description" : "Number of international MMS messages remaining. Required unless planType is UNSUPPORTED or UNMETERED",
-            "type" : "number"
+            "type" : "number",
+            "x-cds-type" : "Number"
+          },
+          "roaming" : {
+            "description" : "Number of roaming MMS messages remaining. Required unless planType is UNSUPPORTED or UNMETERED",
+            "type" : "number",
+            "x-cds-type" : "Number"
           },
           "amount" : {
             "description" : "Amount value of MMS messages remaining. Required unless planType is UNSUPPORTED or UNMETERED",
@@ -6377,35 +6407,35 @@
           }
         },
         "type" : "object",
-        "x-conditional" : [ "description", "national", "international", "amount" ]
+        "x-conditional" : [ "description", "national", "international", "roaming", "amount" ]
       },
-      "TelcoServiceBalance_balances_messaging" : {
+      "TelcoServiceBalanceMessaging" : {
         "description" : "Summary of messaging. Required if messaging services is included in the product plan",
         "properties" : {
           "planType" : {
             "$ref" : "#/components/schemas/TelcoPlanType"
           },
           "sms" : {
-            "$ref" : "#/components/schemas/TelcoServiceBalance_balances_messaging_sms"
+            "$ref" : "#/components/schemas/TelcoServiceBalanceMessagingSms"
           },
           "mms" : {
-            "$ref" : "#/components/schemas/TelcoServiceBalance_balances_messaging_mms"
+            "$ref" : "#/components/schemas/TelcoServiceBalanceMessagingMms"
           }
         },
         "required" : [ "mms", "sms" ],
         "type" : "object"
       },
-      "TelcoServiceBalance_balances" : {
-        "description" : "The serviceId representing a unique service identifier such as a mobile (MSISDN) or internet service (e.g NBN or ADSL)",
+      "TelcoServiceBalances" : {
+        "description" : "The serviceId representing a unique service identifier such as a mobile (MSISDN) or internet service (e.g NBN or ADSL). In accordance with [CDR ID permanence](#id-permanence) requirements",
         "properties" : {
           "data" : {
-            "$ref" : "#/components/schemas/TelcoServiceBalance_balances_data"
+            "$ref" : "#/components/schemas/TelcoServiceBalanceData"
           },
           "voice" : {
-            "$ref" : "#/components/schemas/TelcoServiceBalance_balances_voice"
+            "$ref" : "#/components/schemas/TelcoServiceBalanceVoice"
           },
           "messaging" : {
-            "$ref" : "#/components/schemas/TelcoServiceBalance_balances_messaging"
+            "$ref" : "#/components/schemas/TelcoServiceBalanceMessaging"
           }
         },
         "required" : [ "data, voice, messaging" ],
