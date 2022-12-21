@@ -5,6 +5,7 @@ The standards, as published from time to time, may include specific statements i
 The table below highlights these areas of the standards.
 
 ```diff
+**v1.21.0 Change**
 Updated obligation dates for FAPI 1.0 Phase 3
 + Added obligation dates for FAPI 1.0 Phase 4
 Updated Get Energy Accounts V2 and Get Energy Account Detail V2 obligation dates in line with the change to FY23 #3 obligation mileston

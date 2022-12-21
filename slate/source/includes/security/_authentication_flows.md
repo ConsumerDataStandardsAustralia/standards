@@ -12,6 +12,7 @@ No other flows are currently supported.
 ### Baseline Security Provisions
 
 ```diff
+**v1.21.0 Change**
 Moved baseline requirements applicable to both he OIDC Hybrid Flow and Authorization Code Flow outside of the OIDC Hybrid Flow section
 Updated obligation dates
 Require Data Holders to support both OIDC Hybrid Flow and Authorization Code Flow for a 3 month period. OIDC Hybrid Flow may be retired after July 10th 2023
@@ -97,6 +98,7 @@ Only a `response_type` (see [section 3.3](https://openid.net/specs/openid-connec
 ### Authorization Code Flow
 
 ```diff
+**v1.21.0 Change**
 + Added requriements in relation to authorisation response encryption
 - Removed legacy July 4th 2022 requirements
 ```
@@ -111,7 +113,7 @@ Data Holders **MUST** support **[[JARM]](#nref-JARM)** in accordance with **[[FA
 
 > **JWT Secured Authorization Response Mode for OAuth 2.0 (JARM)**
 > Data Holders **MAY** support Authorisation Response encryption.
-> 
+>
 > However, at present, there is no confidential information in the authorization response, hence encryption of the authorization response is not required for the purposes of security or confidentiality. In addition, whilst response encryption **MAY** be used, to achieve greater interoperability, it is not recommended to use encryption in this case at this time.
 
 In addition,
@@ -122,10 +124,10 @@ In addition,
 #### Data Recipient Software Products
 Data Recipients **MUST** support **[[JARM]](#nref-JARM)** in accordance with **[[FAPI-1.0-Advanced]](#nref-FAPI-1-0-Advanced)** [section 5.2.3.2](https://openid.net/specs/openid-financial-api-part-2-1_0.html#jarm-1).
 
-In addition, 
+In addition,
 
 * Data Recipients **MUST** request authorisation response signing using one of the `authorization_signing_alg_values_supported` values offered by the Data Holder.
-* Data Recipients **MAY** request response encryption using one of the advertised encryption sets. 
+* Data Recipients **MAY** request response encryption using one of the advertised encryption sets.
 * Data Recipients **MAY** request no response encryption by omitting the values in their client registration.
 * If `authorization_signed_response_alg` is omitted, the default algorithm is "PS256".
 
