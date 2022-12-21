@@ -1754,6 +1754,8 @@ This text is an example of text removed from the standards:
 <span class="gd">- Old text removed
 </span>
 Note: changes to request and response payloads are listed at the beginning of the relevant API section due to the documentation being auto generated from OpenAPI specification files.
+
+Additional note for v1.22.0: For this version only the delta statements from v1.21.0 have been retained in v1.22.0 as the release dates between the two versions were close together.  The affected delta statements will be noted as being associated with v1.21.0
 </code></pre>
 
 <p>These standards have been developed as part of the Australian Government&#39;s introduction of the <a href="https://www.accc.gov.au/focus-areas/consumer-data-right" title="ACCC Consumer Data Right webpage">Consumer Data Right</a> legislation to give Australians greater control over their data.</p>
@@ -1783,7 +1785,8 @@ Note: changes to request and response payloads are listed at the beginning of th
 
 <p>The table below highlights these areas of the standards.</p>
 
-<pre class="highlight diff tab-diff"><code>Updated obligation dates for FAPI 1.0 Phase 3
+<pre class="highlight diff tab-diff"><code>**v1.21.0 Change**
+Updated obligation dates for FAPI 1.0 Phase 3
 <span class="gi">+ Added obligation dates for FAPI 1.0 Phase 4
 </span>Updated Get Energy Accounts V2 and Get Energy Account Detail V2 obligation dates in line with the change to FY23 #3 obligation mileston
 </code></pre>
@@ -2417,28 +2420,28 @@ always align to current consumer preferences.</p>
 <p>Some example URIs that meet this standard are:  </p>
 </blockquote>
 
-<pre class="highlight plaintext"><code>1. https://www.bank.com.au/api/cds-au/v1/banking/accounts
-2. https://www.bank.com.au/api/cds-au/v1/banking/accounts/abc123/transactions/?x=y#bar
-3. https://www.bank.com.au/complex/uri/taxonomy/cds-au/v1/banking/products?page=2
-4. https://www.energyretailer.com.au/api/cds-au/v1/energy/usage
-5. https://www.energyretailer.com.au/api/cds-au/v1/ACME/apply
+<pre class="highlight plaintext"><code>1. https://www.bank.com.au/api/cds-au/v1/banking/accounts  
+2. https://www.bank.com.au/api/cds-au/v1/banking/accounts/abc123/transactions/?x=y#bar  
+3. https://www.bank.com.au/complex/uri/taxonomy/cds-au/v1/banking/products?page=2  
+4. https://www.energyretailer.com.au/api/cds-au/v1/energy/usage  
+5. https://www.energyretailer.com.au/api/cds-au/v1/ACME/apply  
 </code></pre>
 <blockquote>
 <p>The holder path for each example is:  </p>
 </blockquote>
-<pre class="highlight plaintext"><code>1. www.bank.com.au/api
-2. www.bank.com.au/api
-3. www.bank.com.au/complex/uri/taxonomy
-4. www.energyretailer.com.au/api
+<pre class="highlight plaintext"><code>1. www.bank.com.au/api  
+2. www.bank.com.au/api   
+3. www.bank.com.au/complex/uri/taxonomy  
+4. www.energyretailer.com.au/api  
 5. www.energyretailer.com.au/api
 </code></pre>
 <blockquote>
 <p>The Base Path for each example is:  </p>
 </blockquote>
-<pre class="highlight plaintext"><code>1. https://www.bank.com.au/api/cds-au/v1/banking
-2. https://www.bank.com.au/api/cds-au/v1/banking
-3. https://www.bank.com.au/complex/uri/taxonomy/cds-au/v1/banking
-4. https://www.energyretailer.com.au/api/cds-au/v1/energy
+<pre class="highlight plaintext"><code>1. https://www.bank.com.au/api/cds-au/v1/banking  
+2. https://www.bank.com.au/api/cds-au/v1/banking   
+3. https://www.bank.com.au/complex/uri/taxonomy/cds-au/v1/banking  
+4. https://www.energyretailer.com.au/api/cds-au/v1/energy  
 5. https://www.energyretailer.com.au/api/cds-au/v1/ACME
 </code></pre>
 <blockquote>
@@ -3763,7 +3766,7 @@ Content-Type: application/json
 
 { "errors": [
   {
-    "code": "urn:au-cds:error:cdr-all:Header/UnsupportedVersion",
+    "code": "urn:au-cds:error:cdr-all:Header/UnsupportedVersion",    
     "title": "Unsupported Version",
     "detail": "'x-v' **MUST** be greater than or equal to '2'"
   }
@@ -4558,7 +4561,8 @@ The standards in this section outline requirements that apply when a disclosure 
 </tr>
 </tbody></table>
 <h1 style="display:none"></h1>
-<h1 id='security-profile'>Security Profile</h1><pre class="highlight diff tab-diff"><code>Where “OIDC Authorization Code Flow” is referenced, change to be “Authorization Code Flow”.
+<h1 id='security-profile'>Security Profile</h1><pre class="highlight diff tab-diff"><code>**v1.21.0 Change**
+Where “OIDC Authorization Code Flow” is referenced, change to be “Authorization Code Flow”.
 </code></pre>
 <h2 id='overview'>Overview</h2>
 
@@ -4715,7 +4719,8 @@ Recipients. Data Holders and Data Recipients <strong>MUST</strong> be created as
 
 <p>No other flows are currently supported.</p>
 
-<h3 id='baseline-security-provisions'>Baseline Security Provisions</h3><pre class="highlight diff tab-diff"><code>Moved baseline requirements applicable to both he OIDC Hybrid Flow and Authorization Code Flow outside of the OIDC Hybrid Flow section
+<h3 id='baseline-security-provisions'>Baseline Security Provisions</h3><pre class="highlight diff tab-diff"><code>**v1.21.0 Change**
+Moved baseline requirements applicable to both he OIDC Hybrid Flow and Authorization Code Flow outside of the OIDC Hybrid Flow section
 Updated obligation dates
 Require Data Holders to support both OIDC Hybrid Flow and Authorization Code Flow for a 3 month period. OIDC Hybrid Flow may be retired after July 10th 2023
 </code></pre><h4 id='data-holders'>Data Holders</h4>
@@ -4808,7 +4813,8 @@ authorisation code flow detailed under <strong><a href="#nref-OIDC">[OIDC]</a></
 
 <p><a id="authorization-code-flow"></a></p>
 
-<h3 id='authorization-code-flow'>Authorization Code Flow</h3><pre class="highlight diff tab-diff"><code><span class="gi">+ Added requriements in relation to authorisation response encryption
+<h3 id='authorization-code-flow'>Authorization Code Flow</h3><pre class="highlight diff tab-diff"><code>**v1.21.0 Change**
+<span class="gi">+ Added requriements in relation to authorisation response encryption
 </span><span class="gd">- Removed legacy July 4th 2022 requirements
 </span></code></pre>
 <p>The following statements are applicable for this flow:</p>
@@ -4836,11 +4842,11 @@ Data Holders <strong>MAY</strong> support Authorisation Response encryption.</p>
 <h4 id='data-recipient-software-products-2'>Data Recipient Software Products</h4>
 <p>Data Recipients <strong>MUST</strong> support <strong><a href="#nref-JARM">[JARM]</a></strong> in accordance with <strong><a href="#nref-FAPI-1-0-Advanced">[FAPI-1.0-Advanced]</a></strong> <a href="https://openid.net/specs/openid-financial-api-part-2-1_0.html#jarm-1">section 5.2.3.2</a>.</p>
 
-<p>In addition, </p>
+<p>In addition,</p>
 
 <ul>
 <li>Data Recipients <strong>MUST</strong> request authorisation response signing using one of the <code>authorization_signing_alg_values_supported</code> values offered by the Data Holder.</li>
-<li>Data Recipients <strong>MAY</strong> request response encryption using one of the advertised encryption sets. </li>
+<li>Data Recipients <strong>MAY</strong> request response encryption using one of the advertised encryption sets.</li>
 <li>Data Recipients <strong>MAY</strong> request no response encryption by omitting the values in their client registration.</li>
 <li>If <code>authorization_signed_response_alg</code> is omitted, the default algorithm is &quot;PS256&quot;.</li>
 </ul>
@@ -5453,7 +5459,8 @@ Accept: application/json
 </ul>
 
 <p>The client registration request <strong>MUST</strong> contain the following claims in the JWT payload unless designated as Optional:</p>
-<pre class="highlight diff tab-diff"><code><span class="gi">+ Added JARM parameters
+<pre class="highlight diff tab-diff"><code>**v1.21.0 Change**
+<span class="gi">+ Added JARM parameters
 </span>Updated ID Token encryption parameter descriptions
 </code></pre>
 <table><thead>
@@ -5559,7 +5566,8 @@ Accept: application/json
 <td>Software statement assertion issued by the CDR Register</td>
 </tr>
 </tbody></table>
-<h4 id='id-token-algorithm-selection-considerations'>ID Token Algorithm Selection Considerations</h4><pre class="highlight diff tab-diff"><code>Updated the section to make clear these requirements must be applied for OIDC Hybrid Flow
+<h4 id='id-token-algorithm-selection-considerations'>ID Token Algorithm Selection Considerations</h4><pre class="highlight diff tab-diff"><code>**v1.21.0 Change**
+Updated the section to make clear these requirements must be applied for OIDC Hybrid Flow
 </code></pre>
 <p>When requiring ID Token encryption, the following requirements are applicable.</p>
 
@@ -5586,7 +5594,8 @@ Accept: application/json
 <p>Data Recipients <strong>MUST</strong> support all the algorithms used in the ecosystem to ensure they can communicate with all Data Holders.</p>
 
 <p>ID Token algorithm considerations remain relevant where the OIDC Hybrid Flow is leveraged as defined in the Consumer Data Standards and in accordance with sections <a href="https://openid.net/specs/openid-financial-api-part-2-1_0.html#id-token-as-detached-signature">5.1.1</a>, <a href="https://openid.net/specs/openid-financial-api-part-2-1_0.html#id-token-as-detached-signature-1">5.2.2.1</a>, and <a href="https://openid.net/specs/openid-financial-api-part-2-1_0.html#id-token-as-detached-signature-2">5.2.3.1</a> of <strong><a href="#nref-FAPI-1-0-Advanced">[FAPI-1.0-Advanced]</a></strong>.</p>
-<h4 id='jarm-response-encryption-considerations'>JARM Response Encryption Considerations</h4><pre class="highlight diff tab-diff"><code><span class="gi">+ Added JARM response encryption considerations
+<h4 id='jarm-response-encryption-considerations'>JARM Response Encryption Considerations</h4><pre class="highlight diff tab-diff"><code>**v1.21.0 Change**
+<span class="gi">+ Added JARM response encryption considerations
 </span></code></pre>
 <p>If Data Holders support authorisation response encryption, they <strong>MUST</strong> support, at a minimum, one of each of the following <code>alg</code> and <code>enc</code> algorithms:</p>
 
@@ -6177,7 +6186,8 @@ Data Holders <strong>SHOULD</strong> explicitly capture Claims requested by the 
   "auth_time": 1311280969,
   "acr": "urn:cds.au:cdr:2"
 }
-</code></pre><pre class="highlight diff tab-diff"><code>Updated heading levels to be consistent
+</code></pre><pre class="highlight diff tab-diff"><code>**v1.21.0 Change**
+Updated heading levels to be consistent
 Moved hashing requirements underneath OIDC Hybrid Flow
 Clarified ID Token encryption requirements apply only to the OIDC Hybrid Flow
 </code></pre>
@@ -6198,7 +6208,7 @@ Clarified ID Token encryption requirements apply only to the OIDC Hybrid Flow
 <li>The <code>s_hash</code> value <strong>MUST</strong> be generated according to <a href="https://openid.net/specs/openid-financial-api-part-2-1_0.html#id-token-as-detached-signature">section 5.1.1</a> of <strong><a href="#nref-FAPI-1-0-Advanced">[FAPI-1.0-Advanced]</a></strong>.</li>
 </ul>
 <h4 id='authorization-code-flow-requirements'>Authorization Code Flow requirements</h4>
-<p>For response_type “code”, in accordance with <strong><a href="#nref-FAPI-1-0-Advanced">[FAPI-1.0-Advanced]</a></strong>, ID Tokens <strong>MUST</strong> be signed and <strong>MUST NOT</strong> be encrypted when returned to a Data Recipient Software Product from the Token End Point. </p>
+<p>For response_type “code”, in accordance with <strong><a href="#nref-FAPI-1-0-Advanced">[FAPI-1.0-Advanced]</a></strong>, ID Tokens <strong>MUST</strong> be signed and <strong>MUST NOT</strong> be encrypted when returned to a Data Recipient Software Product from the Token End Point.</p>
 <h3 id='access-token'>Access Token</h3>
 <p>Access Tokens <strong>MUST</strong> be used as specified in <a href="https://tools.ietf.org/html/rfc6749#section-10.3">section 10.3</a> of <strong><a href="#nref-OAUTH2">[OAUTH2]</a></strong>.</p>
 
@@ -7369,8 +7379,8 @@ Cache-Control: no-cache, no-store
 </blockquote>
 
 <pre class="highlight plaintext"><code>## The request_uri is used by the ADR in the subsequent authorisation request as follows
-## (note this example is pre-RFC using Draft 01 of the PAR standard, hence it includes
-## the mandatory oAuth parameters as per FAPI R/W for confidential clients must be
+## (note this example is pre-RFC using Draft 01 of the PAR standard, hence it includes 
+## the mandatory oAuth parameters as per FAPI R/W for confidential clients must be 
 ## replayed in the request URL):
 
 GET /authorise?client_id=s6BhdRkqt3&amp;
@@ -44116,7 +44126,7 @@ This operation does not require authentication
 <td>path</td>
 <td>string</td>
 <td>mandatory</td>
-<td>ID of the specific service requested.  This is a tokenised ID returned from the account. In accordance with <a href="#id-permanence">CDR ID permanence</a> requirements</td>
+<td>ID of the specific service requested such as a mobile <a href="https://www.etsi.org/deliver/etsi_gts/03/0303/05.00.00_60/gsmts_0303v050000p.pdf">MSISDN</a>, <a href="https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf">FNN</a> or internet service e.g <a href="https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf">NBN AVC Service ID</a>.  This is a tokenised ID returned from the account. In accordance with <a href="#id-permanence">CDR ID permanence</a> requirements</td>
 </tr>
 <tr>
 <td>oldest-date</td>
@@ -44835,7 +44845,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>body</td>
 <td>[string]</td>
 <td>mandatory</td>
-<td>Array of specific serviceIds to obtain data for. In accordance with <a href="#id-permanence">CDR ID permanence</a> requirements</td>
+<td>Array of specific serviceIds to obtain data for. E.g. a mobile <a href="https://www.etsi.org/deliver/etsi_gts/03/0303/05.00.00_60/gsmts_0303v050000p.pdf">MSISDN</a>, <a href="https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf">FNN</a> or internet service e.g <a href="https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf">NBN AVC Service ID</a>. In accordance with <a href="#id-permanence">CDR ID permanence</a> requirements</td>
 </tr>
 <tr>
 <td>» meta</td>
@@ -50548,7 +50558,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>serviceId</td>
 <td>string</td>
 <td>mandatory</td>
-<td>The tokenised ID of the service for use in the CDR APIs.  Created according to the CDR rules for <a href="#id-permanence">CDR ID permanence</a></td>
+<td>The tokenised ID of the service identifier for use in the CDR APIs. E.g a mobile <a href="https://www.etsi.org/deliver/etsi_gts/03/0303/05.00.00_60/gsmts_0303v050000p.pdf">MSISDN</a>, <a href="https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf">FNN</a> or internet service e.g <a href="https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf">NBN AVC Service ID</a>.  Created according to the CDR rules for <a href="#id-permanence">CDR ID permanence</a></td>
 </tr>
 </tbody></table>
 
@@ -50625,7 +50635,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>accountId</td>
 <td>string</td>
-<td>optional</td>
+<td>mandatory</td>
 <td>Tokenised ID of the account. In accordance with <a href="#id-permanence">CDR ID permanence</a> requirements</td>
 </tr>
 <tr>
@@ -50703,7 +50713,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>serviceId</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Tokenised ID of the service.  To be created in accordance with <a href="#id-permanence">CDR ID permanence</a> requirements</td>
+<td>Tokenised ID of the service identifier. E.g. a mobile <a href="https://www.etsi.org/deliver/etsi_gts/03/0303/05.00.00_60/gsmts_0303v050000p.pdf">MSISDN</a>, <a href="https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf">FNN</a> or internet service e.g <a href="https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf">NBN AVC Service ID</a>. To be created in accordance with <a href="#id-permanence">CDR ID permanence</a> requirements</td>
 </tr>
 <tr>
 <td>displayName</td>
@@ -50714,20 +50724,20 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>phoneNumber</td>
 <td>string</td>
-<td>optional</td>
+<td>conditional</td>
 <td>Required if the service includes a phone number</td>
 </tr>
 <tr>
 <td>startDate</td>
 <td><a href="#common-field-types">DateTimeString</a></td>
-<td>optional</td>
-<td>Date when the balance period started</td>
+<td>mandatory</td>
+<td>Date when the usage period started</td>
 </tr>
 <tr>
 <td>endDate</td>
 <td><a href="#common-field-types">DateTimeString</a></td>
 <td>optional</td>
-<td>Date when the balance period ends</td>
+<td>Date when the usage period ends</td>
 </tr>
 <tr>
 <td>usage</td>
@@ -51356,7 +51366,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>data</td>
 <td><a href="#schemacdr-telco-apitelcousagedata">TelcoUsageData</a></td>
-<td>mandatory</td>
+<td>conditional</td>
 <td>Summary of data usage</td>
 </tr>
 <tr>
@@ -51599,7 +51609,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>serviceIds</td>
 <td>string</td>
 <td>optional</td>
-<td>Array list of services IDs to which this transaction applies if any. In accordance with <a href="#id-permanence">CDR ID permanence</a> requirements</td>
+<td>Array list of services identifiers to which this transaction applies if any. E.g. a mobile <a href="https://www.etsi.org/deliver/etsi_gts/03/0303/05.00.00_60/gsmts_0303v050000p.pdf">MSISDN</a>, <a href="https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf">FNN</a> or internet service e.g <a href="https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf">NBN AVC Service ID</a>. In accordance with <a href="#id-permanence">CDR ID permanence</a> requirements</td>
 </tr>
 <tr>
 <td>invoiceNumber</td>
@@ -51662,7 +51672,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>serviceId</td>
 <td>string</td>
 <td>optional</td>
-<td>The ID of the service to which this transaction applies if any.  In accordance with <a href="#id-permanence">CDR ID permanence</a> requirements</td>
+<td>The ID of the service identifier to which this transaction applies if any. E.g a <a href="https://www.etsi.org/deliver/etsi_gts/03/0303/05.00.00_60/gsmts_0303v050000p.pdf">MSISDN</a>, <a href="https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf">FNN</a> or internet service e.g <a href="https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf">NBN AVC Service ID</a>. In accordance with <a href="#id-permanence">CDR ID permanence</a> requirements</td>
 </tr>
 <tr>
 <td>invoiceNumber</td>
@@ -51716,7 +51726,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>serviceId</td>
 <td>string</td>
 <td>optional</td>
-<td>The ID of the service to which this transaction applies if any. In accordance with <a href="#id-permanence">CDR ID permanence</a> requirements</td>
+<td>The service identifier to which this transaction applies if any. E.g a mobile <a href="https://www.etsi.org/deliver/etsi_gts/03/0303/05.00.00_60/gsmts_0303v050000p.pdf">MSISDN</a>, <a href="https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf">FNN</a> or internet service e.g <a href="https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf">NBN AVC Service ID</a>. In accordance with <a href="#id-permanence">CDR ID permanence</a> requirements</td>
 </tr>
 <tr>
 <td>invoiceNumber</td>
@@ -52032,7 +52042,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>serviceId</td>
 <td>string</td>
 <td>optional</td>
-<td>The serviceId representing a unique service identifier such as a mobile <a href="https://www.etsi.org/deliver/etsi_gts/03/0303/05.00.00_60/gsmts_0303v050000p.pdf">MSISDN</a>, <a href="https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf">FNN</a> or internet service (e.g NBN <a href="https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf">AVC Service ID</a>. In accordance with <a href="#id-permanence">CDR ID permanence</a> requirements</td>
+<td>The serviceId representing a unique service identifier such as a mobile <a href="https://www.etsi.org/deliver/etsi_gts/03/0303/05.00.00_60/gsmts_0303v050000p.pdf">MSISDN</a>, <a href="https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf">FNN</a> or internet service e.g <a href="https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf">NBN AVC Service ID</a>. In accordance with <a href="#id-permanence">CDR ID permanence</a> requirements</td>
 </tr>
 <tr>
 <td>displayName</td>
@@ -52062,7 +52072,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>balance</td>
 <td><a href="#schemacdr-telco-apitelcoservicebalances">TelcoServiceBalances</a></td>
 <td>optional</td>
-<td>The serviceId representing a unique service identifier such as a mobile (MSISDN) or internet service (e.g NBN or ADSL). In accordance with <a href="#id-permanence">CDR ID permanence</a> requirements</td>
+<td>A summary of Service balances</td>
 </tr>
 </tbody></table>
 
@@ -52719,7 +52729,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>accounts</td>
 <td>[<a href="#schemacdr-telco-apitelcoaccountusage">TelcoAccountUsage</a>]</td>
 <td>mandatory</td>
-<td>Array of services for the account</td>
+<td>Array of usage on accounts</td>
 </tr>
 </tbody></table>
 
@@ -54104,7 +54114,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>serviceIds</td>
 <td>[string]</td>
 <td>mandatory</td>
-<td>An array of serviceId’s representing a unique service identifier such as a mobile (MSISDN) or internet service (e.g NBN or ADSL) If there are no serviceIds allocated to this plan then an empty array would be expected. In accordance with <a href="#id-permanence">CDR ID permanence</a> requirements</td>
+<td>The serviceId representing a unique service identifier such as a mobile <a href="https://www.etsi.org/deliver/etsi_gts/03/0303/05.00.00_60/gsmts_0303v050000p.pdf">MSISDN</a>, <a href="https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf">FNN</a> or internet service e.g <a href="https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf">NBN AVC Service ID</a>. In accordance with <a href="#id-permanence">CDR ID permanence</a> requirement</td>
 </tr>
 <tr>
 <td>planOverview</td>
@@ -54338,7 +54348,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>serviceIds</td>
 <td>[string]</td>
 <td>mandatory</td>
-<td>An array of serviceId’s representing a unique service identifier such as a mobile (MSISDN) or internet service (e.g NBN or ADSL) If there are no serviceIds allocated to this plan then an empty array would be expected. In accordance with <a href="#id-permanence">CDR ID permanence</a> requirements</td>
+<td>The serviceId representing a unique service identifier such as a mobile <a href="https://www.etsi.org/deliver/etsi_gts/03/0303/05.00.00_60/gsmts_0303v050000p.pdf">MSISDN</a>, <a href="https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf">FNN</a> or internet service e.g <a href="https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf">NBN AVC Service ID</a>. In accordance with <a href="#id-permanence">CDR ID permanence</a> requirement</td>
 </tr>
 <tr>
 <td>planOverview</td>
@@ -54903,21 +54913,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>roaming</td>
-<td>object</td>
-<td>mandatory</td>
-<td>none</td>
-</tr>
-<tr>
-<td>» download</td>
-<td><a href="#common-field-types">Number</a></td>
+<td><a href="#schemacdr-telco-apitelcousagedatroaming">TelcoUsageDatRoaming</a></td>
 <td>optional</td>
-<td>Amount of data downloaded in megabytes (MB)</td>
-</tr>
-<tr>
-<td>» amount</td>
-<td><a href="#common-field-types">AmountString</a></td>
-<td>optional</td>
-<td>Cost amount of data usage</td>
+<td>Required if roaming is suipported</td>
 </tr>
 </tbody></table>
 
@@ -54977,7 +54975,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 </span></code></pre>
 
-<p><em>International voice calls</em></p>
+<p><em>International voice calls. Requied if international calling is supported</em></p>
 
 <h3 id='properties-81'>Properties</h3>
 
@@ -55021,7 +55019,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 </span></code></pre>
 
-<p><em>Roaming voice calls</em></p>
+<p><em>Roaming voice calls, Required if roaming is supported</em></p>
 
 <h3 id='properties-82'>Properties</h3>
 
@@ -55099,13 +55097,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>international</td>
 <td><a href="#schemacdr-telco-apitelcousagevoiceinternational">TelcoUsageVoiceInternational</a></td>
 <td>mandatory</td>
-<td>International voice calls</td>
+<td>International voice calls. Requied if international calling is supported</td>
 </tr>
 <tr>
 <td>roaming</td>
 <td><a href="#schemacdr-telco-apitelcousagevoiceroaming">TelcoUsageVoiceRoaming</a></td>
 <td>mandatory</td>
-<td>Roaming voice calls</td>
+<td>Roaming voice calls, Required if roaming is supported</td>
 </tr>
 </tbody></table>
 
@@ -55143,13 +55141,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>international</td>
 <td><a href="#common-field-types">Number</a></td>
-<td>mandatory</td>
+<td>conditional</td>
 <td>Number of international SMS messages sent. Including premium SMS services</td>
 </tr>
 <tr>
 <td>roaming</td>
 <td><a href="#common-field-types">Number</a></td>
-<td>mandatory</td>
+<td>conditional</td>
 <td>Number of roaming SMS messages sent. Including premium SMS services</td>
 </tr>
 <tr>
@@ -55194,13 +55192,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>international</td>
 <td><a href="#common-field-types">Number</a></td>
-<td>mandatory</td>
+<td>conditional</td>
 <td>ber of international MMS messages sent</td>
 </tr>
 <tr>
 <td>roaming</td>
 <td><a href="#common-field-types">Number</a></td>
-<td>mandatory</td>
+<td>conditional</td>
 <td>Number of roaming SMS messages sent. Including premium SMS services</td>
 </tr>
 <tr>
@@ -55457,7 +55455,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>planType</td>
 <td><a href="#schemacdr-telco-apitelcoplantype">TelcoPlanType</a></td>
-<td>optional</td>
+<td>mandatory</td>
 <td>Plan type for this feature. METERED: A plan is charged by usage for the feature. UNMETERED: A plan with no limits for a feature. LIMITED: Where plan limit inclusions apply. UNSUPPORTED: Feature is not supported</td>
 </tr>
 <tr>
@@ -55475,7 +55473,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>download</td>
 <td><a href="#common-field-types">Number</a></td>
-<td>optional</td>
+<td>conditional</td>
 <td>Remaining download data in megabytes (MB). Required unless planType is UNSUPPORTED or UNMETERED</td>
 </tr>
 <tr>
@@ -55688,25 +55686,25 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>planType</td>
 <td><a href="#schemacdr-telco-apitelcoplantype">TelcoPlanType</a></td>
-<td>optional</td>
+<td>mandatory</td>
 <td>Plan type for this feature. METERED: A plan is charged by usage for the feature. UNMETERED: A plan with no limits for a feature. LIMITED: Where plan limit inclusions apply. UNSUPPORTED: Feature is not supported</td>
 </tr>
 <tr>
 <td>national</td>
 <td><a href="#schemacdr-telco-apitelcoservicebalancevoicenational">TelcoServiceBalanceVoiceNational</a></td>
-<td>optional</td>
+<td>conditional</td>
 <td>National voice calls</td>
 </tr>
 <tr>
 <td>international</td>
 <td><a href="#schemacdr-telco-apitelcoservicebalancevoiceinternational">TelcoServiceBalanceVoiceInternational</a></td>
-<td>optional</td>
+<td>conditional</td>
 <td>International voice calls</td>
 </tr>
 <tr>
 <td>roaming</td>
 <td><a href="#schemacdr-telco-apitelcoservicebalancevoiceroaming">TelcoServiceBalanceVoiceRoaming</a></td>
-<td>optional</td>
+<td>conditional</td>
 <td>Roaming voice calls</td>
 </tr>
 </tbody></table>
@@ -55942,7 +55940,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 </span></code></pre>
 
-<p><em>The serviceId representing a unique service identifier such as a mobile (MSISDN) or internet service (e.g NBN or ADSL). In accordance with <a href="#id-permanence">CDR ID permanence</a> requirements</em></p>
+<p><em>A summary of Service balances</em></p>
 
 <h3 id='properties-98'>Properties</h3>
 
@@ -55957,19 +55955,19 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>data</td>
 <td><a href="#schemacdr-telco-apitelcoservicebalancedata">TelcoServiceBalanceData</a></td>
-<td>optional</td>
+<td>conditional</td>
 <td>Summary of data balances</td>
 </tr>
 <tr>
 <td>voice</td>
 <td><a href="#schemacdr-telco-apitelcoservicebalancevoice">TelcoServiceBalanceVoice</a></td>
-<td>optional</td>
+<td>conditional</td>
 <td>Summary of voice balances. Required if voice calls are included in product plan</td>
 </tr>
 <tr>
 <td>messaging</td>
 <td><a href="#schemacdr-telco-apitelcoservicebalancemessaging">TelcoServiceBalanceMessaging</a></td>
-<td>optional</td>
+<td>conditional</td>
 <td>Summary of messaging. Required if messaging services is included in the product plan</td>
 </tr>
 </tbody></table>
