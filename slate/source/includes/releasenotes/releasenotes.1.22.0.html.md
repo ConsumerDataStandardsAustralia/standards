@@ -17,17 +17,21 @@ Release notes for version v1.22.0 of the [CDR Standards](../../index.html).
 
 This release addresses the following minor defects raised on [Standards Staging](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues):
 
-None.
+- XXXX
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
-- XXXX
+- [Iteration 13 Holistic Feedback](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/551)
+- [Specify if an Account is a joint account in the API response](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/513)
+- [Update x-v header to be mandatory for Register APIs](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/544)
+- [Update Register and DCR Swagger specs to use Common Field Types](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/546)
+
 
 ### Decision Proposals
 
 This release addresses the following Decision Proposals published on [Standards](https://github.com/ConsumerDataStandardsAustralia/standards/issues):
 
-XXXX
+- [Decision 272 - Maintenance Iteration 13](https://github.com/ConsumerDataStandardsAustralia/standards/issues/272)
 
 ## Introduction
 
