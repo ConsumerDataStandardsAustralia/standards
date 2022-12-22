@@ -5786,9 +5786,6 @@
 				"parameters": [{
 						"$ref": "#/components/parameters/accountId"
 					},
-                    {
-                        "$ref": "#/components/parameters/open-status"
-                    },
 					{
 						"$ref": "#/components/parameters/x-v"
 					},
