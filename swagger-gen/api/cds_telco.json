@@ -1180,7 +1180,7 @@
         },
         "summary" : "Get Telco Accounts",
         "tags" : [ "Telco", "Accounts" ],
-        "x-scopes" : [ "telco:accounts:basic:read" ],
+        "x-scopes" : [ "telco:accounts.basic:read" ],
         "x-version" : "1"
       }
     },
@@ -1540,7 +1540,7 @@
         },
         "summary" : "Get Telco Agreed Payment Schedule",
         "tags" : [ "Telco", "Accounts" ],
-        "x-scopes" : [ "telco:accounts:paymentschedule:read" ],
+        "x-scopes" : [ "telco:accounts.paymentschedule:read" ],
         "x-version" : "1"
       }
     },
@@ -1714,7 +1714,7 @@
         },
         "summary" : "Get Telco Concessions",
         "tags" : [ "Telco", "Accounts" ],
-        "x-scopes" : [ "telco:accounts:concessions:read" ],
+        "x-scopes" : [ "telco:accounts.concessions:read" ],
         "x-version" : "1"
       }
     },
