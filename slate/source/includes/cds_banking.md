@@ -45,7 +45,9 @@ $.ajax({
 
 `GET /banking/accounts`
 
-Obtain a list of accounts
+Obtain a list of accounts.
+
+Obsolete versions: [v1](includes/obsolete/get-accounts-v1.html)
 
 ###Endpoint Version
 |   |  |

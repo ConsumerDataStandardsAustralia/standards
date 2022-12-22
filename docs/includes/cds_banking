@@ -38,7 +38,9 @@
 </code></pre>
 <p><code>GET /banking/accounts</code></p>
 
-<p>Obtain a list of accounts</p>
+<p>Obtain a list of accounts.</p>
+
+<p>Obsolete versions: <a href="includes/obsolete/get-accounts-v1.html">v1</a></p>
 <h3 id='endpoint-version'>Endpoint Version</h3>
 <table><thead>
 <tr>

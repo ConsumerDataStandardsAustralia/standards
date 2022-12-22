@@ -13007,7 +13007,11 @@ This operation does not require authentication
 <h1 style="display:none"></h1>
 <h1 id='banking-apis'>Banking APIs</h1>
 <p>This specification defines the APIs for Data Holders exposing Banking endpoints.</p>
+<pre class="highlight diff tab-diff"><code>Add `accountOwnership` field to the Get Accounts and Get Account Details end points.
 
+<span class="gi">+ Add v2 of Get Accounts
++ Add v3 of Get Account Details
+</span></code></pre>
 <p><br>
 <table>
 <tr><td><a href='./includes/swagger/cds_banking.json'>Banking OpenAPI Specification (JSON)</a></td></tr>
@@ -13057,7 +13061,9 @@ This operation does not require authentication
 
 <p><code>GET /banking/accounts</code></p>
 
-<p>Obtain a list of accounts</p>
+<p>Obtain a list of accounts.</p>
+
+<p>Obsolete versions: <a href="includes/obsolete/get-accounts-v1.html">v1</a></p>
 
 <h3 id='endpoint-version'>Endpoint Version</h3>
 

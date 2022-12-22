@@ -27,7 +27,7 @@
           "Accounts"
         ],
         "summary": "Get Accounts",
-        "description": "Obtain a list of accounts",
+        "description": "Obtain a list of accounts.\n\nObsolete versions: [v1](includes/obsolete/get-accounts-v1.html)",
         "operationId": "listAccounts",
         "parameters": [
           {

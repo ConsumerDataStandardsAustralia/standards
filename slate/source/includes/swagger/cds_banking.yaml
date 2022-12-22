@@ -17,7 +17,10 @@ servers:
 paths:
   /banking/accounts:
     get:
-      description: Obtain a list of accounts
+      description: |-
+        Obtain a list of accounts.
+
+        Obsolete versions: [v1](includes/obsolete/get-accounts-v1.html)
       operationId: listAccounts
       parameters:
       - description: |-
