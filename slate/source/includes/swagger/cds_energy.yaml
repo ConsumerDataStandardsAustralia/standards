@@ -9070,7 +9070,8 @@ components:
       - totalUsageCharges
       type: object
     EnergyInvoiceAccountCharges:
-      description: Object contain charges and credits related to electricity usage
+      description: Object contains account level charges and credits related to electricity
+        usage
       example:
         totalGst: totalGst
         totalDiscounts: totalDiscounts

@@ -9,8 +9,8 @@ The following APIs are published by the Registrar. Data Recipients and Data Hold
 | Get Register JWKS | Data Holder | Validate SSA and CDR Register authentication JWT signatures | | <i class="icon-check"></i> | |
 | Get Data Holder Brands | Data Recipient Brand or Software Product | Discovery of Data Holder Brands and their associated endpoints | <i class="icon-check"></i> | | <i class="icon-check"></i> |
 | Get Data Recipient Software Statement Assertion | Data Recipient Brand or Software Product | Get SSA for a Software Product to be used in [Dynamic Client Registration](#dynamic-client-registration) | <i class="icon-check"></i> | | <i class="icon-check"></i> |
-| Get Data Recipient Software Products Status | Data Holder Brand | Software Product Statuses to check validity of ADR [requests](#accredited-data-recipient-and-software-product-statuses) | | <i class="icon-check"></i> | |
-| Get Data Recipient Statuses | Data Holder Brand | Data Recipient Statuses to check validity of ADR [requests](#accredited-data-recipient-and-software-product-statuses) | | <i class="icon-check"></i> | |
+| Get Data Recipient Software Products Status | Data Holder Brand | Software Product Statuses to check validity of ADR requests | | <i class="icon-check"></i> | |
+| Get Data Recipient Statuses | Data Holder Brand | Data Recipient Statuses to check validity of ADR requests | | <i class="icon-check"></i> | |
 | Get Data Recipients | Data Holder Brand | Data Recipient, brand and product details to render Data Holder Consumer Dashboard | | <i class="icon-check"></i> | |
 
 

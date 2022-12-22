@@ -15705,7 +15705,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>accountCharges</td>
 <td><a href="#schemacdr-energy-apienergyinvoiceaccountcharges">EnergyInvoiceAccountCharges</a></td>
 <td>optional</td>
-<td>Object contain charges and credits related to electricity usage</td>
+<td>Object contains account level charges and credits related to electricity usage</td>
 </tr>
 <tr>
 <td>paymentStatus</td>
@@ -15983,7 +15983,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
-<p><em>Object contain charges and credits related to electricity usage</em></p>
+<p><em>Object contains account level charges and credits related to electricity usage</em></p>
 <h3 id='properties-41'>Properties</h3>
 <table><thead>
 <tr>

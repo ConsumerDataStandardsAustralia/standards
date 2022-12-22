@@ -3297,7 +3297,7 @@
                 }
             },
             "EnergyInvoiceAccountCharges": {
-                "description": "Object contain charges and credits related to electricity usage",
+                "description": "Object contains account level charges and credits related to electricity usage",
                 "type": "object",
                 "required": [
                     "totalCharges",

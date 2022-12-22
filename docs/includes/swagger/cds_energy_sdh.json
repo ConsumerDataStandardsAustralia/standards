@@ -171,6 +171,7 @@
         },
         "summary" : "Get Service Points (SR)",
         "tags" : [ "Energy-SDH", "NMI Standing Data" ],
+        "x-restricted-access" : "AEMO",
         "x-version" : "1"
       }
     },
@@ -321,6 +322,7 @@
         },
         "summary" : "Get Service Point Detail (SR)",
         "tags" : [ "Energy-SDH", "NMI Standing Data" ],
+        "x-restricted-access" : "AEMO",
         "x-version" : "1"
       }
     },
@@ -547,6 +549,7 @@
         },
         "summary" : "Get Usage For Service Point (SR)",
         "tags" : [ "Energy-SDH", "Electricity Usage" ],
+        "x-restricted-access" : "AEMO",
         "x-version" : "1"
       }
     },
@@ -746,6 +749,7 @@
         },
         "summary" : "Get Usage For Specific Service Points (SR)",
         "tags" : [ "Energy-SDH", "Electricity Usage" ],
+        "x-restricted-access" : "AEMO",
         "x-version" : "1"
       }
     },
@@ -896,6 +900,7 @@
         },
         "summary" : "Get DER For Service Point (SR)",
         "tags" : [ "Energy-SDH", "Distributed Energy Resources" ],
+        "x-restricted-access" : "AEMO",
         "x-version" : "1"
       }
     },
@@ -1061,6 +1066,7 @@
         },
         "summary" : "Get DER For Specific Service Points (SR)",
         "tags" : [ "Energy-SDH", "Distributed Energy Resources" ],
+        "x-restricted-access" : "AEMO",
         "x-version" : "1"
       }
     }

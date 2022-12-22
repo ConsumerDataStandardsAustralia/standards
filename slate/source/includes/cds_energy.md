@@ -9343,7 +9343,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |servicePoints|[string]|mandatory|Array of service point IDs to which this invoice applies. May be empty if the invoice contains no electricity usage related charges|
 |gas|[EnergyInvoiceGasUsageCharges](#schemacdr-energy-apienergyinvoicegasusagecharges)|optional|Object containing charges and credits related to gas usage|
 |electricity|[EnergyInvoiceElectricityUsageCharges](#schemacdr-energy-apienergyinvoiceelectricityusagecharges)|optional|Object containing charges and credits related to electricity usage|
-|accountCharges|[EnergyInvoiceAccountCharges](#schemacdr-energy-apienergyinvoiceaccountcharges)|optional|Object contain charges and credits related to electricity usage|
+|accountCharges|[EnergyInvoiceAccountCharges](#schemacdr-energy-apienergyinvoiceaccountcharges)|optional|Object contains account level charges and credits related to electricity usage|
 |paymentStatus|string|mandatory|Indicator of the payment status for the invoice|
 
 #### Enumerated Values
@@ -9463,7 +9463,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-*Object contain charges and credits related to electricity usage*
+*Object contains account level charges and credits related to electricity usage*
 
 ### Properties
 

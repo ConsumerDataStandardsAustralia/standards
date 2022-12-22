@@ -136,10 +136,12 @@ Obtain a list of service points owned by the customer that has authorised the cu
 |422|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
-    <aside class="success">
-This operation does not require authentication
+    
+      <aside class="success">
+This operation may only be called by an Energy Retailer using the information security policies defined by AEMO
 </aside>
 
+    
   
 
 ## Get Service Point Detail (SR)
@@ -322,10 +324,12 @@ Obtain detailed standing information for a specific service point that is owned 
 |406|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
-    <aside class="success">
-This operation does not require authentication
+    
+      <aside class="success">
+This operation may only be called by an Energy Retailer using the information security policies defined by AEMO
 </aside>
 
+    
   
 
 ## Get Usage For Service Point (SR)
@@ -474,10 +478,12 @@ Obtain a list of electricity usage data from a particular service point
 |422|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
-    <aside class="success">
-This operation does not require authentication
+    
+      <aside class="success">
+This operation may only be called by an Energy Retailer using the information security policies defined by AEMO
 </aside>
 
+    
   
 
 ## Get Usage For Specific Service Points (SR)
@@ -642,10 +648,12 @@ Obtain the electricity usage data for a specific set of service points
 |422|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
-    <aside class="success">
-This operation does not require authentication
+    
+      <aside class="success">
+This operation may only be called by an Energy Retailer using the information security policies defined by AEMO
 </aside>
 
+    
   
 
 ## Get DER For Service Point (SR)
@@ -790,10 +798,12 @@ Obtain a list of DER data from a particular service point
 |406|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
-    <aside class="success">
-This operation does not require authentication
+    
+      <aside class="success">
+This operation may only be called by an Energy Retailer using the information security policies defined by AEMO
 </aside>
 
+    
   
 
 ## Get DER For Specific Service Points (SR)
@@ -969,10 +979,12 @@ Obtain DER data for a specific set of service points
 |422|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
-    <aside class="success">
-This operation does not require authentication
+    
+      <aside class="success">
+This operation may only be called by an Energy Retailer using the information security policies defined by AEMO
 </aside>
 
+    
   
 
 <h2 class="schema-heading" id="cdr-energy-secondary-data-holder-api-schemas">Schemas</h2>
