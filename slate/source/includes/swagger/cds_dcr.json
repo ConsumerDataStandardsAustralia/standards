@@ -72,7 +72,8 @@
           "name" : "Authorization",
           "required" : true,
           "schema" : {
-            "type" : "string"
+            "type" : "string",
+            "x-cds-type" : "ExternalRef"
           },
           "style" : "simple"
         } ],
@@ -87,8 +88,8 @@
                 "description" : "The Response Header Field as per **[[RFC6750]](#nref-RFC6750)**",
                 "explode" : false,
                 "schema" : {
-                  "pattern" : "^Bearer .*",
-                  "type" : "string"
+                  "type" : "string",
+                  "x-cds-type" : "ExternalRef"
                 },
                 "style" : "simple"
               }
@@ -125,7 +126,8 @@
           "name" : "Authorization",
           "required" : true,
           "schema" : {
-            "type" : "string"
+            "type" : "string",
+            "x-cds-type" : "ExternalRef"
           },
           "style" : "simple"
         } ],
@@ -147,8 +149,8 @@
                 "description" : "The Response Header Field as per **[[RFC6750]](#nref-RFC6750)**",
                 "explode" : false,
                 "schema" : {
-                  "pattern" : "^Bearer .*",
-                  "type" : "string"
+                  "type" : "string",
+                  "x-cds-type" : "ExternalRef"
                 },
                 "style" : "simple"
               }
@@ -182,7 +184,8 @@
           "name" : "Authorization",
           "required" : true,
           "schema" : {
-            "type" : "string"
+            "type" : "string",
+            "x-cds-type" : "ExternalRef"
           },
           "style" : "simple"
         } ],
@@ -225,8 +228,8 @@
                 "description" : "The Response Header Field as per **[[RFC6750]](#nref-RFC6750)**",
                 "explode" : false,
                 "schema" : {
-                  "pattern" : "^Bearer .*",
-                  "type" : "string"
+                  "type" : "string",
+                  "x-cds-type" : "ExternalRef"
                 },
                 "style" : "simple"
               }
@@ -252,7 +255,8 @@
         "name" : "Authorization",
         "required" : true,
         "schema" : {
-          "type" : "string"
+          "type" : "string",
+          "x-cds-type" : "ExternalRef"
         },
         "style" : "simple"
       },
@@ -286,8 +290,8 @@
             "description" : "The Response Header Field as per **[[RFC6750]](#nref-RFC6750)**",
             "explode" : false,
             "schema" : {
-              "pattern" : "^Bearer .*",
-              "type" : "string"
+              "type" : "string",
+              "x-cds-type" : "ExternalRef"
             },
             "style" : "simple"
           }
@@ -317,8 +321,8 @@
           "client_id_issued_at" : {
             "description" : "Time at which the client identifier was issued expressed as seconds since 1970-01-01T00:00:00Z as measured in UTC",
             "example" : 1571808167,
-            "format" : "int32",
-            "type" : "integer"
+            "type" : "integer",
+            "x-cds-type" : "ExternalRef"
           },
           "client_name" : {
             "description" : "Human-readable string name of the software product to be presented to the end-user during authorization",
@@ -333,7 +337,8 @@
           "client_uri" : {
             "description" : "URL string of a web page providing information about the client",
             "example" : "https://www.mockcompany.com.au",
-            "type" : "string"
+            "type" : "string",
+            "x-cds-type" : "URIString"
           },
           "legal_entity_id" : {
             "description" : "A unique identifier string assigned by the CDR Register that identifies the Accredited Data Recipient Legal Entity",
@@ -359,61 +364,71 @@
             "description" : "Array of redirection URI strings for use in redirect-based flows. If used, redirect_uris MUST match or be a subset of the redirect_uris as defined in the SSA",
             "example" : [ "https://www.mockcompany.com.au/redirects/redirect1", "https://www.mockcompany.com.au/redirects/redirect2" ],
             "items" : {
-              "format" : "uri",
-              "type" : "string"
+              "type" : "string",
+              "x-cds-type" : "URIString"
             },
             "type" : "array"
           },
           "sector_identifier_uri" : {
             "description" : "URL string referencing the client sector identifier URI, used as an optional input to the Pairwise Identifier",
             "example" : "https://www.mockcompany.com.au/sector_identifier.json",
-            "type" : "string"
+            "type" : "string",
+            "x-cds-type" : "URIString"
           },
           "logo_uri" : {
             "description" : "URL string that references a logo for the client. If present, the server SHOULD display this image to the end-user during approval",
             "example" : "https://www.mockcompany.com.au/logos/logo1.png",
-            "type" : "string"
+            "type" : "string",
+            "x-cds-type" : "URIString"
           },
           "tos_uri" : {
             "description" : "URL string that points to a human-readable terms of service document for the Software Product",
             "example" : "https://www.mockcompany.com.au/tos.html",
-            "type" : "string"
+            "type" : "string",
+            "x-cds-type" : "URIString"
           },
           "policy_uri" : {
             "description" : "URL string that points to a human-readable policy document for the Software Product",
             "example" : "https://www.mockcompany.com.au/policy.html",
-            "type" : "string"
+            "type" : "string",
+            "x-cds-type" : "URIString"
           },
           "jwks_uri" : {
             "description" : "URL string referencing the client JSON Web Key (JWK) Set **[[RFC7517]](#nref-RFC7517)** document, which contains the client public keys",
             "example" : "https://www.mockcompany.com.au/jwks",
-            "type" : "string"
+            "type" : "string",
+            "x-cds-type" : "URIString"
           },
           "revocation_uri" : {
             "description" : "URI string that references the location of the Software Product consent revocation endpoint",
             "example" : "https://www.mockcompany.com.au/revocation",
-            "type" : "string"
+            "type" : "string",
+            "x-cds-type" : "URIString"
           },
           "recipient_base_uri" : {
             "description" : "Base URI for the Consumer Data Standard Data Recipient endpoints. This should be the base to provide reference to all other Data Recipient Endpoints",
             "example" : "https://www.mockcompany.com.au",
-            "type" : "string"
+            "type" : "string",
+            "x-cds-type" : "URIString"
           },
           "token_endpoint_auth_method" : {
             "description" : "The requested authentication method for the token endpoint",
             "enum" : [ "private_key_jwt" ],
-            "type" : "string"
+            "type" : "string",
+            "x-cds-type" : "Enum"
           },
           "token_endpoint_auth_signing_alg" : {
             "description" : "The algorithm used for signing the JWT",
             "enum" : [ "PS256", "ES256" ],
-            "type" : "string"
+            "type" : "string",
+            "x-cds-type" : "Enum"
           },
           "grant_types" : {
             "description" : "Array of OAuth 2.0 grant type strings that the client can use at the token endpoint",
             "items" : {
               "enum" : [ "client_credentials", "authorization_code", "refresh_token" ],
-              "type" : "string"
+              "type" : "string",
+              "x-cds-type" : "Enum"
             },
             "type" : "array"
           },
@@ -421,29 +436,34 @@
             "description" : "Array of the OAuth 2.0 response type strings that the client can use at the authorization endpoint.<br><br>Response type value `code` is required for Authorization Code Flow. Response type value `code id_token` is required for OIDC Hybrid Flow.",
             "items" : {
               "enum" : [ "code", "code id_token" ],
-              "type" : "string"
+              "type" : "string",
+              "x-cds-type" : "Enum"
             },
             "type" : "array"
           },
           "application_type" : {
             "description" : "Kind of the application. The only supported application type will be `web`",
             "enum" : [ "web" ],
-            "type" : "string"
+            "type" : "string",
+            "x-cds-type" : "Enum"
           },
           "id_token_signed_response_alg" : {
             "description" : "Algorithm with which an id_token is to be signed",
             "enum" : [ "PS256", "ES256" ],
-            "type" : "string"
+            "type" : "string",
+            "x-cds-type" : "Enum"
           },
           "id_token_encrypted_response_alg" : {
             "description" : "JWE `alg` algorithm with which an id_token is to be encrypted",
             "example" : "RSA-OAEP",
-            "type" : "string"
+            "type" : "string",
+            "x-cds-type" : "ExternalRef"
           },
           "id_token_encrypted_response_enc" : {
             "description" : "JWE `enc` algorithm with which an id_token is to be encrypted",
             "example" : "A256GCM",
-            "type" : "string"
+            "type" : "string",
+            "x-cds-type" : "ExternalRef"
           },
           "authorization_signed_response_alg" : {
             "description" : "The JWS `alg` algorithm required for signing authorization responses. If this is specified, the response will be signed using JWS and the configured algorithm. The algorithm “none” is not allowed.<br><br>Required if response_type of “code” is registered by the client.",
@@ -468,7 +488,8 @@
           "request_object_signing_alg" : {
             "description" : "Algorithm which the ADR expects to sign the request object if a request object will be part of the authorization request sent to the Data Holder",
             "enum" : [ "PS256", "ES256" ],
-            "type" : "string"
+            "type" : "string",
+            "x-cds-type" : "Enum"
           },
           "software_statement" : {
             "description" : "The Software Statement Assertion, as defined in CDR standards",
@@ -482,8 +503,10 @@
           },
           "software_roles" : {
             "description" : "String containing a role of the software in the CDR Regime. Initially the only value used with be `data-recipient-software-product`",
+            "enum" : [ "data-recipient-software-product" ],
             "example" : "data-recipient-software-product",
-            "type" : "string"
+            "type" : "string",
+            "x-cds-type" : "Enum"
           },
           "scope" : {
             "description" : "String containing a space-separated list of scope values that the client can use when requesting access tokens.",
@@ -506,11 +529,13 @@
           "error" : {
             "description" : "Predefined error code as described in [section 3.3 OIDC Dynamic Client Registration](https://openid.net/specs/openid-connect-registration-1_0.html)",
             "enum" : [ "invalid_redirect_uri", "invalid_client_metadata", "invalid_software_statement", "unapproved_software_statement" ],
-            "type" : "string"
+            "type" : "string",
+            "x-cds-type" : "Enum"
           },
           "error_description" : {
             "description" : "Additional text description of the error for debugging.",
-            "type" : "string"
+            "type" : "string",
+            "x-cds-type" : "ASCIIString"
           }
         },
         "required" : [ "error" ],
@@ -526,14 +551,14 @@
           "iat" : {
             "description" : "The time at which the request was issued by the Data Recipient  expressed as seconds since 1970-01-01T00:00:00Z as measured in UTC",
             "example" : 1571808167,
-            "format" : "int32",
-            "type" : "integer"
+            "type" : "integer",
+            "x-cds-type" : "ExternalRef"
           },
           "exp" : {
             "description" : "The time at which the request expires expressed as seconds since 1970-01-01T00:00:00Z as measured in UTC",
             "example" : 2147483646,
-            "format" : "int32",
-            "type" : "integer"
+            "type" : "integer",
+            "x-cds-type" : "ExternalRef"
           },
           "jti" : {
             "description" : "Unique identifier for the JWT, used to prevent replay of the token",
@@ -543,7 +568,8 @@
           "aud" : {
             "description" : "'Contains the Data Holder issuer value as described in the OIDC Discovery Document",
             "example" : "https://secure.api.dataholder.com/issuer",
-            "type" : "string"
+            "type" : "string",
+            "x-cds-type" : "URIString"
           }
         },
         "required" : [ "aud", "exp", "iat", "iss", "jti" ],

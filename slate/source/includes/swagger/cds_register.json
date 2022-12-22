@@ -60,7 +60,8 @@
           "required" : true,
           "schema" : {
             "enum" : [ "banking", "energy", "telco", "all" ],
-            "type" : "string"
+            "type" : "string",
+            "x-cds-type" : "Enum"
           },
           "style" : "simple"
         }, {
@@ -70,18 +71,20 @@
           "name" : "Authorization",
           "required" : true,
           "schema" : {
-            "type" : "string"
+            "type" : "string",
+            "x-cds-type" : "ExternalRef"
           },
           "style" : "simple"
         }, {
-          "description" : "The version of the API end point requested by the client. Must be set to a positive integer.",
+          "description" : "The version of the API end point requested by the client. Must be set to a positive integer. For backwards compatiblity defaults to 1 if absent. Note that once version 1 is decommissioned the header will be mandatory for a valid response to be obtained",
           "explode" : false,
           "in" : "header",
           "name" : "x-v",
           "required" : false,
           "schema" : {
-            "default" : "1",
-            "type" : "string"
+            "default" : 1,
+            "type" : "integer",
+            "x-cds-type" : "PositiveInteger"
           },
           "style" : "simple"
         }, {
@@ -91,7 +94,8 @@
           "name" : "x-min-v",
           "required" : false,
           "schema" : {
-            "type" : "string"
+            "type" : "integer",
+            "x-cds-type" : "PositiveInteger"
           },
           "style" : "simple"
         }, {
@@ -101,8 +105,8 @@
           "name" : "updated-since",
           "required" : false,
           "schema" : {
-            "format" : "date-time",
-            "type" : "string"
+            "type" : "string",
+            "x-cds-type" : "DateTimeString"
           },
           "style" : "form"
         }, {
@@ -112,8 +116,9 @@
           "name" : "page",
           "required" : false,
           "schema" : {
-            "format" : "int32",
-            "type" : "integer"
+            "default" : 1,
+            "type" : "integer",
+            "x-cds-type" : "PositiveInteger"
           },
           "style" : "form"
         }, {
@@ -123,8 +128,9 @@
           "name" : "page-size",
           "required" : false,
           "schema" : {
-            "format" : "int32",
-            "type" : "integer"
+            "default" : 25,
+            "type" : "integer",
+            "x-cds-type" : "PositiveInteger"
           },
           "style" : "form"
         } ],
@@ -143,7 +149,8 @@
                 "description" : "The version of the API end point that the CDR Register has responded with.",
                 "explode" : false,
                 "schema" : {
-                  "type" : "string"
+                  "type" : "integer",
+                  "x-cds-type" : "PositiveInteger"
                 },
                 "style" : "simple"
               }
@@ -198,7 +205,8 @@
           "required" : true,
           "schema" : {
             "enum" : [ "banking", "energy", "telco", "all" ],
-            "type" : "string"
+            "type" : "string",
+            "x-cds-type" : "Enum"
           },
           "style" : "simple"
         }, {
@@ -208,7 +216,8 @@
           "name" : "x-v",
           "required" : true,
           "schema" : {
-            "type" : "string"
+            "type" : "integer",
+            "x-cds-type" : "PositiveInteger"
           },
           "style" : "simple"
         }, {
@@ -218,7 +227,8 @@
           "name" : "x-min-v",
           "required" : false,
           "schema" : {
-            "type" : "string"
+            "type" : "integer",
+            "x-cds-type" : "PositiveInteger"
           },
           "style" : "simple"
         }, {
@@ -228,7 +238,8 @@
           "name" : "If-None-Match",
           "required" : false,
           "schema" : {
-            "type" : "string"
+            "type" : "string",
+            "x-cds-type" : "ASCIIString"
           },
           "style" : "simple"
         } ],
@@ -247,7 +258,8 @@
                 "description" : "The version of the API end point that the CDR Register has responded with.",
                 "explode" : false,
                 "schema" : {
-                  "type" : "string"
+                  "type" : "integer",
+                  "x-cds-type" : "PositiveInteger"
                 },
                 "style" : "simple"
               },
@@ -255,7 +267,8 @@
                 "description" : "Entity tag that uniquely represents the requested resource.",
                 "explode" : false,
                 "schema" : {
-                  "type" : "string"
+                  "type" : "string",
+                  "x-cds-type" : "ASCIIString"
                 },
                 "style" : "simple"
               }
@@ -268,7 +281,8 @@
                 "description" : "Entity tag that uniquely represents the requested resource.",
                 "explode" : false,
                 "schema" : {
-                  "type" : "string"
+                  "type" : "string",
+                  "x-cds-type" : "ASCIIString"
                 },
                 "style" : "simple"
               }
@@ -322,18 +336,20 @@
           "required" : true,
           "schema" : {
             "enum" : [ "banking", "energy", "telco", "all" ],
-            "type" : "string"
+            "type" : "string",
+            "x-cds-type" : "Enum"
           },
           "style" : "simple"
         }, {
-          "description" : "The version of the API end point requested by the client. Must be set to a positive integer.",
+          "description" : "The version of the API end point requested by the client. Must be set to a positive integer. For backwards compatiblity defaults to 1 if absent. Note that once version 1 is decommissioned the header will be mandatory for a valid response to be obtained",
           "explode" : false,
           "in" : "header",
           "name" : "x-v",
           "required" : false,
           "schema" : {
-            "default" : "1",
-            "type" : "string"
+            "default" : 1,
+            "type" : "integer",
+            "x-cds-type" : "PositiveInteger"
           },
           "style" : "simple"
         }, {
@@ -343,7 +359,8 @@
           "name" : "x-min-v",
           "required" : false,
           "schema" : {
-            "type" : "string"
+            "type" : "integer",
+            "x-cds-type" : "PositiveInteger"
           },
           "style" : "simple"
         }, {
@@ -373,7 +390,8 @@
           "name" : "Authorization",
           "required" : true,
           "schema" : {
-            "type" : "string"
+            "type" : "string",
+            "x-cds-type" : "ExternalRef"
           },
           "style" : "simple"
         } ],
@@ -392,7 +410,8 @@
                 "description" : "The version of the API end point that the CDR Register has responded with.",
                 "explode" : false,
                 "schema" : {
-                  "type" : "string"
+                  "type" : "integer",
+                  "x-cds-type" : "PositiveInteger"
                 },
                 "style" : "simple"
               }
@@ -477,18 +496,20 @@
           "required" : true,
           "schema" : {
             "enum" : [ "banking", "energy", "telco", "all" ],
-            "type" : "string"
+            "type" : "string",
+            "x-cds-type" : "Enum"
           },
           "style" : "simple"
         }, {
-          "description" : "The version of the API end point requested by the client. Must be set to a positive integer.",
+          "description" : "The version of the API end point requested by the client. Must be set to a positive integer.  For backwards compatiblity defaults to 1 if absent. Note that once version 1 is decommissioned the header will be mandatory for a valid response to be obtained",
           "explode" : false,
           "in" : "header",
           "name" : "x-v",
           "required" : false,
           "schema" : {
-            "default" : "1",
-            "type" : "string"
+            "default" : 1,
+            "type" : "integer",
+            "x-cds-type" : "PositiveInteger"
           },
           "style" : "simple"
         }, {
@@ -498,7 +519,8 @@
           "name" : "x-min-v",
           "required" : false,
           "schema" : {
-            "type" : "string"
+            "type" : "integer",
+            "x-cds-type" : "PositiveInteger"
           },
           "style" : "simple"
         }, {
@@ -508,7 +530,8 @@
           "name" : "If-None-Match",
           "required" : false,
           "schema" : {
-            "type" : "string"
+            "type" : "string",
+            "x-cds-type" : "ASCIIString"
           },
           "style" : "simple"
         } ],
@@ -527,7 +550,8 @@
                 "description" : "The version of the API end point that the CDR Register has responded with.",
                 "explode" : false,
                 "schema" : {
-                  "type" : "string"
+                  "type" : "integer",
+                  "x-cds-type" : "PositiveInteger"
                 },
                 "style" : "simple"
               },
@@ -535,7 +559,8 @@
                 "description" : "Entity tag that uniquely represents the requested resource.",
                 "explode" : false,
                 "schema" : {
-                  "type" : "string"
+                  "type" : "string",
+                  "x-cds-type" : "ASCIIString"
                 },
                 "style" : "simple"
               }
@@ -548,7 +573,8 @@
                 "description" : "Entity tag that uniquely represents the requested resource.",
                 "explode" : false,
                 "schema" : {
-                  "type" : "string"
+                  "type" : "string",
+                  "x-cds-type" : "ASCIIString"
                 },
                 "style" : "simple"
               }
@@ -592,18 +618,20 @@
           "required" : true,
           "schema" : {
             "enum" : [ "banking", "energy", "telco", "all" ],
-            "type" : "string"
+            "type" : "string",
+            "x-cds-type" : "Enum"
           },
           "style" : "simple"
         }, {
-          "description" : "The version of the API end point requested by the client. Must be set to a positive integer.",
+          "description" : "The version of the API end point requested by the client. Must be set to a positive integer.  For backwards compatiblity defaults to 1 if absent. Note that once version 1 is decommissioned the header will be mandatory for a valid response to be obtained",
           "explode" : false,
           "in" : "header",
           "name" : "x-v",
           "required" : false,
           "schema" : {
-            "default" : "1",
-            "type" : "string"
+            "default" : 1,
+            "type" : "integer",
+            "x-cds-type" : "PositiveInteger"
           },
           "style" : "simple"
         }, {
@@ -613,7 +641,8 @@
           "name" : "x-min-v",
           "required" : false,
           "schema" : {
-            "type" : "string"
+            "type" : "integer",
+            "x-cds-type" : "PositiveInteger"
           },
           "style" : "simple"
         }, {
@@ -623,7 +652,8 @@
           "name" : "If-None-Match",
           "required" : false,
           "schema" : {
-            "type" : "string"
+            "type" : "string",
+            "x-cds-type" : "ASCIIString"
           },
           "style" : "simple"
         } ],
@@ -642,7 +672,8 @@
                 "description" : "The version of the API end point that the CDR Register has responded with.",
                 "explode" : false,
                 "schema" : {
-                  "type" : "string"
+                  "type" : "integer",
+                  "x-cds-type" : "PositiveInteger"
                 },
                 "style" : "simple"
               },
@@ -650,7 +681,8 @@
                 "description" : "Entity tag that uniquely represents the requested resource.",
                 "explode" : false,
                 "schema" : {
-                  "type" : "string"
+                  "type" : "string",
+                  "x-cds-type" : "ASCIIString"
                 },
                 "style" : "simple"
               }
@@ -663,7 +695,8 @@
                 "description" : "Entity tag that uniquely represents the requested resource.",
                 "explode" : false,
                 "schema" : {
-                  "type" : "string"
+                  "type" : "string",
+                  "x-cds-type" : "ASCIIString"
                 },
                 "style" : "simple"
               }
@@ -707,18 +740,20 @@
           "required" : true,
           "schema" : {
             "enum" : [ "banking", "energy", "telco", "all" ],
-            "type" : "string"
+            "type" : "string",
+            "x-cds-type" : "Enum"
           },
           "style" : "simple"
         }, {
-          "description" : "The version of the API end point requested by the client. Must be set to a positive integer.",
+          "description" : "The version of the API end point requested by the client. Must be set to a positive integer.  For backwards compatiblity defaults to 1 if absent. Note that once version 1 is decommissioned the header will be mandatory for a valid response to be obtained",
           "explode" : false,
           "in" : "header",
           "name" : "x-v",
           "required" : false,
           "schema" : {
-            "default" : "1",
-            "type" : "string"
+            "default" : 1,
+            "type" : "integer",
+            "x-cds-type" : "PositiveInteger"
           },
           "style" : "simple"
         }, {
@@ -728,7 +763,8 @@
           "name" : "x-min-v",
           "required" : false,
           "schema" : {
-            "type" : "string"
+            "type" : "integer",
+            "x-cds-type" : "PositiveInteger"
           },
           "style" : "simple"
         }, {
@@ -738,7 +774,8 @@
           "name" : "If-None-Match",
           "required" : false,
           "schema" : {
-            "type" : "string"
+            "type" : "string",
+            "x-cds-type" : "ASCIIString"
           },
           "style" : "simple"
         } ],
@@ -757,7 +794,8 @@
                 "description" : "The version of the API end point that the CDR Register has responded with.",
                 "explode" : false,
                 "schema" : {
-                  "type" : "string"
+                  "type" : "integer",
+                  "x-cds-type" : "PositiveInteger"
                 },
                 "style" : "simple"
               },
@@ -765,7 +803,8 @@
                 "description" : "Entity tag that uniquely represents the requested resource.",
                 "explode" : false,
                 "schema" : {
-                  "type" : "string"
+                  "type" : "string",
+                  "x-cds-type" : "ASCIIString"
                 },
                 "style" : "simple"
               }
@@ -778,7 +817,8 @@
                 "description" : "Entity tag that uniquely represents the requested resource.",
                 "explode" : false,
                 "schema" : {
-                  "type" : "string"
+                  "type" : "string",
+                  "x-cds-type" : "ASCIIString"
                 },
                 "style" : "simple"
               }
@@ -822,18 +862,20 @@
           "required" : true,
           "schema" : {
             "enum" : [ "banking", "energy", "telco", "all" ],
-            "type" : "string"
+            "type" : "string",
+            "x-cds-type" : "Enum"
           },
           "style" : "simple"
         }, {
-          "description" : "The version of the API end point requested by the client. Must be set to a positive integer.",
+          "description" : "The version of the API end point requested by the client. Must be set to a positive integer.  For backwards compatiblity defaults to 2 if absent. Note that once version 2 is decommissioned the header will be mandatory for a valid response to be obtained",
           "explode" : false,
           "in" : "header",
           "name" : "x-v",
           "required" : false,
           "schema" : {
-            "default" : "1",
-            "type" : "string"
+            "default" : 2,
+            "type" : "integer",
+            "x-cds-type" : "PositiveInteger"
           },
           "style" : "simple"
         }, {
@@ -843,7 +885,8 @@
           "name" : "x-min-v",
           "required" : false,
           "schema" : {
-            "type" : "string"
+            "type" : "integer",
+            "x-cds-type" : "PositiveInteger"
           },
           "style" : "simple"
         }, {
@@ -853,7 +896,8 @@
           "name" : "If-None-Match",
           "required" : false,
           "schema" : {
-            "type" : "string"
+            "type" : "string",
+            "x-cds-type" : "ASCIIString"
           },
           "style" : "simple"
         } ],
@@ -872,7 +916,8 @@
                 "description" : "The version of the API end point that the CDR Register has responded with.",
                 "explode" : false,
                 "schema" : {
-                  "type" : "string"
+                  "type" : "integer",
+                  "x-cds-type" : "PositiveInteger"
                 },
                 "style" : "simple"
               },
@@ -880,7 +925,8 @@
                 "description" : "Entity tag that uniquely represents the requested resource.",
                 "explode" : false,
                 "schema" : {
-                  "type" : "string"
+                  "type" : "string",
+                  "x-cds-type" : "ASCIIString"
                 },
                 "style" : "simple"
               }
@@ -893,7 +939,8 @@
                 "description" : "Entity tag that uniquely represents the requested resource.",
                 "explode" : false,
                 "schema" : {
-                  "type" : "string"
+                  "type" : "string",
+                  "x-cds-type" : "ASCIIString"
                 },
                 "style" : "simple"
               }
@@ -935,7 +982,8 @@
         "name" : "Authorization",
         "required" : true,
         "schema" : {
-          "type" : "string"
+          "type" : "string",
+          "x-cds-type" : "ExternalRef"
         },
         "style" : "simple"
       },
@@ -946,7 +994,8 @@
         "name" : "x-v",
         "required" : false,
         "schema" : {
-          "type" : "string"
+          "type" : "integer",
+          "x-cds-type" : "PositiveInteger"
         },
         "style" : "simple"
       },
@@ -958,7 +1007,8 @@
         "required" : true,
         "schema" : {
           "enum" : [ "banking", "energy", "telco", "all" ],
-          "type" : "string"
+          "type" : "string",
+          "x-cds-type" : "Enum"
         },
         "style" : "simple"
       },
@@ -969,7 +1019,8 @@
         "name" : "x-min-v",
         "required" : false,
         "schema" : {
-          "type" : "string"
+          "type" : "integer",
+          "x-cds-type" : "PositiveInteger"
         },
         "style" : "simple"
       },
@@ -980,7 +1031,8 @@
         "name" : "If-None-Match",
         "required" : false,
         "schema" : {
-          "type" : "string"
+          "type" : "string",
+          "x-cds-type" : "ASCIIString"
         },
         "style" : "simple"
       },
@@ -991,8 +1043,8 @@
         "name" : "updated-since",
         "required" : false,
         "schema" : {
-          "format" : "date-time",
-          "type" : "string"
+          "type" : "string",
+          "x-cds-type" : "DateTimeString"
         },
         "style" : "form"
       },
@@ -1003,8 +1055,9 @@
         "name" : "page",
         "required" : false,
         "schema" : {
-          "format" : "int32",
-          "type" : "integer"
+          "default" : 1,
+          "type" : "integer",
+          "x-cds-type" : "PositiveInteger"
         },
         "style" : "form"
       },
@@ -1015,8 +1068,9 @@
         "name" : "page-size",
         "required" : false,
         "schema" : {
-          "format" : "int32",
-          "type" : "integer"
+          "default" : 25,
+          "type" : "integer",
+          "x-cds-type" : "PositiveInteger"
         },
         "style" : "form"
       }
@@ -1049,7 +1103,8 @@
             "description" : "Entity tag that uniquely represents the requested resource.",
             "explode" : false,
             "schema" : {
-              "type" : "string"
+              "type" : "string",
+              "x-cds-type" : "ASCIIString"
             },
             "style" : "simple"
           }
@@ -1072,15 +1127,18 @@
         "properties" : {
           "issuer" : {
             "description" : "URL using the https scheme with no query or fragment component that the CDR Register asserts as its Issuer Identifier",
-            "type" : "string"
+            "type" : "string",
+            "x-cds-type" : "URIString"
           },
           "jwks_uri" : {
             "description" : "URL of the CDR Register's JSON Web Key Set **[[JWK]](#nref-JWK)** document. This contains the signing key(s) used to validate access tokens issued from the CDR Register. Note that this differs from the JWKS endpoint used to validate SSAs and CDR Register client authentication",
-            "type" : "string"
+            "type" : "string",
+            "x-cds-type" : "URIString"
           },
           "token_endpoint" : {
             "description" : "URL of the CDR Register's OAuth 2.0 Token Endpoint",
-            "type" : "string"
+            "type" : "string",
+            "x-cds-type" : "URIString"
           },
           "claims_supported" : {
             "description" : "JSON array containing a list of the Claim Names of the Claims that the CDR Register supplies values for",
@@ -1140,7 +1198,8 @@
           },
           "tls_client_certificate_bound_access_tokens" : {
             "description" : "Boolean value indicating server support for mutual TLS client certificate bound access tokens",
-            "type" : "boolean"
+            "type" : "boolean",
+            "x-cds-type" : "Boolean"
           },
           "token_endpoint_auth_signing_alg_values_supported" : {
             "description" : "JSON array containing a list of the JWS signing algorithms (alg values) supported by the token endpoint for the signature on the JWT **[[JWT]](#nref-JWT)** used to authenticate the client at the token endpoint for the \"private_key_jwt\" authentication method",
@@ -1172,30 +1231,36 @@
         "properties" : {
           "alg" : {
             "description" : "The \"alg\" (algorithm) parameter identifies the algorithm intended for use with the key",
-            "type" : "string"
+            "type" : "string",
+            "x-cds-type" : "ExternalRef"
           },
           "e" : {
             "description" : "The \"e\" RSA public exponent parameter",
-            "type" : "string"
+            "type" : "string",
+            "x-cds-type" : "ExternalRef"
           },
           "key_ops" : {
             "description" : "The \"key_ops\" (key operations) parameter identifies the operation(s) for which the key is intended to be used",
             "items" : {
-              "type" : "string"
+              "type" : "string",
+              "x-cds-type" : "ExternalRef"
             },
             "type" : "array"
           },
           "kid" : {
             "description" : "The \"kid\" (key ID) parameter is partially used to match a specific key. Note the \"kid\" parameter is not guaranteed unique and additional parameters should be used to progressively to identify a key within a set",
-            "type" : "string"
+            "type" : "string",
+            "x-cds-type" : "ExternalRef"
           },
           "kty" : {
             "description" : "The \"kty\" (key type) parameter identifies the cryptographic algorithm family used with the key",
-            "type" : "string"
+            "type" : "string",
+            "x-cds-type" : "ExternalRef"
           },
           "n" : {
             "description" : "The \"n\" RSA public modulus parameter",
-            "type" : "string"
+            "type" : "string",
+            "x-cds-type" : "ExternalRef"
           }
         },
         "required" : [ "alg", "e", "key_ops", "kid", "kty", "n" ],
@@ -1238,7 +1303,8 @@
             "description" : "The industries the Data Holder Brand belongs to",
             "items" : {
               "enum" : [ "banking", "energy", "telco" ],
-              "type" : "string"
+              "type" : "string",
+              "x-cds-type" : "Enum"
             },
             "type" : "array",
             "uniqueItems" : true
@@ -1254,7 +1320,8 @@
           },
           "status" : {
             "enum" : [ "ACTIVE", "INACTIVE", "REMOVED" ],
-            "type" : "string"
+            "type" : "string",
+            "x-cds-type" : "Enum"
           },
           "endpointDetail" : {
             "$ref" : "#/components/schemas/RegisterDataHolderBrandServiceEndpoint"
@@ -1268,7 +1335,6 @@
           },
           "lastUpdated" : {
             "description" : "The date/time that the Data Holder Brand data was last updated in the Register",
-            "format" : "date-time",
             "type" : "string",
             "x-cds-type" : "DateTimeString"
           }
@@ -1331,14 +1397,14 @@
             "description" : "The industries the Data Holder Brand belongs to",
             "items" : {
               "enum" : [ "banking", "energy", "telco" ],
-              "type" : "string"
+              "type" : "string",
+              "x-cds-type" : "Enum"
             },
             "type" : "array",
             "uniqueItems" : true
           },
           "lastUpdated" : {
             "description" : "The date/time that the Data Holder Brand data was last updated in the Register",
-            "format" : "date-time",
             "type" : "string",
             "x-cds-type" : "DateTimeString"
           },
@@ -1391,7 +1457,8 @@
           "status" : {
             "description" : "Data Holder status in the CDR Register",
             "enum" : [ "ACTIVE", "REMOVED" ],
-            "type" : "string"
+            "type" : "string",
+            "x-cds-type" : "Enum"
           }
         },
         "required" : [ "legalEntityId", "status" ],
@@ -1427,7 +1494,8 @@
           "status" : {
             "description" : "Software product status in the CDR Register",
             "enum" : [ "ACTIVE", "INACTIVE", "REMOVED" ],
-            "type" : "string"
+            "type" : "string",
+            "x-cds-type" : "Enum"
           }
         },
         "required" : [ "softwareProductId", "status" ],
@@ -1463,7 +1531,8 @@
           "status" : {
             "description" : "Data Recipient status in the CDR Register",
             "enum" : [ "ACTIVE", "SUSPENDED", "REVOKED", "SURRENDERED" ],
-            "type" : "string"
+            "type" : "string",
+            "x-cds-type" : "Enum"
           }
         },
         "required" : [ "legalEntityId", "status" ],
@@ -1510,7 +1579,8 @@
           "accreditationLevel" : {
             "description" : "Accreditation level of the Data Recipient in the CDR Register",
             "enum" : [ "UNRESTRICTED", "SPONSORED" ],
-            "type" : "string"
+            "type" : "string",
+            "x-cds-type" : "Enum"
           },
           "logoUri" : {
             "description" : "Legal Entity logo URI",
@@ -1528,11 +1598,11 @@
           "status" : {
             "description" : "Data Recipient status in the CDR Register",
             "enum" : [ "ACTIVE", "SUSPENDED", "REVOKED", "SURRENDERED" ],
-            "type" : "string"
+            "type" : "string",
+            "x-cds-type" : "Enum"
           },
           "lastUpdated" : {
             "description" : "The date/time that the Legal Entity was last updated in the CDR Register",
-            "format" : "date-time",
             "type" : "string",
             "x-cds-type" : "DateTimeString"
           }
@@ -1569,7 +1639,8 @@
           "status" : {
             "description" : "Data Recipient Brand status in the CDR Register",
             "enum" : [ "ACTIVE", "INACTIVE", "REMOVED" ],
-            "type" : "string"
+            "type" : "string",
+            "x-cds-type" : "Enum"
           }
         },
         "required" : [ "brandName", "dataRecipientBrandId", "logoUri", "status" ],
@@ -1602,7 +1673,8 @@
           "status" : {
             "description" : "Software Product status in the CDR Register",
             "enum" : [ "ACTIVE", "INACTIVE", "REMOVED" ],
-            "type" : "string"
+            "type" : "string",
+            "x-cds-type" : "Enum"
           }
         },
         "required" : [ "logoUri", "softwareProductDescription", "softwareProductId", "softwareProductName", "status" ],
@@ -1633,7 +1705,6 @@
           },
           "registrationDate" : {
             "description" : "Date of registration (if the company is registered outside Australia)",
-            "format" : "date",
             "type" : "string",
             "x-cds-type" : "DateString"
           },
@@ -1660,16 +1731,19 @@
           "anzsicDivision" : {
             "description" : "ANZSIC division of the organisation. **[[ANZSIC-2006]](#iref-ANZSIC-2006)**",
             "maxLength" : 100,
-            "type" : "string"
+            "type" : "string",
+            "x-cds-type" : "ExternalRef"
           },
           "organisationType" : {
             "description" : "Legal organisation type",
             "enum" : [ "SOLE_TRADER", "COMPANY", "PARTNERSHIP", "TRUST", "GOVERNMENT_ENTITY", "OTHER" ],
-            "type" : "string"
+            "type" : "string",
+            "x-cds-type" : "Enum"
           },
           "status" : {
             "enum" : [ "ACTIVE", "REMOVED" ],
-            "type" : "string"
+            "type" : "string",
+            "x-cds-type" : "Enum"
           }
         },
         "required" : [ "legalEntityId", "legalEntityName", "logoUri", "status" ],
@@ -1722,7 +1796,8 @@
           "registerUType" : {
             "description" : "The type of authentication and authorisation mechanism in use",
             "enum" : [ "SIGNED-JWT" ],
-            "type" : "string"
+            "type" : "string",
+            "x-cds-type" : "Enum"
           },
           "jwksEndpoint" : {
             "description" : "JWKS endpoint used for authentication by the Data Holder with the Data Recipient",
@@ -1738,23 +1813,28 @@
         "properties" : {
           "first" : {
             "description" : "URI to the first page of this set. Mandatory if this response is not the first page",
-            "type" : "string"
+            "type" : "string",
+            "x-cds-type" : "URIString"
           },
           "last" : {
             "description" : "URI to the last page of this set. Mandatory if this response is not the last page",
-            "type" : "string"
+            "type" : "string",
+            "x-cds-type" : "URIString"
           },
           "next" : {
             "description" : "URI to the next page of this set. Mandatory if this response is not the last page",
-            "type" : "string"
+            "type" : "string",
+            "x-cds-type" : "URIString"
           },
           "prev" : {
             "description" : "URI to the previous page of this set. Mandatory if this response is not the first page",
-            "type" : "string"
+            "type" : "string",
+            "x-cds-type" : "URIString"
           },
           "self" : {
             "description" : "Fully qualified link to this API call",
-            "type" : "string"
+            "type" : "string",
+            "x-cds-type" : "URIString"
           }
         },
         "required" : [ "self" ],
@@ -1764,13 +1844,13 @@
         "properties" : {
           "totalPages" : {
             "description" : "The total number of pages in the full set",
-            "format" : "int32",
-            "type" : "integer"
+            "type" : "integer",
+            "x-cds-type" : "NaturalNumber"
           },
           "totalRecords" : {
             "description" : "The total number of records in the full set",
-            "format" : "int32",
-            "type" : "integer"
+            "type" : "integer",
+            "x-cds-type" : "NaturalNumber"
           }
         },
         "required" : [ "totalPages", "totalRecords" ],
@@ -1780,7 +1860,8 @@
         "properties" : {
           "self" : {
             "description" : "Fully qualified link to this API call",
-            "type" : "string"
+            "type" : "string",
+            "x-cds-type" : "URIString"
           }
         },
         "required" : [ "self" ],

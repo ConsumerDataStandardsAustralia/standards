@@ -7707,7 +7707,8 @@ Host: cdr.register
 <tr><td><a href='./includes/swagger/cds_dcr.json'>DCR OpenAPI Specification (JSON)</a></td></tr>
 <tr><td><a href='./includes/swagger/cds_dcr.yaml'>DCR OpenAPI Specification (YAML)</a></td></tr>
 </table></p>
-
+<pre class="highlight diff tab-diff"><code>Updated DCR field types to use Common Field Types
+</code></pre>
 <h2 id='register-data-recipient-oauth-client'>Register Data Recipient oAuth Client</h2>
 
 <p><a id="opIdPostDataRecipientRegistration"></a></p>
@@ -8472,7 +8473,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>client_id_issued_at</td>
-<td>integer(int32)</td>
+<td><a href="#common-field-types">ExternalRef</a></td>
 <td>optional</td>
 <td>Time at which the client identifier was issued expressed as seconds since 1970-01-01T00:00:00Z as measured in UTC</td>
 </tr>
@@ -8490,7 +8491,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>client_uri</td>
-<td>string</td>
+<td><a href="#common-field-types">URIString</a></td>
 <td>mandatory</td>
 <td>URL string of a web page providing information about the client</td>
 </tr>
@@ -8526,55 +8527,55 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>sector_identifier_uri</td>
-<td>string</td>
+<td><a href="#common-field-types">URIString</a></td>
 <td>optional</td>
 <td>URL string referencing the client sector identifier URI, used as an optional input to the Pairwise Identifier</td>
 </tr>
 <tr>
 <td>logo_uri</td>
-<td>string</td>
+<td><a href="#common-field-types">URIString</a></td>
 <td>mandatory</td>
 <td>URL string that references a logo for the client. If present, the server SHOULD display this image to the end-user during approval</td>
 </tr>
 <tr>
 <td>tos_uri</td>
-<td>string</td>
+<td><a href="#common-field-types">URIString</a></td>
 <td>optional</td>
 <td>URL string that points to a human-readable terms of service document for the Software Product</td>
 </tr>
 <tr>
 <td>policy_uri</td>
-<td>string</td>
+<td><a href="#common-field-types">URIString</a></td>
 <td>optional</td>
 <td>URL string that points to a human-readable policy document for the Software Product</td>
 </tr>
 <tr>
 <td>jwks_uri</td>
-<td>string</td>
+<td><a href="#common-field-types">URIString</a></td>
 <td>mandatory</td>
 <td>URL string referencing the client JSON Web Key (JWK) Set <strong><a href="#nref-RFC7517">[RFC7517]</a></strong> document, which contains the client public keys</td>
 </tr>
 <tr>
 <td>revocation_uri</td>
-<td>string</td>
+<td><a href="#common-field-types">URIString</a></td>
 <td>optional</td>
 <td>URI string that references the location of the Software Product consent revocation endpoint</td>
 </tr>
 <tr>
 <td>recipient_base_uri</td>
-<td>string</td>
+<td><a href="#common-field-types">URIString</a></td>
 <td>optional</td>
 <td>Base URI for the Consumer Data Standard Data Recipient endpoints. This should be the base to provide reference to all other Data Recipient Endpoints</td>
 </tr>
 <tr>
 <td>token_endpoint_auth_method</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>The requested authentication method for the token endpoint</td>
 </tr>
 <tr>
 <td>token_endpoint_auth_signing_alg</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>The algorithm used for signing the JWT</td>
 </tr>
@@ -8592,25 +8593,25 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>application_type</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>optional</td>
 <td>Kind of the application. The only supported application type will be <code>web</code></td>
 </tr>
 <tr>
 <td>id_token_signed_response_alg</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>Algorithm with which an id_token is to be signed</td>
 </tr>
 <tr>
 <td>id_token_encrypted_response_alg</td>
-<td>string</td>
+<td><a href="#common-field-types">ExternalRef</a></td>
 <td>mandatory</td>
 <td>JWE <code>alg</code> algorithm with which an id_token is to be encrypted</td>
 </tr>
 <tr>
 <td>id_token_encrypted_response_enc</td>
-<td>string</td>
+<td><a href="#common-field-types">ExternalRef</a></td>
 <td>mandatory</td>
 <td>JWE <code>enc</code> algorithm with which an id_token is to be encrypted</td>
 </tr>
@@ -8634,7 +8635,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>request_object_signing_alg</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>Algorithm which the ADR expects to sign the request object if a request object will be part of the authorization request sent to the Data Holder</td>
 </tr>
@@ -8652,7 +8653,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>software_roles</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>optional</td>
 <td>String containing a role of the software in the CDR Regime. Initially the only value used with be <code>data-recipient-software-product</code></td>
 </tr>
@@ -8746,6 +8747,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>request_object_signing_alg</td>
 <td>ES256</td>
 </tr>
+<tr>
+<td>software_roles</td>
+<td>data-recipient-software-product</td>
+</tr>
 </tbody></table></p>
 
 <h3 class="schema-toc" id="tocSclientregistration">ClientRegistration</h3>
@@ -8825,13 +8830,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>» iat</td>
-<td>integer(int32)</td>
+<td><a href="#common-field-types">ExternalRef</a></td>
 <td>mandatory</td>
 <td>The time at which the request was issued by the Data Recipient  expressed as seconds since 1970-01-01T00:00:00Z as measured in UTC</td>
 </tr>
 <tr>
 <td>» exp</td>
-<td>integer(int32)</td>
+<td><a href="#common-field-types">ExternalRef</a></td>
 <td>mandatory</td>
 <td>The time at which the request expires expressed as seconds since 1970-01-01T00:00:00Z as measured in UTC</td>
 </tr>
@@ -8843,7 +8848,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>» aud</td>
-<td>string</td>
+<td><a href="#common-field-types">URIString</a></td>
 <td>mandatory</td>
 <td>&#39;Contains the Data Holder issuer value as described in the OIDC Discovery Document</td>
 </tr>
@@ -8887,13 +8892,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 </thead><tbody>
 <tr>
 <td>error</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>Predefined error code as described in <a href="https://openid.net/specs/openid-connect-registration-1_0.html">section 3.3 OIDC Dynamic Client Registration</a></td>
 </tr>
 <tr>
 <td>error_description</td>
-<td>string</td>
+<td><a href="#common-field-types">ASCIIString</a></td>
 <td>optional</td>
 <td>Additional text description of the error for debugging.</td>
 </tr>
@@ -8925,7 +8930,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h1 id='register-apis'>Register APIs</h1>
 <p>This following provides an overview of the Register APIs for Data Holders and Data Recipients to collect participant metadata exclusively for the banking sector.
 These endpoints are exposed by the Register and consumed by Data Holders and Data Recipients.</p>
+<pre class="highlight diff tab-diff"><code>Updated Register API field types to use Common Field Types
 
+Modified the x-v request header descriptions that are optional
+to specify the default version that will be assumed if the header
+is absent
+</code></pre>
 <aside class="warning">
   These endpoints are not implemented by Data Holders and Data Recipients. They are hosted by the Register for consumption by participants.
   Data Holders and Data Recipient Software Products are required to call these endpoints to obtain metadata that enables connection and registration between participants as well as obtaining the status of participants in the CDR.
@@ -9252,13 +9262,13 @@ This operation does not require authentication
 Accept: application/json
 Authorization: string
 x-v: 1
-x-min-v: string
+x-min-v: 0
 
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
   <span class="s1">'Authorization'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'1'</span><span class="p">,</span>
-  <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span>
+  <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'0'</span>
 
 <span class="p">};</span>
 
@@ -9322,35 +9332,35 @@ x-min-v: string
 <tr>
 <td>x-v</td>
 <td>header</td>
-<td>string</td>
+<td>integer</td>
 <td>optional</td>
-<td>The version of the API end point requested by the client. Must be set to a positive integer.</td>
+<td>The version of the API end point requested by the client. Must be set to a positive integer. For backwards compatiblity defaults to 1 if absent. Note that once version 1 is decommissioned the header will be mandatory for a valid response to be obtained</td>
 </tr>
 <tr>
 <td>x-min-v</td>
 <td>header</td>
-<td>string</td>
+<td>integer</td>
 <td>optional</td>
 <td>The <a href="https://consumerdatastandardsaustralia.github.io/standards/#http-headers">minimum version</a> of the API end point requested by the client. Must be set to a positive integer if provided.</td>
 </tr>
 <tr>
 <td>updated-since</td>
 <td>query</td>
-<td>string(date-time)</td>
+<td>string</td>
 <td>optional</td>
 <td>query filter returns results updated since the specified date-time</td>
 </tr>
 <tr>
 <td>page</td>
 <td>query</td>
-<td>integer(int32)</td>
+<td>integer</td>
 <td>optional</td>
 <td>the page number to return</td>
 </tr>
 <tr>
 <td>page-size</td>
 <td>query</td>
-<td>integer(int32)</td>
+<td>integer</td>
 <td>optional</td>
 <td>the number of records to return per page</td>
 </tr>
@@ -9402,7 +9412,7 @@ x-min-v: string
         </span><span class="s2">"legalEntityName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"logoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"registrationNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"registrationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"registrationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"registeredCountry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"abn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"acn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -9426,7 +9436,7 @@ x-min-v: string
           </span><span class="s2">"jwksEndpoint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"lastUpdated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="w">
+      </span><span class="s2">"lastUpdated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -9493,7 +9503,7 @@ x-min-v: string
 <tr>
 <td>200</td>
 <td>x-v</td>
-<td>string</td>
+<td>integer</td>
 <td></td>
 <td>The version of the API end point that the CDR Register has responded with.</td>
 </tr>
@@ -9515,14 +9525,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 <pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://&lt;register-base-url&gt;/cdr-register/v1/{industry}/data-holders/brands/summary</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 
 Accept: application/json
-x-v: string
-x-min-v: string
+x-v: 0
+x-min-v: 0
 If-None-Match: string
 
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
-  <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'0'</span><span class="p">,</span>
+  <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'0'</span><span class="p">,</span>
   <span class="s1">'If-None-Match'</span><span class="p">:</span><span class="s1">'string'</span>
 
 <span class="p">};</span>
@@ -9578,14 +9588,14 @@ If-None-Match: string
 <tr>
 <td>x-v</td>
 <td>header</td>
-<td>string</td>
+<td>integer</td>
 <td>mandatory</td>
 <td>The version of the API end point requested by the client. Must be set to a positive integer.</td>
 </tr>
 <tr>
 <td>x-min-v</td>
 <td>header</td>
-<td>string</td>
+<td>integer</td>
 <td>optional</td>
 <td>The <a href="https://consumerdatastandardsaustralia.github.io/standards/#http-headers">minimum version</a> of the API end point requested by the client. Must be set to a positive integer if provided.</td>
 </tr>
@@ -9641,7 +9651,7 @@ If-None-Match: string
       </span><span class="s2">"industries"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="s2">"banking"</span><span class="w">
       </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"lastUpdated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"lastUpdated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"abn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"acn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"arbn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
@@ -9710,7 +9720,7 @@ If-None-Match: string
 <tr>
 <td>200</td>
 <td>x-v</td>
-<td>string</td>
+<td>integer</td>
 <td></td>
 <td>The version of the API end point that the CDR Register has responded with.</td>
 </tr>
@@ -9746,13 +9756,13 @@ This operation does not require authentication
 
 Accept: application/json
 x-v: 1
-x-min-v: string
+x-min-v: 0
 Authorization: string
 
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
   <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'1'</span><span class="p">,</span>
-  <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'0'</span><span class="p">,</span>
   <span class="s1">'Authorization'</span><span class="p">:</span><span class="s1">'string'</span>
 
 <span class="p">};</span>
@@ -9810,14 +9820,14 @@ Authorization: string
 <tr>
 <td>x-v</td>
 <td>header</td>
-<td>string</td>
+<td>integer</td>
 <td>optional</td>
-<td>The version of the API end point requested by the client. Must be set to a positive integer.</td>
+<td>The version of the API end point requested by the client. Must be set to a positive integer. For backwards compatiblity defaults to 1 if absent. Note that once version 1 is decommissioned the header will be mandatory for a valid response to be obtained</td>
 </tr>
 <tr>
 <td>x-min-v</td>
 <td>header</td>
-<td>string</td>
+<td>integer</td>
 <td>optional</td>
 <td>The <a href="https://consumerdatastandardsaustralia.github.io/standards/#http-headers">minimum version</a> of the API end point requested by the client. Must be set to a positive integer if provided.</td>
 </tr>
@@ -9947,7 +9957,7 @@ Authorization: string
 <tr>
 <td>200</td>
 <td>x-v</td>
-<td>string</td>
+<td>integer</td>
 <td></td>
 <td>The version of the API end point that the CDR Register has responded with.</td>
 </tr>
@@ -9970,13 +9980,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 Accept: application/json
 x-v: 1
-x-min-v: string
+x-min-v: 0
 If-None-Match: string
 
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
   <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'1'</span><span class="p">,</span>
-  <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'0'</span><span class="p">,</span>
   <span class="s1">'If-None-Match'</span><span class="p">:</span><span class="s1">'string'</span>
 
 <span class="p">};</span>
@@ -10032,14 +10042,14 @@ If-None-Match: string
 <tr>
 <td>x-v</td>
 <td>header</td>
-<td>string</td>
+<td>integer</td>
 <td>optional</td>
-<td>The version of the API end point requested by the client. Must be set to a positive integer.</td>
+<td>The version of the API end point requested by the client. Must be set to a positive integer.  For backwards compatiblity defaults to 1 if absent. Note that once version 1 is decommissioned the header will be mandatory for a valid response to be obtained</td>
 </tr>
 <tr>
 <td>x-min-v</td>
 <td>header</td>
-<td>string</td>
+<td>integer</td>
 <td>optional</td>
 <td>The <a href="https://consumerdatastandardsaustralia.github.io/standards/#http-headers">minimum version</a> of the API end point requested by the client. Must be set to a positive integer if provided.</td>
 </tr>
@@ -10148,7 +10158,7 @@ If-None-Match: string
 <tr>
 <td>200</td>
 <td>x-v</td>
-<td>string</td>
+<td>integer</td>
 <td></td>
 <td>The version of the API end point that the CDR Register has responded with.</td>
 </tr>
@@ -10184,13 +10194,13 @@ This operation does not require authentication
 
 Accept: application/json
 x-v: 1
-x-min-v: string
+x-min-v: 0
 If-None-Match: string
 
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
   <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'1'</span><span class="p">,</span>
-  <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'0'</span><span class="p">,</span>
   <span class="s1">'If-None-Match'</span><span class="p">:</span><span class="s1">'string'</span>
 
 <span class="p">};</span>
@@ -10248,14 +10258,14 @@ If-None-Match: string
 <tr>
 <td>x-v</td>
 <td>header</td>
-<td>string</td>
+<td>integer</td>
 <td>optional</td>
-<td>The version of the API end point requested by the client. Must be set to a positive integer.</td>
+<td>The version of the API end point requested by the client. Must be set to a positive integer.  For backwards compatiblity defaults to 1 if absent. Note that once version 1 is decommissioned the header will be mandatory for a valid response to be obtained</td>
 </tr>
 <tr>
 <td>x-min-v</td>
 <td>header</td>
-<td>string</td>
+<td>integer</td>
 <td>optional</td>
 <td>The <a href="https://consumerdatastandardsaustralia.github.io/standards/#http-headers">minimum version</a> of the API end point requested by the client. Must be set to a positive integer if provided.</td>
 </tr>
@@ -10364,7 +10374,7 @@ If-None-Match: string
 <tr>
 <td>200</td>
 <td>x-v</td>
-<td>string</td>
+<td>integer</td>
 <td></td>
 <td>The version of the API end point that the CDR Register has responded with.</td>
 </tr>
@@ -10400,13 +10410,13 @@ This operation does not require authentication
 
 Accept: application/json
 x-v: 1
-x-min-v: string
+x-min-v: 0
 If-None-Match: string
 
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
   <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'1'</span><span class="p">,</span>
-  <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'0'</span><span class="p">,</span>
   <span class="s1">'If-None-Match'</span><span class="p">:</span><span class="s1">'string'</span>
 
 <span class="p">};</span>
@@ -10464,14 +10474,14 @@ If-None-Match: string
 <tr>
 <td>x-v</td>
 <td>header</td>
-<td>string</td>
+<td>integer</td>
 <td>optional</td>
-<td>The version of the API end point requested by the client. Must be set to a positive integer.</td>
+<td>The version of the API end point requested by the client. Must be set to a positive integer.  For backwards compatiblity defaults to 1 if absent. Note that once version 1 is decommissioned the header will be mandatory for a valid response to be obtained</td>
 </tr>
 <tr>
 <td>x-min-v</td>
 <td>header</td>
-<td>string</td>
+<td>integer</td>
 <td>optional</td>
 <td>The <a href="https://consumerdatastandardsaustralia.github.io/standards/#http-headers">minimum version</a> of the API end point requested by the client. Must be set to a positive integer if provided.</td>
 </tr>
@@ -10580,7 +10590,7 @@ If-None-Match: string
 <tr>
 <td>200</td>
 <td>x-v</td>
-<td>string</td>
+<td>integer</td>
 <td></td>
 <td>The version of the API end point that the CDR Register has responded with.</td>
 </tr>
@@ -10615,14 +10625,14 @@ This operation does not require authentication
 <pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://&lt;register-base-url&gt;/cdr-register/v1/{industry}/data-recipients</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 
 Accept: application/json
-x-v: 1
-x-min-v: string
+x-v: 2
+x-min-v: 0
 If-None-Match: string
 
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
-  <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'1'</span><span class="p">,</span>
-  <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'2'</span><span class="p">,</span>
+  <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'0'</span><span class="p">,</span>
   <span class="s1">'If-None-Match'</span><span class="p">:</span><span class="s1">'string'</span>
 
 <span class="p">};</span>
@@ -10680,14 +10690,14 @@ If-None-Match: string
 <tr>
 <td>x-v</td>
 <td>header</td>
-<td>string</td>
+<td>integer</td>
 <td>optional</td>
-<td>The version of the API end point requested by the client. Must be set to a positive integer.</td>
+<td>The version of the API end point requested by the client. Must be set to a positive integer.  For backwards compatiblity defaults to 2 if absent. Note that once version 2 is decommissioned the header will be mandatory for a valid response to be obtained</td>
 </tr>
 <tr>
 <td>x-min-v</td>
 <td>header</td>
-<td>string</td>
+<td>integer</td>
 <td>optional</td>
 <td>The <a href="https://consumerdatastandardsaustralia.github.io/standards/#http-headers">minimum version</a> of the API end point requested by the client. Must be set to a positive integer if provided.</td>
 </tr>
@@ -10758,7 +10768,7 @@ If-None-Match: string
         </span><span class="p">}</span><span class="w">
       </span><span class="p">],</span><span class="w">
       </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"lastUpdated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="w">
+      </span><span class="s2">"lastUpdated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -10818,7 +10828,7 @@ If-None-Match: string
 <tr>
 <td>200</td>
 <td>x-v</td>
-<td>string</td>
+<td>integer</td>
 <td></td>
 <td>The version of the API end point that the CDR Register has responded with.</td>
 </tr>
@@ -10900,19 +10910,19 @@ This operation does not require authentication
 </thead><tbody>
 <tr>
 <td>issuer</td>
-<td>string</td>
+<td><a href="#common-field-types">URIString</a></td>
 <td>mandatory</td>
 <td>URL using the https scheme with no query or fragment component that the CDR Register asserts as its Issuer Identifier</td>
 </tr>
 <tr>
 <td>jwks_uri</td>
-<td>string</td>
+<td><a href="#common-field-types">URIString</a></td>
 <td>mandatory</td>
 <td>URL of the CDR Register&#39;s JSON Web Key Set <strong><a href="#nref-JWK">[JWK]</a></strong> document. This contains the signing key(s) used to validate access tokens issued from the CDR Register. Note that this differs from the JWKS endpoint used to validate SSAs and CDR Register client authentication</td>
 </tr>
 <tr>
 <td>token_endpoint</td>
-<td>string</td>
+<td><a href="#common-field-types">URIString</a></td>
 <td>mandatory</td>
 <td>URL of the CDR Register&#39;s OAuth 2.0 Token Endpoint</td>
 </tr>
@@ -10966,7 +10976,7 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>tls_client_certificate_bound_access_tokens</td>
-<td>boolean</td>
+<td><a href="#common-field-types">Boolean</a></td>
 <td>mandatory</td>
 <td>Boolean value indicating server support for mutual TLS client certificate bound access tokens</td>
 </tr>
@@ -11050,13 +11060,13 @@ This operation does not require authentication
 </thead><tbody>
 <tr>
 <td>alg</td>
-<td>string</td>
+<td><a href="#common-field-types">ExternalRef</a></td>
 <td>mandatory</td>
 <td>The &quot;alg&quot; (algorithm) parameter identifies the algorithm intended for use with the key</td>
 </tr>
 <tr>
 <td>e</td>
-<td>string</td>
+<td><a href="#common-field-types">ExternalRef</a></td>
 <td>mandatory</td>
 <td>The &quot;e&quot; RSA public exponent parameter</td>
 </tr>
@@ -11068,19 +11078,19 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>kid</td>
-<td>string</td>
+<td><a href="#common-field-types">ExternalRef</a></td>
 <td>mandatory</td>
 <td>The &quot;kid&quot; (key ID) parameter is partially used to match a specific key. Note the &quot;kid&quot; parameter is not guaranteed unique and additional parameters should be used to progressively to identify a key within a set</td>
 </tr>
 <tr>
 <td>kty</td>
-<td>string</td>
+<td><a href="#common-field-types">ExternalRef</a></td>
 <td>mandatory</td>
 <td>The &quot;kty&quot; (key type) parameter identifies the cryptographic algorithm family used with the key</td>
 </tr>
 <tr>
 <td>n</td>
-<td>string</td>
+<td><a href="#common-field-types">ExternalRef</a></td>
 <td>mandatory</td>
 <td>The &quot;n&quot; RSA public modulus parameter</td>
 </tr>
@@ -11104,7 +11114,7 @@ This operation does not require authentication
         </span><span class="s2">"legalEntityName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"logoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"registrationNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"registrationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"registrationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"registeredCountry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"abn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"acn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -11128,7 +11138,7 @@ This operation does not require authentication
           </span><span class="s2">"jwksEndpoint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"lastUpdated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="w">
+      </span><span class="s2">"lastUpdated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -11194,7 +11204,7 @@ This operation does not require authentication
     </span><span class="s2">"legalEntityName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"logoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"registrationNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"registrationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"registrationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"registeredCountry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"abn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"acn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -11218,7 +11228,7 @@ This operation does not require authentication
       </span><span class="s2">"jwksEndpoint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
-  </span><span class="s2">"lastUpdated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="w">
+  </span><span class="s2">"lastUpdated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre><h3 id='properties-5'>Properties</h3>
@@ -11262,7 +11272,7 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>status</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>none</td>
 </tr>
@@ -11332,7 +11342,7 @@ This operation does not require authentication
       </span><span class="s2">"industries"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="s2">"banking"</span><span class="w">
       </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"lastUpdated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"lastUpdated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"abn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"acn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"arbn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
@@ -11385,7 +11395,7 @@ This operation does not require authentication
   </span><span class="s2">"industries"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="s2">"banking"</span><span class="w">
   </span><span class="p">],</span><span class="w">
-  </span><span class="s2">"lastUpdated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"lastUpdated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"abn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"acn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"arbn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
@@ -11552,7 +11562,7 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>status</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>Data Holder status in the CDR Register</td>
 </tr>
@@ -11644,7 +11654,7 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>status</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>Software product status in the CDR Register</td>
 </tr>
@@ -11740,7 +11750,7 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>status</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>Data Recipient status in the CDR Register</td>
 </tr>
@@ -11799,7 +11809,7 @@ This operation does not require authentication
         </span><span class="p">}</span><span class="w">
       </span><span class="p">],</span><span class="w">
       </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"lastUpdated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="w">
+      </span><span class="s2">"lastUpdated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -11870,7 +11880,7 @@ This operation does not require authentication
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"lastUpdated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="w">
+  </span><span class="s2">"lastUpdated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre><h3 id='properties-15'>Properties</h3>
@@ -11902,7 +11912,7 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>accreditationLevel</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>Accreditation level of the Data Recipient in the CDR Register</td>
 </tr>
@@ -11920,7 +11930,7 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>status</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>Data Recipient status in the CDR Register</td>
 </tr>
@@ -12023,7 +12033,7 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>status</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>Data Recipient Brand status in the CDR Register</td>
 </tr>
@@ -12103,7 +12113,7 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>status</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>Software Product status in the CDR Register</td>
 </tr>
@@ -12140,7 +12150,7 @@ This operation does not require authentication
   </span><span class="s2">"legalEntityName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"logoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"registrationNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"registrationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"registrationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"registeredCountry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"abn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"acn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -12220,19 +12230,19 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>anzsicDivision</td>
-<td>string</td>
+<td><a href="#common-field-types">ExternalRef</a></td>
 <td>optional</td>
 <td>ANZSIC division of the organisation. <strong><a href="#iref-ANZSIC-2006">[ANZSIC-2006]</a></strong></td>
 </tr>
 <tr>
 <td>organisationType</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>optional</td>
 <td>Legal organisation type</td>
 </tr>
 <tr>
 <td>status</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>none</td>
 </tr>
@@ -12370,7 +12380,7 @@ This operation does not require authentication
 </thead><tbody>
 <tr>
 <td>registerUType</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>The type of authentication and authorisation mechanism in use</td>
 </tr>
@@ -12419,31 +12429,31 @@ This operation does not require authentication
 </thead><tbody>
 <tr>
 <td>first</td>
-<td>string</td>
+<td><a href="#common-field-types">URIString</a></td>
 <td>optional</td>
 <td>URI to the first page of this set. Mandatory if this response is not the first page</td>
 </tr>
 <tr>
 <td>last</td>
-<td>string</td>
+<td><a href="#common-field-types">URIString</a></td>
 <td>optional</td>
 <td>URI to the last page of this set. Mandatory if this response is not the last page</td>
 </tr>
 <tr>
 <td>next</td>
-<td>string</td>
+<td><a href="#common-field-types">URIString</a></td>
 <td>optional</td>
 <td>URI to the next page of this set. Mandatory if this response is not the last page</td>
 </tr>
 <tr>
 <td>prev</td>
-<td>string</td>
+<td><a href="#common-field-types">URIString</a></td>
 <td>optional</td>
 <td>URI to the previous page of this set. Mandatory if this response is not the first page</td>
 </tr>
 <tr>
 <td>self</td>
-<td>string</td>
+<td><a href="#common-field-types">URIString</a></td>
 <td>mandatory</td>
 <td>Fully qualified link to this API call</td>
 </tr>
@@ -12468,13 +12478,13 @@ This operation does not require authentication
 </thead><tbody>
 <tr>
 <td>totalPages</td>
-<td>integer(int32)</td>
+<td><a href="#common-field-types">NaturalNumber</a></td>
 <td>mandatory</td>
 <td>The total number of pages in the full set</td>
 </tr>
 <tr>
 <td>totalRecords</td>
-<td>integer(int32)</td>
+<td><a href="#common-field-types">NaturalNumber</a></td>
 <td>mandatory</td>
 <td>The total number of records in the full set</td>
 </tr>
@@ -12498,7 +12508,7 @@ This operation does not require authentication
 </thead><tbody>
 <tr>
 <td>self</td>
-<td>string</td>
+<td><a href="#common-field-types">URIString</a></td>
 <td>mandatory</td>
 <td>Fully qualified link to this API call</td>
 </tr>
@@ -43471,7 +43481,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table></p>
 <h1 id='telco-apis'>Telco APIs</h1>
 <p>This specification defines the APIs for Data Holders exposing Telecommunications endpoints.</p>
-
+<pre class="highlight diff tab-diff"><code>Numerous updates to the draft standards arising from feedback provided
+in the holistic feedback thread (Decision Proposal 275)
+</code></pre>
 <aside class="notice">
 Note that the standards for the telecommunications sector are currently in draft only and are not binding
 </aside>
