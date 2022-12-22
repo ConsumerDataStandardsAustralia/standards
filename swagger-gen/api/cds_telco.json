@@ -1366,7 +1366,7 @@
         },
         "summary" : "Get Telco Account Detail",
         "tags" : [ "Telco", "Accounts" ],
-        "x-scopes" : [ "telco:accounts:detail:read" ],
+        "x-scopes" : [ "telco:accounts.detail:read" ],
         "x-version" : "1"
       }
     },
