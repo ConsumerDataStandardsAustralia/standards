@@ -47,6 +47,8 @@ No changes
 
 |Change|Description|Link|
 |------|-----------|----|
+| DCR API Field Types | [**Standards Maintenance #546**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/546): Updated Dynamic Client Registration API specifications to use [Common Field Types](../../#common-field-types) | [DCR APIs](../../#dcr-apis) |
+| Register API Field Types | [**Standards Maintenance #546**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/546): Updated Register API specifications to use [Common Field Types](../../#common-field-types) | [DCR APIs](../../#register-apis) |
 | Add Owner Field for Banking Accounts | [Change Request 513](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/513): Adds a new `accountOwnership` field to banking account end points.  Change results in new end point versions | [Banking APIs](../../#banking-apis) |
 | Telco Draft Standards Update | Updates arising from the feedback provided [Decision Proposal 275 - Holistic Feedback on Telco Standards](https://github.com/ConsumerDataStandardsAustralia/standards/issues/275) | [Draft Telco APIs](../../#telco-apis) |
 
