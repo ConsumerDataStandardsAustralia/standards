@@ -3706,13 +3706,6 @@ x-cds-client-headers: string
 <td>ID of a specific account to obtain data for.  This is a tokenised ID previous obtained from the Account List end point.</td>
 </tr>
 <tr>
-<td>open-status</td>
-<td>query</td>
-<td>string</td>
-<td>optional</td>
-<td>Used to filter results according to open/closed status. Values can be OPEN, CLOSED or ALL. If absent then ALL is assumed</td>
-</tr>
-<tr>
 <td>x-v</td>
 <td>header</td>
 <td>string</td>
@@ -3753,26 +3746,6 @@ x-cds-client-headers: string
 <td><a href="#common-field-types">Base64</a></td>
 <td>conditional</td>
 <td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
-</tr>
-</tbody></table>
-<h4 id='enumerated-values-6'>Enumerated Values</h4>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Value</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>open-status</td>
-<td>ALL</td>
-</tr>
-<tr>
-<td>open-status</td>
-<td>CLOSED</td>
-</tr>
-<tr>
-<td>open-status</td>
-<td>OPEN</td>
 </tr>
 </tbody></table>
 
@@ -9812,7 +9785,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Array of distributors for the plan. Must have at least one entry</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-7'>Enumerated Values</h4>
+<h4 id='enumerated-values-6'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -10752,7 +10725,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Array of tariff periods</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-8'>Enumerated Values</h4>
+<h4 id='enumerated-values-7'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -11114,7 +11087,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>An array of the available billing schedules for this contract. Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 Durations</a> (excludes recurrence syntax)</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-9'>Enumerated Values</h4>
+<h4 id='enumerated-values-8'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -11375,7 +11348,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>The type of usage that the rate applies to</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-10'>Enumerated Values</h4>
+<h4 id='enumerated-values-9'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -11552,7 +11525,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>A display message outlining an eligibility criteria that may apply</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-11'>Enumerated Values</h4>
+<h4 id='enumerated-values-10'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -11702,7 +11675,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>The usage amount threshold above which the discount applies</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-12'>Enumerated Values</h4>
+<h4 id='enumerated-values-11'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -11834,7 +11807,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>The amount of the charge if the type implies the application of a fixed amount</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-13'>Enumerated Values</h4>
+<h4 id='enumerated-values-12'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -11916,7 +11889,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>A description of the eligibility restriction</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-14'>Enumerated Values</h4>
+<h4 id='enumerated-values-13'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -12064,7 +12037,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>A description of the fee</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-15'>Enumerated Values</h4>
+<h4 id='enumerated-values-14'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -12314,7 +12287,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>The end of the time period per day for which the tariff applies.  If absent assumes end of day (ie. one second before midnight)</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-16'>Enumerated Values</h4>
+<h4 id='enumerated-values-15'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -12711,7 +12684,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Charge period for the demand tariff</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-17'>Enumerated Values</h4>
+<h4 id='enumerated-values-16'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -13066,7 +13039,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>A code that defines the consumption threshold as defined in the National Energy Retail Regulations, or in overriding Jurisdictional instruments. Note the details of enumeration values below: <ul><li><strong>LOW</strong> - Consumption is less than the ‘lower consumption threshold’ as defined in the National Energy Retail Regulations</li><li><strong>MEDIUM</strong> - Consumption is equal to or greater than the ‘lower consumption threshold’, but less than the ‘upper consumption threshold’, as defined in the National Energy Retail Regulations</li><li><strong>HIGH</strong> - Consumption is equal to or greater than the ‘upper consumption threshold’ as defined in the National Energy Retail Regulations</li></ul></td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-18'>Enumerated Values</h4>
+<h4 id='enumerated-values-17'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -13516,7 +13489,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Actual/Subtractive Indicator. Note the details of enumeration values below: <ul><li><strong>ACTUAL</strong> implies volume of energy actually metered between two dates</li><li><strong>CUMULATIVE</strong> indicates a meter reading for a specific date. A second Meter Reading is required to determine the consumption between those two Meter Reading dates</li></ul></td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-19'>Enumerated Values</h4>
+<h4 id='enumerated-values-18'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -13940,7 +13913,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>The quality of the read taken</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-20'>Enumerated Values</h4>
+<h4 id='enumerated-values-19'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -14294,7 +14267,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Maximum storage capacity in kVAh. This refers to the capacity of each storage module within the device group. Mandatory if type is equal to “STORAGE”. Default is 0 if value not known</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-21'>Enumerated Values</h4>
+<h4 id='enumerated-values-20'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -14418,7 +14391,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>The date that the account was created or opened. Mandatory if openStatus is OPEN</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-22'>Enumerated Values</h4>
+<h4 id='enumerated-values-21'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -15140,7 +15113,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Used for a trailing suffix to the name (e.g. Jr)</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-23'>Enumerated Values</h4>
+<h4 id='enumerated-values-22'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -15328,7 +15301,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>The frequency with which a bill will be issued.  Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 Durations</a> (excludes recurrence syntax)</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-24'>Enumerated Values</h4>
+<h4 id='enumerated-values-23'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -15521,7 +15494,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Array of ENUM&#39;s to specify what the concession applies to. Multiple ENUM values can be provided. If absent, USAGE is assumed</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-25'>Enumerated Values</h4>
+<h4 id='enumerated-values-24'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -15741,7 +15714,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Indicator of the payment status for the invoice</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-26'>Enumerated Values</h4>
+<h4 id='enumerated-values-25'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -15844,7 +15817,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>The total GST for all electricity usage charges.  If absent then zero is assumed</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-27'>Enumerated Values</h4>
+<h4 id='enumerated-values-26'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -15963,7 +15936,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>The total GST for all electricity usage charges.  If absent then zero is assumed</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-28'>Enumerated Values</h4>
+<h4 id='enumerated-values-27'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -16192,7 +16165,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Represents a payment to the account.  Mandatory if transactionUType is equal to payment</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-29'>Enumerated Values</h4>
+<h4 id='enumerated-values-28'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -16355,7 +16328,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>A free text description of the adjustment</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-30'>Enumerated Values</h4>
+<h4 id='enumerated-values-29'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -16567,7 +16540,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>A free text description of the adjustment</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-31'>Enumerated Values</h4>
+<h4 id='enumerated-values-30'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -16778,7 +16751,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>A free text description of the adjustment</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-32'>Enumerated Values</h4>
+<h4 id='enumerated-values-31'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -16853,7 +16826,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>The method of payment</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-33'>Enumerated Values</h4>
+<h4 id='enumerated-values-32'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -16959,7 +16932,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Australian address formatted according to the file format defined by the <a href="https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf">PAF file format</a>. Required if addressUType is set to paf</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-34'>Enumerated Values</h4>
+<h4 id='enumerated-values-33'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
