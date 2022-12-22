@@ -7707,7 +7707,8 @@ Host: cdr.register
 <tr><td><a href='./includes/swagger/cds_dcr.json'>DCR OpenAPI Specification (JSON)</a></td></tr>
 <tr><td><a href='./includes/swagger/cds_dcr.yaml'>DCR OpenAPI Specification (YAML)</a></td></tr>
 </table></p>
-
+<pre class="highlight diff tab-diff"><code>Updated DCR field types to use Common Field Types
+</code></pre>
 <h2 id='register-data-recipient-oauth-client'>Register Data Recipient oAuth Client</h2>
 
 <p><a id="opIdPostDataRecipientRegistration"></a></p>
@@ -9037,7 +9038,12 @@ These endpoints are exposed by the Register and consumed by Data Holders and Dat
 <td>https://secure.api.cdr.gov.au</td>
 </tr>
 </tbody></table>
+<pre class="highlight diff tab-diff"><code>Updated Register API field types to use Common Field Types
 
+Modified the x-v request header descriptions that are optional
+to specify the default version that will be assumed if the header
+is absent
+</code></pre>
 <h2 id='get-openid-provider-config'>Get OpenId Provider Config</h2>
 
 <p><a id="opIdGetOpenIdProviderConfig"></a></p>
@@ -43471,7 +43477,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table></p>
 <h1 id='telco-apis'>Telco APIs</h1>
 <p>This specification defines the APIs for Data Holders exposing Telecommunications endpoints.</p>
-
+<pre class="highlight diff tab-diff"><code>Numerous updates to the draft standards arising from feedback provided
+in the holistic feedback thread (Decision Proposal 275)
+</code></pre>
 <aside class="notice">
 Note that the standards for the telecommunications sector are currently in draft only and are not binding
 </aside>

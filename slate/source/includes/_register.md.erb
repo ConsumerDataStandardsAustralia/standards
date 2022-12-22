@@ -3,6 +3,14 @@
 This following provides an overview of the Register APIs for Data Holders and Data Recipients to collect participant metadata exclusively for the banking sector.
 These endpoints are exposed by the Register and consumed by Data Holders and Data Recipients.
 
+```diff
+Updated Register API field types to use Common Field Types
+
+Modified the x-v request header descriptions that are optional
+to specify the default version that will be assumed if the header
+is absent
+```
+
 <aside class="warning">
   These endpoints are not implemented by Data Holders and Data Recipients. They are hosted by the Register for consumption by participants.
   Data Holders and Data Recipient Software Products are required to call these endpoints to obtain metadata that enables connection and registration between participants as well as obtaining the status of participants in the CDR.
@@ -39,7 +47,4 @@ These endpoints are exposed by the Register and consumed by Data Holders and Dat
 |**Production mTLS**|https://secure.api.cdr.gov.au|
 
 
-```diff
-Updated Register API field types to use Common Field Types
-```
 <%= partial "includes/cds_register.md" %>
