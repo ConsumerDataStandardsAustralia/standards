@@ -722,7 +722,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>client_id_issued_at</td>
-<td>integer(int32)</td>
+<td><a href="#common-field-types">ExternalRef</a></td>
 <td>optional</td>
 <td>Time at which the client identifier was issued expressed as seconds since 1970-01-01T00:00:00Z as measured in UTC</td>
 </tr>
@@ -740,7 +740,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>client_uri</td>
-<td>string</td>
+<td><a href="#common-field-types">URIString</a></td>
 <td>mandatory</td>
 <td>URL string of a web page providing information about the client</td>
 </tr>
@@ -776,55 +776,55 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>sector_identifier_uri</td>
-<td>string</td>
+<td><a href="#common-field-types">URIString</a></td>
 <td>optional</td>
 <td>URL string referencing the client sector identifier URI, used as an optional input to the Pairwise Identifier</td>
 </tr>
 <tr>
 <td>logo_uri</td>
-<td>string</td>
+<td><a href="#common-field-types">URIString</a></td>
 <td>mandatory</td>
 <td>URL string that references a logo for the client. If present, the server SHOULD display this image to the end-user during approval</td>
 </tr>
 <tr>
 <td>tos_uri</td>
-<td>string</td>
+<td><a href="#common-field-types">URIString</a></td>
 <td>optional</td>
 <td>URL string that points to a human-readable terms of service document for the Software Product</td>
 </tr>
 <tr>
 <td>policy_uri</td>
-<td>string</td>
+<td><a href="#common-field-types">URIString</a></td>
 <td>optional</td>
 <td>URL string that points to a human-readable policy document for the Software Product</td>
 </tr>
 <tr>
 <td>jwks_uri</td>
-<td>string</td>
+<td><a href="#common-field-types">URIString</a></td>
 <td>mandatory</td>
 <td>URL string referencing the client JSON Web Key (JWK) Set <strong><a href="#nref-RFC7517">[RFC7517]</a></strong> document, which contains the client public keys</td>
 </tr>
 <tr>
 <td>revocation_uri</td>
-<td>string</td>
+<td><a href="#common-field-types">URIString</a></td>
 <td>optional</td>
 <td>URI string that references the location of the Software Product consent revocation endpoint</td>
 </tr>
 <tr>
 <td>recipient_base_uri</td>
-<td>string</td>
+<td><a href="#common-field-types">URIString</a></td>
 <td>optional</td>
 <td>Base URI for the Consumer Data Standard Data Recipient endpoints. This should be the base to provide reference to all other Data Recipient Endpoints</td>
 </tr>
 <tr>
 <td>token_endpoint_auth_method</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>The requested authentication method for the token endpoint</td>
 </tr>
 <tr>
 <td>token_endpoint_auth_signing_alg</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>The algorithm used for signing the JWT</td>
 </tr>
@@ -842,25 +842,25 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>application_type</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>optional</td>
 <td>Kind of the application. The only supported application type will be <code>web</code></td>
 </tr>
 <tr>
 <td>id_token_signed_response_alg</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>Algorithm with which an id_token is to be signed</td>
 </tr>
 <tr>
 <td>id_token_encrypted_response_alg</td>
-<td>string</td>
+<td><a href="#common-field-types">ExternalRef</a></td>
 <td>mandatory</td>
 <td>JWE <code>alg</code> algorithm with which an id_token is to be encrypted</td>
 </tr>
 <tr>
 <td>id_token_encrypted_response_enc</td>
-<td>string</td>
+<td><a href="#common-field-types">ExternalRef</a></td>
 <td>mandatory</td>
 <td>JWE <code>enc</code> algorithm with which an id_token is to be encrypted</td>
 </tr>
@@ -884,7 +884,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>request_object_signing_alg</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>Algorithm which the ADR expects to sign the request object if a request object will be part of the authorization request sent to the Data Holder</td>
 </tr>
@@ -902,7 +902,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>software_roles</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>optional</td>
 <td>String containing a role of the software in the CDR Regime. Initially the only value used with be <code>data-recipient-software-product</code></td>
 </tr>
@@ -996,6 +996,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>request_object_signing_alg</td>
 <td>ES256</td>
 </tr>
+<tr>
+<td>software_roles</td>
+<td>data-recipient-software-product</td>
+</tr>
 </tbody></table>
 
 <h3 class="schema-toc" id="tocSclientregistration">ClientRegistration</h3>
@@ -1074,13 +1078,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>» iat</td>
-<td>integer(int32)</td>
+<td><a href="#common-field-types">ExternalRef</a></td>
 <td>mandatory</td>
 <td>The time at which the request was issued by the Data Recipient  expressed as seconds since 1970-01-01T00:00:00Z as measured in UTC</td>
 </tr>
 <tr>
 <td>» exp</td>
-<td>integer(int32)</td>
+<td><a href="#common-field-types">ExternalRef</a></td>
 <td>mandatory</td>
 <td>The time at which the request expires expressed as seconds since 1970-01-01T00:00:00Z as measured in UTC</td>
 </tr>
@@ -1092,7 +1096,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>» aud</td>
-<td>string</td>
+<td><a href="#common-field-types">URIString</a></td>
 <td>mandatory</td>
 <td>&#39;Contains the Data Holder issuer value as described in the OIDC Discovery Document</td>
 </tr>
@@ -1135,13 +1139,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 </thead><tbody>
 <tr>
 <td>error</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>Predefined error code as described in <a href="https://openid.net/specs/openid-connect-registration-1_0.html">section 3.3 OIDC Dynamic Client Registration</a></td>
 </tr>
 <tr>
 <td>error_description</td>
-<td>string</td>
+<td><a href="#common-field-types">ASCIIString</a></td>
 <td>optional</td>
 <td>Additional text description of the error for debugging.</td>
 </tr>

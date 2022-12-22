@@ -93,7 +93,7 @@
           {
             "name": "x-v",
             "in": "header",
-            "description": "The version of the API end point requested by the client. Must be set to a positive integer.",
+            "description": "The version of the API end point requested by the client. Must be set to a positive integer. For backwards compatiblity defaults to 1 if absent. Note that once version 1 is decommissioned the header will be mandatory for a valid response to be obtained",
             "schema": {
               "type": "integer",
               "default": 1,
@@ -351,7 +351,7 @@
           {
             "name": "x-v",
             "in": "header",
-            "description": "The version of the API end point requested by the client. Must be set to a positive integer.",
+            "description": "The version of the API end point requested by the client. Must be set to a positive integer. For backwards compatiblity defaults to 1 if absent. Note that once version 1 is decommissioned the header will be mandatory for a valid response to be obtained",
             "schema": {
               "type": "integer",
               "default": 1,
@@ -511,7 +511,7 @@
           {
             "name": "x-v",
             "in": "header",
-            "description": "The version of the API end point requested by the client. Must be set to a positive integer.",
+            "description": "The version of the API end point requested by the client. Must be set to a positive integer.  For backwards compatiblity defaults to 1 if absent. Note that once version 1 is decommissioned the header will be mandatory for a valid response to be obtained",
             "schema": {
               "type": "integer",
               "default": 1,
@@ -628,7 +628,7 @@
           {
             "name": "x-v",
             "in": "header",
-            "description": "The version of the API end point requested by the client. Must be set to a positive integer.",
+            "description": "The version of the API end point requested by the client. Must be set to a positive integer.  For backwards compatiblity defaults to 1 if absent. Note that once version 1 is decommissioned the header will be mandatory for a valid response to be obtained",
             "schema": {
               "type": "integer",
               "default": 1,
@@ -745,7 +745,7 @@
           {
             "name": "x-v",
             "in": "header",
-            "description": "The version of the API end point requested by the client. Must be set to a positive integer.",
+            "description": "The version of the API end point requested by the client. Must be set to a positive integer.  For backwards compatiblity defaults to 1 if absent. Note that once version 1 is decommissioned the header will be mandatory for a valid response to be obtained",
             "schema": {
               "type": "integer",
               "default": 1,
@@ -862,10 +862,10 @@
           {
             "name": "x-v",
             "in": "header",
-            "description": "The version of the API end point requested by the client. Must be set to a positive integer.",
+            "description": "The version of the API end point requested by the client. Must be set to a positive integer.  For backwards compatiblity defaults to 2 if absent. Note that once version 2 is decommissioned the header will be mandatory for a valid response to be obtained",
             "schema": {
               "type": "integer",
-              "default": 1,
+              "default": 2,
               "x-cds-type": "PositiveInteger"
             }
           },

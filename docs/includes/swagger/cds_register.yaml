@@ -58,6 +58,7 @@ paths:
           - telco
           - all
           type: string
+          x-cds-type: Enum
         style: simple
       - description: An Authorisation Token as per **[[RFC6750]](#nref-RFC6750)**.
         explode: false
@@ -66,16 +67,20 @@ paths:
         required: true
         schema:
           type: string
+          x-cds-type: ExternalRef
         style: simple
       - description: The version of the API end point requested by the client. Must
-          be set to a positive integer.
+          be set to a positive integer. For backwards compatiblity defaults to 1 if
+          absent. Note that once version 1 is decommissioned the header will be mandatory
+          for a valid response to be obtained
         explode: false
         in: header
         name: x-v
         required: false
         schema:
-          default: "1"
-          type: string
+          default: 1
+          type: integer
+          x-cds-type: PositiveInteger
         style: simple
       - description: The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers)
           of the API end point requested by the client. Must be set to a positive
@@ -85,7 +90,8 @@ paths:
         name: x-min-v
         required: false
         schema:
-          type: string
+          type: integer
+          x-cds-type: PositiveInteger
         style: simple
       - description: query filter returns results updated since the specified date-time
         explode: true
@@ -93,8 +99,8 @@ paths:
         name: updated-since
         required: false
         schema:
-          format: date-time
           type: string
+          x-cds-type: DateTimeString
         style: form
       - description: the page number to return
         explode: true
@@ -102,8 +108,9 @@ paths:
         name: page
         required: false
         schema:
-          format: int32
+          default: 1
           type: integer
+          x-cds-type: PositiveInteger
         style: form
       - description: the number of records to return per page
         explode: true
@@ -111,8 +118,9 @@ paths:
         name: page-size
         required: false
         schema:
-          format: int32
+          default: 25
           type: integer
+          x-cds-type: PositiveInteger
         style: form
       responses:
         "200":
@@ -127,7 +135,8 @@ paths:
                 has responded with.
               explode: false
               schema:
-                type: string
+                type: integer
+                x-cds-type: PositiveInteger
               style: simple
         "400":
           content:
@@ -172,6 +181,7 @@ paths:
           - telco
           - all
           type: string
+          x-cds-type: Enum
         style: simple
       - description: The version of the API end point requested by the client. Must
           be set to a positive integer.
@@ -180,7 +190,8 @@ paths:
         name: x-v
         required: true
         schema:
-          type: string
+          type: integer
+          x-cds-type: PositiveInteger
         style: simple
       - description: The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers)
           of the API end point requested by the client. Must be set to a positive
@@ -190,7 +201,8 @@ paths:
         name: x-min-v
         required: false
         schema:
-          type: string
+          type: integer
+          x-cds-type: PositiveInteger
         style: simple
       - description: Makes the request method conditional on a recipient cache or
           origin server not having any current representation of the target resource
@@ -201,6 +213,7 @@ paths:
         required: false
         schema:
           type: string
+          x-cds-type: ASCIIString
         style: simple
       responses:
         "200":
@@ -215,13 +228,15 @@ paths:
                 has responded with.
               explode: false
               schema:
-                type: string
+                type: integer
+                x-cds-type: PositiveInteger
               style: simple
             Etag:
               description: Entity tag that uniquely represents the requested resource.
               explode: false
               schema:
                 type: string
+                x-cds-type: ASCIIString
               style: simple
         "304":
           description: Not Modified - The current representation of the target resource
@@ -232,6 +247,7 @@ paths:
               explode: false
               schema:
                 type: string
+                x-cds-type: ASCIIString
               style: simple
         "400":
           content:
@@ -276,16 +292,20 @@ paths:
           - telco
           - all
           type: string
+          x-cds-type: Enum
         style: simple
       - description: The version of the API end point requested by the client. Must
-          be set to a positive integer.
+          be set to a positive integer. For backwards compatiblity defaults to 1 if
+          absent. Note that once version 1 is decommissioned the header will be mandatory
+          for a valid response to be obtained
         explode: false
         in: header
         name: x-v
         required: false
         schema:
-          default: "1"
-          type: string
+          default: 1
+          type: integer
+          x-cds-type: PositiveInteger
         style: simple
       - description: The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers)
           of the API end point requested by the client. Must be set to a positive
@@ -295,7 +315,8 @@ paths:
         name: x-min-v
         required: false
         schema:
-          type: string
+          type: integer
+          x-cds-type: PositiveInteger
         style: simple
       - description: Unique id for the Accredited Data Recipient Brand that the Software
           Product is associated with in the CDR Register
@@ -322,6 +343,7 @@ paths:
         required: true
         schema:
           type: string
+          x-cds-type: ExternalRef
         style: simple
       responses:
         "200":
@@ -336,7 +358,8 @@ paths:
                 has responded with.
               explode: false
               schema:
-                type: string
+                type: integer
+                x-cds-type: PositiveInteger
               style: simple
         "400":
           content:
@@ -399,16 +422,20 @@ paths:
           - telco
           - all
           type: string
+          x-cds-type: Enum
         style: simple
       - description: The version of the API end point requested by the client. Must
-          be set to a positive integer.
+          be set to a positive integer.  For backwards compatiblity defaults to 1
+          if absent. Note that once version 1 is decommissioned the header will be
+          mandatory for a valid response to be obtained
         explode: false
         in: header
         name: x-v
         required: false
         schema:
-          default: "1"
-          type: string
+          default: 1
+          type: integer
+          x-cds-type: PositiveInteger
         style: simple
       - description: The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers)
           of the API end point requested by the client. Must be set to a positive
@@ -418,7 +445,8 @@ paths:
         name: x-min-v
         required: false
         schema:
-          type: string
+          type: integer
+          x-cds-type: PositiveInteger
         style: simple
       - description: Makes the request method conditional on a recipient cache or
           origin server not having any current representation of the target resource
@@ -429,6 +457,7 @@ paths:
         required: false
         schema:
           type: string
+          x-cds-type: ASCIIString
         style: simple
       responses:
         "200":
@@ -443,13 +472,15 @@ paths:
                 has responded with.
               explode: false
               schema:
-                type: string
+                type: integer
+                x-cds-type: PositiveInteger
               style: simple
             Etag:
               description: Entity tag that uniquely represents the requested resource.
               explode: false
               schema:
                 type: string
+                x-cds-type: ASCIIString
               style: simple
         "304":
           description: Not Modified - The current representation of the target resource
@@ -460,6 +491,7 @@ paths:
               explode: false
               schema:
                 type: string
+                x-cds-type: ASCIIString
               style: simple
         "400":
           content:
@@ -498,16 +530,20 @@ paths:
           - telco
           - all
           type: string
+          x-cds-type: Enum
         style: simple
       - description: The version of the API end point requested by the client. Must
-          be set to a positive integer.
+          be set to a positive integer.  For backwards compatiblity defaults to 1
+          if absent. Note that once version 1 is decommissioned the header will be
+          mandatory for a valid response to be obtained
         explode: false
         in: header
         name: x-v
         required: false
         schema:
-          default: "1"
-          type: string
+          default: 1
+          type: integer
+          x-cds-type: PositiveInteger
         style: simple
       - description: The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers)
           of the API end point requested by the client. Must be set to a positive
@@ -517,7 +553,8 @@ paths:
         name: x-min-v
         required: false
         schema:
-          type: string
+          type: integer
+          x-cds-type: PositiveInteger
         style: simple
       - description: Makes the request method conditional on a recipient cache or
           origin server not having any current representation of the target resource
@@ -528,6 +565,7 @@ paths:
         required: false
         schema:
           type: string
+          x-cds-type: ASCIIString
         style: simple
       responses:
         "200":
@@ -542,13 +580,15 @@ paths:
                 has responded with.
               explode: false
               schema:
-                type: string
+                type: integer
+                x-cds-type: PositiveInteger
               style: simple
             Etag:
               description: Entity tag that uniquely represents the requested resource.
               explode: false
               schema:
                 type: string
+                x-cds-type: ASCIIString
               style: simple
         "304":
           description: Not Modified - The current representation of the target resource
@@ -559,6 +599,7 @@ paths:
               explode: false
               schema:
                 type: string
+                x-cds-type: ASCIIString
               style: simple
         "400":
           content:
@@ -597,16 +638,20 @@ paths:
           - telco
           - all
           type: string
+          x-cds-type: Enum
         style: simple
       - description: The version of the API end point requested by the client. Must
-          be set to a positive integer.
+          be set to a positive integer.  For backwards compatiblity defaults to 1
+          if absent. Note that once version 1 is decommissioned the header will be
+          mandatory for a valid response to be obtained
         explode: false
         in: header
         name: x-v
         required: false
         schema:
-          default: "1"
-          type: string
+          default: 1
+          type: integer
+          x-cds-type: PositiveInteger
         style: simple
       - description: The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers)
           of the API end point requested by the client. Must be set to a positive
@@ -616,7 +661,8 @@ paths:
         name: x-min-v
         required: false
         schema:
-          type: string
+          type: integer
+          x-cds-type: PositiveInteger
         style: simple
       - description: Makes the request method conditional on a recipient cache or
           origin server not having any current representation of the target resource
@@ -627,6 +673,7 @@ paths:
         required: false
         schema:
           type: string
+          x-cds-type: ASCIIString
         style: simple
       responses:
         "200":
@@ -641,13 +688,15 @@ paths:
                 has responded with.
               explode: false
               schema:
-                type: string
+                type: integer
+                x-cds-type: PositiveInteger
               style: simple
             Etag:
               description: Entity tag that uniquely represents the requested resource.
               explode: false
               schema:
                 type: string
+                x-cds-type: ASCIIString
               style: simple
         "304":
           description: Not Modified - The current representation of the target resource
@@ -658,6 +707,7 @@ paths:
               explode: false
               schema:
                 type: string
+                x-cds-type: ASCIIString
               style: simple
         "400":
           content:
@@ -696,16 +746,20 @@ paths:
           - telco
           - all
           type: string
+          x-cds-type: Enum
         style: simple
       - description: The version of the API end point requested by the client. Must
-          be set to a positive integer.
+          be set to a positive integer.  For backwards compatiblity defaults to 2
+          if absent. Note that once version 2 is decommissioned the header will be
+          mandatory for a valid response to be obtained
         explode: false
         in: header
         name: x-v
         required: false
         schema:
-          default: "1"
-          type: string
+          default: 2
+          type: integer
+          x-cds-type: PositiveInteger
         style: simple
       - description: The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers)
           of the API end point requested by the client. Must be set to a positive
@@ -715,7 +769,8 @@ paths:
         name: x-min-v
         required: false
         schema:
-          type: string
+          type: integer
+          x-cds-type: PositiveInteger
         style: simple
       - description: Makes the request method conditional on a recipient cache or
           origin server not having any current representation of the target resource
@@ -726,6 +781,7 @@ paths:
         required: false
         schema:
           type: string
+          x-cds-type: ASCIIString
         style: simple
       responses:
         "200":
@@ -740,13 +796,15 @@ paths:
                 has responded with.
               explode: false
               schema:
-                type: string
+                type: integer
+                x-cds-type: PositiveInteger
               style: simple
             Etag:
               description: Entity tag that uniquely represents the requested resource.
               explode: false
               schema:
                 type: string
+                x-cds-type: ASCIIString
               style: simple
         "304":
           description: Not Modified - The current representation of the target resource
@@ -757,6 +815,7 @@ paths:
               explode: false
               schema:
                 type: string
+                x-cds-type: ASCIIString
               style: simple
         "400":
           content:
@@ -784,6 +843,7 @@ components:
       required: true
       schema:
         type: string
+        x-cds-type: ExternalRef
       style: simple
     XV:
       description: The version of the API end point requested by the client. Must
@@ -793,7 +853,8 @@ components:
       name: x-v
       required: false
       schema:
-        type: string
+        type: integer
+        x-cds-type: PositiveInteger
       style: simple
     Industry:
       description: The industry the participant is retrieving data for (Banking, etc)
@@ -808,6 +869,7 @@ components:
         - telco
         - all
         type: string
+        x-cds-type: Enum
       style: simple
     XMinV:
       description: The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers)
@@ -818,7 +880,8 @@ components:
       name: x-min-v
       required: false
       schema:
-        type: string
+        type: integer
+        x-cds-type: PositiveInteger
       style: simple
     IfNoneMatch:
       description: Makes the request method conditional on a recipient cache or origin
@@ -830,6 +893,7 @@ components:
       required: false
       schema:
         type: string
+        x-cds-type: ASCIIString
       style: simple
     UpdatedSince:
       description: query filter returns results updated since the specified date-time
@@ -838,8 +902,8 @@ components:
       name: updated-since
       required: false
       schema:
-        format: date-time
         type: string
+        x-cds-type: DateTimeString
       style: form
     Page:
       description: the page number to return
@@ -848,8 +912,9 @@ components:
       name: page
       required: false
       schema:
-        format: int32
+        default: 1
         type: integer
+        x-cds-type: PositiveInteger
       style: form
     PageSize:
       description: the number of records to return per page
@@ -858,8 +923,9 @@ components:
       name: page-size
       required: false
       schema:
-        format: int32
+        default: 25
         type: integer
+        x-cds-type: PositiveInteger
       style: form
   responses:
     BadRequest:
@@ -883,6 +949,7 @@ components:
           explode: false
           schema:
             type: string
+            x-cds-type: ASCIIString
           style: simple
     UnsupportedVersion:
       content:
@@ -930,15 +997,18 @@ components:
           description: URL using the https scheme with no query or fragment component
             that the CDR Register asserts as its Issuer Identifier
           type: string
+          x-cds-type: URIString
         jwks_uri:
           description: URL of the CDR Register's JSON Web Key Set **[[JWK]](#nref-JWK)**
             document. This contains the signing key(s) used to validate access tokens
             issued from the CDR Register. Note that this differs from the JWKS endpoint
             used to validate SSAs and CDR Register client authentication
           type: string
+          x-cds-type: URIString
         token_endpoint:
           description: URL of the CDR Register's OAuth 2.0 Token Endpoint
           type: string
+          x-cds-type: URIString
         claims_supported:
           description: JSON array containing a list of the Claim Names of the Claims
             that the CDR Register supplies values for
@@ -996,6 +1066,7 @@ components:
           description: Boolean value indicating server support for mutual TLS client
             certificate bound access tokens
           type: boolean
+          x-cds-type: Boolean
         token_endpoint_auth_signing_alg_values_supported:
           description: JSON array containing a list of the JWS signing algorithms
             (alg values) supported by the token endpoint for the signature on the
@@ -1064,14 +1135,17 @@ components:
           description: The "alg" (algorithm) parameter identifies the algorithm intended
             for use with the key
           type: string
+          x-cds-type: ExternalRef
         e:
           description: The "e" RSA public exponent parameter
           type: string
+          x-cds-type: ExternalRef
         key_ops:
           description: The "key_ops" (key operations) parameter identifies the operation(s)
             for which the key is intended to be used
           items:
             type: string
+            x-cds-type: ExternalRef
           type: array
         kid:
           description: The "kid" (key ID) parameter is partially used to match a specific
@@ -1079,13 +1153,16 @@ components:
             parameters should be used to progressively to identify a key within a
             set
           type: string
+          x-cds-type: ExternalRef
         kty:
           description: The "kty" (key type) parameter identifies the cryptographic
             algorithm family used with the key
           type: string
+          x-cds-type: ExternalRef
         n:
           description: The "n" RSA public modulus parameter
           type: string
+          x-cds-type: ExternalRef
       required:
       - alg
       - e
@@ -1098,7 +1175,7 @@ components:
       description: Response containing a list of CDR Register Data Holder Brand objects
       example:
         data:
-        - lastUpdated: 2000-01-23T04:56:07.000+00:00
+        - lastUpdated: lastUpdated
           brandName: brandName
           industries:
           - banking
@@ -1122,7 +1199,7 @@ components:
             anzsicDivision: anzsicDivision
             legalEntityId: legalEntityId
             registrationNumber: registrationNumber
-            registrationDate: 2000-01-23
+            registrationDate: registrationDate
             legalEntityName: legalEntityName
             logoUri: logoUri
             registeredCountry: registeredCountry
@@ -1131,7 +1208,7 @@ components:
             organisationType: SOLE_TRADER
             status: ACTIVE
           status: ACTIVE
-        - lastUpdated: 2000-01-23T04:56:07.000+00:00
+        - lastUpdated: lastUpdated
           brandName: brandName
           industries:
           - banking
@@ -1155,7 +1232,7 @@ components:
             anzsicDivision: anzsicDivision
             legalEntityId: legalEntityId
             registrationNumber: registrationNumber
-            registrationDate: 2000-01-23
+            registrationDate: registrationDate
             legalEntityName: legalEntityName
             logoUri: logoUri
             registeredCountry: registeredCountry
@@ -1191,7 +1268,7 @@ components:
       type: object
     RegisterDataHolderBrand:
       example:
-        lastUpdated: 2000-01-23T04:56:07.000+00:00
+        lastUpdated: lastUpdated
         brandName: brandName
         industries:
         - banking
@@ -1215,7 +1292,7 @@ components:
           anzsicDivision: anzsicDivision
           legalEntityId: legalEntityId
           registrationNumber: registrationNumber
-          registrationDate: 2000-01-23
+          registrationDate: registrationDate
           legalEntityName: legalEntityName
           logoUri: logoUri
           registeredCountry: registeredCountry
@@ -1241,6 +1318,7 @@ components:
             - energy
             - telco
             type: string
+            x-cds-type: Enum
           type: array
           uniqueItems: true
         logoUri:
@@ -1256,6 +1334,7 @@ components:
           - INACTIVE
           - REMOVED
           type: string
+          x-cds-type: Enum
         endpointDetail:
           $ref: '#/components/schemas/RegisterDataHolderBrandServiceEndpoint'
         authDetails:
@@ -1266,7 +1345,6 @@ components:
         lastUpdated:
           description: The date/time that the Data Holder Brand data was last updated
             in the Register
-          format: date-time
           type: string
           x-cds-type: DateTimeString
       required:
@@ -1284,7 +1362,7 @@ components:
       example:
         data:
         - arbn: arbn
-          lastUpdated: 2000-01-23T04:56:07.000+00:00
+          lastUpdated: lastUpdated
           brandName: brandName
           publicBaseUri: publicBaseUri
           industries:
@@ -1296,7 +1374,7 @@ components:
           interimId: interimId
           acn: acn
         - arbn: arbn
-          lastUpdated: 2000-01-23T04:56:07.000+00:00
+          lastUpdated: lastUpdated
           brandName: brandName
           publicBaseUri: publicBaseUri
           industries:
@@ -1329,7 +1407,7 @@ components:
     DataHolderBrandSummary:
       example:
         arbn: arbn
-        lastUpdated: 2000-01-23T04:56:07.000+00:00
+        lastUpdated: lastUpdated
         brandName: brandName
         publicBaseUri: publicBaseUri
         industries:
@@ -1376,12 +1454,12 @@ components:
             - energy
             - telco
             type: string
+            x-cds-type: Enum
           type: array
           uniqueItems: true
         lastUpdated:
           description: The date/time that the Data Holder Brand data was last updated
             in the Register
-          format: date-time
           type: string
           x-cds-type: DateTimeString
         abn:
@@ -1446,6 +1524,7 @@ components:
           - ACTIVE
           - REMOVED
           type: string
+          x-cds-type: Enum
       required:
       - legalEntityId
       - status
@@ -1492,6 +1571,7 @@ components:
           - INACTIVE
           - REMOVED
           type: string
+          x-cds-type: Enum
       required:
       - softwareProductId
       - status
@@ -1540,6 +1620,7 @@ components:
           - REVOKED
           - SURRENDERED
           type: string
+          x-cds-type: Enum
       required:
       - legalEntityId
       - status
@@ -1549,7 +1630,7 @@ components:
       example:
         data:
         - accreditationLevel: UNRESTRICTED
-          lastUpdated: 2000-01-23T04:56:07.000+00:00
+          lastUpdated: lastUpdated
           dataRecipientBrands:
           - brandName: brandName
             softwareProducts:
@@ -1587,7 +1668,7 @@ components:
           accreditationNumber: accreditationNumber
           status: ACTIVE
         - accreditationLevel: UNRESTRICTED
-          lastUpdated: 2000-01-23T04:56:07.000+00:00
+          lastUpdated: lastUpdated
           dataRecipientBrands:
           - brandName: brandName
             softwareProducts:
@@ -1646,7 +1727,7 @@ components:
     RegisterDataRecipient:
       example:
         accreditationLevel: UNRESTRICTED
-        lastUpdated: 2000-01-23T04:56:07.000+00:00
+        lastUpdated: lastUpdated
         dataRecipientBrands:
         - brandName: brandName
           softwareProducts:
@@ -1704,6 +1785,7 @@ components:
           - UNRESTRICTED
           - SPONSORED
           type: string
+          x-cds-type: Enum
         logoUri:
           description: Legal Entity logo URI
           maxLength: 1000
@@ -1722,10 +1804,10 @@ components:
           - REVOKED
           - SURRENDERED
           type: string
+          x-cds-type: Enum
         lastUpdated:
           description: The date/time that the Legal Entity was last updated in the
             CDR Register
-          format: date-time
           type: string
           x-cds-type: DateTimeString
       required:
@@ -1781,6 +1863,7 @@ components:
           - INACTIVE
           - REMOVED
           type: string
+          x-cds-type: Enum
       required:
       - brandName
       - dataRecipientBrandId
@@ -1821,6 +1904,7 @@ components:
           - INACTIVE
           - REMOVED
           type: string
+          x-cds-type: Enum
       required:
       - logoUri
       - softwareProductDescription
@@ -1836,7 +1920,7 @@ components:
         anzsicDivision: anzsicDivision
         legalEntityId: legalEntityId
         registrationNumber: registrationNumber
-        registrationDate: 2000-01-23
+        registrationDate: registrationDate
         legalEntityName: legalEntityName
         logoUri: logoUri
         registeredCountry: registeredCountry
@@ -1865,7 +1949,6 @@ components:
         registrationDate:
           description: Date of registration (if the company is registered outside
             Australia)
-          format: date
           type: string
           x-cds-type: DateString
         registeredCountry:
@@ -1890,6 +1973,7 @@ components:
           description: ANZSIC division of the organisation. **[[ANZSIC-2006]](#iref-ANZSIC-2006)**
           maxLength: 100
           type: string
+          x-cds-type: ExternalRef
         organisationType:
           description: Legal organisation type
           enum:
@@ -1900,11 +1984,13 @@ components:
           - GOVERNMENT_ENTITY
           - OTHER
           type: string
+          x-cds-type: Enum
         status:
           enum:
           - ACTIVE
           - REMOVED
           type: string
+          x-cds-type: Enum
       required:
       - legalEntityId
       - legalEntityName
@@ -1976,6 +2062,7 @@ components:
           enum:
           - SIGNED-JWT
           type: string
+          x-cds-type: Enum
         jwksEndpoint:
           description: JWKS endpoint used for authentication by the Data Holder with
             the Data Recipient
@@ -1998,21 +2085,26 @@ components:
           description: URI to the first page of this set. Mandatory if this response
             is not the first page
           type: string
+          x-cds-type: URIString
         last:
           description: URI to the last page of this set. Mandatory if this response
             is not the last page
           type: string
+          x-cds-type: URIString
         next:
           description: URI to the next page of this set. Mandatory if this response
             is not the last page
           type: string
+          x-cds-type: URIString
         prev:
           description: URI to the previous page of this set. Mandatory if this response
             is not the first page
           type: string
+          x-cds-type: URIString
         self:
           description: Fully qualified link to this API call
           type: string
+          x-cds-type: URIString
       required:
       - self
       type: object
@@ -2023,12 +2115,12 @@ components:
       properties:
         totalPages:
           description: The total number of pages in the full set
-          format: int32
           type: integer
+          x-cds-type: NaturalNumber
         totalRecords:
           description: The total number of records in the full set
-          format: int32
           type: integer
+          x-cds-type: NaturalNumber
       required:
       - totalPages
       - totalRecords
@@ -2040,6 +2132,7 @@ components:
         self:
           description: Fully qualified link to this API call
           type: string
+          x-cds-type: URIString
       required:
       - self
       type: object
