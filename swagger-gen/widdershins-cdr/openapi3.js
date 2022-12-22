@@ -541,8 +541,17 @@ function getResponseHeaders(data) {
     return headers;
 }
 
-function hasExRestrictedAuthenticationAccessOnly(data) {
-  if (data.operation['x-restricted-access'] && data.operation['x-restricted-access'] == true ) {
+function hasExRestrictedAuthenticationAEMO(data) {
+  if (data.operation['x-restricted-access'] && data.operation['x-restricted-access'] == "AEMO") {
+    return true;
+  }
+  else {
+    return false;
+  }
+}
+
+function hasExRestrictedAuthenticationREGISTER(data) {
+  if (data.operation['x-restricted-access'] && data.operation['x-restricted-access'] == "REGISTER") {
     return true;
   }
   else {
@@ -552,6 +561,9 @@ function hasExRestrictedAuthenticationAccessOnly(data) {
 
 function hasExAuthentication(data) {
   if (data.operation['x-scopes'] && data.operation['x-scopes'].length) {
+    return true;
+  }
+  else if (data.operation['x-restricted-access']) {
     return true;
   }
   else {
@@ -692,7 +704,8 @@ function convertInner(api, options, callback) {
     data.utils.getAuthenticationStr = getAuthenticationStr;
     data.utils.hasExAuthentication = hasExAuthentication;
     data.utils.getExAuthenticationStr = getExAuthenticationStr;
-    data.utils.hasExRestrictedAuthenticationAccessOnly = hasExRestrictedAuthenticationAccessOnly;
+    data.utils.hasExRestrictedAuthenticationAEMO = hasExRestrictedAuthenticationAEMO;
+    data.utils.hasExRestrictedAuthenticationREGISTER = hasExRestrictedAuthenticationREGISTER;
     data.utils.join = function(s) {
         return s.split('\r').join('').split('\n').join(' ').trim();
     };

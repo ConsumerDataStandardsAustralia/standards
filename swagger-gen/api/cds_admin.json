@@ -99,7 +99,7 @@
         "x-scopes": [
           "admin:metadata:update"
         ],
-        "x-restricted-access": true,
+        "x-restricted-access": "REGISTER",
         "x-version": "1",
         "x-codegen-request-body-name": "action"
       }
@@ -189,7 +189,7 @@
         "x-scopes": [
           "admin:metrics.basic:read"
         ],
-        "x-restricted-access": true,
+        "x-restricted-access": "REGISTER",
         "x-version": "3"
       }
     }

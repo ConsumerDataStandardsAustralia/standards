@@ -51,8 +51,10 @@
 
 {{ data.security = data.operation.security ? data.operation.security : data.api.security; }}
   {{? data.utils.hasExAuthentication(data) }}
-    {{? data.utils.hasExRestrictedAuthenticationAccessOnly(data) }}
-      {{#def.restricted_access_authentication_ex}}
+    {{? data.utils.hasExRestrictedAuthenticationAEMO(data) }}
+      {{#def.restricted_access_authentication_AEMO_ex}}
+    {{?? data.utils.hasExRestrictedAuthenticationREGISTER(data) }}
+      {{#def.restricted_access_authentication_REGISTER_ex}}
     {{??}}
       {{#def.authentication_ex}}
     {{?}}

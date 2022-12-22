@@ -2157,7 +2157,7 @@ Updated obligation dates for FAPI 1.0 Phase 3
 </tr>
 <tr>
 <td><a id="nref-TDIF"></a><strong>[TDIF]</strong></td>
-<td>Digital Transformation Agency - Trusted Digital Identity Framework <a href="https://www.dta.gov.au/our-projects/digital-identity/trusted-digital-identity-framework">https://www.dta.gov.au/our-projects/digital-identity/trusted-digital-identity-framework</a></td>
+<td>Digital Transformation Agency - Trusted Digital Identity Framework <a href="https://www.digitalidentity.gov.au/tdif">https://www.digitalidentity.gov.au/tdif</a></td>
 <td>Apr 2019</td>
 </tr>
 <tr>
@@ -4450,7 +4450,7 @@ The standards in this section outline requirements that apply when a disclosure 
 </thead><tbody>
 <tr>
 <td><strong>Authorisation:</strong><br/>Amending consent</td>
-<td><strong>Effective from November 2021</strong>: <br>The following standards apply when a Data Holder invites a CDR consumer to amend a current authorisation as per rule 4.22A and the ADR has supplied a <em>cdr_arrangement_id</em>:</td>
+<td>The following standards apply when a Data Holder invites a CDR consumer to amend a current authorisation as per rule 4.22A and the ADR has supplied a <em>cdr_arrangement_id</em>:</td>
 </tr>
 <tr>
 <td>Customer Profile</td>
@@ -6590,14 +6590,7 @@ client_id=s6BhdRkqt3
 
 <h2 id='cors'>CORS</h2>
 
-<p>Cross-origin resource sharing (CORS) protections must be disabled (ie. <code>Access-Control-Allow-Origin</code> set to &quot;*&quot;) for the following end points:</p>
-
-<ul>
-<li>Get Status</li>
-<li>Get Outages</li>
-<li>Get Products</li>
-<li>Get Product Detail</li>
-</ul>
+<p>Cross-origin resource sharing (CORS) protections must be disabled (ie. <code>Access-Control-Allow-Origin</code> set to &quot;*&quot;) for all unauthenticated end points unless specifically stated otherwise in these standards or in a normative reference.</p>
 
 <p><a id="request-object"></a></p>
 
@@ -8928,7 +8921,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table></p>
 <h1 id='register-apis'>Register APIs</h1>
-<p>This following provides an overview of the Register APIs for Data Holders and Data Recipients to collect participant metadata exclusively for the banking sector.
+<p>The following section provides an overview of the Register APIs for Data Holders and Data Recipients to collect participant metadata.
 These endpoints are exposed by the Register and consumed by Data Holders and Data Recipients.</p>
 <pre class="highlight diff tab-diff"><code>Updated Register API field types to use Common Field Types
 
@@ -9009,7 +9002,7 @@ is absent
 <tr>
 <td>Get Software Products Status</td>
 <td>Data Holder Brand</td>
-<td>Software Product Statuses to check validity of ADR <a href="#accredited-data-recipient-and-software-product-statuses">requests</a></td>
+<td>Software Product Statuses to check validity of ADR requests</td>
 <td></td>
 <td><i class="icon-check"></i></td>
 <td></td>
@@ -9017,7 +9010,7 @@ is absent
 <tr>
 <td>Get Data Recipient Statuses</td>
 <td>Data Holder Brand</td>
-<td>Data Recipient Statuses to check validity of ADR <a href="#accredited-data-recipient-and-software-product-statuses">requests</a></td>
+<td>Data Recipient Statuses to check validity of ADR requests</td>
 <td></td>
 <td><i class="icon-check"></i></td>
 <td></td>
@@ -41858,7 +41851,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>accountCharges</td>
 <td><a href="#schemacdr-energy-apienergyinvoiceaccountcharges">EnergyInvoiceAccountCharges</a></td>
 <td>optional</td>
-<td>Object contain charges and credits related to electricity usage</td>
+<td>Object contains account level charges and credits related to electricity usage</td>
 </tr>
 <tr>
 <td>paymentStatus</td>
@@ -42137,7 +42130,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 </span></code></pre>
 
-<p><em>Object contain charges and credits related to electricity usage</em></p>
+<p><em>Object contains account level charges and credits related to electricity usage</em></p>
 
 <h3 id='properties-41'>Properties</h3>
 
@@ -60896,7 +60889,7 @@ x-cds-arrangement: string
 </tbody></table>
 
 <p><aside class="success">
-This operation does not require authentication
+This operation may only be called by an Energy Retailer using the information security policies defined by AEMO
 </aside></p>
 
 <h2 id='get-service-point-detail-sr'>Get Service Point Detail (SR)</h2>
@@ -61190,7 +61183,7 @@ x-cds-arrangement: string
 </tbody></table>
 
 <p><aside class="success">
-This operation does not require authentication
+This operation may only be called by an Energy Retailer using the information security policies defined by AEMO
 </aside></p>
 
 <h2 id='get-usage-for-service-point-sr'>Get Usage For Service Point (SR)</h2>
@@ -61505,7 +61498,7 @@ x-cds-arrangement: string
 </tbody></table>
 
 <p><aside class="success">
-This operation does not require authentication
+This operation may only be called by an Energy Retailer using the information security policies defined by AEMO
 </aside></p>
 
 <h2 id='get-usage-for-specific-service-points-sr'>Get Usage For Specific Service Points (SR)</h2>
@@ -61838,7 +61831,7 @@ x-cds-arrangement: string
 </tbody></table>
 
 <p><aside class="success">
-This operation does not require authentication
+This operation may only be called by an Energy Retailer using the information security policies defined by AEMO
 </aside></p>
 
 <h2 id='get-der-for-service-point-sr'>Get DER For Service Point (SR)</h2>
@@ -62094,7 +62087,7 @@ x-cds-arrangement: string
 </tbody></table>
 
 <p><aside class="success">
-This operation does not require authentication
+This operation may only be called by an Energy Retailer using the information security policies defined by AEMO
 </aside></p>
 
 <h2 id='get-der-for-specific-service-points-sr'>Get DER For Specific Service Points (SR)</h2>
@@ -62408,7 +62401,7 @@ x-cds-arrangement: string
 </tbody></table>
 
 <p><aside class="success">
-This operation does not require authentication
+This operation may only be called by an Energy Retailer using the information security policies defined by AEMO
 </aside></p>
 
 <h2 class="schema-heading" id="cdr-energy-secondary-data-holder-api-schemas">Schemas</h2>
