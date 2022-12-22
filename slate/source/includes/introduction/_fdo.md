@@ -5,6 +5,7 @@ The standards, as published from time to time, may include specific statements i
 The table below highlights these areas of the standards.
 
 ```diff
+**v1.21.0 Change**
 Updated obligation dates for FAPI 1.0 Phase 3
 + Added obligation dates for FAPI 1.0 Phase 4
 Updated Get Energy Accounts V2 and Get Energy Account Detail V2 obligation dates in line with the change to FY23 #3 obligation mileston
@@ -48,3 +49,7 @@ Updated Get Energy Accounts V2 and Get Energy Account Detail V2 obligation dates
 |[Get Energy Account Detail V2](#get-energy-account-detail)|Data Holder **MUST** implement v2 of this endpoint by **April 14th 2023** | April 14th 2023 |
 |[Information Security profile](#security-profile) | FAPI 1.0 adoption is introduced across four phases.<br/><strong>Phase 3: Support Authorization Code Flow and Hybrid Flow</strong> includes, amongst other changes:<ul><li>Data Holders **MUST** support Authorization Code Flow</li><li>Data Holders **MUST** support Hybrid Flow</li></ul> | April 14th 2023 |
 |[Information Security profile](#security-profile) | FAPI 1.0 adoption is introduced across four phases.<br/><strong>Phase 4: Retire Hybrid Flow</strong>:<ul><li>Data Holders **MAY** retire Hybrid Flow</li></ul> | July 10th 2023 |
+|[Get Accounts V2](#get-accounts)|Version 2 of this end point **MUST** be made available by affected data holders by July 10th 2023|July 10th 2023|
+|[Get Account Detail V3](#get-account-detail)|Version 3 of this end point **MUST** be made available by affected data holders by July 10th 2023|July 10th 2023|
+|[Get Accounts V1](#get-account-detail)|Data Holders **MAY** decommission v1 of this end point from March 11th 2024| March 11th 2024 |
+|[Get Account Detail V2](#get-account-detail)|Data Holders **MAY** decommission v2 of this end point from March 11th 2024| March 11th 2024 |

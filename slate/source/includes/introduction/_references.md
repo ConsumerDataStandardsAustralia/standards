@@ -20,7 +20,7 @@
 | <a id="nref-OIDD"></a>**[OIDD]**        | OpenID Connect Discovery 1.0 incorporating errata set 1: <http://openid.net/specs/openid-connect-discovery-1_0.html>                                                          |Nov 2014
 | <a id="nref-PAR"></a>**[PAR]**          | OAuth 2.0 Pushed Authorization Requests: <https://tools.ietf.org/html/draft-ietf-oauth-par-01>                                                                                |Feb 2020
 | <a id="nref-RFC7636"></a><a id="nref-PKCE"></a>**[PKCE]**        | Proof Key for Code Exchange by OAuth Public Clients: <https://datatracker.ietf.org/doc/html/rfc7636> | September 2015
-| <a id="nref-TDIF"></a>**[TDIF]**        | Digital Transformation Agency - Trusted Digital Identity Framework <https://www.dta.gov.au/our-projects/digital-identity/trusted-digital-identity-framework>                  |Apr 2019
+| <a id="nref-TDIF"></a>**[TDIF]**        | Digital Transformation Agency - Trusted Digital Identity Framework <https://www.digitalidentity.gov.au/tdif>                  |Apr 2019
 | <a id="nref-RFC2119"></a>**[RFC2119]**  | Key words for use in RFCs to Indicate Requirement Levels <https://tools.ietf.org/html/rfc2119>                                                                                |Mar 1997
 | <a id="nref-RFC2397"></a>**[RFC2397]**  | The "data" URL scheme: <https://tools.ietf.org/html/rfc2397>       |Aug 1998
 | <a id="nref-RFC3339"></a>**[RFC3339]**  | Date and Time on the Internet: Timestamps: <https://tools.ietf.org/html/rfc3339> | Jul 2002

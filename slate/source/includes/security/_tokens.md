@@ -36,6 +36,7 @@
 ```
 
 ```diff
+**v1.21.0 Change**
 Updated heading levels to be consistent
 Moved hashing requirements underneath OIDC Hybrid Flow
 Clarified ID Token encryption requirements apply only to the OIDC Hybrid Flow
@@ -64,7 +65,7 @@ The following requirements apply to the OIDC Hybrid Flow:
 
 #### Authorization Code Flow requirements
 
-For response_type “code”, in accordance with **[[FAPI-1.0-Advanced]](#nref-FAPI-1-0-Advanced)**, ID Tokens **MUST** be signed and **MUST NOT** be encrypted when returned to a Data Recipient Software Product from the Token End Point. 
+For response_type “code”, in accordance with **[[FAPI-1.0-Advanced]](#nref-FAPI-1-0-Advanced)**, ID Tokens **MUST** be signed and **MUST NOT** be encrypted when returned to a Data Recipient Software Product from the Token End Point.
 
 
 ### Access Token

@@ -7,7 +7,7 @@
 </thead><tbody>
 <tr>
 <td><strong>Authorisation:</strong><br/>Amending consent</td>
-<td><strong>Effective from November 2021</strong>: <br>The following standards apply when a Data Holder invites a CDR consumer to amend a current authorisation as per rule 4.22A and the ADR has supplied a <em>cdr_arrangement_id</em>:</td>
+<td>The following standards apply when a Data Holder invites a CDR consumer to amend a current authorisation as per rule 4.22A and the ADR has supplied a <em>cdr_arrangement_id</em>:</td>
 </tr>
 <tr>
 <td>Customer Profile</td>

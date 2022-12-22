@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>Get Account Detail v1</title>
+    <title>Get Account Detail v2</title>
     <link href="../../images/favicon.ico" rel="icon" type="image/ico" />
 
     <style>
@@ -202,7 +202,7 @@
       <script src="../../javascripts/all_nosearch.js"></script>
   </head>
 
-  <body class="includes includes_obsolete includes_obsolete_get-account-detail-v1" data-languages="[]">
+  <body class="includes includes_obsolete includes_obsolete_get-account-detail-v2" data-languages="[]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -213,7 +213,7 @@
       <img src="../../images/logoSanta.png" class="logo" alt="Logosanta" />
       <ul id="toc" class="toc-list-h1">
             <li class="toc-child">
-              <a href="#get-account-detail-v1" class="toc-h1 toc-link" data-title="Get Account Detail V1">Get Account Detail V1</a>
+              <a href="#get-account-detail-v2" class="toc-h1 toc-link" data-title="Get Account Detail V2">Get Account Detail V2</a>
               <ul class="toc-list-h2">
                       <li>
                         <a href="#get-account-detail" class="toc-h2 toc-link" data-title="Get Account Detail">Get Account Detail</a>
@@ -228,10 +228,10 @@
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id='get-account-detail-v1'>Get Account Detail V1</h1>
-<p>This page documents the obsolete version 1 of the Get Account Detail end point.</p>
+        <h1 id='get-account-detail-v2'>Get Account Detail V2</h1>
+<p>This page documents the obsolete version 2 of the Get Account Detail end point.</p>
 
-<p>This version is to be ceased to be called by data recipients by <strong>February 28th 2023</strong> and can be decommissioned by data holders as of that date.</p>
+<p>This version is to be ceased to be called by data recipients by <strong>March 11th 2024</strong> and can be decommissioned by data holders as of that date.</p>
 <h2 id='get-account-detail'>Get Account Detail</h2>
 <p><a id="opIdgetAccountDetail"></a></p>
 
@@ -272,7 +272,7 @@
 </code></pre>
 <p><code>GET /banking/accounts/{accountId}</code></p>
 
-<p>Obtain detailed information on a single account</p>
+<p>Obtain detailed information on a single account.</p>
 <h3 id='endpoint-version'>Endpoint Version</h3>
 <table><thead>
 <tr>
@@ -282,7 +282,7 @@
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>1</strong></td>
+<td><strong>2</strong></td>
 </tr>
 </tbody></table>
 
@@ -323,14 +323,14 @@
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>x-fapi-auth-date</td>
 <td>header</td>
 <td>string</td>
-<td>optional</td>
-<td>The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.</td>
+<td>conditional</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-R-Draft">[FAPI-R-Draft]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
@@ -343,7 +343,7 @@
 <td>x-cds-client-headers</td>
 <td>header</td>
 <td><a href="#common-field-types">Base64</a></td>
-<td>optional</td>
+<td>conditional</td>
 <td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
 </tr>
 </tbody></table>
@@ -566,12 +566,24 @@
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>Success</td>
-<td><a href="#schemacdr-banking-apiresponsebankingaccountbyid">ResponseBankingAccountById</a></td>
+<td><a href="#schemacdr-banking-apiresponsebankingaccountbyidv2">ResponseBankingAccountByIdV2</a></td>
 </tr>
 <tr>
-<td>4xx</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5"><strong>Client Error</strong></a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-404-authorisation-unavailable-banking-account">404 - Unavailable Banking Account</a></li><li><a href="#error-404-authorisation-invalid-banking-account">404 - Invalid Banking Account</a></li><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li></ul></td>
+<td>400</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
+<td><a href="#schemacdr-banking-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
+</tr>
+<tr>
+<td>404</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.4">Not Found</a></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-404-authorisation-unavailable-banking-account">404 - Unavailable Banking Account</a></li><li><a href="#error-404-authorisation-invalid-banking-account">404 - Invalid Banking Account</a></li></ul></td>
+<td><a href="#schemacdr-banking-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
+</tr>
+<tr>
+<td>406</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.6">Not Acceptable</a></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li></ul></td>
 <td><a href="#schemacdr-banking-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 </tbody></table>
@@ -597,14 +609,28 @@
 <td>x-fapi-interaction-id</td>
 <td>string</td>
 <td></td>
-<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
-<td>4xx</td>
+<td>400</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
 <td></td>
-<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+</tr>
+<tr>
+<td>404</td>
+<td>x-fapi-interaction-id</td>
+<td>string</td>
+<td></td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+</tr>
+<tr>
+<td>406</td>
+<td>x-fapi-interaction-id</td>
+<td>string</td>
+<td></td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 </tbody></table>
 
@@ -612,62 +638,24 @@
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">bank:accounts.detail:read</a>
 </aside></p>
-<h3 id='properties'>Properties</h3>
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>additionalInfo</td>
-<td>string</td>
-<td>optional</td>
-<td>Display text providing more information on the condition</td>
-</tr>
-<tr>
-<td>additionalInfoUri</td>
-<td><a href="#common-field-types">URIString</a></td>
-<td>optional</td>
-<td>Link to a web page with more information on this condition</td>
-</tr>
-</tbody></table>
 
-<h2 class="schema-toc" id="tocSresponsebankingaccountlist">ResponseBankingAccountList</h2>
+<h3 class="schema-toc" id="tocSresponseerrorlistv2">ResponseErrorListV2</h3>
 
-<p><a id="schemacdr-banking-apiresponsebankingaccountlist"></a></p>
+<p><a id="schemacdr-banking-apiresponseerrorlistv2"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"accounts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"creationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"nickname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"openStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CLOSED"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"isOwned"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"maskedNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"productCategory"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUSINESS_LOANS"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"productName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="s2">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"detail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"urn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
       </span><span class="p">}</span><span class="w">
-    </span><span class="p">]</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"first"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"prev"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"next"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"totalRecords"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"totalPages"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
-  </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-2'>Properties</h3>
+</span></code></pre><h3 id='properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -677,47 +665,47 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </thead><tbody>
 <tr>
-<td>data</td>
-<td>object</td>
+<td>errors</td>
+<td>[object]</td>
 <td>mandatory</td>
 <td>none</td>
 </tr>
 <tr>
-<td>» accounts</td>
-<td>[<a href="#schemacdr-banking-apibankingaccount">BankingAccount</a>]</td>
+<td>» code</td>
+<td>string</td>
 <td>mandatory</td>
-<td>The list of accounts returned. If the filter results in an empty set then this array may have no records</td>
+<td>The code of the error encountered. Where the error is specific to the respondent, an application-specific error code, expressed as a string value. If the error is application-specific, the URN code that the specific error extends must be provided in the meta object. Otherwise, the value is the error code URN.</td>
 </tr>
 <tr>
-<td>links</td>
-<td><a href="#schemacdr-banking-apilinkspaginated">LinksPaginated</a></td>
+<td>» title</td>
+<td>string</td>
 <td>mandatory</td>
-<td>none</td>
+<td>A short, human-readable summary of the problem that MUST NOT change from occurrence to occurrence of the problem represented by the error code.</td>
 </tr>
 <tr>
-<td>meta</td>
-<td><a href="#schemacdr-banking-apimetapaginated">MetaPaginated</a></td>
+<td>» detail</td>
+<td>string</td>
 <td>mandatory</td>
-<td>none</td>
+<td>A human-readable explanation specific to this occurrence of the problem.</td>
+</tr>
+<tr>
+<td>» meta</td>
+<td><a href="#schemacdr-banking-apimetaerror">MetaError</a></td>
+<td>optional</td>
+<td>Additional data for customised error codes</td>
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSbankingaccount">BankingAccount</h2>
+<h3 class="schema-toc" id="tocSmetaerror">MetaError</h3>
 
-<p><a id="schemacdr-banking-apibankingaccount"></a></p>
+<p><a id="schemacdr-banking-apimetaerror"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"creationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"nickname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"openStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CLOSED"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"isOwned"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"maskedNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"productCategory"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUSINESS_LOANS"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"productName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="s2">"urn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-3'>Properties</h3>
+</span></code></pre>
+<p><em>Additional data for customised error codes</em></p>
+<h3 id='properties-2'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -727,80 +715,16 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </thead><tbody>
 <tr>
-<td>accountId</td>
-<td><a href="#common-field-types">ASCIIString</a></td>
-<td>mandatory</td>
-<td>A unique ID of the account adhering to the standards for ID permanence</td>
-</tr>
-<tr>
-<td>creationDate</td>
-<td><a href="#common-field-types">DateString</a></td>
-<td>optional</td>
-<td>Date that the account was created (if known)</td>
-</tr>
-<tr>
-<td>displayName</td>
+<td>urn</td>
 <td>string</td>
-<td>mandatory</td>
-<td>The display name of the account as defined by the bank. This should not incorporate account numbers or PANs. If it does the values should be masked according to the rules of the MaskedAccountString common type.</td>
-</tr>
-<tr>
-<td>nickname</td>
-<td>string</td>
-<td>optional</td>
-<td>A customer supplied nick name for the account</td>
-</tr>
-<tr>
-<td>openStatus</td>
-<td>string</td>
-<td>optional</td>
-<td>Open or closed status for the account. If not present then OPEN is assumed</td>
-</tr>
-<tr>
-<td>isOwned</td>
-<td><a href="#common-field-types">Boolean</a></td>
-<td>optional</td>
-<td>Flag indicating that the customer associated with the authorisation is an owner of the account. Does not indicate sole ownership, however. If not present then &#39;true&#39; is assumed</td>
-</tr>
-<tr>
-<td>maskedNumber</td>
-<td><a href="#common-field-types">MaskedAccountString</a></td>
-<td>mandatory</td>
-<td>A masked version of the account. Whether BSB/Account Number, Credit Card PAN or another number</td>
-</tr>
-<tr>
-<td>productCategory</td>
-<td><a href="#schemacdr-banking-apibankingproductcategory">BankingProductCategory</a></td>
-<td>mandatory</td>
-<td>The category to which a product or account belongs. See <a href="#product-categories">here</a> for more details</td>
-</tr>
-<tr>
-<td>productName</td>
-<td>string</td>
-<td>mandatory</td>
-<td>The unique identifier of the account as defined by the data holder (akin to model number for the account)</td>
-</tr>
-</tbody></table>
-<h4 id='enumerated-values'>Enumerated Values</h4>
-<table><thead>
-<tr>
-<th>Property</th>
-<th>Value</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>openStatus</td>
-<td>CLOSED</td>
-</tr>
-<tr>
-<td>openStatus</td>
-<td>OPEN</td>
+<td>conditional</td>
+<td>The CDR error code URN which the application-specific error code extends. Mandatory if the error <code>code</code> is an application-specific error rather than a standardised error code.</td>
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSresponsebankingaccountbyid">ResponseBankingAccountById</h2>
+<h3 class="schema-toc" id="tocSresponsebankingaccountbyidv2">ResponseBankingAccountByIdV2</h3>
 
-<p><a id="schemacdr-banking-apiresponsebankingaccountbyid"></a></p>
+<p><a id="schemacdr-banking-apiresponsebankingaccountbyidv2"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -1000,7 +924,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-4'>Properties</h3>
+</span></code></pre><h3 id='properties-3'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -1011,7 +935,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </thead><tbody>
 <tr>
 <td>data</td>
-<td><a href="#schemacdr-banking-apibankingaccountdetail">BankingAccountDetail</a></td>
+<td><a href="#schemacdr-banking-apibankingaccountdetailv2">BankingAccountDetailV2</a></td>
 <td>mandatory</td>
 <td>none</td>
 </tr>
@@ -1029,105 +953,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSbankingaccount">BankingAccount</h2>
+<h3 class="schema-toc" id="tocSbankingaccountdetailv2">BankingAccountDetailV2</h3>
 
-<p><a id="schemacdr-banking-apibankingaccount"></a></p>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"creationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"nickname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"openStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CLOSED"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"isOwned"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"maskedNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"productCategory"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUSINESS_LOANS"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"productName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-
-</span></code></pre><h3 id='properties-5'>Properties</h3>
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>accountId</td>
-<td><a href="#common-field-types">ASCIIString</a></td>
-<td>mandatory</td>
-<td>A unique ID of the account adhering to the standards for ID permanence</td>
-</tr>
-<tr>
-<td>creationDate</td>
-<td><a href="#common-field-types">DateString</a></td>
-<td>optional</td>
-<td>Date that the account was created (if known)</td>
-</tr>
-<tr>
-<td>displayName</td>
-<td>string</td>
-<td>mandatory</td>
-<td>The display name of the account as defined by the bank. This should not incorporate account numbers or PANs. If it does the values should be masked according to the rules of the MaskedAccountString common type.</td>
-</tr>
-<tr>
-<td>nickname</td>
-<td>string</td>
-<td>optional</td>
-<td>A customer supplied nick name for the account</td>
-</tr>
-<tr>
-<td>openStatus</td>
-<td>string</td>
-<td>optional</td>
-<td>Open or closed status for the account. If not present then OPEN is assumed</td>
-</tr>
-<tr>
-<td>isOwned</td>
-<td><a href="#common-field-types">Boolean</a></td>
-<td>optional</td>
-<td>Flag indicating that the customer associated with the authorisation is an owner of the account. Does not indicate sole ownership, however. If not present then &#39;true&#39; is assumed</td>
-</tr>
-<tr>
-<td>maskedNumber</td>
-<td><a href="#common-field-types">MaskedAccountString</a></td>
-<td>mandatory</td>
-<td>A masked version of the account. Whether BSB/Account Number, Credit Card PAN or another number</td>
-</tr>
-<tr>
-<td>productCategory</td>
-<td><a href="#schemacdr-banking-apibankingproductcategory">BankingProductCategory</a></td>
-<td>mandatory</td>
-<td>The category to which a product or account belongs. See <a href="#product-categories">here</a> for more details</td>
-</tr>
-<tr>
-<td>productName</td>
-<td>string</td>
-<td>mandatory</td>
-<td>The unique identifier of the account as defined by the data holder (akin to model number for the account)</td>
-</tr>
-</tbody></table>
-<h4 id='enumerated-values-2'>Enumerated Values</h4>
-<table><thead>
-<tr>
-<th>Property</th>
-<th>Value</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>openStatus</td>
-<td>CLOSED</td>
-</tr>
-<tr>
-<td>openStatus</td>
-<td>OPEN</td>
-</tr>
-</tbody></table>
-
-<h2 class="schema-toc" id="tocSbankingaccountdetail">BankingAccountDetail</h2>
-
-<p><a id="schemacdr-banking-apibankingaccountdetail"></a></p>
+<p><a id="schemacdr-banking-apibankingaccountdetailv2"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"creationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -1321,7 +1149,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-6'>Properties</h3>
+</span></code></pre><h3 id='properties-4'>Properties</h3>
 <p><em>allOf</em></p>
 
 <table><thead>
@@ -1394,7 +1222,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>» loan</td>
-<td><a href="#schemacdr-banking-apibankingloanaccount">BankingLoanAccount</a></td>
+<td><a href="#schemacdr-banking-apibankingloanaccountv2">BankingLoanAccountV2</a></td>
 <td>conditional</td>
 <td>none</td>
 </tr>
@@ -1442,7 +1270,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </thead><tbody>
 <tr>
 <td>»» <em>anonymous</em></td>
-<td><a href="#schemacdr-banking-apibankingproductfeature">BankingProductFeature</a></td>
+<td><a href="#schemacdr-banking-apibankingproductfeaturev2">BankingProductFeatureV2</a></td>
 <td>mandatory</td>
 <td>none</td>
 </tr>
@@ -1495,7 +1323,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>The addresses for the account to be used for correspondence</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-3'>Enumerated Values</h4>
+<h4 id='enumerated-values'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -1516,7 +1344,103 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSbankingtermdepositaccount">BankingTermDepositAccount</h2>
+<h3 class="schema-toc" id="tocSbankingaccount">BankingAccount</h3>
+
+<p><a id="schemacdr-banking-apibankingaccount"></a></p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"creationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"nickname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"openStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CLOSED"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"isOwned"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"maskedNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"productCategory"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUSINESS_LOANS"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"productName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre><h3 id='properties-5'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>accountId</td>
+<td><a href="#common-field-types">ASCIIString</a></td>
+<td>mandatory</td>
+<td>A unique ID of the account adhering to the standards for ID permanence</td>
+</tr>
+<tr>
+<td>creationDate</td>
+<td><a href="#common-field-types">DateString</a></td>
+<td>optional</td>
+<td>Date that the account was created (if known)</td>
+</tr>
+<tr>
+<td>displayName</td>
+<td>string</td>
+<td>mandatory</td>
+<td>The display name of the account as defined by the bank. This should not incorporate account numbers or PANs. If it does the values should be masked according to the rules of the MaskedAccountString common type.</td>
+</tr>
+<tr>
+<td>nickname</td>
+<td>string</td>
+<td>optional</td>
+<td>A customer supplied nick name for the account</td>
+</tr>
+<tr>
+<td>openStatus</td>
+<td>string</td>
+<td>optional</td>
+<td>Open or closed status for the account. If not present then OPEN is assumed</td>
+</tr>
+<tr>
+<td>isOwned</td>
+<td><a href="#common-field-types">Boolean</a></td>
+<td>optional</td>
+<td>Flag indicating that the customer associated with the authorisation is an owner of the account. Does not indicate sole ownership, however. If not present then &#39;true&#39; is assumed</td>
+</tr>
+<tr>
+<td>maskedNumber</td>
+<td><a href="#common-field-types">MaskedAccountString</a></td>
+<td>mandatory</td>
+<td>A masked version of the account. Whether BSB/Account Number, Credit Card PAN or another number</td>
+</tr>
+<tr>
+<td>productCategory</td>
+<td><a href="#schemacdr-banking-apibankingproductcategory">BankingProductCategory</a></td>
+<td>mandatory</td>
+<td>The category to which a product or account belongs. See <a href="#product-categories">here</a> for more details</td>
+</tr>
+<tr>
+<td>productName</td>
+<td>string</td>
+<td>mandatory</td>
+<td>The unique identifier of the account as defined by the data holder (akin to model number for the account)</td>
+</tr>
+</tbody></table>
+<h4 id='enumerated-values-2'>Enumerated Values</h4>
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>openStatus</td>
+<td>CLOSED</td>
+</tr>
+<tr>
+<td>openStatus</td>
+<td>OPEN</td>
+</tr>
+</tbody></table>
+
+<h3 class="schema-toc" id="tocSbankingtermdepositaccount">BankingTermDepositAccount</h3>
 
 <p><a id="schemacdr-banking-apibankingtermdepositaccount"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -1527,7 +1451,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="s2">"maturityInstructions"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HOLD_ON_MATURITY"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-7'>Properties</h3>
+</span></code></pre><h3 id='properties-6'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -1567,7 +1491,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Current instructions on action to be taken at maturity. This includes default actions that may be specified in the terms and conditions for the product e.g. roll-over to the same term and frequency of interest payments</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-4'>Enumerated Values</h4>
+<h4 id='enumerated-values-3'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -1588,7 +1512,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSbankingcreditcardaccount">BankingCreditCardAccount</h2>
+<h3 class="schema-toc" id="tocSbankingcreditcardaccount">BankingCreditCardAccount</h3>
 
 <p><a id="schemacdr-banking-apibankingcreditcardaccount"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -1598,7 +1522,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="s2">"paymentDueDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-8'>Properties</h3>
+</span></code></pre><h3 id='properties-7'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -1633,9 +1557,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSbankingloanaccount">BankingLoanAccount</h2>
+<h3 class="schema-toc" id="tocSbankingloanaccountv2">BankingLoanAccountV2</h3>
 
-<p><a id="schemacdr-banking-apibankingloanaccount"></a></p>
+<p><a id="schemacdr-banking-apibankingloanaccountv2"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"originalStartDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"originalLoanAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -1656,7 +1580,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="s2">"repaymentFrequency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-9'>Properties</h3>
+</span></code></pre><h3 id='properties-8'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -1686,13 +1610,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>loanEndDate</td>
 <td><a href="#common-field-types">DateString</a></td>
-<td>mandatory</td>
+<td>optional</td>
 <td>Date that the loan is due to be repaid in full</td>
 </tr>
 <tr>
 <td>nextInstalmentDate</td>
 <td><a href="#common-field-types">DateString</a></td>
-<td>mandatory</td>
+<td>optional</td>
 <td>Next date that an instalment is required</td>
 </tr>
 <tr>
@@ -1752,11 +1676,11 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>repaymentFrequency</td>
 <td><a href="#common-field-types">ExternalRef</a></td>
-<td>mandatory</td>
+<td>optional</td>
 <td>The expected or required repayment frequency. Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 Durations</a> (excludes recurrence syntax)</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-5'>Enumerated Values</h4>
+<h4 id='enumerated-values-4'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -1773,730 +1697,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSbankingproductfeature">BankingProductFeature</h2>
-
-<p><a id="schemacdr-banking-apibankingproductfeature"></a></p>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"featureType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ADDITIONAL_CARDS"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-
-</span></code></pre><h3 id='properties-10'>Properties</h3>
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>featureType</td>
-<td>string</td>
-<td>mandatory</td>
-<td>The type of feature described</td>
-</tr>
-<tr>
-<td>additionalValue</td>
-<td>string</td>
-<td>conditional</td>
-<td>Generic field containing additional information relevant to the <a href="#tocSproductfeaturetypedoc">featureType</a> specified. Whether mandatory or not is dependent on the value of the <a href="#tocSproductfeaturetypedoc">featureType.</a></td>
-</tr>
-<tr>
-<td>additionalInfo</td>
-<td>string</td>
-<td>conditional</td>
-<td>Display text providing more information on the feature. Mandatory if the <a href="#tocSproductfeaturetypedoc">feature type</a> is set to OTHER</td>
-</tr>
-<tr>
-<td>additionalInfoUri</td>
-<td><a href="#common-field-types">URIString</a></td>
-<td>optional</td>
-<td>Link to a web page with more information on this feature</td>
-</tr>
-</tbody></table>
-<h4 id='enumerated-values-6'>Enumerated Values</h4>
-<table><thead>
-<tr>
-<th>Property</th>
-<th>Value</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>featureType</td>
-<td>ADDITIONAL_CARDS</td>
-</tr>
-<tr>
-<td>featureType</td>
-<td>BALANCE_TRANSFERS</td>
-</tr>
-<tr>
-<td>featureType</td>
-<td>BILL_PAYMENT</td>
-</tr>
-<tr>
-<td>featureType</td>
-<td>BONUS_REWARDS</td>
-</tr>
-<tr>
-<td>featureType</td>
-<td>CARD_ACCESS</td>
-</tr>
-<tr>
-<td>featureType</td>
-<td>COMPLEMENTARY_PRODUCT_DISCOUNTS</td>
-</tr>
-<tr>
-<td>featureType</td>
-<td>DIGITAL_BANKING</td>
-</tr>
-<tr>
-<td>featureType</td>
-<td>DIGITAL_WALLET</td>
-</tr>
-<tr>
-<td>featureType</td>
-<td>DONATE_INTEREST</td>
-</tr>
-<tr>
-<td>featureType</td>
-<td>FREE_TXNS</td>
-</tr>
-<tr>
-<td>featureType</td>
-<td>FREE_TXNS_ALLOWANCE</td>
-</tr>
-<tr>
-<td>featureType</td>
-<td>INSURANCE</td>
-</tr>
-<tr>
-<td>featureType</td>
-<td>INTEREST_FREE</td>
-</tr>
-<tr>
-<td>featureType</td>
-<td>INTEREST_FREE_TRANSFERS</td>
-</tr>
-<tr>
-<td>featureType</td>
-<td>LOYALTY_PROGRAM</td>
-</tr>
-<tr>
-<td>featureType</td>
-<td>NOTIFICATIONS</td>
-</tr>
-<tr>
-<td>featureType</td>
-<td>NPP_ENABLED</td>
-</tr>
-<tr>
-<td>featureType</td>
-<td>NPP_PAYID</td>
-</tr>
-<tr>
-<td>featureType</td>
-<td>OFFSET</td>
-</tr>
-<tr>
-<td>featureType</td>
-<td>OTHER</td>
-</tr>
-<tr>
-<td>featureType</td>
-<td>OVERDRAFT</td>
-</tr>
-<tr>
-<td>featureType</td>
-<td>REDRAW</td>
-</tr>
-<tr>
-<td>featureType</td>
-<td>UNLIMITED_TXNS</td>
-</tr>
-</tbody></table>
-
-<h2 class="schema-toc" id="tocSbankingproductconstraint">BankingProductConstraint</h2>
-
-<p><a id="schemacdr-banking-apibankingproductconstraint"></a></p>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"constraintType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MAX_BALANCE"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-
-</span></code></pre><h3 id='properties-11'>Properties</h3>
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>constraintType</td>
-<td>string</td>
-<td>mandatory</td>
-<td>The type of constraint described.  See the next section for an overview of valid values and their meaning</td>
-</tr>
-<tr>
-<td>additionalValue</td>
-<td>string</td>
-<td>conditional</td>
-<td>Generic field containing additional information relevant to the <a href="#tocSproductconstrainttypedoc">constraintType</a> specified.  Whether mandatory or not is dependent on the value of <a href="#tocSproductconstrainttypedoc">constraintType</a></td>
-</tr>
-<tr>
-<td>additionalInfo</td>
-<td>string</td>
-<td>optional</td>
-<td>Display text providing more information the constraint</td>
-</tr>
-<tr>
-<td>additionalInfoUri</td>
-<td><a href="#common-field-types">URIString</a></td>
-<td>optional</td>
-<td>Link to a web page with more information on the constraint</td>
-</tr>
-</tbody></table>
-<h4 id='enumerated-values-7'>Enumerated Values</h4>
-<table><thead>
-<tr>
-<th>Property</th>
-<th>Value</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>constraintType</td>
-<td>MAX_BALANCE</td>
-</tr>
-<tr>
-<td>constraintType</td>
-<td>MAX_LIMIT</td>
-</tr>
-<tr>
-<td>constraintType</td>
-<td>MIN_BALANCE</td>
-</tr>
-<tr>
-<td>constraintType</td>
-<td>MIN_LIMIT</td>
-</tr>
-<tr>
-<td>constraintType</td>
-<td>OPENING_BALANCE</td>
-</tr>
-</tbody></table>
-
-<h2 class="schema-toc" id="tocSbankingproducteligibility">BankingProductEligibility</h2>
-
-<p><a id="schemacdr-banking-apibankingproducteligibility"></a></p>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"eligibilityType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUSINESS"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-
-</span></code></pre><h3 id='properties-12'>Properties</h3>
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>eligibilityType</td>
-<td>string</td>
-<td>mandatory</td>
-<td>The type of eligibility criteria described.  See the next section for an overview of valid values and their meaning</td>
-</tr>
-<tr>
-<td>additionalValue</td>
-<td>string</td>
-<td>conditional</td>
-<td>Generic field containing additional information relevant to the <a href="#tocSproducteligibilitytypedoc">eligibilityType</a> specified. Whether mandatory or not is dependent on the value of <a href="#tocSproducteligibilitytypedoc">eligibilityType</a></td>
-</tr>
-<tr>
-<td>additionalInfo</td>
-<td>string</td>
-<td>conditional</td>
-<td>Display text providing more information on the <a href="#tocSproducteligibilitytypedoc">eligibility</a> criteria. Mandatory if the field is set to OTHER</td>
-</tr>
-<tr>
-<td>additionalInfoUri</td>
-<td><a href="#common-field-types">URIString</a></td>
-<td>optional</td>
-<td>Link to a web page with more information on this eligibility criteria</td>
-</tr>
-</tbody></table>
-<h4 id='enumerated-values-8'>Enumerated Values</h4>
-<table><thead>
-<tr>
-<th>Property</th>
-<th>Value</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>eligibilityType</td>
-<td>BUSINESS</td>
-</tr>
-<tr>
-<td>eligibilityType</td>
-<td>EMPLOYMENT_STATUS</td>
-</tr>
-<tr>
-<td>eligibilityType</td>
-<td>MAX_AGE</td>
-</tr>
-<tr>
-<td>eligibilityType</td>
-<td>MIN_AGE</td>
-</tr>
-<tr>
-<td>eligibilityType</td>
-<td>MIN_INCOME</td>
-</tr>
-<tr>
-<td>eligibilityType</td>
-<td>MIN_TURNOVER</td>
-</tr>
-<tr>
-<td>eligibilityType</td>
-<td>NATURAL_PERSON</td>
-</tr>
-<tr>
-<td>eligibilityType</td>
-<td>OTHER</td>
-</tr>
-<tr>
-<td>eligibilityType</td>
-<td>PENSION_RECIPIENT</td>
-</tr>
-<tr>
-<td>eligibilityType</td>
-<td>RESIDENCY_STATUS</td>
-</tr>
-<tr>
-<td>eligibilityType</td>
-<td>STAFF</td>
-</tr>
-<tr>
-<td>eligibilityType</td>
-<td>STUDENT</td>
-</tr>
-</tbody></table>
-
-<h2 class="schema-toc" id="tocSbankingproductfee">BankingProductFee</h2>
-
-<p><a id="schemacdr-banking-apibankingproductfee"></a></p>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"feeType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DEPOSIT"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"balanceRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"transactionRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"accruedRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"accrualFrequency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"discounts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"discountType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BALANCE"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"balanceRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"transactionRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"accruedRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"feeRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"eligibility"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"discountEligibilityType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUSINESS"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">]</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-
-</span></code></pre><h3 id='properties-13'>Properties</h3>
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>name</td>
-<td>string</td>
-<td>mandatory</td>
-<td>Name of the fee</td>
-</tr>
-<tr>
-<td>feeType</td>
-<td>string</td>
-<td>mandatory</td>
-<td>The type of fee</td>
-</tr>
-<tr>
-<td>amount</td>
-<td><a href="#common-field-types">AmountString</a></td>
-<td>conditional</td>
-<td>The amount charged for the fee. One of amount, balanceRate, transactionRate and accruedRate is mandatory unless the <em>feeType</em> &quot;VARIABLE&quot; is supplied</td>
-</tr>
-<tr>
-<td>balanceRate</td>
-<td><a href="#common-field-types">RateString</a></td>
-<td>conditional</td>
-<td>A fee rate calculated based on a proportion of the balance. One of amount, balanceRate, transactionRate and accruedRate is mandatory unless the <em>feeType</em> &quot;VARIABLE&quot; is supplied.</td>
-</tr>
-<tr>
-<td>transactionRate</td>
-<td><a href="#common-field-types">RateString</a></td>
-<td>conditional</td>
-<td>A fee rate calculated based on a proportion of a transaction. One of amount, balanceRate, transactionRate and accruedRate is mandatory unless the <em>feeType</em> &quot;VARIABLE&quot; is supplied</td>
-</tr>
-<tr>
-<td>accruedRate</td>
-<td><a href="#common-field-types">RateString</a></td>
-<td>conditional</td>
-<td>A fee rate calculated based on a proportion of the calculated interest accrued on the account. One of amount, balanceRate, transactionRate and accruedRate is mandatory unless the <em>feeType</em> &quot;VARIABLE&quot; is supplied</td>
-</tr>
-<tr>
-<td>accrualFrequency</td>
-<td><a href="#common-field-types">ExternalRef</a></td>
-<td>optional</td>
-<td>The indicative frequency with which the fee is calculated on the account. Only applies if balanceRate or accruedRate is also present. Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 Durations</a> (excludes recurrence syntax)</td>
-</tr>
-<tr>
-<td>currency</td>
-<td><a href="#common-field-types">CurrencyString</a></td>
-<td>optional</td>
-<td>The currency the fee will be charged in. Assumes AUD if absent</td>
-</tr>
-<tr>
-<td>additionalValue</td>
-<td>string</td>
-<td>conditional</td>
-<td>Generic field containing additional information relevant to the <a href="#tocSproductfeetypedoc">feeType</a> specified. Whether mandatory or not is dependent on the value of <a href="#tocSproductfeetypedoc">feeType</a></td>
-</tr>
-<tr>
-<td>additionalInfo</td>
-<td>string</td>
-<td>optional</td>
-<td>Display text providing more information on the fee</td>
-</tr>
-<tr>
-<td>additionalInfoUri</td>
-<td><a href="#common-field-types">URIString</a></td>
-<td>optional</td>
-<td>Link to a web page with more information on this fee</td>
-</tr>
-<tr>
-<td>discounts</td>
-<td>[<a href="#schemacdr-banking-apibankingproductdiscount">BankingProductDiscount</a>]</td>
-<td>optional</td>
-<td>An optional list of discounts to this fee that may be available</td>
-</tr>
-</tbody></table>
-<h4 id='enumerated-values-9'>Enumerated Values</h4>
-<table><thead>
-<tr>
-<th>Property</th>
-<th>Value</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>feeType</td>
-<td>DEPOSIT</td>
-</tr>
-<tr>
-<td>feeType</td>
-<td>EVENT</td>
-</tr>
-<tr>
-<td>feeType</td>
-<td>EXIT</td>
-</tr>
-<tr>
-<td>feeType</td>
-<td>PAYMENT</td>
-</tr>
-<tr>
-<td>feeType</td>
-<td>PERIODIC</td>
-</tr>
-<tr>
-<td>feeType</td>
-<td>PURCHASE</td>
-</tr>
-<tr>
-<td>feeType</td>
-<td>TRANSACTION</td>
-</tr>
-<tr>
-<td>feeType</td>
-<td>UPFRONT</td>
-</tr>
-<tr>
-<td>feeType</td>
-<td>VARIABLE</td>
-</tr>
-<tr>
-<td>feeType</td>
-<td>WITHDRAWAL</td>
-</tr>
-</tbody></table>
-
-<h2 class="schema-toc" id="tocSbankingproductdiscount">BankingProductDiscount</h2>
-
-<p><a id="schemacdr-banking-apibankingproductdiscount"></a></p>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"discountType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BALANCE"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"balanceRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"transactionRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"accruedRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"feeRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"eligibility"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"discountEligibilityType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUSINESS"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-
-</span></code></pre><h3 id='properties-14'>Properties</h3>
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>description</td>
-<td>string</td>
-<td>mandatory</td>
-<td>Description of the discount</td>
-</tr>
-<tr>
-<td>discountType</td>
-<td>string</td>
-<td>mandatory</td>
-<td>The type of discount. See the next section for an overview of valid values and their meaning</td>
-</tr>
-<tr>
-<td>amount</td>
-<td><a href="#common-field-types">AmountString</a></td>
-<td>conditional</td>
-<td>Dollar value of the discount. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory.</td>
-</tr>
-<tr>
-<td>balanceRate</td>
-<td><a href="#common-field-types">RateString</a></td>
-<td>conditional</td>
-<td>A discount rate calculated based on a proportion of the balance. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee</td>
-</tr>
-<tr>
-<td>transactionRate</td>
-<td><a href="#common-field-types">RateString</a></td>
-<td>conditional</td>
-<td>A discount rate calculated based on a proportion of a transaction. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory</td>
-</tr>
-<tr>
-<td>accruedRate</td>
-<td><a href="#common-field-types">RateString</a></td>
-<td>conditional</td>
-<td>A discount rate calculated based on a proportion of the calculated interest accrued on the account. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee</td>
-</tr>
-<tr>
-<td>feeRate</td>
-<td><a href="#common-field-types">RateString</a></td>
-<td>conditional</td>
-<td>A discount rate calculated based on a proportion of the fee to which this discount is attached. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee</td>
-</tr>
-<tr>
-<td>additionalValue</td>
-<td>string</td>
-<td>conditional</td>
-<td>Generic field containing additional information relevant to the <a href="#tocSproductdiscounttypedoc">discountType</a> specified. Whether mandatory or not is dependent on the value of <a href="#tocSproductdiscounttypedoc">discountType</a></td>
-</tr>
-<tr>
-<td>additionalInfo</td>
-<td>string</td>
-<td>optional</td>
-<td>Display text providing more information on the discount</td>
-</tr>
-<tr>
-<td>additionalInfoUri</td>
-<td><a href="#common-field-types">URIString</a></td>
-<td>optional</td>
-<td>Link to a web page with more information on this discount</td>
-</tr>
-<tr>
-<td>eligibility</td>
-<td>[<a href="#schemacdr-banking-apibankingproductdiscounteligibility">BankingProductDiscountEligibility</a>]</td>
-<td>conditional</td>
-<td>Eligibility constraints that apply to this discount. Mandatory if <code>discountType</code> is <code>ELIGIBILITY_ONLY</code>.</td>
-</tr>
-</tbody></table>
-<h4 id='enumerated-values-10'>Enumerated Values</h4>
-<table><thead>
-<tr>
-<th>Property</th>
-<th>Value</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>discountType</td>
-<td>BALANCE</td>
-</tr>
-<tr>
-<td>discountType</td>
-<td>DEPOSITS</td>
-</tr>
-<tr>
-<td>discountType</td>
-<td>ELIGIBILITY_ONLY</td>
-</tr>
-<tr>
-<td>discountType</td>
-<td>FEE_CAP</td>
-</tr>
-<tr>
-<td>discountType</td>
-<td>PAYMENTS</td>
-</tr>
-</tbody></table>
-
-<h2 class="schema-toc" id="tocSbankingproductdiscounteligibility">BankingProductDiscountEligibility</h2>
-
-<p><a id="schemacdr-banking-apibankingproductdiscounteligibility"></a></p>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"discountEligibilityType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUSINESS"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-
-</span></code></pre><h3 id='properties-15'>Properties</h3>
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>discountEligibilityType</td>
-<td>string</td>
-<td>mandatory</td>
-<td>The type of the specific eligibility constraint for a discount</td>
-</tr>
-<tr>
-<td>additionalValue</td>
-<td>string</td>
-<td>conditional</td>
-<td>Generic field containing additional information relevant to the <a href="#tocSproductdiscounteligibilitydoc">discountEligibilityType</a> specified. Whether mandatory or not is dependent on the value of <a href="#tocSproductdiscounteligibilitydoc">discountEligibilityType</a></td>
-</tr>
-<tr>
-<td>additionalInfo</td>
-<td>string</td>
-<td>conditional</td>
-<td>Display text providing more information on this eligibility constraint. Whether mandatory or not is dependent on the value of <a href="#tocSproductdiscounteligibilitydoc">discountEligibilityType</a></td>
-</tr>
-<tr>
-<td>additionalInfoUri</td>
-<td><a href="#common-field-types">URIString</a></td>
-<td>optional</td>
-<td>Link to a web page with more information on this eligibility constraint</td>
-</tr>
-</tbody></table>
-<h4 id='enumerated-values-11'>Enumerated Values</h4>
-<table><thead>
-<tr>
-<th>Property</th>
-<th>Value</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>discountEligibilityType</td>
-<td>BUSINESS</td>
-</tr>
-<tr>
-<td>discountEligibilityType</td>
-<td>EMPLOYMENT_STATUS</td>
-</tr>
-<tr>
-<td>discountEligibilityType</td>
-<td>INTRODUCTORY</td>
-</tr>
-<tr>
-<td>discountEligibilityType</td>
-<td>MAX_AGE</td>
-</tr>
-<tr>
-<td>discountEligibilityType</td>
-<td>MIN_AGE</td>
-</tr>
-<tr>
-<td>discountEligibilityType</td>
-<td>MIN_INCOME</td>
-</tr>
-<tr>
-<td>discountEligibilityType</td>
-<td>MIN_TURNOVER</td>
-</tr>
-<tr>
-<td>discountEligibilityType</td>
-<td>NATURAL_PERSON</td>
-</tr>
-<tr>
-<td>discountEligibilityType</td>
-<td>OTHER</td>
-</tr>
-<tr>
-<td>discountEligibilityType</td>
-<td>PENSION_RECIPIENT</td>
-</tr>
-<tr>
-<td>discountEligibilityType</td>
-<td>RESIDENCY_STATUS</td>
-</tr>
-<tr>
-<td>discountEligibilityType</td>
-<td>STAFF</td>
-</tr>
-<tr>
-<td>discountEligibilityType</td>
-<td>STUDENT</td>
-</tr>
-</tbody></table>
-
-<h2 class="schema-toc" id="tocSbankingproductdepositrate">BankingProductDepositRate</h2>
+<h3 class="schema-toc" id="tocSbankingproductdepositrate">BankingProductDepositRate</h3>
 
 <p><a id="schemacdr-banking-apibankingproductdepositrate"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -2524,7 +1725,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-16'>Properties</h3>
+</span></code></pre><h3 id='properties-9'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -2582,7 +1783,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Link to a web page with more information on this rate</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-12'>Enumerated Values</h4>
+<h4 id='enumerated-values-5'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -2619,7 +1820,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSbankingproductlendingratev2">BankingProductLendingRateV2</h2>
+<h3 class="schema-toc" id="tocSbankingproductlendingratev2">BankingProductLendingRateV2</h3>
 
 <p><a id="schemacdr-banking-apibankingproductlendingratev2"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -2651,7 +1852,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-17'>Properties</h3>
+</span></code></pre><h3 id='properties-10'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -2733,7 +1934,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Link to a web page with more information on this rate</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-13'>Enumerated Values</h4>
+<h4 id='enumerated-values-6'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -2810,7 +2011,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSbankingproductratetierv3">BankingProductRateTierV3</h2>
+<h3 class="schema-toc" id="tocSbankingproductratetierv3">BankingProductRateTierV3</h3>
 
 <p><a id="schemacdr-banking-apibankingproductratetierv3"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -2829,7 +2030,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 </span></code></pre>
 <p><em>Defines the criteria and conditions for which a rate applies</em></p>
-<h3 id='properties-18'>Properties</h3>
+<h3 id='properties-11'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -2887,7 +2088,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Link to a web page with more information on this rate tier</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-14'>Enumerated Values</h4>
+<h4 id='enumerated-values-7'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -2920,7 +2121,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSbankingproductratecondition">BankingProductRateCondition</h2>
+<h3 class="schema-toc" id="tocSbankingproductratecondition">BankingProductRateCondition</h3>
 
 <p><a id="schemacdr-banking-apibankingproductratecondition"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -2930,6 +2131,1342 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 </span></code></pre>
 <p><em>Defines a condition for the applicability of a tiered rate</em></p>
+<h3 id='properties-12'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>additionalInfo</td>
+<td>string</td>
+<td>optional</td>
+<td>Display text providing more information on the condition</td>
+</tr>
+<tr>
+<td>additionalInfoUri</td>
+<td><a href="#common-field-types">URIString</a></td>
+<td>optional</td>
+<td>Link to a web page with more information on this condition</td>
+</tr>
+</tbody></table>
+
+<h3 class="schema-toc" id="tocSbankingproductfeaturev2">BankingProductFeatureV2</h3>
+
+<p><a id="schemacdr-banking-apibankingproductfeaturev2"></a></p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"featureType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ADDITIONAL_CARDS"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre><h3 id='properties-13'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>featureType</td>
+<td>string</td>
+<td>mandatory</td>
+<td>The type of feature described</td>
+</tr>
+<tr>
+<td>additionalValue</td>
+<td>string</td>
+<td>conditional</td>
+<td>Generic field containing additional information relevant to the <a href="#tocSproductfeaturetypedoc">featureType</a> specified. Whether mandatory or not is dependent on the value of the <a href="#tocSproductfeaturetypedoc">featureType.</a></td>
+</tr>
+<tr>
+<td>additionalInfo</td>
+<td>string</td>
+<td>conditional</td>
+<td>Display text providing more information on the feature. Mandatory if the <a href="#tocSproductfeaturetypedoc">feature type</a> is set to OTHER</td>
+</tr>
+<tr>
+<td>additionalInfoUri</td>
+<td><a href="#common-field-types">URIString</a></td>
+<td>optional</td>
+<td>Link to a web page with more information on this feature</td>
+</tr>
+</tbody></table>
+<h4 id='enumerated-values-8'>Enumerated Values</h4>
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>featureType</td>
+<td>ADDITIONAL_CARDS</td>
+</tr>
+<tr>
+<td>featureType</td>
+<td>BALANCE_TRANSFERS</td>
+</tr>
+<tr>
+<td>featureType</td>
+<td>BILL_PAYMENT</td>
+</tr>
+<tr>
+<td>featureType</td>
+<td>BONUS_REWARDS</td>
+</tr>
+<tr>
+<td>featureType</td>
+<td>CARD_ACCESS</td>
+</tr>
+<tr>
+<td>featureType</td>
+<td>CASHBACK_OFFER</td>
+</tr>
+<tr>
+<td>featureType</td>
+<td>COMPLEMENTARY_PRODUCT_DISCOUNTS</td>
+</tr>
+<tr>
+<td>featureType</td>
+<td>DIGITAL_BANKING</td>
+</tr>
+<tr>
+<td>featureType</td>
+<td>DIGITAL_WALLET</td>
+</tr>
+<tr>
+<td>featureType</td>
+<td>DONATE_INTEREST</td>
+</tr>
+<tr>
+<td>featureType</td>
+<td>EXTRA_REPAYMENTS</td>
+</tr>
+<tr>
+<td>featureType</td>
+<td>FRAUD_PROTECTION</td>
+</tr>
+<tr>
+<td>featureType</td>
+<td>FREE_TXNS</td>
+</tr>
+<tr>
+<td>featureType</td>
+<td>FREE_TXNS_ALLOWANCE</td>
+</tr>
+<tr>
+<td>featureType</td>
+<td>GUARANTOR</td>
+</tr>
+<tr>
+<td>featureType</td>
+<td>INSURANCE</td>
+</tr>
+<tr>
+<td>featureType</td>
+<td>INSTALMENT_PLAN</td>
+</tr>
+<tr>
+<td>featureType</td>
+<td>INTEREST_FREE</td>
+</tr>
+<tr>
+<td>featureType</td>
+<td>INTEREST_FREE_TRANSFERS</td>
+</tr>
+<tr>
+<td>featureType</td>
+<td>LOYALTY_PROGRAM</td>
+</tr>
+<tr>
+<td>featureType</td>
+<td>NOTIFICATIONS</td>
+</tr>
+<tr>
+<td>featureType</td>
+<td>NPP_ENABLED</td>
+</tr>
+<tr>
+<td>featureType</td>
+<td>NPP_PAYID</td>
+</tr>
+<tr>
+<td>featureType</td>
+<td>OFFSET</td>
+</tr>
+<tr>
+<td>featureType</td>
+<td>OTHER</td>
+</tr>
+<tr>
+<td>featureType</td>
+<td>OVERDRAFT</td>
+</tr>
+<tr>
+<td>featureType</td>
+<td>REDRAW</td>
+</tr>
+<tr>
+<td>featureType</td>
+<td>RELATIONSHIP_MANAGEMENT</td>
+</tr>
+<tr>
+<td>featureType</td>
+<td>UNLIMITED_TXNS</td>
+</tr>
+</tbody></table>
+
+<h3 class="schema-toc" id="tocSbankingproductconstraint">BankingProductConstraint</h3>
+
+<p><a id="schemacdr-banking-apibankingproductconstraint"></a></p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"constraintType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MAX_BALANCE"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre><h3 id='properties-14'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>constraintType</td>
+<td>string</td>
+<td>mandatory</td>
+<td>The type of constraint described.  See the next section for an overview of valid values and their meaning</td>
+</tr>
+<tr>
+<td>additionalValue</td>
+<td>string</td>
+<td>conditional</td>
+<td>Generic field containing additional information relevant to the <a href="#tocSproductconstrainttypedoc">constraintType</a> specified.  Whether mandatory or not is dependent on the value of <a href="#tocSproductconstrainttypedoc">constraintType</a></td>
+</tr>
+<tr>
+<td>additionalInfo</td>
+<td>string</td>
+<td>optional</td>
+<td>Display text providing more information the constraint</td>
+</tr>
+<tr>
+<td>additionalInfoUri</td>
+<td><a href="#common-field-types">URIString</a></td>
+<td>optional</td>
+<td>Link to a web page with more information on the constraint</td>
+</tr>
+</tbody></table>
+<h4 id='enumerated-values-9'>Enumerated Values</h4>
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>constraintType</td>
+<td>MAX_BALANCE</td>
+</tr>
+<tr>
+<td>constraintType</td>
+<td>MAX_LIMIT</td>
+</tr>
+<tr>
+<td>constraintType</td>
+<td>MIN_BALANCE</td>
+</tr>
+<tr>
+<td>constraintType</td>
+<td>MIN_LIMIT</td>
+</tr>
+<tr>
+<td>constraintType</td>
+<td>OPENING_BALANCE</td>
+</tr>
+</tbody></table>
+
+<h3 class="schema-toc" id="tocSbankingproducteligibility">BankingProductEligibility</h3>
+
+<p><a id="schemacdr-banking-apibankingproducteligibility"></a></p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"eligibilityType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUSINESS"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre><h3 id='properties-15'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>eligibilityType</td>
+<td>string</td>
+<td>mandatory</td>
+<td>The type of eligibility criteria described.  See the next section for an overview of valid values and their meaning</td>
+</tr>
+<tr>
+<td>additionalValue</td>
+<td>string</td>
+<td>conditional</td>
+<td>Generic field containing additional information relevant to the <a href="#tocSproducteligibilitytypedoc">eligibilityType</a> specified. Whether mandatory or not is dependent on the value of <a href="#tocSproducteligibilitytypedoc">eligibilityType</a></td>
+</tr>
+<tr>
+<td>additionalInfo</td>
+<td>string</td>
+<td>conditional</td>
+<td>Display text providing more information on the <a href="#tocSproducteligibilitytypedoc">eligibility</a> criteria. Mandatory if the field is set to OTHER</td>
+</tr>
+<tr>
+<td>additionalInfoUri</td>
+<td><a href="#common-field-types">URIString</a></td>
+<td>optional</td>
+<td>Link to a web page with more information on this eligibility criteria</td>
+</tr>
+</tbody></table>
+<h4 id='enumerated-values-10'>Enumerated Values</h4>
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>eligibilityType</td>
+<td>BUSINESS</td>
+</tr>
+<tr>
+<td>eligibilityType</td>
+<td>EMPLOYMENT_STATUS</td>
+</tr>
+<tr>
+<td>eligibilityType</td>
+<td>MAX_AGE</td>
+</tr>
+<tr>
+<td>eligibilityType</td>
+<td>MIN_AGE</td>
+</tr>
+<tr>
+<td>eligibilityType</td>
+<td>MIN_INCOME</td>
+</tr>
+<tr>
+<td>eligibilityType</td>
+<td>MIN_TURNOVER</td>
+</tr>
+<tr>
+<td>eligibilityType</td>
+<td>NATURAL_PERSON</td>
+</tr>
+<tr>
+<td>eligibilityType</td>
+<td>OTHER</td>
+</tr>
+<tr>
+<td>eligibilityType</td>
+<td>PENSION_RECIPIENT</td>
+</tr>
+<tr>
+<td>eligibilityType</td>
+<td>RESIDENCY_STATUS</td>
+</tr>
+<tr>
+<td>eligibilityType</td>
+<td>STAFF</td>
+</tr>
+<tr>
+<td>eligibilityType</td>
+<td>STUDENT</td>
+</tr>
+</tbody></table>
+
+<h3 class="schema-toc" id="tocSbankingproductfee">BankingProductFee</h3>
+
+<p><a id="schemacdr-banking-apibankingproductfee"></a></p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"feeType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DEPOSIT"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"balanceRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"transactionRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"accruedRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"accrualFrequency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"discounts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"discountType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BALANCE"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"balanceRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"transactionRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"accruedRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"feeRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"eligibility"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"discountEligibilityType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUSINESS"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre><h3 id='properties-16'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>mandatory</td>
+<td>Name of the fee</td>
+</tr>
+<tr>
+<td>feeType</td>
+<td>string</td>
+<td>mandatory</td>
+<td>The type of fee</td>
+</tr>
+<tr>
+<td>amount</td>
+<td><a href="#common-field-types">AmountString</a></td>
+<td>conditional</td>
+<td>The amount charged for the fee. One of amount, balanceRate, transactionRate and accruedRate is mandatory unless the <em>feeType</em> &quot;VARIABLE&quot; is supplied</td>
+</tr>
+<tr>
+<td>balanceRate</td>
+<td><a href="#common-field-types">RateString</a></td>
+<td>conditional</td>
+<td>A fee rate calculated based on a proportion of the balance. One of amount, balanceRate, transactionRate and accruedRate is mandatory unless the <em>feeType</em> &quot;VARIABLE&quot; is supplied.</td>
+</tr>
+<tr>
+<td>transactionRate</td>
+<td><a href="#common-field-types">RateString</a></td>
+<td>conditional</td>
+<td>A fee rate calculated based on a proportion of a transaction. One of amount, balanceRate, transactionRate and accruedRate is mandatory unless the <em>feeType</em> &quot;VARIABLE&quot; is supplied</td>
+</tr>
+<tr>
+<td>accruedRate</td>
+<td><a href="#common-field-types">RateString</a></td>
+<td>conditional</td>
+<td>A fee rate calculated based on a proportion of the calculated interest accrued on the account. One of amount, balanceRate, transactionRate and accruedRate is mandatory unless the <em>feeType</em> &quot;VARIABLE&quot; is supplied</td>
+</tr>
+<tr>
+<td>accrualFrequency</td>
+<td><a href="#common-field-types">ExternalRef</a></td>
+<td>optional</td>
+<td>The indicative frequency with which the fee is calculated on the account. Only applies if balanceRate or accruedRate is also present. Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 Durations</a> (excludes recurrence syntax)</td>
+</tr>
+<tr>
+<td>currency</td>
+<td><a href="#common-field-types">CurrencyString</a></td>
+<td>optional</td>
+<td>The currency the fee will be charged in. Assumes AUD if absent</td>
+</tr>
+<tr>
+<td>additionalValue</td>
+<td>string</td>
+<td>conditional</td>
+<td>Generic field containing additional information relevant to the <a href="#tocSproductfeetypedoc">feeType</a> specified. Whether mandatory or not is dependent on the value of <a href="#tocSproductfeetypedoc">feeType</a></td>
+</tr>
+<tr>
+<td>additionalInfo</td>
+<td>string</td>
+<td>optional</td>
+<td>Display text providing more information on the fee</td>
+</tr>
+<tr>
+<td>additionalInfoUri</td>
+<td><a href="#common-field-types">URIString</a></td>
+<td>optional</td>
+<td>Link to a web page with more information on this fee</td>
+</tr>
+<tr>
+<td>discounts</td>
+<td>[<a href="#schemacdr-banking-apibankingproductdiscount">BankingProductDiscount</a>]</td>
+<td>optional</td>
+<td>An optional list of discounts to this fee that may be available</td>
+</tr>
+</tbody></table>
+<h4 id='enumerated-values-11'>Enumerated Values</h4>
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>feeType</td>
+<td>DEPOSIT</td>
+</tr>
+<tr>
+<td>feeType</td>
+<td>EVENT</td>
+</tr>
+<tr>
+<td>feeType</td>
+<td>EXIT</td>
+</tr>
+<tr>
+<td>feeType</td>
+<td>PAYMENT</td>
+</tr>
+<tr>
+<td>feeType</td>
+<td>PERIODIC</td>
+</tr>
+<tr>
+<td>feeType</td>
+<td>PURCHASE</td>
+</tr>
+<tr>
+<td>feeType</td>
+<td>TRANSACTION</td>
+</tr>
+<tr>
+<td>feeType</td>
+<td>UPFRONT</td>
+</tr>
+<tr>
+<td>feeType</td>
+<td>VARIABLE</td>
+</tr>
+<tr>
+<td>feeType</td>
+<td>WITHDRAWAL</td>
+</tr>
+</tbody></table>
+
+<h3 class="schema-toc" id="tocSbankingproductdiscount">BankingProductDiscount</h3>
+
+<p><a id="schemacdr-banking-apibankingproductdiscount"></a></p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"discountType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BALANCE"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"balanceRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"transactionRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"accruedRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"feeRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"eligibility"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"discountEligibilityType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUSINESS"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre><h3 id='properties-17'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>description</td>
+<td>string</td>
+<td>mandatory</td>
+<td>Description of the discount</td>
+</tr>
+<tr>
+<td>discountType</td>
+<td>string</td>
+<td>mandatory</td>
+<td>The type of discount. See the next section for an overview of valid values and their meaning</td>
+</tr>
+<tr>
+<td>amount</td>
+<td><a href="#common-field-types">AmountString</a></td>
+<td>conditional</td>
+<td>Dollar value of the discount. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory.</td>
+</tr>
+<tr>
+<td>balanceRate</td>
+<td><a href="#common-field-types">RateString</a></td>
+<td>conditional</td>
+<td>A discount rate calculated based on a proportion of the balance. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee</td>
+</tr>
+<tr>
+<td>transactionRate</td>
+<td><a href="#common-field-types">RateString</a></td>
+<td>conditional</td>
+<td>A discount rate calculated based on a proportion of a transaction. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory</td>
+</tr>
+<tr>
+<td>accruedRate</td>
+<td><a href="#common-field-types">RateString</a></td>
+<td>conditional</td>
+<td>A discount rate calculated based on a proportion of the calculated interest accrued on the account. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee</td>
+</tr>
+<tr>
+<td>feeRate</td>
+<td><a href="#common-field-types">RateString</a></td>
+<td>conditional</td>
+<td>A discount rate calculated based on a proportion of the fee to which this discount is attached. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee</td>
+</tr>
+<tr>
+<td>additionalValue</td>
+<td>string</td>
+<td>conditional</td>
+<td>Generic field containing additional information relevant to the <a href="#tocSproductdiscounttypedoc">discountType</a> specified. Whether mandatory or not is dependent on the value of <a href="#tocSproductdiscounttypedoc">discountType</a></td>
+</tr>
+<tr>
+<td>additionalInfo</td>
+<td>string</td>
+<td>optional</td>
+<td>Display text providing more information on the discount</td>
+</tr>
+<tr>
+<td>additionalInfoUri</td>
+<td><a href="#common-field-types">URIString</a></td>
+<td>optional</td>
+<td>Link to a web page with more information on this discount</td>
+</tr>
+<tr>
+<td>eligibility</td>
+<td>[<a href="#schemacdr-banking-apibankingproductdiscounteligibility">BankingProductDiscountEligibility</a>]</td>
+<td>conditional</td>
+<td>Eligibility constraints that apply to this discount. Mandatory if <code>discountType</code> is <code>ELIGIBILITY_ONLY</code>.</td>
+</tr>
+</tbody></table>
+<h4 id='enumerated-values-12'>Enumerated Values</h4>
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>discountType</td>
+<td>BALANCE</td>
+</tr>
+<tr>
+<td>discountType</td>
+<td>DEPOSITS</td>
+</tr>
+<tr>
+<td>discountType</td>
+<td>ELIGIBILITY_ONLY</td>
+</tr>
+<tr>
+<td>discountType</td>
+<td>FEE_CAP</td>
+</tr>
+<tr>
+<td>discountType</td>
+<td>PAYMENTS</td>
+</tr>
+</tbody></table>
+
+<h3 class="schema-toc" id="tocSbankingproductdiscounteligibility">BankingProductDiscountEligibility</h3>
+
+<p><a id="schemacdr-banking-apibankingproductdiscounteligibility"></a></p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"discountEligibilityType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUSINESS"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre><h3 id='properties-18'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>discountEligibilityType</td>
+<td>string</td>
+<td>mandatory</td>
+<td>The type of the specific eligibility constraint for a discount</td>
+</tr>
+<tr>
+<td>additionalValue</td>
+<td>string</td>
+<td>conditional</td>
+<td>Generic field containing additional information relevant to the <a href="#tocSproductdiscounteligibilitydoc">discountEligibilityType</a> specified. Whether mandatory or not is dependent on the value of <a href="#tocSproductdiscounteligibilitydoc">discountEligibilityType</a></td>
+</tr>
+<tr>
+<td>additionalInfo</td>
+<td>string</td>
+<td>conditional</td>
+<td>Display text providing more information on this eligibility constraint. Whether mandatory or not is dependent on the value of <a href="#tocSproductdiscounteligibilitydoc">discountEligibilityType</a></td>
+</tr>
+<tr>
+<td>additionalInfoUri</td>
+<td><a href="#common-field-types">URIString</a></td>
+<td>optional</td>
+<td>Link to a web page with more information on this eligibility constraint</td>
+</tr>
+</tbody></table>
+<h4 id='enumerated-values-13'>Enumerated Values</h4>
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>discountEligibilityType</td>
+<td>BUSINESS</td>
+</tr>
+<tr>
+<td>discountEligibilityType</td>
+<td>EMPLOYMENT_STATUS</td>
+</tr>
+<tr>
+<td>discountEligibilityType</td>
+<td>INTRODUCTORY</td>
+</tr>
+<tr>
+<td>discountEligibilityType</td>
+<td>MAX_AGE</td>
+</tr>
+<tr>
+<td>discountEligibilityType</td>
+<td>MIN_AGE</td>
+</tr>
+<tr>
+<td>discountEligibilityType</td>
+<td>MIN_INCOME</td>
+</tr>
+<tr>
+<td>discountEligibilityType</td>
+<td>MIN_TURNOVER</td>
+</tr>
+<tr>
+<td>discountEligibilityType</td>
+<td>NATURAL_PERSON</td>
+</tr>
+<tr>
+<td>discountEligibilityType</td>
+<td>OTHER</td>
+</tr>
+<tr>
+<td>discountEligibilityType</td>
+<td>PENSION_RECIPIENT</td>
+</tr>
+<tr>
+<td>discountEligibilityType</td>
+<td>RESIDENCY_STATUS</td>
+</tr>
+<tr>
+<td>discountEligibilityType</td>
+<td>STAFF</td>
+</tr>
+<tr>
+<td>discountEligibilityType</td>
+<td>STUDENT</td>
+</tr>
+</tbody></table>
+
+<h3 class="schema-toc" id="tocSbankingproductdepositrate">BankingProductDepositRate</h3>
+
+<p><a id="schemacdr-banking-apibankingproductdepositrate"></a></p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"depositRateType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BONUS"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"rate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"calculationFrequency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"applicationFrequency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"tiers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"unitOfMeasure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DAY"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"minimumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"maximumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"rateApplicationMethod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PER_TIER"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"applicabilityConditions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre><h3 id='properties-19'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>depositRateType</td>
+<td>string</td>
+<td>mandatory</td>
+<td>The type of rate (base, bonus, etc). See the next section for an overview of valid values and their meaning</td>
+</tr>
+<tr>
+<td>rate</td>
+<td><a href="#common-field-types">RateString</a></td>
+<td>mandatory</td>
+<td>The rate to be applied</td>
+</tr>
+<tr>
+<td>calculationFrequency</td>
+<td><a href="#common-field-types">ExternalRef</a></td>
+<td>optional</td>
+<td>The period after which the rate is applied to the balance to calculate the amount due for the period. Calculation of the amount is often daily (as balances may change) but accumulated until the total amount is &#39;applied&#39; to the account (see applicationFrequency). Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 Durations</a> (excludes recurrence syntax)</td>
+</tr>
+<tr>
+<td>applicationFrequency</td>
+<td><a href="#common-field-types">ExternalRef</a></td>
+<td>optional</td>
+<td>The period after which the calculated amount(s) (see calculationFrequency) are &#39;applied&#39; (i.e. debited or credited) to the account. Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 Durations</a> (excludes recurrence syntax)</td>
+</tr>
+<tr>
+<td>tiers</td>
+<td>[<a href="#schemacdr-banking-apibankingproductratetierv3">BankingProductRateTierV3</a>]</td>
+<td>optional</td>
+<td>Rate tiers applicable for this rate</td>
+</tr>
+<tr>
+<td>additionalValue</td>
+<td>string</td>
+<td>conditional</td>
+<td>Generic field containing additional information relevant to the <a href="#tocSproductdepositratetypedoc">depositRateType</a> specified. Whether mandatory or not is dependent on the value of <a href="#tocSproductdepositratetypedoc">depositRateType</a></td>
+</tr>
+<tr>
+<td>additionalInfo</td>
+<td>string</td>
+<td>optional</td>
+<td>Display text providing more information on the rate</td>
+</tr>
+<tr>
+<td>additionalInfoUri</td>
+<td><a href="#common-field-types">URIString</a></td>
+<td>optional</td>
+<td>Link to a web page with more information on this rate</td>
+</tr>
+</tbody></table>
+<h4 id='enumerated-values-14'>Enumerated Values</h4>
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>depositRateType</td>
+<td>BONUS</td>
+</tr>
+<tr>
+<td>depositRateType</td>
+<td>BUNDLE_BONUS</td>
+</tr>
+<tr>
+<td>depositRateType</td>
+<td>FIXED</td>
+</tr>
+<tr>
+<td>depositRateType</td>
+<td>FLOATING</td>
+</tr>
+<tr>
+<td>depositRateType</td>
+<td>INTRODUCTORY</td>
+</tr>
+<tr>
+<td>depositRateType</td>
+<td>MARKET_LINKED</td>
+</tr>
+<tr>
+<td>depositRateType</td>
+<td>VARIABLE</td>
+</tr>
+</tbody></table>
+
+<h3 class="schema-toc" id="tocScommonphysicaladdress">CommonPhysicalAddress</h3>
+
+<p><a id="schemacdr-banking-apicommonphysicaladdress"></a></p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"addressUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"paf"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"simple"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"mailingName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"addressLine1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"addressLine2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"addressLine3"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AUS"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"paf"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"dpid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"thoroughfareNumber1"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"thoroughfareNumber1Suffix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"thoroughfareNumber2"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"thoroughfareNumber2Suffix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"flatUnitType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"flatUnitNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"floorLevelType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"floorLevelNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"lotNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"buildingName1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"buildingName2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"streetName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"streetType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"streetSuffix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"postalDeliveryType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"postalDeliveryNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"postalDeliveryNumberPrefix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"postalDeliveryNumberSuffix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"localityName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre><h3 id='properties-20'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>addressUType</td>
+<td>string</td>
+<td>mandatory</td>
+<td>The type of address object present</td>
+</tr>
+<tr>
+<td>simple</td>
+<td><a href="#schemacdr-banking-apicommonsimpleaddress">CommonSimpleAddress</a></td>
+<td>conditional</td>
+<td>none</td>
+</tr>
+<tr>
+<td>paf</td>
+<td><a href="#schemacdr-banking-apicommonpafaddress">CommonPAFAddress</a></td>
+<td>conditional</td>
+<td>Australian address formatted according to the file format defined by the <a href="https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf">PAF file format</a></td>
+</tr>
+</tbody></table>
+<h4 id='enumerated-values-15'>Enumerated Values</h4>
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>addressUType</td>
+<td>paf</td>
+</tr>
+<tr>
+<td>addressUType</td>
+<td>simple</td>
+</tr>
+</tbody></table>
+
+<h3 class="schema-toc" id="tocScommonsimpleaddress">CommonSimpleAddress</h3>
+
+<p><a id="schemacdr-banking-apicommonsimpleaddress"></a></p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"mailingName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"addressLine1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"addressLine2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"addressLine3"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AUS"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre><h3 id='properties-21'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>mailingName</td>
+<td>string</td>
+<td>optional</td>
+<td>Name of the individual or business formatted for inclusion in an address used for physical mail</td>
+</tr>
+<tr>
+<td>addressLine1</td>
+<td>string</td>
+<td>mandatory</td>
+<td>First line of the standard address object</td>
+</tr>
+<tr>
+<td>addressLine2</td>
+<td>string</td>
+<td>optional</td>
+<td>Second line of the standard address object</td>
+</tr>
+<tr>
+<td>addressLine3</td>
+<td>string</td>
+<td>optional</td>
+<td>Third line of the standard address object</td>
+</tr>
+<tr>
+<td>postcode</td>
+<td>string</td>
+<td>conditional</td>
+<td>Mandatory for Australian addresses</td>
+</tr>
+<tr>
+<td>city</td>
+<td>string</td>
+<td>mandatory</td>
+<td>Name of the city or locality</td>
+</tr>
+<tr>
+<td>state</td>
+<td>string</td>
+<td>mandatory</td>
+<td>Free text if the country is not Australia. If country is Australia then must be one of the values defined by the <a href="https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf">State Type Abbreviation</a> in the PAF file format. NSW, QLD, VIC, NT, WA, SA, TAS, ACT, AAT</td>
+</tr>
+<tr>
+<td>country</td>
+<td><a href="#common-field-types">ExternalRef</a></td>
+<td>optional</td>
+<td>A valid <a href="https://www.iso.org/iso-3166-country-codes.html">ISO 3166 Alpha-3</a> country code. Australia (AUS) is assumed if country is not present.</td>
+</tr>
+</tbody></table>
+
+<h3 class="schema-toc" id="tocScommonpafaddress">CommonPAFAddress</h3>
+
+<p><a id="schemacdr-banking-apicommonpafaddress"></a></p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"dpid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"thoroughfareNumber1"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"thoroughfareNumber1Suffix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"thoroughfareNumber2"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"thoroughfareNumber2Suffix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"flatUnitType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"flatUnitNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"floorLevelType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"floorLevelNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"lotNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"buildingName1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"buildingName2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"streetName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"streetType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"streetSuffix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"postalDeliveryType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"postalDeliveryNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"postalDeliveryNumberPrefix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"postalDeliveryNumberSuffix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"localityName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<p><em>Australian address formatted according to the file format defined by the <a href="https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf">PAF file format</a></em></p>
+<h3 id='properties-22'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>dpid</td>
+<td>string</td>
+<td>optional</td>
+<td>Unique identifier for an address as defined by Australia Post.  Also known as Delivery Point Identifier</td>
+</tr>
+<tr>
+<td>thoroughfareNumber1</td>
+<td><a href="#common-field-types">PositiveInteger</a></td>
+<td>optional</td>
+<td>Thoroughfare number for a property (first number in a property ranged address)</td>
+</tr>
+<tr>
+<td>thoroughfareNumber1Suffix</td>
+<td>string</td>
+<td>optional</td>
+<td>Suffix for the thoroughfare number. Only relevant is thoroughfareNumber1 is populated</td>
+</tr>
+<tr>
+<td>thoroughfareNumber2</td>
+<td><a href="#common-field-types">PositiveInteger</a></td>
+<td>optional</td>
+<td>Second thoroughfare number (only used if the property has a ranged address eg 23-25)</td>
+</tr>
+<tr>
+<td>thoroughfareNumber2Suffix</td>
+<td>string</td>
+<td>optional</td>
+<td>Suffix for the second thoroughfare number. Only relevant is thoroughfareNumber2 is populated</td>
+</tr>
+<tr>
+<td>flatUnitType</td>
+<td>string</td>
+<td>optional</td>
+<td>Type of flat or unit for the address</td>
+</tr>
+<tr>
+<td>flatUnitNumber</td>
+<td>string</td>
+<td>optional</td>
+<td>Unit number (including suffix, if applicable)</td>
+</tr>
+<tr>
+<td>floorLevelType</td>
+<td>string</td>
+<td>optional</td>
+<td>Type of floor or level for the address</td>
+</tr>
+<tr>
+<td>floorLevelNumber</td>
+<td>string</td>
+<td>optional</td>
+<td>Floor or level number (including alpha characters)</td>
+</tr>
+<tr>
+<td>lotNumber</td>
+<td>string</td>
+<td>optional</td>
+<td>Allotment number for the address</td>
+</tr>
+<tr>
+<td>buildingName1</td>
+<td>string</td>
+<td>optional</td>
+<td>Building/Property name 1</td>
+</tr>
+<tr>
+<td>buildingName2</td>
+<td>string</td>
+<td>optional</td>
+<td>Building/Property name 2</td>
+</tr>
+<tr>
+<td>streetName</td>
+<td>string</td>
+<td>optional</td>
+<td>The name of the street</td>
+</tr>
+<tr>
+<td>streetType</td>
+<td>string</td>
+<td>optional</td>
+<td>The street type. Valid enumeration defined by Australia Post PAF code file</td>
+</tr>
+<tr>
+<td>streetSuffix</td>
+<td>string</td>
+<td>optional</td>
+<td>The street type suffix. Valid enumeration defined by Australia Post PAF code file</td>
+</tr>
+<tr>
+<td>postalDeliveryType</td>
+<td>string</td>
+<td>optional</td>
+<td>Postal delivery type. (eg. PO BOX). Valid enumeration defined by Australia Post PAF code file</td>
+</tr>
+<tr>
+<td>postalDeliveryNumber</td>
+<td><a href="#common-field-types">PositiveInteger</a></td>
+<td>optional</td>
+<td>Postal delivery number if the address is a postal delivery type</td>
+</tr>
+<tr>
+<td>postalDeliveryNumberPrefix</td>
+<td>string</td>
+<td>optional</td>
+<td>Postal delivery number prefix related to the postal delivery number</td>
+</tr>
+<tr>
+<td>postalDeliveryNumberSuffix</td>
+<td>string</td>
+<td>optional</td>
+<td>Postal delivery number suffix related to the postal delivery number</td>
+</tr>
+<tr>
+<td>localityName</td>
+<td>string</td>
+<td>mandatory</td>
+<td>Full name of locality</td>
+</tr>
+<tr>
+<td>postcode</td>
+<td>string</td>
+<td>mandatory</td>
+<td>Postcode for the locality</td>
+</tr>
+<tr>
+<td>state</td>
+<td>string</td>
+<td>mandatory</td>
+<td>State in which the address belongs. Valid enumeration defined by Australia Post PAF code file <a href="https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf">State Type Abbreviation</a>. NSW, QLD, VIC, NT, WA, SA, TAS, ACT, AAT</td>
+</tr>
+</tbody></table>
+
+<h3 class="schema-toc" id="tocSbankingproductcategory">BankingProductCategory</h3>
+
+<p><a id="schemacdr-banking-apibankingproductcategory"></a></p>
+<pre class="highlight json tab-json"><code><span class="s2">"BUSINESS_LOANS"</span><span class="w">
+
+</span></code></pre>
+<p><em>The category to which a product or account belongs. See <a href="#product-categories">here</a> for more details</em></p>
+<h3 id='properties-23'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><em>anonymous</em></td>
+<td>string</td>
+<td>mandatory</td>
+<td>The category to which a product or account belongs. See <a href="#product-categories">here</a> for more details</td>
+</tr>
+</tbody></table>
+<h4 id='enumerated-values-16'>Enumerated Values</h4>
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><em>anonymous</em></td>
+<td>BUSINESS_LOANS</td>
+</tr>
+<tr>
+<td><em>anonymous</em></td>
+<td>CRED_AND_CHRG_CARDS</td>
+</tr>
+<tr>
+<td><em>anonymous</em></td>
+<td>LEASES</td>
+</tr>
+<tr>
+<td><em>anonymous</em></td>
+<td>MARGIN_LOANS</td>
+</tr>
+<tr>
+<td><em>anonymous</em></td>
+<td>OVERDRAFTS</td>
+</tr>
+<tr>
+<td><em>anonymous</em></td>
+<td>PERS_LOANS</td>
+</tr>
+<tr>
+<td><em>anonymous</em></td>
+<td>REGULATED_TRUST_ACCOUNTS</td>
+</tr>
+<tr>
+<td><em>anonymous</em></td>
+<td>RESIDENTIAL_MORTGAGES</td>
+</tr>
+<tr>
+<td><em>anonymous</em></td>
+<td>TERM_DEPOSITS</td>
+</tr>
+<tr>
+<td><em>anonymous</em></td>
+<td>TRADE_FINANCE</td>
+</tr>
+<tr>
+<td><em>anonymous</em></td>
+<td>TRANS_AND_SAVINGS_ACCOUNTS</td>
+</tr>
+<tr>
+<td><em>anonymous</em></td>
+<td>TRAVEL_CARDS</td>
+</tr>
+</tbody></table>
+
+<h3 class="schema-toc" id="tocSlinks">Links</h3>
+
+<p><a id="schemacdr-banking-apilinks"></a></p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre><h3 id='properties-24'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>self</td>
+<td><a href="#common-field-types">URIString</a></td>
+<td>mandatory</td>
+<td>Fully qualified link that generated the current response document</td>
+</tr>
+</tbody></table>
+
+<h3 class="schema-toc" id="tocSmeta">Meta</h3>
+
+<p><a id="schemacdr-banking-apimeta"></a></p>
+<pre class="highlight json tab-json"><code><span class="p">{}</span><span class="w">
+
+</span></code></pre><h3 id='properties-25'>Properties</h3>
+<p><em>None</em></p>
 
       </div>
       <div class="dark-box">

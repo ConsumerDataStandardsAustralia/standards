@@ -12,7 +12,7 @@
       "url" : "https://opensource.org/licenses/MIT"
     },
     "title" : "CDR Admin API",
-    "version" : "1.21.0"
+    "version" : "1.22.0"
   },
   "servers" : [ {
     "url" : "https://data.holder.com.au/cds-au/v1"
@@ -96,7 +96,7 @@
         "summary" : "Metadata Update",
         "tags" : [ "Admin", "Register" ],
         "x-scopes" : [ "admin:metadata:update" ],
-        "x-restricted-access" : true,
+        "x-restricted-access" : "REGISTER",
         "x-version" : "1",
         "x-codegen-request-body-name" : "action"
       }
@@ -183,7 +183,7 @@
         "summary" : "Get Metrics",
         "tags" : [ "Admin", "Metrics" ],
         "x-scopes" : [ "admin:metrics.basic:read" ],
-        "x-restricted-access" : true,
+        "x-restricted-access" : "REGISTER",
         "x-version" : "3"
       }
     }

@@ -2,7 +2,7 @@ openapi: 3.0.3
 info:
   description: Consumer Data Right end points and payloads for the Energy sector
   title: CDR Energy API
-  version: 1.21.0
+  version: 1.22.0
 servers:
 - url: /
 paths:
@@ -2126,20 +2126,6 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Used to filter results according to open/closed status. Values
-          can be OPEN, CLOSED or ALL. If absent then ALL is assumed
-        explode: true
-        in: query
-        name: open-status
-        required: false
-        schema:
-          default: ALL
-          enum:
-          - ALL
-          - CLOSED
-          - OPEN
-          type: string
-        style: form
       - description: Version of the API end point requested by the client. Must be
           set to a positive integer. The data holder should respond with the highest
           supported version between [x-min-v](#request-headers) and [x-v](#request-headers).
@@ -9084,7 +9070,8 @@ components:
       - totalUsageCharges
       type: object
     EnergyInvoiceAccountCharges:
-      description: Object contain charges and credits related to electricity usage
+      description: Object contains account level charges and credits related to electricity
+        usage
       example:
         totalGst: totalGst
         totalDiscounts: totalDiscounts

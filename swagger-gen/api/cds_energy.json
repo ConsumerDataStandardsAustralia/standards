@@ -3,7 +3,7 @@
 	"info": {
 		"title": "CDR Energy API",
 		"description": "Consumer Data Right end points and payloads for the Energy sector",
-		"version": "1.21.0"
+		"version": "1.22.0"
 	},
 	"components": {
 		"schemas": {
@@ -3297,7 +3297,7 @@
                 }
             },
             "EnergyInvoiceAccountCharges": {
-                "description": "Object contain charges and credits related to electricity usage",
+                "description": "Object contains account level charges and credits related to electricity usage",
                 "type": "object",
                 "required": [
                     "totalCharges",
@@ -5786,9 +5786,6 @@
 				"parameters": [{
 						"$ref": "#/components/parameters/accountId"
 					},
-                    {
-                        "$ref": "#/components/parameters/open-status"
-                    },
 					{
 						"$ref": "#/components/parameters/x-v"
 					},

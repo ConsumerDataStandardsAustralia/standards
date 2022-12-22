@@ -179,7 +179,7 @@ GET https://<register-base-url>/cdr-register/v1/{industry}/data-holders/brands H
 Accept: application/json
 Authorization: string
 x-v: 1
-x-min-v: string
+x-min-v: 0
 
 ```
 
@@ -188,7 +188,7 @@ var headers = {
   'Accept':'application/json',
   'Authorization':'string',
   'x-v':'1',
-  'x-min-v':'string'
+  'x-min-v':'0'
 
 };
 
@@ -221,11 +221,11 @@ Obsolete versions: [v1](includes/obsolete/get-data-holder-brands-v1.html)
 |---|---|---|---|---|
 |industry|path|string|mandatory|The industry the participant is retrieving data for (Banking, etc)|
 |Authorization|header|string|mandatory|An Authorisation Token as per **[[RFC6750]](#nref-RFC6750)**.|
-|x-v|header|string|optional|The version of the API end point requested by the client. Must be set to a positive integer.|
-|x-min-v|header|string|optional|The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided.|
-|updated-since|query|string(date-time)|optional|query filter returns results updated since the specified date-time|
-|page|query|integer(int32)|optional|the page number to return|
-|page-size|query|integer(int32)|optional|the number of records to return per page|
+|x-v|header|integer|optional|The version of the API end point requested by the client. Must be set to a positive integer. For backwards compatiblity defaults to 1 if absent. Note that once version 1 is decommissioned the header will be mandatory for a valid response to be obtained|
+|x-min-v|header|integer|optional|The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided.|
+|updated-since|query|string|optional|query filter returns results updated since the specified date-time|
+|page|query|integer|optional|the page number to return|
+|page-size|query|integer|optional|the number of records to return per page|
 
 #### Enumerated Values
 
@@ -255,7 +255,7 @@ Obsolete versions: [v1](includes/obsolete/get-data-holder-brands-v1.html)
         "legalEntityName": "string",
         "logoUri": "string",
         "registrationNumber": "string",
-        "registrationDate": "2019-08-24",
+        "registrationDate": "string",
         "registeredCountry": "string",
         "abn": "string",
         "acn": "string",
@@ -279,7 +279,7 @@ Obsolete versions: [v1](includes/obsolete/get-data-holder-brands-v1.html)
           "jwksEndpoint": "string"
         }
       ],
-      "lastUpdated": "2019-08-24T14:15:22Z"
+      "lastUpdated": "string"
     }
   ],
   "links": {
@@ -309,7 +309,7 @@ Obsolete versions: [v1](includes/obsolete/get-data-holder-brands-v1.html)
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
-|200|x-v|string||The version of the API end point that the CDR Register has responded with.|
+|200|x-v|integer||The version of the API end point that the CDR Register has responded with.|
 
   
     
@@ -331,8 +331,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 GET https://<register-base-url>/cdr-register/v1/{industry}/data-holders/brands/summary HTTP/1.1
 
 Accept: application/json
-x-v: string
-x-min-v: string
+x-v: 0
+x-min-v: 0
 If-None-Match: string
 
 ```
@@ -340,8 +340,8 @@ If-None-Match: string
 ```javascript
 var headers = {
   'Accept':'application/json',
-  'x-v':'string',
-  'x-min-v':'string',
+  'x-v':'0',
+  'x-min-v':'0',
   'If-None-Match':'string'
 
 };
@@ -372,8 +372,8 @@ Endpoint used by participants to discover public details of Data Holder Brands f
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |industry|path|string|mandatory|The industry the participant is retrieving data for (Banking, etc)|
-|x-v|header|string|mandatory|The version of the API end point requested by the client. Must be set to a positive integer.|
-|x-min-v|header|string|optional|The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided.|
+|x-v|header|integer|mandatory|The version of the API end point requested by the client. Must be set to a positive integer.|
+|x-min-v|header|integer|optional|The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided.|
 |If-None-Match|header|string|optional|Makes the request method conditional on a recipient cache or origin server not having any current representation of the target resource with an entity-tag that does not match any of those listed in the field-value.|
 
 #### Enumerated Values
@@ -401,7 +401,7 @@ Endpoint used by participants to discover public details of Data Holder Brands f
       "industries": [
         "banking"
       ],
-      "lastUpdated": "2019-08-24T14:15:22Z",
+      "lastUpdated": "string",
       "abn": "string",
       "acn": "string",
       "arbn": "string"
@@ -428,7 +428,7 @@ Endpoint used by participants to discover public details of Data Holder Brands f
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
-|200|x-v|string||The version of the API end point that the CDR Register has responded with.|
+|200|x-v|integer||The version of the API end point that the CDR Register has responded with.|
 |200|Etag|string||Entity tag that uniquely represents the requested resource.|
 |304|Etag|string||Entity tag that uniquely represents the requested resource.|
 
@@ -450,7 +450,7 @@ GET https://<register-base-url>/cdr-register/v1/{industry}/data-recipients/brand
 
 Accept: application/json
 x-v: 1
-x-min-v: string
+x-min-v: 0
 Authorization: string
 
 ```
@@ -459,7 +459,7 @@ Authorization: string
 var headers = {
   'Accept':'application/json',
   'x-v':'1',
-  'x-min-v':'string',
+  'x-min-v':'0',
   'Authorization':'string'
 
 };
@@ -492,8 +492,8 @@ Obsolete versions: [v1](includes/obsolete/get-software-statement-assertion-v1.ht
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |industry|path|string|mandatory|The industry the participant is retrieving data for (Banking, etc)|
-|x-v|header|string|optional|The version of the API end point requested by the client. Must be set to a positive integer.|
-|x-min-v|header|string|optional|The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided.|
+|x-v|header|integer|optional|The version of the API end point requested by the client. Must be set to a positive integer. For backwards compatiblity defaults to 1 if absent. Note that once version 1 is decommissioned the header will be mandatory for a valid response to be obtained|
+|x-min-v|header|integer|optional|The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided.|
 |dataRecipientBrandId|path|string|mandatory|Unique id for the Accredited Data Recipient Brand that the Software Product is associated with in the CDR Register|
 |softwareProductId|path|string|mandatory|Unique id for the Accredited Data Recipient Software Product in the CDR Register|
 |Authorization|header|string|mandatory|An Authorisation Token as per **[[RFC6750]](#nref-RFC6750)**.|
@@ -531,7 +531,7 @@ Obsolete versions: [v1](includes/obsolete/get-software-statement-assertion-v1.ht
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
-|200|x-v|string||The version of the API end point that the CDR Register has responded with.|
+|200|x-v|integer||The version of the API end point that the CDR Register has responded with.|
 
   
     
@@ -554,7 +554,7 @@ GET https://<register-base-url>/cdr-register/v1/{industry}/data-holders/status H
 
 Accept: application/json
 x-v: 1
-x-min-v: string
+x-min-v: 0
 If-None-Match: string
 
 ```
@@ -563,7 +563,7 @@ If-None-Match: string
 var headers = {
   'Accept':'application/json',
   'x-v':'1',
-  'x-min-v':'string',
+  'x-min-v':'0',
   'If-None-Match':'string'
 
 };
@@ -594,8 +594,8 @@ Endpoint used by participants to discover the statuses for Data Holders from the
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |industry|path|string|mandatory|The industry the participant is retrieving data for (Banking, etc)|
-|x-v|header|string|optional|The version of the API end point requested by the client. Must be set to a positive integer.|
-|x-min-v|header|string|optional|The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided.|
+|x-v|header|integer|optional|The version of the API end point requested by the client. Must be set to a positive integer.  For backwards compatiblity defaults to 1 if absent. Note that once version 1 is decommissioned the header will be mandatory for a valid response to be obtained|
+|x-min-v|header|integer|optional|The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided.|
 |If-None-Match|header|string|optional|Makes the request method conditional on a recipient cache or origin server not having any current representation of the target resource with an entity-tag that does not match any of those listed in the field-value.|
 
 #### Enumerated Values
@@ -639,7 +639,7 @@ Endpoint used by participants to discover the statuses for Data Holders from the
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
-|200|x-v|string||The version of the API end point that the CDR Register has responded with.|
+|200|x-v|integer||The version of the API end point that the CDR Register has responded with.|
 |200|Etag|string||Entity tag that uniquely represents the requested resource.|
 |304|Etag|string||Entity tag that uniquely represents the requested resource.|
 
@@ -661,7 +661,7 @@ GET https://<register-base-url>/cdr-register/v1/{industry}/data-recipients/brand
 
 Accept: application/json
 x-v: 1
-x-min-v: string
+x-min-v: 0
 If-None-Match: string
 
 ```
@@ -670,7 +670,7 @@ If-None-Match: string
 var headers = {
   'Accept':'application/json',
   'x-v':'1',
-  'x-min-v':'string',
+  'x-min-v':'0',
   'If-None-Match':'string'
 
 };
@@ -703,8 +703,8 @@ Obsolete versions: [v1](includes/obsolete/get-software-product-statuses-v1.html)
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |industry|path|string|mandatory|The industry the participant is retrieving data for (Banking, etc)|
-|x-v|header|string|optional|The version of the API end point requested by the client. Must be set to a positive integer.|
-|x-min-v|header|string|optional|The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided.|
+|x-v|header|integer|optional|The version of the API end point requested by the client. Must be set to a positive integer.  For backwards compatiblity defaults to 1 if absent. Note that once version 1 is decommissioned the header will be mandatory for a valid response to be obtained|
+|x-min-v|header|integer|optional|The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided.|
 |If-None-Match|header|string|optional|Makes the request method conditional on a recipient cache or origin server not having any current representation of the target resource with an entity-tag that does not match any of those listed in the field-value.|
 
 #### Enumerated Values
@@ -748,7 +748,7 @@ Obsolete versions: [v1](includes/obsolete/get-software-product-statuses-v1.html)
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
-|200|x-v|string||The version of the API end point that the CDR Register has responded with.|
+|200|x-v|integer||The version of the API end point that the CDR Register has responded with.|
 |200|Etag|string||Entity tag that uniquely represents the requested resource.|
 |304|Etag|string||Entity tag that uniquely represents the requested resource.|
 
@@ -770,7 +770,7 @@ GET https://<register-base-url>/cdr-register/v1/{industry}/data-recipients/statu
 
 Accept: application/json
 x-v: 1
-x-min-v: string
+x-min-v: 0
 If-None-Match: string
 
 ```
@@ -779,7 +779,7 @@ If-None-Match: string
 var headers = {
   'Accept':'application/json',
   'x-v':'1',
-  'x-min-v':'string',
+  'x-min-v':'0',
   'If-None-Match':'string'
 
 };
@@ -812,8 +812,8 @@ Obsolete versions: [v1](includes/obsolete/get-data-recipient-statuses-v1.html)
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |industry|path|string|mandatory|The industry the participant is retrieving data for (Banking, etc)|
-|x-v|header|string|optional|The version of the API end point requested by the client. Must be set to a positive integer.|
-|x-min-v|header|string|optional|The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided.|
+|x-v|header|integer|optional|The version of the API end point requested by the client. Must be set to a positive integer.  For backwards compatiblity defaults to 1 if absent. Note that once version 1 is decommissioned the header will be mandatory for a valid response to be obtained|
+|x-min-v|header|integer|optional|The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided.|
 |If-None-Match|header|string|optional|Makes the request method conditional on a recipient cache or origin server not having any current representation of the target resource with an entity-tag that does not match any of those listed in the field-value.|
 
 #### Enumerated Values
@@ -857,7 +857,7 @@ Obsolete versions: [v1](includes/obsolete/get-data-recipient-statuses-v1.html)
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
-|200|x-v|string||The version of the API end point that the CDR Register has responded with.|
+|200|x-v|integer||The version of the API end point that the CDR Register has responded with.|
 |200|Etag|string||Entity tag that uniquely represents the requested resource.|
 |304|Etag|string||Entity tag that uniquely represents the requested resource.|
 
@@ -878,8 +878,8 @@ This operation does not require authentication
 GET https://<register-base-url>/cdr-register/v1/{industry}/data-recipients HTTP/1.1
 
 Accept: application/json
-x-v: 1
-x-min-v: string
+x-v: 2
+x-min-v: 0
 If-None-Match: string
 
 ```
@@ -887,8 +887,8 @@ If-None-Match: string
 ```javascript
 var headers = {
   'Accept':'application/json',
-  'x-v':'1',
-  'x-min-v':'string',
+  'x-v':'2',
+  'x-min-v':'0',
   'If-None-Match':'string'
 
 };
@@ -921,8 +921,8 @@ Obsolete versions: [v2](includes/obsolete/get-data-recipients-v2.html)
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |industry|path|string|mandatory|The industry the participant is retrieving data for (Banking, etc)|
-|x-v|header|string|optional|The version of the API end point requested by the client. Must be set to a positive integer.|
-|x-min-v|header|string|optional|The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided.|
+|x-v|header|integer|optional|The version of the API end point requested by the client. Must be set to a positive integer.  For backwards compatiblity defaults to 2 if absent. Note that once version 2 is decommissioned the header will be mandatory for a valid response to be obtained|
+|x-min-v|header|integer|optional|The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided.|
 |If-None-Match|header|string|optional|Makes the request method conditional on a recipient cache or origin server not having any current representation of the target resource with an entity-tag that does not match any of those listed in the field-value.|
 
 #### Enumerated Values
@@ -965,7 +965,7 @@ Obsolete versions: [v2](includes/obsolete/get-data-recipients-v2.html)
         }
       ],
       "status": "ACTIVE",
-      "lastUpdated": "2019-08-24T14:15:22Z"
+      "lastUpdated": "string"
     }
   ],
   "links": {
@@ -988,7 +988,7 @@ Obsolete versions: [v2](includes/obsolete/get-data-recipients-v2.html)
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
-|200|x-v|string||The version of the API end point that the CDR Register has responded with.|
+|200|x-v|integer||The version of the API end point that the CDR Register has responded with.|
 |200|Etag|string||Entity tag that uniquely represents the requested resource.|
 |304|Etag|string||Entity tag that uniquely represents the requested resource.|
 
@@ -1049,9 +1049,9 @@ This operation does not require authentication
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|issuer|string|mandatory|URL using the https scheme with no query or fragment component that the CDR Register asserts as its Issuer Identifier|
-|jwks_uri|string|mandatory|URL of the CDR Register's JSON Web Key Set **[[JWK]](#nref-JWK)** document. This contains the signing key(s) used to validate access tokens issued from the CDR Register. Note that this differs from the JWKS endpoint used to validate SSAs and CDR Register client authentication|
-|token_endpoint|string|mandatory|URL of the CDR Register's OAuth 2.0 Token Endpoint|
+|issuer|[URIString](#common-field-types)|mandatory|URL using the https scheme with no query or fragment component that the CDR Register asserts as its Issuer Identifier|
+|jwks_uri|[URIString](#common-field-types)|mandatory|URL of the CDR Register's JSON Web Key Set **[[JWK]](#nref-JWK)** document. This contains the signing key(s) used to validate access tokens issued from the CDR Register. Note that this differs from the JWKS endpoint used to validate SSAs and CDR Register client authentication|
+|token_endpoint|[URIString](#common-field-types)|mandatory|URL of the CDR Register's OAuth 2.0 Token Endpoint|
 |claims_supported|[string]|mandatory|JSON array containing a list of the Claim Names of the Claims that the CDR Register supplies values for|
 |id_token_signing_alg_values_supported|[string]|mandatory|JSON array containing a list of the JWS signing algorithms (alg values) supported by the CDR Register for the ID Token to encode the Claims in a JWT. Given the CDR Register does not issue ID tokens, this field can be safely ignored|
 |subject_types_supported|[string]|mandatory|JSON array containing a list of the Subject Identifier types that the CDR Register supports. Given the CDR Register does not issue ID tokens, this field can be safely ignored|
@@ -1060,7 +1060,7 @@ This operation does not require authentication
 |response_types_supported|[string]|mandatory|JSON array containing a list of the OAuth 2.0 response_type values that the CDR Registrer supports|
 |grant_types_supported|[string]|mandatory|JSON array containing a list of the OAuth 2.0 Grant Type values that the CDR Register supports|
 |token_endpoint_auth_methods_supported|[string]|mandatory|JSON array containing a list of Client Authentication methods supported by this Token Endpoint|
-|tls_client_certificate_bound_access_tokens|boolean|mandatory|Boolean value indicating server support for mutual TLS client certificate bound access tokens|
+|tls_client_certificate_bound_access_tokens|[Boolean](#common-field-types)|mandatory|Boolean value indicating server support for mutual TLS client certificate bound access tokens|
 |token_endpoint_auth_signing_alg_values_supported|[string]|mandatory|JSON array containing a list of the JWS signing algorithms (alg values) supported by the token endpoint for the signature on the JWT **[[JWT]](#nref-JWT)** used to authenticate the client at the token endpoint for the "private_key_jwt" authentication method|
 
 <h3 class="schema-toc" id="tocSresponsejwks">ResponseJWKS</h3>
@@ -1117,12 +1117,12 @@ This operation does not require authentication
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|alg|string|mandatory|The "alg" (algorithm) parameter identifies the algorithm intended for use with the key|
-|e|string|mandatory|The "e" RSA public exponent parameter|
+|alg|[ExternalRef](#common-field-types)|mandatory|The "alg" (algorithm) parameter identifies the algorithm intended for use with the key|
+|e|[ExternalRef](#common-field-types)|mandatory|The "e" RSA public exponent parameter|
 |key_ops|[string]|mandatory|The "key_ops" (key operations) parameter identifies the operation(s) for which the key is intended to be used|
-|kid|string|mandatory|The "kid" (key ID) parameter is partially used to match a specific key. Note the "kid" parameter is not guaranteed unique and additional parameters should be used to progressively to identify a key within a set|
-|kty|string|mandatory|The "kty" (key type) parameter identifies the cryptographic algorithm family used with the key|
-|n|string|mandatory|The "n" RSA public modulus parameter|
+|kid|[ExternalRef](#common-field-types)|mandatory|The "kid" (key ID) parameter is partially used to match a specific key. Note the "kid" parameter is not guaranteed unique and additional parameters should be used to progressively to identify a key within a set|
+|kty|[ExternalRef](#common-field-types)|mandatory|The "kty" (key type) parameter identifies the cryptographic algorithm family used with the key|
+|n|[ExternalRef](#common-field-types)|mandatory|The "n" RSA public modulus parameter|
 
 <h3 class="schema-toc" id="tocSresponseregisterdataholderbrandlist">ResponseRegisterDataHolderBrandList</h3>
 
@@ -1143,7 +1143,7 @@ This operation does not require authentication
         "legalEntityName": "string",
         "logoUri": "string",
         "registrationNumber": "string",
-        "registrationDate": "2019-08-24",
+        "registrationDate": "string",
         "registeredCountry": "string",
         "abn": "string",
         "acn": "string",
@@ -1167,7 +1167,7 @@ This operation does not require authentication
           "jwksEndpoint": "string"
         }
       ],
-      "lastUpdated": "2019-08-24T14:15:22Z"
+      "lastUpdated": "string"
     }
   ],
   "links": {
@@ -1212,7 +1212,7 @@ This operation does not require authentication
     "legalEntityName": "string",
     "logoUri": "string",
     "registrationNumber": "string",
-    "registrationDate": "2019-08-24",
+    "registrationDate": "string",
     "registeredCountry": "string",
     "abn": "string",
     "acn": "string",
@@ -1236,7 +1236,7 @@ This operation does not require authentication
       "jwksEndpoint": "string"
     }
   ],
-  "lastUpdated": "2019-08-24T14:15:22Z"
+  "lastUpdated": "string"
 }
 
 ```
@@ -1250,7 +1250,7 @@ This operation does not require authentication
 |industries|[string]|mandatory|The industries the Data Holder Brand belongs to|
 |logoUri|[URIString](#common-field-types)|mandatory|Brand logo URI|
 |legalEntity|[LegalEntityDetail](#schemacdr-participant-discovery-apilegalentitydetail)|mandatory|The data that is common to all organisations, regardless of the type (e.g. company, trust, partnership, government)|
-|status|string|mandatory|none|
+|status|[Enum](#common-field-types)|mandatory|none|
 |endpointDetail|[RegisterDataHolderBrandServiceEndpoint](#schemacdr-participant-discovery-apiregisterdataholderbrandserviceendpoint)|mandatory|Endpoints related to Data Holder Brand services|
 |authDetails|[[RegisterDataHolderAuth](#schemacdr-participant-discovery-apiregisterdataholderauth)]|mandatory|[Defines the mechanism used and associated endpoints for Data Holder to Data Recipient authentication]|
 |lastUpdated|[DateTimeString](#common-field-types)|mandatory|The date/time that the Data Holder Brand data was last updated in the Register|
@@ -1282,7 +1282,7 @@ This operation does not require authentication
       "industries": [
         "banking"
       ],
-      "lastUpdated": "2019-08-24T14:15:22Z",
+      "lastUpdated": "string",
       "abn": "string",
       "acn": "string",
       "arbn": "string"
@@ -1318,7 +1318,7 @@ This operation does not require authentication
   "industries": [
     "banking"
   ],
-  "lastUpdated": "2019-08-24T14:15:22Z",
+  "lastUpdated": "string",
   "abn": "string",
   "acn": "string",
   "arbn": "string"
@@ -1394,7 +1394,7 @@ This operation does not require authentication
 |Name|Type|Required|Description|
 |---|---|---|---|
 |legalEntityId|string|mandatory|Unique id of the Data Holder Legal Entity issued by the CDR Register.|
-|status|string|mandatory|Data Holder status in the CDR Register|
+|status|[Enum](#common-field-types)|mandatory|Data Holder status in the CDR Register|
 
 #### Enumerated Values
 
@@ -1448,7 +1448,7 @@ This operation does not require authentication
 |Name|Type|Required|Description|
 |---|---|---|---|
 |softwareProductId|string|mandatory|Unique id of the software product issued by the CDR Register|
-|status|string|mandatory|Software product status in the CDR Register|
+|status|[Enum](#common-field-types)|mandatory|Software product status in the CDR Register|
 
 #### Enumerated Values
 
@@ -1503,7 +1503,7 @@ This operation does not require authentication
 |Name|Type|Required|Description|
 |---|---|---|---|
 |legalEntityId|string|mandatory|Unique id of the Data Recipient Legal Entity issued by the CDR Register|
-|status|string|mandatory|Data Recipient status in the CDR Register|
+|status|[Enum](#common-field-types)|mandatory|Data Recipient status in the CDR Register|
 
 #### Enumerated Values
 
@@ -1545,7 +1545,7 @@ This operation does not require authentication
         }
       ],
       "status": "ACTIVE",
-      "lastUpdated": "2019-08-24T14:15:22Z"
+      "lastUpdated": "string"
     }
   ],
   "links": {
@@ -1595,7 +1595,7 @@ This operation does not require authentication
     }
   ],
   "status": "ACTIVE",
-  "lastUpdated": "2019-08-24T14:15:22Z"
+  "lastUpdated": "string"
 }
 
 ```
@@ -1607,10 +1607,10 @@ This operation does not require authentication
 |legalEntityId|string|mandatory|Unique id of the Data Recipient Legal Entity issued by the CDR Register.|
 |legalEntityName|string|mandatory|Legal name of the Data Recipient|
 |accreditationNumber|string|mandatory|CDR Register issued human readable unique number given to Data Recipients upon accreditation|
-|accreditationLevel|string|mandatory|Accreditation level of the Data Recipient in the CDR Register|
+|accreditationLevel|[Enum](#common-field-types)|mandatory|Accreditation level of the Data Recipient in the CDR Register|
 |logoUri|[URIString](#common-field-types)|mandatory|Legal Entity logo URI|
 |dataRecipientBrands|[[DataRecipientBrandMetaData](#schemacdr-participant-discovery-apidatarecipientbrandmetadata)]|optional|[Metadata related to Data Recipient Brand]|
-|status|string|mandatory|Data Recipient status in the CDR Register|
+|status|[Enum](#common-field-types)|mandatory|Data Recipient status in the CDR Register|
 |lastUpdated|[DateTimeString](#common-field-types)|mandatory|The date/time that the Legal Entity was last updated in the CDR Register|
 
 #### Enumerated Values
@@ -1657,7 +1657,7 @@ This operation does not require authentication
 |brandName|string|mandatory|Data Recipient Brand name|
 |logoUri|[URIString](#common-field-types)|mandatory|Data Recipient Brand logo URI|
 |softwareProducts|[[SoftwareProductMetaData](#schemacdr-participant-discovery-apisoftwareproductmetadata)]|optional|[Data Recipient Brand Software Products]|
-|status|string|mandatory|Data Recipient Brand status in the CDR Register|
+|status|[Enum](#common-field-types)|mandatory|Data Recipient Brand status in the CDR Register|
 
 #### Enumerated Values
 
@@ -1692,7 +1692,7 @@ This operation does not require authentication
 |softwareProductName|string|mandatory|Name of the software product|
 |softwareProductDescription|string|mandatory|Description of the software product|
 |logoUri|[URIString](#common-field-types)|mandatory|Software product logo URI|
-|status|string|mandatory|Software Product status in the CDR Register|
+|status|[Enum](#common-field-types)|mandatory|Software Product status in the CDR Register|
 
 #### Enumerated Values
 
@@ -1712,7 +1712,7 @@ This operation does not require authentication
   "legalEntityName": "string",
   "logoUri": "string",
   "registrationNumber": "string",
-  "registrationDate": "2019-08-24",
+  "registrationDate": "string",
   "registeredCountry": "string",
   "abn": "string",
   "acn": "string",
@@ -1739,9 +1739,9 @@ This operation does not require authentication
 |abn|string|optional|Australian Business Number for the organisation|
 |acn|string|optional|Australian Company Number for the organisation|
 |arbn|string|optional|Australian Registered Body Number.  ARBNs are issued to registrable Australian bodies and foreign companies|
-|anzsicDivision|string|optional|ANZSIC division of the organisation. **[[ANZSIC-2006]](#iref-ANZSIC-2006)**|
-|organisationType|string|optional|Legal organisation type|
-|status|string|mandatory|none|
+|anzsicDivision|[ExternalRef](#common-field-types)|optional|ANZSIC division of the organisation. **[[ANZSIC-2006]](#iref-ANZSIC-2006)**|
+|organisationType|[Enum](#common-field-types)|optional|Legal organisation type|
+|status|[Enum](#common-field-types)|mandatory|none|
 
 #### Enumerated Values
 
@@ -1803,7 +1803,7 @@ This operation does not require authentication
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|registerUType|string|mandatory|The type of authentication and authorisation mechanism in use|
+|registerUType|[Enum](#common-field-types)|mandatory|The type of authentication and authorisation mechanism in use|
 |jwksEndpoint|[URIString](#common-field-types)|mandatory|JWKS endpoint used for authentication by the Data Holder with the Data Recipient|
 
 #### Enumerated Values
@@ -1831,11 +1831,11 @@ This operation does not require authentication
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|first|string|optional|URI to the first page of this set. Mandatory if this response is not the first page|
-|last|string|optional|URI to the last page of this set. Mandatory if this response is not the last page|
-|next|string|optional|URI to the next page of this set. Mandatory if this response is not the last page|
-|prev|string|optional|URI to the previous page of this set. Mandatory if this response is not the first page|
-|self|string|mandatory|Fully qualified link to this API call|
+|first|[URIString](#common-field-types)|optional|URI to the first page of this set. Mandatory if this response is not the first page|
+|last|[URIString](#common-field-types)|optional|URI to the last page of this set. Mandatory if this response is not the last page|
+|next|[URIString](#common-field-types)|optional|URI to the next page of this set. Mandatory if this response is not the last page|
+|prev|[URIString](#common-field-types)|optional|URI to the previous page of this set. Mandatory if this response is not the first page|
+|self|[URIString](#common-field-types)|mandatory|Fully qualified link to this API call|
 
 <h3 class="schema-toc" id="tocSmetapaginated">MetaPaginated</h3>
 
@@ -1853,8 +1853,8 @@ This operation does not require authentication
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|totalPages|integer(int32)|mandatory|The total number of pages in the full set|
-|totalRecords|integer(int32)|mandatory|The total number of records in the full set|
+|totalPages|[NaturalNumber](#common-field-types)|mandatory|The total number of pages in the full set|
+|totalRecords|[NaturalNumber](#common-field-types)|mandatory|The total number of records in the full set|
 
 <h3 class="schema-toc" id="tocSlinks">Links</h3>
 
@@ -1871,7 +1871,7 @@ This operation does not require authentication
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|self|string|mandatory|Fully qualified link to this API call|
+|self|[URIString](#common-field-types)|mandatory|Fully qualified link to this API call|
 
 <h3 class="schema-toc" id="tocSmeta">Meta</h3>
 

@@ -3,7 +3,7 @@
   "info" : {
     "description" : "Consumer Data Right end points and payloads for Secondary Data Holder for the Energy sector",
     "title" : "CDR Energy Secondary Data Holder API",
-    "version" : "1.21.0"
+    "version" : "1.22.0"
   },
   "servers" : [ {
     "url" : "/"
@@ -171,6 +171,7 @@
         },
         "summary" : "Get Service Points (SR)",
         "tags" : [ "Energy-SDH", "NMI Standing Data" ],
+        "x-restricted-access" : "AEMO",
         "x-version" : "1"
       }
     },
@@ -321,6 +322,7 @@
         },
         "summary" : "Get Service Point Detail (SR)",
         "tags" : [ "Energy-SDH", "NMI Standing Data" ],
+        "x-restricted-access" : "AEMO",
         "x-version" : "1"
       }
     },
@@ -547,6 +549,7 @@
         },
         "summary" : "Get Usage For Service Point (SR)",
         "tags" : [ "Energy-SDH", "Electricity Usage" ],
+        "x-restricted-access" : "AEMO",
         "x-version" : "1"
       }
     },
@@ -746,6 +749,7 @@
         },
         "summary" : "Get Usage For Specific Service Points (SR)",
         "tags" : [ "Energy-SDH", "Electricity Usage" ],
+        "x-restricted-access" : "AEMO",
         "x-version" : "1"
       }
     },
@@ -896,6 +900,7 @@
         },
         "summary" : "Get DER For Service Point (SR)",
         "tags" : [ "Energy-SDH", "Distributed Energy Resources" ],
+        "x-restricted-access" : "AEMO",
         "x-version" : "1"
       }
     },
@@ -1061,6 +1066,7 @@
         },
         "summary" : "Get DER For Specific Service Points (SR)",
         "tags" : [ "Energy-SDH", "Distributed Energy Resources" ],
+        "x-restricted-access" : "AEMO",
         "x-version" : "1"
       }
     }

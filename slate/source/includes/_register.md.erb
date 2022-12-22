@@ -1,7 +1,15 @@
 # Register APIs
 
-This following provides an overview of the Register APIs for Data Holders and Data Recipients to collect participant metadata exclusively for the banking sector.
+The following section provides an overview of the Register APIs for Data Holders and Data Recipients to collect participant metadata.
 These endpoints are exposed by the Register and consumed by Data Holders and Data Recipients.
+
+```diff
+Updated Register API field types to use Common Field Types
+
+Modified the x-v request header descriptions that are optional
+to specify the default version that will be assumed if the header
+is absent
+```
 
 <aside class="warning">
   These endpoints are not implemented by Data Holders and Data Recipients. They are hosted by the Register for consumption by participants.
@@ -25,8 +33,8 @@ These endpoints are exposed by the Register and consumed by Data Holders and Dat
 | Get Data Holder Brands Summary | Public Client | Discovery of Data Holder Brands and their associated public details | | <i class="icon-check"></i> | |
 | Get Software Statement Assertion | Data Recipient Brand or Software Product | Get SSA for a Software Product to be used in [Dynamic Client Registration](#dynamic-client-registration) | <i class="icon-check"></i> | | <i class="icon-check"></i> |
 | Get Data Holder Statuses | Data Recipient | Data Holder Statuses to check validity of Data Holder | | <i class="icon-check"></i> | |
-| Get Software Products Status | Data Holder Brand | Software Product Statuses to check validity of ADR [requests](#accredited-data-recipient-and-software-product-statuses) | | <i class="icon-check"></i> | |
-| Get Data Recipient Statuses | Data Holder Brand | Data Recipient Statuses to check validity of ADR [requests](#accredited-data-recipient-and-software-product-statuses) | | <i class="icon-check"></i> | |
+| Get Software Products Status | Data Holder Brand | Software Product Statuses to check validity of ADR requests | | <i class="icon-check"></i> | |
+| Get Data Recipient Statuses | Data Holder Brand | Data Recipient Statuses to check validity of ADR requests | | <i class="icon-check"></i> | |
 | Get Data Recipients | Data Holder Brand | Data Recipient, brand and product details to render Data Holder Consumer Dashboard | | <i class="icon-check"></i> | |
 
 

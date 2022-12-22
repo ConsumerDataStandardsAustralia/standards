@@ -3,7 +3,7 @@
 	"info": {
 		"title": "CDR Energy Secondary Data Holder API",
 		"description": "Consumer Data Right end points and payloads for Secondary Data Holder for the Energy sector",
-		"version": "1.21.0"
+		"version": "1.22.0"
 	},
 	"components": {
 		"schemas": {
@@ -1480,6 +1480,7 @@
 				"summary": "Get Service Points (SR)",
                 "description": "Obtain a list of service points owned by the customer that has authorised the current session",
 				"operationId": "listServicePoints",
+                "x-restricted-access": "AEMO",
 				"tags": [
                     "Energy-SDH",
 					"NMI Standing Data"
@@ -1573,6 +1574,7 @@
 				"summary": "Get Service Point Detail (SR)",
 				"operationId": "getServicePoint",
 				"description": "Obtain detailed standing information for a specific service point that is owned by the customer that has authorised the current session",
+                "x-restricted-access": "AEMO",
 				"tags": [
                     "Energy-SDH",
 					"NMI Standing Data"
@@ -1660,6 +1662,7 @@
 				"summary": "Get Usage For Service Point (SR)",
 				"operationId": "getUsageForServicePoint",
 				"description": "Obtain a list of electricity usage data from a particular service point",
+                "x-restricted-access": "AEMO",
 				"tags": [
                     "Energy-SDH",
 					"Electricity Usage"
@@ -1780,6 +1783,7 @@
 				"summary": "Get Usage For Specific Service Points (SR)",
 				"operationId": "listUsageForServicePoints",
 				"description": "Obtain the electricity usage data for a specific set of service points",
+                "x-restricted-access": "AEMO",
 				"tags": [
                     "Energy-SDH",
 					"Electricity Usage"
@@ -1882,6 +1886,7 @@
 				"summary": "Get DER For Service Point (SR)",
 				"operationId": "getDERForServicePoint",
 				"description": "Obtain a list of DER data from a particular service point",
+                "x-restricted-access": "AEMO",
 				"tags": [
                     "Energy-SDH",
 					"Distributed Energy Resources"
@@ -1969,6 +1974,7 @@
 				"summary": "Get DER For Specific Service Points (SR)",
 				"operationId": "listDERForServicePoints",
 				"description": "Obtain DER data for a specific set of service points",
+                "x-restricted-access": "AEMO",
 				"tags": [
                     "Energy-SDH",
 					"Distributed Energy Resources"

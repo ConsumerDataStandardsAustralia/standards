@@ -3,7 +3,7 @@ info:
   description: Consumer Data Right end points and payloads for Secondary Data Holder
     for the Energy sector
   title: CDR Energy Secondary Data Holder API
-  version: 1.21.0
+  version: 1.22.0
 servers:
 - url: /
 paths:
@@ -169,6 +169,7 @@ paths:
       tags:
       - Energy-SDH
       - NMI Standing Data
+      x-restricted-access: AEMO
       x-version: "1"
   /secondary/energy/electricity/servicepoints/{servicePointId}:
     get:
@@ -322,6 +323,7 @@ paths:
       tags:
       - Energy-SDH
       - NMI Standing Data
+      x-restricted-access: AEMO
       x-version: "1"
   /secondary/energy/electricity/servicepoints/{servicePointId}/usage:
     get:
@@ -548,6 +550,7 @@ paths:
       tags:
       - Energy-SDH
       - Electricity Usage
+      x-restricted-access: AEMO
       x-version: "1"
   /secondary/energy/electricity/servicepoints/usage:
     post:
@@ -749,6 +752,7 @@ paths:
       tags:
       - Energy-SDH
       - Electricity Usage
+      x-restricted-access: AEMO
       x-version: "1"
   /secondary/energy/electricity/servicepoints/{servicePointId}/der:
     get:
@@ -901,6 +905,7 @@ paths:
       tags:
       - Energy-SDH
       - Distributed Energy Resources
+      x-restricted-access: AEMO
       x-version: "1"
   /secondary/energy/electricity/servicepoints/der:
     post:
@@ -1065,6 +1070,7 @@ paths:
       tags:
       - Energy-SDH
       - Distributed Energy Resources
+      x-restricted-access: AEMO
       x-version: "1"
 components:
   parameters:
