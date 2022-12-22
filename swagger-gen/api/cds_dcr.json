@@ -70,8 +70,7 @@
             "description": "The client ID issued by the target Data Holder",
             "required": true,
             "schema": {
-              "type": "string",
-              "x-cds-type": "ExternalRef"
+              "type": "string"
             }
           },
           {
@@ -130,8 +129,7 @@
             "description": "The client ID issued by the target Data Holder",
             "required": true,
             "schema": {
-              "type": "string",
-              "x-cds-type": "ExternalRef"
+              "type": "string"
             }
           },
           {
@@ -212,8 +210,7 @@
             "description": "The client ID issued by the target Data Holder",
             "required": true,
             "schema": {
-              "type": "string",
-              "x-cds-type": "ExternalRef"
+              "type": "string"
             }
           },
           {
@@ -292,8 +289,7 @@
           "client_id": {
             "type": "string",
             "description": "Data Holder issued client identifier string",
-            "example": "35a5a70b-5b8d-41f4-9cbd-96cfbc15c58a",
-            "x-cds-type": "ExternalRef"
+            "example": "35a5a70b-5b8d-41f4-9cbd-96cfbc15c58a"
           },
           "client_id_issued_at": {
             "type": "integer",
@@ -655,8 +651,7 @@
         "description": "The client ID issued by the target Data Holder",
         "required": true,
         "schema": {
-          "type": "string",
-          "x-cds-type": "ExternalRef"
+          "type": "string"
         }
       }
     }
