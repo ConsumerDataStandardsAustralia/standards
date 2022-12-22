@@ -1192,20 +1192,6 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Used to filter results according to open/closed status. Values
-          can be OPEN, CLOSED or ALL. If absent then ALL is assumed
-        explode: true
-        in: query
-        name: open-status
-        required: false
-        schema:
-          default: ALL
-          enum:
-          - ALL
-          - CLOSED
-          - OPEN
-          type: string
-        style: form
       - description: Version of the API end point requested by the client. Must be
           set to a positive integer. The data holder should respond with the highest
           supported version between [x-min-v](#request-headers) and [x-v](#request-headers).
