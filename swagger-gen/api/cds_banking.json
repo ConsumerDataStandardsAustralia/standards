@@ -33,7 +33,7 @@
           {
             "name": "product-category",
             "in": "query",
-            "description": "Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.\n\nObsolete versions: [v1](includes/obsolete/get-accounts-v1.html)",
+            "description": "Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.)",
             "schema": {
               "type": "string",
               "enum": [
