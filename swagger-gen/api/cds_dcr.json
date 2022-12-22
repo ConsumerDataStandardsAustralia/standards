@@ -300,14 +300,12 @@
           "client_name": {
             "type": "string",
             "description": "Human-readable string name of the software product to be presented to the end-user during authorization",
-            "example": "Mock Software",
-            "x-cds-type": "String"
+            "example": "Mock Software"
           },
           "client_description": {
             "type": "string",
             "description": "Human-readable string name of the software product description to be presented to the end user during authorization",
-            "example": "A mock software product",
-            "x-cds-type": "String"
+            "example": "A mock software product"
           },
           "client_uri": {
             "type": "string",
@@ -318,26 +316,22 @@
           "legal_entity_id": {
             "type": "string",
             "description": "A unique identifier string assigned by the CDR Register that identifies the Accredited Data Recipient Legal Entity",
-            "example": "344F0E809-BDBE-4F8E-BD30-5E6C3CB78D7B",
-            "x-cds-type": "String"
+            "example": "344F0E809-BDBE-4F8E-BD30-5E6C3CB78D7B"
           },
           "legal_entity_name": {
             "type": "string",
             "description": "Human-readable string name of the Accredited Data Recipient Legal Entity",
-            "example": "Mock Company Pty Ltd.",
-            "x-cds-type": "String"
+            "example": "Mock Company Pty Ltd."
           },
           "org_id": {
             "type": "string",
             "description": "A unique identifier string assigned by the CDR Register that identifies the Accredited Data Recipient Brand",
-            "example": "3B0B0A7B-3E7B-4A2C-9497-E357A71D07C8",
-            "x-cds-type": "String"
+            "example": "3B0B0A7B-3E7B-4A2C-9497-E357A71D07C8"
           },
           "org_name": {
             "type": "string",
             "description": "Human-readable string name of the Accredited Data Recipient to be presented to the end user during authorization",
-            "example": "Mock Company Brand.",
-            "x-cds-type": "String"
+            "example": "Mock Company Brand."
           },
           "redirect_uris": {
             "type": "array",
@@ -510,8 +504,7 @@
           "software_id": {
             "type": "string",
             "description": "String representing a unique identifier assigned by the Register and used by registration endpoints to identify the software product to be dynamically registered. </br></br>The \"software_id\" will remain the same for the lifetime of the product, across multiple updates and versions",
-            "example": "740C368F-ECF9-4D29-A2EA-0514A66B0CDE",
-            "x-cds-type": "String"
+            "example": "740C368F-ECF9-4D29-A2EA-0514A66B0CDE"
           },
           "software_roles": {
             "type": "string",
@@ -525,8 +518,7 @@
           "scope": {
             "type": "string",
             "description": "String containing a space-separated list of scope values that the client can use when requesting access tokens.",
-            "example": "openid profile bank:accounts.basic:read bank:accounts.detail:read bank:transactions:read bank:payees:read bank:regular_payments:read common:customer.basic:read common:customer.detail:read cdr:registration",
-            "x-cds-type": "String"
+            "example": "openid profile bank:accounts.basic:read bank:accounts.detail:read bank:transactions:read bank:payees:read bank:regular_payments:read common:customer.basic:read common:customer.detail:read cdr:registration"
           }
         }
       },
@@ -545,8 +537,7 @@
               "iss": {
                 "type": "string",
                 "description": "Contains the identifier for the ADR Software Product (SoftwareProductId) as defined in the CDR Register",
-                "example": "CDR Software Product ID",
-                "x-cds-type": "String"
+                "example": "CDR Software Product ID"
               },
               "iat": {
                 "type": "integer",
@@ -563,8 +554,7 @@
               "jti": {
                 "type": "string",
                 "description": "Unique identifier for the JWT, used to prevent replay of the token",
-                "example": "37747cd1c10545699f754adf28b73e31",
-                "x-cds-type": "String"
+                "example": "37747cd1c10545699f754adf28b73e31"
               },
               "aud": {
                 "type": "string",
