@@ -48,6 +48,7 @@ No changes
 |Change|Description|Link|
 |------|-----------|----|
 | Add Owner Field for Banking Accounts | [Change Request 513](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/513): Adds a new `accountOwnership` field to banking account end points.  Change results in new end point versions | [Banking APIs](../../#banking-apis) |
+| Telco Draft Standards Update | Updates arising from the feedback provided [Decision Proposal 275 - Holistic Feedback on Telco Standards](https://github.com/ConsumerDataStandardsAustralia/standards/issues/275) | [Draft Telco APIs](../../#telco-apis) |
 
 
 ## Information Security Profile

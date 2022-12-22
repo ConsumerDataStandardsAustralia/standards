@@ -23,7 +23,7 @@
         "description" : "Obtain a list of accounts.\n\nObsolete versions: [v1](includes/obsolete/get-accounts-v1.html)",
         "operationId" : "listAccounts",
         "parameters" : [ {
-          "description" : "Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.\n\nObsolete versions: [v1](includes/obsolete/get-accounts-v1.html)",
+          "description" : "Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.)",
           "explode" : true,
           "in" : "query",
           "name" : "product-category",

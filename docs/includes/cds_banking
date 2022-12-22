@@ -70,7 +70,7 @@
 <td>query</td>
 <td>string</td>
 <td>optional</td>
-<td>Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.</td>
+<td>Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.)</td>
 </tr>
 <tr>
 <td>open-status</td>
@@ -143,10 +143,6 @@
 <td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
 </tr>
 </tbody></table>
-<h4 id='detailed-descriptions'>Detailed descriptions</h4>
-<p><strong>product-category</strong>: Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.</p>
-
-<p>Obsolete versions: <a href="includes/obsolete/get-accounts-v1.html">v1</a></p>
 <h4 id='enumerated-values'>Enumerated Values</h4>
 <table><thead>
 <tr>
