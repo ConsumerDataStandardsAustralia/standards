@@ -1172,7 +1172,7 @@ paths:
       - Telco
       - Accounts
       x-scopes:
-      - telco:accounts:basic:read
+      - telco:accounts.basic:read
       x-version: "1"
   /telco/accounts/{accountId}:
     get:
@@ -1364,7 +1364,7 @@ paths:
       - Telco
       - Accounts
       x-scopes:
-      - telco:accounts:detail:read
+      - telco:accounts.detail:read
       x-version: "1"
   /telco/accounts/{accountId}/payment-schedule:
     get:
@@ -1551,7 +1551,7 @@ paths:
       - Telco
       - Accounts
       x-scopes:
-      - telco:accounts:paymentschedule:read
+      - telco:accounts.paymentschedule:read
       x-version: "1"
   /telco/accounts/{accountId}/concessions:
     get:
@@ -1727,7 +1727,7 @@ paths:
       - Telco
       - Accounts
       x-scopes:
-      - telco:accounts:concessions:read
+      - telco:accounts.concessions:read
       x-version: "1"
   /telco/accounts/{accountId}/balance:
     get:

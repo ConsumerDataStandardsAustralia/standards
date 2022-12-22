@@ -1018,7 +1018,7 @@ Other Versions: [v1](includes/obsolete/get-telco-accounts-v1.html)
     
       <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">telco:accounts:basic:read</a>
+<a href="#authorisation-scopes">telco:accounts.basic:read</a>
 </aside>
 
     
@@ -1181,7 +1181,7 @@ Other Versions: [v1](includes/obsolete/get-telco-account-detail-v1.html)
     
       <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">telco:accounts:detail:read</a>
+<a href="#authorisation-scopes">telco:accounts.detail:read</a>
 </aside>
 
     
@@ -1322,7 +1322,7 @@ Some general notes about this end point:
     
       <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">telco:accounts:paymentschedule:read</a>
+<a href="#authorisation-scopes">telco:accounts.paymentschedule:read</a>
 </aside>
 
     
@@ -1446,7 +1446,7 @@ Obtain the details of any concessions or arrangements applied to a specific telc
     
       <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">telco:accounts:concessions:read</a>
+<a href="#authorisation-scopes">telco:accounts.concessions:read</a>
 </aside>
 
     
