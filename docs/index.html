@@ -718,16 +718,16 @@
                                 <a href="#tocSbankingproductratecondition" class="toc-h3 toc-link" data-title="BankingProductRateCondition">BankingProductRateCondition</a>
                               </li>
                               <li>
-                                <a href="#tocSresponsebankingaccountlist" class="toc-h3 toc-link" data-title="ResponseBankingAccountList">ResponseBankingAccountList</a>
+                                <a href="#tocSresponsebankingaccountlistv2" class="toc-h3 toc-link" data-title="ResponseBankingAccountListV2">ResponseBankingAccountListV2</a>
                               </li>
                               <li>
-                                <a href="#tocSbankingaccount" class="toc-h3 toc-link" data-title="BankingAccount">BankingAccount</a>
+                                <a href="#tocSbankingaccountv2" class="toc-h3 toc-link" data-title="BankingAccountV2">BankingAccountV2</a>
                               </li>
                               <li>
-                                <a href="#tocSresponsebankingaccountbyidv2" class="toc-h3 toc-link" data-title="ResponseBankingAccountByIdV2">ResponseBankingAccountByIdV2</a>
+                                <a href="#tocSresponsebankingaccountbyidv3" class="toc-h3 toc-link" data-title="ResponseBankingAccountByIdV3">ResponseBankingAccountByIdV3</a>
                               </li>
                               <li>
-                                <a href="#tocSbankingaccountdetailv2" class="toc-h3 toc-link" data-title="BankingAccountDetailV2">BankingAccountDetailV2</a>
+                                <a href="#tocSbankingaccountdetailv3" class="toc-h3 toc-link" data-title="BankingAccountDetailV3">BankingAccountDetailV3</a>
                               </li>
                               <li>
                                 <a href="#tocSbankingtermdepositaccount" class="toc-h3 toc-link" data-title="BankingTermDepositAccount">BankingTermDepositAccount</a>
@@ -1977,6 +1977,26 @@ Updated obligation dates for FAPI 1.0 Phase 3
 <td><a href="#security-profile">Information Security profile</a></td>
 <td>FAPI 1.0 adoption is introduced across four phases.<br/><strong>Phase 4: Retire Hybrid Flow</strong>:<ul><li>Data Holders <strong>MAY</strong> retire Hybrid Flow</li></ul></td>
 <td>July 10th 2023</td>
+</tr>
+<tr>
+<td><a href="#get-accounts">Get Accounts V2</a></td>
+<td>Version 2 of this end point <strong>MUST</strong> be made available by affected data holders by July 10th 2023</td>
+<td>July 10th 2023</td>
+</tr>
+<tr>
+<td><a href="#get-account-detail">Get Account Detail V3</a></td>
+<td>Version 3 of this end point <strong>MUST</strong> be made available by affected data holders by July 10th 2023</td>
+<td>July 10th 2023</td>
+</tr>
+<tr>
+<td><a href="#get-account-detail">Get Accounts V1</a></td>
+<td>Data Holders <strong>MAY</strong> decommission v1 of this end point from March 11th 2024</td>
+<td>March 11th 2024</td>
+</tr>
+<tr>
+<td><a href="#get-account-detail">Get Account Detail V2</a></td>
+<td>Data Holders <strong>MAY</strong> decommission v2 of this end point from March 11th 2024</td>
+<td>March 11th 2024</td>
 </tr>
 </tbody></table>
 
@@ -13049,7 +13069,7 @@ This operation does not require authentication
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>1</strong></td>
+<td><strong>2</strong></td>
 </tr>
 </tbody></table>
 
@@ -13143,6 +13163,12 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
+<h4 id='detailed-descriptions'>Detailed descriptions</h4>
+
+<p><strong>product-category</strong>: Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.</p>
+
+<p>Obsolete versions: <a href="includes/obsolete/get-accounts-v1.html">v1</a></p>
+
 <h4 id='enumerated-values'>Enumerated Values</h4>
 
 <table><thead>
@@ -13229,6 +13255,7 @@ This operation does not require authentication
         </span><span class="s2">"nickname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"openStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CLOSED"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"isOwned"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"accountOwnership"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UNKNOWN"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"maskedNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"productCategory"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUSINESS_LOANS"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"productName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
@@ -13263,7 +13290,7 @@ This operation does not require authentication
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>Success</td>
-<td><a href="#schemacdr-banking-apiresponsebankingaccountlist">ResponseBankingAccountList</a></td>
+<td><a href="#schemacdr-banking-apiresponsebankingaccountlistv2">ResponseBankingAccountListV2</a></td>
 </tr>
 <tr>
 <td>400</td>
@@ -14243,7 +14270,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p>Obtain detailed information on a single account.</p>
 
-<p>Obsolete versions: <a href="includes/obsolete/get-account-detail-v1.html">v1</a></p>
+<p>Obsolete versions: <a href="includes/obsolete/get-account-detail-v1.html">v1</a>, <a href="includes/obsolete/get-account-detail-v2.html">v2</a></p>
 
 <h3 id='endpoint-version-5'>Endpoint Version</h3>
 
@@ -14255,7 +14282,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>2</strong></td>
+<td><strong>3</strong></td>
 </tr>
 </tbody></table>
 
@@ -14335,6 +14362,7 @@ To perform this operation, you must be authenticated and authorised with the fol
     </span><span class="s2">"nickname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"openStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CLOSED"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"isOwned"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"accountOwnership"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UNKNOWN"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"maskedNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"productCategory"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUSINESS_LOANS"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"productName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -14541,7 +14569,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>Success</td>
-<td><a href="#schemacdr-banking-apiresponsebankingaccountbyidv2">ResponseBankingAccountByIdV2</a></td>
+<td><a href="#schemacdr-banking-apiresponsebankingaccountbyidv3">ResponseBankingAccountByIdV3</a></td>
 </tr>
 <tr>
 <td>400</td>
@@ -20767,9 +20795,9 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSresponsebankingaccountlist">ResponseBankingAccountList</h3>
+<h3 class="schema-toc" id="tocSresponsebankingaccountlistv2">ResponseBankingAccountListV2</h3>
 
-<p><a id="schemacdr-banking-apiresponsebankingaccountlist"></a></p>
+<p><a id="schemacdr-banking-apiresponsebankingaccountlistv2"></a></p>
 
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -20781,6 +20809,7 @@ This operation does not require authentication
         </span><span class="s2">"nickname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"openStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CLOSED"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"isOwned"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"accountOwnership"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UNKNOWN"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"maskedNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"productCategory"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUSINESS_LOANS"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"productName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
@@ -20817,7 +20846,7 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>» accounts</td>
-<td>[<a href="#schemacdr-banking-apibankingaccount">BankingAccount</a>]</td>
+<td>[<a href="#schemacdr-banking-apibankingaccountv2">BankingAccountV2</a>]</td>
 <td>mandatory</td>
 <td>The list of accounts returned. If the filter results in an empty set then this array may have no records</td>
 </tr>
@@ -20835,9 +20864,9 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSbankingaccount">BankingAccount</h3>
+<h3 class="schema-toc" id="tocSbankingaccountv2">BankingAccountV2</h3>
 
-<p><a id="schemacdr-banking-apibankingaccount"></a></p>
+<p><a id="schemacdr-banking-apibankingaccountv2"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"creationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -20845,6 +20874,7 @@ This operation does not require authentication
   </span><span class="s2">"nickname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"openStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CLOSED"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"isOwned"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"accountOwnership"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UNKNOWN"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"maskedNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"productCategory"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUSINESS_LOANS"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"productName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
@@ -20896,6 +20926,12 @@ This operation does not require authentication
 <td>Flag indicating that the customer associated with the authorisation is an owner of the account. Does not indicate sole ownership, however. If not present then &#39;true&#39; is assumed</td>
 </tr>
 <tr>
+<td>accountOwnership</td>
+<td>string</td>
+<td>mandatory</td>
+<td>Value indicating the number of customers that have ownership of the account, according to the data holder&#39;s definition of account ownership. Does not indicate that all account owners are eligible consumers</td>
+</tr>
+<tr>
 <td>maskedNumber</td>
 <td><a href="#common-field-types">MaskedAccountString</a></td>
 <td>mandatory</td>
@@ -20929,11 +20965,31 @@ This operation does not require authentication
 <td>openStatus</td>
 <td>OPEN</td>
 </tr>
+<tr>
+<td>accountOwnership</td>
+<td>UNKNOWN</td>
+</tr>
+<tr>
+<td>accountOwnership</td>
+<td>ONE_PARTY</td>
+</tr>
+<tr>
+<td>accountOwnership</td>
+<td>TWO_PARTY</td>
+</tr>
+<tr>
+<td>accountOwnership</td>
+<td>MANY_PARTY</td>
+</tr>
+<tr>
+<td>accountOwnership</td>
+<td>OTHER</td>
+</tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSresponsebankingaccountbyidv2">ResponseBankingAccountByIdV2</h3>
+<h3 class="schema-toc" id="tocSresponsebankingaccountbyidv3">ResponseBankingAccountByIdV3</h3>
 
-<p><a id="schemacdr-banking-apiresponsebankingaccountbyidv2"></a></p>
+<p><a id="schemacdr-banking-apiresponsebankingaccountbyidv3"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -20942,6 +20998,7 @@ This operation does not require authentication
     </span><span class="s2">"nickname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"openStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CLOSED"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"isOwned"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"accountOwnership"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UNKNOWN"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"maskedNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"productCategory"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUSINESS_LOANS"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"productName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -21144,7 +21201,7 @@ This operation does not require authentication
 </thead><tbody>
 <tr>
 <td>data</td>
-<td><a href="#schemacdr-banking-apibankingaccountdetailv2">BankingAccountDetailV2</a></td>
+<td><a href="#schemacdr-banking-apibankingaccountdetailv3">BankingAccountDetailV3</a></td>
 <td>mandatory</td>
 <td>none</td>
 </tr>
@@ -21162,9 +21219,9 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSbankingaccountdetailv2">BankingAccountDetailV2</h3>
+<h3 class="schema-toc" id="tocSbankingaccountdetailv3">BankingAccountDetailV3</h3>
 
-<p><a id="schemacdr-banking-apibankingaccountdetailv2"></a></p>
+<p><a id="schemacdr-banking-apibankingaccountdetailv3"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"creationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -21172,6 +21229,7 @@ This operation does not require authentication
   </span><span class="s2">"nickname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"openStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CLOSED"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"isOwned"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"accountOwnership"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UNKNOWN"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"maskedNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"productCategory"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUSINESS_LOANS"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"productName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -21371,7 +21429,7 @@ This operation does not require authentication
 </thead><tbody>
 <tr>
 <td><em>anonymous</em></td>
-<td><a href="#schemacdr-banking-apibankingaccount">BankingAccount</a></td>
+<td><a href="#schemacdr-banking-apibankingaccountv2">BankingAccountV2</a></td>
 <td>mandatory</td>
 <td>none</td>
 </tr>
@@ -64789,6 +64847,12 @@ This operation does not require authentication
 </tr>
 </thead><tbody>
 <tr>
+<td>22/12/2022</td>
+<td>1.22.0</td>
+<td>Changes arising from Decision 271 (Maintenance iteration 13)</td>
+<td>See <a href="includes/releasenotes/releasenotes.1.22.0.html">release notes</a> and <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/272">Decision 272</a> for details.</td>
+</tr>
+<tr>
 <td>16/12/2022</td>
 <td>1.21.0</td>
 <td>Changes arising from Decision 282</td>
@@ -65213,6 +65277,11 @@ This operation does not require authentication
 <th>Description</th>
 </tr>
 </thead><tbody>
+<tr>
+<td><a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.21.0/'>16/12/2022</a></td>
+<td>1.21.0</td>
+<td><a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.21.0/'>Changes arising from Decision 282</a></td>
+</tr>
 <tr>
 <td><a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.20.0/'>13/11/2022</a></td>
 <td>1.20.0</td>
