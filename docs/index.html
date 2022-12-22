@@ -43977,7 +43977,7 @@ This operation does not require authentication
 <td>path</td>
 <td>string</td>
 <td>mandatory</td>
-<td>ID of the specific service requested.  This is a tokenised ID returned from the account. In accordance with <a href="#id-permanence">CDR ID permanence</a> requirements</td>
+<td>ID of the specific service requested such as a mobile <a href="https://www.etsi.org/deliver/etsi_gts/03/0303/05.00.00_60/gsmts_0303v050000p.pdf">MSISDN</a>, <a href="https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf">FNN</a> or internet service e.g <a href="https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf">NBN AVC Service ID</a>.  This is a tokenised ID returned from the account. In accordance with <a href="#id-permanence">CDR ID permanence</a> requirements</td>
 </tr>
 <tr>
 <td>oldest-date</td>
@@ -44696,7 +44696,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>body</td>
 <td>[string]</td>
 <td>mandatory</td>
-<td>Array of specific serviceIds to obtain data for. In accordance with <a href="#id-permanence">CDR ID permanence</a> requirements</td>
+<td>Array of specific serviceIds to obtain data for. E.g. a mobile <a href="https://www.etsi.org/deliver/etsi_gts/03/0303/05.00.00_60/gsmts_0303v050000p.pdf">MSISDN</a>, <a href="https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf">FNN</a> or internet service e.g <a href="https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf">NBN AVC Service ID</a>. In accordance with <a href="#id-permanence">CDR ID permanence</a> requirements</td>
 </tr>
 <tr>
 <td>» meta</td>
@@ -45325,6 +45325,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"accountNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"creationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"lastUpdated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"brand"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"openStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CLOSED"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"plans"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="s2">"nickname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -49539,6 +49546,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 <p><a id="schemacdr-telco-apitelcoaccountdetailresponse"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"accountNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"creationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"lastUpdated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"brand"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"openStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CLOSED"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"plans"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="s2">"nickname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -49601,6 +49615,24 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <p><em>allOf</em></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>» <em>anonymous</em></td>
+<td><a href="#schemacdr-telco-apitelcoaccountbase">TelcoAccountBase</a></td>
+<td>mandatory</td>
+<td>none</td>
+</tr>
+</tbody></table>
+
+<p><em>and</em></p>
 
 <table><thead>
 <tr>
@@ -50409,7 +50441,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>serviceId</td>
 <td>string</td>
 <td>mandatory</td>
-<td>The tokenised ID of the service for use in the CDR APIs.  Created according to the CDR rules for <a href="#id-permanence">CDR ID permanence</a></td>
+<td>The tokenised ID of the service identifier for use in the CDR APIs. E.g a mobile <a href="https://www.etsi.org/deliver/etsi_gts/03/0303/05.00.00_60/gsmts_0303v050000p.pdf">MSISDN</a>, <a href="https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf">FNN</a> or internet service e.g <a href="https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf">NBN AVC Service ID</a>.  Created according to the CDR rules for <a href="#id-permanence">CDR ID permanence</a></td>
 </tr>
 </tbody></table>
 
@@ -50486,7 +50518,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>accountId</td>
 <td>string</td>
-<td>optional</td>
+<td>mandatory</td>
 <td>Tokenised ID of the account. In accordance with <a href="#id-permanence">CDR ID permanence</a> requirements</td>
 </tr>
 <tr>
@@ -50564,7 +50596,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>serviceId</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Tokenised ID of the service.  To be created in accordance with <a href="#id-permanence">CDR ID permanence</a> requirements</td>
+<td>Tokenised ID of the service identifier. E.g. a mobile <a href="https://www.etsi.org/deliver/etsi_gts/03/0303/05.00.00_60/gsmts_0303v050000p.pdf">MSISDN</a>, <a href="https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf">FNN</a> or internet service e.g <a href="https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf">NBN AVC Service ID</a>. To be created in accordance with <a href="#id-permanence">CDR ID permanence</a> requirements</td>
 </tr>
 <tr>
 <td>displayName</td>
@@ -50575,20 +50607,20 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>phoneNumber</td>
 <td>string</td>
-<td>optional</td>
+<td>conditional</td>
 <td>Required if the service includes a phone number</td>
 </tr>
 <tr>
 <td>startDate</td>
 <td><a href="#common-field-types">DateTimeString</a></td>
-<td>optional</td>
-<td>Date when the balance period started</td>
+<td>mandatory</td>
+<td>Date when the usage period started</td>
 </tr>
 <tr>
 <td>endDate</td>
 <td><a href="#common-field-types">DateTimeString</a></td>
 <td>optional</td>
-<td>Date when the balance period ends</td>
+<td>Date when the usage period ends</td>
 </tr>
 <tr>
 <td>usage</td>
@@ -51217,7 +51249,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>data</td>
 <td><a href="#schemacdr-telco-apitelcousagedata">TelcoUsageData</a></td>
-<td>mandatory</td>
+<td>conditional</td>
 <td>Summary of data usage</td>
 </tr>
 <tr>
@@ -51460,7 +51492,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>serviceIds</td>
 <td>string</td>
 <td>optional</td>
-<td>Array list of services IDs to which this transaction applies if any. In accordance with <a href="#id-permanence">CDR ID permanence</a> requirements</td>
+<td>Array list of services identifiers to which this transaction applies if any. E.g. a mobile <a href="https://www.etsi.org/deliver/etsi_gts/03/0303/05.00.00_60/gsmts_0303v050000p.pdf">MSISDN</a>, <a href="https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf">FNN</a> or internet service e.g <a href="https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf">NBN AVC Service ID</a>. In accordance with <a href="#id-permanence">CDR ID permanence</a> requirements</td>
 </tr>
 <tr>
 <td>invoiceNumber</td>
@@ -51523,7 +51555,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>serviceId</td>
 <td>string</td>
 <td>optional</td>
-<td>The ID of the service to which this transaction applies if any.  In accordance with <a href="#id-permanence">CDR ID permanence</a> requirements</td>
+<td>The ID of the service identifier to which this transaction applies if any. E.g a <a href="https://www.etsi.org/deliver/etsi_gts/03/0303/05.00.00_60/gsmts_0303v050000p.pdf">MSISDN</a>, <a href="https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf">FNN</a> or internet service e.g <a href="https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf">NBN AVC Service ID</a>. In accordance with <a href="#id-permanence">CDR ID permanence</a> requirements</td>
 </tr>
 <tr>
 <td>invoiceNumber</td>
@@ -51577,7 +51609,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>serviceId</td>
 <td>string</td>
 <td>optional</td>
-<td>The ID of the service to which this transaction applies if any. In accordance with <a href="#id-permanence">CDR ID permanence</a> requirements</td>
+<td>The service identifier to which this transaction applies if any. E.g a mobile <a href="https://www.etsi.org/deliver/etsi_gts/03/0303/05.00.00_60/gsmts_0303v050000p.pdf">MSISDN</a>, <a href="https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf">FNN</a> or internet service e.g <a href="https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf">NBN AVC Service ID</a>. In accordance with <a href="#id-permanence">CDR ID permanence</a> requirements</td>
 </tr>
 <tr>
 <td>invoiceNumber</td>
@@ -51893,7 +51925,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>serviceId</td>
 <td>string</td>
 <td>optional</td>
-<td>The serviceId representing a unique service identifier such as a mobile <a href="https://www.etsi.org/deliver/etsi_gts/03/0303/05.00.00_60/gsmts_0303v050000p.pdf">MSISDN</a>, <a href="https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf">FNN</a> or internet service (e.g NBN <a href="https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf">AVC Service ID</a>. In accordance with <a href="#id-permanence">CDR ID permanence</a> requirements</td>
+<td>The serviceId representing a unique service identifier such as a mobile <a href="https://www.etsi.org/deliver/etsi_gts/03/0303/05.00.00_60/gsmts_0303v050000p.pdf">MSISDN</a>, <a href="https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf">FNN</a> or internet service e.g <a href="https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf">NBN AVC Service ID</a>. In accordance with <a href="#id-permanence">CDR ID permanence</a> requirements</td>
 </tr>
 <tr>
 <td>displayName</td>
@@ -51923,7 +51955,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>balance</td>
 <td><a href="#schemacdr-telco-apitelcoservicebalances">TelcoServiceBalances</a></td>
 <td>optional</td>
-<td>The serviceId representing a unique service identifier such as a mobile (MSISDN) or internet service (e.g NBN or ADSL). In accordance with <a href="#id-permanence">CDR ID permanence</a> requirements</td>
+<td>A summary of Service balances</td>
 </tr>
 </tbody></table>
 
@@ -52580,7 +52612,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>accounts</td>
 <td>[<a href="#schemacdr-telco-apitelcoaccountusage">TelcoAccountUsage</a>]</td>
 <td>mandatory</td>
-<td>Array of services for the account</td>
+<td>Array of usage on accounts</td>
 </tr>
 </tbody></table>
 
@@ -53965,7 +53997,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>serviceIds</td>
 <td>[string]</td>
 <td>mandatory</td>
-<td>An array of serviceId’s representing a unique service identifier such as a mobile (MSISDN) or internet service (e.g NBN or ADSL) If there are no serviceIds allocated to this plan then an empty array would be expected. In accordance with <a href="#id-permanence">CDR ID permanence</a> requirements</td>
+<td>The serviceId representing a unique service identifier such as a mobile <a href="https://www.etsi.org/deliver/etsi_gts/03/0303/05.00.00_60/gsmts_0303v050000p.pdf">MSISDN</a>, <a href="https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf">FNN</a> or internet service e.g <a href="https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf">NBN AVC Service ID</a>. In accordance with <a href="#id-permanence">CDR ID permanence</a> requirement</td>
 </tr>
 <tr>
 <td>planOverview</td>
@@ -54199,7 +54231,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>serviceIds</td>
 <td>[string]</td>
 <td>mandatory</td>
-<td>An array of serviceId’s representing a unique service identifier such as a mobile (MSISDN) or internet service (e.g NBN or ADSL) If there are no serviceIds allocated to this plan then an empty array would be expected. In accordance with <a href="#id-permanence">CDR ID permanence</a> requirements</td>
+<td>The serviceId representing a unique service identifier such as a mobile <a href="https://www.etsi.org/deliver/etsi_gts/03/0303/05.00.00_60/gsmts_0303v050000p.pdf">MSISDN</a>, <a href="https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf">FNN</a> or internet service e.g <a href="https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf">NBN AVC Service ID</a>. In accordance with <a href="#id-permanence">CDR ID permanence</a> requirement</td>
 </tr>
 <tr>
 <td>planOverview</td>
@@ -54764,21 +54796,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>roaming</td>
-<td>object</td>
-<td>mandatory</td>
-<td>none</td>
-</tr>
-<tr>
-<td>» download</td>
-<td><a href="#common-field-types">Number</a></td>
+<td><a href="#schemacdr-telco-apitelcousagedatroaming">TelcoUsageDatRoaming</a></td>
 <td>optional</td>
-<td>Amount of data downloaded in megabytes (MB)</td>
-</tr>
-<tr>
-<td>» amount</td>
-<td><a href="#common-field-types">AmountString</a></td>
-<td>optional</td>
-<td>Cost amount of data usage</td>
+<td>Required if roaming is suipported</td>
 </tr>
 </tbody></table>
 
@@ -54838,7 +54858,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 </span></code></pre>
 
-<p><em>International voice calls</em></p>
+<p><em>International voice calls. Requied if international calling is supported</em></p>
 
 <h3 id='properties-81'>Properties</h3>
 
@@ -54882,7 +54902,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 </span></code></pre>
 
-<p><em>Roaming voice calls</em></p>
+<p><em>Roaming voice calls, Required if roaming is supported</em></p>
 
 <h3 id='properties-82'>Properties</h3>
 
@@ -54960,13 +54980,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>international</td>
 <td><a href="#schemacdr-telco-apitelcousagevoiceinternational">TelcoUsageVoiceInternational</a></td>
 <td>mandatory</td>
-<td>International voice calls</td>
+<td>International voice calls. Requied if international calling is supported</td>
 </tr>
 <tr>
 <td>roaming</td>
 <td><a href="#schemacdr-telco-apitelcousagevoiceroaming">TelcoUsageVoiceRoaming</a></td>
 <td>mandatory</td>
-<td>Roaming voice calls</td>
+<td>Roaming voice calls, Required if roaming is supported</td>
 </tr>
 </tbody></table>
 
@@ -55004,13 +55024,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>international</td>
 <td><a href="#common-field-types">Number</a></td>
-<td>mandatory</td>
+<td>conditional</td>
 <td>Number of international SMS messages sent. Including premium SMS services</td>
 </tr>
 <tr>
 <td>roaming</td>
 <td><a href="#common-field-types">Number</a></td>
-<td>mandatory</td>
+<td>conditional</td>
 <td>Number of roaming SMS messages sent. Including premium SMS services</td>
 </tr>
 <tr>
@@ -55055,13 +55075,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>international</td>
 <td><a href="#common-field-types">Number</a></td>
-<td>mandatory</td>
+<td>conditional</td>
 <td>ber of international MMS messages sent</td>
 </tr>
 <tr>
 <td>roaming</td>
 <td><a href="#common-field-types">Number</a></td>
-<td>mandatory</td>
+<td>conditional</td>
 <td>Number of roaming SMS messages sent. Including premium SMS services</td>
 </tr>
 <tr>
@@ -55318,7 +55338,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>planType</td>
 <td><a href="#schemacdr-telco-apitelcoplantype">TelcoPlanType</a></td>
-<td>optional</td>
+<td>mandatory</td>
 <td>Plan type for this feature. METERED: A plan is charged by usage for the feature. UNMETERED: A plan with no limits for a feature. LIMITED: Where plan limit inclusions apply. UNSUPPORTED: Feature is not supported</td>
 </tr>
 <tr>
@@ -55336,7 +55356,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>download</td>
 <td><a href="#common-field-types">Number</a></td>
-<td>optional</td>
+<td>conditional</td>
 <td>Remaining download data in megabytes (MB). Required unless planType is UNSUPPORTED or UNMETERED</td>
 </tr>
 <tr>
@@ -55549,25 +55569,25 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>planType</td>
 <td><a href="#schemacdr-telco-apitelcoplantype">TelcoPlanType</a></td>
-<td>optional</td>
+<td>mandatory</td>
 <td>Plan type for this feature. METERED: A plan is charged by usage for the feature. UNMETERED: A plan with no limits for a feature. LIMITED: Where plan limit inclusions apply. UNSUPPORTED: Feature is not supported</td>
 </tr>
 <tr>
 <td>national</td>
 <td><a href="#schemacdr-telco-apitelcoservicebalancevoicenational">TelcoServiceBalanceVoiceNational</a></td>
-<td>optional</td>
+<td>conditional</td>
 <td>National voice calls</td>
 </tr>
 <tr>
 <td>international</td>
 <td><a href="#schemacdr-telco-apitelcoservicebalancevoiceinternational">TelcoServiceBalanceVoiceInternational</a></td>
-<td>optional</td>
+<td>conditional</td>
 <td>International voice calls</td>
 </tr>
 <tr>
 <td>roaming</td>
 <td><a href="#schemacdr-telco-apitelcoservicebalancevoiceroaming">TelcoServiceBalanceVoiceRoaming</a></td>
-<td>optional</td>
+<td>conditional</td>
 <td>Roaming voice calls</td>
 </tr>
 </tbody></table>
@@ -55803,7 +55823,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 </span></code></pre>
 
-<p><em>The serviceId representing a unique service identifier such as a mobile (MSISDN) or internet service (e.g NBN or ADSL). In accordance with <a href="#id-permanence">CDR ID permanence</a> requirements</em></p>
+<p><em>A summary of Service balances</em></p>
 
 <h3 id='properties-98'>Properties</h3>
 
@@ -55818,19 +55838,19 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>data</td>
 <td><a href="#schemacdr-telco-apitelcoservicebalancedata">TelcoServiceBalanceData</a></td>
-<td>optional</td>
+<td>conditional</td>
 <td>Summary of data balances</td>
 </tr>
 <tr>
 <td>voice</td>
 <td><a href="#schemacdr-telco-apitelcoservicebalancevoice">TelcoServiceBalanceVoice</a></td>
-<td>optional</td>
+<td>conditional</td>
 <td>Summary of voice balances. Required if voice calls are included in product plan</td>
 </tr>
 <tr>
 <td>messaging</td>
 <td><a href="#schemacdr-telco-apitelcoservicebalancemessaging">TelcoServiceBalanceMessaging</a></td>
-<td>optional</td>
+<td>conditional</td>
 <td>Summary of messaging. Required if messaging services is included in the product plan</td>
 </tr>
 </tbody></table>

@@ -29,6 +29,7 @@
           "name" : "type",
           "required" : false,
           "schema" : {
+            "default" : "MOBILE",
             "enum" : [ "MOBILE", "BROADBAND" ],
             "type" : "string"
           },
@@ -40,6 +41,7 @@
           "name" : "billing-type",
           "required" : false,
           "schema" : {
+            "default" : "PRE_PAID",
             "enum" : [ "PRE_PAID", "POST_PAID", "UPFRONT_PAID", "OTHER" ],
             "type" : "string"
           },
@@ -334,7 +336,7 @@
         "description" : "Obtain a usage data from a particular service Id",
         "operationId" : "getUsageForService",
         "parameters" : [ {
-          "description" : "ID of the specific service requested.  This is a tokenised ID returned from the account. In accordance with [CDR ID permanence](#id-permanence) requirements",
+          "description" : "ID of the specific service requested such as a mobile [MSISDN](https://www.etsi.org/deliver/etsi_gts/03/0303/05.00.00_60/gsmts_0303v050000p.pdf), [FNN](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf) or internet service e.g [NBN AVC Service ID](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf).  This is a tokenised ID returned from the account. In accordance with [CDR ID permanence](#id-permanence) requirements",
           "explode" : false,
           "in" : "path",
           "name" : "serviceId",
@@ -3577,7 +3579,7 @@
   "components" : {
     "parameters" : {
       "serviceId" : {
-        "description" : "ID of the specific service requested.  This is a tokenised ID returned from the account. In accordance with [CDR ID permanence](#id-permanence) requirements",
+        "description" : "ID of the specific service requested. E.g. a mobile [MSISDN](https://www.etsi.org/deliver/etsi_gts/03/0303/05.00.00_60/gsmts_0303v050000p.pdf), [FNN](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf) or internet service e.g [NBN AVC Service ID](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf). This is a tokenised ID returned from the account. In accordance with [CDR ID permanence](#id-permanence) requirements",
         "explode" : false,
         "in" : "path",
         "name" : "serviceId",
@@ -3588,7 +3590,7 @@
         "style" : "simple"
       },
       "accountId" : {
-        "description" : "ID of a specific account to obtain data for.  This is a tokenised ID previously obtained from the Account List end point. In accordance with [CDR ID permanence](#id-permanence) requirements",
+        "description" : "ID of a specific account to obtain data for. This is a tokenised ID previously obtained from the Account List end point. In accordance with [CDR ID permanence](#id-permanence) requirements",
         "explode" : false,
         "in" : "path",
         "name" : "accountId",
@@ -3773,7 +3775,7 @@
                 "data" : {
                   "properties" : {
                     "serviceIds" : {
-                      "description" : "Array of specific serviceIds to obtain data for. In accordance with [CDR ID permanence](#id-permanence) requirements",
+                      "description" : "Array of specific serviceIds to obtain data for. E.g. a mobile [MSISDN](https://www.etsi.org/deliver/etsi_gts/03/0303/05.00.00_60/gsmts_0303v050000p.pdf), [FNN](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf) or internet service e.g [NBN AVC Service ID](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf). In accordance with [CDR ID permanence](#id-permanence) requirements",
                       "items" : {
                         "type" : "string"
                       },
@@ -4250,6 +4252,8 @@
         "properties" : {
           "data" : {
             "allOf" : [ {
+              "$ref" : "#/components/schemas/TelcoAccountBase"
+            }, {
               "$ref" : "#/components/schemas/TelcoAccount"
             }, {
               "$ref" : "#/components/schemas/TelcoAccountDetail"
@@ -4384,16 +4388,19 @@
             "type" : "string"
           },
           "type" : {
+            "default" : "MOBILE",
             "description" : "The type of product",
             "enum" : [ "MOBILE", "BROADBAND" ],
             "type" : "string"
           },
           "purpose" : {
+            "default" : "ALL",
             "description" : "The purpose type of the product. If absent, then the value PERSONAL is assumed",
             "enum" : [ "PERSONAL", "BUSINESS", "ALL" ],
             "type" : "string"
           },
           "billingType" : {
+            "default" : "PRE_PAID",
             "description" : "The type of product",
             "enum" : [ "PRE_PAID", "POST_PAID", "UPFRONT_PAID", "OTHER" ],
             "type" : "string"
@@ -4469,7 +4476,7 @@
       "TelcoServiceDetail" : {
         "properties" : {
           "serviceId" : {
-            "description" : "The tokenised ID of the service for use in the CDR APIs.  Created according to the CDR rules for [CDR ID permanence](#id-permanence)",
+            "description" : "The tokenised ID of the service identifier for use in the CDR APIs. E.g a mobile [MSISDN](https://www.etsi.org/deliver/etsi_gts/03/0303/05.00.00_60/gsmts_0303v050000p.pdf), [FNN](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf) or internet service e.g [NBN AVC Service ID](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf).  Created according to the CDR rules for [CDR ID permanence](#id-permanence)",
             "type" : "string"
           }
         },
@@ -4489,14 +4496,14 @@
             "type" : "array"
           }
         },
-        "required" : [ "serviceId" ],
+        "required" : [ "accountId" ],
         "type" : "object",
         "x-conditional" : [ ]
       },
       "TelcoServiceUsage" : {
         "properties" : {
           "serviceId" : {
-            "description" : "Tokenised ID of the service.  To be created in accordance with [CDR ID permanence](#id-permanence) requirements",
+            "description" : "Tokenised ID of the service identifier. E.g. a mobile [MSISDN](https://www.etsi.org/deliver/etsi_gts/03/0303/05.00.00_60/gsmts_0303v050000p.pdf), [FNN](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf) or internet service e.g [NBN AVC Service ID](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf). To be created in accordance with [CDR ID permanence](#id-permanence) requirements",
             "type" : "string"
           },
           "displayName" : {
@@ -4508,12 +4515,12 @@
             "type" : "string"
           },
           "startDate" : {
-            "description" : "Date when the balance period started",
+            "description" : "Date when the usage period started",
             "type" : "string",
             "x-cds-type" : "DateTimeString"
           },
           "endDate" : {
-            "description" : "Date when the balance period ends",
+            "description" : "Date when the usage period ends",
             "type" : "string",
             "x-cds-type" : "DateTimeString"
           },
@@ -4521,9 +4528,9 @@
             "$ref" : "#/components/schemas/TelcoUsage"
           }
         },
-        "required" : [ "serviceId" ],
+        "required" : [ "serviceId", "startDate" ],
         "type" : "object",
-        "x-conditional" : [ ]
+        "x-conditional" : [ "phoneNumber" ]
       },
       "TelcoAccountBase" : {
         "properties" : {
@@ -4714,6 +4721,7 @@
             "$ref" : "#/components/schemas/TelcoUsage"
           },
           "paymentStatus" : {
+            "default" : "NOT_PAID",
             "description" : "Indicator of the payment status for the invoice",
             "enum" : [ "PAID", "PARTIALLY_PAID", "NOT_PAID" ],
             "type" : "string"
@@ -4736,9 +4744,8 @@
             "$ref" : "#/components/schemas/TelcoUsageMessaging"
           }
         },
-        "required" : [ "data" ],
         "type" : "object",
-        "x-conditional" : [ "voice", "messaging" ]
+        "x-conditional" : [ "data", "voice", "messaging" ]
       },
       "TelcoInvoiceAccountCharges" : {
         "description" : "Object contain charges and credits related to usage",
@@ -4811,7 +4818,7 @@
       "TelcoBillingAccountTransaction" : {
         "properties" : {
           "serviceIds" : {
-            "description" : "Array list of services IDs to which this transaction applies if any. In accordance with [CDR ID permanence](#id-permanence) requirements",
+            "description" : "Array list of services identifiers to which this transaction applies if any. E.g. a mobile [MSISDN](https://www.etsi.org/deliver/etsi_gts/03/0303/05.00.00_60/gsmts_0303v050000p.pdf), [FNN](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf) or internet service e.g [NBN AVC Service ID](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf). In accordance with [CDR ID permanence](#id-permanence) requirements",
             "type" : "string"
           },
           "invoiceNumber" : {
@@ -4851,7 +4858,7 @@
       "TelcoBillingOnceOffTransaction" : {
         "properties" : {
           "serviceId" : {
-            "description" : "The ID of the service to which this transaction applies if any.  In accordance with [CDR ID permanence](#id-permanence) requirements",
+            "description" : "The ID of the service identifier to which this transaction applies if any. E.g a [MSISDN](https://www.etsi.org/deliver/etsi_gts/03/0303/05.00.00_60/gsmts_0303v050000p.pdf), [FNN](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf) or internet service e.g [NBN AVC Service ID](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf). In accordance with [CDR ID permanence](#id-permanence) requirements",
             "type" : "string"
           },
           "invoiceNumber" : {
@@ -4874,7 +4881,7 @@
       "TelcoBillingOtherTransaction" : {
         "properties" : {
           "serviceId" : {
-            "description" : "The ID of the service to which this transaction applies if any. In accordance with [CDR ID permanence](#id-permanence) requirements",
+            "description" : "The service identifier to which this transaction applies if any. E.g a mobile [MSISDN](https://www.etsi.org/deliver/etsi_gts/03/0303/05.00.00_60/gsmts_0303v050000p.pdf), [FNN](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf) or internet service e.g [NBN AVC Service ID](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf). In accordance with [CDR ID permanence](#id-permanence) requirements",
             "type" : "string"
           },
           "invoiceNumber" : {
@@ -4953,7 +4960,7 @@
         "description" : "Telco balances for a service",
         "properties" : {
           "serviceId" : {
-            "description" : "The serviceId representing a unique service identifier such as a mobile [MSISDN](https://www.etsi.org/deliver/etsi_gts/03/0303/05.00.00_60/gsmts_0303v050000p.pdf), [FNN](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf) or internet service (e.g NBN [AVC Service ID](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf). In accordance with [CDR ID permanence](#id-permanence) requirements",
+            "description" : "The serviceId representing a unique service identifier such as a mobile [MSISDN](https://www.etsi.org/deliver/etsi_gts/03/0303/05.00.00_60/gsmts_0303v050000p.pdf), [FNN](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf) or internet service e.g [NBN AVC Service ID](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf). In accordance with [CDR ID permanence](#id-permanence) requirements",
             "type" : "string"
           },
           "displayName" : {
@@ -4978,7 +4985,7 @@
             "$ref" : "#/components/schemas/TelcoServiceBalances"
           }
         },
-        "required" : [ "serviceId, startDate, planType, balances" ],
+        "required" : [ "serviceId, startDate, balance" ],
         "type" : "object",
         "x-conditional" : [ "phoneNumber" ]
       },
@@ -5223,7 +5230,7 @@
       "TelcoUsageListResponse" : {
         "properties" : {
           "accounts" : {
-            "description" : "Array of services for the account",
+            "description" : "Array of usage on accounts",
             "items" : {
               "$ref" : "#/components/schemas/TelcoAccountUsage"
             },
@@ -5682,17 +5689,19 @@
             "type" : "string"
           },
           "type" : {
+            "default" : "MOBILE",
             "description" : "The type of the plan",
             "enum" : [ "MOBILE", "BROADBAND" ],
             "type" : "string"
           },
           "billingType" : {
+            "default" : "PRE_PAID",
             "description" : "The billing type of then plan",
             "enum" : [ "PRE_PAID", "POST_PAID", "UPFRONT_PAID", "OTHER" ],
             "type" : "string"
           },
           "serviceIds" : {
-            "description" : "An array of serviceId’s representing a unique service identifier such as a mobile (MSISDN) or internet service (e.g NBN or ADSL) If there are no serviceIds allocated to this plan then an empty array would be expected. In accordance with [CDR ID permanence](#id-permanence) requirements",
+            "description" : "The serviceId representing a unique service identifier such as a mobile [MSISDN](https://www.etsi.org/deliver/etsi_gts/03/0303/05.00.00_60/gsmts_0303v050000p.pdf), [FNN](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf) or internet service e.g [NBN AVC Service ID](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf). In accordance with [CDR ID permanence](#id-permanence) requirement",
             "items" : {
               "type" : "string"
             },
@@ -5772,7 +5781,7 @@
             "type" : "string"
           },
           "serviceIds" : {
-            "description" : "An array of serviceId’s representing a unique service identifier such as a mobile (MSISDN) or internet service (e.g NBN or ADSL) If there are no serviceIds allocated to this plan then an empty array would be expected. In accordance with [CDR ID permanence](#id-permanence) requirements",
+            "description" : "The serviceId representing a unique service identifier such as a mobile [MSISDN](https://www.etsi.org/deliver/etsi_gts/03/0303/05.00.00_60/gsmts_0303v050000p.pdf), [FNN](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf) or internet service e.g [NBN AVC Service ID](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf). In accordance with [CDR ID permanence](#id-permanence) requirement",
             "items" : {
               "type" : "string"
             },
@@ -5990,22 +5999,12 @@
             "x-cds-type" : "AmountString"
           },
           "roaming" : {
-            "properties" : {
-              "download" : {
-                "description" : "Amount of data downloaded in megabytes (MB)",
-                "type" : "number",
-                "x-cds-type" : "Number"
-              },
-              "amount" : {
-                "description" : "Cost amount of data usage",
-                "type" : "string",
-                "x-cds-type" : "AmountString"
-              }
-            }
+            "$ref" : "#/components/schemas/TelcoUsageDatRoaming"
           }
         },
-        "required" : [ "amount", "download", "roaming", "upload" ],
-        "type" : "object"
+        "required" : [ "amount", "download", "upload" ],
+        "type" : "object",
+        "x-condional" : "roaming"
       },
       "TelcoUsageVoiceNational" : {
         "description" : "National voice calls",
@@ -6031,7 +6030,7 @@
         "x-conditional" : [ ]
       },
       "TelcoUsageVoiceInternational" : {
-        "description" : "International voice calls",
+        "description" : "International voice calls. Requied if international calling is supported",
         "properties" : {
           "duration" : {
             "description" : "Total duration (hours, minutes, and seconds) of international voice calls. Not limited to 24hrs",
@@ -6054,7 +6053,7 @@
         "x-conditional" : [ ]
       },
       "TelcoUsageVoiceRoaming" : {
-        "description" : "Roaming voice calls",
+        "description" : "Roaming voice calls, Required if roaming is supported",
         "properties" : {
           "duration" : {
             "description" : "Total duration (hours, minutes, and seconds) of roaming voice calls. Not limited to 24hrs",
@@ -6090,7 +6089,8 @@
           }
         },
         "required" : [ "amount", "international", "national", "roaming" ],
-        "type" : "object"
+        "type" : "object",
+        "x-conditional" : [ "international", "roaming" ]
       },
       "TelcoUsageMessagingSms" : {
         "description" : "Summary of SMS usage",
@@ -6116,9 +6116,9 @@
             "x-cds-type" : "AmountString"
           }
         },
-        "required" : [ "amount", "international", "national", "roaming" ],
+        "required" : [ "amount", "national" ],
         "type" : "object",
-        "x-conditional" : [ ]
+        "x-conditional" : [ "international", "roaming" ]
       },
       "TelcoUsageMessagingMms" : {
         "description" : "Summary of MMS usage",
@@ -6144,9 +6144,9 @@
             "x-cds-type" : "AmountString"
           }
         },
-        "required" : [ "amount", "international", "national", "roaming" ],
+        "required" : [ "amount", "national" ],
         "type" : "object",
-        "x-conditional" : [ ]
+        "x-conditional" : [ "international", "roaming" ]
       },
       "TelcoUsageMessaging" : {
         "description" : "Summary of messaging. Required if messaging services is included in the product plan",
@@ -6248,8 +6248,9 @@
             "$ref" : "#/components/schemas/TelcoServiceBalanceDataRoaming"
           }
         },
+        "required" : [ "planType" ],
         "type" : "object",
-        "x-conditional" : [ "description", "national", "international", "amount" ]
+        "x-conditional" : [ "description", "download", "amount" ]
       },
       "TelcoServiceBalanceVoiceNational" : {
         "description" : "National voice calls",
@@ -6345,7 +6346,9 @@
             "$ref" : "#/components/schemas/TelcoServiceBalanceVoiceRoaming"
           }
         },
-        "type" : "object"
+        "required" : [ "planType" ],
+        "type" : "object",
+        "x-conditional" : [ "national", "international", "roaming" ]
       },
       "TelcoServiceBalanceMessagingSms" : {
         "description" : "Summary of SMS Balance. Required if the service plan supports SMS messaging",
@@ -6426,7 +6429,7 @@
         "type" : "object"
       },
       "TelcoServiceBalances" : {
-        "description" : "The serviceId representing a unique service identifier such as a mobile (MSISDN) or internet service (e.g NBN or ADSL). In accordance with [CDR ID permanence](#id-permanence) requirements",
+        "description" : "A summary of Service balances",
         "properties" : {
           "data" : {
             "$ref" : "#/components/schemas/TelcoServiceBalanceData"
@@ -6438,8 +6441,8 @@
             "$ref" : "#/components/schemas/TelcoServiceBalanceMessaging"
           }
         },
-        "required" : [ "data, voice, messaging" ],
-        "type" : "object"
+        "type" : "object",
+        "x-conditional" : [ "data", "voice", "messaging" ]
       }
     }
   }

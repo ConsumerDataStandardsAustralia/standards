@@ -31,6 +31,7 @@ paths:
         name: type
         required: false
         schema:
+          default: MOBILE
           enum:
           - MOBILE
           - BROADBAND
@@ -45,6 +46,7 @@ paths:
         name: billing-type
         required: false
         schema:
+          default: PRE_PAID
           enum:
           - PRE_PAID
           - POST_PAID
@@ -326,9 +328,11 @@ paths:
       description: Obtain a usage data from a particular service Id
       operationId: getUsageForService
       parameters:
-      - description: ID of the specific service requested.  This is a tokenised ID
-          returned from the account. In accordance with [CDR ID permanence](#id-permanence)
-          requirements
+      - description: ID of the specific service requested such as a mobile [MSISDN](https://www.etsi.org/deliver/etsi_gts/03/0303/05.00.00_60/gsmts_0303v050000p.pdf),
+          [FNN](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf)
+          or internet service e.g [NBN AVC Service ID](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf).  This
+          is a tokenised ID returned from the account. In accordance with [CDR ID
+          permanence](#id-permanence) requirements
         explode: false
         in: path
         name: serviceId
@@ -3575,8 +3579,11 @@ paths:
 components:
   parameters:
     serviceId:
-      description: ID of the specific service requested.  This is a tokenised ID returned
-        from the account. In accordance with [CDR ID permanence](#id-permanence) requirements
+      description: ID of the specific service requested. E.g. a mobile [MSISDN](https://www.etsi.org/deliver/etsi_gts/03/0303/05.00.00_60/gsmts_0303v050000p.pdf),
+        [FNN](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf)
+        or internet service e.g [NBN AVC Service ID](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf).
+        This is a tokenised ID returned from the account. In accordance with [CDR
+        ID permanence](#id-permanence) requirements
       explode: false
       in: path
       name: serviceId
@@ -3585,7 +3592,7 @@ components:
         type: string
       style: simple
     accountId:
-      description: ID of a specific account to obtain data for.  This is a tokenised
+      description: ID of a specific account to obtain data for. This is a tokenised
         ID previously obtained from the Account List end point. In accordance with
         [CDR ID permanence](#id-permanence) requirements
       explode: false
@@ -3778,6 +3785,9 @@ components:
                 properties:
                   serviceIds:
                     description: Array of specific serviceIds to obtain data for.
+                      E.g. a mobile [MSISDN](https://www.etsi.org/deliver/etsi_gts/03/0303/05.00.00_60/gsmts_0303v050000p.pdf),
+                      [FNN](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf)
+                      or internet service e.g [NBN AVC Service ID](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf).
                       In accordance with [CDR ID permanence](#id-permanence) requirements
                     items:
                       type: string
@@ -4101,7 +4111,7 @@ components:
               overviewUri: overviewUri
             brandName: brandName
             productId: productId
-            purpose: PERSONAL
+            purpose: ALL
             displayName: displayName
             contract:
               duration: 0.8008281904610115
@@ -4136,7 +4146,7 @@ components:
               overviewUri: overviewUri
             brandName: brandName
             productId: productId
-            purpose: PERSONAL
+            purpose: ALL
             displayName: displayName
             contract:
               duration: 0.8008281904610115
@@ -4226,33 +4236,35 @@ components:
             voice:
               roaming:
                 duration: duration
-                number: 2.3021358869347655
+                number: 7.061401241503109
                 amount: amount
               national:
                 duration: duration
-                number: 5.962133916683182
+                number: 5.637376656633329
                 amount: amount
               international:
                 duration: duration
-                number: 5.637376656633329
+                number: 2.3021358869347655
                 amount: amount
             data:
               download: 6.027456183070403
               sessions: 1.4658129805029452
               amount: amount
-              roaming: '{}'
+              roaming:
+                download: 5.962133916683182
+                amount: amount
               upload: 0.8008281904610115
             messaging:
               mms:
                 amount: amount
-                roaming: 7.386281948385884
-                national: 2.027123023002322
-                international: 4.145608029883936
+                roaming: 1.2315135367772556
+                national: 4.145608029883936
+                international: 7.386281948385884
               sms:
                 amount: amount
-                roaming: 3.616076749251911
-                national: 7.061401241503109
-                international: 9.301444243932576
+                roaming: 2.027123023002322
+                national: 9.301444243932576
+                international: 3.616076749251911
           serviceId: serviceId
           startDate: startDate
         meta:
@@ -4286,33 +4298,35 @@ components:
             voice:
               roaming:
                 duration: duration
-                number: 2.3021358869347655
+                number: 7.061401241503109
                 amount: amount
               national:
                 duration: duration
-                number: 5.962133916683182
+                number: 5.637376656633329
                 amount: amount
               international:
                 duration: duration
-                number: 5.637376656633329
+                number: 2.3021358869347655
                 amount: amount
             data:
               download: 6.027456183070403
               sessions: 1.4658129805029452
               amount: amount
-              roaming: '{}'
+              roaming:
+                download: 5.962133916683182
+                amount: amount
               upload: 0.8008281904610115
             messaging:
               mms:
                 amount: amount
-                roaming: 7.386281948385884
-                national: 2.027123023002322
-                international: 4.145608029883936
+                roaming: 1.2315135367772556
+                national: 4.145608029883936
+                international: 7.386281948385884
               sms:
                 amount: amount
-                roaming: 3.616076749251911
-                national: 7.061401241503109
-                international: 9.301444243932576
+                roaming: 2.027123023002322
+                national: 9.301444243932576
+                international: 3.616076749251911
           serviceId: serviceId
           startDate: startDate
         - phoneNumber: phoneNumber
@@ -4322,33 +4336,35 @@ components:
             voice:
               roaming:
                 duration: duration
-                number: 2.3021358869347655
+                number: 7.061401241503109
                 amount: amount
               national:
                 duration: duration
-                number: 5.962133916683182
+                number: 5.637376656633329
                 amount: amount
               international:
                 duration: duration
-                number: 5.637376656633329
+                number: 2.3021358869347655
                 amount: amount
             data:
               download: 6.027456183070403
               sessions: 1.4658129805029452
               amount: amount
-              roaming: '{}'
+              roaming:
+                download: 5.962133916683182
+                amount: amount
               upload: 0.8008281904610115
             messaging:
               mms:
                 amount: amount
-                roaming: 7.386281948385884
-                national: 2.027123023002322
-                international: 4.145608029883936
+                roaming: 1.2315135367772556
+                national: 4.145608029883936
+                international: 7.386281948385884
               sms:
                 amount: amount
-                roaming: 3.616076749251911
-                national: 7.061401241503109
-                international: 9.301444243932576
+                roaming: 2.027123023002322
+                national: 9.301444243932576
+                international: 3.616076749251911
           serviceId: serviceId
           startDate: startDate
         meta:
@@ -4410,6 +4426,7 @@ components:
       properties:
         data:
           allOf:
+          - $ref: '#/components/schemas/TelcoAccountBase'
           - $ref: '#/components/schemas/TelcoAccount'
           - $ref: '#/components/schemas/TelcoAccountDetail'
         links:
@@ -4701,7 +4718,7 @@ components:
           overviewUri: overviewUri
         brandName: brandName
         productId: productId
-        purpose: PERSONAL
+        purpose: ALL
         displayName: displayName
         contract:
           duration: 0.8008281904610115
@@ -4756,12 +4773,14 @@ components:
           description: A description of the product
           type: string
         type:
+          default: MOBILE
           description: The type of product
           enum:
           - MOBILE
           - BROADBAND
           type: string
         purpose:
+          default: ALL
           description: The purpose type of the product. If absent, then the value
             PERSONAL is assumed
           enum:
@@ -4770,6 +4789,7 @@ components:
           - ALL
           type: string
         billingType:
+          default: PRE_PAID
           description: The type of product
           enum:
           - PRE_PAID
@@ -4849,7 +4869,10 @@ components:
     TelcoServiceDetail:
       properties:
         serviceId:
-          description: The tokenised ID of the service for use in the CDR APIs.  Created
+          description: The tokenised ID of the service identifier for use in the CDR
+            APIs. E.g a mobile [MSISDN](https://www.etsi.org/deliver/etsi_gts/03/0303/05.00.00_60/gsmts_0303v050000p.pdf),
+            [FNN](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf)
+            or internet service e.g [NBN AVC Service ID](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf).  Created
             according to the CDR rules for [CDR ID permanence](#id-permanence)
           type: string
       required:
@@ -4866,33 +4889,35 @@ components:
               voice:
                 roaming:
                   duration: duration
-                  number: 2.3021358869347655
+                  number: 7.061401241503109
                   amount: amount
                 national:
                   duration: duration
-                  number: 5.962133916683182
+                  number: 5.637376656633329
                   amount: amount
                 international:
                   duration: duration
-                  number: 5.637376656633329
+                  number: 2.3021358869347655
                   amount: amount
               data:
                 download: 6.027456183070403
                 sessions: 1.4658129805029452
                 amount: amount
-                roaming: '{}'
+                roaming:
+                  download: 5.962133916683182
+                  amount: amount
                 upload: 0.8008281904610115
               messaging:
                 mms:
                   amount: amount
-                  roaming: 7.386281948385884
-                  national: 2.027123023002322
-                  international: 4.145608029883936
+                  roaming: 1.2315135367772556
+                  national: 4.145608029883936
+                  international: 7.386281948385884
                 sms:
                   amount: amount
-                  roaming: 3.616076749251911
-                  national: 7.061401241503109
-                  international: 9.301444243932576
+                  roaming: 2.027123023002322
+                  national: 9.301444243932576
+                  international: 3.616076749251911
             serviceId: serviceId
             startDate: startDate
         - service:
@@ -4903,33 +4928,35 @@ components:
               voice:
                 roaming:
                   duration: duration
-                  number: 2.3021358869347655
+                  number: 7.061401241503109
                   amount: amount
                 national:
                   duration: duration
-                  number: 5.962133916683182
+                  number: 5.637376656633329
                   amount: amount
                 international:
                   duration: duration
-                  number: 5.637376656633329
+                  number: 2.3021358869347655
                   amount: amount
               data:
                 download: 6.027456183070403
                 sessions: 1.4658129805029452
                 amount: amount
-                roaming: '{}'
+                roaming:
+                  download: 5.962133916683182
+                  amount: amount
                 upload: 0.8008281904610115
               messaging:
                 mms:
                   amount: amount
-                  roaming: 7.386281948385884
-                  national: 2.027123023002322
-                  international: 4.145608029883936
+                  roaming: 1.2315135367772556
+                  national: 4.145608029883936
+                  international: 7.386281948385884
                 sms:
                   amount: amount
-                  roaming: 3.616076749251911
-                  national: 7.061401241503109
-                  international: 9.301444243932576
+                  roaming: 2.027123023002322
+                  national: 9.301444243932576
+                  international: 3.616076749251911
             serviceId: serviceId
             startDate: startDate
       properties:
@@ -4943,7 +4970,7 @@ components:
             $ref: '#/components/schemas/TelcoAccountUsageServices'
           type: array
       required:
-      - serviceId
+      - accountId
       type: object
       x-conditional: []
     TelcoServiceUsage:
@@ -4955,39 +4982,43 @@ components:
           voice:
             roaming:
               duration: duration
-              number: 2.3021358869347655
+              number: 7.061401241503109
               amount: amount
             national:
               duration: duration
-              number: 5.962133916683182
+              number: 5.637376656633329
               amount: amount
             international:
               duration: duration
-              number: 5.637376656633329
+              number: 2.3021358869347655
               amount: amount
           data:
             download: 6.027456183070403
             sessions: 1.4658129805029452
             amount: amount
-            roaming: '{}'
+            roaming:
+              download: 5.962133916683182
+              amount: amount
             upload: 0.8008281904610115
           messaging:
             mms:
               amount: amount
-              roaming: 7.386281948385884
-              national: 2.027123023002322
-              international: 4.145608029883936
+              roaming: 1.2315135367772556
+              national: 4.145608029883936
+              international: 7.386281948385884
             sms:
               amount: amount
-              roaming: 3.616076749251911
-              national: 7.061401241503109
-              international: 9.301444243932576
+              roaming: 2.027123023002322
+              national: 9.301444243932576
+              international: 3.616076749251911
         serviceId: serviceId
         startDate: startDate
       properties:
         serviceId:
-          description: Tokenised ID of the service.  To be created in accordance with
-            [CDR ID permanence](#id-permanence) requirements
+          description: Tokenised ID of the service identifier. E.g. a mobile [MSISDN](https://www.etsi.org/deliver/etsi_gts/03/0303/05.00.00_60/gsmts_0303v050000p.pdf),
+            [FNN](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf)
+            or internet service e.g [NBN AVC Service ID](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf).
+            To be created in accordance with [CDR ID permanence](#id-permanence) requirements
           type: string
         displayName:
           description: Optional description of the service used for display purposes
@@ -4996,19 +5027,21 @@ components:
           description: Required if the service includes a phone number
           type: string
         startDate:
-          description: Date when the balance period started
+          description: Date when the usage period started
           type: string
           x-cds-type: DateTimeString
         endDate:
-          description: Date when the balance period ends
+          description: Date when the usage period ends
           type: string
           x-cds-type: DateTimeString
         usage:
           $ref: '#/components/schemas/TelcoUsage'
       required:
       - serviceId
+      - startDate
       type: object
-      x-conditional: []
+      x-conditional:
+      - phoneNumber
     TelcoAccountBase:
       properties:
         accountId:
@@ -5209,40 +5242,42 @@ components:
           voice:
             roaming:
               duration: duration
-              number: 2.3021358869347655
+              number: 7.061401241503109
               amount: amount
             national:
               duration: duration
-              number: 5.962133916683182
+              number: 5.637376656633329
               amount: amount
             international:
               duration: duration
-              number: 5.637376656633329
+              number: 2.3021358869347655
               amount: amount
           data:
             download: 6.027456183070403
             sessions: 1.4658129805029452
             amount: amount
-            roaming: '{}'
+            roaming:
+              download: 5.962133916683182
+              amount: amount
             upload: 0.8008281904610115
           messaging:
             mms:
               amount: amount
-              roaming: 7.386281948385884
-              national: 2.027123023002322
-              international: 4.145608029883936
+              roaming: 1.2315135367772556
+              national: 4.145608029883936
+              international: 7.386281948385884
             sms:
               amount: amount
-              roaming: 3.616076749251911
-              national: 7.061401241503109
-              international: 9.301444243932576
+              roaming: 2.027123023002322
+              national: 9.301444243932576
+              international: 3.616076749251911
         invoiceNumber: invoiceNumber
         issueDate: issueDate
         payOnTimeDiscount:
           date: date
           gstAmount: gstAmount
           discountAmount: discountAmount
-        paymentStatus: PAID
+        paymentStatus: NOT_PAID
       properties:
         accountId:
           description: The ID of the account for which the invoice was issued. accountId
@@ -5289,6 +5324,7 @@ components:
         accountUsage:
           $ref: '#/components/schemas/TelcoUsage'
         paymentStatus:
+          default: NOT_PAID
           description: Indicator of the payment status for the invoice
           enum:
           - PAID
@@ -5311,33 +5347,35 @@ components:
         voice:
           roaming:
             duration: duration
-            number: 2.3021358869347655
+            number: 7.061401241503109
             amount: amount
           national:
             duration: duration
-            number: 5.962133916683182
+            number: 5.637376656633329
             amount: amount
           international:
             duration: duration
-            number: 5.637376656633329
+            number: 2.3021358869347655
             amount: amount
         data:
           download: 6.027456183070403
           sessions: 1.4658129805029452
           amount: amount
-          roaming: '{}'
+          roaming:
+            download: 5.962133916683182
+            amount: amount
           upload: 0.8008281904610115
         messaging:
           mms:
             amount: amount
-            roaming: 7.386281948385884
-            national: 2.027123023002322
-            international: 4.145608029883936
+            roaming: 1.2315135367772556
+            national: 4.145608029883936
+            international: 7.386281948385884
           sms:
             amount: amount
-            roaming: 3.616076749251911
-            national: 7.061401241503109
-            international: 9.301444243932576
+            roaming: 2.027123023002322
+            national: 9.301444243932576
+            international: 3.616076749251911
       properties:
         data:
           $ref: '#/components/schemas/TelcoUsageData'
@@ -5345,10 +5383,9 @@ components:
           $ref: '#/components/schemas/TelcoUsageVoice'
         messaging:
           $ref: '#/components/schemas/TelcoUsageMessaging'
-      required:
-      - data
       type: object
       x-conditional:
+      - data
       - voice
       - messaging
     TelcoInvoiceAccountCharges:
@@ -5484,8 +5521,11 @@ components:
         startDate: startDate
       properties:
         serviceIds:
-          description: Array list of services IDs to which this transaction applies
-            if any. In accordance with [CDR ID permanence](#id-permanence) requirements
+          description: Array list of services identifiers to which this transaction
+            applies if any. E.g. a mobile [MSISDN](https://www.etsi.org/deliver/etsi_gts/03/0303/05.00.00_60/gsmts_0303v050000p.pdf),
+            [FNN](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf)
+            or internet service e.g [NBN AVC Service ID](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf).
+            In accordance with [CDR ID permanence](#id-permanence) requirements
           type: string
         invoiceNumber:
           description: The number of the invoice in which this transaction is included
@@ -5526,8 +5566,11 @@ components:
         serviceId: serviceId
       properties:
         serviceId:
-          description: The ID of the service to which this transaction applies if
-            any.  In accordance with [CDR ID permanence](#id-permanence) requirements
+          description: The ID of the service identifier to which this transaction
+            applies if any. E.g a [MSISDN](https://www.etsi.org/deliver/etsi_gts/03/0303/05.00.00_60/gsmts_0303v050000p.pdf),
+            [FNN](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf)
+            or internet service e.g [NBN AVC Service ID](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf).
+            In accordance with [CDR ID permanence](#id-permanence) requirements
           type: string
         invoiceNumber:
           description: The number of the invoice in which this transaction is included
@@ -5561,8 +5604,11 @@ components:
         startDate: startDate
       properties:
         serviceId:
-          description: The ID of the service to which this transaction applies if
-            any. In accordance with [CDR ID permanence](#id-permanence) requirements
+          description: The service identifier to which this transaction applies if
+            any. E.g a mobile [MSISDN](https://www.etsi.org/deliver/etsi_gts/03/0303/05.00.00_60/gsmts_0303v050000p.pdf),
+            [FNN](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf)
+            or internet service e.g [NBN AVC Service ID](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf).
+            In accordance with [CDR ID permanence](#id-permanence) requirements
           type: string
         invoiceNumber:
           description: The number of the invoice in which this transaction is included
@@ -5651,7 +5697,7 @@ components:
           description: The serviceId representing a unique service identifier such
             as a mobile [MSISDN](https://www.etsi.org/deliver/etsi_gts/03/0303/05.00.00_60/gsmts_0303v050000p.pdf),
             [FNN](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf)
-            or internet service (e.g NBN [AVC Service ID](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf).
+            or internet service e.g [NBN AVC Service ID](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf).
             In accordance with [CDR ID permanence](#id-permanence) requirements
           type: string
         displayName:
@@ -5671,7 +5717,7 @@ components:
         balance:
           $ref: '#/components/schemas/TelcoServiceBalances'
       required:
-      - serviceId, startDate, planType, balances
+      - serviceId, startDate, balance
       type: object
       x-conditional:
       - phoneNumber
@@ -5916,7 +5962,7 @@ components:
             overviewUri: overviewUri
           brandName: brandName
           productId: productId
-          purpose: PERSONAL
+          purpose: ALL
           displayName: displayName
           contract:
             duration: 0.8008281904610115
@@ -5951,7 +5997,7 @@ components:
             overviewUri: overviewUri
           brandName: brandName
           productId: productId
-          purpose: PERSONAL
+          purpose: ALL
           displayName: displayName
           contract:
             duration: 0.8008281904610115
@@ -6000,33 +6046,35 @@ components:
                 voice:
                   roaming:
                     duration: duration
-                    number: 2.3021358869347655
+                    number: 7.061401241503109
                     amount: amount
                   national:
                     duration: duration
-                    number: 5.962133916683182
+                    number: 5.637376656633329
                     amount: amount
                   international:
                     duration: duration
-                    number: 5.637376656633329
+                    number: 2.3021358869347655
                     amount: amount
                 data:
                   download: 6.027456183070403
                   sessions: 1.4658129805029452
                   amount: amount
-                  roaming: '{}'
+                  roaming:
+                    download: 5.962133916683182
+                    amount: amount
                   upload: 0.8008281904610115
                 messaging:
                   mms:
                     amount: amount
-                    roaming: 7.386281948385884
-                    national: 2.027123023002322
-                    international: 4.145608029883936
+                    roaming: 1.2315135367772556
+                    national: 4.145608029883936
+                    international: 7.386281948385884
                   sms:
                     amount: amount
-                    roaming: 3.616076749251911
-                    national: 7.061401241503109
-                    international: 9.301444243932576
+                    roaming: 2.027123023002322
+                    national: 9.301444243932576
+                    international: 3.616076749251911
               serviceId: serviceId
               startDate: startDate
           - service:
@@ -6037,33 +6085,35 @@ components:
                 voice:
                   roaming:
                     duration: duration
-                    number: 2.3021358869347655
+                    number: 7.061401241503109
                     amount: amount
                   national:
                     duration: duration
-                    number: 5.962133916683182
+                    number: 5.637376656633329
                     amount: amount
                   international:
                     duration: duration
-                    number: 5.637376656633329
+                    number: 2.3021358869347655
                     amount: amount
                 data:
                   download: 6.027456183070403
                   sessions: 1.4658129805029452
                   amount: amount
-                  roaming: '{}'
+                  roaming:
+                    download: 5.962133916683182
+                    amount: amount
                   upload: 0.8008281904610115
                 messaging:
                   mms:
                     amount: amount
-                    roaming: 7.386281948385884
-                    national: 2.027123023002322
-                    international: 4.145608029883936
+                    roaming: 1.2315135367772556
+                    national: 4.145608029883936
+                    international: 7.386281948385884
                   sms:
                     amount: amount
-                    roaming: 3.616076749251911
-                    national: 7.061401241503109
-                    international: 9.301444243932576
+                    roaming: 2.027123023002322
+                    national: 9.301444243932576
+                    international: 3.616076749251911
               serviceId: serviceId
               startDate: startDate
         - accountId: accountId
@@ -6076,33 +6126,35 @@ components:
                 voice:
                   roaming:
                     duration: duration
-                    number: 2.3021358869347655
+                    number: 7.061401241503109
                     amount: amount
                   national:
                     duration: duration
-                    number: 5.962133916683182
+                    number: 5.637376656633329
                     amount: amount
                   international:
                     duration: duration
-                    number: 5.637376656633329
+                    number: 2.3021358869347655
                     amount: amount
                 data:
                   download: 6.027456183070403
                   sessions: 1.4658129805029452
                   amount: amount
-                  roaming: '{}'
+                  roaming:
+                    download: 5.962133916683182
+                    amount: amount
                   upload: 0.8008281904610115
                 messaging:
                   mms:
                     amount: amount
-                    roaming: 7.386281948385884
-                    national: 2.027123023002322
-                    international: 4.145608029883936
+                    roaming: 1.2315135367772556
+                    national: 4.145608029883936
+                    international: 7.386281948385884
                   sms:
                     amount: amount
-                    roaming: 3.616076749251911
-                    national: 7.061401241503109
-                    international: 9.301444243932576
+                    roaming: 2.027123023002322
+                    national: 9.301444243932576
+                    international: 3.616076749251911
               serviceId: serviceId
               startDate: startDate
           - service:
@@ -6113,38 +6165,40 @@ components:
                 voice:
                   roaming:
                     duration: duration
-                    number: 2.3021358869347655
+                    number: 7.061401241503109
                     amount: amount
                   national:
                     duration: duration
-                    number: 5.962133916683182
+                    number: 5.637376656633329
                     amount: amount
                   international:
                     duration: duration
-                    number: 5.637376656633329
+                    number: 2.3021358869347655
                     amount: amount
                 data:
                   download: 6.027456183070403
                   sessions: 1.4658129805029452
                   amount: amount
-                  roaming: '{}'
+                  roaming:
+                    download: 5.962133916683182
+                    amount: amount
                   upload: 0.8008281904610115
                 messaging:
                   mms:
                     amount: amount
-                    roaming: 7.386281948385884
-                    national: 2.027123023002322
-                    international: 4.145608029883936
+                    roaming: 1.2315135367772556
+                    national: 4.145608029883936
+                    international: 7.386281948385884
                   sms:
                     amount: amount
-                    roaming: 3.616076749251911
-                    national: 7.061401241503109
-                    international: 9.301444243932576
+                    roaming: 2.027123023002322
+                    national: 9.301444243932576
+                    international: 3.616076749251911
               serviceId: serviceId
               startDate: startDate
       properties:
         accounts:
-          description: Array of services for the account
+          description: Array of usage on accounts
           items:
             $ref: '#/components/schemas/TelcoAccountUsage'
           type: array
@@ -6321,40 +6375,42 @@ components:
             voice:
               roaming:
                 duration: duration
-                number: 2.3021358869347655
+                number: 7.061401241503109
                 amount: amount
               national:
                 duration: duration
-                number: 5.962133916683182
+                number: 5.637376656633329
                 amount: amount
               international:
                 duration: duration
-                number: 5.637376656633329
+                number: 2.3021358869347655
                 amount: amount
             data:
               download: 6.027456183070403
               sessions: 1.4658129805029452
               amount: amount
-              roaming: '{}'
+              roaming:
+                download: 5.962133916683182
+                amount: amount
               upload: 0.8008281904610115
             messaging:
               mms:
                 amount: amount
-                roaming: 7.386281948385884
-                national: 2.027123023002322
-                international: 4.145608029883936
+                roaming: 1.2315135367772556
+                national: 4.145608029883936
+                international: 7.386281948385884
               sms:
                 amount: amount
-                roaming: 3.616076749251911
-                national: 7.061401241503109
-                international: 9.301444243932576
+                roaming: 2.027123023002322
+                national: 9.301444243932576
+                international: 3.616076749251911
           invoiceNumber: invoiceNumber
           issueDate: issueDate
           payOnTimeDiscount:
             date: date
             gstAmount: gstAmount
             discountAmount: discountAmount
-          paymentStatus: PAID
+          paymentStatus: NOT_PAID
         - gstAmount: gstAmount
           period:
             endDate: endDate
@@ -6379,40 +6435,42 @@ components:
             voice:
               roaming:
                 duration: duration
-                number: 2.3021358869347655
+                number: 7.061401241503109
                 amount: amount
               national:
                 duration: duration
-                number: 5.962133916683182
+                number: 5.637376656633329
                 amount: amount
               international:
                 duration: duration
-                number: 5.637376656633329
+                number: 2.3021358869347655
                 amount: amount
             data:
               download: 6.027456183070403
               sessions: 1.4658129805029452
               amount: amount
-              roaming: '{}'
+              roaming:
+                download: 5.962133916683182
+                amount: amount
               upload: 0.8008281904610115
             messaging:
               mms:
                 amount: amount
-                roaming: 7.386281948385884
-                national: 2.027123023002322
-                international: 4.145608029883936
+                roaming: 1.2315135367772556
+                national: 4.145608029883936
+                international: 7.386281948385884
               sms:
                 amount: amount
-                roaming: 3.616076749251911
-                national: 7.061401241503109
-                international: 9.301444243932576
+                roaming: 2.027123023002322
+                national: 9.301444243932576
+                international: 3.616076749251911
           invoiceNumber: invoiceNumber
           issueDate: issueDate
           payOnTimeDiscount:
             date: date
             gstAmount: gstAmount
             discountAmount: discountAmount
-          paymentStatus: PAID
+          paymentStatus: NOT_PAID
       properties:
         invoices:
           description: Array of invoices sorted by issue date in descending order
@@ -6808,33 +6866,35 @@ components:
             voice:
               roaming:
                 duration: duration
-                number: 2.3021358869347655
+                number: 7.061401241503109
                 amount: amount
               national:
                 duration: duration
-                number: 5.962133916683182
+                number: 5.637376656633329
                 amount: amount
               international:
                 duration: duration
-                number: 5.637376656633329
+                number: 2.3021358869347655
                 amount: amount
             data:
               download: 6.027456183070403
               sessions: 1.4658129805029452
               amount: amount
-              roaming: '{}'
+              roaming:
+                download: 5.962133916683182
+                amount: amount
               upload: 0.8008281904610115
             messaging:
               mms:
                 amount: amount
-                roaming: 7.386281948385884
-                national: 2.027123023002322
-                international: 4.145608029883936
+                roaming: 1.2315135367772556
+                national: 4.145608029883936
+                international: 7.386281948385884
               sms:
                 amount: amount
-                roaming: 3.616076749251911
-                national: 7.061401241503109
-                international: 9.301444243932576
+                roaming: 2.027123023002322
+                national: 9.301444243932576
+                international: 3.616076749251911
           serviceId: serviceId
           startDate: startDate
       properties:
@@ -6867,12 +6927,14 @@ components:
             to help differentiate multiple plans
           type: string
         type:
+          default: MOBILE
           description: The type of the plan
           enum:
           - MOBILE
           - BROADBAND
           type: string
         billingType:
+          default: PRE_PAID
           description: The billing type of then plan
           enum:
           - PRE_PAID
@@ -6881,10 +6943,11 @@ components:
           - OTHER
           type: string
         serviceIds:
-          description: An array of serviceId’s representing a unique service identifier
-            such as a mobile (MSISDN) or internet service (e.g NBN or ADSL) If there
-            are no serviceIds allocated to this plan then an empty array would be
-            expected. In accordance with [CDR ID permanence](#id-permanence) requirements
+          description: The serviceId representing a unique service identifier such
+            as a mobile [MSISDN](https://www.etsi.org/deliver/etsi_gts/03/0303/05.00.00_60/gsmts_0303v050000p.pdf),
+            [FNN](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf)
+            or internet service e.g [NBN AVC Service ID](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf).
+            In accordance with [CDR ID permanence](#id-permanence) requirement
           items:
             type: string
           type: array
@@ -6953,10 +7016,11 @@ components:
             to help differentiate multiple plans
           type: string
         serviceIds:
-          description: An array of serviceId’s representing a unique service identifier
-            such as a mobile (MSISDN) or internet service (e.g NBN or ADSL) If there
-            are no serviceIds allocated to this plan then an empty array would be
-            expected. In accordance with [CDR ID permanence](#id-permanence) requirements
+          description: The serviceId representing a unique service identifier such
+            as a mobile [MSISDN](https://www.etsi.org/deliver/etsi_gts/03/0303/05.00.00_60/gsmts_0303v050000p.pdf),
+            [FNN](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf)
+            or internet service e.g [NBN AVC Service ID](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf).
+            In accordance with [CDR ID permanence](#id-permanence) requirement
           items:
             type: string
           type: array
@@ -7201,6 +7265,9 @@ components:
       type: object
     TelcoUsageDatRoaming:
       description: Roaming Data Usage
+      example:
+        download: 5.962133916683182
+        amount: amount
       properties:
         download:
           description: Amount of data used while roaming in megabytes (MB)
@@ -7220,7 +7287,9 @@ components:
         download: 6.027456183070403
         sessions: 1.4658129805029452
         amount: amount
-        roaming: '{}'
+        roaming:
+          download: 5.962133916683182
+          amount: amount
         upload: 0.8008281904610115
       properties:
         upload:
@@ -7240,26 +7309,18 @@ components:
           type: string
           x-cds-type: AmountString
         roaming:
-          properties:
-            download:
-              description: Amount of data downloaded in megabytes (MB)
-              type: number
-              x-cds-type: Number
-            amount:
-              description: Cost amount of data usage
-              type: string
-              x-cds-type: AmountString
+          $ref: '#/components/schemas/TelcoUsageDatRoaming'
       required:
       - amount
       - download
-      - roaming
       - upload
       type: object
+      x-condional: roaming
     TelcoUsageVoiceNational:
       description: National voice calls
       example:
         duration: duration
-        number: 5.962133916683182
+        number: 5.637376656633329
         amount: amount
       properties:
         duration:
@@ -7282,10 +7343,11 @@ components:
       type: object
       x-conditional: []
     TelcoUsageVoiceInternational:
-      description: International voice calls
+      description: International voice calls. Requied if international calling is
+        supported
       example:
         duration: duration
-        number: 5.637376656633329
+        number: 2.3021358869347655
         amount: amount
       properties:
         duration:
@@ -7308,10 +7370,10 @@ components:
       type: object
       x-conditional: []
     TelcoUsageVoiceRoaming:
-      description: Roaming voice calls
+      description: Roaming voice calls, Required if roaming is supported
       example:
         duration: duration
-        number: 2.3021358869347655
+        number: 7.061401241503109
         amount: amount
       properties:
         duration:
@@ -7339,15 +7401,15 @@ components:
       example:
         roaming:
           duration: duration
-          number: 2.3021358869347655
+          number: 7.061401241503109
           amount: amount
         national:
           duration: duration
-          number: 5.962133916683182
+          number: 5.637376656633329
           amount: amount
         international:
           duration: duration
-          number: 5.637376656633329
+          number: 2.3021358869347655
           amount: amount
       properties:
         national:
@@ -7362,13 +7424,16 @@ components:
       - national
       - roaming
       type: object
+      x-conditional:
+      - international
+      - roaming
     TelcoUsageMessagingSms:
       description: Summary of SMS usage
       example:
         amount: amount
-        roaming: 3.616076749251911
-        national: 7.061401241503109
-        international: 9.301444243932576
+        roaming: 2.027123023002322
+        national: 9.301444243932576
+        international: 3.616076749251911
       properties:
         national:
           description: Number of national SMS messages sent. Including premium SMS
@@ -7391,18 +7456,18 @@ components:
           x-cds-type: AmountString
       required:
       - amount
-      - international
       - national
-      - roaming
       type: object
-      x-conditional: []
+      x-conditional:
+      - international
+      - roaming
     TelcoUsageMessagingMms:
       description: Summary of MMS usage
       example:
         amount: amount
-        roaming: 7.386281948385884
-        national: 2.027123023002322
-        international: 4.145608029883936
+        roaming: 1.2315135367772556
+        national: 4.145608029883936
+        international: 7.386281948385884
       properties:
         national:
           description: Number of national MMS messages sent
@@ -7423,25 +7488,25 @@ components:
           x-cds-type: AmountString
       required:
       - amount
-      - international
       - national
-      - roaming
       type: object
-      x-conditional: []
+      x-conditional:
+      - international
+      - roaming
     TelcoUsageMessaging:
       description: Summary of messaging. Required if messaging services is included
         in the product plan
       example:
         mms:
           amount: amount
-          roaming: 7.386281948385884
-          national: 2.027123023002322
-          international: 4.145608029883936
+          roaming: 1.2315135367772556
+          national: 4.145608029883936
+          international: 7.386281948385884
         sms:
           amount: amount
-          roaming: 3.616076749251911
-          national: 7.061401241503109
-          international: 9.301444243932576
+          roaming: 2.027123023002322
+          national: 9.301444243932576
+          international: 3.616076749251911
       properties:
         sms:
           $ref: '#/components/schemas/TelcoUsageMessagingSms'
@@ -7546,11 +7611,12 @@ components:
           x-cds-type: AmountString
         roaming:
           $ref: '#/components/schemas/TelcoServiceBalanceDataRoaming'
+      required:
+      - planType
       type: object
       x-conditional:
       - description
-      - national
-      - international
+      - download
       - amount
     TelcoServiceBalanceVoiceNational:
       description: National voice calls
@@ -7648,7 +7714,13 @@ components:
           $ref: '#/components/schemas/TelcoServiceBalanceVoiceInternational'
         roaming:
           $ref: '#/components/schemas/TelcoServiceBalanceVoiceRoaming'
+      required:
+      - planType
       type: object
+      x-conditional:
+      - national
+      - international
+      - roaming
     TelcoServiceBalanceMessagingSms:
       description: Summary of SMS Balance. Required if the service plan supports SMS
         messaging
@@ -7732,9 +7804,7 @@ components:
       - sms
       type: object
     TelcoServiceBalances:
-      description: The serviceId representing a unique service identifier such as
-        a mobile (MSISDN) or internet service (e.g NBN or ADSL). In accordance with
-        [CDR ID permanence](#id-permanence) requirements
+      description: A summary of Service balances
       properties:
         data:
           $ref: '#/components/schemas/TelcoServiceBalanceData'
@@ -7742,6 +7812,8 @@ components:
           $ref: '#/components/schemas/TelcoServiceBalanceVoice'
         messaging:
           $ref: '#/components/schemas/TelcoServiceBalanceMessaging'
-      required:
-      - data, voice, messaging
       type: object
+      x-conditional:
+      - data
+      - voice
+      - messaging

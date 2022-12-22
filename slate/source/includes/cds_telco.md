@@ -1106,6 +1106,13 @@ Other Versions: [v1](includes/obsolete/get-telco-account-detail-v1.html)
 ```json
 {
   "data": {
+    "accountId": "string",
+    "accountNumber": "string",
+    "displayName": "string",
+    "creationDate": "string",
+    "lastUpdated": "string",
+    "brand": "string",
+    "openStatus": "CLOSED",
     "plans": [
       {
         "nickname": "string",
@@ -3612,6 +3619,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 ```json
 {
   "data": {
+    "accountId": "string",
+    "accountNumber": "string",
+    "displayName": "string",
+    "creationDate": "string",
+    "lastUpdated": "string",
+    "brand": "string",
+    "openStatus": "CLOSED",
     "plans": [
       {
         "nickname": "string",
@@ -3665,6 +3679,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 |data|any|mandatory|none|
 
 *allOf*
+
+|Name|Type|Required|Description|
+|---|---|---|---|
+|» *anonymous*|[TelcoAccountBase](#schemacdr-telco-apitelcoaccountbase)|mandatory|none|
+
+*and*
 
 |Name|Type|Required|Description|
 |---|---|---|---|
