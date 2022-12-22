@@ -4252,6 +4252,8 @@
         "properties" : {
           "data" : {
             "allOf" : [ {
+              "$ref" : "#/components/schemas/TelcoAccountBase"
+            }, {
               "$ref" : "#/components/schemas/TelcoAccount"
             }, {
               "$ref" : "#/components/schemas/TelcoAccountDetail"
