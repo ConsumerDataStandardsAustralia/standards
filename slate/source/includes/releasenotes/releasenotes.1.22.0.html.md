@@ -15,7 +15,7 @@ Release notes for version v1.22.0 of the [CDR Standards](../../index.html).
 ## Changes Made
 ### Change Requests
 
-This release addresses the following minor defects raised on [Standards Staging](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues):
+This release addresses the following minor defects raised on [Standards Staging](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues): 
 
 - [Fix for a missing font in styles](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/235)
 - [Broken links in Register API section](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/234)
