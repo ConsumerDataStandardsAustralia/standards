@@ -50,7 +50,7 @@ Obtain a list of accounts
 ###Endpoint Version
 |   |  |
 |---|--|
-|Version|**1**
+|Version|**2**
 
 <h3 id="get-accounts-parameters">Parameters</h3>
 
@@ -67,6 +67,12 @@ Obtain a list of accounts
 |x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
 |x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
+
+#### Detailed descriptions
+
+**product-category**: Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.
+
+Obsolete versions: [v1](includes/obsolete/get-accounts-v1.html)
 
 #### Enumerated Values
 
@@ -103,6 +109,7 @@ Obtain a list of accounts
         "nickname": "string",
         "openStatus": "CLOSED",
         "isOwned": true,
+        "accountOwnership": "UNKNOWN",
         "maskedNumber": "string",
         "productCategory": "BUSINESS_LOANS",
         "productName": "string"
@@ -127,7 +134,7 @@ Obtain a list of accounts
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingAccountList](#schemacdr-banking-apiresponsebankingaccountlist)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingAccountListV2](#schemacdr-banking-apiresponsebankingaccountlistv2)|
 |400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
@@ -622,12 +629,12 @@ $.ajax({
 
 Obtain detailed information on a single account.
 
-Obsolete versions: [v1](includes/obsolete/get-account-detail-v1.html)
+Obsolete versions: [v1](includes/obsolete/get-account-detail-v1.html), [v2](includes/obsolete/get-account-detail-v2.html)
 
 ###Endpoint Version
 |   |  |
 |---|--|
-|Version|**2**
+|Version|**3**
 
 <h3 id="get-account-detail-parameters">Parameters</h3>
 
@@ -654,6 +661,7 @@ Obsolete versions: [v1](includes/obsolete/get-account-detail-v1.html)
     "nickname": "string",
     "openStatus": "CLOSED",
     "isOwned": true,
+    "accountOwnership": "UNKNOWN",
     "maskedNumber": "string",
     "productCategory": "BUSINESS_LOANS",
     "productName": "string",
@@ -850,7 +858,7 @@ Obsolete versions: [v1](includes/obsolete/get-account-detail-v1.html)
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingAccountByIdV2](#schemacdr-banking-apiresponsebankingaccountbyidv2)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingAccountByIdV3](#schemacdr-banking-apiresponsebankingaccountbyidv3)|
 |400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[404 - Unavailable Banking Account](#error-404-authorisation-unavailable-banking-account)</li><li>[404 - Invalid Banking Account](#error-404-authorisation-invalid-banking-account)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
@@ -4301,9 +4309,9 @@ This operation does not require authentication
 |additionalInfo|string|optional|Display text providing more information on the condition|
 |additionalInfoUri|[URIString](#common-field-types)|optional|Link to a web page with more information on this condition|
 
-<h3 class="schema-toc" id="tocSresponsebankingaccountlist">ResponseBankingAccountList</h3>
+<h3 class="schema-toc" id="tocSresponsebankingaccountlistv2">ResponseBankingAccountListV2</h3>
 
-<a id="schemacdr-banking-apiresponsebankingaccountlist"></a>
+<a id="schemacdr-banking-apiresponsebankingaccountlistv2"></a>
 
 ```json
 {
@@ -4316,6 +4324,7 @@ This operation does not require authentication
         "nickname": "string",
         "openStatus": "CLOSED",
         "isOwned": true,
+        "accountOwnership": "UNKNOWN",
         "maskedNumber": "string",
         "productCategory": "BUSINESS_LOANS",
         "productName": "string"
@@ -4342,13 +4351,13 @@ This operation does not require authentication
 |Name|Type|Required|Description|
 |---|---|---|---|
 |data|object|mandatory|none|
-|» accounts|[[BankingAccount](#schemacdr-banking-apibankingaccount)]|mandatory|The list of accounts returned. If the filter results in an empty set then this array may have no records|
+|» accounts|[[BankingAccountV2](#schemacdr-banking-apibankingaccountv2)]|mandatory|The list of accounts returned. If the filter results in an empty set then this array may have no records|
 |links|[LinksPaginated](#schemacdr-banking-apilinkspaginated)|mandatory|none|
 |meta|[MetaPaginated](#schemacdr-banking-apimetapaginated)|mandatory|none|
 
-<h3 class="schema-toc" id="tocSbankingaccount">BankingAccount</h3>
+<h3 class="schema-toc" id="tocSbankingaccountv2">BankingAccountV2</h3>
 
-<a id="schemacdr-banking-apibankingaccount"></a>
+<a id="schemacdr-banking-apibankingaccountv2"></a>
 
 ```json
 {
@@ -4358,6 +4367,7 @@ This operation does not require authentication
   "nickname": "string",
   "openStatus": "CLOSED",
   "isOwned": true,
+  "accountOwnership": "UNKNOWN",
   "maskedNumber": "string",
   "productCategory": "BUSINESS_LOANS",
   "productName": "string"
@@ -4375,6 +4385,7 @@ This operation does not require authentication
 |nickname|string|optional|A customer supplied nick name for the account|
 |openStatus|string|optional|Open or closed status for the account. If not present then OPEN is assumed|
 |isOwned|[Boolean](#common-field-types)|optional|Flag indicating that the customer associated with the authorisation is an owner of the account. Does not indicate sole ownership, however. If not present then 'true' is assumed|
+|accountOwnership|string|mandatory|Value indicating the number of customers that have ownership of the account, according to the data holder's definition of account ownership. Does not indicate that all account owners are eligible consumers|
 |maskedNumber|[MaskedAccountString](#common-field-types)|mandatory|A masked version of the account. Whether BSB/Account Number, Credit Card PAN or another number|
 |productCategory|[BankingProductCategory](#schemacdr-banking-apibankingproductcategory)|mandatory|The category to which a product or account belongs. See [here](#product-categories) for more details|
 |productName|string|mandatory|The unique identifier of the account as defined by the data holder (akin to model number for the account)|
@@ -4385,10 +4396,15 @@ This operation does not require authentication
 |---|---|
 |openStatus|CLOSED|
 |openStatus|OPEN|
+|accountOwnership|UNKNOWN|
+|accountOwnership|ONE_PARTY|
+|accountOwnership|TWO_PARTY|
+|accountOwnership|MANY_PARTY|
+|accountOwnership|OTHER|
 
-<h3 class="schema-toc" id="tocSresponsebankingaccountbyidv2">ResponseBankingAccountByIdV2</h3>
+<h3 class="schema-toc" id="tocSresponsebankingaccountbyidv3">ResponseBankingAccountByIdV3</h3>
 
-<a id="schemacdr-banking-apiresponsebankingaccountbyidv2"></a>
+<a id="schemacdr-banking-apiresponsebankingaccountbyidv3"></a>
 
 ```json
 {
@@ -4399,6 +4415,7 @@ This operation does not require authentication
     "nickname": "string",
     "openStatus": "CLOSED",
     "isOwned": true,
+    "accountOwnership": "UNKNOWN",
     "maskedNumber": "string",
     "productCategory": "BUSINESS_LOANS",
     "productName": "string",
@@ -4596,13 +4613,13 @@ This operation does not require authentication
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|data|[BankingAccountDetailV2](#schemacdr-banking-apibankingaccountdetailv2)|mandatory|none|
+|data|[BankingAccountDetailV3](#schemacdr-banking-apibankingaccountdetailv3)|mandatory|none|
 |links|[Links](#schemacdr-banking-apilinks)|mandatory|none|
 |meta|[Meta](#schemacdr-banking-apimeta)|optional|none|
 
-<h3 class="schema-toc" id="tocSbankingaccountdetailv2">BankingAccountDetailV2</h3>
+<h3 class="schema-toc" id="tocSbankingaccountdetailv3">BankingAccountDetailV3</h3>
 
-<a id="schemacdr-banking-apibankingaccountdetailv2"></a>
+<a id="schemacdr-banking-apibankingaccountdetailv3"></a>
 
 ```json
 {
@@ -4612,6 +4629,7 @@ This operation does not require authentication
   "nickname": "string",
   "openStatus": "CLOSED",
   "isOwned": true,
+  "accountOwnership": "UNKNOWN",
   "maskedNumber": "string",
   "productCategory": "BUSINESS_LOANS",
   "productName": "string",
@@ -4806,7 +4824,7 @@ This operation does not require authentication
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|*anonymous*|[BankingAccount](#schemacdr-banking-apibankingaccount)|mandatory|none|
+|*anonymous*|[BankingAccountV2](#schemacdr-banking-apibankingaccountv2)|mandatory|none|
 
 *and*
 

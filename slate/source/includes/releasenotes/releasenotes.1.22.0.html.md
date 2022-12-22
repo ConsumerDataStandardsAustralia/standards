@@ -32,6 +32,7 @@ This release addresses the following change requests raised on [Standards Mainte
 This release addresses the following Decision Proposals published on [Standards](https://github.com/ConsumerDataStandardsAustralia/standards/issues):
 
 - [Decision 272 - Maintenance Iteration 13](https://github.com/ConsumerDataStandardsAustralia/standards/issues/272)
+- [Decision Proposal 275 - Holistic Feedback on Telco Standards](https://github.com/ConsumerDataStandardsAustralia/standards/issues/275) - Note that this is not a formal decision of the chair.  The Telco standards remain in draft form
 
 ## Introduction
 
@@ -44,15 +45,14 @@ No changes
 
 ## API End Points
 
-No changes
+|Change|Description|Link|
+|------|-----------|----|
+| Add Owner Field for Banking Accounts | [Change Request 513](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/513): Adds a new `accountOwnership` field to banking account end points.  Change results in new end point versions | [Banking APIs](../../#banking-apis) |
 
 
 ## Information Security Profile
 
-|Change|Description|Link|
-|------|-----------|----|
-| | | |
-
+No changes
 
 ## Consumer Experience
 

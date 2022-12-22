@@ -23,7 +23,7 @@
         "description" : "Obtain a list of accounts",
         "operationId" : "listAccounts",
         "parameters" : [ {
-          "description" : "Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.",
+          "description" : "Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.\n\nObsolete versions: [v1](includes/obsolete/get-accounts-v1.html)",
           "explode" : true,
           "in" : "query",
           "name" : "product-category",
@@ -155,7 +155,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/ResponseBankingAccountList"
+                  "$ref" : "#/components/schemas/ResponseBankingAccountListV2"
                 }
               }
             },
@@ -243,7 +243,7 @@
         "summary" : "Get Accounts",
         "tags" : [ "Banking", "Accounts" ],
         "x-scopes" : [ "bank:accounts.basic:read" ],
-        "x-version" : "1"
+        "x-version" : "2"
       }
     },
     "/banking/accounts/balances" : {
@@ -858,7 +858,7 @@
     },
     "/banking/accounts/{accountId}" : {
       "get" : {
-        "description" : "Obtain detailed information on a single account.\n\nObsolete versions: [v1](includes/obsolete/get-account-detail-v1.html)",
+        "description" : "Obtain detailed information on a single account.\n\nObsolete versions: [v1](includes/obsolete/get-account-detail-v1.html), [v2](includes/obsolete/get-account-detail-v2.html)",
         "operationId" : "getAccountDetail",
         "parameters" : [ {
           "description" : "A tokenised identifier for the account which is unique but not shareable",
@@ -944,7 +944,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/ResponseBankingAccountByIdV2"
+                  "$ref" : "#/components/schemas/ResponseBankingAccountByIdV3"
                 }
               }
             },
@@ -1032,7 +1032,7 @@
         "summary" : "Get Account Detail",
         "tags" : [ "Banking", "Accounts" ],
         "x-scopes" : [ "bank:accounts.detail:read" ],
-        "x-version" : "2"
+        "x-version" : "3"
       }
     },
     "/banking/accounts/{accountId}/transactions" : {
@@ -4304,10 +4304,10 @@
         },
         "type" : "object"
       },
-      "ResponseBankingAccountList" : {
+      "ResponseBankingAccountListV2" : {
         "properties" : {
           "data" : {
-            "$ref" : "#/components/schemas/ResponseBankingAccountList_data"
+            "$ref" : "#/components/schemas/ResponseBankingAccountListV2_data"
           },
           "links" : {
             "$ref" : "#/components/schemas/LinksPaginated"
@@ -4319,7 +4319,7 @@
         "required" : [ "data", "links", "meta" ],
         "type" : "object"
       },
-      "BankingAccount" : {
+      "BankingAccountV2" : {
         "properties" : {
           "accountId" : {
             "description" : "A unique ID of the account adhering to the standards for ID permanence",
@@ -4351,6 +4351,11 @@
             "type" : "boolean",
             "x-cds-type" : "Boolean"
           },
+          "accountOwnership" : {
+            "description" : "Value indicating the number of customers that have ownership of the account, according to the data holder's definition of account ownership. Does not indicate that all account owners are eligible consumers",
+            "enum" : [ "UNKNOWN", "ONE_PARTY", "TWO_PARTY", "MANY_PARTY", "OTHER" ],
+            "type" : "string"
+          },
           "maskedNumber" : {
             "description" : "A masked version of the account. Whether BSB/Account Number, Credit Card PAN or another number",
             "type" : "string",
@@ -4364,13 +4369,13 @@
             "type" : "string"
           }
         },
-        "required" : [ "accountId", "displayName", "maskedNumber", "productCategory", "productName" ],
+        "required" : [ "accountId", "accountOwnership", "displayName", "maskedNumber", "productCategory", "productName" ],
         "type" : "object"
       },
-      "ResponseBankingAccountByIdV2" : {
+      "ResponseBankingAccountByIdV3" : {
         "properties" : {
           "data" : {
-            "$ref" : "#/components/schemas/BankingAccountDetailV2"
+            "$ref" : "#/components/schemas/BankingAccountDetailV3"
           },
           "links" : {
             "$ref" : "#/components/schemas/Links"
@@ -4382,11 +4387,11 @@
         "required" : [ "data", "links" ],
         "type" : "object"
       },
-      "BankingAccountDetailV2" : {
+      "BankingAccountDetailV3" : {
         "allOf" : [ {
-          "$ref" : "#/components/schemas/BankingAccount"
+          "$ref" : "#/components/schemas/BankingAccountV2"
         }, {
-          "$ref" : "#/components/schemas/BankingAccountDetailV2_allOf"
+          "$ref" : "#/components/schemas/BankingAccountDetailV3_allOf"
         } ]
       },
       "BankingTermDepositAccount" : {
@@ -5612,12 +5617,12 @@
         },
         "type" : "object"
       },
-      "ResponseBankingAccountList_data" : {
+      "ResponseBankingAccountListV2_data" : {
         "properties" : {
           "accounts" : {
             "description" : "The list of accounts returned. If the filter results in an empty set then this array may have no records",
             "items" : {
-              "$ref" : "#/components/schemas/BankingAccount"
+              "$ref" : "#/components/schemas/BankingAccountV2"
             },
             "type" : "array"
           }
@@ -5625,7 +5630,7 @@
         "required" : [ "accounts" ],
         "type" : "object"
       },
-      "BankingAccountDetailV2_allOf" : {
+      "BankingAccountDetailV3_allOf" : {
         "properties" : {
           "bsb" : {
             "description" : "The unmasked BSB for the account. Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces",
