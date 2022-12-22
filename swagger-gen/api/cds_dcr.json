@@ -3,7 +3,7 @@
   "info": {
     "title": "CDR Dynamic Client Registration API",
     "description": "This specification defines the APIs for Data Holders exposing Dynamic Client Registration endpoints.",
-    "version": "1.21.0"
+    "version": "1.22.0"
   },
   "servers": [
     {
@@ -271,6 +271,7 @@
           "client_name",
           "client_uri",
           "grant_types",
+          "id_token_signed_response_alg",
           "id_token_encrypted_response_alg",
           "id_token_encrypted_response_enc",
           "jwks_uri",
@@ -428,11 +429,12 @@
           },
           "response_types": {
             "type": "array",
-            "description": "Array of the OAuth 2.0 response type strings that the client can use at the authorization endpoint.",
+            "description": "Array of the OAuth 2.0 response type strings that the client can use at the authorization endpoint.<br><br>Response type value `code` is required for Authorization Code Flow. Response type value `code id_token` is required for OIDC Hybrid Flow.",
             "items": {
               "type": "string",
               "x-cds-type": "Enum",
               "enum": [
+                "code",
                 "code id_token"
               ]
             }
@@ -465,6 +467,35 @@
             "description": "JWE `enc` algorithm with which an id_token is to be encrypted",
             "example": "A256GCM",
             "x-cds-type": "ExternalRef"
+          },
+          "authorization_signed_response_alg": {
+            "type": "string",
+            "x-conditional": true,
+            "description": "The JWS `alg` algorithm required for signing authorization responses. If this is specified, the response will be signed using JWS and the configured algorithm. The algorithm “none” is not allowed.<br><br>Required if response_type of “code” is registered by the client.",
+            "example": "PS256",
+            "enum": [
+              "PS256",
+              "ES256"
+            ]
+          },
+          "authorization_encrypted_response_alg": {
+            "type": "string",
+            "x-conditional": true,
+            "description": "The JWE `alg` algorithm required for encrypting authorization responses. If unspecified, the default is that no encryption is performed.<br><br>Required if “authorization_encrypted_response_enc” is included.",
+            "example": "RSA-OAEP",
+            "enum": [
+              "RSA-OAEP",
+              "RSA-OAEP-256"
+            ]
+          },
+          "authorization_encrypted_response_enc": {
+            "type": "string",
+            "description": "The JWE `enc` algorithm required for encrypting authorization responses. If “authorization_encrypted_response_alg” is specified, the default for this value is “A128CBC-HS256”.",
+            "example": "A128CBC-HS256",
+            "enum": [
+              "A256GCM",
+              "A128CBC-HS256"
+            ]
           },
           "request_object_signing_alg": {
             "type": "string",

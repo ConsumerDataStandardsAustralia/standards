@@ -82,12 +82,15 @@ Register a client using a CDR Register issued Software Statement Assertion.
     "client_credentials"
   ],
   "response_types": [
-    "code id_token"
+    "code"
   ],
   "application_type": "web",
   "id_token_signed_response_alg": "PS256",
   "id_token_encrypted_response_alg": "RSA-OAEP",
   "id_token_encrypted_response_enc": "A256GCM",
+  "authorization_signed_response_alg": "PS256",
+  "authorization_encrypted_response_alg": "RSA-OAEP",
+  "authorization_encrypted_response_enc": "A128CBC-HS256",
   "request_object_signing_alg": "PS256",
   "software_statement": "string",
   "software_id": "740C368F-ECF9-4D29-A2EA-0514A66B0CDE",
@@ -191,12 +194,15 @@ Get a Client Registration for a given Client ID.
     "client_credentials"
   ],
   "response_types": [
-    "code id_token"
+    "code"
   ],
   "application_type": "web",
   "id_token_signed_response_alg": "PS256",
   "id_token_encrypted_response_alg": "RSA-OAEP",
   "id_token_encrypted_response_enc": "A256GCM",
+  "authorization_signed_response_alg": "PS256",
+  "authorization_encrypted_response_alg": "RSA-OAEP",
+  "authorization_encrypted_response_enc": "A128CBC-HS256",
   "request_object_signing_alg": "PS256",
   "software_statement": "string",
   "software_id": "740C368F-ECF9-4D29-A2EA-0514A66B0CDE",
@@ -315,12 +321,15 @@ Update a Client Registration for a given Client ID.
     "client_credentials"
   ],
   "response_types": [
-    "code id_token"
+    "code"
   ],
   "application_type": "web",
   "id_token_signed_response_alg": "PS256",
   "id_token_encrypted_response_alg": "RSA-OAEP",
   "id_token_encrypted_response_enc": "A256GCM",
+  "authorization_signed_response_alg": "PS256",
+  "authorization_encrypted_response_alg": "RSA-OAEP",
+  "authorization_encrypted_response_enc": "A128CBC-HS256",
   "request_object_signing_alg": "PS256",
   "software_statement": "string",
   "software_id": "740C368F-ECF9-4D29-A2EA-0514A66B0CDE",
@@ -479,12 +488,15 @@ To perform this operation, you must be authenticated and authorised with the fol
     "client_credentials"
   ],
   "response_types": [
-    "code id_token"
+    "code"
   ],
   "application_type": "web",
   "id_token_signed_response_alg": "PS256",
   "id_token_encrypted_response_alg": "RSA-OAEP",
   "id_token_encrypted_response_enc": "A256GCM",
+  "authorization_signed_response_alg": "PS256",
+  "authorization_encrypted_response_alg": "RSA-OAEP",
+  "authorization_encrypted_response_enc": "A128CBC-HS256",
   "request_object_signing_alg": "PS256",
   "software_statement": "string",
   "software_id": "740C368F-ECF9-4D29-A2EA-0514A66B0CDE",
@@ -518,11 +530,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 |token_endpoint_auth_method|string|mandatory|The requested authentication method for the token endpoint|
 |token_endpoint_auth_signing_alg|string|mandatory|The algorithm used for signing the JWT|
 |grant_types|[string]|mandatory|Array of OAuth 2.0 grant type strings that the client can use at the token endpoint|
-|response_types|[string]|mandatory|Array of the OAuth 2.0 response type strings that the client can use at the authorization endpoint.|
+|response_types|[string]|mandatory|Array of the OAuth 2.0 response type strings that the client can use at the authorization endpoint.<br><br>Response type value `code` is required for Authorization Code Flow. Response type value `code id_token` is required for OIDC Hybrid Flow.|
 |application_type|string|optional|Kind of the application. The only supported application type will be `web`|
-|id_token_signed_response_alg|string|optional|Algorithm with which an id_token is to be signed|
+|id_token_signed_response_alg|string|mandatory|Algorithm with which an id_token is to be signed|
 |id_token_encrypted_response_alg|string|mandatory|JWE `alg` algorithm with which an id_token is to be encrypted|
 |id_token_encrypted_response_enc|string|mandatory|JWE `enc` algorithm with which an id_token is to be encrypted|
+|authorization_signed_response_alg|string|optional|The JWS `alg` algorithm required for signing authorization responses. If this is specified, the response will be signed using JWS and the configured algorithm. The algorithm “none” is not allowed.<br><br>Required if response_type of “code” is registered by the client.|
+|authorization_encrypted_response_alg|string|optional|The JWE `alg` algorithm required for encrypting authorization responses. If unspecified, the default is that no encryption is performed.<br><br>Required if “authorization_encrypted_response_enc” is included.|
+|authorization_encrypted_response_enc|string|optional|The JWE `enc` algorithm required for encrypting authorization responses. If “authorization_encrypted_response_alg” is specified, the default for this value is “A128CBC-HS256”.|
 |request_object_signing_alg|string|mandatory|Algorithm which the ADR expects to sign the request object if a request object will be part of the authorization request sent to the Data Holder|
 |software_statement|string(JWT)|mandatory|The Software Statement Assertion, as defined in CDR standards|
 |software_id|string|mandatory|String representing a unique identifier assigned by the Register and used by registration endpoints to identify the software product to be dynamically registered. </br></br>The "software_id" will remain the same for the lifetime of the product, across multiple updates and versions|
@@ -539,10 +554,17 @@ To perform this operation, you must be authenticated and authorised with the fol
 |grant_types|client_credentials|
 |grant_types|authorization_code|
 |grant_types|refresh_token|
+|response_types|code|
 |response_types|code id_token|
 |application_type|web|
 |id_token_signed_response_alg|PS256|
 |id_token_signed_response_alg|ES256|
+|authorization_signed_response_alg|PS256|
+|authorization_signed_response_alg|ES256|
+|authorization_encrypted_response_alg|RSA-OAEP|
+|authorization_encrypted_response_alg|RSA-OAEP-256|
+|authorization_encrypted_response_enc|A256GCM|
+|authorization_encrypted_response_enc|A128CBC-HS256|
 |request_object_signing_alg|PS256|
 |request_object_signing_alg|ES256|
 
@@ -583,12 +605,15 @@ To perform this operation, you must be authenticated and authorised with the fol
     "client_credentials"
   ],
   "response_types": [
-    "code id_token"
+    "code"
   ],
   "application_type": "web",
   "id_token_signed_response_alg": "PS256",
   "id_token_encrypted_response_alg": "RSA-OAEP",
   "id_token_encrypted_response_enc": "A256GCM",
+  "authorization_signed_response_alg": "PS256",
+  "authorization_encrypted_response_alg": "RSA-OAEP",
+  "authorization_encrypted_response_enc": "A128CBC-HS256",
   "request_object_signing_alg": "PS256",
   "software_statement": "string",
   "software_id": "740C368F-ECF9-4D29-A2EA-0514A66B0CDE",

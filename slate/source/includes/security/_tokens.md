@@ -19,10 +19,6 @@
 }
 ```
 
-```diff
-Added FAPI 1.0 Final Phase 3 Obligation example
-```
-
 > Non-Normative Example - FAPI 1.0 Final Phase 3 Obligations
 
 ```
@@ -39,6 +35,12 @@ Added FAPI 1.0 Final Phase 3 Obligation example
 }
 ```
 
+```diff
+**v1.21.0 Change**
+Updated heading levels to be consistent
+Moved hashing requirements underneath OIDC Hybrid Flow
+Clarified ID Token encryption requirements apply only to the OIDC Hybrid Flow
+```
 
 ID Tokens are specified in [section 2](https://openid.net/specs/openid-connect-core-1_0.html#IDToken) of the **[[OIDC]](#nref-OIDC)** standard.
 
@@ -48,27 +50,23 @@ In addition to the mandatory claims specified in [section 2](https://openid.net/
 ID Tokens **MUST** be signed by Data Holders as specified in [section 8.6](https://openid.net/specs/openid-financial-api-part-2.html#jws-algorithm-considerations) of **[[FAPI-RW-Draft]](#nref-FAPI-RW-Draft)**.
 
 
-
-**From September 16th 2022 (FAPI 1.0 Migration Phase 2)**, the following requirements apply:
-
-* ID Tokens **MUST** be signed and **MAY** be encrypted when returned to a Data Recipient Software Product from the Token End Point, if the Data Holder supports the OIDC Authorization Code Flow in accordance with **[[FAPI-1.0-Advanced]](#nref-FAPI-1-0-Advanced)**.
-
-
 #### OIDC Hybrid Flow requirements
 
 In accordance with **[[FAPI-RW-Draft]](#nref-FAPI-RW-Draft)**, ID Tokens **MUST** be signed and encrypted when returned to a Data Recipient Software Product from both the Authorisation End Point and Token End Point.
 
 The ID Token returned from the Authorisation End Point **MUST NOT** contain any Personal Information (PI) claims.
 
+##### Hashing value for state and authorisation code
 
-### OIDC Authorization Code Flow requirements
+The following requirements apply to the OIDC Hybrid Flow:
 
-**From September 16th 2022**, if the Data Holder supports the OIDC Authorization Code Flow in accordance with **[[FAPI-1.0-Advanced]](#nref-FAPI-1-0-Advanced)**, ID Tokens **MUST** be signed and **MAY** encrypted when returned to a Data Recipient Software Product from the Token End Point.
+* The `c_hash` value **MUST** be generated according to [section 3.3.2.11](https://openid.net/specs/openid-connect-core-1_0.html#HybridIDToken) of **[[OIDC]](#nref-OIDC)**.
+* The `s_hash` value **MUST** be generated according to [section 5.1.1](https://openid.net/specs/openid-financial-api-part-2-1_0.html#id-token-as-detached-signature) of **[[FAPI-1.0-Advanced]](#nref-FAPI-1-0-Advanced)**.
 
-#### Hashing value for state and authorisation code
-The `c_hash` value **MUST** be generated according to [section 3.3.2.11](https://openid.net/specs/openid-connect-core-1_0.html#HybridIDToken) of **[[OIDC]](#nref-OIDC)**.
+#### Authorization Code Flow requirements
 
-The `s_hash` value **MUST** be generated according to [section 5.1](https://openid.net/specs/openid-financial-api-part-2.html#introduction) of **[[FAPI-RW-Draft]](#nref-FAPI-RW-Draft)**.
+For response_type “code”, in accordance with **[[FAPI-1.0-Advanced]](#nref-FAPI-1-0-Advanced)**, ID Tokens **MUST** be signed and **MUST NOT** be encrypted when returned to a Data Recipient Software Product from the Token End Point.
+
 
 ### Access Token
 Access Tokens **MUST** be used as specified in [section 10.3] (https://tools.ietf.org/html/rfc6749#section-10.3) of **[[OAUTH2]](#nref-OAUTH2)**.

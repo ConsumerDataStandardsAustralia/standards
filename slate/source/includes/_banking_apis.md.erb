@@ -4,15 +4,19 @@
 
 This specification defines the APIs for Data Holders exposing Banking endpoints.
 
+```diff
+Add `accountOwnership` field to the Get Accounts and Get Account Details end points.
+
++ Add v2 of Get Accounts
++ Add v3 of Get Account Details
+```
+
 <br>
 <table>
 <tr><td><a href='./includes/swagger/cds_banking.json'>Banking OpenAPI Specification (JSON)</a></td></tr>
 <tr><td><a href='./includes/swagger/cds_banking.yaml'>Banking OpenAPI Specification (YAML)</a></td></tr>
 </table>
 
-```diff
-Fixed the 'BankingTransactionDetail' schema to treat the 'extendedDescription' as conditional
-```
 
 <%= partial "includes/cds_banking.md" %>
 <%= partial "includes/banking/_product_categories.md" %>

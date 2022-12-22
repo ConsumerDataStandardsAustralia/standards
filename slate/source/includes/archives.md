@@ -4,6 +4,8 @@ The following table lists archived versions of the Consumer Data Standards.  The
 
 |Releases Date|Version|Description|
 |-------------|-------|-----------|
+|<a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.21.0/'>16/12/2022</a>|1.21.0|<a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.21.0/'>Changes arising from Decision 282</a>|
+|<a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.20.0/'>13/11/2022</a>|1.20.0|<a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.20.0/'>Changes arising from Decision 259 (Maintenance iteration 12)</a>|
 |<a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.19.0/'>13/09/2022</a>|1.19.0|<a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.19.0/'>Changes arising from Decision 260 (Energy Closed Accounts)</a>|
 |<a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.18.0/'>11/08/2022</a>|1.18.0|<a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.18.0/'>Changes arising from Decision 249 (Maintenance Iteration 11)</a>|
 |<a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.17.0/'>23/05/2022</a>|1.17.0|<a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.17.0/'>Changes arising from Decision 237 (Maintenance Iteration 10)</a>|

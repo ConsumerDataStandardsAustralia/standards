@@ -12,7 +12,7 @@
       "name": "MIT License",
       "url": "https://opensource.org/licenses/MIT"
     },
-    "version": "1.20.0"
+    "version": "1.22.0"
   },
   "servers": [
     {
@@ -27,13 +27,13 @@
           "Accounts"
         ],
         "summary": "Get Accounts",
-        "description": "Obtain a list of accounts",
+        "description": "Obtain a list of accounts.\n\nObsolete versions: [v1](includes/obsolete/get-accounts-v1.html)",
         "operationId": "listAccounts",
         "parameters": [
           {
             "name": "product-category",
             "in": "query",
-            "description": "Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.",
+            "description": "Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.)",
             "schema": {
               "type": "string",
               "enum": [
@@ -174,7 +174,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ResponseBankingAccountList"
+                  "$ref": "#/components/schemas/ResponseBankingAccountListV2"
                 }
               }
             }
@@ -237,7 +237,7 @@
         "x-scopes": [
           "bank:accounts.basic:read"
         ],
-        "x-version": "1"
+        "x-version": "2"
       }
     },
     "/banking/accounts/balances": {
@@ -814,7 +814,7 @@
           "Accounts"
         ],
         "summary": "Get Account Detail",
-        "description": "Obtain detailed information on a single account.\n\nObsolete versions: [v1](includes/obsolete/get-account-detail-v1.html)",
+        "description": "Obtain detailed information on a single account.\n\nObsolete versions: [v1](includes/obsolete/get-account-detail-v1.html), [v2](includes/obsolete/get-account-detail-v2.html)",
         "operationId": "getAccountDetail",
         "parameters": [
           {
@@ -904,7 +904,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ResponseBankingAccountByIdV2"
+                  "$ref": "#/components/schemas/ResponseBankingAccountByIdV3"
                 }
               }
             }
@@ -967,7 +967,7 @@
         "x-scopes": [
           "bank:accounts.detail:read"
         ],
-        "x-version": "2"
+        "x-version": "3"
       }
     },
     "/banking/accounts/{accountId}/transactions": {
@@ -4149,7 +4149,7 @@
         },
         "description": "Defines a condition for the applicability of a tiered rate"
       },
-      "ResponseBankingAccountList": {
+      "ResponseBankingAccountListV2": {
         "required": [
           "data",
           "links",
@@ -4167,7 +4167,7 @@
                 "type": "array",
                 "description": "The list of accounts returned. If the filter results in an empty set then this array may have no records",
                 "items": {
-                  "$ref": "#/components/schemas/BankingAccount"
+                  "$ref": "#/components/schemas/BankingAccountV2"
                 }
               }
             }
@@ -4180,10 +4180,11 @@
           }
         }
       },
-      "BankingAccount": {
+      "BankingAccountV2": {
         "required": [
           "accountId",
           "displayName",
+          "accountOwnership",
           "maskedNumber",
           "productCategory",
           "productName"
@@ -4223,6 +4224,17 @@
             "default": true,
             "x-cds-type": "Boolean"
           },
+          "accountOwnership": {
+            "type": "string",
+            "description": "Value indicating the number of customers that have ownership of the account, according to the data holder's definition of account ownership. Does not indicate that all account owners are eligible consumers",
+            "enum": [
+              "UNKNOWN",
+              "ONE_PARTY",
+              "TWO_PARTY",
+              "MANY_PARTY",
+              "OTHER"
+            ]
+          },
           "maskedNumber": {
             "type": "string",
             "description": "A masked version of the account. Whether BSB/Account Number, Credit Card PAN or another number",
@@ -4237,7 +4249,7 @@
           }
         }
       },
-      "ResponseBankingAccountByIdV2": {
+      "ResponseBankingAccountByIdV3": {
         "required": [
           "data",
           "links"
@@ -4245,7 +4257,7 @@
         "type": "object",
         "properties": {
           "data": {
-            "$ref": "#/components/schemas/BankingAccountDetailV2"
+            "$ref": "#/components/schemas/BankingAccountDetailV3"
           },
           "links": {
             "$ref": "#/components/schemas/Links"
@@ -4255,10 +4267,10 @@
           }
         }
       },
-      "BankingAccountDetailV2": {
+      "BankingAccountDetailV3": {
         "allOf": [
           {
-            "$ref": "#/components/schemas/BankingAccount"
+            "$ref": "#/components/schemas/BankingAccountV2"
           },
           {
             "type": "object",

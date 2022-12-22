@@ -28,10 +28,6 @@ Supported HTTP headers, and their usage, for the standards are as laid out in th
 `Accept-Encoding: charset=UTF-8`  
 `Accept: AppliCAtion/JSon;Charset=uTf-8`  
 
-```diff
-Clarified that the x-fapi-interaction-id is not required for authenticated resource APIs
-```
-
 Header Field | Description | Mandatory?
 -------------|-------------|-----------
 **Content-Type** | Standard HTTP Header. Represents the format of the payload provided in the request. The media type must be set to `application/json`. Mandatory for PUT and POST calls.| Conditional
