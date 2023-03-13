@@ -1745,19 +1745,6 @@
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='introduction'>Introduction</h1>
-<pre class="highlight diff tab-diff"><code>The Version Delta tab can be used to see in context changes between this version of the standards and the immediately previous version of the standards.
-
-This text is an example of a new addition to the standards:
-<span class="gi">+ New text added here
-</span>
-This text is an example of text removed from the standards:
-<span class="gd">- Old text removed
-</span>
-Note: changes to request and response payloads are listed at the beginning of the relevant API section due to the documentation being auto generated from OpenAPI specification files.
-
-Additional note for v1.22.0: For this version only the delta statements from v1.21.0 have been retained in v1.22.0 as the release dates between the two versions were close together.  The affected delta statements will be noted as being associated with v1.21.0
-</code></pre>
-
 <p>These standards have been developed as part of the Australian Government&#39;s introduction of the <a href="https://www.accc.gov.au/focus-areas/consumer-data-right" title="ACCC Consumer Data Right webpage">Consumer Data Right</a> legislation to give Australians greater control over their data.</p>
 
 <p>The Consumer Data Right (CDR) is intended to be applied sector by sector across the whole economy, beginning in the banking, energy and telecommunications sectors.  These standards have been developed to facilitate the Consumer Data Right by acting as a specific baseline for implementation.</p>
@@ -1773,7 +1760,7 @@ Additional note for v1.22.0: For this version only the delta statements from v1.
 
 <h2 id='version'>Version</h2>
 
-<p>These standards represent version 1.22.0 of the high level standards.  See the <a href="#versioning">versioning section</a> for more information on how versions are managed in the standard.</p>
+<p>These standards represent version 1.22.1 of the high level standards.  See the <a href="#versioning">versioning section</a> for more information on how versions are managed in the standard.</p>
 
 <h2 id='interpretation'>Interpretation</h2>
 
@@ -1784,12 +1771,6 @@ Additional note for v1.22.0: For this version only the delta statements from v1.
 <p>The standards, as published from time to time, may include specific statements indicating that a specific section of the standards will not take effect until a future date or may cease to have effect on some future date.</p>
 
 <p>The table below highlights these areas of the standards.</p>
-
-<pre class="highlight diff tab-diff"><code>**v1.21.0 Change**
-Updated obligation dates for FAPI 1.0 Phase 3
-<span class="gi">+ Added obligation dates for FAPI 1.0 Phase 4
-</span>Updated Get Energy Accounts V2 and Get Energy Account Detail V2 obligation dates in line with the change to FY23 #3 obligation mileston
-</code></pre>
 
 <table><thead>
 <tr>
@@ -4581,9 +4562,7 @@ The standards in this section outline requirements that apply when a disclosure 
 </tr>
 </tbody></table>
 <h1 style="display:none"></h1>
-<h1 id='security-profile'>Security Profile</h1><pre class="highlight diff tab-diff"><code>**v1.21.0 Change**
-Where “OIDC Authorization Code Flow” is referenced, change to be “Authorization Code Flow”.
-</code></pre>
+<h1 id='security-profile'>Security Profile</h1>
 <h2 id='overview'>Overview</h2>
 
 <p><strong>Until September 16th 2022</strong></p>
@@ -4739,11 +4718,7 @@ Recipients. Data Holders and Data Recipients <strong>MUST</strong> be created as
 
 <p>No other flows are currently supported.</p>
 
-<h3 id='baseline-security-provisions'>Baseline Security Provisions</h3><pre class="highlight diff tab-diff"><code>**v1.21.0 Change**
-Moved baseline requirements applicable to both he OIDC Hybrid Flow and Authorization Code Flow outside of the OIDC Hybrid Flow section
-Updated obligation dates
-Require Data Holders to support both OIDC Hybrid Flow and Authorization Code Flow for a 3 month period. OIDC Hybrid Flow may be retired after July 10th 2023
-</code></pre><h4 id='data-holders'>Data Holders</h4>
+<h3 id='baseline-security-provisions'>Baseline Security Provisions</h3><h4 id='data-holders'>Data Holders</h4>
 <p>The <code>request_uri</code> parameter is only supported if the Data Holder supports PAR.</p>
 
 <p>In addition, the following statements are applicable to both the OIDC Hybrid Flow and Authorization Code Flow:</p>
@@ -4833,17 +4808,17 @@ authorisation code flow detailed under <strong><a href="#nref-OIDC">[OIDC]</a></
 
 <p><a id="authorization-code-flow"></a></p>
 
-<h3 id='authorization-code-flow'>Authorization Code Flow</h3><pre class="highlight diff tab-diff"><code>**v1.21.0 Change**
-<span class="gi">+ Added requriements in relation to authorisation response encryption
-</span><span class="gd">- Removed legacy July 4th 2022 requirements
-</span></code></pre>
+<h3 id='authorization-code-flow'>Authorization Code Flow</h3>
+
 <p>The following statements are applicable for this flow:</p>
 
 <ul>
 <li>Only a <code>response_type</code> (see <a href="https://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth">section 3.1</a> of <strong><a href="#nref-OIDC">[OIDC]</a></strong>) of <code>code</code> <strong>SHALL</strong> be allowed.</li>
 <li>Data Holders <strong>MUST</strong> also support <strong><a href="#nref-JARM">[JARM]</a></strong> and <strong><a href="#nref-PKCE">[PKCE]</a></strong></li>
 </ul>
+
 <h4 id='data-holders-2'>Data Holders</h4>
+
 <p>Data Holders <strong>MUST</strong> support <strong><a href="#nref-JARM">[JARM]</a></strong> in accordance with <strong><a href="#nref-FAPI-1-0-Advanced">[FAPI-1.0-Advanced]</a></strong> <a href="https://openid.net/specs/openid-financial-api-part-2-1_0.html#jarm">section 5.2.2.2</a>.</p>
 
 <blockquote>
@@ -4859,7 +4834,9 @@ Data Holders <strong>MAY</strong> support Authorisation Response encryption.</p>
 <li>Data Holders <strong>MAY</strong> advertise they do not support authorisation response encryption: either by omitting these values from their OpenID Provider Metadata, or by presenting an empty array for the supported parameters.</li>
 <li>If the Data Holder supports authorisation response encryption and the <code>authorization_encrypted_response_alg</code> is omitted from the registration request, the Data Holder <strong>MAY</strong> require response encryption by returning a client registration response with the chosen “authorization_encrypted_response_alg” value.</li>
 </ul>
+
 <h4 id='data-recipient-software-products-2'>Data Recipient Software Products</h4>
+
 <p>Data Recipients <strong>MUST</strong> support <strong><a href="#nref-JARM">[JARM]</a></strong> in accordance with <strong><a href="#nref-FAPI-1-0-Advanced">[FAPI-1.0-Advanced]</a></strong> <a href="https://openid.net/specs/openid-financial-api-part-2-1_0.html#jarm-1">section 5.2.3.2</a>.</p>
 
 <p>In addition,</p>
@@ -4874,7 +4851,9 @@ Data Holders <strong>MAY</strong> support Authorisation Response encryption.</p>
 <p>Additional requirements and guidelines for the authentication flows are contained in the <a href="#consumer-experience">Consumer Experience</a> section.</p>
 
 <p><a id="client-authentication"></a></p>
+
 <h2 id='client-authentication'>Client Authentication</h2>
+
 <p>This section outlines how participants in the CDR regime will authenticate clients seeking access to end points.</p>
 
 <p>Note that, while <strong><a href="#nref-MTLS">[MTLS]</a></strong> is utilised for transaction security and as a Holder of Key mechanism, the PKI Mutual TLS OAuth Client Authentication Method SHALL NOT be supported as the mechanism for client authentication.</p>
@@ -4891,10 +4870,13 @@ Data Holders <strong>MAY</strong> support Authorisation Response encryption.</p>
 <li><p>Data Holders and the CDR Register <strong>MUST</strong> authenticate Data Recipient Software Products using the <a href="#private-key-jwt-client-authentication">Private Key JWT Client Authentication</a> method.</p></li>
 <li><p>Data Recipient Software Products <strong>MUST</strong> authenticate Data Holders and the CDR Register using the <a href="#self-signed-jwt-client-authentication">Self-signed JWT Client Authentication</a> method.</p></li>
 </ul>
+
 <h4 id='private-key-jwt-client-authentication'>Private Key JWT Client Authentication</h4>
+
 <blockquote>
 <p>Private Key JWT Client Authentication Non-Normative Example - CDR Register calls the Data Holder&#39;s token end point to obtain an Access Token for the purposes of calling the Data Holder&#39;s Get Metrics endpoint.</p>
 </blockquote>
+
 <pre class="highlight plaintext"><code>POST /token HTTP/1.1
 Host: www.holder.com.au
 Content-Type: application/x-www-form-urlencoded
@@ -4920,6 +4902,7 @@ grant_type=client_credentials&amp;
   "jti": "37747cd1-c105-4569-9f75-4adf28b73e31"
 }
 </code></pre>
+
 <p>Authorisation Servers supporting <code>private_key_jwt</code> Client Authentication of clients <strong>MUST</strong> support the following requirements:</p>
 
 <ul>
@@ -4946,10 +4929,13 @@ grant_type=client_credentials&amp;
 <li><code>scope</code> - OPTIONAL. The requested scope as described in <a href="https://tools.ietf.org/html/rfc6749#section-3.3">Section 3.3</a> of <strong><a href="#nref-RFC6749">[RFC6749]</a></strong>.</li>
 </ul></li>
 </ul>
+
 <h4 id='self-signed-jwt-client-authentication'>Self-signed JWT Client Authentication</h4>
+
 <blockquote>
 <p>Self-signed JWT Client Authentication Non-Normative Example - CDR Register calls the Data holder&#39;s Get Metrics end point using self-signed JWT Client Authentication (note that the “aud” claim represents the AdminBaseUri as defined in CDR Register Participant Endpoints).</p>
 </blockquote>
+
 <pre class="highlight plaintext"><code>GET https://admin.data.holder.com.au/cds-au/v1/admin/metrics HTTP:/1.1
 Host: admin.data.holder.com.au
 x-v: string
@@ -4971,6 +4957,7 @@ Authorization: Bearer eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNDU2In0.ey
    "jti":"32358102-a44f-43cc-ad7c-42443d01507a"
 }
 </code></pre>
+
 <p>Data Recipient Software Products and Data Holders supporting the self-signed JWT authentication of clients using a signed JWT <strong>MUST</strong> do so according to the following requirements:</p>
 
 <ul>
@@ -4989,6 +4976,7 @@ Authorization: Bearer eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNDU2In0.ey
 </ul>
 
 <p><strong>Note:</strong> In accordance with <code>jti</code> requirements, self-signed JWTs are one-time use only. The authenticating server <strong>MUST</strong> reject JWTs reuse.</p>
+
 <h3 id='cdr-register-calling-data-holders'>CDR Register calling Data Holders</h3>
 
 <p>Data Holders <strong>MUST</strong> support either <a href="#private-key-jwt-client-authentication">Private Key JWT Client Authentication</a> or <a href="#self-signed-jwt-client-authentication">Self-signed JWT Client Authentication</a> of the CDR Register.</p>
@@ -5479,10 +5467,7 @@ Accept: application/json
 </ul>
 
 <p>The client registration request <strong>MUST</strong> contain the following claims in the JWT payload unless designated as Optional:</p>
-<pre class="highlight diff tab-diff"><code>**v1.21.0 Change**
-<span class="gi">+ Added JARM parameters
-</span>Updated ID Token encryption parameter descriptions
-</code></pre>
+
 <table><thead>
 <tr>
 <th>Claim</th>
@@ -5586,9 +5571,7 @@ Accept: application/json
 <td>Software statement assertion issued by the CDR Register</td>
 </tr>
 </tbody></table>
-<h4 id='id-token-algorithm-selection-considerations'>ID Token Algorithm Selection Considerations</h4><pre class="highlight diff tab-diff"><code>**v1.21.0 Change**
-Updated the section to make clear these requirements must be applied for OIDC Hybrid Flow
-</code></pre>
+<h4 id='id-token-algorithm-selection-considerations'>ID Token Algorithm Selection Considerations</h4>
 <p>When requiring ID Token encryption, the following requirements are applicable.</p>
 
 <p>Participants <strong>MUST</strong> support, at a minimum, the following ID Token algorithms:</p>
@@ -5614,9 +5597,7 @@ Updated the section to make clear these requirements must be applied for OIDC Hy
 <p>Data Recipients <strong>MUST</strong> support all the algorithms used in the ecosystem to ensure they can communicate with all Data Holders.</p>
 
 <p>ID Token algorithm considerations remain relevant where the OIDC Hybrid Flow is leveraged as defined in the Consumer Data Standards and in accordance with sections <a href="https://openid.net/specs/openid-financial-api-part-2-1_0.html#id-token-as-detached-signature">5.1.1</a>, <a href="https://openid.net/specs/openid-financial-api-part-2-1_0.html#id-token-as-detached-signature-1">5.2.2.1</a>, and <a href="https://openid.net/specs/openid-financial-api-part-2-1_0.html#id-token-as-detached-signature-2">5.2.3.1</a> of <strong><a href="#nref-FAPI-1-0-Advanced">[FAPI-1.0-Advanced]</a></strong>.</p>
-<h4 id='jarm-response-encryption-considerations'>JARM Response Encryption Considerations</h4><pre class="highlight diff tab-diff"><code>**v1.21.0 Change**
-<span class="gi">+ Added JARM response encryption considerations
-</span></code></pre>
+<h4 id='jarm-response-encryption-considerations'>JARM Response Encryption Considerations</h4>
 <p>If Data Holders support authorisation response encryption, they <strong>MUST</strong> support, at a minimum, one of each of the following <code>alg</code> and <code>enc</code> algorithms:</p>
 
 <table><thead>
@@ -6206,10 +6187,6 @@ Data Holders <strong>SHOULD</strong> explicitly capture Claims requested by the 
   "auth_time": 1311280969,
   "acr": "urn:cds.au:cdr:2"
 }
-</code></pre><pre class="highlight diff tab-diff"><code>**v1.21.0 Change**
-Updated heading levels to be consistent
-Moved hashing requirements underneath OIDC Hybrid Flow
-Clarified ID Token encryption requirements apply only to the OIDC Hybrid Flow
 </code></pre>
 <p>ID Tokens are specified in <a href="https://openid.net/specs/openid-connect-core-1_0.html#IDToken">section 2</a> of the <strong><a href="#nref-OIDC">[OIDC]</a></strong> standard.</p>
 <h4 id='baseline-id-token-requirements'>Baseline ID Token requirements</h4>
@@ -7700,8 +7677,7 @@ Host: cdr.register
 <tr><td><a href='./includes/swagger/cds_dcr.json'>DCR OpenAPI Specification (JSON)</a></td></tr>
 <tr><td><a href='./includes/swagger/cds_dcr.yaml'>DCR OpenAPI Specification (YAML)</a></td></tr>
 </table></p>
-<pre class="highlight diff tab-diff"><code>Updated DCR field types to use Common Field Types
-</code></pre>
+
 <h2 id='register-data-recipient-oauth-client'>Register Data Recipient oAuth Client</h2>
 
 <p><a id="opIdPostDataRecipientRegistration"></a></p>
@@ -8923,12 +8899,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h1 id='register-apis'>Register APIs</h1>
 <p>The following section provides an overview of the Register APIs for Data Holders and Data Recipients to collect participant metadata.
 These endpoints are exposed by the Register and consumed by Data Holders and Data Recipients.</p>
-<pre class="highlight diff tab-diff"><code>Updated Register API field types to use Common Field Types
 
-Modified the x-v request header descriptions that are optional
-to specify the default version that will be assumed if the header
-is absent
-</code></pre>
 <aside class="warning">
   These endpoints are not implemented by Data Holders and Data Recipients. They are hosted by the Register for consumption by participants.
   Data Holders and Data Recipient Software Products are required to call these endpoints to obtain metadata that enables connection and registration between participants as well as obtaining the status of participants in the CDR.
@@ -13010,11 +12981,7 @@ This operation does not require authentication
 <h1 style="display:none"></h1>
 <h1 id='banking-apis'>Banking APIs</h1>
 <p>This specification defines the APIs for Data Holders exposing Banking endpoints.</p>
-<pre class="highlight diff tab-diff"><code>Add `accountOwnership` field to the Get Accounts and Get Account Details end points.
 
-<span class="gi">+ Add v2 of Get Accounts
-+ Add v3 of Get Account Details
-</span></code></pre>
 <p><br>
 <table>
 <tr><td><a href='./includes/swagger/cds_banking.json'>Banking OpenAPI Specification (JSON)</a></td></tr>
@@ -43474,9 +43441,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table></p>
 <h1 id='telco-apis'>Telco APIs</h1>
 <p>This specification defines the APIs for Data Holders exposing Telecommunications endpoints.</p>
-<pre class="highlight diff tab-diff"><code>Numerous updates to the draft standards arising from feedback provided
-in the holistic feedback thread (Decision Proposal 275)
-</code></pre>
+
 <aside class="notice">
 Note that the standards for the telecommunications sector are currently in draft only and are not binding
 </aside>
@@ -64855,6 +64820,12 @@ This operation may only be called by an Energy Retailer using the information se
 </tr>
 </thead><tbody>
 <tr>
+<td>16/03/2022</td>
+<td>1.22.1</td>
+<td>Patch release including updates to draft Telco standards</td>
+<td>See <a href="includes/releasenotes/releasenotes.1.22.1.html">release notes</a> for details.</td>
+</tr>
+<tr>
 <td>22/12/2022</td>
 <td>1.22.0</td>
 <td>Changes arising from Decision 271 (Maintenance iteration 13)</td>
@@ -65285,6 +65256,11 @@ This operation may only be called by an Energy Retailer using the information se
 <th>Description</th>
 </tr>
 </thead><tbody>
+<tr>
+<td><a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.22.0/'>22/12/2022</a></td>
+<td>1.22.0</td>
+<td><a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.22.0/'>Changes arising from Decision 271 (Maintenance iteration 13)</a></td>
+</tr>
 <tr>
 <td><a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.21.0/'>16/12/2022</a></td>
 <td>1.21.0</td>

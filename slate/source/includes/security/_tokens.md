@@ -35,13 +35,6 @@
 }
 ```
 
-```diff
-**v1.21.0 Change**
-Updated heading levels to be consistent
-Moved hashing requirements underneath OIDC Hybrid Flow
-Clarified ID Token encryption requirements apply only to the OIDC Hybrid Flow
-```
-
 ID Tokens are specified in [section 2](https://openid.net/specs/openid-connect-core-1_0.html#IDToken) of the **[[OIDC]](#nref-OIDC)** standard.
 
 #### Baseline ID Token requirements

@@ -1,18 +1,4 @@
 
-```diff
-The Version Delta tab can be used to see in context changes between this version of the standards and the immediately previous version of the standards.
-
-This text is an example of a new addition to the standards:
-+ New text added here
-
-This text is an example of text removed from the standards:
-- Old text removed
-
-Note: changes to request and response payloads are listed at the beginning of the relevant API section due to the documentation being auto generated from OpenAPI specification files.
-
-Additional note for v1.22.0: For this version only the delta statements from v1.21.0 have been retained in v1.22.0 as the release dates between the two versions were close together.  The affected delta statements will be noted as being associated with v1.21.0
-```
-
 These standards have been developed as part of the Australian Government's introduction of the [Consumer Data Right](https://www.accc.gov.au/focus-areas/consumer-data-right "ACCC Consumer Data Right webpage") legislation to give Australians greater control over their data.
 
 The Consumer Data Right (CDR) is intended to be applied sector by sector across the whole economy, beginning in the banking, energy and telecommunications sectors.  These standards have been developed to facilitate the Consumer Data Right by acting as a specific baseline for implementation.
@@ -27,7 +13,7 @@ The standards are required to be published. The obligations on CDR participants 
 
 ## Version
 
-These standards represent version 1.22.0 of the high level standards.  See the [versioning section](#versioning) for more information on how versions are managed in the standard.
+These standards represent version 1.22.1 of the high level standards.  See the [versioning section](#versioning) for more information on how versions are managed in the standard.
 
 ## Interpretation
 
