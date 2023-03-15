@@ -50,8 +50,8 @@ Note that the results returned by this end point are expected to be ordered in d
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|type|query|string|optional|Used to filter results on the type field.  Any one of the valid values for this field can be supplied. If absent, defaults to include all products. Valid values are ‘MOBILE’, ‘BROADBAND’|
-|billing-type|query|string|optional|Used to filter results on the billing-type field.  Any one of the valid values for this field can be supplied. If absent, defaults to include all billing types. Valid values are ‘PRE_PAID’, ‘POST_PAID’, 'UPFRONT_PAID', 'OTHER'|
+|type|query|string|optional|Used to filter results on the type field. Any one of the valid values for this field can be supplied. If absent, defaults to include ALL products. Valid values are [MOBILE](https://www.legislation.gov.au/Details/C2022C00170/Html/Volume_1#_Toc95898745) service. BROADBAND fixed internet service or ALL|
+|billing-type|query|string|optional|Used to filter results on the billing-type field.  Any one of the valid values for this field can be supplied. If absent, defaults to include all billing types. Valid values are ‘PRE_PAID’, ‘POST_PAID’, 'UPFRONT_PAID', 'ALL'|
 |effective|query|string|optional|Allows for the filtering of productd based on whether the current time is within the period of time defined as effective by the effectiveFrom and effectiveTo fields. Valid values are ‘CURRENT’, ‘FUTURE’ and ‘ALL’. If absent defaults to 'CURRENT'|
 |updated-since|query|[DateTimeString](#common-field-types)|optional|Only include products that have been updated after the specified date and time.  If absent defaults to include all plans|
 |brand|query|string|optional|Used to filter results on the brand field. If absent, defaults to include all products. For service providers that operate a number of mobile and internet brands|
@@ -66,10 +66,11 @@ Note that the results returned by this end point are expected to be ordered in d
 |---|---|
 |type|MOBILE|
 |type|BROADBAND|
+|type|ALL|
 |billing-type|PRE_PAID|
 |billing-type|POST_PAID|
 |billing-type|UPFRONT_PAID|
-|billing-type|OTHER|
+|billing-type|ALL|
 |effective|CURRENT|
 |effective|FUTURE|
 |effective|ALL|
@@ -106,7 +107,7 @@ Note that the results returned by this end point are expected to be ordered in d
             "name": "string",
             "description": "string",
             "period": "string",
-            "chargeAmount": "string"
+            "amount": "string"
           }
         ],
         "thirdPartyAgentId": "string",
@@ -150,9 +151,6 @@ Note that the results returned by this end point are expected to be ordered in d
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
 |200|x-v|string||none|
-|400|x-fapi-interaction-id|string||none|
-|406|x-fapi-interaction-id|string||none|
-|422|x-fapi-interaction-id|string||none|
 
   
     <aside class="success">
@@ -243,7 +241,7 @@ Obtain detailed information on a single telco prouct offered openly to the marke
         "name": "string",
         "description": "string",
         "period": "string",
-        "chargeAmount": "string"
+        "amount": "string"
       }
     ],
     "thirdPartyAgentId": "string",
@@ -340,9 +338,6 @@ Obtain detailed information on a single telco prouct offered openly to the marke
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
 |200|x-v|string||none|
-|400|x-fapi-interaction-id|string||none|
-|404|x-fapi-interaction-id|string||none|
-|406|x-fapi-interaction-id|string||none|
 
   
     <aside class="success">
@@ -407,11 +402,9 @@ Obtain a usage data from a particular service Id
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|serviceId|path|string|mandatory|ID of the specific service requested such as a mobile [MSISDN](https://www.etsi.org/deliver/etsi_gts/03/0303/05.00.00_60/gsmts_0303v050000p.pdf), [FNN](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf) or internet service e.g [NBN AVC Service ID](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf).  This is a tokenised ID returned from the account. In accordance with [CDR ID permanence](#id-permanence) requirements|
+|serviceId|path|string|mandatory|ID of the specific service requested. E.g. a mobile [MSISDN](https://www.etsi.org/deliver/etsi_gts/03/0303/05.00.00_60/gsmts_0303v050000p.pdf), [FNN](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf) or internet service e.g [NBN AVC Service ID](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf). This is a tokenised ID returned from the account. In accordance with [CDR ID permanence](#id-permanence) requirements|
 |oldest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with effective date at or after this date. If absent defaults to newest-date minus 24 months.  Format is aligned to DateString common type|
 |newest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with effective date at or before this date.  If absent defaults to current date.  Format is aligned to DateString common type|
-|page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
-|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request.  Default is 25 (standard pagination)|
 |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
 |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
 |x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
@@ -476,16 +469,9 @@ Obtain a usage data from a particular service Id
     }
   },
   "links": {
-    "self": "string",
-    "first": "string",
-    "prev": "string",
-    "next": "string",
-    "last": "string"
+    "self": "string"
   },
-  "meta": {
-    "totalRecords": 0,
-    "totalPages": 0
-  }
+  "meta": {}
 }
 ```
 
@@ -593,65 +579,71 @@ Obtain usage data for all services associated with the customer
 
 ```json
 {
-  "accounts": [
-    {
-      "accountId": "string",
-      "services": [
-        {
-          "service": {
-            "serviceId": "string",
-            "displayName": "string",
-            "phoneNumber": "string",
-            "startDate": "string",
-            "endDate": "string",
-            "usage": {
-              "data": {
-                "upload": 0,
-                "download": 0,
-                "sessions": 0,
-                "amount": "string",
-                "roaming": {
+  "data": {
+    "accounts": [
+      {
+        "accountId": "string",
+        "services": [
+          {
+            "service": {
+              "serviceId": "string",
+              "displayName": "string",
+              "phoneNumber": "string",
+              "startDate": "string",
+              "endDate": "string",
+              "usage": {
+                "data": {
+                  "upload": 0,
                   "download": 0,
-                  "amount": "string"
-                }
-              },
-              "voice": {
-                "national": {
-                  "duration": "string",
-                  "number": 0,
-                  "amount": "string"
+                  "sessions": 0,
+                  "amount": "string",
+                  "roaming": {
+                    "download": 0,
+                    "amount": "string"
+                  }
                 },
-                "international": {
-                  "duration": "string",
-                  "number": 0,
-                  "amount": "string"
+                "voice": {
+                  "national": {
+                    "duration": "string",
+                    "number": 0,
+                    "amount": "string"
+                  },
+                  "international": {
+                    "duration": "string",
+                    "number": 0,
+                    "amount": "string"
+                  },
+                  "roaming": {
+                    "duration": "string",
+                    "number": 0,
+                    "amount": "string"
+                  }
                 },
-                "roaming": {
-                  "duration": "string",
-                  "number": 0,
-                  "amount": "string"
-                }
-              },
-              "messaging": {
-                "sms": {
-                  "national": 0,
-                  "international": 0,
-                  "roaming": 0,
-                  "amount": "string"
-                },
-                "mms": {
-                  "national": 0,
-                  "international": 0,
-                  "roaming": 0,
-                  "amount": "string"
+                "messaging": {
+                  "sms": {
+                    "national": 0,
+                    "international": 0,
+                    "roaming": 0,
+                    "amount": "string"
+                  },
+                  "mms": {
+                    "national": 0,
+                    "international": 0,
+                    "roaming": 0,
+                    "amount": "string"
+                  }
                 }
               }
             }
           }
-        }
-      ]
-    }
-  ]
+        ]
+      }
+    ]
+  },
+  "links": {
+    "self": "string"
+  },
+  "meta": {}
 }
 ```
 
@@ -755,8 +747,6 @@ Obtain usage data for a specific service
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|oldest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with effective date at or after this date. If absent defaults to newest-date minus 24 months.  Format is aligned to DateString common type|
-|newest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with effective date at or before this date.  If absent defaults to current date.  Format is aligned to DateString common type|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request.  Default is 25 (standard pagination)|
 |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
@@ -776,69 +766,71 @@ Obtain usage data for a specific service
 
 ```json
 {
-  "data": [
-    {
-      "serviceId": "string",
-      "displayName": "string",
-      "phoneNumber": "string",
-      "startDate": "string",
-      "endDate": "string",
-      "usage": {
-        "data": {
-          "upload": 0,
-          "download": 0,
-          "sessions": 0,
-          "amount": "string",
-          "roaming": {
-            "download": 0,
-            "amount": "string"
+  "data": {
+    "accounts": [
+      {
+        "accountId": "string",
+        "services": [
+          {
+            "service": {
+              "serviceId": "string",
+              "displayName": "string",
+              "phoneNumber": "string",
+              "startDate": "string",
+              "endDate": "string",
+              "usage": {
+                "data": {
+                  "upload": 0,
+                  "download": 0,
+                  "sessions": 0,
+                  "amount": "string",
+                  "roaming": {
+                    "download": 0,
+                    "amount": "string"
+                  }
+                },
+                "voice": {
+                  "national": {
+                    "duration": "string",
+                    "number": 0,
+                    "amount": "string"
+                  },
+                  "international": {
+                    "duration": "string",
+                    "number": 0,
+                    "amount": "string"
+                  },
+                  "roaming": {
+                    "duration": "string",
+                    "number": 0,
+                    "amount": "string"
+                  }
+                },
+                "messaging": {
+                  "sms": {
+                    "national": 0,
+                    "international": 0,
+                    "roaming": 0,
+                    "amount": "string"
+                  },
+                  "mms": {
+                    "national": 0,
+                    "international": 0,
+                    "roaming": 0,
+                    "amount": "string"
+                  }
+                }
+              }
+            }
           }
-        },
-        "voice": {
-          "national": {
-            "duration": "string",
-            "number": 0,
-            "amount": "string"
-          },
-          "international": {
-            "duration": "string",
-            "number": 0,
-            "amount": "string"
-          },
-          "roaming": {
-            "duration": "string",
-            "number": 0,
-            "amount": "string"
-          }
-        },
-        "messaging": {
-          "sms": {
-            "national": 0,
-            "international": 0,
-            "roaming": 0,
-            "amount": "string"
-          },
-          "mms": {
-            "national": 0,
-            "international": 0,
-            "roaming": 0,
-            "amount": "string"
-          }
-        }
+        ]
       }
-    }
-  ],
-  "links": {
-    "self": "string",
-    "first": "string",
-    "prev": "string",
-    "next": "string",
-    "last": "string"
+    ]
   },
-  "meta": {
-    "totalRecords": 0,
-    "totalPages": 0
-  }
+  "links": {
+    "self": "string"
+  },
+  "meta": {}
 }
 ```
 
@@ -846,7 +838,7 @@ Obtain usage data for a specific service
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[TelcoServiceUsageListResponse](#schemacdr-telco-apitelcoserviceusagelistresponse)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[TelcoUsageListResponse](#schemacdr-telco-apitelcousagelistresponse)|
 |400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ErrorListResponse](#schemacdr-telco-apierrorlistresponse)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ErrorListResponse](#schemacdr-telco-apierrorlistresponse)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li><li>[422 - Unavailable Service Point](#error-422-unavailable-service-point)</li><li>[422 - Invalid Service Point](#error-422-invalid-service-point)</li></ul>|[ErrorListResponse](#schemacdr-telco-apierrorlistresponse)|
@@ -930,6 +922,7 @@ Other Versions: [v1](includes/obsolete/get-telco-accounts-v1.html)
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |open-status|query|string|optional|Used to filter results according to open/closed status. Values can be OPEN, CLOSED or ALL. If absent then ALL is assumed|
+|updated-since|query|[DateString](#common-field-types)|optional|Only include accounts that have been updated after the specified date and time.  If absent defaults to include all plans|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request.  Default is 25 (standard pagination)|
 |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
@@ -1082,7 +1075,7 @@ Other Versions: [v1](includes/obsolete/get-telco-account-detail-v1.html)
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|accountId|path|string|mandatory|ID of a specific account to obtain data for.  This is a tokenised ID previously obtained from the Account List end point. In accordance with [CDR ID permanence](#id-permanence) requirements|
+|accountId|path|string|mandatory|ID of a specific account to obtain data for. This is a tokenised ID previously obtained from the Account List end point. In accordance with [CDR ID permanence](#id-permanence) requirements|
 |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
 |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
 |x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
@@ -1127,18 +1120,7 @@ Other Versions: [v1](includes/obsolete/get-telco-account-detail-v1.html)
               "period": "string"
             }
           ]
-        },
-        "authorisedContacts": [
-          {
-            "firstName": "string",
-            "lastName": "string",
-            "middleNames": [
-              "string"
-            ],
-            "prefix": "string",
-            "suffix": "string"
-          }
-        ]
+        }
       }
     ]
   },
@@ -1238,7 +1220,7 @@ Some general notes about this end point:
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|accountId|path|string|mandatory|ID of a specific account to obtain data for.  This is a tokenised ID previously obtained from the Account List end point. In accordance with [CDR ID permanence](#id-permanence) requirements|
+|accountId|path|string|mandatory|ID of a specific account to obtain data for. This is a tokenised ID previously obtained from the Account List end point. In accordance with [CDR ID permanence](#id-permanence) requirements|
 |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
 |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
 |x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
@@ -1284,9 +1266,16 @@ Some general notes about this end point:
     ]
   },
   "links": {
-    "self": "string"
+    "self": "string",
+    "first": "string",
+    "prev": "string",
+    "next": "string",
+    "last": "string"
   },
-  "meta": {}
+  "meta": {
+    "totalRecords": 0,
+    "totalPages": 0
+  }
 }
 ```
 
@@ -1375,7 +1364,7 @@ Obtain the details of any concessions or arrangements applied to a specific telc
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|accountId|path|string|mandatory|ID of a specific account to obtain data for.  This is a tokenised ID previously obtained from the Account List end point. In accordance with [CDR ID permanence](#id-permanence) requirements|
+|accountId|path|string|mandatory|ID of a specific account to obtain data for. This is a tokenised ID previously obtained from the Account List end point. In accordance with [CDR ID permanence](#id-permanence) requirements|
 |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
 |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
 |x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
@@ -1408,9 +1397,16 @@ Obtain the details of any concessions or arrangements applied to a specific telc
     ]
   },
   "links": {
-    "self": "string"
+    "self": "string",
+    "first": "string",
+    "prev": "string",
+    "next": "string",
+    "last": "string"
   },
-  "meta": {}
+  "meta": {
+    "totalRecords": 0,
+    "totalPages": 0
+  }
 }
 ```
 
@@ -1499,7 +1495,7 @@ Obtain the current balance for a specific account
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|accountId|path|string|mandatory|ID of a specific account to obtain data for.  This is a tokenised ID previously obtained from the Account List end point. In accordance with [CDR ID permanence](#id-permanence) requirements|
+|accountId|path|string|mandatory|ID of a specific account to obtain data for. This is a tokenised ID previously obtained from the Account List end point. In accordance with [CDR ID permanence](#id-permanence) requirements|
 |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
 |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
 |x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
@@ -2055,11 +2051,7 @@ Obtain the invoices for a specific account
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|accountId|path|string|mandatory|ID of a specific account to obtain data for.  This is a tokenised ID previously obtained from the Account List end point. In accordance with [CDR ID permanence](#id-permanence) requirements|
-|newest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with effective date at or before this date.  If absent defaults to current date.  Format is aligned to DateString common type|
-|oldest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with effective date at or after this date. If absent defaults to newest-date minus 24 months.  Format is aligned to DateString common type|
-|page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
-|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request.  Default is 25 (standard pagination)|
+|accountId|path|string|mandatory|ID of a specific account to obtain data for. This is a tokenised ID previously obtained from the Account List end point. In accordance with [CDR ID permanence](#id-permanence) requirements|
 |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
 |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
 |x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
@@ -2073,84 +2065,90 @@ Obtain the invoices for a specific account
 
 ```json
 {
-  "invoices": [
-    {
-      "accountId": "string",
-      "invoiceNumber": "string",
-      "issueDate": "string",
-      "dueDate": "string",
-      "period": {
-        "startDate": "string",
-        "endDate": "string"
-      },
-      "invoiceAmount": "string",
-      "gstAmount": "string",
-      "payOnTimeDiscount": {
-        "discountAmount": "string",
+  "data": {
+    "invoices": [
+      {
+        "accountId": "string",
+        "invoiceNumber": "string",
+        "issueDate": "string",
+        "dueDate": "string",
+        "period": {
+          "startDate": "string",
+          "endDate": "string"
+        },
+        "invoiceAmount": "string",
         "gstAmount": "string",
-        "date": "string"
-      },
-      "balanceAtIssue": "string",
-      "services": [
-        "string"
-      ],
-      "accountCharges": {
-        "totalUsageCharges": "string",
-        "totalOnceOffCharges": "string",
-        "totalDiscounts": "string",
-        "otherCharges": {
-          "amount": "string",
-          "description": "string",
-          "type": "SERVICE"
+        "payOnTimeDiscount": {
+          "discountAmount": "string",
+          "gstAmount": "string",
+          "date": "string"
         },
-        "totalGst": "string"
-      },
-      "accountUsage": {
-        "data": {
-          "upload": 0,
-          "download": 0,
-          "sessions": 0,
-          "amount": "string",
-          "roaming": {
+        "balanceAtIssue": "string",
+        "services": [
+          "string"
+        ],
+        "accountCharges": {
+          "totalUsageCharges": "string",
+          "totalOnceOffCharges": "string",
+          "totalDiscounts": "string",
+          "otherCharges": {
+            "amount": "string",
+            "description": "string",
+            "type": "SERVICE"
+          },
+          "totalGst": "string"
+        },
+        "accountUsage": {
+          "data": {
+            "upload": 0,
             "download": 0,
-            "amount": "string"
+            "sessions": 0,
+            "amount": "string",
+            "roaming": {
+              "download": 0,
+              "amount": "string"
+            }
+          },
+          "voice": {
+            "national": {
+              "duration": "string",
+              "number": 0,
+              "amount": "string"
+            },
+            "international": {
+              "duration": "string",
+              "number": 0,
+              "amount": "string"
+            },
+            "roaming": {
+              "duration": "string",
+              "number": 0,
+              "amount": "string"
+            }
+          },
+          "messaging": {
+            "sms": {
+              "national": 0,
+              "international": 0,
+              "roaming": 0,
+              "amount": "string"
+            },
+            "mms": {
+              "national": 0,
+              "international": 0,
+              "roaming": 0,
+              "amount": "string"
+            }
           }
         },
-        "voice": {
-          "national": {
-            "duration": "string",
-            "number": 0,
-            "amount": "string"
-          },
-          "international": {
-            "duration": "string",
-            "number": 0,
-            "amount": "string"
-          },
-          "roaming": {
-            "duration": "string",
-            "number": 0,
-            "amount": "string"
-          }
-        },
-        "messaging": {
-          "sms": {
-            "national": 0,
-            "international": 0,
-            "roaming": 0,
-            "amount": "string"
-          },
-          "mms": {
-            "national": 0,
-            "international": 0,
-            "roaming": 0,
-            "amount": "string"
-          }
-        }
-      },
-      "paymentStatus": "PAID"
-    }
-  ]
+        "paymentStatus": "PAID"
+      }
+    ]
+  },
+  "links": {
+    "self": "string"
+  },
+  "meta": {}
 }
 ```
 
@@ -2158,7 +2156,7 @@ Obtain the invoices for a specific account
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[TelcoInvoiceListResponse](#schemacdr-telco-apitelcoinvoicelistresponse)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[TelcoInvoiceResponse](#schemacdr-telco-apitelcoinvoiceresponse)|
 |400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ErrorListResponse](#schemacdr-telco-apierrorlistresponse)|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[404 - Unavailable Telco Account](#error-404-unavailable-telco-account)</li><li>[404 - Invalid Telco Account](#error-404-invalid-telco-account)</li></ul>|[ErrorListResponse](#schemacdr-telco-apierrorlistresponse)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ErrorListResponse](#schemacdr-telco-apierrorlistresponse)|
@@ -2258,84 +2256,97 @@ Obtain the invoices for all accounts
 
 ```json
 {
-  "invoices": [
-    {
-      "accountId": "string",
-      "invoiceNumber": "string",
-      "issueDate": "string",
-      "dueDate": "string",
-      "period": {
-        "startDate": "string",
-        "endDate": "string"
-      },
-      "invoiceAmount": "string",
-      "gstAmount": "string",
-      "payOnTimeDiscount": {
-        "discountAmount": "string",
+  "data": {
+    "invoices": [
+      {
+        "accountId": "string",
+        "invoiceNumber": "string",
+        "issueDate": "string",
+        "dueDate": "string",
+        "period": {
+          "startDate": "string",
+          "endDate": "string"
+        },
+        "invoiceAmount": "string",
         "gstAmount": "string",
-        "date": "string"
-      },
-      "balanceAtIssue": "string",
-      "services": [
-        "string"
-      ],
-      "accountCharges": {
-        "totalUsageCharges": "string",
-        "totalOnceOffCharges": "string",
-        "totalDiscounts": "string",
-        "otherCharges": {
-          "amount": "string",
-          "description": "string",
-          "type": "SERVICE"
+        "payOnTimeDiscount": {
+          "discountAmount": "string",
+          "gstAmount": "string",
+          "date": "string"
         },
-        "totalGst": "string"
-      },
-      "accountUsage": {
-        "data": {
-          "upload": 0,
-          "download": 0,
-          "sessions": 0,
-          "amount": "string",
-          "roaming": {
+        "balanceAtIssue": "string",
+        "services": [
+          "string"
+        ],
+        "accountCharges": {
+          "totalUsageCharges": "string",
+          "totalOnceOffCharges": "string",
+          "totalDiscounts": "string",
+          "otherCharges": {
+            "amount": "string",
+            "description": "string",
+            "type": "SERVICE"
+          },
+          "totalGst": "string"
+        },
+        "accountUsage": {
+          "data": {
+            "upload": 0,
             "download": 0,
-            "amount": "string"
+            "sessions": 0,
+            "amount": "string",
+            "roaming": {
+              "download": 0,
+              "amount": "string"
+            }
+          },
+          "voice": {
+            "national": {
+              "duration": "string",
+              "number": 0,
+              "amount": "string"
+            },
+            "international": {
+              "duration": "string",
+              "number": 0,
+              "amount": "string"
+            },
+            "roaming": {
+              "duration": "string",
+              "number": 0,
+              "amount": "string"
+            }
+          },
+          "messaging": {
+            "sms": {
+              "national": 0,
+              "international": 0,
+              "roaming": 0,
+              "amount": "string"
+            },
+            "mms": {
+              "national": 0,
+              "international": 0,
+              "roaming": 0,
+              "amount": "string"
+            }
           }
         },
-        "voice": {
-          "national": {
-            "duration": "string",
-            "number": 0,
-            "amount": "string"
-          },
-          "international": {
-            "duration": "string",
-            "number": 0,
-            "amount": "string"
-          },
-          "roaming": {
-            "duration": "string",
-            "number": 0,
-            "amount": "string"
-          }
-        },
-        "messaging": {
-          "sms": {
-            "national": 0,
-            "international": 0,
-            "roaming": 0,
-            "amount": "string"
-          },
-          "mms": {
-            "national": 0,
-            "international": 0,
-            "roaming": 0,
-            "amount": "string"
-          }
-        }
-      },
-      "paymentStatus": "PAID"
-    }
-  ]
+        "paymentStatus": "PAID"
+      }
+    ]
+  },
+  "links": {
+    "self": "string",
+    "first": "string",
+    "prev": "string",
+    "next": "string",
+    "last": "string"
+  },
+  "meta": {
+    "totalRecords": 0,
+    "totalPages": 0
+  }
 }
 ```
 
@@ -2460,84 +2471,97 @@ Obtain invoices for a specified set of accounts
 
 ```json
 {
-  "invoices": [
-    {
-      "accountId": "string",
-      "invoiceNumber": "string",
-      "issueDate": "string",
-      "dueDate": "string",
-      "period": {
-        "startDate": "string",
-        "endDate": "string"
-      },
-      "invoiceAmount": "string",
-      "gstAmount": "string",
-      "payOnTimeDiscount": {
-        "discountAmount": "string",
+  "data": {
+    "invoices": [
+      {
+        "accountId": "string",
+        "invoiceNumber": "string",
+        "issueDate": "string",
+        "dueDate": "string",
+        "period": {
+          "startDate": "string",
+          "endDate": "string"
+        },
+        "invoiceAmount": "string",
         "gstAmount": "string",
-        "date": "string"
-      },
-      "balanceAtIssue": "string",
-      "services": [
-        "string"
-      ],
-      "accountCharges": {
-        "totalUsageCharges": "string",
-        "totalOnceOffCharges": "string",
-        "totalDiscounts": "string",
-        "otherCharges": {
-          "amount": "string",
-          "description": "string",
-          "type": "SERVICE"
+        "payOnTimeDiscount": {
+          "discountAmount": "string",
+          "gstAmount": "string",
+          "date": "string"
         },
-        "totalGst": "string"
-      },
-      "accountUsage": {
-        "data": {
-          "upload": 0,
-          "download": 0,
-          "sessions": 0,
-          "amount": "string",
-          "roaming": {
+        "balanceAtIssue": "string",
+        "services": [
+          "string"
+        ],
+        "accountCharges": {
+          "totalUsageCharges": "string",
+          "totalOnceOffCharges": "string",
+          "totalDiscounts": "string",
+          "otherCharges": {
+            "amount": "string",
+            "description": "string",
+            "type": "SERVICE"
+          },
+          "totalGst": "string"
+        },
+        "accountUsage": {
+          "data": {
+            "upload": 0,
             "download": 0,
-            "amount": "string"
+            "sessions": 0,
+            "amount": "string",
+            "roaming": {
+              "download": 0,
+              "amount": "string"
+            }
+          },
+          "voice": {
+            "national": {
+              "duration": "string",
+              "number": 0,
+              "amount": "string"
+            },
+            "international": {
+              "duration": "string",
+              "number": 0,
+              "amount": "string"
+            },
+            "roaming": {
+              "duration": "string",
+              "number": 0,
+              "amount": "string"
+            }
+          },
+          "messaging": {
+            "sms": {
+              "national": 0,
+              "international": 0,
+              "roaming": 0,
+              "amount": "string"
+            },
+            "mms": {
+              "national": 0,
+              "international": 0,
+              "roaming": 0,
+              "amount": "string"
+            }
           }
         },
-        "voice": {
-          "national": {
-            "duration": "string",
-            "number": 0,
-            "amount": "string"
-          },
-          "international": {
-            "duration": "string",
-            "number": 0,
-            "amount": "string"
-          },
-          "roaming": {
-            "duration": "string",
-            "number": 0,
-            "amount": "string"
-          }
-        },
-        "messaging": {
-          "sms": {
-            "national": 0,
-            "international": 0,
-            "roaming": 0,
-            "amount": "string"
-          },
-          "mms": {
-            "national": 0,
-            "international": 0,
-            "roaming": 0,
-            "amount": "string"
-          }
-        }
-      },
-      "paymentStatus": "PAID"
-    }
-  ]
+        "paymentStatus": "PAID"
+      }
+    ]
+  },
+  "links": {
+    "self": "string",
+    "first": "string",
+    "prev": "string",
+    "next": "string",
+    "last": "string"
+  },
+  "meta": {
+    "totalRecords": 0,
+    "totalPages": 0
+  }
 }
 ```
 
@@ -2626,7 +2650,7 @@ Obtain the billing transactions for a specific account
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|accountId|path|string|mandatory|ID of a specific account to obtain data for.  This is a tokenised ID previously obtained from the Account List end point. In accordance with [CDR ID permanence](#id-permanence) requirements|
+|accountId|path|string|mandatory|ID of a specific account to obtain data for. This is a tokenised ID previously obtained from the Account List end point. In accordance with [CDR ID permanence](#id-permanence) requirements|
 |newest-time|query|[DateTimeString](#common-field-types)|optional|Constrain the request to records with effective time at or before this date/time.  If absent defaults to current date/time.  Format is aligned to DateTimeString common type|
 |oldest-time|query|[DateTimeString](#common-field-types)|optional|Constrain the request to records with effective time at or after this date/time. If absent defaults to newest-time minus 12 months.  Format is aligned to DateTimeString common type|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
@@ -3122,7 +3146,7 @@ To perform this operation, you must be authenticated and authorised with the fol
             "name": "string",
             "description": "string",
             "period": "string",
-            "chargeAmount": "string"
+            "amount": "string"
           }
         ],
         "thirdPartyAgentId": "string",
@@ -3191,7 +3215,7 @@ To perform this operation, you must be authenticated and authorised with the fol
         "name": "string",
         "description": "string",
         "period": "string",
-        "chargeAmount": "string"
+        "amount": "string"
       }
     ],
     "thirdPartyAgentId": "string",
@@ -3364,16 +3388,9 @@ To perform this operation, you must be authenticated and authorised with the fol
     ]
   },
   "links": {
-    "self": "string",
-    "first": "string",
-    "prev": "string",
-    "next": "string",
-    "last": "string"
+    "self": "string"
   },
-  "meta": {
-    "totalRecords": 0,
-    "totalPages": 0
-  }
+  "meta": {}
 }
 
 ```
@@ -3383,8 +3400,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |Name|Type|Required|Description|
 |---|---|---|---|
 |data|[TelcoAccountUsage](#schemacdr-telco-apitelcoaccountusage)|mandatory|none|
-|links|[LinksPaginated](#schemacdr-telco-apilinkspaginated)|mandatory|none|
-|meta|[MetaPaginated](#schemacdr-telco-apimetapaginated)|mandatory|none|
+|links|[Links](#schemacdr-telco-apilinks)|mandatory|none|
+|meta|[Meta](#schemacdr-telco-apimeta)|mandatory|none|
 
 <h3 class="schema-toc" id="tocStelcoserviceusageresponse">TelcoServiceUsageResponse</h3>
 
@@ -3443,16 +3460,9 @@ To perform this operation, you must be authenticated and authorised with the fol
     }
   },
   "links": {
-    "self": "string",
-    "first": "string",
-    "prev": "string",
-    "next": "string",
-    "last": "string"
+    "self": "string"
   },
-  "meta": {
-    "totalRecords": 0,
-    "totalPages": 0
-  }
+  "meta": {}
 }
 
 ```
@@ -3462,8 +3472,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |Name|Type|Required|Description|
 |---|---|---|---|
 |data|[TelcoServiceUsage](#schemacdr-telco-apitelcoserviceusage)|mandatory|none|
-|links|[LinksPaginated](#schemacdr-telco-apilinkspaginated)|mandatory|none|
-|meta|[MetaPaginated](#schemacdr-telco-apimetapaginated)|mandatory|none|
+|links|[Links](#schemacdr-telco-apilinks)|mandatory|none|
+|meta|[Meta](#schemacdr-telco-apimeta)|mandatory|none|
 
 <h3 class="schema-toc" id="tocStelcoserviceusagelistresponse">TelcoServiceUsageListResponse</h3>
 
@@ -3640,18 +3650,7 @@ To perform this operation, you must be authenticated and authorised with the fol
               "period": "string"
             }
           ]
-        },
-        "authorisedContacts": [
-          {
-            "firstName": "string",
-            "lastName": "string",
-            "middleNames": [
-              "string"
-            ],
-            "prefix": "string",
-            "suffix": "string"
-          }
-        ]
+        }
       }
     ]
   },
@@ -3667,30 +3666,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|data|any|mandatory|none|
-
-*allOf*
-
-|Name|Type|Required|Description|
-|---|---|---|---|
-|» *anonymous*|[TelcoAccountBase](#schemacdr-telco-apitelcoaccountbase)|mandatory|none|
-
-*and*
-
-|Name|Type|Required|Description|
-|---|---|---|---|
-|» *anonymous*|[TelcoAccount](#schemacdr-telco-apitelcoaccount)|mandatory|The array of plans containing services and associated plan details|
-
-*and*
-
-|Name|Type|Required|Description|
-|---|---|---|---|
-|» *anonymous*|[TelcoAccountDetail](#schemacdr-telco-apitelcoaccountdetail)|mandatory|The array of plans containing services and associated plan details|
-
-*continued*
-
-|Name|Type|Required|Description|
-|---|---|---|---|
+|data|[TelcoAccountDetailResponseData](#schemacdr-telco-apitelcoaccountdetailresponsedata)|mandatory|none|
 |links|[Links](#schemacdr-telco-apilinks)|mandatory|none|
 |meta|[Meta](#schemacdr-telco-apimeta)|mandatory|none|
 
@@ -3732,9 +3708,16 @@ To perform this operation, you must be authenticated and authorised with the fol
     ]
   },
   "links": {
-    "self": "string"
+    "self": "string",
+    "first": "string",
+    "prev": "string",
+    "next": "string",
+    "last": "string"
   },
-  "meta": {}
+  "meta": {
+    "totalRecords": 0,
+    "totalPages": 0
+  }
 }
 
 ```
@@ -3744,8 +3727,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |Name|Type|Required|Description|
 |---|---|---|---|
 |data|[TelcoPaymentScheduleResponseData](#schemacdr-telco-apitelcopaymentscheduleresponsedata)|mandatory|none|
-|links|[Links](#schemacdr-telco-apilinks)|mandatory|none|
-|meta|[Meta](#schemacdr-telco-apimeta)|mandatory|none|
+|links|[LinksPaginated](#schemacdr-telco-apilinkspaginated)|mandatory|none|
+|meta|[MetaPaginated](#schemacdr-telco-apimetapaginated)|mandatory|none|
 
 <h3 class="schema-toc" id="tocStelcoconcessionsresponse">TelcoConcessionsResponse</h3>
 
@@ -3772,9 +3755,16 @@ To perform this operation, you must be authenticated and authorised with the fol
     ]
   },
   "links": {
-    "self": "string"
+    "self": "string",
+    "first": "string",
+    "prev": "string",
+    "next": "string",
+    "last": "string"
   },
-  "meta": {}
+  "meta": {
+    "totalRecords": 0,
+    "totalPages": 0
+  }
 }
 
 ```
@@ -3784,8 +3774,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |Name|Type|Required|Description|
 |---|---|---|---|
 |data|[TelcoConcessionsResponseData](#schemacdr-telco-apitelcoconcessionsresponsedata)|mandatory|none|
-|links|[Links](#schemacdr-telco-apilinks)|mandatory|none|
-|meta|[Meta](#schemacdr-telco-apimeta)|mandatory|none|
+|links|[LinksPaginated](#schemacdr-telco-apilinkspaginated)|mandatory|none|
+|meta|[MetaPaginated](#schemacdr-telco-apimetapaginated)|mandatory|none|
 
 <h3 class="schema-toc" id="tocStelcobalancelistresponse">TelcoBalanceListResponse</h3>
 
@@ -3882,7 +3872,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|data|[TelcoBalanceListResponseBalances](#schemacdr-telco-apitelcobalancelistresponsebalances)|mandatory|none|
+|data|[TelcoBalanceListResponseData](#schemacdr-telco-apitelcobalancelistresponsedata)|mandatory|none|
 |links|[LinksPaginated](#schemacdr-telco-apilinkspaginated)|mandatory|none|
 |meta|[MetaPaginated](#schemacdr-telco-apimetapaginated)|mandatory|none|
 
@@ -4104,7 +4094,7 @@ To perform this operation, you must be authenticated and authorised with the fol
       "name": "string",
       "description": "string",
       "period": "string",
-      "chargeAmount": "string"
+      "amount": "string"
     }
   ],
   "thirdPartyAgentId": "string",
@@ -4131,10 +4121,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 |lastUpdated|[DateTimeString](#common-field-types)|optional|The last date and time that the information for this plan was changed (or the creation date for the plan if it has never been altered)|
 |displayName|string|optional|The display name of the product|
 |description|string|optional|A description of the product|
-|type|string|mandatory|The type of product|
+|type|string|mandatory|The type of product. [MOBILE](https://www.legislation.gov.au/Details/C2022C00170/Html/Volume_1#_Toc95898745) service or BROADBAND fixed internet service|
 |purpose|string|optional|The purpose type of the product. If absent, then the value PERSONAL is assumed|
 |billingType|string|mandatory|The type of product|
-|contract|[TelcoContract](#schemacdr-telco-apitelcocontract)|conditional|Summary of the contract details. Required if a contract is required|
+|contract|[TelcoContract](#schemacdr-telco-apitelcocontract)|conditional|Summary of the contract details. Mandatory if the billing type is POST_PAID and a contract agreement is required with the service provider for the plan|
 |bundle|boolean|optional|Required if part of a bundle. If not present FALSE is assumed|
 |brand|string|mandatory|The ID of the brand under which this product is offered|
 |brandName|string|mandatory|The display name of the brand under which this product is offered|
@@ -4172,14 +4162,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-*Summary of the contract details. Required if a contract is required*
+*Summary of the contract details. Mandatory if the billing type is POST_PAID and a contract agreement is required with the service provider for the plan*
 
 ### Properties
 
 |Name|Type|Required|Description|
 |---|---|---|---|
 |name|string|mandatory|Name of the contract|
-|description|string|optional|Description if the contract|
+|description|string|optional|Description of the contract|
 |duration|[Number](#common-field-types)|mandatory|Minimum contract duration in months|
 |contractUri|[URIString](#common-field-types)|optional|URI of the contract conditions|
 
@@ -4270,7 +4260,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |Name|Type|Required|Description|
 |---|---|---|---|
 |accountId|string|mandatory|Tokenised ID of the account. In accordance with [CDR ID permanence](#id-permanence) requirements|
-|services|[[TelcoAccountUsageServices](#schemacdr-telco-apitelcoaccountusageservices)]|optional|List of services that are part of the account|
+|services|[[TelcoAccountUsageServices](#schemacdr-telco-apitelcoaccountusageservices)]|mandatory|List of services that are part of the account|
 
 <h3 class="schema-toc" id="tocStelcoserviceusage">TelcoServiceUsage</h3>
 
@@ -4377,9 +4367,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 |openStatus|CLOSED|
 |openStatus|OPEN|
 
-<h3 class="schema-toc" id="tocStelcoaccountresponse">TelcoAccountResponse</h3>
+<h3 class="schema-toc" id="tocStelcoaccountresponsedata">TelcoAccountResponseData</h3>
 
-<a id="schemacdr-telco-apitelcoaccountresponse"></a>
+<a id="schemacdr-telco-apitelcoaccountresponsedata"></a>
 
 ```json
 {
@@ -4422,6 +4412,69 @@ To perform this operation, you must be authenticated and authorised with the fol
 |Name|Type|Required|Description|
 |---|---|---|---|
 |*anonymous*|[TelcoAccount](#schemacdr-telco-apitelcoaccount)|mandatory|The array of plans containing services and associated plan details|
+
+<h3 class="schema-toc" id="tocStelcoaccountdetailresponsedata">TelcoAccountDetailResponseData</h3>
+
+<a id="schemacdr-telco-apitelcoaccountdetailresponsedata"></a>
+
+```json
+{
+  "accountId": "string",
+  "accountNumber": "string",
+  "displayName": "string",
+  "creationDate": "string",
+  "lastUpdated": "string",
+  "brand": "string",
+  "openStatus": "CLOSED",
+  "plans": [
+    {
+      "nickname": "string",
+      "type": "MOBILE",
+      "billingType": "PRE_PAID",
+      "serviceIds": [
+        "string"
+      ],
+      "planOverview": {
+        "displayName": "string",
+        "startDate": "string",
+        "endDate": "string"
+      },
+      "planDetail": {
+        "charges": [
+          {
+            "displayName": "string",
+            "description": "string",
+            "minimumValue": "string",
+            "maximumValue": "string",
+            "period": "string"
+          }
+        ]
+      }
+    }
+  ]
+}
+
+```
+
+### Properties
+
+*allOf*
+
+|Name|Type|Required|Description|
+|---|---|---|---|
+|*anonymous*|[TelcoAccountBase](#schemacdr-telco-apitelcoaccountbase)|mandatory|none|
+
+*and*
+
+|Name|Type|Required|Description|
+|---|---|---|---|
+|*anonymous*|[TelcoAccount](#schemacdr-telco-apitelcoaccount)|mandatory|The array of plans containing services and associated plan details|
+
+*and*
+
+|Name|Type|Required|Description|
+|---|---|---|---|
+|*anonymous*|[TelcoAccountDetail](#schemacdr-telco-apitelcoaccountdetail)|mandatory|The array of plans containing services and associated plan details|
 
 <h3 class="schema-toc" id="tocStelcopaymentschedule">TelcoPaymentSchedule</h3>
 
@@ -5381,7 +5434,7 @@ To perform this operation, you must be authenticated and authorised with the fol
           "name": "string",
           "description": "string",
           "period": "string",
-          "chargeAmount": "string"
+          "amount": "string"
         }
       ],
       "thirdPartyAgentId": "string",
@@ -5409,6 +5462,89 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="tocStelcousagelistresponse">TelcoUsageListResponse</h3>
 
 <a id="schemacdr-telco-apitelcousagelistresponse"></a>
+
+```json
+{
+  "data": {
+    "accounts": [
+      {
+        "accountId": "string",
+        "services": [
+          {
+            "service": {
+              "serviceId": "string",
+              "displayName": "string",
+              "phoneNumber": "string",
+              "startDate": "string",
+              "endDate": "string",
+              "usage": {
+                "data": {
+                  "upload": 0,
+                  "download": 0,
+                  "sessions": 0,
+                  "amount": "string",
+                  "roaming": {
+                    "download": 0,
+                    "amount": "string"
+                  }
+                },
+                "voice": {
+                  "national": {
+                    "duration": "string",
+                    "number": 0,
+                    "amount": "string"
+                  },
+                  "international": {
+                    "duration": "string",
+                    "number": 0,
+                    "amount": "string"
+                  },
+                  "roaming": {
+                    "duration": "string",
+                    "number": 0,
+                    "amount": "string"
+                  }
+                },
+                "messaging": {
+                  "sms": {
+                    "national": 0,
+                    "international": 0,
+                    "roaming": 0,
+                    "amount": "string"
+                  },
+                  "mms": {
+                    "national": 0,
+                    "international": 0,
+                    "roaming": 0,
+                    "amount": "string"
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "links": {
+    "self": "string"
+  },
+  "meta": {}
+}
+
+```
+
+### Properties
+
+|Name|Type|Required|Description|
+|---|---|---|---|
+|data|[TelcoUsageListResponseData](#schemacdr-telco-apitelcousagelistresponsedata)|mandatory|none|
+|links|[Links](#schemacdr-telco-apilinks)|mandatory|none|
+|meta|[Meta](#schemacdr-telco-apimeta)|mandatory|none|
+
+<h3 class="schema-toc" id="tocStelcousagelistresponsedata">TelcoUsageListResponseData</h3>
+
+<a id="schemacdr-telco-apitelcousagelistresponsedata"></a>
 
 ```json
 {
@@ -5521,7 +5657,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|accounts|[[TelcoAccountResponse](#schemacdr-telco-apitelcoaccountresponse)]|mandatory|Array of accounts|
+|accounts|[[TelcoAccountResponseData](#schemacdr-telco-apitelcoaccountresponsedata)]|mandatory|Array of accounts|
 
 <h3 class="schema-toc" id="tocStelcopaymentscheduleresponsedata">TelcoPaymentScheduleResponseData</h3>
 
@@ -5600,9 +5736,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 |---|---|---|---|
 |concessions|[[TelcoConcession](#schemacdr-telco-apitelcoconcession)]|mandatory|Array may be empty if no concessions exist|
 
-<h3 class="schema-toc" id="tocStelcobalancelistresponsebalances">TelcoBalanceListResponseBalances</h3>
+<h3 class="schema-toc" id="tocStelcobalancelistresponsedata">TelcoBalanceListResponseData</h3>
 
-<a id="schemacdr-telco-apitelcobalancelistresponsebalances"></a>
+<a id="schemacdr-telco-apitelcobalancelistresponsedata"></a>
 
 ```json
 {
@@ -5765,9 +5901,220 @@ To perform this operation, you must be authenticated and authorised with the fol
 |accountId|string|optional|The ID of the account. In accordance with [CDR ID permanence](#id-permanence) requirements|
 |balance|[TelcoBalance](#schemacdr-telco-apitelcobalance)|optional|Object containing account service usage summary|
 
+<h3 class="schema-toc" id="tocStelcoinvoiceresponse">TelcoInvoiceResponse</h3>
+
+<a id="schemacdr-telco-apitelcoinvoiceresponse"></a>
+
+```json
+{
+  "data": {
+    "invoices": [
+      {
+        "accountId": "string",
+        "invoiceNumber": "string",
+        "issueDate": "string",
+        "dueDate": "string",
+        "period": {
+          "startDate": "string",
+          "endDate": "string"
+        },
+        "invoiceAmount": "string",
+        "gstAmount": "string",
+        "payOnTimeDiscount": {
+          "discountAmount": "string",
+          "gstAmount": "string",
+          "date": "string"
+        },
+        "balanceAtIssue": "string",
+        "services": [
+          "string"
+        ],
+        "accountCharges": {
+          "totalUsageCharges": "string",
+          "totalOnceOffCharges": "string",
+          "totalDiscounts": "string",
+          "otherCharges": {
+            "amount": "string",
+            "description": "string",
+            "type": "SERVICE"
+          },
+          "totalGst": "string"
+        },
+        "accountUsage": {
+          "data": {
+            "upload": 0,
+            "download": 0,
+            "sessions": 0,
+            "amount": "string",
+            "roaming": {
+              "download": 0,
+              "amount": "string"
+            }
+          },
+          "voice": {
+            "national": {
+              "duration": "string",
+              "number": 0,
+              "amount": "string"
+            },
+            "international": {
+              "duration": "string",
+              "number": 0,
+              "amount": "string"
+            },
+            "roaming": {
+              "duration": "string",
+              "number": 0,
+              "amount": "string"
+            }
+          },
+          "messaging": {
+            "sms": {
+              "national": 0,
+              "international": 0,
+              "roaming": 0,
+              "amount": "string"
+            },
+            "mms": {
+              "national": 0,
+              "international": 0,
+              "roaming": 0,
+              "amount": "string"
+            }
+          }
+        },
+        "paymentStatus": "PAID"
+      }
+    ]
+  },
+  "links": {
+    "self": "string"
+  },
+  "meta": {}
+}
+
+```
+
+### Properties
+
+|Name|Type|Required|Description|
+|---|---|---|---|
+|data|[TelcoInvoiceListResponseData](#schemacdr-telco-apitelcoinvoicelistresponsedata)|mandatory|none|
+|links|[Links](#schemacdr-telco-apilinks)|mandatory|none|
+|meta|[Meta](#schemacdr-telco-apimeta)|mandatory|none|
+
 <h3 class="schema-toc" id="tocStelcoinvoicelistresponse">TelcoInvoiceListResponse</h3>
 
 <a id="schemacdr-telco-apitelcoinvoicelistresponse"></a>
+
+```json
+{
+  "data": {
+    "invoices": [
+      {
+        "accountId": "string",
+        "invoiceNumber": "string",
+        "issueDate": "string",
+        "dueDate": "string",
+        "period": {
+          "startDate": "string",
+          "endDate": "string"
+        },
+        "invoiceAmount": "string",
+        "gstAmount": "string",
+        "payOnTimeDiscount": {
+          "discountAmount": "string",
+          "gstAmount": "string",
+          "date": "string"
+        },
+        "balanceAtIssue": "string",
+        "services": [
+          "string"
+        ],
+        "accountCharges": {
+          "totalUsageCharges": "string",
+          "totalOnceOffCharges": "string",
+          "totalDiscounts": "string",
+          "otherCharges": {
+            "amount": "string",
+            "description": "string",
+            "type": "SERVICE"
+          },
+          "totalGst": "string"
+        },
+        "accountUsage": {
+          "data": {
+            "upload": 0,
+            "download": 0,
+            "sessions": 0,
+            "amount": "string",
+            "roaming": {
+              "download": 0,
+              "amount": "string"
+            }
+          },
+          "voice": {
+            "national": {
+              "duration": "string",
+              "number": 0,
+              "amount": "string"
+            },
+            "international": {
+              "duration": "string",
+              "number": 0,
+              "amount": "string"
+            },
+            "roaming": {
+              "duration": "string",
+              "number": 0,
+              "amount": "string"
+            }
+          },
+          "messaging": {
+            "sms": {
+              "national": 0,
+              "international": 0,
+              "roaming": 0,
+              "amount": "string"
+            },
+            "mms": {
+              "national": 0,
+              "international": 0,
+              "roaming": 0,
+              "amount": "string"
+            }
+          }
+        },
+        "paymentStatus": "PAID"
+      }
+    ]
+  },
+  "links": {
+    "self": "string",
+    "first": "string",
+    "prev": "string",
+    "next": "string",
+    "last": "string"
+  },
+  "meta": {
+    "totalRecords": 0,
+    "totalPages": 0
+  }
+}
+
+```
+
+### Properties
+
+|Name|Type|Required|Description|
+|---|---|---|---|
+|data|[TelcoInvoiceListResponseData](#schemacdr-telco-apitelcoinvoicelistresponsedata)|mandatory|none|
+|links|[LinksPaginated](#schemacdr-telco-apilinkspaginated)|mandatory|none|
+|meta|[MetaPaginated](#schemacdr-telco-apimetapaginated)|mandatory|none|
+
+<h3 class="schema-toc" id="tocStelcoinvoicelistresponsedata">TelcoInvoiceListResponseData</h3>
+
+<a id="schemacdr-telco-apitelcoinvoicelistresponsedata"></a>
 
 ```json
 {
@@ -5975,7 +6322,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   "name": "string",
   "description": "string",
   "period": "string",
-  "chargeAmount": "string"
+  "amount": "string"
 }
 
 ```
@@ -5987,7 +6334,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |name|string|mandatory|The display name of the pricing|
 |description|string|mandatory|The description of the pricing|
 |period|[ExternalRef](#common-field-types)|optional|The duration that occurs on a pricing schedule indicates the frequency. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
-|chargeAmount|[AmountString](#common-field-types)|mandatory|The amount charged for the duration period|
+|amount|[AmountString](#common-field-types)|mandatory|The amount charged for the duration period|
 
 <h3 class="schema-toc" id="tocStelcoadditionalinformation">TelcoAdditionalInformation</h3>
 
@@ -6418,9 +6765,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 |startDate|[DateString](#common-field-types)|mandatory|The start date of the applicability of this plan|
 |endDate|[DateString](#common-field-types)|optional|The end date of the applicability of this plan|
 
-<h3 class="schema-toc" id="tocStelcoaccountplans">TelcoAccountPlans</h3>
+<h3 class="schema-toc" id="tocStelcoaccountplan">TelcoAccountPlan</h3>
 
-<a id="schemacdr-telco-apitelcoaccountplans"></a>
+<a id="schemacdr-telco-apitelcoaccountplan"></a>
 
 ```json
 {
@@ -6444,10 +6791,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 |Name|Type|Required|Description|
 |---|---|---|---|
 |nickname|string|optional|Optional display name for the plan provided by the customer to help differentiate multiple plans|
-|type|string|optional|The type of the plan|
-|billingType|string|optional|The billing type of then plan|
+|type|string|mandatory|The type of the plan. The type of plan. A [MOBILE](https://www.legislation.gov.au/Details/C2022C00170/Html/Volume_1#_Toc95898745) service or BROADBAND fixed internet service|
+|billingType|string|mandatory|The billing type of then plan|
 |serviceIds|[string]|mandatory|The serviceId representing a unique service identifier such as a mobile [MSISDN](https://www.etsi.org/deliver/etsi_gts/03/0303/05.00.00_60/gsmts_0303v050000p.pdf), [FNN](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf) or internet service e.g [NBN AVC Service ID](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf). In accordance with [CDR ID permanence](#id-permanence) requirement|
-|planOverview|[TelcoAccountPlanOverview](#schemacdr-telco-apitelcoaccountplanoverview)|conditional|Mandatory if openStatus is OPEN|
+|planOverview|[TelcoAccountPlanOverview](#schemacdr-telco-apitelcoaccountplanoverview)|mandatory|Mandatory if openStatus is OPEN|
 
 #### Enumerated Values
 
@@ -6491,23 +6838,25 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|plans|[[TelcoAccountPlans](#schemacdr-telco-apitelcoaccountplans)]|mandatory|The array of plans containing service and associated plan details|
+|plans|[[TelcoAccountPlan](#schemacdr-telco-apitelcoaccountplan)]|mandatory|The array of plans containing service and associated plan details|
 
-<h3 class="schema-toc" id="tocStelcoaccountdetailplandetail">TelcoAccountDetailPlanDetail</h3>
+<h3 class="schema-toc" id="tocStelcoaccountplandetail">TelcoAccountPlanDetail</h3>
 
-<a id="schemacdr-telco-apitelcoaccountdetailplandetail"></a>
+<a id="schemacdr-telco-apitelcoaccountplandetail"></a>
 
 ```json
 {
-  "charges": [
-    {
-      "displayName": "string",
-      "description": "string",
-      "minimumValue": "string",
-      "maximumValue": "string",
-      "period": "string"
-    }
-  ]
+  "planDetail": {
+    "charges": [
+      {
+        "displayName": "string",
+        "description": "string",
+        "minimumValue": "string",
+        "maximumValue": "string",
+        "period": "string"
+      }
+    ]
+  }
 }
 
 ```
@@ -6518,7 +6867,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|charges|[[TelcoProductDetailMeteringCharges](#schemacdr-telco-apitelcoproductdetailmeteringcharges)]|mandatory|Charges for metering included in the plan|
+|planDetail|object|mandatory|none|
+|» charges|[[TelcoProductDetailMeteringCharges](#schemacdr-telco-apitelcoproductdetailmeteringcharges)]|mandatory|Charges for metering included in the plan|
 
 <h3 class="schema-toc" id="tocStelcoaccountdetailauthorisedcontacts">TelcoAccountDetailAuthorisedContacts</h3>
 
@@ -6547,57 +6897,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 |prefix|string|optional|Also known as title or salutation. The prefix to the name (e.g. Mr, Mrs, Ms, Miss, Sir, etc)|
 |suffix|string|optional|Used for a trailing suffix to the name (e.g. Jr)|
 
-<h3 class="schema-toc" id="tocStelcoaccountdetailplans">TelcoAccountDetailPlans</h3>
-
-<a id="schemacdr-telco-apitelcoaccountdetailplans"></a>
-
-```json
-{
-  "nickname": "string",
-  "serviceIds": [
-    "string"
-  ],
-  "planOverview": {
-    "displayName": "string",
-    "startDate": "string",
-    "endDate": "string"
-  },
-  "planDetail": {
-    "charges": [
-      {
-        "displayName": "string",
-        "description": "string",
-        "minimumValue": "string",
-        "maximumValue": "string",
-        "period": "string"
-      }
-    ]
-  },
-  "authorisedContacts": [
-    {
-      "firstName": "string",
-      "lastName": "string",
-      "middleNames": [
-        "string"
-      ],
-      "prefix": "string",
-      "suffix": "string"
-    }
-  ]
-}
-
-```
-
-### Properties
-
-|Name|Type|Required|Description|
-|---|---|---|---|
-|nickname|string|optional|Optional display name for the plan provided by the customer to help differentiate multiple plans|
-|serviceIds|[string]|mandatory|The serviceId representing a unique service identifier such as a mobile [MSISDN](https://www.etsi.org/deliver/etsi_gts/03/0303/05.00.00_60/gsmts_0303v050000p.pdf), [FNN](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf) or internet service e.g [NBN AVC Service ID](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf). In accordance with [CDR ID permanence](#id-permanence) requirement|
-|planOverview|[TelcoAccountPlanOverview](#schemacdr-telco-apitelcoaccountplanoverview)|conditional|Mandatory if openStatus is OPEN|
-|planDetail|[TelcoAccountDetailPlanDetail](#schemacdr-telco-apitelcoaccountdetailplandetail)|conditional|Detail on the plan applicable to this account. Mandatory if openStatus is OPEN|
-|authorisedContacts|[[TelcoAccountDetailAuthorisedContacts](#schemacdr-telco-apitelcoaccountdetailauthorisedcontacts)]|optional|An array of additional contacts that are authorised to act on this account|
-
 <h3 class="schema-toc" id="tocStelcoaccountdetail">TelcoAccountDetail</h3>
 
 <a id="schemacdr-telco-apitelcoaccountdetail"></a>
@@ -6607,6 +6906,8 @@ To perform this operation, you must be authenticated and authorised with the fol
   "plans": [
     {
       "nickname": "string",
+      "type": "MOBILE",
+      "billingType": "PRE_PAID",
       "serviceIds": [
         "string"
       ],
@@ -6625,18 +6926,7 @@ To perform this operation, you must be authenticated and authorised with the fol
             "period": "string"
           }
         ]
-      },
-      "authorisedContacts": [
-        {
-          "firstName": "string",
-          "lastName": "string",
-          "middleNames": [
-            "string"
-          ],
-          "prefix": "string",
-          "suffix": "string"
-        }
-      ]
+      }
     }
   ]
 }
@@ -6649,7 +6939,19 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|plans|[[TelcoAccountDetailPlans](#schemacdr-telco-apitelcoaccountdetailplans)]|mandatory|The array of plans containing services and associated plan details|
+|plans|[allOf]|mandatory|The array of plans containing services and associated plan details|
+
+*allOf*
+
+|Name|Type|Required|Description|
+|---|---|---|---|
+|» *anonymous*|[TelcoAccountPlan](#schemacdr-telco-apitelcoaccountplan)|mandatory|none|
+
+*and*
+
+|Name|Type|Required|Description|
+|---|---|---|---|
+|» *anonymous*|[TelcoAccountPlanDetail](#schemacdr-telco-apitelcoaccountplandetail)|mandatory|Detail on the plan applicable to this account. Mandatory if openStatus is OPEN|
 
 <h3 class="schema-toc" id="tocStelcopaymentschedulecarddebit">TelcoPaymentScheduleCardDebit</h3>
 
