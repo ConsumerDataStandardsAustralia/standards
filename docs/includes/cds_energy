@@ -2314,7 +2314,7 @@ x-cds-client-headers: string
 <td>» meta</td>
 <td>body</td>
 <td><a href="#schemacdr-energy-apimeta">Meta</a></td>
-<td>mandatory</td>
+<td>optional</td>
 <td>none</td>
 </tr>
 </tbody></table>
@@ -3185,7 +3185,7 @@ x-cds-client-headers: string
 <td>» meta</td>
 <td>body</td>
 <td><a href="#schemacdr-energy-apimeta">Meta</a></td>
-<td>mandatory</td>
+<td>optional</td>
 <td>none</td>
 </tr>
 </tbody></table>
@@ -5315,7 +5315,7 @@ x-cds-client-headers: string
 <td>» meta</td>
 <td>body</td>
 <td><a href="#schemacdr-energy-apimeta">Meta</a></td>
-<td>mandatory</td>
+<td>optional</td>
 <td>none</td>
 </tr>
 </tbody></table>
@@ -6229,7 +6229,7 @@ x-cds-client-headers: string
 <td>» meta</td>
 <td>body</td>
 <td><a href="#schemacdr-energy-apimeta">Meta</a></td>
-<td>mandatory</td>
+<td>optional</td>
 <td>none</td>
 </tr>
 </tbody></table>
@@ -7252,7 +7252,7 @@ x-cds-client-headers: string
 <td>» meta</td>
 <td>body</td>
 <td><a href="#schemacdr-energy-apimeta">Meta</a></td>
-<td>mandatory</td>
+<td>optional</td>
 <td>none</td>
 </tr>
 </tbody></table>
@@ -8540,7 +8540,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>meta</td>
 <td><a href="#schemacdr-energy-apimeta">Meta</a></td>
-<td>mandatory</td>
+<td>optional</td>
 <td>none</td>
 </tr>
 </tbody></table>
@@ -9029,7 +9029,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>meta</td>
 <td><a href="#schemacdr-energy-apimeta">Meta</a></td>
-<td>mandatory</td>
+<td>optional</td>
 <td>none</td>
 </tr>
 </tbody></table>
@@ -9105,7 +9105,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>meta</td>
 <td><a href="#schemacdr-energy-apimeta">Meta</a></td>
-<td>mandatory</td>
+<td>optional</td>
 <td>none</td>
 </tr>
 </tbody></table>
@@ -9168,7 +9168,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>meta</td>
 <td><a href="#schemacdr-energy-apimeta">Meta</a></td>
-<td>mandatory</td>
+<td>optional</td>
 <td>none</td>
 </tr>
 </tbody></table>
@@ -9288,7 +9288,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>meta</td>
 <td><a href="#schemacdr-energy-apimeta">Meta</a></td>
-<td>mandatory</td>
+<td>optional</td>
 <td>none</td>
 </tr>
 </tbody></table>

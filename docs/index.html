@@ -1776,6 +1776,11 @@ Additional note for v1.22.0: For this version only the delta statements from v1.
 <li>where the standards are specified as binding standards as required by the Consumer Data Right rules for the purposes of s56FA of the legislation, they apply as under contract between a data holder and an accredited data recipient.  The legal effect of binding standards as between data holders and accredited data recipients is fully set out in s56FD and s56FE of the legislation.</li>
 </ul>
 
+<pre class="highlight diff tab-diff"><code><span class="gi">+ Added binding statement in response to legal advice
+</span></code></pre>
+
+<p>Some of these standards will be binding data standards under the Competition and Consumer (Consumer Data Right) Data Standards (No. 1) 2023. See that instrument <a href="https://consumerdatastandards.gov.au/sites/consumerdatastandards.gov.au/files/2023-02/Competition%20and%20Consumer%20%28Consumer%20Data%20Right%29%20Data%20Standards%20%28No.%201%29%202023%20executed.pdf">here</a>. In summary, provisions of these standards (as they exist from time to time) that impose obligations or prohibitions on CDR entities are binding data standards. Provisions included in these standards merely by way of guidance are not binding data standards.</p>
+
 <h2 id='version'>Version</h2>
 
 <p>These standards represent version 1.22.1 of the high level standards.  See the <a href="#versioning">versioning section</a> for more information on how versions are managed in the standard.</p>
@@ -1790,6 +1795,13 @@ Additional note for v1.22.0: For this version only the delta statements from v1.
 
 <p>The table below highlights these areas of the standards.</p>
 
+<pre class="highlight diff tab-diff"><code>Removed obligations more than six months in the past
+
+Reordered FDO entries by applicable date
+
+Corrected some typos
+</code></pre>
+
 <table><thead>
 <tr>
 <th>Section</th>
@@ -1797,96 +1809,6 @@ Additional note for v1.22.0: For this version only the delta statements from v1.
 <th>Applicable Date</th>
 </tr>
 </thead><tbody>
-<tr>
-<td><a href="#error-codes">Standard Error Codes</a></td>
-<td>Data Recipients and Data Holders <strong>MAY</strong> implement the standard error codes from July 1st 2021</td>
-<td>July 1st 2021</td>
-</tr>
-<tr>
-<td><a href="#get-metrics">Get Metrics V2</a></td>
-<td>Version 2 of this end point <strong>MUST</strong> be made available by affected data holders by the end of July 2021</td>
-<td>July 31st 2021</td>
-</tr>
-<tr>
-<td><a href="#get-metrics">Get Metrics V1</a></td>
-<td>Data holders <strong>MAY</strong> obsolete version 1 of this end point from October 31st 2021. Data Holders who go live with consumer data sharing from July 1st 2021 <strong>MAY</strong> go live with only Get Metrics v2 support. The CDR Register <strong>MUST</strong> upgrade their implementation to use version 2 by this time</td>
-<td>October 31st 2021</td>
-</tr>
-<tr>
-<td><a href="#amending-authorisation-standards">Amending Consent</a></td>
-<td>Data Holders <strong>MUST</strong> implement the following standards from November 1st 2021 when a CDR consumer is invited to amend a current authorisation as per rule 4.22A and the ADR has supplied a <code>cdr_arrangement_id</code></td>
-<td>November 1st 2021</td>
-</tr>
-<tr>
-<td><a href="#authorisation-standards">CX Standards: Unavailable Accounts</a></td>
-<td>Data Holders <strong>MAY</strong> implement the following data standards effective from 1 November 2021:<ul><li><strong>Unavailable Accounts:</strong> No accounts can be shown</li><li><strong>Unavailable Accounts:</strong> Authorisation not permitted</li><li><strong>Unavailable Accounts:</strong> Request sharing rights</li></ul></td>
-<td>November 1st 2021</td>
-</tr>
-<tr>
-<td><a href="#withdrawal-standards">CX Standards: Withdrawals</a></td>
-<td>Data Holders <strong>MUST</strong> implement the following data standards effective from 1 February 2022:<ul><li><strong>Withdrawal:</strong> Secondary User Instruction</li></ul></td>
-<td>February 1st 2022</td>
-</tr>
-<tr>
-<td><a href="#error-codes">Standard Error Codes</a></td>
-<td>Data Recipients and Data Holders <strong>MUST</strong> implement the standard error codes from February 1st 2022</td>
-<td>February 1st 2022</td>
-</tr>
-<tr>
-<td><a href="#cdr-arrangement-revocation-end-point">Data Recipient CDR Arrangement Endpoint</a></td>
-<td>From March 31st 2022, Data Recipients <strong>MUST</strong> support &quot;CDR Arrangement JWT&quot; method and &quot;CDR Arrangement Form Parameter&quot; method. <br/>Data Recipients <strong>SHOULD</strong> support the &quot;CDR Arrangement JWT&quot; method before March 31st 2022</td>
-<td>March 31st 2022</td>
-</tr>
-<tr>
-<td><a href="#profile-scope-and-standard-claims-common">Profile Scope Data Language</a></td>
-<td>For new and amended consents and authorisations only, CDR participants <strong>SHOULD</strong> comply with the following standards from 1 February 2022, but <strong>MUST</strong> comply by 1 July 2022:<ul><li>Technical Standards: Revised Claims</li><li>CX Standards: Profile Scope - Data Language Standards</li></ul><strong>Note:</strong> These standards changes <strong>do not</strong> apply to existing consents and authorisations unless they are amended on or following the compliance dates.</td>
-<td>July 1st 2022</td>
-</tr>
-<tr>
-<td><a href="#consumer-experience">CX Standards: Joint Accounts</a></td>
-<td>Data holders <strong>MUST</strong> implement the following data standards from 1 July 2022:<ul><li>Notifications: Alternative notification schedules for joint accounts</li><li>Notifications: Joint account alerts</li><li>Authorisation: Pending status</li><li>Withdrawal: Joint accounts</li></ul></td>
-<td>July 1st 2022</td>
-</tr>
-<tr>
-<td><a href="#security-profile">Information Security profile</a></td>
-<td>FAPI 1.0 adoption is introduced across three phases.<br/><strong>Phase 1: Voluntary FAPI 1.0 support &amp; hygiene enhancements</strong> includes, amongst other changes:<ul><li>Enforces requirements for authorisation code, token and request object use</li><li>Data Holders <strong>MAY</strong> support of FAPI 1.0 Final</li><li>Data Holders <strong>MAY</strong> support of Authorization Code Flow (including <strong><a href="#nref-PKCE">[PKCE]</a></strong> and <strong><a href="#nref-JARM">[JARM]</a></strong>) in conjunction with Hybrid Flow</li></ul></td>
-<td>July 4th 2022</td>
-</tr>
-<tr>
-<td><a href="#get-payee-detail">Get Payee Detail V2</a></td>
-<td>Version 2 of this end point <strong>MUST</strong> be made available by affected data holders by July 31st 2022</td>
-<td>July 31st 2022</td>
-</tr>
-<tr>
-<td><a href="#cdr-arrangement-revocation-end-point">Data Recipient CDR Arrangement Endpoint</a></td>
-<td>From July 31st 2022, Data Holders <strong>MUST</strong> revoke consent using &quot;CDR Arrangement JWT&quot; method. <br/>Data Holders <strong>SHOULD</strong> use the &quot;CDR Arrangement JWT&quot; method from March 31st 2022</td>
-<td>July 31st 2022</td>
-</tr>
-<tr>
-<td><a href="#get-payees">Get Payees V2</a></td>
-<td>Version 2 of this end point <strong>MUST</strong> be made available by affected data holders by July 31st 2022</td>
-<td>July 31st 2022</td>
-</tr>
-<tr>
-<td><a href="#self-signed-jwt-client-authentication">Self-Signed JWT Client Authentication</a></td>
-<td>Until July 31st 2022, Data Recipients <strong>MUST</strong> accept the <a href="#uri-resource-path">Resource Path</a> for the endpoint and the <code>&lt;RecipientBaseURI&gt;</code> as a valid audience value. From July 31st 2022, Data Holders <strong>MUST</strong> use an audience value matching the Resource Path for the endpoint and the Data Recipient <strong>MUST</strong> verify the audience matches the Resource Path for the endpoint.</td>
-<td>July 31st 2022</td>
-</tr>
-<tr>
-<td><a href="#get-payees">Get Payees V1</a></td>
-<td>Data holders <strong>MAY</strong> obsolete version 1 of this end point from August 31st 2022.  Data recipients <strong>MUST</strong> upgrade their implementations to use version 2 by this time</td>
-<td>August 31st 2022</td>
-</tr>
-<tr>
-<td><a href="#get-payee-detail">Get Payee Detail V1</a></td>
-<td>Data holders <strong>MAY</strong> obsolete version 1 of this end point from August 31st 2022.  Data recipients <strong>MUST</strong> upgrade their implementations to use version 2 by this time</td>
-<td>August 31st 2022</td>
-</tr>
-<tr>
-<td><a href="#security-profile">Information Security profile</a></td>
-<td>FAPI 1.0 adoption is introduced across three phases.<br/><strong>Phase 2: FAPI 1.0 Final (Baseline &amp; Advanced)</strong> includes, amongst other changes:<ul><li>Enforces additional requirements for authorisation code, token and request object use</li><li>Enforces PAR-only authorisation request data submission</li><li>Refresh token cycling is not permitted</li><li>Data Holders and Data Recipients <strong>MUST</strong> support FAPI 1.0 Final including <strong><a href="#nref-RFC9126">[RFC9126]</a></strong>, <strong><a href="#nref-RFC7636">[RFC7636]</a></strong> and <strong><a href="#nref-JARM">[JARM]</a></strong></li><li>Data Holders SHOULD support of Authorization Code Flow in conjunction with Hybrid Flow</li></ul></td>
-<td>September 16th 2022</td>
-</tr>
 <tr>
 <td><a href="#get-metrics">Get Metrics V3</a></td>
 <td>Version 3 of this end point <strong>MUST</strong> be made available by affected data holders by October 1st 2022</td>
@@ -1903,9 +1825,14 @@ Additional note for v1.22.0: For this version only the delta statements from v1.
 <td>November 15th 2022</td>
 </tr>
 <tr>
-<td><a href="#registration-validation">Registration Validation</a></td>
-<td>Data Holders <strong>MUST</strong> ignore unsupported authorisation scopes presented in the SSA for the creation and update of client registrations from August 31st 2022</td>
-<td>August 31st 2022</td>
+<td><a href="#get-energy-accounts">Get Energy Accounts V1</a></td>
+<td><ul><li>Data Holders <strong>MAY</strong> go-live on November 15 2022 with v1 of this end point</li><li>Data Holders <strong>MAY</strong> decommission v1 of this end point as soon v2 is supported</li></ul></td>
+<td>November 15th 2022</td>
+</tr>
+<tr>
+<td><a href="#get-energy-account-detail">Get Energy Account Detail V1</a></td>
+<td><ul><li>Data Holders <strong>MAY</strong> go-live on November 15 2022 with v1 of this end point</li><li>Data Holders <strong>MAY</strong> decommission v1 of this end point as soon v2 is supported</li></ul></td>
+<td>November 15th 2022</td>
 </tr>
 <tr>
 <td><a href="#get-account-detail">Get Account Detail V2</a></td>
@@ -1943,21 +1870,6 @@ Additional note for v1.22.0: For this version only the delta statements from v1.
 <td>February 28th 2023</td>
 </tr>
 <tr>
-<td><a href="#get-energy-accounts">Get Energy Accounts V1</a></td>
-<td><ul><li>Data Holders <strong>MAY</strong> go-live on November 15 2022 with v1 of this endopint</li><li>Data Holders <strong>MAY</strong> decommission v1 of this endopint as soon v2 is supported</li></ul></td>
-<td>November 15th 2022</td>
-</tr>
-<tr>
-<td><a href="#get-energy-account-detail">Get Energy Account Detail V1</a></td>
-<td><ul><li>Data Holders <strong>MAY</strong> go-live on November 15 2022 with v1 of this endopint</li><li>Data Holders <strong>MAY</strong> decommission v1 of this endopint as soon v2 is supported</li></ul></td>
-<td>November 15th 2022</td>
-</tr>
-<tr>
-<td><a href="#error-codes">Error Codes: Secondary Data Holder flag</a></td>
-<td><ul><li>Data Holders <strong>MAY</strong> implement the <code>isSecondaryDataHolderError</code> field on <strong>November 15 2022</strong></li><li>Affected Data Holders <strong>MUST</strong> implement <code>isSecondaryDataHolderError</code> field by <strong>May 15 2023</strong></li></ul></td>
-<td>May 15th 2023</td>
-</tr>
-<tr>
 <td><a href="#get-energy-accounts">Get Energy Accounts V2</a></td>
 <td>Data Holder <strong>MUST</strong> implement v2 of this endpoint by <strong>April 14th 2023</strong></td>
 <td>April 14th 2023</td>
@@ -1971,6 +1883,11 @@ Additional note for v1.22.0: For this version only the delta statements from v1.
 <td><a href="#security-profile">Information Security profile</a></td>
 <td>FAPI 1.0 adoption is introduced across four phases.<br/><strong>Phase 3: Support Authorization Code Flow and Hybrid Flow</strong> includes, amongst other changes:<ul><li>Data Holders <strong>MUST</strong> support Authorization Code Flow</li><li>Data Holders <strong>MUST</strong> support Hybrid Flow</li></ul></td>
 <td>April 14th 2023</td>
+</tr>
+<tr>
+<td><a href="#error-codes">Error Codes: Secondary Data Holder flag</a></td>
+<td><ul><li>Data Holders <strong>MAY</strong> implement the <code>isSecondaryDataHolderError</code> field on <strong>November 15 2022</strong></li><li>Affected Data Holders <strong>MUST</strong> implement <code>isSecondaryDataHolderError</code> field by <strong>May 15 2023</strong></li></ul></td>
+<td>May 15th 2023</td>
 </tr>
 <tr>
 <td><a href="#security-profile">Information Security profile</a></td>
@@ -2051,8 +1968,15 @@ Additional note for v1.22.0: For this version only the delta statements from v1.
 
 <p>The actual release dates for the Register APIs are expected to occur prior to these dates and are not defined by the Standards.</p>
 
-<h2 id='endpoint-version-schedule'>Endpoint Version Schedule</h2>
+<h2 id='endpoint-version-schedule'>Endpoint Version Schedule</h2><pre class="highlight diff tab-diff"><code>Updated the obligation dates schedule to have correct
+numbers for each date
 
+Removed entries in the obligation dates schedule older
+than six months
+
+Corrected the year of the obligation date for Get
+Energy Account Detail V2
+</code></pre>
 <p>A table-view of all endpoint versioning is available <a href='includes/endpoint-version-schedule/'>here</a>.</p>
 
 <h2 id='normative-references'>Normative References</h2>
@@ -25844,7 +25768,15 @@ This operation does not require authentication
 <td>NA</td>
 </tr>
 </tbody></table>
-<h1 id='energy-apis'>Energy APIs</h1>
+<h1 id='energy-apis'>Energy APIs</h1><pre class="highlight diff tab-diff"><code>Correction to make the meta object optional for:
+  Get DER for Service Point
+  Get Energy Account Detail
+  Get Agreed Payment Schedule
+  Get Concessions
+  Get Balance for Energy Account
+
+Correction to make the meta object optional in requests
+</code></pre>
 <p>This specification defines the APIs for Data Holders exposing Energy endpoints.</p>
 
 <table>
@@ -28238,7 +28170,7 @@ x-cds-client-headers: string
 <td>» meta</td>
 <td>body</td>
 <td><a href="#schemacdr-energy-apimeta">Meta</a></td>
-<td>mandatory</td>
+<td>optional</td>
 <td>none</td>
 </tr>
 </tbody></table>
@@ -29137,7 +29069,7 @@ x-cds-client-headers: string
 <td>» meta</td>
 <td>body</td>
 <td><a href="#schemacdr-energy-apimeta">Meta</a></td>
-<td>mandatory</td>
+<td>optional</td>
 <td>none</td>
 </tr>
 </tbody></table>
@@ -31337,7 +31269,7 @@ x-cds-client-headers: string
 <td>» meta</td>
 <td>body</td>
 <td><a href="#schemacdr-energy-apimeta">Meta</a></td>
-<td>mandatory</td>
+<td>optional</td>
 <td>none</td>
 </tr>
 </tbody></table>
@@ -32279,7 +32211,7 @@ x-cds-client-headers: string
 <td>» meta</td>
 <td>body</td>
 <td><a href="#schemacdr-energy-apimeta">Meta</a></td>
-<td>mandatory</td>
+<td>optional</td>
 <td>none</td>
 </tr>
 </tbody></table>
@@ -33330,7 +33262,7 @@ x-cds-client-headers: string
 <td>» meta</td>
 <td>body</td>
 <td><a href="#schemacdr-energy-apimeta">Meta</a></td>
-<td>mandatory</td>
+<td>optional</td>
 <td>none</td>
 </tr>
 </tbody></table>
@@ -34622,7 +34554,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>meta</td>
 <td><a href="#schemacdr-energy-apimeta">Meta</a></td>
-<td>mandatory</td>
+<td>optional</td>
 <td>none</td>
 </tr>
 </tbody></table>
@@ -35111,7 +35043,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>meta</td>
 <td><a href="#schemacdr-energy-apimeta">Meta</a></td>
-<td>mandatory</td>
+<td>optional</td>
 <td>none</td>
 </tr>
 </tbody></table>
@@ -35187,7 +35119,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>meta</td>
 <td><a href="#schemacdr-energy-apimeta">Meta</a></td>
-<td>mandatory</td>
+<td>optional</td>
 <td>none</td>
 </tr>
 </tbody></table>
@@ -35250,7 +35182,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>meta</td>
 <td><a href="#schemacdr-energy-apimeta">Meta</a></td>
-<td>mandatory</td>
+<td>optional</td>
 <td>none</td>
 </tr>
 </tbody></table>
@@ -35370,7 +35302,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>meta</td>
 <td><a href="#schemacdr-energy-apimeta">Meta</a></td>
-<td>mandatory</td>
+<td>optional</td>
 <td>none</td>
 </tr>
 </tbody></table>

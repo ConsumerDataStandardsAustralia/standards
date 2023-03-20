@@ -20,6 +20,8 @@ This release addresses the following minor defects raised on [Standards Staging]
 - Issue [257](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/257): Notice for the Binding Data Standard
 - Issue [255](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/255): Maintenance of obligation date tables
 - Issue [254](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/254): Get Energy Account Detail V2 - Fix binding date
+- Issue [245](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/254): Get Energy APIs: meta object should not be mandatory
+- Issue [152](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/152): Get Meta objects to be optional in energy requests
 
 
 ### Decision Proposals
@@ -44,7 +46,7 @@ No changes
 
 |Change|Description|Link|
 |------|-----------|----|
-| XXXX | XXXX | XXXX |
+| Meta Objects Optional | Made the meta object in requests and non-list responses optional for energy APIs to align with decisions | [Energy APIs](../../#energy-apis) |
 
 
 ## Information Security Profile

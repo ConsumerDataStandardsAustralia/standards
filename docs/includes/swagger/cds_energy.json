@@ -4737,7 +4737,7 @@
                   "$ref" : "#/components/schemas/Meta"
                 }
               },
-              "required" : [ "data", "meta" ],
+              "required" : [ "data" ],
               "type" : "object"
             }
           }
@@ -4767,7 +4767,7 @@
                   "$ref" : "#/components/schemas/Meta"
                 }
               },
-              "required" : [ "data", "meta" ],
+              "required" : [ "data" ],
               "type" : "object"
             }
           }
@@ -5285,7 +5285,7 @@
             "$ref" : "#/components/schemas/Meta"
           }
         },
-        "required" : [ "data", "links", "meta" ],
+        "required" : [ "data", "links" ],
         "type" : "object"
       },
       "EnergyAccountListResponseV2" : {
@@ -5315,7 +5315,7 @@
             "$ref" : "#/components/schemas/Meta"
           }
         },
-        "required" : [ "data", "links", "meta" ],
+        "required" : [ "data", "links" ],
         "type" : "object"
       },
       "EnergyPaymentScheduleResponse" : {
@@ -5330,7 +5330,7 @@
             "$ref" : "#/components/schemas/Meta"
           }
         },
-        "required" : [ "data", "links", "meta" ],
+        "required" : [ "data", "links" ],
         "type" : "object"
       },
       "EnergyConcessionsResponse" : {
@@ -5345,7 +5345,7 @@
             "$ref" : "#/components/schemas/Meta"
           }
         },
-        "required" : [ "data", "links", "meta" ],
+        "required" : [ "data", "links" ],
         "type" : "object"
       },
       "EnergyBalanceListResponse" : {
@@ -5375,7 +5375,7 @@
             "$ref" : "#/components/schemas/Meta"
           }
         },
-        "required" : [ "data", "links", "meta" ],
+        "required" : [ "data", "links" ],
         "type" : "object"
       },
       "EnergyInvoiceListResponse" : {

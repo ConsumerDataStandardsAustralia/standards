@@ -170,8 +170,7 @@
                 "type": "object",
                 "required": [
                     "data",
-                    "links",
-                    "meta"
+                    "links"
                 ],
                 "properties": {
                     "data": {
@@ -220,8 +219,7 @@
                 "type": "object",
                 "required": [
                     "data",
-                    "links",
-                    "meta"
+                    "links"
                 ],
                 "properties": {
                     "data": {
@@ -239,8 +237,7 @@
                 "type": "object",
                 "required": [
                     "data",
-                    "links",
-                    "meta"
+                    "links"
                 ],
                 "properties": {
                     "data": {
@@ -270,8 +267,7 @@
                 "type": "object",
                 "required": [
                     "data",
-                    "links",
-                    "meta"
+                    "links"
                 ],
                 "properties": {
                     "data": {
@@ -347,8 +343,7 @@
                 "type": "object",
                 "required": [
                     "data",
-                    "links",
-                    "meta"
+                    "links"
                 ],
                 "properties": {
                     "data": {
@@ -4194,8 +4189,7 @@
 						"schema": {
 							"type": "object",
 							"required": [
-								"data",
-								"meta"
+								"data"
 							],
 							"properties": {
 								"data": {
@@ -4229,8 +4223,7 @@
 						"schema": {
 							"type": "object",
 							"required": [
-								"data",
-								"meta"
+								"data"
 							],
 							"properties": {
 								"data": {
