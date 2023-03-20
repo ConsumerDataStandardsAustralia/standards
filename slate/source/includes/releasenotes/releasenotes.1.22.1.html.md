@@ -17,17 +17,18 @@ Release notes for version v1.22.1 of the [CDR Standards](../../index.html).
 
 This release addresses the following minor defects raised on [Standards Staging](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues):
 
-- XXXX
+- Issue [257](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/257): Notice for the Binding Data Standard
+
 
 ### Decision Proposals
 
-This release addresses the following Decision Proposals published on [Standards](https://github.com/ConsumerDataStandardsAustralia/standards/issues):
-
-- XXXX
+This release is a patch release and does not include any changes arising from a decision of the Chair
 
 ## Introduction
 
-No changes
+|Change|Description|Link|
+|------|-----------|----|
+| Binding Statement | Added binding statement to the Introduction section | [Introduction](../../#introduction) |
 
 ## High Level Standards
 
