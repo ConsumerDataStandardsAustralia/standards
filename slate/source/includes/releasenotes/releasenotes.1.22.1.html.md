@@ -19,6 +19,7 @@ This release addresses the following minor defects raised on [Standards Staging]
 
 - Issue [257](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/257): Notice for the Binding Data Standard
 - Issue [255](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/255): Maintenance of obligation date tables
+- Issue [254](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/254): Get Energy Account Detail V2 - Fix binding date
 
 
 ### Decision Proposals
@@ -32,6 +33,7 @@ This release is a patch release and does not include any changes arising from a 
 | Binding Statement | Added binding statement to the Introduction section | [Introduction](../../#introduction) |
 | Align Obligation Dates | Corrections to the future dated obligations table | [FDOs](../../#future-dated-obligations) |
 | Align Obligation Dates | Corrections to the obligation dates table | [Obligations Table](../endpoint-version-schedule/#obligation-dates-schedule) |
+| Fix Binding Date | Correct the binding date for Get Energy Account Detail V2 in the end point schedule | [FDOs](../endpoint-version-schedule/#endpoint-version-schedule) |
 
 ## High Level Standards
 
