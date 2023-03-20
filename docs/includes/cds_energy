@@ -13354,7 +13354,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>» party</td>
 <td>string</td>
 <td>mandatory</td>
-<td>The name of the party/orginsation related to this service point</td>
+<td>The name of the party/organisation related to this service point</td>
 </tr>
 <tr>
 <td>» role</td>

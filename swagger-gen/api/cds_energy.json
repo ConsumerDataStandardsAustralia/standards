@@ -1953,7 +1953,7 @@
 
                                 "party": {
                                     "type": "string",
-                                    "description": "The name of the party/orginsation related to this service point"
+                                    "description": "The name of the party/organisation related to this service point"
                                 },
                                 "role": {
                                     "type": "string",
