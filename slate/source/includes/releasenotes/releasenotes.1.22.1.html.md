@@ -21,6 +21,7 @@ This release addresses the following minor defects raised on [Standards Staging]
 - Issue [255](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/255): Maintenance of obligation date tables
 - Issue [254](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/254): Get Energy Account Detail V2 - Fix binding date
 - Issue [245](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/254): Get Energy APIs: meta object should not be mandatory
+- Issue [226](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/226): Standardise use of ResponseErrorListV2 for Energy APIs
 - Issue [193](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/193): Incorrect link to Endpoint Version Schedule in Standards
 - Issue [152](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/152): Get Meta objects to be optional in energy requests
 
@@ -49,6 +50,7 @@ No changes
 |Change|Description|Link|
 |------|-----------|----|
 | Meta Objects Optional | Made the meta object in requests and non-list responses optional for energy APIs to align with decisions | [Energy APIs](../../#energy-apis) |
+| Error List Model | Align the version of the energy error list with the banking sector | [Energy APIs](../../#energy-apis) |
 
 
 ## Information Security Profile

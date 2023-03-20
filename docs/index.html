@@ -999,7 +999,7 @@
                                 <a href="#tocSenergybillinglistresponse" class="toc-h3 toc-link" data-title="EnergyBillingListResponse">EnergyBillingListResponse</a>
                               </li>
                               <li>
-                                <a href="#tocSerrorlistresponse" class="toc-h3 toc-link" data-title="ErrorListResponse">ErrorListResponse</a>
+                                <a href="#tocSresponseerrorlistv2" class="toc-h3 toc-link" data-title="ResponseErrorListV2">ResponseErrorListV2</a>
                               </li>
                               <li>
                                 <a href="#tocSenergyplan" class="toc-h3 toc-link" data-title="EnergyPlan">EnergyPlan</a>
@@ -1976,8 +1976,11 @@ than six months
 
 Corrected the year of the obligation date for Get
 Energy Account Detail V2
+
+Corrected link to go directly to the end point version
+schedule
 </code></pre>
-<p>A table-view of all endpoint versioning is available <a href='includes/endpoint-version-schedule/'>here</a>.</p>
+<p>A table-view of all endpoint versioning is available <a href='includes/endpoint-version-schedule/#endpoint-version-schedule'>here</a>.</p>
 
 <h2 id='normative-references'>Normative References</h2>
 
@@ -2355,14 +2358,15 @@ always align to current consumer preferences.</p>
 
 <p>Each end point will have multiple versions independent of other end points.  A specific end point version will be requested by a client using a HTTP header. This header will be supported by all end points under the API standards.  See the section on <a href="#http-headers">HTTP Headers</a> for more information on how versions are requested and supplied under the standards.</p>
 
-<p>A table-view of all endpoint versioning is available <a href='includes/endpoint-version-schedule/'>here</a>.</p>
+<pre class="highlight diff tab-diff"><code>Corrected link to go directly to the end point version
+schedule
+</code></pre>
+<p>A table-view of all endpoint versioning is available <a href='includes/endpoint-version-schedule/#endpoint-version-schedule'>here</a>.</p>
 
 <h2 id='uri-structure'>URI Structure</h2>
-
 <blockquote>
 <p>Some example URIs that meet this standard are:  </p>
 </blockquote>
-
 <pre class="highlight plaintext"><code>1. https://www.bank.com.au/api/cds-au/v1/banking/accounts  
 2. https://www.bank.com.au/api/cds-au/v1/banking/accounts/abc123/transactions/?x=y#bar  
 3. https://www.bank.com.au/complex/uri/taxonomy/cds-au/v1/banking/products?page=2  
@@ -25776,6 +25780,9 @@ This operation does not require authentication
   Get Balance for Energy Account
 
 Correction to make the meta object optional in requests
+
+Corrected error list model to be ResponseErrorListV2
+to align with banking
 </code></pre>
 <p>This specification defines the APIs for Data Holders exposing Energy endpoints.</p>
 
@@ -26044,19 +26051,19 @@ x-min-v: string
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
-<td><a href="#schemacdr-energy-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>406</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.6">Not Acceptable</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li></ul></td>
-<td><a href="#schemacdr-energy-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>422</td>
 <td><a href="https://tools.ietf.org/html/rfc2518#section-10.3">Unprocessable Entity</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-422-field-invalid-page">422 - Invalid Page</a></li></ul></td>
-<td><a href="#schemacdr-energy-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 </tbody></table>
 
@@ -26707,19 +26714,19 @@ x-min-v: string
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
-<td><a href="#schemacdr-energy-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>404</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.4">Not Found</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-404-resource-invalid">404 - Invalid Resource</a></li></ul></td>
-<td><a href="#schemacdr-energy-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>406</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.6">Not Acceptable</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li></ul></td>
-<td><a href="#schemacdr-energy-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 </tbody></table>
 
@@ -26955,19 +26962,19 @@ x-cds-client-headers: string
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
-<td><a href="#schemacdr-energy-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>406</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.6">Not Acceptable</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li></ul></td>
-<td><a href="#schemacdr-energy-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>422</td>
 <td><a href="https://tools.ietf.org/html/rfc2518#section-10.3">Unprocessable Entity</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-422-field-invalid-page">422 - Invalid Page</a></li></ul></td>
-<td><a href="#schemacdr-energy-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 </tbody></table>
 
@@ -27268,19 +27275,19 @@ x-cds-client-headers: string
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
-<td><a href="#schemacdr-energy-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>404</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.4">Not Found</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-404-unavailable-service-point">404 - Unavailable Service Point</a></li><li><a href="#error-404-invalid-service-point">404 - Invalid Service Point</a></li></ul></td>
-<td><a href="#schemacdr-energy-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>406</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.6">Not Acceptable</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li></ul></td>
-<td><a href="#schemacdr-energy-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 </tbody></table>
 
@@ -27589,25 +27596,25 @@ x-cds-client-headers: string
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
-<td><a href="#schemacdr-energy-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>404</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.4">Not Found</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-404-unavailable-service-point">404 - Unavailable Service Point</a></li><li><a href="#error-404-invalid-service-point">404 - Invalid Service Point</a></li></ul></td>
-<td><a href="#schemacdr-energy-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>406</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.6">Not Acceptable</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li></ul></td>
-<td><a href="#schemacdr-energy-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>422</td>
 <td><a href="https://tools.ietf.org/html/rfc2518#section-10.3">Unprocessable Entity</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-422-field-invalid-page">422 - Invalid Page</a></li></ul></td>
-<td><a href="#schemacdr-energy-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 </tbody></table>
 
@@ -27916,19 +27923,19 @@ x-cds-client-headers: string
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
-<td><a href="#schemacdr-energy-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>406</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.6">Not Acceptable</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li></ul></td>
-<td><a href="#schemacdr-energy-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>422</td>
 <td><a href="https://tools.ietf.org/html/rfc2518#section-10.3">Unprocessable Entity</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-422-field-invalid-page">422 - Invalid Page</a></li></ul></td>
-<td><a href="#schemacdr-energy-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 </tbody></table>
 
@@ -28268,19 +28275,19 @@ x-cds-client-headers: string
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
-<td><a href="#schemacdr-energy-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>406</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.6">Not Acceptable</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li></ul></td>
-<td><a href="#schemacdr-energy-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>422</td>
 <td><a href="https://tools.ietf.org/html/rfc2518#section-10.3">Unprocessable Entity</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-422-field-invalid-page">422 - Invalid Page</a></li><li><a href="#error-422-unavailable-service-point">422 - Unavailable Service Point</a></li><li><a href="#error-422-invalid-service-point">422 - Invalid Service Point</a></li></ul></td>
-<td><a href="#schemacdr-energy-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 </tbody></table>
 
@@ -28543,19 +28550,19 @@ x-cds-client-headers: string
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
-<td><a href="#schemacdr-energy-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>404</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.4">Not Found</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-404-unavailable-service-point">404 - Unavailable Service Point</a></li><li><a href="#error-404-invalid-service-point">404 - Invalid Service Point</a></li></ul></td>
-<td><a href="#schemacdr-energy-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>406</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.6">Not Acceptable</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li></ul></td>
-<td><a href="#schemacdr-energy-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 </tbody></table>
 
@@ -28836,19 +28843,19 @@ x-cds-client-headers: string
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
-<td><a href="#schemacdr-energy-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>406</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.6">Not Acceptable</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li></ul></td>
-<td><a href="#schemacdr-energy-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>422</td>
 <td><a href="https://tools.ietf.org/html/rfc2518#section-10.3">Unprocessable Entity</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-422-field-invalid-page">422 - Invalid Page</a></li></ul></td>
-<td><a href="#schemacdr-energy-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 </tbody></table>
 
@@ -29169,19 +29176,19 @@ x-cds-client-headers: string
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
-<td><a href="#schemacdr-energy-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>406</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.6">Not Acceptable</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li></ul></td>
-<td><a href="#schemacdr-energy-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>422</td>
 <td><a href="https://tools.ietf.org/html/rfc2518#section-10.3">Unprocessable Entity</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-422-field-invalid-page">422 - Invalid Page</a></li><li><a href="#error-422-unavailable-service-point">422 - Unavailable Service Point</a></li><li><a href="#error-422-invalid-service-point">422 - Invalid Service Point</a></li></ul></td>
-<td><a href="#schemacdr-energy-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 </tbody></table>
 
@@ -29462,19 +29469,19 @@ x-cds-client-headers: string
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
-<td><a href="#schemacdr-energy-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>406</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.6">Not Acceptable</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li></ul></td>
-<td><a href="#schemacdr-energy-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>422</td>
 <td><a href="https://tools.ietf.org/html/rfc2518#section-10.3">Unprocessable Entity</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-422-field-invalid-page">422 - Invalid Page</a></li></ul></td>
-<td><a href="#schemacdr-energy-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 </tbody></table>
 
@@ -30062,19 +30069,19 @@ x-cds-client-headers: string
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
-<td><a href="#schemacdr-energy-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>404</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.4">Not Found</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-404-unavailable-energy-account">404 - Unavailable Energy Account</a></li><li><a href="#error-404-invalid-energy-account">404 - Invalid Energy Account</a></li></ul></td>
-<td><a href="#schemacdr-energy-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>406</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.6">Not Acceptable</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li></ul></td>
-<td><a href="#schemacdr-energy-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 </tbody></table>
 
@@ -30321,19 +30328,19 @@ x-cds-client-headers: string
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
-<td><a href="#schemacdr-energy-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>404</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.4">Not Found</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-404-unavailable-energy-account">404 - Unavailable Energy Account</a></li><li><a href="#error-404-invalid-energy-account">404 - Invalid Energy Account</a></li></ul></td>
-<td><a href="#schemacdr-energy-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>406</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.6">Not Acceptable</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li></ul></td>
-<td><a href="#schemacdr-energy-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 </tbody></table>
 
@@ -30563,19 +30570,19 @@ x-cds-client-headers: string
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
-<td><a href="#schemacdr-energy-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>404</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.4">Not Found</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-404-unavailable-energy-account">404 - Unavailable Energy Account</a></li><li><a href="#error-404-invalid-energy-account">404 - Invalid Energy Account</a></li></ul></td>
-<td><a href="#schemacdr-energy-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>406</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.6">Not Acceptable</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li></ul></td>
-<td><a href="#schemacdr-energy-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 </tbody></table>
 
@@ -30790,19 +30797,19 @@ x-cds-client-headers: string
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
-<td><a href="#schemacdr-energy-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>404</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.4">Not Found</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-404-unavailable-energy-account">404 - Unavailable Energy Account</a></li><li><a href="#error-404-invalid-energy-account">404 - Invalid Energy Account</a></li></ul></td>
-<td><a href="#schemacdr-energy-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>406</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.6">Not Acceptable</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li></ul></td>
-<td><a href="#schemacdr-energy-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 </tbody></table>
 
@@ -31036,19 +31043,19 @@ x-cds-client-headers: string
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
-<td><a href="#schemacdr-energy-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>406</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.6">Not Acceptable</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li></ul></td>
-<td><a href="#schemacdr-energy-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>422</td>
 <td><a href="https://tools.ietf.org/html/rfc2518#section-10.3">Unprocessable Entity</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-422-field-invalid-page">422 - Invalid Page</a></li></ul></td>
-<td><a href="#schemacdr-energy-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 </tbody></table>
 
@@ -31322,19 +31329,19 @@ x-cds-client-headers: string
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
-<td><a href="#schemacdr-energy-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>406</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.6">Not Acceptable</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li></ul></td>
-<td><a href="#schemacdr-energy-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>422</td>
 <td><a href="https://tools.ietf.org/html/rfc2518#section-10.3">Unprocessable Entity</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-422-field-invalid-page">422 - Invalid Page</a></li><li><a href="#error-422-unavailable-energy-account">422 - Unavailable Energy Account</a></li><li><a href="#error-422-invalid-energy-account">422 - Invalid Energy Account</a></li></ul></td>
-<td><a href="#schemacdr-energy-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 </tbody></table>
 
@@ -31640,25 +31647,25 @@ x-cds-client-headers: string
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
-<td><a href="#schemacdr-energy-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>404</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.4">Not Found</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-404-unavailable-energy-account">404 - Unavailable Energy Account</a></li><li><a href="#error-404-invalid-energy-account">404 - Invalid Energy Account</a></li></ul></td>
-<td><a href="#schemacdr-energy-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>406</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.6">Not Acceptable</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li></ul></td>
-<td><a href="#schemacdr-energy-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>422</td>
 <td><a href="https://tools.ietf.org/html/rfc2518#section-10.3">Unprocessable Entity</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-422-field-invalid-page">422 - Invalid Page</a></li></ul></td>
-<td><a href="#schemacdr-energy-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 </tbody></table>
 
@@ -31964,19 +31971,19 @@ x-cds-client-headers: string
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
-<td><a href="#schemacdr-energy-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>406</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.6">Not Acceptable</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li></ul></td>
-<td><a href="#schemacdr-energy-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>422</td>
 <td><a href="https://tools.ietf.org/html/rfc2518#section-10.3">Unprocessable Entity</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-422-field-invalid-page">422 - Invalid Page</a></li></ul></td>
-<td><a href="#schemacdr-energy-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 </tbody></table>
 
@@ -32315,19 +32322,19 @@ x-cds-client-headers: string
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
-<td><a href="#schemacdr-energy-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>406</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.6">Not Acceptable</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li></ul></td>
-<td><a href="#schemacdr-energy-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>422</td>
 <td><a href="https://tools.ietf.org/html/rfc2518#section-10.3">Unprocessable Entity</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-422-field-invalid-page">422 - Invalid Page</a></li><li><a href="#error-422-unavailable-energy-account">422 - Unavailable Energy Account</a></li><li><a href="#error-422-invalid-energy-account">422 - Invalid Energy Account</a></li></ul></td>
-<td><a href="#schemacdr-energy-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 </tbody></table>
 
@@ -32662,25 +32669,25 @@ x-cds-client-headers: string
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
-<td><a href="#schemacdr-energy-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>404</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.4">Not Found</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-404-unavailable-energy-account">404 - Unavailable Energy Account</a></li><li><a href="#error-404-invalid-energy-account">404 - Invalid Energy Account</a></li></ul></td>
-<td><a href="#schemacdr-energy-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>406</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.6">Not Acceptable</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li></ul></td>
-<td><a href="#schemacdr-energy-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>422</td>
 <td><a href="https://tools.ietf.org/html/rfc2518#section-10.3">Unprocessable Entity</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-422-field-invalid-page">422 - Invalid Page</a></li></ul></td>
-<td><a href="#schemacdr-energy-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 </tbody></table>
 
@@ -33015,19 +33022,19 @@ x-cds-client-headers: string
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
-<td><a href="#schemacdr-energy-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>406</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.6">Not Acceptable</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li></ul></td>
-<td><a href="#schemacdr-energy-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>422</td>
 <td><a href="https://tools.ietf.org/html/rfc2518#section-10.3">Unprocessable Entity</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-422-field-invalid-page">422 - Invalid Page</a></li></ul></td>
-<td><a href="#schemacdr-energy-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 </tbody></table>
 
@@ -33395,19 +33402,19 @@ x-cds-client-headers: string
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
-<td><a href="#schemacdr-energy-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>406</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.6">Not Acceptable</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li></ul></td>
-<td><a href="#schemacdr-energy-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>422</td>
 <td><a href="https://tools.ietf.org/html/rfc2518#section-10.3">Unprocessable Entity</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-422-field-invalid-page">422 - Invalid Page</a></li><li><a href="#error-422-unavailable-energy-account">422 - Unavailable Energy Account</a></li><li><a href="#error-422-invalid-energy-account">422 - Invalid Energy Account</a></li></ul></td>
-<td><a href="#schemacdr-energy-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 </tbody></table>
 
@@ -35558,9 +35565,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSerrorlistresponse">ErrorListResponse</h3>
+<h3 class="schema-toc" id="tocSresponseerrorlistv2">ResponseErrorListV2</h3>
 
-<p><a id="schemacdr-energy-apierrorlistresponse"></a></p>
+<p><a id="schemacdr-energy-apiresponseerrorlistv2"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
