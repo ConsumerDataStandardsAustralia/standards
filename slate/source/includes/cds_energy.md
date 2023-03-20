@@ -8274,7 +8274,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |» description|string|mandatory|Description of the data loss factor code and value|
 |» lossValue|string|mandatory|The value associated with the loss factor code|
 |relatedParticipants|[object]|mandatory|none|
-|» party|string|mandatory|The name of the party/orginsation related to this service point|
+|» party|string|mandatory|The name of the party/organisation related to this service point|
 |» role|string|mandatory|The role performed by this participant in relation to the service point. Note the details of enumeration values below: <ul><li>**FRMP** - Financially Responsible Market Participant</li><li>**LNSP** - Local Network Service Provider or Embedded Network Manager for child connection points</li><li>**DRSP** - wholesale Demand Response and/or market ancillary Service Provider and note that where it is not relevant for a NMI it will not be included</li></ul>|
 |location|[CommonPhysicalAddress](#schemacdr-energy-apicommonphysicaladdress)|mandatory|Location of the servicepoint|
 |meters|[object]|optional|The meters associated with the service point. This may be empty where there are no meters physically installed at the service point|
