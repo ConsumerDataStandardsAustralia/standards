@@ -1461,7 +1461,7 @@ Obtain the electricity usage data for a specific set of service points
 |body|body|[servicePointIdList](#schemacdr-energy-apiservicepointidlist)|mandatory|Request payload containing list of specific Service Points to obtain data for|
 |» data|body|object|mandatory|none|
 |»» servicePointIds|body|[string]|mandatory|Array of specific servicePointIds to obtain data for|
-|» meta|body|[Meta](#schemacdr-energy-apimeta)|mandatory|none|
+|» meta|body|[Meta](#schemacdr-energy-apimeta)|optional|none|
 
 #### Enumerated Values
 
@@ -1961,7 +1961,7 @@ Obtain DER data for a specific set of service points
 |body|body|[servicePointIdList](#schemacdr-energy-apiservicepointidlist)|mandatory|Request payload containing list of specific Service Points to obtain data for|
 |» data|body|object|mandatory|none|
 |»» servicePointIds|body|[string]|mandatory|Array of specific servicePointIds to obtain data for|
-|» meta|body|[Meta](#schemacdr-energy-apimeta)|mandatory|none|
+|» meta|body|[Meta](#schemacdr-energy-apimeta)|optional|none|
 
 > Example responses
 
@@ -3276,7 +3276,7 @@ Obtain the current balance for a specified set of accounts
 |body|body|[accountIdList](#schemacdr-energy-apiaccountidlist)|mandatory|Request payload containing list of specific Accounts to obtain data for|
 |» data|body|object|mandatory|none|
 |»» accountIds|body|[string]|mandatory|Array of specific accountIds to obtain data for|
-|» meta|body|[Meta](#schemacdr-energy-apimeta)|mandatory|none|
+|» meta|body|[Meta](#schemacdr-energy-apimeta)|optional|none|
 
 > Example responses
 
@@ -3772,7 +3772,7 @@ Obtain invoices for a specified set of accounts
 |body|body|[accountIdList](#schemacdr-energy-apiaccountidlist)|mandatory|Request payload containing list of specific Accounts to obtain data for|
 |» data|body|object|mandatory|none|
 |»» accountIds|body|[string]|mandatory|Array of specific accountIds to obtain data for|
-|» meta|body|[Meta](#schemacdr-energy-apimeta)|mandatory|none|
+|» meta|body|[Meta](#schemacdr-energy-apimeta)|optional|none|
 
 > Example responses
 
@@ -4377,7 +4377,7 @@ Obtain billing for a specified set of accounts
 |body|body|[accountIdList](#schemacdr-energy-apiaccountidlist)|mandatory|Request payload containing list of specific Accounts to obtain data for|
 |» data|body|object|mandatory|none|
 |»» accountIds|body|[string]|mandatory|Array of specific accountIds to obtain data for|
-|» meta|body|[Meta](#schemacdr-energy-apimeta)|mandatory|none|
+|» meta|body|[Meta](#schemacdr-energy-apimeta)|optional|none|
 
 > Example responses
 
@@ -5468,7 +5468,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |---|---|---|---|
 |data|[EnergyDerRecord](#schemacdr-energy-apienergyderrecord)|mandatory|none|
 |links|[Links](#schemacdr-energy-apilinks)|mandatory|none|
-|meta|[Meta](#schemacdr-energy-apimeta)|mandatory|none|
+|meta|[Meta](#schemacdr-energy-apimeta)|optional|none|
 
 <h3 class="schema-toc" id="tocSenergyaccountlistresponsev2">EnergyAccountListResponseV2</h3>
 
@@ -5918,7 +5918,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |---|---|---|---|
 |data|[EnergyAccountDetailV2](#schemacdr-energy-apienergyaccountdetailv2)|mandatory|none|
 |links|[Links](#schemacdr-energy-apilinks)|mandatory|none|
-|meta|[Meta](#schemacdr-energy-apimeta)|mandatory|none|
+|meta|[Meta](#schemacdr-energy-apimeta)|optional|none|
 
 <h3 class="schema-toc" id="tocSenergypaymentscheduleresponse">EnergyPaymentScheduleResponse</h3>
 
@@ -5972,7 +5972,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |data|object|mandatory|none|
 |» paymentSchedules|[[EnergyPaymentSchedule](#schemacdr-energy-apienergypaymentschedule)]|mandatory|Array may be empty if no payment schedule exist|
 |links|[Links](#schemacdr-energy-apilinks)|mandatory|none|
-|meta|[Meta](#schemacdr-energy-apimeta)|mandatory|none|
+|meta|[Meta](#schemacdr-energy-apimeta)|optional|none|
 
 <h3 class="schema-toc" id="tocSenergyconcessionsresponse">EnergyConcessionsResponse</h3>
 
@@ -6013,7 +6013,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |data|object|mandatory|none|
 |» concessions|[[EnergyConcession](#schemacdr-energy-apienergyconcession)]|mandatory|Array may be empty if no concessions exist|
 |links|[Links](#schemacdr-energy-apilinks)|mandatory|none|
-|meta|[Meta](#schemacdr-energy-apimeta)|mandatory|none|
+|meta|[Meta](#schemacdr-energy-apimeta)|optional|none|
 
 <h3 class="schema-toc" id="tocSenergybalancelistresponse">EnergyBalanceListResponse</h3>
 
@@ -6079,7 +6079,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |data|object|mandatory|none|
 |» balance|[AmountString](#common-field-types)|mandatory|The current balance of the account.  A positive value indicates that amount is owing to be paid.  A negative value indicates that the account is in credit|
 |links|[Links](#schemacdr-energy-apilinks)|mandatory|none|
-|meta|[Meta](#schemacdr-energy-apimeta)|mandatory|none|
+|meta|[Meta](#schemacdr-energy-apimeta)|optional|none|
 
 <h3 class="schema-toc" id="tocSenergyinvoicelistresponse">EnergyInvoiceListResponse</h3>
 

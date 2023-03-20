@@ -4727,7 +4727,6 @@ components:
                 $ref: '#/components/schemas/Meta'
             required:
             - data
-            - meta
             type: object
       description: Request payload containing list of specific Service Points to obtain
         data for
@@ -4751,7 +4750,6 @@ components:
                 $ref: '#/components/schemas/Meta'
             required:
             - data
-            - meta
             type: object
       description: Request payload containing list of specific Accounts to obtain
         data for
@@ -5712,7 +5710,6 @@ components:
       required:
       - data
       - links
-      - meta
       type: object
     EnergyAccountListResponseV2:
       example:
@@ -5756,7 +5753,6 @@ components:
       required:
       - data
       - links
-      - meta
       type: object
     EnergyPaymentScheduleResponse:
       example:
@@ -5817,7 +5813,6 @@ components:
       required:
       - data
       - links
-      - meta
       type: object
     EnergyConcessionsResponse:
       example:
@@ -5860,7 +5855,6 @@ components:
       required:
       - data
       - links
-      - meta
       type: object
     EnergyBalanceListResponse:
       example:
@@ -5908,7 +5902,6 @@ components:
       required:
       - data
       - links
-      - meta
       type: object
     EnergyInvoiceListResponse:
       example:
