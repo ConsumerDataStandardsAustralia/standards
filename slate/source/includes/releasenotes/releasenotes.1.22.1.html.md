@@ -50,6 +50,7 @@ No changes
 
 |Change|Description|Link|
 |------|-----------|----|
+| Updated Telco Draft | Changes arising from ongoing consultation on the Telco standards have been incorporated | [Telcp APIs](../../#telco-apis) |
 | Meta Objects Optional | Made the meta object in requests and non-list responses optional for energy APIs to align with decisions | [Energy APIs](../../#energy-apis) |
 | Error List Model | Align the version of the energy error list with the banking sector | [Energy APIs](../../#energy-apis) |
 | Typo | Fixed typo of 'organisation' | [Energy APIs](../../#energy-apis) |
