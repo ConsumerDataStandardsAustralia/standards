@@ -18,6 +18,7 @@ Release notes for version v1.22.1 of the [CDR Standards](../../index.html).
 This release addresses the following minor defects raised on [Standards Staging](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues):
 
 - Issue [257](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/257): Notice for the Binding Data Standard
+- Issue [255](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/255): Maintenance of obligation date tables
 
 
 ### Decision Proposals
@@ -29,6 +30,8 @@ This release is a patch release and does not include any changes arising from a 
 |Change|Description|Link|
 |------|-----------|----|
 | Binding Statement | Added binding statement to the Introduction section | [Introduction](../../#introduction) |
+| Align Obligation Dates | Corrections to the future dated obligations table | [FDOs](../../#future-dated-obligations) |
+| Align Obligation Dates | Corrections to the obligation dates table | [Obligations Table](../endpoint-version-schedule/#obligation-dates-schedule) |
 
 ## High Level Standards
 
