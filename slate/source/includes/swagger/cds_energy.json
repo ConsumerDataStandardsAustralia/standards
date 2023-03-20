@@ -138,7 +138,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/ErrorListResponse"
+                  "$ref" : "#/components/schemas/ResponseErrorListV2"
                 }
               }
             },
@@ -158,7 +158,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/ErrorListResponse"
+                  "$ref" : "#/components/schemas/ResponseErrorListV2"
                 }
               }
             },
@@ -178,7 +178,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/ErrorListResponse"
+                  "$ref" : "#/components/schemas/ResponseErrorListV2"
                 }
               }
             },
@@ -260,7 +260,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/ErrorListResponse"
+                  "$ref" : "#/components/schemas/ResponseErrorListV2"
                 }
               }
             },
@@ -280,7 +280,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/ErrorListResponse"
+                  "$ref" : "#/components/schemas/ResponseErrorListV2"
                 }
               }
             },
@@ -300,7 +300,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/ErrorListResponse"
+                  "$ref" : "#/components/schemas/ResponseErrorListV2"
                 }
               }
             },
@@ -445,7 +445,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/ErrorListResponse"
+                  "$ref" : "#/components/schemas/ResponseErrorListV2"
                 }
               }
             },
@@ -465,7 +465,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/ErrorListResponse"
+                  "$ref" : "#/components/schemas/ResponseErrorListV2"
                 }
               }
             },
@@ -485,7 +485,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/ErrorListResponse"
+                  "$ref" : "#/components/schemas/ResponseErrorListV2"
                 }
               }
             },
@@ -619,7 +619,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/ErrorListResponse"
+                  "$ref" : "#/components/schemas/ResponseErrorListV2"
                 }
               }
             },
@@ -639,7 +639,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/ErrorListResponse"
+                  "$ref" : "#/components/schemas/ResponseErrorListV2"
                 }
               }
             },
@@ -659,7 +659,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/ErrorListResponse"
+                  "$ref" : "#/components/schemas/ResponseErrorListV2"
                 }
               }
             },
@@ -849,7 +849,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/ErrorListResponse"
+                  "$ref" : "#/components/schemas/ResponseErrorListV2"
                 }
               }
             },
@@ -869,7 +869,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/ErrorListResponse"
+                  "$ref" : "#/components/schemas/ResponseErrorListV2"
                 }
               }
             },
@@ -889,7 +889,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/ErrorListResponse"
+                  "$ref" : "#/components/schemas/ResponseErrorListV2"
                 }
               }
             },
@@ -909,7 +909,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/ErrorListResponse"
+                  "$ref" : "#/components/schemas/ResponseErrorListV2"
                 }
               }
             },
@@ -1089,7 +1089,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/ErrorListResponse"
+                  "$ref" : "#/components/schemas/ResponseErrorListV2"
                 }
               }
             },
@@ -1109,7 +1109,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/ErrorListResponse"
+                  "$ref" : "#/components/schemas/ResponseErrorListV2"
                 }
               }
             },
@@ -1129,7 +1129,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/ErrorListResponse"
+                  "$ref" : "#/components/schemas/ResponseErrorListV2"
                 }
               }
             },
@@ -1310,7 +1310,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/ErrorListResponse"
+                  "$ref" : "#/components/schemas/ResponseErrorListV2"
                 }
               }
             },
@@ -1330,7 +1330,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/ErrorListResponse"
+                  "$ref" : "#/components/schemas/ResponseErrorListV2"
                 }
               }
             },
@@ -1350,7 +1350,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/ErrorListResponse"
+                  "$ref" : "#/components/schemas/ResponseErrorListV2"
                 }
               }
             },
@@ -1484,7 +1484,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/ErrorListResponse"
+                  "$ref" : "#/components/schemas/ResponseErrorListV2"
                 }
               }
             },
@@ -1504,7 +1504,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/ErrorListResponse"
+                  "$ref" : "#/components/schemas/ResponseErrorListV2"
                 }
               }
             },
@@ -1524,7 +1524,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/ErrorListResponse"
+                  "$ref" : "#/components/schemas/ResponseErrorListV2"
                 }
               }
             },
@@ -1670,7 +1670,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/ErrorListResponse"
+                  "$ref" : "#/components/schemas/ResponseErrorListV2"
                 }
               }
             },
@@ -1690,7 +1690,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/ErrorListResponse"
+                  "$ref" : "#/components/schemas/ResponseErrorListV2"
                 }
               }
             },
@@ -1710,7 +1710,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/ErrorListResponse"
+                  "$ref" : "#/components/schemas/ResponseErrorListV2"
                 }
               }
             },
@@ -1857,7 +1857,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/ErrorListResponse"
+                  "$ref" : "#/components/schemas/ResponseErrorListV2"
                 }
               }
             },
@@ -1877,7 +1877,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/ErrorListResponse"
+                  "$ref" : "#/components/schemas/ResponseErrorListV2"
                 }
               }
             },
@@ -1897,7 +1897,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/ErrorListResponse"
+                  "$ref" : "#/components/schemas/ResponseErrorListV2"
                 }
               }
             },
@@ -2055,7 +2055,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/ErrorListResponse"
+                  "$ref" : "#/components/schemas/ResponseErrorListV2"
                 }
               }
             },
@@ -2075,7 +2075,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/ErrorListResponse"
+                  "$ref" : "#/components/schemas/ResponseErrorListV2"
                 }
               }
             },
@@ -2095,7 +2095,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/ErrorListResponse"
+                  "$ref" : "#/components/schemas/ResponseErrorListV2"
                 }
               }
             },
@@ -2229,7 +2229,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/ErrorListResponse"
+                  "$ref" : "#/components/schemas/ResponseErrorListV2"
                 }
               }
             },
@@ -2249,7 +2249,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/ErrorListResponse"
+                  "$ref" : "#/components/schemas/ResponseErrorListV2"
                 }
               }
             },
@@ -2269,7 +2269,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/ErrorListResponse"
+                  "$ref" : "#/components/schemas/ResponseErrorListV2"
                 }
               }
             },
@@ -2403,7 +2403,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/ErrorListResponse"
+                  "$ref" : "#/components/schemas/ResponseErrorListV2"
                 }
               }
             },
@@ -2423,7 +2423,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/ErrorListResponse"
+                  "$ref" : "#/components/schemas/ResponseErrorListV2"
                 }
               }
             },
@@ -2443,7 +2443,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/ErrorListResponse"
+                  "$ref" : "#/components/schemas/ResponseErrorListV2"
                 }
               }
             },
@@ -2577,7 +2577,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/ErrorListResponse"
+                  "$ref" : "#/components/schemas/ResponseErrorListV2"
                 }
               }
             },
@@ -2597,7 +2597,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/ErrorListResponse"
+                  "$ref" : "#/components/schemas/ResponseErrorListV2"
                 }
               }
             },
@@ -2617,7 +2617,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/ErrorListResponse"
+                  "$ref" : "#/components/schemas/ResponseErrorListV2"
                 }
               }
             },
@@ -2751,7 +2751,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/ErrorListResponse"
+                  "$ref" : "#/components/schemas/ResponseErrorListV2"
                 }
               }
             },
@@ -2771,7 +2771,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/ErrorListResponse"
+                  "$ref" : "#/components/schemas/ResponseErrorListV2"
                 }
               }
             },
@@ -2791,7 +2791,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/ErrorListResponse"
+                  "$ref" : "#/components/schemas/ResponseErrorListV2"
                 }
               }
             },
@@ -2937,7 +2937,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/ErrorListResponse"
+                  "$ref" : "#/components/schemas/ResponseErrorListV2"
                 }
               }
             },
@@ -2957,7 +2957,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/ErrorListResponse"
+                  "$ref" : "#/components/schemas/ResponseErrorListV2"
                 }
               }
             },
@@ -2977,7 +2977,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/ErrorListResponse"
+                  "$ref" : "#/components/schemas/ResponseErrorListV2"
                 }
               }
             },
@@ -3124,7 +3124,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/ErrorListResponse"
+                  "$ref" : "#/components/schemas/ResponseErrorListV2"
                 }
               }
             },
@@ -3144,7 +3144,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/ErrorListResponse"
+                  "$ref" : "#/components/schemas/ResponseErrorListV2"
                 }
               }
             },
@@ -3164,7 +3164,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/ErrorListResponse"
+                  "$ref" : "#/components/schemas/ResponseErrorListV2"
                 }
               }
             },
@@ -3342,7 +3342,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/ErrorListResponse"
+                  "$ref" : "#/components/schemas/ResponseErrorListV2"
                 }
               }
             },
@@ -3362,7 +3362,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/ErrorListResponse"
+                  "$ref" : "#/components/schemas/ResponseErrorListV2"
                 }
               }
             },
@@ -3382,7 +3382,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/ErrorListResponse"
+                  "$ref" : "#/components/schemas/ResponseErrorListV2"
                 }
               }
             },
@@ -3402,7 +3402,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/ErrorListResponse"
+                  "$ref" : "#/components/schemas/ResponseErrorListV2"
                 }
               }
             },
@@ -3570,7 +3570,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/ErrorListResponse"
+                  "$ref" : "#/components/schemas/ResponseErrorListV2"
                 }
               }
             },
@@ -3590,7 +3590,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/ErrorListResponse"
+                  "$ref" : "#/components/schemas/ResponseErrorListV2"
                 }
               }
             },
@@ -3610,7 +3610,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/ErrorListResponse"
+                  "$ref" : "#/components/schemas/ResponseErrorListV2"
                 }
               }
             },
@@ -3779,7 +3779,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/ErrorListResponse"
+                  "$ref" : "#/components/schemas/ResponseErrorListV2"
                 }
               }
             },
@@ -3799,7 +3799,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/ErrorListResponse"
+                  "$ref" : "#/components/schemas/ResponseErrorListV2"
                 }
               }
             },
@@ -3819,7 +3819,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/ErrorListResponse"
+                  "$ref" : "#/components/schemas/ResponseErrorListV2"
                 }
               }
             },
@@ -3997,7 +3997,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/ErrorListResponse"
+                  "$ref" : "#/components/schemas/ResponseErrorListV2"
                 }
               }
             },
@@ -4017,7 +4017,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/ErrorListResponse"
+                  "$ref" : "#/components/schemas/ResponseErrorListV2"
                 }
               }
             },
@@ -4037,7 +4037,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/ErrorListResponse"
+                  "$ref" : "#/components/schemas/ResponseErrorListV2"
                 }
               }
             },
@@ -4057,7 +4057,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/ErrorListResponse"
+                  "$ref" : "#/components/schemas/ResponseErrorListV2"
                 }
               }
             },
@@ -4225,7 +4225,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/ErrorListResponse"
+                  "$ref" : "#/components/schemas/ResponseErrorListV2"
                 }
               }
             },
@@ -4245,7 +4245,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/ErrorListResponse"
+                  "$ref" : "#/components/schemas/ResponseErrorListV2"
                 }
               }
             },
@@ -4265,7 +4265,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/ErrorListResponse"
+                  "$ref" : "#/components/schemas/ResponseErrorListV2"
                 }
               }
             },
@@ -4434,7 +4434,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/ErrorListResponse"
+                  "$ref" : "#/components/schemas/ResponseErrorListV2"
                 }
               }
             },
@@ -4454,7 +4454,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/ErrorListResponse"
+                  "$ref" : "#/components/schemas/ResponseErrorListV2"
                 }
               }
             },
@@ -4474,7 +4474,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/ErrorListResponse"
+                  "$ref" : "#/components/schemas/ResponseErrorListV2"
                 }
               }
             },
@@ -5408,11 +5408,11 @@
         "required" : [ "data", "links", "meta" ],
         "type" : "object"
       },
-      "ErrorListResponse" : {
+      "ResponseErrorListV2" : {
         "properties" : {
           "errors" : {
             "items" : {
-              "$ref" : "#/components/schemas/ErrorListResponse_errors"
+              "$ref" : "#/components/schemas/ResponseErrorListV2_errors"
             },
             "type" : "array"
           }
@@ -7430,7 +7430,7 @@
         "required" : [ "transactions" ],
         "type" : "object"
       },
-      "ErrorListResponse_meta" : {
+      "ResponseErrorListV2_meta" : {
         "description" : "Additional data for customised error codes",
         "properties" : {
           "urn" : {
@@ -7441,7 +7441,7 @@
         "type" : "object",
         "x-conditional" : [ "urn" ]
       },
-      "ErrorListResponse_errors" : {
+      "ResponseErrorListV2_errors" : {
         "properties" : {
           "code" : {
             "description" : "The code of the error encountered. Where the error is specific to the respondent, an application-specific error code, expressed as a string value. If the error is application-specific, the URN code that the specific error extends must be provided in the meta object. Otherwise, the value is the error code URN.",
@@ -7456,7 +7456,7 @@
             "type" : "string"
           },
           "meta" : {
-            "$ref" : "#/components/schemas/ErrorListResponse_meta"
+            "$ref" : "#/components/schemas/ResponseErrorListV2_meta"
           }
         },
         "required" : [ "code", "detail", "title" ],
