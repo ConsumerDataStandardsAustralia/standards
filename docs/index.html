@@ -1217,7 +1217,7 @@
                                 <a href="#tocStelcotransactionlistresponse" class="toc-h3 toc-link" data-title="TelcoTransactionListResponse">TelcoTransactionListResponse</a>
                               </li>
                               <li>
-                                <a href="#tocSerrorlistresponse" class="toc-h3 toc-link" data-title="ErrorListResponse">ErrorListResponse</a>
+                                <a href="#tocSresponseerrorlistv2" class="toc-h3 toc-link" data-title="ResponseErrorListV2">ResponseErrorListV2</a>
                               </li>
                               <li>
                                 <a href="#tocStelcoproduct" class="toc-h3 toc-link" data-title="TelcoProduct">TelcoProduct</a>
@@ -1340,10 +1340,10 @@
                                 <a href="#tocStelcotransactionlistresponsedata" class="toc-h3 toc-link" data-title="TelcoTransactionListResponseData">TelcoTransactionListResponseData</a>
                               </li>
                               <li>
-                                <a href="#tocSerrorlistresponsemeta" class="toc-h3 toc-link" data-title="ErrorListResponseMeta">ErrorListResponseMeta</a>
+                                <a href="#tocSresponseerrorlistv2meta" class="toc-h3 toc-link" data-title="ResponseErrorListV2Meta">ResponseErrorListV2Meta</a>
                               </li>
                               <li>
-                                <a href="#tocSerrorlistresponserrors" class="toc-h3 toc-link" data-title="ErrorListResponsErrors">ErrorListResponsErrors</a>
+                                <a href="#tocSresponseerrorlistv2rrors" class="toc-h3 toc-link" data-title="ResponseErrorListV2rrors">ResponseErrorListV2rrors</a>
                               </li>
                               <li>
                                 <a href="#tocStelcoproductpricing" class="toc-h3 toc-link" data-title="TelcoProductPricing">TelcoProductPricing</a>
@@ -43673,19 +43673,19 @@ Note that the standards for the telecommunications sector are currently in draft
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
-<td><a href="#schemacdr-telco-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>406</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.6">Not Acceptable</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li></ul></td>
-<td><a href="#schemacdr-telco-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>422</td>
 <td><a href="https://tools.ietf.org/html/rfc2518#section-10.3">Unprocessable Entity</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-422-field-invalid-page">422 - Invalid Page</a></li></ul></td>
-<td><a href="#schemacdr-telco-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 </tbody></table>
 
@@ -43932,19 +43932,19 @@ This operation does not require authentication
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
-<td><a href="#schemacdr-telco-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>404</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.4">Not Found</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-404-resource-invalid">404 - Invalid Resource</a></li></ul></td>
-<td><a href="#schemacdr-telco-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>406</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.6">Not Acceptable</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li></ul></td>
-<td><a href="#schemacdr-telco-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 </tbody></table>
 
@@ -44191,25 +44191,25 @@ This operation does not require authentication
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
-<td><a href="#schemacdr-telco-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>404</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.4">Not Found</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-404-unavailable-service-point">404 - Unavailable Service Point</a></li><li><a href="#error-404-invalid-service-point">404 - Invalid Service Point</a></li></ul></td>
-<td><a href="#schemacdr-telco-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>406</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.6">Not Acceptable</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li></ul></td>
-<td><a href="#schemacdr-telco-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>422</td>
 <td><a href="https://tools.ietf.org/html/rfc2518#section-10.3">Unprocessable Entity</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-422-field-invalid-page">422 - Invalid Page</a></li></ul></td>
-<td><a href="#schemacdr-telco-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 </tbody></table>
 
@@ -44510,19 +44510,19 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
-<td><a href="#schemacdr-telco-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>406</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.6">Not Acceptable</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li></ul></td>
-<td><a href="#schemacdr-telco-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>422</td>
 <td><a href="https://tools.ietf.org/html/rfc2518#section-10.3">Unprocessable Entity</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-422-field-invalid-page">422 - Invalid Page</a></li></ul></td>
-<td><a href="#schemacdr-telco-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 </tbody></table>
 
@@ -44842,19 +44842,19 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
-<td><a href="#schemacdr-telco-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>406</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.6">Not Acceptable</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li></ul></td>
-<td><a href="#schemacdr-telco-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>422</td>
 <td><a href="https://tools.ietf.org/html/rfc2518#section-10.3">Unprocessable Entity</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-422-field-invalid-page">422 - Invalid Page</a></li><li><a href="#error-422-unavailable-service-point">422 - Unavailable Service Point</a></li><li><a href="#error-422-invalid-service-point">422 - Invalid Service Point</a></li></ul></td>
-<td><a href="#schemacdr-telco-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 </tbody></table>
 
@@ -45146,19 +45146,19 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
-<td><a href="#schemacdr-telco-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>406</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.6">Not Acceptable</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li></ul></td>
-<td><a href="#schemacdr-telco-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>422</td>
 <td><a href="https://tools.ietf.org/html/rfc2518#section-10.3">Unprocessable Entity</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-422-field-invalid-page">422 - Invalid Page</a></li></ul></td>
-<td><a href="#schemacdr-telco-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 </tbody></table>
 
@@ -45407,19 +45407,19 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
-<td><a href="#schemacdr-telco-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>404</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.4">Not Found</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-404-unavailable-telco-account">404 - Unavailable Telco Account</a></li><li><a href="#error-404-invalid-telco-account">404 - Invalid Telco Account</a></li></ul></td>
-<td><a href="#schemacdr-telco-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>406</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.6">Not Acceptable</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li></ul></td>
-<td><a href="#schemacdr-telco-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 </tbody></table>
 
@@ -45673,19 +45673,19 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
-<td><a href="#schemacdr-telco-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>404</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.4">Not Found</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-404-unavailable-telco-account">404 - Unavailable Telco Account</a></li><li><a href="#error-404-invalid-telco-account">404 - Invalid Telco Account</a></li></ul></td>
-<td><a href="#schemacdr-telco-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>406</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.6">Not Acceptable</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li></ul></td>
-<td><a href="#schemacdr-telco-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 </tbody></table>
 
@@ -45922,19 +45922,19 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
-<td><a href="#schemacdr-telco-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>404</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.4">Not Found</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-404-unavailable-telco-account">404 - Unavailable Telco Account</a></li><li><a href="#error-404-invalid-telco-account">404 - Invalid Telco Account</a></li></ul></td>
-<td><a href="#schemacdr-telco-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>406</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.6">Not Acceptable</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li></ul></td>
-<td><a href="#schemacdr-telco-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 </tbody></table>
 
@@ -46209,19 +46209,19 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
-<td><a href="#schemacdr-telco-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>404</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.4">Not Found</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-404-unavailable-telco-account">404 - Unavailable Telco Account</a></li><li><a href="#error-404-invalid-telco-account">404 - Invalid Telco Account</a></li></ul></td>
-<td><a href="#schemacdr-telco-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>406</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.6">Not Acceptable</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li></ul></td>
-<td><a href="#schemacdr-telco-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 </tbody></table>
 
@@ -46517,19 +46517,19 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
-<td><a href="#schemacdr-telco-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>406</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.6">Not Acceptable</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li></ul></td>
-<td><a href="#schemacdr-telco-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>422</td>
 <td><a href="https://tools.ietf.org/html/rfc2518#section-10.3">Unprocessable Entity</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-422-field-invalid-page">422 - Invalid Page</a></li></ul></td>
-<td><a href="#schemacdr-telco-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 </tbody></table>
 
@@ -46865,19 +46865,19 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
-<td><a href="#schemacdr-telco-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>406</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.6">Not Acceptable</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li></ul></td>
-<td><a href="#schemacdr-telco-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>422</td>
 <td><a href="https://tools.ietf.org/html/rfc2518#section-10.3">Unprocessable Entity</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-422-field-invalid-page">422 - Invalid Page</a></li><li><a href="#error-422-unavailable-telco-account">422 - Unavailable Telco Account</a></li><li><a href="#error-422-invalid-telco-account">422 - Invalid Telco Account</a></li></ul></td>
-<td><a href="#schemacdr-telco-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 </tbody></table>
 
@@ -47169,25 +47169,25 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
-<td><a href="#schemacdr-telco-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>404</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.4">Not Found</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-404-unavailable-telco-account">404 - Unavailable Telco Account</a></li><li><a href="#error-404-invalid-telco-account">404 - Invalid Telco Account</a></li></ul></td>
-<td><a href="#schemacdr-telco-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>406</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.6">Not Acceptable</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li></ul></td>
-<td><a href="#schemacdr-telco-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>422</td>
 <td><a href="https://tools.ietf.org/html/rfc2518#section-10.3">Unprocessable Entity</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-422-field-invalid-page">422 - Invalid Page</a></li></ul></td>
-<td><a href="#schemacdr-telco-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 </tbody></table>
 
@@ -47514,19 +47514,19 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
-<td><a href="#schemacdr-telco-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>406</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.6">Not Acceptable</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li></ul></td>
-<td><a href="#schemacdr-telco-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>422</td>
 <td><a href="https://tools.ietf.org/html/rfc2518#section-10.3">Unprocessable Entity</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-422-field-invalid-page">422 - Invalid Page</a></li></ul></td>
-<td><a href="#schemacdr-telco-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 </tbody></table>
 
@@ -47886,19 +47886,19 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
-<td><a href="#schemacdr-telco-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>406</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.6">Not Acceptable</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li></ul></td>
-<td><a href="#schemacdr-telco-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>422</td>
 <td><a href="https://tools.ietf.org/html/rfc2518#section-10.3">Unprocessable Entity</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-422-field-invalid-page">422 - Invalid Page</a></li><li><a href="#error-422-unavailable-telco-account">422 - Unavailable Telco Account</a></li><li><a href="#error-422-invalid-telco-account">422 - Invalid Telco Account</a></li></ul></td>
-<td><a href="#schemacdr-telco-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 </tbody></table>
 
@@ -48194,25 +48194,25 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
-<td><a href="#schemacdr-telco-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>404</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.4">Not Found</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-404-unavailable-telco-account">404 - Unavailable Telco Account</a></li><li><a href="#error-404-invalid-telco-account">404 - Invalid Telco Account</a></li></ul></td>
-<td><a href="#schemacdr-telco-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>406</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.6">Not Acceptable</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li></ul></td>
-<td><a href="#schemacdr-telco-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>422</td>
 <td><a href="https://tools.ietf.org/html/rfc2518#section-10.3">Unprocessable Entity</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-422-field-invalid-page">422 - Invalid Page</a></li></ul></td>
-<td><a href="#schemacdr-telco-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 </tbody></table>
 
@@ -48508,19 +48508,19 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
-<td><a href="#schemacdr-telco-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>406</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.6">Not Acceptable</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li></ul></td>
-<td><a href="#schemacdr-telco-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>422</td>
 <td><a href="https://tools.ietf.org/html/rfc2518#section-10.3">Unprocessable Entity</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-422-field-invalid-page">422 - Invalid Page</a></li></ul></td>
-<td><a href="#schemacdr-telco-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 </tbody></table>
 
@@ -48849,19 +48849,19 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
-<td><a href="#schemacdr-telco-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>406</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.6">Not Acceptable</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li></ul></td>
-<td><a href="#schemacdr-telco-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>422</td>
 <td><a href="https://tools.ietf.org/html/rfc2518#section-10.3">Unprocessable Entity</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-422-field-invalid-page">422 - Invalid Page</a></li><li><a href="#error-422-unavailable-telco-account">422 - Unavailable Telco Account</a></li><li><a href="#error-422-invalid-telco-account">422 - Invalid Telco Account</a></li></ul></td>
-<td><a href="#schemacdr-telco-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 </tbody></table>
 
@@ -50083,9 +50083,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSerrorlistresponse">ErrorListResponse</h3>
+<h3 class="schema-toc" id="tocSresponseerrorlistv2">ResponseErrorListV2</h3>
 
-<p><a id="schemacdr-telco-apierrorlistresponse"></a></p>
+<p><a id="schemacdr-telco-apiresponseerrorlistv2"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
@@ -50110,7 +50110,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </thead><tbody>
 <tr>
 <td>errors</td>
-<td>[<a href="#schemacdr-telco-apierrorlistresponserrors">ErrorListResponsErrors</a>]</td>
+<td>[<a href="#schemacdr-telco-apiresponseerrorlistv2rrors">ResponseErrorListV2rrors</a>]</td>
 <td>mandatory</td>
 <td>none</td>
 </tr>
@@ -53501,9 +53501,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSerrorlistresponsemeta">ErrorListResponseMeta</h3>
+<h3 class="schema-toc" id="tocSresponseerrorlistv2meta">ResponseErrorListV2Meta</h3>
 
-<p><a id="schemacdr-telco-apierrorlistresponsemeta"></a></p>
+<p><a id="schemacdr-telco-apiresponseerrorlistv2meta"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"urn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -53530,9 +53530,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSerrorlistresponserrors">ErrorListResponsErrors</h3>
+<h3 class="schema-toc" id="tocSresponseerrorlistv2rrors">ResponseErrorListV2rrors</h3>
 
-<p><a id="schemacdr-telco-apierrorlistresponserrors"></a></p>
+<p><a id="schemacdr-telco-apiresponseerrorlistv2rrors"></a></p>
 
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -53572,7 +53572,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>meta</td>
-<td><a href="#schemacdr-telco-apierrorlistresponsemeta">ErrorListResponseMeta</a></td>
+<td><a href="#schemacdr-telco-apiresponseerrorlistv2meta">ResponseErrorListV2Meta</a></td>
 <td>optional</td>
 <td>Additional data for customised error codes</td>
 </tr>

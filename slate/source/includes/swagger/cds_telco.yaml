@@ -149,7 +149,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
             - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page
             Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
@@ -157,14 +157,14 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406
             - Unsupported Version](#error-406-header-unsupported-version)</li></ul>
         "422":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422
             - Invalid Page](#error-422-field-invalid-page)</li></ul>
       summary: Get Telco Products
@@ -226,21 +226,21 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
             - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
         "404":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[404
             - Invalid Resource](#error-404-resource-invalid)</li></ul>
         "406":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406
             - Unsupported Version](#error-406-header-unsupported-version)</li></ul>
       summary: Get Telco Product Detail
@@ -376,7 +376,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
             - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page
             Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
@@ -387,7 +387,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[404
             - Unavailable Service Point](#error-404-unavailable-service-point)</li><li>[404
             - Invalid Service Point](#error-404-invalid-service-point)</li></ul>
@@ -398,7 +398,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406
             - Unsupported Version](#error-406-header-unsupported-version)</li></ul>
           headers:
@@ -408,7 +408,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422
             - Invalid Page](#error-422-field-invalid-page)</li></ul>
           headers:
@@ -556,7 +556,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
             - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page
             Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
@@ -567,7 +567,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406
             - Unsupported Version](#error-406-header-unsupported-version)</li></ul>
           headers:
@@ -577,7 +577,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422
             - Invalid Page](#error-422-field-invalid-page)</li></ul>
           headers:
@@ -704,7 +704,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
             - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page
             Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
@@ -715,7 +715,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406
             - Unsupported Version](#error-406-header-unsupported-version)</li></ul>
           headers:
@@ -725,7 +725,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422
             - Invalid Page](#error-422-field-invalid-page)</li><li>[422 - Unavailable
             Service Point](#error-422-unavailable-service-point)</li><li>[422 - Invalid
@@ -879,7 +879,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
             - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page
             Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
@@ -890,7 +890,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406
             - Unsupported Version](#error-406-header-unsupported-version)</li></ul>
           headers:
@@ -900,7 +900,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422
             - Invalid Page](#error-422-field-invalid-page)</li></ul>
           headers:
@@ -1020,7 +1020,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
             - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
           headers:
@@ -1030,7 +1030,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[404
             - Unavailable Telco Account](#error-404-unavailable-telco-account)</li><li>[404
             - Invalid Telco Account](#error-404-invalid-telco-account)</li></ul>
@@ -1041,7 +1041,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406
             - Unsupported Version](#error-406-header-unsupported-version)</li></ul>
           headers:
@@ -1170,7 +1170,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
             - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
           headers:
@@ -1180,7 +1180,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[404
             - Unavailable Telco Account](#error-404-unavailable-telco-account)</li><li>[404
             - Invalid Telco Account](#error-404-invalid-telco-account)</li></ul>
@@ -1191,7 +1191,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406
             - Unsupported Version](#error-406-header-unsupported-version)</li></ul>
           headers:
@@ -1309,7 +1309,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
             - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
           headers:
@@ -1319,7 +1319,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[404
             - Unavailable Telco Account](#error-404-unavailable-telco-account)</li><li>[404
             - Invalid Telco Account](#error-404-invalid-telco-account)</li></ul>
@@ -1330,7 +1330,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406
             - Unsupported Version](#error-406-header-unsupported-version)</li></ul>
           headers:
@@ -1447,7 +1447,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
             - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
           headers:
@@ -1457,7 +1457,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[404
             - Unavailable Telco Account](#error-404-unavailable-telco-account)</li><li>[404
             - Invalid Telco Account](#error-404-invalid-telco-account)</li></ul>
@@ -1468,7 +1468,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406
             - Unsupported Version](#error-406-header-unsupported-version)</li></ul>
           headers:
@@ -1594,7 +1594,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
             - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page
             Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
@@ -1605,7 +1605,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406
             - Unsupported Version](#error-406-header-unsupported-version)</li></ul>
           headers:
@@ -1615,7 +1615,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422
             - Invalid Page](#error-422-field-invalid-page)</li></ul>
           headers:
@@ -1742,7 +1742,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
             - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page
             Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
@@ -1753,7 +1753,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406
             - Unsupported Version](#error-406-header-unsupported-version)</li></ul>
           headers:
@@ -1763,7 +1763,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422
             - Invalid Page](#error-422-field-invalid-page)</li><li>[422 - Unavailable
             Telco Account](#error-422-unavailable-telco-account)</li><li>[422 - Invalid
@@ -1883,7 +1883,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
             - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page
             Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
@@ -1894,7 +1894,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[404
             - Unavailable Telco Account](#error-404-unavailable-telco-account)</li><li>[404
             - Invalid Telco Account](#error-404-invalid-telco-account)</li></ul>
@@ -1905,7 +1905,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406
             - Unsupported Version](#error-406-header-unsupported-version)</li></ul>
           headers:
@@ -1915,7 +1915,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422
             - Invalid Page](#error-422-field-invalid-page)</li></ul>
           headers:
@@ -2063,7 +2063,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
             - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page
             Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
@@ -2074,7 +2074,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406
             - Unsupported Version](#error-406-header-unsupported-version)</li></ul>
           headers:
@@ -2084,7 +2084,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422
             - Invalid Page](#error-422-field-invalid-page)</li></ul>
           headers:
@@ -2233,7 +2233,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
             - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page
             Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
@@ -2244,7 +2244,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406
             - Unsupported Version](#error-406-header-unsupported-version)</li></ul>
           headers:
@@ -2254,7 +2254,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422
             - Invalid Page](#error-422-field-invalid-page)</li><li>[422 - Unavailable
             Telco Account](#error-422-unavailable-telco-account)</li><li>[422 - Invalid
@@ -2414,7 +2414,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
             - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page
             Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
@@ -2425,7 +2425,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[404
             - Unavailable Telco Account](#error-404-unavailable-telco-account)</li><li>[404
             - Invalid Telco Account](#error-404-invalid-telco-account)</li></ul>
@@ -2436,7 +2436,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406
             - Unsupported Version](#error-406-header-unsupported-version)</li></ul>
           headers:
@@ -2446,7 +2446,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422
             - Invalid Page](#error-422-field-invalid-page)</li></ul>
           headers:
@@ -2594,7 +2594,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
             - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page
             Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
@@ -2605,7 +2605,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406
             - Unsupported Version](#error-406-header-unsupported-version)</li></ul>
           headers:
@@ -2615,7 +2615,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422
             - Invalid Page](#error-422-field-invalid-page)</li></ul>
           headers:
@@ -2764,7 +2764,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
             - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page
             Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
@@ -2775,7 +2775,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406
             - Unsupported Version](#error-406-header-unsupported-version)</li></ul>
           headers:
@@ -2785,7 +2785,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422
             - Invalid Page](#error-422-field-invalid-page)</li><li>[422 - Unavailable
             Telco Account](#error-422-unavailable-telco-account)</li><li>[422 - Invalid
@@ -3695,11 +3695,11 @@ components:
       - links
       - meta
       type: object
-    ErrorListResponse:
+    ResponseErrorListV2:
       properties:
         errors:
           items:
-            $ref: '#/components/schemas/ErrorListResponsErrors'
+            $ref: '#/components/schemas/ResponseErrorListV2rrors'
           type: array
       required:
       - errors
@@ -6035,7 +6035,7 @@ components:
       required:
       - transactions
       type: object
-    ErrorListResponseMeta:
+    ResponseErrorListV2Meta:
       description: Additional data for customised error codes
       properties:
         urn:
@@ -6046,7 +6046,7 @@ components:
       type: object
       x-conditional:
       - urn
-    ErrorListResponsErrors:
+    ResponseErrorListV2rrors:
       properties:
         code:
           description: The code of the error encountered. Where the error is specific
@@ -6065,7 +6065,7 @@ components:
             the problem.
           type: string
         meta:
-          $ref: '#/components/schemas/ErrorListResponseMeta'
+          $ref: '#/components/schemas/ResponseErrorListV2Meta'
       required:
       - code
       - detail

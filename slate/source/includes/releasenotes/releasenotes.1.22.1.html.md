@@ -20,7 +20,7 @@ This release addresses the following minor defects raised on [Standards Staging]
 - Issue [257](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/257): Notice for the Binding Data Standard
 - Issue [255](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/255): Maintenance of obligation date tables
 - Issue [254](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/254): Get Energy Account Detail V2 - Fix binding date
-- Issue [245](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/254): Get Energy APIs: meta object should not be mandatory
+- Issue [245](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/245): Get Energy APIs: meta object should not be mandatory
 - Issue [227](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/227): Spelling of "organisation" in description of EnergyServicePointDetail.party
 - Issue [226](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/226): Standardise use of ResponseErrorListV2 for Energy APIs
 - Issue [193](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/193): Incorrect link to Endpoint Version Schedule in Standards
@@ -50,7 +50,7 @@ No changes
 
 |Change|Description|Link|
 |------|-----------|----|
-| Updated Telco Draft | Changes arising from ongoing consultation on the Telco standards have been incorporated | [Telcp APIs](../../#telco-apis) |
+| Updated Telco Draft | Changes arising from ongoing consultation on the Telco standards have been incorporated | [Telco APIs](../../#telco-apis) |
 | Meta Objects Optional | Made the meta object in requests and non-list responses optional for energy APIs to align with decisions | [Energy APIs](../../#energy-apis) |
 | Error List Model | Align the version of the energy error list with the banking sector | [Energy APIs](../../#energy-apis) |
 | Typo | Fixed typo of 'organisation' | [Energy APIs](../../#energy-apis) |
