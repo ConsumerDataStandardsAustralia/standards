@@ -4065,6 +4065,55 @@ To perform this operation, you must be authenticated and authorised with the fol
 |---|---|---|---|
 |errors|[[ResponseErrorListV2rrors](#schemacdr-telco-apiresponseerrorlistv2rrors)]|mandatory|none|
 
+<h3 class="schema-toc" id="tocSmetaerror">MetaError</h3>
+
+<a id="schemacdr-telco-apimetaerror"></a>
+
+```json
+{
+  "urn": "string"
+}
+
+```
+
+*Additional data for customised error codes*
+
+### Properties
+
+|Name|Type|Required|Description|
+|---|---|---|---|
+|urn|string|conditional|The CDR error code URN which the application-specific error code extends. Mandatory if the error `code` is an application-specific error rather than a standardised error code.|
+
+<h3 class="schema-toc" id="tocSresponseerrorlistv2">ResponseErrorListV2</h3>
+
+<a id="schemacdr-telco-apiresponseerrorlistv2"></a>
+
+```json
+{
+  "errors": [
+    {
+      "code": "string",
+      "title": "string",
+      "detail": "string",
+      "meta": {
+        "urn": "string"
+      }
+    }
+  ]
+}
+
+```
+
+### Properties
+
+|Name|Type|Required|Description|
+|---|---|---|---|
+|errors|[object]|mandatory|none|
+|» code|string|mandatory|The code of the error encountered. Where the error is specific to the respondent, an application-specific error code, expressed as a string value. If the error is application-specific, the URN code that the specific error extends must be provided in the meta object. Otherwise, the value is the error code URN.|
+|» title|string|mandatory|A short, human-readable summary of the problem that MUST NOT change from occurrence to occurrence of the problem represented by the error code.|
+|» detail|string|mandatory|A human-readable explanation specific to this occurrence of the problem.|
+|» meta|[MetaError](#schemacdr-telco-apimetaerror)|optional|Additional data for customised error codes|
+
 <h3 class="schema-toc" id="tocStelcoproduct">TelcoProduct</h3>
 
 <a id="schemacdr-telco-apitelcoproduct"></a>
