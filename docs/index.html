@@ -60771,7 +60771,17 @@ the Data Holder. In this scenario the retailer MUST call AEMO multiple times and
 </ul></li>
 <li>The primary Data Holder MUST ensure that the data requested and then shared with the Data Recipient is not outside the bounds of control of the specific CDR Consumer</li>
 </ul>
-<h1 id='energy-secondary-dh-apis'>Energy Secondary DH APIs</h1>
+<h1 id='energy-secondary-dh-apis'>Energy Secondary DH APIs</h1><pre class="highlight diff tab-diff"><code>Correction to make the meta object optional for:
+  Get DER for Service Point
+
+Correction to make the meta object optional in requests
+
+Corrected error list model to be ResponseErrorListV2
+to align with banking
+
+Fixed spelling of 'organisation' in the party object
+in EnergyServicePointDetail
+</code></pre>
 <p>This specification defines the APIs for Data Holders exposing Energy Secondary Data Holder endpoints.</p>
 
 <table>
@@ -63525,7 +63535,7 @@ This operation may only be called by an Energy Retailer using the information se
 <td>» party</td>
 <td>string</td>
 <td>mandatory</td>
-<td>The name of the party/orginsation related to this service point</td>
+<td>The name of the party/organisation related to this service point</td>
 </tr>
 <tr>
 <td>» role</td>

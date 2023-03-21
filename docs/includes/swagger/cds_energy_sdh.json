@@ -2014,7 +2014,7 @@
       "EnergyServicePointDetail_relatedParticipants" : {
         "properties" : {
           "party" : {
-            "description" : "The name of the party/orginsation related to this service point",
+            "description" : "The name of the party/organisation related to this service point",
             "type" : "string"
           },
           "role" : {

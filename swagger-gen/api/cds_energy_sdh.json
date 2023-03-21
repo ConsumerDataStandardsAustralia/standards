@@ -121,8 +121,7 @@
                 "type": "object",
                 "required": [
                     "data",
-                    "links",
-                    "meta"
+                    "links"
                 ],
                 "properties": {
                     "data": {
@@ -136,7 +135,7 @@
                     }
                 }
             },
-            "ErrorListResponse": {
+            "ResponseErrorListV2": {
                 "type": "object",
                 "required": [
                     "errors"
@@ -394,7 +393,7 @@
 
                                 "party": {
                                     "type": "string",
-                                    "description": "The name of the party/orginsation related to this service point"
+                                    "description": "The name of the party/organisation related to this service point"
                                 },
                                 "role": {
                                     "type": "string",
@@ -1525,7 +1524,7 @@
                         "content": {
         					"application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/ErrorListResponse"
+                                    "$ref": "#/components/schemas/ResponseErrorListV2"
         						}
         					}
         				}
@@ -1543,7 +1542,7 @@
                         "content": {
         					"application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/ErrorListResponse"
+                                    "$ref": "#/components/schemas/ResponseErrorListV2"
         						}
         					}
         				}
@@ -1561,7 +1560,7 @@
                         "content": {
         					"application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/ErrorListResponse"
+                                    "$ref": "#/components/schemas/ResponseErrorListV2"
         						}
         					}
         				}
@@ -1613,7 +1612,7 @@
                         "content": {
         					"application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/ErrorListResponse"
+                                    "$ref": "#/components/schemas/ResponseErrorListV2"
         						}
         					}
         				}
@@ -1631,7 +1630,7 @@
                         "content": {
         					"application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/ErrorListResponse"
+                                    "$ref": "#/components/schemas/ResponseErrorListV2"
         						}
         					}
         				}
@@ -1649,7 +1648,7 @@
                         "content": {
         					"application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/ErrorListResponse"
+                                    "$ref": "#/components/schemas/ResponseErrorListV2"
         						}
         					}
         				}
@@ -1716,7 +1715,7 @@
                         "content": {
         					"application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/ErrorListResponse"
+                                    "$ref": "#/components/schemas/ResponseErrorListV2"
         						}
         					}
         				}
@@ -1734,7 +1733,7 @@
                         "content": {
         					"application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/ErrorListResponse"
+                                    "$ref": "#/components/schemas/ResponseErrorListV2"
         						}
         					}
         				}
@@ -1752,7 +1751,7 @@
                         "content": {
         					"application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/ErrorListResponse"
+                                    "$ref": "#/components/schemas/ResponseErrorListV2"
         						}
         					}
         				}
@@ -1770,7 +1769,7 @@
                         "content": {
         					"application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/ErrorListResponse"
+                                    "$ref": "#/components/schemas/ResponseErrorListV2"
         						}
         					}
         				}
@@ -1837,7 +1836,7 @@
                         "content": {
         					"application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/ErrorListResponse"
+                                    "$ref": "#/components/schemas/ResponseErrorListV2"
         						}
         					}
         				}
@@ -1855,7 +1854,7 @@
                         "content": {
         					"application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/ErrorListResponse"
+                                    "$ref": "#/components/schemas/ResponseErrorListV2"
         						}
         					}
         				}
@@ -1873,7 +1872,7 @@
                         "content": {
         					"application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/ErrorListResponse"
+                                    "$ref": "#/components/schemas/ResponseErrorListV2"
         						}
         					}
         				}
@@ -1925,7 +1924,7 @@
                         "content": {
         					"application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/ErrorListResponse"
+                                    "$ref": "#/components/schemas/ResponseErrorListV2"
         						}
         					}
         				}
@@ -1943,7 +1942,7 @@
                         "content": {
         					"application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/ErrorListResponse"
+                                    "$ref": "#/components/schemas/ResponseErrorListV2"
         						}
         					}
         				}
@@ -1961,7 +1960,7 @@
                         "content": {
         					"application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/ErrorListResponse"
+                                    "$ref": "#/components/schemas/ResponseErrorListV2"
         						}
         					}
         				}
@@ -2019,7 +2018,7 @@
                         "content": {
         					"application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/ErrorListResponse"
+                                    "$ref": "#/components/schemas/ResponseErrorListV2"
         						}
         					}
         				}
@@ -2037,7 +2036,7 @@
                         "content": {
         					"application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/ErrorListResponse"
+                                    "$ref": "#/components/schemas/ResponseErrorListV2"
         						}
         					}
         				}
@@ -2055,7 +2054,7 @@
                         "content": {
         					"application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/ErrorListResponse"
+                                    "$ref": "#/components/schemas/ResponseErrorListV2"
         						}
         					}
         				}
