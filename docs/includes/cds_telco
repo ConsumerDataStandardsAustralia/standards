@@ -2031,7 +2031,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </code></pre>
 <p><code>GET /telco/accounts/{accountId}/payment-schedule</code></p>
 
-<p>Obtain the agreed payment schedule and details, if any, for a specific telco account. </p>
+<p>Obtain the agreed payment schedule and details, if any, for a specific telco account.</p>
 
 <p>Some general notes about this end point:</p>
 
