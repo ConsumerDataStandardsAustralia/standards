@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>Consumer Data Standards - v1.8.0 Release Notes</title>
+    <title>Consumer Data Standards - v1.22.1 Release Notes</title>
     <link href="../../images/favicon.ico" rel="icon" type="image/ico" />
 
     <style>
@@ -213,8 +213,14 @@
       <img src="../../images/logo.png" class="logo" alt="Logo" />
       <ul id="toc" class="toc-list-h1">
           <li>
-            <a href="#v1-8-0-release-notes" class="toc-h1 toc-link" data-title="V1.8.0 Release Notes">V1.8.0 Release Notes</a>
+            <a href="#v1-22-1-release-notes" class="toc-h1 toc-link" data-title="V1.22.1 Release Notes">V1.22.1 Release Notes</a>
               <ul class="toc-list-h2">
+                  <li>
+                    <a href="#changes-made" class="toc-h2 toc-link" data-title="Changes Made">Changes Made</a>
+                  </li>
+                  <li>
+                    <a href="#introduction" class="toc-h2 toc-link" data-title="Introduction">Introduction</a>
+                  </li>
                   <li>
                     <a href="#high-level-standards" class="toc-h2 toc-link" data-title="High Level Standards">High Level Standards</a>
                   </li>
@@ -227,6 +233,9 @@
                   <li>
                     <a href="#consumer-experience" class="toc-h2 toc-link" data-title="Consumer Experience">Consumer Experience</a>
                   </li>
+                  <li>
+                    <a href="#known-issues" class="toc-h2 toc-link" data-title="Known Issues">Known Issues</a>
+                  </li>
               </ul>
           </li>
       </ul>
@@ -236,42 +245,94 @@
     </div>
     <div class="page-wrapper">
       <div class="content">
-        <h1 id='v1-8-0-release-notes'>V1.8.0 Release Notes</h1>
-<p>Release notes for version 1.8.0 of the <a href="../../">CDR Standards</a>.</p>
+        <h1 id='v1-22-1-release-notes'>V1.22.1 Release Notes</h1>
+<p>Release notes for version v1.22.1 of the <a href="../../">CDR Standards</a>.</p>
+<h2 id='changes-made'>Changes Made</h2><h3 id='change-requests'>Change Requests</h3>
+<p>This release addresses the following minor defects raised on <a href="https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues">Standards Staging</a>:</p>
 
-<p>This release pertains to the changes approved by the Data Standards Chair in <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/144">Decision 144</a>.</p>
+<ul>
+<li>Issue <a href="https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/257">257</a>: Notice for the Binding Data Standard</li>
+<li>Issue <a href="https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/255">255</a>: Maintenance of obligation date tables</li>
+<li>Issue <a href="https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/254">254</a>: Get Energy Account Detail V2 - Fix binding date</li>
+<li>Issue <a href="https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/245">245</a>: Get Energy APIs: meta object should not be mandatory</li>
+<li>Issue <a href="https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/227">227</a>: Spelling of &quot;organisation&quot; in description of EnergyServicePointDetail.party</li>
+<li>Issue <a href="https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/226">226</a>: Standardise use of ResponseErrorListV2 for Energy APIs</li>
+<li>Issue <a href="https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/193">193</a>: Incorrect link to Endpoint Version Schedule in Standards</li>
+<li>Issue <a href="https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/152">152</a>: Get Meta objects to be optional in energy requests</li>
+</ul>
+<h3 id='decision-proposals'>Decision Proposals</h3>
+<p>This release is a patch release and does not include any changes arising from a decision of the Chair</p>
+<h2 id='introduction'>Introduction</h2>
+<table><thead>
+<tr>
+<th>Change</th>
+<th>Description</th>
+<th>Link</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Binding Statement</td>
+<td>Added binding statement to the Introduction section</td>
+<td><a href="../../#introduction">Introduction</a></td>
+</tr>
+<tr>
+<td>Align Obligation Dates</td>
+<td>Corrections to the future dated obligations table</td>
+<td><a href="../../#future-dated-obligations">FDOs</a></td>
+</tr>
+<tr>
+<td>Align Obligation Dates</td>
+<td>Corrections to the obligation dates table</td>
+<td><a href="../endpoint-version-schedule/#obligation-dates-schedule">Obligations Table</a></td>
+</tr>
+<tr>
+<td>Fix Binding Date</td>
+<td>Correct the binding date for Get Energy Account Detail V2 in the end point schedule</td>
+<td><a href="../endpoint-version-schedule/#endpoint-version-schedule">End Point Version Schedule</a></td>
+</tr>
+<tr>
+<td>Fix End Point Schedule Link</td>
+<td>Correct the link for the end point version schedule</td>
+<td><a href="../../#endpoint-version-schedule">End Point Version Section</a></td>
+</tr>
+</tbody></table>
 <h2 id='high-level-standards'>High Level Standards</h2>
-<p>No change</p>
+<p>No changes</p>
 <h2 id='api-end-points'>API End Points</h2>
-<p>No change</p>
+<table><thead>
+<tr>
+<th>Change</th>
+<th>Description</th>
+<th>Link</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Updated Telco Draft</td>
+<td>Changes arising from ongoing consultation on the Telco standards have been incorporated</td>
+<td><a href="../../#telco-apis">Telco APIs</a></td>
+</tr>
+<tr>
+<td>Meta Objects Optional</td>
+<td>Made the meta object in requests and non-list responses optional for energy APIs to align with decisions</td>
+<td><a href="../../#energy-apis">Energy APIs</a></td>
+</tr>
+<tr>
+<td>Error List Model</td>
+<td>Align the version of the energy error list with the banking sector</td>
+<td><a href="../../#energy-apis">Energy APIs</a></td>
+</tr>
+<tr>
+<td>Typo</td>
+<td>Fixed typo of &#39;organisation&#39;</td>
+<td><a href="../../#energy-apis">Energy APIs</a></td>
+</tr>
+</tbody></table>
 <h2 id='information-security-profile'>Information Security Profile</h2>
-<table><thead>
-<tr>
-<th>Change</th>
-<th>Description</th>
-<th>Link</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Modularised build script</td>
-<td>Changed the security profile build process to modularise the Markdown file into separate imports. This has no change to the standards.</td>
-<td><a href="../../#security-profile">Security Profile</a></td>
-</tr>
-</tbody></table>
+<p>No changes</p>
 <h2 id='consumer-experience'>Consumer Experience</h2>
-<table><thead>
-<tr>
-<th>Change</th>
-<th>Description</th>
-<th>Link</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Amending Consent CX Standards</td>
-<td>Added new CX standards arising from <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/144">Decision Proposal 144</a></td>
-<td><a href="../../#amending-authorisation-standards">Amending Consent</a></td>
-</tr>
-</tbody></table>
+<p>No changes</p>
+<h2 id='known-issues'>Known Issues</h2>
+<p>No changes</p>
 
       </div>
     </div>

@@ -3,7 +3,7 @@ info:
   description: Consumer Data Right end points and payloads for Secondary Data Holder
     for the Energy sector
   title: CDR Energy Secondary Data Holder API
-  version: 1.22.0
+  version: 1.22.1
 servers:
 - url: /
 paths:
@@ -114,7 +114,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
             - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page
             Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
@@ -133,7 +133,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406
             - Unsupported Version](#error-406-header-unsupported-version)</li></ul>
           headers:
@@ -151,7 +151,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422
             - Invalid Page](#error-422-field-invalid-page)</li></ul>
           headers:
@@ -268,7 +268,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
             - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
           headers:
@@ -286,7 +286,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[404
             - Unavailable Service Point](#error-404-unavailable-service-point)</li><li>[404
             - Invalid Service Point](#error-404-invalid-service-point)</li></ul>
@@ -305,7 +305,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406
             - Unsupported Version](#error-406-header-unsupported-version)</li></ul>
           headers:
@@ -476,7 +476,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
             - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page
             Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
@@ -495,7 +495,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[404
             - Unavailable Service Point](#error-404-unavailable-service-point)</li><li>[404
             - Invalid Service Point](#error-404-invalid-service-point)</li></ul>
@@ -514,7 +514,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406
             - Unsupported Version](#error-406-header-unsupported-version)</li></ul>
           headers:
@@ -532,7 +532,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422
             - Invalid Page](#error-422-field-invalid-page)</li></ul>
           headers:
@@ -695,7 +695,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
             - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page
             Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
@@ -714,7 +714,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406
             - Unsupported Version](#error-406-header-unsupported-version)</li></ul>
           headers:
@@ -732,7 +732,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422
             - Invalid Page](#error-422-field-invalid-page)</li><li>[422 - Unavailable
             Service Point](#error-422-unavailable-service-point)</li><li>[422 - Invalid
@@ -850,7 +850,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
             - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
           headers:
@@ -868,7 +868,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[404
             - Unavailable Service Point](#error-404-unavailable-service-point)</li><li>[404
             - Invalid Service Point](#error-404-invalid-service-point)</li></ul>
@@ -887,7 +887,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406
             - Unsupported Version](#error-406-header-unsupported-version)</li></ul>
           headers:
@@ -1013,7 +1013,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
             - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page
             Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
@@ -1032,7 +1032,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406
             - Unsupported Version](#error-406-header-unsupported-version)</li></ul>
           headers:
@@ -1050,7 +1050,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422
             - Invalid Page](#error-422-field-invalid-page)</li><li>[422 - Unavailable
             Service Point](#error-422-unavailable-service-point)</li><li>[422 - Invalid
@@ -1895,13 +1895,12 @@ components:
       required:
       - data
       - links
-      - meta
       type: object
-    ErrorListResponse:
+    ResponseErrorListV2:
       properties:
         errors:
           items:
-            $ref: '#/components/schemas/ErrorListResponse_errors'
+            $ref: '#/components/schemas/ResponseErrorListV2_errors'
           type: array
       required:
       - errors
@@ -2990,7 +2989,7 @@ components:
       required:
       - derRecords
       type: object
-    ErrorListResponse_meta:
+    ResponseErrorListV2_meta:
       description: Additional data for customised error codes
       properties:
         urn:
@@ -3001,7 +3000,7 @@ components:
       type: object
       x-conditional:
       - urn
-    ErrorListResponse_errors:
+    ResponseErrorListV2_errors:
       properties:
         code:
           description: The code of the error encountered. Where the error is specific
@@ -3020,7 +3019,7 @@ components:
             the problem.
           type: string
         meta:
-          $ref: '#/components/schemas/ErrorListResponse_meta'
+          $ref: '#/components/schemas/ResponseErrorListV2_meta'
       required:
       - code
       - detail
@@ -3083,7 +3082,8 @@ components:
         party: party
       properties:
         party:
-          description: The name of the party/orginsation related to this service point
+          description: The name of the party/organisation related to this service
+            point
           type: string
         role:
           description: 'The role performed by this participant in relation to the

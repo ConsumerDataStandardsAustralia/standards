@@ -103,10 +103,6 @@ Decoded SSA
 
 ```
 
-``` diff
-+ Added statement: Get Software Statement Assertion API v1 & v2 has the scope claim explicitly defined.
-```
-
 The SSA will conform to the requirements of **[[DCR]](#nref-DCR)** with the following clarifications:
 
 | Client Metadata | Required | Modifiable | Description
@@ -241,12 +237,6 @@ To register with a Data Holder, the Data Recipient sends an HTTP POST to the Dat
 
 The client registration request **MUST** contain the following claims in the JWT payload unless designated as Optional:
 
-```diff
-**v1.21.0 Change**
-+ Added JARM parameters
-Updated ID Token encryption parameter descriptions
-```
-
 | Claim | Required | Description
 |--------------|-------|-----------------------------------------------------------------------------------------------
 |**iss**|	Required | Contains the identifier for the Data Recipient Software Product (SoftwareProductId) as defined in the CDR Register
@@ -272,11 +262,6 @@ Updated ID Token encryption parameter descriptions
 
 #### ID Token Algorithm Selection Considerations
 
-```diff
-**v1.21.0 Change**
-Updated the section to make clear these requirements must be applied for OIDC Hybrid Flow
-```
-
 When requiring ID Token encryption, the following requirements are applicable.
 
 Participants **MUST** support, at a minimum, the following ID Token algorithms:
@@ -293,11 +278,6 @@ Data Recipients **MUST** support all the algorithms used in the ecosystem to ens
 ID Token algorithm considerations remain relevant where the OIDC Hybrid Flow is leveraged as defined in the Consumer Data Standards and in accordance with sections [5.1.1](https://openid.net/specs/openid-financial-api-part-2-1_0.html#id-token-as-detached-signature), [5.2.2.1](https://openid.net/specs/openid-financial-api-part-2-1_0.html#id-token-as-detached-signature-1), and [5.2.3.1](https://openid.net/specs/openid-financial-api-part-2-1_0.html#id-token-as-detached-signature-2) of **[[FAPI-1.0-Advanced]](#nref-FAPI-1-0-Advanced)**.
 
 #### JARM Response Encryption Considerations
-
-```diff
-**v1.21.0 Change**
-+ Added JARM response encryption considerations
-```
 
 If Data Holders support authorisation response encryption, they **MUST** support, at a minimum, one of each of the following `alg` and `enc` algorithms:
 

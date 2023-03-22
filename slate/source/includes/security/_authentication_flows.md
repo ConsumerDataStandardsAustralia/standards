@@ -11,13 +11,6 @@ No other flows are currently supported.
 
 ### Baseline Security Provisions
 
-```diff
-**v1.21.0 Change**
-Moved baseline requirements applicable to both he OIDC Hybrid Flow and Authorization Code Flow outside of the OIDC Hybrid Flow section
-Updated obligation dates
-Require Data Holders to support both OIDC Hybrid Flow and Authorization Code Flow for a 3 month period. OIDC Hybrid Flow may be retired after July 10th 2023
-```
-
 #### Data Holders
 The `request_uri` parameter is only supported if the Data Holder supports PAR.
 
@@ -96,12 +89,6 @@ Only a `response_type` (see [section 3.3](https://openid.net/specs/openid-connec
 
 <a id="authorization-code-flow"></a>
 ### Authorization Code Flow
-
-```diff
-**v1.21.0 Change**
-+ Added requriements in relation to authorisation response encryption
-- Removed legacy July 4th 2022 requirements
-```
 
 The following statements are applicable for this flow:
 

@@ -11,7 +11,7 @@ info:
     name: MIT License
     url: https://opensource.org/licenses/MIT
   title: CDR Telco API
-  version: 1.22.0
+  version: 1.22.1
 servers:
 - url: https://data.holder.com.au/cds-au/v1
 paths:
@@ -23,35 +23,36 @@ paths:
         Note that the results returned by this end point are expected to be ordered in descending order according to `lastUpdated`.
       operationId: listProducts
       parameters:
-      - description: Used to filter results on the type field.  Any one of the valid
-          values for this field can be supplied. If absent, defaults to include all
-          products. Valid values are ‘MOBILE’, ‘BROADBAND’
+      - description: Used to filter results on the type field. Any one of the valid
+          values for this field can be supplied. If absent, defaults to include ALL
+          products. Valid values are [MOBILE](https://www.legislation.gov.au/Details/C2022C00170/Html/Volume_1#_Toc95898745)
+          service. BROADBAND fixed internet service or ALL
         explode: true
         in: query
         name: type
         required: false
         schema:
-          default: MOBILE
+          default: ALL
           enum:
           - MOBILE
           - BROADBAND
+          - ALL
           type: string
         style: form
       - description: Used to filter results on the billing-type field.  Any one of
           the valid values for this field can be supplied. If absent, defaults to
           include all billing types. Valid values are ‘PRE_PAID’, ‘POST_PAID’, 'UPFRONT_PAID',
-          'OTHER'
+          'ALL'
         explode: true
         in: query
         name: billing-type
         required: false
         schema:
-          default: PRE_PAID
           enum:
           - PRE_PAID
           - POST_PAID
           - UPFRONT_PAID
-          - OTHER
+          - ALL
           type: string
         style: form
       - description: Allows for the filtering of productd based on whether the current
@@ -143,67 +144,29 @@ paths:
           description: Successful response
           headers:
             x-v:
-              explode: false
-              schema:
-                description: The [version](#response-headers) of the API end point
-                  that the data holder has responded with.
-                type: string
-              style: simple
+              $ref: '#/components/headers/x-v'
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
             - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page
             Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
-          headers:
-            x-fapi-interaction-id:
-              explode: false
-              schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
-                type: string
-              style: simple
         "406":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406
             - Unsupported Version](#error-406-header-unsupported-version)</li></ul>
-          headers:
-            x-fapi-interaction-id:
-              explode: false
-              schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
-                type: string
-              style: simple
         "422":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422
             - Invalid Page](#error-422-field-invalid-page)</li></ul>
-          headers:
-            x-fapi-interaction-id:
-              explode: false
-              schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
-                type: string
-              style: simple
       summary: Get Telco Products
       tags:
       - Telco
@@ -258,66 +221,28 @@ paths:
           description: Successful response
           headers:
             x-v:
-              explode: false
-              schema:
-                description: The [version](#response-headers) of the API end point
-                  that the data holder has responded with.
-                type: string
-              style: simple
+              $ref: '#/components/headers/x-v'
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
             - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
-          headers:
-            x-fapi-interaction-id:
-              explode: false
-              schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
-                type: string
-              style: simple
         "404":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[404
             - Invalid Resource](#error-404-resource-invalid)</li></ul>
-          headers:
-            x-fapi-interaction-id:
-              explode: false
-              schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
-                type: string
-              style: simple
         "406":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406
             - Unsupported Version](#error-406-header-unsupported-version)</li></ul>
-          headers:
-            x-fapi-interaction-id:
-              explode: false
-              schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
-                type: string
-              style: simple
       summary: Get Telco Product Detail
       tags:
       - Telco
@@ -328,11 +253,11 @@ paths:
       description: Obtain a usage data from a particular service Id
       operationId: getUsageForService
       parameters:
-      - description: ID of the specific service requested such as a mobile [MSISDN](https://www.etsi.org/deliver/etsi_gts/03/0303/05.00.00_60/gsmts_0303v050000p.pdf),
+      - description: ID of the specific service requested. E.g. a mobile [MSISDN](https://www.etsi.org/deliver/etsi_gts/03/0303/05.00.00_60/gsmts_0303v050000p.pdf),
           [FNN](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf)
-          or internet service e.g [NBN AVC Service ID](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf).  This
-          is a tokenised ID returned from the account. In accordance with [CDR ID
-          permanence](#id-permanence) requirements
+          or internet service e.g [NBN AVC Service ID](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf).
+          This is a tokenised ID returned from the account. In accordance with [CDR
+          ID permanence](#id-permanence) requirements
         explode: false
         in: path
         name: serviceId
@@ -362,24 +287,6 @@ paths:
           type: string
         style: form
         x-cds-type: DateString
-      - description: Page of results to request (standard pagination)
-        explode: true
-        in: query
-        name: page
-        required: false
-        schema:
-          type: integer
-        style: form
-        x-cds-type: PositiveInteger
-      - description: Page size to request.  Default is 25 (standard pagination)
-        explode: true
-        in: query
-        name: page-size
-        required: false
-        schema:
-          type: integer
-        style: form
-        x-cds-type: PositiveInteger
       - description: Version of the API end point requested by the client. Must be
           set to a positive integer. The data holder should respond with the highest
           supported version between [x-min-v](#request-headers) and [x-v](#request-headers).
@@ -462,96 +369,51 @@ paths:
           description: Successful response
           headers:
             x-v:
-              explode: false
-              schema:
-                description: The [version](#response-headers) of the API end point
-                  that the data holder has responded with.
-                type: string
-              style: simple
+              $ref: '#/components/headers/x-v'
             x-fapi-interaction-id:
-              explode: false
-              schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
-                type: string
-              style: simple
+              $ref: '#/components/headers/x-fapi-interaction-id'
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
             - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page
             Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
           headers:
             x-fapi-interaction-id:
-              explode: false
-              schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
-                type: string
-              style: simple
+              $ref: '#/components/headers/x-fapi-interaction-id'
         "404":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[404
             - Unavailable Service Point](#error-404-unavailable-service-point)</li><li>[404
             - Invalid Service Point](#error-404-invalid-service-point)</li></ul>
           headers:
             x-fapi-interaction-id:
-              explode: false
-              schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
-                type: string
-              style: simple
+              $ref: '#/components/headers/x-fapi-interaction-id'
         "406":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406
             - Unsupported Version](#error-406-header-unsupported-version)</li></ul>
           headers:
             x-fapi-interaction-id:
-              explode: false
-              schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
-                type: string
-              style: simple
+              $ref: '#/components/headers/x-fapi-interaction-id'
         "422":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422
             - Invalid Page](#error-422-field-invalid-page)</li></ul>
           headers:
             x-fapi-interaction-id:
-              explode: false
-              schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
-                type: string
-              style: simple
+              $ref: '#/components/headers/x-fapi-interaction-id'
       summary: Get Usage For Telco Service
       tags:
       - Telco
@@ -687,77 +549,40 @@ paths:
           description: Successful response
           headers:
             x-v:
-              explode: false
-              schema:
-                description: The [version](#response-headers) of the API end point
-                  that the data holder has responded with.
-                type: string
-              style: simple
+              $ref: '#/components/headers/x-v'
             x-fapi-interaction-id:
-              explode: false
-              schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
-                type: string
-              style: simple
+              $ref: '#/components/headers/x-fapi-interaction-id'
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
             - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page
             Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
           headers:
             x-fapi-interaction-id:
-              explode: false
-              schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
-                type: string
-              style: simple
+              $ref: '#/components/headers/x-fapi-interaction-id'
         "406":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406
             - Unsupported Version](#error-406-header-unsupported-version)</li></ul>
           headers:
             x-fapi-interaction-id:
-              explode: false
-              schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
-                type: string
-              style: simple
+              $ref: '#/components/headers/x-fapi-interaction-id'
         "422":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422
             - Invalid Page](#error-422-field-invalid-page)</li></ul>
           headers:
             x-fapi-interaction-id:
-              explode: false
-              schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
-                type: string
-              style: simple
+              $ref: '#/components/headers/x-fapi-interaction-id'
       summary: Get Usage
       tags:
       - Telco
@@ -770,28 +595,6 @@ paths:
       description: Obtain usage data for a specific service
       operationId: listUsageForService
       parameters:
-      - description: Constrain the request to records with effective date at or after
-          this date. If absent defaults to newest-date minus 24 months.  Format is
-          aligned to DateString common type
-        explode: true
-        in: query
-        name: oldest-date
-        required: false
-        schema:
-          type: string
-        style: form
-        x-cds-type: DateString
-      - description: Constrain the request to records with effective date at or before
-          this date.  If absent defaults to current date.  Format is aligned to DateString
-          common type
-        explode: true
-        in: query
-        name: newest-date
-        required: false
-        schema:
-          type: string
-        style: form
-        x-cds-type: DateString
       - description: Page of results to request (standard pagination)
         explode: true
         in: query
@@ -890,83 +693,46 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/TelcoServiceUsageListResponse'
+                $ref: '#/components/schemas/TelcoUsageListResponse'
           description: Successful response
           headers:
             x-v:
-              explode: false
-              schema:
-                description: The [version](#response-headers) of the API end point
-                  that the data holder has responded with.
-                type: string
-              style: simple
+              $ref: '#/components/headers/x-v'
             x-fapi-interaction-id:
-              explode: false
-              schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
-                type: string
-              style: simple
+              $ref: '#/components/headers/x-fapi-interaction-id'
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
             - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page
             Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
           headers:
             x-fapi-interaction-id:
-              explode: false
-              schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
-                type: string
-              style: simple
+              $ref: '#/components/headers/x-fapi-interaction-id'
         "406":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406
             - Unsupported Version](#error-406-header-unsupported-version)</li></ul>
           headers:
             x-fapi-interaction-id:
-              explode: false
-              schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
-                type: string
-              style: simple
+              $ref: '#/components/headers/x-fapi-interaction-id'
         "422":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422
             - Invalid Page](#error-422-field-invalid-page)</li><li>[422 - Unavailable
             Service Point](#error-422-unavailable-service-point)</li><li>[422 - Invalid
             Service Point](#error-422-invalid-service-point)</li></ul>
           headers:
             x-fapi-interaction-id:
-              explode: false
-              schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
-                type: string
-              style: simple
+              $ref: '#/components/headers/x-fapi-interaction-id'
       summary: Get Usage For Specific Telco Service
       tags:
       - Telco
@@ -996,6 +762,16 @@ paths:
           - OPEN
           type: string
         style: form
+      - description: Only include accounts that have been updated after the specified
+          date and time.  If absent defaults to include all plans
+        explode: true
+        in: query
+        name: updated-since
+        required: false
+        schema:
+          type: string
+        style: form
+        x-cds-type: DateString
       - description: Page of results to request (standard pagination)
         explode: true
         in: query
@@ -1096,77 +872,40 @@ paths:
           description: Successful response
           headers:
             x-v:
-              explode: false
-              schema:
-                description: The [version](#response-headers) of the API end point
-                  that the data holder has responded with.
-                type: string
-              style: simple
+              $ref: '#/components/headers/x-v'
             x-fapi-interaction-id:
-              explode: false
-              schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
-                type: string
-              style: simple
+              $ref: '#/components/headers/x-fapi-interaction-id'
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
             - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page
             Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
           headers:
             x-fapi-interaction-id:
-              explode: false
-              schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
-                type: string
-              style: simple
+              $ref: '#/components/headers/x-fapi-interaction-id'
         "406":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406
             - Unsupported Version](#error-406-header-unsupported-version)</li></ul>
           headers:
             x-fapi-interaction-id:
-              explode: false
-              schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
-                type: string
-              style: simple
+              $ref: '#/components/headers/x-fapi-interaction-id'
         "422":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422
             - Invalid Page](#error-422-field-invalid-page)</li></ul>
           headers:
             x-fapi-interaction-id:
-              explode: false
-              schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
-                type: string
-              style: simple
+              $ref: '#/components/headers/x-fapi-interaction-id'
       summary: Get Telco Accounts
       tags:
       - Telco
@@ -1182,7 +921,7 @@ paths:
         Other Versions: [v1](includes/obsolete/get-telco-account-detail-v1.html)
       operationId: getAccount
       parameters:
-      - description: ID of a specific account to obtain data for.  This is a tokenised
+      - description: ID of a specific account to obtain data for. This is a tokenised
           ID previously obtained from the Account List end point. In accordance with
           [CDR ID permanence](#id-permanence) requirements
         explode: false
@@ -1274,77 +1013,40 @@ paths:
           description: Successful response
           headers:
             x-v:
-              explode: false
-              schema:
-                description: The [version](#response-headers) of the API end point
-                  that the data holder has responded with.
-                type: string
-              style: simple
+              $ref: '#/components/headers/x-v'
             x-fapi-interaction-id:
-              explode: false
-              schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
-                type: string
-              style: simple
+              $ref: '#/components/headers/x-fapi-interaction-id'
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
             - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
           headers:
             x-fapi-interaction-id:
-              explode: false
-              schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
-                type: string
-              style: simple
+              $ref: '#/components/headers/x-fapi-interaction-id'
         "404":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[404
             - Unavailable Telco Account](#error-404-unavailable-telco-account)</li><li>[404
             - Invalid Telco Account](#error-404-invalid-telco-account)</li></ul>
           headers:
             x-fapi-interaction-id:
-              explode: false
-              schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
-                type: string
-              style: simple
+              $ref: '#/components/headers/x-fapi-interaction-id'
         "406":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406
             - Unsupported Version](#error-406-header-unsupported-version)</li></ul>
           headers:
             x-fapi-interaction-id:
-              explode: false
-              schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
-                type: string
-              style: simple
+              $ref: '#/components/headers/x-fapi-interaction-id'
       summary: Get Telco Account Detail
       tags:
       - Telco
@@ -1369,7 +1071,7 @@ paths:
         \ within this API</li></ul>"
       operationId: getPaymentSchedule
       parameters:
-      - description: ID of a specific account to obtain data for.  This is a tokenised
+      - description: ID of a specific account to obtain data for. This is a tokenised
           ID previously obtained from the Account List end point. In accordance with
           [CDR ID permanence](#id-permanence) requirements
         explode: false
@@ -1461,77 +1163,40 @@ paths:
           description: Successful response
           headers:
             x-v:
-              explode: false
-              schema:
-                description: The [version](#response-headers) of the API end point
-                  that the data holder has responded with.
-                type: string
-              style: simple
+              $ref: '#/components/headers/x-v'
             x-fapi-interaction-id:
-              explode: false
-              schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
-                type: string
-              style: simple
+              $ref: '#/components/headers/x-fapi-interaction-id'
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
             - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
           headers:
             x-fapi-interaction-id:
-              explode: false
-              schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
-                type: string
-              style: simple
+              $ref: '#/components/headers/x-fapi-interaction-id'
         "404":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[404
             - Unavailable Telco Account](#error-404-unavailable-telco-account)</li><li>[404
             - Invalid Telco Account](#error-404-invalid-telco-account)</li></ul>
           headers:
             x-fapi-interaction-id:
-              explode: false
-              schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
-                type: string
-              style: simple
+              $ref: '#/components/headers/x-fapi-interaction-id'
         "406":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406
             - Unsupported Version](#error-406-header-unsupported-version)</li></ul>
           headers:
             x-fapi-interaction-id:
-              explode: false
-              schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
-                type: string
-              style: simple
+              $ref: '#/components/headers/x-fapi-interaction-id'
       summary: Get Telco Agreed Payment Schedule
       tags:
       - Telco
@@ -1545,7 +1210,7 @@ paths:
         a specific telco account
       operationId: getConcessions
       parameters:
-      - description: ID of a specific account to obtain data for.  This is a tokenised
+      - description: ID of a specific account to obtain data for. This is a tokenised
           ID previously obtained from the Account List end point. In accordance with
           [CDR ID permanence](#id-permanence) requirements
         explode: false
@@ -1637,77 +1302,40 @@ paths:
           description: Successful response
           headers:
             x-v:
-              explode: false
-              schema:
-                description: The [version](#response-headers) of the API end point
-                  that the data holder has responded with.
-                type: string
-              style: simple
+              $ref: '#/components/headers/x-v'
             x-fapi-interaction-id:
-              explode: false
-              schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
-                type: string
-              style: simple
+              $ref: '#/components/headers/x-fapi-interaction-id'
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
             - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
           headers:
             x-fapi-interaction-id:
-              explode: false
-              schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
-                type: string
-              style: simple
+              $ref: '#/components/headers/x-fapi-interaction-id'
         "404":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[404
             - Unavailable Telco Account](#error-404-unavailable-telco-account)</li><li>[404
             - Invalid Telco Account](#error-404-invalid-telco-account)</li></ul>
           headers:
             x-fapi-interaction-id:
-              explode: false
-              schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
-                type: string
-              style: simple
+              $ref: '#/components/headers/x-fapi-interaction-id'
         "406":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406
             - Unsupported Version](#error-406-header-unsupported-version)</li></ul>
           headers:
             x-fapi-interaction-id:
-              explode: false
-              schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
-                type: string
-              style: simple
+              $ref: '#/components/headers/x-fapi-interaction-id'
       summary: Get Telco Concessions
       tags:
       - Telco
@@ -1720,7 +1348,7 @@ paths:
       description: Obtain the current balance for a specific account
       operationId: getBalanceForAccount
       parameters:
-      - description: ID of a specific account to obtain data for.  This is a tokenised
+      - description: ID of a specific account to obtain data for. This is a tokenised
           ID previously obtained from the Account List end point. In accordance with
           [CDR ID permanence](#id-permanence) requirements
         explode: false
@@ -1812,77 +1440,40 @@ paths:
           description: Successful response
           headers:
             x-v:
-              explode: false
-              schema:
-                description: The [version](#response-headers) of the API end point
-                  that the data holder has responded with.
-                type: string
-              style: simple
+              $ref: '#/components/headers/x-v'
             x-fapi-interaction-id:
-              explode: false
-              schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
-                type: string
-              style: simple
+              $ref: '#/components/headers/x-fapi-interaction-id'
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
             - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
           headers:
             x-fapi-interaction-id:
-              explode: false
-              schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
-                type: string
-              style: simple
+              $ref: '#/components/headers/x-fapi-interaction-id'
         "404":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[404
             - Unavailable Telco Account](#error-404-unavailable-telco-account)</li><li>[404
             - Invalid Telco Account](#error-404-invalid-telco-account)</li></ul>
           headers:
             x-fapi-interaction-id:
-              explode: false
-              schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
-                type: string
-              style: simple
+              $ref: '#/components/headers/x-fapi-interaction-id'
         "406":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406
             - Unsupported Version](#error-406-header-unsupported-version)</li></ul>
           headers:
             x-fapi-interaction-id:
-              explode: false
-              schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
-                type: string
-              style: simple
+              $ref: '#/components/headers/x-fapi-interaction-id'
       summary: Get Balance For Telco Account
       tags:
       - Telco
@@ -1996,77 +1587,40 @@ paths:
           description: Successful response
           headers:
             x-v:
-              explode: false
-              schema:
-                description: The [version](#response-headers) of the API end point
-                  that the data holder has responded with.
-                type: string
-              style: simple
+              $ref: '#/components/headers/x-v'
             x-fapi-interaction-id:
-              explode: false
-              schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
-                type: string
-              style: simple
+              $ref: '#/components/headers/x-fapi-interaction-id'
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
             - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page
             Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
           headers:
             x-fapi-interaction-id:
-              explode: false
-              schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
-                type: string
-              style: simple
+              $ref: '#/components/headers/x-fapi-interaction-id'
         "406":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406
             - Unsupported Version](#error-406-header-unsupported-version)</li></ul>
           headers:
             x-fapi-interaction-id:
-              explode: false
-              schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
-                type: string
-              style: simple
+              $ref: '#/components/headers/x-fapi-interaction-id'
         "422":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422
             - Invalid Page](#error-422-field-invalid-page)</li></ul>
           headers:
             x-fapi-interaction-id:
-              explode: false
-              schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
-                type: string
-              style: simple
+              $ref: '#/components/headers/x-fapi-interaction-id'
       summary: Get Bulk Telco Balances
       tags:
       - Telco
@@ -2181,79 +1735,42 @@ paths:
           description: Successful response
           headers:
             x-v:
-              explode: false
-              schema:
-                description: The [version](#response-headers) of the API end point
-                  that the data holder has responded with.
-                type: string
-              style: simple
+              $ref: '#/components/headers/x-v'
             x-fapi-interaction-id:
-              explode: false
-              schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
-                type: string
-              style: simple
+              $ref: '#/components/headers/x-fapi-interaction-id'
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
             - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page
             Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
           headers:
             x-fapi-interaction-id:
-              explode: false
-              schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
-                type: string
-              style: simple
+              $ref: '#/components/headers/x-fapi-interaction-id'
         "406":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406
             - Unsupported Version](#error-406-header-unsupported-version)</li></ul>
           headers:
             x-fapi-interaction-id:
-              explode: false
-              schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
-                type: string
-              style: simple
+              $ref: '#/components/headers/x-fapi-interaction-id'
         "422":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422
             - Invalid Page](#error-422-field-invalid-page)</li><li>[422 - Unavailable
             Telco Account](#error-422-unavailable-telco-account)</li><li>[422 - Invalid
             Telco Account](#error-422-invalid-telco-account)</li></ul>
           headers:
             x-fapi-interaction-id:
-              explode: false
-              schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
-                type: string
-              style: simple
+              $ref: '#/components/headers/x-fapi-interaction-id'
       summary: Get Balances For Specific Telco Accounts
       tags:
       - Telco
@@ -2267,7 +1784,7 @@ paths:
       description: Obtain the invoices for a specific account
       operationId: getInvoicesForAccount
       parameters:
-      - description: ID of a specific account to obtain data for.  This is a tokenised
+      - description: ID of a specific account to obtain data for. This is a tokenised
           ID previously obtained from the Account List end point. In accordance with
           [CDR ID permanence](#id-permanence) requirements
         explode: false
@@ -2277,46 +1794,6 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Constrain the request to records with effective date at or before
-          this date.  If absent defaults to current date.  Format is aligned to DateString
-          common type
-        explode: true
-        in: query
-        name: newest-date
-        required: false
-        schema:
-          type: string
-        style: form
-        x-cds-type: DateString
-      - description: Constrain the request to records with effective date at or after
-          this date. If absent defaults to newest-date minus 24 months.  Format is
-          aligned to DateString common type
-        explode: true
-        in: query
-        name: oldest-date
-        required: false
-        schema:
-          type: string
-        style: form
-        x-cds-type: DateString
-      - description: Page of results to request (standard pagination)
-        explode: true
-        in: query
-        name: page
-        required: false
-        schema:
-          type: integer
-        style: form
-        x-cds-type: PositiveInteger
-      - description: Page size to request.  Default is 25 (standard pagination)
-        explode: true
-        in: query
-        name: page-size
-        required: false
-        schema:
-          type: integer
-        style: form
-        x-cds-type: PositiveInteger
       - description: Version of the API end point requested by the client. Must be
           set to a positive integer. The data holder should respond with the highest
           supported version between [x-min-v](#request-headers) and [x-v](#request-headers).
@@ -2395,100 +1872,55 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/TelcoInvoiceListResponse'
+                $ref: '#/components/schemas/TelcoInvoiceResponse'
           description: Successful response
           headers:
             x-v:
-              explode: false
-              schema:
-                description: The [version](#response-headers) of the API end point
-                  that the data holder has responded with.
-                type: string
-              style: simple
+              $ref: '#/components/headers/x-v'
             x-fapi-interaction-id:
-              explode: false
-              schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
-                type: string
-              style: simple
+              $ref: '#/components/headers/x-fapi-interaction-id'
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
             - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page
             Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
           headers:
             x-fapi-interaction-id:
-              explode: false
-              schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
-                type: string
-              style: simple
+              $ref: '#/components/headers/x-fapi-interaction-id'
         "404":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[404
             - Unavailable Telco Account](#error-404-unavailable-telco-account)</li><li>[404
             - Invalid Telco Account](#error-404-invalid-telco-account)</li></ul>
           headers:
             x-fapi-interaction-id:
-              explode: false
-              schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
-                type: string
-              style: simple
+              $ref: '#/components/headers/x-fapi-interaction-id'
         "406":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406
             - Unsupported Version](#error-406-header-unsupported-version)</li></ul>
           headers:
             x-fapi-interaction-id:
-              explode: false
-              schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
-                type: string
-              style: simple
+              $ref: '#/components/headers/x-fapi-interaction-id'
         "422":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422
             - Invalid Page](#error-422-field-invalid-page)</li></ul>
           headers:
             x-fapi-interaction-id:
-              explode: false
-              schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
-                type: string
-              style: simple
+              $ref: '#/components/headers/x-fapi-interaction-id'
       summary: Get Invoices For Telco Account
       tags:
       - Telco
@@ -2624,77 +2056,40 @@ paths:
           description: Successful response
           headers:
             x-v:
-              explode: false
-              schema:
-                description: The [version](#response-headers) of the API end point
-                  that the data holder has responded with.
-                type: string
-              style: simple
+              $ref: '#/components/headers/x-v'
             x-fapi-interaction-id:
-              explode: false
-              schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
-                type: string
-              style: simple
+              $ref: '#/components/headers/x-fapi-interaction-id'
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
             - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page
             Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
           headers:
             x-fapi-interaction-id:
-              explode: false
-              schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
-                type: string
-              style: simple
+              $ref: '#/components/headers/x-fapi-interaction-id'
         "406":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406
             - Unsupported Version](#error-406-header-unsupported-version)</li></ul>
           headers:
             x-fapi-interaction-id:
-              explode: false
-              schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
-                type: string
-              style: simple
+              $ref: '#/components/headers/x-fapi-interaction-id'
         "422":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422
             - Invalid Page](#error-422-field-invalid-page)</li></ul>
           headers:
             x-fapi-interaction-id:
-              explode: false
-              schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
-                type: string
-              style: simple
+              $ref: '#/components/headers/x-fapi-interaction-id'
       summary: Get Telco Invoices
       tags:
       - Telco
@@ -2831,79 +2226,42 @@ paths:
           description: Successful response
           headers:
             x-v:
-              explode: false
-              schema:
-                description: The [version](#response-headers) of the API end point
-                  that the data holder has responded with.
-                type: string
-              style: simple
+              $ref: '#/components/headers/x-v'
             x-fapi-interaction-id:
-              explode: false
-              schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
-                type: string
-              style: simple
+              $ref: '#/components/headers/x-fapi-interaction-id'
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
             - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page
             Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
           headers:
             x-fapi-interaction-id:
-              explode: false
-              schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
-                type: string
-              style: simple
+              $ref: '#/components/headers/x-fapi-interaction-id'
         "406":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406
             - Unsupported Version](#error-406-header-unsupported-version)</li></ul>
           headers:
             x-fapi-interaction-id:
-              explode: false
-              schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
-                type: string
-              style: simple
+              $ref: '#/components/headers/x-fapi-interaction-id'
         "422":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422
             - Invalid Page](#error-422-field-invalid-page)</li><li>[422 - Unavailable
             Telco Account](#error-422-unavailable-telco-account)</li><li>[422 - Invalid
             Telco Account](#error-422-invalid-telco-account)</li></ul>
           headers:
             x-fapi-interaction-id:
-              explode: false
-              schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
-                type: string
-              style: simple
+              $ref: '#/components/headers/x-fapi-interaction-id'
       summary: Get Invoices For Specific Telco Accounts
       tags:
       - Telco
@@ -2917,7 +2275,7 @@ paths:
       description: Obtain the billing transactions for a specific account
       operationId: getTransactionsForAccount
       parameters:
-      - description: ID of a specific account to obtain data for.  This is a tokenised
+      - description: ID of a specific account to obtain data for. This is a tokenised
           ID previously obtained from the Account List end point. In accordance with
           [CDR ID permanence](#id-permanence) requirements
         explode: false
@@ -3049,96 +2407,51 @@ paths:
           description: Successful response
           headers:
             x-v:
-              explode: false
-              schema:
-                description: The [version](#response-headers) of the API end point
-                  that the data holder has responded with.
-                type: string
-              style: simple
+              $ref: '#/components/headers/x-v'
             x-fapi-interaction-id:
-              explode: false
-              schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
-                type: string
-              style: simple
+              $ref: '#/components/headers/x-fapi-interaction-id'
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
             - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page
             Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
           headers:
             x-fapi-interaction-id:
-              explode: false
-              schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
-                type: string
-              style: simple
+              $ref: '#/components/headers/x-fapi-interaction-id'
         "404":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[404
             - Unavailable Telco Account](#error-404-unavailable-telco-account)</li><li>[404
             - Invalid Telco Account](#error-404-invalid-telco-account)</li></ul>
           headers:
             x-fapi-interaction-id:
-              explode: false
-              schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
-                type: string
-              style: simple
+              $ref: '#/components/headers/x-fapi-interaction-id'
         "406":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406
             - Unsupported Version](#error-406-header-unsupported-version)</li></ul>
           headers:
             x-fapi-interaction-id:
-              explode: false
-              schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
-                type: string
-              style: simple
+              $ref: '#/components/headers/x-fapi-interaction-id'
         "422":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422
             - Invalid Page](#error-422-field-invalid-page)</li></ul>
           headers:
             x-fapi-interaction-id:
-              explode: false
-              schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
-                type: string
-              style: simple
+              $ref: '#/components/headers/x-fapi-interaction-id'
       summary: Get Transactions For Telco Account
       tags:
       - Telco
@@ -3274,77 +2587,40 @@ paths:
           description: Successful response
           headers:
             x-v:
-              explode: false
-              schema:
-                description: The [version](#response-headers) of the API end point
-                  that the data holder has responded with.
-                type: string
-              style: simple
+              $ref: '#/components/headers/x-v'
             x-fapi-interaction-id:
-              explode: false
-              schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
-                type: string
-              style: simple
+              $ref: '#/components/headers/x-fapi-interaction-id'
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
             - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page
             Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
           headers:
             x-fapi-interaction-id:
-              explode: false
-              schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
-                type: string
-              style: simple
+              $ref: '#/components/headers/x-fapi-interaction-id'
         "406":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406
             - Unsupported Version](#error-406-header-unsupported-version)</li></ul>
           headers:
             x-fapi-interaction-id:
-              explode: false
-              schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
-                type: string
-              style: simple
+              $ref: '#/components/headers/x-fapi-interaction-id'
         "422":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422
             - Invalid Page](#error-422-field-invalid-page)</li></ul>
           headers:
             x-fapi-interaction-id:
-              explode: false
-              schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
-                type: string
-              style: simple
+              $ref: '#/components/headers/x-fapi-interaction-id'
       summary: Get Telco Transactions
       tags:
       - Telco
@@ -3481,79 +2757,42 @@ paths:
           description: Successful response
           headers:
             x-v:
-              explode: false
-              schema:
-                description: The [version](#response-headers) of the API end point
-                  that the data holder has responded with.
-                type: string
-              style: simple
+              $ref: '#/components/headers/x-v'
             x-fapi-interaction-id:
-              explode: false
-              schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
-                type: string
-              style: simple
+              $ref: '#/components/headers/x-fapi-interaction-id'
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
             - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page
             Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
           headers:
             x-fapi-interaction-id:
-              explode: false
-              schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
-                type: string
-              style: simple
+              $ref: '#/components/headers/x-fapi-interaction-id'
         "406":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406
             - Unsupported Version](#error-406-header-unsupported-version)</li></ul>
           headers:
             x-fapi-interaction-id:
-              explode: false
-              schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
-                type: string
-              style: simple
+              $ref: '#/components/headers/x-fapi-interaction-id'
         "422":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorListResponse'
+                $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422
             - Invalid Page](#error-422-field-invalid-page)</li><li>[422 - Unavailable
             Telco Account](#error-422-unavailable-telco-account)</li><li>[422 - Invalid
             Telco Account](#error-422-invalid-telco-account)</li></ul>
           headers:
             x-fapi-interaction-id:
-              explode: false
-              schema:
-                description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                  id. If provided, the data holder must play back this value in the
-                  x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                  UUID value is required to be provided in the response header to
-                  track the interaction.
-                type: string
-              style: simple
+              $ref: '#/components/headers/x-fapi-interaction-id'
       summary: Get Transactions For Specific Telco Accounts
       tags:
       - Telco
@@ -3563,6 +2802,23 @@ paths:
       - telco:billing:read
       x-version: "1"
 components:
+  headers:
+    x-v:
+      explode: false
+      schema:
+        description: The [version](#response-headers) of the API end point that the
+          data holder has responded with.
+        type: string
+      style: simple
+    x-fapi-interaction-id:
+      explode: false
+      schema:
+        description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+          id. If provided, the data holder must play back this value in the x-fapi-interaction-id
+          response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value
+          is required to be provided in the response header to track the interaction.
+        type: string
+      style: simple
   parameters:
     serviceId:
       description: ID of the specific service requested. E.g. a mobile [MSISDN](https://www.etsi.org/deliver/etsi_gts/03/0303/05.00.00_60/gsmts_0303v050000p.pdf),
@@ -3584,17 +2840,6 @@ components:
       explode: false
       in: path
       name: accountId
-      required: true
-      schema:
-        type: string
-      style: simple
-    accountIds:
-      description: A seperated array of account IDs of specific accounts to obtain
-        data for. This is a tokenised ID previously obtained from the Account List
-        end point. In accordance with [CDR ID permanence](#id-permanence) requirements
-      explode: false
-      in: path
-      name: accountIds
       required: true
       schema:
         type: string
@@ -3824,12 +3069,7 @@ components:
       description: Successful response
       headers:
         x-v:
-          explode: false
-          schema:
-            description: The [version](#response-headers) of the API end point that
-              the data holder has responded with.
-            type: string
-          style: simple
+          $ref: '#/components/headers/x-v'
     planDetail:
       content:
         application/json:
@@ -3838,12 +3078,7 @@ components:
       description: Successful response
       headers:
         x-v:
-          explode: false
-          schema:
-            description: The [version](#response-headers) of the API end point that
-              the data holder has responded with.
-            type: string
-          style: simple
+          $ref: '#/components/headers/x-v'
     usage:
       content:
         application/json:
@@ -3852,22 +3087,9 @@ components:
       description: Successful response
       headers:
         x-v:
-          explode: false
-          schema:
-            description: The [version](#response-headers) of the API end point that
-              the data holder has responded with.
-            type: string
-          style: simple
+          $ref: '#/components/headers/x-v'
         x-fapi-interaction-id:
-          explode: false
-          schema:
-            description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-              id. If provided, the data holder must play back this value in the x-fapi-interaction-id
-              response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID
-              value is required to be provided in the response header to track the
-              interaction.
-            type: string
-          style: simple
+          $ref: '#/components/headers/x-fapi-interaction-id'
     usageList:
       content:
         application/json:
@@ -3876,22 +3098,9 @@ components:
       description: Successful response
       headers:
         x-v:
-          explode: false
-          schema:
-            description: The [version](#response-headers) of the API end point that
-              the data holder has responded with.
-            type: string
-          style: simple
+          $ref: '#/components/headers/x-v'
         x-fapi-interaction-id:
-          explode: false
-          schema:
-            description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-              id. If provided, the data holder must play back this value in the x-fapi-interaction-id
-              response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID
-              value is required to be provided in the response header to track the
-              interaction.
-            type: string
-          style: simple
+          $ref: '#/components/headers/x-fapi-interaction-id'
     accountList:
       content:
         application/json:
@@ -3900,22 +3109,9 @@ components:
       description: Successful response
       headers:
         x-v:
-          explode: false
-          schema:
-            description: The [version](#response-headers) of the API end point that
-              the data holder has responded with.
-            type: string
-          style: simple
+          $ref: '#/components/headers/x-v'
         x-fapi-interaction-id:
-          explode: false
-          schema:
-            description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-              id. If provided, the data holder must play back this value in the x-fapi-interaction-id
-              response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID
-              value is required to be provided in the response header to track the
-              interaction.
-            type: string
-          style: simple
+          $ref: '#/components/headers/x-fapi-interaction-id'
     accountDetail:
       content:
         application/json:
@@ -3924,22 +3120,9 @@ components:
       description: Successful response
       headers:
         x-v:
-          explode: false
-          schema:
-            description: The [version](#response-headers) of the API end point that
-              the data holder has responded with.
-            type: string
-          style: simple
+          $ref: '#/components/headers/x-v'
         x-fapi-interaction-id:
-          explode: false
-          schema:
-            description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-              id. If provided, the data holder must play back this value in the x-fapi-interaction-id
-              response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID
-              value is required to be provided in the response header to track the
-              interaction.
-            type: string
-          style: simple
+          $ref: '#/components/headers/x-fapi-interaction-id'
     accountPaymentScheduleDetail:
       content:
         application/json:
@@ -3948,22 +3131,9 @@ components:
       description: Successful response
       headers:
         x-v:
-          explode: false
-          schema:
-            description: The [version](#response-headers) of the API end point that
-              the data holder has responded with.
-            type: string
-          style: simple
+          $ref: '#/components/headers/x-v'
         x-fapi-interaction-id:
-          explode: false
-          schema:
-            description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-              id. If provided, the data holder must play back this value in the x-fapi-interaction-id
-              response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID
-              value is required to be provided in the response header to track the
-              interaction.
-            type: string
-          style: simple
+          $ref: '#/components/headers/x-fapi-interaction-id'
     accountConcessionsDetail:
       content:
         application/json:
@@ -3972,22 +3142,7 @@ components:
       description: Successful response
       headers:
         x-v:
-          explode: false
-          schema:
-            description: The [version](#response-headers) of the API end point that
-              the data holder has responded with.
-            type: string
-          style: simple
-        x-fapi-interaction-id:
-          explode: false
-          schema:
-            description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-              id. If provided, the data holder must play back this value in the x-fapi-interaction-id
-              response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID
-              value is required to be provided in the response header to track the
-              interaction.
-            type: string
-          style: simple
+          $ref: '#/components/headers/x-v'
     balanceList:
       content:
         application/json:
@@ -3996,22 +3151,7 @@ components:
       description: Successful response
       headers:
         x-v:
-          explode: false
-          schema:
-            description: The [version](#response-headers) of the API end point that
-              the data holder has responded with.
-            type: string
-          style: simple
-        x-fapi-interaction-id:
-          explode: false
-          schema:
-            description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-              id. If provided, the data holder must play back this value in the x-fapi-interaction-id
-              response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID
-              value is required to be provided in the response header to track the
-              interaction.
-            type: string
-          style: simple
+          $ref: '#/components/headers/x-v'
     balanceDetail:
       content:
         application/json:
@@ -4020,22 +3160,7 @@ components:
       description: Successful response
       headers:
         x-v:
-          explode: false
-          schema:
-            description: The [version](#response-headers) of the API end point that
-              the data holder has responded with.
-            type: string
-          style: simple
-        x-fapi-interaction-id:
-          explode: false
-          schema:
-            description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-              id. If provided, the data holder must play back this value in the x-fapi-interaction-id
-              response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID
-              value is required to be provided in the response header to track the
-              interaction.
-            type: string
-          style: simple
+          $ref: '#/components/headers/x-v'
     invoiceList:
       content:
         application/json:
@@ -4044,22 +3169,7 @@ components:
       description: Successful response
       headers:
         x-v:
-          explode: false
-          schema:
-            description: The [version](#response-headers) of the API end point that
-              the data holder has responded with.
-            type: string
-          style: simple
-        x-fapi-interaction-id:
-          explode: false
-          schema:
-            description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-              id. If provided, the data holder must play back this value in the x-fapi-interaction-id
-              response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID
-              value is required to be provided in the response header to track the
-              interaction.
-            type: string
-          style: simple
+          $ref: '#/components/headers/x-v'
     transactionList:
       content:
         application/json:
@@ -4068,22 +3178,9 @@ components:
       description: Successful response
       headers:
         x-v:
-          explode: false
-          schema:
-            description: The [version](#response-headers) of the API end point that
-              the data holder has responded with.
-            type: string
-          style: simple
+          $ref: '#/components/headers/x-v'
         x-fapi-interaction-id:
-          explode: false
-          schema:
-            description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-              id. If provided, the data holder must play back this value in the x-fapi-interaction-id
-              response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID
-              value is required to be provided in the response header to track the
-              interaction.
-            type: string
-          style: simple
+          $ref: '#/components/headers/x-fapi-interaction-id'
   schemas:
     TelcoProductListResponse:
       example:
@@ -4097,7 +3194,7 @@ components:
               overviewUri: overviewUri
             brandName: brandName
             productId: productId
-            purpose: ALL
+            purpose: PERSONAL
             displayName: displayName
             contract:
               duration: 0.8008281904610115
@@ -4117,13 +3214,13 @@ components:
             brand: brand
             pricing:
             - period: period
+              amount: amount
               name: name
               description: description
-              chargeAmount: chargeAmount
             - period: period
+              amount: amount
               name: name
               description: description
-              chargeAmount: chargeAmount
           - additionalInformation:
               eligibilityUri: eligibilityUri
               bundleUri: bundleUri
@@ -4132,7 +3229,7 @@ components:
               overviewUri: overviewUri
             brandName: brandName
             productId: productId
-            purpose: ALL
+            purpose: PERSONAL
             displayName: displayName
             contract:
               duration: 0.8008281904610115
@@ -4152,13 +3249,13 @@ components:
             brand: brand
             pricing:
             - period: period
+              amount: amount
               name: name
               description: description
-              chargeAmount: chargeAmount
             - period: period
+              amount: amount
               name: name
               description: description
-              chargeAmount: chargeAmount
         meta:
           totalRecords: 6
           totalPages: 1
@@ -4204,9 +3301,9 @@ components:
         data:
           $ref: '#/components/schemas/TelcoAccountUsage'
         links:
-          $ref: '#/components/schemas/LinksPaginated'
+          $ref: '#/components/schemas/Links'
         meta:
-          $ref: '#/components/schemas/MetaPaginated'
+          type: object
       required:
       - data
       - links
@@ -4253,115 +3350,22 @@ components:
                 international: 3.616076749251911
           serviceId: serviceId
           startDate: startDate
-        meta:
-          totalRecords: 6
-          totalPages: 1
+        meta: '{}'
         links:
-          next: next
-          last: last
-          prev: prev
           self: self
-          first: first
       properties:
         data:
           $ref: '#/components/schemas/TelcoServiceUsage'
         links:
-          $ref: '#/components/schemas/LinksPaginated'
+          $ref: '#/components/schemas/Links'
         meta:
-          $ref: '#/components/schemas/MetaPaginated'
+          type: object
       required:
       - data
       - links
       - meta
       type: object
     TelcoServiceUsageListResponse:
-      example:
-        data:
-        - phoneNumber: phoneNumber
-          endDate: endDate
-          displayName: displayName
-          usage:
-            voice:
-              roaming:
-                duration: duration
-                number: 7.061401241503109
-                amount: amount
-              national:
-                duration: duration
-                number: 5.637376656633329
-                amount: amount
-              international:
-                duration: duration
-                number: 2.3021358869347655
-                amount: amount
-            data:
-              download: 6.027456183070403
-              sessions: 1.4658129805029452
-              amount: amount
-              roaming:
-                download: 5.962133916683182
-                amount: amount
-              upload: 0.8008281904610115
-            messaging:
-              mms:
-                amount: amount
-                roaming: 1.2315135367772556
-                national: 4.145608029883936
-                international: 7.386281948385884
-              sms:
-                amount: amount
-                roaming: 2.027123023002322
-                national: 9.301444243932576
-                international: 3.616076749251911
-          serviceId: serviceId
-          startDate: startDate
-        - phoneNumber: phoneNumber
-          endDate: endDate
-          displayName: displayName
-          usage:
-            voice:
-              roaming:
-                duration: duration
-                number: 7.061401241503109
-                amount: amount
-              national:
-                duration: duration
-                number: 5.637376656633329
-                amount: amount
-              international:
-                duration: duration
-                number: 2.3021358869347655
-                amount: amount
-            data:
-              download: 6.027456183070403
-              sessions: 1.4658129805029452
-              amount: amount
-              roaming:
-                download: 5.962133916683182
-                amount: amount
-              upload: 0.8008281904610115
-            messaging:
-              mms:
-                amount: amount
-                roaming: 1.2315135367772556
-                national: 4.145608029883936
-                international: 7.386281948385884
-              sms:
-                amount: amount
-                roaming: 2.027123023002322
-                national: 9.301444243932576
-                international: 3.616076749251911
-          serviceId: serviceId
-          startDate: startDate
-        meta:
-          totalRecords: 6
-          totalPages: 1
-        links:
-          next: next
-          last: last
-          prev: prev
-          self: self
-          first: first
       properties:
         data:
           items:
@@ -4405,16 +3409,12 @@ components:
       type: object
     TelcoAccountDetailResponse:
       example:
-        data: ""
         meta: '{}'
         links:
           self: self
       properties:
         data:
-          allOf:
-          - $ref: '#/components/schemas/TelcoAccountBase'
-          - $ref: '#/components/schemas/TelcoAccount'
-          - $ref: '#/components/schemas/TelcoAccountDetail'
+          $ref: '#/components/schemas/TelcoAccountDetailResponseData'
         links:
           $ref: '#/components/schemas/Links'
         meta:
@@ -4470,16 +3470,22 @@ components:
               paymentFrequency: paymentFrequency
               isTokenised: true
             paymentScheduleUType: cardDebit
-        meta: '{}'
+        meta:
+          totalRecords: 6
+          totalPages: 1
         links:
+          next: next
+          last: last
+          prev: prev
           self: self
+          first: first
       properties:
         data:
           $ref: '#/components/schemas/TelcoPaymentScheduleResponseData'
         links:
-          $ref: '#/components/schemas/Links'
+          $ref: '#/components/schemas/LinksPaginated'
         meta:
-          type: object
+          $ref: '#/components/schemas/MetaPaginated'
       required:
       - data
       - links
@@ -4513,16 +3519,22 @@ components:
             type: CONCESSION
             discountFrequency: discountFrequency
             startDate: startDate
-        meta: '{}'
+        meta:
+          totalRecords: 6
+          totalPages: 1
         links:
+          next: next
+          last: last
+          prev: prev
           self: self
+          first: first
       properties:
         data:
           $ref: '#/components/schemas/TelcoConcessionsResponseData'
         links:
-          $ref: '#/components/schemas/Links'
+          $ref: '#/components/schemas/LinksPaginated'
         meta:
-          type: object
+          $ref: '#/components/schemas/MetaPaginated'
       required:
       - data
       - links
@@ -4553,7 +3565,7 @@ components:
           first: first
       properties:
         data:
-          $ref: '#/components/schemas/TelcoBalanceListResponseBalances'
+          $ref: '#/components/schemas/TelcoBalanceListResponseData'
         links:
           $ref: '#/components/schemas/LinksPaginated'
         meta:
@@ -4605,7 +3617,7 @@ components:
               invoiceNumber: invoiceNumber
               description: description
               serviceId: serviceId
-              type: SERVICE
+              type: OTHER
               startDate: startDate
             gst: gst
             payment:
@@ -4642,7 +3654,7 @@ components:
               invoiceNumber: invoiceNumber
               description: description
               serviceId: serviceId
-              type: SERVICE
+              type: OTHER
               startDate: startDate
             gst: gst
             payment:
@@ -4683,11 +3695,22 @@ components:
       - links
       - meta
       type: object
-    ErrorListResponse:
+    MetaError:
+      description: Additional data for customised error codes
+      properties:
+        urn:
+          description: The CDR error code URN which the application-specific error
+            code extends. Mandatory if the error `code` is an application-specific
+            error rather than a standardised error code.
+          type: string
+      type: object
+      x-conditional:
+      - urn
+    ResponseErrorListV2:
       properties:
         errors:
           items:
-            $ref: '#/components/schemas/ErrorListResponsErrors'
+            $ref: '#/components/schemas/ResponseErrorListV2_errors'
           type: array
       required:
       - errors
@@ -4704,7 +3727,7 @@ components:
           overviewUri: overviewUri
         brandName: brandName
         productId: productId
-        purpose: ALL
+        purpose: PERSONAL
         displayName: displayName
         contract:
           duration: 0.8008281904610115
@@ -4724,13 +3747,13 @@ components:
         brand: brand
         pricing:
         - period: period
+          amount: amount
           name: name
           description: description
-          chargeAmount: chargeAmount
         - period: period
+          amount: amount
           name: name
           description: description
-          chargeAmount: chargeAmount
       properties:
         productId:
           description: The ID of the specific product
@@ -4760,13 +3783,14 @@ components:
           type: string
         type:
           default: MOBILE
-          description: The type of product
+          description: The type of product. [MOBILE](https://www.legislation.gov.au/Details/C2022C00170/Html/Volume_1#_Toc95898745)
+            service or BROADBAND fixed internet service
           enum:
           - MOBILE
           - BROADBAND
           type: string
         purpose:
-          default: ALL
+          default: PERSONAL
           description: The purpose type of the product. If absent, then the value
             PERSONAL is assumed
           enum:
@@ -4827,7 +3851,9 @@ components:
       x-conditional:
       - contract
     TelcoContract:
-      description: Summary of the contract details. Required if a contract is required
+      description: Summary of the contract details. Mandatory if the billing type
+        is POST_PAID and a contract agreement is required with the service provider
+        for the plan
       example:
         duration: 0.8008281904610115
         contractUri: contractUri
@@ -4838,7 +3864,7 @@ components:
           description: Name of the contract
           type: string
         description:
-          description: Description if the contract
+          description: Description of the contract
           type: string
         duration:
           description: Minimum contract duration in months
@@ -4957,8 +3983,8 @@ components:
           type: array
       required:
       - accountId
+      - services
       type: object
-      x-conditional: []
     TelcoServiceUsage:
       example:
         phoneNumber: phoneNumber
@@ -5069,10 +4095,15 @@ components:
       type: object
       x-conditional:
       - accountNumber
-    TelcoAccountResponse:
+    TelcoAccountResponseData:
       allOf:
       - $ref: '#/components/schemas/TelcoAccountBase'
       - $ref: '#/components/schemas/TelcoAccount'
+    TelcoAccountDetailResponseData:
+      allOf:
+      - $ref: '#/components/schemas/TelcoAccountBase'
+      - $ref: '#/components/schemas/TelcoAccount'
+      - $ref: '#/components/schemas/TelcoAccountDetail'
     TelcoPaymentSchedule:
       example:
         manualPayment:
@@ -5432,7 +4463,7 @@ components:
           invoiceNumber: invoiceNumber
           description: description
           serviceId: serviceId
-          type: SERVICE
+          type: OTHER
           startDate: startDate
         gst: gst
         payment:
@@ -5586,7 +4617,7 @@ components:
         invoiceNumber: invoiceNumber
         description: description
         serviceId: serviceId
-        type: SERVICE
+        type: OTHER
         startDate: startDate
       properties:
         serviceId:
@@ -5609,6 +4640,7 @@ components:
           type: string
           x-cds-type: DateString
         type:
+          default: OTHER
           description: Type of charge. Assumed to be OTHER if absent
           enum:
           - SERVICE
@@ -5674,8 +4706,6 @@ components:
       required:
       - services
       type: object
-      x-conditional:
-      - services
     TelcoServiceBalance:
       description: Telco balances for a service
       properties:
@@ -5948,7 +4978,7 @@ components:
             overviewUri: overviewUri
           brandName: brandName
           productId: productId
-          purpose: ALL
+          purpose: PERSONAL
           displayName: displayName
           contract:
             duration: 0.8008281904610115
@@ -5968,13 +4998,13 @@ components:
           brand: brand
           pricing:
           - period: period
+            amount: amount
             name: name
             description: description
-            chargeAmount: chargeAmount
           - period: period
+            amount: amount
             name: name
             description: description
-            chargeAmount: chargeAmount
         - additionalInformation:
             eligibilityUri: eligibilityUri
             bundleUri: bundleUri
@@ -5983,7 +5013,7 @@ components:
             overviewUri: overviewUri
           brandName: brandName
           productId: productId
-          purpose: ALL
+          purpose: PERSONAL
           displayName: displayName
           contract:
             duration: 0.8008281904610115
@@ -6003,13 +5033,13 @@ components:
           brand: brand
           pricing:
           - period: period
+            amount: amount
             name: name
             description: description
-            chargeAmount: chargeAmount
           - period: period
+            amount: amount
             name: name
             description: description
-            chargeAmount: chargeAmount
       properties:
         plans:
           description: Array of Products
@@ -6020,6 +5050,185 @@ components:
       - plans
       type: object
     TelcoUsageListResponse:
+      example:
+        data:
+          accounts:
+          - accountId: accountId
+            services:
+            - service:
+                phoneNumber: phoneNumber
+                endDate: endDate
+                displayName: displayName
+                usage:
+                  voice:
+                    roaming:
+                      duration: duration
+                      number: 7.061401241503109
+                      amount: amount
+                    national:
+                      duration: duration
+                      number: 5.637376656633329
+                      amount: amount
+                    international:
+                      duration: duration
+                      number: 2.3021358869347655
+                      amount: amount
+                  data:
+                    download: 6.027456183070403
+                    sessions: 1.4658129805029452
+                    amount: amount
+                    roaming:
+                      download: 5.962133916683182
+                      amount: amount
+                    upload: 0.8008281904610115
+                  messaging:
+                    mms:
+                      amount: amount
+                      roaming: 1.2315135367772556
+                      national: 4.145608029883936
+                      international: 7.386281948385884
+                    sms:
+                      amount: amount
+                      roaming: 2.027123023002322
+                      national: 9.301444243932576
+                      international: 3.616076749251911
+                serviceId: serviceId
+                startDate: startDate
+            - service:
+                phoneNumber: phoneNumber
+                endDate: endDate
+                displayName: displayName
+                usage:
+                  voice:
+                    roaming:
+                      duration: duration
+                      number: 7.061401241503109
+                      amount: amount
+                    national:
+                      duration: duration
+                      number: 5.637376656633329
+                      amount: amount
+                    international:
+                      duration: duration
+                      number: 2.3021358869347655
+                      amount: amount
+                  data:
+                    download: 6.027456183070403
+                    sessions: 1.4658129805029452
+                    amount: amount
+                    roaming:
+                      download: 5.962133916683182
+                      amount: amount
+                    upload: 0.8008281904610115
+                  messaging:
+                    mms:
+                      amount: amount
+                      roaming: 1.2315135367772556
+                      national: 4.145608029883936
+                      international: 7.386281948385884
+                    sms:
+                      amount: amount
+                      roaming: 2.027123023002322
+                      national: 9.301444243932576
+                      international: 3.616076749251911
+                serviceId: serviceId
+                startDate: startDate
+          - accountId: accountId
+            services:
+            - service:
+                phoneNumber: phoneNumber
+                endDate: endDate
+                displayName: displayName
+                usage:
+                  voice:
+                    roaming:
+                      duration: duration
+                      number: 7.061401241503109
+                      amount: amount
+                    national:
+                      duration: duration
+                      number: 5.637376656633329
+                      amount: amount
+                    international:
+                      duration: duration
+                      number: 2.3021358869347655
+                      amount: amount
+                  data:
+                    download: 6.027456183070403
+                    sessions: 1.4658129805029452
+                    amount: amount
+                    roaming:
+                      download: 5.962133916683182
+                      amount: amount
+                    upload: 0.8008281904610115
+                  messaging:
+                    mms:
+                      amount: amount
+                      roaming: 1.2315135367772556
+                      national: 4.145608029883936
+                      international: 7.386281948385884
+                    sms:
+                      amount: amount
+                      roaming: 2.027123023002322
+                      national: 9.301444243932576
+                      international: 3.616076749251911
+                serviceId: serviceId
+                startDate: startDate
+            - service:
+                phoneNumber: phoneNumber
+                endDate: endDate
+                displayName: displayName
+                usage:
+                  voice:
+                    roaming:
+                      duration: duration
+                      number: 7.061401241503109
+                      amount: amount
+                    national:
+                      duration: duration
+                      number: 5.637376656633329
+                      amount: amount
+                    international:
+                      duration: duration
+                      number: 2.3021358869347655
+                      amount: amount
+                  data:
+                    download: 6.027456183070403
+                    sessions: 1.4658129805029452
+                    amount: amount
+                    roaming:
+                      download: 5.962133916683182
+                      amount: amount
+                    upload: 0.8008281904610115
+                  messaging:
+                    mms:
+                      amount: amount
+                      roaming: 1.2315135367772556
+                      national: 4.145608029883936
+                      international: 7.386281948385884
+                    sms:
+                      amount: amount
+                      roaming: 2.027123023002322
+                      national: 9.301444243932576
+                      international: 3.616076749251911
+                serviceId: serviceId
+                startDate: startDate
+        meta: '{}'
+        links:
+          self: self
+      properties:
+        data:
+          $ref: '#/components/schemas/TelcoUsageListResponseData'
+        links:
+          $ref: '#/components/schemas/Links'
+        meta:
+          type: object
+      required:
+      - data
+      - links
+      - meta
+      type: object
+    TelcoUsageListResponseData:
       example:
         accounts:
         - accountId: accountId
@@ -6200,7 +5409,7 @@ components:
         accounts:
           description: Array of accounts
           items:
-            $ref: '#/components/schemas/TelcoAccountResponse'
+            $ref: '#/components/schemas/TelcoAccountResponseData'
           type: array
       required:
       - accounts
@@ -6295,7 +5504,7 @@ components:
       required:
       - concessions
       type: object
-    TelcoBalanceListResponseBalances:
+    TelcoBalanceListResponseData:
       example:
         balances:
         - accountId: accountId
@@ -6334,7 +5543,291 @@ components:
       required:
       - accountId, balance
       type: object
+    TelcoInvoiceResponse:
+      example:
+        data:
+          invoices:
+          - gstAmount: gstAmount
+            period:
+              endDate: endDate
+              startDate: startDate
+            accountCharges:
+              totalGst: totalGst
+              otherCharges:
+                amount: amount
+                description: description
+                type: SERVICE
+              totalUsageCharges: totalUsageCharges
+              totalDiscounts: totalDiscounts
+              totalOnceOffCharges: totalOnceOffCharges
+            dueDate: dueDate
+            invoiceAmount: invoiceAmount
+            services:
+            - services
+            - services
+            balanceAtIssue: balanceAtIssue
+            accountId: accountId
+            accountUsage:
+              voice:
+                roaming:
+                  duration: duration
+                  number: 7.061401241503109
+                  amount: amount
+                national:
+                  duration: duration
+                  number: 5.637376656633329
+                  amount: amount
+                international:
+                  duration: duration
+                  number: 2.3021358869347655
+                  amount: amount
+              data:
+                download: 6.027456183070403
+                sessions: 1.4658129805029452
+                amount: amount
+                roaming:
+                  download: 5.962133916683182
+                  amount: amount
+                upload: 0.8008281904610115
+              messaging:
+                mms:
+                  amount: amount
+                  roaming: 1.2315135367772556
+                  national: 4.145608029883936
+                  international: 7.386281948385884
+                sms:
+                  amount: amount
+                  roaming: 2.027123023002322
+                  national: 9.301444243932576
+                  international: 3.616076749251911
+            invoiceNumber: invoiceNumber
+            issueDate: issueDate
+            payOnTimeDiscount:
+              date: date
+              gstAmount: gstAmount
+              discountAmount: discountAmount
+            paymentStatus: NOT_PAID
+          - gstAmount: gstAmount
+            period:
+              endDate: endDate
+              startDate: startDate
+            accountCharges:
+              totalGst: totalGst
+              otherCharges:
+                amount: amount
+                description: description
+                type: SERVICE
+              totalUsageCharges: totalUsageCharges
+              totalDiscounts: totalDiscounts
+              totalOnceOffCharges: totalOnceOffCharges
+            dueDate: dueDate
+            invoiceAmount: invoiceAmount
+            services:
+            - services
+            - services
+            balanceAtIssue: balanceAtIssue
+            accountId: accountId
+            accountUsage:
+              voice:
+                roaming:
+                  duration: duration
+                  number: 7.061401241503109
+                  amount: amount
+                national:
+                  duration: duration
+                  number: 5.637376656633329
+                  amount: amount
+                international:
+                  duration: duration
+                  number: 2.3021358869347655
+                  amount: amount
+              data:
+                download: 6.027456183070403
+                sessions: 1.4658129805029452
+                amount: amount
+                roaming:
+                  download: 5.962133916683182
+                  amount: amount
+                upload: 0.8008281904610115
+              messaging:
+                mms:
+                  amount: amount
+                  roaming: 1.2315135367772556
+                  national: 4.145608029883936
+                  international: 7.386281948385884
+                sms:
+                  amount: amount
+                  roaming: 2.027123023002322
+                  national: 9.301444243932576
+                  international: 3.616076749251911
+            invoiceNumber: invoiceNumber
+            issueDate: issueDate
+            payOnTimeDiscount:
+              date: date
+              gstAmount: gstAmount
+              discountAmount: discountAmount
+            paymentStatus: NOT_PAID
+        meta: '{}'
+        links:
+          self: self
+      properties:
+        data:
+          $ref: '#/components/schemas/TelcoInvoiceListResponseData'
+        links:
+          $ref: '#/components/schemas/Links'
+        meta:
+          type: object
+      required:
+      - data
+      - links
+      - meta
+      type: object
     TelcoInvoiceListResponse:
+      example:
+        data:
+          invoices:
+          - gstAmount: gstAmount
+            period:
+              endDate: endDate
+              startDate: startDate
+            accountCharges:
+              totalGst: totalGst
+              otherCharges:
+                amount: amount
+                description: description
+                type: SERVICE
+              totalUsageCharges: totalUsageCharges
+              totalDiscounts: totalDiscounts
+              totalOnceOffCharges: totalOnceOffCharges
+            dueDate: dueDate
+            invoiceAmount: invoiceAmount
+            services:
+            - services
+            - services
+            balanceAtIssue: balanceAtIssue
+            accountId: accountId
+            accountUsage:
+              voice:
+                roaming:
+                  duration: duration
+                  number: 7.061401241503109
+                  amount: amount
+                national:
+                  duration: duration
+                  number: 5.637376656633329
+                  amount: amount
+                international:
+                  duration: duration
+                  number: 2.3021358869347655
+                  amount: amount
+              data:
+                download: 6.027456183070403
+                sessions: 1.4658129805029452
+                amount: amount
+                roaming:
+                  download: 5.962133916683182
+                  amount: amount
+                upload: 0.8008281904610115
+              messaging:
+                mms:
+                  amount: amount
+                  roaming: 1.2315135367772556
+                  national: 4.145608029883936
+                  international: 7.386281948385884
+                sms:
+                  amount: amount
+                  roaming: 2.027123023002322
+                  national: 9.301444243932576
+                  international: 3.616076749251911
+            invoiceNumber: invoiceNumber
+            issueDate: issueDate
+            payOnTimeDiscount:
+              date: date
+              gstAmount: gstAmount
+              discountAmount: discountAmount
+            paymentStatus: NOT_PAID
+          - gstAmount: gstAmount
+            period:
+              endDate: endDate
+              startDate: startDate
+            accountCharges:
+              totalGst: totalGst
+              otherCharges:
+                amount: amount
+                description: description
+                type: SERVICE
+              totalUsageCharges: totalUsageCharges
+              totalDiscounts: totalDiscounts
+              totalOnceOffCharges: totalOnceOffCharges
+            dueDate: dueDate
+            invoiceAmount: invoiceAmount
+            services:
+            - services
+            - services
+            balanceAtIssue: balanceAtIssue
+            accountId: accountId
+            accountUsage:
+              voice:
+                roaming:
+                  duration: duration
+                  number: 7.061401241503109
+                  amount: amount
+                national:
+                  duration: duration
+                  number: 5.637376656633329
+                  amount: amount
+                international:
+                  duration: duration
+                  number: 2.3021358869347655
+                  amount: amount
+              data:
+                download: 6.027456183070403
+                sessions: 1.4658129805029452
+                amount: amount
+                roaming:
+                  download: 5.962133916683182
+                  amount: amount
+                upload: 0.8008281904610115
+              messaging:
+                mms:
+                  amount: amount
+                  roaming: 1.2315135367772556
+                  national: 4.145608029883936
+                  international: 7.386281948385884
+                sms:
+                  amount: amount
+                  roaming: 2.027123023002322
+                  national: 9.301444243932576
+                  international: 3.616076749251911
+            invoiceNumber: invoiceNumber
+            issueDate: issueDate
+            payOnTimeDiscount:
+              date: date
+              gstAmount: gstAmount
+              discountAmount: discountAmount
+            paymentStatus: NOT_PAID
+        meta:
+          totalRecords: 6
+          totalPages: 1
+        links:
+          next: next
+          last: last
+          prev: prev
+          self: self
+          first: first
+      properties:
+        data:
+          $ref: '#/components/schemas/TelcoInvoiceListResponseData'
+        links:
+          $ref: '#/components/schemas/LinksPaginated'
+        meta:
+          $ref: '#/components/schemas/MetaPaginated'
+      required:
+      - data
+      - links
+      - meta
+      type: object
+    TelcoInvoiceListResponseData:
       example:
         invoices:
         - gstAmount: gstAmount
@@ -6486,7 +5979,7 @@ components:
             invoiceNumber: invoiceNumber
             description: description
             serviceId: serviceId
-            type: SERVICE
+            type: OTHER
             startDate: startDate
           gst: gst
           payment:
@@ -6523,7 +6016,7 @@ components:
             invoiceNumber: invoiceNumber
             description: description
             serviceId: serviceId
-            type: SERVICE
+            type: OTHER
             startDate: startDate
           gst: gst
           payment:
@@ -6553,48 +6046,12 @@ components:
       required:
       - transactions
       type: object
-    ErrorListResponseMeta:
-      description: Additional data for customised error codes
-      properties:
-        urn:
-          description: The CDR error code URN which the application-specific error
-            code extends. Mandatory if the error `code` is an application-specific
-            error rather than a standardised error code.
-          type: string
-      type: object
-      x-conditional:
-      - urn
-    ErrorListResponsErrors:
-      properties:
-        code:
-          description: The code of the error encountered. Where the error is specific
-            to the respondent, an application-specific error code, expressed as a
-            string value. If the error is application-specific, the URN code that
-            the specific error extends must be provided in the meta object. Otherwise,
-            the value is the error code URN.
-          type: string
-        title:
-          description: A short, human-readable summary of the problem that MUST NOT
-            change from occurrence to occurrence of the problem represented by the
-            error code.
-          type: string
-        detail:
-          description: A human-readable explanation specific to this occurrence of
-            the problem.
-          type: string
-        meta:
-          $ref: '#/components/schemas/ErrorListResponseMeta'
-      required:
-      - code
-      - detail
-      - title
-      type: object
     TelcoProductPricing:
       example:
         period: period
+        amount: amount
         name: name
         description: description
-        chargeAmount: chargeAmount
       properties:
         name:
           description: The display name of the pricing
@@ -6608,12 +6065,12 @@ components:
             (excludes recurrence syntax)
           type: string
           x-cds-type: ExternalRef
-        chargeAmount:
+        amount:
           description: The amount charged for the duration period
           type: string
           x-cds-type: AmountString
       required:
-      - chargeAmount
+      - amount
       - description
       - name
       type: object
@@ -6906,7 +6363,7 @@ components:
       required:
       - startDate
       type: object
-    TelcoAccountPlans:
+    TelcoAccountPlan:
       properties:
         nickname:
           description: Optional display name for the plan provided by the customer
@@ -6914,7 +6371,8 @@ components:
           type: string
         type:
           default: MOBILE
-          description: The type of the plan
+          description: The type of the plan. The type of plan. A [MOBILE](https://www.legislation.gov.au/Details/C2022C00170/Html/Volume_1#_Toc95898745)
+            service or BROADBAND fixed internet service
           enum:
           - MOBILE
           - BROADBAND
@@ -6940,36 +6398,31 @@ components:
         planOverview:
           $ref: '#/components/schemas/TelcoAccountPlanOverview'
       required:
-      - serviceIds
-      type: object
-      x-conditional:
+      - billingType
       - planOverview
+      - serviceIds
+      - type
+      type: object
     TelcoAccount:
       description: The array of plans containing services and associated plan details
       properties:
         plans:
           description: The array of plans containing service and associated plan details
           items:
-            $ref: '#/components/schemas/TelcoAccountPlans'
+            $ref: '#/components/schemas/TelcoAccountPlan'
           type: array
       required:
       - plans
       type: object
-      x-conditional:
-      - planOverview
-    TelcoAccountDetailPlanDetail:
+    TelcoAccountPlanDetail:
       description: Detail on the plan applicable to this account. Mandatory if openStatus
         is OPEN
       properties:
-        charges:
-          description: Charges for metering included in the plan
-          items:
-            $ref: '#/components/schemas/TelcoProductDetailMeteringCharges'
-          type: array
+        planDetail:
+          $ref: '#/components/schemas/TelcoAccountPlanDetail_planDetail'
       required:
-      - charges
+      - planDetail
       type: object
-      x-conditional: []
     TelcoAccountDetailAuthorisedContacts:
       properties:
         firstName:
@@ -6995,37 +6448,6 @@ components:
       required:
       - lastName
       type: object
-    TelcoAccountDetailPlans:
-      properties:
-        nickname:
-          description: Optional display name for the plan provided by the customer
-            to help differentiate multiple plans
-          type: string
-        serviceIds:
-          description: The serviceId representing a unique service identifier such
-            as a mobile [MSISDN](https://www.etsi.org/deliver/etsi_gts/03/0303/05.00.00_60/gsmts_0303v050000p.pdf),
-            [FNN](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf)
-            or internet service e.g [NBN AVC Service ID](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf).
-            In accordance with [CDR ID permanence](#id-permanence) requirement
-          items:
-            type: string
-          type: array
-        planOverview:
-          $ref: '#/components/schemas/TelcoAccountPlanOverview'
-        planDetail:
-          $ref: '#/components/schemas/TelcoAccountDetailPlanDetail'
-        authorisedContacts:
-          description: An array of additional contacts that are authorised to act
-            on this account
-          items:
-            $ref: '#/components/schemas/TelcoAccountDetailAuthorisedContacts'
-          type: array
-      required:
-      - serviceIds
-      type: object
-      x-conditional:
-      - planOverview
-      - planDetail
     TelcoAccountDetail:
       description: The array of plans containing services and associated plan details
       properties:
@@ -7033,13 +6455,16 @@ components:
           description: The array of plans containing services and associated plan
             details
           items:
-            $ref: '#/components/schemas/TelcoAccountDetailPlans'
+            allOf:
+            - $ref: '#/components/schemas/TelcoAccountPlan'
+            - $ref: '#/components/schemas/TelcoAccountPlanDetail'
+          required:
+          - planDetail
+          - planOverview
           type: array
       required:
       - plans
       type: object
-      x-conditional:
-      - planOverview, planDetail
     TelcoPaymentScheduleCardDebit:
       description: Represents a regular credit card payment schedule. Mandatory if
         paymentScheduleUType is set to cardDebit
@@ -7327,7 +6752,6 @@ components:
       - duration
       - number
       type: object
-      x-conditional: []
     TelcoUsageVoiceInternational:
       description: International voice calls. Requied if international calling is
         supported
@@ -7354,7 +6778,6 @@ components:
       - duration
       - number
       type: object
-      x-conditional: []
     TelcoUsageVoiceRoaming:
       description: Roaming voice calls, Required if roaming is supported
       example:
@@ -7380,7 +6803,6 @@ components:
       - duration
       - number
       type: object
-      x-conditional: []
     TelcoUsageVoice:
       description: Summary of voice calls. Required if voice calls are included in
         product plan
@@ -7803,3 +7225,38 @@ components:
       - data
       - voice
       - messaging
+    ResponseErrorListV2_errors:
+      properties:
+        code:
+          description: The code of the error encountered. Where the error is specific
+            to the respondent, an application-specific error code, expressed as a
+            string value. If the error is application-specific, the URN code that
+            the specific error extends must be provided in the meta object. Otherwise,
+            the value is the error code URN.
+          type: string
+        title:
+          description: A short, human-readable summary of the problem that MUST NOT
+            change from occurrence to occurrence of the problem represented by the
+            error code.
+          type: string
+        detail:
+          description: A human-readable explanation specific to this occurrence of
+            the problem.
+          type: string
+        meta:
+          $ref: '#/components/schemas/MetaError'
+      required:
+      - code
+      - detail
+      - title
+      type: object
+    TelcoAccountPlanDetail_planDetail:
+      properties:
+        charges:
+          description: Charges for metering included in the plan
+          items:
+            $ref: '#/components/schemas/TelcoProductDetailMeteringCharges'
+          type: array
+      required:
+      - charges
+      type: object
