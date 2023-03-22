@@ -152,12 +152,12 @@ Note that the results returned by this end point are expected to be ordered in d
 |---|---|---|---|---|
 |200|x-v|string||none|
 
-
+  
     <aside class="success">
 This operation does not require authentication
 </aside>
 
-
+  
 
 ## Get Telco Product Detail
 
@@ -339,12 +339,12 @@ Obtain detailed information on a single telco prouct offered openly to the marke
 |---|---|---|---|---|
 |200|x-v|string||none|
 
-
+  
     <aside class="success">
 This operation does not require authentication
 </aside>
 
-
+  
 
 ## Get Usage For Telco Service
 
@@ -496,15 +496,15 @@ Obtain a usage data from a particular service Id
 |406|x-fapi-interaction-id|string||none|
 |422|x-fapi-interaction-id|string||none|
 
-
-
+  
+    
       <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">telco:billing:read</a>
 </aside>
 
-
-
+    
+  
 
 ## Get Usage
 
@@ -666,15 +666,15 @@ Obtain usage data for all services associated with the customer
 |406|x-fapi-interaction-id|string||none|
 |422|x-fapi-interaction-id|string||none|
 
-
-
+  
+    
       <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">telco:billing:read</a>
 </aside>
 
-
-
+    
+  
 
 ## Get Usage For Specific Telco Service
 
@@ -853,15 +853,15 @@ Obtain usage data for a specific service
 |406|x-fapi-interaction-id|string||none|
 |422|x-fapi-interaction-id|string||none|
 
-
-
+  
+    
       <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">telco:billing:read</a>
 </aside>
 
-
-
+    
+  
 
 ## Get Telco Accounts
 
@@ -1007,15 +1007,15 @@ Other Versions: [v1](includes/obsolete/get-telco-accounts-v1.html)
 |406|x-fapi-interaction-id|string||none|
 |422|x-fapi-interaction-id|string||none|
 
-
-
+  
+    
       <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">telco:accounts.basic:read</a>
 </aside>
 
-
-
+    
+  
 
 ## Get Telco Account Detail
 
@@ -1150,15 +1150,15 @@ Other Versions: [v1](includes/obsolete/get-telco-account-detail-v1.html)
 |404|x-fapi-interaction-id|string||none|
 |406|x-fapi-interaction-id|string||none|
 
-
-
+  
+    
       <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">telco:accounts.detail:read</a>
 </aside>
 
-
-
+    
+  
 
 ## Get Telco Agreed Payment Schedule
 
@@ -1205,7 +1205,7 @@ $.ajax({
 
 `GET /telco/accounts/{accountId}/payment-schedule`
 
-Obtain the agreed payment schedule and details, if any, for a specific telco account.
+Obtain the agreed payment schedule and details, if any, for a specific telco account. 
 
 Some general notes about this end point:
 
@@ -1298,15 +1298,15 @@ Some general notes about this end point:
 |404|x-fapi-interaction-id|string||none|
 |406|x-fapi-interaction-id|string||none|
 
-
-
+  
+    
       <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">telco:accounts.paymentschedule:read</a>
 </aside>
 
-
-
+    
+  
 
 ## Get Telco Concessions
 
@@ -1429,15 +1429,15 @@ Obtain the details of any concessions or arrangements applied to a specific telc
 |404|x-fapi-interaction-id|string||none|
 |406|x-fapi-interaction-id|string||none|
 
-
-
+  
+    
       <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">telco:accounts.concessions:read</a>
 </aside>
 
-
-
+    
+  
 
 ## Get Balance For Telco Account
 
@@ -1598,15 +1598,15 @@ Obtain the current balance for a specific account
 |404|x-fapi-interaction-id|string||none|
 |406|x-fapi-interaction-id|string||none|
 
-
-
+  
+    
       <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">telco:billing:read</a>
 </aside>
 
-
-
+    
+  
 
 ## Get Bulk Telco Balances
 
@@ -1782,15 +1782,15 @@ Obtain the current balance for all accounts
 |406|x-fapi-interaction-id|string||none|
 |422|x-fapi-interaction-id|string||none|
 
-
-
+  
+    
       <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">telco:billing:read</a>
 </aside>
 
-
-
+    
+  
 
 ## Get Balances For Specific Telco Accounts
 
@@ -1985,15 +1985,15 @@ Obtain the current balance for a specified set of accounts
 |406|x-fapi-interaction-id|string||none|
 |422|x-fapi-interaction-id|string||none|
 
-
-
+  
+    
       <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">telco:billing:read</a>
 </aside>
 
-
-
+    
+  
 
 ## Get Invoices For Telco Account
 
@@ -2173,15 +2173,15 @@ Obtain the invoices for a specific account
 |406|x-fapi-interaction-id|string||none|
 |422|x-fapi-interaction-id|string||none|
 
-
-
+  
+    
       <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">telco:billing:read</a>
 </aside>
 
-
-
+    
+  
 
 ## Get Telco Invoices
 
@@ -2369,15 +2369,15 @@ Obtain the invoices for all accounts
 |406|x-fapi-interaction-id|string||none|
 |422|x-fapi-interaction-id|string||none|
 
-
-
+  
+    
       <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">telco:billing:read</a>
 </aside>
 
-
-
+    
+  
 
 ## Get Invoices For Specific Telco Accounts
 
@@ -2584,15 +2584,15 @@ Obtain invoices for a specified set of accounts
 |406|x-fapi-interaction-id|string||none|
 |422|x-fapi-interaction-id|string||none|
 
-
-
+  
+    
       <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">telco:billing:read</a>
 </aside>
 
-
-
+    
+  
 
 ## Get Transactions For Telco Account
 
@@ -2752,15 +2752,15 @@ Obtain the billing transactions for a specific account
 |406|x-fapi-interaction-id|string||none|
 |422|x-fapi-interaction-id|string||none|
 
-
-
+  
+    
       <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">telco:billing:read</a>
 </aside>
 
-
-
+    
+  
 
 ## Get Telco Transactions
 
@@ -2917,15 +2917,15 @@ Obtain billing transactions for all accounts
 |406|x-fapi-interaction-id|string||none|
 |422|x-fapi-interaction-id|string||none|
 
-
-
+  
+    
       <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">telco:billing:read</a>
 </aside>
 
-
-
+    
+  
 
 ## Get Transactions For Specific Telco Accounts
 
@@ -3101,15 +3101,15 @@ Obtain transactions for a specified set of accounts
 |406|x-fapi-interaction-id|string||none|
 |422|x-fapi-interaction-id|string||none|
 
-
-
+  
+    
       <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">telco:billing:read</a>
 </aside>
 
-
-
+    
+  
 
 <h2 class="schema-heading" id="cdr-telco-api-schemas">Schemas</h2>
 <a class="schema-link" id="cdr-telco-api-schemas"></a>
@@ -7730,3 +7730,4 @@ To perform this operation, you must be authenticated and authorised with the fol
 |data|[TelcoServiceBalanceData](#schemacdr-telco-apitelcoservicebalancedata)|conditional|Summary of data balances|
 |voice|[TelcoServiceBalanceVoice](#schemacdr-telco-apitelcoservicebalancevoice)|conditional|Summary of voice balances. Required if voice calls are included in product plan|
 |messaging|[TelcoServiceBalanceMessaging](#schemacdr-telco-apitelcoservicebalancemessaging)|conditional|Summary of messaging. Required if messaging services is included in the product plan|
+
