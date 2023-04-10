@@ -9,7 +9,7 @@ toc_footers:
 search: false
 ---
 
-# V1.22.1 Release Notes
+# V1.23.0 Release Notes
 Release notes for version v1.23.0 of the [CDR Standards](../../index.html).
 
 ## Changes Made
@@ -22,13 +22,13 @@ TThis release addresses the following minor defects raised on [Standards Staging
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
-- [Change id token encryption documentation to allow for use in Hybrid flow and ACF](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/576)
+- [Standards Maintenance Issue 576: Change id token encryption documentation to allow for use in Hybrid flow and ACF](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/576)
 
 ### Decision Proposals
 
 This release addresses the following Decision Proposals published on [Standards](https://github.com/ConsumerDataStandardsAustralia/standards/issues):
 
-- No issues
+- [Decision Proposal 298](https://github.com/ConsumerDataStandardsAustralia/standards/issues/298)
 
 ## Introduction
 
@@ -48,7 +48,7 @@ No Change
 
 |Change|Description|Link|
 |------|-----------|----|
-| Allow id token encryption for Auth Code Flow | [**Change Request #576**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/576): Updated Security Profile to allow encryption of id tokens when using Auth Code Flow until July 10th 2023 | [Security Profile](../../#security-profile) |
+| Allow id token encryption for Auth Code Flow | [**Change Request #576**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/576): Updated Security Profile to allow encryption of id tokens when using Auth Code Flow | [Security Profile](../../#security-profile) |
 
 
 ## Consumer Experience
