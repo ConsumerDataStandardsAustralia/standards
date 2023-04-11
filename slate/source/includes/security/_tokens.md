@@ -62,7 +62,7 @@ The following requirements apply to the OIDC Hybrid Flow:
 Authorization Code Flow requirements: Removed requirement stating ID tokens MUST NOT be encrypted
 ```
 
-For response_type “code”, in accordance with **[[FAPI-1.0-Advanced]](#nref-FAPI-1-0-Advanced)**, ID Tokens **MUST** be signed when returned to a Data Recipient Software Product from the Token End Point.
+For `response_type` `code`, in accordance with **[[FAPI-1.0-Advanced]](#nref-FAPI-1-0-Advanced)**, ID Tokens **MUST** be signed when returned to a Data Recipient Software Product from the Token End Point.
 
 ### Access Token
 Access Tokens **MUST** be used as specified in [section 10.3] (https://tools.ietf.org/html/rfc6749#section-10.3) of **[[OAUTH2]](#nref-OAUTH2)**.
