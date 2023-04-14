@@ -3,7 +3,7 @@ info:
   description: This specification defines the APIs for Data Holders exposing Dynamic
     Client Registration endpoints.
   title: CDR Dynamic Client Registration API
-  version: 1.22.1
+  version: 1.23.0
 servers:
 - url: https://data.holder.com.au/
 paths:
@@ -437,12 +437,14 @@ components:
           type: string
           x-cds-type: Enum
         id_token_encrypted_response_alg:
-          description: JWE `alg` algorithm with which an id_token is to be encrypted
+          description: JWE `alg` algorithm with which an id_token is to be encrypted.<br/><br/>Required
+            if OIDC Hybrid Flow (response type `code id_token`) is registered.
           example: RSA-OAEP
           type: string
           x-cds-type: ExternalRef
         id_token_encrypted_response_enc:
-          description: JWE `enc` algorithm with which an id_token is to be encrypted
+          description: JWE `enc` algorithm with which an id_token is to be encrypted.<br/><br/>Required
+            if OIDC Hybrid Flow (response type `code id_token`) is registered.
           example: A256GCM
           type: string
           x-cds-type: ExternalRef
@@ -517,8 +519,6 @@ components:
       - client_name
       - client_uri
       - grant_types
-      - id_token_encrypted_response_alg
-      - id_token_encrypted_response_enc
       - id_token_signed_response_alg
       - jwks_uri
       - logo_uri
@@ -533,6 +533,9 @@ components:
       - token_endpoint_auth_method
       - token_endpoint_auth_signing_alg
       type: object
+      x-conditional:
+      - id_token_encrypted_response_alg
+      - id_token_encrypted_response_enc
     ClientRegistration:
       allOf:
       - $ref: '#/components/schemas/ClientRegistration_allOf'
