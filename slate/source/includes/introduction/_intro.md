@@ -6,6 +6,8 @@ This text is an example of a new addition to the standards:
 This text is an example of text removed from the standards:
 - Old text removed
 Note: changes to request and response payloads are listed at the beginning of the relevant API section due to the documentation being auto generated from OpenAPI specification files.
+
+Additional note for v1.24.0: For this version only the delta statements from v1.23.0 have been retained in v1.24.0 as the release dates between the two versions were close together.  The affected delta statements will be noted as being associated with v1.23.0
 ```
 
 These standards have been developed as part of the Australian Government's introduction of the [Consumer Data Right](https://www.accc.gov.au/focus-areas/consumer-data-right "ACCC Consumer Data Right webpage") legislation to give Australians greater control over their data.
