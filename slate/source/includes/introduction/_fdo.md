@@ -4,13 +4,6 @@ The standards, as published from time to time, may include specific statements i
 
 The table below highlights these areas of the standards.
 
-```diff
-Removed obligations more than six months in the past
-
-Reordered FDO entries by applicable date
-
-Corrected some typos
-```
 
 |Section|Description|Applicable Date|
 |-------|-----------|---------------|

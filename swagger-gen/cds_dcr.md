@@ -533,8 +533,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |response_types|[string]|mandatory|Array of the OAuth 2.0 response type strings that the client can use at the authorization endpoint.<br><br>Response type value `code` is required for Authorization Code Flow. Response type value `code id_token` is required for OIDC Hybrid Flow.|
 |application_type|[Enum](#common-field-types)|optional|Kind of the application. The only supported application type will be `web`|
 |id_token_signed_response_alg|[Enum](#common-field-types)|mandatory|Algorithm with which an id_token is to be signed|
-|id_token_encrypted_response_alg|[ExternalRef](#common-field-types)|mandatory|JWE `alg` algorithm with which an id_token is to be encrypted|
-|id_token_encrypted_response_enc|[ExternalRef](#common-field-types)|mandatory|JWE `enc` algorithm with which an id_token is to be encrypted|
+|id_token_encrypted_response_alg|[ExternalRef](#common-field-types)|conditional|JWE `alg` algorithm with which an id_token is to be encrypted.<br/><br/>Required if OIDC Hybrid Flow (response type `code id_token`) is registered.|
+|id_token_encrypted_response_enc|[ExternalRef](#common-field-types)|conditional|JWE `enc` algorithm with which an id_token is to be encrypted.<br/><br/>Required if OIDC Hybrid Flow (response type `code id_token`) is registered.|
 |authorization_signed_response_alg|string|optional|The JWS `alg` algorithm required for signing authorization responses. If this is specified, the response will be signed using JWS and the configured algorithm. The algorithm “none” is not allowed.<br><br>Required if response_type of “code” is registered by the client.|
 |authorization_encrypted_response_alg|string|optional|The JWE `alg` algorithm required for encrypting authorization responses. If unspecified, the default is that no encryption is performed.<br><br>Required if “authorization_encrypted_response_enc” is included.|
 |authorization_encrypted_response_enc|string|optional|The JWE `enc` algorithm required for encrypting authorization responses. If “authorization_encrypted_response_alg” is specified, the default for this value is “A128CBC-HS256”.|

@@ -10,6 +10,12 @@
 </tr>
 </thead><tbody>
 <tr>
+<td>14/04/2023</td>
+<td>1.23.0</td>
+<td>Changes arising from Decision Proposal 298</td>
+<td>See <a href="includes/releasenotes/releasenotes.1.23.0.html">release notes</a> and <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/298">Decision 298</a> for details.</td>
+</tr>
+<tr>
 <td>22/03/2023</td>
 <td>1.22.1</td>
 <td>Patch release including updates to draft Telco standards</td>
