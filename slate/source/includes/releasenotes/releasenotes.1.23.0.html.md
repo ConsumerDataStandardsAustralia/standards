@@ -15,11 +15,6 @@ Release notes for version v1.23.0 of the [CDR Standards](../../index.html).
 ## Changes Made
 ### Change Requests
 
-TThis release addresses the following minor defects raised on [Standards Staging](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues):
-
-- No issues
-
-
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
 - [Standards Maintenance Issue 576: Change id token encryption documentation to allow for use in Hybrid flow and ACF](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/576)
