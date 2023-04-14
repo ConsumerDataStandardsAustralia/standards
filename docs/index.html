@@ -25750,7 +25750,21 @@ This operation does not require authentication
 <td>NA</td>
 </tr>
 </tbody></table>
-<h1 id='energy-apis'>Energy APIs</h1>
+<h1 id='energy-apis'>Energy APIs</h1><pre class="highlight diff tab-diff"><code>Correction to make the meta object optional for:
+  Get DER for Service Point
+  Get Energy Account Detail
+  Get Agreed Payment Schedule
+  Get Concessions
+  Get Balance for Energy Account
+
+Correction to make the meta object optional in requests
+
+Corrected error list model to be ResponseErrorListV2
+to align with banking
+
+Fixed spelling of 'organisation' in the party object
+in EnergyServicePointDetail
+</code></pre>
 <p>This specification defines the APIs for Data Holders exposing Energy endpoints.</p>
 
 <table>
@@ -60711,7 +60725,17 @@ the Data Holder. In this scenario the retailer MUST call AEMO multiple times and
 </ul></li>
 <li>The primary Data Holder MUST ensure that the data requested and then shared with the Data Recipient is not outside the bounds of control of the specific CDR Consumer</li>
 </ul>
-<h1 id='energy-secondary-dh-apis'>Energy Secondary DH APIs</h1>
+<h1 id='energy-secondary-dh-apis'>Energy Secondary DH APIs</h1><pre class="highlight diff tab-diff"><code>Correction to make the meta object optional for:
+  Get DER for Service Point
+
+Correction to make the meta object optional in requests
+
+Corrected error list model to be ResponseErrorListV2
+to align with banking
+
+Fixed spelling of 'organisation' in the party object
+in EnergyServicePointDetail
+</code></pre>
 <p>This specification defines the APIs for Data Holders exposing Energy Secondary Data Holder endpoints.</p>
 
 <table>
