@@ -1757,7 +1757,6 @@ This text is an example of a new addition to the standards:
 </span>This text is an example of text removed from the standards:
 <span class="gd">- Old text removed
 </span>Note: changes to request and response payloads are listed at the beginning of the relevant API section due to the documentation being auto generated from OpenAPI specification files.
-Additional note for v1.22.0: For this version only the delta statements from v1.21.0 have been retained in v1.22.0 as the release dates between the two versions were close together.  The affected delta statements will be noted as being associated with v1.21.0
 </code></pre>
 
 <p>These standards have been developed as part of the Australian Government&#39;s introduction of the <a href="https://www.accc.gov.au/focus-areas/consumer-data-right" title="ACCC Consumer Data Right webpage">Consumer Data Right</a> legislation to give Australians greater control over their data.</p>
@@ -1773,14 +1772,11 @@ Additional note for v1.22.0: For this version only the delta statements from v1.
 <li>where the standards are specified as binding standards as required by the Consumer Data Right rules for the purposes of s56FA of the legislation, they apply as under contract between a data holder and an accredited data recipient.  The legal effect of binding standards as between data holders and accredited data recipients is fully set out in s56FD and s56FE of the legislation.</li>
 </ul>
 
-<pre class="highlight diff tab-diff"><code><span class="gi">+ Added binding statement in response to legal advice
-</span></code></pre>
-
 <p>Some of these standards will be binding data standards under the Competition and Consumer (Consumer Data Right) Data Standards (No. 1) 2023. See that instrument <a href="https://consumerdatastandards.gov.au/sites/consumerdatastandards.gov.au/files/2023-02/Competition%20and%20Consumer%20%28Consumer%20Data%20Right%29%20Data%20Standards%20%28No.%201%29%202023%20executed.pdf">here</a>. In summary, provisions of these standards (as they exist from time to time) that impose obligations or prohibitions on CDR entities are binding data standards. Provisions included in these standards merely by way of guidance are not binding data standards.</p>
 
 <h2 id='version'>Version</h2>
 
-<p>These standards represent version 1.22.1 of the high level standards.  See the <a href="#versioning">versioning section</a> for more information on how versions are managed in the standard.</p>
+<p>These standards represent version 1.23.0 of the high level standards.  See the <a href="#versioning">versioning section</a> for more information on how versions are managed in the standard.</p>
 
 <h2 id='interpretation'>Interpretation</h2>
 
@@ -1791,13 +1787,6 @@ Additional note for v1.22.0: For this version only the delta statements from v1.
 <p>The standards, as published from time to time, may include specific statements indicating that a specific section of the standards will not take effect until a future date or may cease to have effect on some future date.</p>
 
 <p>The table below highlights these areas of the standards.</p>
-
-<pre class="highlight diff tab-diff"><code>Removed obligations more than six months in the past
-
-Reordered FDO entries by applicable date
-
-Corrected some typos
-</code></pre>
 
 <table><thead>
 <tr>
@@ -1965,18 +1954,8 @@ Corrected some typos
 
 <p>The actual release dates for the Register APIs are expected to occur prior to these dates and are not defined by the Standards.</p>
 
-<h2 id='endpoint-version-schedule'>Endpoint Version Schedule</h2><pre class="highlight diff tab-diff"><code>Updated the obligation dates schedule to have correct
-numbers for each date
+<h2 id='endpoint-version-schedule'>Endpoint Version Schedule</h2>
 
-Removed entries in the obligation dates schedule older
-than six months
-
-Corrected the year of the obligation date for Get
-Energy Account Detail V2
-
-Corrected link to go directly to the end point version
-schedule
-</code></pre>
 <p>A table-view of all endpoint versioning is available <a href='includes/endpoint-version-schedule/#endpoint-version-schedule'>here</a>.</p>
 
 <h2 id='normative-references'>Normative References</h2>
@@ -2355,15 +2334,14 @@ always align to current consumer preferences.</p>
 
 <p>Each end point will have multiple versions independent of other end points.  A specific end point version will be requested by a client using a HTTP header. This header will be supported by all end points under the API standards.  See the section on <a href="#http-headers">HTTP Headers</a> for more information on how versions are requested and supplied under the standards.</p>
 
-<pre class="highlight diff tab-diff"><code>Corrected link to go directly to the end point version
-schedule
-</code></pre>
 <p>A table-view of all endpoint versioning is available <a href='includes/endpoint-version-schedule/#endpoint-version-schedule'>here</a>.</p>
 
 <h2 id='uri-structure'>URI Structure</h2>
+
 <blockquote>
 <p>Some example URIs that meet this standard are:  </p>
 </blockquote>
+
 <pre class="highlight plaintext"><code>1. https://www.bank.com.au/api/cds-au/v1/banking/accounts  
 2. https://www.bank.com.au/api/cds-au/v1/banking/accounts/abc123/transactions/?x=y#bar  
 3. https://www.bank.com.au/complex/uri/taxonomy/cds-au/v1/banking/products?page=2  
@@ -5309,7 +5287,9 @@ grant_type=client_credentials&amp;
 </tbody></table>
 
 <p>Get Software Statement Assertion API <a href="includes/obsolete/get-software-statement-assertion-v1.html">v1</a> &amp; <a href="includes/obsolete/get-software-statement-assertion-v2.html">v2</a> has the scope claim explicitly defined.</p>
-<h3 id='registration-request-using-jwt'>Registration Request using JWT</h3>
+<h3 id='registration-request-using-jwt'>Registration Request using JWT</h3><pre class="highlight diff tab-diff"><code>Removed following requirement from id_token_encrypted_response_alg and id_token_encrypted_response_enc fields:
+<span class="gd">- Must be ignored for Authorization Code Flow
+</span></code></pre>
 <blockquote>
 <p>Example Request
 Client registration with OpenID Hybrid Flow</p>
@@ -5479,13 +5459,13 @@ Accept: application/json
 </tr>
 <tr>
 <td><strong>id_token_encrypted_response_alg</strong></td>
-<td>Required</td>
-<td>JWE <code>alg</code> algorithm with which an id_token is to be encrypted.<br><br>Required if OIDC Hybrid Flow (response_type “code id_token”) is registered. Must be ignored for Authorization Code Flow.</td>
+<td>Conditional</td>
+<td>JWE <code>alg</code> algorithm with which an id_token is to be encrypted.<br><br>Required if OIDC Hybrid Flow (response type <code>code id_token</code>) is registered.</td>
 </tr>
 <tr>
 <td><strong>id_token_encrypted_response_enc</strong></td>
-<td>Required</td>
-<td>JWE <code>enc</code> algorithm with which an id_token is to be encrypted.<br><br>Required if OIDC Hybrid Flow (response_type “code id_token”) is registered. Must be ignored for Authorization Code Flow.</td>
+<td>Conditional</td>
+<td>JWE <code>enc</code> algorithm with which an id_token is to be encrypted.<br><br>Required if OIDC Hybrid Flow (response type <code>code id_token</code>) is registered.</td>
 </tr>
 <tr>
 <td><strong>authorization_signed_response_alg</strong></td>
@@ -6146,8 +6126,9 @@ Data Holders <strong>SHOULD</strong> explicitly capture Claims requested by the 
 <li>The <code>c_hash</code> value <strong>MUST</strong> be generated according to <a href="https://openid.net/specs/openid-connect-core-1_0.html#HybridIDToken">section 3.3.2.11</a> of <strong><a href="#nref-OIDC">[OIDC]</a></strong>.</li>
 <li>The <code>s_hash</code> value <strong>MUST</strong> be generated according to <a href="https://openid.net/specs/openid-financial-api-part-2-1_0.html#id-token-as-detached-signature">section 5.1.1</a> of <strong><a href="#nref-FAPI-1-0-Advanced">[FAPI-1.0-Advanced]</a></strong>.</li>
 </ul>
-<h4 id='authorization-code-flow-requirements'>Authorization Code Flow requirements</h4>
-<p>For response_type “code”, in accordance with <strong><a href="#nref-FAPI-1-0-Advanced">[FAPI-1.0-Advanced]</a></strong>, ID Tokens <strong>MUST</strong> be signed and <strong>MUST NOT</strong> be encrypted when returned to a Data Recipient Software Product from the Token End Point.</p>
+<h4 id='authorization-code-flow-requirements'>Authorization Code Flow requirements</h4><pre class="highlight diff tab-diff"><code>Authorization Code Flow requirements: Removed requirement stating ID tokens MUST NOT be encrypted
+</code></pre>
+<p>For <code>response_type</code> <code>code</code>, in accordance with <strong><a href="#nref-FAPI-1-0-Advanced">[FAPI-1.0-Advanced]</a></strong>, ID Tokens <strong>MUST</strong> be signed when returned to a Data Recipient Software Product from the Token End Point.</p>
 <h3 id='access-token'>Access Token</h3>
 <p>Access Tokens <strong>MUST</strong> be used as specified in <a href="https://tools.ietf.org/html/rfc6749#section-10.3">section 10.3</a> of <strong><a href="#nref-OAUTH2">[OAUTH2]</a></strong>.</p>
 
@@ -8517,14 +8498,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>id_token_encrypted_response_alg</td>
 <td><a href="#common-field-types">ExternalRef</a></td>
-<td>mandatory</td>
-<td>JWE <code>alg</code> algorithm with which an id_token is to be encrypted</td>
+<td>conditional</td>
+<td>JWE <code>alg</code> algorithm with which an id_token is to be encrypted.<br/><br/>Required if OIDC Hybrid Flow (response type <code>code id_token</code>) is registered.</td>
 </tr>
 <tr>
 <td>id_token_encrypted_response_enc</td>
 <td><a href="#common-field-types">ExternalRef</a></td>
-<td>mandatory</td>
-<td>JWE <code>enc</code> algorithm with which an id_token is to be encrypted</td>
+<td>conditional</td>
+<td>JWE <code>enc</code> algorithm with which an id_token is to be encrypted.<br/><br/>Required if OIDC Hybrid Flow (response type <code>code id_token</code>) is registered.</td>
 </tr>
 <tr>
 <td>authorization_signed_response_alg</td>
@@ -43401,8 +43382,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <aside class="notice">
 Note that the standards for the telecommunications sector are currently in draft only and are not binding
 </aside>
-<pre class="highlight diff tab-diff"><code>Telco draft standards have been updated in accordance with feedback obtained via consultation
-</code></pre>
+
 <table>
 <tr><td><a href='./includes/swagger/cds_telco.json'>Telco OpenAPI Specification (JSON)</a></td></tr>
 <tr><td><a href='./includes/swagger/cds_telco.yaml'>Telco OpenAPI Specification (YAML)</a></td></tr>
@@ -65032,6 +65012,12 @@ This operation may only be called by an Energy Retailer using the information se
 </tr>
 </thead><tbody>
 <tr>
+<td>14/04/2023</td>
+<td>1.23.0</td>
+<td>Changes arising from Decision Proposal 298</td>
+<td>See <a href="includes/releasenotes/releasenotes.1.23.0.html">release notes</a> and <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/298">Decision 298</a> for details.</td>
+</tr>
+<tr>
 <td>22/03/2023</td>
 <td>1.22.1</td>
 <td>Patch release including updates to draft Telco standards</td>
@@ -65468,6 +65454,11 @@ This operation may only be called by an Energy Retailer using the information se
 <th>Description</th>
 </tr>
 </thead><tbody>
+<tr>
+<td><a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.22.1/'>22/03/2023</a></td>
+<td>1.22.1</td>
+<td><a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.22.1/'>Changes arising from Change Request 576 (Maintenance iteration 14)</a></td>
+</tr>
 <tr>
 <td><a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.22.0/'>22/12/2022</a></td>
 <td>1.22.0</td>

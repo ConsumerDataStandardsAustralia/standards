@@ -855,14 +855,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>id_token_encrypted_response_alg</td>
 <td><a href="#common-field-types">ExternalRef</a></td>
-<td>mandatory</td>
-<td>JWE <code>alg</code> algorithm with which an id_token is to be encrypted</td>
+<td>conditional</td>
+<td>JWE <code>alg</code> algorithm with which an id_token is to be encrypted.<br/><br/>Required if OIDC Hybrid Flow (response type <code>code id_token</code>) is registered.</td>
 </tr>
 <tr>
 <td>id_token_encrypted_response_enc</td>
 <td><a href="#common-field-types">ExternalRef</a></td>
-<td>mandatory</td>
-<td>JWE <code>enc</code> algorithm with which an id_token is to be encrypted</td>
+<td>conditional</td>
+<td>JWE <code>enc</code> algorithm with which an id_token is to be encrypted.<br/><br/>Required if OIDC Hybrid Flow (response type <code>code id_token</code>) is registered.</td>
 </tr>
 <tr>
 <td>authorization_signed_response_alg</td>
