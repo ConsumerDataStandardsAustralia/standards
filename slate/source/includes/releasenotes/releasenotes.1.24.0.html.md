@@ -44,7 +44,9 @@ No Change
 
 ## Information Security Profile
 
-No Change
+|Change|Description|Link|
+|------|-----------|----|
+| Certificate Management corrections| [**Standards Maintenance #565**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/565): Updated wording and corrected a typo in the "Issued by the Register CA for Data Recipients" table. Corrected a typo in the "CDR Certificate Authority" section. Addresses [Issue 565 comment](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/565#issuecomment-1340391109). | [Certificate Management](../../#certificate-management) |
 
 ## Consumer Experience
 
