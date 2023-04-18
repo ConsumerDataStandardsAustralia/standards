@@ -40,7 +40,11 @@ No Change
 
 ## API End Points
 
-No Change
+|Change|Description|Link|
+|------|-----------|----|
+| Admin APIs - spelling correction| [**Standards Maintenance #565**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/565): Corrected spelling mistake in description of `RejectionMetricsV2.unauthenticated` field. Addresses [Issue 565 comment](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/565#issuecomment-1341720771). | [Admin APIs](../../#admin-apis) |
+
+Corrected spelling mistake in description of `unauthenticated` field in RejectionMetricsV2 schema
 
 ## Information Security Profile
 

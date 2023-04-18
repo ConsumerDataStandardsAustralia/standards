@@ -862,7 +862,7 @@
                 }
               }
             },
-            "description": "Rejection counts for all uauthenticated end points",
+            "description": "Rejection counts for all unauthenticated end points",
             "x-conditional": [
               "currentDay",
               "previousDays"
