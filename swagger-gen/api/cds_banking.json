@@ -4327,7 +4327,7 @@
               },
               "lendingRates": {
                 "type": "array",
-                "description": "Fully described deposit rates for this account based on the equivalent structure in Product Reference",
+                "description": "Fully described lending rates for this account based on the equivalent structure in Product Reference",
                 "items": {
                   "$ref": "#/components/schemas/BankingProductLendingRateV2"
                 }
