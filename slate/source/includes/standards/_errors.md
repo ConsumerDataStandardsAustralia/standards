@@ -1,4 +1,10 @@
 ## Error Codes
+```diff
+Replaced following in description of 'Invalid Page Size':
+- page_size
+with:
++ page-size
+```
 
 These standards define a standard list of error codes that Data Recipient Software Products and Data Holders **SHOULD** or **MUST** conform to. Further,
 
@@ -125,7 +131,7 @@ Content-Type: application/json
 | <a id="error-400-field-invalid"></a>Invalid Field | <code>urn:au-cds:error:cds-all:<br/>Field/Invalid</code> | Applies when the value of the URL parameter or request body parameter is an invalid type or the value violates the field's constraints as defined by the interface contract.<br/>For example, `is-owned` is a `Boolean` but a `DateString` value is provided.<br/><br/>The error `detail` **SHOULD** be the parameter name of the invalid field. The error `detail` **MAY** include further details explaining the valid format.<br/><br/>This error code **MUST** be supported for unauthenticated and authenticated APIs. |
 | <a id="error-400-header-invalid"></a>Invalid Header | <code>urn:au-cds:error:cds-all:<br/>Header/Invalid</code> | Applies when a HTTP Header is provided but the value provided is an invalid type or violates the field type constraints as defined in the Consumer Data Standards.<br/><br/>The error `detail` **SHOULD** be the HTTP header name. The error `detail` **MAY** include further details explaining the valid format.<br/><br/>This error code **SHOULD** be supported for unauthenticated and authenticated APIs. |
 | <a id="error-400-field-invalid-date-time"></a>Invalid Date | <code>urn:au-cds:error:cds-all:<br/>Field/InvalidDateTime</code> | An invalid date is provided. For example, a future date value is expected, but a date in past or current date is supplied. Applies to `DateTimeString`, `DateString`, and `TimeString` field types.<br/><br/>The error `detail` **SHOULD** be the parameter name of the invalid date field. The error `detail` **MAY** include further details explaining the expected date value.<br/><br/>This error code **MUST** be supported for unauthenticated and authenticated APIs. |
-| <a id="error-400-field-invalid-page-size"></a>Invalid Page Size | <code>urn:au-cds:error:cds-all:<br/>Field/InvalidPageSize</code> | The value provided in the `page-size` pagination field is greater than the maximum allowed by the Consumer Data Standards (`page_size > 1000`).<br/><br/>This error code **MUST** be supported for unauthenticated and authenticated APIs. |
+| <a id="error-400-field-invalid-page-size"></a>Invalid Page Size | <code>urn:au-cds:error:cds-all:<br/>Field/InvalidPageSize</code> | The value provided in the `page-size` pagination field is greater than the maximum allowed by the Consumer Data Standards (`page-size > 1000`).<br/><br/>This error code **MUST** be supported for unauthenticated and authenticated APIs. |
 | <a id="error-400-header-invalid-version"></a>Invalid Version | <code>urn:au-cds:error:cds-all:<br/>Header/InvalidVersion</code> | A request is made for a version that is not a `PositiveInteger`.<br/>For example:<ul><li>`x-min-v`, `x-v` or `x-<HID>-v` are not `Integers` (e.g. `x-min-v=foo`, `x-v=bar`, `x-ACME-v=cheese`)</li><li>`x-min-v`, `x-v` or `x-<HID>-v` are not positive-value integers (they are an `Integer` but `<= 0`)</li></ul><br/>This error code **MUST** be supported for unauthenticated and authenticated APIs.<br/><br/>If the version header is a `PositiveInteger` but is not a version supported by the Data Holder, the [Unsupported Version code](#error-406-header-unsupported-version) applies. |
 
 #### 403 (Forbidden) Errors
