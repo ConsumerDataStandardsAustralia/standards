@@ -59,10 +59,16 @@ Authorisation Servers supporting `private_key_jwt` Client Authentication of clie
     * `iat` - OPTIONAL. Time at which the JWT was issued. Value is a JSON number representing the number of seconds from 1970-01-01T00:00:00Z to the UTC issued at time.
 
 
-* The aforementioned assertion **MUST** be sent to the Authorisation Server's Token endpoint with the `POST` method and **MUST** include the following REQUIRED parameters and **MAY** contain the following OPTIONAL parameters:
+```diff
+Updated the requirements for the client_id claim. It is now recommended the client_id be provided until November 13th 2023. Afterwhich it is optional for clients to provide this claim. It is then beholden on the CDR Register and Data Holders to permit client authentication where the client omits the client_id claim. This facilitates Data Holders seeking FAPI compliance by supporting Private Key JWT client authentication as per [RFC7521].
+```
+
+* The aforementioned assertion **MUST** be sent to the Authorisation Server's Token endpoint with the `POST` method and **MUST** include the following REQUIRED parameters, **SHOULD** include the following RECOMMENDED parameters and **MAY** contain the following OPTIONAL parameters:
 
     * `grant_type` - REQUIRED. The grant type(s) supported by the Authorisation Server.  
-    * `client_id` - REQUIRED. The client ID of the bearer.
+    * `client_id` - 
+      * **Until November 13th 2023**<br/>RECOMMENDED. The client ID of the bearer.
+      * **From November 13th 2023**<br/>OPTIONAL. The client ID of the bearer in accordance with [**[RFC7521]**](#nref-RFC7521).
     * `client_assertion_type` - REQUIRED. This **MUST** be set to `urn:ietf:params:oauth:client-assertion-type:jwt-bearer`.
     * `client_assertion` - REQUIRED. The encoded assertion JWT.
     * `scope` - OPTIONAL. The requested scope as described in [Section 3.3](https://tools.ietf.org/html/rfc6749#section-3.3) of **[[RFC6749]](#nref-RFC6749)**.
