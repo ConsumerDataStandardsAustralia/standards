@@ -117,7 +117,7 @@
           {
             "name": "period",
             "in": "query",
-            "description": "The period of metrics to be requested. Values can be CURRENT (meaning metrics for current day), HISTORIC (meaning metrics for previous days or months) or ALL. If absent the default is ALL.",
+            "description": "The period of metrics to be requested. Values can be CURRENT (meaning metrics for current period, dependent on the metric type), HISTORIC (meaning metrics for previous period, depending on the metric type) or ALL. If absent the default is ALL.",
             "schema": {
               "type": "string",
               "default": "ALL",

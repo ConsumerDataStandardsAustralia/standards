@@ -14,5 +14,9 @@ Corrected spelling mistake in description of `RejectionMetricsV2.unauthenticated
 - Rejection counts for all uauthenticated end points 
 + Rejection counts for all unauthenticated end points
 
+Updated description of 'period' parameter of Get Metrics API:
+- Values can be CURRENT (meaning metrics for current day), HISTORIC (meaning metrics for previous days or months) or ALL...
++ Values can be CURRENT (meaning metrics for current period, dependent on the metric type), HISTORIC (meaning metrics for previous period, depending on the metric type) or ALL...
+
 ```
 <%= partial "includes/cds_admin.md" %>
