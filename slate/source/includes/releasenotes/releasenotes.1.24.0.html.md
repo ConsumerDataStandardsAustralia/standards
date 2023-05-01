@@ -21,7 +21,7 @@ This release addresses the following minor defects raised on [Standards Staging]
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
-- XXXX
+- [Standards Maintenance Issue 532: Update `x-fapi-auth-date` description for Customer APIs](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/532)
 
 ### Decision Proposals
 
@@ -40,7 +40,9 @@ No Change
 
 ## API End Points
 
-No Change
+|Change|Description|Link|
+|------|-----------|----|
+|`x-fapi-auth-date` references in Customer resource APIs | [Standards Maintenance #532](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/532): Aligned header documentation for for `x-fapi-auth-date` references in the Customer APIs to be consistent with the Banking APIs and Header section definitions. | [Customer APIs](../../#get-customer) |
 
 ## Information Security Profile
 
