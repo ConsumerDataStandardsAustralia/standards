@@ -61,6 +61,12 @@ No Change
 
 No Change
 
+## Non Functional Requirements
+
+|Change|Description|Link|
+|------|-----------|----|
+| Performance Requirements | [**Standards Maintenance #565**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/565): Listed specific APIs in the `Unattended` section. Fixed incorrect Energy API names. Addresses [Issue 565 comment](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/565#issuecomment-1480845969). | [Performance Requirements](../../#performance-requirements) |
+
 ## Known Issues
 
 No Change
