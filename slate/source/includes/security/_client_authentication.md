@@ -60,7 +60,7 @@ Authorisation Servers supporting `private_key_jwt` Client Authentication of clie
 
 
 ```diff
-Updated the requirements for the client_id claim. It is now recommended the client_id be provided until November 13th 2023. Afterwhich it is optional for clients to provide this claim. It is then beholden on the CDR Register and Data Holders to permit client authentication where the client omits the client_id claim. This facilitates Data Holders seeking FAPI compliance by supporting Private Key JWT client authentication as per [RFC7521].
+Updated the requirements for the client_id claim. It is now recommended the client_id be provided until November 13th 2023. After which it is optional for clients to provide this claim. It is then beholden on the CDR Register and Data Holders to permit client authentication where the client omits the client_id claim. This facilitates Data Holders seeking FAPI compliance by supporting Private Key JWT client authentication as per [RFC7521].
 ```
 
 * The aforementioned assertion **MUST** be sent to the Authorisation Server's Token endpoint with the `POST` method and **MUST** include the following REQUIRED parameters, **SHOULD** include the following RECOMMENDED parameters and **MAY** contain the following OPTIONAL parameters:
