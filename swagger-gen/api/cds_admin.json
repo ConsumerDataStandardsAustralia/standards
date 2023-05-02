@@ -914,7 +914,7 @@
                 }
               }
             },
-            "description": "Number of calls resulting in a rejection due to server execution over time",
+            "description": "Number of calls rejected due to traffic thresholds over time",
             "x-conditional": [
               "currentDay",
               "previousDays"
