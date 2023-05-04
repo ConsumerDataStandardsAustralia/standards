@@ -35,7 +35,9 @@ No Change
 
 ## High Level Standards
 
-No Change
+|Change|Description|Link|
+|------|-----------|----|
+| RateString example clarification| [**Standards Maintenance #565**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/565): Added actual % values represented by examples for `RateString` field type. Addresses [Issue 565 comment](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/565#issuecomment-1442968426). | [Common Field Types](../../#common-field-types) |
 
 
 ## API End Points
