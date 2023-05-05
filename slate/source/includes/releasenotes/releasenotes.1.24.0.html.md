@@ -40,7 +40,9 @@ No Change
 
 ## API End Points
 
-No Change
+|Change|Description|Link|
+|------|-----------|----|
+| Bug Fix: Energy Public Endpoints | [**Standards Maintenance #496**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/496): Removed `x-fapi-interaction-id` from response headers of Get Energy Plans and Get Energy Plan Details public APIs. | [Energy APIs](../../#energy-apis) |
 
 ## Information Security Profile
 
