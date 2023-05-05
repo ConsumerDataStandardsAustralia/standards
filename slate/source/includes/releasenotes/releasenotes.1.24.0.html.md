@@ -48,7 +48,9 @@ No Change
 
 ## Consumer Experience
 
-No Change
+|Change|Description|Link|
+|------|-----------|----|
+| New Authorisation CX Standard | [**Standards Maintenance #574**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/574): Added new Authorisation CX Standard for additional account selection functionality in the authorisation flow. | [Authorisation Standards](../../#authorisation-standards) |
 
 ## Known Issues
 
