@@ -21,7 +21,7 @@ This release addresses the following minor defects raised on [Standards Staging]
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
-- XXXX
+- [Standards Maintenance Issue 577 - Updates to Certificate Management](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/577)
 
 ### Decision Proposals
 
@@ -44,7 +44,9 @@ No Change
 
 ## Information Security Profile
 
-No Change
+|Change|Description|Link|
+|------|-----------|----|
+| Certificate Management | Updated the Certificate Management Section with following: <ul><li>Made various changes to the Certificate Signing Request Profile table to provide additional guidance to participants.</li><li>Removed the Test Environment details from the Certificate Trust Model section</li></ul> | [Certificate Management](../../#certificate-management)
 
 ## Consumer Experience
 
