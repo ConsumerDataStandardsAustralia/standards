@@ -21,7 +21,7 @@ This release addresses the following minor defects raised on [Standards Staging]
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
-- XXXX
+- [Standards Maintenance Issue 574 - Additional functionality to support account selection](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/574)
 
 ### Decision Proposals
 
