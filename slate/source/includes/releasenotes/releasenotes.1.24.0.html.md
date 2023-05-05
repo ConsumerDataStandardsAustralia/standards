@@ -21,7 +21,7 @@ This release addresses the following minor defects raised on [Standards Staging]
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
-- XXXX
+- [Standards Maintenance Issue 483 - Large payload tier description error](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/483)
 
 ### Decision Proposals
 
@@ -35,7 +35,9 @@ No Change
 
 ## High Level Standards
 
-No Change
+|Change|Description|Link|
+|------|-----------|----|
+| Non Functional Requirements - Large Payloads | Corrected the requirement to remove reference to "unattended" because the tier applies to all calls both attended and unattended. | [Non-Functional Requirements](../../#performance-requirements)
 
 
 ## API End Points
