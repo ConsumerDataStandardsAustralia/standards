@@ -21,7 +21,7 @@ This release addresses the following minor defects raised on [Standards Staging]
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
-- XXXX
+- [Standards Maintenance Issue 496 - Unauthenticated energy routes have unclear header documentation](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/496)
 
 ### Decision Proposals
 
