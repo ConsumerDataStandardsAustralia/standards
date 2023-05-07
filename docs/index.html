@@ -1893,21 +1893,6 @@ Additional note for v1.24.0: For this version only the delta statements from v1.
 <td>July 10th 2023</td>
 </tr>
 <tr>
-<td><a href="#get-account-detail">Get Accounts V1</a></td>
-<td>Data Holders <strong>MAY</strong> decommission v1 of this end point from March 11th 2024</td>
-<td>March 11th 2024</td>
-</tr>
-<tr>
-<td><a href="#get-account-detail">Get Account Detail V2</a></td>
-<td>Data Holders <strong>MAY</strong> decommission v2 of this end point from March 11th 2024</td>
-<td>March 11th 2024</td>
-</tr>
-<tr>
-<td><a href="#https://consumerdatastandardsaustralia.github.io/standards/?examples#client-authentication">Private Key JWT Client Authentication</a></td>
-<td>Change to support <a href="#nref-RFC7521"><strong>[RFC7521]</strong></a> such that, until November 13th 2023, clients authenticating using Private Key JWT are <em>recommended</em> to provide the <code>client_id</code>, but no longer required. From November 13th 2023, it is then <em>optional</em> to provide the <code>client_id</code>. This applies to ADRs and the CDR Register authenticating with Data Holders and ADRs authenticating with the CDR Regsiter.</td>
-<td>November 13th 2023</td>
-</tr>
-<tr>
 <td><a href="#get-generic-plan-detail">Get Generic Plan Detail V2</a></td>
 <td><ul><li>Data Holder <strong>MUST</strong> implement v2 of this endpoint by <strong>November 1st 2023</strong></li><li>Data Holders <strong>MAY</strong> obsolete v1 of this endpoint from <strong>September 9th 2024</strong></li></ul></td>
 <td>November 1st 2023</td>
@@ -1916,6 +1901,21 @@ Additional note for v1.24.0: For this version only the delta statements from v1.
 <td><a href="#get-account-detail">Get Energy Account Detail V3</a></td>
 <td><ul><li>Data Holder <strong>MUST</strong> implement v3 of this endpoint by <strong>November 1st 2023</strong></li><li>Data Holders <strong>MAY</strong> obsolete v2 of this endpoint from <strong>September 9th 2024</strong></li></ul></td>
 <td>November 1st 2023</td>
+</tr>
+<tr>
+<td><a href="#https://consumerdatastandardsaustralia.github.io/standards/?examples#client-authentication">Private Key JWT Client Authentication</a></td>
+<td>Change to support <a href="#nref-RFC7521"><strong>[RFC7521]</strong></a> such that, until November 13th 2023, clients authenticating using Private Key JWT are <em>recommended</em> to provide the <code>client_id</code>, but no longer required. From November 13th 2023, it is then <em>optional</em> to provide the <code>client_id</code>. This applies to ADRs and the CDR Register authenticating with Data Holders and ADRs authenticating with the CDR Regsiter.</td>
+<td>November 13th 2023</td>
+</tr>
+<tr>
+<td><a href="#get-account-detail">Get Accounts V1</a></td>
+<td>Data Holders <strong>MAY</strong> decommission v1 of this end point from March 11th 2024</td>
+<td>March 11th 2024</td>
+</tr>
+<tr>
+<td><a href="#get-account-detail">Get Account Detail V2</a></td>
+<td>Data Holders <strong>MAY</strong> decommission v2 of this end point from March 11th 2024</td>
+<td>March 11th 2024</td>
 </tr>
 </tbody></table>
 
@@ -6172,7 +6172,7 @@ Data Holders <strong>SHOULD</strong> explicitly capture Claims requested by the 
 <li>The <code>c_hash</code> value <strong>MUST</strong> be generated according to <a href="https://openid.net/specs/openid-connect-core-1_0.html#HybridIDToken">section 3.3.2.11</a> of <strong><a href="#nref-OIDC">[OIDC]</a></strong>.</li>
 <li>The <code>s_hash</code> value <strong>MUST</strong> be generated according to <a href="https://openid.net/specs/openid-financial-api-part-2-1_0.html#id-token-as-detached-signature">section 5.1.1</a> of <strong><a href="#nref-FAPI-1-0-Advanced">[FAPI-1.0-Advanced]</a></strong>.</li>
 </ul>
-<h4 id='authorization-code-flow-requirements'>Authorization Code Flow requirements</h4><pre class="highlight diff tab-diff"><code>**v1.21.0 Change**
+<h4 id='authorization-code-flow-requirements'>Authorization Code Flow requirements</h4><pre class="highlight diff tab-diff"><code>**v1.23.0 Change**
 Authorization Code Flow requirements: Removed requirement stating ID tokens MUST NOT be encrypted
 </code></pre>
 <p>For <code>response_type</code> <code>code</code>, in accordance with <strong><a href="#nref-FAPI-1-0-Advanced">[FAPI-1.0-Advanced]</a></strong>, ID Tokens <strong>MUST</strong> be signed when returned to a Data Recipient Software Product from the Token End Point.</p>
@@ -65176,7 +65176,7 @@ This operation may only be called by an Energy Retailer using the information se
 </tr>
 </thead><tbody>
 <tr>
-<td>TBC</td>
+<td>07/05/2023</td>
 <td>1.24.0</td>
 <td>Changes arising from Decision XXXX (Maintenance iteration 14)</td>
 <td>See <a href="includes/releasenotes/releasenotes.1.24.0.html">release notes</a> and <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/XXXX">Decision XXXX</a> for details.</td>
