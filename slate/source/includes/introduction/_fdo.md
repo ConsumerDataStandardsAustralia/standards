@@ -1,5 +1,9 @@
 ## Future Dated Obligations
 
+```diff
+Added Future Dated Obligation for Get Generic Plan Detail V2 and Get Energy Account Detail V3
+```
+
 The standards, as published from time to time, may include specific statements indicating that a specific section of the standards will not take effect until a future date or may cease to have effect on some future date.
 
 The table below highlights these areas of the standards.
@@ -28,3 +32,5 @@ The table below highlights these areas of the standards.
 |[Get Account Detail V3](#get-account-detail)|Version 3 of this end point **MUST** be made available by affected data holders by July 10th 2023|July 10th 2023|
 |[Get Accounts V1](#get-account-detail)|Data Holders **MAY** decommission v1 of this end point from March 11th 2024| March 11th 2024 |
 |[Get Account Detail V2](#get-account-detail)|Data Holders **MAY** decommission v2 of this end point from March 11th 2024| March 11th 2024 |
+|[Get Generic Plan Detail V2](#get-generic-plan-detail)|<ul><li>Data Holder **MUST** implement v2 of this endpoint by **November 1st 2023**</li><li>Data Holders **MAY** obsolete v1 of this endpoint from **September 9th 2024**</li></ul> | November 1st 2023 |
+|[Get Energy Account Detail V3](#get-account-detail)|<ul><li>Data Holder **MUST** implement v3 of this endpoint by **November 1st 2023**</li><li>Data Holders **MAY** obsolete v2 of this endpoint from **September 9th 2024**</li></ul>| November 1st 2023 |
