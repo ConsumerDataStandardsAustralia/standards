@@ -1068,7 +1068,7 @@ paths:
           - Execution date/time if available, then
           - A reasonable date/time nominated by the data holder using internal data structures
         - For transaction amounts it should be assumed that a negative value indicates a reduction of the available balance on the account while a positive value indicates an increase in the available balance on the account
-        - For aggregated transactions (ie. groups of sub transactions reported as a single entry for the account) only the aggregated information, with as much consistent information accross the subsidiary transactions as possible, is required to be shared
+        - For aggregated transactions (ie. groups of sub transactions reported as a single entry for the account) only the aggregated information, with as much consistent information across the subsidiary transactions as possible, is required to be shared
       operationId: getTransactions
       parameters:
       - description: ID of the account to get transactions for.  Must have previously
@@ -5173,8 +5173,8 @@ components:
             the Data Holder currently displays account identifiers in their existing
             online banking channels. If the contents of the CRN match the format of
             a Credit Card PAN they should be masked according to the rules applicable
-            for MaskedPANString. If the contents are are otherwise sensitive, then
-            it should be masked using the rules applicable for the MaskedAccountString
+            for MaskedPANString. If the contents are otherwise sensitive, then it
+            should be masked using the rules applicable for the MaskedAccountString
             common type.
           type: string
         apcaNumber:
@@ -5564,8 +5564,8 @@ components:
             currently displays account identifiers in their existing online banking
             channels. If the contents of the CRN match the format of a Credit Card
             PAN they should be masked according to the rules applicable for MaskedPANString.
-            If the contents are are otherwise sensitive, then it should be masked
-            using the rules applicable for the MaskedAccountString common type.
+            If the contents are otherwise sensitive, then it should be masked using
+            the rules applicable for the MaskedAccountString common type.
           type: string
         billerName:
           description: Name of the Biller
@@ -7075,7 +7075,7 @@ components:
             $ref: '#/components/schemas/BankingProductDepositRate'
           type: array
         lendingRates:
-          description: Fully described deposit rates for this account based on the
+          description: Fully described lending rates for this account based on the
             equivalent structure in Product Reference
           items:
             $ref: '#/components/schemas/BankingProductLendingRateV2'

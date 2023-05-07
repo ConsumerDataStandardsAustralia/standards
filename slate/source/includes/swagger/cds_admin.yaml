@@ -106,8 +106,9 @@ paths:
       operationId: getMetrics
       parameters:
       - description: The period of metrics to be requested. Values can be CURRENT
-          (meaning metrics for current day), HISTORIC (meaning metrics for previous
-          days or months) or ALL. If absent the default is ALL.
+          (meaning metrics for current period, dependent on the metric type), HISTORIC
+          (meaning metrics for previous period, depending on the metric type) or ALL.
+          If absent the default is ALL.
         explode: true
         in: query
         name: period
@@ -1315,7 +1316,7 @@ components:
       - currentDay
       - previousDays
     RejectionMetricsV2_unauthenticated:
-      description: Rejection counts for all uauthenticated end points
+      description: Rejection counts for all unauthenticated end points
       example:
         previousDays:
         - 7.740351818741173
@@ -1359,8 +1360,7 @@ components:
       - currentDay
       - previousDays
     SecondaryHolderMetrics_rejections:
-      description: Number of calls resulting in a rejection due to server execution
-        over time
+      description: Number of calls rejected due to traffic thresholds over time
       example:
         previousDays:
         - 4.078845849666752

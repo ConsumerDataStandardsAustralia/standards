@@ -3904,7 +3904,7 @@
       "TelcoPaymentSchedule" : {
         "properties" : {
           "amount" : {
-            "description" : "Optional payment amount indicating that a constant payment amount is scheduled to be paid (used in bill smooting scenarios)",
+            "description" : "Optional payment amount indicating that a constant payment amount is scheduled to be paid (used in bill smoothing scenarios)",
             "type" : "string",
             "x-cds-type" : "AmountString"
           },

@@ -53,7 +53,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended) if the customer is currently logged. Otherwise optional where the customer has not logged in. Not to be included for unauthenticated calls.",
+          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
           "explode" : false,
           "in" : "header",
           "name" : "x-fapi-auth-date",
@@ -200,7 +200,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended) if the customer is currently logged. Otherwise optional where the customer has not logged in. Not to be included for unauthenticated calls.",
+          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
           "explode" : false,
           "in" : "header",
           "name" : "x-fapi-auth-date",
@@ -493,7 +493,7 @@
         "style" : "simple"
       },
       "RequestHeader_x-fapi-auth-date" : {
-        "description" : "The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended) if the customer is currently logged. Otherwise optional where the customer has not logged in. Not to be included for unauthenticated calls.",
+        "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
         "explode" : false,
         "in" : "header",
         "name" : "x-fapi-auth-date",
