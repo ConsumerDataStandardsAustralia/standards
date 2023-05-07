@@ -25,6 +25,7 @@ This release addresses the following change requests raised on [Standards Mainte
 - [Standards Maintenance Issue 532 - Update `x-fapi-auth-date` description for Customer APIs](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/532)
 - [Standards Maintenance Issue 535 - Standard appears to redefine requirements for private_key_jwt authentication](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/535)
 - [Standards Maintenance Issue 565 - Maintenance Iteration 14 Holistic Feedback](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/565)
+- [Standards Maintenance Issue 574 - Additional functionality to support account selection](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/574)
 
 ### Decision Proposals
 
@@ -66,7 +67,9 @@ No Change
 
 ## Consumer Experience
 
-No Change
+|Change|Description|Link|
+|------|-----------|----|
+| New Authorisation CX Standard | [**Standards Maintenance #574**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/574): Added new Authorisation CX Standard for additional account selection functionality in the authorisation flow. | [Authorisation Standards](../../#authorisation-standards) |
 
 ## Non Functional Requirements
 
