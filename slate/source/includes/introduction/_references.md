@@ -30,6 +30,7 @@
 | <a id="nref-RFC5322"></a>**[RFC5322]**  | Internet Message Format: <https://tools.ietf.org/html/rfc5322>                                                      |October 2008
 | <a id="nref-RFC6750"></a>**[RFC6750]**  | The OAuth 2.0 Authorization Framework: Bearer Token Usage: <https://tools.ietf.org/html/rfc6750>                                                                              |Oct 2012
 | <a id="nref-RFC7009"></a>**[RFC7009]**  | OAuth 2.0 Token Revocation: <https://tools.ietf.org/html/rfc7009>                                                                                                             |Aug 2013
+| <a id="nref-RFC7521"></a>**[RFC7521]**  | Assertion Framework for OAuth 2.0 Client Authentication and Authorization Grants: <https://tools.ietf.org/html/rfc7521>                                              |May 2015
 | <a id="nref-RFC7523"></a>**[RFC7523]**  | JSON Web Token (JWT) Profile for OAuth 2.0 Client Authentication and Authorization Grants: <https://tools.ietf.org/html/rfc7523>                                              |May 2015
 | <a id="nref-RFC7662"></a>**[RFC7662]**  | OAuth 2.0 Token Introspection: <https://tools.ietf.org/html/rfc7662> |Oct 2015
 | <a id="nref-RFC8414"></a>**[RFC8414]**  | OAuth 2.0 Authorization Server Metadata: <https://tools.ietf.org/html/rfc8414>                                                                                                          |Jun 2018

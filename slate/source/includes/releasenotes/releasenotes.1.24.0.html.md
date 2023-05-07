@@ -22,6 +22,7 @@ This release addresses the following minor defects raised on [Standards Staging]
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
 - [Standards Maintenance Issue 520 - Stepped solar feed in tariffs in Energy](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/520)
+- [Standards Maintenance Issue 535 - Standard appears to redefine requirements for private_key_jwt authentication](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/535)
 - [Standards Maintenance Issue 565 - Maintenance Iteration 14 Holistic Feedback](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/565)
 
 ### Decision Proposals
@@ -58,6 +59,7 @@ No Change
 
 |Change|Description|Link|
 |------|-----------|----|
+| RFC6749 conformant Private Key JWT Client Authentication | Change to support **[RFC7521]** such that, until November 13th 2023, clients authenticating using Private Key JWT are _recommended_ to provide the `client_id`, but no longer required. From November 13th 2023, it is then _optional_ to provide the `client_id`. This applies to ADRs and the CDR Register authenticating with Data Holders and ADRs authenticating with the CDR Register. During the RECOMMENDED phase in period, Data Holders and the CDR Register may reject clients that do not provide the `client_id`. ADRs may re-attempt client authentication by providing the `client_id`. During this phase in period, Data Holders and the CDR Register may stop requiring the `client_id`. If the client provides the `client_id`, the Data Holder/CDR Register must validate that its value is the same as the `iss` and `sub` claims in accordance with **[RFC7521](https://datatracker.ietf.org/doc/html/rfc7521#section-4.2)**| [Private Key JWT Client Authentication](../../#client-authentication) |
 | Certificate Management corrections| [**Standards Maintenance #565**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/565): Updated wording and corrected a typo in the "Issued by the Register CA for Data Recipients" table. Corrected a typo in the "CDR Certificate Authority" section. Addresses [Issue 565 comment](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/565#issuecomment-1340391109). | [Certificate Management](../../#certificate-management) |
 | CORS clarification| [**Standards Maintenance #565**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/565): Added statements noting CORS is not required at relevant endpoints in Security Endpoints section. Addresses [Issue 565 comment](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/565#issuecomment-1477173448). | [Security Endpoints](../../#security-endpoints) |
 
