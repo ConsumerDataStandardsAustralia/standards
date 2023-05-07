@@ -226,7 +226,7 @@ This operation may only be called by the CDR Register
 <td>query</td>
 <td>string</td>
 <td>optional</td>
-<td>The period of metrics to be requested. Values can be CURRENT (meaning metrics for current day), HISTORIC (meaning metrics for previous days or months) or ALL. If absent the default is ALL.</td>
+<td>The period of metrics to be requested. Values can be CURRENT (meaning metrics for current period, dependent on the metric type), HISTORIC (meaning metrics for previous period, depending on the metric type) or ALL. If absent the default is ALL.</td>
 </tr>
 <tr>
 <td>x-v</td>
@@ -1551,7 +1551,7 @@ This operation may only be called by the CDR Register
 <td>unauthenticated</td>
 <td>object</td>
 <td>mandatory</td>
-<td>Rejection counts for all uauthenticated end points</td>
+<td>Rejection counts for all unauthenticated end points</td>
 </tr>
 <tr>
 <td>» currentDay</td>
@@ -1618,7 +1618,7 @@ This operation may only be called by the CDR Register
 <td>rejections</td>
 <td>object</td>
 <td>mandatory</td>
-<td>Number of calls resulting in a rejection due to server execution over time</td>
+<td>Number of calls rejected due to traffic thresholds over time</td>
 </tr>
 <tr>
 <td>» currentDay</td>

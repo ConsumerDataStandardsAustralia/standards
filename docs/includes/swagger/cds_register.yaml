@@ -7,9 +7,10 @@ servers:
 paths:
   /.well-known/openid-configuration:
     get:
-      description: Endpoint used by participants to discover the CDR Register OpenID
-        configuration and obtain information needed to interact with it, including
-        its OAuth 2.0 endpoint locations.
+      description: |-
+        Endpoint used by participants to discover the CDR Register OpenID configuration and obtain information needed to interact with it, including its OAuth 2.0 endpoint locations.
+
+        This endpoint does not require CORS.
       operationId: GetOpenIdProviderConfig
       responses:
         "200":
@@ -23,9 +24,10 @@ paths:
       - Register
   /jwks:
     get:
-      description: JWKS endpoint containing the public keys used by the CDR Register
-        to validate the signature of issued SSAs and authenticate outbound calls to
-        participants in the CDR.
+      description: |-
+        JWKS endpoint containing the public keys used by the CDR Register to validate the signature of issued SSAs and authenticate outbound calls to participants in the CDR.
+
+        This endpoint does not require CORS.
       operationId: Get JWKS
       responses:
         "200":

@@ -27,6 +27,8 @@ Accept: application/json
 <p><code>GET /.well-known/openid-configuration</code></p>
 
 <p>Endpoint used by participants to discover the CDR Register OpenID configuration and obtain information needed to interact with it, including its OAuth 2.0 endpoint locations.</p>
+
+<p>This endpoint does not require CORS.</p>
 <h3 id='endpoint-version'>Endpoint Version</h3>
 <table><thead>
 <tr>
@@ -129,6 +131,8 @@ Accept: application/json
 <p><code>GET /jwks</code></p>
 
 <p>JWKS endpoint containing the public keys used by the CDR Register to validate the signature of issued SSAs and authenticate outbound calls to participants in the CDR.</p>
+
+<p>This endpoint does not require CORS.</p>
 <h3 id='endpoint-version-2'>Endpoint Version</h3>
 <table><thead>
 <tr>

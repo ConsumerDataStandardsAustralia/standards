@@ -9,5 +9,40 @@ This specification defines the APIs for Data Holders exposing Energy endpoints.
 <tr><td><a href='./includes/swagger/cds_energy.yaml'>Energy OpenAPI Specification (YAML)</a></td></tr>
 </table>
 
+```diff
+Bug Fix: Removed 'x-fapi-interaction-id' from response headers of Get Energy Plans and Get Energy Plan Details APIs
+
+Updated the versions of the following APIs:
++ Get Generic Plan Detail from v1 to v2
++ Get Energy Account Detail from v2 to v3
+
+Updated the following structures
+from:
+- EnergyPlanSolarFeedInTariff
+- EnergyPlanContract
+- EnergyAccountDetailV2
+- EnergyAccountDetailResponseV2
+- EnergyPlanContractFull
+- EnergyPlanDetail
+- EnergyPlanResponse
+
+to:
++ EnergyPlanSolarFeedInTariffV2
++ EnergyPlanContractV2
++ EnergyAccountDetailV3
++ EnergyAccountDetailResponseV3
++ EnergyPlanContractFullV2
++ EnergyPlanDetailV2
++ EnergyPlanResponseV2
+
+Added following to EnergyPlanSolarFeedInTariffV2:
++ rates object
++ startDate field
++ endDate field
+
+Standardised 'post codes' to 'postcodes'
+
+Corrected various spelling and grammatical mistakes
+```
 
 <%= partial "includes/cds_energy.md" %>

@@ -160,7 +160,7 @@ If the Data Holder supports private_key_jwt client authentication they MUST vali
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|period|query|string|optional|The period of metrics to be requested. Values can be CURRENT (meaning metrics for current day), HISTORIC (meaning metrics for previous days or months) or ALL. If absent the default is ALL.|
+|period|query|string|optional|The period of metrics to be requested. Values can be CURRENT (meaning metrics for current period, dependent on the metric type), HISTORIC (meaning metrics for previous period, depending on the metric type) or ALL. If absent the default is ALL.|
 |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
 |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.|
 
@@ -979,7 +979,7 @@ This operation may only be called by the CDR Register
 |authenticated|object|mandatory|Rejection counts for all authenticated end points|
 |» currentDay|number|conditional|Number of calls rejected for current day|
 |» previousDays|[number]|conditional|Number of calls rejected for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.|
-|unauthenticated|object|mandatory|Rejection counts for all uauthenticated end points|
+|unauthenticated|object|mandatory|Rejection counts for all unauthenticated end points|
 |» currentDay|number|conditional|Number of calls rejected for current day|
 |» previousDays|[number]|conditional|Number of calls rejected for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.|
 
@@ -1014,7 +1014,7 @@ This operation may only be called by the CDR Register
 |errors|object|mandatory|Number of calls resulting in error due to server execution over time|
 |» currentDay|number|conditional|Number of errors for current day|
 |» previousDays|[number]|conditional|Number of errors for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available|
-|rejections|object|mandatory|Number of calls resulting in a rejection due to server execution over time|
+|rejections|object|mandatory|Number of calls rejected due to traffic thresholds over time|
 |» currentDay|number|conditional|Number of rejections for current day|
 |» previousDays|[number]|conditional|Number of rejections for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available|
 

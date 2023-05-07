@@ -106,7 +106,7 @@
         "description" : "This end point allows the ACCC to obtain operational statistics from the Data Holder on the operation of their CDR compliant implementation. The statistics obtainable from this end point are determined by the non-functional requirements for the CDR regime.\n\nThis end point is not required to be implemented by the Australian Energy Market Operator, the Australian Energy Regulator or the Department of State administered by the Minister of Victoria administering the National Electricity (Victoria) Act 2005 (Vic).\n\nNOTE: This version must be implemented by **October 1st 2022**\n\nObsolete versions: [v1](includes/obsolete/get-metrics-v1.html) [v2](includes/obsolete/get-metrics-v2.html).\n\nIf the Data Holder supports private_key_jwt client authentication they MUST validate the scope.",
         "operationId" : "getMetrics",
         "parameters" : [ {
-          "description" : "The period of metrics to be requested. Values can be CURRENT (meaning metrics for current day), HISTORIC (meaning metrics for previous days or months) or ALL. If absent the default is ALL.",
+          "description" : "The period of metrics to be requested. Values can be CURRENT (meaning metrics for current period, dependent on the metric type), HISTORIC (meaning metrics for previous period, depending on the metric type) or ALL. If absent the default is ALL.",
           "explode" : true,
           "in" : "query",
           "name" : "period",
@@ -830,7 +830,7 @@
         "x-conditional" : [ "currentDay", "previousDays" ]
       },
       "RejectionMetricsV2_unauthenticated" : {
-        "description" : "Rejection counts for all uauthenticated end points",
+        "description" : "Rejection counts for all unauthenticated end points",
         "properties" : {
           "currentDay" : {
             "description" : "Number of calls rejected for current day",
@@ -866,7 +866,7 @@
         "x-conditional" : [ "currentDay", "previousDays" ]
       },
       "SecondaryHolderMetrics_rejections" : {
-        "description" : "Number of calls resulting in a rejection due to server execution over time",
+        "description" : "Number of calls rejected due to traffic thresholds over time",
         "properties" : {
           "currentDay" : {
             "description" : "Number of rejections for current day",

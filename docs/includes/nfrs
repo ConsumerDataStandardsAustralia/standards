@@ -27,9 +27,13 @@
 <li><strong>Large Payload</strong>: An API which is capable of returning a large data response that would reasonably impose higher data retrieval times on the resource server. Typically bulk request end points.</li>
 </ul>
 
-<h2 id='session-requirements'>Session Requirements</h2>
-
-<p>A expiry time of a unique session should be set according to the statements included in the <a href="#security-profile">Security Profile</a>.</p>
+<h2 id='session-requirements'>Session Requirements</h2><pre class="highlight diff tab-diff"><code>Corrected following typo:
+Replaced:
+<span class="gd">- A expiry time of a unique...
+</span>with:
+<span class="gi">+ The expiry time of a unique...
+</span></code></pre>
+<p>The expiry time of a unique session should be set according to the statements included in the <a href="#security-profile">Security Profile</a>.</p>
 
 <p>After a unique session is expired it is expected that the Data Recipient Software Product, for the same customer, may establish a new session as long as the authorisation is still valid.</p>
 
@@ -52,8 +56,21 @@
 
 <p>The unavailability of a secondary data holder will mean that some requests cannot be fulfilled by a data holder making a Shared Responsibility Data Request.  This will not be taken to mean that the data holder is unavailable.</p>
 
-<h2 id='performance-requirements'>Performance Requirements</h2>
+<h2 id='performance-requirements'>Performance Requirements</h2><pre class="highlight diff tab-diff"><code>Listed specific APIs in the `Unattended` section
 
+Fixed incorrect Energy API names replacing:
+<span class="gd">- Get Accounts
+- Get Account Detail 
+- Get Balance For Account
+- Get Bulk Balances
+- Get Balances For Specific Accounts
+</span>with:
+<span class="gi">+ Get Energy Accounts
++ Get Energy Account Detail
++ Get Balance For Energy Account
++ Get Bulk Balances for Energy
++ Get Balances For Specific Energy Accounts
+</span></code></pre>
 <p>API end point performance will be measured in response time of individual API requests from receipt of request to delivery of response.</p>
 
 <p>It is understood that different response times can be measured depending on which technical layer of an API implementation stack is instrumented and that not all of the technical layers between the Data Recipient Software Product and the Data Holder will be in the control of the Data Holder.  As this is implementation specific it is expected that the Data Holder will ensure that the measurement of response time occurs as close to the Data Recipient Software Product as practicable.</p>
@@ -63,7 +80,8 @@
 <p><strong>95% of calls per hour responded to within a nominated threshold</strong></p>
 
 <p>The nominated threshold for each end point will be according to the following table:</p>
-
+<pre class="highlight plaintext"><code>Corrected the requirement for the Large Payload tier to remove reference to unattended calls
+</code></pre>
 <table><thead>
 <tr>
 <th>Tier</th>
@@ -79,22 +97,22 @@
 <tr>
 <td>High Priority</td>
 <td><strong>1000ms</strong></td>
-<td>All calls to the following end points:<ul><li>All InfoSec end points including Dynamic Client Registration</li><li>CDR Arrangement Revocation</li></ul>The following Unauthenticated end points:<ul><em>Common</em><li>Get Status</li><li>Get Outages</li></ul>Customer Present calls to the following end points:<ul><em>Banking</em><li>Get Accounts</li><em>Energy</em><li>Get Accounts</li><li>Get Account Detail</li><li>Get Balance For Account</li><li>Get Invoices For Account</li><em>Common</em><li>Get Customer</li><li>Get Customer Detail</li></ul></td>
+<td>All calls to the following end points:<ul><li>All InfoSec end points including Dynamic Client Registration</li><li>CDR Arrangement Revocation</li></ul>The following unauthenticated end points:<ul><em>Common</em><li>Get Status</li><li>Get Outages</li></ul>Customer Present calls to the following end points:<ul><em>Banking</em><li>Get Accounts</li><br><em>Energy</em><li>Get Energy Accounts</li><li>Get Energy Account Detail</li><li>Get Balance For Energy Account</li><li>Get Invoices For Account</li><br><em>Common</em><li>Get Customer</li><li>Get Customer Detail</li></ul></td>
 </tr>
 <tr>
 <td>Low Priority</td>
 <td><strong>1500ms</strong></td>
-<td>Customer Present calls to the following end points:<ul><em>Banking</em><li>Get Account Detail</li><li>Get Account Balance</li><li>Get Bulk Balances</li><li>Get Balances For Specific Accounts</li><li>Get Transactions For Account</li><li>Get Transaction Detail</li><li>Get Payees</li><li>Get Payee Detail</li><li>Get Direct Debits For Account</li><li>Get Scheduled Payments For Account</li><li>Get Scheduled Payments Bulk</li></li><li>Get Scheduled Payments For Specific Accounts</li><em>Energy</em><li>Get Agreed Payment Schedule</li><li>Get Concessions</li><li>Get Bulk Balances</li><li>Get Balances For Specific Accounts</li><li>Get Bulk Invoices</li><li>Get Invoices For Specific Accounts</li><li>Get Billing For Account</li></ul></td>
+<td>Customer Present calls to the following end points:<ul><em>Banking</em><li>Get Account Detail</li><li>Get Account Balance</li><li>Get Bulk Balances</li><li>Get Balances For Specific Accounts</li><li>Get Transactions For Account</li><li>Get Transaction Detail</li><li>Get Payees</li><li>Get Payee Detail</li><li>Get Direct Debits For Account</li><li>Get Scheduled Payments For Account</li><li>Get Scheduled Payments Bulk</li></li><li>Get Scheduled Payments For Specific Accounts</li><br><em>Energy</em><li>Get Agreed Payment Schedule</li><li>Get Concessions</li><li>Get Bulk Balances for Energy</li><li>Get Balances For Specific Energy Accounts</li><li>Get Bulk Invoices</li><li>Get Invoices For Specific Accounts</li><li>Get Billing For Account</li></ul></td>
 </tr>
 <tr>
 <td>Unattended</td>
 <td><strong>4000ms</strong></td>
-<td>Unattended calls to the following end points that are not Large Payload end points:<ul><li>High Priority Authenticated end points</li><li>Low Priority Authenticated end points</li><li>All Admin end points.</li></ul></td>
+<td>Unattended calls to the following end points:<ul><em>Banking</em><li>Get Accounts</li><li>Get Account Detail</li><li>Get Account Balance</li><li>Get Bulk Balances</li><li>Get Balances For Specific Accounts</li><li>Get Transactions For Account</li><li>Get Transaction Detail</li><li>Get Payees</li><li>Get Payee Detail</li><li>Get Direct Debits For Account</li><li>Get Scheduled Payments For Account</li><li>Get Scheduled Payments Bulk</li><li>Get Scheduled Payments For Specific Accounts</li><br><em>Energy</em><li>Get Energy Accounts</li><li>Get Energy Account Detail</li><li>Get Balance For Energy Account</li><li>Get Invoices For Account</li><li>Get Agreed Payment Schedule</li><li>Get Concessions</li><li>Get Bulk Balances for Energy</li><li>Get Balances For Specific Energy Accounts</li><li>Get Bulk Invoices</li><li>Get Invoices For Specific Accounts</li><li>Get Billing For Account</li><br><em>Common</em><li>Get Customer</li><li>Get Customer Detail</li><br><em>Admin</em><li>Metadata Update</li><li>Get Metrics</li></ul></td>
 </tr>
 <tr>
 <td>Large Payload</td>
 <td><strong>6000ms</strong></td>
-<td>Any Unattended calls to the following end points:<ul><em>Banking</em><li>Get Bulk Direct Debits</li><li>Get Direct Debits For Specific Accounts</li><em>Energy</em><li>Get Bulk Billing</li><li>Get Billing For Specific Accounts</li></ul></td>
+<td>Any calls to the following end points:<ul><em>Banking</em><li>Get Bulk Direct Debits</li><li>Get Direct Debits For Specific Accounts</li><br><em>Energy</em><li>Get Bulk Billing</li><li>Get Billing For Specific Accounts</li></ul></td>
 </tr>
 <tr>
 <td>Secondary Request</td>

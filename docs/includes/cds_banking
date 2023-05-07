@@ -1626,7 +1626,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <li>A reasonable date/time nominated by the data holder using internal data structures</li>
 </ul></li>
 <li>For transaction amounts it should be assumed that a negative value indicates a reduction of the available balance on the account while a positive value indicates an increase in the available balance on the account</li>
-<li>For aggregated transactions (ie. groups of sub transactions reported as a single entry for the account) only the aggregated information, with as much consistent information accross the subsidiary transactions as possible, is required to be shared</li>
+<li>For aggregated transactions (ie. groups of sub transactions reported as a single entry for the account) only the aggregated information, with as much consistent information across the subsidiary transactions as possible, is required to be shared</li>
 </ul>
 <h3 id='endpoint-version-6'>Endpoint Version</h3>
 <table><thead>
@@ -8295,7 +8295,7 @@ This operation does not require authentication
 <td>» lendingRates</td>
 <td>[<a href="#schemacdr-banking-apibankingproductlendingratev2">BankingProductLendingRateV2</a>]</td>
 <td>optional</td>
-<td>Fully described deposit rates for this account based on the equivalent structure in Product Reference</td>
+<td>Fully described lending rates for this account based on the equivalent structure in Product Reference</td>
 </tr>
 <tr>
 <td>» features</td>
@@ -8857,7 +8857,7 @@ This operation does not require authentication
 <td>crn</td>
 <td>string</td>
 <td>conditional</td>
-<td>BPAY CRN for the transaction (if available).<br/>Where the CRN contains sensitive information, it should be masked in line with how the Data Holder currently displays account identifiers in their existing online banking channels. If the contents of the CRN match the format of a Credit Card PAN they should be masked according to the rules applicable for MaskedPANString. If the contents are are otherwise sensitive, then it should be masked using the rules applicable for the MaskedAccountString common type.</td>
+<td>BPAY CRN for the transaction (if available).<br/>Where the CRN contains sensitive information, it should be masked in line with how the Data Holder currently displays account identifiers in their existing online banking channels. If the contents of the CRN match the format of a Credit Card PAN they should be masked according to the rules applicable for MaskedPANString. If the contents are otherwise sensitive, then it should be masked using the rules applicable for the MaskedAccountString common type.</td>
 </tr>
 <tr>
 <td>apcaNumber</td>
@@ -9964,7 +9964,7 @@ This operation does not require authentication
 <td>crn</td>
 <td>string</td>
 <td>conditional</td>
-<td>BPAY CRN of the Biller (if available).<br/>Where the CRN contains sensitive information, it should be masked in line with how the Data Holder currently displays account identifiers in their existing online banking channels. If the contents of the CRN match the format of a Credit Card PAN they should be masked according to the rules applicable for MaskedPANString. If the contents are are otherwise sensitive, then it should be masked using the rules applicable for the MaskedAccountString common type.</td>
+<td>BPAY CRN of the Biller (if available).<br/>Where the CRN contains sensitive information, it should be masked in line with how the Data Holder currently displays account identifiers in their existing online banking channels. If the contents of the CRN match the format of a Credit Card PAN they should be masked according to the rules applicable for MaskedPANString. If the contents are otherwise sensitive, then it should be masked using the rules applicable for the MaskedAccountString common type.</td>
 </tr>
 <tr>
 <td>billerName</td>

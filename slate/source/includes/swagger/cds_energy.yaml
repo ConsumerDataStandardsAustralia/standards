@@ -148,17 +148,6 @@ paths:
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
             - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page
             Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
-          headers:
-            x-fapi-interaction-id:
-              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                id. If provided, the data holder must play back this value in the
-                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                UUID value is required to be provided in the response header to track
-                the interaction.
-              explode: false
-              schema:
-                type: string
-              style: simple
         "406":
           content:
             application/json:
@@ -166,17 +155,6 @@ paths:
                 $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406
             - Unsupported Version](#error-406-header-unsupported-version)</li></ul>
-          headers:
-            x-fapi-interaction-id:
-              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                id. If provided, the data holder must play back this value in the
-                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                UUID value is required to be provided in the response header to track
-                the interaction.
-              explode: false
-              schema:
-                type: string
-              style: simple
         "422":
           content:
             application/json:
@@ -184,17 +162,6 @@ paths:
                 $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422
             - Invalid Page](#error-422-field-invalid-page)</li></ul>
-          headers:
-            x-fapi-interaction-id:
-              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                id. If provided, the data holder must play back this value in the
-                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                UUID value is required to be provided in the response header to track
-                the interaction.
-              explode: false
-              schema:
-                type: string
-              style: simple
       summary: Get Generic Plans
       tags:
       - Energy
@@ -202,8 +169,10 @@ paths:
       x-version: "1"
   /energy/plans/{planId}:
     get:
-      description: Obtain detailed information on a single energy plan offered openly
-        to the market
+      description: |-
+        Obtain detailed information on a single energy plan offered openly to the market.
+
+        Other Versions: [v1](includes/obsolete/get-generic-plan-detail-v1.html)
       operationId: getPlan
       parameters:
       - description: ID of the specific plan requested
@@ -245,7 +214,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EnergyPlanResponse'
+                $ref: '#/components/schemas/EnergyPlanResponseV2'
           description: Successful response
           headers:
             x-v:
@@ -262,17 +231,6 @@ paths:
                 $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
             - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
-          headers:
-            x-fapi-interaction-id:
-              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                id. If provided, the data holder must play back this value in the
-                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                UUID value is required to be provided in the response header to track
-                the interaction.
-              explode: false
-              schema:
-                type: string
-              style: simple
         "404":
           content:
             application/json:
@@ -280,17 +238,6 @@ paths:
                 $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[404
             - Invalid Resource](#error-404-resource-invalid)</li></ul>
-          headers:
-            x-fapi-interaction-id:
-              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                id. If provided, the data holder must play back this value in the
-                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                UUID value is required to be provided in the response header to track
-                the interaction.
-              explode: false
-              schema:
-                type: string
-              style: simple
         "406":
           content:
             application/json:
@@ -298,22 +245,11 @@ paths:
                 $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406
             - Unsupported Version](#error-406-header-unsupported-version)</li></ul>
-          headers:
-            x-fapi-interaction-id:
-              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                id. If provided, the data holder must play back this value in the
-                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                UUID value is required to be provided in the response header to track
-                the interaction.
-              explode: false
-              schema:
-                type: string
-              style: simple
       summary: Get Generic Plan Detail
       tags:
       - Energy
       - Generic Tariffs
-      x-version: "1"
+      x-version: "2"
   /energy/electricity/servicepoints:
     get:
       description: Obtain a list of service points owned by the customer that has
@@ -2114,7 +2050,7 @@ paths:
       description: |-
         Obtain detailed information for a specific energy account
 
-        Other Versions: [v1](includes/obsolete/get-energy-account-detail-v1.html)
+        Other Versions: [v1](includes/obsolete/get-energy-account-detail-v1.html) [v2](includes/obsolete/get-energy-account-detail-v2.html)
       operationId: getAccount
       parameters:
       - description: ID of a specific account to obtain data for.  This is a tokenised
@@ -2204,7 +2140,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EnergyAccountDetailResponseV2'
+                $ref: '#/components/schemas/EnergyAccountDetailResponseV3'
           description: Successful response
           headers:
             x-v:
@@ -2285,7 +2221,7 @@ paths:
       - Energy Accounts
       x-scopes:
       - energy:accounts.detail:read
-      x-version: "2"
+      x-version: "3"
   /energy/accounts/{accountId}/payment-schedule:
     get:
       description: "Obtain the agreed payment schedule and details, if any, for a\
@@ -4773,7 +4709,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/EnergyPlanResponse'
+            $ref: '#/components/schemas/EnergyPlanResponseV2'
       description: Successful response
       headers:
         x-v:
@@ -4921,11 +4857,11 @@ components:
           schema:
             type: string
           style: simple
-    accountDetailV2:
+    accountDetailV3:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/EnergyAccountDetailResponseV2'
+            $ref: '#/components/schemas/EnergyAccountDetailResponseV3'
       description: Successful response
       headers:
         x-v:
@@ -5164,14 +5100,14 @@ components:
       - links
       - meta
       type: object
-    EnergyPlanResponse:
+    EnergyPlanResponseV2:
       example:
         meta: '{}'
         links:
           self: self
       properties:
         data:
-          $ref: '#/components/schemas/EnergyPlanDetail'
+          $ref: '#/components/schemas/EnergyPlanDetailV2'
         links:
           $ref: '#/components/schemas/Links'
         meta:
@@ -5738,14 +5674,14 @@ components:
       - links
       - meta
       type: object
-    EnergyAccountDetailResponseV2:
+    EnergyAccountDetailResponseV3:
       example:
         meta: '{}'
         links:
           self: self
       properties:
         data:
-          $ref: '#/components/schemas/EnergyAccountDetailV2'
+          $ref: '#/components/schemas/EnergyAccountDetailV3'
         links:
           $ref: '#/components/schemas/Links'
         meta:
@@ -6304,11 +6240,11 @@ components:
       - planId
       - type
       type: object
-    EnergyPlanDetail:
+    EnergyPlanDetailV2:
       allOf:
       - $ref: '#/components/schemas/EnergyPlan'
-      - $ref: '#/components/schemas/EnergyPlanDetail_allOf'
-    EnergyPlanContract:
+      - $ref: '#/components/schemas/EnergyPlanDetailV2_allOf'
+    EnergyPlanContractV2:
       properties:
         additionalFeeInformation:
           description: Free text field containing additional information of the fees
@@ -6377,7 +6313,7 @@ components:
             type: string
           type: array
         intrinsicGreenPower:
-          $ref: '#/components/schemas/EnergyPlanContract_intrinsicGreenPower'
+          $ref: '#/components/schemas/EnergyPlanContractV2_intrinsicGreenPower'
         controlledLoad:
           description: Required if pricing model is SINGLE_RATE_CONT_LOAD or TIME_OF_USE_CONT_LOAD
             or FLEXIBLE_CONT_LOAD
@@ -6870,6 +6806,14 @@ components:
               description:
                 description: A description of the tariff
                 type: string
+              startDate:
+                description: The start date of the application of the feed in tariff
+                type: string
+                x-cds-type: DateString
+              endDate:
+                description: The end date of the application of the feed in tariff
+                type: string
+                x-cds-type: DateString
               scheme:
                 description: The applicable scheme
                 enum:
@@ -6892,12 +6836,39 @@ components:
                 description: Represents a constant tariff.  Mandatory if tariffUType
                   is set to singleTariff
                 properties:
-                  amount:
-                    description: The tariff amount
-                    type: string
-                    x-cds-type: AmountString
+                  rates:
+                    description: Array of feed in rates
+                    items:
+                      properties:
+                        unitPrice:
+                          description: Unit price of usage per measure unit (exclusive
+                            of GST)
+                          type: string
+                          x-cds-type: AmountString
+                        measureUnit:
+                          description: The measurement unit of rate. Assumed to be
+                            KWH if absent
+                          enum:
+                          - KWH
+                          - KVA
+                          - KVAR
+                          - KVARH
+                          - KW
+                          - DAYS
+                          - METER
+                          - MONTH
+                          type: string
+                        volume:
+                          description: Volume that this rate applies to. Only applicable
+                            for ‘stepped’ rates where different rates apply for different
+                            volumes of usage in a period
+                          type: number
+                      required:
+                      - unitPrice
+                      type: object
+                    type: array
                 required:
-                - amount
+                - rates
                 type: object
               timeVaryingTariffs:
                 description: Represents a tariff based on time.  Mandatory if tariffUType
@@ -6911,10 +6882,37 @@ components:
                     - OFF_PEAK
                     - SHOULDER
                     type: string
-                  amount:
-                    description: The tariff amount
-                    type: string
-                    x-cds-type: AmountString
+                  rates:
+                    description: Array of feed in rates
+                    items:
+                      properties:
+                        unitPrice:
+                          description: Unit price of usage per measure unit (exclusive
+                            of GST)
+                          type: string
+                          x-cds-type: AmountString
+                        measureUnit:
+                          description: The measurement unit of rate. Assumed to be
+                            KWH if absent
+                          enum:
+                          - KWH
+                          - KVA
+                          - KVAR
+                          - KVARH
+                          - KW
+                          - DAYS
+                          - METER
+                          - MONTH
+                          type: string
+                        volume:
+                          description: Volume that this rate applies to. Only applicable
+                            for ‘stepped’ rates where different rates apply for different
+                            volumes of usage in a period
+                          type: number
+                      required:
+                      - unitPrice
+                      type: object
+                    type: array
                   timeVariations:
                     description: Array of time periods for which this tariff is applicable
                     items:
@@ -7267,10 +7265,10 @@ components:
       - timeZone
       - variation
       - controlledLoad
-    EnergyPlanContractFull:
+    EnergyPlanContractFullV2:
       allOf:
-      - $ref: '#/components/schemas/EnergyPlanContract'
-      - $ref: '#/components/schemas/EnergyPlanContractFull_allOf'
+      - $ref: '#/components/schemas/EnergyPlanContractV2'
+      - $ref: '#/components/schemas/EnergyPlanContractFullV2_allOf'
     EnergyPlanControlledLoad:
       description: Required if pricing model is SINGLE_RATE_CONT_LOAD or TIME_OF_USE_CONT_LOAD
         or FLEXIBLE_CONT_LOAD
@@ -7750,7 +7748,7 @@ components:
         - amount
         - rate
       type: array
-    EnergyPlanSolarFeedInTariff:
+    EnergyPlanSolarFeedInTariffV2:
       description: Array of feed in tariffs for solar power
       items:
         properties:
@@ -7760,6 +7758,14 @@ components:
           description:
             description: A description of the tariff
             type: string
+          startDate:
+            description: The start date of the application of the feed in tariff
+            type: string
+            x-cds-type: DateString
+          endDate:
+            description: The end date of the application of the feed in tariff
+            type: string
+            x-cds-type: DateString
           scheme:
             description: The applicable scheme
             enum:
@@ -7782,12 +7788,39 @@ components:
             description: Represents a constant tariff.  Mandatory if tariffUType is
               set to singleTariff
             properties:
-              amount:
-                description: The tariff amount
-                type: string
-                x-cds-type: AmountString
+              rates:
+                description: Array of feed in rates
+                items:
+                  properties:
+                    unitPrice:
+                      description: Unit price of usage per measure unit (exclusive
+                        of GST)
+                      type: string
+                      x-cds-type: AmountString
+                    measureUnit:
+                      description: The measurement unit of rate. Assumed to be KWH
+                        if absent
+                      enum:
+                      - KWH
+                      - KVA
+                      - KVAR
+                      - KVARH
+                      - KW
+                      - DAYS
+                      - METER
+                      - MONTH
+                      type: string
+                    volume:
+                      description: Volume that this rate applies to. Only applicable
+                        for ‘stepped’ rates where different rates apply for different
+                        volumes of usage in a period
+                      type: number
+                  required:
+                  - unitPrice
+                  type: object
+                type: array
             required:
-            - amount
+            - rates
             type: object
           timeVaryingTariffs:
             description: Represents a tariff based on time.  Mandatory if tariffUType
@@ -7801,10 +7834,37 @@ components:
                 - OFF_PEAK
                 - SHOULDER
                 type: string
-              amount:
-                description: The tariff amount
-                type: string
-                x-cds-type: AmountString
+              rates:
+                description: Array of feed in rates
+                items:
+                  properties:
+                    unitPrice:
+                      description: Unit price of usage per measure unit (exclusive
+                        of GST)
+                      type: string
+                      x-cds-type: AmountString
+                    measureUnit:
+                      description: The measurement unit of rate. Assumed to be KWH
+                        if absent
+                      enum:
+                      - KWH
+                      - KVA
+                      - KVAR
+                      - KVARH
+                      - KW
+                      - DAYS
+                      - METER
+                      - MONTH
+                      type: string
+                    volume:
+                      description: Volume that this rate applies to. Only applicable
+                        for ‘stepped’ rates where different rates apply for different
+                        volumes of usage in a period
+                      type: number
+                  required:
+                  - unitPrice
+                  type: object
+                type: array
               timeVariations:
                 description: Array of time periods for which this tariff is applicable
                 items:
@@ -8708,10 +8768,10 @@ components:
       allOf:
       - $ref: '#/components/schemas/EnergyAccountBaseV2'
       - $ref: '#/components/schemas/EnergyAccountV2_allOf'
-    EnergyAccountDetailV2:
+    EnergyAccountDetailV3:
       allOf:
       - $ref: '#/components/schemas/EnergyAccountBaseV2'
-      - $ref: '#/components/schemas/EnergyAccountDetailV2_allOf'
+      - $ref: '#/components/schemas/EnergyAccountDetailV3_allOf'
     EnergyPaymentSchedule:
       example:
         manualPayment:
@@ -8738,7 +8798,7 @@ components:
       properties:
         amount:
           description: Optional payment amount indicating that a constant payment
-            amount is scheduled to be paid (used in bill smooting scenarios)
+            amount is scheduled to be paid (used in bill smoothing scenarios)
           type: string
           x-cds-type: AmountString
         paymentScheduleUType:
@@ -10622,16 +10682,16 @@ components:
         - includedPostcodes
       properties:
         excludedPostcodes:
-          description: Array of valid Australian post codes that are specifically
-            excluded from the plan.  Each element is a single four digit postcode
-            (e.g. 3000) or a range of postcodes defined by two four digit postcodes
-            and a hyphen (e.g. 3000-3999)
+          description: Array of valid Australian postcodes that are specifically excluded
+            from the plan.  Each element is a single four digit postcode (e.g. 3000)
+            or a range of postcodes defined by two four digit postcodes and a hyphen
+            (e.g. 3000-3999)
           items:
             type: string
           type: array
         includedPostcodes:
-          description: Array of valid Australian post codes that are included from
-            the plan.  If absent defaults to all non-excluded post codes.  Each element
+          description: Array of valid Australian postcodes that are included from
+            the plan.  If absent defaults to all non-excluded postcodes.  Each element
             is a single four digit postcode (e.g. 3000) or a range of postcodes defined
             by two four digit postcodes and a hyphen (e.g. 3000-3999)
           items:
@@ -10646,7 +10706,7 @@ components:
       required:
       - distributors
       type: object
-    EnergyPlanDetail_allOf_meteringCharges:
+    EnergyPlanDetailV2_allOf_meteringCharges:
       properties:
         displayName:
           description: Display name of the charge
@@ -10674,22 +10734,22 @@ components:
       - displayName
       - minimumValue
       type: object
-    EnergyPlanDetail_allOf:
+    EnergyPlanDetailV2_allOf:
       properties:
         meteringCharges:
           description: Charges for metering included in the plan
           items:
-            $ref: '#/components/schemas/EnergyPlanDetail_allOf_meteringCharges'
+            $ref: '#/components/schemas/EnergyPlanDetailV2_allOf_meteringCharges'
           type: array
         gasContract:
-          $ref: '#/components/schemas/EnergyPlanContractFull'
+          $ref: '#/components/schemas/EnergyPlanContractFullV2'
         electricityContract:
-          $ref: '#/components/schemas/EnergyPlanContractFull'
+          $ref: '#/components/schemas/EnergyPlanContractFullV2'
       type: object
       x-conditional:
       - gasContract
       - electricityContract
-    EnergyPlanContract_intrinsicGreenPower:
+    EnergyPlanContractV2_intrinsicGreenPower:
       description: Describes intrinsic green power for the plan.  If present then
         the plan includes a percentage of green power in the base plan. Should not
         be present for gas contracts
@@ -10701,7 +10761,7 @@ components:
       required:
       - greenPercentage
       type: object
-    EnergyPlanContractFull_allOf:
+    EnergyPlanContractFullV2_allOf:
       properties:
         termType:
           description: The term for the contract.  If absent assumes no specified
@@ -11417,7 +11477,7 @@ components:
       required:
       - plans
       type: object
-    EnergyAccountDetailV2_allOf_planDetail:
+    EnergyAccountDetailV3_allOf_planDetail:
       description: Detail on the plan applicable to this account. Mandatory if openStatus
         is OPEN
       properties:
@@ -11439,19 +11499,19 @@ components:
         meteringCharges:
           description: Charges for metering included in the plan
           items:
-            $ref: '#/components/schemas/EnergyPlanDetail_allOf_meteringCharges'
+            $ref: '#/components/schemas/EnergyPlanDetailV2_allOf_meteringCharges'
           type: array
         gasContract:
-          $ref: '#/components/schemas/EnergyPlanContract'
+          $ref: '#/components/schemas/EnergyPlanContractV2'
         electricityContract:
-          $ref: '#/components/schemas/EnergyPlanContract'
+          $ref: '#/components/schemas/EnergyPlanContractV2'
       required:
       - fuelType
       type: object
       x-conditional:
       - gasContract
       - electricityContract
-    EnergyAccountDetailV2_allOf_authorisedContacts:
+    EnergyAccountDetailV3_allOf_authorisedContacts:
       properties:
         firstName:
           description: For people with single names this field need not be present.
@@ -11476,7 +11536,7 @@ components:
       required:
       - lastName
       type: object
-    EnergyAccountDetailV2_allOf_plans:
+    EnergyAccountDetailV3_allOf_plans:
       properties:
         nickname:
           description: Optional display name for the plan provided by the customer
@@ -11491,12 +11551,12 @@ components:
         planOverview:
           $ref: '#/components/schemas/EnergyAccountV2_allOf_planOverview'
         planDetail:
-          $ref: '#/components/schemas/EnergyAccountDetailV2_allOf_planDetail'
+          $ref: '#/components/schemas/EnergyAccountDetailV3_allOf_planDetail'
         authorisedContacts:
           description: An array of additional contacts that are authorised to act
             on this account
           items:
-            $ref: '#/components/schemas/EnergyAccountDetailV2_allOf_authorisedContacts'
+            $ref: '#/components/schemas/EnergyAccountDetailV3_allOf_authorisedContacts'
           type: array
       required:
       - servicePointIds
@@ -11504,7 +11564,7 @@ components:
       x-conditional:
       - planOverview
       - planDetail
-    EnergyAccountDetailV2_allOf:
+    EnergyAccountDetailV3_allOf:
       description: The array of plans containing service points and associated plan
         details
       properties:
@@ -11512,7 +11572,7 @@ components:
           description: The array of plans containing service points and associated
             plan details
           items:
-            $ref: '#/components/schemas/EnergyAccountDetailV2_allOf_plans'
+            $ref: '#/components/schemas/EnergyAccountDetailV3_allOf_plans'
           type: array
       required:
       - plans

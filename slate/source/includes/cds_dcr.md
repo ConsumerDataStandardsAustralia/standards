@@ -35,7 +35,9 @@ $.ajax({
 
 `POST /register`
 
-Register a client using a CDR Register issued Software Statement Assertion.
+Register a client using a CDR Register issued Software Statement Assertion. 
+
+This endpoint does not require CORS.
 
 > Body parameter
 

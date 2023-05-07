@@ -146,9 +146,6 @@ Note that the results returned by this end point are expected to be ordered in d
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
 |200|x-v|string||The [version](#response-headers) of the API end point that the data holder has responded with.|
-|400|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|406|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|422|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     <aside class="success">
@@ -194,12 +191,14 @@ $.ajax({
 
 `GET /energy/plans/{planId}`
 
-Obtain detailed information on a single energy plan offered openly to the market
+Obtain detailed information on a single energy plan offered openly to the market.
+
+Other Versions: [v1](includes/obsolete/get-generic-plan-detail-v1.html)
 
 ###Endpoint Version
 |   |  |
 |---|--|
-|Version|**1**
+|Version|**2**
 
 <h3 id="get-generic-plan-detail-parameters">Parameters</h3>
 
@@ -380,15 +379,29 @@ Obtain detailed information on a single energy plan offered openly to the market
         {
           "displayName": "string",
           "description": "string",
+          "startDate": "string",
+          "endDate": "string",
           "scheme": "PREMIUM",
           "payerType": "GOVERNMENT",
           "tariffUType": "singleTariff",
           "singleTariff": {
-            "amount": "string"
+            "rates": [
+              {
+                "unitPrice": "string",
+                "measureUnit": "KWH",
+                "volume": 0
+              }
+            ]
           },
           "timeVaryingTariffs": {
             "type": "PEAK",
-            "amount": "string",
+            "rates": [
+              {
+                "unitPrice": "string",
+                "measureUnit": "KWH",
+                "volume": 0
+              }
+            ],
             "timeVariations": [
               {
                 "days": [
@@ -601,15 +614,29 @@ Obtain detailed information on a single energy plan offered openly to the market
         {
           "displayName": "string",
           "description": "string",
+          "startDate": "string",
+          "endDate": "string",
           "scheme": "PREMIUM",
           "payerType": "GOVERNMENT",
           "tariffUType": "singleTariff",
           "singleTariff": {
-            "amount": "string"
+            "rates": [
+              {
+                "unitPrice": "string",
+                "measureUnit": "KWH",
+                "volume": 0
+              }
+            ]
           },
           "timeVaryingTariffs": {
             "type": "PEAK",
-            "amount": "string",
+            "rates": [
+              {
+                "unitPrice": "string",
+                "measureUnit": "KWH",
+                "volume": 0
+              }
+            ],
             "timeVariations": [
               {
                 "days": [
@@ -709,7 +736,7 @@ Obtain detailed information on a single energy plan offered openly to the market
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyPlanResponse](#schemacdr-energy-apienergyplanresponse)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyPlanResponseV2](#schemacdr-energy-apienergyplanresponsev2)|
 |400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[404 - Invalid Resource](#error-404-resource-invalid)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
@@ -719,9 +746,6 @@ Obtain detailed information on a single energy plan offered openly to the market
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
 |200|x-v|string||The [version](#response-headers) of the API end point that the data holder has responded with.|
-|400|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|404|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|406|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     <aside class="success">
@@ -2263,12 +2287,12 @@ $.ajax({
 
 Obtain detailed information for a specific energy account
 
-Other Versions: [v1](includes/obsolete/get-energy-account-detail-v1.html)
+Other Versions: [v1](includes/obsolete/get-energy-account-detail-v1.html) [v2](includes/obsolete/get-energy-account-detail-v2.html)
 
 ###Endpoint Version
 |   |  |
 |---|--|
-|Version|**2**
+|Version|**3**
 
 <h3 id="get-energy-account-detail-parameters">Parameters</h3>
 
@@ -2422,15 +2446,21 @@ Other Versions: [v1](includes/obsolete/get-energy-account-detail-v1.html)
               {
                 "displayName": "string",
                 "description": "string",
+                "startDate": "string",
+                "endDate": "string",
                 "scheme": "PREMIUM",
                 "payerType": "GOVERNMENT",
                 "tariffUType": "singleTariff",
                 "singleTariff": {
-                  "amount": "string"
+                  "rates": [
+                    {}
+                  ]
                 },
                 "timeVaryingTariffs": {
                   "type": "PEAK",
-                  "amount": "string",
+                  "rates": [
+                    {}
+                  ],
                   "timeVariations": [
                     {}
                   ]
@@ -2587,15 +2617,21 @@ Other Versions: [v1](includes/obsolete/get-energy-account-detail-v1.html)
               {
                 "displayName": "string",
                 "description": "string",
+                "startDate": "string",
+                "endDate": "string",
                 "scheme": "PREMIUM",
                 "payerType": "GOVERNMENT",
                 "tariffUType": "singleTariff",
                 "singleTariff": {
-                  "amount": "string"
+                  "rates": [
+                    {}
+                  ]
                 },
                 "timeVaryingTariffs": {
                   "type": "PEAK",
-                  "amount": "string",
+                  "rates": [
+                    {}
+                  ],
                   "timeVariations": [
                     {}
                   ]
@@ -2673,7 +2709,7 @@ Other Versions: [v1](includes/obsolete/get-energy-account-detail-v1.html)
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyAccountDetailResponseV2](#schemacdr-energy-apienergyaccountdetailresponsev2)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyAccountDetailResponseV3](#schemacdr-energy-apienergyaccountdetailresponsev3)|
 |400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[404 - Unavailable Energy Account](#error-404-unavailable-energy-account)</li><li>[404 - Invalid Energy Account](#error-404-invalid-energy-account)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
@@ -4585,9 +4621,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 |links|[LinksPaginated](#schemacdr-energy-apilinkspaginated)|mandatory|none|
 |meta|[MetaPaginated](#schemacdr-energy-apimetapaginated)|mandatory|none|
 
-<h3 class="schema-toc" id="tocSenergyplanresponse">EnergyPlanResponse</h3>
+<h3 class="schema-toc" id="tocSenergyplanresponsev2">EnergyPlanResponseV2</h3>
 
-<a id="schemacdr-energy-apienergyplanresponse"></a>
+<a id="schemacdr-energy-apienergyplanresponsev2"></a>
 
 ```json
 {
@@ -4756,15 +4792,29 @@ To perform this operation, you must be authenticated and authorised with the fol
         {
           "displayName": "string",
           "description": "string",
+          "startDate": "string",
+          "endDate": "string",
           "scheme": "PREMIUM",
           "payerType": "GOVERNMENT",
           "tariffUType": "singleTariff",
           "singleTariff": {
-            "amount": "string"
+            "rates": [
+              {
+                "unitPrice": "string",
+                "measureUnit": "KWH",
+                "volume": 0
+              }
+            ]
           },
           "timeVaryingTariffs": {
             "type": "PEAK",
-            "amount": "string",
+            "rates": [
+              {
+                "unitPrice": "string",
+                "measureUnit": "KWH",
+                "volume": 0
+              }
+            ],
             "timeVariations": [
               {
                 "days": [
@@ -4977,15 +5027,29 @@ To perform this operation, you must be authenticated and authorised with the fol
         {
           "displayName": "string",
           "description": "string",
+          "startDate": "string",
+          "endDate": "string",
           "scheme": "PREMIUM",
           "payerType": "GOVERNMENT",
           "tariffUType": "singleTariff",
           "singleTariff": {
-            "amount": "string"
+            "rates": [
+              {
+                "unitPrice": "string",
+                "measureUnit": "KWH",
+                "volume": 0
+              }
+            ]
           },
           "timeVaryingTariffs": {
             "type": "PEAK",
-            "amount": "string",
+            "rates": [
+              {
+                "unitPrice": "string",
+                "measureUnit": "KWH",
+                "volume": 0
+              }
+            ],
             "timeVariations": [
               {
                 "days": [
@@ -5086,7 +5150,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|data|[EnergyPlanDetail](#schemacdr-energy-apienergyplandetail)|mandatory|none|
+|data|[EnergyPlanDetailV2](#schemacdr-energy-apienergyplandetailv2)|mandatory|none|
 |links|[Links](#schemacdr-energy-apilinks)|mandatory|none|
 |meta|[Meta](#schemacdr-energy-apimeta)|optional|none|
 
@@ -5524,9 +5588,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 |links|[LinksPaginated](#schemacdr-energy-apilinkspaginated)|mandatory|none|
 |meta|[MetaPaginated](#schemacdr-energy-apimetapaginated)|mandatory|none|
 
-<h3 class="schema-toc" id="tocSenergyaccountdetailresponsev2">EnergyAccountDetailResponseV2</h3>
+<h3 class="schema-toc" id="tocSenergyaccountdetailresponsev3">EnergyAccountDetailResponseV3</h3>
 
-<a id="schemacdr-energy-apienergyaccountdetailresponsev2"></a>
+<a id="schemacdr-energy-apienergyaccountdetailresponsev3"></a>
 
 ```json
 {
@@ -5664,15 +5728,21 @@ To perform this operation, you must be authenticated and authorised with the fol
               {
                 "displayName": "string",
                 "description": "string",
+                "startDate": "string",
+                "endDate": "string",
                 "scheme": "PREMIUM",
                 "payerType": "GOVERNMENT",
                 "tariffUType": "singleTariff",
                 "singleTariff": {
-                  "amount": "string"
+                  "rates": [
+                    {}
+                  ]
                 },
                 "timeVaryingTariffs": {
                   "type": "PEAK",
-                  "amount": "string",
+                  "rates": [
+                    {}
+                  ],
                   "timeVariations": [
                     {}
                   ]
@@ -5829,15 +5899,21 @@ To perform this operation, you must be authenticated and authorised with the fol
               {
                 "displayName": "string",
                 "description": "string",
+                "startDate": "string",
+                "endDate": "string",
                 "scheme": "PREMIUM",
                 "payerType": "GOVERNMENT",
                 "tariffUType": "singleTariff",
                 "singleTariff": {
-                  "amount": "string"
+                  "rates": [
+                    {}
+                  ]
                 },
                 "timeVaryingTariffs": {
                   "type": "PEAK",
-                  "amount": "string",
+                  "rates": [
+                    {}
+                  ],
                   "timeVariations": [
                     {}
                   ]
@@ -5916,7 +5992,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|data|[EnergyAccountDetailV2](#schemacdr-energy-apienergyaccountdetailv2)|mandatory|none|
+|data|[EnergyAccountDetailV3](#schemacdr-energy-apienergyaccountdetailv3)|mandatory|none|
 |links|[Links](#schemacdr-energy-apilinks)|mandatory|none|
 |meta|[Meta](#schemacdr-energy-apimeta)|optional|none|
 
@@ -6382,8 +6458,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |» bundleUri|[URIString](#common-field-types)|optional|A link to detail on bundles that this plan can be a part of|
 |customerType|string|optional|The type of customer that the plan is offered to.  If absent then the plan is available to all customers|
 |geography|object|optional|Describes the geographical area that the plan is available for.  If absent then it is assumed the plan is not geographically limited|
-|» excludedPostcodes|[string]|optional|Array of valid Australian post codes that are specifically excluded from the plan.  Each element is a single four digit postcode (e.g. 3000) or a range of postcodes defined by two four digit postcodes and a hyphen (e.g. 3000-3999)|
-|» includedPostcodes|[string]|optional|Array of valid Australian post codes that are included from the plan.  If absent defaults to all non-excluded post codes.  Each element is a single four digit postcode (e.g. 3000) or a range of postcodes defined by two four digit postcodes and a hyphen (e.g. 3000-3999)|
+|» excludedPostcodes|[string]|optional|Array of valid Australian postcodes that are specifically excluded from the plan.  Each element is a single four digit postcode (e.g. 3000) or a range of postcodes defined by two four digit postcodes and a hyphen (e.g. 3000-3999)|
+|» includedPostcodes|[string]|optional|Array of valid Australian postcodes that are included from the plan.  If absent defaults to all non-excluded postcodes.  Each element is a single four digit postcode (e.g. 3000) or a range of postcodes defined by two four digit postcodes and a hyphen (e.g. 3000-3999)|
 |» distributors|[string]|mandatory|Array of distributors for the plan. Must have at least one entry|
 
 #### Enumerated Values
@@ -6399,9 +6475,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 |customerType|RESIDENTIAL|
 |customerType|BUSINESS|
 
-<h3 class="schema-toc" id="tocSenergyplandetail">EnergyPlanDetail</h3>
+<h3 class="schema-toc" id="tocSenergyplandetailv2">EnergyPlanDetailV2</h3>
 
-<a id="schemacdr-energy-apienergyplandetail"></a>
+<a id="schemacdr-energy-apienergyplandetailv2"></a>
 
 ```json
 {
@@ -6569,15 +6645,29 @@ To perform this operation, you must be authenticated and authorised with the fol
       {
         "displayName": "string",
         "description": "string",
+        "startDate": "string",
+        "endDate": "string",
         "scheme": "PREMIUM",
         "payerType": "GOVERNMENT",
         "tariffUType": "singleTariff",
         "singleTariff": {
-          "amount": "string"
+          "rates": [
+            {
+              "unitPrice": "string",
+              "measureUnit": "KWH",
+              "volume": 0
+            }
+          ]
         },
         "timeVaryingTariffs": {
           "type": "PEAK",
-          "amount": "string",
+          "rates": [
+            {
+              "unitPrice": "string",
+              "measureUnit": "KWH",
+              "volume": 0
+            }
+          ],
           "timeVariations": [
             {
               "days": [
@@ -6790,15 +6880,29 @@ To perform this operation, you must be authenticated and authorised with the fol
       {
         "displayName": "string",
         "description": "string",
+        "startDate": "string",
+        "endDate": "string",
         "scheme": "PREMIUM",
         "payerType": "GOVERNMENT",
         "tariffUType": "singleTariff",
         "singleTariff": {
-          "amount": "string"
+          "rates": [
+            {
+              "unitPrice": "string",
+              "measureUnit": "KWH",
+              "volume": 0
+            }
+          ]
         },
         "timeVaryingTariffs": {
           "type": "PEAK",
-          "amount": "string",
+          "rates": [
+            {
+              "unitPrice": "string",
+              "measureUnit": "KWH",
+              "volume": 0
+            }
+          ],
           "timeVariations": [
             {
               "days": [
@@ -6909,12 +7013,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 |»» minimumValue|[AmountString](#common-field-types)|mandatory|Minimum value of the charge if the charge is a range or the absolute value of the charge if no range is specified|
 |»» maximumValue|[AmountString](#common-field-types)|optional|The upper limit of the charge if the charge could occur in a range|
 |»» period|[ExternalRef](#common-field-types)|optional|The charges that occur on a schedule indicates the frequency. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
-|» gasContract|[EnergyPlanContractFull](#schemacdr-energy-apienergyplancontractfull)|conditional|The details of the terms for the supply of electricity under this plan.  Is mandatory if fuelType is set to GAS or DUAL|
-|» electricityContract|[EnergyPlanContractFull](#schemacdr-energy-apienergyplancontractfull)|conditional|The details of the terms for the supply of electricity under this plan.  Is mandatory if fuelType is set to ELECTRICITY or DUAL|
+|» gasContract|[EnergyPlanContractFullV2](#schemacdr-energy-apienergyplancontractfullv2)|conditional|The details of the terms for the supply of electricity under this plan.  Is mandatory if fuelType is set to GAS or DUAL|
+|» electricityContract|[EnergyPlanContractFullV2](#schemacdr-energy-apienergyplancontractfullv2)|conditional|The details of the terms for the supply of electricity under this plan.  Is mandatory if fuelType is set to ELECTRICITY or DUAL|
 
-<h3 class="schema-toc" id="tocSenergyplancontract">EnergyPlanContract</h3>
+<h3 class="schema-toc" id="tocSenergyplancontractv2">EnergyPlanContractV2</h3>
 
-<a id="schemacdr-energy-apienergyplancontract"></a>
+<a id="schemacdr-energy-apienergyplancontractv2"></a>
 
 ```json
 {
@@ -7042,15 +7146,29 @@ To perform this operation, you must be authenticated and authorised with the fol
     {
       "displayName": "string",
       "description": "string",
+      "startDate": "string",
+      "endDate": "string",
       "scheme": "PREMIUM",
       "payerType": "GOVERNMENT",
       "tariffUType": "singleTariff",
       "singleTariff": {
-        "amount": "string"
+        "rates": [
+          {
+            "unitPrice": "string",
+            "measureUnit": "KWH",
+            "volume": 0
+          }
+        ]
       },
       "timeVaryingTariffs": {
         "type": "PEAK",
-        "amount": "string",
+        "rates": [
+          {
+            "unitPrice": "string",
+            "measureUnit": "KWH",
+            "volume": 0
+          }
+        ],
         "timeVariations": [
           {
             "days": [
@@ -7150,7 +7268,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |greenPowerCharges|[EnergyPlanGreenPowerCharges](#schemacdr-energy-apienergyplangreenpowercharges)|optional|Optional list of charges applicable to green power|
 |eligibility|[EnergyPlanEligibility](#schemacdr-energy-apienergyplaneligibility)|optional|Eligibility restrictions or requirements|
 |fees|[EnergyPlanFees](#schemacdr-energy-apienergyplanfees)|optional|An array of fees applicable to the plan|
-|solarFeedInTariff|[EnergyPlanSolarFeedInTariff](#schemacdr-energy-apienergyplansolarfeedintariff)|optional|Array of feed in tariffs for solar power|
+|solarFeedInTariff|[EnergyPlanSolarFeedInTariffV2](#schemacdr-energy-apienergyplansolarfeedintariffv2)|optional|Array of feed in tariffs for solar power|
 |tariffPeriod|[EnergyPlanTariffPeriod](#schemacdr-energy-apienergyplantariffperiod)|mandatory|Array of tariff periods|
 
 #### Enumerated Values
@@ -7172,9 +7290,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 |paymentOption|BPAY|
 |paymentOption|OTHER|
 
-<h3 class="schema-toc" id="tocSenergyplancontractfull">EnergyPlanContractFull</h3>
+<h3 class="schema-toc" id="tocSenergyplancontractfullv2">EnergyPlanContractFullV2</h3>
 
-<a id="schemacdr-energy-apienergyplancontractfull"></a>
+<a id="schemacdr-energy-apienergyplancontractfullv2"></a>
 
 ```json
 {
@@ -7302,15 +7420,29 @@ To perform this operation, you must be authenticated and authorised with the fol
     {
       "displayName": "string",
       "description": "string",
+      "startDate": "string",
+      "endDate": "string",
       "scheme": "PREMIUM",
       "payerType": "GOVERNMENT",
       "tariffUType": "singleTariff",
       "singleTariff": {
-        "amount": "string"
+        "rates": [
+          {
+            "unitPrice": "string",
+            "measureUnit": "KWH",
+            "volume": 0
+          }
+        ]
       },
       "timeVaryingTariffs": {
         "type": "PEAK",
-        "amount": "string",
+        "rates": [
+          {
+            "unitPrice": "string",
+            "measureUnit": "KWH",
+            "volume": 0
+          }
+        ],
         "timeVariations": [
           {
             "days": [
@@ -7407,7 +7539,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|*anonymous*|[EnergyPlanContract](#schemacdr-energy-apienergyplancontract)|mandatory|none|
+|*anonymous*|[EnergyPlanContractV2](#schemacdr-energy-apienergyplancontractv2)|mandatory|none|
 
 *and*
 
@@ -7825,24 +7957,38 @@ To perform this operation, you must be authenticated and authorised with the fol
 |term|BIANNUAL|
 |term|VARIABLE|
 
-<h3 class="schema-toc" id="tocSenergyplansolarfeedintariff">EnergyPlanSolarFeedInTariff</h3>
+<h3 class="schema-toc" id="tocSenergyplansolarfeedintariffv2">EnergyPlanSolarFeedInTariffV2</h3>
 
-<a id="schemacdr-energy-apienergyplansolarfeedintariff"></a>
+<a id="schemacdr-energy-apienergyplansolarfeedintariffv2"></a>
 
 ```json
 [
   {
     "displayName": "string",
     "description": "string",
+    "startDate": "string",
+    "endDate": "string",
     "scheme": "PREMIUM",
     "payerType": "GOVERNMENT",
     "tariffUType": "singleTariff",
     "singleTariff": {
-      "amount": "string"
+      "rates": [
+        {
+          "unitPrice": "string",
+          "measureUnit": "KWH",
+          "volume": 0
+        }
+      ]
     },
     "timeVaryingTariffs": {
       "type": "PEAK",
-      "amount": "string",
+      "rates": [
+        {
+          "unitPrice": "string",
+          "measureUnit": "KWH",
+          "volume": 0
+        }
+      ],
       "timeVariations": [
         {
           "days": [
@@ -7866,18 +8012,26 @@ To perform this operation, you must be authenticated and authorised with the fol
 |---|---|---|---|
 |displayName|string|mandatory|The name of the tariff|
 |description|string|optional|A description of the tariff|
+|startDate|[DateString](#common-field-types)|optional|The start date of the application of the feed in tariff|
+|endDate|[DateString](#common-field-types)|optional|The end date of the application of the feed in tariff|
 |scheme|string|mandatory|The applicable scheme|
 |payerType|string|mandatory|The type of the payer|
 |tariffUType|string|mandatory|The type of the payer|
 |singleTariff|object|conditional|Represents a constant tariff.  Mandatory if tariffUType is set to singleTariff|
-|» amount|[AmountString](#common-field-types)|mandatory|The tariff amount|
-|timeVaryingTariffs|object|conditional|Represents a tariff based on time.  Mandatory if tariffUType is set to timeVaryingTariffs|
-|» type|string|optional|The type of the charging time period. If absent applies to all periods|
-|» amount|[AmountString](#common-field-types)|mandatory|The tariff amount|
-|» timeVariations|[object]|mandatory|Array of time periods for which this tariff is applicable|
-|»» days|[string]|mandatory|The days that the tariff applies to. At least one entry required|
-|»» startTime|[TimeString](#common-field-types)|optional|The beginning of the time period per day for which the tariff applies.  If absent assumes start of day (ie. midnight)|
-|»» endTime|[TimeString](#common-field-types)|optional|The end of the time period per day for which the tariff applies.  If absent assumes end of day (ie. one second before midnight)|
+|» rates|[object]|mandatory|Array of feed in rates|
+|»» unitPrice|[AmountString](#common-field-types)|mandatory|Unit price of usage per measure unit (exclusive of GST)|
+|»» measureUnit|string|optional|The measurement unit of rate. Assumed to be KWH if absent|
+|»» volume|number|optional|Volume that this rate applies to. Only applicable for ‘stepped’ rates where different rates apply for different volumes of usage in a period|
+|» timeVaryingTariffs|object|conditional|Represents a tariff based on time.  Mandatory if tariffUType is set to timeVaryingTariffs|
+|»» type|string|optional|The type of the charging time period. If absent applies to all periods|
+|»» rates|[object]|optional|Array of feed in rates|
+|»»» unitPrice|[AmountString](#common-field-types)|mandatory|Unit price of usage per measure unit (exclusive of GST)|
+|»»» measureUnit|string|optional|The measurement unit of rate. Assumed to be KWH if absent|
+|»»» volume|number|optional|Volume that this rate applies to. Only applicable for ‘stepped’ rates where different rates apply for different volumes of usage in a period|
+|»» timeVariations|[object]|mandatory|Array of time periods for which this tariff is applicable|
+|»»» days|[string]|mandatory|The days that the tariff applies to. At least one entry required|
+|»»» startTime|[TimeString](#common-field-types)|optional|The beginning of the time period per day for which the tariff applies.  If absent assumes start of day (ie. midnight)|
+|»»» endTime|[TimeString](#common-field-types)|optional|The end of the time period per day for which the tariff applies.  If absent assumes end of day (ie. one second before midnight)|
 
 #### Enumerated Values
 
@@ -7889,9 +8043,25 @@ To perform this operation, you must be authenticated and authorised with the fol
 |payerType|RETAILER|
 |tariffUType|singleTariff|
 |tariffUType|timeVaryingTariffs|
+|measureUnit|KWH|
+|measureUnit|KVA|
+|measureUnit|KVAR|
+|measureUnit|KVARH|
+|measureUnit|KW|
+|measureUnit|DAYS|
+|measureUnit|METER|
+|measureUnit|MONTH|
 |type|PEAK|
 |type|OFF_PEAK|
 |type|SHOULDER|
+|measureUnit|KWH|
+|measureUnit|KVA|
+|measureUnit|KVAR|
+|measureUnit|KVARH|
+|measureUnit|KW|
+|measureUnit|DAYS|
+|measureUnit|METER|
+|measureUnit|MONTH|
 |days|SUN|
 |days|MON|
 |days|TUE|
@@ -8648,9 +8818,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 |»»» startDate|[DateString](#common-field-types)|mandatory|The start date of the applicability of this plan|
 |»»» endDate|[DateString](#common-field-types)|optional|The end date of the applicability of this plan|
 
-<h3 class="schema-toc" id="tocSenergyaccountdetailv2">EnergyAccountDetailV2</h3>
+<h3 class="schema-toc" id="tocSenergyaccountdetailv3">EnergyAccountDetailV3</h3>
 
-<a id="schemacdr-energy-apienergyaccountdetailv2"></a>
+<a id="schemacdr-energy-apienergyaccountdetailv3"></a>
 
 ```json
 {
@@ -8795,15 +8965,29 @@ To perform this operation, you must be authenticated and authorised with the fol
             {
               "displayName": "string",
               "description": "string",
+              "startDate": "string",
+              "endDate": "string",
               "scheme": "PREMIUM",
               "payerType": "GOVERNMENT",
               "tariffUType": "singleTariff",
               "singleTariff": {
-                "amount": "string"
+                "rates": [
+                  {
+                    "unitPrice": "string",
+                    "measureUnit": "KWH",
+                    "volume": 0
+                  }
+                ]
               },
               "timeVaryingTariffs": {
                 "type": "PEAK",
-                "amount": "string",
+                "rates": [
+                  {
+                    "unitPrice": "string",
+                    "measureUnit": "KWH",
+                    "volume": 0
+                  }
+                ],
                 "timeVariations": [
                   {
                     "days": [],
@@ -8982,15 +9166,29 @@ To perform this operation, you must be authenticated and authorised with the fol
             {
               "displayName": "string",
               "description": "string",
+              "startDate": "string",
+              "endDate": "string",
               "scheme": "PREMIUM",
               "payerType": "GOVERNMENT",
               "tariffUType": "singleTariff",
               "singleTariff": {
-                "amount": "string"
+                "rates": [
+                  {
+                    "unitPrice": "string",
+                    "measureUnit": "KWH",
+                    "volume": 0
+                  }
+                ]
               },
               "timeVaryingTariffs": {
                 "type": "PEAK",
-                "amount": "string",
+                "rates": [
+                  {
+                    "unitPrice": "string",
+                    "measureUnit": "KWH",
+                    "volume": 0
+                  }
+                ],
                 "timeVariations": [
                   {
                     "days": [],
@@ -9103,8 +9301,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |»»»» minimumValue|[AmountString](#common-field-types)|mandatory|Minimum value of the charge if the charge is a range or the absolute value of the charge if no range is specified|
 |»»»» maximumValue|[AmountString](#common-field-types)|optional|The upper limit of the charge if the charge could occur in a range|
 |»»»» period|[ExternalRef](#common-field-types)|optional|The charges that occur on a schedule indicates the frequency. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
-|»»» gasContract|[EnergyPlanContract](#schemacdr-energy-apienergyplancontract)|conditional|The details of the terms for the supply of electricity under this plan.  Is mandatory if fuelType is set to GAS or DUAL|
-|»»» electricityContract|[EnergyPlanContract](#schemacdr-energy-apienergyplancontract)|conditional|The details of the terms for the supply of electricity under this plan.  Is mandatory if fuelType is set to ELECTRICITY or DUAL|
+|»»» gasContract|[EnergyPlanContractV2](#schemacdr-energy-apienergyplancontractv2)|conditional|The details of the terms for the supply of electricity under this plan.  Is mandatory if fuelType is set to GAS or DUAL|
+|»»» electricityContract|[EnergyPlanContractV2](#schemacdr-energy-apienergyplancontractv2)|conditional|The details of the terms for the supply of electricity under this plan.  Is mandatory if fuelType is set to ELECTRICITY or DUAL|
 |»» authorisedContacts|[object]|optional|An array of additional contacts that are authorised to act on this account|
 |»»» firstName|string|optional|For people with single names this field need not be present. The single name should be in the lastName field|
 |»»» lastName|string|mandatory|For people with single names the single name should be in this field|
@@ -9159,7 +9357,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|amount|[AmountString](#common-field-types)|optional|Optional payment amount indicating that a constant payment amount is scheduled to be paid (used in bill smooting scenarios)|
+|amount|[AmountString](#common-field-types)|optional|Optional payment amount indicating that a constant payment amount is scheduled to be paid (used in bill smoothing scenarios)|
 |paymentScheduleUType|string|mandatory|The type of object present in this response|
 |cardDebit|object|conditional|Represents a regular credit card payment schedule. Mandatory if paymentScheduleUType is set to cardDebit|
 |» cardScheme|string|mandatory|The type of credit card held on file|

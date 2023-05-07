@@ -934,7 +934,7 @@ Some general notes that apply to all end points that retrieve transactions:
   - Execution date/time if available, then
   - A reasonable date/time nominated by the data holder using internal data structures
 - For transaction amounts it should be assumed that a negative value indicates a reduction of the available balance on the account while a positive value indicates an increase in the available balance on the account
-- For aggregated transactions (ie. groups of sub transactions reported as a single entry for the account) only the aggregated information, with as much consistent information accross the subsidiary transactions as possible, is required to be shared
+- For aggregated transactions (ie. groups of sub transactions reported as a single entry for the account) only the aggregated information, with as much consistent information across the subsidiary transactions as possible, is required to be shared
 
 ###Endpoint Version
 |   |  |
@@ -4837,7 +4837,7 @@ This operation does not require authentication
 |» depositRate|[RateString](#common-field-types)|optional|current rate to calculate interest earned being applied to deposit balances as it stands at the time of the API call|
 |» lendingRate|[RateString](#common-field-types)|optional|The current rate to calculate interest payable being applied to lending balances as it stands at the time of the API call|
 |» depositRates|[[BankingProductDepositRate](#schemacdr-banking-apibankingproductdepositrate)]|optional|Fully described deposit rates for this account based on the equivalent structure in Product Reference|
-|» lendingRates|[[BankingProductLendingRateV2](#schemacdr-banking-apibankingproductlendingratev2)]|optional|Fully described deposit rates for this account based on the equivalent structure in Product Reference|
+|» lendingRates|[[BankingProductLendingRateV2](#schemacdr-banking-apibankingproductlendingratev2)]|optional|Fully described lending rates for this account based on the equivalent structure in Product Reference|
 |» features|[allOf]|optional|Array of features of the account based on the equivalent structure in Product Reference with the following additional field|
 
 *allOf*
@@ -5080,7 +5080,7 @@ This operation does not require authentication
 |merchantCategoryCode|string|optional|The merchant category code (or MCC) for an outgoing payment to a merchant|
 |billerCode|string|optional|BPAY Biller Code for the transaction (if available)|
 |billerName|string|optional|Name of the BPAY biller for the transaction (if available)|
-|crn|string|conditional|BPAY CRN for the transaction (if available).<br/>Where the CRN contains sensitive information, it should be masked in line with how the Data Holder currently displays account identifiers in their existing online banking channels. If the contents of the CRN match the format of a Credit Card PAN they should be masked according to the rules applicable for MaskedPANString. If the contents are are otherwise sensitive, then it should be masked using the rules applicable for the MaskedAccountString common type.|
+|crn|string|conditional|BPAY CRN for the transaction (if available).<br/>Where the CRN contains sensitive information, it should be masked in line with how the Data Holder currently displays account identifiers in their existing online banking channels. If the contents of the CRN match the format of a Credit Card PAN they should be masked according to the rules applicable for MaskedPANString. If the contents are otherwise sensitive, then it should be masked using the rules applicable for the MaskedAccountString common type.|
 |apcaNumber|string|optional|6 Digit APCA number for the initiating institution. The field is fixed-width and padded with leading zeros if applicable.|
 
 #### Enumerated Values
@@ -5729,7 +5729,7 @@ This operation does not require authentication
 |Name|Type|Required|Description|
 |---|---|---|---|
 |billerCode|string|mandatory|BPAY Biller Code of the Biller|
-|crn|string|conditional|BPAY CRN of the Biller (if available).<br/>Where the CRN contains sensitive information, it should be masked in line with how the Data Holder currently displays account identifiers in their existing online banking channels. If the contents of the CRN match the format of a Credit Card PAN they should be masked according to the rules applicable for MaskedPANString. If the contents are are otherwise sensitive, then it should be masked using the rules applicable for the MaskedAccountString common type.|
+|crn|string|conditional|BPAY CRN of the Biller (if available).<br/>Where the CRN contains sensitive information, it should be masked in line with how the Data Holder currently displays account identifiers in their existing online banking channels. If the contents of the CRN match the format of a Credit Card PAN they should be masked according to the rules applicable for MaskedPANString. If the contents are otherwise sensitive, then it should be masked using the rules applicable for the MaskedAccountString common type.|
 |billerName|string|mandatory|Name of the Biller|
 
 <h3 class="schema-toc" id="tocSbankinginternationalpayee">BankingInternationalPayee</h3>
