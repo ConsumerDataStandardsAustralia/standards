@@ -17,7 +17,7 @@ Release notes for version v1.24.0 of the [CDR Standards](../../index.html).
 
 This release addresses the following minor defects raised on [Standards Staging](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues):
 
-- XXXX
+- None
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
@@ -34,7 +34,7 @@ This release addresses the following change requests raised on [Standards Mainte
 
 This release addresses the following Decision Proposals published on [Standards](https://github.com/ConsumerDataStandardsAustralia/standards/issues):
 
-- XXXX
+- [Decision Proposal 281 - Maintenance Iteration 14](https://github.com/ConsumerDataStandardsAustralia/standards/issues/281)
 
 ## Introduction
 
