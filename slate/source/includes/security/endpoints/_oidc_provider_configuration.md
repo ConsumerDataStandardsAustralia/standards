@@ -54,6 +54,8 @@ Content-Type: application/json
 
 Data Holders MUST make their OpenID Provider Metadata available via a configuration end point as outlined in [Section 3 and 4 of the OpenID Connect Discovery standards](https://openid.net/specs/openid-connect-discovery-1_0.html) **[[OIDD]](#nref-OIDD)**.
 
+This endpoint does not require [CORS](https://consumerdatastandardsaustralia.github.io/standards/#cors).
+
 At a minimum, the Data Holder metadata MUST include:
 
 - `issuer`: URL that the Data Holder asserts as its Issuer Identifier.
@@ -74,5 +76,4 @@ At a minimum, the Data Holder metadata MUST include:
 - `authorization_signing_alg_values_supported`: A JSON array containing a list of the JWS signing algorithms (alg values) supported by the authorization endpoint to sign the response. Required if Authorization Code Flow (response_type “code”) is supported.
 - `authorization_encryption_alg_values_supported`: A JSON array containing a list of the JWE encryption algorithms (alg values) supported by the authorization endpoint to encrypt the response. If response encryption is used, Data Holders must support at least one of "RSA-OAEP" or "RSA-OAEP-256".
 - `authorization_encryption_enc_values_supported`: A JSON array containing a list of the JWE encryption algorithms (enc values) supported by the authorization endpoint to encrypt the response. Required if “authorization_encryption_alg_values_supported” is provided. If response encryption is used, Data Holders must support at least one of "A256GCM" or "A128CBC-HS256".
-
 
