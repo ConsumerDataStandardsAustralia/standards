@@ -21,6 +21,7 @@ This release addresses the following minor defects raised on [Standards Staging]
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
+- [Standards Maintenance Issue 483 - Large payload tier description error](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/483)
 - [Standards Maintenance Issue 520 - Stepped solar feed in tariffs in Energy](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/520)
 - [Standards Maintenance Issue 532 - Update `x-fapi-auth-date` description for Customer APIs](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/532)
 - [Standards Maintenance Issue 535 - Standard appears to redefine requirements for private_key_jwt authentication](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/535)
@@ -41,6 +42,7 @@ No Change
 
 |Change|Description|Link|
 |------|-----------|----|
+| Non Functional Requirements - Large Payloads | Corrected the requirement to remove reference to "unattended" because the tier applies to all calls both attended and unattended. | [Non-Functional Requirements](../../#performance-requirements)
 | RateString example clarification| [**Standards Maintenance #565**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/565): Added actual % values represented by examples for `RateString` field type. Addresses [Issue 565 comment](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/565#issuecomment-1442968426). | [Common Field Types](../../#common-field-types) |
 
 
