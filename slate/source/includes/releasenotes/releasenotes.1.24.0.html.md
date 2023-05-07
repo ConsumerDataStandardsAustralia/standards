@@ -22,6 +22,7 @@ This release addresses the following minor defects raised on [Standards Staging]
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
 - [Standards Maintenance Issue 483 - Large payload tier description error](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/483)
+- [Standards Maintenance Issue 496 - Unauthenticated energy routes have unclear header documentation](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/496)
 - [Standards Maintenance Issue 520 - Stepped solar feed in tariffs in Energy](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/520)
 - [Standards Maintenance Issue 532 - Update `x-fapi-auth-date` description for Customer APIs](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/532)
 - [Standards Maintenance Issue 535 - Standard appears to redefine requirements for private_key_jwt authentication](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/535)
@@ -50,6 +51,7 @@ No Change
 
 |Change|Description|Link|
 |------|-----------|----|
+| Bug Fix: Energy Public Endpoints | [**Standards Maintenance #496**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/496): Removed `x-fapi-interaction-id` from response headers of Get Energy Plans and Get Energy Plan Details public APIs. | [Energy APIs](../../#energy-apis) |
 |`x-fapi-auth-date` references in Customer resource APIs | [Standards Maintenance #532](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/532): Aligned header documentation for for `x-fapi-auth-date` references in the Customer APIs to be consistent with the Banking APIs and Header section definitions. | [Customer APIs](../../#get-customer) |
 | Admin APIs - spelling correction| [**Standards Maintenance #565**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/565): Corrected spelling mistake in description of `RejectionMetricsV2.unauthenticated` field. Addresses [Issue 565 comment](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/565#issuecomment-1341720771). | [Admin APIs](../../#admin-apis) |
 | Banking APIs - description update| [**Standards Maintenance #565**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/565): Fixed description of `BankingAccountDetailV3.lendingRates` field. Addresses [Issue 565 comment](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/565#issuecomment-1350218008). | [Banking APIs](../../#banking-apis) |
