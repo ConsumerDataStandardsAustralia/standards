@@ -22,6 +22,7 @@ This release addresses the following minor defects raised on [Standards Staging]
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
 - [Standards Maintenance Issue 520 - Stepped solar feed in tariffs in Energy](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/520)
+- [Standards Maintenance Issue 565 - Maintenance Iteration 14 Holistic Feedback](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/565)
 
 ### Decision Proposals
 
@@ -35,7 +36,9 @@ No Change
 
 ## High Level Standards
 
-No Change
+|Change|Description|Link|
+|------|-----------|----|
+| RateString example clarification| [**Standards Maintenance #565**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/565): Added actual % values represented by examples for `RateString` field type. Addresses [Issue 565 comment](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/565#issuecomment-1442968426). | [Common Field Types](../../#common-field-types) |
 
 
 ## API End Points
