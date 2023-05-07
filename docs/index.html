@@ -957,7 +957,7 @@
                                 <a href="#tocSenergyplanlistresponse" class="toc-h3 toc-link" data-title="EnergyPlanListResponse">EnergyPlanListResponse</a>
                               </li>
                               <li>
-                                <a href="#tocSenergyplanresponse" class="toc-h3 toc-link" data-title="EnergyPlanResponse">EnergyPlanResponse</a>
+                                <a href="#tocSenergyplanresponsev2" class="toc-h3 toc-link" data-title="EnergyPlanResponseV2">EnergyPlanResponseV2</a>
                               </li>
                               <li>
                                 <a href="#tocSenergyservicepointlistresponse" class="toc-h3 toc-link" data-title="EnergyServicePointListResponse">EnergyServicePointListResponse</a>
@@ -978,7 +978,7 @@
                                 <a href="#tocSenergyaccountlistresponsev2" class="toc-h3 toc-link" data-title="EnergyAccountListResponseV2">EnergyAccountListResponseV2</a>
                               </li>
                               <li>
-                                <a href="#tocSenergyaccountdetailresponsev2" class="toc-h3 toc-link" data-title="EnergyAccountDetailResponseV2">EnergyAccountDetailResponseV2</a>
+                                <a href="#tocSenergyaccountdetailresponsev3" class="toc-h3 toc-link" data-title="EnergyAccountDetailResponseV3">EnergyAccountDetailResponseV3</a>
                               </li>
                               <li>
                                 <a href="#tocSenergypaymentscheduleresponse" class="toc-h3 toc-link" data-title="EnergyPaymentScheduleResponse">EnergyPaymentScheduleResponse</a>
@@ -1005,13 +1005,13 @@
                                 <a href="#tocSenergyplan" class="toc-h3 toc-link" data-title="EnergyPlan">EnergyPlan</a>
                               </li>
                               <li>
-                                <a href="#tocSenergyplandetail" class="toc-h3 toc-link" data-title="EnergyPlanDetail">EnergyPlanDetail</a>
+                                <a href="#tocSenergyplandetailv2" class="toc-h3 toc-link" data-title="EnergyPlanDetailV2">EnergyPlanDetailV2</a>
                               </li>
                               <li>
-                                <a href="#tocSenergyplancontract" class="toc-h3 toc-link" data-title="EnergyPlanContract">EnergyPlanContract</a>
+                                <a href="#tocSenergyplancontractv2" class="toc-h3 toc-link" data-title="EnergyPlanContractV2">EnergyPlanContractV2</a>
                               </li>
                               <li>
-                                <a href="#tocSenergyplancontractfull" class="toc-h3 toc-link" data-title="EnergyPlanContractFull">EnergyPlanContractFull</a>
+                                <a href="#tocSenergyplancontractfullv2" class="toc-h3 toc-link" data-title="EnergyPlanContractFullV2">EnergyPlanContractFullV2</a>
                               </li>
                               <li>
                                 <a href="#tocSenergyplancontrolledload" class="toc-h3 toc-link" data-title="EnergyPlanControlledLoad">EnergyPlanControlledLoad</a>
@@ -1032,7 +1032,7 @@
                                 <a href="#tocSenergyplanfees" class="toc-h3 toc-link" data-title="EnergyPlanFees">EnergyPlanFees</a>
                               </li>
                               <li>
-                                <a href="#tocSenergyplansolarfeedintariff" class="toc-h3 toc-link" data-title="EnergyPlanSolarFeedInTariff">EnergyPlanSolarFeedInTariff</a>
+                                <a href="#tocSenergyplansolarfeedintariffv2" class="toc-h3 toc-link" data-title="EnergyPlanSolarFeedInTariffV2">EnergyPlanSolarFeedInTariffV2</a>
                               </li>
                               <li>
                                 <a href="#tocSenergyplantariffperiod" class="toc-h3 toc-link" data-title="EnergyPlanTariffPeriod">EnergyPlanTariffPeriod</a>
@@ -1056,7 +1056,7 @@
                                 <a href="#tocSenergyaccountv2" class="toc-h3 toc-link" data-title="EnergyAccountV2">EnergyAccountV2</a>
                               </li>
                               <li>
-                                <a href="#tocSenergyaccountdetailv2" class="toc-h3 toc-link" data-title="EnergyAccountDetailV2">EnergyAccountDetailV2</a>
+                                <a href="#tocSenergyaccountdetailv3" class="toc-h3 toc-link" data-title="EnergyAccountDetailV3">EnergyAccountDetailV3</a>
                               </li>
                               <li>
                                 <a href="#tocSenergypaymentschedule" class="toc-h3 toc-link" data-title="EnergyPaymentSchedule">EnergyPaymentSchedule</a>
@@ -7740,7 +7740,9 @@ Host: cdr.register
 
 <p><code>POST /register</code></p>
 
-<p>Register a client using a CDR Register issued Software Statement Assertion.</p>
+<p>Register a client using a CDR Register issued Software Statement Assertion. </p>
+
+<p>This endpoint does not require CORS.</p>
 
 <blockquote>
 <p>Body parameter</p>
@@ -9077,6 +9079,8 @@ Accept: application/json
 
 <p>Endpoint used by participants to discover the CDR Register OpenID configuration and obtain information needed to interact with it, including its OAuth 2.0 endpoint locations.</p>
 
+<p>This endpoint does not require CORS.</p>
+
 <h3 id='endpoint-version'>Endpoint Version</h3>
 
 <table><thead>
@@ -9186,6 +9190,8 @@ Accept: application/json
 <p><code>GET /jwks</code></p>
 
 <p>JWKS endpoint containing the public keys used by the CDR Register to validate the signature of issued SSAs and authenticate outbound calls to participants in the CDR.</p>
+
+<p>This endpoint does not require CORS.</p>
 
 <h3 id='endpoint-version-2'>Endpoint Version</h3>
 
@@ -14728,7 +14734,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <li>A reasonable date/time nominated by the data holder using internal data structures</li>
 </ul></li>
 <li>For transaction amounts it should be assumed that a negative value indicates a reduction of the available balance on the account while a positive value indicates an increase in the available balance on the account</li>
-<li>For aggregated transactions (ie. groups of sub transactions reported as a single entry for the account) only the aggregated information, with as much consistent information accross the subsidiary transactions as possible, is required to be shared</li>
+<li>For aggregated transactions (ie. groups of sub transactions reported as a single entry for the account) only the aggregated information, with as much consistent information across the subsidiary transactions as possible, is required to be shared</li>
 </ul>
 
 <h3 id='endpoint-version-6'>Endpoint Version</h3>
@@ -21542,7 +21548,7 @@ This operation does not require authentication
 <td>» lendingRates</td>
 <td>[<a href="#schemacdr-banking-apibankingproductlendingratev2">BankingProductLendingRateV2</a>]</td>
 <td>optional</td>
-<td>Fully described deposit rates for this account based on the equivalent structure in Product Reference</td>
+<td>Fully described lending rates for this account based on the equivalent structure in Product Reference</td>
 </tr>
 <tr>
 <td>» features</td>
@@ -22104,7 +22110,7 @@ This operation does not require authentication
 <td>crn</td>
 <td>string</td>
 <td>conditional</td>
-<td>BPAY CRN for the transaction (if available).<br/>Where the CRN contains sensitive information, it should be masked in line with how the Data Holder currently displays account identifiers in their existing online banking channels. If the contents of the CRN match the format of a Credit Card PAN they should be masked according to the rules applicable for MaskedPANString. If the contents are are otherwise sensitive, then it should be masked using the rules applicable for the MaskedAccountString common type.</td>
+<td>BPAY CRN for the transaction (if available).<br/>Where the CRN contains sensitive information, it should be masked in line with how the Data Holder currently displays account identifiers in their existing online banking channels. If the contents of the CRN match the format of a Credit Card PAN they should be masked according to the rules applicable for MaskedPANString. If the contents are otherwise sensitive, then it should be masked using the rules applicable for the MaskedAccountString common type.</td>
 </tr>
 <tr>
 <td>apcaNumber</td>
@@ -23211,7 +23217,7 @@ This operation does not require authentication
 <td>crn</td>
 <td>string</td>
 <td>conditional</td>
-<td>BPAY CRN of the Biller (if available).<br/>Where the CRN contains sensitive information, it should be masked in line with how the Data Holder currently displays account identifiers in their existing online banking channels. If the contents of the CRN match the format of a Credit Card PAN they should be masked according to the rules applicable for MaskedPANString. If the contents are are otherwise sensitive, then it should be masked using the rules applicable for the MaskedAccountString common type.</td>
+<td>BPAY CRN of the Biller (if available).<br/>Where the CRN contains sensitive information, it should be masked in line with how the Data Holder currently displays account identifiers in their existing online banking channels. If the contents of the CRN match the format of a Credit Card PAN they should be masked according to the rules applicable for MaskedPANString. If the contents are otherwise sensitive, then it should be masked using the rules applicable for the MaskedAccountString common type.</td>
 </tr>
 <tr>
 <td>billerName</td>
@@ -26227,27 +26233,6 @@ x-min-v: string
 <td></td>
 <td>The <a href="#response-headers">version</a> of the API end point that the data holder has responded with.</td>
 </tr>
-<tr>
-<td>400</td>
-<td>x-fapi-interaction-id</td>
-<td>string</td>
-<td></td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
-</tr>
-<tr>
-<td>406</td>
-<td>x-fapi-interaction-id</td>
-<td>string</td>
-<td></td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
-</tr>
-<tr>
-<td>422</td>
-<td>x-fapi-interaction-id</td>
-<td>string</td>
-<td></td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
-</tr>
 </tbody></table>
 
 <p><aside class="success">
@@ -26289,7 +26274,9 @@ x-min-v: string
 
 <p><code>GET /energy/plans/{planId}</code></p>
 
-<p>Obtain detailed information on a single energy plan offered openly to the market</p>
+<p>Obtain detailed information on a single energy plan offered openly to the market.</p>
+
+<p>Other Versions: <a href="includes/obsolete/get-generic-plan-detail-v1.html">v1</a></p>
 
 <h3 id='endpoint-version-2'>Endpoint Version</h3>
 
@@ -26301,7 +26288,7 @@ x-min-v: string
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>1</strong></td>
+<td><strong>2</strong></td>
 </tr>
 </tbody></table>
 
@@ -26511,15 +26498,29 @@ x-min-v: string
         </span><span class="p">{</span><span class="w">
           </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"scheme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PREMIUM"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"payerType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GOVERNMENT"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"tariffUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"singleTariff"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"singleTariff"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+            </span><span class="s2">"rates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+              </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"unitPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"measureUnit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KWH"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"volume"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+              </span><span class="p">}</span><span class="w">
+            </span><span class="p">]</span><span class="w">
           </span><span class="p">},</span><span class="w">
           </span><span class="s2">"timeVaryingTariffs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PEAK"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"rates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+              </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"unitPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"measureUnit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KWH"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"volume"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+              </span><span class="p">}</span><span class="w">
+            </span><span class="p">],</span><span class="w">
             </span><span class="s2">"timeVariations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
               </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"days"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -26732,15 +26733,29 @@ x-min-v: string
         </span><span class="p">{</span><span class="w">
           </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"scheme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PREMIUM"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"payerType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GOVERNMENT"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"tariffUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"singleTariff"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"singleTariff"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+            </span><span class="s2">"rates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+              </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"unitPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"measureUnit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KWH"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"volume"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+              </span><span class="p">}</span><span class="w">
+            </span><span class="p">]</span><span class="w">
           </span><span class="p">},</span><span class="w">
           </span><span class="s2">"timeVaryingTariffs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PEAK"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"rates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+              </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"unitPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"measureUnit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KWH"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"volume"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+              </span><span class="p">}</span><span class="w">
+            </span><span class="p">],</span><span class="w">
             </span><span class="s2">"timeVariations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
               </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"days"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -26850,7 +26865,7 @@ x-min-v: string
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>Successful response</td>
-<td><a href="#schemacdr-energy-apienergyplanresponse">EnergyPlanResponse</a></td>
+<td><a href="#schemacdr-energy-apienergyplanresponsev2">EnergyPlanResponseV2</a></td>
 </tr>
 <tr>
 <td>400</td>
@@ -26889,27 +26904,6 @@ x-min-v: string
 <td>string</td>
 <td></td>
 <td>The <a href="#response-headers">version</a> of the API end point that the data holder has responded with.</td>
-</tr>
-<tr>
-<td>400</td>
-<td>x-fapi-interaction-id</td>
-<td>string</td>
-<td></td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
-</tr>
-<tr>
-<td>404</td>
-<td>x-fapi-interaction-id</td>
-<td>string</td>
-<td></td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
-</tr>
-<tr>
-<td>406</td>
-<td>x-fapi-interaction-id</td>
-<td>string</td>
-<td></td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 </tbody></table>
 
@@ -29725,7 +29719,7 @@ x-cds-client-headers: string
 
 <p>Obtain detailed information for a specific energy account</p>
 
-<p>Other Versions: <a href="includes/obsolete/get-energy-account-detail-v1.html">v1</a></p>
+<p>Other Versions: <a href="includes/obsolete/get-energy-account-detail-v1.html">v1</a> <a href="includes/obsolete/get-energy-account-detail-v2.html">v2</a></p>
 
 <h3 id='endpoint-version-12'>Endpoint Version</h3>
 
@@ -29737,7 +29731,7 @@ x-cds-client-headers: string
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>2</strong></td>
+<td><strong>3</strong></td>
 </tr>
 </tbody></table>
 
@@ -29944,15 +29938,21 @@ x-cds-client-headers: string
               </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"scheme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PREMIUM"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"payerType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GOVERNMENT"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"tariffUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"singleTariff"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"singleTariff"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                  </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+                  </span><span class="s2">"rates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="p">{}</span><span class="w">
+                  </span><span class="p">]</span><span class="w">
                 </span><span class="p">},</span><span class="w">
                 </span><span class="s2">"timeVaryingTariffs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
                   </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PEAK"</span><span class="p">,</span><span class="w">
-                  </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"rates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="p">{}</span><span class="w">
+                  </span><span class="p">],</span><span class="w">
                   </span><span class="s2">"timeVariations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
                     </span><span class="p">{}</span><span class="w">
                   </span><span class="p">]</span><span class="w">
@@ -30109,15 +30109,21 @@ x-cds-client-headers: string
               </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"scheme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PREMIUM"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"payerType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GOVERNMENT"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"tariffUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"singleTariff"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"singleTariff"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                  </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+                  </span><span class="s2">"rates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="p">{}</span><span class="w">
+                  </span><span class="p">]</span><span class="w">
                 </span><span class="p">},</span><span class="w">
                 </span><span class="s2">"timeVaryingTariffs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
                   </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PEAK"</span><span class="p">,</span><span class="w">
-                  </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"rates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="p">{}</span><span class="w">
+                  </span><span class="p">],</span><span class="w">
                   </span><span class="s2">"timeVariations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
                     </span><span class="p">{}</span><span class="w">
                   </span><span class="p">]</span><span class="w">
@@ -30205,7 +30211,7 @@ x-cds-client-headers: string
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>Successful response</td>
-<td><a href="#schemacdr-energy-apienergyaccountdetailresponsev2">EnergyAccountDetailResponseV2</a></td>
+<td><a href="#schemacdr-energy-apienergyaccountdetailresponsev3">EnergyAccountDetailResponseV3</a></td>
 </tr>
 <tr>
 <td>400</td>
@@ -33706,9 +33712,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSenergyplanresponse">EnergyPlanResponse</h3>
+<h3 class="schema-toc" id="tocSenergyplanresponsev2">EnergyPlanResponseV2</h3>
 
-<p><a id="schemacdr-energy-apienergyplanresponse"></a></p>
+<p><a id="schemacdr-energy-apienergyplanresponsev2"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"planId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -33875,15 +33881,29 @@ To perform this operation, you must be authenticated and authorised with the fol
         </span><span class="p">{</span><span class="w">
           </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"scheme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PREMIUM"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"payerType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GOVERNMENT"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"tariffUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"singleTariff"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"singleTariff"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+            </span><span class="s2">"rates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+              </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"unitPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"measureUnit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KWH"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"volume"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+              </span><span class="p">}</span><span class="w">
+            </span><span class="p">]</span><span class="w">
           </span><span class="p">},</span><span class="w">
           </span><span class="s2">"timeVaryingTariffs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PEAK"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"rates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+              </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"unitPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"measureUnit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KWH"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"volume"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+              </span><span class="p">}</span><span class="w">
+            </span><span class="p">],</span><span class="w">
             </span><span class="s2">"timeVariations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
               </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"days"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -34096,15 +34116,29 @@ To perform this operation, you must be authenticated and authorised with the fol
         </span><span class="p">{</span><span class="w">
           </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"scheme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PREMIUM"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"payerType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GOVERNMENT"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"tariffUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"singleTariff"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"singleTariff"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+            </span><span class="s2">"rates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+              </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"unitPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"measureUnit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KWH"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"volume"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+              </span><span class="p">}</span><span class="w">
+            </span><span class="p">]</span><span class="w">
           </span><span class="p">},</span><span class="w">
           </span><span class="s2">"timeVaryingTariffs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PEAK"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"rates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+              </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"unitPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"measureUnit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KWH"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"volume"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+              </span><span class="p">}</span><span class="w">
+            </span><span class="p">],</span><span class="w">
             </span><span class="s2">"timeVariations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
               </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"days"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -34210,7 +34244,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </thead><tbody>
 <tr>
 <td>data</td>
-<td><a href="#schemacdr-energy-apienergyplandetail">EnergyPlanDetail</a></td>
+<td><a href="#schemacdr-energy-apienergyplandetailv2">EnergyPlanDetailV2</a></td>
 <td>mandatory</td>
 <td>none</td>
 </tr>
@@ -34784,9 +34818,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSenergyaccountdetailresponsev2">EnergyAccountDetailResponseV2</h3>
+<h3 class="schema-toc" id="tocSenergyaccountdetailresponsev3">EnergyAccountDetailResponseV3</h3>
 
-<p><a id="schemacdr-energy-apienergyaccountdetailresponsev2"></a></p>
+<p><a id="schemacdr-energy-apienergyaccountdetailresponsev3"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -34922,15 +34956,21 @@ To perform this operation, you must be authenticated and authorised with the fol
               </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"scheme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PREMIUM"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"payerType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GOVERNMENT"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"tariffUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"singleTariff"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"singleTariff"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                  </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+                  </span><span class="s2">"rates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="p">{}</span><span class="w">
+                  </span><span class="p">]</span><span class="w">
                 </span><span class="p">},</span><span class="w">
                 </span><span class="s2">"timeVaryingTariffs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
                   </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PEAK"</span><span class="p">,</span><span class="w">
-                  </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"rates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="p">{}</span><span class="w">
+                  </span><span class="p">],</span><span class="w">
                   </span><span class="s2">"timeVariations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
                     </span><span class="p">{}</span><span class="w">
                   </span><span class="p">]</span><span class="w">
@@ -35087,15 +35127,21 @@ To perform this operation, you must be authenticated and authorised with the fol
               </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"scheme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PREMIUM"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"payerType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GOVERNMENT"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"tariffUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"singleTariff"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"singleTariff"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                  </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+                  </span><span class="s2">"rates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="p">{}</span><span class="w">
+                  </span><span class="p">]</span><span class="w">
                 </span><span class="p">},</span><span class="w">
                 </span><span class="s2">"timeVaryingTariffs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
                   </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PEAK"</span><span class="p">,</span><span class="w">
-                  </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"rates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="p">{}</span><span class="w">
+                  </span><span class="p">],</span><span class="w">
                   </span><span class="s2">"timeVariations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
                     </span><span class="p">{}</span><span class="w">
                   </span><span class="p">]</span><span class="w">
@@ -35179,7 +35225,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </thead><tbody>
 <tr>
 <td>data</td>
-<td><a href="#schemacdr-energy-apienergyaccountdetailv2">EnergyAccountDetailV2</a></td>
+<td><a href="#schemacdr-energy-apienergyaccountdetailv3">EnergyAccountDetailV3</a></td>
 <td>mandatory</td>
 <td>none</td>
 </tr>
@@ -35933,13 +35979,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>» excludedPostcodes</td>
 <td>[string]</td>
 <td>optional</td>
-<td>Array of valid Australian post codes that are specifically excluded from the plan.  Each element is a single four digit postcode (e.g. 3000) or a range of postcodes defined by two four digit postcodes and a hyphen (e.g. 3000-3999)</td>
+<td>Array of valid Australian postcodes that are specifically excluded from the plan.  Each element is a single four digit postcode (e.g. 3000) or a range of postcodes defined by two four digit postcodes and a hyphen (e.g. 3000-3999)</td>
 </tr>
 <tr>
 <td>» includedPostcodes</td>
 <td>[string]</td>
 <td>optional</td>
-<td>Array of valid Australian post codes that are included from the plan.  If absent defaults to all non-excluded post codes.  Each element is a single four digit postcode (e.g. 3000) or a range of postcodes defined by two four digit postcodes and a hyphen (e.g. 3000-3999)</td>
+<td>Array of valid Australian postcodes that are included from the plan.  If absent defaults to all non-excluded postcodes.  Each element is a single four digit postcode (e.g. 3000) or a range of postcodes defined by two four digit postcodes and a hyphen (e.g. 3000-3999)</td>
 </tr>
 <tr>
 <td>» distributors</td>
@@ -35989,9 +36035,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSenergyplandetail">EnergyPlanDetail</h3>
+<h3 class="schema-toc" id="tocSenergyplandetailv2">EnergyPlanDetailV2</h3>
 
-<p><a id="schemacdr-energy-apienergyplandetail"></a></p>
+<p><a id="schemacdr-energy-apienergyplandetailv2"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"planId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"effectiveFrom"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -36157,15 +36203,29 @@ To perform this operation, you must be authenticated and authorised with the fol
       </span><span class="p">{</span><span class="w">
         </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"scheme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PREMIUM"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"payerType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GOVERNMENT"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"tariffUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"singleTariff"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"singleTariff"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+          </span><span class="s2">"rates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"unitPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"measureUnit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KWH"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"volume"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">]</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="s2">"timeVaryingTariffs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PEAK"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"rates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"unitPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"measureUnit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KWH"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"volume"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">],</span><span class="w">
           </span><span class="s2">"timeVariations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
             </span><span class="p">{</span><span class="w">
               </span><span class="s2">"days"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -36378,15 +36438,29 @@ To perform this operation, you must be authenticated and authorised with the fol
       </span><span class="p">{</span><span class="w">
         </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"scheme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PREMIUM"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"payerType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GOVERNMENT"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"tariffUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"singleTariff"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"singleTariff"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+          </span><span class="s2">"rates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"unitPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"measureUnit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KWH"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"volume"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">]</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="s2">"timeVaryingTariffs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PEAK"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"rates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"unitPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"measureUnit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KWH"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"volume"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">],</span><span class="w">
           </span><span class="s2">"timeVariations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
             </span><span class="p">{</span><span class="w">
               </span><span class="s2">"days"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -36549,21 +36623,21 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>» gasContract</td>
-<td><a href="#schemacdr-energy-apienergyplancontractfull">EnergyPlanContractFull</a></td>
+<td><a href="#schemacdr-energy-apienergyplancontractfullv2">EnergyPlanContractFullV2</a></td>
 <td>conditional</td>
 <td>The details of the terms for the supply of electricity under this plan.  Is mandatory if fuelType is set to GAS or DUAL</td>
 </tr>
 <tr>
 <td>» electricityContract</td>
-<td><a href="#schemacdr-energy-apienergyplancontractfull">EnergyPlanContractFull</a></td>
+<td><a href="#schemacdr-energy-apienergyplancontractfullv2">EnergyPlanContractFullV2</a></td>
 <td>conditional</td>
 <td>The details of the terms for the supply of electricity under this plan.  Is mandatory if fuelType is set to ELECTRICITY or DUAL</td>
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSenergyplancontract">EnergyPlanContract</h3>
+<h3 class="schema-toc" id="tocSenergyplancontractv2">EnergyPlanContractV2</h3>
 
-<p><a id="schemacdr-energy-apienergyplancontract"></a></p>
+<p><a id="schemacdr-energy-apienergyplancontractv2"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"additionalFeeInformation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"pricingModel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SINGLE_RATE"</span><span class="p">,</span><span class="w">
@@ -36689,15 +36763,29 @@ To perform this operation, you must be authenticated and authorised with the fol
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"scheme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PREMIUM"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"payerType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GOVERNMENT"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"tariffUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"singleTariff"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"singleTariff"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+        </span><span class="s2">"rates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"unitPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"measureUnit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KWH"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"volume"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="s2">"timeVaryingTariffs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PEAK"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"rates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"unitPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"measureUnit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KWH"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"volume"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
         </span><span class="s2">"timeVariations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
           </span><span class="p">{</span><span class="w">
             </span><span class="s2">"days"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -36877,7 +36965,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>solarFeedInTariff</td>
-<td><a href="#schemacdr-energy-apienergyplansolarfeedintariff">EnergyPlanSolarFeedInTariff</a></td>
+<td><a href="#schemacdr-energy-apienergyplansolarfeedintariffv2">EnergyPlanSolarFeedInTariffV2</a></td>
 <td>optional</td>
 <td>Array of feed in tariffs for solar power</td>
 </tr>
@@ -36953,9 +37041,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSenergyplancontractfull">EnergyPlanContractFull</h3>
+<h3 class="schema-toc" id="tocSenergyplancontractfullv2">EnergyPlanContractFullV2</h3>
 
-<p><a id="schemacdr-energy-apienergyplancontractfull"></a></p>
+<p><a id="schemacdr-energy-apienergyplancontractfullv2"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"additionalFeeInformation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"pricingModel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SINGLE_RATE"</span><span class="p">,</span><span class="w">
@@ -37081,15 +37169,29 @@ To perform this operation, you must be authenticated and authorised with the fol
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"scheme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PREMIUM"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"payerType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GOVERNMENT"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"tariffUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"singleTariff"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"singleTariff"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+        </span><span class="s2">"rates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"unitPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"measureUnit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KWH"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"volume"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="s2">"timeVaryingTariffs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PEAK"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"rates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"unitPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"measureUnit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KWH"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"volume"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
         </span><span class="s2">"timeVariations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
           </span><span class="p">{</span><span class="w">
             </span><span class="s2">"days"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -37191,7 +37293,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </thead><tbody>
 <tr>
 <td><em>anonymous</em></td>
-<td><a href="#schemacdr-energy-apienergyplancontract">EnergyPlanContract</a></td>
+<td><a href="#schemacdr-energy-apienergyplancontractv2">EnergyPlanContractV2</a></td>
 <td>mandatory</td>
 <td>none</td>
 </tr>
@@ -38360,23 +38462,37 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSenergyplansolarfeedintariff">EnergyPlanSolarFeedInTariff</h3>
+<h3 class="schema-toc" id="tocSenergyplansolarfeedintariffv2">EnergyPlanSolarFeedInTariffV2</h3>
 
-<p><a id="schemacdr-energy-apienergyplansolarfeedintariff"></a></p>
+<p><a id="schemacdr-energy-apienergyplansolarfeedintariffv2"></a></p>
 
 <pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
     </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"scheme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PREMIUM"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"payerType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GOVERNMENT"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"tariffUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"singleTariff"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"singleTariff"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+      </span><span class="s2">"rates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"unitPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"measureUnit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KWH"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"volume"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"timeVaryingTariffs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PEAK"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"rates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"unitPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"measureUnit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KWH"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"volume"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
       </span><span class="s2">"timeVariations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
           </span><span class="s2">"days"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -38417,6 +38533,18 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>A description of the tariff</td>
 </tr>
 <tr>
+<td>startDate</td>
+<td><a href="#common-field-types">DateString</a></td>
+<td>optional</td>
+<td>The start date of the application of the feed in tariff</td>
+</tr>
+<tr>
+<td>endDate</td>
+<td><a href="#common-field-types">DateString</a></td>
+<td>optional</td>
+<td>The end date of the application of the feed in tariff</td>
+</tr>
+<tr>
 <td>scheme</td>
 <td>string</td>
 <td>mandatory</td>
@@ -38441,49 +38569,85 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Represents a constant tariff.  Mandatory if tariffUType is set to singleTariff</td>
 </tr>
 <tr>
-<td>» amount</td>
-<td><a href="#common-field-types">AmountString</a></td>
+<td>» rates</td>
+<td>[object]</td>
 <td>mandatory</td>
-<td>The tariff amount</td>
+<td>Array of feed in rates</td>
 </tr>
 <tr>
-<td>timeVaryingTariffs</td>
+<td>»» unitPrice</td>
+<td><a href="#common-field-types">AmountString</a></td>
+<td>mandatory</td>
+<td>Unit price of usage per measure unit (exclusive of GST)</td>
+</tr>
+<tr>
+<td>»» measureUnit</td>
+<td>string</td>
+<td>optional</td>
+<td>The measurement unit of rate. Assumed to be KWH if absent</td>
+</tr>
+<tr>
+<td>»» volume</td>
+<td>number</td>
+<td>optional</td>
+<td>Volume that this rate applies to. Only applicable for ‘stepped’ rates where different rates apply for different volumes of usage in a period</td>
+</tr>
+<tr>
+<td>» timeVaryingTariffs</td>
 <td>object</td>
 <td>conditional</td>
 <td>Represents a tariff based on time.  Mandatory if tariffUType is set to timeVaryingTariffs</td>
 </tr>
 <tr>
-<td>» type</td>
+<td>»» type</td>
 <td>string</td>
 <td>optional</td>
 <td>The type of the charging time period. If absent applies to all periods</td>
 </tr>
 <tr>
-<td>» amount</td>
-<td><a href="#common-field-types">AmountString</a></td>
-<td>mandatory</td>
-<td>The tariff amount</td>
+<td>»» rates</td>
+<td>[object]</td>
+<td>optional</td>
+<td>Array of feed in rates</td>
 </tr>
 <tr>
-<td>» timeVariations</td>
+<td>»»» unitPrice</td>
+<td><a href="#common-field-types">AmountString</a></td>
+<td>mandatory</td>
+<td>Unit price of usage per measure unit (exclusive of GST)</td>
+</tr>
+<tr>
+<td>»»» measureUnit</td>
+<td>string</td>
+<td>optional</td>
+<td>The measurement unit of rate. Assumed to be KWH if absent</td>
+</tr>
+<tr>
+<td>»»» volume</td>
+<td>number</td>
+<td>optional</td>
+<td>Volume that this rate applies to. Only applicable for ‘stepped’ rates where different rates apply for different volumes of usage in a period</td>
+</tr>
+<tr>
+<td>»» timeVariations</td>
 <td>[object]</td>
 <td>mandatory</td>
 <td>Array of time periods for which this tariff is applicable</td>
 </tr>
 <tr>
-<td>»» days</td>
+<td>»»» days</td>
 <td>[string]</td>
 <td>mandatory</td>
 <td>The days that the tariff applies to. At least one entry required</td>
 </tr>
 <tr>
-<td>»» startTime</td>
+<td>»»» startTime</td>
 <td><a href="#common-field-types">TimeString</a></td>
 <td>optional</td>
 <td>The beginning of the time period per day for which the tariff applies.  If absent assumes start of day (ie. midnight)</td>
 </tr>
 <tr>
-<td>»» endTime</td>
+<td>»»» endTime</td>
 <td><a href="#common-field-types">TimeString</a></td>
 <td>optional</td>
 <td>The end of the time period per day for which the tariff applies.  If absent assumes end of day (ie. one second before midnight)</td>
@@ -38523,6 +38687,38 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>timeVaryingTariffs</td>
 </tr>
 <tr>
+<td>measureUnit</td>
+<td>KWH</td>
+</tr>
+<tr>
+<td>measureUnit</td>
+<td>KVA</td>
+</tr>
+<tr>
+<td>measureUnit</td>
+<td>KVAR</td>
+</tr>
+<tr>
+<td>measureUnit</td>
+<td>KVARH</td>
+</tr>
+<tr>
+<td>measureUnit</td>
+<td>KW</td>
+</tr>
+<tr>
+<td>measureUnit</td>
+<td>DAYS</td>
+</tr>
+<tr>
+<td>measureUnit</td>
+<td>METER</td>
+</tr>
+<tr>
+<td>measureUnit</td>
+<td>MONTH</td>
+</tr>
+<tr>
 <td>type</td>
 <td>PEAK</td>
 </tr>
@@ -38533,6 +38729,38 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>type</td>
 <td>SHOULDER</td>
+</tr>
+<tr>
+<td>measureUnit</td>
+<td>KWH</td>
+</tr>
+<tr>
+<td>measureUnit</td>
+<td>KVA</td>
+</tr>
+<tr>
+<td>measureUnit</td>
+<td>KVAR</td>
+</tr>
+<tr>
+<td>measureUnit</td>
+<td>KVARH</td>
+</tr>
+<tr>
+<td>measureUnit</td>
+<td>KW</td>
+</tr>
+<tr>
+<td>measureUnit</td>
+<td>DAYS</td>
+</tr>
+<tr>
+<td>measureUnit</td>
+<td>METER</td>
+</tr>
+<tr>
+<td>measureUnit</td>
+<td>MONTH</td>
 </tr>
 <tr>
 <td>days</td>
@@ -40722,9 +40950,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSenergyaccountdetailv2">EnergyAccountDetailV2</h3>
+<h3 class="schema-toc" id="tocSenergyaccountdetailv3">EnergyAccountDetailV3</h3>
 
-<p><a id="schemacdr-energy-apienergyaccountdetailv2"></a></p>
+<p><a id="schemacdr-energy-apienergyaccountdetailv3"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"accountNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -40867,15 +41095,29 @@ To perform this operation, you must be authenticated and authorised with the fol
             </span><span class="p">{</span><span class="w">
               </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"scheme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PREMIUM"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"payerType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GOVERNMENT"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"tariffUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"singleTariff"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"singleTariff"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+                </span><span class="s2">"rates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                  </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"unitPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"measureUnit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KWH"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"volume"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+                  </span><span class="p">}</span><span class="w">
+                </span><span class="p">]</span><span class="w">
               </span><span class="p">},</span><span class="w">
               </span><span class="s2">"timeVaryingTariffs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PEAK"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"rates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                  </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"unitPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"measureUnit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KWH"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"volume"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+                  </span><span class="p">}</span><span class="w">
+                </span><span class="p">],</span><span class="w">
                 </span><span class="s2">"timeVariations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
                   </span><span class="p">{</span><span class="w">
                     </span><span class="s2">"days"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
@@ -41054,15 +41296,29 @@ To perform this operation, you must be authenticated and authorised with the fol
             </span><span class="p">{</span><span class="w">
               </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"scheme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PREMIUM"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"payerType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GOVERNMENT"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"tariffUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"singleTariff"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"singleTariff"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+                </span><span class="s2">"rates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                  </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"unitPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"measureUnit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KWH"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"volume"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+                  </span><span class="p">}</span><span class="w">
+                </span><span class="p">]</span><span class="w">
               </span><span class="p">},</span><span class="w">
               </span><span class="s2">"timeVaryingTariffs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PEAK"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"rates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                  </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"unitPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"measureUnit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KWH"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"volume"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+                  </span><span class="p">}</span><span class="w">
+                </span><span class="p">],</span><span class="w">
                 </span><span class="s2">"timeVariations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
                   </span><span class="p">{</span><span class="w">
                     </span><span class="s2">"days"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
@@ -41277,13 +41533,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>»»» gasContract</td>
-<td><a href="#schemacdr-energy-apienergyplancontract">EnergyPlanContract</a></td>
+<td><a href="#schemacdr-energy-apienergyplancontractv2">EnergyPlanContractV2</a></td>
 <td>conditional</td>
 <td>The details of the terms for the supply of electricity under this plan.  Is mandatory if fuelType is set to GAS or DUAL</td>
 </tr>
 <tr>
 <td>»»» electricityContract</td>
-<td><a href="#schemacdr-energy-apienergyplancontract">EnergyPlanContract</a></td>
+<td><a href="#schemacdr-energy-apienergyplancontractv2">EnergyPlanContractV2</a></td>
 <td>conditional</td>
 <td>The details of the terms for the supply of electricity under this plan.  Is mandatory if fuelType is set to ELECTRICITY or DUAL</td>
 </tr>
@@ -41389,7 +41645,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>amount</td>
 <td><a href="#common-field-types">AmountString</a></td>
 <td>optional</td>
-<td>Optional payment amount indicating that a constant payment amount is scheduled to be paid (used in bill smooting scenarios)</td>
+<td>Optional payment amount indicating that a constant payment amount is scheduled to be paid (used in bill smoothing scenarios)</td>
 </tr>
 <tr>
 <td>paymentScheduleUType</td>
@@ -51059,7 +51315,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>amount</td>
 <td><a href="#common-field-types">AmountString</a></td>
 <td>optional</td>
-<td>Optional payment amount indicating that a constant payment amount is scheduled to be paid (used in bill smooting scenarios)</td>
+<td>Optional payment amount indicating that a constant payment amount is scheduled to be paid (used in bill smoothing scenarios)</td>
 </tr>
 <tr>
 <td>paymentScheduleUType</td>
@@ -56438,7 +56694,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td>The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended) if the customer is currently logged. Otherwise optional where the customer has not logged in. Not to be included for unauthenticated calls.</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-R-Draft">[FAPI-R-Draft]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
@@ -56676,7 +56932,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td>The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended) if the customer is currently logged. Otherwise optional where the customer has not logged in. Not to be included for unauthenticated calls.</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-R-Draft">[FAPI-R-Draft]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
@@ -59218,7 +59474,7 @@ This operation may only be called by the CDR Register
 <td>query</td>
 <td>string</td>
 <td>optional</td>
-<td>The period of metrics to be requested. Values can be CURRENT (meaning metrics for current day), HISTORIC (meaning metrics for previous days or months) or ALL. If absent the default is ALL.</td>
+<td>The period of metrics to be requested. Values can be CURRENT (meaning metrics for current period, dependent on the metric type), HISTORIC (meaning metrics for previous period, depending on the metric type) or ALL. If absent the default is ALL.</td>
 </tr>
 <tr>
 <td>x-v</td>
@@ -60585,7 +60841,7 @@ This operation may only be called by the CDR Register
 <td>unauthenticated</td>
 <td>object</td>
 <td>mandatory</td>
-<td>Rejection counts for all uauthenticated end points</td>
+<td>Rejection counts for all unauthenticated end points</td>
 </tr>
 <tr>
 <td>» currentDay</td>
@@ -60656,7 +60912,7 @@ This operation may only be called by the CDR Register
 <td>rejections</td>
 <td>object</td>
 <td>mandatory</td>
-<td>Number of calls resulting in a rejection due to server execution over time</td>
+<td>Number of calls rejected due to traffic thresholds over time</td>
 </tr>
 <tr>
 <td>» currentDay</td>

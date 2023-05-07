@@ -4538,7 +4538,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|amount|[AmountString](#common-field-types)|optional|Optional payment amount indicating that a constant payment amount is scheduled to be paid (used in bill smooting scenarios)|
+|amount|[AmountString](#common-field-types)|optional|Optional payment amount indicating that a constant payment amount is scheduled to be paid (used in bill smoothing scenarios)|
 |paymentScheduleUType|string|mandatory|The type of object present in this response|
 |cardDebit|[TelcoPaymentScheduleCardDebit](#schemacdr-telco-apitelcopaymentschedulecarddebit)|conditional|Represents a regular credit card payment schedule. Mandatory if paymentScheduleUType is set to cardDebit|
 |directDebit|[TelcoPaymentScheduleDirectDebit](#schemacdr-telco-apitelcopaymentscheduledirectdebit)|conditional|Represents a regular direct debit from a specified bank account. Mandatory if paymentScheduleUType is set to directDebit|

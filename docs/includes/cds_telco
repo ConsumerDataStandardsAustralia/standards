@@ -7323,7 +7323,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>amount</td>
 <td><a href="#common-field-types">AmountString</a></td>
 <td>optional</td>
-<td>Optional payment amount indicating that a constant payment amount is scheduled to be paid (used in bill smooting scenarios)</td>
+<td>Optional payment amount indicating that a constant payment amount is scheduled to be paid (used in bill smoothing scenarios)</td>
 </tr>
 <tr>
 <td>paymentScheduleUType</td>
