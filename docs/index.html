@@ -957,7 +957,7 @@
                                 <a href="#tocSenergyplanlistresponse" class="toc-h3 toc-link" data-title="EnergyPlanListResponse">EnergyPlanListResponse</a>
                               </li>
                               <li>
-                                <a href="#tocSenergyplanresponse" class="toc-h3 toc-link" data-title="EnergyPlanResponse">EnergyPlanResponse</a>
+                                <a href="#tocSenergyplanresponsev2" class="toc-h3 toc-link" data-title="EnergyPlanResponseV2">EnergyPlanResponseV2</a>
                               </li>
                               <li>
                                 <a href="#tocSenergyservicepointlistresponse" class="toc-h3 toc-link" data-title="EnergyServicePointListResponse">EnergyServicePointListResponse</a>
@@ -978,7 +978,7 @@
                                 <a href="#tocSenergyaccountlistresponsev2" class="toc-h3 toc-link" data-title="EnergyAccountListResponseV2">EnergyAccountListResponseV2</a>
                               </li>
                               <li>
-                                <a href="#tocSenergyaccountdetailresponsev2" class="toc-h3 toc-link" data-title="EnergyAccountDetailResponseV2">EnergyAccountDetailResponseV2</a>
+                                <a href="#tocSenergyaccountdetailresponsev3" class="toc-h3 toc-link" data-title="EnergyAccountDetailResponseV3">EnergyAccountDetailResponseV3</a>
                               </li>
                               <li>
                                 <a href="#tocSenergypaymentscheduleresponse" class="toc-h3 toc-link" data-title="EnergyPaymentScheduleResponse">EnergyPaymentScheduleResponse</a>
@@ -1005,13 +1005,13 @@
                                 <a href="#tocSenergyplan" class="toc-h3 toc-link" data-title="EnergyPlan">EnergyPlan</a>
                               </li>
                               <li>
-                                <a href="#tocSenergyplandetail" class="toc-h3 toc-link" data-title="EnergyPlanDetail">EnergyPlanDetail</a>
+                                <a href="#tocSenergyplandetailv2" class="toc-h3 toc-link" data-title="EnergyPlanDetailV2">EnergyPlanDetailV2</a>
                               </li>
                               <li>
-                                <a href="#tocSenergyplancontract" class="toc-h3 toc-link" data-title="EnergyPlanContract">EnergyPlanContract</a>
+                                <a href="#tocSenergyplancontractv2" class="toc-h3 toc-link" data-title="EnergyPlanContractV2">EnergyPlanContractV2</a>
                               </li>
                               <li>
-                                <a href="#tocSenergyplancontractfull" class="toc-h3 toc-link" data-title="EnergyPlanContractFull">EnergyPlanContractFull</a>
+                                <a href="#tocSenergyplancontractfullv2" class="toc-h3 toc-link" data-title="EnergyPlanContractFullV2">EnergyPlanContractFullV2</a>
                               </li>
                               <li>
                                 <a href="#tocSenergyplancontrolledload" class="toc-h3 toc-link" data-title="EnergyPlanControlledLoad">EnergyPlanControlledLoad</a>
@@ -1032,7 +1032,7 @@
                                 <a href="#tocSenergyplanfees" class="toc-h3 toc-link" data-title="EnergyPlanFees">EnergyPlanFees</a>
                               </li>
                               <li>
-                                <a href="#tocSenergyplansolarfeedintariff" class="toc-h3 toc-link" data-title="EnergyPlanSolarFeedInTariff">EnergyPlanSolarFeedInTariff</a>
+                                <a href="#tocSenergyplansolarfeedintariffv2" class="toc-h3 toc-link" data-title="EnergyPlanSolarFeedInTariffV2">EnergyPlanSolarFeedInTariffV2</a>
                               </li>
                               <li>
                                 <a href="#tocSenergyplantariffperiod" class="toc-h3 toc-link" data-title="EnergyPlanTariffPeriod">EnergyPlanTariffPeriod</a>
@@ -1056,7 +1056,7 @@
                                 <a href="#tocSenergyaccountv2" class="toc-h3 toc-link" data-title="EnergyAccountV2">EnergyAccountV2</a>
                               </li>
                               <li>
-                                <a href="#tocSenergyaccountdetailv2" class="toc-h3 toc-link" data-title="EnergyAccountDetailV2">EnergyAccountDetailV2</a>
+                                <a href="#tocSenergyaccountdetailv3" class="toc-h3 toc-link" data-title="EnergyAccountDetailV3">EnergyAccountDetailV3</a>
                               </li>
                               <li>
                                 <a href="#tocSenergypaymentschedule" class="toc-h3 toc-link" data-title="EnergyPaymentSchedule">EnergyPaymentSchedule</a>
@@ -1757,6 +1757,8 @@ This text is an example of a new addition to the standards:
 </span>This text is an example of text removed from the standards:
 <span class="gd">- Old text removed
 </span>Note: changes to request and response payloads are listed at the beginning of the relevant API section due to the documentation being auto generated from OpenAPI specification files.
+
+Additional note for v1.24.0: For this version only the delta statements from v1.23.0 have been retained in v1.24.0 as the release dates between the two versions were close together.  The affected delta statements will be noted as being associated with v1.23.0
 </code></pre>
 
 <p>These standards have been developed as part of the Australian Government&#39;s introduction of the <a href="https://www.accc.gov.au/focus-areas/consumer-data-right" title="ACCC Consumer Data Right webpage">Consumer Data Right</a> legislation to give Australians greater control over their data.</p>
@@ -1776,14 +1778,14 @@ This text is an example of a new addition to the standards:
 
 <h2 id='version'>Version</h2>
 
-<p>These standards represent version 1.23.0 of the high level standards.  See the <a href="#versioning">versioning section</a> for more information on how versions are managed in the standard.</p>
+<p>These standards represent version 1.24.0 of the high level standards.  See the <a href="#versioning">versioning section</a> for more information on how versions are managed in the standard.</p>
 
 <h2 id='interpretation'>Interpretation</h2>
 
 <p>Note that, in these standards, the key words <strong>MUST</strong>, <strong>MUST NOT</strong>, <strong>REQUIRED</strong>, <strong>SHALL</strong>, <strong>SHALL NOT</strong>, <strong>SHOULD</strong>, <strong>SHOULD NOT</strong>, <strong>RECOMMENDED</strong>, <strong>MAY</strong>, and <strong>OPTIONAL</strong> are to be interpreted as described in <strong><a href="#nref-RFC2119">[RFC2119]</a></strong>.</p>
 
-<h2 id='future-dated-obligations'>Future Dated Obligations</h2>
-
+<h2 id='future-dated-obligations'>Future Dated Obligations</h2><pre class="highlight diff tab-diff"><code>Added Future Dated Obligation for Get Generic Plan Detail V2 and Get Energy Account Detail V3
+</code></pre>
 <p>The standards, as published from time to time, may include specific statements indicating that a specific section of the standards will not take effect until a future date or may cease to have effect on some future date.</p>
 
 <p>The table below highlights these areas of the standards.</p>
@@ -1891,6 +1893,21 @@ This text is an example of a new addition to the standards:
 <td>July 10th 2023</td>
 </tr>
 <tr>
+<td><a href="#get-generic-plan-detail">Get Generic Plan Detail V2</a></td>
+<td><ul><li>Data Holder <strong>MUST</strong> implement v2 of this endpoint by <strong>November 1st 2023</strong></li><li>Data Holders <strong>MAY</strong> obsolete v1 of this endpoint from <strong>September 9th 2024</strong></li></ul></td>
+<td>November 1st 2023</td>
+</tr>
+<tr>
+<td><a href="#get-account-detail">Get Energy Account Detail V3</a></td>
+<td><ul><li>Data Holder <strong>MUST</strong> implement v3 of this endpoint by <strong>November 1st 2023</strong></li><li>Data Holders <strong>MAY</strong> obsolete v2 of this endpoint from <strong>September 9th 2024</strong></li></ul></td>
+<td>November 1st 2023</td>
+</tr>
+<tr>
+<td><a href="#https://consumerdatastandardsaustralia.github.io/standards/?examples#client-authentication">Private Key JWT Client Authentication</a></td>
+<td>Change to support <a href="#nref-RFC7521"><strong>[RFC7521]</strong></a> such that, until November 13th 2023, clients authenticating using Private Key JWT are <em>recommended</em> to provide the <code>client_id</code>, but no longer required. From November 13th 2023, it is then <em>optional</em> to provide the <code>client_id</code>. This applies to ADRs and the CDR Register authenticating with Data Holders and ADRs authenticating with the CDR Regsiter.</td>
+<td>November 13th 2023</td>
+</tr>
+<tr>
 <td><a href="#get-account-detail">Get Accounts V1</a></td>
 <td>Data Holders <strong>MAY</strong> decommission v1 of this end point from March 11th 2024</td>
 <td>March 11th 2024</td>
@@ -1954,8 +1971,10 @@ This text is an example of a new addition to the standards:
 
 <p>The actual release dates for the Register APIs are expected to occur prior to these dates and are not defined by the Standards.</p>
 
-<h2 id='endpoint-version-schedule'>Endpoint Version Schedule</h2>
-
+<h2 id='endpoint-version-schedule'>Endpoint Version Schedule</h2><pre class="highlight diff tab-diff"><code>Updated version schedule for following Energy APIs:
+ Get Generic Plan Detail
+ Get Energy Account Detail 
+</code></pre>
 <p>A table-view of all endpoint versioning is available <a href='includes/endpoint-version-schedule/#endpoint-version-schedule'>here</a>.</p>
 
 <h2 id='normative-references'>Normative References</h2>
@@ -2106,6 +2125,11 @@ This text is an example of a new addition to the standards:
 <td><a id="nref-RFC7009"></a><strong>[RFC7009]</strong></td>
 <td>OAuth 2.0 Token Revocation: <a href="https://tools.ietf.org/html/rfc7009">https://tools.ietf.org/html/rfc7009</a></td>
 <td>Aug 2013</td>
+</tr>
+<tr>
+<td><a id="nref-RFC7521"></a><strong>[RFC7521]</strong></td>
+<td>Assertion Framework for OAuth 2.0 Client Authentication and Authorization Grants: <a href="https://tools.ietf.org/html/rfc7521">https://tools.ietf.org/html/rfc7521</a></td>
+<td>May 2015</td>
 </tr>
 <tr>
 <td><a id="nref-RFC7523"></a><strong>[RFC7523]</strong></td>
@@ -2935,7 +2959,8 @@ For instance, if a Data Holder holds data in digital form for a Customer that is
 
 <p>The only exception to this, unless explicitly stated, is normative standards. The requirements for expressing arrays within those normative standards apply per the normative references.</p>
 
-<h2 id='common-field-types'>Common Field Types</h2>
+<h2 id='common-field-types'>Common Field Types</h2><pre class="highlight diff tab-diff"><code>Added actual % values represented by examples for RateString field type
+</code></pre>
 <p>The following table outlines the common data types for fields used in the standard.</p>
 
 <table><thead>
@@ -3018,7 +3043,7 @@ For instance, if a Data Holder holds data in digital form for a Customer that is
 <tr>
 <td>RateString</td>
 <td>A string representing a percentage (e.g. an interest rate).  A rate of 100% would be represented by the value 1.0 and a rate of -100% by -1.0<br/>- At least 1 and up to a total of 16 significant digits before decimal point<br/>- Up to 16 digits following the decimal point<br/>- No formatting, eg thousand separating commas</td>
-<td>“0.05”<br/>“-0.05”<br/>“12.3456789”<br/>“-99.123456789123”</td>
+<td>“0.05”<code>(=5%)</code><br/>“-0.05”<code>(=-5%)</code><br/>“12.3456789”<code>(=1234.56789%)</code><br/>“-99.123456789123”<code>(=9912.3456789123%)</code></td>
 </tr>
 <tr>
 <td>AmountString</td>
@@ -3113,7 +3138,11 @@ obtain detail for that resource or to change the state of the resource.</li>
 <li>In payloads the field name of “id” should NEVER be used. Each ID field should be meaningfully named so that wherever that ID is used across multiple end points it always refers to the same ID set. For instance, the IDs for accounts would be represented in JSON in a field named “accountId”.</li>
 </ul>
 
-<h2 id='error-codes'>Error Codes</h2>
+<h2 id='error-codes'>Error Codes</h2><pre class="highlight diff tab-diff"><code>Replaced following in description of 'Invalid Page Size':
+<span class="gd">- page_size
+</span>with:
+<span class="gi">+ page-size
+</span></code></pre>
 <p>These standards define a standard list of error codes that Data Recipient Software Products and Data Holders <strong>SHOULD</strong> or <strong>MUST</strong> conform to. Further,</p>
 
 <ul>
@@ -3294,7 +3323,7 @@ Content-Type: application/json
 <tr>
 <td style="text-align: left"><a id="error-400-field-invalid-page-size"></a>Invalid Page Size</td>
 <td style="text-align: left"><code>urn:au-cds:error:cds-all:<br/>Field/InvalidPageSize</code></td>
-<td style="text-align: left">The value provided in the <code>page-size</code> pagination field is greater than the maximum allowed by the Consumer Data Standards (<code>page_size &gt; 1000</code>).<br/><br/>This error code <strong>MUST</strong> be supported for unauthenticated and authenticated APIs.</td>
+<td style="text-align: left">The value provided in the <code>page-size</code> pagination field is greater than the maximum allowed by the Consumer Data Standards (<code>page-size &gt; 1000</code>).<br/><br/>This error code <strong>MUST</strong> be supported for unauthenticated and authenticated APIs.</td>
 </tr>
 <tr>
 <td style="text-align: left"><a id="error-400-header-invalid-version"></a>Invalid Version</td>
@@ -4300,8 +4329,9 @@ The standards in this section outline requirements that apply when a disclosure 
 </tr>
 </tbody></table>
 
-<h2 id='authorisation-standards'>Authorisation Standards</h2>
-
+<h2 id='authorisation-standards'>Authorisation Standards</h2><pre class="highlight diff tab-diff"><code>Added new Authorisation CX Standard:
+<span class="gi">+ Authorisation: Account selection functionality
+</span></code></pre>
 <table><thead>
 <tr>
 <th>Area</th>
@@ -4311,6 +4341,10 @@ The standards in this section outline requirements that apply when a disclosure 
 <tr>
 <td><strong>Authorisation:</strong><br/> Account selection</td>
 <td>Data holders <strong>MUST</strong> allow the consumer to select which of their accounts to share data from if the data request includes account-specific data and if there are multiple accounts available. The Data holder <strong>MAY</strong> omit this step if none of the data being requested is specific to an account (e.g. Saved Payees).</td>
+</tr>
+<tr>
+<td><strong>Authorisation:</strong><br/> Account selection functionality</td>
+<td><p>Data holders <strong>MAY</strong> include additional functionality to support account discovery and selection where further navigation or interaction is required to view all accounts. This may, for example, include search, sort, filter, scroll, grouping, and pagination, or other controls in line with existing consumer experiences. Any such functionality <strong>MUST NOT</strong> introduce unwarranted friction.</p><p><strong>Note:</strong> Unwarranted friction should have regard to CDR Rule 4.24 and is considered to include the addition of any requirements beyond normal data holder practices for an equivalent account selection process.</p></td>
 </tr>
 <tr>
 <td><strong>Authorisation:</strong><br/>Profile selection</td>
@@ -4830,7 +4864,7 @@ grant_type=client_credentials&amp;
 <li>Authorisation Servers <strong>MUST</strong> support the authentication of clients using the <code>private_key_jwt</code> Client Authentication method specified at <a href="https://openid.net/specs/openid-connect-core-1_0.html#ClientAuthentication">section 9</a> of <strong><a href="#nref-OIDC">[OIDC]</a></strong>.</li>
 <li>The <code>private_key_jwt</code> authentication method is enabled through the delivery of an encoded <strong><a href="#nref-JWT">[JWT]</a></strong> signed using the Data Recipient Software Product&#39;s private key and thus facilitates non-repudiation.</li>
 <li>Client public keys are obtained from the <strong><a href="#nref-JWKS">[JWKS]</a></strong> endpoints.</li>
-<li><p>For the client authentication assertion, the <strong><a href="#nref-JWT">[JWT]</a></strong> represents an assertion that <strong>MUST</strong> contain the following REQUIRED Claim Values and <strong>MAY</strong> contain the following OPTIONAL Claim Values:</p>
+<li>For the client authentication assertion, the <strong><a href="#nref-JWT">[JWT]</a></strong> represents an assertion that <strong>MUST</strong> contain the following REQUIRED Claim Values and <strong>MAY</strong> contain the following OPTIONAL Claim Values:
 
 <ul>
 <li><code>iss</code> - REQUIRED. Issuer Identifier for the Issuer of the response. The client ID of the bearer.</li>
@@ -4840,11 +4874,22 @@ grant_type=client_credentials&amp;
 <li><code>exp</code> - REQUIRED. Expiration time on or after which the ID Token <strong>MUST NOT</strong> be accepted for processing. Value is a JSON number representing the number of seconds from 1970-01-01T00:00:00Z to the UTC expiry time.</li>
 <li><code>iat</code> - OPTIONAL. Time at which the JWT was issued. Value is a JSON number representing the number of seconds from 1970-01-01T00:00:00Z to the UTC issued at time.</li>
 </ul></li>
-<li><p>The aforementioned assertion <strong>MUST</strong> be sent to the Authorisation Server&#39;s Token endpoint with the <code>POST</code> method and <strong>MUST</strong> include the following REQUIRED parameters and <strong>MAY</strong> contain the following OPTIONAL parameters:</p>
+</ul>
+
+<pre class="highlight diff tab-diff"><code>Updated the requirements for the client_id claim. It is now recommended the client_id be provided until November 13th 2023. After which it is optional for clients to provide this claim. It is then beholden on the CDR Register and Data Holders to permit client authentication where the client omits the client_id claim. This facilitates Data Holders seeking FAPI compliance by supporting Private Key JWT client authentication as per [RFC7521].
+</code></pre>
+
+<ul>
+<li><p>The aforementioned assertion <strong>MUST</strong> be sent to the Authorisation Server&#39;s Token endpoint with the <code>POST</code> method and <strong>MUST</strong> include the following REQUIRED parameters, <strong>SHOULD</strong> include the following RECOMMENDED parameters and <strong>MAY</strong> contain the following OPTIONAL parameters:</p>
 
 <ul>
 <li><code>grant_type</code> - REQUIRED. The grant type(s) supported by the Authorisation Server.<br></li>
-<li><code>client_id</code> - REQUIRED. The client ID of the bearer.</li>
+<li><code>client_id</code> - 
+
+<ul>
+<li><strong>Until November 13th 2023</strong><br/>RECOMMENDED. The client ID of the bearer.</li>
+<li><strong>From November 13th 2023</strong><br/>OPTIONAL. The client ID of the bearer in accordance with <a href="#nref-RFC7521"><strong>[RFC7521]</strong></a>.</li>
+</ul></li>
 <li><code>client_assertion_type</code> - REQUIRED. This <strong>MUST</strong> be set to <code>urn:ietf:params:oauth:client-assertion-type:jwt-bearer</code>.</li>
 <li><code>client_assertion</code> - REQUIRED. The encoded assertion JWT.</li>
 <li><code>scope</code> - OPTIONAL. The requested scope as described in <a href="https://tools.ietf.org/html/rfc6749#section-3.3">Section 3.3</a> of <strong><a href="#nref-RFC6749">[RFC6749]</a></strong>.</li>
@@ -5287,7 +5332,8 @@ grant_type=client_credentials&amp;
 </tbody></table>
 
 <p>Get Software Statement Assertion API <a href="includes/obsolete/get-software-statement-assertion-v1.html">v1</a> &amp; <a href="includes/obsolete/get-software-statement-assertion-v2.html">v2</a> has the scope claim explicitly defined.</p>
-<h3 id='registration-request-using-jwt'>Registration Request using JWT</h3><pre class="highlight diff tab-diff"><code>Removed following requirement from id_token_encrypted_response_alg and id_token_encrypted_response_enc fields:
+<h3 id='registration-request-using-jwt'>Registration Request using JWT</h3><pre class="highlight diff tab-diff"><code>**v1.23.0 Change**
+Removed following requirement from id_token_encrypted_response_alg and id_token_encrypted_response_enc fields:
 <span class="gd">- Must be ignored for Authorization Code Flow
 </span></code></pre>
 <blockquote>
@@ -6126,7 +6172,8 @@ Data Holders <strong>SHOULD</strong> explicitly capture Claims requested by the 
 <li>The <code>c_hash</code> value <strong>MUST</strong> be generated according to <a href="https://openid.net/specs/openid-connect-core-1_0.html#HybridIDToken">section 3.3.2.11</a> of <strong><a href="#nref-OIDC">[OIDC]</a></strong>.</li>
 <li>The <code>s_hash</code> value <strong>MUST</strong> be generated according to <a href="https://openid.net/specs/openid-financial-api-part-2-1_0.html#id-token-as-detached-signature">section 5.1.1</a> of <strong><a href="#nref-FAPI-1-0-Advanced">[FAPI-1.0-Advanced]</a></strong>.</li>
 </ul>
-<h4 id='authorization-code-flow-requirements'>Authorization Code Flow requirements</h4><pre class="highlight diff tab-diff"><code>Authorization Code Flow requirements: Removed requirement stating ID tokens MUST NOT be encrypted
+<h4 id='authorization-code-flow-requirements'>Authorization Code Flow requirements</h4><pre class="highlight diff tab-diff"><code>**v1.23.0 Change**
+Authorization Code Flow requirements: Removed requirement stating ID tokens MUST NOT be encrypted
 </code></pre>
 <p>For <code>response_type</code> <code>code</code>, in accordance with <strong><a href="#nref-FAPI-1-0-Advanced">[FAPI-1.0-Advanced]</a></strong>, ID Tokens <strong>MUST</strong> be signed when returned to a Data Recipient Software Product from the Token End Point.</p>
 <h3 id='access-token'>Access Token</h3>
@@ -6351,7 +6398,16 @@ client_id=s6BhdRkqt3
 <li>  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384</li>
 </ul>
 
-<h2 id='certificate-management'>Certificate Management</h2><h3 id='issued-by-the-register-for-data-holders'>Issued by the Register for Data Holders</h3>
+<h2 id='certificate-management'>Certificate Management</h2><pre class="highlight diff tab-diff"><code>Made following changes to Certificate Signing Request Profile table:
+<span class="gi">+ Included additional fields that can be provided in a CSR
++ Changed 'Common Name' to 'Software Product Name' only for client certificate
++ Changed 'Organization' to include the Brand Name only
++ Added column indication which fields are  mandatory
++ Included a statement noting that if optional fields are required then they will be validated to ensure correctness
+</span>
+Replaced test enviroment details from Certificate Trust Model table with following:
+<span class="gi">+ Details provided to participants when they begin CTS process
+</span></code></pre><h3 id='issued-by-the-register-for-data-holders'>Issued by the Register for Data Holders</h3>
 <table><thead>
 <tr>
 <th>Certificate</th>
@@ -6365,7 +6421,13 @@ client_id=s6BhdRkqt3
 <td>It will be up to the DH on how these endpoints are segregated. They may all be on the one domain (so only one certificate required) or could be separated.</td>
 </tr>
 </tbody></table>
-<h3 id='issued-by-the-register-ca-for-data-recipients'>Issued by the Register CA for Data Recipients</h3>
+<pre class="highlight diff tab-diff"><code>Fixed documentation issues in the Server Certificate(s) row of the `Issued by the Register CA for Data Recipients` table:
+Replaced following:
+<span class="gd">-Revocation endpoint
+-CDR Arrangement Management endpoint
+</span>with:
+<span class="gi">+CDR Arrangement Revocation endpoint
+</span></code></pre><h3 id='issued-by-the-register-ca-for-data-recipients'>Issued by the Register CA for Data Recipients</h3>
 <table><thead>
 <tr>
 <th>Certificate</th>
@@ -6380,12 +6442,17 @@ client_id=s6BhdRkqt3
 </tr>
 <tr>
 <td><strong>Server Certificate(s)</strong></td>
-<td>Certificate is issued to a FQDN.<br/>Secures the following:</br>- Revocation endpoint </br>- CDR Arrangement Management endpoint </br>- JWKS endpoint</td>
-<td>ADRs may choose to secure their <a href="https://consumerdatastandardsaustralia.github.io/standards/#end-points">endpoints</a> with an the Register CA issued certificate or a certificate issued by a public CA.</td>
+<td>Certificate is issued to a FQDN.<br/>Secures the following:</br>- CDR Arrangement Revocation endpoint </br>- JWKS endpoint</td>
+<td>ADRs may choose to secure their <a href="https://consumerdatastandardsaustralia.github.io/standards/#end-points">endpoints</a> with the Register CA issued certificate or a certificate issued by a public CA.</td>
 </tr>
 </tbody></table>
-<h3 id='cdr-certificate-authority'>CDR Certificate Authority</h3>
-<p><a href="https://www.digicert.com">DigiCert</a> acts as the certificate authority that issues and manages certificates to CDR participants as directed by the the Register in its capacity as the CDR Registrar.</p>
+<pre class="highlight diff tab-diff"><code>Corrected typo in description of `CDR Certificate Authority` section:
+Replaced:
+<span class="gd">-the the Register
+</span>with:
+<span class="gi">+the ACCC Register
+</span></code></pre><h3 id='cdr-certificate-authority'>CDR Certificate Authority</h3>
+<p><a href="https://www.digicert.com">DigiCert</a> acts as the certificate authority that issues and manages certificates to CDR participants as directed by the ACCC Register in its capacity as the CDR Registrar.</p>
 <h3 id='certificate-trust-model'>Certificate Trust Model</h3>
 <p>The CDR utilises a private certificate trust chain for all Register CA secured endpoints being hosted by <a href="#participant-endpoints">Data Holders</a>, <a href="#participant-endpoints">Data Recipients</a> and the <a href="#consumer-data-right-cdr-register-apis">Register</a>.</p>
 
@@ -6399,7 +6466,7 @@ client_id=s6BhdRkqt3
 </thead><tbody>
 <tr>
 <td><strong>Test Environment</strong></td>
-<td><a href="includes/register/certificates/test/ca_root_test.cer">CA Root Test</a></br><a href="includes/register/certificates/test/ca_intermediate_test.cer">CA Intermediate Test</a></td>
+<td>Details provided to participants when they begin CTS process</td>
 </tr>
 <tr>
 <td></td>
@@ -6416,51 +6483,80 @@ client_id=s6BhdRkqt3
 <table><thead>
 <tr>
 <th>CSR Field</th>
+<th>Required</th>
 <th>Server</th>
 <th>Client</th>
 </tr>
 </thead><tbody>
 <tr>
-<td><strong>Common Name</strong></td>
+<td><strong>Common Name (CN)</strong></td>
+<td>Mandatory</td>
 <td>Primary DNS Name</br><em>e.g. api1.test.entity.com</em></td>
-<td>Software Product Name OR </br>Brand Name</td>
+<td>Software Product Name</td>
 </tr>
 <tr>
-<td><strong>SAN (Optional)</strong></td>
+<td><strong>SAN</strong></td>
+<td>Optional</td>
 <td>Secondary DNS Name(s) </br><em>e.g. api2.test.entity.com</em></td>
 <td>N/A</td>
 </tr>
 <tr>
-<td><strong>Organization</strong></td>
-<td>Brand Name (Legal Entity Name)</td>
-<td>Brand Name (Legal Entity Name)</td>
+<td><strong>Organization (O)</strong></td>
+<td>Mandatory</td>
+<td>Brand Name</td>
+<td>Brand Name</td>
 </tr>
 <tr>
-<td><strong>Organizational Unit</strong></td>
+<td><strong>Organizational Unit (OU)</strong></td>
+<td>Mandatory</td>
 <td>Consumer Data Right</td>
 <td>Consumer Data Right</td>
 </tr>
 <tr>
-<td><strong>Country</strong></td>
+<td><strong>Country (C)</strong></td>
+<td>Mandatory</td>
 <td>Country of participant</br><em>e.g. AU</em></td>
 <td>Country of participant</br><em>e.g. AU</em></td>
+</tr>
+<tr>
+<td><strong>State (ST)</strong></td>
+<td>Optional</td>
+<td>State of the Participant</br><em>e.g. New South Wales</em></td>
+<td>State of the Participant</br><em>e.g. New South Wales</em></td>
+</tr>
+<tr>
+<td><strong>Locality (L)</strong></td>
+<td>Optional</td>
+<td>Locality of the Participant</br><em>e.g. Sydney</em></td>
+<td>Locality of the Participant</br><em>e.g. Sydney</em></td>
+</tr>
+<tr>
+<td><strong>Email Address</strong></td>
+<td>Optional</td>
+<td>Participant&#39;s email address to be</br> displayed in the issued certificate</td>
+<td>Participant&#39;s email address to be</br> displayed in the issued certificate</td>
 </tr>
 <tr>
 <td><strong>Signature Algorithm</strong></td>
+<td>Mandatory</td>
 <td>SHA256</td>
 <td>SHA256</td>
 </tr>
 <tr>
 <td><strong>Key Algorithm</strong></td>
+<td>Mandatory</td>
 <td>RSA</td>
 <td>RSA</td>
 </tr>
 <tr>
 <td><strong>Key Size</strong></td>
+<td>Mandatory</td>
 <td>2048</td>
 <td>2048</td>
 </tr>
 </tbody></table>
+
+<p><strong>Note:</strong> optional values, if provided, will be validated to be correct.</p>
 
 <p>Please refer to the <a href="https://www.accc.gov.au/focus-areas/consumer-data-right-cdr-0/on-boarding-guide">Register onboarding guide</a> for further information on certificate issuance.</p>
 <h3 id='certificate-usage'>Certificate Usage</h3>
@@ -6662,9 +6758,12 @@ client_id=s6BhdRkqt3
 <li>  Data Recipients Software Products <strong>MUST</strong> support <strong><a href="#nref-PKCE">[PKCE]</a></strong> (<strong><a href="#nref-RFC7636">[RFC7636]</a></strong>) and <strong>MUST</strong> use S256 as the code challenge method.</li>
 </ul>
 
-<h2 id='security-endpoints'>Security Endpoints</h2>
-
-<h3 id='openid-provider-configuration-end-point'>OpenID Provider Configuration End Point</h3>
+<p><h2 id='security-endpoints'>Security Endpoints</h2><pre class="highlight diff tab-diff"><code>Added statements noting CORS is not required for the following:
+ * OpenID Provider Configuration End Point
+ * Authorisation End Point
+ * JSON Web Key Set End Point 
+</code></pre>
+<h3 id='openid-provider-configuration-end-point'>OpenID Provider Configuration End Point</h3></p>
 
 <blockquote>
 <p>Non-Normative Example</p>
@@ -6736,6 +6835,8 @@ Content-Type: application/json
 </tbody></table>
 
 <p>Data Holders MUST make their OpenID Provider Metadata available via a configuration end point as outlined in <a href="https://openid.net/specs/openid-connect-discovery-1_0.html">Section 3 and 4 of the OpenID Connect Discovery standards</a> <strong><a href="#nref-OIDD">[OIDD]</a></strong>.</p>
+
+<p>This endpoint does not require <a href="https://consumerdatastandardsaustralia.github.io/standards/#cors">CORS</a>.</p>
 
 <p>At a minimum, the Data Holder metadata MUST include:</p>
 
@@ -6860,6 +6961,8 @@ Host: www.holder.com.au
 
 <p>The requirements for the Authorisation End Point are specified in <a href="https://openid.net/specs/openid-connect-core-1_0.html#HybridAuthorizationEndpoint">section 3.3.2</a> of <strong><a href="#nref-OIDC">[OIDC]</a></strong> and further specified under section <a href="https://openid.net/specs/openid-financial-api-part-2.html#authorization-server">5.2.2</a> of <strong><a href="#nref-FAPI-RW-Draft">[FAPI-RW-Draft]</a></strong>.  This end point is invoked as part of the <a href="#hybrid-flow">Hybrid Authentication flow</a>.</p>
 
+<p>This endpoint does not require <a href="https://consumerdatastandardsaustralia.github.io/standards/#cors">CORS</a>.</p>
+
 <h3 id='json-web-key-set-end-point'>JSON Web Key Set End Point</h3>
 
 <table><thead>
@@ -6891,6 +6994,8 @@ Host: www.holder.com.au
 <p>This end point is used by the Data Holder to provide the public keys they will use when required.</p>
 
 <p>Data Holders MUST support a JWKS End Point.</p>
+
+<p>This endpoint does not require <a href="https://consumerdatastandardsaustralia.github.io/standards/#cors">CORS</a>.</p>
 
 <h4 id='jwks-uris'>JWKS URIs</h4>
 
@@ -7600,7 +7705,8 @@ Host: cdr.register
 <tr><td><a href='./includes/swagger/cds_dcr.json'>DCR OpenAPI Specification (JSON)</a></td></tr>
 <tr><td><a href='./includes/swagger/cds_dcr.yaml'>DCR OpenAPI Specification (YAML)</a></td></tr>
 </table></p>
-
+<pre class="highlight diff tab-diff"><code>Added statement noting CORS is not required for the Register Data Recipient oAuth Client API
+</code></pre>
 <h2 id='register-data-recipient-oauth-client'>Register Data Recipient oAuth Client</h2>
 
 <p><a id="opIdPostDataRecipientRegistration"></a></p>
@@ -7634,7 +7740,9 @@ Host: cdr.register
 
 <p><code>POST /register</code></p>
 
-<p>Register a client using a CDR Register issued Software Statement Assertion.</p>
+<p>Register a client using a CDR Register issued Software Statement Assertion. </p>
+
+<p>This endpoint does not require CORS.</p>
 
 <blockquote>
 <p>Body parameter</p>
@@ -8822,7 +8930,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h1 id='register-apis'>Register APIs</h1>
 <p>The following section provides an overview of the Register APIs for Data Holders and Data Recipients to collect participant metadata.
 These endpoints are exposed by the Register and consumed by Data Holders and Data Recipients.</p>
-
+<pre class="highlight diff tab-diff"><code>Added statements noting CORS is not required for the following APIs:
+ * Get OpenId Provider Config
+ * Get JWKS
+</code></pre>
 <aside class="warning">
   These endpoints are not implemented by Data Holders and Data Recipients. They are hosted by the Register for consumption by participants.
   Data Holders and Data Recipient Software Products are required to call these endpoints to obtain metadata that enables connection and registration between participants as well as obtaining the status of participants in the CDR.
@@ -8968,6 +9079,8 @@ Accept: application/json
 
 <p>Endpoint used by participants to discover the CDR Register OpenID configuration and obtain information needed to interact with it, including its OAuth 2.0 endpoint locations.</p>
 
+<p>This endpoint does not require CORS.</p>
+
 <h3 id='endpoint-version'>Endpoint Version</h3>
 
 <table><thead>
@@ -9077,6 +9190,8 @@ Accept: application/json
 <p><code>GET /jwks</code></p>
 
 <p>JWKS endpoint containing the public keys used by the CDR Register to validate the signature of issued SSAs and authenticate outbound calls to participants in the CDR.</p>
+
+<p>This endpoint does not require CORS.</p>
 
 <h3 id='endpoint-version-2'>Endpoint Version</h3>
 
@@ -12708,9 +12823,13 @@ This operation does not require authentication
 <li><strong>Large Payload</strong>: An API which is capable of returning a large data response that would reasonably impose higher data retrieval times on the resource server. Typically bulk request end points.</li>
 </ul>
 
-<h2 id='session-requirements'>Session Requirements</h2>
-
-<p>A expiry time of a unique session should be set according to the statements included in the <a href="#security-profile">Security Profile</a>.</p>
+<h2 id='session-requirements'>Session Requirements</h2><pre class="highlight diff tab-diff"><code>Corrected following typo:
+Replaced:
+<span class="gd">- A expiry time of a unique...
+</span>with:
+<span class="gi">+ The expiry time of a unique...
+</span></code></pre>
+<p>The expiry time of a unique session should be set according to the statements included in the <a href="#security-profile">Security Profile</a>.</p>
 
 <p>After a unique session is expired it is expected that the Data Recipient Software Product, for the same customer, may establish a new session as long as the authorisation is still valid.</p>
 
@@ -12733,8 +12852,21 @@ This operation does not require authentication
 
 <p>The unavailability of a secondary data holder will mean that some requests cannot be fulfilled by a data holder making a Shared Responsibility Data Request.  This will not be taken to mean that the data holder is unavailable.</p>
 
-<h2 id='performance-requirements'>Performance Requirements</h2>
+<h2 id='performance-requirements'>Performance Requirements</h2><pre class="highlight diff tab-diff"><code>Listed specific APIs in the `Unattended` section
 
+Fixed incorrect Energy API names replacing:
+<span class="gd">- Get Accounts
+- Get Account Detail 
+- Get Balance For Account
+- Get Bulk Balances
+- Get Balances For Specific Accounts
+</span>with:
+<span class="gi">+ Get Energy Accounts
++ Get Energy Account Detail
++ Get Balance For Energy Account
++ Get Bulk Balances for Energy
++ Get Balances For Specific Energy Accounts
+</span></code></pre>
 <p>API end point performance will be measured in response time of individual API requests from receipt of request to delivery of response.</p>
 
 <p>It is understood that different response times can be measured depending on which technical layer of an API implementation stack is instrumented and that not all of the technical layers between the Data Recipient Software Product and the Data Holder will be in the control of the Data Holder.  As this is implementation specific it is expected that the Data Holder will ensure that the measurement of response time occurs as close to the Data Recipient Software Product as practicable.</p>
@@ -12744,7 +12876,8 @@ This operation does not require authentication
 <p><strong>95% of calls per hour responded to within a nominated threshold</strong></p>
 
 <p>The nominated threshold for each end point will be according to the following table:</p>
-
+<pre class="highlight plaintext"><code>Corrected the requirement for the Large Payload tier to remove reference to unattended calls
+</code></pre>
 <table><thead>
 <tr>
 <th>Tier</th>
@@ -12760,22 +12893,22 @@ This operation does not require authentication
 <tr>
 <td>High Priority</td>
 <td><strong>1000ms</strong></td>
-<td>All calls to the following end points:<ul><li>All InfoSec end points including Dynamic Client Registration</li><li>CDR Arrangement Revocation</li></ul>The following Unauthenticated end points:<ul><em>Common</em><li>Get Status</li><li>Get Outages</li></ul>Customer Present calls to the following end points:<ul><em>Banking</em><li>Get Accounts</li><em>Energy</em><li>Get Accounts</li><li>Get Account Detail</li><li>Get Balance For Account</li><li>Get Invoices For Account</li><em>Common</em><li>Get Customer</li><li>Get Customer Detail</li></ul></td>
+<td>All calls to the following end points:<ul><li>All InfoSec end points including Dynamic Client Registration</li><li>CDR Arrangement Revocation</li></ul>The following unauthenticated end points:<ul><em>Common</em><li>Get Status</li><li>Get Outages</li></ul>Customer Present calls to the following end points:<ul><em>Banking</em><li>Get Accounts</li><br><em>Energy</em><li>Get Energy Accounts</li><li>Get Energy Account Detail</li><li>Get Balance For Energy Account</li><li>Get Invoices For Account</li><br><em>Common</em><li>Get Customer</li><li>Get Customer Detail</li></ul></td>
 </tr>
 <tr>
 <td>Low Priority</td>
 <td><strong>1500ms</strong></td>
-<td>Customer Present calls to the following end points:<ul><em>Banking</em><li>Get Account Detail</li><li>Get Account Balance</li><li>Get Bulk Balances</li><li>Get Balances For Specific Accounts</li><li>Get Transactions For Account</li><li>Get Transaction Detail</li><li>Get Payees</li><li>Get Payee Detail</li><li>Get Direct Debits For Account</li><li>Get Scheduled Payments For Account</li><li>Get Scheduled Payments Bulk</li></li><li>Get Scheduled Payments For Specific Accounts</li><em>Energy</em><li>Get Agreed Payment Schedule</li><li>Get Concessions</li><li>Get Bulk Balances</li><li>Get Balances For Specific Accounts</li><li>Get Bulk Invoices</li><li>Get Invoices For Specific Accounts</li><li>Get Billing For Account</li></ul></td>
+<td>Customer Present calls to the following end points:<ul><em>Banking</em><li>Get Account Detail</li><li>Get Account Balance</li><li>Get Bulk Balances</li><li>Get Balances For Specific Accounts</li><li>Get Transactions For Account</li><li>Get Transaction Detail</li><li>Get Payees</li><li>Get Payee Detail</li><li>Get Direct Debits For Account</li><li>Get Scheduled Payments For Account</li><li>Get Scheduled Payments Bulk</li></li><li>Get Scheduled Payments For Specific Accounts</li><br><em>Energy</em><li>Get Agreed Payment Schedule</li><li>Get Concessions</li><li>Get Bulk Balances for Energy</li><li>Get Balances For Specific Energy Accounts</li><li>Get Bulk Invoices</li><li>Get Invoices For Specific Accounts</li><li>Get Billing For Account</li></ul></td>
 </tr>
 <tr>
 <td>Unattended</td>
 <td><strong>4000ms</strong></td>
-<td>Unattended calls to the following end points that are not Large Payload end points:<ul><li>High Priority Authenticated end points</li><li>Low Priority Authenticated end points</li><li>All Admin end points.</li></ul></td>
+<td>Unattended calls to the following end points:<ul><em>Banking</em><li>Get Accounts</li><li>Get Account Detail</li><li>Get Account Balance</li><li>Get Bulk Balances</li><li>Get Balances For Specific Accounts</li><li>Get Transactions For Account</li><li>Get Transaction Detail</li><li>Get Payees</li><li>Get Payee Detail</li><li>Get Direct Debits For Account</li><li>Get Scheduled Payments For Account</li><li>Get Scheduled Payments Bulk</li><li>Get Scheduled Payments For Specific Accounts</li><br><em>Energy</em><li>Get Energy Accounts</li><li>Get Energy Account Detail</li><li>Get Balance For Energy Account</li><li>Get Invoices For Account</li><li>Get Agreed Payment Schedule</li><li>Get Concessions</li><li>Get Bulk Balances for Energy</li><li>Get Balances For Specific Energy Accounts</li><li>Get Bulk Invoices</li><li>Get Invoices For Specific Accounts</li><li>Get Billing For Account</li><br><em>Common</em><li>Get Customer</li><li>Get Customer Detail</li><br><em>Admin</em><li>Metadata Update</li><li>Get Metrics</li></ul></td>
 </tr>
 <tr>
 <td>Large Payload</td>
 <td><strong>6000ms</strong></td>
-<td>Any Unattended calls to the following end points:<ul><em>Banking</em><li>Get Bulk Direct Debits</li><li>Get Direct Debits For Specific Accounts</li><em>Energy</em><li>Get Bulk Billing</li><li>Get Billing For Specific Accounts</li></ul></td>
+<td>Any calls to the following end points:<ul><em>Banking</em><li>Get Bulk Direct Debits</li><li>Get Direct Debits For Specific Accounts</li><br><em>Energy</em><li>Get Bulk Billing</li><li>Get Billing For Specific Accounts</li></ul></td>
 </tr>
 <tr>
 <td>Secondary Request</td>
@@ -12910,7 +13043,14 @@ This operation does not require authentication
 <tr><td><a href='./includes/swagger/cds_banking.json'>Banking OpenAPI Specification (JSON)</a></td></tr>
 <tr><td><a href='./includes/swagger/cds_banking.yaml'>Banking OpenAPI Specification (YAML)</a></td></tr>
 </table></p>
-
+<pre class="highlight diff tab-diff"><code>Updated description of `BankingAccountDetailV3.lendingRates` field
+from:
+<span class="gd">- Fully described deposit rates for this account based on the equivalent structure in Product Reference
+</span>to:
+<span class="gi">+ Fully described lending rates for this account based on the equivalent structure in Product Reference
+</span>
+Corrected various spelling and grammatical mistakes
+</code></pre>
 <h2 id='get-accounts'>Get Accounts</h2>
 
 <p><a id="opIdlistAccounts"></a></p>
@@ -14594,7 +14734,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <li>A reasonable date/time nominated by the data holder using internal data structures</li>
 </ul></li>
 <li>For transaction amounts it should be assumed that a negative value indicates a reduction of the available balance on the account while a positive value indicates an increase in the available balance on the account</li>
-<li>For aggregated transactions (ie. groups of sub transactions reported as a single entry for the account) only the aggregated information, with as much consistent information accross the subsidiary transactions as possible, is required to be shared</li>
+<li>For aggregated transactions (ie. groups of sub transactions reported as a single entry for the account) only the aggregated information, with as much consistent information across the subsidiary transactions as possible, is required to be shared</li>
 </ul>
 
 <h3 id='endpoint-version-6'>Endpoint Version</h3>
@@ -21408,7 +21548,7 @@ This operation does not require authentication
 <td>» lendingRates</td>
 <td>[<a href="#schemacdr-banking-apibankingproductlendingratev2">BankingProductLendingRateV2</a>]</td>
 <td>optional</td>
-<td>Fully described deposit rates for this account based on the equivalent structure in Product Reference</td>
+<td>Fully described lending rates for this account based on the equivalent structure in Product Reference</td>
 </tr>
 <tr>
 <td>» features</td>
@@ -21970,7 +22110,7 @@ This operation does not require authentication
 <td>crn</td>
 <td>string</td>
 <td>conditional</td>
-<td>BPAY CRN for the transaction (if available).<br/>Where the CRN contains sensitive information, it should be masked in line with how the Data Holder currently displays account identifiers in their existing online banking channels. If the contents of the CRN match the format of a Credit Card PAN they should be masked according to the rules applicable for MaskedPANString. If the contents are are otherwise sensitive, then it should be masked using the rules applicable for the MaskedAccountString common type.</td>
+<td>BPAY CRN for the transaction (if available).<br/>Where the CRN contains sensitive information, it should be masked in line with how the Data Holder currently displays account identifiers in their existing online banking channels. If the contents of the CRN match the format of a Credit Card PAN they should be masked according to the rules applicable for MaskedPANString. If the contents are otherwise sensitive, then it should be masked using the rules applicable for the MaskedAccountString common type.</td>
 </tr>
 <tr>
 <td>apcaNumber</td>
@@ -23077,7 +23217,7 @@ This operation does not require authentication
 <td>crn</td>
 <td>string</td>
 <td>conditional</td>
-<td>BPAY CRN of the Biller (if available).<br/>Where the CRN contains sensitive information, it should be masked in line with how the Data Holder currently displays account identifiers in their existing online banking channels. If the contents of the CRN match the format of a Credit Card PAN they should be masked according to the rules applicable for MaskedPANString. If the contents are are otherwise sensitive, then it should be masked using the rules applicable for the MaskedAccountString common type.</td>
+<td>BPAY CRN of the Biller (if available).<br/>Where the CRN contains sensitive information, it should be masked in line with how the Data Holder currently displays account identifiers in their existing online banking channels. If the contents of the CRN match the format of a Credit Card PAN they should be masked according to the rules applicable for MaskedPANString. If the contents are otherwise sensitive, then it should be masked using the rules applicable for the MaskedAccountString common type.</td>
 </tr>
 <tr>
 <td>billerName</td>
@@ -25158,10 +25298,18 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h2 id='product-amp-account-components'>Product &amp; Account Components</h2>
-
+<p><h2 id='product-amp-account-components'>Product &amp; Account Components</h2><pre class="highlight diff tab-diff"><code>Updated description of &#39;PENSION_RECIPIENT&#39; value in 
+&#39;Product Eligibility Types&#39; table from:
+<span class="gd">- A recipient of a government pension may apply for the product 
+</span>to:
+<span class="gi">+ Only a recipient of a government pension may apply for the product
+</span>and &#39;Product Discount Eligibility Types&#39; table from:
+<span class="gd">- A recipient of a government pension may receive the discount
+</span>to:
+<span class="gi">+ Only a recipient of a government pension may receive the discount
+</span></code></pre>
 <p><a id="productfeaturetypedoc"></a>
-<h3 id="tocSproductfeaturetypedoc">Product Feature Types</h3></p>
+<h3 id="tocSproductfeaturetypedoc">Product Feature Types</h3></p></p>
 
 <p>Description of the usage of the featureType field as it applies to products.</p>
 
@@ -25412,7 +25560,7 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>PENSION_RECIPIENT</td>
-<td>A recipient of a government pension may apply for the product</td>
+<td>Only a recipient of a government pension may apply for the product</td>
 <td>NA</td>
 </tr>
 <tr>
@@ -25594,7 +25742,7 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>PENSION_RECIPIENT</td>
-<td>A recipient of a government pension may receive the discount</td>
+<td>Only a recipient of a government pension may receive the discount</td>
 <td>Optional. Should contain a description of which pensions qualify</td>
 </tr>
 <tr>
@@ -25757,7 +25905,40 @@ This operation does not require authentication
 <tr><td><a href='./includes/swagger/cds_energy.json'>Energy OpenAPI Specification (JSON)</a></td></tr>
 <tr><td><a href='./includes/swagger/cds_energy.yaml'>Energy OpenAPI Specification (YAML)</a></td></tr>
 </table>
+<pre class="highlight diff tab-diff"><code>Bug Fix: Removed 'x-fapi-interaction-id' from response headers of Get Energy Plans and Get Energy Plan Details APIs
 
+Updated the versions of the following APIs:
+<span class="gi">+ Get Generic Plan Detail from v1 to v2
++ Get Energy Account Detail from v2 to v3
+</span>
+Updated the following structures
+from:
+<span class="gd">- EnergyPlanSolarFeedInTariff
+- EnergyPlanContract
+- EnergyAccountDetailV2
+- EnergyAccountDetailResponseV2
+- EnergyPlanContractFull
+- EnergyPlanDetail
+- EnergyPlanResponse
+</span>
+to:
+<span class="gi">+ EnergyPlanSolarFeedInTariffV2
++ EnergyPlanContractV2
++ EnergyAccountDetailV3
++ EnergyAccountDetailResponseV3
++ EnergyPlanContractFullV2
++ EnergyPlanDetailV2
++ EnergyPlanResponseV2
+</span>
+Added following to EnergyPlanSolarFeedInTariffV2:
+<span class="gi">+ rates object
++ startDate field
++ endDate field
+</span>
+Standardised 'post codes' to 'postcodes'
+
+Corrected various spelling and grammatical mistakes
+</code></pre>
 <h2 id='get-generic-plans'>Get Generic Plans</h2>
 
 <p><a id="opIdlistPlans"></a></p>
@@ -26052,27 +26233,6 @@ x-min-v: string
 <td></td>
 <td>The <a href="#response-headers">version</a> of the API end point that the data holder has responded with.</td>
 </tr>
-<tr>
-<td>400</td>
-<td>x-fapi-interaction-id</td>
-<td>string</td>
-<td></td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
-</tr>
-<tr>
-<td>406</td>
-<td>x-fapi-interaction-id</td>
-<td>string</td>
-<td></td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
-</tr>
-<tr>
-<td>422</td>
-<td>x-fapi-interaction-id</td>
-<td>string</td>
-<td></td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
-</tr>
 </tbody></table>
 
 <p><aside class="success">
@@ -26114,7 +26274,9 @@ x-min-v: string
 
 <p><code>GET /energy/plans/{planId}</code></p>
 
-<p>Obtain detailed information on a single energy plan offered openly to the market</p>
+<p>Obtain detailed information on a single energy plan offered openly to the market.</p>
+
+<p>Other Versions: <a href="includes/obsolete/get-generic-plan-detail-v1.html">v1</a></p>
 
 <h3 id='endpoint-version-2'>Endpoint Version</h3>
 
@@ -26126,7 +26288,7 @@ x-min-v: string
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>1</strong></td>
+<td><strong>2</strong></td>
 </tr>
 </tbody></table>
 
@@ -26336,15 +26498,29 @@ x-min-v: string
         </span><span class="p">{</span><span class="w">
           </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"scheme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PREMIUM"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"payerType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GOVERNMENT"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"tariffUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"singleTariff"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"singleTariff"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+            </span><span class="s2">"rates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+              </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"unitPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"measureUnit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KWH"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"volume"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+              </span><span class="p">}</span><span class="w">
+            </span><span class="p">]</span><span class="w">
           </span><span class="p">},</span><span class="w">
           </span><span class="s2">"timeVaryingTariffs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PEAK"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"rates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+              </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"unitPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"measureUnit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KWH"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"volume"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+              </span><span class="p">}</span><span class="w">
+            </span><span class="p">],</span><span class="w">
             </span><span class="s2">"timeVariations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
               </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"days"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -26557,15 +26733,29 @@ x-min-v: string
         </span><span class="p">{</span><span class="w">
           </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"scheme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PREMIUM"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"payerType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GOVERNMENT"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"tariffUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"singleTariff"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"singleTariff"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+            </span><span class="s2">"rates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+              </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"unitPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"measureUnit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KWH"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"volume"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+              </span><span class="p">}</span><span class="w">
+            </span><span class="p">]</span><span class="w">
           </span><span class="p">},</span><span class="w">
           </span><span class="s2">"timeVaryingTariffs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PEAK"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"rates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+              </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"unitPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"measureUnit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KWH"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"volume"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+              </span><span class="p">}</span><span class="w">
+            </span><span class="p">],</span><span class="w">
             </span><span class="s2">"timeVariations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
               </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"days"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -26675,7 +26865,7 @@ x-min-v: string
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>Successful response</td>
-<td><a href="#schemacdr-energy-apienergyplanresponse">EnergyPlanResponse</a></td>
+<td><a href="#schemacdr-energy-apienergyplanresponsev2">EnergyPlanResponseV2</a></td>
 </tr>
 <tr>
 <td>400</td>
@@ -26714,27 +26904,6 @@ x-min-v: string
 <td>string</td>
 <td></td>
 <td>The <a href="#response-headers">version</a> of the API end point that the data holder has responded with.</td>
-</tr>
-<tr>
-<td>400</td>
-<td>x-fapi-interaction-id</td>
-<td>string</td>
-<td></td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
-</tr>
-<tr>
-<td>404</td>
-<td>x-fapi-interaction-id</td>
-<td>string</td>
-<td></td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
-</tr>
-<tr>
-<td>406</td>
-<td>x-fapi-interaction-id</td>
-<td>string</td>
-<td></td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 </tbody></table>
 
@@ -29550,7 +29719,7 @@ x-cds-client-headers: string
 
 <p>Obtain detailed information for a specific energy account</p>
 
-<p>Other Versions: <a href="includes/obsolete/get-energy-account-detail-v1.html">v1</a></p>
+<p>Other Versions: <a href="includes/obsolete/get-energy-account-detail-v1.html">v1</a> <a href="includes/obsolete/get-energy-account-detail-v2.html">v2</a></p>
 
 <h3 id='endpoint-version-12'>Endpoint Version</h3>
 
@@ -29562,7 +29731,7 @@ x-cds-client-headers: string
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>2</strong></td>
+<td><strong>3</strong></td>
 </tr>
 </tbody></table>
 
@@ -29769,15 +29938,21 @@ x-cds-client-headers: string
               </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"scheme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PREMIUM"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"payerType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GOVERNMENT"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"tariffUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"singleTariff"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"singleTariff"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                  </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+                  </span><span class="s2">"rates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="p">{}</span><span class="w">
+                  </span><span class="p">]</span><span class="w">
                 </span><span class="p">},</span><span class="w">
                 </span><span class="s2">"timeVaryingTariffs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
                   </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PEAK"</span><span class="p">,</span><span class="w">
-                  </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"rates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="p">{}</span><span class="w">
+                  </span><span class="p">],</span><span class="w">
                   </span><span class="s2">"timeVariations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
                     </span><span class="p">{}</span><span class="w">
                   </span><span class="p">]</span><span class="w">
@@ -29934,15 +30109,21 @@ x-cds-client-headers: string
               </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"scheme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PREMIUM"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"payerType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GOVERNMENT"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"tariffUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"singleTariff"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"singleTariff"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                  </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+                  </span><span class="s2">"rates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="p">{}</span><span class="w">
+                  </span><span class="p">]</span><span class="w">
                 </span><span class="p">},</span><span class="w">
                 </span><span class="s2">"timeVaryingTariffs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
                   </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PEAK"</span><span class="p">,</span><span class="w">
-                  </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"rates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="p">{}</span><span class="w">
+                  </span><span class="p">],</span><span class="w">
                   </span><span class="s2">"timeVariations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
                     </span><span class="p">{}</span><span class="w">
                   </span><span class="p">]</span><span class="w">
@@ -30030,7 +30211,7 @@ x-cds-client-headers: string
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>Successful response</td>
-<td><a href="#schemacdr-energy-apienergyaccountdetailresponsev2">EnergyAccountDetailResponseV2</a></td>
+<td><a href="#schemacdr-energy-apienergyaccountdetailresponsev3">EnergyAccountDetailResponseV3</a></td>
 </tr>
 <tr>
 <td>400</td>
@@ -33531,9 +33712,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSenergyplanresponse">EnergyPlanResponse</h3>
+<h3 class="schema-toc" id="tocSenergyplanresponsev2">EnergyPlanResponseV2</h3>
 
-<p><a id="schemacdr-energy-apienergyplanresponse"></a></p>
+<p><a id="schemacdr-energy-apienergyplanresponsev2"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"planId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -33700,15 +33881,29 @@ To perform this operation, you must be authenticated and authorised with the fol
         </span><span class="p">{</span><span class="w">
           </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"scheme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PREMIUM"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"payerType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GOVERNMENT"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"tariffUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"singleTariff"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"singleTariff"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+            </span><span class="s2">"rates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+              </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"unitPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"measureUnit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KWH"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"volume"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+              </span><span class="p">}</span><span class="w">
+            </span><span class="p">]</span><span class="w">
           </span><span class="p">},</span><span class="w">
           </span><span class="s2">"timeVaryingTariffs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PEAK"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"rates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+              </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"unitPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"measureUnit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KWH"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"volume"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+              </span><span class="p">}</span><span class="w">
+            </span><span class="p">],</span><span class="w">
             </span><span class="s2">"timeVariations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
               </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"days"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -33921,15 +34116,29 @@ To perform this operation, you must be authenticated and authorised with the fol
         </span><span class="p">{</span><span class="w">
           </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"scheme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PREMIUM"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"payerType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GOVERNMENT"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"tariffUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"singleTariff"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"singleTariff"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+            </span><span class="s2">"rates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+              </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"unitPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"measureUnit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KWH"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"volume"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+              </span><span class="p">}</span><span class="w">
+            </span><span class="p">]</span><span class="w">
           </span><span class="p">},</span><span class="w">
           </span><span class="s2">"timeVaryingTariffs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PEAK"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"rates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+              </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"unitPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"measureUnit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KWH"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"volume"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+              </span><span class="p">}</span><span class="w">
+            </span><span class="p">],</span><span class="w">
             </span><span class="s2">"timeVariations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
               </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"days"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -34035,7 +34244,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </thead><tbody>
 <tr>
 <td>data</td>
-<td><a href="#schemacdr-energy-apienergyplandetail">EnergyPlanDetail</a></td>
+<td><a href="#schemacdr-energy-apienergyplandetailv2">EnergyPlanDetailV2</a></td>
 <td>mandatory</td>
 <td>none</td>
 </tr>
@@ -34609,9 +34818,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSenergyaccountdetailresponsev2">EnergyAccountDetailResponseV2</h3>
+<h3 class="schema-toc" id="tocSenergyaccountdetailresponsev3">EnergyAccountDetailResponseV3</h3>
 
-<p><a id="schemacdr-energy-apienergyaccountdetailresponsev2"></a></p>
+<p><a id="schemacdr-energy-apienergyaccountdetailresponsev3"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -34747,15 +34956,21 @@ To perform this operation, you must be authenticated and authorised with the fol
               </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"scheme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PREMIUM"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"payerType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GOVERNMENT"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"tariffUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"singleTariff"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"singleTariff"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                  </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+                  </span><span class="s2">"rates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="p">{}</span><span class="w">
+                  </span><span class="p">]</span><span class="w">
                 </span><span class="p">},</span><span class="w">
                 </span><span class="s2">"timeVaryingTariffs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
                   </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PEAK"</span><span class="p">,</span><span class="w">
-                  </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"rates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="p">{}</span><span class="w">
+                  </span><span class="p">],</span><span class="w">
                   </span><span class="s2">"timeVariations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
                     </span><span class="p">{}</span><span class="w">
                   </span><span class="p">]</span><span class="w">
@@ -34912,15 +35127,21 @@ To perform this operation, you must be authenticated and authorised with the fol
               </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"scheme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PREMIUM"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"payerType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GOVERNMENT"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"tariffUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"singleTariff"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"singleTariff"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                  </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+                  </span><span class="s2">"rates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="p">{}</span><span class="w">
+                  </span><span class="p">]</span><span class="w">
                 </span><span class="p">},</span><span class="w">
                 </span><span class="s2">"timeVaryingTariffs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
                   </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PEAK"</span><span class="p">,</span><span class="w">
-                  </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"rates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="p">{}</span><span class="w">
+                  </span><span class="p">],</span><span class="w">
                   </span><span class="s2">"timeVariations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
                     </span><span class="p">{}</span><span class="w">
                   </span><span class="p">]</span><span class="w">
@@ -35004,7 +35225,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </thead><tbody>
 <tr>
 <td>data</td>
-<td><a href="#schemacdr-energy-apienergyaccountdetailv2">EnergyAccountDetailV2</a></td>
+<td><a href="#schemacdr-energy-apienergyaccountdetailv3">EnergyAccountDetailV3</a></td>
 <td>mandatory</td>
 <td>none</td>
 </tr>
@@ -35758,13 +35979,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>» excludedPostcodes</td>
 <td>[string]</td>
 <td>optional</td>
-<td>Array of valid Australian post codes that are specifically excluded from the plan.  Each element is a single four digit postcode (e.g. 3000) or a range of postcodes defined by two four digit postcodes and a hyphen (e.g. 3000-3999)</td>
+<td>Array of valid Australian postcodes that are specifically excluded from the plan.  Each element is a single four digit postcode (e.g. 3000) or a range of postcodes defined by two four digit postcodes and a hyphen (e.g. 3000-3999)</td>
 </tr>
 <tr>
 <td>» includedPostcodes</td>
 <td>[string]</td>
 <td>optional</td>
-<td>Array of valid Australian post codes that are included from the plan.  If absent defaults to all non-excluded post codes.  Each element is a single four digit postcode (e.g. 3000) or a range of postcodes defined by two four digit postcodes and a hyphen (e.g. 3000-3999)</td>
+<td>Array of valid Australian postcodes that are included from the plan.  If absent defaults to all non-excluded postcodes.  Each element is a single four digit postcode (e.g. 3000) or a range of postcodes defined by two four digit postcodes and a hyphen (e.g. 3000-3999)</td>
 </tr>
 <tr>
 <td>» distributors</td>
@@ -35814,9 +36035,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSenergyplandetail">EnergyPlanDetail</h3>
+<h3 class="schema-toc" id="tocSenergyplandetailv2">EnergyPlanDetailV2</h3>
 
-<p><a id="schemacdr-energy-apienergyplandetail"></a></p>
+<p><a id="schemacdr-energy-apienergyplandetailv2"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"planId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"effectiveFrom"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -35982,15 +36203,29 @@ To perform this operation, you must be authenticated and authorised with the fol
       </span><span class="p">{</span><span class="w">
         </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"scheme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PREMIUM"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"payerType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GOVERNMENT"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"tariffUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"singleTariff"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"singleTariff"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+          </span><span class="s2">"rates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"unitPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"measureUnit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KWH"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"volume"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">]</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="s2">"timeVaryingTariffs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PEAK"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"rates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"unitPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"measureUnit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KWH"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"volume"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">],</span><span class="w">
           </span><span class="s2">"timeVariations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
             </span><span class="p">{</span><span class="w">
               </span><span class="s2">"days"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -36203,15 +36438,29 @@ To perform this operation, you must be authenticated and authorised with the fol
       </span><span class="p">{</span><span class="w">
         </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"scheme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PREMIUM"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"payerType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GOVERNMENT"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"tariffUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"singleTariff"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"singleTariff"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+          </span><span class="s2">"rates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"unitPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"measureUnit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KWH"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"volume"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">]</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="s2">"timeVaryingTariffs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PEAK"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"rates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"unitPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"measureUnit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KWH"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"volume"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">],</span><span class="w">
           </span><span class="s2">"timeVariations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
             </span><span class="p">{</span><span class="w">
               </span><span class="s2">"days"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -36374,21 +36623,21 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>» gasContract</td>
-<td><a href="#schemacdr-energy-apienergyplancontractfull">EnergyPlanContractFull</a></td>
+<td><a href="#schemacdr-energy-apienergyplancontractfullv2">EnergyPlanContractFullV2</a></td>
 <td>conditional</td>
 <td>The details of the terms for the supply of electricity under this plan.  Is mandatory if fuelType is set to GAS or DUAL</td>
 </tr>
 <tr>
 <td>» electricityContract</td>
-<td><a href="#schemacdr-energy-apienergyplancontractfull">EnergyPlanContractFull</a></td>
+<td><a href="#schemacdr-energy-apienergyplancontractfullv2">EnergyPlanContractFullV2</a></td>
 <td>conditional</td>
 <td>The details of the terms for the supply of electricity under this plan.  Is mandatory if fuelType is set to ELECTRICITY or DUAL</td>
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSenergyplancontract">EnergyPlanContract</h3>
+<h3 class="schema-toc" id="tocSenergyplancontractv2">EnergyPlanContractV2</h3>
 
-<p><a id="schemacdr-energy-apienergyplancontract"></a></p>
+<p><a id="schemacdr-energy-apienergyplancontractv2"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"additionalFeeInformation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"pricingModel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SINGLE_RATE"</span><span class="p">,</span><span class="w">
@@ -36514,15 +36763,29 @@ To perform this operation, you must be authenticated and authorised with the fol
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"scheme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PREMIUM"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"payerType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GOVERNMENT"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"tariffUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"singleTariff"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"singleTariff"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+        </span><span class="s2">"rates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"unitPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"measureUnit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KWH"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"volume"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="s2">"timeVaryingTariffs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PEAK"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"rates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"unitPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"measureUnit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KWH"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"volume"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
         </span><span class="s2">"timeVariations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
           </span><span class="p">{</span><span class="w">
             </span><span class="s2">"days"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -36702,7 +36965,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>solarFeedInTariff</td>
-<td><a href="#schemacdr-energy-apienergyplansolarfeedintariff">EnergyPlanSolarFeedInTariff</a></td>
+<td><a href="#schemacdr-energy-apienergyplansolarfeedintariffv2">EnergyPlanSolarFeedInTariffV2</a></td>
 <td>optional</td>
 <td>Array of feed in tariffs for solar power</td>
 </tr>
@@ -36778,9 +37041,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSenergyplancontractfull">EnergyPlanContractFull</h3>
+<h3 class="schema-toc" id="tocSenergyplancontractfullv2">EnergyPlanContractFullV2</h3>
 
-<p><a id="schemacdr-energy-apienergyplancontractfull"></a></p>
+<p><a id="schemacdr-energy-apienergyplancontractfullv2"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"additionalFeeInformation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"pricingModel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SINGLE_RATE"</span><span class="p">,</span><span class="w">
@@ -36906,15 +37169,29 @@ To perform this operation, you must be authenticated and authorised with the fol
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"scheme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PREMIUM"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"payerType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GOVERNMENT"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"tariffUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"singleTariff"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"singleTariff"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+        </span><span class="s2">"rates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"unitPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"measureUnit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KWH"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"volume"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="s2">"timeVaryingTariffs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PEAK"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"rates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"unitPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"measureUnit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KWH"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"volume"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
         </span><span class="s2">"timeVariations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
           </span><span class="p">{</span><span class="w">
             </span><span class="s2">"days"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -37016,7 +37293,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </thead><tbody>
 <tr>
 <td><em>anonymous</em></td>
-<td><a href="#schemacdr-energy-apienergyplancontract">EnergyPlanContract</a></td>
+<td><a href="#schemacdr-energy-apienergyplancontractv2">EnergyPlanContractV2</a></td>
 <td>mandatory</td>
 <td>none</td>
 </tr>
@@ -38185,23 +38462,37 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSenergyplansolarfeedintariff">EnergyPlanSolarFeedInTariff</h3>
+<h3 class="schema-toc" id="tocSenergyplansolarfeedintariffv2">EnergyPlanSolarFeedInTariffV2</h3>
 
-<p><a id="schemacdr-energy-apienergyplansolarfeedintariff"></a></p>
+<p><a id="schemacdr-energy-apienergyplansolarfeedintariffv2"></a></p>
 
 <pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
     </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"scheme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PREMIUM"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"payerType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GOVERNMENT"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"tariffUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"singleTariff"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"singleTariff"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+      </span><span class="s2">"rates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"unitPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"measureUnit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KWH"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"volume"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"timeVaryingTariffs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PEAK"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"rates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"unitPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"measureUnit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KWH"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"volume"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
       </span><span class="s2">"timeVariations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
           </span><span class="s2">"days"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -38242,6 +38533,18 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>A description of the tariff</td>
 </tr>
 <tr>
+<td>startDate</td>
+<td><a href="#common-field-types">DateString</a></td>
+<td>optional</td>
+<td>The start date of the application of the feed in tariff</td>
+</tr>
+<tr>
+<td>endDate</td>
+<td><a href="#common-field-types">DateString</a></td>
+<td>optional</td>
+<td>The end date of the application of the feed in tariff</td>
+</tr>
+<tr>
 <td>scheme</td>
 <td>string</td>
 <td>mandatory</td>
@@ -38266,49 +38569,85 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Represents a constant tariff.  Mandatory if tariffUType is set to singleTariff</td>
 </tr>
 <tr>
-<td>» amount</td>
-<td><a href="#common-field-types">AmountString</a></td>
+<td>» rates</td>
+<td>[object]</td>
 <td>mandatory</td>
-<td>The tariff amount</td>
+<td>Array of feed in rates</td>
 </tr>
 <tr>
-<td>timeVaryingTariffs</td>
+<td>»» unitPrice</td>
+<td><a href="#common-field-types">AmountString</a></td>
+<td>mandatory</td>
+<td>Unit price of usage per measure unit (exclusive of GST)</td>
+</tr>
+<tr>
+<td>»» measureUnit</td>
+<td>string</td>
+<td>optional</td>
+<td>The measurement unit of rate. Assumed to be KWH if absent</td>
+</tr>
+<tr>
+<td>»» volume</td>
+<td>number</td>
+<td>optional</td>
+<td>Volume that this rate applies to. Only applicable for ‘stepped’ rates where different rates apply for different volumes of usage in a period</td>
+</tr>
+<tr>
+<td>» timeVaryingTariffs</td>
 <td>object</td>
 <td>conditional</td>
 <td>Represents a tariff based on time.  Mandatory if tariffUType is set to timeVaryingTariffs</td>
 </tr>
 <tr>
-<td>» type</td>
+<td>»» type</td>
 <td>string</td>
 <td>optional</td>
 <td>The type of the charging time period. If absent applies to all periods</td>
 </tr>
 <tr>
-<td>» amount</td>
-<td><a href="#common-field-types">AmountString</a></td>
-<td>mandatory</td>
-<td>The tariff amount</td>
+<td>»» rates</td>
+<td>[object]</td>
+<td>optional</td>
+<td>Array of feed in rates</td>
 </tr>
 <tr>
-<td>» timeVariations</td>
+<td>»»» unitPrice</td>
+<td><a href="#common-field-types">AmountString</a></td>
+<td>mandatory</td>
+<td>Unit price of usage per measure unit (exclusive of GST)</td>
+</tr>
+<tr>
+<td>»»» measureUnit</td>
+<td>string</td>
+<td>optional</td>
+<td>The measurement unit of rate. Assumed to be KWH if absent</td>
+</tr>
+<tr>
+<td>»»» volume</td>
+<td>number</td>
+<td>optional</td>
+<td>Volume that this rate applies to. Only applicable for ‘stepped’ rates where different rates apply for different volumes of usage in a period</td>
+</tr>
+<tr>
+<td>»» timeVariations</td>
 <td>[object]</td>
 <td>mandatory</td>
 <td>Array of time periods for which this tariff is applicable</td>
 </tr>
 <tr>
-<td>»» days</td>
+<td>»»» days</td>
 <td>[string]</td>
 <td>mandatory</td>
 <td>The days that the tariff applies to. At least one entry required</td>
 </tr>
 <tr>
-<td>»» startTime</td>
+<td>»»» startTime</td>
 <td><a href="#common-field-types">TimeString</a></td>
 <td>optional</td>
 <td>The beginning of the time period per day for which the tariff applies.  If absent assumes start of day (ie. midnight)</td>
 </tr>
 <tr>
-<td>»» endTime</td>
+<td>»»» endTime</td>
 <td><a href="#common-field-types">TimeString</a></td>
 <td>optional</td>
 <td>The end of the time period per day for which the tariff applies.  If absent assumes end of day (ie. one second before midnight)</td>
@@ -38348,6 +38687,38 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>timeVaryingTariffs</td>
 </tr>
 <tr>
+<td>measureUnit</td>
+<td>KWH</td>
+</tr>
+<tr>
+<td>measureUnit</td>
+<td>KVA</td>
+</tr>
+<tr>
+<td>measureUnit</td>
+<td>KVAR</td>
+</tr>
+<tr>
+<td>measureUnit</td>
+<td>KVARH</td>
+</tr>
+<tr>
+<td>measureUnit</td>
+<td>KW</td>
+</tr>
+<tr>
+<td>measureUnit</td>
+<td>DAYS</td>
+</tr>
+<tr>
+<td>measureUnit</td>
+<td>METER</td>
+</tr>
+<tr>
+<td>measureUnit</td>
+<td>MONTH</td>
+</tr>
+<tr>
 <td>type</td>
 <td>PEAK</td>
 </tr>
@@ -38358,6 +38729,38 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>type</td>
 <td>SHOULDER</td>
+</tr>
+<tr>
+<td>measureUnit</td>
+<td>KWH</td>
+</tr>
+<tr>
+<td>measureUnit</td>
+<td>KVA</td>
+</tr>
+<tr>
+<td>measureUnit</td>
+<td>KVAR</td>
+</tr>
+<tr>
+<td>measureUnit</td>
+<td>KVARH</td>
+</tr>
+<tr>
+<td>measureUnit</td>
+<td>KW</td>
+</tr>
+<tr>
+<td>measureUnit</td>
+<td>DAYS</td>
+</tr>
+<tr>
+<td>measureUnit</td>
+<td>METER</td>
+</tr>
+<tr>
+<td>measureUnit</td>
+<td>MONTH</td>
 </tr>
 <tr>
 <td>days</td>
@@ -40547,9 +40950,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSenergyaccountdetailv2">EnergyAccountDetailV2</h3>
+<h3 class="schema-toc" id="tocSenergyaccountdetailv3">EnergyAccountDetailV3</h3>
 
-<p><a id="schemacdr-energy-apienergyaccountdetailv2"></a></p>
+<p><a id="schemacdr-energy-apienergyaccountdetailv3"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"accountNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -40692,15 +41095,29 @@ To perform this operation, you must be authenticated and authorised with the fol
             </span><span class="p">{</span><span class="w">
               </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"scheme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PREMIUM"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"payerType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GOVERNMENT"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"tariffUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"singleTariff"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"singleTariff"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+                </span><span class="s2">"rates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                  </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"unitPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"measureUnit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KWH"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"volume"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+                  </span><span class="p">}</span><span class="w">
+                </span><span class="p">]</span><span class="w">
               </span><span class="p">},</span><span class="w">
               </span><span class="s2">"timeVaryingTariffs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PEAK"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"rates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                  </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"unitPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"measureUnit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KWH"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"volume"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+                  </span><span class="p">}</span><span class="w">
+                </span><span class="p">],</span><span class="w">
                 </span><span class="s2">"timeVariations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
                   </span><span class="p">{</span><span class="w">
                     </span><span class="s2">"days"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
@@ -40879,15 +41296,29 @@ To perform this operation, you must be authenticated and authorised with the fol
             </span><span class="p">{</span><span class="w">
               </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"scheme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PREMIUM"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"payerType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GOVERNMENT"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"tariffUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"singleTariff"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"singleTariff"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+                </span><span class="s2">"rates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                  </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"unitPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"measureUnit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KWH"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"volume"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+                  </span><span class="p">}</span><span class="w">
+                </span><span class="p">]</span><span class="w">
               </span><span class="p">},</span><span class="w">
               </span><span class="s2">"timeVaryingTariffs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PEAK"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"rates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                  </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"unitPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"measureUnit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KWH"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"volume"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+                  </span><span class="p">}</span><span class="w">
+                </span><span class="p">],</span><span class="w">
                 </span><span class="s2">"timeVariations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
                   </span><span class="p">{</span><span class="w">
                     </span><span class="s2">"days"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
@@ -41102,13 +41533,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>»»» gasContract</td>
-<td><a href="#schemacdr-energy-apienergyplancontract">EnergyPlanContract</a></td>
+<td><a href="#schemacdr-energy-apienergyplancontractv2">EnergyPlanContractV2</a></td>
 <td>conditional</td>
 <td>The details of the terms for the supply of electricity under this plan.  Is mandatory if fuelType is set to GAS or DUAL</td>
 </tr>
 <tr>
 <td>»»» electricityContract</td>
-<td><a href="#schemacdr-energy-apienergyplancontract">EnergyPlanContract</a></td>
+<td><a href="#schemacdr-energy-apienergyplancontractv2">EnergyPlanContractV2</a></td>
 <td>conditional</td>
 <td>The details of the terms for the supply of electricity under this plan.  Is mandatory if fuelType is set to ELECTRICITY or DUAL</td>
 </tr>
@@ -41214,7 +41645,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>amount</td>
 <td><a href="#common-field-types">AmountString</a></td>
 <td>optional</td>
-<td>Optional payment amount indicating that a constant payment amount is scheduled to be paid (used in bill smooting scenarios)</td>
+<td>Optional payment amount indicating that a constant payment amount is scheduled to be paid (used in bill smoothing scenarios)</td>
 </tr>
 <tr>
 <td>paymentScheduleUType</td>
@@ -43373,7 +43804,8 @@ Note that the standards for the telecommunications sector are currently in draft
 <tr><td><a href='./includes/swagger/cds_telco.json'>Telco OpenAPI Specification (JSON)</a></td></tr>
 <tr><td><a href='./includes/swagger/cds_telco.yaml'>Telco OpenAPI Specification (YAML)</a></td></tr>
 </table>
-
+<pre class="highlight diff tab-diff"><code>Corrected various spelling and grammatical mistakes
+</code></pre>
 <h2 id='get-telco-products'>Get Telco Products</h2>
 
 <p><a id="opIdlistProducts"></a></p>
@@ -50883,7 +51315,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>amount</td>
 <td><a href="#common-field-types">AmountString</a></td>
 <td>optional</td>
-<td>Optional payment amount indicating that a constant payment amount is scheduled to be paid (used in bill smooting scenarios)</td>
+<td>Optional payment amount indicating that a constant payment amount is scheduled to be paid (used in bill smoothing scenarios)</td>
 </tr>
 <tr>
 <td>paymentScheduleUType</td>
@@ -56150,7 +56582,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr><td><a href='./includes/swagger/cds_common.json'>Common OpenAPI Specification (JSON)</a></td></tr>
 <tr><td><a href='./includes/swagger/cds_common.yaml'>Common OpenAPI Specification (YAML)</a></td></tr>
 </table></p>
-
+<pre class="highlight diff tab-diff"><code>Updated x-fapi-auth-date definitions to be aligned to the HTTP Headers section and Banking APIs
+</code></pre>
 <h2 id='get-customer'>Get Customer</h2>
 
 <p><a id="opIdgetCustomer"></a></p>
@@ -56261,7 +56694,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td>The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended) if the customer is currently logged. Otherwise optional where the customer has not logged in. Not to be included for unauthenticated calls.</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-R-Draft">[FAPI-R-Draft]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
@@ -56499,7 +56932,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td>The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended) if the customer is currently logged. Otherwise optional where the customer has not logged in. Not to be included for unauthenticated calls.</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-R-Draft">[FAPI-R-Draft]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
@@ -58788,7 +59221,18 @@ This operation does not require authentication
 <tr><td><a href='./includes/swagger/cds_admin.json'>Admin OpenAPI Specification (JSON)</a></td></tr>
 <tr><td><a href='./includes/swagger/cds_admin.yaml'>Admin OpenAPI Specification (YAML)</a></td></tr>
 </table></p>
-
+<pre class="highlight diff tab-diff"><code>Corrected spelling mistake in description of 'RejectionMetricsV2.unauthenticated' field:
+<span class="gd">- Rejection counts for all uauthenticated end points 
+</span><span class="gi">+ Rejection counts for all unauthenticated end points
+</span>
+Updated description of 'period' parameter of Get Metrics API:
+<span class="gd">- Values can be CURRENT (meaning metrics for current day), HISTORIC (meaning metrics for previous days or months) or ALL...
+</span><span class="gi">+ Values can be CURRENT (meaning metrics for current period, dependent on the metric type), HISTORIC (meaning metrics for previous period, depending on the metric type) or ALL...
+</span>
+Updated description of 'SecondaryHolderMetrics.rejections':
+<span class="gd">- Number of calls resulting in a rejection due to server execution over time
+</span><span class="gi">+ Number of calls rejected due to traffic thresholds over time
+</span></code></pre>
 <h2 id='metadata-update'>Metadata Update</h2>
 
 <p><a id="opIdmetadataUpdate"></a></p>
@@ -59030,7 +59474,7 @@ This operation may only be called by the CDR Register
 <td>query</td>
 <td>string</td>
 <td>optional</td>
-<td>The period of metrics to be requested. Values can be CURRENT (meaning metrics for current day), HISTORIC (meaning metrics for previous days or months) or ALL. If absent the default is ALL.</td>
+<td>The period of metrics to be requested. Values can be CURRENT (meaning metrics for current period, dependent on the metric type), HISTORIC (meaning metrics for previous period, depending on the metric type) or ALL. If absent the default is ALL.</td>
 </tr>
 <tr>
 <td>x-v</td>
@@ -60397,7 +60841,7 @@ This operation may only be called by the CDR Register
 <td>unauthenticated</td>
 <td>object</td>
 <td>mandatory</td>
-<td>Rejection counts for all uauthenticated end points</td>
+<td>Rejection counts for all unauthenticated end points</td>
 </tr>
 <tr>
 <td>» currentDay</td>
@@ -60468,7 +60912,7 @@ This operation may only be called by the CDR Register
 <td>rejections</td>
 <td>object</td>
 <td>mandatory</td>
-<td>Number of calls resulting in a rejection due to server execution over time</td>
+<td>Number of calls rejected due to traffic thresholds over time</td>
 </tr>
 <tr>
 <td>» currentDay</td>
@@ -64988,6 +65432,12 @@ This operation may only be called by an Energy Retailer using the information se
 </tr>
 </thead><tbody>
 <tr>
+<td>07/05/2023</td>
+<td>1.24.0</td>
+<td>Changes arising from Decision 281 (Maintenance iteration 14)</td>
+<td>See <a href="includes/releasenotes/releasenotes.1.24.0.html">release notes</a> and <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/281">Decision 281</a> for details.</td>
+</tr>
+<tr>
 <td>14/04/2023</td>
 <td>1.23.0</td>
 <td>Changes arising from Decision Proposal 298</td>
@@ -65430,6 +65880,11 @@ This operation may only be called by an Energy Retailer using the information se
 <th>Description</th>
 </tr>
 </thead><tbody>
+<tr>
+<td><a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.23.0/'>24/04/2023</a></td>
+<td>1.23.0</td>
+<td><a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.23.0/'>Changes arising from Decision Proposal 298</a></td>
+</tr>
 <tr>
 <td><a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.22.1/'>22/03/2023</a></td>
 <td>1.22.1</td>

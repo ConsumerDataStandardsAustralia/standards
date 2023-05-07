@@ -1,0 +1,416 @@
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Consumer Data Standards - v1.24.0 Release Notes</title>
+    <link href="../../images/favicon.ico" rel="icon" type="image/ico" />
+
+    <style>
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .gh {
+  color: #999999;
+}
+.highlight .sr {
+  color: #f6aa11;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .nb {
+  color: #f6aa11;
+}
+.highlight .cm {
+  color: #75715e;
+}
+.highlight .cp {
+  color: #75715e;
+}
+.highlight .c1 {
+  color: #75715e;
+}
+.highlight .cs {
+  color: #75715e;
+}
+.highlight .c, .highlight .cd {
+  color: #75715e;
+}
+.highlight .err {
+  color: #960050;
+}
+.highlight .gr {
+  color: #960050;
+}
+.highlight .gt {
+  color: #960050;
+}
+.highlight .gd {
+  color: #49483e;
+}
+.highlight .gi {
+  color: #49483e;
+}
+.highlight .ge {
+  color: #49483e;
+}
+.highlight .kc {
+  color: #66d9ef;
+}
+.highlight .kd {
+  color: #66d9ef;
+}
+.highlight .kr {
+  color: #66d9ef;
+}
+.highlight .no {
+  color: #66d9ef;
+}
+.highlight .kt {
+  color: #66d9ef;
+}
+.highlight .mf {
+  color: #ae81ff;
+}
+.highlight .mh {
+  color: #ae81ff;
+}
+.highlight .il {
+  color: #ae81ff;
+}
+.highlight .mi {
+  color: #ae81ff;
+}
+.highlight .mo {
+  color: #ae81ff;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #ae81ff;
+}
+.highlight .sc {
+  color: #ae81ff;
+}
+.highlight .se {
+  color: #ae81ff;
+}
+.highlight .ss {
+  color: #ae81ff;
+}
+.highlight .sd {
+  color: #e6db74;
+}
+.highlight .s2 {
+  color: #e6db74;
+}
+.highlight .sb {
+  color: #e6db74;
+}
+.highlight .sh {
+  color: #e6db74;
+}
+.highlight .si {
+  color: #e6db74;
+}
+.highlight .sx {
+  color: #e6db74;
+}
+.highlight .s1 {
+  color: #e6db74;
+}
+.highlight .s {
+  color: #e6db74;
+}
+.highlight .na {
+  color: #a6e22e;
+}
+.highlight .nc {
+  color: #a6e22e;
+}
+.highlight .nd {
+  color: #a6e22e;
+}
+.highlight .ne {
+  color: #a6e22e;
+}
+.highlight .nf {
+  color: #a6e22e;
+}
+.highlight .vc {
+  color: #ffffff;
+}
+.highlight .nn {
+  color: #ffffff;
+}
+.highlight .nl {
+  color: #ffffff;
+}
+.highlight .ni {
+  color: #ffffff;
+}
+.highlight .bp {
+  color: #ffffff;
+}
+.highlight .vg {
+  color: #ffffff;
+}
+.highlight .vi {
+  color: #ffffff;
+}
+.highlight .nv {
+  color: #ffffff;
+}
+.highlight .w {
+  color: #ffffff;
+}
+.highlight {
+  color: #ffffff;
+}
+.highlight .n, .highlight .py, .highlight .nx {
+  color: #ffffff;
+}
+.highlight .ow {
+  color: #f92672;
+}
+.highlight .nt {
+  color: #f92672;
+}
+.highlight .k, .highlight .kv {
+  color: #f92672;
+}
+.highlight .kn {
+  color: #f92672;
+}
+.highlight .kp {
+  color: #f92672;
+}
+.highlight .o {
+  color: #f92672;
+}
+    </style>
+    <link href="../../stylesheets/screen.css" rel="stylesheet" media="screen" />
+    <link href="../../stylesheets/print.css" rel="stylesheet" media="print" />
+      <script src="../../javascripts/all_nosearch.js"></script>
+  </head>
+
+  <body class="no-code-layout includes includes_releasenotes includes_releasenotes_releasenotes" data-languages="[]">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="../../images/navbar.png" alt="Navbar" />
+      </span>
+    </a>
+    <div class="toc-wrapper">
+      <img src="../../images/logo.png" class="logo" alt="Logo" />
+      <ul id="toc" class="toc-list-h1">
+          <li>
+            <a href="#v1-24-0-release-notes" class="toc-h1 toc-link" data-title="V1.24.0 Release Notes">V1.24.0 Release Notes</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#changes-made" class="toc-h2 toc-link" data-title="Changes Made">Changes Made</a>
+                  </li>
+                  <li>
+                    <a href="#introduction" class="toc-h2 toc-link" data-title="Introduction">Introduction</a>
+                  </li>
+                  <li>
+                    <a href="#high-level-standards" class="toc-h2 toc-link" data-title="High Level Standards">High Level Standards</a>
+                  </li>
+                  <li>
+                    <a href="#api-end-points" class="toc-h2 toc-link" data-title="API End Points">API End Points</a>
+                  </li>
+                  <li>
+                    <a href="#information-security-profile" class="toc-h2 toc-link" data-title="Information Security Profile">Information Security Profile</a>
+                  </li>
+                  <li>
+                    <a href="#consumer-experience" class="toc-h2 toc-link" data-title="Consumer Experience">Consumer Experience</a>
+                  </li>
+                  <li>
+                    <a href="#non-functional-requirements" class="toc-h2 toc-link" data-title="Non Functional Requirements">Non Functional Requirements</a>
+                  </li>
+                  <li>
+                    <a href="#known-issues" class="toc-h2 toc-link" data-title="Known Issues">Known Issues</a>
+                  </li>
+              </ul>
+          </li>
+      </ul>
+        <ul class="toc-footer">
+            <li><a href='../../index.html'>Consumer Data Standards</a></li>
+        </ul>
+    </div>
+    <div class="page-wrapper">
+      <div class="content">
+        <h1 id='v1-24-0-release-notes'>V1.24.0 Release Notes</h1>
+<p>Release notes for version v1.24.0 of the <a href="../../">CDR Standards</a>.</p>
+<h2 id='changes-made'>Changes Made</h2><h3 id='change-requests'>Change Requests</h3>
+<p>This release addresses the following minor defects raised on <a href="https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues">Standards Staging</a>:</p>
+
+<ul>
+<li>None</li>
+</ul>
+
+<p>This release addresses the following change requests raised on <a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues">Standards Maintenance</a>:</p>
+
+<ul>
+<li><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/483">Standards Maintenance Issue 483 - Large payload tier description error</a></li>
+<li><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/496">Standards Maintenance Issue 496 - Unauthenticated energy routes have unclear header documentation</a></li>
+<li><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/520">Standards Maintenance Issue 520 - Stepped solar feed in tariffs in Energy</a></li>
+<li><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/532">Standards Maintenance Issue 532 - Update <code>x-fapi-auth-date</code> description for Customer APIs</a></li>
+<li><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/535">Standards Maintenance Issue 535 - Standard appears to redefine requirements for private_key_jwt authentication</a></li>
+<li><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/565">Standards Maintenance Issue 565 - Maintenance Iteration 14 Holistic Feedback</a></li>
+<li><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/574">Standards Maintenance Issue 574 - Additional functionality to support account selection</a></li>
+<li><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/577">Standards Maintenance Issue 577 - Updates to Certificate Management</a></li>
+</ul>
+<h3 id='decision-proposals'>Decision Proposals</h3>
+<p>This release addresses the following Decision Proposals published on <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues">Standards</a>:</p>
+
+<ul>
+<li><a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/281">Decision Proposal 281 - Maintenance Iteration 14</a></li>
+</ul>
+<h2 id='introduction'>Introduction</h2>
+<p>No Change</p>
+<h2 id='high-level-standards'>High Level Standards</h2>
+<table><thead>
+<tr>
+<th>Change</th>
+<th>Description</th>
+<th>Link</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Non Functional Requirements - Large Payloads</td>
+<td>Corrected the requirement to remove reference to &quot;unattended&quot; because the tier applies to all calls both attended and unattended.</td>
+<td><a href="../../#performance-requirements">Non-Functional Requirements</a></td>
+</tr>
+<tr>
+<td>RateString example clarification</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/565"><strong>Standards Maintenance #565</strong></a>: Added actual % values represented by examples for <code>RateString</code> field type. Addresses <a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/565#issuecomment-1442968426">Issue 565 comment</a>.</td>
+<td><a href="../../#common-field-types">Common Field Types</a></td>
+</tr>
+</tbody></table>
+<h2 id='api-end-points'>API End Points</h2>
+<table><thead>
+<tr>
+<th>Change</th>
+<th>Description</th>
+<th>Link</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Bug Fix: Energy Public Endpoints</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/496"><strong>Standards Maintenance #496</strong></a>: Removed <code>x-fapi-interaction-id</code> from response headers of Get Energy Plans and Get Energy Plan Details public APIs.</td>
+<td><a href="../../#energy-apis">Energy APIs</a></td>
+</tr>
+<tr>
+<td><code>x-fapi-auth-date</code> references in Customer resource APIs</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/532">Standards Maintenance #532</a>: Aligned header documentation for for <code>x-fapi-auth-date</code> references in the Customer APIs to be consistent with the Banking APIs and Header section definitions.</td>
+<td><a href="../../#get-customer">Customer APIs</a></td>
+</tr>
+<tr>
+<td>Admin APIs - spelling correction</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/565"><strong>Standards Maintenance #565</strong></a>: Corrected spelling mistake in description of <code>RejectionMetricsV2.unauthenticated</code> field. Addresses <a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/565#issuecomment-1341720771">Issue 565 comment</a>.</td>
+<td><a href="../../#admin-apis">Admin APIs</a></td>
+</tr>
+<tr>
+<td>Banking APIs - description update</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/565"><strong>Standards Maintenance #565</strong></a>: Fixed description of <code>BankingAccountDetailV3.lendingRates</code> field. Addresses <a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/565#issuecomment-1350218008">Issue 565 comment</a>.</td>
+<td><a href="../../#banking-apis">Banking APIs</a></td>
+</tr>
+<tr>
+<td>Minor corrections</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/565"><strong>Standards Maintenance #565</strong></a>: <ul><li>Corrected various spelling and grammatical mistakes. Standardised <code>post codes</code> into <code>postcode</code>. Addresses <a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/565#issuecomment-1407931665">Issue 565 comment</a>. </li><li>Corrected grammatical mistakes in Session Requirements section. Addresses <a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/565#issuecomment-1425239638">Issue 565 comment</a>.</li><li>Corrected typo in Error Codes section. Addresses <a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/565#issuecomment-1453240097">Issue 565 comment</a>.</li></ul></td>
+<td><ul><li><a href="../../#banking-apis">Banking APIs</a></li><li><a href="../../#energy-apis">Energy APIs</a></li><li><a href="../../#telco-apis">Telco APIs</a></li><li><a href="../../#session-requirements">Session Requirements</a></li><li><a href="../../#error-codes">Error Codes</a></li></ul></td>
+</tr>
+<tr>
+<td>Get Metrics APIs - description update</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/565"><strong>Standards Maintenance #565</strong></a>: <ul><li>Updated description of <code>period</code> parameter in Get Metrics API. Addresses <a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/565#issuecomment-1453255983">Issue 565 comment</a>.</li><li>Updated description of <code>SecondaryHolderMetrics.rejections</code>. Addresses <a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/565#issuecomment-1340637893">Issue 565 comment</a>.</li></ul></td>
+<td><a href="../../#admin-apis">Admin APIs</a></td>
+</tr>
+<tr>
+<td>Product &amp; Account Components - description update</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/565"><strong>Standards Maintenance #565</strong></a>: Updated description of <code>PENSION_RECIPIENT</code> value in <code>Product Eligibility Types</code> and <code>Product Discount Eligibility Types</code> tables. Addresses <a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/565#issuecomment-1491270045">Issue 565 comment</a>.</td>
+<td><a href="../../#product-amp-account-components">Product &amp; Account Components</a></td>
+</tr>
+<tr>
+<td>CORS clarification</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/565"><strong>Standards Maintenance #565</strong></a>: Added statements noting CORS is not required at relevant DCR and Register APIs. Addresses <a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/565#issuecomment-1477173448">Issue 565 comment</a>.</td>
+<td><ul><li><a href="../../#dcr-apis">DCR APIs</a></li><li><a href="../../#register-apis">Register APIs</a></li></ul></td>
+</tr>
+<tr>
+<td>Energy APIs</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/520"><strong>Standards Maintenance #520</strong></a>: <ul><li>Added <code>rates</code> object to <code>EnergyPlanSolarFeedInTariff</code> structure.</li><li>Incremented versions of Get Generic Plan Detail and Get Energy Account Detail APIs.</li></ul></td>
+<td><a href="../../#energy-apis">Energy APIs</a></td>
+</tr>
+</tbody></table>
+<h2 id='information-security-profile'>Information Security Profile</h2>
+<table><thead>
+<tr>
+<th>Change</th>
+<th>Description</th>
+<th>Link</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>RFC6749 conformant Private Key JWT Client Authentication</td>
+<td>Change to support <strong>[RFC7521]</strong> such that, until November 13th 2023, clients authenticating using Private Key JWT are <em>recommended</em> to provide the <code>client_id</code>, but no longer required. From November 13th 2023, it is then <em>optional</em> to provide the <code>client_id</code>. This applies to ADRs and the CDR Register authenticating with Data Holders and ADRs authenticating with the CDR Register. During the RECOMMENDED phase in period, Data Holders and the CDR Register may reject clients that do not provide the <code>client_id</code>. ADRs may re-attempt client authentication by providing the <code>client_id</code>. During this phase in period, Data Holders and the CDR Register may stop requiring the <code>client_id</code>. If the client provides the <code>client_id</code>, the Data Holder/CDR Register must validate that its value is the same as the <code>iss</code> and <code>sub</code> claims in accordance with <strong><a href="https://datatracker.ietf.org/doc/html/rfc7521#section-4.2">RFC7521</a></strong></td>
+<td><a href="../../#client-authentication">Private Key JWT Client Authentication</a></td>
+</tr>
+<tr>
+<td>Certificate Management corrections</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/565"><strong>Standards Maintenance #565</strong></a>: Updated wording and corrected a typo in the &quot;Issued by the Register CA for Data Recipients&quot; table. Corrected a typo in the &quot;CDR Certificate Authority&quot; section. Addresses <a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/565#issuecomment-1340391109">Issue 565 comment</a>.</td>
+<td><a href="../../#certificate-management">Certificate Management</a></td>
+</tr>
+<tr>
+<td>CORS clarification</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/565"><strong>Standards Maintenance #565</strong></a>: Added statements noting CORS is not required at relevant endpoints in Security Endpoints section. Addresses <a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/565#issuecomment-1477173448">Issue 565 comment</a>.</td>
+<td><a href="../../#security-endpoints">Security Endpoints</a></td>
+</tr>
+<tr>
+<td>Certificate Management</td>
+<td>Updated the Certificate Management Section with following: <ul><li>Made various changes to the Certificate Signing Request Profile table to provide additional guidance to participants.</li><li>Removed the Test Environment details from the Certificate Trust Model section</li></ul></td>
+<td><a href="../../#certificate-management">Certificate Management</a></td>
+</tr>
+</tbody></table>
+<h2 id='consumer-experience'>Consumer Experience</h2>
+<table><thead>
+<tr>
+<th>Change</th>
+<th>Description</th>
+<th>Link</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>New Authorisation CX Standard</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/574"><strong>Standards Maintenance #574</strong></a>: Added new Authorisation CX Standard for additional account selection functionality in the authorisation flow.</td>
+<td><a href="../../#authorisation-standards">Authorisation Standards</a></td>
+</tr>
+</tbody></table>
+<h2 id='non-functional-requirements'>Non Functional Requirements</h2>
+<table><thead>
+<tr>
+<th>Change</th>
+<th>Description</th>
+<th>Link</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Performance Requirements</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/565"><strong>Standards Maintenance #565</strong></a>: Listed specific APIs in the <code>Unattended</code> section. Fixed incorrect Energy API names. Addresses <a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/565#issuecomment-1480845969">Issue 565 comment</a>.</td>
+<td><a href="../../#performance-requirements">Performance Requirements</a></td>
+</tr>
+</tbody></table>
+<h2 id='known-issues'>Known Issues</h2>
+<p>No Change</p>
+
+      </div>
+    </div>
+  </body>
+</html>

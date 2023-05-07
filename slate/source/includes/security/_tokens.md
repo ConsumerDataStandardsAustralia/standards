@@ -59,6 +59,7 @@ The following requirements apply to the OIDC Hybrid Flow:
 #### Authorization Code Flow requirements
 
 ```diff
+**v1.23.0 Change**
 Authorization Code Flow requirements: Removed requirement stating ID tokens MUST NOT be encrypted
 ```
 

@@ -28,7 +28,9 @@
 </code></pre>
 <p><code>POST /register</code></p>
 
-<p>Register a client using a CDR Register issued Software Statement Assertion.</p>
+<p>Register a client using a CDR Register issued Software Statement Assertion. </p>
+
+<p>This endpoint does not require CORS.</p>
 
 <blockquote>
 <p>Body parameter</p>

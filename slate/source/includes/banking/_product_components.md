@@ -1,4 +1,15 @@
 ## Product & Account Components
+```diff
+Updated description of 'PENSION_RECIPIENT' value in 
+'Product Eligibility Types' table from:
+- A recipient of a government pension may apply for the product	
+to:
++ Only a recipient of a government pension may apply for the product
+and 'Product Discount Eligibility Types' table from:
+- A recipient of a government pension may receive the discount
+to:
++ Only a recipient of a government pension may receive the discount
+```
 
 <a id="productfeaturetypedoc"></a>
 <h3 id="tocSproductfeaturetypedoc">Product Feature Types</h3>
@@ -70,7 +81,7 @@ Description of the usage of the eligibilityType field as it applies to products.
 |MIN_TURNOVER|Only a business with greater than a minimum turnover may apply|Minimum turnover in AmountString format|
 |NATURAL_PERSON|The customer must be a natural person rather than another legal entity|NA|
 |OTHER|Another eligibility criteria exists as described in the additionalInfo field (if this option is specified then the additionalInfo field is mandatory)|NA|
-|PENSION_RECIPIENT|A recipient of a government pension may apply for the product|NA|
+|PENSION_RECIPIENT|Only a recipient of a government pension may apply for the product|NA|
 |RESIDENCY_STATUS|An eligibility constraint based on residency status applies|A description of the status required|
 |STAFF|Only a staff member of the provider may apply|NA|
 |STUDENT|Only students may apply for the product|NA|
@@ -128,7 +139,7 @@ Description of the usage of the discountEligibilityType field as it applies to p
 |MIN_TURNOVER|Only a business with greater than a minimum turnover is eligible|Minimum turnover in AmountString format|
 |NATURAL_PERSON|The customer must be a natural person rather than another legal entity|NA|
 |OTHER|Another eligibility criteria exists as described in the additionalInfo field (if this option is specified then the additionalInfo field is mandatory)|NA|
-|PENSION_RECIPIENT|A recipient of a government pension may receive the discount|Optional. Should contain a description of which pensions qualify|
+|PENSION_RECIPIENT|Only a recipient of a government pension may receive the discount|Optional. Should contain a description of which pensions qualify|
 |RESIDENCY_STATUS|An eligibility constraint based on residency status applies|A description of the status required|
 |STAFF|Only a staff member of the provider may receive the discount|NA|
 |STUDENT|Only students may receive the discount|Optional. Should contain a description of who qualifies as a student, e.g. do apprentices qualify?|

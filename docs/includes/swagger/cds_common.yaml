@@ -11,7 +11,7 @@ info:
     name: MIT License
     url: https://opensource.org/licenses/MIT
   title: CDR Common API
-  version: 1.23.0
+  version: 1.24.0
 servers:
 - url: https://data.holder.com.au/cds-au/v1
 paths:
@@ -72,9 +72,9 @@ paths:
           type: string
         style: simple
       - description: The time when the customer last logged in to the Data Recipient
-          Software Product. Required for all resource calls (customer present and
-          unattended) if the customer is currently logged. Otherwise optional where
-          the customer has not logged in. Not to be included for unauthenticated calls.
+          Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required
+          for all resource calls (customer present and unattended). Not required for
+          unauthenticated calls.
         explode: false
         in: header
         name: x-fapi-auth-date
@@ -224,9 +224,9 @@ paths:
           type: string
         style: simple
       - description: The time when the customer last logged in to the Data Recipient
-          Software Product. Required for all resource calls (customer present and
-          unattended) if the customer is currently logged. Otherwise optional where
-          the customer has not logged in. Not to be included for unauthenticated calls.
+          Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required
+          for all resource calls (customer present and unattended). Not required for
+          unauthenticated calls.
         explode: false
         in: header
         name: x-fapi-auth-date
@@ -504,9 +504,9 @@ components:
       style: simple
     RequestHeader_x-fapi-auth-date:
       description: The time when the customer last logged in to the Data Recipient
-        Software Product. Required for all resource calls (customer present and unattended)
-        if the customer is currently logged. Otherwise optional where the customer
-        has not logged in. Not to be included for unauthenticated calls.
+        Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required
+        for all resource calls (customer present and unattended). Not required for
+        unauthenticated calls.
       explode: false
       in: header
       name: x-fapi-auth-date

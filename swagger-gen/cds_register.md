@@ -35,6 +35,8 @@ $.ajax({
 
 Endpoint used by participants to discover the CDR Register OpenID configuration and obtain information needed to interact with it, including its OAuth 2.0 endpoint locations.
 
+This endpoint does not require CORS.
+
 ###Endpoint Version
 |   |  |
 |---|--|
@@ -127,6 +129,8 @@ $.ajax({
 `GET /jwks`
 
 JWKS endpoint containing the public keys used by the CDR Register to validate the signature of issued SSAs and authenticate outbound calls to participants in the CDR.
+
+This endpoint does not require CORS.
 
 ###Endpoint Version
 |   |  |

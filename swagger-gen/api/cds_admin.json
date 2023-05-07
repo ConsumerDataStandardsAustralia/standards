@@ -12,7 +12,7 @@
       "name": "MIT License",
       "url": "https://opensource.org/licenses/MIT"
     },
-    "version": "1.23.0"
+    "version": "1.24.0"
   },
   "servers": [
     {
@@ -117,7 +117,7 @@
           {
             "name": "period",
             "in": "query",
-            "description": "The period of metrics to be requested. Values can be CURRENT (meaning metrics for current day), HISTORIC (meaning metrics for previous days or months) or ALL. If absent the default is ALL.",
+            "description": "The period of metrics to be requested. Values can be CURRENT (meaning metrics for current period, dependent on the metric type), HISTORIC (meaning metrics for previous period, depending on the metric type) or ALL. If absent the default is ALL.",
             "schema": {
               "type": "string",
               "default": "ALL",
@@ -862,7 +862,7 @@
                 }
               }
             },
-            "description": "Rejection counts for all uauthenticated end points",
+            "description": "Rejection counts for all unauthenticated end points",
             "x-conditional": [
               "currentDay",
               "previousDays"
@@ -914,7 +914,7 @@
                 }
               }
             },
-            "description": "Number of calls resulting in a rejection due to server execution over time",
+            "description": "Number of calls rejected due to traffic thresholds over time",
             "x-conditional": [
               "currentDay",
               "previousDays"

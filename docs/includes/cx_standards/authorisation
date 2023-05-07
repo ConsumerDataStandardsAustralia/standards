@@ -1,4 +1,6 @@
-<h2 id='authorisation-standards'>Authorisation Standards</h2>
+<h2 id='authorisation-standards'>Authorisation Standards</h2><pre class="highlight diff tab-diff"><code>Added new Authorisation CX Standard:
+<span class="gi">+ Authorisation: Account selection functionality
+</span></code></pre>
 <table><thead>
 <tr>
 <th>Area</th>
@@ -8,6 +10,10 @@
 <tr>
 <td><strong>Authorisation:</strong><br/> Account selection</td>
 <td>Data holders <strong>MUST</strong> allow the consumer to select which of their accounts to share data from if the data request includes account-specific data and if there are multiple accounts available. The Data holder <strong>MAY</strong> omit this step if none of the data being requested is specific to an account (e.g. Saved Payees).</td>
+</tr>
+<tr>
+<td><strong>Authorisation:</strong><br/> Account selection functionality</td>
+<td><p>Data holders <strong>MAY</strong> include additional functionality to support account discovery and selection where further navigation or interaction is required to view all accounts. This may, for example, include search, sort, filter, scroll, grouping, and pagination, or other controls in line with existing consumer experiences. Any such functionality <strong>MUST NOT</strong> introduce unwarranted friction.</p><p><strong>Note:</strong> Unwarranted friction should have regard to CDR Rule 4.24 and is considered to include the addition of any requirements beyond normal data holder practices for an equivalent account selection process.</p></td>
 </tr>
 <tr>
 <td><strong>Authorisation:</strong><br/>Profile selection</td>

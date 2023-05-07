@@ -3,14 +3,14 @@ info:
   description: This specification defines the APIs for Data Holders exposing Dynamic
     Client Registration endpoints.
   title: CDR Dynamic Client Registration API
-  version: 1.23.0
+  version: 1.24.0
 servers:
 - url: https://data.holder.com.au/
 paths:
   /register:
     post:
-      description: Register a client using a CDR Register issued Software Statement
-        Assertion.
+      description: "Register a client using a CDR Register issued Software Statement\
+        \ Assertion. \n\nThis endpoint does not require CORS."
       operationId: PostDataRecipientRegistration
       requestBody:
         content:
