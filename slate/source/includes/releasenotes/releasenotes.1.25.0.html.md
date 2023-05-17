@@ -1,0 +1,61 @@
+---
+title: Consumer Data Standards - v1.25.0 Release Notes
+
+#language_tabs: # must be one of https://git.io/vQNgJ
+
+toc_footers:
+  - <a href='../../index.html'>Consumer Data Standards</a>
+
+search: false
+---
+
+# V1.25.0 Release Notes
+Release notes for version v1.25.0 of the [CDR Standards](../../index.html).
+
+## Changes Made
+### Change Requests
+
+This release addresses the following minor defects raised on [Standards Staging](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues):
+
+- None
+
+This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
+
+- [Standards Maintenance Issue 590 - Remove FAPI 1.0 draft references](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/590)
+
+### Decision Proposals
+
+This release addresses the following Decision Proposals published on [Standards](https://github.com/ConsumerDataStandardsAustralia/standards/issues):
+
+
+## Introduction
+
+No Change
+
+## High Level Standards
+
+No Change
+
+
+## API End Points
+
+No Change
+
+
+## Information Security Profile
+
+|Change|Description|Link|
+|------|-----------|----|
+| FAPI normative references | [**Standards Maintenance #590**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/590): Removed legacy draft FAPI references and legacy phasing ensuring all normative references for FAPI align to the final versions | [Security Profile](../../#security-profile) |
+
+## Consumer Experience
+
+No Change
+
+## Non Functional Requirements
+
+No Change
+
+## Known Issues
+
+No Change

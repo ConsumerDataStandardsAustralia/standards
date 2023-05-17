@@ -8,12 +8,16 @@ Data Recipients register with Data Holders according to **[[DCR]](#nref-DCR)** t
 As per **[[DCR]](#nref-DCR)**, a Software Statement is defined in as: _A digitally signed JSON Web Token (JWT) created in accordance with **[[JWT]](#nref-JWT)** that asserts metadata values about the client software_
 > An SSA is a digitally signed JSON Web Token (JWT) created in accordance with **[[JWT]](#nref-JWT)** that asserts metadata values about the client software.
 
+```diff
+Replaced FAPI draft references with FAPI 1.0 Final references
+```
+
 Such that:
 
 * The CDR Register **MUST** issue Software Statements to **active** Data Recipients for **active** Software Products
 * The CDR Register **MUST** issue distinct Software Statements for each `Software Product ID`
 * Software Statements are issued with a **10 minute** expiry time
-* As per **[[FAPI-RW-Draft]](#nref-FAPI-RW-Draft)**, SSAs are signed by the CDR Register using **PS256**
+* As per **[[FAPI-1.0-Advanced]](#nref-FAPI-1-0-Advanced)**, SSAs are signed by the CDR Register using **PS256**
 * CDR Register public keys are exposed on a dedicated JWKS URI endpoint
 * The CDR Register [JWKS endpoint](#get-jwks) is an unauthenticated endpoint, using TLS
 * Data Recipients **MUST** present a valid SSA when undertaking dynamic client registration
@@ -234,13 +238,20 @@ Accept: application/json
 }
 ```
 
+```diff
+Replaced FAPI draft references with FAPI 1.0 Final references
+```
 To register with a Data Holder, the Data Recipient sends an HTTP POST to the Data Holder registration endpoint.
 
 * The request **MUST** be presented in the format of a **[[RFC7519]](#nref-RFC7519)** compliant JWT.
 * The request **MUST** use the HTTP POST method, using the `application/jwt` content type.
-* The JWT **MUST** be signed using algorithms specified in [section 8.6](https://openid.net/specs/openid-financial-api-part-2.html#jws-algorithm-considerations) of **[[FAPI-RW-Draft]](#nref-FAPI-RW-Draft)**
+* The JWT **MUST** be signed using algorithms specified in [section 8.6](https://openid.net/specs/openid-financial-api-part-2.html#jws-algorithm-considerations) of **[[FAPI-1.0-Advanced]](#nref-FAPI-1-0-Advanced)**
 
 The client registration request **MUST** contain the following claims in the JWT payload unless designated as Optional:
+
+```diff
+Replaced FAPI draft references with FAPI 1.0 Final references
+```
 
 | Claim | Required | Description
 |--------------|-------|-----------------------------------------------------------------------------------------------
@@ -261,7 +272,7 @@ The client registration request **MUST** contain the following claims in the JWT
 |**authorization_signed_response_alg**| Conditional | The JWS alg algorithm required for signing authorization responses. If this is specified, the response will be signed using JWS and the configured algorithm. The algorithm “none” is not allowed.<br><br>Required if response_type of “code” is registered by the client.
 |**authorization_encrypted_response_alg**|Conditional|The JWE alg algorithm required for encrypting authorization responses. If unspecified, the default is that no encryption is performed.<br><br>Required if “authorization_encrypted_response_enc” is included.
 |**authorization_encrypted_response_enc**|Optional|The JWE enc algorithm required for encrypting authorization responses. If “authorization_encrypted_response_alg” is specified, the default for this value is “A128CBC-HS256”.
-|**request_object_signing_alg**| Optional | Algorithm which the ADR expects to sign the request object if a request object will be part of the authorization request sent to the Data Holder</br></br>If field not present in the request, data holders are expected to respond with an appropriate default value</br></br>Supported values as constrained by **[[FAPI-RW-Draft]](#nref-FAPI-RW-Draft)**
+|**request_object_signing_alg**| Optional | Algorithm which the ADR expects to sign the request object if a request object will be part of the authorization request sent to the Data Holder</br></br>If field not present in the request, data holders are expected to respond with an appropriate default value</br></br>Supported values as constrained by **[[FAPI-1.0-Advanced]](#nref-FAPI-1-0-Advanced)**
 |**software_statement**|	Required | Software statement assertion issued by the CDR Register
 
 #### ID Token Algorithm Selection Considerations
@@ -278,6 +289,10 @@ Participants **MUST** support, at a minimum, the following ID Token algorithms:
 Data Holders **MUST** support at a minimum, 1 algorithm for each claim.
 
 Data Recipients **MUST** support all the algorithms used in the ecosystem to ensure they can communicate with all Data Holders.
+
+```diff
+Replaced FAPI draft references with FAPI 1.0 Final references
+```
 
 ID Token algorithm considerations remain relevant where the OIDC Hybrid Flow is leveraged as defined in the Consumer Data Standards and in accordance with sections [5.1.1](https://openid.net/specs/openid-financial-api-part-2-1_0.html#id-token-as-detached-signature), [5.2.2.1](https://openid.net/specs/openid-financial-api-part-2-1_0.html#id-token-as-detached-signature-1), and [5.2.3.1](https://openid.net/specs/openid-financial-api-part-2-1_0.html#id-token-as-detached-signature-2) of **[[FAPI-1.0-Advanced]](#nref-FAPI-1-0-Advanced)**.
 
