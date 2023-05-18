@@ -32,7 +32,8 @@ This release addresses the following Decision Proposals published on [Standards]
 
 |Change|Description|Link|
 |------|-----------|----|
-| Removed legacy obligation dates | [**Standards Maintenance #586**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/590): Removed legacy obligation dates more than 6 months in the past. Addresses this issue [comment](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/586#issuecomment-1541298747)) | [Future Dated Obligations](../../#future-dated-obligations) |
+| Removed legacy obligation dates | [**Standards Maintenance #586**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/586): Removed legacy obligation dates more than 6 months in the past. Addresses this issue [comment](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/586#issuecomment-1541298747)) | [Future Dated Obligations](../../#future-dated-obligations) |
+| Added Data Holder Brands Summary API to endpoint schedule | **Standards Maintenance #586**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/586): Included the Get Data Holder Brands Summary API into the endpoint version schedule. Addresses this issue [comment](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/586#issuecomment-1552304480)) | [Endpoint Version Schedule](../../includes/endpoint-version-schedule/#endpoint-version-schedule) |
 
 ## High Level Standards
 
