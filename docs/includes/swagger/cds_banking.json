@@ -5092,7 +5092,7 @@
         "properties" : {
           "toUType" : {
             "description" : "The type of object provided that specifies the destination of the funds for the payment.",
-            "enum" : [ "accountId", "biller", "domestic", "international", "payeeId", "digitalWallet" ],
+            "enum" : [ "accountId", "biller", "digitalWallet", "domestic", "international", "payeeId" ],
             "type" : "string"
           },
           "accountId" : {
@@ -5105,11 +5105,6 @@
             "type" : "string",
             "x-cds-type" : "ASCIIString"
           },
-          "digitalWallet" : {
-            "description" : "Present if toUType is set to digitalWallet",
-            "type" : "string",
-            "x-cds-type" : "ASCIIString"
-          },
           "nickname" : {
             "description" : "The short display name of the payee as provided by the customer unless toUType is set to payeeId. Where a customer has not provided a nickname, a display name derived by the bank for payee should be provided that is consistent with existing digital banking channels",
             "type" : "string"
@@ -5117,6 +5112,9 @@
           "payeeReference" : {
             "description" : "The reference for the transaction, if applicable, that will be provided by the originating institution for the specific payment. If not empty, it overrides the value provided at the BankingScheduledPayment level.",
             "type" : "string"
+          },
+          "digitalWallet" : {
+            "$ref" : "#/components/schemas/BankingDigitalWalletPayee"
           },
           "domestic" : {
             "$ref" : "#/components/schemas/BankingDomesticPayee"

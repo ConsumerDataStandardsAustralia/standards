@@ -1694,9 +1694,14 @@ Obtain scheduled, outgoing payments for a specific account
               "toUType": "accountId",
               "accountId": "string",
               "payeeId": "string",
-              "digitalWallet": "string",
               "nickname": "string",
               "payeeReference": "string",
+              "digitalWallet": {
+                "name": "string",
+                "identifier": "string",
+                "type": "EMAIL",
+                "provider": "PAYPAL_AU"
+              },
               "domestic": {
                 "payeeAccountUType": "account",
                 "account": {
@@ -1932,9 +1937,14 @@ Obtain scheduled payments for multiple, filtered accounts that are the source of
               "toUType": "accountId",
               "accountId": "string",
               "payeeId": "string",
-              "digitalWallet": "string",
               "nickname": "string",
               "payeeReference": "string",
+              "digitalWallet": {
+                "name": "string",
+                "identifier": "string",
+                "type": "EMAIL",
+                "provider": "PAYPAL_AU"
+              },
               "domestic": {
                 "payeeAccountUType": "account",
                 "account": {
@@ -2161,9 +2171,14 @@ Obtain scheduled payments for a specified list of accounts
               "toUType": "accountId",
               "accountId": "string",
               "payeeId": "string",
-              "digitalWallet": "string",
               "nickname": "string",
               "payeeReference": "string",
+              "digitalWallet": {
+                "name": "string",
+                "identifier": "string",
+                "type": "EMAIL",
+                "provider": "PAYPAL_AU"
+              },
               "domestic": {
                 "payeeAccountUType": "account",
                 "account": {
@@ -5941,9 +5956,14 @@ This operation does not require authentication
               "toUType": "accountId",
               "accountId": "string",
               "payeeId": "string",
-              "digitalWallet": "string",
               "nickname": "string",
               "payeeReference": "string",
+              "digitalWallet": {
+                "name": "string",
+                "identifier": "string",
+                "type": "EMAIL",
+                "provider": "PAYPAL_AU"
+              },
               "domestic": {
                 "payeeAccountUType": "account",
                 "account": {
@@ -6067,9 +6087,14 @@ This operation does not require authentication
         "toUType": "accountId",
         "accountId": "string",
         "payeeId": "string",
-        "digitalWallet": "string",
         "nickname": "string",
         "payeeReference": "string",
+        "digitalWallet": {
+          "name": "string",
+          "identifier": "string",
+          "type": "EMAIL",
+          "provider": "PAYPAL_AU"
+        },
         "domestic": {
           "payeeAccountUType": "account",
           "account": {
@@ -6181,9 +6206,14 @@ This operation does not require authentication
     "toUType": "accountId",
     "accountId": "string",
     "payeeId": "string",
-    "digitalWallet": "string",
     "nickname": "string",
     "payeeReference": "string",
+    "digitalWallet": {
+      "name": "string",
+      "identifier": "string",
+      "type": "EMAIL",
+      "provider": "PAYPAL_AU"
+    },
     "domestic": {
       "payeeAccountUType": "account",
       "account": {
@@ -6254,9 +6284,14 @@ This operation does not require authentication
   "toUType": "accountId",
   "accountId": "string",
   "payeeId": "string",
-  "digitalWallet": "string",
   "nickname": "string",
   "payeeReference": "string",
+  "digitalWallet": {
+    "name": "string",
+    "identifier": "string",
+    "type": "EMAIL",
+    "provider": "PAYPAL_AU"
+  },
   "domestic": {
     "payeeAccountUType": "account",
     "account": {
@@ -6312,9 +6347,9 @@ This operation does not require authentication
 |toUType|string|mandatory|The type of object provided that specifies the destination of the funds for the payment.|
 |accountId|[ASCIIString](#common-field-types)|conditional|Present if toUType is set to accountId. Indicates that the payment is to another account that is accessible under the current consent|
 |payeeId|[ASCIIString](#common-field-types)|conditional|Present if toUType is set to payeeId. Indicates that the payment is to registered payee that can be accessed using the payee end point. If the Bank Payees scope has not been consented to then a payeeId should not be provided and the full payee details should be provided instead|
-|digitalWallet|[ASCIIString](#common-field-types)|conditional|Present if toUType is set to digitalWallet|
 |nickname|string|conditional|The short display name of the payee as provided by the customer unless toUType is set to payeeId. Where a customer has not provided a nickname, a display name derived by the bank for payee should be provided that is consistent with existing digital banking channels|
 |payeeReference|string|conditional|The reference for the transaction, if applicable, that will be provided by the originating institution for the specific payment. If not empty, it overrides the value provided at the BankingScheduledPayment level.|
+|digitalWallet|[BankingDigitalWalletPayee](#schemacdr-banking-apibankingdigitalwalletpayee)|conditional|none|
 |domestic|[BankingDomesticPayee](#schemacdr-banking-apibankingdomesticpayee)|conditional|none|
 |biller|[BankingBillerPayee](#schemacdr-banking-apibankingbillerpayee)|conditional|none|
 |international|[BankingInternationalPayee](#schemacdr-banking-apibankinginternationalpayee)|conditional|none|
@@ -6325,10 +6360,10 @@ This operation does not require authentication
 |---|---|
 |toUType|accountId|
 |toUType|biller|
+|toUType|digitalWallet|
 |toUType|domestic|
 |toUType|international|
 |toUType|payeeId|
-|toUType|digitalWallet|
 
 <h3 class="schema-toc" id="tocSbankingscheduledpaymentfrom">BankingScheduledPaymentFrom</h3>
 

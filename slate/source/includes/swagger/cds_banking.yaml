@@ -5604,6 +5604,11 @@ components:
       - beneficiaryDetails
       type: object
     BankingDigitalWalletPayee:
+      example:
+        identifier: identifier
+        provider: PAYPAL_AU
+        name: name
+        type: EMAIL
       properties:
         name:
           description: The name assigned to the digital wallet by the owner of the
@@ -5788,7 +5793,11 @@ components:
                   billerName: billerName
                   crn: crn
                   billerCode: billerCode
-                digitalWallet: digitalWallet
+                digitalWallet:
+                  identifier: identifier
+                  provider: PAYPAL_AU
+                  name: name
+                  type: EMAIL
                 payeeReference: payeeReference
                 toUType: accountId
                 nickname: nickname
@@ -5831,7 +5840,11 @@ components:
                   billerName: billerName
                   crn: crn
                   billerCode: billerCode
-                digitalWallet: digitalWallet
+                digitalWallet:
+                  identifier: identifier
+                  provider: PAYPAL_AU
+                  name: name
+                  type: EMAIL
                 payeeReference: payeeReference
                 toUType: accountId
                 nickname: nickname
@@ -5904,7 +5917,11 @@ components:
                   billerName: billerName
                   crn: crn
                   billerCode: billerCode
-                digitalWallet: digitalWallet
+                digitalWallet:
+                  identifier: identifier
+                  provider: PAYPAL_AU
+                  name: name
+                  type: EMAIL
                 payeeReference: payeeReference
                 toUType: accountId
                 nickname: nickname
@@ -5947,7 +5964,11 @@ components:
                   billerName: billerName
                   crn: crn
                   billerCode: billerCode
-                digitalWallet: digitalWallet
+                digitalWallet:
+                  identifier: identifier
+                  provider: PAYPAL_AU
+                  name: name
+                  type: EMAIL
                 payeeReference: payeeReference
                 toUType: accountId
                 nickname: nickname
@@ -6043,7 +6064,11 @@ components:
               billerName: billerName
               crn: crn
               billerCode: billerCode
-            digitalWallet: digitalWallet
+            digitalWallet:
+              identifier: identifier
+              provider: PAYPAL_AU
+              name: name
+              type: EMAIL
             payeeReference: payeeReference
             toUType: accountId
             nickname: nickname
@@ -6086,7 +6111,11 @@ components:
               billerName: billerName
               crn: crn
               billerCode: billerCode
-            digitalWallet: digitalWallet
+            digitalWallet:
+              identifier: identifier
+              provider: PAYPAL_AU
+              name: name
+              type: EMAIL
             payeeReference: payeeReference
             toUType: accountId
             nickname: nickname
@@ -6184,7 +6213,11 @@ components:
             billerName: billerName
             crn: crn
             billerCode: billerCode
-          digitalWallet: digitalWallet
+          digitalWallet:
+            identifier: identifier
+            provider: PAYPAL_AU
+            name: name
+            type: EMAIL
           payeeReference: payeeReference
           toUType: accountId
           nickname: nickname
@@ -6250,7 +6283,11 @@ components:
           billerName: billerName
           crn: crn
           billerCode: billerCode
-        digitalWallet: digitalWallet
+        digitalWallet:
+          identifier: identifier
+          provider: PAYPAL_AU
+          name: name
+          type: EMAIL
         payeeReference: payeeReference
         toUType: accountId
         nickname: nickname
@@ -6279,10 +6316,10 @@ components:
           enum:
           - accountId
           - biller
+          - digitalWallet
           - domestic
           - international
           - payeeId
-          - digitalWallet
           type: string
         accountId:
           description: Present if toUType is set to accountId. Indicates that the
@@ -6294,10 +6331,6 @@ components:
             is to registered payee that can be accessed using the payee end point.
             If the Bank Payees scope has not been consented to then a payeeId should
             not be provided and the full payee details should be provided instead
-          type: string
-          x-cds-type: ASCIIString
-        digitalWallet:
-          description: Present if toUType is set to digitalWallet
           type: string
           x-cds-type: ASCIIString
         nickname:
@@ -6312,6 +6345,8 @@ components:
             not empty, it overrides the value provided at the BankingScheduledPayment
             level.
           type: string
+        digitalWallet:
+          $ref: '#/components/schemas/BankingDigitalWalletPayee'
         domestic:
           $ref: '#/components/schemas/BankingDomesticPayee'
         biller:
@@ -7478,7 +7513,11 @@ components:
                 billerName: billerName
                 crn: crn
                 billerCode: billerCode
-              digitalWallet: digitalWallet
+              digitalWallet:
+                identifier: identifier
+                provider: PAYPAL_AU
+                name: name
+                type: EMAIL
               payeeReference: payeeReference
               toUType: accountId
               nickname: nickname
@@ -7521,7 +7560,11 @@ components:
                 billerName: billerName
                 crn: crn
                 billerCode: billerCode
-              digitalWallet: digitalWallet
+              digitalWallet:
+                identifier: identifier
+                provider: PAYPAL_AU
+                name: name
+                type: EMAIL
               payeeReference: payeeReference
               toUType: accountId
               nickname: nickname
@@ -7594,7 +7637,11 @@ components:
                 billerName: billerName
                 crn: crn
                 billerCode: billerCode
-              digitalWallet: digitalWallet
+              digitalWallet:
+                identifier: identifier
+                provider: PAYPAL_AU
+                name: name
+                type: EMAIL
               payeeReference: payeeReference
               toUType: accountId
               nickname: nickname
@@ -7637,7 +7684,11 @@ components:
                 billerName: billerName
                 crn: crn
                 billerCode: billerCode
-              digitalWallet: digitalWallet
+              digitalWallet:
+                identifier: identifier
+                provider: PAYPAL_AU
+                name: name
+                type: EMAIL
               payeeReference: payeeReference
               toUType: accountId
               nickname: nickname
