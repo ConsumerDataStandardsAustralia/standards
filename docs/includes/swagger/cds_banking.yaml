@@ -5788,6 +5788,7 @@ components:
                   billerName: billerName
                   crn: crn
                   billerCode: billerCode
+                digitalWallet: digitalWallet
                 payeeReference: payeeReference
                 toUType: accountId
                 nickname: nickname
@@ -5830,6 +5831,7 @@ components:
                   billerName: billerName
                   crn: crn
                   billerCode: billerCode
+                digitalWallet: digitalWallet
                 payeeReference: payeeReference
                 toUType: accountId
                 nickname: nickname
@@ -5902,6 +5904,7 @@ components:
                   billerName: billerName
                   crn: crn
                   billerCode: billerCode
+                digitalWallet: digitalWallet
                 payeeReference: payeeReference
                 toUType: accountId
                 nickname: nickname
@@ -5944,6 +5947,7 @@ components:
                   billerName: billerName
                   crn: crn
                   billerCode: billerCode
+                digitalWallet: digitalWallet
                 payeeReference: payeeReference
                 toUType: accountId
                 nickname: nickname
@@ -6039,6 +6043,7 @@ components:
               billerName: billerName
               crn: crn
               billerCode: billerCode
+            digitalWallet: digitalWallet
             payeeReference: payeeReference
             toUType: accountId
             nickname: nickname
@@ -6081,6 +6086,7 @@ components:
               billerName: billerName
               crn: crn
               billerCode: billerCode
+            digitalWallet: digitalWallet
             payeeReference: payeeReference
             toUType: accountId
             nickname: nickname
@@ -6178,6 +6184,7 @@ components:
             billerName: billerName
             crn: crn
             billerCode: billerCode
+          digitalWallet: digitalWallet
           payeeReference: payeeReference
           toUType: accountId
           nickname: nickname
@@ -6243,6 +6250,7 @@ components:
           billerName: billerName
           crn: crn
           billerCode: billerCode
+        digitalWallet: digitalWallet
         payeeReference: payeeReference
         toUType: accountId
         nickname: nickname
@@ -6274,6 +6282,7 @@ components:
           - domestic
           - international
           - payeeId
+          - digitalWallet
           type: string
         accountId:
           description: Present if toUType is set to accountId. Indicates that the
@@ -6285,6 +6294,10 @@ components:
             is to registered payee that can be accessed using the payee end point.
             If the Bank Payees scope has not been consented to then a payeeId should
             not be provided and the full payee details should be provided instead
+          type: string
+          x-cds-type: ASCIIString
+        digitalWallet:
+          description: Present if toUType is set to digitalWallet
           type: string
           x-cds-type: ASCIIString
         nickname:
@@ -6311,6 +6324,7 @@ components:
       x-conditional:
       - accountId
       - payeeId
+      - digitalWallet
       - domestic
       - biller
       - international
@@ -7464,6 +7478,7 @@ components:
                 billerName: billerName
                 crn: crn
                 billerCode: billerCode
+              digitalWallet: digitalWallet
               payeeReference: payeeReference
               toUType: accountId
               nickname: nickname
@@ -7506,6 +7521,7 @@ components:
                 billerName: billerName
                 crn: crn
                 billerCode: billerCode
+              digitalWallet: digitalWallet
               payeeReference: payeeReference
               toUType: accountId
               nickname: nickname
@@ -7578,6 +7594,7 @@ components:
                 billerName: billerName
                 crn: crn
                 billerCode: billerCode
+              digitalWallet: digitalWallet
               payeeReference: payeeReference
               toUType: accountId
               nickname: nickname
@@ -7620,6 +7637,7 @@ components:
                 billerName: billerName
                 crn: crn
                 billerCode: billerCode
+              digitalWallet: digitalWallet
               payeeReference: payeeReference
               toUType: accountId
               nickname: nickname

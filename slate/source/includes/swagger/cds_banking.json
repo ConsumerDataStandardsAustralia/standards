@@ -5092,7 +5092,7 @@
         "properties" : {
           "toUType" : {
             "description" : "The type of object provided that specifies the destination of the funds for the payment.",
-            "enum" : [ "accountId", "biller", "domestic", "international", "payeeId" ],
+            "enum" : [ "accountId", "biller", "domestic", "international", "payeeId", "digitalWallet" ],
             "type" : "string"
           },
           "accountId" : {
@@ -5102,6 +5102,11 @@
           },
           "payeeId" : {
             "description" : "Present if toUType is set to payeeId. Indicates that the payment is to registered payee that can be accessed using the payee end point. If the Bank Payees scope has not been consented to then a payeeId should not be provided and the full payee details should be provided instead",
+            "type" : "string",
+            "x-cds-type" : "ASCIIString"
+          },
+          "digitalWallet" : {
+            "description" : "Present if toUType is set to digitalWallet",
             "type" : "string",
             "x-cds-type" : "ASCIIString"
           },
@@ -5125,7 +5130,7 @@
         },
         "required" : [ "toUType" ],
         "type" : "object",
-        "x-conditional" : [ "accountId", "payeeId", "domestic", "biller", "international", "nickname", "payeeReference" ]
+        "x-conditional" : [ "accountId", "payeeId", "digitalWallet", "domestic", "biller", "international", "nickname", "payeeReference" ]
       },
       "BankingScheduledPaymentFrom" : {
         "description" : "Object containing details of the source of the payment. Currently only specifies an account ID but provided as an object to facilitate future extensibility and consistency with the to object",
