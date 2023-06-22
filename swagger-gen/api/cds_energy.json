@@ -3468,7 +3468,8 @@
                             "SHOULDER2",
                             "CONTROLLED_LOAD",
                             "SOLAR",
-                            "AGGREGATE"
+                            "AGGREGATE",
+                            "ALL_DAY"
                         ]
                     },
                     "description": {
@@ -3589,7 +3590,9 @@
                             "SHOULDER2",
                             "CONTROLLED_LOAD",
                             "SOLAR",
-                            "AGGREGATE"
+                            "AGGREGATE",
+                            "ALL_DAY",
+                            "EXCESS"
                         ]
                     },
                     "description": {

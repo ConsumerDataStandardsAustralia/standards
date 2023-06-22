@@ -8,4 +8,13 @@ This specification defines the APIs for Data Holders exposing Energy endpoints.
 <tr><td><a href='./includes/swagger/cds_energy.yaml'>Energy OpenAPI Specification (YAML)</a></td></tr>
 </table>
 
+```diff
+Added following ENUM values to EnergyBillingDemandTransaction.timeOfUseType field:
++ ALL_DAY
++ EXCESS
+
+Added following ENUM values to EnergyBillingUsageTransaction.timeOfUseType field:
++ ALL_DAY
+```
+
 <%= partial "includes/cds_energy.md" %>
