@@ -27,6 +27,8 @@ This release addresses the following change requests raised on [Standards Mainte
 
 This release addresses the following Decision Proposals published on [Standards](https://github.com/ConsumerDataStandardsAustralia/standards/issues):
 
+- [Decision Proposal TBC - Maintenance Iteration 15](https://github.com/ConsumerDataStandardsAustralia/standards/issues/TBC)
+- [Decision Proposal 288 - Non-Functional Requirements Revision](https://github.com/ConsumerDataStandardsAustralia/standards/issues/288)
 
 ## Introduction
 
@@ -34,6 +36,7 @@ No Change
 
 ## High Level Standards
 
+<<<<<<< HEAD
 No Change
 
 

@@ -1,10 +1,5 @@
 ## Authorisation Standards
 
-```diff
-Added new Authorisation CX Standard:
-+ Authorisation: Account selection functionality
-```
-
 |Area|CX Standard|
 |-------------------|------------------------------|
 |**Authorisation:**<br/> Account selection |Data holders **MUST** allow the consumer to select which of their accounts to share data from if the data request includes account-specific data and if there are multiple accounts available. The Data holder **MAY** omit this step if none of the data being requested is specific to an account (e.g. Saved Payees).|

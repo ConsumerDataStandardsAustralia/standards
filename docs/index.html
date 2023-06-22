@@ -1757,8 +1757,6 @@ This text is an example of a new addition to the standards:
 </span>This text is an example of text removed from the standards:
 <span class="gd">- Old text removed
 </span>Note: changes to request and response payloads are listed at the beginning of the relevant API section due to the documentation being auto generated from OpenAPI specification files.
-
-Additional note for v1.24.0: For this version only the delta statements from v1.23.0 have been retained in v1.24.0 as the release dates between the two versions were close together.  The affected delta statements will be noted as being associated with v1.23.0
 </code></pre>
 
 <p>These standards have been developed as part of the Australian Government&#39;s introduction of the <a href="https://www.accc.gov.au/focus-areas/consumer-data-right" title="ACCC Consumer Data Right webpage">Consumer Data Right</a> legislation to give Australians greater control over their data.</p>
@@ -1778,14 +1776,14 @@ Additional note for v1.24.0: For this version only the delta statements from v1.
 
 <h2 id='version'>Version</h2>
 
-<p>These standards represent version 1.24.0 of the high level standards.  See the <a href="#versioning">versioning section</a> for more information on how versions are managed in the standard.</p>
+<p>These standards represent version 1.25.0 of the high level standards.  See the <a href="#versioning">versioning section</a> for more information on how versions are managed in the standard.</p>
 
 <h2 id='interpretation'>Interpretation</h2>
 
 <p>Note that, in these standards, the key words <strong>MUST</strong>, <strong>MUST NOT</strong>, <strong>REQUIRED</strong>, <strong>SHALL</strong>, <strong>SHALL NOT</strong>, <strong>SHOULD</strong>, <strong>SHOULD NOT</strong>, <strong>RECOMMENDED</strong>, <strong>MAY</strong>, and <strong>OPTIONAL</strong> are to be interpreted as described in <strong><a href="#nref-RFC2119">[RFC2119]</a></strong>.</p>
 
-<h2 id='future-dated-obligations'>Future Dated Obligations</h2><pre class="highlight diff tab-diff"><code>Added Future Dated Obligation for Get Generic Plan Detail V2 and Get Energy Account Detail V3
-</code></pre>
+<h2 id='future-dated-obligations'>Future Dated Obligations</h2>
+
 <p>The standards, as published from time to time, may include specific statements indicating that a specific section of the standards will not take effect until a future date or may cease to have effect on some future date.</p>
 
 <p>The table below highlights these areas of the standards.</p>
@@ -1971,10 +1969,8 @@ Additional note for v1.24.0: For this version only the delta statements from v1.
 
 <p>The actual release dates for the Register APIs are expected to occur prior to these dates and are not defined by the Standards.</p>
 
-<h2 id='endpoint-version-schedule'>Endpoint Version Schedule</h2><pre class="highlight diff tab-diff"><code>Updated version schedule for following Energy APIs:
- Get Generic Plan Detail
- Get Energy Account Detail 
-</code></pre>
+<h2 id='endpoint-version-schedule'>Endpoint Version Schedule</h2>
+
 <p>A table-view of all endpoint versioning is available <a href='includes/endpoint-version-schedule/#endpoint-version-schedule'>here</a>.</p>
 
 <h2 id='normative-references'>Normative References</h2>
@@ -2959,8 +2955,7 @@ For instance, if a Data Holder holds data in digital form for a Customer that is
 
 <p>The only exception to this, unless explicitly stated, is normative standards. The requirements for expressing arrays within those normative standards apply per the normative references.</p>
 
-<h2 id='common-field-types'>Common Field Types</h2><pre class="highlight diff tab-diff"><code>Added actual % values represented by examples for RateString field type
-</code></pre>
+<h2 id='common-field-types'>Common Field Types</h2>
 <p>The following table outlines the common data types for fields used in the standard.</p>
 
 <table><thead>
@@ -3138,11 +3133,7 @@ obtain detail for that resource or to change the state of the resource.</li>
 <li>In payloads the field name of “id” should NEVER be used. Each ID field should be meaningfully named so that wherever that ID is used across multiple end points it always refers to the same ID set. For instance, the IDs for accounts would be represented in JSON in a field named “accountId”.</li>
 </ul>
 
-<h2 id='error-codes'>Error Codes</h2><pre class="highlight diff tab-diff"><code>Replaced following in description of 'Invalid Page Size':
-<span class="gd">- page_size
-</span>with:
-<span class="gi">+ page-size
-</span></code></pre>
+<h2 id='error-codes'>Error Codes</h2>
 <p>These standards define a standard list of error codes that Data Recipient Software Products and Data Holders <strong>SHOULD</strong> or <strong>MUST</strong> conform to. Further,</p>
 
 <ul>
@@ -4329,9 +4320,8 @@ The standards in this section outline requirements that apply when a disclosure 
 </tr>
 </tbody></table>
 
-<h2 id='authorisation-standards'>Authorisation Standards</h2><pre class="highlight diff tab-diff"><code>Added new Authorisation CX Standard:
-<span class="gi">+ Authorisation: Account selection functionality
-</span></code></pre>
+<h2 id='authorisation-standards'>Authorisation Standards</h2>
+
 <table><thead>
 <tr>
 <th>Area</th>
@@ -4864,7 +4854,7 @@ grant_type=client_credentials&amp;
 <li>Authorisation Servers <strong>MUST</strong> support the authentication of clients using the <code>private_key_jwt</code> Client Authentication method specified at <a href="https://openid.net/specs/openid-connect-core-1_0.html#ClientAuthentication">section 9</a> of <strong><a href="#nref-OIDC">[OIDC]</a></strong>.</li>
 <li>The <code>private_key_jwt</code> authentication method is enabled through the delivery of an encoded <strong><a href="#nref-JWT">[JWT]</a></strong> signed using the Data Recipient Software Product&#39;s private key and thus facilitates non-repudiation.</li>
 <li>Client public keys are obtained from the <strong><a href="#nref-JWKS">[JWKS]</a></strong> endpoints.</li>
-<li>For the client authentication assertion, the <strong><a href="#nref-JWT">[JWT]</a></strong> represents an assertion that <strong>MUST</strong> contain the following REQUIRED Claim Values and <strong>MAY</strong> contain the following OPTIONAL Claim Values:
+<li><p>For the client authentication assertion, the <strong><a href="#nref-JWT">[JWT]</a></strong> represents an assertion that <strong>MUST</strong> contain the following REQUIRED Claim Values and <strong>MAY</strong> contain the following OPTIONAL Claim Values:</p>
 
 <ul>
 <li><code>iss</code> - REQUIRED. Issuer Identifier for the Issuer of the response. The client ID of the bearer.</li>
@@ -4874,17 +4864,11 @@ grant_type=client_credentials&amp;
 <li><code>exp</code> - REQUIRED. Expiration time on or after which the ID Token <strong>MUST NOT</strong> be accepted for processing. Value is a JSON number representing the number of seconds from 1970-01-01T00:00:00Z to the UTC expiry time.</li>
 <li><code>iat</code> - OPTIONAL. Time at which the JWT was issued. Value is a JSON number representing the number of seconds from 1970-01-01T00:00:00Z to the UTC issued at time.</li>
 </ul></li>
-</ul>
-
-<pre class="highlight diff tab-diff"><code>Updated the requirements for the client_id claim. It is now recommended the client_id be provided until November 13th 2023. After which it is optional for clients to provide this claim. It is then beholden on the CDR Register and Data Holders to permit client authentication where the client omits the client_id claim. This facilitates Data Holders seeking FAPI compliance by supporting Private Key JWT client authentication as per [RFC7521].
-</code></pre>
-
-<ul>
 <li><p>The aforementioned assertion <strong>MUST</strong> be sent to the Authorisation Server&#39;s Token endpoint with the <code>POST</code> method and <strong>MUST</strong> include the following REQUIRED parameters, <strong>SHOULD</strong> include the following RECOMMENDED parameters and <strong>MAY</strong> contain the following OPTIONAL parameters:</p>
 
 <ul>
 <li><code>grant_type</code> - REQUIRED. The grant type(s) supported by the Authorisation Server.<br></li>
-<li><code>client_id</code> - 
+<li><code>client_id</code> -
 
 <ul>
 <li><strong>Until November 13th 2023</strong><br/>RECOMMENDED. The client ID of the bearer.</li>
@@ -5332,10 +5316,7 @@ grant_type=client_credentials&amp;
 </tbody></table>
 
 <p>Get Software Statement Assertion API <a href="includes/obsolete/get-software-statement-assertion-v1.html">v1</a> &amp; <a href="includes/obsolete/get-software-statement-assertion-v2.html">v2</a> has the scope claim explicitly defined.</p>
-<h3 id='registration-request-using-jwt'>Registration Request using JWT</h3><pre class="highlight diff tab-diff"><code>**v1.23.0 Change**
-Removed following requirement from id_token_encrypted_response_alg and id_token_encrypted_response_enc fields:
-<span class="gd">- Must be ignored for Authorization Code Flow
-</span></code></pre>
+<h3 id='registration-request-using-jwt'>Registration Request using JWT</h3>
 <blockquote>
 <p>Example Request
 Client registration with OpenID Hybrid Flow</p>
@@ -6172,9 +6153,7 @@ Data Holders <strong>SHOULD</strong> explicitly capture Claims requested by the 
 <li>The <code>c_hash</code> value <strong>MUST</strong> be generated according to <a href="https://openid.net/specs/openid-connect-core-1_0.html#HybridIDToken">section 3.3.2.11</a> of <strong><a href="#nref-OIDC">[OIDC]</a></strong>.</li>
 <li>The <code>s_hash</code> value <strong>MUST</strong> be generated according to <a href="https://openid.net/specs/openid-financial-api-part-2-1_0.html#id-token-as-detached-signature">section 5.1.1</a> of <strong><a href="#nref-FAPI-1-0-Advanced">[FAPI-1.0-Advanced]</a></strong>.</li>
 </ul>
-<h4 id='authorization-code-flow-requirements'>Authorization Code Flow requirements</h4><pre class="highlight diff tab-diff"><code>**v1.23.0 Change**
-Authorization Code Flow requirements: Removed requirement stating ID tokens MUST NOT be encrypted
-</code></pre>
+<h4 id='authorization-code-flow-requirements'>Authorization Code Flow requirements</h4>
 <p>For <code>response_type</code> <code>code</code>, in accordance with <strong><a href="#nref-FAPI-1-0-Advanced">[FAPI-1.0-Advanced]</a></strong>, ID Tokens <strong>MUST</strong> be signed when returned to a Data Recipient Software Product from the Token End Point.</p>
 <h3 id='access-token'>Access Token</h3>
 <p>Access Tokens <strong>MUST</strong> be used as specified in <a href="https://tools.ietf.org/html/rfc6749#section-10.3">section 10.3</a> of <strong><a href="#nref-OAUTH2">[OAUTH2]</a></strong>.</p>
@@ -6398,16 +6377,7 @@ client_id=s6BhdRkqt3
 <li>  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384</li>
 </ul>
 
-<h2 id='certificate-management'>Certificate Management</h2><pre class="highlight diff tab-diff"><code>Made following changes to Certificate Signing Request Profile table:
-<span class="gi">+ Included additional fields that can be provided in a CSR
-+ Changed 'Common Name' to 'Software Product Name' only for client certificate
-+ Changed 'Organization' to include the Brand Name only
-+ Added column indication which fields are  mandatory
-+ Included a statement noting that if optional fields are required then they will be validated to ensure correctness
-</span>
-Replaced test enviroment details from Certificate Trust Model table with following:
-<span class="gi">+ Details provided to participants when they begin CTS process
-</span></code></pre><h3 id='issued-by-the-register-for-data-holders'>Issued by the Register for Data Holders</h3>
+<h2 id='certificate-management'>Certificate Management</h2><h3 id='issued-by-the-register-for-data-holders'>Issued by the Register for Data Holders</h3>
 <table><thead>
 <tr>
 <th>Certificate</th>
@@ -6421,13 +6391,7 @@ Replaced test enviroment details from Certificate Trust Model table with followi
 <td>It will be up to the DH on how these endpoints are segregated. They may all be on the one domain (so only one certificate required) or could be separated.</td>
 </tr>
 </tbody></table>
-<pre class="highlight diff tab-diff"><code>Fixed documentation issues in the Server Certificate(s) row of the `Issued by the Register CA for Data Recipients` table:
-Replaced following:
-<span class="gd">-Revocation endpoint
--CDR Arrangement Management endpoint
-</span>with:
-<span class="gi">+CDR Arrangement Revocation endpoint
-</span></code></pre><h3 id='issued-by-the-register-ca-for-data-recipients'>Issued by the Register CA for Data Recipients</h3>
+<h3 id='issued-by-the-register-ca-for-data-recipients'>Issued by the Register CA for Data Recipients</h3>
 <table><thead>
 <tr>
 <th>Certificate</th>
@@ -6446,12 +6410,7 @@ Replaced following:
 <td>ADRs may choose to secure their <a href="https://consumerdatastandardsaustralia.github.io/standards/#end-points">endpoints</a> with the Register CA issued certificate or a certificate issued by a public CA.</td>
 </tr>
 </tbody></table>
-<pre class="highlight diff tab-diff"><code>Corrected typo in description of `CDR Certificate Authority` section:
-Replaced:
-<span class="gd">-the the Register
-</span>with:
-<span class="gi">+the ACCC Register
-</span></code></pre><h3 id='cdr-certificate-authority'>CDR Certificate Authority</h3>
+<h3 id='cdr-certificate-authority'>CDR Certificate Authority</h3>
 <p><a href="https://www.digicert.com">DigiCert</a> acts as the certificate authority that issues and manages certificates to CDR participants as directed by the ACCC Register in its capacity as the CDR Registrar.</p>
 <h3 id='certificate-trust-model'>Certificate Trust Model</h3>
 <p>The CDR utilises a private certificate trust chain for all Register CA secured endpoints being hosted by <a href="#participant-endpoints">Data Holders</a>, <a href="#participant-endpoints">Data Recipients</a> and the <a href="#consumer-data-right-cdr-register-apis">Register</a>.</p>
@@ -6758,12 +6717,9 @@ Replaced:
 <li>  Data Recipients Software Products <strong>MUST</strong> support <strong><a href="#nref-PKCE">[PKCE]</a></strong> (<strong><a href="#nref-RFC7636">[RFC7636]</a></strong>) and <strong>MUST</strong> use S256 as the code challenge method.</li>
 </ul>
 
-<p><h2 id='security-endpoints'>Security Endpoints</h2><pre class="highlight diff tab-diff"><code>Added statements noting CORS is not required for the following:
- * OpenID Provider Configuration End Point
- * Authorisation End Point
- * JSON Web Key Set End Point 
-</code></pre>
-<h3 id='openid-provider-configuration-end-point'>OpenID Provider Configuration End Point</h3></p>
+<h2 id='security-endpoints'>Security Endpoints</h2>
+
+<h3 id='openid-provider-configuration-end-point'>OpenID Provider Configuration End Point</h3>
 
 <blockquote>
 <p>Non-Normative Example</p>
@@ -7705,8 +7661,7 @@ Host: cdr.register
 <tr><td><a href='./includes/swagger/cds_dcr.json'>DCR OpenAPI Specification (JSON)</a></td></tr>
 <tr><td><a href='./includes/swagger/cds_dcr.yaml'>DCR OpenAPI Specification (YAML)</a></td></tr>
 </table></p>
-<pre class="highlight diff tab-diff"><code>Added statement noting CORS is not required for the Register Data Recipient oAuth Client API
-</code></pre>
+
 <h2 id='register-data-recipient-oauth-client'>Register Data Recipient oAuth Client</h2>
 
 <p><a id="opIdPostDataRecipientRegistration"></a></p>
@@ -8930,10 +8885,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h1 id='register-apis'>Register APIs</h1>
 <p>The following section provides an overview of the Register APIs for Data Holders and Data Recipients to collect participant metadata.
 These endpoints are exposed by the Register and consumed by Data Holders and Data Recipients.</p>
-<pre class="highlight diff tab-diff"><code>Added statements noting CORS is not required for the following APIs:
- * Get OpenId Provider Config
- * Get JWKS
-</code></pre>
+
 <aside class="warning">
   These endpoints are not implemented by Data Holders and Data Recipients. They are hosted by the Register for consumption by participants.
   Data Holders and Data Recipient Software Products are required to call these endpoints to obtain metadata that enables connection and registration between participants as well as obtaining the status of participants in the CDR.
@@ -12823,12 +12775,8 @@ This operation does not require authentication
 <li><strong>Large Payload</strong>: An API which is capable of returning a large data response that would reasonably impose higher data retrieval times on the resource server. Typically bulk request end points.</li>
 </ul>
 
-<h2 id='session-requirements'>Session Requirements</h2><pre class="highlight diff tab-diff"><code>Corrected following typo:
-Replaced:
-<span class="gd">- A expiry time of a unique...
-</span>with:
-<span class="gi">+ The expiry time of a unique...
-</span></code></pre>
+<h2 id='session-requirements'>Session Requirements</h2>
+
 <p>The expiry time of a unique session should be set according to the statements included in the <a href="#security-profile">Security Profile</a>.</p>
 
 <p>After a unique session is expired it is expected that the Data Recipient Software Product, for the same customer, may establish a new session as long as the authorisation is still valid.</p>
@@ -12852,21 +12800,8 @@ Replaced:
 
 <p>The unavailability of a secondary data holder will mean that some requests cannot be fulfilled by a data holder making a Shared Responsibility Data Request.  This will not be taken to mean that the data holder is unavailable.</p>
 
-<h2 id='performance-requirements'>Performance Requirements</h2><pre class="highlight diff tab-diff"><code>Listed specific APIs in the `Unattended` section
+<h2 id='performance-requirements'>Performance Requirements</h2>
 
-Fixed incorrect Energy API names replacing:
-<span class="gd">- Get Accounts
-- Get Account Detail 
-- Get Balance For Account
-- Get Bulk Balances
-- Get Balances For Specific Accounts
-</span>with:
-<span class="gi">+ Get Energy Accounts
-+ Get Energy Account Detail
-+ Get Balance For Energy Account
-+ Get Bulk Balances for Energy
-+ Get Balances For Specific Energy Accounts
-</span></code></pre>
 <p>API end point performance will be measured in response time of individual API requests from receipt of request to delivery of response.</p>
 
 <p>It is understood that different response times can be measured depending on which technical layer of an API implementation stack is instrumented and that not all of the technical layers between the Data Recipient Software Product and the Data Holder will be in the control of the Data Holder.  As this is implementation specific it is expected that the Data Holder will ensure that the measurement of response time occurs as close to the Data Recipient Software Product as practicable.</p>
@@ -12876,8 +12811,7 @@ Fixed incorrect Energy API names replacing:
 <p><strong>95% of calls per hour responded to within a nominated threshold</strong></p>
 
 <p>The nominated threshold for each end point will be according to the following table:</p>
-<pre class="highlight plaintext"><code>Corrected the requirement for the Large Payload tier to remove reference to unattended calls
-</code></pre>
+
 <table><thead>
 <tr>
 <th>Tier</th>
@@ -13043,14 +12977,7 @@ Fixed incorrect Energy API names replacing:
 <tr><td><a href='./includes/swagger/cds_banking.json'>Banking OpenAPI Specification (JSON)</a></td></tr>
 <tr><td><a href='./includes/swagger/cds_banking.yaml'>Banking OpenAPI Specification (YAML)</a></td></tr>
 </table></p>
-<pre class="highlight diff tab-diff"><code>Updated description of `BankingAccountDetailV3.lendingRates` field
-from:
-<span class="gd">- Fully described deposit rates for this account based on the equivalent structure in Product Reference
-</span>to:
-<span class="gi">+ Fully described lending rates for this account based on the equivalent structure in Product Reference
-</span>
-Corrected various spelling and grammatical mistakes
-</code></pre>
+
 <h2 id='get-accounts'>Get Accounts</h2>
 
 <p><a id="opIdlistAccounts"></a></p>
@@ -25298,18 +25225,10 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<p><h2 id='product-amp-account-components'>Product &amp; Account Components</h2><pre class="highlight diff tab-diff"><code>Updated description of &#39;PENSION_RECIPIENT&#39; value in 
-&#39;Product Eligibility Types&#39; table from:
-<span class="gd">- A recipient of a government pension may apply for the product 
-</span>to:
-<span class="gi">+ Only a recipient of a government pension may apply for the product
-</span>and &#39;Product Discount Eligibility Types&#39; table from:
-<span class="gd">- A recipient of a government pension may receive the discount
-</span>to:
-<span class="gi">+ Only a recipient of a government pension may receive the discount
-</span></code></pre>
+<h2 id='product-amp-account-components'>Product &amp; Account Components</h2>
+
 <p><a id="productfeaturetypedoc"></a>
-<h3 id="tocSproductfeaturetypedoc">Product Feature Types</h3></p></p>
+<h3 id="tocSproductfeaturetypedoc">Product Feature Types</h3></p>
 
 <p>Description of the usage of the featureType field as it applies to products.</p>
 
@@ -25905,40 +25824,7 @@ This operation does not require authentication
 <tr><td><a href='./includes/swagger/cds_energy.json'>Energy OpenAPI Specification (JSON)</a></td></tr>
 <tr><td><a href='./includes/swagger/cds_energy.yaml'>Energy OpenAPI Specification (YAML)</a></td></tr>
 </table>
-<pre class="highlight diff tab-diff"><code>Bug Fix: Removed 'x-fapi-interaction-id' from response headers of Get Energy Plans and Get Energy Plan Details APIs
 
-Updated the versions of the following APIs:
-<span class="gi">+ Get Generic Plan Detail from v1 to v2
-+ Get Energy Account Detail from v2 to v3
-</span>
-Updated the following structures
-from:
-<span class="gd">- EnergyPlanSolarFeedInTariff
-- EnergyPlanContract
-- EnergyAccountDetailV2
-- EnergyAccountDetailResponseV2
-- EnergyPlanContractFull
-- EnergyPlanDetail
-- EnergyPlanResponse
-</span>
-to:
-<span class="gi">+ EnergyPlanSolarFeedInTariffV2
-+ EnergyPlanContractV2
-+ EnergyAccountDetailV3
-+ EnergyAccountDetailResponseV3
-+ EnergyPlanContractFullV2
-+ EnergyPlanDetailV2
-+ EnergyPlanResponseV2
-</span>
-Added following to EnergyPlanSolarFeedInTariffV2:
-<span class="gi">+ rates object
-+ startDate field
-+ endDate field
-</span>
-Standardised 'post codes' to 'postcodes'
-
-Corrected various spelling and grammatical mistakes
-</code></pre>
 <h2 id='get-generic-plans'>Get Generic Plans</h2>
 
 <p><a id="opIdlistPlans"></a></p>
@@ -43804,8 +43690,7 @@ Note that the standards for the telecommunications sector are currently in draft
 <tr><td><a href='./includes/swagger/cds_telco.json'>Telco OpenAPI Specification (JSON)</a></td></tr>
 <tr><td><a href='./includes/swagger/cds_telco.yaml'>Telco OpenAPI Specification (YAML)</a></td></tr>
 </table>
-<pre class="highlight diff tab-diff"><code>Corrected various spelling and grammatical mistakes
-</code></pre>
+
 <h2 id='get-telco-products'>Get Telco Products</h2>
 
 <p><a id="opIdlistProducts"></a></p>
@@ -56573,7 +56458,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Summary of messaging. Required if messaging services is included in the product plan</td>
 </tr>
 </tbody></table>
-<p>common</p>
 <h1 id='common-apis'>Common APIs</h1>
 <p>This specification defines the Common APIs that apply to Data Holders multiple sectors.</p>
 
@@ -56582,8 +56466,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr><td><a href='./includes/swagger/cds_common.json'>Common OpenAPI Specification (JSON)</a></td></tr>
 <tr><td><a href='./includes/swagger/cds_common.yaml'>Common OpenAPI Specification (YAML)</a></td></tr>
 </table></p>
-<pre class="highlight diff tab-diff"><code>Updated x-fapi-auth-date definitions to be aligned to the HTTP Headers section and Banking APIs
-</code></pre>
+
 <h2 id='get-customer'>Get Customer</h2>
 
 <p><a id="opIdgetCustomer"></a></p>
@@ -59221,18 +59104,7 @@ This operation does not require authentication
 <tr><td><a href='./includes/swagger/cds_admin.json'>Admin OpenAPI Specification (JSON)</a></td></tr>
 <tr><td><a href='./includes/swagger/cds_admin.yaml'>Admin OpenAPI Specification (YAML)</a></td></tr>
 </table></p>
-<pre class="highlight diff tab-diff"><code>Corrected spelling mistake in description of 'RejectionMetricsV2.unauthenticated' field:
-<span class="gd">- Rejection counts for all uauthenticated end points 
-</span><span class="gi">+ Rejection counts for all unauthenticated end points
-</span>
-Updated description of 'period' parameter of Get Metrics API:
-<span class="gd">- Values can be CURRENT (meaning metrics for current day), HISTORIC (meaning metrics for previous days or months) or ALL...
-</span><span class="gi">+ Values can be CURRENT (meaning metrics for current period, dependent on the metric type), HISTORIC (meaning metrics for previous period, depending on the metric type) or ALL...
-</span>
-Updated description of 'SecondaryHolderMetrics.rejections':
-<span class="gd">- Number of calls resulting in a rejection due to server execution over time
-</span><span class="gi">+ Number of calls rejected due to traffic thresholds over time
-</span></code></pre>
+
 <h2 id='metadata-update'>Metadata Update</h2>
 
 <p><a id="opIdmetadataUpdate"></a></p>
@@ -65432,6 +65304,12 @@ This operation may only be called by an Energy Retailer using the information se
 </tr>
 </thead><tbody>
 <tr>
+<td>TBC</td>
+<td>1.25.0</td>
+<td>Changes arising from Decision TBC (Maintenance iteration 15) and Decision 288 (Metrics and NFRs)</td>
+<td>See <a href="includes/releasenotes/releasenotes.1.25.0.html">release notes</a>, <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/TBC">Decision TBC</a> and <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/288">Decision 288</a> for details.</td>
+</tr>
+<tr>
 <td>07/05/2023</td>
 <td>1.24.0</td>
 <td>Changes arising from Decision 281 (Maintenance iteration 14)</td>
@@ -65881,6 +65759,11 @@ This operation may only be called by an Energy Retailer using the information se
 </tr>
 </thead><tbody>
 <tr>
+<td><a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.24.0/'>07/05/2023</a></td>
+<td>1.24.0</td>
+<td><a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.24.0/'>Changes arising from Decision 281 (Maintenance iteration 14)</a></td>
+</tr>
+<tr>
 <td><a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.23.0/'>24/04/2023</a></td>
 <td>1.23.0</td>
 <td><a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.23.0/'>Changes arising from Decision Proposal 298</a></td>
@@ -65888,7 +65771,7 @@ This operation may only be called by an Energy Retailer using the information se
 <tr>
 <td><a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.22.1/'>22/03/2023</a></td>
 <td>1.22.1</td>
-<td><a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.22.1/'>Changes arising from Change Request 576 (Maintenance iteration 14)</a></td>
+<td><a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.22.1/'>Patch release including updates to draft Telco standards</a></td>
 </tr>
 <tr>
 <td><a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.22.0/'>22/12/2022</a></td>
