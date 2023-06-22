@@ -1,44 +1,17 @@
 
 ## Certificate Management
 
-```diff
-Made following changes to Certificate Signing Request Profile table:
-+ Included additional fields that can be provided in a CSR
-+ Changed 'Common Name' to 'Software Product Name' only for client certificate
-+ Changed 'Organization' to include the Brand Name only
-+ Added column indication which fields are  mandatory
-+ Included a statement noting that if optional fields are required then they will be validated to ensure correctness
-
-Replaced test enviroment details from Certificate Trust Model table with following:
-+ Details provided to participants when they begin CTS process
-```
-
 ### Issued by the Register for Data Holders
 Certificate | Function | Notes
 -----------|------------------------------------------|------------------------------
 |**Server Certificate(s)**|	Certificate is issued to a FQDN</br></br>Secures the following endpoints:</br>- Resource endpoints</br>- InfoSec endpoints</br>- Admin endpoints | It will be up to the DH on how these endpoints are segregated. They may all be on the one domain (so only one certificate required) or could be separated.
 
-```diff
-Fixed documentation issues in the Server Certificate(s) row of the `Issued by the Register CA for Data Recipients` table:
-Replaced following:
--Revocation endpoint
--CDR Arrangement Management endpoint
-with:
-+CDR Arrangement Revocation endpoint
-```
 ### Issued by the Register CA for Data Recipients
 Certificate | Function | Notes
 -----------|------------------------------------------|------------------------------
 |**Client Certificate**| Secures the following:</br>- Consuming Register APIs</br>- Consuming Data Holder APIs
 |**Server Certificate(s)**|	Certificate is issued to a FQDN.<br/>Secures the following:</br>- CDR Arrangement Revocation endpoint </br>- JWKS endpoint | ADRs may choose to secure their [endpoints](https://consumerdatastandardsaustralia.github.io/standards/#end-points) with the Register CA issued certificate or a certificate issued by a public CA.
 
-```diff
-Corrected typo in description of `CDR Certificate Authority` section:
-Replaced:
--the the Register
-with:
-+the ACCC Register
-```
 ### CDR Certificate Authority
 [DigiCert](https://www.digicert.com) acts as the certificate authority that issues and manages certificates to CDR participants as directed by the ACCC Register in its capacity as the CDR Registrar.
 

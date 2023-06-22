@@ -4,8 +4,9 @@ The following table lists archived versions of the Consumer Data Standards.  The
 
 |Releases Date|Version|Description|
 |-------------|-------|-----------|
+|<a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.24.0/'>07/05/2023</a>|1.24.0|<a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.24.0/'>Changes arising from Decision 281 (Maintenance iteration 14)</a>|
 |<a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.23.0/'>24/04/2023</a>|1.23.0|<a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.23.0/'>Changes arising from Decision Proposal 298</a>|
-|<a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.22.1/'>22/03/2023</a>|1.22.1|<a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.22.1/'>Changes arising from Change Request 576 (Maintenance iteration 14)</a>|
+|<a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.22.1/'>22/03/2023</a>|1.22.1|<a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.22.1/'>Patch release including updates to draft Telco standards</a>|
 |<a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.22.0/'>22/12/2022</a>|1.22.0|<a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.22.0/'>Changes arising from Decision 271 (Maintenance iteration 13)</a>|
 |<a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.21.0/'>16/12/2022</a>|1.21.0|<a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.21.0/'>Changes arising from Decision 282</a>|
 |<a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.20.0/'>13/11/2022</a>|1.20.0|<a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.20.0/'>Changes arising from Decision 259 (Maintenance iteration 12)</a>|
