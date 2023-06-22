@@ -94,10 +94,10 @@
             "name": "x-v",
             "in": "header",
             "description": "The version of the API end point requested by the client. Must be set to a positive integer. For backwards compatiblity defaults to 1 if absent. Note that once version 1 is decommissioned the header will be mandatory for a valid response to be obtained",
+            "required": true,
             "schema": {
-              "type": "integer",
-              "default": 1,
-              "x-cds-type": "PositiveInteger"
+              "type": "string",
+              "default": "1"
             }
           },
           {
@@ -105,8 +105,7 @@
             "in": "header",
             "description": "The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided.",
             "schema": {
-              "type": "integer",
-              "x-cds-type": "PositiveInteger"
+              "type": "string"
             }
           },
           {
@@ -126,7 +125,8 @@
               "type": "integer",
               "x-cds-type": "PositiveInteger",
               "default": 1
-            }
+            },
+            "x-cds-type": "PositiveInteger"
           },
           {
             "name": "page-size",
@@ -136,7 +136,8 @@
               "type": "integer",
               "x-cds-type": "PositiveInteger",
               "default": 25
-            }
+            },
+            "x-cds-type": "PositiveInteger"
           }
         ],
         "responses": {
@@ -146,8 +147,7 @@
               "x-v": {
                 "description": "The version of the API end point that the CDR Register has responded with.",
                 "schema": {
-                  "type": "integer",
-                  "x-cds-type": "PositiveInteger"
+                  "type": "string"
                 }
               }
             },
@@ -227,8 +227,7 @@
             "description": "The version of the API end point requested by the client. Must be set to a positive integer.",
             "required": true,
             "schema": {
-              "type": "integer",
-              "x-cds-type": "PositiveInteger"
+              "type": "string"
             }
           },
           {
@@ -236,8 +235,7 @@
             "in": "header",
             "description": "The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided.",
             "schema": {
-              "type": "integer",
-              "x-cds-type": "PositiveInteger"
+              "type": "string"
             }
           },
           {
@@ -257,8 +255,7 @@
               "x-v": {
                 "description": "The version of the API end point that the CDR Register has responded with.",
                 "schema": {
-                  "type": "integer",
-                  "x-cds-type": "PositiveInteger"
+                  "type": "string"
                 }
               },
               "Etag": {
@@ -353,9 +350,8 @@
             "in": "header",
             "description": "The version of the API end point requested by the client. Must be set to a positive integer. For backwards compatiblity defaults to 1 if absent. Note that once version 1 is decommissioned the header will be mandatory for a valid response to be obtained",
             "schema": {
-              "type": "integer",
-              "default": 1,
-              "x-cds-type": "PositiveInteger"
+              "type": "string",
+              "default": "1"
             }
           },
           {
@@ -363,8 +359,7 @@
             "in": "header",
             "description": "The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided.",
             "schema": {
-              "type": "integer",
-              "x-cds-type": "PositiveInteger"
+              "type": "string"
             }
           },
           {
@@ -403,8 +398,8 @@
               "x-v": {
                 "description": "The version of the API end point that the CDR Register has responded with.",
                 "schema": {
-                  "type": "integer",
-                  "x-cds-type": "PositiveInteger"
+                  "type": "string",
+                  "default": "1"
                 }
               }
             },
@@ -513,9 +508,8 @@
             "in": "header",
             "description": "The version of the API end point requested by the client. Must be set to a positive integer.  For backwards compatiblity defaults to 1 if absent. Note that once version 1 is decommissioned the header will be mandatory for a valid response to be obtained",
             "schema": {
-              "type": "integer",
-              "default": 1,
-              "x-cds-type": "PositiveInteger"
+              "type": "string",
+              "default": "1"
             }
           },
           {
@@ -523,8 +517,7 @@
             "in": "header",
             "description": "The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided.",
             "schema": {
-              "type": "integer",
-              "x-cds-type": "PositiveInteger"
+              "type": "string"
             }
           },
           {
@@ -544,8 +537,7 @@
               "x-v": {
                 "description": "The version of the API end point that the CDR Register has responded with.",
                 "schema": {
-                  "type": "integer",
-                  "x-cds-type": "PositiveInteger"
+                  "type": "string"
                 }
               },
               "Etag": {
@@ -630,9 +622,8 @@
             "in": "header",
             "description": "The version of the API end point requested by the client. Must be set to a positive integer.  For backwards compatiblity defaults to 1 if absent. Note that once version 1 is decommissioned the header will be mandatory for a valid response to be obtained",
             "schema": {
-              "type": "integer",
-              "default": 1,
-              "x-cds-type": "PositiveInteger"
+              "type": "string",
+              "default": "1"
             }
           },
           {
@@ -640,8 +631,7 @@
             "in": "header",
             "description": "The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided.",
             "schema": {
-              "type": "integer",
-              "x-cds-type": "PositiveInteger"
+              "type": "string"
             }
           },
           {
@@ -661,8 +651,7 @@
               "x-v": {
                 "description": "The version of the API end point that the CDR Register has responded with.",
                 "schema": {
-                  "type": "integer",
-                  "x-cds-type": "PositiveInteger"
+                  "type": "string"
                 }
               },
               "Etag": {
@@ -747,9 +736,8 @@
             "in": "header",
             "description": "The version of the API end point requested by the client. Must be set to a positive integer.  For backwards compatiblity defaults to 1 if absent. Note that once version 1 is decommissioned the header will be mandatory for a valid response to be obtained",
             "schema": {
-              "type": "integer",
-              "default": 1,
-              "x-cds-type": "PositiveInteger"
+              "type": "string",
+              "default": "1"
             }
           },
           {
@@ -757,8 +745,7 @@
             "in": "header",
             "description": "The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided.",
             "schema": {
-              "type": "integer",
-              "x-cds-type": "PositiveInteger"
+              "type": "string"
             }
           },
           {
@@ -778,8 +765,7 @@
               "x-v": {
                 "description": "The version of the API end point that the CDR Register has responded with.",
                 "schema": {
-                  "type": "integer",
-                  "x-cds-type": "PositiveInteger"
+                  "type": "string"
                 }
               },
               "Etag": {
@@ -864,9 +850,8 @@
             "in": "header",
             "description": "The version of the API end point requested by the client. Must be set to a positive integer.  For backwards compatiblity defaults to 2 if absent. Note that once version 2 is decommissioned the header will be mandatory for a valid response to be obtained",
             "schema": {
-              "type": "integer",
-              "default": 2,
-              "x-cds-type": "PositiveInteger"
+              "type": "string",
+              "default": "2"
             }
           },
           {
@@ -874,8 +859,7 @@
             "in": "header",
             "description": "The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided.",
             "schema": {
-              "type": "integer",
-              "x-cds-type": "PositiveInteger"
+              "type": "string"
             }
           },
           {
@@ -895,8 +879,7 @@
               "x-v": {
                 "description": "The version of the API end point that the CDR Register has responded with.",
                 "schema": {
-                  "type": "integer",
-                  "x-cds-type": "PositiveInteger"
+                  "type": "string"
                 }
               },
               "Etag": {
@@ -1983,8 +1966,7 @@
         "in": "header",
         "description": "The version of the API end point requested by the client. Must be set to a positive integer.",
         "schema": {
-          "type": "integer",
-          "x-cds-type": "PositiveInteger"
+          "type": "string"
         }
       },
       "Industry": {
@@ -2008,8 +1990,7 @@
         "in": "header",
         "description": "The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided.",
         "schema": {
-          "type": "integer",
-          "x-cds-type": "PositiveInteger"
+          "type": "string"
         }
       },
       "IfNoneMatch": {
@@ -2038,7 +2019,8 @@
           "type": "integer",
           "x-cds-type": "PositiveInteger",
           "default": 1
-        }
+        },
+        "x-cds-type": "PositiveInteger"
       },
       "PageSize": {
         "name": "page-size",
@@ -2048,7 +2030,8 @@
           "type": "integer",
           "x-cds-type": "PositiveInteger",
           "default": 25
-        }
+        },
+        "x-cds-type": "PositiveInteger"
       }
     }
   }

@@ -183,7 +183,7 @@ GET https://<register-base-url>/cdr-register/v1/{industry}/data-holders/brands H
 Accept: application/json
 Authorization: string
 x-v: 1
-x-min-v: 0
+x-min-v: string
 
 ```
 
@@ -192,7 +192,7 @@ var headers = {
   'Accept':'application/json',
   'Authorization':'string',
   'x-v':'1',
-  'x-min-v':'0'
+  'x-min-v':'string'
 
 };
 
@@ -225,11 +225,11 @@ Obsolete versions: [v1](includes/obsolete/get-data-holder-brands-v1.html)
 |---|---|---|---|---|
 |industry|path|string|mandatory|The industry the participant is retrieving data for (Banking, etc)|
 |Authorization|header|string|mandatory|An Authorisation Token as per **[[RFC6750]](#nref-RFC6750)**.|
-|x-v|header|integer|optional|The version of the API end point requested by the client. Must be set to a positive integer. For backwards compatiblity defaults to 1 if absent. Note that once version 1 is decommissioned the header will be mandatory for a valid response to be obtained|
-|x-min-v|header|integer|optional|The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided.|
+|x-v|header|string|mandatory|The version of the API end point requested by the client. Must be set to a positive integer. For backwards compatiblity defaults to 1 if absent. Note that once version 1 is decommissioned the header will be mandatory for a valid response to be obtained|
+|x-min-v|header|string|optional|The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided.|
 |updated-since|query|string|optional|query filter returns results updated since the specified date-time|
-|page|query|integer|optional|the page number to return|
-|page-size|query|integer|optional|the number of records to return per page|
+|page|query|[PositiveInteger](#common-field-types)|optional|the page number to return|
+|page-size|query|[PositiveInteger](#common-field-types)|optional|the number of records to return per page|
 
 #### Enumerated Values
 
@@ -313,7 +313,7 @@ Obsolete versions: [v1](includes/obsolete/get-data-holder-brands-v1.html)
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
-|200|x-v|integer||The version of the API end point that the CDR Register has responded with.|
+|200|x-v|string||The version of the API end point that the CDR Register has responded with.|
 
   
     
@@ -335,8 +335,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 GET https://<register-base-url>/cdr-register/v1/{industry}/data-holders/brands/summary HTTP/1.1
 
 Accept: application/json
-x-v: 0
-x-min-v: 0
+x-v: string
+x-min-v: string
 If-None-Match: string
 
 ```
@@ -344,8 +344,8 @@ If-None-Match: string
 ```javascript
 var headers = {
   'Accept':'application/json',
-  'x-v':'0',
-  'x-min-v':'0',
+  'x-v':'string',
+  'x-min-v':'string',
   'If-None-Match':'string'
 
 };
@@ -376,8 +376,8 @@ Endpoint used by participants to discover public details of Data Holder Brands f
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |industry|path|string|mandatory|The industry the participant is retrieving data for (Banking, etc)|
-|x-v|header|integer|mandatory|The version of the API end point requested by the client. Must be set to a positive integer.|
-|x-min-v|header|integer|optional|The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided.|
+|x-v|header|string|mandatory|The version of the API end point requested by the client. Must be set to a positive integer.|
+|x-min-v|header|string|optional|The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided.|
 |If-None-Match|header|string|optional|Makes the request method conditional on a recipient cache or origin server not having any current representation of the target resource with an entity-tag that does not match any of those listed in the field-value.|
 
 #### Enumerated Values
@@ -432,7 +432,7 @@ Endpoint used by participants to discover public details of Data Holder Brands f
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
-|200|x-v|integer||The version of the API end point that the CDR Register has responded with.|
+|200|x-v|string||The version of the API end point that the CDR Register has responded with.|
 |200|Etag|string||Entity tag that uniquely represents the requested resource.|
 |304|Etag|string||Entity tag that uniquely represents the requested resource.|
 
@@ -454,7 +454,7 @@ GET https://<register-base-url>/cdr-register/v1/{industry}/data-recipients/brand
 
 Accept: application/json
 x-v: 1
-x-min-v: 0
+x-min-v: string
 Authorization: string
 
 ```
@@ -463,7 +463,7 @@ Authorization: string
 var headers = {
   'Accept':'application/json',
   'x-v':'1',
-  'x-min-v':'0',
+  'x-min-v':'string',
   'Authorization':'string'
 
 };
@@ -496,8 +496,8 @@ Obsolete versions: [v1](includes/obsolete/get-software-statement-assertion-v1.ht
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |industry|path|string|mandatory|The industry the participant is retrieving data for (Banking, etc)|
-|x-v|header|integer|optional|The version of the API end point requested by the client. Must be set to a positive integer. For backwards compatiblity defaults to 1 if absent. Note that once version 1 is decommissioned the header will be mandatory for a valid response to be obtained|
-|x-min-v|header|integer|optional|The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided.|
+|x-v|header|string|optional|The version of the API end point requested by the client. Must be set to a positive integer. For backwards compatiblity defaults to 1 if absent. Note that once version 1 is decommissioned the header will be mandatory for a valid response to be obtained|
+|x-min-v|header|string|optional|The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided.|
 |dataRecipientBrandId|path|string|mandatory|Unique id for the Accredited Data Recipient Brand that the Software Product is associated with in the CDR Register|
 |softwareProductId|path|string|mandatory|Unique id for the Accredited Data Recipient Software Product in the CDR Register|
 |Authorization|header|string|mandatory|An Authorisation Token as per **[[RFC6750]](#nref-RFC6750)**.|
@@ -535,7 +535,7 @@ Obsolete versions: [v1](includes/obsolete/get-software-statement-assertion-v1.ht
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
-|200|x-v|integer||The version of the API end point that the CDR Register has responded with.|
+|200|x-v|string||The version of the API end point that the CDR Register has responded with.|
 
   
     
@@ -558,7 +558,7 @@ GET https://<register-base-url>/cdr-register/v1/{industry}/data-holders/status H
 
 Accept: application/json
 x-v: 1
-x-min-v: 0
+x-min-v: string
 If-None-Match: string
 
 ```
@@ -567,7 +567,7 @@ If-None-Match: string
 var headers = {
   'Accept':'application/json',
   'x-v':'1',
-  'x-min-v':'0',
+  'x-min-v':'string',
   'If-None-Match':'string'
 
 };
@@ -598,8 +598,8 @@ Endpoint used by participants to discover the statuses for Data Holders from the
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |industry|path|string|mandatory|The industry the participant is retrieving data for (Banking, etc)|
-|x-v|header|integer|optional|The version of the API end point requested by the client. Must be set to a positive integer.  For backwards compatiblity defaults to 1 if absent. Note that once version 1 is decommissioned the header will be mandatory for a valid response to be obtained|
-|x-min-v|header|integer|optional|The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided.|
+|x-v|header|string|optional|The version of the API end point requested by the client. Must be set to a positive integer.  For backwards compatiblity defaults to 1 if absent. Note that once version 1 is decommissioned the header will be mandatory for a valid response to be obtained|
+|x-min-v|header|string|optional|The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided.|
 |If-None-Match|header|string|optional|Makes the request method conditional on a recipient cache or origin server not having any current representation of the target resource with an entity-tag that does not match any of those listed in the field-value.|
 
 #### Enumerated Values
@@ -643,7 +643,7 @@ Endpoint used by participants to discover the statuses for Data Holders from the
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
-|200|x-v|integer||The version of the API end point that the CDR Register has responded with.|
+|200|x-v|string||The version of the API end point that the CDR Register has responded with.|
 |200|Etag|string||Entity tag that uniquely represents the requested resource.|
 |304|Etag|string||Entity tag that uniquely represents the requested resource.|
 
@@ -665,7 +665,7 @@ GET https://<register-base-url>/cdr-register/v1/{industry}/data-recipients/brand
 
 Accept: application/json
 x-v: 1
-x-min-v: 0
+x-min-v: string
 If-None-Match: string
 
 ```
@@ -674,7 +674,7 @@ If-None-Match: string
 var headers = {
   'Accept':'application/json',
   'x-v':'1',
-  'x-min-v':'0',
+  'x-min-v':'string',
   'If-None-Match':'string'
 
 };
@@ -707,8 +707,8 @@ Obsolete versions: [v1](includes/obsolete/get-software-product-statuses-v1.html)
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |industry|path|string|mandatory|The industry the participant is retrieving data for (Banking, etc)|
-|x-v|header|integer|optional|The version of the API end point requested by the client. Must be set to a positive integer.  For backwards compatiblity defaults to 1 if absent. Note that once version 1 is decommissioned the header will be mandatory for a valid response to be obtained|
-|x-min-v|header|integer|optional|The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided.|
+|x-v|header|string|optional|The version of the API end point requested by the client. Must be set to a positive integer.  For backwards compatiblity defaults to 1 if absent. Note that once version 1 is decommissioned the header will be mandatory for a valid response to be obtained|
+|x-min-v|header|string|optional|The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided.|
 |If-None-Match|header|string|optional|Makes the request method conditional on a recipient cache or origin server not having any current representation of the target resource with an entity-tag that does not match any of those listed in the field-value.|
 
 #### Enumerated Values
@@ -752,7 +752,7 @@ Obsolete versions: [v1](includes/obsolete/get-software-product-statuses-v1.html)
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
-|200|x-v|integer||The version of the API end point that the CDR Register has responded with.|
+|200|x-v|string||The version of the API end point that the CDR Register has responded with.|
 |200|Etag|string||Entity tag that uniquely represents the requested resource.|
 |304|Etag|string||Entity tag that uniquely represents the requested resource.|
 
@@ -774,7 +774,7 @@ GET https://<register-base-url>/cdr-register/v1/{industry}/data-recipients/statu
 
 Accept: application/json
 x-v: 1
-x-min-v: 0
+x-min-v: string
 If-None-Match: string
 
 ```
@@ -783,7 +783,7 @@ If-None-Match: string
 var headers = {
   'Accept':'application/json',
   'x-v':'1',
-  'x-min-v':'0',
+  'x-min-v':'string',
   'If-None-Match':'string'
 
 };
@@ -816,8 +816,8 @@ Obsolete versions: [v1](includes/obsolete/get-data-recipient-statuses-v1.html)
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |industry|path|string|mandatory|The industry the participant is retrieving data for (Banking, etc)|
-|x-v|header|integer|optional|The version of the API end point requested by the client. Must be set to a positive integer.  For backwards compatiblity defaults to 1 if absent. Note that once version 1 is decommissioned the header will be mandatory for a valid response to be obtained|
-|x-min-v|header|integer|optional|The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided.|
+|x-v|header|string|optional|The version of the API end point requested by the client. Must be set to a positive integer.  For backwards compatiblity defaults to 1 if absent. Note that once version 1 is decommissioned the header will be mandatory for a valid response to be obtained|
+|x-min-v|header|string|optional|The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided.|
 |If-None-Match|header|string|optional|Makes the request method conditional on a recipient cache or origin server not having any current representation of the target resource with an entity-tag that does not match any of those listed in the field-value.|
 
 #### Enumerated Values
@@ -861,7 +861,7 @@ Obsolete versions: [v1](includes/obsolete/get-data-recipient-statuses-v1.html)
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
-|200|x-v|integer||The version of the API end point that the CDR Register has responded with.|
+|200|x-v|string||The version of the API end point that the CDR Register has responded with.|
 |200|Etag|string||Entity tag that uniquely represents the requested resource.|
 |304|Etag|string||Entity tag that uniquely represents the requested resource.|
 
@@ -883,7 +883,7 @@ GET https://<register-base-url>/cdr-register/v1/{industry}/data-recipients HTTP/
 
 Accept: application/json
 x-v: 2
-x-min-v: 0
+x-min-v: string
 If-None-Match: string
 
 ```
@@ -892,7 +892,7 @@ If-None-Match: string
 var headers = {
   'Accept':'application/json',
   'x-v':'2',
-  'x-min-v':'0',
+  'x-min-v':'string',
   'If-None-Match':'string'
 
 };
@@ -925,8 +925,8 @@ Obsolete versions: [v2](includes/obsolete/get-data-recipients-v2.html)
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |industry|path|string|mandatory|The industry the participant is retrieving data for (Banking, etc)|
-|x-v|header|integer|optional|The version of the API end point requested by the client. Must be set to a positive integer.  For backwards compatiblity defaults to 2 if absent. Note that once version 2 is decommissioned the header will be mandatory for a valid response to be obtained|
-|x-min-v|header|integer|optional|The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided.|
+|x-v|header|string|optional|The version of the API end point requested by the client. Must be set to a positive integer.  For backwards compatiblity defaults to 2 if absent. Note that once version 2 is decommissioned the header will be mandatory for a valid response to be obtained|
+|x-min-v|header|string|optional|The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided.|
 |If-None-Match|header|string|optional|Makes the request method conditional on a recipient cache or origin server not having any current representation of the target resource with an entity-tag that does not match any of those listed in the field-value.|
 
 #### Enumerated Values
@@ -992,7 +992,7 @@ Obsolete versions: [v2](includes/obsolete/get-data-recipients-v2.html)
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
-|200|x-v|integer||The version of the API end point that the CDR Register has responded with.|
+|200|x-v|string||The version of the API end point that the CDR Register has responded with.|
 |200|Etag|string||Entity tag that uniquely represents the requested resource.|
 |304|Etag|string||Entity tag that uniquely represents the requested resource.|
 
