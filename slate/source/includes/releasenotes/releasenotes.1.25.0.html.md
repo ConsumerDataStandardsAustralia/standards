@@ -22,6 +22,7 @@ This release addresses the following minor defects raised on [Standards Staging]
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
 - [Standards Maintenance Issue TBC - TBC](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/TBC)
+- [Standards Maintenance Issue 591 - Energy 'Get Agreed Payment Schedule' - BSB and Account Number Tokenisation/non-Tokenisation](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/591)
 
 ### Decision Proposals
 
@@ -44,7 +45,7 @@ No Change
 
 |Change|Description|Link|
 |------|-----------|----|
-
+| Energy APIs | [**Standards Maintenance #591**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/591): Updated description of  `EnergyPaymentSchedule.isTokenised` field to further clarify when it can be used | [Energy APIs](../../#energy-apis) |
 
 ## Information Security Profile
 
