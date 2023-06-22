@@ -36,9 +36,7 @@ No Change
 
 ## High Level Standards
 
-<<<<<<< HEAD
 No Change
-
 
 ## API End Points
 
