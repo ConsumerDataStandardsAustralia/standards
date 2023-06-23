@@ -47,6 +47,7 @@ Content-Type: application/json
   "require_pushed_authorization_requests": true,
   
   "authorization_encryption_alg_values_supported": ["RSA-OAEP", "RSA-OAEP-256"],
+  
   "authorization_encryption_enc_values_supported": ["A256GCM", "A128CBC-HS256"],
   "authorization_signing_alg_values_supported": ["ES256", "PS256"],
 
