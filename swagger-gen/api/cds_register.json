@@ -94,10 +94,9 @@
             "name": "x-v",
             "in": "header",
             "description": "The version of the API end point requested by the client. Must be set to a positive integer. For backwards compatiblity defaults to 1 if absent. Note that once version 1 is decommissioned the header will be mandatory for a valid response to be obtained",
-            "required": true,
             "schema": {
               "type": "string",
-              "default": "1"
+              "default": 1
             }
           },
           {
@@ -123,7 +122,6 @@
             "description": "the page number to return",
             "schema": {
               "type": "integer",
-              "x-cds-type": "PositiveInteger",
               "default": 1
             },
             "x-cds-type": "PositiveInteger"
@@ -134,7 +132,6 @@
             "description": "the number of records to return per page",
             "schema": {
               "type": "integer",
-              "x-cds-type": "PositiveInteger",
               "default": 25
             },
             "x-cds-type": "PositiveInteger"
@@ -2017,7 +2014,6 @@
         "description": "the page number to return",
         "schema": {
           "type": "integer",
-          "x-cds-type": "PositiveInteger",
           "default": 1
         },
         "x-cds-type": "PositiveInteger"
@@ -2028,7 +2024,6 @@
         "description": "the number of records to return per page",
         "schema": {
           "type": "integer",
-          "x-cds-type": "PositiveInteger",
           "default": 25
         },
         "x-cds-type": "PositiveInteger"

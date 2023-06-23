@@ -80,7 +80,7 @@
           "explode" : false,
           "in" : "header",
           "name" : "x-v",
-          "required" : true,
+          "required" : false,
           "schema" : {
             "default" : "1",
             "type" : "string"
@@ -115,8 +115,7 @@
           "required" : false,
           "schema" : {
             "default" : 1,
-            "type" : "integer",
-            "x-cds-type" : "PositiveInteger"
+            "type" : "integer"
           },
           "style" : "form",
           "x-cds-type" : "PositiveInteger"
@@ -128,8 +127,7 @@
           "required" : false,
           "schema" : {
             "default" : 25,
-            "type" : "integer",
-            "x-cds-type" : "PositiveInteger"
+            "type" : "integer"
           },
           "style" : "form",
           "x-cds-type" : "PositiveInteger"
@@ -1036,8 +1034,7 @@
         "required" : false,
         "schema" : {
           "default" : 1,
-          "type" : "integer",
-          "x-cds-type" : "PositiveInteger"
+          "type" : "integer"
         },
         "style" : "form",
         "x-cds-type" : "PositiveInteger"
@@ -1050,8 +1047,7 @@
         "required" : false,
         "schema" : {
           "default" : 25,
-          "type" : "integer",
-          "x-cds-type" : "PositiveInteger"
+          "type" : "integer"
         },
         "style" : "form",
         "x-cds-type" : "PositiveInteger"

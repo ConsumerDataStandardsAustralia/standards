@@ -78,7 +78,7 @@ paths:
         explode: false
         in: header
         name: x-v
-        required: true
+        required: false
         schema:
           default: "1"
           type: string
@@ -110,7 +110,6 @@ paths:
         schema:
           default: 1
           type: integer
-          x-cds-type: PositiveInteger
         style: form
         x-cds-type: PositiveInteger
       - description: the number of records to return per page
@@ -121,7 +120,6 @@ paths:
         schema:
           default: 25
           type: integer
-          x-cds-type: PositiveInteger
         style: form
         x-cds-type: PositiveInteger
       responses:
@@ -896,7 +894,6 @@ components:
       schema:
         default: 1
         type: integer
-        x-cds-type: PositiveInteger
       style: form
       x-cds-type: PositiveInteger
     PageSize:
@@ -908,7 +905,6 @@ components:
       schema:
         default: 25
         type: integer
-        x-cds-type: PositiveInteger
       style: form
       x-cds-type: PositiveInteger
   responses:
