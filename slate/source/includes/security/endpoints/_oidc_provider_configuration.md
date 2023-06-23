@@ -110,6 +110,9 @@ At a minimum, the Data Holder metadata **MUST** include:
 **[[JARM]](#nref-JARM)**
 
 - `authorization_encryption_alg_values_supported`: A JSON array containing a list of the JWE encryption algorithms (`alg` values) supported by the authorization endpoint to encrypt the response. If response encryption is used, Data Holders must support at least one of "RSA-OAEP" or "RSA-OAEP-256"
+
+Where Data Holders support authorisation response encryption according to **[[JARM]](#nref-JARM)**, the following parameter provisions **MUST** be supported:
+
 - `authorization_encryption_enc_values_supported`: A JSON array containing a list of the JWE encryption algorithms (`enc` values) supported by the authorization endpoint to encrypt the response. Required if “authorization_encryption_alg_values_supported” is provided. If response encryption is used, Data Holders must support at least one of "A256GCM" or "A128CBC-HS256"
 - `authorization_signing_alg_values_supported`: A JSON array containing a list of the JWS signing algorithms (`alg` values) supported by the authorization endpoint to sign the response. Required if Authorization Code Flow (response_type “code”) is supported
 
