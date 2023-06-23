@@ -49,6 +49,7 @@ No Change
 |Change|Description|Link|
 |------|-----------|----|
 | Corrected HTTP Methods | [**Standards Maintenance #586**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/590): Corrected the endpoint version schedule to correctly list POST not GET methods for energy APIs: <ul><li>Get Usage For Specific Service Points</li><li>Get Balances For Specific Energy Accounts</li></ul><br/>Addresses this issue [comment](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/586#issuecomment-1537800843)) | [Endpoint Version Schedule](../../includes/endpoint-version-schedule/#endpoint-version-schedule) |
+| Get Products | [**Standards Maintenance #586**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/586): Corrected typo in the Get Products API description. Addresses this issue [comment](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/586#issuecomment-1573348181)) | [Get Products API](../../#get-products) |
 
 ## Information Security Profile
 
