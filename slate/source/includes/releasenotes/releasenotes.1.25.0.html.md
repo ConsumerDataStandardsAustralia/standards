@@ -27,6 +27,8 @@ This release addresses the following change requests raised on [Standards Mainte
 
 This release addresses the following Decision Proposals published on [Standards](https://github.com/ConsumerDataStandardsAustralia/standards/issues):
 
+- [Decision Proposal TBC - Maintenance Iteration 15](https://github.com/ConsumerDataStandardsAustralia/standards/issues/TBC)
+- [Decision Proposal 288 - Non-Functional Requirements Revision](https://github.com/ConsumerDataStandardsAustralia/standards/issues/288)
 
 ## Introduction
 
@@ -42,13 +44,11 @@ This release addresses the following Decision Proposals published on [Standards]
 
 No Change
 
-
 ## API End Points
 
 |Change|Description|Link|
 |------|-----------|----|
 | Corrected HTTP Methods | [**Standards Maintenance #586**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/590): Corrected the endpoint version schedule to correctly list POST not GET methods for energy APIs: <ul><li>Get Usage For Specific Service Points</li><li>Get Balances For Specific Energy Accounts</li></ul><br/>Addresses this issue [comment](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/586#issuecomment-1537800843)) | [Endpoint Version Schedule](../../includes/endpoint-version-schedule/#endpoint-version-schedule) |
-
 
 ## Information Security Profile
 
