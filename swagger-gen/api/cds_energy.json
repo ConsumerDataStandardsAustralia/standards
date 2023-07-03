@@ -399,7 +399,7 @@
                     }
                 }
             },
-            "EnergyBillingListResponse": {
+            "EnergyBillingListResponseV2": {
                 "type": "object",
                 "required": [
                     "data",
@@ -417,7 +417,7 @@
                                 "description": "Array of transactions sorted by date and time in descending order",
                                 "type": "array",
                                 "items": {
-                                    "$ref": "#/components/schemas/EnergyBillingTransaction"
+                                    "$ref": "#/components/schemas/EnergyBillingTransactionV2"
                                 }
                             }
                         }
@@ -3378,7 +3378,7 @@
                     }
                 }
             },
-            "EnergyBillingTransaction": {
+            "EnergyBillingTransactionV2": {
                 "type": "object",
                 "required": [
                     "accountId",
@@ -3418,11 +3418,11 @@
                     },
                     "usage": {
                         "description": "Represents a usage charge or generation credit.  Mandatory if transactionUType is equal to usage",
-                        "$ref": "#/components/schemas/EnergyBillingUsageTransaction"
+                        "$ref": "#/components/schemas/EnergyBillingUsageTransactionV2"
                     },
                     "demand": {
                         "description": "Represents a demand charge or generation credit.  Mandatory if transactionUType is equal to demand",
-                        "$ref": "#/components/schemas/EnergyBillingDemandTransaction"
+                        "$ref": "#/components/schemas/EnergyBillingDemandTransactionV2"
                     },
                     "onceOff": {
                         "description": "Represents a once off charge or credit.  Mandatory if transactionUType is equal to onceOff",
@@ -3438,7 +3438,7 @@
                     }
                 }
             },
-            "EnergyBillingUsageTransaction": {
+            "EnergyBillingUsageTransactionV2": {
                 "type": "object",
                 "required": [
                     "timeOfUseType",
@@ -3560,7 +3560,7 @@
                     }
                 }
             },
-            "EnergyBillingDemandTransaction": {
+            "EnergyBillingDemandTransactionV2": {
                 "type": "object",
                 "required": [
                     "timeOfUseType",
@@ -4659,7 +4659,7 @@
 				"content": {
 					"application/json": {
                         "schema": {
-                            "$ref": "#/components/schemas/EnergyBillingListResponse"
+                            "$ref": "#/components/schemas/EnergyBillingListResponseV2"
 						}
 					}
 				}
@@ -6704,7 +6704,7 @@
 			"get": {
 				"summary": "Get Billing For Account",
 				"operationId": "getBillingForAccount",
-				"description": "Obtain the billing transactions for a specific account",
+				"description": "Obtain the billing transactions for a specific account\n\nOther Versions: [v1](includes/obsolete/get-billing-for-account-v1.html)",
                 "x-scopes": [
                     "energy:billing:read"
                 ],
@@ -6712,7 +6712,7 @@
                     "Energy",
 					"Billing"
 				],
-                "x-version": "1",
+                "x-version": "2",
 				"parameters": [{
 						"$ref": "#/components/parameters/accountId"
 					},
@@ -6830,7 +6830,7 @@
 			"get": {
 				"summary": "Get Bulk Billing",
 				"operationId": "listBillingBulk",
-				"description": "Obtain billing transactions for all accounts",
+				"description": "Obtain billing transactions for all accounts\n\nOther Versions: [v1](includes/obsolete/get-bulk-billing-v1.html)",
                 "x-scopes": [
                     "energy:billing:read"
                 ],
@@ -6838,7 +6838,7 @@
                     "Energy",
 					"Billing"
 				],
-                "x-version": "1",
+                "x-version": "2",
 				"parameters": [{
 						"$ref": "#/components/parameters/newest-time"
 					},
@@ -6933,7 +6933,7 @@
 			"post": {
 				"summary": "Get Billing For Specific Accounts",
 				"operationId": "listBillingForAccounts",
-				"description": "Obtain billing for a specified set of accounts",
+				"description": "Obtain billing for a specified set of accounts\n\nOther Versions: [v1](includes/obsolete/get-billing-for-specific-accounts-v1.html)",
                 "x-scopes": [
                     "energy:billing:read"
                 ],
@@ -6941,7 +6941,7 @@
                     "Energy",
 					"Billing"
 				],
-                "x-version": "1",
+                "x-version": "2",
 				"parameters": [{
 						"$ref": "#/components/parameters/newest-time"
 					},

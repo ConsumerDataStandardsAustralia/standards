@@ -9,6 +9,25 @@ This specification defines the APIs for Data Holders exposing Energy endpoints.
 </table>
 
 ```diff
+Updated the versions of the following APIs:
++ Get Billing For Account from v1 to v2
++ Get Bulk Billing from v1 to v2
++ Get Billing For Specific Accounts from v1 to v2
+
+Updated the following structures
+from:
+- EnergyBillingListResponse
+- EnergyBillingTransaction
+- EnergyBillingDemandTransaction
+- EnergyBillingUsageTransaction
+
+to:
++ EnergyBillingListResponseV2
++ EnergyBillingTransactionV2
++ EnergyBillingDemandTransactionV2
++ EnergyBillingUsageTransactionV2
+
+
 Added following ENUM values to EnergyBillingDemandTransaction.timeOfUseType field:
 + ALL_DAY
 + EXCESS
