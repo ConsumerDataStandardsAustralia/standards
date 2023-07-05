@@ -11,13 +11,29 @@ This specification defines the APIs for Data Holders exposing Banking endpoints.
 </table>
 
 ```diff
-Updated description of `BankingAccountDetailV3.lendingRates` field
-from:
-- Fully described deposit rates for this account based on the equivalent structure in Product Reference
-to:
-+ Fully described lending rates for this account based on the equivalent structure in Product Reference
+Updated the versions of the following APIs:
++ Get Scheduled Payments For Account from v1 to v2
++ Get Scheduled Payments Bulk from v1 to v2
++ Get Scheduled Payments For Specific Accounts from v1 to v2
 
-Corrected various spelling and grammatical mistakes
+
+Updated the following structures
+from:
+- ResponseBankingScheduledPaymentsList
+- BankingScheduledPayment
+- BankingScheduledPaymentSet
+- BankingScheduledPaymentTo
+
+to:
++ ResponseBankingScheduledPaymentsListV2
++ BankingScheduledPaymentV2
++ BankingScheduledPaymentSetV2
++ BankingScheduledPaymentToV2
+
+Added the following to 'BankingScheduledPaymentToV2' structure:
++ 'digitalWallet' ENUM value to the toUType field
++ 'digitalWallet' object
++ 'BankingDigitalWalletPayee' schema for 'digitalWallet' object
 ```
 
 <%= partial "includes/cds_banking.md" %>
