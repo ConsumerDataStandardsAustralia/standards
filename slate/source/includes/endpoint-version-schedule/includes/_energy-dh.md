@@ -21,8 +21,8 @@
 | Energy APIs     | Get Billing For Account                   | ``/energy/accounts/{accountId}/billing``                     | <span class="method get">GET</span>    | V1      | 2022-11-15     | 2024-09-09      | 2021-10-29, V1.14.0| TBC, V1.25.0        |
 | Energy APIs     | Get Billing For Account                   | ``/energy/accounts/{accountId}/billing``                     | <span class="method get">GET</span>    | V2      | 2023-11-01     | N/A             | TBC, V1.25.0| N/A                 |
 | Energy APIs     | Get Bulk Billing                          | ``/energy/accounts/billing``                                 | <span class="method get">GET</span>    | V1      | 2022-11-15     | 2024-09-09      | 2021-10-29, V1.14.0| TBC, V1.25.0        |
-| Energy APIs     | Get Bulk Billing                          | ``/energy/accounts/billing``                     | <span class="method get">GET</span>    | V2      | 2023-11-01     | N/A             | TBC, V1.25.0| N/A                 |
-| Energy APIs     | Get Billing For Specific Accounts         | ``/energy/accounts/billing``                                 | <span class="method post">POST</span>  | V1      | 2022-11-15     | N/A             | 2021-10-29, V1.14.0| TBC, V1.25.0           |
+| Energy APIs     | Get Bulk Billing                          | ``/energy/accounts/billing``                                 | <span class="method get">GET</span>    | V2      | 2023-11-01     | N/A             | TBC, V1.25.0| N/A                 |
+| Energy APIs     | Get Billing For Specific Accounts         | ``/energy/accounts/billing``                                 | <span class="method post">POST</span>  | V1      | 2022-11-15     | 2024-09-09        | 2021-10-29, V1.14.0| TBC, V1.25.0           |
 | Energy APIs     | Get Billing For Specific Accounts         |``/energy/accounts/billing``                                  | <span class="method post">POST</span>    | V2    | 2023-11-01     | N/A             | TBC, V1.25.0| N/A                 |
 
 
