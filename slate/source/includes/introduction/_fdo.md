@@ -1,9 +1,5 @@
 ## Future Dated Obligations
 
-```diff
-Added Future Dated Obligation for Get Generic Plan Detail V2 and Get Energy Account Detail V3
-```
-
 The standards, as published from time to time, may include specific statements indicating that a specific section of the standards will not take effect until a future date or may cease to have effect on some future date.
 
 The table below highlights these areas of the standards.
