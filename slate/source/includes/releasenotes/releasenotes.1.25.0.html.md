@@ -21,6 +21,7 @@ This release addresses the following minor defects raised on [Standards Staging]
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
+- [Standards Maintenance Issue 516 - Get OpenId Provider Config and Get JWKS API documented paths are incorrect](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/516)
 - [Standards Maintenance Issue 522 - OpenID Provider Configuration End Point parameter requirements](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/522)
 - [Standards Maintenance Issue 536 - Define new toUType value to relevant schemas](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/536)
 - [Standards Maintenance Issue 559 - FAPI 1.0 Final Phase 3 Obligation example for authorisation request using the Authorisation Code Flow does not have "response_mode" attribute](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/559)
@@ -66,6 +67,12 @@ No Change
 | OpenID Provider Configuration End Point | [**Standards Maintenance #522**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/522): Provides an exhaustive list of the required OpenID discovery parameters Data Holders must publish. | [OpenID Provider Configuration End Point](../../#security-endpoints) |
 | Authorization Code Flow non-normative example | [**Standards Maintenance #559**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/559): Added "response_mode" to the authorisation request examples in accordance with FAPI 1.0 requirements for Authorisation Code Flow and JARM use. | [Security Profile](../../#security-profile) |
 | FAPI normative references | [**Standards Maintenance #590**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/590): Removed legacy draft FAPI references and legacy phasing ensuring all normative references for FAPI align to the final versions | [Security Profile](../../#security-profile) |
+
+## Register Standards
+
+|Change|Description|Link|
+|------|-----------|----|
+| Register Base Paths | [**Standards Maintenance #516**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/516): Match the endpoints paths for jwks and well known to match actual Register implementation. | [Register APIs](../../#register-apis) |
 
 ## Consumer Experience
 
