@@ -25,6 +25,7 @@ This release addresses the following change requests raised on [Standards Mainte
 - [Standards Maintenance Issue TBC - TBC](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/TBC)
 - [Standards Maintenance Issue 592 - EnergyBillingDemandTransaction - timeOfUseType - New Value](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/592)
 - [Standards Maintenance Issue 591 - Energy 'Get Agreed Payment Schedule' - BSB and Account Number Tokenisation/non-Tokenisation](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/591)
+- [Standards Maintenance Issue 559 - FAPI 1.0 Final Phase 3 Obligation example for authorisation request using the Authorisation Code Flow does not have "response_mode" attribute](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/559)
 - [Standards Maintenance Issue 590 - Remove FAPI 1.0 draft references](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/590)
 
 ### Decision Proposals
@@ -54,6 +55,7 @@ No Change
 
 |Change|Description|Link|
 |------|-----------|----|
+| Authorization Code Flow non-normative example | [**Standards Maintenance #559**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/559): Added "response_mode" to the authorisation request examples in accordance with FAPI 1.0 requirements for Authorisation Code Flow and JARM use. | [Security Profile](../../#security-profile) |
 | FAPI normative references | [**Standards Maintenance #590**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/590): Removed legacy draft FAPI references and legacy phasing ensuring all normative references for FAPI align to the final versions | [Security Profile](../../#security-profile) |
 
 ## Consumer Experience

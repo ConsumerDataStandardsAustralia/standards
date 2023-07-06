@@ -36,6 +36,10 @@
 
 > Non-Normative Example - FAPI 1.0 Final Phase 3 Obligation  
 
+```diff
++ Added "response_mode" to the non normative example. This demonstrates the use of Authorization Code Flow in conjunction with JARM and FAPI 1.0
+```
+
 ```
 #Decoded Request Object JWT
 
@@ -45,6 +49,7 @@
   "nbf": 1680829200,
   "aud": "https://www.recipient.com.au",
   "response_type": "code",
+  "response_mode": "jwt",
   "client_id": "s6BhdRkqt3",
   "redirect_uri": "https://www.recipient.com.au/coolstuff",
   "scope": "openid profile bank:accounts.basic:read
