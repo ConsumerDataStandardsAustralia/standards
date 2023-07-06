@@ -25738,6 +25738,45 @@ This operation does not require authentication
 
 <p>Description of the usage of the depositRateType field as it applies to products.</p>
 
+<p><a id="productdepositbaseratetypedoc"></a>
+<ul><li id="tocSproductdepositbaseratetypedoc"><b>Deposit Base Rate Types</b></li></ul></p>
+
+<p>A deposit product is expected to present a single Base rate corresponding to relevant selection criteria including the rate <code>tiers</code> and <code>additionalValue</code>, where applicable.</p>
+
+<table><thead>
+<tr>
+<th>Value</th>
+<th>Description</th>
+<th>Use of additionalValue Field</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>FIXED</td>
+<td>Fixed rate for a period of time</td>
+<td>The period of time fixed. Formatted according to ISO 8601 Durations</td>
+</tr>
+<tr>
+<td>FLOATING</td>
+<td>A floating rate is relatively fixed but still adjusts under specific circumstances</td>
+<td>Details of the float parameters</td>
+</tr>
+<tr>
+<td>MARKET_LINKED</td>
+<td>A rate that is linked to a specific market, commodity or asset class</td>
+<td>Details of the market linkage</td>
+</tr>
+<tr>
+<td>VARIABLE</td>
+<td>A variable base rate for the product</td>
+<td>NA</td>
+</tr>
+</tbody></table>
+
+<p><a id="productdepositadjustmentratetypedoc"></a>
+<ul><li id="tocSproductdepositadjustmentratetypedoc"><b>Deposit Adjustment Rate Types</b></li></ul></p>
+
+<p>A product may have zero, one, or multiple adjustment rates that are taken to apply to a Base rate.</p>
+
 <table><thead>
 <tr>
 <th>Value</th>
@@ -25756,6 +25795,37 @@ This operation does not require authentication
 <td>The name of the bundle</td>
 </tr>
 <tr>
+<td>INTRODUCTORY</td>
+<td>An introductory bonus that will expire after a set period</td>
+<td>The period of time for the introductory rate. Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 Durations</a></td>
+</tr>
+</tbody></table>
+
+<p><a id="productlendingratetypedoc"></a>
+<h3 id="tocSproductlendingratetypedoc">Product Lending Rate Types</h3></p>
+
+<p>Description of the usage of the lendingRateType field as it applies to products.</p>
+
+<p><a id="productlendingbaseratetypedoc"></a>
+<ul><li id="tocSproductlendingbaseratetypedoc"><b>Lending Base Rate Types</b></li></ul></p>
+
+<p>A lending product is expected to present a single Base rate corresponding to relevant selection criteria including the rate <code>tiers</code> and <code>additionalValue</code>, where applicable.</p>
+
+<p>Card products may have two or more base rates, including <code>CASH_ADVANCE</code> and <code>PURCHASE</code> as they may apply to different transaction types within an account. The <code>PURCHASE</code> lendingRateType is considered the rate commonly applicable to a card.</p>
+
+<table><thead>
+<tr>
+<th>Value</th>
+<th>Description</th>
+<th>Use of additionalValue Field</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>CASH_ADVANCE</td>
+<td>Specific rate applied to cash advances from the account. This is expected to apply to products in the <code>CRED_AND_CHRG_CARDS</code> category only</td>
+<td>NA</td>
+</tr>
+<tr>
 <td>FIXED</td>
 <td>Fixed rate for a period of time</td>
 <td>The period of time fixed. Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 Durations</a></td>
@@ -25766,14 +25836,14 @@ This operation does not require authentication
 <td>Details of the float parameters</td>
 </tr>
 <tr>
-<td>INTRODUCTORY</td>
-<td>An introductory bonus that will expire after a set period</td>
-<td>The period of time for the introductory rate.  Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 Durations</a></td>
-</tr>
-<tr>
 <td>MARKET_LINKED</td>
 <td>A rate that is linked to a specific market, commodity or asset class</td>
 <td>Details of the market linkage</td>
+</tr>
+<tr>
+<td>PURCHASE</td>
+<td>Specific rate applied to purchases from the account. This is expected to apply to products in the <code>CRED_AND_CHRG_CARDS</code> category only</td>
+<td>NA</td>
 </tr>
 <tr>
 <td>VARIABLE</td>
@@ -25782,10 +25852,10 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<p><a id="productlendingratetypedoc"></a>
-<h3 id="tocSproductlendingratetypedoc">Product Lending Rate Types</h3></p>
+<p><a id="productlendingadjustmentratetypedoc"></a>
+<ul><li id="tocSproductlendingadjustmentratetypedoc"><b>Lending Adjustment Rate Types</b></li></ul></p>
 
-<p>Description of the usage of the lendingRateType field as it applies to products.</p>
+<p>A product may have zero, one, or multiple adjustment rates that are taken to apply to a Base rate.</p>
 
 <table><thead>
 <tr>
@@ -25805,49 +25875,19 @@ This operation does not require authentication
 <td>The name of the bundle</td>
 </tr>
 <tr>
-<td>CASH_ADVANCE</td>
-<td>Specific rate applied to cash advances from the account</td>
-<td>NA</td>
-</tr>
-<tr>
 <td>DISCOUNT</td>
-<td>A specific discount rate that may be applied.  A discount rate reduces the interest payable</td>
+<td>A specific discount rate that may be applied. A discount rate reduces the interest payable</td>
 <td>Description of the discount rate that is applicable</td>
-</tr>
-<tr>
-<td>FIXED</td>
-<td>Fixed rate for a period of time</td>
-<td>The period of time fixed. Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 Durations</a></td>
-</tr>
-<tr>
-<td>FLOATING</td>
-<td>A floating rate is relatively fixed but still adjusts under specific circumstances</td>
-<td>Details of the float parameters</td>
 </tr>
 <tr>
 <td>INTRODUCTORY</td>
 <td>An introductory discount that will expire after a set period</td>
-<td>The period of time for the introductory rate.  Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 Durations</a></td>
-</tr>
-<tr>
-<td>MARKET_LINKED</td>
-<td>A rate that is linked to a specific market, commodity or asset class</td>
-<td>Details of the market linkage</td>
+<td>The period of time for the introductory rate. Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 Durations</a></td>
 </tr>
 <tr>
 <td>PENALTY</td>
-<td>A specific penalty rate that may be applied.  A penalty rate increases the interest payable</td>
+<td>A specific penalty rate that may be applied. A penalty rate increases the interest payable</td>
 <td>Description of the penalty rate that is applicable</td>
-</tr>
-<tr>
-<td>PURCHASE</td>
-<td>Specific rate applied to purchases from the account</td>
-<td>NA</td>
-</tr>
-<tr>
-<td>VARIABLE</td>
-<td>A variable base rate for the product</td>
-<td>NA</td>
 </tr>
 </tbody></table>
 
