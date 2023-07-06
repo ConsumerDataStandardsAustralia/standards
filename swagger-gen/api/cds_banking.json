@@ -2009,7 +2009,7 @@
           "Scheduled Payments"
         ],
         "summary": "Get Scheduled Payments for Account",
-        "description": "Obtain scheduled, outgoing payments for a specific account",
+        "description": "Obtain scheduled, outgoing payments for a specific account\n\nObsolete versions: [v1](includes/obsolete/get-scheduled-payments-for-account-v1.html)",
         "operationId": "listScheduledPayments",
         "parameters": [
           {
@@ -2121,7 +2121,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ResponseBankingScheduledPaymentsList"
+                  "$ref": "#/components/schemas/ResponseBankingScheduledPaymentsListV2"
                 }
               }
             }
@@ -2202,7 +2202,7 @@
         "x-scopes": [
           "bank:regular_payments:read"
         ],
-        "x-version": "1"
+        "x-version": "2"
       }
     },
     "/banking/payments/scheduled": {
@@ -2212,7 +2212,7 @@
           "Scheduled Payments"
         ],
         "summary": "Get Scheduled Payments Bulk",
-        "description": "Obtain scheduled payments for multiple, filtered accounts that are the source of funds for the payments",
+        "description": "Obtain scheduled payments for multiple, filtered accounts that are the source of funds for the payments\n\nObsolete versions: [v1](includes/obsolete/get-scheduled-payments-bulk-v1.html)",
         "operationId": "listScheduledPaymentsBulk",
         "parameters": [
           {
@@ -2359,7 +2359,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ResponseBankingScheduledPaymentsList"
+                  "$ref": "#/components/schemas/ResponseBankingScheduledPaymentsListV2"
                 }
               }
             }
@@ -2422,7 +2422,7 @@
         "x-scopes": [
           "bank:regular_payments:read"
         ],
-        "x-version": "1"
+        "x-version": "2"
       },
       "post": {
         "tags": [
@@ -2430,7 +2430,7 @@
           "Scheduled Payments"
         ],
         "summary": "Get Scheduled Payments For Specific Accounts",
-        "description": "Obtain scheduled payments for a specified list of accounts",
+        "description": "Obtain scheduled payments for a specified list of accounts\n\nObsolete versions: [v1](includes/obsolete/get-scheduled-payments-for-specific-accounts-v1.html)",
         "operationId": "listScheduledPaymentsSpecificAccounts",
         "parameters": [
           {
@@ -2542,7 +2542,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ResponseBankingScheduledPaymentsList"
+                  "$ref": "#/components/schemas/ResponseBankingScheduledPaymentsListV2"
                 }
               }
             }
@@ -2605,7 +2605,7 @@
         "x-scopes": [
           "bank:regular_payments:read"
         ],
-        "x-version": "1",
+        "x-version": "2",
         "x-codegen-request-body-name": "accountIds"
       }
     },
@@ -5227,7 +5227,7 @@
         "properties": {
           "name": {
             "type": "string",
-            "description": "The name assigned to the digital wallet by the owner of the wallet, else the display name provided by the digital wallet provider"
+            "description": "The display name of the wallet as given by the customer, else a default value defined by the data holder"
           },
           "identifier": {
             "type": "string",
@@ -5338,7 +5338,7 @@
           "financialInstitution"
         ]
       },
-      "ResponseBankingScheduledPaymentsList": {
+      "ResponseBankingScheduledPaymentsListV2": {
         "required": [
           "data",
           "links",
@@ -5356,7 +5356,7 @@
                 "type": "array",
                 "description": "The list of scheduled payments to return",
                 "items": {
-                  "$ref": "#/components/schemas/BankingScheduledPayment"
+                  "$ref": "#/components/schemas/BankingScheduledPaymentV2"
                 }
               }
             }
@@ -5369,7 +5369,7 @@
           }
         }
       },
-      "BankingScheduledPayment": {
+      "BankingScheduledPaymentV2": {
         "required": [
           "from",
           "payerReference",
@@ -5412,7 +5412,7 @@
           "paymentSet": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/BankingScheduledPaymentSet"
+              "$ref": "#/components/schemas/BankingScheduledPaymentSetV2"
             }
           },
           "recurrence": {
@@ -5423,14 +5423,14 @@
           "payeeReference"
         ]
       },
-      "BankingScheduledPaymentSet": {
+      "BankingScheduledPaymentSetV2": {
         "required": [
           "to"
         ],
         "type": "object",
         "properties": {
           "to": {
-            "$ref": "#/components/schemas/BankingScheduledPaymentTo"
+            "$ref": "#/components/schemas/BankingScheduledPaymentToV2"
           },
           "isAmountCalculated": {
             "type": "boolean",
@@ -5453,7 +5453,7 @@
           "amount"
         ]
       },
-      "BankingScheduledPaymentTo": {
+      "BankingScheduledPaymentToV2": {
         "required": [
           "toUType"
         ],
@@ -5465,6 +5465,7 @@
             "enum": [
               "accountId",
               "biller",
+              "digitalWallet",              
               "domestic",
               "international",
               "payeeId"
@@ -5488,6 +5489,9 @@
             "type": "string",
             "description": "The reference for the transaction, if applicable, that will be provided by the originating institution for the specific payment. If not empty, it overrides the value provided at the BankingScheduledPayment level."
           },
+          "digitalWallet": {
+            "$ref": "#/components/schemas/BankingDigitalWalletPayee"
+          },        
           "domestic": {
             "$ref": "#/components/schemas/BankingDomesticPayee"
           },
@@ -5502,6 +5506,7 @@
         "x-conditional": [
           "accountId",
           "payeeId",
+          "digitalWallet",
           "domestic",
           "biller",
           "international",

@@ -5092,7 +5092,7 @@
         "properties" : {
           "toUType" : {
             "description" : "The type of object provided that specifies the destination of the funds for the payment.",
-            "enum" : [ "accountId", "biller", "domestic", "international", "payeeId" ],
+            "enum" : [ "accountId", "biller", "digitalWallet", "domestic", "international", "payeeId" ],
             "type" : "string"
           },
           "accountId" : {
@@ -5113,6 +5113,9 @@
             "description" : "The reference for the transaction, if applicable, that will be provided by the originating institution for the specific payment. If not empty, it overrides the value provided at the BankingScheduledPayment level.",
             "type" : "string"
           },
+          "digitalWallet" : {
+            "$ref" : "#/components/schemas/BankingDigitalWalletPayee"
+          },
           "domestic" : {
             "$ref" : "#/components/schemas/BankingDomesticPayee"
           },
@@ -5125,7 +5128,7 @@
         },
         "required" : [ "toUType" ],
         "type" : "object",
-        "x-conditional" : [ "accountId", "payeeId", "domestic", "biller", "international", "nickname", "payeeReference" ]
+        "x-conditional" : [ "accountId", "payeeId", "digitalWallet", "domestic", "biller", "international", "nickname", "payeeReference" ]
       },
       "BankingScheduledPaymentFrom" : {
         "description" : "Object containing details of the source of the payment. Currently only specifies an account ID but provided as an object to facilitate future extensibility and consistency with the to object",
