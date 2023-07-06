@@ -1,8 +1,8 @@
 ## Product & Account Components
 ```diff
-Updated description of 'PENSION_RECIPIENT' value in 
+Updated description of 'PENSION_RECIPIENT' value in
 'Product Eligibility Types' table from:
-- A recipient of a government pension may apply for the product	
+- A recipient of a government pension may apply for the product
 to:
 + Only a recipient of a government pension may apply for the product
 and 'Product Discount Eligibility Types' table from:
@@ -159,7 +159,7 @@ A deposit product is expected to present a single Base rate corresponding to rel
 
 Value | Description | Use of additionalValue Field
 -- | -- | --
-FIXED | Fixed rate for a period of time | The period of time fixed. Formatted according to ISO 8601 Durations
+FIXED | Fixed rate for a period of time | The period of time fixed. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)
 FLOATING | A floating rate is relatively fixed but still adjusts under specific circumstances | Details of the float parameters
 MARKET_LINKED | A rate that is linked to a specific market, commodity or asset class | Details of the market linkage
 VARIABLE | A variable base rate for the product | NA
