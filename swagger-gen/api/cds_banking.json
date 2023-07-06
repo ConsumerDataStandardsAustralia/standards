@@ -126,7 +126,7 @@
           {
             "name": "x-fapi-auth-date",
             "in": "header",
-            "description": "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+            "description": "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
             "schema": {
               "type": "string",
               "x-conditional": true
@@ -180,7 +180,7 @@
             }
           },
           "400": {
-            "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
+            "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
             "headers": {
               "x-fapi-interaction-id": {
                 "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
@@ -346,7 +346,7 @@
           {
             "name": "x-fapi-auth-date",
             "in": "header",
-            "description": "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+            "description": "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
             "schema": {
               "type": "string",
               "x-conditional": true
@@ -400,7 +400,7 @@
             }
           },
           "400": {
-            "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
+            "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
             "headers": {
               "x-fapi-interaction-id": {
                 "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
@@ -518,7 +518,7 @@
           {
             "name": "x-fapi-auth-date",
             "in": "header",
-            "description": "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+            "description": "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
             "schema": {
               "type": "string",
               "x-conditional": true
@@ -583,7 +583,7 @@
             }
           },
           "400": {
-            "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
+            "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
             "headers": {
               "x-fapi-interaction-id": {
                 "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
@@ -693,7 +693,7 @@
           {
             "name": "x-fapi-auth-date",
             "in": "header",
-            "description": "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+            "description": "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
             "schema": {
               "type": "string",
               "x-conditional": true
@@ -747,7 +747,7 @@
             }
           },
           "400": {
-            "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
+            "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
             "headers": {
               "x-fapi-interaction-id": {
                 "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
@@ -856,7 +856,7 @@
           {
             "name": "x-fapi-auth-date",
             "in": "header",
-            "description": "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+            "description": "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
             "schema": {
               "type": "string",
               "x-conditional": true
@@ -910,7 +910,7 @@
             }
           },
           "400": {
-            "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
+            "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
             "headers": {
               "x-fapi-interaction-id": {
                 "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
@@ -1089,7 +1089,7 @@
           {
             "name": "x-fapi-auth-date",
             "in": "header",
-            "description": "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+            "description": "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
             "schema": {
               "type": "string",
               "x-conditional": true
@@ -1143,7 +1143,7 @@
             }
           },
           "400": {
-            "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li></ul>",
+            "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li></ul>",
             "headers": {
               "x-fapi-interaction-id": {
                 "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
@@ -1281,7 +1281,7 @@
           {
             "name": "x-fapi-auth-date",
             "in": "header",
-            "description": "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+            "description": "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
             "schema": {
               "type": "string",
               "x-conditional": true
@@ -1335,7 +1335,7 @@
             }
           },
           "400": {
-            "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li></ul>",
+            "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li></ul>",
             "headers": {
               "x-fapi-interaction-id": {
                 "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
@@ -1466,7 +1466,7 @@
           {
             "name": "x-fapi-auth-date",
             "in": "header",
-            "description": "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+            "description": "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
             "schema": {
               "type": "string",
               "x-conditional": true
@@ -1520,7 +1520,7 @@
             }
           },
           "400": {
-            "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
+            "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
             "headers": {
               "x-fapi-interaction-id": {
                 "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
@@ -1704,7 +1704,7 @@
           {
             "name": "x-fapi-auth-date",
             "in": "header",
-            "description": "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+            "description": "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
             "schema": {
               "type": "string",
               "x-conditional": true
@@ -1758,7 +1758,7 @@
             }
           },
           "400": {
-            "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
+            "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
             "headers": {
               "x-fapi-interaction-id": {
                 "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
@@ -1876,7 +1876,7 @@
           {
             "name": "x-fapi-auth-date",
             "in": "header",
-            "description": "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+            "description": "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
             "schema": {
               "type": "string",
               "x-conditional": true
@@ -1941,7 +1941,7 @@
             }
           },
           "400": {
-            "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
+            "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
             "headers": {
               "x-fapi-interaction-id": {
                 "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
@@ -2009,7 +2009,7 @@
           "Scheduled Payments"
         ],
         "summary": "Get Scheduled Payments for Account",
-        "description": "Obtain scheduled, outgoing payments for a specific account",
+        "description": "Obtain scheduled, outgoing payments for a specific account\n\nObsolete versions: [v1](includes/obsolete/get-scheduled-payments-for-account-v1.html)",
         "operationId": "listScheduledPayments",
         "parameters": [
           {
@@ -2073,7 +2073,7 @@
           {
             "name": "x-fapi-auth-date",
             "in": "header",
-            "description": "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+            "description": "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
             "schema": {
               "type": "string",
               "x-conditional": true
@@ -2121,13 +2121,13 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ResponseBankingScheduledPaymentsList"
+                  "$ref": "#/components/schemas/ResponseBankingScheduledPaymentsListV2"
                 }
               }
             }
           },
           "400": {
-            "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
+            "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
             "headers": {
               "x-fapi-interaction-id": {
                 "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
@@ -2202,7 +2202,7 @@
         "x-scopes": [
           "bank:regular_payments:read"
         ],
-        "x-version": "1"
+        "x-version": "2"
       }
     },
     "/banking/payments/scheduled": {
@@ -2212,7 +2212,7 @@
           "Scheduled Payments"
         ],
         "summary": "Get Scheduled Payments Bulk",
-        "description": "Obtain scheduled payments for multiple, filtered accounts that are the source of funds for the payments",
+        "description": "Obtain scheduled payments for multiple, filtered accounts that are the source of funds for the payments\n\nObsolete versions: [v1](includes/obsolete/get-scheduled-payments-bulk-v1.html)",
         "operationId": "listScheduledPaymentsBulk",
         "parameters": [
           {
@@ -2311,7 +2311,7 @@
           {
             "name": "x-fapi-auth-date",
             "in": "header",
-            "description": "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+            "description": "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
             "schema": {
               "type": "string",
               "x-conditional": true
@@ -2359,13 +2359,13 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ResponseBankingScheduledPaymentsList"
+                  "$ref": "#/components/schemas/ResponseBankingScheduledPaymentsListV2"
                 }
               }
             }
           },
           "400": {
-            "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
+            "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
             "headers": {
               "x-fapi-interaction-id": {
                 "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
@@ -2422,7 +2422,7 @@
         "x-scopes": [
           "bank:regular_payments:read"
         ],
-        "x-version": "1"
+        "x-version": "2"
       },
       "post": {
         "tags": [
@@ -2430,7 +2430,7 @@
           "Scheduled Payments"
         ],
         "summary": "Get Scheduled Payments For Specific Accounts",
-        "description": "Obtain scheduled payments for a specified list of accounts",
+        "description": "Obtain scheduled payments for a specified list of accounts\n\nObsolete versions: [v1](includes/obsolete/get-scheduled-payments-for-specific-accounts-v1.html)",
         "operationId": "listScheduledPaymentsSpecificAccounts",
         "parameters": [
           {
@@ -2483,7 +2483,7 @@
           {
             "name": "x-fapi-auth-date",
             "in": "header",
-            "description": "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+            "description": "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
             "schema": {
               "type": "string",
               "x-conditional": true
@@ -2542,13 +2542,13 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ResponseBankingScheduledPaymentsList"
+                  "$ref": "#/components/schemas/ResponseBankingScheduledPaymentsListV2"
                 }
               }
             }
           },
           "400": {
-            "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
+            "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
             "headers": {
               "x-fapi-interaction-id": {
                 "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
@@ -2605,7 +2605,7 @@
         "x-scopes": [
           "bank:regular_payments:read"
         ],
-        "x-version": "1",
+        "x-version": "2",
         "x-codegen-request-body-name": "accountIds"
       }
     },
@@ -2685,7 +2685,7 @@
           {
             "name": "x-fapi-auth-date",
             "in": "header",
-            "description": "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+            "description": "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
             "schema": {
               "type": "string",
               "x-conditional": true
@@ -2739,7 +2739,7 @@
             }
           },
           "400": {
-            "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
+            "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
             "headers": {
               "x-fapi-interaction-id": {
                 "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
@@ -2848,7 +2848,7 @@
           {
             "name": "x-fapi-auth-date",
             "in": "header",
-            "description": "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+            "description": "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
             "schema": {
               "type": "string",
               "x-conditional": true
@@ -2902,7 +2902,7 @@
             }
           },
           "400": {
-            "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
+            "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
             "headers": {
               "x-fapi-interaction-id": {
                 "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
@@ -3104,7 +3104,7 @@
             }
           },
           "400": {
-            "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
+            "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
             "content": {
               "application/json": {
                 "schema": {
@@ -3196,7 +3196,7 @@
             }
           },
           "400": {
-            "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
+            "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
             "content": {
               "application/json": {
                 "schema": {
@@ -5227,7 +5227,7 @@
         "properties": {
           "name": {
             "type": "string",
-            "description": "The name assigned to the digital wallet by the owner of the wallet, else the display name provided by the digital wallet provider"
+            "description": "The display name of the wallet as given by the customer, else a default value defined by the data holder"
           },
           "identifier": {
             "type": "string",
@@ -5338,7 +5338,7 @@
           "financialInstitution"
         ]
       },
-      "ResponseBankingScheduledPaymentsList": {
+      "ResponseBankingScheduledPaymentsListV2": {
         "required": [
           "data",
           "links",
@@ -5356,7 +5356,7 @@
                 "type": "array",
                 "description": "The list of scheduled payments to return",
                 "items": {
-                  "$ref": "#/components/schemas/BankingScheduledPayment"
+                  "$ref": "#/components/schemas/BankingScheduledPaymentV2"
                 }
               }
             }
@@ -5369,7 +5369,7 @@
           }
         }
       },
-      "BankingScheduledPayment": {
+      "BankingScheduledPaymentV2": {
         "required": [
           "from",
           "payerReference",
@@ -5412,7 +5412,7 @@
           "paymentSet": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/BankingScheduledPaymentSet"
+              "$ref": "#/components/schemas/BankingScheduledPaymentSetV2"
             }
           },
           "recurrence": {
@@ -5423,14 +5423,14 @@
           "payeeReference"
         ]
       },
-      "BankingScheduledPaymentSet": {
+      "BankingScheduledPaymentSetV2": {
         "required": [
           "to"
         ],
         "type": "object",
         "properties": {
           "to": {
-            "$ref": "#/components/schemas/BankingScheduledPaymentTo"
+            "$ref": "#/components/schemas/BankingScheduledPaymentToV2"
           },
           "isAmountCalculated": {
             "type": "boolean",
@@ -5453,7 +5453,7 @@
           "amount"
         ]
       },
-      "BankingScheduledPaymentTo": {
+      "BankingScheduledPaymentToV2": {
         "required": [
           "toUType"
         ],
@@ -5465,6 +5465,7 @@
             "enum": [
               "accountId",
               "biller",
+              "digitalWallet",              
               "domestic",
               "international",
               "payeeId"
@@ -5488,6 +5489,9 @@
             "type": "string",
             "description": "The reference for the transaction, if applicable, that will be provided by the originating institution for the specific payment. If not empty, it overrides the value provided at the BankingScheduledPayment level."
           },
+          "digitalWallet": {
+            "$ref": "#/components/schemas/BankingDigitalWalletPayee"
+          },        
           "domestic": {
             "$ref": "#/components/schemas/BankingDomesticPayee"
           },
@@ -5502,6 +5506,7 @@
         "x-conditional": [
           "accountId",
           "payeeId",
+          "digitalWallet",
           "domestic",
           "biller",
           "international",
@@ -6048,7 +6053,7 @@
       "RequestHeader_x-fapi-auth-date": {
         "name": "x-fapi-auth-date",
         "in": "header",
-        "description": "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+        "description": "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
         "schema": {
           "type": "string",
           "x-conditional": true

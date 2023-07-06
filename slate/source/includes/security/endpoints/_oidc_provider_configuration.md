@@ -67,6 +67,8 @@ Data Holders MUST make their OpenID Provider Metadata available via a configurat
 This endpoint does not require [CORS](https://consumerdatastandardsaustralia.github.io/standards/#cors).
 
 ```diff
+Replaced FAPI draft references with FAPI 1.0 Final references
+
 + Adds all metadata parameters required by the Data Standards and upstream normative references
 ```
 At a minimum, the Data Holder metadata **MUST** include:
@@ -120,3 +122,4 @@ Where Data Holders support authorisation response encryption according to **[[JA
 In addition, the Data Holder metadata **MUST** also include:
 
 - `cdr_arrangement_revocation_endpoint`: The URL of the CDR Arrangement Revocation End Point for consent revocation
+

@@ -8,4 +8,40 @@ This specification defines the APIs for Data Holders exposing Energy endpoints.
 <tr><td><a href='./includes/swagger/cds_energy.yaml'>Energy OpenAPI Specification (YAML)</a></td></tr>
 </table>
 
+```diff
+Updated description of EnergyPaymentSchedule.digitalWallet.name field
+from:
+- The name assigned to the digital wallet by the owner of the wallet, else the display name provided by the digital wallet provider
+to:
++ The display name of the wallet as given by the customer, else a default value defined by the data holder
+
+Updated description of `EnergyPaymentSchedule.isTokenised` field to further clarify when it can be used
+
+Updated the versions of the following APIs:
++ Get Billing For Account from v1 to v2
++ Get Bulk Billing from v1 to v2
++ Get Billing For Specific Accounts from v1 to v2
+
+Updated the following structures
+from:
+- EnergyBillingListResponse
+- EnergyBillingTransaction
+- EnergyBillingDemandTransaction
+- EnergyBillingUsageTransaction
+
+to:
++ EnergyBillingListResponseV2
++ EnergyBillingTransactionV2
++ EnergyBillingDemandTransactionV2
++ EnergyBillingUsageTransactionV2
+
+
+Added following ENUM values to EnergyBillingDemandTransaction.timeOfUseType field:
++ ALL_DAY
++ EXCESS
+
+Added following ENUM values to EnergyBillingUsageTransaction.timeOfUseType field:
++ ALL_DAY
+```
+
 <%= partial "includes/cds_energy.md" %>
