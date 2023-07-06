@@ -2919,7 +2919,7 @@
                         ],
                         "properties": {
                             "isTokenised": {
-                                "description": "Flag indicating that the account details are tokenised and cannot be shared.  False if absent",
+                                "description": "Flag indicating that the account details are tokenised, or held in a closed system, and is not accessible through any other channels. False if absent",
                                 "type": "boolean"
                             },
                             "bsb": {
