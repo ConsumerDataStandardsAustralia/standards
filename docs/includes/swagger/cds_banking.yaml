@@ -201,8 +201,10 @@ paths:
               schema:
                 $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
-            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page
-            Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
+            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400
+            - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid
+            Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid
+            Version](#error-400-header-invalid-version)</li></ul>
           headers:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
@@ -440,8 +442,10 @@ paths:
               schema:
                 $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
-            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page
-            Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
+            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400
+            - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid
+            Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid
+            Version](#error-400-header-invalid-version)</li></ul>
           headers:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
@@ -636,8 +640,10 @@ paths:
               schema:
                 $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
-            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page
-            Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
+            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400
+            - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid
+            Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid
+            Version](#error-400-header-invalid-version)</li></ul>
           headers:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
@@ -817,7 +823,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
-            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
+            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400
+            - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid
+            Version](#error-400-header-invalid-version)</li></ul>
           headers:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
@@ -999,7 +1007,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
-            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
+            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400
+            - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid
+            Version](#error-400-header-invalid-version)</li></ul>
           headers:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
@@ -1271,9 +1281,10 @@ paths:
               schema:
                 $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
-            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page
-            Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400
-            - Invalid Date](#error-400-field-invalid-date-time)</li></ul>
+            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400
+            - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid
+            Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid
+            Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li></ul>
           headers:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
@@ -1481,8 +1492,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
-            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400
-            - Invalid Date](#error-400-field-invalid-date-time)</li></ul>
+            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400
+            - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid
+            Date](#error-400-field-invalid-date-time)</li></ul>
           headers:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
@@ -1685,8 +1697,10 @@ paths:
               schema:
                 $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
-            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page
-            Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
+            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400
+            - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid
+            Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid
+            Version](#error-400-header-invalid-version)</li></ul>
           headers:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
@@ -1943,8 +1957,10 @@ paths:
               schema:
                 $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
-            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page
-            Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
+            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400
+            - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid
+            Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid
+            Version](#error-400-header-invalid-version)</li></ul>
           headers:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
@@ -2139,8 +2155,10 @@ paths:
               schema:
                 $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
-            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page
-            Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
+            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400
+            - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid
+            Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid
+            Version](#error-400-header-invalid-version)</li></ul>
           headers:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
@@ -2344,8 +2362,10 @@ paths:
               schema:
                 $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
-            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page
-            Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
+            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400
+            - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid
+            Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid
+            Version](#error-400-header-invalid-version)</li></ul>
           headers:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
@@ -2603,8 +2623,10 @@ paths:
               schema:
                 $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
-            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page
-            Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
+            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400
+            - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid
+            Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid
+            Version](#error-400-header-invalid-version)</li></ul>
           headers:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
@@ -2800,8 +2822,10 @@ paths:
               schema:
                 $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
-            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page
-            Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
+            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400
+            - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid
+            Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid
+            Version](#error-400-header-invalid-version)</li></ul>
           headers:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
@@ -3013,8 +3037,10 @@ paths:
               schema:
                 $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
-            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page
-            Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
+            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400
+            - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid
+            Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid
+            Version](#error-400-header-invalid-version)</li></ul>
           headers:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
@@ -3196,8 +3222,10 @@ paths:
               schema:
                 $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
-            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page
-            Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
+            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400
+            - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid
+            Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid
+            Version](#error-400-header-invalid-version)</li></ul>
           headers:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
@@ -3440,9 +3468,10 @@ paths:
               schema:
                 $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
-            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li><li>[400
-            - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400
-            - Invalid Version](#error-400-header-invalid-version)</li></ul>
+            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400
+            - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid
+            Date](#error-400-field-invalid-date-time)</li><li>[400 - Invalid Page
+            Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
         "406":
           content:
             application/json:
@@ -3527,7 +3556,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
-            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
+            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400
+            - Invalid Version](#error-400-header-invalid-version)</li></ul>
         "404":
           content:
             application/json:
@@ -5604,6 +5634,11 @@ components:
       - beneficiaryDetails
       type: object
     BankingDigitalWalletPayee:
+      example:
+        identifier: identifier
+        provider: PAYPAL_AU
+        name: name
+        type: EMAIL
       properties:
         name:
           description: The name assigned to the digital wallet by the owner of the
@@ -5788,6 +5823,11 @@ components:
                   billerName: billerName
                   crn: crn
                   billerCode: billerCode
+                digitalWallet:
+                  identifier: identifier
+                  provider: PAYPAL_AU
+                  name: name
+                  type: EMAIL
                 payeeReference: payeeReference
                 toUType: accountId
                 nickname: nickname
@@ -5830,6 +5870,11 @@ components:
                   billerName: billerName
                   crn: crn
                   billerCode: billerCode
+                digitalWallet:
+                  identifier: identifier
+                  provider: PAYPAL_AU
+                  name: name
+                  type: EMAIL
                 payeeReference: payeeReference
                 toUType: accountId
                 nickname: nickname
@@ -5902,6 +5947,11 @@ components:
                   billerName: billerName
                   crn: crn
                   billerCode: billerCode
+                digitalWallet:
+                  identifier: identifier
+                  provider: PAYPAL_AU
+                  name: name
+                  type: EMAIL
                 payeeReference: payeeReference
                 toUType: accountId
                 nickname: nickname
@@ -5944,6 +5994,11 @@ components:
                   billerName: billerName
                   crn: crn
                   billerCode: billerCode
+                digitalWallet:
+                  identifier: identifier
+                  provider: PAYPAL_AU
+                  name: name
+                  type: EMAIL
                 payeeReference: payeeReference
                 toUType: accountId
                 nickname: nickname
@@ -6039,6 +6094,11 @@ components:
               billerName: billerName
               crn: crn
               billerCode: billerCode
+            digitalWallet:
+              identifier: identifier
+              provider: PAYPAL_AU
+              name: name
+              type: EMAIL
             payeeReference: payeeReference
             toUType: accountId
             nickname: nickname
@@ -6081,6 +6141,11 @@ components:
               billerName: billerName
               crn: crn
               billerCode: billerCode
+            digitalWallet:
+              identifier: identifier
+              provider: PAYPAL_AU
+              name: name
+              type: EMAIL
             payeeReference: payeeReference
             toUType: accountId
             nickname: nickname
@@ -6178,6 +6243,11 @@ components:
             billerName: billerName
             crn: crn
             billerCode: billerCode
+          digitalWallet:
+            identifier: identifier
+            provider: PAYPAL_AU
+            name: name
+            type: EMAIL
           payeeReference: payeeReference
           toUType: accountId
           nickname: nickname
@@ -6243,6 +6313,11 @@ components:
           billerName: billerName
           crn: crn
           billerCode: billerCode
+        digitalWallet:
+          identifier: identifier
+          provider: PAYPAL_AU
+          name: name
+          type: EMAIL
         payeeReference: payeeReference
         toUType: accountId
         nickname: nickname
@@ -6271,6 +6346,7 @@ components:
           enum:
           - accountId
           - biller
+          - digitalWallet
           - domestic
           - international
           - payeeId
@@ -6299,6 +6375,8 @@ components:
             not empty, it overrides the value provided at the BankingScheduledPayment
             level.
           type: string
+        digitalWallet:
+          $ref: '#/components/schemas/BankingDigitalWalletPayee'
         domestic:
           $ref: '#/components/schemas/BankingDomesticPayee'
         biller:
@@ -6311,6 +6389,7 @@ components:
       x-conditional:
       - accountId
       - payeeId
+      - digitalWallet
       - domestic
       - biller
       - international
@@ -7464,6 +7543,11 @@ components:
                 billerName: billerName
                 crn: crn
                 billerCode: billerCode
+              digitalWallet:
+                identifier: identifier
+                provider: PAYPAL_AU
+                name: name
+                type: EMAIL
               payeeReference: payeeReference
               toUType: accountId
               nickname: nickname
@@ -7506,6 +7590,11 @@ components:
                 billerName: billerName
                 crn: crn
                 billerCode: billerCode
+              digitalWallet:
+                identifier: identifier
+                provider: PAYPAL_AU
+                name: name
+                type: EMAIL
               payeeReference: payeeReference
               toUType: accountId
               nickname: nickname
@@ -7578,6 +7667,11 @@ components:
                 billerName: billerName
                 crn: crn
                 billerCode: billerCode
+              digitalWallet:
+                identifier: identifier
+                provider: PAYPAL_AU
+                name: name
+                type: EMAIL
               payeeReference: payeeReference
               toUType: accountId
               nickname: nickname
@@ -7620,6 +7714,11 @@ components:
                 billerName: billerName
                 crn: crn
                 billerCode: billerCode
+              digitalWallet:
+                identifier: identifier
+                provider: PAYPAL_AU
+                name: name
+                type: EMAIL
               payeeReference: payeeReference
               toUType: accountId
               nickname: nickname
