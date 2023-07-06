@@ -2,7 +2,7 @@
 
 | Section         | Sub-section                                  | Endpoint                                                   | Method | Version | Binding Date        | Retirement Date | Date Introduced    | Date Deprecated    |
 |-----------------|----------------------------------------------|------------------------------------------------------------|--------|---------|---------------------|-----------------|--------------------|--------------------|
-| InfoSec Profile | Security Endpoints > CDR Arrangement Revocation Endpoint | ``<cdr_arrangement_revocation_endpoint>``      | <span class="method post">POST</span>  | 1.5.0   | 2020-11-01          | N/A             | 2020-04-17, V1.2.0 | N/A                |
+| Security Profile | Security Endpoints > CDR Arrangement Revocation Endpoint | ``<cdr_arrangement_revocation_endpoint>``      | <span class="method post">POST</span>  | 1.5.0   | 2020-11-01          | N/A             | 2020-04-17, V1.2.0 | N/A                |
 
 **NOTE** Endpoints defined in normative references are not provided here.
 
