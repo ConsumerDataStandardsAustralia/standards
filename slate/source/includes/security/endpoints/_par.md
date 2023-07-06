@@ -1,8 +1,12 @@
 
 ### Pushed Authorisation End Point
 
+```diff
+Updated non-normtative example to use RFC9126, not the draft PAR specification
+```
+
 > Non-Normative Example  
-> Utilising PAR Draft 01 specification and OIDC Hybrid Flow
+> Utilising RFC9126 and OIDC Hybrid Flow
 
 
 > Request
@@ -179,7 +183,10 @@ eyJraWQiOiIwZWQ3YTNkZi1hMGJlLTRhZjQtOTk0YS1jNDBhODc0ODQwNjMiLCJhbGciOiJQUzI1NiJ9
 
 Data Holders **MUST** support Pushed Authorisation Requests (PAR) via the pushed authorisation end point according to **[[PAR]](#nref-PAR)**.
 
+```diff
+Removed legacy phasing requirements for FAPI 1.0 Final using PAR
+```
 
-Data Recipient Software Products **MAY** send authorisation requests using **[[PAR]](#nref-PAR)** if supported by the Data Holder.
+Data Recipient Software Products **MUST** send authorisation requests using **[[PAR]](#nref-PAR)** if supported by the Data Holder.
 
 The Data Holder response provides the Data Recipient Software Product with a Request URI in the response. The Request URI is then passed to the Data Holder’s Authorisation End Point to initiate an authorisation flow.
