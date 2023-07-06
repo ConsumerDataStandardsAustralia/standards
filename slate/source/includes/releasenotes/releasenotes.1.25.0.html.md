@@ -22,6 +22,7 @@ This release addresses the following minor defects raised on [Standards Staging]
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
 - [Standards Maintenance Issue TBC - TBC](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/TBC)
+- [Standards Maintenance Issue 592 - EnergyBillingDemandTransaction - timeOfUseType - New Value](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/592)
 - [Standards Maintenance Issue 591 - Energy 'Get Agreed Payment Schedule' - BSB and Account Number Tokenisation/non-Tokenisation](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/591)
 
 ### Decision Proposals
@@ -45,6 +46,7 @@ No Change
 
 |Change|Description|Link|
 |------|-----------|----|
+| Energy APIs | [**Standards Maintenance #592**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/592): <ul><li>Added `ALL_DAY` and `EXCESS` values to `EnergyBillingDemandTransaction.timeOfUseType` field.  Added `ALL_DAY` value to  `EnergyBillingUsageTransaction.timeOfUseType ` field.</li><li>Incremented versions of Get Get Billing For Account, Get Bulk Billing	and Get Billing For Specific Accounts APIs.</li></ul>  | [Energy APIs](../../#energy-apis) |
 | Energy APIs | [**Standards Maintenance #591**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/591): Updated description of  `EnergyPaymentSchedule.isTokenised` field to further clarify when it can be used | [Energy APIs](../../#energy-apis) |
 
 ## Information Security Profile
