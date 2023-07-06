@@ -116,7 +116,7 @@
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
 <td><a href="#schemacdr-admin-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
@@ -468,7 +468,7 @@ This operation may only be called by the CDR Register
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
 <td><a href="#schemacdr-admin-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
