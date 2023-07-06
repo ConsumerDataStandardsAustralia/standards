@@ -11,7 +11,7 @@ info:
     name: MIT License
     url: https://opensource.org/licenses/MIT
   title: CDR Admin API
-  version: 1.24.0
+  version: 1.25.0
 servers:
 - url: https://data.holder.com.au/cds-au/v1
 paths:
@@ -74,7 +74,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
-            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
+            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400
+            - Invalid Version](#error-400-header-invalid-version)</li></ul>
         "406":
           content:
             application/json:
@@ -169,7 +170,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
-            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
+            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400
+            - Invalid Version](#error-400-header-invalid-version)</li></ul>
         "406":
           content:
             application/json:

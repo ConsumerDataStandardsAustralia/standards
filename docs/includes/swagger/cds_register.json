@@ -2,7 +2,7 @@
   "openapi" : "3.0.3",
   "info" : {
     "title" : "CDR Participant Discovery API",
-    "version" : "1.24.0"
+    "version" : "1.25.0"
   },
   "servers" : [ {
     "url" : "https://<register-base-url>/"
@@ -82,9 +82,8 @@
           "name" : "x-v",
           "required" : false,
           "schema" : {
-            "default" : 1,
-            "type" : "integer",
-            "x-cds-type" : "PositiveInteger"
+            "default" : "1",
+            "type" : "string"
           },
           "style" : "simple"
         }, {
@@ -94,8 +93,7 @@
           "name" : "x-min-v",
           "required" : false,
           "schema" : {
-            "type" : "integer",
-            "x-cds-type" : "PositiveInteger"
+            "type" : "string"
           },
           "style" : "simple"
         }, {
@@ -117,10 +115,10 @@
           "required" : false,
           "schema" : {
             "default" : 1,
-            "type" : "integer",
-            "x-cds-type" : "PositiveInteger"
+            "type" : "integer"
           },
-          "style" : "form"
+          "style" : "form",
+          "x-cds-type" : "PositiveInteger"
         }, {
           "description" : "the number of records to return per page",
           "explode" : true,
@@ -129,10 +127,10 @@
           "required" : false,
           "schema" : {
             "default" : 25,
-            "type" : "integer",
-            "x-cds-type" : "PositiveInteger"
+            "type" : "integer"
           },
-          "style" : "form"
+          "style" : "form",
+          "x-cds-type" : "PositiveInteger"
         } ],
         "responses" : {
           "200" : {
@@ -149,8 +147,7 @@
                 "description" : "The version of the API end point that the CDR Register has responded with.",
                 "explode" : false,
                 "schema" : {
-                  "type" : "integer",
-                  "x-cds-type" : "PositiveInteger"
+                  "type" : "string"
                 },
                 "style" : "simple"
               }
@@ -216,8 +213,7 @@
           "name" : "x-v",
           "required" : true,
           "schema" : {
-            "type" : "integer",
-            "x-cds-type" : "PositiveInteger"
+            "type" : "string"
           },
           "style" : "simple"
         }, {
@@ -227,8 +223,7 @@
           "name" : "x-min-v",
           "required" : false,
           "schema" : {
-            "type" : "integer",
-            "x-cds-type" : "PositiveInteger"
+            "type" : "string"
           },
           "style" : "simple"
         }, {
@@ -258,8 +253,7 @@
                 "description" : "The version of the API end point that the CDR Register has responded with.",
                 "explode" : false,
                 "schema" : {
-                  "type" : "integer",
-                  "x-cds-type" : "PositiveInteger"
+                  "type" : "string"
                 },
                 "style" : "simple"
               },
@@ -347,9 +341,8 @@
           "name" : "x-v",
           "required" : false,
           "schema" : {
-            "default" : 1,
-            "type" : "integer",
-            "x-cds-type" : "PositiveInteger"
+            "default" : "1",
+            "type" : "string"
           },
           "style" : "simple"
         }, {
@@ -359,8 +352,7 @@
           "name" : "x-min-v",
           "required" : false,
           "schema" : {
-            "type" : "integer",
-            "x-cds-type" : "PositiveInteger"
+            "type" : "string"
           },
           "style" : "simple"
         }, {
@@ -410,8 +402,8 @@
                 "description" : "The version of the API end point that the CDR Register has responded with.",
                 "explode" : false,
                 "schema" : {
-                  "type" : "integer",
-                  "x-cds-type" : "PositiveInteger"
+                  "default" : "1",
+                  "type" : "string"
                 },
                 "style" : "simple"
               }
@@ -507,9 +499,8 @@
           "name" : "x-v",
           "required" : false,
           "schema" : {
-            "default" : 1,
-            "type" : "integer",
-            "x-cds-type" : "PositiveInteger"
+            "default" : "1",
+            "type" : "string"
           },
           "style" : "simple"
         }, {
@@ -519,8 +510,7 @@
           "name" : "x-min-v",
           "required" : false,
           "schema" : {
-            "type" : "integer",
-            "x-cds-type" : "PositiveInteger"
+            "type" : "string"
           },
           "style" : "simple"
         }, {
@@ -550,8 +540,7 @@
                 "description" : "The version of the API end point that the CDR Register has responded with.",
                 "explode" : false,
                 "schema" : {
-                  "type" : "integer",
-                  "x-cds-type" : "PositiveInteger"
+                  "type" : "string"
                 },
                 "style" : "simple"
               },
@@ -629,9 +618,8 @@
           "name" : "x-v",
           "required" : false,
           "schema" : {
-            "default" : 1,
-            "type" : "integer",
-            "x-cds-type" : "PositiveInteger"
+            "default" : "1",
+            "type" : "string"
           },
           "style" : "simple"
         }, {
@@ -641,8 +629,7 @@
           "name" : "x-min-v",
           "required" : false,
           "schema" : {
-            "type" : "integer",
-            "x-cds-type" : "PositiveInteger"
+            "type" : "string"
           },
           "style" : "simple"
         }, {
@@ -672,8 +659,7 @@
                 "description" : "The version of the API end point that the CDR Register has responded with.",
                 "explode" : false,
                 "schema" : {
-                  "type" : "integer",
-                  "x-cds-type" : "PositiveInteger"
+                  "type" : "string"
                 },
                 "style" : "simple"
               },
@@ -751,9 +737,8 @@
           "name" : "x-v",
           "required" : false,
           "schema" : {
-            "default" : 1,
-            "type" : "integer",
-            "x-cds-type" : "PositiveInteger"
+            "default" : "1",
+            "type" : "string"
           },
           "style" : "simple"
         }, {
@@ -763,8 +748,7 @@
           "name" : "x-min-v",
           "required" : false,
           "schema" : {
-            "type" : "integer",
-            "x-cds-type" : "PositiveInteger"
+            "type" : "string"
           },
           "style" : "simple"
         }, {
@@ -794,8 +778,7 @@
                 "description" : "The version of the API end point that the CDR Register has responded with.",
                 "explode" : false,
                 "schema" : {
-                  "type" : "integer",
-                  "x-cds-type" : "PositiveInteger"
+                  "type" : "string"
                 },
                 "style" : "simple"
               },
@@ -873,9 +856,8 @@
           "name" : "x-v",
           "required" : false,
           "schema" : {
-            "default" : 2,
-            "type" : "integer",
-            "x-cds-type" : "PositiveInteger"
+            "default" : "2",
+            "type" : "string"
           },
           "style" : "simple"
         }, {
@@ -885,8 +867,7 @@
           "name" : "x-min-v",
           "required" : false,
           "schema" : {
-            "type" : "integer",
-            "x-cds-type" : "PositiveInteger"
+            "type" : "string"
           },
           "style" : "simple"
         }, {
@@ -916,8 +897,7 @@
                 "description" : "The version of the API end point that the CDR Register has responded with.",
                 "explode" : false,
                 "schema" : {
-                  "type" : "integer",
-                  "x-cds-type" : "PositiveInteger"
+                  "type" : "string"
                 },
                 "style" : "simple"
               },
@@ -994,8 +974,7 @@
         "name" : "x-v",
         "required" : false,
         "schema" : {
-          "type" : "integer",
-          "x-cds-type" : "PositiveInteger"
+          "type" : "string"
         },
         "style" : "simple"
       },
@@ -1019,8 +998,7 @@
         "name" : "x-min-v",
         "required" : false,
         "schema" : {
-          "type" : "integer",
-          "x-cds-type" : "PositiveInteger"
+          "type" : "string"
         },
         "style" : "simple"
       },
@@ -1056,10 +1034,10 @@
         "required" : false,
         "schema" : {
           "default" : 1,
-          "type" : "integer",
-          "x-cds-type" : "PositiveInteger"
+          "type" : "integer"
         },
-        "style" : "form"
+        "style" : "form",
+        "x-cds-type" : "PositiveInteger"
       },
       "PageSize" : {
         "description" : "the number of records to return per page",
@@ -1069,10 +1047,10 @@
         "required" : false,
         "schema" : {
           "default" : 25,
-          "type" : "integer",
-          "x-cds-type" : "PositiveInteger"
+          "type" : "integer"
         },
-        "style" : "form"
+        "style" : "form",
+        "x-cds-type" : "PositiveInteger"
       }
     },
     "responses" : {

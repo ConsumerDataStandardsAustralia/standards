@@ -3,46 +3,45 @@
 
 This specification defines the APIs for Data Holders exposing Energy endpoints.
 
-
 <table>
 <tr><td><a href='./includes/swagger/cds_energy.json'>Energy OpenAPI Specification (JSON)</a></td></tr>
 <tr><td><a href='./includes/swagger/cds_energy.yaml'>Energy OpenAPI Specification (YAML)</a></td></tr>
 </table>
 
 ```diff
-Bug Fix: Removed 'x-fapi-interaction-id' from response headers of Get Energy Plans and Get Energy Plan Details APIs
+Updated description of EnergyPaymentSchedule.digitalWallet.name field
+from:
+- The name assigned to the digital wallet by the owner of the wallet, else the display name provided by the digital wallet provider
+to:
++ The display name of the wallet as given by the customer, else a default value defined by the data holder
+
+Updated description of `EnergyPaymentSchedule.isTokenised` field to further clarify when it can be used
 
 Updated the versions of the following APIs:
-+ Get Generic Plan Detail from v1 to v2
-+ Get Energy Account Detail from v2 to v3
++ Get Billing For Account from v1 to v2
++ Get Bulk Billing from v1 to v2
++ Get Billing For Specific Accounts from v1 to v2
 
 Updated the following structures
 from:
-- EnergyPlanSolarFeedInTariff
-- EnergyPlanContract
-- EnergyAccountDetailV2
-- EnergyAccountDetailResponseV2
-- EnergyPlanContractFull
-- EnergyPlanDetail
-- EnergyPlanResponse
+- EnergyBillingListResponse
+- EnergyBillingTransaction
+- EnergyBillingDemandTransaction
+- EnergyBillingUsageTransaction
 
 to:
-+ EnergyPlanSolarFeedInTariffV2
-+ EnergyPlanContractV2
-+ EnergyAccountDetailV3
-+ EnergyAccountDetailResponseV3
-+ EnergyPlanContractFullV2
-+ EnergyPlanDetailV2
-+ EnergyPlanResponseV2
++ EnergyBillingListResponseV2
++ EnergyBillingTransactionV2
++ EnergyBillingDemandTransactionV2
++ EnergyBillingUsageTransactionV2
 
-Added following to EnergyPlanSolarFeedInTariffV2:
-+ rates object
-+ startDate field
-+ endDate field
 
-Standardised 'post codes' to 'postcodes'
+Added following ENUM values to EnergyBillingDemandTransaction.timeOfUseType field:
++ ALL_DAY
++ EXCESS
 
-Corrected various spelling and grammatical mistakes
+Added following ENUM values to EnergyBillingUsageTransaction.timeOfUseType field:
++ ALL_DAY
 ```
 
 <%= partial "includes/cds_energy.md" %>
