@@ -9216,13 +9216,13 @@ This operation does not require authentication
 Accept: application/json
 Authorization: string
 x-v: 1
-x-min-v: 0
+x-min-v: string
 
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
   <span class="s1">'Authorization'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'1'</span><span class="p">,</span>
-  <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'0'</span>
+  <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span>
 
 <span class="p">};</span>
 
@@ -9286,14 +9286,14 @@ x-min-v: 0
 <tr>
 <td>x-v</td>
 <td>header</td>
-<td>integer</td>
+<td>string</td>
 <td>optional</td>
 <td>The version of the API end point requested by the client. Must be set to a positive integer. For backwards compatiblity defaults to 1 if absent. Note that once version 1 is decommissioned the header will be mandatory for a valid response to be obtained</td>
 </tr>
 <tr>
 <td>x-min-v</td>
 <td>header</td>
-<td>integer</td>
+<td>string</td>
 <td>optional</td>
 <td>The <a href="https://consumerdatastandardsaustralia.github.io/standards/#http-headers">minimum version</a> of the API end point requested by the client. Must be set to a positive integer if provided.</td>
 </tr>
@@ -9307,14 +9307,14 @@ x-min-v: 0
 <tr>
 <td>page</td>
 <td>query</td>
-<td>integer</td>
+<td><a href="#common-field-types">PositiveInteger</a></td>
 <td>optional</td>
 <td>the page number to return</td>
 </tr>
 <tr>
 <td>page-size</td>
 <td>query</td>
-<td>integer</td>
+<td><a href="#common-field-types">PositiveInteger</a></td>
 <td>optional</td>
 <td>the number of records to return per page</td>
 </tr>
@@ -9457,7 +9457,7 @@ x-min-v: 0
 <tr>
 <td>200</td>
 <td>x-v</td>
-<td>integer</td>
+<td>string</td>
 <td></td>
 <td>The version of the API end point that the CDR Register has responded with.</td>
 </tr>
@@ -9479,14 +9479,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 <pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://&lt;register-base-url&gt;/cdr-register/v1/{industry}/data-holders/brands/summary</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 
 Accept: application/json
-x-v: 0
-x-min-v: 0
+x-v: string
+x-min-v: string
 If-None-Match: string
 
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
-  <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'0'</span><span class="p">,</span>
-  <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'0'</span><span class="p">,</span>
+  <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'If-None-Match'</span><span class="p">:</span><span class="s1">'string'</span>
 
 <span class="p">};</span>
@@ -9542,14 +9542,14 @@ If-None-Match: string
 <tr>
 <td>x-v</td>
 <td>header</td>
-<td>integer</td>
+<td>string</td>
 <td>mandatory</td>
 <td>The version of the API end point requested by the client. Must be set to a positive integer.</td>
 </tr>
 <tr>
 <td>x-min-v</td>
 <td>header</td>
-<td>integer</td>
+<td>string</td>
 <td>optional</td>
 <td>The <a href="https://consumerdatastandardsaustralia.github.io/standards/#http-headers">minimum version</a> of the API end point requested by the client. Must be set to a positive integer if provided.</td>
 </tr>
@@ -9674,7 +9674,7 @@ If-None-Match: string
 <tr>
 <td>200</td>
 <td>x-v</td>
-<td>integer</td>
+<td>string</td>
 <td></td>
 <td>The version of the API end point that the CDR Register has responded with.</td>
 </tr>
@@ -9710,13 +9710,13 @@ This operation does not require authentication
 
 Accept: application/json
 x-v: 1
-x-min-v: 0
+x-min-v: string
 Authorization: string
 
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
   <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'1'</span><span class="p">,</span>
-  <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'0'</span><span class="p">,</span>
+  <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'Authorization'</span><span class="p">:</span><span class="s1">'string'</span>
 
 <span class="p">};</span>
@@ -9774,14 +9774,14 @@ Authorization: string
 <tr>
 <td>x-v</td>
 <td>header</td>
-<td>integer</td>
+<td>string</td>
 <td>optional</td>
 <td>The version of the API end point requested by the client. Must be set to a positive integer. For backwards compatiblity defaults to 1 if absent. Note that once version 1 is decommissioned the header will be mandatory for a valid response to be obtained</td>
 </tr>
 <tr>
 <td>x-min-v</td>
 <td>header</td>
-<td>integer</td>
+<td>string</td>
 <td>optional</td>
 <td>The <a href="https://consumerdatastandardsaustralia.github.io/standards/#http-headers">minimum version</a> of the API end point requested by the client. Must be set to a positive integer if provided.</td>
 </tr>
@@ -9911,7 +9911,7 @@ Authorization: string
 <tr>
 <td>200</td>
 <td>x-v</td>
-<td>integer</td>
+<td>string</td>
 <td></td>
 <td>The version of the API end point that the CDR Register has responded with.</td>
 </tr>
@@ -9934,13 +9934,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 Accept: application/json
 x-v: 1
-x-min-v: 0
+x-min-v: string
 If-None-Match: string
 
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
   <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'1'</span><span class="p">,</span>
-  <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'0'</span><span class="p">,</span>
+  <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'If-None-Match'</span><span class="p">:</span><span class="s1">'string'</span>
 
 <span class="p">};</span>
@@ -9996,14 +9996,14 @@ If-None-Match: string
 <tr>
 <td>x-v</td>
 <td>header</td>
-<td>integer</td>
+<td>string</td>
 <td>optional</td>
 <td>The version of the API end point requested by the client. Must be set to a positive integer.  For backwards compatiblity defaults to 1 if absent. Note that once version 1 is decommissioned the header will be mandatory for a valid response to be obtained</td>
 </tr>
 <tr>
 <td>x-min-v</td>
 <td>header</td>
-<td>integer</td>
+<td>string</td>
 <td>optional</td>
 <td>The <a href="https://consumerdatastandardsaustralia.github.io/standards/#http-headers">minimum version</a> of the API end point requested by the client. Must be set to a positive integer if provided.</td>
 </tr>
@@ -10112,7 +10112,7 @@ If-None-Match: string
 <tr>
 <td>200</td>
 <td>x-v</td>
-<td>integer</td>
+<td>string</td>
 <td></td>
 <td>The version of the API end point that the CDR Register has responded with.</td>
 </tr>
@@ -10148,13 +10148,13 @@ This operation does not require authentication
 
 Accept: application/json
 x-v: 1
-x-min-v: 0
+x-min-v: string
 If-None-Match: string
 
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
   <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'1'</span><span class="p">,</span>
-  <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'0'</span><span class="p">,</span>
+  <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'If-None-Match'</span><span class="p">:</span><span class="s1">'string'</span>
 
 <span class="p">};</span>
@@ -10212,14 +10212,14 @@ If-None-Match: string
 <tr>
 <td>x-v</td>
 <td>header</td>
-<td>integer</td>
+<td>string</td>
 <td>optional</td>
 <td>The version of the API end point requested by the client. Must be set to a positive integer.  For backwards compatiblity defaults to 1 if absent. Note that once version 1 is decommissioned the header will be mandatory for a valid response to be obtained</td>
 </tr>
 <tr>
 <td>x-min-v</td>
 <td>header</td>
-<td>integer</td>
+<td>string</td>
 <td>optional</td>
 <td>The <a href="https://consumerdatastandardsaustralia.github.io/standards/#http-headers">minimum version</a> of the API end point requested by the client. Must be set to a positive integer if provided.</td>
 </tr>
@@ -10328,7 +10328,7 @@ If-None-Match: string
 <tr>
 <td>200</td>
 <td>x-v</td>
-<td>integer</td>
+<td>string</td>
 <td></td>
 <td>The version of the API end point that the CDR Register has responded with.</td>
 </tr>
@@ -10364,13 +10364,13 @@ This operation does not require authentication
 
 Accept: application/json
 x-v: 1
-x-min-v: 0
+x-min-v: string
 If-None-Match: string
 
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
   <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'1'</span><span class="p">,</span>
-  <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'0'</span><span class="p">,</span>
+  <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'If-None-Match'</span><span class="p">:</span><span class="s1">'string'</span>
 
 <span class="p">};</span>
@@ -10428,14 +10428,14 @@ If-None-Match: string
 <tr>
 <td>x-v</td>
 <td>header</td>
-<td>integer</td>
+<td>string</td>
 <td>optional</td>
 <td>The version of the API end point requested by the client. Must be set to a positive integer.  For backwards compatiblity defaults to 1 if absent. Note that once version 1 is decommissioned the header will be mandatory for a valid response to be obtained</td>
 </tr>
 <tr>
 <td>x-min-v</td>
 <td>header</td>
-<td>integer</td>
+<td>string</td>
 <td>optional</td>
 <td>The <a href="https://consumerdatastandardsaustralia.github.io/standards/#http-headers">minimum version</a> of the API end point requested by the client. Must be set to a positive integer if provided.</td>
 </tr>
@@ -10544,7 +10544,7 @@ If-None-Match: string
 <tr>
 <td>200</td>
 <td>x-v</td>
-<td>integer</td>
+<td>string</td>
 <td></td>
 <td>The version of the API end point that the CDR Register has responded with.</td>
 </tr>
@@ -10580,13 +10580,13 @@ This operation does not require authentication
 
 Accept: application/json
 x-v: 2
-x-min-v: 0
+x-min-v: string
 If-None-Match: string
 
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
   <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'2'</span><span class="p">,</span>
-  <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'0'</span><span class="p">,</span>
+  <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'If-None-Match'</span><span class="p">:</span><span class="s1">'string'</span>
 
 <span class="p">};</span>
@@ -10644,14 +10644,14 @@ If-None-Match: string
 <tr>
 <td>x-v</td>
 <td>header</td>
-<td>integer</td>
+<td>string</td>
 <td>optional</td>
 <td>The version of the API end point requested by the client. Must be set to a positive integer.  For backwards compatiblity defaults to 2 if absent. Note that once version 2 is decommissioned the header will be mandatory for a valid response to be obtained</td>
 </tr>
 <tr>
 <td>x-min-v</td>
 <td>header</td>
-<td>integer</td>
+<td>string</td>
 <td>optional</td>
 <td>The <a href="https://consumerdatastandardsaustralia.github.io/standards/#http-headers">minimum version</a> of the API end point requested by the client. Must be set to a positive integer if provided.</td>
 </tr>
@@ -10782,7 +10782,7 @@ If-None-Match: string
 <tr>
 <td>200</td>
 <td>x-v</td>
-<td>integer</td>
+<td>string</td>
 <td></td>
 <td>The version of the API end point that the CDR Register has responded with.</td>
 </tr>
@@ -13255,7 +13255,7 @@ This operation does not require authentication
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
 <td><a href="#schemacdr-banking-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
@@ -13602,7 +13602,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
 <td><a href="#schemacdr-banking-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
@@ -13877,7 +13877,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
 <td><a href="#schemacdr-banking-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
@@ -14115,7 +14115,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
 <td><a href="#schemacdr-banking-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
@@ -14534,7 +14534,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
 <td><a href="#schemacdr-banking-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
@@ -14853,7 +14853,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-400-field-invalid-date-time">400 - Invalid Date</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-400-field-invalid-date-time">400 - Invalid Date</a></li></ul></td>
 <td><a href="#schemacdr-banking-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
@@ -15128,7 +15128,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-400-field-invalid-date-time">400 - Invalid Date</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-400-field-invalid-date-time">400 - Invalid Date</a></li></ul></td>
 <td><a href="#schemacdr-banking-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
@@ -15389,7 +15389,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
 <td><a href="#schemacdr-banking-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
@@ -15747,7 +15747,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
 <td><a href="#schemacdr-banking-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
@@ -16020,7 +16020,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
 <td><a href="#schemacdr-banking-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
@@ -16369,7 +16369,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
 <td><a href="#schemacdr-banking-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
@@ -16815,7 +16815,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
 <td><a href="#schemacdr-banking-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
@@ -17176,7 +17176,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
 <td><a href="#schemacdr-banking-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
@@ -17464,7 +17464,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
 <td><a href="#schemacdr-banking-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
@@ -17748,7 +17748,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
 <td><a href="#schemacdr-banking-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
@@ -18162,7 +18162,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-date-time">400 - Invalid Date</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-400-field-invalid-date-time">400 - Invalid Date</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
 <td><a href="#schemacdr-banking-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
@@ -18507,7 +18507,7 @@ This operation does not require authentication
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
 <td><a href="#schemacdr-banking-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
@@ -26136,7 +26136,7 @@ x-min-v: string
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
 <td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
@@ -26808,7 +26808,7 @@ x-min-v: string
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
 <td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
@@ -27035,7 +27035,7 @@ x-cds-client-headers: string
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
 <td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
@@ -27348,7 +27348,7 @@ x-cds-client-headers: string
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
 <td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
@@ -27669,7 +27669,7 @@ x-cds-client-headers: string
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
 <td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
@@ -27996,7 +27996,7 @@ x-cds-client-headers: string
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
 <td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
@@ -28348,7 +28348,7 @@ x-cds-client-headers: string
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
 <td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
@@ -28623,7 +28623,7 @@ x-cds-client-headers: string
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
 <td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
@@ -28916,7 +28916,7 @@ x-cds-client-headers: string
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
 <td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
@@ -29249,7 +29249,7 @@ x-cds-client-headers: string
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
 <td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
@@ -29542,7 +29542,7 @@ x-cds-client-headers: string
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
 <td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
@@ -30154,7 +30154,7 @@ x-cds-client-headers: string
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
 <td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
@@ -30413,7 +30413,7 @@ x-cds-client-headers: string
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
 <td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
@@ -30655,7 +30655,7 @@ x-cds-client-headers: string
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
 <td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
@@ -30882,7 +30882,7 @@ x-cds-client-headers: string
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
 <td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
@@ -31128,7 +31128,7 @@ x-cds-client-headers: string
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
 <td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
@@ -31414,7 +31414,7 @@ x-cds-client-headers: string
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
 <td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
@@ -31732,7 +31732,7 @@ x-cds-client-headers: string
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
 <td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
@@ -32056,7 +32056,7 @@ x-cds-client-headers: string
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
 <td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
@@ -32407,7 +32407,7 @@ x-cds-client-headers: string
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
 <td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
@@ -32754,7 +32754,7 @@ x-cds-client-headers: string
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
 <td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
@@ -33107,7 +33107,7 @@ x-cds-client-headers: string
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
 <td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
@@ -33487,7 +33487,7 @@ x-cds-client-headers: string
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
 <td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
@@ -44004,7 +44004,7 @@ Note that the standards for the telecommunications sector are currently in draft
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
 <td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
@@ -44263,7 +44263,7 @@ This operation does not require authentication
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
 <td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
@@ -44522,7 +44522,7 @@ This operation does not require authentication
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
 <td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
@@ -44841,7 +44841,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
 <td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
@@ -45173,7 +45173,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
 <td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
@@ -45477,7 +45477,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
 <td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
@@ -45738,7 +45738,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
 <td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
@@ -46004,7 +46004,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
 <td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
@@ -46253,7 +46253,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
 <td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
@@ -46540,7 +46540,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
 <td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
@@ -46848,7 +46848,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
 <td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
@@ -47196,7 +47196,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
 <td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
@@ -47500,7 +47500,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
 <td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
@@ -47845,7 +47845,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
 <td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
@@ -48217,7 +48217,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
 <td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
@@ -48525,7 +48525,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
 <td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
@@ -48839,7 +48839,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
 <td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
@@ -49180,7 +49180,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
 <td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
@@ -56712,7 +56712,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
 <td><a href="#schemacdr-common-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
@@ -57048,7 +57048,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
 <td><a href="#schemacdr-common-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
@@ -57223,7 +57223,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
 <td><a href="#schemacdr-common-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
@@ -57379,7 +57379,7 @@ This operation does not require authentication
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
 <td><a href="#schemacdr-common-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
@@ -59280,7 +59280,7 @@ This operation does not require authentication
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
 <td><a href="#schemacdr-admin-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
@@ -59644,7 +59644,7 @@ This operation may only be called by the CDR Register
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
 <td><a href="#schemacdr-admin-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
@@ -61295,7 +61295,7 @@ x-cds-arrangement: string
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
 <td><a href="#schemacdr-energy-secondary-data-holder-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
@@ -61589,7 +61589,7 @@ x-cds-arrangement: string
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
 <td><a href="#schemacdr-energy-secondary-data-holder-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
@@ -61891,7 +61891,7 @@ x-cds-arrangement: string
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
 <td><a href="#schemacdr-energy-secondary-data-holder-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
@@ -62237,7 +62237,7 @@ x-cds-arrangement: string
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
 <td><a href="#schemacdr-energy-secondary-data-holder-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
@@ -62493,7 +62493,7 @@ x-cds-arrangement: string
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
 <td><a href="#schemacdr-energy-secondary-data-holder-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
@@ -62807,7 +62807,7 @@ x-cds-arrangement: string
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
 <td><a href="#schemacdr-energy-secondary-data-holder-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
