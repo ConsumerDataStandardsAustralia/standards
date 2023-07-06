@@ -80,9 +80,9 @@ These dates may be subject to change depending upon new or changed legislative a
 
 The following tables describe the endpoint versions and the dates they become binding within the data standards.
 
-**Binding Date** indicates the dates the particular version of an endpoint becomes binding in the data standards.
+**Binding Date** indicates the date the particular version of an endpoint becomes binding in the data standards.
 
-**Retirement Date** indicates, where relevant, denotes the date a specific version can be retired and is no longer supported. All consumers of the affected endpoint must upgrade to a more recent version currently available.
+**Retirement Date** indicates, where relevant, the date a specific version can be retired and is no longer supported. All consumers of the affected endpoint must upgrade to a more recent version currently available.
 
 **Date Introduced** indicates the release of the standards, including release date, when the endpoint version was first introduced. This is not the Binding Date.
 
