@@ -70,9 +70,13 @@
 }
 ```
 
-The Request Object is a signed and encoded JWT specified in [section 6.1](https://openid.net/specs/openid-connect-core-1_0.html#RequestObject) of **[OIDC]**.  As per **[[FAPI-RW-Draft]](#nref-FAPI-RW-Draft)** [section 5.2.2](https://openid.net/specs/openid-financial-api-part-2.html#authorization-server), the `request` parameter **MUST** be present on requests to the **[OIDC]** Hybrid Authorisation End Point. The Request Object enables **[OIDC]** requests to be passed in a single and self-contained parameter.
+```diff
+Replaced FAPI draft references with FAPI 1.0 Final references
+```
 
-Request Objects **MUST** be signed by Data Recipient Software Products as specified in [section 8.6](https://openid.net/specs/openid-financial-api-part-2.html#jws-algorithm-considerations) of **[[FAPI-RW-Draft]](#nref-FAPI-RW-Draft)**.
+The Request Object is a signed and encoded JWT specified in [section 6.1](https://openid.net/specs/openid-connect-core-1_0.html#RequestObject) of **[OIDC]**.  As per **[[FAPI-1.0-Advanced]](#nref-FAPI-1-0-Advanced)** [section 5.2.2](https://openid.net/specs/openid-financial-api-part-2-1_0.html#authorization-server), the `request` parameter **MUST** be present on requests to the **[OIDC]** Hybrid Authorisation End Point. The Request Object enables **[OIDC]** requests to be passed in a single and self-contained parameter.
+
+Request Objects **MUST** be signed by Data Recipient Software Products as specified in [section 8.6](https://openid.net/specs/openid-financial-api-part-2-1_0.html#algorithm-considerations) of **[[FAPI-1.0-Advanced]](#nref-FAPI-1-0-Advanced)**.
 
 Request Object references **MUST** be supported if the Data Holder supports Pushed Authorisation Requests (PAR).
 
@@ -115,16 +119,9 @@ In addition:
 
 Data Holders **MUST** support Pushed Authorisation Requests (PAR) via the pushed authorisation end point according to **[[PAR]](#nref-PAR)**.
 
-**From July 4th 2022 (FAPI 1.0 Migration Phase 1)**, the following requirements apply:
-
-* Data Holders **SHOULD** support **[[RFC9126]](#nref-RFC9126)**.
-* Data Holders, if **[[RFC9126]](#nref-RFC9126)** is supported, **MUST** use **[[PKCE]](#nref-PKCE)** and "code_challenge_methods_supported" as defined in **[[RFC8414]](#nref-RFC8414)** with S256 as the code challenge method.
-*	Data Holders **SHOULD** reject the reuse of "request_uri" values.
-* Data Holders **SHOULD** reject authorisation request containing "request" parameter.
-* Data Holders **MAY** require **[[RFC9126]](#nref-RFC9126)** (PAR) using "require_pushed_authorization_requests" set to "true" in accordance with [section 5](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-par#section-5) of **[[RFC9126]](#nref-RFC9126)**.
-*	Data Holders that do not support **[[PKCE]](#nref-PKCE)** **MUST** ignore PKCE claims and **MUST NOT** reject clients sending PKCE claims.
-
-**From September 16th 2022 (FAPI 1.0 Migration Phase 2)**, the following requirements apply in addition to the FAPI 1.0 Migration Phase 1 requirements:
+```diff
+Removed legacy phasing requirements for FAPI 1.0 Final
+```
 
 * Data Holders **MUST** support **[[RFC9126]](#nref-RFC9126)** (PAR) using **[[PKCE]](#nref-PKCE)** (**[[RFC7636]](#nref-RFC7636)**) with S256 as the code challenge method in accordance with **[[FAPI-1.0-Advanced]](#nref-FAPI-1-0-Advanced)** [section 5.2.2](https://openid.net/specs/openid-financial-api-part-2-1_0.html#authorization-server).
 *	Data Holders **MUST** require PAR for authorisation request data in accordance with **[[RFC9126]](#nref-RFC9126)** where "require_pushed_authorization_requests" parameter is set to "true".
@@ -135,19 +132,11 @@ Data Holders **MUST** support Pushed Authorisation Requests (PAR) via the pushed
 
 #### Data Recipient Software Products
 
-Data Recipient Software Products **MAY** send authorisation requests using **[[PAR]](#nref-PAR)** if supported by the Data Holder.
+```diff
+Removed legacy phasing requirements for FAPI 1.0 Final
+```
 
-Request objects which contain the ``cdr_arrangement_id`` claim **MUST ONLY** be sent using PAR.
-
-**From July 4th 2022 (FAPI 1.0 Migration Phase 1)**, the following requirements apply:
-
-* Data Recipient Software Products **SHOULD** ONLY send authorisation requests using PAR in accordance with [section 5.2.3](https://openid.net/specs/openid-financial-api-part-2-1_0.html#confidential-client) of **[[FAPI-1.0-Advanced]](#nref-FAPI-1-0-Advanced)**.
-* Data Recipients **MUST only** send request object data using PAR, and **MUST NOT** send request object data to the Data Holder's Authorization endpoint, if the Data Holder's "require_pushed_authorization_requests" parameter is set to "true".
-*	Data Recipients Software Products **SHOULD** support **[[PKCE]](#nref-PKCE)** (**[[RFC7636]](#nref-RFC7636)**) and, if supported, **MUST** use S256 as the code challenge method.
 *	Data Recipients Software Products **MUST** send request object containing a "nbf" claim and an "exp" claim that has a lifetime of no longer than 60 minutes after the "nbf" claim.
 * Data Recipient Software Products **MUST** ONLY use a "request_uri" value once
-
-**From September 16th 2022**, the following requirements apply in addition to the FAPI 1.0 Migration Phase 1 requirements:
-
 * Data Recipients **MUST** ONLY send authorisation request data using **[[RFC9126]](#nref-RFC9126)** (PAR) and use **[[PKCE]](#nref-PKCE)** (**[[RFC7636]](#nref-RFC7636)**) in accordance with **[[FAPI-1.0-Advanced]](#nref-FAPI-1-0-Advanced)**.
 *	Data Recipients Software Products **MUST** support **[[PKCE]](#nref-PKCE)** (**[[RFC7636]](#nref-RFC7636)**) and **MUST** use S256 as the code challenge method.

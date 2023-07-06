@@ -17,7 +17,7 @@ Release notes for version v1.25.0 of the [CDR Standards](../../index.html).
 
 This release addresses the following minor defects raised on [Standards Staging](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues):
 
-- <Add Minor Issues if any>
+- None
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
@@ -25,6 +25,7 @@ This release addresses the following change requests raised on [Standards Mainte
 - [Standards Maintenance Issue TBC - TBC](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/TBC)
 - [Standards Maintenance Issue 592 - EnergyBillingDemandTransaction - timeOfUseType - New Value](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/592)
 - [Standards Maintenance Issue 591 - Energy 'Get Agreed Payment Schedule' - BSB and Account Number Tokenisation/non-Tokenisation](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/591)
+- [Standards Maintenance Issue 590 - Remove FAPI 1.0 draft references](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/590)
 
 ### Decision Proposals
 
@@ -39,9 +40,7 @@ No Change
 
 ## High Level Standards
 
-|Change|Description|Link|
-|------|-----------|----|
-
+No Change
 
 ## API End Points
 
@@ -55,17 +54,15 @@ No Change
 
 |Change|Description|Link|
 |------|-----------|----|
-
+| FAPI normative references | [**Standards Maintenance #590**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/590): Removed legacy draft FAPI references and legacy phasing ensuring all normative references for FAPI align to the final versions | [Security Profile](../../#security-profile) |
 
 ## Consumer Experience
 
-|Change|Description|Link|
-|------|-----------|----|
+No Change
 
 ## Non Functional Requirements
 
-|Change|Description|Link|
-|------|-----------|----|
+No Change
 
 ## Known Issues
 
