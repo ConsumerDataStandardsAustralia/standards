@@ -11,7 +11,7 @@
   ],
   "tags": [],
   "paths": {
-    "/.well-known/openid-configuration": {
+    "/idp/.well-known/openid-configuration": {
       "get": {
         "tags": [
           "Register"
@@ -33,7 +33,7 @@
         }
       }
     },
-    "/jwks": {
+    "/cdr-register/v1/jwks": {
       "get": {
         "tags": [
           "Register"
