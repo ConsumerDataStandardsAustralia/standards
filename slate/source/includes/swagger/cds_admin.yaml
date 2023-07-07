@@ -95,13 +95,18 @@ paths:
   /admin/metrics:
     get:
       description: |-
-        This end point allows the ACCC to obtain operational statistics from the Data Holder on the operation of their CDR compliant implementation. The statistics obtainable from this end point are determined by the non-functional requirements for the CDR regime.
+        This end point allows the ACCC to obtain operational statistics from the Data Holder (at the Data Holder Brand level) on the operation of their CDR compliant implementation. The statistics obtainable from this end point are determined by the non-functional requirements for the CDR regime.
 
         This end point is not required to be implemented by the Australian Energy Market Operator, the Australian Energy Regulator or the Department of State administered by the Minister of Victoria administering the National Electricity (Victoria) Act 2005 (Vic).
 
-        NOTE: This version must be implemented by **October 1st 2022**
+        NOTE: This version must be implemented by **June 13th 2024**
 
         Obsolete versions: [v1](includes/obsolete/get-metrics-v1.html) [v2](includes/obsolete/get-metrics-v2.html).
+
+        Deprecated versions:
+
+        - [v3](includes/obsolete/get-metrics-v3.html)
+        - [v4](includes/obsolete/get-metrics-v4.html) - This version must be implemented by **November 1st 2023**
 
         If the Data Holder supports private_key_jwt client authentication they MUST validate the scope.
       operationId: getMetrics
@@ -186,7 +191,7 @@ paths:
       x-scopes:
       - admin:metrics.basic:read
       x-restricted-access: REGISTER
-      x-version: "3"
+      x-version: "4"
 components:
   parameters:
     RequestHeader_x-v:
@@ -237,142 +242,188 @@ components:
           rejections:
             authenticated:
               previousDays:
+              - 4
+              - 4
+              currentDay: 3
+            unauthenticated:
+              previousDays:
+              - 6
+              - 6
+              currentDay: 0
+          peakTps:
+            authenticated:
+              previousDays:
               - 4.652396432933246
               - 4.652396432933246
               currentDay: 0.10263654006109402
             unauthenticated:
               previousDays:
-              - 7.740351818741173
-              - 7.740351818741173
-              currentDay: 8.969578798196912
-          peakTps:
-            previousDays:
-            - 0.8851374739011653
-            - 0.8851374739011653
-            currentDay: 7.143538047012306
+              - 6.519180951018382
+              - 6.519180951018382
+              currentDay: 7.058770351582356
+            aggregate:
+              previousDays:
+              - 0.8851374739011653
+              - 0.8851374739011653
+              currentDay: 7.143538047012306
           averageTps:
-            previousDays:
-            - 3.0937452626664474
-            - 3.0937452626664474
-            currentDay: 3.353193347011243
+            authenticated:
+              previousDays:
+              - 3.0937452626664474
+              - 3.0937452626664474
+              currentDay: 3.353193347011243
+            unauthenticated:
+              previousDays:
+              - 6.704019297950036
+              - 6.704019297950036
+              currentDay: 5.944895607614016
+            aggregate:
+              previousDays:
+              - 6.878052220127876
+              - 6.878052220127876
+              currentDay: 6.778324963048013
           secondaryHolder:
             rejections:
               previousDays:
-              - 4.078845849666752
-              - 4.078845849666752
-              currentDay: 3.2588565619047607
+              - 0
+              - 0
+              currentDay: 9
             errors:
               previousDays:
-              - 5.533258397034986
-              - 5.533258397034986
-              currentDay: 7.04836565559697
+              - 7
+              - 7
+              currentDay: 4
           availability:
-            previousMonths:
-            - 6.027456183070403
-            - 6.027456183070403
-            currentMonth: 0.8008281904610115
+            authenticated:
+              previousMonths:
+              - previousMonths
+              - previousMonths
+              currentMonth: currentMonth
+            unauthenticated:
+              previousMonths:
+              - previousMonths
+              - previousMonths
+              currentMonth: currentMonth
+            aggregate:
+              previousMonths:
+              - previousMonths
+              - previousMonths
+              currentMonth: currentMonth
           averageResponse:
             unattended:
-              previousDays:
-              - 6.438423552598547
-              - 6.438423552598547
-              currentDay: 9.018348186070783
-            secondary:
-              secondary:
-                previousDays:
-                - 6.878052220127876
-                - 6.878052220127876
-                currentDay: 6.778324963048013
-              primary:
-                previousDays:
-                - 2.8841621266687802
-                - 2.8841621266687802
-                currentDay: 1.284659006116532
-            highPriority:
               previousDays:
               - 9.369310271410669
               - 9.369310271410669
               currentDay: 9.965781217890562
-            largePayload:
-              previousDays:
-              - 6.965117697638846
-              - 6.965117697638846
-              currentDay: 3.5571952270680973
-            unauthenticated:
-              previousDays:
-              - 5.025004791520295
-              - 5.025004791520295
-              currentDay: 4.965218492984954
-            lowPriority:
-              previousDays:
-              - 8.762042012749001
-              - 8.762042012749001
-              currentDay: 6.683562403749608
-            largeSecondary:
+            secondary:
               secondary:
                 previousDays:
-                - 6.878052220127876
-                - 6.878052220127876
-                currentDay: 6.778324963048013
+                - 6.965117697638846
+                - 6.965117697638846
+                currentDay: 3.5571952270680973
               primary:
                 previousDays:
-                - 2.8841621266687802
-                - 2.8841621266687802
-                currentDay: 1.284659006116532
-          invocations:
-            unattended:
-              previousDays:
-              - 7.386281948385884
-              - 7.386281948385884
-              currentDay: 4.145608029883936
-            secondary:
-              previousDays:
-              - 6.84685269835264
-              - 6.84685269835264
-              currentDay: 1.4894159098541704
+                - 6.438423552598547
+                - 6.438423552598547
+                currentDay: 9.018348186070783
             highPriority:
-              previousDays:
-              - 9.301444243932576
-              - 9.301444243932576
-              currentDay: 7.061401241503109
-            largePayload:
-              previousDays:
-              - 1.0246457001441578
-              - 1.0246457001441578
-              currentDay: 1.2315135367772556
-            unauthenticated:
-              previousDays:
-              - 2.3021358869347655
-              - 2.3021358869347655
-              currentDay: 5.637376656633329
-            lowPriority:
-              previousDays:
-              - 2.027123023002322
-              - 2.027123023002322
-              currentDay: 3.616076749251911
-            largeSecondary:
               previousDays:
               - 1.1730742509559433
               - 1.1730742509559433
               currentDay: 7.457744773683766
+            largePayload:
+              previousDays:
+              - 8.762042012749001
+              - 8.762042012749001
+              currentDay: 6.683562403749608
+            unauthenticated:
+              previousDays:
+              - 6.84685269835264
+              - 6.84685269835264
+              currentDay: 1.4894159098541704
+            lowPriority:
+              previousDays:
+              - 5.025004791520295
+              - 5.025004791520295
+              currentDay: 4.965218492984954
+            largeSecondary:
+              secondary:
+                previousDays:
+                - 6.965117697638846
+                - 6.965117697638846
+                currentDay: 3.5571952270680973
+              primary:
+                previousDays:
+                - 6.438423552598547
+                - 6.438423552598547
+                currentDay: 9.018348186070783
+          invocations:
+            unattended:
+              previousDays:
+              - 9
+              - 9
+              currentDay: 7
+            secondary:
+              previousDays:
+              - 7
+              - 7
+              currentDay: 4
+            highPriority:
+              previousDays:
+              - 5
+              - 5
+              currentDay: 1
+            largePayload:
+              previousDays:
+              - 2
+              - 2
+              currentDay: 3
+            unauthenticated:
+              previousDays:
+              - 6
+              - 6
+              currentDay: 0
+            lowPriority:
+              previousDays:
+              - 2
+              - 2
+              currentDay: 5
+            largeSecondary:
+              previousDays:
+              - 1
+              - 1
+              currentDay: 1
           requestTime: requestTime
           performance:
             previousDays:
-            - 5.962133916683182
-            - 5.962133916683182
-            currentDay: 1.4658129805029452
+            - previousDays
+            - previousDays
+            currentDay: currentDay
           sessionCount:
             previousDays:
-            - 6.704019297950036
-            - 6.704019297950036
-            currentDay: 5.944895607614016
-          recipientCount: 3
+            - 2
+            - 2
+            currentDay: 1
+          recipientCount: 1
           errors:
-            previousDays:
-            - 6.519180951018382
-            - 6.519180951018382
-            currentDay: 7.058770351582356
-          customerCount: 3
+            authenticated:
+              previousDays:
+              - key: 5
+              - key: 5
+              currentDay:
+                key: 7
+            unauthenticated:
+              previousDays:
+              - key: 3
+              - key: 3
+              currentDay:
+                key: 3
+            aggregate:
+              previousDays:
+              - 7
+              - 7
+              currentDay: 8
+          customerCount: 4
         meta: '{}'
         links:
           self: self
@@ -388,46 +439,57 @@ components:
       - links
       type: object
     AvailabilityMetrics:
-      description: Percentage availability of the CDR platform over time
+      description: Availability metrics
       example:
-        previousMonths:
-        - 6.027456183070403
-        - 6.027456183070403
-        currentMonth: 0.8008281904610115
+        authenticated:
+          previousMonths:
+          - previousMonths
+          - previousMonths
+          currentMonth: currentMonth
+        unauthenticated:
+          previousMonths:
+          - previousMonths
+          - previousMonths
+          currentMonth: currentMonth
+        aggregate:
+          previousMonths:
+          - previousMonths
+          - previousMonths
+          currentMonth: currentMonth
       properties:
-        currentMonth:
-          description: Percentage availability of the CDR platform so far for the
-            current calendar month. 0.0 means 0%. 1.0 means 100%.
-          type: number
-        previousMonths:
-          description: Percentage availability of the CDR platform for previous calendar
-            months. The first element indicates the last month and so on. A maximum
-            of twelve entries is required if available. 0.0 means 0%. 1.0 means 100%.
-          items:
-            type: number
-          type: array
+        aggregate:
+          $ref: '#/components/schemas/AvailabilityMetrics_aggregate'
+        unauthenticated:
+          $ref: '#/components/schemas/AvailabilityMetrics_unauthenticated'
+        authenticated:
+          $ref: '#/components/schemas/AvailabilityMetrics_authenticated'
+      required:
+      - aggregate
+      - authenticated
+      - unauthenticated
       type: object
-      x-conditional:
-      - currentMonth
-      - previousMonths
     PerformanceMetrics:
       description: Percentage of calls within the performance thresholds
       example:
         previousDays:
-        - 5.962133916683182
-        - 5.962133916683182
-        currentDay: 1.4658129805029452
+        - previousDays
+        - previousDays
+        currentDay: currentDay
       properties:
         currentDay:
           description: Percentage of calls within the performance threshold for the
-            current day. 0.0 means 0%. 1.0 means 100%
-          type: number
+            current day. 0.0 means 0%. 1.0 means 100%. Must be a positive value or
+            zero
+          type: string
+          x-cds-type: RateString
         previousDays:
           description: Percentage of calls within the performance threshold for previous
             days. The first element indicates yesterday and so on. A maximum of seven
-            entries is required if available. 0.0 means 0%. 1.0 means 100%
+            entries is required if available. 0.0 means 0%. 1.0 means 100%. Values
+            must be a positive or zero
           items:
-            type: number
+            type: string
+            x-cds-type: RateString
           type: array
       type: object
       x-conditional:
@@ -438,39 +500,39 @@ components:
       example:
         unattended:
           previousDays:
-          - 7.386281948385884
-          - 7.386281948385884
-          currentDay: 4.145608029883936
+          - 9
+          - 9
+          currentDay: 7
         secondary:
           previousDays:
-          - 6.84685269835264
-          - 6.84685269835264
-          currentDay: 1.4894159098541704
+          - 7
+          - 7
+          currentDay: 4
         highPriority:
           previousDays:
-          - 9.301444243932576
-          - 9.301444243932576
-          currentDay: 7.061401241503109
+          - 5
+          - 5
+          currentDay: 1
         largePayload:
           previousDays:
-          - 1.0246457001441578
-          - 1.0246457001441578
-          currentDay: 1.2315135367772556
+          - 2
+          - 2
+          currentDay: 3
         unauthenticated:
           previousDays:
-          - 2.3021358869347655
-          - 2.3021358869347655
-          currentDay: 5.637376656633329
+          - 6
+          - 6
+          currentDay: 0
         lowPriority:
           previousDays:
-          - 2.027123023002322
-          - 2.027123023002322
-          currentDay: 3.616076749251911
+          - 2
+          - 2
+          currentDay: 5
         largeSecondary:
           previousDays:
-          - 1.1730742509559433
-          - 1.1730742509559433
-          currentDay: 7.457744773683766
+          - 1
+          - 1
+          currentDay: 1
       properties:
         unauthenticated:
           $ref: '#/components/schemas/InvocationMetricsV2_unauthenticated'
@@ -502,51 +564,51 @@ components:
       example:
         unattended:
           previousDays:
-          - 6.438423552598547
-          - 6.438423552598547
-          currentDay: 9.018348186070783
-        secondary:
-          secondary:
-            previousDays:
-            - 6.878052220127876
-            - 6.878052220127876
-            currentDay: 6.778324963048013
-          primary:
-            previousDays:
-            - 2.8841621266687802
-            - 2.8841621266687802
-            currentDay: 1.284659006116532
-        highPriority:
-          previousDays:
           - 9.369310271410669
           - 9.369310271410669
           currentDay: 9.965781217890562
+        secondary:
+          secondary:
+            previousDays:
+            - 6.965117697638846
+            - 6.965117697638846
+            currentDay: 3.5571952270680973
+          primary:
+            previousDays:
+            - 6.438423552598547
+            - 6.438423552598547
+            currentDay: 9.018348186070783
+        highPriority:
+          previousDays:
+          - 1.1730742509559433
+          - 1.1730742509559433
+          currentDay: 7.457744773683766
         largePayload:
-          previousDays:
-          - 6.965117697638846
-          - 6.965117697638846
-          currentDay: 3.5571952270680973
-        unauthenticated:
-          previousDays:
-          - 5.025004791520295
-          - 5.025004791520295
-          currentDay: 4.965218492984954
-        lowPriority:
           previousDays:
           - 8.762042012749001
           - 8.762042012749001
           currentDay: 6.683562403749608
+        unauthenticated:
+          previousDays:
+          - 6.84685269835264
+          - 6.84685269835264
+          currentDay: 1.4894159098541704
+        lowPriority:
+          previousDays:
+          - 5.025004791520295
+          - 5.025004791520295
+          currentDay: 4.965218492984954
         largeSecondary:
           secondary:
             previousDays:
-            - 6.878052220127876
-            - 6.878052220127876
-            currentDay: 6.778324963048013
+            - 6.965117697638846
+            - 6.965117697638846
+            currentDay: 3.5571952270680973
           primary:
             previousDays:
-            - 2.8841621266687802
-            - 2.8841621266687802
-            currentDay: 1.284659006116532
+            - 6.438423552598547
+            - 6.438423552598547
+            currentDay: 9.018348186070783
       properties:
         unauthenticated:
           $ref: '#/components/schemas/AverageResponseMetricsV2_unauthenticated'
@@ -577,89 +639,57 @@ components:
         provisioning of an Access Token.
       example:
         previousDays:
-        - 6.704019297950036
-        - 6.704019297950036
-        currentDay: 5.944895607614016
+        - 2
+        - 2
+        currentDay: 1
       properties:
         currentDay:
           description: Session count for current day
-          type: number
+          type: integer
+          x-cds-type: NaturalNumber
         previousDays:
           description: Session count for previous days. The first element indicates
             yesterday and so on. A maximum of seven entries is required if available
           items:
-            type: number
+            type: integer
+            x-cds-type: NaturalNumber
           type: array
       type: object
       x-conditional:
       - currentDay
       - previousDays
     AverageTPSMetrics:
-      description: Transactions per second over time
+      description: Average transactions per second over time
       example:
-        previousDays:
-        - 3.0937452626664474
-        - 3.0937452626664474
-        currentDay: 3.353193347011243
+        authenticated:
+          previousDays:
+          - 3.0937452626664474
+          - 3.0937452626664474
+          currentDay: 3.353193347011243
+        unauthenticated:
+          previousDays:
+          - 6.704019297950036
+          - 6.704019297950036
+          currentDay: 5.944895607614016
+        aggregate:
+          previousDays:
+          - 6.878052220127876
+          - 6.878052220127876
+          currentDay: 6.778324963048013
       properties:
-        currentDay:
-          description: Average TPS for current day
-          type: number
-        previousDays:
-          description: Average TPS for previous days. The first element indicates
-            yesterday and so on. A maximum of seven entries is required if available
-          items:
-            type: number
-          type: array
+        aggregate:
+          $ref: '#/components/schemas/AverageTPSMetrics_aggregate'
+        unauthenticated:
+          $ref: '#/components/schemas/AverageTPSMetrics_unauthenticated'
+        authenticated:
+          $ref: '#/components/schemas/AverageTPSMetrics_authenticated'
+      required:
+      - aggregate
+      - authenticated
+      - unauthenticated
       type: object
-      x-conditional:
-      - currentDay
-      - previousDays
     PeakTPSMetrics:
-      description: Maximum record transactions per second over time
-      example:
-        previousDays:
-        - 0.8851374739011653
-        - 0.8851374739011653
-        currentDay: 7.143538047012306
-      properties:
-        currentDay:
-          description: Peak TPS for current day
-          type: number
-        previousDays:
-          description: Peak TPS for previous days. The first element indicates yesterday
-            and so on. A maximum of seven entries is required if available
-          items:
-            type: number
-          type: array
-      type: object
-      x-conditional:
-      - currentDay
-      - previousDays
-    ErrorMetrics:
-      description: Number of calls resulting in error due to server execution over
-        time
-      example:
-        previousDays:
-        - 6.519180951018382
-        - 6.519180951018382
-        currentDay: 7.058770351582356
-      properties:
-        currentDay:
-          description: Number of errors for current day
-          type: number
-        previousDays:
-          description: Number of errors for previous days. The first element indicates
-            yesterday and so on. A maximum of seven entries is required if available
-          items:
-            type: number
-          type: array
-      type: object
-      x-conditional:
-      - currentDay
-      - previousDays
-    RejectionMetricsV2:
-      description: Number of calls rejected due to traffic thresholds over time
+      description: Peak transactions per second over time
       example:
         authenticated:
           previousDays:
@@ -668,9 +698,71 @@ components:
           currentDay: 0.10263654006109402
         unauthenticated:
           previousDays:
-          - 7.740351818741173
-          - 7.740351818741173
-          currentDay: 8.969578798196912
+          - 6.519180951018382
+          - 6.519180951018382
+          currentDay: 7.058770351582356
+        aggregate:
+          previousDays:
+          - 0.8851374739011653
+          - 0.8851374739011653
+          currentDay: 7.143538047012306
+      properties:
+        aggregate:
+          $ref: '#/components/schemas/PeakTPSMetrics_aggregate'
+        unauthenticated:
+          $ref: '#/components/schemas/PeakTPSMetrics_unauthenticated'
+        authenticated:
+          $ref: '#/components/schemas/PeakTPSMetrics_authenticated'
+      required:
+      - aggregate
+      - authenticated
+      - unauthenticated
+      type: object
+    ErrorMetrics:
+      description: Peak transactions per second over time
+      example:
+        authenticated:
+          previousDays:
+          - key: 5
+          - key: 5
+          currentDay:
+            key: 7
+        unauthenticated:
+          previousDays:
+          - key: 3
+          - key: 3
+          currentDay:
+            key: 3
+        aggregate:
+          previousDays:
+          - 7
+          - 7
+          currentDay: 8
+      properties:
+        aggregate:
+          $ref: '#/components/schemas/ErrorMetrics_aggregate'
+        unauthenticated:
+          $ref: '#/components/schemas/ErrorMetrics_unauthenticated'
+        authenticated:
+          $ref: '#/components/schemas/ErrorMetrics_authenticated'
+      required:
+      - aggregate
+      - authenticated
+      - unauthenticated
+      type: object
+    RejectionMetricsV2:
+      description: Number of calls rejected due to traffic thresholds over time
+      example:
+        authenticated:
+          previousDays:
+          - 4
+          - 4
+          currentDay: 3
+        unauthenticated:
+          previousDays:
+          - 6
+          - 6
+          currentDay: 0
       properties:
         authenticated:
           $ref: '#/components/schemas/RejectionMetricsV2_authenticated'
@@ -687,14 +779,14 @@ components:
       example:
         rejections:
           previousDays:
-          - 4.078845849666752
-          - 4.078845849666752
-          currentDay: 3.2588565619047607
+          - 0
+          - 0
+          currentDay: 9
         errors:
           previousDays:
-          - 5.533258397034986
-          - 5.533258397034986
-          currentDay: 7.04836565559697
+          - 7
+          - 7
+          currentDay: 4
       properties:
         errors:
           $ref: '#/components/schemas/SecondaryHolderMetrics_errors'
@@ -759,142 +851,188 @@ components:
         rejections:
           authenticated:
             previousDays:
+            - 4
+            - 4
+            currentDay: 3
+          unauthenticated:
+            previousDays:
+            - 6
+            - 6
+            currentDay: 0
+        peakTps:
+          authenticated:
+            previousDays:
             - 4.652396432933246
             - 4.652396432933246
             currentDay: 0.10263654006109402
           unauthenticated:
             previousDays:
-            - 7.740351818741173
-            - 7.740351818741173
-            currentDay: 8.969578798196912
-        peakTps:
-          previousDays:
-          - 0.8851374739011653
-          - 0.8851374739011653
-          currentDay: 7.143538047012306
+            - 6.519180951018382
+            - 6.519180951018382
+            currentDay: 7.058770351582356
+          aggregate:
+            previousDays:
+            - 0.8851374739011653
+            - 0.8851374739011653
+            currentDay: 7.143538047012306
         averageTps:
-          previousDays:
-          - 3.0937452626664474
-          - 3.0937452626664474
-          currentDay: 3.353193347011243
+          authenticated:
+            previousDays:
+            - 3.0937452626664474
+            - 3.0937452626664474
+            currentDay: 3.353193347011243
+          unauthenticated:
+            previousDays:
+            - 6.704019297950036
+            - 6.704019297950036
+            currentDay: 5.944895607614016
+          aggregate:
+            previousDays:
+            - 6.878052220127876
+            - 6.878052220127876
+            currentDay: 6.778324963048013
         secondaryHolder:
           rejections:
             previousDays:
-            - 4.078845849666752
-            - 4.078845849666752
-            currentDay: 3.2588565619047607
+            - 0
+            - 0
+            currentDay: 9
           errors:
             previousDays:
-            - 5.533258397034986
-            - 5.533258397034986
-            currentDay: 7.04836565559697
+            - 7
+            - 7
+            currentDay: 4
         availability:
-          previousMonths:
-          - 6.027456183070403
-          - 6.027456183070403
-          currentMonth: 0.8008281904610115
+          authenticated:
+            previousMonths:
+            - previousMonths
+            - previousMonths
+            currentMonth: currentMonth
+          unauthenticated:
+            previousMonths:
+            - previousMonths
+            - previousMonths
+            currentMonth: currentMonth
+          aggregate:
+            previousMonths:
+            - previousMonths
+            - previousMonths
+            currentMonth: currentMonth
         averageResponse:
           unattended:
-            previousDays:
-            - 6.438423552598547
-            - 6.438423552598547
-            currentDay: 9.018348186070783
-          secondary:
-            secondary:
-              previousDays:
-              - 6.878052220127876
-              - 6.878052220127876
-              currentDay: 6.778324963048013
-            primary:
-              previousDays:
-              - 2.8841621266687802
-              - 2.8841621266687802
-              currentDay: 1.284659006116532
-          highPriority:
             previousDays:
             - 9.369310271410669
             - 9.369310271410669
             currentDay: 9.965781217890562
-          largePayload:
-            previousDays:
-            - 6.965117697638846
-            - 6.965117697638846
-            currentDay: 3.5571952270680973
-          unauthenticated:
-            previousDays:
-            - 5.025004791520295
-            - 5.025004791520295
-            currentDay: 4.965218492984954
-          lowPriority:
-            previousDays:
-            - 8.762042012749001
-            - 8.762042012749001
-            currentDay: 6.683562403749608
-          largeSecondary:
+          secondary:
             secondary:
               previousDays:
-              - 6.878052220127876
-              - 6.878052220127876
-              currentDay: 6.778324963048013
+              - 6.965117697638846
+              - 6.965117697638846
+              currentDay: 3.5571952270680973
             primary:
               previousDays:
-              - 2.8841621266687802
-              - 2.8841621266687802
-              currentDay: 1.284659006116532
-        invocations:
-          unattended:
-            previousDays:
-            - 7.386281948385884
-            - 7.386281948385884
-            currentDay: 4.145608029883936
-          secondary:
-            previousDays:
-            - 6.84685269835264
-            - 6.84685269835264
-            currentDay: 1.4894159098541704
+              - 6.438423552598547
+              - 6.438423552598547
+              currentDay: 9.018348186070783
           highPriority:
-            previousDays:
-            - 9.301444243932576
-            - 9.301444243932576
-            currentDay: 7.061401241503109
-          largePayload:
-            previousDays:
-            - 1.0246457001441578
-            - 1.0246457001441578
-            currentDay: 1.2315135367772556
-          unauthenticated:
-            previousDays:
-            - 2.3021358869347655
-            - 2.3021358869347655
-            currentDay: 5.637376656633329
-          lowPriority:
-            previousDays:
-            - 2.027123023002322
-            - 2.027123023002322
-            currentDay: 3.616076749251911
-          largeSecondary:
             previousDays:
             - 1.1730742509559433
             - 1.1730742509559433
             currentDay: 7.457744773683766
+          largePayload:
+            previousDays:
+            - 8.762042012749001
+            - 8.762042012749001
+            currentDay: 6.683562403749608
+          unauthenticated:
+            previousDays:
+            - 6.84685269835264
+            - 6.84685269835264
+            currentDay: 1.4894159098541704
+          lowPriority:
+            previousDays:
+            - 5.025004791520295
+            - 5.025004791520295
+            currentDay: 4.965218492984954
+          largeSecondary:
+            secondary:
+              previousDays:
+              - 6.965117697638846
+              - 6.965117697638846
+              currentDay: 3.5571952270680973
+            primary:
+              previousDays:
+              - 6.438423552598547
+              - 6.438423552598547
+              currentDay: 9.018348186070783
+        invocations:
+          unattended:
+            previousDays:
+            - 9
+            - 9
+            currentDay: 7
+          secondary:
+            previousDays:
+            - 7
+            - 7
+            currentDay: 4
+          highPriority:
+            previousDays:
+            - 5
+            - 5
+            currentDay: 1
+          largePayload:
+            previousDays:
+            - 2
+            - 2
+            currentDay: 3
+          unauthenticated:
+            previousDays:
+            - 6
+            - 6
+            currentDay: 0
+          lowPriority:
+            previousDays:
+            - 2
+            - 2
+            currentDay: 5
+          largeSecondary:
+            previousDays:
+            - 1
+            - 1
+            currentDay: 1
         requestTime: requestTime
         performance:
           previousDays:
-          - 5.962133916683182
-          - 5.962133916683182
-          currentDay: 1.4658129805029452
+          - previousDays
+          - previousDays
+          currentDay: currentDay
         sessionCount:
           previousDays:
-          - 6.704019297950036
-          - 6.704019297950036
-          currentDay: 5.944895607614016
-        recipientCount: 3
+          - 2
+          - 2
+          currentDay: 1
+        recipientCount: 1
         errors:
-          previousDays:
-          - 6.519180951018382
-          - 6.519180951018382
-          currentDay: 7.058770351582356
-        customerCount: 3
+          authenticated:
+            previousDays:
+            - key: 5
+            - key: 5
+            currentDay:
+              key: 7
+          unauthenticated:
+            previousDays:
+            - key: 3
+            - key: 3
+            currentDay:
+              key: 3
+          aggregate:
+            previousDays:
+            - 7
+            - 7
+            currentDay: 8
+        customerCount: 4
       properties:
         requestTime:
           description: The date and time that the metrics in this payload were requested.
@@ -944,22 +1082,106 @@ components:
       type: object
       x-conditional:
       - secondaryHolder
+    AvailabilityMetrics_aggregate:
+      description: Aggregated availability metrics
+      example:
+        previousMonths:
+        - previousMonths
+        - previousMonths
+        currentMonth: currentMonth
+      properties:
+        currentMonth:
+          description: Percentage availability of the CDR platform so far for the
+            current calendar month. 0.0 means 0%. 1.0 means 100%. Must be a positive
+            value or zero
+          type: string
+          x-cds-type: RateString
+        previousMonths:
+          description: Percentage availability of the CDR platform for previous calendar
+            months. The first element indicates the last month and so on. A maximum
+            of twelve entries is required if available. 0.0 means 0%. 1.0 means 100%.
+            Values must be a positive or zero
+          items:
+            type: string
+            x-cds-type: RateString
+          type: array
+      type: object
+      x-conditional:
+      - currentDay
+      - previousDays
+    AvailabilityMetrics_unauthenticated:
+      description: Availability metrics for the unauthenticated aspects of the CDR
+        regime
+      example:
+        previousMonths:
+        - previousMonths
+        - previousMonths
+        currentMonth: currentMonth
+      properties:
+        currentMonth:
+          description: Percentage availability of the CDR platform so far for the
+            current calendar month. 0.0 means 0%. 1.0 means 100%. Must be a positive
+            value or zero
+          type: string
+          x-cds-type: RateString
+        previousMonths:
+          description: Percentage availability of the CDR platform for previous calendar
+            months. The first element indicates the last month and so on. A maximum
+            of twelve entries is required if available. 0.0 means 0%. 1.0 means 100%.
+            Values must be a positive or zero
+          items:
+            type: string
+            x-cds-type: RateString
+          type: array
+      type: object
+      x-conditional:
+      - currentDay
+      - previousDays
+    AvailabilityMetrics_authenticated:
+      description: Availability metrics for the authenticated aspects of the CDR regime
+      example:
+        previousMonths:
+        - previousMonths
+        - previousMonths
+        currentMonth: currentMonth
+      properties:
+        currentMonth:
+          description: Percentage availability of the CDR platform so far for the
+            current calendar month. 0.0 means 0%. 1.0 means 100%. Must be a positive
+            value or zero
+          type: string
+          x-cds-type: RateString
+        previousMonths:
+          description: Percentage availability of the CDR platform for previous calendar
+            months. The first element indicates the last month and so on. A maximum
+            of twelve entries is required if available. 0.0 means 0%. 1.0 means 100%.
+            Values must be a positive or zero
+          items:
+            type: string
+            x-cds-type: RateString
+          type: array
+      type: object
+      x-conditional:
+      - currentDay
+      - previousDays
     InvocationMetricsV2_unauthenticated:
       description: API call counts for the unauthenticated tier
       example:
         previousDays:
-        - 2.3021358869347655
-        - 2.3021358869347655
-        currentDay: 5.637376656633329
+        - 6
+        - 6
+        currentDay: 0
       properties:
         currentDay:
           description: API call counts for current day
-          type: number
+          type: integer
+          x-cds-type: NaturalNumber
         previousDays:
           description: API call counts for previous days. The first element indicates
             yesterday and so on. A maximum of seven entries is required if available
           items:
-            type: number
+            type: integer
+            x-cds-type: NaturalNumber
           type: array
       type: object
       x-conditional:
@@ -969,18 +1191,20 @@ components:
       description: API call counts for the high priority tier
       example:
         previousDays:
-        - 9.301444243932576
-        - 9.301444243932576
-        currentDay: 7.061401241503109
+        - 5
+        - 5
+        currentDay: 1
       properties:
         currentDay:
           description: API call counts for current day
-          type: number
+          type: integer
+          x-cds-type: NaturalNumber
         previousDays:
           description: API call counts for previous days. The first element indicates
             yesterday and so on. A maximum of seven entries is required if available
           items:
-            type: number
+            type: integer
+            x-cds-type: NaturalNumber
           type: array
       type: object
       x-conditional:
@@ -990,18 +1214,20 @@ components:
       description: API call counts for the low priority tier
       example:
         previousDays:
-        - 2.027123023002322
-        - 2.027123023002322
-        currentDay: 3.616076749251911
+        - 2
+        - 2
+        currentDay: 5
       properties:
         currentDay:
           description: API call counts for current day
-          type: number
+          type: integer
+          x-cds-type: NaturalNumber
         previousDays:
           description: API call counts for previous days. The first element indicates
             yesterday and so on. A maximum of seven entries is required if available
           items:
-            type: number
+            type: integer
+            x-cds-type: NaturalNumber
           type: array
       type: object
       x-conditional:
@@ -1011,18 +1237,20 @@ components:
       description: API call counts for the unattended tier
       example:
         previousDays:
-        - 7.386281948385884
-        - 7.386281948385884
-        currentDay: 4.145608029883936
+        - 9
+        - 9
+        currentDay: 7
       properties:
         currentDay:
           description: API call counts for current day
-          type: number
+          type: integer
+          x-cds-type: NaturalNumber
         previousDays:
           description: API call counts for previous days. The first element indicates
             yesterday and so on. A maximum of seven entries is required if available
           items:
-            type: number
+            type: integer
+            x-cds-type: NaturalNumber
           type: array
       type: object
       x-conditional:
@@ -1032,18 +1260,20 @@ components:
       description: API call counts for the large payload tier
       example:
         previousDays:
-        - 1.0246457001441578
-        - 1.0246457001441578
-        currentDay: 1.2315135367772556
+        - 2
+        - 2
+        currentDay: 3
       properties:
         currentDay:
           description: API call counts for current day
-          type: number
+          type: integer
+          x-cds-type: NaturalNumber
         previousDays:
           description: API call counts for previous days. The first element indicates
             yesterday and so on. A maximum of seven entries is required if available
           items:
-            type: number
+            type: integer
+            x-cds-type: NaturalNumber
           type: array
       type: object
       x-conditional:
@@ -1055,18 +1285,20 @@ components:
         cluster
       example:
         previousDays:
-        - 6.84685269835264
-        - 6.84685269835264
-        currentDay: 1.4894159098541704
+        - 7
+        - 7
+        currentDay: 4
       properties:
         currentDay:
           description: API call counts for current day
-          type: number
+          type: integer
+          x-cds-type: NaturalNumber
         previousDays:
           description: API call counts for previous days. The first element indicates
             yesterday and so on. A maximum of seven entries is required if available
           items:
-            type: number
+            type: integer
+            x-cds-type: NaturalNumber
           type: array
       type: object
       x-conditional:
@@ -1078,18 +1310,20 @@ components:
         Request data cluster
       example:
         previousDays:
-        - 1.1730742509559433
-        - 1.1730742509559433
-        currentDay: 7.457744773683766
+        - 1
+        - 1
+        currentDay: 1
       properties:
         currentDay:
           description: API call counts for current day
-          type: number
+          type: integer
+          x-cds-type: NaturalNumber
         previousDays:
           description: API call counts for previous days. The first element indicates
             yesterday and so on. A maximum of seven entries is required if available
           items:
-            type: number
+            type: integer
+            x-cds-type: NaturalNumber
           type: array
       type: object
       x-conditional:
@@ -1097,6 +1331,50 @@ components:
       - previousDays
     AverageResponseMetricsV2_unauthenticated:
       description: Average response time for the unauthenticated tier
+      example:
+        previousDays:
+        - 6.84685269835264
+        - 6.84685269835264
+        currentDay: 1.4894159098541704
+      properties:
+        currentDay:
+          description: Average response time for current day
+          type: number
+        previousDays:
+          description: Average response time for previous days. The first element
+            indicates yesterday and so on. A maximum of seven entries is required
+            if available.
+          items:
+            type: number
+          type: array
+      type: object
+      x-conditional:
+      - currentDay
+      - previousDays
+    AverageResponseMetricsV2_highPriority:
+      description: Average response time for the high priority tier
+      example:
+        previousDays:
+        - 1.1730742509559433
+        - 1.1730742509559433
+        currentDay: 7.457744773683766
+      properties:
+        currentDay:
+          description: Average response time for current day
+          type: number
+        previousDays:
+          description: Average response time for previous days. The first element
+            indicates yesterday and so on. A maximum of seven entries is required
+            if available.
+          items:
+            type: number
+          type: array
+      type: object
+      x-conditional:
+      - currentDay
+      - previousDays
+    AverageResponseMetricsV2_lowPriority:
+      description: Average response time for the low priority tier
       example:
         previousDays:
         - 5.025004791520295
@@ -1117,8 +1395,8 @@ components:
       x-conditional:
       - currentDay
       - previousDays
-    AverageResponseMetricsV2_highPriority:
-      description: Average response time for the high priority tier
+    AverageResponseMetricsV2_unattended:
+      description: Average response time for the unattended tier
       example:
         previousDays:
         - 9.369310271410669
@@ -1139,8 +1417,8 @@ components:
       x-conditional:
       - currentDay
       - previousDays
-    AverageResponseMetricsV2_lowPriority:
-      description: Average response time for the low priority tier
+    AverageResponseMetricsV2_largePayload:
+      description: Average response time for the large payload tier
       example:
         previousDays:
         - 8.762042012749001
@@ -1161,8 +1439,8 @@ components:
       x-conditional:
       - currentDay
       - previousDays
-    AverageResponseMetricsV2_unattended:
-      description: Average response time for the unattended tier
+    AverageResponseMetricsV2_secondary_primary:
+      description: Average response time as measured for the primary data holder
       example:
         previousDays:
         - 6.438423552598547
@@ -1183,57 +1461,13 @@ components:
       x-conditional:
       - currentDay
       - previousDays
-    AverageResponseMetricsV2_largePayload:
-      description: Average response time for the large payload tier
+    AverageResponseMetricsV2_secondary_secondary:
+      description: Average response time as measured for the secondary data holder
       example:
         previousDays:
         - 6.965117697638846
         - 6.965117697638846
         currentDay: 3.5571952270680973
-      properties:
-        currentDay:
-          description: Average response time for current day
-          type: number
-        previousDays:
-          description: Average response time for previous days. The first element
-            indicates yesterday and so on. A maximum of seven entries is required
-            if available.
-          items:
-            type: number
-          type: array
-      type: object
-      x-conditional:
-      - currentDay
-      - previousDays
-    AverageResponseMetricsV2_secondary_primary:
-      description: Average response time as measured for the primary data holder
-      example:
-        previousDays:
-        - 2.8841621266687802
-        - 2.8841621266687802
-        currentDay: 1.284659006116532
-      properties:
-        currentDay:
-          description: Average response time for current day
-          type: number
-        previousDays:
-          description: Average response time for previous days. The first element
-            indicates yesterday and so on. A maximum of seven entries is required
-            if available.
-          items:
-            type: number
-          type: array
-      type: object
-      x-conditional:
-      - currentDay
-      - previousDays
-    AverageResponseMetricsV2_secondary_secondary:
-      description: Average response time as measured for the secondary data holder
-      example:
-        previousDays:
-        - 6.878052220127876
-        - 6.878052220127876
-        currentDay: 6.778324963048013
       properties:
         currentDay:
           description: Average response time for current day
@@ -1255,14 +1489,14 @@ components:
       example:
         secondary:
           previousDays:
-          - 6.878052220127876
-          - 6.878052220127876
-          currentDay: 6.778324963048013
+          - 6.965117697638846
+          - 6.965117697638846
+          currentDay: 3.5571952270680973
         primary:
           previousDays:
-          - 2.8841621266687802
-          - 2.8841621266687802
-          currentDay: 1.284659006116532
+          - 6.438423552598547
+          - 6.438423552598547
+          currentDay: 9.018348186070783
       properties:
         primary:
           $ref: '#/components/schemas/AverageResponseMetricsV2_secondary_primary'
@@ -1278,14 +1512,14 @@ components:
       example:
         secondary:
           previousDays:
-          - 6.878052220127876
-          - 6.878052220127876
-          currentDay: 6.778324963048013
+          - 6.965117697638846
+          - 6.965117697638846
+          currentDay: 3.5571952270680973
         primary:
           previousDays:
-          - 2.8841621266687802
-          - 2.8841621266687802
-          currentDay: 1.284659006116532
+          - 6.438423552598547
+          - 6.438423552598547
+          currentDay: 9.018348186070783
       properties:
         primary:
           $ref: '#/components/schemas/AverageResponseMetricsV2_secondary_primary'
@@ -1295,8 +1529,118 @@ components:
       - primary
       - secondary
       type: object
-    RejectionMetricsV2_authenticated:
-      description: Rejection counts for all authenticated end points
+    AverageTPSMetrics_aggregate:
+      description: Aggregate average transactions per second over time for all endpoints
+      example:
+        previousDays:
+        - 6.878052220127876
+        - 6.878052220127876
+        currentDay: 6.778324963048013
+      properties:
+        currentDay:
+          description: Average TPS for current day. Must be a positive value or zero
+          type: number
+        previousDays:
+          description: Average TPS for previous days. The first element indicates
+            yesterday and so on. A maximum of seven entries is required if available.
+            Values must be a positive or zero
+          items:
+            type: number
+          type: array
+      type: object
+      x-conditional:
+      - currentDay
+      - previousDays
+    AverageTPSMetrics_unauthenticated:
+      description: Average transactions per second over time for unauthenticated endpoints
+      example:
+        previousDays:
+        - 6.704019297950036
+        - 6.704019297950036
+        currentDay: 5.944895607614016
+      properties:
+        currentDay:
+          description: Average TPS for current day. Must be a positive value or zero
+          type: number
+        previousDays:
+          description: Average TPS for previous days. The first element indicates
+            yesterday and so on. A maximum of seven entries is required if available.
+            Values must be a positive or zero
+          items:
+            type: number
+          type: array
+      type: object
+      x-conditional:
+      - currentDay
+      - previousDays
+    AverageTPSMetrics_authenticated:
+      description: Average transactions per second over time for authenticated endpoints
+      example:
+        previousDays:
+        - 3.0937452626664474
+        - 3.0937452626664474
+        currentDay: 3.353193347011243
+      properties:
+        currentDay:
+          description: Average TPS for current day. Must be a positive value or zero
+          type: number
+        previousDays:
+          description: Average TPS for previous days. The first element indicates
+            yesterday and so on. A maximum of seven entries is required if available.
+            Values must be a positive or zero
+          items:
+            type: number
+          type: array
+      type: object
+      x-conditional:
+      - currentDay
+      - previousDays
+    PeakTPSMetrics_aggregate:
+      description: Aggregate peak transactions per second over time for all endpoints
+      example:
+        previousDays:
+        - 0.8851374739011653
+        - 0.8851374739011653
+        currentDay: 7.143538047012306
+      properties:
+        currentDay:
+          description: Peak TPS for current day. Must be a positive value or zero
+          type: number
+        previousDays:
+          description: Peak TPS for previous days. The first element indicates yesterday
+            and so on. A maximum of seven entries is required if available. Values
+            must be a positive or zero
+          items:
+            type: number
+          type: array
+      type: object
+      x-conditional:
+      - currentDay
+      - previousDays
+    PeakTPSMetrics_unauthenticated:
+      description: Peak transactions per second over time for unauthenticated endpoints
+      example:
+        previousDays:
+        - 6.519180951018382
+        - 6.519180951018382
+        currentDay: 7.058770351582356
+      properties:
+        currentDay:
+          description: Peak TPS for current day. Must be a positive value or zero
+          type: number
+        previousDays:
+          description: Peak TPS for previous days. The first element indicates yesterday
+            and so on. A maximum of seven entries is required if available. Values
+            must be a positive or zero
+          items:
+            type: number
+          type: array
+      type: object
+      x-conditional:
+      - currentDay
+      - previousDays
+    PeakTPSMetrics_authenticated:
+      description: Peak transactions per second over time for authenticated endpoints
       example:
         previousDays:
         - 4.652396432933246
@@ -1304,14 +1648,170 @@ components:
         currentDay: 0.10263654006109402
       properties:
         currentDay:
-          description: Number of calls rejected for current day
+          description: Peak TPS for current day. Must be a positive value or zero
           type: number
+        previousDays:
+          description: Peak TPS for previous days. The first element indicates yesterday
+            and so on. A maximum of seven entries is required if available. Values
+            must be a positive or zero
+          items:
+            type: number
+          type: array
+      type: object
+      x-conditional:
+      - currentDay
+      - previousDays
+    ErrorMetrics_aggregate:
+      description: Aggregate number of calls resulting in error due to server execution
+        over time for all endpoints
+      example:
+        previousDays:
+        - 7
+        - 7
+        currentDay: 8
+      properties:
+        currentDay:
+          description: Error counts for current day
+          type: integer
+          x-cds-type: NaturalNumber
+        previousDays:
+          description: Error counts for previous days. The first element indicates
+            yesterday and so on. A maximum of seven entries is required if available
+          items:
+            type: integer
+            x-cds-type: NaturalNumber
+          type: array
+      type: object
+      x-conditional:
+      - currentDay
+      - previousDays
+    ErrorMetrics_unauthenticated:
+      description: Number of calls resulting in error due to server execution over
+        time for unauthenticated endpoints
+      example:
+        previousDays:
+        - key: 3
+        - key: 3
+        currentDay:
+          key: 3
+      properties:
+        currentDay:
+          additionalProperties:
+            description: Number of errors for a specific HTTP error code.  Note that
+              the property name must be 3 digits represent the HTTP error code the
+              error is for
+            type: integer
+            x-cds-type: NaturalNumber
+          description: Error counts, by HTTP error code, for current day
+          properties:
+            "500":
+              description: Number of errors for HTTP error code 500.  Note that this
+                field is an example of a single entry due to the lack of OAS support
+                for the JSON Schema `patternProperties` syntax.  See the `additionalProperties`
+                field in this schema for the generic property structure for error
+                code counts
+              type: integer
+              x-cds-type: NaturalNumber
+          type: object
+        previousDays:
+          description: Error counts, by HTTP error code, for previous days. The first
+            element indicates yesterday and so on. A maximum of seven entries is required
+            if available
+          items:
+            additionalProperties:
+              description: Number of errors for a specific HTTP error code.  Note
+                that the property name must be 3 digits represent the HTTP error code
+                the error is for
+              type: integer
+              x-cds-type: NaturalNumber
+            properties:
+              "500":
+                description: Number of errors for HTTP error code 500.  Note that
+                  this field is an example of a single entry due to the lack of OAS
+                  support JSON Schema `patternProperties` syntax.  See the `additionalProperties`
+                  field in this schema for the generic property structure for error
+                  code counts
+                type: integer
+                x-cds-type: NaturalNumber
+            type: object
+          type: array
+      type: object
+      x-conditional:
+      - currentDay
+      - previousDays
+    ErrorMetrics_authenticated:
+      description: Number of calls resulting in error due to server execution over
+        time for authenticated endpoints
+      example:
+        previousDays:
+        - key: 5
+        - key: 5
+        currentDay:
+          key: 7
+      properties:
+        currentDay:
+          additionalProperties:
+            description: Number of errors for a specific HTTP error code.  Note that
+              the property name must be 3 digits represent the HTTP error code the
+              error is for
+            type: integer
+            x-cds-type: NaturalNumber
+          description: Error counts, by HTTP error code, for current day
+          properties:
+            "500":
+              description: Number of errors for HTTP error code 500.  Note that this
+                field is an example of a single entry due to the lack of OAS support
+                for the JSON Schema `patternProperties` syntax.  See the `additionalProperties`
+                field in this schema for the generic property structure for error
+                code counts
+              type: integer
+              x-cds-type: NaturalNumber
+          type: object
+        previousDays:
+          description: Error counts, by HTTP error code, for previous days. The first
+            element indicates yesterday and so on. A maximum of seven entries is required
+            if available
+          items:
+            additionalProperties:
+              description: Number of errors for a specific HTTP error code.  Note
+                that the property name must be 3 digits represent the HTTP error code
+                the error is for
+              type: integer
+              x-cds-type: NaturalNumber
+            properties:
+              "500":
+                description: Number of errors for HTTP error code 500.  Note that
+                  this field is an example of a single entry due to the lack of OAS
+                  support JSON Schema `patternProperties` syntax.  See the `additionalProperties`
+                  field in this schema for the generic property structure for error
+                  code counts
+                type: integer
+                x-cds-type: NaturalNumber
+            type: object
+          type: array
+      type: object
+      x-conditional:
+      - currentDay
+      - previousDays
+    RejectionMetricsV2_authenticated:
+      description: Rejection counts for all authenticated end points
+      example:
+        previousDays:
+        - 4
+        - 4
+        currentDay: 3
+      properties:
+        currentDay:
+          description: Number of calls rejected for current day
+          type: integer
+          x-cds-type: NaturalNumber
         previousDays:
           description: Number of calls rejected for previous days. The first element
             indicates yesterday and so on. A maximum of seven entries is required
             if available.
           items:
-            type: number
+            type: integer
+            x-cds-type: NaturalNumber
           type: array
       type: object
       x-conditional:
@@ -1321,19 +1821,21 @@ components:
       description: Rejection counts for all unauthenticated end points
       example:
         previousDays:
-        - 7.740351818741173
-        - 7.740351818741173
-        currentDay: 8.969578798196912
+        - 6
+        - 6
+        currentDay: 0
       properties:
         currentDay:
           description: Number of calls rejected for current day
-          type: number
+          type: integer
+          x-cds-type: NaturalNumber
         previousDays:
           description: Number of calls rejected for previous days. The first element
             indicates yesterday and so on. A maximum of seven entries is required
             if available.
           items:
-            type: number
+            type: integer
+            x-cds-type: NaturalNumber
           type: array
       type: object
       x-conditional:
@@ -1344,18 +1846,20 @@ components:
         time
       example:
         previousDays:
-        - 5.533258397034986
-        - 5.533258397034986
-        currentDay: 7.04836565559697
+        - 7
+        - 7
+        currentDay: 4
       properties:
         currentDay:
           description: Number of errors for current day
-          type: number
+          type: integer
+          x-cds-type: NaturalNumber
         previousDays:
           description: Number of errors for previous days. The first element indicates
             yesterday and so on. A maximum of seven entries is required if available
           items:
-            type: number
+            type: integer
+            x-cds-type: NaturalNumber
           type: array
       type: object
       x-conditional:
@@ -1365,18 +1869,20 @@ components:
       description: Number of calls rejected due to traffic thresholds over time
       example:
         previousDays:
-        - 4.078845849666752
-        - 4.078845849666752
-        currentDay: 3.2588565619047607
+        - 0
+        - 0
+        currentDay: 9
       properties:
         currentDay:
           description: Number of rejections for current day
-          type: number
+          type: integer
+          x-cds-type: NaturalNumber
         previousDays:
           description: Number of rejections for previous days. The first element indicates
             yesterday and so on. A maximum of seven entries is required if available
           items:
-            type: number
+            type: integer
+            x-cds-type: NaturalNumber
           type: array
       type: object
       x-conditional:

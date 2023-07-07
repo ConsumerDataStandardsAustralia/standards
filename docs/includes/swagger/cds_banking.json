@@ -114,7 +114,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
           "explode" : false,
           "in" : "header",
           "name" : "x-fapi-auth-date",
@@ -342,7 +342,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
           "explode" : false,
           "in" : "header",
           "name" : "x-fapi-auth-date",
@@ -533,7 +533,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
           "explode" : false,
           "in" : "header",
           "name" : "x-fapi-auth-date",
@@ -724,7 +724,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
           "explode" : false,
           "in" : "header",
           "name" : "x-fapi-auth-date",
@@ -903,7 +903,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
           "explode" : false,
           "in" : "header",
           "name" : "x-fapi-auth-date",
@@ -1166,7 +1166,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
           "explode" : false,
           "in" : "header",
           "name" : "x-fapi-auth-date",
@@ -1377,7 +1377,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
           "explode" : false,
           "in" : "header",
           "name" : "x-fapi-auth-date",
@@ -1582,7 +1582,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
           "explode" : false,
           "in" : "header",
           "name" : "x-fapi-auth-date",
@@ -1830,7 +1830,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
           "explode" : false,
           "in" : "header",
           "name" : "x-fapi-auth-date",
@@ -2021,7 +2021,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
           "explode" : false,
           "in" : "header",
           "name" : "x-fapi-auth-date",
@@ -2167,7 +2167,7 @@
     },
     "/banking/accounts/{accountId}/payments/scheduled" : {
       "get" : {
-        "description" : "Obtain scheduled, outgoing payments for a specific account",
+        "description" : "Obtain scheduled, outgoing payments for a specific account\n\nObsolete versions: [v1](includes/obsolete/get-scheduled-payments-for-account-v1.html)",
         "operationId" : "listScheduledPayments",
         "parameters" : [ {
           "description" : "ID of the account to get scheduled payments for. Must have previously been returned by one of the account list end points. The account specified is the source account for the payment",
@@ -2238,7 +2238,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
           "explode" : false,
           "in" : "header",
           "name" : "x-fapi-auth-date",
@@ -2279,7 +2279,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/ResponseBankingScheduledPaymentsList"
+                  "$ref" : "#/components/schemas/ResponseBankingScheduledPaymentsListV2"
                 }
               }
             },
@@ -2387,12 +2387,12 @@
         "summary" : "Get Scheduled Payments for Account",
         "tags" : [ "Banking", "Scheduled Payments" ],
         "x-scopes" : [ "bank:regular_payments:read" ],
-        "x-version" : "1"
+        "x-version" : "2"
       }
     },
     "/banking/payments/scheduled" : {
       "get" : {
-        "description" : "Obtain scheduled payments for multiple, filtered accounts that are the source of funds for the payments",
+        "description" : "Obtain scheduled payments for multiple, filtered accounts that are the source of funds for the payments\n\nObsolete versions: [v1](includes/obsolete/get-scheduled-payments-bulk-v1.html)",
         "operationId" : "listScheduledPaymentsBulk",
         "parameters" : [ {
           "description" : "Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.",
@@ -2486,7 +2486,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
           "explode" : false,
           "in" : "header",
           "name" : "x-fapi-auth-date",
@@ -2527,7 +2527,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/ResponseBankingScheduledPaymentsList"
+                  "$ref" : "#/components/schemas/ResponseBankingScheduledPaymentsListV2"
                 }
               }
             },
@@ -2615,10 +2615,10 @@
         "summary" : "Get Scheduled Payments Bulk",
         "tags" : [ "Banking", "Scheduled Payments" ],
         "x-scopes" : [ "bank:regular_payments:read" ],
-        "x-version" : "1"
+        "x-version" : "2"
       },
       "post" : {
-        "description" : "Obtain scheduled payments for a specified list of accounts",
+        "description" : "Obtain scheduled payments for a specified list of accounts\n\nObsolete versions: [v1](includes/obsolete/get-scheduled-payments-for-specific-accounts-v1.html)",
         "operationId" : "listScheduledPaymentsSpecificAccounts",
         "parameters" : [ {
           "description" : "Page of results to request (standard pagination)",
@@ -2677,7 +2677,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
           "explode" : false,
           "in" : "header",
           "name" : "x-fapi-auth-date",
@@ -2729,7 +2729,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/ResponseBankingScheduledPaymentsList"
+                  "$ref" : "#/components/schemas/ResponseBankingScheduledPaymentsListV2"
                 }
               }
             },
@@ -2817,7 +2817,7 @@
         "summary" : "Get Scheduled Payments For Specific Accounts",
         "tags" : [ "Banking", "Scheduled Payments" ],
         "x-scopes" : [ "bank:regular_payments:read" ],
-        "x-version" : "1",
+        "x-version" : "2",
         "x-codegen-request-body-name" : "accountIds"
       }
     },
@@ -2894,7 +2894,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
           "explode" : false,
           "in" : "header",
           "name" : "x-fapi-auth-date",
@@ -3073,7 +3073,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
           "explode" : false,
           "in" : "header",
           "name" : "x-fapi-auth-date",
@@ -3227,7 +3227,7 @@
     },
     "/banking/products" : {
       "get" : {
-        "description" : "Obtain a list of products that are currently openly offered to the market\n\nNote that the results returned by this end point are expected to be ordered in descending order according to ``lastUpdated``.\n\n### Conventions\nIn the product reference payloads there are a number of recurring conventions that are explained here, in one place.\n\n#### Arrays Of Features\n\nIn the product detail payload there are a number of arrays articulating generic features, constraints, prices, etc. The intent of these arrays is as follows:\n\n- Each element in an array has the same structure so that clients can reliably interpret the payloads\n- Each element as a type element that is an enumeration of the specific aspect of a product being described, such as types of fees.\n- Each element has a field name [additionalValue](#productfeaturetypedoc).  This is a generic field with contents that will vary based on the type of object being described. The contents of this field for the ADDITIONAL_CARDS feature is the number of cards allowed while the contents of this field for the MAX_LIMIT constraint would be the maximum credit limit allowed for the product.\n- An element in these arrays of the same type may appear more than once. For instance, a product may offer two separate loyalty programs that the customer can select from. A fixed term mortgage may have different rates for different term lengths.\n- An element in these arrays may contain an additionalInfo and additionalInfoUri field. The additionalInfo field is used to provide displayable text clarifying the purpose of the element in some way when the product is presented to a customer. The additionalInfoUri provides a link to externally hosted information specifically relevant to that feature of the product.\n- Depending on the type of data being represented there may be additional specific fields.\n\n#### URIs To More Information\n\nAs the complexities and nuances of a financial product can not easily be fully expressed in a data structure without a high degree of complexity it is necessary to provide additional reference information that a potential customer can access so that they are fully informed of the features and implications of the product. The payloads for product reference therefore contain numerous fields that are provided to allow the product holder to describe the product more fully using a web page hosted on their online channels.\n\nThese URIs do not need to all link to different pages. If desired, they can all link to a single hosted page and use difference HTML anchors to focus on a specific topic such as eligibility or fees.\n\n#### Linkage To Accounts\nFrom the moment that a customer applies for a product and an account is created the account and the product that spawned it will diverge.  Rates and features of the product may change and a discount may be negotiated for the account.\n\nFor this reason, while productCategory is a common field between accounts and products, there is no specific ID that can be used to link an account to a product within the regime.\n\nSimilarly, many of the fields and objects in the product payload will appear in the account detail payload but the structures and semantics are not identical as one refers to a product that can potentially be originated and one refers to an account that actual has been instantiated and created along with the associated decisions inherent in that process.\n\n#### Dates\nIt is expected that data consumers needing this data will call relatively frequently to ensure the data they have is representative of the current offering from a bank.  To minimise the volume and frequency of these calls the ability to set a lastUpdated field with the date and time of the last update to this product is included.  A call for a list of products can then be filtered to only return products that have been updated since the last time that data was obtained using the updated-since query parameter.\n\nIn addition, the concept of effective date and time has also been included.  This allows for a product to be marked for obsolescence, or introduction, from a certain time without the need for an update to show that a product has been changed.  The inclusion of these dates also removes the need to represent deleted products in the payload.  Products that are no long offered can be marked not effective for a few weeks before they are then removed from the product set as an option entirely.\n\nObsolete versions: [v1](includes/obsolete/get-products-v1.html) [v2](includes/obsolete/get-products-v2.html)",
+        "description" : "Obtain a list of products that are currently openly offered to the market\n\nNote that the results returned by this end point are expected to be ordered in descending order according to ``lastUpdated``.\n\n### Conventions\nIn the product reference payloads there are a number of recurring conventions that are explained here, in one place.\n\n#### Arrays Of Features\n\nIn the product detail payload there are a number of arrays articulating generic features, constraints, prices, etc. The intent of these arrays is as follows:\n\n- Each element in an array has the same structure so that clients can reliably interpret the payloads\n- Each element as a type element that is an enumeration of the specific aspect of a product being described, such as types of fees.\n- Each element has a field name [additionalValue](#productfeaturetypedoc).  This is a generic field with contents that will vary based on the type of object being described. The contents of this field for the ADDITIONAL_CARDS feature is the number of cards allowed while the contents of this field for the MAX_LIMIT constraint would be the maximum credit limit allowed for the product.\n- An element in these arrays of the same type may appear more than once. For instance, a product may offer two separate loyalty programs that the customer can select from. A fixed term mortgage may have different rates for different term lengths.\n- An element in these arrays may contain an additionalInfo and additionalInfoUri field. The additionalInfo field is used to provide displayable text clarifying the purpose of the element in some way when the product is presented to a customer. The additionalInfoUri provides a link to externally hosted information specifically relevant to that feature of the product.\n- Depending on the type of data being represented there may be additional specific fields.\n\n#### URIs To More Information\n\nAs the complexities and nuances of a financial product can not easily be fully expressed in a data structure without a high degree of complexity it is necessary to provide additional reference information that a potential customer can access so that they are fully informed of the features and implications of the product. The payloads for product reference therefore contain numerous fields that are provided to allow the product holder to describe the product more fully using a web page hosted on their online channels.\n\nThese URIs do not need to all link to different pages. If desired, they can all link to a single hosted page and use difference HTML anchors to focus on a specific topic such as eligibility or fees.\n\n#### Linkage To Accounts\nFrom the moment that a customer applies for a product and an account is created the account and the product that spawned it will diverge.  Rates and features of the product may change and a discount may be negotiated for the account.\n\nFor this reason, while productCategory is a common field between accounts and products, there is no specific ID that can be used to link an account to a product within the regime.\n\nSimilarly, many of the fields and objects in the product payload will appear in the account detail payload but the structures and semantics are not identical as one refers to a product that can potentially be originated and one refers to an account that actually has been instantiated and created along with the associated decisions inherent in that process.\n\n#### Dates\nIt is expected that data consumers needing this data will call relatively frequently to ensure the data they have is representative of the current offering from a bank.  To minimise the volume and frequency of these calls the ability to set a lastUpdated field with the date and time of the last update to this product is included.  A call for a list of products can then be filtered to only return products that have been updated since the last time that data was obtained using the updated-since query parameter.\n\nIn addition, the concept of effective date and time has also been included.  This allows for a product to be marked for obsolescence, or introduction, from a certain time without the need for an update to show that a product has been changed.  The inclusion of these dates also removes the need to represent deleted products in the payload.  Products that are no long offered can be marked not effective for a few weeks before they are then removed from the product set as an option entirely.\n\nObsolete versions: [v1](includes/obsolete/get-products-v1.html) [v2](includes/obsolete/get-products-v2.html)",
         "operationId" : "listProducts",
         "parameters" : [ {
           "description" : "Allows for the filtering of products based on whether the current time is within the period of time defined as effective by the effectiveFrom and effectiveTo fields. Valid values are ‘CURRENT’, ‘FUTURE’ and ‘ALL’. If absent defaults to 'CURRENT'",
@@ -3509,7 +3509,7 @@
         "style" : "simple"
       },
       "RequestHeader_x-fapi-auth-date" : {
-        "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+        "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
         "explode" : false,
         "in" : "header",
         "name" : "x-fapi-auth-date",
@@ -4919,7 +4919,7 @@
       "BankingDigitalWalletPayee" : {
         "properties" : {
           "name" : {
-            "description" : "The name assigned to the digital wallet by the owner of the wallet, else the display name provided by the digital wallet provider",
+            "description" : "The display name of the wallet as given by the customer, else a default value defined by the data holder",
             "type" : "string"
           },
           "identifier" : {
@@ -5005,10 +5005,10 @@
         "type" : "object",
         "x-conditional" : [ "financialInstitution" ]
       },
-      "ResponseBankingScheduledPaymentsList" : {
+      "ResponseBankingScheduledPaymentsListV2" : {
         "properties" : {
           "data" : {
-            "$ref" : "#/components/schemas/ResponseBankingScheduledPaymentsList_data"
+            "$ref" : "#/components/schemas/ResponseBankingScheduledPaymentsListV2_data"
           },
           "links" : {
             "$ref" : "#/components/schemas/LinksPaginated"
@@ -5020,7 +5020,7 @@
         "required" : [ "data", "links", "meta" ],
         "type" : "object"
       },
-      "BankingScheduledPayment" : {
+      "BankingScheduledPaymentV2" : {
         "properties" : {
           "scheduledPaymentId" : {
             "description" : "A unique ID of the scheduled payment adhering to the standards for ID permanence",
@@ -5049,7 +5049,7 @@
           },
           "paymentSet" : {
             "items" : {
-              "$ref" : "#/components/schemas/BankingScheduledPaymentSet"
+              "$ref" : "#/components/schemas/BankingScheduledPaymentSetV2"
             },
             "type" : "array"
           },
@@ -5061,11 +5061,11 @@
         "type" : "object",
         "x-conditional" : [ "payeeReference" ]
       },
-      "BankingScheduledPaymentSet" : {
+      "BankingScheduledPaymentSetV2" : {
         "description" : "The set of payment amounts and destination accounts for this payment accommodating multi-part payments. A single entry indicates a simple payment with one destination account. Must have at least one entry",
         "properties" : {
           "to" : {
-            "$ref" : "#/components/schemas/BankingScheduledPaymentTo"
+            "$ref" : "#/components/schemas/BankingScheduledPaymentToV2"
           },
           "isAmountCalculated" : {
             "description" : "Flag indicating whether the amount of the payment is calculated based on the context of the event. For instance a payment to reduce the balance of a credit card to zero. If absent then false is assumed",
@@ -5087,7 +5087,7 @@
         "type" : "object",
         "x-conditional" : [ "amount" ]
       },
-      "BankingScheduledPaymentTo" : {
+      "BankingScheduledPaymentToV2" : {
         "description" : "Object containing details of the destination of the payment. Used to specify a variety of payment destination types",
         "properties" : {
           "toUType" : {
@@ -5933,12 +5933,12 @@
         "required" : [ "directDebitAuthorisations" ],
         "type" : "object"
       },
-      "ResponseBankingScheduledPaymentsList_data" : {
+      "ResponseBankingScheduledPaymentsListV2_data" : {
         "properties" : {
           "scheduledPayments" : {
             "description" : "The list of scheduled payments to return",
             "items" : {
-              "$ref" : "#/components/schemas/BankingScheduledPayment"
+              "$ref" : "#/components/schemas/BankingScheduledPaymentV2"
             },
             "type" : "array"
           }

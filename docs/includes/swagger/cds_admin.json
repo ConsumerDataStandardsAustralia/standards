@@ -103,7 +103,7 @@
     },
     "/admin/metrics" : {
       "get" : {
-        "description" : "This end point allows the ACCC to obtain operational statistics from the Data Holder on the operation of their CDR compliant implementation. The statistics obtainable from this end point are determined by the non-functional requirements for the CDR regime.\n\nThis end point is not required to be implemented by the Australian Energy Market Operator, the Australian Energy Regulator or the Department of State administered by the Minister of Victoria administering the National Electricity (Victoria) Act 2005 (Vic).\n\nNOTE: This version must be implemented by **October 1st 2022**\n\nObsolete versions: [v1](includes/obsolete/get-metrics-v1.html) [v2](includes/obsolete/get-metrics-v2.html).\n\nIf the Data Holder supports private_key_jwt client authentication they MUST validate the scope.",
+        "description" : "This end point allows the ACCC to obtain operational statistics from the Data Holder (at the Data Holder Brand level) on the operation of their CDR compliant implementation. The statistics obtainable from this end point are determined by the non-functional requirements for the CDR regime.\n\nThis end point is not required to be implemented by the Australian Energy Market Operator, the Australian Energy Regulator or the Department of State administered by the Minister of Victoria administering the National Electricity (Victoria) Act 2005 (Vic).\n\nNOTE: This version must be implemented by **June 13th 2024**\n\nObsolete versions: [v1](includes/obsolete/get-metrics-v1.html) [v2](includes/obsolete/get-metrics-v2.html).\n\nDeprecated versions:\n\n- [v3](includes/obsolete/get-metrics-v3.html)\n- [v4](includes/obsolete/get-metrics-v4.html) - This version must be implemented by **November 1st 2023**\n\nIf the Data Holder supports private_key_jwt client authentication they MUST validate the scope.",
         "operationId" : "getMetrics",
         "parameters" : [ {
           "description" : "The period of metrics to be requested. Values can be CURRENT (meaning metrics for current period, dependent on the metric type), HISTORIC (meaning metrics for previous period, depending on the metric type) or ALL. If absent the default is ALL.",
@@ -184,7 +184,7 @@
         "tags" : [ "Admin", "Metrics" ],
         "x-scopes" : [ "admin:metrics.basic:read" ],
         "x-restricted-access" : "REGISTER",
-        "x-version" : "3"
+        "x-version" : "4"
       }
     }
   },
@@ -242,34 +242,34 @@
         "type" : "object"
       },
       "AvailabilityMetrics" : {
-        "description" : "Percentage availability of the CDR platform over time",
+        "description" : "Availability metrics",
         "properties" : {
-          "currentMonth" : {
-            "description" : "Percentage availability of the CDR platform so far for the current calendar month. 0.0 means 0%. 1.0 means 100%.",
-            "type" : "number"
+          "aggregate" : {
+            "$ref" : "#/components/schemas/AvailabilityMetrics_aggregate"
           },
-          "previousMonths" : {
-            "description" : "Percentage availability of the CDR platform for previous calendar months. The first element indicates the last month and so on. A maximum of twelve entries is required if available. 0.0 means 0%. 1.0 means 100%.",
-            "items" : {
-              "type" : "number"
-            },
-            "type" : "array"
+          "unauthenticated" : {
+            "$ref" : "#/components/schemas/AvailabilityMetrics_unauthenticated"
+          },
+          "authenticated" : {
+            "$ref" : "#/components/schemas/AvailabilityMetrics_authenticated"
           }
         },
-        "type" : "object",
-        "x-conditional" : [ "currentMonth", "previousMonths" ]
+        "required" : [ "aggregate", "authenticated", "unauthenticated" ],
+        "type" : "object"
       },
       "PerformanceMetrics" : {
         "description" : "Percentage of calls within the performance thresholds",
         "properties" : {
           "currentDay" : {
-            "description" : "Percentage of calls within the performance threshold for the current day. 0.0 means 0%. 1.0 means 100%",
-            "type" : "number"
+            "description" : "Percentage of calls within the performance threshold for the current day. 0.0 means 0%. 1.0 means 100%. Must be a positive value or zero",
+            "type" : "string",
+            "x-cds-type" : "RateString"
           },
           "previousDays" : {
-            "description" : "Percentage of calls within the performance threshold for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. 0.0 means 0%. 1.0 means 100%",
+            "description" : "Percentage of calls within the performance threshold for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. 0.0 means 0%. 1.0 means 100%. Values must be a positive or zero",
             "items" : {
-              "type" : "number"
+              "type" : "string",
+              "x-cds-type" : "RateString"
             },
             "type" : "array"
           }
@@ -340,12 +340,14 @@
         "properties" : {
           "currentDay" : {
             "description" : "Session count for current day",
-            "type" : "number"
+            "type" : "integer",
+            "x-cds-type" : "NaturalNumber"
           },
           "previousDays" : {
             "description" : "Session count for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
             "items" : {
-              "type" : "number"
+              "type" : "integer",
+              "x-cds-type" : "NaturalNumber"
             },
             "type" : "array"
           }
@@ -354,58 +356,52 @@
         "x-conditional" : [ "currentDay", "previousDays" ]
       },
       "AverageTPSMetrics" : {
-        "description" : "Transactions per second over time",
+        "description" : "Average transactions per second over time",
         "properties" : {
-          "currentDay" : {
-            "description" : "Average TPS for current day",
-            "type" : "number"
+          "aggregate" : {
+            "$ref" : "#/components/schemas/AverageTPSMetrics_aggregate"
           },
-          "previousDays" : {
-            "description" : "Average TPS for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
-            "items" : {
-              "type" : "number"
-            },
-            "type" : "array"
+          "unauthenticated" : {
+            "$ref" : "#/components/schemas/AverageTPSMetrics_unauthenticated"
+          },
+          "authenticated" : {
+            "$ref" : "#/components/schemas/AverageTPSMetrics_authenticated"
           }
         },
-        "type" : "object",
-        "x-conditional" : [ "currentDay", "previousDays" ]
+        "required" : [ "aggregate", "authenticated", "unauthenticated" ],
+        "type" : "object"
       },
       "PeakTPSMetrics" : {
-        "description" : "Maximum record transactions per second over time",
+        "description" : "Peak transactions per second over time",
         "properties" : {
-          "currentDay" : {
-            "description" : "Peak TPS for current day",
-            "type" : "number"
+          "aggregate" : {
+            "$ref" : "#/components/schemas/PeakTPSMetrics_aggregate"
           },
-          "previousDays" : {
-            "description" : "Peak TPS for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
-            "items" : {
-              "type" : "number"
-            },
-            "type" : "array"
+          "unauthenticated" : {
+            "$ref" : "#/components/schemas/PeakTPSMetrics_unauthenticated"
+          },
+          "authenticated" : {
+            "$ref" : "#/components/schemas/PeakTPSMetrics_authenticated"
           }
         },
-        "type" : "object",
-        "x-conditional" : [ "currentDay", "previousDays" ]
+        "required" : [ "aggregate", "authenticated", "unauthenticated" ],
+        "type" : "object"
       },
       "ErrorMetrics" : {
-        "description" : "Number of calls resulting in error due to server execution over time",
+        "description" : "Peak transactions per second over time",
         "properties" : {
-          "currentDay" : {
-            "description" : "Number of errors for current day",
-            "type" : "number"
+          "aggregate" : {
+            "$ref" : "#/components/schemas/ErrorMetrics_aggregate"
           },
-          "previousDays" : {
-            "description" : "Number of errors for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
-            "items" : {
-              "type" : "number"
-            },
-            "type" : "array"
+          "unauthenticated" : {
+            "$ref" : "#/components/schemas/ErrorMetrics_unauthenticated"
+          },
+          "authenticated" : {
+            "$ref" : "#/components/schemas/ErrorMetrics_authenticated"
           }
         },
-        "type" : "object",
-        "x-conditional" : [ "currentDay", "previousDays" ]
+        "required" : [ "aggregate", "authenticated", "unauthenticated" ],
+        "type" : "object"
       },
       "RejectionMetricsV2" : {
         "description" : "Number of calls rejected due to traffic thresholds over time",
@@ -533,17 +529,79 @@
         "type" : "object",
         "x-conditional" : [ "secondaryHolder" ]
       },
+      "AvailabilityMetrics_aggregate" : {
+        "description" : "Aggregated availability metrics",
+        "properties" : {
+          "currentMonth" : {
+            "description" : "Percentage availability of the CDR platform so far for the current calendar month. 0.0 means 0%. 1.0 means 100%. Must be a positive value or zero",
+            "type" : "string",
+            "x-cds-type" : "RateString"
+          },
+          "previousMonths" : {
+            "description" : "Percentage availability of the CDR platform for previous calendar months. The first element indicates the last month and so on. A maximum of twelve entries is required if available. 0.0 means 0%. 1.0 means 100%. Values must be a positive or zero",
+            "items" : {
+              "type" : "string",
+              "x-cds-type" : "RateString"
+            },
+            "type" : "array"
+          }
+        },
+        "type" : "object",
+        "x-conditional" : [ "currentDay", "previousDays" ]
+      },
+      "AvailabilityMetrics_unauthenticated" : {
+        "description" : "Availability metrics for the unauthenticated aspects of the CDR regime",
+        "properties" : {
+          "currentMonth" : {
+            "description" : "Percentage availability of the CDR platform so far for the current calendar month. 0.0 means 0%. 1.0 means 100%. Must be a positive value or zero",
+            "type" : "string",
+            "x-cds-type" : "RateString"
+          },
+          "previousMonths" : {
+            "description" : "Percentage availability of the CDR platform for previous calendar months. The first element indicates the last month and so on. A maximum of twelve entries is required if available. 0.0 means 0%. 1.0 means 100%. Values must be a positive or zero",
+            "items" : {
+              "type" : "string",
+              "x-cds-type" : "RateString"
+            },
+            "type" : "array"
+          }
+        },
+        "type" : "object",
+        "x-conditional" : [ "currentDay", "previousDays" ]
+      },
+      "AvailabilityMetrics_authenticated" : {
+        "description" : "Availability metrics for the authenticated aspects of the CDR regime",
+        "properties" : {
+          "currentMonth" : {
+            "description" : "Percentage availability of the CDR platform so far for the current calendar month. 0.0 means 0%. 1.0 means 100%. Must be a positive value or zero",
+            "type" : "string",
+            "x-cds-type" : "RateString"
+          },
+          "previousMonths" : {
+            "description" : "Percentage availability of the CDR platform for previous calendar months. The first element indicates the last month and so on. A maximum of twelve entries is required if available. 0.0 means 0%. 1.0 means 100%. Values must be a positive or zero",
+            "items" : {
+              "type" : "string",
+              "x-cds-type" : "RateString"
+            },
+            "type" : "array"
+          }
+        },
+        "type" : "object",
+        "x-conditional" : [ "currentDay", "previousDays" ]
+      },
       "InvocationMetricsV2_unauthenticated" : {
         "description" : "API call counts for the unauthenticated tier",
         "properties" : {
           "currentDay" : {
             "description" : "API call counts for current day",
-            "type" : "number"
+            "type" : "integer",
+            "x-cds-type" : "NaturalNumber"
           },
           "previousDays" : {
             "description" : "API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
             "items" : {
-              "type" : "number"
+              "type" : "integer",
+              "x-cds-type" : "NaturalNumber"
             },
             "type" : "array"
           }
@@ -556,12 +614,14 @@
         "properties" : {
           "currentDay" : {
             "description" : "API call counts for current day",
-            "type" : "number"
+            "type" : "integer",
+            "x-cds-type" : "NaturalNumber"
           },
           "previousDays" : {
             "description" : "API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
             "items" : {
-              "type" : "number"
+              "type" : "integer",
+              "x-cds-type" : "NaturalNumber"
             },
             "type" : "array"
           }
@@ -574,12 +634,14 @@
         "properties" : {
           "currentDay" : {
             "description" : "API call counts for current day",
-            "type" : "number"
+            "type" : "integer",
+            "x-cds-type" : "NaturalNumber"
           },
           "previousDays" : {
             "description" : "API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
             "items" : {
-              "type" : "number"
+              "type" : "integer",
+              "x-cds-type" : "NaturalNumber"
             },
             "type" : "array"
           }
@@ -592,12 +654,14 @@
         "properties" : {
           "currentDay" : {
             "description" : "API call counts for current day",
-            "type" : "number"
+            "type" : "integer",
+            "x-cds-type" : "NaturalNumber"
           },
           "previousDays" : {
             "description" : "API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
             "items" : {
-              "type" : "number"
+              "type" : "integer",
+              "x-cds-type" : "NaturalNumber"
             },
             "type" : "array"
           }
@@ -610,12 +674,14 @@
         "properties" : {
           "currentDay" : {
             "description" : "API call counts for current day",
-            "type" : "number"
+            "type" : "integer",
+            "x-cds-type" : "NaturalNumber"
           },
           "previousDays" : {
             "description" : "API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
             "items" : {
-              "type" : "number"
+              "type" : "integer",
+              "x-cds-type" : "NaturalNumber"
             },
             "type" : "array"
           }
@@ -628,12 +694,14 @@
         "properties" : {
           "currentDay" : {
             "description" : "API call counts for current day",
-            "type" : "number"
+            "type" : "integer",
+            "x-cds-type" : "NaturalNumber"
           },
           "previousDays" : {
             "description" : "API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
             "items" : {
-              "type" : "number"
+              "type" : "integer",
+              "x-cds-type" : "NaturalNumber"
             },
             "type" : "array"
           }
@@ -646,12 +714,14 @@
         "properties" : {
           "currentDay" : {
             "description" : "API call counts for current day",
-            "type" : "number"
+            "type" : "integer",
+            "x-cds-type" : "NaturalNumber"
           },
           "previousDays" : {
             "description" : "API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
             "items" : {
-              "type" : "number"
+              "type" : "integer",
+              "x-cds-type" : "NaturalNumber"
             },
             "type" : "array"
           }
@@ -811,17 +881,231 @@
         "required" : [ "primary", "secondary" ],
         "type" : "object"
       },
+      "AverageTPSMetrics_aggregate" : {
+        "description" : "Aggregate average transactions per second over time for all endpoints",
+        "properties" : {
+          "currentDay" : {
+            "description" : "Average TPS for current day. Must be a positive value or zero",
+            "type" : "number"
+          },
+          "previousDays" : {
+            "description" : "Average TPS for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. Values must be a positive or zero",
+            "items" : {
+              "type" : "number"
+            },
+            "type" : "array"
+          }
+        },
+        "type" : "object",
+        "x-conditional" : [ "currentDay", "previousDays" ]
+      },
+      "AverageTPSMetrics_unauthenticated" : {
+        "description" : "Average transactions per second over time for unauthenticated endpoints",
+        "properties" : {
+          "currentDay" : {
+            "description" : "Average TPS for current day. Must be a positive value or zero",
+            "type" : "number"
+          },
+          "previousDays" : {
+            "description" : "Average TPS for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. Values must be a positive or zero",
+            "items" : {
+              "type" : "number"
+            },
+            "type" : "array"
+          }
+        },
+        "type" : "object",
+        "x-conditional" : [ "currentDay", "previousDays" ]
+      },
+      "AverageTPSMetrics_authenticated" : {
+        "description" : "Average transactions per second over time for authenticated endpoints",
+        "properties" : {
+          "currentDay" : {
+            "description" : "Average TPS for current day. Must be a positive value or zero",
+            "type" : "number"
+          },
+          "previousDays" : {
+            "description" : "Average TPS for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. Values must be a positive or zero",
+            "items" : {
+              "type" : "number"
+            },
+            "type" : "array"
+          }
+        },
+        "type" : "object",
+        "x-conditional" : [ "currentDay", "previousDays" ]
+      },
+      "PeakTPSMetrics_aggregate" : {
+        "description" : "Aggregate peak transactions per second over time for all endpoints",
+        "properties" : {
+          "currentDay" : {
+            "description" : "Peak TPS for current day. Must be a positive value or zero",
+            "type" : "number"
+          },
+          "previousDays" : {
+            "description" : "Peak TPS for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. Values must be a positive or zero",
+            "items" : {
+              "type" : "number"
+            },
+            "type" : "array"
+          }
+        },
+        "type" : "object",
+        "x-conditional" : [ "currentDay", "previousDays" ]
+      },
+      "PeakTPSMetrics_unauthenticated" : {
+        "description" : "Peak transactions per second over time for unauthenticated endpoints",
+        "properties" : {
+          "currentDay" : {
+            "description" : "Peak TPS for current day. Must be a positive value or zero",
+            "type" : "number"
+          },
+          "previousDays" : {
+            "description" : "Peak TPS for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. Values must be a positive or zero",
+            "items" : {
+              "type" : "number"
+            },
+            "type" : "array"
+          }
+        },
+        "type" : "object",
+        "x-conditional" : [ "currentDay", "previousDays" ]
+      },
+      "PeakTPSMetrics_authenticated" : {
+        "description" : "Peak transactions per second over time for authenticated endpoints",
+        "properties" : {
+          "currentDay" : {
+            "description" : "Peak TPS for current day. Must be a positive value or zero",
+            "type" : "number"
+          },
+          "previousDays" : {
+            "description" : "Peak TPS for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. Values must be a positive or zero",
+            "items" : {
+              "type" : "number"
+            },
+            "type" : "array"
+          }
+        },
+        "type" : "object",
+        "x-conditional" : [ "currentDay", "previousDays" ]
+      },
+      "ErrorMetrics_aggregate" : {
+        "description" : "Aggregate number of calls resulting in error due to server execution over time for all endpoints",
+        "properties" : {
+          "currentDay" : {
+            "description" : "Error counts for current day",
+            "type" : "integer",
+            "x-cds-type" : "NaturalNumber"
+          },
+          "previousDays" : {
+            "description" : "Error counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
+            "items" : {
+              "type" : "integer",
+              "x-cds-type" : "NaturalNumber"
+            },
+            "type" : "array"
+          }
+        },
+        "type" : "object",
+        "x-conditional" : [ "currentDay", "previousDays" ]
+      },
+      "ErrorMetrics_unauthenticated" : {
+        "description" : "Number of calls resulting in error due to server execution over time for unauthenticated endpoints",
+        "properties" : {
+          "currentDay" : {
+            "additionalProperties" : {
+              "description" : "Number of errors for a specific HTTP error code.  Note that the property name must be 3 digits represent the HTTP error code the error is for",
+              "type" : "integer",
+              "x-cds-type" : "NaturalNumber"
+            },
+            "description" : "Error counts, by HTTP error code, for current day",
+            "properties" : {
+              "500" : {
+                "description" : "Number of errors for HTTP error code 500.  Note that this field is an example of a single entry due to the lack of OAS support for the JSON Schema `patternProperties` syntax.  See the `additionalProperties` field in this schema for the generic property structure for error code counts",
+                "type" : "integer",
+                "x-cds-type" : "NaturalNumber"
+              }
+            },
+            "type" : "object"
+          },
+          "previousDays" : {
+            "description" : "Error counts, by HTTP error code, for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
+            "items" : {
+              "additionalProperties" : {
+                "description" : "Number of errors for a specific HTTP error code.  Note that the property name must be 3 digits represent the HTTP error code the error is for",
+                "type" : "integer",
+                "x-cds-type" : "NaturalNumber"
+              },
+              "properties" : {
+                "500" : {
+                  "description" : "Number of errors for HTTP error code 500.  Note that this field is an example of a single entry due to the lack of OAS support JSON Schema `patternProperties` syntax.  See the `additionalProperties` field in this schema for the generic property structure for error code counts",
+                  "type" : "integer",
+                  "x-cds-type" : "NaturalNumber"
+                }
+              },
+              "type" : "object"
+            },
+            "type" : "array"
+          }
+        },
+        "type" : "object",
+        "x-conditional" : [ "currentDay", "previousDays" ]
+      },
+      "ErrorMetrics_authenticated" : {
+        "description" : "Number of calls resulting in error due to server execution over time for authenticated endpoints",
+        "properties" : {
+          "currentDay" : {
+            "additionalProperties" : {
+              "description" : "Number of errors for a specific HTTP error code.  Note that the property name must be 3 digits represent the HTTP error code the error is for",
+              "type" : "integer",
+              "x-cds-type" : "NaturalNumber"
+            },
+            "description" : "Error counts, by HTTP error code, for current day",
+            "properties" : {
+              "500" : {
+                "description" : "Number of errors for HTTP error code 500.  Note that this field is an example of a single entry due to the lack of OAS support for the JSON Schema `patternProperties` syntax.  See the `additionalProperties` field in this schema for the generic property structure for error code counts",
+                "type" : "integer",
+                "x-cds-type" : "NaturalNumber"
+              }
+            },
+            "type" : "object"
+          },
+          "previousDays" : {
+            "description" : "Error counts, by HTTP error code, for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
+            "items" : {
+              "additionalProperties" : {
+                "description" : "Number of errors for a specific HTTP error code.  Note that the property name must be 3 digits represent the HTTP error code the error is for",
+                "type" : "integer",
+                "x-cds-type" : "NaturalNumber"
+              },
+              "properties" : {
+                "500" : {
+                  "description" : "Number of errors for HTTP error code 500.  Note that this field is an example of a single entry due to the lack of OAS support JSON Schema `patternProperties` syntax.  See the `additionalProperties` field in this schema for the generic property structure for error code counts",
+                  "type" : "integer",
+                  "x-cds-type" : "NaturalNumber"
+                }
+              },
+              "type" : "object"
+            },
+            "type" : "array"
+          }
+        },
+        "type" : "object",
+        "x-conditional" : [ "currentDay", "previousDays" ]
+      },
       "RejectionMetricsV2_authenticated" : {
         "description" : "Rejection counts for all authenticated end points",
         "properties" : {
           "currentDay" : {
             "description" : "Number of calls rejected for current day",
-            "type" : "number"
+            "type" : "integer",
+            "x-cds-type" : "NaturalNumber"
           },
           "previousDays" : {
             "description" : "Number of calls rejected for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.",
             "items" : {
-              "type" : "number"
+              "type" : "integer",
+              "x-cds-type" : "NaturalNumber"
             },
             "type" : "array"
           }
@@ -834,12 +1118,14 @@
         "properties" : {
           "currentDay" : {
             "description" : "Number of calls rejected for current day",
-            "type" : "number"
+            "type" : "integer",
+            "x-cds-type" : "NaturalNumber"
           },
           "previousDays" : {
             "description" : "Number of calls rejected for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.",
             "items" : {
-              "type" : "number"
+              "type" : "integer",
+              "x-cds-type" : "NaturalNumber"
             },
             "type" : "array"
           }
@@ -852,12 +1138,14 @@
         "properties" : {
           "currentDay" : {
             "description" : "Number of errors for current day",
-            "type" : "number"
+            "type" : "integer",
+            "x-cds-type" : "NaturalNumber"
           },
           "previousDays" : {
             "description" : "Number of errors for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
             "items" : {
-              "type" : "number"
+              "type" : "integer",
+              "x-cds-type" : "NaturalNumber"
             },
             "type" : "array"
           }
@@ -870,12 +1158,14 @@
         "properties" : {
           "currentDay" : {
             "description" : "Number of rejections for current day",
-            "type" : "number"
+            "type" : "integer",
+            "x-cds-type" : "NaturalNumber"
           },
           "previousDays" : {
             "description" : "Number of rejections for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
             "items" : {
-              "type" : "number"
+              "type" : "integer",
+              "x-cds-type" : "NaturalNumber"
             },
             "type" : "array"
           }

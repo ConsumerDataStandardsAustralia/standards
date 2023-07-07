@@ -132,7 +132,7 @@ paths:
           type: string
         style: simple
       - description: The time when the customer last logged in to the Data Recipient
-          Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required
+          Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required
           for all resource calls (customer present and unattended). Not required for
           unauthenticated calls.
         explode: false
@@ -373,7 +373,7 @@ paths:
           type: string
         style: simple
       - description: The time when the customer last logged in to the Data Recipient
-          Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required
+          Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required
           for all resource calls (customer present and unattended). Not required for
           unauthenticated calls.
         explode: false
@@ -564,7 +564,7 @@ paths:
           type: string
         style: simple
       - description: The time when the customer last logged in to the Data Recipient
-          Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required
+          Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required
           for all resource calls (customer present and unattended). Not required for
           unauthenticated calls.
         explode: false
@@ -754,7 +754,7 @@ paths:
           type: string
         style: simple
       - description: The time when the customer last logged in to the Data Recipient
-          Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required
+          Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required
           for all resource calls (customer present and unattended). Not required for
           unauthenticated calls.
         explode: false
@@ -938,7 +938,7 @@ paths:
           type: string
         style: simple
       - description: The time when the customer last logged in to the Data Recipient
-          Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required
+          Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required
           for all resource calls (customer present and unattended). Not required for
           unauthenticated calls.
         explode: false
@@ -1212,7 +1212,7 @@ paths:
           type: string
         style: simple
       - description: The time when the customer last logged in to the Data Recipient
-          Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required
+          Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required
           for all resource calls (customer present and unattended). Not required for
           unauthenticated calls.
         explode: false
@@ -1423,7 +1423,7 @@ paths:
           type: string
         style: simple
       - description: The time when the customer last logged in to the Data Recipient
-          Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required
+          Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required
           for all resource calls (customer present and unattended). Not required for
           unauthenticated calls.
         explode: false
@@ -1628,7 +1628,7 @@ paths:
           type: string
         style: simple
       - description: The time when the customer last logged in to the Data Recipient
-          Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required
+          Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required
           for all resource calls (customer present and unattended). Not required for
           unauthenticated calls.
         explode: false
@@ -1888,7 +1888,7 @@ paths:
           type: string
         style: simple
       - description: The time when the customer last logged in to the Data Recipient
-          Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required
+          Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required
           for all resource calls (customer present and unattended). Not required for
           unauthenticated calls.
         explode: false
@@ -2079,7 +2079,7 @@ paths:
           type: string
         style: simple
       - description: The time when the customer last logged in to the Data Recipient
-          Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required
+          Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required
           for all resource calls (customer present and unattended). Not required for
           unauthenticated calls.
         explode: false
@@ -2218,7 +2218,10 @@ paths:
       x-codegen-request-body-name: accountIds
   /banking/accounts/{accountId}/payments/scheduled:
     get:
-      description: Obtain scheduled, outgoing payments for a specific account
+      description: |-
+        Obtain scheduled, outgoing payments for a specific account
+
+        Obsolete versions: [v1](includes/obsolete/get-scheduled-payments-for-account-v1.html)
       operationId: listScheduledPayments
       parameters:
       - description: ID of the account to get scheduled payments for. Must have previously
@@ -2293,7 +2296,7 @@ paths:
           type: string
         style: simple
       - description: The time when the customer last logged in to the Data Recipient
-          Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required
+          Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required
           for all resource calls (customer present and unattended). Not required for
           unauthenticated calls.
         explode: false
@@ -2336,7 +2339,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ResponseBankingScheduledPaymentsList'
+                $ref: '#/components/schemas/ResponseBankingScheduledPaymentsListV2'
           description: Success
           headers:
             x-v:
@@ -2438,11 +2441,13 @@ paths:
       - Scheduled Payments
       x-scopes:
       - bank:regular_payments:read
-      x-version: "1"
+      x-version: "2"
   /banking/payments/scheduled:
     get:
-      description: Obtain scheduled payments for multiple, filtered accounts that
-        are the source of funds for the payments
+      description: |-
+        Obtain scheduled payments for multiple, filtered accounts that are the source of funds for the payments
+
+        Obsolete versions: [v1](includes/obsolete/get-scheduled-payments-bulk-v1.html)
       operationId: listScheduledPaymentsBulk
       parameters:
       - description: Used to filter results on the productCategory field applicable
@@ -2554,7 +2559,7 @@ paths:
           type: string
         style: simple
       - description: The time when the customer last logged in to the Data Recipient
-          Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required
+          Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required
           for all resource calls (customer present and unattended). Not required for
           unauthenticated calls.
         explode: false
@@ -2597,7 +2602,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ResponseBankingScheduledPaymentsList'
+                $ref: '#/components/schemas/ResponseBankingScheduledPaymentsListV2'
           description: Success
           headers:
             x-v:
@@ -2680,9 +2685,12 @@ paths:
       - Scheduled Payments
       x-scopes:
       - bank:regular_payments:read
-      x-version: "1"
+      x-version: "2"
     post:
-      description: Obtain scheduled payments for a specified list of accounts
+      description: |-
+        Obtain scheduled payments for a specified list of accounts
+
+        Obsolete versions: [v1](includes/obsolete/get-scheduled-payments-for-specific-accounts-v1.html)
       operationId: listScheduledPaymentsSpecificAccounts
       parameters:
       - description: Page of results to request (standard pagination)
@@ -2745,7 +2753,7 @@ paths:
           type: string
         style: simple
       - description: The time when the customer last logged in to the Data Recipient
-          Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required
+          Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required
           for all resource calls (customer present and unattended). Not required for
           unauthenticated calls.
         explode: false
@@ -2796,7 +2804,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ResponseBankingScheduledPaymentsList'
+                $ref: '#/components/schemas/ResponseBankingScheduledPaymentsListV2'
           description: Success
           headers:
             x-v:
@@ -2881,7 +2889,7 @@ paths:
       - Scheduled Payments
       x-scopes:
       - bank:regular_payments:read
-      x-version: "1"
+      x-version: "2"
       x-codegen-request-body-name: accountIds
   /banking/payees:
     get:
@@ -2968,7 +2976,7 @@ paths:
           type: string
         style: simple
       - description: The time when the customer last logged in to the Data Recipient
-          Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required
+          Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required
           for all resource calls (customer present and unattended). Not required for
           unauthenticated calls.
         explode: false
@@ -3153,7 +3161,7 @@ paths:
           type: string
         style: simple
       - description: The time when the customer last logged in to the Data Recipient
-          Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required
+          Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required
           for all resource calls (customer present and unattended). Not required for
           unauthenticated calls.
         explode: false
@@ -3331,7 +3339,7 @@ paths:
 
         For this reason, while productCategory is a common field between accounts and products, there is no specific ID that can be used to link an account to a product within the regime.
 
-        Similarly, many of the fields and objects in the product payload will appear in the account detail payload but the structures and semantics are not identical as one refers to a product that can potentially be originated and one refers to an account that actual has been instantiated and created along with the associated decisions inherent in that process.
+        Similarly, many of the fields and objects in the product payload will appear in the account detail payload but the structures and semantics are not identical as one refers to a product that can potentially be originated and one refers to an account that actually has been instantiated and created along with the associated decisions inherent in that process.
 
         #### Dates
         It is expected that data consumers needing this data will call relatively frequently to ensure the data they have is representative of the current offering from a bank.  To minimise the volume and frequency of these calls the ability to set a lastUpdated field with the date and time of the last update to this product is included.  A call for a list of products can then be filtered to only return products that have been updated since the last time that data was obtained using the updated-since query parameter.
@@ -3622,7 +3630,7 @@ components:
       style: simple
     RequestHeader_x-fapi-auth-date:
       description: The time when the customer last logged in to the Data Recipient
-        Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required
+        Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required
         for all resource calls (customer present and unattended). Not required for
         unauthenticated calls.
       explode: false
@@ -5641,8 +5649,8 @@ components:
         type: EMAIL
       properties:
         name:
-          description: The name assigned to the digital wallet by the owner of the
-            wallet, else the display name provided by the digital wallet provider
+          description: The display name of the wallet as given by the customer, else
+            a default value defined by the data holder
           type: string
         identifier:
           description: The identifier of the digital wallet (dependent on type)
@@ -5769,7 +5777,7 @@ components:
       type: object
       x-conditional:
       - financialInstitution
-    ResponseBankingScheduledPaymentsList:
+    ResponseBankingScheduledPaymentsListV2:
       example:
         data:
           scheduledPayments:
@@ -6032,7 +6040,7 @@ components:
           first: first
       properties:
         data:
-          $ref: '#/components/schemas/ResponseBankingScheduledPaymentsList_data'
+          $ref: '#/components/schemas/ResponseBankingScheduledPaymentsListV2_data'
         links:
           $ref: '#/components/schemas/LinksPaginated'
         meta:
@@ -6042,7 +6050,7 @@ components:
       - links
       - meta
       type: object
-    BankingScheduledPayment:
+    BankingScheduledPaymentV2:
       example:
         recurrence:
           nextPaymentDate: nextPaymentDate
@@ -6203,7 +6211,7 @@ components:
           $ref: '#/components/schemas/BankingScheduledPaymentFrom'
         paymentSet:
           items:
-            $ref: '#/components/schemas/BankingScheduledPaymentSet'
+            $ref: '#/components/schemas/BankingScheduledPaymentSetV2'
           type: array
         recurrence:
           $ref: '#/components/schemas/BankingScheduledPaymentRecurrence'
@@ -6217,7 +6225,7 @@ components:
       type: object
       x-conditional:
       - payeeReference
-    BankingScheduledPaymentSet:
+    BankingScheduledPaymentSetV2:
       description: The set of payment amounts and destination accounts for this payment
         accommodating multi-part payments. A single entry indicates a simple payment
         with one destination account. Must have at least one entry
@@ -6271,7 +6279,7 @@ components:
               message: message
       properties:
         to:
-          $ref: '#/components/schemas/BankingScheduledPaymentTo'
+          $ref: '#/components/schemas/BankingScheduledPaymentToV2'
         isAmountCalculated:
           description: Flag indicating whether the amount of the payment is calculated
             based on the context of the event. For instance a payment to reduce the
@@ -6292,7 +6300,7 @@ components:
       type: object
       x-conditional:
       - amount
-    BankingScheduledPaymentTo:
+    BankingScheduledPaymentToV2:
       description: Object containing details of the destination of the payment. Used
         to specify a variety of payment destination types
       example:
@@ -7490,7 +7498,7 @@ components:
       required:
       - directDebitAuthorisations
       type: object
-    ResponseBankingScheduledPaymentsList_data:
+    ResponseBankingScheduledPaymentsListV2_data:
       example:
         scheduledPayments:
         - recurrence:
@@ -7745,7 +7753,7 @@ components:
         scheduledPayments:
           description: The list of scheduled payments to return
           items:
-            $ref: '#/components/schemas/BankingScheduledPayment'
+            $ref: '#/components/schemas/BankingScheduledPaymentV2'
           type: array
       required:
       - scheduledPayments
