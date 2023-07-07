@@ -1,108 +1,19 @@
+---
+title: Get Metrics v4
+#language_tabs: # must be one of https://git.io/vQNgJ
+#  - shell
+#  - javascript
 
+toc_footers:
+  - <a href='../../index.html'>Consumer Data Standards</a>
 
-## Metadata Update
+search: false
+---
 
-<a id="opIdmetadataUpdate"></a>
+# Get Metrics V4
+This page documents the deprecated version 4 of the Get Metrics end point.
 
-> Code samples
-
-```http
-POST https://data.holder.com.au/cds-au/v1/admin/register/metadata HTTP/1.1
-Host: data.holder.com.au
-Content-Type: application/json
-Accept: application/json
-x-v: string
-x-min-v: string
-
-```
-
-```javascript
-var headers = {
-  'Content-Type':'application/json',
-  'Accept':'application/json',
-  'x-v':'string',
-  'x-min-v':'string'
-
-};
-
-$.ajax({
-  url: 'https://data.holder.com.au/cds-au/v1/admin/register/metadata',
-  method: 'post',
-
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
-})
-
-```
-
-`POST /admin/register/metadata`
-
-Indicate that a critical update to the metadata for Accredited Data Recipients has been made and should be obtained
-
-> Body parameter
-
-```json
-{
-  "data": {
-    "action": "REFRESH"
-  },
-  "meta": {}
-}
-```
-
-###Endpoint Version
-|   |  |
-|---|--|
-|Version|**1**
-
-<h3 id="metadata-update-parameters">Parameters</h3>
-
-|Name|In|Type|Required|Description|
-|---|---|---|---|---|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.|
-|body|body|[RequestMetaDataUpdate](#schemacdr-admin-apirequestmetadataupdate)|mandatory|none|
-
-> Example responses
-
-> 200 Response
-
-```json
-null
-```
-
-<h3 id="metadata-update-responses">Responses</h3>
-
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-admin-apiresponseerrorlistv2)|
-|406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-admin-apiresponseerrorlistv2)|
-
-<h3 id="metadata-update-responseschema">Response Schema</h3>
-
-### Response Headers
-
-|Status|Header|Type|Format|Description|
-|---|---|---|---|---|
-|200|x-v|string||The [version](#response-headers) of the API end point that the data holder has responded with.|
-
-  
-    
-      <aside class="notice">
-If the Data Holder supports Private Key JWT client authentication to authenticate the CDR Register, authorisation requires the following scope:
-<a href="#authorisation-scopes">admin:metadata:update</a>.<br/><br/>
-Otherwise, the scope is not applicable when the Data Holder supports Self-Signed JWT client authentication to authenticate the CDR Register.
-</aside>
-
-<aside class="success">
-This operation may only be called by the CDR Register
-</aside>
-
-    
-  
+This version must be implemented by data holders by 1st November 2023.
 
 ## Get Metrics
 
@@ -521,8 +432,8 @@ If the Data Holder supports private_key_jwt client authentication they MUST vali
 |---|---|---|---|---|
 |200|x-v|string||The [version](#response-headers) of the API end point that the data holder has responded with.|
 
-  
-    
+
+
       <aside class="notice">
 If the Data Holder supports Private Key JWT client authentication to authenticate the CDR Register, authorisation requires the following scope:
 <a href="#authorisation-scopes">admin:metrics.basic:read</a>.<br/><br/>
@@ -533,39 +444,11 @@ Otherwise, the scope is not applicable when the Data Holder supports Self-Signed
 This operation may only be called by the CDR Register
 </aside>
 
-    
-  
+
+
 
 <h2 class="schema-heading" id="cdr-admin-api-schemas">Schemas</h2>
 <a class="schema-link" id="cdr-admin-api-schemas"></a>
-
-<h3 class="schema-toc" id="tocSrequestmetadataupdate">RequestMetaDataUpdate</h3>
-
-<a id="schemacdr-admin-apirequestmetadataupdate"></a>
-
-```json
-{
-  "data": {
-    "action": "REFRESH"
-  },
-  "meta": {}
-}
-
-```
-
-### Properties
-
-|Name|Type|Required|Description|
-|---|---|---|---|
-|data|object|mandatory|none|
-|» action|string|mandatory|The action to take for the meta data. At the moment the only option is REFRESH which requires the data holder to call the ACCC to refresh meta data as soon as practicable|
-|meta|[Meta](#schemacdr-admin-apimeta)|optional|none|
-
-#### Enumerated Values
-
-|Property|Value|
-|---|---|
-|action|REFRESH|
 
 <h3 class="schema-toc" id="tocSresponsemetricslistv4">ResponseMetricsListV4</h3>
 
@@ -1627,4 +1510,3 @@ This operation may only be called by the CDR Register
 |» title|string|mandatory|A short, human-readable summary of the problem that MUST NOT change from occurrence to occurrence of the problem represented by the error code.|
 |» detail|string|mandatory|A human-readable explanation specific to this occurrence of the problem.|
 |» meta|[MetaError](#schemacdr-admin-apimetaerror)|optional|Additional data for customised error codes|
-

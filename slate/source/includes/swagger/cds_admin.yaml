@@ -159,7 +159,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ResponseMetricsListV3'
+                $ref: '#/components/schemas/ResponseMetricsListV4'
           description: Success
           headers:
             x-v:
@@ -236,7 +236,7 @@ components:
       required:
       - data
       type: object
-    ResponseMetricsListV3:
+    ResponseMetricsListV4:
       example:
         data:
           rejections:
@@ -405,6 +405,63 @@ components:
             - 2
             currentDay: 1
           recipientCount: 1
+          authorisations:
+            abandonedConsentFlowCount:
+              previousDays:
+              - 9
+              - 9
+              currentDay: 3
+            newAuthorisationCount:
+              previousDays:
+              - ongoing:
+                  nonIndividual: 6
+                  individual: 4
+                onceOff:
+                  nonIndividual: 5
+                  individual: 7
+              - ongoing:
+                  nonIndividual: 6
+                  individual: 4
+                onceOff:
+                  nonIndividual: 5
+                  individual: 7
+              currentDay:
+                ongoing:
+                  nonIndividual: 6
+                  individual: 4
+                onceOff:
+                  nonIndividual: 5
+                  individual: 7
+            amendedAuthorisationCount:
+              previousDays:
+              - nonIndividual: 6
+                individual: 8
+              - nonIndividual: 6
+                individual: 8
+              currentDay:
+                nonIndividual: 1
+                individual: 2
+            activeAuthorisationCount:
+              nonIndividual: 0
+              individual: 9
+            expiredAuthorisationCount:
+              previousDays:
+              - nonIndividual: 1
+                individual: 9
+              - nonIndividual: 1
+                individual: 9
+              currentDay:
+                nonIndividual: 8
+                individual: 4
+            revokedAuthorisationCount:
+              previousDays:
+              - nonIndividual: 0
+                individual: 3
+              - nonIndividual: 0
+                individual: 3
+              currentDay:
+                nonIndividual: 4
+                individual: 8
           errors:
             authenticated:
               previousDays:
@@ -429,7 +486,7 @@ components:
           self: self
       properties:
         data:
-          $ref: '#/components/schemas/ResponseMetricsListV3_data'
+          $ref: '#/components/schemas/ResponseMetricsListV4_data'
         links:
           $ref: '#/components/schemas/Links'
         meta:
@@ -438,7 +495,7 @@ components:
       - data
       - links
       type: object
-    AvailabilityMetrics:
+    AvailabilityMetricsV2:
       description: Availability metrics
       example:
         authenticated:
@@ -458,17 +515,17 @@ components:
           currentMonth: currentMonth
       properties:
         aggregate:
-          $ref: '#/components/schemas/AvailabilityMetrics_aggregate'
+          $ref: '#/components/schemas/AvailabilityMetricsV2_aggregate'
         unauthenticated:
-          $ref: '#/components/schemas/AvailabilityMetrics_unauthenticated'
+          $ref: '#/components/schemas/AvailabilityMetricsV2_unauthenticated'
         authenticated:
-          $ref: '#/components/schemas/AvailabilityMetrics_authenticated'
+          $ref: '#/components/schemas/AvailabilityMetricsV2_authenticated'
       required:
       - aggregate
       - authenticated
       - unauthenticated
       type: object
-    PerformanceMetrics:
+    PerformanceMetricsV2:
       description: Percentage of calls within the performance thresholds
       example:
         previousDays:
@@ -495,7 +552,7 @@ components:
       x-conditional:
       - currentDay
       - previousDays
-    InvocationMetricsV2:
+    InvocationMetricsV3:
       description: Number of API calls in each performance tier over time
       example:
         unattended:
@@ -535,19 +592,19 @@ components:
           currentDay: 1
       properties:
         unauthenticated:
-          $ref: '#/components/schemas/InvocationMetricsV2_unauthenticated'
+          $ref: '#/components/schemas/InvocationMetricsV3_unauthenticated'
         highPriority:
-          $ref: '#/components/schemas/InvocationMetricsV2_highPriority'
+          $ref: '#/components/schemas/InvocationMetricsV3_highPriority'
         lowPriority:
-          $ref: '#/components/schemas/InvocationMetricsV2_lowPriority'
+          $ref: '#/components/schemas/InvocationMetricsV3_lowPriority'
         unattended:
-          $ref: '#/components/schemas/InvocationMetricsV2_unattended'
+          $ref: '#/components/schemas/InvocationMetricsV3_unattended'
         largePayload:
-          $ref: '#/components/schemas/InvocationMetricsV2_largePayload'
+          $ref: '#/components/schemas/InvocationMetricsV3_largePayload'
         secondary:
-          $ref: '#/components/schemas/InvocationMetricsV2_secondary'
+          $ref: '#/components/schemas/InvocationMetricsV3_secondary'
         largeSecondary:
-          $ref: '#/components/schemas/InvocationMetricsV2_largeSecondary'
+          $ref: '#/components/schemas/InvocationMetricsV3_largeSecondary'
       required:
       - highPriority
       - largePayload
@@ -634,7 +691,7 @@ components:
       x-conditional:
       - secondary
       - largeSecondary
-    SessionCountMetrics:
+    SessionCountMetricsV2:
       description: Session counts over time. Note that a session is defined as the
         provisioning of an Access Token.
       example:
@@ -658,7 +715,7 @@ components:
       x-conditional:
       - currentDay
       - previousDays
-    AverageTPSMetrics:
+    AverageTPSMetricsV2:
       description: Average transactions per second over time
       example:
         authenticated:
@@ -678,17 +735,17 @@ components:
           currentDay: 6.778324963048013
       properties:
         aggregate:
-          $ref: '#/components/schemas/AverageTPSMetrics_aggregate'
+          $ref: '#/components/schemas/AverageTPSMetricsV2_aggregate'
         unauthenticated:
-          $ref: '#/components/schemas/AverageTPSMetrics_unauthenticated'
+          $ref: '#/components/schemas/AverageTPSMetricsV2_unauthenticated'
         authenticated:
-          $ref: '#/components/schemas/AverageTPSMetrics_authenticated'
+          $ref: '#/components/schemas/AverageTPSMetricsV2_authenticated'
       required:
       - aggregate
       - authenticated
       - unauthenticated
       type: object
-    PeakTPSMetrics:
+    PeakTPSMetricsV2:
       description: Peak transactions per second over time
       example:
         authenticated:
@@ -708,17 +765,17 @@ components:
           currentDay: 7.143538047012306
       properties:
         aggregate:
-          $ref: '#/components/schemas/PeakTPSMetrics_aggregate'
+          $ref: '#/components/schemas/PeakTPSMetricsV2_aggregate'
         unauthenticated:
-          $ref: '#/components/schemas/PeakTPSMetrics_unauthenticated'
+          $ref: '#/components/schemas/PeakTPSMetricsV2_unauthenticated'
         authenticated:
-          $ref: '#/components/schemas/PeakTPSMetrics_authenticated'
+          $ref: '#/components/schemas/PeakTPSMetricsV2_authenticated'
       required:
       - aggregate
       - authenticated
       - unauthenticated
       type: object
-    ErrorMetrics:
+    ErrorMetricsV2:
       description: Peak transactions per second over time
       example:
         authenticated:
@@ -740,17 +797,17 @@ components:
           currentDay: 8
       properties:
         aggregate:
-          $ref: '#/components/schemas/ErrorMetrics_aggregate'
+          $ref: '#/components/schemas/ErrorMetricsV2_aggregate'
         unauthenticated:
-          $ref: '#/components/schemas/ErrorMetrics_unauthenticated'
+          $ref: '#/components/schemas/ErrorMetricsV2_unauthenticated'
         authenticated:
-          $ref: '#/components/schemas/ErrorMetrics_authenticated'
+          $ref: '#/components/schemas/ErrorMetricsV2_authenticated'
       required:
       - aggregate
       - authenticated
       - unauthenticated
       type: object
-    RejectionMetricsV2:
+    RejectionMetricsV3:
       description: Number of calls rejected due to traffic thresholds over time
       example:
         authenticated:
@@ -765,14 +822,14 @@ components:
           currentDay: 0
       properties:
         authenticated:
-          $ref: '#/components/schemas/RejectionMetricsV2_authenticated'
+          $ref: '#/components/schemas/RejectionMetricsV3_authenticated'
         unauthenticated:
-          $ref: '#/components/schemas/RejectionMetricsV2_unauthenticated'
+          $ref: '#/components/schemas/RejectionMetricsV3_unauthenticated'
       required:
       - authenticated
       - unauthenticated
       type: object
-    SecondaryHolderMetrics:
+    SecondaryHolderMetricsV2:
       description: Errors and rejections received by the primary data holder from
         the secondary data holder.  Mandatory for data holders designated for a Shared
         Responsibility Data Request data cluster
@@ -789,12 +846,92 @@ components:
           currentDay: 4
       properties:
         errors:
-          $ref: '#/components/schemas/SecondaryHolderMetrics_errors'
+          $ref: '#/components/schemas/SecondaryHolderMetricsV2_errors'
         rejections:
-          $ref: '#/components/schemas/SecondaryHolderMetrics_rejections'
+          $ref: '#/components/schemas/SecondaryHolderMetricsV2_rejections'
       required:
       - errors
       - rejections
+      type: object
+    AuthorisationMetrics:
+      description: Authorisation counts for the data holder
+      example:
+        abandonedConsentFlowCount:
+          previousDays:
+          - 9
+          - 9
+          currentDay: 3
+        newAuthorisationCount:
+          previousDays:
+          - ongoing:
+              nonIndividual: 6
+              individual: 4
+            onceOff:
+              nonIndividual: 5
+              individual: 7
+          - ongoing:
+              nonIndividual: 6
+              individual: 4
+            onceOff:
+              nonIndividual: 5
+              individual: 7
+          currentDay:
+            ongoing:
+              nonIndividual: 6
+              individual: 4
+            onceOff:
+              nonIndividual: 5
+              individual: 7
+        amendedAuthorisationCount:
+          previousDays:
+          - nonIndividual: 6
+            individual: 8
+          - nonIndividual: 6
+            individual: 8
+          currentDay:
+            nonIndividual: 1
+            individual: 2
+        activeAuthorisationCount:
+          nonIndividual: 0
+          individual: 9
+        expiredAuthorisationCount:
+          previousDays:
+          - nonIndividual: 1
+            individual: 9
+          - nonIndividual: 1
+            individual: 9
+          currentDay:
+            nonIndividual: 8
+            individual: 4
+        revokedAuthorisationCount:
+          previousDays:
+          - nonIndividual: 0
+            individual: 3
+          - nonIndividual: 0
+            individual: 3
+          currentDay:
+            nonIndividual: 4
+            individual: 8
+      properties:
+        activeAuthorisationCount:
+          $ref: '#/components/schemas/AuthorisationMetrics_activeAuthorisationCount'
+        newAuthorisationCount:
+          $ref: '#/components/schemas/AuthorisationMetrics_newAuthorisationCount'
+        revokedAuthorisationCount:
+          $ref: '#/components/schemas/AuthorisationMetrics_revokedAuthorisationCount'
+        amendedAuthorisationCount:
+          $ref: '#/components/schemas/AuthorisationMetrics_amendedAuthorisationCount'
+        expiredAuthorisationCount:
+          $ref: '#/components/schemas/AuthorisationMetrics_expiredAuthorisationCount'
+        abandonedConsentFlowCount:
+          $ref: '#/components/schemas/AuthorisationMetrics_abandonedConsentFlowCount'
+      required:
+      - abandonedConsentFlowCount
+      - activeAuthorisationCount
+      - amendedAuthorisationCount
+      - expiredAuthorisationCount
+      - newAuthorisationCount
+      - revokedAuthorisationCount
       type: object
     Links:
       example:
@@ -846,7 +983,7 @@ components:
       required:
       - action
       type: object
-    ResponseMetricsListV3_data:
+    ResponseMetricsListV4_data:
       example:
         rejections:
           authenticated:
@@ -1014,6 +1151,63 @@ components:
           - 2
           currentDay: 1
         recipientCount: 1
+        authorisations:
+          abandonedConsentFlowCount:
+            previousDays:
+            - 9
+            - 9
+            currentDay: 3
+          newAuthorisationCount:
+            previousDays:
+            - ongoing:
+                nonIndividual: 6
+                individual: 4
+              onceOff:
+                nonIndividual: 5
+                individual: 7
+            - ongoing:
+                nonIndividual: 6
+                individual: 4
+              onceOff:
+                nonIndividual: 5
+                individual: 7
+            currentDay:
+              ongoing:
+                nonIndividual: 6
+                individual: 4
+              onceOff:
+                nonIndividual: 5
+                individual: 7
+          amendedAuthorisationCount:
+            previousDays:
+            - nonIndividual: 6
+              individual: 8
+            - nonIndividual: 6
+              individual: 8
+            currentDay:
+              nonIndividual: 1
+              individual: 2
+          activeAuthorisationCount:
+            nonIndividual: 0
+            individual: 9
+          expiredAuthorisationCount:
+            previousDays:
+            - nonIndividual: 1
+              individual: 9
+            - nonIndividual: 1
+              individual: 9
+            currentDay:
+              nonIndividual: 8
+              individual: 4
+          revokedAuthorisationCount:
+            previousDays:
+            - nonIndividual: 0
+              individual: 3
+            - nonIndividual: 0
+              individual: 3
+            currentDay:
+              nonIndividual: 4
+              individual: 8
         errors:
           authenticated:
             previousDays:
@@ -1039,33 +1233,37 @@ components:
           type: string
           x-cds-type: DateTimeString
         availability:
-          $ref: '#/components/schemas/AvailabilityMetrics'
+          $ref: '#/components/schemas/AvailabilityMetricsV2'
         performance:
-          $ref: '#/components/schemas/PerformanceMetrics'
+          $ref: '#/components/schemas/PerformanceMetricsV2'
         invocations:
-          $ref: '#/components/schemas/InvocationMetricsV2'
+          $ref: '#/components/schemas/InvocationMetricsV3'
         averageResponse:
           $ref: '#/components/schemas/AverageResponseMetricsV2'
         sessionCount:
-          $ref: '#/components/schemas/SessionCountMetrics'
+          $ref: '#/components/schemas/SessionCountMetricsV2'
         averageTps:
-          $ref: '#/components/schemas/AverageTPSMetrics'
+          $ref: '#/components/schemas/AverageTPSMetricsV2'
         peakTps:
-          $ref: '#/components/schemas/PeakTPSMetrics'
+          $ref: '#/components/schemas/PeakTPSMetricsV2'
         errors:
-          $ref: '#/components/schemas/ErrorMetrics'
+          $ref: '#/components/schemas/ErrorMetricsV2'
         rejections:
-          $ref: '#/components/schemas/RejectionMetricsV2'
+          $ref: '#/components/schemas/RejectionMetricsV3'
         customerCount:
           description: Number of customers with active authorisations at the time
             of the call
           type: integer
+          x-cds-type: NaturalNumber
         recipientCount:
           description: Number of Data Recipient Software Products with active authorisations
             at the time of the call
           type: integer
+          x-cds-type: NaturalNumber
         secondaryHolder:
-          $ref: '#/components/schemas/SecondaryHolderMetrics'
+          $ref: '#/components/schemas/SecondaryHolderMetricsV2'
+        authorisations:
+          $ref: '#/components/schemas/AuthorisationMetrics'
       required:
       - availability
       - averageResponse
@@ -1082,7 +1280,7 @@ components:
       type: object
       x-conditional:
       - secondaryHolder
-    AvailabilityMetrics_aggregate:
+    AvailabilityMetricsV2_aggregate:
       description: Aggregated availability metrics
       example:
         previousMonths:
@@ -1107,9 +1305,9 @@ components:
           type: array
       type: object
       x-conditional:
-      - currentDay
-      - previousDays
-    AvailabilityMetrics_unauthenticated:
+      - currentMonth
+      - previousMonths
+    AvailabilityMetricsV2_unauthenticated:
       description: Availability metrics for the unauthenticated aspects of the CDR
         regime
       example:
@@ -1135,9 +1333,9 @@ components:
           type: array
       type: object
       x-conditional:
-      - currentDay
-      - previousDays
-    AvailabilityMetrics_authenticated:
+      - currentMonth
+      - previousMonths
+    AvailabilityMetricsV2_authenticated:
       description: Availability metrics for the authenticated aspects of the CDR regime
       example:
         previousMonths:
@@ -1162,9 +1360,9 @@ components:
           type: array
       type: object
       x-conditional:
-      - currentDay
-      - previousDays
-    InvocationMetricsV2_unauthenticated:
+      - currentMonth
+      - previousMonths
+    InvocationMetricsV3_unauthenticated:
       description: API call counts for the unauthenticated tier
       example:
         previousDays:
@@ -1187,7 +1385,7 @@ components:
       x-conditional:
       - currentDay
       - previousDays
-    InvocationMetricsV2_highPriority:
+    InvocationMetricsV3_highPriority:
       description: API call counts for the high priority tier
       example:
         previousDays:
@@ -1210,7 +1408,7 @@ components:
       x-conditional:
       - currentDay
       - previousDays
-    InvocationMetricsV2_lowPriority:
+    InvocationMetricsV3_lowPriority:
       description: API call counts for the low priority tier
       example:
         previousDays:
@@ -1233,7 +1431,7 @@ components:
       x-conditional:
       - currentDay
       - previousDays
-    InvocationMetricsV2_unattended:
+    InvocationMetricsV3_unattended:
       description: API call counts for the unattended tier
       example:
         previousDays:
@@ -1256,7 +1454,7 @@ components:
       x-conditional:
       - currentDay
       - previousDays
-    InvocationMetricsV2_largePayload:
+    InvocationMetricsV3_largePayload:
       description: API call counts for the large payload tier
       example:
         previousDays:
@@ -1279,7 +1477,7 @@ components:
       x-conditional:
       - currentDay
       - previousDays
-    InvocationMetricsV2_secondary:
+    InvocationMetricsV3_secondary:
       description: API call counts for the Shared Responsibility Data Requests tier.  Mandatory
         for data holders designated for a Shared Responsibility Data Request data
         cluster
@@ -1304,7 +1502,7 @@ components:
       x-conditional:
       - currentDay
       - previousDays
-    InvocationMetricsV2_largeSecondary:
+    InvocationMetricsV3_largeSecondary:
       description: API call counts for the large Shared Responsibility Data Requests
         tier.  Mandatory for data holders designated for a Shared Responsibility Data
         Request data cluster
@@ -1529,7 +1727,7 @@ components:
       - primary
       - secondary
       type: object
-    AverageTPSMetrics_aggregate:
+    AverageTPSMetricsV2_aggregate:
       description: Aggregate average transactions per second over time for all endpoints
       example:
         previousDays:
@@ -1551,7 +1749,7 @@ components:
       x-conditional:
       - currentDay
       - previousDays
-    AverageTPSMetrics_unauthenticated:
+    AverageTPSMetricsV2_unauthenticated:
       description: Average transactions per second over time for unauthenticated endpoints
       example:
         previousDays:
@@ -1573,7 +1771,7 @@ components:
       x-conditional:
       - currentDay
       - previousDays
-    AverageTPSMetrics_authenticated:
+    AverageTPSMetricsV2_authenticated:
       description: Average transactions per second over time for authenticated endpoints
       example:
         previousDays:
@@ -1595,7 +1793,7 @@ components:
       x-conditional:
       - currentDay
       - previousDays
-    PeakTPSMetrics_aggregate:
+    PeakTPSMetricsV2_aggregate:
       description: Aggregate peak transactions per second over time for all endpoints
       example:
         previousDays:
@@ -1617,7 +1815,7 @@ components:
       x-conditional:
       - currentDay
       - previousDays
-    PeakTPSMetrics_unauthenticated:
+    PeakTPSMetricsV2_unauthenticated:
       description: Peak transactions per second over time for unauthenticated endpoints
       example:
         previousDays:
@@ -1639,7 +1837,7 @@ components:
       x-conditional:
       - currentDay
       - previousDays
-    PeakTPSMetrics_authenticated:
+    PeakTPSMetricsV2_authenticated:
       description: Peak transactions per second over time for authenticated endpoints
       example:
         previousDays:
@@ -1661,7 +1859,7 @@ components:
       x-conditional:
       - currentDay
       - previousDays
-    ErrorMetrics_aggregate:
+    ErrorMetricsV2_aggregate:
       description: Aggregate number of calls resulting in error due to server execution
         over time for all endpoints
       example:
@@ -1685,7 +1883,7 @@ components:
       x-conditional:
       - currentDay
       - previousDays
-    ErrorMetrics_unauthenticated:
+    ErrorMetricsV2_unauthenticated:
       description: Number of calls resulting in error due to server execution over
         time for unauthenticated endpoints
       example:
@@ -1739,7 +1937,7 @@ components:
       x-conditional:
       - currentDay
       - previousDays
-    ErrorMetrics_authenticated:
+    ErrorMetricsV2_authenticated:
       description: Number of calls resulting in error due to server execution over
         time for authenticated endpoints
       example:
@@ -1793,7 +1991,7 @@ components:
       x-conditional:
       - currentDay
       - previousDays
-    RejectionMetricsV2_authenticated:
+    RejectionMetricsV3_authenticated:
       description: Rejection counts for all authenticated end points
       example:
         previousDays:
@@ -1817,7 +2015,7 @@ components:
       x-conditional:
       - currentDay
       - previousDays
-    RejectionMetricsV2_unauthenticated:
+    RejectionMetricsV3_unauthenticated:
       description: Rejection counts for all unauthenticated end points
       example:
         previousDays:
@@ -1841,7 +2039,7 @@ components:
       x-conditional:
       - currentDay
       - previousDays
-    SecondaryHolderMetrics_errors:
+    SecondaryHolderMetricsV2_errors:
       description: Number of calls resulting in error due to server execution over
         time
       example:
@@ -1865,7 +2063,7 @@ components:
       x-conditional:
       - currentDay
       - previousDays
-    SecondaryHolderMetrics_rejections:
+    SecondaryHolderMetricsV2_rejections:
       description: Number of calls rejected due to traffic thresholds over time
       example:
         previousDays:
@@ -1880,6 +2078,337 @@ components:
         previousDays:
           description: Number of rejections for previous days. The first element indicates
             yesterday and so on. A maximum of seven entries is required if available
+          items:
+            type: integer
+            x-cds-type: NaturalNumber
+          type: array
+      type: object
+      x-conditional:
+      - currentDay
+      - previousDays
+    AuthorisationMetrics_activeAuthorisationCount:
+      description: The number of active ongoing authorisations
+      example:
+        nonIndividual: 0
+        individual: 9
+      properties:
+        individual:
+          description: Active ongoing authorisation count for individual customers
+          type: integer
+          x-cds-type: NaturalNumber
+        nonIndividual:
+          description: Active ongoing authorisation count for non-individual customers
+          type: integer
+          x-cds-type: NaturalNumber
+      required:
+      - individual
+      - nonIndividual
+      type: object
+    AuthorisationMetrics_newAuthorisationCount_currentDay_onceOff:
+      description: New authorisation count for once-off authorisations
+      example:
+        nonIndividual: 5
+        individual: 7
+      properties:
+        individual:
+          description: New authorisation count for individual customers
+          type: integer
+          x-cds-type: NaturalNumber
+        nonIndividual:
+          description: New authorisation count for non-individual customers
+          type: integer
+          x-cds-type: NaturalNumber
+      required:
+      - individual
+      - nonIndividual
+      type: object
+    AuthorisationMetrics_newAuthorisationCount_currentDay_ongoing:
+      description: New authorisation count for ongoing authorisations
+      example:
+        nonIndividual: 6
+        individual: 4
+      properties:
+        individual:
+          description: New authorisation count for individual customers
+          type: integer
+          x-cds-type: NaturalNumber
+        nonIndividual:
+          description: New authorisation count for non-individual customers
+          type: integer
+          x-cds-type: NaturalNumber
+      required:
+      - individual
+      - nonIndividual
+      type: object
+    AuthorisationMetrics_newAuthorisationCount_currentDay:
+      description: Number of new authorisations for the current day
+      example:
+        ongoing:
+          nonIndividual: 6
+          individual: 4
+        onceOff:
+          nonIndividual: 5
+          individual: 7
+      properties:
+        onceOff:
+          $ref: '#/components/schemas/AuthorisationMetrics_newAuthorisationCount_currentDay_onceOff'
+        ongoing:
+          $ref: '#/components/schemas/AuthorisationMetrics_newAuthorisationCount_currentDay_ongoing'
+      required:
+      - onceOff
+      - ongoing
+      type: object
+    AuthorisationMetrics_newAuthorisationCount_previousDays:
+      example:
+        ongoing:
+          nonIndividual: 6
+          individual: 4
+        onceOff:
+          nonIndividual: 5
+          individual: 7
+      properties:
+        onceOff:
+          $ref: '#/components/schemas/AuthorisationMetrics_newAuthorisationCount_currentDay_onceOff'
+        ongoing:
+          $ref: '#/components/schemas/AuthorisationMetrics_newAuthorisationCount_currentDay_ongoing'
+      required:
+      - onceOff
+      - ongoing
+      type: object
+    AuthorisationMetrics_newAuthorisationCount:
+      description: The number of new authorisations
+      example:
+        previousDays:
+        - ongoing:
+            nonIndividual: 6
+            individual: 4
+          onceOff:
+            nonIndividual: 5
+            individual: 7
+        - ongoing:
+            nonIndividual: 6
+            individual: 4
+          onceOff:
+            nonIndividual: 5
+            individual: 7
+        currentDay:
+          ongoing:
+            nonIndividual: 6
+            individual: 4
+          onceOff:
+            nonIndividual: 5
+            individual: 7
+      properties:
+        currentDay:
+          $ref: '#/components/schemas/AuthorisationMetrics_newAuthorisationCount_currentDay'
+        previousDays:
+          description: Number of new authorisations for previous days. The first element
+            indicates yesterday and so on. A maximum of seven entries is required
+            if available
+          items:
+            $ref: '#/components/schemas/AuthorisationMetrics_newAuthorisationCount_previousDays'
+          type: array
+      type: object
+      x-conditional:
+      - currentDay
+      - previousDays
+    AuthorisationMetrics_revokedAuthorisationCount_currentDay:
+      description: Number of revoked authorisations for the current day
+      example:
+        nonIndividual: 4
+        individual: 8
+      properties:
+        individual:
+          description: Revoked authorisation count for individual customers
+          type: integer
+          x-cds-type: NaturalNumber
+        nonIndividual:
+          description: Revoked authorisation count for non-individual customers
+          type: integer
+          x-cds-type: NaturalNumber
+      required:
+      - individual
+      - nonIndividual
+      type: object
+    AuthorisationMetrics_revokedAuthorisationCount_previousDays:
+      example:
+        nonIndividual: 0
+        individual: 3
+      properties:
+        individual:
+          description: Revoked authorisation count for individual customers
+          type: integer
+          x-cds-type: NaturalNumber
+        nonIndividual:
+          description: Revoked authorisation count for non-individual customers
+          type: integer
+          x-cds-type: NaturalNumber
+      required:
+      - individual
+      - nonIndividual
+      type: object
+    AuthorisationMetrics_revokedAuthorisationCount:
+      description: The number of revoked authorisations
+      example:
+        previousDays:
+        - nonIndividual: 0
+          individual: 3
+        - nonIndividual: 0
+          individual: 3
+        currentDay:
+          nonIndividual: 4
+          individual: 8
+      properties:
+        currentDay:
+          $ref: '#/components/schemas/AuthorisationMetrics_revokedAuthorisationCount_currentDay'
+        previousDays:
+          description: Number of revoked authorisations for previous days. The first
+            element indicates yesterday and so on. A maximum of seven entries is required
+            if available
+          items:
+            $ref: '#/components/schemas/AuthorisationMetrics_revokedAuthorisationCount_previousDays'
+          type: array
+      type: object
+      x-conditional:
+      - currentDay
+      - previousDays
+    AuthorisationMetrics_amendedAuthorisationCount_currentDay:
+      description: Number of amended authorisations for the current day
+      example:
+        nonIndividual: 1
+        individual: 2
+      properties:
+        individual:
+          description: Amended authorisation count for individual customers
+          type: integer
+          x-cds-type: NaturalNumber
+        nonIndividual:
+          description: Amended authorisation count for non-individual customers
+          type: integer
+          x-cds-type: NaturalNumber
+      required:
+      - individual
+      - nonIndividual
+      type: object
+    AuthorisationMetrics_amendedAuthorisationCount_previousDays:
+      example:
+        nonIndividual: 6
+        individual: 8
+      properties:
+        individual:
+          description: Amended authorisation count for individual customers
+          type: integer
+          x-cds-type: NaturalNumber
+        nonIndividual:
+          description: Amended authorisation count for non-individual customers
+          type: integer
+          x-cds-type: NaturalNumber
+      required:
+      - individual
+      - nonIndividual
+      type: object
+    AuthorisationMetrics_amendedAuthorisationCount:
+      description: The number of amended ongoing authorisations
+      example:
+        previousDays:
+        - nonIndividual: 6
+          individual: 8
+        - nonIndividual: 6
+          individual: 8
+        currentDay:
+          nonIndividual: 1
+          individual: 2
+      properties:
+        currentDay:
+          $ref: '#/components/schemas/AuthorisationMetrics_amendedAuthorisationCount_currentDay'
+        previousDays:
+          description: Number of amended authorisations for previous days. The first
+            element indicates yesterday and so on. A maximum of seven entries is required
+            if available
+          items:
+            $ref: '#/components/schemas/AuthorisationMetrics_amendedAuthorisationCount_previousDays'
+          type: array
+      type: object
+      x-conditional:
+      - currentDay
+      - previousDays
+    AuthorisationMetrics_expiredAuthorisationCount_currentDay:
+      description: Number of expired authorisations for the current day
+      example:
+        nonIndividual: 8
+        individual: 4
+      properties:
+        individual:
+          description: Expired authorisation count for individual customers
+          type: integer
+          x-cds-type: NaturalNumber
+        nonIndividual:
+          description: Expired authorisation count for non-individual customers
+          type: integer
+          x-cds-type: NaturalNumber
+      required:
+      - individual
+      - nonIndividual
+      type: object
+    AuthorisationMetrics_expiredAuthorisationCount_previousDays:
+      example:
+        nonIndividual: 1
+        individual: 9
+      properties:
+        individual:
+          description: Expired authorisation count for individual customers
+          type: integer
+          x-cds-type: NaturalNumber
+        nonIndividual:
+          description: Expired authorisation count for non-individual customers
+          type: integer
+          x-cds-type: NaturalNumber
+      required:
+      - individual
+      - nonIndividual
+      type: object
+    AuthorisationMetrics_expiredAuthorisationCount:
+      description: The number of expired ongoing authorisations
+      example:
+        previousDays:
+        - nonIndividual: 1
+          individual: 9
+        - nonIndividual: 1
+          individual: 9
+        currentDay:
+          nonIndividual: 8
+          individual: 4
+      properties:
+        currentDay:
+          $ref: '#/components/schemas/AuthorisationMetrics_expiredAuthorisationCount_currentDay'
+        previousDays:
+          description: Number of expired authorisations for previous days. The first
+            element indicates yesterday and so on. A maximum of seven entries is required
+            if available
+          items:
+            $ref: '#/components/schemas/AuthorisationMetrics_expiredAuthorisationCount_previousDays'
+          type: array
+      type: object
+      x-conditional:
+      - currentDay
+      - previousDays
+    AuthorisationMetrics_abandonedConsentFlowCount:
+      description: The number of consents flows that were not successfully authorised
+      example:
+        previousDays:
+        - 9
+        - 9
+        currentDay: 3
+      properties:
+        currentDay:
+          description: Number of consents flows that were not successfully authorised
+            for the current day
+          type: integer
+          x-cds-type: NaturalNumber
+        previousDays:
+          description: Number of consents flows that were not successfully authorised
+            for previous days. The first element indicates yesterday and so on. A
+            maximum of seven entries is required if available
           items:
             type: integer
             x-cds-type: NaturalNumber

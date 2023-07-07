@@ -143,7 +143,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/ResponseMetricsListV3"
+                  "$ref" : "#/components/schemas/ResponseMetricsListV4"
                 }
               }
             },
@@ -226,10 +226,10 @@
         "required" : [ "data" ],
         "type" : "object"
       },
-      "ResponseMetricsListV3" : {
+      "ResponseMetricsListV4" : {
         "properties" : {
           "data" : {
-            "$ref" : "#/components/schemas/ResponseMetricsListV3_data"
+            "$ref" : "#/components/schemas/ResponseMetricsListV4_data"
           },
           "links" : {
             "$ref" : "#/components/schemas/Links"
@@ -241,23 +241,23 @@
         "required" : [ "data", "links" ],
         "type" : "object"
       },
-      "AvailabilityMetrics" : {
+      "AvailabilityMetricsV2" : {
         "description" : "Availability metrics",
         "properties" : {
           "aggregate" : {
-            "$ref" : "#/components/schemas/AvailabilityMetrics_aggregate"
+            "$ref" : "#/components/schemas/AvailabilityMetricsV2_aggregate"
           },
           "unauthenticated" : {
-            "$ref" : "#/components/schemas/AvailabilityMetrics_unauthenticated"
+            "$ref" : "#/components/schemas/AvailabilityMetricsV2_unauthenticated"
           },
           "authenticated" : {
-            "$ref" : "#/components/schemas/AvailabilityMetrics_authenticated"
+            "$ref" : "#/components/schemas/AvailabilityMetricsV2_authenticated"
           }
         },
         "required" : [ "aggregate", "authenticated", "unauthenticated" ],
         "type" : "object"
       },
-      "PerformanceMetrics" : {
+      "PerformanceMetricsV2" : {
         "description" : "Percentage of calls within the performance thresholds",
         "properties" : {
           "currentDay" : {
@@ -277,29 +277,29 @@
         "type" : "object",
         "x-conditional" : [ "currentDay", "previousDays" ]
       },
-      "InvocationMetricsV2" : {
+      "InvocationMetricsV3" : {
         "description" : "Number of API calls in each performance tier over time",
         "properties" : {
           "unauthenticated" : {
-            "$ref" : "#/components/schemas/InvocationMetricsV2_unauthenticated"
+            "$ref" : "#/components/schemas/InvocationMetricsV3_unauthenticated"
           },
           "highPriority" : {
-            "$ref" : "#/components/schemas/InvocationMetricsV2_highPriority"
+            "$ref" : "#/components/schemas/InvocationMetricsV3_highPriority"
           },
           "lowPriority" : {
-            "$ref" : "#/components/schemas/InvocationMetricsV2_lowPriority"
+            "$ref" : "#/components/schemas/InvocationMetricsV3_lowPriority"
           },
           "unattended" : {
-            "$ref" : "#/components/schemas/InvocationMetricsV2_unattended"
+            "$ref" : "#/components/schemas/InvocationMetricsV3_unattended"
           },
           "largePayload" : {
-            "$ref" : "#/components/schemas/InvocationMetricsV2_largePayload"
+            "$ref" : "#/components/schemas/InvocationMetricsV3_largePayload"
           },
           "secondary" : {
-            "$ref" : "#/components/schemas/InvocationMetricsV2_secondary"
+            "$ref" : "#/components/schemas/InvocationMetricsV3_secondary"
           },
           "largeSecondary" : {
-            "$ref" : "#/components/schemas/InvocationMetricsV2_largeSecondary"
+            "$ref" : "#/components/schemas/InvocationMetricsV3_largeSecondary"
           }
         },
         "required" : [ "highPriority", "largePayload", "lowPriority", "unattended", "unauthenticated" ],
@@ -335,7 +335,7 @@
         "type" : "object",
         "x-conditional" : [ "secondary", "largeSecondary" ]
       },
-      "SessionCountMetrics" : {
+      "SessionCountMetricsV2" : {
         "description" : "Session counts over time. Note that a session is defined as the provisioning of an Access Token.",
         "properties" : {
           "currentDay" : {
@@ -355,78 +355,103 @@
         "type" : "object",
         "x-conditional" : [ "currentDay", "previousDays" ]
       },
-      "AverageTPSMetrics" : {
+      "AverageTPSMetricsV2" : {
         "description" : "Average transactions per second over time",
         "properties" : {
           "aggregate" : {
-            "$ref" : "#/components/schemas/AverageTPSMetrics_aggregate"
+            "$ref" : "#/components/schemas/AverageTPSMetricsV2_aggregate"
           },
           "unauthenticated" : {
-            "$ref" : "#/components/schemas/AverageTPSMetrics_unauthenticated"
+            "$ref" : "#/components/schemas/AverageTPSMetricsV2_unauthenticated"
           },
           "authenticated" : {
-            "$ref" : "#/components/schemas/AverageTPSMetrics_authenticated"
+            "$ref" : "#/components/schemas/AverageTPSMetricsV2_authenticated"
           }
         },
         "required" : [ "aggregate", "authenticated", "unauthenticated" ],
         "type" : "object"
       },
-      "PeakTPSMetrics" : {
+      "PeakTPSMetricsV2" : {
         "description" : "Peak transactions per second over time",
         "properties" : {
           "aggregate" : {
-            "$ref" : "#/components/schemas/PeakTPSMetrics_aggregate"
+            "$ref" : "#/components/schemas/PeakTPSMetricsV2_aggregate"
           },
           "unauthenticated" : {
-            "$ref" : "#/components/schemas/PeakTPSMetrics_unauthenticated"
+            "$ref" : "#/components/schemas/PeakTPSMetricsV2_unauthenticated"
           },
           "authenticated" : {
-            "$ref" : "#/components/schemas/PeakTPSMetrics_authenticated"
+            "$ref" : "#/components/schemas/PeakTPSMetricsV2_authenticated"
           }
         },
         "required" : [ "aggregate", "authenticated", "unauthenticated" ],
         "type" : "object"
       },
-      "ErrorMetrics" : {
+      "ErrorMetricsV2" : {
         "description" : "Peak transactions per second over time",
         "properties" : {
           "aggregate" : {
-            "$ref" : "#/components/schemas/ErrorMetrics_aggregate"
+            "$ref" : "#/components/schemas/ErrorMetricsV2_aggregate"
           },
           "unauthenticated" : {
-            "$ref" : "#/components/schemas/ErrorMetrics_unauthenticated"
+            "$ref" : "#/components/schemas/ErrorMetricsV2_unauthenticated"
           },
           "authenticated" : {
-            "$ref" : "#/components/schemas/ErrorMetrics_authenticated"
+            "$ref" : "#/components/schemas/ErrorMetricsV2_authenticated"
           }
         },
         "required" : [ "aggregate", "authenticated", "unauthenticated" ],
         "type" : "object"
       },
-      "RejectionMetricsV2" : {
+      "RejectionMetricsV3" : {
         "description" : "Number of calls rejected due to traffic thresholds over time",
         "properties" : {
           "authenticated" : {
-            "$ref" : "#/components/schemas/RejectionMetricsV2_authenticated"
+            "$ref" : "#/components/schemas/RejectionMetricsV3_authenticated"
           },
           "unauthenticated" : {
-            "$ref" : "#/components/schemas/RejectionMetricsV2_unauthenticated"
+            "$ref" : "#/components/schemas/RejectionMetricsV3_unauthenticated"
           }
         },
         "required" : [ "authenticated", "unauthenticated" ],
         "type" : "object"
       },
-      "SecondaryHolderMetrics" : {
+      "SecondaryHolderMetricsV2" : {
         "description" : "Errors and rejections received by the primary data holder from the secondary data holder.  Mandatory for data holders designated for a Shared Responsibility Data Request data cluster",
         "properties" : {
           "errors" : {
-            "$ref" : "#/components/schemas/SecondaryHolderMetrics_errors"
+            "$ref" : "#/components/schemas/SecondaryHolderMetricsV2_errors"
           },
           "rejections" : {
-            "$ref" : "#/components/schemas/SecondaryHolderMetrics_rejections"
+            "$ref" : "#/components/schemas/SecondaryHolderMetricsV2_rejections"
           }
         },
         "required" : [ "errors", "rejections" ],
+        "type" : "object"
+      },
+      "AuthorisationMetrics" : {
+        "description" : "Authorisation counts for the data holder",
+        "properties" : {
+          "activeAuthorisationCount" : {
+            "$ref" : "#/components/schemas/AuthorisationMetrics_activeAuthorisationCount"
+          },
+          "newAuthorisationCount" : {
+            "$ref" : "#/components/schemas/AuthorisationMetrics_newAuthorisationCount"
+          },
+          "revokedAuthorisationCount" : {
+            "$ref" : "#/components/schemas/AuthorisationMetrics_revokedAuthorisationCount"
+          },
+          "amendedAuthorisationCount" : {
+            "$ref" : "#/components/schemas/AuthorisationMetrics_amendedAuthorisationCount"
+          },
+          "expiredAuthorisationCount" : {
+            "$ref" : "#/components/schemas/AuthorisationMetrics_expiredAuthorisationCount"
+          },
+          "abandonedConsentFlowCount" : {
+            "$ref" : "#/components/schemas/AuthorisationMetrics_abandonedConsentFlowCount"
+          }
+        },
+        "required" : [ "abandonedConsentFlowCount", "activeAuthorisationCount", "amendedAuthorisationCount", "expiredAuthorisationCount", "newAuthorisationCount", "revokedAuthorisationCount" ],
         "type" : "object"
       },
       "Links" : {
@@ -479,7 +504,7 @@
         "required" : [ "action" ],
         "type" : "object"
       },
-      "ResponseMetricsListV3_data" : {
+      "ResponseMetricsListV4_data" : {
         "properties" : {
           "requestTime" : {
             "description" : "The date and time that the metrics in this payload were requested.",
@@ -487,49 +512,54 @@
             "x-cds-type" : "DateTimeString"
           },
           "availability" : {
-            "$ref" : "#/components/schemas/AvailabilityMetrics"
+            "$ref" : "#/components/schemas/AvailabilityMetricsV2"
           },
           "performance" : {
-            "$ref" : "#/components/schemas/PerformanceMetrics"
+            "$ref" : "#/components/schemas/PerformanceMetricsV2"
           },
           "invocations" : {
-            "$ref" : "#/components/schemas/InvocationMetricsV2"
+            "$ref" : "#/components/schemas/InvocationMetricsV3"
           },
           "averageResponse" : {
             "$ref" : "#/components/schemas/AverageResponseMetricsV2"
           },
           "sessionCount" : {
-            "$ref" : "#/components/schemas/SessionCountMetrics"
+            "$ref" : "#/components/schemas/SessionCountMetricsV2"
           },
           "averageTps" : {
-            "$ref" : "#/components/schemas/AverageTPSMetrics"
+            "$ref" : "#/components/schemas/AverageTPSMetricsV2"
           },
           "peakTps" : {
-            "$ref" : "#/components/schemas/PeakTPSMetrics"
+            "$ref" : "#/components/schemas/PeakTPSMetricsV2"
           },
           "errors" : {
-            "$ref" : "#/components/schemas/ErrorMetrics"
+            "$ref" : "#/components/schemas/ErrorMetricsV2"
           },
           "rejections" : {
-            "$ref" : "#/components/schemas/RejectionMetricsV2"
+            "$ref" : "#/components/schemas/RejectionMetricsV3"
           },
           "customerCount" : {
             "description" : "Number of customers with active authorisations at the time of the call",
-            "type" : "integer"
+            "type" : "integer",
+            "x-cds-type" : "NaturalNumber"
           },
           "recipientCount" : {
             "description" : "Number of Data Recipient Software Products with active authorisations at the time of the call",
-            "type" : "integer"
+            "type" : "integer",
+            "x-cds-type" : "NaturalNumber"
           },
           "secondaryHolder" : {
-            "$ref" : "#/components/schemas/SecondaryHolderMetrics"
+            "$ref" : "#/components/schemas/SecondaryHolderMetricsV2"
+          },
+          "authorisations" : {
+            "$ref" : "#/components/schemas/AuthorisationMetrics"
           }
         },
         "required" : [ "availability", "averageResponse", "averageTps", "customerCount", "errors", "invocations", "peakTps", "performance", "recipientCount", "rejections", "requestTime", "sessionCount" ],
         "type" : "object",
         "x-conditional" : [ "secondaryHolder" ]
       },
-      "AvailabilityMetrics_aggregate" : {
+      "AvailabilityMetricsV2_aggregate" : {
         "description" : "Aggregated availability metrics",
         "properties" : {
           "currentMonth" : {
@@ -547,9 +577,9 @@
           }
         },
         "type" : "object",
-        "x-conditional" : [ "currentDay", "previousDays" ]
+        "x-conditional" : [ "currentMonth", "previousMonths" ]
       },
-      "AvailabilityMetrics_unauthenticated" : {
+      "AvailabilityMetricsV2_unauthenticated" : {
         "description" : "Availability metrics for the unauthenticated aspects of the CDR regime",
         "properties" : {
           "currentMonth" : {
@@ -567,9 +597,9 @@
           }
         },
         "type" : "object",
-        "x-conditional" : [ "currentDay", "previousDays" ]
+        "x-conditional" : [ "currentMonth", "previousMonths" ]
       },
-      "AvailabilityMetrics_authenticated" : {
+      "AvailabilityMetricsV2_authenticated" : {
         "description" : "Availability metrics for the authenticated aspects of the CDR regime",
         "properties" : {
           "currentMonth" : {
@@ -587,9 +617,9 @@
           }
         },
         "type" : "object",
-        "x-conditional" : [ "currentDay", "previousDays" ]
+        "x-conditional" : [ "currentMonth", "previousMonths" ]
       },
-      "InvocationMetricsV2_unauthenticated" : {
+      "InvocationMetricsV3_unauthenticated" : {
         "description" : "API call counts for the unauthenticated tier",
         "properties" : {
           "currentDay" : {
@@ -609,7 +639,7 @@
         "type" : "object",
         "x-conditional" : [ "currentDay", "previousDays" ]
       },
-      "InvocationMetricsV2_highPriority" : {
+      "InvocationMetricsV3_highPriority" : {
         "description" : "API call counts for the high priority tier",
         "properties" : {
           "currentDay" : {
@@ -629,7 +659,7 @@
         "type" : "object",
         "x-conditional" : [ "currentDay", "previousDays" ]
       },
-      "InvocationMetricsV2_lowPriority" : {
+      "InvocationMetricsV3_lowPriority" : {
         "description" : "API call counts for the low priority tier",
         "properties" : {
           "currentDay" : {
@@ -649,7 +679,7 @@
         "type" : "object",
         "x-conditional" : [ "currentDay", "previousDays" ]
       },
-      "InvocationMetricsV2_unattended" : {
+      "InvocationMetricsV3_unattended" : {
         "description" : "API call counts for the unattended tier",
         "properties" : {
           "currentDay" : {
@@ -669,7 +699,7 @@
         "type" : "object",
         "x-conditional" : [ "currentDay", "previousDays" ]
       },
-      "InvocationMetricsV2_largePayload" : {
+      "InvocationMetricsV3_largePayload" : {
         "description" : "API call counts for the large payload tier",
         "properties" : {
           "currentDay" : {
@@ -689,7 +719,7 @@
         "type" : "object",
         "x-conditional" : [ "currentDay", "previousDays" ]
       },
-      "InvocationMetricsV2_secondary" : {
+      "InvocationMetricsV3_secondary" : {
         "description" : "API call counts for the Shared Responsibility Data Requests tier.  Mandatory for data holders designated for a Shared Responsibility Data Request data cluster",
         "properties" : {
           "currentDay" : {
@@ -709,7 +739,7 @@
         "type" : "object",
         "x-conditional" : [ "currentDay", "previousDays" ]
       },
-      "InvocationMetricsV2_largeSecondary" : {
+      "InvocationMetricsV3_largeSecondary" : {
         "description" : "API call counts for the large Shared Responsibility Data Requests tier.  Mandatory for data holders designated for a Shared Responsibility Data Request data cluster",
         "properties" : {
           "currentDay" : {
@@ -881,7 +911,7 @@
         "required" : [ "primary", "secondary" ],
         "type" : "object"
       },
-      "AverageTPSMetrics_aggregate" : {
+      "AverageTPSMetricsV2_aggregate" : {
         "description" : "Aggregate average transactions per second over time for all endpoints",
         "properties" : {
           "currentDay" : {
@@ -899,7 +929,7 @@
         "type" : "object",
         "x-conditional" : [ "currentDay", "previousDays" ]
       },
-      "AverageTPSMetrics_unauthenticated" : {
+      "AverageTPSMetricsV2_unauthenticated" : {
         "description" : "Average transactions per second over time for unauthenticated endpoints",
         "properties" : {
           "currentDay" : {
@@ -917,7 +947,7 @@
         "type" : "object",
         "x-conditional" : [ "currentDay", "previousDays" ]
       },
-      "AverageTPSMetrics_authenticated" : {
+      "AverageTPSMetricsV2_authenticated" : {
         "description" : "Average transactions per second over time for authenticated endpoints",
         "properties" : {
           "currentDay" : {
@@ -935,7 +965,7 @@
         "type" : "object",
         "x-conditional" : [ "currentDay", "previousDays" ]
       },
-      "PeakTPSMetrics_aggregate" : {
+      "PeakTPSMetricsV2_aggregate" : {
         "description" : "Aggregate peak transactions per second over time for all endpoints",
         "properties" : {
           "currentDay" : {
@@ -953,7 +983,7 @@
         "type" : "object",
         "x-conditional" : [ "currentDay", "previousDays" ]
       },
-      "PeakTPSMetrics_unauthenticated" : {
+      "PeakTPSMetricsV2_unauthenticated" : {
         "description" : "Peak transactions per second over time for unauthenticated endpoints",
         "properties" : {
           "currentDay" : {
@@ -971,7 +1001,7 @@
         "type" : "object",
         "x-conditional" : [ "currentDay", "previousDays" ]
       },
-      "PeakTPSMetrics_authenticated" : {
+      "PeakTPSMetricsV2_authenticated" : {
         "description" : "Peak transactions per second over time for authenticated endpoints",
         "properties" : {
           "currentDay" : {
@@ -989,7 +1019,7 @@
         "type" : "object",
         "x-conditional" : [ "currentDay", "previousDays" ]
       },
-      "ErrorMetrics_aggregate" : {
+      "ErrorMetricsV2_aggregate" : {
         "description" : "Aggregate number of calls resulting in error due to server execution over time for all endpoints",
         "properties" : {
           "currentDay" : {
@@ -1009,7 +1039,7 @@
         "type" : "object",
         "x-conditional" : [ "currentDay", "previousDays" ]
       },
-      "ErrorMetrics_unauthenticated" : {
+      "ErrorMetricsV2_unauthenticated" : {
         "description" : "Number of calls resulting in error due to server execution over time for unauthenticated endpoints",
         "properties" : {
           "currentDay" : {
@@ -1051,7 +1081,7 @@
         "type" : "object",
         "x-conditional" : [ "currentDay", "previousDays" ]
       },
-      "ErrorMetrics_authenticated" : {
+      "ErrorMetricsV2_authenticated" : {
         "description" : "Number of calls resulting in error due to server execution over time for authenticated endpoints",
         "properties" : {
           "currentDay" : {
@@ -1093,7 +1123,7 @@
         "type" : "object",
         "x-conditional" : [ "currentDay", "previousDays" ]
       },
-      "RejectionMetricsV2_authenticated" : {
+      "RejectionMetricsV3_authenticated" : {
         "description" : "Rejection counts for all authenticated end points",
         "properties" : {
           "currentDay" : {
@@ -1113,7 +1143,7 @@
         "type" : "object",
         "x-conditional" : [ "currentDay", "previousDays" ]
       },
-      "RejectionMetricsV2_unauthenticated" : {
+      "RejectionMetricsV3_unauthenticated" : {
         "description" : "Rejection counts for all unauthenticated end points",
         "properties" : {
           "currentDay" : {
@@ -1133,7 +1163,7 @@
         "type" : "object",
         "x-conditional" : [ "currentDay", "previousDays" ]
       },
-      "SecondaryHolderMetrics_errors" : {
+      "SecondaryHolderMetricsV2_errors" : {
         "description" : "Number of calls resulting in error due to server execution over time",
         "properties" : {
           "currentDay" : {
@@ -1153,7 +1183,7 @@
         "type" : "object",
         "x-conditional" : [ "currentDay", "previousDays" ]
       },
-      "SecondaryHolderMetrics_rejections" : {
+      "SecondaryHolderMetricsV2_rejections" : {
         "description" : "Number of calls rejected due to traffic thresholds over time",
         "properties" : {
           "currentDay" : {
@@ -1163,6 +1193,269 @@
           },
           "previousDays" : {
             "description" : "Number of rejections for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
+            "items" : {
+              "type" : "integer",
+              "x-cds-type" : "NaturalNumber"
+            },
+            "type" : "array"
+          }
+        },
+        "type" : "object",
+        "x-conditional" : [ "currentDay", "previousDays" ]
+      },
+      "AuthorisationMetrics_activeAuthorisationCount" : {
+        "description" : "The number of active ongoing authorisations",
+        "properties" : {
+          "individual" : {
+            "description" : "Active ongoing authorisation count for individual customers",
+            "type" : "integer",
+            "x-cds-type" : "NaturalNumber"
+          },
+          "nonIndividual" : {
+            "description" : "Active ongoing authorisation count for non-individual customers",
+            "type" : "integer",
+            "x-cds-type" : "NaturalNumber"
+          }
+        },
+        "required" : [ "individual", "nonIndividual" ],
+        "type" : "object"
+      },
+      "AuthorisationMetrics_newAuthorisationCount_currentDay_onceOff" : {
+        "description" : "New authorisation count for once-off authorisations",
+        "properties" : {
+          "individual" : {
+            "description" : "New authorisation count for individual customers",
+            "type" : "integer",
+            "x-cds-type" : "NaturalNumber"
+          },
+          "nonIndividual" : {
+            "description" : "New authorisation count for non-individual customers",
+            "type" : "integer",
+            "x-cds-type" : "NaturalNumber"
+          }
+        },
+        "required" : [ "individual", "nonIndividual" ],
+        "type" : "object"
+      },
+      "AuthorisationMetrics_newAuthorisationCount_currentDay_ongoing" : {
+        "description" : "New authorisation count for ongoing authorisations",
+        "properties" : {
+          "individual" : {
+            "description" : "New authorisation count for individual customers",
+            "type" : "integer",
+            "x-cds-type" : "NaturalNumber"
+          },
+          "nonIndividual" : {
+            "description" : "New authorisation count for non-individual customers",
+            "type" : "integer",
+            "x-cds-type" : "NaturalNumber"
+          }
+        },
+        "required" : [ "individual", "nonIndividual" ],
+        "type" : "object"
+      },
+      "AuthorisationMetrics_newAuthorisationCount_currentDay" : {
+        "description" : "Number of new authorisations for the current day",
+        "properties" : {
+          "onceOff" : {
+            "$ref" : "#/components/schemas/AuthorisationMetrics_newAuthorisationCount_currentDay_onceOff"
+          },
+          "ongoing" : {
+            "$ref" : "#/components/schemas/AuthorisationMetrics_newAuthorisationCount_currentDay_ongoing"
+          }
+        },
+        "required" : [ "onceOff", "ongoing" ],
+        "type" : "object"
+      },
+      "AuthorisationMetrics_newAuthorisationCount_previousDays" : {
+        "properties" : {
+          "onceOff" : {
+            "$ref" : "#/components/schemas/AuthorisationMetrics_newAuthorisationCount_currentDay_onceOff"
+          },
+          "ongoing" : {
+            "$ref" : "#/components/schemas/AuthorisationMetrics_newAuthorisationCount_currentDay_ongoing"
+          }
+        },
+        "required" : [ "onceOff", "ongoing" ],
+        "type" : "object"
+      },
+      "AuthorisationMetrics_newAuthorisationCount" : {
+        "description" : "The number of new authorisations",
+        "properties" : {
+          "currentDay" : {
+            "$ref" : "#/components/schemas/AuthorisationMetrics_newAuthorisationCount_currentDay"
+          },
+          "previousDays" : {
+            "description" : "Number of new authorisations for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
+            "items" : {
+              "$ref" : "#/components/schemas/AuthorisationMetrics_newAuthorisationCount_previousDays"
+            },
+            "type" : "array"
+          }
+        },
+        "type" : "object",
+        "x-conditional" : [ "currentDay", "previousDays" ]
+      },
+      "AuthorisationMetrics_revokedAuthorisationCount_currentDay" : {
+        "description" : "Number of revoked authorisations for the current day",
+        "properties" : {
+          "individual" : {
+            "description" : "Revoked authorisation count for individual customers",
+            "type" : "integer",
+            "x-cds-type" : "NaturalNumber"
+          },
+          "nonIndividual" : {
+            "description" : "Revoked authorisation count for non-individual customers",
+            "type" : "integer",
+            "x-cds-type" : "NaturalNumber"
+          }
+        },
+        "required" : [ "individual", "nonIndividual" ],
+        "type" : "object"
+      },
+      "AuthorisationMetrics_revokedAuthorisationCount_previousDays" : {
+        "properties" : {
+          "individual" : {
+            "description" : "Revoked authorisation count for individual customers",
+            "type" : "integer",
+            "x-cds-type" : "NaturalNumber"
+          },
+          "nonIndividual" : {
+            "description" : "Revoked authorisation count for non-individual customers",
+            "type" : "integer",
+            "x-cds-type" : "NaturalNumber"
+          }
+        },
+        "required" : [ "individual", "nonIndividual" ],
+        "type" : "object"
+      },
+      "AuthorisationMetrics_revokedAuthorisationCount" : {
+        "description" : "The number of revoked authorisations",
+        "properties" : {
+          "currentDay" : {
+            "$ref" : "#/components/schemas/AuthorisationMetrics_revokedAuthorisationCount_currentDay"
+          },
+          "previousDays" : {
+            "description" : "Number of revoked authorisations for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
+            "items" : {
+              "$ref" : "#/components/schemas/AuthorisationMetrics_revokedAuthorisationCount_previousDays"
+            },
+            "type" : "array"
+          }
+        },
+        "type" : "object",
+        "x-conditional" : [ "currentDay", "previousDays" ]
+      },
+      "AuthorisationMetrics_amendedAuthorisationCount_currentDay" : {
+        "description" : "Number of amended authorisations for the current day",
+        "properties" : {
+          "individual" : {
+            "description" : "Amended authorisation count for individual customers",
+            "type" : "integer",
+            "x-cds-type" : "NaturalNumber"
+          },
+          "nonIndividual" : {
+            "description" : "Amended authorisation count for non-individual customers",
+            "type" : "integer",
+            "x-cds-type" : "NaturalNumber"
+          }
+        },
+        "required" : [ "individual", "nonIndividual" ],
+        "type" : "object"
+      },
+      "AuthorisationMetrics_amendedAuthorisationCount_previousDays" : {
+        "properties" : {
+          "individual" : {
+            "description" : "Amended authorisation count for individual customers",
+            "type" : "integer",
+            "x-cds-type" : "NaturalNumber"
+          },
+          "nonIndividual" : {
+            "description" : "Amended authorisation count for non-individual customers",
+            "type" : "integer",
+            "x-cds-type" : "NaturalNumber"
+          }
+        },
+        "required" : [ "individual", "nonIndividual" ],
+        "type" : "object"
+      },
+      "AuthorisationMetrics_amendedAuthorisationCount" : {
+        "description" : "The number of amended ongoing authorisations",
+        "properties" : {
+          "currentDay" : {
+            "$ref" : "#/components/schemas/AuthorisationMetrics_amendedAuthorisationCount_currentDay"
+          },
+          "previousDays" : {
+            "description" : "Number of amended authorisations for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
+            "items" : {
+              "$ref" : "#/components/schemas/AuthorisationMetrics_amendedAuthorisationCount_previousDays"
+            },
+            "type" : "array"
+          }
+        },
+        "type" : "object",
+        "x-conditional" : [ "currentDay", "previousDays" ]
+      },
+      "AuthorisationMetrics_expiredAuthorisationCount_currentDay" : {
+        "description" : "Number of expired authorisations for the current day",
+        "properties" : {
+          "individual" : {
+            "description" : "Expired authorisation count for individual customers",
+            "type" : "integer",
+            "x-cds-type" : "NaturalNumber"
+          },
+          "nonIndividual" : {
+            "description" : "Expired authorisation count for non-individual customers",
+            "type" : "integer",
+            "x-cds-type" : "NaturalNumber"
+          }
+        },
+        "required" : [ "individual", "nonIndividual" ],
+        "type" : "object"
+      },
+      "AuthorisationMetrics_expiredAuthorisationCount_previousDays" : {
+        "properties" : {
+          "individual" : {
+            "description" : "Expired authorisation count for individual customers",
+            "type" : "integer",
+            "x-cds-type" : "NaturalNumber"
+          },
+          "nonIndividual" : {
+            "description" : "Expired authorisation count for non-individual customers",
+            "type" : "integer",
+            "x-cds-type" : "NaturalNumber"
+          }
+        },
+        "required" : [ "individual", "nonIndividual" ],
+        "type" : "object"
+      },
+      "AuthorisationMetrics_expiredAuthorisationCount" : {
+        "description" : "The number of expired ongoing authorisations",
+        "properties" : {
+          "currentDay" : {
+            "$ref" : "#/components/schemas/AuthorisationMetrics_expiredAuthorisationCount_currentDay"
+          },
+          "previousDays" : {
+            "description" : "Number of expired authorisations for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
+            "items" : {
+              "$ref" : "#/components/schemas/AuthorisationMetrics_expiredAuthorisationCount_previousDays"
+            },
+            "type" : "array"
+          }
+        },
+        "type" : "object",
+        "x-conditional" : [ "currentDay", "previousDays" ]
+      },
+      "AuthorisationMetrics_abandonedConsentFlowCount" : {
+        "description" : "The number of consents flows that were not successfully authorised",
+        "properties" : {
+          "currentDay" : {
+            "description" : "Number of consents flows that were not successfully authorised for the current day",
+            "type" : "integer",
+            "x-cds-type" : "NaturalNumber"
+          },
+          "previousDays" : {
+            "description" : "Number of consents flows that were not successfully authorised for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
             "items" : {
               "type" : "integer",
               "x-cds-type" : "NaturalNumber"

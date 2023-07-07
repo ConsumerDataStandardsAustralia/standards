@@ -426,6 +426,78 @@ If the Data Holder supports private_key_jwt client authentication they MUST vali
           0
         ]
       }
+    },
+    "authorisations": {
+      "activeAuthorisationCount": {
+        "individual": 0,
+        "nonIndividual": 0
+      },
+      "newAuthorisationCount": {
+        "currentDay": {
+          "onceOff": {
+            "individual": 0,
+            "nonIndividual": 0
+          },
+          "ongoing": {
+            "individual": 0,
+            "nonIndividual": 0
+          }
+        },
+        "previousDays": [
+          {
+            "onceOff": {
+              "individual": 0,
+              "nonIndividual": 0
+            },
+            "ongoing": {
+              "individual": 0,
+              "nonIndividual": 0
+            }
+          }
+        ]
+      },
+      "revokedAuthorisationCount": {
+        "currentDay": {
+          "individual": 0,
+          "nonIndividual": 0
+        },
+        "previousDays": [
+          {
+            "individual": 0,
+            "nonIndividual": 0
+          }
+        ]
+      },
+      "amendedAuthorisationCount": {
+        "currentDay": {
+          "individual": 0,
+          "nonIndividual": 0
+        },
+        "previousDays": [
+          {
+            "individual": 0,
+            "nonIndividual": 0
+          }
+        ]
+      },
+      "expiredAuthorisationCount": {
+        "currentDay": {
+          "individual": 0,
+          "nonIndividual": 0
+        },
+        "previousDays": [
+          {
+            "individual": 0,
+            "nonIndividual": 0
+          }
+        ]
+      },
+      "abandonedConsentFlowCount": {
+        "currentDay": 0,
+        "previousDays": [
+          0
+        ]
+      }
     }
   },
   "links": {
@@ -439,7 +511,7 @@ If the Data Holder supports private_key_jwt client authentication they MUST vali
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseMetricsListV3](#schemacdr-admin-apiresponsemetricslistv3)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseMetricsListV4](#schemacdr-admin-apiresponsemetricslistv4)|
 |400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-admin-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-admin-apiresponseerrorlistv2)|
 
@@ -495,9 +567,9 @@ This operation may only be called by the CDR Register
 |---|---|
 |action|REFRESH|
 
-<h3 class="schema-toc" id="tocSresponsemetricslistv3">ResponseMetricsListV3</h3>
+<h3 class="schema-toc" id="tocSresponsemetricslistv4">ResponseMetricsListV4</h3>
 
-<a id="schemacdr-admin-apiresponsemetricslistv3"></a>
+<a id="schemacdr-admin-apiresponsemetricslistv4"></a>
 
 ```json
 {
@@ -744,6 +816,78 @@ This operation may only be called by the CDR Register
           0
         ]
       }
+    },
+    "authorisations": {
+      "activeAuthorisationCount": {
+        "individual": 0,
+        "nonIndividual": 0
+      },
+      "newAuthorisationCount": {
+        "currentDay": {
+          "onceOff": {
+            "individual": 0,
+            "nonIndividual": 0
+          },
+          "ongoing": {
+            "individual": 0,
+            "nonIndividual": 0
+          }
+        },
+        "previousDays": [
+          {
+            "onceOff": {
+              "individual": 0,
+              "nonIndividual": 0
+            },
+            "ongoing": {
+              "individual": 0,
+              "nonIndividual": 0
+            }
+          }
+        ]
+      },
+      "revokedAuthorisationCount": {
+        "currentDay": {
+          "individual": 0,
+          "nonIndividual": 0
+        },
+        "previousDays": [
+          {
+            "individual": 0,
+            "nonIndividual": 0
+          }
+        ]
+      },
+      "amendedAuthorisationCount": {
+        "currentDay": {
+          "individual": 0,
+          "nonIndividual": 0
+        },
+        "previousDays": [
+          {
+            "individual": 0,
+            "nonIndividual": 0
+          }
+        ]
+      },
+      "expiredAuthorisationCount": {
+        "currentDay": {
+          "individual": 0,
+          "nonIndividual": 0
+        },
+        "previousDays": [
+          {
+            "individual": 0,
+            "nonIndividual": 0
+          }
+        ]
+      },
+      "abandonedConsentFlowCount": {
+        "currentDay": 0,
+        "previousDays": [
+          0
+        ]
+      }
     }
   },
   "links": {
@@ -760,24 +904,25 @@ This operation may only be called by the CDR Register
 |---|---|---|---|
 |data|object|mandatory|none|
 |» requestTime|[DateTimeString](#common-field-types)|mandatory|The date and time that the metrics in this payload were requested.|
-|» availability|[AvailabilityMetrics](#schemacdr-admin-apiavailabilitymetrics)|mandatory|Availability metrics|
-|» performance|[PerformanceMetrics](#schemacdr-admin-apiperformancemetrics)|mandatory|Percentage of calls within the performance thresholds|
-|» invocations|[InvocationMetricsV2](#schemacdr-admin-apiinvocationmetricsv2)|mandatory|Number of API calls in each performance tier over time|
+|» availability|[AvailabilityMetricsV2](#schemacdr-admin-apiavailabilitymetricsv2)|mandatory|Availability metrics|
+|» performance|[PerformanceMetricsV2](#schemacdr-admin-apiperformancemetricsv2)|mandatory|Percentage of calls within the performance thresholds|
+|» invocations|[InvocationMetricsV3](#schemacdr-admin-apiinvocationmetricsv3)|mandatory|Number of API calls in each performance tier over time|
 |» averageResponse|[AverageResponseMetricsV2](#schemacdr-admin-apiaverageresponsemetricsv2)|mandatory|Average response time in seconds, at millisecond resolution, within each performance tier|
-|» sessionCount|[SessionCountMetrics](#schemacdr-admin-apisessioncountmetrics)|mandatory|Session counts over time. Note that a session is defined as the provisioning of an Access Token.|
-|» averageTps|[AverageTPSMetrics](#schemacdr-admin-apiaveragetpsmetrics)|mandatory|Average transactions per second over time|
-|» peakTps|[PeakTPSMetrics](#schemacdr-admin-apipeaktpsmetrics)|mandatory|Peak transactions per second over time|
-|» errors|[ErrorMetrics](#schemacdr-admin-apierrormetrics)|mandatory|Peak transactions per second over time|
-|» rejections|[RejectionMetricsV2](#schemacdr-admin-apirejectionmetricsv2)|mandatory|Number of calls rejected due to traffic thresholds over time|
-|» customerCount|integer|mandatory|Number of customers with active authorisations at the time of the call|
-|» recipientCount|integer|mandatory|Number of Data Recipient Software Products with active authorisations at the time of the call|
-|» secondaryHolder|[SecondaryHolderMetrics](#schemacdr-admin-apisecondaryholdermetrics)|conditional|Errors and rejections received by the primary data holder from the secondary data holder.  Mandatory for data holders designated for a Shared Responsibility Data Request data cluster|
+|» sessionCount|[SessionCountMetricsV2](#schemacdr-admin-apisessioncountmetricsv2)|mandatory|Session counts over time. Note that a session is defined as the provisioning of an Access Token.|
+|» averageTps|[AverageTPSMetricsV2](#schemacdr-admin-apiaveragetpsmetricsv2)|mandatory|Average transactions per second over time|
+|» peakTps|[PeakTPSMetricsV2](#schemacdr-admin-apipeaktpsmetricsv2)|mandatory|Peak transactions per second over time|
+|» errors|[ErrorMetricsV2](#schemacdr-admin-apierrormetricsv2)|mandatory|Peak transactions per second over time|
+|» rejections|[RejectionMetricsV3](#schemacdr-admin-apirejectionmetricsv3)|mandatory|Number of calls rejected due to traffic thresholds over time|
+|» customerCount|[NaturalNumber](#common-field-types)|mandatory|Number of customers with active authorisations at the time of the call|
+|» recipientCount|[NaturalNumber](#common-field-types)|mandatory|Number of Data Recipient Software Products with active authorisations at the time of the call|
+|» secondaryHolder|[SecondaryHolderMetricsV2](#schemacdr-admin-apisecondaryholdermetricsv2)|conditional|Errors and rejections received by the primary data holder from the secondary data holder.  Mandatory for data holders designated for a Shared Responsibility Data Request data cluster|
+|» authorisations|[AuthorisationMetrics](#schemacdr-admin-apiauthorisationmetrics)|optional|Authorisation counts for the data holder|
 |links|[Links](#schemacdr-admin-apilinks)|mandatory|none|
 |meta|[Meta](#schemacdr-admin-apimeta)|optional|none|
 
-<h3 class="schema-toc" id="tocSavailabilitymetrics">AvailabilityMetrics</h3>
+<h3 class="schema-toc" id="tocSavailabilitymetricsv2">AvailabilityMetricsV2</h3>
 
-<a id="schemacdr-admin-apiavailabilitymetrics"></a>
+<a id="schemacdr-admin-apiavailabilitymetricsv2"></a>
 
 ```json
 {
@@ -810,18 +955,18 @@ This operation may only be called by the CDR Register
 |Name|Type|Required|Description|
 |---|---|---|---|
 |aggregate|object|mandatory|Aggregated availability metrics|
-|» currentMonth|[RateString](#common-field-types)|optional|Percentage availability of the CDR platform so far for the current calendar month. 0.0 means 0%. 1.0 means 100%. Must be a positive value or zero|
-|» previousMonths|[string]|optional|Percentage availability of the CDR platform for previous calendar months. The first element indicates the last month and so on. A maximum of twelve entries is required if available. 0.0 means 0%. 1.0 means 100%. Values must be a positive or zero|
+|» currentMonth|[RateString](#common-field-types)|conditional|Percentage availability of the CDR platform so far for the current calendar month. 0.0 means 0%. 1.0 means 100%. Must be a positive value or zero|
+|» previousMonths|[string]|conditional|Percentage availability of the CDR platform for previous calendar months. The first element indicates the last month and so on. A maximum of twelve entries is required if available. 0.0 means 0%. 1.0 means 100%. Values must be a positive or zero|
 |unauthenticated|object|mandatory|Availability metrics for the unauthenticated aspects of the CDR regime|
-|» currentMonth|[RateString](#common-field-types)|optional|Percentage availability of the CDR platform so far for the current calendar month. 0.0 means 0%. 1.0 means 100%. Must be a positive value or zero|
-|» previousMonths|[string]|optional|Percentage availability of the CDR platform for previous calendar months. The first element indicates the last month and so on. A maximum of twelve entries is required if available. 0.0 means 0%. 1.0 means 100%. Values must be a positive or zero|
+|» currentMonth|[RateString](#common-field-types)|conditional|Percentage availability of the CDR platform so far for the current calendar month. 0.0 means 0%. 1.0 means 100%. Must be a positive value or zero|
+|» previousMonths|[string]|conditional|Percentage availability of the CDR platform for previous calendar months. The first element indicates the last month and so on. A maximum of twelve entries is required if available. 0.0 means 0%. 1.0 means 100%. Values must be a positive or zero|
 |authenticated|object|mandatory|Availability metrics for the authenticated aspects of the CDR regime|
-|» currentMonth|[RateString](#common-field-types)|optional|Percentage availability of the CDR platform so far for the current calendar month. 0.0 means 0%. 1.0 means 100%. Must be a positive value or zero|
-|» previousMonths|[string]|optional|Percentage availability of the CDR platform for previous calendar months. The first element indicates the last month and so on. A maximum of twelve entries is required if available. 0.0 means 0%. 1.0 means 100%. Values must be a positive or zero|
+|» currentMonth|[RateString](#common-field-types)|conditional|Percentage availability of the CDR platform so far for the current calendar month. 0.0 means 0%. 1.0 means 100%. Must be a positive value or zero|
+|» previousMonths|[string]|conditional|Percentage availability of the CDR platform for previous calendar months. The first element indicates the last month and so on. A maximum of twelve entries is required if available. 0.0 means 0%. 1.0 means 100%. Values must be a positive or zero|
 
-<h3 class="schema-toc" id="tocSperformancemetrics">PerformanceMetrics</h3>
+<h3 class="schema-toc" id="tocSperformancemetricsv2">PerformanceMetricsV2</h3>
 
-<a id="schemacdr-admin-apiperformancemetrics"></a>
+<a id="schemacdr-admin-apiperformancemetricsv2"></a>
 
 ```json
 {
@@ -842,9 +987,9 @@ This operation may only be called by the CDR Register
 |currentDay|[RateString](#common-field-types)|conditional|Percentage of calls within the performance threshold for the current day. 0.0 means 0%. 1.0 means 100%. Must be a positive value or zero|
 |previousDays|[string]|conditional|Percentage of calls within the performance threshold for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. 0.0 means 0%. 1.0 means 100%. Values must be a positive or zero|
 
-<h3 class="schema-toc" id="tocSinvocationmetricsv2">InvocationMetricsV2</h3>
+<h3 class="schema-toc" id="tocSinvocationmetricsv3">InvocationMetricsV3</h3>
 
-<a id="schemacdr-admin-apiinvocationmetricsv2"></a>
+<a id="schemacdr-admin-apiinvocationmetricsv3"></a>
 
 ```json
 {
@@ -1026,9 +1171,9 @@ This operation may only be called by the CDR Register
 |»»» currentDay|number|conditional|Average response time for current day|
 |»»» previousDays|[number]|conditional|Average response time for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.|
 
-<h3 class="schema-toc" id="tocSsessioncountmetrics">SessionCountMetrics</h3>
+<h3 class="schema-toc" id="tocSsessioncountmetricsv2">SessionCountMetricsV2</h3>
 
-<a id="schemacdr-admin-apisessioncountmetrics"></a>
+<a id="schemacdr-admin-apisessioncountmetricsv2"></a>
 
 ```json
 {
@@ -1049,9 +1194,9 @@ This operation may only be called by the CDR Register
 |currentDay|[NaturalNumber](#common-field-types)|conditional|Session count for current day|
 |previousDays|[integer]|conditional|Session count for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available|
 
-<h3 class="schema-toc" id="tocSaveragetpsmetrics">AverageTPSMetrics</h3>
+<h3 class="schema-toc" id="tocSaveragetpsmetricsv2">AverageTPSMetricsV2</h3>
 
-<a id="schemacdr-admin-apiaveragetpsmetrics"></a>
+<a id="schemacdr-admin-apiaveragetpsmetricsv2"></a>
 
 ```json
 {
@@ -1093,9 +1238,9 @@ This operation may only be called by the CDR Register
 |» currentDay|number|conditional|Average TPS for current day. Must be a positive value or zero|
 |» previousDays|[number]|conditional|Average TPS for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. Values must be a positive or zero|
 
-<h3 class="schema-toc" id="tocSpeaktpsmetrics">PeakTPSMetrics</h3>
+<h3 class="schema-toc" id="tocSpeaktpsmetricsv2">PeakTPSMetricsV2</h3>
 
-<a id="schemacdr-admin-apipeaktpsmetrics"></a>
+<a id="schemacdr-admin-apipeaktpsmetricsv2"></a>
 
 ```json
 {
@@ -1137,9 +1282,9 @@ This operation may only be called by the CDR Register
 |» currentDay|number|conditional|Peak TPS for current day. Must be a positive value or zero|
 |» previousDays|[number]|conditional|Peak TPS for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. Values must be a positive or zero|
 
-<h3 class="schema-toc" id="tocSerrormetrics">ErrorMetrics</h3>
+<h3 class="schema-toc" id="tocSerrormetricsv2">ErrorMetricsV2</h3>
 
-<a id="schemacdr-admin-apierrormetrics"></a>
+<a id="schemacdr-admin-apierrormetricsv2"></a>
 
 ```json
 {
@@ -1205,9 +1350,9 @@ This operation may only be called by the CDR Register
 |»»» **additionalProperties**|[NaturalNumber](#common-field-types)|optional|Number of errors for a specific HTTP error code.  Note that the property name must be 3 digits represent the HTTP error code the error is for|
 |»»» 500|[NaturalNumber](#common-field-types)|optional|Number of errors for HTTP error code 500.  Note that this field is an example of a single entry due to the lack of OAS support JSON Schema `patternProperties` syntax.  See the `additionalProperties` field in this schema for the generic property structure for error code counts|
 
-<h3 class="schema-toc" id="tocSrejectionmetricsv2">RejectionMetricsV2</h3>
+<h3 class="schema-toc" id="tocSrejectionmetricsv3">RejectionMetricsV3</h3>
 
-<a id="schemacdr-admin-apirejectionmetricsv2"></a>
+<a id="schemacdr-admin-apirejectionmetricsv3"></a>
 
 ```json
 {
@@ -1240,9 +1385,9 @@ This operation may only be called by the CDR Register
 |» currentDay|[NaturalNumber](#common-field-types)|conditional|Number of calls rejected for current day|
 |» previousDays|[integer]|conditional|Number of calls rejected for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.|
 
-<h3 class="schema-toc" id="tocSsecondaryholdermetrics">SecondaryHolderMetrics</h3>
+<h3 class="schema-toc" id="tocSsecondaryholdermetricsv2">SecondaryHolderMetricsV2</h3>
 
-<a id="schemacdr-admin-apisecondaryholdermetrics"></a>
+<a id="schemacdr-admin-apisecondaryholdermetricsv2"></a>
 
 ```json
 {
@@ -1274,6 +1419,135 @@ This operation may only be called by the CDR Register
 |rejections|object|mandatory|Number of calls rejected due to traffic thresholds over time|
 |» currentDay|[NaturalNumber](#common-field-types)|conditional|Number of rejections for current day|
 |» previousDays|[integer]|conditional|Number of rejections for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available|
+
+<h3 class="schema-toc" id="tocSauthorisationmetrics">AuthorisationMetrics</h3>
+
+<a id="schemacdr-admin-apiauthorisationmetrics"></a>
+
+```json
+{
+  "activeAuthorisationCount": {
+    "individual": 0,
+    "nonIndividual": 0
+  },
+  "newAuthorisationCount": {
+    "currentDay": {
+      "onceOff": {
+        "individual": 0,
+        "nonIndividual": 0
+      },
+      "ongoing": {
+        "individual": 0,
+        "nonIndividual": 0
+      }
+    },
+    "previousDays": [
+      {
+        "onceOff": {
+          "individual": 0,
+          "nonIndividual": 0
+        },
+        "ongoing": {
+          "individual": 0,
+          "nonIndividual": 0
+        }
+      }
+    ]
+  },
+  "revokedAuthorisationCount": {
+    "currentDay": {
+      "individual": 0,
+      "nonIndividual": 0
+    },
+    "previousDays": [
+      {
+        "individual": 0,
+        "nonIndividual": 0
+      }
+    ]
+  },
+  "amendedAuthorisationCount": {
+    "currentDay": {
+      "individual": 0,
+      "nonIndividual": 0
+    },
+    "previousDays": [
+      {
+        "individual": 0,
+        "nonIndividual": 0
+      }
+    ]
+  },
+  "expiredAuthorisationCount": {
+    "currentDay": {
+      "individual": 0,
+      "nonIndividual": 0
+    },
+    "previousDays": [
+      {
+        "individual": 0,
+        "nonIndividual": 0
+      }
+    ]
+  },
+  "abandonedConsentFlowCount": {
+    "currentDay": 0,
+    "previousDays": [
+      0
+    ]
+  }
+}
+
+```
+
+*Authorisation counts for the data holder*
+
+### Properties
+
+|Name|Type|Required|Description|
+|---|---|---|---|
+|activeAuthorisationCount|object|mandatory|The number of active ongoing authorisations|
+|» individual|[NaturalNumber](#common-field-types)|mandatory|Active ongoing authorisation count for individual customers|
+|» nonIndividual|[NaturalNumber](#common-field-types)|mandatory|Active ongoing authorisation count for non-individual customers|
+|newAuthorisationCount|object|mandatory|The number of new authorisations|
+|» currentDay|object|conditional|Number of new authorisations for the current day|
+|»» onceOff|object|mandatory|New authorisation count for once-off authorisations|
+|»»» individual|[NaturalNumber](#common-field-types)|mandatory|New authorisation count for individual customers|
+|»»» nonIndividual|[NaturalNumber](#common-field-types)|mandatory|New authorisation count for non-individual customers|
+|»» ongoing|object|mandatory|New authorisation count for ongoing authorisations|
+|»»» individual|[NaturalNumber](#common-field-types)|mandatory|New authorisation count for individual customers|
+|»»» nonIndividual|[NaturalNumber](#common-field-types)|mandatory|New authorisation count for non-individual customers|
+|»» previousDays|[object]|conditional|Number of new authorisations for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available|
+|»»» onceOff|object|mandatory|New authorisation count for once-off authorisations|
+|»»»» individual|[NaturalNumber](#common-field-types)|mandatory|New authorisation count for individual customers|
+|»»»» nonIndividual|[NaturalNumber](#common-field-types)|mandatory|New authorisation count for non-individual customers|
+|»»» ongoing|object|mandatory|New authorisation count for ongoing authorisations|
+|»»»» individual|[NaturalNumber](#common-field-types)|mandatory|New authorisation count for individual customers|
+|»»»» nonIndividual|[NaturalNumber](#common-field-types)|mandatory|New authorisation count for non-individual customers|
+|»»» revokedAuthorisationCount|object|mandatory|The number of revoked authorisations|
+|»»»» currentDay|object|conditional|Number of revoked authorisations for the current day|
+|»»»»» individual|[NaturalNumber](#common-field-types)|mandatory|Revoked authorisation count for individual customers|
+|»»»»» nonIndividual|[NaturalNumber](#common-field-types)|mandatory|Revoked authorisation count for non-individual customers|
+|»»»» previousDays|[object]|conditional|Number of revoked authorisations for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available|
+|»»»»» individual|[NaturalNumber](#common-field-types)|mandatory|Revoked authorisation count for individual customers|
+|»»»»» nonIndividual|[NaturalNumber](#common-field-types)|mandatory|Revoked authorisation count for non-individual customers|
+|»»»» amendedAuthorisationCount|object|mandatory|The number of amended ongoing authorisations|
+|»»»»» currentDay|object|conditional|Number of amended authorisations for the current day|
+|»»»»»» individual|[NaturalNumber](#common-field-types)|mandatory|Amended authorisation count for individual customers|
+|»»»»»» nonIndividual|[NaturalNumber](#common-field-types)|mandatory|Amended authorisation count for non-individual customers|
+|»»»»» previousDays|[object]|conditional|Number of amended authorisations for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available|
+|»»»»»» individual|[NaturalNumber](#common-field-types)|mandatory|Amended authorisation count for individual customers|
+|»»»»»» nonIndividual|[NaturalNumber](#common-field-types)|mandatory|Amended authorisation count for non-individual customers|
+|»»»»» expiredAuthorisationCount|object|mandatory|The number of expired ongoing authorisations|
+|»»»»»» currentDay|object|conditional|Number of expired authorisations for the current day|
+|»»»»»»» individual|[NaturalNumber](#common-field-types)|mandatory|Expired authorisation count for individual customers|
+|»»»»»»» nonIndividual|[NaturalNumber](#common-field-types)|mandatory|Expired authorisation count for non-individual customers|
+|»»»»»» previousDays|[object]|conditional|Number of expired authorisations for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available|
+|»»»»»»» individual|[NaturalNumber](#common-field-types)|mandatory|Expired authorisation count for individual customers|
+|»»»»»»» nonIndividual|[NaturalNumber](#common-field-types)|mandatory|Expired authorisation count for non-individual customers|
+|»»»»»» abandonedConsentFlowCount|object|mandatory|The number of consents flows that were not successfully authorised|
+|»»»»»»» currentDay|[NaturalNumber](#common-field-types)|conditional|Number of consents flows that were not successfully authorised for the current day|
+|»»»»»»» previousDays|[integer]|conditional|Number of consents flows that were not successfully authorised for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available|
 
 <h3 class="schema-toc" id="tocSlinks">Links</h3>
 
