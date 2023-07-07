@@ -126,7 +126,7 @@
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-R-Draft">[FAPI-R-Draft]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
@@ -459,7 +459,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-R-Draft">[FAPI-R-Draft]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
@@ -787,7 +787,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-R-Draft">[FAPI-R-Draft]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
@@ -1033,7 +1033,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-R-Draft">[FAPI-R-Draft]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
@@ -1263,7 +1263,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-R-Draft">[FAPI-R-Draft]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
@@ -1734,7 +1734,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-R-Draft">[FAPI-R-Draft]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
@@ -1999,7 +1999,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-R-Draft">[FAPI-R-Draft]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
@@ -2258,7 +2258,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-R-Draft">[FAPI-R-Draft]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
@@ -2536,7 +2536,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-R-Draft">[FAPI-R-Draft]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
@@ -2862,7 +2862,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-R-Draft">[FAPI-R-Draft]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
@@ -3049,6 +3049,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 <p><code>GET /banking/accounts/{accountId}/payments/scheduled</code></p>
 
 <p>Obtain scheduled, outgoing payments for a specific account</p>
+
+<p>Obsolete versions: <a href="includes/obsolete/get-scheduled-payments-for-account-v1.html">v1</a></p>
 <h3 id='endpoint-version-11'>Endpoint Version</h3>
 <table><thead>
 <tr>
@@ -3058,7 +3060,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>1</strong></td>
+<td><strong>2</strong></td>
 </tr>
 </tbody></table>
 
@@ -3120,7 +3122,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-R-Draft">[FAPI-R-Draft]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
@@ -3275,7 +3277,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>Success</td>
-<td><a href="#schemacdr-banking-apiresponsebankingscheduledpaymentslist">ResponseBankingScheduledPaymentsList</a></td>
+<td><a href="#schemacdr-banking-apiresponsebankingscheduledpaymentslistv2">ResponseBankingScheduledPaymentsListV2</a></td>
 </tr>
 <tr>
 <td>400</td>
@@ -3401,6 +3403,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 <p><code>GET /banking/payments/scheduled</code></p>
 
 <p>Obtain scheduled payments for multiple, filtered accounts that are the source of funds for the payments</p>
+
+<p>Obsolete versions: <a href="includes/obsolete/get-scheduled-payments-bulk-v1.html">v1</a></p>
 <h3 id='endpoint-version-12'>Endpoint Version</h3>
 <table><thead>
 <tr>
@@ -3410,7 +3414,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>1</strong></td>
+<td><strong>2</strong></td>
 </tr>
 </tbody></table>
 
@@ -3486,7 +3490,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-R-Draft">[FAPI-R-Draft]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
@@ -3709,7 +3713,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>Success</td>
-<td><a href="#schemacdr-banking-apiresponsebankingscheduledpaymentslist">ResponseBankingScheduledPaymentsList</a></td>
+<td><a href="#schemacdr-banking-apiresponsebankingscheduledpaymentslistv2">ResponseBankingScheduledPaymentsListV2</a></td>
 </tr>
 <tr>
 <td>400</td>
@@ -3825,6 +3829,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p>Obtain scheduled payments for a specified list of accounts</p>
 
+<p>Obsolete versions: <a href="includes/obsolete/get-scheduled-payments-for-specific-accounts-v1.html">v1</a></p>
+
 <blockquote>
 <p>Body parameter</p>
 </blockquote>
@@ -3845,7 +3851,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>1</strong></td>
+<td><strong>2</strong></td>
 </tr>
 </tbody></table>
 
@@ -3900,7 +3906,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-R-Draft">[FAPI-R-Draft]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
@@ -4062,7 +4068,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>Success</td>
-<td><a href="#schemacdr-banking-apiresponsebankingscheduledpaymentslist">ResponseBankingScheduledPaymentsList</a></td>
+<td><a href="#schemacdr-banking-apiresponsebankingscheduledpaymentslistv2">ResponseBankingScheduledPaymentsListV2</a></td>
 </tr>
 <tr>
 <td>400</td>
@@ -4248,7 +4254,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-R-Draft">[FAPI-R-Draft]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
@@ -4512,7 +4518,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-R-Draft">[FAPI-R-Draft]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
@@ -4754,7 +4760,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p>For this reason, while productCategory is a common field between accounts and products, there is no specific ID that can be used to link an account to a product within the regime.</p>
 
-<p>Similarly, many of the fields and objects in the product payload will appear in the account detail payload but the structures and semantics are not identical as one refers to a product that can potentially be originated and one refers to an account that actual has been instantiated and created along with the associated decisions inherent in that process.</p>
+<p>Similarly, many of the fields and objects in the product payload will appear in the account detail payload but the structures and semantics are not identical as one refers to a product that can potentially be originated and one refers to an account that actually has been instantiated and created along with the associated decisions inherent in that process.</p>
 <h4 id='dates'>Dates</h4>
 <p>It is expected that data consumers needing this data will call relatively frequently to ensure the data they have is representative of the current offering from a bank.  To minimise the volume and frequency of these calls the ability to set a lastUpdated field with the date and time of the last update to this product is included.  A call for a list of products can then be filtered to only return products that have been updated since the last time that data was obtained using the updated-since query parameter.</p>
 
@@ -10147,7 +10153,7 @@ This operation does not require authentication
 <td>name</td>
 <td>string</td>
 <td>mandatory</td>
-<td>The name assigned to the digital wallet by the owner of the wallet, else the display name provided by the digital wallet provider</td>
+<td>The display name of the wallet as given by the customer, else a default value defined by the data holder</td>
 </tr>
 <tr>
 <td>identifier</td>
@@ -10368,9 +10374,9 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSresponsebankingscheduledpaymentslist">ResponseBankingScheduledPaymentsList</h3>
+<h3 class="schema-toc" id="tocSresponsebankingscheduledpaymentslistv2">ResponseBankingScheduledPaymentsListV2</h3>
 
-<p><a id="schemacdr-banking-apiresponsebankingscheduledpaymentslist"></a></p>
+<p><a id="schemacdr-banking-apiresponsebankingscheduledpaymentslistv2"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"scheduledPayments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -10506,7 +10512,7 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>» scheduledPayments</td>
-<td>[<a href="#schemacdr-banking-apibankingscheduledpayment">BankingScheduledPayment</a>]</td>
+<td>[<a href="#schemacdr-banking-apibankingscheduledpaymentv2">BankingScheduledPaymentV2</a>]</td>
 <td>mandatory</td>
 <td>The list of scheduled payments to return</td>
 </tr>
@@ -10524,9 +10530,9 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSbankingscheduledpayment">BankingScheduledPayment</h3>
+<h3 class="schema-toc" id="tocSbankingscheduledpaymentv2">BankingScheduledPaymentV2</h3>
 
-<p><a id="schemacdr-banking-apibankingscheduledpayment"></a></p>
+<p><a id="schemacdr-banking-apibankingscheduledpaymentv2"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"scheduledPaymentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"nickname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -10675,7 +10681,7 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>paymentSet</td>
-<td>[<a href="#schemacdr-banking-apibankingscheduledpaymentset">BankingScheduledPaymentSet</a>]</td>
+<td>[<a href="#schemacdr-banking-apibankingscheduledpaymentsetv2">BankingScheduledPaymentSetV2</a>]</td>
 <td>mandatory</td>
 <td>[The set of payment amounts and destination accounts for this payment accommodating multi-part payments. A single entry indicates a simple payment with one destination account. Must have at least one entry]</td>
 </tr>
@@ -10707,9 +10713,9 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSbankingscheduledpaymentset">BankingScheduledPaymentSet</h3>
+<h3 class="schema-toc" id="tocSbankingscheduledpaymentsetv2">BankingScheduledPaymentSetV2</h3>
 
-<p><a id="schemacdr-banking-apibankingscheduledpaymentset"></a></p>
+<p><a id="schemacdr-banking-apibankingscheduledpaymentsetv2"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"to"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"toUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"accountId"</span><span class="p">,</span><span class="w">
@@ -10784,7 +10790,7 @@ This operation does not require authentication
 </thead><tbody>
 <tr>
 <td>to</td>
-<td><a href="#schemacdr-banking-apibankingscheduledpaymentto">BankingScheduledPaymentTo</a></td>
+<td><a href="#schemacdr-banking-apibankingscheduledpaymenttov2">BankingScheduledPaymentToV2</a></td>
 <td>mandatory</td>
 <td>Object containing details of the destination of the payment. Used to specify a variety of payment destination types</td>
 </tr>
@@ -10808,9 +10814,9 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSbankingscheduledpaymentto">BankingScheduledPaymentTo</h3>
+<h3 class="schema-toc" id="tocSbankingscheduledpaymenttov2">BankingScheduledPaymentToV2</h3>
 
-<p><a id="schemacdr-banking-apibankingscheduledpaymentto"></a></p>
+<p><a id="schemacdr-banking-apibankingscheduledpaymenttov2"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"toUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"accountId"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">

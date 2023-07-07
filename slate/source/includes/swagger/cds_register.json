@@ -8,7 +8,7 @@
     "url" : "https://<register-base-url>/"
   } ],
   "paths" : {
-    "/.well-known/openid-configuration" : {
+    "/idp/.well-known/openid-configuration" : {
       "get" : {
         "description" : "Endpoint used by participants to discover the CDR Register OpenID configuration and obtain information needed to interact with it, including its OAuth 2.0 endpoint locations.\n\nThis endpoint does not require CORS.",
         "operationId" : "GetOpenIdProviderConfig",
@@ -28,7 +28,7 @@
         "tags" : [ "Register" ]
       }
     },
-    "/jwks" : {
+    "/cdr-register/v1/jwks" : {
       "get" : {
         "description" : "JWKS endpoint containing the public keys used by the CDR Register to validate the signature of issued SSAs and authenticate outbound calls to participants in the CDR.\n\nThis endpoint does not require CORS.",
         "operationId" : "Get JWKS",

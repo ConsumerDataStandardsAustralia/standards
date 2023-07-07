@@ -805,16 +805,16 @@
                                 <a href="#tocSbankingauthorisedentity" class="toc-h3 toc-link" data-title="BankingAuthorisedEntity">BankingAuthorisedEntity</a>
                               </li>
                               <li>
-                                <a href="#tocSresponsebankingscheduledpaymentslist" class="toc-h3 toc-link" data-title="ResponseBankingScheduledPaymentsList">ResponseBankingScheduledPaymentsList</a>
+                                <a href="#tocSresponsebankingscheduledpaymentslistv2" class="toc-h3 toc-link" data-title="ResponseBankingScheduledPaymentsListV2">ResponseBankingScheduledPaymentsListV2</a>
                               </li>
                               <li>
-                                <a href="#tocSbankingscheduledpayment" class="toc-h3 toc-link" data-title="BankingScheduledPayment">BankingScheduledPayment</a>
+                                <a href="#tocSbankingscheduledpaymentv2" class="toc-h3 toc-link" data-title="BankingScheduledPaymentV2">BankingScheduledPaymentV2</a>
                               </li>
                               <li>
-                                <a href="#tocSbankingscheduledpaymentset" class="toc-h3 toc-link" data-title="BankingScheduledPaymentSet">BankingScheduledPaymentSet</a>
+                                <a href="#tocSbankingscheduledpaymentsetv2" class="toc-h3 toc-link" data-title="BankingScheduledPaymentSetV2">BankingScheduledPaymentSetV2</a>
                               </li>
                               <li>
-                                <a href="#tocSbankingscheduledpaymentto" class="toc-h3 toc-link" data-title="BankingScheduledPaymentTo">BankingScheduledPaymentTo</a>
+                                <a href="#tocSbankingscheduledpaymenttov2" class="toc-h3 toc-link" data-title="BankingScheduledPaymentToV2">BankingScheduledPaymentToV2</a>
                               </li>
                               <li>
                                 <a href="#tocSbankingscheduledpaymentfrom" class="toc-h3 toc-link" data-title="BankingScheduledPaymentFrom">BankingScheduledPaymentFrom</a>
@@ -996,7 +996,7 @@
                                 <a href="#tocSenergyinvoicelistresponse" class="toc-h3 toc-link" data-title="EnergyInvoiceListResponse">EnergyInvoiceListResponse</a>
                               </li>
                               <li>
-                                <a href="#tocSenergybillinglistresponse" class="toc-h3 toc-link" data-title="EnergyBillingListResponse">EnergyBillingListResponse</a>
+                                <a href="#tocSenergybillinglistresponsev2" class="toc-h3 toc-link" data-title="EnergyBillingListResponseV2">EnergyBillingListResponseV2</a>
                               </li>
                               <li>
                                 <a href="#tocSresponseerrorlistv2" class="toc-h3 toc-link" data-title="ResponseErrorListV2">ResponseErrorListV2</a>
@@ -1077,13 +1077,13 @@
                                 <a href="#tocSenergyinvoiceaccountcharges" class="toc-h3 toc-link" data-title="EnergyInvoiceAccountCharges">EnergyInvoiceAccountCharges</a>
                               </li>
                               <li>
-                                <a href="#tocSenergybillingtransaction" class="toc-h3 toc-link" data-title="EnergyBillingTransaction">EnergyBillingTransaction</a>
+                                <a href="#tocSenergybillingtransactionv2" class="toc-h3 toc-link" data-title="EnergyBillingTransactionV2">EnergyBillingTransactionV2</a>
                               </li>
                               <li>
-                                <a href="#tocSenergybillingusagetransaction" class="toc-h3 toc-link" data-title="EnergyBillingUsageTransaction">EnergyBillingUsageTransaction</a>
+                                <a href="#tocSenergybillingusagetransactionv2" class="toc-h3 toc-link" data-title="EnergyBillingUsageTransactionV2">EnergyBillingUsageTransactionV2</a>
                               </li>
                               <li>
-                                <a href="#tocSenergybillingdemandtransaction" class="toc-h3 toc-link" data-title="EnergyBillingDemandTransaction">EnergyBillingDemandTransaction</a>
+                                <a href="#tocSenergybillingdemandtransactionv2" class="toc-h3 toc-link" data-title="EnergyBillingDemandTransactionV2">EnergyBillingDemandTransactionV2</a>
                               </li>
                               <li>
                                 <a href="#tocSenergybillingonceofftransaction" class="toc-h3 toc-link" data-title="EnergyBillingOnceOffTransaction">EnergyBillingOnceOffTransaction</a>
@@ -1788,6 +1788,10 @@ This text is an example of a new addition to the standards:
 
 <p>The table below highlights these areas of the standards.</p>
 
+<pre class="highlight diff tab-diff"><code>Removed legacy obligation dates more than 6 months in the past
+Fixed spelling of "Register"
+</code></pre>
+
 <table><thead>
 <tr>
 <th>Section</th>
@@ -1795,51 +1799,6 @@ This text is an example of a new addition to the standards:
 <th>Applicable Date</th>
 </tr>
 </thead><tbody>
-<tr>
-<td><a href="#get-metrics">Get Metrics V3</a></td>
-<td>Version 3 of this end point <strong>MUST</strong> be made available by affected data holders by October 1st 2022</td>
-<td>October 1st 2022</td>
-</tr>
-<tr>
-<td><a href="#error-codes">Standard Error Codes</a></td>
-<td>Data Holders <strong>MAY</strong> retire application-specific error codes in favour of standard error codes from November 1st 2022</td>
-<td>November 1st 2022</td>
-</tr>
-<tr>
-<td><a href="#cdr-arrangement-revocation-end-point">Data Recipient CDR Arrangement Endpoint</a></td>
-<td>From November 15th 2022, Data Recipients <strong>MUST</strong> validate the <code>cdr_arrangement_id</code>, if presented, is the same as the value included in the &quot;CDR Arrangement JWT&quot;.</td>
-<td>November 15th 2022</td>
-</tr>
-<tr>
-<td><a href="#get-energy-accounts">Get Energy Accounts V1</a></td>
-<td><ul><li>Data Holders <strong>MAY</strong> go-live on November 15 2022 with v1 of this end point</li><li>Data Holders <strong>MAY</strong> decommission v1 of this end point as soon v2 is supported</li></ul></td>
-<td>November 15th 2022</td>
-</tr>
-<tr>
-<td><a href="#get-energy-account-detail">Get Energy Account Detail V1</a></td>
-<td><ul><li>Data Holders <strong>MAY</strong> go-live on November 15 2022 with v1 of this end point</li><li>Data Holders <strong>MAY</strong> decommission v1 of this end point as soon v2 is supported</li></ul></td>
-<td>November 15th 2022</td>
-</tr>
-<tr>
-<td><a href="#get-account-detail">Get Account Detail V2</a></td>
-<td>Version 2 of this end point <strong>MUST</strong> be made available by affected data holders by November 30th 2022</td>
-<td>November 30th 2022</td>
-</tr>
-<tr>
-<td><a href="#get-customer-detail">Get Customer Detail V2</a></td>
-<td>Version 2 of this end point <strong>MUST</strong> be made available by affected data holders by November 30th 2022</td>
-<td>November 30th 2022</td>
-</tr>
-<tr>
-<td><a href="#get-product-detail">Get Product Detail V4</a></td>
-<td>Version 4 of this end point <strong>MUST</strong> be made available by affected data holders by November 30th 2022</td>
-<td>November 30th 2022</td>
-</tr>
-<tr>
-<td><a href="#get-metrics">Get Metrics V2</a></td>
-<td>Data holders <strong>MAY</strong> obsolete version 2 of this end point from December 5th 2022. Data Holders in the energy sector <strong>MAY</strong> go live with only Get Metrics v3 support. The CDR Register <strong>MUST</strong> upgrade their implementation to use version 3 by this time</td>
-<td>December 5th 2022</td>
-</tr>
 <tr>
 <td><a href="#get-account-detail">Get Account Detail V1</a></td>
 <td>Data holders <strong>MAY</strong> obsolete version 1 of this end point from February 28th 2023.  Data recipients <strong>MUST</strong> upgrade their implementations to use version 2 by this time</td>
@@ -1902,7 +1861,7 @@ This text is an example of a new addition to the standards:
 </tr>
 <tr>
 <td><a href="#https://consumerdatastandardsaustralia.github.io/standards/?examples#client-authentication">Private Key JWT Client Authentication</a></td>
-<td>Change to support <a href="#nref-RFC7521"><strong>[RFC7521]</strong></a> such that, until November 13th 2023, clients authenticating using Private Key JWT are <em>recommended</em> to provide the <code>client_id</code>, but no longer required. From November 13th 2023, it is then <em>optional</em> to provide the <code>client_id</code>. This applies to ADRs and the CDR Register authenticating with Data Holders and ADRs authenticating with the CDR Regsiter.</td>
+<td>Change to support <a href="#nref-RFC7521"><strong>[RFC7521]</strong></a> such that, until November 13th 2023, clients authenticating using Private Key JWT are <em>recommended</em> to provide the <code>client_id</code>, but no longer required. From November 13th 2023, it is then <em>optional</em> to provide the <code>client_id</code>. This applies to ADRs and the CDR Register authenticating with Data Holders and ADRs authenticating with the CDR Register.</td>
 <td>November 13th 2023</td>
 </tr>
 <tr>
@@ -1914,6 +1873,36 @@ This text is an example of a new addition to the standards:
 <td><a href="#get-account-detail">Get Account Detail V2</a></td>
 <td>Data Holders <strong>MAY</strong> decommission v2 of this end point from March 11th 2024</td>
 <td>March 11th 2024</td>
+</tr>
+<tr>
+<td><a href="#get-scheduled-payments-for-account">Get Scheduled Payments for Account V2</a></td>
+<td><ul><li>Data Holder <strong>MUST</strong> implement v2 of this endpoint by <strong>March 11th 2024</strong></li><li>Data Holders <strong>MAY</strong> obsolete v1 of this endpoint from <strong>September 9th 2024</strong></li></ul></td>
+<td>March 11th 2024</td>
+</tr>
+<tr>
+<td><a href="#get-scheduled-payments-bulk">Get Scheduled Payments Bulk V2</a></td>
+<td><ul><li>Data Holder <strong>MUST</strong> implement v2 of this endpoint by <strong>March 11th 2024</strong></li><li>Data Holders <strong>MAY</strong> obsolete v1 of this endpoint from <strong>September 9th 2024</strong></li></ul></td>
+<td>March 11th 2024</td>
+</tr>
+<tr>
+<td><a href="#get-scheduled-payments-for-specific-accounts">Get Scheduled Payments For Specific Accounts V2</a></td>
+<td><ul><li>Data Holder <strong>MUST</strong> implement v2 of this endpoint by <strong>March 11th 2024</strong></li><li>Data Holders <strong>MAY</strong> obsolete v1 of this endpoint from <strong>September 9th 2024</strong></li></ul></td>
+<td>March 11th 2024</td>
+</tr>
+<tr>
+<td><a href="#get-billing-for-account">Get Billing For Account V2</a></td>
+<td><ul><li>Data Holder <strong>MUST</strong> implement v2 of this endpoint by <strong>November 1st 2023</strong></li><li>Data Holders <strong>MAY</strong> obsolete v1 of this endpoint from <strong>September 9th 2024</strong></li></ul></td>
+<td>November 1st 2023</td>
+</tr>
+<tr>
+<td><a href="#get-bulk-billing">Get Bulk Billing V2</a></td>
+<td><ul><li>Data Holder <strong>MUST</strong> implement v2 of this endpoint by <strong>November 1st 2023</strong></li><li>Data Holders <strong>MAY</strong> obsolete v1 of this endpoint from <strong>September 9th 2024</strong></li></ul></td>
+<td>November 1st 2023</td>
+</tr>
+<tr>
+<td><a href="#get-billing-for-specific-accounts">Get Billing For Specific Accounts V2</a></td>
+<td><ul><li>Data Holder <strong>MUST</strong> implement v2 of this endpoint by <strong>November 1st 2023</strong></li><li>Data Holders <strong>MAY</strong> obsolete v1 of this endpoint from <strong>September 9th 2024</strong></li></ul></td>
+<td>November 1st 2023</td>
 </tr>
 </tbody></table>
 
@@ -1973,8 +1962,12 @@ This text is an example of a new addition to the standards:
 
 <p>A table-view of all endpoint versioning is available <a href='includes/endpoint-version-schedule/#endpoint-version-schedule'>here</a>.</p>
 
-<h2 id='normative-references'>Normative References</h2>
-
+<h2 id='normative-references'>Normative References</h2><pre class="highlight diff tab-diff"><code>Removed legacy FAPI references:
+<span class="gd">- FAPI-R-Draft
+- FAPI-RW-Draft
+</span>
+Updated PAR references to refer to RFC9126
+</code></pre>
 <table><thead>
 <tr>
 <th><strong>Reference</strong></th>
@@ -1986,16 +1979,6 @@ This text is an example of a new addition to the standards:
 <td><a id="nref-DCR"></a><strong>[DCR]</strong></td>
 <td>OAuth 2.0 Dynamic Client Registration Protocol: <a href="https://datatracker.ietf.org/doc/html/rfc7591">https://datatracker.ietf.org/doc/html/rfc7591</a></td>
 <td>Jul 2015</td>
-</tr>
-<tr>
-<td><a id="nref-FAPI-R-Draft"></a><strong>[FAPI-R-Draft]</strong></td>
-<td>Financial-grade API - Part 1: Read Only API Security Profile: <a href="https://openid.net/specs/openid-financial-api-part-1-ID2.html">https://openid.net/specs/openid-financial-api-part-1-ID2.html</a></td>
-<td>Draft-06</td>
-</tr>
-<tr>
-<td><a id="nref-FAPI-RW-Draft"></a><strong>[FAPI-RW-Draft]</strong></td>
-<td>Financial-grade API - Part 2: Read and Write API Security Profile: <a href="https://openid.net/specs/openid-financial-api-part-2-ID2.html">https://openid.net/specs/openid-financial-api-part-2-ID2.html</a></td>
-<td>Draft-06</td>
 </tr>
 <tr>
 <td><a id="nref-FAPI-1-0-Baseline"></a><strong>[FAPI-1.0-Baseline]</strong></td>
@@ -2064,8 +2047,8 @@ This text is an example of a new addition to the standards:
 </tr>
 <tr>
 <td><a id="nref-PAR"></a><strong>[PAR]</strong></td>
-<td>OAuth 2.0 Pushed Authorization Requests: <a href="https://tools.ietf.org/html/draft-ietf-oauth-par-01">https://tools.ietf.org/html/draft-ietf-oauth-par-01</a></td>
-<td>Feb 2020</td>
+<td>OAuth 2.0 Pushed Authorization Requests RFC9126: <a href="https://tools.ietf.org/html/rfc9126">https://tools.ietf.org/html/rfc9126</a></td>
+<td>Sep 2021</td>
 </tr>
 <tr>
 <td><a id="nref-RFC7636"></a><a id="nref-PKCE"></a><strong>[PKCE]</strong></td>
@@ -2148,7 +2131,6 @@ This text is an example of a new addition to the standards:
 <td>Sep 2021</td>
 </tr>
 </tbody></table>
-
 <h2 id='informative-references'>Informative References</h2>
 
 <table><thead>
@@ -2498,7 +2480,8 @@ The Resource Path is intended to be the portion of the URL including the Base Pa
 <code>Accept-Encoding: charset=UTF-8</code><br>
 <code>Accept: AppliCAtion/JSon;Charset=uTf-8</code>  </p>
 </blockquote>
-
+<pre class="highlight diff tab-diff"><code>Replaced FAPI draft references with FAPI 1.0 Final references. References pertain to the x-fapi-auth-date header.
+</code></pre>
 <table><thead>
 <tr>
 <th>Header Field</th>
@@ -2538,7 +2521,7 @@ The Resource Path is intended to be the portion of the URL including the Base Pa
 </tr>
 <tr>
 <td><strong>x-fapi-auth-date</strong></td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-R-Draft">[FAPI-R-Draft]</a></strong>.  Required for all resource calls (customer present and unattended).   Not required for unauthenticated calls.</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>.  Required for all resource calls (customer present and unattended).   Not required for unauthenticated calls.</td>
 <td>Conditional</td>
 </tr>
 <tr>
@@ -4508,22 +4491,13 @@ The standards in this section outline requirements that apply when a disclosure 
 </tbody></table>
 <h1 style="display:none"></h1>
 <h1 id='security-profile'>Security Profile</h1>
-<h2 id='overview'>Overview</h2>
-
-<p><strong>Until September 16th 2022</strong></p>
-
-<p>This information security profile builds upon the foundations of the <a href="https://openid.net/specs/openid-financial-api-part-2.html">Financial-grade API Read Write Profile</a> <strong><a href="#nref-FAPI-RW-Draft">[FAPI-RW-Draft]</a></strong> and other standards relating to
-<a href="http://openid.net/specs/openid-connect-core-1_0.html">Open ID Connect 1.0</a> <strong><a href="#nref-OIDC">[OIDC]</a></strong>.</p>
-
-<p><strong>From September 16th 2022</strong></p>
-
+<h2 id='overview'>Overview</h2><pre class="highlight diff tab-diff"><code>Removed legacy phasing of FAPI draft specifications. Only FAPI 1.0 Final is relied upon.
+</code></pre>
 <p>This information security profile builds upon the foundations of the <a href="https://openid.net/specs/openid-financial-api-part-2-1_0.html">Financial-grade API Advanced Profile</a> <strong><a href="#nref-FAPI-1-0-Advanced">[FAPI-1.0-Advanced]</a></strong> and other standards relating to
 <a href="http://openid.net/specs/openid-connect-core-1_0.html">Open ID Connect 1.0</a> <strong><a href="#nref-OIDC">[OIDC]</a></strong>.</p>
 
 <p>For information on the specific normative references that underpin this profile refer to the <a href="#normative-references">Normative References section</a>.</p>
-
 <h3 id='symbols-and-abbreviated-terms'>Symbols and Abbreviated terms</h3>
-
 <ul>
 <li>  <strong>API</strong>: Application Programming Interface</li>
 <li>  <strong>CA</strong>: Certificate Authority</li>
@@ -4689,29 +4663,13 @@ Recipients. Data Holders and Data Recipients <strong>MUST</strong> be created as
 <li>offering additional or alternative services</li>
 <li>reference or inclusion of other documents</li>
 </ul>
-
-<p><strong>From July 4th 2022 (FAPI 1.0 Migration Phase 1)</strong>, the following requirements apply:</p>
-
+<pre class="highlight diff tab-diff"><code>Removed legacy phasing requirements for FAPI 1.0 Final
+</code></pre>
 <ul>
-<li>  Data Holders that do not support <strong><a href="#nref-PKCE">[PKCE]</a></strong> <strong>MUST</strong> ignore PKCE claims and <strong>MUST NOT</strong> reject clients sending PKCE claims.</li>
-<li>Data Holders <strong>MUST NOT</strong> reject requests with a &quot;x-fapi-customer-ip-address&quot; header containing a valid IPv4 or IPv6 address.</li>
-<li>  Data Holders <strong>MAY</strong> support FAPI 1.0 Advanced Profile (<strong><a href="#nref-FAPI-1-0-Advanced">[FAPI-1.0-Advanced]</a></strong>).</li>
-<li>  Data Holders <strong>MAY</strong> support <strong><a href="#nref-PKCE">[PKCE]</a></strong> (<strong><a href="#nref-RFC7636">[RFC7636]</a></strong>).</li>
-<li>  Data Holders <strong>MAY</strong> allow the Authorization Code Flow, if supported, in accordance with FAPI 1.0 Advanced and <strong>MUST</strong> require <strong><a href="#nref-JARM">[JARM]</a></strong> and <strong><a href="#nref-PKCE">[PKCE]</a></strong>.</li>
+<li>Data Holders <strong>MUST</strong> support FAPI 1.0 Advanced Profile (<strong><a href="#nref-FAPI-1-0-Advanced">[FAPI-1.0-Advanced]</a></strong>).</li>
+<li>Data Holders <strong>MUST</strong> support Authorization Code Flow.<br></li>
+<li>Data Holders <strong>MUST</strong> support the OIDC Hybrid Flow.</li>
 </ul>
-
-<p><strong>From September 16th 2022 (FAPI 1.0 Migration Phase 2)</strong>, the following requirements apply in addition to the FAPI 1.0 Migration Phase 1 requirements:</p>
-
-<ul>
-<li>  Data Holders <strong>MUST</strong> support the OIDC Hybrid Flow.</li>
-<li>  Data Holders <strong>MUST</strong> support FAPI 1.0 Advanced Profile (<strong><a href="#nref-FAPI-1-0-Advanced">[FAPI-1.0-Advanced]</a></strong>).</li>
-<li>  Data Holders <strong>MAY</strong> support <strong><a href="#nref-PKCE">[PKCE]</a></strong> (<strong><a href="#nref-RFC7636">[RFC7636]</a></strong>).</li>
-<li>  Data Holders <strong>SHOULD</strong> support Authorization Code Flow.</li>
-</ul>
-
-<p><strong>From April 14th 2023 (FAPI 1.0 Migration Phase 3),</strong> the following requirements apply in addition to the FAPI 1.0 Migration Phase 2 requirements:<br>
-* Data Holders <strong>MUST</strong> support Authorization Code Flow.<br>
-* Data Holders <strong>MUST</strong> support the OIDC Hybrid Flow.</p>
 
 <p><strong>From July 10th 2023 (FAPI 1.0 Migration Phase 4),</strong>   </p>
 
@@ -4724,20 +4682,14 @@ Recipients. Data Holders and Data Recipients <strong>MUST</strong> be created as
 <ul>
 <li>Data Recipient Software Products <strong>SHOULD</strong> record the following information each time an authorisation flow is executed: username (consumer’s ID at the Data Recipient Software Product), timestamp, IP, consent scopes and duration.</li>
 </ul>
-
-<p><strong>From July 4th 2022 (FAPI 1.0 Migration Phase 1)</strong>, the following requirements apply:</p>
-
+<pre class="highlight diff tab-diff"><code>Removed legacy phasing requirements for FAPI 1.0 Final
+</code></pre>
 <ul>
-<li>  Data Recipient Software Products <strong>SHOULD NOT</strong> reuse &quot;authorization_code&quot; values, and if reused, it will be rejected.</li>
+<li>Data Recipient Software Products <strong>SHOULD NOT</strong> reuse &quot;authorization_code&quot; values, and if reused, it will be rejected.</li>
 <li>Data Recipient Software Products <strong>MAY</strong> send requests with a &quot;x-fapi-customer-ip-address&quot; header containing a valid IPv4 or IPv6 address.</li>
-</ul>
-
-<p><strong>From September 16th 2022</strong>, the following requirements apply in addition to the FAPI 1.0 Migration Phase 1 requirements:</p>
-
-<ul>
-<li>  Data Recipient Software Products <strong>MUST</strong> support FAPI 1.0 Advanced Profile (<strong><a href="#nref-FAPI-1-0-Advanced">[FAPI-1.0-Advanced]</a></strong>).</li>
+<li>Data Recipient Software Products <strong>MUST</strong> support FAPI 1.0 Advanced Profile (<strong><a href="#nref-FAPI-1-0-Advanced">[FAPI-1.0-Advanced]</a></strong>).</li>
 <li>Data Recipient Software Products <strong>MUST</strong> use <strong><a href="#nref-RFC9126">[RFC9126]</a></strong> (PAR) with <strong><a href="#nref-PKCE">[PKCE]</a></strong> (<strong><a href="#nref-RFC7636">[RFC7636]</a></strong>) and, if supported, <strong>MUST</strong> use S256 as the code challenge method.</li>
-<li>  Data Recipient Software Products <strong>SHOULD</strong> use Authorization Code Flow.</li>
+<li>Data Recipient Software Products <strong>SHOULD</strong> use Authorization Code Flow.</li>
 </ul>
 
 <p><a id="hybrid-flow"></a></p>
@@ -5084,14 +5036,15 @@ grant_type=client_credentials&amp;
 <blockquote>
 <p>An SSA is a digitally signed JSON Web Token (JWT) created in accordance with <strong><a href="#nref-JWT">[JWT]</a></strong> that asserts metadata values about the client software.</p>
 </blockquote>
-
+<pre class="highlight diff tab-diff"><code>Replaced FAPI draft references with FAPI 1.0 Final references
+</code></pre>
 <p>Such that:</p>
 
 <ul>
 <li>The CDR Register <strong>MUST</strong> issue Software Statements to <strong>active</strong> Data Recipients for <strong>active</strong> Software Products</li>
 <li>The CDR Register <strong>MUST</strong> issue distinct Software Statements for each <code>Software Product ID</code></li>
 <li>Software Statements are issued with a <strong>10 minute</strong> expiry time</li>
-<li>As per <strong><a href="#nref-FAPI-RW-Draft">[FAPI-RW-Draft]</a></strong>, SSAs are signed by the CDR Register using <strong>PS256</strong></li>
+<li>As per <strong><a href="#nref-FAPI-1-0-Advanced">[FAPI-1.0-Advanced]</a></strong>, SSAs are signed by the CDR Register using <strong>PS256</strong></li>
 <li>CDR Register public keys are exposed on a dedicated JWKS URI endpoint</li>
 <li>The CDR Register <a href="#get-jwks">JWKS endpoint</a> is an unauthenticated endpoint, using TLS</li>
 <li>Data Recipients <strong>MUST</strong> present a valid SSA when undertaking dynamic client registration</li>
@@ -5406,17 +5359,19 @@ Accept: application/json
 {
   "signature":...
 }
+</code></pre><pre class="highlight diff tab-diff"><code>Replaced FAPI draft references with FAPI 1.0 Final references
 </code></pre>
 <p>To register with a Data Holder, the Data Recipient sends an HTTP POST to the Data Holder registration endpoint.</p>
 
 <ul>
 <li>The request <strong>MUST</strong> be presented in the format of a <strong><a href="#nref-RFC7519">[RFC7519]</a></strong> compliant JWT.</li>
 <li>The request <strong>MUST</strong> use the HTTP POST method, using the <code>application/jwt</code> content type.</li>
-<li>The JWT <strong>MUST</strong> be signed using algorithms specified in <a href="https://openid.net/specs/openid-financial-api-part-2.html#jws-algorithm-considerations">section 8.6</a> of <strong><a href="#nref-FAPI-RW-Draft">[FAPI-RW-Draft]</a></strong></li>
+<li>The JWT <strong>MUST</strong> be signed using algorithms specified in <a href="https://openid.net/specs/openid-financial-api-part-2.html#jws-algorithm-considerations">section 8.6</a> of <strong><a href="#nref-FAPI-1-0-Advanced">[FAPI-1.0-Advanced]</a></strong></li>
 </ul>
 
 <p>The client registration request <strong>MUST</strong> contain the following claims in the JWT payload unless designated as Optional:</p>
-
+<pre class="highlight diff tab-diff"><code>Replaced FAPI draft references with FAPI 1.0 Final references
+</code></pre>
 <table><thead>
 <tr>
 <th>Claim</th>
@@ -5512,7 +5467,7 @@ Accept: application/json
 <tr>
 <td><strong>request_object_signing_alg</strong></td>
 <td>Optional</td>
-<td>Algorithm which the ADR expects to sign the request object if a request object will be part of the authorization request sent to the Data Holder</br></br>If field not present in the request, data holders are expected to respond with an appropriate default value</br></br>Supported values as constrained by <strong><a href="#nref-FAPI-RW-Draft">[FAPI-RW-Draft]</a></strong></td>
+<td>Algorithm which the ADR expects to sign the request object if a request object will be part of the authorization request sent to the Data Holder</br></br>If field not present in the request, data holders are expected to respond with an appropriate default value</br></br>Supported values as constrained by <strong><a href="#nref-FAPI-1-0-Advanced">[FAPI-1.0-Advanced]</a></strong></td>
 </tr>
 <tr>
 <td><strong>software_statement</strong></td>
@@ -5544,7 +5499,8 @@ Accept: application/json
 <p>Data Holders <strong>MUST</strong> support at a minimum, 1 algorithm for each claim.</p>
 
 <p>Data Recipients <strong>MUST</strong> support all the algorithms used in the ecosystem to ensure they can communicate with all Data Holders.</p>
-
+<pre class="highlight diff tab-diff"><code>Replaced FAPI draft references with FAPI 1.0 Final references
+</code></pre>
 <p>ID Token algorithm considerations remain relevant where the OIDC Hybrid Flow is leveraged as defined in the Consumer Data Standards and in accordance with sections <a href="https://openid.net/specs/openid-financial-api-part-2-1_0.html#id-token-as-detached-signature">5.1.1</a>, <a href="https://openid.net/specs/openid-financial-api-part-2-1_0.html#id-token-as-detached-signature-1">5.2.2.1</a>, and <a href="https://openid.net/specs/openid-financial-api-part-2-1_0.html#id-token-as-detached-signature-2">5.2.3.1</a> of <strong><a href="#nref-FAPI-1-0-Advanced">[FAPI-1.0-Advanced]</a></strong>.</p>
 <h4 id='jarm-response-encryption-considerations'>JARM Response Encryption Considerations</h4>
 <p>If Data Holders support authorisation response encryption, they <strong>MUST</strong> support, at a minimum, one of each of the following <code>alg</code> and <code>enc</code> algorithms:</p>
@@ -6138,15 +6094,18 @@ Data Holders <strong>SHOULD</strong> explicitly capture Claims requested by the 
 }
 </code></pre>
 <p>ID Tokens are specified in <a href="https://openid.net/specs/openid-connect-core-1_0.html#IDToken">section 2</a> of the <strong><a href="#nref-OIDC">[OIDC]</a></strong> standard.</p>
-<h4 id='baseline-id-token-requirements'>Baseline ID Token requirements</h4>
-<p>In addition to the mandatory claims specified in <a href="https://openid.net/specs/openid-connect-core-1_0.html#IDToken">section 2</a> of the <strong><a href="#nref-OIDC">[OIDC]</a></strong> standard, required claims for ID Tokens as part of Hybrid Flow authentication <strong>MUST</strong> align to <a href="https://openid.net/specs/openid-connect-core-1_0.html#HybridFlowAuth">section 3.3</a> (Authentication using the Hybrid Flow) of the <strong><a href="#nref-OIDC">[OIDC]</a></strong> standards and <a href="https://openid.net/specs/openid-financial-api-part-2.html#authorization-server">section 5.2.2</a> and <a href="https://openid.net/specs/openid-financial-api-part-2.html#authorization-response-parameter-injection-attack">section 8.4.3</a> of the <strong><a href="#nref-FAPI-RW-Draft">[FAPI-RW-Draft]</a></strong> profile.</p>
+<h4 id='baseline-id-token-requirements'>Baseline ID Token requirements</h4><pre class="highlight diff tab-diff"><code>Replaced FAPI draft references with FAPI 1.0 Final references
+</code></pre>
+<p>In addition to the mandatory claims specified in <a href="https://openid.net/specs/openid-connect-core-1_0.html#IDToken">section 2</a> of the <strong><a href="#nref-OIDC">[OIDC]</a></strong> standard, required claims for ID Tokens as part of Hybrid Flow authentication <strong>MUST</strong> align to <a href="https://openid.net/specs/openid-connect-core-1_0.html#HybridFlowAuth">section 3.3</a> (Authentication using the Hybrid Flow) of the <strong><a href="#nref-OIDC">[OIDC]</a></strong> standards and <a href="https://openid.net/specs/openid-financial-api-part-2-1_0.html#authorization-server">section 5.2.2</a> and <a href="https://openid.net/specs/openid-financial-api-part-2-1_0.html#authorization-response-parameter-injection-attack">section 8.4.3</a> of the <strong><a href="#nref-FAPI-1-0-Advanced">[FAPI-1.0-Advanced]</a></strong> profile.</p>
 
-<p>ID Tokens <strong>MUST</strong> be signed by Data Holders as specified in <a href="https://openid.net/specs/openid-financial-api-part-2.html#jws-algorithm-considerations">section 8.6</a> of <strong><a href="#nref-FAPI-RW-Draft">[FAPI-RW-Draft]</a></strong>.</p>
-<h4 id='oidc-hybrid-flow-requirements'>OIDC Hybrid Flow requirements</h4>
-<p>In accordance with <strong><a href="#nref-FAPI-RW-Draft">[FAPI-RW-Draft]</a></strong>, ID Tokens <strong>MUST</strong> be signed and encrypted when returned to a Data Recipient Software Product from both the Authorisation End Point and Token End Point.</p>
+<p>ID Tokens <strong>MUST</strong> be signed by Data Holders as specified in <a href="https://openid.net/specs/openid-financial-api-part-2-1_0.html#algorithm-considerations">section 8.6</a> of <strong><a href="#nref-FAPI-1-0-Advanced">[FAPI-1.0-Advanced]</a></strong>.</p>
+<h4 id='oidc-hybrid-flow-requirements'>OIDC Hybrid Flow requirements</h4><pre class="highlight diff tab-diff"><code>Replaced FAPI draft references with FAPI 1.0 Final references
+</code></pre>
+<p>In accordance with <strong><a href="#nref-FAPI-1-0-Advanced">[FAPI-1.0-Advanced]</a></strong>, ID Tokens <strong>MUST</strong> be signed and encrypted when returned to a Data Recipient Software Product from both the Authorisation End Point and Token End Point.</p>
 
 <p>The ID Token returned from the Authorisation End Point <strong>MUST NOT</strong> contain any Personal Information (PI) claims.</p>
-<h5 id='hashing-value-for-state-and-authorisation-code'>Hashing value for state and authorisation code</h5>
+<h5 id='hashing-value-for-state-and-authorisation-code'>Hashing value for state and authorisation code</h5><pre class="highlight diff tab-diff"><code>Replaced FAPI draft references with FAPI 1.0 Final references
+</code></pre>
 <p>The following requirements apply to the OIDC Hybrid Flow:</p>
 
 <ul>
@@ -6161,9 +6120,8 @@ Data Holders <strong>SHOULD</strong> explicitly capture Claims requested by the 
 <p>An Access Token <strong>MUST</strong> expire between <strong>2 minutes</strong> to <strong>10 minutes</strong> after the Data Holder issues it (at the discretion of the Data Holder).</p>
 
 <p>The process for refreshing an Access Token is described in <a href="https://openid.net/specs/openid-connect-core-1_0.html#RefreshingAccessToken">section 12.1</a> of <strong><a href="#nref-OIDC">[OIDC]</a></strong>.</p>
-
-<p><strong>From July 4th 2022 (FAPI 1.0 Migration Phase 1)</strong>, the following requirements apply:</p>
-
+<pre class="highlight diff tab-diff"><code>Removed legacy phasing requirements for FAPI 1.0 Final
+</code></pre>
 <ul>
 <li>Data Holders <strong>MUST</strong> reject token request with an authorization code (Section 1.3.1 of <strong><a href="#nref-RFC6749">[RFC6749]</a></strong>) if it has been previously used</li>
 </ul>
@@ -6175,15 +6133,8 @@ Data Holders <strong>SHOULD</strong> explicitly capture Claims requested by the 
 <p>The expiration time for a Refresh Token <strong>MUST</strong> be set by the Data Holder.</p>
 
 <p>Refresh Token expiration <strong>MAY</strong> be any length of time greater than 28 days but <strong>MUST NOT</strong> exceed the end of the duration of sharing consented to by the Consumer.</p>
-
-<p><strong>Until September 16th 2022</strong>:</p>
-
-<ul>
-<li>Data Holders <strong>MAY</strong> cycle Refresh Tokens when an Access Token is issued.  If Refresh Token cycling is not performed then the Refresh Token <strong>MUST NOT</strong> expire before the expiration of the sharing consented by the Customer.</li>
-</ul>
-
-<p><strong>From September 16th 2022 (FAPI 1.0 Migration Phase 2)</strong>:</p>
-
+<pre class="highlight diff tab-diff"><code>Removed legacy phasing requirements for FAPI 1.0 Final
+</code></pre>
 <ul>
 <li>  Data Holders <strong>MUST NOT</strong> cycle refresh tokens (rotation). In other words, Refresh Tokens <strong>SHOULD</strong> be issued with an &quot;exp&quot; equal to the sharing duration authorised by the Customer.</li>
 </ul>
@@ -6191,11 +6142,10 @@ Data Holders <strong>SHOULD</strong> explicitly capture Claims requested by the 
 <p>The expiry time for issued access tokens and refresh tokens <strong>MUST</strong> be deterministic for the Data Recipient Software Product.</p>
 
 <p>In order to achieve this:</p>
-
+<pre class="highlight diff tab-diff"><code>Removed legacy phasing requirements for FAPI 1.0 Final
+</code></pre>
 <ul>
 <li>The Data Holder <strong>MUST</strong> indicate the lifetime in seconds of the access token in the <code>expires_in</code> field of the JSON object returned by the token end-point (see <a href="https://tools.ietf.org/html/rfc6749#section-4.2.2">section 4.2.2</a> of <strong><a href="#nref-OAUTH2">[OAUTH2]</a></strong>).</li>
-<li><strong>Until September 16th 2022</strong>: The Data Holder <strong>MUST</strong> indicate the expiration time of the refresh token using the <code>refresh_token_expires_at</code> claim.</li>
-<li><strong>From September 16th 2022 (FAPI 1.0 Migration Phase 2)</strong> Data Holders <strong>MAY</strong> retire &quot;sharing_expires_at&quot; and &quot;refresh_token_expires_at&quot; claims.</li>
 </ul>
 
 <p><a id="identifiers"></a></p>
@@ -6367,8 +6317,9 @@ client_id=s6BhdRkqt3
 <p>OAUTB SHALL NOT be supported due to a lack industry support.</p>
 
 <p><strong><a href="#nref-MTLS">[MTLS]</a></strong> HoK allows issued tokens to be bound to a client certificate as specified in <a href="https://tools.ietf.org/id/draft-ietf-oauth-mtls-07.html#SenderConstrainedAccess">section 3</a> of <strong><a href="#nref-MTLS">[MTLS]</a></strong>.</p>
-<h3 id='ciphers'>Ciphers</h3>
-<p>Only the following cipher suites SHALL be permitted in accordance with <a href="https://openid.net/specs/openid-financial-api-part-2.html#tls-considerations">section 8.5</a> of <strong><a href="#nref-FAPI-RW-Draft">[FAPI-RW-Draft]</a></strong>:</p>
+<h3 id='ciphers'>Ciphers</h3><pre class="highlight diff tab-diff"><code>Replaced FAPI draft RW references with FAPI 1.0 Final Advanced references. References pertain to the TLS considerations.
+</code></pre>
+<p>Only the following cipher suites SHALL be permitted in accordance with <a href="https://openid.net/specs/openid-financial-api-part-2-1_0.html#tls-considerations">section 8.5</a> of <strong><a href="#nref-FAPI-1-0-Advanced">[FAPI-1.0-Advanced]</a></strong>:</p>
 
 <ul>
 <li>  TLS_DHE_RSA_WITH_AES_128_GCM_SHA256</li>
@@ -6589,7 +6540,8 @@ client_id=s6BhdRkqt3
 <p>Non-Normative Example - FAPI 1.0 Final Phase 3 Obligation  </p>
 </blockquote>
 
-<pre class="highlight plaintext"><code>#Decoded Request Object JWT
+<pre class="highlight diff tab-diff"><code><span class="gi">+ Added "response_mode" to the non normative example. This demonstrates the use of Authorization Code Flow in conjunction with JARM and FAPI 1.0
+</span></code></pre><pre class="highlight plaintext"><code>#Decoded Request Object JWT
 
 {
   "iss": "s6BhdRkqt3",
@@ -6597,6 +6549,7 @@ client_id=s6BhdRkqt3
   "nbf": 1680829200,
   "aud": "https://www.recipient.com.au",
   "response_type": "code",
+  "response_mode": "jwt",
   "client_id": "s6BhdRkqt3",
   "redirect_uri": "https://www.recipient.com.au/coolstuff",
   "scope": "openid profile bank:accounts.basic:read
@@ -6620,11 +6573,12 @@ client_id=s6BhdRkqt3
   "code_challenge": "ZTA2ZmFkYjUyMjA2NDNhZGVkYzE1M2I5OTYzZDAxNGI2NWNiZjAxMzVhNDlmMTk2NTlmZWE0OWVhOTQxZjhmZg==",
   "code_challenge_method": "S256"
 }
+</code></pre><pre class="highlight diff tab-diff"><code>Replaced FAPI draft references with FAPI 1.0 Final references
 </code></pre>
 
-<p>The Request Object is a signed and encoded JWT specified in <a href="https://openid.net/specs/openid-connect-core-1_0.html#RequestObject">section 6.1</a> of <strong>[OIDC]</strong>.  As per <strong><a href="#nref-FAPI-RW-Draft">[FAPI-RW-Draft]</a></strong> <a href="https://openid.net/specs/openid-financial-api-part-2.html#authorization-server">section 5.2.2</a>, the <code>request</code> parameter <strong>MUST</strong> be present on requests to the <strong>[OIDC]</strong> Hybrid Authorisation End Point. The Request Object enables <strong>[OIDC]</strong> requests to be passed in a single and self-contained parameter.</p>
+<p>The Request Object is a signed and encoded JWT specified in <a href="https://openid.net/specs/openid-connect-core-1_0.html#RequestObject">section 6.1</a> of <strong>[OIDC]</strong>.  As per <strong><a href="#nref-FAPI-1-0-Advanced">[FAPI-1.0-Advanced]</a></strong> <a href="https://openid.net/specs/openid-financial-api-part-2-1_0.html#authorization-server">section 5.2.2</a>, the <code>request</code> parameter <strong>MUST</strong> be present on requests to the <strong>[OIDC]</strong> Hybrid Authorisation End Point. The Request Object enables <strong>[OIDC]</strong> requests to be passed in a single and self-contained parameter.</p>
 
-<p>Request Objects <strong>MUST</strong> be signed by Data Recipient Software Products as specified in <a href="https://openid.net/specs/openid-financial-api-part-2.html#jws-algorithm-considerations">section 8.6</a> of <strong><a href="#nref-FAPI-RW-Draft">[FAPI-RW-Draft]</a></strong>.</p>
+<p>Request Objects <strong>MUST</strong> be signed by Data Recipient Software Products as specified in <a href="https://openid.net/specs/openid-financial-api-part-2-1_0.html#algorithm-considerations">section 8.6</a> of <strong><a href="#nref-FAPI-1-0-Advanced">[FAPI-1.0-Advanced]</a></strong>.</p>
 
 <p>Request Object references <strong>MUST</strong> be supported if the Data Holder supports Pushed Authorisation Requests (PAR).</p>
 
@@ -6672,18 +6626,8 @@ client_id=s6BhdRkqt3
 
 <p>Data Holders <strong>MUST</strong> support Pushed Authorisation Requests (PAR) via the pushed authorisation end point according to <strong><a href="#nref-PAR">[PAR]</a></strong>.</p>
 
-<p><strong>From July 4th 2022 (FAPI 1.0 Migration Phase 1)</strong>, the following requirements apply:</p>
-
-<ul>
-<li>Data Holders <strong>SHOULD</strong> support <strong><a href="#nref-RFC9126">[RFC9126]</a></strong>.</li>
-<li>Data Holders, if <strong><a href="#nref-RFC9126">[RFC9126]</a></strong> is supported, <strong>MUST</strong> use <strong><a href="#nref-PKCE">[PKCE]</a></strong> and &quot;code_challenge_methods_supported&quot; as defined in <strong><a href="#nref-RFC8414">[RFC8414]</a></strong> with S256 as the code challenge method.</li>
-<li>  Data Holders <strong>SHOULD</strong> reject the reuse of &quot;request_uri&quot; values.</li>
-<li>Data Holders <strong>SHOULD</strong> reject authorisation request containing &quot;request&quot; parameter.</li>
-<li>Data Holders <strong>MAY</strong> require <strong><a href="#nref-RFC9126">[RFC9126]</a></strong> (PAR) using &quot;require_pushed_authorization_requests&quot; set to &quot;true&quot; in accordance with <a href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-par#section-5">section 5</a> of <strong><a href="#nref-RFC9126">[RFC9126]</a></strong>.</li>
-<li>  Data Holders that do not support <strong><a href="#nref-PKCE">[PKCE]</a></strong> <strong>MUST</strong> ignore PKCE claims and <strong>MUST NOT</strong> reject clients sending PKCE claims.</li>
-</ul>
-
-<p><strong>From September 16th 2022 (FAPI 1.0 Migration Phase 2)</strong>, the following requirements apply in addition to the FAPI 1.0 Migration Phase 1 requirements:</p>
+<pre class="highlight diff tab-diff"><code>Removed legacy phasing requirements for FAPI 1.0 Final
+</code></pre>
 
 <ul>
 <li>Data Holders <strong>MUST</strong> support <strong><a href="#nref-RFC9126">[RFC9126]</a></strong> (PAR) using <strong><a href="#nref-PKCE">[PKCE]</a></strong> (<strong><a href="#nref-RFC7636">[RFC7636]</a></strong>) with S256 as the code challenge method in accordance with <strong><a href="#nref-FAPI-1-0-Advanced">[FAPI-1.0-Advanced]</a></strong> <a href="https://openid.net/specs/openid-financial-api-part-2-1_0.html#authorization-server">section 5.2.2</a>.</li>
@@ -6694,38 +6638,24 @@ client_id=s6BhdRkqt3
 <li>  Data Holders <strong>MUST</strong> reject the reuse of &quot;request_uri&quot; values.</li>
 </ul>
 
-<h4 id='data-recipient-software-products'>Data Recipient Software Products</h4>
-
-<p>Data Recipient Software Products <strong>MAY</strong> send authorisation requests using <strong><a href="#nref-PAR">[PAR]</a></strong> if supported by the Data Holder.</p>
-
-<p>Request objects which contain the <code>cdr_arrangement_id</code> claim <strong>MUST ONLY</strong> be sent using PAR.</p>
-
-<p><strong>From July 4th 2022 (FAPI 1.0 Migration Phase 1)</strong>, the following requirements apply:</p>
-
+<h4 id='data-recipient-software-products'>Data Recipient Software Products</h4><pre class="highlight diff tab-diff"><code>Removed legacy phasing requirements for FAPI 1.0 Final
+</code></pre>
 <ul>
-<li>Data Recipient Software Products <strong>SHOULD</strong> ONLY send authorisation requests using PAR in accordance with <a href="https://openid.net/specs/openid-financial-api-part-2-1_0.html#confidential-client">section 5.2.3</a> of <strong><a href="#nref-FAPI-1-0-Advanced">[FAPI-1.0-Advanced]</a></strong>.</li>
-<li>Data Recipients <strong>MUST only</strong> send request object data using PAR, and <strong>MUST NOT</strong> send request object data to the Data Holder&#39;s Authorization endpoint, if the Data Holder&#39;s &quot;require_pushed_authorization_requests&quot; parameter is set to &quot;true&quot;.</li>
-<li>  Data Recipients Software Products <strong>SHOULD</strong> support <strong><a href="#nref-PKCE">[PKCE]</a></strong> (<strong><a href="#nref-RFC7636">[RFC7636]</a></strong>) and, if supported, <strong>MUST</strong> use S256 as the code challenge method.</li>
 <li>  Data Recipients Software Products <strong>MUST</strong> send request object containing a &quot;nbf&quot; claim and an &quot;exp&quot; claim that has a lifetime of no longer than 60 minutes after the &quot;nbf&quot; claim.</li>
 <li>Data Recipient Software Products <strong>MUST</strong> ONLY use a &quot;request_uri&quot; value once</li>
-</ul>
-
-<p><strong>From September 16th 2022</strong>, the following requirements apply in addition to the FAPI 1.0 Migration Phase 1 requirements:</p>
-
-<ul>
 <li>Data Recipients <strong>MUST</strong> ONLY send authorisation request data using <strong><a href="#nref-RFC9126">[RFC9126]</a></strong> (PAR) and use <strong><a href="#nref-PKCE">[PKCE]</a></strong> (<strong><a href="#nref-RFC7636">[RFC7636]</a></strong>) in accordance with <strong><a href="#nref-FAPI-1-0-Advanced">[FAPI-1.0-Advanced]</a></strong>.</li>
 <li>  Data Recipients Software Products <strong>MUST</strong> support <strong><a href="#nref-PKCE">[PKCE]</a></strong> (<strong><a href="#nref-RFC7636">[RFC7636]</a></strong>) and <strong>MUST</strong> use S256 as the code challenge method.</li>
 </ul>
 
 <h2 id='security-endpoints'>Security Endpoints</h2>
-
 <h3 id='openid-provider-configuration-end-point'>OpenID Provider Configuration End Point</h3>
 
 <blockquote>
 <p>Non-Normative Example</p>
 </blockquote>
 
-<pre class="highlight plaintext"><code>## Request
+<pre class="highlight diff tab-diff"><code><span class="gi">+ Adds examples for all metadata parameters required by the Data Standards and upstream normative references
+</span></code></pre><pre class="highlight plaintext"><code>## Request
 
 GET /.well-known/openid-configuration HTTP/1.1
 Host: www.dh.com.au
@@ -6735,34 +6665,41 @@ Host: www.dh.com.au
 HTTP/1.1 200 OK
 Content-Type: application/json
 {
-  "issuer": "https://www.dh.com.au",
-  "authorization_endpoint": "https://www.dh.com.au/authorise",
-  "token_endpoint": "https://www.dh.com.au/token",
-  "introspection_endpoint": "https://www.dh.com.au/introspect",
-  "revocation_endpoint": "https://www.dh.com.au/revoke",
-  "userinfo_endpoint": "https://www.dh.com.au/userinfo",
-  "registration_endpoint": "https://www.dh.com.au/register",
-  "jwks_uri": "https://www.dh.com.au/jwks",
-  "scopes_supported": ["openid", "profile", "..."],
-  "response_types_supported": ["code id_token", "code"],
-  "response_modes_supported": ["fragment", "jwt"],
-  "grant_types_supported": ["authorization_code", "client_credentials", "urn:openid:params:modrna:grant-type:backchannel_request"],
   "acr_values_supported": ["urn:cds.au:cdr:2","urn:cds.au:cdr:3"],
-  "subject_types_supported": ["pairwise"],
-  "id_token_signing_alg_values_supported": ["ES256", "PS256"],
+  "authorization_endpoint": "https://www.dh.com.au/authorise",
+  "claims_supported": ["name", "given_name", "family_name", "acr", "auth_time", "sub", "refresh_token_expires_at", "sharing_expires_at"],
+  "grant_types_supported": ["authorization_code", "client_credentials", "urn:openid:params:modrna:grant-type:backchannel_request"],
   "id_token_encryption_alg_values_supported": [ "RSA-OAEP", "RSA-OAEP-256", "dir", "ECDH-ES", "ECDH-ES+A128KW", "ECDH-ES+A192KW", "ECDH-ES+A256KW", "A128KW", "A192KW", "A256KW", "A128GCMKW", "A192GCMKW", "A256GCMKW" ],
   "id_token_encryption_enc_values_supported": [ "A128CBC-HS256", "A192CBC-HS384", "A256CBC-HS512", "A128GCM", "A192GCM", "A256GCM" ],
-  "cdr_arrangement_revocation_endpoint": "https://data.holder.com.au/arrangements/revoke",
-  "pushed_authorization_request_endpoint": "https://data.holder.com.au/par",
+  "id_token_signing_alg_values_supported": ["ES256", "PS256"],
+  "issuer": "https://www.dh.com.au",
+  "jwks_uri": "https://www.dh.com.au/jwks",
+  "registration_endpoint": "https://www.dh.com.au/register",
   "request_object_signing_alg_values_supported": ["ES256", "PS256"],
+  "response_modes_supported": ["fragment", "jwt"],
+  "response_types_supported": ["code id_token", "code"],
+  "subject_types_supported": ["pairwise"],
+  "scopes_supported": ["openid", "profile", "..."],
+  "token_endpoint": "https://www.dh.com.au/token",
   "token_endpoint_auth_methods_supported": ["private_key_jwt"],
-  "tls_client_certificate_bound_access_tokens": true,
-  "claims_supported": ["name", "given_name", "family_name", "acr", "auth_time", "sub", "refresh_token_expires_at", "sharing_expires_at"],
-  "require_pushed_authorization_requests": true,
+  "token_endpoint_auth_signing_alg_values_supported": ["ES256", "PS256"],
+  "userinfo_endpoint": "https://www.dh.com.au/userinfo",
+
   "code_challenge_methods_supported": "S256",
-  "authorization_signing_alg_values_supported": ["ES256", "PS256"],
+  "introspection_endpoint": "https://www.dh.com.au/introspect",
+  "revocation_endpoint": "https://www.dh.com.au/revoke",
+
+  "tls_client_certificate_bound_access_tokens": true,
+
+  "pushed_authorization_request_endpoint": "https://data.holder.com.au/par",
+  "require_pushed_authorization_requests": true,
+
   "authorization_encryption_alg_values_supported": ["RSA-OAEP", "RSA-OAEP-256"],
-  "authorization_encryption_enc_values_supported": ["A256GCM", "A128CBC-HS256"]
+
+  "authorization_encryption_enc_values_supported": ["A256GCM", "A128CBC-HS256"],
+  "authorization_signing_alg_values_supported": ["ES256", "PS256"],
+
+  "cdr_arrangement_revocation_endpoint": "https://data.holder.com.au/arrangements/revoke"
 }
 </code></pre>
 
@@ -6794,27 +6731,75 @@ Content-Type: application/json
 
 <p>This endpoint does not require <a href="https://consumerdatastandardsaustralia.github.io/standards/#cors">CORS</a>.</p>
 
-<p>At a minimum, the Data Holder metadata MUST include:</p>
+<pre class="highlight diff tab-diff"><code>Replaced FAPI draft references with FAPI 1.0 Final references
+
+<span class="gi">+ Adds all metadata parameters required by the Data Standards and upstream normative references
+</span></code></pre>
+
+<p>At a minimum, the Data Holder metadata <strong>MUST</strong> include:</p>
+
+<p><strong><a href="#nref-OIDD">[OIDD]</a></strong></p>
 
 <ul>
-<li><code>issuer</code>: URL that the Data Holder asserts as its Issuer Identifier.</li>
-<li><code>authorization_endpoint</code>: URL of the Authorization End Point.</li>
-<li><code>token_endpoint</code>: URL of the Token End Point.</li>
-<li><code>introspection_endpoint</code>: URL of the Introspection End Point.</li>
-<li><code>revocation_endpoint</code>: URL of the Revocation End Point.</li>
-<li><code>userinfo_endpoint</code>: URL of the UserInfo End Point.</li>
-<li><code>registration_endpoint</code>: URL of the Client Registration End Point.</li>
-<li><code>scopes_supported</code>:  This list of supported scopes.</li>
-<li><code>claims_supported</code>:  The list of supported claims.</li>
-<li><code>acr_values_supported</code>:  The supported ACR values.</li>
-<li><code>jwks_uri</code>: The JSON Web Key Set for the data holder.</li>
-<li><code>id_token_encryption_alg_values_supported</code>: The list of the supported JWE algorithms for securing the issued ID tokens. Must conform to <strong><a href="#nref-FAPI-RW-Draft">[FAPI-RW-Draft]</a></strong> and <strong><a href="#nref-OIDD">[OIDD]</a></strong>. Required for Data Holders supporting OIDC Hybrid Flow.</li>
-<li><code>id_token_encryption_enc_values_supported</code>: The list of the supported JWE encryption methods for securing the issued ID tokens. Required for Data Holders supporting OIDC Hybrid Flow.</li>
+<li><code>acr_values_supported</code>: The supported ACR values</li>
+<li><code>authorization_endpoint</code>: URL of the Authorization End Point</li>
+<li><code>claims_supported</code>:  The list of supported claims</li>
+<li><code>grant_types_supported</code>: The list of the OAuth 2.0 Grant Type values supported</li>
+<li><code>id_token_encryption_alg_values_supported</code>: The list of the supported JWE algorithms for securing the issued ID tokens. Must conform to <strong><a href="#nref-FAPI-RW-Draft">[FAPI-RW-Draft]</a></strong> and <strong><a href="#nref-OIDD">[OIDD]</a></strong>. Required for Data Holders supporting OIDC Hybrid Flow</li>
+<li><code>id_token_encryption_enc_values_supported</code>: The list of the supported JWE encryption methods for securing the issued ID tokens. Required for Data Holders supporting OIDC Hybrid Flow</li>
+<li><code>id_token_signing_alg_values_supported</code>: The list of the JWS signing algorithms (<code>alg</code> values) supported </li>
+<li><code>issuer</code>: URL that the Data Holder asserts as its Issuer Identifier</li>
+<li><code>jwks_uri</code>: The JSON Web Key Set for the data holder</li>
+<li><code>registration_endpoint</code>: URL of the Client Registration End Point</li>
+<li><code>request_object_signing_alg_values_supported</code>: The list of the JWS signing algorithms (<code>alg</code> values) supported for signing request objects. </li>
+<li><code>response_modes_supported</code>: The list of the OAuth 2.0 <code>response_mode</code> values supported</li>
+<li><code>response_types_supported</code>: The list of the OAuth 2.0 <code>response_type</code> values supported</li>
+<li><code>scopes_supported</code>:  The list of supported scopes</li>
+<li><code>subject_types_supported</code>: list of the Subject Identifier types supported</li>
+<li><code>token_endpoint</code>: URL of the Token End Point</li>
+<li><code>token_endpoint_auth_methods_supported</code>: The list of Client Authentication methods supported by the Token Endpoint</li>
+<li><code>token_endpoint_auth_signing_alg_values_supported</code>: The list of the JWS signing algorithms (<code>alg</code> values) supported by the token endpoint for the signature on the JWT <strong><a href="#nref-JWT">[JWT]</a></strong> used to authenticate the client at the token endpoint for the &quot;private_key_jwt&quot; authentication method</li>
+<li><code>userinfo_endpoint</code>: URL of the UserInfo End Point</li>
+</ul>
+
+<p><strong><a href="#nref-RFC8414">[RFC8414]</a></strong></p>
+
+<ul>
+<li><code>code_challenge_methods_supported</code>: JSON array containing a list of <strong><a href="#nref-PKCE">[PKCE (RFC7636)]</a></strong> code challenge methods supported</li>
+<li><code>introspection_endpoint</code>: URL of the Introspection End Point</li>
+<li><code>revocation_endpoint</code>: URL of the Revocation End Point</li>
+</ul>
+
+<p><strong><a href="#nref-MTLS">[MTLS]</a></strong></p>
+
+<ul>
+<li><code>tls_client_certificate_bound_access_tokens</code>: Indicates support for mutual-TLS client certificate-bound access tokens. Value <strong>MUST</strong> be set to <code>true</code></li>
+</ul>
+
+<p><strong><a href="#nref-RFC9126">[RFC9126]</a></strong></p>
+
+<ul>
+<li><code>pushed_authorization_request_endpoint</code>: URL of the Pushed Authorisation End Point used to support <strong><a href="#nref-PAR">[PAR]</a></strong></li>
+<li><code>require_pushed_authorization_requests</code>: Boolean parameter indicating whether the authorization server accepts authorization request data only via PAR</li>
+</ul>
+
+<p><strong><a href="#nref-JARM">[JARM]</a></strong></p>
+
+<ul>
+<li><code>authorization_encryption_alg_values_supported</code>: A JSON array containing a list of the JWE encryption algorithms (<code>alg</code> values) supported by the authorization endpoint to encrypt the response. If response encryption is used, Data Holders must support at least one of &quot;RSA-OAEP&quot; or &quot;RSA-OAEP-256&quot;</li>
+</ul>
+
+<p>Where Data Holders support authorisation response encryption according to <strong><a href="#nref-JARM">[JARM]</a></strong>, the following parameter provisions <strong>MUST</strong> be supported:</p>
+
+<ul>
+<li><code>authorization_encryption_enc_values_supported</code>: A JSON array containing a list of the JWE encryption algorithms (<code>enc</code> values) supported by the authorization endpoint to encrypt the response. Required if “authorization_encryption_alg_values_supported” is provided. If response encryption is used, Data Holders must support at least one of &quot;A256GCM&quot; or &quot;A128CBC-HS256&quot;</li>
+<li><code>authorization_signing_alg_values_supported</code>: A JSON array containing a list of the JWS signing algorithms (<code>alg</code> values) supported by the authorization endpoint to sign the response. Required if Authorization Code Flow (response_type “code”) is supported</li>
+</ul>
+
+<p>In addition, the Data Holder metadata <strong>MUST</strong> also include:</p>
+
+<ul>
 <li><code>cdr_arrangement_revocation_endpoint</code>: The URL of the CDR Arrangement Revocation End Point for consent revocation</li>
-<li><code>pushed_authorization_request_endpoint</code>: URL of the Pushed Authorisation End Point used to support <strong><a href="#nref-PAR">[PAR]</a></strong>.</li>
-<li><code>authorization_signing_alg_values_supported</code>: A JSON array containing a list of the JWS signing algorithms (alg values) supported by the authorization endpoint to sign the response. Required if Authorization Code Flow (response_type “code”) is supported.</li>
-<li><code>authorization_encryption_alg_values_supported</code>: A JSON array containing a list of the JWE encryption algorithms (alg values) supported by the authorization endpoint to encrypt the response. If response encryption is used, Data Holders must support at least one of &quot;RSA-OAEP&quot; or &quot;RSA-OAEP-256&quot;.</li>
-<li><code>authorization_encryption_enc_values_supported</code>: A JSON array containing a list of the JWE encryption algorithms (enc values) supported by the authorization endpoint to encrypt the response. Required if “authorization_encryption_alg_values_supported” is provided. If response encryption is used, Data Holders must support at least one of &quot;A256GCM&quot; or &quot;A128CBC-HS256&quot;.</li>
 </ul>
 
 <p><a id="authorisation-endpoint"></a></p>
@@ -6915,7 +6900,10 @@ Host: www.holder.com.au
 </tr>
 </tbody></table>
 
-<p>The requirements for the Authorisation End Point are specified in <a href="https://openid.net/specs/openid-connect-core-1_0.html#HybridAuthorizationEndpoint">section 3.3.2</a> of <strong><a href="#nref-OIDC">[OIDC]</a></strong> and further specified under section <a href="https://openid.net/specs/openid-financial-api-part-2.html#authorization-server">5.2.2</a> of <strong><a href="#nref-FAPI-RW-Draft">[FAPI-RW-Draft]</a></strong>.  This end point is invoked as part of the <a href="#hybrid-flow">Hybrid Authentication flow</a>.</p>
+<pre class="highlight diff tab-diff"><code>Replaced FAPI draft references with FAPI 1.0 Final references
+</code></pre>
+
+<p>The requirements for the Authorisation End Point are specified in <a href="https://openid.net/specs/openid-connect-core-1_0.html#HybridAuthorizationEndpoint">section 3.3.2</a> of <strong><a href="#nref-OIDC">[OIDC]</a></strong> and further specified under section <a href="https://openid.net/specs/openid-financial-api-part-2-1_0.html#authorization-server">5.2.2</a> of <strong><a href="#nref-FAPI-1-0-Advanced">[FAPI-1.0-Advanced]</a></strong>.  This end point is invoked as part of the <a href="#hybrid-flow">Hybrid Authentication flow</a>.</p>
 
 <p>This endpoint does not require <a href="https://consumerdatastandardsaustralia.github.io/standards/#cors">CORS</a>.</p>
 
@@ -7286,27 +7274,24 @@ Authorization: Bearer eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNDU2In0.ey
 
 <p>Data Holder&#39;s MUST use the Data Recipient Software Product&#39;s CDR Arrangement Revocation End Point with a valid <code>cdr_arrangement_id</code> to notify the Data Recipient Software Product when consent is revoked by the consumer via the Data Holder.</p>
 
-<h3 id='pushed-authorisation-end-point'>Pushed Authorisation End Point</h3>
-
+<h3 id='pushed-authorisation-end-point'>Pushed Authorisation End Point</h3><pre class="highlight diff tab-diff"><code>Updated non-normtative example to use RFC9126, not the draft PAR specification
+</code></pre>
 <blockquote>
 <p>Non-Normative Example<br>
-Utilising PAR Draft 01 specification and OIDC Hybrid Flow</p>
+Utilising RFC9126 and OIDC Hybrid Flow</p>
 
 <p>Request</p>
 </blockquote>
-
 <pre class="highlight plaintext"><code>POST /par HTTP/1.1
      Host: data.holder.com.au
      Content-Type: application/x-www-form-urlencoded
 
 request=eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyMyJ9.ey...
 </code></pre>
-
 <blockquote>
 <p>Decoded Request<br>
 This example shows an authorisation request using the OIDC Hybrid Flow</p>
 </blockquote>
-
 <pre class="highlight plaintext"><code>{
   "iss": "s6BhdRkqt3",
   "exp": 1516239322,
@@ -7334,11 +7319,9 @@ This example shows an authorisation request using the OIDC Hybrid Flow</p>
   }
 }
 </code></pre>
-
 <blockquote>
 <p>Response</p>
 </blockquote>
-
 <pre class="highlight plaintext"><code>HTTP/1.1 201 Created
 Content-Type: application/json
 Cache-Control: no-cache, no-store
@@ -7347,11 +7330,9 @@ Cache-Control: no-cache, no-store
   "expires_in": 3600
 }
 </code></pre>
-
 <blockquote>
 <p>Authorise</p>
 </blockquote>
-
 <pre class="highlight plaintext"><code>## The request_uri is used by the ADR in the subsequent authorisation request as follows
 ## (note this example is pre-RFC using Draft 01 of the PAR standard, hence it includes 
 ## the mandatory oAuth parameters as per FAPI R/W for confidential clients must be 
@@ -7364,32 +7345,30 @@ GET /authorise?client_id=s6BhdRkqt3&amp;
 HTTP/1.1
 Host: data.holder.com.au
 </code></pre>
-
 <blockquote>
 <p>Non-Normative Example - FAPI 1.0 Final Phase 3 Obligations<br>
 Utilising FAPI 1.0 Final, PAR RFC9126, PKCE, JARM and Authorization Code Flow</p>
 
 <p>Request</p>
 </blockquote>
-
 <pre class="highlight plaintext"><code>POST /par HTTP/1.1
      Host: data.holder.com.au
      Content-Type: application/x-www-form-urlencoded
 
 request=eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyMyJ9.ey...
 </code></pre>
-
 <blockquote>
 <p>Decoded Request - FAPI 1.0 Final Phase 3 Obligation<br>
 This example shows an authorisation request using the Authorisation Code Flow (FAPI 1.0 migration Phase 3)</p>
 </blockquote>
-
-<pre class="highlight plaintext"><code>{
+<pre class="highlight diff tab-diff"><code><span class="gi">+ Added "response_mode" to the non normative example. This demonstrates the use of Authorization Code Flow in conjunction with JARM and FAPI 1.0
+</span></code></pre><pre class="highlight plaintext"><code>{
   "iss": "s6BhdRkqt3",
   "exp": 1680832800,
   "nbf": 1680829200,
   "aud": "https://www.recipient.com.au",
   "response_type": "code",
+  "response_mode": "jwt",
   "client_id": "s6BhdRkqt3",
   "redirect_uri": "https://www.recipient.com.au/coolstuff",
   "scope": "openid profile bank:accounts.basic:read
@@ -7414,11 +7393,9 @@ This example shows an authorisation request using the Authorisation Code Flow (F
   "code_challenge_method": "S256"
 }
 </code></pre>
-
 <blockquote>
 <p>Response - FAPI 1.0 Final Phase 3 Obligation  </p>
 </blockquote>
-
 <pre class="highlight plaintext"><code>HTTP/1.1 201 Created
 Content-Type: application/json
 Cache-Control: no-cache, no-store
@@ -7427,11 +7404,9 @@ Cache-Control: no-cache, no-store
   "expires_in": 3600
 }
 </code></pre>
-
 <blockquote>
 <p>Authorise - FAPI 1.0 Final Phase 3 Obligation  </p>
 </blockquote>
-
 <pre class="highlight plaintext"><code>## This is used by the ADR in the subsequent authorisation request as follows
 ## (this example uses PAR RFC 9126 and Authorization Code Flow):
 
@@ -7440,11 +7415,9 @@ GET /authorise?client_id=s6BhdRkqt3&amp;
 HTTP/1.1
 Host: data.holder.com.au
 </code></pre>
-
 <blockquote>
 <p>Authorisation response using JARM response encryption - FAPI 1.0 Final Phase 3 Obligation  </p>
 </blockquote>
-
 <pre class="highlight plaintext"><code>eyJraWQiOiIwZWQ3YTNkZi1hMGJlLTRhZjQtOTk0YS1jNDBhODc0ODQwNjMiLCJhbGciOiJQUzI1NiJ9.eyJhdWQiOiIxMjM0NSIsImNvZGUiOiJpMVdzUm4xdUIxIiwiaXNzIjoiaHR0cHM6Ly9kYXRhLmhvbGRlci5jb20uYXUvIiwic3RhdGUiOiJhZjBpZmpzbGRraiIsImV4cCI6MTY2NzI2ODAwMH0.flBD3bTUHUFiNMbfgt-Uqt4wnEFHY79QYx0f9qrqPGPZLB-RBb-F20aPTyB9XaJ1JJ3ie1m0YxdMC7t6aiXSchZZQXBmYpIjvlbTceOVBYlr88llqeLAfQ5nCDD4p2axqyedpA83OgPF8i_Ngw0oRsCwBTueo6C40wYeI3ZT_n0hucQqGHcSoR1im7IY1rY0x99EZjJI3pxVtGwst6e-msomipnYedCdkNuPHE_Rnj0g897zi_NdK6m3dhxcpwaoMXcaYfMkkkzTlbz5_Ic9lWMx_z01C2wRNjRBArEJsNXW0Q8Vdhk_vtOAmO92Pr3cI8BpTr5KdY2O1iD-yRnkug
 
 ## Decoded Response
@@ -7460,7 +7433,6 @@ Host: data.holder.com.au
   "exp": 1667268000
 }
 </code></pre>
-
 <table><thead>
 <tr>
 <th>Description</th>
@@ -7486,8 +7458,9 @@ Host: data.holder.com.au
 </tbody></table>
 
 <p>Data Holders <strong>MUST</strong> support Pushed Authorisation Requests (PAR) via the pushed authorisation end point according to <strong><a href="#nref-PAR">[PAR]</a></strong>.</p>
-
-<p>Data Recipient Software Products <strong>MAY</strong> send authorisation requests using <strong><a href="#nref-PAR">[PAR]</a></strong> if supported by the Data Holder.</p>
+<pre class="highlight diff tab-diff"><code>Removed legacy phasing requirements for FAPI 1.0 Final using PAR
+</code></pre>
+<p>Data Recipient Software Products <strong>MUST</strong> send authorisation requests using <strong><a href="#nref-PAR">[PAR]</a></strong> if supported by the Data Holder.</p>
 
 <p>The Data Holder response provides the Data Recipient Software Product with a Request URI in the response. The Request URI is then passed to the Data Holder’s Authorisation End Point to initiate an authorisation flow.</p>
 
@@ -8997,7 +8970,8 @@ These endpoints are exposed by the Register and consumed by Data Holders and Dat
 <td>https://secure.api.cdr.gov.au</td>
 </tr>
 </tbody></table>
-
+<pre class="highlight diff tab-diff"><code>Amended the jwks and well known endpoint paths to reflect actual Register implementation
+</code></pre>
 <h2 id='get-openid-provider-config'>Get OpenId Provider Config</h2>
 
 <p><a id="opIdGetOpenIdProviderConfig"></a></p>
@@ -9006,7 +8980,7 @@ These endpoints are exposed by the Register and consumed by Data Holders and Dat
 <p>Code samples</p>
 </blockquote>
 
-<pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://&lt;register-base-url&gt;/.well-known/openid-configuration</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://&lt;register-base-url&gt;/idp/.well-known/openid-configuration</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 
 Accept: application/json
 
@@ -9016,7 +8990,7 @@ Accept: application/json
 <span class="p">};</span>
 
 <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
-  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://&lt;register-base-url&gt;/.well-known/openid-configuration'</span><span class="p">,</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://&lt;register-base-url&gt;/idp/.well-known/openid-configuration'</span><span class="p">,</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'get'</span><span class="p">,</span>
 
   <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span><span class="p">,</span>
@@ -9027,7 +9001,7 @@ Accept: application/json
 
 </code></pre>
 
-<p><code>GET /.well-known/openid-configuration</code></p>
+<p><code>GET /idp/.well-known/openid-configuration</code></p>
 
 <p>Endpoint used by participants to discover the CDR Register OpenID configuration and obtain information needed to interact with it, including its OAuth 2.0 endpoint locations.</p>
 
@@ -9118,7 +9092,7 @@ This operation does not require authentication
 <p>Code samples</p>
 </blockquote>
 
-<pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://&lt;register-base-url&gt;/jwks</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://&lt;register-base-url&gt;/cdr-register/v1/jwks</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 
 Accept: application/json
 
@@ -9128,7 +9102,7 @@ Accept: application/json
 <span class="p">};</span>
 
 <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
-  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://&lt;register-base-url&gt;/jwks'</span><span class="p">,</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://&lt;register-base-url&gt;/cdr-register/v1/jwks'</span><span class="p">,</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'get'</span><span class="p">,</span>
 
   <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span><span class="p">,</span>
@@ -9139,7 +9113,7 @@ Accept: application/json
 
 </code></pre>
 
-<p><code>GET /jwks</code></p>
+<p><code>GET /cdr-register/v1/jwks</code></p>
 
 <p>JWKS endpoint containing the public keys used by the CDR Register to validate the signature of issued SSAs and authenticate outbound calls to participants in the CDR.</p>
 
@@ -12977,7 +12951,34 @@ This operation does not require authentication
 <tr><td><a href='./includes/swagger/cds_banking.json'>Banking OpenAPI Specification (JSON)</a></td></tr>
 <tr><td><a href='./includes/swagger/cds_banking.yaml'>Banking OpenAPI Specification (YAML)</a></td></tr>
 </table></p>
+<pre class="highlight diff tab-diff"><code>Updated the versions of the following APIs:
+<span class="gi">+ Get Scheduled Payments For Account from v1 to v2
++ Get Scheduled Payments Bulk from v1 to v2
++ Get Scheduled Payments For Specific Accounts from v1 to v2
+</span>
 
+Updated the following structures
+from:
+<span class="gd">- ResponseBankingScheduledPaymentsList
+- BankingScheduledPayment
+- BankingScheduledPaymentSet
+- BankingScheduledPaymentTo
+</span>
+to:
+<span class="gi">+ ResponseBankingScheduledPaymentsListV2
++ BankingScheduledPaymentV2
++ BankingScheduledPaymentSetV2
++ BankingScheduledPaymentToV2
+</span>
+Added the following to 'BankingScheduledPaymentToV2' structure:
+<span class="gi">+ 'digitalWallet' ENUM value to the toUType field
++ 'digitalWallet' object
++ 'BankingDigitalWalletPayee' schema for 'digitalWallet' object
+</span>
+Replaced FAPI draft references with FAPI 1.0 Final references. References pertain to the x-fapi-auth-date header.
+
+Typo correction for the Get Products API description, changing "actual" to "actually"
+</code></pre>
 <h2 id='get-accounts'>Get Accounts</h2>
 
 <p><a id="opIdlistAccounts"></a></p>
@@ -13111,7 +13112,7 @@ This operation does not require authentication
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-R-Draft">[FAPI-R-Draft]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
@@ -13456,7 +13457,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-R-Draft">[FAPI-R-Draft]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
@@ -13795,7 +13796,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-R-Draft">[FAPI-R-Draft]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
@@ -14050,7 +14051,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-R-Draft">[FAPI-R-Draft]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
@@ -14290,7 +14291,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-R-Draft">[FAPI-R-Draft]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
@@ -14771,7 +14772,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-R-Draft">[FAPI-R-Draft]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
@@ -15046,7 +15047,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-R-Draft">[FAPI-R-Draft]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
@@ -15315,7 +15316,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-R-Draft">[FAPI-R-Draft]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
@@ -15603,7 +15604,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-R-Draft">[FAPI-R-Draft]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
@@ -15940,7 +15941,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-R-Draft">[FAPI-R-Draft]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
@@ -16135,6 +16136,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p>Obtain scheduled, outgoing payments for a specific account</p>
 
+<p>Obsolete versions: <a href="includes/obsolete/get-scheduled-payments-for-account-v1.html">v1</a></p>
+
 <h3 id='endpoint-version-11'>Endpoint Version</h3>
 
 <table><thead>
@@ -16145,7 +16148,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>1</strong></td>
+<td><strong>2</strong></td>
 </tr>
 </tbody></table>
 
@@ -16207,7 +16210,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-R-Draft">[FAPI-R-Draft]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
@@ -16364,7 +16367,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>Success</td>
-<td><a href="#schemacdr-banking-apiresponsebankingscheduledpaymentslist">ResponseBankingScheduledPaymentsList</a></td>
+<td><a href="#schemacdr-banking-apiresponsebankingscheduledpaymentslistv2">ResponseBankingScheduledPaymentsListV2</a></td>
 </tr>
 <tr>
 <td>400</td>
@@ -16497,6 +16500,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p>Obtain scheduled payments for multiple, filtered accounts that are the source of funds for the payments</p>
 
+<p>Obsolete versions: <a href="includes/obsolete/get-scheduled-payments-bulk-v1.html">v1</a></p>
+
 <h3 id='endpoint-version-12'>Endpoint Version</h3>
 
 <table><thead>
@@ -16507,7 +16512,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>1</strong></td>
+<td><strong>2</strong></td>
 </tr>
 </tbody></table>
 
@@ -16583,7 +16588,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-R-Draft">[FAPI-R-Draft]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
@@ -16810,7 +16815,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>Success</td>
-<td><a href="#schemacdr-banking-apiresponsebankingscheduledpaymentslist">ResponseBankingScheduledPaymentsList</a></td>
+<td><a href="#schemacdr-banking-apiresponsebankingscheduledpaymentslistv2">ResponseBankingScheduledPaymentsListV2</a></td>
 </tr>
 <tr>
 <td>400</td>
@@ -16932,6 +16937,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p>Obtain scheduled payments for a specified list of accounts</p>
 
+<p>Obsolete versions: <a href="includes/obsolete/get-scheduled-payments-for-specific-accounts-v1.html">v1</a></p>
+
 <blockquote>
 <p>Body parameter</p>
 </blockquote>
@@ -16953,7 +16960,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>1</strong></td>
+<td><strong>2</strong></td>
 </tr>
 </tbody></table>
 
@@ -17008,7 +17015,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-R-Draft">[FAPI-R-Draft]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
@@ -17171,7 +17178,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>Success</td>
-<td><a href="#schemacdr-banking-apiresponsebankingscheduledpaymentslist">ResponseBankingScheduledPaymentsList</a></td>
+<td><a href="#schemacdr-banking-apiresponsebankingscheduledpaymentslistv2">ResponseBankingScheduledPaymentsListV2</a></td>
 </tr>
 <tr>
 <td>400</td>
@@ -17365,7 +17372,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-R-Draft">[FAPI-R-Draft]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
@@ -17641,7 +17648,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-R-Draft">[FAPI-R-Draft]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
@@ -17899,7 +17906,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p>For this reason, while productCategory is a common field between accounts and products, there is no specific ID that can be used to link an account to a product within the regime.</p>
 
-<p>Similarly, many of the fields and objects in the product payload will appear in the account detail payload but the structures and semantics are not identical as one refers to a product that can potentially be originated and one refers to an account that actual has been instantiated and created along with the associated decisions inherent in that process.</p>
+<p>Similarly, many of the fields and objects in the product payload will appear in the account detail payload but the structures and semantics are not identical as one refers to a product that can potentially be originated and one refers to an account that actually has been instantiated and created along with the associated decisions inherent in that process.</p>
 
 <h4 id='dates'>Dates</h4>
 
@@ -23327,7 +23334,7 @@ This operation does not require authentication
 <td>name</td>
 <td>string</td>
 <td>mandatory</td>
-<td>The name assigned to the digital wallet by the owner of the wallet, else the display name provided by the digital wallet provider</td>
+<td>The display name of the wallet as given by the customer, else a default value defined by the data holder</td>
 </tr>
 <tr>
 <td>identifier</td>
@@ -23548,9 +23555,9 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSresponsebankingscheduledpaymentslist">ResponseBankingScheduledPaymentsList</h3>
+<h3 class="schema-toc" id="tocSresponsebankingscheduledpaymentslistv2">ResponseBankingScheduledPaymentsListV2</h3>
 
-<p><a id="schemacdr-banking-apiresponsebankingscheduledpaymentslist"></a></p>
+<p><a id="schemacdr-banking-apiresponsebankingscheduledpaymentslistv2"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"scheduledPayments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -23686,7 +23693,7 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>» scheduledPayments</td>
-<td>[<a href="#schemacdr-banking-apibankingscheduledpayment">BankingScheduledPayment</a>]</td>
+<td>[<a href="#schemacdr-banking-apibankingscheduledpaymentv2">BankingScheduledPaymentV2</a>]</td>
 <td>mandatory</td>
 <td>The list of scheduled payments to return</td>
 </tr>
@@ -23704,9 +23711,9 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSbankingscheduledpayment">BankingScheduledPayment</h3>
+<h3 class="schema-toc" id="tocSbankingscheduledpaymentv2">BankingScheduledPaymentV2</h3>
 
-<p><a id="schemacdr-banking-apibankingscheduledpayment"></a></p>
+<p><a id="schemacdr-banking-apibankingscheduledpaymentv2"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"scheduledPaymentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"nickname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -23855,7 +23862,7 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>paymentSet</td>
-<td>[<a href="#schemacdr-banking-apibankingscheduledpaymentset">BankingScheduledPaymentSet</a>]</td>
+<td>[<a href="#schemacdr-banking-apibankingscheduledpaymentsetv2">BankingScheduledPaymentSetV2</a>]</td>
 <td>mandatory</td>
 <td>[The set of payment amounts and destination accounts for this payment accommodating multi-part payments. A single entry indicates a simple payment with one destination account. Must have at least one entry]</td>
 </tr>
@@ -23887,9 +23894,9 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSbankingscheduledpaymentset">BankingScheduledPaymentSet</h3>
+<h3 class="schema-toc" id="tocSbankingscheduledpaymentsetv2">BankingScheduledPaymentSetV2</h3>
 
-<p><a id="schemacdr-banking-apibankingscheduledpaymentset"></a></p>
+<p><a id="schemacdr-banking-apibankingscheduledpaymentsetv2"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"to"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"toUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"accountId"</span><span class="p">,</span><span class="w">
@@ -23967,7 +23974,7 @@ This operation does not require authentication
 </thead><tbody>
 <tr>
 <td>to</td>
-<td><a href="#schemacdr-banking-apibankingscheduledpaymentto">BankingScheduledPaymentTo</a></td>
+<td><a href="#schemacdr-banking-apibankingscheduledpaymenttov2">BankingScheduledPaymentToV2</a></td>
 <td>mandatory</td>
 <td>Object containing details of the destination of the payment. Used to specify a variety of payment destination types</td>
 </tr>
@@ -23991,9 +23998,9 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSbankingscheduledpaymentto">BankingScheduledPaymentTo</h3>
+<h3 class="schema-toc" id="tocSbankingscheduledpaymenttov2">BankingScheduledPaymentToV2</h3>
 
-<p><a id="schemacdr-banking-apibankingscheduledpaymentto"></a></p>
+<p><a id="schemacdr-banking-apibankingscheduledpaymenttov2"></a></p>
 
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"toUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"accountId"</span><span class="p">,</span><span class="w">
@@ -25277,10 +25284,18 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h2 id='product-amp-account-components'>Product &amp; Account Components</h2>
-
+<p><h2 id='product-amp-account-components'>Product &amp; Account Components</h2><pre class="highlight diff tab-diff"><code>Updated description of &#39;PENSION_RECIPIENT&#39; value in
+&#39;Product Eligibility Types&#39; table from:
+<span class="gd">- A recipient of a government pension may apply for the product
+</span>to:
+<span class="gi">+ Only a recipient of a government pension may apply for the product
+</span>and &#39;Product Discount Eligibility Types&#39; table from:
+<span class="gd">- A recipient of a government pension may receive the discount
+</span>to:
+<span class="gi">+ Only a recipient of a government pension may receive the discount
+</span></code></pre>
 <p><a id="productfeaturetypedoc"></a>
-<h3 id="tocSproductfeaturetypedoc">Product Feature Types</h3></p>
+<h3 id="tocSproductfeaturetypedoc">Product Feature Types</h3></p></p>
 
 <p>Description of the usage of the featureType field as it applies to products.</p>
 
@@ -25753,7 +25768,7 @@ This operation does not require authentication
 <tr>
 <td>FIXED</td>
 <td>Fixed rate for a period of time</td>
-<td>The period of time fixed. Formatted according to ISO 8601 Durations</td>
+<td>The period of time fixed. Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 Durations</a></td>
 </tr>
 <tr>
 <td>FLOATING</td>
@@ -25916,7 +25931,40 @@ This operation does not require authentication
 <tr><td><a href='./includes/swagger/cds_energy.json'>Energy OpenAPI Specification (JSON)</a></td></tr>
 <tr><td><a href='./includes/swagger/cds_energy.yaml'>Energy OpenAPI Specification (YAML)</a></td></tr>
 </table>
+<pre class="highlight diff tab-diff"><code>Updated description of EnergyPaymentSchedule.digitalWallet.name field
+from:
+<span class="gd">- The name assigned to the digital wallet by the owner of the wallet, else the display name provided by the digital wallet provider
+</span>to:
+<span class="gi">+ The display name of the wallet as given by the customer, else a default value defined by the data holder
+</span>
+Updated description of `EnergyPaymentSchedule.isTokenised` field to further clarify when it can be used
 
+Updated the versions of the following APIs:
+<span class="gi">+ Get Billing For Account from v1 to v2
++ Get Bulk Billing from v1 to v2
++ Get Billing For Specific Accounts from v1 to v2
+</span>
+Updated the following structures
+from:
+<span class="gd">- EnergyBillingListResponse
+- EnergyBillingTransaction
+- EnergyBillingDemandTransaction
+- EnergyBillingUsageTransaction
+</span>
+to:
+<span class="gi">+ EnergyBillingListResponseV2
++ EnergyBillingTransactionV2
++ EnergyBillingDemandTransactionV2
++ EnergyBillingUsageTransactionV2
+</span>
+
+Added following ENUM values to EnergyBillingDemandTransaction.timeOfUseType field:
+<span class="gi">+ ALL_DAY
++ EXCESS
+</span>
+Added following ENUM values to EnergyBillingUsageTransaction.timeOfUseType field:
+<span class="gi">+ ALL_DAY
+</span></code></pre>
 <h2 id='get-generic-plans'>Get Generic Plans</h2>
 
 <p><a id="opIdlistPlans"></a></p>
@@ -26999,7 +27047,7 @@ x-cds-client-headers: string
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-R-Draft">[FAPI-R-Draft]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
@@ -27248,7 +27296,7 @@ x-cds-client-headers: string
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-R-Draft">[FAPI-R-Draft]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
@@ -27596,7 +27644,7 @@ x-cds-client-headers: string
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-R-Draft">[FAPI-R-Draft]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
@@ -27923,7 +27971,7 @@ x-cds-client-headers: string
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-R-Draft">[FAPI-R-Draft]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
@@ -28250,7 +28298,7 @@ x-cds-client-headers: string
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-R-Draft">[FAPI-R-Draft]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
@@ -28561,7 +28609,7 @@ x-cds-client-headers: string
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-R-Draft">[FAPI-R-Draft]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
@@ -28843,7 +28891,7 @@ x-cds-client-headers: string
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-R-Draft">[FAPI-R-Draft]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
@@ -29149,7 +29197,7 @@ x-cds-client-headers: string
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-R-Draft">[FAPI-R-Draft]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
@@ -29478,7 +29526,7 @@ x-cds-client-headers: string
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-R-Draft">[FAPI-R-Draft]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
@@ -29757,7 +29805,7 @@ x-cds-client-headers: string
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-R-Draft">[FAPI-R-Draft]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
@@ -30371,7 +30419,7 @@ x-cds-client-headers: string
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-R-Draft">[FAPI-R-Draft]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
@@ -30626,7 +30674,7 @@ x-cds-client-headers: string
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-R-Draft">[FAPI-R-Draft]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
@@ -30868,7 +30916,7 @@ x-cds-client-headers: string
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-R-Draft">[FAPI-R-Draft]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
@@ -31102,7 +31150,7 @@ x-cds-client-headers: string
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-R-Draft">[FAPI-R-Draft]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
@@ -31361,7 +31409,7 @@ x-cds-client-headers: string
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-R-Draft">[FAPI-R-Draft]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
@@ -31655,7 +31703,7 @@ x-cds-client-headers: string
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-R-Draft">[FAPI-R-Draft]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
@@ -31979,7 +32027,7 @@ x-cds-client-headers: string
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-R-Draft">[FAPI-R-Draft]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
@@ -32303,7 +32351,7 @@ x-cds-client-headers: string
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-R-Draft">[FAPI-R-Draft]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
@@ -32562,6 +32610,8 @@ x-cds-client-headers: string
 
 <p>Obtain the billing transactions for a specific account</p>
 
+<p>Other Versions: <a href="includes/obsolete/get-billing-for-account-v1.html">v1</a></p>
+
 <h3 id='endpoint-version-21'>Endpoint Version</h3>
 
 <table><thead>
@@ -32572,7 +32622,7 @@ x-cds-client-headers: string
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>1</strong></td>
+<td><strong>2</strong></td>
 </tr>
 </tbody></table>
 
@@ -32648,7 +32698,7 @@ x-cds-client-headers: string
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-R-Draft">[FAPI-R-Draft]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
@@ -32789,7 +32839,7 @@ x-cds-client-headers: string
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>Successful response</td>
-<td><a href="#schemacdr-energy-apienergybillinglistresponse">EnergyBillingListResponse</a></td>
+<td><a href="#schemacdr-energy-apienergybillinglistresponsev2">EnergyBillingListResponseV2</a></td>
 </tr>
 <tr>
 <td>400</td>
@@ -32922,6 +32972,8 @@ x-cds-client-headers: string
 
 <p>Obtain billing transactions for all accounts</p>
 
+<p>Other Versions: <a href="includes/obsolete/get-bulk-billing-v1.html">v1</a></p>
+
 <h3 id='endpoint-version-22'>Endpoint Version</h3>
 
 <table><thead>
@@ -32932,7 +32984,7 @@ x-cds-client-headers: string
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>1</strong></td>
+<td><strong>2</strong></td>
 </tr>
 </tbody></table>
 
@@ -33001,7 +33053,7 @@ x-cds-client-headers: string
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-R-Draft">[FAPI-R-Draft]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
@@ -33142,7 +33194,7 @@ x-cds-client-headers: string
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>Successful response</td>
-<td><a href="#schemacdr-energy-apienergybillinglistresponse">EnergyBillingListResponse</a></td>
+<td><a href="#schemacdr-energy-apienergybillinglistresponsev2">EnergyBillingListResponseV2</a></td>
 </tr>
 <tr>
 <td>400</td>
@@ -33264,6 +33316,8 @@ x-cds-client-headers: string
 
 <p>Obtain billing for a specified set of accounts</p>
 
+<p>Other Versions: <a href="includes/obsolete/get-billing-for-specific-accounts-v1.html">v1</a></p>
+
 <blockquote>
 <p>Body parameter</p>
 </blockquote>
@@ -33285,7 +33339,7 @@ x-cds-client-headers: string
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>1</strong></td>
+<td><strong>2</strong></td>
 </tr>
 </tbody></table>
 
@@ -33354,7 +33408,7 @@ x-cds-client-headers: string
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-R-Draft">[FAPI-R-Draft]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
@@ -33522,7 +33576,7 @@ x-cds-client-headers: string
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>Successful response</td>
-<td><a href="#schemacdr-energy-apienergybillinglistresponse">EnergyBillingListResponse</a></td>
+<td><a href="#schemacdr-energy-apienergybillinglistresponsev2">EnergyBillingListResponseV2</a></td>
 </tr>
 <tr>
 <td>400</td>
@@ -35591,9 +35645,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSenergybillinglistresponse">EnergyBillingListResponse</h3>
+<h3 class="schema-toc" id="tocSenergybillinglistresponsev2">EnergyBillingListResponseV2</h3>
 
-<p><a id="schemacdr-energy-apienergybillinglistresponse"></a></p>
+<p><a id="schemacdr-energy-apienergybillinglistresponsev2"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"transactions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -35713,7 +35767,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>» transactions</td>
-<td>[<a href="#schemacdr-energy-apienergybillingtransaction">EnergyBillingTransaction</a>]</td>
+<td>[<a href="#schemacdr-energy-apienergybillingtransactionv2">EnergyBillingTransactionV2</a>]</td>
 <td>mandatory</td>
 <td>Array of transactions sorted by date and time in descending order</td>
 </tr>
@@ -41665,7 +41719,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>» isTokenised</td>
 <td>boolean</td>
 <td>optional</td>
-<td>Flag indicating that the account details are tokenised and cannot be shared.  False if absent</td>
+<td>Flag indicating that the account details are tokenised, or held in a closed system, and is not accessible through any other channels. False if absent</td>
 </tr>
 <tr>
 <td>» bsb</td>
@@ -41701,7 +41755,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>» name</td>
 <td>string</td>
 <td>mandatory</td>
-<td>The name assigned to the digital wallet by the owner of the wallet, else the display name provided by the digital wallet provider</td>
+<td>The display name of the wallet as given by the customer, else a default value defined by the data holder</td>
 </tr>
 <tr>
 <td>» identifier</td>
@@ -42461,9 +42515,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSenergybillingtransaction">EnergyBillingTransaction</h3>
+<h3 class="schema-toc" id="tocSenergybillingtransactionv2">EnergyBillingTransactionV2</h3>
 
-<p><a id="schemacdr-energy-apienergybillingtransaction"></a></p>
+<p><a id="schemacdr-energy-apienergybillingtransactionv2"></a></p>
 
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -42585,13 +42639,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>usage</td>
-<td><a href="#schemacdr-energy-apienergybillingusagetransaction">EnergyBillingUsageTransaction</a></td>
+<td><a href="#schemacdr-energy-apienergybillingusagetransactionv2">EnergyBillingUsageTransactionV2</a></td>
 <td>conditional</td>
 <td>Represents a usage charge or generation credit.  Mandatory if transactionUType is equal to usage</td>
 </tr>
 <tr>
 <td>demand</td>
-<td><a href="#schemacdr-energy-apienergybillingdemandtransaction">EnergyBillingDemandTransaction</a></td>
+<td><a href="#schemacdr-energy-apienergybillingdemandtransactionv2">EnergyBillingDemandTransactionV2</a></td>
 <td>optional</td>
 <td>Represents a demand charge or generation credit.  Mandatory if transactionUType is equal to demand</td>
 </tr>
@@ -42643,9 +42697,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSenergybillingusagetransaction">EnergyBillingUsageTransaction</h3>
+<h3 class="schema-toc" id="tocSenergybillingusagetransactionv2">EnergyBillingUsageTransactionV2</h3>
 
-<p><a id="schemacdr-energy-apienergybillingusagetransaction"></a></p>
+<p><a id="schemacdr-energy-apienergybillingusagetransactionv2"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"servicePointId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"invoiceNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -42821,6 +42875,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>AGGREGATE</td>
 </tr>
 <tr>
+<td>timeOfUseType</td>
+<td>ALL_DAY</td>
+</tr>
+<tr>
 <td>measureUnit</td>
 <td>KWH</td>
 </tr>
@@ -42862,9 +42920,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSenergybillingdemandtransaction">EnergyBillingDemandTransaction</h3>
+<h3 class="schema-toc" id="tocSenergybillingdemandtransactionv2">EnergyBillingDemandTransactionV2</h3>
 
-<p><a id="schemacdr-energy-apienergybillingdemandtransaction"></a></p>
+<p><a id="schemacdr-energy-apienergybillingdemandtransactionv2"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"servicePointId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"invoiceNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -43031,6 +43089,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>timeOfUseType</td>
 <td>AGGREGATE</td>
+</tr>
+<tr>
+<td>timeOfUseType</td>
+<td>ALL_DAY</td>
+</tr>
+<tr>
+<td>timeOfUseType</td>
+<td>EXCESS</td>
 </tr>
 <tr>
 <td>type</td>
@@ -43782,7 +43848,14 @@ Note that the standards for the telecommunications sector are currently in draft
 <tr><td><a href='./includes/swagger/cds_telco.json'>Telco OpenAPI Specification (JSON)</a></td></tr>
 <tr><td><a href='./includes/swagger/cds_telco.yaml'>Telco OpenAPI Specification (YAML)</a></td></tr>
 </table>
-
+<pre class="highlight diff tab-diff"><code>Updated description of TelcoPaymentScheduleDigitalWallet.name field
+from:
+<span class="gd">- The name assigned to the digital wallet by the owner of the wallet, else the display name provided by the digital wallet provider
+</span>to:
+<span class="gi">+ The display name of the wallet as given by the customer, else a default value defined by the data holder
+</span>
+Replaced FAPI draft references with FAPI 1.0 Final references. References pertain to the x-fapi-auth-date header.
+</code></pre>
 <h2 id='get-telco-products'>Get Telco Products</h2>
 
 <p><a id="opIdlistProducts"></a></p>
@@ -44461,7 +44534,7 @@ This operation does not require authentication
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-R-Draft">[FAPI-R-Draft]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
@@ -44769,7 +44842,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-R-Draft">[FAPI-R-Draft]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
@@ -45074,7 +45147,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-R-Draft">[FAPI-R-Draft]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
@@ -45409,7 +45482,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-R-Draft">[FAPI-R-Draft]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
@@ -45692,7 +45765,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-R-Draft">[FAPI-R-Draft]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
@@ -45955,7 +46028,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-R-Draft">[FAPI-R-Draft]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
@@ -46217,7 +46290,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-R-Draft">[FAPI-R-Draft]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
@@ -46466,7 +46539,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-R-Draft">[FAPI-R-Draft]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
@@ -46760,7 +46833,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-R-Draft">[FAPI-R-Draft]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
@@ -47081,7 +47154,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-R-Draft">[FAPI-R-Draft]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
@@ -47409,7 +47482,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-R-Draft">[FAPI-R-Draft]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
@@ -47747,7 +47820,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-R-Draft">[FAPI-R-Draft]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
@@ -48092,7 +48165,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-R-Draft">[FAPI-R-Draft]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
@@ -48458,7 +48531,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-R-Draft">[FAPI-R-Draft]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
@@ -48772,7 +48845,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-R-Draft">[FAPI-R-Draft]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
@@ -49086,7 +49159,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-R-Draft">[FAPI-R-Draft]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
@@ -55213,7 +55286,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>name</td>
 <td>string</td>
 <td>mandatory</td>
-<td>The name assigned to the digital wallet by the owner of the wallet, else the display name provided by the digital wallet provider</td>
+<td>The display name of the wallet as given by the customer, else a default value defined by the data holder</td>
 </tr>
 <tr>
 <td>identifier</td>
@@ -56558,7 +56631,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr><td><a href='./includes/swagger/cds_common.json'>Common OpenAPI Specification (JSON)</a></td></tr>
 <tr><td><a href='./includes/swagger/cds_common.yaml'>Common OpenAPI Specification (YAML)</a></td></tr>
 </table></p>
-
+<pre class="highlight diff tab-diff"><code>Replaced FAPI draft references with FAPI 1.0 Final references. References pertain to the x-fapi-auth-date header.
+</code></pre>
 <h2 id='get-customer'>Get Customer</h2>
 
 <p><a id="opIdgetCustomer"></a></p>
@@ -56669,7 +56743,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-R-Draft">[FAPI-R-Draft]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
@@ -56907,7 +56981,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-R-Draft">[FAPI-R-Draft]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>

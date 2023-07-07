@@ -327,7 +327,7 @@ paths:
           type: string
         style: simple
       - description: The time when the customer last logged in to the Data Recipient
-          Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required
+          Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required
           for all resource calls (customer present and unattended). Not required for
           unauthenticated calls.
         explode: false
@@ -508,7 +508,7 @@ paths:
           type: string
         style: simple
       - description: The time when the customer last logged in to the Data Recipient
-          Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required
+          Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required
           for all resource calls (customer present and unattended). Not required for
           unauthenticated calls.
         explode: false
@@ -655,7 +655,7 @@ paths:
           type: string
         style: simple
       - description: The time when the customer last logged in to the Data Recipient
-          Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required
+          Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required
           for all resource calls (customer present and unattended). Not required for
           unauthenticated calls.
         explode: false
@@ -833,7 +833,7 @@ paths:
           type: string
         style: simple
       - description: The time when the customer last logged in to the Data Recipient
-          Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required
+          Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required
           for all resource calls (customer present and unattended). Not required for
           unauthenticated calls.
         explode: false
@@ -975,7 +975,7 @@ paths:
           type: string
         style: simple
       - description: The time when the customer last logged in to the Data Recipient
-          Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required
+          Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required
           for all resource calls (customer present and unattended). Not required for
           unauthenticated calls.
         explode: false
@@ -1126,7 +1126,7 @@ paths:
           type: string
         style: simple
       - description: The time when the customer last logged in to the Data Recipient
-          Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required
+          Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required
           for all resource calls (customer present and unattended). Not required for
           unauthenticated calls.
         explode: false
@@ -1266,7 +1266,7 @@ paths:
           type: string
         style: simple
       - description: The time when the customer last logged in to the Data Recipient
-          Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required
+          Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required
           for all resource calls (customer present and unattended). Not required for
           unauthenticated calls.
         explode: false
@@ -1405,7 +1405,7 @@ paths:
           type: string
         style: simple
       - description: The time when the customer last logged in to the Data Recipient
-          Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required
+          Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required
           for all resource calls (customer present and unattended). Not required for
           unauthenticated calls.
         explode: false
@@ -1553,7 +1553,7 @@ paths:
           type: string
         style: simple
       - description: The time when the customer last logged in to the Data Recipient
-          Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required
+          Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required
           for all resource calls (customer present and unattended). Not required for
           unauthenticated calls.
         explode: false
@@ -1700,7 +1700,7 @@ paths:
           type: string
         style: simple
       - description: The time when the customer last logged in to the Data Recipient
-          Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required
+          Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required
           for all resource calls (customer present and unattended). Not required for
           unauthenticated calls.
         explode: false
@@ -1844,7 +1844,7 @@ paths:
           type: string
         style: simple
       - description: The time when the customer last logged in to the Data Recipient
-          Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required
+          Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required
           for all resource calls (customer present and unattended). Not required for
           unauthenticated calls.
         explode: false
@@ -2025,7 +2025,7 @@ paths:
           type: string
         style: simple
       - description: The time when the customer last logged in to the Data Recipient
-          Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required
+          Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required
           for all resource calls (customer present and unattended). Not required for
           unauthenticated calls.
         explode: false
@@ -2194,7 +2194,7 @@ paths:
           type: string
         style: simple
       - description: The time when the customer last logged in to the Data Recipient
-          Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required
+          Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required
           for all resource calls (customer present and unattended). Not required for
           unauthenticated calls.
         explode: false
@@ -2378,7 +2378,7 @@ paths:
           type: string
         style: simple
       - description: The time when the customer last logged in to the Data Recipient
-          Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required
+          Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required
           for all resource calls (customer present and unattended). Not required for
           unauthenticated calls.
         explode: false
@@ -2559,7 +2559,7 @@ paths:
           type: string
         style: simple
       - description: The time when the customer last logged in to the Data Recipient
-          Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required
+          Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required
           for all resource calls (customer present and unattended). Not required for
           unauthenticated calls.
         explode: false
@@ -2728,7 +2728,7 @@ paths:
           type: string
         style: simple
       - description: The time when the customer last logged in to the Data Recipient
-          Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required
+          Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required
           for all resource calls (customer present and unattended). Not required for
           unauthenticated calls.
         explode: false
@@ -2987,7 +2987,7 @@ components:
       style: simple
     x-fapi-auth-date:
       description: The time when the customer last logged in to the Data Recipient
-        Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required
+        Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required
         for all resource calls (customer present and unattended). Not required for
         unauthenticated calls.
       explode: false
@@ -6586,8 +6586,8 @@ components:
         paymentFrequency: paymentFrequency
       properties:
         name:
-          description: The name assigned to the digital wallet by the owner of the
-            wallet, else the display name provided by the digital wallet provider
+          description: The display name of the wallet as given by the customer, else
+            a default value defined by the data holder
           type: string
         identifier:
           description: The identifier of the digital wallet (dependent on type)

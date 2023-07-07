@@ -7,7 +7,7 @@
 > Code samples
 
 ```http
-GET https://<register-base-url>/.well-known/openid-configuration HTTP/1.1
+GET https://<register-base-url>/idp/.well-known/openid-configuration HTTP/1.1
 
 Accept: application/json
 
@@ -20,7 +20,7 @@ var headers = {
 };
 
 $.ajax({
-  url: 'https://<register-base-url>/.well-known/openid-configuration',
+  url: 'https://<register-base-url>/idp/.well-known/openid-configuration',
   method: 'get',
 
   headers: headers,
@@ -31,7 +31,7 @@ $.ajax({
 
 ```
 
-`GET /.well-known/openid-configuration`
+`GET /idp/.well-known/openid-configuration`
 
 Endpoint used by participants to discover the CDR Register OpenID configuration and obtain information needed to interact with it, including its OAuth 2.0 endpoint locations.
 
@@ -102,7 +102,7 @@ This operation does not require authentication
 > Code samples
 
 ```http
-GET https://<register-base-url>/jwks HTTP/1.1
+GET https://<register-base-url>/cdr-register/v1/jwks HTTP/1.1
 
 Accept: application/json
 
@@ -115,7 +115,7 @@ var headers = {
 };
 
 $.ajax({
-  url: 'https://<register-base-url>/jwks',
+  url: 'https://<register-base-url>/cdr-register/v1/jwks',
   method: 'get',
 
   headers: headers,
@@ -126,7 +126,7 @@ $.ajax({
 
 ```
 
-`GET /jwks`
+`GET /cdr-register/v1/jwks`
 
 JWKS endpoint containing the public keys used by the CDR Register to validate the signature of issued SSAs and authenticate outbound calls to participants in the CDR.
 
