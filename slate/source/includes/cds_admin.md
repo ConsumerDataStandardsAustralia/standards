@@ -159,7 +159,7 @@ If the Data Holder supports private_key_jwt client authentication they MUST vali
 ###Endpoint Version
 |   |  |
 |---|--|
-|Version|**4**
+|Version|**5**
 
 <h3 id="get-metrics-parameters">Parameters</h3>
 
@@ -206,10 +206,106 @@ If the Data Holder supports private_key_jwt client authentication they MUST vali
       }
     },
     "performance": {
-      "currentDay": "string",
-      "previousDays": [
-        "string"
-      ]
+      "aggregate": {
+        "currentDay": "string",
+        "previousDays": [
+          "string"
+        ]
+      },
+      "highPriority": {
+        "currentDay": [
+          "string"
+        ],
+        "previousDays": [
+          [
+            "string"
+          ]
+        ]
+      },
+      "largePayload": {
+        "currentDay": [
+          "string"
+        ],
+        "previousDays": [
+          [
+            "string"
+          ]
+        ]
+      },
+      "lowPriority": {
+        "currentDay": [
+          "string"
+        ],
+        "previousDays": [
+          [
+            "string"
+          ]
+        ]
+      },
+      "unattended": {
+        "currentDay": [
+          "string"
+        ],
+        "previousDays": [
+          [
+            "string"
+          ]
+        ]
+      },
+      "unauthenticated": {
+        "currentDay": [
+          "string"
+        ],
+        "previousDays": [
+          [
+            "string"
+          ]
+        ]
+      },
+      "secondary": {
+        "primary": {
+          "currentDay": [
+            "string"
+          ],
+          "previousDays": [
+            [
+              "string"
+            ]
+          ]
+        },
+        "secondary": {
+          "currentDay": [
+            "string"
+          ],
+          "previousDays": [
+            [
+              "string"
+            ]
+          ]
+        }
+      },
+      "largeSecondary": {
+        "primary": {
+          "currentDay": [
+            "string"
+          ],
+          "previousDays": [
+            [
+              "string"
+            ]
+          ]
+        },
+        "secondary": {
+          "currentDay": [
+            "string"
+          ],
+          "previousDays": [
+            [
+              "string"
+            ]
+          ]
+        }
+      }
     },
     "invocations": {
       "unauthenticated": {
@@ -497,6 +593,44 @@ If the Data Holder supports private_key_jwt client authentication they MUST vali
         "previousDays": [
           0
         ]
+      },
+      "abandonmentsByStage": {
+        "abandonedConsentFlowCount": {
+          "currentDay": 0,
+          "previousDays": [
+            0
+          ]
+        },
+        "preAuthentication": {
+          "currentDay": 0,
+          "previousDays": [
+            0
+          ]
+        },
+        "preAccountSelection": {
+          "currentDay": 0,
+          "previousDays": [
+            0
+          ]
+        },
+        "preAuthorisation": {
+          "currentDay": 0,
+          "previousDays": [
+            0
+          ]
+        },
+        "rejected": {
+          "currentDay": 0,
+          "previousDays": [
+            0
+          ]
+        },
+        "failedTokenExchange": {
+          "currentDay": 0,
+          "previousDays": [
+            0
+          ]
+        }
       }
     }
   },
@@ -511,7 +645,7 @@ If the Data Holder supports private_key_jwt client authentication they MUST vali
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseMetricsListV4](#schemacdr-admin-apiresponsemetricslistv4)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseMetricsListV5](#schemacdr-admin-apiresponsemetricslistv5)|
 |400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-admin-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-admin-apiresponseerrorlistv2)|
 
@@ -567,9 +701,9 @@ This operation may only be called by the CDR Register
 |---|---|
 |action|REFRESH|
 
-<h3 class="schema-toc" id="tocSresponsemetricslistv4">ResponseMetricsListV4</h3>
+<h3 class="schema-toc" id="tocSresponsemetricslistv5">ResponseMetricsListV5</h3>
 
-<a id="schemacdr-admin-apiresponsemetricslistv4"></a>
+<a id="schemacdr-admin-apiresponsemetricslistv5"></a>
 
 ```json
 {
@@ -596,10 +730,106 @@ This operation may only be called by the CDR Register
       }
     },
     "performance": {
-      "currentDay": "string",
-      "previousDays": [
-        "string"
-      ]
+      "aggregate": {
+        "currentDay": "string",
+        "previousDays": [
+          "string"
+        ]
+      },
+      "highPriority": {
+        "currentDay": [
+          "string"
+        ],
+        "previousDays": [
+          [
+            "string"
+          ]
+        ]
+      },
+      "largePayload": {
+        "currentDay": [
+          "string"
+        ],
+        "previousDays": [
+          [
+            "string"
+          ]
+        ]
+      },
+      "lowPriority": {
+        "currentDay": [
+          "string"
+        ],
+        "previousDays": [
+          [
+            "string"
+          ]
+        ]
+      },
+      "unattended": {
+        "currentDay": [
+          "string"
+        ],
+        "previousDays": [
+          [
+            "string"
+          ]
+        ]
+      },
+      "unauthenticated": {
+        "currentDay": [
+          "string"
+        ],
+        "previousDays": [
+          [
+            "string"
+          ]
+        ]
+      },
+      "secondary": {
+        "primary": {
+          "currentDay": [
+            "string"
+          ],
+          "previousDays": [
+            [
+              "string"
+            ]
+          ]
+        },
+        "secondary": {
+          "currentDay": [
+            "string"
+          ],
+          "previousDays": [
+            [
+              "string"
+            ]
+          ]
+        }
+      },
+      "largeSecondary": {
+        "primary": {
+          "currentDay": [
+            "string"
+          ],
+          "previousDays": [
+            [
+              "string"
+            ]
+          ]
+        },
+        "secondary": {
+          "currentDay": [
+            "string"
+          ],
+          "previousDays": [
+            [
+              "string"
+            ]
+          ]
+        }
+      }
     },
     "invocations": {
       "unauthenticated": {
@@ -887,6 +1117,44 @@ This operation may only be called by the CDR Register
         "previousDays": [
           0
         ]
+      },
+      "abandonmentsByStage": {
+        "abandonedConsentFlowCount": {
+          "currentDay": 0,
+          "previousDays": [
+            0
+          ]
+        },
+        "preAuthentication": {
+          "currentDay": 0,
+          "previousDays": [
+            0
+          ]
+        },
+        "preAccountSelection": {
+          "currentDay": 0,
+          "previousDays": [
+            0
+          ]
+        },
+        "preAuthorisation": {
+          "currentDay": 0,
+          "previousDays": [
+            0
+          ]
+        },
+        "rejected": {
+          "currentDay": 0,
+          "previousDays": [
+            0
+          ]
+        },
+        "failedTokenExchange": {
+          "currentDay": 0,
+          "previousDays": [
+            0
+          ]
+        }
       }
     }
   },
@@ -905,7 +1173,7 @@ This operation may only be called by the CDR Register
 |data|object|mandatory|none|
 |» requestTime|[DateTimeString](#common-field-types)|mandatory|The date and time that the metrics in this payload were requested.|
 |» availability|[AvailabilityMetricsV2](#schemacdr-admin-apiavailabilitymetricsv2)|mandatory|Availability metrics|
-|» performance|[PerformanceMetricsV2](#schemacdr-admin-apiperformancemetricsv2)|mandatory|Percentage of calls within the performance thresholds|
+|» performance|[PerformanceMetricsV3](#schemacdr-admin-apiperformancemetricsv3)|mandatory|Percentage of calls within the performance thresholds in each performance tier over time|
 |» invocations|[InvocationMetricsV3](#schemacdr-admin-apiinvocationmetricsv3)|mandatory|Number of API calls in each performance tier over time|
 |» averageResponse|[AverageResponseMetricsV2](#schemacdr-admin-apiaverageresponsemetricsv2)|mandatory|Average response time in seconds, at millisecond resolution, within each performance tier|
 |» sessionCount|[SessionCountMetricsV2](#schemacdr-admin-apisessioncountmetricsv2)|mandatory|Session counts over time. Note that a session is defined as the provisioning of an Access Token.|
@@ -916,7 +1184,7 @@ This operation may only be called by the CDR Register
 |» customerCount|[NaturalNumber](#common-field-types)|mandatory|Number of customers with active authorisations at the time of the call|
 |» recipientCount|[NaturalNumber](#common-field-types)|mandatory|Number of Data Recipient Software Products with active authorisations at the time of the call|
 |» secondaryHolder|[SecondaryHolderMetricsV2](#schemacdr-admin-apisecondaryholdermetricsv2)|conditional|Errors and rejections received by the primary data holder from the secondary data holder.  Mandatory for data holders designated for a Shared Responsibility Data Request data cluster|
-|» authorisations|[AuthorisationMetrics](#schemacdr-admin-apiauthorisationmetrics)|optional|Authorisation counts for the data holder|
+|» authorisations|[AuthorisationMetricsV2](#schemacdr-admin-apiauthorisationmetricsv2)|optional|Authorisation counts for the data holder|
 |links|[Links](#schemacdr-admin-apilinks)|mandatory|none|
 |meta|[Meta](#schemacdr-admin-apimeta)|optional|none|
 
@@ -964,28 +1232,154 @@ This operation may only be called by the CDR Register
 |» currentMonth|[RateString](#common-field-types)|conditional|Percentage availability of the CDR platform so far for the current calendar month. 0.0 means 0%. 1.0 means 100%. Must be a positive value or zero|
 |» previousMonths|[string]|conditional|Percentage availability of the CDR platform for previous calendar months. The first element indicates the last month and so on. A maximum of twelve entries is required if available. 0.0 means 0%. 1.0 means 100%. Values must be a positive or zero|
 
-<h3 class="schema-toc" id="tocSperformancemetricsv2">PerformanceMetricsV2</h3>
+<h3 class="schema-toc" id="tocSperformancemetricsv3">PerformanceMetricsV3</h3>
 
-<a id="schemacdr-admin-apiperformancemetricsv2"></a>
+<a id="schemacdr-admin-apiperformancemetricsv3"></a>
 
 ```json
 {
-  "currentDay": "string",
-  "previousDays": [
-    "string"
-  ]
+  "aggregate": {
+    "currentDay": "string",
+    "previousDays": [
+      "string"
+    ]
+  },
+  "highPriority": {
+    "currentDay": [
+      "string"
+    ],
+    "previousDays": [
+      [
+        "string"
+      ]
+    ]
+  },
+  "largePayload": {
+    "currentDay": [
+      "string"
+    ],
+    "previousDays": [
+      [
+        "string"
+      ]
+    ]
+  },
+  "lowPriority": {
+    "currentDay": [
+      "string"
+    ],
+    "previousDays": [
+      [
+        "string"
+      ]
+    ]
+  },
+  "unattended": {
+    "currentDay": [
+      "string"
+    ],
+    "previousDays": [
+      [
+        "string"
+      ]
+    ]
+  },
+  "unauthenticated": {
+    "currentDay": [
+      "string"
+    ],
+    "previousDays": [
+      [
+        "string"
+      ]
+    ]
+  },
+  "secondary": {
+    "primary": {
+      "currentDay": [
+        "string"
+      ],
+      "previousDays": [
+        [
+          "string"
+        ]
+      ]
+    },
+    "secondary": {
+      "currentDay": [
+        "string"
+      ],
+      "previousDays": [
+        [
+          "string"
+        ]
+      ]
+    }
+  },
+  "largeSecondary": {
+    "primary": {
+      "currentDay": [
+        "string"
+      ],
+      "previousDays": [
+        [
+          "string"
+        ]
+      ]
+    },
+    "secondary": {
+      "currentDay": [
+        "string"
+      ],
+      "previousDays": [
+        [
+          "string"
+        ]
+      ]
+    }
+  }
 }
 
 ```
 
-*Percentage of calls within the performance thresholds*
+*Percentage of calls within the performance thresholds in each performance tier over time*
 
 ### Properties
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|currentDay|[RateString](#common-field-types)|conditional|Percentage of calls within the performance threshold for the current day. 0.0 means 0%. 1.0 means 100%. Must be a positive value or zero|
-|previousDays|[string]|conditional|Percentage of calls within the performance threshold for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. 0.0 means 0%. 1.0 means 100%. Values must be a positive or zero|
+|aggregate|object|optional|Percentage of calls within the performance thresholds|
+|» currentDay|[RateString](#common-field-types)|conditional|Percentage of calls within the performance threshold for the current day. 0.0 means 0%. 1.0 means 100%. Must be a positive value or zero|
+|» previousDays|[string]|conditional|Percentage of calls within the performance threshold for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. 0.0 means 0%. 1.0 means 100%. Values must be a positive or zero|
+|highPriority|object|mandatory|Percentage of high priority calls within the performance thresholds|
+|» currentDay|[string]|conditional|Array of contiguous hourly metrics for the current day.  Each element represents a 1 hour period starting from 12am-1am.  Timezone for determining 12am must be consistent but is at the discretion of the Data Holder|
+|» previousDays|[array]|conditional|Percentage of calls within the performance threshold for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. 0.0 means 0%. 1.0 means 100%. Values must be a positive or zero|
+|largePayload|object|mandatory|Percentage of large payload calls within the performance thresholds|
+|» currentDay|[string]|conditional|Array of contiguous hourly metrics for the current day.  Each element represents a 1 hour period starting from 12am-1am.  Timezone for determining 12am must be consistent but is at the discretion of the Data Holder|
+|» previousDays|[array]|conditional|Percentage of calls within the performance threshold for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. 0.0 means 0%. 1.0 means 100%. Values must be a positive or zero|
+|lowPriority|object|mandatory|Percentage of low priority calls within the performance thresholds|
+|» currentDay|[string]|conditional|Array of contiguous hourly metrics for the current day.  Each element represents a 1 hour period starting from 12am-1am.  Timezone for determining 12am must be consistent but is at the discretion of the Data Holder|
+|» previousDays|[array]|conditional|Percentage of calls within the performance threshold for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. 0.0 means 0%. 1.0 means 100%. Values must be a positive or zero|
+|unattended|object|mandatory|Percentage of unattended calls within the performance thresholds|
+|» currentDay|[string]|conditional|Array of contiguous hourly metrics for the current day.  Each element represents a 1 hour period starting from 12am-1am.  Timezone for determining 12am must be consistent but is at the discretion of the Data Holder|
+|» previousDays|[array]|conditional|Percentage of calls within the performance threshold for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. 0.0 means 0%. 1.0 means 100%. Values must be a positive or zero|
+|unauthenticated|object|mandatory|Percentage of unauthenticated calls within the performance thresholds|
+|» currentDay|[string]|conditional|Array of contiguous hourly metrics for the current day.  Each element represents a 1 hour period starting from 12am-1am.  Timezone for determining 12am must be consistent but is at the discretion of the Data Holder|
+|» previousDays|[array]|conditional|Percentage of calls within the performance threshold for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. 0.0 means 0%. 1.0 means 100%. Values must be a positive or zero|
+|secondary|object|conditional|Percentage of Shared Responsibility calls within the performance thresholds. Mandatory for data holders designated for a Shared Responsibility Data Request data cluster|
+|» primary|object|mandatory|Percentage of Shared Responsibility calls within the performance thresholds for the primary data holder|
+|»» currentDay|[string]|conditional|Array of contiguous hourly metrics for the current day.  Each element represents a 1 hour period starting from 12am-1am.  Timezone for determining 12am must be consistent but is at the discretion of the Data Holder|
+|»» previousDays|[array]|conditional|Percentage of calls within the performance threshold for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. 0.0 means 0%. 1.0 means 100%. Values must be a positive or zero|
+|» secondary|object|mandatory|Percentage of Shared Responsibility calls within the performance thresholds for the secondary data holder|
+|»» currentDay|[string]|conditional|Array of contiguous hourly metrics for the current day.  Each element represents a 1 hour period starting from 12am-1am.  Timezone for determining 12am must be consistent but is at the discretion of the Data Holder|
+|»» previousDays|[array]|conditional|Percentage of calls within the performance threshold for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. 0.0 means 0%. 1.0 means 100%. Values must be a positive or zero|
+|» largeSecondary|object|conditional|Percentage of large Shared Responsibility calls within the performance thresholds. Mandatory for data holders designated for a Shared Responsibility Data Request data cluster|
+|»» primary|object|mandatory|Percentage of large Shared Responsibility calls within the performance thresholds for the secondary data holder|
+|»»» currentDay|[string]|conditional|Array of contiguous hourly metrics for the current day.  Each element represents a 1 hour period starting from 12am-1am.  Timezone for determining 12am must be consistent but is at the discretion of the Data Holder|
+|»»» previousDays|[array]|conditional|Percentage of calls within the performance threshold for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. 0.0 means 0%. 1.0 means 100%. Values must be a positive or zero|
+|»» secondary|object|mandatory|Percentage of large Shared Responsibility calls within the performance thresholds for the secondary data holder|
+|»»» currentDay|[string]|conditional|Array of contiguous hourly metrics for the current day.  Each element represents a 1 hour period starting from 12am-1am.  Timezone for determining 12am must be consistent but is at the discretion of the Data Holder|
+|»»» previousDays|[array]|conditional|Percentage of calls within the performance threshold for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. 0.0 means 0%. 1.0 means 100%. Values must be a positive or zero|
 
 <h3 class="schema-toc" id="tocSinvocationmetricsv3">InvocationMetricsV3</h3>
 
@@ -1420,9 +1814,9 @@ This operation may only be called by the CDR Register
 |» currentDay|[NaturalNumber](#common-field-types)|conditional|Number of rejections for current day|
 |» previousDays|[integer]|conditional|Number of rejections for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available|
 
-<h3 class="schema-toc" id="tocSauthorisationmetrics">AuthorisationMetrics</h3>
+<h3 class="schema-toc" id="tocSauthorisationmetricsv2">AuthorisationMetricsV2</h3>
 
-<a id="schemacdr-admin-apiauthorisationmetrics"></a>
+<a id="schemacdr-admin-apiauthorisationmetricsv2"></a>
 
 ```json
 {
@@ -1495,6 +1889,44 @@ This operation may only be called by the CDR Register
     "previousDays": [
       0
     ]
+  },
+  "abandonmentsByStage": {
+    "abandonedConsentFlowCount": {
+      "currentDay": 0,
+      "previousDays": [
+        0
+      ]
+    },
+    "preAuthentication": {
+      "currentDay": 0,
+      "previousDays": [
+        0
+      ]
+    },
+    "preAccountSelection": {
+      "currentDay": 0,
+      "previousDays": [
+        0
+      ]
+    },
+    "preAuthorisation": {
+      "currentDay": 0,
+      "previousDays": [
+        0
+      ]
+    },
+    "rejected": {
+      "currentDay": 0,
+      "previousDays": [
+        0
+      ]
+    },
+    "failedTokenExchange": {
+      "currentDay": 0,
+      "previousDays": [
+        0
+      ]
+    }
   }
 }
 
@@ -1548,6 +1980,25 @@ This operation may only be called by the CDR Register
 |»»»»»» abandonedConsentFlowCount|object|mandatory|The number of consents flows that were not successfully authorised|
 |»»»»»»» currentDay|[NaturalNumber](#common-field-types)|conditional|Number of consents flows that were not successfully authorised for the current day|
 |»»»»»»» previousDays|[integer]|conditional|Number of consents flows that were not successfully authorised for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available|
+|»»»»»» abandonmentsByStage|object|mandatory|Customer abandonment count per stage of the consent flow.  Note that the aggregated abandonment count for all stages for a period should equal the count in `abandonedConsentFlowCount` for the same period (ie. each abandoned consent should assigned to one, and only one, stage)|
+|»»»»»»» abandonedConsentFlowCount|object|mandatory|The number of authorisations that commenced with the data holder but the customer did not successfully identify their profile or user ID|
+|»»»»»»»» currentDay|[NaturalNumber](#common-field-types)|conditional|Number of abandoned consent flows for this stage for the current day|
+|»»»»»»»» previousDays|[integer]|conditional|Number of abandoned consent flows for this stage for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available|
+|»»»»»»» preAuthentication|object|mandatory|The number of authorisations where the customer identified themselves (ie. they successfully identify the customer profile to use for the authorisation) but failed to provide a valid OTP or equivalent|
+|»»»»»»»» currentDay|[NaturalNumber](#common-field-types)|conditional|Number of abandoned consent flows for this stage for the current day|
+|»»»»»»»» previousDays|[integer]|conditional|Number of abandoned consent flows for this stage for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available|
+|»»»»»»» preAccountSelection|object|mandatory|The number of authorisations where the customer successfully authenticated with a valid OTP or equivalent but abandoned the process before selecting accounts|
+|»»»»»»»» currentDay|[NaturalNumber](#common-field-types)|conditional|Number of abandoned consent flows for this stage for the current day|
+|»»»»»»»» previousDays|[integer]|conditional|Number of abandoned consent flows for this stage for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available|
+|»»»»»»» preAuthorisation|object|mandatory|The number of authorisations where the customer has passed the account selection step but abandoned the process before approving or rejecting the consent being requested|
+|»»»»»»»» currentDay|[NaturalNumber](#common-field-types)|conditional|Number of abandoned consent flows for this stage for the current day|
+|»»»»»»»» previousDays|[integer]|conditional|Number of abandoned consent flows for this stage for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available|
+|»»»»»»» rejected|object|mandatory|The number of authorisations where the customer actively rejected the authorisation rather than abandoning the process|
+|»»»»»»»» currentDay|[NaturalNumber](#common-field-types)|conditional|Number of abandoned consent flows for this stage for the current day|
+|»»»»»»»» previousDays|[integer]|conditional|Number of abandoned consent flows for this stage for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available|
+|»»»»»»» failedTokenExchange|object|mandatory|The number of authorisations that completed the interactive flow with the consumer authorising the consent, but the ADR failed to - or was unable to - obtain a refresh or access token using the authorisation code|
+|»»»»»»»» currentDay|[NaturalNumber](#common-field-types)|conditional|Number of abandoned consent flows for this stage for the current day|
+|»»»»»»»» previousDays|[integer]|conditional|Number of abandoned consent flows for this stage for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available|
 
 <h3 class="schema-toc" id="tocSlinks">Links</h3>
 

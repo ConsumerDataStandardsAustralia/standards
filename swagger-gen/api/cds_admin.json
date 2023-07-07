@@ -160,7 +160,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ResponseMetricsListV4"
+                  "$ref": "#/components/schemas/ResponseMetricsListV5"
                 }
               }
             }
@@ -190,7 +190,7 @@
           "admin:metrics.basic:read"
         ],
         "x-restricted-access": "REGISTER",
-        "x-version": "4"
+        "x-version": "5"
       }
     }
   },
@@ -223,7 +223,7 @@
           }
         }
       },
-      "ResponseMetricsListV4": {
+      "ResponseMetricsListV5": {
         "required": [
           "data",
           "links"
@@ -256,7 +256,7 @@
                 "$ref": "#/components/schemas/AvailabilityMetricsV2"
               },
               "performance": {
-                "$ref": "#/components/schemas/PerformanceMetricsV2"
+                "$ref": "#/components/schemas/PerformanceMetricsV3"
               },
               "invocations": {
                 "$ref": "#/components/schemas/InvocationMetricsV3"
@@ -293,7 +293,7 @@
                 "$ref": "#/components/schemas/SecondaryHolderMetricsV2"
               },
               "authorisations": {
-                "$ref": "#/components/schemas/AuthorisationMetrics"
+                "$ref": "#/components/schemas/AuthorisationMetricsV2"
               }
             },
             "x-conditional": [
@@ -388,27 +388,352 @@
           }
         }
       },
-      "PerformanceMetricsV2": {
+      "PerformanceMetricsV3": {
+        "required": [
+          "highPriority",
+          "largePayload",
+          "lowPriority",
+          "unattended",
+          "unauthenticated"
+        ],
         "type": "object",
         "properties": {
-          "currentDay": {
-            "type" : "string",
-            "x-cds-type" : "RateString",
-            "description": "Percentage of calls within the performance threshold for the current day. 0.0 means 0%. 1.0 means 100%. Must be a positive value or zero"
+          "aggregate": {
+            "type": "object",
+            "properties": {
+              "currentDay": {
+                "type" : "string",
+                "x-cds-type" : "RateString",
+                "description": "Percentage of calls within the performance threshold for the current day. 0.0 means 0%. 1.0 means 100%. Must be a positive value or zero"
+              },
+              "previousDays": {
+                "type": "array",
+                "description": "Percentage of calls within the performance threshold for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. 0.0 means 0%. 1.0 means 100%. Values must be a positive or zero",
+                "items": {
+                  "type" : "string",
+                  "x-cds-type" : "RateString"
+                }
+              }
+            },
+            "description": "Percentage of calls within the performance thresholds",
+            "x-conditional": [
+              "currentDay",
+              "previousDays"
+            ]
           },
-          "previousDays": {
-            "type": "array",
-            "description": "Percentage of calls within the performance threshold for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. 0.0 means 0%. 1.0 means 100%. Values must be a positive or zero",
-            "items": {
-              "type" : "string",
-              "x-cds-type" : "RateString"
-            }
+          "highPriority": {
+            "type": "object",
+            "properties": {
+              "currentDay": {
+                "type": "array",
+                "description": "Array of contiguous hourly metrics for the current day.  Each element represents a 1 hour period starting from 12am-1am.  Timezone for determining 12am must be consistent but is at the discretion of the Data Holder",
+                "items": {
+                  "type" : "string",
+                  "x-cds-type" : "RateString",
+                  "description": "Percentage of calls within the performance threshold for the specified hour. 0.0 means 0%. 1.0 means 100%. Must be a positive value or zero"
+                }
+              },
+              "previousDays": {
+                "type": "array",
+                "description": "Percentage of calls within the performance threshold for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. 0.0 means 0%. 1.0 means 100%. Values must be a positive or zero",
+                "items": {
+                  "type": "array",
+                  "description": "Array of contiguous hourly metrics for the specified day.  Each element represents a 1 hour period starting from 12am-1am.  Timezone for determining 12am must be consistent but is at the discretion of the Data Holder",
+                  "items": {
+                    "type" : "string",
+                    "x-cds-type" : "RateString",
+                    "description": "Percentage of calls within the performance threshold for the specified hour. 0.0 means 0%. 1.0 means 100%. Must be a positive value or zero"
+                  }
+                }
+              }
+            },
+            "description": "Percentage of high priority calls within the performance thresholds",
+            "x-conditional": [
+              "currentDay",
+              "previousDays"
+            ]
+          },
+          "largePayload": {
+            "type": "object",
+            "properties": {
+              "currentDay": {
+                "type": "array",
+                "description": "Array of contiguous hourly metrics for the current day.  Each element represents a 1 hour period starting from 12am-1am.  Timezone for determining 12am must be consistent but is at the discretion of the Data Holder",
+                "items": {
+                  "type" : "string",
+                  "x-cds-type" : "RateString",
+                  "description": "Percentage of calls within the performance threshold for the specified hour. 0.0 means 0%. 1.0 means 100%. Must be a positive value or zero"
+                }
+              },
+              "previousDays": {
+                "type": "array",
+                "description": "Percentage of calls within the performance threshold for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. 0.0 means 0%. 1.0 means 100%. Values must be a positive or zero",
+                "items": {
+                  "type": "array",
+                  "description": "Array of contiguous hourly metrics for the specified day.  Each element represents a 1 hour period starting from 12am-1am.  Timezone for determining 12am must be consistent but is at the discretion of the Data Holder",
+                  "items": {
+                    "type" : "string",
+                    "x-cds-type" : "RateString",
+                    "description": "Percentage of calls within the performance threshold for the specified hour. 0.0 means 0%. 1.0 means 100%. Must be a positive value or zero"
+                  }
+                }
+              }
+            },
+            "description": "Percentage of large payload calls within the performance thresholds",
+            "x-conditional": [
+              "currentDay",
+              "previousDays"
+            ]
+          },
+          "lowPriority": {
+            "type": "object",
+            "properties": {
+              "currentDay": {
+                "type": "array",
+                "description": "Array of contiguous hourly metrics for the current day.  Each element represents a 1 hour period starting from 12am-1am.  Timezone for determining 12am must be consistent but is at the discretion of the Data Holder",
+                "items": {
+                  "type" : "string",
+                  "x-cds-type" : "RateString",
+                  "description": "Percentage of calls within the performance threshold for the specified hour. 0.0 means 0%. 1.0 means 100%. Must be a positive value or zero"
+                }
+              },
+              "previousDays": {
+                "type": "array",
+                "description": "Percentage of calls within the performance threshold for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. 0.0 means 0%. 1.0 means 100%. Values must be a positive or zero",
+                "items": {
+                  "type": "array",
+                  "description": "Array of contiguous hourly metrics for the specified day.  Each element represents a 1 hour period starting from 12am-1am.  Timezone for determining 12am must be consistent but is at the discretion of the Data Holder",
+                  "items": {
+                    "type" : "string",
+                    "x-cds-type" : "RateString",
+                    "description": "Percentage of calls within the performance threshold for the specified hour. 0.0 means 0%. 1.0 means 100%. Must be a positive value or zero"
+                  }
+                }
+              }
+            },
+            "description": "Percentage of low priority calls within the performance thresholds",
+            "x-conditional": [
+              "currentDay",
+              "previousDays"
+            ]
+          },
+          "unattended": {
+            "type": "object",
+            "properties": {
+              "currentDay": {
+                "type": "array",
+                "description": "Array of contiguous hourly metrics for the current day.  Each element represents a 1 hour period starting from 12am-1am.  Timezone for determining 12am must be consistent but is at the discretion of the Data Holder",
+                "items": {
+                  "type" : "string",
+                  "x-cds-type" : "RateString",
+                  "description": "Percentage of calls within the performance threshold for the specified hour. 0.0 means 0%. 1.0 means 100%. Must be a positive value or zero"
+                }
+              },
+              "previousDays": {
+                "type": "array",
+                "description": "Percentage of calls within the performance threshold for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. 0.0 means 0%. 1.0 means 100%. Values must be a positive or zero",
+                "items": {
+                  "type": "array",
+                  "description": "Array of contiguous hourly metrics for the specified day.  Each element represents a 1 hour period starting from 12am-1am.  Timezone for determining 12am must be consistent but is at the discretion of the Data Holder",
+                  "items": {
+                    "type" : "string",
+                    "x-cds-type" : "RateString",
+                    "description": "Percentage of calls within the performance threshold for the specified hour. 0.0 means 0%. 1.0 means 100%. Must be a positive value or zero"
+                  }
+                }
+              }
+            },
+            "description": "Percentage of unattended calls within the performance thresholds",
+            "x-conditional": [
+              "currentDay",
+              "previousDays"
+            ]
+          },
+          "unauthenticated": {
+            "type": "object",
+            "properties": {
+              "currentDay": {
+                "type": "array",
+                "description": "Array of contiguous hourly metrics for the current day.  Each element represents a 1 hour period starting from 12am-1am.  Timezone for determining 12am must be consistent but is at the discretion of the Data Holder",
+                "items": {
+                  "type" : "string",
+                  "x-cds-type" : "RateString",
+                  "description": "Percentage of calls within the performance threshold for the specified hour. 0.0 means 0%. 1.0 means 100%. Must be a positive value or zero"
+                }
+              },
+              "previousDays": {
+                "type": "array",
+                "description": "Percentage of calls within the performance threshold for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. 0.0 means 0%. 1.0 means 100%. Values must be a positive or zero",
+                "items": {
+                  "type": "array",
+                  "description": "Array of contiguous hourly metrics for the specified day.  Each element represents a 1 hour period starting from 12am-1am.  Timezone for determining 12am must be consistent but is at the discretion of the Data Holder",
+                  "items": {
+                    "type" : "string",
+                    "x-cds-type" : "RateString",
+                    "description": "Percentage of calls within the performance threshold for the specified hour. 0.0 means 0%. 1.0 means 100%. Must be a positive value or zero"
+                  }
+                }
+              }
+            },
+            "description": "Percentage of unauthenticated calls within the performance thresholds",
+            "x-conditional": [
+              "currentDay",
+              "previousDays"
+            ]
+          },
+          "secondary": {
+            "required": [
+              "primary",
+              "secondary"
+            ],
+            "type": "object",
+            "properties": {
+              "primary":{
+                "type": "object",
+                "properties": {
+                  "currentDay": {
+                    "type": "array",
+                    "description": "Array of contiguous hourly metrics for the current day.  Each element represents a 1 hour period starting from 12am-1am.  Timezone for determining 12am must be consistent but is at the discretion of the Data Holder",
+                    "items": {
+                      "type" : "string",
+                      "x-cds-type" : "RateString",
+                      "description": "Percentage of calls within the performance threshold for the specified hour. 0.0 means 0%. 1.0 means 100%. Must be a positive value or zero"
+                    }
+                  },
+                  "previousDays": {
+                    "type": "array",
+                    "description": "Percentage of calls within the performance threshold for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. 0.0 means 0%. 1.0 means 100%. Values must be a positive or zero",
+                    "items": {
+                      "type": "array",
+                      "description": "Array of contiguous hourly metrics for the specified day.  Each element represents a 1 hour period starting from 12am-1am.  Timezone for determining 12am must be consistent but is at the discretion of the Data Holder",
+                      "items": {
+                        "type" : "string",
+                        "x-cds-type" : "RateString",
+                        "description": "Percentage of calls within the performance threshold for the specified hour. 0.0 means 0%. 1.0 means 100%. Must be a positive value or zero"
+                      }
+                    }
+                  }
+                },
+                "description": "Percentage of Shared Responsibility calls within the performance thresholds for the primary data holder",
+                "x-conditional": [
+                  "currentDay",
+                  "previousDays"
+                ]
+              },
+              "secondary":{
+                "type": "object",
+                "properties": {
+                  "currentDay": {
+                    "type": "array",
+                    "description": "Array of contiguous hourly metrics for the current day.  Each element represents a 1 hour period starting from 12am-1am.  Timezone for determining 12am must be consistent but is at the discretion of the Data Holder",
+                    "items": {
+                      "type" : "string",
+                      "x-cds-type" : "RateString",
+                      "description": "Percentage of calls within the performance threshold for the specified hour. 0.0 means 0%. 1.0 means 100%. Must be a positive value or zero"
+                    }
+                  },
+                  "previousDays": {
+                    "type": "array",
+                    "description": "Percentage of calls within the performance threshold for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. 0.0 means 0%. 1.0 means 100%. Values must be a positive or zero",
+                    "items": {
+                      "type": "array",
+                      "description": "Array of contiguous hourly metrics for the specified day.  Each element represents a 1 hour period starting from 12am-1am.  Timezone for determining 12am must be consistent but is at the discretion of the Data Holder",
+                      "items": {
+                        "type" : "string",
+                        "x-cds-type" : "RateString",
+                        "description": "Percentage of calls within the performance threshold for the specified hour. 0.0 means 0%. 1.0 means 100%. Must be a positive value or zero"
+                      }
+                    }
+                  }
+                },
+                "description": "Percentage of Shared Responsibility calls within the performance thresholds for the secondary data holder",
+                "x-conditional": [
+                  "currentDay",
+                  "previousDays"
+                ]
+              }
+            },
+            "description": "Percentage of Shared Responsibility calls within the performance thresholds. Mandatory for data holders designated for a Shared Responsibility Data Request data cluster"
+          },
+          "largeSecondary": {
+            "required": [
+              "primary",
+              "secondary"
+            ],
+            "type": "object",
+            "properties": {
+              "primary":{
+                "type": "object",
+                "properties": {
+                  "currentDay": {
+                    "type": "array",
+                    "description": "Array of contiguous hourly metrics for the current day.  Each element represents a 1 hour period starting from 12am-1am.  Timezone for determining 12am must be consistent but is at the discretion of the Data Holder",
+                    "items": {
+                      "type" : "string",
+                      "x-cds-type" : "RateString",
+                      "description": "Percentage of calls within the performance threshold for the specified hour. 0.0 means 0%. 1.0 means 100%. Must be a positive value or zero"
+                    }
+                  },
+                  "previousDays": {
+                    "type": "array",
+                    "description": "Percentage of calls within the performance threshold for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. 0.0 means 0%. 1.0 means 100%. Values must be a positive or zero",
+                    "items": {
+                      "type": "array",
+                      "description": "Array of contiguous hourly metrics for the specified day.  Each element represents a 1 hour period starting from 12am-1am.  Timezone for determining 12am must be consistent but is at the discretion of the Data Holder",
+                      "items": {
+                        "type" : "string",
+                        "x-cds-type" : "RateString",
+                        "description": "Percentage of calls within the performance threshold for the specified hour. 0.0 means 0%. 1.0 means 100%. Must be a positive value or zero"
+                      }
+                    }
+                  }
+                },
+                "description": "Percentage of large Shared Responsibility calls within the performance thresholds for the secondary data holder",
+                "x-conditional": [
+                  "currentDay",
+                  "previousDays"
+                ]
+              },
+              "secondary":{
+                "type": "object",
+                "properties": {
+                  "currentDay": {
+                    "type": "array",
+                    "description": "Array of contiguous hourly metrics for the current day.  Each element represents a 1 hour period starting from 12am-1am.  Timezone for determining 12am must be consistent but is at the discretion of the Data Holder",
+                    "items": {
+                      "type" : "string",
+                      "x-cds-type" : "RateString",
+                      "description": "Percentage of calls within the performance threshold for the specified hour. 0.0 means 0%. 1.0 means 100%. Must be a positive value or zero"
+                    }
+                  },
+                  "previousDays": {
+                    "type": "array",
+                    "description": "Percentage of calls within the performance threshold for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. 0.0 means 0%. 1.0 means 100%. Values must be a positive or zero",
+                    "items": {
+                      "type": "array",
+                      "description": "Array of contiguous hourly metrics for the specified day.  Each element represents a 1 hour period starting from 12am-1am.  Timezone for determining 12am must be consistent but is at the discretion of the Data Holder",
+                      "items": {
+                        "type" : "string",
+                        "x-cds-type" : "RateString",
+                        "description": "Percentage of calls within the performance threshold for the specified hour. 0.0 means 0%. 1.0 means 100%. Must be a positive value or zero"
+                      }
+                    }
+                  }
+                },
+                "description": "Percentage of large Shared Responsibility calls within the performance thresholds for the secondary data holder",
+                "x-conditional": [
+                  "currentDay",
+                  "previousDays"
+                ]
+              }
+            },
+            "description": "Percentage of large Shared Responsibility calls within the performance thresholds. Mandatory for data holders designated for a Shared Responsibility Data Request data cluster"
           }
         },
-        "description": "Percentage of calls within the performance thresholds",
+        "description": "Percentage of calls within the performance thresholds in each performance tier over time",
         "x-conditional": [
-          "currentDay",
-          "previousDays"
+          "secondary",
+          "largeSecondary"
         ]
       },
       "InvocationMetricsV3": {
@@ -1222,14 +1547,15 @@
         },
         "description": "Errors and rejections received by the primary data holder from the secondary data holder.  Mandatory for data holders designated for a Shared Responsibility Data Request data cluster"
       },
-      "AuthorisationMetrics": {
+      "AuthorisationMetricsV2": {
         "required": [
           "activeAuthorisationCount",
           "newAuthorisationCount",
           "revokedAuthorisationCount",
           "amendedAuthorisationCount",
           "expiredAuthorisationCount",
-          "abandonedConsentFlowCount"
+          "abandonedConsentFlowCount",
+          "abandonmentsByStage"
         ],
         "type": "object",
         "properties": {
@@ -1547,6 +1873,158 @@
               "currentDay",
               "previousDays"
             ]
+          },
+          "abandonmentsByStage": {
+            "required": [
+              "abandonedConsentFlowCount",
+              "preAuthentication",
+              "preAccountSelection",
+              "preAuthorisation",
+              "rejected",
+              "failedTokenExchange"
+            ],
+            "type": "object",
+            "properties": {
+              "abandonedConsentFlowCount": {
+                "type": "object",
+                "properties": {
+                  "currentDay": {
+                    "type": "integer",
+                    "x-cds-type" : "NaturalNumber",
+                    "description": "Number of abandoned consent flows for this stage for the current day"
+                  },
+                  "previousDays": {
+                    "type": "array",
+                    "description": "Number of abandoned consent flows for this stage for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
+                    "items": {
+                      "type": "integer",
+                      "x-cds-type" : "NaturalNumber"
+                    }
+                  }
+                },
+                "description": "The number of authorisations that commenced with the data holder but the customer did not successfully identify their profile or user ID",
+                "x-conditional": [
+                  "currentDay",
+                  "previousDays"
+                ]
+              },
+              "preAuthentication": {
+                "type": "object",
+                "properties": {
+                  "currentDay": {
+                    "type": "integer",
+                    "x-cds-type" : "NaturalNumber",
+                    "description": "Number of abandoned consent flows for this stage for the current day"
+                  },
+                  "previousDays": {
+                    "type": "array",
+                    "description": "Number of abandoned consent flows for this stage for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
+                    "items": {
+                      "type": "integer",
+                      "x-cds-type" : "NaturalNumber"
+                    }
+                  }
+                },
+                "description": "The number of authorisations where the customer identified themselves (ie. they successfully identify the customer profile to use for the authorisation) but failed to provide a valid OTP or equivalent",
+                "x-conditional": [
+                  "currentDay",
+                  "previousDays"
+                ]
+              },
+              "preAccountSelection": {
+                "type": "object",
+                "properties": {
+                  "currentDay": {
+                    "type": "integer",
+                    "x-cds-type" : "NaturalNumber",
+                    "description": "Number of abandoned consent flows for this stage for the current day"
+                  },
+                  "previousDays": {
+                    "type": "array",
+                    "description": "Number of abandoned consent flows for this stage for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
+                    "items": {
+                      "type": "integer",
+                      "x-cds-type" : "NaturalNumber"
+                    }
+                  }
+                },
+                "description": "The number of authorisations where the customer successfully authenticated with a valid OTP or equivalent but abandoned the process before selecting accounts",
+                "x-conditional": [
+                  "currentDay",
+                  "previousDays"
+                ]
+              },
+              "preAuthorisation": {
+                "type": "object",
+                "properties": {
+                  "currentDay": {
+                    "type": "integer",
+                    "x-cds-type" : "NaturalNumber",
+                    "description": "Number of abandoned consent flows for this stage for the current day"
+                  },
+                  "previousDays": {
+                    "type": "array",
+                    "description": "Number of abandoned consent flows for this stage for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
+                    "items": {
+                      "type": "integer",
+                      "x-cds-type" : "NaturalNumber"
+                    }
+                  }
+                },
+                "description": "The number of authorisations where the customer has passed the account selection step but abandoned the process before approving or rejecting the consent being requested",
+                "x-conditional": [
+                  "currentDay",
+                  "previousDays"
+                ]
+              },
+              "rejected": {
+                "type": "object",
+                "properties": {
+                  "currentDay": {
+                    "type": "integer",
+                    "x-cds-type" : "NaturalNumber",
+                    "description": "Number of abandoned consent flows for this stage for the current day"
+                  },
+                  "previousDays": {
+                    "type": "array",
+                    "description": "Number of abandoned consent flows for this stage for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
+                    "items": {
+                      "type": "integer",
+                      "x-cds-type" : "NaturalNumber"
+                    }
+                  }
+                },
+                "description": "The number of authorisations where the customer actively rejected the authorisation rather than abandoning the process",
+                "x-conditional": [
+                  "currentDay",
+                  "previousDays"
+                ]
+              },
+              "failedTokenExchange": {
+                "type": "object",
+                "properties": {
+                  "currentDay": {
+                    "type": "integer",
+                    "x-cds-type" : "NaturalNumber",
+                    "description": "Number of abandoned consent flows for this stage for the current day"
+                  },
+                  "previousDays": {
+                    "type": "array",
+                    "description": "Number of abandoned consent flows for this stage for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
+                    "items": {
+                      "type": "integer",
+                      "x-cds-type" : "NaturalNumber"
+                    }
+                  }
+                },
+                "description": "The number of authorisations that completed the interactive flow with the consumer authorising the consent, but the ADR failed to - or was unable to - obtain a refresh or access token using the authorisation code",
+                "x-conditional": [
+                  "currentDay",
+                  "previousDays"
+                ]
+              }
+            },
+            "description": "Customer abandonment count per stage of the consent flow.  Note that the aggregated abandonment count for all stages for a period should equal the count in `abandonedConsentFlowCount` for the same period (ie. each abandoned consent should assigned to one, and only one, stage)"
           }
         },
         "description": "Authorisation counts for the data holder"

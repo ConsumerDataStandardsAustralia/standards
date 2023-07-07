@@ -143,7 +143,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/ResponseMetricsListV4"
+                  "$ref" : "#/components/schemas/ResponseMetricsListV5"
                 }
               }
             },
@@ -184,7 +184,7 @@
         "tags" : [ "Admin", "Metrics" ],
         "x-scopes" : [ "admin:metrics.basic:read" ],
         "x-restricted-access" : "REGISTER",
-        "x-version" : "4"
+        "x-version" : "5"
       }
     }
   },
@@ -226,10 +226,10 @@
         "required" : [ "data" ],
         "type" : "object"
       },
-      "ResponseMetricsListV4" : {
+      "ResponseMetricsListV5" : {
         "properties" : {
           "data" : {
-            "$ref" : "#/components/schemas/ResponseMetricsListV4_data"
+            "$ref" : "#/components/schemas/ResponseMetricsListV5_data"
           },
           "links" : {
             "$ref" : "#/components/schemas/Links"
@@ -257,25 +257,37 @@
         "required" : [ "aggregate", "authenticated", "unauthenticated" ],
         "type" : "object"
       },
-      "PerformanceMetricsV2" : {
-        "description" : "Percentage of calls within the performance thresholds",
+      "PerformanceMetricsV3" : {
+        "description" : "Percentage of calls within the performance thresholds in each performance tier over time",
         "properties" : {
-          "currentDay" : {
-            "description" : "Percentage of calls within the performance threshold for the current day. 0.0 means 0%. 1.0 means 100%. Must be a positive value or zero",
-            "type" : "string",
-            "x-cds-type" : "RateString"
+          "aggregate" : {
+            "$ref" : "#/components/schemas/PerformanceMetricsV3_aggregate"
           },
-          "previousDays" : {
-            "description" : "Percentage of calls within the performance threshold for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. 0.0 means 0%. 1.0 means 100%. Values must be a positive or zero",
-            "items" : {
-              "type" : "string",
-              "x-cds-type" : "RateString"
-            },
-            "type" : "array"
+          "highPriority" : {
+            "$ref" : "#/components/schemas/PerformanceMetricsV3_highPriority"
+          },
+          "largePayload" : {
+            "$ref" : "#/components/schemas/PerformanceMetricsV3_largePayload"
+          },
+          "lowPriority" : {
+            "$ref" : "#/components/schemas/PerformanceMetricsV3_lowPriority"
+          },
+          "unattended" : {
+            "$ref" : "#/components/schemas/PerformanceMetricsV3_unattended"
+          },
+          "unauthenticated" : {
+            "$ref" : "#/components/schemas/PerformanceMetricsV3_unauthenticated"
+          },
+          "secondary" : {
+            "$ref" : "#/components/schemas/PerformanceMetricsV3_secondary"
+          },
+          "largeSecondary" : {
+            "$ref" : "#/components/schemas/PerformanceMetricsV3_largeSecondary"
           }
         },
+        "required" : [ "highPriority", "largePayload", "lowPriority", "unattended", "unauthenticated" ],
         "type" : "object",
-        "x-conditional" : [ "currentDay", "previousDays" ]
+        "x-conditional" : [ "secondary", "largeSecondary" ]
       },
       "InvocationMetricsV3" : {
         "description" : "Number of API calls in each performance tier over time",
@@ -429,29 +441,32 @@
         "required" : [ "errors", "rejections" ],
         "type" : "object"
       },
-      "AuthorisationMetrics" : {
+      "AuthorisationMetricsV2" : {
         "description" : "Authorisation counts for the data holder",
         "properties" : {
           "activeAuthorisationCount" : {
-            "$ref" : "#/components/schemas/AuthorisationMetrics_activeAuthorisationCount"
+            "$ref" : "#/components/schemas/AuthorisationMetricsV2_activeAuthorisationCount"
           },
           "newAuthorisationCount" : {
-            "$ref" : "#/components/schemas/AuthorisationMetrics_newAuthorisationCount"
+            "$ref" : "#/components/schemas/AuthorisationMetricsV2_newAuthorisationCount"
           },
           "revokedAuthorisationCount" : {
-            "$ref" : "#/components/schemas/AuthorisationMetrics_revokedAuthorisationCount"
+            "$ref" : "#/components/schemas/AuthorisationMetricsV2_revokedAuthorisationCount"
           },
           "amendedAuthorisationCount" : {
-            "$ref" : "#/components/schemas/AuthorisationMetrics_amendedAuthorisationCount"
+            "$ref" : "#/components/schemas/AuthorisationMetricsV2_amendedAuthorisationCount"
           },
           "expiredAuthorisationCount" : {
-            "$ref" : "#/components/schemas/AuthorisationMetrics_expiredAuthorisationCount"
+            "$ref" : "#/components/schemas/AuthorisationMetricsV2_expiredAuthorisationCount"
           },
           "abandonedConsentFlowCount" : {
-            "$ref" : "#/components/schemas/AuthorisationMetrics_abandonedConsentFlowCount"
+            "$ref" : "#/components/schemas/AuthorisationMetricsV2_abandonedConsentFlowCount"
+          },
+          "abandonmentsByStage" : {
+            "$ref" : "#/components/schemas/AuthorisationMetricsV2_abandonmentsByStage"
           }
         },
-        "required" : [ "abandonedConsentFlowCount", "activeAuthorisationCount", "amendedAuthorisationCount", "expiredAuthorisationCount", "newAuthorisationCount", "revokedAuthorisationCount" ],
+        "required" : [ "abandonedConsentFlowCount", "abandonmentsByStage", "activeAuthorisationCount", "amendedAuthorisationCount", "expiredAuthorisationCount", "newAuthorisationCount", "revokedAuthorisationCount" ],
         "type" : "object"
       },
       "Links" : {
@@ -504,7 +519,7 @@
         "required" : [ "action" ],
         "type" : "object"
       },
-      "ResponseMetricsListV4_data" : {
+      "ResponseMetricsListV5_data" : {
         "properties" : {
           "requestTime" : {
             "description" : "The date and time that the metrics in this payload were requested.",
@@ -515,7 +530,7 @@
             "$ref" : "#/components/schemas/AvailabilityMetricsV2"
           },
           "performance" : {
-            "$ref" : "#/components/schemas/PerformanceMetricsV2"
+            "$ref" : "#/components/schemas/PerformanceMetricsV3"
           },
           "invocations" : {
             "$ref" : "#/components/schemas/InvocationMetricsV3"
@@ -552,7 +567,7 @@
             "$ref" : "#/components/schemas/SecondaryHolderMetricsV2"
           },
           "authorisations" : {
-            "$ref" : "#/components/schemas/AuthorisationMetrics"
+            "$ref" : "#/components/schemas/AuthorisationMetricsV2"
           }
         },
         "required" : [ "availability", "averageResponse", "averageTps", "customerCount", "errors", "invocations", "peakTps", "performance", "recipientCount", "rejections", "requestTime", "sessionCount" ],
@@ -618,6 +633,284 @@
         },
         "type" : "object",
         "x-conditional" : [ "currentMonth", "previousMonths" ]
+      },
+      "PerformanceMetricsV3_aggregate" : {
+        "description" : "Percentage of calls within the performance thresholds",
+        "properties" : {
+          "currentDay" : {
+            "description" : "Percentage of calls within the performance threshold for the current day. 0.0 means 0%. 1.0 means 100%. Must be a positive value or zero",
+            "type" : "string",
+            "x-cds-type" : "RateString"
+          },
+          "previousDays" : {
+            "description" : "Percentage of calls within the performance threshold for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. 0.0 means 0%. 1.0 means 100%. Values must be a positive or zero",
+            "items" : {
+              "type" : "string",
+              "x-cds-type" : "RateString"
+            },
+            "type" : "array"
+          }
+        },
+        "type" : "object",
+        "x-conditional" : [ "currentDay", "previousDays" ]
+      },
+      "PerformanceMetricsV3_highPriority" : {
+        "description" : "Percentage of high priority calls within the performance thresholds",
+        "properties" : {
+          "currentDay" : {
+            "description" : "Array of contiguous hourly metrics for the current day.  Each element represents a 1 hour period starting from 12am-1am.  Timezone for determining 12am must be consistent but is at the discretion of the Data Holder",
+            "items" : {
+              "description" : "Percentage of calls within the performance threshold for the specified hour. 0.0 means 0%. 1.0 means 100%. Must be a positive value or zero",
+              "type" : "string",
+              "x-cds-type" : "RateString"
+            },
+            "type" : "array"
+          },
+          "previousDays" : {
+            "description" : "Percentage of calls within the performance threshold for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. 0.0 means 0%. 1.0 means 100%. Values must be a positive or zero",
+            "items" : {
+              "description" : "Array of contiguous hourly metrics for the specified day.  Each element represents a 1 hour period starting from 12am-1am.  Timezone for determining 12am must be consistent but is at the discretion of the Data Holder",
+              "items" : {
+                "description" : "Percentage of calls within the performance threshold for the specified hour. 0.0 means 0%. 1.0 means 100%. Must be a positive value or zero",
+                "type" : "string",
+                "x-cds-type" : "RateString"
+              },
+              "type" : "array"
+            },
+            "type" : "array"
+          }
+        },
+        "type" : "object",
+        "x-conditional" : [ "currentDay", "previousDays" ]
+      },
+      "PerformanceMetricsV3_largePayload" : {
+        "description" : "Percentage of large payload calls within the performance thresholds",
+        "properties" : {
+          "currentDay" : {
+            "description" : "Array of contiguous hourly metrics for the current day.  Each element represents a 1 hour period starting from 12am-1am.  Timezone for determining 12am must be consistent but is at the discretion of the Data Holder",
+            "items" : {
+              "description" : "Percentage of calls within the performance threshold for the specified hour. 0.0 means 0%. 1.0 means 100%. Must be a positive value or zero",
+              "type" : "string",
+              "x-cds-type" : "RateString"
+            },
+            "type" : "array"
+          },
+          "previousDays" : {
+            "description" : "Percentage of calls within the performance threshold for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. 0.0 means 0%. 1.0 means 100%. Values must be a positive or zero",
+            "items" : {
+              "description" : "Array of contiguous hourly metrics for the specified day.  Each element represents a 1 hour period starting from 12am-1am.  Timezone for determining 12am must be consistent but is at the discretion of the Data Holder",
+              "items" : {
+                "description" : "Percentage of calls within the performance threshold for the specified hour. 0.0 means 0%. 1.0 means 100%. Must be a positive value or zero",
+                "type" : "string",
+                "x-cds-type" : "RateString"
+              },
+              "type" : "array"
+            },
+            "type" : "array"
+          }
+        },
+        "type" : "object",
+        "x-conditional" : [ "currentDay", "previousDays" ]
+      },
+      "PerformanceMetricsV3_lowPriority" : {
+        "description" : "Percentage of low priority calls within the performance thresholds",
+        "properties" : {
+          "currentDay" : {
+            "description" : "Array of contiguous hourly metrics for the current day.  Each element represents a 1 hour period starting from 12am-1am.  Timezone for determining 12am must be consistent but is at the discretion of the Data Holder",
+            "items" : {
+              "description" : "Percentage of calls within the performance threshold for the specified hour. 0.0 means 0%. 1.0 means 100%. Must be a positive value or zero",
+              "type" : "string",
+              "x-cds-type" : "RateString"
+            },
+            "type" : "array"
+          },
+          "previousDays" : {
+            "description" : "Percentage of calls within the performance threshold for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. 0.0 means 0%. 1.0 means 100%. Values must be a positive or zero",
+            "items" : {
+              "description" : "Array of contiguous hourly metrics for the specified day.  Each element represents a 1 hour period starting from 12am-1am.  Timezone for determining 12am must be consistent but is at the discretion of the Data Holder",
+              "items" : {
+                "description" : "Percentage of calls within the performance threshold for the specified hour. 0.0 means 0%. 1.0 means 100%. Must be a positive value or zero",
+                "type" : "string",
+                "x-cds-type" : "RateString"
+              },
+              "type" : "array"
+            },
+            "type" : "array"
+          }
+        },
+        "type" : "object",
+        "x-conditional" : [ "currentDay", "previousDays" ]
+      },
+      "PerformanceMetricsV3_unattended" : {
+        "description" : "Percentage of unattended calls within the performance thresholds",
+        "properties" : {
+          "currentDay" : {
+            "description" : "Array of contiguous hourly metrics for the current day.  Each element represents a 1 hour period starting from 12am-1am.  Timezone for determining 12am must be consistent but is at the discretion of the Data Holder",
+            "items" : {
+              "description" : "Percentage of calls within the performance threshold for the specified hour. 0.0 means 0%. 1.0 means 100%. Must be a positive value or zero",
+              "type" : "string",
+              "x-cds-type" : "RateString"
+            },
+            "type" : "array"
+          },
+          "previousDays" : {
+            "description" : "Percentage of calls within the performance threshold for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. 0.0 means 0%. 1.0 means 100%. Values must be a positive or zero",
+            "items" : {
+              "description" : "Array of contiguous hourly metrics for the specified day.  Each element represents a 1 hour period starting from 12am-1am.  Timezone for determining 12am must be consistent but is at the discretion of the Data Holder",
+              "items" : {
+                "description" : "Percentage of calls within the performance threshold for the specified hour. 0.0 means 0%. 1.0 means 100%. Must be a positive value or zero",
+                "type" : "string",
+                "x-cds-type" : "RateString"
+              },
+              "type" : "array"
+            },
+            "type" : "array"
+          }
+        },
+        "type" : "object",
+        "x-conditional" : [ "currentDay", "previousDays" ]
+      },
+      "PerformanceMetricsV3_unauthenticated" : {
+        "description" : "Percentage of unauthenticated calls within the performance thresholds",
+        "properties" : {
+          "currentDay" : {
+            "description" : "Array of contiguous hourly metrics for the current day.  Each element represents a 1 hour period starting from 12am-1am.  Timezone for determining 12am must be consistent but is at the discretion of the Data Holder",
+            "items" : {
+              "description" : "Percentage of calls within the performance threshold for the specified hour. 0.0 means 0%. 1.0 means 100%. Must be a positive value or zero",
+              "type" : "string",
+              "x-cds-type" : "RateString"
+            },
+            "type" : "array"
+          },
+          "previousDays" : {
+            "description" : "Percentage of calls within the performance threshold for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. 0.0 means 0%. 1.0 means 100%. Values must be a positive or zero",
+            "items" : {
+              "description" : "Array of contiguous hourly metrics for the specified day.  Each element represents a 1 hour period starting from 12am-1am.  Timezone for determining 12am must be consistent but is at the discretion of the Data Holder",
+              "items" : {
+                "description" : "Percentage of calls within the performance threshold for the specified hour. 0.0 means 0%. 1.0 means 100%. Must be a positive value or zero",
+                "type" : "string",
+                "x-cds-type" : "RateString"
+              },
+              "type" : "array"
+            },
+            "type" : "array"
+          }
+        },
+        "type" : "object",
+        "x-conditional" : [ "currentDay", "previousDays" ]
+      },
+      "PerformanceMetricsV3_secondary_primary" : {
+        "description" : "Percentage of Shared Responsibility calls within the performance thresholds for the primary data holder",
+        "properties" : {
+          "currentDay" : {
+            "description" : "Array of contiguous hourly metrics for the current day.  Each element represents a 1 hour period starting from 12am-1am.  Timezone for determining 12am must be consistent but is at the discretion of the Data Holder",
+            "items" : {
+              "description" : "Percentage of calls within the performance threshold for the specified hour. 0.0 means 0%. 1.0 means 100%. Must be a positive value or zero",
+              "type" : "string",
+              "x-cds-type" : "RateString"
+            },
+            "type" : "array"
+          },
+          "previousDays" : {
+            "description" : "Percentage of calls within the performance threshold for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. 0.0 means 0%. 1.0 means 100%. Values must be a positive or zero",
+            "items" : {
+              "description" : "Array of contiguous hourly metrics for the specified day.  Each element represents a 1 hour period starting from 12am-1am.  Timezone for determining 12am must be consistent but is at the discretion of the Data Holder",
+              "items" : {
+                "description" : "Percentage of calls within the performance threshold for the specified hour. 0.0 means 0%. 1.0 means 100%. Must be a positive value or zero",
+                "type" : "string",
+                "x-cds-type" : "RateString"
+              },
+              "type" : "array"
+            },
+            "type" : "array"
+          }
+        },
+        "type" : "object",
+        "x-conditional" : [ "currentDay", "previousDays" ]
+      },
+      "PerformanceMetricsV3_secondary_secondary" : {
+        "description" : "Percentage of Shared Responsibility calls within the performance thresholds for the secondary data holder",
+        "properties" : {
+          "currentDay" : {
+            "description" : "Array of contiguous hourly metrics for the current day.  Each element represents a 1 hour period starting from 12am-1am.  Timezone for determining 12am must be consistent but is at the discretion of the Data Holder",
+            "items" : {
+              "description" : "Percentage of calls within the performance threshold for the specified hour. 0.0 means 0%. 1.0 means 100%. Must be a positive value or zero",
+              "type" : "string",
+              "x-cds-type" : "RateString"
+            },
+            "type" : "array"
+          },
+          "previousDays" : {
+            "description" : "Percentage of calls within the performance threshold for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. 0.0 means 0%. 1.0 means 100%. Values must be a positive or zero",
+            "items" : {
+              "description" : "Array of contiguous hourly metrics for the specified day.  Each element represents a 1 hour period starting from 12am-1am.  Timezone for determining 12am must be consistent but is at the discretion of the Data Holder",
+              "items" : {
+                "description" : "Percentage of calls within the performance threshold for the specified hour. 0.0 means 0%. 1.0 means 100%. Must be a positive value or zero",
+                "type" : "string",
+                "x-cds-type" : "RateString"
+              },
+              "type" : "array"
+            },
+            "type" : "array"
+          }
+        },
+        "type" : "object",
+        "x-conditional" : [ "currentDay", "previousDays" ]
+      },
+      "PerformanceMetricsV3_secondary" : {
+        "description" : "Percentage of Shared Responsibility calls within the performance thresholds. Mandatory for data holders designated for a Shared Responsibility Data Request data cluster",
+        "properties" : {
+          "primary" : {
+            "$ref" : "#/components/schemas/PerformanceMetricsV3_secondary_primary"
+          },
+          "secondary" : {
+            "$ref" : "#/components/schemas/PerformanceMetricsV3_secondary_secondary"
+          }
+        },
+        "required" : [ "primary", "secondary" ],
+        "type" : "object"
+      },
+      "PerformanceMetricsV3_largeSecondary_primary" : {
+        "description" : "Percentage of large Shared Responsibility calls within the performance thresholds for the secondary data holder",
+        "properties" : {
+          "currentDay" : {
+            "description" : "Array of contiguous hourly metrics for the current day.  Each element represents a 1 hour period starting from 12am-1am.  Timezone for determining 12am must be consistent but is at the discretion of the Data Holder",
+            "items" : {
+              "description" : "Percentage of calls within the performance threshold for the specified hour. 0.0 means 0%. 1.0 means 100%. Must be a positive value or zero",
+              "type" : "string",
+              "x-cds-type" : "RateString"
+            },
+            "type" : "array"
+          },
+          "previousDays" : {
+            "description" : "Percentage of calls within the performance threshold for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. 0.0 means 0%. 1.0 means 100%. Values must be a positive or zero",
+            "items" : {
+              "description" : "Array of contiguous hourly metrics for the specified day.  Each element represents a 1 hour period starting from 12am-1am.  Timezone for determining 12am must be consistent but is at the discretion of the Data Holder",
+              "items" : {
+                "description" : "Percentage of calls within the performance threshold for the specified hour. 0.0 means 0%. 1.0 means 100%. Must be a positive value or zero",
+                "type" : "string",
+                "x-cds-type" : "RateString"
+              },
+              "type" : "array"
+            },
+            "type" : "array"
+          }
+        },
+        "type" : "object",
+        "x-conditional" : [ "currentDay", "previousDays" ]
+      },
+      "PerformanceMetricsV3_largeSecondary" : {
+        "description" : "Percentage of large Shared Responsibility calls within the performance thresholds. Mandatory for data holders designated for a Shared Responsibility Data Request data cluster",
+        "properties" : {
+          "primary" : {
+            "$ref" : "#/components/schemas/PerformanceMetricsV3_largeSecondary_primary"
+          },
+          "secondary" : {
+            "$ref" : "#/components/schemas/PerformanceMetricsV3_largeSecondary_primary"
+          }
+        },
+        "required" : [ "primary", "secondary" ],
+        "type" : "object"
       },
       "InvocationMetricsV3_unauthenticated" : {
         "description" : "API call counts for the unauthenticated tier",
@@ -1203,7 +1496,7 @@
         "type" : "object",
         "x-conditional" : [ "currentDay", "previousDays" ]
       },
-      "AuthorisationMetrics_activeAuthorisationCount" : {
+      "AuthorisationMetricsV2_activeAuthorisationCount" : {
         "description" : "The number of active ongoing authorisations",
         "properties" : {
           "individual" : {
@@ -1220,7 +1513,7 @@
         "required" : [ "individual", "nonIndividual" ],
         "type" : "object"
       },
-      "AuthorisationMetrics_newAuthorisationCount_currentDay_onceOff" : {
+      "AuthorisationMetricsV2_newAuthorisationCount_currentDay_onceOff" : {
         "description" : "New authorisation count for once-off authorisations",
         "properties" : {
           "individual" : {
@@ -1237,7 +1530,7 @@
         "required" : [ "individual", "nonIndividual" ],
         "type" : "object"
       },
-      "AuthorisationMetrics_newAuthorisationCount_currentDay_ongoing" : {
+      "AuthorisationMetricsV2_newAuthorisationCount_currentDay_ongoing" : {
         "description" : "New authorisation count for ongoing authorisations",
         "properties" : {
           "individual" : {
@@ -1254,41 +1547,41 @@
         "required" : [ "individual", "nonIndividual" ],
         "type" : "object"
       },
-      "AuthorisationMetrics_newAuthorisationCount_currentDay" : {
+      "AuthorisationMetricsV2_newAuthorisationCount_currentDay" : {
         "description" : "Number of new authorisations for the current day",
         "properties" : {
           "onceOff" : {
-            "$ref" : "#/components/schemas/AuthorisationMetrics_newAuthorisationCount_currentDay_onceOff"
+            "$ref" : "#/components/schemas/AuthorisationMetricsV2_newAuthorisationCount_currentDay_onceOff"
           },
           "ongoing" : {
-            "$ref" : "#/components/schemas/AuthorisationMetrics_newAuthorisationCount_currentDay_ongoing"
+            "$ref" : "#/components/schemas/AuthorisationMetricsV2_newAuthorisationCount_currentDay_ongoing"
           }
         },
         "required" : [ "onceOff", "ongoing" ],
         "type" : "object"
       },
-      "AuthorisationMetrics_newAuthorisationCount_previousDays" : {
+      "AuthorisationMetricsV2_newAuthorisationCount_previousDays" : {
         "properties" : {
           "onceOff" : {
-            "$ref" : "#/components/schemas/AuthorisationMetrics_newAuthorisationCount_currentDay_onceOff"
+            "$ref" : "#/components/schemas/AuthorisationMetricsV2_newAuthorisationCount_currentDay_onceOff"
           },
           "ongoing" : {
-            "$ref" : "#/components/schemas/AuthorisationMetrics_newAuthorisationCount_currentDay_ongoing"
+            "$ref" : "#/components/schemas/AuthorisationMetricsV2_newAuthorisationCount_currentDay_ongoing"
           }
         },
         "required" : [ "onceOff", "ongoing" ],
         "type" : "object"
       },
-      "AuthorisationMetrics_newAuthorisationCount" : {
+      "AuthorisationMetricsV2_newAuthorisationCount" : {
         "description" : "The number of new authorisations",
         "properties" : {
           "currentDay" : {
-            "$ref" : "#/components/schemas/AuthorisationMetrics_newAuthorisationCount_currentDay"
+            "$ref" : "#/components/schemas/AuthorisationMetricsV2_newAuthorisationCount_currentDay"
           },
           "previousDays" : {
             "description" : "Number of new authorisations for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
             "items" : {
-              "$ref" : "#/components/schemas/AuthorisationMetrics_newAuthorisationCount_previousDays"
+              "$ref" : "#/components/schemas/AuthorisationMetricsV2_newAuthorisationCount_previousDays"
             },
             "type" : "array"
           }
@@ -1296,7 +1589,7 @@
         "type" : "object",
         "x-conditional" : [ "currentDay", "previousDays" ]
       },
-      "AuthorisationMetrics_revokedAuthorisationCount_currentDay" : {
+      "AuthorisationMetricsV2_revokedAuthorisationCount_currentDay" : {
         "description" : "Number of revoked authorisations for the current day",
         "properties" : {
           "individual" : {
@@ -1313,7 +1606,7 @@
         "required" : [ "individual", "nonIndividual" ],
         "type" : "object"
       },
-      "AuthorisationMetrics_revokedAuthorisationCount_previousDays" : {
+      "AuthorisationMetricsV2_revokedAuthorisationCount_previousDays" : {
         "properties" : {
           "individual" : {
             "description" : "Revoked authorisation count for individual customers",
@@ -1329,16 +1622,16 @@
         "required" : [ "individual", "nonIndividual" ],
         "type" : "object"
       },
-      "AuthorisationMetrics_revokedAuthorisationCount" : {
+      "AuthorisationMetricsV2_revokedAuthorisationCount" : {
         "description" : "The number of revoked authorisations",
         "properties" : {
           "currentDay" : {
-            "$ref" : "#/components/schemas/AuthorisationMetrics_revokedAuthorisationCount_currentDay"
+            "$ref" : "#/components/schemas/AuthorisationMetricsV2_revokedAuthorisationCount_currentDay"
           },
           "previousDays" : {
             "description" : "Number of revoked authorisations for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
             "items" : {
-              "$ref" : "#/components/schemas/AuthorisationMetrics_revokedAuthorisationCount_previousDays"
+              "$ref" : "#/components/schemas/AuthorisationMetricsV2_revokedAuthorisationCount_previousDays"
             },
             "type" : "array"
           }
@@ -1346,7 +1639,7 @@
         "type" : "object",
         "x-conditional" : [ "currentDay", "previousDays" ]
       },
-      "AuthorisationMetrics_amendedAuthorisationCount_currentDay" : {
+      "AuthorisationMetricsV2_amendedAuthorisationCount_currentDay" : {
         "description" : "Number of amended authorisations for the current day",
         "properties" : {
           "individual" : {
@@ -1363,7 +1656,7 @@
         "required" : [ "individual", "nonIndividual" ],
         "type" : "object"
       },
-      "AuthorisationMetrics_amendedAuthorisationCount_previousDays" : {
+      "AuthorisationMetricsV2_amendedAuthorisationCount_previousDays" : {
         "properties" : {
           "individual" : {
             "description" : "Amended authorisation count for individual customers",
@@ -1379,16 +1672,16 @@
         "required" : [ "individual", "nonIndividual" ],
         "type" : "object"
       },
-      "AuthorisationMetrics_amendedAuthorisationCount" : {
+      "AuthorisationMetricsV2_amendedAuthorisationCount" : {
         "description" : "The number of amended ongoing authorisations",
         "properties" : {
           "currentDay" : {
-            "$ref" : "#/components/schemas/AuthorisationMetrics_amendedAuthorisationCount_currentDay"
+            "$ref" : "#/components/schemas/AuthorisationMetricsV2_amendedAuthorisationCount_currentDay"
           },
           "previousDays" : {
             "description" : "Number of amended authorisations for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
             "items" : {
-              "$ref" : "#/components/schemas/AuthorisationMetrics_amendedAuthorisationCount_previousDays"
+              "$ref" : "#/components/schemas/AuthorisationMetricsV2_amendedAuthorisationCount_previousDays"
             },
             "type" : "array"
           }
@@ -1396,7 +1689,7 @@
         "type" : "object",
         "x-conditional" : [ "currentDay", "previousDays" ]
       },
-      "AuthorisationMetrics_expiredAuthorisationCount_currentDay" : {
+      "AuthorisationMetricsV2_expiredAuthorisationCount_currentDay" : {
         "description" : "Number of expired authorisations for the current day",
         "properties" : {
           "individual" : {
@@ -1413,7 +1706,7 @@
         "required" : [ "individual", "nonIndividual" ],
         "type" : "object"
       },
-      "AuthorisationMetrics_expiredAuthorisationCount_previousDays" : {
+      "AuthorisationMetricsV2_expiredAuthorisationCount_previousDays" : {
         "properties" : {
           "individual" : {
             "description" : "Expired authorisation count for individual customers",
@@ -1429,16 +1722,16 @@
         "required" : [ "individual", "nonIndividual" ],
         "type" : "object"
       },
-      "AuthorisationMetrics_expiredAuthorisationCount" : {
+      "AuthorisationMetricsV2_expiredAuthorisationCount" : {
         "description" : "The number of expired ongoing authorisations",
         "properties" : {
           "currentDay" : {
-            "$ref" : "#/components/schemas/AuthorisationMetrics_expiredAuthorisationCount_currentDay"
+            "$ref" : "#/components/schemas/AuthorisationMetricsV2_expiredAuthorisationCount_currentDay"
           },
           "previousDays" : {
             "description" : "Number of expired authorisations for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
             "items" : {
-              "$ref" : "#/components/schemas/AuthorisationMetrics_expiredAuthorisationCount_previousDays"
+              "$ref" : "#/components/schemas/AuthorisationMetricsV2_expiredAuthorisationCount_previousDays"
             },
             "type" : "array"
           }
@@ -1446,7 +1739,7 @@
         "type" : "object",
         "x-conditional" : [ "currentDay", "previousDays" ]
       },
-      "AuthorisationMetrics_abandonedConsentFlowCount" : {
+      "AuthorisationMetricsV2_abandonedConsentFlowCount" : {
         "description" : "The number of consents flows that were not successfully authorised",
         "properties" : {
           "currentDay" : {
@@ -1465,6 +1758,151 @@
         },
         "type" : "object",
         "x-conditional" : [ "currentDay", "previousDays" ]
+      },
+      "AuthorisationMetricsV2_abandonmentsByStage_abandonedConsentFlowCount" : {
+        "description" : "The number of authorisations that commenced with the data holder but the customer did not successfully identify their profile or user ID",
+        "properties" : {
+          "currentDay" : {
+            "description" : "Number of abandoned consent flows for this stage for the current day",
+            "type" : "integer",
+            "x-cds-type" : "NaturalNumber"
+          },
+          "previousDays" : {
+            "description" : "Number of abandoned consent flows for this stage for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
+            "items" : {
+              "type" : "integer",
+              "x-cds-type" : "NaturalNumber"
+            },
+            "type" : "array"
+          }
+        },
+        "type" : "object",
+        "x-conditional" : [ "currentDay", "previousDays" ]
+      },
+      "AuthorisationMetricsV2_abandonmentsByStage_preAuthentication" : {
+        "description" : "The number of authorisations where the customer identified themselves (ie. they successfully identify the customer profile to use for the authorisation) but failed to provide a valid OTP or equivalent",
+        "properties" : {
+          "currentDay" : {
+            "description" : "Number of abandoned consent flows for this stage for the current day",
+            "type" : "integer",
+            "x-cds-type" : "NaturalNumber"
+          },
+          "previousDays" : {
+            "description" : "Number of abandoned consent flows for this stage for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
+            "items" : {
+              "type" : "integer",
+              "x-cds-type" : "NaturalNumber"
+            },
+            "type" : "array"
+          }
+        },
+        "type" : "object",
+        "x-conditional" : [ "currentDay", "previousDays" ]
+      },
+      "AuthorisationMetricsV2_abandonmentsByStage_preAccountSelection" : {
+        "description" : "The number of authorisations where the customer successfully authenticated with a valid OTP or equivalent but abandoned the process before selecting accounts",
+        "properties" : {
+          "currentDay" : {
+            "description" : "Number of abandoned consent flows for this stage for the current day",
+            "type" : "integer",
+            "x-cds-type" : "NaturalNumber"
+          },
+          "previousDays" : {
+            "description" : "Number of abandoned consent flows for this stage for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
+            "items" : {
+              "type" : "integer",
+              "x-cds-type" : "NaturalNumber"
+            },
+            "type" : "array"
+          }
+        },
+        "type" : "object",
+        "x-conditional" : [ "currentDay", "previousDays" ]
+      },
+      "AuthorisationMetricsV2_abandonmentsByStage_preAuthorisation" : {
+        "description" : "The number of authorisations where the customer has passed the account selection step but abandoned the process before approving or rejecting the consent being requested",
+        "properties" : {
+          "currentDay" : {
+            "description" : "Number of abandoned consent flows for this stage for the current day",
+            "type" : "integer",
+            "x-cds-type" : "NaturalNumber"
+          },
+          "previousDays" : {
+            "description" : "Number of abandoned consent flows for this stage for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
+            "items" : {
+              "type" : "integer",
+              "x-cds-type" : "NaturalNumber"
+            },
+            "type" : "array"
+          }
+        },
+        "type" : "object",
+        "x-conditional" : [ "currentDay", "previousDays" ]
+      },
+      "AuthorisationMetricsV2_abandonmentsByStage_rejected" : {
+        "description" : "The number of authorisations where the customer actively rejected the authorisation rather than abandoning the process",
+        "properties" : {
+          "currentDay" : {
+            "description" : "Number of abandoned consent flows for this stage for the current day",
+            "type" : "integer",
+            "x-cds-type" : "NaturalNumber"
+          },
+          "previousDays" : {
+            "description" : "Number of abandoned consent flows for this stage for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
+            "items" : {
+              "type" : "integer",
+              "x-cds-type" : "NaturalNumber"
+            },
+            "type" : "array"
+          }
+        },
+        "type" : "object",
+        "x-conditional" : [ "currentDay", "previousDays" ]
+      },
+      "AuthorisationMetricsV2_abandonmentsByStage_failedTokenExchange" : {
+        "description" : "The number of authorisations that completed the interactive flow with the consumer authorising the consent, but the ADR failed to - or was unable to - obtain a refresh or access token using the authorisation code",
+        "properties" : {
+          "currentDay" : {
+            "description" : "Number of abandoned consent flows for this stage for the current day",
+            "type" : "integer",
+            "x-cds-type" : "NaturalNumber"
+          },
+          "previousDays" : {
+            "description" : "Number of abandoned consent flows for this stage for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
+            "items" : {
+              "type" : "integer",
+              "x-cds-type" : "NaturalNumber"
+            },
+            "type" : "array"
+          }
+        },
+        "type" : "object",
+        "x-conditional" : [ "currentDay", "previousDays" ]
+      },
+      "AuthorisationMetricsV2_abandonmentsByStage" : {
+        "description" : "Customer abandonment count per stage of the consent flow.  Note that the aggregated abandonment count for all stages for a period should equal the count in `abandonedConsentFlowCount` for the same period (ie. each abandoned consent should assigned to one, and only one, stage)",
+        "properties" : {
+          "abandonedConsentFlowCount" : {
+            "$ref" : "#/components/schemas/AuthorisationMetricsV2_abandonmentsByStage_abandonedConsentFlowCount"
+          },
+          "preAuthentication" : {
+            "$ref" : "#/components/schemas/AuthorisationMetricsV2_abandonmentsByStage_preAuthentication"
+          },
+          "preAccountSelection" : {
+            "$ref" : "#/components/schemas/AuthorisationMetricsV2_abandonmentsByStage_preAccountSelection"
+          },
+          "preAuthorisation" : {
+            "$ref" : "#/components/schemas/AuthorisationMetricsV2_abandonmentsByStage_preAuthorisation"
+          },
+          "rejected" : {
+            "$ref" : "#/components/schemas/AuthorisationMetricsV2_abandonmentsByStage_rejected"
+          },
+          "failedTokenExchange" : {
+            "$ref" : "#/components/schemas/AuthorisationMetricsV2_abandonmentsByStage_failedTokenExchange"
+          }
+        },
+        "required" : [ "abandonedConsentFlowCount", "failedTokenExchange", "preAccountSelection", "preAuthentication", "preAuthorisation", "rejected" ],
+        "type" : "object"
       },
       "ResponseErrorListV2_errors" : {
         "properties" : {

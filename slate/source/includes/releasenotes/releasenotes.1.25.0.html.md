@@ -35,6 +35,7 @@ This release addresses the following change requests raised on [Standards Mainte
 This release addresses the following Decision Proposals published on [Standards](https://github.com/ConsumerDataStandardsAustralia/standards/issues):
 
 - [Decision Proposal 288 - Non-Functional Requirements Revision](https://github.com/ConsumerDataStandardsAustralia/standards/issues/288)
+- [Decision Proposal 303 - Maintenance Iteration 15](https://github.com/ConsumerDataStandardsAustralia/standards/issues/303)
 
 ## Introduction
 
@@ -59,6 +60,7 @@ No Change
 | Get Products | [**Standards Maintenance #586**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/586): Corrected typo in the Get Products API description. Addresses this issue [comment](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/586#issuecomment-1573348181)) | [Get Products API](../../#get-products) |
 | Energy APIs | [**Standards Maintenance #591**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/591): Updated description of  `EnergyPaymentSchedule.isTokenised` field to further clarify when it can be used | [Energy APIs](../../#energy-apis) |
 | Energy APIs | [**Standards Maintenance #592**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/592): <ul><li>Added `ALL_DAY` and `EXCESS` values to `EnergyBillingDemandTransaction.timeOfUseType` field.  Added `ALL_DAY` value to  `EnergyBillingUsageTransaction.timeOfUseType ` field.</li><li>Incremented versions of Get Get Billing For Account, Get Bulk Billing	and Get Billing For Specific Accounts APIs.</li></ul>  | [Energy APIs](../../#energy-apis) |
+| Get Metrics | Added v4 and v5 of the Get Metrics API| [Admin APIs](../../#admin-apis) |
 
 ## Information Security Profile
 
@@ -80,7 +82,11 @@ No Change
 
 ## Non Functional Requirements
 
-No Change
+|Change|Description|Link|
+|------|-----------|----|
+| Site Wide TPS Tiers | Added authorisation based tiering for site wide TPS thresholds | [Traffic Thresholds](../../#traffic-thresholds) |
+| Low Velocity Data Sets | Added NFRs applicable to data recipients to accommodate low velocity data sets | [Data Recipient Requirements](../../#data-recipient-requirements) |
+
 
 ## Known Issues
 
