@@ -66,8 +66,8 @@ Cache-Control: no-cache, no-store
 
 ```
 ## The request_uri is used by the ADR in the subsequent authorisation request as follows
-## (note this example is pre-RFC using Draft 01 of the PAR standard, hence it includes 
-## the mandatory oAuth parameters as per FAPI R/W for confidential clients must be 
+## (note this example is pre-RFC using Draft 01 of the PAR standard, hence it includes
+## the mandatory oAuth parameters as per FAPI R/W for confidential clients must be
 ## replayed in the request URL):
 
 GET /authorise?client_id=s6BhdRkqt3&
@@ -184,7 +184,7 @@ eyJraWQiOiIwZWQ3YTNkZi1hMGJlLTRhZjQtOTk0YS1jNDBhODc0ODQwNjMiLCJhbGciOiJQUzI1NiJ9
 Data Holders **MUST** support Pushed Authorisation Requests (PAR) via the pushed authorisation end point according to **[[PAR]](#nref-PAR)**.
 
 ```diff
-Removed legacy phasing requirements for FAPI 1.0 Final using PAR
+- Removed legacy phasing requirements for FAPI 1.0 Final using PAR
 ```
 
 Data Recipient Software Products **MUST** send authorisation requests using **[[PAR]](#nref-PAR)** if supported by the Data Holder.

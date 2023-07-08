@@ -12,5 +12,6 @@ from:
 to:
 + The display name of the wallet as given by the customer, else a default value defined by the data holder
 
-Replaced FAPI draft references with FAPI 1.0 Final references. References pertain to the x-fapi-auth-date header.
+Replaced FAPI draft references with FAPI 1.0 Final references.
+References pertain to the x-fapi-auth-date header.
 ```

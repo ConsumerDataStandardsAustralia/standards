@@ -29,7 +29,8 @@ Supported HTTP headers, and their usage, for the standards are as laid out in th
 `Accept: AppliCAtion/JSon;Charset=uTf-8`  
 
 ```diff
-Replaced FAPI draft references with FAPI 1.0 Final references. References pertain to the x-fapi-auth-date header.
+Replaced FAPI draft references with FAPI 1.0 Final references.
+References pertain to the x-fapi-auth-date header.
 ```
 
 Header Field | Description | Mandatory?

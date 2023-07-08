@@ -7,7 +7,7 @@ Data Recipient Software Products will be limited by the traffic thresholds docum
 - Unattended calls should be managed to avoid short term bursts of traffic
 
 ```diff
-Added the Low Velocity Data Sets section
++ Added the Low Velocity Data Sets section
 ```
 
 ### Low Velocity Data Sets
