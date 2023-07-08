@@ -1966,28 +1966,28 @@ always align to current consumer preferences.</p>
 <p>Some example URIs that meet this standard are:  </p>
 </blockquote>
 
-<pre class="highlight plaintext"><code>1. https://www.bank.com.au/api/cds-au/v1/banking/accounts  
-2. https://www.bank.com.au/api/cds-au/v1/banking/accounts/abc123/transactions/?x=y#bar  
-3. https://www.bank.com.au/complex/uri/taxonomy/cds-au/v1/banking/products?page=2  
-4. https://www.energyretailer.com.au/api/cds-au/v1/energy/usage  
-5. https://www.energyretailer.com.au/api/cds-au/v1/ACME/apply  
+<pre class="highlight plaintext"><code>1. https://www.bank.com.au/api/cds-au/v1/banking/accounts
+2. https://www.bank.com.au/api/cds-au/v1/banking/accounts/abc123/transactions/?x=y#bar
+3. https://www.bank.com.au/complex/uri/taxonomy/cds-au/v1/banking/products?page=2
+4. https://www.energyretailer.com.au/api/cds-au/v1/energy/usage
+5. https://www.energyretailer.com.au/api/cds-au/v1/ACME/apply
 </code></pre>
 <blockquote>
 <p>The holder path for each example is:  </p>
 </blockquote>
-<pre class="highlight plaintext"><code>1. www.bank.com.au/api  
-2. www.bank.com.au/api   
-3. www.bank.com.au/complex/uri/taxonomy  
-4. www.energyretailer.com.au/api  
+<pre class="highlight plaintext"><code>1. www.bank.com.au/api
+2. www.bank.com.au/api
+3. www.bank.com.au/complex/uri/taxonomy
+4. www.energyretailer.com.au/api
 5. www.energyretailer.com.au/api
 </code></pre>
 <blockquote>
 <p>The Base Path for each example is:  </p>
 </blockquote>
-<pre class="highlight plaintext"><code>1. https://www.bank.com.au/api/cds-au/v1/banking  
-2. https://www.bank.com.au/api/cds-au/v1/banking   
-3. https://www.bank.com.au/complex/uri/taxonomy/cds-au/v1/banking  
-4. https://www.energyretailer.com.au/api/cds-au/v1/energy  
+<pre class="highlight plaintext"><code>1. https://www.bank.com.au/api/cds-au/v1/banking
+2. https://www.bank.com.au/api/cds-au/v1/banking
+3. https://www.bank.com.au/complex/uri/taxonomy/cds-au/v1/banking
+4. https://www.energyretailer.com.au/api/cds-au/v1/energy
 5. https://www.energyretailer.com.au/api/cds-au/v1/ACME
 </code></pre>
 <blockquote>
@@ -3314,7 +3314,7 @@ Content-Type: application/json
 
 { "errors": [
   {
-    "code": "urn:au-cds:error:cdr-all:Header/UnsupportedVersion",    
+    "code": "urn:au-cds:error:cdr-all:Header/UnsupportedVersion",
     "title": "Unsupported Version",
     "detail": "'x-v' **MUST** be greater than or equal to '2'"
   }
@@ -4892,7 +4892,9 @@ grant_type=client_credentials&amp;
 </tbody></table>
 
 <p>Get Software Statement Assertion API <a href="includes/obsolete/get-software-statement-assertion-v1.html">v1</a> &amp; <a href="includes/obsolete/get-software-statement-assertion-v2.html">v2</a> has the scope claim explicitly defined.</p>
-<h3 id='registration-request-using-jwt'>Registration Request using JWT</h3>
+<h3 id='registration-request-using-jwt'>Registration Request using JWT</h3><pre class="highlight diff tab-diff"><code>Removed following requirement from id_token_encrypted_response_alg and id_token_encrypted_response_enc fields:
+<span class="gd">- Must be ignored for Authorization Code Flow
+</span></code></pre>
 <blockquote>
 <p>Example Request
 Client registration with OpenID Hybrid Flow</p>
