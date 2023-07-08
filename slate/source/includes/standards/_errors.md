@@ -1,4 +1,10 @@
 ## Error Codes
+```diff
+Replaced following in description of 'Invalid Page Size':
+- page_size
+with:
++ page-size
+```
 
 These standards define a standard list of error codes that Data Recipient Software Products and Data Holders **SHOULD** or **MUST** conform to. Further,
 

@@ -1,4 +1,6 @@
-<h2 id='authorisation-standards'>Authorisation Standards</h2>
+<h2 id='authorisation-standards'>Authorisation Standards</h2><pre class="highlight diff tab-diff"><code>Added new Authorisation CX Standard:
+<span class="gi">+ Authorisation: Account selection functionality
+</span></code></pre>
 <table><thead>
 <tr>
 <th>Area</th>

@@ -1,5 +1,22 @@
 ## Performance Requirements
 
+```diff
+Listed specific APIs in the `Unattended` section
+
+Fixed incorrect Energy API names replacing:
+- Get Accounts
+- Get Account Detail 
+- Get Balance For Account
+- Get Bulk Balances
+- Get Balances For Specific Accounts
+with:
++ Get Energy Accounts
++ Get Energy Account Detail
++ Get Balance For Energy Account
++ Get Bulk Balances for Energy
++ Get Balances For Specific Energy Accounts
+```
+
 API end point performance will be measured in response time of individual API requests from receipt of request to delivery of response.
 
 It is understood that different response times can be measured depending on which technical layer of an API implementation stack is instrumented and that not all of the technical layers between the Data Recipient Software Product and the Data Holder will be in the control of the Data Holder.  As this is implementation specific it is expected that the Data Holder will ensure that the measurement of response time occurs as close to the Data Recipient Software Product as practicable.
@@ -9,6 +26,10 @@ In light of these considerations, the performance requirement for Data Holders i
 **95% of calls per hour responded to within a nominated threshold**
 
 The nominated threshold for each end point will be according to the following table:
+
+```delta
+Corrected the requirement for the Large Payload tier to remove reference to unattended calls
+```
 
 |Tier|Response Time|Applies To…|
 |----|-------------|-----------|
