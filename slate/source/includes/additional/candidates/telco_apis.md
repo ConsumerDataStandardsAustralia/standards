@@ -1,17 +1,8 @@
-
-# Telco APIs
-
-
 This specification defines the APIs for Data Holders exposing Telecommunications endpoints.
 
-<aside class="notice">
-Note that the standards for the telecommunications sector are currently in draft only and are not binding
-</aside>
-
-
 <table>
-<tr><td><a href='./includes/swagger/cds_telco.json'>Telco OpenAPI Specification (JSON)</a></td></tr>
-<tr><td><a href='./includes/swagger/cds_telco.yaml'>Telco OpenAPI Specification (YAML)</a></td></tr>
+<tr><td><a href='../../../includes/swagger/cds_telco.json'>Telco OpenAPI Specification (JSON)</a></td></tr>
+<tr><td><a href='../../../includes/swagger/cds_telco.yaml'>Telco OpenAPI Specification (YAML)</a></td></tr>
 </table>
 
 ```diff
@@ -23,4 +14,3 @@ to:
 
 Replaced FAPI draft references with FAPI 1.0 Final references. References pertain to the x-fapi-auth-date header.
 ```
-<%= partial "includes/cds_telco.md" %>
