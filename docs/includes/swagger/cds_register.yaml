@@ -1,11 +1,11 @@
 openapi: 3.0.3
 info:
   title: CDR Participant Discovery API
-  version: 1.24.0
+  version: 1.25.0
 servers:
 - url: https://<register-base-url>/
 paths:
-  /.well-known/openid-configuration:
+  /idp/.well-known/openid-configuration:
     get:
       description: |-
         Endpoint used by participants to discover the CDR Register OpenID configuration and obtain information needed to interact with it, including its OAuth 2.0 endpoint locations.
@@ -22,7 +22,7 @@ paths:
       summary: Get OpenId Provider Config
       tags:
       - Register
-  /jwks:
+  /cdr-register/v1/jwks:
     get:
       description: |-
         JWKS endpoint containing the public keys used by the CDR Register to validate the signature of issued SSAs and authenticate outbound calls to participants in the CDR.
@@ -80,9 +80,8 @@ paths:
         name: x-v
         required: false
         schema:
-          default: 1
-          type: integer
-          x-cds-type: PositiveInteger
+          default: "1"
+          type: string
         style: simple
       - description: The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers)
           of the API end point requested by the client. Must be set to a positive
@@ -92,8 +91,7 @@ paths:
         name: x-min-v
         required: false
         schema:
-          type: integer
-          x-cds-type: PositiveInteger
+          type: string
         style: simple
       - description: query filter returns results updated since the specified date-time
         explode: true
@@ -112,8 +110,8 @@ paths:
         schema:
           default: 1
           type: integer
-          x-cds-type: PositiveInteger
         style: form
+        x-cds-type: PositiveInteger
       - description: the number of records to return per page
         explode: true
         in: query
@@ -122,8 +120,8 @@ paths:
         schema:
           default: 25
           type: integer
-          x-cds-type: PositiveInteger
         style: form
+        x-cds-type: PositiveInteger
       responses:
         "200":
           content:
@@ -137,8 +135,7 @@ paths:
                 has responded with.
               explode: false
               schema:
-                type: integer
-                x-cds-type: PositiveInteger
+                type: string
               style: simple
         "400":
           content:
@@ -192,8 +189,7 @@ paths:
         name: x-v
         required: true
         schema:
-          type: integer
-          x-cds-type: PositiveInteger
+          type: string
         style: simple
       - description: The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers)
           of the API end point requested by the client. Must be set to a positive
@@ -203,8 +199,7 @@ paths:
         name: x-min-v
         required: false
         schema:
-          type: integer
-          x-cds-type: PositiveInteger
+          type: string
         style: simple
       - description: Makes the request method conditional on a recipient cache or
           origin server not having any current representation of the target resource
@@ -230,8 +225,7 @@ paths:
                 has responded with.
               explode: false
               schema:
-                type: integer
-                x-cds-type: PositiveInteger
+                type: string
               style: simple
             Etag:
               description: Entity tag that uniquely represents the requested resource.
@@ -305,9 +299,8 @@ paths:
         name: x-v
         required: false
         schema:
-          default: 1
-          type: integer
-          x-cds-type: PositiveInteger
+          default: "1"
+          type: string
         style: simple
       - description: The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers)
           of the API end point requested by the client. Must be set to a positive
@@ -317,8 +310,7 @@ paths:
         name: x-min-v
         required: false
         schema:
-          type: integer
-          x-cds-type: PositiveInteger
+          type: string
         style: simple
       - description: Unique id for the Accredited Data Recipient Brand that the Software
           Product is associated with in the CDR Register
@@ -360,8 +352,8 @@ paths:
                 has responded with.
               explode: false
               schema:
-                type: integer
-                x-cds-type: PositiveInteger
+                default: "1"
+                type: string
               style: simple
         "400":
           content:
@@ -435,9 +427,8 @@ paths:
         name: x-v
         required: false
         schema:
-          default: 1
-          type: integer
-          x-cds-type: PositiveInteger
+          default: "1"
+          type: string
         style: simple
       - description: The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers)
           of the API end point requested by the client. Must be set to a positive
@@ -447,8 +438,7 @@ paths:
         name: x-min-v
         required: false
         schema:
-          type: integer
-          x-cds-type: PositiveInteger
+          type: string
         style: simple
       - description: Makes the request method conditional on a recipient cache or
           origin server not having any current representation of the target resource
@@ -474,8 +464,7 @@ paths:
                 has responded with.
               explode: false
               schema:
-                type: integer
-                x-cds-type: PositiveInteger
+                type: string
               style: simple
             Etag:
               description: Entity tag that uniquely represents the requested resource.
@@ -543,9 +532,8 @@ paths:
         name: x-v
         required: false
         schema:
-          default: 1
-          type: integer
-          x-cds-type: PositiveInteger
+          default: "1"
+          type: string
         style: simple
       - description: The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers)
           of the API end point requested by the client. Must be set to a positive
@@ -555,8 +543,7 @@ paths:
         name: x-min-v
         required: false
         schema:
-          type: integer
-          x-cds-type: PositiveInteger
+          type: string
         style: simple
       - description: Makes the request method conditional on a recipient cache or
           origin server not having any current representation of the target resource
@@ -582,8 +569,7 @@ paths:
                 has responded with.
               explode: false
               schema:
-                type: integer
-                x-cds-type: PositiveInteger
+                type: string
               style: simple
             Etag:
               description: Entity tag that uniquely represents the requested resource.
@@ -651,9 +637,8 @@ paths:
         name: x-v
         required: false
         schema:
-          default: 1
-          type: integer
-          x-cds-type: PositiveInteger
+          default: "1"
+          type: string
         style: simple
       - description: The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers)
           of the API end point requested by the client. Must be set to a positive
@@ -663,8 +648,7 @@ paths:
         name: x-min-v
         required: false
         schema:
-          type: integer
-          x-cds-type: PositiveInteger
+          type: string
         style: simple
       - description: Makes the request method conditional on a recipient cache or
           origin server not having any current representation of the target resource
@@ -690,8 +674,7 @@ paths:
                 has responded with.
               explode: false
               schema:
-                type: integer
-                x-cds-type: PositiveInteger
+                type: string
               style: simple
             Etag:
               description: Entity tag that uniquely represents the requested resource.
@@ -759,9 +742,8 @@ paths:
         name: x-v
         required: false
         schema:
-          default: 2
-          type: integer
-          x-cds-type: PositiveInteger
+          default: "2"
+          type: string
         style: simple
       - description: The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers)
           of the API end point requested by the client. Must be set to a positive
@@ -771,8 +753,7 @@ paths:
         name: x-min-v
         required: false
         schema:
-          type: integer
-          x-cds-type: PositiveInteger
+          type: string
         style: simple
       - description: Makes the request method conditional on a recipient cache or
           origin server not having any current representation of the target resource
@@ -798,8 +779,7 @@ paths:
                 has responded with.
               explode: false
               schema:
-                type: integer
-                x-cds-type: PositiveInteger
+                type: string
               style: simple
             Etag:
               description: Entity tag that uniquely represents the requested resource.
@@ -855,8 +835,7 @@ components:
       name: x-v
       required: false
       schema:
-        type: integer
-        x-cds-type: PositiveInteger
+        type: string
       style: simple
     Industry:
       description: The industry the participant is retrieving data for (Banking, etc)
@@ -882,8 +861,7 @@ components:
       name: x-min-v
       required: false
       schema:
-        type: integer
-        x-cds-type: PositiveInteger
+        type: string
       style: simple
     IfNoneMatch:
       description: Makes the request method conditional on a recipient cache or origin
@@ -916,8 +894,8 @@ components:
       schema:
         default: 1
         type: integer
-        x-cds-type: PositiveInteger
       style: form
+      x-cds-type: PositiveInteger
     PageSize:
       description: the number of records to return per page
       explode: true
@@ -927,8 +905,8 @@ components:
       schema:
         default: 25
         type: integer
-        x-cds-type: PositiveInteger
       style: form
+      x-cds-type: PositiveInteger
   responses:
     BadRequest:
       content:

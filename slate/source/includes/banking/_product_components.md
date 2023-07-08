@@ -1,8 +1,8 @@
 ## Product & Account Components
 ```diff
-Updated description of 'PENSION_RECIPIENT' value in 
+Updated description of 'PENSION_RECIPIENT' value in
 'Product Eligibility Types' table from:
-- A recipient of a government pension may apply for the product	
+- A recipient of a government pension may apply for the product
 to:
 + Only a recipient of a government pension may apply for the product
 and 'Product Discount Eligibility Types' table from:
@@ -152,15 +152,29 @@ Description of the usage of the discountEligibilityType field as it applies to p
 
 Description of the usage of the depositRateType field as it applies to products.
 
-|Value|Description|Use of additionalValue Field|
-|-----|-----------|----------------------------|
-|BONUS|A bonus rate available by meeting a specific criteria|A description of the criteria to obtain the bonus|
-|BUNDLE_BONUS|A bonus rate obtained by originating a bundle instead of a standalone product|The name of the bundle|
-|FIXED|Fixed rate for a period of time|The period of time fixed. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)|
-|FLOATING|A floating rate is relatively fixed but still adjusts under specific circumstances|Details of the float parameters|
-|INTRODUCTORY|An introductory bonus that will expire after a set period|The period of time for the introductory rate.  Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)|
-|MARKET_LINKED|A rate that is linked to a specific market, commodity or asset class|Details of the market linkage|
-|VARIABLE|A variable base rate for the product|NA|
+<a id="productdepositbaseratetypedoc"></a>
+<ul><li id="tocSproductdepositbaseratetypedoc"><b>Deposit Base Rate Types</b></li></ul>
+
+A deposit product is expected to present a single Base rate corresponding to relevant selection criteria including the rate `tiers` and `additionalValue`, where applicable.
+
+Value | Description | Use of additionalValue Field
+-- | -- | --
+FIXED | Fixed rate for a period of time | The period of time fixed. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)
+FLOATING | A floating rate is relatively fixed but still adjusts under specific circumstances | Details of the float parameters
+MARKET_LINKED | A rate that is linked to a specific market, commodity or asset class | Details of the market linkage
+VARIABLE | A variable base rate for the product | NA
+
+
+<a id="productdepositadjustmentratetypedoc"></a>
+<ul><li id="tocSproductdepositadjustmentratetypedoc"><b>Deposit Adjustment Rate Types</b></li></ul>
+
+A product may have zero, one, or multiple adjustment rates that are taken to apply to a Base rate.
+
+Value | Description | Use of additionalValue Field
+-- | -- | --
+BONUS | A bonus rate available by meeting a specific criteria | A description of the criteria to obtain the bonus
+BUNDLE_BONUS | A bonus rate obtained by originating a bundle instead of a standalone product | The name of the bundle
+INTRODUCTORY | An introductory bonus that will expire after a set period | The period of time for the introductory rate. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)
 
 
 
@@ -169,19 +183,38 @@ Description of the usage of the depositRateType field as it applies to products.
 
 Description of the usage of the lendingRateType field as it applies to products.
 
-|Value|Description|Use of additionalValue Field|
-|-----|-----------|----------------------------|
-|BUNDLE_DISCOUNT_FIXED|A discount rate off the fixed rate obtained by originating a bundle instead of a standalone product|The name of the bundle|
-|BUNDLE_DISCOUNT_VARIABLE|A discount rate off the variable rate obtained by originating a bundle instead of a standalone product|The name of the bundle|
-|CASH_ADVANCE|Specific rate applied to cash advances from the account|NA|
-|DISCOUNT|A specific discount rate that may be applied.  A discount rate reduces the interest payable|Description of the discount rate that is applicable|
-|FIXED|Fixed rate for a period of time|The period of time fixed. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)|
-|FLOATING|A floating rate is relatively fixed but still adjusts under specific circumstances|Details of the float parameters|
-|INTRODUCTORY|An introductory discount that will expire after a set period|The period of time for the introductory rate.  Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)|
-|MARKET_LINKED|A rate that is linked to a specific market, commodity or asset class|Details of the market linkage|
-|PENALTY|A specific penalty rate that may be applied.  A penalty rate increases the interest payable|Description of the penalty rate that is applicable|
-|PURCHASE|Specific rate applied to purchases from the account|NA|
-|VARIABLE|A variable base rate for the product|NA|
+
+<a id="productlendingbaseratetypedoc"></a>
+<ul><li id="tocSproductlendingbaseratetypedoc"><b>Lending Base Rate Types</b></li></ul>
+
+A lending product is expected to present a single Base rate corresponding to relevant selection criteria including the rate `tiers` and `additionalValue`, where applicable.
+
+Card products may have two or more base rates, including `CASH_ADVANCE` and `PURCHASE` as they may apply to different transaction types within an account. The `PURCHASE` lendingRateType is considered the rate commonly applicable to a card.
+
+Value | Description | Use of additionalValue Field
+-- | -- | --
+CASH_ADVANCE | Specific rate applied to cash advances from the account. This is expected to apply to products in the `CRED_AND_CHRG_CARDS` category only | NA
+FIXED | Fixed rate for a period of time | The period of time fixed. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)
+FLOATING | A floating rate is relatively fixed but still adjusts under specific circumstances | Details of the float parameters
+MARKET_LINKED | A rate that is linked to a specific market, commodity or asset class | Details of the market linkage
+PURCHASE | Specific rate applied to purchases from the account. This is expected to apply to products in the `CRED_AND_CHRG_CARDS` category only | NA
+VARIABLE | A variable base rate for the product | NA
+
+
+
+<a id="productlendingadjustmentratetypedoc"></a>
+<ul><li id="tocSproductlendingadjustmentratetypedoc"><b>Lending Adjustment Rate Types</b></li></ul>
+
+A product may have zero, one, or multiple adjustment rates that are taken to apply to a Base rate.
+
+Value | Description | Use of additionalValue Field
+-- | -- | --
+BUNDLE_DISCOUNT_FIXED | A discount rate off the fixed rate obtained by originating a bundle instead of a standalone product | The name of the bundle
+BUNDLE_DISCOUNT_VARIABLE | A discount rate off the variable rate obtained by originating a bundle instead of a standalone product | The name of the bundle
+DISCOUNT | A specific discount rate that may be applied. A discount rate reduces the interest payable | Description of the discount rate that is applicable
+INTRODUCTORY | An introductory discount that will expire after a set period | The period of time for the introductory rate. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)
+PENALTY | A specific penalty rate that may be applied. A penalty rate increases the interest payable | Description of the penalty rate that is applicable
+
 
 <a id="bankingtermdepositaccountedoc"></a>
 <h3 id="tocSbankingtermdepositaccountypedoc">Banking Term Deposit Account Types</h3>

@@ -32,12 +32,13 @@ includes:
   - separator
   - banking_apis
   - energy_apis
-  - telco_apis
   - common_apis
   - admin
   - separator
   - secondary_responsibility
   - energy_apis_sdh
+  - separator
+  - additional
   - separator
   - known-issues
   - changelog

@@ -1,8 +1,12 @@
 
 ### Pushed Authorisation End Point
 
+```diff
+Updated non-normtative example to use RFC9126, not the draft PAR specification
+```
+
 > Non-Normative Example  
-> Utilising PAR Draft 01 specification and OIDC Hybrid Flow
+> Utilising RFC9126 and OIDC Hybrid Flow
 
 
 > Request
@@ -62,8 +66,8 @@ Cache-Control: no-cache, no-store
 
 ```
 ## The request_uri is used by the ADR in the subsequent authorisation request as follows
-## (note this example is pre-RFC using Draft 01 of the PAR standard, hence it includes 
-## the mandatory oAuth parameters as per FAPI R/W for confidential clients must be 
+## (note this example is pre-RFC using Draft 01 of the PAR standard, hence it includes
+## the mandatory oAuth parameters as per FAPI R/W for confidential clients must be
 ## replayed in the request URL):
 
 GET /authorise?client_id=s6BhdRkqt3&
@@ -90,6 +94,10 @@ request=eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyMyJ9.ey...
 > Decoded Request - FAPI 1.0 Final Phase 3 Obligation  
 This example shows an authorisation request using the Authorisation Code Flow (FAPI 1.0 migration Phase 3)
 
+```diff
++ Added "response_mode" to the non normative example. This demonstrates the use of Authorization Code Flow in conjunction with JARM and FAPI 1.0
+```
+
 ```
 {
   "iss": "s6BhdRkqt3",
@@ -97,6 +105,7 @@ This example shows an authorisation request using the Authorisation Code Flow (F
   "nbf": 1680829200,
   "aud": "https://www.recipient.com.au",
   "response_type": "code",
+  "response_mode": "jwt",
   "client_id": "s6BhdRkqt3",
   "redirect_uri": "https://www.recipient.com.au/coolstuff",
   "scope": "openid profile bank:accounts.basic:read
@@ -174,7 +183,10 @@ eyJraWQiOiIwZWQ3YTNkZi1hMGJlLTRhZjQtOTk0YS1jNDBhODc0ODQwNjMiLCJhbGciOiJQUzI1NiJ9
 
 Data Holders **MUST** support Pushed Authorisation Requests (PAR) via the pushed authorisation end point according to **[[PAR]](#nref-PAR)**.
 
+```diff
+- Removed legacy phasing requirements for FAPI 1.0 Final using PAR
+```
 
-Data Recipient Software Products **MAY** send authorisation requests using **[[PAR]](#nref-PAR)** if supported by the Data Holder.
+Data Recipient Software Products **MUST** send authorisation requests using **[[PAR]](#nref-PAR)** if supported by the Data Holder.
 
 The Data Holder response provides the Data Recipient Software Product with a Request URI in the response. The Request URI is then passed to the Data Holder’s Authorisation End Point to initiate an authorisation flow.

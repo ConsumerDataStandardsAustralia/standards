@@ -2,7 +2,7 @@ openapi: 3.0.3
 info:
   description: Consumer Data Right end points and payloads for the Energy sector
   title: CDR Energy API
-  version: 1.24.0
+  version: 1.25.0
 servers:
 - url: /
 paths:
@@ -146,8 +146,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
-            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page
-            Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
+            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400
+            - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400
+            - Invalid Version](#error-400-header-invalid-version)</li></ul>
         "406":
           content:
             application/json:
@@ -230,7 +231,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
-            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
+            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400
+            - Invalid Version](#error-400-header-invalid-version)</li></ul>
         "404":
           content:
             application/json:
@@ -312,7 +314,7 @@ paths:
           type: string
         style: simple
       - description: The time when the customer last logged in to the Data Recipient
-          Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required
+          Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required
           for all resource calls (customer present and unattended). Not required for
           unauthenticated calls.
         explode: false
@@ -378,8 +380,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
-            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page
-            Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
+            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400
+            - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400
+            - Invalid Version](#error-400-header-invalid-version)</li></ul>
           headers:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
@@ -488,7 +491,7 @@ paths:
           type: string
         style: simple
       - description: The time when the customer last logged in to the Data Recipient
-          Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required
+          Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required
           for all resource calls (customer present and unattended). Not required for
           unauthenticated calls.
         explode: false
@@ -554,7 +557,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
-            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
+            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400
+            - Invalid Version](#error-400-header-invalid-version)</li></ul>
           headers:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
@@ -718,7 +722,7 @@ paths:
           type: string
         style: simple
       - description: The time when the customer last logged in to the Data Recipient
-          Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required
+          Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required
           for all resource calls (customer present and unattended). Not required for
           unauthenticated calls.
         explode: false
@@ -784,8 +788,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
-            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page
-            Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
+            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400
+            - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400
+            - Invalid Version](#error-400-header-invalid-version)</li></ul>
           headers:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
@@ -956,7 +961,7 @@ paths:
           type: string
         style: simple
       - description: The time when the customer last logged in to the Data Recipient
-          Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required
+          Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required
           for all resource calls (customer present and unattended). Not required for
           unauthenticated calls.
         explode: false
@@ -1022,8 +1027,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
-            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page
-            Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
+            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400
+            - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400
+            - Invalid Version](#error-400-header-invalid-version)</li></ul>
           headers:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
@@ -1175,7 +1181,7 @@ paths:
           type: string
         style: simple
       - description: The time when the customer last logged in to the Data Recipient
-          Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required
+          Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required
           for all resource calls (customer present and unattended). Not required for
           unauthenticated calls.
         explode: false
@@ -1243,8 +1249,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
-            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page
-            Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
+            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400
+            - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400
+            - Invalid Version](#error-400-header-invalid-version)</li></ul>
           headers:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
@@ -1354,7 +1361,7 @@ paths:
           type: string
         style: simple
       - description: The time when the customer last logged in to the Data Recipient
-          Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required
+          Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required
           for all resource calls (customer present and unattended). Not required for
           unauthenticated calls.
         explode: false
@@ -1420,7 +1427,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
-            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
+            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400
+            - Invalid Version](#error-400-header-invalid-version)</li></ul>
           headers:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
@@ -1537,7 +1545,7 @@ paths:
           type: string
         style: simple
       - description: The time when the customer last logged in to the Data Recipient
-          Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required
+          Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required
           for all resource calls (customer present and unattended). Not required for
           unauthenticated calls.
         explode: false
@@ -1603,8 +1611,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
-            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page
-            Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
+            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400
+            - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400
+            - Invalid Version](#error-400-header-invalid-version)</li></ul>
           headers:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
@@ -1719,7 +1728,7 @@ paths:
           type: string
         style: simple
       - description: The time when the customer last logged in to the Data Recipient
-          Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required
+          Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required
           for all resource calls (customer present and unattended). Not required for
           unauthenticated calls.
         explode: false
@@ -1787,8 +1796,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
-            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page
-            Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
+            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400
+            - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400
+            - Invalid Version](#error-400-header-invalid-version)</li></ul>
           headers:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
@@ -1923,7 +1933,7 @@ paths:
           type: string
         style: simple
       - description: The time when the customer last logged in to the Data Recipient
-          Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required
+          Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required
           for all resource calls (customer present and unattended). Not required for
           unauthenticated calls.
         explode: false
@@ -1989,8 +1999,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
-            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page
-            Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
+            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400
+            - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400
+            - Invalid Version](#error-400-header-invalid-version)</li></ul>
           headers:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
@@ -2100,7 +2111,7 @@ paths:
           type: string
         style: simple
       - description: The time when the customer last logged in to the Data Recipient
-          Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required
+          Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required
           for all resource calls (customer present and unattended). Not required for
           unauthenticated calls.
         explode: false
@@ -2166,7 +2177,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
-            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
+            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400
+            - Invalid Version](#error-400-header-invalid-version)</li></ul>
           headers:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
@@ -2286,7 +2298,7 @@ paths:
           type: string
         style: simple
       - description: The time when the customer last logged in to the Data Recipient
-          Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required
+          Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required
           for all resource calls (customer present and unattended). Not required for
           unauthenticated calls.
         explode: false
@@ -2352,7 +2364,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
-            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
+            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400
+            - Invalid Version](#error-400-header-invalid-version)</li></ul>
           headers:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
@@ -2461,7 +2474,7 @@ paths:
           type: string
         style: simple
       - description: The time when the customer last logged in to the Data Recipient
-          Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required
+          Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required
           for all resource calls (customer present and unattended). Not required for
           unauthenticated calls.
         explode: false
@@ -2527,7 +2540,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
-            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
+            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400
+            - Invalid Version](#error-400-header-invalid-version)</li></ul>
           headers:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
@@ -2635,7 +2649,7 @@ paths:
           type: string
         style: simple
       - description: The time when the customer last logged in to the Data Recipient
-          Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required
+          Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required
           for all resource calls (customer present and unattended). Not required for
           unauthenticated calls.
         explode: false
@@ -2701,7 +2715,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
-            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
+            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400
+            - Invalid Version](#error-400-header-invalid-version)</li></ul>
           headers:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
@@ -2818,7 +2833,7 @@ paths:
           type: string
         style: simple
       - description: The time when the customer last logged in to the Data Recipient
-          Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required
+          Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required
           for all resource calls (customer present and unattended). Not required for
           unauthenticated calls.
         explode: false
@@ -2884,8 +2899,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
-            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page
-            Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
+            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400
+            - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400
+            - Invalid Version](#error-400-header-invalid-version)</li></ul>
           headers:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
@@ -3000,7 +3016,7 @@ paths:
           type: string
         style: simple
       - description: The time when the customer last logged in to the Data Recipient
-          Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required
+          Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required
           for all resource calls (customer present and unattended). Not required for
           unauthenticated calls.
         explode: false
@@ -3068,8 +3084,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
-            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page
-            Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
+            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400
+            - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400
+            - Invalid Version](#error-400-header-invalid-version)</li></ul>
           headers:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
@@ -3218,7 +3235,7 @@ paths:
           type: string
         style: simple
       - description: The time when the customer last logged in to the Data Recipient
-          Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required
+          Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required
           for all resource calls (customer present and unattended). Not required for
           unauthenticated calls.
         explode: false
@@ -3284,8 +3301,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
-            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page
-            Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
+            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400
+            - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400
+            - Invalid Version](#error-400-header-invalid-version)</li></ul>
           headers:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
@@ -3442,7 +3460,7 @@ paths:
           type: string
         style: simple
       - description: The time when the customer last logged in to the Data Recipient
-          Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required
+          Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required
           for all resource calls (customer present and unattended). Not required for
           unauthenticated calls.
         explode: false
@@ -3508,8 +3526,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
-            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page
-            Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
+            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400
+            - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400
+            - Invalid Version](#error-400-header-invalid-version)</li></ul>
           headers:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
@@ -3646,7 +3665,7 @@ paths:
           type: string
         style: simple
       - description: The time when the customer last logged in to the Data Recipient
-          Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required
+          Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required
           for all resource calls (customer present and unattended). Not required for
           unauthenticated calls.
         explode: false
@@ -3714,8 +3733,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
-            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page
-            Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
+            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400
+            - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400
+            - Invalid Version](#error-400-header-invalid-version)</li></ul>
           headers:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
@@ -3774,7 +3794,10 @@ paths:
       x-version: "1"
   /energy/accounts/{accountId}/billing:
     get:
-      description: Obtain the billing transactions for a specific account
+      description: |-
+        Obtain the billing transactions for a specific account
+
+        Other Versions: [v1](includes/obsolete/get-billing-for-account-v1.html)
       operationId: getBillingForAccount
       parameters:
       - description: ID of a specific account to obtain data for.  This is a tokenised
@@ -3864,7 +3887,7 @@ paths:
           type: string
         style: simple
       - description: The time when the customer last logged in to the Data Recipient
-          Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required
+          Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required
           for all resource calls (customer present and unattended). Not required for
           unauthenticated calls.
         explode: false
@@ -3904,7 +3927,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EnergyBillingListResponse'
+                $ref: '#/components/schemas/EnergyBillingListResponseV2'
           description: Successful response
           headers:
             x-v:
@@ -3930,8 +3953,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
-            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page
-            Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
+            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400
+            - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400
+            - Invalid Version](#error-400-header-invalid-version)</li></ul>
           headers:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
@@ -4004,10 +4028,13 @@ paths:
       - Billing
       x-scopes:
       - energy:billing:read
-      x-version: "1"
+      x-version: "2"
   /energy/accounts/billing:
     get:
-      description: Obtain billing transactions for all accounts
+      description: |-
+        Obtain billing transactions for all accounts
+
+        Other Versions: [v1](includes/obsolete/get-bulk-billing-v1.html)
       operationId: listBillingBulk
       parameters:
       - description: Constrain the request to records with effective time at or before
@@ -4088,7 +4115,7 @@ paths:
           type: string
         style: simple
       - description: The time when the customer last logged in to the Data Recipient
-          Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required
+          Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required
           for all resource calls (customer present and unattended). Not required for
           unauthenticated calls.
         explode: false
@@ -4128,7 +4155,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EnergyBillingListResponse'
+                $ref: '#/components/schemas/EnergyBillingListResponseV2'
           description: Successful response
           headers:
             x-v:
@@ -4154,8 +4181,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
-            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page
-            Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
+            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400
+            - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400
+            - Invalid Version](#error-400-header-invalid-version)</li></ul>
           headers:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
@@ -4209,9 +4237,12 @@ paths:
       - Billing
       x-scopes:
       - energy:billing:read
-      x-version: "1"
+      x-version: "2"
     post:
-      description: Obtain billing for a specified set of accounts
+      description: |-
+        Obtain billing for a specified set of accounts
+
+        Other Versions: [v1](includes/obsolete/get-billing-for-specific-accounts-v1.html)
       operationId: listBillingForAccounts
       parameters:
       - description: Constrain the request to records with effective time at or before
@@ -4292,7 +4323,7 @@ paths:
           type: string
         style: simple
       - description: The time when the customer last logged in to the Data Recipient
-          Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required
+          Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required
           for all resource calls (customer present and unattended). Not required for
           unauthenticated calls.
         explode: false
@@ -4334,7 +4365,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EnergyBillingListResponse'
+                $ref: '#/components/schemas/EnergyBillingListResponseV2'
           description: Successful response
           headers:
             x-v:
@@ -4360,8 +4391,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
-            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page
-            Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
+            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400
+            - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400
+            - Invalid Version](#error-400-header-invalid-version)</li></ul>
           headers:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
@@ -4417,7 +4449,7 @@ paths:
       - Billing
       x-scopes:
       - energy:billing:read
-      x-version: "1"
+      x-version: "2"
 components:
   parameters:
     servicePointId:
@@ -4605,7 +4637,7 @@ components:
       style: simple
     x-fapi-auth-date:
       description: The time when the customer last logged in to the Data Recipient
-        Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required
+        Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required
         for all resource calls (customer present and unattended). Not required for
         unauthenticated calls.
       explode: false
@@ -4999,7 +5031,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/EnergyBillingListResponse'
+            $ref: '#/components/schemas/EnergyBillingListResponseV2'
       description: Successful response
       headers:
         x-v:
@@ -5960,7 +5992,7 @@ components:
       - links
       - meta
       type: object
-    EnergyBillingListResponse:
+    EnergyBillingListResponseV2:
       example:
         data:
           transactions:
@@ -6117,7 +6149,7 @@ components:
           first: first
       properties:
         data:
-          $ref: '#/components/schemas/EnergyBillingListResponse_data'
+          $ref: '#/components/schemas/EnergyBillingListResponseV2_data'
         links:
           $ref: '#/components/schemas/LinksPaginated'
         meta:
@@ -9149,7 +9181,7 @@ components:
       - totalCharges
       - totalDiscounts
       type: object
-    EnergyBillingTransaction:
+    EnergyBillingTransactionV2:
       example:
         accountId: accountId
         onceOff:
@@ -9246,9 +9278,9 @@ components:
           - payment
           type: string
         usage:
-          $ref: '#/components/schemas/EnergyBillingUsageTransaction'
+          $ref: '#/components/schemas/EnergyBillingUsageTransactionV2'
         demand:
-          $ref: '#/components/schemas/EnergyBillingDemandTransaction'
+          $ref: '#/components/schemas/EnergyBillingDemandTransactionV2'
         onceOff:
           $ref: '#/components/schemas/EnergyBillingOnceOffTransaction'
         otherCharges:
@@ -9264,7 +9296,7 @@ components:
       - usage
       - onceOff
       - payment
-    EnergyBillingUsageTransaction:
+    EnergyBillingUsageTransactionV2:
       example:
         amount: amount
         adjustments:
@@ -9307,6 +9339,7 @@ components:
           - CONTROLLED_LOAD
           - SOLAR
           - AGGREGATE
+          - ALL_DAY
           type: string
         description:
           description: Optional description of the transaction that can be used for
@@ -9348,12 +9381,12 @@ components:
         calculationFactors:
           description: Additional calculation factors that inform the transaction
           items:
-            $ref: '#/components/schemas/EnergyBillingUsageTransaction_calculationFactors'
+            $ref: '#/components/schemas/EnergyBillingUsageTransactionV2_calculationFactors'
           type: array
         adjustments:
           description: Optional array of adjustments arising for this transaction
           items:
-            $ref: '#/components/schemas/EnergyBillingUsageTransaction_adjustments'
+            $ref: '#/components/schemas/EnergyBillingUsageTransactionV2_adjustments'
           type: array
       required:
       - amount
@@ -9362,7 +9395,7 @@ components:
       - timeOfUseType
       - usage
       type: object
-    EnergyBillingDemandTransaction:
+    EnergyBillingDemandTransactionV2:
       example:
         amount: amount
         adjustments:
@@ -9404,6 +9437,8 @@ components:
           - CONTROLLED_LOAD
           - SOLAR
           - AGGREGATE
+          - ALL_DAY
+          - EXCESS
           type: string
         description:
           description: Optional description of the transaction that can be used for
@@ -9433,12 +9468,12 @@ components:
         calculationFactors:
           description: Additional calculation factors that inform the transaction
           items:
-            $ref: '#/components/schemas/EnergyBillingUsageTransaction_calculationFactors'
+            $ref: '#/components/schemas/EnergyBillingUsageTransactionV2_calculationFactors'
           type: array
         adjustments:
           description: Optional array of adjustments arising for this transaction
           items:
-            $ref: '#/components/schemas/EnergyBillingUsageTransaction_adjustments'
+            $ref: '#/components/schemas/EnergyBillingUsageTransactionV2_adjustments'
           type: array
       required:
       - amount
@@ -9531,12 +9566,12 @@ components:
         calculationFactors:
           description: Additional calculation factors that inform the transaction
           items:
-            $ref: '#/components/schemas/EnergyBillingUsageTransaction_calculationFactors'
+            $ref: '#/components/schemas/EnergyBillingUsageTransactionV2_calculationFactors'
           type: array
         adjustments:
           description: Optional array of adjustments arising for this transaction
           items:
-            $ref: '#/components/schemas/EnergyBillingUsageTransaction_adjustments'
+            $ref: '#/components/schemas/EnergyBillingUsageTransactionV2_adjustments'
           type: array
       required:
       - amount
@@ -10445,7 +10480,7 @@ components:
       required:
       - invoices
       type: object
-    EnergyBillingListResponse_data:
+    EnergyBillingListResponseV2_data:
       example:
         transactions:
         - accountId: accountId
@@ -10595,7 +10630,7 @@ components:
           description: Array of transactions sorted by date and time in descending
             order
           items:
-            $ref: '#/components/schemas/EnergyBillingTransaction'
+            $ref: '#/components/schemas/EnergyBillingTransactionV2'
           type: array
       required:
       - transactions
@@ -11629,8 +11664,9 @@ components:
         isTokenised: true
       properties:
         isTokenised:
-          description: Flag indicating that the account details are tokenised and
-            cannot be shared.  False if absent
+          description: Flag indicating that the account details are tokenised, or
+            held in a closed system, and is not accessible through any other channels.
+            False if absent
           type: boolean
         bsb:
           description: The unmasked BSB for the account to be debited. Is expected
@@ -11680,8 +11716,8 @@ components:
         paymentFrequency: paymentFrequency
       properties:
         name:
-          description: The name assigned to the digital wallet by the owner of the
-            wallet, else the display name provided by the digital wallet provider
+          description: The display name of the wallet as given by the customer, else
+            a default value defined by the data holder
           type: string
         identifier:
           description: The identifier of the digital wallet (dependent on type)
@@ -11816,7 +11852,7 @@ components:
       - amount
       - description
       type: object
-    EnergyBillingUsageTransaction_calculationFactors:
+    EnergyBillingUsageTransactionV2_calculationFactors:
       example:
         type: DLF
         value: 6.027456183070403
@@ -11834,7 +11870,7 @@ components:
       - type
       - value
       type: object
-    EnergyBillingUsageTransaction_adjustments:
+    EnergyBillingUsageTransactionV2_adjustments:
       example:
         amount: amount
         description: description

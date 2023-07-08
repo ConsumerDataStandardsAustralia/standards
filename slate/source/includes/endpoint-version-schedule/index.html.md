@@ -27,20 +27,15 @@ These dates may be subject to change depending upon new or changed legislative a
 
 | Obligation Milestone | Milestone Date | # Obligations Assigned |
 | :------------------- | :------------: | :--------------------: |
-| **Legacy FDO** | 16/09/2022 | 1 |
-| **Legacy FDO** | 01/10/2022 | 1 |
-| **Legacy FDO** | 01/11/2022 | 1 |
-| **Y22 #4** | 15/11/2022 | 3 |
-| **Legacy FDO** | 30/11/2022 | 3 |
-| **Legacy FDO** | 05/12/2022 | 1 |
 | **Legacy FDO** | 28/02/2023 | 3 |
 | **Y23 #1** | 14/04/2023 | 3 |
 | **Y23 #2** | 15/05/2023 | 1 |
 | **Y23 #3** | 10/07/2023 | 3 |
 | **Y23 #4** | 11/09/2023 | 0 |
-| **Y23 #5** | 13/11/2023 | 0 |
-| **Y24 #1** | 11/03/2024 | 2 |
-| **Y24 #2** | 13/05/2024 | 0 |
+| Energy Tranche 3 | 01/11/2023 | 6 |
+| **Y23 #5** | 13/11/2023 | 1 |
+| **Y24 #1** | 11/03/2024 | 5 |
+| **Y24 #2** | 13/05/2024 | 1 |
 | **Y24 #3** | 15/07/2024 | 0 |
 | **Y24 #4** | 09/09/2024 | 0 |
 | **Y24 #5** | 11/11/2024 | 0 |
@@ -80,9 +75,9 @@ These dates may be subject to change depending upon new or changed legislative a
 
 The following tables describe the endpoint versions and the dates they become binding within the data standards.
 
-**Binding Date** indicates the dates the particular version of an endpoint becomes binding in the data standards.
+**Binding Date** indicates the date the particular version of an endpoint becomes binding in the data standards.
 
-**Retirement Date** indicates, where relevant, denotes the date a specific version can be retired and is no longer supported. All consumers of the affected endpoint must upgrade to a more recent version currently available.
+**Retirement Date** indicates, where relevant, the date a specific version can be retired and is no longer supported. All consumers of the affected endpoint must upgrade to a more recent version currently available.
 
 **Date Introduced** indicates the release of the standards, including release date, when the endpoint version was first introduced. This is not the Binding Date.
 

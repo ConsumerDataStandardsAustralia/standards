@@ -10,6 +10,12 @@
 </tr>
 </thead><tbody>
 <tr>
+<td>08/06/2023</td>
+<td>1.25.0</td>
+<td>Changes arising from Decision 303 (Maintenance iteration 15) and Decision 288 (Metrics and NFRs)</td>
+<td>See <a href="includes/releasenotes/releasenotes.1.25.0.html">release notes</a>, <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/303">Decision 303</a> and <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/288">Decision 288</a> for details.</td>
+</tr>
+<tr>
 <td>07/05/2023</td>
 <td>1.24.0</td>
 <td>Changes arising from Decision 281 (Maintenance iteration 14)</td>

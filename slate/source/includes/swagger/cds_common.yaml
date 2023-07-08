@@ -11,7 +11,7 @@ info:
     name: MIT License
     url: https://opensource.org/licenses/MIT
   title: CDR Common API
-  version: 1.24.0
+  version: 1.25.0
 servers:
 - url: https://data.holder.com.au/cds-au/v1
 paths:
@@ -72,7 +72,7 @@ paths:
           type: string
         style: simple
       - description: The time when the customer last logged in to the Data Recipient
-          Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required
+          Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required
           for all resource calls (customer present and unattended). Not required for
           unauthenticated calls.
         explode: false
@@ -141,7 +141,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
-            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
+            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400
+            - Invalid Version](#error-400-header-invalid-version)</li></ul>
           headers:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
@@ -224,7 +225,7 @@ paths:
           type: string
         style: simple
       - description: The time when the customer last logged in to the Data Recipient
-          Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required
+          Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required
           for all resource calls (customer present and unattended). Not required for
           unauthenticated calls.
         explode: false
@@ -293,7 +294,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
-            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
+            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400
+            - Invalid Version](#error-400-header-invalid-version)</li></ul>
           headers:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
@@ -382,7 +384,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
-            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
+            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400
+            - Invalid Version](#error-400-header-invalid-version)</li></ul>
         "406":
           content:
             application/json:
@@ -447,7 +450,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
-            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
+            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400
+            - Invalid Version](#error-400-header-invalid-version)</li></ul>
         "406":
           content:
             application/json:
@@ -504,7 +508,7 @@ components:
       style: simple
     RequestHeader_x-fapi-auth-date:
       description: The time when the customer last logged in to the Data Recipient
-        Software Product as described in **[[FAPI-R-Draft]](#nref-FAPI-R-Draft)**.  Required
+        Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required
         for all resource calls (customer present and unattended). Not required for
         unauthenticated calls.
       explode: false
