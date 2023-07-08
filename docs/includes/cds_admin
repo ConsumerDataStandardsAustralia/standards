@@ -200,7 +200,7 @@ This operation may only be called by the CDR Register
 
 <ul>
 <li><a href="includes/obsolete/get-metrics-v3.html">v3</a></li>
-<li><a href="includes/obsolete/get-metrics-v4.html">v4</a> - This version must be implemented by <strong>November 1st 2023</strong></li>
+<li><a href="includes/obsolete/get-metrics-v4.html">v4</a> - This version, or v5, must be implemented by <strong>November 1st 2023</strong></li>
 </ul>
 
 <p>If the Data Holder supports private_key_jwt client authentication they MUST validate the scope.</p>

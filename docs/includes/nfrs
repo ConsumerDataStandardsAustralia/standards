@@ -177,8 +177,8 @@ with the data holder
 <li>Unattended calls should be managed to avoid short term bursts of traffic</li>
 </ul>
 
-<p><pre class="highlight diff tab-diff"><code>Added the Low Velocity Data Sets section
-</code></pre><h3 id='low-velocity-data-sets'>Low Velocity Data Sets</h3>
+<p><pre class="highlight diff tab-diff"><code><span class="gi">+ Added the Low Velocity Data Sets section
+</span></code></pre><h3 id='low-velocity-data-sets'>Low Velocity Data Sets</h3>
 <p>For endpoints that provide access to data that is low velocity (ie. the data does not change frequently) the Data Recipient Software Product is expected to cache the results of any data they receive and not request the same resource again until the data may reasonably have changed.</p></p>
 
 <p>For low velocity data sets, if the same data is requested repeatedly a Data Holder may reject subsequent requests for the same data during a specified period.</p>

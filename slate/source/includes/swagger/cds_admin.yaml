@@ -106,7 +106,7 @@ paths:
         Deprecated versions:
 
         - [v3](includes/obsolete/get-metrics-v3.html)
-        - [v4](includes/obsolete/get-metrics-v4.html) - This version must be implemented by **November 1st 2023**
+        - [v4](includes/obsolete/get-metrics-v4.html) - This version, or v5, must be implemented by **November 1st 2023**
 
         If the Data Holder supports private_key_jwt client authentication they MUST validate the scope.
       operationId: getMetrics
