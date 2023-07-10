@@ -1568,7 +1568,7 @@ Added FDOs for decision 288 and 303
 </tr>
 <tr>
 <td><a href="#get-metrics">Get Metrics V5</a></td>
-<td><ul><li>Data Holders <strong>MUST</strong> implement V5 of this endpoint by <strong>June 13th 2023</strong></li><li>Data Holders <strong>MAY</strong> deprecate v4 of this endpoint once V5 is implemented**</li></ul></td>
+<td><ul><li>Data Holders <strong>MUST</strong> implement V5 of this endpoint by <strong>June 13th 2024</strong></li><li>Data Holders <strong>MAY</strong> deprecate v4 of this endpoint once V5 is implemented**</li></ul></td>
 <td>June 13th 2024</td>
 </tr>
 </tbody></table>
@@ -1966,28 +1966,28 @@ always align to current consumer preferences.</p>
 <p>Some example URIs that meet this standard are:  </p>
 </blockquote>
 
-<pre class="highlight plaintext"><code>1. https://www.bank.com.au/api/cds-au/v1/banking/accounts
-2. https://www.bank.com.au/api/cds-au/v1/banking/accounts/abc123/transactions/?x=y#bar
-3. https://www.bank.com.au/complex/uri/taxonomy/cds-au/v1/banking/products?page=2
-4. https://www.energyretailer.com.au/api/cds-au/v1/energy/usage
-5. https://www.energyretailer.com.au/api/cds-au/v1/ACME/apply
+<pre class="highlight plaintext"><code>1. https://www.bank.com.au/api/cds-au/v1/banking/accounts  
+2. https://www.bank.com.au/api/cds-au/v1/banking/accounts/abc123/transactions/?x=y#bar  
+3. https://www.bank.com.au/complex/uri/taxonomy/cds-au/v1/banking/products?page=2  
+4. https://www.energyretailer.com.au/api/cds-au/v1/energy/usage  
+5. https://www.energyretailer.com.au/api/cds-au/v1/ACME/apply  
 </code></pre>
 <blockquote>
 <p>The holder path for each example is:  </p>
 </blockquote>
-<pre class="highlight plaintext"><code>1. www.bank.com.au/api
-2. www.bank.com.au/api
-3. www.bank.com.au/complex/uri/taxonomy
-4. www.energyretailer.com.au/api
+<pre class="highlight plaintext"><code>1. www.bank.com.au/api  
+2. www.bank.com.au/api   
+3. www.bank.com.au/complex/uri/taxonomy  
+4. www.energyretailer.com.au/api  
 5. www.energyretailer.com.au/api
 </code></pre>
 <blockquote>
 <p>The Base Path for each example is:  </p>
 </blockquote>
-<pre class="highlight plaintext"><code>1. https://www.bank.com.au/api/cds-au/v1/banking
-2. https://www.bank.com.au/api/cds-au/v1/banking
-3. https://www.bank.com.au/complex/uri/taxonomy/cds-au/v1/banking
-4. https://www.energyretailer.com.au/api/cds-au/v1/energy
+<pre class="highlight plaintext"><code>1. https://www.bank.com.au/api/cds-au/v1/banking  
+2. https://www.bank.com.au/api/cds-au/v1/banking   
+3. https://www.bank.com.au/complex/uri/taxonomy/cds-au/v1/banking  
+4. https://www.energyretailer.com.au/api/cds-au/v1/energy  
 5. https://www.energyretailer.com.au/api/cds-au/v1/ACME
 </code></pre>
 <blockquote>
@@ -3314,7 +3314,7 @@ Content-Type: application/json
 
 { "errors": [
   {
-    "code": "urn:au-cds:error:cdr-all:Header/UnsupportedVersion",
+    "code": "urn:au-cds:error:cdr-all:Header/UnsupportedVersion",    
     "title": "Unsupported Version",
     "detail": "'x-v' **MUST** be greater than or equal to '2'"
   }
@@ -4892,9 +4892,7 @@ grant_type=client_credentials&amp;
 </tbody></table>
 
 <p>Get Software Statement Assertion API <a href="includes/obsolete/get-software-statement-assertion-v1.html">v1</a> &amp; <a href="includes/obsolete/get-software-statement-assertion-v2.html">v2</a> has the scope claim explicitly defined.</p>
-<h3 id='registration-request-using-jwt'>Registration Request using JWT</h3><pre class="highlight diff tab-diff"><code>Removed following requirement from id_token_encrypted_response_alg and id_token_encrypted_response_enc fields:
-<span class="gd">- Must be ignored for Authorization Code Flow
-</span></code></pre>
+<h3 id='registration-request-using-jwt'>Registration Request using JWT</h3>
 <blockquote>
 <p>Example Request
 Client registration with OpenID Hybrid Flow</p>
@@ -53939,10 +53937,13 @@ This operation may only be called by an Energy Retailer using the information se
 <h1 id='additional-standards'>Additional Standards</h1>
 <p>The Consumer Data Standards also incorporate other non-binding standards that are developed to facilitate consultation and feedback or to facilitate voluntary extension of CDR implementations.</p>
 
-<p>These standards fall into three categories:
-1. <code>Candidate</code> standards that are non-binding and stable
-2. <code>Draft</code> standards that are non-binding but volatile as they are under development
-3. <code>Experimental</code> standards that are transient and created to test concepts</p>
+<p>These standards fall into three categories:</p>
+
+<ol>
+<li><code>Candidate</code> standards that are non-binding and stable</li>
+<li><code>Draft</code> standards that are non-binding but volatile as they are under development</li>
+<li><code>Experimental</code> standards that are transient and created to test concepts</li>
+</ol>
 <h2 id='candidate-standards'>Candidate Standards</h2>
 <p>The Consumer Data Standards currently include the following candidate standards:</p>
 
@@ -54031,7 +54032,7 @@ This operation may only be called by an Energy Retailer using the information se
 </tr>
 </thead><tbody>
 <tr>
-<td>08/06/2023</td>
+<td>08/07/2023</td>
 <td>1.25.0</td>
 <td>Changes arising from Decision 303 (Maintenance iteration 15) and Decision 288 (Metrics and NFRs)</td>
 <td>See <a href="includes/releasenotes/releasenotes.1.25.0.html">release notes</a>, <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/303">Decision 303</a> and <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/288">Decision 288</a> for details.</td>

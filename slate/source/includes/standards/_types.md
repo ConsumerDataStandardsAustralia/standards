@@ -1,9 +1,5 @@
 ## Common Field Types
 
-```diff
-Added actual % values represented by examples for RateString field type
-```
-
 The following table outlines the common data types for fields used in the standard.
 
 Type | Description | Valid Examples

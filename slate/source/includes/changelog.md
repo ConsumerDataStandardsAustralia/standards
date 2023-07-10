@@ -4,7 +4,7 @@ The following table lists the changes made to these standards in reverse date or
 
 |Change Date|Version|Description|Detail Of change|
 |-----------|-------|-----------|----------------|
-|08/06/2023| 1.25.0 | Changes arising from Decision 303 (Maintenance iteration 15) and Decision 288 (Metrics and NFRs) | See [release notes](includes/releasenotes/releasenotes.1.25.0.html), [Decision 303](https://github.com/ConsumerDataStandardsAustralia/standards/issues/303) and [Decision 288](https://github.com/ConsumerDataStandardsAustralia/standards/issues/288) for details. |
+|08/07/2023| 1.25.0 | Changes arising from Decision 303 (Maintenance iteration 15) and Decision 288 (Metrics and NFRs) | See [release notes](includes/releasenotes/releasenotes.1.25.0.html), [Decision 303](https://github.com/ConsumerDataStandardsAustralia/standards/issues/303) and [Decision 288](https://github.com/ConsumerDataStandardsAustralia/standards/issues/288) for details. |
 |07/05/2023| 1.24.0 | Changes arising from Decision 281 (Maintenance iteration 14) | See [release notes](includes/releasenotes/releasenotes.1.24.0.html) and [Decision 281](https://github.com/ConsumerDataStandardsAustralia/standards/issues/281) for details. |
 |14/04/2023| 1.23.0 | Changes arising from Decision Proposal 298 | See [release notes](includes/releasenotes/releasenotes.1.23.0.html) and [Decision 298](https://github.com/ConsumerDataStandardsAustralia/standards/issues/298) for details. |
 |22/03/2023| 1.22.1 | Patch release including updates to draft Telco standards | See [release notes](includes/releasenotes/releasenotes.1.22.1.html) for details. |
