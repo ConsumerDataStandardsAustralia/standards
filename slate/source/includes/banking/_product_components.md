@@ -1,15 +1,4 @@
 ## Product & Account Components
-```diff
-Updated description of 'PENSION_RECIPIENT' value in
-'Product Eligibility Types' table from:
-- A recipient of a government pension may apply for the product
-to:
-+ Only a recipient of a government pension may apply for the product
-and 'Product Discount Eligibility Types' table from:
-- A recipient of a government pension may receive the discount
-to:
-+ Only a recipient of a government pension may receive the discount
-```
 
 <a id="productfeaturetypedoc"></a>
 <h3 id="tocSproductfeaturetypedoc">Product Feature Types</h3>
