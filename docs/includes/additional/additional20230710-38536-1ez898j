@@ -1,10 +1,13 @@
 <h1 id='additional-standards'>Additional Standards</h1>
 <p>The Consumer Data Standards also incorporate other non-binding standards that are developed to facilitate consultation and feedback or to facilitate voluntary extension of CDR implementations.</p>
 
-<p>These standards fall into three categories:
-1. <code>Candidate</code> standards that are non-binding and stable
-2. <code>Draft</code> standards that are non-binding but volatile as they are under development
-3. <code>Experimental</code> standards that are transient and created to test concepts</p>
+<p>These standards fall into three categories:</p>
+
+<ol>
+<li><code>Candidate</code> standards that are non-binding and stable</li>
+<li><code>Draft</code> standards that are non-binding but volatile as they are under development</li>
+<li><code>Experimental</code> standards that are transient and created to test concepts</li>
+</ol>
 <h2 id='candidate-standards'>Candidate Standards</h2>
 <p>The Consumer Data Standards currently include the following candidate standards:</p>
 
