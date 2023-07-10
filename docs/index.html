@@ -2740,11 +2740,7 @@ obtain detail for that resource or to change the state of the resource.</li>
 <li>In payloads the field name of “id” should NEVER be used. Each ID field should be meaningfully named so that wherever that ID is used across multiple end points it always refers to the same ID set. For instance, the IDs for accounts would be represented in JSON in a field named “accountId”.</li>
 </ul>
 
-<h2 id='error-codes'>Error Codes</h2><pre class="highlight diff tab-diff"><code>Replaced following in description of 'Invalid Page Size':
-<span class="gd">- page_size
-</span>with:
-<span class="gi">+ page-size
-</span></code></pre>
+<h2 id='error-codes'>Error Codes</h2>
 <p>These standards define a standard list of error codes that Data Recipient Software Products and Data Holders <strong>SHOULD</strong> or <strong>MUST</strong> conform to. Further,</p>
 
 <ul>
@@ -6275,11 +6271,7 @@ client_id=s6BhdRkqt3
 <li>  Data Recipients Software Products <strong>MUST</strong> support <strong><a href="#nref-PKCE">[PKCE]</a></strong> (<strong><a href="#nref-RFC7636">[RFC7636]</a></strong>) and <strong>MUST</strong> use S256 as the code challenge method.</li>
 </ul>
 
-<h2 id='security-endpoints'>Security Endpoints</h2><pre class="highlight diff tab-diff"><code>Added statements noting CORS is not required for the following:
- * OpenID Provider Configuration End Point
- * Authorisation End Point
- * JSON Web Key Set End Point 
-</code></pre>
+<h2 id='security-endpoints'>Security Endpoints</h2>
 <h3 id='openid-provider-configuration-end-point'>OpenID Provider Configuration End Point</h3>
 
 <blockquote>
@@ -7266,8 +7258,7 @@ Host: cdr.register
 <tr><td><a href='./includes/swagger/cds_dcr.json'>DCR OpenAPI Specification (JSON)</a></td></tr>
 <tr><td><a href='./includes/swagger/cds_dcr.yaml'>DCR OpenAPI Specification (YAML)</a></td></tr>
 </table></p>
-<pre class="highlight diff tab-diff"><code>Added statement noting CORS is not required for the Register Data Recipient oAuth Client API
-</code></pre>
+
 <h2 id='register-data-recipient-oauth-client'>Register Data Recipient oAuth Client</h2>
 
 <p><a id="opIdPostDataRecipientRegistration"></a></p>
@@ -12408,21 +12399,8 @@ This operation does not require authentication
 
 <p>The unavailability of a secondary data holder will mean that some requests cannot be fulfilled by a data holder making a Shared Responsibility Data Request.  This will not be taken to mean that the data holder is unavailable.</p>
 
-<h2 id='performance-requirements'>Performance Requirements</h2><pre class="highlight diff tab-diff"><code>Listed specific APIs in the `Unattended` section
+<h2 id='performance-requirements'>Performance Requirements</h2>
 
-Fixed incorrect Energy API names replacing:
-<span class="gd">- Get Accounts
-- Get Account Detail 
-- Get Balance For Account
-- Get Bulk Balances
-- Get Balances For Specific Accounts
-</span>with:
-<span class="gi">+ Get Energy Accounts
-+ Get Energy Account Detail
-+ Get Balance For Energy Account
-+ Get Bulk Balances for Energy
-+ Get Balances For Specific Energy Accounts
-</span></code></pre>
 <p>API end point performance will be measured in response time of individual API requests from receipt of request to delivery of response.</p>
 
 <p>It is understood that different response times can be measured depending on which technical layer of an API implementation stack is instrumented and that not all of the technical layers between the Data Recipient Software Product and the Data Holder will be in the control of the Data Holder.  As this is implementation specific it is expected that the Data Holder will ensure that the measurement of response time occurs as close to the Data Recipient Software Product as practicable.</p>
@@ -12432,8 +12410,7 @@ Fixed incorrect Energy API names replacing:
 <p><strong>95% of calls per hour responded to within a nominated threshold</strong></p>
 
 <p>The nominated threshold for each end point will be according to the following table:</p>
-<pre class="highlight plaintext"><code>Corrected the requirement for the Large Payload tier to remove reference to unattended calls
-</code></pre>
+
 <table><thead>
 <tr>
 <th>Tier</th>
