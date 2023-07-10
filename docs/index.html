@@ -1568,7 +1568,7 @@ Added FDOs for decision 288 and 303
 </tr>
 <tr>
 <td><a href="#get-metrics">Get Metrics V5</a></td>
-<td><ul><li>Data Holders <strong>MUST</strong> implement V5 of this endpoint by <strong>June 13th 2023</strong></li><li>Data Holders <strong>MAY</strong> deprecate v4 of this endpoint once V5 is implemented**</li></ul></td>
+<td><ul><li>Data Holders <strong>MUST</strong> implement V5 of this endpoint by <strong>June 13th 2024</strong></li><li>Data Holders <strong>MAY</strong> deprecate v4 of this endpoint once V5 is implemented**</li></ul></td>
 <td>June 13th 2024</td>
 </tr>
 </tbody></table>
@@ -1966,28 +1966,28 @@ always align to current consumer preferences.</p>
 <p>Some example URIs that meet this standard are:  </p>
 </blockquote>
 
-<pre class="highlight plaintext"><code>1. https://www.bank.com.au/api/cds-au/v1/banking/accounts
-2. https://www.bank.com.au/api/cds-au/v1/banking/accounts/abc123/transactions/?x=y#bar
-3. https://www.bank.com.au/complex/uri/taxonomy/cds-au/v1/banking/products?page=2
-4. https://www.energyretailer.com.au/api/cds-au/v1/energy/usage
-5. https://www.energyretailer.com.au/api/cds-au/v1/ACME/apply
+<pre class="highlight plaintext"><code>1. https://www.bank.com.au/api/cds-au/v1/banking/accounts  
+2. https://www.bank.com.au/api/cds-au/v1/banking/accounts/abc123/transactions/?x=y#bar  
+3. https://www.bank.com.au/complex/uri/taxonomy/cds-au/v1/banking/products?page=2  
+4. https://www.energyretailer.com.au/api/cds-au/v1/energy/usage  
+5. https://www.energyretailer.com.au/api/cds-au/v1/ACME/apply  
 </code></pre>
 <blockquote>
 <p>The holder path for each example is:  </p>
 </blockquote>
-<pre class="highlight plaintext"><code>1. www.bank.com.au/api
-2. www.bank.com.au/api
-3. www.bank.com.au/complex/uri/taxonomy
-4. www.energyretailer.com.au/api
+<pre class="highlight plaintext"><code>1. www.bank.com.au/api  
+2. www.bank.com.au/api   
+3. www.bank.com.au/complex/uri/taxonomy  
+4. www.energyretailer.com.au/api  
 5. www.energyretailer.com.au/api
 </code></pre>
 <blockquote>
 <p>The Base Path for each example is:  </p>
 </blockquote>
-<pre class="highlight plaintext"><code>1. https://www.bank.com.au/api/cds-au/v1/banking
-2. https://www.bank.com.au/api/cds-au/v1/banking
-3. https://www.bank.com.au/complex/uri/taxonomy/cds-au/v1/banking
-4. https://www.energyretailer.com.au/api/cds-au/v1/energy
+<pre class="highlight plaintext"><code>1. https://www.bank.com.au/api/cds-au/v1/banking  
+2. https://www.bank.com.au/api/cds-au/v1/banking   
+3. https://www.bank.com.au/complex/uri/taxonomy/cds-au/v1/banking  
+4. https://www.energyretailer.com.au/api/cds-au/v1/energy  
 5. https://www.energyretailer.com.au/api/cds-au/v1/ACME
 </code></pre>
 <blockquote>
@@ -2561,7 +2561,8 @@ For instance, if a Data Holder holds data in digital form for a Customer that is
 
 <p>The only exception to this, unless explicitly stated, is normative standards. The requirements for expressing arrays within those normative standards apply per the normative references.</p>
 
-<h2 id='common-field-types'>Common Field Types</h2>
+<h2 id='common-field-types'>Common Field Types</h2><pre class="highlight diff tab-diff"><code>Added actual % values represented by examples for RateString field type
+</code></pre>
 <p>The following table outlines the common data types for fields used in the standard.</p>
 
 <table><thead>
@@ -2739,7 +2740,11 @@ obtain detail for that resource or to change the state of the resource.</li>
 <li>In payloads the field name of “id” should NEVER be used. Each ID field should be meaningfully named so that wherever that ID is used across multiple end points it always refers to the same ID set. For instance, the IDs for accounts would be represented in JSON in a field named “accountId”.</li>
 </ul>
 
-<h2 id='error-codes'>Error Codes</h2>
+<h2 id='error-codes'>Error Codes</h2><pre class="highlight diff tab-diff"><code>Replaced following in description of 'Invalid Page Size':
+<span class="gd">- page_size
+</span>with:
+<span class="gi">+ page-size
+</span></code></pre>
 <p>These standards define a standard list of error codes that Data Recipient Software Products and Data Holders <strong>SHOULD</strong> or <strong>MUST</strong> conform to. Further,</p>
 
 <ul>
@@ -3314,7 +3319,7 @@ Content-Type: application/json
 
 { "errors": [
   {
-    "code": "urn:au-cds:error:cdr-all:Header/UnsupportedVersion",
+    "code": "urn:au-cds:error:cdr-all:Header/UnsupportedVersion",    
     "title": "Unsupported Version",
     "detail": "'x-v' **MUST** be greater than or equal to '2'"
   }
@@ -4892,9 +4897,7 @@ grant_type=client_credentials&amp;
 </tbody></table>
 
 <p>Get Software Statement Assertion API <a href="includes/obsolete/get-software-statement-assertion-v1.html">v1</a> &amp; <a href="includes/obsolete/get-software-statement-assertion-v2.html">v2</a> has the scope claim explicitly defined.</p>
-<h3 id='registration-request-using-jwt'>Registration Request using JWT</h3><pre class="highlight diff tab-diff"><code>Removed following requirement from id_token_encrypted_response_alg and id_token_encrypted_response_enc fields:
-<span class="gd">- Must be ignored for Authorization Code Flow
-</span></code></pre>
+<h3 id='registration-request-using-jwt'>Registration Request using JWT</h3>
 <blockquote>
 <p>Example Request
 Client registration with OpenID Hybrid Flow</p>
@@ -6272,7 +6275,11 @@ client_id=s6BhdRkqt3
 <li>  Data Recipients Software Products <strong>MUST</strong> support <strong><a href="#nref-PKCE">[PKCE]</a></strong> (<strong><a href="#nref-RFC7636">[RFC7636]</a></strong>) and <strong>MUST</strong> use S256 as the code challenge method.</li>
 </ul>
 
-<h2 id='security-endpoints'>Security Endpoints</h2>
+<h2 id='security-endpoints'>Security Endpoints</h2><pre class="highlight diff tab-diff"><code>Added statements noting CORS is not required for the following:
+ * OpenID Provider Configuration End Point
+ * Authorisation End Point
+ * JSON Web Key Set End Point 
+</code></pre>
 <h3 id='openid-provider-configuration-end-point'>OpenID Provider Configuration End Point</h3>
 
 <blockquote>
@@ -7259,7 +7266,8 @@ Host: cdr.register
 <tr><td><a href='./includes/swagger/cds_dcr.json'>DCR OpenAPI Specification (JSON)</a></td></tr>
 <tr><td><a href='./includes/swagger/cds_dcr.yaml'>DCR OpenAPI Specification (YAML)</a></td></tr>
 </table></p>
-
+<pre class="highlight diff tab-diff"><code>Added statement noting CORS is not required for the Register Data Recipient oAuth Client API
+</code></pre>
 <h2 id='register-data-recipient-oauth-client'>Register Data Recipient oAuth Client</h2>
 
 <p><a id="opIdPostDataRecipientRegistration"></a></p>
@@ -12400,8 +12408,21 @@ This operation does not require authentication
 
 <p>The unavailability of a secondary data holder will mean that some requests cannot be fulfilled by a data holder making a Shared Responsibility Data Request.  This will not be taken to mean that the data holder is unavailable.</p>
 
-<h2 id='performance-requirements'>Performance Requirements</h2>
+<h2 id='performance-requirements'>Performance Requirements</h2><pre class="highlight diff tab-diff"><code>Listed specific APIs in the `Unattended` section
 
+Fixed incorrect Energy API names replacing:
+<span class="gd">- Get Accounts
+- Get Account Detail 
+- Get Balance For Account
+- Get Bulk Balances
+- Get Balances For Specific Accounts
+</span>with:
+<span class="gi">+ Get Energy Accounts
++ Get Energy Account Detail
++ Get Balance For Energy Account
++ Get Bulk Balances for Energy
++ Get Balances For Specific Energy Accounts
+</span></code></pre>
 <p>API end point performance will be measured in response time of individual API requests from receipt of request to delivery of response.</p>
 
 <p>It is understood that different response times can be measured depending on which technical layer of an API implementation stack is instrumented and that not all of the technical layers between the Data Recipient Software Product and the Data Holder will be in the control of the Data Holder.  As this is implementation specific it is expected that the Data Holder will ensure that the measurement of response time occurs as close to the Data Recipient Software Product as practicable.</p>
@@ -12411,7 +12432,8 @@ This operation does not require authentication
 <p><strong>95% of calls per hour responded to within a nominated threshold</strong></p>
 
 <p>The nominated threshold for each end point will be according to the following table:</p>
-
+<pre class="highlight plaintext"><code>Corrected the requirement for the Large Payload tier to remove reference to unattended calls
+</code></pre>
 <table><thead>
 <tr>
 <th>Tier</th>
