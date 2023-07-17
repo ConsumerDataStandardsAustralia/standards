@@ -1317,7 +1317,7 @@
           "unauthenticated",
           "authenticated"
         ],
-        "description": "Peak transactions per second over time",
+        "description": "Number of calls resulting in error due to server execution over time",
         "type": "object",
         "properties": {
           "aggregate": {
@@ -1876,7 +1876,7 @@
           },
           "abandonmentsByStage": {
             "required": [
-              "abandonedConsentFlowCount",
+              "preIdentification",
               "preAuthentication",
               "preAccountSelection",
               "preAuthorisation",
@@ -1885,7 +1885,7 @@
             ],
             "type": "object",
             "properties": {
-              "abandonedConsentFlowCount": {
+              "preIdentification": {
                 "type": "object",
                 "properties": {
                   "currentDay": {
