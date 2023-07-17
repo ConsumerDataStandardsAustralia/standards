@@ -56,14 +56,13 @@ This end point allows the ACCC to obtain operational statistics from the Data Ho
 
 This end point is not required to be implemented by the Australian Energy Market Operator, the Australian Energy Regulator or the Department of State administered by the Minister of Victoria administering the National Electricity (Victoria) Act 2005 (Vic).
 
-NOTE: This version must be implemented by **June 13th 2024**
+NOTE: This version must be implemented by **November 1st 2023** and may be obsoleted once v5 has been implemented
 
 Obsolete versions: [v1](includes/obsolete/get-metrics-v1.html) [v2](includes/obsolete/get-metrics-v2.html).
 
 Deprecated versions:
 
 - [v3](includes/obsolete/get-metrics-v3.html)
-- [v4](includes/obsolete/get-metrics-v4.html) - This version must be implemented by **November 1st 2023**
 
 If the Data Holder supports private_key_jwt client authentication they MUST validate the scope.
 
@@ -1209,7 +1208,7 @@ This operation may only be called by the CDR Register
 
 ```
 
-*Peak transactions per second over time*
+*Number of calls resulting in error due to server execution over time*
 
 ### Properties
 
