@@ -595,7 +595,7 @@ If the Data Holder supports private_key_jwt client authentication they MUST vali
         ]
       },
       "abandonmentsByStage": {
-        "abandonedConsentFlowCount": {
+        "preIdentification": {
           "currentDay": 0,
           "previousDays": [
             0
@@ -1119,7 +1119,7 @@ This operation may only be called by the CDR Register
         ]
       },
       "abandonmentsByStage": {
-        "abandonedConsentFlowCount": {
+        "preIdentification": {
           "currentDay": 0,
           "previousDays": [
             0
@@ -1179,7 +1179,7 @@ This operation may only be called by the CDR Register
 |» sessionCount|[SessionCountMetricsV2](#schemacdr-admin-apisessioncountmetricsv2)|mandatory|Session counts over time. Note that a session is defined as the provisioning of an Access Token.|
 |» averageTps|[AverageTPSMetricsV2](#schemacdr-admin-apiaveragetpsmetricsv2)|mandatory|Average transactions per second over time|
 |» peakTps|[PeakTPSMetricsV2](#schemacdr-admin-apipeaktpsmetricsv2)|mandatory|Peak transactions per second over time|
-|» errors|[ErrorMetricsV2](#schemacdr-admin-apierrormetricsv2)|mandatory|Peak transactions per second over time|
+|» errors|[ErrorMetricsV2](#schemacdr-admin-apierrormetricsv2)|mandatory|Number of calls resulting in error due to server execution over time|
 |» rejections|[RejectionMetricsV3](#schemacdr-admin-apirejectionmetricsv3)|mandatory|Number of calls rejected due to traffic thresholds over time|
 |» customerCount|[NaturalNumber](#common-field-types)|mandatory|Number of customers with active authorisations at the time of the call|
 |» recipientCount|[NaturalNumber](#common-field-types)|mandatory|Number of Data Recipient Software Products with active authorisations at the time of the call|
@@ -1720,7 +1720,7 @@ This operation may only be called by the CDR Register
 
 ```
 
-*Peak transactions per second over time*
+*Number of calls resulting in error due to server execution over time*
 
 ### Properties
 
@@ -1891,7 +1891,7 @@ This operation may only be called by the CDR Register
     ]
   },
   "abandonmentsByStage": {
-    "abandonedConsentFlowCount": {
+    "preIdentification": {
       "currentDay": 0,
       "previousDays": [
         0
@@ -1981,7 +1981,7 @@ This operation may only be called by the CDR Register
 |»»»»»»» currentDay|[NaturalNumber](#common-field-types)|conditional|Number of consents flows that were not successfully authorised for the current day|
 |»»»»»»» previousDays|[integer]|conditional|Number of consents flows that were not successfully authorised for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available|
 |»»»»»» abandonmentsByStage|object|mandatory|Customer abandonment count per stage of the consent flow.  Note that the aggregated abandonment count for all stages for a period should equal the count in `abandonedConsentFlowCount` for the same period (ie. each abandoned consent should assigned to one, and only one, stage)|
-|»»»»»»» abandonedConsentFlowCount|object|mandatory|The number of authorisations that commenced with the data holder but the customer did not successfully identify their profile or user ID|
+|»»»»»»» preIdentification|object|mandatory|The number of authorisations that commenced with the data holder but the customer did not successfully identify their profile or user ID|
 |»»»»»»»» currentDay|[NaturalNumber](#common-field-types)|conditional|Number of abandoned consent flows for this stage for the current day|
 |»»»»»»»» previousDays|[integer]|conditional|Number of abandoned consent flows for this stage for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available|
 |»»»»»»» preAuthentication|object|mandatory|The number of authorisations where the customer identified themselves (ie. they successfully identify the customer profile to use for the authorisation) but failed to provide a valid OTP or equivalent|

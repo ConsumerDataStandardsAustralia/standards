@@ -400,7 +400,7 @@
         "type" : "object"
       },
       "ErrorMetricsV2" : {
-        "description" : "Peak transactions per second over time",
+        "description" : "Number of calls resulting in error due to server execution over time",
         "properties" : {
           "aggregate" : {
             "$ref" : "#/components/schemas/ErrorMetricsV2_aggregate"
@@ -1759,7 +1759,7 @@
         "type" : "object",
         "x-conditional" : [ "currentDay", "previousDays" ]
       },
-      "AuthorisationMetricsV2_abandonmentsByStage_abandonedConsentFlowCount" : {
+      "AuthorisationMetricsV2_abandonmentsByStage_preIdentification" : {
         "description" : "The number of authorisations that commenced with the data holder but the customer did not successfully identify their profile or user ID",
         "properties" : {
           "currentDay" : {
@@ -1882,8 +1882,8 @@
       "AuthorisationMetricsV2_abandonmentsByStage" : {
         "description" : "Customer abandonment count per stage of the consent flow.  Note that the aggregated abandonment count for all stages for a period should equal the count in `abandonedConsentFlowCount` for the same period (ie. each abandoned consent should assigned to one, and only one, stage)",
         "properties" : {
-          "abandonedConsentFlowCount" : {
-            "$ref" : "#/components/schemas/AuthorisationMetricsV2_abandonmentsByStage_abandonedConsentFlowCount"
+          "preIdentification" : {
+            "$ref" : "#/components/schemas/AuthorisationMetricsV2_abandonmentsByStage_preIdentification"
           },
           "preAuthentication" : {
             "$ref" : "#/components/schemas/AuthorisationMetricsV2_abandonmentsByStage_preAuthentication"
@@ -1901,7 +1901,7 @@
             "$ref" : "#/components/schemas/AuthorisationMetricsV2_abandonmentsByStage_failedTokenExchange"
           }
         },
-        "required" : [ "abandonedConsentFlowCount", "failedTokenExchange", "preAccountSelection", "preAuthentication", "preAuthorisation", "rejected" ],
+        "required" : [ "failedTokenExchange", "preAccountSelection", "preAuthentication", "preAuthorisation", "preIdentification", "rejected" ],
         "type" : "object"
       },
       "ResponseErrorListV2_errors" : {

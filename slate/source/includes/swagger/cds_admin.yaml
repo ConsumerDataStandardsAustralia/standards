@@ -517,11 +517,6 @@ components:
                   nonIndividual: 5
                   individual: 7
             abandonmentsByStage:
-              abandonedConsentFlowCount:
-                previousDays:
-                - 0
-                - 0
-                currentDay: 8
               preAuthorisation:
                 previousDays:
                 - 3
@@ -536,6 +531,11 @@ components:
                 previousDays:
                 - 7
                 - 7
+                currentDay: 8
+              preIdentification:
+                previousDays:
+                - 0
+                - 0
                 currentDay: 8
               failedTokenExchange:
                 previousDays:
@@ -983,7 +983,8 @@ components:
       - unauthenticated
       type: object
     ErrorMetricsV2:
-      description: Peak transactions per second over time
+      description: Number of calls resulting in error due to server execution over
+        time
       example:
         authenticated:
           previousDays:
@@ -1090,11 +1091,6 @@ components:
               nonIndividual: 5
               individual: 7
         abandonmentsByStage:
-          abandonedConsentFlowCount:
-            previousDays:
-            - 0
-            - 0
-            currentDay: 8
           preAuthorisation:
             previousDays:
             - 3
@@ -1109,6 +1105,11 @@ components:
             previousDays:
             - 7
             - 7
+            currentDay: 8
+          preIdentification:
+            previousDays:
+            - 0
+            - 0
             currentDay: 8
           failedTokenExchange:
             previousDays:
@@ -1504,11 +1505,6 @@ components:
                 nonIndividual: 5
                 individual: 7
           abandonmentsByStage:
-            abandonedConsentFlowCount:
-              previousDays:
-              - 0
-              - 0
-              currentDay: 8
             preAuthorisation:
               previousDays:
               - 3
@@ -1523,6 +1519,11 @@ components:
               previousDays:
               - 7
               - 7
+              currentDay: 8
+            preIdentification:
+              previousDays:
+              - 0
+              - 0
               currentDay: 8
             failedTokenExchange:
               previousDays:
@@ -3235,7 +3236,7 @@ components:
       x-conditional:
       - currentDay
       - previousDays
-    AuthorisationMetricsV2_abandonmentsByStage_abandonedConsentFlowCount:
+    AuthorisationMetricsV2_abandonmentsByStage_preIdentification:
       description: The number of authorisations that commenced with the data holder
         but the customer did not successfully identify their profile or user ID
       example:
@@ -3401,11 +3402,6 @@ components:
         the count in `abandonedConsentFlowCount` for the same period (ie. each abandoned
         consent should assigned to one, and only one, stage)
       example:
-        abandonedConsentFlowCount:
-          previousDays:
-          - 0
-          - 0
-          currentDay: 8
         preAuthorisation:
           previousDays:
           - 3
@@ -3421,6 +3417,11 @@ components:
           - 7
           - 7
           currentDay: 8
+        preIdentification:
+          previousDays:
+          - 0
+          - 0
+          currentDay: 8
         failedTokenExchange:
           previousDays:
           - 0
@@ -3432,8 +3433,8 @@ components:
           - 5
           currentDay: 5
       properties:
-        abandonedConsentFlowCount:
-          $ref: '#/components/schemas/AuthorisationMetricsV2_abandonmentsByStage_abandonedConsentFlowCount'
+        preIdentification:
+          $ref: '#/components/schemas/AuthorisationMetricsV2_abandonmentsByStage_preIdentification'
         preAuthentication:
           $ref: '#/components/schemas/AuthorisationMetricsV2_abandonmentsByStage_preAuthentication'
         preAccountSelection:
@@ -3445,11 +3446,11 @@ components:
         failedTokenExchange:
           $ref: '#/components/schemas/AuthorisationMetricsV2_abandonmentsByStage_failedTokenExchange'
       required:
-      - abandonedConsentFlowCount
       - failedTokenExchange
       - preAccountSelection
       - preAuthentication
       - preAuthorisation
+      - preIdentification
       - rejected
       type: object
     ResponseErrorListV2_errors:
