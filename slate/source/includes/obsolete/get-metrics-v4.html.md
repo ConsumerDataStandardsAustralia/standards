@@ -13,7 +13,8 @@ search: false
 # Get Metrics V4
 This page documents the deprecated version 4 of the Get Metrics end point.
 
-This version must be implemented by data holders by 1st November 2023.
+This version must be implemented by **November 1st 2023** and may be obsoleted once v5 has been implemented
+
 
 ## Get Metrics
 
@@ -56,13 +57,11 @@ This end point allows the ACCC to obtain operational statistics from the Data Ho
 
 This end point is not required to be implemented by the Australian Energy Market Operator, the Australian Energy Regulator or the Department of State administered by the Minister of Victoria administering the National Electricity (Victoria) Act 2005 (Vic).
 
-NOTE: This version must be implemented by **November 1st 2023** and may be obsoleted once v5 has been implemented
-
-Obsolete versions: [v1](includes/obsolete/get-metrics-v1.html) [v2](includes/obsolete/get-metrics-v2.html).
+Obsolete versions: [v1](/includes/obsolete/get-metrics-v1.html) [v2](/includes/obsolete/get-metrics-v2.html).
 
 Deprecated versions:
 
-- [v3](includes/obsolete/get-metrics-v3.html)
+- [v3](/includes/obsolete/get-metrics-v3.html)
 
 If the Data Holder supports private_key_jwt client authentication they MUST validate the scope.
 
