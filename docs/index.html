@@ -46886,7 +46886,7 @@ This operation may only be called by the CDR Register
         </span><span class="p">]</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="s2">"abandonmentsByStage"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"abandonedConsentFlowCount"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"preIdentification"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"currentDay"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
           </span><span class="s2">"previousDays"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
             </span><span class="mi">0</span><span class="w">
@@ -47464,7 +47464,7 @@ This operation may only be called by the CDR Register
         </span><span class="p">]</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="s2">"abandonmentsByStage"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"abandonedConsentFlowCount"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"preIdentification"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"currentDay"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
           </span><span class="s2">"previousDays"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
             </span><span class="mi">0</span><span class="w">
@@ -47576,7 +47576,7 @@ This operation may only be called by the CDR Register
 <td>» errors</td>
 <td><a href="#schemacdr-admin-apierrormetricsv2">ErrorMetricsV2</a></td>
 <td>mandatory</td>
-<td>Peak transactions per second over time</td>
+<td>Number of calls resulting in error due to server execution over time</td>
 </tr>
 <tr>
 <td>» rejections</td>
@@ -48749,7 +48749,7 @@ This operation may only be called by the CDR Register
 
 </span></code></pre>
 
-<p><em>Peak transactions per second over time</em></p>
+<p><em>Number of calls resulting in error due to server execution over time</em></p>
 
 <h3 id='properties-10'>Properties</h3>
 
@@ -49083,7 +49083,7 @@ This operation may only be called by the CDR Register
     </span><span class="p">]</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"abandonmentsByStage"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"abandonedConsentFlowCount"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"preIdentification"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"currentDay"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
       </span><span class="s2">"previousDays"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="mi">0</span><span class="w">
@@ -49395,7 +49395,7 @@ This operation may only be called by the CDR Register
 <td>Customer abandonment count per stage of the consent flow.  Note that the aggregated abandonment count for all stages for a period should equal the count in <code>abandonedConsentFlowCount</code> for the same period (ie. each abandoned consent should assigned to one, and only one, stage)</td>
 </tr>
 <tr>
-<td>»»»»»»» abandonedConsentFlowCount</td>
+<td>»»»»»»» preIdentification</td>
 <td>object</td>
 <td>mandatory</td>
 <td>The number of authorisations that commenced with the data holder but the customer did not successfully identify their profile or user ID</td>
