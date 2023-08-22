@@ -1443,12 +1443,6 @@ This text is an example of a new addition to the standards:
 
 <p>The table below highlights these areas of the standards.</p>
 
-<pre class="highlight diff tab-diff"><code>Removed legacy obligation dates more than 6 months in the past
-Fixed spelling of "Register"
-
-Added FDOs for decision 288 and 303
-</code></pre>
-
 <table><thead>
 <tr>
 <th>Section</th>
@@ -1573,9 +1567,8 @@ Added FDOs for decision 288 and 303
 </tr>
 </tbody></table>
 
-<h2 id='register-implementation-schedule'>Register Implementation Schedule</h2><pre class="highlight diff tab-diff"><code>Removed the dependency schedule content for the Register APIs
-and linked to the ACCC implementation schedule.
-</code></pre>
+<h2 id='register-implementation-schedule'>Register Implementation Schedule</h2>
+
 <p>The implementation of the Register APIs is managed by the ACCC.</p>
 
 <p>Their implementation schedule is <a href="https://consumerdataright.atlassian.net/wiki/spaces/DP/pages/30081043/Delivery+Dates">published here</a>.</p>
@@ -1584,12 +1577,8 @@ and linked to the ACCC implementation schedule.
 
 <p>A table-view of all endpoint versioning is available <a href='includes/endpoint-version-schedule/#endpoint-version-schedule'>here</a>.</p>
 
-<h2 id='normative-references'>Normative References</h2><pre class="highlight diff tab-diff"><code>Removed legacy FAPI references:
-<span class="gd">- FAPI-R-Draft
-- FAPI-RW-Draft
-</span>
-Updated PAR references to refer to RFC9126
-</code></pre>
+<h2 id='normative-references'>Normative References</h2>
+
 <table><thead>
 <tr>
 <th><strong>Reference</strong></th>
@@ -1753,6 +1742,7 @@ Updated PAR references to refer to RFC9126
 <td>Sep 2021</td>
 </tr>
 </tbody></table>
+
 <h2 id='informative-references'>Informative References</h2>
 
 <table><thead>
@@ -2102,9 +2092,7 @@ The Resource Path is intended to be the portion of the URL including the Base Pa
 <code>Accept-Encoding: charset=UTF-8</code><br>
 <code>Accept: AppliCAtion/JSon;Charset=uTf-8</code>  </p>
 </blockquote>
-<pre class="highlight diff tab-diff"><code>Replaced FAPI draft references with FAPI 1.0 Final references.
-References pertain to the x-fapi-auth-date header.
-</code></pre>
+
 <table><thead>
 <tr>
 <th>Header Field</th>
@@ -4114,13 +4102,15 @@ The standards in this section outline requirements that apply when a disclosure 
 </tbody></table>
 <h1 style="display:none"></h1>
 <h1 id='security-profile'>Security Profile</h1>
-<h2 id='overview'>Overview</h2><pre class="highlight diff tab-diff"><code>Removed legacy phasing of FAPI draft specifications. Only FAPI 1.0 Final is relied upon.
-</code></pre>
+<h2 id='overview'>Overview</h2>
+
 <p>This information security profile builds upon the foundations of the <a href="https://openid.net/specs/openid-financial-api-part-2-1_0.html">Financial-grade API Advanced Profile</a> <strong><a href="#nref-FAPI-1-0-Advanced">[FAPI-1.0-Advanced]</a></strong> and other standards relating to
 <a href="http://openid.net/specs/openid-connect-core-1_0.html">Open ID Connect 1.0</a> <strong><a href="#nref-OIDC">[OIDC]</a></strong>.</p>
 
 <p>For information on the specific normative references that underpin this profile refer to the <a href="#normative-references">Normative References section</a>.</p>
+
 <h3 id='symbols-and-abbreviated-terms'>Symbols and Abbreviated terms</h3>
+
 <ul>
 <li>  <strong>API</strong>: Application Programming Interface</li>
 <li>  <strong>CA</strong>: Certificate Authority</li>
@@ -4284,14 +4274,10 @@ Recipients. Data Holders and Data Recipients <strong>MUST</strong> be created as
 <li>the addition of any requirements beyond normal data holder practices for verification code delivery</li>
 <li>providing or requesting additional information beyond normal data holder practices for verification code delivery</li>
 <li>offering additional or alternative services</li>
-<li>reference or inclusion of other documents</li>
-</ul>
-<pre class="highlight diff tab-diff"><code>Removed legacy phasing requirements for FAPI 1.0 Final
-</code></pre>
-<ul>
-<li>Data Holders <strong>MUST</strong> support FAPI 1.0 Advanced Profile (<strong><a href="#nref-FAPI-1-0-Advanced">[FAPI-1.0-Advanced]</a></strong>).</li>
-<li>Data Holders <strong>MUST</strong> support Authorization Code Flow.<br></li>
-<li>Data Holders <strong>MUST</strong> support the OIDC Hybrid Flow.</li>
+<li><p>reference or inclusion of other documents</p></li>
+<li><p>Data Holders <strong>MUST</strong> support FAPI 1.0 Advanced Profile (<strong><a href="#nref-FAPI-1-0-Advanced">[FAPI-1.0-Advanced]</a></strong>).</p></li>
+<li><p>Data Holders <strong>MUST</strong> support Authorization Code Flow.  </p></li>
+<li><p>Data Holders <strong>MUST</strong> support the OIDC Hybrid Flow.</p></li>
 </ul>
 
 <p><strong>From July 10th 2023 (FAPI 1.0 Migration Phase 4),</strong>   </p>
@@ -4303,16 +4289,12 @@ Recipients. Data Holders and Data Recipients <strong>MUST</strong> be created as
 <p>The following statements are applicable to both the OIDC Hybrid Flow and Authorization Code Flow:</p>
 
 <ul>
-<li>Data Recipient Software Products <strong>SHOULD</strong> record the following information each time an authorisation flow is executed: username (consumer’s ID at the Data Recipient Software Product), timestamp, IP, consent scopes and duration.</li>
-</ul>
-<pre class="highlight diff tab-diff"><code>Removed legacy phasing requirements for FAPI 1.0 Final
-</code></pre>
-<ul>
-<li>Data Recipient Software Products <strong>SHOULD NOT</strong> reuse &quot;authorization_code&quot; values, and if reused, it will be rejected.</li>
-<li>Data Recipient Software Products <strong>MAY</strong> send requests with a &quot;x-fapi-customer-ip-address&quot; header containing a valid IPv4 or IPv6 address.</li>
-<li>Data Recipient Software Products <strong>MUST</strong> support FAPI 1.0 Advanced Profile (<strong><a href="#nref-FAPI-1-0-Advanced">[FAPI-1.0-Advanced]</a></strong>).</li>
-<li>Data Recipient Software Products <strong>MUST</strong> use <strong><a href="#nref-RFC9126">[RFC9126]</a></strong> (PAR) with <strong><a href="#nref-PKCE">[PKCE]</a></strong> (<strong><a href="#nref-RFC7636">[RFC7636]</a></strong>) and, if supported, <strong>MUST</strong> use S256 as the code challenge method.</li>
-<li>Data Recipient Software Products <strong>SHOULD</strong> use Authorization Code Flow.</li>
+<li><p>Data Recipient Software Products <strong>SHOULD</strong> record the following information each time an authorisation flow is executed: username (consumer’s ID at the Data Recipient Software Product), timestamp, IP, consent scopes and duration.</p></li>
+<li><p>Data Recipient Software Products <strong>SHOULD NOT</strong> reuse &quot;authorization_code&quot; values, and if reused, it will be rejected.</p></li>
+<li><p>Data Recipient Software Products <strong>MAY</strong> send requests with a &quot;x-fapi-customer-ip-address&quot; header containing a valid IPv4 or IPv6 address.</p></li>
+<li><p>Data Recipient Software Products <strong>MUST</strong> support FAPI 1.0 Advanced Profile (<strong><a href="#nref-FAPI-1-0-Advanced">[FAPI-1.0-Advanced]</a></strong>).</p></li>
+<li><p>Data Recipient Software Products <strong>MUST</strong> use <strong><a href="#nref-RFC9126">[RFC9126]</a></strong> (PAR) with <strong><a href="#nref-PKCE">[PKCE]</a></strong> (<strong><a href="#nref-RFC7636">[RFC7636]</a></strong>) and, if supported, <strong>MUST</strong> use S256 as the code challenge method.</p></li>
+<li><p>Data Recipient Software Products <strong>SHOULD</strong> use Authorization Code Flow.</p></li>
 </ul>
 
 <p><a id="hybrid-flow"></a></p>
@@ -4659,8 +4641,7 @@ grant_type=client_credentials&amp;
 <blockquote>
 <p>An SSA is a digitally signed JSON Web Token (JWT) created in accordance with <strong><a href="#nref-JWT">[JWT]</a></strong> that asserts metadata values about the client software.</p>
 </blockquote>
-<pre class="highlight diff tab-diff"><code>Replaced FAPI draft references with FAPI 1.0 Final references
-</code></pre>
+
 <p>Such that:</p>
 
 <ul>
@@ -4982,7 +4963,6 @@ Accept: application/json
 {
   "signature":...
 }
-</code></pre><pre class="highlight diff tab-diff"><code>Replaced FAPI draft references with FAPI 1.0 Final references
 </code></pre>
 <p>To register with a Data Holder, the Data Recipient sends an HTTP POST to the Data Holder registration endpoint.</p>
 
@@ -4993,8 +4973,7 @@ Accept: application/json
 </ul>
 
 <p>The client registration request <strong>MUST</strong> contain the following claims in the JWT payload unless designated as Optional:</p>
-<pre class="highlight diff tab-diff"><code>Replaced FAPI draft references with FAPI 1.0 Final references
-</code></pre>
+
 <table><thead>
 <tr>
 <th>Claim</th>
@@ -5122,8 +5101,7 @@ Accept: application/json
 <p>Data Holders <strong>MUST</strong> support at a minimum, 1 algorithm for each claim.</p>
 
 <p>Data Recipients <strong>MUST</strong> support all the algorithms used in the ecosystem to ensure they can communicate with all Data Holders.</p>
-<pre class="highlight diff tab-diff"><code>Replaced FAPI draft references with FAPI 1.0 Final references
-</code></pre>
+
 <p>ID Token algorithm considerations remain relevant where the OIDC Hybrid Flow is leveraged as defined in the Consumer Data Standards and in accordance with sections <a href="https://openid.net/specs/openid-financial-api-part-2-1_0.html#id-token-as-detached-signature">5.1.1</a>, <a href="https://openid.net/specs/openid-financial-api-part-2-1_0.html#id-token-as-detached-signature-1">5.2.2.1</a>, and <a href="https://openid.net/specs/openid-financial-api-part-2-1_0.html#id-token-as-detached-signature-2">5.2.3.1</a> of <strong><a href="#nref-FAPI-1-0-Advanced">[FAPI-1.0-Advanced]</a></strong>.</p>
 <h4 id='jarm-response-encryption-considerations'>JARM Response Encryption Considerations</h4>
 <p>If Data Holders support authorisation response encryption, they <strong>MUST</strong> support, at a minimum, one of each of the following <code>alg</code> and <code>enc</code> algorithms:</p>
@@ -5717,18 +5695,15 @@ Data Holders <strong>SHOULD</strong> explicitly capture Claims requested by the 
 }
 </code></pre>
 <p>ID Tokens are specified in <a href="https://openid.net/specs/openid-connect-core-1_0.html#IDToken">section 2</a> of the <strong><a href="#nref-OIDC">[OIDC]</a></strong> standard.</p>
-<h4 id='baseline-id-token-requirements'>Baseline ID Token requirements</h4><pre class="highlight diff tab-diff"><code>Replaced FAPI draft references with FAPI 1.0 Final references
-</code></pre>
+<h4 id='baseline-id-token-requirements'>Baseline ID Token requirements</h4>
 <p>In addition to the mandatory claims specified in <a href="https://openid.net/specs/openid-connect-core-1_0.html#IDToken">section 2</a> of the <strong><a href="#nref-OIDC">[OIDC]</a></strong> standard, required claims for ID Tokens as part of Hybrid Flow authentication <strong>MUST</strong> align to <a href="https://openid.net/specs/openid-connect-core-1_0.html#HybridFlowAuth">section 3.3</a> (Authentication using the Hybrid Flow) of the <strong><a href="#nref-OIDC">[OIDC]</a></strong> standards and <a href="https://openid.net/specs/openid-financial-api-part-2-1_0.html#authorization-server">section 5.2.2</a> and <a href="https://openid.net/specs/openid-financial-api-part-2-1_0.html#authorization-response-parameter-injection-attack">section 8.4.3</a> of the <strong><a href="#nref-FAPI-1-0-Advanced">[FAPI-1.0-Advanced]</a></strong> profile.</p>
 
 <p>ID Tokens <strong>MUST</strong> be signed by Data Holders as specified in <a href="https://openid.net/specs/openid-financial-api-part-2-1_0.html#algorithm-considerations">section 8.6</a> of <strong><a href="#nref-FAPI-1-0-Advanced">[FAPI-1.0-Advanced]</a></strong>.</p>
-<h4 id='oidc-hybrid-flow-requirements'>OIDC Hybrid Flow requirements</h4><pre class="highlight diff tab-diff"><code>Replaced FAPI draft references with FAPI 1.0 Final references
-</code></pre>
+<h4 id='oidc-hybrid-flow-requirements'>OIDC Hybrid Flow requirements</h4>
 <p>In accordance with <strong><a href="#nref-FAPI-1-0-Advanced">[FAPI-1.0-Advanced]</a></strong>, ID Tokens <strong>MUST</strong> be signed and encrypted when returned to a Data Recipient Software Product from both the Authorisation End Point and Token End Point.</p>
 
 <p>The ID Token returned from the Authorisation End Point <strong>MUST NOT</strong> contain any Personal Information (PI) claims.</p>
-<h5 id='hashing-value-for-state-and-authorisation-code'>Hashing value for state and authorisation code</h5><pre class="highlight diff tab-diff"><code>Replaced FAPI draft references with FAPI 1.0 Final references
-</code></pre>
+<h5 id='hashing-value-for-state-and-authorisation-code'>Hashing value for state and authorisation code</h5>
 <p>The following requirements apply to the OIDC Hybrid Flow:</p>
 
 <ul>
@@ -5743,8 +5718,7 @@ Data Holders <strong>SHOULD</strong> explicitly capture Claims requested by the 
 <p>An Access Token <strong>MUST</strong> expire between <strong>2 minutes</strong> to <strong>10 minutes</strong> after the Data Holder issues it (at the discretion of the Data Holder).</p>
 
 <p>The process for refreshing an Access Token is described in <a href="https://openid.net/specs/openid-connect-core-1_0.html#RefreshingAccessToken">section 12.1</a> of <strong><a href="#nref-OIDC">[OIDC]</a></strong>.</p>
-<pre class="highlight diff tab-diff"><code>Removed legacy phasing requirements for FAPI 1.0 Final
-</code></pre>
+
 <ul>
 <li>Data Holders <strong>MUST</strong> reject token request with an authorization code (Section 1.3.1 of <strong><a href="#nref-RFC6749">[RFC6749]</a></strong>) if it has been previously used</li>
 </ul>
@@ -5756,8 +5730,7 @@ Data Holders <strong>SHOULD</strong> explicitly capture Claims requested by the 
 <p>The expiration time for a Refresh Token <strong>MUST</strong> be set by the Data Holder.</p>
 
 <p>Refresh Token expiration <strong>MAY</strong> be any length of time greater than 28 days but <strong>MUST NOT</strong> exceed the end of the duration of sharing consented to by the Consumer.</p>
-<pre class="highlight diff tab-diff"><code>Removed legacy phasing requirements for FAPI 1.0 Final
-</code></pre>
+
 <ul>
 <li>  Data Holders <strong>MUST NOT</strong> cycle refresh tokens (rotation). In other words, Refresh Tokens <strong>SHOULD</strong> be issued with an &quot;exp&quot; equal to the sharing duration authorised by the Customer.</li>
 </ul>
@@ -5765,8 +5738,7 @@ Data Holders <strong>SHOULD</strong> explicitly capture Claims requested by the 
 <p>The expiry time for issued access tokens and refresh tokens <strong>MUST</strong> be deterministic for the Data Recipient Software Product.</p>
 
 <p>In order to achieve this:</p>
-<pre class="highlight diff tab-diff"><code>Removed legacy phasing requirements for FAPI 1.0 Final
-</code></pre>
+
 <ul>
 <li>The Data Holder <strong>MUST</strong> indicate the lifetime in seconds of the access token in the <code>expires_in</code> field of the JSON object returned by the token end-point (see <a href="https://tools.ietf.org/html/rfc6749#section-4.2.2">section 4.2.2</a> of <strong><a href="#nref-OAUTH2">[OAUTH2]</a></strong>).</li>
 </ul>
@@ -5940,8 +5912,7 @@ client_id=s6BhdRkqt3
 <p>OAUTB SHALL NOT be supported due to a lack industry support.</p>
 
 <p><strong><a href="#nref-MTLS">[MTLS]</a></strong> HoK allows issued tokens to be bound to a client certificate as specified in <a href="https://tools.ietf.org/id/draft-ietf-oauth-mtls-07.html#SenderConstrainedAccess">section 3</a> of <strong><a href="#nref-MTLS">[MTLS]</a></strong>.</p>
-<h3 id='ciphers'>Ciphers</h3><pre class="highlight diff tab-diff"><code>Replaced FAPI draft RW references with FAPI 1.0 Final Advanced references. References pertain to the TLS considerations.
-</code></pre>
+<h3 id='ciphers'>Ciphers</h3>
 <p>Only the following cipher suites SHALL be permitted in accordance with <a href="https://openid.net/specs/openid-financial-api-part-2-1_0.html#tls-considerations">section 8.5</a> of <strong><a href="#nref-FAPI-1-0-Advanced">[FAPI-1.0-Advanced]</a></strong>:</p>
 
 <ul>
@@ -6163,8 +6134,7 @@ client_id=s6BhdRkqt3
 <p>Non-Normative Example - FAPI 1.0 Final Phase 3 Obligation  </p>
 </blockquote>
 
-<pre class="highlight diff tab-diff"><code><span class="gi">+ Added "response_mode" to the non normative example. This demonstrates the use of Authorization Code Flow in conjunction with JARM and FAPI 1.0
-</span></code></pre><pre class="highlight plaintext"><code>#Decoded Request Object JWT
+<pre class="highlight plaintext"><code>#Decoded Request Object JWT
 
 {
   "iss": "s6BhdRkqt3",
@@ -6196,7 +6166,6 @@ client_id=s6BhdRkqt3
   "code_challenge": "ZTA2ZmFkYjUyMjA2NDNhZGVkYzE1M2I5OTYzZDAxNGI2NWNiZjAxMzVhNDlmMTk2NTlmZWE0OWVhOTQxZjhmZg==",
   "code_challenge_method": "S256"
 }
-</code></pre><pre class="highlight diff tab-diff"><code>Replaced FAPI draft references with FAPI 1.0 Final references
 </code></pre>
 
 <p>The Request Object is a signed and encoded JWT specified in <a href="https://openid.net/specs/openid-connect-core-1_0.html#RequestObject">section 6.1</a> of <strong>[OIDC]</strong>.  As per <strong><a href="#nref-FAPI-1-0-Advanced">[FAPI-1.0-Advanced]</a></strong> <a href="https://openid.net/specs/openid-financial-api-part-2-1_0.html#authorization-server">section 5.2.2</a>, the <code>request</code> parameter <strong>MUST</strong> be present on requests to the <strong>[OIDC]</strong> Hybrid Authorisation End Point. The Request Object enables <strong>[OIDC]</strong> requests to be passed in a single and self-contained parameter.</p>
@@ -6249,9 +6218,6 @@ client_id=s6BhdRkqt3
 
 <p>Data Holders <strong>MUST</strong> support Pushed Authorisation Requests (PAR) via the pushed authorisation end point according to <strong><a href="#nref-PAR">[PAR]</a></strong>.</p>
 
-<pre class="highlight diff tab-diff"><code>Removed legacy phasing requirements for FAPI 1.0 Final
-</code></pre>
-
 <ul>
 <li>Data Holders <strong>MUST</strong> support <strong><a href="#nref-RFC9126">[RFC9126]</a></strong> (PAR) using <strong><a href="#nref-PKCE">[PKCE]</a></strong> (<strong><a href="#nref-RFC7636">[RFC7636]</a></strong>) with S256 as the code challenge method in accordance with <strong><a href="#nref-FAPI-1-0-Advanced">[FAPI-1.0-Advanced]</a></strong> <a href="https://openid.net/specs/openid-financial-api-part-2-1_0.html#authorization-server">section 5.2.2</a>.</li>
 <li>  Data Holders <strong>MUST</strong> require PAR for authorisation request data in accordance with <strong><a href="#nref-RFC9126">[RFC9126]</a></strong> where &quot;require_pushed_authorization_requests&quot; parameter is set to &quot;true&quot;.</li>
@@ -6261,8 +6227,8 @@ client_id=s6BhdRkqt3
 <li>  Data Holders <strong>MUST</strong> reject the reuse of &quot;request_uri&quot; values.</li>
 </ul>
 
-<h4 id='data-recipient-software-products'>Data Recipient Software Products</h4><pre class="highlight diff tab-diff"><code>Removed legacy phasing requirements for FAPI 1.0 Final
-</code></pre>
+<h4 id='data-recipient-software-products'>Data Recipient Software Products</h4>
+
 <ul>
 <li>  Data Recipients Software Products <strong>MUST</strong> send request object containing a &quot;nbf&quot; claim and an &quot;exp&quot; claim that has a lifetime of no longer than 60 minutes after the &quot;nbf&quot; claim.</li>
 <li>Data Recipient Software Products <strong>MUST</strong> ONLY use a &quot;request_uri&quot; value once</li>
@@ -6271,14 +6237,14 @@ client_id=s6BhdRkqt3
 </ul>
 
 <h2 id='security-endpoints'>Security Endpoints</h2>
+
 <h3 id='openid-provider-configuration-end-point'>OpenID Provider Configuration End Point</h3>
 
 <blockquote>
 <p>Non-Normative Example</p>
 </blockquote>
 
-<pre class="highlight diff tab-diff"><code><span class="gi">+ Adds examples for all metadata parameters required by the Data Standards and upstream normative references
-</span></code></pre><pre class="highlight plaintext"><code>## Request
+<pre class="highlight plaintext"><code>## Request
 
 GET /.well-known/openid-configuration HTTP/1.1
 Host: www.dh.com.au
@@ -6354,11 +6320,6 @@ Content-Type: application/json
 
 <p>This endpoint does not require <a href="https://consumerdatastandardsaustralia.github.io/standards/#cors">CORS</a>.</p>
 
-<pre class="highlight diff tab-diff"><code>Replaced FAPI draft references with FAPI 1.0 Final references
-
-<span class="gi">+ Adds all metadata parameters required by the Data Standards and upstream normative references
-</span></code></pre>
-
 <p>At a minimum, the Data Holder metadata <strong>MUST</strong> include:</p>
 
 <p><strong><a href="#nref-OIDD">[OIDD]</a></strong></p>
@@ -6370,11 +6331,11 @@ Content-Type: application/json
 <li><code>grant_types_supported</code>: The list of the OAuth 2.0 Grant Type values supported</li>
 <li><code>id_token_encryption_alg_values_supported</code>: The list of the supported JWE algorithms for securing the issued ID tokens. Must conform to <strong><a href="#nref-FAPI-RW-Draft">[FAPI-RW-Draft]</a></strong> and <strong><a href="#nref-OIDD">[OIDD]</a></strong>. Required for Data Holders supporting OIDC Hybrid Flow</li>
 <li><code>id_token_encryption_enc_values_supported</code>: The list of the supported JWE encryption methods for securing the issued ID tokens. Required for Data Holders supporting OIDC Hybrid Flow</li>
-<li><code>id_token_signing_alg_values_supported</code>: The list of the JWS signing algorithms (<code>alg</code> values) supported </li>
+<li><code>id_token_signing_alg_values_supported</code>: The list of the JWS signing algorithms (<code>alg</code> values) supported</li>
 <li><code>issuer</code>: URL that the Data Holder asserts as its Issuer Identifier</li>
 <li><code>jwks_uri</code>: The JSON Web Key Set for the data holder</li>
 <li><code>registration_endpoint</code>: URL of the Client Registration End Point</li>
-<li><code>request_object_signing_alg_values_supported</code>: The list of the JWS signing algorithms (<code>alg</code> values) supported for signing request objects. </li>
+<li><code>request_object_signing_alg_values_supported</code>: The list of the JWS signing algorithms (<code>alg</code> values) supported for signing request objects.</li>
 <li><code>response_modes_supported</code>: The list of the OAuth 2.0 <code>response_mode</code> values supported</li>
 <li><code>response_types_supported</code>: The list of the OAuth 2.0 <code>response_type</code> values supported</li>
 <li><code>scopes_supported</code>:  The list of supported scopes</li>
@@ -6522,9 +6483,6 @@ Host: www.holder.com.au
 <td>No</td>
 </tr>
 </tbody></table>
-
-<pre class="highlight diff tab-diff"><code>Replaced FAPI draft references with FAPI 1.0 Final references
-</code></pre>
 
 <p>The requirements for the Authorisation End Point are specified in <a href="https://openid.net/specs/openid-connect-core-1_0.html#HybridAuthorizationEndpoint">section 3.3.2</a> of <strong><a href="#nref-OIDC">[OIDC]</a></strong> and further specified under section <a href="https://openid.net/specs/openid-financial-api-part-2-1_0.html#authorization-server">5.2.2</a> of <strong><a href="#nref-FAPI-1-0-Advanced">[FAPI-1.0-Advanced]</a></strong>.  This end point is invoked as part of the <a href="#hybrid-flow">Hybrid Authentication flow</a>.</p>
 
@@ -6897,24 +6855,27 @@ Authorization: Bearer eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNDU2In0.ey
 
 <p>Data Holder&#39;s MUST use the Data Recipient Software Product&#39;s CDR Arrangement Revocation End Point with a valid <code>cdr_arrangement_id</code> to notify the Data Recipient Software Product when consent is revoked by the consumer via the Data Holder.</p>
 
-<h3 id='pushed-authorisation-end-point'>Pushed Authorisation End Point</h3><pre class="highlight diff tab-diff"><code>Updated non-normtative example to use RFC9126, not the draft PAR specification
-</code></pre>
+<h3 id='pushed-authorisation-end-point'>Pushed Authorisation End Point</h3>
+
 <blockquote>
 <p>Non-Normative Example<br>
 Utilising RFC9126 and OIDC Hybrid Flow</p>
 
 <p>Request</p>
 </blockquote>
+
 <pre class="highlight plaintext"><code>POST /par HTTP/1.1
      Host: data.holder.com.au
      Content-Type: application/x-www-form-urlencoded
 
 request=eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyMyJ9.ey...
 </code></pre>
+
 <blockquote>
 <p>Decoded Request<br>
 This example shows an authorisation request using the OIDC Hybrid Flow</p>
 </blockquote>
+
 <pre class="highlight plaintext"><code>{
   "iss": "s6BhdRkqt3",
   "exp": 1516239322,
@@ -6942,9 +6903,11 @@ This example shows an authorisation request using the OIDC Hybrid Flow</p>
   }
 }
 </code></pre>
+
 <blockquote>
 <p>Response</p>
 </blockquote>
+
 <pre class="highlight plaintext"><code>HTTP/1.1 201 Created
 Content-Type: application/json
 Cache-Control: no-cache, no-store
@@ -6953,9 +6916,11 @@ Cache-Control: no-cache, no-store
   "expires_in": 3600
 }
 </code></pre>
+
 <blockquote>
 <p>Authorise</p>
 </blockquote>
+
 <pre class="highlight plaintext"><code>## The request_uri is used by the ADR in the subsequent authorisation request as follows
 ## (note this example is pre-RFC using Draft 01 of the PAR standard, hence it includes
 ## the mandatory oAuth parameters as per FAPI R/W for confidential clients must be
@@ -6968,24 +6933,27 @@ GET /authorise?client_id=s6BhdRkqt3&amp;
 HTTP/1.1
 Host: data.holder.com.au
 </code></pre>
+
 <blockquote>
 <p>Non-Normative Example - FAPI 1.0 Final Phase 3 Obligations<br>
 Utilising FAPI 1.0 Final, PAR RFC9126, PKCE, JARM and Authorization Code Flow</p>
 
 <p>Request</p>
 </blockquote>
+
 <pre class="highlight plaintext"><code>POST /par HTTP/1.1
      Host: data.holder.com.au
      Content-Type: application/x-www-form-urlencoded
 
 request=eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyMyJ9.ey...
 </code></pre>
+
 <blockquote>
 <p>Decoded Request - FAPI 1.0 Final Phase 3 Obligation<br>
 This example shows an authorisation request using the Authorisation Code Flow (FAPI 1.0 migration Phase 3)</p>
 </blockquote>
-<pre class="highlight diff tab-diff"><code><span class="gi">+ Added "response_mode" to the non normative example. This demonstrates the use of Authorization Code Flow in conjunction with JARM and FAPI 1.0
-</span></code></pre><pre class="highlight plaintext"><code>{
+
+<pre class="highlight plaintext"><code>{
   "iss": "s6BhdRkqt3",
   "exp": 1680832800,
   "nbf": 1680829200,
@@ -7016,9 +6984,11 @@ This example shows an authorisation request using the Authorisation Code Flow (F
   "code_challenge_method": "S256"
 }
 </code></pre>
+
 <blockquote>
 <p>Response - FAPI 1.0 Final Phase 3 Obligation  </p>
 </blockquote>
+
 <pre class="highlight plaintext"><code>HTTP/1.1 201 Created
 Content-Type: application/json
 Cache-Control: no-cache, no-store
@@ -7027,9 +6997,11 @@ Cache-Control: no-cache, no-store
   "expires_in": 3600
 }
 </code></pre>
+
 <blockquote>
 <p>Authorise - FAPI 1.0 Final Phase 3 Obligation  </p>
 </blockquote>
+
 <pre class="highlight plaintext"><code>## This is used by the ADR in the subsequent authorisation request as follows
 ## (this example uses PAR RFC 9126 and Authorization Code Flow):
 
@@ -7038,9 +7010,11 @@ GET /authorise?client_id=s6BhdRkqt3&amp;
 HTTP/1.1
 Host: data.holder.com.au
 </code></pre>
+
 <blockquote>
 <p>Authorisation response using JARM response encryption - FAPI 1.0 Final Phase 3 Obligation  </p>
 </blockquote>
+
 <pre class="highlight plaintext"><code>eyJraWQiOiIwZWQ3YTNkZi1hMGJlLTRhZjQtOTk0YS1jNDBhODc0ODQwNjMiLCJhbGciOiJQUzI1NiJ9.eyJhdWQiOiIxMjM0NSIsImNvZGUiOiJpMVdzUm4xdUIxIiwiaXNzIjoiaHR0cHM6Ly9kYXRhLmhvbGRlci5jb20uYXUvIiwic3RhdGUiOiJhZjBpZmpzbGRraiIsImV4cCI6MTY2NzI2ODAwMH0.flBD3bTUHUFiNMbfgt-Uqt4wnEFHY79QYx0f9qrqPGPZLB-RBb-F20aPTyB9XaJ1JJ3ie1m0YxdMC7t6aiXSchZZQXBmYpIjvlbTceOVBYlr88llqeLAfQ5nCDD4p2axqyedpA83OgPF8i_Ngw0oRsCwBTueo6C40wYeI3ZT_n0hucQqGHcSoR1im7IY1rY0x99EZjJI3pxVtGwst6e-msomipnYedCdkNuPHE_Rnj0g897zi_NdK6m3dhxcpwaoMXcaYfMkkkzTlbz5_Ic9lWMx_z01C2wRNjRBArEJsNXW0Q8Vdhk_vtOAmO92Pr3cI8BpTr5KdY2O1iD-yRnkug
 
 ## Decoded Response
@@ -7056,6 +7030,7 @@ Host: data.holder.com.au
   "exp": 1667268000
 }
 </code></pre>
+
 <table><thead>
 <tr>
 <th>Description</th>
@@ -7081,8 +7056,7 @@ Host: data.holder.com.au
 </tbody></table>
 
 <p>Data Holders <strong>MUST</strong> support Pushed Authorisation Requests (PAR) via the pushed authorisation end point according to <strong><a href="#nref-PAR">[PAR]</a></strong>.</p>
-<pre class="highlight diff tab-diff"><code><span class="gd">- Removed legacy phasing requirements for FAPI 1.0 Final using PAR
-</span></code></pre>
+
 <p>Data Recipient Software Products <strong>MUST</strong> send authorisation requests using <strong><a href="#nref-PAR">[PAR]</a></strong> if supported by the Data Holder.</p>
 
 <p>The Data Holder response provides the Data Recipient Software Product with a Request URI in the response. The Request URI is then passed to the Data Holder’s Authorisation End Point to initiate an authorisation flow.</p>
@@ -8593,9 +8567,7 @@ These endpoints are exposed by the Register and consumed by Data Holders and Dat
 <td>https://secure.api.cdr.gov.au</td>
 </tr>
 </tbody></table>
-<pre class="highlight diff tab-diff"><code>Amended the jwks and well known endpoint paths to reflect actual
-Register implementation
-</code></pre>
+
 <h2 id='get-openid-provider-config'>Get OpenId Provider Config</h2>
 
 <p><a id="opIdGetOpenIdProviderConfig"></a></p>
@@ -12487,11 +12459,6 @@ This operation does not require authentication
 
 <p>For Unattended traffic during high traffic periods only best effort support is required.</p>
 
-<pre class="highlight diff tab-diff"><code>Updated the static site wide TPS thresholds with a graduated set of
-thresholds depending on the number of active authorisations established
-with the data holder
-</code></pre>
-
 <p>For secure traffic (both Customer Present and Unattended) the following traffic thresholds will apply:</p>
 
 <ul>
@@ -12523,9 +12490,9 @@ with the data holder
 <li>Unattended calls should be managed to avoid short term bursts of traffic</li>
 </ul>
 
-<p><pre class="highlight diff tab-diff"><code><span class="gi">+ Added the Low Velocity Data Sets section
-</span></code></pre><h3 id='low-velocity-data-sets'>Low Velocity Data Sets</h3>
-<p>For endpoints that provide access to data that is low velocity (ie. the data does not change frequently) the Data Recipient Software Product is expected to cache the results of any data they receive and not request the same resource again until the data may reasonably have changed.</p></p>
+<h3 id='low-velocity-data-sets'>Low Velocity Data Sets</h3>
+
+<p>For endpoints that provide access to data that is low velocity (ie. the data does not change frequently) the Data Recipient Software Product is expected to cache the results of any data they receive and not request the same resource again until the data may reasonably have changed.</p>
 
 <p>For low velocity data sets, if the same data is requested repeatedly a Data Holder may reject subsequent requests for the same data during a specified period.</p>
 
@@ -12627,36 +12594,7 @@ with the data holder
 <tr><td><a href='./includes/swagger/cds_banking.json'>Banking OpenAPI Specification (JSON)</a></td></tr>
 <tr><td><a href='./includes/swagger/cds_banking.yaml'>Banking OpenAPI Specification (YAML)</a></td></tr>
 </table></p>
-<pre class="highlight diff tab-diff"><code>Updated the versions of the following APIs:
-<span class="gi">+ Get Scheduled Payments For Account from v1 to v2
-+ Get Scheduled Payments Bulk from v1 to v2
-+ Get Scheduled Payments For Specific Accounts from v1 to v2
-</span>
 
-Updated the following structures
-from:
-<span class="gd">- ResponseBankingScheduledPaymentsList
-- BankingScheduledPayment
-- BankingScheduledPaymentSet
-- BankingScheduledPaymentTo
-</span>
-to:
-<span class="gi">+ ResponseBankingScheduledPaymentsListV2
-+ BankingScheduledPaymentV2
-+ BankingScheduledPaymentSetV2
-+ BankingScheduledPaymentToV2
-</span>
-Added the following to 'BankingScheduledPaymentToV2' structure:
-<span class="gi">+ 'digitalWallet' ENUM value to the toUType field
-+ 'digitalWallet' object
-+ 'BankingDigitalWalletPayee' schema for 'digitalWallet' object
-</span>
-Replaced FAPI draft references with FAPI 1.0 Final references.
-References pertain to the x-fapi-auth-date header.
-
-Typo correction for the Get Products API description, changing
-"actual" to "actually"
-</code></pre>
 <h2 id='get-accounts'>Get Accounts</h2>
 
 <p><a id="opIdlistAccounts"></a></p>
@@ -25601,40 +25539,7 @@ This operation does not require authentication
 <tr><td><a href='./includes/swagger/cds_energy.json'>Energy OpenAPI Specification (JSON)</a></td></tr>
 <tr><td><a href='./includes/swagger/cds_energy.yaml'>Energy OpenAPI Specification (YAML)</a></td></tr>
 </table>
-<pre class="highlight diff tab-diff"><code>Updated description of EnergyPaymentSchedule.digitalWallet.name field
-from:
-<span class="gd">- The name assigned to the digital wallet by the owner of the wallet, else the display name provided by the digital wallet provider
-</span>to:
-<span class="gi">+ The display name of the wallet as given by the customer, else a default value defined by the data holder
-</span>
-Updated description of `EnergyPaymentSchedule.isTokenised` field to further clarify when it can be used
 
-Updated the versions of the following APIs:
-<span class="gi">+ Get Billing For Account from v1 to v2
-+ Get Bulk Billing from v1 to v2
-+ Get Billing For Specific Accounts from v1 to v2
-</span>
-Updated the following structures
-from:
-<span class="gd">- EnergyBillingListResponse
-- EnergyBillingTransaction
-- EnergyBillingDemandTransaction
-- EnergyBillingUsageTransaction
-</span>
-to:
-<span class="gi">+ EnergyBillingListResponseV2
-+ EnergyBillingTransactionV2
-+ EnergyBillingDemandTransactionV2
-+ EnergyBillingUsageTransactionV2
-</span>
-
-Added following ENUM values to EnergyBillingDemandTransaction.timeOfUseType field:
-<span class="gi">+ ALL_DAY
-+ EXCESS
-</span>
-Added following ENUM values to EnergyBillingUsageTransaction.timeOfUseType field:
-<span class="gi">+ ALL_DAY
-</span></code></pre>
 <h2 id='get-generic-plans'>Get Generic Plans</h2>
 
 <p><a id="opIdlistPlans"></a></p>
@@ -43515,9 +43420,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr><td><a href='./includes/swagger/cds_common.json'>Common OpenAPI Specification (JSON)</a></td></tr>
 <tr><td><a href='./includes/swagger/cds_common.yaml'>Common OpenAPI Specification (YAML)</a></td></tr>
 </table></p>
-<pre class="highlight diff tab-diff"><code>Replaced FAPI draft references with FAPI 1.0 Final references.
-References pertain to the x-fapi-auth-date header.
-</code></pre>
+
 <h2 id='get-customer'>Get Customer</h2>
 
 <p><a id="opIdgetCustomer"></a></p>
@@ -46155,30 +46058,7 @@ This operation does not require authentication
 <tr><td><a href='./includes/swagger/cds_admin.json'>Admin OpenAPI Specification (JSON)</a></td></tr>
 <tr><td><a href='./includes/swagger/cds_admin.yaml'>Admin OpenAPI Specification (YAML)</a></td></tr>
 </table></p>
-<pre class="highlight diff tab-diff"><code><span class="gi">+ Adding v4 and v5 of the Get Metrics endpoint
-</span>
-v4 changes are:
-• Aligned types to standard CDR types
-• Separated availability and TPS metric into aggregated,
-  authenticated and unauthenticed
-• Error counts split by HTTP error code
-• Added new authorisation metrics
-• Added language to clarify that metrics are calculated at
-  the Data Holder brand level for Data Holders with multiple
-  brands
 
-v5 changes are:
-• Performance metrics broken down by performance tier
-• Include hourly metrics for performance metrics to align to NFRs
-• Inclusion of aggregate metric for performance metrics
-• Addition of abandonmentsByStage object to authorisation metrics
-
-Note that two typos were identified in the initial version of
-1.25.0 published on 8th July that have now been corrected. These
-are:
-• Incorrect description of the ErrorMetricsV2 model
-• Incorrect name of the preIdentification field
-</code></pre>
 <h2 id='metadata-update'>Metadata Update</h2>
 
 <p><a id="opIdmetadataUpdate"></a></p>
