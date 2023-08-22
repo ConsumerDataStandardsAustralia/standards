@@ -12,7 +12,7 @@
       "name": "MIT License",
       "url": "https://opensource.org/licenses/MIT"
     },
-    "version": "1.25.0"
+    "version": "1.26.0"
   },
   "servers": [
     {
@@ -5465,7 +5465,7 @@
             "enum": [
               "accountId",
               "biller",
-              "digitalWallet",              
+              "digitalWallet",
               "domestic",
               "international",
               "payeeId"
@@ -5491,7 +5491,7 @@
           },
           "digitalWallet": {
             "$ref": "#/components/schemas/BankingDigitalWalletPayee"
-          },        
+          },
           "domestic": {
             "$ref": "#/components/schemas/BankingDomesticPayee"
           },

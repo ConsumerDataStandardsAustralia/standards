@@ -2,7 +2,7 @@ openapi: 3.0.3
 info:
   description: Consumer Data Right end points and payloads for the Energy sector
   title: CDR Energy API
-  version: 1.25.0
+  version: 1.26.0
 servers:
 - url: /
 paths:

@@ -10,6 +10,12 @@
 </tr>
 </thead><tbody>
 <tr>
+<td>23/08/2023</td>
+<td>1.26.0</td>
+<td>Changes to obligations for the implementation of Get Metrics</td>
+<td>See <a href="includes/releasenotes/releasenotes.1.26.0.html">release notes</a> and <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/322">Decision 322</a> for details.</td>
+</tr>
+<tr>
 <td>08/07/2023</td>
 <td>1.25.0</td>
 <td>Changes arising from Decision 303 (Maintenance iteration 15) and Decision 288 (Metrics and NFRs)</td>
