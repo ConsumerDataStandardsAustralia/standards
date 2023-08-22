@@ -6,10 +6,6 @@ Data Recipient Software Products will be limited by the traffic thresholds docum
 - Services should schedule unattended calls to avoid high traffic periods
 - Unattended calls should be managed to avoid short term bursts of traffic
 
-```diff
-+ Added the Low Velocity Data Sets section
-```
-
 ### Low Velocity Data Sets
 For endpoints that provide access to data that is low velocity (ie. the data does not change frequently) the Data Recipient Software Product is expected to cache the results of any data they receive and not request the same resource again until the data may reasonably have changed.
 

@@ -36,10 +36,6 @@
 
 > Non-Normative Example - FAPI 1.0 Final Phase 3 Obligation  
 
-```diff
-+ Added "response_mode" to the non normative example. This demonstrates the use of Authorization Code Flow in conjunction with JARM and FAPI 1.0
-```
-
 ```
 #Decoded Request Object JWT
 
@@ -73,10 +69,6 @@
   "code_challenge": "ZTA2ZmFkYjUyMjA2NDNhZGVkYzE1M2I5OTYzZDAxNGI2NWNiZjAxMzVhNDlmMTk2NTlmZWE0OWVhOTQxZjhmZg==",
   "code_challenge_method": "S256"
 }
-```
-
-```diff
-Replaced FAPI draft references with FAPI 1.0 Final references
 ```
 
 The Request Object is a signed and encoded JWT specified in [section 6.1](https://openid.net/specs/openid-connect-core-1_0.html#RequestObject) of **[OIDC]**.  As per **[[FAPI-1.0-Advanced]](#nref-FAPI-1-0-Advanced)** [section 5.2.2](https://openid.net/specs/openid-financial-api-part-2-1_0.html#authorization-server), the `request` parameter **MUST** be present on requests to the **[OIDC]** Hybrid Authorisation End Point. The Request Object enables **[OIDC]** requests to be passed in a single and self-contained parameter.
@@ -124,10 +116,6 @@ In addition:
 
 Data Holders **MUST** support Pushed Authorisation Requests (PAR) via the pushed authorisation end point according to **[[PAR]](#nref-PAR)**.
 
-```diff
-Removed legacy phasing requirements for FAPI 1.0 Final
-```
-
 * Data Holders **MUST** support **[[RFC9126]](#nref-RFC9126)** (PAR) using **[[PKCE]](#nref-PKCE)** (**[[RFC7636]](#nref-RFC7636)**) with S256 as the code challenge method in accordance with **[[FAPI-1.0-Advanced]](#nref-FAPI-1-0-Advanced)** [section 5.2.2](https://openid.net/specs/openid-financial-api-part-2-1_0.html#authorization-server).
 *	Data Holders **MUST** require PAR for authorisation request data in accordance with **[[RFC9126]](#nref-RFC9126)** where "require_pushed_authorization_requests" parameter is set to "true".
 *	Data Holders **MUST** require the request object to contain an "exp" claim that has a lifetime of no longer than 60 minutes after the "nbf" claim in accordance with **[[FAPI-1.0-Advanced]](#nref-FAPI-1-0-Advanced)** [section 5.2.2](https://openid.net/specs/openid-financial-api-part-2-1_0.html#authorization-server).
@@ -136,10 +124,6 @@ Removed legacy phasing requirements for FAPI 1.0 Final
 *	Data Holders **MUST** reject the reuse of "request_uri" values.
 
 #### Data Recipient Software Products
-
-```diff
-Removed legacy phasing requirements for FAPI 1.0 Final
-```
 
 *	Data Recipients Software Products **MUST** send request object containing a "nbf" claim and an "exp" claim that has a lifetime of no longer than 60 minutes after the "nbf" claim.
 * Data Recipient Software Products **MUST** ONLY use a "request_uri" value once

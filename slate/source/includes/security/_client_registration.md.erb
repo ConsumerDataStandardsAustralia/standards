@@ -8,10 +8,6 @@ Data Recipients register with Data Holders according to **[[DCR]](#nref-DCR)** t
 As per **[[DCR]](#nref-DCR)**, a Software Statement is defined in as: _A digitally signed JSON Web Token (JWT) created in accordance with **[[JWT]](#nref-JWT)** that asserts metadata values about the client software_
 > An SSA is a digitally signed JSON Web Token (JWT) created in accordance with **[[JWT]](#nref-JWT)** that asserts metadata values about the client software.
 
-```diff
-Replaced FAPI draft references with FAPI 1.0 Final references
-```
-
 Such that:
 
 * The CDR Register **MUST** issue Software Statements to **active** Data Recipients for **active** Software Products
@@ -232,9 +228,6 @@ Accept: application/json
 }
 ```
 
-```diff
-Replaced FAPI draft references with FAPI 1.0 Final references
-```
 To register with a Data Holder, the Data Recipient sends an HTTP POST to the Data Holder registration endpoint.
 
 * The request **MUST** be presented in the format of a **[[RFC7519]](#nref-RFC7519)** compliant JWT.
@@ -242,10 +235,6 @@ To register with a Data Holder, the Data Recipient sends an HTTP POST to the Dat
 * The JWT **MUST** be signed using algorithms specified in [section 8.6](https://openid.net/specs/openid-financial-api-part-2.html#jws-algorithm-considerations) of **[[FAPI-1.0-Advanced]](#nref-FAPI-1-0-Advanced)**
 
 The client registration request **MUST** contain the following claims in the JWT payload unless designated as Optional:
-
-```diff
-Replaced FAPI draft references with FAPI 1.0 Final references
-```
 
 | Claim | Required | Description
 |--------------|-------|-----------------------------------------------------------------------------------------------
@@ -283,10 +272,6 @@ Participants **MUST** support, at a minimum, the following ID Token algorithms:
 Data Holders **MUST** support at a minimum, 1 algorithm for each claim.
 
 Data Recipients **MUST** support all the algorithms used in the ecosystem to ensure they can communicate with all Data Holders.
-
-```diff
-Replaced FAPI draft references with FAPI 1.0 Final references
-```
 
 ID Token algorithm considerations remain relevant where the OIDC Hybrid Flow is leveraged as defined in the Consumer Data Standards and in accordance with sections [5.1.1](https://openid.net/specs/openid-financial-api-part-2-1_0.html#id-token-as-detached-signature), [5.2.2.1](https://openid.net/specs/openid-financial-api-part-2-1_0.html#id-token-as-detached-signature-1), and [5.2.3.1](https://openid.net/specs/openid-financial-api-part-2-1_0.html#id-token-as-detached-signature-2) of **[[FAPI-1.0-Advanced]](#nref-FAPI-1-0-Advanced)**.
 

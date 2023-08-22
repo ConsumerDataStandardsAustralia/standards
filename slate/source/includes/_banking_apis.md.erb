@@ -10,38 +10,6 @@ This specification defines the APIs for Data Holders exposing Banking endpoints.
 <tr><td><a href='./includes/swagger/cds_banking.yaml'>Banking OpenAPI Specification (YAML)</a></td></tr>
 </table>
 
-```diff
-Updated the versions of the following APIs:
-+ Get Scheduled Payments For Account from v1 to v2
-+ Get Scheduled Payments Bulk from v1 to v2
-+ Get Scheduled Payments For Specific Accounts from v1 to v2
-
-
-Updated the following structures
-from:
-- ResponseBankingScheduledPaymentsList
-- BankingScheduledPayment
-- BankingScheduledPaymentSet
-- BankingScheduledPaymentTo
-
-to:
-+ ResponseBankingScheduledPaymentsListV2
-+ BankingScheduledPaymentV2
-+ BankingScheduledPaymentSetV2
-+ BankingScheduledPaymentToV2
-
-Added the following to 'BankingScheduledPaymentToV2' structure:
-+ 'digitalWallet' ENUM value to the toUType field
-+ 'digitalWallet' object
-+ 'BankingDigitalWalletPayee' schema for 'digitalWallet' object
-
-Replaced FAPI draft references with FAPI 1.0 Final references.
-References pertain to the x-fapi-auth-date header.
-
-Typo correction for the Get Products API description, changing
-"actual" to "actually"
-```
-
 <%= partial "includes/cds_banking.md" %>
 <%= partial "includes/banking/_product_categories.md" %>
 <%= partial "includes/banking/_product_components.md" %>

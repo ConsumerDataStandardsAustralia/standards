@@ -34,9 +34,6 @@ In line with CDR Rule 4.24 on restrictions when asking CDR consumers to authoris
 - offering additional or alternative services
 - reference or inclusion of other documents
 
-```diff
-Removed legacy phasing requirements for FAPI 1.0 Final
-```
 * Data Holders **MUST** support FAPI 1.0 Advanced Profile (**[[FAPI-1.0-Advanced]](#nref-FAPI-1-0-Advanced)**).
 * Data Holders **MUST** support Authorization Code Flow.  
 * Data Holders **MUST** support the OIDC Hybrid Flow.
@@ -51,10 +48,6 @@ Removed legacy phasing requirements for FAPI 1.0 Final
 The following statements are applicable to both the OIDC Hybrid Flow and Authorization Code Flow:
 
 - Data Recipient Software Products **SHOULD** record the following information each time an authorisation flow is executed: username (consumer’s ID at the Data Recipient Software Product), timestamp, IP, consent scopes and duration.
-
-```diff
-Removed legacy phasing requirements for FAPI 1.0 Final
-```
 
 * Data Recipient Software Products **SHOULD NOT** reuse "authorization_code" values, and if reused, it will be rejected.
 * Data Recipient Software Products **MAY** send requests with a "x-fapi-customer-ip-address" header containing a valid IPv4 or IPv6 address.

@@ -4,13 +4,6 @@ The standards, as published from time to time, may include specific statements i
 
 The table below highlights these areas of the standards.
 
-```diff
-Removed legacy obligation dates more than 6 months in the past
-Fixed spelling of "Register"
-
-Added FDOs for decision 288 and 303
-```
-
 |Section|Description|Applicable Date|
 |-------|-----------|---------------|
 |[Get Account Detail V1](#get-account-detail)|Data holders **MAY** obsolete version 1 of this end point from February 28th 2023.  Data recipients **MUST** upgrade their implementations to use version 2 by this time|February 28th 2023|
