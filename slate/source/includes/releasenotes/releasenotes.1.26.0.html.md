@@ -17,7 +17,7 @@ Release notes for version v1.26.0 of the [CDR Standards](../../index.html).
 
 This release addresses the following minor defects raised on [Standards Staging](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues):
 
-- TBD
+- [Staging Issue 280 - Typo in Account Detail bundleName description](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/280)
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
@@ -42,6 +42,7 @@ No Change
 |Change|Description|Link|
 |------|-----------|----|
 | Modified Get Metrics Obligations | Changes to the obligation dates for Get Metrics v3 as determined in [Decision 322](https://github.com/ConsumerDataStandardsAustralia/standards/issues/322) | [Admin APIs](../../#admin-apis) |
+| bundleName Typo | Typo in bundleName field description | [BankingAccountDetailV3](../../#tocSbankingaccountdetailv3) |
 
 ## Information Security Profile
 

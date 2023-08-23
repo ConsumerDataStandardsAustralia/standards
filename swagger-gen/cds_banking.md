@@ -4853,7 +4853,7 @@ This operation does not require authentication
 |*anonymous*|object|mandatory|none|
 |» bsb|string|optional|The unmasked BSB for the account. Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces|
 |» accountNumber|string|optional|The unmasked account number for the account. Should not be supplied if the account number is a PAN requiring PCI compliance. Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces|
-|» bundleName|string|optional|Optional field to indicate if this account is part of a bundle that is providing additional benefit for to the customer|
+|» bundleName|string|optional|Optional field to indicate if this account is part of a bundle that is providing additional benefit to the customer|
 |» specificAccountUType|string|optional|The type of structure to present account specific fields.|
 |» termDeposit|[[BankingTermDepositAccount](#schemacdr-banking-apibankingtermdepositaccount)]|conditional|none|
 |» creditCard|[BankingCreditCardAccount](#schemacdr-banking-apibankingcreditcardaccount)|conditional|none|
