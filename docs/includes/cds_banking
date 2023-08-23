@@ -1678,14 +1678,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>query</td>
 <td><a href="#common-field-types">AmountString</a></td>
 <td>optional</td>
-<td>Filter transactions to only transactions with amounts higher or equal to than this amount</td>
+<td>Filter transactions to only transactions with amounts higher than or equal to this amount</td>
 </tr>
 <tr>
 <td>max-amount</td>
 <td>query</td>
 <td><a href="#common-field-types">AmountString</a></td>
 <td>optional</td>
-<td>Filter transactions to only transactions with amounts less than or equal to than this amount</td>
+<td>Filter transactions to only transactions with amounts less than or equal to this amount</td>
 </tr>
 <tr>
 <td>text</td>
