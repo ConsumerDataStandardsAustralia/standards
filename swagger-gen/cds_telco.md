@@ -15,23 +15,27 @@ x-min-v: string
 
 ```
 
-```javascript
-var headers = {
+```javascript--nodejs
+const fetch = require('node-fetch');
+
+const headers = {
   'Accept':'application/json',
   'x-v':'string',
   'x-min-v':'string'
 
 };
 
-$.ajax({
-  url: 'https://data.holder.com.au/cds-au/v1/telco/products',
-  method: 'get',
+fetch('https://data.holder.com.au/cds-au/v1/telco/products',
+{
+  method: 'GET',
 
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
+  headers: headers
 })
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -174,23 +178,27 @@ x-min-v: string
 
 ```
 
-```javascript
-var headers = {
+```javascript--nodejs
+const fetch = require('node-fetch');
+
+const headers = {
   'Accept':'application/json',
   'x-v':'string',
   'x-min-v':'string'
 
 };
 
-$.ajax({
-  url: 'https://data.holder.com.au/cds-au/v1/telco/products/{productId}',
-  method: 'get',
+fetch('https://data.holder.com.au/cds-au/v1/telco/products/{productId}',
+{
+  method: 'GET',
 
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
+  headers: headers
 })
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -365,8 +373,10 @@ x-cds-client-headers: string
 
 ```
 
-```javascript
-var headers = {
+```javascript--nodejs
+const fetch = require('node-fetch');
+
+const headers = {
   'Accept':'application/json',
   'x-v':'string',
   'x-min-v':'string',
@@ -377,15 +387,17 @@ var headers = {
 
 };
 
-$.ajax({
-  url: 'https://data.holder.com.au/cds-au/v1/telco/accounts/{serviceId}/usage',
-  method: 'get',
+fetch('https://data.holder.com.au/cds-au/v1/telco/accounts/{serviceId}/usage',
+{
+  method: 'GET',
 
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
+  headers: headers
 })
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -525,8 +537,10 @@ x-cds-client-headers: string
 
 ```
 
-```javascript
-var headers = {
+```javascript--nodejs
+const fetch = require('node-fetch');
+
+const headers = {
   'Accept':'application/json',
   'x-v':'string',
   'x-min-v':'string',
@@ -537,15 +551,17 @@ var headers = {
 
 };
 
-$.ajax({
-  url: 'https://data.holder.com.au/cds-au/v1/telco/accounts/usage',
-  method: 'get',
+fetch('https://data.holder.com.au/cds-au/v1/telco/accounts/usage',
+{
+  method: 'GET',
 
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
+  headers: headers
 })
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -696,8 +712,17 @@ x-cds-client-headers: string
 
 ```
 
-```javascript
-var headers = {
+```javascript--nodejs
+const fetch = require('node-fetch');
+const inputBody = '{
+  "data": {
+    "serviceIds": [
+      "string"
+    ]
+  },
+  "meta": {}
+}';
+const headers = {
   'Content-Type':'application/json',
   'Accept':'application/json',
   'x-v':'string',
@@ -709,15 +734,17 @@ var headers = {
 
 };
 
-$.ajax({
-  url: 'https://data.holder.com.au/cds-au/v1/telco/accounts/usage',
-  method: 'post',
-
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
+fetch('https://data.holder.com.au/cds-au/v1/telco/accounts/usage',
+{
+  method: 'POST',
+  body: inputBody,
+  headers: headers
 })
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -882,8 +909,10 @@ x-cds-client-headers: string
 
 ```
 
-```javascript
-var headers = {
+```javascript--nodejs
+const fetch = require('node-fetch');
+
+const headers = {
   'Accept':'application/json',
   'x-v':'string',
   'x-min-v':'string',
@@ -894,15 +923,17 @@ var headers = {
 
 };
 
-$.ajax({
-  url: 'https://data.holder.com.au/cds-au/v1/telco/accounts',
-  method: 'get',
+fetch('https://data.holder.com.au/cds-au/v1/telco/accounts',
+{
+  method: 'GET',
 
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
+  headers: headers
 })
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -1036,8 +1067,10 @@ x-cds-client-headers: string
 
 ```
 
-```javascript
-var headers = {
+```javascript--nodejs
+const fetch = require('node-fetch');
+
+const headers = {
   'Accept':'application/json',
   'x-v':'string',
   'x-min-v':'string',
@@ -1048,15 +1081,17 @@ var headers = {
 
 };
 
-$.ajax({
-  url: 'https://data.holder.com.au/cds-au/v1/telco/accounts/{accountId}',
-  method: 'get',
+fetch('https://data.holder.com.au/cds-au/v1/telco/accounts/{accountId}',
+{
+  method: 'GET',
 
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
+  headers: headers
 })
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -1179,8 +1214,10 @@ x-cds-client-headers: string
 
 ```
 
-```javascript
-var headers = {
+```javascript--nodejs
+const fetch = require('node-fetch');
+
+const headers = {
   'Accept':'application/json',
   'x-v':'string',
   'x-min-v':'string',
@@ -1191,15 +1228,17 @@ var headers = {
 
 };
 
-$.ajax({
-  url: 'https://data.holder.com.au/cds-au/v1/telco/accounts/{accountId}/payment-schedule',
-  method: 'get',
+fetch('https://data.holder.com.au/cds-au/v1/telco/accounts/{accountId}/payment-schedule',
+{
+  method: 'GET',
 
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
+  headers: headers
 })
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -1327,8 +1366,10 @@ x-cds-client-headers: string
 
 ```
 
-```javascript
-var headers = {
+```javascript--nodejs
+const fetch = require('node-fetch');
+
+const headers = {
   'Accept':'application/json',
   'x-v':'string',
   'x-min-v':'string',
@@ -1339,15 +1380,17 @@ var headers = {
 
 };
 
-$.ajax({
-  url: 'https://data.holder.com.au/cds-au/v1/telco/accounts/{accountId}/concessions',
-  method: 'get',
+fetch('https://data.holder.com.au/cds-au/v1/telco/accounts/{accountId}/concessions',
+{
+  method: 'GET',
 
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
+  headers: headers
 })
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -1458,8 +1501,10 @@ x-cds-client-headers: string
 
 ```
 
-```javascript
-var headers = {
+```javascript--nodejs
+const fetch = require('node-fetch');
+
+const headers = {
   'Accept':'application/json',
   'x-v':'string',
   'x-min-v':'string',
@@ -1470,15 +1515,17 @@ var headers = {
 
 };
 
-$.ajax({
-  url: 'https://data.holder.com.au/cds-au/v1/telco/accounts/{accountId}/balance',
-  method: 'get',
+fetch('https://data.holder.com.au/cds-au/v1/telco/accounts/{accountId}/balance',
+{
+  method: 'GET',
 
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
+  headers: headers
 })
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -1627,8 +1674,10 @@ x-cds-client-headers: string
 
 ```
 
-```javascript
-var headers = {
+```javascript--nodejs
+const fetch = require('node-fetch');
+
+const headers = {
   'Accept':'application/json',
   'x-v':'string',
   'x-min-v':'string',
@@ -1639,15 +1688,17 @@ var headers = {
 
 };
 
-$.ajax({
-  url: 'https://data.holder.com.au/cds-au/v1/telco/accounts/balance',
-  method: 'get',
+fetch('https://data.holder.com.au/cds-au/v1/telco/accounts/balance',
+{
+  method: 'GET',
 
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
+  headers: headers
 })
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -1812,8 +1863,17 @@ x-cds-client-headers: string
 
 ```
 
-```javascript
-var headers = {
+```javascript--nodejs
+const fetch = require('node-fetch');
+const inputBody = '{
+  "data": {
+    "accountIds": [
+      "string"
+    ]
+  },
+  "meta": {}
+}';
+const headers = {
   'Content-Type':'application/json',
   'Accept':'application/json',
   'x-v':'string',
@@ -1825,15 +1885,17 @@ var headers = {
 
 };
 
-$.ajax({
-  url: 'https://data.holder.com.au/cds-au/v1/telco/accounts/balance',
-  method: 'post',
-
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
+fetch('https://data.holder.com.au/cds-au/v1/telco/accounts/balance',
+{
+  method: 'POST',
+  body: inputBody,
+  headers: headers
 })
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -2014,8 +2076,10 @@ x-cds-client-headers: string
 
 ```
 
-```javascript
-var headers = {
+```javascript--nodejs
+const fetch = require('node-fetch');
+
+const headers = {
   'Accept':'application/json',
   'x-v':'string',
   'x-min-v':'string',
@@ -2026,15 +2090,17 @@ var headers = {
 
 };
 
-$.ajax({
-  url: 'https://data.holder.com.au/cds-au/v1/telco/accounts/{accountId}/invoices',
-  method: 'get',
+fetch('https://data.holder.com.au/cds-au/v1/telco/accounts/{accountId}/invoices',
+{
+  method: 'GET',
 
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
+  headers: headers
 })
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -2202,8 +2268,10 @@ x-cds-client-headers: string
 
 ```
 
-```javascript
-var headers = {
+```javascript--nodejs
+const fetch = require('node-fetch');
+
+const headers = {
   'Accept':'application/json',
   'x-v':'string',
   'x-min-v':'string',
@@ -2214,15 +2282,17 @@ var headers = {
 
 };
 
-$.ajax({
-  url: 'https://data.holder.com.au/cds-au/v1/telco/accounts/invoices',
-  method: 'get',
+fetch('https://data.holder.com.au/cds-au/v1/telco/accounts/invoices',
+{
+  method: 'GET',
 
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
+  headers: headers
 })
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -2399,8 +2469,17 @@ x-cds-client-headers: string
 
 ```
 
-```javascript
-var headers = {
+```javascript--nodejs
+const fetch = require('node-fetch');
+const inputBody = '{
+  "data": {
+    "accountIds": [
+      "string"
+    ]
+  },
+  "meta": {}
+}';
+const headers = {
   'Content-Type':'application/json',
   'Accept':'application/json',
   'x-v':'string',
@@ -2412,15 +2491,17 @@ var headers = {
 
 };
 
-$.ajax({
-  url: 'https://data.holder.com.au/cds-au/v1/telco/accounts/invoices',
-  method: 'post',
-
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
+fetch('https://data.holder.com.au/cds-au/v1/telco/accounts/invoices',
+{
+  method: 'POST',
+  body: inputBody,
+  headers: headers
 })
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -2613,8 +2694,10 @@ x-cds-client-headers: string
 
 ```
 
-```javascript
-var headers = {
+```javascript--nodejs
+const fetch = require('node-fetch');
+
+const headers = {
   'Accept':'application/json',
   'x-v':'string',
   'x-min-v':'string',
@@ -2625,15 +2708,17 @@ var headers = {
 
 };
 
-$.ajax({
-  url: 'https://data.holder.com.au/cds-au/v1/telco/accounts/{accountId}/transactions',
-  method: 'get',
+fetch('https://data.holder.com.au/cds-au/v1/telco/accounts/{accountId}/transactions',
+{
+  method: 'GET',
 
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
+  headers: headers
 })
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -2781,8 +2866,10 @@ x-cds-client-headers: string
 
 ```
 
-```javascript
-var headers = {
+```javascript--nodejs
+const fetch = require('node-fetch');
+
+const headers = {
   'Accept':'application/json',
   'x-v':'string',
   'x-min-v':'string',
@@ -2793,15 +2880,17 @@ var headers = {
 
 };
 
-$.ajax({
-  url: 'https://data.holder.com.au/cds-au/v1/telco/accounts/transactions',
-  method: 'get',
+fetch('https://data.holder.com.au/cds-au/v1/telco/accounts/transactions',
+{
+  method: 'GET',
 
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
+  headers: headers
 })
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -2947,8 +3036,17 @@ x-cds-client-headers: string
 
 ```
 
-```javascript
-var headers = {
+```javascript--nodejs
+const fetch = require('node-fetch');
+const inputBody = '{
+  "data": {
+    "accountIds": [
+      "string"
+    ]
+  },
+  "meta": {}
+}';
+const headers = {
   'Content-Type':'application/json',
   'Accept':'application/json',
   'x-v':'string',
@@ -2960,15 +3058,17 @@ var headers = {
 
 };
 
-$.ajax({
-  url: 'https://data.holder.com.au/cds-au/v1/telco/accounts/transactions',
-  method: 'post',
-
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
+fetch('https://data.holder.com.au/cds-au/v1/telco/accounts/transactions',
+{
+  method: 'POST',
+  body: inputBody,
+  headers: headers
 })
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 

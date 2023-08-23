@@ -14,22 +14,26 @@ Accept: application/json
 
 ```
 
-```javascript
-var headers = {
+```javascript--nodejs
+const fetch = require('node-fetch');
+const inputBody = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...';
+const headers = {
   'Content-Type':'application/jwt',
   'Accept':'application/json'
 
 };
 
-$.ajax({
-  url: 'https://data.holder.com.au/register',
-  method: 'post',
-
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
+fetch('https://data.holder.com.au/register',
+{
+  method: 'POST',
+  body: inputBody,
+  headers: headers
 })
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -129,22 +133,26 @@ Authorization: string
 
 ```
 
-```javascript
-var headers = {
+```javascript--nodejs
+const fetch = require('node-fetch');
+
+const headers = {
   'Accept':'application/json',
   'Authorization':'string'
 
 };
 
-$.ajax({
-  url: 'https://data.holder.com.au/register/{ClientId}',
-  method: 'get',
+fetch('https://data.holder.com.au/register/{ClientId}',
+{
+  method: 'GET',
 
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
+  headers: headers
 })
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -252,23 +260,27 @@ Authorization: string
 
 ```
 
-```javascript
-var headers = {
+```javascript--nodejs
+const fetch = require('node-fetch');
+const inputBody = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...';
+const headers = {
   'Content-Type':'application/jwt',
   'Accept':'application/json',
   'Authorization':'string'
 
 };
 
-$.ajax({
-  url: 'https://data.holder.com.au/register/{ClientId}',
-  method: 'put',
-
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
+fetch('https://data.holder.com.au/register/{ClientId}',
+{
+  method: 'PUT',
+  body: inputBody,
+  headers: headers
 })
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -379,21 +391,25 @@ Authorization: string
 
 ```
 
-```javascript
-var headers = {
+```javascript--nodejs
+const fetch = require('node-fetch');
+
+const headers = {
   'Authorization':'string'
 
 };
 
-$.ajax({
-  url: 'https://data.holder.com.au/register/{ClientId}',
-  method: 'delete',
+fetch('https://data.holder.com.au/register/{ClientId}',
+{
+  method: 'DELETE',
 
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
+  headers: headers
 })
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 

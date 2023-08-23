@@ -18,8 +18,17 @@ x-cds-arrangement: string
 
 ```
 
-```javascript
-var headers = {
+```javascript--nodejs
+const fetch = require('node-fetch');
+const inputBody = '{
+  "data": {
+    "servicePointIds": [
+      "string"
+    ]
+  },
+  "meta": {}
+}';
+const headers = {
   'Content-Type':'application/json',
   'Accept':'application/json',
   'x-v':'string',
@@ -29,15 +38,17 @@ var headers = {
 
 };
 
-$.ajax({
-  url: '/secondary/energy/electricity/servicepoints',
-  method: 'post',
-
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
+fetch('/secondary/energy/electricity/servicepoints',
+{
+  method: 'POST',
+  body: inputBody,
+  headers: headers
 })
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -161,8 +172,10 @@ x-cds-arrangement: string
 
 ```
 
-```javascript
-var headers = {
+```javascript--nodejs
+const fetch = require('node-fetch');
+
+const headers = {
   'Accept':'application/json',
   'x-v':'string',
   'x-min-v':'string',
@@ -171,15 +184,17 @@ var headers = {
 
 };
 
-$.ajax({
-  url: '/secondary/energy/electricity/servicepoints/{servicePointId}',
-  method: 'get',
+fetch('/secondary/energy/electricity/servicepoints/{servicePointId}',
+{
+  method: 'GET',
 
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
+  headers: headers
 })
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -349,8 +364,10 @@ x-cds-arrangement: string
 
 ```
 
-```javascript
-var headers = {
+```javascript--nodejs
+const fetch = require('node-fetch');
+
+const headers = {
   'Accept':'application/json',
   'x-v':'string',
   'x-min-v':'string',
@@ -359,15 +376,17 @@ var headers = {
 
 };
 
-$.ajax({
-  url: '/secondary/energy/electricity/servicepoints/{servicePointId}/usage',
-  method: 'get',
+fetch('/secondary/energy/electricity/servicepoints/{servicePointId}/usage',
+{
+  method: 'GET',
 
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
+  headers: headers
 })
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -504,8 +523,17 @@ x-cds-arrangement: string
 
 ```
 
-```javascript
-var headers = {
+```javascript--nodejs
+const fetch = require('node-fetch');
+const inputBody = '{
+  "data": {
+    "servicePointIds": [
+      "string"
+    ]
+  },
+  "meta": {}
+}';
+const headers = {
   'Content-Type':'application/json',
   'Accept':'application/json',
   'x-v':'string',
@@ -515,15 +543,17 @@ var headers = {
 
 };
 
-$.ajax({
-  url: '/secondary/energy/electricity/servicepoints/usage',
-  method: 'post',
-
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
+fetch('/secondary/energy/electricity/servicepoints/usage',
+{
+  method: 'POST',
+  body: inputBody,
+  headers: headers
 })
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -673,8 +703,10 @@ x-cds-arrangement: string
 
 ```
 
-```javascript
-var headers = {
+```javascript--nodejs
+const fetch = require('node-fetch');
+
+const headers = {
   'Accept':'application/json',
   'x-v':'string',
   'x-min-v':'string',
@@ -683,15 +715,17 @@ var headers = {
 
 };
 
-$.ajax({
-  url: '/secondary/energy/electricity/servicepoints/{servicePointId}/der',
-  method: 'get',
+fetch('/secondary/energy/electricity/servicepoints/{servicePointId}/der',
+{
+  method: 'GET',
 
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
+  headers: headers
 })
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -824,8 +858,17 @@ x-cds-arrangement: string
 
 ```
 
-```javascript
-var headers = {
+```javascript--nodejs
+const fetch = require('node-fetch');
+const inputBody = '{
+  "data": {
+    "servicePointIds": [
+      "string"
+    ]
+  },
+  "meta": {}
+}';
+const headers = {
   'Content-Type':'application/json',
   'Accept':'application/json',
   'x-v':'string',
@@ -835,15 +878,17 @@ var headers = {
 
 };
 
-$.ajax({
-  url: '/secondary/energy/electricity/servicepoints/der',
-  method: 'post',
-
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
+fetch('/secondary/energy/electricity/servicepoints/der',
+{
+  method: 'POST',
+  body: inputBody,
+  headers: headers
 })
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 

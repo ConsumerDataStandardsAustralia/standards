@@ -23,6 +23,7 @@ This release addresses the following minor defects raised on [Standards Staging]
 - [Staging Issue 268 - Remove character in aud description](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/268)
 - [Staging Issue 256 - Typos in archived Register API versions](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/256)
 - [Staging Issue 253 - Apply consistent month name format](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/253)
+- [Staging Issue 237 - Review whether Code samples are useful](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/237)
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
@@ -48,6 +49,7 @@ No Change
 
 |Change|Description|Link|
 |------|-----------|----|
+| Updated Code Samples | Modified the non-normative javascript code samples for endpoints to represent calling the endpoints server side rather than from browser | All Endpoints |
 | Modified Get Metrics Obligations | Changes to the obligation dates for Get Metrics v3 as determined in [Decision 322](https://github.com/ConsumerDataStandardsAustralia/standards/issues/322) | [Admin APIs](../../#admin-apis) |
 | bundleName Typo | Typo in bundleName field description | [BankingAccountDetailV3](../../#tocSbankingaccountdetailv3) |
 | minAmount/maxAmout Typos | Typo in description of minAmount and maxAmount query parameters descriptions for Get Transactions For Account endpoint| [Get Transactions For Account](../../#get-transactions-for-account) |

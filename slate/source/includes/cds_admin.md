@@ -16,8 +16,15 @@ x-min-v: string
 
 ```
 
-```javascript
-var headers = {
+```javascript--nodejs
+const fetch = require('node-fetch');
+const inputBody = '{
+  "data": {
+    "action": "REFRESH"
+  },
+  "meta": {}
+}';
+const headers = {
   'Content-Type':'application/json',
   'Accept':'application/json',
   'x-v':'string',
@@ -25,15 +32,17 @@ var headers = {
 
 };
 
-$.ajax({
-  url: 'https://data.holder.com.au/cds-au/v1/admin/register/metadata',
-  method: 'post',
-
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
+fetch('https://data.holder.com.au/cds-au/v1/admin/register/metadata',
+{
+  method: 'POST',
+  body: inputBody,
+  headers: headers
 })
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -119,23 +128,27 @@ x-min-v: string
 
 ```
 
-```javascript
-var headers = {
+```javascript--nodejs
+const fetch = require('node-fetch');
+
+const headers = {
   'Accept':'application/json',
   'x-v':'string',
   'x-min-v':'string'
 
 };
 
-$.ajax({
-  url: 'https://data.holder.com.au/cds-au/v1/admin/metrics',
-  method: 'get',
+fetch('https://data.holder.com.au/cds-au/v1/admin/metrics',
+{
+  method: 'GET',
 
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
+  headers: headers
 })
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
