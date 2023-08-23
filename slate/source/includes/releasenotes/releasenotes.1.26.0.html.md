@@ -21,6 +21,7 @@ This release addresses the following minor defects raised on [Standards Staging]
 - [Staging Issue 271 - Typos in Get Transactions For Account parameters](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/271)
 - [Staging Issue 270 - Get Accounts V1 link in FDO](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/270)
 - [Staging Issue 268 - Remove character in aud description](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/268)
+- [Staging Issue 256 - Typos in archived Register API versions](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/256)
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
@@ -59,6 +60,7 @@ No Change
 |Change|Description|Link|
 |------|-----------|----|
 | aud Typo | Typo in aud field description in the ClientRegistration model| [ClientRegistration](../../#tocSclientregistration) |
+| Typos In Archived Endpoints | Typo in the deprecation note for Get Data Holder Brands V1, Get Software Products Statuses V1, Get Data Recipient Statuses V1, and Get Data Recipients V2| [Register APIs](../../#register-apis) |
 
 ## Consumer Experience
 
