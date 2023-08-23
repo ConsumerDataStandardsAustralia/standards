@@ -1117,7 +1117,7 @@ paths:
         style: form
         x-cds-type: DateTimeString
       - description: Filter transactions to only transactions with amounts higher
-          or equal to than this amount
+          than or equal to this amount
         explode: true
         in: query
         name: min-amount
@@ -1128,7 +1128,7 @@ paths:
         style: form
         x-cds-type: AmountString
       - description: Filter transactions to only transactions with amounts less than
-          or equal to than this amount
+          or equal to this amount
         explode: true
         in: query
         name: max-amount
@@ -3773,8 +3773,8 @@ components:
       style: form
       x-cds-type: DateTimeString
     ParamTransactionMinAmount:
-      description: Filter transactions to only transactions with amounts higher or
-        equal to than this amount
+      description: Filter transactions to only transactions with amounts higher than
+        or equal to this amount
       explode: true
       in: query
       name: min-amount
@@ -3786,7 +3786,7 @@ components:
       x-cds-type: AmountString
     ParamTransactionMaxAmount:
       description: Filter transactions to only transactions with amounts less than
-        or equal to than this amount
+        or equal to this amount
       explode: true
       in: query
       name: max-amount

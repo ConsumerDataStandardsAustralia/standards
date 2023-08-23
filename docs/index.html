@@ -12607,7 +12607,13 @@ This operation does not require authentication
 <tr><td><a href='./includes/swagger/cds_banking.json'>Banking OpenAPI Specification (JSON)</a></td></tr>
 <tr><td><a href='./includes/swagger/cds_banking.yaml'>Banking OpenAPI Specification (YAML)</a></td></tr>
 </table></p>
+<pre class="highlight diff tab-diff"><code>Fixed typo in the description of the bundleName field
+in the BankingAccountDetailV3 model
 
+Fixed typo in description of minAmount and maxAmount
+query parameters descriptions for Get Transactions For
+Account endpoint
+</code></pre>
 <h2 id='get-accounts'>Get Accounts</h2>
 
 <p><a id="opIdlistAccounts"></a></p>
@@ -14345,14 +14351,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>query</td>
 <td><a href="#common-field-types">AmountString</a></td>
 <td>optional</td>
-<td>Filter transactions to only transactions with amounts higher or equal to than this amount</td>
+<td>Filter transactions to only transactions with amounts higher than or equal to this amount</td>
 </tr>
 <tr>
 <td>max-amount</td>
 <td>query</td>
 <td><a href="#common-field-types">AmountString</a></td>
 <td>optional</td>
-<td>Filter transactions to only transactions with amounts less than or equal to than this amount</td>
+<td>Filter transactions to only transactions with amounts less than or equal to this amount</td>
 </tr>
 <tr>
 <td>text</td>

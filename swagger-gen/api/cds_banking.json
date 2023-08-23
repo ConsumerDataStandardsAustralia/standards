@@ -1014,7 +1014,7 @@
           {
             "name": "min-amount",
             "in": "query",
-            "description": "Filter transactions to only transactions with amounts higher or equal to than this amount",
+            "description": "Filter transactions to only transactions with amounts higher than or equal to this amount",
             "schema": {
               "type": "string",
               "x-cds-type": "AmountString"
@@ -1024,7 +1024,7 @@
           {
             "name": "max-amount",
             "in": "query",
-            "description": "Filter transactions to only transactions with amounts less than or equal to than this amount",
+            "description": "Filter transactions to only transactions with amounts less than or equal to this amount",
             "schema": {
               "type": "string",
               "x-cds-type": "AmountString"
@@ -6171,7 +6171,7 @@
       "ParamTransactionMinAmount": {
         "name": "min-amount",
         "in": "query",
-        "description": "Filter transactions to only transactions with amounts higher or equal to than this amount",
+        "description": "Filter transactions to only transactions with amounts higher than or equal to this amount",
         "schema": {
           "type": "string",
           "x-cds-type": "AmountString"
@@ -6181,7 +6181,7 @@
       "ParamTransactionMaxAmount": {
         "name": "max-amount",
         "in": "query",
-        "description": "Filter transactions to only transactions with amounts less than or equal to than this amount",
+        "description": "Filter transactions to only transactions with amounts less than or equal to this amount",
         "schema": {
           "type": "string",
           "x-cds-type": "AmountString"
