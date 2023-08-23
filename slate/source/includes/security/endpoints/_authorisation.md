@@ -55,7 +55,7 @@ Host: www.holder.com.au
 
 > Non-Normative Example - FAPI 1.0 Final Phase 3 Obligation
 > This example demonstrates how an ADR may send a staged authorisation request (using PAR) in the back-channel to the Data Holder.   
-> 
+>
 > It demonstrates a FAPI 1.0 Final compliant authorisation request using the PAR to first submit the authorisation request object.  
 
 ```
@@ -75,10 +75,6 @@ Host: www.holder.com.au
 | Transport Security | TLS |
 | Client Authentication Required| No|
 | Bearer Token Required| No|
-
-```diff
-Replaced FAPI draft references with FAPI 1.0 Final references
-```
 
 The requirements for the Authorisation End Point are specified in [section 3.3.2](https://openid.net/specs/openid-connect-core-1_0.html#HybridAuthorizationEndpoint) of **[[OIDC]](#nref-OIDC)** and further specified under section [5.2.2](https://openid.net/specs/openid-financial-api-part-2-1_0.html#authorization-server) of **[[FAPI-1.0-Advanced]](#nref-FAPI-1-0-Advanced)**.  This end point is invoked as part of the [Hybrid Authentication flow](#hybrid-flow).
 

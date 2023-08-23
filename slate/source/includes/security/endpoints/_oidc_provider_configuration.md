@@ -2,10 +2,6 @@
 
 > Non-Normative Example
 
-```diff
-+ Adds examples for all metadata parameters required by the Data Standards and upstream normative references
-```
-
 ```
 ## Request
 
@@ -36,18 +32,18 @@ Content-Type: application/json
   "token_endpoint_auth_methods_supported": ["private_key_jwt"],
   "token_endpoint_auth_signing_alg_values_supported": ["ES256", "PS256"],
   "userinfo_endpoint": "https://www.dh.com.au/userinfo",
-  
+
   "code_challenge_methods_supported": "S256",
   "introspection_endpoint": "https://www.dh.com.au/introspect",
   "revocation_endpoint": "https://www.dh.com.au/revoke",
-  
+
   "tls_client_certificate_bound_access_tokens": true,
 
   "pushed_authorization_request_endpoint": "https://data.holder.com.au/par",
   "require_pushed_authorization_requests": true,
-  
+
   "authorization_encryption_alg_values_supported": ["RSA-OAEP", "RSA-OAEP-256"],
-  
+
   "authorization_encryption_enc_values_supported": ["A256GCM", "A128CBC-HS256"],
   "authorization_signing_alg_values_supported": ["ES256", "PS256"],
 
@@ -66,11 +62,6 @@ Data Holders MUST make their OpenID Provider Metadata available via a configurat
 
 This endpoint does not require [CORS](https://consumerdatastandardsaustralia.github.io/standards/#cors).
 
-```diff
-Replaced FAPI draft references with FAPI 1.0 Final references
-
-+ Adds all metadata parameters required by the Data Standards and upstream normative references
-```
 At a minimum, the Data Holder metadata **MUST** include:
 
 **[[OIDD]](#nref-OIDD)**
@@ -81,11 +72,11 @@ At a minimum, the Data Holder metadata **MUST** include:
 - `grant_types_supported`: The list of the OAuth 2.0 Grant Type values supported
 - `id_token_encryption_alg_values_supported`: The list of the supported JWE algorithms for securing the issued ID tokens. Must conform to **[[FAPI-RW-Draft]](#nref-FAPI-RW-Draft)** and **[[OIDD]](#nref-OIDD)**. Required for Data Holders supporting OIDC Hybrid Flow
 - `id_token_encryption_enc_values_supported`: The list of the supported JWE encryption methods for securing the issued ID tokens. Required for Data Holders supporting OIDC Hybrid Flow
-- `id_token_signing_alg_values_supported`: The list of the JWS signing algorithms (`alg` values) supported 
+- `id_token_signing_alg_values_supported`: The list of the JWS signing algorithms (`alg` values) supported
 - `issuer`: URL that the Data Holder asserts as its Issuer Identifier
 - `jwks_uri`: The JSON Web Key Set for the data holder
 - `registration_endpoint`: URL of the Client Registration End Point
-- `request_object_signing_alg_values_supported`: The list of the JWS signing algorithms (`alg` values) supported for signing request objects. 
+- `request_object_signing_alg_values_supported`: The list of the JWS signing algorithms (`alg` values) supported for signing request objects.
 - `response_modes_supported`: The list of the OAuth 2.0 `response_mode` values supported
 - `response_types_supported`: The list of the OAuth 2.0 `response_type` values supported
 - `scopes_supported`:  The list of supported scopes
@@ -122,4 +113,3 @@ Where Data Holders support authorisation response encryption according to **[[JA
 In addition, the Data Holder metadata **MUST** also include:
 
 - `cdr_arrangement_revocation_endpoint`: The URL of the CDR Arrangement Revocation End Point for consent revocation
-

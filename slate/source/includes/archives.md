@@ -4,6 +4,7 @@ The following table lists archived versions of the Consumer Data Standards.  The
 
 |Releases Date|Version|Description|
 |-------------|-------|-----------|
+|<a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.25.0/'>08/07/2023</a>|1.25.0|<a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.25.0/'>Changes arising from Decision 303 (Maintenance iteration 15) and Decision 288 (Metrics and NFRs)</a>|
 |<a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.24.0/'>07/05/2023</a>|1.24.0|<a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.24.0/'>Changes arising from Decision 281 (Maintenance iteration 14)</a>|
 |<a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.23.0/'>24/04/2023</a>|1.23.0|<a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.23.0/'>Changes arising from Decision Proposal 298</a>|
 |<a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.22.1/'>22/03/2023</a>|1.22.1|<a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.22.1/'>Patch release including updates to draft Telco standards</a>|
