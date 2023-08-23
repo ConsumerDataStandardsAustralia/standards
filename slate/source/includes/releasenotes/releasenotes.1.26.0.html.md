@@ -41,8 +41,7 @@ No Change
 
 |Change|Description|Link|
 |------|-----------|----|
-
-TBD
+| Modified Get Metrics Obligations | Changes to the obligation dates for Get Metrics v3 as determined in [Decision 322](https://github.com/ConsumerDataStandardsAustralia/standards/issues/322) | [Admin APIs](../../#admin-apis) |
 
 ## Information Security Profile
 
