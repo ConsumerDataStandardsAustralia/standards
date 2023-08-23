@@ -1100,7 +1100,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>» aud</td>
 <td><a href="#common-field-types">URIString</a></td>
 <td>mandatory</td>
-<td>&#39;Contains the Data Holder issuer value as described in the OIDC Discovery Document</td>
+<td>Contains the Data Holder issuer value as described in the OIDC Discovery Document</td>
 </tr>
 </tbody></table>
 
