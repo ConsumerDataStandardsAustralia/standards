@@ -20,6 +20,7 @@ This release addresses the following minor defects raised on [Standards Staging]
 - [Staging Issue 280 - Typo in Account Detail bundleName description](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/280)
 - [Staging Issue 271 - Typos in Get Transactions For Account parameters](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/271)
 - [Staging Issue 270 - Get Accounts V1 link in FDO](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/270)
+- [Staging Issue 268 - Remove character in aud description](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/268)
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
@@ -33,7 +34,9 @@ This release addresses the following Decision Proposals published on [Standards]
 
 ## Introduction
 
-No Change
+|Change|Description|Link|
+|------|-----------|----|
+| Broken Link | Fixed broken link to Get Accounts V1 future dated obligations section| [FDOs](../../#future-dated-obligations) |
 
 ## High Level Standards
 
@@ -46,7 +49,6 @@ No Change
 | Modified Get Metrics Obligations | Changes to the obligation dates for Get Metrics v3 as determined in [Decision 322](https://github.com/ConsumerDataStandardsAustralia/standards/issues/322) | [Admin APIs](../../#admin-apis) |
 | bundleName Typo | Typo in bundleName field description | [BankingAccountDetailV3](../../#tocSbankingaccountdetailv3) |
 | minAmount/maxAmout Typos | Typo in description of minAmount and maxAmount query parameters descriptions for Get Transactions For Account endpoint| [Get Transactions For Account](../../#get-transactions-for-account) |
-| Broken Link | Fixed broken link to Get Accounts V1 future dated obligations section| [FDOs](../../#future-dated-obligations) |
 
 ## Information Security Profile
 
@@ -54,7 +56,9 @@ No Change
 
 ## Register Standards
 
-No Change
+|Change|Description|Link|
+|------|-----------|----|
+| aud Typo | Typo in aud field description in the ClientRegistration model| [ClientRegistration](../../#tocSclientregistration) |
 
 ## Consumer Experience
 

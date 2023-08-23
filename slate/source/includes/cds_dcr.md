@@ -637,7 +637,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |» iat|[ExternalRef](#common-field-types)|mandatory|The time at which the request was issued by the Data Recipient  expressed as seconds since 1970-01-01T00:00:00Z as measured in UTC|
 |» exp|[ExternalRef](#common-field-types)|mandatory|The time at which the request expires expressed as seconds since 1970-01-01T00:00:00Z as measured in UTC|
 |» jti|string|mandatory|Unique identifier for the JWT, used to prevent replay of the token|
-|» aud|[URIString](#common-field-types)|mandatory|'Contains the Data Holder issuer value as described in the OIDC Discovery Document|
+|» aud|[URIString](#common-field-types)|mandatory|Contains the Data Holder issuer value as described in the OIDC Discovery Document|
 
 *and*
 

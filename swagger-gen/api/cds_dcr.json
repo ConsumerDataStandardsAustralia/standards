@@ -560,7 +560,7 @@
               },
               "aud": {
                 "type": "string",
-                "description": "'Contains the Data Holder issuer value as described in the OIDC Discovery Document",
+                "description": "Contains the Data Holder issuer value as described in the OIDC Discovery Document",
                 "example": "https://secure.api.dataholder.com/issuer",
                 "x-cds-type": "URIString"
               }
