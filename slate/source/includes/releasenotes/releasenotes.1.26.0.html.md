@@ -22,6 +22,7 @@ This release addresses the following minor defects raised on [Standards Staging]
 - [Staging Issue 270 - Get Accounts V1 link in FDO](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/270)
 - [Staging Issue 268 - Remove character in aud description](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/268)
 - [Staging Issue 256 - Typos in archived Register API versions](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/256)
+- [Staging Issue 253 - Apply consistent month name format](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/253)
 - [Staging Issue 237 - Review whether Code samples are useful](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/237)
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
@@ -55,7 +56,9 @@ No Change
 
 ## Information Security Profile
 
-No Change
+|Change|Description|Link|
+|------|-----------|----|
+| Consistent Date Format | Make the date formats consistent when describing the normative references| [Normative References](../../#normative-references) |
 
 ## Register Standards
 
