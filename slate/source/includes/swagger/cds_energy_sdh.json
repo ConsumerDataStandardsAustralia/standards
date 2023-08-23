@@ -77,7 +77,15 @@
           "style" : "simple"
         } ],
         "requestBody" : {
-          "$ref" : "#/components/requestBodies/servicePointIdList"
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/RequestServicePointIdList"
+              }
+            }
+          },
+          "description" : "Request payload containing list of specific Service Points to obtain data for",
+          "required" : true
         },
         "responses" : {
           "200" : {
@@ -655,7 +663,15 @@
           "style" : "simple"
         } ],
         "requestBody" : {
-          "$ref" : "#/components/requestBodies/servicePointIdList"
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/RequestServicePointIdList"
+              }
+            }
+          },
+          "description" : "Request payload containing list of specific Service Points to obtain data for",
+          "required" : true
         },
         "responses" : {
           "200" : {
@@ -972,7 +988,15 @@
           "style" : "simple"
         } ],
         "requestBody" : {
-          "$ref" : "#/components/requestBodies/servicePointIdList"
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/RequestServicePointIdList"
+              }
+            }
+          },
+          "description" : "Request payload containing list of specific Service Points to obtain data for",
+          "required" : true
         },
         "responses" : {
           "200" : {
@@ -1212,38 +1236,6 @@
           "type" : "string"
         },
         "style" : "simple"
-      }
-    },
-    "requestBodies" : {
-      "servicePointIdList" : {
-        "content" : {
-          "application/json" : {
-            "schema" : {
-              "properties" : {
-                "data" : {
-                  "properties" : {
-                    "servicePointIds" : {
-                      "description" : "Array of specific NMIs to obtain data for",
-                      "items" : {
-                        "type" : "string"
-                      },
-                      "type" : "array"
-                    }
-                  },
-                  "required" : [ "servicePointIds" ],
-                  "type" : "object"
-                },
-                "meta" : {
-                  "$ref" : "#/components/schemas/Meta"
-                }
-              },
-              "required" : [ "data", "meta" ],
-              "type" : "object"
-            }
-          }
-        },
-        "description" : "Request payload containing list of specific Service Points to obtain data for",
-        "required" : true
       }
     },
     "responses" : {
@@ -1846,6 +1838,18 @@
         "required" : [ "localityName", "postcode", "state" ],
         "type" : "object"
       },
+      "RequestServicePointIdList" : {
+        "properties" : {
+          "data" : {
+            "$ref" : "#/components/schemas/RequestServicePointIdList_data"
+          },
+          "meta" : {
+            "$ref" : "#/components/schemas/Meta"
+          }
+        },
+        "required" : [ "data" ],
+        "type" : "object"
+      },
       "Links" : {
         "properties" : {
           "self" : {
@@ -2362,6 +2366,19 @@
         "required" : [ "commissioningDate", "connectionIdentifier", "count", "derDevices", "status" ],
         "type" : "object",
         "x-conditional" : [ "manufacturerName", "inverterSeries", "inverterModelNumber", "inverterDeviceCapacity" ]
+      },
+      "RequestServicePointIdList_data" : {
+        "properties" : {
+          "servicePointIds" : {
+            "description" : "Array of specific servicePointIds to obtain data for",
+            "items" : {
+              "type" : "string"
+            },
+            "type" : "array"
+          }
+        },
+        "required" : [ "servicePointIds" ],
+        "type" : "object"
       }
     }
   }
