@@ -11,6 +11,8 @@ Corrected the obligation date for Get Metrics v5
 
 Replaced the term `obsolete` with `retire` to clarify the
 intent of these statements
+
+Fixed broken link to Get Accounts v1
 ```
 
 |Section|Description|Applicable Date|
