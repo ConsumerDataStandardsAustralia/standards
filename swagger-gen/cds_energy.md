@@ -15,23 +15,27 @@ x-min-v: string
 
 ```
 
-```javascript
-var headers = {
+```javascript--nodejs
+const fetch = require('node-fetch');
+
+const headers = {
   'Accept':'application/json',
   'x-v':'string',
   'x-min-v':'string'
 
 };
 
-$.ajax({
-  url: '/energy/plans',
-  method: 'get',
+fetch('/energy/plans',
+{
+  method: 'GET',
 
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
+  headers: headers
 })
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -169,23 +173,27 @@ x-min-v: string
 
 ```
 
-```javascript
-var headers = {
+```javascript--nodejs
+const fetch = require('node-fetch');
+
+const headers = {
   'Accept':'application/json',
   'x-v':'string',
   'x-min-v':'string'
 
 };
 
-$.ajax({
-  url: '/energy/plans/{planId}',
-  method: 'get',
+fetch('/energy/plans/{planId}',
+{
+  method: 'GET',
 
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
+  headers: headers
 })
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -773,8 +781,10 @@ x-cds-client-headers: string
 
 ```
 
-```javascript
-var headers = {
+```javascript--nodejs
+const fetch = require('node-fetch');
+
+const headers = {
   'Accept':'application/json',
   'x-v':'string',
   'x-min-v':'string',
@@ -785,15 +795,17 @@ var headers = {
 
 };
 
-$.ajax({
-  url: '/energy/electricity/servicepoints',
-  method: 'get',
+fetch('/energy/electricity/servicepoints',
+{
+  method: 'GET',
 
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
+  headers: headers
 })
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -905,8 +917,10 @@ x-cds-client-headers: string
 
 ```
 
-```javascript
-var headers = {
+```javascript--nodejs
+const fetch = require('node-fetch');
+
+const headers = {
   'Accept':'application/json',
   'x-v':'string',
   'x-min-v':'string',
@@ -917,15 +931,17 @@ var headers = {
 
 };
 
-$.ajax({
-  url: '/energy/electricity/servicepoints/{servicePointId}',
-  method: 'get',
+fetch('/energy/electricity/servicepoints/{servicePointId}',
+{
+  method: 'GET',
 
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
+  headers: headers
 })
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -1100,8 +1116,10 @@ x-cds-client-headers: string
 
 ```
 
-```javascript
-var headers = {
+```javascript--nodejs
+const fetch = require('node-fetch');
+
+const headers = {
   'Accept':'application/json',
   'x-v':'string',
   'x-min-v':'string',
@@ -1112,15 +1130,17 @@ var headers = {
 
 };
 
-$.ajax({
-  url: '/energy/electricity/servicepoints/{servicePointId}/usage',
-  method: 'get',
+fetch('/energy/electricity/servicepoints/{servicePointId}/usage',
+{
+  method: 'GET',
 
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
+  headers: headers
 })
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -1261,8 +1281,10 @@ x-cds-client-headers: string
 
 ```
 
-```javascript
-var headers = {
+```javascript--nodejs
+const fetch = require('node-fetch');
+
+const headers = {
   'Accept':'application/json',
   'x-v':'string',
   'x-min-v':'string',
@@ -1273,15 +1295,17 @@ var headers = {
 
 };
 
-$.ajax({
-  url: '/energy/electricity/servicepoints/usage',
-  method: 'get',
+fetch('/energy/electricity/servicepoints/usage',
+{
+  method: 'GET',
 
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
+  headers: headers
 })
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -1420,8 +1444,17 @@ x-cds-client-headers: string
 
 ```
 
-```javascript
-var headers = {
+```javascript--nodejs
+const fetch = require('node-fetch');
+const inputBody = '{
+  "data": {
+    "servicePointIds": [
+      "string"
+    ]
+  },
+  "meta": {}
+}';
+const headers = {
   'Content-Type':'application/json',
   'Accept':'application/json',
   'x-v':'string',
@@ -1433,15 +1466,17 @@ var headers = {
 
 };
 
-$.ajax({
-  url: '/energy/electricity/servicepoints/usage',
-  method: 'post',
-
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
+fetch('/energy/electricity/servicepoints/usage',
+{
+  method: 'POST',
+  body: inputBody,
+  headers: headers
 })
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -1596,8 +1631,10 @@ x-cds-client-headers: string
 
 ```
 
-```javascript
-var headers = {
+```javascript--nodejs
+const fetch = require('node-fetch');
+
+const headers = {
   'Accept':'application/json',
   'x-v':'string',
   'x-min-v':'string',
@@ -1608,15 +1645,17 @@ var headers = {
 
 };
 
-$.ajax({
-  url: '/energy/electricity/servicepoints/{servicePointId}/der',
-  method: 'get',
+fetch('/energy/electricity/servicepoints/{servicePointId}/der',
+{
+  method: 'GET',
 
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
+  headers: headers
 })
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -1753,8 +1792,10 @@ x-cds-client-headers: string
 
 ```
 
-```javascript
-var headers = {
+```javascript--nodejs
+const fetch = require('node-fetch');
+
+const headers = {
   'Accept':'application/json',
   'x-v':'string',
   'x-min-v':'string',
@@ -1765,15 +1806,17 @@ var headers = {
 
 };
 
-$.ajax({
-  url: '/energy/electricity/servicepoints/der',
-  method: 'get',
+fetch('/energy/electricity/servicepoints/der',
+{
+  method: 'GET',
 
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
+  headers: headers
 })
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -1923,8 +1966,17 @@ x-cds-client-headers: string
 
 ```
 
-```javascript
-var headers = {
+```javascript--nodejs
+const fetch = require('node-fetch');
+const inputBody = '{
+  "data": {
+    "servicePointIds": [
+      "string"
+    ]
+  },
+  "meta": {}
+}';
+const headers = {
   'Content-Type':'application/json',
   'Accept':'application/json',
   'x-v':'string',
@@ -1936,15 +1988,17 @@ var headers = {
 
 };
 
-$.ajax({
-  url: '/energy/electricity/servicepoints/der',
-  method: 'post',
-
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
+fetch('/energy/electricity/servicepoints/der',
+{
+  method: 'POST',
+  body: inputBody,
+  headers: headers
 })
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -2110,8 +2164,10 @@ x-cds-client-headers: string
 
 ```
 
-```javascript
-var headers = {
+```javascript--nodejs
+const fetch = require('node-fetch');
+
+const headers = {
   'Accept':'application/json',
   'x-v':'string',
   'x-min-v':'string',
@@ -2122,15 +2178,17 @@ var headers = {
 
 };
 
-$.ajax({
-  url: '/energy/accounts',
-  method: 'get',
+fetch('/energy/accounts',
+{
+  method: 'GET',
 
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
+  headers: headers
 })
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -2259,8 +2317,10 @@ x-cds-client-headers: string
 
 ```
 
-```javascript
-var headers = {
+```javascript--nodejs
+const fetch = require('node-fetch');
+
+const headers = {
   'Accept':'application/json',
   'x-v':'string',
   'x-min-v':'string',
@@ -2271,15 +2331,17 @@ var headers = {
 
 };
 
-$.ajax({
-  url: '/energy/accounts/{accountId}',
-  method: 'get',
+fetch('/energy/accounts/{accountId}',
+{
+  method: 'GET',
 
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
+  headers: headers
 })
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -2753,8 +2815,10 @@ x-cds-client-headers: string
 
 ```
 
-```javascript
-var headers = {
+```javascript--nodejs
+const fetch = require('node-fetch');
+
+const headers = {
   'Accept':'application/json',
   'x-v':'string',
   'x-min-v':'string',
@@ -2765,15 +2829,17 @@ var headers = {
 
 };
 
-$.ajax({
-  url: '/energy/accounts/{accountId}/payment-schedule',
-  method: 'get',
+fetch('/energy/accounts/{accountId}/payment-schedule',
+{
+  method: 'GET',
 
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
+  headers: headers
 })
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -2894,8 +2960,10 @@ x-cds-client-headers: string
 
 ```
 
-```javascript
-var headers = {
+```javascript--nodejs
+const fetch = require('node-fetch');
+
+const headers = {
   'Accept':'application/json',
   'x-v':'string',
   'x-min-v':'string',
@@ -2906,15 +2974,17 @@ var headers = {
 
 };
 
-$.ajax({
-  url: '/energy/accounts/{accountId}/concessions',
-  method: 'get',
+fetch('/energy/accounts/{accountId}/concessions',
+{
+  method: 'GET',
 
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
+  headers: headers
 })
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -3018,8 +3088,10 @@ x-cds-client-headers: string
 
 ```
 
-```javascript
-var headers = {
+```javascript--nodejs
+const fetch = require('node-fetch');
+
+const headers = {
   'Accept':'application/json',
   'x-v':'string',
   'x-min-v':'string',
@@ -3030,15 +3102,17 @@ var headers = {
 
 };
 
-$.ajax({
-  url: '/energy/accounts/{accountId}/balance',
-  method: 'get',
+fetch('/energy/accounts/{accountId}/balance',
+{
+  method: 'GET',
 
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
+  headers: headers
 })
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -3127,8 +3201,10 @@ x-cds-client-headers: string
 
 ```
 
-```javascript
-var headers = {
+```javascript--nodejs
+const fetch = require('node-fetch');
+
+const headers = {
   'Accept':'application/json',
   'x-v':'string',
   'x-min-v':'string',
@@ -3139,15 +3215,17 @@ var headers = {
 
 };
 
-$.ajax({
-  url: '/energy/accounts/balances',
-  method: 'get',
+fetch('/energy/accounts/balances',
+{
+  method: 'GET',
 
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
+  headers: headers
 })
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -3250,8 +3328,17 @@ x-cds-client-headers: string
 
 ```
 
-```javascript
-var headers = {
+```javascript--nodejs
+const fetch = require('node-fetch');
+const inputBody = '{
+  "data": {
+    "accountIds": [
+      "string"
+    ]
+  },
+  "meta": {}
+}';
+const headers = {
   'Content-Type':'application/json',
   'Accept':'application/json',
   'x-v':'string',
@@ -3263,15 +3350,17 @@ var headers = {
 
 };
 
-$.ajax({
-  url: '/energy/accounts/balances',
-  method: 'post',
-
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
+fetch('/energy/accounts/balances',
+{
+  method: 'POST',
+  body: inputBody,
+  headers: headers
 })
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -3390,8 +3479,10 @@ x-cds-client-headers: string
 
 ```
 
-```javascript
-var headers = {
+```javascript--nodejs
+const fetch = require('node-fetch');
+
+const headers = {
   'Accept':'application/json',
   'x-v':'string',
   'x-min-v':'string',
@@ -3402,15 +3493,17 @@ var headers = {
 
 };
 
-$.ajax({
-  url: '/energy/accounts/{accountId}/invoices',
-  method: 'get',
+fetch('/energy/accounts/{accountId}/invoices',
+{
+  method: 'GET',
 
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
+  headers: headers
 })
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -3568,8 +3661,10 @@ x-cds-client-headers: string
 
 ```
 
-```javascript
-var headers = {
+```javascript--nodejs
+const fetch = require('node-fetch');
+
+const headers = {
   'Accept':'application/json',
   'x-v':'string',
   'x-min-v':'string',
@@ -3580,15 +3675,17 @@ var headers = {
 
 };
 
-$.ajax({
-  url: '/energy/accounts/invoices',
-  method: 'get',
+fetch('/energy/accounts/invoices',
+{
+  method: 'GET',
 
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
+  headers: headers
 })
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -3744,8 +3841,17 @@ x-cds-client-headers: string
 
 ```
 
-```javascript
-var headers = {
+```javascript--nodejs
+const fetch = require('node-fetch');
+const inputBody = '{
+  "data": {
+    "accountIds": [
+      "string"
+    ]
+  },
+  "meta": {}
+}';
+const headers = {
   'Content-Type':'application/json',
   'Accept':'application/json',
   'x-v':'string',
@@ -3757,15 +3863,17 @@ var headers = {
 
 };
 
-$.ajax({
-  url: '/energy/accounts/invoices',
-  method: 'post',
-
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
+fetch('/energy/accounts/invoices',
+{
+  method: 'POST',
+  body: inputBody,
+  headers: headers
 })
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -3937,8 +4045,10 @@ x-cds-client-headers: string
 
 ```
 
-```javascript
-var headers = {
+```javascript--nodejs
+const fetch = require('node-fetch');
+
+const headers = {
   'Accept':'application/json',
   'x-v':'string',
   'x-min-v':'string',
@@ -3949,15 +4059,17 @@ var headers = {
 
 };
 
-$.ajax({
-  url: '/energy/accounts/{accountId}/billing',
-  method: 'get',
+fetch('/energy/accounts/{accountId}/billing',
+{
+  method: 'GET',
 
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
+  headers: headers
 })
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -4146,8 +4258,10 @@ x-cds-client-headers: string
 
 ```
 
-```javascript
-var headers = {
+```javascript--nodejs
+const fetch = require('node-fetch');
+
+const headers = {
   'Accept':'application/json',
   'x-v':'string',
   'x-min-v':'string',
@@ -4158,15 +4272,17 @@ var headers = {
 
 };
 
-$.ajax({
-  url: '/energy/accounts/billing',
-  method: 'get',
+fetch('/energy/accounts/billing',
+{
+  method: 'GET',
 
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
+  headers: headers
 })
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -4353,8 +4469,17 @@ x-cds-client-headers: string
 
 ```
 
-```javascript
-var headers = {
+```javascript--nodejs
+const fetch = require('node-fetch');
+const inputBody = '{
+  "data": {
+    "accountIds": [
+      "string"
+    ]
+  },
+  "meta": {}
+}';
+const headers = {
   'Content-Type':'application/json',
   'Accept':'application/json',
   'x-v':'string',
@@ -4366,15 +4491,17 @@ var headers = {
 
 };
 
-$.ajax({
-  url: '/energy/accounts/billing',
-  method: 'post',
-
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
+fetch('/energy/accounts/billing',
+{
+  method: 'POST',
+  body: inputBody,
+  headers: headers
 })
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 

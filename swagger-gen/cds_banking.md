@@ -19,8 +19,10 @@ x-cds-client-headers: string
 
 ```
 
-```javascript
-var headers = {
+```javascript--nodejs
+const fetch = require('node-fetch');
+
+const headers = {
   'Accept':'application/json',
   'x-v':'string',
   'x-min-v':'string',
@@ -31,15 +33,17 @@ var headers = {
 
 };
 
-$.ajax({
-  url: 'https://data.holder.com.au/cds-au/v1/banking/accounts',
-  method: 'get',
+fetch('https://data.holder.com.au/cds-au/v1/banking/accounts',
+{
+  method: 'GET',
 
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
+  headers: headers
 })
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -174,8 +178,10 @@ x-cds-client-headers: string
 
 ```
 
-```javascript
-var headers = {
+```javascript--nodejs
+const fetch = require('node-fetch');
+
+const headers = {
   'Accept':'application/json',
   'x-v':'string',
   'x-min-v':'string',
@@ -186,15 +192,17 @@ var headers = {
 
 };
 
-$.ajax({
-  url: 'https://data.holder.com.au/cds-au/v1/banking/accounts/balances',
-  method: 'get',
+fetch('https://data.holder.com.au/cds-au/v1/banking/accounts/balances',
+{
+  method: 'GET',
 
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
+  headers: headers
 })
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -330,8 +338,17 @@ x-cds-client-headers: string
 
 ```
 
-```javascript
-var headers = {
+```javascript--nodejs
+const fetch = require('node-fetch');
+const inputBody = '{
+  "data": {
+    "accountIds": [
+      "string"
+    ]
+  },
+  "meta": {}
+}';
+const headers = {
   'Content-Type':'application/json',
   'Accept':'application/json',
   'x-v':'string',
@@ -343,15 +360,17 @@ var headers = {
 
 };
 
-$.ajax({
-  url: 'https://data.holder.com.au/cds-au/v1/banking/accounts/balances',
-  method: 'post',
-
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
+fetch('https://data.holder.com.au/cds-au/v1/banking/accounts/balances',
+{
+  method: 'POST',
+  body: inputBody,
+  headers: headers
 })
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -477,8 +496,10 @@ x-cds-client-headers: string
 
 ```
 
-```javascript
-var headers = {
+```javascript--nodejs
+const fetch = require('node-fetch');
+
+const headers = {
   'Accept':'application/json',
   'x-v':'string',
   'x-min-v':'string',
@@ -489,15 +510,17 @@ var headers = {
 
 };
 
-$.ajax({
-  url: 'https://data.holder.com.au/cds-au/v1/banking/accounts/{accountId}/balance',
-  method: 'get',
+fetch('https://data.holder.com.au/cds-au/v1/banking/accounts/{accountId}/balance',
+{
+  method: 'GET',
 
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
+  headers: headers
 })
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -597,8 +620,10 @@ x-cds-client-headers: string
 
 ```
 
-```javascript
-var headers = {
+```javascript--nodejs
+const fetch = require('node-fetch');
+
+const headers = {
   'Accept':'application/json',
   'x-v':'string',
   'x-min-v':'string',
@@ -609,15 +634,17 @@ var headers = {
 
 };
 
-$.ajax({
-  url: 'https://data.holder.com.au/cds-au/v1/banking/accounts/{accountId}',
-  method: 'get',
+fetch('https://data.holder.com.au/cds-au/v1/banking/accounts/{accountId}',
+{
+  method: 'GET',
 
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
+  headers: headers
 })
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -898,8 +925,10 @@ x-cds-client-headers: string
 
 ```
 
-```javascript
-var headers = {
+```javascript--nodejs
+const fetch = require('node-fetch');
+
+const headers = {
   'Accept':'application/json',
   'x-v':'string',
   'x-min-v':'string',
@@ -910,15 +939,17 @@ var headers = {
 
 };
 
-$.ajax({
-  url: 'https://data.holder.com.au/cds-au/v1/banking/accounts/{accountId}/transactions',
-  method: 'get',
+fetch('https://data.holder.com.au/cds-au/v1/banking/accounts/{accountId}/transactions',
+{
+  method: 'GET',
 
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
+  headers: headers
 })
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -1054,8 +1085,10 @@ x-cds-client-headers: string
 
 ```
 
-```javascript
-var headers = {
+```javascript--nodejs
+const fetch = require('node-fetch');
+
+const headers = {
   'Accept':'application/json',
   'x-v':'string',
   'x-min-v':'string',
@@ -1066,15 +1099,17 @@ var headers = {
 
 };
 
-$.ajax({
-  url: 'https://data.holder.com.au/cds-au/v1/banking/accounts/{accountId}/transactions/{transactionId}',
-  method: 'get',
+fetch('https://data.holder.com.au/cds-au/v1/banking/accounts/{accountId}/transactions/{transactionId}',
+{
+  method: 'GET',
 
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
+  headers: headers
 })
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -1192,8 +1227,10 @@ x-cds-client-headers: string
 
 ```
 
-```javascript
-var headers = {
+```javascript--nodejs
+const fetch = require('node-fetch');
+
+const headers = {
   'Accept':'application/json',
   'x-v':'string',
   'x-min-v':'string',
@@ -1204,15 +1241,17 @@ var headers = {
 
 };
 
-$.ajax({
-  url: 'https://data.holder.com.au/cds-au/v1/banking/accounts/{accountId}/direct-debits',
-  method: 'get',
+fetch('https://data.holder.com.au/cds-au/v1/banking/accounts/{accountId}/direct-debits',
+{
+  method: 'GET',
 
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
+  headers: headers
 })
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -1325,8 +1364,10 @@ x-cds-client-headers: string
 
 ```
 
-```javascript
-var headers = {
+```javascript--nodejs
+const fetch = require('node-fetch');
+
+const headers = {
   'Accept':'application/json',
   'x-v':'string',
   'x-min-v':'string',
@@ -1337,15 +1378,17 @@ var headers = {
 
 };
 
-$.ajax({
-  url: 'https://data.holder.com.au/cds-au/v1/banking/accounts/direct-debits',
-  method: 'get',
+fetch('https://data.holder.com.au/cds-au/v1/banking/accounts/direct-debits',
+{
+  method: 'GET',
 
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
+  headers: headers
 })
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -1479,8 +1522,17 @@ x-cds-client-headers: string
 
 ```
 
-```javascript
-var headers = {
+```javascript--nodejs
+const fetch = require('node-fetch');
+const inputBody = '{
+  "data": {
+    "accountIds": [
+      "string"
+    ]
+  },
+  "meta": {}
+}';
+const headers = {
   'Content-Type':'application/json',
   'Accept':'application/json',
   'x-v':'string',
@@ -1492,15 +1544,17 @@ var headers = {
 
 };
 
-$.ajax({
-  url: 'https://data.holder.com.au/cds-au/v1/banking/accounts/direct-debits',
-  method: 'post',
-
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
+fetch('https://data.holder.com.au/cds-au/v1/banking/accounts/direct-debits',
+{
+  method: 'POST',
+  body: inputBody,
+  headers: headers
 })
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -1624,8 +1678,10 @@ x-cds-client-headers: string
 
 ```
 
-```javascript
-var headers = {
+```javascript--nodejs
+const fetch = require('node-fetch');
+
+const headers = {
   'Accept':'application/json',
   'x-v':'string',
   'x-min-v':'string',
@@ -1636,15 +1692,17 @@ var headers = {
 
 };
 
-$.ajax({
-  url: 'https://data.holder.com.au/cds-au/v1/banking/accounts/{accountId}/payments/scheduled',
-  method: 'get',
+fetch('https://data.holder.com.au/cds-au/v1/banking/accounts/{accountId}/payments/scheduled',
+{
+  method: 'GET',
 
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
+  headers: headers
 })
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -1847,8 +1905,10 @@ x-cds-client-headers: string
 
 ```
 
-```javascript
-var headers = {
+```javascript--nodejs
+const fetch = require('node-fetch');
+
+const headers = {
   'Accept':'application/json',
   'x-v':'string',
   'x-min-v':'string',
@@ -1859,15 +1919,17 @@ var headers = {
 
 };
 
-$.ajax({
-  url: 'https://data.holder.com.au/cds-au/v1/banking/payments/scheduled',
-  method: 'get',
+fetch('https://data.holder.com.au/cds-au/v1/banking/payments/scheduled',
+{
+  method: 'GET',
 
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
+  headers: headers
 })
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -2091,8 +2153,17 @@ x-cds-client-headers: string
 
 ```
 
-```javascript
-var headers = {
+```javascript--nodejs
+const fetch = require('node-fetch');
+const inputBody = '{
+  "data": {
+    "accountIds": [
+      "string"
+    ]
+  },
+  "meta": {}
+}';
+const headers = {
   'Content-Type':'application/json',
   'Accept':'application/json',
   'x-v':'string',
@@ -2104,15 +2175,17 @@ var headers = {
 
 };
 
-$.ajax({
-  url: 'https://data.holder.com.au/cds-au/v1/banking/payments/scheduled',
-  method: 'post',
-
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
+fetch('https://data.holder.com.au/cds-au/v1/banking/payments/scheduled',
+{
+  method: 'POST',
+  body: inputBody,
+  headers: headers
 })
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -2326,8 +2399,10 @@ x-cds-client-headers: string
 
 ```
 
-```javascript
-var headers = {
+```javascript--nodejs
+const fetch = require('node-fetch');
+
+const headers = {
   'Accept':'application/json',
   'x-v':'string',
   'x-min-v':'string',
@@ -2338,15 +2413,17 @@ var headers = {
 
 };
 
-$.ajax({
-  url: 'https://data.holder.com.au/cds-au/v1/banking/payees',
-  method: 'get',
+fetch('https://data.holder.com.au/cds-au/v1/banking/payees',
+{
+  method: 'GET',
 
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
+  headers: headers
 })
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -2464,8 +2541,10 @@ x-cds-client-headers: string
 
 ```
 
-```javascript
-var headers = {
+```javascript--nodejs
+const fetch = require('node-fetch');
+
+const headers = {
   'Accept':'application/json',
   'x-v':'string',
   'x-min-v':'string',
@@ -2476,15 +2555,17 @@ var headers = {
 
 };
 
-$.ajax({
-  url: 'https://data.holder.com.au/cds-au/v1/banking/payees/{payeeId}',
-  method: 'get',
+fetch('https://data.holder.com.au/cds-au/v1/banking/payees/{payeeId}',
+{
+  method: 'GET',
 
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
+  headers: headers
 })
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -2628,23 +2709,27 @@ x-min-v: string
 
 ```
 
-```javascript
-var headers = {
+```javascript--nodejs
+const fetch = require('node-fetch');
+
+const headers = {
   'Accept':'application/json',
   'x-v':'string',
   'x-min-v':'string'
 
 };
 
-$.ajax({
-  url: 'https://data.holder.com.au/cds-au/v1/banking/products',
-  method: 'get',
+fetch('https://data.holder.com.au/cds-au/v1/banking/products',
+{
+  method: 'GET',
 
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
+  headers: headers
 })
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -2843,23 +2928,27 @@ x-min-v: string
 
 ```
 
-```javascript
-var headers = {
+```javascript--nodejs
+const fetch = require('node-fetch');
+
+const headers = {
   'Accept':'application/json',
   'x-v':'string',
   'x-min-v':'string'
 
 };
 
-$.ajax({
-  url: 'https://data.holder.com.au/cds-au/v1/banking/products/{productId}',
-  method: 'get',
+fetch('https://data.holder.com.au/cds-au/v1/banking/products/{productId}',
+{
+  method: 'GET',
 
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
+  headers: headers
 })
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 

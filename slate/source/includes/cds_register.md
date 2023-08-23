@@ -13,21 +13,25 @@ Accept: application/json
 
 ```
 
-```javascript
-var headers = {
+```javascript--nodejs
+const fetch = require('node-fetch');
+
+const headers = {
   'Accept':'application/json'
 
 };
 
-$.ajax({
-  url: 'https://<register-base-url>/idp/.well-known/openid-configuration',
-  method: 'get',
+fetch('https://<register-base-url>/idp/.well-known/openid-configuration',
+{
+  method: 'GET',
 
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
+  headers: headers
 })
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -108,21 +112,25 @@ Accept: application/json
 
 ```
 
-```javascript
-var headers = {
+```javascript--nodejs
+const fetch = require('node-fetch');
+
+const headers = {
   'Accept':'application/json'
 
 };
 
-$.ajax({
-  url: 'https://<register-base-url>/cdr-register/v1/jwks',
-  method: 'get',
+fetch('https://<register-base-url>/cdr-register/v1/jwks',
+{
+  method: 'GET',
 
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
+  headers: headers
 })
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -187,8 +195,10 @@ x-min-v: string
 
 ```
 
-```javascript
-var headers = {
+```javascript--nodejs
+const fetch = require('node-fetch');
+
+const headers = {
   'Accept':'application/json',
   'Authorization':'string',
   'x-v':'1',
@@ -196,15 +206,17 @@ var headers = {
 
 };
 
-$.ajax({
-  url: 'https://<register-base-url>/cdr-register/v1/{industry}/data-holders/brands',
-  method: 'get',
+fetch('https://<register-base-url>/cdr-register/v1/{industry}/data-holders/brands',
+{
+  method: 'GET',
 
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
+  headers: headers
 })
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -341,8 +353,10 @@ If-None-Match: string
 
 ```
 
-```javascript
-var headers = {
+```javascript--nodejs
+const fetch = require('node-fetch');
+
+const headers = {
   'Accept':'application/json',
   'x-v':'string',
   'x-min-v':'string',
@@ -350,15 +364,17 @@ var headers = {
 
 };
 
-$.ajax({
-  url: 'https://<register-base-url>/cdr-register/v1/{industry}/data-holders/brands/summary',
-  method: 'get',
+fetch('https://<register-base-url>/cdr-register/v1/{industry}/data-holders/brands/summary',
+{
+  method: 'GET',
 
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
+  headers: headers
 })
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -459,8 +475,10 @@ Authorization: string
 
 ```
 
-```javascript
-var headers = {
+```javascript--nodejs
+const fetch = require('node-fetch');
+
+const headers = {
   'Accept':'application/json',
   'x-v':'1',
   'x-min-v':'string',
@@ -468,15 +486,17 @@ var headers = {
 
 };
 
-$.ajax({
-  url: 'https://<register-base-url>/cdr-register/v1/{industry}/data-recipients/brands/{dataRecipientBrandId}/software-products/{softwareProductId}/ssa',
-  method: 'get',
+fetch('https://<register-base-url>/cdr-register/v1/{industry}/data-recipients/brands/{dataRecipientBrandId}/software-products/{softwareProductId}/ssa',
+{
+  method: 'GET',
 
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
+  headers: headers
 })
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -563,8 +583,10 @@ If-None-Match: string
 
 ```
 
-```javascript
-var headers = {
+```javascript--nodejs
+const fetch = require('node-fetch');
+
+const headers = {
   'Accept':'application/json',
   'x-v':'1',
   'x-min-v':'string',
@@ -572,15 +594,17 @@ var headers = {
 
 };
 
-$.ajax({
-  url: 'https://<register-base-url>/cdr-register/v1/{industry}/data-holders/status',
-  method: 'get',
+fetch('https://<register-base-url>/cdr-register/v1/{industry}/data-holders/status',
+{
+  method: 'GET',
 
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
+  headers: headers
 })
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -670,8 +694,10 @@ If-None-Match: string
 
 ```
 
-```javascript
-var headers = {
+```javascript--nodejs
+const fetch = require('node-fetch');
+
+const headers = {
   'Accept':'application/json',
   'x-v':'1',
   'x-min-v':'string',
@@ -679,15 +705,17 @@ var headers = {
 
 };
 
-$.ajax({
-  url: 'https://<register-base-url>/cdr-register/v1/{industry}/data-recipients/brands/software-products/status',
-  method: 'get',
+fetch('https://<register-base-url>/cdr-register/v1/{industry}/data-recipients/brands/software-products/status',
+{
+  method: 'GET',
 
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
+  headers: headers
 })
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -779,8 +807,10 @@ If-None-Match: string
 
 ```
 
-```javascript
-var headers = {
+```javascript--nodejs
+const fetch = require('node-fetch');
+
+const headers = {
   'Accept':'application/json',
   'x-v':'1',
   'x-min-v':'string',
@@ -788,15 +818,17 @@ var headers = {
 
 };
 
-$.ajax({
-  url: 'https://<register-base-url>/cdr-register/v1/{industry}/data-recipients/status',
-  method: 'get',
+fetch('https://<register-base-url>/cdr-register/v1/{industry}/data-recipients/status',
+{
+  method: 'GET',
 
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
+  headers: headers
 })
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -888,8 +920,10 @@ If-None-Match: string
 
 ```
 
-```javascript
-var headers = {
+```javascript--nodejs
+const fetch = require('node-fetch');
+
+const headers = {
   'Accept':'application/json',
   'x-v':'2',
   'x-min-v':'string',
@@ -897,15 +931,17 @@ var headers = {
 
 };
 
-$.ajax({
-  url: 'https://<register-base-url>/cdr-register/v1/{industry}/data-recipients',
-  method: 'get',
+fetch('https://<register-base-url>/cdr-register/v1/{industry}/data-recipients',
+{
+  method: 'GET',
 
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
+  headers: headers
 })
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
