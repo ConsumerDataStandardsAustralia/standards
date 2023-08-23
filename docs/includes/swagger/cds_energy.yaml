@@ -1217,7 +1217,13 @@ paths:
         x-conditional: true
         x-cds-type: Base64
       requestBody:
-        $ref: '#/components/requestBodies/servicePointIdList'
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestServicePointIdList'
+        description: Request payload containing list of specific Service Points to
+          obtain data for
+        required: true
       responses:
         "200":
           content:
@@ -1764,7 +1770,13 @@ paths:
         x-conditional: true
         x-cds-type: Base64
       requestBody:
-        $ref: '#/components/requestBodies/servicePointIdList'
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestServicePointIdList'
+        description: Request payload containing list of specific Service Points to
+          obtain data for
+        required: true
       responses:
         "200":
           content:
@@ -3052,7 +3064,13 @@ paths:
         x-conditional: true
         x-cds-type: Base64
       requestBody:
-        $ref: '#/components/requestBodies/accountIdList'
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestAccountIdList'
+        description: Request payload containing list of specific Accounts to obtain
+          data for
+        required: true
       responses:
         "200":
           content:
@@ -3701,7 +3719,13 @@ paths:
         x-conditional: true
         x-cds-type: Base64
       requestBody:
-        $ref: '#/components/requestBodies/accountIdList'
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestAccountIdList'
+        description: Request payload containing list of specific Accounts to obtain
+          data for
+        required: true
       responses:
         "200":
           content:
@@ -4359,7 +4383,13 @@ paths:
         x-conditional: true
         x-cds-type: Base64
       requestBody:
-        $ref: '#/components/requestBodies/accountIdList'
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestAccountIdList'
+        description: Request payload containing list of specific Accounts to obtain
+          data for
+        required: true
       responses:
         "200":
           content:
@@ -4674,54 +4704,6 @@ components:
       style: simple
       x-conditional: true
       x-cds-type: Base64
-  requestBodies:
-    servicePointIdList:
-      content:
-        application/json:
-          schema:
-            properties:
-              data:
-                properties:
-                  servicePointIds:
-                    description: Array of specific servicePointIds to obtain data
-                      for
-                    items:
-                      type: string
-                    type: array
-                required:
-                - servicePointIds
-                type: object
-              meta:
-                $ref: '#/components/schemas/Meta'
-            required:
-            - data
-            type: object
-      description: Request payload containing list of specific Service Points to obtain
-        data for
-      required: true
-    accountIdList:
-      content:
-        application/json:
-          schema:
-            properties:
-              data:
-                properties:
-                  accountIds:
-                    description: Array of specific accountIds to obtain data for
-                    items:
-                      type: string
-                    type: array
-                required:
-                - accountIds
-                type: object
-              meta:
-                $ref: '#/components/schemas/Meta'
-            required:
-            - data
-            type: object
-      description: Request payload containing list of specific Accounts to obtain
-        data for
-      required: true
   responses:
     planList:
       content:
@@ -9817,6 +9799,36 @@ components:
       - postcode
       - state
       type: object
+    RequestServicePointIdList:
+      example:
+        data:
+          servicePointIds:
+          - servicePointIds
+          - servicePointIds
+        meta: '{}'
+      properties:
+        data:
+          $ref: '#/components/schemas/RequestServicePointIdList_data'
+        meta:
+          type: object
+      required:
+      - data
+      type: object
+    RequestAccountIdList:
+      example:
+        data:
+          accountIds:
+          - accountIds
+          - accountIds
+        meta: '{}'
+      properties:
+        data:
+          $ref: '#/components/schemas/RequestAccountIdList_data'
+        meta:
+          type: object
+      required:
+      - data
+      type: object
     Links:
       example:
         self: self
@@ -11885,4 +11897,32 @@ components:
       required:
       - amount
       - description
+      type: object
+    RequestServicePointIdList_data:
+      example:
+        servicePointIds:
+        - servicePointIds
+        - servicePointIds
+      properties:
+        servicePointIds:
+          description: Array of specific servicePointIds to obtain data for
+          items:
+            type: string
+          type: array
+      required:
+      - servicePointIds
+      type: object
+    RequestAccountIdList_data:
+      example:
+        accountIds:
+        - accountIds
+        - accountIds
+      properties:
+        accountIds:
+          description: Array of specific accountIds to obtain data for
+          items:
+            type: string
+          type: array
+      required:
+      - accountIds
       type: object

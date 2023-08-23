@@ -2315,30 +2315,9 @@ x-cds-client-headers: string
 <tr>
 <td>body</td>
 <td>body</td>
-<td><a href="#schemacdr-energy-apiservicepointidlist">servicePointIdList</a></td>
+<td><a href="#schemacdr-energy-apirequestservicepointidlist">RequestServicePointIdList</a></td>
 <td>mandatory</td>
 <td>Request payload containing list of specific Service Points to obtain data for</td>
-</tr>
-<tr>
-<td>» data</td>
-<td>body</td>
-<td>object</td>
-<td>mandatory</td>
-<td>none</td>
-</tr>
-<tr>
-<td>»» servicePointIds</td>
-<td>body</td>
-<td>[string]</td>
-<td>mandatory</td>
-<td>Array of specific servicePointIds to obtain data for</td>
-</tr>
-<tr>
-<td>» meta</td>
-<td>body</td>
-<td><a href="#schemacdr-energy-apimeta">Meta</a></td>
-<td>optional</td>
-<td>none</td>
 </tr>
 </tbody></table>
 <h4 id='enumerated-values-4'>Enumerated Values</h4>
@@ -3205,30 +3184,9 @@ x-cds-client-headers: string
 <tr>
 <td>body</td>
 <td>body</td>
-<td><a href="#schemacdr-energy-apiservicepointidlist">servicePointIdList</a></td>
+<td><a href="#schemacdr-energy-apirequestservicepointidlist">RequestServicePointIdList</a></td>
 <td>mandatory</td>
 <td>Request payload containing list of specific Service Points to obtain data for</td>
-</tr>
-<tr>
-<td>» data</td>
-<td>body</td>
-<td>object</td>
-<td>mandatory</td>
-<td>none</td>
-</tr>
-<tr>
-<td>»» servicePointIds</td>
-<td>body</td>
-<td>[string]</td>
-<td>mandatory</td>
-<td>Array of specific servicePointIds to obtain data for</td>
-</tr>
-<tr>
-<td>» meta</td>
-<td>body</td>
-<td><a href="#schemacdr-energy-apimeta">Meta</a></td>
-<td>optional</td>
-<td>none</td>
 </tr>
 </tbody></table>
 
@@ -5382,30 +5340,9 @@ x-cds-client-headers: string
 <tr>
 <td>body</td>
 <td>body</td>
-<td><a href="#schemacdr-energy-apiaccountidlist">accountIdList</a></td>
+<td><a href="#schemacdr-energy-apirequestaccountidlist">RequestAccountIdList</a></td>
 <td>mandatory</td>
 <td>Request payload containing list of specific Accounts to obtain data for</td>
-</tr>
-<tr>
-<td>» data</td>
-<td>body</td>
-<td>object</td>
-<td>mandatory</td>
-<td>none</td>
-</tr>
-<tr>
-<td>»» accountIds</td>
-<td>body</td>
-<td>[string]</td>
-<td>mandatory</td>
-<td>Array of specific accountIds to obtain data for</td>
-</tr>
-<tr>
-<td>» meta</td>
-<td>body</td>
-<td><a href="#schemacdr-energy-apimeta">Meta</a></td>
-<td>optional</td>
-<td>none</td>
 </tr>
 </tbody></table>
 
@@ -6315,30 +6252,9 @@ x-cds-client-headers: string
 <tr>
 <td>body</td>
 <td>body</td>
-<td><a href="#schemacdr-energy-apiaccountidlist">accountIdList</a></td>
+<td><a href="#schemacdr-energy-apirequestaccountidlist">RequestAccountIdList</a></td>
 <td>mandatory</td>
 <td>Request payload containing list of specific Accounts to obtain data for</td>
-</tr>
-<tr>
-<td>» data</td>
-<td>body</td>
-<td>object</td>
-<td>mandatory</td>
-<td>none</td>
-</tr>
-<tr>
-<td>»» accountIds</td>
-<td>body</td>
-<td>[string]</td>
-<td>mandatory</td>
-<td>Array of specific accountIds to obtain data for</td>
-</tr>
-<tr>
-<td>» meta</td>
-<td>body</td>
-<td><a href="#schemacdr-energy-apimeta">Meta</a></td>
-<td>optional</td>
-<td>none</td>
 </tr>
 </tbody></table>
 
@@ -7363,30 +7279,9 @@ x-cds-client-headers: string
 <tr>
 <td>body</td>
 <td>body</td>
-<td><a href="#schemacdr-energy-apiaccountidlist">accountIdList</a></td>
+<td><a href="#schemacdr-energy-apirequestaccountidlist">RequestAccountIdList</a></td>
 <td>mandatory</td>
 <td>Request payload containing list of specific Accounts to obtain data for</td>
-</tr>
-<tr>
-<td>» data</td>
-<td>body</td>
-<td>object</td>
-<td>mandatory</td>
-<td>none</td>
-</tr>
-<tr>
-<td>»» accountIds</td>
-<td>body</td>
-<td>[string]</td>
-<td>mandatory</td>
-<td>Array of specific accountIds to obtain data for</td>
-</tr>
-<tr>
-<td>» meta</td>
-<td>body</td>
-<td><a href="#schemacdr-energy-apimeta">Meta</a></td>
-<td>optional</td>
-<td>none</td>
 </tr>
 </tbody></table>
 
@@ -17592,6 +17487,88 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
+<h3 class="schema-toc" id="tocSrequestservicepointidlist">RequestServicePointIdList</h3>
+
+<p><a id="schemacdr-energy-apirequestservicepointidlist"></a></p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"servicePointIds"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"string"</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre><h3 id='properties-51'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>data</td>
+<td>object</td>
+<td>mandatory</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» servicePointIds</td>
+<td>[string]</td>
+<td>mandatory</td>
+<td>Array of specific servicePointIds to obtain data for</td>
+</tr>
+<tr>
+<td>meta</td>
+<td><a href="#schemacdr-energy-apimeta">Meta</a></td>
+<td>optional</td>
+<td>none</td>
+</tr>
+</tbody></table>
+
+<h3 class="schema-toc" id="tocSrequestaccountidlist">RequestAccountIdList</h3>
+
+<p><a id="schemacdr-energy-apirequestaccountidlist"></a></p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"accountIds"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"string"</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre><h3 id='properties-52'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>data</td>
+<td>object</td>
+<td>mandatory</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» accountIds</td>
+<td>[string]</td>
+<td>mandatory</td>
+<td>Array of specific accountIds to obtain data for</td>
+</tr>
+<tr>
+<td>meta</td>
+<td><a href="#schemacdr-energy-apimeta">Meta</a></td>
+<td>optional</td>
+<td>none</td>
+</tr>
+</tbody></table>
+
 <h3 class="schema-toc" id="tocSlinks">Links</h3>
 
 <p><a id="schemacdr-energy-apilinks"></a></p>
@@ -17599,7 +17576,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-51'>Properties</h3>
+</span></code></pre><h3 id='properties-53'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -17621,7 +17598,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <p><a id="schemacdr-energy-apimeta"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{}</span><span class="w">
 
-</span></code></pre><h3 id='properties-52'>Properties</h3>
+</span></code></pre><h3 id='properties-54'>Properties</h3>
 <p><em>None</em></p>
 
 <h3 class="schema-toc" id="tocSlinkspaginated">LinksPaginated</h3>
@@ -17635,7 +17612,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="s2">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-53'>Properties</h3>
+</span></code></pre><h3 id='properties-55'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -17684,7 +17661,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="s2">"totalPages"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-54'>Properties</h3>
+</span></code></pre><h3 id='properties-56'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>

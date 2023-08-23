@@ -105,6 +105,10 @@ Decoded SSA
 
 The SSA will conform to the requirements of **[[DCR]](#nref-DCR)** with the following clarifications:
 
+```diff
+Fixed several broken links
+```
+
 | Client Metadata | Required | Modifiable | Description
 |--------------|-------|-------|----------------------------------------------------------------------------------------
 |**iss**|	Required | | Contains the `iss` (issuer) claim denoting the party attesting to the claims in the software statement</br>**value: "cdr-register"**
@@ -124,11 +128,11 @@ The SSA will conform to the requirements of **[[DCR]](#nref-DCR)** with the foll
 |**tos_uri**|	Optional | <i class="icon-check"></i> | URL string that points to a human-readable terms of service document for the Software Product
 |**policy_uri**|	Optional | <i class="icon-check"></i> | URL string that points to a human-readable policy document for the Software Product
 |**jwks_uri**|	Required | <i class="icon-check"></i> | URL string referencing the client's JSON Web Key (JWK) Set **[[RFC7517]](#nref-RFC7517)** document, which contains the client's public keys
-|**revocation_uri**| Required | <i class="icon-check"></i>  | URI string that references the location of the Software Product consent revocation endpoint as per Consumer Data Standards [Endpoints](https://consumerdatastandardsaustralia.github.io/standards/#end-points)
-|**recipient_base_uri**| Required | <i class="icon-check"></i>  | Base URI for the Consumer Data Standard Data Recipient endpoints. This **SHOULD** be the base to provide reference to all other [Data Recipient Endpoints](https://consumerdatastandardsaustralia.github.io/standards/#end-points)
+|**revocation_uri**| Required | <i class="icon-check"></i>  | URI string that references the location of the Software Product consent revocation endpoint as per Consumer Data Standards [Endpoints](#security-endpoints)
+|**recipient_base_uri**| Required | <i class="icon-check"></i>  | Base URI for the Consumer Data Standard Data Recipient endpoints. This **SHOULD** be the base to provide reference to all other [Data Recipient Endpoints](#security-endpoints)
 |**software_id**|	Required | | String representing a unique identifier assigned by the Register and used by registration endpoints to identify the software product to be dynamically registered. </br></br>The `software_id` will remain the same across multiple updates or versions of the same piece of software.</br>The `software_id` **SHOULD** be used as the primary external identifier for the client to prevent duplicate client registrations
 |**software_roles**| Required | | String containing a role of the software in the CDR Regime. Initially the only value used with be **“data-recipient-software-product”**
-|**scope**|	Required | <i class="icon-check"></i> | String containing a space-separated list of scope values that the client can use when requesting access tokens. </br>These CDS scope values are defined at: [Authorisation Scopes](https://consumerdatastandardsaustralia.github.io/standards/#authorisation-scopes)</br>The DCR scope value is defined at: [Client Registration Management](#client-registration-management)</br></br>As per the [CDS Scopes and Claims](https://consumerdatastandardsaustralia.github.io/standards/#scopes-and-claims), **openid** and **profile** are included in the SSA
+|**scope**|	Required | <i class="icon-check"></i> | String containing a space-separated list of scope values that the client can use when requesting access tokens. </br>These CDS scope values are defined at: [Authorisation Scopes](#authorisation-scopes)</br>The DCR scope value is defined at: [Client Registration Management](#registration-management)</br></br>As per the [CDS Scopes and Claims](#scopes-and-claims), **openid** and **profile** are included in the SSA
 
 Get Software Statement Assertion API [v1](includes/obsolete/get-software-statement-assertion-v1.html) & [v2](includes/obsolete/get-software-statement-assertion-v2.html) has the scope claim explicitly defined.
 
@@ -236,13 +240,17 @@ To register with a Data Holder, the Data Recipient sends an HTTP POST to the Dat
 
 The client registration request **MUST** contain the following claims in the JWT payload unless designated as Optional:
 
+```diff
+Fixed several broken links
+```
+
 | Claim | Required | Description
 |--------------|-------|-----------------------------------------------------------------------------------------------
 |**iss**|	Required | Contains the identifier for the Data Recipient Software Product (SoftwareProductId) as defined in the CDR Register
 |**iat**|	Required | The time at which the request was issued by the Data Recipient  expressed as seconds since 1970-01-01T00:00:00Z as measured in UTC
 |**exp**|	Required | The time at which the request expires expressed as seconds since 1970-01-01T00:00:00Z as measured in UTC
 |**jti**|	Required | Unique identifier for the JWT, used to prevent reuse of the token.
-|**aud**|	Required | Contains the DH issuer value as described in the [OIDC Discovery Document](https://consumerdatastandardsaustralia.github.io/standards/#end-points)
+|**aud**|	Required | Contains the DH issuer value as described in the [OIDC Discovery Document](#security-endpoints)
 |**redirect_uris**|	Optional | Array of redirection URI strings for use in redirect-based flows. If used, redirect_uris **MUST** match or be a subset of the redirect_uris as defined in the SSA
 |**token_endpoint_auth_method**| Required | The requested authentication method for the token endpoint. The only supported method will be **private_key_jwt**
 |**token_endpoint_auth_signing_alg**| Required | The algorithm used for signing the JWT
@@ -459,7 +467,7 @@ Duplicate registrations are not permitted so attempts to create a registration w
 
 Registration error responses schemas are defined in the [DCR APIs](#dcr-apis) section.
 
-For those Registration errors which do not map to [Section 3.2.2](https://tools.ietf.org/html/rfc7591#section-3.2.2) of **[[DCR]](#nref-DCR)**, [HTTP Response Codes](https://consumerdatastandardsaustralia.github.io/standards/#http-response-codes) in the Consumer Data Standards **SHOULD** be used.
+For those Registration errors which do not map to [Section 3.2.2](https://tools.ietf.org/html/rfc7591#section-3.2.2) of **[[DCR]](#nref-DCR)**, [HTTP Response Codes](#http-response-codes) in the Consumer Data Standards **SHOULD** be used.
 
 
 ### Registration Management

@@ -1104,6 +1104,12 @@
                                 <a href="#tocScommonpafaddress" class="toc-h3 toc-link" data-title="CommonPAFAddress">CommonPAFAddress</a>
                               </li>
                               <li>
+                                <a href="#tocSrequestservicepointidlist" class="toc-h3 toc-link" data-title="RequestServicePointIdList">RequestServicePointIdList</a>
+                              </li>
+                              <li>
+                                <a href="#tocSrequestaccountidlist" class="toc-h3 toc-link" data-title="RequestAccountIdList">RequestAccountIdList</a>
+                              </li>
+                              <li>
                                 <a href="#tocSlinks" class="toc-h3 toc-link" data-title="Links">Links</a>
                               </li>
                               <li>
@@ -1341,6 +1347,9 @@
                               </li>
                               <li>
                                 <a href="#tocScommonpafaddress" class="toc-h3 toc-link" data-title="CommonPAFAddress">CommonPAFAddress</a>
+                              </li>
+                              <li>
+                                <a href="#tocSrequestservicepointidlist" class="toc-h3 toc-link" data-title="RequestServicePointIdList">RequestServicePointIdList</a>
                               </li>
                               <li>
                                 <a href="#tocSlinks" class="toc-h3 toc-link" data-title="Links">Links</a>
@@ -3446,14 +3455,12 @@ standards</li>
 
 <p>An optional header <code>x-&lt;HID&gt;-v</code> will be supported for all end points that can be used by the data consumer to request a specific version of extension fields to include in the response.  See the section on <a href="#http-headers">HTTP Headers</a> for more information on the use of this header.</p>
 <h1 style="display:none"></h1>
-<h1 id='consumer-experience'>Consumer Experience</h1>
-<p>The Consumer Experience (CX) Standards contain requirements for the creation of implementations by both Data Recipients and Data Holders. The full list of CX Standards can be found <a href="#consumer-experience-standards">below</a>.</p>
-
-<p>The CX Guidelines provide examples and recommendations for how to implement key rules and standards that relate to the consumer experience. They can be found along with additional CX commentary at:<br/></p>
-
-<ul>
-<li><a href='https://consumerdatastandards.gov.au/guidelines-and-conventions/consumer-experience-guidelines/'>CX Guidelines</a></li>
-</ul>
+<h1 id='consumer-experience'>Consumer Experience</h1><pre class="highlight diff tab-diff"><code>Removed broken link in the introductory paragraph
+</code></pre>
+<p>The Consumer Experience (CX) Standards contain requirements for the creation of implementations by both Data Recipients and Data Holders. The full list of CX Standards can be found below.</p>
+<pre class="highlight diff tab-diff"><code>Moved link to CX Guidelines to an inline link
+</code></pre>
+<p>The CX Guidelines provide examples and recommendations for how to implement key rules and standards that relate to the consumer experience. They can be accessed along with additional CX commentary from the <a href="https://consumerdatastandards.gov.au/guidelines-and-conventions/consumer-experience-guidelines/">CX Guidelines</a> page.</p>
 <h2 id='data-language-standards-common'>Data Language Standards: Common</h2>
 
 <blockquote>
@@ -4743,7 +4750,8 @@ grant_type=client_credentials&amp;
 
 </code></pre>
 <p>The SSA will conform to the requirements of <strong><a href="#nref-DCR">[DCR]</a></strong> with the following clarifications:</p>
-
+<pre class="highlight diff tab-diff"><code>Fixed several broken links
+</code></pre>
 <table><thead>
 <tr>
 <th>Client Metadata</th>
@@ -4858,13 +4866,13 @@ grant_type=client_credentials&amp;
 <td><strong>revocation_uri</strong></td>
 <td>Required</td>
 <td><i class="icon-check"></i></td>
-<td>URI string that references the location of the Software Product consent revocation endpoint as per Consumer Data Standards <a href="https://consumerdatastandardsaustralia.github.io/standards/#end-points">Endpoints</a></td>
+<td>URI string that references the location of the Software Product consent revocation endpoint as per Consumer Data Standards <a href="#security-endpoints">Endpoints</a></td>
 </tr>
 <tr>
 <td><strong>recipient_base_uri</strong></td>
 <td>Required</td>
 <td><i class="icon-check"></i></td>
-<td>Base URI for the Consumer Data Standard Data Recipient endpoints. This <strong>SHOULD</strong> be the base to provide reference to all other <a href="https://consumerdatastandardsaustralia.github.io/standards/#end-points">Data Recipient Endpoints</a></td>
+<td>Base URI for the Consumer Data Standard Data Recipient endpoints. This <strong>SHOULD</strong> be the base to provide reference to all other <a href="#security-endpoints">Data Recipient Endpoints</a></td>
 </tr>
 <tr>
 <td><strong>software_id</strong></td>
@@ -4882,7 +4890,7 @@ grant_type=client_credentials&amp;
 <td><strong>scope</strong></td>
 <td>Required</td>
 <td><i class="icon-check"></i></td>
-<td>String containing a space-separated list of scope values that the client can use when requesting access tokens. </br>These CDS scope values are defined at: <a href="https://consumerdatastandardsaustralia.github.io/standards/#authorisation-scopes">Authorisation Scopes</a></br>The DCR scope value is defined at: <a href="#client-registration-management">Client Registration Management</a></br></br>As per the <a href="https://consumerdatastandardsaustralia.github.io/standards/#scopes-and-claims">CDS Scopes and Claims</a>, <strong>openid</strong> and <strong>profile</strong> are included in the SSA</td>
+<td>String containing a space-separated list of scope values that the client can use when requesting access tokens. </br>These CDS scope values are defined at: <a href="#authorisation-scopes">Authorisation Scopes</a></br>The DCR scope value is defined at: <a href="#registration-management">Client Registration Management</a></br></br>As per the <a href="#scopes-and-claims">CDS Scopes and Claims</a>, <strong>openid</strong> and <strong>profile</strong> are included in the SSA</td>
 </tr>
 </tbody></table>
 
@@ -4987,7 +4995,8 @@ Accept: application/json
 </ul>
 
 <p>The client registration request <strong>MUST</strong> contain the following claims in the JWT payload unless designated as Optional:</p>
-
+<pre class="highlight diff tab-diff"><code>Fixed several broken links
+</code></pre>
 <table><thead>
 <tr>
 <th>Claim</th>
@@ -5018,7 +5027,7 @@ Accept: application/json
 <tr>
 <td><strong>aud</strong></td>
 <td>Required</td>
-<td>Contains the DH issuer value as described in the <a href="https://consumerdatastandardsaustralia.github.io/standards/#end-points">OIDC Discovery Document</a></td>
+<td>Contains the DH issuer value as described in the <a href="#security-endpoints">OIDC Discovery Document</a></td>
 </tr>
 <tr>
 <td><strong>redirect_uris</strong></td>
@@ -5309,7 +5318,7 @@ Content-Type: application/json
 
 <p>Registration error responses schemas are defined in the <a href="#dcr-apis">DCR APIs</a> section.</p>
 
-<p>For those Registration errors which do not map to <a href="https://tools.ietf.org/html/rfc7591#section-3.2.2">Section 3.2.2</a> of <strong><a href="#nref-DCR">[DCR]</a></strong>, <a href="https://consumerdatastandardsaustralia.github.io/standards/#http-response-codes">HTTP Response Codes</a> in the Consumer Data Standards <strong>SHOULD</strong> be used.</p>
+<p>For those Registration errors which do not map to <a href="https://tools.ietf.org/html/rfc7591#section-3.2.2">Section 3.2.2</a> of <strong><a href="#nref-DCR">[DCR]</a></strong>, <a href="#http-response-codes">HTTP Response Codes</a> in the Consumer Data Standards <strong>SHOULD</strong> be used.</p>
 <h3 id='registration-management'>Registration Management</h3>
 <blockquote>
 <p>Non-Normative Example for access token retrieval to perform registration management</p>
@@ -5561,8 +5570,9 @@ grant_type=client_credentials&amp;
 </ul>
 <h3 id='metadata-cache-management'>Metadata Cache Management</h3>
 <p>Data Holders <strong>MUST</strong> react to Data Recipient and associated Software Statuses changes within <strong>5 minutes</strong> of the change occurring on the CDR Register.</p>
-
-<p>To achieve this, Data Holders will poll the <a href="#getdatarecipientsstatus">GetDataRecipientsStatus</a>, <a href="#getsoftwareproductsstatus">GetSoftwareProductsStatus</a> and <a href="#getdatarecipients">GetDataRecipients</a> APIs to retrieve the current statuses and cache these for use during requests for Consumer Data.</p>
+<pre class="highlight diff tab-diff"><code>Fixed several broken links
+</code></pre>
+<p>To achieve this, Data Holders will poll the <a href="#get-data-recipients-statuses">Get Data Recipients Statuses</a>, <a href="#get-software-products-statuses">Get Software Products Statuses</a> and <a href="#get-data-recipients">Get Data Recipients</a> APIs to retrieve the current statuses and cache these for use during requests for Consumer Data.</p>
 
 <p>Data Holders <strong>MUST</strong> choose a frequency of polling which ensures their systems can respond to status changes within the required timeframe.</p>
 
@@ -5950,7 +5960,8 @@ client_id=s6BhdRkqt3
 <td>It will be up to the DH on how these endpoints are segregated. They may all be on the one domain (so only one certificate required) or could be separated.</td>
 </tr>
 </tbody></table>
-<h3 id='issued-by-the-register-ca-for-data-recipients'>Issued by the Register CA for Data Recipients</h3>
+<h3 id='issued-by-the-register-ca-for-data-recipients'>Issued by the Register CA for Data Recipients</h3><pre class="highlight diff tab-diff"><code>Fixed broken link
+</code></pre>
 <table><thead>
 <tr>
 <th>Certificate</th>
@@ -5966,13 +5977,14 @@ client_id=s6BhdRkqt3
 <tr>
 <td><strong>Server Certificate(s)</strong></td>
 <td>Certificate is issued to a FQDN.<br/>Secures the following:</br>- CDR Arrangement Revocation endpoint </br>- JWKS endpoint</td>
-<td>ADRs may choose to secure their <a href="https://consumerdatastandardsaustralia.github.io/standards/#end-points">endpoints</a> with the Register CA issued certificate or a certificate issued by a public CA.</td>
+<td>ADRs may choose to secure their <a href="#security-endpoints">endpoints</a> with the Register CA issued certificate or a certificate issued by a public CA.</td>
 </tr>
 </tbody></table>
 <h3 id='cdr-certificate-authority'>CDR Certificate Authority</h3>
 <p><a href="https://www.digicert.com">DigiCert</a> acts as the certificate authority that issues and manages certificates to CDR participants as directed by the ACCC Register in its capacity as the CDR Registrar.</p>
-<h3 id='certificate-trust-model'>Certificate Trust Model</h3>
-<p>The CDR utilises a private certificate trust chain for all Register CA secured endpoints being hosted by <a href="#participant-endpoints">Data Holders</a>, <a href="#participant-endpoints">Data Recipients</a> and the <a href="#consumer-data-right-cdr-register-apis">Register</a>.</p>
+<h3 id='certificate-trust-model'>Certificate Trust Model</h3><pre class="highlight diff tab-diff"><code>Fixed broken link
+</code></pre>
+<p>The CDR utilises a private certificate trust chain for all Register CA secured endpoints being hosted by <a href="#participant-endpoints">Data Holders</a>, <a href="#participant-endpoints">Data Recipients</a> and the <a href="#register-apis">Register</a>.</p>
 
 <p>This trust chain encompasses a set of root and intermediate CAs issued for the test and production environments.</p>
 
@@ -12242,7 +12254,8 @@ This operation does not require authentication
 </tbody></table>
 <h2 id='openid-connect-end-user-data'>OpenID Connect End-User Data</h2>
 <p>These scopes are used to access <a href="https://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims">OpenID Connect</a> scopes and individually requested claims of the authenticated End-User.</p>
-
+<pre class="highlight diff tab-diff"><code>Fixed broken link
+</code></pre>
 <table><thead>
 <tr>
 <th>Scope Name</th>
@@ -12253,7 +12266,7 @@ This operation does not require authentication
 <tr>
 <td><strong>Profile Data</strong></td>
 <td>profile</td>
-<td>This scope would allow for the third party to access basic profile information of the authenticated End-User. Further details are provided in <a href="#profile-scope-and-standard-claims">CX Data Language: Profile Scope</a> section.</td>
+<td>This scope would allow for the third party to access basic profile information of the authenticated End-User. Further details are provided in <a href="#profile-scope-and-standard-claims-common">CX Data Language: Profile Scope</a> section.</td>
 </tr>
 </tbody></table>
 <h2 id='cdr-data'>CDR Data</h2>
@@ -24991,9 +25004,9 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h2 id='product-categories'>Product Categories</h2>
-
-<p>The <a href="#schemabankingenumproductcategory">Product Category enumeration</a> lists the available product categories for categorising products and accounts.  These are explained in the following tables:</p>
+<h2 id='product-categories'>Product Categories</h2><pre class="highlight diff tab-diff"><code>Fixed broken link
+</code></pre>
+<p>The <a href="#tocSbankingproductcategory">Product Category enumeration</a> lists the available product categories for categorising products and accounts.  These are explained in the following tables:</p>
 
 <p><strong>Deposit Products</strong></p>
 
@@ -25702,7 +25715,10 @@ This operation does not require authentication
 <tr><td><a href='./includes/swagger/cds_energy.json'>Energy OpenAPI Specification (JSON)</a></td></tr>
 <tr><td><a href='./includes/swagger/cds_energy.yaml'>Energy OpenAPI Specification (YAML)</a></td></tr>
 </table>
-
+<pre class="highlight diff tab-diff"><code>Converted request bodies to schemas to fix the
+markdown presentation of POST endpoints and
+remove broken links to models
+</code></pre>
 <h2 id='get-generic-plans'>Get Generic Plans</h2>
 
 <p><a id="opIdlistPlans"></a></p>
@@ -28090,30 +28106,9 @@ x-cds-client-headers: string
 <tr>
 <td>body</td>
 <td>body</td>
-<td><a href="#schemacdr-energy-apiservicepointidlist">servicePointIdList</a></td>
+<td><a href="#schemacdr-energy-apirequestservicepointidlist">RequestServicePointIdList</a></td>
 <td>mandatory</td>
 <td>Request payload containing list of specific Service Points to obtain data for</td>
-</tr>
-<tr>
-<td>» data</td>
-<td>body</td>
-<td>object</td>
-<td>mandatory</td>
-<td>none</td>
-</tr>
-<tr>
-<td>»» servicePointIds</td>
-<td>body</td>
-<td>[string]</td>
-<td>mandatory</td>
-<td>Array of specific servicePointIds to obtain data for</td>
-</tr>
-<tr>
-<td>» meta</td>
-<td>body</td>
-<td><a href="#schemacdr-energy-apimeta">Meta</a></td>
-<td>optional</td>
-<td>none</td>
 </tr>
 </tbody></table>
 <h4 id='enumerated-values-4'>Enumerated Values</h4>
@@ -29008,30 +29003,9 @@ x-cds-client-headers: string
 <tr>
 <td>body</td>
 <td>body</td>
-<td><a href="#schemacdr-energy-apiservicepointidlist">servicePointIdList</a></td>
+<td><a href="#schemacdr-energy-apirequestservicepointidlist">RequestServicePointIdList</a></td>
 <td>mandatory</td>
 <td>Request payload containing list of specific Service Points to obtain data for</td>
-</tr>
-<tr>
-<td>» data</td>
-<td>body</td>
-<td>object</td>
-<td>mandatory</td>
-<td>none</td>
-</tr>
-<tr>
-<td>»» servicePointIds</td>
-<td>body</td>
-<td>[string]</td>
-<td>mandatory</td>
-<td>Array of specific servicePointIds to obtain data for</td>
-</tr>
-<tr>
-<td>» meta</td>
-<td>body</td>
-<td><a href="#schemacdr-energy-apimeta">Meta</a></td>
-<td>optional</td>
-<td>none</td>
 </tr>
 </tbody></table>
 
@@ -31255,30 +31229,9 @@ x-cds-client-headers: string
 <tr>
 <td>body</td>
 <td>body</td>
-<td><a href="#schemacdr-energy-apiaccountidlist">accountIdList</a></td>
+<td><a href="#schemacdr-energy-apirequestaccountidlist">RequestAccountIdList</a></td>
 <td>mandatory</td>
 <td>Request payload containing list of specific Accounts to obtain data for</td>
-</tr>
-<tr>
-<td>» data</td>
-<td>body</td>
-<td>object</td>
-<td>mandatory</td>
-<td>none</td>
-</tr>
-<tr>
-<td>»» accountIds</td>
-<td>body</td>
-<td>[string]</td>
-<td>mandatory</td>
-<td>Array of specific accountIds to obtain data for</td>
-</tr>
-<tr>
-<td>» meta</td>
-<td>body</td>
-<td><a href="#schemacdr-energy-apimeta">Meta</a></td>
-<td>optional</td>
-<td>none</td>
 </tr>
 </tbody></table>
 
@@ -32216,30 +32169,9 @@ x-cds-client-headers: string
 <tr>
 <td>body</td>
 <td>body</td>
-<td><a href="#schemacdr-energy-apiaccountidlist">accountIdList</a></td>
+<td><a href="#schemacdr-energy-apirequestaccountidlist">RequestAccountIdList</a></td>
 <td>mandatory</td>
 <td>Request payload containing list of specific Accounts to obtain data for</td>
-</tr>
-<tr>
-<td>» data</td>
-<td>body</td>
-<td>object</td>
-<td>mandatory</td>
-<td>none</td>
-</tr>
-<tr>
-<td>»» accountIds</td>
-<td>body</td>
-<td>[string]</td>
-<td>mandatory</td>
-<td>Array of specific accountIds to obtain data for</td>
-</tr>
-<tr>
-<td>» meta</td>
-<td>body</td>
-<td><a href="#schemacdr-energy-apimeta">Meta</a></td>
-<td>optional</td>
-<td>none</td>
 </tr>
 </tbody></table>
 
@@ -33292,30 +33224,9 @@ x-cds-client-headers: string
 <tr>
 <td>body</td>
 <td>body</td>
-<td><a href="#schemacdr-energy-apiaccountidlist">accountIdList</a></td>
+<td><a href="#schemacdr-energy-apirequestaccountidlist">RequestAccountIdList</a></td>
 <td>mandatory</td>
 <td>Request payload containing list of specific Accounts to obtain data for</td>
-</tr>
-<tr>
-<td>» data</td>
-<td>body</td>
-<td>object</td>
-<td>mandatory</td>
-<td>none</td>
-</tr>
-<tr>
-<td>»» accountIds</td>
-<td>body</td>
-<td>[string]</td>
-<td>mandatory</td>
-<td>Array of specific accountIds to obtain data for</td>
-</tr>
-<tr>
-<td>» meta</td>
-<td>body</td>
-<td><a href="#schemacdr-energy-apimeta">Meta</a></td>
-<td>optional</td>
-<td>none</td>
 </tr>
 </tbody></table>
 
@@ -43584,6 +43495,90 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
+<h3 class="schema-toc" id="tocSrequestservicepointidlist">RequestServicePointIdList</h3>
+
+<p><a id="schemacdr-energy-apirequestservicepointidlist"></a></p>
+
+<p><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">&quot;servicePointIds&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">&quot;string&quot;</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">&quot;meta&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span><span class="p">}</span><span class="w"></p>
+
+<p></span></code></pre><h3 id='properties-51'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>data</td>
+<td>object</td>
+<td>mandatory</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» servicePointIds</td>
+<td>[string]</td>
+<td>mandatory</td>
+<td>Array of specific servicePointIds to obtain data for</td>
+</tr>
+<tr>
+<td>meta</td>
+<td><a href="#schemacdr-energy-apimeta">Meta</a></td>
+<td>optional</td>
+<td>none</td>
+</tr>
+</tbody></table></p>
+
+<h3 class="schema-toc" id="tocSrequestaccountidlist">RequestAccountIdList</h3>
+
+<p><a id="schemacdr-energy-apirequestaccountidlist"></a></p>
+
+<p><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">&quot;accountIds&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">&quot;string&quot;</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">&quot;meta&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span><span class="p">}</span><span class="w"></p>
+
+<p></span></code></pre><h3 id='properties-52'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>data</td>
+<td>object</td>
+<td>mandatory</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» accountIds</td>
+<td>[string]</td>
+<td>mandatory</td>
+<td>Array of specific accountIds to obtain data for</td>
+</tr>
+<tr>
+<td>meta</td>
+<td><a href="#schemacdr-energy-apimeta">Meta</a></td>
+<td>optional</td>
+<td>none</td>
+</tr>
+</tbody></table></p>
+
 <h3 class="schema-toc" id="tocSlinks">Links</h3>
 
 <p><a id="schemacdr-energy-apilinks"></a></p>
@@ -43592,7 +43587,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="s2">&quot;self&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="w">
 </span><span class="p">}</span><span class="w"></p>
 
-<p></span></code></pre><h3 id='properties-51'>Properties</h3>
+<p></span></code></pre><h3 id='properties-53'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -43615,7 +43610,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p><pre class="highlight json tab-json"><code><span class="p">{}</span><span class="w"></p>
 
-<p></span></code></pre><h3 id='properties-52'>Properties</h3>
+<p></span></code></pre><h3 id='properties-54'>Properties</h3>
 <p><em>None</em></p></p>
 
 <h3 class="schema-toc" id="tocSlinkspaginated">LinksPaginated</h3>
@@ -43630,7 +43625,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="s2">&quot;last&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="w">
 </span><span class="p">}</span><span class="w"></p>
 
-<p></span></code></pre><h3 id='properties-53'>Properties</h3>
+<p></span></code></pre><h3 id='properties-55'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -43680,7 +43675,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="s2">&quot;totalPages&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
 </span><span class="p">}</span><span class="w"></p>
 
-<p></span></code></pre><h3 id='properties-54'>Properties</h3>
+<p></span></code></pre><h3 id='properties-56'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -49941,7 +49936,10 @@ the Data Holder. In this scenario the retailer MUST call AEMO multiple times and
 <tr><td><a href='./includes/swagger/cds_energy_sdh.json'>Energy Secondary Data Holder OpenAPI Specification (JSON)</a></td></tr>
 <tr><td><a href='./includes/swagger/cds_energy_sdh.yaml'>Energy Secondary Data Holder OpenAPI Specification (YAML)</a></td></tr>
 </table>
-
+<pre class="highlight diff tab-diff"><code>Converted request bodies to schemas to fix the
+markdown presentation of POST endpoints and
+remove broken links to models
+</code></pre>
 <h2 id='get-service-points-sr'>Get Service Points (SR)</h2>
 
 <p><a id="opIdlistServicePoints"></a></p>
@@ -50077,30 +50075,9 @@ x-cds-arrangement: string
 <tr>
 <td>body</td>
 <td>body</td>
-<td><a href="#schemacdr-energy-secondary-data-holder-apiservicepointidlist">servicePointIdList</a></td>
+<td><a href="#schemacdr-energy-secondary-data-holder-apirequestservicepointidlist">RequestServicePointIdList</a></td>
 <td>mandatory</td>
 <td>Request payload containing list of specific Service Points to obtain data for</td>
-</tr>
-<tr>
-<td>» data</td>
-<td>body</td>
-<td>object</td>
-<td>mandatory</td>
-<td>none</td>
-</tr>
-<tr>
-<td>»» servicePointIds</td>
-<td>body</td>
-<td>[string]</td>
-<td>mandatory</td>
-<td>Array of specific NMIs to obtain data for</td>
-</tr>
-<tr>
-<td>» meta</td>
-<td>body</td>
-<td><a href="#schemacdr-energy-secondary-data-holder-apimeta">Meta</a></td>
-<td>mandatory</td>
-<td>none</td>
 </tr>
 </tbody></table>
 
@@ -51003,30 +50980,9 @@ x-cds-arrangement: string
 <tr>
 <td>body</td>
 <td>body</td>
-<td><a href="#schemacdr-energy-secondary-data-holder-apiservicepointidlist">servicePointIdList</a></td>
+<td><a href="#schemacdr-energy-secondary-data-holder-apirequestservicepointidlist">RequestServicePointIdList</a></td>
 <td>mandatory</td>
 <td>Request payload containing list of specific Service Points to obtain data for</td>
-</tr>
-<tr>
-<td>» data</td>
-<td>body</td>
-<td>object</td>
-<td>mandatory</td>
-<td>none</td>
-</tr>
-<tr>
-<td>»» servicePointIds</td>
-<td>body</td>
-<td>[string]</td>
-<td>mandatory</td>
-<td>Array of specific NMIs to obtain data for</td>
-</tr>
-<tr>
-<td>» meta</td>
-<td>body</td>
-<td><a href="#schemacdr-energy-secondary-data-holder-apimeta">Meta</a></td>
-<td>mandatory</td>
-<td>none</td>
 </tr>
 </tbody></table>
 <h4 id='enumerated-values-2'>Enumerated Values</h4>
@@ -51586,30 +51542,9 @@ x-cds-arrangement: string
 <tr>
 <td>body</td>
 <td>body</td>
-<td><a href="#schemacdr-energy-secondary-data-holder-apiservicepointidlist">servicePointIdList</a></td>
+<td><a href="#schemacdr-energy-secondary-data-holder-apirequestservicepointidlist">RequestServicePointIdList</a></td>
 <td>mandatory</td>
 <td>Request payload containing list of specific Service Points to obtain data for</td>
-</tr>
-<tr>
-<td>» data</td>
-<td>body</td>
-<td>object</td>
-<td>mandatory</td>
-<td>none</td>
-</tr>
-<tr>
-<td>»» servicePointIds</td>
-<td>body</td>
-<td>[string]</td>
-<td>mandatory</td>
-<td>Array of specific NMIs to obtain data for</td>
-</tr>
-<tr>
-<td>» meta</td>
-<td>body</td>
-<td><a href="#schemacdr-energy-secondary-data-holder-apimeta">Meta</a></td>
-<td>mandatory</td>
-<td>none</td>
 </tr>
 </tbody></table>
 
@@ -54060,6 +53995,48 @@ This operation may only be called by an Energy Retailer using the information se
 </tr>
 </tbody></table>
 
+<h3 class="schema-toc" id="tocSrequestservicepointidlist">RequestServicePointIdList</h3>
+
+<p><a id="schemacdr-energy-secondary-data-holder-apirequestservicepointidlist"></a></p>
+
+<p><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">&quot;servicePointIds&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">&quot;string&quot;</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">&quot;meta&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span><span class="p">}</span><span class="w"></p>
+
+<p></span></code></pre><h3 id='properties-14'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>data</td>
+<td>object</td>
+<td>mandatory</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» servicePointIds</td>
+<td>[string]</td>
+<td>mandatory</td>
+<td>Array of specific servicePointIds to obtain data for</td>
+</tr>
+<tr>
+<td>meta</td>
+<td><a href="#schemacdr-energy-secondary-data-holder-apimeta">Meta</a></td>
+<td>optional</td>
+<td>none</td>
+</tr>
+</tbody></table></p>
+
 <h3 class="schema-toc" id="tocSlinks">Links</h3>
 
 <p><a id="schemacdr-energy-secondary-data-holder-apilinks"></a></p>
@@ -54068,7 +54045,7 @@ This operation may only be called by an Energy Retailer using the information se
   </span><span class="s2">&quot;self&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="w">
 </span><span class="p">}</span><span class="w"></p>
 
-<p></span></code></pre><h3 id='properties-14'>Properties</h3>
+<p></span></code></pre><h3 id='properties-15'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -54091,7 +54068,7 @@ This operation may only be called by an Energy Retailer using the information se
 
 <p><pre class="highlight json tab-json"><code><span class="p">{}</span><span class="w"></p>
 
-<p></span></code></pre><h3 id='properties-15'>Properties</h3>
+<p></span></code></pre><h3 id='properties-16'>Properties</h3>
 <p><em>None</em></p></p>
 
 <h3 class="schema-toc" id="tocSlinkspaginated">LinksPaginated</h3>
@@ -54106,7 +54083,7 @@ This operation may only be called by an Energy Retailer using the information se
   </span><span class="s2">&quot;last&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="w">
 </span><span class="p">}</span><span class="w"></p>
 
-<p></span></code></pre><h3 id='properties-16'>Properties</h3>
+<p></span></code></pre><h3 id='properties-17'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -54156,7 +54133,7 @@ This operation may only be called by an Energy Retailer using the information se
   </span><span class="s2">&quot;totalPages&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
 </span><span class="p">}</span><span class="w"></p>
 
-<p></span></code></pre><h3 id='properties-17'>Properties</h3>
+<p></span></code></pre><h3 id='properties-18'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>

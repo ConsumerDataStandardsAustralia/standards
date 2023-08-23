@@ -1517,10 +1517,7 @@ Obtain the electricity usage data for a specific set of service points
 |x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
 |x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
-|body|body|[servicePointIdList](#schemacdr-energy-apiservicepointidlist)|mandatory|Request payload containing list of specific Service Points to obtain data for|
-|» data|body|object|mandatory|none|
-|»» servicePointIds|body|[string]|mandatory|Array of specific servicePointIds to obtain data for|
-|» meta|body|[Meta](#schemacdr-energy-apimeta)|optional|none|
+|body|body|[RequestServicePointIdList](#schemacdr-energy-apirequestservicepointidlist)|mandatory|Request payload containing list of specific Service Points to obtain data for|
 
 #### Enumerated Values
 
@@ -2036,10 +2033,7 @@ Obtain DER data for a specific set of service points
 |x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
 |x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
-|body|body|[servicePointIdList](#schemacdr-energy-apiservicepointidlist)|mandatory|Request payload containing list of specific Service Points to obtain data for|
-|» data|body|object|mandatory|none|
-|»» servicePointIds|body|[string]|mandatory|Array of specific servicePointIds to obtain data for|
-|» meta|body|[Meta](#schemacdr-energy-apimeta)|optional|none|
+|body|body|[RequestServicePointIdList](#schemacdr-energy-apirequestservicepointidlist)|mandatory|Request payload containing list of specific Service Points to obtain data for|
 
 > Example responses
 
@@ -3398,10 +3392,7 @@ Obtain the current balance for a specified set of accounts
 |x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
 |x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
-|body|body|[accountIdList](#schemacdr-energy-apiaccountidlist)|mandatory|Request payload containing list of specific Accounts to obtain data for|
-|» data|body|object|mandatory|none|
-|»» accountIds|body|[string]|mandatory|Array of specific accountIds to obtain data for|
-|» meta|body|[Meta](#schemacdr-energy-apimeta)|optional|none|
+|body|body|[RequestAccountIdList](#schemacdr-energy-apirequestaccountidlist)|mandatory|Request payload containing list of specific Accounts to obtain data for|
 
 > Example responses
 
@@ -3913,10 +3904,7 @@ Obtain invoices for a specified set of accounts
 |x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
 |x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
-|body|body|[accountIdList](#schemacdr-energy-apiaccountidlist)|mandatory|Request payload containing list of specific Accounts to obtain data for|
-|» data|body|object|mandatory|none|
-|»» accountIds|body|[string]|mandatory|Array of specific accountIds to obtain data for|
-|» meta|body|[Meta](#schemacdr-energy-apimeta)|optional|none|
+|body|body|[RequestAccountIdList](#schemacdr-energy-apirequestaccountidlist)|mandatory|Request payload containing list of specific Accounts to obtain data for|
 
 > Example responses
 
@@ -4543,10 +4531,7 @@ Other Versions: [v1](includes/obsolete/get-billing-for-specific-accounts-v1.html
 |x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
 |x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
-|body|body|[accountIdList](#schemacdr-energy-apiaccountidlist)|mandatory|Request payload containing list of specific Accounts to obtain data for|
-|» data|body|object|mandatory|none|
-|»» accountIds|body|[string]|mandatory|Array of specific accountIds to obtain data for|
-|» meta|body|[Meta](#schemacdr-energy-apimeta)|optional|none|
+|body|body|[RequestAccountIdList](#schemacdr-energy-apirequestaccountidlist)|mandatory|Request payload containing list of specific Accounts to obtain data for|
 
 > Example responses
 
@@ -10335,6 +10320,54 @@ To perform this operation, you must be authenticated and authorised with the fol
 |localityName|string|mandatory|Full name of locality|
 |postcode|string|mandatory|Postcode for the locality|
 |state|string|mandatory|State in which the address belongs. Valid enumeration defined by Australia Post PAF code file [State Type Abbreviation](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf). NSW, QLD, VIC, NT, WA, SA, TAS, ACT, AAT|
+
+<h3 class="schema-toc" id="tocSrequestservicepointidlist">RequestServicePointIdList</h3>
+
+<a id="schemacdr-energy-apirequestservicepointidlist"></a>
+
+```json
+{
+  "data": {
+    "servicePointIds": [
+      "string"
+    ]
+  },
+  "meta": {}
+}
+
+```
+
+### Properties
+
+|Name|Type|Required|Description|
+|---|---|---|---|
+|data|object|mandatory|none|
+|» servicePointIds|[string]|mandatory|Array of specific servicePointIds to obtain data for|
+|meta|[Meta](#schemacdr-energy-apimeta)|optional|none|
+
+<h3 class="schema-toc" id="tocSrequestaccountidlist">RequestAccountIdList</h3>
+
+<a id="schemacdr-energy-apirequestaccountidlist"></a>
+
+```json
+{
+  "data": {
+    "accountIds": [
+      "string"
+    ]
+  },
+  "meta": {}
+}
+
+```
+
+### Properties
+
+|Name|Type|Required|Description|
+|---|---|---|---|
+|data|object|mandatory|none|
+|» accountIds|[string]|mandatory|Array of specific accountIds to obtain data for|
+|meta|[Meta](#schemacdr-energy-apimeta)|optional|none|
 
 <h3 class="schema-toc" id="tocSlinks">Links</h3>
 
