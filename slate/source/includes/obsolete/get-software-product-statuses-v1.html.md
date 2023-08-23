@@ -14,7 +14,7 @@ search: false
 This page documents the obsolete **version 1** of the Get Software Products Statuses end point.
 
 <aside class="info">
-This version is will remain valid until a deprecation schedule is set.
+This version will remain valid until a deprecation schedule is set.
 </aside>
 
 
