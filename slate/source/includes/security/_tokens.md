@@ -39,10 +39,6 @@ ID Tokens are specified in [section 2](https://openid.net/specs/openid-connect-c
 
 #### Baseline ID Token requirements
 
-```diff
-Replaced FAPI draft references with FAPI 1.0 Final references
-```
-
 In addition to the mandatory claims specified in [section 2](https://openid.net/specs/openid-connect-core-1_0.html#IDToken) of the **[[OIDC]](#nref-OIDC)** standard, required claims for ID Tokens as part of Hybrid Flow authentication **MUST** align to [section 3.3](https://openid.net/specs/openid-connect-core-1_0.html#HybridFlowAuth) (Authentication using the Hybrid Flow) of the **[[OIDC]](#nref-OIDC)** standards and [section 5.2.2](https://openid.net/specs/openid-financial-api-part-2-1_0.html#authorization-server) and [section 8.4.3](https://openid.net/specs/openid-financial-api-part-2-1_0.html#authorization-response-parameter-injection-attack) of the **[[FAPI-1.0-Advanced]](#nref-FAPI-1-0-Advanced)** profile.
 
 ID Tokens **MUST** be signed by Data Holders as specified in [section 8.6](https://openid.net/specs/openid-financial-api-part-2-1_0.html#algorithm-considerations) of **[[FAPI-1.0-Advanced]](#nref-FAPI-1-0-Advanced)**.
@@ -50,19 +46,12 @@ ID Tokens **MUST** be signed by Data Holders as specified in [section 8.6](https
 
 #### OIDC Hybrid Flow requirements
 
-```diff
-Replaced FAPI draft references with FAPI 1.0 Final references
-```
-
 In accordance with **[[FAPI-1.0-Advanced]](#nref-FAPI-1-0-Advanced)**, ID Tokens **MUST** be signed and encrypted when returned to a Data Recipient Software Product from both the Authorisation End Point and Token End Point.
 
 The ID Token returned from the Authorisation End Point **MUST NOT** contain any Personal Information (PI) claims.
 
 ##### Hashing value for state and authorisation code
 
-```diff
-Replaced FAPI draft references with FAPI 1.0 Final references
-```
 The following requirements apply to the OIDC Hybrid Flow:
 
 * The `c_hash` value **MUST** be generated according to [section 3.3.2.11](https://openid.net/specs/openid-connect-core-1_0.html#HybridIDToken) of **[[OIDC]](#nref-OIDC)**.
@@ -80,10 +69,6 @@ An Access Token **MUST** expire between **2 minutes** to **10 minutes** after th
 The process for refreshing an Access Token is described in [section 12.1](https://openid.net/specs/openid-connect-core-1_0.html#RefreshingAccessToken) of **[[OIDC]](#nref-OIDC)**.
 
 
-```diff
-Removed legacy phasing requirements for FAPI 1.0 Final
-```
-
 * Data Holders **MUST** reject token request with an authorization code (Section 1.3.1 of **[[RFC6749]](#nref-RFC6749)**) if it has been previously used
 
 
@@ -96,10 +81,6 @@ The expiration time for a Refresh Token **MUST** be set by the Data Holder.
 
 Refresh Token expiration **MAY** be any length of time greater than 28 days but **MUST NOT** exceed the end of the duration of sharing consented to by the Consumer.
 
-```diff
-Removed legacy phasing requirements for FAPI 1.0 Final
-```
-
 *	Data Holders **MUST NOT** cycle refresh tokens (rotation). In other words, Refresh Tokens **SHOULD** be issued with an "exp" equal to the sharing duration authorised by the Customer.
 
 ### Token Expiry
@@ -107,9 +88,4 @@ The expiry time for issued access tokens and refresh tokens **MUST** be determin
 
 In order to achieve this:
 
-```diff
-Removed legacy phasing requirements for FAPI 1.0 Final
-```
-
 - The Data Holder **MUST** indicate the lifetime in seconds of the access token in the `expires_in` field of the JSON object returned by the token end-point (see [section 4.2.2] (https://tools.ietf.org/html/rfc6749#section-4.2.2) of **[[OAUTH2]](#nref-OAUTH2)**).
-

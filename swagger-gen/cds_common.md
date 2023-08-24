@@ -19,8 +19,10 @@ x-cds-client-headers: string
 
 ```
 
-```javascript
-var headers = {
+```javascript--nodejs
+const fetch = require('node-fetch');
+
+const headers = {
   'Accept':'application/json',
   'x-v':'string',
   'x-min-v':'string',
@@ -31,15 +33,17 @@ var headers = {
 
 };
 
-$.ajax({
-  url: 'https://data.holder.com.au/cds-au/v1/common/customer',
-  method: 'get',
+fetch('https://data.holder.com.au/cds-au/v1/common/customer',
+{
+  method: 'GET',
 
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
+  headers: headers
 })
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -167,8 +171,10 @@ x-cds-client-headers: string
 
 ```
 
-```javascript
-var headers = {
+```javascript--nodejs
+const fetch = require('node-fetch');
+
+const headers = {
   'Accept':'application/json',
   'x-v':'string',
   'x-min-v':'string',
@@ -179,15 +185,17 @@ var headers = {
 
 };
 
-$.ajax({
-  url: 'https://data.holder.com.au/cds-au/v1/common/customer/detail',
-  method: 'get',
+fetch('https://data.holder.com.au/cds-au/v1/common/customer/detail',
+{
+  method: 'GET',
 
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
+  headers: headers
 })
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -398,23 +406,27 @@ x-min-v: string
 
 ```
 
-```javascript
-var headers = {
+```javascript--nodejs
+const fetch = require('node-fetch');
+
+const headers = {
   'Accept':'application/json',
   'x-v':'string',
   'x-min-v':'string'
 
 };
 
-$.ajax({
-  url: 'https://data.holder.com.au/cds-au/v1/discovery/status',
-  method: 'get',
+fetch('https://data.holder.com.au/cds-au/v1/discovery/status',
+{
+  method: 'GET',
 
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
+  headers: headers
 })
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -490,23 +502,27 @@ x-min-v: string
 
 ```
 
-```javascript
-var headers = {
+```javascript--nodejs
+const fetch = require('node-fetch');
+
+const headers = {
   'Accept':'application/json',
   'x-v':'string',
   'x-min-v':'string'
 
 };
 
-$.ajax({
-  url: 'https://data.holder.com.au/cds-au/v1/discovery/outages',
-  method: 'get',
+fetch('https://data.holder.com.au/cds-au/v1/discovery/outages',
+{
+  method: 'GET',
 
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
+  headers: headers
 })
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 

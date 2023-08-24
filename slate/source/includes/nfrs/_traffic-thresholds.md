@@ -22,11 +22,6 @@ For Unattended traffic the following traffic thresholds will apply for low traff
 
 For Unattended traffic during high traffic periods only best effort support is required.
 
-```diff
-Updated the static site wide TPS thresholds with a graduated set of
-thresholds depending on the number of active authorisations established
-with the data holder
-```
 For secure traffic (both Customer Present and Unattended) the following traffic thresholds will apply:
 
 - For Data Holders with 0 to 10,000 active authorisations, 150 peak TPS total across all consumers

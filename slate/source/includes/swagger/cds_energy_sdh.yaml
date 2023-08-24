@@ -3,7 +3,7 @@ info:
   description: Consumer Data Right end points and payloads for Secondary Data Holder
     for the Energy sector
   title: CDR Energy Secondary Data Holder API
-  version: 1.25.0
+  version: 1.26.0
 servers:
 - url: /
 paths:
@@ -84,7 +84,13 @@ paths:
           type: string
         style: simple
       requestBody:
-        $ref: '#/components/requestBodies/servicePointIdList'
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestServicePointIdList'
+        description: Request payload containing list of specific Service Points to
+          obtain data for
+        required: true
       responses:
         "200":
           content:
@@ -668,7 +674,13 @@ paths:
           type: string
         style: simple
       requestBody:
-        $ref: '#/components/requestBodies/servicePointIdList'
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestServicePointIdList'
+        description: Request payload containing list of specific Service Points to
+          obtain data for
+        required: true
       responses:
         "200":
           content:
@@ -988,7 +1000,13 @@ paths:
           type: string
         style: simple
       requestBody:
-        $ref: '#/components/requestBodies/servicePointIdList'
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestServicePointIdList'
+        description: Request payload containing list of specific Service Points to
+          obtain data for
+        required: true
       responses:
         "200":
           content:
@@ -1229,31 +1247,6 @@ components:
       schema:
         type: string
       style: simple
-  requestBodies:
-    servicePointIdList:
-      content:
-        application/json:
-          schema:
-            properties:
-              data:
-                properties:
-                  servicePointIds:
-                    description: Array of specific NMIs to obtain data for
-                    items:
-                      type: string
-                    type: array
-                required:
-                - servicePointIds
-                type: object
-              meta:
-                $ref: '#/components/schemas/Meta'
-            required:
-            - data
-            - meta
-            type: object
-      description: Request payload containing list of specific Service Points to obtain
-        data for
-      required: true
   responses:
     servicePointList:
       content:
@@ -2659,6 +2652,21 @@ components:
       - postcode
       - state
       type: object
+    RequestServicePointIdList:
+      example:
+        data:
+          servicePointIds:
+          - servicePointIds
+          - servicePointIds
+        meta: '{}'
+      properties:
+        data:
+          $ref: '#/components/schemas/RequestServicePointIdList_data'
+        meta:
+          type: object
+      required:
+      - data
+      type: object
     Links:
       example:
         self: self
@@ -3651,3 +3659,17 @@ components:
       - inverterSeries
       - inverterModelNumber
       - inverterDeviceCapacity
+    RequestServicePointIdList_data:
+      example:
+        servicePointIds:
+        - servicePointIds
+        - servicePointIds
+      properties:
+        servicePointIds:
+          description: Array of specific servicePointIds to obtain data for
+          items:
+            type: string
+          type: array
+      required:
+      - servicePointIds
+      type: object

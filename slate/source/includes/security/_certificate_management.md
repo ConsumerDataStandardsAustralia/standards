@@ -7,17 +7,27 @@ Certificate | Function | Notes
 |**Server Certificate(s)**|	Certificate is issued to a FQDN</br></br>Secures the following endpoints:</br>- Resource endpoints</br>- InfoSec endpoints</br>- Admin endpoints | It will be up to the DH on how these endpoints are segregated. They may all be on the one domain (so only one certificate required) or could be separated.
 
 ### Issued by the Register CA for Data Recipients
+
+```diff
+Fixed broken link
+```
+
 Certificate | Function | Notes
 -----------|------------------------------------------|------------------------------
 |**Client Certificate**| Secures the following:</br>- Consuming Register APIs</br>- Consuming Data Holder APIs
-|**Server Certificate(s)**|	Certificate is issued to a FQDN.<br/>Secures the following:</br>- CDR Arrangement Revocation endpoint </br>- JWKS endpoint | ADRs may choose to secure their [endpoints](https://consumerdatastandardsaustralia.github.io/standards/#end-points) with the Register CA issued certificate or a certificate issued by a public CA.
+|**Server Certificate(s)**|	Certificate is issued to a FQDN.<br/>Secures the following:</br>- CDR Arrangement Revocation endpoint </br>- JWKS endpoint | ADRs may choose to secure their [endpoints](#security-endpoints) with the Register CA issued certificate or a certificate issued by a public CA.
 
 ### CDR Certificate Authority
 [DigiCert](https://www.digicert.com) acts as the certificate authority that issues and manages certificates to CDR participants as directed by the ACCC Register in its capacity as the CDR Registrar.
 
 
 ### Certificate Trust Model
-The CDR utilises a private certificate trust chain for all Register CA secured endpoints being hosted by [Data Holders](#participant-endpoints), [Data Recipients](#participant-endpoints) and the [Register](#consumer-data-right-cdr-register-apis).
+
+```diff
+Fixed broken link
+```
+
+The CDR utilises a private certificate trust chain for all Register CA secured endpoints being hosted by [Data Holders](#participant-endpoints), [Data Recipients](#participant-endpoints) and the [Register](#register-apis).
 
 This trust chain encompasses a set of root and intermediate CAs issued for the test and production environments.
 

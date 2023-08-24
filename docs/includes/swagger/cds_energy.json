@@ -3,7 +3,7 @@
   "info" : {
     "description" : "Consumer Data Right end points and payloads for the Energy sector",
     "title" : "CDR Energy API",
-    "version" : "1.25.0"
+    "version" : "1.26.0"
   },
   "servers" : [ {
     "url" : "/"
@@ -1215,7 +1215,15 @@
           "x-cds-type" : "Base64"
         } ],
         "requestBody" : {
-          "$ref" : "#/components/requestBodies/servicePointIdList"
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/RequestServicePointIdList"
+              }
+            }
+          },
+          "description" : "Request payload containing list of specific Service Points to obtain data for",
+          "required" : true
         },
         "responses" : {
           "200" : {
@@ -1762,7 +1770,15 @@
           "x-cds-type" : "Base64"
         } ],
         "requestBody" : {
-          "$ref" : "#/components/requestBodies/servicePointIdList"
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/RequestServicePointIdList"
+              }
+            }
+          },
+          "description" : "Request payload containing list of specific Service Points to obtain data for",
+          "required" : true
         },
         "responses" : {
           "200" : {
@@ -3029,7 +3045,15 @@
           "x-cds-type" : "Base64"
         } ],
         "requestBody" : {
-          "$ref" : "#/components/requestBodies/accountIdList"
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/RequestAccountIdList"
+              }
+            }
+          },
+          "description" : "Request payload containing list of specific Accounts to obtain data for",
+          "required" : true
         },
         "responses" : {
           "200" : {
@@ -3684,7 +3708,15 @@
           "x-cds-type" : "Base64"
         } ],
         "requestBody" : {
-          "$ref" : "#/components/requestBodies/accountIdList"
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/RequestAccountIdList"
+              }
+            }
+          },
+          "description" : "Request payload containing list of specific Accounts to obtain data for",
+          "required" : true
         },
         "responses" : {
           "200" : {
@@ -4339,7 +4371,15 @@
           "x-cds-type" : "Base64"
         } ],
         "requestBody" : {
-          "$ref" : "#/components/requestBodies/accountIdList"
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/RequestAccountIdList"
+              }
+            }
+          },
+          "description" : "Request payload containing list of specific Accounts to obtain data for",
+          "required" : true
         },
         "responses" : {
           "200" : {
@@ -4652,68 +4692,6 @@
         "style" : "simple",
         "x-conditional" : true,
         "x-cds-type" : "Base64"
-      }
-    },
-    "requestBodies" : {
-      "servicePointIdList" : {
-        "content" : {
-          "application/json" : {
-            "schema" : {
-              "properties" : {
-                "data" : {
-                  "properties" : {
-                    "servicePointIds" : {
-                      "description" : "Array of specific servicePointIds to obtain data for",
-                      "items" : {
-                        "type" : "string"
-                      },
-                      "type" : "array"
-                    }
-                  },
-                  "required" : [ "servicePointIds" ],
-                  "type" : "object"
-                },
-                "meta" : {
-                  "$ref" : "#/components/schemas/Meta"
-                }
-              },
-              "required" : [ "data" ],
-              "type" : "object"
-            }
-          }
-        },
-        "description" : "Request payload containing list of specific Service Points to obtain data for",
-        "required" : true
-      },
-      "accountIdList" : {
-        "content" : {
-          "application/json" : {
-            "schema" : {
-              "properties" : {
-                "data" : {
-                  "properties" : {
-                    "accountIds" : {
-                      "description" : "Array of specific accountIds to obtain data for",
-                      "items" : {
-                        "type" : "string"
-                      },
-                      "type" : "array"
-                    }
-                  },
-                  "required" : [ "accountIds" ],
-                  "type" : "object"
-                },
-                "meta" : {
-                  "$ref" : "#/components/schemas/Meta"
-                }
-              },
-              "required" : [ "data" ],
-              "type" : "object"
-            }
-          }
-        },
-        "description" : "Request payload containing list of specific Accounts to obtain data for",
-        "required" : true
       }
     },
     "responses" : {
@@ -7201,6 +7179,30 @@
         "required" : [ "localityName", "postcode", "state" ],
         "type" : "object"
       },
+      "RequestServicePointIdList" : {
+        "properties" : {
+          "data" : {
+            "$ref" : "#/components/schemas/RequestServicePointIdList_data"
+          },
+          "meta" : {
+            "$ref" : "#/components/schemas/Meta"
+          }
+        },
+        "required" : [ "data" ],
+        "type" : "object"
+      },
+      "RequestAccountIdList" : {
+        "properties" : {
+          "data" : {
+            "$ref" : "#/components/schemas/RequestAccountIdList_data"
+          },
+          "meta" : {
+            "$ref" : "#/components/schemas/Meta"
+          }
+        },
+        "required" : [ "data" ],
+        "type" : "object"
+      },
       "Links" : {
         "properties" : {
           "self" : {
@@ -8340,6 +8342,32 @@
           }
         },
         "required" : [ "amount", "description" ],
+        "type" : "object"
+      },
+      "RequestServicePointIdList_data" : {
+        "properties" : {
+          "servicePointIds" : {
+            "description" : "Array of specific servicePointIds to obtain data for",
+            "items" : {
+              "type" : "string"
+            },
+            "type" : "array"
+          }
+        },
+        "required" : [ "servicePointIds" ],
+        "type" : "object"
+      },
+      "RequestAccountIdList_data" : {
+        "properties" : {
+          "accountIds" : {
+            "description" : "Array of specific accountIds to obtain data for",
+            "items" : {
+              "type" : "string"
+            },
+            "type" : "array"
+          }
+        },
+        "required" : [ "accountIds" ],
         "type" : "object"
       }
     }

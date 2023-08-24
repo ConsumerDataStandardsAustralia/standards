@@ -16,8 +16,15 @@ x-min-v: string
 
 ```
 
-```javascript
-var headers = {
+```javascript--nodejs
+const fetch = require('node-fetch');
+const inputBody = '{
+  "data": {
+    "action": "REFRESH"
+  },
+  "meta": {}
+}';
+const headers = {
   'Content-Type':'application/json',
   'Accept':'application/json',
   'x-v':'string',
@@ -25,15 +32,17 @@ var headers = {
 
 };
 
-$.ajax({
-  url: 'https://data.holder.com.au/cds-au/v1/admin/register/metadata',
-  method: 'post',
-
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
+fetch('https://data.holder.com.au/cds-au/v1/admin/register/metadata',
+{
+  method: 'POST',
+  body: inputBody,
+  headers: headers
 })
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -119,23 +128,27 @@ x-min-v: string
 
 ```
 
-```javascript
-var headers = {
+```javascript--nodejs
+const fetch = require('node-fetch');
+
+const headers = {
   'Accept':'application/json',
   'x-v':'string',
   'x-min-v':'string'
 
 };
 
-$.ajax({
-  url: 'https://data.holder.com.au/cds-au/v1/admin/metrics',
-  method: 'get',
+fetch('https://data.holder.com.au/cds-au/v1/admin/metrics',
+{
+  method: 'GET',
 
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
+  headers: headers
 })
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -145,14 +158,14 @@ This end point allows the ACCC to obtain operational statistics from the Data Ho
 
 This end point is not required to be implemented by the Australian Energy Market Operator, the Australian Energy Regulator or the Department of State administered by the Minister of Victoria administering the National Electricity (Victoria) Act 2005 (Vic).
 
-NOTE: This version must be implemented by **June 13th 2024**
+NOTE: This version **MUST** be implemented by **May 13th 2024**
 
 Obsolete versions: [v1](includes/obsolete/get-metrics-v1.html) [v2](includes/obsolete/get-metrics-v2.html).
 
 Deprecated versions:
 
-- [v3](includes/obsolete/get-metrics-v3.html)
-- [v4](includes/obsolete/get-metrics-v4.html) - This version, or v5, must be implemented by **November 1st 2023**
+- [v3](includes/obsolete/get-metrics-v3.html) - Implementation not required for Data Holders going live on, or after, 1st November 2023.  Other Data Holders **MAY** retire this version from the earlier of **13th May 2024** or from the time the ACCC announce that they no longer call this version
+- [v4](includes/obsolete/get-metrics-v4.html) - This version, or v5, **MUST** be implemented by **November 1st 2023**
 
 If the Data Holder supports private_key_jwt client authentication they MUST validate the scope.
 

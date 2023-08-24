@@ -11,7 +11,7 @@ info:
     name: MIT License
     url: https://opensource.org/licenses/MIT
   title: CDR Banking API
-  version: 1.25.0
+  version: 1.26.0
 servers:
 - url: https://data.holder.com.au/cds-au/v1
 paths:
@@ -1117,7 +1117,7 @@ paths:
         style: form
         x-cds-type: DateTimeString
       - description: Filter transactions to only transactions with amounts higher
-          or equal to than this amount
+          than or equal to this amount
         explode: true
         in: query
         name: min-amount
@@ -1128,7 +1128,7 @@ paths:
         style: form
         x-cds-type: AmountString
       - description: Filter transactions to only transactions with amounts less than
-          or equal to than this amount
+          or equal to this amount
         explode: true
         in: query
         name: max-amount
@@ -3773,8 +3773,8 @@ components:
       style: form
       x-cds-type: DateTimeString
     ParamTransactionMinAmount:
-      description: Filter transactions to only transactions with amounts higher or
-        equal to than this amount
+      description: Filter transactions to only transactions with amounts higher than
+        or equal to this amount
       explode: true
       in: query
       name: min-amount
@@ -3786,7 +3786,7 @@ components:
       x-cds-type: AmountString
     ParamTransactionMaxAmount:
       description: Filter transactions to only transactions with amounts less than
-        or equal to than this amount
+        or equal to this amount
       explode: true
       in: query
       name: max-amount
@@ -7128,7 +7128,7 @@ components:
           type: string
         bundleName:
           description: Optional field to indicate if this account is part of a bundle
-            that is providing additional benefit for to the customer
+            that is providing additional benefit to the customer
           type: string
         specificAccountUType:
           description: The type of structure to present account specific fields.

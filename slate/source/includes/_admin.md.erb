@@ -10,29 +10,10 @@ This provides an overview of CDS Administration Endpoints. Please note this API 
 </table>
 
 ```diff
-+ Adding v4 and v5 of the Get Metrics endpoint
+Modified the retirement date, and implementation requirements,
+for Get Metrics v3
 
-v4 changes are:
-• Aligned types to standard CDR types
-• Separated availability and TPS metric into aggregated,
-  authenticated and unauthenticed
-• Error counts split by HTTP error code
-• Added new authorisation metrics
-• Added language to clarify that metrics are calculated at
-  the Data Holder brand level for Data Holders with multiple
-  brands
-
-v5 changes are:
-• Performance metrics broken down by performance tier
-• Include hourly metrics for performance metrics to align to NFRs
-• Inclusion of aggregate metric for performance metrics
-• Addition of abandonmentsByStage object to authorisation metrics
-
-Note that two typos were identified in the initial version of
-1.25.0 published on 8th July that have now been corrected. These
-are:
-• Incorrect description of the ErrorMetricsV2 model
-• Incorrect name of the preIdentification field
+Corrected the obligation date for Get Metrics v5
 ```
 
 <%= partial "includes/cds_admin.md" %>

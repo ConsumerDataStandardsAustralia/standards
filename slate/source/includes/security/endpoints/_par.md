@@ -1,10 +1,6 @@
 
 ### Pushed Authorisation End Point
 
-```diff
-Updated non-normtative example to use RFC9126, not the draft PAR specification
-```
-
 > Non-Normative Example  
 > Utilising RFC9126 and OIDC Hybrid Flow
 
@@ -94,10 +90,6 @@ request=eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyMyJ9.ey...
 > Decoded Request - FAPI 1.0 Final Phase 3 Obligation  
 This example shows an authorisation request using the Authorisation Code Flow (FAPI 1.0 migration Phase 3)
 
-```diff
-+ Added "response_mode" to the non normative example. This demonstrates the use of Authorization Code Flow in conjunction with JARM and FAPI 1.0
-```
-
 ```
 {
   "iss": "s6BhdRkqt3",
@@ -182,10 +174,6 @@ eyJraWQiOiIwZWQ3YTNkZi1hMGJlLTRhZjQtOTk0YS1jNDBhODc0ODQwNjMiLCJhbGciOiJQUzI1NiJ9
 
 
 Data Holders **MUST** support Pushed Authorisation Requests (PAR) via the pushed authorisation end point according to **[[PAR]](#nref-PAR)**.
-
-```diff
-- Removed legacy phasing requirements for FAPI 1.0 Final using PAR
-```
 
 Data Recipient Software Products **MUST** send authorisation requests using **[[PAR]](#nref-PAR)** if supported by the Data Holder.
 

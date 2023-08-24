@@ -13,7 +13,7 @@ search: false
 # Get Metrics V4
 This page documents the deprecated version 4 of the Get Metrics end point.
 
-This version must be implemented by **November 1st 2023** and may be obsoleted once v5 has been implemented
+This version **MUST** be implemented by **November 1st 2023** and **MAY** be retired once v5 has been implemented
 
 
 ## Get Metrics

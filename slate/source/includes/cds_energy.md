@@ -15,23 +15,27 @@ x-min-v: string
 
 ```
 
-```javascript
-var headers = {
+```javascript--nodejs
+const fetch = require('node-fetch');
+
+const headers = {
   'Accept':'application/json',
   'x-v':'string',
   'x-min-v':'string'
 
 };
 
-$.ajax({
-  url: '/energy/plans',
-  method: 'get',
+fetch('/energy/plans',
+{
+  method: 'GET',
 
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
+  headers: headers
 })
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -169,23 +173,27 @@ x-min-v: string
 
 ```
 
-```javascript
-var headers = {
+```javascript--nodejs
+const fetch = require('node-fetch');
+
+const headers = {
   'Accept':'application/json',
   'x-v':'string',
   'x-min-v':'string'
 
 };
 
-$.ajax({
-  url: '/energy/plans/{planId}',
-  method: 'get',
+fetch('/energy/plans/{planId}',
+{
+  method: 'GET',
 
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
+  headers: headers
 })
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -773,8 +781,10 @@ x-cds-client-headers: string
 
 ```
 
-```javascript
-var headers = {
+```javascript--nodejs
+const fetch = require('node-fetch');
+
+const headers = {
   'Accept':'application/json',
   'x-v':'string',
   'x-min-v':'string',
@@ -785,15 +795,17 @@ var headers = {
 
 };
 
-$.ajax({
-  url: '/energy/electricity/servicepoints',
-  method: 'get',
+fetch('/energy/electricity/servicepoints',
+{
+  method: 'GET',
 
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
+  headers: headers
 })
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -905,8 +917,10 @@ x-cds-client-headers: string
 
 ```
 
-```javascript
-var headers = {
+```javascript--nodejs
+const fetch = require('node-fetch');
+
+const headers = {
   'Accept':'application/json',
   'x-v':'string',
   'x-min-v':'string',
@@ -917,15 +931,17 @@ var headers = {
 
 };
 
-$.ajax({
-  url: '/energy/electricity/servicepoints/{servicePointId}',
-  method: 'get',
+fetch('/energy/electricity/servicepoints/{servicePointId}',
+{
+  method: 'GET',
 
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
+  headers: headers
 })
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -1100,8 +1116,10 @@ x-cds-client-headers: string
 
 ```
 
-```javascript
-var headers = {
+```javascript--nodejs
+const fetch = require('node-fetch');
+
+const headers = {
   'Accept':'application/json',
   'x-v':'string',
   'x-min-v':'string',
@@ -1112,15 +1130,17 @@ var headers = {
 
 };
 
-$.ajax({
-  url: '/energy/electricity/servicepoints/{servicePointId}/usage',
-  method: 'get',
+fetch('/energy/electricity/servicepoints/{servicePointId}/usage',
+{
+  method: 'GET',
 
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
+  headers: headers
 })
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -1261,8 +1281,10 @@ x-cds-client-headers: string
 
 ```
 
-```javascript
-var headers = {
+```javascript--nodejs
+const fetch = require('node-fetch');
+
+const headers = {
   'Accept':'application/json',
   'x-v':'string',
   'x-min-v':'string',
@@ -1273,15 +1295,17 @@ var headers = {
 
 };
 
-$.ajax({
-  url: '/energy/electricity/servicepoints/usage',
-  method: 'get',
+fetch('/energy/electricity/servicepoints/usage',
+{
+  method: 'GET',
 
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
+  headers: headers
 })
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -1420,8 +1444,17 @@ x-cds-client-headers: string
 
 ```
 
-```javascript
-var headers = {
+```javascript--nodejs
+const fetch = require('node-fetch');
+const inputBody = '{
+  "data": {
+    "servicePointIds": [
+      "string"
+    ]
+  },
+  "meta": {}
+}';
+const headers = {
   'Content-Type':'application/json',
   'Accept':'application/json',
   'x-v':'string',
@@ -1433,15 +1466,17 @@ var headers = {
 
 };
 
-$.ajax({
-  url: '/energy/electricity/servicepoints/usage',
-  method: 'post',
-
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
+fetch('/energy/electricity/servicepoints/usage',
+{
+  method: 'POST',
+  body: inputBody,
+  headers: headers
 })
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -1482,10 +1517,7 @@ Obtain the electricity usage data for a specific set of service points
 |x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
 |x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
-|body|body|[servicePointIdList](#schemacdr-energy-apiservicepointidlist)|mandatory|Request payload containing list of specific Service Points to obtain data for|
-|» data|body|object|mandatory|none|
-|»» servicePointIds|body|[string]|mandatory|Array of specific servicePointIds to obtain data for|
-|» meta|body|[Meta](#schemacdr-energy-apimeta)|optional|none|
+|body|body|[RequestServicePointIdList](#schemacdr-energy-apirequestservicepointidlist)|mandatory|Request payload containing list of specific Service Points to obtain data for|
 
 #### Enumerated Values
 
@@ -1596,8 +1628,10 @@ x-cds-client-headers: string
 
 ```
 
-```javascript
-var headers = {
+```javascript--nodejs
+const fetch = require('node-fetch');
+
+const headers = {
   'Accept':'application/json',
   'x-v':'string',
   'x-min-v':'string',
@@ -1608,15 +1642,17 @@ var headers = {
 
 };
 
-$.ajax({
-  url: '/energy/electricity/servicepoints/{servicePointId}/der',
-  method: 'get',
+fetch('/energy/electricity/servicepoints/{servicePointId}/der',
+{
+  method: 'GET',
 
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
+  headers: headers
 })
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -1753,8 +1789,10 @@ x-cds-client-headers: string
 
 ```
 
-```javascript
-var headers = {
+```javascript--nodejs
+const fetch = require('node-fetch');
+
+const headers = {
   'Accept':'application/json',
   'x-v':'string',
   'x-min-v':'string',
@@ -1765,15 +1803,17 @@ var headers = {
 
 };
 
-$.ajax({
-  url: '/energy/electricity/servicepoints/der',
-  method: 'get',
+fetch('/energy/electricity/servicepoints/der',
+{
+  method: 'GET',
 
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
+  headers: headers
 })
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -1923,8 +1963,17 @@ x-cds-client-headers: string
 
 ```
 
-```javascript
-var headers = {
+```javascript--nodejs
+const fetch = require('node-fetch');
+const inputBody = '{
+  "data": {
+    "servicePointIds": [
+      "string"
+    ]
+  },
+  "meta": {}
+}';
+const headers = {
   'Content-Type':'application/json',
   'Accept':'application/json',
   'x-v':'string',
@@ -1936,15 +1985,17 @@ var headers = {
 
 };
 
-$.ajax({
-  url: '/energy/electricity/servicepoints/der',
-  method: 'post',
-
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
+fetch('/energy/electricity/servicepoints/der',
+{
+  method: 'POST',
+  body: inputBody,
+  headers: headers
 })
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -1982,10 +2033,7 @@ Obtain DER data for a specific set of service points
 |x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
 |x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
-|body|body|[servicePointIdList](#schemacdr-energy-apiservicepointidlist)|mandatory|Request payload containing list of specific Service Points to obtain data for|
-|» data|body|object|mandatory|none|
-|»» servicePointIds|body|[string]|mandatory|Array of specific servicePointIds to obtain data for|
-|» meta|body|[Meta](#schemacdr-energy-apimeta)|optional|none|
+|body|body|[RequestServicePointIdList](#schemacdr-energy-apirequestservicepointidlist)|mandatory|Request payload containing list of specific Service Points to obtain data for|
 
 > Example responses
 
@@ -2110,8 +2158,10 @@ x-cds-client-headers: string
 
 ```
 
-```javascript
-var headers = {
+```javascript--nodejs
+const fetch = require('node-fetch');
+
+const headers = {
   'Accept':'application/json',
   'x-v':'string',
   'x-min-v':'string',
@@ -2122,15 +2172,17 @@ var headers = {
 
 };
 
-$.ajax({
-  url: '/energy/accounts',
-  method: 'get',
+fetch('/energy/accounts',
+{
+  method: 'GET',
 
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
+  headers: headers
 })
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -2259,8 +2311,10 @@ x-cds-client-headers: string
 
 ```
 
-```javascript
-var headers = {
+```javascript--nodejs
+const fetch = require('node-fetch');
+
+const headers = {
   'Accept':'application/json',
   'x-v':'string',
   'x-min-v':'string',
@@ -2271,15 +2325,17 @@ var headers = {
 
 };
 
-$.ajax({
-  url: '/energy/accounts/{accountId}',
-  method: 'get',
+fetch('/energy/accounts/{accountId}',
+{
+  method: 'GET',
 
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
+  headers: headers
 })
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -2753,8 +2809,10 @@ x-cds-client-headers: string
 
 ```
 
-```javascript
-var headers = {
+```javascript--nodejs
+const fetch = require('node-fetch');
+
+const headers = {
   'Accept':'application/json',
   'x-v':'string',
   'x-min-v':'string',
@@ -2765,15 +2823,17 @@ var headers = {
 
 };
 
-$.ajax({
-  url: '/energy/accounts/{accountId}/payment-schedule',
-  method: 'get',
+fetch('/energy/accounts/{accountId}/payment-schedule',
+{
+  method: 'GET',
 
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
+  headers: headers
 })
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -2894,8 +2954,10 @@ x-cds-client-headers: string
 
 ```
 
-```javascript
-var headers = {
+```javascript--nodejs
+const fetch = require('node-fetch');
+
+const headers = {
   'Accept':'application/json',
   'x-v':'string',
   'x-min-v':'string',
@@ -2906,15 +2968,17 @@ var headers = {
 
 };
 
-$.ajax({
-  url: '/energy/accounts/{accountId}/concessions',
-  method: 'get',
+fetch('/energy/accounts/{accountId}/concessions',
+{
+  method: 'GET',
 
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
+  headers: headers
 })
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -3018,8 +3082,10 @@ x-cds-client-headers: string
 
 ```
 
-```javascript
-var headers = {
+```javascript--nodejs
+const fetch = require('node-fetch');
+
+const headers = {
   'Accept':'application/json',
   'x-v':'string',
   'x-min-v':'string',
@@ -3030,15 +3096,17 @@ var headers = {
 
 };
 
-$.ajax({
-  url: '/energy/accounts/{accountId}/balance',
-  method: 'get',
+fetch('/energy/accounts/{accountId}/balance',
+{
+  method: 'GET',
 
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
+  headers: headers
 })
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -3127,8 +3195,10 @@ x-cds-client-headers: string
 
 ```
 
-```javascript
-var headers = {
+```javascript--nodejs
+const fetch = require('node-fetch');
+
+const headers = {
   'Accept':'application/json',
   'x-v':'string',
   'x-min-v':'string',
@@ -3139,15 +3209,17 @@ var headers = {
 
 };
 
-$.ajax({
-  url: '/energy/accounts/balances',
-  method: 'get',
+fetch('/energy/accounts/balances',
+{
+  method: 'GET',
 
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
+  headers: headers
 })
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -3250,8 +3322,17 @@ x-cds-client-headers: string
 
 ```
 
-```javascript
-var headers = {
+```javascript--nodejs
+const fetch = require('node-fetch');
+const inputBody = '{
+  "data": {
+    "accountIds": [
+      "string"
+    ]
+  },
+  "meta": {}
+}';
+const headers = {
   'Content-Type':'application/json',
   'Accept':'application/json',
   'x-v':'string',
@@ -3263,15 +3344,17 @@ var headers = {
 
 };
 
-$.ajax({
-  url: '/energy/accounts/balances',
-  method: 'post',
-
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
+fetch('/energy/accounts/balances',
+{
+  method: 'POST',
+  body: inputBody,
+  headers: headers
 })
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -3309,10 +3392,7 @@ Obtain the current balance for a specified set of accounts
 |x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
 |x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
-|body|body|[accountIdList](#schemacdr-energy-apiaccountidlist)|mandatory|Request payload containing list of specific Accounts to obtain data for|
-|» data|body|object|mandatory|none|
-|»» accountIds|body|[string]|mandatory|Array of specific accountIds to obtain data for|
-|» meta|body|[Meta](#schemacdr-energy-apimeta)|optional|none|
+|body|body|[RequestAccountIdList](#schemacdr-energy-apirequestaccountidlist)|mandatory|Request payload containing list of specific Accounts to obtain data for|
 
 > Example responses
 
@@ -3390,8 +3470,10 @@ x-cds-client-headers: string
 
 ```
 
-```javascript
-var headers = {
+```javascript--nodejs
+const fetch = require('node-fetch');
+
+const headers = {
   'Accept':'application/json',
   'x-v':'string',
   'x-min-v':'string',
@@ -3402,15 +3484,17 @@ var headers = {
 
 };
 
-$.ajax({
-  url: '/energy/accounts/{accountId}/invoices',
-  method: 'get',
+fetch('/energy/accounts/{accountId}/invoices',
+{
+  method: 'GET',
 
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
+  headers: headers
 })
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -3568,8 +3652,10 @@ x-cds-client-headers: string
 
 ```
 
-```javascript
-var headers = {
+```javascript--nodejs
+const fetch = require('node-fetch');
+
+const headers = {
   'Accept':'application/json',
   'x-v':'string',
   'x-min-v':'string',
@@ -3580,15 +3666,17 @@ var headers = {
 
 };
 
-$.ajax({
-  url: '/energy/accounts/invoices',
-  method: 'get',
+fetch('/energy/accounts/invoices',
+{
+  method: 'GET',
 
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
+  headers: headers
 })
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -3744,8 +3832,17 @@ x-cds-client-headers: string
 
 ```
 
-```javascript
-var headers = {
+```javascript--nodejs
+const fetch = require('node-fetch');
+const inputBody = '{
+  "data": {
+    "accountIds": [
+      "string"
+    ]
+  },
+  "meta": {}
+}';
+const headers = {
   'Content-Type':'application/json',
   'Accept':'application/json',
   'x-v':'string',
@@ -3757,15 +3854,17 @@ var headers = {
 
 };
 
-$.ajax({
-  url: '/energy/accounts/invoices',
-  method: 'post',
-
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
+fetch('/energy/accounts/invoices',
+{
+  method: 'POST',
+  body: inputBody,
+  headers: headers
 })
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -3805,10 +3904,7 @@ Obtain invoices for a specified set of accounts
 |x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
 |x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
-|body|body|[accountIdList](#schemacdr-energy-apiaccountidlist)|mandatory|Request payload containing list of specific Accounts to obtain data for|
-|» data|body|object|mandatory|none|
-|»» accountIds|body|[string]|mandatory|Array of specific accountIds to obtain data for|
-|» meta|body|[Meta](#schemacdr-energy-apimeta)|optional|none|
+|body|body|[RequestAccountIdList](#schemacdr-energy-apirequestaccountidlist)|mandatory|Request payload containing list of specific Accounts to obtain data for|
 
 > Example responses
 
@@ -3937,8 +4033,10 @@ x-cds-client-headers: string
 
 ```
 
-```javascript
-var headers = {
+```javascript--nodejs
+const fetch = require('node-fetch');
+
+const headers = {
   'Accept':'application/json',
   'x-v':'string',
   'x-min-v':'string',
@@ -3949,15 +4047,17 @@ var headers = {
 
 };
 
-$.ajax({
-  url: '/energy/accounts/{accountId}/billing',
-  method: 'get',
+fetch('/energy/accounts/{accountId}/billing',
+{
+  method: 'GET',
 
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
+  headers: headers
 })
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -4146,8 +4246,10 @@ x-cds-client-headers: string
 
 ```
 
-```javascript
-var headers = {
+```javascript--nodejs
+const fetch = require('node-fetch');
+
+const headers = {
   'Accept':'application/json',
   'x-v':'string',
   'x-min-v':'string',
@@ -4158,15 +4260,17 @@ var headers = {
 
 };
 
-$.ajax({
-  url: '/energy/accounts/billing',
-  method: 'get',
+fetch('/energy/accounts/billing',
+{
+  method: 'GET',
 
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
+  headers: headers
 })
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -4353,8 +4457,17 @@ x-cds-client-headers: string
 
 ```
 
-```javascript
-var headers = {
+```javascript--nodejs
+const fetch = require('node-fetch');
+const inputBody = '{
+  "data": {
+    "accountIds": [
+      "string"
+    ]
+  },
+  "meta": {}
+}';
+const headers = {
   'Content-Type':'application/json',
   'Accept':'application/json',
   'x-v':'string',
@@ -4366,15 +4479,17 @@ var headers = {
 
 };
 
-$.ajax({
-  url: '/energy/accounts/billing',
-  method: 'post',
-
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
+fetch('/energy/accounts/billing',
+{
+  method: 'POST',
+  body: inputBody,
+  headers: headers
 })
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -4416,10 +4531,7 @@ Other Versions: [v1](includes/obsolete/get-billing-for-specific-accounts-v1.html
 |x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
 |x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
-|body|body|[accountIdList](#schemacdr-energy-apiaccountidlist)|mandatory|Request payload containing list of specific Accounts to obtain data for|
-|» data|body|object|mandatory|none|
-|»» accountIds|body|[string]|mandatory|Array of specific accountIds to obtain data for|
-|» meta|body|[Meta](#schemacdr-energy-apimeta)|optional|none|
+|body|body|[RequestAccountIdList](#schemacdr-energy-apirequestaccountidlist)|mandatory|Request payload containing list of specific Accounts to obtain data for|
 
 > Example responses
 
@@ -10208,6 +10320,54 @@ To perform this operation, you must be authenticated and authorised with the fol
 |localityName|string|mandatory|Full name of locality|
 |postcode|string|mandatory|Postcode for the locality|
 |state|string|mandatory|State in which the address belongs. Valid enumeration defined by Australia Post PAF code file [State Type Abbreviation](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf). NSW, QLD, VIC, NT, WA, SA, TAS, ACT, AAT|
+
+<h3 class="schema-toc" id="tocSrequestservicepointidlist">RequestServicePointIdList</h3>
+
+<a id="schemacdr-energy-apirequestservicepointidlist"></a>
+
+```json
+{
+  "data": {
+    "servicePointIds": [
+      "string"
+    ]
+  },
+  "meta": {}
+}
+
+```
+
+### Properties
+
+|Name|Type|Required|Description|
+|---|---|---|---|
+|data|object|mandatory|none|
+|» servicePointIds|[string]|mandatory|Array of specific servicePointIds to obtain data for|
+|meta|[Meta](#schemacdr-energy-apimeta)|optional|none|
+
+<h3 class="schema-toc" id="tocSrequestaccountidlist">RequestAccountIdList</h3>
+
+<a id="schemacdr-energy-apirequestaccountidlist"></a>
+
+```json
+{
+  "data": {
+    "accountIds": [
+      "string"
+    ]
+  },
+  "meta": {}
+}
+
+```
+
+### Properties
+
+|Name|Type|Required|Description|
+|---|---|---|---|
+|data|object|mandatory|none|
+|» accountIds|[string]|mandatory|Array of specific accountIds to obtain data for|
+|meta|[Meta](#schemacdr-energy-apimeta)|optional|none|
 
 <h3 class="schema-toc" id="tocSlinks">Links</h3>
 

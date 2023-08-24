@@ -3,7 +3,7 @@
   "info": {
     "title": "CDR Dynamic Client Registration API",
     "description": "This specification defines the APIs for Data Holders exposing Dynamic Client Registration endpoints.",
-    "version": "1.25.0"
+    "version": "1.26.0"
   },
   "servers": [
     {
@@ -560,7 +560,7 @@
               },
               "aud": {
                 "type": "string",
-                "description": "'Contains the Data Holder issuer value as described in the OIDC Discovery Document",
+                "description": "Contains the Data Holder issuer value as described in the OIDC Discovery Document",
                 "example": "https://secure.api.dataholder.com/issuer",
                 "x-cds-type": "URIString"
               }

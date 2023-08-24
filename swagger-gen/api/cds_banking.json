@@ -12,7 +12,7 @@
       "name": "MIT License",
       "url": "https://opensource.org/licenses/MIT"
     },
-    "version": "1.25.0"
+    "version": "1.26.0"
   },
   "servers": [
     {
@@ -1014,7 +1014,7 @@
           {
             "name": "min-amount",
             "in": "query",
-            "description": "Filter transactions to only transactions with amounts higher or equal to than this amount",
+            "description": "Filter transactions to only transactions with amounts higher than or equal to this amount",
             "schema": {
               "type": "string",
               "x-cds-type": "AmountString"
@@ -1024,7 +1024,7 @@
           {
             "name": "max-amount",
             "in": "query",
-            "description": "Filter transactions to only transactions with amounts less than or equal to than this amount",
+            "description": "Filter transactions to only transactions with amounts less than or equal to this amount",
             "schema": {
               "type": "string",
               "x-cds-type": "AmountString"
@@ -4285,7 +4285,7 @@
               },
               "bundleName": {
                 "type": "string",
-                "description": "Optional field to indicate if this account is part of a bundle that is providing additional benefit for to the customer"
+                "description": "Optional field to indicate if this account is part of a bundle that is providing additional benefit to the customer"
               },
               "specificAccountUType": {
                 "type": "string",
@@ -5465,7 +5465,7 @@
             "enum": [
               "accountId",
               "biller",
-              "digitalWallet",              
+              "digitalWallet",
               "domestic",
               "international",
               "payeeId"
@@ -5491,7 +5491,7 @@
           },
           "digitalWallet": {
             "$ref": "#/components/schemas/BankingDigitalWalletPayee"
-          },        
+          },
           "domestic": {
             "$ref": "#/components/schemas/BankingDomesticPayee"
           },
@@ -6171,7 +6171,7 @@
       "ParamTransactionMinAmount": {
         "name": "min-amount",
         "in": "query",
-        "description": "Filter transactions to only transactions with amounts higher or equal to than this amount",
+        "description": "Filter transactions to only transactions with amounts higher than or equal to this amount",
         "schema": {
           "type": "string",
           "x-cds-type": "AmountString"
@@ -6181,7 +6181,7 @@
       "ParamTransactionMaxAmount": {
         "name": "max-amount",
         "in": "query",
-        "description": "Filter transactions to only transactions with amounts less than or equal to than this amount",
+        "description": "Filter transactions to only transactions with amounts less than or equal to this amount",
         "schema": {
           "type": "string",
           "x-cds-type": "AmountString"

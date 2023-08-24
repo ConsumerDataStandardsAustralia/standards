@@ -18,8 +18,17 @@ x-cds-arrangement: string
 
 ```
 
-```javascript
-var headers = {
+```javascript--nodejs
+const fetch = require('node-fetch');
+const inputBody = '{
+  "data": {
+    "servicePointIds": [
+      "string"
+    ]
+  },
+  "meta": {}
+}';
+const headers = {
   'Content-Type':'application/json',
   'Accept':'application/json',
   'x-v':'string',
@@ -29,15 +38,17 @@ var headers = {
 
 };
 
-$.ajax({
-  url: '/secondary/energy/electricity/servicepoints',
-  method: 'post',
-
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
+fetch('/secondary/energy/electricity/servicepoints',
+{
+  method: 'POST',
+  body: inputBody,
+  headers: headers
 })
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -73,10 +84,7 @@ Obtain a list of service points owned by the customer that has authorised the cu
 |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
 |x-fapi-interaction-id|header|string|mandatory|The x-fapi-interaction-id header value provided by the Data Recipient. If not supplied by the Data Recipient, the primary Data Holder MUST create a unique **[[RFC4122]](#nref-RFC4122)** UUID value for the x-fapi-interaction-id header.|
 |x-cds-arrangement|header|string|mandatory|A unique string representing a consent arrangement between a Data Recipient Software Product and Data Holder for a given consumer. The identifier MUST be unique per customer according to the definition of customer in the CDR Federation section of this profile. The x-cds-arrangement should contain the arrangement ID for the consent that the request is being made under and will be used for tracing and audit purposes. This field MUST be populated but AEMO MUST NOT seek to validate the consent associated with the arrangement|
-|body|body|[servicePointIdList](#schemacdr-energy-secondary-data-holder-apiservicepointidlist)|mandatory|Request payload containing list of specific Service Points to obtain data for|
-|» data|body|object|mandatory|none|
-|»» servicePointIds|body|[string]|mandatory|Array of specific NMIs to obtain data for|
-|» meta|body|[Meta](#schemacdr-energy-secondary-data-holder-apimeta)|mandatory|none|
+|body|body|[RequestServicePointIdList](#schemacdr-energy-secondary-data-holder-apirequestservicepointidlist)|mandatory|Request payload containing list of specific Service Points to obtain data for|
 
 > Example responses
 
@@ -161,8 +169,10 @@ x-cds-arrangement: string
 
 ```
 
-```javascript
-var headers = {
+```javascript--nodejs
+const fetch = require('node-fetch');
+
+const headers = {
   'Accept':'application/json',
   'x-v':'string',
   'x-min-v':'string',
@@ -171,15 +181,17 @@ var headers = {
 
 };
 
-$.ajax({
-  url: '/secondary/energy/electricity/servicepoints/{servicePointId}',
-  method: 'get',
+fetch('/secondary/energy/electricity/servicepoints/{servicePointId}',
+{
+  method: 'GET',
 
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
+  headers: headers
 })
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -349,8 +361,10 @@ x-cds-arrangement: string
 
 ```
 
-```javascript
-var headers = {
+```javascript--nodejs
+const fetch = require('node-fetch');
+
+const headers = {
   'Accept':'application/json',
   'x-v':'string',
   'x-min-v':'string',
@@ -359,15 +373,17 @@ var headers = {
 
 };
 
-$.ajax({
-  url: '/secondary/energy/electricity/servicepoints/{servicePointId}/usage',
-  method: 'get',
+fetch('/secondary/energy/electricity/servicepoints/{servicePointId}/usage',
+{
+  method: 'GET',
 
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
+  headers: headers
 })
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -504,8 +520,17 @@ x-cds-arrangement: string
 
 ```
 
-```javascript
-var headers = {
+```javascript--nodejs
+const fetch = require('node-fetch');
+const inputBody = '{
+  "data": {
+    "servicePointIds": [
+      "string"
+    ]
+  },
+  "meta": {}
+}';
+const headers = {
   'Content-Type':'application/json',
   'Accept':'application/json',
   'x-v':'string',
@@ -515,15 +540,17 @@ var headers = {
 
 };
 
-$.ajax({
-  url: '/secondary/energy/electricity/servicepoints/usage',
-  method: 'post',
-
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
+fetch('/secondary/energy/electricity/servicepoints/usage',
+{
+  method: 'POST',
+  body: inputBody,
+  headers: headers
 })
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -562,10 +589,7 @@ Obtain the electricity usage data for a specific set of service points
 |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
 |x-fapi-interaction-id|header|string|mandatory|The x-fapi-interaction-id header value provided by the Data Recipient. If not supplied by the Data Recipient, the primary Data Holder MUST create a unique **[[RFC4122]](#nref-RFC4122)** UUID value for the x-fapi-interaction-id header.|
 |x-cds-arrangement|header|string|mandatory|A unique string representing a consent arrangement between a Data Recipient Software Product and Data Holder for a given consumer. The identifier MUST be unique per customer according to the definition of customer in the CDR Federation section of this profile. The x-cds-arrangement should contain the arrangement ID for the consent that the request is being made under and will be used for tracing and audit purposes. This field MUST be populated but AEMO MUST NOT seek to validate the consent associated with the arrangement|
-|body|body|[servicePointIdList](#schemacdr-energy-secondary-data-holder-apiservicepointidlist)|mandatory|Request payload containing list of specific Service Points to obtain data for|
-|» data|body|object|mandatory|none|
-|»» servicePointIds|body|[string]|mandatory|Array of specific NMIs to obtain data for|
-|» meta|body|[Meta](#schemacdr-energy-secondary-data-holder-apimeta)|mandatory|none|
+|body|body|[RequestServicePointIdList](#schemacdr-energy-secondary-data-holder-apirequestservicepointidlist)|mandatory|Request payload containing list of specific Service Points to obtain data for|
 
 #### Enumerated Values
 
@@ -673,8 +697,10 @@ x-cds-arrangement: string
 
 ```
 
-```javascript
-var headers = {
+```javascript--nodejs
+const fetch = require('node-fetch');
+
+const headers = {
   'Accept':'application/json',
   'x-v':'string',
   'x-min-v':'string',
@@ -683,15 +709,17 @@ var headers = {
 
 };
 
-$.ajax({
-  url: '/secondary/energy/electricity/servicepoints/{servicePointId}/der',
-  method: 'get',
+fetch('/secondary/energy/electricity/servicepoints/{servicePointId}/der',
+{
+  method: 'GET',
 
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
+  headers: headers
 })
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -824,8 +852,17 @@ x-cds-arrangement: string
 
 ```
 
-```javascript
-var headers = {
+```javascript--nodejs
+const fetch = require('node-fetch');
+const inputBody = '{
+  "data": {
+    "servicePointIds": [
+      "string"
+    ]
+  },
+  "meta": {}
+}';
+const headers = {
   'Content-Type':'application/json',
   'Accept':'application/json',
   'x-v':'string',
@@ -835,15 +872,17 @@ var headers = {
 
 };
 
-$.ajax({
-  url: '/secondary/energy/electricity/servicepoints/der',
-  method: 'post',
-
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
+fetch('/secondary/energy/electricity/servicepoints/der',
+{
+  method: 'POST',
+  body: inputBody,
+  headers: headers
 })
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -879,10 +918,7 @@ Obtain DER data for a specific set of service points
 |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
 |x-fapi-interaction-id|header|string|mandatory|The x-fapi-interaction-id header value provided by the Data Recipient. If not supplied by the Data Recipient, the primary Data Holder MUST create a unique **[[RFC4122]](#nref-RFC4122)** UUID value for the x-fapi-interaction-id header.|
 |x-cds-arrangement|header|string|mandatory|A unique string representing a consent arrangement between a Data Recipient Software Product and Data Holder for a given consumer. The identifier MUST be unique per customer according to the definition of customer in the CDR Federation section of this profile. The x-cds-arrangement should contain the arrangement ID for the consent that the request is being made under and will be used for tracing and audit purposes. This field MUST be populated but AEMO MUST NOT seek to validate the consent associated with the arrangement|
-|body|body|[servicePointIdList](#schemacdr-energy-secondary-data-holder-apiservicepointidlist)|mandatory|Request payload containing list of specific Service Points to obtain data for|
-|» data|body|object|mandatory|none|
-|»» servicePointIds|body|[string]|mandatory|Array of specific NMIs to obtain data for|
-|» meta|body|[Meta](#schemacdr-energy-secondary-data-holder-apimeta)|mandatory|none|
+|body|body|[RequestServicePointIdList](#schemacdr-energy-secondary-data-holder-apirequestservicepointidlist)|mandatory|Request payload containing list of specific Service Points to obtain data for|
 
 > Example responses
 
@@ -2033,6 +2069,30 @@ This operation may only be called by an Energy Retailer using the information se
 |localityName|string|mandatory|Full name of locality|
 |postcode|string|mandatory|Postcode for the locality|
 |state|string|mandatory|State in which the address belongs. Valid enumeration defined by Australia Post PAF code file [State Type Abbreviation](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf). NSW, QLD, VIC, NT, WA, SA, TAS, ACT, AAT|
+
+<h3 class="schema-toc" id="tocSrequestservicepointidlist">RequestServicePointIdList</h3>
+
+<a id="schemacdr-energy-secondary-data-holder-apirequestservicepointidlist"></a>
+
+```json
+{
+  "data": {
+    "servicePointIds": [
+      "string"
+    ]
+  },
+  "meta": {}
+}
+
+```
+
+### Properties
+
+|Name|Type|Required|Description|
+|---|---|---|---|
+|data|object|mandatory|none|
+|» servicePointIds|[string]|mandatory|Array of specific servicePointIds to obtain data for|
+|meta|[Meta](#schemacdr-energy-secondary-data-holder-apimeta)|optional|none|
 
 <h3 class="schema-toc" id="tocSlinks">Links</h3>
 

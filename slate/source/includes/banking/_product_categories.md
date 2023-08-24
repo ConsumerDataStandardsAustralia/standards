@@ -1,6 +1,10 @@
 ## Product Categories
 
-The [Product Category enumeration](#schemabankingenumproductcategory) lists the available product categories for categorising products and accounts.  These are explained in the following tables:
+```diff
+Fixed broken link
+```
+
+The [Product Category enumeration](#tocSbankingproductcategory) lists the available product categories for categorising products and accounts.  These are explained in the following tables:
 
 **Deposit Products**
 

@@ -3,7 +3,7 @@
 	"info": {
 		"title": "CDR Energy Secondary Data Holder API",
 		"description": "Consumer Data Right end points and payloads for Secondary Data Holder for the Energy sector",
-        "version": "1.25.0"
+        "version": "1.26.0"
 	},
 	"components": {
 		"schemas": {
@@ -1023,7 +1023,7 @@
                   "postcode"
                 ]
             },
-              "CommonPAFAddress": {
+            "CommonPAFAddress": {
                 "description": "Australian address formatted according to the file format defined by the [PAF file format](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf). Required if addressUType is set to paf",
                 "required": [
                   "localityName",
@@ -1123,6 +1123,32 @@
                     "type": "string",
                     "description": "State in which the address belongs. Valid enumeration defined by Australia Post PAF code file [State Type Abbreviation](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf). NSW, QLD, VIC, NT, WA, SA, TAS, ACT, AAT"
                   }
+                }
+            },
+            "RequestServicePointIdList": {
+                "type": "object",
+                "required": [
+                    "data"
+                ],
+                "properties": {
+                    "data": {
+                        "type": "object",
+                        "required": [
+                            "servicePointIds"
+                        ],
+                        "properties": {
+                            "servicePointIds": {
+                                "description": "Array of specific servicePointIds to obtain data for",
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "meta": {
+                        "$ref": "#/components/schemas/Meta"
+                    }
                 }
             },
 			"Links": {
@@ -1313,43 +1339,6 @@
 				}
 			}
 		},
-		"requestBodies": {
-			"servicePointIdList": {
-				"description": "Request payload containing list of specific Service Points to obtain data for",
-				"required": true,
-				"content": {
-					"application/json": {
-						"schema": {
-							"type": "object",
-							"required": [
-								"data",
-								"meta"
-							],
-							"properties": {
-								"data": {
-									"type": "object",
-									"required": [
-										"servicePointIds"
-									],
-									"properties": {
-										"servicePointIds": {
-											"description": "Array of specific NMIs to obtain data for",
-											"type": "array",
-											"items": {
-												"type": "string"
-											}
-										}
-									}
-								},
-								"meta": {
-									"$ref": "#/components/schemas/Meta"
-								}
-							}
-						}
-					}
-				}
-			}
-		},
 		"responses": {
 			"servicePointList": {
 				"description": "Successful response",
@@ -1505,7 +1494,15 @@
 					}
 				],
                 "requestBody": {
-					"$ref": "#/components/requestBodies/servicePointIdList"
+                    "description": "Request payload containing list of specific Service Points to obtain data for",
+                    "content": {
+                      "application/json": {
+                        "schema": {
+                          "$ref": "#/components/schemas/RequestServicePointIdList"
+                        }
+                      }
+                    },
+                    "required": true
 				},
                 "responses": {
 					"200": {
@@ -1817,7 +1814,15 @@
 					}
 				],
 				"requestBody": {
-					"$ref": "#/components/requestBodies/servicePointIdList"
+                    "description": "Request payload containing list of specific Service Points to obtain data for",
+                    "content": {
+                      "application/json": {
+                        "schema": {
+                          "$ref": "#/components/schemas/RequestServicePointIdList"
+                        }
+                      }
+                    },
+                    "required": true
 				},
 				"responses": {
 					"200": {
@@ -1999,7 +2004,15 @@
 					}
 				],
 				"requestBody": {
-					"$ref": "#/components/requestBodies/servicePointIdList"
+                    "description": "Request payload containing list of specific Service Points to obtain data for",
+                    "content": {
+                      "application/json": {
+                        "schema": {
+                          "$ref": "#/components/schemas/RequestServicePointIdList"
+                        }
+                      }
+                    },
+                    "required": true
 				},
 				"responses": {
 					"200": {
