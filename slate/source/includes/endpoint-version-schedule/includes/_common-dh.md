@@ -25,7 +25,7 @@
 | Admin APIs      | Get Metrics                                  | ``/admin/metrics``                                             | <span class="method get">GET</span>    | V2      | 2021-07-31          | 2022-12-05      | 2020-09-16, V1.5.0  | 2021-10-06, V1.12.0                |
 | Admin APIs      | Get Metrics                                  | ``/admin/metrics``                                             | <span class="method get">GET</span>    | V3      | 2022-10-01          | 2024-05-13 **&dagger;** | 2021-10-06, V1.12.0 | 2023-07-08, V1.25.0 |
 | Admin APIs      | Get Metrics                                  | ``/admin/metrics``                                             | <span class="method get">GET</span>    | V4      | 2023-11-01          | When v5 Implemented | 2023-07-08, V1.25.0 | 2023-07-08, V1.25.0 |
-| Admin APIs      | Get Metrics                                  | ``/admin/metrics``                                             | <span class="method get">GET</span>    | V5      | 2024-05-13          | N/A | 2023-07-08, V1.25.0 | N/A                |
+| Admin APIs      | Get Metrics                                  | ``/admin/metrics``                                             | <span class="method get">GET</span>    | v5      | 2024-05-13          | N/A | 2023-07-08, V1.25.0 | N/A                |
 
 **&dagger;NOTE:** the details of the retirement date for Get Metrics v3 is as follows:
 
