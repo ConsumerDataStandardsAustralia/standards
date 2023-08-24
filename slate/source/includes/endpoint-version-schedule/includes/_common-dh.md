@@ -30,4 +30,4 @@
 **&dagger;NOTE:** the details of the retirement date for Get Metrics v3 is as follows:
 
 * Implementation of Get Metrics v3 is not required for Data Holders going live on, or after, 1st November 2023
-* Other Data Holders **MAY** retire this version from the earlier of **13th May 2023** or from the time ACCC announce that they no longer call this version
+* Other Data Holders **MAY** retire this version from the earlier of **13th May 2024** or from the time the ACCC announce that they no longer call this version

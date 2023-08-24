@@ -164,7 +164,7 @@ Obsolete versions: [v1](includes/obsolete/get-metrics-v1.html) [v2](includes/obs
 
 Deprecated versions:
 
-- [v3](includes/obsolete/get-metrics-v3.html) - Implementation not required for Data Holders going live on, or after, 1st November 2023.  Other Data Holders **MAY** retire this version from the earlier of **13th May 2023** or from the time ACCC announce that they no longer call this version
+- [v3](includes/obsolete/get-metrics-v3.html) - Implementation not required for Data Holders going live on, or after, 1st November 2023.  Other Data Holders **MAY** retire this version from the earlier of **13th May 2024** or from the time the ACCC announce that they no longer call this version
 - [v4](includes/obsolete/get-metrics-v4.html) - This version, or v5, **MUST** be implemented by **November 1st 2023**
 
 If the Data Holder supports private_key_jwt client authentication they MUST validate the scope.

@@ -15,7 +15,7 @@ This page documents the deprecated version 3 of the Get Metrics end point.
 
 Support for this version is not required for Data Holders going live on, or after, 1st November 2023.
 
-Other Data Holders **MAY** retire this version from the earlier of **13th May 2023** or from the time ACCC announce that they no longer call this version.
+Other Data Holders **MAY** retire this version from the earlier of **13th May 2024** or from the time the ACCC announce that they no longer call this version.
 
 ## Get Metrics
 
