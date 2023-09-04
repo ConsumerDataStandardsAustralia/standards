@@ -40,13 +40,17 @@ Made the month formats consistent for all reference
 
 ## Informative References
 
+```diff
+Changed the link to the CDR website to be HTTPS with www.
+```
+
 | **Reference**  | **Description**                                                                                                                                                                   |
 |----------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | <a id="iref-ACCC"></a>**[ACCC]**                | The Australian Competition and Consumer Commission is responsible for accrediting data recipients to participate in CDR, building and maintaining the Register of data recipients and data holders, providing support and guidance to participants and promoting compliance with the CDR rules and standards, including taking enforcement action where necessary.<br/><https://www.accc.gov.au/focus-areas/consumer-data-right-cdr-0> |
 | <a id="iref-ANZSCO"></a>**[ANZSCO]**            | ANZSCO - Australian and New Zealand Standard Classification of Occupations : <http://www.abs.gov.au/ANZSCO> |
 | <a id="iref-ANZSIC-2006"></a>**[ANZSIC-2006]**  | 1292.0 - Australian and New Zealand Standard Industrial Classification (ANZSIC), 2006 (Revision 2.0)  : <http://www.abs.gov.au/anzsic> |
 | <a id="iref-BCP195"></a>**[BCP195]**            | Recommendations for Secure Use of Transport Layer Security (TLS) and Datagram Transport Layer Security (DTLS): <https://tools.ietf.org/html/bcp195> |
-| <a id="iref-CDR"></a>**[CDR]**                  | Consumer Data Right: <http://cdr.gov.au>|
+| <a id="iref-CDR"></a>**[CDR]**                  | Consumer Data Right: <https://www.cdr.gov.au>|
 | <a id="iref-E-164"></a>**[E.164]**              | The international public telecommunication numbering plan: <http://www.itu.int/rec/T-REC-E.164-201011-I/en> |
 | <a id="iref-FAPI"></a>**[FAPI]**                | Financial-Grade API - Home Page <https://openid.net/wg/fapi/>|
 | <a id="iref-OAIC"></a>**[OAIC]**                | The Office of the Australian Information Commissioner is responsible for regulating privacy and confidentiality under the CDR. The OAIC also handles complaints and notifications of eligible data breaches relating to CDR data.<br/><https://www.oaic.gov.au/consumer-data-right> |

@@ -21,7 +21,7 @@ This release addresses the following minor defects raised on [Standards Staging]
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
-- None
+- [Standards Maintenance #599 - Maintenance Iteration 16 Holistic Feedback](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/599)
 
 ### Decision Proposals
 
@@ -38,7 +38,7 @@ This release addresses the following Decision Proposals published on [Standards]
 
 |Change|Description|Link|
 |------|-----------|----|
-|  |  |  |
+| Updated CDR website link | **[Standards Maintenance #599](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/599):** Changed the link to the CDR website to be HTTPS with www. Addresses this issue [comment](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/599#issuecomment-1655029056) | [Informative References](../../#informative-references) |
 
 ## High Level Standards
 
