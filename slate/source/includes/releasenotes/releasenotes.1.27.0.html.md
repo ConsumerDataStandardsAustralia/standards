@@ -60,7 +60,7 @@ No Change
 
 |Change|Description|Link|
 |------|-----------|----|
-|  |  |  |
+| Corrected typo | **[Standards Maintenance #599](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/599):** Corrected typo in registeredCountry description. Addresses this [comment](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/599#issuecomment-1667114199) | [Register APIs](../../#register-apis) |
 
 ## Consumer Experience
 
