@@ -49,6 +49,7 @@ No Change
 |Change|Description|Link|
 |------|-----------|----|
 | Corrected typos | **[Standards Maintenance #599](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/599):** Corrected descriptions mentioning electricity in the EnergyInvoiceGasUsageCharges schema. Addresses [this issue comment](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/599#issuecomment-1678450294) | [Energy APIs](../../#energy-apis) |
+| Corrected requirement | **[Standards Maintenance #599](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/599):** Corrected the requirement for the authorisations property of Get Metrics v4 and v5 to be mandatory. Addresses [this issue comment](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/599#issuecomment-1691010927) | [Admin APIs](../../#admin-apis) |
 
 ## Information Security Profile
 
