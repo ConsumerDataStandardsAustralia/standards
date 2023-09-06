@@ -48,7 +48,7 @@ No Change
 
 |Change|Description|Link|
 |------|-----------|----|
-|  |  |  |
+| Corrected typos | **[Standards Maintenance #599](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/599):** Corrected descriptions mentioning electricity in the EnergyInvoiceGasUsageCharges schema. Addresses [this issue comment](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/599#issuecomment-1678450294) | [Energy APIs](../../#energy-apis) |
 
 ## Information Security Profile
 

@@ -3231,12 +3231,12 @@
                         "x-cds-type": "AmountString"
                     },
                     "totalOnceOffCharges": {
-                        "description": "The aggregate total of any once off charges arising from electricity usage for the period covered by the invoice (exclusive of GST)",
+                        "description": "The aggregate total of any once off charges arising from gas usage for the period covered by the invoice (exclusive of GST)",
                         "type": "string",
                         "x-cds-type": "AmountString"
                     },
                     "totalOnceOffDiscounts": {
-                        "description": "The aggregate total of any once off discounts or credits arising from electricity usage for the period covered by the invoice (exclusive of GST)",
+                        "description": "The aggregate total of any once off discounts or credits arising from gas usage for the period covered by the invoice (exclusive of GST)",
                         "type": "string",
                         "x-cds-type": "AmountString"
                     },
@@ -3276,7 +3276,7 @@
                         }
                     },
                     "totalGst": {
-                        "description": "The total GST for all electricity usage charges.  If absent then zero is assumed",
+                        "description": "The total GST for all gas usage charges.  If absent then zero is assumed",
                         "type": "string",
                         "x-cds-type": "AmountString"
                     }
