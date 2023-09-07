@@ -57,6 +57,7 @@ No Change
 |Change|Description|Link|
 |------|-----------|----|
 | Corrected typo | **[Standards Maintenance #599](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/599):** Corrected typo in the description of the `software_roles` field in the **Client Registration** and **DCR APIs** sections. Addresses [this issue comment](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/599#issuecomment-1700463647) | [Security Profile](../../#security-profile) |
+| Updated reference | **[Standards Maintenance #599](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/599):** Updated [FAPI-RW-Draft] to refer to [FAPI-1.0-Advanced]. Addresses [this issue comment](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/599#issuecomment-1709482553) | [Security Profile](../../#security-profile) |
 
 ## Register Standards
 
