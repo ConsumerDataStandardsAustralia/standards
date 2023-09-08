@@ -1,8 +1,6 @@
 ## Normative References
 
-```diff
-Made the month formats consistent for all reference
-```
+
 
 | **Reference**  | **Description**  | **Version** |
 |-|-|-|

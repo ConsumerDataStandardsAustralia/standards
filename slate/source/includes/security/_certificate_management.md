@@ -8,9 +8,7 @@ Certificate | Function | Notes
 
 ### Issued by the Register CA for Data Recipients
 
-```diff
-Fixed broken link
-```
+
 
 Certificate | Function | Notes
 -----------|------------------------------------------|------------------------------
@@ -23,9 +21,7 @@ Certificate | Function | Notes
 
 ### Certificate Trust Model
 
-```diff
-Fixed broken link
-```
+
 
 The CDR utilises a private certificate trust chain for all Register CA secured endpoints being hosted by [Data Holders](#participant-endpoints), [Data Recipients](#participant-endpoints) and the [Register](#register-apis).
 

@@ -4,16 +4,7 @@ The standards, as published from time to time, may include specific statements i
 
 The table below highlights these areas of the standards.
 
-```diff
-Added the retirement details for Get Metrics v3
 
-Corrected the obligation date for Get Metrics v5
-
-Replaced the term `obsolete` with `retire` to clarify the
-intent of these statements
-
-Fixed broken link to Get Accounts v1
-```
 
 |Section|Description|Applicable Date|
 |-------|-----------|---------------|
