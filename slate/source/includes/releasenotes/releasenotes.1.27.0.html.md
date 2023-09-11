@@ -17,7 +17,7 @@ Release notes for version v1.27.0 of the [CDR Standards](../../index.html).
 
 This release addresses the following minor defects raised on [Standards Staging](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues):
 
-- [Staging Issue xxx - Description](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/xxx)
+- [Staging Issue #305 - Long lines break words and cause scrollbars](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/305)
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
@@ -32,7 +32,7 @@ This release addresses the following Decision Proposals published on [Standards]
 ## General Changes
 |Change|Description|Link|
 |------|-----------|----|
-
+| Line wrapping and scrollbars | **[Standards Staging #305](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/305):** Improved line wrapping and removed horizontal scrollbars in the 'Non-normative Examples' and 'Version Delta' tab column. | [Non-normative Examples](../../?examples)<br>[Version Delta](../../?diff) |
 
 ## Introduction
 
