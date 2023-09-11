@@ -2,10 +2,12 @@ import os, glob
 import sys
 import fileinput
 import re
+import subprocess
 
-version_regex = r"\d{1}\.\d{2}\.\d{1}" #regex for version
+version_regex = r"\b\d{1}\.\d{2}\.\d{1}\b" #regex for version
 diff_regex = re.compile(r'```diff(.*?)```', re.DOTALL) #regex for diff blocks
 new_version = "-1.-1.-1"
+current_version = "-2.-2.-2"
 exclude_list = ["_intro.md"] # Define the exclude_list for diff block removal
 changelog_table_header = "|Change Date|Version|Description|Detail Of change|"
 archives_table_header = "|Releases Date|Version|Description|"
@@ -16,7 +18,7 @@ ARCHIVESPATH  = '../slate/source/includes/archives.md'
 RELEASENOTESPATH = "../slate/source/includes/releasenotes"
 
 def set_new_minor_version(content):
-    global new_version
+    global new_version, current_version
 
     # Search for the version pattern in the content
     match = re.search(version_regex, content)
@@ -37,6 +39,23 @@ def set_new_minor_version(content):
 
         print(f"New Version: {new_version}")
         return new_version
+    else:
+        print("Version not found in the content.")
+        return None
+
+def get_current_version(content):
+    global current_version
+
+    # Search for the version pattern in the content
+    match = re.search(version_regex, content)
+
+    # Extract and return the new version if found
+    if match:
+        current_version = match.group()
+        print(f"Current Version: {current_version}")
+
+        return current_version
+
     else:
         print("Version not found in the content.")
         return None
@@ -191,17 +210,45 @@ def search_and_remove_diff_blocks(directory='.'):
 
 def main():
 #   Get new version from user
-    global new_version
+    global new_version, current_version
     user_input = input("Leave blank to incriment current version or enter new version number (e.g., 1.27.0): ")
+    
+    with open(INTROMDPATH, 'r+') as f :
+        file_content = f.read()
+
     if user_input and re.match(version_regex, user_input):
-            new_version = user_input
+        new_version = user_input
+        get_current_version(file_content)
+
     else:
         print("Invalid version format or no version provided. Using current version and incrementing minor.")
-        with open(INTROMDPATH, 'r+') as f :
-            file_content = f.read()
         new_version = set_new_minor_version(file_content)
 
-    print("Version will be set to: ", new_version)
+    if new_version == current_version:
+        user_input = input("Version {} already exists. Are you sure you want to continue? (Y/N) ".format(new_version))
+        if user_input != "y" and user_input != "Y":
+            print("Aborting.")
+            exit(1)
+    
+    process = subprocess.Popen(["git","branch","--show-current"], stdout=subprocess.PIPE)
+    output, error = process.communicate()
+    if error:
+        raise Exception(error)
+
+    output = str(output, encoding='utf-8')
+    
+    match = re.search(version_regex, output)
+
+    # Extract and return the new version if found
+    git_version = "-1"
+    if match:
+        git_version = match.group()
+
+        if "release/" in output and git_version != new_version:
+            print("It looks like you're in git branch \"release/{}\" but trying to make version changes with v{}. Please try again.".format(git_version, new_version))
+            exit(1)
+
+    print("Version will be set to: {}".format(new_version))
 
     update_version_in_intro()
     update_version_in_master_swagger()
