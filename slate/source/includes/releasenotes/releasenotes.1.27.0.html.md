@@ -66,6 +66,7 @@ No Change
 |Change|Description|Link|
 |------|-----------|----|
 | Corrected typo | **[Standards Maintenance #599](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/599):** Corrected typo in registeredCountry description. Addresses this [comment](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/599#issuecomment-1667114199) | [Register APIs](../../#register-apis) |
+| Changed x-v headers to mandatory | **[Standards Maintenance #599](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/599):** Changed the x-v header from optional to mandatory and removed the default x-v in 'Get Data Holder Brands', 'Get Software Statement Assertion', 'Get Software Products Statues', 'Get Data Recipients Statues', 'Get Data Recipients'. Updated the x-v and x-min-v descriptions to align to other endpoints. Addresses [this issue comment](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/599#issuecomment-1689276435) | [Register APIs](../../#register-apis) |
 
 ## Consumer Experience
 
