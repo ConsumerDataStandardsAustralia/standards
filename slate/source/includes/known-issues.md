@@ -2,10 +2,7 @@
 
 There are certain aspects of the standards that are actively under review. These known issues are articulated in the following table.
 
-```diff
-The known issue related to the incorrect obligation date for
-Get Metrics v5 has been removed as it has been resolved
-```
+
 
 Issue | Description
 :---- | :----------

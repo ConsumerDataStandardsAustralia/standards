@@ -17,17 +17,17 @@ Release notes for version v1.27.0 of the [CDR Standards](../../index.html).
 
 This release addresses the following minor defects raised on [Standards Staging](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues):
 
-- None
+- [Staging Issue xxx - Description](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/xxx)
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
-- [Standards Maintenance #599 - Maintenance Iteration 16 Holistic Feedback](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/599)
+- [Maintenance Issue 599 - Maintenance Iteration 16 Holistic Feedback](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/599)
 
 ### Decision Proposals
 
 This release addresses the following Decision Proposals published on [Standards](https://github.com/ConsumerDataStandardsAustralia/standards/issues):
 
-- None
+- [Decision Proposal xxx - Description](https://github.com/ConsumerDataStandardsAustralia/standards/issues/xxx)
 
 ## General Changes
 |Change|Description|Link|
@@ -38,11 +38,13 @@ This release addresses the following Decision Proposals published on [Standards]
 
 |Change|Description|Link|
 |------|-----------|----|
-| Updated CDR website link | **[Standards Maintenance #599](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/599):** Changed the link to the CDR website to be HTTPS with www. Addresses this issue [comment](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/599#issuecomment-1655029056) | [Informative References](../../#informative-references) |
+| Updated CDR website link | **[Standards Maintenance #599](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/599):** Changed the link to the CDR website to be HTTPS with www. Addresses [this issue comment](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/599#issuecomment-1655029056) | [Informative References](../../#informative-references) |
 
-## High Level Standards
+## High-Level Standards
 
-No Change
+|Change|Description|Link|
+|------|-----------|----|
+| No Change | | |
 
 ## API End Points
 
@@ -65,17 +67,21 @@ No Change
 
 |Change|Description|Link|
 |------|-----------|----|
-| Corrected typo | **[Standards Maintenance #599](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/599):** Corrected typo in registeredCountry description. Addresses this [comment](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/599#issuecomment-1667114199) | [Register APIs](../../#register-apis) |
+| Corrected typo | **[Standards Maintenance #599](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/599):** Corrected typo in registeredCountry description. Addresses [this issue comment](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/599#issuecomment-1667114199) | [Register APIs](../../#register-apis) |
 | Changed x-v headers to mandatory | **[Standards Maintenance #599](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/599):** Changed the x-v header from optional to mandatory and removed the default x-v in 'Get Data Holder Brands', 'Get Software Statement Assertion', 'Get Software Products Statues', 'Get Data Recipients Statues', 'Get Data Recipients'. Updated the x-v and x-min-v descriptions to align to other endpoints. Addresses [this issue comment](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/599#issuecomment-1689276435) | [Register APIs](../../#register-apis) |
 
 ## Consumer Experience
 
-No Change
+|Change|Description|Link|
+|------|-----------|----|
+| No Change | | |
 
-## Non Functional Requirements
+## Non-Functional Requirements
 
-No Change
+|Change|Description|Link|
+|------|-----------|----|
+| No Change | | |
 
 ## Known Issues
 
-None
+No Change

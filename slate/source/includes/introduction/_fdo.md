@@ -4,16 +4,7 @@ The standards, as published from time to time, may include specific statements i
 
 The table below highlights these areas of the standards.
 
-```diff
-Added the retirement details for Get Metrics v3
 
-Corrected the obligation date for Get Metrics v5
-
-Replaced the term `obsolete` with `retire` to clarify the
-intent of these statements
-
-Fixed broken link to Get Accounts v1
-```
 
 ```diff
 Added clarification for 'Get Energy Account Detail V2' for Data Holders going live on, or after, November 1st 2023
