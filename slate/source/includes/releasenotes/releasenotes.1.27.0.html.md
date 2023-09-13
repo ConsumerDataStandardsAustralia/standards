@@ -21,7 +21,7 @@ This release addresses the following minor defects raised on [Standards Staging]
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
-- [Maintenance Issue xxx - Description](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/xxx)
+- [Maintenance Issue 469 - Add isQueryParamUnsupported to MetaPaginated for schema validation](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/469)
 
 ### Decision Proposals
 
@@ -40,7 +40,7 @@ This release addresses the following Decision Proposals published on [Standards]
 |------|-----------|----|
 
 
-## High-Level Standards
+## High Level Standards
 
 |Change|Description|Link|
 |------|-----------|----|
@@ -49,6 +49,7 @@ This release addresses the following Decision Proposals published on [Standards]
 
 |Change|Description|Link|
 |------|-----------|----|
+| isQueryParamUnsupported property | **[Standards Maintenance #469](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/469):** Added MetaPaginatedTransaction schema to 'Get Transactions For Account' to include the isQueryParamUnsupported property | [Banking APIs](../../#banking-apis) |
 
 ## Information Security Profile
 
