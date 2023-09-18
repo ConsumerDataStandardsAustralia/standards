@@ -21,7 +21,7 @@ This release addresses the following minor defects raised on [Standards Staging]
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
-- [Maintenance Issue xxx - Description](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/xxx)
+- [Maintenance Issue 611 - Clarification of Energy PRD Obligations](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/611)
 
 ### Decision Proposals
 
@@ -54,6 +54,7 @@ This release addresses the following Decision Proposals published on [Standards]
 
 |Change|Description|Link|
 |------|-----------|----|
+| Clarification of Energy PRD Obligations | **[Standards Maintenance #611](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/611):** Updated the description of the PublicBaseUri field to clarify requirements for the Energy sector | [Security Endpoints](../../#security-endpoints) |
 
 ## Register Standards
 
