@@ -17,7 +17,7 @@ Release notes for version v1.27.0 of the [CDR Standards](../../index.html).
 
 This release addresses the following minor defects raised on [Standards Staging](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues):
 
-- [Staging Issue xxx - Description](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/xxx)
+- [Staging Issue 306 - Body parameter for JWT POST + PUT not displayed](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/306)
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
@@ -54,6 +54,7 @@ This release addresses the following Decision Proposals published on [Standards]
 
 |Change|Description|Link|
 |------|-----------|----|
+| Body parameter for JWT POST + PUT | **[Standards Staging #306](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/306):** Updated 'Non-normative Examples' to include JWT Body parameter for POST and PUT | [DCR APIs](../../#dcr-apis) |
 
 ## Register Standards
 
