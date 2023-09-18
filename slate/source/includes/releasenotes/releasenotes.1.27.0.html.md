@@ -17,7 +17,7 @@ Release notes for version v1.27.0 of the [CDR Standards](../../index.html).
 
 This release addresses the following minor defects raised on [Standards Staging](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues):
 
-- [Staging Issue xxx - Description](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/xxx)
+- [Staging Issue 196 - Incorrect levelling of largeSecondary object](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/196)
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
@@ -49,6 +49,7 @@ This release addresses the following Decision Proposals published on [Standards]
 
 |Change|Description|Link|
 |------|-----------|----|
+| Incorrect levelling of largeSecondary object | **[Standards Staging #196](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/196):** Resolved documentation rendering bug causing incorrect indent level to be displayed for some properties | Multiple sections, including [Get Metrics](../../#get-metrics) |
 
 ## Information Security Profile
 
