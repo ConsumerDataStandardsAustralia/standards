@@ -21,7 +21,7 @@ This release addresses the following minor defects raised on [Standards Staging]
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
-- [Maintenance Issue xxx - Description](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/xxx)
+- [Maintenance Issue 605 - Metrics: Performance threshold including SDH](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/605)
 
 ### Decision Proposals
 
@@ -49,6 +49,7 @@ This release addresses the following Decision Proposals published on [Standards]
 
 |Change|Description|Link|
 |------|-----------|----|
+| Metrics: Performance threshold including SDH | **[Standards Maintenance #605](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/605):** Added statement to clarify that aggregate performance metrics exclude Secondary Data Holder performance | [Get Metrics](../../#get-metrics) |
 
 ## Information Security Profile
 

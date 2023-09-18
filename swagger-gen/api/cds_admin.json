@@ -415,7 +415,7 @@
                 }
               }
             },
-            "description": "Percentage of calls within the performance thresholds",
+            "description": "Percentage of calls within Primary Data Holder performance thresholds. Note that Secondary Data Holder performance MUST be excluded from this metric.",
             "x-conditional": [
               "currentDay",
               "previousDays"
