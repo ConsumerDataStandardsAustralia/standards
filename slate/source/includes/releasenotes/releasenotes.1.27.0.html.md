@@ -17,7 +17,7 @@ Release notes for version v1.27.0 of the [CDR Standards](../../index.html).
 
 This release addresses the following minor defects raised on [Standards Staging](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues):
 
-- [Staging Issue xxx - Description](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/xxx)
+- [Staging Issue 307 - Incorrect non-normative example](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/307)
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
@@ -54,6 +54,7 @@ This release addresses the following Decision Proposals published on [Standards]
 
 |Change|Description|Link|
 |------|-----------|----|
+| Incorrect non-normative example | **[Standards Staging #307](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/307):** Updated the 'code_challenge_methods_supported' property of the OpenID Provider Configuration to be an array | [Security Endpoints](../../#security-endpoints) |
 
 ## Register Standards
 
