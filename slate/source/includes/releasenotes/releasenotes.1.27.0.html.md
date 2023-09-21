@@ -17,7 +17,7 @@ Release notes for version v1.27.0 of the [CDR Standards](../../index.html).
 
 This release addresses the following minor defects raised on [Standards Staging](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues):
 
-- [Staging Issue xxx - Description](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/xxx)
+- [Staging Issue 309 - Property names wrapping to two lines](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/309)
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
@@ -49,6 +49,7 @@ This release addresses the following Decision Proposals published on [Standards]
 
 |Change|Description|Link|
 |------|-----------|----|
+| Property names wrapping to two lines | **[Standards Staging #309](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/309):** Changed to a non-breaking space between the indent chevron and property name in all schema Properties tables to prevent line wrapping | All schema Properties tables |
 
 ## Information Security Profile
 
