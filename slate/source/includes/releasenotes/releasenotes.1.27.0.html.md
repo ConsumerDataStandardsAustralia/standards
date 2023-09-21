@@ -17,7 +17,7 @@ Release notes for version v1.27.0 of the [CDR Standards](../../index.html).
 
 This release addresses the following minor defects raised on [Standards Staging](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues):
 
-- [Staging Issue xxx - Description](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/xxx)
+- [Staging Issue 308 - Fix link to FAPI section reference](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/308)
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
@@ -54,6 +54,7 @@ This release addresses the following Decision Proposals published on [Standards]
 
 |Change|Description|Link|
 |------|-----------|----|
+| Fix link to FAPI section reference | **[Standards Staging #308](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/308):** Updated link to section 8.6 of FAPI Advanced | [Client Registration](../../#client-registration) |
 
 ## Register Standards
 

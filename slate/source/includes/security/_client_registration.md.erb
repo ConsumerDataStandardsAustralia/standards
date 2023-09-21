@@ -230,11 +230,15 @@ Accept: application/json
 }
 ```
 
+```diff
+Updated link to section 8.6 of FAPI Advanced
+```
+
 To register with a Data Holder, the Data Recipient sends an HTTP POST to the Data Holder registration endpoint.
 
 * The request **MUST** be presented in the format of a **[[RFC7519]](#nref-RFC7519)** compliant JWT.
 * The request **MUST** use the HTTP POST method, using the `application/jwt` content type.
-* The JWT **MUST** be signed using algorithms specified in [section 8.6](https://openid.net/specs/openid-financial-api-part-2.html#jws-algorithm-considerations) of **[[FAPI-1.0-Advanced]](#nref-FAPI-1-0-Advanced)**
+* The JWT **MUST** be signed using algorithms specified in [section 8.6](https://openid.net/specs/openid-financial-api-part-2-1_0.html#algorithm-considerations) of **[[FAPI-1.0-Advanced]](#nref-FAPI-1-0-Advanced)**
 
 The client registration request **MUST** contain the following claims in the JWT payload unless designated as Optional:
 
