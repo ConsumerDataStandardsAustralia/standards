@@ -439,6 +439,13 @@ html, body {
     padding-bottom: 1.2em;
     background-image: linear-gradient(to bottom, rgba(#fff, 0.2), rgba(#fff, 0));
   }
+  
+  a.schema-anchor {
+    display: block;
+    margin-top: -5.1em;
+    margin-bottom: 5.1em;
+    padding-top: 1em;
+  }
 
   // h2s right after h1s should bump right up
   // against the h1s.
