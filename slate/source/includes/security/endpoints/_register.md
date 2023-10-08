@@ -1,4 +1,4 @@
-### Register Endpoints
+![image](https://github.com/ConsumerDataStandardsAustralia/standards-staging/assets/40985476/87db5359-6d31-476e-8589-ccdc8dc34599)### Register Endpoints
 
 The CDR Register exposes an OIDC Configuration Endpoint with associated JWKS and token endpoints to facilitate issuance of access tokens to consume the protected Register APIs.
 
@@ -35,12 +35,15 @@ Host: cdr.register
 
 ```
 
+```diff
+Updated the description of the PublicBaseUri field to clarify requirements for the Energy sector
+```
 
 Participants will be required to register base URIs against each of their brands to facilitate the implementation of the Consumer Data Standards
 
 | Base URI | DH Brand | ADR Brand | Description
 |-----------|------|------|-----------------------------------------------------------------------------------------------|
-|**PublicBaseUri**|	<i class="icon-check"></i> | | Base URI for the Consumer Data Standard public endpoints. This should encompass all endpoints not requiring authentication |
+|**PublicBaseUri**|	<i class="icon-check"></i> | | Base URI for the Consumer Data Standard public endpoints. This should encompass all endpoints not requiring authentication.<br>Data Holders designated for the Energy sector are not required to expose energy product reference endpoints via their public base URI and are not required, but **MAY**, provide a redirect to the product reference endpoints hosted by the designated data holder. |
 |**ResourceBaseUri**|	<i class="icon-check"></i> | | Base URI for the Consumer Data Standard resource endpoints. This should encompass all CDS resource endpoints requiring authentication |
 |**InfoSecBaseUri**|	<i class="icon-check"></i> | | Base URI for the Consumer Data Standard InfoSec endpoints. This provides ADRs reference to the [OIDC Discovery Endpoint](https://openid.net/specs/openid-connect-discovery-1_0.html) |
 |**AdminBaseUri**|	<i class="icon-check"></i> | | Base URI for the Consumer Data Standard admin endpoints called by the CDR Register |

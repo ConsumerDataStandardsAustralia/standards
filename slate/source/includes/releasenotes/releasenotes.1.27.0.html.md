@@ -22,12 +22,13 @@ This release addresses the following minor defects raised on [Standards Staging]
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
 - [Maintenance Issue 469 - Add isQueryParamUnsupported to MetaPaginated for schema validation](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/469)
+- [Maintenance Issue 611 - Clarification of Energy PRD Obligations](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/611)
 
 ### Decision Proposals
 
 This release addresses the following Decision Proposals published on [Standards](https://github.com/ConsumerDataStandardsAustralia/standards/issues):
 
-- [Decision Proposal xxx - Description](https://github.com/ConsumerDataStandardsAustralia/standards/issues/xxx)
+- [Decision Proposal 313 - Maintenance Iteration 16](https://github.com/ConsumerDataStandardsAustralia/standards/issues/313)
 
 ## General Changes
 |Change|Description|Link|
@@ -55,6 +56,7 @@ This release addresses the following Decision Proposals published on [Standards]
 
 |Change|Description|Link|
 |------|-----------|----|
+| Clarification of Energy PRD Obligations | **[Standards Maintenance #611](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/611):** Updated the description of the PublicBaseUri field to clarify requirements for the Energy sector | [Security Endpoints](../../#security-endpoints) |
 
 ## Register Standards
 
