@@ -516,7 +516,7 @@
           "software_roles": {
             "type": "string",
             "x-cds-type": "Enum",
-            "description": "String containing a role of the software in the CDR Regime. Initially the only value used with be `data-recipient-software-product`",
+            "description": "String containing a role of the software in the CDR Regime. Initially the only value used will be `data-recipient-software-product`",
             "example": "data-recipient-software-product",
             "enum": [
               "data-recipient-software-product"

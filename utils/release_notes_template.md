@@ -40,7 +40,7 @@ This release addresses the following Decision Proposals published on [Standards]
 |------|-----------|----|
 
 
-## High-Level Standards
+## High Level Standards
 
 |Change|Description|Link|
 |------|-----------|----|

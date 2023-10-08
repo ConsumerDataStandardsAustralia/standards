@@ -1,5 +1,9 @@
 ### OpenID Provider Configuration End Point
 
+```diff
+Updated [FAPI-RW-Draft] to refer to [FAPI-1.0-Advanced]
+```
+
 > Non-Normative Example
 
 ```
@@ -70,7 +74,7 @@ At a minimum, the Data Holder metadata **MUST** include:
 - `authorization_endpoint`: URL of the Authorization End Point
 - `claims_supported`:  The list of supported claims
 - `grant_types_supported`: The list of the OAuth 2.0 Grant Type values supported
-- `id_token_encryption_alg_values_supported`: The list of the supported JWE algorithms for securing the issued ID tokens. Must conform to **[[FAPI-RW-Draft]](#nref-FAPI-RW-Draft)** and **[[OIDD]](#nref-OIDD)**. Required for Data Holders supporting OIDC Hybrid Flow
+- `id_token_encryption_alg_values_supported`: The list of the supported JWE algorithms for securing the issued ID tokens. Must conform to **[[FAPI-1.0-Advanced]](#nref-FAPI-1-0-Advanced)** and **[[OIDD]](#nref-OIDD)**. Required for Data Holders supporting OIDC Hybrid Flow
 - `id_token_encryption_enc_values_supported`: The list of the supported JWE encryption methods for securing the issued ID tokens. Required for Data Holders supporting OIDC Hybrid Flow
 - `id_token_signing_alg_values_supported`: The list of the JWS signing algorithms (`alg` values) supported
 - `issuer`: URL that the Data Holder asserts as its Issuer Identifier

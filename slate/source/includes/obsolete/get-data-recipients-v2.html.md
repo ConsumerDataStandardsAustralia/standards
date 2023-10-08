@@ -14,7 +14,7 @@ search: false
 This page documents the obsolete **version 2** of the Get Data Recipients end point.
 
 <aside class="info">
-This version will remain valid until a deprecation schedule is set.
+This version was deprecated on 23rd December 2021 and retired on 21st September 2023
 </aside>
 
 
