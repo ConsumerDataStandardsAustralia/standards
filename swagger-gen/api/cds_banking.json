@@ -5963,7 +5963,7 @@
               "isQueryParamUnsupported": {
                 "type": "boolean",
                 "description": "**true** if *\"text\"* query parameter is not supported",
-                "default": true,
+                "default": false,
                 "x-cds-type": "Boolean"
               }
             }
