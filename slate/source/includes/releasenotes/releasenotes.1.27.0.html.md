@@ -17,7 +17,7 @@ Release notes for version v1.27.0 of the [CDR Standards](../../index.html).
 
 This release addresses the following minor defects raised on [Standards Staging](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues):
 
-- [Staging Issue xxx - Description](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/xxx)
+- [Staging Issue 196 - Incorrect levelling of largeSecondary object](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/196)
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
@@ -53,6 +53,7 @@ This release addresses the following Decision Proposals published on [Standards]
 
 |Change|Description|Link|
 |------|-----------|----|
+| Incorrect levelling of largeSecondary object | **[Standards Staging #196](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/196):** Resolved documentation rendering bug causing incorrect indent level to be displayed for some properties | Multiple sections, including [Get Metrics](../../#get-metrics) |
 | Corrected typos | **[Standards Maintenance #599](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/599):** Corrected descriptions mentioning electricity in the EnergyInvoiceGasUsageCharges schema. Addresses [this issue comment](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/599#issuecomment-1678450294) | [Energy APIs](../../#energy-apis) |
 | Corrected requirement | **[Standards Maintenance #599](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/599):** Corrected the requirement for the authorisations property of Get Metrics v4 and v5 to be mandatory. Addresses [this issue comment](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/599#issuecomment-1691010927) | [Admin APIs](../../#admin-apis) |
 | Bad Request responses | **[Standards Maintenance #599](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/599):** Removed duplicate '400 - Invalid Version' error codes from Banking endpoints and added '400 - Invalid Date' error codes to Energy and Energy Secondary DH endpoints. Addresses [this issue comment](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/599#issuecomment-1633531898) | [Banking APIs](../../#banking-apis)<br />[Energy APIs](../../#energy-apis)<br />[Energy Secondary DH APIs](../../#energy-secondary-dh-apis) |
