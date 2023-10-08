@@ -22,6 +22,7 @@ This release addresses the following minor defects raised on [Standards Staging]
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
 - [Maintenance Issue 469 - Add isQueryParamUnsupported to MetaPaginated for schema validation](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/469)
+- [Maintenance Issue 605 - Metrics: Performance threshold including SDH](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/605)
 - [Maintenance Issue 611 - Clarification of Energy PRD Obligations](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/611)
 
 ### Decision Proposals
@@ -50,6 +51,7 @@ This release addresses the following Decision Proposals published on [Standards]
 
 |Change|Description|Link|
 |------|-----------|----|
+| Metrics: Performance threshold including SDH | **[Standards Maintenance #605](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/605):** Added statement to clarify that aggregate performance metrics exclude Secondary Data Holder performance | [Get Metrics](../../#get-metrics) |
 | isQueryParamUnsupported property | **[Standards Maintenance #469](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/469):** Added MetaPaginatedTransaction schema to 'Get Transactions For Account' to include the isQueryParamUnsupported property | [Banking APIs](../../#banking-apis) |
 
 ## Information Security Profile
