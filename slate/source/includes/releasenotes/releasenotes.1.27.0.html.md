@@ -21,13 +21,16 @@ This release addresses the following minor defects raised on [Standards Staging]
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
+- [Maintenance Issue 469 - Add isQueryParamUnsupported to MetaPaginated for schema validation](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/469)
 - [Maintenance Issue 599 - Maintenance Iteration 16 Holistic Feedback](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/599)
+- [Maintenance Issue 605 - Metrics: Performance threshold including SDH](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/605)
+- [Maintenance Issue 611 - Clarification of Energy PRD Obligations](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/611)
 
 ### Decision Proposals
 
 This release addresses the following Decision Proposals published on [Standards](https://github.com/ConsumerDataStandardsAustralia/standards/issues):
 
-- [Decision Proposal xxx - Description](https://github.com/ConsumerDataStandardsAustralia/standards/issues/xxx)
+- [Decision Proposal 313 - Maintenance Iteration 16](https://github.com/ConsumerDataStandardsAustralia/standards/issues/313)
 
 ## General Changes
 |Change|Description|Link|
@@ -40,7 +43,7 @@ This release addresses the following Decision Proposals published on [Standards]
 |------|-----------|----|
 | Updated CDR website link | **[Standards Maintenance #599](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/599):** Changed the link to the CDR website to be HTTPS with www. Addresses [this issue comment](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/599#issuecomment-1655029056) | [Informative References](../../#informative-references) |
 
-## High-Level Standards
+## High Level Standards
 
 |Change|Description|Link|
 |------|-----------|----|
@@ -55,6 +58,8 @@ This release addresses the following Decision Proposals published on [Standards]
 | Bad Request responses | **[Standards Maintenance #599](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/599):** Removed duplicate '400 - Invalid Version' error codes from Banking endpoints and added '400 - Invalid Date' error codes to Energy and Energy Secondary DH endpoints. Addresses [this issue comment](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/599#issuecomment-1633531898) | [Banking APIs](../../#banking-apis)<br />[Energy APIs](../../#energy-apis)<br />[Energy Secondary DH APIs](../../#energy-secondary-dh-apis) |
 | References to Other Versions in Telco | **[Standards Maintenance #599](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/599):** Removed references to 'Other Versions' in 'Get Telco Accounts' and 'Get Telco Account Detail' endpoints. Addresses [this issue comment](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/599#issuecomment-1663584916) | [Telco APIs](../../includes/additional/candidates/telco.html#telco-apis) |
 | Clarified deprecated Energy endpoint expectations | **[Standards Maintenance #599](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/599):** Added clarification for 'Get Generic Plan Detail V1', 'Get Energy Account Detail V2', 'Get Billing For Account V1', 'Get Bulk Billing V1', 'Get Billing For Specific Accounts V1', for Data Holders going live on, or after, November 1st 2023. Addresses [this issue comment](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/599#issuecomment-1696556235) | [Energy APIs](../../#energy-apis) |
+| Metrics: Performance threshold including SDH | **[Standards Maintenance #605](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/605):** Added statement to clarify that aggregate performance metrics exclude Secondary Data Holder performance | [Get Metrics](../../#get-metrics) |
+| isQueryParamUnsupported property | **[Standards Maintenance #469](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/469):** Added MetaPaginatedTransaction schema to 'Get Transactions For Account' to include the isQueryParamUnsupported property | [Banking APIs](../../#banking-apis) |
 
 ## Information Security Profile
 
@@ -62,6 +67,7 @@ This release addresses the following Decision Proposals published on [Standards]
 |------|-----------|----|
 | Corrected typo | **[Standards Maintenance #599](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/599):** Corrected typo in the description of the `software_roles` field in the **Client Registration** and **DCR APIs** sections. Addresses [this issue comment](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/599#issuecomment-1700463647) | [Security Profile](../../#security-profile) |
 | Updated reference | **[Standards Maintenance #599](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/599):** Updated [FAPI-RW-Draft] to refer to [FAPI-1.0-Advanced]. Addresses [this issue comment](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/599#issuecomment-1709482553) | [Security Profile](../../#security-profile) |
+| Clarification of Energy PRD Obligations | **[Standards Maintenance #611](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/611):** Updated the description of the PublicBaseUri field to clarify requirements for the Energy sector | [Security Endpoints](../../#security-endpoints) |
 
 ## Register Standards
 
