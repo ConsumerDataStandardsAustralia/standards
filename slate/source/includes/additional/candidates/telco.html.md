@@ -17,3 +17,7 @@ search: true
 ---
 
 # Telco APIs
+
+```diff
+Removed references to 'Other Versions' in 'Get Telco Accounts' and 'Get Telco Account Detail'
+```

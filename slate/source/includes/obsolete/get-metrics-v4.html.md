@@ -797,7 +797,7 @@ This operation may only be called by the CDR Register
 |» customerCount|[NaturalNumber](#common-field-types)|mandatory|Number of customers with active authorisations at the time of the call|
 |» recipientCount|[NaturalNumber](#common-field-types)|mandatory|Number of Data Recipient Software Products with active authorisations at the time of the call|
 |» secondaryHolder|[SecondaryHolderMetricsV2](#schemacdr-admin-apisecondaryholdermetricsv2)|conditional|Errors and rejections received by the primary data holder from the secondary data holder.  Mandatory for data holders designated for a Shared Responsibility Data Request data cluster|
-|» authorisations|[AuthorisationMetrics](#schemacdr-admin-apiauthorisationmetrics)|optional|Authorisation counts for the data holder|
+|» authorisations|[AuthorisationMetrics](#schemacdr-admin-apiauthorisationmetrics)|mandatory|Authorisation counts for the data holder|
 |links|[Links](#schemacdr-admin-apilinks)|mandatory|none|
 |meta|[Meta](#schemacdr-admin-apimeta)|optional|none|
 

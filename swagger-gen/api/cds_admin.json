@@ -243,7 +243,8 @@
               "recipientCount",
               "rejections",
               "requestTime",
-              "sessionCount"
+              "sessionCount",
+              "authorisations"
             ],
             "type": "object",
             "properties": {

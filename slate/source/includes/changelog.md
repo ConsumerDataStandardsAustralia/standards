@@ -1,5 +1,9 @@
 # Change Log
 
+``` diff
+Updated release notes for version 1.25.0 to include references to three maintenance issues that were part of the release but not previously noted
+```
+
 The following table lists the changes made to these standards in reverse date order (most recent change is at the top).
 
 |Change Date|Version|Description|Detail Of change|
