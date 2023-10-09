@@ -22,6 +22,7 @@ This release addresses the following minor defects raised on [Standards Staging]
 - [Staging Issue #305 - Long lines break words and cause scrollbars](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/305)
 - [Staging Issue 306 - Body parameter for JWT POST + PUT not displayed](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/306)
 - [Staging Issue 307 - Incorrect non-normative example](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/307)
+- [Staging Issue 308 - Fix link to FAPI section reference](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/308)
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
@@ -71,6 +72,7 @@ This release addresses the following Decision Proposals published on [Standards]
 
 |Change|Description|Link|
 |------|-----------|----|
+| Fix link to FAPI section reference | **[Standards Staging #308](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/308):** Updated link to section 8.6 of FAPI Advanced | [Client Registration](../../#client-registration) |
 | Incorrect non-normative example | **[Standards Staging #307](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/307):** Updated the 'code_challenge_methods_supported' property of the OpenID Provider Configuration to be an array | [Security Endpoints](../../#security-endpoints) |
 | Body parameter for JWT POST + PUT | **[Standards Staging #306](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/306):** Updated 'Non-normative Examples' to include JWT Body parameter for POST and PUT | [DCR APIs](../../#dcr-apis) |
 | Updated non-normative SSA examples | **[Standards Staging #197](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/197):** Updated encoded and decoded example SSAs to include energy scopes and minor updates for clarity and consistency. | [Security Profile](../../#security-profile)<br>[DCR APIs](../../#dcr-apis) |
