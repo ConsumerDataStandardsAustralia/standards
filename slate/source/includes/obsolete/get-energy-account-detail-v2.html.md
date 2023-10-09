@@ -14,9 +14,9 @@ search: false
 # Get Energy Account Detail V2
 This page documents version 2 of the Get Energy Account Detail end point. 
 
-* Data Holder **MUST** implement Get Energy Account Detail v3 by **November 1st 2023**.
-
-This version is to be ceased to be called by data recipients by **September 9th 2024** and can be decommissioned by data holders as of that date.
+* Data Holders **MUST** implement Get Energy Account Detail v3 by **November 1st 2023**.
+* This version is to be ceased to be called by data recipients by **September 9th 2024** and can be decommissioned by data holders as of that date.
+* Support for this version is not required for Data Holders going live on, or after, **November 1st 2023**.
 
 ## Get Energy Account Detail
 
