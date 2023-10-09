@@ -793,7 +793,7 @@
     },
     "/telco/accounts" : {
       "get" : {
-        "description" : "Obtain the list of telco accounts available under the authorised consent\n\nOther Versions: [v1](includes/obsolete/get-telco-accounts-v1.html)",
+        "description" : "Obtain the list of telco accounts available under the authorised consent",
         "operationId" : "listAccounts",
         "parameters" : [ {
           "description" : "Used to filter results according to open/closed status. Values can be OPEN, CLOSED or ALL. If absent then ALL is assumed",
@@ -977,7 +977,7 @@
     },
     "/telco/accounts/{accountId}" : {
       "get" : {
-        "description" : "Obtain detailed information for a specific telco account\n\nOther Versions: [v1](includes/obsolete/get-telco-account-detail-v1.html)",
+        "description" : "Obtain detailed information for a specific telco account",
         "operationId" : "getAccount",
         "parameters" : [ {
           "description" : "ID of a specific account to obtain data for. This is a tokenised ID previously obtained from the Account List end point. In accordance with [CDR ID permanence](#id-permanence) requirements",

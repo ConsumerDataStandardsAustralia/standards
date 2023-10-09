@@ -190,7 +190,7 @@ GET https://<register-base-url>/cdr-register/v1/{industry}/data-holders/brands H
 
 Accept: application/json
 Authorization: string
-x-v: 1
+x-v: string
 x-min-v: string
 
 ```
@@ -201,7 +201,7 @@ const fetch = require('node-fetch');
 const headers = {
   'Accept':'application/json',
   'Authorization':'string',
-  'x-v':'1',
+  'x-v':'string',
   'x-min-v':'string'
 
 };
@@ -237,8 +237,8 @@ Obsolete versions: [v1](includes/obsolete/get-data-holder-brands-v1.html)
 |---|---|---|---|---|
 |industry|path|string|mandatory|The industry the participant is retrieving data for (Banking, etc)|
 |Authorization|header|string|mandatory|An Authorisation Token as per **[[RFC6750]](#nref-RFC6750)**.|
-|x-v|header|string|optional|The version of the API end point requested by the client. Must be set to a positive integer. For backwards compatiblity defaults to 1 if absent. Note that once version 1 is decommissioned the header will be mandatory for a valid response to be obtained|
-|x-min-v|header|string|optional|The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided.|
+|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The Register should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the Register must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The Register should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the Register must respond with a 406 Not Acceptable.|
 |updated-since|query|string|optional|query filter returns results updated since the specified date-time|
 |page|query|[PositiveInteger](#common-field-types)|optional|the page number to return|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|the number of records to return per page|
@@ -392,8 +392,8 @@ Endpoint used by participants to discover public details of Data Holder Brands f
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |industry|path|string|mandatory|The industry the participant is retrieving data for (Banking, etc)|
-|x-v|header|string|mandatory|The version of the API end point requested by the client. Must be set to a positive integer.|
-|x-min-v|header|string|optional|The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided.|
+|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The Register should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the Register must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The Register should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the Register must respond with a 406 Not Acceptable.|
 |If-None-Match|header|string|optional|Makes the request method conditional on a recipient cache or origin server not having any current representation of the target resource with an entity-tag that does not match any of those listed in the field-value.|
 
 #### Enumerated Values
@@ -469,7 +469,7 @@ This operation does not require authentication
 GET https://<register-base-url>/cdr-register/v1/{industry}/data-recipients/brands/{dataRecipientBrandId}/software-products/{softwareProductId}/ssa HTTP/1.1
 
 Accept: application/json
-x-v: 1
+x-v: string
 x-min-v: string
 Authorization: string
 
@@ -480,7 +480,7 @@ const fetch = require('node-fetch');
 
 const headers = {
   'Accept':'application/json',
-  'x-v':'1',
+  'x-v':'string',
   'x-min-v':'string',
   'Authorization':'string'
 
@@ -516,8 +516,8 @@ Obsolete versions: [v1](includes/obsolete/get-software-statement-assertion-v1.ht
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |industry|path|string|mandatory|The industry the participant is retrieving data for (Banking, etc)|
-|x-v|header|string|optional|The version of the API end point requested by the client. Must be set to a positive integer. For backwards compatiblity defaults to 1 if absent. Note that once version 1 is decommissioned the header will be mandatory for a valid response to be obtained|
-|x-min-v|header|string|optional|The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided.|
+|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The Register should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the Register must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The Register should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the Register must respond with a 406 Not Acceptable.|
 |dataRecipientBrandId|path|string|mandatory|Unique id for the Accredited Data Recipient Brand that the Software Product is associated with in the CDR Register|
 |softwareProductId|path|string|mandatory|Unique id for the Accredited Data Recipient Software Product in the CDR Register|
 |Authorization|header|string|mandatory|An Authorisation Token as per **[[RFC6750]](#nref-RFC6750)**.|
@@ -688,7 +688,7 @@ This operation does not require authentication
 GET https://<register-base-url>/cdr-register/v1/{industry}/data-recipients/brands/software-products/status HTTP/1.1
 
 Accept: application/json
-x-v: 1
+x-v: string
 x-min-v: string
 If-None-Match: string
 
@@ -699,7 +699,7 @@ const fetch = require('node-fetch');
 
 const headers = {
   'Accept':'application/json',
-  'x-v':'1',
+  'x-v':'string',
   'x-min-v':'string',
   'If-None-Match':'string'
 
@@ -735,8 +735,8 @@ Obsolete versions: [v1](includes/obsolete/get-software-product-statuses-v1.html)
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |industry|path|string|mandatory|The industry the participant is retrieving data for (Banking, etc)|
-|x-v|header|string|optional|The version of the API end point requested by the client. Must be set to a positive integer.  For backwards compatiblity defaults to 1 if absent. Note that once version 1 is decommissioned the header will be mandatory for a valid response to be obtained|
-|x-min-v|header|string|optional|The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided.|
+|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The Register should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the Register must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The Register should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the Register must respond with a 406 Not Acceptable.|
 |If-None-Match|header|string|optional|Makes the request method conditional on a recipient cache or origin server not having any current representation of the target resource with an entity-tag that does not match any of those listed in the field-value.|
 
 #### Enumerated Values
@@ -801,7 +801,7 @@ This operation does not require authentication
 GET https://<register-base-url>/cdr-register/v1/{industry}/data-recipients/status HTTP/1.1
 
 Accept: application/json
-x-v: 1
+x-v: string
 x-min-v: string
 If-None-Match: string
 
@@ -812,7 +812,7 @@ const fetch = require('node-fetch');
 
 const headers = {
   'Accept':'application/json',
-  'x-v':'1',
+  'x-v':'string',
   'x-min-v':'string',
   'If-None-Match':'string'
 
@@ -848,8 +848,8 @@ Obsolete versions: [v1](includes/obsolete/get-data-recipient-statuses-v1.html)
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |industry|path|string|mandatory|The industry the participant is retrieving data for (Banking, etc)|
-|x-v|header|string|optional|The version of the API end point requested by the client. Must be set to a positive integer.  For backwards compatiblity defaults to 1 if absent. Note that once version 1 is decommissioned the header will be mandatory for a valid response to be obtained|
-|x-min-v|header|string|optional|The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided.|
+|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The Register should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the Register must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The Register should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the Register must respond with a 406 Not Acceptable.|
 |If-None-Match|header|string|optional|Makes the request method conditional on a recipient cache or origin server not having any current representation of the target resource with an entity-tag that does not match any of those listed in the field-value.|
 
 #### Enumerated Values
@@ -914,7 +914,7 @@ This operation does not require authentication
 GET https://<register-base-url>/cdr-register/v1/{industry}/data-recipients HTTP/1.1
 
 Accept: application/json
-x-v: 2
+x-v: string
 x-min-v: string
 If-None-Match: string
 
@@ -925,7 +925,7 @@ const fetch = require('node-fetch');
 
 const headers = {
   'Accept':'application/json',
-  'x-v':'2',
+  'x-v':'string',
   'x-min-v':'string',
   'If-None-Match':'string'
 
@@ -961,8 +961,8 @@ Obsolete versions: [v2](includes/obsolete/get-data-recipients-v2.html)
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |industry|path|string|mandatory|The industry the participant is retrieving data for (Banking, etc)|
-|x-v|header|string|optional|The version of the API end point requested by the client. Must be set to a positive integer.  For backwards compatiblity defaults to 2 if absent. Note that once version 2 is decommissioned the header will be mandatory for a valid response to be obtained|
-|x-min-v|header|string|optional|The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided.|
+|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The Register should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the Register must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The Register should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the Register must respond with a 406 Not Acceptable.|
 |If-None-Match|header|string|optional|Makes the request method conditional on a recipient cache or origin server not having any current representation of the target resource with an entity-tag that does not match any of those listed in the field-value.|
 
 #### Enumerated Values
@@ -1044,7 +1044,7 @@ This operation does not require authentication
 
 <h3 class="schema-toc" id="tocSresponseopenidproviderconfigmetadata">ResponseOpenIDProviderConfigMetadata</h3>
 
-<a id="schemacdr-participant-discovery-apiresponseopenidproviderconfigmetadata"></a>
+<a class="schema-anchor" id="schemacdr-participant-discovery-apiresponseopenidproviderconfigmetadata"></a>
 
 ```json
 {
@@ -1105,7 +1105,7 @@ This operation does not require authentication
 
 <h3 class="schema-toc" id="tocSresponsejwks">ResponseJWKS</h3>
 
-<a id="schemacdr-participant-discovery-apiresponsejwks"></a>
+<a class="schema-anchor" id="schemacdr-participant-discovery-apiresponsejwks"></a>
 
 ```json
 {
@@ -1135,7 +1135,7 @@ This operation does not require authentication
 
 <h3 class="schema-toc" id="tocSjwk">JWK</h3>
 
-<a id="schemacdr-participant-discovery-apijwk"></a>
+<a class="schema-anchor" id="schemacdr-participant-discovery-apijwk"></a>
 
 ```json
 {
@@ -1166,7 +1166,7 @@ This operation does not require authentication
 
 <h3 class="schema-toc" id="tocSresponseregisterdataholderbrandlist">ResponseRegisterDataHolderBrandList</h3>
 
-<a id="schemacdr-participant-discovery-apiresponseregisterdataholderbrandlist"></a>
+<a class="schema-anchor" id="schemacdr-participant-discovery-apiresponseregisterdataholderbrandlist"></a>
 
 ```json
 {
@@ -1237,7 +1237,7 @@ This operation does not require authentication
 
 <h3 class="schema-toc" id="tocSregisterdataholderbrand">RegisterDataHolderBrand</h3>
 
-<a id="schemacdr-participant-discovery-apiregisterdataholderbrand"></a>
+<a class="schema-anchor" id="schemacdr-participant-discovery-apiregisterdataholderbrand"></a>
 
 ```json
 {
@@ -1308,7 +1308,7 @@ This operation does not require authentication
 
 <h3 class="schema-toc" id="tocSresponsedataholdersbrandsummarylist">ResponseDataHoldersBrandSummaryList</h3>
 
-<a id="schemacdr-participant-discovery-apiresponsedataholdersbrandsummarylist"></a>
+<a class="schema-anchor" id="schemacdr-participant-discovery-apiresponsedataholdersbrandsummarylist"></a>
 
 ```json
 {
@@ -1346,7 +1346,7 @@ This operation does not require authentication
 
 <h3 class="schema-toc" id="tocSdataholderbrandsummary">DataHolderBrandSummary</h3>
 
-<a id="schemacdr-participant-discovery-apidataholderbrandsummary"></a>
+<a class="schema-anchor" id="schemacdr-participant-discovery-apidataholderbrandsummary"></a>
 
 ```json
 {
@@ -1391,7 +1391,7 @@ This operation does not require authentication
 
 <h3 class="schema-toc" id="tocSdataholdersstatuslist">DataHoldersStatusList</h3>
 
-<a id="schemacdr-participant-discovery-apidataholdersstatuslist"></a>
+<a class="schema-anchor" id="schemacdr-participant-discovery-apidataholdersstatuslist"></a>
 
 ```json
 {
@@ -1419,7 +1419,7 @@ This operation does not require authentication
 
 <h3 class="schema-toc" id="tocSdataholderstatus">DataHolderStatus</h3>
 
-<a id="schemacdr-participant-discovery-apidataholderstatus"></a>
+<a class="schema-anchor" id="schemacdr-participant-discovery-apidataholderstatus"></a>
 
 ```json
 {
@@ -1445,7 +1445,7 @@ This operation does not require authentication
 
 <h3 class="schema-toc" id="tocSsoftwareproductsstatuslist">SoftwareProductsStatusList</h3>
 
-<a id="schemacdr-participant-discovery-apisoftwareproductsstatuslist"></a>
+<a class="schema-anchor" id="schemacdr-participant-discovery-apisoftwareproductsstatuslist"></a>
 
 ```json
 {
@@ -1473,7 +1473,7 @@ This operation does not require authentication
 
 <h3 class="schema-toc" id="tocSsoftwareproductstatus">SoftwareProductStatus</h3>
 
-<a id="schemacdr-participant-discovery-apisoftwareproductstatus"></a>
+<a class="schema-anchor" id="schemacdr-participant-discovery-apisoftwareproductstatus"></a>
 
 ```json
 {
@@ -1500,7 +1500,7 @@ This operation does not require authentication
 
 <h3 class="schema-toc" id="tocSdatarecipientsstatuslist">DataRecipientsStatusList</h3>
 
-<a id="schemacdr-participant-discovery-apidatarecipientsstatuslist"></a>
+<a class="schema-anchor" id="schemacdr-participant-discovery-apidatarecipientsstatuslist"></a>
 
 ```json
 {
@@ -1528,7 +1528,7 @@ This operation does not require authentication
 
 <h3 class="schema-toc" id="tocSdatarecipientstatus">DataRecipientStatus</h3>
 
-<a id="schemacdr-participant-discovery-apidatarecipientstatus"></a>
+<a class="schema-anchor" id="schemacdr-participant-discovery-apidatarecipientstatus"></a>
 
 ```json
 {
@@ -1556,7 +1556,7 @@ This operation does not require authentication
 
 <h3 class="schema-toc" id="tocSresponseregisterdatarecipientlist">ResponseRegisterDataRecipientList</h3>
 
-<a id="schemacdr-participant-discovery-apiresponseregisterdatarecipientlist"></a>
+<a class="schema-anchor" id="schemacdr-participant-discovery-apiresponseregisterdatarecipientlist"></a>
 
 ```json
 {
@@ -1608,7 +1608,7 @@ This operation does not require authentication
 
 <h3 class="schema-toc" id="tocSregisterdatarecipient">RegisterDataRecipient</h3>
 
-<a id="schemacdr-participant-discovery-apiregisterdatarecipient"></a>
+<a class="schema-anchor" id="schemacdr-participant-discovery-apiregisterdatarecipient"></a>
 
 ```json
 {
@@ -1666,7 +1666,7 @@ This operation does not require authentication
 
 <h3 class="schema-toc" id="tocSdatarecipientbrandmetadata">DataRecipientBrandMetaData</h3>
 
-<a id="schemacdr-participant-discovery-apidatarecipientbrandmetadata"></a>
+<a class="schema-anchor" id="schemacdr-participant-discovery-apidatarecipientbrandmetadata"></a>
 
 ```json
 {
@@ -1709,7 +1709,7 @@ This operation does not require authentication
 
 <h3 class="schema-toc" id="tocSsoftwareproductmetadata">SoftwareProductMetaData</h3>
 
-<a id="schemacdr-participant-discovery-apisoftwareproductmetadata"></a>
+<a class="schema-anchor" id="schemacdr-participant-discovery-apisoftwareproductmetadata"></a>
 
 ```json
 {
@@ -1744,7 +1744,7 @@ This operation does not require authentication
 
 <h3 class="schema-toc" id="tocSlegalentitydetail">LegalEntityDetail</h3>
 
-<a id="schemacdr-participant-discovery-apilegalentitydetail"></a>
+<a class="schema-anchor" id="schemacdr-participant-discovery-apilegalentitydetail"></a>
 
 ```json
 {
@@ -1775,7 +1775,7 @@ This operation does not require authentication
 |logoUri|[URIString](#common-field-types)|mandatory|Legal Entity logo URI|
 |registrationNumber|string|optional|Unique registration number (if the company is registered outside Australia)|
 |registrationDate|[DateString](#common-field-types)|optional|Date of registration (if the company is registered outside Australia)|
-|registeredCountry|string|optional|Country of registeration (if the company is registered outside Australia)|
+|registeredCountry|string|optional|Country of registration (if the company is registered outside Australia)|
 |abn|string|optional|Australian Business Number for the organisation|
 |acn|string|optional|Australian Company Number for the organisation|
 |arbn|string|optional|Australian Registered Body Number.  ARBNs are issued to registrable Australian bodies and foreign companies|
@@ -1798,7 +1798,7 @@ This operation does not require authentication
 
 <h3 class="schema-toc" id="tocSregisterdataholderbrandserviceendpoint">RegisterDataHolderBrandServiceEndpoint</h3>
 
-<a id="schemacdr-participant-discovery-apiregisterdataholderbrandserviceendpoint"></a>
+<a class="schema-anchor" id="schemacdr-participant-discovery-apiregisterdataholderbrandserviceendpoint"></a>
 
 ```json
 {
@@ -1827,7 +1827,7 @@ This operation does not require authentication
 
 <h3 class="schema-toc" id="tocSregisterdataholderauth">RegisterDataHolderAuth</h3>
 
-<a id="schemacdr-participant-discovery-apiregisterdataholderauth"></a>
+<a class="schema-anchor" id="schemacdr-participant-discovery-apiregisterdataholderauth"></a>
 
 ```json
 {
@@ -1854,7 +1854,7 @@ This operation does not require authentication
 
 <h3 class="schema-toc" id="tocSlinkspaginated">LinksPaginated</h3>
 
-<a id="schemacdr-participant-discovery-apilinkspaginated"></a>
+<a class="schema-anchor" id="schemacdr-participant-discovery-apilinkspaginated"></a>
 
 ```json
 {
@@ -1879,7 +1879,7 @@ This operation does not require authentication
 
 <h3 class="schema-toc" id="tocSmetapaginated">MetaPaginated</h3>
 
-<a id="schemacdr-participant-discovery-apimetapaginated"></a>
+<a class="schema-anchor" id="schemacdr-participant-discovery-apimetapaginated"></a>
 
 ```json
 {
@@ -1898,7 +1898,7 @@ This operation does not require authentication
 
 <h3 class="schema-toc" id="tocSlinks">Links</h3>
 
-<a id="schemacdr-participant-discovery-apilinks"></a>
+<a class="schema-anchor" id="schemacdr-participant-discovery-apilinks"></a>
 
 ```json
 {
@@ -1915,7 +1915,7 @@ This operation does not require authentication
 
 <h3 class="schema-toc" id="tocSmeta">Meta</h3>
 
-<a id="schemacdr-participant-discovery-apimeta"></a>
+<a class="schema-anchor" id="schemacdr-participant-discovery-apimeta"></a>
 
 ```json
 {}
@@ -1928,7 +1928,7 @@ This operation does not require authentication
 
 <h3 class="schema-toc" id="tocSmetaerror">MetaError</h3>
 
-<a id="schemacdr-participant-discovery-apimetaerror"></a>
+<a class="schema-anchor" id="schemacdr-participant-discovery-apimetaerror"></a>
 
 ```json
 {
@@ -1947,7 +1947,7 @@ This operation does not require authentication
 
 <h3 class="schema-toc" id="tocSresponseerrorlistv2">ResponseErrorListV2</h3>
 
-<a id="schemacdr-participant-discovery-apiresponseerrorlistv2"></a>
+<a class="schema-anchor" id="schemacdr-participant-discovery-apiresponseerrorlistv2"></a>
 
 ```json
 {
@@ -1973,7 +1973,7 @@ This operation does not require authentication
 
 <h3 class="schema-toc" id="tocSresponseerrorlistv2_errors">ResponseErrorListV2_errors</h3>
 
-<a id="schemacdr-participant-discovery-apiresponseerrorlistv2_errors"></a>
+<a class="schema-anchor" id="schemacdr-participant-discovery-apiresponseerrorlistv2_errors"></a>
 
 ```json
 {

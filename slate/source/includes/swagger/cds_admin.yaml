@@ -1622,6 +1622,7 @@ components:
         authorisations:
           $ref: '#/components/schemas/AuthorisationMetricsV2'
       required:
+      - authorisations
       - availability
       - averageResponse
       - averageTps
@@ -1720,7 +1721,9 @@ components:
       - currentMonth
       - previousMonths
     PerformanceMetricsV3_aggregate:
-      description: Percentage of calls within the performance thresholds
+      description: Percentage of calls within Primary Data Holder performance thresholds.
+        Note that Secondary Data Holder performance <b>MUST</b> be excluded from this
+        metric.
       example:
         previousDays:
         - previousDays

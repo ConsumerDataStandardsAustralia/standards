@@ -141,7 +141,7 @@ Note that the results returned by this end point are expected to be ordered in d
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyPlanListResponse](#schemacdr-energy-apienergyplanlistresponse)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 
@@ -1236,7 +1236,7 @@ Obtain a list of electricity usage data from a particular service point
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyUsageListResponse](#schemacdr-energy-apienergyusagelistresponse)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[404 - Unavailable Service Point](#error-404-unavailable-service-point)</li><li>[404 - Invalid Service Point](#error-404-invalid-service-point)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
@@ -1400,7 +1400,7 @@ Obtain usage data for all service points associated with the customer
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyUsageListResponse](#schemacdr-energy-apienergyusagelistresponse)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 
@@ -1585,7 +1585,7 @@ Obtain the electricity usage data for a specific set of service points
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyUsageListResponse](#schemacdr-energy-apienergyusagelistresponse)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li><li>[422 - Unavailable Service Point](#error-422-unavailable-service-point)</li><li>[422 - Invalid Service Point](#error-422-invalid-service-point)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 
@@ -3607,7 +3607,7 @@ Obtain the invoices for a specific account
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyInvoiceListResponse](#schemacdr-energy-apienergyinvoicelistresponse)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[404 - Unavailable Energy Account](#error-404-unavailable-energy-account)</li><li>[404 - Invalid Energy Account](#error-404-invalid-energy-account)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
@@ -3788,7 +3788,7 @@ Obtain the invoices for all accounts
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyInvoiceListResponse](#schemacdr-energy-apienergyinvoicelistresponse)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 
@@ -3990,7 +3990,7 @@ Obtain invoices for a specified set of accounts
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyInvoiceListResponse](#schemacdr-energy-apienergyinvoicelistresponse)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li><li>[422 - Unavailable Energy Account](#error-422-unavailable-energy-account)</li><li>[422 - Invalid Energy Account](#error-422-invalid-energy-account)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 
@@ -4201,7 +4201,7 @@ Other Versions: [v1](includes/obsolete/get-billing-for-account-v1.html)
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyBillingListResponseV2](#schemacdr-energy-apienergybillinglistresponsev2)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[404 - Unavailable Energy Account](#error-404-unavailable-energy-account)</li><li>[404 - Invalid Energy Account](#error-404-invalid-energy-account)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
@@ -4413,7 +4413,7 @@ Other Versions: [v1](includes/obsolete/get-bulk-billing-v1.html)
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyBillingListResponseV2](#schemacdr-energy-apienergybillinglistresponsev2)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 
@@ -4646,7 +4646,7 @@ Other Versions: [v1](includes/obsolete/get-billing-for-specific-accounts-v1.html
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyBillingListResponseV2](#schemacdr-energy-apienergybillinglistresponsev2)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li><li>[422 - Unavailable Energy Account](#error-422-unavailable-energy-account)</li><li>[422 - Invalid Energy Account](#error-422-invalid-energy-account)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 
@@ -4675,7 +4675,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="tocSenergyplanlistresponse">EnergyPlanListResponse</h3>
 
-<a id="schemacdr-energy-apienergyplanlistresponse"></a>
+<a class="schema-anchor" id="schemacdr-energy-apienergyplanlistresponse"></a>
 
 ```json
 {
@@ -4735,13 +4735,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 |Name|Type|Required|Description|
 |---|---|---|---|
 |data|object|mandatory|none|
-|» plans|[[EnergyPlan](#schemacdr-energy-apienergyplan)]|mandatory|Array of plans|
+|» plans|[[EnergyPlan](#schemacdr-energy-apienergyplan)]|mandatory|Array of plans|
 |links|[LinksPaginated](#schemacdr-energy-apilinkspaginated)|mandatory|none|
 |meta|[MetaPaginated](#schemacdr-energy-apimetapaginated)|mandatory|none|
 
 <h3 class="schema-toc" id="tocSenergyplanresponsev2">EnergyPlanResponseV2</h3>
 
-<a id="schemacdr-energy-apienergyplanresponsev2"></a>
+<a class="schema-anchor" id="schemacdr-energy-apienergyplanresponsev2"></a>
 
 ```json
 {
@@ -5274,7 +5274,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="tocSenergyservicepointlistresponse">EnergyServicePointListResponse</h3>
 
-<a id="schemacdr-energy-apienergyservicepointlistresponse"></a>
+<a class="schema-anchor" id="schemacdr-energy-apienergyservicepointlistresponse"></a>
 
 ```json
 {
@@ -5316,13 +5316,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 |Name|Type|Required|Description|
 |---|---|---|---|
 |data|object|mandatory|none|
-|» servicePoints|[[EnergyServicePoint](#schemacdr-energy-apienergyservicepoint)]|mandatory|none|
+|» servicePoints|[[EnergyServicePoint](#schemacdr-energy-apienergyservicepoint)]|mandatory|none|
 |links|[LinksPaginated](#schemacdr-energy-apilinkspaginated)|mandatory|none|
 |meta|[MetaPaginated](#schemacdr-energy-apimetapaginated)|mandatory|none|
 
 <h3 class="schema-toc" id="tocSenergyservicepointdetailresponse">EnergyServicePointDetailResponse</h3>
 
-<a id="schemacdr-energy-apienergyservicepointdetailresponse"></a>
+<a class="schema-anchor" id="schemacdr-energy-apienergyservicepointdetailresponse"></a>
 
 ```json
 {
@@ -5433,7 +5433,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="tocSenergyusagelistresponse">EnergyUsageListResponse</h3>
 
-<a id="schemacdr-energy-apienergyusagelistresponse"></a>
+<a class="schema-anchor" id="schemacdr-energy-apienergyusagelistresponse"></a>
 
 ```json
 {
@@ -5490,13 +5490,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 |Name|Type|Required|Description|
 |---|---|---|---|
 |data|object|mandatory|none|
-|» reads|[[EnergyUsageRead](#schemacdr-energy-apienergyusageread)]|mandatory|Array of meter reads sorted by NMI in ascending order followed by readStartDate in descending order|
+|» reads|[[EnergyUsageRead](#schemacdr-energy-apienergyusageread)]|mandatory|Array of meter reads sorted by NMI in ascending order followed by readStartDate in descending order|
 |links|[LinksPaginated](#schemacdr-energy-apilinkspaginated)|mandatory|none|
 |meta|[MetaPaginated](#schemacdr-energy-apimetapaginated)|mandatory|none|
 
 <h3 class="schema-toc" id="tocSenergyderlistresponse">EnergyDerListResponse</h3>
 
-<a id="schemacdr-energy-apienergyderlistresponse"></a>
+<a class="schema-anchor" id="schemacdr-energy-apienergyderlistresponse"></a>
 
 ```json
 {
@@ -5575,13 +5575,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 |Name|Type|Required|Description|
 |---|---|---|---|
 |data|object|mandatory|none|
-|» derRecords|[[EnergyDerRecord](#schemacdr-energy-apienergyderrecord)]|mandatory|Array of meter reads|
+|» derRecords|[[EnergyDerRecord](#schemacdr-energy-apienergyderrecord)]|mandatory|Array of meter reads|
 |links|[LinksPaginated](#schemacdr-energy-apilinkspaginated)|mandatory|none|
 |meta|[MetaPaginated](#schemacdr-energy-apimetapaginated)|mandatory|none|
 
 <h3 class="schema-toc" id="tocSenergyderdetailresponse">EnergyDerDetailResponse</h3>
 
-<a id="schemacdr-energy-apienergyderdetailresponse"></a>
+<a class="schema-anchor" id="schemacdr-energy-apienergyderdetailresponse"></a>
 
 ```json
 {
@@ -5654,7 +5654,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="tocSenergyaccountlistresponsev2">EnergyAccountListResponseV2</h3>
 
-<a id="schemacdr-energy-apienergyaccountlistresponsev2"></a>
+<a class="schema-anchor" id="schemacdr-energy-apienergyaccountlistresponsev2"></a>
 
 ```json
 {
@@ -5702,13 +5702,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 |Name|Type|Required|Description|
 |---|---|---|---|
 |data|object|mandatory|none|
-|» accounts|[[EnergyAccountV2](#schemacdr-energy-apienergyaccountv2)]|mandatory|Array of accounts|
+|» accounts|[[EnergyAccountV2](#schemacdr-energy-apienergyaccountv2)]|mandatory|Array of accounts|
 |links|[LinksPaginated](#schemacdr-energy-apilinkspaginated)|mandatory|none|
 |meta|[MetaPaginated](#schemacdr-energy-apimetapaginated)|mandatory|none|
 
 <h3 class="schema-toc" id="tocSenergyaccountdetailresponsev3">EnergyAccountDetailResponseV3</h3>
 
-<a id="schemacdr-energy-apienergyaccountdetailresponsev3"></a>
+<a class="schema-anchor" id="schemacdr-energy-apienergyaccountdetailresponsev3"></a>
 
 ```json
 {
@@ -6116,7 +6116,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="tocSenergypaymentscheduleresponse">EnergyPaymentScheduleResponse</h3>
 
-<a id="schemacdr-energy-apienergypaymentscheduleresponse"></a>
+<a class="schema-anchor" id="schemacdr-energy-apienergypaymentscheduleresponse"></a>
 
 ```json
 {
@@ -6164,13 +6164,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 |Name|Type|Required|Description|
 |---|---|---|---|
 |data|object|mandatory|none|
-|» paymentSchedules|[[EnergyPaymentSchedule](#schemacdr-energy-apienergypaymentschedule)]|mandatory|Array may be empty if no payment schedule exist|
+|» paymentSchedules|[[EnergyPaymentSchedule](#schemacdr-energy-apienergypaymentschedule)]|mandatory|Array may be empty if no payment schedule exist|
 |links|[Links](#schemacdr-energy-apilinks)|mandatory|none|
 |meta|[Meta](#schemacdr-energy-apimeta)|optional|none|
 
 <h3 class="schema-toc" id="tocSenergyconcessionsresponse">EnergyConcessionsResponse</h3>
 
-<a id="schemacdr-energy-apienergyconcessionsresponse"></a>
+<a class="schema-anchor" id="schemacdr-energy-apienergyconcessionsresponse"></a>
 
 ```json
 {
@@ -6205,13 +6205,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 |Name|Type|Required|Description|
 |---|---|---|---|
 |data|object|mandatory|none|
-|» concessions|[[EnergyConcession](#schemacdr-energy-apienergyconcession)]|mandatory|Array may be empty if no concessions exist|
+|» concessions|[[EnergyConcession](#schemacdr-energy-apienergyconcession)]|mandatory|Array may be empty if no concessions exist|
 |links|[Links](#schemacdr-energy-apilinks)|mandatory|none|
 |meta|[Meta](#schemacdr-energy-apimeta)|optional|none|
 
 <h3 class="schema-toc" id="tocSenergybalancelistresponse">EnergyBalanceListResponse</h3>
 
-<a id="schemacdr-energy-apienergybalancelistresponse"></a>
+<a class="schema-anchor" id="schemacdr-energy-apienergybalancelistresponse"></a>
 
 ```json
 {
@@ -6243,15 +6243,15 @@ To perform this operation, you must be authenticated and authorised with the fol
 |Name|Type|Required|Description|
 |---|---|---|---|
 |data|object|mandatory|none|
-|» balances|[object]|mandatory|Array of account balances|
-|»» accountId|string|mandatory|The ID of the account|
-|»» balance|[AmountString](#common-field-types)|mandatory|The current balance of the account.  A positive value indicates that amount is owing to be paid.  A negative value indicates that the account is in credit|
-|» links|[LinksPaginated](#schemacdr-energy-apilinkspaginated)|mandatory|none|
-|» meta|[MetaPaginated](#schemacdr-energy-apimetapaginated)|mandatory|none|
+|» balances|[object]|mandatory|Array of account balances|
+|»» accountId|string|mandatory|The ID of the account|
+|»» balance|[AmountString](#common-field-types)|mandatory|The current balance of the account.  A positive value indicates that amount is owing to be paid.  A negative value indicates that the account is in credit|
+|links|[LinksPaginated](#schemacdr-energy-apilinkspaginated)|mandatory|none|
+|meta|[MetaPaginated](#schemacdr-energy-apimetapaginated)|mandatory|none|
 
 <h3 class="schema-toc" id="tocSenergybalanceresponse">EnergyBalanceResponse</h3>
 
-<a id="schemacdr-energy-apienergybalanceresponse"></a>
+<a class="schema-anchor" id="schemacdr-energy-apienergybalanceresponse"></a>
 
 ```json
 {
@@ -6271,13 +6271,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 |Name|Type|Required|Description|
 |---|---|---|---|
 |data|object|mandatory|none|
-|» balance|[AmountString](#common-field-types)|mandatory|The current balance of the account.  A positive value indicates that amount is owing to be paid.  A negative value indicates that the account is in credit|
+|» balance|[AmountString](#common-field-types)|mandatory|The current balance of the account.  A positive value indicates that amount is owing to be paid.  A negative value indicates that the account is in credit|
 |links|[Links](#schemacdr-energy-apilinks)|mandatory|none|
 |meta|[Meta](#schemacdr-energy-apimeta)|optional|none|
 
 <h3 class="schema-toc" id="tocSenergyinvoicelistresponse">EnergyInvoiceListResponse</h3>
 
-<a id="schemacdr-energy-apienergyinvoicelistresponse"></a>
+<a class="schema-anchor" id="schemacdr-energy-apienergyinvoicelistresponse"></a>
 
 ```json
 {
@@ -6360,13 +6360,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 |Name|Type|Required|Description|
 |---|---|---|---|
 |data|object|mandatory|none|
-|» invoices|[[EnergyInvoice](#schemacdr-energy-apienergyinvoice)]|mandatory|Array of invoices sorted by issue date in descending order|
+|» invoices|[[EnergyInvoice](#schemacdr-energy-apienergyinvoice)]|mandatory|Array of invoices sorted by issue date in descending order|
 |links|[LinksPaginated](#schemacdr-energy-apilinkspaginated)|mandatory|none|
 |meta|[MetaPaginated](#schemacdr-energy-apimetapaginated)|mandatory|none|
 
 <h3 class="schema-toc" id="tocSenergybillinglistresponsev2">EnergyBillingListResponseV2</h3>
 
-<a id="schemacdr-energy-apienergybillinglistresponsev2"></a>
+<a class="schema-anchor" id="schemacdr-energy-apienergybillinglistresponsev2"></a>
 
 ```json
 {
@@ -6478,13 +6478,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 |Name|Type|Required|Description|
 |---|---|---|---|
 |data|object|mandatory|none|
-|» transactions|[[EnergyBillingTransactionV2](#schemacdr-energy-apienergybillingtransactionv2)]|mandatory|Array of transactions sorted by date and time in descending order|
+|» transactions|[[EnergyBillingTransactionV2](#schemacdr-energy-apienergybillingtransactionv2)]|mandatory|Array of transactions sorted by date and time in descending order|
 |links|[LinksPaginated](#schemacdr-energy-apilinkspaginated)|mandatory|none|
 |meta|[MetaPaginated](#schemacdr-energy-apimetapaginated)|mandatory|none|
 
 <h3 class="schema-toc" id="tocSresponseerrorlistv2">ResponseErrorListV2</h3>
 
-<a id="schemacdr-energy-apiresponseerrorlistv2"></a>
+<a class="schema-anchor" id="schemacdr-energy-apiresponseerrorlistv2"></a>
 
 ```json
 {
@@ -6507,15 +6507,15 @@ To perform this operation, you must be authenticated and authorised with the fol
 |Name|Type|Required|Description|
 |---|---|---|---|
 |errors|[object]|mandatory|none|
-|» code|string|mandatory|The code of the error encountered. Where the error is specific to the respondent, an application-specific error code, expressed as a string value. If the error is application-specific, the URN code that the specific error extends must be provided in the meta object. Otherwise, the value is the error code URN.|
-|» title|string|mandatory|A short, human-readable summary of the problem that MUST NOT change from occurrence to occurrence of the problem represented by the error code.|
-|» detail|string|mandatory|A human-readable explanation specific to this occurrence of the problem.|
-|» meta|object|optional|Additional data for customised error codes|
-|»» urn|string|conditional|The CDR error code URN which the application-specific error code extends. Mandatory if the error `code` is an application-specific error rather than a standardised error code.|
+|» code|string|mandatory|The code of the error encountered. Where the error is specific to the respondent, an application-specific error code, expressed as a string value. If the error is application-specific, the URN code that the specific error extends must be provided in the meta object. Otherwise, the value is the error code URN.|
+|» title|string|mandatory|A short, human-readable summary of the problem that MUST NOT change from occurrence to occurrence of the problem represented by the error code.|
+|» detail|string|mandatory|A human-readable explanation specific to this occurrence of the problem.|
+|» meta|object|optional|Additional data for customised error codes|
+|»» urn|string|conditional|The CDR error code URN which the application-specific error code extends. Mandatory if the error `code` is an application-specific error rather than a standardised error code.|
 
 <h3 class="schema-toc" id="tocSenergyplan">EnergyPlan</h3>
 
-<a id="schemacdr-energy-apienergyplan"></a>
+<a class="schema-anchor" id="schemacdr-energy-apienergyplan"></a>
 
 ```json
 {
@@ -6569,16 +6569,16 @@ To perform this operation, you must be authenticated and authorised with the fol
 |brandName|string|mandatory|The display name of the brand under which this plan is offered|
 |applicationUri|[URIString](#common-field-types)|optional|A link to an application web page where this plan can be applied for|
 |additionalInformation|object|optional|Object that contains links to additional information on specific topics|
-|» overviewUri|[URIString](#common-field-types)|optional|A link to a general overview of the plan|
-|» termsUri|[URIString](#common-field-types)|optional|A link to terms and conditions for the plan|
-|» eligibilityUri|[URIString](#common-field-types)|optional|A link to detail on eligibility criteria for the plan|
-|» pricingUri|[URIString](#common-field-types)|optional|A link to detail on pricing for the plan|
-|» bundleUri|[URIString](#common-field-types)|optional|A link to detail on bundles that this plan can be a part of|
+|» overviewUri|[URIString](#common-field-types)|optional|A link to a general overview of the plan|
+|» termsUri|[URIString](#common-field-types)|optional|A link to terms and conditions for the plan|
+|» eligibilityUri|[URIString](#common-field-types)|optional|A link to detail on eligibility criteria for the plan|
+|» pricingUri|[URIString](#common-field-types)|optional|A link to detail on pricing for the plan|
+|» bundleUri|[URIString](#common-field-types)|optional|A link to detail on bundles that this plan can be a part of|
 |customerType|string|optional|The type of customer that the plan is offered to.  If absent then the plan is available to all customers|
 |geography|object|optional|Describes the geographical area that the plan is available for.  If absent then it is assumed the plan is not geographically limited|
-|» excludedPostcodes|[string]|optional|Array of valid Australian postcodes that are specifically excluded from the plan.  Each element is a single four digit postcode (e.g. 3000) or a range of postcodes defined by two four digit postcodes and a hyphen (e.g. 3000-3999)|
-|» includedPostcodes|[string]|optional|Array of valid Australian postcodes that are included from the plan.  If absent defaults to all non-excluded postcodes.  Each element is a single four digit postcode (e.g. 3000) or a range of postcodes defined by two four digit postcodes and a hyphen (e.g. 3000-3999)|
-|» distributors|[string]|mandatory|Array of distributors for the plan. Must have at least one entry|
+|» excludedPostcodes|[string]|optional|Array of valid Australian postcodes that are specifically excluded from the plan.  Each element is a single four digit postcode (e.g. 3000) or a range of postcodes defined by two four digit postcodes and a hyphen (e.g. 3000-3999)|
+|» includedPostcodes|[string]|optional|Array of valid Australian postcodes that are included from the plan.  If absent defaults to all non-excluded postcodes.  Each element is a single four digit postcode (e.g. 3000) or a range of postcodes defined by two four digit postcodes and a hyphen (e.g. 3000-3999)|
+|» distributors|[string]|mandatory|Array of distributors for the plan. Must have at least one entry|
 
 #### Enumerated Values
 
@@ -6595,7 +6595,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="tocSenergyplandetailv2">EnergyPlanDetailV2</h3>
 
-<a id="schemacdr-energy-apienergyplandetailv2"></a>
+<a class="schema-anchor" id="schemacdr-energy-apienergyplandetailv2"></a>
 
 ```json
 {
@@ -7125,18 +7125,18 @@ To perform this operation, you must be authenticated and authorised with the fol
 |Name|Type|Required|Description|
 |---|---|---|---|
 |*anonymous*|object|mandatory|none|
-|» meteringCharges|[object]|optional|Charges for metering included in the plan|
-|»» displayName|string|mandatory|Display name of the charge|
-|»» description|string|optional|Description of the charge|
-|»» minimumValue|[AmountString](#common-field-types)|mandatory|Minimum value of the charge if the charge is a range or the absolute value of the charge if no range is specified|
-|»» maximumValue|[AmountString](#common-field-types)|optional|The upper limit of the charge if the charge could occur in a range|
-|»» period|[ExternalRef](#common-field-types)|optional|The charges that occur on a schedule indicates the frequency. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
-|» gasContract|[EnergyPlanContractFullV2](#schemacdr-energy-apienergyplancontractfullv2)|conditional|The details of the terms for the supply of electricity under this plan.  Is mandatory if fuelType is set to GAS or DUAL|
-|» electricityContract|[EnergyPlanContractFullV2](#schemacdr-energy-apienergyplancontractfullv2)|conditional|The details of the terms for the supply of electricity under this plan.  Is mandatory if fuelType is set to ELECTRICITY or DUAL|
+|» meteringCharges|[object]|optional|Charges for metering included in the plan|
+|»» displayName|string|mandatory|Display name of the charge|
+|»» description|string|optional|Description of the charge|
+|»» minimumValue|[AmountString](#common-field-types)|mandatory|Minimum value of the charge if the charge is a range or the absolute value of the charge if no range is specified|
+|»» maximumValue|[AmountString](#common-field-types)|optional|The upper limit of the charge if the charge could occur in a range|
+|»» period|[ExternalRef](#common-field-types)|optional|The charges that occur on a schedule indicates the frequency. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
+|» gasContract|[EnergyPlanContractFullV2](#schemacdr-energy-apienergyplancontractfullv2)|conditional|The details of the terms for the supply of electricity under this plan.  Is mandatory if fuelType is set to GAS or DUAL|
+|» electricityContract|[EnergyPlanContractFullV2](#schemacdr-energy-apienergyplancontractfullv2)|conditional|The details of the terms for the supply of electricity under this plan.  Is mandatory if fuelType is set to ELECTRICITY or DUAL|
 
 <h3 class="schema-toc" id="tocSenergyplancontractv2">EnergyPlanContractV2</h3>
 
-<a id="schemacdr-energy-apienergyplancontractv2"></a>
+<a class="schema-anchor" id="schemacdr-energy-apienergyplancontractv2"></a>
 
 ```json
 {
@@ -7379,7 +7379,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |onExpiryDescription|string|optional|Free text field that describes what will occur on or prior to expiry of the fixed contract term or benefit period|
 |paymentOption|[string]|mandatory|Payment options for this contract|
 |intrinsicGreenPower|object|optional|Describes intrinsic green power for the plan.  If present then the plan includes a percentage of green power in the base plan. Should not be present for gas contracts|
-|» greenPercentage|[RateString](#common-field-types)|mandatory|Percentage of green power intrinsically included in the plan|
+|» greenPercentage|[RateString](#common-field-types)|mandatory|Percentage of green power intrinsically included in the plan|
 |controlledLoad|[EnergyPlanControlledLoad](#schemacdr-energy-apienergyplancontrolledload)|conditional|Required if pricing model is SINGLE_RATE_CONT_LOAD or TIME_OF_USE_CONT_LOAD or FLEXIBLE_CONT_LOAD|
 |incentives|[EnergyPlanIncentives](#schemacdr-energy-apienergyplanincentives)|optional|Optional list of incentives available for the contract|
 |discounts|[EnergyPlanDiscounts](#schemacdr-energy-apienergyplandiscounts)|optional|Optional list of discounts available for the contract|
@@ -7410,7 +7410,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="tocSenergyplancontractfullv2">EnergyPlanContractFullV2</h3>
 
-<a id="schemacdr-energy-apienergyplancontractfullv2"></a>
+<a class="schema-anchor" id="schemacdr-energy-apienergyplancontractfullv2"></a>
 
 ```json
 {
@@ -7664,12 +7664,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 |Name|Type|Required|Description|
 |---|---|---|---|
 |*anonymous*|object|mandatory|none|
-|» termType|string|optional|The term for the contract.  If absent assumes no specified term|
-|» benefitPeriod|string|conditional|Description of the benefit period.  Should only be present if termType has the value ONGOING|
-|» terms|string|optional|Free text description of the terms for the contract|
-|» meterTypes|[string]|optional|An array of the meter types that this contract is available for|
-|» coolingOffDays|[PositiveInteger](#common-field-types)|conditional|Number of days in the cooling off period for the contract.  Mandatory for plans with type of MARKET|
-|» billFrequency|[string]|mandatory|An array of the available billing schedules for this contract. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
+|» termType|string|optional|The term for the contract.  If absent assumes no specified term|
+|» benefitPeriod|string|conditional|Description of the benefit period.  Should only be present if termType has the value ONGOING|
+|» terms|string|optional|Free text description of the terms for the contract|
+|» meterTypes|[string]|optional|An array of the meter types that this contract is available for|
+|» coolingOffDays|[PositiveInteger](#common-field-types)|conditional|Number of days in the cooling off period for the contract.  Mandatory for plans with type of MARKET|
+|» billFrequency|[string]|mandatory|An array of the available billing schedules for this contract. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
 
 #### Enumerated Values
 
@@ -7685,7 +7685,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="tocSenergyplancontrolledload">EnergyPlanControlledLoad</h3>
 
-<a id="schemacdr-energy-apienergyplancontrolledload"></a>
+<a class="schema-anchor" id="schemacdr-energy-apienergyplancontrolledload"></a>
 
 ```json
 [
@@ -7748,28 +7748,28 @@ To perform this operation, you must be authenticated and authorised with the fol
 |startDate|[DateString](#common-field-types)|optional|Optional start date of the application of the controlled load rate|
 |endDate|[DateString](#common-field-types)|optional|Optional end date of the application of the controlled load rate|
 |singleRate|object|conditional|Object representing a single controlled load rate.  Required if rateBlockUType is singleRate|
-|» displayName|string|mandatory|Display name of the controlled load rate|
-|» description|string|optional|Description of the controlled load rate|
-|» dailySupplyCharge|[AmountString](#common-field-types)|optional|The daily supply charge (exclusive of GST) for this controlled load tier|
-|» rates|[object]|mandatory|Array of controlled load rates in order of usage volume|
-|»» unitPrice|[AmountString](#common-field-types)|mandatory|Unit price of usage per  measure unit (exclusive of GST)|
-|»» measureUnit|string|optional|The measurement unit of rate. Assumed to be KWH if absent|
-|»» volume|number|optional|Volume in kWh that this rate applies to.  Only applicable for ‘stepped’ rates where different rates apply for different volumes of usage in a period|
-|» timeOfUseRates|[object]|conditional|Array of objects representing time of use rates.  Required if rateBlockUType is timeOfUseRates|
-|»» displayName|string|mandatory|Display name of the controlled load rate|
-|»» description|string|optional|Description of the controlled load rate|
-|»» dailySupplyCharge|[AmountString](#common-field-types)|optional|The daily supply charge (exclusive of GST) for this controlled load tier|
-|»» rates|[object]|mandatory|Array of controlled load rates in order of usage volume|
-|»»» unitPrice|[AmountString](#common-field-types)|mandatory|Unit price of usage per  measure unit (exclusive of GST)|
-|»»» measureUnit|string|optional|The measurement unit of rate. Assumed to be KWH if absent|
-|»»» volume|number|optional|Volume in kWh that this rate applies to.  Only applicable for ‘stepped’ rates where different rates apply for different volumes of usage in a period|
-|»» timeOfUse|[object]|mandatory|Array of times of use.|
-|»»» days|[string]|optional|The days that the rate applies to|
-|»»» startTime|[TimeString](#common-field-types)|conditional|The beginning of the time period per day for which the controlled load rate applies. Required if endTime provided|
-|»»» endTime|[TimeString](#common-field-types)|conditional|The end of the time period per day for which the controlled load rate applies. Required if startTime provided|
-|»»» additionalInfo|string|conditional|Display text providing more information on the contrlled load, for e.g. controlled load availability if specific day/time is not known. Required if startTime and endTime absent or if additionalInfoUri provided|
-|»»» additionalInfoUri|[URIString](#common-field-types)|optional|Optional link to additional information regarding the controlled load|
-|»» type|string|mandatory|The type of usage that the rate applies to|
+|» displayName|string|mandatory|Display name of the controlled load rate|
+|» description|string|optional|Description of the controlled load rate|
+|» dailySupplyCharge|[AmountString](#common-field-types)|optional|The daily supply charge (exclusive of GST) for this controlled load tier|
+|» rates|[object]|mandatory|Array of controlled load rates in order of usage volume|
+|»» unitPrice|[AmountString](#common-field-types)|mandatory|Unit price of usage per  measure unit (exclusive of GST)|
+|»» measureUnit|string|optional|The measurement unit of rate. Assumed to be KWH if absent|
+|»» volume|number|optional|Volume in kWh that this rate applies to.  Only applicable for ‘stepped’ rates where different rates apply for different volumes of usage in a period|
+|timeOfUseRates|[object]|conditional|Array of objects representing time of use rates.  Required if rateBlockUType is timeOfUseRates|
+|» displayName|string|mandatory|Display name of the controlled load rate|
+|» description|string|optional|Description of the controlled load rate|
+|» dailySupplyCharge|[AmountString](#common-field-types)|optional|The daily supply charge (exclusive of GST) for this controlled load tier|
+|» rates|[object]|mandatory|Array of controlled load rates in order of usage volume|
+|»» unitPrice|[AmountString](#common-field-types)|mandatory|Unit price of usage per  measure unit (exclusive of GST)|
+|»» measureUnit|string|optional|The measurement unit of rate. Assumed to be KWH if absent|
+|»» volume|number|optional|Volume in kWh that this rate applies to.  Only applicable for ‘stepped’ rates where different rates apply for different volumes of usage in a period|
+|» timeOfUse|[object]|mandatory|Array of times of use.|
+|»» days|[string]|optional|The days that the rate applies to|
+|»» startTime|[TimeString](#common-field-types)|conditional|The beginning of the time period per day for which the controlled load rate applies. Required if endTime provided|
+|»» endTime|[TimeString](#common-field-types)|conditional|The end of the time period per day for which the controlled load rate applies. Required if startTime provided|
+|»» additionalInfo|string|conditional|Display text providing more information on the contrlled load, for e.g. controlled load availability if specific day/time is not known. Required if startTime and endTime absent or if additionalInfoUri provided|
+|»» additionalInfoUri|[URIString](#common-field-types)|optional|Optional link to additional information regarding the controlled load|
+|» type|string|mandatory|The type of usage that the rate applies to|
 
 #### Enumerated Values
 
@@ -7808,7 +7808,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="tocSenergyplanincentives">EnergyPlanIncentives</h3>
 
-<a id="schemacdr-energy-apienergyplanincentives"></a>
+<a class="schema-anchor" id="schemacdr-energy-apienergyplanincentives"></a>
 
 ```json
 [
@@ -7843,7 +7843,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="tocSenergyplandiscounts">EnergyPlanDiscounts</h3>
 
-<a id="schemacdr-energy-apienergyplandiscounts"></a>
+<a class="schema-anchor" id="schemacdr-energy-apienergyplandiscounts"></a>
 
 ```json
 [
@@ -7885,14 +7885,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 |endDate|[DateString](#common-field-types)|optional|Optional end date for the discount after which the discount is no longer available|
 |methodUType|string|mandatory|The method of calculation of the discount|
 |percentOfBill|object|conditional|Required if methodUType is percentOfBill|
-|» rate|[RateString](#common-field-types)|mandatory|The rate of the discount applied to the bill amount|
+|» rate|[RateString](#common-field-types)|mandatory|The rate of the discount applied to the bill amount|
 |percentOfUse|object|conditional|Required if methodUType is percentOfUse|
-|» rate|[RateString](#common-field-types)|mandatory|The rate of the discount applied to the usageamount|
+|» rate|[RateString](#common-field-types)|mandatory|The rate of the discount applied to the usageamount|
 |fixedAmount|object|conditional|Required if methodUType is fixedAmount|
-|» amount|[AmountString](#common-field-types)|mandatory|The amount of the discount|
+|» amount|[AmountString](#common-field-types)|mandatory|The amount of the discount|
 |percentOverThreshold|object|conditional|Required if methodUType is percentOverThreshold|
-|» rate|[RateString](#common-field-types)|mandatory|The rate of the discount over the usage amount|
-|» usageAmount|[AmountString](#common-field-types)|mandatory|The usage amount threshold above which the discount applies|
+|» rate|[RateString](#common-field-types)|mandatory|The rate of the discount over the usage amount|
+|» usageAmount|[AmountString](#common-field-types)|mandatory|The usage amount threshold above which the discount applies|
 
 #### Enumerated Values
 
@@ -7912,7 +7912,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="tocSenergyplangreenpowercharges">EnergyPlanGreenPowerCharges</h3>
 
-<a id="schemacdr-energy-apienergyplangreenpowercharges"></a>
+<a class="schema-anchor" id="schemacdr-energy-apienergyplangreenpowercharges"></a>
 
 ```json
 [
@@ -7944,9 +7944,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 |scheme|string|mandatory|The applicable green power scheme|
 |type|string|mandatory|The type of charge|
 |tiers|[object]|mandatory|Array of charge tiers based on the percentage of green power used for the period implied by the type.  Array is in order of increasing percentage of green power|
-|» percentGreen|[RateString](#common-field-types)|mandatory|The upper percentage of green power used applicable for this tier|
-|» rate|[RateString](#common-field-types)|conditional|The rate of the charge if the type implies the application of a rate|
-|» amount|[AmountString](#common-field-types)|conditional|The amount of the charge if the type implies the application of a fixed amount|
+|» percentGreen|[RateString](#common-field-types)|mandatory|The upper percentage of green power used applicable for this tier|
+|» rate|[RateString](#common-field-types)|conditional|The rate of the charge if the type implies the application of a rate|
+|» amount|[AmountString](#common-field-types)|conditional|The amount of the charge if the type implies the application of a fixed amount|
 
 #### Enumerated Values
 
@@ -7963,7 +7963,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="tocSenergyplaneligibility">EnergyPlanEligibility</h3>
 
-<a id="schemacdr-energy-apienergyplaneligibility"></a>
+<a class="schema-anchor" id="schemacdr-energy-apienergyplaneligibility"></a>
 
 ```json
 [
@@ -8014,7 +8014,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="tocSenergyplanfees">EnergyPlanFees</h3>
 
-<a id="schemacdr-energy-apienergyplanfees"></a>
+<a class="schema-anchor" id="schemacdr-energy-apienergyplanfees"></a>
 
 ```json
 [
@@ -8077,7 +8077,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="tocSenergyplansolarfeedintariffv2">EnergyPlanSolarFeedInTariffV2</h3>
 
-<a id="schemacdr-energy-apienergyplansolarfeedintariffv2"></a>
+<a class="schema-anchor" id="schemacdr-energy-apienergyplansolarfeedintariffv2"></a>
 
 ```json
 [
@@ -8136,20 +8136,20 @@ To perform this operation, you must be authenticated and authorised with the fol
 |payerType|string|mandatory|The type of the payer|
 |tariffUType|string|mandatory|The type of the payer|
 |singleTariff|object|conditional|Represents a constant tariff.  Mandatory if tariffUType is set to singleTariff|
-|» rates|[object]|mandatory|Array of feed in rates|
-|»» unitPrice|[AmountString](#common-field-types)|mandatory|Unit price of usage per measure unit (exclusive of GST)|
-|»» measureUnit|string|optional|The measurement unit of rate. Assumed to be KWH if absent|
-|»» volume|number|optional|Volume that this rate applies to. Only applicable for ‘stepped’ rates where different rates apply for different volumes of usage in a period|
-|» timeVaryingTariffs|object|conditional|Represents a tariff based on time.  Mandatory if tariffUType is set to timeVaryingTariffs|
-|»» type|string|optional|The type of the charging time period. If absent applies to all periods|
-|»» rates|[object]|optional|Array of feed in rates|
-|»»» unitPrice|[AmountString](#common-field-types)|mandatory|Unit price of usage per measure unit (exclusive of GST)|
-|»»» measureUnit|string|optional|The measurement unit of rate. Assumed to be KWH if absent|
-|»»» volume|number|optional|Volume that this rate applies to. Only applicable for ‘stepped’ rates where different rates apply for different volumes of usage in a period|
-|»» timeVariations|[object]|mandatory|Array of time periods for which this tariff is applicable|
-|»»» days|[string]|mandatory|The days that the tariff applies to. At least one entry required|
-|»»» startTime|[TimeString](#common-field-types)|optional|The beginning of the time period per day for which the tariff applies.  If absent assumes start of day (ie. midnight)|
-|»»» endTime|[TimeString](#common-field-types)|optional|The end of the time period per day for which the tariff applies.  If absent assumes end of day (ie. one second before midnight)|
+|» rates|[object]|mandatory|Array of feed in rates|
+|»» unitPrice|[AmountString](#common-field-types)|mandatory|Unit price of usage per measure unit (exclusive of GST)|
+|»» measureUnit|string|optional|The measurement unit of rate. Assumed to be KWH if absent|
+|»» volume|number|optional|Volume that this rate applies to. Only applicable for ‘stepped’ rates where different rates apply for different volumes of usage in a period|
+|timeVaryingTariffs|object|conditional|Represents a tariff based on time.  Mandatory if tariffUType is set to timeVaryingTariffs|
+|» type|string|optional|The type of the charging time period. If absent applies to all periods|
+|» rates|[object]|optional|Array of feed in rates|
+|»» unitPrice|[AmountString](#common-field-types)|mandatory|Unit price of usage per measure unit (exclusive of GST)|
+|»» measureUnit|string|optional|The measurement unit of rate. Assumed to be KWH if absent|
+|»» volume|number|optional|Volume that this rate applies to. Only applicable for ‘stepped’ rates where different rates apply for different volumes of usage in a period|
+|» timeVariations|[object]|mandatory|Array of time periods for which this tariff is applicable|
+|»» days|[string]|mandatory|The days that the tariff applies to. At least one entry required|
+|»» startTime|[TimeString](#common-field-types)|optional|The beginning of the time period per day for which the tariff applies.  If absent assumes start of day (ie. midnight)|
+|»» endTime|[TimeString](#common-field-types)|optional|The end of the time period per day for which the tariff applies.  If absent assumes end of day (ie. one second before midnight)|
 
 #### Enumerated Values
 
@@ -8191,7 +8191,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="tocSenergyplantariffperiod">EnergyPlanTariffPeriod</h3>
 
-<a id="schemacdr-energy-apienergyplantariffperiod"></a>
+<a class="schema-anchor" id="schemacdr-energy-apienergyplantariffperiod"></a>
 
 ```json
 [
@@ -8275,38 +8275,38 @@ To perform this operation, you must be authenticated and authorised with the fol
 |timeZone|string|optional|Specifies the charge specific time zone for calculation of the time of use thresholds. If absent, timezone value in EnergyPlanContract is assumed.|
 |rateBlockUType|string|mandatory|Specifies the type of rate applicable to this tariff period|
 |singleRate|object|conditional|Object representing a single rate.  Required if rateBlockUType is singleRate|
-|» displayName|string|mandatory|Display name of the rate|
-|» description|string|optional|Description of the rate|
-|» generalUnitPrice|[AmountString](#common-field-types)|conditional|The block rate (unit price) for any usage above the included fixed usage, in dollars per kWh inclusive of GST.  Only required if pricingModel field is ‘QUOTA’|
-|» rates|[object]|mandatory|Array of controlled load rates in order of usage volume|
-|»» unitPrice|[AmountString](#common-field-types)|mandatory|Unit price of usage per measure unit (exclusive of GST)|
-|»» measureUnit|string|optional|The measurement unit of rate. Assumed to be KWH if absent|
-|»» volume|number|optional|Volume in kWh that this rate applies to.  Only applicable for ‘stepped’ rates where different rates apply for different volumes of usage in a period|
-|» period|[ExternalRef](#common-field-types)|optional|Usage period for which the block rate applies. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
+|» displayName|string|mandatory|Display name of the rate|
+|» description|string|optional|Description of the rate|
+|» generalUnitPrice|[AmountString](#common-field-types)|conditional|The block rate (unit price) for any usage above the included fixed usage, in dollars per kWh inclusive of GST.  Only required if pricingModel field is ‘QUOTA’|
+|» rates|[object]|mandatory|Array of controlled load rates in order of usage volume|
+|»» unitPrice|[AmountString](#common-field-types)|mandatory|Unit price of usage per measure unit (exclusive of GST)|
+|»» measureUnit|string|optional|The measurement unit of rate. Assumed to be KWH if absent|
+|»» volume|number|optional|Volume in kWh that this rate applies to.  Only applicable for ‘stepped’ rates where different rates apply for different volumes of usage in a period|
+|» period|[ExternalRef](#common-field-types)|optional|Usage period for which the block rate applies. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
 |timeOfUseRates|[object]|conditional|Array of objects representing time of use rates.  Required if rateBlockUType is timeOfUseRates|
-|» displayName|string|mandatory|Display name of the rate|
-|» description|string|optional|Description of the rate|
-|» rates|[object]|mandatory|Array of controlled load rates in order of usage volume|
-|»» unitPrice|[AmountString](#common-field-types)|mandatory|Unit price of usage per  measure unit (exclusive of GST)|
-|»» measureUnit|string|optional|The measurement unit of rate. Assumed to be KWH if absent|
-|»» volume|number|optional|Volume in kWh that this rate applies to.  Only applicable for ‘stepped’ rates where different rates apply for different volumes of usage in a period|
-|» timeOfUse|[object]|mandatory|Array of times of use|
-|»» days|[string]|mandatory|The days that the rate applies to|
-|»» startTime|[TimeString](#common-field-types)|mandatory|Start of the period|
-|»» endTime|[TimeString](#common-field-types)|mandatory|End of the period|
-|» type|string|mandatory|The type of usage that the rate applies to|
+|» displayName|string|mandatory|Display name of the rate|
+|» description|string|optional|Description of the rate|
+|» rates|[object]|mandatory|Array of controlled load rates in order of usage volume|
+|»» unitPrice|[AmountString](#common-field-types)|mandatory|Unit price of usage per  measure unit (exclusive of GST)|
+|»» measureUnit|string|optional|The measurement unit of rate. Assumed to be KWH if absent|
+|»» volume|number|optional|Volume in kWh that this rate applies to.  Only applicable for ‘stepped’ rates where different rates apply for different volumes of usage in a period|
+|» timeOfUse|[object]|mandatory|Array of times of use|
+|»» days|[string]|mandatory|The days that the rate applies to|
+|»» startTime|[TimeString](#common-field-types)|mandatory|Start of the period|
+|»» endTime|[TimeString](#common-field-types)|mandatory|End of the period|
+|» type|string|mandatory|The type of usage that the rate applies to|
 |demandCharges|[object]|conditional|Array of demand charges.  Required if rateBlockUType is demandCharges|
-|» displayName|string|mandatory|Display name of the charge|
-|» description|string|optional|Description of the charge|
-|» amount|[AmountString](#common-field-types)|mandatory|The charge amount per  measure unit exclusive of GST|
-|» measureUnit|string|optional|The measurement unit of charge amount. Assumed to be KWH if absent|
-|» startTime|[TimeString](#common-field-types)|mandatory|Start of the period|
-|» endTime|[TimeString](#common-field-types)|mandatory|End of the period|
-|» days|[string]|optional|The days that the demand tariff applies to|
-|» minDemand|[AmountString](#common-field-types)|optional|Minimum demand for this demand tariff in kW.  If absent then 0 is assumed|
-|» maxDemand|[AmountString](#common-field-types)|optional|Maximum demand for this demand tariff in kW.  If present, must be higher than the value of the minDemand field|
-|» measurementPeriod|string|mandatory|Application period for the demand tariff|
-|» chargePeriod|string|mandatory|Charge period for the demand tariff|
+|» displayName|string|mandatory|Display name of the charge|
+|» description|string|optional|Description of the charge|
+|» amount|[AmountString](#common-field-types)|mandatory|The charge amount per  measure unit exclusive of GST|
+|» measureUnit|string|optional|The measurement unit of charge amount. Assumed to be KWH if absent|
+|» startTime|[TimeString](#common-field-types)|mandatory|Start of the period|
+|» endTime|[TimeString](#common-field-types)|mandatory|End of the period|
+|» days|[string]|optional|The days that the demand tariff applies to|
+|» minDemand|[AmountString](#common-field-types)|optional|Minimum demand for this demand tariff in kW.  If absent then 0 is assumed|
+|» maxDemand|[AmountString](#common-field-types)|optional|Maximum demand for this demand tariff in kW.  If present, must be higher than the value of the minDemand field|
+|» measurementPeriod|string|mandatory|Application period for the demand tariff|
+|» chargePeriod|string|mandatory|Charge period for the demand tariff|
 
 #### Enumerated Values
 
@@ -8378,7 +8378,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="tocSenergyservicepoint">EnergyServicePoint</h3>
 
-<a id="schemacdr-energy-apienergyservicepoint"></a>
+<a class="schema-anchor" id="schemacdr-energy-apienergyservicepoint"></a>
 
 ```json
 {
@@ -8411,8 +8411,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |validFromDate|[DateString](#common-field-types)|mandatory|The latest start date from which the constituent data sets of this service point became valid|
 |lastUpdateDateTime|[DateTimeString](#common-field-types)|mandatory|The date and time that the information for this service point was modified|
 |consumerProfile|object|optional|none|
-|» classification|string|optional|A code that defines the consumer class as defined in the National Energy Retail Regulations, or in overriding Jurisdictional instruments|
-|» threshold|any|optional|A code that defines the consumption threshold as defined in the National Energy Retail Regulations, or in overriding Jurisdictional instruments. Note the details of enumeration values below: <ul><li>**LOW** - Consumption is less than the ‘lower consumption threshold’ as defined in the National Energy Retail Regulations</li><li>**MEDIUM** - Consumption is equal to or greater than the ‘lower consumption threshold’, but less than the ‘upper consumption threshold’, as defined in the National Energy Retail Regulations</li><li>**HIGH** - Consumption is equal to or greater than the ‘upper consumption threshold’ as defined in the National Energy Retail Regulations</li></ul>|
+|» classification|string|optional|A code that defines the consumer class as defined in the National Energy Retail Regulations, or in overriding Jurisdictional instruments|
+|» threshold|any|optional|A code that defines the consumption threshold as defined in the National Energy Retail Regulations, or in overriding Jurisdictional instruments. Note the details of enumeration values below: <ul><li>**LOW** - Consumption is less than the ‘lower consumption threshold’ as defined in the National Energy Retail Regulations</li><li>**MEDIUM** - Consumption is equal to or greater than the ‘lower consumption threshold’, but less than the ‘upper consumption threshold’, as defined in the National Energy Retail Regulations</li><li>**HIGH** - Consumption is equal to or greater than the ‘upper consumption threshold’ as defined in the National Energy Retail Regulations</li></ul>|
 
 #### Enumerated Values
 
@@ -8447,7 +8447,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="tocSenergyservicepointdetail">EnergyServicePointDetail</h3>
 
-<a id="schemacdr-energy-apienergyservicepointdetail"></a>
+<a class="schema-anchor" id="schemacdr-energy-apienergyservicepointdetail"></a>
 
 ```json
 {
@@ -8555,36 +8555,36 @@ To perform this operation, you must be authenticated and authorised with the fol
 |validFromDate|[DateString](#common-field-types)|mandatory|The latest start date from which the constituent data sets of this service point became valid|
 |lastUpdateDateTime|[DateTimeString](#common-field-types)|mandatory|The date and time that the information for this service point was modified|
 |consumerProfile|object|optional|none|
-|» classification|string|optional|A code that defines the consumer class as defined in the National Energy Retail Regulations, or in overriding Jurisdictional instruments|
-|» threshold|any|optional|A code that defines the consumption threshold as defined in the National Energy Retail Regulations, or in overriding Jurisdictional instruments. Note the details of enumeration values below: <ul><li>**LOW** - Consumption is less than the ‘lower consumption threshold’ as defined in the National Energy Retail Regulations</li><li>**MEDIUM** - Consumption is equal to or greater than the ‘lower consumption threshold’, but less than the ‘upper consumption threshold’, as defined in the National Energy Retail Regulations</li><li>**HIGH** - Consumption is equal to or greater than the ‘upper consumption threshold’ as defined in the National Energy Retail Regulations</li></ul>|
+|» classification|string|optional|A code that defines the consumer class as defined in the National Energy Retail Regulations, or in overriding Jurisdictional instruments|
+|» threshold|any|optional|A code that defines the consumption threshold as defined in the National Energy Retail Regulations, or in overriding Jurisdictional instruments. Note the details of enumeration values below: <ul><li>**LOW** - Consumption is less than the ‘lower consumption threshold’ as defined in the National Energy Retail Regulations</li><li>**MEDIUM** - Consumption is equal to or greater than the ‘lower consumption threshold’, but less than the ‘upper consumption threshold’, as defined in the National Energy Retail Regulations</li><li>**HIGH** - Consumption is equal to or greater than the ‘upper consumption threshold’ as defined in the National Energy Retail Regulations</li></ul>|
 |distributionLossFactor|object|mandatory|none|
-|» code|string|mandatory|A code used to identify data loss factor for the service point values.  Refer to AEMO distribution loss factor documents for each financial year to interpret|
-|» description|string|mandatory|Description of the data loss factor code and value|
-|» lossValue|string|mandatory|The value associated with the loss factor code|
+|» code|string|mandatory|A code used to identify data loss factor for the service point values.  Refer to AEMO distribution loss factor documents for each financial year to interpret|
+|» description|string|mandatory|Description of the data loss factor code and value|
+|» lossValue|string|mandatory|The value associated with the loss factor code|
 |relatedParticipants|[object]|mandatory|none|
-|» party|string|mandatory|The name of the party/organisation related to this service point|
-|» role|string|mandatory|The role performed by this participant in relation to the service point. Note the details of enumeration values below: <ul><li>**FRMP** - Financially Responsible Market Participant</li><li>**LNSP** - Local Network Service Provider or Embedded Network Manager for child connection points</li><li>**DRSP** - wholesale Demand Response and/or market ancillary Service Provider and note that where it is not relevant for a NMI it will not be included</li></ul>|
+|» party|string|mandatory|The name of the party/organisation related to this service point|
+|» role|string|mandatory|The role performed by this participant in relation to the service point. Note the details of enumeration values below: <ul><li>**FRMP** - Financially Responsible Market Participant</li><li>**LNSP** - Local Network Service Provider or Embedded Network Manager for child connection points</li><li>**DRSP** - wholesale Demand Response and/or market ancillary Service Provider and note that where it is not relevant for a NMI it will not be included</li></ul>|
 |location|[CommonPhysicalAddress](#schemacdr-energy-apicommonphysicaladdress)|mandatory|Location of the servicepoint|
 |meters|[object]|optional|The meters associated with the service point. This may be empty where there are no meters physically installed at the service point|
-|» meterId|string|mandatory|The meter ID uniquely identifies a meter for a given service point.  It is unique in the context of the service point.  It is not globally unique|
-|» specifications|object|mandatory|Technical characteristics of the meter|
-|»» status|string|mandatory|A code to denote the status of the meter. Note the details of enumeration values below: <ul><li>**CURRENT** -Applies when a meter is current and not disconnected</li><li>**DISCONNECTED** - Applies when a meter is present but has been remotely disconnected</li></ul>|
-|»» installationType|string|mandatory|The metering Installation type code indicates whether the metering installation has to be manually read. Note the details of enumeration values below: <ul><li>**BASIC** - Accumulation Meter – Type 6</li><li>**COMMS1** - Interval Meter with communications – Type 1</li><li>**COMMS2** - Interval Meter with communications – Type 2</li><li>**COMMS3** - Interval Meter with communications – Type 3</li><li>**COMMS4** - Interval Meter with communications – Type 4</li><li>**COMMS4C** - CT connected metering installation that meets the minimum services specifications</li><li>**COMMS4D** - Whole current metering installation that meets the minimum services specifications</li><li>**MRAM** - Small customer metering installation – Type 4A</li><li>**MRIM** - Manually Read Interval Meter – Type 5</li><li>**UMCP** - Unmetered Supply – Type 7</li><li>**VICAMI** - A relevant metering installation as defined in clause 9.9C of the NER</li><li>**NCONUML** - Non-contestable unmeter load - Introduced as part of Global Settlement</li></ul>|
-|»» manufacturer|string|optional|Free text field to identify the manufacturer of the installed meter|
-|»» model|string|optional|Free text field to identify the meter manufacturer’s designation for the meter model|
-|»» readType|string|optional|Code to denote the method and frequency of Meter Reading. The value is formatted as follows: <ul><li>First Character = Remote (R) or Manual (M)</li><li>Second Character = Mode: T = telephone W = wireless P = powerline I = infra-red G = galvanic V = visual </li><li>Third Character = Frequency of Scheduled Meter Readings: 1 = Twelve times per year 2 = Six times per year 3 = Four times per year D = Daily or weekly</li><li>Optional Fourth Character = to identify what interval length the meter is capable of reading. This includes five, 15 and 30 minute granularity as the following: A – 5 minute B – 15 minute C – 30 minute D – Cannot convert to 5 minute (i.e. due to metering installation de-energised) M - Manually Read Accumulation Meter</li></ul> For example, <ul><li>MV3 = Manual, Visual, Quarterly</li> <li>MV3M = Manual, Visual, Quarterly, Manually Read Accumulation Meter</li> <li>RWDC = Remote, Wireless, Daily, 30 minutes interval</li></ul>|
-|»» nextScheduledReadDate|[DateString](#common-field-types)|optional|This date is the next scheduled meter read date (NSRD) if a manual Meter Reading is required|
-|» registers|[object]|optional|Usage data registers available from the meter. This may be empty where there are no meters physically installed at the service point|
-|»» registerId|string|mandatory|Unique identifier of the register within this service point.  Is not globally unique|
-|»» registerSuffix|string|optional|Register suffix of the meter register where the meter reads are obtained|
-|»» averagedDailyLoad|number|optional|The energy delivered through a connection point or metering point over an extended period normalised to a 'per day' basis (kWh). This value is calculated annually.|
-|»» registerConsumptionType|string|mandatory|Indicates the consumption type of register|
-|»» networkTariffCode|string|optional|The Network Tariff Code is a free text field containing a code supplied and published by the local network service provider|
-|»» unitOfMeasure|string|optional|The unit of measure for data held in this register|
-|»» timeOfDay|string|optional|Code to identify the time validity of register contents|
-|»» multiplier|number|optional|Multiplier required to take a register value and turn it into a value representing billable energy|
-|»» controlledLoad|boolean|optional|Indicates whether the energy recorded by this register is created under a Controlled Load regime|
-|»» consumptionType|string|optional|Actual/Subtractive Indicator. Note the details of enumeration values below: <ul><li>**ACTUAL** implies volume of energy actually metered between two dates</li><li>**CUMULATIVE** indicates a meter reading for a specific date. A second Meter Reading is required to determine the consumption between those two Meter Reading dates</li></ul>|
+|» meterId|string|mandatory|The meter ID uniquely identifies a meter for a given service point.  It is unique in the context of the service point.  It is not globally unique|
+|» specifications|object|mandatory|Technical characteristics of the meter|
+|»» status|string|mandatory|A code to denote the status of the meter. Note the details of enumeration values below: <ul><li>**CURRENT** -Applies when a meter is current and not disconnected</li><li>**DISCONNECTED** - Applies when a meter is present but has been remotely disconnected</li></ul>|
+|»» installationType|string|mandatory|The metering Installation type code indicates whether the metering installation has to be manually read. Note the details of enumeration values below: <ul><li>**BASIC** - Accumulation Meter – Type 6</li><li>**COMMS1** - Interval Meter with communications – Type 1</li><li>**COMMS2** - Interval Meter with communications – Type 2</li><li>**COMMS3** - Interval Meter with communications – Type 3</li><li>**COMMS4** - Interval Meter with communications – Type 4</li><li>**COMMS4C** - CT connected metering installation that meets the minimum services specifications</li><li>**COMMS4D** - Whole current metering installation that meets the minimum services specifications</li><li>**MRAM** - Small customer metering installation – Type 4A</li><li>**MRIM** - Manually Read Interval Meter – Type 5</li><li>**UMCP** - Unmetered Supply – Type 7</li><li>**VICAMI** - A relevant metering installation as defined in clause 9.9C of the NER</li><li>**NCONUML** - Non-contestable unmeter load - Introduced as part of Global Settlement</li></ul>|
+|»» manufacturer|string|optional|Free text field to identify the manufacturer of the installed meter|
+|»» model|string|optional|Free text field to identify the meter manufacturer’s designation for the meter model|
+|»» readType|string|optional|Code to denote the method and frequency of Meter Reading. The value is formatted as follows: <ul><li>First Character = Remote (R) or Manual (M)</li><li>Second Character = Mode: T = telephone W = wireless P = powerline I = infra-red G = galvanic V = visual </li><li>Third Character = Frequency of Scheduled Meter Readings: 1 = Twelve times per year 2 = Six times per year 3 = Four times per year D = Daily or weekly</li><li>Optional Fourth Character = to identify what interval length the meter is capable of reading. This includes five, 15 and 30 minute granularity as the following: A – 5 minute B – 15 minute C – 30 minute D – Cannot convert to 5 minute (i.e. due to metering installation de-energised) M - Manually Read Accumulation Meter</li></ul> For example, <ul><li>MV3 = Manual, Visual, Quarterly</li> <li>MV3M = Manual, Visual, Quarterly, Manually Read Accumulation Meter</li> <li>RWDC = Remote, Wireless, Daily, 30 minutes interval</li></ul>|
+|»» nextScheduledReadDate|[DateString](#common-field-types)|optional|This date is the next scheduled meter read date (NSRD) if a manual Meter Reading is required|
+|» registers|[object]|optional|Usage data registers available from the meter. This may be empty where there are no meters physically installed at the service point|
+|»» registerId|string|mandatory|Unique identifier of the register within this service point.  Is not globally unique|
+|»» registerSuffix|string|optional|Register suffix of the meter register where the meter reads are obtained|
+|»» averagedDailyLoad|number|optional|The energy delivered through a connection point or metering point over an extended period normalised to a 'per day' basis (kWh). This value is calculated annually.|
+|»» registerConsumptionType|string|mandatory|Indicates the consumption type of register|
+|»» networkTariffCode|string|optional|The Network Tariff Code is a free text field containing a code supplied and published by the local network service provider|
+|»» unitOfMeasure|string|optional|The unit of measure for data held in this register|
+|»» timeOfDay|string|optional|Code to identify the time validity of register contents|
+|»» multiplier|number|optional|Multiplier required to take a register value and turn it into a value representing billable energy|
+|»» controlledLoad|boolean|optional|Indicates whether the energy recorded by this register is created under a Controlled Load regime|
+|»» consumptionType|string|optional|Actual/Subtractive Indicator. Note the details of enumeration values below: <ul><li>**ACTUAL** implies volume of energy actually metered between two dates</li><li>**CUMULATIVE** indicates a meter reading for a specific date. A second Meter Reading is required to determine the consumption between those two Meter Reading dates</li></ul>|
 
 #### Enumerated Values
 
@@ -8656,7 +8656,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="tocSenergyusageread">EnergyUsageRead</h3>
 
-<a id="schemacdr-energy-apienergyusageread"></a>
+<a class="schema-anchor" id="schemacdr-energy-apienergyusageread"></a>
 
 ```json
 {
@@ -8705,16 +8705,16 @@ To perform this operation, you must be authenticated and authorised with the fol
 |unitOfMeasure|[ExternalRef](#common-field-types)|optional|Unit of measure of the meter reads. Refer to Appendix B of <a href='https://www.aemo.com.au/-/media/files/stakeholder_consultation/consultations/nem-consultations/2019/5ms-metering-package-2/final-determination/mdff-specification-nem12-nem13-v21-final-determination-clean.pdf?la=en&hash=03FCBA0D60E091DE00F2361AE76206EA'>MDFF Specification NEM12 NEM13 v2.1</a> for a list of possible values.|
 |readUType|string|mandatory|Specify the type of the meter read data|
 |basicRead|object|conditional|Mandatory if readUType is set to basicRead|
-|» quality|string|optional|The quality of the read taken.  If absent then assumed to be ACTUAL|
-|» value|number|mandatory|Meter read value.  If positive then it means consumption, if negative it means export|
+|» quality|string|optional|The quality of the read taken.  If absent then assumed to be ACTUAL|
+|» value|number|mandatory|Meter read value.  If positive then it means consumption, if negative it means export|
 |intervalRead|object|conditional|Mandatory if readUType is set to intervalRead|
-|» readIntervalLength|[PositiveInteger](#common-field-types)|conditional|Read interval length in minutes. Required when interval-reads query parameter equals FULL or MIN_30|
-|» aggregateValue|number|mandatory|The aggregate sum of the interval read values. If positive then it means net consumption, if negative it means net export|
-|» intervalReads|[number]|conditional|Array of Interval read values. If positive then it means consumption, if negative it means export. Required when interval-reads query parameter equals FULL or  MIN_30.<br>Each read value indicates the read for the interval specified by readIntervalLength beginning at midnight of readStartDate (for example 00:00 to 00:30 would be the first reading in a 30 minute Interval)|
-|» readQualities|[object]|conditional|Specifies quality of reads that are not ACTUAL.  For read indices that are not specified, quality is assumed to be ACTUAL. If not present, all quality of all reads are assumed to be actual. Required when interval-reads query parameter equals FULL or MIN_30|
-|»» startInterval|[PositiveInteger](#common-field-types)|mandatory|Start interval for read quality flag. First read begins at 1|
-|»» endInterval|[PositiveInteger](#common-field-types)|mandatory|End interval for read quality flag|
-|»» quality|string|mandatory|The quality of the read taken|
+|» readIntervalLength|[PositiveInteger](#common-field-types)|conditional|Read interval length in minutes. Required when interval-reads query parameter equals FULL or MIN_30|
+|» aggregateValue|number|mandatory|The aggregate sum of the interval read values. If positive then it means net consumption, if negative it means net export|
+|» intervalReads|[number]|conditional|Array of Interval read values. If positive then it means consumption, if negative it means export. Required when interval-reads query parameter equals FULL or  MIN_30.<br>Each read value indicates the read for the interval specified by readIntervalLength beginning at midnight of readStartDate (for example 00:00 to 00:30 would be the first reading in a 30 minute Interval)|
+|» readQualities|[object]|conditional|Specifies quality of reads that are not ACTUAL.  For read indices that are not specified, quality is assumed to be ACTUAL. If not present, all quality of all reads are assumed to be actual. Required when interval-reads query parameter equals FULL or MIN_30|
+|»» startInterval|[PositiveInteger](#common-field-types)|mandatory|Start interval for read quality flag. First read begins at 1|
+|»» endInterval|[PositiveInteger](#common-field-types)|mandatory|End interval for read quality flag|
+|»» quality|string|mandatory|The quality of the read taken|
 
 #### Enumerated Values
 
@@ -8730,7 +8730,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="tocSenergyderrecord">EnergyDerRecord</h3>
 
-<a id="schemacdr-energy-apienergyderrecord"></a>
+<a class="schema-anchor" id="schemacdr-energy-apienergyderrecord"></a>
 
 ```json
 {
@@ -8798,41 +8798,41 @@ To perform this operation, you must be authenticated and authorised with the fol
 |islandableInstallation|[Boolean](#common-field-types)|mandatory|For identification of small generating units designed with the ability to operate in an islanded mode|
 |hasCentralProtectionControl|boolean|optional|For DER installations where NSPs specify the need for additional forms of protection above those inbuilt in an inverter.  If absent then assumed to be false|
 |protectionMode|object|conditional|Required only when the hasCentralProtectionAndControl flag is set to true.  One or more of the object fields will be provided to describe the protection modes in place|
-|» exportLimitKva|number|optional|Maximum amount of power (kVA) that may be exported from a connection point to the grid, as monitored by a control / relay function. An absent value indicates no limit|
-|» underFrequencyProtection|number|optional|Protective function limit in Hz.|
-|» underFrequencyProtectionDelay|number|optional|Trip delay time in seconds.|
-|» overFrequencyProtection|number|optional|Protective function limit in Hz.|
-|» overFrequencyProtectionDelay|number|optional|Trip delay time in seconds.|
-|» underVoltageProtection|number|optional|Protective function limit in V.|
-|» underVoltageProtectionDelay|number|optional|Trip delay time in seconds.|
-|» overVoltageProtection|number|optional|Protective function limit in V.|
-|» overVoltageProtectionDelay|number|optional|Trip delay time in seconds.|
-|» sustainedOverVoltage|number|optional|Sustained over voltage.|
-|» sustainedOverVoltageDelay|number|optional|Sustained Over voltage protection delay in seconds.|
-|» frequencyRateOfChange|number|optional|Rate of change of frequency trip point (Hz/s).|
-|» voltageVectorShift|number|optional|Trip angle in degrees.|
-|» interTripScheme|string|optional|Description of the form of inter-trip (e.g. 'from local substation').|
-|» neutralVoltageDisplacement|number|optional|Trip voltage.|
+|» exportLimitKva|number|optional|Maximum amount of power (kVA) that may be exported from a connection point to the grid, as monitored by a control / relay function. An absent value indicates no limit|
+|» underFrequencyProtection|number|optional|Protective function limit in Hz.|
+|» underFrequencyProtectionDelay|number|optional|Trip delay time in seconds.|
+|» overFrequencyProtection|number|optional|Protective function limit in Hz.|
+|» overFrequencyProtectionDelay|number|optional|Trip delay time in seconds.|
+|» underVoltageProtection|number|optional|Protective function limit in V.|
+|» underVoltageProtectionDelay|number|optional|Trip delay time in seconds.|
+|» overVoltageProtection|number|optional|Protective function limit in V.|
+|» overVoltageProtectionDelay|number|optional|Trip delay time in seconds.|
+|» sustainedOverVoltage|number|optional|Sustained over voltage.|
+|» sustainedOverVoltageDelay|number|optional|Sustained Over voltage protection delay in seconds.|
+|» frequencyRateOfChange|number|optional|Rate of change of frequency trip point (Hz/s).|
+|» voltageVectorShift|number|optional|Trip angle in degrees.|
+|» interTripScheme|string|optional|Description of the form of inter-trip (e.g. 'from local substation').|
+|» neutralVoltageDisplacement|number|optional|Trip voltage.|
 |acConnections|[object]|mandatory|none|
-|» connectionIdentifier|number|mandatory|AC Connection ID as defined in the DER register.  Does not align with CDR ID permanence standards|
-|» count|[PositiveInteger](#common-field-types)|mandatory|Number of AC Connections in the group. For the suite of AC Connections to be considered as a group, all of the AC Connections included must have the same attributes|
-|» equipmentType|string|optional|Indicates whether the DER device is connected via an inverter (and what category of inverter it is) or not (e.g. rotating machine). If absent, assume equipment type to be “OTHER”.|
-|» manufacturerName|string|conditional|The name of the inverter manufacturer. Mandatory if equipmentType is INVERTER|
-|» inverterSeries|string|conditional|The inverter series. Mandatory if equipmentType is INVERTER|
-|» inverterModelNumber|string|conditional|The inverter model number. Mandatory if equipmentType is INVERTER|
-|» commissioningDate|[DateString](#common-field-types)|mandatory|The date that the DER installation is commissioned|
-|» status|string|mandatory|Code used to indicate the status of the Inverter. This will be used to identify if an inverter is active or inactive or decommissioned|
-|» inverterDeviceCapacity|number|conditional|The rated AC output power that is listed in the product specified by the manufacturer. Mandatory if equipmentType is INVERTER. Default is 0 if value not known|
-|» derDevices|[object]|mandatory|none|
-|»» deviceIdentifier|number|mandatory|Unique identifier for a single DER device or a group of DER devices with the same attributes. Does not align with CDR ID permanence standards|
-|»» count|[PositiveInteger](#common-field-types)|mandatory|Number of devices in the group of DER devices|
-|»» manufacturer|string|optional|The name of the device manufacturer. If absent then assumed to be “unknown”|
-|»» modelNumber|string|optional|The model number of the device. If absent then assumed to be “unknown”|
-|»» status|string|optional|Code used to indicate the status of the device. This will be used to identify if an inverter is active or inactive or decommissioned|
-|»» type|string|mandatory|Used to indicate the primary technology used in the DER device|
-|»» subtype|string|optional|Used to indicate the primary technology used in the DER device. This field is also used to record for example the battery chemistry, or the type of PV panel. It is also used to record if a battery is contained in an electric vehicle connected in a vehicle-to-grid arrangement. If absent then assumed to be “other”|
-|»» nominalRatedCapacity|number|mandatory|Maximum output in kVA that is listed in the product specification by the manufacturer. This refers to the capacity of each unit within the device group. Default is 0 if value not known|
-|»» nominalStorageCapacity|number|conditional|Maximum storage capacity in kVAh. This refers to the capacity of each storage module within the device group. Mandatory if type is equal to “STORAGE”. Default is 0 if value not known|
+|» connectionIdentifier|number|mandatory|AC Connection ID as defined in the DER register.  Does not align with CDR ID permanence standards|
+|» count|[PositiveInteger](#common-field-types)|mandatory|Number of AC Connections in the group. For the suite of AC Connections to be considered as a group, all of the AC Connections included must have the same attributes|
+|» equipmentType|string|optional|Indicates whether the DER device is connected via an inverter (and what category of inverter it is) or not (e.g. rotating machine). If absent, assume equipment type to be “OTHER”.|
+|» manufacturerName|string|conditional|The name of the inverter manufacturer. Mandatory if equipmentType is INVERTER|
+|» inverterSeries|string|conditional|The inverter series. Mandatory if equipmentType is INVERTER|
+|» inverterModelNumber|string|conditional|The inverter model number. Mandatory if equipmentType is INVERTER|
+|» commissioningDate|[DateString](#common-field-types)|mandatory|The date that the DER installation is commissioned|
+|» status|string|mandatory|Code used to indicate the status of the Inverter. This will be used to identify if an inverter is active or inactive or decommissioned|
+|» inverterDeviceCapacity|number|conditional|The rated AC output power that is listed in the product specified by the manufacturer. Mandatory if equipmentType is INVERTER. Default is 0 if value not known|
+|» derDevices|[object]|mandatory|none|
+|»» deviceIdentifier|number|mandatory|Unique identifier for a single DER device or a group of DER devices with the same attributes. Does not align with CDR ID permanence standards|
+|»» count|[PositiveInteger](#common-field-types)|mandatory|Number of devices in the group of DER devices|
+|»» manufacturer|string|optional|The name of the device manufacturer. If absent then assumed to be “unknown”|
+|»» modelNumber|string|optional|The model number of the device. If absent then assumed to be “unknown”|
+|»» status|string|optional|Code used to indicate the status of the device. This will be used to identify if an inverter is active or inactive or decommissioned|
+|»» type|string|mandatory|Used to indicate the primary technology used in the DER device|
+|»» subtype|string|optional|Used to indicate the primary technology used in the DER device. This field is also used to record for example the battery chemistry, or the type of PV panel. It is also used to record if a battery is contained in an electric vehicle connected in a vehicle-to-grid arrangement. If absent then assumed to be “other”|
+|»» nominalRatedCapacity|number|mandatory|Maximum output in kVA that is listed in the product specification by the manufacturer. This refers to the capacity of each unit within the device group. Default is 0 if value not known|
+|»» nominalStorageCapacity|number|conditional|Maximum storage capacity in kVAh. This refers to the capacity of each storage module within the device group. Mandatory if type is equal to “STORAGE”. Default is 0 if value not known|
 
 #### Enumerated Values
 
@@ -8857,7 +8857,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="tocSenergyaccountbasev2">EnergyAccountBaseV2</h3>
 
-<a id="schemacdr-energy-apienergyaccountbasev2"></a>
+<a class="schema-anchor" id="schemacdr-energy-apienergyaccountbasev2"></a>
 
 ```json
 {
@@ -8889,7 +8889,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="tocSenergyaccountv2">EnergyAccountV2</h3>
 
-<a id="schemacdr-energy-apienergyaccountv2"></a>
+<a class="schema-anchor" id="schemacdr-energy-apienergyaccountv2"></a>
 
 ```json
 {
@@ -8928,17 +8928,17 @@ To perform this operation, you must be authenticated and authorised with the fol
 |Name|Type|Required|Description|
 |---|---|---|---|
 |*anonymous*|object|mandatory|The array of plans containing service points and associated plan details|
-|» plans|[object]|mandatory|The array of plans containing service points and associated plan details|
-|»» nickname|string|optional|Optional display name for the plan provided by the customer to help differentiate multiple plans|
-|»» servicePointIds|[string]|mandatory|An array of servicePointIds, representing NMIs, that this plan is linked to.  If there are no service points allocated to this plan then an empty array would be expected|
-|»» planOverview|object|conditional|Mandatory if openStatus is OPEN|
-|»»» displayName|string|optional|The name of the plan if one exists|
-|»»» startDate|[DateString](#common-field-types)|mandatory|The start date of the applicability of this plan|
-|»»» endDate|[DateString](#common-field-types)|optional|The end date of the applicability of this plan|
+|» plans|[object]|mandatory|The array of plans containing service points and associated plan details|
+|»» nickname|string|optional|Optional display name for the plan provided by the customer to help differentiate multiple plans|
+|»» servicePointIds|[string]|mandatory|An array of servicePointIds, representing NMIs, that this plan is linked to.  If there are no service points allocated to this plan then an empty array would be expected|
+|»» planOverview|object|conditional|Mandatory if openStatus is OPEN|
+|»»» displayName|string|optional|The name of the plan if one exists|
+|»»» startDate|[DateString](#common-field-types)|mandatory|The start date of the applicability of this plan|
+|»»» endDate|[DateString](#common-field-types)|optional|The end date of the applicability of this plan|
 
 <h3 class="schema-toc" id="tocSenergyaccountdetailv3">EnergyAccountDetailV3</h3>
 
-<a id="schemacdr-energy-apienergyaccountdetailv3"></a>
+<a class="schema-anchor" id="schemacdr-energy-apienergyaccountdetailv3"></a>
 
 ```json
 {
@@ -9403,30 +9403,30 @@ To perform this operation, you must be authenticated and authorised with the fol
 |Name|Type|Required|Description|
 |---|---|---|---|
 |*anonymous*|object|mandatory|The array of plans containing service points and associated plan details|
-|» plans|[object]|mandatory|The array of plans containing service points and associated plan details|
-|»» nickname|string|optional|Optional display name for the plan provided by the customer to help differentiate multiple plans|
-|»» servicePointIds|[string]|mandatory|An array of servicePointIds, representing NMIs, that this account is linked to|
-|»» planOverview|object|conditional|Mandatory if openStatus is OPEN|
-|»»» displayName|string|optional|The name of the plan if one exists|
-|»»» startDate|[DateString](#common-field-types)|mandatory|The start date of the applicability of this plan|
-|»»» endDate|[DateString](#common-field-types)|optional|The end date of the applicability of this plan|
-|»» planDetail|object|conditional|Detail on the plan applicable to this account. Mandatory if openStatus is OPEN|
-|»»» fuelType|string|mandatory|The fuel types covered by the plan|
-|»»» isContingentPlan|boolean|optional|Flag that indicates that the plan is contingent on the customer taking up an alternate fuel plan from the same retailer (for instance, if the fuelType is ELECTRICITY then a GAS plan from the same retailer must be taken up). Has no meaning if the plan has a fuelType of DUAL. If absent the value is assumed to be false|
-|»»» meteringCharges|[object]|optional|Charges for metering included in the plan|
-|»»»» displayName|string|mandatory|Display name of the charge|
-|»»»» description|string|optional|Description of the charge|
-|»»»» minimumValue|[AmountString](#common-field-types)|mandatory|Minimum value of the charge if the charge is a range or the absolute value of the charge if no range is specified|
-|»»»» maximumValue|[AmountString](#common-field-types)|optional|The upper limit of the charge if the charge could occur in a range|
-|»»»» period|[ExternalRef](#common-field-types)|optional|The charges that occur on a schedule indicates the frequency. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
-|»»» gasContract|[EnergyPlanContractV2](#schemacdr-energy-apienergyplancontractv2)|conditional|The details of the terms for the supply of electricity under this plan.  Is mandatory if fuelType is set to GAS or DUAL|
-|»»» electricityContract|[EnergyPlanContractV2](#schemacdr-energy-apienergyplancontractv2)|conditional|The details of the terms for the supply of electricity under this plan.  Is mandatory if fuelType is set to ELECTRICITY or DUAL|
-|»» authorisedContacts|[object]|optional|An array of additional contacts that are authorised to act on this account|
-|»»» firstName|string|optional|For people with single names this field need not be present. The single name should be in the lastName field|
-|»»» lastName|string|mandatory|For people with single names the single name should be in this field|
-|»»» middleNames|[string]|optional|Field is mandatory but array may be empty|
-|»»» prefix|string|optional|Also known as title or salutation. The prefix to the name (e.g. Mr, Mrs, Ms, Miss, Sir, etc)|
-|»»» suffix|string|optional|Used for a trailing suffix to the name (e.g. Jr)|
+|» plans|[object]|mandatory|The array of plans containing service points and associated plan details|
+|»» nickname|string|optional|Optional display name for the plan provided by the customer to help differentiate multiple plans|
+|»» servicePointIds|[string]|mandatory|An array of servicePointIds, representing NMIs, that this account is linked to|
+|»» planOverview|object|conditional|Mandatory if openStatus is OPEN|
+|»»» displayName|string|optional|The name of the plan if one exists|
+|»»» startDate|[DateString](#common-field-types)|mandatory|The start date of the applicability of this plan|
+|»»» endDate|[DateString](#common-field-types)|optional|The end date of the applicability of this plan|
+|»» planDetail|object|conditional|Detail on the plan applicable to this account. Mandatory if openStatus is OPEN|
+|»»» fuelType|string|mandatory|The fuel types covered by the plan|
+|»»» isContingentPlan|boolean|optional|Flag that indicates that the plan is contingent on the customer taking up an alternate fuel plan from the same retailer (for instance, if the fuelType is ELECTRICITY then a GAS plan from the same retailer must be taken up). Has no meaning if the plan has a fuelType of DUAL. If absent the value is assumed to be false|
+|»»» meteringCharges|[object]|optional|Charges for metering included in the plan|
+|»»»» displayName|string|mandatory|Display name of the charge|
+|»»»» description|string|optional|Description of the charge|
+|»»»» minimumValue|[AmountString](#common-field-types)|mandatory|Minimum value of the charge if the charge is a range or the absolute value of the charge if no range is specified|
+|»»»» maximumValue|[AmountString](#common-field-types)|optional|The upper limit of the charge if the charge could occur in a range|
+|»»»» period|[ExternalRef](#common-field-types)|optional|The charges that occur on a schedule indicates the frequency. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
+|»»» gasContract|[EnergyPlanContractV2](#schemacdr-energy-apienergyplancontractv2)|conditional|The details of the terms for the supply of electricity under this plan.  Is mandatory if fuelType is set to GAS or DUAL|
+|»»» electricityContract|[EnergyPlanContractV2](#schemacdr-energy-apienergyplancontractv2)|conditional|The details of the terms for the supply of electricity under this plan.  Is mandatory if fuelType is set to ELECTRICITY or DUAL|
+|»» authorisedContacts|[object]|optional|An array of additional contacts that are authorised to act on this account|
+|»»» firstName|string|optional|For people with single names this field need not be present. The single name should be in the lastName field|
+|»»» lastName|string|mandatory|For people with single names the single name should be in this field|
+|»»» middleNames|[string]|optional|Field is mandatory but array may be empty|
+|»»» prefix|string|optional|Also known as title or salutation. The prefix to the name (e.g. Mr, Mrs, Ms, Miss, Sir, etc)|
+|»»» suffix|string|optional|Used for a trailing suffix to the name (e.g. Jr)|
 
 #### Enumerated Values
 
@@ -9438,7 +9438,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="tocSenergypaymentschedule">EnergyPaymentSchedule</h3>
 
-<a id="schemacdr-energy-apienergypaymentschedule"></a>
+<a class="schema-anchor" id="schemacdr-energy-apienergypaymentschedule"></a>
 
 ```json
 {
@@ -9478,24 +9478,24 @@ To perform this operation, you must be authenticated and authorised with the fol
 |amount|[AmountString](#common-field-types)|optional|Optional payment amount indicating that a constant payment amount is scheduled to be paid (used in bill smoothing scenarios)|
 |paymentScheduleUType|string|mandatory|The type of object present in this response|
 |cardDebit|object|conditional|Represents a regular credit card payment schedule. Mandatory if paymentScheduleUType is set to cardDebit|
-|» cardScheme|string|mandatory|The type of credit card held on file|
-|» paymentFrequency|[ExternalRef](#common-field-types)|mandatory|The frequency that payments will occur.  Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
-|» calculationType|string|mandatory|The mechanism by which the payment amount is calculated.  Explanation of values are as follows:<br/><ul><li>**STATIC** - Indicates a consistent, static amount, per payment</li><li>**BALANCE** - Indicates that the outstanding balance for the account is paid per period</li><li>**CALCULATED** - Indicates that the payment amount is variable and calculated using a pre-defined algorithm</li></ul>|
+|» cardScheme|string|mandatory|The type of credit card held on file|
+|» paymentFrequency|[ExternalRef](#common-field-types)|mandatory|The frequency that payments will occur.  Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
+|» calculationType|string|mandatory|The mechanism by which the payment amount is calculated.  Explanation of values are as follows:<br/><ul><li>**STATIC** - Indicates a consistent, static amount, per payment</li><li>**BALANCE** - Indicates that the outstanding balance for the account is paid per period</li><li>**CALCULATED** - Indicates that the payment amount is variable and calculated using a pre-defined algorithm</li></ul>|
 |directDebit|object|conditional|Represents a regular direct debit from a specified bank account. Mandatory if paymentScheduleUType is set to directDebit|
-|» isTokenised|boolean|optional|Flag indicating that the account details are tokenised, or held in a closed system, and is not accessible through any other channels. False if absent|
-|» bsb|string|conditional|The unmasked BSB for the account to be debited. Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces.  Is required if isTokenised is absent or false|
-|» accountNumber|string|conditional|The unmasked account number for the account to be debited. Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces.  Is required if isTokenised is absent or false|
-|» paymentFrequency|[ExternalRef](#common-field-types)|mandatory|The frequency that payments will occur.  Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
-|» calculationType|string|mandatory|The mechanism by which the payment amount is calculated.  Explanation of values are as follows:<br/><ul><li>**STATIC** - Indicates a consistent, static amount, per payment</li><li>**BALANCE** - Indicates that the outstanding balance for the account is paid per period</li><li>**CALCULATED** - Indicates that the payment amount is variable and calculated using a pre-defined algorithm</li></ul>|
+|» isTokenised|boolean|optional|Flag indicating that the account details are tokenised, or held in a closed system, and is not accessible through any other channels. False if absent|
+|» bsb|string|conditional|The unmasked BSB for the account to be debited. Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces.  Is required if isTokenised is absent or false|
+|» accountNumber|string|conditional|The unmasked account number for the account to be debited. Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces.  Is required if isTokenised is absent or false|
+|» paymentFrequency|[ExternalRef](#common-field-types)|mandatory|The frequency that payments will occur.  Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
+|» calculationType|string|mandatory|The mechanism by which the payment amount is calculated.  Explanation of values are as follows:<br/><ul><li>**STATIC** - Indicates a consistent, static amount, per payment</li><li>**BALANCE** - Indicates that the outstanding balance for the account is paid per period</li><li>**CALCULATED** - Indicates that the payment amount is variable and calculated using a pre-defined algorithm</li></ul>|
 |digitalWallet|object|conditional|Represents a regular payment from a digital wallet. Mandatory if paymentScheduleUType is set to digitalWallet|
-|» name|string|mandatory|The display name of the wallet as given by the customer, else a default value defined by the data holder|
-|» identifier|string|mandatory|The identifier of the digital wallet (dependent on type)|
-|» type|string|mandatory|The type of the digital wallet identifier|
-|» provider|string|mandatory|The provider of the digital wallet|
-|» paymentFrequency|[ExternalRef](#common-field-types)|mandatory|The frequency that payments will occur.  Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
-|» calculationType|string|mandatory|The mechanism by which the payment amount is calculated.  Explanation of values are as follows:<br/><ul><li>**STATIC** - Indicates a consistent, static amount, per payment</li><li>**BALANCE** - Indicates that the outstanding balance for the account is paid per period</li><li>**CALCULATED** - Indicates that the payment amount is variable and calculated using a pre-defined algorithm</li></ul>|
+|» name|string|mandatory|The display name of the wallet as given by the customer, else a default value defined by the data holder|
+|» identifier|string|mandatory|The identifier of the digital wallet (dependent on type)|
+|» type|string|mandatory|The type of the digital wallet identifier|
+|» provider|string|mandatory|The provider of the digital wallet|
+|» paymentFrequency|[ExternalRef](#common-field-types)|mandatory|The frequency that payments will occur.  Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
+|» calculationType|string|mandatory|The mechanism by which the payment amount is calculated.  Explanation of values are as follows:<br/><ul><li>**STATIC** - Indicates a consistent, static amount, per payment</li><li>**BALANCE** - Indicates that the outstanding balance for the account is paid per period</li><li>**CALCULATED** - Indicates that the payment amount is variable and calculated using a pre-defined algorithm</li></ul>|
 |manualPayment|object|conditional|Represents a manual payment schedule where the customer pays in response to a delivered statement. Mandatory if paymentScheduleUType is set to manualPayment|
-|» billFrequency|[ExternalRef](#common-field-types)|mandatory|The frequency with which a bill will be issued.  Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
+|» billFrequency|[ExternalRef](#common-field-types)|mandatory|The frequency with which a bill will be issued.  Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
 
 #### Enumerated Values
 
@@ -9528,7 +9528,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="tocSenergyconcession">EnergyConcession</h3>
 
-<a id="schemacdr-energy-apienergyconcession"></a>
+<a class="schema-anchor" id="schemacdr-energy-apienergyconcession"></a>
 
 ```json
 {
@@ -9577,7 +9577,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="tocSenergyinvoice">EnergyInvoice</h3>
 
-<a id="schemacdr-energy-apienergyinvoice"></a>
+<a class="schema-anchor" id="schemacdr-energy-apienergyinvoice"></a>
 
 ```json
 {
@@ -9647,14 +9647,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 |issueDate|[DateString](#common-field-types)|mandatory|The date that the invoice was actually issued (as opposed to generated or calculated)|
 |dueDate|[DateString](#common-field-types)|optional|The date that the invoice is due to be paid|
 |period|object|conditional|Object containing the start and end date for the period covered by the invoice.  Mandatory if any usage or demand based charges are included in the invoice|
-|» startDate|[DateString](#common-field-types)|mandatory|The start date of the period covered by this invoice|
-|» endDate|[DateString](#common-field-types)|mandatory|The end date of the period covered by this invoice|
+|» startDate|[DateString](#common-field-types)|mandatory|The start date of the period covered by this invoice|
+|» endDate|[DateString](#common-field-types)|mandatory|The end date of the period covered by this invoice|
 |invoiceAmount|[AmountString](#common-field-types)|optional|The net amount due for this invoice regardless of previous balance|
 |gstAmount|[AmountString](#common-field-types)|optional|The total GST amount for this invoice.  If absent then zero is assumed|
 |payOnTimeDiscount|object|optional|A discount for on time payment|
-|» discountAmount|[AmountString](#common-field-types)|mandatory|The amount that will be discounted if the invoice is paid by the date specified|
-|» gstAmount|[AmountString](#common-field-types)|optional|The GST amount that will be discounted if the invoice is paid by the date specified.  If absent then zero is assumed|
-|» date|[DateString](#common-field-types)|mandatory|The date by which the invoice must be paid to receive the pay on time discount|
+|» discountAmount|[AmountString](#common-field-types)|mandatory|The amount that will be discounted if the invoice is paid by the date specified|
+|» gstAmount|[AmountString](#common-field-types)|optional|The GST amount that will be discounted if the invoice is paid by the date specified.  If absent then zero is assumed|
+|» date|[DateString](#common-field-types)|mandatory|The date by which the invoice must be paid to receive the pay on time discount|
 |balanceAtIssue|[AmountString](#common-field-types)|mandatory|The account balance at the time the invoice was issued|
 |servicePoints|[string]|mandatory|Array of service point IDs to which this invoice applies. May be empty if the invoice contains no electricity usage related charges|
 |gas|[EnergyInvoiceGasUsageCharges](#schemacdr-energy-apienergyinvoicegasusagecharges)|optional|Object containing charges and credits related to gas usage|
@@ -9672,7 +9672,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="tocSenergyinvoicegasusagecharges">EnergyInvoiceGasUsageCharges</h3>
 
-<a id="schemacdr-energy-apienergyinvoicegasusagecharges"></a>
+<a class="schema-anchor" id="schemacdr-energy-apienergyinvoicegasusagecharges"></a>
 
 ```json
 {
@@ -9698,13 +9698,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 |---|---|---|---|
 |totalUsageCharges|[AmountString](#common-field-types)|mandatory|The aggregate total of usage charges for the period covered by the invoice (exclusive of GST)|
 |totalGenerationCredits|[AmountString](#common-field-types)|mandatory|The aggregate total of generation credits for the period covered by the invoice (exclusive of GST)|
-|totalOnceOffCharges|[AmountString](#common-field-types)|mandatory|The aggregate total of any once off charges arising from electricity usage for the period covered by the invoice (exclusive of GST)|
-|totalOnceOffDiscounts|[AmountString](#common-field-types)|mandatory|The aggregate total of any once off discounts or credits arising from electricity usage for the period covered by the invoice (exclusive of GST)|
+|totalOnceOffCharges|[AmountString](#common-field-types)|mandatory|The aggregate total of any once off charges arising from gas usage for the period covered by the invoice (exclusive of GST)|
+|totalOnceOffDiscounts|[AmountString](#common-field-types)|mandatory|The aggregate total of any once off discounts or credits arising from gas usage for the period covered by the invoice (exclusive of GST)|
 |otherCharges|[object]|optional|Optional array of charges that may be part of the invoice (for e.g. environmental charges for C&I consumers) (exclusive of GST)|
-|» type|string|optional|Type of charge. Assumed to be other if absent|
-|» amount|[AmountString](#common-field-types)|mandatory|The aggregate total of charges for this item (exclusive of GST)|
-|» description|string|mandatory|A free text description of the type of charge|
-|totalGst|[AmountString](#common-field-types)|optional|The total GST for all electricity usage charges.  If absent then zero is assumed|
+|» type|string|optional|Type of charge. Assumed to be other if absent|
+|» amount|[AmountString](#common-field-types)|mandatory|The aggregate total of charges for this item (exclusive of GST)|
+|» description|string|mandatory|A free text description of the type of charge|
+|totalGst|[AmountString](#common-field-types)|optional|The total GST for all gas usage charges.  If absent then zero is assumed|
 
 #### Enumerated Values
 
@@ -9720,7 +9720,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="tocSenergyinvoiceelectricityusagecharges">EnergyInvoiceElectricityUsageCharges</h3>
 
-<a id="schemacdr-energy-apienergyinvoiceelectricityusagecharges"></a>
+<a class="schema-anchor" id="schemacdr-energy-apienergyinvoiceelectricityusagecharges"></a>
 
 ```json
 {
@@ -9749,9 +9749,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 |totalOnceOffCharges|[AmountString](#common-field-types)|mandatory|The aggregate total of any once off charges arising from electricity usage for the period covered by the invoice (exclusive of GST)|
 |totalOnceOffDiscounts|[AmountString](#common-field-types)|mandatory|The aggregate total of any once off discounts or credits arising from electricity usage for the period covered by the invoice (exclusive of GST)|
 |otherCharges|[object]|optional|Optional array of charges that may be part of the invoice (for e.g. environmental charges for C&I consumers) (exclusive of GST)|
-|» type|string|optional|Type of charge. Assumed to be other if absent|
-|» amount|[AmountString](#common-field-types)|mandatory|The aggregate total of charges for this item (exclusive of GST)|
-|» description|string|mandatory|A free text description of the type of charge|
+|» type|string|optional|Type of charge. Assumed to be other if absent|
+|» amount|[AmountString](#common-field-types)|mandatory|The aggregate total of charges for this item (exclusive of GST)|
+|» description|string|mandatory|A free text description of the type of charge|
 |totalGst|[AmountString](#common-field-types)|optional|The total GST for all electricity usage charges.  If absent then zero is assumed|
 
 #### Enumerated Values
@@ -9768,7 +9768,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="tocSenergyinvoiceaccountcharges">EnergyInvoiceAccountCharges</h3>
 
-<a id="schemacdr-energy-apienergyinvoiceaccountcharges"></a>
+<a class="schema-anchor" id="schemacdr-energy-apienergyinvoiceaccountcharges"></a>
 
 ```json
 {
@@ -9791,7 +9791,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="tocSenergybillingtransactionv2">EnergyBillingTransactionV2</h3>
 
-<a id="schemacdr-energy-apienergybillingtransactionv2"></a>
+<a class="schema-anchor" id="schemacdr-energy-apienergybillingtransactionv2"></a>
 
 ```json
 {
@@ -9907,7 +9907,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="tocSenergybillingusagetransactionv2">EnergyBillingUsageTransactionV2</h3>
 
-<a id="schemacdr-energy-apienergybillingusagetransactionv2"></a>
+<a class="schema-anchor" id="schemacdr-energy-apienergybillingusagetransactionv2"></a>
 
 ```json
 {
@@ -9952,11 +9952,11 @@ To perform this operation, you must be authenticated and authorised with the fol
 |usage|number|mandatory|The usage for the period in measure unit.  A negative value indicates power generated|
 |amount|[AmountString](#common-field-types)|mandatory|The amount charged or credited for this transaction prior to any adjustments being applied.  A negative value indicates a credit|
 |calculationFactors|[object]|optional|Additional calculation factors that inform the transaction|
-|» value|number|mandatory|The value of the calculation factor|
-|» type|string|mandatory|The type of the calculation factor|
+|» value|number|mandatory|The value of the calculation factor|
+|» type|string|mandatory|The type of the calculation factor|
 |adjustments|[object]|optional|Optional array of adjustments arising for this transaction|
-|» amount|[AmountString](#common-field-types)|mandatory|The amount of the adjustment|
-|» description|string|mandatory|A free text description of the adjustment|
+|» amount|[AmountString](#common-field-types)|mandatory|The amount of the adjustment|
+|» description|string|mandatory|A free text description of the adjustment|
 
 #### Enumerated Values
 
@@ -9985,7 +9985,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="tocSenergybillingdemandtransactionv2">EnergyBillingDemandTransactionV2</h3>
 
-<a id="schemacdr-energy-apienergybillingdemandtransactionv2"></a>
+<a class="schema-anchor" id="schemacdr-energy-apienergybillingdemandtransactionv2"></a>
 
 ```json
 {
@@ -10028,11 +10028,11 @@ To perform this operation, you must be authenticated and authorised with the fol
 |rate|number|mandatory|The rate for the demand charge in kVA.  A negative value indicates power generated|
 |amount|[AmountString](#common-field-types)|mandatory|The amount charged or credited for this transaction prior to any adjustments being applied.  A negative value indicates a credit|
 |calculationFactors|[object]|optional|Additional calculation factors that inform the transaction|
-|» value|number|mandatory|The value of the calculation factor|
-|» type|string|mandatory|The type of the calculation factor|
+|» value|number|mandatory|The value of the calculation factor|
+|» type|string|mandatory|The type of the calculation factor|
 |adjustments|[object]|optional|Optional array of adjustments arising for this transaction|
-|» amount|[AmountString](#common-field-types)|mandatory|The amount of the adjustment|
-|» description|string|mandatory|A free text description of the adjustment|
+|» amount|[AmountString](#common-field-types)|mandatory|The amount of the adjustment|
+|» description|string|mandatory|A free text description of the adjustment|
 
 #### Enumerated Values
 
@@ -10054,7 +10054,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="tocSenergybillingonceofftransaction">EnergyBillingOnceOffTransaction</h3>
 
-<a id="schemacdr-energy-apienergybillingonceofftransaction"></a>
+<a class="schema-anchor" id="schemacdr-energy-apienergybillingonceofftransaction"></a>
 
 ```json
 {
@@ -10077,7 +10077,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="tocSenergybillingothertransaction">EnergyBillingOtherTransaction</h3>
 
-<a id="schemacdr-energy-apienergybillingothertransaction"></a>
+<a class="schema-anchor" id="schemacdr-energy-apienergybillingothertransaction"></a>
 
 ```json
 {
@@ -10116,11 +10116,11 @@ To perform this operation, you must be authenticated and authorised with the fol
 |amount|[AmountString](#common-field-types)|mandatory|The amount of the charge|
 |description|string|mandatory|A free text description of the item|
 |calculationFactors|[object]|optional|Additional calculation factors that inform the transaction|
-|» value|number|mandatory|The value of the calculation factor|
-|» type|string|mandatory|The type of the calculation factor|
+|» value|number|mandatory|The value of the calculation factor|
+|» type|string|mandatory|The type of the calculation factor|
 |adjustments|[object]|optional|Optional array of adjustments arising for this transaction|
-|» amount|[AmountString](#common-field-types)|mandatory|The amount of the adjustment|
-|» description|string|mandatory|A free text description of the adjustment|
+|» amount|[AmountString](#common-field-types)|mandatory|The amount of the adjustment|
+|» description|string|mandatory|A free text description of the adjustment|
 
 #### Enumerated Values
 
@@ -10138,7 +10138,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="tocSenergybillingpaymenttransaction">EnergyBillingPaymentTransaction</h3>
 
-<a id="schemacdr-energy-apienergybillingpaymenttransaction"></a>
+<a class="schema-anchor" id="schemacdr-energy-apienergybillingpaymenttransaction"></a>
 
 ```json
 {
@@ -10169,7 +10169,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="tocScommonphysicaladdress">CommonPhysicalAddress</h3>
 
-<a id="schemacdr-energy-apicommonphysicaladdress"></a>
+<a class="schema-anchor" id="schemacdr-energy-apicommonphysicaladdress"></a>
 
 ```json
 {
@@ -10229,7 +10229,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="tocScommonsimpleaddress">CommonSimpleAddress</h3>
 
-<a id="schemacdr-energy-apicommonsimpleaddress"></a>
+<a class="schema-anchor" id="schemacdr-energy-apicommonsimpleaddress"></a>
 
 ```json
 {
@@ -10262,7 +10262,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="tocScommonpafaddress">CommonPAFAddress</h3>
 
-<a id="schemacdr-energy-apicommonpafaddress"></a>
+<a class="schema-anchor" id="schemacdr-energy-apicommonpafaddress"></a>
 
 ```json
 {
@@ -10323,7 +10323,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="tocSrequestservicepointidlist">RequestServicePointIdList</h3>
 
-<a id="schemacdr-energy-apirequestservicepointidlist"></a>
+<a class="schema-anchor" id="schemacdr-energy-apirequestservicepointidlist"></a>
 
 ```json
 {
@@ -10342,12 +10342,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 |Name|Type|Required|Description|
 |---|---|---|---|
 |data|object|mandatory|none|
-|» servicePointIds|[string]|mandatory|Array of specific servicePointIds to obtain data for|
+|» servicePointIds|[string]|mandatory|Array of specific servicePointIds to obtain data for|
 |meta|[Meta](#schemacdr-energy-apimeta)|optional|none|
 
 <h3 class="schema-toc" id="tocSrequestaccountidlist">RequestAccountIdList</h3>
 
-<a id="schemacdr-energy-apirequestaccountidlist"></a>
+<a class="schema-anchor" id="schemacdr-energy-apirequestaccountidlist"></a>
 
 ```json
 {
@@ -10366,12 +10366,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 |Name|Type|Required|Description|
 |---|---|---|---|
 |data|object|mandatory|none|
-|» accountIds|[string]|mandatory|Array of specific accountIds to obtain data for|
+|» accountIds|[string]|mandatory|Array of specific accountIds to obtain data for|
 |meta|[Meta](#schemacdr-energy-apimeta)|optional|none|
 
 <h3 class="schema-toc" id="tocSlinks">Links</h3>
 
-<a id="schemacdr-energy-apilinks"></a>
+<a class="schema-anchor" id="schemacdr-energy-apilinks"></a>
 
 ```json
 {
@@ -10388,7 +10388,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="tocSmeta">Meta</h3>
 
-<a id="schemacdr-energy-apimeta"></a>
+<a class="schema-anchor" id="schemacdr-energy-apimeta"></a>
 
 ```json
 {}
@@ -10401,7 +10401,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="tocSlinkspaginated">LinksPaginated</h3>
 
-<a id="schemacdr-energy-apilinkspaginated"></a>
+<a class="schema-anchor" id="schemacdr-energy-apilinkspaginated"></a>
 
 ```json
 {
@@ -10426,7 +10426,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="tocSmetapaginated">MetaPaginated</h3>
 
-<a id="schemacdr-energy-apimetapaginated"></a>
+<a class="schema-anchor" id="schemacdr-energy-apimetapaginated"></a>
 
 ```json
 {

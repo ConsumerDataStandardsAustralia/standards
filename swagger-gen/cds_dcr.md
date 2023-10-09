@@ -45,6 +45,11 @@ This endpoint does not require CORS.
 
 > Body parameter
 
+```yaml
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+
+```
+
 ###Endpoint Version
 |   |  |
 |---|--|
@@ -62,15 +67,15 @@ This endpoint does not require CORS.
 
 ```json
 {
-  "client_id": "35a5a70b-5b8d-41f4-9cbd-96cfbc15c58a",
-  "client_id_issued_at": 1571808167,
+  "client_id": "2cfefa98-7d4a-4bcb-95da-47063b84d410",
+  "client_id_issued_at": 1574398833,
   "client_name": "Mock Software",
   "client_description": "A mock software product",
   "client_uri": "https://www.mockcompany.com.au",
-  "legal_entity_id": "344F0E809-BDBE-4F8E-BD30-5E6C3CB78D7B",
+  "legal_entity_id": "3B0B0A7B-3E7B-4A2C-9497-E357A71D07C7",
   "legal_entity_name": "Mock Company Pty Ltd.",
   "org_id": "3B0B0A7B-3E7B-4A2C-9497-E357A71D07C8",
-  "org_name": "Mock Company Brand.",
+  "org_name": "Mock Company Brand",
   "redirect_uris": [
     "https://www.mockcompany.com.au/redirects/redirect1",
     "https://www.mockcompany.com.au/redirects/redirect2"
@@ -85,7 +90,9 @@ This endpoint does not require CORS.
   "token_endpoint_auth_method": "private_key_jwt",
   "token_endpoint_auth_signing_alg": "PS256",
   "grant_types": [
-    "client_credentials"
+    "client_credentials",
+    "authorization_code",
+    "refresh_token"
   ],
   "response_types": [
     "code"
@@ -178,15 +185,15 @@ Get a Client Registration for a given Client ID.
 
 ```json
 {
-  "client_id": "35a5a70b-5b8d-41f4-9cbd-96cfbc15c58a",
-  "client_id_issued_at": 1571808167,
+  "client_id": "2cfefa98-7d4a-4bcb-95da-47063b84d410",
+  "client_id_issued_at": 1574398833,
   "client_name": "Mock Software",
   "client_description": "A mock software product",
   "client_uri": "https://www.mockcompany.com.au",
-  "legal_entity_id": "344F0E809-BDBE-4F8E-BD30-5E6C3CB78D7B",
+  "legal_entity_id": "3B0B0A7B-3E7B-4A2C-9497-E357A71D07C7",
   "legal_entity_name": "Mock Company Pty Ltd.",
   "org_id": "3B0B0A7B-3E7B-4A2C-9497-E357A71D07C8",
-  "org_name": "Mock Company Brand.",
+  "org_name": "Mock Company Brand",
   "redirect_uris": [
     "https://www.mockcompany.com.au/redirects/redirect1",
     "https://www.mockcompany.com.au/redirects/redirect2"
@@ -201,7 +208,9 @@ Get a Client Registration for a given Client ID.
   "token_endpoint_auth_method": "private_key_jwt",
   "token_endpoint_auth_signing_alg": "PS256",
   "grant_types": [
-    "client_credentials"
+    "client_credentials",
+    "authorization_code",
+    "refresh_token"
   ],
   "response_types": [
     "code"
@@ -290,6 +299,11 @@ Update a Client Registration for a given Client ID.
 
 > Body parameter
 
+```yaml
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+
+```
+
 ###Endpoint Version
 |   |  |
 |---|--|
@@ -309,15 +323,15 @@ Update a Client Registration for a given Client ID.
 
 ```json
 {
-  "client_id": "35a5a70b-5b8d-41f4-9cbd-96cfbc15c58a",
-  "client_id_issued_at": 1571808167,
+  "client_id": "2cfefa98-7d4a-4bcb-95da-47063b84d410",
+  "client_id_issued_at": 1574398833,
   "client_name": "Mock Software",
   "client_description": "A mock software product",
   "client_uri": "https://www.mockcompany.com.au",
-  "legal_entity_id": "344F0E809-BDBE-4F8E-BD30-5E6C3CB78D7B",
+  "legal_entity_id": "3B0B0A7B-3E7B-4A2C-9497-E357A71D07C7",
   "legal_entity_name": "Mock Company Pty Ltd.",
   "org_id": "3B0B0A7B-3E7B-4A2C-9497-E357A71D07C8",
-  "org_name": "Mock Company Brand.",
+  "org_name": "Mock Company Brand",
   "redirect_uris": [
     "https://www.mockcompany.com.au/redirects/redirect1",
     "https://www.mockcompany.com.au/redirects/redirect2"
@@ -332,7 +346,9 @@ Update a Client Registration for a given Client ID.
   "token_endpoint_auth_method": "private_key_jwt",
   "token_endpoint_auth_signing_alg": "PS256",
   "grant_types": [
-    "client_credentials"
+    "client_credentials",
+    "authorization_code",
+    "refresh_token"
   ],
   "response_types": [
     "code"
@@ -459,7 +475,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="tocSclientregistrationrequest">ClientRegistrationRequest</h3>
 
-<a id="schemacdr-dynamic-client-registration-apiclientregistrationrequest"></a>
+<a class="schema-anchor" id="schemacdr-dynamic-client-registration-apiclientregistrationrequest"></a>
 
 ```json
 "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
@@ -476,19 +492,19 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="tocSregistrationproperties">RegistrationProperties</h3>
 
-<a id="schemacdr-dynamic-client-registration-apiregistrationproperties"></a>
+<a class="schema-anchor" id="schemacdr-dynamic-client-registration-apiregistrationproperties"></a>
 
 ```json
 {
-  "client_id": "35a5a70b-5b8d-41f4-9cbd-96cfbc15c58a",
-  "client_id_issued_at": 1571808167,
+  "client_id": "2cfefa98-7d4a-4bcb-95da-47063b84d410",
+  "client_id_issued_at": 1574398833,
   "client_name": "Mock Software",
   "client_description": "A mock software product",
   "client_uri": "https://www.mockcompany.com.au",
-  "legal_entity_id": "344F0E809-BDBE-4F8E-BD30-5E6C3CB78D7B",
+  "legal_entity_id": "3B0B0A7B-3E7B-4A2C-9497-E357A71D07C7",
   "legal_entity_name": "Mock Company Pty Ltd.",
   "org_id": "3B0B0A7B-3E7B-4A2C-9497-E357A71D07C8",
-  "org_name": "Mock Company Brand.",
+  "org_name": "Mock Company Brand",
   "redirect_uris": [
     "https://www.mockcompany.com.au/redirects/redirect1",
     "https://www.mockcompany.com.au/redirects/redirect2"
@@ -503,7 +519,9 @@ To perform this operation, you must be authenticated and authorised with the fol
   "token_endpoint_auth_method": "private_key_jwt",
   "token_endpoint_auth_signing_alg": "PS256",
   "grant_types": [
-    "client_credentials"
+    "client_credentials",
+    "authorization_code",
+    "refresh_token"
   ],
   "response_types": [
     "code"
@@ -559,7 +577,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |request_object_signing_alg|[Enum](#common-field-types)|mandatory|Algorithm which the ADR expects to sign the request object if a request object will be part of the authorization request sent to the Data Holder|
 |software_statement|string(JWT)|mandatory|The Software Statement Assertion, as defined in CDR standards|
 |software_id|string|mandatory|String representing a unique identifier assigned by the Register and used by registration endpoints to identify the software product to be dynamically registered. </br></br>The "software_id" will remain the same for the lifetime of the product, across multiple updates and versions|
-|software_roles|[Enum](#common-field-types)|optional|String containing a role of the software in the CDR Regime. Initially the only value used with be `data-recipient-software-product`|
+|software_roles|[Enum](#common-field-types)|optional|String containing a role of the software in the CDR Regime. Initially the only value used will be `data-recipient-software-product`|
 |scope|string|mandatory|String containing a space-separated list of scope values that the client can use when requesting access tokens.|
 
 #### Enumerated Values
@@ -589,7 +607,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="tocSclientregistration">ClientRegistration</h3>
 
-<a id="schemacdr-dynamic-client-registration-apiclientregistration"></a>
+<a class="schema-anchor" id="schemacdr-dynamic-client-registration-apiclientregistration"></a>
 
 ```json
 {
@@ -598,15 +616,15 @@ To perform this operation, you must be authenticated and authorised with the fol
   "exp": 2147483646,
   "jti": "37747cd1c10545699f754adf28b73e31",
   "aud": "https://secure.api.dataholder.com/issuer",
-  "client_id": "35a5a70b-5b8d-41f4-9cbd-96cfbc15c58a",
-  "client_id_issued_at": 1571808167,
+  "client_id": "2cfefa98-7d4a-4bcb-95da-47063b84d410",
+  "client_id_issued_at": 1574398833,
   "client_name": "Mock Software",
   "client_description": "A mock software product",
   "client_uri": "https://www.mockcompany.com.au",
-  "legal_entity_id": "344F0E809-BDBE-4F8E-BD30-5E6C3CB78D7B",
+  "legal_entity_id": "3B0B0A7B-3E7B-4A2C-9497-E357A71D07C7",
   "legal_entity_name": "Mock Company Pty Ltd.",
   "org_id": "3B0B0A7B-3E7B-4A2C-9497-E357A71D07C8",
-  "org_name": "Mock Company Brand.",
+  "org_name": "Mock Company Brand",
   "redirect_uris": [
     "https://www.mockcompany.com.au/redirects/redirect1",
     "https://www.mockcompany.com.au/redirects/redirect2"
@@ -621,7 +639,9 @@ To perform this operation, you must be authenticated and authorised with the fol
   "token_endpoint_auth_method": "private_key_jwt",
   "token_endpoint_auth_signing_alg": "PS256",
   "grant_types": [
-    "client_credentials"
+    "client_credentials",
+    "authorization_code",
+    "refresh_token"
   ],
   "response_types": [
     "code"
@@ -649,11 +669,11 @@ To perform this operation, you must be authenticated and authorised with the fol
 |Name|Type|Required|Description|
 |---|---|---|---|
 |*anonymous*|object|mandatory|none|
-|» iss|string|mandatory|Contains the identifier for the ADR Software Product (SoftwareProductId) as defined in the CDR Register|
-|» iat|[ExternalRef](#common-field-types)|mandatory|The time at which the request was issued by the Data Recipient  expressed as seconds since 1970-01-01T00:00:00Z as measured in UTC|
-|» exp|[ExternalRef](#common-field-types)|mandatory|The time at which the request expires expressed as seconds since 1970-01-01T00:00:00Z as measured in UTC|
-|» jti|string|mandatory|Unique identifier for the JWT, used to prevent replay of the token|
-|» aud|[URIString](#common-field-types)|mandatory|Contains the Data Holder issuer value as described in the OIDC Discovery Document|
+|» iss|string|mandatory|Contains the identifier for the ADR Software Product (SoftwareProductId) as defined in the CDR Register|
+|» iat|[ExternalRef](#common-field-types)|mandatory|The time at which the request was issued by the Data Recipient  expressed as seconds since 1970-01-01T00:00:00Z as measured in UTC|
+|» exp|[ExternalRef](#common-field-types)|mandatory|The time at which the request expires expressed as seconds since 1970-01-01T00:00:00Z as measured in UTC|
+|» jti|string|mandatory|Unique identifier for the JWT, used to prevent replay of the token|
+|» aud|[URIString](#common-field-types)|mandatory|Contains the Data Holder issuer value as described in the OIDC Discovery Document|
 
 *and*
 
@@ -663,7 +683,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="tocSregistrationerror">RegistrationError</h3>
 
-<a id="schemacdr-dynamic-client-registration-apiregistrationerror"></a>
+<a class="schema-anchor" id="schemacdr-dynamic-client-registration-apiregistrationerror"></a>
 
 ```json
 {

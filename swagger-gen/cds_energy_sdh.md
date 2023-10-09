@@ -477,7 +477,7 @@ Obtain a list of electricity usage data from a particular service point
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyUsageListResponse](#schemacdr-energy-secondary-data-holder-apienergyusagelistresponse)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-secondary-data-holder-apiresponseerrorlistv2)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-secondary-data-holder-apiresponseerrorlistv2)|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[404 - Unavailable Service Point](#error-404-unavailable-service-point)</li><li>[404 - Invalid Service Point](#error-404-invalid-service-point)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-secondary-data-holder-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-secondary-data-holder-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-secondary-data-holder-apiresponseerrorlistv2)|
@@ -657,7 +657,7 @@ Obtain the electricity usage data for a specific set of service points
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyUsageListResponse](#schemacdr-energy-secondary-data-holder-apienergyusagelistresponse)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-secondary-data-holder-apiresponseerrorlistv2)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-secondary-data-holder-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-secondary-data-holder-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li><li>[422 - Unavailable Service Point](#error-422-unavailable-service-point)</li><li>[422 - Invalid Service Point](#error-422-invalid-service-point)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-secondary-data-holder-apiresponseerrorlistv2)|
 
@@ -1028,7 +1028,7 @@ This operation may only be called by an Energy Retailer using the information se
 
 <h3 class="schema-toc" id="tocSenergyservicepointlistresponse">EnergyServicePointListResponse</h3>
 
-<a id="schemacdr-energy-secondary-data-holder-apienergyservicepointlistresponse"></a>
+<a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apienergyservicepointlistresponse"></a>
 
 ```json
 {
@@ -1070,13 +1070,13 @@ This operation may only be called by an Energy Retailer using the information se
 |Name|Type|Required|Description|
 |---|---|---|---|
 |data|object|mandatory|none|
-|» servicePoints|[[EnergyServicePoint](#schemacdr-energy-secondary-data-holder-apienergyservicepoint)]|mandatory|none|
+|» servicePoints|[[EnergyServicePoint](#schemacdr-energy-secondary-data-holder-apienergyservicepoint)]|mandatory|none|
 |links|[LinksPaginated](#schemacdr-energy-secondary-data-holder-apilinkspaginated)|mandatory|none|
 |meta|[MetaPaginated](#schemacdr-energy-secondary-data-holder-apimetapaginated)|mandatory|none|
 
 <h3 class="schema-toc" id="tocSenergyservicepointdetailresponse">EnergyServicePointDetailResponse</h3>
 
-<a id="schemacdr-energy-secondary-data-holder-apienergyservicepointdetailresponse"></a>
+<a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apienergyservicepointdetailresponse"></a>
 
 ```json
 {
@@ -1187,7 +1187,7 @@ This operation may only be called by an Energy Retailer using the information se
 
 <h3 class="schema-toc" id="tocSenergyusagelistresponse">EnergyUsageListResponse</h3>
 
-<a id="schemacdr-energy-secondary-data-holder-apienergyusagelistresponse"></a>
+<a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apienergyusagelistresponse"></a>
 
 ```json
 {
@@ -1244,13 +1244,13 @@ This operation may only be called by an Energy Retailer using the information se
 |Name|Type|Required|Description|
 |---|---|---|---|
 |data|object|mandatory|none|
-|» reads|[[EnergyUsageRead](#schemacdr-energy-secondary-data-holder-apienergyusageread)]|mandatory|Array of meter reads sorted by NMI in ascending order followed by readStartDate in descending order|
+|» reads|[[EnergyUsageRead](#schemacdr-energy-secondary-data-holder-apienergyusageread)]|mandatory|Array of meter reads sorted by NMI in ascending order followed by readStartDate in descending order|
 |links|[LinksPaginated](#schemacdr-energy-secondary-data-holder-apilinkspaginated)|mandatory|none|
 |meta|[MetaPaginated](#schemacdr-energy-secondary-data-holder-apimetapaginated)|mandatory|none|
 
 <h3 class="schema-toc" id="tocSenergyderlistresponse">EnergyDerListResponse</h3>
 
-<a id="schemacdr-energy-secondary-data-holder-apienergyderlistresponse"></a>
+<a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apienergyderlistresponse"></a>
 
 ```json
 {
@@ -1329,13 +1329,13 @@ This operation may only be called by an Energy Retailer using the information se
 |Name|Type|Required|Description|
 |---|---|---|---|
 |data|object|mandatory|none|
-|» derRecords|[[EnergyDerRecord](#schemacdr-energy-secondary-data-holder-apienergyderrecord)]|mandatory|Array of meter reads|
+|» derRecords|[[EnergyDerRecord](#schemacdr-energy-secondary-data-holder-apienergyderrecord)]|mandatory|Array of meter reads|
 |links|[LinksPaginated](#schemacdr-energy-secondary-data-holder-apilinkspaginated)|mandatory|none|
 |meta|[MetaPaginated](#schemacdr-energy-secondary-data-holder-apimetapaginated)|mandatory|none|
 
 <h3 class="schema-toc" id="tocSenergyderdetailresponse">EnergyDerDetailResponse</h3>
 
-<a id="schemacdr-energy-secondary-data-holder-apienergyderdetailresponse"></a>
+<a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apienergyderdetailresponse"></a>
 
 ```json
 {
@@ -1408,7 +1408,7 @@ This operation may only be called by an Energy Retailer using the information se
 
 <h3 class="schema-toc" id="tocSresponseerrorlistv2">ResponseErrorListV2</h3>
 
-<a id="schemacdr-energy-secondary-data-holder-apiresponseerrorlistv2"></a>
+<a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apiresponseerrorlistv2"></a>
 
 ```json
 {
@@ -1431,15 +1431,15 @@ This operation may only be called by an Energy Retailer using the information se
 |Name|Type|Required|Description|
 |---|---|---|---|
 |errors|[object]|mandatory|none|
-|» code|string|mandatory|The code of the error encountered. Where the error is specific to the respondent, an application-specific error code, expressed as a string value. If the error is application-specific, the URN code that the specific error extends must be provided in the meta object. Otherwise, the value is the error code URN.|
-|» title|string|mandatory|A short, human-readable summary of the problem that MUST NOT change from occurrence to occurrence of the problem represented by the error code.|
-|» detail|string|mandatory|A human-readable explanation specific to this occurrence of the problem.|
-|» meta|object|optional|Additional data for customised error codes|
-|»» urn|string|conditional|The CDR error code URN which the application-specific error code extends. Mandatory if the error `code` is an application-specific error rather than a standardised error code.|
+|» code|string|mandatory|The code of the error encountered. Where the error is specific to the respondent, an application-specific error code, expressed as a string value. If the error is application-specific, the URN code that the specific error extends must be provided in the meta object. Otherwise, the value is the error code URN.|
+|» title|string|mandatory|A short, human-readable summary of the problem that MUST NOT change from occurrence to occurrence of the problem represented by the error code.|
+|» detail|string|mandatory|A human-readable explanation specific to this occurrence of the problem.|
+|» meta|object|optional|Additional data for customised error codes|
+|»» urn|string|conditional|The CDR error code URN which the application-specific error code extends. Mandatory if the error `code` is an application-specific error rather than a standardised error code.|
 
 <h3 class="schema-toc" id="tocSenergyservicepoint">EnergyServicePoint</h3>
 
-<a id="schemacdr-energy-secondary-data-holder-apienergyservicepoint"></a>
+<a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apienergyservicepoint"></a>
 
 ```json
 {
@@ -1472,8 +1472,8 @@ This operation may only be called by an Energy Retailer using the information se
 |validFromDate|[DateString](#common-field-types)|mandatory|The latest start date from which the constituent data sets of this service point became valid|
 |lastUpdateDateTime|[DateTimeString](#common-field-types)|mandatory|The date and time that the information for this service point was modified|
 |consumerProfile|object|optional|none|
-|» classification|string|optional|A code that defines the consumer class as defined in the National Energy Retail Regulations, or in overriding Jurisdictional instruments|
-|» threshold|any|optional|A code that defines the consumption threshold as defined in the National Energy Retail Regulations, or in overriding Jurisdictional instruments. Note the details of enumeration values below: <ul><li>**LOW** - Consumption is less than the ‘lower consumption threshold’ as defined in the National Energy Retail Regulations</li><li>**MEDIUM** - Consumption is equal to or greater than the ‘lower consumption threshold’, but less than the ‘upper consumption threshold’, as defined in the National Energy Retail Regulations</li><li>**HIGH** - Consumption is equal to or greater than the ‘upper consumption threshold’ as defined in the National Energy Retail Regulations</li></ul>|
+|» classification|string|optional|A code that defines the consumer class as defined in the National Energy Retail Regulations, or in overriding Jurisdictional instruments|
+|» threshold|any|optional|A code that defines the consumption threshold as defined in the National Energy Retail Regulations, or in overriding Jurisdictional instruments. Note the details of enumeration values below: <ul><li>**LOW** - Consumption is less than the ‘lower consumption threshold’ as defined in the National Energy Retail Regulations</li><li>**MEDIUM** - Consumption is equal to or greater than the ‘lower consumption threshold’, but less than the ‘upper consumption threshold’, as defined in the National Energy Retail Regulations</li><li>**HIGH** - Consumption is equal to or greater than the ‘upper consumption threshold’ as defined in the National Energy Retail Regulations</li></ul>|
 
 #### Enumerated Values
 
@@ -1508,7 +1508,7 @@ This operation may only be called by an Energy Retailer using the information se
 
 <h3 class="schema-toc" id="tocSenergyservicepointdetail">EnergyServicePointDetail</h3>
 
-<a id="schemacdr-energy-secondary-data-holder-apienergyservicepointdetail"></a>
+<a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apienergyservicepointdetail"></a>
 
 ```json
 {
@@ -1616,36 +1616,36 @@ This operation may only be called by an Energy Retailer using the information se
 |validFromDate|[DateString](#common-field-types)|mandatory|The latest start date from which the constituent data sets of this service point became valid|
 |lastUpdateDateTime|[DateTimeString](#common-field-types)|mandatory|The date and time that the information for this service point was modified|
 |consumerProfile|object|optional|none|
-|» classification|string|optional|A code that defines the consumer class as defined in the National Energy Retail Regulations, or in overriding Jurisdictional instruments|
-|» threshold|any|optional|A code that defines the consumption threshold as defined in the National Energy Retail Regulations, or in overriding Jurisdictional instruments. Note the details of enumeration values below: <ul><li>**LOW** - Consumption is less than the ‘lower consumption threshold’ as defined in the National Energy Retail Regulations</li><li>**MEDIUM** - Consumption is equal to or greater than the ‘lower consumption threshold’, but less than the ‘upper consumption threshold’, as defined in the National Energy Retail Regulations</li><li>**HIGH** - Consumption is equal to or greater than the ‘upper consumption threshold’ as defined in the National Energy Retail Regulations</li></ul>|
+|» classification|string|optional|A code that defines the consumer class as defined in the National Energy Retail Regulations, or in overriding Jurisdictional instruments|
+|» threshold|any|optional|A code that defines the consumption threshold as defined in the National Energy Retail Regulations, or in overriding Jurisdictional instruments. Note the details of enumeration values below: <ul><li>**LOW** - Consumption is less than the ‘lower consumption threshold’ as defined in the National Energy Retail Regulations</li><li>**MEDIUM** - Consumption is equal to or greater than the ‘lower consumption threshold’, but less than the ‘upper consumption threshold’, as defined in the National Energy Retail Regulations</li><li>**HIGH** - Consumption is equal to or greater than the ‘upper consumption threshold’ as defined in the National Energy Retail Regulations</li></ul>|
 |distributionLossFactor|object|mandatory|none|
-|» code|string|mandatory|A code used to identify data loss factor for the service point values.  Refer to AEMO distribution loss factor documents for each financial year to interpret|
-|» description|string|mandatory|Description of the data loss factor code and value|
-|» lossValue|string|mandatory|The value associated with the loss factor code|
+|» code|string|mandatory|A code used to identify data loss factor for the service point values.  Refer to AEMO distribution loss factor documents for each financial year to interpret|
+|» description|string|mandatory|Description of the data loss factor code and value|
+|» lossValue|string|mandatory|The value associated with the loss factor code|
 |relatedParticipants|[object]|mandatory|none|
-|» party|string|mandatory|The name of the party/organisation related to this service point|
-|» role|string|mandatory|The role performed by this participant in relation to the service point. Note the details of enumeration values below: <ul><li>**FRMP** - Financially Responsible Market Participant</li><li>**LNSP** - Local Network Service Provider or Embedded Network Manager for child connection points</li><li>**DRSP** - wholesale Demand Response and/or market ancillary Service Provider and note that where it is not relevant for a NMI it will not be included</li></ul>|
+|» party|string|mandatory|The name of the party/organisation related to this service point|
+|» role|string|mandatory|The role performed by this participant in relation to the service point. Note the details of enumeration values below: <ul><li>**FRMP** - Financially Responsible Market Participant</li><li>**LNSP** - Local Network Service Provider or Embedded Network Manager for child connection points</li><li>**DRSP** - wholesale Demand Response and/or market ancillary Service Provider and note that where it is not relevant for a NMI it will not be included</li></ul>|
 |location|[CommonPhysicalAddress](#schemacdr-energy-secondary-data-holder-apicommonphysicaladdress)|mandatory|Location of the servicepoint|
 |meters|[object]|optional|The meters associated with the service point. This may be empty where there are no meters physically installed at the service point|
-|» meterId|string|mandatory|The meter ID uniquely identifies a meter for a given service point.  It is unique in the context of the service point.  It is not globally unique|
-|» specifications|object|mandatory|Technical characteristics of the meter|
-|»» status|string|mandatory|A code to denote the status of the meter. Note the details of enumeration values below: <ul><li>**CURRENT** -Applies when a meter is current and not disconnected</li><li>**DISCONNECTED** - Applies when a meter is present but has been remotely disconnected</li></ul>|
-|»» installationType|string|mandatory|The metering Installation type code indicates whether the metering installation has to be manually read. Note the details of enumeration values below: <ul><li>**BASIC** - Accumulation Meter – Type 6</li><li>**COMMS1** - Interval Meter with communications – Type 1</li><li>**COMMS2** - Interval Meter with communications – Type 2</li><li>**COMMS3** - Interval Meter with communications – Type 3</li><li>**COMMS4** - Interval Meter with communications – Type 4</li><li>**COMMS4C** - CT connected metering installation that meets the minimum services specifications</li><li>**COMMS4D** - Whole current metering installation that meets the minimum services specifications</li><li>**MRAM** - Small customer metering installation – Type 4A</li><li>**MRIM** - Manually Read Interval Meter – Type 5</li><li>**UMCP** - Unmetered Supply – Type 7</li><li>**VICAMI** - A relevant metering installation as defined in clause 9.9C of the NER</li><li>**NCONUML** - Non-contestable unmeter load - Introduced as part of Global Settlement</li></ul>|
-|»» manufacturer|string|optional|Free text field to identify the manufacturer of the installed meter|
-|»» model|string|optional|Free text field to identify the meter manufacturer’s designation for the meter model|
-|»» readType|string|optional|Code to denote the method and frequency of Meter Reading. The value is formatted as follows: <ul><li>First Character = Remote (R) or Manual (M)</li><li>Second Character = Mode: T = telephone W = wireless P = powerline I = infra-red G = galvanic V = visual </li><li>Third Character = Frequency of Scheduled Meter Readings: 1 = Twelve times per year 2 = Six times per year 3 = Four times per year D = Daily or weekly</li><li>Optional Fourth Character = to identify what interval length the meter is capable of reading. This includes five, 15 and 30 minute granularity as the following: A – 5 minute B – 15 minute C – 30 minute D – Cannot convert to 5 minute (i.e. due to metering installation de-energised) M - Manually Read Accumulation Meter</li></ul> For example, <ul><li>MV3 = Manual, Visual, Quarterly</li> <li>MV3M = Manual, Visual, Quarterly, Manually Read Accumulation Meter</li> <li>RWDC = Remote, Wireless, Daily, 30 minutes interval</li></ul>|
-|»» nextScheduledReadDate|[DateString](#common-field-types)|optional|This date is the next scheduled meter read date (NSRD) if a manual Meter Reading is required|
-|» registers|[object]|optional|Usage data registers available from the meter. This may be empty where there are no meters physically installed at the service point|
-|»» registerId|string|mandatory|Unique identifier of the register within this service point.  Is not globally unique|
-|»» registerSuffix|string|optional|Register suffix of the meter register where the meter reads are obtained|
-|»» averagedDailyLoad|number|optional|The energy delivered through a connection point or metering point over an extended period normalised to a 'per day' basis (kWh). This value is calculated annually.|
-|»» registerConsumptionType|string|mandatory|Indicates the consumption type of register|
-|»» networkTariffCode|string|optional|The Network Tariff Code is a free text field containing a code supplied and published by the local network service provider|
-|»» unitOfMeasure|string|optional|The unit of measure for data held in this register|
-|»» timeOfDay|string|optional|Code to identify the time validity of register contents|
-|»» multiplier|number|optional|Multiplier required to take a register value and turn it into a value representing billable energy|
-|»» controlledLoad|boolean|optional|Indicates whether the energy recorded by this register is created under a Controlled Load regime|
-|»» consumptionType|string|optional|Actual/Subtractive Indicator. Note the details of enumeration values below: <ul><li>**ACTUAL** implies volume of energy actually metered between two dates</li><li>**CUMULATIVE** indicates a meter reading for a specific date. A second Meter Reading is required to determine the consumption between those two Meter Reading dates</li></ul>|
+|» meterId|string|mandatory|The meter ID uniquely identifies a meter for a given service point.  It is unique in the context of the service point.  It is not globally unique|
+|» specifications|object|mandatory|Technical characteristics of the meter|
+|»» status|string|mandatory|A code to denote the status of the meter. Note the details of enumeration values below: <ul><li>**CURRENT** -Applies when a meter is current and not disconnected</li><li>**DISCONNECTED** - Applies when a meter is present but has been remotely disconnected</li></ul>|
+|»» installationType|string|mandatory|The metering Installation type code indicates whether the metering installation has to be manually read. Note the details of enumeration values below: <ul><li>**BASIC** - Accumulation Meter – Type 6</li><li>**COMMS1** - Interval Meter with communications – Type 1</li><li>**COMMS2** - Interval Meter with communications – Type 2</li><li>**COMMS3** - Interval Meter with communications – Type 3</li><li>**COMMS4** - Interval Meter with communications – Type 4</li><li>**COMMS4C** - CT connected metering installation that meets the minimum services specifications</li><li>**COMMS4D** - Whole current metering installation that meets the minimum services specifications</li><li>**MRAM** - Small customer metering installation – Type 4A</li><li>**MRIM** - Manually Read Interval Meter – Type 5</li><li>**UMCP** - Unmetered Supply – Type 7</li><li>**VICAMI** - A relevant metering installation as defined in clause 9.9C of the NER</li><li>**NCONUML** - Non-contestable unmeter load - Introduced as part of Global Settlement</li></ul>|
+|»» manufacturer|string|optional|Free text field to identify the manufacturer of the installed meter|
+|»» model|string|optional|Free text field to identify the meter manufacturer’s designation for the meter model|
+|»» readType|string|optional|Code to denote the method and frequency of Meter Reading. The value is formatted as follows: <ul><li>First Character = Remote (R) or Manual (M)</li><li>Second Character = Mode: T = telephone W = wireless P = powerline I = infra-red G = galvanic V = visual </li><li>Third Character = Frequency of Scheduled Meter Readings: 1 = Twelve times per year 2 = Six times per year 3 = Four times per year D = Daily or weekly</li><li>Optional Fourth Character = to identify what interval length the meter is capable of reading. This includes five, 15 and 30 minute granularity as the following: A – 5 minute B – 15 minute C – 30 minute D – Cannot convert to 5 minute (i.e. due to metering installation de-energised) M - Manually Read Accumulation Meter</li></ul> For example, <ul><li>MV3 = Manual, Visual, Quarterly</li> <li>MV3M = Manual, Visual, Quarterly, Manually Read Accumulation Meter</li> <li>RWDC = Remote, Wireless, Daily, 30 minutes interval</li></ul>|
+|»» nextScheduledReadDate|[DateString](#common-field-types)|optional|This date is the next scheduled meter read date (NSRD) if a manual Meter Reading is required|
+|» registers|[object]|optional|Usage data registers available from the meter. This may be empty where there are no meters physically installed at the service point|
+|»» registerId|string|mandatory|Unique identifier of the register within this service point.  Is not globally unique|
+|»» registerSuffix|string|optional|Register suffix of the meter register where the meter reads are obtained|
+|»» averagedDailyLoad|number|optional|The energy delivered through a connection point or metering point over an extended period normalised to a 'per day' basis (kWh). This value is calculated annually.|
+|»» registerConsumptionType|string|mandatory|Indicates the consumption type of register|
+|»» networkTariffCode|string|optional|The Network Tariff Code is a free text field containing a code supplied and published by the local network service provider|
+|»» unitOfMeasure|string|optional|The unit of measure for data held in this register|
+|»» timeOfDay|string|optional|Code to identify the time validity of register contents|
+|»» multiplier|number|optional|Multiplier required to take a register value and turn it into a value representing billable energy|
+|»» controlledLoad|boolean|optional|Indicates whether the energy recorded by this register is created under a Controlled Load regime|
+|»» consumptionType|string|optional|Actual/Subtractive Indicator. Note the details of enumeration values below: <ul><li>**ACTUAL** implies volume of energy actually metered between two dates</li><li>**CUMULATIVE** indicates a meter reading for a specific date. A second Meter Reading is required to determine the consumption between those two Meter Reading dates</li></ul>|
 
 #### Enumerated Values
 
@@ -1717,7 +1717,7 @@ This operation may only be called by an Energy Retailer using the information se
 
 <h3 class="schema-toc" id="tocSenergyusageread">EnergyUsageRead</h3>
 
-<a id="schemacdr-energy-secondary-data-holder-apienergyusageread"></a>
+<a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apienergyusageread"></a>
 
 ```json
 {
@@ -1766,16 +1766,16 @@ This operation may only be called by an Energy Retailer using the information se
 |unitOfMeasure|[ExternalRef](#common-field-types)|optional|Unit of measure of the meter reads. Refer to Appendix B of <a href='https://www.aemo.com.au/-/media/files/stakeholder_consultation/consultations/nem-consultations/2019/5ms-metering-package-2/final-determination/mdff-specification-nem12-nem13-v21-final-determination-clean.pdf?la=en&hash=03FCBA0D60E091DE00F2361AE76206EA'>MDFF Specification NEM12 NEM13 v2.1</a> for a list of possible values|
 |readUType|string|mandatory|Specify the type of the meter read data|
 |basicRead|object|conditional|Mandatory if readUType is set to basicRead|
-|» quality|string|optional|The quality of the read taken.  If absent then assumed to be ACTUAL|
-|» value|number|mandatory|Meter read value.  If positive then it means consumption, if negative it means export|
+|» quality|string|optional|The quality of the read taken.  If absent then assumed to be ACTUAL|
+|» value|number|mandatory|Meter read value.  If positive then it means consumption, if negative it means export|
 |intervalRead|object|conditional|Mandatory if readUType is set to intervalRead|
-|» readIntervalLength|[PositiveInteger](#common-field-types)|conditional|Read interval length in minutes. Required when interval-reads query parameter equals FULL or MIN_30|
-|» aggregateValue|number|mandatory|The aggregate sum of the interval read values. If positive then it means net consumption, if negative it means net export|
-|» intervalReads|[number]|conditional|Array of Interval read values. If positive then it means consumption, if negative it means export. Required when interval-reads query parameter equals FULL or  MIN_30.<br>Each read value indicates the read for the interval specified by readIntervalLength beginning at midnight of readStartDate (for example 00:00 to 00:30 would be the first reading in a 30 minute Interval)|
-|» readQualities|[object]|conditional|Specifies quality of reads that are not ACTUAL.  For read indices that are not specified, quality is assumed to be ACTUAL. If not present, all quality of all reads are assumed to be actual. Required when interval-reads query parameter equals FULL or MIN_30|
-|»» startInterval|[PositiveInteger](#common-field-types)|mandatory|Start interval for read quality flag. First read begins at 1|
-|»» endInterval|[PositiveInteger](#common-field-types)|mandatory|End interval for read quality flag|
-|»» quality|string|mandatory|The quality of the read taken|
+|» readIntervalLength|[PositiveInteger](#common-field-types)|conditional|Read interval length in minutes. Required when interval-reads query parameter equals FULL or MIN_30|
+|» aggregateValue|number|mandatory|The aggregate sum of the interval read values. If positive then it means net consumption, if negative it means net export|
+|» intervalReads|[number]|conditional|Array of Interval read values. If positive then it means consumption, if negative it means export. Required when interval-reads query parameter equals FULL or  MIN_30.<br>Each read value indicates the read for the interval specified by readIntervalLength beginning at midnight of readStartDate (for example 00:00 to 00:30 would be the first reading in a 30 minute Interval)|
+|» readQualities|[object]|conditional|Specifies quality of reads that are not ACTUAL.  For read indices that are not specified, quality is assumed to be ACTUAL. If not present, all quality of all reads are assumed to be actual. Required when interval-reads query parameter equals FULL or MIN_30|
+|»» startInterval|[PositiveInteger](#common-field-types)|mandatory|Start interval for read quality flag. First read begins at 1|
+|»» endInterval|[PositiveInteger](#common-field-types)|mandatory|End interval for read quality flag|
+|»» quality|string|mandatory|The quality of the read taken|
 
 #### Enumerated Values
 
@@ -1791,7 +1791,7 @@ This operation may only be called by an Energy Retailer using the information se
 
 <h3 class="schema-toc" id="tocSenergyderrecord">EnergyDerRecord</h3>
 
-<a id="schemacdr-energy-secondary-data-holder-apienergyderrecord"></a>
+<a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apienergyderrecord"></a>
 
 ```json
 {
@@ -1859,41 +1859,41 @@ This operation may only be called by an Energy Retailer using the information se
 |islandableInstallation|[Boolean](#common-field-types)|mandatory|For identification of small generating units designed with the ability to operate in an islanded mode|
 |hasCentralProtectionControl|boolean|optional|For DER installations where NSPs specify the need for additional forms of protection above those inbuilt in an inverter.  If absent then assumed to be false|
 |protectionMode|object|conditional|Required only when the hasCentralProtectionAndControl flag is set to true.  One or more of the object fields will be provided to describe the protection modes in place|
-|» exportLimitKva|number|optional|Maximum amount of power (kVA) that may be exported from a connection point to the grid, as monitored by a control / relay function. An absent value indicates no limit|
-|» underFrequencyProtection|number|optional|Protective function limit in Hz.|
-|» underFrequencyProtectionDelay|number|optional|Trip delay time in seconds.|
-|» overFrequencyProtection|number|optional|Protective function limit in Hz.|
-|» overFrequencyProtectionDelay|number|optional|Trip delay time in seconds.|
-|» underVoltageProtection|number|optional|Protective function limit in V.|
-|» underVoltageProtectionDelay|number|optional|Trip delay time in seconds.|
-|» overVoltageProtection|number|optional|Protective function limit in V.|
-|» overVoltageProtectionDelay|number|optional|Trip delay time in seconds.|
-|» sustainedOverVoltage|number|optional|Sustained over voltage.|
-|» sustainedOverVoltageDelay|number|optional|Sustained Over voltage protection delay in seconds.|
-|» frequencyRateOfChange|number|optional|Rate of change of frequency trip point (Hz/s).|
-|» voltageVectorShift|number|optional|Trip angle in degrees.|
-|» interTripScheme|string|optional|Description of the form of inter-trip (e.g. 'from local substation').|
-|» neutralVoltageDisplacement|number|optional|Trip voltage.|
+|» exportLimitKva|number|optional|Maximum amount of power (kVA) that may be exported from a connection point to the grid, as monitored by a control / relay function. An absent value indicates no limit|
+|» underFrequencyProtection|number|optional|Protective function limit in Hz.|
+|» underFrequencyProtectionDelay|number|optional|Trip delay time in seconds.|
+|» overFrequencyProtection|number|optional|Protective function limit in Hz.|
+|» overFrequencyProtectionDelay|number|optional|Trip delay time in seconds.|
+|» underVoltageProtection|number|optional|Protective function limit in V.|
+|» underVoltageProtectionDelay|number|optional|Trip delay time in seconds.|
+|» overVoltageProtection|number|optional|Protective function limit in V.|
+|» overVoltageProtectionDelay|number|optional|Trip delay time in seconds.|
+|» sustainedOverVoltage|number|optional|Sustained over voltage.|
+|» sustainedOverVoltageDelay|number|optional|Sustained Over voltage protection delay in seconds.|
+|» frequencyRateOfChange|number|optional|Rate of change of frequency trip point (Hz/s).|
+|» voltageVectorShift|number|optional|Trip angle in degrees.|
+|» interTripScheme|string|optional|Description of the form of inter-trip (e.g. 'from local substation').|
+|» neutralVoltageDisplacement|number|optional|Trip voltage.|
 |acConnections|[object]|mandatory|none|
-|» connectionIdentifier|number|mandatory|AC Connection ID as defined in the DER register.  Does not align with CDR ID permanence standards|
-|» count|[PositiveInteger](#common-field-types)|mandatory|Number of AC Connections in the group. For the suite of AC Connections to be considered as a group, all of the AC Connections included must have the same attributes|
-|» equipmentType|string|optional|Indicates whether the DER device is connected via an inverter (and what category of inverter it is) or not (e.g. rotating machine). If absent, assume equipment type to be “OTHER”.|
-|» manufacturerName|string|conditional|The name of the inverter manufacturer. Mandatory if equipmentType is INVERTER|
-|» inverterSeries|string|conditional|The inverter series. Mandatory if equipmentType is INVERTER|
-|» inverterModelNumber|string|conditional|The inverter model number. Mandatory if equipmentType is INVERTER|
-|» commissioningDate|[DateString](#common-field-types)|mandatory|The date that the DER installation is commissioned|
-|» status|string|mandatory|Code used to indicate the status of the Inverter. This will be used to identify if an inverter is active or inactive or decommissioned|
-|» inverterDeviceCapacity|number|conditional|The rated AC output power that is listed in the product specified by the manufacturer. Mandatory if equipmentType is INVERTER. Default is 0 if value not known|
-|» derDevices|[object]|mandatory|none|
-|»» deviceIdentifier|number|mandatory|Unique identifier for a single DER device or a group of DER devices with the same attributes. Does not align with CDR ID permanence standards|
-|»» count|[PositiveInteger](#common-field-types)|mandatory|Number of devices in the group of DER devices|
-|»» manufacturer|string|optional|The name of the device manufacturer. If absent then assumed to be “unknown”|
-|»» modelNumber|string|optional|The model number of the device. If absent then assumed to be “unknown”|
-|»» status|string|optional|Code used to indicate the status of the device. This will be used to identify if an inverter is active or inactive or decommissioned|
-|»» type|string|mandatory|Used to indicate the primary technology used in the DER device|
-|»» subtype|string|optional|Used to indicate the primary technology used in the DER device. This field is also used to record for example the battery chemistry, or the type of PV panel. It is also used to record if a battery is contained in an electric vehicle connected in a vehicle-to-grid arrangement. If absent then assumed to be “other”|
-|»» nominalRatedCapacity|number|mandatory|Maximum output in kVA that is listed in the product specification by the manufacturer. This refers to the capacity of each unit within the device group. Default is 0 if value not known|
-|»» nominalStorageCapacity|number|conditional|Maximum storage capacity in kVAh. This refers to the capacity of each storage module within the device group. Mandatory if type is equal to “STORAGE”. Default is 0 if value not known|
+|» connectionIdentifier|number|mandatory|AC Connection ID as defined in the DER register.  Does not align with CDR ID permanence standards|
+|» count|[PositiveInteger](#common-field-types)|mandatory|Number of AC Connections in the group. For the suite of AC Connections to be considered as a group, all of the AC Connections included must have the same attributes|
+|» equipmentType|string|optional|Indicates whether the DER device is connected via an inverter (and what category of inverter it is) or not (e.g. rotating machine). If absent, assume equipment type to be “OTHER”.|
+|» manufacturerName|string|conditional|The name of the inverter manufacturer. Mandatory if equipmentType is INVERTER|
+|» inverterSeries|string|conditional|The inverter series. Mandatory if equipmentType is INVERTER|
+|» inverterModelNumber|string|conditional|The inverter model number. Mandatory if equipmentType is INVERTER|
+|» commissioningDate|[DateString](#common-field-types)|mandatory|The date that the DER installation is commissioned|
+|» status|string|mandatory|Code used to indicate the status of the Inverter. This will be used to identify if an inverter is active or inactive or decommissioned|
+|» inverterDeviceCapacity|number|conditional|The rated AC output power that is listed in the product specified by the manufacturer. Mandatory if equipmentType is INVERTER. Default is 0 if value not known|
+|» derDevices|[object]|mandatory|none|
+|»» deviceIdentifier|number|mandatory|Unique identifier for a single DER device or a group of DER devices with the same attributes. Does not align with CDR ID permanence standards|
+|»» count|[PositiveInteger](#common-field-types)|mandatory|Number of devices in the group of DER devices|
+|»» manufacturer|string|optional|The name of the device manufacturer. If absent then assumed to be “unknown”|
+|»» modelNumber|string|optional|The model number of the device. If absent then assumed to be “unknown”|
+|»» status|string|optional|Code used to indicate the status of the device. This will be used to identify if an inverter is active or inactive or decommissioned|
+|»» type|string|mandatory|Used to indicate the primary technology used in the DER device|
+|»» subtype|string|optional|Used to indicate the primary technology used in the DER device. This field is also used to record for example the battery chemistry, or the type of PV panel. It is also used to record if a battery is contained in an electric vehicle connected in a vehicle-to-grid arrangement. If absent then assumed to be “other”|
+|»» nominalRatedCapacity|number|mandatory|Maximum output in kVA that is listed in the product specification by the manufacturer. This refers to the capacity of each unit within the device group. Default is 0 if value not known|
+|»» nominalStorageCapacity|number|conditional|Maximum storage capacity in kVAh. This refers to the capacity of each storage module within the device group. Mandatory if type is equal to “STORAGE”. Default is 0 if value not known|
 
 #### Enumerated Values
 
@@ -1918,7 +1918,7 @@ This operation may only be called by an Energy Retailer using the information se
 
 <h3 class="schema-toc" id="tocScommonphysicaladdress">CommonPhysicalAddress</h3>
 
-<a id="schemacdr-energy-secondary-data-holder-apicommonphysicaladdress"></a>
+<a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apicommonphysicaladdress"></a>
 
 ```json
 {
@@ -1978,7 +1978,7 @@ This operation may only be called by an Energy Retailer using the information se
 
 <h3 class="schema-toc" id="tocScommonsimpleaddress">CommonSimpleAddress</h3>
 
-<a id="schemacdr-energy-secondary-data-holder-apicommonsimpleaddress"></a>
+<a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apicommonsimpleaddress"></a>
 
 ```json
 {
@@ -2011,7 +2011,7 @@ This operation may only be called by an Energy Retailer using the information se
 
 <h3 class="schema-toc" id="tocScommonpafaddress">CommonPAFAddress</h3>
 
-<a id="schemacdr-energy-secondary-data-holder-apicommonpafaddress"></a>
+<a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apicommonpafaddress"></a>
 
 ```json
 {
@@ -2072,7 +2072,7 @@ This operation may only be called by an Energy Retailer using the information se
 
 <h3 class="schema-toc" id="tocSrequestservicepointidlist">RequestServicePointIdList</h3>
 
-<a id="schemacdr-energy-secondary-data-holder-apirequestservicepointidlist"></a>
+<a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apirequestservicepointidlist"></a>
 
 ```json
 {
@@ -2091,12 +2091,12 @@ This operation may only be called by an Energy Retailer using the information se
 |Name|Type|Required|Description|
 |---|---|---|---|
 |data|object|mandatory|none|
-|» servicePointIds|[string]|mandatory|Array of specific servicePointIds to obtain data for|
+|» servicePointIds|[string]|mandatory|Array of specific servicePointIds to obtain data for|
 |meta|[Meta](#schemacdr-energy-secondary-data-holder-apimeta)|optional|none|
 
 <h3 class="schema-toc" id="tocSlinks">Links</h3>
 
-<a id="schemacdr-energy-secondary-data-holder-apilinks"></a>
+<a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apilinks"></a>
 
 ```json
 {
@@ -2113,7 +2113,7 @@ This operation may only be called by an Energy Retailer using the information se
 
 <h3 class="schema-toc" id="tocSmeta">Meta</h3>
 
-<a id="schemacdr-energy-secondary-data-holder-apimeta"></a>
+<a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apimeta"></a>
 
 ```json
 {}
@@ -2126,7 +2126,7 @@ This operation may only be called by an Energy Retailer using the information se
 
 <h3 class="schema-toc" id="tocSlinkspaginated">LinksPaginated</h3>
 
-<a id="schemacdr-energy-secondary-data-holder-apilinkspaginated"></a>
+<a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apilinkspaginated"></a>
 
 ```json
 {
@@ -2151,7 +2151,7 @@ This operation may only be called by an Energy Retailer using the information se
 
 <h3 class="schema-toc" id="tocSmetapaginated">MetaPaginated</h3>
 
-<a id="schemacdr-energy-secondary-data-holder-apimetapaginated"></a>
+<a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apimetapaginated"></a>
 
 ```json
 {

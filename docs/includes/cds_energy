@@ -252,7 +252,7 @@ x-min-v: string
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-field-invalid-date-time">400 - Invalid Date</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
 <td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
@@ -1759,7 +1759,7 @@ x-cds-client-headers: string
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-field-invalid-date-time">400 - Invalid Date</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
 <td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
@@ -2078,7 +2078,7 @@ x-cds-client-headers: string
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-field-invalid-date-time">400 - Invalid Date</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
 <td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
@@ -2412,7 +2412,7 @@ x-cds-client-headers: string
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-field-invalid-date-time">400 - Invalid Date</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
 <td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
@@ -5704,7 +5704,7 @@ x-cds-client-headers: string
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-field-invalid-date-time">400 - Invalid Date</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
 <td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
@@ -6022,7 +6022,7 @@ x-cds-client-headers: string
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-field-invalid-date-time">400 - Invalid Date</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
 <td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
@@ -6355,7 +6355,7 @@ x-cds-client-headers: string
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-field-invalid-date-time">400 - Invalid Date</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
 <td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
@@ -6698,7 +6698,7 @@ x-cds-client-headers: string
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-field-invalid-date-time">400 - Invalid Date</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
 <td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
@@ -7047,7 +7047,7 @@ x-cds-client-headers: string
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-field-invalid-date-time">400 - Invalid Date</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
 <td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
@@ -7411,7 +7411,7 @@ x-cds-client-headers: string
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-field-invalid-date-time">400 - Invalid Date</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
 <td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
@@ -7485,7 +7485,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="tocSenergyplanlistresponse">EnergyPlanListResponse</h3>
 
-<p><a id="schemacdr-energy-apienergyplanlistresponse"></a></p>
+<p><a class="schema-anchor" id="schemacdr-energy-apienergyplanlistresponse"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"plans"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -7552,7 +7552,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>none</td>
 </tr>
 <tr>
-<td>» plans</td>
+<td>» plans</td>
 <td>[<a href="#schemacdr-energy-apienergyplan">EnergyPlan</a>]</td>
 <td>mandatory</td>
 <td>Array of plans</td>
@@ -7573,7 +7573,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="tocSenergyplanresponsev2">EnergyPlanResponseV2</h3>
 
-<p><a id="schemacdr-energy-apienergyplanresponsev2"></a></p>
+<p><a class="schema-anchor" id="schemacdr-energy-apienergyplanresponsev2"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"planId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -8123,7 +8123,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="tocSenergyservicepointlistresponse">EnergyServicePointListResponse</h3>
 
-<p><a id="schemacdr-energy-apienergyservicepointlistresponse"></a></p>
+<p><a class="schema-anchor" id="schemacdr-energy-apienergyservicepointlistresponse"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"servicePoints"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -8172,7 +8172,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>none</td>
 </tr>
 <tr>
-<td>» servicePoints</td>
+<td>» servicePoints</td>
 <td>[<a href="#schemacdr-energy-apienergyservicepoint">EnergyServicePoint</a>]</td>
 <td>mandatory</td>
 <td>none</td>
@@ -8193,7 +8193,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="tocSenergyservicepointdetailresponse">EnergyServicePointDetailResponse</h3>
 
-<p><a id="schemacdr-energy-apienergyservicepointdetailresponse"></a></p>
+<p><a class="schema-anchor" id="schemacdr-energy-apienergyservicepointdetailresponse"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"servicePointId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -8321,7 +8321,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="tocSenergyusagelistresponse">EnergyUsageListResponse</h3>
 
-<p><a id="schemacdr-energy-apienergyusagelistresponse"></a></p>
+<p><a class="schema-anchor" id="schemacdr-energy-apienergyusagelistresponse"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"reads"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -8385,7 +8385,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>none</td>
 </tr>
 <tr>
-<td>» reads</td>
+<td>» reads</td>
 <td>[<a href="#schemacdr-energy-apienergyusageread">EnergyUsageRead</a>]</td>
 <td>mandatory</td>
 <td>Array of meter reads sorted by NMI in ascending order followed by readStartDate in descending order</td>
@@ -8406,7 +8406,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="tocSenergyderlistresponse">EnergyDerListResponse</h3>
 
-<p><a id="schemacdr-energy-apienergyderlistresponse"></a></p>
+<p><a class="schema-anchor" id="schemacdr-energy-apienergyderlistresponse"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"derRecords"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -8492,7 +8492,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>none</td>
 </tr>
 <tr>
-<td>» derRecords</td>
+<td>» derRecords</td>
 <td>[<a href="#schemacdr-energy-apienergyderrecord">EnergyDerRecord</a>]</td>
 <td>mandatory</td>
 <td>Array of meter reads</td>
@@ -8513,7 +8513,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="tocSenergyderdetailresponse">EnergyDerDetailResponse</h3>
 
-<p><a id="schemacdr-energy-apienergyderdetailresponse"></a></p>
+<p><a class="schema-anchor" id="schemacdr-energy-apienergyderdetailresponse"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"servicePointId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -8603,7 +8603,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="tocSenergyaccountlistresponsev2">EnergyAccountListResponseV2</h3>
 
-<p><a id="schemacdr-energy-apienergyaccountlistresponsev2"></a></p>
+<p><a class="schema-anchor" id="schemacdr-energy-apienergyaccountlistresponsev2"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"accounts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -8658,7 +8658,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>none</td>
 </tr>
 <tr>
-<td>» accounts</td>
+<td>» accounts</td>
 <td>[<a href="#schemacdr-energy-apienergyaccountv2">EnergyAccountV2</a>]</td>
 <td>mandatory</td>
 <td>Array of accounts</td>
@@ -8679,7 +8679,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="tocSenergyaccountdetailresponsev3">EnergyAccountDetailResponseV3</h3>
 
-<p><a id="schemacdr-energy-apienergyaccountdetailresponsev3"></a></p>
+<p><a class="schema-anchor" id="schemacdr-energy-apienergyaccountdetailresponsev3"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -9104,7 +9104,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="tocSenergypaymentscheduleresponse">EnergyPaymentScheduleResponse</h3>
 
-<p><a id="schemacdr-energy-apienergypaymentscheduleresponse"></a></p>
+<p><a class="schema-anchor" id="schemacdr-energy-apienergypaymentscheduleresponse"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"paymentSchedules"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -9159,7 +9159,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>none</td>
 </tr>
 <tr>
-<td>» paymentSchedules</td>
+<td>» paymentSchedules</td>
 <td>[<a href="#schemacdr-energy-apienergypaymentschedule">EnergyPaymentSchedule</a>]</td>
 <td>mandatory</td>
 <td>Array may be empty if no payment schedule exist</td>
@@ -9180,7 +9180,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="tocSenergyconcessionsresponse">EnergyConcessionsResponse</h3>
 
-<p><a id="schemacdr-energy-apienergyconcessionsresponse"></a></p>
+<p><a class="schema-anchor" id="schemacdr-energy-apienergyconcessionsresponse"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"concessions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -9222,7 +9222,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>none</td>
 </tr>
 <tr>
-<td>» concessions</td>
+<td>» concessions</td>
 <td>[<a href="#schemacdr-energy-apienergyconcession">EnergyConcession</a>]</td>
 <td>mandatory</td>
 <td>Array may be empty if no concessions exist</td>
@@ -9243,7 +9243,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="tocSenergybalancelistresponse">EnergyBalanceListResponse</h3>
 
-<p><a id="schemacdr-energy-apienergybalancelistresponse"></a></p>
+<p><a class="schema-anchor" id="schemacdr-energy-apienergybalancelistresponse"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"balances"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -9282,31 +9282,31 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>none</td>
 </tr>
 <tr>
-<td>» balances</td>
+<td>» balances</td>
 <td>[object]</td>
 <td>mandatory</td>
 <td>Array of account balances</td>
 </tr>
 <tr>
-<td>»» accountId</td>
+<td>»» accountId</td>
 <td>string</td>
 <td>mandatory</td>
 <td>The ID of the account</td>
 </tr>
 <tr>
-<td>»» balance</td>
+<td>»» balance</td>
 <td><a href="#common-field-types">AmountString</a></td>
 <td>mandatory</td>
 <td>The current balance of the account.  A positive value indicates that amount is owing to be paid.  A negative value indicates that the account is in credit</td>
 </tr>
 <tr>
-<td>» links</td>
+<td>links</td>
 <td><a href="#schemacdr-energy-apilinkspaginated">LinksPaginated</a></td>
 <td>mandatory</td>
 <td>none</td>
 </tr>
 <tr>
-<td>» meta</td>
+<td>meta</td>
 <td><a href="#schemacdr-energy-apimetapaginated">MetaPaginated</a></td>
 <td>mandatory</td>
 <td>none</td>
@@ -9315,7 +9315,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="tocSenergybalanceresponse">EnergyBalanceResponse</h3>
 
-<p><a id="schemacdr-energy-apienergybalanceresponse"></a></p>
+<p><a class="schema-anchor" id="schemacdr-energy-apienergybalanceresponse"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
@@ -9342,7 +9342,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>none</td>
 </tr>
 <tr>
-<td>» balance</td>
+<td>» balance</td>
 <td><a href="#common-field-types">AmountString</a></td>
 <td>mandatory</td>
 <td>The current balance of the account.  A positive value indicates that amount is owing to be paid.  A negative value indicates that the account is in credit</td>
@@ -9363,7 +9363,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="tocSenergyinvoicelistresponse">EnergyInvoiceListResponse</h3>
 
-<p><a id="schemacdr-energy-apienergyinvoicelistresponse"></a></p>
+<p><a class="schema-anchor" id="schemacdr-energy-apienergyinvoicelistresponse"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"invoices"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -9453,7 +9453,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>none</td>
 </tr>
 <tr>
-<td>» invoices</td>
+<td>» invoices</td>
 <td>[<a href="#schemacdr-energy-apienergyinvoice">EnergyInvoice</a>]</td>
 <td>mandatory</td>
 <td>Array of invoices sorted by issue date in descending order</td>
@@ -9474,7 +9474,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="tocSenergybillinglistresponsev2">EnergyBillingListResponseV2</h3>
 
-<p><a id="schemacdr-energy-apienergybillinglistresponsev2"></a></p>
+<p><a class="schema-anchor" id="schemacdr-energy-apienergybillinglistresponsev2"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"transactions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -9593,7 +9593,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>none</td>
 </tr>
 <tr>
-<td>» transactions</td>
+<td>» transactions</td>
 <td>[<a href="#schemacdr-energy-apienergybillingtransactionv2">EnergyBillingTransactionV2</a>]</td>
 <td>mandatory</td>
 <td>Array of transactions sorted by date and time in descending order</td>
@@ -9614,7 +9614,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="tocSresponseerrorlistv2">ResponseErrorListV2</h3>
 
-<p><a id="schemacdr-energy-apiresponseerrorlistv2"></a></p>
+<p><a class="schema-anchor" id="schemacdr-energy-apiresponseerrorlistv2"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
@@ -9644,31 +9644,31 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>none</td>
 </tr>
 <tr>
-<td>» code</td>
+<td>» code</td>
 <td>string</td>
 <td>mandatory</td>
 <td>The code of the error encountered. Where the error is specific to the respondent, an application-specific error code, expressed as a string value. If the error is application-specific, the URN code that the specific error extends must be provided in the meta object. Otherwise, the value is the error code URN.</td>
 </tr>
 <tr>
-<td>» title</td>
+<td>» title</td>
 <td>string</td>
 <td>mandatory</td>
 <td>A short, human-readable summary of the problem that MUST NOT change from occurrence to occurrence of the problem represented by the error code.</td>
 </tr>
 <tr>
-<td>» detail</td>
+<td>» detail</td>
 <td>string</td>
 <td>mandatory</td>
 <td>A human-readable explanation specific to this occurrence of the problem.</td>
 </tr>
 <tr>
-<td>» meta</td>
+<td>» meta</td>
 <td>object</td>
 <td>optional</td>
 <td>Additional data for customised error codes</td>
 </tr>
 <tr>
-<td>»» urn</td>
+<td>»» urn</td>
 <td>string</td>
 <td>conditional</td>
 <td>The CDR error code URN which the application-specific error code extends. Mandatory if the error <code>code</code> is an application-specific error rather than a standardised error code.</td>
@@ -9677,7 +9677,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="tocSenergyplan">EnergyPlan</h3>
 
-<p><a id="schemacdr-energy-apienergyplan"></a></p>
+<p><a class="schema-anchor" id="schemacdr-energy-apienergyplan"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"planId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"effectiveFrom"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -9793,31 +9793,31 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Object that contains links to additional information on specific topics</td>
 </tr>
 <tr>
-<td>» overviewUri</td>
+<td>» overviewUri</td>
 <td><a href="#common-field-types">URIString</a></td>
 <td>optional</td>
 <td>A link to a general overview of the plan</td>
 </tr>
 <tr>
-<td>» termsUri</td>
+<td>» termsUri</td>
 <td><a href="#common-field-types">URIString</a></td>
 <td>optional</td>
 <td>A link to terms and conditions for the plan</td>
 </tr>
 <tr>
-<td>» eligibilityUri</td>
+<td>» eligibilityUri</td>
 <td><a href="#common-field-types">URIString</a></td>
 <td>optional</td>
 <td>A link to detail on eligibility criteria for the plan</td>
 </tr>
 <tr>
-<td>» pricingUri</td>
+<td>» pricingUri</td>
 <td><a href="#common-field-types">URIString</a></td>
 <td>optional</td>
 <td>A link to detail on pricing for the plan</td>
 </tr>
 <tr>
-<td>» bundleUri</td>
+<td>» bundleUri</td>
 <td><a href="#common-field-types">URIString</a></td>
 <td>optional</td>
 <td>A link to detail on bundles that this plan can be a part of</td>
@@ -9835,19 +9835,19 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Describes the geographical area that the plan is available for.  If absent then it is assumed the plan is not geographically limited</td>
 </tr>
 <tr>
-<td>» excludedPostcodes</td>
+<td>» excludedPostcodes</td>
 <td>[string]</td>
 <td>optional</td>
 <td>Array of valid Australian postcodes that are specifically excluded from the plan.  Each element is a single four digit postcode (e.g. 3000) or a range of postcodes defined by two four digit postcodes and a hyphen (e.g. 3000-3999)</td>
 </tr>
 <tr>
-<td>» includedPostcodes</td>
+<td>» includedPostcodes</td>
 <td>[string]</td>
 <td>optional</td>
 <td>Array of valid Australian postcodes that are included from the plan.  If absent defaults to all non-excluded postcodes.  Each element is a single four digit postcode (e.g. 3000) or a range of postcodes defined by two four digit postcodes and a hyphen (e.g. 3000-3999)</td>
 </tr>
 <tr>
-<td>» distributors</td>
+<td>» distributors</td>
 <td>[string]</td>
 <td>mandatory</td>
 <td>Array of distributors for the plan. Must have at least one entry</td>
@@ -9896,7 +9896,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="tocSenergyplandetailv2">EnergyPlanDetailV2</h3>
 
-<p><a id="schemacdr-energy-apienergyplandetailv2"></a></p>
+<p><a class="schema-anchor" id="schemacdr-energy-apienergyplandetailv2"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"planId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"effectiveFrom"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -10445,49 +10445,49 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>none</td>
 </tr>
 <tr>
-<td>» meteringCharges</td>
+<td>» meteringCharges</td>
 <td>[object]</td>
 <td>optional</td>
 <td>Charges for metering included in the plan</td>
 </tr>
 <tr>
-<td>»» displayName</td>
+<td>»» displayName</td>
 <td>string</td>
 <td>mandatory</td>
 <td>Display name of the charge</td>
 </tr>
 <tr>
-<td>»» description</td>
+<td>»» description</td>
 <td>string</td>
 <td>optional</td>
 <td>Description of the charge</td>
 </tr>
 <tr>
-<td>»» minimumValue</td>
+<td>»» minimumValue</td>
 <td><a href="#common-field-types">AmountString</a></td>
 <td>mandatory</td>
 <td>Minimum value of the charge if the charge is a range or the absolute value of the charge if no range is specified</td>
 </tr>
 <tr>
-<td>»» maximumValue</td>
+<td>»» maximumValue</td>
 <td><a href="#common-field-types">AmountString</a></td>
 <td>optional</td>
 <td>The upper limit of the charge if the charge could occur in a range</td>
 </tr>
 <tr>
-<td>»» period</td>
+<td>»» period</td>
 <td><a href="#common-field-types">ExternalRef</a></td>
 <td>optional</td>
 <td>The charges that occur on a schedule indicates the frequency. Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 Durations</a> (excludes recurrence syntax)</td>
 </tr>
 <tr>
-<td>» gasContract</td>
+<td>» gasContract</td>
 <td><a href="#schemacdr-energy-apienergyplancontractfullv2">EnergyPlanContractFullV2</a></td>
 <td>conditional</td>
 <td>The details of the terms for the supply of electricity under this plan.  Is mandatory if fuelType is set to GAS or DUAL</td>
 </tr>
 <tr>
-<td>» electricityContract</td>
+<td>» electricityContract</td>
 <td><a href="#schemacdr-energy-apienergyplancontractfullv2">EnergyPlanContractFullV2</a></td>
 <td>conditional</td>
 <td>The details of the terms for the supply of electricity under this plan.  Is mandatory if fuelType is set to ELECTRICITY or DUAL</td>
@@ -10496,7 +10496,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="tocSenergyplancontractv2">EnergyPlanContractV2</h3>
 
-<p><a id="schemacdr-energy-apienergyplancontractv2"></a></p>
+<p><a class="schema-anchor" id="schemacdr-energy-apienergyplancontractv2"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"additionalFeeInformation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"pricingModel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SINGLE_RATE"</span><span class="p">,</span><span class="w">
@@ -10781,7 +10781,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Describes intrinsic green power for the plan.  If present then the plan includes a percentage of green power in the base plan. Should not be present for gas contracts</td>
 </tr>
 <tr>
-<td>» greenPercentage</td>
+<td>» greenPercentage</td>
 <td><a href="#common-field-types">RateString</a></td>
 <td>mandatory</td>
 <td>Percentage of green power intrinsically included in the plan</td>
@@ -10902,7 +10902,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="tocSenergyplancontractfullv2">EnergyPlanContractFullV2</h3>
 
-<p><a id="schemacdr-energy-apienergyplancontractfullv2"></a></p>
+<p><a class="schema-anchor" id="schemacdr-energy-apienergyplancontractfullv2"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"additionalFeeInformation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"pricingModel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SINGLE_RATE"</span><span class="p">,</span><span class="w">
@@ -11175,37 +11175,37 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>none</td>
 </tr>
 <tr>
-<td>» termType</td>
+<td>» termType</td>
 <td>string</td>
 <td>optional</td>
 <td>The term for the contract.  If absent assumes no specified term</td>
 </tr>
 <tr>
-<td>» benefitPeriod</td>
+<td>» benefitPeriod</td>
 <td>string</td>
 <td>conditional</td>
 <td>Description of the benefit period.  Should only be present if termType has the value ONGOING</td>
 </tr>
 <tr>
-<td>» terms</td>
+<td>» terms</td>
 <td>string</td>
 <td>optional</td>
 <td>Free text description of the terms for the contract</td>
 </tr>
 <tr>
-<td>» meterTypes</td>
+<td>» meterTypes</td>
 <td>[string]</td>
 <td>optional</td>
 <td>An array of the meter types that this contract is available for</td>
 </tr>
 <tr>
-<td>» coolingOffDays</td>
+<td>» coolingOffDays</td>
 <td><a href="#common-field-types">PositiveInteger</a></td>
 <td>conditional</td>
 <td>Number of days in the cooling off period for the contract.  Mandatory for plans with type of MARKET</td>
 </tr>
 <tr>
-<td>» billFrequency</td>
+<td>» billFrequency</td>
 <td>[string]</td>
 <td>mandatory</td>
 <td>An array of the available billing schedules for this contract. Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 Durations</a> (excludes recurrence syntax)</td>
@@ -11250,7 +11250,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="tocSenergyplancontrolledload">EnergyPlanControlledLoad</h3>
 
-<p><a id="schemacdr-energy-apienergyplancontrolledload"></a></p>
+<p><a class="schema-anchor" id="schemacdr-energy-apienergyplancontrolledload"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
     </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -11340,133 +11340,133 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Object representing a single controlled load rate.  Required if rateBlockUType is singleRate</td>
 </tr>
 <tr>
-<td>» displayName</td>
+<td>» displayName</td>
 <td>string</td>
 <td>mandatory</td>
 <td>Display name of the controlled load rate</td>
 </tr>
 <tr>
-<td>» description</td>
+<td>» description</td>
 <td>string</td>
 <td>optional</td>
 <td>Description of the controlled load rate</td>
 </tr>
 <tr>
-<td>» dailySupplyCharge</td>
+<td>» dailySupplyCharge</td>
 <td><a href="#common-field-types">AmountString</a></td>
 <td>optional</td>
 <td>The daily supply charge (exclusive of GST) for this controlled load tier</td>
 </tr>
 <tr>
-<td>» rates</td>
+<td>» rates</td>
 <td>[object]</td>
 <td>mandatory</td>
 <td>Array of controlled load rates in order of usage volume</td>
 </tr>
 <tr>
-<td>»» unitPrice</td>
+<td>»» unitPrice</td>
 <td><a href="#common-field-types">AmountString</a></td>
 <td>mandatory</td>
 <td>Unit price of usage per  measure unit (exclusive of GST)</td>
 </tr>
 <tr>
-<td>»» measureUnit</td>
+<td>»» measureUnit</td>
 <td>string</td>
 <td>optional</td>
 <td>The measurement unit of rate. Assumed to be KWH if absent</td>
 </tr>
 <tr>
-<td>»» volume</td>
+<td>»» volume</td>
 <td>number</td>
 <td>optional</td>
 <td>Volume in kWh that this rate applies to.  Only applicable for ‘stepped’ rates where different rates apply for different volumes of usage in a period</td>
 </tr>
 <tr>
-<td>» timeOfUseRates</td>
+<td>timeOfUseRates</td>
 <td>[object]</td>
 <td>conditional</td>
 <td>Array of objects representing time of use rates.  Required if rateBlockUType is timeOfUseRates</td>
 </tr>
 <tr>
-<td>»» displayName</td>
+<td>» displayName</td>
 <td>string</td>
 <td>mandatory</td>
 <td>Display name of the controlled load rate</td>
 </tr>
 <tr>
-<td>»» description</td>
+<td>» description</td>
 <td>string</td>
 <td>optional</td>
 <td>Description of the controlled load rate</td>
 </tr>
 <tr>
-<td>»» dailySupplyCharge</td>
+<td>» dailySupplyCharge</td>
 <td><a href="#common-field-types">AmountString</a></td>
 <td>optional</td>
 <td>The daily supply charge (exclusive of GST) for this controlled load tier</td>
 </tr>
 <tr>
-<td>»» rates</td>
+<td>» rates</td>
 <td>[object]</td>
 <td>mandatory</td>
 <td>Array of controlled load rates in order of usage volume</td>
 </tr>
 <tr>
-<td>»»» unitPrice</td>
+<td>»» unitPrice</td>
 <td><a href="#common-field-types">AmountString</a></td>
 <td>mandatory</td>
 <td>Unit price of usage per  measure unit (exclusive of GST)</td>
 </tr>
 <tr>
-<td>»»» measureUnit</td>
+<td>»» measureUnit</td>
 <td>string</td>
 <td>optional</td>
 <td>The measurement unit of rate. Assumed to be KWH if absent</td>
 </tr>
 <tr>
-<td>»»» volume</td>
+<td>»» volume</td>
 <td>number</td>
 <td>optional</td>
 <td>Volume in kWh that this rate applies to.  Only applicable for ‘stepped’ rates where different rates apply for different volumes of usage in a period</td>
 </tr>
 <tr>
-<td>»» timeOfUse</td>
+<td>» timeOfUse</td>
 <td>[object]</td>
 <td>mandatory</td>
 <td>Array of times of use.</td>
 </tr>
 <tr>
-<td>»»» days</td>
+<td>»» days</td>
 <td>[string]</td>
 <td>optional</td>
 <td>The days that the rate applies to</td>
 </tr>
 <tr>
-<td>»»» startTime</td>
+<td>»» startTime</td>
 <td><a href="#common-field-types">TimeString</a></td>
 <td>conditional</td>
 <td>The beginning of the time period per day for which the controlled load rate applies. Required if endTime provided</td>
 </tr>
 <tr>
-<td>»»» endTime</td>
+<td>»» endTime</td>
 <td><a href="#common-field-types">TimeString</a></td>
 <td>conditional</td>
 <td>The end of the time period per day for which the controlled load rate applies. Required if startTime provided</td>
 </tr>
 <tr>
-<td>»»» additionalInfo</td>
+<td>»» additionalInfo</td>
 <td>string</td>
 <td>conditional</td>
 <td>Display text providing more information on the contrlled load, for e.g. controlled load availability if specific day/time is not known. Required if startTime and endTime absent or if additionalInfoUri provided</td>
 </tr>
 <tr>
-<td>»»» additionalInfoUri</td>
+<td>»» additionalInfoUri</td>
 <td><a href="#common-field-types">URIString</a></td>
 <td>optional</td>
 <td>Optional link to additional information regarding the controlled load</td>
 </tr>
 <tr>
-<td>»» type</td>
+<td>» type</td>
 <td>string</td>
 <td>mandatory</td>
 <td>The type of usage that the rate applies to</td>
@@ -11603,7 +11603,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="tocSenergyplanincentives">EnergyPlanIncentives</h3>
 
-<p><a id="schemacdr-energy-apienergyplanincentives"></a></p>
+<p><a class="schema-anchor" id="schemacdr-energy-apienergyplanincentives"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
     </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -11672,7 +11672,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="tocSenergyplandiscounts">EnergyPlanDiscounts</h3>
 
-<p><a id="schemacdr-energy-apienergyplandiscounts"></a></p>
+<p><a class="schema-anchor" id="schemacdr-energy-apienergyplandiscounts"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
     </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -11751,7 +11751,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Required if methodUType is percentOfBill</td>
 </tr>
 <tr>
-<td>» rate</td>
+<td>» rate</td>
 <td><a href="#common-field-types">RateString</a></td>
 <td>mandatory</td>
 <td>The rate of the discount applied to the bill amount</td>
@@ -11763,7 +11763,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Required if methodUType is percentOfUse</td>
 </tr>
 <tr>
-<td>» rate</td>
+<td>» rate</td>
 <td><a href="#common-field-types">RateString</a></td>
 <td>mandatory</td>
 <td>The rate of the discount applied to the usageamount</td>
@@ -11775,7 +11775,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Required if methodUType is fixedAmount</td>
 </tr>
 <tr>
-<td>» amount</td>
+<td>» amount</td>
 <td><a href="#common-field-types">AmountString</a></td>
 <td>mandatory</td>
 <td>The amount of the discount</td>
@@ -11787,13 +11787,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Required if methodUType is percentOverThreshold</td>
 </tr>
 <tr>
-<td>» rate</td>
+<td>» rate</td>
 <td><a href="#common-field-types">RateString</a></td>
 <td>mandatory</td>
 <td>The rate of the discount over the usage amount</td>
 </tr>
 <tr>
-<td>» usageAmount</td>
+<td>» usageAmount</td>
 <td><a href="#common-field-types">AmountString</a></td>
 <td>mandatory</td>
 <td>The usage amount threshold above which the discount applies</td>
@@ -11854,7 +11854,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="tocSenergyplangreenpowercharges">EnergyPlanGreenPowerCharges</h3>
 
-<p><a id="schemacdr-energy-apienergyplangreenpowercharges"></a></p>
+<p><a class="schema-anchor" id="schemacdr-energy-apienergyplangreenpowercharges"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
     </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -11913,19 +11913,19 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Array of charge tiers based on the percentage of green power used for the period implied by the type.  Array is in order of increasing percentage of green power</td>
 </tr>
 <tr>
-<td>» percentGreen</td>
+<td>» percentGreen</td>
 <td><a href="#common-field-types">RateString</a></td>
 <td>mandatory</td>
 <td>The upper percentage of green power used applicable for this tier</td>
 </tr>
 <tr>
-<td>» rate</td>
+<td>» rate</td>
 <td><a href="#common-field-types">RateString</a></td>
 <td>conditional</td>
 <td>The rate of the charge if the type implies the application of a rate</td>
 </tr>
 <tr>
-<td>» amount</td>
+<td>» amount</td>
 <td><a href="#common-field-types">AmountString</a></td>
 <td>conditional</td>
 <td>The amount of the charge if the type implies the application of a fixed amount</td>
@@ -11974,7 +11974,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="tocSenergyplaneligibility">EnergyPlanEligibility</h3>
 
-<p><a id="schemacdr-energy-apienergyplaneligibility"></a></p>
+<p><a class="schema-anchor" id="schemacdr-energy-apienergyplaneligibility"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
     </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EXISTING_CUST"</span><span class="p">,</span><span class="w">
@@ -12108,7 +12108,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="tocSenergyplanfees">EnergyPlanFees</h3>
 
-<p><a id="schemacdr-energy-apienergyplanfees"></a></p>
+<p><a class="schema-anchor" id="schemacdr-energy-apienergyplanfees"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
     </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EXIT"</span><span class="p">,</span><span class="w">
@@ -12288,7 +12288,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="tocSenergyplansolarfeedintariffv2">EnergyPlanSolarFeedInTariffV2</h3>
 
-<p><a id="schemacdr-energy-apienergyplansolarfeedintariffv2"></a></p>
+<p><a class="schema-anchor" id="schemacdr-energy-apienergyplansolarfeedintariffv2"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
     </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -12389,85 +12389,85 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Represents a constant tariff.  Mandatory if tariffUType is set to singleTariff</td>
 </tr>
 <tr>
-<td>» rates</td>
+<td>» rates</td>
 <td>[object]</td>
 <td>mandatory</td>
 <td>Array of feed in rates</td>
 </tr>
 <tr>
-<td>»» unitPrice</td>
+<td>»» unitPrice</td>
 <td><a href="#common-field-types">AmountString</a></td>
 <td>mandatory</td>
 <td>Unit price of usage per measure unit (exclusive of GST)</td>
 </tr>
 <tr>
-<td>»» measureUnit</td>
+<td>»» measureUnit</td>
 <td>string</td>
 <td>optional</td>
 <td>The measurement unit of rate. Assumed to be KWH if absent</td>
 </tr>
 <tr>
-<td>»» volume</td>
+<td>»» volume</td>
 <td>number</td>
 <td>optional</td>
 <td>Volume that this rate applies to. Only applicable for ‘stepped’ rates where different rates apply for different volumes of usage in a period</td>
 </tr>
 <tr>
-<td>» timeVaryingTariffs</td>
+<td>timeVaryingTariffs</td>
 <td>object</td>
 <td>conditional</td>
 <td>Represents a tariff based on time.  Mandatory if tariffUType is set to timeVaryingTariffs</td>
 </tr>
 <tr>
-<td>»» type</td>
+<td>» type</td>
 <td>string</td>
 <td>optional</td>
 <td>The type of the charging time period. If absent applies to all periods</td>
 </tr>
 <tr>
-<td>»» rates</td>
+<td>» rates</td>
 <td>[object]</td>
 <td>optional</td>
 <td>Array of feed in rates</td>
 </tr>
 <tr>
-<td>»»» unitPrice</td>
+<td>»» unitPrice</td>
 <td><a href="#common-field-types">AmountString</a></td>
 <td>mandatory</td>
 <td>Unit price of usage per measure unit (exclusive of GST)</td>
 </tr>
 <tr>
-<td>»»» measureUnit</td>
+<td>»» measureUnit</td>
 <td>string</td>
 <td>optional</td>
 <td>The measurement unit of rate. Assumed to be KWH if absent</td>
 </tr>
 <tr>
-<td>»»» volume</td>
+<td>»» volume</td>
 <td>number</td>
 <td>optional</td>
 <td>Volume that this rate applies to. Only applicable for ‘stepped’ rates where different rates apply for different volumes of usage in a period</td>
 </tr>
 <tr>
-<td>»» timeVariations</td>
+<td>» timeVariations</td>
 <td>[object]</td>
 <td>mandatory</td>
 <td>Array of time periods for which this tariff is applicable</td>
 </tr>
 <tr>
-<td>»»» days</td>
+<td>»» days</td>
 <td>[string]</td>
 <td>mandatory</td>
 <td>The days that the tariff applies to. At least one entry required</td>
 </tr>
 <tr>
-<td>»»» startTime</td>
+<td>»» startTime</td>
 <td><a href="#common-field-types">TimeString</a></td>
 <td>optional</td>
 <td>The beginning of the time period per day for which the tariff applies.  If absent assumes start of day (ie. midnight)</td>
 </tr>
 <tr>
-<td>»»» endTime</td>
+<td>»» endTime</td>
 <td><a href="#common-field-types">TimeString</a></td>
 <td>optional</td>
 <td>The end of the time period per day for which the tariff applies.  If absent assumes end of day (ie. one second before midnight)</td>
@@ -12616,7 +12616,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="tocSenergyplantariffperiod">EnergyPlanTariffPeriod</h3>
 
-<p><a id="schemacdr-energy-apienergyplantariffperiod"></a></p>
+<p><a class="schema-anchor" id="schemacdr-energy-apienergyplantariffperiod"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
     </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ENVIRONMENTAL"</span><span class="p">,</span><span class="w">
@@ -12742,49 +12742,49 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Object representing a single rate.  Required if rateBlockUType is singleRate</td>
 </tr>
 <tr>
-<td>» displayName</td>
+<td>» displayName</td>
 <td>string</td>
 <td>mandatory</td>
 <td>Display name of the rate</td>
 </tr>
 <tr>
-<td>» description</td>
+<td>» description</td>
 <td>string</td>
 <td>optional</td>
 <td>Description of the rate</td>
 </tr>
 <tr>
-<td>» generalUnitPrice</td>
+<td>» generalUnitPrice</td>
 <td><a href="#common-field-types">AmountString</a></td>
 <td>conditional</td>
 <td>The block rate (unit price) for any usage above the included fixed usage, in dollars per kWh inclusive of GST.  Only required if pricingModel field is ‘QUOTA’</td>
 </tr>
 <tr>
-<td>» rates</td>
+<td>» rates</td>
 <td>[object]</td>
 <td>mandatory</td>
 <td>Array of controlled load rates in order of usage volume</td>
 </tr>
 <tr>
-<td>»» unitPrice</td>
+<td>»» unitPrice</td>
 <td><a href="#common-field-types">AmountString</a></td>
 <td>mandatory</td>
 <td>Unit price of usage per measure unit (exclusive of GST)</td>
 </tr>
 <tr>
-<td>»» measureUnit</td>
+<td>»» measureUnit</td>
 <td>string</td>
 <td>optional</td>
 <td>The measurement unit of rate. Assumed to be KWH if absent</td>
 </tr>
 <tr>
-<td>»» volume</td>
+<td>»» volume</td>
 <td>number</td>
 <td>optional</td>
 <td>Volume in kWh that this rate applies to.  Only applicable for ‘stepped’ rates where different rates apply for different volumes of usage in a period</td>
 </tr>
 <tr>
-<td>» period</td>
+<td>» period</td>
 <td><a href="#common-field-types">ExternalRef</a></td>
 <td>optional</td>
 <td>Usage period for which the block rate applies. Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 Durations</a> (excludes recurrence syntax)</td>
@@ -12796,67 +12796,67 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Array of objects representing time of use rates.  Required if rateBlockUType is timeOfUseRates</td>
 </tr>
 <tr>
-<td>» displayName</td>
+<td>» displayName</td>
 <td>string</td>
 <td>mandatory</td>
 <td>Display name of the rate</td>
 </tr>
 <tr>
-<td>» description</td>
+<td>» description</td>
 <td>string</td>
 <td>optional</td>
 <td>Description of the rate</td>
 </tr>
 <tr>
-<td>» rates</td>
+<td>» rates</td>
 <td>[object]</td>
 <td>mandatory</td>
 <td>Array of controlled load rates in order of usage volume</td>
 </tr>
 <tr>
-<td>»» unitPrice</td>
+<td>»» unitPrice</td>
 <td><a href="#common-field-types">AmountString</a></td>
 <td>mandatory</td>
 <td>Unit price of usage per  measure unit (exclusive of GST)</td>
 </tr>
 <tr>
-<td>»» measureUnit</td>
+<td>»» measureUnit</td>
 <td>string</td>
 <td>optional</td>
 <td>The measurement unit of rate. Assumed to be KWH if absent</td>
 </tr>
 <tr>
-<td>»» volume</td>
+<td>»» volume</td>
 <td>number</td>
 <td>optional</td>
 <td>Volume in kWh that this rate applies to.  Only applicable for ‘stepped’ rates where different rates apply for different volumes of usage in a period</td>
 </tr>
 <tr>
-<td>» timeOfUse</td>
+<td>» timeOfUse</td>
 <td>[object]</td>
 <td>mandatory</td>
 <td>Array of times of use</td>
 </tr>
 <tr>
-<td>»» days</td>
+<td>»» days</td>
 <td>[string]</td>
 <td>mandatory</td>
 <td>The days that the rate applies to</td>
 </tr>
 <tr>
-<td>»» startTime</td>
+<td>»» startTime</td>
 <td><a href="#common-field-types">TimeString</a></td>
 <td>mandatory</td>
 <td>Start of the period</td>
 </tr>
 <tr>
-<td>»» endTime</td>
+<td>»» endTime</td>
 <td><a href="#common-field-types">TimeString</a></td>
 <td>mandatory</td>
 <td>End of the period</td>
 </tr>
 <tr>
-<td>» type</td>
+<td>» type</td>
 <td>string</td>
 <td>mandatory</td>
 <td>The type of usage that the rate applies to</td>
@@ -12868,67 +12868,67 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Array of demand charges.  Required if rateBlockUType is demandCharges</td>
 </tr>
 <tr>
-<td>» displayName</td>
+<td>» displayName</td>
 <td>string</td>
 <td>mandatory</td>
 <td>Display name of the charge</td>
 </tr>
 <tr>
-<td>» description</td>
+<td>» description</td>
 <td>string</td>
 <td>optional</td>
 <td>Description of the charge</td>
 </tr>
 <tr>
-<td>» amount</td>
+<td>» amount</td>
 <td><a href="#common-field-types">AmountString</a></td>
 <td>mandatory</td>
 <td>The charge amount per  measure unit exclusive of GST</td>
 </tr>
 <tr>
-<td>» measureUnit</td>
+<td>» measureUnit</td>
 <td>string</td>
 <td>optional</td>
 <td>The measurement unit of charge amount. Assumed to be KWH if absent</td>
 </tr>
 <tr>
-<td>» startTime</td>
+<td>» startTime</td>
 <td><a href="#common-field-types">TimeString</a></td>
 <td>mandatory</td>
 <td>Start of the period</td>
 </tr>
 <tr>
-<td>» endTime</td>
+<td>» endTime</td>
 <td><a href="#common-field-types">TimeString</a></td>
 <td>mandatory</td>
 <td>End of the period</td>
 </tr>
 <tr>
-<td>» days</td>
+<td>» days</td>
 <td>[string]</td>
 <td>optional</td>
 <td>The days that the demand tariff applies to</td>
 </tr>
 <tr>
-<td>» minDemand</td>
+<td>» minDemand</td>
 <td><a href="#common-field-types">AmountString</a></td>
 <td>optional</td>
 <td>Minimum demand for this demand tariff in kW.  If absent then 0 is assumed</td>
 </tr>
 <tr>
-<td>» maxDemand</td>
+<td>» maxDemand</td>
 <td><a href="#common-field-types">AmountString</a></td>
 <td>optional</td>
 <td>Maximum demand for this demand tariff in kW.  If present, must be higher than the value of the minDemand field</td>
 </tr>
 <tr>
-<td>» measurementPeriod</td>
+<td>» measurementPeriod</td>
 <td>string</td>
 <td>mandatory</td>
 <td>Application period for the demand tariff</td>
 </tr>
 <tr>
-<td>» chargePeriod</td>
+<td>» chargePeriod</td>
 <td>string</td>
 <td>mandatory</td>
 <td>Charge period for the demand tariff</td>
@@ -13197,7 +13197,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="tocSenergyservicepoint">EnergyServicePoint</h3>
 
-<p><a id="schemacdr-energy-apienergyservicepoint"></a></p>
+<p><a class="schema-anchor" id="schemacdr-energy-apienergyservicepoint"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"servicePointId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"nationalMeteringId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -13277,13 +13277,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>none</td>
 </tr>
 <tr>
-<td>» classification</td>
+<td>» classification</td>
 <td>string</td>
 <td>optional</td>
 <td>A code that defines the consumer class as defined in the National Energy Retail Regulations, or in overriding Jurisdictional instruments</td>
 </tr>
 <tr>
-<td>» threshold</td>
+<td>» threshold</td>
 <td>any</td>
 <td>optional</td>
 <td>A code that defines the consumption threshold as defined in the National Energy Retail Regulations, or in overriding Jurisdictional instruments. Note the details of enumeration values below: <ul><li><strong>LOW</strong> - Consumption is less than the ‘lower consumption threshold’ as defined in the National Energy Retail Regulations</li><li><strong>MEDIUM</strong> - Consumption is equal to or greater than the ‘lower consumption threshold’, but less than the ‘upper consumption threshold’, as defined in the National Energy Retail Regulations</li><li><strong>HIGH</strong> - Consumption is equal to or greater than the ‘upper consumption threshold’ as defined in the National Energy Retail Regulations</li></ul></td>
@@ -13404,7 +13404,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="tocSenergyservicepointdetail">EnergyServicePointDetail</h3>
 
-<p><a id="schemacdr-energy-apienergyservicepointdetail"></a></p>
+<p><a class="schema-anchor" id="schemacdr-energy-apienergyservicepointdetail"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"servicePointId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"nationalMeteringId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -13559,13 +13559,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>none</td>
 </tr>
 <tr>
-<td>» classification</td>
+<td>» classification</td>
 <td>string</td>
 <td>optional</td>
 <td>A code that defines the consumer class as defined in the National Energy Retail Regulations, or in overriding Jurisdictional instruments</td>
 </tr>
 <tr>
-<td>» threshold</td>
+<td>» threshold</td>
 <td>any</td>
 <td>optional</td>
 <td>A code that defines the consumption threshold as defined in the National Energy Retail Regulations, or in overriding Jurisdictional instruments. Note the details of enumeration values below: <ul><li><strong>LOW</strong> - Consumption is less than the ‘lower consumption threshold’ as defined in the National Energy Retail Regulations</li><li><strong>MEDIUM</strong> - Consumption is equal to or greater than the ‘lower consumption threshold’, but less than the ‘upper consumption threshold’, as defined in the National Energy Retail Regulations</li><li><strong>HIGH</strong> - Consumption is equal to or greater than the ‘upper consumption threshold’ as defined in the National Energy Retail Regulations</li></ul></td>
@@ -13577,19 +13577,19 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>none</td>
 </tr>
 <tr>
-<td>» code</td>
+<td>» code</td>
 <td>string</td>
 <td>mandatory</td>
 <td>A code used to identify data loss factor for the service point values.  Refer to AEMO distribution loss factor documents for each financial year to interpret</td>
 </tr>
 <tr>
-<td>» description</td>
+<td>» description</td>
 <td>string</td>
 <td>mandatory</td>
 <td>Description of the data loss factor code and value</td>
 </tr>
 <tr>
-<td>» lossValue</td>
+<td>» lossValue</td>
 <td>string</td>
 <td>mandatory</td>
 <td>The value associated with the loss factor code</td>
@@ -13601,13 +13601,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>none</td>
 </tr>
 <tr>
-<td>» party</td>
+<td>» party</td>
 <td>string</td>
 <td>mandatory</td>
 <td>The name of the party/organisation related to this service point</td>
 </tr>
 <tr>
-<td>» role</td>
+<td>» role</td>
 <td>string</td>
 <td>mandatory</td>
 <td>The role performed by this participant in relation to the service point. Note the details of enumeration values below: <ul><li><strong>FRMP</strong> - Financially Responsible Market Participant</li><li><strong>LNSP</strong> - Local Network Service Provider or Embedded Network Manager for child connection points</li><li><strong>DRSP</strong> - wholesale Demand Response and/or market ancillary Service Provider and note that where it is not relevant for a NMI it will not be included</li></ul></td>
@@ -13625,115 +13625,115 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>The meters associated with the service point. This may be empty where there are no meters physically installed at the service point</td>
 </tr>
 <tr>
-<td>» meterId</td>
+<td>» meterId</td>
 <td>string</td>
 <td>mandatory</td>
 <td>The meter ID uniquely identifies a meter for a given service point.  It is unique in the context of the service point.  It is not globally unique</td>
 </tr>
 <tr>
-<td>» specifications</td>
+<td>» specifications</td>
 <td>object</td>
 <td>mandatory</td>
 <td>Technical characteristics of the meter</td>
 </tr>
 <tr>
-<td>»» status</td>
+<td>»» status</td>
 <td>string</td>
 <td>mandatory</td>
 <td>A code to denote the status of the meter. Note the details of enumeration values below: <ul><li><strong>CURRENT</strong> -Applies when a meter is current and not disconnected</li><li><strong>DISCONNECTED</strong> - Applies when a meter is present but has been remotely disconnected</li></ul></td>
 </tr>
 <tr>
-<td>»» installationType</td>
+<td>»» installationType</td>
 <td>string</td>
 <td>mandatory</td>
 <td>The metering Installation type code indicates whether the metering installation has to be manually read. Note the details of enumeration values below: <ul><li><strong>BASIC</strong> - Accumulation Meter – Type 6</li><li><strong>COMMS1</strong> - Interval Meter with communications – Type 1</li><li><strong>COMMS2</strong> - Interval Meter with communications – Type 2</li><li><strong>COMMS3</strong> - Interval Meter with communications – Type 3</li><li><strong>COMMS4</strong> - Interval Meter with communications – Type 4</li><li><strong>COMMS4C</strong> - CT connected metering installation that meets the minimum services specifications</li><li><strong>COMMS4D</strong> - Whole current metering installation that meets the minimum services specifications</li><li><strong>MRAM</strong> - Small customer metering installation – Type 4A</li><li><strong>MRIM</strong> - Manually Read Interval Meter – Type 5</li><li><strong>UMCP</strong> - Unmetered Supply – Type 7</li><li><strong>VICAMI</strong> - A relevant metering installation as defined in clause 9.9C of the NER</li><li><strong>NCONUML</strong> - Non-contestable unmeter load - Introduced as part of Global Settlement</li></ul></td>
 </tr>
 <tr>
-<td>»» manufacturer</td>
+<td>»» manufacturer</td>
 <td>string</td>
 <td>optional</td>
 <td>Free text field to identify the manufacturer of the installed meter</td>
 </tr>
 <tr>
-<td>»» model</td>
+<td>»» model</td>
 <td>string</td>
 <td>optional</td>
 <td>Free text field to identify the meter manufacturer’s designation for the meter model</td>
 </tr>
 <tr>
-<td>»» readType</td>
+<td>»» readType</td>
 <td>string</td>
 <td>optional</td>
 <td>Code to denote the method and frequency of Meter Reading. The value is formatted as follows: <ul><li>First Character = Remote (R) or Manual (M)</li><li>Second Character = Mode: T = telephone W = wireless P = powerline I = infra-red G = galvanic V = visual </li><li>Third Character = Frequency of Scheduled Meter Readings: 1 = Twelve times per year 2 = Six times per year 3 = Four times per year D = Daily or weekly</li><li>Optional Fourth Character = to identify what interval length the meter is capable of reading. This includes five, 15 and 30 minute granularity as the following: A – 5 minute B – 15 minute C – 30 minute D – Cannot convert to 5 minute (i.e. due to metering installation de-energised) M - Manually Read Accumulation Meter</li></ul> For example, <ul><li>MV3 = Manual, Visual, Quarterly</li> <li>MV3M = Manual, Visual, Quarterly, Manually Read Accumulation Meter</li> <li>RWDC = Remote, Wireless, Daily, 30 minutes interval</li></ul></td>
 </tr>
 <tr>
-<td>»» nextScheduledReadDate</td>
+<td>»» nextScheduledReadDate</td>
 <td><a href="#common-field-types">DateString</a></td>
 <td>optional</td>
 <td>This date is the next scheduled meter read date (NSRD) if a manual Meter Reading is required</td>
 </tr>
 <tr>
-<td>» registers</td>
+<td>» registers</td>
 <td>[object]</td>
 <td>optional</td>
 <td>Usage data registers available from the meter. This may be empty where there are no meters physically installed at the service point</td>
 </tr>
 <tr>
-<td>»» registerId</td>
+<td>»» registerId</td>
 <td>string</td>
 <td>mandatory</td>
 <td>Unique identifier of the register within this service point.  Is not globally unique</td>
 </tr>
 <tr>
-<td>»» registerSuffix</td>
+<td>»» registerSuffix</td>
 <td>string</td>
 <td>optional</td>
 <td>Register suffix of the meter register where the meter reads are obtained</td>
 </tr>
 <tr>
-<td>»» averagedDailyLoad</td>
+<td>»» averagedDailyLoad</td>
 <td>number</td>
 <td>optional</td>
 <td>The energy delivered through a connection point or metering point over an extended period normalised to a &#39;per day&#39; basis (kWh). This value is calculated annually.</td>
 </tr>
 <tr>
-<td>»» registerConsumptionType</td>
+<td>»» registerConsumptionType</td>
 <td>string</td>
 <td>mandatory</td>
 <td>Indicates the consumption type of register</td>
 </tr>
 <tr>
-<td>»» networkTariffCode</td>
+<td>»» networkTariffCode</td>
 <td>string</td>
 <td>optional</td>
 <td>The Network Tariff Code is a free text field containing a code supplied and published by the local network service provider</td>
 </tr>
 <tr>
-<td>»» unitOfMeasure</td>
+<td>»» unitOfMeasure</td>
 <td>string</td>
 <td>optional</td>
 <td>The unit of measure for data held in this register</td>
 </tr>
 <tr>
-<td>»» timeOfDay</td>
+<td>»» timeOfDay</td>
 <td>string</td>
 <td>optional</td>
 <td>Code to identify the time validity of register contents</td>
 </tr>
 <tr>
-<td>»» multiplier</td>
+<td>»» multiplier</td>
 <td>number</td>
 <td>optional</td>
 <td>Multiplier required to take a register value and turn it into a value representing billable energy</td>
 </tr>
 <tr>
-<td>»» controlledLoad</td>
+<td>»» controlledLoad</td>
 <td>boolean</td>
 <td>optional</td>
 <td>Indicates whether the energy recorded by this register is created under a Controlled Load regime</td>
 </tr>
 <tr>
-<td>»» consumptionType</td>
+<td>»» consumptionType</td>
 <td>string</td>
 <td>optional</td>
 <td>Actual/Subtractive Indicator. Note the details of enumeration values below: <ul><li><strong>ACTUAL</strong> implies volume of energy actually metered between two dates</li><li><strong>CUMULATIVE</strong> indicates a meter reading for a specific date. A second Meter Reading is required to determine the consumption between those two Meter Reading dates</li></ul></td>
@@ -14002,7 +14002,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="tocSenergyusageread">EnergyUsageRead</h3>
 
-<p><a id="schemacdr-energy-apienergyusageread"></a></p>
+<p><a class="schema-anchor" id="schemacdr-energy-apienergyusageread"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"servicePointId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"registerId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -14103,13 +14103,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Mandatory if readUType is set to basicRead</td>
 </tr>
 <tr>
-<td>» quality</td>
+<td>» quality</td>
 <td>string</td>
 <td>optional</td>
 <td>The quality of the read taken.  If absent then assumed to be ACTUAL</td>
 </tr>
 <tr>
-<td>» value</td>
+<td>» value</td>
 <td>number</td>
 <td>mandatory</td>
 <td>Meter read value.  If positive then it means consumption, if negative it means export</td>
@@ -14121,43 +14121,43 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Mandatory if readUType is set to intervalRead</td>
 </tr>
 <tr>
-<td>» readIntervalLength</td>
+<td>» readIntervalLength</td>
 <td><a href="#common-field-types">PositiveInteger</a></td>
 <td>conditional</td>
 <td>Read interval length in minutes. Required when interval-reads query parameter equals FULL or MIN_30</td>
 </tr>
 <tr>
-<td>» aggregateValue</td>
+<td>» aggregateValue</td>
 <td>number</td>
 <td>mandatory</td>
 <td>The aggregate sum of the interval read values. If positive then it means net consumption, if negative it means net export</td>
 </tr>
 <tr>
-<td>» intervalReads</td>
+<td>» intervalReads</td>
 <td>[number]</td>
 <td>conditional</td>
 <td>Array of Interval read values. If positive then it means consumption, if negative it means export. Required when interval-reads query parameter equals FULL or  MIN_30.<br>Each read value indicates the read for the interval specified by readIntervalLength beginning at midnight of readStartDate (for example 00:00 to 00:30 would be the first reading in a 30 minute Interval)</td>
 </tr>
 <tr>
-<td>» readQualities</td>
+<td>» readQualities</td>
 <td>[object]</td>
 <td>conditional</td>
 <td>Specifies quality of reads that are not ACTUAL.  For read indices that are not specified, quality is assumed to be ACTUAL. If not present, all quality of all reads are assumed to be actual. Required when interval-reads query parameter equals FULL or MIN_30</td>
 </tr>
 <tr>
-<td>»» startInterval</td>
+<td>»» startInterval</td>
 <td><a href="#common-field-types">PositiveInteger</a></td>
 <td>mandatory</td>
 <td>Start interval for read quality flag. First read begins at 1</td>
 </tr>
 <tr>
-<td>»» endInterval</td>
+<td>»» endInterval</td>
 <td><a href="#common-field-types">PositiveInteger</a></td>
 <td>mandatory</td>
 <td>End interval for read quality flag</td>
 </tr>
 <tr>
-<td>»» quality</td>
+<td>»» quality</td>
 <td>string</td>
 <td>mandatory</td>
 <td>The quality of the read taken</td>
@@ -14202,7 +14202,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="tocSenergyderrecord">EnergyDerRecord</h3>
 
-<p><a id="schemacdr-energy-apienergyderrecord"></a></p>
+<p><a class="schema-anchor" id="schemacdr-energy-apienergyderrecord"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"servicePointId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"approvedCapacity"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -14307,91 +14307,91 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Required only when the hasCentralProtectionAndControl flag is set to true.  One or more of the object fields will be provided to describe the protection modes in place</td>
 </tr>
 <tr>
-<td>» exportLimitKva</td>
+<td>» exportLimitKva</td>
 <td>number</td>
 <td>optional</td>
 <td>Maximum amount of power (kVA) that may be exported from a connection point to the grid, as monitored by a control / relay function. An absent value indicates no limit</td>
 </tr>
 <tr>
-<td>» underFrequencyProtection</td>
+<td>» underFrequencyProtection</td>
 <td>number</td>
 <td>optional</td>
 <td>Protective function limit in Hz.</td>
 </tr>
 <tr>
-<td>» underFrequencyProtectionDelay</td>
+<td>» underFrequencyProtectionDelay</td>
 <td>number</td>
 <td>optional</td>
 <td>Trip delay time in seconds.</td>
 </tr>
 <tr>
-<td>» overFrequencyProtection</td>
+<td>» overFrequencyProtection</td>
 <td>number</td>
 <td>optional</td>
 <td>Protective function limit in Hz.</td>
 </tr>
 <tr>
-<td>» overFrequencyProtectionDelay</td>
+<td>» overFrequencyProtectionDelay</td>
 <td>number</td>
 <td>optional</td>
 <td>Trip delay time in seconds.</td>
 </tr>
 <tr>
-<td>» underVoltageProtection</td>
+<td>» underVoltageProtection</td>
 <td>number</td>
 <td>optional</td>
 <td>Protective function limit in V.</td>
 </tr>
 <tr>
-<td>» underVoltageProtectionDelay</td>
+<td>» underVoltageProtectionDelay</td>
 <td>number</td>
 <td>optional</td>
 <td>Trip delay time in seconds.</td>
 </tr>
 <tr>
-<td>» overVoltageProtection</td>
+<td>» overVoltageProtection</td>
 <td>number</td>
 <td>optional</td>
 <td>Protective function limit in V.</td>
 </tr>
 <tr>
-<td>» overVoltageProtectionDelay</td>
+<td>» overVoltageProtectionDelay</td>
 <td>number</td>
 <td>optional</td>
 <td>Trip delay time in seconds.</td>
 </tr>
 <tr>
-<td>» sustainedOverVoltage</td>
+<td>» sustainedOverVoltage</td>
 <td>number</td>
 <td>optional</td>
 <td>Sustained over voltage.</td>
 </tr>
 <tr>
-<td>» sustainedOverVoltageDelay</td>
+<td>» sustainedOverVoltageDelay</td>
 <td>number</td>
 <td>optional</td>
 <td>Sustained Over voltage protection delay in seconds.</td>
 </tr>
 <tr>
-<td>» frequencyRateOfChange</td>
+<td>» frequencyRateOfChange</td>
 <td>number</td>
 <td>optional</td>
 <td>Rate of change of frequency trip point (Hz/s).</td>
 </tr>
 <tr>
-<td>» voltageVectorShift</td>
+<td>» voltageVectorShift</td>
 <td>number</td>
 <td>optional</td>
 <td>Trip angle in degrees.</td>
 </tr>
 <tr>
-<td>» interTripScheme</td>
+<td>» interTripScheme</td>
 <td>string</td>
 <td>optional</td>
 <td>Description of the form of inter-trip (e.g. &#39;from local substation&#39;).</td>
 </tr>
 <tr>
-<td>» neutralVoltageDisplacement</td>
+<td>» neutralVoltageDisplacement</td>
 <td>number</td>
 <td>optional</td>
 <td>Trip voltage.</td>
@@ -14403,115 +14403,115 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>none</td>
 </tr>
 <tr>
-<td>» connectionIdentifier</td>
+<td>» connectionIdentifier</td>
 <td>number</td>
 <td>mandatory</td>
 <td>AC Connection ID as defined in the DER register.  Does not align with CDR ID permanence standards</td>
 </tr>
 <tr>
-<td>» count</td>
+<td>» count</td>
 <td><a href="#common-field-types">PositiveInteger</a></td>
 <td>mandatory</td>
 <td>Number of AC Connections in the group. For the suite of AC Connections to be considered as a group, all of the AC Connections included must have the same attributes</td>
 </tr>
 <tr>
-<td>» equipmentType</td>
+<td>» equipmentType</td>
 <td>string</td>
 <td>optional</td>
 <td>Indicates whether the DER device is connected via an inverter (and what category of inverter it is) or not (e.g. rotating machine). If absent, assume equipment type to be “OTHER”.</td>
 </tr>
 <tr>
-<td>» manufacturerName</td>
+<td>» manufacturerName</td>
 <td>string</td>
 <td>conditional</td>
 <td>The name of the inverter manufacturer. Mandatory if equipmentType is INVERTER</td>
 </tr>
 <tr>
-<td>» inverterSeries</td>
+<td>» inverterSeries</td>
 <td>string</td>
 <td>conditional</td>
 <td>The inverter series. Mandatory if equipmentType is INVERTER</td>
 </tr>
 <tr>
-<td>» inverterModelNumber</td>
+<td>» inverterModelNumber</td>
 <td>string</td>
 <td>conditional</td>
 <td>The inverter model number. Mandatory if equipmentType is INVERTER</td>
 </tr>
 <tr>
-<td>» commissioningDate</td>
+<td>» commissioningDate</td>
 <td><a href="#common-field-types">DateString</a></td>
 <td>mandatory</td>
 <td>The date that the DER installation is commissioned</td>
 </tr>
 <tr>
-<td>» status</td>
+<td>» status</td>
 <td>string</td>
 <td>mandatory</td>
 <td>Code used to indicate the status of the Inverter. This will be used to identify if an inverter is active or inactive or decommissioned</td>
 </tr>
 <tr>
-<td>» inverterDeviceCapacity</td>
+<td>» inverterDeviceCapacity</td>
 <td>number</td>
 <td>conditional</td>
 <td>The rated AC output power that is listed in the product specified by the manufacturer. Mandatory if equipmentType is INVERTER. Default is 0 if value not known</td>
 </tr>
 <tr>
-<td>» derDevices</td>
+<td>» derDevices</td>
 <td>[object]</td>
 <td>mandatory</td>
 <td>none</td>
 </tr>
 <tr>
-<td>»» deviceIdentifier</td>
+<td>»» deviceIdentifier</td>
 <td>number</td>
 <td>mandatory</td>
 <td>Unique identifier for a single DER device or a group of DER devices with the same attributes. Does not align with CDR ID permanence standards</td>
 </tr>
 <tr>
-<td>»» count</td>
+<td>»» count</td>
 <td><a href="#common-field-types">PositiveInteger</a></td>
 <td>mandatory</td>
 <td>Number of devices in the group of DER devices</td>
 </tr>
 <tr>
-<td>»» manufacturer</td>
+<td>»» manufacturer</td>
 <td>string</td>
 <td>optional</td>
 <td>The name of the device manufacturer. If absent then assumed to be “unknown”</td>
 </tr>
 <tr>
-<td>»» modelNumber</td>
+<td>»» modelNumber</td>
 <td>string</td>
 <td>optional</td>
 <td>The model number of the device. If absent then assumed to be “unknown”</td>
 </tr>
 <tr>
-<td>»» status</td>
+<td>»» status</td>
 <td>string</td>
 <td>optional</td>
 <td>Code used to indicate the status of the device. This will be used to identify if an inverter is active or inactive or decommissioned</td>
 </tr>
 <tr>
-<td>»» type</td>
+<td>»» type</td>
 <td>string</td>
 <td>mandatory</td>
 <td>Used to indicate the primary technology used in the DER device</td>
 </tr>
 <tr>
-<td>»» subtype</td>
+<td>»» subtype</td>
 <td>string</td>
 <td>optional</td>
 <td>Used to indicate the primary technology used in the DER device. This field is also used to record for example the battery chemistry, or the type of PV panel. It is also used to record if a battery is contained in an electric vehicle connected in a vehicle-to-grid arrangement. If absent then assumed to be “other”</td>
 </tr>
 <tr>
-<td>»» nominalRatedCapacity</td>
+<td>»» nominalRatedCapacity</td>
 <td>number</td>
 <td>mandatory</td>
 <td>Maximum output in kVA that is listed in the product specification by the manufacturer. This refers to the capacity of each unit within the device group. Default is 0 if value not known</td>
 </tr>
 <tr>
-<td>»» nominalStorageCapacity</td>
+<td>»» nominalStorageCapacity</td>
 <td>number</td>
 <td>conditional</td>
 <td>Maximum storage capacity in kVAh. This refers to the capacity of each storage module within the device group. Mandatory if type is equal to “STORAGE”. Default is 0 if value not known</td>
@@ -14592,7 +14592,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="tocSenergyaccountbasev2">EnergyAccountBaseV2</h3>
 
-<p><a id="schemacdr-energy-apienergyaccountbasev2"></a></p>
+<p><a class="schema-anchor" id="schemacdr-energy-apienergyaccountbasev2"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"accountNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -14660,7 +14660,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="tocSenergyaccountv2">EnergyAccountV2</h3>
 
-<p><a id="schemacdr-energy-apienergyaccountv2"></a></p>
+<p><a class="schema-anchor" id="schemacdr-energy-apienergyaccountv2"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"accountNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -14718,43 +14718,43 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>The array of plans containing service points and associated plan details</td>
 </tr>
 <tr>
-<td>» plans</td>
+<td>» plans</td>
 <td>[object]</td>
 <td>mandatory</td>
 <td>The array of plans containing service points and associated plan details</td>
 </tr>
 <tr>
-<td>»» nickname</td>
+<td>»» nickname</td>
 <td>string</td>
 <td>optional</td>
 <td>Optional display name for the plan provided by the customer to help differentiate multiple plans</td>
 </tr>
 <tr>
-<td>»» servicePointIds</td>
+<td>»» servicePointIds</td>
 <td>[string]</td>
 <td>mandatory</td>
 <td>An array of servicePointIds, representing NMIs, that this plan is linked to.  If there are no service points allocated to this plan then an empty array would be expected</td>
 </tr>
 <tr>
-<td>»» planOverview</td>
+<td>»» planOverview</td>
 <td>object</td>
 <td>conditional</td>
 <td>Mandatory if openStatus is OPEN</td>
 </tr>
 <tr>
-<td>»»» displayName</td>
+<td>»»» displayName</td>
 <td>string</td>
 <td>optional</td>
 <td>The name of the plan if one exists</td>
 </tr>
 <tr>
-<td>»»» startDate</td>
+<td>»»» startDate</td>
 <td><a href="#common-field-types">DateString</a></td>
 <td>mandatory</td>
 <td>The start date of the applicability of this plan</td>
 </tr>
 <tr>
-<td>»»» endDate</td>
+<td>»»» endDate</td>
 <td><a href="#common-field-types">DateString</a></td>
 <td>optional</td>
 <td>The end date of the applicability of this plan</td>
@@ -14763,7 +14763,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="tocSenergyaccountdetailv3">EnergyAccountDetailV3</h3>
 
-<p><a id="schemacdr-energy-apienergyaccountdetailv3"></a></p>
+<p><a class="schema-anchor" id="schemacdr-energy-apienergyaccountdetailv3"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"accountNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -15247,145 +15247,145 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>The array of plans containing service points and associated plan details</td>
 </tr>
 <tr>
-<td>» plans</td>
+<td>» plans</td>
 <td>[object]</td>
 <td>mandatory</td>
 <td>The array of plans containing service points and associated plan details</td>
 </tr>
 <tr>
-<td>»» nickname</td>
+<td>»» nickname</td>
 <td>string</td>
 <td>optional</td>
 <td>Optional display name for the plan provided by the customer to help differentiate multiple plans</td>
 </tr>
 <tr>
-<td>»» servicePointIds</td>
+<td>»» servicePointIds</td>
 <td>[string]</td>
 <td>mandatory</td>
 <td>An array of servicePointIds, representing NMIs, that this account is linked to</td>
 </tr>
 <tr>
-<td>»» planOverview</td>
+<td>»» planOverview</td>
 <td>object</td>
 <td>conditional</td>
 <td>Mandatory if openStatus is OPEN</td>
 </tr>
 <tr>
-<td>»»» displayName</td>
+<td>»»» displayName</td>
 <td>string</td>
 <td>optional</td>
 <td>The name of the plan if one exists</td>
 </tr>
 <tr>
-<td>»»» startDate</td>
+<td>»»» startDate</td>
 <td><a href="#common-field-types">DateString</a></td>
 <td>mandatory</td>
 <td>The start date of the applicability of this plan</td>
 </tr>
 <tr>
-<td>»»» endDate</td>
+<td>»»» endDate</td>
 <td><a href="#common-field-types">DateString</a></td>
 <td>optional</td>
 <td>The end date of the applicability of this plan</td>
 </tr>
 <tr>
-<td>»» planDetail</td>
+<td>»» planDetail</td>
 <td>object</td>
 <td>conditional</td>
 <td>Detail on the plan applicable to this account. Mandatory if openStatus is OPEN</td>
 </tr>
 <tr>
-<td>»»» fuelType</td>
+<td>»»» fuelType</td>
 <td>string</td>
 <td>mandatory</td>
 <td>The fuel types covered by the plan</td>
 </tr>
 <tr>
-<td>»»» isContingentPlan</td>
+<td>»»» isContingentPlan</td>
 <td>boolean</td>
 <td>optional</td>
 <td>Flag that indicates that the plan is contingent on the customer taking up an alternate fuel plan from the same retailer (for instance, if the fuelType is ELECTRICITY then a GAS plan from the same retailer must be taken up). Has no meaning if the plan has a fuelType of DUAL. If absent the value is assumed to be false</td>
 </tr>
 <tr>
-<td>»»» meteringCharges</td>
+<td>»»» meteringCharges</td>
 <td>[object]</td>
 <td>optional</td>
 <td>Charges for metering included in the plan</td>
 </tr>
 <tr>
-<td>»»»» displayName</td>
+<td>»»»» displayName</td>
 <td>string</td>
 <td>mandatory</td>
 <td>Display name of the charge</td>
 </tr>
 <tr>
-<td>»»»» description</td>
+<td>»»»» description</td>
 <td>string</td>
 <td>optional</td>
 <td>Description of the charge</td>
 </tr>
 <tr>
-<td>»»»» minimumValue</td>
+<td>»»»» minimumValue</td>
 <td><a href="#common-field-types">AmountString</a></td>
 <td>mandatory</td>
 <td>Minimum value of the charge if the charge is a range or the absolute value of the charge if no range is specified</td>
 </tr>
 <tr>
-<td>»»»» maximumValue</td>
+<td>»»»» maximumValue</td>
 <td><a href="#common-field-types">AmountString</a></td>
 <td>optional</td>
 <td>The upper limit of the charge if the charge could occur in a range</td>
 </tr>
 <tr>
-<td>»»»» period</td>
+<td>»»»» period</td>
 <td><a href="#common-field-types">ExternalRef</a></td>
 <td>optional</td>
 <td>The charges that occur on a schedule indicates the frequency. Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 Durations</a> (excludes recurrence syntax)</td>
 </tr>
 <tr>
-<td>»»» gasContract</td>
+<td>»»» gasContract</td>
 <td><a href="#schemacdr-energy-apienergyplancontractv2">EnergyPlanContractV2</a></td>
 <td>conditional</td>
 <td>The details of the terms for the supply of electricity under this plan.  Is mandatory if fuelType is set to GAS or DUAL</td>
 </tr>
 <tr>
-<td>»»» electricityContract</td>
+<td>»»» electricityContract</td>
 <td><a href="#schemacdr-energy-apienergyplancontractv2">EnergyPlanContractV2</a></td>
 <td>conditional</td>
 <td>The details of the terms for the supply of electricity under this plan.  Is mandatory if fuelType is set to ELECTRICITY or DUAL</td>
 </tr>
 <tr>
-<td>»» authorisedContacts</td>
+<td>»» authorisedContacts</td>
 <td>[object]</td>
 <td>optional</td>
 <td>An array of additional contacts that are authorised to act on this account</td>
 </tr>
 <tr>
-<td>»»» firstName</td>
+<td>»»» firstName</td>
 <td>string</td>
 <td>optional</td>
 <td>For people with single names this field need not be present. The single name should be in the lastName field</td>
 </tr>
 <tr>
-<td>»»» lastName</td>
+<td>»»» lastName</td>
 <td>string</td>
 <td>mandatory</td>
 <td>For people with single names the single name should be in this field</td>
 </tr>
 <tr>
-<td>»»» middleNames</td>
+<td>»»» middleNames</td>
 <td>[string]</td>
 <td>optional</td>
 <td>Field is mandatory but array may be empty</td>
 </tr>
 <tr>
-<td>»»» prefix</td>
+<td>»»» prefix</td>
 <td>string</td>
 <td>optional</td>
 <td>Also known as title or salutation. The prefix to the name (e.g. Mr, Mrs, Ms, Miss, Sir, etc)</td>
 </tr>
 <tr>
-<td>»»» suffix</td>
+<td>»»» suffix</td>
 <td>string</td>
 <td>optional</td>
 <td>Used for a trailing suffix to the name (e.g. Jr)</td>
@@ -15414,7 +15414,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="tocSenergypaymentschedule">EnergyPaymentSchedule</h3>
 
-<p><a id="schemacdr-energy-apienergypaymentschedule"></a></p>
+<p><a class="schema-anchor" id="schemacdr-energy-apienergypaymentschedule"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"paymentScheduleUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cardDebit"</span><span class="p">,</span><span class="w">
@@ -15471,19 +15471,19 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Represents a regular credit card payment schedule. Mandatory if paymentScheduleUType is set to cardDebit</td>
 </tr>
 <tr>
-<td>» cardScheme</td>
+<td>» cardScheme</td>
 <td>string</td>
 <td>mandatory</td>
 <td>The type of credit card held on file</td>
 </tr>
 <tr>
-<td>» paymentFrequency</td>
+<td>» paymentFrequency</td>
 <td><a href="#common-field-types">ExternalRef</a></td>
 <td>mandatory</td>
 <td>The frequency that payments will occur.  Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 Durations</a> (excludes recurrence syntax)</td>
 </tr>
 <tr>
-<td>» calculationType</td>
+<td>» calculationType</td>
 <td>string</td>
 <td>mandatory</td>
 <td>The mechanism by which the payment amount is calculated.  Explanation of values are as follows:<br/><ul><li><strong>STATIC</strong> - Indicates a consistent, static amount, per payment</li><li><strong>BALANCE</strong> - Indicates that the outstanding balance for the account is paid per period</li><li><strong>CALCULATED</strong> - Indicates that the payment amount is variable and calculated using a pre-defined algorithm</li></ul></td>
@@ -15495,31 +15495,31 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Represents a regular direct debit from a specified bank account. Mandatory if paymentScheduleUType is set to directDebit</td>
 </tr>
 <tr>
-<td>» isTokenised</td>
+<td>» isTokenised</td>
 <td>boolean</td>
 <td>optional</td>
 <td>Flag indicating that the account details are tokenised, or held in a closed system, and is not accessible through any other channels. False if absent</td>
 </tr>
 <tr>
-<td>» bsb</td>
+<td>» bsb</td>
 <td>string</td>
 <td>conditional</td>
 <td>The unmasked BSB for the account to be debited. Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces.  Is required if isTokenised is absent or false</td>
 </tr>
 <tr>
-<td>» accountNumber</td>
+<td>» accountNumber</td>
 <td>string</td>
 <td>conditional</td>
 <td>The unmasked account number for the account to be debited. Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces.  Is required if isTokenised is absent or false</td>
 </tr>
 <tr>
-<td>» paymentFrequency</td>
+<td>» paymentFrequency</td>
 <td><a href="#common-field-types">ExternalRef</a></td>
 <td>mandatory</td>
 <td>The frequency that payments will occur.  Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 Durations</a> (excludes recurrence syntax)</td>
 </tr>
 <tr>
-<td>» calculationType</td>
+<td>» calculationType</td>
 <td>string</td>
 <td>mandatory</td>
 <td>The mechanism by which the payment amount is calculated.  Explanation of values are as follows:<br/><ul><li><strong>STATIC</strong> - Indicates a consistent, static amount, per payment</li><li><strong>BALANCE</strong> - Indicates that the outstanding balance for the account is paid per period</li><li><strong>CALCULATED</strong> - Indicates that the payment amount is variable and calculated using a pre-defined algorithm</li></ul></td>
@@ -15531,37 +15531,37 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Represents a regular payment from a digital wallet. Mandatory if paymentScheduleUType is set to digitalWallet</td>
 </tr>
 <tr>
-<td>» name</td>
+<td>» name</td>
 <td>string</td>
 <td>mandatory</td>
 <td>The display name of the wallet as given by the customer, else a default value defined by the data holder</td>
 </tr>
 <tr>
-<td>» identifier</td>
+<td>» identifier</td>
 <td>string</td>
 <td>mandatory</td>
 <td>The identifier of the digital wallet (dependent on type)</td>
 </tr>
 <tr>
-<td>» type</td>
+<td>» type</td>
 <td>string</td>
 <td>mandatory</td>
 <td>The type of the digital wallet identifier</td>
 </tr>
 <tr>
-<td>» provider</td>
+<td>» provider</td>
 <td>string</td>
 <td>mandatory</td>
 <td>The provider of the digital wallet</td>
 </tr>
 <tr>
-<td>» paymentFrequency</td>
+<td>» paymentFrequency</td>
 <td><a href="#common-field-types">ExternalRef</a></td>
 <td>mandatory</td>
 <td>The frequency that payments will occur.  Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 Durations</a> (excludes recurrence syntax)</td>
 </tr>
 <tr>
-<td>» calculationType</td>
+<td>» calculationType</td>
 <td>string</td>
 <td>mandatory</td>
 <td>The mechanism by which the payment amount is calculated.  Explanation of values are as follows:<br/><ul><li><strong>STATIC</strong> - Indicates a consistent, static amount, per payment</li><li><strong>BALANCE</strong> - Indicates that the outstanding balance for the account is paid per period</li><li><strong>CALCULATED</strong> - Indicates that the payment amount is variable and calculated using a pre-defined algorithm</li></ul></td>
@@ -15573,7 +15573,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Represents a manual payment schedule where the customer pays in response to a delivered statement. Mandatory if paymentScheduleUType is set to manualPayment</td>
 </tr>
 <tr>
-<td>» billFrequency</td>
+<td>» billFrequency</td>
 <td><a href="#common-field-types">ExternalRef</a></td>
 <td>mandatory</td>
 <td>The frequency with which a bill will be issued.  Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 Durations</a> (excludes recurrence syntax)</td>
@@ -15686,7 +15686,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="tocSenergyconcession">EnergyConcession</h3>
 
-<p><a id="schemacdr-energy-apienergyconcession"></a></p>
+<p><a class="schema-anchor" id="schemacdr-energy-apienergyconcession"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FIXED_AMOUNT"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -15811,7 +15811,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="tocSenergyinvoice">EnergyInvoice</h3>
 
-<p><a id="schemacdr-energy-apienergyinvoice"></a></p>
+<p><a class="schema-anchor" id="schemacdr-energy-apienergyinvoice"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"invoiceNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -15908,13 +15908,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Object containing the start and end date for the period covered by the invoice.  Mandatory if any usage or demand based charges are included in the invoice</td>
 </tr>
 <tr>
-<td>» startDate</td>
+<td>» startDate</td>
 <td><a href="#common-field-types">DateString</a></td>
 <td>mandatory</td>
 <td>The start date of the period covered by this invoice</td>
 </tr>
 <tr>
-<td>» endDate</td>
+<td>» endDate</td>
 <td><a href="#common-field-types">DateString</a></td>
 <td>mandatory</td>
 <td>The end date of the period covered by this invoice</td>
@@ -15938,19 +15938,19 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>A discount for on time payment</td>
 </tr>
 <tr>
-<td>» discountAmount</td>
+<td>» discountAmount</td>
 <td><a href="#common-field-types">AmountString</a></td>
 <td>mandatory</td>
 <td>The amount that will be discounted if the invoice is paid by the date specified</td>
 </tr>
 <tr>
-<td>» gstAmount</td>
+<td>» gstAmount</td>
 <td><a href="#common-field-types">AmountString</a></td>
 <td>optional</td>
 <td>The GST amount that will be discounted if the invoice is paid by the date specified.  If absent then zero is assumed</td>
 </tr>
 <tr>
-<td>» date</td>
+<td>» date</td>
 <td><a href="#common-field-types">DateString</a></td>
 <td>mandatory</td>
 <td>The date by which the invoice must be paid to receive the pay on time discount</td>
@@ -16015,7 +16015,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="tocSenergyinvoicegasusagecharges">EnergyInvoiceGasUsageCharges</h3>
 
-<p><a id="schemacdr-energy-apienergyinvoicegasusagecharges"></a></p>
+<p><a class="schema-anchor" id="schemacdr-energy-apienergyinvoicegasusagecharges"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"totalUsageCharges"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"totalGenerationCredits"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -16056,13 +16056,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>totalOnceOffCharges</td>
 <td><a href="#common-field-types">AmountString</a></td>
 <td>mandatory</td>
-<td>The aggregate total of any once off charges arising from electricity usage for the period covered by the invoice (exclusive of GST)</td>
+<td>The aggregate total of any once off charges arising from gas usage for the period covered by the invoice (exclusive of GST)</td>
 </tr>
 <tr>
 <td>totalOnceOffDiscounts</td>
 <td><a href="#common-field-types">AmountString</a></td>
 <td>mandatory</td>
-<td>The aggregate total of any once off discounts or credits arising from electricity usage for the period covered by the invoice (exclusive of GST)</td>
+<td>The aggregate total of any once off discounts or credits arising from gas usage for the period covered by the invoice (exclusive of GST)</td>
 </tr>
 <tr>
 <td>otherCharges</td>
@@ -16071,19 +16071,19 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Optional array of charges that may be part of the invoice (for e.g. environmental charges for C&amp;I consumers) (exclusive of GST)</td>
 </tr>
 <tr>
-<td>» type</td>
+<td>» type</td>
 <td>string</td>
 <td>optional</td>
 <td>Type of charge. Assumed to be other if absent</td>
 </tr>
 <tr>
-<td>» amount</td>
+<td>» amount</td>
 <td><a href="#common-field-types">AmountString</a></td>
 <td>mandatory</td>
 <td>The aggregate total of charges for this item (exclusive of GST)</td>
 </tr>
 <tr>
-<td>» description</td>
+<td>» description</td>
 <td>string</td>
 <td>mandatory</td>
 <td>A free text description of the type of charge</td>
@@ -16092,7 +16092,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>totalGst</td>
 <td><a href="#common-field-types">AmountString</a></td>
 <td>optional</td>
-<td>The total GST for all electricity usage charges.  If absent then zero is assumed</td>
+<td>The total GST for all gas usage charges.  If absent then zero is assumed</td>
 </tr>
 </tbody></table>
 <h4 id='enumerated-values-26'>Enumerated Values</h4>
@@ -16134,7 +16134,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="tocSenergyinvoiceelectricityusagecharges">EnergyInvoiceElectricityUsageCharges</h3>
 
-<p><a id="schemacdr-energy-apienergyinvoiceelectricityusagecharges"></a></p>
+<p><a class="schema-anchor" id="schemacdr-energy-apienergyinvoiceelectricityusagecharges"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"totalUsageCharges"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"totalGenerationCredits"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -16190,19 +16190,19 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Optional array of charges that may be part of the invoice (for e.g. environmental charges for C&amp;I consumers) (exclusive of GST)</td>
 </tr>
 <tr>
-<td>» type</td>
+<td>» type</td>
 <td>string</td>
 <td>optional</td>
 <td>Type of charge. Assumed to be other if absent</td>
 </tr>
 <tr>
-<td>» amount</td>
+<td>» amount</td>
 <td><a href="#common-field-types">AmountString</a></td>
 <td>mandatory</td>
 <td>The aggregate total of charges for this item (exclusive of GST)</td>
 </tr>
 <tr>
-<td>» description</td>
+<td>» description</td>
 <td>string</td>
 <td>mandatory</td>
 <td>A free text description of the type of charge</td>
@@ -16253,7 +16253,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="tocSenergyinvoiceaccountcharges">EnergyInvoiceAccountCharges</h3>
 
-<p><a id="schemacdr-energy-apienergyinvoiceaccountcharges"></a></p>
+<p><a class="schema-anchor" id="schemacdr-energy-apienergyinvoiceaccountcharges"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"totalCharges"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"totalDiscounts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -16293,7 +16293,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="tocSenergybillingtransactionv2">EnergyBillingTransactionV2</h3>
 
-<p><a id="schemacdr-energy-apienergybillingtransactionv2"></a></p>
+<p><a class="schema-anchor" id="schemacdr-energy-apienergybillingtransactionv2"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"executionDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -16474,7 +16474,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="tocSenergybillingusagetransactionv2">EnergyBillingUsageTransactionV2</h3>
 
-<p><a id="schemacdr-energy-apienergybillingusagetransactionv2"></a></p>
+<p><a class="schema-anchor" id="schemacdr-energy-apienergybillingusagetransactionv2"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"servicePointId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"invoiceNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -16576,13 +16576,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Additional calculation factors that inform the transaction</td>
 </tr>
 <tr>
-<td>» value</td>
+<td>» value</td>
 <td>number</td>
 <td>mandatory</td>
 <td>The value of the calculation factor</td>
 </tr>
 <tr>
-<td>» type</td>
+<td>» type</td>
 <td>string</td>
 <td>mandatory</td>
 <td>The type of the calculation factor</td>
@@ -16594,13 +16594,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Optional array of adjustments arising for this transaction</td>
 </tr>
 <tr>
-<td>» amount</td>
+<td>» amount</td>
 <td><a href="#common-field-types">AmountString</a></td>
 <td>mandatory</td>
 <td>The amount of the adjustment</td>
 </tr>
 <tr>
-<td>» description</td>
+<td>» description</td>
 <td>string</td>
 <td>mandatory</td>
 <td>A free text description of the adjustment</td>
@@ -16697,7 +16697,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="tocSenergybillingdemandtransactionv2">EnergyBillingDemandTransactionV2</h3>
 
-<p><a id="schemacdr-energy-apienergybillingdemandtransactionv2"></a></p>
+<p><a class="schema-anchor" id="schemacdr-energy-apienergybillingdemandtransactionv2"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"servicePointId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"invoiceNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -16792,13 +16792,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Additional calculation factors that inform the transaction</td>
 </tr>
 <tr>
-<td>» value</td>
+<td>» value</td>
 <td>number</td>
 <td>mandatory</td>
 <td>The value of the calculation factor</td>
 </tr>
 <tr>
-<td>» type</td>
+<td>» type</td>
 <td>string</td>
 <td>mandatory</td>
 <td>The type of the calculation factor</td>
@@ -16810,13 +16810,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Optional array of adjustments arising for this transaction</td>
 </tr>
 <tr>
-<td>» amount</td>
+<td>» amount</td>
 <td><a href="#common-field-types">AmountString</a></td>
 <td>mandatory</td>
 <td>The amount of the adjustment</td>
 </tr>
 <tr>
-<td>» description</td>
+<td>» description</td>
 <td>string</td>
 <td>mandatory</td>
 <td>A free text description of the adjustment</td>
@@ -16885,7 +16885,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="tocSenergybillingonceofftransaction">EnergyBillingOnceOffTransaction</h3>
 
-<p><a id="schemacdr-energy-apienergybillingonceofftransaction"></a></p>
+<p><a class="schema-anchor" id="schemacdr-energy-apienergybillingonceofftransaction"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"servicePointId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"invoiceNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -16930,7 +16930,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="tocSenergybillingothertransaction">EnergyBillingOtherTransaction</h3>
 
-<p><a id="schemacdr-energy-apienergybillingothertransaction"></a></p>
+<p><a class="schema-anchor" id="schemacdr-energy-apienergybillingothertransaction"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"servicePointId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"invoiceNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -17011,13 +17011,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Additional calculation factors that inform the transaction</td>
 </tr>
 <tr>
-<td>» value</td>
+<td>» value</td>
 <td>number</td>
 <td>mandatory</td>
 <td>The value of the calculation factor</td>
 </tr>
 <tr>
-<td>» type</td>
+<td>» type</td>
 <td>string</td>
 <td>mandatory</td>
 <td>The type of the calculation factor</td>
@@ -17029,13 +17029,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Optional array of adjustments arising for this transaction</td>
 </tr>
 <tr>
-<td>» amount</td>
+<td>» amount</td>
 <td><a href="#common-field-types">AmountString</a></td>
 <td>mandatory</td>
 <td>The amount of the adjustment</td>
 </tr>
 <tr>
-<td>» description</td>
+<td>» description</td>
 <td>string</td>
 <td>mandatory</td>
 <td>A free text description of the adjustment</td>
@@ -17088,7 +17088,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="tocSenergybillingpaymenttransaction">EnergyBillingPaymentTransaction</h3>
 
-<p><a id="schemacdr-energy-apienergybillingpaymenttransaction"></a></p>
+<p><a class="schema-anchor" id="schemacdr-energy-apienergybillingpaymenttransaction"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DIRECT_DEBIT"</span><span class="w">
@@ -17155,7 +17155,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="tocScommonphysicaladdress">CommonPhysicalAddress</h3>
 
-<p><a id="schemacdr-energy-apicommonphysicaladdress"></a></p>
+<p><a class="schema-anchor" id="schemacdr-energy-apicommonphysicaladdress"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"addressUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"paf"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"simple"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -17241,7 +17241,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="tocScommonsimpleaddress">CommonSimpleAddress</h3>
 
-<p><a id="schemacdr-energy-apicommonsimpleaddress"></a></p>
+<p><a class="schema-anchor" id="schemacdr-energy-apicommonsimpleaddress"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"mailingName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"addressLine1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -17316,7 +17316,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="tocScommonpafaddress">CommonPAFAddress</h3>
 
-<p><a id="schemacdr-energy-apicommonpafaddress"></a></p>
+<p><a class="schema-anchor" id="schemacdr-energy-apicommonpafaddress"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"dpid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"thoroughfareNumber1"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -17489,7 +17489,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="tocSrequestservicepointidlist">RequestServicePointIdList</h3>
 
-<p><a id="schemacdr-energy-apirequestservicepointidlist"></a></p>
+<p><a class="schema-anchor" id="schemacdr-energy-apirequestservicepointidlist"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"servicePointIds"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -17515,7 +17515,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>none</td>
 </tr>
 <tr>
-<td>» servicePointIds</td>
+<td>» servicePointIds</td>
 <td>[string]</td>
 <td>mandatory</td>
 <td>Array of specific servicePointIds to obtain data for</td>
@@ -17530,7 +17530,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="tocSrequestaccountidlist">RequestAccountIdList</h3>
 
-<p><a id="schemacdr-energy-apirequestaccountidlist"></a></p>
+<p><a class="schema-anchor" id="schemacdr-energy-apirequestaccountidlist"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"accountIds"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -17556,7 +17556,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>none</td>
 </tr>
 <tr>
-<td>» accountIds</td>
+<td>» accountIds</td>
 <td>[string]</td>
 <td>mandatory</td>
 <td>Array of specific accountIds to obtain data for</td>
@@ -17571,7 +17571,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="tocSlinks">Links</h3>
 
-<p><a id="schemacdr-energy-apilinks"></a></p>
+<p><a class="schema-anchor" id="schemacdr-energy-apilinks"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -17595,7 +17595,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="tocSmeta">Meta</h3>
 
-<p><a id="schemacdr-energy-apimeta"></a></p>
+<p><a class="schema-anchor" id="schemacdr-energy-apimeta"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{}</span><span class="w">
 
 </span></code></pre><h3 id='properties-54'>Properties</h3>
@@ -17603,7 +17603,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="tocSlinkspaginated">LinksPaginated</h3>
 
-<p><a id="schemacdr-energy-apilinkspaginated"></a></p>
+<p><a class="schema-anchor" id="schemacdr-energy-apilinkspaginated"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"first"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -17655,7 +17655,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="tocSmetapaginated">MetaPaginated</h3>
 
-<p><a id="schemacdr-energy-apimetapaginated"></a></p>
+<p><a class="schema-anchor" id="schemacdr-energy-apimetapaginated"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"totalRecords"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="s2">"totalPages"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">

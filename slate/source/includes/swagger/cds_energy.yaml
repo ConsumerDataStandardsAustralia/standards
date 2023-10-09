@@ -147,8 +147,9 @@ paths:
                 $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
             - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400
-            - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400
-            - Invalid Version](#error-400-header-invalid-version)</li></ul>
+            - Invalid Date](#error-400-field-invalid-date-time)</li><li>[400 - Invalid
+            Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid
+            Version](#error-400-header-invalid-version)</li></ul>
         "406":
           content:
             application/json:
@@ -789,8 +790,9 @@ paths:
                 $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
             - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400
-            - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400
-            - Invalid Version](#error-400-header-invalid-version)</li></ul>
+            - Invalid Date](#error-400-field-invalid-date-time)</li><li>[400 - Invalid
+            Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid
+            Version](#error-400-header-invalid-version)</li></ul>
           headers:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
@@ -1028,8 +1030,9 @@ paths:
                 $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
             - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400
-            - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400
-            - Invalid Version](#error-400-header-invalid-version)</li></ul>
+            - Invalid Date](#error-400-field-invalid-date-time)</li><li>[400 - Invalid
+            Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid
+            Version](#error-400-header-invalid-version)</li></ul>
           headers:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
@@ -1256,8 +1259,9 @@ paths:
                 $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
             - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400
-            - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400
-            - Invalid Version](#error-400-header-invalid-version)</li></ul>
+            - Invalid Date](#error-400-field-invalid-date-time)</li><li>[400 - Invalid
+            Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid
+            Version](#error-400-header-invalid-version)</li></ul>
           headers:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
@@ -3320,8 +3324,9 @@ paths:
                 $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
             - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400
-            - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400
-            - Invalid Version](#error-400-header-invalid-version)</li></ul>
+            - Invalid Date](#error-400-field-invalid-date-time)</li><li>[400 - Invalid
+            Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid
+            Version](#error-400-header-invalid-version)</li></ul>
           headers:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
@@ -3545,8 +3550,9 @@ paths:
                 $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
             - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400
-            - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400
-            - Invalid Version](#error-400-header-invalid-version)</li></ul>
+            - Invalid Date](#error-400-field-invalid-date-time)</li><li>[400 - Invalid
+            Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid
+            Version](#error-400-header-invalid-version)</li></ul>
           headers:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
@@ -3758,8 +3764,9 @@ paths:
                 $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
             - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400
-            - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400
-            - Invalid Version](#error-400-header-invalid-version)</li></ul>
+            - Invalid Date](#error-400-field-invalid-date-time)</li><li>[400 - Invalid
+            Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid
+            Version](#error-400-header-invalid-version)</li></ul>
           headers:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
@@ -3978,8 +3985,9 @@ paths:
                 $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
             - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400
-            - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400
-            - Invalid Version](#error-400-header-invalid-version)</li></ul>
+            - Invalid Date](#error-400-field-invalid-date-time)</li><li>[400 - Invalid
+            Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid
+            Version](#error-400-header-invalid-version)</li></ul>
           headers:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
@@ -4206,8 +4214,9 @@ paths:
                 $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
             - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400
-            - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400
-            - Invalid Version](#error-400-header-invalid-version)</li></ul>
+            - Invalid Date](#error-400-field-invalid-date-time)</li><li>[400 - Invalid
+            Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid
+            Version](#error-400-header-invalid-version)</li></ul>
           headers:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
@@ -4422,8 +4431,9 @@ paths:
                 $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
             - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400
-            - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400
-            - Invalid Version](#error-400-header-invalid-version)</li></ul>
+            - Invalid Date](#error-400-field-invalid-date-time)</li><li>[400 - Invalid
+            Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid
+            Version](#error-400-header-invalid-version)</li></ul>
           headers:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
@@ -9056,14 +9066,13 @@ components:
           type: string
           x-cds-type: AmountString
         totalOnceOffCharges:
-          description: The aggregate total of any once off charges arising from electricity
+          description: The aggregate total of any once off charges arising from gas
             usage for the period covered by the invoice (exclusive of GST)
           type: string
           x-cds-type: AmountString
         totalOnceOffDiscounts:
           description: The aggregate total of any once off discounts or credits arising
-            from electricity usage for the period covered by the invoice (exclusive
-            of GST)
+            from gas usage for the period covered by the invoice (exclusive of GST)
           type: string
           x-cds-type: AmountString
         otherCharges:
@@ -9073,8 +9082,8 @@ components:
             $ref: '#/components/schemas/EnergyInvoiceGasUsageCharges_otherCharges'
           type: array
         totalGst:
-          description: The total GST for all electricity usage charges.  If absent
-            then zero is assumed
+          description: The total GST for all gas usage charges.  If absent then zero
+            is assumed
           type: string
           x-cds-type: AmountString
       required:

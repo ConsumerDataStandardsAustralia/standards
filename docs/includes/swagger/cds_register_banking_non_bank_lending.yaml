@@ -1,0 +1,1098 @@
+openapi: 3.0.3
+info:
+  title: CDR Participant Discovery API
+  version: 1.27.0
+servers:
+- url: https://<register-base-url>/
+paths:
+  /cdr-register/v1/{industry}/data-holders/brands:
+    get:
+      description: |-
+        Allows Data Recipients to discover Data Holder Brands available in the CDR ecosystem.
+
+        Obsolete versions: [v1](../../../../includes/obsolete/get-data-holder-brands-v1.html)
+      operationId: GetDataHolderBrands
+      parameters:
+      - description: The industry the participant is retrieving data for (Banking,
+          etc)
+        explode: false
+        in: path
+        name: industry
+        required: true
+        schema:
+          enum:
+          - banking
+          - energy
+          - non-bank-lending
+          - telco
+          - all
+          type: string
+          x-cds-type: Enum
+        style: simple
+      - description: An Authorisation Token as per **[[RFC6750]](#nref-RFC6750)**.
+        explode: false
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+          x-cds-type: ExternalRef
+        style: simple
+      - description: The version of the API end point requested by the client. Must
+          be set to a positive integer. For backwards compatiblity defaults to 1 if
+          absent. Note that once version 1 is decommissioned the header will be mandatory
+          for a valid response to be obtained
+        explode: false
+        in: header
+        name: x-v
+        required: false
+        schema:
+          default: "1"
+          type: string
+        style: simple
+      - description: The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers)
+          of the API end point requested by the client. Must be set to a positive
+          integer if provided.
+        explode: false
+        in: header
+        name: x-min-v
+        required: false
+        schema:
+          type: string
+        style: simple
+      - description: query filter returns results updated since the specified date-time
+        explode: true
+        in: query
+        name: updated-since
+        required: false
+        schema:
+          type: string
+          x-cds-type: DateTimeString
+        style: form
+      - description: the page number to return
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          default: 1
+          type: integer
+        style: form
+        x-cds-type: PositiveInteger
+      - description: the number of records to return per page
+        explode: true
+        in: query
+        name: page-size
+        required: false
+        schema:
+          default: 25
+          type: integer
+        style: form
+        x-cds-type: PositiveInteger
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseRegisterDataHolderBrandList'
+          description: Success
+          headers:
+            x-v:
+              description: The version of the API end point that the CDR Register
+                has responded with.
+              explode: false
+              schema:
+                type: string
+              style: simple
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseErrorListV2'
+          description: Missing Required Header / Invalid Version / Invalid Path Parameter
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseErrorListV2'
+          description: Invalid Bearer Token
+        "406":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseErrorListV2'
+          description: Unsupported Version
+      summary: Get Data Holder Brands
+      tags:
+      - Register
+      x-version: "2"
+      x-scopes:
+      - cdr-register:read
+  /cdr-register/v1/{industry}/data-holders/brands/summary:
+    get:
+      description: Endpoint used by participants to discover public details of Data
+        Holder Brands from the CDR Register
+      operationId: GetDataHolderBrandsSummary
+      parameters:
+      - description: The industry the participant is retrieving data for (Banking,
+          etc)
+        explode: false
+        in: path
+        name: industry
+        required: true
+        schema:
+          enum:
+          - banking
+          - energy
+          - non-bank-lending
+          - telco
+          - all
+          type: string
+          x-cds-type: Enum
+        style: simple
+      - description: The version of the API end point requested by the client. Must
+          be set to a positive integer.
+        explode: false
+        in: header
+        name: x-v
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers)
+          of the API end point requested by the client. Must be set to a positive
+          integer if provided.
+        explode: false
+        in: header
+        name: x-min-v
+        required: false
+        schema:
+          type: string
+        style: simple
+      - description: Makes the request method conditional on a recipient cache or
+          origin server not having any current representation of the target resource
+          with an entity-tag that does not match any of those listed in the field-value.
+        explode: false
+        in: header
+        name: If-None-Match
+        required: false
+        schema:
+          type: string
+          x-cds-type: ASCIIString
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseDataHoldersBrandSummaryList'
+          description: Success
+          headers:
+            x-v:
+              description: The version of the API end point that the CDR Register
+                has responded with.
+              explode: false
+              schema:
+                type: string
+              style: simple
+            Etag:
+              description: Entity tag that uniquely represents the requested resource.
+              explode: false
+              schema:
+                type: string
+                x-cds-type: ASCIIString
+              style: simple
+        "304":
+          description: Not Modified - The current representation of the target resource
+            matches with the entity-tag provided in the If-None-Match request header
+          headers:
+            Etag:
+              description: Entity tag that uniquely represents the requested resource.
+              explode: false
+              schema:
+                type: string
+                x-cds-type: ASCIIString
+              style: simple
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseErrorListV2'
+          description: Missing Required Header / Invalid Version / Invalid Path Parameter
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseErrorListV2'
+          description: Industry Not Found
+        "406":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseErrorListV2'
+          description: Unsupported Version
+      summary: Get Data Holder Brands Summary
+      tags:
+      - Register
+      x-version: "1"
+  /cdr-register/v1/{industry}/data-holders/status:
+    get:
+      description: Endpoint used by participants to discover the statuses for Data
+        Holders from the CDR Register
+      operationId: GetDataHolderStatuses
+      parameters:
+      - description: The industry the participant is retrieving data for (Banking,
+          etc)
+        explode: false
+        in: path
+        name: industry
+        required: true
+        schema:
+          enum:
+          - banking
+          - energy
+          - non-bank-lending
+          - telco
+          - all
+          type: string
+          x-cds-type: Enum
+        style: simple
+      - description: The version of the API end point requested by the client. Must
+          be set to a positive integer.  For backwards compatiblity defaults to 1
+          if absent. Note that once version 1 is decommissioned the header will be
+          mandatory for a valid response to be obtained
+        explode: false
+        in: header
+        name: x-v
+        required: false
+        schema:
+          default: "1"
+          type: string
+        style: simple
+      - description: The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers)
+          of the API end point requested by the client. Must be set to a positive
+          integer if provided.
+        explode: false
+        in: header
+        name: x-min-v
+        required: false
+        schema:
+          type: string
+        style: simple
+      - description: Makes the request method conditional on a recipient cache or
+          origin server not having any current representation of the target resource
+          with an entity-tag that does not match any of those listed in the field-value.
+        explode: false
+        in: header
+        name: If-None-Match
+        required: false
+        schema:
+          type: string
+          x-cds-type: ASCIIString
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataHoldersStatusList'
+          description: Success
+          headers:
+            x-v:
+              description: The version of the API end point that the CDR Register
+                has responded with.
+              explode: false
+              schema:
+                type: string
+              style: simple
+            Etag:
+              description: Entity tag that uniquely represents the requested resource.
+              explode: false
+              schema:
+                type: string
+                x-cds-type: ASCIIString
+              style: simple
+        "304":
+          description: Not Modified - The current representation of the target resource
+            matches with the entity-tag provided in the If-None-Match request header
+          headers:
+            Etag:
+              description: Entity tag that uniquely represents the requested resource.
+              explode: false
+              schema:
+                type: string
+                x-cds-type: ASCIIString
+              style: simple
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseErrorListV2'
+          description: Missing Required Header / Invalid Version / Invalid Path Parameter
+        "406":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseErrorListV2'
+          description: Unsupported Version
+      summary: Get Data Holder Statuses
+      tags:
+      - Register
+      x-version: "1"
+components:
+  parameters:
+    Authorization:
+      description: An Authorisation Token as per **[[RFC6750]](#nref-RFC6750)**.
+      explode: false
+      in: header
+      name: Authorization
+      required: true
+      schema:
+        type: string
+        x-cds-type: ExternalRef
+      style: simple
+    XV:
+      description: The version of the API end point requested by the client. Must
+        be set to a positive integer.
+      explode: false
+      in: header
+      name: x-v
+      required: false
+      schema:
+        type: string
+      style: simple
+    Industry:
+      description: The industry the participant is retrieving data for (Banking, etc)
+      explode: false
+      in: path
+      name: industry
+      required: true
+      schema:
+        enum:
+        - banking
+        - energy
+        - non-bank-lending
+        - telco
+        - all
+        type: string
+        x-cds-type: Enum
+      style: simple
+    XMinV:
+      description: The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers)
+        of the API end point requested by the client. Must be set to a positive integer
+        if provided.
+      explode: false
+      in: header
+      name: x-min-v
+      required: false
+      schema:
+        type: string
+      style: simple
+    IfNoneMatch:
+      description: Makes the request method conditional on a recipient cache or origin
+        server not having any current representation of the target resource with an
+        entity-tag that does not match any of those listed in the field-value.
+      explode: false
+      in: header
+      name: If-None-Match
+      required: false
+      schema:
+        type: string
+        x-cds-type: ASCIIString
+      style: simple
+    UpdatedSince:
+      description: query filter returns results updated since the specified date-time
+      explode: true
+      in: query
+      name: updated-since
+      required: false
+      schema:
+        type: string
+        x-cds-type: DateTimeString
+      style: form
+    Page:
+      description: the page number to return
+      explode: true
+      in: query
+      name: page
+      required: false
+      schema:
+        default: 1
+        type: integer
+      style: form
+      x-cds-type: PositiveInteger
+    PageSize:
+      description: the number of records to return per page
+      explode: true
+      in: query
+      name: page-size
+      required: false
+      schema:
+        default: 25
+        type: integer
+      style: form
+      x-cds-type: PositiveInteger
+  responses:
+    BadRequest:
+      content:
+        '*/*':
+          schema:
+            $ref: '#/components/schemas/ResponseErrorListV2'
+      description: Missing Required Header / Invalid Version / Invalid Path Parameter
+    InvalidBearerToken:
+      content:
+        '*/*':
+          schema:
+            $ref: '#/components/schemas/ResponseErrorListV2'
+      description: Invalid Bearer Token
+    NotModified:
+      description: Not Modified - The current representation of the target resource
+        matches with the entity-tag provided in the If-None-Match request header
+      headers:
+        Etag:
+          description: Entity tag that uniquely represents the requested resource.
+          explode: false
+          schema:
+            type: string
+            x-cds-type: ASCIIString
+          style: simple
+    UnsupportedVersion:
+      content:
+        '*/*':
+          schema:
+            $ref: '#/components/schemas/ResponseErrorListV2'
+      description: Unsupported Version
+  schemas:
+    ResponseRegisterDataHolderBrandList:
+      description: Response containing a list of CDR Register Data Holder Brand objects
+      example:
+        data:
+        - lastUpdated: lastUpdated
+          brandName: brandName
+          industries:
+          - banking
+          - banking
+          dataHolderBrandId: dataHolderBrandId
+          endpointDetail:
+            websiteUri: websiteUri
+            publicBaseUri: publicBaseUri
+            infosecBaseUri: infosecBaseUri
+            extensionBaseUri: extensionBaseUri
+            resourceBaseUri: resourceBaseUri
+            version: version
+          logoUri: logoUri
+          authDetails:
+          - registerUType: SIGNED-JWT
+            jwksEndpoint: jwksEndpoint
+          - registerUType: SIGNED-JWT
+            jwksEndpoint: jwksEndpoint
+          legalEntity:
+            arbn: arbn
+            anzsicDivision: anzsicDivision
+            legalEntityId: legalEntityId
+            registrationNumber: registrationNumber
+            registrationDate: registrationDate
+            legalEntityName: legalEntityName
+            logoUri: logoUri
+            registeredCountry: registeredCountry
+            abn: abn
+            acn: acn
+            organisationType: SOLE_TRADER
+            status: ACTIVE
+          status: ACTIVE
+        - lastUpdated: lastUpdated
+          brandName: brandName
+          industries:
+          - banking
+          - banking
+          dataHolderBrandId: dataHolderBrandId
+          endpointDetail:
+            websiteUri: websiteUri
+            publicBaseUri: publicBaseUri
+            infosecBaseUri: infosecBaseUri
+            extensionBaseUri: extensionBaseUri
+            resourceBaseUri: resourceBaseUri
+            version: version
+          logoUri: logoUri
+          authDetails:
+          - registerUType: SIGNED-JWT
+            jwksEndpoint: jwksEndpoint
+          - registerUType: SIGNED-JWT
+            jwksEndpoint: jwksEndpoint
+          legalEntity:
+            arbn: arbn
+            anzsicDivision: anzsicDivision
+            legalEntityId: legalEntityId
+            registrationNumber: registrationNumber
+            registrationDate: registrationDate
+            legalEntityName: legalEntityName
+            logoUri: logoUri
+            registeredCountry: registeredCountry
+            abn: abn
+            acn: acn
+            organisationType: SOLE_TRADER
+            status: ACTIVE
+          status: ACTIVE
+        meta:
+          totalRecords: 6
+          totalPages: 0
+        links:
+          next: next
+          last: last
+          prev: prev
+          self: self
+          first: first
+      properties:
+        data:
+          description: Response data for the query
+          items:
+            $ref: '#/components/schemas/RegisterDataHolderBrand'
+          type: array
+          uniqueItems: true
+        links:
+          $ref: '#/components/schemas/LinksPaginated'
+        meta:
+          $ref: '#/components/schemas/MetaPaginated'
+      required:
+      - data
+      - links
+      - meta
+      type: object
+    RegisterDataHolderBrand:
+      example:
+        lastUpdated: lastUpdated
+        brandName: brandName
+        industries:
+        - banking
+        - banking
+        dataHolderBrandId: dataHolderBrandId
+        endpointDetail:
+          websiteUri: websiteUri
+          publicBaseUri: publicBaseUri
+          infosecBaseUri: infosecBaseUri
+          extensionBaseUri: extensionBaseUri
+          resourceBaseUri: resourceBaseUri
+          version: version
+        logoUri: logoUri
+        authDetails:
+        - registerUType: SIGNED-JWT
+          jwksEndpoint: jwksEndpoint
+        - registerUType: SIGNED-JWT
+          jwksEndpoint: jwksEndpoint
+        legalEntity:
+          arbn: arbn
+          anzsicDivision: anzsicDivision
+          legalEntityId: legalEntityId
+          registrationNumber: registrationNumber
+          registrationDate: registrationDate
+          legalEntityName: legalEntityName
+          logoUri: logoUri
+          registeredCountry: registeredCountry
+          abn: abn
+          acn: acn
+          organisationType: SOLE_TRADER
+          status: ACTIVE
+        status: ACTIVE
+      properties:
+        dataHolderBrandId:
+          description: Unique id of the Data Holder Brand issued by the CDR Register
+          maxLength: 36
+          type: string
+        brandName:
+          description: The name of Data Holder Brand
+          maxLength: 200
+          type: string
+        industries:
+          description: The industries the Data Holder Brand belongs to
+          items:
+            enum:
+            - banking
+            - energy
+            - non-bank-lending
+            - telco
+            type: string
+            x-cds-type: Enum
+          type: array
+          uniqueItems: true
+        logoUri:
+          description: Brand logo URI
+          maxLength: 1000
+          type: string
+          x-cds-type: URIString
+        legalEntity:
+          $ref: '#/components/schemas/LegalEntityDetail'
+        status:
+          enum:
+          - ACTIVE
+          - INACTIVE
+          - REMOVED
+          type: string
+          x-cds-type: Enum
+        endpointDetail:
+          $ref: '#/components/schemas/RegisterDataHolderBrandServiceEndpoint'
+        authDetails:
+          items:
+            $ref: '#/components/schemas/RegisterDataHolderAuth'
+          type: array
+          uniqueItems: true
+        lastUpdated:
+          description: The date/time that the Data Holder Brand data was last updated
+            in the Register
+          type: string
+          x-cds-type: DateTimeString
+      required:
+      - authDetails
+      - brandName
+      - dataHolderBrandId
+      - endpointDetail
+      - industries
+      - lastUpdated
+      - legalEntity
+      - logoUri
+      - status
+      type: object
+    ResponseDataHoldersBrandSummaryList:
+      example:
+        data:
+        - arbn: arbn
+          lastUpdated: lastUpdated
+          brandName: brandName
+          publicBaseUri: publicBaseUri
+          industries:
+          - banking
+          - banking
+          dataHolderBrandId: dataHolderBrandId
+          logoUri: logoUri
+          abn: abn
+          interimId: interimId
+          acn: acn
+        - arbn: arbn
+          lastUpdated: lastUpdated
+          brandName: brandName
+          publicBaseUri: publicBaseUri
+          industries:
+          - banking
+          - banking
+          dataHolderBrandId: dataHolderBrandId
+          logoUri: logoUri
+          abn: abn
+          interimId: interimId
+          acn: acn
+        meta: '{}'
+        links:
+          self: self
+      properties:
+        data:
+          description: Response data for the query
+          items:
+            $ref: '#/components/schemas/DataHolderBrandSummary'
+          type: array
+          uniqueItems: true
+        links:
+          $ref: '#/components/schemas/Links'
+        meta:
+          type: object
+      required:
+      - data
+      - links
+      - meta
+      type: object
+    DataHolderBrandSummary:
+      example:
+        arbn: arbn
+        lastUpdated: lastUpdated
+        brandName: brandName
+        publicBaseUri: publicBaseUri
+        industries:
+        - banking
+        - banking
+        dataHolderBrandId: dataHolderBrandId
+        logoUri: logoUri
+        abn: abn
+        interimId: interimId
+        acn: acn
+      properties:
+        dataHolderBrandId:
+          description: Unique id of the Data Holder Brand issued by the CDR Register
+          maxLength: 36
+          type: string
+          x-conditional: true
+        interimId:
+          description: Interim id of the Data Holder Brand issued by the CDR Register.
+            This is to be used to uniquely identify the record when dataHolderBrandId
+            is not populated and is not to be reused
+          maxLength: 36
+          type: string
+          x-conditional: true
+        brandName:
+          description: The name of Data Holder Brand
+          maxLength: 200
+          type: string
+        publicBaseUri:
+          description: Base URI for the Data Holder's Consumer Data Standard public
+            endpoints
+          maxLength: 1000
+          type: string
+          x-cds-type: URIString
+        logoUri:
+          description: Brand logo URI
+          maxLength: 1000
+          type: string
+          x-cds-type: URIString
+        industries:
+          description: The industries the Data Holder Brand belongs to
+          items:
+            enum:
+            - banking
+            - energy
+            - non-bank-lending
+            - telco
+            type: string
+            x-cds-type: Enum
+          type: array
+          uniqueItems: true
+        lastUpdated:
+          description: The date/time that the Data Holder Brand data was last updated
+            in the Register
+          type: string
+          x-cds-type: DateTimeString
+        abn:
+          description: Australian Business Number for the organisation
+          maxLength: 11
+          type: string
+        acn:
+          description: Australian Company Number for the organisation
+          maxLength: 9
+          type: string
+        arbn:
+          description: Australian Registered Body Number.  ARBNs are issued to registrable
+            Australian bodies and foreign companies
+          maxLength: 9
+          type: string
+      required:
+      - brandName
+      - industries
+      - lastUpdated
+      - logoUri
+      - publicBaseUri
+      type: object
+    DataHoldersStatusList:
+      example:
+        data:
+        - legalEntityId: legalEntityId
+          status: ACTIVE
+        - legalEntityId: legalEntityId
+          status: ACTIVE
+        meta: '{}'
+        links:
+          self: self
+      properties:
+        data:
+          description: Response data for the query
+          items:
+            $ref: '#/components/schemas/DataHolderStatus'
+          type: array
+          uniqueItems: true
+        links:
+          $ref: '#/components/schemas/Links'
+        meta:
+          type: object
+      required:
+      - data
+      - links
+      - meta
+      type: object
+    DataHolderStatus:
+      example:
+        legalEntityId: legalEntityId
+        status: ACTIVE
+      properties:
+        legalEntityId:
+          description: Unique id of the Data Holder Legal Entity issued by the CDR
+            Register.
+          maxLength: 36
+          type: string
+        status:
+          description: Data Holder status in the CDR Register
+          enum:
+          - ACTIVE
+          - REMOVED
+          type: string
+          x-cds-type: Enum
+      required:
+      - legalEntityId
+      - status
+      type: object
+    LegalEntityDetail:
+      description: The data that is common to all organisations, regardless of the
+        type (e.g. company, trust, partnership, government)
+      example:
+        arbn: arbn
+        anzsicDivision: anzsicDivision
+        legalEntityId: legalEntityId
+        registrationNumber: registrationNumber
+        registrationDate: registrationDate
+        legalEntityName: legalEntityName
+        logoUri: logoUri
+        registeredCountry: registeredCountry
+        abn: abn
+        acn: acn
+        organisationType: SOLE_TRADER
+        status: ACTIVE
+      properties:
+        legalEntityId:
+          description: Unique id of the organisation issued by the CDR Register
+          maxLength: 36
+          type: string
+        legalEntityName:
+          description: Unique legal name of the organisation
+          maxLength: 36
+          type: string
+        logoUri:
+          description: Legal Entity logo URI
+          maxLength: 1000
+          type: string
+          x-cds-type: URIString
+        registrationNumber:
+          description: Unique registration number (if the company is registered outside
+            Australia)
+          type: string
+        registrationDate:
+          description: Date of registration (if the company is registered outside
+            Australia)
+          type: string
+          x-cds-type: DateString
+        registeredCountry:
+          description: Country of registeration (if the company is registered outside
+            Australia)
+          maxLength: 100
+          type: string
+        abn:
+          description: Australian Business Number for the organisation
+          maxLength: 11
+          type: string
+        acn:
+          description: Australian Company Number for the organisation
+          maxLength: 9
+          type: string
+        arbn:
+          description: Australian Registered Body Number.  ARBNs are issued to registrable
+            Australian bodies and foreign companies
+          maxLength: 9
+          type: string
+        anzsicDivision:
+          description: ANZSIC division of the organisation. **[[ANZSIC-2006]](#iref-ANZSIC-2006)**
+          maxLength: 100
+          type: string
+          x-cds-type: ExternalRef
+        organisationType:
+          description: Legal organisation type
+          enum:
+          - SOLE_TRADER
+          - COMPANY
+          - PARTNERSHIP
+          - TRUST
+          - GOVERNMENT_ENTITY
+          - OTHER
+          type: string
+          x-cds-type: Enum
+        status:
+          enum:
+          - ACTIVE
+          - REMOVED
+          type: string
+          x-cds-type: Enum
+      required:
+      - legalEntityId
+      - legalEntityName
+      - logoUri
+      - status
+      type: object
+    RegisterDataHolderBrandServiceEndpoint:
+      description: Endpoints related to Data Holder Brand services
+      example:
+        websiteUri: websiteUri
+        publicBaseUri: publicBaseUri
+        infosecBaseUri: infosecBaseUri
+        extensionBaseUri: extensionBaseUri
+        resourceBaseUri: resourceBaseUri
+        version: version
+      properties:
+        version:
+          description: The major version of the high level standards. This is not
+            the version of the endpoint or the payload being requested but the version
+            of the overall standards being applied. This version number will be "v"
+            followed by the major version of the standards as a positive integer (e.g.
+            v1, v12 or v76)
+          type: string
+        publicBaseUri:
+          description: Base URI for the Data Holder's Consumer Data Standard public
+            endpoints
+          maxLength: 1000
+          type: string
+          x-cds-type: URIString
+        resourceBaseUri:
+          description: Base URI for the Data Holder's Consumer Data Standard resource
+            endpoints
+          maxLength: 1000
+          type: string
+          x-cds-type: URIString
+        infosecBaseUri:
+          description: Base URI for the Data Holder's Consumer Data Standard information
+            security endpoints
+          maxLength: 1000
+          type: string
+          x-cds-type: URIString
+        extensionBaseUri:
+          description: Base URI for the Data Holder extension endpoints to the Consumer
+            Data Standard (optional)
+          maxLength: 1000
+          type: string
+          x-cds-type: URIString
+        websiteUri:
+          description: Publicly available website or web resource URI
+          maxLength: 1000
+          type: string
+          x-cds-type: URIString
+      required:
+      - infosecBaseUri
+      - publicBaseUri
+      - resourceBaseUri
+      - version
+      - websiteUri
+      type: object
+    RegisterDataHolderAuth:
+      description: Defines the mechanism used and associated endpoints for Data Holder
+        to Data Recipient authentication
+      example:
+        registerUType: SIGNED-JWT
+        jwksEndpoint: jwksEndpoint
+      properties:
+        registerUType:
+          description: The type of authentication and authorisation mechanism in use
+          enum:
+          - SIGNED-JWT
+          type: string
+          x-cds-type: Enum
+        jwksEndpoint:
+          description: JWKS endpoint used for authentication by the Data Holder with
+            the Data Recipient
+          maxLength: 1000
+          type: string
+          x-cds-type: URIString
+      required:
+      - jwksEndpoint
+      - registerUType
+      type: object
+    LinksPaginated:
+      example:
+        next: next
+        last: last
+        prev: prev
+        self: self
+        first: first
+      properties:
+        first:
+          description: URI to the first page of this set. Mandatory if this response
+            is not the first page
+          type: string
+          x-cds-type: URIString
+        last:
+          description: URI to the last page of this set. Mandatory if this response
+            is not the last page
+          type: string
+          x-cds-type: URIString
+        next:
+          description: URI to the next page of this set. Mandatory if this response
+            is not the last page
+          type: string
+          x-cds-type: URIString
+        prev:
+          description: URI to the previous page of this set. Mandatory if this response
+            is not the first page
+          type: string
+          x-cds-type: URIString
+        self:
+          description: Fully qualified link to this API call
+          type: string
+          x-cds-type: URIString
+      required:
+      - self
+      type: object
+    MetaPaginated:
+      example:
+        totalRecords: 6
+        totalPages: 0
+      properties:
+        totalPages:
+          description: The total number of pages in the full set
+          type: integer
+          x-cds-type: NaturalNumber
+        totalRecords:
+          description: The total number of records in the full set
+          type: integer
+          x-cds-type: NaturalNumber
+      required:
+      - totalPages
+      - totalRecords
+      type: object
+    Links:
+      example:
+        self: self
+      properties:
+        self:
+          description: Fully qualified link to this API call
+          type: string
+          x-cds-type: URIString
+      required:
+      - self
+      type: object
+    Meta:
+      type: object
+    MetaError:
+      description: Additional data for customised error codes
+      properties:
+        urn:
+          description: The CDR error code URN which the application-specific error
+            code extends. Mandatory if the error `code` is an application-specific
+            error rather than a standardised error code.
+          type: string
+      type: object
+      x-conditional:
+      - urn
+    ResponseErrorListV2:
+      properties:
+        errors:
+          items:
+            $ref: '#/components/schemas/ResponseErrorListV2_errors'
+          type: array
+      required:
+      - errors
+      type: object
+      x-conditional:
+      - meta
+    ResponseErrorListV2_errors:
+      properties:
+        code:
+          description: The code of the error encountered. Where the error is specific
+            to the respondent, an application-specific error code, expressed as a
+            string value. If the error is application-specific, the URN code that
+            the specific error extends must be provided in the meta object. Otherwise,
+            the value is the error code URN.
+          type: string
+        title:
+          description: A short, human-readable summary of the problem that MUST NOT
+            change from occurrence to occurrence of the problem represented by the
+            error code.
+          type: string
+        detail:
+          description: A human-readable explanation specific to this occurrence of
+            the problem.
+          type: string
+        meta:
+          $ref: '#/components/schemas/MetaError'
+      required:
+      - code
+      - detail
+      - title
+      type: object

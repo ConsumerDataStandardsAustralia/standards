@@ -245,13 +245,13 @@ components:
       type: string
     RegistrationProperties:
       example:
-        legal_entity_id: 344F0E809-BDBE-4F8E-BD30-5E6C3CB78D7B
+        legal_entity_id: 3B0B0A7B-3E7B-4A2C-9497-E357A71D07C7
         authorization_signed_response_alg: PS256
         token_endpoint_auth_signing_alg: PS256
         client_uri: https://www.mockcompany.com.au
         application_type: web
         logo_uri: https://www.mockcompany.com.au/logos/logo1.png
-        client_id: 35a5a70b-5b8d-41f4-9cbd-96cfbc15c58a
+        client_id: 2cfefa98-7d4a-4bcb-95da-47063b84d410
         client_description: A mock software product
         token_endpoint_auth_method: private_key_jwt
         software_statement: software_statement
@@ -259,14 +259,15 @@ components:
         scope: openid profile bank:accounts.basic:read bank:accounts.detail:read bank:transactions:read
           bank:payees:read bank:regular_payments:read common:customer.basic:read common:customer.detail:read
           cdr:registration
-        client_id_issued_at: 1571808167
-        org_name: Mock Company Brand.
+        client_id_issued_at: 1574398833
+        org_name: Mock Company Brand
         client_name: Mock Software
         policy_uri: https://www.mockcompany.com.au/policy.html
         id_token_signed_response_alg: PS256
         grant_types:
         - client_credentials
-        - client_credentials
+        - authorization_code
+        - refresh_token
         redirect_uris:
         - https://www.mockcompany.com.au/redirects/redirect1
         - https://www.mockcompany.com.au/redirects/redirect2
@@ -289,12 +290,12 @@ components:
       properties:
         client_id:
           description: Data Holder issued client identifier string
-          example: 35a5a70b-5b8d-41f4-9cbd-96cfbc15c58a
+          example: 2cfefa98-7d4a-4bcb-95da-47063b84d410
           type: string
         client_id_issued_at:
           description: Time at which the client identifier was issued expressed as
             seconds since 1970-01-01T00:00:00Z as measured in UTC
-          example: 1571808167
+          example: 1574398833
           type: integer
           x-cds-type: ExternalRef
         client_name:
@@ -315,7 +316,7 @@ components:
         legal_entity_id:
           description: A unique identifier string assigned by the CDR Register that
             identifies the Accredited Data Recipient Legal Entity
-          example: 344F0E809-BDBE-4F8E-BD30-5E6C3CB78D7B
+          example: 3B0B0A7B-3E7B-4A2C-9497-E357A71D07C7
           type: string
         legal_entity_name:
           description: Human-readable string name of the Accredited Data Recipient
@@ -330,7 +331,7 @@ components:
         org_name:
           description: Human-readable string name of the Accredited Data Recipient
             to be presented to the end user during authorization
-          example: Mock Company Brand.
+          example: Mock Company Brand
           type: string
         redirect_uris:
           description: Array of redirection URI strings for use in redirect-based
@@ -402,6 +403,10 @@ components:
         grant_types:
           description: Array of OAuth 2.0 grant type strings that the client can use
             at the token endpoint
+          example:
+          - client_credentials
+          - authorization_code
+          - refresh_token
           items:
             enum:
             - client_credentials
@@ -500,7 +505,7 @@ components:
           type: string
         software_roles:
           description: String containing a role of the software in the CDR Regime.
-            Initially the only value used with be `data-recipient-software-product`
+            Initially the only value used will be `data-recipient-software-product`
           enum:
           - data-recipient-software-product
           example: data-recipient-software-product
