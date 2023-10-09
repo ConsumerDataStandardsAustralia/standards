@@ -10,13 +10,15 @@ These standards fall into three categories:
 
 ## Candidate Standards
 
-The Consumer Data Standards currently include the following candidate standards:
+The Consumer Data Standards currently include the following Candidate Standards:
 
-- [Candidate standards for the Telecommunications sector](./includes/additional/candidates/telco.html)
+- [Candidate Standards for the Telecommunications sector](./includes/additional/candidates/telco.html)
 
 ## Draft Standards
 
-The Consumer Data Standards do not currently include any draft standards.
+The Consumer Data Standards currently include the following Draft Standards:
+
+- [Draft Standards for the Banking and Non-Bank Lending sector](./includes/additional/drafts/non-bank-lending/banking-non-bank-lending.html)
 
 ## Experimental Standards
 
