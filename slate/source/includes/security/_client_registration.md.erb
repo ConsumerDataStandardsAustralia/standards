@@ -5,6 +5,10 @@ Data Recipients register with Data Holders according to **[[DCR]](#nref-DCR)** t
 
 #### Software Statement Assertion (SSA)
 
+```diff
+Updated encoded and decoded example SSAs to include energy scopes and minor updates for clarity and consistency
+```
+
 As per **[[DCR]](#nref-DCR)**, a Software Statement is defined in as: _A digitally signed JSON Web Token (JWT) created in accordance with **[[JWT]](#nref-JWT)** that asserts metadata values about the client software_
 > An SSA is a digitally signed JSON Web Token (JWT) created in accordance with **[[JWT]](#nref-JWT)** that asserts metadata values about the client software.
 
@@ -29,7 +33,7 @@ Example SSA:
 
 
 ```
-eyJhbGciOiJQUzI1NiIsImtpZCI6ImI4ZmFjZjJmZjM5NDQ0Zjc4MWUwYmU1ZGI0YjE0ZjE2IiwidHlwIjoiSldUIn0.ew0KICAiaXNzIjogImNkci1yZWdpc3RlciIsDQogICJpYXQiOiAxNTcxODA4MTY3LA0KICAiZXhwIjogMjE0NzQ4MzY0NiwNCiAgImp0aSI6ICIzYmMyMDVhMWViYzk0M2ZiYjYyNGIxNGZjYjI0MTE5NiIsDQogICJvcmdfaWQiOiAiM0IwQjBBN0ItM0U3Qi00QTJDLTk0OTctRTM1N0E3MUQwN0M4IiwNCiAgIm9yZ19uYW1lIjogIk1vY2sgQ29tcGFueSBJbmMuIiwNCiAgImNsaWVudF9uYW1lIjogIk1vY2sgU29mdHdhcmUiLA0KICAiY2xpZW50X2Rlc2NyaXB0aW9uIjogIkEgbW9jayBzb2Z0d2FyZSBwcm9kdWN0IGZvciB0ZXN0aW5nIFNTQSIsDQogICJjbGllbnRfdXJpIjogImh0dHBzOi8vd3d3Lm1vY2tjb21wYW55LmNvbS5hdSIsDQogICJyZWRpcmVjdF91cmlzIjogWw0KICAgICJodHRwczovL3d3dy5tb2NrY29tcGFueS5jb20uYXUvcmVkaXJlY3RzL3JlZGlyZWN0MSIsDQogICAgImh0dHBzOi8vd3d3Lm1vY2tjb21wYW55LmNvbS5hdS9yZWRpcmVjdHMvcmVkaXJlY3QyIg0KICBdLA0KICAibG9nb191cmkiOiAiaHR0cHM6Ly93d3cubW9ja2NvbXBhbnkuY29tLmF1L2xvZ29zL2xvZ28xLnBuZyIsDQogICJ0b3NfdXJpIjogImh0dHBzOi8vd3d3Lm1vY2tjb21wYW55LmNvbS5hdS90b3MuaHRtbCIsDQogICJwb2xpY3lfdXJpIjogImh0dHBzOi8vd3d3Lm1vY2tjb21wYW55LmNvbS5hdS9wb2xpY3kuaHRtbCIsDQogICJqd2tzX3VyaSI6ICJodHRwczovL3d3dy5tb2NrY29tcGFueS5jb20uYXUvandrcyIsDQogICJyZXZvY2F0aW9uX3VyaSI6ICJodHRwczovL3d3dy5tb2NrY29tcGFueS5jb20uYXUvcmV2b2NhdGlvbiIsDQogICJzb2Z0d2FyZV9pZCI6ICI3NDBDMzY4Ri1FQ0Y5LTREMjktQTJFQS0wNTE0QTY2QjBDREUiLA0KICAic29mdHdhcmVfcm9sZXMiOiAiZGF0YS1yZWNpcGllbnQtc29mdHdhcmUtcHJvZHVjdCIsDQogICJzY29wZSI6ICJiYW5rOmFjY291bnRzLmJhc2ljOnJlYWQgYmFuazphY2NvdW50cy5kZXRhaWw6cmVhZCBiYW5rOnRyYW5zYWN0aW9uczpyZWFkIGJhbms6cGF5ZWVzOnJlYWQgYmFuazpyZWd1bGFyX3BheW1lbnRzOnJlYWQgY29tbW9uOmN1c3RvbWVyLmJhc2ljOnJlYWQgY29tbW9uOmN1c3RvbWVyLmRldGFpbDpyZWFkIg0KfQ.ZNKe8aBHcsZ_OfdP0GvUa0AHrjcoC0Coky4jQHrPsRoG3YMcS2XG9JtyB5zq-AMOQoaib1Ijx1m7B-JOEbVcnNJcLUZeVEIwnP8hRssAnGjWwaYGUAiY-DEFUsuXqpQWgyIOFz84W-FaHFcqpOSGxjGmjICZU9S1Pl4o8b5poA_kJ2n_wdiOBUG4xl3uXqzK_vstcGXbAubFyLhjOxhc_rqONO2NCtpyCwj83Zqi7Ve_A27-ty5N0AQa2xYWvjDt_Xh8xcxRI_ih7_sStvDTTy3gtyX5bAdXsDsweCcvN0d2vOCpm6-dnr8D1fXDTnlT3x2uQ0XAysWr6wU4mAZFVA
+eyJhbGciOiJQUzI1NiIsImtpZCI6ImI4ZmFjZjJmZjM5NDQ0Zjc4MWUwYmU1ZGI0YjE0ZjE2IiwidHlwIjoiSldUIn0.eyJpc3MiOiJjZHItcmVnaXN0ZXIiLCJpYXQiOjE1NzE4MDgxMTEsImV4cCI6MjE0NzQ4MzY0NiwianRpIjoiM2JjMjA1YTFlYmM5NDNmYmI2MjRiMTRmY2IyNDExOTYiLCJjbGllbnRfbmFtZSI6Ik1vY2sgU29mdHdhcmUiLCJjbGllbnRfZGVzY3JpcHRpb24iOiJBIG1vY2sgc29mdHdhcmUgcHJvZHVjdCIsImNsaWVudF91cmkiOiJodHRwczovL3d3dy5tb2NrY29tcGFueS5jb20uYXUiLCJsZWdhbF9lbnRpdHlfaWQiOiIzQjBCMEE3Qi0zRTdCLTRBMkMtOTQ5Ny1FMzU3QTcxRDA3QzciLCJsZWdhbF9lbnRpdHlfbmFtZSI6Ik1vY2sgQ29tcGFueSBQdHkgTHRkLiIsIm9yZ19pZCI6IjNCMEIwQTdCLTNFN0ItNEEyQy05NDk3LUUzNTdBNzFEMDdDOCIsIm9yZ19uYW1lIjoiTW9jayBDb21wYW55IEJyYW5kIiwicmVkaXJlY3RfdXJpcyI6WyJodHRwczovL3d3dy5tb2NrY29tcGFueS5jb20uYXUvcmVkaXJlY3RzL3JlZGlyZWN0MSIsImh0dHBzOi8vd3d3Lm1vY2tjb21wYW55LmNvbS5hdS9yZWRpcmVjdHMvcmVkaXJlY3QyIl0sInNlY3Rvcl9pZGVudGlmaWVyX3VyaSI6Imh0dHBzOi8vd3d3Lm1vY2tjb21wYW55LmNvbS5hdS9zZWN0b3JfaWRlbnRpZmllci5qc29uIiwibG9nb191cmkiOiJodHRwczovL3d3dy5tb2NrY29tcGFueS5jb20uYXUvbG9nb3MvbG9nbzEucG5nIiwidG9zX3VyaSI6Imh0dHBzOi8vd3d3Lm1vY2tjb21wYW55LmNvbS5hdS90b3MuaHRtbCIsInBvbGljeV91cmkiOiJodHRwczovL3d3dy5tb2NrY29tcGFueS5jb20uYXUvcG9saWN5Lmh0bWwiLCJqd2tzX3VyaSI6Imh0dHBzOi8vd3d3Lm1vY2tjb21wYW55LmNvbS5hdS9qd2tzIiwicmV2b2NhdGlvbl91cmkiOiJodHRwczovL3d3dy5tb2NrY29tcGFueS5jb20uYXUvcmV2b2NhdGlvbiIsInJlY2lwaWVudF9iYXNlX3VyaSI6Imh0dHBzOi8vd3d3Lm1vY2tjb21wYW55LmNvbS5hdSIsInNvZnR3YXJlX2lkIjoiNzQwQzM2OEYtRUNGOS00RDI5LUEyRUEtMDUxNEE2NkIwQ0RFIiwic29mdHdhcmVfcm9sZXMiOiJkYXRhLXJlY2lwaWVudC1zb2Z0d2FyZS1wcm9kdWN0Iiwic2NvcGUiOiJvcGVuaWQgcHJvZmlsZSBiYW5rOmFjY291bnRzLmJhc2ljOnJlYWQgYmFuazphY2NvdW50cy5kZXRhaWw6cmVhZCBiYW5rOnRyYW5zYWN0aW9uczpyZWFkIGJhbms6cGF5ZWVzOnJlYWQgYmFuazpyZWd1bGFyX3BheW1lbnRzOnJlYWQgZW5lcmd5OmVsZWN0cmljaXR5LnNlcnZpY2Vwb2ludHMuYmFzaWM6cmVhZCBlbmVyZ3k6ZWxlY3RyaWNpdHkuc2VydmljZXBvaW50cy5kZXRhaWw6cmVhZCBlbmVyZ3k6ZWxlY3RyaWNpdHkudXNhZ2U6cmVhZCBlbmVyZ3k6ZWxlY3RyaWNpdHkuZGVyOnJlYWQgZW5lcmd5OmFjY291bnRzLmJhc2ljOnJlYWQgZW5lcmd5OmFjY291bnRzLmRldGFpbDpyZWFkIGVuZXJneTphY2NvdW50cy5wYXltZW50c2NoZWR1bGU6cmVhZCBlbmVyZ3k6YWNjb3VudHMuY29uY2Vzc2lvbnM6cmVhZCBlbmVyZ3k6YmlsbGluZzpyZWFkIGNvbW1vbjpjdXN0b21lci5iYXNpYzpyZWFkIGNvbW1vbjpjdXN0b21lci5kZXRhaWw6cmVhZCBjZHI6cmVnaXN0cmF0aW9uIn0.XTSst96xOifAnaMaBj0I5nO5vbtNwvz304hJ9I_jPOcdD6vitmLiyWdkdW5GKA4JAa62_DmRIU_3zXQL0gSSJxoWhCSbuIlfwDtXFpFZzQAnTv-hOul-5clYmXvQqqEqWvbZZ4g7IKdWdROp4fzWFXB0VKf-_qzue_Kksy3A9CwdZRmNMDFtIApkSULqxK3S8D2nFa3lvGzegl76Ji7p0Zjkyu8YexFyKCahTEGzQrRQeVILpaN107XHNlSWlhsv4hr1PXwG2Pn1z54SCG9tVOZ10WaqZ5SMjRqsQN-lVYSVe5BCTpQ-N_GnYuUeWh0rOJ9CrA8CUN_twCJXyW3I5w
 ```
 
 
@@ -65,21 +69,21 @@ Decoded SSA
 
 {
   "iss": "cdr-register",
-  "iat": 1571808167,
+  "iat": 1571808111,
   "exp": 2147483646,
   "jti": "3bc205a1ebc943fbb624b14fcb241196",
+  "client_name": "Mock Software",
+  "client_description": "A mock software product",
+  "client_uri": "https://www.mockcompany.com.au",
   "legal_entity_id": "3B0B0A7B-3E7B-4A2C-9497-E357A71D07C7",
   "legal_entity_name": "Mock Company Pty Ltd.",
   "org_id": "3B0B0A7B-3E7B-4A2C-9497-E357A71D07C8",
   "org_name": "Mock Company Brand",
-  "client_name": "Mock Software",
-  "client_description": "A mock software product for testing SSA",
-  "client_uri": "https://www.mockcompany.com.au",
   "redirect_uris": [
     "https://www.mockcompany.com.au/redirects/redirect1",
     "https://www.mockcompany.com.au/redirects/redirect2"
   ],
-  "sector_identifier_uri": "https://www.mockcompany.com.au/sector_identifier",
+  "sector_identifier_uri": "https://www.mockcompany.com.au/sector_identifier.json",
   "logo_uri": "https://www.mockcompany.com.au/logos/logo1.png",
   "tos_uri": "https://www.mockcompany.com.au/tos.html",
   "policy_uri": "https://www.mockcompany.com.au/policy.html",
@@ -88,17 +92,7 @@ Decoded SSA
   "recipient_base_uri": "https://www.mockcompany.com.au",
   "software_id": "740C368F-ECF9-4D29-A2EA-0514A66B0CDE",
   "software_roles": "data-recipient-software-product",
-  "scope":
-        "openid
-         profile
-         bank:accounts.basic:read
-         bank:accounts.detail:read
-         bank:transactions:read
-         bank:payees:read
-         bank:regular_payments:read
-         common:customer.basic:read
-         common:customer.detail:read
-         cdr:registration"
+  "scope": "openid profile bank:accounts.basic:read bank:accounts.detail:read bank:transactions:read bank:payees:read bank:regular_payments:read energy:electricity.servicepoints.basic:read energy:electricity.servicepoints.detail:read energy:electricity.usage:read energy:electricity.der:read energy:accounts.basic:read energy:accounts.detail:read energy:accounts.paymentschedule:read energy:accounts.concessions:read energy:billing:read common:customer.basic:read common:customer.detail:read cdr:registration"
 }
 
 ```
@@ -106,6 +100,10 @@ Decoded SSA
 The SSA will conform to the requirements of **[[DCR]](#nref-DCR)** with the following clarifications:
 
 
+
+```diff
+Corrected typo in the description of the software_roles field
+```
 
 | Client Metadata | Required | Modifiable | Description
 |--------------|-------|-------|----------------------------------------------------------------------------------------
@@ -129,7 +127,7 @@ The SSA will conform to the requirements of **[[DCR]](#nref-DCR)** with the foll
 |**revocation_uri**| Required | <i class="icon-check"></i>  | URI string that references the location of the Software Product consent revocation endpoint as per Consumer Data Standards [Endpoints](#security-endpoints)
 |**recipient_base_uri**| Required | <i class="icon-check"></i>  | Base URI for the Consumer Data Standard Data Recipient endpoints. This **SHOULD** be the base to provide reference to all other [Data Recipient Endpoints](#security-endpoints)
 |**software_id**|	Required | | String representing a unique identifier assigned by the Register and used by registration endpoints to identify the software product to be dynamically registered. </br></br>The `software_id` will remain the same across multiple updates or versions of the same piece of software.</br>The `software_id` **SHOULD** be used as the primary external identifier for the client to prevent duplicate client registrations
-|**software_roles**| Required | | String containing a role of the software in the CDR Regime. Initially the only value used with be **“data-recipient-software-product”**
+|**software_roles**| Required | | String containing a role of the software in the CDR Regime. Initially the only value used will be **“data-recipient-software-product”**
 |**scope**|	Required | <i class="icon-check"></i> | String containing a space-separated list of scope values that the client can use when requesting access tokens. </br>These CDS scope values are defined at: [Authorisation Scopes](#authorisation-scopes)</br>The DCR scope value is defined at: [Client Registration Management](#registration-management)</br></br>As per the [CDS Scopes and Claims](#scopes-and-claims), **openid** and **profile** are included in the SSA
 
 Get Software Statement Assertion API [v1](includes/obsolete/get-software-statement-assertion-v1.html) & [v2](includes/obsolete/get-software-statement-assertion-v2.html) has the scope claim explicitly defined.
@@ -154,32 +152,31 @@ Accept: application/json
    "kid":"12456"
 }
 {
-   "iss":"CDR Software Product ID",
-   "iat":1571808167,
-   "exp":2147483646,
-   "jti":"37747cd1c10545699f754adf28b73e31",
-   "aud":"https://secure.api.dataholder.com/issuer",
-   "redirect_uris":[
-      "https://www.mockcompany.com.au/redirects/redirect1",
-      "https://www.mockcompany.com.au/redirects/redirect2"
-   ],
-   "token_endpoint_auth_signing_alg":"PS256",
-   "token_endpoint_auth_method":"private_key_jwt",
-   "grant_types":[
-      "client_credentials",
-      "authorization_code",
-      "refresh_token"
-   ],
-   "response_types":["code id_token"],
-   "application_type":"web",
-   "id_token_signed_response_alg":"PS256",
-   "id_token_encrypted_response_alg":"RSA-OAEP",
-   "id_token_encrypted_response_enc:"A256GCM",
-   "request_object_signing_alg":"PS256",
-   "authorization_signed_response_alg": "PS256",
-   "authorization_encrypted_response_alg": "RSA-OAEP",
-   "authorization_encrypted_response_enc": "A256GCM",
-   "software_statement":…
+  "iss": "CDR Software Product ID",
+  "iat": 1571908322,
+  "exp": 2148483456,
+  "jti": "37747cd1c10545699f754adf28b73e31",
+  "aud": "https://secure.api.dataholder.com/issuer",
+  "redirect_uris": [
+    "https://www.mockcompany.com.au/redirects/redirect1",
+    "https://www.mockcompany.com.au/redirects/redirect2"
+  ],
+  "token_endpoint_auth_method": "private_key_jwt",
+  "token_endpoint_auth_signing_alg": "PS256",
+  "grant_types": [
+    "client_credentials",
+    "authorization_code",
+    "refresh_token"
+  ],
+  "response_types": [
+    "code id_token"
+  ],
+  "application_type": "web",
+  "id_token_signed_response_alg": "PS256",
+  "id_token_encrypted_response_alg": "RSA-OAEP",
+  "id_token_encrypted_response_enc": "A256GCM",
+  "request_object_signing_alg": "PS256",
+  "software_statement": "string"
 }
 {
   "signature":...
@@ -200,32 +197,33 @@ Accept: application/json
    "kid":"12456"
 }
 {
-   "iss":"CDR Software Product ID",
-   "iat":1571808167,
-   "exp":2147483646,
-   "jti":"37747cd1c10545699f754adf28b73e31",
-   "aud":"https://secure.api.dataholder.com/issuer",
-   "redirect_uris":[
-      "https://www.mockcompany.com.au/redirects/redirect1",
-      "https://www.mockcompany.com.au/redirects/redirect2"
-   ],
-   "token_endpoint_auth_signing_alg":"PS256",
-   "token_endpoint_auth_method":"private_key_jwt",
-   "grant_types":[
-      "client_credentials",
-      "authorization_code",
-      "refresh_token"
-   ],
-   "response_types":["code"],
-   "application_type":"web",
-   "id_token_signed_response_alg":"PS256",
-   "request_object_signing_alg":"PS256",
-   "authorization_signed_response_alg": "PS256",
-   "authorization_encrypted_response_alg": "RSA-OAEP",
-   "authorization_encrypted_response_enc": "A256GCM",
-   "software_statement":…
-}
-{
+  "iss": "CDR Software Product ID",
+  "iat": 1571908322,
+  "exp": 2148483456,
+  "jti": "37747cd1c10545699f754adf28b73e31",
+  "aud": "https://secure.api.dataholder.com/issuer",
+  "redirect_uris": [
+    "https://www.mockcompany.com.au/redirects/redirect1",
+    "https://www.mockcompany.com.au/redirects/redirect2"
+  ],
+  "token_endpoint_auth_method": "private_key_jwt",
+  "token_endpoint_auth_signing_alg": "PS256",
+  "grant_types": [
+    "client_credentials",
+    "authorization_code",
+    "refresh_token"
+  ],
+  "response_types": [
+    "code"
+  ],
+  "application_type": "web",
+  "id_token_signed_response_alg": "PS256",
+  "authorization_signed_response_alg": "PS256",
+  "authorization_encrypted_response_alg": "RSA-OAEP",
+  "authorization_encrypted_response_enc": "A128CBC-HS256",
+  "request_object_signing_alg": "PS256",
+  "software_statement": "string"
+}{
   "signature":...
 }
 ```
@@ -241,7 +239,6 @@ To register with a Data Holder, the Data Recipient sends an HTTP POST to the Dat
 * The JWT **MUST** be signed using algorithms specified in [section 8.6](https://openid.net/specs/openid-financial-api-part-2-1_0.html#algorithm-considerations) of **[[FAPI-1.0-Advanced]](#nref-FAPI-1-0-Advanced)**
 
 The client registration request **MUST** contain the following claims in the JWT payload unless designated as Optional:
-
 
 
 | Claim | Required | Description
@@ -321,52 +318,44 @@ Content-Type: application/json
 
 {
   "client_id": "2cfefa98-7d4a-4bcb-95da-47063b84d410",
-  "client_id_issued_at": 1574398823,
+  "client_id_issued_at": 1574398833,
+  "client_name": "Mock Software",
+  "client_description": "A mock software product",
+  "client_uri": "https://www.mockcompany.com.au",
+  "legal_entity_id": "3B0B0A7B-3E7B-4A2C-9497-E357A71D07C7",
+  "legal_entity_name": "Mock Company Pty Ltd.",
+  "org_id": "3B0B0A7B-3E7B-4A2C-9497-E357A71D07C8",
+  "org_name": "Mock Company Brand",
   "redirect_uris": [
-     "https://www.mockcompany.com.au/redirects/redirect1",
-     "https://www.mockcompany.com.au/redirects/redirect2"
-   ],
-   "token_endpoint_auth_signing_alg":"PS256",
-   "token_endpoint_auth_method":"private_key_jwt",
-   "grant_types":[
-      "client_credentials",
-      "authorization_code",
-      "refresh_token"
-   ],
-   "response_types":["code id_token"],
-   "application_type":"web",
-   "id_token_signed_response_alg":"PS256",
-   "id_token_encrypted_response_alg":"RSA-OAEP",
-   "id_token_encrypted_response_enc:"A256GCM",
-   "request_object_signing_alg":"PS256",
-   "software_statement":"…",
-   "legal_entity_id": "3B0B0A7B-3E7B-4A2C-9497-E357A71D07C7",
-   "legal_entity_name": "Mock Company Pty Ltd",
-   "org_id": "3B0B0A7B-3E7B-4A2C-9497-E357A71D07C8",
-   "org_name": "Mock Company Brand",
-   "client_name": "Mock Software",
-   "client_description": "A mock software product for testing SSA",
-   "client_uri": "https://www.mockcompany.com.au",
-   "logo_uri": "https://www.mockcompany.com.au/logos/logo1.png",
-   "tos_uri": "https://www.mockcompany.com.au/tos.html",
-   "policy_uri": "https://www.mockcompany.com.au/policy.html",
-   "jwks_uri": "https://www.mockcompany.com.au/jwks",
-   "revocation_uri": "https://www.mockcompany.com.au/revocation",
-   "recipient_base_uri": "https://www.mockcompany.com.au",
-   "sector_identifier_uri": "https://www.mockcompany.com.au/sector_identifier"
-   "software_id": "740C368F-ECF9-4D29-A2EA-0514A66B0CDE",
-   "software_roles": "data-recipient-software-product",
-   "scope":
-         "openid
-          profile
-          bank:accounts.basic:read
-          bank:accounts.detail:read
-          bank:transactions:read
-          bank:payees:read
-          bank:regular_payments:read
-          common:customer.basic:read
-          common:customer.detail:read
-          cdr:registration"
+    "https://www.mockcompany.com.au/redirects/redirect1",
+    "https://www.mockcompany.com.au/redirects/redirect2"
+  ],
+  "sector_identifier_uri": "https://www.mockcompany.com.au/sector_identifier.json",
+  "logo_uri": "https://www.mockcompany.com.au/logos/logo1.png",
+  "tos_uri": "https://www.mockcompany.com.au/tos.html",
+  "policy_uri": "https://www.mockcompany.com.au/policy.html",
+  "jwks_uri": "https://www.mockcompany.com.au/jwks",
+  "revocation_uri": "https://www.mockcompany.com.au/revocation",
+  "recipient_base_uri": "https://www.mockcompany.com.au",
+  "token_endpoint_auth_method": "private_key_jwt",
+  "token_endpoint_auth_signing_alg": "PS256",
+  "grant_types": [
+    "client_credentials",
+    "authorization_code",
+    "refresh_token"
+  ],
+  "response_types": [
+    "code id_token"
+  ],
+  "application_type": "web",
+  "id_token_signed_response_alg": "PS256",
+  "id_token_encrypted_response_alg": "RSA-OAEP",
+  "id_token_encrypted_response_enc": "A256GCM",
+  "request_object_signing_alg": "PS256",
+  "software_statement": "string",
+  "software_id": "740C368F-ECF9-4D29-A2EA-0514A66B0CDE",
+  "software_roles": "data-recipient-software-product",
+  "scope": "openid profile bank:accounts.basic:read bank:accounts.detail:read bank:transactions:read bank:payees:read bank:regular_payments:read common:customer.basic:read common:customer.detail:read cdr:registration"
 }
 ```
 
@@ -381,53 +370,45 @@ Content-Type: application/json
 
 {
   "client_id": "2cfefa98-7d4a-4bcb-95da-47063b84d410",
-  "client_id_issued_at": 1574398823,
+  "client_id_issued_at": 1574398833,
+  "client_name": "Mock Software",
+  "client_description": "A mock software product",
+  "client_uri": "https://www.mockcompany.com.au",
+  "legal_entity_id": "3B0B0A7B-3E7B-4A2C-9497-E357A71D07C7",
+  "legal_entity_name": "Mock Company Pty Ltd.",
+  "org_id": "3B0B0A7B-3E7B-4A2C-9497-E357A71D07C8",
+  "org_name": "Mock Company Brand",
   "redirect_uris": [
-     "https://www.mockcompany.com.au/redirects/redirect1",
-     "https://www.mockcompany.com.au/redirects/redirect2"
-   ],
-   "token_endpoint_auth_signing_alg":"PS256",
-   "token_endpoint_auth_method":"private_key_jwt",
-   "grant_types":[
-      "client_credentials",
-      "authorization_code",
-      "refresh_token"
-   ],
-   "response_types":["code"],
-   "application_type":"web",
-   "id_token_signed_response_alg":"PS256",
-   "authorization_signed_response_alg": "PS256",
-   "authorization_encrypted_response_alg": "RSA-OAEP",
-   "authorization_encrypted_response_enc": "A256GCM",
-   "request_object_signing_alg":"PS256",
-   "software_statement":"…",
-   "legal_entity_id": "3B0B0A7B-3E7B-4A2C-9497-E357A71D07C7",
-   "legal_entity_name": "Mock Company Pty Ltd",
-   "org_id": "3B0B0A7B-3E7B-4A2C-9497-E357A71D07C8",
-   "org_name": "Mock Company Brand",
-   "client_name": "Mock Software",
-   "client_description": "A mock software product for testing SSA",
-   "client_uri": "https://www.mockcompany.com.au",
-   "logo_uri": "https://www.mockcompany.com.au/logos/logo1.png",
-   "tos_uri": "https://www.mockcompany.com.au/tos.html",
-   "policy_uri": "https://www.mockcompany.com.au/policy.html",
-   "jwks_uri": "https://www.mockcompany.com.au/jwks",
-   "revocation_uri": "https://www.mockcompany.com.au/revocation",
-   "recipient_base_uri": "https://www.mockcompany.com.au",
-   "sector_identifier_uri": "https://www.mockcompany.com.au/sector_identifier"
-   "software_id": "740C368F-ECF9-4D29-A2EA-0514A66B0CDE",
-   "software_roles": "data-recipient-software-product",
-   "scope":
-         "openid
-          profile
-          bank:accounts.basic:read
-          bank:accounts.detail:read
-          bank:transactions:read
-          bank:payees:read
-          bank:regular_payments:read
-          common:customer.basic:read
-          common:customer.detail:read
-          cdr:registration"
+    "https://www.mockcompany.com.au/redirects/redirect1",
+    "https://www.mockcompany.com.au/redirects/redirect2"
+  ],
+  "sector_identifier_uri": "https://www.mockcompany.com.au/sector_identifier.json",
+  "logo_uri": "https://www.mockcompany.com.au/logos/logo1.png",
+  "tos_uri": "https://www.mockcompany.com.au/tos.html",
+  "policy_uri": "https://www.mockcompany.com.au/policy.html",
+  "jwks_uri": "https://www.mockcompany.com.au/jwks",
+  "revocation_uri": "https://www.mockcompany.com.au/revocation",
+  "recipient_base_uri": "https://www.mockcompany.com.au",
+  "token_endpoint_auth_method": "private_key_jwt",
+  "token_endpoint_auth_signing_alg": "PS256",
+  "grant_types": [
+    "client_credentials",
+    "authorization_code",
+    "refresh_token"
+  ],
+  "response_types": [
+    "code"
+  ],
+  "application_type": "web",
+  "id_token_signed_response_alg": "PS256",
+  "authorization_signed_response_alg": "PS256",
+  "authorization_encrypted_response_alg": "RSA-OAEP",
+  "authorization_encrypted_response_enc": "A128CBC-HS256",
+  "request_object_signing_alg": "PS256",
+  "software_statement": "string",
+  "software_id": "740C368F-ECF9-4D29-A2EA-0514A66B0CDE",
+  "software_roles": "data-recipient-software-product",
+  "scope": "openid profile bank:accounts.basic:read bank:accounts.detail:read bank:transactions:read bank:payees:read bank:regular_payments:read common:customer.basic:read common:customer.detail:read cdr:registration"
 }
 ```
 
