@@ -399,7 +399,7 @@ function schemaToArray(schema,offset,options,data) {
         }
         if ((skipDepth >= 0) && (entry.depth >= skipDepth)) entry.name = ''; // reset
         if (entry.depth < skipDepth) skipDepth = -1;
-        entry.displayName = (data.translations.indent.repeat(entry.depth)+' '+entry.name).trim();
+        entry.displayName = (data.translations.indent.repeat(entry.depth) + String.fromCharCode(160) + entry.name).trim();
 
         if ((!state.top || entry.type !== 'object') && (entry.name)) {
           block.rows.push(entry);

@@ -23,6 +23,7 @@ This release addresses the following minor defects raised on [Standards Staging]
 - [Staging Issue 306 - Body parameter for JWT POST + PUT not displayed](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/306)
 - [Staging Issue 307 - Incorrect non-normative example](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/307)
 - [Staging Issue 308 - Fix link to FAPI section reference](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/308)
+- [Staging Issue 309 - Property names wrapping to two lines](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/309)
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
@@ -59,6 +60,7 @@ This release addresses the following Decision Proposals published on [Standards]
 
 |Change|Description|Link|
 |------|-----------|----|
+| Property names wrapping to two lines | **[Standards Staging #309](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/309):** Changed to a non-breaking space between the indent chevron and property name in all schema Properties tables to prevent line wrapping | All schema Properties tables |
 | Incorrect levelling of largeSecondary object | **[Standards Staging #196](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/196):** Resolved documentation rendering bug causing incorrect indent level to be displayed for some properties | Multiple sections, including [Get Metrics](../../#get-metrics) |
 | Corrected typos | **[Standards Maintenance #599](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/599):** Corrected descriptions mentioning electricity in the EnergyInvoiceGasUsageCharges schema. Addresses [this issue comment](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/599#issuecomment-1678450294) | [Energy APIs](../../#energy-apis) |
 | Corrected requirement | **[Standards Maintenance #599](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/599):** Corrected the requirement for the authorisations property of Get Metrics v4 and v5 to be mandatory. Addresses [this issue comment](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/599#issuecomment-1691010927) | [Admin APIs](../../#admin-apis) |
