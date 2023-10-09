@@ -1,6 +1,8 @@
 ### OpenID Provider Configuration End Point
 
 ```diff
+Updated the 'code_challenge_methods_supported' property of the OpenID Provider Configuration to be an array
+
 Updated [FAPI-RW-Draft] to refer to [FAPI-1.0-Advanced]
 ```
 
@@ -37,7 +39,7 @@ Content-Type: application/json
   "token_endpoint_auth_signing_alg_values_supported": ["ES256", "PS256"],
   "userinfo_endpoint": "https://www.dh.com.au/userinfo",
 
-  "code_challenge_methods_supported": "S256",
+  "code_challenge_methods_supported": ["S256"],
   "introspection_endpoint": "https://www.dh.com.au/introspect",
   "revocation_endpoint": "https://www.dh.com.au/revoke",
 
