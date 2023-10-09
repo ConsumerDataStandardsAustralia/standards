@@ -548,7 +548,7 @@ This operation may only be called by the CDR Register
 
 ```
 
-*Percentage of calls within the performance thresholds*
+*Percentage of calls within Primary Data Holder performance thresholds. Note that Secondary Data Holder performance <b>MUST</b> be excluded from this metric.*
 
 ### Properties
 
