@@ -19,6 +19,7 @@ This release addresses the following minor defects raised on [Standards Staging]
 
 - [Staging Issue 196 - Incorrect levelling of largeSecondary object](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/196)
 - [Staging Issue #197 - Update client registration non-normative examples to include energy sectors](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/197)
+- [Staging Issue #305 - Long lines break words and cause scrollbars](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/305)
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
@@ -36,6 +37,7 @@ This release addresses the following Decision Proposals published on [Standards]
 ## General Changes
 |Change|Description|Link|
 |------|-----------|----|
+| Line wrapping and scrollbars | **[Standards Staging #305](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/305):** Improved line wrapping and removed horizontal scrollbars in the 'Non-normative Examples' and 'Version Delta' tab column. | [Non-normative Examples](../../?examples)<br>[Version Delta](../../?diff) |
 | Release notes for v1.25.0 | **[Standards Maintenance #599](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/599):** Updated release notes for v1.25.0. Addresses [this issue comment](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/599#issuecomment-1649587194) | [Change Log](../../#change-log) |
 
 ## Introduction
