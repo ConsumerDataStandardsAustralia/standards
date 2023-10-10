@@ -8,7 +8,7 @@ The following table lists the changes made to these standards in reverse date or
 
 |Change Date|Version|Description|Detail Of change|
 |-----------|-------|-----------|----------------|
-|05/10/2023| 1.27.0 | Changes arising from Decision 313 (Maintenance Iteration 16) | See [release notes](includes/releasenotes/releasenotes.1.27.0.html) and [Decision 313](https://github.com/ConsumerDataStandardsAustralia/standards/issues/313) for details. |
+|10/10/2023| 1.27.0 | Changes arising from Decision 313 (Maintenance Iteration 16) | See [release notes](includes/releasenotes/releasenotes.1.27.0.html) and [Decision 313](https://github.com/ConsumerDataStandardsAustralia/standards/issues/313) for details. |
 |24/08/2023| 1.26.0 | Changes to obligations for the implementation of Get Metrics | See [release notes](includes/releasenotes/releasenotes.1.26.0.html) and [Decision 322](https://github.com/ConsumerDataStandardsAustralia/standards/issues/322) for details. |
 |08/07/2023| 1.25.0 | Changes arising from Decision 303 (Maintenance iteration 15) and Decision 288 (Metrics and NFRs) | See [release notes](includes/releasenotes/releasenotes.1.25.0.html), [Decision 303](https://github.com/ConsumerDataStandardsAustralia/standards/issues/303) and [Decision 288](https://github.com/ConsumerDataStandardsAustralia/standards/issues/288) for details. |
 |07/05/2023| 1.24.0 | Changes arising from Decision 281 (Maintenance iteration 14) | See [release notes](includes/releasenotes/releasenotes.1.24.0.html) and [Decision 281](https://github.com/ConsumerDataStandardsAustralia/standards/issues/281) for details. |

@@ -54,9 +54,7 @@ This release addresses the following Decision Proposals published on [Standards]
 
 ## High Level Standards
 
-|Change|Description|Link|
-|------|-----------|----|
-| No Change | | |
+No Change
 
 ## API End Points
 
@@ -93,15 +91,17 @@ This release addresses the following Decision Proposals published on [Standards]
 
 ## Consumer Experience
 
-|Change|Description|Link|
-|------|-----------|----|
-| No Change | | |
+No Change
 
 ## Non-Functional Requirements
 
+No Change
+
+## Additional Standards
+
 |Change|Description|Link|
 |------|-----------|----|
-| No Change | | |
+| Non-bank Lending Draft | Added a draft (ie. non-binding) standard containing the outcomes of consultations conducted to date | [Draft Standards](../../#draft-standards) |
 
 ## Known Issues
 

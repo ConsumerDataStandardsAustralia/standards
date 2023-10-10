@@ -6,7 +6,7 @@ language_tabs:
   - diff: Version Delta
 
 toc_footers:
-  - <a href='../../../../index.html'>Consumer Data Standards</a>
+  - <a href='../../../../../index.html'>Consumer Data Standards</a>
 
 includes:
   - additional/drafts/non-bank-lending/_standards_banking_non_bank_lending
