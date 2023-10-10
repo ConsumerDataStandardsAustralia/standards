@@ -1,4 +1,4 @@
-![image](https://github.com/ConsumerDataStandardsAustralia/standards-staging/assets/40985476/87db5359-6d31-476e-8589-ccdc8dc34599)### Register Endpoints
+### Register Endpoints
 
 The CDR Register exposes an OIDC Configuration Endpoint with associated JWKS and token endpoints to facilitate issuance of access tokens to consume the protected Register APIs.
 
