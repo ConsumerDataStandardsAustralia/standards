@@ -18,8 +18,8 @@ Release notes for version v1.27.0 of the [CDR Standards](../../index.html).
 This release addresses the following minor defects raised on [Standards Staging](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues):
 
 - [Staging Issue 196 - Incorrect levelling of largeSecondary object](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/196)
-- [Staging Issue #197 - Update client registration non-normative examples to include energy sectors](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/197)
-- [Staging Issue #305 - Long lines break words and cause scrollbars](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/305)
+- [Staging Issue 197 - Update client registration non-normative examples to include energy sectors](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/197)
+- [Staging Issue 305 - Long lines break words and cause scrollbars](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/305)
 - [Staging Issue 306 - Body parameter for JWT POST + PUT not displayed](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/306)
 - [Staging Issue 307 - Incorrect non-normative example](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/307)
 - [Staging Issue 308 - Fix link to FAPI section reference](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/308)
