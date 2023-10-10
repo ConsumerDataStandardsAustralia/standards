@@ -12,7 +12,7 @@
       "url" : "https://opensource.org/licenses/MIT"
     },
     "title" : "CDR Admin API",
-    "version" : "1.26.0"
+    "version" : "1.27.0"
   },
   "servers" : [ {
     "url" : "https://data.holder.com.au/cds-au/v1"
@@ -570,7 +570,7 @@
             "$ref" : "#/components/schemas/AuthorisationMetricsV2"
           }
         },
-        "required" : [ "availability", "averageResponse", "averageTps", "customerCount", "errors", "invocations", "peakTps", "performance", "recipientCount", "rejections", "requestTime", "sessionCount" ],
+        "required" : [ "authorisations", "availability", "averageResponse", "averageTps", "customerCount", "errors", "invocations", "peakTps", "performance", "recipientCount", "rejections", "requestTime", "sessionCount" ],
         "type" : "object",
         "x-conditional" : [ "secondaryHolder" ]
       },
@@ -635,7 +635,7 @@
         "x-conditional" : [ "currentMonth", "previousMonths" ]
       },
       "PerformanceMetricsV3_aggregate" : {
-        "description" : "Percentage of calls within the performance thresholds",
+        "description" : "Percentage of calls within Primary Data Holder performance thresholds. Note that Secondary Data Holder performance <b>MUST</b> be excluded from this metric.",
         "properties" : {
           "currentDay" : {
             "description" : "Percentage of calls within the performance threshold for the current day. 0.0 means 0%. 1.0 means 100%. Must be a positive value or zero",

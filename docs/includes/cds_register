@@ -205,7 +205,7 @@ This operation does not require authentication
 
 Accept: application/json
 Authorization: string
-x-v: 1
+x-v: string
 x-min-v: string
 
 </code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>
@@ -213,7 +213,7 @@ x-min-v: string
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
   <span class="s1">'Authorization'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'1'</span><span class="p">,</span>
+  <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span>
 
 <span class="p">};</span>
@@ -278,15 +278,15 @@ x-min-v: string
 <td>x-v</td>
 <td>header</td>
 <td>string</td>
-<td>optional</td>
-<td>The version of the API end point requested by the client. Must be set to a positive integer. For backwards compatiblity defaults to 1 if absent. Note that once version 1 is decommissioned the header will be mandatory for a valid response to be obtained</td>
+<td>mandatory</td>
+<td>Version of the API end point requested by the client. Must be set to a positive integer. The Register should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the Register must respond with a 406 Not Acceptable. See <a href="#request-headers">HTTP Headers</a></td>
 </tr>
 <tr>
 <td>x-min-v</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>The <a href="https://consumerdatastandardsaustralia.github.io/standards/#http-headers">minimum version</a> of the API end point requested by the client. Must be set to a positive integer if provided.</td>
+<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The Register should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the Register must respond with a 406 Not Acceptable.</td>
 </tr>
 <tr>
 <td>updated-since</td>
@@ -527,14 +527,14 @@ If-None-Match: string
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>The version of the API end point requested by the client. Must be set to a positive integer.</td>
+<td>Version of the API end point requested by the client. Must be set to a positive integer. The Register should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the Register must respond with a 406 Not Acceptable. See <a href="#request-headers">HTTP Headers</a></td>
 </tr>
 <tr>
 <td>x-min-v</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>The <a href="https://consumerdatastandardsaustralia.github.io/standards/#http-headers">minimum version</a> of the API end point requested by the client. Must be set to a positive integer if provided.</td>
+<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The Register should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the Register must respond with a 406 Not Acceptable.</td>
 </tr>
 <tr>
 <td>If-None-Match</td>
@@ -683,7 +683,7 @@ This operation does not require authentication
 <pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://&lt;register-base-url&gt;/cdr-register/v1/{industry}/data-recipients/brands/{dataRecipientBrandId}/software-products/{softwareProductId}/ssa</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 
 Accept: application/json
-x-v: 1
+x-v: string
 x-min-v: string
 Authorization: string
 
@@ -691,7 +691,7 @@ Authorization: string
 
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
-  <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'1'</span><span class="p">,</span>
+  <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'Authorization'</span><span class="p">:</span><span class="s1">'string'</span>
 
@@ -750,15 +750,15 @@ Authorization: string
 <td>x-v</td>
 <td>header</td>
 <td>string</td>
-<td>optional</td>
-<td>The version of the API end point requested by the client. Must be set to a positive integer. For backwards compatiblity defaults to 1 if absent. Note that once version 1 is decommissioned the header will be mandatory for a valid response to be obtained</td>
+<td>mandatory</td>
+<td>Version of the API end point requested by the client. Must be set to a positive integer. The Register should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the Register must respond with a 406 Not Acceptable. See <a href="#request-headers">HTTP Headers</a></td>
 </tr>
 <tr>
 <td>x-min-v</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>The <a href="https://consumerdatastandardsaustralia.github.io/standards/#http-headers">minimum version</a> of the API end point requested by the client. Must be set to a positive integer if provided.</td>
+<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The Register should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the Register must respond with a 406 Not Acceptable.</td>
 </tr>
 <tr>
 <td>dataRecipientBrandId</td>
@@ -1105,7 +1105,7 @@ This operation does not require authentication
 <pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://&lt;register-base-url&gt;/cdr-register/v1/{industry}/data-recipients/brands/software-products/status</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 
 Accept: application/json
-x-v: 1
+x-v: string
 x-min-v: string
 If-None-Match: string
 
@@ -1113,7 +1113,7 @@ If-None-Match: string
 
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
-  <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'1'</span><span class="p">,</span>
+  <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'If-None-Match'</span><span class="p">:</span><span class="s1">'string'</span>
 
@@ -1172,15 +1172,15 @@ If-None-Match: string
 <td>x-v</td>
 <td>header</td>
 <td>string</td>
-<td>optional</td>
-<td>The version of the API end point requested by the client. Must be set to a positive integer.  For backwards compatiblity defaults to 1 if absent. Note that once version 1 is decommissioned the header will be mandatory for a valid response to be obtained</td>
+<td>mandatory</td>
+<td>Version of the API end point requested by the client. Must be set to a positive integer. The Register should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the Register must respond with a 406 Not Acceptable. See <a href="#request-headers">HTTP Headers</a></td>
 </tr>
 <tr>
 <td>x-min-v</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>The <a href="https://consumerdatastandardsaustralia.github.io/standards/#http-headers">minimum version</a> of the API end point requested by the client. Must be set to a positive integer if provided.</td>
+<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The Register should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the Register must respond with a 406 Not Acceptable.</td>
 </tr>
 <tr>
 <td>If-None-Match</td>
@@ -1313,7 +1313,7 @@ This operation does not require authentication
 <pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://&lt;register-base-url&gt;/cdr-register/v1/{industry}/data-recipients/status</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 
 Accept: application/json
-x-v: 1
+x-v: string
 x-min-v: string
 If-None-Match: string
 
@@ -1321,7 +1321,7 @@ If-None-Match: string
 
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
-  <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'1'</span><span class="p">,</span>
+  <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'If-None-Match'</span><span class="p">:</span><span class="s1">'string'</span>
 
@@ -1380,15 +1380,15 @@ If-None-Match: string
 <td>x-v</td>
 <td>header</td>
 <td>string</td>
-<td>optional</td>
-<td>The version of the API end point requested by the client. Must be set to a positive integer.  For backwards compatiblity defaults to 1 if absent. Note that once version 1 is decommissioned the header will be mandatory for a valid response to be obtained</td>
+<td>mandatory</td>
+<td>Version of the API end point requested by the client. Must be set to a positive integer. The Register should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the Register must respond with a 406 Not Acceptable. See <a href="#request-headers">HTTP Headers</a></td>
 </tr>
 <tr>
 <td>x-min-v</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>The <a href="https://consumerdatastandardsaustralia.github.io/standards/#http-headers">minimum version</a> of the API end point requested by the client. Must be set to a positive integer if provided.</td>
+<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The Register should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the Register must respond with a 406 Not Acceptable.</td>
 </tr>
 <tr>
 <td>If-None-Match</td>
@@ -1521,7 +1521,7 @@ This operation does not require authentication
 <pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://&lt;register-base-url&gt;/cdr-register/v1/{industry}/data-recipients</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 
 Accept: application/json
-x-v: 2
+x-v: string
 x-min-v: string
 If-None-Match: string
 
@@ -1529,7 +1529,7 @@ If-None-Match: string
 
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
-  <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'2'</span><span class="p">,</span>
+  <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'If-None-Match'</span><span class="p">:</span><span class="s1">'string'</span>
 
@@ -1588,15 +1588,15 @@ If-None-Match: string
 <td>x-v</td>
 <td>header</td>
 <td>string</td>
-<td>optional</td>
-<td>The version of the API end point requested by the client. Must be set to a positive integer.  For backwards compatiblity defaults to 2 if absent. Note that once version 2 is decommissioned the header will be mandatory for a valid response to be obtained</td>
+<td>mandatory</td>
+<td>Version of the API end point requested by the client. Must be set to a positive integer. The Register should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the Register must respond with a 406 Not Acceptable. See <a href="#request-headers">HTTP Headers</a></td>
 </tr>
 <tr>
 <td>x-min-v</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>The <a href="https://consumerdatastandardsaustralia.github.io/standards/#http-headers">minimum version</a> of the API end point requested by the client. Must be set to a positive integer if provided.</td>
+<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The Register should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the Register must respond with a 406 Not Acceptable.</td>
 </tr>
 <tr>
 <td>If-None-Match</td>
@@ -1749,7 +1749,7 @@ This operation does not require authentication
 
 <h3 class="schema-toc" id="tocSresponseopenidproviderconfigmetadata">ResponseOpenIDProviderConfigMetadata</h3>
 
-<p><a id="schemacdr-participant-discovery-apiresponseopenidproviderconfigmetadata"></a></p>
+<p><a class="schema-anchor" id="schemacdr-participant-discovery-apiresponseopenidproviderconfigmetadata"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"jwks_uri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -1877,7 +1877,7 @@ This operation does not require authentication
 
 <h3 class="schema-toc" id="tocSresponsejwks">ResponseJWKS</h3>
 
-<p><a id="schemacdr-participant-discovery-apiresponsejwks"></a></p>
+<p><a class="schema-anchor" id="schemacdr-participant-discovery-apiresponsejwks"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"keys"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
@@ -1914,7 +1914,7 @@ This operation does not require authentication
 
 <h3 class="schema-toc" id="tocSjwk">JWK</h3>
 
-<p><a id="schemacdr-participant-discovery-apijwk"></a></p>
+<p><a class="schema-anchor" id="schemacdr-participant-discovery-apijwk"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"alg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"e"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -1977,7 +1977,7 @@ This operation does not require authentication
 
 <h3 class="schema-toc" id="tocSresponseregisterdataholderbrandlist">ResponseRegisterDataHolderBrandList</h3>
 
-<p><a id="schemacdr-participant-discovery-apiresponseregisterdataholderbrandlist"></a></p>
+<p><a class="schema-anchor" id="schemacdr-participant-discovery-apiresponseregisterdataholderbrandlist"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
@@ -2065,7 +2065,7 @@ This operation does not require authentication
 
 <h3 class="schema-toc" id="tocSregisterdataholderbrand">RegisterDataHolderBrand</h3>
 
-<p><a id="schemacdr-participant-discovery-apiregisterdataholderbrand"></a></p>
+<p><a class="schema-anchor" id="schemacdr-participant-discovery-apiregisterdataholderbrand"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"dataHolderBrandId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"brandName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -2204,7 +2204,7 @@ This operation does not require authentication
 
 <h3 class="schema-toc" id="tocSresponsedataholdersbrandsummarylist">ResponseDataHoldersBrandSummaryList</h3>
 
-<p><a id="schemacdr-participant-discovery-apiresponsedataholdersbrandsummarylist"></a></p>
+<p><a class="schema-anchor" id="schemacdr-participant-discovery-apiresponsedataholdersbrandsummarylist"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
@@ -2259,7 +2259,7 @@ This operation does not require authentication
 
 <h3 class="schema-toc" id="tocSdataholderbrandsummary">DataHolderBrandSummary</h3>
 
-<p><a id="schemacdr-participant-discovery-apidataholderbrandsummary"></a></p>
+<p><a class="schema-anchor" id="schemacdr-participant-discovery-apidataholderbrandsummary"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"dataHolderBrandId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"interimId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -2368,7 +2368,7 @@ This operation does not require authentication
 
 <h3 class="schema-toc" id="tocSdataholdersstatuslist">DataHoldersStatusList</h3>
 
-<p><a id="schemacdr-participant-discovery-apidataholdersstatuslist"></a></p>
+<p><a class="schema-anchor" id="schemacdr-participant-discovery-apidataholdersstatuslist"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
@@ -2413,7 +2413,7 @@ This operation does not require authentication
 
 <h3 class="schema-toc" id="tocSdataholderstatus">DataHolderStatus</h3>
 
-<p><a id="schemacdr-participant-discovery-apidataholderstatus"></a></p>
+<p><a class="schema-anchor" id="schemacdr-participant-discovery-apidataholderstatus"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"legalEntityId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="w">
@@ -2460,7 +2460,7 @@ This operation does not require authentication
 
 <h3 class="schema-toc" id="tocSsoftwareproductsstatuslist">SoftwareProductsStatusList</h3>
 
-<p><a id="schemacdr-participant-discovery-apisoftwareproductsstatuslist"></a></p>
+<p><a class="schema-anchor" id="schemacdr-participant-discovery-apisoftwareproductsstatuslist"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
@@ -2505,7 +2505,7 @@ This operation does not require authentication
 
 <h3 class="schema-toc" id="tocSsoftwareproductstatus">SoftwareProductStatus</h3>
 
-<p><a id="schemacdr-participant-discovery-apisoftwareproductstatus"></a></p>
+<p><a class="schema-anchor" id="schemacdr-participant-discovery-apisoftwareproductstatus"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"softwareProductId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="w">
@@ -2556,7 +2556,7 @@ This operation does not require authentication
 
 <h3 class="schema-toc" id="tocSdatarecipientsstatuslist">DataRecipientsStatusList</h3>
 
-<p><a id="schemacdr-participant-discovery-apidatarecipientsstatuslist"></a></p>
+<p><a class="schema-anchor" id="schemacdr-participant-discovery-apidatarecipientsstatuslist"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
@@ -2601,7 +2601,7 @@ This operation does not require authentication
 
 <h3 class="schema-toc" id="tocSdatarecipientstatus">DataRecipientStatus</h3>
 
-<p><a id="schemacdr-participant-discovery-apidatarecipientstatus"></a></p>
+<p><a class="schema-anchor" id="schemacdr-participant-discovery-apidatarecipientstatus"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"legalEntityId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="w">
@@ -2656,7 +2656,7 @@ This operation does not require authentication
 
 <h3 class="schema-toc" id="tocSresponseregisterdatarecipientlist">ResponseRegisterDataRecipientList</h3>
 
-<p><a id="schemacdr-participant-discovery-apiresponseregisterdatarecipientlist"></a></p>
+<p><a class="schema-anchor" id="schemacdr-participant-discovery-apiresponseregisterdatarecipientlist"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
@@ -2725,7 +2725,7 @@ This operation does not require authentication
 
 <h3 class="schema-toc" id="tocSregisterdatarecipient">RegisterDataRecipient</h3>
 
-<p><a id="schemacdr-participant-discovery-apiregisterdatarecipient"></a></p>
+<p><a class="schema-anchor" id="schemacdr-participant-discovery-apiregisterdatarecipient"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"legalEntityId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"legalEntityName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -2846,7 +2846,7 @@ This operation does not require authentication
 
 <h3 class="schema-toc" id="tocSdatarecipientbrandmetadata">DataRecipientBrandMetaData</h3>
 
-<p><a id="schemacdr-participant-discovery-apidatarecipientbrandmetadata"></a></p>
+<p><a class="schema-anchor" id="schemacdr-participant-discovery-apidatarecipientbrandmetadata"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"dataRecipientBrandId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"brandName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -2928,7 +2928,7 @@ This operation does not require authentication
 
 <h3 class="schema-toc" id="tocSsoftwareproductmetadata">SoftwareProductMetaData</h3>
 
-<p><a id="schemacdr-participant-discovery-apisoftwareproductmetadata"></a></p>
+<p><a class="schema-anchor" id="schemacdr-participant-discovery-apisoftwareproductmetadata"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"softwareProductId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"softwareProductName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -3002,7 +3002,7 @@ This operation does not require authentication
 
 <h3 class="schema-toc" id="tocSlegalentitydetail">LegalEntityDetail</h3>
 
-<p><a id="schemacdr-participant-discovery-apilegalentitydetail"></a></p>
+<p><a class="schema-anchor" id="schemacdr-participant-discovery-apilegalentitydetail"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"legalEntityId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"legalEntityName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -3063,7 +3063,7 @@ This operation does not require authentication
 <td>registeredCountry</td>
 <td>string</td>
 <td>optional</td>
-<td>Country of registeration (if the company is registered outside Australia)</td>
+<td>Country of registration (if the company is registered outside Australia)</td>
 </tr>
 <tr>
 <td>abn</td>
@@ -3145,7 +3145,7 @@ This operation does not require authentication
 
 <h3 class="schema-toc" id="tocSregisterdataholderbrandserviceendpoint">RegisterDataHolderBrandServiceEndpoint</h3>
 
-<p><a id="schemacdr-participant-discovery-apiregisterdataholderbrandserviceendpoint"></a></p>
+<p><a class="schema-anchor" id="schemacdr-participant-discovery-apiregisterdataholderbrandserviceendpoint"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"publicBaseUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -3206,7 +3206,7 @@ This operation does not require authentication
 
 <h3 class="schema-toc" id="tocSregisterdataholderauth">RegisterDataHolderAuth</h3>
 
-<p><a id="schemacdr-participant-discovery-apiregisterdataholderauth"></a></p>
+<p><a class="schema-anchor" id="schemacdr-participant-discovery-apiregisterdataholderauth"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"registerUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SIGNED-JWT"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"jwksEndpoint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
@@ -3251,7 +3251,7 @@ This operation does not require authentication
 
 <h3 class="schema-toc" id="tocSlinkspaginated">LinksPaginated</h3>
 
-<p><a id="schemacdr-participant-discovery-apilinkspaginated"></a></p>
+<p><a class="schema-anchor" id="schemacdr-participant-discovery-apilinkspaginated"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"first"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -3303,7 +3303,7 @@ This operation does not require authentication
 
 <h3 class="schema-toc" id="tocSmetapaginated">MetaPaginated</h3>
 
-<p><a id="schemacdr-participant-discovery-apimetapaginated"></a></p>
+<p><a class="schema-anchor" id="schemacdr-participant-discovery-apimetapaginated"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"totalPages"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="s2">"totalRecords"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
@@ -3334,7 +3334,7 @@ This operation does not require authentication
 
 <h3 class="schema-toc" id="tocSlinks">Links</h3>
 
-<p><a id="schemacdr-participant-discovery-apilinks"></a></p>
+<p><a class="schema-anchor" id="schemacdr-participant-discovery-apilinks"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -3358,7 +3358,7 @@ This operation does not require authentication
 
 <h3 class="schema-toc" id="tocSmeta">Meta</h3>
 
-<p><a id="schemacdr-participant-discovery-apimeta"></a></p>
+<p><a class="schema-anchor" id="schemacdr-participant-discovery-apimeta"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{}</span><span class="w">
 
 </span></code></pre><h3 id='properties-24'>Properties</h3>
@@ -3366,7 +3366,7 @@ This operation does not require authentication
 
 <h3 class="schema-toc" id="tocSmetaerror">MetaError</h3>
 
-<p><a id="schemacdr-participant-discovery-apimetaerror"></a></p>
+<p><a class="schema-anchor" id="schemacdr-participant-discovery-apimetaerror"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"urn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -3392,7 +3392,7 @@ This operation does not require authentication
 
 <h3 class="schema-toc" id="tocSresponseerrorlistv2">ResponseErrorListV2</h3>
 
-<p><a id="schemacdr-participant-discovery-apiresponseerrorlistv2"></a></p>
+<p><a class="schema-anchor" id="schemacdr-participant-discovery-apiresponseerrorlistv2"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
@@ -3425,7 +3425,7 @@ This operation does not require authentication
 
 <h3 class="schema-toc" id="tocSresponseerrorlistv2_errors">ResponseErrorListV2_errors</h3>
 
-<p><a id="schemacdr-participant-discovery-apiresponseerrorlistv2_errors"></a></p>
+<p><a class="schema-anchor" id="schemacdr-participant-discovery-apiresponseerrorlistv2_errors"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">

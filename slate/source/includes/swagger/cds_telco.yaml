@@ -11,7 +11,7 @@ info:
     name: MIT License
     url: https://opensource.org/licenses/MIT
   title: CDR Telco API
-  version: 1.26.0
+  version: 1.27.0
 servers:
 - url: https://data.holder.com.au/cds-au/v1
 paths:
@@ -747,10 +747,8 @@ paths:
       x-version: "1"
   /telco/accounts:
     get:
-      description: |-
-        Obtain the list of telco accounts available under the authorised consent
-
-        Other Versions: [v1](includes/obsolete/get-telco-accounts-v1.html)
+      description: Obtain the list of telco accounts available under the authorised
+        consent
       operationId: listAccounts
       parameters:
       - description: Used to filter results according to open/closed status. Values
@@ -921,10 +919,7 @@ paths:
       x-version: "1"
   /telco/accounts/{accountId}:
     get:
-      description: |-
-        Obtain detailed information for a specific telco account
-
-        Other Versions: [v1](includes/obsolete/get-telco-account-detail-v1.html)
+      description: Obtain detailed information for a specific telco account
       operationId: getAccount
       parameters:
       - description: ID of a specific account to obtain data for. This is a tokenised

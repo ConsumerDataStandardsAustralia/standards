@@ -11,12 +11,11 @@ This specification defines the APIs for Data Holders exposing Banking endpoints.
 </table>
 
 ```diff
-Fixed typo in the description of the bundleName field
-in the BankingAccountDetailV3 model
+Added MetaPaginatedTransaction schema to 'Get Transactions For Account' to include the isQueryParamUnsupported property
+```
 
-Fixed typo in description of minAmount and maxAmount
-query parameters descriptions for Get Transactions For
-Account endpoint
+```diff
+Removed duplicate '400 - Invalid Version' error codes
 ```
 
 <%= partial "includes/cds_banking.md" %>

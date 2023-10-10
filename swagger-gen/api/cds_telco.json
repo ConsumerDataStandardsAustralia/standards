@@ -12,7 +12,7 @@
       "url": "https://opensource.org/licenses/MIT"
     },
     "title": "CDR Telco API",
-    "version": "1.26.0"
+    "version": "1.27.0"
   },
   "servers": [ {
     "url": "https://data.holder.com.au/cds-au/v1"
@@ -499,7 +499,7 @@
     },
     "/telco/accounts": {
       "get": {
-        "description": "Obtain the list of telco accounts available under the authorised consent\n\nOther Versions: [v1](includes/obsolete/get-telco-accounts-v1.html)",
+        "description": "Obtain the list of telco accounts available under the authorised consent",
         "operationId": "listAccounts",
         "parameters": [ {
           "name": "open-status",
@@ -610,7 +610,7 @@
     },
     "/telco/accounts/{accountId}": {
       "get": {
-        "description": "Obtain detailed information for a specific telco account\n\nOther Versions: [v1](includes/obsolete/get-telco-account-detail-v1.html)",
+        "description": "Obtain detailed information for a specific telco account",
         "operationId": "getAccount",
         "parameters": [ {
           "$ref": "#/components/parameters/accountId"

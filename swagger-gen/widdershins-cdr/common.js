@@ -19,7 +19,7 @@ const contentTypes = {
     xml: ['^(application|text|image){1}\\/(.*\\+){0,1}xml(;){0,1}(\\s){0,}(charset=.*){0,}$'],
     json: ['^(application|text){1}\\/(.*\\+){0,1}json(;){0,1}(\\s){0,}(charset=.*){0,}$'],
     yaml: ['application/x-yaml', 'text/x-yaml'],
-    form: ['multipart/form-data', 'application/x-www-form-urlencoded', 'application/octet-stream']
+    form: ['multipart/form-data', 'application/x-www-form-urlencoded', 'application/octet-stream', 'application/jwt']
 };
 
 function nop(obj) {
@@ -193,6 +193,7 @@ function schemaToArray(schema,offset,options,data) {
     let blockDepth = 0;
     let skipDepth = -1;
     let container = [];
+    let depthQueue = new Map();
     let block = { title: '', rows: [] };
     if (schema) {
         if (schema.title) block.title = schema.title;
@@ -275,10 +276,24 @@ function schemaToArray(schema,offset,options,data) {
 
         if (entry.name) {
             if (state.depth > iDepth) {
+                let difference = state.depth - iDepth;
+                depthQueue.set(iDepth, difference);
                 oDepth++;
             }
             if (state.depth < iDepth) {
-                oDepth--;
+                let keys = depthQueue.keys();
+                let next = keys.next();
+                let difference = 0;
+                while (!next.done) {
+                    if (next.value >= state.depth) {
+                        let depth = depthQueue.get(next.value);
+                        depth = depth % 2 == 0 ? depth/2 : depth;
+                        difference += depth;
+                        depthQueue.delete(next.value);
+                    }
+                    next = keys.next();
+                }
+                oDepth -= difference;
                 if (oDepth<0) oDepth=0;
             }
             iDepth = state.depth;
@@ -384,7 +399,7 @@ function schemaToArray(schema,offset,options,data) {
         }
         if ((skipDepth >= 0) && (entry.depth >= skipDepth)) entry.name = ''; // reset
         if (entry.depth < skipDepth) skipDepth = -1;
-        entry.displayName = (data.translations.indent.repeat(entry.depth)+' '+entry.name).trim();
+        entry.displayName = (data.translations.indent.repeat(entry.depth) + String.fromCharCode(160) + entry.name).trim();
 
         if ((!state.top || entry.type !== 'object') && (entry.name)) {
           block.rows.push(entry);

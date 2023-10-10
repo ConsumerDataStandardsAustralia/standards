@@ -12,7 +12,7 @@
       "name": "MIT License",
       "url": "https://opensource.org/licenses/MIT"
     },
-    "version": "1.26.0"
+    "version": "1.27.0"
   },
   "servers": [
     {
@@ -243,7 +243,8 @@
               "recipientCount",
               "rejections",
               "requestTime",
-              "sessionCount"
+              "sessionCount",
+              "authorisations"
             ],
             "type": "object",
             "properties": {
@@ -415,7 +416,7 @@
                 }
               }
             },
-            "description": "Percentage of calls within the performance thresholds",
+            "description": "Percentage of calls within Primary Data Holder performance thresholds. Note that Secondary Data Holder performance <b>MUST</b> be excluded from this metric.",
             "x-conditional": [
               "currentDay",
               "previousDays"

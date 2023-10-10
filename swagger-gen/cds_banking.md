@@ -135,7 +135,7 @@ Obsolete versions: [v1](includes/obsolete/get-accounts-v1.html)
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingAccountListV2](#schemacdr-banking-apiresponsebankingaccountlistv2)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 
@@ -294,7 +294,7 @@ Obtain balances for multiple, filtered accounts
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingAccountsBalanceList](#schemacdr-banking-apiresponsebankingaccountsbalancelist)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 
@@ -453,7 +453,7 @@ Obtain balances for a specified list of accounts
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingAccountsBalanceList](#schemacdr-banking-apiresponsebankingaccountsbalancelist)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li><li>[422 - Unavailable Banking Account](#error-422-authorisation-unavailable-banking-account)</li><li>[422 - Invalid Banking Account](#error-422-authorisation-invalid-banking-account)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 
@@ -577,7 +577,7 @@ Obtain the balance for a single specified account
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingAccountsBalanceById](#schemacdr-banking-apiresponsebankingaccountsbalancebyid)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[404 - Unavailable Banking Account](#error-404-authorisation-unavailable-banking-account)</li><li>[404 - Invalid Banking Account](#error-404-authorisation-invalid-banking-account)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 
@@ -882,7 +882,7 @@ Obsolete versions: [v1](includes/obsolete/get-account-detail-v1.html), [v2](incl
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingAccountByIdV3](#schemacdr-banking-apiresponsebankingaccountbyidv3)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[404 - Unavailable Banking Account](#error-404-authorisation-unavailable-banking-account)</li><li>[404 - Invalid Banking Account](#error-404-authorisation-invalid-banking-account)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 
@@ -1030,7 +1030,8 @@ Some general notes that apply to all end points that retrieve transactions:
   },
   "meta": {
     "totalRecords": 0,
-    "totalPages": 0
+    "totalPages": 0,
+    "isQueryParamUnsupported": false
   }
 }
 ```
@@ -1040,7 +1041,7 @@ Some general notes that apply to all end points that retrieve transactions:
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingTransactionList](#schemacdr-banking-apiresponsebankingtransactionlist)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[404 - Unavailable Banking Account](#error-404-authorisation-unavailable-banking-account)</li><li>[404 - Invalid Banking Account](#error-404-authorisation-invalid-banking-account)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
@@ -1319,7 +1320,7 @@ Obtain direct debit authorisations for a specific account
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingDirectDebitAuthorisationList](#schemacdr-banking-apiresponsebankingdirectdebitauthorisationlist)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[404 - Unavailable Banking Account](#error-404-authorisation-unavailable-banking-account)</li><li>[404 - Invalid Banking Account](#error-404-authorisation-invalid-banking-account)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
@@ -1478,7 +1479,7 @@ Obtain direct debit authorisations for multiple, filtered accounts
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingDirectDebitAuthorisationList](#schemacdr-banking-apiresponsebankingdirectdebitauthorisationlist)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 
@@ -1635,7 +1636,7 @@ Obtain direct debit authorisations for a specified list of accounts
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingDirectDebitAuthorisationList](#schemacdr-banking-apiresponsebankingdirectdebitauthorisationlist)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li><li>[422 - Unavailable Banking Account](#error-422-authorisation-unavailable-banking-account)</li><li>[422 - Invalid Banking Account](#error-422-authorisation-invalid-banking-account)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 
@@ -1860,7 +1861,7 @@ Obsolete versions: [v1](includes/obsolete/get-scheduled-payments-for-account-v1.
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingScheduledPaymentsListV2](#schemacdr-banking-apiresponsebankingscheduledpaymentslistv2)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[404 - Unavailable Banking Account](#error-404-authorisation-unavailable-banking-account)</li><li>[404 - Invalid Banking Account](#error-404-authorisation-invalid-banking-account)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
@@ -2109,7 +2110,7 @@ Obsolete versions: [v1](includes/obsolete/get-scheduled-payments-bulk-v1.html)
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingScheduledPaymentsListV2](#schemacdr-banking-apiresponsebankingscheduledpaymentslistv2)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 
@@ -2356,7 +2357,7 @@ Obsolete versions: [v1](includes/obsolete/get-scheduled-payments-for-specific-ac
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingScheduledPaymentsListV2](#schemacdr-banking-apiresponsebankingscheduledpaymentslistv2)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li><li>[422 - Unavailable Banking Account](#error-422-authorisation-unavailable-banking-account)</li><li>[422 - Invalid Banking Account](#error-422-authorisation-invalid-banking-account)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 
@@ -2498,7 +2499,7 @@ Obsolete versions: [v1](includes/obsolete/get-payees-v1.html)
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingPayeeListV2](#schemacdr-banking-apiresponsebankingpayeelistv2)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 
@@ -2668,7 +2669,7 @@ Obsolete versions: [v1](includes/obsolete/get-payee-detail-v1.html)
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingPayeeByIdV2](#schemacdr-banking-apiresponsebankingpayeebyidv2)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[404 - Unavailable Resource](#error-404-resource-unavailable)</li><li>[404 - Invalid Resource](#error-404-resource-invalid)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
@@ -2896,7 +2897,7 @@ Obsolete versions: [v1](includes/obsolete/get-products-v1.html) [v2](includes/ob
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingProductListV2](#schemacdr-banking-apiresponsebankingproductlistv2)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 
@@ -3195,7 +3196,7 @@ This operation does not require authentication
 
 <h3 class="schema-toc" id="tocSrequestaccountids">RequestAccountIds</h3>
 
-<a id="schemacdr-banking-apirequestaccountids"></a>
+<a class="schema-anchor" id="schemacdr-banking-apirequestaccountids"></a>
 
 ```json
 {
@@ -3214,12 +3215,12 @@ This operation does not require authentication
 |Name|Type|Required|Description|
 |---|---|---|---|
 |data|object|mandatory|none|
-|» accountIds|[string]|mandatory|none|
+|» accountIds|[string]|mandatory|none|
 |meta|[Meta](#schemacdr-banking-apimeta)|optional|none|
 
 <h3 class="schema-toc" id="tocSresponsebankingproductlistv2">ResponseBankingProductListV2</h3>
 
-<a id="schemacdr-banking-apiresponsebankingproductlistv2"></a>
+<a class="schema-anchor" id="schemacdr-banking-apiresponsebankingproductlistv2"></a>
 
 ```json
 {
@@ -3303,13 +3304,13 @@ This operation does not require authentication
 |Name|Type|Required|Description|
 |---|---|---|---|
 |data|object|mandatory|none|
-|» products|[[BankingProductV4](#schemacdr-banking-apibankingproductv4)]|mandatory|The list of products returned.  If the filter results in an empty set then this array may have no records|
+|» products|[[BankingProductV4](#schemacdr-banking-apibankingproductv4)]|mandatory|The list of products returned.  If the filter results in an empty set then this array may have no records|
 |links|[LinksPaginated](#schemacdr-banking-apilinkspaginated)|mandatory|none|
 |meta|[MetaPaginated](#schemacdr-banking-apimetapaginated)|mandatory|none|
 
 <h3 class="schema-toc" id="tocSbankingproductv4">BankingProductV4</h3>
 
-<a id="schemacdr-banking-apibankingproductv4"></a>
+<a class="schema-anchor" id="schemacdr-banking-apibankingproductv4"></a>
 
 ```json
 {
@@ -3388,12 +3389,12 @@ This operation does not require authentication
 |isTailored|[Boolean](#common-field-types)|mandatory|Indicates whether the product is specifically tailored to a circumstance.  In this case fees and prices are significantly negotiated depending on context. While all products are open to a degree of tailoring this flag indicates that tailoring is expected and thus that the provision of specific fees and rates is not applicable|
 |additionalInformation|[BankingProductAdditionalInformationV2](#schemacdr-banking-apibankingproductadditionalinformationv2)|optional|Object that contains links to additional information on specific topics|
 |cardArt|[object]|optional|An array of card art images|
-|» title|string|optional|Display label for the specific image|
-|» imageUri|[URIString](#common-field-types)|mandatory|URI reference to a PNG, JPG or GIF image with proportions defined by ISO 7810 ID-1 and width no greater than 512 pixels. The URI reference may be a link or url-encoded data URI according to **[[RFC2397]](#nref-RFC2397)**|
+|» title|string|optional|Display label for the specific image|
+|» imageUri|[URIString](#common-field-types)|mandatory|URI reference to a PNG, JPG or GIF image with proportions defined by ISO 7810 ID-1 and width no greater than 512 pixels. The URI reference may be a link or url-encoded data URI according to **[[RFC2397]](#nref-RFC2397)**|
 
 <h3 class="schema-toc" id="tocSbankingproductadditionalinformationv2">BankingProductAdditionalInformationV2</h3>
 
-<a id="schemacdr-banking-apibankingproductadditionalinformationv2"></a>
+<a class="schema-anchor" id="schemacdr-banking-apibankingproductadditionalinformationv2"></a>
 
 ```json
 {
@@ -3455,7 +3456,7 @@ This operation does not require authentication
 
 <h3 class="schema-toc" id="tocSbankingproductadditionalinformationv2_additionalinformationuris">BankingProductAdditionalInformationV2_additionalInformationUris</h3>
 
-<a id="schemacdr-banking-apibankingproductadditionalinformationv2_additionalinformationuris"></a>
+<a class="schema-anchor" id="schemacdr-banking-apibankingproductadditionalinformationv2_additionalinformationuris"></a>
 
 ```json
 {
@@ -3474,7 +3475,7 @@ This operation does not require authentication
 
 <h3 class="schema-toc" id="tocSresponsebankingproductbyidv4">ResponseBankingProductByIdV4</h3>
 
-<a id="schemacdr-banking-apiresponsebankingproductbyidv4"></a>
+<a class="schema-anchor" id="schemacdr-banking-apiresponsebankingproductbyidv4"></a>
 
 ```json
 {
@@ -3680,7 +3681,7 @@ This operation does not require authentication
 
 <h3 class="schema-toc" id="tocSbankingproductdetailv4">BankingProductDetailV4</h3>
 
-<a id="schemacdr-banking-apibankingproductdetailv4"></a>
+<a class="schema-anchor" id="schemacdr-banking-apibankingproductdetailv4"></a>
 
 ```json
 {
@@ -3883,17 +3884,17 @@ This operation does not require authentication
 |Name|Type|Required|Description|
 |---|---|---|---|
 |*anonymous*|object|mandatory|none|
-|» bundles|[[BankingProductBundle](#schemacdr-banking-apibankingproductbundle)]|optional|An array of bundles that this product participates in.  Each bundle is described by free form information but also by a list of product IDs of the other products that are included in the bundle.  It is assumed that the current product is included in the bundle also|
-|» features|[[BankingProductFeatureV2](#schemacdr-banking-apibankingproductfeaturev2)]|optional|Array of features available for the product|
-|» constraints|[[BankingProductConstraint](#schemacdr-banking-apibankingproductconstraint)]|optional|Constraints on the application for or operation of the product such as minimum balances or limit thresholds|
-|» eligibility|[[BankingProductEligibility](#schemacdr-banking-apibankingproducteligibility)]|optional|Eligibility criteria for the product|
-|» fees|[[BankingProductFee](#schemacdr-banking-apibankingproductfee)]|optional|Fees applicable for the product|
-|» depositRates|[[BankingProductDepositRate](#schemacdr-banking-apibankingproductdepositrate)]|optional|Interest rates available for deposits|
-|» lendingRates|[[BankingProductLendingRateV2](#schemacdr-banking-apibankingproductlendingratev2)]|optional|Interest rates charged against lending balances|
+|» bundles|[[BankingProductBundle](#schemacdr-banking-apibankingproductbundle)]|optional|An array of bundles that this product participates in.  Each bundle is described by free form information but also by a list of product IDs of the other products that are included in the bundle.  It is assumed that the current product is included in the bundle also|
+|» features|[[BankingProductFeatureV2](#schemacdr-banking-apibankingproductfeaturev2)]|optional|Array of features available for the product|
+|» constraints|[[BankingProductConstraint](#schemacdr-banking-apibankingproductconstraint)]|optional|Constraints on the application for or operation of the product such as minimum balances or limit thresholds|
+|» eligibility|[[BankingProductEligibility](#schemacdr-banking-apibankingproducteligibility)]|optional|Eligibility criteria for the product|
+|» fees|[[BankingProductFee](#schemacdr-banking-apibankingproductfee)]|optional|Fees applicable for the product|
+|» depositRates|[[BankingProductDepositRate](#schemacdr-banking-apibankingproductdepositrate)]|optional|Interest rates available for deposits|
+|» lendingRates|[[BankingProductLendingRateV2](#schemacdr-banking-apibankingproductlendingratev2)]|optional|Interest rates charged against lending balances|
 
 <h3 class="schema-toc" id="tocSbankingproductbundle">BankingProductBundle</h3>
 
-<a id="schemacdr-banking-apibankingproductbundle"></a>
+<a class="schema-anchor" id="schemacdr-banking-apibankingproductbundle"></a>
 
 ```json
 {
@@ -3920,7 +3921,7 @@ This operation does not require authentication
 
 <h3 class="schema-toc" id="tocSbankingproductfeaturev2">BankingProductFeatureV2</h3>
 
-<a id="schemacdr-banking-apibankingproductfeaturev2"></a>
+<a class="schema-anchor" id="schemacdr-banking-apibankingproductfeaturev2"></a>
 
 ```json
 {
@@ -3977,7 +3978,7 @@ This operation does not require authentication
 
 <h3 class="schema-toc" id="tocSbankingproductconstraint">BankingProductConstraint</h3>
 
-<a id="schemacdr-banking-apibankingproductconstraint"></a>
+<a class="schema-anchor" id="schemacdr-banking-apibankingproductconstraint"></a>
 
 ```json
 {
@@ -4010,7 +4011,7 @@ This operation does not require authentication
 
 <h3 class="schema-toc" id="tocSbankingproducteligibility">BankingProductEligibility</h3>
 
-<a id="schemacdr-banking-apibankingproducteligibility"></a>
+<a class="schema-anchor" id="schemacdr-banking-apibankingproducteligibility"></a>
 
 ```json
 {
@@ -4050,7 +4051,7 @@ This operation does not require authentication
 
 <h3 class="schema-toc" id="tocSbankingproductfee">BankingProductFee</h3>
 
-<a id="schemacdr-banking-apibankingproductfee"></a>
+<a class="schema-anchor" id="schemacdr-banking-apibankingproductfee"></a>
 
 ```json
 {
@@ -4125,7 +4126,7 @@ This operation does not require authentication
 
 <h3 class="schema-toc" id="tocSbankingproductdiscount">BankingProductDiscount</h3>
 
-<a id="schemacdr-banking-apibankingproductdiscount"></a>
+<a class="schema-anchor" id="schemacdr-banking-apibankingproductdiscount"></a>
 
 ```json
 {
@@ -4179,7 +4180,7 @@ This operation does not require authentication
 
 <h3 class="schema-toc" id="tocSbankingproductdiscounteligibility">BankingProductDiscountEligibility</h3>
 
-<a id="schemacdr-banking-apibankingproductdiscounteligibility"></a>
+<a class="schema-anchor" id="schemacdr-banking-apibankingproductdiscounteligibility"></a>
 
 ```json
 {
@@ -4220,7 +4221,7 @@ This operation does not require authentication
 
 <h3 class="schema-toc" id="tocSbankingproductdepositrate">BankingProductDepositRate</h3>
 
-<a id="schemacdr-banking-apibankingproductdepositrate"></a>
+<a class="schema-anchor" id="schemacdr-banking-apibankingproductdepositrate"></a>
 
 ```json
 {
@@ -4277,7 +4278,7 @@ This operation does not require authentication
 
 <h3 class="schema-toc" id="tocSbankingproductlendingratev2">BankingProductLendingRateV2</h3>
 
-<a id="schemacdr-banking-apibankingproductlendingratev2"></a>
+<a class="schema-anchor" id="schemacdr-banking-apibankingproductlendingratev2"></a>
 
 ```json
 {
@@ -4352,7 +4353,7 @@ This operation does not require authentication
 
 <h3 class="schema-toc" id="tocSbankingproductratetierv3">BankingProductRateTierV3</h3>
 
-<a id="schemacdr-banking-apibankingproductratetierv3"></a>
+<a class="schema-anchor" id="schemacdr-banking-apibankingproductratetierv3"></a>
 
 ```json
 {
@@ -4399,7 +4400,7 @@ This operation does not require authentication
 
 <h3 class="schema-toc" id="tocSbankingproductratecondition">BankingProductRateCondition</h3>
 
-<a id="schemacdr-banking-apibankingproductratecondition"></a>
+<a class="schema-anchor" id="schemacdr-banking-apibankingproductratecondition"></a>
 
 ```json
 {
@@ -4420,7 +4421,7 @@ This operation does not require authentication
 
 <h3 class="schema-toc" id="tocSresponsebankingaccountlistv2">ResponseBankingAccountListV2</h3>
 
-<a id="schemacdr-banking-apiresponsebankingaccountlistv2"></a>
+<a class="schema-anchor" id="schemacdr-banking-apiresponsebankingaccountlistv2"></a>
 
 ```json
 {
@@ -4460,13 +4461,13 @@ This operation does not require authentication
 |Name|Type|Required|Description|
 |---|---|---|---|
 |data|object|mandatory|none|
-|» accounts|[[BankingAccountV2](#schemacdr-banking-apibankingaccountv2)]|mandatory|The list of accounts returned. If the filter results in an empty set then this array may have no records|
+|» accounts|[[BankingAccountV2](#schemacdr-banking-apibankingaccountv2)]|mandatory|The list of accounts returned. If the filter results in an empty set then this array may have no records|
 |links|[LinksPaginated](#schemacdr-banking-apilinkspaginated)|mandatory|none|
 |meta|[MetaPaginated](#schemacdr-banking-apimetapaginated)|mandatory|none|
 
 <h3 class="schema-toc" id="tocSbankingaccountv2">BankingAccountV2</h3>
 
-<a id="schemacdr-banking-apibankingaccountv2"></a>
+<a class="schema-anchor" id="schemacdr-banking-apibankingaccountv2"></a>
 
 ```json
 {
@@ -4513,7 +4514,7 @@ This operation does not require authentication
 
 <h3 class="schema-toc" id="tocSresponsebankingaccountbyidv3">ResponseBankingAccountByIdV3</h3>
 
-<a id="schemacdr-banking-apiresponsebankingaccountbyidv3"></a>
+<a class="schema-anchor" id="schemacdr-banking-apiresponsebankingaccountbyidv3"></a>
 
 ```json
 {
@@ -4728,7 +4729,7 @@ This operation does not require authentication
 
 <h3 class="schema-toc" id="tocSbankingaccountdetailv3">BankingAccountDetailV3</h3>
 
-<a id="schemacdr-banking-apibankingaccountdetailv3"></a>
+<a class="schema-anchor" id="schemacdr-banking-apibankingaccountdetailv3"></a>
 
 ```json
 {
@@ -4940,38 +4941,38 @@ This operation does not require authentication
 |Name|Type|Required|Description|
 |---|---|---|---|
 |*anonymous*|object|mandatory|none|
-|» bsb|string|optional|The unmasked BSB for the account. Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces|
-|» accountNumber|string|optional|The unmasked account number for the account. Should not be supplied if the account number is a PAN requiring PCI compliance. Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces|
-|» bundleName|string|optional|Optional field to indicate if this account is part of a bundle that is providing additional benefit to the customer|
-|» specificAccountUType|string|optional|The type of structure to present account specific fields.|
-|» termDeposit|[[BankingTermDepositAccount](#schemacdr-banking-apibankingtermdepositaccount)]|conditional|none|
-|» creditCard|[BankingCreditCardAccount](#schemacdr-banking-apibankingcreditcardaccount)|conditional|none|
-|» loan|[BankingLoanAccountV2](#schemacdr-banking-apibankingloanaccountv2)|conditional|none|
-|» depositRate|[RateString](#common-field-types)|optional|current rate to calculate interest earned being applied to deposit balances as it stands at the time of the API call|
-|» lendingRate|[RateString](#common-field-types)|optional|The current rate to calculate interest payable being applied to lending balances as it stands at the time of the API call|
-|» depositRates|[[BankingProductDepositRate](#schemacdr-banking-apibankingproductdepositrate)]|optional|Fully described deposit rates for this account based on the equivalent structure in Product Reference|
-|» lendingRates|[[BankingProductLendingRateV2](#schemacdr-banking-apibankingproductlendingratev2)]|optional|Fully described lending rates for this account based on the equivalent structure in Product Reference|
-|» features|[allOf]|optional|Array of features of the account based on the equivalent structure in Product Reference with the following additional field|
+|» bsb|string|optional|The unmasked BSB for the account. Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces|
+|» accountNumber|string|optional|The unmasked account number for the account. Should not be supplied if the account number is a PAN requiring PCI compliance. Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces|
+|» bundleName|string|optional|Optional field to indicate if this account is part of a bundle that is providing additional benefit to the customer|
+|» specificAccountUType|string|optional|The type of structure to present account specific fields.|
+|» termDeposit|[[BankingTermDepositAccount](#schemacdr-banking-apibankingtermdepositaccount)]|conditional|none|
+|» creditCard|[BankingCreditCardAccount](#schemacdr-banking-apibankingcreditcardaccount)|conditional|none|
+|» loan|[BankingLoanAccountV2](#schemacdr-banking-apibankingloanaccountv2)|conditional|none|
+|» depositRate|[RateString](#common-field-types)|optional|current rate to calculate interest earned being applied to deposit balances as it stands at the time of the API call|
+|» lendingRate|[RateString](#common-field-types)|optional|The current rate to calculate interest payable being applied to lending balances as it stands at the time of the API call|
+|» depositRates|[[BankingProductDepositRate](#schemacdr-banking-apibankingproductdepositrate)]|optional|Fully described deposit rates for this account based on the equivalent structure in Product Reference|
+|» lendingRates|[[BankingProductLendingRateV2](#schemacdr-banking-apibankingproductlendingratev2)]|optional|Fully described lending rates for this account based on the equivalent structure in Product Reference|
+|» features|[allOf]|optional|Array of features of the account based on the equivalent structure in Product Reference with the following additional field|
 
 *allOf*
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|»» *anonymous*|[BankingProductFeatureV2](#schemacdr-banking-apibankingproductfeaturev2)|mandatory|none|
+|»» *anonymous*|[BankingProductFeatureV2](#schemacdr-banking-apibankingproductfeaturev2)|mandatory|none|
 
 *and*
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|»» *anonymous*|object|mandatory|none|
-|»»» isActivated|[Boolean](#common-field-types)|optional|True if the feature is already activated and false if the feature is available for activation. Defaults to true if absent. (note this is an additional field appended to the feature object defined in the Product Reference payload)|
+|»» *anonymous*|object|mandatory|none|
+|»»» isActivated|[Boolean](#common-field-types)|optional|True if the feature is already activated and false if the feature is available for activation. Defaults to true if absent. (note this is an additional field appended to the feature object defined in the Product Reference payload)|
 
 *continued*
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|»» fees|[[BankingProductFee](#schemacdr-banking-apibankingproductfee)]|optional|Fees and charges applicable to the account based on the equivalent structure in Product Reference|
-|»» addresses|[[CommonPhysicalAddress](#schemacdr-banking-apicommonphysicaladdress)]|optional|The addresses for the account to be used for correspondence|
+|» fees|[[BankingProductFee](#schemacdr-banking-apibankingproductfee)]|optional|Fees and charges applicable to the account based on the equivalent structure in Product Reference|
+|» addresses|[[CommonPhysicalAddress](#schemacdr-banking-apicommonphysicaladdress)]|optional|The addresses for the account to be used for correspondence|
 
 #### Enumerated Values
 
@@ -4983,7 +4984,7 @@ This operation does not require authentication
 
 <h3 class="schema-toc" id="tocSbankingtermdepositaccount">BankingTermDepositAccount</h3>
 
-<a id="schemacdr-banking-apibankingtermdepositaccount"></a>
+<a class="schema-anchor" id="schemacdr-banking-apibankingtermdepositaccount"></a>
 
 ```json
 {
@@ -5016,7 +5017,7 @@ This operation does not require authentication
 
 <h3 class="schema-toc" id="tocSbankingcreditcardaccount">BankingCreditCardAccount</h3>
 
-<a id="schemacdr-banking-apibankingcreditcardaccount"></a>
+<a class="schema-anchor" id="schemacdr-banking-apibankingcreditcardaccount"></a>
 
 ```json
 {
@@ -5039,7 +5040,7 @@ This operation does not require authentication
 
 <h3 class="schema-toc" id="tocSbankingloanaccountv2">BankingLoanAccountV2</h3>
 
-<a id="schemacdr-banking-apibankingloanaccountv2"></a>
+<a class="schema-anchor" id="schemacdr-banking-apibankingloanaccountv2"></a>
 
 ```json
 {
@@ -5093,7 +5094,7 @@ This operation does not require authentication
 
 <h3 class="schema-toc" id="tocSresponsebankingtransactionlist">ResponseBankingTransactionList</h3>
 
-<a id="schemacdr-banking-apiresponsebankingtransactionlist"></a>
+<a class="schema-anchor" id="schemacdr-banking-apiresponsebankingtransactionlist"></a>
 
 ```json
 {
@@ -5130,7 +5131,8 @@ This operation does not require authentication
   },
   "meta": {
     "totalRecords": 0,
-    "totalPages": 0
+    "totalPages": 0,
+    "isQueryParamUnsupported": false
   }
 }
 
@@ -5141,13 +5143,13 @@ This operation does not require authentication
 |Name|Type|Required|Description|
 |---|---|---|---|
 |data|object|mandatory|none|
-|» transactions|[[BankingTransaction](#schemacdr-banking-apibankingtransaction)]|mandatory|none|
+|» transactions|[[BankingTransaction](#schemacdr-banking-apibankingtransaction)]|mandatory|none|
 |links|[LinksPaginated](#schemacdr-banking-apilinkspaginated)|mandatory|none|
-|meta|[MetaPaginated](#schemacdr-banking-apimetapaginated)|mandatory|none|
+|meta|[MetaPaginatedTransaction](#schemacdr-banking-apimetapaginatedtransaction)|mandatory|none|
 
 <h3 class="schema-toc" id="tocSbankingtransaction">BankingTransaction</h3>
 
-<a id="schemacdr-banking-apibankingtransaction"></a>
+<a class="schema-anchor" id="schemacdr-banking-apibankingtransaction"></a>
 
 ```json
 {
@@ -5213,7 +5215,7 @@ This operation does not require authentication
 
 <h3 class="schema-toc" id="tocSresponsebankingtransactionbyid">ResponseBankingTransactionById</h3>
 
-<a id="schemacdr-banking-apiresponsebankingtransactionbyid"></a>
+<a class="schema-anchor" id="schemacdr-banking-apiresponsebankingtransactionbyid"></a>
 
 ```json
 {
@@ -5266,7 +5268,7 @@ This operation does not require authentication
 
 <h3 class="schema-toc" id="tocSbankingtransactiondetail">BankingTransactionDetail</h3>
 
-<a id="schemacdr-banking-apibankingtransactiondetail"></a>
+<a class="schema-anchor" id="schemacdr-banking-apibankingtransactiondetail"></a>
 
 ```json
 {
@@ -5316,15 +5318,15 @@ This operation does not require authentication
 |Name|Type|Required|Description|
 |---|---|---|---|
 |*anonymous*|object|mandatory|none|
-|» extendedData|object|mandatory|none|
-|»» payer|string|conditional|Label of the originating payer. Mandatory for inbound payment|
-|»» payee|string|conditional|Label of the target PayID.  Mandatory for an outbound payment. The name assigned to the BSB/Account Number or PayID (by the owner of the PayID)|
-|»» extensionUType|string|optional|Optional extended data specific to transactions originated via NPP|
-|»» x2p101Payload|object|conditional|none|
-|»»» extendedDescription|string|conditional|An extended string description. Required if the extensionUType field is `x2p101Payload`|
-|»»» endToEndId|string|optional|An end to end ID for the payment created at initiation|
-|»»» purposeCode|string|optional|Purpose of the payment.  Format is defined by NPP standards for the x2p1.01 overlay service|
-|»» service|string|mandatory|Identifier of the applicable overlay service. Valid values are: X2P1.01|
+|» extendedData|object|mandatory|none|
+|»» payer|string|conditional|Label of the originating payer. Mandatory for inbound payment|
+|»» payee|string|conditional|Label of the target PayID.  Mandatory for an outbound payment. The name assigned to the BSB/Account Number or PayID (by the owner of the PayID)|
+|»» extensionUType|string|optional|Optional extended data specific to transactions originated via NPP|
+|»» x2p101Payload|object|conditional|none|
+|»»» extendedDescription|string|conditional|An extended string description. Required if the extensionUType field is `x2p101Payload`|
+|»»» endToEndId|string|optional|An end to end ID for the payment created at initiation|
+|»»» purposeCode|string|optional|Purpose of the payment.  Format is defined by NPP standards for the x2p1.01 overlay service|
+|»» service|string|mandatory|Identifier of the applicable overlay service. Valid values are: X2P1.01|
 
 #### Enumerated Values
 
@@ -5335,7 +5337,7 @@ This operation does not require authentication
 
 <h3 class="schema-toc" id="tocSresponsebankingaccountsbalancelist">ResponseBankingAccountsBalanceList</h3>
 
-<a id="schemacdr-banking-apiresponsebankingaccountsbalancelist"></a>
+<a class="schema-anchor" id="schemacdr-banking-apiresponsebankingaccountsbalancelist"></a>
 
 ```json
 {
@@ -5377,13 +5379,13 @@ This operation does not require authentication
 |Name|Type|Required|Description|
 |---|---|---|---|
 |data|object|mandatory|none|
-|» balances|[[BankingBalance](#schemacdr-banking-apibankingbalance)]|mandatory|The list of balances returned|
+|» balances|[[BankingBalance](#schemacdr-banking-apibankingbalance)]|mandatory|The list of balances returned|
 |links|[LinksPaginated](#schemacdr-banking-apilinkspaginated)|mandatory|none|
 |meta|[MetaPaginated](#schemacdr-banking-apimetapaginated)|mandatory|none|
 
 <h3 class="schema-toc" id="tocSresponsebankingaccountsbalancebyid">ResponseBankingAccountsBalanceById</h3>
 
-<a id="schemacdr-banking-apiresponsebankingaccountsbalancebyid"></a>
+<a class="schema-anchor" id="schemacdr-banking-apiresponsebankingaccountsbalancebyid"></a>
 
 ```json
 {
@@ -5419,7 +5421,7 @@ This operation does not require authentication
 
 <h3 class="schema-toc" id="tocSbankingbalance">BankingBalance</h3>
 
-<a id="schemacdr-banking-apibankingbalance"></a>
+<a class="schema-anchor" id="schemacdr-banking-apibankingbalance"></a>
 
 ```json
 {
@@ -5453,7 +5455,7 @@ This operation does not require authentication
 
 <h3 class="schema-toc" id="tocSbankingbalancepurse">BankingBalancePurse</h3>
 
-<a id="schemacdr-banking-apibankingbalancepurse"></a>
+<a class="schema-anchor" id="schemacdr-banking-apibankingbalancepurse"></a>
 
 ```json
 {
@@ -5472,7 +5474,7 @@ This operation does not require authentication
 
 <h3 class="schema-toc" id="tocSresponsebankingpayeelistv2">ResponseBankingPayeeListV2</h3>
 
-<a id="schemacdr-banking-apiresponsebankingpayeelistv2"></a>
+<a class="schema-anchor" id="schemacdr-banking-apiresponsebankingpayeelistv2"></a>
 
 ```json
 {
@@ -5507,13 +5509,13 @@ This operation does not require authentication
 |Name|Type|Required|Description|
 |---|---|---|---|
 |data|object|mandatory|none|
-|» payees|[[BankingPayeeV2](#schemacdr-banking-apibankingpayeev2)]|mandatory|The list of payees returned|
+|» payees|[[BankingPayeeV2](#schemacdr-banking-apibankingpayeev2)]|mandatory|The list of payees returned|
 |links|[LinksPaginated](#schemacdr-banking-apilinkspaginated)|mandatory|none|
 |meta|[MetaPaginated](#schemacdr-banking-apimetapaginated)|mandatory|none|
 
 <h3 class="schema-toc" id="tocSresponsebankingpayeebyidv2">ResponseBankingPayeeByIdV2</h3>
 
-<a id="schemacdr-banking-apiresponsebankingpayeebyidv2"></a>
+<a class="schema-anchor" id="schemacdr-banking-apiresponsebankingpayeebyidv2"></a>
 
 ```json
 {
@@ -5591,7 +5593,7 @@ This operation does not require authentication
 
 <h3 class="schema-toc" id="tocSbankingpayeev2">BankingPayeeV2</h3>
 
-<a id="schemacdr-banking-apibankingpayeev2"></a>
+<a class="schema-anchor" id="schemacdr-banking-apibankingpayeev2"></a>
 
 ```json
 {
@@ -5625,7 +5627,7 @@ This operation does not require authentication
 
 <h3 class="schema-toc" id="tocSbankingpayeedetailv2">BankingPayeeDetailV2</h3>
 
-<a id="schemacdr-banking-apibankingpayeedetailv2"></a>
+<a class="schema-anchor" id="schemacdr-banking-apibankingpayeedetailv2"></a>
 
 ```json
 {
@@ -5700,11 +5702,11 @@ This operation does not require authentication
 |Name|Type|Required|Description|
 |---|---|---|---|
 |*anonymous*|object|mandatory|none|
-|» payeeUType|string|mandatory|Type of object included that describes the payee in detail|
-|» biller|[BankingBillerPayee](#schemacdr-banking-apibankingbillerpayee)|conditional|none|
-|» domestic|[BankingDomesticPayee](#schemacdr-banking-apibankingdomesticpayee)|conditional|none|
-|» digitalWallet|[BankingDigitalWalletPayee](#schemacdr-banking-apibankingdigitalwalletpayee)|conditional|none|
-|» international|[BankingInternationalPayee](#schemacdr-banking-apibankinginternationalpayee)|conditional|none|
+|» payeeUType|string|mandatory|Type of object included that describes the payee in detail|
+|» biller|[BankingBillerPayee](#schemacdr-banking-apibankingbillerpayee)|conditional|none|
+|» domestic|[BankingDomesticPayee](#schemacdr-banking-apibankingdomesticpayee)|conditional|none|
+|» digitalWallet|[BankingDigitalWalletPayee](#schemacdr-banking-apibankingdigitalwalletpayee)|conditional|none|
+|» international|[BankingInternationalPayee](#schemacdr-banking-apibankinginternationalpayee)|conditional|none|
 
 #### Enumerated Values
 
@@ -5717,7 +5719,7 @@ This operation does not require authentication
 
 <h3 class="schema-toc" id="tocSbankingdomesticpayee">BankingDomesticPayee</h3>
 
-<a id="schemacdr-banking-apibankingdomesticpayee"></a>
+<a class="schema-anchor" id="schemacdr-banking-apibankingdomesticpayee"></a>
 
 ```json
 {
@@ -5758,7 +5760,7 @@ This operation does not require authentication
 
 <h3 class="schema-toc" id="tocSbankingdomesticpayeeaccount">BankingDomesticPayeeAccount</h3>
 
-<a id="schemacdr-banking-apibankingdomesticpayeeaccount"></a>
+<a class="schema-anchor" id="schemacdr-banking-apibankingdomesticpayeeaccount"></a>
 
 ```json
 {
@@ -5779,7 +5781,7 @@ This operation does not require authentication
 
 <h3 class="schema-toc" id="tocSbankingdomesticpayeecard">BankingDomesticPayeeCard</h3>
 
-<a id="schemacdr-banking-apibankingdomesticpayeecard"></a>
+<a class="schema-anchor" id="schemacdr-banking-apibankingdomesticpayeecard"></a>
 
 ```json
 {
@@ -5796,7 +5798,7 @@ This operation does not require authentication
 
 <h3 class="schema-toc" id="tocSbankingdomesticpayeepayid">BankingDomesticPayeePayId</h3>
 
-<a id="schemacdr-banking-apibankingdomesticpayeepayid"></a>
+<a class="schema-anchor" id="schemacdr-banking-apibankingdomesticpayeepayid"></a>
 
 ```json
 {
@@ -5826,7 +5828,7 @@ This operation does not require authentication
 
 <h3 class="schema-toc" id="tocSbankingbillerpayee">BankingBillerPayee</h3>
 
-<a id="schemacdr-banking-apibankingbillerpayee"></a>
+<a class="schema-anchor" id="schemacdr-banking-apibankingbillerpayee"></a>
 
 ```json
 {
@@ -5847,7 +5849,7 @@ This operation does not require authentication
 
 <h3 class="schema-toc" id="tocSbankinginternationalpayee">BankingInternationalPayee</h3>
 
-<a id="schemacdr-banking-apibankinginternationalpayee"></a>
+<a class="schema-anchor" id="schemacdr-banking-apibankinginternationalpayee"></a>
 
 ```json
 {
@@ -5879,25 +5881,25 @@ This operation does not require authentication
 |Name|Type|Required|Description|
 |---|---|---|---|
 |beneficiaryDetails|object|mandatory|none|
-|» name|string|optional|Name of the beneficiary|
-|» country|[ExternalRef](#common-field-types)|mandatory|Country where the beneficiary resides. A valid [ISO 3166 Alpha-3](https://www.iso.org/iso-3166-country-codes.html) country code|
-|» message|string|optional|Response message for the payment|
+|» name|string|optional|Name of the beneficiary|
+|» country|[ExternalRef](#common-field-types)|mandatory|Country where the beneficiary resides. A valid [ISO 3166 Alpha-3](https://www.iso.org/iso-3166-country-codes.html) country code|
+|» message|string|optional|Response message for the payment|
 |bankDetails|object|mandatory|none|
-|» country|[ExternalRef](#common-field-types)|mandatory|Country of the recipient institution. A valid [ISO 3166 Alpha-3](https://www.iso.org/iso-3166-country-codes.html) country code|
-|» accountNumber|string|mandatory|Account Targeted for payment|
-|» bankAddress|object|optional|none|
-|»» name|string|mandatory|Name of the recipient Bank|
-|»» address|string|mandatory|Address of the recipient Bank|
-|» beneficiaryBankBIC|[ExternalRef](#common-field-types)|optional|Swift bank code.  Aligns with standard [ISO 9362](https://www.iso.org/standard/60390.html)|
-|» fedWireNumber|string|optional|Number for Fedwire payment (Federal Reserve Wire Network)|
-|» sortCode|string|optional|Sort code used for account identification in some jurisdictions|
-|» chipNumber|string|optional|Number for the Clearing House Interbank Payments System|
-|» routingNumber|string|optional|International bank routing number|
-|» legalEntityIdentifier|[ExternalRef](#common-field-types)|optional|The legal entity identifier (LEI) for the beneficiary.  Aligns with [ISO 17442](https://www.iso.org/standard/59771.html)|
+|» country|[ExternalRef](#common-field-types)|mandatory|Country of the recipient institution. A valid [ISO 3166 Alpha-3](https://www.iso.org/iso-3166-country-codes.html) country code|
+|» accountNumber|string|mandatory|Account Targeted for payment|
+|» bankAddress|object|optional|none|
+|»» name|string|mandatory|Name of the recipient Bank|
+|»» address|string|mandatory|Address of the recipient Bank|
+|» beneficiaryBankBIC|[ExternalRef](#common-field-types)|optional|Swift bank code.  Aligns with standard [ISO 9362](https://www.iso.org/standard/60390.html)|
+|» fedWireNumber|string|optional|Number for Fedwire payment (Federal Reserve Wire Network)|
+|» sortCode|string|optional|Sort code used for account identification in some jurisdictions|
+|» chipNumber|string|optional|Number for the Clearing House Interbank Payments System|
+|» routingNumber|string|optional|International bank routing number|
+|» legalEntityIdentifier|[ExternalRef](#common-field-types)|optional|The legal entity identifier (LEI) for the beneficiary.  Aligns with [ISO 17442](https://www.iso.org/standard/59771.html)|
 
 <h3 class="schema-toc" id="tocSbankingdigitalwalletpayee">BankingDigitalWalletPayee</h3>
 
-<a id="schemacdr-banking-apibankingdigitalwalletpayee"></a>
+<a class="schema-anchor" id="schemacdr-banking-apibankingdigitalwalletpayee"></a>
 
 ```json
 {
@@ -5930,7 +5932,7 @@ This operation does not require authentication
 
 <h3 class="schema-toc" id="tocSresponsebankingdirectdebitauthorisationlist">ResponseBankingDirectDebitAuthorisationList</h3>
 
-<a id="schemacdr-banking-apiresponsebankingdirectdebitauthorisationlist"></a>
+<a class="schema-anchor" id="schemacdr-banking-apiresponsebankingdirectdebitauthorisationlist"></a>
 
 ```json
 {
@@ -5970,13 +5972,13 @@ This operation does not require authentication
 |Name|Type|Required|Description|
 |---|---|---|---|
 |data|object|mandatory|none|
-|» directDebitAuthorisations|[[BankingDirectDebit](#schemacdr-banking-apibankingdirectdebit)]|mandatory|The list of authorisations returned|
+|» directDebitAuthorisations|[[BankingDirectDebit](#schemacdr-banking-apibankingdirectdebit)]|mandatory|The list of authorisations returned|
 |links|[LinksPaginated](#schemacdr-banking-apilinkspaginated)|mandatory|none|
 |meta|[MetaPaginated](#schemacdr-banking-apimetapaginated)|mandatory|none|
 
 <h3 class="schema-toc" id="tocSbankingdirectdebit">BankingDirectDebit</h3>
 
-<a id="schemacdr-banking-apibankingdirectdebit"></a>
+<a class="schema-anchor" id="schemacdr-banking-apibankingdirectdebit"></a>
 
 ```json
 {
@@ -6005,7 +6007,7 @@ This operation does not require authentication
 
 <h3 class="schema-toc" id="tocSbankingauthorisedentity">BankingAuthorisedEntity</h3>
 
-<a id="schemacdr-banking-apibankingauthorisedentity"></a>
+<a class="schema-anchor" id="schemacdr-banking-apibankingauthorisedentity"></a>
 
 ```json
 {
@@ -6030,7 +6032,7 @@ This operation does not require authentication
 
 <h3 class="schema-toc" id="tocSresponsebankingscheduledpaymentslistv2">ResponseBankingScheduledPaymentsListV2</h3>
 
-<a id="schemacdr-banking-apiresponsebankingscheduledpaymentslistv2"></a>
+<a class="schema-anchor" id="schemacdr-banking-apiresponsebankingscheduledpaymentslistv2"></a>
 
 ```json
 {
@@ -6158,13 +6160,13 @@ This operation does not require authentication
 |Name|Type|Required|Description|
 |---|---|---|---|
 |data|object|mandatory|none|
-|» scheduledPayments|[[BankingScheduledPaymentV2](#schemacdr-banking-apibankingscheduledpaymentv2)]|mandatory|The list of scheduled payments to return|
+|» scheduledPayments|[[BankingScheduledPaymentV2](#schemacdr-banking-apibankingscheduledpaymentv2)]|mandatory|The list of scheduled payments to return|
 |links|[LinksPaginated](#schemacdr-banking-apilinkspaginated)|mandatory|none|
 |meta|[MetaPaginated](#schemacdr-banking-apimetapaginated)|mandatory|none|
 
 <h3 class="schema-toc" id="tocSbankingscheduledpaymentv2">BankingScheduledPaymentV2</h3>
 
-<a id="schemacdr-banking-apibankingscheduledpaymentv2"></a>
+<a class="schema-anchor" id="schemacdr-banking-apibankingscheduledpaymentv2"></a>
 
 ```json
 {
@@ -6293,7 +6295,7 @@ This operation does not require authentication
 
 <h3 class="schema-toc" id="tocSbankingscheduledpaymentsetv2">BankingScheduledPaymentSetV2</h3>
 
-<a id="schemacdr-banking-apibankingscheduledpaymentsetv2"></a>
+<a class="schema-anchor" id="schemacdr-banking-apibankingscheduledpaymentsetv2"></a>
 
 ```json
 {
@@ -6372,7 +6374,7 @@ This operation does not require authentication
 
 <h3 class="schema-toc" id="tocSbankingscheduledpaymenttov2">BankingScheduledPaymentToV2</h3>
 
-<a id="schemacdr-banking-apibankingscheduledpaymenttov2"></a>
+<a class="schema-anchor" id="schemacdr-banking-apibankingscheduledpaymenttov2"></a>
 
 ```json
 {
@@ -6462,7 +6464,7 @@ This operation does not require authentication
 
 <h3 class="schema-toc" id="tocSbankingscheduledpaymentfrom">BankingScheduledPaymentFrom</h3>
 
-<a id="schemacdr-banking-apibankingscheduledpaymentfrom"></a>
+<a class="schema-anchor" id="schemacdr-banking-apibankingscheduledpaymentfrom"></a>
 
 ```json
 {
@@ -6481,7 +6483,7 @@ This operation does not require authentication
 
 <h3 class="schema-toc" id="tocSbankingscheduledpaymentrecurrence">BankingScheduledPaymentRecurrence</h3>
 
-<a id="schemacdr-banking-apibankingscheduledpaymentrecurrence"></a>
+<a class="schema-anchor" id="schemacdr-banking-apibankingscheduledpaymentrecurrence"></a>
 
 ```json
 {
@@ -6539,7 +6541,7 @@ This operation does not require authentication
 
 <h3 class="schema-toc" id="tocSbankingscheduledpaymentrecurrenceonceoff">BankingScheduledPaymentRecurrenceOnceOff</h3>
 
-<a id="schemacdr-banking-apibankingscheduledpaymentrecurrenceonceoff"></a>
+<a class="schema-anchor" id="schemacdr-banking-apibankingscheduledpaymentrecurrenceonceoff"></a>
 
 ```json
 {
@@ -6558,7 +6560,7 @@ This operation does not require authentication
 
 <h3 class="schema-toc" id="tocSbankingscheduledpaymentrecurrenceintervalschedule">BankingScheduledPaymentRecurrenceIntervalSchedule</h3>
 
-<a id="schemacdr-banking-apibankingscheduledpaymentrecurrenceintervalschedule"></a>
+<a class="schema-anchor" id="schemacdr-banking-apibankingscheduledpaymentrecurrenceintervalschedule"></a>
 
 ```json
 {
@@ -6597,7 +6599,7 @@ This operation does not require authentication
 
 <h3 class="schema-toc" id="tocSbankingscheduledpaymentinterval">BankingScheduledPaymentInterval</h3>
 
-<a id="schemacdr-banking-apibankingscheduledpaymentinterval"></a>
+<a class="schema-anchor" id="schemacdr-banking-apibankingscheduledpaymentinterval"></a>
 
 ```json
 {
@@ -6616,7 +6618,7 @@ This operation does not require authentication
 
 <h3 class="schema-toc" id="tocSbankingscheduledpaymentrecurrencelastweekday">BankingScheduledPaymentRecurrenceLastWeekday</h3>
 
-<a id="schemacdr-banking-apibankingscheduledpaymentrecurrencelastweekday"></a>
+<a class="schema-anchor" id="schemacdr-banking-apibankingscheduledpaymentrecurrencelastweekday"></a>
 
 ```json
 {
@@ -6659,7 +6661,7 @@ This operation does not require authentication
 
 <h3 class="schema-toc" id="tocSbankingscheduledpaymentrecurrenceeventbased">BankingScheduledPaymentRecurrenceEventBased</h3>
 
-<a id="schemacdr-banking-apibankingscheduledpaymentrecurrenceeventbased"></a>
+<a class="schema-anchor" id="schemacdr-banking-apibankingscheduledpaymentrecurrenceeventbased"></a>
 
 ```json
 {
@@ -6678,7 +6680,7 @@ This operation does not require authentication
 
 <h3 class="schema-toc" id="tocScommonphysicaladdress">CommonPhysicalAddress</h3>
 
-<a id="schemacdr-banking-apicommonphysicaladdress"></a>
+<a class="schema-anchor" id="schemacdr-banking-apicommonphysicaladdress"></a>
 
 ```json
 {
@@ -6738,7 +6740,7 @@ This operation does not require authentication
 
 <h3 class="schema-toc" id="tocScommonsimpleaddress">CommonSimpleAddress</h3>
 
-<a id="schemacdr-banking-apicommonsimpleaddress"></a>
+<a class="schema-anchor" id="schemacdr-banking-apicommonsimpleaddress"></a>
 
 ```json
 {
@@ -6769,7 +6771,7 @@ This operation does not require authentication
 
 <h3 class="schema-toc" id="tocScommonpafaddress">CommonPAFAddress</h3>
 
-<a id="schemacdr-banking-apicommonpafaddress"></a>
+<a class="schema-anchor" id="schemacdr-banking-apicommonpafaddress"></a>
 
 ```json
 {
@@ -6830,7 +6832,7 @@ This operation does not require authentication
 
 <h3 class="schema-toc" id="tocSlinks">Links</h3>
 
-<a id="schemacdr-banking-apilinks"></a>
+<a class="schema-anchor" id="schemacdr-banking-apilinks"></a>
 
 ```json
 {
@@ -6847,7 +6849,7 @@ This operation does not require authentication
 
 <h3 class="schema-toc" id="tocSmeta">Meta</h3>
 
-<a id="schemacdr-banking-apimeta"></a>
+<a class="schema-anchor" id="schemacdr-banking-apimeta"></a>
 
 ```json
 {}
@@ -6860,7 +6862,7 @@ This operation does not require authentication
 
 <h3 class="schema-toc" id="tocSlinkspaginated">LinksPaginated</h3>
 
-<a id="schemacdr-banking-apilinkspaginated"></a>
+<a class="schema-anchor" id="schemacdr-banking-apilinkspaginated"></a>
 
 ```json
 {
@@ -6885,7 +6887,7 @@ This operation does not require authentication
 
 <h3 class="schema-toc" id="tocSmetapaginated">MetaPaginated</h3>
 
-<a id="schemacdr-banking-apimetapaginated"></a>
+<a class="schema-anchor" id="schemacdr-banking-apimetapaginated"></a>
 
 ```json
 {
@@ -6902,9 +6904,37 @@ This operation does not require authentication
 |totalRecords|[NaturalNumber](#common-field-types)|mandatory|The total number of records in the full set. See [pagination](#pagination).|
 |totalPages|[NaturalNumber](#common-field-types)|mandatory|The total number of pages in the full set. See [pagination](#pagination).|
 
+<h3 class="schema-toc" id="tocSmetapaginatedtransaction">MetaPaginatedTransaction</h3>
+
+<a class="schema-anchor" id="schemacdr-banking-apimetapaginatedtransaction"></a>
+
+```json
+{
+  "totalRecords": 0,
+  "totalPages": 0,
+  "isQueryParamUnsupported": false
+}
+
+```
+
+### Properties
+
+*allOf*
+
+|Name|Type|Required|Description|
+|---|---|---|---|
+|*anonymous*|[MetaPaginated](#schemacdr-banking-apimetapaginated)|mandatory|none|
+
+*and*
+
+|Name|Type|Required|Description|
+|---|---|---|---|
+|*anonymous*|object|mandatory|none|
+|» isQueryParamUnsupported|[Boolean](#common-field-types)|optional|**true** if *"text"* query parameter is not supported|
+
 <h3 class="schema-toc" id="tocSmetaerror">MetaError</h3>
 
-<a id="schemacdr-banking-apimetaerror"></a>
+<a class="schema-anchor" id="schemacdr-banking-apimetaerror"></a>
 
 ```json
 {
@@ -6923,7 +6953,7 @@ This operation does not require authentication
 
 <h3 class="schema-toc" id="tocSresponseerrorlistv2">ResponseErrorListV2</h3>
 
-<a id="schemacdr-banking-apiresponseerrorlistv2"></a>
+<a class="schema-anchor" id="schemacdr-banking-apiresponseerrorlistv2"></a>
 
 ```json
 {
@@ -6946,14 +6976,14 @@ This operation does not require authentication
 |Name|Type|Required|Description|
 |---|---|---|---|
 |errors|[object]|mandatory|none|
-|» code|string|mandatory|The code of the error encountered. Where the error is specific to the respondent, an application-specific error code, expressed as a string value. If the error is application-specific, the URN code that the specific error extends must be provided in the meta object. Otherwise, the value is the error code URN.|
-|» title|string|mandatory|A short, human-readable summary of the problem that MUST NOT change from occurrence to occurrence of the problem represented by the error code.|
-|» detail|string|mandatory|A human-readable explanation specific to this occurrence of the problem.|
-|» meta|[MetaError](#schemacdr-banking-apimetaerror)|optional|Additional data for customised error codes|
+|» code|string|mandatory|The code of the error encountered. Where the error is specific to the respondent, an application-specific error code, expressed as a string value. If the error is application-specific, the URN code that the specific error extends must be provided in the meta object. Otherwise, the value is the error code URN.|
+|» title|string|mandatory|A short, human-readable summary of the problem that MUST NOT change from occurrence to occurrence of the problem represented by the error code.|
+|» detail|string|mandatory|A human-readable explanation specific to this occurrence of the problem.|
+|» meta|[MetaError](#schemacdr-banking-apimetaerror)|optional|Additional data for customised error codes|
 
 <h3 class="schema-toc" id="tocSbankingproductcategory">BankingProductCategory</h3>
 
-<a id="schemacdr-banking-apibankingproductcategory"></a>
+<a class="schema-anchor" id="schemacdr-banking-apibankingproductcategory"></a>
 
 ```json
 "BUSINESS_LOANS"

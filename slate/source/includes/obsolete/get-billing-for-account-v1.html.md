@@ -14,11 +14,9 @@ search: false
 # Get Billing For Account V1
 This page documents version 1 of the Get Billing For Account end point. 
 
-* Data Holder **MUST** implement Get Billing For Account v2 by **November 1st 2023**.
-
-This version is to be ceased to be called by data recipients by **September 9th 2024** and can be decommissioned by data holders as of that date.
-
-
+* Data Holders **MUST** implement Get Billing For Account v2 by **November 1st 2023**.
+* This version is to be ceased to be called by data recipients by **September 9th 2024** and can be decommissioned by data holders as of that date.
+* Support for this version is not required for Data Holders going live on, or after, **November 1st 2023**.
 
 ## Get Billing For Account
 

@@ -263,10 +263,13 @@
 <p>This release addresses the following change requests raised on <a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues">Standards Maintenance</a>:</p>
 
 <ul>
+<li><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/413">Standards Maintenance Issue 413 - 400 Error code missing in swagger for some endpoints</a></li>
 <li><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/516">Standards Maintenance Issue 516 - Get OpenId Provider Config and Get JWKS API documented paths are incorrect</a></li>
 <li><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/522">Standards Maintenance Issue 522 - OpenID Provider Configuration End Point parameter requirements</a></li>
 <li><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/536">Standards Maintenance Issue 536 - Define new toUType value to relevant schemas</a></li>
 <li><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/559">Standards Maintenance Issue 559 - FAPI 1.0 Final Phase 3 Obligation example for authorisation request using the Authorisation Code Flow does not have &quot;response_mode&quot; attribute</a></li>
+<li><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/575">Standards Maintenance Issue 575 - Inconsistency of data types in various schema</a></li>
+<li><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/585">Standards Maintenance Issue 585 - Clarify Base and Adjustment Rate Types</a></li>
 <li><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/586">Standards Maintenance Issue 586 - Maintenance Iteration 15 Holistic Feedback</a></li>
 <li><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/590">Standards Maintenance Issue 590 - Remove FAPI 1.0 draft references</a></li>
 <li><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/591">Standards Maintenance Issue 591 - Energy &#39;Get Agreed Payment Schedule&#39; - BSB and Account Number Tokenisation/non-Tokenisation</a></li>
@@ -324,6 +327,11 @@
 </tr>
 </thead><tbody>
 <tr>
+<td>Error response codes</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/413"><strong>Standards Maintenance #413</strong></a>: Added missing error response codes to multiple endpoints.</td>
+<td><a href="../../#banking-apis">Banking APIs</a><br /><a href="../../#energy-apis">Energy APIs</a><br /><a href="../../#common-apis">Common APIs</a><br /><a href="../../#admin-apis">Admin APIs</a></td>
+</tr>
+<tr>
 <td>Add <code>digitalWallet</code> to Scheduled Payments</td>
 <td><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/536"><strong>Standards Maintenance #536</strong></a>: <ul><li>Added <code>digitalWallet</code> object to <code>BankingScheduledPaymentToV2</code> structure.</li><li>Incremented versions of Get Scheduled Payments For Account, Get Scheduled Payments Bulk and Get Scheduled Payments For Specific Accounts APIs.</li><li>Updated description of <code>name</code> field in the <code>EnergyPaymentSchedule.digitalWallet</code> and <code>TelcoPaymentScheduleDigitalWallet</code> structures for consistency </li></ul></td>
 <td><a href="../../#banking-apis">Banking APIs</a></br><a href="../../#energy-apis">Energy APIs</a></br><a href="../../#telco-apis">Telco APIs</a></td>
@@ -332,6 +340,11 @@
 <td>Corrected HTTP Methods</td>
 <td><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/590"><strong>Standards Maintenance #586</strong></a>: Corrected the endpoint version schedule to correctly list POST not GET methods for energy APIs: <ul><li>Get Usage For Specific Service Points</li><li>Get Balances For Specific Energy Accounts</li></ul><br/>Addresses this issue <a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/586#issuecomment-1537800843">comment</a>)</td>
 <td><a href="../../includes/endpoint-version-schedule/#endpoint-version-schedule">Endpoint Version Schedule</a></td>
+</tr>
+<tr>
+<td>Clarify Base and Adjustment Rate Types</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/585"><strong>Standards Maintenance #585</strong></a>: Split the &#39;Product &amp; Account Components&#39; tables that provide more detail on the &#39;Product Deposit Rate Types&#39; and &#39;Product Lending Rate Types&#39; into Base Rate Types and Adjustment Rate Types.</td>
+<td><a href="../../#product-amp-account-components">Product &amp; Account Components</a></td>
 </tr>
 <tr>
 <td>Get Products</td>
@@ -389,6 +402,11 @@
 <tr>
 <td>Register Base Paths</td>
 <td><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/516"><strong>Standards Maintenance #516</strong></a>: Match the endpoints paths for jwks and well known to match actual Register implementation.</td>
+<td><a href="../../#register-apis">Register APIs</a></td>
+</tr>
+<tr>
+<td>Header types</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/575"><strong>Standards Maintenance #575</strong></a>: Updated a number of headers to use more consistent types.</td>
 <td><a href="../../#register-apis">Register APIs</a></td>
 </tr>
 </tbody></table>
