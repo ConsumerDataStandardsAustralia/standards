@@ -1424,7 +1424,6 @@ This text is an example of a new addition to the standards:
 </span>This text is an example of text removed from the standards:
 <span class="gd">- Old text removed
 </span>Note: changes to request and response payloads are listed at the beginning of the relevant API section due to the documentation being auto generated from OpenAPI specification files.
-</code></pre><pre class="highlight diff tab-diff"><code>Improved line wrapping and removed horizontal scrollbars in the 'Non-normative Examples' and 'Version Delta' tab column.
 </code></pre>
 
 <p>These standards have been developed as part of the Australian Government&#39;s introduction of the <a href="https://www.accc.gov.au/focus-areas/consumer-data-right" title="ACCC Consumer Data Right webpage">Consumer Data Right</a> legislation to give Australians greater control over their data.</p>
@@ -1444,7 +1443,7 @@ This text is an example of a new addition to the standards:
 
 <h2 id='version'>Version</h2>
 
-<p>These standards represent version 1.27.0 of the high level standards.  See the <a href="#versioning">versioning section</a> for more information on how versions are managed in the standard.</p>
+<p>These standards represent version 1.28.0 of the high level standards.  See the <a href="#versioning">versioning section</a> for more information on how versions are managed in the standard.</p>
 
 <h2 id='interpretation'>Interpretation</h2>
 
@@ -1455,9 +1454,6 @@ This text is an example of a new addition to the standards:
 <p>The standards, as published from time to time, may include specific statements indicating that a specific section of the standards will not take effect until a future date or may cease to have effect on some future date.</p>
 
 <p>The table below highlights these areas of the standards.</p>
-
-<pre class="highlight diff tab-diff"><code>Added clarification for 'Get Energy Account Detail V2' for Data Holders going live on, or after, November 1st 2023
-</code></pre>
 
 <table><thead>
 <tr>
@@ -1764,8 +1760,8 @@ This text is an example of a new addition to the standards:
 </tr>
 </tbody></table>
 
-<p><h2 id='informative-references'>Informative References</h2><pre class="highlight diff tab-diff"><code>Changed the link to the CDR website to be HTTPS with www.
-</code></pre>
+<h2 id='informative-references'>Informative References</h2>
+
 <table><thead>
 <tr>
 <th><strong>Reference</strong></th>
@@ -1820,7 +1816,7 @@ This text is an example of a new addition to the standards:
 <td><a id="iref-X.1254"></a><strong>[X.1254]</strong></td>
 <td>X.1254 - Entity authentication assurance framework: <a href="https://www.itu.int/rec/T-REC-X1254-201209-I/en">https://www.itu.int/rec/T-REC-X1254-201209-I/en</a></td>
 </tr>
-</tbody></table></p>
+</tbody></table>
 <h1 style="display:none"></h1>
 <h1 id='high-level-standards'>High Level Standards</h1>
 <p>This section contains components of the standards that are foundational and generally applicable.</p>
@@ -4652,8 +4648,7 @@ grant_type=client_credentials&amp;
 
 <h2 id='client-registration'>Client Registration</h2><h3 id='dynamic-client-registration'>Dynamic Client Registration</h3>
 <p>Data Recipients register with Data Holders according to <strong><a href="#nref-DCR">[DCR]</a></strong> to obtain client credentials used to retrieve consumer data on behalf of a consumer.</p>
-<h4 id='software-statement-assertion-ssa'>Software Statement Assertion (SSA)</h4><pre class="highlight diff tab-diff"><code>Updated encoded and decoded example SSAs to include energy scopes and minor updates for clarity and consistency
-</code></pre>
+<h4 id='software-statement-assertion-ssa'>Software Statement Assertion (SSA)</h4>
 <p>As per <strong><a href="#nref-DCR">[DCR]</a></strong>, a Software Statement is defined in as: <em>A digitally signed JSON Web Token (JWT) created in accordance with <strong><a href="#nref-JWT">[JWT]</a></strong> that asserts metadata values about the client software</em></p>
 
 <blockquote>
@@ -4737,8 +4732,7 @@ grant_type=client_credentials&amp;
 
 </code></pre>
 <p>The SSA will conform to the requirements of <strong><a href="#nref-DCR">[DCR]</a></strong> with the following clarifications:</p>
-<pre class="highlight diff tab-diff"><code>Corrected typo in the description of the software_roles field
-</code></pre>
+
 <table><thead>
 <tr>
 <th>Client Metadata</th>
@@ -4972,7 +4966,6 @@ Accept: application/json
 }{
   "signature":...
 }
-</code></pre><pre class="highlight diff tab-diff"><code>Updated link to section 8.6 of FAPI Advanced
 </code></pre>
 <p>To register with a Data Holder, the Data Recipient sends an HTTP POST to the Data Holder registration endpoint.</p>
 
@@ -6232,13 +6225,12 @@ client_id=s6BhdRkqt3
 
 <h2 id='security-endpoints'>Security Endpoints</h2>
 
-<h3 id='openid-provider-configuration-end-point'>OpenID Provider Configuration End Point</h3><pre class="highlight diff tab-diff"><code>Updated the 'code_challenge_methods_supported' property of the OpenID Provider Configuration to be an array
+<h3 id='openid-provider-configuration-end-point'>OpenID Provider Configuration End Point</h3>
 
-Updated [FAPI-RW-Draft] to refer to [FAPI-1.0-Advanced]
-</code></pre>
 <blockquote>
 <p>Non-Normative Example</p>
 </blockquote>
+
 <pre class="highlight plaintext"><code>## Request
 
 GET /.well-known/openid-configuration HTTP/1.1
@@ -6286,6 +6278,7 @@ Content-Type: application/json
   "cdr_arrangement_revocation_endpoint": "https://data.holder.com.au/arrangements/revoke"
 }
 </code></pre>
+
 <table><thead>
 <tr>
 <th>Description</th>
@@ -6381,6 +6374,7 @@ Content-Type: application/json
 </ul>
 
 <p><a id="authorisation-endpoint"></a></p>
+
 <h3 id='authorisation-end-point'>Authorisation End Point</h3>
 
 <blockquote>
@@ -7155,7 +7149,6 @@ Host: cdr.register
 </blockquote>
 <pre class="highlight plaintext"><code>&lt;InfoSecBaseUri&gt;/.well-known/openid-configuration
 
-</code></pre><pre class="highlight diff tab-diff"><code>Updated the description of the PublicBaseUri field to clarify requirements for the Energy sector
 </code></pre>
 
 <p>Participants will be required to register base URIs against each of their brands to facilitate the implementation of the Consumer Data Standards</p>
@@ -7225,9 +7218,7 @@ Host: cdr.register
 <tr><td><a href='./includes/swagger/cds_dcr.json'>DCR OpenAPI Specification (JSON)</a></td></tr>
 <tr><td><a href='./includes/swagger/cds_dcr.yaml'>DCR OpenAPI Specification (YAML)</a></td></tr>
 </table></p>
-<pre class="highlight diff tab-diff"><code>Updated 'Non-normative Examples' to include JWT Body parameter for POST and PUT
-</code></pre><pre class="highlight diff tab-diff"><code>Corrected typo in the description of the software_roles field
-</code></pre>
+
 <h2 id='register-data-recipient-oauth-client'>Register Data Recipient oAuth Client</h2>
 
 <p><a id="opIdPostDataRecipientRegistration"></a></p>
@@ -12656,9 +12647,7 @@ This operation does not require authentication
 <tr><td><a href='./includes/swagger/cds_banking.json'>Banking OpenAPI Specification (JSON)</a></td></tr>
 <tr><td><a href='./includes/swagger/cds_banking.yaml'>Banking OpenAPI Specification (YAML)</a></td></tr>
 </table></p>
-<pre class="highlight diff tab-diff"><code>Added MetaPaginatedTransaction schema to 'Get Transactions For Account' to include the isQueryParamUnsupported property
-</code></pre><pre class="highlight diff tab-diff"><code>Removed duplicate '400 - Invalid Version' error codes
-</code></pre>
+
 <h2 id='get-accounts'>Get Accounts</h2>
 
 <p><a id="opIdlistAccounts"></a></p>
@@ -25746,9 +25735,7 @@ This operation does not require authentication
 <tr><td><a href='./includes/swagger/cds_energy.json'>Energy OpenAPI Specification (JSON)</a></td></tr>
 <tr><td><a href='./includes/swagger/cds_energy.yaml'>Energy OpenAPI Specification (YAML)</a></td></tr>
 </table>
-<pre class="highlight diff tab-diff"><code>Corrected descriptions mentioning electricity in the EnergyInvoiceGasUsageCharges schema
-</code></pre><pre class="highlight diff tab-diff"><code>Added missing '400 - Invalid Date' error codes that MUST be supported by endpoints with date parameters
-</code></pre>
+
 <h2 id='get-generic-plans'>Get Generic Plans</h2>
 
 <p><a id="opIdlistPlans"></a></p>
@@ -46389,14 +46376,7 @@ This operation does not require authentication
 <tr><td><a href='./includes/swagger/cds_admin.json'>Admin OpenAPI Specification (JSON)</a></td></tr>
 <tr><td><a href='./includes/swagger/cds_admin.yaml'>Admin OpenAPI Specification (YAML)</a></td></tr>
 </table></p>
-<pre class="highlight diff tab-diff"><code>Changed to a non-breaking space between the indent chevron and property name in all schema Properties tables to prevent line wrapping
 
-Resolved documentation rendering bug causing incorrect indent level to be displayed for some properties
-
-Added statement to clarify that aggregate performance metrics exclude Secondary Data Holder performance
-
-Corrected the requirement for the authorisations property of Get Metrics v4 and v5 to be mandatory
-</code></pre>
 <h2 id='metadata-update'>Metadata Update</h2>
 
 <p><a id="opIdmetadataUpdate"></a></p>
@@ -49969,8 +49949,7 @@ the Data Holder. In this scenario the retailer MUST call AEMO multiple times and
 <tr><td><a href='./includes/swagger/cds_energy_sdh.json'>Energy Secondary Data Holder OpenAPI Specification (JSON)</a></td></tr>
 <tr><td><a href='./includes/swagger/cds_energy_sdh.yaml'>Energy Secondary Data Holder OpenAPI Specification (YAML)</a></td></tr>
 </table>
-<pre class="highlight diff tab-diff"><code>Added missing '400 - Invalid Date' error codes that MUST be supported by endpoints with date parameters
-</code></pre>
+
 <h2 id='get-service-points-sr'>Get Service Points (SR)</h2>
 
 <p><a id="opIdlistServicePoints"></a></p>
@@ -54205,8 +54184,7 @@ This operation may only be called by an Energy Retailer using the information se
 </ul>
 <h2 id='draft-standards'>Draft Standards</h2>
 <p>The Consumer Data Standards currently include the following Draft Standards:</p>
-<pre class="highlight diff tab-diff"><code>Added Draft Standards for non-bank lending
-</code></pre>
+
 <ul>
 <li><a href="includes/additional/drafts/non-bank-lending/banking-non-bank-lending.html">Draft Standards for the Banking and Non-Bank Lending sector</a></li>
 </ul>
@@ -54290,6 +54268,12 @@ This operation may only be called by an Energy Retailer using the information se
 <th>Detail Of change</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>TBA</td>
+<td>1.28.0</td>
+<td>TBA</td>
+<td>See <a href="includes/releasenotes/releasenotes.1.28.0.html">release notes</a> and TBA for details.</td>
+</tr>
 <tr>
 <td>10/10/2023</td>
 <td>1.27.0</td>
@@ -54757,6 +54741,11 @@ This operation may only be called by an Energy Retailer using the information se
 <th>Description</th>
 </tr>
 </thead><tbody>
+<tr>
+<td><a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.27.0/'>10/10/2023</a></td>
+<td>1.27.0</td>
+<td><a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.27.0/'>Changes arising from Decision 313 (Maintenance Iteration 16)</a></td>
+</tr>
 <tr>
 <td><a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.26.0/'>24/08/2023</a></td>
 <td>1.26.0</td>

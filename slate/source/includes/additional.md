@@ -18,10 +18,6 @@ The Consumer Data Standards currently include the following Candidate Standards:
 
 The Consumer Data Standards currently include the following Draft Standards:
 
-```diff
-Added Draft Standards for non-bank lending
-```
-
 - [Draft Standards for the Banking and Non-Bank Lending sector](./includes/additional/drafts/non-bank-lending/banking-non-bank-lending.html)
 
 ## Experimental Standards

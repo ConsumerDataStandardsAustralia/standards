@@ -11,7 +11,7 @@ info:
     name: MIT License
     url: https://opensource.org/licenses/MIT
   title: CDR Admin API
-  version: 1.27.0
+  version: 1.28.0
 servers:
 - url: https://data.holder.com.au/cds-au/v1
 paths:

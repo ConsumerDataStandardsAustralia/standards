@@ -1,11 +1,5 @@
 ### OpenID Provider Configuration End Point
 
-```diff
-Updated the 'code_challenge_methods_supported' property of the OpenID Provider Configuration to be an array
-
-Updated [FAPI-RW-Draft] to refer to [FAPI-1.0-Advanced]
-```
-
 > Non-Normative Example
 
 ```
