@@ -13,6 +13,7 @@ These standards fall into three categories:
 The Consumer Data Standards currently include the following Candidate Standards:
 
 - [Candidate Standards for the Telecommunications sector](./includes/additional/candidates/telco.html)
+- [Candidate Standards for Banking Decision Proposal 306](./includes/additional/candidates/dp306/banking-dp306.html)
 
 ## Draft Standards
 

@@ -1,0 +1,70 @@
+# Banking APIs
+
+<%= partial "includes/additional/candidates/candidate_header.md" %>
+
+This specification defines the APIs for Data Holders exposing Banking endpoints.
+
+<table>
+<tr><td><a href='../../../../includes/swagger/cds_banking_dp306.json'>Banking OpenAPI Specification (JSON)</a></td></tr>
+<tr><td><a href='../../../../includes/swagger/cds_banking_dp306.yaml'>Banking OpenAPI Specification (YAML)</a></td></tr>
+</table>
+
+```diff
+Changed the `cardArt` array to a `cardOption` object to provide additional card details in 'Get Products', 'Get Product Detail' and 'Get Account Detail'.
+
+Added the `FEE` `lendingRateType` value to support lending products that have a fee-based rather than rate-based cost. This type may be expected to align to the new `PRINCIPAL_AND_FEE` `repaymentType`.
+
+Added the `BALANCE_TRANSFER` `lendingRateType` value to extend support for credit card plan detail.
+
+Updated the `creditCard` schema in 'Get Account Detail' to allow an array of plan types, each with specific rates, repayments, adjustments and features.
+
+Added `revertRate`, `revertProductId`, `rateStartDate` and `rateEndDate` fields to respective lending rate schemas to support 'revert' rate details.
+
+Added `referenceRate` to multiple lending and deposit rate schemas.
+
+Added `adjustmentToBase` and `adjustmentBundle` fields to the 'BankingProductLendingRate' and 'BankingProductDepositRate' schemas. The `adjustmentToBase` field is provided to allow an adjustment rate type to specify which base rate type the adjustment applies to, where many may be offered for a product.
+
+Updated and added the `applicabilityConditions` field in the 'BankingProductLendingRate', 'BankingProductDepositRate' and 'BankingProductRateTier' schemas.
+
+Added the `applicationType` field to clarify whether an associated `applicationFrequency` value is to be expected.
+
+Updated the description of the `features` property of 'Get Product Detail' and 'Get Account Detail' to clarify that the schema also supports providing details of any key operational product limitations.
+
+Updated the description of the `constraints` property of 'Get Product Detail' to clarify that the schema is only intended to provide details of constraints on application for the product.
+
+Added new `featureType` values to support operational limitations and the `OTHER` `constraintType` to allow additional detail to be provided.
+
+Added new `feeCategory` field and new `feeType` values to improve classification and comparison of fees.
+
+Updated the 'BankingProductFee' schema to separate different fee types by UType and added minimum and maximum fee details and `feeCap` fields.
+
+Incorporated rate detail into the 'Get Account Detail' schemas to provide specific rate fields separated from the generic Product Reference rate objects.
+
+Extended the `termDeposit` schema in 'Get Account Detail' to allow each deposit to be specified with specific rates and terms.
+
+Updated the 'adjustment' rate type values to remove the `INTRODUCTORY`, `BUNDLE_BONUS`, `BUNDLE_DISCOUNT_FIXED`, `BUNDLE_DISCOUNT_VARIABLE` options. Time and bundle-based rate detail will be supported through new fields to capture that detail: `adjustmentBundle`, `adjustmentPeriod` and `adjustmentEndDate`, leaving the `additionalValue` field available for other detail where necessary.
+
+Added a `deposit` schema in 'Get Account Detail' to provide rate detail for general deposit structures without term deposit maturity detail.
+
+Removed the `specificAccountUType` field in 'Get Account Detail' to clarify that multiple types may be present in a single account.
+
+Updated the 'Use of additionalValue Field' descriptions for the `PENSION_RECIPIENT` and `STUDENT` 'Product Eligibility' and 'Product Discount Eligibility' types.
+
+Updated the description of the `comparisonRate` field to clarify how it could be interpreted when associated with an adjustment rate type.
+
+Updated the description of the rate tier `unitOfMeasure` field to clarify the format of the associated values, including specifying `PERCENT` values as a RateString.
+
+This candidate incorporates the latest Non-Bank Lending (NBL) Draft changes including the `BUY_NOW_PAY_LATER` product category value, the `instalments` object, and related feature and fee types. The endpoint versions incremented due to changes related to the NBL Draft only, are: 
+ - Get Accounts (v3)
+ - Get Bulk Balances (v2)
+ - Get Bulk Direct Debits (v2)
+ - Get Scheduled Payments Bulk (v3).
+ - Other NBL changes affecting the Register APIs are only shown in the NBL Draft.
+
+The endpoint versions incremented primarily for Decision Proposal 306, but also including NBL detail are: 
+ - Get Account Detail (v4)
+ - Get Products (v4)
+ - Get Product Detail (v5).
+
+Corrected minor typos and updated documentation formatting.
+```
