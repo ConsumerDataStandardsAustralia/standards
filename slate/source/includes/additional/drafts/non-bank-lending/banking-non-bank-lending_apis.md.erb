@@ -7,3 +7,27 @@ This specification defines the APIs for Data Holders exposing Banking endpoints.
 <tr><td><a href='../../../../includes/swagger/cds_banking_non_bank_lending.yaml'>Banking OpenAPI Specification (YAML)</a></td></tr>
 </table>
 
+```diff
+Updated Banking endpoint versions affected by the addition of the `BUY_NOW_PAY_LATER` value in the `product-category` query.
+
+Added `instalments` object in 'Get Product Detail' and 'Get Account Detail' endpoints.
+
+Added `EXTRA_DOWN_PAYMENT` `featureType` to support 'Buy Now, Pay Later' or similar products where a variable down-payment may be made.
+
+Added the 'Product Categories' section to include a general description of the `BUY_NOW_PAY_LATER` category.
+
+Added the 'Product & Account Components' section to include descriptions of the previously included `PAYMENT_LATE` and `UPFRONT_PER_PLAN` `feeType` values.
+
+The endpoint versions incremented due to these changes are:
+ - Get Accounts (v3)
+ - Get Bulk Balances (v2)
+ - Get Account Detail (v4)
+ - Get Bulk Direct Debits (v2)
+ - Get Scheduled Payments Bulk (v3)
+ - Get Products (v4)
+ - Get Product Detail (v5).
+
+Previous Banking endpoint versions are available through the respective 'Obsolete versions' links.
+
+Corrected minor typos and updated documentation formatting.
+```
