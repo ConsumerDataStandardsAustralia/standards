@@ -13,12 +13,21 @@ echo "*** Generate cds_banking.md"
 
 diff -w cds_banking.md ../slate/source/includes/cds_banking.md > diff_banking.txt
 
+
 echo "*** Generate cds_banking_non_bank_lending.md"
 {
   node ./widdershins-cdr/widdershins.js --environment ./widdershins-cdr/cdr_widdershins.json --search false --language_tabs 'http:HTTP' 'javascript--nodejs:Javascript' --summary api/cds_banking_non_bank_lending.json -o cds_banking_non_bank_lending.md >> create-markdown-log.txt
 } >> create-markdown-log.txt 2>&1
 
 diff -w cds_banking_non_bank_lending.md ../slate/source/includes/cds_banking_non_bank_lending.md > diff_banking_non_bank_lending.txt
+
+
+echo "*** Generate cds_banking_dp306.md"
+{
+  node ./widdershins-cdr/widdershins.js --environment ./widdershins-cdr/cdr_widdershins.json --search false --language_tabs 'http:HTTP' 'javascript--nodejs:Javascript' --summary api/cds_banking_dp306.json -o cds_banking_dp306.md >> create-markdown-log.txt
+} >> create-markdown-log.txt 2>&1
+
+diff -w cds_banking_dp306.md ../slate/source/includes/cds_banking_dp306.md > diff_banking_dp306.txt
 
 
 echo "*** Generate cds_energy.md"
@@ -28,6 +37,7 @@ echo "*** Generate cds_energy.md"
 
 diff -w cds_energy.md ../slate/source/includes/cds_energy.md > diff_energy.txt
 
+
 echo "*** Generate cds_energy_sdh.md"
 {
   node ./widdershins-cdr/widdershins.js --environment ./widdershins-cdr/cdr_widdershins.json --search false --language_tabs 'http:HTTP' 'javascript--nodejs:Javascript' --summary api/cds_energy_sdh.json -o cds_energy_sdh.md >> create-markdown-log.txt
@@ -35,12 +45,14 @@ echo "*** Generate cds_energy_sdh.md"
 
 diff -w cds_energy_sdh.md ../slate/source/includes/cds_energy_sdh.md > diff_energy_sdh.txt
 
+
 echo "*** Generate cds_telco.md"
 {
   node ./widdershins-cdr/widdershins.js --environment ./widdershins-cdr/cdr_widdershins.json --search false --language_tabs 'http:HTTP' 'javascript--nodejs:Javascript' --summary api/cds_telco.json -o cds_telco.md >> create-markdown-log.txt
 } >> create-markdown-log.txt 2>&1
 
 diff -w cds_telco.md ../slate/source/includes/cds_telco.md > diff_telco.txt
+
 
 echo "*** Generate cds_common.md"
 {
