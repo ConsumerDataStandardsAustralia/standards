@@ -15,6 +15,8 @@ includes:
   - separator
   - additional/drafts/non-bank-lending/banking-non-bank-lending_apis
   - cds_banking_non_bank_lending
+  - additional/drafts/non-bank-lending/_product_categories_nbl
+  - additional/drafts/non-bank-lending/_product_components_nbl
 
 search: true
 ---
