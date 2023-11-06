@@ -6563,8 +6563,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |lastUpdated|[DateTimeString](#common-field-types)|mandatory|The last date and time that the information for this plan was changed (or the creation date for the plan if it has never been altered)|
 |displayName|string|optional|The display name of the plan|
 |description|string|optional|A description of the plan|
-|type|string|mandatory|The type of the plan|
-|fuelType|string|mandatory|The fuel types covered by the plan|
+|type|[Enum](#common-field-types)|mandatory|The type of the plan|
+|fuelType|[Enum](#common-field-types)|mandatory|The fuel types covered by the plan|
 |brand|[ASCIIString](#common-field-types)|mandatory|The ID of the brand under which this plan is offered|
 |brandName|string|mandatory|The display name of the brand under which this plan is offered|
 |applicationUri|[URIString](#common-field-types)|optional|A link to an application web page where this plan can be applied for|
@@ -6574,7 +6574,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |» eligibilityUri|[URIString](#common-field-types)|optional|A link to detail on eligibility criteria for the plan|
 |» pricingUri|[URIString](#common-field-types)|optional|A link to detail on pricing for the plan|
 |» bundleUri|[URIString](#common-field-types)|optional|A link to detail on bundles that this plan can be a part of|
-|customerType|string|optional|The type of customer that the plan is offered to.  If absent then the plan is available to all customers|
+|customerType|[Enum](#common-field-types)|optional|The type of customer that the plan is offered to.  If absent then the plan is available to all customers|
 |geography|object|optional|Describes the geographical area that the plan is available for.  If absent then it is assumed the plan is not geographically limited|
 |» excludedPostcodes|[string]|optional|Array of valid Australian postcodes that are specifically excluded from the plan.  Each element is a single four digit postcode (e.g. 3000) or a range of postcodes defined by two four digit postcodes and a hyphen (e.g. 3000-3999)|
 |» includedPostcodes|[string]|optional|Array of valid Australian postcodes that are included from the plan.  If absent defaults to all non-excluded postcodes.  Each element is a single four digit postcode (e.g. 3000) or a range of postcodes defined by two four digit postcodes and a hyphen (e.g. 3000-3999)|
@@ -7372,12 +7372,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 |Name|Type|Required|Description|
 |---|---|---|---|
 |additionalFeeInformation|string|optional|Free text field containing additional information of the fees for this contract|
-|pricingModel|string|mandatory|The pricing model for the contract.  Contracts for gas must use SINGLE_RATE.  Note that the detail for the enumeration values are:<ul><li>**SINGLE_RATE** - all energy usage is charged at a single unit rate no matter when it is consumed. Multiple unit rates may exist that correspond to varying volumes of usage i.e. a ‘block’ or ‘step’ tariff (first 50kWh @ X cents, next 50kWh at Y cents etc.</li><li>**SINGLE_RATE_CONT_LOAD** - as above, but with an additional, separate unit rate charged for all energy usage from a controlled load i.e. separately metered appliance like hot water service, pool pump etc.</li><li>**TIME_OF_USE** - energy usage is charged at unit rates that vary dependent on time of day and day of week that the energy is consumed</li><li>**TIME_OF_USE_CONT_LOAD** - as above, but with an additional, separate unit rate charged for all energy usage from a controlled load i.e. separately metered appliance like hot water service, pool pump etc.</li><li>**FLEXIBLE** - energy usage is charged at unit rates that vary based on external factors</li><li>**FLEXIBLE_CONT_LOAD** - as above, but with an additional, separate unit rate charged for all energy usage from a controlled load i.e. separately metered appliance like hot water service, pool pump etc.</li><li>**QUOTA** - all energy usage is charged at a single fixed rate, up to a specified usage quota/allowance. All excess usage beyond the allowance is then charged at a single unit rate (may not be the best way to explain it but it is essentially a ‘subscription’ or telco style product i.e. $50/month for up to 150kWh included usage</li></ul>|
-|timeZone|string|conditional|Required if pricingModel is set to TIME_OF_USE.  Defines the time zone to use for calculation of the time of use thresholds. Defaults to AEST if absent|
+|pricingModel|[Enum](#common-field-types)|mandatory|The pricing model for the contract.  Contracts for gas must use SINGLE_RATE.  Note that the detail for the enumeration values are:<ul><li>**SINGLE_RATE** - all energy usage is charged at a single unit rate no matter when it is consumed. Multiple unit rates may exist that correspond to varying volumes of usage i.e. a ‘block’ or ‘step’ tariff (first 50kWh @ X cents, next 50kWh at Y cents etc.</li><li>**SINGLE_RATE_CONT_LOAD** - as above, but with an additional, separate unit rate charged for all energy usage from a controlled load i.e. separately metered appliance like hot water service, pool pump etc.</li><li>**TIME_OF_USE** - energy usage is charged at unit rates that vary dependent on time of day and day of week that the energy is consumed</li><li>**TIME_OF_USE_CONT_LOAD** - as above, but with an additional, separate unit rate charged for all energy usage from a controlled load i.e. separately metered appliance like hot water service, pool pump etc.</li><li>**FLEXIBLE** - energy usage is charged at unit rates that vary based on external factors</li><li>**FLEXIBLE_CONT_LOAD** - as above, but with an additional, separate unit rate charged for all energy usage from a controlled load i.e. separately metered appliance like hot water service, pool pump etc.</li><li>**QUOTA** - all energy usage is charged at a single fixed rate, up to a specified usage quota/allowance. All excess usage beyond the allowance is then charged at a single unit rate (may not be the best way to explain it but it is essentially a ‘subscription’ or telco style product i.e. $50/month for up to 150kWh included usage</li></ul>|
+|timeZone|[Enum](#common-field-types)|conditional|Required if pricingModel is set to TIME_OF_USE.  Defines the time zone to use for calculation of the time of use thresholds. Defaults to AEST if absent|
 |isFixed|boolean|mandatory|Flag indicating whether prices are fixed or variable|
 |variation|string|conditional|Free text description of price variation policy and conditions for the contract.  Mandatory if `isFixed` is false|
 |onExpiryDescription|string|optional|Free text field that describes what will occur on or prior to expiry of the fixed contract term or benefit period|
-|paymentOption|[string]|mandatory|Payment options for this contract|
+|paymentOption|[[Enum](#common-field-types)]|mandatory|Payment options for this contract|
 |intrinsicGreenPower|object|optional|Describes intrinsic green power for the plan.  If present then the plan includes a percentage of green power in the base plan. Should not be present for gas contracts|
 |» greenPercentage|[RateString](#common-field-types)|mandatory|Percentage of green power intrinsically included in the plan|
 |controlledLoad|[EnergyPlanControlledLoad](#schemacdr-energy-apienergyplancontrolledload)|conditional|Required if pricing model is SINGLE_RATE_CONT_LOAD or TIME_OF_USE_CONT_LOAD or FLEXIBLE_CONT_LOAD|
@@ -7664,7 +7664,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |Name|Type|Required|Description|
 |---|---|---|---|
 |*anonymous*|object|mandatory|none|
-|» termType|string|optional|The term for the contract.  If absent assumes no specified term|
+|» termType|[Enum](#common-field-types)|optional|The term for the contract.  If absent assumes no specified term|
 |» benefitPeriod|string|conditional|Description of the benefit period.  Should only be present if termType has the value ONGOING|
 |» terms|string|optional|Free text description of the terms for the contract|
 |» meterTypes|[string]|optional|An array of the meter types that this contract is available for|
@@ -7744,7 +7744,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |Name|Type|Required|Description|
 |---|---|---|---|
 |displayName|string|mandatory|A display name for the controlled load|
-|rateBlockUType|string|mandatory|Specifies the type of controlloed load rate|
+|rateBlockUType|[Enum](#common-field-types)|mandatory|Specifies the type of controlloed load rate|
 |startDate|[DateString](#common-field-types)|optional|Optional start date of the application of the controlled load rate|
 |endDate|[DateString](#common-field-types)|optional|Optional end date of the application of the controlled load rate|
 |singleRate|object|conditional|Object representing a single controlled load rate.  Required if rateBlockUType is singleRate|
@@ -7753,7 +7753,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |» dailySupplyCharge|[AmountString](#common-field-types)|optional|The daily supply charge (exclusive of GST) for this controlled load tier|
 |» rates|[object]|mandatory|Array of controlled load rates in order of usage volume|
 |»» unitPrice|[AmountString](#common-field-types)|mandatory|Unit price of usage per  measure unit (exclusive of GST)|
-|»» measureUnit|string|optional|The measurement unit of rate. Assumed to be KWH if absent|
+|»» measureUnit|[Enum](#common-field-types)|optional|The measurement unit of rate. Assumed to be KWH if absent|
 |»» volume|number|optional|Volume in kWh that this rate applies to.  Only applicable for ‘stepped’ rates where different rates apply for different volumes of usage in a period|
 |timeOfUseRates|[object]|conditional|Array of objects representing time of use rates.  Required if rateBlockUType is timeOfUseRates|
 |» displayName|string|mandatory|Display name of the controlled load rate|
@@ -7761,15 +7761,15 @@ To perform this operation, you must be authenticated and authorised with the fol
 |» dailySupplyCharge|[AmountString](#common-field-types)|optional|The daily supply charge (exclusive of GST) for this controlled load tier|
 |» rates|[object]|mandatory|Array of controlled load rates in order of usage volume|
 |»» unitPrice|[AmountString](#common-field-types)|mandatory|Unit price of usage per  measure unit (exclusive of GST)|
-|»» measureUnit|string|optional|The measurement unit of rate. Assumed to be KWH if absent|
+|»» measureUnit|[Enum](#common-field-types)|optional|The measurement unit of rate. Assumed to be KWH if absent|
 |»» volume|number|optional|Volume in kWh that this rate applies to.  Only applicable for ‘stepped’ rates where different rates apply for different volumes of usage in a period|
 |» timeOfUse|[object]|mandatory|Array of times of use.|
-|»» days|[string]|optional|The days that the rate applies to|
+|»» days|[[Enum](#common-field-types)]|optional|The days that the rate applies to|
 |»» startTime|[TimeString](#common-field-types)|conditional|The beginning of the time period per day for which the controlled load rate applies. Required if endTime provided|
 |»» endTime|[TimeString](#common-field-types)|conditional|The end of the time period per day for which the controlled load rate applies. Required if startTime provided|
 |»» additionalInfo|string|conditional|Display text providing more information on the contrlled load, for e.g. controlled load availability if specific day/time is not known. Required if startTime and endTime absent or if additionalInfoUri provided|
 |»» additionalInfoUri|[URIString](#common-field-types)|optional|Optional link to additional information regarding the controlled load|
-|» type|string|mandatory|The type of usage that the rate applies to|
+|» type|[Enum](#common-field-types)|mandatory|The type of usage that the rate applies to|
 
 #### Enumerated Values
 
@@ -7830,7 +7830,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |---|---|---|---|
 |displayName|string|mandatory|The display name of the incentive|
 |description|string|mandatory|The description of the incentive|
-|category|string|mandatory|The type of the incentive|
+|category|[Enum](#common-field-types)|mandatory|The type of the incentive|
 |eligibility|string|optional|A display message outlining an eligibility criteria that may apply|
 
 #### Enumerated Values
@@ -7880,10 +7880,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 |---|---|---|---|
 |displayName|string|mandatory|The display name of the discount|
 |description|string|optional|The description of the discount|
-|type|string|mandatory|The type of the discount|
-|category|string|optional|The type of the discount.  Mandatory if the discount type is CONDITIONAL|
+|type|[Enum](#common-field-types)|mandatory|The type of the discount|
+|category|[Enum](#common-field-types)|optional|The type of the discount.  Mandatory if the discount type is CONDITIONAL|
 |endDate|[DateString](#common-field-types)|optional|Optional end date for the discount after which the discount is no longer available|
-|methodUType|string|mandatory|The method of calculation of the discount|
+|methodUType|[Enum](#common-field-types)|mandatory|The method of calculation of the discount|
 |percentOfBill|object|conditional|Required if methodUType is percentOfBill|
 |» rate|[RateString](#common-field-types)|mandatory|The rate of the discount applied to the bill amount|
 |percentOfUse|object|conditional|Required if methodUType is percentOfUse|
@@ -7941,8 +7941,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |---|---|---|---|
 |displayName|string|mandatory|The display name of the charge|
 |description|string|optional|The description of the charge|
-|scheme|string|mandatory|The applicable green power scheme|
-|type|string|mandatory|The type of charge|
+|scheme|[Enum](#common-field-types)|mandatory|The applicable green power scheme|
+|type|[Enum](#common-field-types)|mandatory|The type of charge|
 |tiers|[object]|mandatory|Array of charge tiers based on the percentage of green power used for the period implied by the type.  Array is in order of increasing percentage of green power|
 |» percentGreen|[RateString](#common-field-types)|mandatory|The upper percentage of green power used applicable for this tier|
 |» rate|[RateString](#common-field-types)|conditional|The rate of the charge if the type implies the application of a rate|
@@ -7982,7 +7982,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|type|string|mandatory|The type of the eligibility restriction.<br/>The CONTINGENT_PLAN value indicates that the plan is contingent on the customer taking up an alternate fuel plan from the same retailer (for instance, if the fuelType is ELECTRICITY then a GAS plan from the same retailer must be taken up)|
+|type|[Enum](#common-field-types)|mandatory|The type of the eligibility restriction.<br/>The CONTINGENT_PLAN value indicates that the plan is contingent on the customer taking up an alternate fuel plan from the same retailer (for instance, if the fuelType is ELECTRICITY then a GAS plan from the same retailer must be taken up)|
 |information|string|mandatory|Information of the eligibility restriction specific to the type of the restriction|
 |description|string|optional|A description of the eligibility restriction|
 
@@ -8035,8 +8035,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|type|string|mandatory|The type of the fee|
-|term|string|mandatory|The term of the fee|
+|type|[Enum](#common-field-types)|mandatory|The type of the fee|
+|term|[Enum](#common-field-types)|mandatory|The term of the fee|
 |amount|[AmountString](#common-field-types)|conditional|The fee amount. Required if term is not PERCENT_OF_BILL|
 |rate|[RateString](#common-field-types)|conditional|The fee rate. Required if term is PERCENT_OF_BILL|
 |description|string|optional|A description of the fee|
@@ -8132,22 +8132,22 @@ To perform this operation, you must be authenticated and authorised with the fol
 |description|string|optional|A description of the tariff|
 |startDate|[DateString](#common-field-types)|optional|The start date of the application of the feed in tariff|
 |endDate|[DateString](#common-field-types)|optional|The end date of the application of the feed in tariff|
-|scheme|string|mandatory|The applicable scheme|
-|payerType|string|mandatory|The type of the payer|
-|tariffUType|string|mandatory|The type of the payer|
+|scheme|[Enum](#common-field-types)|mandatory|The applicable scheme|
+|payerType|[Enum](#common-field-types)|mandatory|The type of the payer|
+|tariffUType|[Enum](#common-field-types)|mandatory|The type of the payer|
 |singleTariff|object|conditional|Represents a constant tariff.  Mandatory if tariffUType is set to singleTariff|
 |» rates|[object]|mandatory|Array of feed in rates|
 |»» unitPrice|[AmountString](#common-field-types)|mandatory|Unit price of usage per measure unit (exclusive of GST)|
-|»» measureUnit|string|optional|The measurement unit of rate. Assumed to be KWH if absent|
+|»» measureUnit|[Enum](#common-field-types)|optional|The measurement unit of rate. Assumed to be KWH if absent|
 |»» volume|number|optional|Volume that this rate applies to. Only applicable for ‘stepped’ rates where different rates apply for different volumes of usage in a period|
 |timeVaryingTariffs|object|conditional|Represents a tariff based on time.  Mandatory if tariffUType is set to timeVaryingTariffs|
-|» type|string|optional|The type of the charging time period. If absent applies to all periods|
+|» type|[Enum](#common-field-types)|optional|The type of the charging time period. If absent applies to all periods|
 |» rates|[object]|optional|Array of feed in rates|
 |»» unitPrice|[AmountString](#common-field-types)|mandatory|Unit price of usage per measure unit (exclusive of GST)|
-|»» measureUnit|string|optional|The measurement unit of rate. Assumed to be KWH if absent|
+|»» measureUnit|[Enum](#common-field-types)|optional|The measurement unit of rate. Assumed to be KWH if absent|
 |»» volume|number|optional|Volume that this rate applies to. Only applicable for ‘stepped’ rates where different rates apply for different volumes of usage in a period|
 |» timeVariations|[object]|mandatory|Array of time periods for which this tariff is applicable|
-|»» days|[string]|mandatory|The days that the tariff applies to. At least one entry required|
+|»» days|[[Enum](#common-field-types)]|mandatory|The days that the tariff applies to. At least one entry required|
 |»» startTime|[TimeString](#common-field-types)|optional|The beginning of the time period per day for which the tariff applies.  If absent assumes start of day (ie. midnight)|
 |»» endTime|[TimeString](#common-field-types)|optional|The end of the time period per day for which the tariff applies.  If absent assumes end of day (ie. one second before midnight)|
 
@@ -8267,20 +8267,20 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|type|string|optional|Type of charge. Assumed to be other if absent|
+|type|[Enum](#common-field-types)|optional|Type of charge. Assumed to be other if absent|
 |displayName|string|mandatory|The name of the tariff period|
 |startDate|string|mandatory|The start date of the tariff period in a calendar year.  Formatted in mm-dd format|
 |endDate|string|mandatory|The end date of the tariff period in a calendar year.  Formatted in mm-dd format|
 |dailySupplyCharges|[AmountString](#common-field-types)|optional|The amount of access charge for the tariff period, in dollars per day exclusive of GST.|
-|timeZone|string|optional|Specifies the charge specific time zone for calculation of the time of use thresholds. If absent, timezone value in EnergyPlanContract is assumed.|
-|rateBlockUType|string|mandatory|Specifies the type of rate applicable to this tariff period|
+|timeZone|[Enum](#common-field-types)|optional|Specifies the charge specific time zone for calculation of the time of use thresholds. If absent, timezone value in EnergyPlanContract is assumed.|
+|rateBlockUType|[Enum](#common-field-types)|mandatory|Specifies the type of rate applicable to this tariff period|
 |singleRate|object|conditional|Object representing a single rate.  Required if rateBlockUType is singleRate|
 |» displayName|string|mandatory|Display name of the rate|
 |» description|string|optional|Description of the rate|
 |» generalUnitPrice|[AmountString](#common-field-types)|conditional|The block rate (unit price) for any usage above the included fixed usage, in dollars per kWh inclusive of GST.  Only required if pricingModel field is ‘QUOTA’|
 |» rates|[object]|mandatory|Array of controlled load rates in order of usage volume|
 |»» unitPrice|[AmountString](#common-field-types)|mandatory|Unit price of usage per measure unit (exclusive of GST)|
-|»» measureUnit|string|optional|The measurement unit of rate. Assumed to be KWH if absent|
+|»» measureUnit|[Enum](#common-field-types)|optional|The measurement unit of rate. Assumed to be KWH if absent|
 |»» volume|number|optional|Volume in kWh that this rate applies to.  Only applicable for ‘stepped’ rates where different rates apply for different volumes of usage in a period|
 |» period|[ExternalRef](#common-field-types)|optional|Usage period for which the block rate applies. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
 |timeOfUseRates|[object]|conditional|Array of objects representing time of use rates.  Required if rateBlockUType is timeOfUseRates|
@@ -8288,25 +8288,25 @@ To perform this operation, you must be authenticated and authorised with the fol
 |» description|string|optional|Description of the rate|
 |» rates|[object]|mandatory|Array of controlled load rates in order of usage volume|
 |»» unitPrice|[AmountString](#common-field-types)|mandatory|Unit price of usage per  measure unit (exclusive of GST)|
-|»» measureUnit|string|optional|The measurement unit of rate. Assumed to be KWH if absent|
+|»» measureUnit|[Enum](#common-field-types)|optional|The measurement unit of rate. Assumed to be KWH if absent|
 |»» volume|number|optional|Volume in kWh that this rate applies to.  Only applicable for ‘stepped’ rates where different rates apply for different volumes of usage in a period|
 |» timeOfUse|[object]|mandatory|Array of times of use|
-|»» days|[string]|mandatory|The days that the rate applies to|
+|»» days|[[Enum](#common-field-types)]|mandatory|The days that the rate applies to|
 |»» startTime|[TimeString](#common-field-types)|mandatory|Start of the period|
 |»» endTime|[TimeString](#common-field-types)|mandatory|End of the period|
-|» type|string|mandatory|The type of usage that the rate applies to|
+|» type|[Enum](#common-field-types)|mandatory|The type of usage that the rate applies to|
 |demandCharges|[object]|conditional|Array of demand charges.  Required if rateBlockUType is demandCharges|
 |» displayName|string|mandatory|Display name of the charge|
 |» description|string|optional|Description of the charge|
 |» amount|[AmountString](#common-field-types)|mandatory|The charge amount per  measure unit exclusive of GST|
-|» measureUnit|string|optional|The measurement unit of charge amount. Assumed to be KWH if absent|
+|» measureUnit|[Enum](#common-field-types)|optional|The measurement unit of charge amount. Assumed to be KWH if absent|
 |» startTime|[TimeString](#common-field-types)|mandatory|Start of the period|
 |» endTime|[TimeString](#common-field-types)|mandatory|End of the period|
-|» days|[string]|optional|The days that the demand tariff applies to|
+|» days|[[Enum](#common-field-types)]|optional|The days that the demand tariff applies to|
 |» minDemand|[AmountString](#common-field-types)|optional|Minimum demand for this demand tariff in kW.  If absent then 0 is assumed|
 |» maxDemand|[AmountString](#common-field-types)|optional|Maximum demand for this demand tariff in kW.  If present, must be higher than the value of the minDemand field|
-|» measurementPeriod|string|mandatory|Application period for the demand tariff|
-|» chargePeriod|string|mandatory|Charge period for the demand tariff|
+|» measurementPeriod|[Enum](#common-field-types)|mandatory|Application period for the demand tariff|
+|» chargePeriod|[Enum](#common-field-types)|mandatory|Charge period for the demand tariff|
 
 #### Enumerated Values
 
@@ -8404,15 +8404,15 @@ To perform this operation, you must be authenticated and authorised with the fol
 |---|---|---|---|
 |servicePointId|string|mandatory|Tokenised ID of the service point to be used for referring to the service point in the CDR API suite. To be created in accordance with CDR ID permanence requirements|
 |nationalMeteringId|string|mandatory|The independent ID of the service point, known in the industry as the NMI|
-|servicePointClassification|string|mandatory|The classification of the service point as defined in MSATS procedures|
-|servicePointStatus|string|mandatory|Code used to indicate the status of the service point. Note the details for the enumeration values below:<ul><li>**ACTIVE** - An active, energised, service point</li><li>**DE_ENERGISED** - The service point exists but is deenergised</li><li>**EXTINCT** - The service point has been permanently decommissioned</li><li>**GREENFIELD** - Applies to a service point that has never been energised</li><li>**OFF_MARKET** - Applies when the service point is no longer settled in the NEM</li></ul>|
-|jurisdictionCode|string|mandatory|Jurisdiction code to which the service point belongs.This code defines the jurisdictional rules which apply to the service point. Note the details of enumeration values below:<ul><li>**ALL** - All Jurisdictions</li><li>**ACT** - Australian Capital Territory</li><li>**NEM** - National Electricity Market</li><li>**NSW** - New South Wales</li><li>**QLD** - Queensland</li><li>**SA** - South Australia</li><li>**TAS** - Tasmania</li><li>**VIC** - Victoria</li></ul>|
+|servicePointClassification|[Enum](#common-field-types)|mandatory|The classification of the service point as defined in MSATS procedures|
+|servicePointStatus|[Enum](#common-field-types)|mandatory|Code used to indicate the status of the service point. Note the details for the enumeration values below:<ul><li>**ACTIVE** - An active, energised, service point</li><li>**DE_ENERGISED** - The service point exists but is deenergised</li><li>**EXTINCT** - The service point has been permanently decommissioned</li><li>**GREENFIELD** - Applies to a service point that has never been energised</li><li>**OFF_MARKET** - Applies when the service point is no longer settled in the NEM</li></ul>|
+|jurisdictionCode|[Enum](#common-field-types)|mandatory|Jurisdiction code to which the service point belongs.This code defines the jurisdictional rules which apply to the service point. Note the details of enumeration values below:<ul><li>**ALL** - All Jurisdictions</li><li>**ACT** - Australian Capital Territory</li><li>**NEM** - National Electricity Market</li><li>**NSW** - New South Wales</li><li>**QLD** - Queensland</li><li>**SA** - South Australia</li><li>**TAS** - Tasmania</li><li>**VIC** - Victoria</li></ul>|
 |isGenerator|boolean|optional|This flag determines whether the energy at this connection point is to be treated as consumer load or as a generating unit(this may include generator auxiliary loads). If absent defaults to false. <br>**Note:** Only applicable for scheduled or semischeduled generators, does not indicate on site generation by consumer|
 |validFromDate|[DateString](#common-field-types)|mandatory|The latest start date from which the constituent data sets of this service point became valid|
 |lastUpdateDateTime|[DateTimeString](#common-field-types)|mandatory|The date and time that the information for this service point was modified|
 |consumerProfile|object|optional|none|
-|» classification|string|optional|A code that defines the consumer class as defined in the National Energy Retail Regulations, or in overriding Jurisdictional instruments|
-|» threshold|any|optional|A code that defines the consumption threshold as defined in the National Energy Retail Regulations, or in overriding Jurisdictional instruments. Note the details of enumeration values below: <ul><li>**LOW** - Consumption is less than the ‘lower consumption threshold’ as defined in the National Energy Retail Regulations</li><li>**MEDIUM** - Consumption is equal to or greater than the ‘lower consumption threshold’, but less than the ‘upper consumption threshold’, as defined in the National Energy Retail Regulations</li><li>**HIGH** - Consumption is equal to or greater than the ‘upper consumption threshold’ as defined in the National Energy Retail Regulations</li></ul>|
+|» classification|[Enum](#common-field-types)|optional|A code that defines the consumer class as defined in the National Energy Retail Regulations, or in overriding Jurisdictional instruments|
+|» threshold|[Enum](#common-field-types)|optional|A code that defines the consumption threshold as defined in the National Energy Retail Regulations, or in overriding Jurisdictional instruments. Note the details of enumeration values below: <ul><li>**LOW** - Consumption is less than the ‘lower consumption threshold’ as defined in the National Energy Retail Regulations</li><li>**MEDIUM** - Consumption is equal to or greater than the ‘lower consumption threshold’, but less than the ‘upper consumption threshold’, as defined in the National Energy Retail Regulations</li><li>**HIGH** - Consumption is equal to or greater than the ‘upper consumption threshold’ as defined in the National Energy Retail Regulations</li></ul>|
 
 #### Enumerated Values
 
@@ -8548,28 +8548,28 @@ To perform this operation, you must be authenticated and authorised with the fol
 |---|---|---|---|
 |servicePointId|string|mandatory|The tokenised ID of the service point for use in the CDR APIs.  Created according to the CDR rules for ID permanence|
 |nationalMeteringId|string|mandatory|The independent ID of the service point, known in the industry as the NMI|
-|servicePointClassification|string|mandatory|The classification of the service point as defined in MSATS procedures|
-|servicePointStatus|string|mandatory|Code used to indicate the status of the service point. Note the details for the enumeration values below:<ul><li>**ACTIVE** - An active, energised, service point</li><li>**DE_ENERGISED** - The service point exists but is deenergised</li><li>**EXTINCT** - The service point has been permanently decommissioned</li><li>**GREENFIELD** - Applies to a service point that has never been energised</li><li>**OFF_MARKET** - Applies when the service point is no longer settled in the NEM</li></ul>|
-|jurisdictionCode|string|mandatory|Jurisdiction code to which the service point belongs.This code defines the jurisdictional rules which apply to the service point. Note the details of enumeration values below:<ul><li>**ALL** - All Jurisdictions</li><li>**ACT** - Australian Capital Territory</li><li>**NEM** - National Electricity Market</li><li>**NSW** - New South Wales</li><li>**QLD** - Queensland</li><li>**SA** - South Australia</li><li>**TAS** - Tasmania</li><li>**VIC** - Victoria</li></ul>|
+|servicePointClassification|[Enum](#common-field-types)|mandatory|The classification of the service point as defined in MSATS procedures|
+|servicePointStatus|[Enum](#common-field-types)|mandatory|Code used to indicate the status of the service point. Note the details for the enumeration values below:<ul><li>**ACTIVE** - An active, energised, service point</li><li>**DE_ENERGISED** - The service point exists but is deenergised</li><li>**EXTINCT** - The service point has been permanently decommissioned</li><li>**GREENFIELD** - Applies to a service point that has never been energised</li><li>**OFF_MARKET** - Applies when the service point is no longer settled in the NEM</li></ul>|
+|jurisdictionCode|[Enum](#common-field-types)|mandatory|Jurisdiction code to which the service point belongs.This code defines the jurisdictional rules which apply to the service point. Note the details of enumeration values below:<ul><li>**ALL** - All Jurisdictions</li><li>**ACT** - Australian Capital Territory</li><li>**NEM** - National Electricity Market</li><li>**NSW** - New South Wales</li><li>**QLD** - Queensland</li><li>**SA** - South Australia</li><li>**TAS** - Tasmania</li><li>**VIC** - Victoria</li></ul>|
 |isGenerator|boolean|optional|This flag determines whether the energy at this connection point is to be treated as consumer load or as a generating unit(this may include generator auxiliary loads). If absent defaults to false. <br>**Note:** Only applicable for scheduled or semischeduled generators, does not indicate on site generation by consumer|
 |validFromDate|[DateString](#common-field-types)|mandatory|The latest start date from which the constituent data sets of this service point became valid|
 |lastUpdateDateTime|[DateTimeString](#common-field-types)|mandatory|The date and time that the information for this service point was modified|
 |consumerProfile|object|optional|none|
-|» classification|string|optional|A code that defines the consumer class as defined in the National Energy Retail Regulations, or in overriding Jurisdictional instruments|
-|» threshold|any|optional|A code that defines the consumption threshold as defined in the National Energy Retail Regulations, or in overriding Jurisdictional instruments. Note the details of enumeration values below: <ul><li>**LOW** - Consumption is less than the ‘lower consumption threshold’ as defined in the National Energy Retail Regulations</li><li>**MEDIUM** - Consumption is equal to or greater than the ‘lower consumption threshold’, but less than the ‘upper consumption threshold’, as defined in the National Energy Retail Regulations</li><li>**HIGH** - Consumption is equal to or greater than the ‘upper consumption threshold’ as defined in the National Energy Retail Regulations</li></ul>|
+|» classification|[Enum](#common-field-types)|optional|A code that defines the consumer class as defined in the National Energy Retail Regulations, or in overriding Jurisdictional instruments|
+|» threshold|[Enum](#common-field-types)|optional|A code that defines the consumption threshold as defined in the National Energy Retail Regulations, or in overriding Jurisdictional instruments. Note the details of enumeration values below: <ul><li>**LOW** - Consumption is less than the ‘lower consumption threshold’ as defined in the National Energy Retail Regulations</li><li>**MEDIUM** - Consumption is equal to or greater than the ‘lower consumption threshold’, but less than the ‘upper consumption threshold’, as defined in the National Energy Retail Regulations</li><li>**HIGH** - Consumption is equal to or greater than the ‘upper consumption threshold’ as defined in the National Energy Retail Regulations</li></ul>|
 |distributionLossFactor|object|mandatory|none|
 |» code|string|mandatory|A code used to identify data loss factor for the service point values.  Refer to AEMO distribution loss factor documents for each financial year to interpret|
 |» description|string|mandatory|Description of the data loss factor code and value|
 |» lossValue|string|mandatory|The value associated with the loss factor code|
 |relatedParticipants|[object]|mandatory|none|
 |» party|string|mandatory|The name of the party/organisation related to this service point|
-|» role|string|mandatory|The role performed by this participant in relation to the service point. Note the details of enumeration values below: <ul><li>**FRMP** - Financially Responsible Market Participant</li><li>**LNSP** - Local Network Service Provider or Embedded Network Manager for child connection points</li><li>**DRSP** - wholesale Demand Response and/or market ancillary Service Provider and note that where it is not relevant for a NMI it will not be included</li></ul>|
+|» role|[Enum](#common-field-types)|mandatory|The role performed by this participant in relation to the service point. Note the details of enumeration values below: <ul><li>**FRMP** - Financially Responsible Market Participant</li><li>**LNSP** - Local Network Service Provider or Embedded Network Manager for child connection points</li><li>**DRSP** - wholesale Demand Response and/or market ancillary Service Provider and note that where it is not relevant for a NMI it will not be included</li></ul>|
 |location|[CommonPhysicalAddress](#schemacdr-energy-apicommonphysicaladdress)|mandatory|Location of the servicepoint|
 |meters|[object]|optional|The meters associated with the service point. This may be empty where there are no meters physically installed at the service point|
 |» meterId|string|mandatory|The meter ID uniquely identifies a meter for a given service point.  It is unique in the context of the service point.  It is not globally unique|
 |» specifications|object|mandatory|Technical characteristics of the meter|
-|»» status|string|mandatory|A code to denote the status of the meter. Note the details of enumeration values below: <ul><li>**CURRENT** -Applies when a meter is current and not disconnected</li><li>**DISCONNECTED** - Applies when a meter is present but has been remotely disconnected</li></ul>|
-|»» installationType|string|mandatory|The metering Installation type code indicates whether the metering installation has to be manually read. Note the details of enumeration values below: <ul><li>**BASIC** - Accumulation Meter – Type 6</li><li>**COMMS1** - Interval Meter with communications – Type 1</li><li>**COMMS2** - Interval Meter with communications – Type 2</li><li>**COMMS3** - Interval Meter with communications – Type 3</li><li>**COMMS4** - Interval Meter with communications – Type 4</li><li>**COMMS4C** - CT connected metering installation that meets the minimum services specifications</li><li>**COMMS4D** - Whole current metering installation that meets the minimum services specifications</li><li>**MRAM** - Small customer metering installation – Type 4A</li><li>**MRIM** - Manually Read Interval Meter – Type 5</li><li>**UMCP** - Unmetered Supply – Type 7</li><li>**VICAMI** - A relevant metering installation as defined in clause 9.9C of the NER</li><li>**NCONUML** - Non-contestable unmeter load - Introduced as part of Global Settlement</li></ul>|
+|»» status|[Enum](#common-field-types)|mandatory|A code to denote the status of the meter. Note the details of enumeration values below: <ul><li>**CURRENT** -Applies when a meter is current and not disconnected</li><li>**DISCONNECTED** - Applies when a meter is present but has been remotely disconnected</li></ul>|
+|»» installationType|[Enum](#common-field-types)|mandatory|The metering Installation type code indicates whether the metering installation has to be manually read. Note the details of enumeration values below: <ul><li>**BASIC** - Accumulation Meter – Type 6</li><li>**COMMS1** - Interval Meter with communications – Type 1</li><li>**COMMS2** - Interval Meter with communications – Type 2</li><li>**COMMS3** - Interval Meter with communications – Type 3</li><li>**COMMS4** - Interval Meter with communications – Type 4</li><li>**COMMS4C** - CT connected metering installation that meets the minimum services specifications</li><li>**COMMS4D** - Whole current metering installation that meets the minimum services specifications</li><li>**MRAM** - Small customer metering installation – Type 4A</li><li>**MRIM** - Manually Read Interval Meter – Type 5</li><li>**UMCP** - Unmetered Supply – Type 7</li><li>**VICAMI** - A relevant metering installation as defined in clause 9.9C of the NER</li><li>**NCONUML** - Non-contestable unmeter load - Introduced as part of Global Settlement</li></ul>|
 |»» manufacturer|string|optional|Free text field to identify the manufacturer of the installed meter|
 |»» model|string|optional|Free text field to identify the meter manufacturer’s designation for the meter model|
 |»» readType|string|optional|Code to denote the method and frequency of Meter Reading. The value is formatted as follows: <ul><li>First Character = Remote (R) or Manual (M)</li><li>Second Character = Mode: T = telephone W = wireless P = powerline I = infra-red G = galvanic V = visual </li><li>Third Character = Frequency of Scheduled Meter Readings: 1 = Twelve times per year 2 = Six times per year 3 = Four times per year D = Daily or weekly</li><li>Optional Fourth Character = to identify what interval length the meter is capable of reading. This includes five, 15 and 30 minute granularity as the following: A – 5 minute B – 15 minute C – 30 minute D – Cannot convert to 5 minute (i.e. due to metering installation de-energised) M - Manually Read Accumulation Meter</li></ul> For example, <ul><li>MV3 = Manual, Visual, Quarterly</li> <li>MV3M = Manual, Visual, Quarterly, Manually Read Accumulation Meter</li> <li>RWDC = Remote, Wireless, Daily, 30 minutes interval</li></ul>|
@@ -8578,13 +8578,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 |»» registerId|string|mandatory|Unique identifier of the register within this service point.  Is not globally unique|
 |»» registerSuffix|string|optional|Register suffix of the meter register where the meter reads are obtained|
 |»» averagedDailyLoad|number|optional|The energy delivered through a connection point or metering point over an extended period normalised to a 'per day' basis (kWh). This value is calculated annually.|
-|»» registerConsumptionType|string|mandatory|Indicates the consumption type of register|
+|»» registerConsumptionType|[Enum](#common-field-types)|mandatory|Indicates the consumption type of register|
 |»» networkTariffCode|string|optional|The Network Tariff Code is a free text field containing a code supplied and published by the local network service provider|
 |»» unitOfMeasure|string|optional|The unit of measure for data held in this register|
-|»» timeOfDay|string|optional|Code to identify the time validity of register contents|
+|»» timeOfDay|[Enum](#common-field-types)|optional|Code to identify the time validity of register contents|
 |»» multiplier|number|optional|Multiplier required to take a register value and turn it into a value representing billable energy|
 |»» controlledLoad|boolean|optional|Indicates whether the energy recorded by this register is created under a Controlled Load regime|
-|»» consumptionType|string|optional|Actual/Subtractive Indicator. Note the details of enumeration values below: <ul><li>**ACTUAL** implies volume of energy actually metered between two dates</li><li>**CUMULATIVE** indicates a meter reading for a specific date. A second Meter Reading is required to determine the consumption between those two Meter Reading dates</li></ul>|
+|»» consumptionType|[Enum](#common-field-types)|optional|Actual/Subtractive Indicator. Note the details of enumeration values below: <ul><li>**ACTUAL** implies volume of energy actually metered between two dates</li><li>**CUMULATIVE** indicates a meter reading for a specific date. A second Meter Reading is required to determine the consumption between those two Meter Reading dates</li></ul>|
 
 #### Enumerated Values
 
@@ -8703,9 +8703,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 |readStartDate|[DateString](#common-field-types)|mandatory|Date when the meter reads start in AEST and assumed to start from 12:00 am AEST.|
 |readEndDate|[DateString](#common-field-types)|optional|Date when the meter reads end in AEST.  If absent then assumed to be equal to readStartDate.  In this case the entry represents data for a single date specified by readStartDate.|
 |unitOfMeasure|[ExternalRef](#common-field-types)|optional|Unit of measure of the meter reads. Refer to Appendix B of <a href='https://www.aemo.com.au/-/media/files/stakeholder_consultation/consultations/nem-consultations/2019/5ms-metering-package-2/final-determination/mdff-specification-nem12-nem13-v21-final-determination-clean.pdf?la=en&hash=03FCBA0D60E091DE00F2361AE76206EA'>MDFF Specification NEM12 NEM13 v2.1</a> for a list of possible values.|
-|readUType|string|mandatory|Specify the type of the meter read data|
+|readUType|[Enum](#common-field-types)|mandatory|Specify the type of the meter read data|
 |basicRead|object|conditional|Mandatory if readUType is set to basicRead|
-|» quality|string|optional|The quality of the read taken.  If absent then assumed to be ACTUAL|
+|» quality|[Enum](#common-field-types)|optional|The quality of the read taken.  If absent then assumed to be ACTUAL|
 |» value|number|mandatory|Meter read value.  If positive then it means consumption, if negative it means export|
 |intervalRead|object|conditional|Mandatory if readUType is set to intervalRead|
 |» readIntervalLength|[PositiveInteger](#common-field-types)|conditional|Read interval length in minutes. Required when interval-reads query parameter equals FULL or MIN_30|
@@ -8714,7 +8714,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |» readQualities|[object]|conditional|Specifies quality of reads that are not ACTUAL.  For read indices that are not specified, quality is assumed to be ACTUAL. If not present, all quality of all reads are assumed to be actual. Required when interval-reads query parameter equals FULL or MIN_30|
 |»» startInterval|[PositiveInteger](#common-field-types)|mandatory|Start interval for read quality flag. First read begins at 1|
 |»» endInterval|[PositiveInteger](#common-field-types)|mandatory|End interval for read quality flag|
-|»» quality|string|mandatory|The quality of the read taken|
+|»» quality|[Enum](#common-field-types)|mandatory|The quality of the read taken|
 
 #### Enumerated Values
 
@@ -8816,20 +8816,20 @@ To perform this operation, you must be authenticated and authorised with the fol
 |acConnections|[object]|mandatory|none|
 |» connectionIdentifier|number|mandatory|AC Connection ID as defined in the DER register.  Does not align with CDR ID permanence standards|
 |» count|[PositiveInteger](#common-field-types)|mandatory|Number of AC Connections in the group. For the suite of AC Connections to be considered as a group, all of the AC Connections included must have the same attributes|
-|» equipmentType|string|optional|Indicates whether the DER device is connected via an inverter (and what category of inverter it is) or not (e.g. rotating machine). If absent, assume equipment type to be “OTHER”.|
+|» equipmentType|[Enum](#common-field-types)|optional|Indicates whether the DER device is connected via an inverter (and what category of inverter it is) or not (e.g. rotating machine). If absent, assume equipment type to be “OTHER”.|
 |» manufacturerName|string|conditional|The name of the inverter manufacturer. Mandatory if equipmentType is INVERTER|
 |» inverterSeries|string|conditional|The inverter series. Mandatory if equipmentType is INVERTER|
 |» inverterModelNumber|string|conditional|The inverter model number. Mandatory if equipmentType is INVERTER|
 |» commissioningDate|[DateString](#common-field-types)|mandatory|The date that the DER installation is commissioned|
-|» status|string|mandatory|Code used to indicate the status of the Inverter. This will be used to identify if an inverter is active or inactive or decommissioned|
+|» status|[Enum](#common-field-types)|mandatory|Code used to indicate the status of the Inverter. This will be used to identify if an inverter is active or inactive or decommissioned|
 |» inverterDeviceCapacity|number|conditional|The rated AC output power that is listed in the product specified by the manufacturer. Mandatory if equipmentType is INVERTER. Default is 0 if value not known|
 |» derDevices|[object]|mandatory|none|
 |»» deviceIdentifier|number|mandatory|Unique identifier for a single DER device or a group of DER devices with the same attributes. Does not align with CDR ID permanence standards|
 |»» count|[PositiveInteger](#common-field-types)|mandatory|Number of devices in the group of DER devices|
 |»» manufacturer|string|optional|The name of the device manufacturer. If absent then assumed to be “unknown”|
 |»» modelNumber|string|optional|The model number of the device. If absent then assumed to be “unknown”|
-|»» status|string|optional|Code used to indicate the status of the device. This will be used to identify if an inverter is active or inactive or decommissioned|
-|»» type|string|mandatory|Used to indicate the primary technology used in the DER device|
+|»» status|[Enum](#common-field-types)|optional|Code used to indicate the status of the device. This will be used to identify if an inverter is active or inactive or decommissioned|
+|»» type|[Enum](#common-field-types)|mandatory|Used to indicate the primary technology used in the DER device|
 |»» subtype|string|optional|Used to indicate the primary technology used in the DER device. This field is also used to record for example the battery chemistry, or the type of PV panel. It is also used to record if a battery is contained in an electric vehicle connected in a vehicle-to-grid arrangement. If absent then assumed to be “other”|
 |»» nominalRatedCapacity|number|mandatory|Maximum output in kVA that is listed in the product specification by the manufacturer. This refers to the capacity of each unit within the device group. Default is 0 if value not known|
 |»» nominalStorageCapacity|number|conditional|Maximum storage capacity in kVAh. This refers to the capacity of each storage module within the device group. Mandatory if type is equal to “STORAGE”. Default is 0 if value not known|
@@ -8877,7 +8877,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |accountId|string|mandatory|The ID of the account.  To be created in accordance with CDR ID permanence requirements|
 |accountNumber|string|optional|Optional identifier of the account as defined by the data holder.  This must be the value presented on physical statements (if it exists) and must not be used for the value of accountId|
 |displayName|string|optional|An optional display name for the account if one exists or can be derived.  The content of this field is at the discretion of the data holder|
-|openStatus|string|optional|Open or closed status for the account. If not present then OPEN is assumed|
+|openStatus|[Enum](#common-field-types)|optional|Open or closed status for the account. If not present then OPEN is assumed|
 |creationDate|[DateString](#common-field-types)|conditional|The date that the account was created or opened. Mandatory if openStatus is OPEN|
 
 #### Enumerated Values
@@ -9411,7 +9411,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |»»» startDate|[DateString](#common-field-types)|mandatory|The start date of the applicability of this plan|
 |»»» endDate|[DateString](#common-field-types)|optional|The end date of the applicability of this plan|
 |»» planDetail|object|conditional|Detail on the plan applicable to this account. Mandatory if openStatus is OPEN|
-|»»» fuelType|string|mandatory|The fuel types covered by the plan|
+|»»» fuelType|[Enum](#common-field-types)|mandatory|The fuel types covered by the plan|
 |»»» isContingentPlan|boolean|optional|Flag that indicates that the plan is contingent on the customer taking up an alternate fuel plan from the same retailer (for instance, if the fuelType is ELECTRICITY then a GAS plan from the same retailer must be taken up). Has no meaning if the plan has a fuelType of DUAL. If absent the value is assumed to be false|
 |»»» meteringCharges|[object]|optional|Charges for metering included in the plan|
 |»»»» displayName|string|mandatory|Display name of the charge|
@@ -9476,24 +9476,24 @@ To perform this operation, you must be authenticated and authorised with the fol
 |Name|Type|Required|Description|
 |---|---|---|---|
 |amount|[AmountString](#common-field-types)|optional|Optional payment amount indicating that a constant payment amount is scheduled to be paid (used in bill smoothing scenarios)|
-|paymentScheduleUType|string|mandatory|The type of object present in this response|
+|paymentScheduleUType|[Enum](#common-field-types)|mandatory|The type of object present in this response|
 |cardDebit|object|conditional|Represents a regular credit card payment schedule. Mandatory if paymentScheduleUType is set to cardDebit|
-|» cardScheme|string|mandatory|The type of credit card held on file|
+|» cardScheme|[Enum](#common-field-types)|mandatory|The type of credit card held on file|
 |» paymentFrequency|[ExternalRef](#common-field-types)|mandatory|The frequency that payments will occur.  Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
-|» calculationType|string|mandatory|The mechanism by which the payment amount is calculated.  Explanation of values are as follows:<br/><ul><li>**STATIC** - Indicates a consistent, static amount, per payment</li><li>**BALANCE** - Indicates that the outstanding balance for the account is paid per period</li><li>**CALCULATED** - Indicates that the payment amount is variable and calculated using a pre-defined algorithm</li></ul>|
+|» calculationType|[Enum](#common-field-types)|mandatory|The mechanism by which the payment amount is calculated.  Explanation of values are as follows:<br/><ul><li>**STATIC** - Indicates a consistent, static amount, per payment</li><li>**BALANCE** - Indicates that the outstanding balance for the account is paid per period</li><li>**CALCULATED** - Indicates that the payment amount is variable and calculated using a pre-defined algorithm</li></ul>|
 |directDebit|object|conditional|Represents a regular direct debit from a specified bank account. Mandatory if paymentScheduleUType is set to directDebit|
 |» isTokenised|boolean|optional|Flag indicating that the account details are tokenised, or held in a closed system, and is not accessible through any other channels. False if absent|
 |» bsb|string|conditional|The unmasked BSB for the account to be debited. Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces.  Is required if isTokenised is absent or false|
 |» accountNumber|string|conditional|The unmasked account number for the account to be debited. Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces.  Is required if isTokenised is absent or false|
 |» paymentFrequency|[ExternalRef](#common-field-types)|mandatory|The frequency that payments will occur.  Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
-|» calculationType|string|mandatory|The mechanism by which the payment amount is calculated.  Explanation of values are as follows:<br/><ul><li>**STATIC** - Indicates a consistent, static amount, per payment</li><li>**BALANCE** - Indicates that the outstanding balance for the account is paid per period</li><li>**CALCULATED** - Indicates that the payment amount is variable and calculated using a pre-defined algorithm</li></ul>|
+|» calculationType|[Enum](#common-field-types)|mandatory|The mechanism by which the payment amount is calculated.  Explanation of values are as follows:<br/><ul><li>**STATIC** - Indicates a consistent, static amount, per payment</li><li>**BALANCE** - Indicates that the outstanding balance for the account is paid per period</li><li>**CALCULATED** - Indicates that the payment amount is variable and calculated using a pre-defined algorithm</li></ul>|
 |digitalWallet|object|conditional|Represents a regular payment from a digital wallet. Mandatory if paymentScheduleUType is set to digitalWallet|
 |» name|string|mandatory|The display name of the wallet as given by the customer, else a default value defined by the data holder|
 |» identifier|string|mandatory|The identifier of the digital wallet (dependent on type)|
-|» type|string|mandatory|The type of the digital wallet identifier|
-|» provider|string|mandatory|The provider of the digital wallet|
+|» type|[Enum](#common-field-types)|mandatory|The type of the digital wallet identifier|
+|» provider|[Enum](#common-field-types)|mandatory|The provider of the digital wallet|
 |» paymentFrequency|[ExternalRef](#common-field-types)|mandatory|The frequency that payments will occur.  Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
-|» calculationType|string|mandatory|The mechanism by which the payment amount is calculated.  Explanation of values are as follows:<br/><ul><li>**STATIC** - Indicates a consistent, static amount, per payment</li><li>**BALANCE** - Indicates that the outstanding balance for the account is paid per period</li><li>**CALCULATED** - Indicates that the payment amount is variable and calculated using a pre-defined algorithm</li></ul>|
+|» calculationType|[Enum](#common-field-types)|mandatory|The mechanism by which the payment amount is calculated.  Explanation of values are as follows:<br/><ul><li>**STATIC** - Indicates a consistent, static amount, per payment</li><li>**BALANCE** - Indicates that the outstanding balance for the account is paid per period</li><li>**CALCULATED** - Indicates that the payment amount is variable and calculated using a pre-defined algorithm</li></ul>|
 |manualPayment|object|conditional|Represents a manual payment schedule where the customer pays in response to a delivered statement. Mandatory if paymentScheduleUType is set to manualPayment|
 |» billFrequency|[ExternalRef](#common-field-types)|mandatory|The frequency with which a bill will be issued.  Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
 
@@ -9552,7 +9552,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|type|string|mandatory|Indicator of the method of concession calculation|
+|type|[Enum](#common-field-types)|mandatory|Indicator of the method of concession calculation|
 |displayName|string|mandatory|The display name of the concession|
 |additionalInfo|string|conditional|Display text providing more information on the concession. Mandatory if type is VARIABLE|
 |additionalInfoUri|[URIString](#common-field-types)|optional|Optional link to additional information regarding the concession|
@@ -9561,7 +9561,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |discountFrequency|[ExternalRef](#common-field-types)|conditional|Conditional attribute for frequency at which a concession is applied. Required if type is FIXED_AMOUNT or FIXED_PERCENTAGE. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
 |amount|[AmountString](#common-field-types)|conditional|Conditional attribute for the amount of discount for the concession- required if type is FIXED_AMOUNT|
 |percentage|[RateString](#common-field-types)|conditional|Conditional attribute for the percentage of discount of concession - required if type is FIXED_PERCENTAGE|
-|appliedTo|[string]|optional|Array of ENUM's to specify what the concession applies to. Multiple ENUM values can be provided. If absent, USAGE is assumed|
+|appliedTo|[[Enum](#common-field-types)]|optional|Array of ENUM's to specify what the concession applies to. Multiple ENUM values can be provided. If absent, USAGE is assumed|
 
 #### Enumerated Values
 
@@ -9660,7 +9660,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |gas|[EnergyInvoiceGasUsageCharges](#schemacdr-energy-apienergyinvoicegasusagecharges)|optional|Object containing charges and credits related to gas usage|
 |electricity|[EnergyInvoiceElectricityUsageCharges](#schemacdr-energy-apienergyinvoiceelectricityusagecharges)|optional|Object containing charges and credits related to electricity usage|
 |accountCharges|[EnergyInvoiceAccountCharges](#schemacdr-energy-apienergyinvoiceaccountcharges)|optional|Object contains account level charges and credits related to electricity usage|
-|paymentStatus|string|mandatory|Indicator of the payment status for the invoice|
+|paymentStatus|[Enum](#common-field-types)|mandatory|Indicator of the payment status for the invoice|
 
 #### Enumerated Values
 
@@ -9701,7 +9701,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |totalOnceOffCharges|[AmountString](#common-field-types)|mandatory|The aggregate total of any once off charges arising from gas usage for the period covered by the invoice (exclusive of GST)|
 |totalOnceOffDiscounts|[AmountString](#common-field-types)|mandatory|The aggregate total of any once off discounts or credits arising from gas usage for the period covered by the invoice (exclusive of GST)|
 |otherCharges|[object]|optional|Optional array of charges that may be part of the invoice (for e.g. environmental charges for C&I consumers) (exclusive of GST)|
-|» type|string|optional|Type of charge. Assumed to be other if absent|
+|» type|[Enum](#common-field-types)|optional|Type of charge. Assumed to be other if absent|
 |» amount|[AmountString](#common-field-types)|mandatory|The aggregate total of charges for this item (exclusive of GST)|
 |» description|string|mandatory|A free text description of the type of charge|
 |totalGst|[AmountString](#common-field-types)|optional|The total GST for all gas usage charges.  If absent then zero is assumed|
@@ -9749,7 +9749,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |totalOnceOffCharges|[AmountString](#common-field-types)|mandatory|The aggregate total of any once off charges arising from electricity usage for the period covered by the invoice (exclusive of GST)|
 |totalOnceOffDiscounts|[AmountString](#common-field-types)|mandatory|The aggregate total of any once off discounts or credits arising from electricity usage for the period covered by the invoice (exclusive of GST)|
 |otherCharges|[object]|optional|Optional array of charges that may be part of the invoice (for e.g. environmental charges for C&I consumers) (exclusive of GST)|
-|» type|string|optional|Type of charge. Assumed to be other if absent|
+|» type|[Enum](#common-field-types)|optional|Type of charge. Assumed to be other if absent|
 |» amount|[AmountString](#common-field-types)|mandatory|The aggregate total of charges for this item (exclusive of GST)|
 |» description|string|mandatory|A free text description of the type of charge|
 |totalGst|[AmountString](#common-field-types)|optional|The total GST for all electricity usage charges.  If absent then zero is assumed|
@@ -9888,7 +9888,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |accountId|string|mandatory|The ID of the account for which transaction applies|
 |executionDateTime|[DateTimeString](#common-field-types)|mandatory|The date and time that the transaction occurred|
 |gst|[AmountString](#common-field-types)|optional|The GST incurred in the transaction.  Should not be included for credits or payments.  If absent zero is assumed|
-|transactionUType|string|mandatory|Indicator of the type of transaction object present in this record|
+|transactionUType|[Enum](#common-field-types)|mandatory|Indicator of the type of transaction object present in this record|
 |usage|[EnergyBillingUsageTransactionV2](#schemacdr-energy-apienergybillingusagetransactionv2)|conditional|Represents a usage charge or generation credit.  Mandatory if transactionUType is equal to usage|
 |demand|[EnergyBillingDemandTransactionV2](#schemacdr-energy-apienergybillingdemandtransactionv2)|optional|Represents a demand charge or generation credit.  Mandatory if transactionUType is equal to demand|
 |onceOff|[EnergyBillingOnceOffTransaction](#schemacdr-energy-apienergybillingonceofftransaction)|conditional|Represents a once off charge or credit.  Mandatory if transactionUType is equal to onceOff|
@@ -9943,17 +9943,17 @@ To perform this operation, you must be authenticated and authorised with the fol
 |---|---|---|---|
 |servicePointId|string|optional|The ID of the service point to which this transaction applies if any|
 |invoiceNumber|string|optional|The number of the invoice in which this transaction is included if it has been issued|
-|timeOfUseType|string|mandatory|The time of use type that the transaction applies to|
+|timeOfUseType|[Enum](#common-field-types)|mandatory|The time of use type that the transaction applies to|
 |description|string|optional|Optional description of the transaction that can be used for display purposes|
 |isEstimate|boolean|optional|Flag indicating if the usage is estimated or actual.  True indicates estimate.  False or absent indicates actual|
 |startDate|[DateTimeString](#common-field-types)|mandatory|Date and time when the usage period starts|
 |endDate|[DateTimeString](#common-field-types)|mandatory|Date and time when the usage period ends|
-|measureUnit|string|optional|The measurement unit of rate. Assumed to be KWH if absent|
+|measureUnit|[Enum](#common-field-types)|optional|The measurement unit of rate. Assumed to be KWH if absent|
 |usage|number|mandatory|The usage for the period in measure unit.  A negative value indicates power generated|
 |amount|[AmountString](#common-field-types)|mandatory|The amount charged or credited for this transaction prior to any adjustments being applied.  A negative value indicates a credit|
 |calculationFactors|[object]|optional|Additional calculation factors that inform the transaction|
 |» value|number|mandatory|The value of the calculation factor|
-|» type|string|mandatory|The type of the calculation factor|
+|» type|[Enum](#common-field-types)|mandatory|The type of the calculation factor|
 |adjustments|[object]|optional|Optional array of adjustments arising for this transaction|
 |» amount|[AmountString](#common-field-types)|mandatory|The amount of the adjustment|
 |» description|string|mandatory|A free text description of the adjustment|
@@ -10020,7 +10020,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |---|---|---|---|
 |servicePointId|string|optional|The ID of the service point to which this transaction applies if any|
 |invoiceNumber|string|optional|The number of the invoice in which this transaction is included if it has been issued|
-|timeOfUseType|string|mandatory|The time of use type that the transaction applies to|
+|timeOfUseType|[Enum](#common-field-types)|mandatory|The time of use type that the transaction applies to|
 |description|string|optional|Optional description of the transaction that can be used for display purposes|
 |isEstimate|boolean|optional|Flag indicating if the usage is estimated or actual.  True indicates estimate.  False or absent indicates actual|
 |startDate|[DateTimeString](#common-field-types)|mandatory|Date and time when the demand period starts|
@@ -10029,7 +10029,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |amount|[AmountString](#common-field-types)|mandatory|The amount charged or credited for this transaction prior to any adjustments being applied.  A negative value indicates a credit|
 |calculationFactors|[object]|optional|Additional calculation factors that inform the transaction|
 |» value|number|mandatory|The value of the calculation factor|
-|» type|string|mandatory|The type of the calculation factor|
+|» type|[Enum](#common-field-types)|mandatory|The type of the calculation factor|
 |adjustments|[object]|optional|Optional array of adjustments arising for this transaction|
 |» amount|[AmountString](#common-field-types)|mandatory|The amount of the adjustment|
 |» description|string|mandatory|A free text description of the adjustment|
@@ -10112,12 +10112,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 |invoiceNumber|string|optional|The number of the invoice in which this transaction is included if it has been issued|
 |startDate|[DateString](#common-field-types)|optional|Optional start date for the application of the charge|
 |endDate|[DateString](#common-field-types)|optional|Optional end date for the application of the charge|
-|type|string|optional|Type of charge. Assumed to be other if absent|
+|type|[Enum](#common-field-types)|optional|Type of charge. Assumed to be other if absent|
 |amount|[AmountString](#common-field-types)|mandatory|The amount of the charge|
 |description|string|mandatory|A free text description of the item|
 |calculationFactors|[object]|optional|Additional calculation factors that inform the transaction|
 |» value|number|mandatory|The value of the calculation factor|
-|» type|string|mandatory|The type of the calculation factor|
+|» type|[Enum](#common-field-types)|mandatory|The type of the calculation factor|
 |adjustments|[object]|optional|Optional array of adjustments arising for this transaction|
 |» amount|[AmountString](#common-field-types)|mandatory|The amount of the adjustment|
 |» description|string|mandatory|A free text description of the adjustment|
@@ -10153,7 +10153,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |Name|Type|Required|Description|
 |---|---|---|---|
 |amount|[AmountString](#common-field-types)|mandatory|The amount paid|
-|method|string|mandatory|The method of payment|
+|method|[Enum](#common-field-types)|mandatory|The method of payment|
 
 #### Enumerated Values
 
@@ -10216,7 +10216,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|addressUType|string|mandatory|The type of address object present|
+|addressUType|[Enum](#common-field-types)|mandatory|The type of address object present|
 |simple|[CommonSimpleAddress](#schemacdr-energy-apicommonsimpleaddress)|conditional|Required if addressUType is set to simple|
 |paf|[CommonPAFAddress](#schemacdr-energy-apicommonpafaddress)|conditional|Australian address formatted according to the file format defined by the [PAF file format](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf). Required if addressUType is set to paf|
 

@@ -45,12 +45,12 @@ fetch('https://<register-base-url>/cdr-register/v1/{industry}/data-holders/brand
 
 Allows Data Recipients to discover Data Holder Brands available in the CDR ecosystem.
 
-Obsolete versions: [v1](../../../../includes/obsolete/get-data-holder-brands-v1.html)
+Obsolete versions: [v1](../../../../includes/obsolete/get-data-holder-brands-v1.html), [v2](../../../../includes/obsolete/get-data-holder-brands-v2.html)
 
 ###Endpoint Version
 |   |  |
 |---|--|
-|Version|**2**
+|Version|**3**
 
 <h3 id="get-data-holder-brands-parameters">Parameters</h3>
 
@@ -204,10 +204,12 @@ fetch('https://<register-base-url>/cdr-register/v1/{industry}/data-holders/brand
 
 Endpoint used by participants to discover public details of Data Holder Brands from the CDR Register
 
+Obsolete versions: [v1](../../../../includes/obsolete/get-data-holder-brands-summary-v1.html)
+
 ###Endpoint Version
 |   |  |
 |---|--|
-|Version|**1**
+|Version|**2**
 
 <h3 id="get-data-holder-brands-summary-parameters">Parameters</h3>
 
@@ -327,10 +329,12 @@ fetch('https://<register-base-url>/cdr-register/v1/{industry}/data-holders/statu
 
 Endpoint used by participants to discover the statuses for Data Holders from the CDR Register
 
+Obsolete versions: [v1](../../../../includes/obsolete/get-data-holder-statuses-v1.html)
+
 ###Endpoint Version
 |   |  |
 |---|--|
-|Version|**1**
+|Version|**2**
 
 <h3 id="get-data-holder-statuses-parameters">Parameters</h3>
 
@@ -520,7 +524,7 @@ This operation does not require authentication
 |---|---|---|---|
 |dataHolderBrandId|string|mandatory|Unique id of the Data Holder Brand issued by the CDR Register|
 |brandName|string|mandatory|The name of Data Holder Brand|
-|industries|[string]|mandatory|The industries the Data Holder Brand belongs to|
+|industries|[[Enum](#common-field-types)]|mandatory|The industries the Data Holder Brand belongs to|
 |logoUri|[URIString](#common-field-types)|mandatory|Brand logo URI|
 |legalEntity|[LegalEntityDetail](#schemacdr-participant-discovery-apilegalentitydetail)|mandatory|The data that is common to all organisations, regardless of the type (e.g. company, trust, partnership, government)|
 |status|[Enum](#common-field-types)|mandatory|none|
@@ -609,7 +613,7 @@ This operation does not require authentication
 |brandName|string|mandatory|The name of Data Holder Brand|
 |publicBaseUri|[URIString](#common-field-types)|mandatory|Base URI for the Data Holder's Consumer Data Standard public endpoints|
 |logoUri|[URIString](#common-field-types)|mandatory|Brand logo URI|
-|industries|[string]|mandatory|The industries the Data Holder Brand belongs to|
+|industries|[[Enum](#common-field-types)]|mandatory|The industries the Data Holder Brand belongs to|
 |lastUpdated|[DateTimeString](#common-field-types)|mandatory|The date/time that the Data Holder Brand data was last updated in the Register|
 |abn|string|optional|Australian Business Number for the organisation|
 |acn|string|optional|Australian Company Number for the organisation|

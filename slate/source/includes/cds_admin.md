@@ -705,7 +705,7 @@ This operation may only be called by the CDR Register
 |Name|Type|Required|Description|
 |---|---|---|---|
 |data|object|mandatory|none|
-|» action|string|mandatory|The action to take for the meta data. At the moment the only option is REFRESH which requires the data holder to call the ACCC to refresh meta data as soon as practicable|
+|» action|[Enum](#common-field-types)|mandatory|The action to take for the meta data. At the moment the only option is REFRESH which requires the data holder to call the ACCC to refresh meta data as soon as practicable|
 |meta|[Meta](#schemacdr-admin-apimeta)|optional|none|
 
 #### Enumerated Values

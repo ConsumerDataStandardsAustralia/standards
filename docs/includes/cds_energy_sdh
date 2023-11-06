@@ -2302,19 +2302,19 @@ This operation may only be called by an Energy Retailer using the information se
 </tr>
 <tr>
 <td>servicePointClassification</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>The classification of the service point as defined in MSATS procedures</td>
 </tr>
 <tr>
 <td>servicePointStatus</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>Code used to indicate the status of the service point. Note the details for the enumeration values below:<ul><li><strong>ACTIVE</strong> - An active, energised, service point</li><li><strong>DE_ENERGISED</strong> - The service point exists but is deenergised</li><li><strong>EXTINCT</strong> - The service point has been permanently decommissioned</li><li><strong>GREENFIELD</strong> - Applies to a service point that has never been energised</li><li><strong>OFF_MARKET</strong> - Applies when the service point is no longer settled in the NEM</li></ul></td>
 </tr>
 <tr>
 <td>jurisdictionCode</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>Jurisdiction code to which the service point belongs.This code defines the jurisdictional rules which apply to the service point. Note the details of enumeration values below:<ul><li><strong>ALL</strong> - All Jurisdictions</li><li><strong>ACT</strong> - Australian Capital Territory</li><li><strong>NEM</strong> - National Electricity Market</li><li><strong>NSW</strong> - New South Wales</li><li><strong>QLD</strong> - Queensland</li><li><strong>SA</strong> - South Australia</li><li><strong>TAS</strong> - Tasmania</li><li><strong>VIC</strong> - Victoria</li></ul></td>
 </tr>
@@ -2344,13 +2344,13 @@ This operation may only be called by an Energy Retailer using the information se
 </tr>
 <tr>
 <td>» classification</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>optional</td>
 <td>A code that defines the consumer class as defined in the National Energy Retail Regulations, or in overriding Jurisdictional instruments</td>
 </tr>
 <tr>
 <td>» threshold</td>
-<td>any</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>optional</td>
 <td>A code that defines the consumption threshold as defined in the National Energy Retail Regulations, or in overriding Jurisdictional instruments. Note the details of enumeration values below: <ul><li><strong>LOW</strong> - Consumption is less than the ‘lower consumption threshold’ as defined in the National Energy Retail Regulations</li><li><strong>MEDIUM</strong> - Consumption is equal to or greater than the ‘lower consumption threshold’, but less than the ‘upper consumption threshold’, as defined in the National Energy Retail Regulations</li><li><strong>HIGH</strong> - Consumption is equal to or greater than the ‘upper consumption threshold’ as defined in the National Energy Retail Regulations</li></ul></td>
 </tr>
@@ -2584,19 +2584,19 @@ This operation may only be called by an Energy Retailer using the information se
 </tr>
 <tr>
 <td>servicePointClassification</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>The classification of the service point as defined in MSATS procedures</td>
 </tr>
 <tr>
 <td>servicePointStatus</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>Code used to indicate the status of the service point. Note the details for the enumeration values below:<ul><li><strong>ACTIVE</strong> - An active, energised, service point</li><li><strong>DE_ENERGISED</strong> - The service point exists but is deenergised</li><li><strong>EXTINCT</strong> - The service point has been permanently decommissioned</li><li><strong>GREENFIELD</strong> - Applies to a service point that has never been energised</li><li><strong>OFF_MARKET</strong> - Applies when the service point is no longer settled in the NEM</li></ul></td>
 </tr>
 <tr>
 <td>jurisdictionCode</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>Jurisdiction code to which the service point belongs.This code defines the jurisdictional rules which apply to the service point. Note the details of enumeration values below:<ul><li><strong>ALL</strong> - All Jurisdictions</li><li><strong>ACT</strong> - Australian Capital Territory</li><li><strong>NEM</strong> - National Electricity Market</li><li><strong>NSW</strong> - New South Wales</li><li><strong>QLD</strong> - Queensland</li><li><strong>SA</strong> - South Australia</li><li><strong>TAS</strong> - Tasmania</li><li><strong>VIC</strong> - Victoria</li></ul></td>
 </tr>
@@ -2626,13 +2626,13 @@ This operation may only be called by an Energy Retailer using the information se
 </tr>
 <tr>
 <td>» classification</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>optional</td>
 <td>A code that defines the consumer class as defined in the National Energy Retail Regulations, or in overriding Jurisdictional instruments</td>
 </tr>
 <tr>
 <td>» threshold</td>
-<td>any</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>optional</td>
 <td>A code that defines the consumption threshold as defined in the National Energy Retail Regulations, or in overriding Jurisdictional instruments. Note the details of enumeration values below: <ul><li><strong>LOW</strong> - Consumption is less than the ‘lower consumption threshold’ as defined in the National Energy Retail Regulations</li><li><strong>MEDIUM</strong> - Consumption is equal to or greater than the ‘lower consumption threshold’, but less than the ‘upper consumption threshold’, as defined in the National Energy Retail Regulations</li><li><strong>HIGH</strong> - Consumption is equal to or greater than the ‘upper consumption threshold’ as defined in the National Energy Retail Regulations</li></ul></td>
 </tr>
@@ -2674,7 +2674,7 @@ This operation may only be called by an Energy Retailer using the information se
 </tr>
 <tr>
 <td>» role</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>The role performed by this participant in relation to the service point. Note the details of enumeration values below: <ul><li><strong>FRMP</strong> - Financially Responsible Market Participant</li><li><strong>LNSP</strong> - Local Network Service Provider or Embedded Network Manager for child connection points</li><li><strong>DRSP</strong> - wholesale Demand Response and/or market ancillary Service Provider and note that where it is not relevant for a NMI it will not be included</li></ul></td>
 </tr>
@@ -2704,13 +2704,13 @@ This operation may only be called by an Energy Retailer using the information se
 </tr>
 <tr>
 <td>»» status</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>A code to denote the status of the meter. Note the details of enumeration values below: <ul><li><strong>CURRENT</strong> -Applies when a meter is current and not disconnected</li><li><strong>DISCONNECTED</strong> - Applies when a meter is present but has been remotely disconnected</li></ul></td>
 </tr>
 <tr>
 <td>»» installationType</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>The metering Installation type code indicates whether the metering installation has to be manually read. Note the details of enumeration values below: <ul><li><strong>BASIC</strong> - Accumulation Meter – Type 6</li><li><strong>COMMS1</strong> - Interval Meter with communications – Type 1</li><li><strong>COMMS2</strong> - Interval Meter with communications – Type 2</li><li><strong>COMMS3</strong> - Interval Meter with communications – Type 3</li><li><strong>COMMS4</strong> - Interval Meter with communications – Type 4</li><li><strong>COMMS4C</strong> - CT connected metering installation that meets the minimum services specifications</li><li><strong>COMMS4D</strong> - Whole current metering installation that meets the minimum services specifications</li><li><strong>MRAM</strong> - Small customer metering installation – Type 4A</li><li><strong>MRIM</strong> - Manually Read Interval Meter – Type 5</li><li><strong>UMCP</strong> - Unmetered Supply – Type 7</li><li><strong>VICAMI</strong> - A relevant metering installation as defined in clause 9.9C of the NER</li><li><strong>NCONUML</strong> - Non-contestable unmeter load - Introduced as part of Global Settlement</li></ul></td>
 </tr>
@@ -2764,7 +2764,7 @@ This operation may only be called by an Energy Retailer using the information se
 </tr>
 <tr>
 <td>»» registerConsumptionType</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>Indicates the consumption type of register</td>
 </tr>
@@ -2782,7 +2782,7 @@ This operation may only be called by an Energy Retailer using the information se
 </tr>
 <tr>
 <td>»» timeOfDay</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>optional</td>
 <td>Code to identify the time validity of register contents</td>
 </tr>
@@ -2800,7 +2800,7 @@ This operation may only be called by an Energy Retailer using the information se
 </tr>
 <tr>
 <td>»» consumptionType</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>optional</td>
 <td>Actual/Subtractive Indicator. Note the details of enumeration values below: <ul><li><strong>ACTUAL</strong> implies volume of energy actually metered between two dates</li><li><strong>CUMULATIVE</strong> indicates a meter reading for a specific date. A second Meter Reading is required to determine the consumption between those two Meter Reading dates</li></ul></td>
 </tr>
@@ -3158,7 +3158,7 @@ This operation may only be called by an Energy Retailer using the information se
 </tr>
 <tr>
 <td>readUType</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>Specify the type of the meter read data</td>
 </tr>
@@ -3170,7 +3170,7 @@ This operation may only be called by an Energy Retailer using the information se
 </tr>
 <tr>
 <td>» quality</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>optional</td>
 <td>The quality of the read taken.  If absent then assumed to be ACTUAL</td>
 </tr>
@@ -3224,7 +3224,7 @@ This operation may only be called by an Energy Retailer using the information se
 </tr>
 <tr>
 <td>»» quality</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>The quality of the read taken</td>
 </tr>
@@ -3482,7 +3482,7 @@ This operation may only be called by an Energy Retailer using the information se
 </tr>
 <tr>
 <td>» equipmentType</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>optional</td>
 <td>Indicates whether the DER device is connected via an inverter (and what category of inverter it is) or not (e.g. rotating machine). If absent, assume equipment type to be “OTHER”.</td>
 </tr>
@@ -3512,7 +3512,7 @@ This operation may only be called by an Energy Retailer using the information se
 </tr>
 <tr>
 <td>» status</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>Code used to indicate the status of the Inverter. This will be used to identify if an inverter is active or inactive or decommissioned</td>
 </tr>
@@ -3554,13 +3554,13 @@ This operation may only be called by an Energy Retailer using the information se
 </tr>
 <tr>
 <td>»» status</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>optional</td>
 <td>Code used to indicate the status of the device. This will be used to identify if an inverter is active or inactive or decommissioned</td>
 </tr>
 <tr>
 <td>»» type</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>Used to indicate the primary technology used in the DER device</td>
 </tr>
@@ -3708,7 +3708,7 @@ This operation may only be called by an Energy Retailer using the information se
 </thead><tbody>
 <tr>
 <td>addressUType</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>The type of address object present</td>
 </tr>

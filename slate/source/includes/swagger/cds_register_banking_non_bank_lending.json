@@ -10,7 +10,7 @@
   "paths" : {
     "/cdr-register/v1/{industry}/data-holders/brands" : {
       "get" : {
-        "description" : "Allows Data Recipients to discover Data Holder Brands available in the CDR ecosystem.\n\nObsolete versions: [v1](../../../../includes/obsolete/get-data-holder-brands-v1.html)",
+        "description" : "Allows Data Recipients to discover Data Holder Brands available in the CDR ecosystem.\n\nObsolete versions: [v1](../../../../includes/obsolete/get-data-holder-brands-v1.html), [v2](../../../../includes/obsolete/get-data-holder-brands-v2.html)",
         "operationId" : "GetDataHolderBrands",
         "parameters" : [ {
           "description" : "The industry the participant is retrieving data for (Banking, etc)",
@@ -146,13 +146,13 @@
         },
         "summary" : "Get Data Holder Brands",
         "tags" : [ "Register" ],
-        "x-version" : "2",
+        "x-version" : "3",
         "x-scopes" : [ "cdr-register:read" ]
       }
     },
     "/cdr-register/v1/{industry}/data-holders/brands/summary" : {
       "get" : {
-        "description" : "Endpoint used by participants to discover public details of Data Holder Brands from the CDR Register",
+        "description" : "Endpoint used by participants to discover public details of Data Holder Brands from the CDR Register\n\nObsolete versions: [v1](../../../../includes/obsolete/get-data-holder-brands-summary-v1.html)",
         "operationId" : "GetDataHolderBrandsSummary",
         "parameters" : [ {
           "description" : "The industry the participant is retrieving data for (Banking, etc)",
@@ -275,12 +275,12 @@
         },
         "summary" : "Get Data Holder Brands Summary",
         "tags" : [ "Register" ],
-        "x-version" : "1"
+        "x-version" : "2"
       }
     },
     "/cdr-register/v1/{industry}/data-holders/status" : {
       "get" : {
-        "description" : "Endpoint used by participants to discover the statuses for Data Holders from the CDR Register",
+        "description" : "Endpoint used by participants to discover the statuses for Data Holders from the CDR Register\n\nObsolete versions: [v1](../../../../includes/obsolete/get-data-holder-statuses-v1.html)",
         "operationId" : "GetDataHolderStatuses",
         "parameters" : [ {
           "description" : "The industry the participant is retrieving data for (Banking, etc)",
@@ -394,7 +394,7 @@
         },
         "summary" : "Get Data Holder Statuses",
         "tags" : [ "Register" ],
-        "x-version" : "1"
+        "x-version" : "2"
       }
     }
   },

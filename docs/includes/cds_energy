@@ -9758,13 +9758,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>type</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>The type of the plan</td>
 </tr>
 <tr>
 <td>fuelType</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>The fuel types covered by the plan</td>
 </tr>
@@ -9824,7 +9824,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>customerType</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>optional</td>
 <td>The type of customer that the plan is offered to.  If absent then the plan is available to all customers</td>
 </tr>
@@ -10740,13 +10740,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>pricingModel</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>The pricing model for the contract.  Contracts for gas must use SINGLE_RATE.  Note that the detail for the enumeration values are:<ul><li><strong>SINGLE_RATE</strong> - all energy usage is charged at a single unit rate no matter when it is consumed. Multiple unit rates may exist that correspond to varying volumes of usage i.e. a ‘block’ or ‘step’ tariff (first 50kWh @ X cents, next 50kWh at Y cents etc.</li><li><strong>SINGLE_RATE_CONT_LOAD</strong> - as above, but with an additional, separate unit rate charged for all energy usage from a controlled load i.e. separately metered appliance like hot water service, pool pump etc.</li><li><strong>TIME_OF_USE</strong> - energy usage is charged at unit rates that vary dependent on time of day and day of week that the energy is consumed</li><li><strong>TIME_OF_USE_CONT_LOAD</strong> - as above, but with an additional, separate unit rate charged for all energy usage from a controlled load i.e. separately metered appliance like hot water service, pool pump etc.</li><li><strong>FLEXIBLE</strong> - energy usage is charged at unit rates that vary based on external factors</li><li><strong>FLEXIBLE_CONT_LOAD</strong> - as above, but with an additional, separate unit rate charged for all energy usage from a controlled load i.e. separately metered appliance like hot water service, pool pump etc.</li><li><strong>QUOTA</strong> - all energy usage is charged at a single fixed rate, up to a specified usage quota/allowance. All excess usage beyond the allowance is then charged at a single unit rate (may not be the best way to explain it but it is essentially a ‘subscription’ or telco style product i.e. $50/month for up to 150kWh included usage</li></ul></td>
 </tr>
 <tr>
 <td>timeZone</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>conditional</td>
 <td>Required if pricingModel is set to TIME_OF_USE.  Defines the time zone to use for calculation of the time of use thresholds. Defaults to AEST if absent</td>
 </tr>
@@ -10770,7 +10770,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>paymentOption</td>
-<td>[string]</td>
+<td>[<a href="#common-field-types">Enum</a>]</td>
 <td>mandatory</td>
 <td>Payment options for this contract</td>
 </tr>
@@ -11176,7 +11176,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>» termType</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>optional</td>
 <td>The term for the contract.  If absent assumes no specified term</td>
 </tr>
@@ -11317,7 +11317,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>rateBlockUType</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>Specifies the type of controlloed load rate</td>
 </tr>
@@ -11371,7 +11371,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>»» measureUnit</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>optional</td>
 <td>The measurement unit of rate. Assumed to be KWH if absent</td>
 </tr>
@@ -11419,7 +11419,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>»» measureUnit</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>optional</td>
 <td>The measurement unit of rate. Assumed to be KWH if absent</td>
 </tr>
@@ -11437,7 +11437,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>»» days</td>
-<td>[string]</td>
+<td>[<a href="#common-field-types">Enum</a>]</td>
 <td>optional</td>
 <td>The days that the rate applies to</td>
 </tr>
@@ -11467,7 +11467,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>» type</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>The type of usage that the rate applies to</td>
 </tr>
@@ -11638,7 +11638,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>category</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>The type of the incentive</td>
 </tr>
@@ -11722,13 +11722,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>type</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>The type of the discount</td>
 </tr>
 <tr>
 <td>category</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>optional</td>
 <td>The type of the discount.  Mandatory if the discount type is CONDITIONAL</td>
 </tr>
@@ -11740,7 +11740,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>methodUType</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>The method of calculation of the discount</td>
 </tr>
@@ -11896,13 +11896,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>scheme</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>The applicable green power scheme</td>
 </tr>
 <tr>
 <td>type</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>The type of charge</td>
 </tr>
@@ -11996,7 +11996,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </thead><tbody>
 <tr>
 <td>type</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>The type of the eligibility restriction.<br/>The CONTINGENT_PLAN value indicates that the plan is contingent on the customer taking up an alternate fuel plan from the same retailer (for instance, if the fuelType is ELECTRICITY then a GAS plan from the same retailer must be taken up)</td>
 </tr>
@@ -12132,13 +12132,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 </thead><tbody>
 <tr>
 <td>type</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>The type of the fee</td>
 </tr>
 <tr>
 <td>term</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>The term of the fee</td>
 </tr>
@@ -12366,19 +12366,19 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>scheme</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>The applicable scheme</td>
 </tr>
 <tr>
 <td>payerType</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>The type of the payer</td>
 </tr>
 <tr>
 <td>tariffUType</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>The type of the payer</td>
 </tr>
@@ -12402,7 +12402,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>»» measureUnit</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>optional</td>
 <td>The measurement unit of rate. Assumed to be KWH if absent</td>
 </tr>
@@ -12420,7 +12420,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>» type</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>optional</td>
 <td>The type of the charging time period. If absent applies to all periods</td>
 </tr>
@@ -12438,7 +12438,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>»» measureUnit</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>optional</td>
 <td>The measurement unit of rate. Assumed to be KWH if absent</td>
 </tr>
@@ -12456,7 +12456,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>»» days</td>
-<td>[string]</td>
+<td>[<a href="#common-field-types">Enum</a>]</td>
 <td>mandatory</td>
 <td>The days that the tariff applies to. At least one entry required</td>
 </tr>
@@ -12695,7 +12695,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </thead><tbody>
 <tr>
 <td>type</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>optional</td>
 <td>Type of charge. Assumed to be other if absent</td>
 </tr>
@@ -12725,13 +12725,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>timeZone</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>optional</td>
 <td>Specifies the charge specific time zone for calculation of the time of use thresholds. If absent, timezone value in EnergyPlanContract is assumed.</td>
 </tr>
 <tr>
 <td>rateBlockUType</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>Specifies the type of rate applicable to this tariff period</td>
 </tr>
@@ -12773,7 +12773,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>»» measureUnit</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>optional</td>
 <td>The measurement unit of rate. Assumed to be KWH if absent</td>
 </tr>
@@ -12821,7 +12821,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>»» measureUnit</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>optional</td>
 <td>The measurement unit of rate. Assumed to be KWH if absent</td>
 </tr>
@@ -12839,7 +12839,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>»» days</td>
-<td>[string]</td>
+<td>[<a href="#common-field-types">Enum</a>]</td>
 <td>mandatory</td>
 <td>The days that the rate applies to</td>
 </tr>
@@ -12857,7 +12857,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>» type</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>The type of usage that the rate applies to</td>
 </tr>
@@ -12887,7 +12887,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>» measureUnit</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>optional</td>
 <td>The measurement unit of charge amount. Assumed to be KWH if absent</td>
 </tr>
@@ -12905,7 +12905,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>» days</td>
-<td>[string]</td>
+<td>[<a href="#common-field-types">Enum</a>]</td>
 <td>optional</td>
 <td>The days that the demand tariff applies to</td>
 </tr>
@@ -12923,13 +12923,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>» measurementPeriod</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>Application period for the demand tariff</td>
 </tr>
 <tr>
 <td>» chargePeriod</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>Charge period for the demand tariff</td>
 </tr>
@@ -13236,19 +13236,19 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>servicePointClassification</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>The classification of the service point as defined in MSATS procedures</td>
 </tr>
 <tr>
 <td>servicePointStatus</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>Code used to indicate the status of the service point. Note the details for the enumeration values below:<ul><li><strong>ACTIVE</strong> - An active, energised, service point</li><li><strong>DE_ENERGISED</strong> - The service point exists but is deenergised</li><li><strong>EXTINCT</strong> - The service point has been permanently decommissioned</li><li><strong>GREENFIELD</strong> - Applies to a service point that has never been energised</li><li><strong>OFF_MARKET</strong> - Applies when the service point is no longer settled in the NEM</li></ul></td>
 </tr>
 <tr>
 <td>jurisdictionCode</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>Jurisdiction code to which the service point belongs.This code defines the jurisdictional rules which apply to the service point. Note the details of enumeration values below:<ul><li><strong>ALL</strong> - All Jurisdictions</li><li><strong>ACT</strong> - Australian Capital Territory</li><li><strong>NEM</strong> - National Electricity Market</li><li><strong>NSW</strong> - New South Wales</li><li><strong>QLD</strong> - Queensland</li><li><strong>SA</strong> - South Australia</li><li><strong>TAS</strong> - Tasmania</li><li><strong>VIC</strong> - Victoria</li></ul></td>
 </tr>
@@ -13278,13 +13278,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>» classification</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>optional</td>
 <td>A code that defines the consumer class as defined in the National Energy Retail Regulations, or in overriding Jurisdictional instruments</td>
 </tr>
 <tr>
 <td>» threshold</td>
-<td>any</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>optional</td>
 <td>A code that defines the consumption threshold as defined in the National Energy Retail Regulations, or in overriding Jurisdictional instruments. Note the details of enumeration values below: <ul><li><strong>LOW</strong> - Consumption is less than the ‘lower consumption threshold’ as defined in the National Energy Retail Regulations</li><li><strong>MEDIUM</strong> - Consumption is equal to or greater than the ‘lower consumption threshold’, but less than the ‘upper consumption threshold’, as defined in the National Energy Retail Regulations</li><li><strong>HIGH</strong> - Consumption is equal to or greater than the ‘upper consumption threshold’ as defined in the National Energy Retail Regulations</li></ul></td>
 </tr>
@@ -13518,19 +13518,19 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>servicePointClassification</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>The classification of the service point as defined in MSATS procedures</td>
 </tr>
 <tr>
 <td>servicePointStatus</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>Code used to indicate the status of the service point. Note the details for the enumeration values below:<ul><li><strong>ACTIVE</strong> - An active, energised, service point</li><li><strong>DE_ENERGISED</strong> - The service point exists but is deenergised</li><li><strong>EXTINCT</strong> - The service point has been permanently decommissioned</li><li><strong>GREENFIELD</strong> - Applies to a service point that has never been energised</li><li><strong>OFF_MARKET</strong> - Applies when the service point is no longer settled in the NEM</li></ul></td>
 </tr>
 <tr>
 <td>jurisdictionCode</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>Jurisdiction code to which the service point belongs.This code defines the jurisdictional rules which apply to the service point. Note the details of enumeration values below:<ul><li><strong>ALL</strong> - All Jurisdictions</li><li><strong>ACT</strong> - Australian Capital Territory</li><li><strong>NEM</strong> - National Electricity Market</li><li><strong>NSW</strong> - New South Wales</li><li><strong>QLD</strong> - Queensland</li><li><strong>SA</strong> - South Australia</li><li><strong>TAS</strong> - Tasmania</li><li><strong>VIC</strong> - Victoria</li></ul></td>
 </tr>
@@ -13560,13 +13560,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>» classification</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>optional</td>
 <td>A code that defines the consumer class as defined in the National Energy Retail Regulations, or in overriding Jurisdictional instruments</td>
 </tr>
 <tr>
 <td>» threshold</td>
-<td>any</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>optional</td>
 <td>A code that defines the consumption threshold as defined in the National Energy Retail Regulations, or in overriding Jurisdictional instruments. Note the details of enumeration values below: <ul><li><strong>LOW</strong> - Consumption is less than the ‘lower consumption threshold’ as defined in the National Energy Retail Regulations</li><li><strong>MEDIUM</strong> - Consumption is equal to or greater than the ‘lower consumption threshold’, but less than the ‘upper consumption threshold’, as defined in the National Energy Retail Regulations</li><li><strong>HIGH</strong> - Consumption is equal to or greater than the ‘upper consumption threshold’ as defined in the National Energy Retail Regulations</li></ul></td>
 </tr>
@@ -13608,7 +13608,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>» role</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>The role performed by this participant in relation to the service point. Note the details of enumeration values below: <ul><li><strong>FRMP</strong> - Financially Responsible Market Participant</li><li><strong>LNSP</strong> - Local Network Service Provider or Embedded Network Manager for child connection points</li><li><strong>DRSP</strong> - wholesale Demand Response and/or market ancillary Service Provider and note that where it is not relevant for a NMI it will not be included</li></ul></td>
 </tr>
@@ -13638,13 +13638,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>»» status</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>A code to denote the status of the meter. Note the details of enumeration values below: <ul><li><strong>CURRENT</strong> -Applies when a meter is current and not disconnected</li><li><strong>DISCONNECTED</strong> - Applies when a meter is present but has been remotely disconnected</li></ul></td>
 </tr>
 <tr>
 <td>»» installationType</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>The metering Installation type code indicates whether the metering installation has to be manually read. Note the details of enumeration values below: <ul><li><strong>BASIC</strong> - Accumulation Meter – Type 6</li><li><strong>COMMS1</strong> - Interval Meter with communications – Type 1</li><li><strong>COMMS2</strong> - Interval Meter with communications – Type 2</li><li><strong>COMMS3</strong> - Interval Meter with communications – Type 3</li><li><strong>COMMS4</strong> - Interval Meter with communications – Type 4</li><li><strong>COMMS4C</strong> - CT connected metering installation that meets the minimum services specifications</li><li><strong>COMMS4D</strong> - Whole current metering installation that meets the minimum services specifications</li><li><strong>MRAM</strong> - Small customer metering installation – Type 4A</li><li><strong>MRIM</strong> - Manually Read Interval Meter – Type 5</li><li><strong>UMCP</strong> - Unmetered Supply – Type 7</li><li><strong>VICAMI</strong> - A relevant metering installation as defined in clause 9.9C of the NER</li><li><strong>NCONUML</strong> - Non-contestable unmeter load - Introduced as part of Global Settlement</li></ul></td>
 </tr>
@@ -13698,7 +13698,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>»» registerConsumptionType</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>Indicates the consumption type of register</td>
 </tr>
@@ -13716,7 +13716,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>»» timeOfDay</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>optional</td>
 <td>Code to identify the time validity of register contents</td>
 </tr>
@@ -13734,7 +13734,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>»» consumptionType</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>optional</td>
 <td>Actual/Subtractive Indicator. Note the details of enumeration values below: <ul><li><strong>ACTUAL</strong> implies volume of energy actually metered between two dates</li><li><strong>CUMULATIVE</strong> indicates a meter reading for a specific date. A second Meter Reading is required to determine the consumption between those two Meter Reading dates</li></ul></td>
 </tr>
@@ -14092,7 +14092,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>readUType</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>Specify the type of the meter read data</td>
 </tr>
@@ -14104,7 +14104,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>» quality</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>optional</td>
 <td>The quality of the read taken.  If absent then assumed to be ACTUAL</td>
 </tr>
@@ -14158,7 +14158,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>»» quality</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>The quality of the read taken</td>
 </tr>
@@ -14416,7 +14416,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>» equipmentType</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>optional</td>
 <td>Indicates whether the DER device is connected via an inverter (and what category of inverter it is) or not (e.g. rotating machine). If absent, assume equipment type to be “OTHER”.</td>
 </tr>
@@ -14446,7 +14446,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>» status</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>Code used to indicate the status of the Inverter. This will be used to identify if an inverter is active or inactive or decommissioned</td>
 </tr>
@@ -14488,13 +14488,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>»» status</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>optional</td>
 <td>Code used to indicate the status of the device. This will be used to identify if an inverter is active or inactive or decommissioned</td>
 </tr>
 <tr>
 <td>»» type</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>Used to indicate the primary technology used in the DER device</td>
 </tr>
@@ -14630,7 +14630,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>openStatus</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>optional</td>
 <td>Open or closed status for the account. If not present then OPEN is assumed</td>
 </tr>
@@ -15296,7 +15296,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>»»» fuelType</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>The fuel types covered by the plan</td>
 </tr>
@@ -15460,7 +15460,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>paymentScheduleUType</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>The type of object present in this response</td>
 </tr>
@@ -15472,7 +15472,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>» cardScheme</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>The type of credit card held on file</td>
 </tr>
@@ -15484,7 +15484,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>» calculationType</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>The mechanism by which the payment amount is calculated.  Explanation of values are as follows:<br/><ul><li><strong>STATIC</strong> - Indicates a consistent, static amount, per payment</li><li><strong>BALANCE</strong> - Indicates that the outstanding balance for the account is paid per period</li><li><strong>CALCULATED</strong> - Indicates that the payment amount is variable and calculated using a pre-defined algorithm</li></ul></td>
 </tr>
@@ -15520,7 +15520,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>» calculationType</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>The mechanism by which the payment amount is calculated.  Explanation of values are as follows:<br/><ul><li><strong>STATIC</strong> - Indicates a consistent, static amount, per payment</li><li><strong>BALANCE</strong> - Indicates that the outstanding balance for the account is paid per period</li><li><strong>CALCULATED</strong> - Indicates that the payment amount is variable and calculated using a pre-defined algorithm</li></ul></td>
 </tr>
@@ -15544,13 +15544,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>» type</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>The type of the digital wallet identifier</td>
 </tr>
 <tr>
 <td>» provider</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>The provider of the digital wallet</td>
 </tr>
@@ -15562,7 +15562,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>» calculationType</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>The mechanism by which the payment amount is calculated.  Explanation of values are as follows:<br/><ul><li><strong>STATIC</strong> - Indicates a consistent, static amount, per payment</li><li><strong>BALANCE</strong> - Indicates that the outstanding balance for the account is paid per period</li><li><strong>CALCULATED</strong> - Indicates that the payment amount is variable and calculated using a pre-defined algorithm</li></ul></td>
 </tr>
@@ -15713,7 +15713,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </thead><tbody>
 <tr>
 <td>type</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>Indicator of the method of concession calculation</td>
 </tr>
@@ -15767,7 +15767,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>appliedTo</td>
-<td>[string]</td>
+<td>[<a href="#common-field-types">Enum</a>]</td>
 <td>optional</td>
 <td>Array of ENUM&#39;s to specify what the concession applies to. Multiple ENUM values can be provided. If absent, USAGE is assumed</td>
 </tr>
@@ -15987,7 +15987,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>paymentStatus</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>Indicator of the payment status for the invoice</td>
 </tr>
@@ -16072,7 +16072,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>» type</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>optional</td>
 <td>Type of charge. Assumed to be other if absent</td>
 </tr>
@@ -16191,7 +16191,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>» type</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>optional</td>
 <td>Type of charge. Assumed to be other if absent</td>
 </tr>
@@ -16408,7 +16408,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>transactionUType</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>Indicator of the type of transaction object present in this record</td>
 </tr>
@@ -16523,7 +16523,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>timeOfUseType</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>The time of use type that the transaction applies to</td>
 </tr>
@@ -16553,7 +16553,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>measureUnit</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>optional</td>
 <td>The measurement unit of rate. Assumed to be KWH if absent</td>
 </tr>
@@ -16583,7 +16583,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>» type</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>The type of the calculation factor</td>
 </tr>
@@ -16745,7 +16745,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>timeOfUseType</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>The time of use type that the transaction applies to</td>
 </tr>
@@ -16799,7 +16799,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>» type</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>The type of the calculation factor</td>
 </tr>
@@ -16988,7 +16988,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>type</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>optional</td>
 <td>Type of charge. Assumed to be other if absent</td>
 </tr>
@@ -17018,7 +17018,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>» type</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>The type of the calculation factor</td>
 </tr>
@@ -17111,7 +17111,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>method</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>The method of payment</td>
 </tr>
@@ -17205,7 +17205,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </thead><tbody>
 <tr>
 <td>addressUType</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>The type of address object present</td>
 </tr>
