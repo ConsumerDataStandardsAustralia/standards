@@ -1,0 +1,33 @@
+## Banking Language
+
+### Banking Accounts
+See below for the data language standards for the banking account scopes:
+
+|Data cluster language|<div style="width:250px">Permission language</div>|Authorisation Scopes|
+|----------------------|------------------------------|-------------------|
+|**Account name, type and balance**|Name of account;<br>Type of account;<br>Account balance;|bank:accounts.basic:read|
+|**Account numbers and features**|Account number;<br>Interest rates;<br>Fees;<br>Discounts;<br>Account terms;<br>Account mail address;|bank:accounts.detail:read|
+|**Account balance and details&Dagger;**|Name of account;<br>Type of account;<br>Account balance;<br>Account number;<br>Interest rates;<br>Fees;<br>Discounts;<br>Account terms;<br>Account mail address;|bank:accounts.detail:read|
+
+### Transactions
+See below for the data language standards for the banking transactions scope:
+
+|Data cluster language|Permission language|Authorisation Scopes|
+|----------------------|------------------------------|-------------------|
+|**Transaction details**|Incoming and outgoing transactions;<br>Amounts;<br>Dates;<br>Descriptions of transactions;<br>Who you have sent money to and received money from; *(e.g. their name)&dagger;*|bank:transactions:read|
+
+### Regular Payments
+See below for the data language standards for the regular payments scope:
+
+|Data cluster language|<div style="width:250px">Permission language</div>|Authorisation Scopes|
+|----------------------|------------------------------|-------------------|
+|**Direct debits and scheduled payments**|Direct debits;<br>Scheduled payments;|bank:regular_payments:read|
+
+### Payees
+See below for the data language standards for the payees scope:
+
+|Data cluster language|Permission language|Authorisation Scopes|
+|----------------------|------------------------------|-------------------|
+|**Saved payees**|Names and details of accounts you have saved; *(e.g. their BSB and Account Number, BPAY CRN and Biller code, or NPP PayID)&dagger;*|bank:payees:read|
+
+<br/>

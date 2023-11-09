@@ -11,6 +11,9 @@ toc_footers:
 includes:
   - additional/drafts/non-bank-lending/_standards_banking_non_bank_lending
   - separator
+  - additional/drafts/non-bank-lending/cx_nbl
+  - additional/drafts/non-bank-lending/cx_standards_nbl
+  - separator
   - additional/drafts/non-bank-lending/_register_banking_non_bank_lending
   - separator
   - additional/drafts/non-bank-lending/banking-non-bank-lending_apis
