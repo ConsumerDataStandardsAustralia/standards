@@ -38,7 +38,7 @@ x-min-v: string
 
 <p>Allows Data Recipients to discover Data Holder Brands available in the CDR ecosystem.</p>
 
-<p>Obsolete versions: <a href="obsolete/get-data-holder-brands-v1.html">v1</a></p>
+<p>Obsolete versions: <a href="obsolete/get-data-holder-brands-v1.html">v1</a>, <a href="obsolete/get-data-holder-brands-v2.html">v2</a></p>
 <h3 id='endpoint-version'>Endpoint Version</h3>
 <table><thead>
 <tr>
@@ -48,7 +48,7 @@ x-min-v: string
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>2</strong></td>
+<td><strong>3</strong></td>
 </tr>
 </tbody></table>
 
@@ -298,6 +298,8 @@ If-None-Match: string
 <p><code>GET /cdr-register/v1/{industry}/data-holders/brands/summary</code></p>
 
 <p>Endpoint used by participants to discover public details of Data Holder Brands from the CDR Register</p>
+
+<p>Obsolete versions: <a href="obsolete/get-data-holder-brands-summary-v1.html">v1</a></p>
 <h3 id='endpoint-version-2'>Endpoint Version</h3>
 <table><thead>
 <tr>
@@ -307,7 +309,7 @@ If-None-Match: string
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>1</strong></td>
+<td><strong>2</strong></td>
 </tr>
 </tbody></table>
 
@@ -524,6 +526,8 @@ If-None-Match: string
 <p><code>GET /cdr-register/v1/{industry}/data-holders/status</code></p>
 
 <p>Endpoint used by participants to discover the statuses for Data Holders from the CDR Register</p>
+
+<p>Obsolete versions: <a href="obsolete/get-data-holder-statuses-v1.html">v1</a></p>
 <h3 id='endpoint-version-3'>Endpoint Version</h3>
 <table><thead>
 <tr>
@@ -533,7 +537,7 @@ If-None-Match: string
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>1</strong></td>
+<td><strong>2</strong></td>
 </tr>
 </tbody></table>
 
@@ -853,7 +857,7 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>industries</td>
-<td>[string]</td>
+<td>[<a href="#common-field-types">Enum</a>]</td>
 <td>mandatory</td>
 <td>The industries the Data Holder Brand belongs to</td>
 </tr>
@@ -1045,7 +1049,7 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>industries</td>
-<td>[string]</td>
+<td>[<a href="#common-field-types">Enum</a>]</td>
 <td>mandatory</td>
 <td>The industries the Data Holder Brand belongs to</td>
 </tr>

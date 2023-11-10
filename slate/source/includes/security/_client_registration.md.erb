@@ -5,10 +5,6 @@ Data Recipients register with Data Holders according to **[[DCR]](#nref-DCR)** t
 
 #### Software Statement Assertion (SSA)
 
-```diff
-Updated encoded and decoded example SSAs to include energy scopes and minor updates for clarity and consistency
-```
-
 As per **[[DCR]](#nref-DCR)**, a Software Statement is defined in as: _A digitally signed JSON Web Token (JWT) created in accordance with **[[JWT]](#nref-JWT)** that asserts metadata values about the client software_
 > An SSA is a digitally signed JSON Web Token (JWT) created in accordance with **[[JWT]](#nref-JWT)** that asserts metadata values about the client software.
 
@@ -98,12 +94,6 @@ Decoded SSA
 ```
 
 The SSA will conform to the requirements of **[[DCR]](#nref-DCR)** with the following clarifications:
-
-
-
-```diff
-Corrected typo in the description of the software_roles field
-```
 
 | Client Metadata | Required | Modifiable | Description
 |--------------|-------|-------|----------------------------------------------------------------------------------------
@@ -226,10 +216,6 @@ Accept: application/json
 }{
   "signature":...
 }
-```
-
-```diff
-Updated link to section 8.6 of FAPI Advanced
 ```
 
 To register with a Data Holder, the Data Recipient sends an HTTP POST to the Data Holder registration endpoint.

@@ -4240,9 +4240,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 |lastUpdated|[DateTimeString](#common-field-types)|optional|The last date and time that the information for this plan was changed (or the creation date for the plan if it has never been altered)|
 |displayName|string|optional|The display name of the product|
 |description|string|optional|A description of the product|
-|type|string|mandatory|The type of product. [MOBILE](https://www.legislation.gov.au/Details/C2022C00170/Html/Volume_1#_Toc95898745) service or BROADBAND fixed internet service|
-|purpose|string|optional|The purpose type of the product. If absent, then the value PERSONAL is assumed|
-|billingType|string|mandatory|The type of product|
+|type|[Enum](#common-field-types)|mandatory|The type of product. [MOBILE](https://www.legislation.gov.au/Details/C2022C00170/Html/Volume_1#_Toc95898745) service or BROADBAND fixed internet service|
+|purpose|[Enum](#common-field-types)|optional|The purpose type of the product. If absent, then the value PERSONAL is assumed|
+|billingType|[Enum](#common-field-types)|mandatory|The type of product|
 |contract|[TelcoContract](#schemacdr-telco-apitelcocontract)|conditional|Summary of the contract details. Mandatory if the billing type is POST_PAID and a contract agreement is required with the service provider for the plan|
 |bundle|boolean|optional|Required if part of a bundle. If not present FALSE is assumed|
 |brand|string|mandatory|The ID of the brand under which this product is offered|
@@ -4477,7 +4477,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |creationDate|[DateString](#common-field-types)|optional|The date that the account was created or opened. Mandatory if openStatus is OPEN|
 |lastUpdated|[DateString](#common-field-types)|optional|The date and time which the account was last updated|
 |brand|string|optional|The retail name of the brand|
-|openStatus|string|optional|Open or closed status for the account. If not present then OPEN is assumed|
+|openStatus|[Enum](#common-field-types)|optional|Open or closed status for the account. If not present then OPEN is assumed|
 
 #### Enumerated Values
 
@@ -4635,7 +4635,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |Name|Type|Required|Description|
 |---|---|---|---|
 |amount|[AmountString](#common-field-types)|optional|Optional payment amount indicating that a constant payment amount is scheduled to be paid (used in bill smoothing scenarios)|
-|paymentScheduleUType|string|mandatory|The type of object present in this response|
+|paymentScheduleUType|[Enum](#common-field-types)|mandatory|The type of object present in this response|
 |cardDebit|[TelcoPaymentScheduleCardDebit](#schemacdr-telco-apitelcopaymentschedulecarddebit)|conditional|Represents a regular credit card payment schedule. Mandatory if paymentScheduleUType is set to cardDebit|
 |directDebit|[TelcoPaymentScheduleDirectDebit](#schemacdr-telco-apitelcopaymentscheduledirectdebit)|conditional|Represents a regular direct debit from a specified bank account. Mandatory if paymentScheduleUType is set to directDebit|
 |digitalWallet|[TelcoPaymentScheduleDigitalWallet](#schemacdr-telco-apitelcopaymentscheduledigitalwallet)|conditional|Represents a regular payment from a digital wallet. Mandatory if paymentScheduleUType is set to digitalWallet|
@@ -4676,7 +4676,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|type|string|mandatory|The concession type|
+|type|[Enum](#common-field-types)|mandatory|The concession type|
 |displayName|string|mandatory|The display name of the concession|
 |additionalInfo|string|optional|Display text providing more information on the concession|
 |additionalInfoUri|[URIString](#common-field-types)|optional|Optional link to additional information regarding the concession|
@@ -4685,7 +4685,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |discountFrequency|[ExternalRef](#common-field-types)|conditional|Conditional attribute for frequency at which a concession is applied. Required if type is FIXED_AMOUNT or FIXED_PERCENTAGE. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
 |amount|[AmountString](#common-field-types)|conditional|Conditional attribute for the amount of discount for the concession- required if type is FIXED_AMOUNT|
 |percentage|[RateString](#common-field-types)|conditional|Conditional attribute for the percentage of discount of concession - required if type is FIXED_PERCENTAGE|
-|appliedTo|[string]|optional|Array of ENUM's to specify what the concession applies to. Multiple ENUM values can be provided. If absent, USAGE is assumed|
+|appliedTo|[[Enum](#common-field-types)]|optional|Array of ENUM's to specify what the concession applies to. Multiple ENUM values can be provided. If absent, USAGE is assumed|
 
 #### Enumerated Values
 
@@ -4797,7 +4797,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |services|[string]|mandatory|An array of service IDs to which this invoice applies. May be empty if the invoice contains no usage related charges|
 |accountCharges|[TelcoInvoiceAccountCharges](#schemacdr-telco-apitelcoinvoiceaccountcharges)|optional|Object contain charges and credits related to usage|
 |accountUsage|[TelcoUsage](#schemacdr-telco-apitelcousage)|optional|Object containing usage summary|
-|paymentStatus|string|mandatory|Indicator of the payment status for the invoice|
+|paymentStatus|[Enum](#common-field-types)|mandatory|Indicator of the payment status for the invoice|
 
 #### Enumerated Values
 
@@ -4959,7 +4959,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |accountId|string|mandatory|The ID of the account for which the transaction occurred. accountId must comply in accordance with [CDR ID permanence](#id-permanence)|
 |executionDateTime|[DateTimeString](#common-field-types)|mandatory|The date and time that the transaction occurred|
 |gst|[AmountString](#common-field-types)|optional|The GST incurred in the transaction.  Should not be included for credits or payments.  If absent zero is assumed|
-|transactionUType|string|mandatory|Indicator of the type of transaction object present in this record|
+|transactionUType|[Enum](#common-field-types)|mandatory|Indicator of the type of transaction object present in this record|
 |account|[TelcoBillingAccountTransaction](#schemacdr-telco-apitelcobillingaccounttransaction)|optional|none|
 |onceOff|[TelcoBillingOnceOffTransaction](#schemacdr-telco-apitelcobillingonceofftransaction)|conditional|none|
 |otherCharges|[TelcoBillingOtherTransaction](#schemacdr-telco-apitelcobillingothertransaction)|optional|none|
@@ -5062,7 +5062,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |invoiceNumber|string|optional|The number of the invoice in which this transaction is included if it has been issued|
 |startDate|[DateString](#common-field-types)|optional|Optional start date for the application of the charge|
 |endDate|[DateString](#common-field-types)|optional|Optional end date for the application of the charge|
-|type|string|optional|Type of charge. Assumed to be OTHER if absent|
+|type|[Enum](#common-field-types)|optional|Type of charge. Assumed to be OTHER if absent|
 |amount|[AmountString](#common-field-types)|mandatory|The amount of the charge|
 |description|string|mandatory|A free text description of the item|
 |adjustments|[[TelcoBillingAccountTransactionAdjustments](#schemacdr-telco-apitelcobillingaccounttransactionadjustments)]|optional|Optional array of adjustments arising for this transaction|
@@ -5094,7 +5094,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |Name|Type|Required|Description|
 |---|---|---|---|
 |amount|[AmountString](#common-field-types)|mandatory|The amount paid|
-|method|string|mandatory|The method of payment|
+|method|[Enum](#common-field-types)|mandatory|The method of payment|
 
 #### Enumerated Values
 
@@ -5283,7 +5283,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|*anonymous*|string|mandatory|Plan type for this feature. METERED: A plan is charged by usage for the feature. UNMETERED: A plan with no limits for a feature. LIMITED: Where plan limit inclusions apply. UNSUPPORTED: Feature is not supported|
+|*anonymous*|[Enum](#common-field-types)|mandatory|Plan type for this feature. METERED: A plan is charged by usage for the feature. UNMETERED: A plan with no limits for a feature. LIMITED: Where plan limit inclusions apply. UNSUPPORTED: Feature is not supported|
 
 #### Enumerated Values
 
@@ -5343,7 +5343,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|addressUType|string|mandatory|The type of address object present|
+|addressUType|[Enum](#common-field-types)|mandatory|The type of address object present|
 |simple|[CommonSimpleAddress](#schemacdr-telco-apicommonsimpleaddress)|conditional|Required if addressUType is set to simple|
 |paf|[CommonPAFAddress](#schemacdr-telco-apicommonpafaddress)|conditional|Australian address formatted according to the file format defined by the [PAF file format](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf). Required if addressUType is set to paf|
 
@@ -6482,7 +6482,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |---|---|---|---|
 |displayName|string|mandatory|The display name of the feature|
 |description|string|optional|The description of the feature|
-|category|string|optional|The type of the feature|
+|category|[Enum](#common-field-types)|optional|The type of the feature|
 
 #### Enumerated Values
 
@@ -6866,8 +6866,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |Name|Type|Required|Description|
 |---|---|---|---|
 |nickname|string|optional|Optional display name for the plan provided by the customer to help differentiate multiple plans|
-|type|string|mandatory|The type of the plan. The type of plan. A [MOBILE](https://www.legislation.gov.au/Details/C2022C00170/Html/Volume_1#_Toc95898745) service or BROADBAND fixed internet service|
-|billingType|string|mandatory|The billing type of then plan|
+|type|[Enum](#common-field-types)|mandatory|The type of the plan. The type of plan. A [MOBILE](https://www.legislation.gov.au/Details/C2022C00170/Html/Volume_1#_Toc95898745) service or BROADBAND fixed internet service|
+|billingType|[Enum](#common-field-types)|mandatory|The billing type of then plan|
 |serviceIds|[string]|mandatory|The serviceId representing a unique service identifier such as a mobile [MSISDN](https://www.etsi.org/deliver/etsi_gts/03/0303/05.00.00_60/gsmts_0303v050000p.pdf), [FNN](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf) or internet service e.g [NBN AVC Service ID](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf). In accordance with [CDR ID permanence](#id-permanence) requirement|
 |planOverview|[TelcoAccountPlanOverview](#schemacdr-telco-apitelcoaccountplanoverview)|mandatory|Mandatory if openStatus is OPEN|
 
@@ -7047,9 +7047,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|cardScheme|string|mandatory|The type of credit card held on file|
+|cardScheme|[Enum](#common-field-types)|mandatory|The type of credit card held on file|
 |paymentFrequency|[ExternalRef](#common-field-types)|mandatory|The frequency that payments will occur.  Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
-|calculationType|string|mandatory|The mechanism by which the payment amount is calculated.  Explanation of values are as follows:<br/><ul><li>**STATIC** - Indicates a consistent, static amount, per payment</li><li>**BALANCE** - Indicates that the outstanding balance for the account is paid per period</li><li>**CALCULATED** - Indicates that the payment amount is variable and calculated using a pre-defined algorithm</li></ul>|
+|calculationType|[Enum](#common-field-types)|mandatory|The mechanism by which the payment amount is calculated.  Explanation of values are as follows:<br/><ul><li>**STATIC** - Indicates a consistent, static amount, per payment</li><li>**BALANCE** - Indicates that the outstanding balance for the account is paid per period</li><li>**CALCULATED** - Indicates that the payment amount is variable and calculated using a pre-defined algorithm</li></ul>|
 
 #### Enumerated Values
 
@@ -7090,7 +7090,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |bsb|string|conditional|The unmasked BSB for the account to be debited. Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces.  Is required if isTokenised is absent or false|
 |accountNumber|string|conditional|The unmasked account number for the account to be debited. Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces.  Is required if isTokenised is absent or false|
 |paymentFrequency|[ExternalRef](#common-field-types)|mandatory|The frequency that payments will occur.  Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
-|calculationType|string|mandatory|The mechanism by which the payment amount is calculated.  Explanation of values are as follows:<br/><ul><li>**STATIC** - Indicates a consistent, static amount, per payment</li><li>**BALANCE** - Indicates that the outstanding balance for the account is paid per period</li><li>**CALCULATED** - Indicates that the payment amount is variable and calculated using a pre-defined algorithm</li></ul>|
+|calculationType|[Enum](#common-field-types)|mandatory|The mechanism by which the payment amount is calculated.  Explanation of values are as follows:<br/><ul><li>**STATIC** - Indicates a consistent, static amount, per payment</li><li>**BALANCE** - Indicates that the outstanding balance for the account is paid per period</li><li>**CALCULATED** - Indicates that the payment amount is variable and calculated using a pre-defined algorithm</li></ul>|
 
 #### Enumerated Values
 
@@ -7124,10 +7124,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 |---|---|---|---|
 |name|string|mandatory|The display name of the wallet as given by the customer, else a default value defined by the data holder|
 |identifier|string|mandatory|The identifier of the digital wallet (dependent on type)|
-|type|string|mandatory|The type of the digital wallet identifier|
-|provider|string|mandatory|The provider of the digital wallet|
+|type|[Enum](#common-field-types)|mandatory|The type of the digital wallet identifier|
+|provider|[Enum](#common-field-types)|mandatory|The provider of the digital wallet|
 |paymentFrequency|[ExternalRef](#common-field-types)|mandatory|The frequency that payments will occur.  Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
-|calculationType|string|mandatory|The mechanism by which the payment amount is calculated.  Explanation of values are as follows:<br/><ul><li>**STATIC** - Indicates a consistent, static amount, per payment</li><li>**BALANCE** - Indicates that the outstanding balance for the account is paid per period</li><li>**CALCULATED** - Indicates that the payment amount is variable and calculated using a pre-defined algorithm</li></ul>|
+|calculationType|[Enum](#common-field-types)|mandatory|The mechanism by which the payment amount is calculated.  Explanation of values are as follows:<br/><ul><li>**STATIC** - Indicates a consistent, static amount, per payment</li><li>**BALANCE** - Indicates that the outstanding balance for the account is paid per period</li><li>**CALCULATED** - Indicates that the payment amount is variable and calculated using a pre-defined algorithm</li></ul>|
 
 #### Enumerated Values
 
@@ -7462,7 +7462,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |---|---|---|---|
 |amount|[AmountString](#common-field-types)|mandatory|The aggregate total of charges for this item (exclusive of GST)|
 |description|[AmountString](#common-field-types)|mandatory|A free text description of the charge|
-|type|string|optional|A free text description of the charge|
+|type|[Enum](#common-field-types)|optional|A free text description of the charge|
 
 #### Enumerated Values
 

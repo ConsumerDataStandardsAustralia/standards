@@ -3,7 +3,7 @@ info:
   description: This specification defines the APIs for Data Holders exposing Dynamic
     Client Registration endpoints.
   title: CDR Dynamic Client Registration API
-  version: 1.27.0
+  version: 1.28.0
 servers:
 - url: https://data.holder.com.au/
 paths:

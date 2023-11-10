@@ -35,10 +35,6 @@ Host: cdr.register
 
 ```
 
-```diff
-Updated the description of the PublicBaseUri field to clarify requirements for the Energy sector
-```
-
 Participants will be required to register base URIs against each of their brands to facilitate the implementation of the Consumer Data Standards
 
 | Base URI | DH Brand | ADR Brand | Description

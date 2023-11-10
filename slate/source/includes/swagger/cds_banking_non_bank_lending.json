@@ -12,7 +12,7 @@
       "url" : "https://opensource.org/licenses/MIT"
     },
     "title" : "CDR Banking API",
-    "version" : "1.27.0"
+    "version" : "1.28.0"
   },
   "servers" : [ {
     "url" : "https://data.holder.com.au/cds-au/v1"
@@ -20,10 +20,10 @@
   "paths" : {
     "/banking/accounts" : {
       "get" : {
-        "description" : "Obtain a list of accounts.\n\nObsolete versions: [v1](../../../../includes/obsolete/get-accounts-v1.html)",
+        "description" : "Obtain a list of accounts.\n\nObsolete versions: [v1](../../../../includes/obsolete/get-accounts-v1.html), [v2](../../../../includes/obsolete/get-accounts-v2.html)",
         "operationId" : "listAccounts",
         "parameters" : [ {
-          "description" : "Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.)",
+          "description" : "Used to filter results on the `productCategory` field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.)",
           "explode" : true,
           "in" : "query",
           "name" : "product-category",
@@ -34,7 +34,7 @@
           },
           "style" : "form"
         }, {
-          "description" : "Used to filter results according to open/closed status. Values can be OPEN, CLOSED or ALL. If absent then ALL is assumed",
+          "description" : "Used to filter results according to open/closed status. Values can be `OPEN`, `CLOSED` or `ALL`. If absent then `ALL` is assumed",
           "explode" : true,
           "in" : "query",
           "name" : "open-status",
@@ -84,7 +84,7 @@
           "style" : "form",
           "x-cds-type" : "PositiveInteger"
         }, {
-          "description" : "Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
+          "description" : "Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers)",
           "explode" : false,
           "in" : "header",
           "name" : "x-v",
@@ -94,7 +94,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.",
+          "description" : "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`.",
           "explode" : false,
           "in" : "header",
           "name" : "x-min-v",
@@ -155,14 +155,14 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/ResponseBankingAccountListV2"
+                  "$ref" : "#/components/schemas/ResponseBankingAccountListV3"
                 }
               }
             },
             "description" : "Success",
             "headers" : {
               "x-v" : {
-                "description" : "The [version](#response-headers) of the API end point that the data holder has responded with.",
+                "description" : "The [version](#response-headers) of the API endpoint that the data holder has responded with.",
                 "explode" : false,
                 "schema" : {
                   "type" : "string"
@@ -243,15 +243,15 @@
         "summary" : "Get Accounts",
         "tags" : [ "Banking", "Accounts" ],
         "x-scopes" : [ "bank:accounts.basic:read" ],
-        "x-version" : "2"
+        "x-version" : "3"
       }
     },
     "/banking/accounts/balances" : {
       "get" : {
-        "description" : "Obtain balances for multiple, filtered accounts",
+        "description" : "Obtain balances for multiple, filtered accounts\n\nObsolete versions: [v1](../../../../includes/obsolete/get-bulk-balances-v1.html)",
         "operationId" : "listBalancesBulk",
         "parameters" : [ {
-          "description" : "Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.",
+          "description" : "Used to filter results on the `productCategory` field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.",
           "explode" : true,
           "in" : "query",
           "name" : "product-category",
@@ -262,7 +262,7 @@
           },
           "style" : "form"
         }, {
-          "description" : "Used to filter results according to open/closed status. Values can be OPEN, CLOSED or ALL. If absent then ALL is assumed",
+          "description" : "Used to filter results according to open/closed status. Values can be `OPEN`, `CLOSED` or `ALL`. If absent then `ALL` is assumed",
           "explode" : true,
           "in" : "query",
           "name" : "open-status",
@@ -312,7 +312,7 @@
           "style" : "form",
           "x-cds-type" : "PositiveInteger"
         }, {
-          "description" : "Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
+          "description" : "Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers)",
           "explode" : false,
           "in" : "header",
           "name" : "x-v",
@@ -322,7 +322,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.",
+          "description" : "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`.",
           "explode" : false,
           "in" : "header",
           "name" : "x-min-v",
@@ -390,7 +390,7 @@
             "description" : "Success",
             "headers" : {
               "x-v" : {
-                "description" : "The [version](#response-headers) of the API end point that the data holder has responded with.",
+                "description" : "The [version](#response-headers) of the API endpoint that the data holder has responded with.",
                 "explode" : false,
                 "schema" : {
                   "type" : "string"
@@ -471,7 +471,7 @@
         "summary" : "Get Bulk Balances",
         "tags" : [ "Banking", "Accounts" ],
         "x-scopes" : [ "bank:accounts.basic:read" ],
-        "x-version" : "1"
+        "x-version" : "2"
       },
       "post" : {
         "description" : "Obtain balances for a specified list of accounts",
@@ -503,7 +503,7 @@
           "style" : "form",
           "x-cds-type" : "PositiveInteger"
         }, {
-          "description" : "Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
+          "description" : "Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers)",
           "explode" : false,
           "in" : "header",
           "name" : "x-v",
@@ -513,7 +513,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.",
+          "description" : "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`.",
           "explode" : false,
           "in" : "header",
           "name" : "x-min-v",
@@ -592,7 +592,7 @@
             "description" : "Success",
             "headers" : {
               "x-v" : {
-                "description" : "The [version](#response-headers) of the API end point that the data holder has responded with.",
+                "description" : "The [version](#response-headers) of the API endpoint that the data holder has responded with.",
                 "explode" : false,
                 "schema" : {
                   "type" : "string"
@@ -694,7 +694,7 @@
           "style" : "simple",
           "x-cds-type" : "ASCIIString"
         }, {
-          "description" : "Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
+          "description" : "Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers)",
           "explode" : false,
           "in" : "header",
           "name" : "x-v",
@@ -704,7 +704,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.",
+          "description" : "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`.",
           "explode" : false,
           "in" : "header",
           "name" : "x-min-v",
@@ -772,7 +772,7 @@
             "description" : "Success",
             "headers" : {
               "x-v" : {
-                "description" : "The [version](#response-headers) of the API end point that the data holder has responded with.",
+                "description" : "The [version](#response-headers) of the API endpoint that the data holder has responded with.",
                 "explode" : false,
                 "schema" : {
                   "type" : "string"
@@ -858,7 +858,7 @@
     },
     "/banking/accounts/{accountId}" : {
       "get" : {
-        "description" : "Obtain detailed information on a single account.\n\nObsolete versions: [v1](../../../../includes/obsolete/get-account-detail-v1.html), [v2](../../../../includes/obsolete/get-account-detail-v2.html)",
+        "description" : "Obtain detailed information on a single account.\n\nObsolete versions: [v1](../../../../includes/obsolete/get-account-detail-v1.html), [v2](../../../../includes/obsolete/get-account-detail-v2.html), [v3](../../../../includes/obsolete/get-account-detail-v3.html)",
         "operationId" : "getAccountDetail",
         "parameters" : [ {
           "description" : "A tokenised identifier for the account which is unique but not shareable",
@@ -873,7 +873,7 @@
           "style" : "simple",
           "x-cds-type" : "ASCIIString"
         }, {
-          "description" : "Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
+          "description" : "Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers)",
           "explode" : false,
           "in" : "header",
           "name" : "x-v",
@@ -883,7 +883,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.",
+          "description" : "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`.",
           "explode" : false,
           "in" : "header",
           "name" : "x-min-v",
@@ -944,14 +944,14 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/ResponseBankingAccountByIdV3"
+                  "$ref" : "#/components/schemas/ResponseBankingAccountByIdV4"
                 }
               }
             },
             "description" : "Success",
             "headers" : {
               "x-v" : {
-                "description" : "The [version](#response-headers) of the API end point that the data holder has responded with.",
+                "description" : "The [version](#response-headers) of the API endpoint that the data holder has responded with.",
                 "explode" : false,
                 "schema" : {
                   "type" : "string"
@@ -1032,15 +1032,15 @@
         "summary" : "Get Account Detail",
         "tags" : [ "Banking", "Accounts" ],
         "x-scopes" : [ "bank:accounts.detail:read" ],
-        "x-version" : "3"
+        "x-version" : "4"
       }
     },
     "/banking/accounts/{accountId}/transactions" : {
       "get" : {
-        "description" : "Obtain transactions for a specific account.\n\nSome general notes that apply to all end points that retrieve transactions:\n\n- Where multiple transactions are returned, transactions should be ordered according to effective date in descending order\n- As the date and time for a transaction can alter depending on status and transaction type two separate date/times are included in the payload. There are still some scenarios where neither of these time stamps is available. For the purpose of filtering and ordering it is expected that the data holder will use the \"effective\" date/time which will be defined as:\n  - Posted date/time if available, then\n  - Execution date/time if available, then\n  - A reasonable date/time nominated by the data holder using internal data structures\n- For transaction amounts it should be assumed that a negative value indicates a reduction of the available balance on the account while a positive value indicates an increase in the available balance on the account\n- For aggregated transactions (ie. groups of sub transactions reported as a single entry for the account) only the aggregated information, with as much consistent information across the subsidiary transactions as possible, is required to be shared",
+        "description" : "Obtain transactions for a specific account.\n\nSome general notes that apply to all endpoints that retrieve transactions:\n\n- Where multiple transactions are returned, transactions should be ordered according to effective date in descending order\n- As the date and time for a transaction can alter depending on status and transaction type two separate date/times are included in the payload. There are still some scenarios where neither of these time stamps is available. For the purpose of filtering and ordering it is expected that the data holder will use the \"effective\" date/time which will be defined as:\n  - Posted date/time if available, then\n  - Execution date/time if available, then\n  - A reasonable date/time nominated by the data holder using internal data structures\n- For transaction amounts it should be assumed that a negative value indicates a reduction of the available balance on the account while a positive value indicates an increase in the available balance on the account\n- For aggregated transactions (ie. groups of sub transactions reported as a single entry for the account) only the aggregated information, with as much consistent information across the subsidiary transactions as possible, is required to be shared",
         "operationId" : "getTransactions",
         "parameters" : [ {
-          "description" : "ID of the account to get transactions for.  Must have previously been returned by one of the account list end points.",
+          "description" : "ID of the account to get transactions for.  Must have previously been returned by one of the account list endpoints.",
           "explode" : false,
           "in" : "path",
           "name" : "accountId",
@@ -1136,7 +1136,7 @@
           "style" : "form",
           "x-cds-type" : "PositiveInteger"
         }, {
-          "description" : "Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
+          "description" : "Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers)",
           "explode" : false,
           "in" : "header",
           "name" : "x-v",
@@ -1146,7 +1146,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.",
+          "description" : "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`.",
           "explode" : false,
           "in" : "header",
           "name" : "x-min-v",
@@ -1214,7 +1214,7 @@
             "description" : "Success",
             "headers" : {
               "x-v" : {
-                "description" : "The [version](#response-headers) of the API end point that the data holder has responded with.",
+                "description" : "The [version](#response-headers) of the API endpoint that the data holder has responded with.",
                 "explode" : false,
                 "schema" : {
                   "type" : "string"
@@ -1323,7 +1323,7 @@
         "description" : "Obtain detailed information on a transaction for a specific account",
         "operationId" : "getTransactionDetail",
         "parameters" : [ {
-          "description" : "ID of the account to get transactions for.  Must have previously been returned by one of the account list end points",
+          "description" : "ID of the account to get transactions for.  Must have previously been returned by one of the account list endpoints",
           "explode" : false,
           "in" : "path",
           "name" : "accountId",
@@ -1335,7 +1335,7 @@
           "style" : "simple",
           "x-cds-type" : "ASCIIString"
         }, {
-          "description" : "ID of the transaction obtained from a previous call to one of the other transaction end points",
+          "description" : "ID of the transaction obtained from a previous call to one of the other transaction endpoints",
           "explode" : false,
           "in" : "path",
           "name" : "transactionId",
@@ -1347,7 +1347,7 @@
           "style" : "simple",
           "x-cds-type" : "ASCIIString"
         }, {
-          "description" : "Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
+          "description" : "Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers)",
           "explode" : false,
           "in" : "header",
           "name" : "x-v",
@@ -1357,7 +1357,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.",
+          "description" : "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`.",
           "explode" : false,
           "in" : "header",
           "name" : "x-min-v",
@@ -1425,7 +1425,7 @@
             "description" : "Success",
             "headers" : {
               "x-v" : {
-                "description" : "The [version](#response-headers) of the API end point that the data holder has responded with.",
+                "description" : "The [version](#response-headers) of the API endpoint that the data holder has responded with.",
                 "explode" : false,
                 "schema" : {
                   "type" : "string"
@@ -1514,7 +1514,7 @@
         "description" : "Obtain direct debit authorisations for a specific account",
         "operationId" : "listDirectDebits",
         "parameters" : [ {
-          "description" : "ID of the account to get direct debit authorisations for.  Must have previously been returned by one of the account list end points.",
+          "description" : "ID of the account to get direct debit authorisations for.  Must have previously been returned by one of the account list endpoints.",
           "explode" : false,
           "in" : "path",
           "name" : "accountId",
@@ -1552,7 +1552,7 @@
           "style" : "form",
           "x-cds-type" : "PositiveInteger"
         }, {
-          "description" : "Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
+          "description" : "Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers)",
           "explode" : false,
           "in" : "header",
           "name" : "x-v",
@@ -1562,7 +1562,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.",
+          "description" : "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`.",
           "explode" : false,
           "in" : "header",
           "name" : "x-min-v",
@@ -1630,7 +1630,7 @@
             "description" : "Success",
             "headers" : {
               "x-v" : {
-                "description" : "The [version](#response-headers) of the API end point that the data holder has responded with.",
+                "description" : "The [version](#response-headers) of the API endpoint that the data holder has responded with.",
                 "explode" : false,
                 "schema" : {
                   "type" : "string"
@@ -1736,10 +1736,10 @@
     },
     "/banking/accounts/direct-debits" : {
       "get" : {
-        "description" : "Obtain direct debit authorisations for multiple, filtered accounts",
+        "description" : "Obtain direct debit authorisations for multiple, filtered accounts\n\nObsolete versions: [v1](../../../../includes/obsolete/get-bulk-direct-debits-v1.html)",
         "operationId" : "listDirectDebitsBulk",
         "parameters" : [ {
-          "description" : "Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.",
+          "description" : "Used to filter results on the `productCategory` field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.",
           "explode" : true,
           "in" : "query",
           "name" : "product-category",
@@ -1750,7 +1750,7 @@
           },
           "style" : "form"
         }, {
-          "description" : "Used to filter results according to open/closed status. Values can be OPEN, CLOSED or ALL. If absent then ALL is assumed",
+          "description" : "Used to filter results according to open/closed status. Values can be `OPEN`, `CLOSED` or `ALL`. If absent then `ALL` is assumed",
           "explode" : true,
           "in" : "query",
           "name" : "open-status",
@@ -1800,7 +1800,7 @@
           "style" : "form",
           "x-cds-type" : "PositiveInteger"
         }, {
-          "description" : "Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
+          "description" : "Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers)",
           "explode" : false,
           "in" : "header",
           "name" : "x-v",
@@ -1810,7 +1810,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.",
+          "description" : "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`.",
           "explode" : false,
           "in" : "header",
           "name" : "x-min-v",
@@ -1878,7 +1878,7 @@
             "description" : "Success",
             "headers" : {
               "x-v" : {
-                "description" : "The [version](#response-headers) of the API end point that the data holder has responded with.",
+                "description" : "The [version](#response-headers) of the API endpoint that the data holder has responded with.",
                 "explode" : false,
                 "schema" : {
                   "type" : "string"
@@ -1959,7 +1959,7 @@
         "summary" : "Get Bulk Direct Debits",
         "tags" : [ "Banking", "Direct Debits" ],
         "x-scopes" : [ "bank:regular_payments:read" ],
-        "x-version" : "1"
+        "x-version" : "2"
       },
       "post" : {
         "description" : "Obtain direct debit authorisations for a specified list of accounts",
@@ -1991,7 +1991,7 @@
           "style" : "form",
           "x-cds-type" : "PositiveInteger"
         }, {
-          "description" : "Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
+          "description" : "Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers)",
           "explode" : false,
           "in" : "header",
           "name" : "x-v",
@@ -2001,7 +2001,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.",
+          "description" : "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`.",
           "explode" : false,
           "in" : "header",
           "name" : "x-min-v",
@@ -2080,7 +2080,7 @@
             "description" : "Success",
             "headers" : {
               "x-v" : {
-                "description" : "The [version](#response-headers) of the API end point that the data holder has responded with.",
+                "description" : "The [version](#response-headers) of the API endpoint that the data holder has responded with.",
                 "explode" : false,
                 "schema" : {
                   "type" : "string"
@@ -2170,7 +2170,7 @@
         "description" : "Obtain scheduled, outgoing payments for a specific account\n\nObsolete versions: [v1](../../../../includes/obsolete/get-scheduled-payments-for-account-v1.html)",
         "operationId" : "listScheduledPayments",
         "parameters" : [ {
-          "description" : "ID of the account to get scheduled payments for. Must have previously been returned by one of the account list end points. The account specified is the source account for the payment",
+          "description" : "ID of the account to get scheduled payments for. Must have previously been returned by one of the account list endpoints. The account specified is the source account for the payment",
           "explode" : false,
           "in" : "path",
           "name" : "accountId",
@@ -2208,7 +2208,7 @@
           "style" : "form",
           "x-cds-type" : "PositiveInteger"
         }, {
-          "description" : "Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
+          "description" : "Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers)",
           "explode" : false,
           "in" : "header",
           "name" : "x-v",
@@ -2218,7 +2218,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.",
+          "description" : "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`.",
           "explode" : false,
           "in" : "header",
           "name" : "x-min-v",
@@ -2286,7 +2286,7 @@
             "description" : "Success",
             "headers" : {
               "x-v" : {
-                "description" : "The [version](#response-headers) of the API end point that the data holder has responded with.",
+                "description" : "The [version](#response-headers) of the API endpoint that the data holder has responded with.",
                 "explode" : false,
                 "schema" : {
                   "type" : "string"
@@ -2392,10 +2392,10 @@
     },
     "/banking/payments/scheduled" : {
       "get" : {
-        "description" : "Obtain scheduled payments for multiple, filtered accounts that are the source of funds for the payments\n\nObsolete versions: [v1](../../../../includes/obsolete/get-scheduled-payments-bulk-v1.html)",
+        "description" : "Obtain scheduled payments for multiple, filtered accounts that are the source of funds for the payments\n\nObsolete versions: [v1](../../../../includes/obsolete/get-scheduled-payments-bulk-v1.html), [v2](../../../../includes/obsolete/get-scheduled-payments-bulk-v2.html)",
         "operationId" : "listScheduledPaymentsBulk",
         "parameters" : [ {
-          "description" : "Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.",
+          "description" : "Used to filter results on the `productCategory` field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.",
           "explode" : true,
           "in" : "query",
           "name" : "product-category",
@@ -2406,7 +2406,7 @@
           },
           "style" : "form"
         }, {
-          "description" : "Used to filter results according to open/closed status. Values can be OPEN, CLOSED or ALL. If absent then ALL is assumed",
+          "description" : "Used to filter results according to open/closed status. Values can be `OPEN`, `CLOSED` or `ALL`. If absent then `ALL` is assumed",
           "explode" : true,
           "in" : "query",
           "name" : "open-status",
@@ -2456,7 +2456,7 @@
           "style" : "form",
           "x-cds-type" : "PositiveInteger"
         }, {
-          "description" : "Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
+          "description" : "Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers)",
           "explode" : false,
           "in" : "header",
           "name" : "x-v",
@@ -2466,7 +2466,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.",
+          "description" : "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`.",
           "explode" : false,
           "in" : "header",
           "name" : "x-min-v",
@@ -2534,7 +2534,7 @@
             "description" : "Success",
             "headers" : {
               "x-v" : {
-                "description" : "The [version](#response-headers) of the API end point that the data holder has responded with.",
+                "description" : "The [version](#response-headers) of the API endpoint that the data holder has responded with.",
                 "explode" : false,
                 "schema" : {
                   "type" : "string"
@@ -2615,7 +2615,7 @@
         "summary" : "Get Scheduled Payments Bulk",
         "tags" : [ "Banking", "Scheduled Payments" ],
         "x-scopes" : [ "bank:regular_payments:read" ],
-        "x-version" : "2"
+        "x-version" : "3"
       },
       "post" : {
         "description" : "Obtain scheduled payments for a specified list of accounts\n\nObsolete versions: [v1](../../../../includes/obsolete/get-scheduled-payments-for-specific-accounts-v1.html)",
@@ -2647,7 +2647,7 @@
           "style" : "form",
           "x-cds-type" : "PositiveInteger"
         }, {
-          "description" : "Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
+          "description" : "Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers)",
           "explode" : false,
           "in" : "header",
           "name" : "x-v",
@@ -2657,7 +2657,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.",
+          "description" : "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`.",
           "explode" : false,
           "in" : "header",
           "name" : "x-min-v",
@@ -2736,7 +2736,7 @@
             "description" : "Success",
             "headers" : {
               "x-v" : {
-                "description" : "The [version](#response-headers) of the API end point that the data holder has responded with.",
+                "description" : "The [version](#response-headers) of the API endpoint that the data holder has responded with.",
                 "explode" : false,
                 "schema" : {
                   "type" : "string"
@@ -2864,7 +2864,7 @@
           "style" : "form",
           "x-cds-type" : "PositiveInteger"
         }, {
-          "description" : "Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
+          "description" : "Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers)",
           "explode" : false,
           "in" : "header",
           "name" : "x-v",
@@ -2874,7 +2874,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.",
+          "description" : "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`.",
           "explode" : false,
           "in" : "header",
           "name" : "x-min-v",
@@ -2942,7 +2942,7 @@
             "description" : "Success",
             "headers" : {
               "x-v" : {
-                "description" : "The [version](#response-headers) of the API end point that the data holder has responded with.",
+                "description" : "The [version](#response-headers) of the API endpoint that the data holder has responded with.",
                 "explode" : false,
                 "schema" : {
                   "type" : "string"
@@ -3043,7 +3043,7 @@
           "style" : "simple",
           "x-cds-type" : "ASCIIString"
         }, {
-          "description" : "Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
+          "description" : "Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers)",
           "explode" : false,
           "in" : "header",
           "name" : "x-v",
@@ -3053,7 +3053,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.",
+          "description" : "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`.",
           "explode" : false,
           "in" : "header",
           "name" : "x-min-v",
@@ -3121,7 +3121,7 @@
             "description" : "Success",
             "headers" : {
               "x-v" : {
-                "description" : "The [version](#response-headers) of the API end point that the data holder has responded with.",
+                "description" : "The [version](#response-headers) of the API endpoint that the data holder has responded with.",
                 "explode" : false,
                 "schema" : {
                   "type" : "string"
@@ -3227,10 +3227,10 @@
     },
     "/banking/products" : {
       "get" : {
-        "description" : "Obtain a list of products that are currently openly offered to the market\n\nNote that the results returned by this end point are expected to be ordered in descending order according to ``lastUpdated``.\n\n### Conventions\nIn the product reference payloads there are a number of recurring conventions that are explained here, in one place.\n\n#### Arrays Of Features\n\nIn the product detail payload there are a number of arrays articulating generic features, constraints, prices, etc. The intent of these arrays is as follows:\n\n- Each element in an array has the same structure so that clients can reliably interpret the payloads\n- Each element as a type element that is an enumeration of the specific aspect of a product being described, such as types of fees.\n- Each element has a field name [additionalValue](#productfeaturetypedoc).  This is a generic field with contents that will vary based on the type of object being described. The contents of this field for the ADDITIONAL_CARDS feature is the number of cards allowed while the contents of this field for the MAX_LIMIT constraint would be the maximum credit limit allowed for the product.\n- An element in these arrays of the same type may appear more than once. For instance, a product may offer two separate loyalty programs that the customer can select from. A fixed term mortgage may have different rates for different term lengths.\n- An element in these arrays may contain an additionalInfo and additionalInfoUri field. The additionalInfo field is used to provide displayable text clarifying the purpose of the element in some way when the product is presented to a customer. The additionalInfoUri provides a link to externally hosted information specifically relevant to that feature of the product.\n- Depending on the type of data being represented there may be additional specific fields.\n\n#### URIs To More Information\n\nAs the complexities and nuances of a financial product can not easily be fully expressed in a data structure without a high degree of complexity it is necessary to provide additional reference information that a potential customer can access so that they are fully informed of the features and implications of the product. The payloads for product reference therefore contain numerous fields that are provided to allow the product holder to describe the product more fully using a web page hosted on their online channels.\n\nThese URIs do not need to all link to different pages. If desired, they can all link to a single hosted page and use difference HTML anchors to focus on a specific topic such as eligibility or fees.\n\n#### Linkage To Accounts\nFrom the moment that a customer applies for a product and an account is created the account and the product that spawned it will diverge.  Rates and features of the product may change and a discount may be negotiated for the account.\n\nFor this reason, while productCategory is a common field between accounts and products, there is no specific ID that can be used to link an account to a product within the regime.\n\nSimilarly, many of the fields and objects in the product payload will appear in the account detail payload but the structures and semantics are not identical as one refers to a product that can potentially be originated and one refers to an account that actually has been instantiated and created along with the associated decisions inherent in that process.\n\n#### Dates\nIt is expected that data consumers needing this data will call relatively frequently to ensure the data they have is representative of the current offering from a bank.  To minimise the volume and frequency of these calls the ability to set a lastUpdated field with the date and time of the last update to this product is included.  A call for a list of products can then be filtered to only return products that have been updated since the last time that data was obtained using the updated-since query parameter.\n\nIn addition, the concept of effective date and time has also been included.  This allows for a product to be marked for obsolescence, or introduction, from a certain time without the need for an update to show that a product has been changed.  The inclusion of these dates also removes the need to represent deleted products in the payload.  Products that are no long offered can be marked not effective for a few weeks before they are then removed from the product set as an option entirely.\n\nObsolete versions: [v1](../../../../includes/obsolete/get-products-v1.html) [v2](../../../../includes/obsolete/get-products-v2.html)",
+        "description" : "Obtain a list of products that are currently openly offered to the market\n\nNote that the results returned by this endpoint are expected to be ordered in descending order according to `lastUpdated`.\n\n### Conventions\nIn the product reference payloads there are a number of recurring conventions that are explained here, in one place.\n\n#### Arrays Of Features\n\nIn the product detail payload there are a number of arrays articulating generic features, constraints, prices, etc. The intent of these arrays is as follows:\n\n- Each element in an array has the same structure so that clients can reliably interpret the payloads\n- Each element as a type element that is an enumeration of the specific aspect of a product being described, such as types of fees.\n- Each element has a field name [additionalValue](#productfeaturetypedoc).  This is a generic field with contents that will vary based on the type of object being described. The contents of this field for the `ADDITIONAL_CARDS` feature is the number of cards allowed while the contents of this field for the `MAX_LIMIT` constraint would be the maximum credit limit allowed for the product.\n- An element in these arrays of the same type may appear more than once. For instance, a product may offer two separate loyalty programs that the customer can select from. A fixed term mortgage may have different rates for different term lengths.\n- An element in these arrays may contain an `additionalInfo` and `additionalInfoUri` field. The `additionalInfo` field is used to provide displayable text clarifying the purpose of the element in some way when the product is presented to a customer. The `additionalInfoUri` provides a link to externally hosted information specifically relevant to that feature of the product.\n- Depending on the type of data being represented there may be additional specific fields.\n\n#### URIs To More Information\n\nAs the complexities and nuances of a financial product can not easily be fully expressed in a data structure without a high degree of complexity it is necessary to provide additional reference information that a potential customer can access so that they are fully informed of the features and implications of the product. The payloads for product reference therefore contain numerous fields that are provided to allow the product holder to describe the product more fully using a web page hosted on their online channels.\n\nThese URIs do not need to all link to different pages. If desired, they can all link to a single hosted page and use difference HTML anchors to focus on a specific topic such as eligibility or fees.\n\n#### Linkage To Accounts\nFrom the moment that a customer applies for a product and an account is created the account and the product that spawned it will diverge.  Rates and features of the product may change and a discount may be negotiated for the account.\n\nFor this reason, while `productCategory` is a common field between accounts and products, there is no specific ID that can be used to link an account to a product within the regime.\n\nSimilarly, many of the fields and objects in the product payload will appear in the account detail payload but the structures and semantics are not identical as one refers to a product that can potentially be originated and one refers to an account that actually has been instantiated and created along with the associated decisions inherent in that process.\n\n#### Dates\nIt is expected that data consumers needing this data will call relatively frequently to ensure the data they have is representative of the current offering from a bank.  To minimise the volume and frequency of these calls the ability to set a `lastUpdated` field with the date and time of the last update to this product is included.  A call for a list of products can then be filtered to only return products that have been updated since the last time that data was obtained using the `updated-since` query parameter.\n\nIn addition, the concept of effective date and time has also been included.  This allows for a product to be marked for obsolescence, or introduction, from a certain time without the need for an update to show that a product has been changed.  The inclusion of these dates also removes the need to represent deleted products in the payload.  Products that are no long offered can be marked not effective for a few weeks before they are then removed from the product set as an option entirely.\n\nObsolete versions: [v1](../../../../includes/obsolete/get-products-v1.html), [v2](../../../../includes/obsolete/get-products-v2.html), [v3](../../../../includes/obsolete/get-products-v3.html)",
         "operationId" : "listProducts",
         "parameters" : [ {
-          "description" : "Allows for the filtering of products based on whether the current time is within the period of time defined as effective by the effectiveFrom and effectiveTo fields. Valid values are ‘CURRENT’, ‘FUTURE’ and ‘ALL’. If absent defaults to 'CURRENT'",
+          "description" : "Allows for the filtering of products based on whether the current time is within the period of time defined as effective by the effectiveFrom and effectiveTo fields. Valid values are `CURRENT`, `FUTURE` and `ALL`. If absent defaults to `CURRENT`",
           "explode" : true,
           "in" : "query",
           "name" : "effective",
@@ -3264,7 +3264,7 @@
           },
           "style" : "form"
         }, {
-          "description" : "Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.",
+          "description" : "Used to filter results on the `productCategory` field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.",
           "explode" : true,
           "in" : "query",
           "name" : "product-category",
@@ -3301,7 +3301,7 @@
           "style" : "form",
           "x-cds-type" : "PositiveInteger"
         }, {
-          "description" : "Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
+          "description" : "Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers)",
           "explode" : false,
           "in" : "header",
           "name" : "x-v",
@@ -3311,7 +3311,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.",
+          "description" : "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`.",
           "explode" : false,
           "in" : "header",
           "name" : "x-min-v",
@@ -3326,14 +3326,14 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/ResponseBankingProductListV2"
+                  "$ref" : "#/components/schemas/ResponseBankingProductListV3"
                 }
               }
             },
             "description" : "Success",
             "headers" : {
               "x-v" : {
-                "description" : "The [version](#response-headers) of the API end point that the data holder has responded with.",
+                "description" : "The [version](#response-headers) of the API endpoint that the data holder has responded with.",
                 "explode" : false,
                 "schema" : {
                   "type" : "string"
@@ -3375,12 +3375,12 @@
         },
         "summary" : "Get Products",
         "tags" : [ "Banking", "Products" ],
-        "x-version" : "3"
+        "x-version" : "4"
       }
     },
     "/banking/products/{productId}" : {
       "get" : {
-        "description" : "Obtain detailed information on a single product offered openly to the market.\n\nObsolete versions: [v1](../../../../includes/obsolete/get-product-detail-v1.html) [v2](../../../../includes/obsolete/get-product-detail-v2.html) [v3](../../../../includes/obsolete/get-product-detail-v3.html)",
+        "description" : "Obtain detailed information on a single product offered openly to the market.\n\nObsolete versions: [v1](../../../../includes/obsolete/get-product-detail-v1.html), [v2](../../../../includes/obsolete/get-product-detail-v2.html), [v3](../../../../includes/obsolete/get-product-detail-v3.html), [v4](../../../../includes/obsolete/get-product-detail-v4.html)",
         "operationId" : "getProductDetail",
         "parameters" : [ {
           "description" : "ID of the specific product requested",
@@ -3395,7 +3395,7 @@
           "style" : "simple",
           "x-cds-type" : "ASCIIString"
         }, {
-          "description" : "Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
+          "description" : "Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers)",
           "explode" : false,
           "in" : "header",
           "name" : "x-v",
@@ -3405,7 +3405,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.",
+          "description" : "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`.",
           "explode" : false,
           "in" : "header",
           "name" : "x-min-v",
@@ -3420,14 +3420,14 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/ResponseBankingProductByIdV4"
+                  "$ref" : "#/components/schemas/ResponseBankingProductByIdV5"
                 }
               }
             },
             "description" : "Success",
             "headers" : {
               "x-v" : {
-                "description" : "The [version](#response-headers) of the API end point that the data holder has responded with.",
+                "description" : "The [version](#response-headers) of the API endpoint that the data holder has responded with.",
                 "explode" : false,
                 "schema" : {
                   "type" : "string"
@@ -3469,14 +3469,14 @@
         },
         "summary" : "Get Product Detail",
         "tags" : [ "Banking", "Products" ],
-        "x-version" : "4"
+        "x-version" : "5"
       }
     }
   },
   "components" : {
     "parameters" : {
       "RequestHeader_x-v" : {
-        "description" : "Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
+        "description" : "Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers)",
         "explode" : false,
         "in" : "header",
         "name" : "x-v",
@@ -3487,7 +3487,7 @@
         "style" : "simple"
       },
       "RequestHeader_x-min-v" : {
-        "description" : "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.",
+        "description" : "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`.",
         "explode" : false,
         "in" : "header",
         "name" : "x-min-v",
@@ -3548,7 +3548,7 @@
         "x-cds-type" : "Base64"
       },
       "ParamAccountOpenStatus" : {
-        "description" : "Used to filter results according to open/closed status. Values can be OPEN, CLOSED or ALL. If absent then ALL is assumed",
+        "description" : "Used to filter results according to open/closed status. Values can be `OPEN`, `CLOSED` or `ALL`. If absent then `ALL` is assumed",
         "explode" : true,
         "in" : "query",
         "name" : "open-status",
@@ -3561,7 +3561,7 @@
         "style" : "form"
       },
       "ParamProductCategory" : {
-        "description" : "Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.",
+        "description" : "Used to filter results on the `productCategory` field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.",
         "explode" : true,
         "in" : "query",
         "name" : "product-category",
@@ -3690,10 +3690,10 @@
         "required" : [ "data" ],
         "type" : "object"
       },
-      "ResponseBankingProductListV2" : {
+      "ResponseBankingProductListV3" : {
         "properties" : {
           "data" : {
-            "$ref" : "#/components/schemas/ResponseBankingProductListV2_data"
+            "$ref" : "#/components/schemas/ResponseBankingProductListV3_data"
           },
           "links" : {
             "$ref" : "#/components/schemas/LinksPaginated"
@@ -3705,7 +3705,7 @@
         "required" : [ "data", "links", "meta" ],
         "type" : "object"
       },
-      "BankingProductV4" : {
+      "BankingProductV5" : {
         "properties" : {
           "productId" : {
             "description" : "A data holder specific unique identifier for this product. This identifier must be unique to a product but does not otherwise need to adhere to ID permanence guidelines.",
@@ -3728,7 +3728,7 @@
             "x-cds-type" : "DateTimeString"
           },
           "productCategory" : {
-            "$ref" : "#/components/schemas/BankingProductCategory"
+            "$ref" : "#/components/schemas/BankingProductCategoryV2"
           },
           "name" : {
             "description" : "The display name of the product",
@@ -3762,7 +3762,7 @@
           "cardArt" : {
             "description" : "An array of card art images",
             "items" : {
-              "$ref" : "#/components/schemas/BankingProductV4_cardArt"
+              "$ref" : "#/components/schemas/BankingProductV5_cardArt"
             },
             "type" : "array"
           }
@@ -3852,10 +3852,10 @@
         "required" : [ "additionalInfoUri" ],
         "type" : "object"
       },
-      "ResponseBankingProductByIdV4" : {
+      "ResponseBankingProductByIdV5" : {
         "properties" : {
           "data" : {
-            "$ref" : "#/components/schemas/BankingProductDetailV4"
+            "$ref" : "#/components/schemas/BankingProductDetailV5"
           },
           "links" : {
             "$ref" : "#/components/schemas/Links"
@@ -3867,11 +3867,11 @@
         "required" : [ "data", "links" ],
         "type" : "object"
       },
-      "BankingProductDetailV4" : {
+      "BankingProductDetailV5" : {
         "allOf" : [ {
-          "$ref" : "#/components/schemas/BankingProductV4"
+          "$ref" : "#/components/schemas/BankingProductV5"
         }, {
-          "$ref" : "#/components/schemas/BankingProductDetailV4_allOf"
+          "$ref" : "#/components/schemas/BankingProductDetailV5_allOf"
         } ]
       },
       "BankingProductBundle" : {
@@ -3894,7 +3894,7 @@
             "x-cds-type" : "URIString"
           },
           "productIds" : {
-            "description" : "Array of product IDs for products included in the bundle that are available via the product end points.  Note that this array is not intended to represent a comprehensive model of the products included in the bundle and some products available for the bundle may not be available via the product reference end points",
+            "description" : "Array of product IDs for products included in the bundle that are available via the product endpoints.  Note that this array is not intended to represent a comprehensive model of the products included in the bundle and some products available for the bundle may not be available via the product reference endpoints",
             "items" : {
               "type" : "string",
               "x-cds-type" : "ASCIIString"
@@ -3905,11 +3905,11 @@
         "required" : [ "description", "name" ],
         "type" : "object"
       },
-      "BankingProductFeatureV2" : {
+      "BankingProductFeatureV3" : {
         "properties" : {
           "featureType" : {
-            "description" : "The type of feature described",
-            "enum" : [ "ADDITIONAL_CARDS", "BALANCE_TRANSFERS", "BILL_PAYMENT", "BONUS_REWARDS", "CARD_ACCESS", "CASHBACK_OFFER", "COMPLEMENTARY_PRODUCT_DISCOUNTS", "DIGITAL_BANKING", "DIGITAL_WALLET", "DONATE_INTEREST", "EXTRA_REPAYMENTS", "FRAUD_PROTECTION", "FREE_TXNS", "FREE_TXNS_ALLOWANCE", "GUARANTOR", "INSURANCE", "INSTALMENT_PLAN", "INTEREST_FREE", "INTEREST_FREE_TRANSFERS", "LOYALTY_PROGRAM", "NOTIFICATIONS", "NPP_ENABLED", "NPP_PAYID", "OFFSET", "OTHER", "OVERDRAFT", "REDRAW", "RELATIONSHIP_MANAGEMENT", "UNLIMITED_TXNS" ],
+            "description" : "The type of feature described. For further details, refer to [featureType](#tocSproductfeaturetypedoc)",
+            "enum" : [ "ADDITIONAL_CARDS", "BALANCE_TRANSFERS", "BILL_PAYMENT", "BONUS_REWARDS", "CARD_ACCESS", "CASHBACK_OFFER", "COMPLEMENTARY_PRODUCT_DISCOUNTS", "EXTRA_DOWN_PAYMENT", "DIGITAL_BANKING", "DIGITAL_WALLET", "DONATE_INTEREST", "EXTRA_REPAYMENTS", "FRAUD_PROTECTION", "FREE_TXNS", "FREE_TXNS_ALLOWANCE", "GUARANTOR", "INSURANCE", "INSTALMENT_PLAN", "INTEREST_FREE", "INTEREST_FREE_TRANSFERS", "LOYALTY_PROGRAM", "NOTIFICATIONS", "NPP_ENABLED", "NPP_PAYID", "OFFSET", "OTHER", "OVERDRAFT", "REDRAW", "RELATIONSHIP_MANAGEMENT", "UNLIMITED_TXNS" ],
             "type" : "string"
           },
           "additionalValue" : {
@@ -3917,7 +3917,7 @@
             "type" : "string"
           },
           "additionalInfo" : {
-            "description" : "Display text providing more information on the feature. Mandatory if the [feature type](#tocSproductfeaturetypedoc) is set to OTHER",
+            "description" : "Display text providing more information on the feature. Mandatory if the [feature type](#tocSproductfeaturetypedoc) is set to `OTHER`",
             "type" : "string"
           },
           "additionalInfoUri" : {
@@ -3933,7 +3933,7 @@
       "BankingProductConstraint" : {
         "properties" : {
           "constraintType" : {
-            "description" : "The type of constraint described.  See the next section for an overview of valid values and their meaning",
+            "description" : "The type of constraint described. See the next section for an overview of valid values and their meaning",
             "enum" : [ "MAX_BALANCE", "MAX_LIMIT", "MIN_BALANCE", "MIN_LIMIT", "OPENING_BALANCE" ],
             "type" : "string"
           },
@@ -3942,7 +3942,7 @@
             "type" : "string"
           },
           "additionalInfo" : {
-            "description" : "Display text providing more information the constraint",
+            "description" : "Display text providing more information on the constraint",
             "type" : "string"
           },
           "additionalInfoUri" : {
@@ -3967,7 +3967,7 @@
             "type" : "string"
           },
           "additionalInfo" : {
-            "description" : "Display text providing more information on the [eligibility](#tocSproducteligibilitytypedoc) criteria. Mandatory if the field is set to OTHER",
+            "description" : "Display text providing more information on the [eligibility](#tocSproducteligibilitytypedoc) criteria. Mandatory if the field is set to `OTHER`",
             "type" : "string"
           },
           "additionalInfoUri" : {
@@ -3987,7 +3987,7 @@
             "type" : "string"
           },
           "feeType" : {
-            "description" : "The type of fee",
+            "description" : "The type of fee. For details refer to [Product Fee Types](#tocSproductfeetypedoc).",
             "enum" : [ "DEPOSIT", "EVENT", "EXIT", "PAYMENT", "PAYMENT_LATE", "PERIODIC", "PURCHASE", "TRANSACTION", "UPFRONT", "UPFRONT_PER_PLAN", "VARIABLE", "WITHDRAWAL" ],
             "type" : "string"
           },
@@ -4145,12 +4145,12 @@
             "x-cds-type" : "RateString"
           },
           "calculationFrequency" : {
-            "description" : "The period after which the rate is applied to the balance to calculate the amount due for the period. Calculation of the amount is often daily (as balances may change) but accumulated until the total amount is 'applied' to the account (see applicationFrequency). Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)",
+            "description" : "The period after which the rate is applied to the balance to calculate the amount due for the period. Calculation of the amount is often daily (as balances may change) but accumulated until the total amount is 'applied' to the account (see `applicationFrequency`). Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)",
             "type" : "string",
             "x-cds-type" : "ExternalRef"
           },
           "applicationFrequency" : {
-            "description" : "The period after which the calculated amount(s) (see calculationFrequency) are 'applied' (i.e. debited or credited) to the account. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)",
+            "description" : "The period after which the calculated amount(s) (see `calculationFrequency`) are 'applied' (i.e. debited or credited) to the account. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)",
             "type" : "string",
             "x-cds-type" : "ExternalRef"
           },
@@ -4197,12 +4197,12 @@
             "x-cds-type" : "RateString"
           },
           "calculationFrequency" : {
-            "description" : "The period after which the rate is applied to the balance to calculate the amount due for the period. Calculation of the amount is often daily (as balances may change) but accumulated until the total amount is 'applied' to the account (see applicationFrequency). Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)",
+            "description" : "The period after which the rate is applied to the balance to calculate the amount due for the period. Calculation of the amount is often daily (as balances may change) but accumulated until the total amount is 'applied' to the account (see `applicationFrequency`). Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)",
             "type" : "string",
             "x-cds-type" : "ExternalRef"
           },
           "applicationFrequency" : {
-            "description" : "The period after which the calculated amount(s) (see calculationFrequency) are 'applied' (i.e. debited or credited) to the account. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)",
+            "description" : "The period after which the calculated amount(s) (see `calculationFrequency`) are 'applied' (i.e. debited or credited) to the account. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)",
             "type" : "string",
             "x-cds-type" : "ExternalRef"
           },
@@ -4233,7 +4233,7 @@
             "type" : "string"
           },
           "additionalInfo" : {
-            "description" : "Display text providing more information on the rate.",
+            "description" : "Display text providing more information on the rate",
             "type" : "string"
           },
           "additionalInfoUri" : {
@@ -4254,17 +4254,17 @@
             "type" : "string"
           },
           "unitOfMeasure" : {
-            "description" : "The unit of measure that applies to the tierValueMinimum and tierValueMaximum values e.g. a **DOLLAR** amount. **PERCENT** (in the case of loan-to-value ratio or LVR). Tier term period representing a discrete number of **MONTH**'s or **DAY**'s (in the case of term deposit tiers)",
+            "description" : "The unit of measure that applies to the `minimumValue` and `maximumValue` values e.g. a **DOLLAR** amount. **PERCENT** (in the case of loan-to-value ratio or LVR). Tier term period representing a discrete number of **MONTH**'s or **DAY**'s (in the case of term deposit tiers)",
             "enum" : [ "DAY", "DOLLAR", "MONTH", "PERCENT" ],
             "type" : "string"
           },
           "minimumValue" : {
-            "description" : "The number of tierUnitOfMeasure units that form the lower bound of the tier. The tier should be inclusive of this value",
+            "description" : "The number of `unitOfMeasure` units that form the lower bound of the tier. The tier should be inclusive of this value",
             "type" : "number",
             "x-cds-type" : "Number"
           },
           "maximumValue" : {
-            "description" : "The number of tierUnitOfMeasure units that form the upper bound of the tier or band. For a tier with a discrete value (as opposed to a range of values e.g. 1 month) this must be the same as tierValueMinimum. Where this is the same as the tierValueMinimum value of the next-higher tier the referenced tier should be exclusive of this value. For example a term deposit of 2 months falls into the upper tier of the following tiers: (1 – 2 months, 2 – 3 months). If absent the tier's range has no upper bound.",
+            "description" : "The number of `unitOfMeasure` units that form the upper bound of the tier or band. For a tier with a discrete value (as opposed to a range of values e.g. 1 month) this must be the same as `minimumValue`. Where this is the same as the `minimumValue` value of the next-higher tier the referenced tier should be exclusive of this value. For example a term deposit of 2 months falls into the upper tier of the following tiers: (1 – 2 months, 2 – 3 months). If absent the tier's range has no upper bound.",
             "type" : "number",
             "x-cds-type" : "Number"
           },
@@ -4277,7 +4277,7 @@
             "$ref" : "#/components/schemas/BankingProductRateCondition"
           },
           "additionalInfo" : {
-            "description" : "Display text providing more information on the rate tier.",
+            "description" : "Display text providing more information on the rate tier",
             "type" : "string"
           },
           "additionalInfoUri" : {
@@ -4304,10 +4304,49 @@
         },
         "type" : "object"
       },
-      "ResponseBankingAccountListV2" : {
+      "BankingProductInstalments" : {
+        "properties" : {
+          "maximumPlanCount" : {
+            "description" : "Total number of plans that may be created",
+            "example" : 1,
+            "type" : "integer",
+            "x-cds-type" : "PositiveInteger"
+          },
+          "instalmentsLimit" : {
+            "description" : "Maximum combined limit of all instalment plans that may be created",
+            "type" : "string",
+            "x-cds-type" : "AmountString"
+          },
+          "minimumPlanValue" : {
+            "description" : "Minimum value that can be opened as an instalment plan",
+            "type" : "string",
+            "x-cds-type" : "AmountString"
+          },
+          "maximumPlanValue" : {
+            "description" : "Maximum value that can be opened as an instalment plan",
+            "type" : "string",
+            "x-cds-type" : "AmountString"
+          },
+          "minimumSplit" : {
+            "description" : "Minimum number of instalment payments a plan can be created with",
+            "example" : 4,
+            "type" : "integer",
+            "x-cds-type" : "PositiveInteger"
+          },
+          "maximumSplit" : {
+            "description" : "Maximum number of instalment payments a plan can be created with",
+            "example" : 4,
+            "type" : "integer",
+            "x-cds-type" : "PositiveInteger"
+          }
+        },
+        "required" : [ "instalmentsLimit", "maximumPlanCount", "maximumPlanValue", "maximumSplit", "minimumPlanValue", "minimumSplit" ],
+        "type" : "object"
+      },
+      "ResponseBankingAccountListV3" : {
         "properties" : {
           "data" : {
-            "$ref" : "#/components/schemas/ResponseBankingAccountListV2_data"
+            "$ref" : "#/components/schemas/ResponseBankingAccountListV3_data"
           },
           "links" : {
             "$ref" : "#/components/schemas/LinksPaginated"
@@ -4319,7 +4358,7 @@
         "required" : [ "data", "links", "meta" ],
         "type" : "object"
       },
-      "BankingAccountV2" : {
+      "BankingAccountV3" : {
         "properties" : {
           "accountId" : {
             "description" : "A unique ID of the account adhering to the standards for ID permanence",
@@ -4341,7 +4380,7 @@
           },
           "openStatus" : {
             "default" : "OPEN",
-            "description" : "Open or closed status for the account. If not present then OPEN is assumed",
+            "description" : "Open or closed status for the account. If not present then `OPEN` is assumed",
             "enum" : [ "CLOSED", "OPEN" ],
             "type" : "string"
           },
@@ -4362,7 +4401,7 @@
             "x-cds-type" : "MaskedAccountString"
           },
           "productCategory" : {
-            "$ref" : "#/components/schemas/BankingProductCategory"
+            "$ref" : "#/components/schemas/BankingProductCategoryV2"
           },
           "productName" : {
             "description" : "The unique identifier of the account as defined by the data holder (akin to model number for the account)",
@@ -4372,10 +4411,10 @@
         "required" : [ "accountId", "accountOwnership", "displayName", "maskedNumber", "productCategory", "productName" ],
         "type" : "object"
       },
-      "ResponseBankingAccountByIdV3" : {
+      "ResponseBankingAccountByIdV4" : {
         "properties" : {
           "data" : {
-            "$ref" : "#/components/schemas/BankingAccountDetailV3"
+            "$ref" : "#/components/schemas/BankingAccountDetailV4"
           },
           "links" : {
             "$ref" : "#/components/schemas/Links"
@@ -4387,12 +4426,73 @@
         "required" : [ "data", "links" ],
         "type" : "object"
       },
-      "BankingAccountDetailV3" : {
+      "BankingAccountDetailV4" : {
         "allOf" : [ {
-          "$ref" : "#/components/schemas/BankingAccountV2"
+          "$ref" : "#/components/schemas/BankingAccountV3"
         }, {
-          "$ref" : "#/components/schemas/BankingAccountDetailV3_allOf"
+          "$ref" : "#/components/schemas/BankingAccountDetailV4_allOf"
         } ]
+      },
+      "BankingAccountInstalments" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/BankingProductInstalments"
+        }, {
+          "$ref" : "#/components/schemas/BankingAccountInstalments_allOf"
+        } ],
+        "description" : "Details of instalment features on the account"
+      },
+      "BankingInstalmentPlans" : {
+        "properties" : {
+          "planNickname" : {
+            "description" : "The short display name of the plan as provided by the customer. Where a customer has not provided a nickname, a display name derived by the data holder consistent with existing channels",
+            "type" : "string"
+          },
+          "creationDate" : {
+            "description" : "The date the plan was created",
+            "type" : "string",
+            "x-cds-type" : "DateString"
+          },
+          "amount" : {
+            "description" : "The total amount of the plan",
+            "type" : "string",
+            "x-cds-type" : "AmountString"
+          },
+          "duration" : {
+            "description" : "The original expected repayment duration. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)",
+            "type" : "string",
+            "x-cds-type" : "ExternalRef"
+          },
+          "instalmentInterval" : {
+            "description" : "The expected repayment interval. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)",
+            "type" : "string",
+            "x-cds-type" : "ExternalRef"
+          },
+          "schedule" : {
+            "description" : "Array of expected repayment amounts and dates",
+            "items" : {
+              "$ref" : "#/components/schemas/BankingInstalmentPlanSchedule"
+            },
+            "type" : "array"
+          }
+        },
+        "required" : [ "amount", "creationDate", "duration", "instalmentInterval", "planNickname", "schedule" ],
+        "type" : "object"
+      },
+      "BankingInstalmentPlanSchedule" : {
+        "properties" : {
+          "amountDue" : {
+            "description" : "Amount due with this repayment",
+            "type" : "string",
+            "x-cds-type" : "AmountString"
+          },
+          "dueDate" : {
+            "description" : "Date this repayment is due",
+            "type" : "string",
+            "x-cds-type" : "DateString"
+          }
+        },
+        "required" : [ "amountDue", "dueDate" ],
+        "type" : "object"
       },
       "BankingTermDepositAccount" : {
         "properties" : {
@@ -4563,7 +4663,7 @@
             "x-cds-type" : "ASCIIString"
           },
           "isDetailAvailable" : {
-            "description" : "True if extended information is available using the transaction detail end point. False if extended data is not available",
+            "description" : "True if extended information is available using the transaction detail endpoint. False if extended data is not available",
             "type" : "boolean",
             "x-cds-type" : "Boolean"
           },
@@ -5096,17 +5196,17 @@
             "type" : "string"
           },
           "accountId" : {
-            "description" : "Present if toUType is set to accountId. Indicates that the payment is to another account that is accessible under the current consent",
+            "description" : "Present if `toUType` is set to `accountId`. Indicates that the payment is to another account that is accessible under the current consent",
             "type" : "string",
             "x-cds-type" : "ASCIIString"
           },
           "payeeId" : {
-            "description" : "Present if toUType is set to payeeId. Indicates that the payment is to registered payee that can be accessed using the payee end point. If the Bank Payees scope has not been consented to then a payeeId should not be provided and the full payee details should be provided instead",
+            "description" : "Present if `toUType` is set to `payeeId`. Indicates that the payment is to registered payee that can be accessed using the payee endpoint. If the Bank Payees scope has not been consented to then a `payeeId` should not be provided and the full payee details should be provided instead",
             "type" : "string",
             "x-cds-type" : "ASCIIString"
           },
           "nickname" : {
-            "description" : "The short display name of the payee as provided by the customer unless toUType is set to payeeId. Where a customer has not provided a nickname, a display name derived by the bank for payee should be provided that is consistent with existing digital banking channels",
+            "description" : "The short display name of the payee as provided by the customer unless `toUType` is set to `payeeId`. Where a customer has not provided a nickname, a display name derived by the bank for payee should be provided that is consistent with existing digital banking channels",
             "type" : "string"
           },
           "payeeReference" : {
@@ -5200,7 +5300,7 @@
           },
           "nonBusinessDayTreatment" : {
             "default" : "ON",
-            "description" : "Enumerated field giving the treatment where a scheduled payment date is not a business day. If absent assumed to be ON.<br/>**AFTER** - If a scheduled payment date is a non-business day the payment will be made on the first business day after the scheduled payment date.<br/>**BEFORE** - If a scheduled payment date is a non-business day the payment will be made on the first business day before the scheduled payment date.<br/>**ON** - If a scheduled payment date is a non-business day the payment will be made on that day regardless.<br/>**ONLY** - Payments only occur on business days. If a scheduled payment date is a non-business day the payment will be ignored",
+            "description" : "Enumerated field giving the treatment where a scheduled payment date is not a business day. If absent assumed to be `ON`.<br/>**AFTER** - If a scheduled payment date is a non-business day the payment will be made on the first business day after the scheduled payment date.<br/>**BEFORE** - If a scheduled payment date is a non-business day the payment will be made on the first business day before the scheduled payment date.<br/>**ON** - If a scheduled payment date is a non-business day the payment will be made on that day regardless.<br/>**ONLY** - Payments only occur on business days. If a scheduled payment date is a non-business day the payment will be ignored",
             "enum" : [ "AFTER", "BEFORE", "ON", "ONLY" ],
             "type" : "string"
           },
@@ -5257,7 +5357,7 @@
           },
           "nonBusinessDayTreatment" : {
             "default" : "ON",
-            "description" : "Enumerated field giving the treatment where a scheduled payment date is not a business day. If absent assumed to be ON.<br/>**AFTER** - If a scheduled payment date is a non-business day the payment will be made on the first business day after the scheduled payment date.<br/>**BEFORE** - If a scheduled payment date is a non-business day the payment will be made on the first business day before the scheduled payment date.<br/>**ON** - If a scheduled payment date is a non-business day the payment will be made on that day regardless.<br/>**ONLY** - Payments only occur on business days. If a scheduled payment date is a non-business day the payment will be ignored",
+            "description" : "Enumerated field giving the treatment where a scheduled payment date is not a business day. If absent assumed to be `ON`.<br/>**AFTER** - If a scheduled payment date is a non-business day the payment will be made on the first business day after the scheduled payment date.<br/>**BEFORE** - If a scheduled payment date is a non-business day the payment will be made on the first business day before the scheduled payment date.<br/>**ON** - If a scheduled payment date is a non-business day the payment will be made on that day regardless.<br/>**ONLY** - Payments only occur on business days. If a scheduled payment date is a non-business day the payment will be ignored",
             "enum" : [ "AFTER", "BEFORE", "ON", "ONLY" ],
             "type" : "string"
           }
@@ -5526,7 +5626,7 @@
         "type" : "object",
         "x-conditional" : [ "meta" ]
       },
-      "BankingProductCategory" : {
+      "BankingProductCategoryV2" : {
         "description" : "The category to which a product or account belongs. See [here](#product-categories) for more details",
         "enum" : [ "BUSINESS_LOANS", "BUY_NOW_PAY_LATER", "CRED_AND_CHRG_CARDS", "LEASES", "MARGIN_LOANS", "OVERDRAFTS", "PERS_LOANS", "REGULATED_TRUST_ACCOUNTS", "RESIDENTIAL_MORTGAGES", "TERM_DEPOSITS", "TRADE_FINANCE", "TRANS_AND_SAVINGS_ACCOUNTS", "TRAVEL_CARDS" ],
         "type" : "string"
@@ -5545,12 +5645,12 @@
         "required" : [ "accountIds" ],
         "type" : "object"
       },
-      "ResponseBankingProductListV2_data" : {
+      "ResponseBankingProductListV3_data" : {
         "properties" : {
           "products" : {
             "description" : "The list of products returned.  If the filter results in an empty set then this array may have no records",
             "items" : {
-              "$ref" : "#/components/schemas/BankingProductV4"
+              "$ref" : "#/components/schemas/BankingProductV5"
             },
             "type" : "array"
           }
@@ -5558,7 +5658,7 @@
         "required" : [ "products" ],
         "type" : "object"
       },
-      "BankingProductV4_cardArt" : {
+      "BankingProductV5_cardArt" : {
         "properties" : {
           "title" : {
             "description" : "Display label for the specific image",
@@ -5573,7 +5673,7 @@
         "required" : [ "imageUri" ],
         "type" : "object"
       },
-      "BankingProductDetailV4_allOf" : {
+      "BankingProductDetailV5_allOf" : {
         "properties" : {
           "bundles" : {
             "description" : "An array of bundles that this product participates in.  Each bundle is described by free form information but also by a list of product IDs of the other products that are included in the bundle.  It is assumed that the current product is included in the bundle also",
@@ -5585,7 +5685,7 @@
           "features" : {
             "description" : "Array of features available for the product",
             "items" : {
-              "$ref" : "#/components/schemas/BankingProductFeatureV2"
+              "$ref" : "#/components/schemas/BankingProductFeatureV3"
             },
             "type" : "array"
           },
@@ -5604,7 +5704,7 @@
             "type" : "array"
           },
           "fees" : {
-            "description" : "Fees applicable for the product",
+            "description" : "Fees applicable to the product",
             "items" : {
               "$ref" : "#/components/schemas/BankingProductFee"
             },
@@ -5623,16 +5723,19 @@
               "$ref" : "#/components/schemas/BankingProductLendingRateV2"
             },
             "type" : "array"
+          },
+          "instalments" : {
+            "$ref" : "#/components/schemas/BankingProductInstalments"
           }
         },
         "type" : "object"
       },
-      "ResponseBankingAccountListV2_data" : {
+      "ResponseBankingAccountListV3_data" : {
         "properties" : {
           "accounts" : {
             "description" : "The list of accounts returned. If the filter results in an empty set then this array may have no records",
             "items" : {
-              "$ref" : "#/components/schemas/BankingAccountV2"
+              "$ref" : "#/components/schemas/BankingAccountV3"
             },
             "type" : "array"
           }
@@ -5640,7 +5743,7 @@
         "required" : [ "accounts" ],
         "type" : "object"
       },
-      "BankingAccountDetailV3_allOf" : {
+      "BankingAccountDetailV4_allOf" : {
         "properties" : {
           "bsb" : {
             "description" : "The unmasked BSB for the account. Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces",
@@ -5653,6 +5756,9 @@
           "bundleName" : {
             "description" : "Optional field to indicate if this account is part of a bundle that is providing additional benefit to the customer",
             "type" : "string"
+          },
+          "instalments" : {
+            "$ref" : "#/components/schemas/BankingAccountInstalments"
           },
           "specificAccountUType" : {
             "description" : "The type of structure to present account specific fields.",
@@ -5699,7 +5805,7 @@
             "description" : "Array of features of the account based on the equivalent structure in Product Reference with the following additional field",
             "items" : {
               "allOf" : [ {
-                "$ref" : "#/components/schemas/BankingProductFeatureV2"
+                "$ref" : "#/components/schemas/BankingProductFeatureV3"
               }, {
                 "properties" : {
                   "isActivated" : {
@@ -5732,6 +5838,18 @@
         },
         "type" : "object",
         "x-conditional" : [ "termDeposit", "creditCard", "loan" ]
+      },
+      "BankingAccountInstalments_allOf" : {
+        "properties" : {
+          "plans" : {
+            "description" : "Array of instalment plans",
+            "items" : {
+              "$ref" : "#/components/schemas/BankingInstalmentPlans"
+            },
+            "type" : "array"
+          }
+        },
+        "type" : "object"
       },
       "ResponseBankingTransactionList_data" : {
         "properties" : {
@@ -5956,7 +6074,7 @@
       "MetaPaginatedTransaction_allOf" : {
         "properties" : {
           "isQueryParamUnsupported" : {
-            "default" : true,
+            "default" : false,
             "description" : "**true** if *\"text\"* query parameter is not supported",
             "type" : "boolean",
             "x-cds-type" : "Boolean"

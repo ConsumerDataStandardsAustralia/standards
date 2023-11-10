@@ -836,7 +836,7 @@ This operation may only be called by the CDR Register
 </tr>
 <tr>
 <td>» action</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>The action to take for the meta data. At the moment the only option is REFRESH which requires the data holder to call the ACCC to refresh meta data as soon as practicable</td>
 </tr>

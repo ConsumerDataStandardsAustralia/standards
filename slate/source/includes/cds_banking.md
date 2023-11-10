@@ -3937,7 +3937,7 @@ This operation does not require authentication
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|featureType|string|mandatory|The type of feature described|
+|featureType|[Enum](#common-field-types)|mandatory|The type of feature described|
 |additionalValue|string|conditional|Generic field containing additional information relevant to the [featureType](#tocSproductfeaturetypedoc) specified. Whether mandatory or not is dependent on the value of the [featureType.](#tocSproductfeaturetypedoc)|
 |additionalInfo|string|conditional|Display text providing more information on the feature. Mandatory if the [feature type](#tocSproductfeaturetypedoc) is set to OTHER|
 |additionalInfoUri|[URIString](#common-field-types)|optional|Link to a web page with more information on this feature|
@@ -3994,7 +3994,7 @@ This operation does not require authentication
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|constraintType|string|mandatory|The type of constraint described.  See the next section for an overview of valid values and their meaning|
+|constraintType|[Enum](#common-field-types)|mandatory|The type of constraint described.  See the next section for an overview of valid values and their meaning|
 |additionalValue|string|conditional|Generic field containing additional information relevant to the [constraintType](#tocSproductconstrainttypedoc) specified.  Whether mandatory or not is dependent on the value of [constraintType](#tocSproductconstrainttypedoc)|
 |additionalInfo|string|optional|Display text providing more information the constraint|
 |additionalInfoUri|[URIString](#common-field-types)|optional|Link to a web page with more information on the constraint|
@@ -4027,7 +4027,7 @@ This operation does not require authentication
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|eligibilityType|string|mandatory|The type of eligibility criteria described.  See the next section for an overview of valid values and their meaning|
+|eligibilityType|[Enum](#common-field-types)|mandatory|The type of eligibility criteria described.  See the next section for an overview of valid values and their meaning|
 |additionalValue|string|conditional|Generic field containing additional information relevant to the [eligibilityType](#tocSproducteligibilitytypedoc) specified. Whether mandatory or not is dependent on the value of [eligibilityType](#tocSproducteligibilitytypedoc)|
 |additionalInfo|string|conditional|Display text providing more information on the [eligibility](#tocSproducteligibilitytypedoc) criteria. Mandatory if the field is set to OTHER|
 |additionalInfoUri|[URIString](#common-field-types)|optional|Link to a web page with more information on this eligibility criteria|
@@ -4097,7 +4097,7 @@ This operation does not require authentication
 |Name|Type|Required|Description|
 |---|---|---|---|
 |name|string|mandatory|Name of the fee|
-|feeType|string|mandatory|The type of fee|
+|feeType|[Enum](#common-field-types)|mandatory|The type of fee|
 |amount|[AmountString](#common-field-types)|conditional|The amount charged for the fee. One of amount, balanceRate, transactionRate and accruedRate is mandatory unless the *feeType* "VARIABLE" is supplied|
 |balanceRate|[RateString](#common-field-types)|conditional|A fee rate calculated based on a proportion of the balance. One of amount, balanceRate, transactionRate and accruedRate is mandatory unless the *feeType* "VARIABLE" is supplied.|
 |transactionRate|[RateString](#common-field-types)|conditional|A fee rate calculated based on a proportion of a transaction. One of amount, balanceRate, transactionRate and accruedRate is mandatory unless the *feeType* "VARIABLE" is supplied|
@@ -4157,7 +4157,7 @@ This operation does not require authentication
 |Name|Type|Required|Description|
 |---|---|---|---|
 |description|string|mandatory|Description of the discount|
-|discountType|string|mandatory|The type of discount. See the next section for an overview of valid values and their meaning|
+|discountType|[Enum](#common-field-types)|mandatory|The type of discount. See the next section for an overview of valid values and their meaning|
 |amount|[AmountString](#common-field-types)|conditional|Dollar value of the discount. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory.|
 |balanceRate|[RateString](#common-field-types)|conditional|A discount rate calculated based on a proportion of the balance. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee|
 |transactionRate|[RateString](#common-field-types)|conditional|A discount rate calculated based on a proportion of a transaction. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory|
@@ -4196,7 +4196,7 @@ This operation does not require authentication
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|discountEligibilityType|string|mandatory|The type of the specific eligibility constraint for a discount|
+|discountEligibilityType|[Enum](#common-field-types)|mandatory|The type of the specific eligibility constraint for a discount|
 |additionalValue|string|conditional|Generic field containing additional information relevant to the [discountEligibilityType](#tocSproductdiscounteligibilitydoc) specified. Whether mandatory or not is dependent on the value of [discountEligibilityType](#tocSproductdiscounteligibilitydoc)|
 |additionalInfo|string|conditional|Display text providing more information on this eligibility constraint. Whether mandatory or not is dependent on the value of [discountEligibilityType](#tocSproductdiscounteligibilitydoc)|
 |additionalInfoUri|[URIString](#common-field-types)|optional|Link to a web page with more information on this eligibility constraint|
@@ -4255,7 +4255,7 @@ This operation does not require authentication
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|depositRateType|string|mandatory|The type of rate (base, bonus, etc). See the next section for an overview of valid values and their meaning|
+|depositRateType|[Enum](#common-field-types)|mandatory|The type of rate (base, bonus, etc). See the next section for an overview of valid values and their meaning|
 |rate|[RateString](#common-field-types)|mandatory|The rate to be applied|
 |calculationFrequency|[ExternalRef](#common-field-types)|optional|The period after which the rate is applied to the balance to calculate the amount due for the period. Calculation of the amount is often daily (as balances may change) but accumulated until the total amount is 'applied' to the account (see applicationFrequency). Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
 |applicationFrequency|[ExternalRef](#common-field-types)|optional|The period after which the calculated amount(s) (see calculationFrequency) are 'applied' (i.e. debited or credited) to the account. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
@@ -4316,14 +4316,14 @@ This operation does not require authentication
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|lendingRateType|string|mandatory|The type of rate (fixed, variable, etc). See the next section for an overview of valid values and their meaning|
+|lendingRateType|[Enum](#common-field-types)|mandatory|The type of rate (fixed, variable, etc). See the next section for an overview of valid values and their meaning|
 |rate|[RateString](#common-field-types)|mandatory|The rate to be applied|
 |comparisonRate|[RateString](#common-field-types)|optional|A comparison rate equivalent for this rate|
 |calculationFrequency|[ExternalRef](#common-field-types)|optional|The period after which the rate is applied to the balance to calculate the amount due for the period. Calculation of the amount is often daily (as balances may change) but accumulated until the total amount is 'applied' to the account (see applicationFrequency). Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
 |applicationFrequency|[ExternalRef](#common-field-types)|optional|The period after which the calculated amount(s) (see calculationFrequency) are 'applied' (i.e. debited or credited) to the account. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
-|interestPaymentDue|string|optional|When loan payments are due to be paid within each period. The investment benefit of earlier payments affect the rate that can be offered|
-|repaymentType|string|optional|Options in place for repayments. If absent, the lending rate is applicable to all repayment types|
-|loanPurpose|string|optional|The reason for taking out the loan. If absent, the lending rate is applicable to all loan purposes|
+|interestPaymentDue|[Enum](#common-field-types)|optional|When loan payments are due to be paid within each period. The investment benefit of earlier payments affect the rate that can be offered|
+|repaymentType|[Enum](#common-field-types)|optional|Options in place for repayments. If absent, the lending rate is applicable to all repayment types|
+|loanPurpose|[Enum](#common-field-types)|optional|The reason for taking out the loan. If absent, the lending rate is applicable to all loan purposes|
 |tiers|[[BankingProductRateTierV3](#schemacdr-banking-apibankingproductratetierv3)]|optional|Rate tiers applicable for this rate|
 |additionalValue|string|conditional|Generic field containing additional information relevant to the [lendingRateType](#tocSproductlendingratetypedoc) specified. Whether mandatory or not is dependent on the value of [lendingRateType](#tocSproductlendingratetypedoc)|
 |additionalInfo|string|optional|Display text providing more information on the rate.|
@@ -4379,10 +4379,10 @@ This operation does not require authentication
 |Name|Type|Required|Description|
 |---|---|---|---|
 |name|string|mandatory|A display name for the tier|
-|unitOfMeasure|string|mandatory|The unit of measure that applies to the tierValueMinimum and tierValueMaximum values e.g. a **DOLLAR** amount. **PERCENT** (in the case of loan-to-value ratio or LVR). Tier term period representing a discrete number of **MONTH**'s or **DAY**'s (in the case of term deposit tiers)|
+|unitOfMeasure|[Enum](#common-field-types)|mandatory|The unit of measure that applies to the tierValueMinimum and tierValueMaximum values e.g. a **DOLLAR** amount. **PERCENT** (in the case of loan-to-value ratio or LVR). Tier term period representing a discrete number of **MONTH**'s or **DAY**'s (in the case of term deposit tiers)|
 |minimumValue|[Number](#common-field-types)|mandatory|The number of tierUnitOfMeasure units that form the lower bound of the tier. The tier should be inclusive of this value|
 |maximumValue|[Number](#common-field-types)|optional|The number of tierUnitOfMeasure units that form the upper bound of the tier or band. For a tier with a discrete value (as opposed to a range of values e.g. 1 month) this must be the same as tierValueMinimum. Where this is the same as the tierValueMinimum value of the next-higher tier the referenced tier should be exclusive of this value. For example a term deposit of 2 months falls into the upper tier of the following tiers: (1 – 2 months, 2 – 3 months). If absent the tier's range has no upper bound.|
-|rateApplicationMethod|string|optional|The method used to calculate the amount to be applied using one or more tiers. A single rate may be applied to the entire balance or each applicable tier rate is applied to the portion of the balance that falls into that tier (referred to as 'bands' or 'steps')|
+|rateApplicationMethod|[Enum](#common-field-types)|optional|The method used to calculate the amount to be applied using one or more tiers. A single rate may be applied to the entire balance or each applicable tier rate is applied to the portion of the balance that falls into that tier (referred to as 'bands' or 'steps')|
 |applicabilityConditions|[BankingProductRateCondition](#schemacdr-banking-apibankingproductratecondition)|optional|Defines a condition for the applicability of a tiered rate|
 |additionalInfo|string|optional|Display text providing more information on the rate tier.|
 |additionalInfoUri|[URIString](#common-field-types)|optional|Link to a web page with more information on this rate tier|
@@ -4493,9 +4493,9 @@ This operation does not require authentication
 |creationDate|[DateString](#common-field-types)|optional|Date that the account was created (if known)|
 |displayName|string|mandatory|The display name of the account as defined by the bank. This should not incorporate account numbers or PANs. If it does the values should be masked according to the rules of the MaskedAccountString common type.|
 |nickname|string|optional|A customer supplied nick name for the account|
-|openStatus|string|optional|Open or closed status for the account. If not present then OPEN is assumed|
+|openStatus|[Enum](#common-field-types)|optional|Open or closed status for the account. If not present then OPEN is assumed|
 |isOwned|[Boolean](#common-field-types)|optional|Flag indicating that the customer associated with the authorisation is an owner of the account. Does not indicate sole ownership, however. If not present then 'true' is assumed|
-|accountOwnership|string|mandatory|Value indicating the number of customers that have ownership of the account, according to the data holder's definition of account ownership. Does not indicate that all account owners are eligible consumers|
+|accountOwnership|[Enum](#common-field-types)|mandatory|Value indicating the number of customers that have ownership of the account, according to the data holder's definition of account ownership. Does not indicate that all account owners are eligible consumers|
 |maskedNumber|[MaskedAccountString](#common-field-types)|mandatory|A masked version of the account. Whether BSB/Account Number, Credit Card PAN or another number|
 |productCategory|[BankingProductCategory](#schemacdr-banking-apibankingproductcategory)|mandatory|The category to which a product or account belongs. See [here](#product-categories) for more details|
 |productName|string|mandatory|The unique identifier of the account as defined by the data holder (akin to model number for the account)|
@@ -4944,7 +4944,7 @@ This operation does not require authentication
 |» bsb|string|optional|The unmasked BSB for the account. Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces|
 |» accountNumber|string|optional|The unmasked account number for the account. Should not be supplied if the account number is a PAN requiring PCI compliance. Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces|
 |» bundleName|string|optional|Optional field to indicate if this account is part of a bundle that is providing additional benefit to the customer|
-|» specificAccountUType|string|optional|The type of structure to present account specific fields.|
+|» specificAccountUType|[Enum](#common-field-types)|optional|The type of structure to present account specific fields.|
 |» termDeposit|[[BankingTermDepositAccount](#schemacdr-banking-apibankingtermdepositaccount)]|conditional|none|
 |» creditCard|[BankingCreditCardAccount](#schemacdr-banking-apibankingcreditcardaccount)|conditional|none|
 |» loan|[BankingLoanAccountV2](#schemacdr-banking-apibankingloanaccountv2)|conditional|none|
@@ -5005,7 +5005,7 @@ This operation does not require authentication
 |maturityDate|[DateString](#common-field-types)|mandatory|Maturity date for the term deposit|
 |maturityAmount|[AmountString](#common-field-types)|optional|Amount to be paid upon maturity. If absent it implies the amount to paid is variable and cannot currently be calculated|
 |maturityCurrency|[CurrencyString](#common-field-types)|optional|If absent assumes AUD|
-|maturityInstructions|string|mandatory|Current instructions on action to be taken at maturity. This includes default actions that may be specified in the terms and conditions for the product e.g. roll-over to the same term and frequency of interest payments|
+|maturityInstructions|[Enum](#common-field-types)|mandatory|Current instructions on action to be taken at maturity. This includes default actions that may be specified in the terms and conditions for the product e.g. roll-over to the same term and frequency of interest payments|
 
 #### Enumerated Values
 
@@ -5082,7 +5082,7 @@ This operation does not require authentication
 |minRedrawCurrency|[CurrencyString](#common-field-types)|optional|If absent assumes AUD|
 |offsetAccountEnabled|[Boolean](#common-field-types)|optional|Set to true if one or more offset accounts are configured for this loan account|
 |offsetAccountIds|[string]|optional|The accountIDs of the configured offset accounts attached to this loan. Only offset accounts that can be accessed under the current authorisation should be included. It is expected behaviour that offsetAccountEnabled is set to true but the offsetAccountIds field is absent or empty. This represents a situation where an offset account exists but details can not be accessed under the current authorisation|
-|repaymentType|string|optional|Options in place for repayments. If absent defaults to PRINCIPAL_AND_INTEREST|
+|repaymentType|[Enum](#common-field-types)|optional|Options in place for repayments. If absent defaults to PRINCIPAL_AND_INTEREST|
 |repaymentFrequency|[ExternalRef](#common-field-types)|optional|The expected or required repayment frequency. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
 
 #### Enumerated Values
@@ -5182,8 +5182,8 @@ This operation does not require authentication
 |accountId|[ASCIIString](#common-field-types)|mandatory|ID of the account for which transactions are provided|
 |transactionId|[ASCIIString](#common-field-types)|conditional|A unique ID of the transaction adhering to the standards for ID permanence.  This is mandatory (through hashing if necessary) unless there are specific and justifiable technical reasons why a transaction cannot be uniquely identified for a particular account type. It is mandatory if `isDetailAvailable` is set to true.|
 |isDetailAvailable|[Boolean](#common-field-types)|mandatory|True if extended information is available using the transaction detail end point. False if extended data is not available|
-|type|string|mandatory|The type of the transaction|
-|status|string|mandatory|Status of the transaction whether pending or posted. Note that there is currently no provision in the standards to guarantee the ability to correlate a pending transaction with an associated posted transaction|
+|type|[Enum](#common-field-types)|mandatory|The type of the transaction|
+|status|[Enum](#common-field-types)|mandatory|Status of the transaction whether pending or posted. Note that there is currently no provision in the standards to guarantee the ability to correlate a pending transaction with an associated posted transaction|
 |description|string|mandatory|The transaction description as applied by the financial institution|
 |postingDateTime|[DateTimeString](#common-field-types)|conditional|The time the transaction was posted. This field is Mandatory if the transaction has status POSTED.  This is the time that appears on a standard statement|
 |valueDateTime|[DateTimeString](#common-field-types)|optional|Date and time at which assets become available to the account owner in case of a credit entry, or cease to be available to the account owner in case of a debit transaction entry|
@@ -5321,12 +5321,12 @@ This operation does not require authentication
 |» extendedData|object|mandatory|none|
 |»» payer|string|conditional|Label of the originating payer. Mandatory for inbound payment|
 |»» payee|string|conditional|Label of the target PayID.  Mandatory for an outbound payment. The name assigned to the BSB/Account Number or PayID (by the owner of the PayID)|
-|»» extensionUType|string|optional|Optional extended data specific to transactions originated via NPP|
+|»» extensionUType|[Enum](#common-field-types)|optional|Optional extended data specific to transactions originated via NPP|
 |»» x2p101Payload|object|conditional|none|
 |»»» extendedDescription|string|conditional|An extended string description. Required if the extensionUType field is `x2p101Payload`|
 |»»» endToEndId|string|optional|An end to end ID for the payment created at initiation|
 |»»» purposeCode|string|optional|Purpose of the payment.  Format is defined by NPP standards for the x2p1.01 overlay service|
-|»» service|string|mandatory|Identifier of the applicable overlay service. Valid values are: X2P1.01|
+|»» service|[Enum](#common-field-types)|mandatory|Identifier of the applicable overlay service. Valid values are: X2P1.01|
 
 #### Enumerated Values
 
@@ -5613,7 +5613,7 @@ This operation does not require authentication
 |payeeId|[ASCIIString](#common-field-types)|mandatory|ID of the payee adhering to the rules of ID permanence|
 |nickname|string|mandatory|The short display name of the payee as provided by the customer. Where a customer has not provided a nickname, a display name derived by the bank for the payee consistent with existing digital banking channels|
 |description|string|optional|A description of the payee provided by the customer|
-|type|string|mandatory|The type of payee.<br/>DOMESTIC means a registered payee for domestic payments including NPP. <br/>INTERNATIONAL means a registered payee for international payments. <br/>BILLER means a registered payee for BPAY. <br/>DIGITAL_WALLET means a registered payee for a bank's digital wallet|
+|type|[Enum](#common-field-types)|mandatory|The type of payee.<br/>DOMESTIC means a registered payee for domestic payments including NPP. <br/>INTERNATIONAL means a registered payee for international payments. <br/>BILLER means a registered payee for BPAY. <br/>DIGITAL_WALLET means a registered payee for a bank's digital wallet|
 |creationDate|[DateString](#common-field-types)|optional|The date the payee was created by the customer|
 
 #### Enumerated Values
@@ -5702,7 +5702,7 @@ This operation does not require authentication
 |Name|Type|Required|Description|
 |---|---|---|---|
 |*anonymous*|object|mandatory|none|
-|» payeeUType|string|mandatory|Type of object included that describes the payee in detail|
+|» payeeUType|[Enum](#common-field-types)|mandatory|Type of object included that describes the payee in detail|
 |» biller|[BankingBillerPayee](#schemacdr-banking-apibankingbillerpayee)|conditional|none|
 |» domestic|[BankingDomesticPayee](#schemacdr-banking-apibankingdomesticpayee)|conditional|none|
 |» digitalWallet|[BankingDigitalWalletPayee](#schemacdr-banking-apibankingdigitalwalletpayee)|conditional|none|
@@ -5745,7 +5745,7 @@ This operation does not require authentication
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|payeeAccountUType|string|mandatory|Type of account object included. Valid values are: **account** A standard Australian account defined by BSB/Account Number. **card** A credit or charge card to pay to (note that PANs are masked). **payId** A PayID recognised by NPP|
+|payeeAccountUType|[Enum](#common-field-types)|mandatory|Type of account object included. Valid values are: **account** A standard Australian account defined by BSB/Account Number. **card** A credit or charge card to pay to (note that PANs are masked). **payId** A PayID recognised by NPP|
 |account|[BankingDomesticPayeeAccount](#schemacdr-banking-apibankingdomesticpayeeaccount)|conditional|none|
 |card|[BankingDomesticPayeeCard](#schemacdr-banking-apibankingdomesticpayeecard)|conditional|none|
 |payId|[BankingDomesticPayeePayId](#schemacdr-banking-apibankingdomesticpayeepayid)|conditional|none|
@@ -5815,7 +5815,7 @@ This operation does not require authentication
 |---|---|---|---|
 |name|string|optional|The name assigned to the PayID by the owner of the PayID|
 |identifier|string|mandatory|The identifier of the PayID (dependent on type)|
-|type|string|mandatory|The type of the PayID|
+|type|[Enum](#common-field-types)|mandatory|The type of the PayID|
 
 #### Enumerated Values
 
@@ -5917,8 +5917,8 @@ This operation does not require authentication
 |---|---|---|---|
 |name|string|mandatory|The display name of the wallet as given by the customer, else a default value defined by the data holder|
 |identifier|string|mandatory|The identifier of the digital wallet (dependent on type)|
-|type|string|mandatory|The type of the digital wallet identifier|
-|provider|string|mandatory|The provider of the digital wallet|
+|type|[Enum](#common-field-types)|mandatory|The type of the digital wallet identifier|
+|provider|[Enum](#common-field-types)|mandatory|The provider of the digital wallet|
 
 #### Enumerated Values
 
@@ -6280,7 +6280,7 @@ This operation does not require authentication
 |nickname|string|optional|The short display name of the scheduled payment as provided by the customer if provided. Where a customer has not provided a nickname, a display name derived by the bank for the scheduled payment should be provided that is consistent with existing digital banking channels|
 |payerReference|string|mandatory|The reference for the transaction that will be used by the originating institution for the purposes of constructing a statement narrative on the payer’s account. Empty string if no data provided|
 |payeeReference|string|conditional|The reference for the transaction, if applicable, that will be provided by the originating institution for all payments in the payment set. Empty string if no data provided|
-|status|string|mandatory|Indicates whether the schedule is currently active. The value SKIP is equivalent to ACTIVE except that the customer has requested the next normal occurrence to be skipped.|
+|status|[Enum](#common-field-types)|mandatory|Indicates whether the schedule is currently active. The value SKIP is equivalent to ACTIVE except that the customer has requested the next normal occurrence to be skipped.|
 |from|[BankingScheduledPaymentFrom](#schemacdr-banking-apibankingscheduledpaymentfrom)|mandatory|Object containing details of the source of the payment. Currently only specifies an account ID but provided as an object to facilitate future extensibility and consistency with the to object|
 |paymentSet|[[BankingScheduledPaymentSetV2](#schemacdr-banking-apibankingscheduledpaymentsetv2)]|mandatory|[The set of payment amounts and destination accounts for this payment accommodating multi-part payments. A single entry indicates a simple payment with one destination account. Must have at least one entry]|
 |recurrence|[BankingScheduledPaymentRecurrence](#schemacdr-banking-apibankingscheduledpaymentrecurrence)|mandatory|Object containing the detail of the schedule for the payment|
@@ -6441,7 +6441,7 @@ This operation does not require authentication
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|toUType|string|mandatory|The type of object provided that specifies the destination of the funds for the payment.|
+|toUType|[Enum](#common-field-types)|mandatory|The type of object provided that specifies the destination of the funds for the payment.|
 |accountId|[ASCIIString](#common-field-types)|conditional|Present if toUType is set to accountId. Indicates that the payment is to another account that is accessible under the current consent|
 |payeeId|[ASCIIString](#common-field-types)|conditional|Present if toUType is set to payeeId. Indicates that the payment is to registered payee that can be accessed using the payee end point. If the Bank Payees scope has not been consented to then a payeeId should not be provided and the full payee details should be provided instead|
 |nickname|string|conditional|The short display name of the payee as provided by the customer unless toUType is set to payeeId. Where a customer has not provided a nickname, a display name derived by the bank for payee should be provided that is consistent with existing digital banking channels|
@@ -6524,7 +6524,7 @@ This operation does not require authentication
 |Name|Type|Required|Description|
 |---|---|---|---|
 |nextPaymentDate|[DateString](#common-field-types)|optional|The date of the next payment under the recurrence schedule|
-|recurrenceUType|string|mandatory|The type of recurrence used to define the schedule|
+|recurrenceUType|[Enum](#common-field-types)|mandatory|The type of recurrence used to define the schedule|
 |onceOff|[BankingScheduledPaymentRecurrenceOnceOff](#schemacdr-banking-apibankingscheduledpaymentrecurrenceonceoff)|conditional|Indicates that the payment is a once off payment on a specific future date. Mandatory if recurrenceUType is set to onceOff|
 |intervalSchedule|[BankingScheduledPaymentRecurrenceIntervalSchedule](#schemacdr-banking-apibankingscheduledpaymentrecurrenceintervalschedule)|conditional|Indicates that the schedule of payments is defined by a series of intervals. Mandatory if recurrenceUType is set to intervalSchedule|
 |lastWeekDay|[BankingScheduledPaymentRecurrenceLastWeekday](#schemacdr-banking-apibankingscheduledpaymentrecurrencelastweekday)|conditional|Indicates that the schedule of payments is defined according to the last occurrence of a specific weekday in an interval. Mandatory if recurrenceUType is set to lastWeekDay|
@@ -6585,7 +6585,7 @@ This operation does not require authentication
 |---|---|---|---|
 |finalPaymentDate|[DateString](#common-field-types)|optional|The limit date after which no more payments should be made using this schedule. If both finalPaymentDate and paymentsRemaining are present then payments will stop according to the most constraining value. If neither field is present the payments will continue indefinitely|
 |paymentsRemaining|[PositiveInteger](#common-field-types)|optional|Indicates the number of payments remaining in the schedule. If both finalPaymentDate and paymentsRemaining are present then payments will stop according to the most constraining value, If neither field is present the payments will continue indefinitely|
-|nonBusinessDayTreatment|string|optional|Enumerated field giving the treatment where a scheduled payment date is not a business day. If absent assumed to be ON.<br/>**AFTER** - If a scheduled payment date is a non-business day the payment will be made on the first business day after the scheduled payment date.<br/>**BEFORE** - If a scheduled payment date is a non-business day the payment will be made on the first business day before the scheduled payment date.<br/>**ON** - If a scheduled payment date is a non-business day the payment will be made on that day regardless.<br/>**ONLY** - Payments only occur on business days. If a scheduled payment date is a non-business day the payment will be ignored|
+|nonBusinessDayTreatment|[Enum](#common-field-types)|optional|Enumerated field giving the treatment where a scheduled payment date is not a business day. If absent assumed to be ON.<br/>**AFTER** - If a scheduled payment date is a non-business day the payment will be made on the first business day after the scheduled payment date.<br/>**BEFORE** - If a scheduled payment date is a non-business day the payment will be made on the first business day before the scheduled payment date.<br/>**ON** - If a scheduled payment date is a non-business day the payment will be made on that day regardless.<br/>**ONLY** - Payments only occur on business days. If a scheduled payment date is a non-business day the payment will be ignored|
 |intervals|[[BankingScheduledPaymentInterval](#schemacdr-banking-apibankingscheduledpaymentinterval)]|mandatory|An array of interval objects defining the payment schedule.  Each entry in the array is additive, in that it adds payments to the overall payment schedule.  If multiple intervals result in a payment on the same day then only one payment will be made. Must have at least one entry|
 
 #### Enumerated Values
@@ -6640,8 +6640,8 @@ This operation does not require authentication
 |finalPaymentDate|[DateString](#common-field-types)|optional|The limit date after which no more payments should be made using this schedule. If both finalPaymentDate and paymentsRemaining are present then payments will stop according to the most constraining value. If neither field is present the payments will continue indefinitely|
 |paymentsRemaining|[PositiveInteger](#common-field-types)|optional|Indicates the number of payments remaining in the schedule. If both finalPaymentDate and paymentsRemaining are present then payments will stop according to the most constraining value. If neither field is present the payments will continue indefinitely|
 |interval|[ExternalRef](#common-field-types)|mandatory|The interval for the payment. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax) with components less than a day in length ignored. This duration defines the period between payments starting with nextPaymentDate|
-|lastWeekDay|string|mandatory|The weekDay specified. The payment will occur on the last occurrence of this weekday in the interval.|
-|nonBusinessDayTreatment|string|optional|Enumerated field giving the treatment where a scheduled payment date is not a business day. If absent assumed to be ON.<br/>**AFTER** - If a scheduled payment date is a non-business day the payment will be made on the first business day after the scheduled payment date.<br/>**BEFORE** - If a scheduled payment date is a non-business day the payment will be made on the first business day before the scheduled payment date.<br/>**ON** - If a scheduled payment date is a non-business day the payment will be made on that day regardless.<br/>**ONLY** - Payments only occur on business days. If a scheduled payment date is a non-business day the payment will be ignored|
+|lastWeekDay|[Enum](#common-field-types)|mandatory|The weekDay specified. The payment will occur on the last occurrence of this weekday in the interval.|
+|nonBusinessDayTreatment|[Enum](#common-field-types)|optional|Enumerated field giving the treatment where a scheduled payment date is not a business day. If absent assumed to be ON.<br/>**AFTER** - If a scheduled payment date is a non-business day the payment will be made on the first business day after the scheduled payment date.<br/>**BEFORE** - If a scheduled payment date is a non-business day the payment will be made on the first business day before the scheduled payment date.<br/>**ON** - If a scheduled payment date is a non-business day the payment will be made on that day regardless.<br/>**ONLY** - Payments only occur on business days. If a scheduled payment date is a non-business day the payment will be ignored|
 
 #### Enumerated Values
 
@@ -6727,7 +6727,7 @@ This operation does not require authentication
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|addressUType|string|mandatory|The type of address object present|
+|addressUType|[Enum](#common-field-types)|mandatory|The type of address object present|
 |simple|[CommonSimpleAddress](#schemacdr-banking-apicommonsimpleaddress)|conditional|none|
 |paf|[CommonPAFAddress](#schemacdr-banking-apicommonpafaddress)|conditional|Australian address formatted according to the file format defined by the [PAF file format](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf)|
 
@@ -6996,7 +6996,7 @@ This operation does not require authentication
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|*anonymous*|string|mandatory|The category to which a product or account belongs. See [here](#product-categories) for more details|
+|*anonymous*|[Enum](#common-field-types)|mandatory|The category to which a product or account belongs. See [here](#product-categories) for more details|
 
 #### Enumerated Values
 

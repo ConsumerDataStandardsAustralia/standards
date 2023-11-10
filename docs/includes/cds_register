@@ -2128,7 +2128,7 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>industries</td>
-<td>[string]</td>
+<td>[<a href="#common-field-types">Enum</a>]</td>
 <td>mandatory</td>
 <td>The industries the Data Holder Brand belongs to</td>
 </tr>
@@ -2316,7 +2316,7 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>industries</td>
-<td>[string]</td>
+<td>[<a href="#common-field-types">Enum</a>]</td>
 <td>mandatory</td>
 <td>The industries the Data Holder Brand belongs to</td>
 </tr>

@@ -2,7 +2,7 @@
   "openapi" : "3.0.3",
   "info" : {
     "title" : "CDR Participant Discovery API",
-    "version" : "1.27.0"
+    "version" : "1.28.0"
   },
   "servers" : [ {
     "url" : "https://<register-base-url>/"

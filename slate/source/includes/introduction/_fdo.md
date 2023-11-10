@@ -4,12 +4,6 @@ The standards, as published from time to time, may include specific statements i
 
 The table below highlights these areas of the standards.
 
-
-
-```diff
-Added clarification for 'Get Energy Account Detail V2' for Data Holders going live on, or after, November 1st 2023
-```
-
 |Section|Description|Applicable Date|
 |-------|-----------|---------------|
 |[Get Account Detail V1](#get-account-detail)|Data holders **MAY** retire version 1 of this end point from February 28th 2023.  Data recipients **MUST** upgrade their implementations to use version 2 by this time|February 28th 2023|

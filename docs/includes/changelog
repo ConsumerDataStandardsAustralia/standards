@@ -1,5 +1,4 @@
-<h1 id='change-log'>Change Log</h1><pre class="highlight diff tab-diff"><code>Updated release notes for version 1.25.0 to include references to three maintenance issues that were part of the release but not previously noted
-</code></pre>
+<h1 id='change-log'>Change Log</h1>
 <p>The following table lists the changes made to these standards in reverse date order (most recent change is at the top).</p>
 
 <table><thead>
@@ -10,6 +9,12 @@
 <th>Detail Of change</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>10/11/2023</td>
+<td>1.28.0</td>
+<td>Candidate standards arising from Decision 306 and updated draft non-bank lending standards</td>
+<td>See <a href="includes/releasenotes/releasenotes.1.28.0.html">release notes</a> and <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/306">Decision 306</a> for details.</td>
+</tr>
 <tr>
 <td>10/10/2023</td>
 <td>1.27.0</td>

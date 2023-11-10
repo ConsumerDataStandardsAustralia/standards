@@ -6507,7 +6507,7 @@ This operation does not require authentication
 </thead><tbody>
 <tr>
 <td>featureType</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>The type of feature described</td>
 </tr>
@@ -6676,7 +6676,7 @@ This operation does not require authentication
 </thead><tbody>
 <tr>
 <td>constraintType</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>The type of constraint described.  See the next section for an overview of valid values and their meaning</td>
 </tr>
@@ -6749,7 +6749,7 @@ This operation does not require authentication
 </thead><tbody>
 <tr>
 <td>eligibilityType</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>The type of eligibility criteria described.  See the next section for an overview of valid values and their meaning</td>
 </tr>
@@ -6885,7 +6885,7 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>feeType</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>The type of fee</td>
 </tr>
@@ -7040,7 +7040,7 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>discountType</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>The type of discount. See the next section for an overview of valid values and their meaning</td>
 </tr>
@@ -7149,7 +7149,7 @@ This operation does not require authentication
 </thead><tbody>
 <tr>
 <td>discountEligibilityType</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>The type of the specific eligibility constraint for a discount</td>
 </tr>
@@ -7272,7 +7272,7 @@ This operation does not require authentication
 </thead><tbody>
 <tr>
 <td>depositRateType</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>The type of rate (base, bonus, etc). See the next section for an overview of valid values and their meaning</td>
 </tr>
@@ -7399,7 +7399,7 @@ This operation does not require authentication
 </thead><tbody>
 <tr>
 <td>lendingRateType</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>The type of rate (fixed, variable, etc). See the next section for an overview of valid values and their meaning</td>
 </tr>
@@ -7429,19 +7429,19 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>interestPaymentDue</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>optional</td>
 <td>When loan payments are due to be paid within each period. The investment benefit of earlier payments affect the rate that can be offered</td>
 </tr>
 <tr>
 <td>repaymentType</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>optional</td>
 <td>Options in place for repayments. If absent, the lending rate is applicable to all repayment types</td>
 </tr>
 <tr>
 <td>loanPurpose</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>optional</td>
 <td>The reason for taking out the loan. If absent, the lending rate is applicable to all loan purposes</td>
 </tr>
@@ -7583,7 +7583,7 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>unitOfMeasure</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>The unit of measure that applies to the tierValueMinimum and tierValueMaximum values e.g. a <strong>DOLLAR</strong> amount. <strong>PERCENT</strong> (in the case of loan-to-value ratio or LVR). Tier term period representing a discrete number of <strong>MONTH</strong>&#39;s or <strong>DAY</strong>&#39;s (in the case of term deposit tiers)</td>
 </tr>
@@ -7601,7 +7601,7 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>rateApplicationMethod</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>optional</td>
 <td>The method used to calculate the amount to be applied using one or more tiers. A single rate may be applied to the entire balance or each applicable tier rate is applied to the portion of the balance that falls into that tier (referred to as &#39;bands&#39; or &#39;steps&#39;)</td>
 </tr>
@@ -7809,7 +7809,7 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>openStatus</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>optional</td>
 <td>Open or closed status for the account. If not present then OPEN is assumed</td>
 </tr>
@@ -7821,7 +7821,7 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>accountOwnership</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>Value indicating the number of customers that have ownership of the account, according to the data holder&#39;s definition of account ownership. Does not indicate that all account owners are eligible consumers</td>
 </tr>
@@ -8365,7 +8365,7 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>» specificAccountUType</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>optional</td>
 <td>The type of structure to present account specific fields.</td>
 </tr>
@@ -8551,7 +8551,7 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>maturityInstructions</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>Current instructions on action to be taken at maturity. This includes default actions that may be specified in the terms and conditions for the product e.g. roll-over to the same term and frequency of interest payments</td>
 </tr>
@@ -8734,7 +8734,7 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>repaymentType</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>optional</td>
 <td>Options in place for repayments. If absent defaults to PRINCIPAL_AND_INTEREST</td>
 </tr>
@@ -8892,13 +8892,13 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>type</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>The type of the transaction</td>
 </tr>
 <tr>
 <td>status</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>Status of the transaction whether pending or posted. Note that there is currently no provision in the standards to guarantee the ability to correlate a pending transaction with an associated posted transaction</td>
 </tr>
@@ -9190,7 +9190,7 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>»» extensionUType</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>optional</td>
 <td>Optional extended data specific to transactions originated via NPP</td>
 </tr>
@@ -9220,7 +9220,7 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>»» service</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>Identifier of the applicable overlay service. Valid values are: X2P1.01</td>
 </tr>
@@ -9665,7 +9665,7 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>type</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>The type of payee.<br/>DOMESTIC means a registered payee for domestic payments including NPP. <br/>INTERNATIONAL means a registered payee for international payments. <br/>BILLER means a registered payee for BPAY. <br/>DIGITAL_WALLET means a registered payee for a bank&#39;s digital wallet</td>
 </tr>
@@ -9798,7 +9798,7 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>» payeeUType</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>Type of object included that describes the payee in detail</td>
 </tr>
@@ -9883,7 +9883,7 @@ This operation does not require authentication
 </thead><tbody>
 <tr>
 <td>payeeAccountUType</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>Type of account object included. Valid values are: <strong>account</strong> A standard Australian account defined by BSB/Account Number. <strong>card</strong> A credit or charge card to pay to (note that PANs are masked). <strong>payId</strong> A PayID recognised by NPP</td>
 </tr>
@@ -10021,7 +10021,7 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>type</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>The type of the PayID</td>
 </tr>
@@ -10254,13 +10254,13 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>type</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>The type of the digital wallet identifier</td>
 </tr>
 <tr>
 <td>provider</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>The provider of the digital wallet</td>
 </tr>
@@ -10760,7 +10760,7 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>status</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>Indicates whether the schedule is currently active. The value SKIP is equivalent to ACTIVE except that the customer has requested the next normal occurrence to be skipped.</td>
 </tr>
@@ -10977,7 +10977,7 @@ This operation does not require authentication
 </thead><tbody>
 <tr>
 <td>toUType</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>The type of object provided that specifies the destination of the funds for the payment.</td>
 </tr>
@@ -11140,7 +11140,7 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>recurrenceUType</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>The type of recurrence used to define the schedule</td>
 </tr>
@@ -11260,7 +11260,7 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>nonBusinessDayTreatment</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>optional</td>
 <td>Enumerated field giving the treatment where a scheduled payment date is not a business day. If absent assumed to be ON.<br/><strong>AFTER</strong> - If a scheduled payment date is a non-business day the payment will be made on the first business day after the scheduled payment date.<br/><strong>BEFORE</strong> - If a scheduled payment date is a non-business day the payment will be made on the first business day before the scheduled payment date.<br/><strong>ON</strong> - If a scheduled payment date is a non-business day the payment will be made on that day regardless.<br/><strong>ONLY</strong> - Payments only occur on business days. If a scheduled payment date is a non-business day the payment will be ignored</td>
 </tr>
@@ -11369,13 +11369,13 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>lastWeekDay</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>The weekDay specified. The payment will occur on the last occurrence of this weekday in the interval.</td>
 </tr>
 <tr>
 <td>nonBusinessDayTreatment</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>optional</td>
 <td>Enumerated field giving the treatment where a scheduled payment date is not a business day. If absent assumed to be ON.<br/><strong>AFTER</strong> - If a scheduled payment date is a non-business day the payment will be made on the first business day after the scheduled payment date.<br/><strong>BEFORE</strong> - If a scheduled payment date is a non-business day the payment will be made on the first business day before the scheduled payment date.<br/><strong>ON</strong> - If a scheduled payment date is a non-business day the payment will be made on that day regardless.<br/><strong>ONLY</strong> - Payments only occur on business days. If a scheduled payment date is a non-business day the payment will be ignored</td>
 </tr>
@@ -11511,7 +11511,7 @@ This operation does not require authentication
 </thead><tbody>
 <tr>
 <td>addressUType</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>The type of address object present</td>
 </tr>
@@ -12059,7 +12059,7 @@ This operation does not require authentication
 </thead><tbody>
 <tr>
 <td><em>anonymous</em></td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>The category to which a product or account belongs. See <a href="#product-categories">here</a> for more details</td>
 </tr>

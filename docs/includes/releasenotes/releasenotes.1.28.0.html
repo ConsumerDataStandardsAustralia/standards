@@ -1,0 +1,330 @@
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Consumer Data Standards - v1.28.0 Release Notes</title>
+    <link href="../../images/favicon.ico" rel="icon" type="image/ico" />
+
+    <style>
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .gh {
+  color: #999999;
+}
+.highlight .sr {
+  color: #f6aa11;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .nb {
+  color: #f6aa11;
+}
+.highlight .cm {
+  color: #75715e;
+}
+.highlight .cp {
+  color: #75715e;
+}
+.highlight .c1 {
+  color: #75715e;
+}
+.highlight .cs {
+  color: #75715e;
+}
+.highlight .c, .highlight .cd {
+  color: #75715e;
+}
+.highlight .err {
+  color: #960050;
+}
+.highlight .gr {
+  color: #960050;
+}
+.highlight .gt {
+  color: #960050;
+}
+.highlight .gd {
+  color: #49483e;
+}
+.highlight .gi {
+  color: #49483e;
+}
+.highlight .ge {
+  color: #49483e;
+}
+.highlight .kc {
+  color: #66d9ef;
+}
+.highlight .kd {
+  color: #66d9ef;
+}
+.highlight .kr {
+  color: #66d9ef;
+}
+.highlight .no {
+  color: #66d9ef;
+}
+.highlight .kt {
+  color: #66d9ef;
+}
+.highlight .mf {
+  color: #ae81ff;
+}
+.highlight .mh {
+  color: #ae81ff;
+}
+.highlight .il {
+  color: #ae81ff;
+}
+.highlight .mi {
+  color: #ae81ff;
+}
+.highlight .mo {
+  color: #ae81ff;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #ae81ff;
+}
+.highlight .sc {
+  color: #ae81ff;
+}
+.highlight .se {
+  color: #ae81ff;
+}
+.highlight .ss {
+  color: #ae81ff;
+}
+.highlight .sd {
+  color: #e6db74;
+}
+.highlight .s2 {
+  color: #e6db74;
+}
+.highlight .sb {
+  color: #e6db74;
+}
+.highlight .sh {
+  color: #e6db74;
+}
+.highlight .si {
+  color: #e6db74;
+}
+.highlight .sx {
+  color: #e6db74;
+}
+.highlight .s1 {
+  color: #e6db74;
+}
+.highlight .s {
+  color: #e6db74;
+}
+.highlight .na {
+  color: #a6e22e;
+}
+.highlight .nc {
+  color: #a6e22e;
+}
+.highlight .nd {
+  color: #a6e22e;
+}
+.highlight .ne {
+  color: #a6e22e;
+}
+.highlight .nf {
+  color: #a6e22e;
+}
+.highlight .vc {
+  color: #ffffff;
+}
+.highlight .nn {
+  color: #ffffff;
+}
+.highlight .nl {
+  color: #ffffff;
+}
+.highlight .ni {
+  color: #ffffff;
+}
+.highlight .bp {
+  color: #ffffff;
+}
+.highlight .vg {
+  color: #ffffff;
+}
+.highlight .vi {
+  color: #ffffff;
+}
+.highlight .nv {
+  color: #ffffff;
+}
+.highlight .w {
+  color: #ffffff;
+}
+.highlight {
+  color: #ffffff;
+}
+.highlight .n, .highlight .py, .highlight .nx {
+  color: #ffffff;
+}
+.highlight .ow {
+  color: #f92672;
+}
+.highlight .nt {
+  color: #f92672;
+}
+.highlight .k, .highlight .kv {
+  color: #f92672;
+}
+.highlight .kn {
+  color: #f92672;
+}
+.highlight .kp {
+  color: #f92672;
+}
+.highlight .o {
+  color: #f92672;
+}
+    </style>
+    <link href="../../stylesheets/screen.css" rel="stylesheet" media="screen" />
+    <link href="../../stylesheets/print.css" rel="stylesheet" media="print" />
+      <script src="../../javascripts/all_nosearch.js"></script>
+  </head>
+
+  <body class="no-code-layout includes includes_releasenotes includes_releasenotes_releasenotes" data-languages="[]">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="../../images/navbar.png" alt="Navbar" />
+      </span>
+    </a>
+    <div class="toc-wrapper">
+      <img src="../../images/logo.png" class="logo" alt="Logo" />
+      <ul id="toc" class="toc-list-h1">
+          <li>
+            <a href="#v1-28-0-release-notes" class="toc-h1 toc-link" data-title="V1.28.0 Release Notes">V1.28.0 Release Notes</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#changes-made" class="toc-h2 toc-link" data-title="Changes Made">Changes Made</a>
+                  </li>
+                  <li>
+                    <a href="#general-changes" class="toc-h2 toc-link" data-title="General Changes">General Changes</a>
+                  </li>
+                  <li>
+                    <a href="#introduction" class="toc-h2 toc-link" data-title="Introduction">Introduction</a>
+                  </li>
+                  <li>
+                    <a href="#high-level-standards" class="toc-h2 toc-link" data-title="High Level Standards">High Level Standards</a>
+                  </li>
+                  <li>
+                    <a href="#api-end-points" class="toc-h2 toc-link" data-title="API End Points">API End Points</a>
+                  </li>
+                  <li>
+                    <a href="#information-security-profile" class="toc-h2 toc-link" data-title="Information Security Profile">Information Security Profile</a>
+                  </li>
+                  <li>
+                    <a href="#register-standards" class="toc-h2 toc-link" data-title="Register Standards">Register Standards</a>
+                  </li>
+                  <li>
+                    <a href="#consumer-experience" class="toc-h2 toc-link" data-title="Consumer Experience">Consumer Experience</a>
+                  </li>
+                  <li>
+                    <a href="#non-functional-requirements" class="toc-h2 toc-link" data-title="Non-Functional Requirements">Non-Functional Requirements</a>
+                  </li>
+                  <li>
+                    <a href="#additional-standards" class="toc-h2 toc-link" data-title="Additional Standards">Additional Standards</a>
+                  </li>
+                  <li>
+                    <a href="#known-issues" class="toc-h2 toc-link" data-title="Known Issues">Known Issues</a>
+                  </li>
+              </ul>
+          </li>
+      </ul>
+        <ul class="toc-footer">
+            <li><a href='../../index.html'>Consumer Data Standards</a></li>
+        </ul>
+    </div>
+    <div class="page-wrapper">
+      <div class="content">
+        <h1 id='v1-28-0-release-notes'>V1.28.0 Release Notes</h1>
+<p>Release notes for version v1.28.0 of the <a href="../../">CDR Standards</a>.</p>
+<h2 id='changes-made'>Changes Made</h2><h3 id='change-requests'>Change Requests</h3>
+<p>This release addresses the following minor defects raised on <a href="https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues">Standards Staging</a>:</p>
+
+<p>None</p>
+
+<p>This release addresses the following change requests raised on <a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues">Standards Maintenance</a>:</p>
+
+<p>None</p>
+<h3 id='decision-proposals'>Decision Proposals</h3>
+<p>This release addresses the following Decision Proposals published on <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues">Standards</a>:</p>
+
+<ul>
+<li><a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/306">Decision Proposal 306 - Updates to Banking Product and Account Detail</a> (See <a href="#additional-standards">Decision Proposal 306 Candidate</a> below)</li>
+<li><a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/318">Decision Proposal 318 - Non-Bank Lending Standards</a> (See <a href="#additional-standards">Non-Bank Lending Draft</a> below)</li>
+</ul>
+<h2 id='general-changes'>General Changes</h2>
+<table><thead>
+<tr>
+<th>Change</th>
+<th>Description</th>
+<th>Link</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Enum property type</td>
+<td>Properties defined with enumerated values will now show the type as &#39;Enum&#39; instead of &#39;string&#39;</td>
+<td>All schema Properties tables</td>
+</tr>
+</tbody></table>
+<h2 id='introduction'>Introduction</h2>
+<p>None</p>
+<h2 id='high-level-standards'>High Level Standards</h2>
+<p>None</p>
+<h2 id='api-end-points'>API End Points</h2>
+<p>None</p>
+<h2 id='information-security-profile'>Information Security Profile</h2>
+<p>None</p>
+<h2 id='register-standards'>Register Standards</h2>
+<p>None</p>
+<h2 id='consumer-experience'>Consumer Experience</h2>
+<p>None</p>
+<h2 id='non-functional-requirements'>Non-Functional Requirements</h2>
+<p>None</p>
+<h2 id='additional-standards'>Additional Standards</h2>
+<table><thead>
+<tr>
+<th>Change</th>
+<th>Description</th>
+<th>Link</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Decision Proposal 306 Candidate</td>
+<td><ul><li>Changed the <code>cardArt</code> array to a <code>cardOption</code> object to provide additional card details in &#39;Get Products&#39;, &#39;Get Product Detail&#39; and &#39;Get Account Detail&#39;.<li>Added the <code>FEE</code> <code>lendingRateType</code> value to support lending products that have a fee-based rather than rate-based cost. This type may be expected to align to the new <code>PRINCIPAL_AND_FEE</code> <code>repaymentType</code>.<li>Added the <code>BALANCE_TRANSFER</code> <code>lendingRateType</code> value to extend support for credit card plan detail.<li>Updated the <code>creditCard</code> schema in &#39;Get Account Detail&#39; to allow an array of plan types, each with specific rates, repayments, adjustments and features.<li>Added <code>revertRate</code>, <code>revertProductId</code>, <code>rateStartDate</code> and <code>rateEndDate</code> fields to respective lending rate schemas to support &#39;revert&#39; rate details.<li>Added <code>referenceRate</code> to multiple lending and deposit rate schemas.<li>Added <code>adjustmentToBase</code> and <code>adjustmentBundle</code> fields to the &#39;BankingProductLendingRate&#39; and &#39;BankingProductDepositRate&#39; schemas. The <code>adjustmentToBase</code> field is provided to allow an adjustment rate type to specify which base rate type the adjustment applies to, where many may be offered for a product.<li>Updated and added the <code>applicabilityConditions</code> field in the &#39;BankingProductLendingRate&#39;, &#39;BankingProductDepositRate&#39; and &#39;BankingProductRateTier&#39; schemas.<li>Added the <code>applicationType</code> field to clarify whether an associated <code>applicationFrequency</code> value is to be expected.<li>Updated the description of the <code>features</code> property of &#39;Get Product Detail&#39; and &#39;Get Account Detail&#39; to clarify that the schema also supports providing details of any key operational product limitations.<li>Updated the description of the <code>constraints</code> property of &#39;Get Product Detail&#39; to clarify that the schema is only intended to provide details of constraints on application for the product.<li>Added new <code>featureType</code> values to support operational limitations and the <code>OTHER</code> <code>constraintType</code> to allow additional detail to be provided.<li>Added new <code>feeCategory</code> field and new <code>feeType</code> values to improve classification and comparison of fees.<li>Updated the &#39;BankingProductFee&#39; schema to separate different fee types by UType and added minimum and maximum fee details and <code>feeCap</code> fields.<li>Incorporated rate detail into the &#39;Get Account Detail&#39; schemas to provide specific rate fields separated from the generic Product Reference rate objects.<li>Extended the <code>termDeposit</code> schema in &#39;Get Account Detail&#39; to allow each deposit to be specified with specific rates and terms.<li>Updated the &#39;adjustment&#39; rate type values to remove the <code>INTRODUCTORY</code>, <code>BUNDLE_BONUS</code>, <code>BUNDLE_DISCOUNT_FIXED</code>, <code>BUNDLE_DISCOUNT_VARIABLE</code> options. Time and bundle-based rate detail will be supported through new fields to capture that detail: <code>adjustmentBundle</code>, <code>adjustmentPeriod</code> and <code>adjustmentEndDate</code>, leaving the <code>additionalValue</code> field available for other detail where necessary.<li>Added a <code>deposit</code> schema in &#39;Get Account Detail&#39; to provide rate detail for general deposit structures without term deposit maturity detail.<li>Removed the <code>specificAccountUType</code> field in &#39;Get Account Detail&#39; to clarify that multiple types may be present in a single account.<li>Updated the &#39;Use of additionalValue Field&#39; descriptions for the <code>PENSION_RECIPIENT</code> and <code>STUDENT</code> &#39;Product Eligibility&#39; and &#39;Product Discount Eligibility&#39; types.<li>Updated the description of the <code>comparisonRate</code> field to clarify how it could be interpreted when associated with an adjustment rate type.<li>Updated the description of the rate tier <code>unitOfMeasure</code> field to clarify the format of the associated values, including specifying <code>PERCENT</code> values as a RateString.<li>This candidate incorporates the latest Non-Bank Lending (NBL) <a href="../../#draft-standards">Draft</a> changes including the <code>BUY_NOW_PAY_LATER</code> product category value, the <code>instalments</code> object, and related feature and fee types. The endpoint versions incremented due to changes related to the NBL Draft only, are:<ul><li>Get Accounts (v3)<li>Get Bulk Balances (v2)<li>Get Bulk Direct Debits (v2)<li>Get Scheduled Payments Bulk (v3).<li>Other NBL changes affecting the Register APIs are only shown in the <a href="../../#draft-standards">NBL Draft</a>.</ul><li>The endpoint versions incremented primarily for Decision Proposal 306, but also including NBL detail are: <ul><li>Get Account Detail (v4)<li>Get Products (v4)<li>Get Product Detail (v5).</ul><li>Corrected minor typos and updated documentation formatting.</ul></td>
+<td><a href="../../#candidate-standards">Candidate Standards</a></td>
+</tr>
+<tr>
+<td>Non-Bank Lending Draft</td>
+<td><ul><li>Updated Register endpoint versions affected by the addition of the <code>non-bank-lending</code> value in the <code>industry</code> query and <code>industries</code> response field.<li>The endpoint versions incremented due to these changes are: <ul><li>Get Data Holder Brands (v3)<li>Get Data Holder Brands Summary (v2)<li>Get Data Holder Statuses (v2).</ul><li>Previous Register endpoint versions are available through the respective &#39;Obsolete versions&#39; links.</ul><ul><li>Updated Banking endpoint versions affected by the addition of the <code>BUY_NOW_PAY_LATER</code> value in the <code>product-category</code> query.<li>Added <code>instalments</code> object in &#39;Get Product Detail&#39; and &#39;Get Account Detail&#39; endpoints.<li>Added <code>EXTRA_DOWN_PAYMENT</code> <code>featureType</code> to support &#39;Buy Now, Pay Later&#39; or similar products where a variable down-payment may be made.<li>Added the &#39;Product Categories&#39; section to include a general description of the <code>BUY_NOW_PAY_LATER</code> category.<li>Added the &#39;Product &amp; Account Components&#39; section to include descriptions of the previously included <code>PAYMENT_LATE</code> and <code>UPFRONT_PER_PLAN</code> <code>feeType</code> values.<li>The endpoint versions incremented due to these changes are: <ul><li>Get Accounts (v3)<li>Get Bulk Balances (v2)<li>Get Account Detail (v4)<li>Get Bulk Direct Debits (v2)<li>Get Scheduled Payments Bulk (v3)<li>Get Products (v4)<li>Get Product Detail (v5).</ul><li>Previous Banking endpoint versions are available through the respective &#39;Obsolete versions&#39; links.<li>Corrected minor typos and updated documentation formatting.<li>Added Consumer Experience section with Banking Language for reference only.</ul></td>
+<td><a href="../../#draft-standards">Draft Standards</a></td>
+</tr>
+</tbody></table>
+<h2 id='known-issues'>Known Issues</h2>
+<p>None</p>
+
+      </div>
+    </div>
+  </body>
+</html>

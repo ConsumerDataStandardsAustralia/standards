@@ -1,5 +1,9 @@
 ## Common Field Types
 
+```diff
+Properties defined in response schemas with enumerated values will now correctly show the type as 'Enum' instead of 'string'
+```
+
 The following table outlines the common data types for fields used in the standard.
 
 Type | Description | Valid Examples

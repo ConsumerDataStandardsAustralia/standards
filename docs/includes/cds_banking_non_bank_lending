@@ -44,7 +44,7 @@
 
 <p>Obtain a list of accounts.</p>
 
-<p>Obsolete versions: <a href="obsolete/get-accounts-v1.html">v1</a></p>
+<p>Obsolete versions: <a href="obsolete/get-accounts-v1.html">v1</a>, <a href="obsolete/get-accounts-v2.html">v2</a></p>
 <h3 id='endpoint-version'>Endpoint Version</h3>
 <table><thead>
 <tr>
@@ -54,7 +54,7 @@
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>2</strong></td>
+<td><strong>3</strong></td>
 </tr>
 </tbody></table>
 
@@ -74,14 +74,14 @@
 <td>query</td>
 <td>string</td>
 <td>optional</td>
-<td>Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.)</td>
+<td>Used to filter results on the <code>productCategory</code> field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.)</td>
 </tr>
 <tr>
 <td>open-status</td>
 <td>query</td>
 <td>string</td>
 <td>optional</td>
-<td>Used to filter results according to open/closed status. Values can be OPEN, CLOSED or ALL. If absent then ALL is assumed</td>
+<td>Used to filter results according to open/closed status. Values can be <code>OPEN</code>, <code>CLOSED</code> or <code>ALL</code>. If absent then <code>ALL</code> is assumed</td>
 </tr>
 <tr>
 <td>is-owned</td>
@@ -109,14 +109,14 @@
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See <a href="#request-headers">HTTP Headers</a></td>
+<td>Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the data holder must respond with a <code>406 Not Acceptable</code>. See <a href="#request-headers">HTTP Headers</a></td>
 </tr>
 <tr>
 <td>x-min-v</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.</td>
+<td>Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the data holder must respond with a <code>406 Not Acceptable</code>.</td>
 </tr>
 <tr>
 <td>x-fapi-interaction-id</td>
@@ -269,7 +269,7 @@
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>Success</td>
-<td><a href="#schemacdr-banking-apiresponsebankingaccountlistv2">ResponseBankingAccountListV2</a></td>
+<td><a href="#schemacdr-banking-apiresponsebankingaccountlistv3">ResponseBankingAccountListV3</a></td>
 </tr>
 <tr>
 <td>400</td>
@@ -305,7 +305,7 @@
 <td>x-v</td>
 <td>string</td>
 <td></td>
-<td>The <a href="#response-headers">version</a> of the API end point that the data holder has responded with.</td>
+<td>The <a href="#response-headers">version</a> of the API endpoint that the data holder has responded with.</td>
 </tr>
 <tr>
 <td>200</td>
@@ -386,6 +386,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 <p><code>GET /banking/accounts/balances</code></p>
 
 <p>Obtain balances for multiple, filtered accounts</p>
+
+<p>Obsolete versions: <a href="obsolete/get-bulk-balances-v1.html">v1</a></p>
 <h3 id='endpoint-version-2'>Endpoint Version</h3>
 <table><thead>
 <tr>
@@ -395,7 +397,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>1</strong></td>
+<td><strong>2</strong></td>
 </tr>
 </tbody></table>
 
@@ -415,14 +417,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>query</td>
 <td>string</td>
 <td>optional</td>
-<td>Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.</td>
+<td>Used to filter results on the <code>productCategory</code> field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.</td>
 </tr>
 <tr>
 <td>open-status</td>
 <td>query</td>
 <td>string</td>
 <td>optional</td>
-<td>Used to filter results according to open/closed status. Values can be OPEN, CLOSED or ALL. If absent then ALL is assumed</td>
+<td>Used to filter results according to open/closed status. Values can be <code>OPEN</code>, <code>CLOSED</code> or <code>ALL</code>. If absent then <code>ALL</code> is assumed</td>
 </tr>
 <tr>
 <td>is-owned</td>
@@ -450,14 +452,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See <a href="#request-headers">HTTP Headers</a></td>
+<td>Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the data holder must respond with a <code>406 Not Acceptable</code>. See <a href="#request-headers">HTTP Headers</a></td>
 </tr>
 <tr>
 <td>x-min-v</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.</td>
+<td>Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the data holder must respond with a <code>406 Not Acceptable</code>.</td>
 </tr>
 <tr>
 <td>x-fapi-interaction-id</td>
@@ -648,7 +650,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>x-v</td>
 <td>string</td>
 <td></td>
-<td>The <a href="#response-headers">version</a> of the API end point that the data holder has responded with.</td>
+<td>The <a href="#response-headers">version</a> of the API endpoint that the data holder has responded with.</td>
 </tr>
 <tr>
 <td>200</td>
@@ -793,14 +795,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See <a href="#request-headers">HTTP Headers</a></td>
+<td>Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the data holder must respond with a <code>406 Not Acceptable</code>. See <a href="#request-headers">HTTP Headers</a></td>
 </tr>
 <tr>
 <td>x-min-v</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.</td>
+<td>Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the data holder must respond with a <code>406 Not Acceptable</code>.</td>
 </tr>
 <tr>
 <td>x-fapi-interaction-id</td>
@@ -926,7 +928,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>x-v</td>
 <td>string</td>
 <td></td>
-<td>The <a href="#response-headers">version</a> of the API end point that the data holder has responded with.</td>
+<td>The <a href="#response-headers">version</a> of the API endpoint that the data holder has responded with.</td>
 </tr>
 <tr>
 <td>200</td>
@@ -1043,14 +1045,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See <a href="#request-headers">HTTP Headers</a></td>
+<td>Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the data holder must respond with a <code>406 Not Acceptable</code>. See <a href="#request-headers">HTTP Headers</a></td>
 </tr>
 <tr>
 <td>x-min-v</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.</td>
+<td>Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the data holder must respond with a <code>406 Not Acceptable</code>.</td>
 </tr>
 <tr>
 <td>x-fapi-interaction-id</td>
@@ -1158,7 +1160,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>x-v</td>
 <td>string</td>
 <td></td>
-<td>The <a href="#response-headers">version</a> of the API end point that the data holder has responded with.</td>
+<td>The <a href="#response-headers">version</a> of the API endpoint that the data holder has responded with.</td>
 </tr>
 <tr>
 <td>200</td>
@@ -1240,7 +1242,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p>Obtain detailed information on a single account.</p>
 
-<p>Obsolete versions: <a href="obsolete/get-account-detail-v1.html">v1</a>, <a href="obsolete/get-account-detail-v2.html">v2</a></p>
+<p>Obsolete versions: <a href="obsolete/get-account-detail-v1.html">v1</a>, <a href="obsolete/get-account-detail-v2.html">v2</a>, <a href="obsolete/get-account-detail-v3.html">v3</a></p>
 <h3 id='endpoint-version-5'>Endpoint Version</h3>
 <table><thead>
 <tr>
@@ -1250,7 +1252,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>3</strong></td>
+<td><strong>4</strong></td>
 </tr>
 </tbody></table>
 
@@ -1277,14 +1279,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See <a href="#request-headers">HTTP Headers</a></td>
+<td>Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the data holder must respond with a <code>406 Not Acceptable</code>. See <a href="#request-headers">HTTP Headers</a></td>
 </tr>
 <tr>
 <td>x-min-v</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.</td>
+<td>Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the data holder must respond with a <code>406 Not Acceptable</code>.</td>
 </tr>
 <tr>
 <td>x-fapi-interaction-id</td>
@@ -1336,6 +1338,29 @@ To perform this operation, you must be authenticated and authorised with the fol
     </span><span class="s2">"bsb"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"accountNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"bundleName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"instalments"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"maximumPlanCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"instalmentsLimit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"minimumPlanValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"maximumPlanValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"minimumSplit"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"maximumSplit"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"plans"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"planNickname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"creationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"duration"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"instalmentInterval"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"schedule"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"amountDue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"dueDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
     </span><span class="s2">"specificAccountUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"creditCard"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"termDeposit"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
@@ -1535,7 +1560,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>Success</td>
-<td><a href="#schemacdr-banking-apiresponsebankingaccountbyidv3">ResponseBankingAccountByIdV3</a></td>
+<td><a href="#schemacdr-banking-apiresponsebankingaccountbyidv4">ResponseBankingAccountByIdV4</a></td>
 </tr>
 <tr>
 <td>400</td>
@@ -1571,7 +1596,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>x-v</td>
 <td>string</td>
 <td></td>
-<td>The <a href="#response-headers">version</a> of the API end point that the data holder has responded with.</td>
+<td>The <a href="#response-headers">version</a> of the API endpoint that the data holder has responded with.</td>
 </tr>
 <tr>
 <td>200</td>
@@ -1653,7 +1678,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p>Obtain transactions for a specific account.</p>
 
-<p>Some general notes that apply to all end points that retrieve transactions:</p>
+<p>Some general notes that apply to all endpoints that retrieve transactions:</p>
 
 <ul>
 <li>Where multiple transactions are returned, transactions should be ordered according to effective date in descending order</li>
@@ -1696,7 +1721,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>path</td>
 <td><a href="#common-field-types">ASCIIString</a></td>
 <td>mandatory</td>
-<td>ID of the account to get transactions for.  Must have previously been returned by one of the account list end points.</td>
+<td>ID of the account to get transactions for.  Must have previously been returned by one of the account list endpoints.</td>
 </tr>
 <tr>
 <td>oldest-time</td>
@@ -1752,14 +1777,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See <a href="#request-headers">HTTP Headers</a></td>
+<td>Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the data holder must respond with a <code>406 Not Acceptable</code>. See <a href="#request-headers">HTTP Headers</a></td>
 </tr>
 <tr>
 <td>x-min-v</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.</td>
+<td>Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the data holder must respond with a <code>406 Not Acceptable</code>.</td>
 </tr>
 <tr>
 <td>x-fapi-interaction-id</td>
@@ -1831,7 +1856,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"totalRecords"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
     </span><span class="s2">"totalPages"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"isQueryParamUnsupported"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+    </span><span class="s2">"isQueryParamUnsupported"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -1891,7 +1916,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>x-v</td>
 <td>string</td>
 <td></td>
-<td>The <a href="#response-headers">version</a> of the API end point that the data holder has responded with.</td>
+<td>The <a href="#response-headers">version</a> of the API endpoint that the data holder has responded with.</td>
 </tr>
 <tr>
 <td>200</td>
@@ -2008,28 +2033,28 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>path</td>
 <td><a href="#common-field-types">ASCIIString</a></td>
 <td>mandatory</td>
-<td>ID of the account to get transactions for.  Must have previously been returned by one of the account list end points</td>
+<td>ID of the account to get transactions for.  Must have previously been returned by one of the account list endpoints</td>
 </tr>
 <tr>
 <td>transactionId</td>
 <td>path</td>
 <td><a href="#common-field-types">ASCIIString</a></td>
 <td>mandatory</td>
-<td>ID of the transaction obtained from a previous call to one of the other transaction end points</td>
+<td>ID of the transaction obtained from a previous call to one of the other transaction endpoints</td>
 </tr>
 <tr>
 <td>x-v</td>
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See <a href="#request-headers">HTTP Headers</a></td>
+<td>Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the data holder must respond with a <code>406 Not Acceptable</code>. See <a href="#request-headers">HTTP Headers</a></td>
 </tr>
 <tr>
 <td>x-min-v</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.</td>
+<td>Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the data holder must respond with a <code>406 Not Acceptable</code>.</td>
 </tr>
 <tr>
 <td>x-fapi-interaction-id</td>
@@ -2154,7 +2179,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>x-v</td>
 <td>string</td>
 <td></td>
-<td>The <a href="#response-headers">version</a> of the API end point that the data holder has responded with.</td>
+<td>The <a href="#response-headers">version</a> of the API endpoint that the data holder has responded with.</td>
 </tr>
 <tr>
 <td>200</td>
@@ -2264,7 +2289,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>path</td>
 <td><a href="#common-field-types">ASCIIString</a></td>
 <td>mandatory</td>
-<td>ID of the account to get direct debit authorisations for.  Must have previously been returned by one of the account list end points.</td>
+<td>ID of the account to get direct debit authorisations for.  Must have previously been returned by one of the account list endpoints.</td>
 </tr>
 <tr>
 <td>page</td>
@@ -2285,14 +2310,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See <a href="#request-headers">HTTP Headers</a></td>
+<td>Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the data holder must respond with a <code>406 Not Acceptable</code>. See <a href="#request-headers">HTTP Headers</a></td>
 </tr>
 <tr>
 <td>x-min-v</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.</td>
+<td>Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the data holder must respond with a <code>406 Not Acceptable</code>.</td>
 </tr>
 <tr>
 <td>x-fapi-interaction-id</td>
@@ -2415,7 +2440,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>x-v</td>
 <td>string</td>
 <td></td>
-<td>The <a href="#response-headers">version</a> of the API end point that the data holder has responded with.</td>
+<td>The <a href="#response-headers">version</a> of the API endpoint that the data holder has responded with.</td>
 </tr>
 <tr>
 <td>200</td>
@@ -2503,6 +2528,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 <p><code>GET /banking/accounts/direct-debits</code></p>
 
 <p>Obtain direct debit authorisations for multiple, filtered accounts</p>
+
+<p>Obsolete versions: <a href="obsolete/get-bulk-direct-debits-v1.html">v1</a></p>
 <h3 id='endpoint-version-9'>Endpoint Version</h3>
 <table><thead>
 <tr>
@@ -2512,7 +2539,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>1</strong></td>
+<td><strong>2</strong></td>
 </tr>
 </tbody></table>
 
@@ -2532,14 +2559,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>query</td>
 <td>string</td>
 <td>optional</td>
-<td>Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.</td>
+<td>Used to filter results on the <code>productCategory</code> field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.</td>
 </tr>
 <tr>
 <td>open-status</td>
 <td>query</td>
 <td>string</td>
 <td>optional</td>
-<td>Used to filter results according to open/closed status. Values can be OPEN, CLOSED or ALL. If absent then ALL is assumed</td>
+<td>Used to filter results according to open/closed status. Values can be <code>OPEN</code>, <code>CLOSED</code> or <code>ALL</code>. If absent then <code>ALL</code> is assumed</td>
 </tr>
 <tr>
 <td>is-owned</td>
@@ -2567,14 +2594,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See <a href="#request-headers">HTTP Headers</a></td>
+<td>Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the data holder must respond with a <code>406 Not Acceptable</code>. See <a href="#request-headers">HTTP Headers</a></td>
 </tr>
 <tr>
 <td>x-min-v</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.</td>
+<td>Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the data holder must respond with a <code>406 Not Acceptable</code>.</td>
 </tr>
 <tr>
 <td>x-fapi-interaction-id</td>
@@ -2763,7 +2790,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>x-v</td>
 <td>string</td>
 <td></td>
-<td>The <a href="#response-headers">version</a> of the API end point that the data holder has responded with.</td>
+<td>The <a href="#response-headers">version</a> of the API endpoint that the data holder has responded with.</td>
 </tr>
 <tr>
 <td>200</td>
@@ -2908,14 +2935,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See <a href="#request-headers">HTTP Headers</a></td>
+<td>Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the data holder must respond with a <code>406 Not Acceptable</code>. See <a href="#request-headers">HTTP Headers</a></td>
 </tr>
 <tr>
 <td>x-min-v</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.</td>
+<td>Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the data holder must respond with a <code>406 Not Acceptable</code>.</td>
 </tr>
 <tr>
 <td>x-fapi-interaction-id</td>
@@ -3039,7 +3066,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>x-v</td>
 <td>string</td>
 <td></td>
-<td>The <a href="#response-headers">version</a> of the API end point that the data holder has responded with.</td>
+<td>The <a href="#response-headers">version</a> of the API endpoint that the data holder has responded with.</td>
 </tr>
 <tr>
 <td>200</td>
@@ -3151,7 +3178,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>path</td>
 <td><a href="#common-field-types">ASCIIString</a></td>
 <td>mandatory</td>
-<td>ID of the account to get scheduled payments for. Must have previously been returned by one of the account list end points. The account specified is the source account for the payment</td>
+<td>ID of the account to get scheduled payments for. Must have previously been returned by one of the account list endpoints. The account specified is the source account for the payment</td>
 </tr>
 <tr>
 <td>page</td>
@@ -3172,14 +3199,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See <a href="#request-headers">HTTP Headers</a></td>
+<td>Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the data holder must respond with a <code>406 Not Acceptable</code>. See <a href="#request-headers">HTTP Headers</a></td>
 </tr>
 <tr>
 <td>x-min-v</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.</td>
+<td>Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the data holder must respond with a <code>406 Not Acceptable</code>.</td>
 </tr>
 <tr>
 <td>x-fapi-interaction-id</td>
@@ -3390,7 +3417,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>x-v</td>
 <td>string</td>
 <td></td>
-<td>The <a href="#response-headers">version</a> of the API end point that the data holder has responded with.</td>
+<td>The <a href="#response-headers">version</a> of the API endpoint that the data holder has responded with.</td>
 </tr>
 <tr>
 <td>200</td>
@@ -3479,7 +3506,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p>Obtain scheduled payments for multiple, filtered accounts that are the source of funds for the payments</p>
 
-<p>Obsolete versions: <a href="obsolete/get-scheduled-payments-bulk-v1.html">v1</a></p>
+<p>Obsolete versions: <a href="obsolete/get-scheduled-payments-bulk-v1.html">v1</a>, <a href="obsolete/get-scheduled-payments-bulk-v2.html">v2</a></p>
 <h3 id='endpoint-version-12'>Endpoint Version</h3>
 <table><thead>
 <tr>
@@ -3489,7 +3516,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>2</strong></td>
+<td><strong>3</strong></td>
 </tr>
 </tbody></table>
 
@@ -3509,14 +3536,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>query</td>
 <td>string</td>
 <td>optional</td>
-<td>Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.</td>
+<td>Used to filter results on the <code>productCategory</code> field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.</td>
 </tr>
 <tr>
 <td>open-status</td>
 <td>query</td>
 <td>string</td>
 <td>optional</td>
-<td>Used to filter results according to open/closed status. Values can be OPEN, CLOSED or ALL. If absent then ALL is assumed</td>
+<td>Used to filter results according to open/closed status. Values can be <code>OPEN</code>, <code>CLOSED</code> or <code>ALL</code>. If absent then <code>ALL</code> is assumed</td>
 </tr>
 <tr>
 <td>is-owned</td>
@@ -3544,14 +3571,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See <a href="#request-headers">HTTP Headers</a></td>
+<td>Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the data holder must respond with a <code>406 Not Acceptable</code>. See <a href="#request-headers">HTTP Headers</a></td>
 </tr>
 <tr>
 <td>x-min-v</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.</td>
+<td>Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the data holder must respond with a <code>406 Not Acceptable</code>.</td>
 </tr>
 <tr>
 <td>x-fapi-interaction-id</td>
@@ -3828,7 +3855,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>x-v</td>
 <td>string</td>
 <td></td>
-<td>The <a href="#response-headers">version</a> of the API end point that the data holder has responded with.</td>
+<td>The <a href="#response-headers">version</a> of the API endpoint that the data holder has responded with.</td>
 </tr>
 <tr>
 <td>200</td>
@@ -3975,14 +4002,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See <a href="#request-headers">HTTP Headers</a></td>
+<td>Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the data holder must respond with a <code>406 Not Acceptable</code>. See <a href="#request-headers">HTTP Headers</a></td>
 </tr>
 <tr>
 <td>x-min-v</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.</td>
+<td>Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the data holder must respond with a <code>406 Not Acceptable</code>.</td>
 </tr>
 <tr>
 <td>x-fapi-interaction-id</td>
@@ -4194,7 +4221,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>x-v</td>
 <td>string</td>
 <td></td>
-<td>The <a href="#response-headers">version</a> of the API end point that the data holder has responded with.</td>
+<td>The <a href="#response-headers">version</a> of the API endpoint that the data holder has responded with.</td>
 </tr>
 <tr>
 <td>200</td>
@@ -4327,14 +4354,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See <a href="#request-headers">HTTP Headers</a></td>
+<td>Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the data holder must respond with a <code>406 Not Acceptable</code>. See <a href="#request-headers">HTTP Headers</a></td>
 </tr>
 <tr>
 <td>x-min-v</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.</td>
+<td>Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the data holder must respond with a <code>406 Not Acceptable</code>.</td>
 </tr>
 <tr>
 <td>x-fapi-interaction-id</td>
@@ -4474,7 +4501,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>x-v</td>
 <td>string</td>
 <td></td>
-<td>The <a href="#response-headers">version</a> of the API end point that the data holder has responded with.</td>
+<td>The <a href="#response-headers">version</a> of the API endpoint that the data holder has responded with.</td>
 </tr>
 <tr>
 <td>200</td>
@@ -4595,14 +4622,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See <a href="#request-headers">HTTP Headers</a></td>
+<td>Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the data holder must respond with a <code>406 Not Acceptable</code>. See <a href="#request-headers">HTTP Headers</a></td>
 </tr>
 <tr>
 <td>x-min-v</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.</td>
+<td>Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the data holder must respond with a <code>406 Not Acceptable</code>.</td>
 </tr>
 <tr>
 <td>x-fapi-interaction-id</td>
@@ -4758,7 +4785,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>x-v</td>
 <td>string</td>
 <td></td>
-<td>The <a href="#response-headers">version</a> of the API end point that the data holder has responded with.</td>
+<td>The <a href="#response-headers">version</a> of the API endpoint that the data holder has responded with.</td>
 </tr>
 <tr>
 <td>200</td>
@@ -4839,7 +4866,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p>Obtain a list of products that are currently openly offered to the market</p>
 
-<p>Note that the results returned by this end point are expected to be ordered in descending order according to <code>lastUpdated</code>.</p>
+<p>Note that the results returned by this endpoint are expected to be ordered in descending order according to <code>lastUpdated</code>.</p>
 <h3 id='conventions'>Conventions</h3>
 <p>In the product reference payloads there are a number of recurring conventions that are explained here, in one place.</p>
 <h4 id='arrays-of-features'>Arrays Of Features</h4>
@@ -4848,9 +4875,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 <ul>
 <li>Each element in an array has the same structure so that clients can reliably interpret the payloads</li>
 <li>Each element as a type element that is an enumeration of the specific aspect of a product being described, such as types of fees.</li>
-<li>Each element has a field name <a href="#productfeaturetypedoc">additionalValue</a>.  This is a generic field with contents that will vary based on the type of object being described. The contents of this field for the ADDITIONAL_CARDS feature is the number of cards allowed while the contents of this field for the MAX_LIMIT constraint would be the maximum credit limit allowed for the product.</li>
+<li>Each element has a field name <a href="#productfeaturetypedoc">additionalValue</a>.  This is a generic field with contents that will vary based on the type of object being described. The contents of this field for the <code>ADDITIONAL_CARDS</code> feature is the number of cards allowed while the contents of this field for the <code>MAX_LIMIT</code> constraint would be the maximum credit limit allowed for the product.</li>
 <li>An element in these arrays of the same type may appear more than once. For instance, a product may offer two separate loyalty programs that the customer can select from. A fixed term mortgage may have different rates for different term lengths.</li>
-<li>An element in these arrays may contain an additionalInfo and additionalInfoUri field. The additionalInfo field is used to provide displayable text clarifying the purpose of the element in some way when the product is presented to a customer. The additionalInfoUri provides a link to externally hosted information specifically relevant to that feature of the product.</li>
+<li>An element in these arrays may contain an <code>additionalInfo</code> and <code>additionalInfoUri</code> field. The <code>additionalInfo</code> field is used to provide displayable text clarifying the purpose of the element in some way when the product is presented to a customer. The <code>additionalInfoUri</code> provides a link to externally hosted information specifically relevant to that feature of the product.</li>
 <li>Depending on the type of data being represented there may be additional specific fields.</li>
 </ul>
 <h4 id='uris-to-more-information'>URIs To More Information</h4>
@@ -4860,15 +4887,15 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h4 id='linkage-to-accounts'>Linkage To Accounts</h4>
 <p>From the moment that a customer applies for a product and an account is created the account and the product that spawned it will diverge.  Rates and features of the product may change and a discount may be negotiated for the account.</p>
 
-<p>For this reason, while productCategory is a common field between accounts and products, there is no specific ID that can be used to link an account to a product within the regime.</p>
+<p>For this reason, while <code>productCategory</code> is a common field between accounts and products, there is no specific ID that can be used to link an account to a product within the regime.</p>
 
 <p>Similarly, many of the fields and objects in the product payload will appear in the account detail payload but the structures and semantics are not identical as one refers to a product that can potentially be originated and one refers to an account that actually has been instantiated and created along with the associated decisions inherent in that process.</p>
 <h4 id='dates'>Dates</h4>
-<p>It is expected that data consumers needing this data will call relatively frequently to ensure the data they have is representative of the current offering from a bank.  To minimise the volume and frequency of these calls the ability to set a lastUpdated field with the date and time of the last update to this product is included.  A call for a list of products can then be filtered to only return products that have been updated since the last time that data was obtained using the updated-since query parameter.</p>
+<p>It is expected that data consumers needing this data will call relatively frequently to ensure the data they have is representative of the current offering from a bank.  To minimise the volume and frequency of these calls the ability to set a <code>lastUpdated</code> field with the date and time of the last update to this product is included.  A call for a list of products can then be filtered to only return products that have been updated since the last time that data was obtained using the <code>updated-since</code> query parameter.</p>
 
 <p>In addition, the concept of effective date and time has also been included.  This allows for a product to be marked for obsolescence, or introduction, from a certain time without the need for an update to show that a product has been changed.  The inclusion of these dates also removes the need to represent deleted products in the payload.  Products that are no long offered can be marked not effective for a few weeks before they are then removed from the product set as an option entirely.</p>
 
-<p>Obsolete versions: <a href="obsolete/get-products-v1.html">v1</a> <a href="obsolete/get-products-v2.html">v2</a></p>
+<p>Obsolete versions: <a href="obsolete/get-products-v1.html">v1</a>, <a href="obsolete/get-products-v2.html">v2</a>, <a href="obsolete/get-products-v3.html">v3</a></p>
 <h3 id='endpoint-version-16'>Endpoint Version</h3>
 <table><thead>
 <tr>
@@ -4878,7 +4905,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>3</strong></td>
+<td><strong>4</strong></td>
 </tr>
 </tbody></table>
 
@@ -4898,7 +4925,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>query</td>
 <td>string</td>
 <td>optional</td>
-<td>Allows for the filtering of products based on whether the current time is within the period of time defined as effective by the effectiveFrom and effectiveTo fields. Valid values are ‘CURRENT’, ‘FUTURE’ and ‘ALL’. If absent defaults to &#39;CURRENT&#39;</td>
+<td>Allows for the filtering of products based on whether the current time is within the period of time defined as effective by the effectiveFrom and effectiveTo fields. Valid values are <code>CURRENT</code>, <code>FUTURE</code> and <code>ALL</code>. If absent defaults to <code>CURRENT</code></td>
 </tr>
 <tr>
 <td>updated-since</td>
@@ -4919,7 +4946,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>query</td>
 <td>string</td>
 <td>optional</td>
-<td>Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.</td>
+<td>Used to filter results on the <code>productCategory</code> field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.</td>
 </tr>
 <tr>
 <td>page</td>
@@ -4940,14 +4967,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See <a href="#request-headers">HTTP Headers</a></td>
+<td>Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the data holder must respond with a <code>406 Not Acceptable</code>. See <a href="#request-headers">HTTP Headers</a></td>
 </tr>
 <tr>
 <td>x-min-v</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.</td>
+<td>Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the data holder must respond with a <code>406 Not Acceptable</code>.</td>
 </tr>
 </tbody></table>
 <h4 id='enumerated-values-6'>Enumerated Values</h4>
@@ -5116,7 +5143,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>Success</td>
-<td><a href="#schemacdr-banking-apiresponsebankingproductlistv2">ResponseBankingProductListV2</a></td>
+<td><a href="#schemacdr-banking-apiresponsebankingproductlistv3">ResponseBankingProductListV3</a></td>
 </tr>
 <tr>
 <td>400</td>
@@ -5152,7 +5179,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>x-v</td>
 <td>string</td>
 <td></td>
-<td>The <a href="#response-headers">version</a> of the API end point that the data holder has responded with.</td>
+<td>The <a href="#response-headers">version</a> of the API endpoint that the data holder has responded with.</td>
 </tr>
 </tbody></table>
 
@@ -5197,7 +5224,7 @@ This operation does not require authentication
 
 <p>Obtain detailed information on a single product offered openly to the market.</p>
 
-<p>Obsolete versions: <a href="obsolete/get-product-detail-v1.html">v1</a> <a href="obsolete/get-product-detail-v2.html">v2</a> <a href="obsolete/get-product-detail-v3.html">v3</a></p>
+<p>Obsolete versions: <a href="obsolete/get-product-detail-v1.html">v1</a>, <a href="obsolete/get-product-detail-v2.html">v2</a>, <a href="obsolete/get-product-detail-v3.html">v3</a>, <a href="obsolete/get-product-detail-v4.html">v4</a></p>
 <h3 id='endpoint-version-17'>Endpoint Version</h3>
 <table><thead>
 <tr>
@@ -5207,7 +5234,7 @@ This operation does not require authentication
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>4</strong></td>
+<td><strong>5</strong></td>
 </tr>
 </tbody></table>
 
@@ -5234,14 +5261,14 @@ This operation does not require authentication
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See <a href="#request-headers">HTTP Headers</a></td>
+<td>Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the data holder must respond with a <code>406 Not Acceptable</code>. See <a href="#request-headers">HTTP Headers</a></td>
 </tr>
 <tr>
 <td>x-min-v</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.</td>
+<td>Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the data holder must respond with a <code>406 Not Acceptable</code>.</td>
 </tr>
 </tbody></table>
 
@@ -5433,7 +5460,15 @@ This operation does not require authentication
         </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
       </span><span class="p">}</span><span class="w">
-    </span><span class="p">]</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"instalments"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"maximumPlanCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"instalmentsLimit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"minimumPlanValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"maximumPlanValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"minimumSplit"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"maximumSplit"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="w">
+    </span><span class="p">}</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
@@ -5455,7 +5490,7 @@ This operation does not require authentication
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>Success</td>
-<td><a href="#schemacdr-banking-apiresponsebankingproductbyidv4">ResponseBankingProductByIdV4</a></td>
+<td><a href="#schemacdr-banking-apiresponsebankingproductbyidv5">ResponseBankingProductByIdV5</a></td>
 </tr>
 <tr>
 <td>400</td>
@@ -5491,7 +5526,7 @@ This operation does not require authentication
 <td>x-v</td>
 <td>string</td>
 <td></td>
-<td>The <a href="#response-headers">version</a> of the API end point that the data holder has responded with.</td>
+<td>The <a href="#response-headers">version</a> of the API endpoint that the data holder has responded with.</td>
 </tr>
 </tbody></table>
 
@@ -5544,9 +5579,9 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSresponsebankingproductlistv2">ResponseBankingProductListV2</h3>
+<h3 class="schema-toc" id="tocSresponsebankingproductlistv3">ResponseBankingProductListV3</h3>
 
-<p><a class="schema-anchor" id="schemacdr-banking-apiresponsebankingproductlistv2"></a></p>
+<p><a class="schema-anchor" id="schemacdr-banking-apiresponsebankingproductlistv3"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"products"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -5638,7 +5673,7 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>» products</td>
-<td>[<a href="#schemacdr-banking-apibankingproductv4">BankingProductV4</a>]</td>
+<td>[<a href="#schemacdr-banking-apibankingproductv5">BankingProductV5</a>]</td>
 <td>mandatory</td>
 <td>The list of products returned.  If the filter results in an empty set then this array may have no records</td>
 </tr>
@@ -5656,9 +5691,9 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSbankingproductv4">BankingProductV4</h3>
+<h3 class="schema-toc" id="tocSbankingproductv5">BankingProductV5</h3>
 
-<p><a class="schema-anchor" id="schemacdr-banking-apibankingproductv4"></a></p>
+<p><a class="schema-anchor" id="schemacdr-banking-apibankingproductv5"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"productId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"effectiveFrom"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -5751,7 +5786,7 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>productCategory</td>
-<td><a href="#schemacdr-banking-apibankingproductcategory">BankingProductCategory</a></td>
+<td><a href="#schemacdr-banking-apibankingproductcategoryv2">BankingProductCategoryV2</a></td>
 <td>mandatory</td>
 <td>The category to which a product or account belongs. See <a href="#product-categories">here</a> for more details</td>
 </tr>
@@ -5962,9 +5997,9 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSresponsebankingproductbyidv4">ResponseBankingProductByIdV4</h3>
+<h3 class="schema-toc" id="tocSresponsebankingproductbyidv5">ResponseBankingProductByIdV5</h3>
 
-<p><a class="schema-anchor" id="schemacdr-banking-apiresponsebankingproductbyidv4"></a></p>
+<p><a class="schema-anchor" id="schemacdr-banking-apiresponsebankingproductbyidv5"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"productId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -6148,7 +6183,15 @@ This operation does not require authentication
         </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
       </span><span class="p">}</span><span class="w">
-    </span><span class="p">]</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"instalments"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"maximumPlanCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"instalmentsLimit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"minimumPlanValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"maximumPlanValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"minimumSplit"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"maximumSplit"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="w">
+    </span><span class="p">}</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
@@ -6167,7 +6210,7 @@ This operation does not require authentication
 </thead><tbody>
 <tr>
 <td>data</td>
-<td><a href="#schemacdr-banking-apibankingproductdetailv4">BankingProductDetailV4</a></td>
+<td><a href="#schemacdr-banking-apibankingproductdetailv5">BankingProductDetailV5</a></td>
 <td>mandatory</td>
 <td>none</td>
 </tr>
@@ -6185,9 +6228,9 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSbankingproductdetailv4">BankingProductDetailV4</h3>
+<h3 class="schema-toc" id="tocSbankingproductdetailv5">BankingProductDetailV5</h3>
 
-<p><a class="schema-anchor" id="schemacdr-banking-apibankingproductdetailv4"></a></p>
+<p><a class="schema-anchor" id="schemacdr-banking-apibankingproductdetailv5"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"productId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"effectiveFrom"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -6370,7 +6413,15 @@ This operation does not require authentication
       </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
     </span><span class="p">}</span><span class="w">
-  </span><span class="p">]</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"instalments"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"maximumPlanCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"instalmentsLimit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"minimumPlanValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"maximumPlanValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"minimumSplit"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"maximumSplit"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre><h3 id='properties-7'>Properties</h3>
@@ -6386,7 +6437,7 @@ This operation does not require authentication
 </thead><tbody>
 <tr>
 <td><em>anonymous</em></td>
-<td><a href="#schemacdr-banking-apibankingproductv4">BankingProductV4</a></td>
+<td><a href="#schemacdr-banking-apibankingproductv5">BankingProductV5</a></td>
 <td>mandatory</td>
 <td>none</td>
 </tr>
@@ -6416,7 +6467,7 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>» features</td>
-<td>[<a href="#schemacdr-banking-apibankingproductfeaturev2">BankingProductFeatureV2</a>]</td>
+<td>[<a href="#schemacdr-banking-apibankingproductfeaturev3">BankingProductFeatureV3</a>]</td>
 <td>optional</td>
 <td>Array of features available for the product</td>
 </tr>
@@ -6436,7 +6487,7 @@ This operation does not require authentication
 <td>» fees</td>
 <td>[<a href="#schemacdr-banking-apibankingproductfee">BankingProductFee</a>]</td>
 <td>optional</td>
-<td>Fees applicable for the product</td>
+<td>Fees applicable to the product</td>
 </tr>
 <tr>
 <td>» depositRates</td>
@@ -6449,6 +6500,12 @@ This operation does not require authentication
 <td>[<a href="#schemacdr-banking-apibankingproductlendingratev2">BankingProductLendingRateV2</a>]</td>
 <td>optional</td>
 <td>Interest rates charged against lending balances</td>
+</tr>
+<tr>
+<td>» instalments</td>
+<td><a href="#schemacdr-banking-apibankingproductinstalments">BankingProductInstalments</a></td>
+<td>optional</td>
+<td>Details of instalment features on the account</td>
 </tr>
 </tbody></table>
 
@@ -6502,13 +6559,13 @@ This operation does not require authentication
 <td>productIds</td>
 <td>[string]</td>
 <td>optional</td>
-<td>Array of product IDs for products included in the bundle that are available via the product end points.  Note that this array is not intended to represent a comprehensive model of the products included in the bundle and some products available for the bundle may not be available via the product reference end points</td>
+<td>Array of product IDs for products included in the bundle that are available via the product endpoints.  Note that this array is not intended to represent a comprehensive model of the products included in the bundle and some products available for the bundle may not be available via the product reference endpoints</td>
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSbankingproductfeaturev2">BankingProductFeatureV2</h3>
+<h3 class="schema-toc" id="tocSbankingproductfeaturev3">BankingProductFeatureV3</h3>
 
-<p><a class="schema-anchor" id="schemacdr-banking-apibankingproductfeaturev2"></a></p>
+<p><a class="schema-anchor" id="schemacdr-banking-apibankingproductfeaturev3"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"featureType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ADDITIONAL_CARDS"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -6527,9 +6584,9 @@ This operation does not require authentication
 </thead><tbody>
 <tr>
 <td>featureType</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
-<td>The type of feature described</td>
+<td>The type of feature described. For further details, refer to <a href="#tocSproductfeaturetypedoc">featureType</a></td>
 </tr>
 <tr>
 <td>additionalValue</td>
@@ -6541,7 +6598,7 @@ This operation does not require authentication
 <td>additionalInfo</td>
 <td>string</td>
 <td>conditional</td>
-<td>Display text providing more information on the feature. Mandatory if the <a href="#tocSproductfeaturetypedoc">feature type</a> is set to OTHER</td>
+<td>Display text providing more information on the feature. Mandatory if the <a href="#tocSproductfeaturetypedoc">feature type</a> is set to <code>OTHER</code></td>
 </tr>
 <tr>
 <td>additionalInfoUri</td>
@@ -6584,6 +6641,10 @@ This operation does not require authentication
 <tr>
 <td>featureType</td>
 <td>COMPLEMENTARY_PRODUCT_DISCOUNTS</td>
+</tr>
+<tr>
+<td>featureType</td>
+<td>EXTRA_DOWN_PAYMENT</td>
 </tr>
 <tr>
 <td>featureType</td>
@@ -6696,9 +6757,9 @@ This operation does not require authentication
 </thead><tbody>
 <tr>
 <td>constraintType</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
-<td>The type of constraint described.  See the next section for an overview of valid values and their meaning</td>
+<td>The type of constraint described. See the next section for an overview of valid values and their meaning</td>
 </tr>
 <tr>
 <td>additionalValue</td>
@@ -6710,7 +6771,7 @@ This operation does not require authentication
 <td>additionalInfo</td>
 <td>string</td>
 <td>optional</td>
-<td>Display text providing more information the constraint</td>
+<td>Display text providing more information on the constraint</td>
 </tr>
 <tr>
 <td>additionalInfoUri</td>
@@ -6769,7 +6830,7 @@ This operation does not require authentication
 </thead><tbody>
 <tr>
 <td>eligibilityType</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>The type of eligibility criteria described.  See the next section for an overview of valid values and their meaning</td>
 </tr>
@@ -6783,7 +6844,7 @@ This operation does not require authentication
 <td>additionalInfo</td>
 <td>string</td>
 <td>conditional</td>
-<td>Display text providing more information on the <a href="#tocSproducteligibilitytypedoc">eligibility</a> criteria. Mandatory if the field is set to OTHER</td>
+<td>Display text providing more information on the <a href="#tocSproducteligibilitytypedoc">eligibility</a> criteria. Mandatory if the field is set to <code>OTHER</code></td>
 </tr>
 <tr>
 <td>additionalInfoUri</td>
@@ -6905,9 +6966,9 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>feeType</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
-<td>The type of fee</td>
+<td>The type of fee. For details refer to <a href="#tocSproductfeetypedoc">Product Fee Types</a>.</td>
 </tr>
 <tr>
 <td>amount</td>
@@ -7068,7 +7129,7 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>discountType</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>The type of discount. See the next section for an overview of valid values and their meaning</td>
 </tr>
@@ -7177,7 +7238,7 @@ This operation does not require authentication
 </thead><tbody>
 <tr>
 <td>discountEligibilityType</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>The type of the specific eligibility constraint for a discount</td>
 </tr>
@@ -7300,7 +7361,7 @@ This operation does not require authentication
 </thead><tbody>
 <tr>
 <td>depositRateType</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>The type of rate (base, bonus, etc). See the next section for an overview of valid values and their meaning</td>
 </tr>
@@ -7314,13 +7375,13 @@ This operation does not require authentication
 <td>calculationFrequency</td>
 <td><a href="#common-field-types">ExternalRef</a></td>
 <td>optional</td>
-<td>The period after which the rate is applied to the balance to calculate the amount due for the period. Calculation of the amount is often daily (as balances may change) but accumulated until the total amount is &#39;applied&#39; to the account (see applicationFrequency). Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 Durations</a> (excludes recurrence syntax)</td>
+<td>The period after which the rate is applied to the balance to calculate the amount due for the period. Calculation of the amount is often daily (as balances may change) but accumulated until the total amount is &#39;applied&#39; to the account (see <code>applicationFrequency</code>). Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 Durations</a> (excludes recurrence syntax)</td>
 </tr>
 <tr>
 <td>applicationFrequency</td>
 <td><a href="#common-field-types">ExternalRef</a></td>
 <td>optional</td>
-<td>The period after which the calculated amount(s) (see calculationFrequency) are &#39;applied&#39; (i.e. debited or credited) to the account. Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 Durations</a> (excludes recurrence syntax)</td>
+<td>The period after which the calculated amount(s) (see <code>calculationFrequency</code>) are &#39;applied&#39; (i.e. debited or credited) to the account. Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 Durations</a> (excludes recurrence syntax)</td>
 </tr>
 <tr>
 <td>tiers</td>
@@ -7427,7 +7488,7 @@ This operation does not require authentication
 </thead><tbody>
 <tr>
 <td>lendingRateType</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>The type of rate (fixed, variable, etc). See the next section for an overview of valid values and their meaning</td>
 </tr>
@@ -7447,29 +7508,29 @@ This operation does not require authentication
 <td>calculationFrequency</td>
 <td><a href="#common-field-types">ExternalRef</a></td>
 <td>optional</td>
-<td>The period after which the rate is applied to the balance to calculate the amount due for the period. Calculation of the amount is often daily (as balances may change) but accumulated until the total amount is &#39;applied&#39; to the account (see applicationFrequency). Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 Durations</a> (excludes recurrence syntax)</td>
+<td>The period after which the rate is applied to the balance to calculate the amount due for the period. Calculation of the amount is often daily (as balances may change) but accumulated until the total amount is &#39;applied&#39; to the account (see <code>applicationFrequency</code>). Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 Durations</a> (excludes recurrence syntax)</td>
 </tr>
 <tr>
 <td>applicationFrequency</td>
 <td><a href="#common-field-types">ExternalRef</a></td>
 <td>optional</td>
-<td>The period after which the calculated amount(s) (see calculationFrequency) are &#39;applied&#39; (i.e. debited or credited) to the account. Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 Durations</a> (excludes recurrence syntax)</td>
+<td>The period after which the calculated amount(s) (see <code>calculationFrequency</code>) are &#39;applied&#39; (i.e. debited or credited) to the account. Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 Durations</a> (excludes recurrence syntax)</td>
 </tr>
 <tr>
 <td>interestPaymentDue</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>optional</td>
 <td>When loan payments are due to be paid within each period. The investment benefit of earlier payments affect the rate that can be offered</td>
 </tr>
 <tr>
 <td>repaymentType</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>optional</td>
 <td>Options in place for repayments. If absent, the lending rate is applicable to all repayment types</td>
 </tr>
 <tr>
 <td>loanPurpose</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>optional</td>
 <td>The reason for taking out the loan. If absent, the lending rate is applicable to all loan purposes</td>
 </tr>
@@ -7489,7 +7550,7 @@ This operation does not require authentication
 <td>additionalInfo</td>
 <td>string</td>
 <td>optional</td>
-<td>Display text providing more information on the rate.</td>
+<td>Display text providing more information on the rate</td>
 </tr>
 <tr>
 <td>additionalInfoUri</td>
@@ -7611,25 +7672,25 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>unitOfMeasure</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
-<td>The unit of measure that applies to the tierValueMinimum and tierValueMaximum values e.g. a <strong>DOLLAR</strong> amount. <strong>PERCENT</strong> (in the case of loan-to-value ratio or LVR). Tier term period representing a discrete number of <strong>MONTH</strong>&#39;s or <strong>DAY</strong>&#39;s (in the case of term deposit tiers)</td>
+<td>The unit of measure that applies to the <code>minimumValue</code> and <code>maximumValue</code> values e.g. a <strong>DOLLAR</strong> amount. <strong>PERCENT</strong> (in the case of loan-to-value ratio or LVR). Tier term period representing a discrete number of <strong>MONTH</strong>&#39;s or <strong>DAY</strong>&#39;s (in the case of term deposit tiers)</td>
 </tr>
 <tr>
 <td>minimumValue</td>
 <td><a href="#common-field-types">Number</a></td>
 <td>mandatory</td>
-<td>The number of tierUnitOfMeasure units that form the lower bound of the tier. The tier should be inclusive of this value</td>
+<td>The number of <code>unitOfMeasure</code> units that form the lower bound of the tier. The tier should be inclusive of this value</td>
 </tr>
 <tr>
 <td>maximumValue</td>
 <td><a href="#common-field-types">Number</a></td>
 <td>optional</td>
-<td>The number of tierUnitOfMeasure units that form the upper bound of the tier or band. For a tier with a discrete value (as opposed to a range of values e.g. 1 month) this must be the same as tierValueMinimum. Where this is the same as the tierValueMinimum value of the next-higher tier the referenced tier should be exclusive of this value. For example a term deposit of 2 months falls into the upper tier of the following tiers: (1 – 2 months, 2 – 3 months). If absent the tier&#39;s range has no upper bound.</td>
+<td>The number of <code>unitOfMeasure</code> units that form the upper bound of the tier or band. For a tier with a discrete value (as opposed to a range of values e.g. 1 month) this must be the same as <code>minimumValue</code>. Where this is the same as the <code>minimumValue</code> value of the next-higher tier the referenced tier should be exclusive of this value. For example a term deposit of 2 months falls into the upper tier of the following tiers: (1 – 2 months, 2 – 3 months). If absent the tier&#39;s range has no upper bound.</td>
 </tr>
 <tr>
 <td>rateApplicationMethod</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>optional</td>
 <td>The method used to calculate the amount to be applied using one or more tiers. A single rate may be applied to the entire balance or each applicable tier rate is applied to the portion of the balance that falls into that tier (referred to as &#39;bands&#39; or &#39;steps&#39;)</td>
 </tr>
@@ -7643,7 +7704,7 @@ This operation does not require authentication
 <td>additionalInfo</td>
 <td>string</td>
 <td>optional</td>
-<td>Display text providing more information on the rate tier.</td>
+<td>Display text providing more information on the rate tier</td>
 </tr>
 <tr>
 <td>additionalInfoUri</td>
@@ -7718,9 +7779,68 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSresponsebankingaccountlistv2">ResponseBankingAccountListV2</h3>
+<h3 class="schema-toc" id="tocSbankingproductinstalments">BankingProductInstalments</h3>
 
-<p><a class="schema-anchor" id="schemacdr-banking-apiresponsebankingaccountlistv2"></a></p>
+<p><a class="schema-anchor" id="schemacdr-banking-apibankingproductinstalments"></a></p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"maximumPlanCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"instalmentsLimit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"minimumPlanValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"maximumPlanValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"minimumSplit"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"maximumSplit"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre><h3 id='properties-19'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>maximumPlanCount</td>
+<td><a href="#common-field-types">PositiveInteger</a></td>
+<td>mandatory</td>
+<td>Total number of plans that may be created</td>
+</tr>
+<tr>
+<td>instalmentsLimit</td>
+<td><a href="#common-field-types">AmountString</a></td>
+<td>mandatory</td>
+<td>Maximum combined limit of all instalment plans that may be created</td>
+</tr>
+<tr>
+<td>minimumPlanValue</td>
+<td><a href="#common-field-types">AmountString</a></td>
+<td>mandatory</td>
+<td>Minimum value that can be opened as an instalment plan</td>
+</tr>
+<tr>
+<td>maximumPlanValue</td>
+<td><a href="#common-field-types">AmountString</a></td>
+<td>mandatory</td>
+<td>Maximum value that can be opened as an instalment plan</td>
+</tr>
+<tr>
+<td>minimumSplit</td>
+<td><a href="#common-field-types">PositiveInteger</a></td>
+<td>mandatory</td>
+<td>Minimum number of instalment payments a plan can be created with</td>
+</tr>
+<tr>
+<td>maximumSplit</td>
+<td><a href="#common-field-types">PositiveInteger</a></td>
+<td>mandatory</td>
+<td>Maximum number of instalment payments a plan can be created with</td>
+</tr>
+</tbody></table>
+
+<h3 class="schema-toc" id="tocSresponsebankingaccountlistv3">ResponseBankingAccountListV3</h3>
+
+<p><a class="schema-anchor" id="schemacdr-banking-apiresponsebankingaccountlistv3"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"accounts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -7751,7 +7871,7 @@ This operation does not require authentication
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-19'>Properties</h3>
+</span></code></pre><h3 id='properties-20'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -7768,7 +7888,7 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>» accounts</td>
-<td>[<a href="#schemacdr-banking-apibankingaccountv2">BankingAccountV2</a>]</td>
+<td>[<a href="#schemacdr-banking-apibankingaccountv3">BankingAccountV3</a>]</td>
 <td>mandatory</td>
 <td>The list of accounts returned. If the filter results in an empty set then this array may have no records</td>
 </tr>
@@ -7786,9 +7906,9 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSbankingaccountv2">BankingAccountV2</h3>
+<h3 class="schema-toc" id="tocSbankingaccountv3">BankingAccountV3</h3>
 
-<p><a class="schema-anchor" id="schemacdr-banking-apibankingaccountv2"></a></p>
+<p><a class="schema-anchor" id="schemacdr-banking-apibankingaccountv3"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"creationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -7802,7 +7922,7 @@ This operation does not require authentication
   </span><span class="s2">"productName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-20'>Properties</h3>
+</span></code></pre><h3 id='properties-21'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -7837,9 +7957,9 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>openStatus</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>optional</td>
-<td>Open or closed status for the account. If not present then OPEN is assumed</td>
+<td>Open or closed status for the account. If not present then <code>OPEN</code> is assumed</td>
 </tr>
 <tr>
 <td>isOwned</td>
@@ -7849,7 +7969,7 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>accountOwnership</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>Value indicating the number of customers that have ownership of the account, according to the data holder&#39;s definition of account ownership. Does not indicate that all account owners are eligible consumers</td>
 </tr>
@@ -7861,7 +7981,7 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>productCategory</td>
-<td><a href="#schemacdr-banking-apibankingproductcategory">BankingProductCategory</a></td>
+<td><a href="#schemacdr-banking-apibankingproductcategoryv2">BankingProductCategoryV2</a></td>
 <td>mandatory</td>
 <td>The category to which a product or account belongs. See <a href="#product-categories">here</a> for more details</td>
 </tr>
@@ -7909,9 +8029,9 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSresponsebankingaccountbyidv3">ResponseBankingAccountByIdV3</h3>
+<h3 class="schema-toc" id="tocSresponsebankingaccountbyidv4">ResponseBankingAccountByIdV4</h3>
 
-<p><a class="schema-anchor" id="schemacdr-banking-apiresponsebankingaccountbyidv3"></a></p>
+<p><a class="schema-anchor" id="schemacdr-banking-apiresponsebankingaccountbyidv4"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -7927,6 +8047,29 @@ This operation does not require authentication
     </span><span class="s2">"bsb"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"accountNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"bundleName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"instalments"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"maximumPlanCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"instalmentsLimit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"minimumPlanValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"maximumPlanValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"minimumSplit"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"maximumSplit"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"plans"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"planNickname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"creationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"duration"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"instalmentInterval"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"schedule"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"amountDue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"dueDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
     </span><span class="s2">"specificAccountUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"creditCard"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"termDeposit"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
@@ -8112,7 +8255,7 @@ This operation does not require authentication
   </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-21'>Properties</h3>
+</span></code></pre><h3 id='properties-22'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -8123,7 +8266,7 @@ This operation does not require authentication
 </thead><tbody>
 <tr>
 <td>data</td>
-<td><a href="#schemacdr-banking-apibankingaccountdetailv3">BankingAccountDetailV3</a></td>
+<td><a href="#schemacdr-banking-apibankingaccountdetailv4">BankingAccountDetailV4</a></td>
 <td>mandatory</td>
 <td>none</td>
 </tr>
@@ -8141,9 +8284,9 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSbankingaccountdetailv3">BankingAccountDetailV3</h3>
+<h3 class="schema-toc" id="tocSbankingaccountdetailv4">BankingAccountDetailV4</h3>
 
-<p><a class="schema-anchor" id="schemacdr-banking-apibankingaccountdetailv3"></a></p>
+<p><a class="schema-anchor" id="schemacdr-banking-apibankingaccountdetailv4"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"creationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -8158,6 +8301,29 @@ This operation does not require authentication
   </span><span class="s2">"bsb"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"accountNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"bundleName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"instalments"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"maximumPlanCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"instalmentsLimit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"minimumPlanValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"maximumPlanValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"minimumSplit"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"maximumSplit"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"plans"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"planNickname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"creationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"duration"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"instalmentInterval"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"schedule"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"amountDue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"dueDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
   </span><span class="s2">"specificAccountUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"creditCard"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"termDeposit"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
@@ -8338,7 +8504,7 @@ This operation does not require authentication
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-22'>Properties</h3>
+</span></code></pre><h3 id='properties-23'>Properties</h3>
 <p><em>allOf</em></p>
 
 <table><thead>
@@ -8351,7 +8517,7 @@ This operation does not require authentication
 </thead><tbody>
 <tr>
 <td><em>anonymous</em></td>
-<td><a href="#schemacdr-banking-apibankingaccountv2">BankingAccountV2</a></td>
+<td><a href="#schemacdr-banking-apibankingaccountv3">BankingAccountV3</a></td>
 <td>mandatory</td>
 <td>none</td>
 </tr>
@@ -8392,8 +8558,14 @@ This operation does not require authentication
 <td>Optional field to indicate if this account is part of a bundle that is providing additional benefit to the customer</td>
 </tr>
 <tr>
+<td>» instalments</td>
+<td><a href="#schemacdr-banking-apibankingaccountinstalments">BankingAccountInstalments</a></td>
+<td>optional</td>
+<td>Details of instalment features on the account</td>
+</tr>
+<tr>
 <td>» specificAccountUType</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>optional</td>
 <td>The type of structure to present account specific fields.</td>
 </tr>
@@ -8459,7 +8631,7 @@ This operation does not require authentication
 </thead><tbody>
 <tr>
 <td>»» <em>anonymous</em></td>
-<td><a href="#schemacdr-banking-apibankingproductfeaturev2">BankingProductFeatureV2</a></td>
+<td><a href="#schemacdr-banking-apibankingproductfeaturev3">BankingProductFeatureV3</a></td>
 <td>mandatory</td>
 <td>none</td>
 </tr>
@@ -8533,6 +8705,173 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
+<h3 class="schema-toc" id="tocSbankingaccountinstalments">BankingAccountInstalments</h3>
+
+<p><a class="schema-anchor" id="schemacdr-banking-apibankingaccountinstalments"></a></p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"maximumPlanCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"instalmentsLimit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"minimumPlanValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"maximumPlanValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"minimumSplit"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"maximumSplit"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"plans"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"planNickname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"creationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"duration"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"instalmentInterval"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"schedule"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"amountDue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"dueDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<p><em>Details of instalment features on the account</em></p>
+<h3 id='properties-24'>Properties</h3>
+<p><em>allOf</em></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><em>anonymous</em></td>
+<td><a href="#schemacdr-banking-apibankingproductinstalments">BankingProductInstalments</a></td>
+<td>mandatory</td>
+<td>none</td>
+</tr>
+</tbody></table>
+
+<p><em>and</em></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><em>anonymous</em></td>
+<td>object</td>
+<td>mandatory</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» plans</td>
+<td>[<a href="#schemacdr-banking-apibankinginstalmentplans">BankingInstalmentPlans</a>]</td>
+<td>optional</td>
+<td>Array of instalment plans</td>
+</tr>
+</tbody></table>
+
+<h3 class="schema-toc" id="tocSbankinginstalmentplans">BankingInstalmentPlans</h3>
+
+<p><a class="schema-anchor" id="schemacdr-banking-apibankinginstalmentplans"></a></p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"planNickname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"creationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"duration"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"instalmentInterval"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"schedule"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"amountDue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"dueDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre><h3 id='properties-25'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>planNickname</td>
+<td>string</td>
+<td>mandatory</td>
+<td>The short display name of the plan as provided by the customer. Where a customer has not provided a nickname, a display name derived by the data holder consistent with existing channels</td>
+</tr>
+<tr>
+<td>creationDate</td>
+<td><a href="#common-field-types">DateString</a></td>
+<td>mandatory</td>
+<td>The date the plan was created</td>
+</tr>
+<tr>
+<td>amount</td>
+<td><a href="#common-field-types">AmountString</a></td>
+<td>mandatory</td>
+<td>The total amount of the plan</td>
+</tr>
+<tr>
+<td>duration</td>
+<td><a href="#common-field-types">ExternalRef</a></td>
+<td>mandatory</td>
+<td>The original expected repayment duration. Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 Durations</a> (excludes recurrence syntax)</td>
+</tr>
+<tr>
+<td>instalmentInterval</td>
+<td><a href="#common-field-types">ExternalRef</a></td>
+<td>mandatory</td>
+<td>The expected repayment interval. Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 Durations</a> (excludes recurrence syntax)</td>
+</tr>
+<tr>
+<td>schedule</td>
+<td>[<a href="#schemacdr-banking-apibankinginstalmentplanschedule">BankingInstalmentPlanSchedule</a>]</td>
+<td>mandatory</td>
+<td>Array of expected repayment amounts and dates</td>
+</tr>
+</tbody></table>
+
+<h3 class="schema-toc" id="tocSbankinginstalmentplanschedule">BankingInstalmentPlanSchedule</h3>
+
+<p><a class="schema-anchor" id="schemacdr-banking-apibankinginstalmentplanschedule"></a></p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"amountDue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"dueDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre><h3 id='properties-26'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>amountDue</td>
+<td><a href="#common-field-types">AmountString</a></td>
+<td>mandatory</td>
+<td>Amount due with this repayment</td>
+</tr>
+<tr>
+<td>dueDate</td>
+<td><a href="#common-field-types">DateString</a></td>
+<td>mandatory</td>
+<td>Date this repayment is due</td>
+</tr>
+</tbody></table>
+
 <h3 class="schema-toc" id="tocSbankingtermdepositaccount">BankingTermDepositAccount</h3>
 
 <p><a class="schema-anchor" id="schemacdr-banking-apibankingtermdepositaccount"></a></p>
@@ -8544,7 +8883,7 @@ This operation does not require authentication
   </span><span class="s2">"maturityInstructions"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HOLD_ON_MATURITY"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-23'>Properties</h3>
+</span></code></pre><h3 id='properties-27'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -8579,7 +8918,7 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>maturityInstructions</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>Current instructions on action to be taken at maturity. This includes default actions that may be specified in the terms and conditions for the product e.g. roll-over to the same term and frequency of interest payments</td>
 </tr>
@@ -8615,7 +8954,7 @@ This operation does not require authentication
   </span><span class="s2">"paymentDueDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-24'>Properties</h3>
+</span></code></pre><h3 id='properties-28'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -8673,7 +9012,7 @@ This operation does not require authentication
   </span><span class="s2">"repaymentFrequency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-25'>Properties</h3>
+</span></code></pre><h3 id='properties-29'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -8762,7 +9101,7 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>repaymentType</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>optional</td>
 <td>Options in place for repayments. If absent defaults to PRINCIPAL_AND_INTEREST</td>
 </tr>
@@ -8828,11 +9167,11 @@ This operation does not require authentication
   </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"totalRecords"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
     </span><span class="s2">"totalPages"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"isQueryParamUnsupported"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+    </span><span class="s2">"isQueryParamUnsupported"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-26'>Properties</h3>
+</span></code></pre><h3 id='properties-30'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -8891,7 +9230,7 @@ This operation does not require authentication
   </span><span class="s2">"apcaNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-27'>Properties</h3>
+</span></code></pre><h3 id='properties-31'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -8916,17 +9255,17 @@ This operation does not require authentication
 <td>isDetailAvailable</td>
 <td><a href="#common-field-types">Boolean</a></td>
 <td>mandatory</td>
-<td>True if extended information is available using the transaction detail end point. False if extended data is not available</td>
+<td>True if extended information is available using the transaction detail endpoint. False if extended data is not available</td>
 </tr>
 <tr>
 <td>type</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>The type of the transaction</td>
 </tr>
 <tr>
 <td>status</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>Status of the transaction whether pending or posted. Note that there is currently no provision in the standards to guarantee the ability to correlate a pending transaction with an associated posted transaction</td>
 </tr>
@@ -9099,7 +9438,7 @@ This operation does not require authentication
   </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-28'>Properties</h3>
+</span></code></pre><h3 id='properties-32'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -9163,7 +9502,7 @@ This operation does not require authentication
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-29'>Properties</h3>
+</span></code></pre><h3 id='properties-33'>Properties</h3>
 <p><em>allOf</em></p>
 
 <table><thead>
@@ -9218,7 +9557,7 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>»» extensionUType</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>optional</td>
 <td>Optional extended data specific to transactions originated via NPP</td>
 </tr>
@@ -9248,7 +9587,7 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>»» service</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>Identifier of the applicable overlay service. Valid values are: X2P1.01</td>
 </tr>
@@ -9305,7 +9644,7 @@ This operation does not require authentication
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-30'>Properties</h3>
+</span></code></pre><h3 id='properties-34'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -9364,7 +9703,7 @@ This operation does not require authentication
   </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-31'>Properties</h3>
+</span></code></pre><h3 id='properties-35'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -9411,7 +9750,7 @@ This operation does not require authentication
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-32'>Properties</h3>
+</span></code></pre><h3 id='properties-36'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -9472,7 +9811,7 @@ This operation does not require authentication
   </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-33'>Properties</h3>
+</span></code></pre><h3 id='properties-37'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -9523,7 +9862,7 @@ This operation does not require authentication
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-34'>Properties</h3>
+</span></code></pre><h3 id='properties-38'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -9624,7 +9963,7 @@ This operation does not require authentication
   </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-35'>Properties</h3>
+</span></code></pre><h3 id='properties-39'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -9664,7 +10003,7 @@ This operation does not require authentication
   </span><span class="s2">"creationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-36'>Properties</h3>
+</span></code></pre><h3 id='properties-40'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -9693,7 +10032,7 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>type</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>The type of payee.<br/>DOMESTIC means a registered payee for domestic payments including NPP. <br/>INTERNATIONAL means a registered payee for international payments. <br/>BILLER means a registered payee for BPAY. <br/>DIGITAL_WALLET means a registered payee for a bank&#39;s digital wallet</td>
 </tr>
@@ -9789,7 +10128,7 @@ This operation does not require authentication
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-37'>Properties</h3>
+</span></code></pre><h3 id='properties-41'>Properties</h3>
 <p><em>allOf</em></p>
 
 <table><thead>
@@ -9826,7 +10165,7 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>» payeeUType</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>Type of object included that describes the payee in detail</td>
 </tr>
@@ -9900,7 +10239,7 @@ This operation does not require authentication
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-38'>Properties</h3>
+</span></code></pre><h3 id='properties-42'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -9911,7 +10250,7 @@ This operation does not require authentication
 </thead><tbody>
 <tr>
 <td>payeeAccountUType</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>Type of account object included. Valid values are: <strong>account</strong> A standard Australian account defined by BSB/Account Number. <strong>card</strong> A credit or charge card to pay to (note that PANs are masked). <strong>payId</strong> A PayID recognised by NPP</td>
 </tr>
@@ -9964,7 +10303,7 @@ This operation does not require authentication
   </span><span class="s2">"accountNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-39'>Properties</h3>
+</span></code></pre><h3 id='properties-43'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -10000,7 +10339,7 @@ This operation does not require authentication
   </span><span class="s2">"cardNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-40'>Properties</h3>
+</span></code></pre><h3 id='properties-44'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -10026,7 +10365,7 @@ This operation does not require authentication
   </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ABN"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-41'>Properties</h3>
+</span></code></pre><h3 id='properties-45'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -10049,7 +10388,7 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>type</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>The type of the PayID</td>
 </tr>
@@ -10088,7 +10427,7 @@ This operation does not require authentication
   </span><span class="s2">"billerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-42'>Properties</h3>
+</span></code></pre><h3 id='properties-46'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -10142,7 +10481,7 @@ This operation does not require authentication
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-43'>Properties</h3>
+</span></code></pre><h3 id='properties-47'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -10259,7 +10598,7 @@ This operation does not require authentication
   </span><span class="s2">"provider"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PAYPAL_AU"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-44'>Properties</h3>
+</span></code></pre><h3 id='properties-48'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -10282,13 +10621,13 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>type</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>The type of the digital wallet identifier</td>
 </tr>
 <tr>
 <td>provider</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>The provider of the digital wallet</td>
 </tr>
@@ -10355,7 +10694,7 @@ This operation does not require authentication
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-45'>Properties</h3>
+</span></code></pre><h3 id='properties-49'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -10406,7 +10745,7 @@ This operation does not require authentication
   </span><span class="s2">"lastDebitAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-46'>Properties</h3>
+</span></code></pre><h3 id='properties-50'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -10452,7 +10791,7 @@ This operation does not require authentication
   </span><span class="s2">"arbn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-47'>Properties</h3>
+</span></code></pre><h3 id='properties-51'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -10614,7 +10953,7 @@ This operation does not require authentication
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-48'>Properties</h3>
+</span></code></pre><h3 id='properties-52'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -10753,7 +11092,7 @@ This operation does not require authentication
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-49'>Properties</h3>
+</span></code></pre><h3 id='properties-53'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -10788,7 +11127,7 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>status</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>Indicates whether the schedule is currently active. The value SKIP is equivalent to ACTIVE except that the customer has requested the next normal occurrence to be skipped.</td>
 </tr>
@@ -10898,7 +11237,7 @@ This operation does not require authentication
 
 </span></code></pre>
 <p><em>The set of payment amounts and destination accounts for this payment accommodating multi-part payments. A single entry indicates a simple payment with one destination account. Must have at least one entry</em></p>
-<h3 id='properties-50'>Properties</h3>
+<h3 id='properties-54'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -10994,7 +11333,7 @@ This operation does not require authentication
 
 </span></code></pre>
 <p><em>Object containing details of the destination of the payment. Used to specify a variety of payment destination types</em></p>
-<h3 id='properties-51'>Properties</h3>
+<h3 id='properties-55'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -11005,7 +11344,7 @@ This operation does not require authentication
 </thead><tbody>
 <tr>
 <td>toUType</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>The type of object provided that specifies the destination of the funds for the payment.</td>
 </tr>
@@ -11013,19 +11352,19 @@ This operation does not require authentication
 <td>accountId</td>
 <td><a href="#common-field-types">ASCIIString</a></td>
 <td>conditional</td>
-<td>Present if toUType is set to accountId. Indicates that the payment is to another account that is accessible under the current consent</td>
+<td>Present if <code>toUType</code> is set to <code>accountId</code>. Indicates that the payment is to another account that is accessible under the current consent</td>
 </tr>
 <tr>
 <td>payeeId</td>
 <td><a href="#common-field-types">ASCIIString</a></td>
 <td>conditional</td>
-<td>Present if toUType is set to payeeId. Indicates that the payment is to registered payee that can be accessed using the payee end point. If the Bank Payees scope has not been consented to then a payeeId should not be provided and the full payee details should be provided instead</td>
+<td>Present if <code>toUType</code> is set to <code>payeeId</code>. Indicates that the payment is to registered payee that can be accessed using the payee endpoint. If the Bank Payees scope has not been consented to then a <code>payeeId</code> should not be provided and the full payee details should be provided instead</td>
 </tr>
 <tr>
 <td>nickname</td>
 <td>string</td>
 <td>conditional</td>
-<td>The short display name of the payee as provided by the customer unless toUType is set to payeeId. Where a customer has not provided a nickname, a display name derived by the bank for payee should be provided that is consistent with existing digital banking channels</td>
+<td>The short display name of the payee as provided by the customer unless <code>toUType</code> is set to <code>payeeId</code>. Where a customer has not provided a nickname, a display name derived by the bank for payee should be provided that is consistent with existing digital banking channels</td>
 </tr>
 <tr>
 <td>payeeReference</td>
@@ -11100,7 +11439,7 @@ This operation does not require authentication
 
 </span></code></pre>
 <p><em>Object containing details of the source of the payment. Currently only specifies an account ID but provided as an object to facilitate future extensibility and consistency with the to object</em></p>
-<h3 id='properties-52'>Properties</h3>
+<h3 id='properties-56'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -11151,7 +11490,7 @@ This operation does not require authentication
 
 </span></code></pre>
 <p><em>Object containing the detail of the schedule for the payment</em></p>
-<h3 id='properties-53'>Properties</h3>
+<h3 id='properties-57'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -11168,7 +11507,7 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>recurrenceUType</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>The type of recurrence used to define the schedule</td>
 </tr>
@@ -11231,7 +11570,7 @@ This operation does not require authentication
 
 </span></code></pre>
 <p><em>Indicates that the payment is a once off payment on a specific future date. Mandatory if recurrenceUType is set to onceOff</em></p>
-<h3 id='properties-54'>Properties</h3>
+<h3 id='properties-58'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -11265,7 +11604,7 @@ This operation does not require authentication
 
 </span></code></pre>
 <p><em>Indicates that the schedule of payments is defined by a series of intervals. Mandatory if recurrenceUType is set to intervalSchedule</em></p>
-<h3 id='properties-55'>Properties</h3>
+<h3 id='properties-59'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -11288,9 +11627,9 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>nonBusinessDayTreatment</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>optional</td>
-<td>Enumerated field giving the treatment where a scheduled payment date is not a business day. If absent assumed to be ON.<br/><strong>AFTER</strong> - If a scheduled payment date is a non-business day the payment will be made on the first business day after the scheduled payment date.<br/><strong>BEFORE</strong> - If a scheduled payment date is a non-business day the payment will be made on the first business day before the scheduled payment date.<br/><strong>ON</strong> - If a scheduled payment date is a non-business day the payment will be made on that day regardless.<br/><strong>ONLY</strong> - Payments only occur on business days. If a scheduled payment date is a non-business day the payment will be ignored</td>
+<td>Enumerated field giving the treatment where a scheduled payment date is not a business day. If absent assumed to be <code>ON</code>.<br/><strong>AFTER</strong> - If a scheduled payment date is a non-business day the payment will be made on the first business day after the scheduled payment date.<br/><strong>BEFORE</strong> - If a scheduled payment date is a non-business day the payment will be made on the first business day before the scheduled payment date.<br/><strong>ON</strong> - If a scheduled payment date is a non-business day the payment will be made on that day regardless.<br/><strong>ONLY</strong> - Payments only occur on business days. If a scheduled payment date is a non-business day the payment will be ignored</td>
 </tr>
 <tr>
 <td>intervals</td>
@@ -11332,7 +11671,7 @@ This operation does not require authentication
   </span><span class="s2">"dayInInterval"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-56'>Properties</h3>
+</span></code></pre><h3 id='properties-60'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -11368,7 +11707,7 @@ This operation does not require authentication
 
 </span></code></pre>
 <p><em>Indicates that the schedule of payments is defined according to the last occurrence of a specific weekday in an interval. Mandatory if recurrenceUType is set to lastWeekDay</em></p>
-<h3 id='properties-57'>Properties</h3>
+<h3 id='properties-61'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -11397,15 +11736,15 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>lastWeekDay</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>The weekDay specified. The payment will occur on the last occurrence of this weekday in the interval.</td>
 </tr>
 <tr>
 <td>nonBusinessDayTreatment</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>optional</td>
-<td>Enumerated field giving the treatment where a scheduled payment date is not a business day. If absent assumed to be ON.<br/><strong>AFTER</strong> - If a scheduled payment date is a non-business day the payment will be made on the first business day after the scheduled payment date.<br/><strong>BEFORE</strong> - If a scheduled payment date is a non-business day the payment will be made on the first business day before the scheduled payment date.<br/><strong>ON</strong> - If a scheduled payment date is a non-business day the payment will be made on that day regardless.<br/><strong>ONLY</strong> - Payments only occur on business days. If a scheduled payment date is a non-business day the payment will be ignored</td>
+<td>Enumerated field giving the treatment where a scheduled payment date is not a business day. If absent assumed to be <code>ON</code>.<br/><strong>AFTER</strong> - If a scheduled payment date is a non-business day the payment will be made on the first business day after the scheduled payment date.<br/><strong>BEFORE</strong> - If a scheduled payment date is a non-business day the payment will be made on the first business day before the scheduled payment date.<br/><strong>ON</strong> - If a scheduled payment date is a non-business day the payment will be made on that day regardless.<br/><strong>ONLY</strong> - Payments only occur on business days. If a scheduled payment date is a non-business day the payment will be ignored</td>
 </tr>
 </tbody></table>
 <h4 id='enumerated-values-31'>Enumerated Values</h4>
@@ -11470,7 +11809,7 @@ This operation does not require authentication
 
 </span></code></pre>
 <p><em>Indicates that the schedule of payments is defined according to an external event that cannot be predetermined. Mandatory if recurrenceUType is set to eventBased</em></p>
-<h3 id='properties-58'>Properties</h3>
+<h3 id='properties-62'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -11528,7 +11867,7 @@ This operation does not require authentication
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-59'>Properties</h3>
+</span></code></pre><h3 id='properties-63'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -11539,7 +11878,7 @@ This operation does not require authentication
 </thead><tbody>
 <tr>
 <td>addressUType</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>The type of address object present</td>
 </tr>
@@ -11587,7 +11926,7 @@ This operation does not require authentication
   </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AUS"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-60'>Properties</h3>
+</span></code></pre><h3 id='properties-64'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -11676,7 +12015,7 @@ This operation does not require authentication
 
 </span></code></pre>
 <p><em>Australian address formatted according to the file format defined by the <a href="https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf">PAF file format</a></em></p>
-<h3 id='properties-61'>Properties</h3>
+<h3 id='properties-65'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -11826,7 +12165,7 @@ This operation does not require authentication
   </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-62'>Properties</h3>
+</span></code></pre><h3 id='properties-66'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -11848,7 +12187,7 @@ This operation does not require authentication
 <p><a class="schema-anchor" id="schemacdr-banking-apimeta"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{}</span><span class="w">
 
-</span></code></pre><h3 id='properties-63'>Properties</h3>
+</span></code></pre><h3 id='properties-67'>Properties</h3>
 <p><em>None</em></p>
 
 <h3 class="schema-toc" id="tocSlinkspaginated">LinksPaginated</h3>
@@ -11862,7 +12201,7 @@ This operation does not require authentication
   </span><span class="s2">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-64'>Properties</h3>
+</span></code></pre><h3 id='properties-68'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -11911,7 +12250,7 @@ This operation does not require authentication
   </span><span class="s2">"totalPages"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-65'>Properties</h3>
+</span></code></pre><h3 id='properties-69'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -11940,10 +12279,10 @@ This operation does not require authentication
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"totalRecords"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="s2">"totalPages"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"isQueryParamUnsupported"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+  </span><span class="s2">"isQueryParamUnsupported"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-66'>Properties</h3>
+</span></code></pre><h3 id='properties-70'>Properties</h3>
 <p><em>allOf</em></p>
 
 <table><thead>
@@ -11995,7 +12334,7 @@ This operation does not require authentication
 
 </span></code></pre>
 <p><em>Additional data for customised error codes</em></p>
-<h3 id='properties-67'>Properties</h3>
+<h3 id='properties-71'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -12028,7 +12367,7 @@ This operation does not require authentication
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-68'>Properties</h3>
+</span></code></pre><h3 id='properties-72'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -12069,14 +12408,14 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSbankingproductcategory">BankingProductCategory</h3>
+<h3 class="schema-toc" id="tocSbankingproductcategoryv2">BankingProductCategoryV2</h3>
 
-<p><a class="schema-anchor" id="schemacdr-banking-apibankingproductcategory"></a></p>
+<p><a class="schema-anchor" id="schemacdr-banking-apibankingproductcategoryv2"></a></p>
 <pre class="highlight json tab-json"><code><span class="s2">"BUSINESS_LOANS"</span><span class="w">
 
 </span></code></pre>
 <p><em>The category to which a product or account belongs. See <a href="#product-categories">here</a> for more details</em></p>
-<h3 id='properties-69'>Properties</h3>
+<h3 id='properties-73'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -12087,7 +12426,7 @@ This operation does not require authentication
 </thead><tbody>
 <tr>
 <td><em>anonymous</em></td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>The category to which a product or account belongs. See <a href="#product-categories">here</a> for more details</td>
 </tr>

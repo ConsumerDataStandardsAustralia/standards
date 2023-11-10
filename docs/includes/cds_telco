@@ -6762,19 +6762,19 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>type</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>The type of product. <a href="https://www.legislation.gov.au/Details/C2022C00170/Html/Volume_1#_Toc95898745">MOBILE</a> service or BROADBAND fixed internet service</td>
 </tr>
 <tr>
 <td>purpose</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>optional</td>
 <td>The purpose type of the product. If absent, then the value PERSONAL is assumed</td>
 </tr>
 <tr>
 <td>billingType</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>The type of product</td>
 </tr>
@@ -7194,7 +7194,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>openStatus</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>optional</td>
 <td>Open or closed status for the account. If not present then OPEN is assumed</td>
 </tr>
@@ -7423,7 +7423,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>paymentScheduleUType</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>The type of object present in this response</td>
 </tr>
@@ -7506,7 +7506,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </thead><tbody>
 <tr>
 <td>type</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>The concession type</td>
 </tr>
@@ -7560,7 +7560,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>appliedTo</td>
-<td>[string]</td>
+<td>[<a href="#common-field-types">Enum</a>]</td>
 <td>optional</td>
 <td>Array of ENUM&#39;s to specify what the concession applies to. Multiple ENUM values can be provided. If absent, USAGE is assumed</td>
 </tr>
@@ -7757,7 +7757,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>paymentStatus</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>Indicator of the payment status for the invoice</td>
 </tr>
@@ -7997,7 +7997,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>transactionUType</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>Indicator of the type of transaction object present in this record</td>
 </tr>
@@ -8221,7 +8221,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>type</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>optional</td>
 <td>Type of charge. Assumed to be OTHER if absent</td>
 </tr>
@@ -8298,7 +8298,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>method</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>The method of payment</td>
 </tr>
@@ -8560,7 +8560,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </thead><tbody>
 <tr>
 <td><em>anonymous</em></td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>Plan type for this feature. METERED: A plan is charged by usage for the feature. UNMETERED: A plan with no limits for a feature. LIMITED: Where plan limit inclusions apply. UNSUPPORTED: Feature is not supported</td>
 </tr>
@@ -8642,7 +8642,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </thead><tbody>
 <tr>
 <td>addressUType</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>The type of address object present</td>
 </tr>
@@ -10207,7 +10207,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>category</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>optional</td>
 <td>The type of the feature</td>
 </tr>
@@ -10811,13 +10811,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>type</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>The type of the plan. The type of plan. A <a href="https://www.legislation.gov.au/Details/C2022C00170/Html/Volume_1#_Toc95898745">MOBILE</a> service or BROADBAND fixed internet service</td>
 </tr>
 <tr>
 <td>billingType</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>The billing type of then plan</td>
 </tr>
@@ -11112,7 +11112,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </thead><tbody>
 <tr>
 <td>cardScheme</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>The type of credit card held on file</td>
 </tr>
@@ -11124,7 +11124,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>calculationType</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>The mechanism by which the payment amount is calculated.  Explanation of values are as follows:<br/><ul><li><strong>STATIC</strong> - Indicates a consistent, static amount, per payment</li><li><strong>BALANCE</strong> - Indicates that the outstanding balance for the account is paid per period</li><li><strong>CALCULATED</strong> - Indicates that the payment amount is variable and calculated using a pre-defined algorithm</li></ul></td>
 </tr>
@@ -11222,7 +11222,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>calculationType</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>The mechanism by which the payment amount is calculated.  Explanation of values are as follows:<br/><ul><li><strong>STATIC</strong> - Indicates a consistent, static amount, per payment</li><li><strong>BALANCE</strong> - Indicates that the outstanding balance for the account is paid per period</li><li><strong>CALCULATED</strong> - Indicates that the payment amount is variable and calculated using a pre-defined algorithm</li></ul></td>
 </tr>
@@ -11285,13 +11285,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>type</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>The type of the digital wallet identifier</td>
 </tr>
 <tr>
 <td>provider</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>The provider of the digital wallet</td>
 </tr>
@@ -11303,7 +11303,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>calculationType</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>The mechanism by which the payment amount is calculated.  Explanation of values are as follows:<br/><ul><li><strong>STATIC</strong> - Indicates a consistent, static amount, per payment</li><li><strong>BALANCE</strong> - Indicates that the outstanding balance for the account is paid per period</li><li><strong>CALCULATED</strong> - Indicates that the payment amount is variable and calculated using a pre-defined algorithm</li></ul></td>
 </tr>
@@ -11881,7 +11881,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>type</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>optional</td>
 <td>A free text description of the charge</td>
 </tr>

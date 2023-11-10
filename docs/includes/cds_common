@@ -904,7 +904,7 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>» status</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>Enumeration with values. OK (implementation is fully functional). PARTIAL_FAILURE (one or more end points are unexpectedly unavailable). UNAVAILABLE (the full implementation is unexpectedly unavailable). SCHEDULED_OUTAGE (an advertised outage is in effect)</td>
 </tr>
@@ -1129,7 +1129,7 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>» customerUType</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>The type of customer object that is present</td>
 </tr>
@@ -1332,7 +1332,7 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>» customerUType</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>The type of customer object that is present</td>
 </tr>
@@ -1447,7 +1447,7 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>occupationCodeVersion</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>conditional</td>
 <td>The applicable <strong><a href="#iref-ANZSCO">[ANZSCO]</a></strong> release version of the occupation code provided. Mandatory if an <code>occupationCode</code> is supplied. If <code>occupationCode</code> is supplied but <code>occupationCodeVersion</code> is absent, default is <code>ANZSCO_1220.0_2013_V1.2</code></td>
 </tr>
@@ -1704,13 +1704,13 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>industryCodeVersion</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>conditional</td>
 <td>The applicable <a href="http://www.abs.gov.au/ANZSIC">ANZSIC</a> release version of the industry code provided. Should only be supplied if <code>industryCode</code> is also supplied. If <code>industryCode</code> is supplied but <code>industryCodeVersion</code> is absent, default is <code>ANZSIC_1292.0_2006_V2.0</code></td>
 </tr>
 <tr>
 <td>organisationType</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>Legal organisation type</td>
 </tr>
@@ -1902,7 +1902,7 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>purpose</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>The purpose of the number as specified by the customer</td>
 </tr>
@@ -1996,7 +1996,7 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>purpose</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>The purpose for the email, as specified by the customer (Enumeration)</td>
 </tr>
@@ -2111,7 +2111,7 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>» purpose</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>Enumeration of values indicating the purpose of the physical address</td>
 </tr>
@@ -2197,7 +2197,7 @@ This operation does not require authentication
 </thead><tbody>
 <tr>
 <td>addressUType</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td>The type of address object present</td>
 </tr>
