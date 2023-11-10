@@ -232,6 +232,17 @@
               <hr class="toc-sep" />
           </li>
             <li class="toc-child">
+              <a href="#consumer-experience" class="toc-h1 toc-link" data-title="Consumer Experience">Consumer Experience</a>
+              <ul class="toc-list-h2">
+                      <li>
+                        <a href="#banking-language" class="toc-h2 toc-link" data-title="Banking Language">Banking Language</a>
+                      </li>
+              </ul>
+          </li>
+            <li class="toc-group">
+              <hr class="toc-sep" />
+          </li>
+            <li class="toc-child">
               <a href="#register-apis" class="toc-h1 toc-link" data-title="Register APIs">Register APIs</a>
               <ul class="toc-list-h2">
                       <li>
@@ -615,6 +626,86 @@ the consumer data standards not referenced are considered normative.</p>
 
 <p><h2 id='sector-definitions'>Sector definitions</h2><h3 id='banking-and-non-bank-lending'>Banking and Non-Bank Lending</h3>
 <p>Technical statements and descriptions including words such as &#39;banking&#39;, &#39;bank&#39;, &#39;bank account&#39;, &#39;bank transaction&#39; are to be interpreted as being applicable to, or referring to both the Banking and Non-Bank Lending sector equivalent unless otherwise noted.</p></p>
+<h1 style="display:none"></h1>
+<h1 id='consumer-experience'>Consumer Experience</h1><pre class="highlight diff tab-diff"><code>Added Consumer Experience section with Banking Language for reference only
+</code></pre>
+<p><strong>Note:</strong> The Draft Consumer Experience (CX) Standards for Non-Bank Lending reflect the existing Banking Language Standards. Other sections of the CX Standards relating to data language not explicitly included on the Draft Standards page including the <a href="https://consumerdatastandardsaustralia.github.io/standards/#data-language-standards-common">common data language standards</a>, <a href="https://consumerdatastandardsaustralia.github.io/standards/#customer-language-common">customer data language</a>, and <a href="https://consumerdatastandardsaustralia.github.io/standards/#profile-scope-and-standard-claims-common">profile scopes</a>, apply regardless of the sector.</p>
+<h2 id='banking-language'>Banking Language</h2><h3 id='banking-accounts'>Banking Accounts</h3>
+<p>See below for the data language standards for the banking account scopes:</p>
+
+<table><thead>
+<tr>
+<th>Data cluster language</th>
+<th><div style="width:250px">Permission language</div></th>
+<th>Authorisation Scopes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>Account name, type and balance</strong></td>
+<td>Name of account;<br>Type of account;<br>Account balance;</td>
+<td>bank:accounts.basic:read</td>
+</tr>
+<tr>
+<td><strong>Account numbers and features</strong></td>
+<td>Account number;<br>Interest rates;<br>Fees;<br>Discounts;<br>Account terms;<br>Account mail address;</td>
+<td>bank:accounts.detail:read</td>
+</tr>
+<tr>
+<td><strong>Account balance and details&Dagger;</strong></td>
+<td>Name of account;<br>Type of account;<br>Account balance;<br>Account number;<br>Interest rates;<br>Fees;<br>Discounts;<br>Account terms;<br>Account mail address;</td>
+<td>bank:accounts.detail:read</td>
+</tr>
+</tbody></table>
+<h3 id='transactions'>Transactions</h3>
+<p>See below for the data language standards for the banking transactions scope:</p>
+
+<table><thead>
+<tr>
+<th>Data cluster language</th>
+<th>Permission language</th>
+<th>Authorisation Scopes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>Transaction details</strong></td>
+<td>Incoming and outgoing transactions;<br>Amounts;<br>Dates;<br>Descriptions of transactions;<br>Who you have sent money to and received money from; <em>(e.g. their name)&dagger;</em></td>
+<td>bank:transactions:read</td>
+</tr>
+</tbody></table>
+<h3 id='regular-payments'>Regular Payments</h3>
+<p>See below for the data language standards for the regular payments scope:</p>
+
+<table><thead>
+<tr>
+<th>Data cluster language</th>
+<th><div style="width:250px">Permission language</div></th>
+<th>Authorisation Scopes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>Direct debits and scheduled payments</strong></td>
+<td>Direct debits;<br>Scheduled payments;</td>
+<td>bank:regular_payments:read</td>
+</tr>
+</tbody></table>
+<h3 id='payees'>Payees</h3>
+<p>See below for the data language standards for the payees scope:</p>
+
+<table><thead>
+<tr>
+<th>Data cluster language</th>
+<th>Permission language</th>
+<th>Authorisation Scopes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>Saved payees</strong></td>
+<td>Names and details of accounts you have saved; <em>(e.g. their BSB and Account Number, BPAY CRN and Biller code, or NPP PayID)&dagger;</em></td>
+<td>bank:payees:read</td>
+</tr>
+</tbody></table>
+
+<p><br/></p>
 <h1 style="display:none"></h1>
 <h1 id='register-apis'>Register APIs</h1>
 <p>The following section provides an overview of the Register APIs for Data Holders and Data Recipients to collect participant metadata.
