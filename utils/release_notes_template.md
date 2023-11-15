@@ -70,6 +70,11 @@ This release addresses the following Decision Proposals published on [Standards]
 |Change|Description|Link|
 |------|-----------|----|
 
+## Additional Standards
+
+|Change|Description|Link|
+|------|-----------|----|
+
 ## Known Issues
 
 TBC
