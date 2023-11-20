@@ -14,7 +14,7 @@ NaturalNumber | A natural number (ie. a positive integer inclusive of zero) | 0<
 PositiveInteger | A positive integer (zero excluded) | 1<br/>10000
 NegativeInteger | A negative integer inclusive of zero | 0<br/>-1<br/>-10000
 Integer | Any positive or negative integer inclusive of zero | 1<br/>0<br/>-1
-Number | A standard floating point number. Can be positive, negative or zero | 0.1<br/>-100.09<br/>10<br/>90.09
+Number | An integer or decimal number. Can be positive, negative or zero | 0.1<br/>-100.09<br/>10<br/>90.09
 Base64 | Base64 encoded string as per **[[RFC4648]](#nref-RFC4648)** | Q29uc3VtZXIgRGF0YSBSaWdodA==
 DateTimeString | Combined Date and Time string as per **[[RFC3339]](#nref-RFC3339)** (labelled date-time in the RFC). As specified in **[[RFC3339]](#nref-RFC3339)** times MUST be offset relative to UTC | “2007-05-01T15:43:00.12345Z”<br/>“2012-12-25T15:43:00-08:00”<br/>“1997-01-12T15:43:00.121Z”
 DateString | Date string as per **[[RFC3339]](#nref-RFC3339)** (labelled full-date in the RFC) | “2007-05-01”<br/>“2012-12-25”
