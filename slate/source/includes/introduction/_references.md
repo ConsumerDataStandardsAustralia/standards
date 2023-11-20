@@ -32,6 +32,7 @@
 | <a id="nref-RFC7009"></a>**[RFC7009]**  | OAuth 2.0 Token Revocation: <https://tools.ietf.org/html/rfc7009>                                                                                                             |August 2013
 | <a id="nref-RFC7521"></a>**[RFC7521]**  | Assertion Framework for OAuth 2.0 Client Authentication and Authorization Grants: <https://tools.ietf.org/html/rfc7521>                                              |May 2015
 | <a id="nref-RFC7523"></a>**[RFC7523]**  | JSON Web Token (JWT) Profile for OAuth 2.0 Client Authentication and Authorization Grants: <https://tools.ietf.org/html/rfc7523>                                              |May 2015
+| <a id="nref-RFC7636"></a>**[RFC7636]**  | Proof Key for Code Exchange by OAuth Public Clients: <https://datatracker.ietf.org/doc/html/rfc7636> |September 2015
 | <a id="nref-RFC7662"></a>**[RFC7662]**  | OAuth 2.0 Token Introspection: <https://tools.ietf.org/html/rfc7662> |October 2015
 | <a id="nref-RFC8414"></a>**[RFC8414]**  | OAuth 2.0 Authorization Server Metadata: <https://tools.ietf.org/html/rfc8414>                                                                                                          |June 2018
 | <a id="nref-RFC9126"></a>**[RFC9126]**  | OAuth 2.0 Pushed Authorization Requests: <https://tools.ietf.org/html/rfc9126>                                                                                                |September 2021
