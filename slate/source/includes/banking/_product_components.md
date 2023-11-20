@@ -208,8 +208,10 @@ PENALTY | A specific penalty rate that may be applied. A penalty rate increases 
 <a id="bankingtermdepositaccountedoc"></a>
 <h3 id="tocSbankingtermdepositaccountypedoc">Banking Term Deposit Account Types</h3>
 
-Description of the usage of the maturityInstructions field as it applies to accounts.
+Description of the usage of the `maturityInstructions` field as it applies to accounts.
 
 |Value|Description|Use of additionalValue Field|
 |-----|-----------|----------------------------|
 |HOLD_ON_MATURITY|Funds are held in a facility or similar mechanism managed by the data holder for a period of time until the customer provides instructions or the maximum period of the hold has elapsed. Funds may be renewed or withdrawn upon instructions by the customer|NA|
+|PAID_OUT_AT_MATURITY|Funds are to be paid out at maturity|NA|
+|ROLLED_OVER|Funds are to be rolled over at maturity|NA|
