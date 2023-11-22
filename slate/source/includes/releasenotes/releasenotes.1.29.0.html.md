@@ -74,6 +74,7 @@ This release addresses the following Decision Proposals published on [Standards]
 
 |Change|Description|Link|
 |------|-----------|----|
+|Version Delta|No changes were made to the [Candidate Standards for Banking Decision Proposal 306](../../includes/additional/candidates/dp306/banking-dp306.html) and [Draft Standards for the Banking and Non-Bank Lending sector](../../includes/additional/drafts/non-bank-lending/banking-non-bank-lending.html) in this release, but the Version Delta notes for those Additional Standards have been retained from version 1.28.0 for reference. |[Additional Standards](../../#additional-standards)|
 
 ## Known Issues
 
