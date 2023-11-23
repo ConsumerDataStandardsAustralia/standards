@@ -1,7 +1,9 @@
-## {{= data.operationUniqueName}}
+{{ data.cds_operationUniqueSlug = data.operationUniqueSlug.replace(/[\s\W-]+/g, ' ').trim().replace(/[\s\W-]+/g, '-'); }}
+{{ data.cds_uniqueAnchorPrefix = data.cds_resourceName + '_' + data.title_prefix + '_' + data.cds_operationUniqueSlug; }}
+
+<h2 id="{{= data.cds_uniqueAnchorPrefix }}">{{= data.operationUniqueName}}</h2>
 
 {{? data.operation.operationId}}
-<a id="opId{{=data.operation.operationId}}"></a>
 {{?}}
 
 {{ data.methodUpper = data.method.verb.toUpperCase(); }}
@@ -36,7 +38,7 @@
 {{= data.utils.getBodyParameterExamples(data) }}
 {{?}}
 
-###Endpoint Version
+<h3 id="{{= data.cds_uniqueAnchorPrefix }}_endpoint-version">Endpoint Version</h3>
 |   |  |
 |---|--|
 |Version|**{{? data.operation["x-version"]}}{{= data.operation["x-version"]}}{{??}}Versioning is not supported for this endpoint{{?}}**

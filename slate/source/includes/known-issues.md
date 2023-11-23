@@ -22,9 +22,9 @@ Future versions of the CDR Register API error codes are to be aligned to the [St
 
 API | Updated Error Codes | New Error Codes
 -- | -- | --
-[Get Data Holder Brands](#get-data-holder-brands) | 400: <br />Missing Required Header / Invalid Header / Invalid Version / Invalid Field | 404: <br />Invalid Industry
-[Get Software Statement Assertion (SSA)](#get-software-statement-assertion-ssa) | 400: <br />Missing Required Header / Invalid Header / Invalid Version / Invalid Field <br /><br />403: <br />The ADR or the ADR's Software Product is not active <br /><br />404: <br />Invalid Industry / Invalid Brand Id / Invalid Software Product Id |
-[Get Data Holder Statuses](#get-data-holder-statuses) | 400: <br />Missing Required Header / Invalid Header / Invalid Version / Invalid Field | 404: <br />Invalid Industry
-[Get Software Products Statuses](#get-software-products-statuses) | 400: <br />Missing Required Header / Invalid Header / Invalid Version / Invalid Field | 404: <br />Invalid Industry
-[Get Data Recipients Statuses](#get-data-recipients-statuses) | 400: <br />Missing Required Header / Invalid Header / Invalid Version / Invalid Field | 404: <br />Invalid Industry
-[Get Data Recipients](#get-data-recipients) | 400: <br />Missing Required Header / Invalid Header / Invalid Version / Invalid Field | 404: <br />Invalid Industry
+[Get Data Holder Brands](#register-apis_cdr-participant-discovery-api_get-data-holder-brands) | 400: <br />Missing Required Header / Invalid Header / Invalid Version / Invalid Field | 404: <br />Invalid Industry
+[Get Software Statement Assertion (SSA)](#register-apis_cdr-participant-discovery-api_get-software-statement-assertion-ssa) | 400: <br />Missing Required Header / Invalid Header / Invalid Version / Invalid Field <br /><br />403: <br />The ADR or the ADR's Software Product is not active <br /><br />404: <br />Invalid Industry / Invalid Brand Id / Invalid Software Product Id |
+[Get Data Holder Statuses](#register-apis_cdr-participant-discovery-api_get-data-holder-statuses) | 400: <br />Missing Required Header / Invalid Header / Invalid Version / Invalid Field | 404: <br />Invalid Industry
+[Get Software Products Statuses](#register-apis_cdr-participant-discovery-api_get-software-products-statuses) | 400: <br />Missing Required Header / Invalid Header / Invalid Version / Invalid Field | 404: <br />Invalid Industry
+[Get Data Recipients Statuses](#register-apis_cdr-participant-discovery-api_get-data-recipients-statuses) | 400: <br />Missing Required Header / Invalid Header / Invalid Version / Invalid Field | 404: <br />Invalid Industry
+[Get Data Recipients](#register-apis_cdr-participant-discovery-api_get-data-recipients) | 400: <br />Missing Required Header / Invalid Header / Invalid Version / Invalid Field | 404: <br />Invalid Industry
