@@ -19,7 +19,7 @@
 | <a id="nref-OIDC"></a>**[OIDC]**        | OpenID Connect Core 1.0 incorporating errata set 1: <http://openid.net/specs/openid-connect-core-1_0.html>                                                                    |November 2014
 | <a id="nref-OIDD"></a>**[OIDD]**        | OpenID Connect Discovery 1.0 incorporating errata set 1: <http://openid.net/specs/openid-connect-discovery-1_0.html>                                                          |November 2014
 | <a id="nref-PAR"></a>**[PAR]**          | OAuth 2.0 Pushed Authorization Requests RFC9126: <https://tools.ietf.org/html/rfc9126>                                                                                                |September 2021
-| <a id="nref-RFC7636"></a><a id="nref-PKCE"></a>**[PKCE]**        | Proof Key for Code Exchange by OAuth Public Clients: <https://datatracker.ietf.org/doc/html/rfc7636> | September 2015
+| <a id="nref-RFC7636"></a><a id="nref-PKCE"></a>**[PKCE]** / **[RFC7636]**        | Proof Key for Code Exchange by OAuth Public Clients: <https://datatracker.ietf.org/doc/html/rfc7636> | September 2015
 | <a id="nref-TDIF"></a>**[TDIF]**        | Digital Transformation Agency - Trusted Digital Identity Framework <https://www.digitalidentity.gov.au/tdif>                  |April 2019
 | <a id="nref-RFC2119"></a>**[RFC2119]**  | Key words for use in RFCs to Indicate Requirement Levels <https://tools.ietf.org/html/rfc2119>                                                                                |March 1997
 | <a id="nref-RFC2397"></a>**[RFC2397]**  | The "data" URL scheme: <https://tools.ietf.org/html/rfc2397>       |August 1998
@@ -32,7 +32,6 @@
 | <a id="nref-RFC7009"></a>**[RFC7009]**  | OAuth 2.0 Token Revocation: <https://tools.ietf.org/html/rfc7009>                                                                                                             |August 2013
 | <a id="nref-RFC7521"></a>**[RFC7521]**  | Assertion Framework for OAuth 2.0 Client Authentication and Authorization Grants: <https://tools.ietf.org/html/rfc7521>                                              |May 2015
 | <a id="nref-RFC7523"></a>**[RFC7523]**  | JSON Web Token (JWT) Profile for OAuth 2.0 Client Authentication and Authorization Grants: <https://tools.ietf.org/html/rfc7523>                                              |May 2015
-| <a id="nref-RFC7636"></a>**[RFC7636]**  | Proof Key for Code Exchange by OAuth Public Clients: <https://datatracker.ietf.org/doc/html/rfc7636> |September 2015
 | <a id="nref-RFC7662"></a>**[RFC7662]**  | OAuth 2.0 Token Introspection: <https://tools.ietf.org/html/rfc7662> |October 2015
 | <a id="nref-RFC8414"></a>**[RFC8414]**  | OAuth 2.0 Authorization Server Metadata: <https://tools.ietf.org/html/rfc8414>                                                                                                          |June 2018
 | <a id="nref-RFC9126"></a>**[RFC9126]**  | OAuth 2.0 Pushed Authorization Requests: <https://tools.ietf.org/html/rfc9126>                                                                                                |September 2021
