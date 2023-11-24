@@ -1,5 +1,5 @@
 {{ data.cds_operationUniqueSlug = data.operationUniqueSlug.replace(/[\s\W-]+/g, ' ').trim().replace(/[\s\W-]+/g, '-'); }}
-{{ data.cds_uniqueAnchorPrefix = data.cds_resourceName + '_' + data.title_prefix + '_' + data.cds_operationUniqueSlug; }}
+{{ data.cds_uniqueAnchorPrefix = data.title_prefix + '_' + data.cds_operationUniqueSlug; }}
 
 <h2 id="{{= data.cds_uniqueAnchorPrefix }}">{{= data.operationUniqueName}}</h2>
 

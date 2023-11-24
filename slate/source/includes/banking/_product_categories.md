@@ -2,7 +2,7 @@
 
 
 
-The [Product Category enumeration](#banking-apis_cdr-banking-api_schemas_tocSbankingproductcategory) lists the available product categories for categorising products and accounts.  These are explained in the following tables:
+The [Product Category enumeration](#cdr-banking-api_schemas_tocSbankingproductcategory) lists the available product categories for categorising products and accounts.  These are explained in the following tables:
 
 **Deposit Products**
 
