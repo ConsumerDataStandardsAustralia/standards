@@ -8,4 +8,25 @@ This specification defines the APIs for Data Holders exposing Energy endpoints.
 <tr><td><a href='./includes/swagger/cds_energy.yaml'>Energy OpenAPI Specification (YAML)</a></td></tr>
 </table>
 
+```diff
+Added follwing ENUM field to EnergyBillingDemandTransaction:
++ measureUnit
+
+Updated the versions of the following APIs:
++ Get Billing For Account from v2 to v3
++ Get Billing For Specific Accounts from v2 to v3
++ Get Bulk Billing from v2 to v3
+
+Updated the following structures
+from:
+- EnergyBillingListResponseV2
+- EnergyBillingTransactionV2
+- EnergyBillingDemandTransactionV2
+to:
++ EnergyBillingListResponseV3
++ EnergyBillingTransactionV3
++ EnergyBillingDemandTransactionV3
+
+```
+
 <%= partial "includes/cds_energy.md" %>
