@@ -32,7 +32,7 @@ This release addresses the following Decision Proposals published on [Standards]
 ## General Changes
 |Change|Description|Link|
 |------|-----------|----|
-|Standards category ribbon|Added a red ribbon below the CDS logo on different Standards versions to visually distinguish them from the binding version|[Draft](../../#draft-standards), [Candidate](../../#candidate-standards), [Staging](https://consumerdatastandardsaustralia.github.io/standards-staging/) and [Archived](../../#archives) pages|
+|Standards category ribbon|Added a red ribbon below the CDS logo on different Standards versions to visually distinguish them from the binding version|[Draft](../../#draft-standards), [Candidate](../../#candidate-standards), [Staging](https://consumerdatastandardsaustralia.github.io/standards-staging/), [Archived](../../#archives), and superseded endpoint version pages|
 
 
 ## Introduction

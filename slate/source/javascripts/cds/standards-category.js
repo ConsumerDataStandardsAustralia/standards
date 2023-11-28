@@ -26,8 +26,9 @@
     settings.experimental = locPathname.indexOf('/standards-experimental/') > -1;
     settings.draft = locPathname.indexOf('/includes/additional/drafts/') > -1;
     settings.candidate = locPathname.indexOf('/includes/additional/candidates/') > -1;
-    settings.staging = locPathname.indexOf('/standards-staging/') > -1;
+    settings.obsolete = locPathname.indexOf('/includes/obsolete/') > -1;
     settings.archived = locPathname.indexOf('/standards-archives/') > -1;
+    settings.staging = locPathname.indexOf('/standards-staging/') > -1;
 
     // Testing
     //console.log(JSON.stringify(settings, null, 4));
@@ -37,20 +38,28 @@
         var cdsLogoElem = document.querySelector('body > div.toc-wrapper > img.logo');
         var cdsCategoryElem = document.createElement('p');
         cdsCategoryElem.id = 'cdsCategoryMessage';
-        cdsCategoryElem.style.cssText = 'font-size: 16px; padding: 10px; margin: 2px 0px; background-color: #b60000; color: white;';
+        cdsCategoryElem.style.cssText = 'font-size: 16px; padding: 10px; margin: 2px 0 16px 0; background-color: #b60000; color: white;';
 
+        // Pages
         if (settings.draft) {
             cdsCategoryElem.textContent = 'Draft';
         }
         if (settings.candidate) {
             cdsCategoryElem.textContent = 'Candidate';
         }
-        if (settings.staging) {
-            cdsCategoryElem.textContent = 'Staging';
+        if (settings.obsolete) {
+            cdsCategoryElem.textContent = 'Superseded version';
         }
+
+        // All pages in these collections will have a common label
         if (settings.archived) {
             cdsCategoryElem.textContent = 'Archived version';
         }
+        if (settings.staging) {
+            cdsCategoryElem.textContent = 'Staging';
+        }
+
+        // Add ribbon
         if (cdsLogoElem && cdsCategoryElem.textContent && !document.getElementById('cdsCategoryMessage')) {
             cdsLogoElem.parentNode.insertBefore(cdsCategoryElem, cdsLogoElem.nextSibling);
         }
