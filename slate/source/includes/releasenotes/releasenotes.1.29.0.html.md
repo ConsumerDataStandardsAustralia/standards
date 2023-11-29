@@ -49,7 +49,7 @@ This release addresses the following Decision Proposals published on [Standards]
 
 |Change|Description|Link|
 |------|-----------|----|
-| Measure Unit in EnergyBillingDemandTransaction | **[Standards Maintenance #587](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/587):** Added new field `measureUnit` in EnergyBillingDemandTransaction. Incrimented versions of `Get Billing for Account`, `Get Billing for Specific Account` and `Get Bulk Billing` endpoints | [Energy APIs](../../#energy-apis) |
+| Measure Unit in EnergyBillingDemandTransaction | **[Standards Maintenance #587](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/587):** Added new field `measureUnit` in EnergyBillingDemandTransaction. Incremented versions of `Get Billing for Account`, `Get Billing for Specific Account` and `Get Bulk Billing` endpoints | [Energy APIs](../../#energy-apis) |
 
 ## Information Security Profile
 
