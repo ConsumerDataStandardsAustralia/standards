@@ -6,7 +6,7 @@ Added Dashboard Standards section
 
 This section outlines standards for consumer dashboards. These are expected to be implemented on each specific data sharing arrangement.
 
-<h3 class="schema-toc" style="margin-top:2.5em;border-top:0;font-size:15px;" id="consumer-experience_dashboard-standards_data-holder-dashboards">Data Holder Dashboards</h3>
+<h3 class="schema-toc" data-cds-menu="h3" id="consumer-experience_dashboard-standards_data-holder-dashboards">Data Holder Dashboards</h3>
 
 |Area|CX Standard|
 |-------------------|------------------------------|
