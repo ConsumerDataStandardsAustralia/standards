@@ -32,7 +32,7 @@ This release addresses the following Decision Proposals published on [Standards]
 ## General Changes
 |Change|Description|Link|
 |------|-----------|----|
-|CX navigation links|Included subheadings in Consumer Experience navigation for two sections|[Consumer Experience](../../#consumer-experience)|
+|CX navigation links|**[Standards Staging #338](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/338):** Included subheadings in Consumer Experience navigation for two sections|[Consumer Experience](../../#consumer-experience)|
 
 
 ## Introduction
