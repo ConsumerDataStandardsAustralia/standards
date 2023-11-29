@@ -32,7 +32,7 @@ This release addresses the following Decision Proposals published on [Standards]
 ## General Changes
 |Change|Description|Link|
 |------|-----------|----|
-|Navigation links|Updated anchor links throughout the Standards to remove duplicates, and updated menu navigation code to prevent the page from jumping to the previous section when opening in a new window.|Most navigation links|
+|Navigation links|**[Standards Staging #222](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/222):** Updated anchor links throughout the Standards to remove duplicates, and updated menu navigation code to prevent the page from jumping to the previous section when opening in a new window.|Most navigation links|
 
 
 ## Introduction
