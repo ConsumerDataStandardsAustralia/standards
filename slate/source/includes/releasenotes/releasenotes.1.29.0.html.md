@@ -64,7 +64,7 @@ This release addresses the following Decision Proposals published on [Standards]
 
 |Change|Description|Link|
 |------|-----------|----|
-|Business Consumer Provisions|Updated requirements for Business consumer statements and Business consumer disclosure consents|[Consent Standards](../../#consent-standards)|
+|Business Consumer Provisions|**[Decision Proposal #333](https://github.com/ConsumerDataStandardsAustralia/standards/issues/333):** Updated requirements for Business consumer statements and Business consumer disclosure consents|[Consent Standards](../../#consent-standards)|
 
 ## Non-Functional Requirements
 
