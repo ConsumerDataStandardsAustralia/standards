@@ -32,7 +32,7 @@ This release addresses the following Decision Proposals published on [Standards]
 ## General Changes
 |Change|Description|Link|
 |------|-----------|----|
-|Documentation correction|Minor typos in table headings|[Change Log](../../#change-log), [Archives](../../#archives)|
+|Documentation correction|**[Standards Staging #312](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/312):** Minor typos in table headings|[Change Log](../../#change-log), [Archives](../../#archives)|
 
 
 ## Introduction
