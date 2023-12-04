@@ -987,13 +987,13 @@
                                                 },
                                                 "startTime": {
                                                     "type": "string",
-                                                    "x-cds-type": "TimeString",
-                                                    "description": "The beginning of the time period per day for which the controlled load rate applies. Required if endTime provided"
+                                                    "x-cds-type": "ExternalRef",
+                                                    "description": "The beginning of the time period per day for which the controlled load rate applies. Required if endTime provided.\n\nFormatted according to [ISO 8601 Times](https://en.wikipedia.org/wiki/ISO_8601#Times) (The T may be omitted in both basic and extended format). If time is provided with UTC offset, the value of EnergyPlanContract timeZone is to be ignored."
                                                 },
                                                 "endTime": {
                                                     "type": "string",
-                                                    "x-cds-type": "TimeString",
-                                                    "description": "The end of the time period per day for which the controlled load rate applies. Required if startTime provided"
+                                                    "x-cds-type": "ExternalRef",
+                                                    "description": "The end of the time period per day for which the controlled load rate applies. Required if startTime provided.\n\nFormatted according to [ISO 8601 Times](https://en.wikipedia.org/wiki/ISO_8601#Times) (The T may be omitted in both basic and extended format). If time is provided with UTC offset, the value of EnergyPlanContract timeZone is to be ignored."
                                                 },
                                                 "additionalInfo": {
                                                     "description": "Display text providing more information on the contrlled load, for e.g. controlled load availability if specific day/time is not known. Required if startTime and endTime absent or if additionalInfoUri provided",
@@ -1482,14 +1482,14 @@
                                                     }
                                                 },
                                             "startTime": {
-                                                "description": "The beginning of the time period per day for which the tariff applies.  If absent assumes start of day (ie. midnight)",
+                                                "description": "The beginning of the time period per day for which the tariff applies.  If absent assumes start of day (ie. midnight).\n\nFormatted according to [ISO 8601 Times](https://en.wikipedia.org/wiki/ISO_8601#Times) (The T may be omitted in both basic and extended format). If time is provided with UTC offset, the value of EnergyPlanContract timeZone is to be ignored.",
                                                 "type": "string",
-                                                "x-cds-type": "TimeString"
+                                                "x-cds-type": "ExternalRef"
                                             },
                                             "endTime": {
-                                                "description": "The end of the time period per day for which the tariff applies.  If absent assumes end of day (ie. one second before midnight)",
+                                                "description": "The end of the time period per day for which the tariff applies.  If absent assumes end of day (ie. one second before midnight).\n\nFormatted according to [ISO 8601 Times](https://en.wikipedia.org/wiki/ISO_8601#Times) (The T may be omitted in both basic and extended format). If time is provided with UTC offset, the value of EnergyPlanContract timeZone is to be ignored.",
                                                 "type": "string",
-                                                "x-cds-type": "TimeString"
+                                                "x-cds-type": "ExternalRef"
                                             }
                                         }
                                     }
@@ -1681,13 +1681,13 @@
                                                 },
                                                 "startTime": {
                                                     "type": "string",
-                                                    "x-cds-type": "TimeString",
-                                                    "description": "Start of the period"
+                                                    "x-cds-type": "ExternalRef",
+                                                    "description": "Start of the period.\n\nFormatted according to [ISO 8601 Times](https://en.wikipedia.org/wiki/ISO_8601#Times) (The T may be omitted in both basic and extended format). If time is provided with UTC offset, the value of EnergyPlanContract timeZone is to be ignored."
                                                 },
                                                 "endTime": {
                                                     "type": "string",
-                                                    "x-cds-type": "TimeString",
-                                                    "description": "End of the period"
+                                                    "x-cds-type": "ExternalRef",
+                                                    "description": "End of the period.\n\nFormatted according to [ISO 8601 Times](https://en.wikipedia.org/wiki/ISO_8601#Times) (The T may be omitted in both basic and extended format). If time is provided with UTC offset, the value of EnergyPlanContract timeZone is to be ignored."
                                                 }
                                             }
                                         }
@@ -1746,13 +1746,13 @@
                                     },
                                     "startTime": {
                                         "type": "string",
-                                        "x-cds-type": "TimeString",
-                                        "description": "Start of the period"
+                                        "x-cds-type": "ExternalRef",
+                                        "description": "Start of the period.\n\nFormatted according to [ISO 8601 Times](https://en.wikipedia.org/wiki/ISO_8601#Times) (The T may be omitted in both basic and extended format). If time is provided with UTC offset, the value of EnergyPlanContract timeZone is to be ignored."
                                     },
                                     "endTime": {
                                         "type": "string",
-                                        "x-cds-type": "TimeString",
-                                        "description": "End of the period"
+                                        "x-cds-type": "ExternalRef",
+                                        "description": "End of the period.\n\nFormatted according to [ISO 8601 Times](https://en.wikipedia.org/wiki/ISO_8601#Times) (The T may be omitted in both basic and extended format). If time is provided with UTC offset, the value of EnergyPlanContract timeZone is to be ignored."
                                     },
                                     "days": {
                                         "description": "The days that the demand tariff applies to",

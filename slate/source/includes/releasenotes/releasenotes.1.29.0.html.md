@@ -21,7 +21,7 @@ This release addresses the following minor defects raised on [Standards Staging]
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
-- [Maintenance Issue xxx - Description](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/xxx)
+- [Standards Maintenance Issue 613 - Time format change request for Energy Plan Data](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/613)
 
 ### Decision Proposals
 
@@ -49,6 +49,8 @@ This release addresses the following Decision Proposals published on [Standards]
 
 |Change|Description|Link|
 |------|-----------|----|
+| Change time field type | [**Standards Maintenance #613**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/613): Change the type of time fields in energy plan data to ExternalRef referring to [ISO 8601 Times](https://en.wikipedia.org/wiki/ISO_8601#Times) specification. | [Energy APIs](../../#energy-apis) |
+
 
 ## Information Security Profile
 
