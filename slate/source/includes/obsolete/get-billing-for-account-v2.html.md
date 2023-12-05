@@ -14,7 +14,7 @@ search: false
 # Get Billing For Account V2
 This page documents version 2 of the Get Billing For Account end point. 
 
-* Data Holders **MAY** retire this version on **September 9th 2024** if they impliment v3.
+* Data Holders **MAY** retire this version on **September 9th 2024** if they implement v3.
 
 ## Get Billing For Account
 
