@@ -30,6 +30,7 @@
 {{ var schema = data.api.components.schemas[s]; }}
 
 <h3 class="schema-toc" id="{{= data.title_prefix }}_schemas_tocS{{=s.toLowerCase() }}">{{= s }}</h3>
+<p id="tocS{{=s.toLowerCase()}}" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schema{{=data.title_prefix}}{{=s.toLowerCase()}}"></a>
 
