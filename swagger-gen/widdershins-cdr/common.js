@@ -408,6 +408,9 @@ function schemaToArray(schema,offset,options,data) {
         if (typeof schema['x-cds-type'] === 'string') {
           entry.cdrType = '[' + schema['x-cds-type'] +'](#common-field-types)';
         }
+        if (schema.items && typeof schema.items['x-cds-type'] === 'string') {
+          entry.cdrType = '[[' + schema.items['x-cds-type'] +']](#common-field-types)';
+        }
         if (schema.enum) {
           entry.cdrType = '[Enum](#common-field-types)';
         }
