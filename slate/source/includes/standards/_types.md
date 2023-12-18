@@ -1,6 +1,8 @@
 ## Common Field Types
 
-
+```diff
+Properties defined in response schemas with specific 'Common Field Types' values inside arrays will now show the specific type instead of a generic type
+```
 
 The following table outlines the common data types for fields used in the standard.
 

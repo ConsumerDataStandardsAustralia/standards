@@ -17,7 +17,7 @@ Release notes for version v1.29.0 of the [CDR Standards](../../index.html).
 
 This release addresses the following minor defects raised on [Standards Staging](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues):
 
-- [Staging Issue xxx - Description](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/xxx)
+- [Staging Issue 348 - Change previousDays data type to '[NaturalNumber]' in Get Metrics AuthorisationMetricsV2.abandonmentsByStage](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/348)
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
@@ -32,6 +32,7 @@ This release addresses the following Decision Proposals published on [Standards]
 ## General Changes
 |Change|Description|Link|
 |------|-----------|----|
+| Common Field Types in arrays | **[Standards Staging #348](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/348):** Properties defined in response schemas with specific 'Common Field Types' values inside arrays should show the specific type instead of a generic type | Response Properties tables |
 
 
 ## Introduction
