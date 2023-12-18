@@ -17,7 +17,7 @@ Release notes for version v1.29.0 of the [CDR Standards](../../index.html).
 
 This release addresses the following minor defects raised on [Standards Staging](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues):
 
-- [Staging Issue xxx - Description](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/xxx)
+- [Staging Issue 349 - Enum parameters in endpoints are not reflected correctly](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/349)
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
@@ -32,6 +32,7 @@ This release addresses the following Decision Proposals published on [Standards]
 ## General Changes
 |Change|Description|Link|
 |------|-----------|----|
+| Enum property type | **[Standards Staging #349](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/349):** Request parameters defined with enumerated values will now show the type as 'Enum' instead of 'string' | Request Parameters tables |
 
 
 ## Introduction
