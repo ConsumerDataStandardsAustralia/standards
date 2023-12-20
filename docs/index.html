@@ -8269,13 +8269,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>authorization_signed_response_alg</td>
 <td><a href="#common-field-types">Enum</a></td>
-<td>optional</td>
+<td>conditional</td>
 <td>The JWS <code>alg</code> algorithm required for signing authorization responses. If this is specified, the response will be signed using JWS and the configured algorithm. The algorithm “none” is not allowed.<br><br>Required if response_type of “code” is registered by the client.</td>
 </tr>
 <tr>
 <td>authorization_encrypted_response_alg</td>
 <td><a href="#common-field-types">Enum</a></td>
-<td>optional</td>
+<td>conditional</td>
 <td>The JWE <code>alg</code> algorithm required for encrypting authorization responses. If unspecified, the default is that no encryption is performed.<br><br>Required if “authorization_encrypted_response_enc” is included.</td>
 </tr>
 <tr>
@@ -49032,7 +49032,7 @@ This operation may only be called by the CDR Register
 <td>» errors</td>
 <td><a href="#schemacdr-admin-apierrormetricsv2">ErrorMetricsV2</a></td>
 <td>mandatory</td>
-<td>Number of calls resulting in error due to server execution over time</td>
+<td>Number of calls resulting in error, over time</td>
 </tr>
 <tr>
 <td>» rejections</td>
@@ -50222,7 +50222,7 @@ This operation may only be called by the CDR Register
 
 </span></code></pre>
 
-<p><em>Number of calls resulting in error due to server execution over time</em></p>
+<p><em>Number of calls resulting in error, over time</em></p>
 
 <h3 id="cdr-admin-api_errormetricsv2_properties">Properties</h3>
 
@@ -50256,7 +50256,7 @@ This operation may only be called by the CDR Register
 <td>unauthenticated</td>
 <td>object</td>
 <td>mandatory</td>
-<td>Number of calls resulting in error due to server execution over time for unauthenticated endpoints</td>
+<td>Number of calls resulting in error for unauthenticated endpoints</td>
 </tr>
 <tr>
 <td>» currentDay</td>
@@ -50298,7 +50298,7 @@ This operation may only be called by the CDR Register
 <td>authenticated</td>
 <td>object</td>
 <td>mandatory</td>
-<td>Number of calls resulting in error due to server execution over time for authenticated endpoints</td>
+<td>Number of calls resulting in error for authenticated endpoints</td>
 </tr>
 <tr>
 <td>» currentDay</td>

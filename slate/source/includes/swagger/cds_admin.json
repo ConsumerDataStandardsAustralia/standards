@@ -400,7 +400,7 @@
         "type" : "object"
       },
       "ErrorMetricsV2" : {
-        "description" : "Number of calls resulting in error due to server execution over time",
+        "description" : "Number of calls resulting in error, over time",
         "properties" : {
           "aggregate" : {
             "$ref" : "#/components/schemas/ErrorMetricsV2_aggregate"
@@ -1333,7 +1333,7 @@
         "x-conditional" : [ "currentDay", "previousDays" ]
       },
       "ErrorMetricsV2_unauthenticated" : {
-        "description" : "Number of calls resulting in error due to server execution over time for unauthenticated endpoints",
+        "description" : "Number of calls resulting in error for unauthenticated endpoints",
         "properties" : {
           "currentDay" : {
             "additionalProperties" : {
@@ -1375,7 +1375,7 @@
         "x-conditional" : [ "currentDay", "previousDays" ]
       },
       "ErrorMetricsV2_authenticated" : {
-        "description" : "Number of calls resulting in error due to server execution over time for authenticated endpoints",
+        "description" : "Number of calls resulting in error for authenticated endpoints",
         "properties" : {
           "currentDay" : {
             "additionalProperties" : {

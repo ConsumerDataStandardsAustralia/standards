@@ -924,13 +924,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>authorization_signed_response_alg</td>
 <td><a href="#common-field-types">Enum</a></td>
-<td>optional</td>
+<td>conditional</td>
 <td>The JWS <code>alg</code> algorithm required for signing authorization responses. If this is specified, the response will be signed using JWS and the configured algorithm. The algorithm “none” is not allowed.<br><br>Required if response_type of “code” is registered by the client.</td>
 </tr>
 <tr>
 <td>authorization_encrypted_response_alg</td>
 <td><a href="#common-field-types">Enum</a></td>
-<td>optional</td>
+<td>conditional</td>
 <td>The JWE <code>alg</code> algorithm required for encrypting authorization responses. If unspecified, the default is that no encryption is performed.<br><br>Required if “authorization_encrypted_response_enc” is included.</td>
 </tr>
 <tr>

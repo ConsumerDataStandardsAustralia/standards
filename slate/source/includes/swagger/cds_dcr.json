@@ -517,7 +517,7 @@
         },
         "required" : [ "client_description", "client_id", "client_name", "client_uri", "grant_types", "id_token_signed_response_alg", "jwks_uri", "logo_uri", "org_id", "org_name", "redirect_uris", "request_object_signing_alg", "response_types", "scope", "software_id", "software_statement", "token_endpoint_auth_method", "token_endpoint_auth_signing_alg" ],
         "type" : "object",
-        "x-conditional" : [ "id_token_encrypted_response_alg", "id_token_encrypted_response_enc" ]
+        "x-conditional" : [ "id_token_encrypted_response_alg", "id_token_encrypted_response_enc", "authorization_signed_response_alg", "authorization_encrypted_response_alg" ]
       },
       "ClientRegistration" : {
         "allOf" : [ {

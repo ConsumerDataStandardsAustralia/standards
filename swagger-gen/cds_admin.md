@@ -1191,7 +1191,7 @@ This operation may only be called by the CDR Register
 |» sessionCount|[SessionCountMetricsV2](#schemacdr-admin-apisessioncountmetricsv2)|mandatory|Session counts over time. Note that a session is defined as the provisioning of an Access Token.|
 |» averageTps|[AverageTPSMetricsV2](#schemacdr-admin-apiaveragetpsmetricsv2)|mandatory|Average transactions per second over time|
 |» peakTps|[PeakTPSMetricsV2](#schemacdr-admin-apipeaktpsmetricsv2)|mandatory|Peak transactions per second over time|
-|» errors|[ErrorMetricsV2](#schemacdr-admin-apierrormetricsv2)|mandatory|Number of calls resulting in error due to server execution over time|
+|» errors|[ErrorMetricsV2](#schemacdr-admin-apierrormetricsv2)|mandatory|Number of calls resulting in error, over time|
 |» rejections|[RejectionMetricsV3](#schemacdr-admin-apirejectionmetricsv3)|mandatory|Number of calls rejected due to traffic thresholds over time|
 |» customerCount|[NaturalNumber](#common-field-types)|mandatory|Number of customers with active authorisations at the time of the call|
 |» recipientCount|[NaturalNumber](#common-field-types)|mandatory|Number of Data Recipient Software Products with active authorisations at the time of the call|
@@ -1740,7 +1740,7 @@ This operation may only be called by the CDR Register
 
 ```
 
-*Number of calls resulting in error due to server execution over time*
+*Number of calls resulting in error, over time*
 
 <h3 id="cdr-admin-api_errormetricsv2_properties">Properties</h3>
 
@@ -1749,14 +1749,14 @@ This operation may only be called by the CDR Register
 |aggregate|object|mandatory|Aggregate number of calls resulting in error due to server execution over time for all endpoints|
 |» currentDay|[NaturalNumber](#common-field-types)|conditional|Error counts for current day|
 |» previousDays|[[NaturalNumber]](#common-field-types)|conditional|Error counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available|
-|unauthenticated|object|mandatory|Number of calls resulting in error due to server execution over time for unauthenticated endpoints|
+|unauthenticated|object|mandatory|Number of calls resulting in error for unauthenticated endpoints|
 |» currentDay|object|conditional|Error counts, by HTTP error code, for current day|
 |»» **additionalProperties**|[NaturalNumber](#common-field-types)|optional|Number of errors for a specific HTTP error code.  Note that the property name must be 3 digits represent the HTTP error code the error is for|
 |»» 500|[NaturalNumber](#common-field-types)|optional|Number of errors for HTTP error code 500.  Note that this field is an example of a single entry due to the lack of OAS support for the JSON Schema `patternProperties` syntax.  See the `additionalProperties` field in this schema for the generic property structure for error code counts|
 |» previousDays|[object]|conditional|Error counts, by HTTP error code, for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available|
 |»» **additionalProperties**|[NaturalNumber](#common-field-types)|optional|Number of errors for a specific HTTP error code.  Note that the property name must be 3 digits represent the HTTP error code the error is for|
 |»» 500|[NaturalNumber](#common-field-types)|optional|Number of errors for HTTP error code 500.  Note that this field is an example of a single entry due to the lack of OAS support JSON Schema `patternProperties` syntax.  See the `additionalProperties` field in this schema for the generic property structure for error code counts|
-|authenticated|object|mandatory|Number of calls resulting in error due to server execution over time for authenticated endpoints|
+|authenticated|object|mandatory|Number of calls resulting in error for authenticated endpoints|
 |» currentDay|object|conditional|Error counts, by HTTP error code, for current day|
 |»» **additionalProperties**|[NaturalNumber](#common-field-types)|optional|Number of errors for a specific HTTP error code.  Note that the property name must be 3 digits represent the HTTP error code the error is for|
 |»» 500|[NaturalNumber](#common-field-types)|optional|Number of errors for HTTP error code 500.  Note that this field is an example of a single entry due to the lack of OAS support for the JSON Schema `patternProperties` syntax.  See the `additionalProperties` field in this schema for the generic property structure for error code counts|

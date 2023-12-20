@@ -284,7 +284,9 @@
         ],
         "x-conditional": [
           "id_token_encrypted_response_alg",
-          "id_token_encrypted_response_enc"
+          "id_token_encrypted_response_enc",
+          "authorization_signed_response_alg",
+          "authorization_encrypted_response_alg"
         ],
         "type": "object",
         "properties": {

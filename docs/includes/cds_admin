@@ -1409,7 +1409,7 @@ This operation may only be called by the CDR Register
 <td>» errors</td>
 <td><a href="#schemacdr-admin-apierrormetricsv2">ErrorMetricsV2</a></td>
 <td>mandatory</td>
-<td>Number of calls resulting in error due to server execution over time</td>
+<td>Number of calls resulting in error, over time</td>
 </tr>
 <tr>
 <td>» rejections</td>
@@ -2583,7 +2583,7 @@ This operation may only be called by the CDR Register
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
-<p><em>Number of calls resulting in error due to server execution over time</em></p>
+<p><em>Number of calls resulting in error, over time</em></p>
 
 <h3 id="cdr-admin-api_errormetricsv2_properties">Properties</h3>
 
@@ -2617,7 +2617,7 @@ This operation may only be called by the CDR Register
 <td>unauthenticated</td>
 <td>object</td>
 <td>mandatory</td>
-<td>Number of calls resulting in error due to server execution over time for unauthenticated endpoints</td>
+<td>Number of calls resulting in error for unauthenticated endpoints</td>
 </tr>
 <tr>
 <td>» currentDay</td>
@@ -2659,7 +2659,7 @@ This operation may only be called by the CDR Register
 <td>authenticated</td>
 <td>object</td>
 <td>mandatory</td>
-<td>Number of calls resulting in error due to server execution over time for authenticated endpoints</td>
+<td>Number of calls resulting in error for authenticated endpoints</td>
 </tr>
 <tr>
 <td>» currentDay</td>

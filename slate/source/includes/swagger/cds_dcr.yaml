@@ -541,6 +541,8 @@ components:
       x-conditional:
       - id_token_encrypted_response_alg
       - id_token_encrypted_response_enc
+      - authorization_signed_response_alg
+      - authorization_encrypted_response_alg
     ClientRegistration:
       allOf:
       - $ref: '#/components/schemas/ClientRegistration_allOf'
