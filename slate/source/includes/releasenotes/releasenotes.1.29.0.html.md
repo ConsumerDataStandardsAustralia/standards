@@ -21,7 +21,7 @@ This release addresses the following minor defects raised on [Standards Staging]
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
-- [Maintenance Issue xxx - Description](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/xxx)
+- [Standards Maintenance Issue 587 - EnergyBillingDemandTransactionV2 - Measure Unit](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/587)
 
 ### Decision Proposals
 
@@ -49,6 +49,7 @@ This release addresses the following Decision Proposals published on [Standards]
 
 |Change|Description|Link|
 |------|-----------|----|
+| Measure Unit in EnergyBillingDemandTransaction | **[Standards Maintenance #587](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/587):** Added new field `measureUnit` in EnergyBillingDemandTransaction. Incremented versions of `Get Billing for Account`, `Get Billing for Specific Account` and `Get Bulk Billing` endpoints | [Energy APIs](../../#energy-apis) |
 
 ## Information Security Profile
 
