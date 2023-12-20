@@ -49,21 +49,22 @@ This release addresses the following Decision Proposals published on [Standards]
 |CX navigation links|**[Standards Staging #338](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/338):** Included subheadings in Consumer Experience navigation for two sections|[Consumer Experience](../../#consumer-experience)|
 |Common Field Types in arrays|**[Standards Staging #348](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/348):** Properties defined in response schemas with specific 'Common Field Types' values inside arrays should show the specific type instead of a generic type | Response Properties tables |
 |Enum property type|**[Standards Staging #349](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/349):** Request parameters defined with enumerated values will now show the type as 'Enum' instead of 'string' | Request Parameters tables |
-|Obligation Date Reference|Added a reference to the Obligation Date Schedule|[Future Dated Obligations](../../#future-dated-obligations)|
-|Updated DSB Link|Updated the reference to informaiton on the DSB|[Introduction](../../#introduction)|
-|Updated Example|Added redirect_uri to the Client authentication example in the non-normative examples|[Client Authentication](../../#client-authentication)|
 
 
 ## Introduction
 
 |Change|Description|Link|
 |------|-----------|----|
+|Obligation Date Reference|Added a reference to the Obligation Date Schedule|[Future Dated Obligations](../../#future-dated-obligations)|
+|Updated DSB Link|Updated the reference to informaiton on the DSB|[Introduction](../../#introduction)|
+|Normative Ref Update|Add reference to RFC7636 to the entry for PKCE|[Normative References](../../#normative-references)|
 
 
 ## High Level Standards
 
 |Change|Description|Link|
 |------|-----------|----|
+|Number Clarification|Clarified that a number can be integer or decimal|[Common Field Types](../../#common-field-types)|
 
 ## API End Points
 
@@ -74,14 +75,12 @@ This release addresses the following Decision Proposals published on [Standards]
 |Register API Names|Minor changes to the names of the Register APIs in the summary table|[Register APIs](../../#register-apis)|
 |Term Deposit Account Types|Added additional additionalValue field explanations for term deposit account types|[Product Deposit Rate Types](../../#product-amp-account-components)|
 |Corrected Field References|ified references to three incorrect field labels (tierMinimumValue, tierMaximumValue, tierUnitOfMeasure) in the property descriptions of BankingProductRateTierV3|[BankingProductRateTierV3](../../#cdr-banking-api_schemas_tocSbankingproductratetierv3)|
-|Normative Ref Update|Add reference to RFC7636 to the entry for PKCE|[Normative References](../../#normative-references)|
-|Number Clarification|Clarified that a number can be integer or decimal|[Common Field Types](../../#common-field-types)|
 
-#product-amp-account-components
 ## Information Security Profile
 
 |Change|Description|Link|
 |------|-----------|----|
+|Updated Example|Added redirect_uri to the Client authentication example in the non-normative examples|[Client Authentication](../../#client-authentication)|
 
 ## Register Standards
 
@@ -101,8 +100,7 @@ This release addresses the following Decision Proposals published on [Standards]
 
 ## Non-Functional Requirements
 
-|Change|Description|Link|
-|------|-----------|----|
+None
 
 ## Additional Standards
 
@@ -113,4 +111,4 @@ This release addresses the following Decision Proposals published on [Standards]
 
 ## Known Issues
 
-TBC
+None
