@@ -22,6 +22,7 @@ This release addresses the following minor defects raised on [Standards Staging]
 - [Staging Issue 334 - Add visual indicator for different Standards categories](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/334)
 - [Staging Issue 338 - Sub-menus in CX Standards](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/338)
 - [Staging Issue 348 - Change previousDays data type to '[NaturalNumber]' in Get Metrics AuthorisationMetricsV2.abandonmentsByStage](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/348)
+- [Staging Issue 349 - Enum parameters in endpoints are not reflected correctly](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/349)
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
@@ -43,6 +44,7 @@ This release addresses the following Decision Proposals published on [Standards]
 |Standards category ribbon|**[Standards Staging #334](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/334):** Added a red ribbon below the CDS logo on different Standards versions to visually distinguish them from the binding version|[Draft](../../#draft-standards), [Candidate](../../#candidate-standards), [Staging](https://consumerdatastandardsaustralia.github.io/standards-staging/), [Archived](../../#archives), and superseded endpoint version pages|
 |CX navigation links|**[Standards Staging #338](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/338):** Included subheadings in Consumer Experience navigation for two sections|[Consumer Experience](../../#consumer-experience)|
 |Common Field Types in arrays|**[Standards Staging #348](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/348):** Properties defined in response schemas with specific 'Common Field Types' values inside arrays should show the specific type instead of a generic type | Response Properties tables |
+|Enum property type|**[Standards Staging #349](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/349):** Request parameters defined with enumerated values will now show the type as 'Enum' instead of 'string' | Request Parameters tables |
 
 
 ## Introduction
