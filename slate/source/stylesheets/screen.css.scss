@@ -942,6 +942,14 @@ body .tab-json code, body .tab-examples code, body .tab-diff code, body .highlig
     text-wrap: wrap;
 }
 
+// staging#338
+// override schema-toc style for custom submenu items
+.content h3.schema-toc[data-cds-menu="h3"] {
+  margin-top: 2.5em;
+  border-top: 0;
+  font-size: 15px;
+}
+
 // staging#222
 // This style adjusts the positioning of the original anchors that were retained to avoid breaking key links.
 // Details replicate a.schema-anchor (from staging#311) which made the anchor nav keep the anchor title in view.

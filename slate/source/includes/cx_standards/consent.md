@@ -1,4 +1,8 @@
-## Consent Standards
+<h2 class="schema-heading" id="consumer-experience_consent-standards">Consent Standards</h2>
+
+```diff
+Consent Standards subheadings included in menu navigation
+```
 
 ```diff
 Added 'Business consumer statement' details
@@ -12,7 +16,7 @@ Added 'Business consumer statement' details
 |**Disclosure consent:**<br/>Collection source|In the course of seeking a consumer’s consent to disclose data as part of a disclosure consent:<ol><li>Data Recipients **MUST** specify which CDR Participant(s) they collected the associated CDR data from</li><li>Data Recipients **SHOULD** specify the sector(s) the data was collected from or associated with</li></ol>**Note:**<ul><li>Point (1) only requires the Data Recipient to refer to the CDR Participant(s) immediately preceding them in the disclosure chain, which may not always include a consumer’s Data Holder(s)</li><li>This standard is proposed to apply to all data to be disclosed by a Data Recipient, including unmodified, aggregated, derived, and transformed CDR data</li><li>Where applicable, the existing data language standards apply to descriptions of CDR data that have not been modified</li></ul>|
 |**Disclosure Consent:** Descriptions of Data to be Collected and Disclosed|If:<ol><li>An accredited person is seeking a collection consent to collect CDR data from a particular accredited data recipient; or</li><li>An accredited data recipient is seeking a disclosure consent from a consumer to disclose CDR data;</li></ol>and the data subject to the disclosure or collection is not within the data language standards as it does not relate to a relevant data cluster, then that data **MUST** be described in language that is as easy to understand as practicable.|
 
-**Disclosure Consent: Insight Descriptions**
+<h3 class="schema-toc" data-cds-menu="h3" id="consumer-experience_consent-standards_disclosure-consent-insight-descriptions">Disclosure Consent: Insight Descriptions</h3>
 
 The standards in this section outline insight description requirements that apply where an insight disclosure consent is being sought and may also feature in CDR Receipts and Dashboards. These standards do not alter any existing rules obligations for CDR receipts or dashboards.
 
@@ -25,7 +29,7 @@ The standards in this section outline insight description requirements that appl
 |**Insight disclosure:** <br>Purpose of insight |Data recipients **SHOULD** explain the purpose of generating the insight.|
 |**Insight disclosure:** <br>Insight generation|Data recipients **MAY** explain how the insight will be generated using plain and concise language, which **MAY** include: <ul><li>what method(s) would be used to generate the insight(s);<li>who would be involved in generating the insight(s), such as the specific actor(s); and</li><li>what information sources would be used to generate the insight, such as the specific dataset(s)</li></ul></ol>|
 
-**Disclosure Consent: Non-Accredited Person Disclosure Notification**
+<h3 class="schema-toc" data-cds-menu="h3" id="consumer-experience_consent-standards_disclosure-consent-non-accredited-person-disclosure-notification">Disclosure Consent: Non-Accredited Person Disclosure Notification</h3>
 
 ```diff
 First sentence updated to include 'business consumer disclosure consents'
