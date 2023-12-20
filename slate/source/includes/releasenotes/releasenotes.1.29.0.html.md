@@ -33,6 +33,7 @@ This release addresses the following change requests raised on [Standards Mainte
 
 This release addresses the following Decision Proposals published on [Standards](https://github.com/ConsumerDataStandardsAustralia/standards/issues):
 
+- [Decision Proposal 318 - Non-Bank Lending Standards](https://github.com/ConsumerDataStandardsAustralia/standards/issues/318)
 - [Decision Proposal 334 - Data Holder Dashboards](https://github.com/ConsumerDataStandardsAustralia/standards/issues/334)
 - [Decision Proposal 333 - Business Consumer Provisions](https://github.com/ConsumerDataStandardsAustralia/standards/issues/333)
 
@@ -91,6 +92,7 @@ This release addresses the following Decision Proposals published on [Standards]
 
 |Change|Description|Link|
 |------|-----------|----|
+|Non-Bank Lending Candidate Standards|**[Decision Proposal #318](https://github.com/ConsumerDataStandardsAustralia/standards/issues/318):** The Draft Non-Bank Lending Standards have been made as Candidate Standards. No other changes were made between the Draft and Candidate version.|[Additional Standards](../../#additional-standards)|
 |Version Delta|No changes were made to the [Candidate Standards for Banking Decision Proposal 306](../../includes/additional/candidates/dp306/banking-dp306.html) in this release, but the Version Delta notes in that Candidate have been retained from version 1.28.0 for reference. |[Additional Standards](../../#additional-standards)|
 
 ## Known Issues
