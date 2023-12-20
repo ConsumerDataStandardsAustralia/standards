@@ -27,7 +27,7 @@ This release addresses the following change requests raised on [Standards Mainte
 
 This release addresses the following Decision Proposals published on [Standards](https://github.com/ConsumerDataStandardsAustralia/standards/issues):
 
-- [Decision Proposal xxx - Description](https://github.com/ConsumerDataStandardsAustralia/standards/issues/xxx)
+- [Decision Proposal 318 - Non-Bank Lending Standards](https://github.com/ConsumerDataStandardsAustralia/standards/issues/318)
 
 ## General Changes
 |Change|Description|Link|
@@ -74,6 +74,7 @@ This release addresses the following Decision Proposals published on [Standards]
 
 |Change|Description|Link|
 |------|-----------|----|
+|Non-Bank Lending Candidate Standards|**[Decision Proposal #318](https://github.com/ConsumerDataStandardsAustralia/standards/issues/318):** The Draft Non-Bank Lending Standards have been made as Candidate Standards. No other changes were made between the Draft and Candidate version.|[Additional Standards](../../#additional-standards)|
 
 ## Known Issues
 
