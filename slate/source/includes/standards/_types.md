@@ -2,6 +2,8 @@
 
 ```diff
 Properties defined in request parameters with enumerated values will now correctly show the type as 'Enum' instead of 'string'
+
+Properties defined in response schemas with specific 'Common Field Types' values inside arrays will now show the specific type instead of a generic type
 ```
 
 The following table outlines the common data types for fields used in the standard.

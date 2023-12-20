@@ -1,6 +1,8 @@
 # Additional Standards
 
-
+```diff
+Added a red ribbon below the CDS logo on different Standards versions to visually distinguish them from the binding version
+```
 
 The Consumer Data Standards also incorporate other non-binding standards that are developed to facilitate consultation and feedback or to facilitate voluntary extension of CDR implementations.
 

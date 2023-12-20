@@ -1,8 +1,14 @@
 # Archives
 
+```diff
+Corrected minor typo
+- Releases Date
++ Release Date
+```
+
 The following table lists archived versions of the Consumer Data Standards.  These are older versions of the standards that are available for reference only.  They are not considered binding.
 
-|Releases Date|Version|Description|
+|Release Date|Version|Description|
 |-------------|-------|-----------|
 |<a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.28.0/'>10/11/2023</a> | 1.28.0 | <a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.28.0/'>Candidate standards arising from Decision 306 and updated draft non-bank lending standards</a> |
 |<a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.27.0/'>10/10/2023</a> | 1.27.0 | <a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.27.0/'>Changes arising from Decision 313 (Maintenance Iteration 16)</a> |
