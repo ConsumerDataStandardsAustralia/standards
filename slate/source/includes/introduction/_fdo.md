@@ -1,6 +1,9 @@
 ## Future Dated Obligations
 
 ```diff
+Added entries for the changes to Get Billing For Account, Get Bulk Billing
+and Get Billing For Specific Accounts
+
 Added Data Holder Dashboards Future Dated Obligation
 ```
 
