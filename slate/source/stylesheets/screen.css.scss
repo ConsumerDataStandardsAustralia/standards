@@ -941,3 +941,11 @@ body .tab-json code, body .tab-examples code, body .tab-diff code, body .highlig
     word-break: break-word;
     text-wrap: wrap;
 }
+
+// staging#222
+// This style adjusts the positioning of the original anchors that were retained to avoid breaking key links.
+// Details replicate a.schema-anchor (from staging#311) which made the anchor nav keep the anchor title in view.
+p.orig-anchor {
+    margin: -5.1em 0 5.1em 0;
+    padding-top: 0.1em;
+}

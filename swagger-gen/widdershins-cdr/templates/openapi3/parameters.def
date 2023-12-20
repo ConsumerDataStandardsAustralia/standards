@@ -1,4 +1,4 @@
-<h3 id="{{=data.operationUniqueSlug}}-parameters">Parameters</h3>
+<h3 id="{{= data.cds_uniqueAnchorPrefix }}_parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -6,7 +6,7 @@
 {{~}}
 
 {{? data.longDescs }}
-#### Detailed descriptions
+<h4 id="{{= data.cds_uniqueAnchorPrefix }}_detailed-descriptions">Detailed descriptions</h4>
 {{~ data.parameters :p}}{{? p.shortDesc !== p.description}}
 **{{=p.name}}**: {{=p.description}}{{?}}
 {{~}}
@@ -29,7 +29,7 @@
 {{~}}
 
 {{? data.enums && data.enums.length }}
-#### Enumerated Values
+<h4 id="{{= data.cds_uniqueAnchorPrefix }}_enumerated-values-parameters">Enumerated Values</h4>
 
 |Parameter|Value|
 |---|---|
