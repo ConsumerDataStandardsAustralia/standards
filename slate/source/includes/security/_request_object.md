@@ -1,4 +1,3 @@
-<a id="request-object"></a>
 ## Request Object
 
 > Non-Normative Example - acr as an Essential Claim
@@ -112,7 +111,7 @@ In addition:
 * If the ``cdr_arrangement_id`` is not related to the consumer being authenticated it **MUST** be rejected
 * If the ``cdr_arrangement_id`` is not recognised by to the Data Holder it **MUST** be rejected
 
-#### Data Holders
+<h4 id="security-profile_request-object_data-holders">Data Holders</h4>
 
 Data Holders **MUST** support Pushed Authorisation Requests (PAR) via the pushed authorisation end point according to **[[PAR]](#nref-PAR)**.
 
@@ -123,7 +122,7 @@ Data Holders **MUST** support Pushed Authorisation Requests (PAR) via the pushed
 * Data Holders **MUST** reject authorisation request containing "request" parameter
 *	Data Holders **MUST** reject the reuse of "request_uri" values.
 
-#### Data Recipient Software Products
+<h4 id="security-profile_request-object_data-recipient-software-products">Data Recipient Software Products</h4>
 
 *	Data Recipients Software Products **MUST** send request object containing a "nbf" claim and an "exp" claim that has a lifetime of no longer than 60 minutes after the "nbf" claim.
 * Data Recipient Software Products **MUST** ONLY use a "request_uri" value once

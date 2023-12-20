@@ -1,6 +1,8 @@
 ## Normative References
 
-
+```diff
+Add reference to RFC7636 to the entry for PKCE
+```
 
 | **Reference**  | **Description**  | **Version** |
 |-|-|-|
@@ -19,7 +21,7 @@
 | <a id="nref-OIDC"></a>**[OIDC]**        | OpenID Connect Core 1.0 incorporating errata set 1: <http://openid.net/specs/openid-connect-core-1_0.html>                                                                    |November 2014
 | <a id="nref-OIDD"></a>**[OIDD]**        | OpenID Connect Discovery 1.0 incorporating errata set 1: <http://openid.net/specs/openid-connect-discovery-1_0.html>                                                          |November 2014
 | <a id="nref-PAR"></a>**[PAR]**          | OAuth 2.0 Pushed Authorization Requests RFC9126: <https://tools.ietf.org/html/rfc9126>                                                                                                |September 2021
-| <a id="nref-RFC7636"></a><a id="nref-PKCE"></a>**[PKCE]**        | Proof Key for Code Exchange by OAuth Public Clients: <https://datatracker.ietf.org/doc/html/rfc7636> | September 2015
+| <a id="nref-RFC7636"></a><a id="nref-PKCE"></a>**[PKCE]** / **[RFC7636]**        | Proof Key for Code Exchange by OAuth Public Clients: <https://datatracker.ietf.org/doc/html/rfc7636> | September 2015
 | <a id="nref-TDIF"></a>**[TDIF]**        | Digital Transformation Agency - Trusted Digital Identity Framework <https://www.digitalidentity.gov.au/tdif>                  |April 2019
 | <a id="nref-RFC2119"></a>**[RFC2119]**  | Key words for use in RFCs to Indicate Requirement Levels <https://tools.ietf.org/html/rfc2119>                                                                                |March 1997
 | <a id="nref-RFC2397"></a>**[RFC2397]**  | The "data" URL scheme: <https://tools.ietf.org/html/rfc2397>       |August 1998

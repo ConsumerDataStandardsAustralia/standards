@@ -12,7 +12,7 @@
       "url" : "https://opensource.org/licenses/MIT"
     },
     "title" : "CDR Common API",
-    "version" : "1.28.0"
+    "version" : "1.29.0"
   },
   "servers" : [ {
     "url" : "https://data.holder.com.au/cds-au/v1"
@@ -20,7 +20,7 @@
   "paths" : {
     "/common/customer" : {
       "get" : {
-        "description" : "Obtain basic information on the customer that has authorised the current session\n\n### Conventions\nIn the customer payloads relevant conventions are explained here, in one place.\n\n#### Given Names\n\n`firstName` represents the first of a person's given names.\n\n`middleNames` represents a collection of given names if the person has more than one given name.\n\nWhere a data holder holds a person's given names as a single string in source systems, it may not possible in some situations to reliably split these given names into their component first and middle names. In these situations, data holders MAY use the `firstName` field to return the single string of given names and an empty `middleNames` array.\n\nFor example, a person whose given names are \"John Paul Winston\" but the data holder cannot determine what is the first name, can return `\"firstName\": \"John Paul Winston\"`.",
+        "description" : "Obtain basic information on the customer that has authorised the current session\n\n<h3 id='cdr-common-api_get-customer_conventions'>Conventions</h3>\nIn the customer payloads relevant conventions are explained here, in one place.\n\n#### Given Names\n\n`firstName` represents the first of a person's given names.\n\n`middleNames` represents a collection of given names if the person has more than one given name.\n\nWhere a data holder holds a person's given names as a single string in source systems, it may not possible in some situations to reliably split these given names into their component first and middle names. In these situations, data holders MAY use the `firstName` field to return the single string of given names and an empty `middleNames` array.\n\nFor example, a person whose given names are \"John Paul Winston\" but the data holder cannot determine what is the first name, can return `\"firstName\": \"John Paul Winston\"`.",
         "operationId" : "getCustomer",
         "parameters" : [ {
           "description" : "Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",

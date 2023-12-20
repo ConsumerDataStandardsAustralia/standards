@@ -1,10 +1,14 @@
 # Change Log
 
-
+```diff
+Corrected minor typo
+- Detail Of change
++ Detail of change
+```
 
 The following table lists the changes made to these standards in reverse date order (most recent change is at the top).
 
-|Change Date|Version|Description|Detail Of change|
+|Change Date|Version|Description|Detail of change|
 |-----------|-------|-----------|----------------|
 |TBC | 1.29.0 | Changes TBC | See [release notes](includes/releasenotes/releasenotes.1.29.0.html) and [Decision XXX](https://github.com/ConsumerDataStandardsAustralia/standards/issues/XXX) for details. |
 |10/11/2023| 1.28.0 | Candidate standards arising from Decision 306 and updated draft non-bank lending standards | See [release notes](includes/releasenotes/releasenotes.1.28.0.html) and [Decision 306](https://github.com/ConsumerDataStandardsAustralia/standards/issues/306) for details. |

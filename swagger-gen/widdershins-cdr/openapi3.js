@@ -247,6 +247,10 @@ function getParameters(data) {
         if (typeof param['x-conditional'] === 'boolean') {
           param.cdrConditional = param['x-conditional'];
         }
+
+        if (param.schema && param.schema.enum) {
+          param.cdrType = '[Enum](#common-field-types)';
+        }
     }
 
     let effSecurity;
