@@ -1460,7 +1460,10 @@ This text is an example of a new addition to the standards:
 
 <p>The Consumer Data Right (CDR) is intended to be applied sector by sector across the whole economy, beginning in the banking, energy and telecommunications sectors.  These standards have been developed to facilitate the Consumer Data Right by acting as a specific baseline for implementation.</p>
 
-<p>These standards are maintained by the <a href="https://www.directory.gov.au/portfolios/treasury/data-standards-body">Data Standards Body</a> (DSB) within <a href="#iref-Treasury"><strong>Treasury</strong></a>, with the Data Standards Chair as the independent decision maker. The work of standards development is conducted in consultation with the <a href="https://www.accc.gov.au/focus-areas/consumer-data-right-cdr-0">Australian Competition and Consumer Commission</a> (<a href="#iref-ACCC"><strong>ACCC</strong></a>) and <a href="https://www.oaic.gov.au/consumer-data-right/about-the-consumer-data-right/">Office of the Australian Information Commissioner</a>) (<a href="#iref-OAIC"><strong>OAIC</strong></a>) as co-regulators of the Consumer Data Right (<a href="#iref-CDR"><strong>CDR</strong></a>).</p>
+<pre class="highlight diff tab-diff"><code>Updated the reference to informaiton on the DSB
+</code></pre>
+
+<p>These standards are maintained by the <a href="https://www.legislation.gov.au/Details/F2021N00038">Data Standards Body</a> (DSB) within <a href="#iref-Treasury"><strong>Treasury</strong></a>, with the Data Standards Chair as the independent decision maker. The work of standards development is conducted in consultation with the <a href="https://www.accc.gov.au/focus-areas/consumer-data-right-cdr-0">Australian Competition and Consumer Commission</a> (<a href="#iref-ACCC"><strong>ACCC</strong></a>) and <a href="https://www.oaic.gov.au/consumer-data-right/about-the-consumer-data-right/">Office of the Australian Information Commissioner</a>) (<a href="#iref-OAIC"><strong>OAIC</strong></a>) as co-regulators of the Consumer Data Right (<a href="#iref-CDR"><strong>CDR</strong></a>).</p>
 
 <p>The standards are required to be published. The obligations on CDR participants to apply the published standards commence on the commencement of the Consumer Data Right rules:</p>
 
@@ -1479,12 +1482,16 @@ This text is an example of a new addition to the standards:
 
 <p>Note that, in these standards, the key words <strong>MUST</strong>, <strong>MUST NOT</strong>, <strong>REQUIRED</strong>, <strong>SHALL</strong>, <strong>SHALL NOT</strong>, <strong>SHOULD</strong>, <strong>SHOULD NOT</strong>, <strong>RECOMMENDED</strong>, <strong>MAY</strong>, and <strong>OPTIONAL</strong> are to be interpreted as described in <strong><a href="#nref-RFC2119">[RFC2119]</a></strong>.</p>
 
-<h2 id='future-dated-obligations'>Future Dated Obligations</h2><pre class="highlight diff tab-diff"><code>Added entries for the changes to Get Billing For Account, Get Bulk Billing
-and Get Billing For Specific Accounts
+<h2 id='future-dated-obligations'>Future Dated Obligations</h2><pre class="highlight diff tab-diff"><code>Added a reference to the Obligation Date Schedule
 
 Added Data Holder Dashboards Future Dated Obligation
+
+Added entries for the changes to Get Billing For Account, Get Bulk Billing
+and Get Billing For Specific Accounts
 </code></pre>
-<p>The standards, as published from time to time, may include specific statements indicating that a specific section of the standards will not take effect until a future date or may cease to have effect on some future date.</p>
+<p>The standards, as published from time to time, may include specific statements indicating that a specific section of the standards will not take effect until a future date or may cease to have effect on some future date. </p>
+
+<p>Please also refer to the <a href="includes/endpoint-version-schedule/#obligation-dates-schedule">Obligation Date Schedule</a> which summarises obligation milestones.</p>
 
 <p>The table below highlights these areas of the standards.</p>
 
@@ -1647,8 +1654,8 @@ Added Data Holder Dashboards Future Dated Obligation
 
 <p>A table-view of all endpoint versioning is available <a href='includes/endpoint-version-schedule/#endpoint-version-schedule'>here</a>.</p>
 
-<h2 id='normative-references'>Normative References</h2>
-
+<h2 id='normative-references'>Normative References</h2><pre class="highlight diff tab-diff"><code>Add reference to RFC7636 to the entry for PKCE
+</code></pre>
 <table><thead>
 <tr>
 <th><strong>Reference</strong></th>
@@ -1732,7 +1739,7 @@ Added Data Holder Dashboards Future Dated Obligation
 <td>September 2021</td>
 </tr>
 <tr>
-<td><a id="nref-RFC7636"></a><a id="nref-PKCE"></a><strong>[PKCE]</strong></td>
+<td><a id="nref-RFC7636"></a><a id="nref-PKCE"></a><strong>[PKCE]</strong> / <strong>[RFC7636]</strong></td>
 <td>Proof Key for Code Exchange by OAuth Public Clients: <a href="https://datatracker.ietf.org/doc/html/rfc7636">https://datatracker.ietf.org/doc/html/rfc7636</a></td>
 <td>September 2015</td>
 </tr>
@@ -1812,7 +1819,6 @@ Added Data Holder Dashboards Future Dated Obligation
 <td>September 2021</td>
 </tr>
 </tbody></table>
-
 <h2 id='informative-references'>Informative References</h2>
 
 <table><thead>
@@ -2622,6 +2628,8 @@ For instance, if a Data Holder holds data in digital form for a Customer that is
 <h2 id='common-field-types'>Common Field Types</h2><pre class="highlight diff tab-diff"><code>Properties defined in request parameters with enumerated values will now correctly show the type as 'Enum' instead of 'string'
 
 Properties defined in response schemas with specific 'Common Field Types' values inside arrays will now show the specific type instead of a generic type
+
+Added clarification that a number can be integer or decimal
 </code></pre>
 <p>The following table outlines the common data types for fields used in the standard.</p>
 
@@ -2674,7 +2682,7 @@ Properties defined in response schemas with specific 'Common Field Types' values
 </tr>
 <tr>
 <td>Number</td>
-<td>A standard floating point number. Can be positive, negative or zero</td>
+<td>An integer or decimal number. Can be positive, negative or zero</td>
 <td>0.1<br/>-100.09<br/>10<br/>90.09</td>
 </tr>
 <tr>
@@ -3507,8 +3515,9 @@ standards</li>
 <h1 style="display:none"></h1>
 <h1 id='consumer-experience'>Consumer Experience</h1>
 <p>The Consumer Experience (CX) Standards contain requirements for the creation of implementations by both Data Recipients and Data Holders. The full list of CX Standards can be found below.</p>
-
-<p>The CX Guidelines provide examples and recommendations for how to implement key rules and standards that relate to the consumer experience. They can be accessed along with additional CX commentary from the <a href="https://consumerdatastandards.gov.au/guidelines-and-conventions/consumer-experience-guidelines/">CX Guidelines</a> page.</p>
+<pre class="highlight diff tab-diff"><code>Updated the CX Guidelines link to the new site
+</code></pre>
+<p>The CX Guidelines provide examples and recommendations for how to implement key rules and standards that relate to the consumer experience. They can be accessed along with additional CX commentary from the <a href="https://cx.cds.gov.au">CX Guidelines</a> page.</p>
 <h2 id='data-language-standards-common'>Data Language Standards: Common</h2>
 
 <blockquote>
@@ -8600,7 +8609,8 @@ These endpoints are exposed by the Register and consumed by Data Holders and Dat
 <tr><td><a href='./includes/swagger/cds_register.json'>Register OpenAPI Specification (JSON)</a></td></tr>
 <tr><td><a href='./includes/swagger/cds_register.yaml'>Register OpenAPI Specification (YAML)</a></td></tr>
 </table></p>
-
+<pre class="highlight diff tab-diff"><code>Minor adjustments to API naming in the table below
+</code></pre>
 <table><thead>
 <tr>
 <th>API</th>
@@ -8612,7 +8622,7 @@ These endpoints are exposed by the Register and consumed by Data Holders and Dat
 </tr>
 </thead><tbody>
 <tr>
-<td>Get Register OpenId Provider Config</td>
+<td>Get OpenId Provider Config</td>
 <td>Data Recipient Brand or Software Product</td>
 <td>Discovery of CDR Register OpenID Configuration</td>
 <td></td>
@@ -8620,7 +8630,7 @@ These endpoints are exposed by the Register and consumed by Data Holders and Dat
 <td></td>
 </tr>
 <tr>
-<td>Get Register JWKS</td>
+<td>Get JWKS</td>
 <td>Data Holder</td>
 <td>Validate SSA and CDR Register authentication JWT signatures</td>
 <td></td>
@@ -8644,7 +8654,7 @@ These endpoints are exposed by the Register and consumed by Data Holders and Dat
 <td></td>
 </tr>
 <tr>
-<td>Get Software Statement Assertion</td>
+<td>Get Software Statement Assertion (SSA)</td>
 <td>Data Recipient Brand or Software Product</td>
 <td>Get SSA for a Software Product to be used in <a href="#dynamic-client-registration">Dynamic Client Registration</a></td>
 <td><i class="icon-check"></i></td>
@@ -8660,7 +8670,7 @@ These endpoints are exposed by the Register and consumed by Data Holders and Dat
 <td></td>
 </tr>
 <tr>
-<td>Get Software Products Status</td>
+<td>Get Software Products Statuses</td>
 <td>Data Holder Brand</td>
 <td>Software Product Statuses to check validity of ADR requests</td>
 <td></td>
@@ -8668,7 +8678,7 @@ These endpoints are exposed by the Register and consumed by Data Holders and Dat
 <td></td>
 </tr>
 <tr>
-<td>Get Data Recipient Statuses</td>
+<td>Get Data Recipients Statuses</td>
 <td>Data Holder Brand</td>
 <td>Data Recipient Statuses to check validity of ADR requests</td>
 <td></td>
@@ -12889,7 +12899,9 @@ This operation does not require authentication
 <tr><td><a href='./includes/swagger/cds_banking.json'>Banking OpenAPI Specification (JSON)</a></td></tr>
 <tr><td><a href='./includes/swagger/cds_banking.yaml'>Banking OpenAPI Specification (YAML)</a></td></tr>
 </table></p>
-
+<pre class="highlight diff tab-diff"><code>Modified references to three incorrect field labels (tierMinimumValue, tierMaximumValue,
+tierUnitOfMeasure) in the property descriptions of BankingProductRateTierV3
+</code></pre>
 <h2 id="cdr-banking-api_get-accounts">Get Accounts</h2>
 
 <p id="get-accounts" class="orig-anchor"></p>
@@ -20790,19 +20802,19 @@ This operation does not require authentication
 <td>unitOfMeasure</td>
 <td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
-<td>The unit of measure that applies to the tierValueMinimum and tierValueMaximum values e.g. a <strong>DOLLAR</strong> amount. <strong>PERCENT</strong> (in the case of loan-to-value ratio or LVR). Tier term period representing a discrete number of <strong>MONTH</strong>&#39;s or <strong>DAY</strong>&#39;s (in the case of term deposit tiers)</td>
+<td>The unit of measure that applies to the minimumValue and maximumValue values e.g. a <strong>DOLLAR</strong> amount. <strong>PERCENT</strong> (in the case of loan-to-value ratio or LVR). Tier term period representing a discrete number of <strong>MONTH</strong>&#39;s or <strong>DAY</strong>&#39;s (in the case of term deposit tiers)</td>
 </tr>
 <tr>
 <td>minimumValue</td>
 <td><a href="#common-field-types">Number</a></td>
 <td>mandatory</td>
-<td>The number of tierUnitOfMeasure units that form the lower bound of the tier. The tier should be inclusive of this value</td>
+<td>The number of unitOfMeasure units that form the lower bound of the tier. The tier should be inclusive of this value</td>
 </tr>
 <tr>
 <td>maximumValue</td>
 <td><a href="#common-field-types">Number</a></td>
 <td>optional</td>
-<td>The number of tierUnitOfMeasure units that form the upper bound of the tier or band. For a tier with a discrete value (as opposed to a range of values e.g. 1 month) this must be the same as tierValueMinimum. Where this is the same as the tierValueMinimum value of the next-higher tier the referenced tier should be exclusive of this value. For example a term deposit of 2 months falls into the upper tier of the following tiers: (1 – 2 months, 2 – 3 months). If absent the tier&#39;s range has no upper bound.</td>
+<td>The number of unitOfMeasure units that form the upper bound of the tier or band. For a tier with a discrete value (as opposed to a range of values e.g. 1 month) this must be the same as minimumValue. Where this is the same as the minimumValue value of the next-higher tier the referenced tier should be exclusive of this value. For example a term deposit of 2 months falls into the upper tier of the following tiers: (1 – 2 months, 2 – 3 months). If absent the tier&#39;s range has no upper bound.</td>
 </tr>
 <tr>
 <td>rateApplicationMethod</td>
@@ -26365,7 +26377,10 @@ This operation does not require authentication
 <p><a id="bankingtermdepositaccountedoc"></a>
 <h3 id="tocSbankingtermdepositaccountypedoc">Banking Term Deposit Account Types</h3></p>
 
-<p>Description of the usage of the maturityInstructions field as it applies to accounts.</p>
+<p>Description of the usage of the <code>maturityInstructions</code> field as it applies to accounts.</p>
+
+<pre class="highlight diff tab-diff"><code>Added additional entries for PAID_OUT_AT_MATURITY and ROLLED_OVER
+</code></pre>
 
 <table><thead>
 <tr>
@@ -26377,6 +26392,16 @@ This operation does not require authentication
 <tr>
 <td>HOLD_ON_MATURITY</td>
 <td>Funds are held in a facility or similar mechanism managed by the data holder for a period of time until the customer provides instructions or the maximum period of the hold has elapsed. Funds may be renewed or withdrawn upon instructions by the customer</td>
+<td>NA</td>
+</tr>
+<tr>
+<td>PAID_OUT_AT_MATURITY</td>
+<td>Funds are to be paid out at maturity</td>
+<td>NA</td>
+</tr>
+<tr>
+<td>ROLLED_OVER</td>
+<td>Funds are to be rolled over at maturity</td>
 <td>NA</td>
 </tr>
 </tbody></table>
