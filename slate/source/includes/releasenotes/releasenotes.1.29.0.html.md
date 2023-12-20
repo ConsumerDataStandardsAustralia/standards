@@ -74,7 +74,7 @@ This release addresses the following Decision Proposals published on [Standards]
 | Change time field type | [**Standards Maintenance #613**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/613): Change the type of time fields in energy plan data to ExternalRef referring to [ISO 8601 Times](https://en.wikipedia.org/wiki/ISO_8601#Times) specification. | [Energy APIs](../../#energy-apis) |
 |Register API Names|Minor changes to the names of the Register APIs in the summary table|[Register APIs](../../#register-apis)|
 |Term Deposit Account Types|Added additional additionalValue field explanations for term deposit account types|[Product Deposit Rate Types](../../#product-amp-account-components)|
-|Corrected Field References|ified references to three incorrect field labels (tierMinimumValue, tierMaximumValue, tierUnitOfMeasure) in the property descriptions of BankingProductRateTierV3|[BankingProductRateTierV3](../../#cdr-banking-api_schemas_tocSbankingproductratetierv3)|
+|Corrected Field References|Modified references to three incorrect field labels (tierMinimumValue, tierMaximumValue, tierUnitOfMeasure) in the property descriptions of BankingProductRateTierV3|[BankingProductRateTierV3](../../#cdr-banking-api_schemas_tocSbankingproductratetierv3)|
 
 ## Information Security Profile
 
