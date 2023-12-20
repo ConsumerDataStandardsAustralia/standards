@@ -13,10 +13,10 @@
 </tr>
 </thead><tbody>
 <tr>
-<td>TBC</td>
+<td>21/12/2023</td>
 <td>1.29.0</td>
-<td>Changes TBC</td>
-<td>See <a href="includes/releasenotes/releasenotes.1.29.0.html">release notes</a> and <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/XXX">Decision XXX</a> for details.</td>
+<td>Changes from maintenance iteration 17.  Also includes CX Standards changes to uplift Data Holder Dashboards and accommodate Business Consumers</td>
+<td>See <a href="includes/releasenotes/releasenotes.1.29.0.html">release notes</a>, <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/318">Decision 318</a>, <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/333">Decision 333</a> and <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/334">Decision 334</a> for details.</td>
 </tr>
 <tr>
 <td>10/11/2023</td>

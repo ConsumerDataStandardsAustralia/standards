@@ -37,8 +37,8 @@ This release addresses the following change requests raised on [Standards Mainte
 This release addresses the following Decision Proposals published on [Standards](https://github.com/ConsumerDataStandardsAustralia/standards/issues):
 
 - [Decision Proposal 318 - Non-Bank Lending Standards](https://github.com/ConsumerDataStandardsAustralia/standards/issues/318)
-- [Decision Proposal 334 - Data Holder Dashboards](https://github.com/ConsumerDataStandardsAustralia/standards/issues/334)
 - [Decision Proposal 333 - Business Consumer Provisions](https://github.com/ConsumerDataStandardsAustralia/standards/issues/333)
+- [Decision Proposal 334 - Data Holder Dashboards](https://github.com/ConsumerDataStandardsAustralia/standards/issues/334)
 
 ## General Changes
 |Change|Description|Link|
