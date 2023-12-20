@@ -30,6 +30,7 @@ This release addresses the following change requests raised on [Standards Mainte
 
 This release addresses the following Decision Proposals published on [Standards](https://github.com/ConsumerDataStandardsAustralia/standards/issues):
 
+- [Decision Proposal 334 - Data Holder Dashboards](https://github.com/ConsumerDataStandardsAustralia/standards/issues/334)
 - [Decision Proposal 333 - Business Consumer Provisions](https://github.com/ConsumerDataStandardsAustralia/standards/issues/333)
 
 ## General Changes
@@ -72,6 +73,7 @@ This release addresses the following Decision Proposals published on [Standards]
 
 |Change|Description|Link|
 |------|-----------|----|
+|Dashboard Standards|**[Decision Proposal #334](https://github.com/ConsumerDataStandardsAustralia/standards/issues/334):** Added Dashboard Standards section to include detail for Data Holder Dashboards|[Dashboard Standards](../../#consumer-experience_dashboard-standards)|
 |Business Consumer Provisions|**[Decision Proposal #333](https://github.com/ConsumerDataStandardsAustralia/standards/issues/333):** Updated requirements for Business consumer statements and Business consumer disclosure consents|[Consent Standards](../../#consent-standards)|
 
 ## Non-Functional Requirements
