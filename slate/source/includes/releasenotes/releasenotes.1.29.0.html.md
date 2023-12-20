@@ -84,6 +84,7 @@ This release addresses the following Decision Proposals published on [Standards]
 
 |Change|Description|Link|
 |------|-----------|----|
+|Field Clarification|Changed authorization_signed_response_alg and authorization_encrypted_response_alg from optional to conditional to align to the field description|[Client Registration](../../#client-registration)|
 
 
 ## Consumer Experience
