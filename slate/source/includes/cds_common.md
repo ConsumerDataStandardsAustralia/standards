@@ -1,8 +1,7 @@
 
 
-## Get Customer
-
-<a id="opIdgetCustomer"></a>
+<h2 id="cdr-common-api_get-customer">Get Customer</h2>
+<p id="get-customer" class="orig-anchor"></p>
 
 > Code samples
 
@@ -51,7 +50,7 @@ fetch('https://data.holder.com.au/cds-au/v1/common/customer',
 
 Obtain basic information on the customer that has authorised the current session
 
-### Conventions
+<h3 id='cdr-common-api_get-customer_conventions'>Conventions</h3>
 In the customer payloads relevant conventions are explained here, in one place.
 
 #### Given Names
@@ -64,12 +63,12 @@ Where a data holder holds a person's given names as a single string in source sy
 
 For example, a person whose given names are "John Paul Winston" but the data holder cannot determine what is the first name, can return `"firstName": "John Paul Winston"`.
 
-###Endpoint Version
+<h3 id="cdr-common-api_get-customer_endpoint-version">Endpoint Version</h3>
 |   |  |
 |---|--|
 |Version|**1**
 
-<h3 id="get-customer-parameters">Parameters</h3>
+<h3 id="cdr-common-api_get-customer_parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -125,7 +124,7 @@ For example, a person whose given names are "John Paul Winston" but the data hol
 }
 ```
 
-<h3 id="get-customer-responses">Responses</h3>
+<h3 id="cdr-common-api_get-customer_responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -133,7 +132,7 @@ For example, a person whose given names are "John Paul Winston" but the data hol
 |400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-common-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-common-apiresponseerrorlistv2)|
 
-### Response Headers
+<h3 id="cdr-common-api_get-customer_response-headers">Response Headers</h3>
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
@@ -152,9 +151,8 @@ To perform this operation, you must be authenticated and authorised with the fol
     
   
 
-## Get Customer Detail
-
-<a id="opIdgetCustomerDetail"></a>
+<h2 id="cdr-common-api_get-customer-detail">Get Customer Detail</h2>
+<p id="get-customer-detail" class="orig-anchor"></p>
 
 > Code samples
 
@@ -205,12 +203,12 @@ Obtain detailed information on the authorised customer within the current sessio
 
 Obsolete versions: [v1](includes/obsolete/get-customer-detail-v1.html)
 
-###Endpoint Version
+<h3 id="cdr-common-api_get-customer-detail_endpoint-version">Endpoint Version</h3>
 |   |  |
 |---|--|
 |Version|**2**
 
-<h3 id="get-customer-detail-parameters">Parameters</h3>
+<h3 id="cdr-common-api_get-customer-detail_parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -364,7 +362,7 @@ Obsolete versions: [v1](includes/obsolete/get-customer-detail-v1.html)
 }
 ```
 
-<h3 id="get-customer-detail-responses">Responses</h3>
+<h3 id="cdr-common-api_get-customer-detail_responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -372,7 +370,7 @@ Obsolete versions: [v1](includes/obsolete/get-customer-detail-v1.html)
 |400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-common-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-common-apiresponseerrorlistv2)|
 
-### Response Headers
+<h3 id="cdr-common-api_get-customer-detail_response-headers">Response Headers</h3>
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
@@ -391,9 +389,8 @@ To perform this operation, you must be authenticated and authorised with the fol
     
   
 
-## Get Status
-
-<a id="opIdgetStatus"></a>
+<h2 id="cdr-common-api_get-status">Get Status</h2>
+<p id="get-status" class="orig-anchor"></p>
 
 > Code samples
 
@@ -434,12 +431,12 @@ fetch('https://data.holder.com.au/cds-au/v1/discovery/status',
 
 Obtain a health check status for the implementation
 
-###Endpoint Version
+<h3 id="cdr-common-api_get-status_endpoint-version">Endpoint Version</h3>
 |   |  |
 |---|--|
 |Version|**1**
 
-<h3 id="get-status-parameters">Parameters</h3>
+<h3 id="cdr-common-api_get-status_parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -466,7 +463,7 @@ Obtain a health check status for the implementation
 }
 ```
 
-<h3 id="get-status-responses">Responses</h3>
+<h3 id="cdr-common-api_get-status_responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -474,7 +471,7 @@ Obtain a health check status for the implementation
 |400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-common-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-common-apiresponseerrorlistv2)|
 
-### Response Headers
+<h3 id="cdr-common-api_get-status_response-headers">Response Headers</h3>
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
@@ -487,9 +484,8 @@ This operation does not require authentication
 
   
 
-## Get Outages
-
-<a id="opIdgetOutages"></a>
+<h2 id="cdr-common-api_get-outages">Get Outages</h2>
+<p id="get-outages" class="orig-anchor"></p>
 
 > Code samples
 
@@ -530,12 +526,12 @@ fetch('https://data.holder.com.au/cds-au/v1/discovery/outages',
 
 Obtain a list of scheduled outages for the implementation
 
-###Endpoint Version
+<h3 id="cdr-common-api_get-outages_endpoint-version">Endpoint Version</h3>
 |   |  |
 |---|--|
 |Version|**1**
 
-<h3 id="get-outages-parameters">Parameters</h3>
+<h3 id="cdr-common-api_get-outages_parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -565,7 +561,7 @@ Obtain a list of scheduled outages for the implementation
 }
 ```
 
-<h3 id="get-outages-responses">Responses</h3>
+<h3 id="cdr-common-api_get-outages_responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -573,7 +569,7 @@ Obtain a list of scheduled outages for the implementation
 |400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-common-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-common-apiresponseerrorlistv2)|
 
-### Response Headers
+<h3 id="cdr-common-api_get-outages_response-headers">Response Headers</h3>
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
@@ -587,9 +583,9 @@ This operation does not require authentication
   
 
 <h2 class="schema-heading" id="cdr-common-api-schemas">Schemas</h2>
-<a class="schema-link" id="cdr-common-api-schemas"></a>
 
-<h3 class="schema-toc" id="tocSresponsecommondiscoverystatus">ResponseCommonDiscoveryStatus</h3>
+<h3 class="schema-toc" id="cdr-common-api_schemas_tocSresponsecommondiscoverystatus">ResponseCommonDiscoveryStatus</h3>
+<p id="tocSresponsecommondiscoverystatus" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-common-apiresponsecommondiscoverystatus"></a>
 
@@ -610,7 +606,7 @@ This operation does not require authentication
 
 ```
 
-### Properties
+<h3 id="cdr-common-api_responsecommondiscoverystatus_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -623,7 +619,7 @@ This operation does not require authentication
 |links|[Links](#schemacdr-common-apilinks)|mandatory|none|
 |meta|[Meta](#schemacdr-common-apimeta)|optional|none|
 
-#### Enumerated Values
+<h4 id="cdr-common-api_responsecommondiscoverystatus_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|
@@ -632,7 +628,8 @@ This operation does not require authentication
 |status|SCHEDULED_OUTAGE|
 |status|UNAVAILABLE|
 
-<h3 class="schema-toc" id="tocSresponsediscoveryoutageslist">ResponseDiscoveryOutagesList</h3>
+<h3 class="schema-toc" id="cdr-common-api_schemas_tocSresponsediscoveryoutageslist">ResponseDiscoveryOutagesList</h3>
+<p id="tocSresponsediscoveryoutageslist" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-common-apiresponsediscoveryoutageslist"></a>
 
@@ -656,7 +653,7 @@ This operation does not require authentication
 
 ```
 
-### Properties
+<h3 id="cdr-common-api_responsediscoveryoutageslist_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -665,7 +662,8 @@ This operation does not require authentication
 |links|[Links](#schemacdr-common-apilinks)|mandatory|none|
 |meta|[Meta](#schemacdr-common-apimeta)|optional|none|
 
-<h3 class="schema-toc" id="tocSdiscoveryoutage">DiscoveryOutage</h3>
+<h3 class="schema-toc" id="cdr-common-api_schemas_tocSdiscoveryoutage">DiscoveryOutage</h3>
+<p id="tocSdiscoveryoutage" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-common-apidiscoveryoutage"></a>
 
@@ -679,7 +677,7 @@ This operation does not require authentication
 
 ```
 
-### Properties
+<h3 id="cdr-common-api_discoveryoutage_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -688,7 +686,8 @@ This operation does not require authentication
 |isPartial|[Boolean](#common-field-types)|optional|Flag that indicates, if present and set to true, that the outage is only partial meaning that only a subset of normally available end points will be affected by the outage|
 |explanation|string|mandatory|Provides an explanation of the current outage that can be displayed to an end customer|
 
-<h3 class="schema-toc" id="tocSresponsecommoncustomer">ResponseCommonCustomer</h3>
+<h3 class="schema-toc" id="cdr-common-api_schemas_tocSresponsecommoncustomer">ResponseCommonCustomer</h3>
+<p id="tocSresponsecommoncustomer" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-common-apiresponsecommoncustomer"></a>
 
@@ -734,7 +733,7 @@ This operation does not require authentication
 
 ```
 
-### Properties
+<h3 id="cdr-common-api_responsecommoncustomer_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -745,14 +744,15 @@ This operation does not require authentication
 |links|[Links](#schemacdr-common-apilinks)|mandatory|none|
 |meta|[Meta](#schemacdr-common-apimeta)|optional|none|
 
-#### Enumerated Values
+<h4 id="cdr-common-api_responsecommoncustomer_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|
 |customerUType|organisation|
 |customerUType|person|
 
-<h3 class="schema-toc" id="tocSresponsecommoncustomerdetailv2">ResponseCommonCustomerDetailV2</h3>
+<h3 class="schema-toc" id="cdr-common-api_schemas_tocSresponsecommoncustomerdetailv2">ResponseCommonCustomerDetailV2</h3>
+<p id="tocSresponsecommoncustomerdetailv2" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-common-apiresponsecommoncustomerdetailv2"></a>
 
@@ -896,7 +896,7 @@ This operation does not require authentication
 
 ```
 
-### Properties
+<h3 id="cdr-common-api_responsecommoncustomerdetailv2_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -907,14 +907,15 @@ This operation does not require authentication
 |links|[Links](#schemacdr-common-apilinks)|mandatory|none|
 |meta|[Meta](#schemacdr-common-apimeta)|optional|none|
 
-#### Enumerated Values
+<h4 id="cdr-common-api_responsecommoncustomerdetailv2_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|
 |customerUType|organisation|
 |customerUType|person|
 
-<h3 class="schema-toc" id="tocScommonperson">CommonPerson</h3>
+<h3 class="schema-toc" id="cdr-common-api_schemas_tocScommonperson">CommonPerson</h3>
+<p id="tocScommonperson" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-common-apicommonperson"></a>
 
@@ -934,7 +935,7 @@ This operation does not require authentication
 
 ```
 
-### Properties
+<h3 id="cdr-common-api_commonperson_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -947,7 +948,7 @@ This operation does not require authentication
 |occupationCode|[ExternalRef](#common-field-types)|optional|Value is a valid **[[ANZSCO]](#iref-ANZSCO)** Standard Occupation classification code. If the occupation code held by the data holder is not one of the supported **[[ANZSCO]](#iref-ANZSCO)** versions, then it must not be supplied.|
 |occupationCodeVersion|[Enum](#common-field-types)|conditional|The applicable **[[ANZSCO]](#iref-ANZSCO)** release version of the occupation code provided. Mandatory if an ``occupationCode`` is supplied. If ``occupationCode`` is supplied but ``occupationCodeVersion`` is absent, default is ``ANZSCO_1220.0_2013_V1.2``|
 
-#### Enumerated Values
+<h4 id="cdr-common-api_commonperson_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|
@@ -956,7 +957,8 @@ This operation does not require authentication
 |occupationCodeVersion|ANZSCO_1220.0_2013_V1.2|
 |occupationCodeVersion|ANZSCO_1220.0_2013_V1.3|
 
-<h3 class="schema-toc" id="tocScommonpersondetailv2">CommonPersonDetailV2</h3>
+<h3 class="schema-toc" id="cdr-common-api_schemas_tocScommonpersondetailv2">CommonPersonDetailV2</h3>
+<p id="tocScommonpersondetailv2" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-common-apicommonpersondetailv2"></a>
 
@@ -1034,7 +1036,7 @@ This operation does not require authentication
 
 ```
 
-### Properties
+<h3 id="cdr-common-api_commonpersondetailv2_properties">Properties</h3>
 
 *allOf*
 
@@ -1051,7 +1053,8 @@ This operation does not require authentication
 |» emailAddresses|[[CommonEmailAddress](#schemacdr-common-apicommonemailaddress)]|mandatory|May be empty|
 |» physicalAddresses|[[CommonPhysicalAddressWithPurpose](#schemacdr-common-apicommonphysicaladdresswithpurpose)]|mandatory|Array is mandatory but may be empty if no valid addresses are held. One and only one address may have the purpose of REGISTERED. Zero or one, and no more than one, record may have the purpose of MAIL. If zero then the REGISTERED address is to be used for mail|
 
-<h3 class="schema-toc" id="tocScommonorganisation">CommonOrganisation</h3>
+<h3 class="schema-toc" id="cdr-common-api_schemas_tocScommonorganisation">CommonOrganisation</h3>
+<p id="tocScommonorganisation" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-common-apicommonorganisation"></a>
 
@@ -1076,7 +1079,7 @@ This operation does not require authentication
 
 ```
 
-### Properties
+<h3 id="cdr-common-api_commonorganisation_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -1096,7 +1099,7 @@ This operation does not require authentication
 |registeredCountry|[ExternalRef](#common-field-types)|optional|Enumeration with values from [ISO 3166 Alpha-3](https://www.iso.org/iso-3166-country-codes.html) country codes.  Assumed to be AUS if absent|
 |establishmentDate|[DateString](#common-field-types)|optional|The date the organisation described was established|
 
-#### Enumerated Values
+<h4 id="cdr-common-api_commonorganisation_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|
@@ -1109,7 +1112,8 @@ This operation does not require authentication
 |organisationType|SOLE_TRADER|
 |organisationType|TRUST|
 
-<h3 class="schema-toc" id="tocScommonorganisationdetailv2">CommonOrganisationDetailV2</h3>
+<h3 class="schema-toc" id="cdr-common-api_schemas_tocScommonorganisationdetailv2">CommonOrganisationDetailV2</h3>
+<p id="tocScommonorganisationdetailv2" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-common-apicommonorganisationdetailv2"></a>
 
@@ -1174,7 +1178,7 @@ This operation does not require authentication
 
 ```
 
-### Properties
+<h3 id="cdr-common-api_commonorganisationdetailv2_properties">Properties</h3>
 
 *allOf*
 
@@ -1189,7 +1193,8 @@ This operation does not require authentication
 |*anonymous*|object|mandatory|none|
 |» physicalAddresses|[[CommonPhysicalAddressWithPurpose](#schemacdr-common-apicommonphysicaladdresswithpurpose)]|mandatory|Array is mandatory but may be empty if no valid addresses are held. One and only one address may have the purpose of REGISTERED. Zero or one, and no more than one, record may have the purpose of MAIL. If zero then the REGISTERED address is to be used for mail|
 
-<h3 class="schema-toc" id="tocScommonphonenumber">CommonPhoneNumber</h3>
+<h3 class="schema-toc" id="cdr-common-api_schemas_tocScommonphonenumber">CommonPhoneNumber</h3>
+<p id="tocScommonphonenumber" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-common-apicommonphonenumber"></a>
 
@@ -1206,7 +1211,7 @@ This operation does not require authentication
 
 ```
 
-### Properties
+<h3 id="cdr-common-api_commonphonenumber_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -1218,7 +1223,7 @@ This operation does not require authentication
 |extension|string|optional|An extension number (if applicable)|
 |fullNumber|[ExternalRef](#common-field-types)|mandatory|Fully formatted phone number with country code, area code, number and extension incorporated. Formatted according to section 5.1.4. of **[[RFC3966]](#iref-RFC3966)**|
 
-#### Enumerated Values
+<h4 id="cdr-common-api_commonphonenumber_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|
@@ -1229,7 +1234,8 @@ This operation does not require authentication
 |purpose|UNSPECIFIED|
 |purpose|WORK|
 
-<h3 class="schema-toc" id="tocScommonemailaddress">CommonEmailAddress</h3>
+<h3 class="schema-toc" id="cdr-common-api_schemas_tocScommonemailaddress">CommonEmailAddress</h3>
+<p id="tocScommonemailaddress" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-common-apicommonemailaddress"></a>
 
@@ -1242,7 +1248,7 @@ This operation does not require authentication
 
 ```
 
-### Properties
+<h3 id="cdr-common-api_commonemailaddress_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -1250,7 +1256,7 @@ This operation does not require authentication
 |purpose|[Enum](#common-field-types)|mandatory|The purpose for the email, as specified by the customer (Enumeration)|
 |address|[ExternalRef](#common-field-types)|mandatory|A correctly formatted email address, as defined by the addr-spec format in **[[RFC5322]](#nref-RFC5322)**|
 
-#### Enumerated Values
+<h4 id="cdr-common-api_commonemailaddress_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|
@@ -1259,7 +1265,8 @@ This operation does not require authentication
 |purpose|UNSPECIFIED|
 |purpose|WORK|
 
-<h3 class="schema-toc" id="tocScommonphysicaladdresswithpurpose">CommonPhysicalAddressWithPurpose</h3>
+<h3 class="schema-toc" id="cdr-common-api_schemas_tocScommonphysicaladdresswithpurpose">CommonPhysicalAddressWithPurpose</h3>
+<p id="tocScommonphysicaladdresswithpurpose" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-common-apicommonphysicaladdresswithpurpose"></a>
 
@@ -1305,7 +1312,7 @@ This operation does not require authentication
 
 ```
 
-### Properties
+<h3 id="cdr-common-api_commonphysicaladdresswithpurpose_properties">Properties</h3>
 
 *allOf*
 
@@ -1320,7 +1327,7 @@ This operation does not require authentication
 |*anonymous*|object|mandatory|none|
 |» purpose|[Enum](#common-field-types)|mandatory|Enumeration of values indicating the purpose of the physical address|
 
-#### Enumerated Values
+<h4 id="cdr-common-api_commonphysicaladdresswithpurpose_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|
@@ -1330,7 +1337,8 @@ This operation does not require authentication
 |purpose|REGISTERED|
 |purpose|WORK|
 
-<h3 class="schema-toc" id="tocScommonphysicaladdress">CommonPhysicalAddress</h3>
+<h3 class="schema-toc" id="cdr-common-api_schemas_tocScommonphysicaladdress">CommonPhysicalAddress</h3>
+<p id="tocScommonphysicaladdress" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-common-apicommonphysicaladdress"></a>
 
@@ -1375,7 +1383,7 @@ This operation does not require authentication
 
 ```
 
-### Properties
+<h3 id="cdr-common-api_commonphysicaladdress_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -1383,14 +1391,15 @@ This operation does not require authentication
 |simple|[CommonSimpleAddress](#schemacdr-common-apicommonsimpleaddress)|conditional|none|
 |paf|[CommonPAFAddress](#schemacdr-common-apicommonpafaddress)|conditional|Australian address formatted according to the file format defined by the [PAF file format](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf)|
 
-#### Enumerated Values
+<h4 id="cdr-common-api_commonphysicaladdress_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|
 |addressUType|paf|
 |addressUType|simple|
 
-<h3 class="schema-toc" id="tocScommonsimpleaddress">CommonSimpleAddress</h3>
+<h3 class="schema-toc" id="cdr-common-api_schemas_tocScommonsimpleaddress">CommonSimpleAddress</h3>
+<p id="tocScommonsimpleaddress" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-common-apicommonsimpleaddress"></a>
 
@@ -1408,7 +1417,7 @@ This operation does not require authentication
 
 ```
 
-### Properties
+<h3 id="cdr-common-api_commonsimpleaddress_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -1421,7 +1430,8 @@ This operation does not require authentication
 |state|string|mandatory|Free text if the country is not Australia. If country is Australia then must be one of the values defined by the [State Type Abbreviation](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf) in the PAF file format. NSW, QLD, VIC, NT, WA, SA, TAS, ACT, AAT|
 |country|[ExternalRef](#common-field-types)|optional|A valid [ISO 3166 Alpha-3](https://www.iso.org/iso-3166-country-codes.html) country code. Australia (AUS) is assumed if country is not present.|
 
-<h3 class="schema-toc" id="tocScommonpafaddress">CommonPAFAddress</h3>
+<h3 class="schema-toc" id="cdr-common-api_schemas_tocScommonpafaddress">CommonPAFAddress</h3>
+<p id="tocScommonpafaddress" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-common-apicommonpafaddress"></a>
 
@@ -1455,7 +1465,7 @@ This operation does not require authentication
 
 *Australian address formatted according to the file format defined by the [PAF file format](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf)*
 
-### Properties
+<h3 id="cdr-common-api_commonpafaddress_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -1482,7 +1492,8 @@ This operation does not require authentication
 |postcode|string|mandatory|Postcode for the locality|
 |state|string|mandatory|State in which the address belongs. Valid enumeration defined by Australia Post PAF code file [State Type Abbreviation](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf). NSW, QLD, VIC, NT, WA, SA, TAS, ACT, AAT|
 
-<h3 class="schema-toc" id="tocSlinks">Links</h3>
+<h3 class="schema-toc" id="cdr-common-api_schemas_tocSlinks">Links</h3>
+<p id="tocSlinks" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-common-apilinks"></a>
 
@@ -1493,13 +1504,14 @@ This operation does not require authentication
 
 ```
 
-### Properties
+<h3 id="cdr-common-api_links_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
 |self|[URIString](#common-field-types)|mandatory|Fully qualified link that generated the current response document|
 
-<h3 class="schema-toc" id="tocSmeta">Meta</h3>
+<h3 class="schema-toc" id="cdr-common-api_schemas_tocSmeta">Meta</h3>
+<p id="tocSmeta" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-common-apimeta"></a>
 
@@ -1508,11 +1520,12 @@ This operation does not require authentication
 
 ```
 
-### Properties
+<h3 id="cdr-common-api_meta_properties">Properties</h3>
 
 *None*
 
-<h3 class="schema-toc" id="tocSmetaerror">MetaError</h3>
+<h3 class="schema-toc" id="cdr-common-api_schemas_tocSmetaerror">MetaError</h3>
+<p id="tocSmetaerror" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-common-apimetaerror"></a>
 
@@ -1525,13 +1538,14 @@ This operation does not require authentication
 
 *Additional data for customised error codes*
 
-### Properties
+<h3 id="cdr-common-api_metaerror_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
 |urn|string|conditional|The CDR error code URN which the application-specific error code extends. Mandatory if the error `code` is an application-specific error rather than a standardised error code.|
 
-<h3 class="schema-toc" id="tocSresponseerrorlistv2">ResponseErrorListV2</h3>
+<h3 class="schema-toc" id="cdr-common-api_schemas_tocSresponseerrorlistv2">ResponseErrorListV2</h3>
+<p id="tocSresponseerrorlistv2" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-common-apiresponseerrorlistv2"></a>
 
@@ -1551,7 +1565,7 @@ This operation does not require authentication
 
 ```
 
-### Properties
+<h3 id="cdr-common-api_responseerrorlistv2_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|

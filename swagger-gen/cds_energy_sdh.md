@@ -1,8 +1,7 @@
 
 
-## Get Service Points (SR)
-
-<a id="opIdlistServicePoints"></a>
+<h2 id="cdr-energy-secondary-data-holder-api_get-service-points-sr">Get Service Points (SR)</h2>
+<p id="get-service-points-sr" class="orig-anchor"></p>
 
 > Code samples
 
@@ -69,12 +68,12 @@ Obtain a list of service points owned by the customer that has authorised the cu
 }
 ```
 
-###Endpoint Version
+<h3 id="cdr-energy-secondary-data-holder-api_get-service-points-sr_endpoint-version">Endpoint Version</h3>
 |   |  |
 |---|--|
 |Version|**1**
 
-<h3 id="get-service-points-(sr)-parameters">Parameters</h3>
+<h3 id="cdr-energy-secondary-data-holder-api_get-service-points-sr_parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -124,7 +123,7 @@ Obtain a list of service points owned by the customer that has authorised the cu
 }
 ```
 
-<h3 id="get-service-points-(sr)-responses">Responses</h3>
+<h3 id="cdr-energy-secondary-data-holder-api_get-service-points-sr_responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -133,7 +132,7 @@ Obtain a list of service points owned by the customer that has authorised the cu
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-secondary-data-holder-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-secondary-data-holder-apiresponseerrorlistv2)|
 
-### Response Headers
+<h3 id="cdr-energy-secondary-data-holder-api_get-service-points-sr_response-headers">Response Headers</h3>
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
@@ -152,9 +151,8 @@ This operation may only be called by an Energy Retailer using the information se
     
   
 
-## Get Service Point Detail (SR)
-
-<a id="opIdgetServicePoint"></a>
+<h2 id="cdr-energy-secondary-data-holder-api_get-service-point-detail-sr">Get Service Point Detail (SR)</h2>
+<p id="get-service-point-detail-sr" class="orig-anchor"></p>
 
 > Code samples
 
@@ -199,12 +197,12 @@ fetch('/secondary/energy/electricity/servicepoints/{servicePointId}',
 
 Obtain detailed standing information for a specific service point that is owned by the customer that has authorised the current session
 
-###Endpoint Version
+<h3 id="cdr-energy-secondary-data-holder-api_get-service-point-detail-sr_endpoint-version">Endpoint Version</h3>
 |   |  |
 |---|--|
 |Version|**1**
 
-<h3 id="get-service-point-detail-(sr)-parameters">Parameters</h3>
+<h3 id="cdr-energy-secondary-data-holder-api_get-service-point-detail-sr_parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -316,7 +314,7 @@ Obtain detailed standing information for a specific service point that is owned 
 }
 ```
 
-<h3 id="get-service-point-detail-(sr)-responses">Responses</h3>
+<h3 id="cdr-energy-secondary-data-holder-api_get-service-point-detail-sr_responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -325,7 +323,7 @@ Obtain detailed standing information for a specific service point that is owned 
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[404 - Unavailable Service Point](#error-404-unavailable-service-point)</li><li>[404 - Invalid Service Point](#error-404-invalid-service-point)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-secondary-data-holder-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-secondary-data-holder-apiresponseerrorlistv2)|
 
-### Response Headers
+<h3 id="cdr-energy-secondary-data-holder-api_get-service-point-detail-sr_response-headers">Response Headers</h3>
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
@@ -344,9 +342,8 @@ This operation may only be called by an Energy Retailer using the information se
     
   
 
-## Get Usage For Service Point (SR)
-
-<a id="opIdgetUsageForServicePoint"></a>
+<h2 id="cdr-energy-secondary-data-holder-api_get-usage-for-service-point-sr">Get Usage For Service Point (SR)</h2>
+<p id="get-usage-for-service-point-sr" class="orig-anchor"></p>
 
 > Code samples
 
@@ -391,19 +388,19 @@ fetch('/secondary/energy/electricity/servicepoints/{servicePointId}/usage',
 
 Obtain a list of electricity usage data from a particular service point
 
-###Endpoint Version
+<h3 id="cdr-energy-secondary-data-holder-api_get-usage-for-service-point-sr_endpoint-version">Endpoint Version</h3>
 |   |  |
 |---|--|
 |Version|**1**
 
-<h3 id="get-usage-for-service-point-(sr)-parameters">Parameters</h3>
+<h3 id="cdr-energy-secondary-data-holder-api_get-usage-for-service-point-sr_parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |servicePointId|path|string|mandatory|The independent ID of the service point, known in the industry as the NMI. The  servicePointId will be replaced with NMI for all interactions between Data Holder and AEMO.|
 |oldest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with effective date at or after this date. If absent defaults to newest-date minus 24 months.  Format is aligned to DateString common type|
 |newest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with effective date at or before this date.  If absent defaults to current date.  Format is aligned to DateString common type|
-|interval-reads|query|string|optional|Type of interval reads. Any one of the valid values for this field can be supplied. If absent defaults to NONE|
+|interval-reads|query|[Enum](#common-field-types)|optional|Type of interval reads. Any one of the valid values for this field can be supplied. If absent defaults to NONE|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request.  Default is 25 (standard pagination)|
 |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
@@ -411,7 +408,7 @@ Obtain a list of electricity usage data from a particular service point
 |x-fapi-interaction-id|header|string|mandatory|The x-fapi-interaction-id header value provided by the Data Recipient. If not supplied by the Data Recipient, the primary Data Holder MUST create a unique **[[RFC4122]](#nref-RFC4122)** UUID value for the x-fapi-interaction-id header.|
 |x-cds-arrangement|header|string|mandatory|A unique string representing a consent arrangement between a Data Recipient Software Product and Data Holder for a given consumer. The identifier MUST be unique per customer according to the definition of customer in the CDR Federation section of this profile. The x-cds-arrangement should contain the arrangement ID for the consent that the request is being made under and will be used for tracing and audit purposes. This field MUST be populated but AEMO MUST NOT seek to validate the consent associated with the arrangement|
 
-#### Enumerated Values
+<h4 id="cdr-energy-secondary-data-holder-api_get-usage-for-service-point-sr_enumerated-values-parameters">Enumerated Values</h4>
 
 |Parameter|Value|
 |---|---|
@@ -472,7 +469,7 @@ Obtain a list of electricity usage data from a particular service point
 }
 ```
 
-<h3 id="get-usage-for-service-point-(sr)-responses">Responses</h3>
+<h3 id="cdr-energy-secondary-data-holder-api_get-usage-for-service-point-sr_responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -482,7 +479,7 @@ Obtain a list of electricity usage data from a particular service point
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-secondary-data-holder-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-secondary-data-holder-apiresponseerrorlistv2)|
 
-### Response Headers
+<h3 id="cdr-energy-secondary-data-holder-api_get-usage-for-service-point-sr_response-headers">Response Headers</h3>
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
@@ -502,9 +499,8 @@ This operation may only be called by an Energy Retailer using the information se
     
   
 
-## Get Usage For Specific Service Points (SR)
-
-<a id="opIdlistUsageForServicePoints"></a>
+<h2 id="cdr-energy-secondary-data-holder-api_get-usage-for-specific-service-points-sr">Get Usage For Specific Service Points (SR)</h2>
+<p id="get-usage-for-specific-service-points-sr" class="orig-anchor"></p>
 
 > Code samples
 
@@ -571,18 +567,18 @@ Obtain the electricity usage data for a specific set of service points
 }
 ```
 
-###Endpoint Version
+<h3 id="cdr-energy-secondary-data-holder-api_get-usage-for-specific-service-points-sr_endpoint-version">Endpoint Version</h3>
 |   |  |
 |---|--|
 |Version|**1**
 
-<h3 id="get-usage-for-specific-service-points-(sr)-parameters">Parameters</h3>
+<h3 id="cdr-energy-secondary-data-holder-api_get-usage-for-specific-service-points-sr_parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |oldest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with effective date at or after this date. If absent defaults to newest-date minus 24 months.  Format is aligned to DateString common type|
 |newest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with effective date at or before this date.  If absent defaults to current date.  Format is aligned to DateString common type|
-|interval-reads|query|string|optional|Type of interval reads. Any one of the valid values for this field can be supplied. If absent defaults to NONE|
+|interval-reads|query|[Enum](#common-field-types)|optional|Type of interval reads. Any one of the valid values for this field can be supplied. If absent defaults to NONE|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request.  Default is 25 (standard pagination)|
 |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
@@ -591,7 +587,7 @@ Obtain the electricity usage data for a specific set of service points
 |x-cds-arrangement|header|string|mandatory|A unique string representing a consent arrangement between a Data Recipient Software Product and Data Holder for a given consumer. The identifier MUST be unique per customer according to the definition of customer in the CDR Federation section of this profile. The x-cds-arrangement should contain the arrangement ID for the consent that the request is being made under and will be used for tracing and audit purposes. This field MUST be populated but AEMO MUST NOT seek to validate the consent associated with the arrangement|
 |body|body|[RequestServicePointIdList](#schemacdr-energy-secondary-data-holder-apirequestservicepointidlist)|mandatory|Request payload containing list of specific Service Points to obtain data for|
 
-#### Enumerated Values
+<h4 id="cdr-energy-secondary-data-holder-api_get-usage-for-specific-service-points-sr_enumerated-values-parameters">Enumerated Values</h4>
 
 |Parameter|Value|
 |---|---|
@@ -652,7 +648,7 @@ Obtain the electricity usage data for a specific set of service points
 }
 ```
 
-<h3 id="get-usage-for-specific-service-points-(sr)-responses">Responses</h3>
+<h3 id="cdr-energy-secondary-data-holder-api_get-usage-for-specific-service-points-sr_responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -661,7 +657,7 @@ Obtain the electricity usage data for a specific set of service points
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-secondary-data-holder-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li><li>[422 - Unavailable Service Point](#error-422-unavailable-service-point)</li><li>[422 - Invalid Service Point](#error-422-invalid-service-point)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-secondary-data-holder-apiresponseerrorlistv2)|
 
-### Response Headers
+<h3 id="cdr-energy-secondary-data-holder-api_get-usage-for-specific-service-points-sr_response-headers">Response Headers</h3>
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
@@ -680,9 +676,8 @@ This operation may only be called by an Energy Retailer using the information se
     
   
 
-## Get DER For Service Point (SR)
-
-<a id="opIdgetDERForServicePoint"></a>
+<h2 id="cdr-energy-secondary-data-holder-api_get-der-for-service-point-sr">Get DER For Service Point (SR)</h2>
+<p id="get-der-for-service-point-sr" class="orig-anchor"></p>
 
 > Code samples
 
@@ -727,12 +722,12 @@ fetch('/secondary/energy/electricity/servicepoints/{servicePointId}/der',
 
 Obtain a list of DER data from a particular service point
 
-###Endpoint Version
+<h3 id="cdr-energy-secondary-data-holder-api_get-der-for-service-point-sr_endpoint-version">Endpoint Version</h3>
 |   |  |
 |---|--|
 |Version|**1**
 
-<h3 id="get-der-for-service-point-(sr)-parameters">Parameters</h3>
+<h3 id="cdr-energy-secondary-data-holder-api_get-der-for-service-point-sr_parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -806,7 +801,7 @@ Obtain a list of DER data from a particular service point
 }
 ```
 
-<h3 id="get-der-for-service-point-(sr)-responses">Responses</h3>
+<h3 id="cdr-energy-secondary-data-holder-api_get-der-for-service-point-sr_responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -815,7 +810,7 @@ Obtain a list of DER data from a particular service point
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[404 - Unavailable Service Point](#error-404-unavailable-service-point)</li><li>[404 - Invalid Service Point](#error-404-invalid-service-point)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-secondary-data-holder-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-secondary-data-holder-apiresponseerrorlistv2)|
 
-### Response Headers
+<h3 id="cdr-energy-secondary-data-holder-api_get-der-for-service-point-sr_response-headers">Response Headers</h3>
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
@@ -834,9 +829,8 @@ This operation may only be called by an Energy Retailer using the information se
     
   
 
-## Get DER For Specific Service Points (SR)
-
-<a id="opIdlistDERForServicePoints"></a>
+<h2 id="cdr-energy-secondary-data-holder-api_get-der-for-specific-service-points-sr">Get DER For Specific Service Points (SR)</h2>
+<p id="get-der-for-specific-service-points-sr" class="orig-anchor"></p>
 
 > Code samples
 
@@ -903,12 +897,12 @@ Obtain DER data for a specific set of service points
 }
 ```
 
-###Endpoint Version
+<h3 id="cdr-energy-secondary-data-holder-api_get-der-for-specific-service-points-sr_endpoint-version">Endpoint Version</h3>
 |   |  |
 |---|--|
 |Version|**1**
 
-<h3 id="get-der-for-specific-service-points-(sr)-parameters">Parameters</h3>
+<h3 id="cdr-energy-secondary-data-holder-api_get-der-for-specific-service-points-sr_parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -995,7 +989,7 @@ Obtain DER data for a specific set of service points
 }
 ```
 
-<h3 id="get-der-for-specific-service-points-(sr)-responses">Responses</h3>
+<h3 id="cdr-energy-secondary-data-holder-api_get-der-for-specific-service-points-sr_responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -1004,7 +998,7 @@ Obtain DER data for a specific set of service points
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-secondary-data-holder-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li><li>[422 - Unavailable Service Point](#error-422-unavailable-service-point)</li><li>[422 - Invalid Service Point](#error-422-invalid-service-point)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-secondary-data-holder-apiresponseerrorlistv2)|
 
-### Response Headers
+<h3 id="cdr-energy-secondary-data-holder-api_get-der-for-specific-service-points-sr_response-headers">Response Headers</h3>
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
@@ -1024,9 +1018,9 @@ This operation may only be called by an Energy Retailer using the information se
   
 
 <h2 class="schema-heading" id="cdr-energy-secondary-data-holder-api-schemas">Schemas</h2>
-<a class="schema-link" id="cdr-energy-secondary-data-holder-api-schemas"></a>
 
-<h3 class="schema-toc" id="tocSenergyservicepointlistresponse">EnergyServicePointListResponse</h3>
+<h3 class="schema-toc" id="cdr-energy-secondary-data-holder-api_schemas_tocSenergyservicepointlistresponse">EnergyServicePointListResponse</h3>
+<p id="tocSenergyservicepointlistresponse" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apienergyservicepointlistresponse"></a>
 
@@ -1065,7 +1059,7 @@ This operation may only be called by an Energy Retailer using the information se
 
 ```
 
-### Properties
+<h3 id="cdr-energy-secondary-data-holder-api_energyservicepointlistresponse_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -1074,7 +1068,8 @@ This operation may only be called by an Energy Retailer using the information se
 |links|[LinksPaginated](#schemacdr-energy-secondary-data-holder-apilinkspaginated)|mandatory|none|
 |meta|[MetaPaginated](#schemacdr-energy-secondary-data-holder-apimetapaginated)|mandatory|none|
 
-<h3 class="schema-toc" id="tocSenergyservicepointdetailresponse">EnergyServicePointDetailResponse</h3>
+<h3 class="schema-toc" id="cdr-energy-secondary-data-holder-api_schemas_tocSenergyservicepointdetailresponse">EnergyServicePointDetailResponse</h3>
+<p id="tocSenergyservicepointdetailresponse" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apienergyservicepointdetailresponse"></a>
 
@@ -1177,7 +1172,7 @@ This operation may only be called by an Energy Retailer using the information se
 
 ```
 
-### Properties
+<h3 id="cdr-energy-secondary-data-holder-api_energyservicepointdetailresponse_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -1185,7 +1180,8 @@ This operation may only be called by an Energy Retailer using the information se
 |links|[Links](#schemacdr-energy-secondary-data-holder-apilinks)|mandatory|none|
 |meta|[Meta](#schemacdr-energy-secondary-data-holder-apimeta)|optional|none|
 
-<h3 class="schema-toc" id="tocSenergyusagelistresponse">EnergyUsageListResponse</h3>
+<h3 class="schema-toc" id="cdr-energy-secondary-data-holder-api_schemas_tocSenergyusagelistresponse">EnergyUsageListResponse</h3>
+<p id="tocSenergyusagelistresponse" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apienergyusagelistresponse"></a>
 
@@ -1239,7 +1235,7 @@ This operation may only be called by an Energy Retailer using the information se
 
 ```
 
-### Properties
+<h3 id="cdr-energy-secondary-data-holder-api_energyusagelistresponse_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -1248,7 +1244,8 @@ This operation may only be called by an Energy Retailer using the information se
 |links|[LinksPaginated](#schemacdr-energy-secondary-data-holder-apilinkspaginated)|mandatory|none|
 |meta|[MetaPaginated](#schemacdr-energy-secondary-data-holder-apimetapaginated)|mandatory|none|
 
-<h3 class="schema-toc" id="tocSenergyderlistresponse">EnergyDerListResponse</h3>
+<h3 class="schema-toc" id="cdr-energy-secondary-data-holder-api_schemas_tocSenergyderlistresponse">EnergyDerListResponse</h3>
+<p id="tocSenergyderlistresponse" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apienergyderlistresponse"></a>
 
@@ -1324,7 +1321,7 @@ This operation may only be called by an Energy Retailer using the information se
 
 ```
 
-### Properties
+<h3 id="cdr-energy-secondary-data-holder-api_energyderlistresponse_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -1333,7 +1330,8 @@ This operation may only be called by an Energy Retailer using the information se
 |links|[LinksPaginated](#schemacdr-energy-secondary-data-holder-apilinkspaginated)|mandatory|none|
 |meta|[MetaPaginated](#schemacdr-energy-secondary-data-holder-apimetapaginated)|mandatory|none|
 
-<h3 class="schema-toc" id="tocSenergyderdetailresponse">EnergyDerDetailResponse</h3>
+<h3 class="schema-toc" id="cdr-energy-secondary-data-holder-api_schemas_tocSenergyderdetailresponse">EnergyDerDetailResponse</h3>
+<p id="tocSenergyderdetailresponse" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apienergyderdetailresponse"></a>
 
@@ -1398,7 +1396,7 @@ This operation may only be called by an Energy Retailer using the information se
 
 ```
 
-### Properties
+<h3 id="cdr-energy-secondary-data-holder-api_energyderdetailresponse_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -1406,7 +1404,8 @@ This operation may only be called by an Energy Retailer using the information se
 |links|[Links](#schemacdr-energy-secondary-data-holder-apilinks)|mandatory|none|
 |meta|[Meta](#schemacdr-energy-secondary-data-holder-apimeta)|optional|none|
 
-<h3 class="schema-toc" id="tocSresponseerrorlistv2">ResponseErrorListV2</h3>
+<h3 class="schema-toc" id="cdr-energy-secondary-data-holder-api_schemas_tocSresponseerrorlistv2">ResponseErrorListV2</h3>
+<p id="tocSresponseerrorlistv2" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apiresponseerrorlistv2"></a>
 
@@ -1426,7 +1425,7 @@ This operation may only be called by an Energy Retailer using the information se
 
 ```
 
-### Properties
+<h3 id="cdr-energy-secondary-data-holder-api_responseerrorlistv2_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -1437,7 +1436,8 @@ This operation may only be called by an Energy Retailer using the information se
 |» meta|object|optional|Additional data for customised error codes|
 |»» urn|string|conditional|The CDR error code URN which the application-specific error code extends. Mandatory if the error `code` is an application-specific error rather than a standardised error code.|
 
-<h3 class="schema-toc" id="tocSenergyservicepoint">EnergyServicePoint</h3>
+<h3 class="schema-toc" id="cdr-energy-secondary-data-holder-api_schemas_tocSenergyservicepoint">EnergyServicePoint</h3>
+<p id="tocSenergyservicepoint" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apienergyservicepoint"></a>
 
@@ -1459,7 +1459,7 @@ This operation may only be called by an Energy Retailer using the information se
 
 ```
 
-### Properties
+<h3 id="cdr-energy-secondary-data-holder-api_energyservicepoint_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -1475,7 +1475,7 @@ This operation may only be called by an Energy Retailer using the information se
 |» classification|[Enum](#common-field-types)|optional|A code that defines the consumer class as defined in the National Energy Retail Regulations, or in overriding Jurisdictional instruments|
 |» threshold|[Enum](#common-field-types)|optional|A code that defines the consumption threshold as defined in the National Energy Retail Regulations, or in overriding Jurisdictional instruments. Note the details of enumeration values below: <ul><li>**LOW** - Consumption is less than the ‘lower consumption threshold’ as defined in the National Energy Retail Regulations</li><li>**MEDIUM** - Consumption is equal to or greater than the ‘lower consumption threshold’, but less than the ‘upper consumption threshold’, as defined in the National Energy Retail Regulations</li><li>**HIGH** - Consumption is equal to or greater than the ‘upper consumption threshold’ as defined in the National Energy Retail Regulations</li></ul>|
 
-#### Enumerated Values
+<h4 id="cdr-energy-secondary-data-holder-api_energyservicepoint_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|
@@ -1506,7 +1506,8 @@ This operation may only be called by an Energy Retailer using the information se
 |threshold|MEDIUM|
 |threshold|HIGH|
 
-<h3 class="schema-toc" id="tocSenergyservicepointdetail">EnergyServicePointDetail</h3>
+<h3 class="schema-toc" id="cdr-energy-secondary-data-holder-api_schemas_tocSenergyservicepointdetail">EnergyServicePointDetail</h3>
+<p id="tocSenergyservicepointdetail" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apienergyservicepointdetail"></a>
 
@@ -1603,7 +1604,7 @@ This operation may only be called by an Energy Retailer using the information se
 
 ```
 
-### Properties
+<h3 id="cdr-energy-secondary-data-holder-api_energyservicepointdetail_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -1647,7 +1648,7 @@ This operation may only be called by an Energy Retailer using the information se
 |»» controlledLoad|boolean|optional|Indicates whether the energy recorded by this register is created under a Controlled Load regime|
 |»» consumptionType|[Enum](#common-field-types)|optional|Actual/Subtractive Indicator. Note the details of enumeration values below: <ul><li>**ACTUAL** implies volume of energy actually metered between two dates</li><li>**CUMULATIVE** indicates a meter reading for a specific date. A second Meter Reading is required to determine the consumption between those two Meter Reading dates</li></ul>|
 
-#### Enumerated Values
+<h4 id="cdr-energy-secondary-data-holder-api_energyservicepointdetail_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|
@@ -1715,7 +1716,8 @@ This operation may only be called by an Energy Retailer using the information se
 |consumptionType|ACTUAL|
 |consumptionType|CUMULATIVE|
 
-<h3 class="schema-toc" id="tocSenergyusageread">EnergyUsageRead</h3>
+<h3 class="schema-toc" id="cdr-energy-secondary-data-holder-api_schemas_tocSenergyusageread">EnergyUsageRead</h3>
+<p id="tocSenergyusageread" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apienergyusageread"></a>
 
@@ -1752,7 +1754,7 @@ This operation may only be called by an Energy Retailer using the information se
 
 ```
 
-### Properties
+<h3 id="cdr-energy-secondary-data-holder-api_energyusageread_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -1777,7 +1779,7 @@ This operation may only be called by an Energy Retailer using the information se
 |»» endInterval|[PositiveInteger](#common-field-types)|mandatory|End interval for read quality flag|
 |»» quality|[Enum](#common-field-types)|mandatory|The quality of the read taken|
 
-#### Enumerated Values
+<h4 id="cdr-energy-secondary-data-holder-api_energyusageread_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|
@@ -1789,7 +1791,8 @@ This operation may only be called by an Energy Retailer using the information se
 |quality|SUBSTITUTE|
 |quality|FINAL_SUBSTITUTE|
 
-<h3 class="schema-toc" id="tocSenergyderrecord">EnergyDerRecord</h3>
+<h3 class="schema-toc" id="cdr-energy-secondary-data-holder-api_schemas_tocSenergyderrecord">EnergyDerRecord</h3>
+<p id="tocSenergyderrecord" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apienergyderrecord"></a>
 
@@ -1848,7 +1851,7 @@ This operation may only be called by an Energy Retailer using the information se
 
 ```
 
-### Properties
+<h3 id="cdr-energy-secondary-data-holder-api_energyderrecord_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -1895,7 +1898,7 @@ This operation may only be called by an Energy Retailer using the information se
 |»» nominalRatedCapacity|number|mandatory|Maximum output in kVA that is listed in the product specification by the manufacturer. This refers to the capacity of each unit within the device group. Default is 0 if value not known|
 |»» nominalStorageCapacity|number|conditional|Maximum storage capacity in kVAh. This refers to the capacity of each storage module within the device group. Mandatory if type is equal to “STORAGE”. Default is 0 if value not known|
 
-#### Enumerated Values
+<h4 id="cdr-energy-secondary-data-holder-api_energyderrecord_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|
@@ -1916,7 +1919,8 @@ This operation may only be called by an Energy Retailer using the information se
 |type|STORAGE|
 |type|OTHER|
 
-<h3 class="schema-toc" id="tocScommonphysicaladdress">CommonPhysicalAddress</h3>
+<h3 class="schema-toc" id="cdr-energy-secondary-data-holder-api_schemas_tocScommonphysicaladdress">CommonPhysicalAddress</h3>
+<p id="tocScommonphysicaladdress" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apicommonphysicaladdress"></a>
 
@@ -1961,7 +1965,7 @@ This operation may only be called by an Energy Retailer using the information se
 
 ```
 
-### Properties
+<h3 id="cdr-energy-secondary-data-holder-api_commonphysicaladdress_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -1969,14 +1973,15 @@ This operation may only be called by an Energy Retailer using the information se
 |simple|[CommonSimpleAddress](#schemacdr-energy-secondary-data-holder-apicommonsimpleaddress)|conditional|Required if addressUType is set to simple|
 |paf|[CommonPAFAddress](#schemacdr-energy-secondary-data-holder-apicommonpafaddress)|conditional|Australian address formatted according to the file format defined by the [PAF file format](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf). Required if addressUType is set to paf|
 
-#### Enumerated Values
+<h4 id="cdr-energy-secondary-data-holder-api_commonphysicaladdress_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|
 |addressUType|paf|
 |addressUType|simple|
 
-<h3 class="schema-toc" id="tocScommonsimpleaddress">CommonSimpleAddress</h3>
+<h3 class="schema-toc" id="cdr-energy-secondary-data-holder-api_schemas_tocScommonsimpleaddress">CommonSimpleAddress</h3>
+<p id="tocScommonsimpleaddress" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apicommonsimpleaddress"></a>
 
@@ -1996,7 +2001,7 @@ This operation may only be called by an Energy Retailer using the information se
 
 *Required if addressUType is set to simple*
 
-### Properties
+<h3 id="cdr-energy-secondary-data-holder-api_commonsimpleaddress_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -2009,7 +2014,8 @@ This operation may only be called by an Energy Retailer using the information se
 |state|string|mandatory|Free text if the country is not Australia. If country is Australia then must be one of the values defined by the [State Type Abbreviation](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf) in the PAF file format. NSW, QLD, VIC, NT, WA, SA, TAS, ACT, AAT|
 |country|[ExternalRef](#common-field-types)|optional|A valid [ISO 3166 Alpha-3](https://www.iso.org/iso-3166-country-codes.html) country code. Australia (AUS) is assumed if country is not present.|
 
-<h3 class="schema-toc" id="tocScommonpafaddress">CommonPAFAddress</h3>
+<h3 class="schema-toc" id="cdr-energy-secondary-data-holder-api_schemas_tocScommonpafaddress">CommonPAFAddress</h3>
+<p id="tocScommonpafaddress" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apicommonpafaddress"></a>
 
@@ -2043,7 +2049,7 @@ This operation may only be called by an Energy Retailer using the information se
 
 *Australian address formatted according to the file format defined by the [PAF file format](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf). Required if addressUType is set to paf*
 
-### Properties
+<h3 id="cdr-energy-secondary-data-holder-api_commonpafaddress_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -2070,7 +2076,8 @@ This operation may only be called by an Energy Retailer using the information se
 |postcode|string|mandatory|Postcode for the locality|
 |state|string|mandatory|State in which the address belongs. Valid enumeration defined by Australia Post PAF code file [State Type Abbreviation](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf). NSW, QLD, VIC, NT, WA, SA, TAS, ACT, AAT|
 
-<h3 class="schema-toc" id="tocSrequestservicepointidlist">RequestServicePointIdList</h3>
+<h3 class="schema-toc" id="cdr-energy-secondary-data-holder-api_schemas_tocSrequestservicepointidlist">RequestServicePointIdList</h3>
+<p id="tocSrequestservicepointidlist" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apirequestservicepointidlist"></a>
 
@@ -2086,7 +2093,7 @@ This operation may only be called by an Energy Retailer using the information se
 
 ```
 
-### Properties
+<h3 id="cdr-energy-secondary-data-holder-api_requestservicepointidlist_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -2094,7 +2101,8 @@ This operation may only be called by an Energy Retailer using the information se
 |» servicePointIds|[string]|mandatory|Array of specific servicePointIds to obtain data for|
 |meta|[Meta](#schemacdr-energy-secondary-data-holder-apimeta)|optional|none|
 
-<h3 class="schema-toc" id="tocSlinks">Links</h3>
+<h3 class="schema-toc" id="cdr-energy-secondary-data-holder-api_schemas_tocSlinks">Links</h3>
+<p id="tocSlinks" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apilinks"></a>
 
@@ -2105,13 +2113,14 @@ This operation may only be called by an Energy Retailer using the information se
 
 ```
 
-### Properties
+<h3 id="cdr-energy-secondary-data-holder-api_links_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
 |self|[URIString](#common-field-types)|mandatory|Fully qualified link that generated the current response document|
 
-<h3 class="schema-toc" id="tocSmeta">Meta</h3>
+<h3 class="schema-toc" id="cdr-energy-secondary-data-holder-api_schemas_tocSmeta">Meta</h3>
+<p id="tocSmeta" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apimeta"></a>
 
@@ -2120,11 +2129,12 @@ This operation may only be called by an Energy Retailer using the information se
 
 ```
 
-### Properties
+<h3 id="cdr-energy-secondary-data-holder-api_meta_properties">Properties</h3>
 
 *None*
 
-<h3 class="schema-toc" id="tocSlinkspaginated">LinksPaginated</h3>
+<h3 class="schema-toc" id="cdr-energy-secondary-data-holder-api_schemas_tocSlinkspaginated">LinksPaginated</h3>
+<p id="tocSlinkspaginated" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apilinkspaginated"></a>
 
@@ -2139,7 +2149,7 @@ This operation may only be called by an Energy Retailer using the information se
 
 ```
 
-### Properties
+<h3 id="cdr-energy-secondary-data-holder-api_linkspaginated_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -2149,7 +2159,8 @@ This operation may only be called by an Energy Retailer using the information se
 |next|[URIString](#common-field-types)|conditional|URI to the next page of this set. Mandatory if this response is not the last page|
 |last|[URIString](#common-field-types)|conditional|URI to the last page of this set. Mandatory if this response is not the last page|
 
-<h3 class="schema-toc" id="tocSmetapaginated">MetaPaginated</h3>
+<h3 class="schema-toc" id="cdr-energy-secondary-data-holder-api_schemas_tocSmetapaginated">MetaPaginated</h3>
+<p id="tocSmetapaginated" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apimetapaginated"></a>
 
@@ -2161,7 +2172,7 @@ This operation may only be called by an Energy Retailer using the information se
 
 ```
 
-### Properties
+<h3 id="cdr-energy-secondary-data-holder-api_metapaginated_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|

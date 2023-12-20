@@ -1,8 +1,7 @@
 
 
-## Get Accounts
-
-<a id="opIdlistAccounts"></a>
+<h2 id="cdr-banking-api_get-accounts">Get Accounts</h2>
+<p id="get-accounts" class="orig-anchor"></p>
 
 > Code samples
 
@@ -53,17 +52,17 @@ Obtain a list of accounts.
 
 Obsolete versions: [v1](includes/obsolete/get-accounts-v1.html)
 
-###Endpoint Version
+<h3 id="cdr-banking-api_get-accounts_endpoint-version">Endpoint Version</h3>
 |   |  |
 |---|--|
 |Version|**2**
 
-<h3 id="get-accounts-parameters">Parameters</h3>
+<h3 id="cdr-banking-api_get-accounts_parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|product-category|query|string|optional|Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.)|
-|open-status|query|string|optional|Used to filter results according to open/closed status. Values can be OPEN, CLOSED or ALL. If absent then ALL is assumed|
+|product-category|query|[Enum](#common-field-types)|optional|Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.)|
+|open-status|query|[Enum](#common-field-types)|optional|Used to filter results according to open/closed status. Values can be OPEN, CLOSED or ALL. If absent then ALL is assumed|
 |is-owned|query|[Boolean](#common-field-types)|optional|Filters accounts based on whether they are owned by the authorised customer.  True for owned accounts, false for unowned accounts and absent for all accounts|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
@@ -74,7 +73,7 @@ Obsolete versions: [v1](includes/obsolete/get-accounts-v1.html)
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
 |x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
 
-#### Enumerated Values
+<h4 id="cdr-banking-api_get-accounts_enumerated-values-parameters">Enumerated Values</h4>
 
 |Parameter|Value|
 |---|---|
@@ -130,7 +129,7 @@ Obsolete versions: [v1](includes/obsolete/get-accounts-v1.html)
 }
 ```
 
-<h3 id="get-accounts-responses">Responses</h3>
+<h3 id="cdr-banking-api_get-accounts_responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -139,7 +138,7 @@ Obsolete versions: [v1](includes/obsolete/get-accounts-v1.html)
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 
-### Response Headers
+<h3 id="cdr-banking-api_get-accounts_response-headers">Response Headers</h3>
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
@@ -159,9 +158,8 @@ To perform this operation, you must be authenticated and authorised with the fol
     
   
 
-## Get Bulk Balances
-
-<a id="opIdlistBalancesBulk"></a>
+<h2 id="cdr-banking-api_get-bulk-balances">Get Bulk Balances</h2>
+<p id="get-bulk-balances" class="orig-anchor"></p>
 
 > Code samples
 
@@ -210,17 +208,17 @@ fetch('https://data.holder.com.au/cds-au/v1/banking/accounts/balances',
 
 Obtain balances for multiple, filtered accounts
 
-###Endpoint Version
+<h3 id="cdr-banking-api_get-bulk-balances_endpoint-version">Endpoint Version</h3>
 |   |  |
 |---|--|
 |Version|**1**
 
-<h3 id="get-bulk-balances-parameters">Parameters</h3>
+<h3 id="cdr-banking-api_get-bulk-balances_parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|product-category|query|string|optional|Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.|
-|open-status|query|string|optional|Used to filter results according to open/closed status. Values can be OPEN, CLOSED or ALL. If absent then ALL is assumed|
+|product-category|query|[Enum](#common-field-types)|optional|Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.|
+|open-status|query|[Enum](#common-field-types)|optional|Used to filter results according to open/closed status. Values can be OPEN, CLOSED or ALL. If absent then ALL is assumed|
 |is-owned|query|[Boolean](#common-field-types)|optional|Filters accounts based on whether they are owned by the authorised customer.  True for owned accounts, false for unowned accounts and absent for all accounts|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
@@ -231,7 +229,7 @@ Obtain balances for multiple, filtered accounts
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
 |x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
 
-#### Enumerated Values
+<h4 id="cdr-banking-api_get-bulk-balances_enumerated-values-parameters">Enumerated Values</h4>
 
 |Parameter|Value|
 |---|---|
@@ -289,7 +287,7 @@ Obtain balances for multiple, filtered accounts
 }
 ```
 
-<h3 id="get-bulk-balances-responses">Responses</h3>
+<h3 id="cdr-banking-api_get-bulk-balances_responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -298,7 +296,7 @@ Obtain balances for multiple, filtered accounts
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 
-### Response Headers
+<h3 id="cdr-banking-api_get-bulk-balances_response-headers">Response Headers</h3>
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
@@ -318,9 +316,8 @@ To perform this operation, you must be authenticated and authorised with the fol
     
   
 
-## Get Balances For Specific Accounts
-
-<a id="opIdlistBalancesSpecificAccounts"></a>
+<h2 id="cdr-banking-api_get-balances-for-specific-accounts">Get Balances For Specific Accounts</h2>
+<p id="get-balances-for-specific-accounts" class="orig-anchor"></p>
 
 > Code samples
 
@@ -391,12 +388,12 @@ Obtain balances for a specified list of accounts
 }
 ```
 
-###Endpoint Version
+<h3 id="cdr-banking-api_get-balances-for-specific-accounts_endpoint-version">Endpoint Version</h3>
 |   |  |
 |---|--|
 |Version|**1**
 
-<h3 id="get-balances-for-specific-accounts-parameters">Parameters</h3>
+<h3 id="cdr-banking-api_get-balances-for-specific-accounts_parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -448,7 +445,7 @@ Obtain balances for a specified list of accounts
 }
 ```
 
-<h3 id="get-balances-for-specific-accounts-responses">Responses</h3>
+<h3 id="cdr-banking-api_get-balances-for-specific-accounts_responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -457,7 +454,7 @@ Obtain balances for a specified list of accounts
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li><li>[422 - Unavailable Banking Account](#error-422-authorisation-unavailable-banking-account)</li><li>[422 - Invalid Banking Account](#error-422-authorisation-invalid-banking-account)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 
-### Response Headers
+<h3 id="cdr-banking-api_get-balances-for-specific-accounts_response-headers">Response Headers</h3>
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
@@ -477,9 +474,8 @@ To perform this operation, you must be authenticated and authorised with the fol
     
   
 
-## Get Account Balance
-
-<a id="opIdgetBalance"></a>
+<h2 id="cdr-banking-api_get-account-balance">Get Account Balance</h2>
+<p id="get-account-balance" class="orig-anchor"></p>
 
 > Code samples
 
@@ -528,12 +524,12 @@ fetch('https://data.holder.com.au/cds-au/v1/banking/accounts/{accountId}/balance
 
 Obtain the balance for a single specified account
 
-###Endpoint Version
+<h3 id="cdr-banking-api_get-account-balance_endpoint-version">Endpoint Version</h3>
 |   |  |
 |---|--|
 |Version|**1**
 
-<h3 id="get-account-balance-parameters">Parameters</h3>
+<h3 id="cdr-banking-api_get-account-balance_parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -572,7 +568,7 @@ Obtain the balance for a single specified account
 }
 ```
 
-<h3 id="get-account-balance-responses">Responses</h3>
+<h3 id="cdr-banking-api_get-account-balance_responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -581,7 +577,7 @@ Obtain the balance for a single specified account
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[404 - Unavailable Banking Account](#error-404-authorisation-unavailable-banking-account)</li><li>[404 - Invalid Banking Account](#error-404-authorisation-invalid-banking-account)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 
-### Response Headers
+<h3 id="cdr-banking-api_get-account-balance_response-headers">Response Headers</h3>
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
@@ -601,9 +597,8 @@ To perform this operation, you must be authenticated and authorised with the fol
     
   
 
-## Get Account Detail
-
-<a id="opIdgetAccountDetail"></a>
+<h2 id="cdr-banking-api_get-account-detail">Get Account Detail</h2>
+<p id="get-account-detail" class="orig-anchor"></p>
 
 > Code samples
 
@@ -654,12 +649,12 @@ Obtain detailed information on a single account.
 
 Obsolete versions: [v1](includes/obsolete/get-account-detail-v1.html), [v2](includes/obsolete/get-account-detail-v2.html)
 
-###Endpoint Version
+<h3 id="cdr-banking-api_get-account-detail_endpoint-version">Endpoint Version</h3>
 |   |  |
 |---|--|
 |Version|**3**
 
-<h3 id="get-account-detail-parameters">Parameters</h3>
+<h3 id="cdr-banking-api_get-account-detail_parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -877,7 +872,7 @@ Obsolete versions: [v1](includes/obsolete/get-account-detail-v1.html), [v2](incl
 }
 ```
 
-<h3 id="get-account-detail-responses">Responses</h3>
+<h3 id="cdr-banking-api_get-account-detail_responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -886,7 +881,7 @@ Obsolete versions: [v1](includes/obsolete/get-account-detail-v1.html), [v2](incl
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[404 - Unavailable Banking Account](#error-404-authorisation-unavailable-banking-account)</li><li>[404 - Invalid Banking Account](#error-404-authorisation-invalid-banking-account)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 
-### Response Headers
+<h3 id="cdr-banking-api_get-account-detail_response-headers">Response Headers</h3>
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
@@ -906,9 +901,8 @@ To perform this operation, you must be authenticated and authorised with the fol
     
   
 
-## Get Transactions For Account
-
-<a id="opIdgetTransactions"></a>
+<h2 id="cdr-banking-api_get-transactions-for-account">Get Transactions For Account</h2>
+<p id="get-transactions-for-account" class="orig-anchor"></p>
 
 > Code samples
 
@@ -967,12 +961,12 @@ Some general notes that apply to all end points that retrieve transactions:
 - For transaction amounts it should be assumed that a negative value indicates a reduction of the available balance on the account while a positive value indicates an increase in the available balance on the account
 - For aggregated transactions (ie. groups of sub transactions reported as a single entry for the account) only the aggregated information, with as much consistent information across the subsidiary transactions as possible, is required to be shared
 
-###Endpoint Version
+<h3 id="cdr-banking-api_get-transactions-for-account_endpoint-version">Endpoint Version</h3>
 |   |  |
 |---|--|
 |Version|**1**
 
-<h3 id="get-transactions-for-account-parameters">Parameters</h3>
+<h3 id="cdr-banking-api_get-transactions-for-account_parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -1036,7 +1030,7 @@ Some general notes that apply to all end points that retrieve transactions:
 }
 ```
 
-<h3 id="get-transactions-for-account-responses">Responses</h3>
+<h3 id="cdr-banking-api_get-transactions-for-account_responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -1046,7 +1040,7 @@ Some general notes that apply to all end points that retrieve transactions:
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 
-### Response Headers
+<h3 id="cdr-banking-api_get-transactions-for-account_response-headers">Response Headers</h3>
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
@@ -1067,9 +1061,8 @@ To perform this operation, you must be authenticated and authorised with the fol
     
   
 
-## Get Transaction Detail
-
-<a id="opIdgetTransactionDetail"></a>
+<h2 id="cdr-banking-api_get-transaction-detail">Get Transaction Detail</h2>
+<p id="get-transaction-detail" class="orig-anchor"></p>
 
 > Code samples
 
@@ -1118,12 +1111,12 @@ fetch('https://data.holder.com.au/cds-au/v1/banking/accounts/{accountId}/transac
 
 Obtain detailed information on a transaction for a specific account
 
-###Endpoint Version
+<h3 id="cdr-banking-api_get-transaction-detail_endpoint-version">Endpoint Version</h3>
 |   |  |
 |---|--|
 |Version|**1**
 
-<h3 id="get-transaction-detail-parameters">Parameters</h3>
+<h3 id="cdr-banking-api_get-transaction-detail_parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -1180,7 +1173,7 @@ Obtain detailed information on a transaction for a specific account
 }
 ```
 
-<h3 id="get-transaction-detail-responses">Responses</h3>
+<h3 id="cdr-banking-api_get-transaction-detail_responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -1189,7 +1182,7 @@ Obtain detailed information on a transaction for a specific account
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[404 - Unavailable Banking Account](#error-404-authorisation-unavailable-banking-account)</li><li>[404 - Invalid Banking Account](#error-404-authorisation-invalid-banking-account)</li><li>[404 - Unavailable Resource](#error-404-resource-unavailable)</li><li>[404 - Invalid Resource](#error-404-resource-invalid)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 
-### Response Headers
+<h3 id="cdr-banking-api_get-transaction-detail_response-headers">Response Headers</h3>
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
@@ -1209,9 +1202,8 @@ To perform this operation, you must be authenticated and authorised with the fol
     
   
 
-## Get Direct Debits For Account
-
-<a id="opIdlistDirectDebits"></a>
+<h2 id="cdr-banking-api_get-direct-debits-for-account">Get Direct Debits For Account</h2>
+<p id="get-direct-debits-for-account" class="orig-anchor"></p>
 
 > Code samples
 
@@ -1260,12 +1252,12 @@ fetch('https://data.holder.com.au/cds-au/v1/banking/accounts/{accountId}/direct-
 
 Obtain direct debit authorisations for a specific account
 
-###Endpoint Version
+<h3 id="cdr-banking-api_get-direct-debits-for-account_endpoint-version">Endpoint Version</h3>
 |   |  |
 |---|--|
 |Version|**1**
 
-<h3 id="get-direct-debits-for-account-parameters">Parameters</h3>
+<h3 id="cdr-banking-api_get-direct-debits-for-account_parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -1315,7 +1307,7 @@ Obtain direct debit authorisations for a specific account
 }
 ```
 
-<h3 id="get-direct-debits-for-account-responses">Responses</h3>
+<h3 id="cdr-banking-api_get-direct-debits-for-account_responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -1325,7 +1317,7 @@ Obtain direct debit authorisations for a specific account
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 
-### Response Headers
+<h3 id="cdr-banking-api_get-direct-debits-for-account_response-headers">Response Headers</h3>
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
@@ -1346,9 +1338,8 @@ To perform this operation, you must be authenticated and authorised with the fol
     
   
 
-## Get Bulk Direct Debits
-
-<a id="opIdlistDirectDebitsBulk"></a>
+<h2 id="cdr-banking-api_get-bulk-direct-debits">Get Bulk Direct Debits</h2>
+<p id="get-bulk-direct-debits" class="orig-anchor"></p>
 
 > Code samples
 
@@ -1397,17 +1388,17 @@ fetch('https://data.holder.com.au/cds-au/v1/banking/accounts/direct-debits',
 
 Obtain direct debit authorisations for multiple, filtered accounts
 
-###Endpoint Version
+<h3 id="cdr-banking-api_get-bulk-direct-debits_endpoint-version">Endpoint Version</h3>
 |   |  |
 |---|--|
 |Version|**1**
 
-<h3 id="get-bulk-direct-debits-parameters">Parameters</h3>
+<h3 id="cdr-banking-api_get-bulk-direct-debits_parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|product-category|query|string|optional|Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.|
-|open-status|query|string|optional|Used to filter results according to open/closed status. Values can be OPEN, CLOSED or ALL. If absent then ALL is assumed|
+|product-category|query|[Enum](#common-field-types)|optional|Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.|
+|open-status|query|[Enum](#common-field-types)|optional|Used to filter results according to open/closed status. Values can be OPEN, CLOSED or ALL. If absent then ALL is assumed|
 |is-owned|query|[Boolean](#common-field-types)|optional|Filters accounts based on whether they are owned by the authorised customer.  True for owned accounts, false for unowned accounts and absent for all accounts|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
@@ -1418,7 +1409,7 @@ Obtain direct debit authorisations for multiple, filtered accounts
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
 |x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
 
-#### Enumerated Values
+<h4 id="cdr-banking-api_get-bulk-direct-debits_enumerated-values-parameters">Enumerated Values</h4>
 
 |Parameter|Value|
 |---|---|
@@ -1474,7 +1465,7 @@ Obtain direct debit authorisations for multiple, filtered accounts
 }
 ```
 
-<h3 id="get-bulk-direct-debits-responses">Responses</h3>
+<h3 id="cdr-banking-api_get-bulk-direct-debits_responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -1483,7 +1474,7 @@ Obtain direct debit authorisations for multiple, filtered accounts
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 
-### Response Headers
+<h3 id="cdr-banking-api_get-bulk-direct-debits_response-headers">Response Headers</h3>
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
@@ -1503,9 +1494,8 @@ To perform this operation, you must be authenticated and authorised with the fol
     
   
 
-## Get Direct Debits For Specific Accounts
-
-<a id="opIdlistDirectDebitsSpecificAccounts"></a>
+<h2 id="cdr-banking-api_get-direct-debits-for-specific-accounts">Get Direct Debits For Specific Accounts</h2>
+<p id="get-direct-debits-for-specific-accounts" class="orig-anchor"></p>
 
 > Code samples
 
@@ -1576,12 +1566,12 @@ Obtain direct debit authorisations for a specified list of accounts
 }
 ```
 
-###Endpoint Version
+<h3 id="cdr-banking-api_get-direct-debits-for-specific-accounts_endpoint-version">Endpoint Version</h3>
 |   |  |
 |---|--|
 |Version|**1**
 
-<h3 id="get-direct-debits-for-specific-accounts-parameters">Parameters</h3>
+<h3 id="cdr-banking-api_get-direct-debits-for-specific-accounts_parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -1631,7 +1621,7 @@ Obtain direct debit authorisations for a specified list of accounts
 }
 ```
 
-<h3 id="get-direct-debits-for-specific-accounts-responses">Responses</h3>
+<h3 id="cdr-banking-api_get-direct-debits-for-specific-accounts_responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -1640,7 +1630,7 @@ Obtain direct debit authorisations for a specified list of accounts
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li><li>[422 - Unavailable Banking Account](#error-422-authorisation-unavailable-banking-account)</li><li>[422 - Invalid Banking Account](#error-422-authorisation-invalid-banking-account)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 
-### Response Headers
+<h3 id="cdr-banking-api_get-direct-debits-for-specific-accounts_response-headers">Response Headers</h3>
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
@@ -1660,9 +1650,8 @@ To perform this operation, you must be authenticated and authorised with the fol
     
   
 
-## Get Scheduled Payments for Account
-
-<a id="opIdlistScheduledPayments"></a>
+<h2 id="cdr-banking-api_get-scheduled-payments-for-account">Get Scheduled Payments for Account</h2>
+<p id="get-scheduled-payments-for-account" class="orig-anchor"></p>
 
 > Code samples
 
@@ -1713,12 +1702,12 @@ Obtain scheduled, outgoing payments for a specific account
 
 Obsolete versions: [v1](includes/obsolete/get-scheduled-payments-for-account-v1.html)
 
-###Endpoint Version
+<h3 id="cdr-banking-api_get-scheduled-payments-for-account_endpoint-version">Endpoint Version</h3>
 |   |  |
 |---|--|
 |Version|**2**
 
-<h3 id="get-scheduled-payments-for-account-parameters">Parameters</h3>
+<h3 id="cdr-banking-api_get-scheduled-payments-for-account_parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -1856,7 +1845,7 @@ Obsolete versions: [v1](includes/obsolete/get-scheduled-payments-for-account-v1.
 }
 ```
 
-<h3 id="get-scheduled-payments-for-account-responses">Responses</h3>
+<h3 id="cdr-banking-api_get-scheduled-payments-for-account_responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -1866,7 +1855,7 @@ Obsolete versions: [v1](includes/obsolete/get-scheduled-payments-for-account-v1.
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 
-### Response Headers
+<h3 id="cdr-banking-api_get-scheduled-payments-for-account_response-headers">Response Headers</h3>
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
@@ -1887,9 +1876,8 @@ To perform this operation, you must be authenticated and authorised with the fol
     
   
 
-## Get Scheduled Payments Bulk
-
-<a id="opIdlistScheduledPaymentsBulk"></a>
+<h2 id="cdr-banking-api_get-scheduled-payments-bulk">Get Scheduled Payments Bulk</h2>
+<p id="get-scheduled-payments-bulk" class="orig-anchor"></p>
 
 > Code samples
 
@@ -1940,17 +1928,17 @@ Obtain scheduled payments for multiple, filtered accounts that are the source of
 
 Obsolete versions: [v1](includes/obsolete/get-scheduled-payments-bulk-v1.html)
 
-###Endpoint Version
+<h3 id="cdr-banking-api_get-scheduled-payments-bulk_endpoint-version">Endpoint Version</h3>
 |   |  |
 |---|--|
 |Version|**2**
 
-<h3 id="get-scheduled-payments-bulk-parameters">Parameters</h3>
+<h3 id="cdr-banking-api_get-scheduled-payments-bulk_parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|product-category|query|string|optional|Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.|
-|open-status|query|string|optional|Used to filter results according to open/closed status. Values can be OPEN, CLOSED or ALL. If absent then ALL is assumed|
+|product-category|query|[Enum](#common-field-types)|optional|Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.|
+|open-status|query|[Enum](#common-field-types)|optional|Used to filter results according to open/closed status. Values can be OPEN, CLOSED or ALL. If absent then ALL is assumed|
 |is-owned|query|[Boolean](#common-field-types)|optional|Filters accounts based on whether they are owned by the authorised customer.  True for owned accounts, false for unowned accounts and absent for all accounts|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
@@ -1961,7 +1949,7 @@ Obsolete versions: [v1](includes/obsolete/get-scheduled-payments-bulk-v1.html)
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
 |x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
 
-#### Enumerated Values
+<h4 id="cdr-banking-api_get-scheduled-payments-bulk_enumerated-values-parameters">Enumerated Values</h4>
 
 |Parameter|Value|
 |---|---|
@@ -2105,7 +2093,7 @@ Obsolete versions: [v1](includes/obsolete/get-scheduled-payments-bulk-v1.html)
 }
 ```
 
-<h3 id="get-scheduled-payments-bulk-responses">Responses</h3>
+<h3 id="cdr-banking-api_get-scheduled-payments-bulk_responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -2114,7 +2102,7 @@ Obsolete versions: [v1](includes/obsolete/get-scheduled-payments-bulk-v1.html)
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 
-### Response Headers
+<h3 id="cdr-banking-api_get-scheduled-payments-bulk_response-headers">Response Headers</h3>
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
@@ -2134,9 +2122,8 @@ To perform this operation, you must be authenticated and authorised with the fol
     
   
 
-## Get Scheduled Payments For Specific Accounts
-
-<a id="opIdlistScheduledPaymentsSpecificAccounts"></a>
+<h2 id="cdr-banking-api_get-scheduled-payments-for-specific-accounts">Get Scheduled Payments For Specific Accounts</h2>
+<p id="get-scheduled-payments-for-specific-accounts" class="orig-anchor"></p>
 
 > Code samples
 
@@ -2209,12 +2196,12 @@ Obsolete versions: [v1](includes/obsolete/get-scheduled-payments-for-specific-ac
 }
 ```
 
-###Endpoint Version
+<h3 id="cdr-banking-api_get-scheduled-payments-for-specific-accounts_endpoint-version">Endpoint Version</h3>
 |   |  |
 |---|--|
 |Version|**2**
 
-<h3 id="get-scheduled-payments-for-specific-accounts-parameters">Parameters</h3>
+<h3 id="cdr-banking-api_get-scheduled-payments-for-specific-accounts_parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -2352,7 +2339,7 @@ Obsolete versions: [v1](includes/obsolete/get-scheduled-payments-for-specific-ac
 }
 ```
 
-<h3 id="get-scheduled-payments-for-specific-accounts-responses">Responses</h3>
+<h3 id="cdr-banking-api_get-scheduled-payments-for-specific-accounts_responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -2361,7 +2348,7 @@ Obsolete versions: [v1](includes/obsolete/get-scheduled-payments-for-specific-ac
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li><li>[422 - Unavailable Banking Account](#error-422-authorisation-unavailable-banking-account)</li><li>[422 - Invalid Banking Account](#error-422-authorisation-invalid-banking-account)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 
-### Response Headers
+<h3 id="cdr-banking-api_get-scheduled-payments-for-specific-accounts_response-headers">Response Headers</h3>
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
@@ -2381,9 +2368,8 @@ To perform this operation, you must be authenticated and authorised with the fol
     
   
 
-## Get Payees
-
-<a id="opIdlistPayees"></a>
+<h2 id="cdr-banking-api_get-payees">Get Payees</h2>
+<p id="get-payees" class="orig-anchor"></p>
 
 > Code samples
 
@@ -2434,16 +2420,16 @@ Obtain a list of pre-registered payees.
 
 Obsolete versions: [v1](includes/obsolete/get-payees-v1.html)
 
-###Endpoint Version
+<h3 id="cdr-banking-api_get-payees_endpoint-version">Endpoint Version</h3>
 |   |  |
 |---|--|
 |Version|**2**
 
-<h3 id="get-payees-parameters">Parameters</h3>
+<h3 id="cdr-banking-api_get-payees_parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|type|query|string|optional|Filter on the payee type field.  In addition to normal type field values, ALL can be specified to retrieve all payees.  If absent the assumed value is ALL|
+|type|query|[Enum](#common-field-types)|optional|Filter on the payee type field.  In addition to normal type field values, ALL can be specified to retrieve all payees.  If absent the assumed value is ALL|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
 |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
@@ -2453,7 +2439,7 @@ Obsolete versions: [v1](includes/obsolete/get-payees-v1.html)
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
 |x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
 
-#### Enumerated Values
+<h4 id="cdr-banking-api_get-payees_enumerated-values-parameters">Enumerated Values</h4>
 
 |Parameter|Value|
 |---|---|
@@ -2494,7 +2480,7 @@ Obsolete versions: [v1](includes/obsolete/get-payees-v1.html)
 }
 ```
 
-<h3 id="get-payees-responses">Responses</h3>
+<h3 id="cdr-banking-api_get-payees_responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -2503,7 +2489,7 @@ Obsolete versions: [v1](includes/obsolete/get-payees-v1.html)
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 
-### Response Headers
+<h3 id="cdr-banking-api_get-payees_response-headers">Response Headers</h3>
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
@@ -2523,9 +2509,8 @@ To perform this operation, you must be authenticated and authorised with the fol
     
   
 
-## Get Payee Detail
-
-<a id="opIdgetPayeeDetail"></a>
+<h2 id="cdr-banking-api_get-payee-detail">Get Payee Detail</h2>
+<p id="get-payee-detail" class="orig-anchor"></p>
 
 > Code samples
 
@@ -2578,12 +2563,12 @@ Note that the payee sub-structure should be selected to represent the payment de
 
 Obsolete versions: [v1](includes/obsolete/get-payee-detail-v1.html)
 
-###Endpoint Version
+<h3 id="cdr-banking-api_get-payee-detail_endpoint-version">Endpoint Version</h3>
 |   |  |
 |---|--|
 |Version|**2**
 
-<h3 id="get-payee-detail-parameters">Parameters</h3>
+<h3 id="cdr-banking-api_get-payee-detail_parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -2664,7 +2649,7 @@ Obsolete versions: [v1](includes/obsolete/get-payee-detail-v1.html)
 }
 ```
 
-<h3 id="get-payee-detail-responses">Responses</h3>
+<h3 id="cdr-banking-api_get-payee-detail_responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -2674,7 +2659,7 @@ Obsolete versions: [v1](includes/obsolete/get-payee-detail-v1.html)
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 
-### Response Headers
+<h3 id="cdr-banking-api_get-payee-detail_response-headers">Response Headers</h3>
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
@@ -2695,9 +2680,8 @@ To perform this operation, you must be authenticated and authorised with the fol
     
   
 
-## Get Products
-
-<a id="opIdlistProducts"></a>
+<h2 id="cdr-banking-api_get-products">Get Products</h2>
+<p id="get-products" class="orig-anchor"></p>
 
 > Code samples
 
@@ -2774,25 +2758,25 @@ In addition, the concept of effective date and time has also been included.  Thi
 
 Obsolete versions: [v1](includes/obsolete/get-products-v1.html) [v2](includes/obsolete/get-products-v2.html)
 
-###Endpoint Version
+<h3 id="cdr-banking-api_get-products_endpoint-version">Endpoint Version</h3>
 |   |  |
 |---|--|
 |Version|**3**
 
-<h3 id="get-products-parameters">Parameters</h3>
+<h3 id="cdr-banking-api_get-products_parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|effective|query|string|optional|Allows for the filtering of products based on whether the current time is within the period of time defined as effective by the effectiveFrom and effectiveTo fields. Valid values are ‘CURRENT’, ‘FUTURE’ and ‘ALL’. If absent defaults to 'CURRENT'|
+|effective|query|[Enum](#common-field-types)|optional|Allows for the filtering of products based on whether the current time is within the period of time defined as effective by the effectiveFrom and effectiveTo fields. Valid values are ‘CURRENT’, ‘FUTURE’ and ‘ALL’. If absent defaults to 'CURRENT'|
 |updated-since|query|[DateTimeString](#common-field-types)|optional|Only include products that have been updated after the specified date and time. If absent defaults to include all products|
 |brand|query|string|optional|Filter results based on a specific brand|
-|product-category|query|string|optional|Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.|
+|product-category|query|[Enum](#common-field-types)|optional|Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
 |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
 |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
 
-#### Enumerated Values
+<h4 id="cdr-banking-api_get-products_enumerated-values-parameters">Enumerated Values</h4>
 
 |Parameter|Value|
 |---|---|
@@ -2892,7 +2876,7 @@ Obsolete versions: [v1](includes/obsolete/get-products-v1.html) [v2](includes/ob
 }
 ```
 
-<h3 id="get-products-responses">Responses</h3>
+<h3 id="cdr-banking-api_get-products_responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -2901,7 +2885,7 @@ Obsolete versions: [v1](includes/obsolete/get-products-v1.html) [v2](includes/ob
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 
-### Response Headers
+<h3 id="cdr-banking-api_get-products_response-headers">Response Headers</h3>
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
@@ -2914,9 +2898,8 @@ This operation does not require authentication
 
   
 
-## Get Product Detail
-
-<a id="opIdgetProductDetail"></a>
+<h2 id="cdr-banking-api_get-product-detail">Get Product Detail</h2>
+<p id="get-product-detail" class="orig-anchor"></p>
 
 > Code samples
 
@@ -2959,12 +2942,12 @@ Obtain detailed information on a single product offered openly to the market.
 
 Obsolete versions: [v1](includes/obsolete/get-product-detail-v1.html) [v2](includes/obsolete/get-product-detail-v2.html) [v3](includes/obsolete/get-product-detail-v3.html)
 
-###Endpoint Version
+<h3 id="cdr-banking-api_get-product-detail_endpoint-version">Endpoint Version</h3>
 |   |  |
 |---|--|
 |Version|**4**
 
-<h3 id="get-product-detail-parameters">Parameters</h3>
+<h3 id="cdr-banking-api_get-product-detail_parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -3169,7 +3152,7 @@ Obsolete versions: [v1](includes/obsolete/get-product-detail-v1.html) [v2](inclu
 }
 ```
 
-<h3 id="get-product-detail-responses">Responses</h3>
+<h3 id="cdr-banking-api_get-product-detail_responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -3178,7 +3161,7 @@ Obsolete versions: [v1](includes/obsolete/get-product-detail-v1.html) [v2](inclu
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[404 - Unavailable Resource](#error-404-resource-unavailable)</li><li>[404 - Invalid Resource](#error-404-resource-invalid)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 
-### Response Headers
+<h3 id="cdr-banking-api_get-product-detail_response-headers">Response Headers</h3>
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
@@ -3192,9 +3175,9 @@ This operation does not require authentication
   
 
 <h2 class="schema-heading" id="cdr-banking-api-schemas">Schemas</h2>
-<a class="schema-link" id="cdr-banking-api-schemas"></a>
 
-<h3 class="schema-toc" id="tocSrequestaccountids">RequestAccountIds</h3>
+<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSrequestaccountids">RequestAccountIds</h3>
+<p id="tocSrequestaccountids" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-banking-apirequestaccountids"></a>
 
@@ -3210,15 +3193,16 @@ This operation does not require authentication
 
 ```
 
-### Properties
+<h3 id="cdr-banking-api_requestaccountids_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
 |data|object|mandatory|none|
-|» accountIds|[string]|mandatory|none|
+|» accountIds|[[ASCIIString]](#common-field-types)|mandatory|none|
 |meta|[Meta](#schemacdr-banking-apimeta)|optional|none|
 
-<h3 class="schema-toc" id="tocSresponsebankingproductlistv2">ResponseBankingProductListV2</h3>
+<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSresponsebankingproductlistv2">ResponseBankingProductListV2</h3>
+<p id="tocSresponsebankingproductlistv2" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-banking-apiresponsebankingproductlistv2"></a>
 
@@ -3299,7 +3283,7 @@ This operation does not require authentication
 
 ```
 
-### Properties
+<h3 id="cdr-banking-api_responsebankingproductlistv2_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -3308,7 +3292,8 @@ This operation does not require authentication
 |links|[LinksPaginated](#schemacdr-banking-apilinkspaginated)|mandatory|none|
 |meta|[MetaPaginated](#schemacdr-banking-apimetapaginated)|mandatory|none|
 
-<h3 class="schema-toc" id="tocSbankingproductv4">BankingProductV4</h3>
+<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingproductv4">BankingProductV4</h3>
+<p id="tocSbankingproductv4" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-banking-apibankingproductv4"></a>
 
@@ -3372,7 +3357,7 @@ This operation does not require authentication
 
 ```
 
-### Properties
+<h3 id="cdr-banking-api_bankingproductv4_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -3392,7 +3377,8 @@ This operation does not require authentication
 |» title|string|optional|Display label for the specific image|
 |» imageUri|[URIString](#common-field-types)|mandatory|URI reference to a PNG, JPG or GIF image with proportions defined by ISO 7810 ID-1 and width no greater than 512 pixels. The URI reference may be a link or url-encoded data URI according to **[[RFC2397]](#nref-RFC2397)**|
 
-<h3 class="schema-toc" id="tocSbankingproductadditionalinformationv2">BankingProductAdditionalInformationV2</h3>
+<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingproductadditionalinformationv2">BankingProductAdditionalInformationV2</h3>
+<p id="tocSbankingproductadditionalinformationv2" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-banking-apibankingproductadditionalinformationv2"></a>
 
@@ -3439,7 +3425,7 @@ This operation does not require authentication
 
 *Object that contains links to additional information on specific topics*
 
-### Properties
+<h3 id="cdr-banking-api_bankingproductadditionalinformationv2_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -3454,7 +3440,8 @@ This operation does not require authentication
 |additionalFeesAndPricingUris|[[BankingProductAdditionalInformationV2_additionalInformationUris](#schemacdr-banking-apibankingproductadditionalinformationv2_additionalinformationuris)]|optional|An array of additional fees, pricing, discounts, exemptions and bonuses for the product, if applicable. To be treated as secondary documents to the `feesAndPricingUri`. Only to be used if there is a primary `feesAndPricingUri`.|
 |additionalBundleUris|[[BankingProductAdditionalInformationV2_additionalInformationUris](#schemacdr-banking-apibankingproductadditionalinformationv2_additionalinformationuris)]|optional|An array of additional bundles for the product, if applicable. To be treated as secondary documents to the `bundleUri`. Only to be used if there is a primary `bundleUri`.|
 
-<h3 class="schema-toc" id="tocSbankingproductadditionalinformationv2_additionalinformationuris">BankingProductAdditionalInformationV2_additionalInformationUris</h3>
+<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingproductadditionalinformationv2_additionalinformationuris">BankingProductAdditionalInformationV2_additionalInformationUris</h3>
+<p id="tocSbankingproductadditionalinformationv2_additionalinformationuris" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-banking-apibankingproductadditionalinformationv2_additionalinformationuris"></a>
 
@@ -3466,14 +3453,15 @@ This operation does not require authentication
 
 ```
 
-### Properties
+<h3 id="cdr-banking-api_bankingproductadditionalinformationv2_additionalinformationuris_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
 |description|string|optional|Display text providing more information about the document URI|
 |additionalInfoUri|[URIString](#common-field-types)|mandatory|The URI describing the additional information|
 
-<h3 class="schema-toc" id="tocSresponsebankingproductbyidv4">ResponseBankingProductByIdV4</h3>
+<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSresponsebankingproductbyidv4">ResponseBankingProductByIdV4</h3>
+<p id="tocSresponsebankingproductbyidv4" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-banking-apiresponsebankingproductbyidv4"></a>
 
@@ -3671,7 +3659,7 @@ This operation does not require authentication
 
 ```
 
-### Properties
+<h3 id="cdr-banking-api_responsebankingproductbyidv4_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -3679,7 +3667,8 @@ This operation does not require authentication
 |links|[Links](#schemacdr-banking-apilinks)|mandatory|none|
 |meta|[Meta](#schemacdr-banking-apimeta)|optional|none|
 
-<h3 class="schema-toc" id="tocSbankingproductdetailv4">BankingProductDetailV4</h3>
+<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingproductdetailv4">BankingProductDetailV4</h3>
+<p id="tocSbankingproductdetailv4" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-banking-apibankingproductdetailv4"></a>
 
@@ -3871,7 +3860,7 @@ This operation does not require authentication
 
 ```
 
-### Properties
+<h3 id="cdr-banking-api_bankingproductdetailv4_properties">Properties</h3>
 
 *allOf*
 
@@ -3892,7 +3881,8 @@ This operation does not require authentication
 |» depositRates|[[BankingProductDepositRate](#schemacdr-banking-apibankingproductdepositrate)]|optional|Interest rates available for deposits|
 |» lendingRates|[[BankingProductLendingRateV2](#schemacdr-banking-apibankingproductlendingratev2)]|optional|Interest rates charged against lending balances|
 
-<h3 class="schema-toc" id="tocSbankingproductbundle">BankingProductBundle</h3>
+<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingproductbundle">BankingProductBundle</h3>
+<p id="tocSbankingproductbundle" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-banking-apibankingproductbundle"></a>
 
@@ -3909,7 +3899,7 @@ This operation does not require authentication
 
 ```
 
-### Properties
+<h3 id="cdr-banking-api_bankingproductbundle_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -3917,9 +3907,10 @@ This operation does not require authentication
 |description|string|mandatory|Description of the bundle|
 |additionalInfo|string|optional|Display text providing more information on the bundle|
 |additionalInfoUri|[URIString](#common-field-types)|optional|Link to a web page with more information on the bundle criteria and benefits|
-|productIds|[string]|optional|Array of product IDs for products included in the bundle that are available via the product end points.  Note that this array is not intended to represent a comprehensive model of the products included in the bundle and some products available for the bundle may not be available via the product reference end points|
+|productIds|[[ASCIIString]](#common-field-types)|optional|Array of product IDs for products included in the bundle that are available via the product end points.  Note that this array is not intended to represent a comprehensive model of the products included in the bundle and some products available for the bundle may not be available via the product reference end points|
 
-<h3 class="schema-toc" id="tocSbankingproductfeaturev2">BankingProductFeatureV2</h3>
+<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingproductfeaturev2">BankingProductFeatureV2</h3>
+<p id="tocSbankingproductfeaturev2" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-banking-apibankingproductfeaturev2"></a>
 
@@ -3933,7 +3924,7 @@ This operation does not require authentication
 
 ```
 
-### Properties
+<h3 id="cdr-banking-api_bankingproductfeaturev2_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -3942,7 +3933,7 @@ This operation does not require authentication
 |additionalInfo|string|conditional|Display text providing more information on the feature. Mandatory if the [feature type](#tocSproductfeaturetypedoc) is set to OTHER|
 |additionalInfoUri|[URIString](#common-field-types)|optional|Link to a web page with more information on this feature|
 
-#### Enumerated Values
+<h4 id="cdr-banking-api_bankingproductfeaturev2_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|
@@ -3976,7 +3967,8 @@ This operation does not require authentication
 |featureType|RELATIONSHIP_MANAGEMENT|
 |featureType|UNLIMITED_TXNS|
 
-<h3 class="schema-toc" id="tocSbankingproductconstraint">BankingProductConstraint</h3>
+<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingproductconstraint">BankingProductConstraint</h3>
+<p id="tocSbankingproductconstraint" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-banking-apibankingproductconstraint"></a>
 
@@ -3990,7 +3982,7 @@ This operation does not require authentication
 
 ```
 
-### Properties
+<h3 id="cdr-banking-api_bankingproductconstraint_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -3999,7 +3991,7 @@ This operation does not require authentication
 |additionalInfo|string|optional|Display text providing more information the constraint|
 |additionalInfoUri|[URIString](#common-field-types)|optional|Link to a web page with more information on the constraint|
 
-#### Enumerated Values
+<h4 id="cdr-banking-api_bankingproductconstraint_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|
@@ -4009,7 +4001,8 @@ This operation does not require authentication
 |constraintType|MIN_LIMIT|
 |constraintType|OPENING_BALANCE|
 
-<h3 class="schema-toc" id="tocSbankingproducteligibility">BankingProductEligibility</h3>
+<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingproducteligibility">BankingProductEligibility</h3>
+<p id="tocSbankingproducteligibility" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-banking-apibankingproducteligibility"></a>
 
@@ -4023,7 +4016,7 @@ This operation does not require authentication
 
 ```
 
-### Properties
+<h3 id="cdr-banking-api_bankingproducteligibility_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -4032,7 +4025,7 @@ This operation does not require authentication
 |additionalInfo|string|conditional|Display text providing more information on the [eligibility](#tocSproducteligibilitytypedoc) criteria. Mandatory if the field is set to OTHER|
 |additionalInfoUri|[URIString](#common-field-types)|optional|Link to a web page with more information on this eligibility criteria|
 
-#### Enumerated Values
+<h4 id="cdr-banking-api_bankingproducteligibility_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|
@@ -4049,7 +4042,8 @@ This operation does not require authentication
 |eligibilityType|STAFF|
 |eligibilityType|STUDENT|
 
-<h3 class="schema-toc" id="tocSbankingproductfee">BankingProductFee</h3>
+<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingproductfee">BankingProductFee</h3>
+<p id="tocSbankingproductfee" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-banking-apibankingproductfee"></a>
 
@@ -4092,7 +4086,7 @@ This operation does not require authentication
 
 ```
 
-### Properties
+<h3 id="cdr-banking-api_bankingproductfee_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -4109,7 +4103,7 @@ This operation does not require authentication
 |additionalInfoUri|[URIString](#common-field-types)|optional|Link to a web page with more information on this fee|
 |discounts|[[BankingProductDiscount](#schemacdr-banking-apibankingproductdiscount)]|optional|An optional list of discounts to this fee that may be available|
 
-#### Enumerated Values
+<h4 id="cdr-banking-api_bankingproductfee_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|
@@ -4124,7 +4118,8 @@ This operation does not require authentication
 |feeType|VARIABLE|
 |feeType|WITHDRAWAL|
 
-<h3 class="schema-toc" id="tocSbankingproductdiscount">BankingProductDiscount</h3>
+<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingproductdiscount">BankingProductDiscount</h3>
+<p id="tocSbankingproductdiscount" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-banking-apibankingproductdiscount"></a>
 
@@ -4152,7 +4147,7 @@ This operation does not require authentication
 
 ```
 
-### Properties
+<h3 id="cdr-banking-api_bankingproductdiscount_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -4168,7 +4163,7 @@ This operation does not require authentication
 |additionalInfoUri|[URIString](#common-field-types)|optional|Link to a web page with more information on this discount|
 |eligibility|[[BankingProductDiscountEligibility](#schemacdr-banking-apibankingproductdiscounteligibility)]|conditional|Eligibility constraints that apply to this discount. Mandatory if ``discountType`` is ``ELIGIBILITY_ONLY``.|
 
-#### Enumerated Values
+<h4 id="cdr-banking-api_bankingproductdiscount_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|
@@ -4178,7 +4173,8 @@ This operation does not require authentication
 |discountType|FEE_CAP|
 |discountType|PAYMENTS|
 
-<h3 class="schema-toc" id="tocSbankingproductdiscounteligibility">BankingProductDiscountEligibility</h3>
+<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingproductdiscounteligibility">BankingProductDiscountEligibility</h3>
+<p id="tocSbankingproductdiscounteligibility" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-banking-apibankingproductdiscounteligibility"></a>
 
@@ -4192,7 +4188,7 @@ This operation does not require authentication
 
 ```
 
-### Properties
+<h3 id="cdr-banking-api_bankingproductdiscounteligibility_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -4201,7 +4197,7 @@ This operation does not require authentication
 |additionalInfo|string|conditional|Display text providing more information on this eligibility constraint. Whether mandatory or not is dependent on the value of [discountEligibilityType](#tocSproductdiscounteligibilitydoc)|
 |additionalInfoUri|[URIString](#common-field-types)|optional|Link to a web page with more information on this eligibility constraint|
 
-#### Enumerated Values
+<h4 id="cdr-banking-api_bankingproductdiscounteligibility_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|
@@ -4219,7 +4215,8 @@ This operation does not require authentication
 |discountEligibilityType|STAFF|
 |discountEligibilityType|STUDENT|
 
-<h3 class="schema-toc" id="tocSbankingproductdepositrate">BankingProductDepositRate</h3>
+<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingproductdepositrate">BankingProductDepositRate</h3>
+<p id="tocSbankingproductdepositrate" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-banking-apibankingproductdepositrate"></a>
 
@@ -4251,7 +4248,7 @@ This operation does not require authentication
 
 ```
 
-### Properties
+<h3 id="cdr-banking-api_bankingproductdepositrate_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -4264,7 +4261,7 @@ This operation does not require authentication
 |additionalInfo|string|optional|Display text providing more information on the rate|
 |additionalInfoUri|[URIString](#common-field-types)|optional|Link to a web page with more information on this rate|
 
-#### Enumerated Values
+<h4 id="cdr-banking-api_bankingproductdepositrate_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|
@@ -4276,7 +4273,8 @@ This operation does not require authentication
 |depositRateType|MARKET_LINKED|
 |depositRateType|VARIABLE|
 
-<h3 class="schema-toc" id="tocSbankingproductlendingratev2">BankingProductLendingRateV2</h3>
+<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingproductlendingratev2">BankingProductLendingRateV2</h3>
+<p id="tocSbankingproductlendingratev2" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-banking-apibankingproductlendingratev2"></a>
 
@@ -4312,7 +4310,7 @@ This operation does not require authentication
 
 ```
 
-### Properties
+<h3 id="cdr-banking-api_bankingproductlendingratev2_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -4329,7 +4327,7 @@ This operation does not require authentication
 |additionalInfo|string|optional|Display text providing more information on the rate.|
 |additionalInfoUri|[URIString](#common-field-types)|optional|Link to a web page with more information on this rate|
 
-#### Enumerated Values
+<h4 id="cdr-banking-api_bankingproductlendingratev2_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|
@@ -4351,7 +4349,8 @@ This operation does not require authentication
 |loanPurpose|INVESTMENT|
 |loanPurpose|OWNER_OCCUPIED|
 
-<h3 class="schema-toc" id="tocSbankingproductratetierv3">BankingProductRateTierV3</h3>
+<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingproductratetierv3">BankingProductRateTierV3</h3>
+<p id="tocSbankingproductratetierv3" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-banking-apibankingproductratetierv3"></a>
 
@@ -4374,7 +4373,7 @@ This operation does not require authentication
 
 *Defines the criteria and conditions for which a rate applies*
 
-### Properties
+<h3 id="cdr-banking-api_bankingproductratetierv3_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -4387,7 +4386,7 @@ This operation does not require authentication
 |additionalInfo|string|optional|Display text providing more information on the rate tier.|
 |additionalInfoUri|[URIString](#common-field-types)|optional|Link to a web page with more information on this rate tier|
 
-#### Enumerated Values
+<h4 id="cdr-banking-api_bankingproductratetierv3_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|
@@ -4398,7 +4397,8 @@ This operation does not require authentication
 |rateApplicationMethod|PER_TIER|
 |rateApplicationMethod|WHOLE_BALANCE|
 
-<h3 class="schema-toc" id="tocSbankingproductratecondition">BankingProductRateCondition</h3>
+<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingproductratecondition">BankingProductRateCondition</h3>
+<p id="tocSbankingproductratecondition" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-banking-apibankingproductratecondition"></a>
 
@@ -4412,14 +4412,15 @@ This operation does not require authentication
 
 *Defines a condition for the applicability of a tiered rate*
 
-### Properties
+<h3 id="cdr-banking-api_bankingproductratecondition_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
 |additionalInfo|string|optional|Display text providing more information on the condition|
 |additionalInfoUri|[URIString](#common-field-types)|optional|Link to a web page with more information on this condition|
 
-<h3 class="schema-toc" id="tocSresponsebankingaccountlistv2">ResponseBankingAccountListV2</h3>
+<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSresponsebankingaccountlistv2">ResponseBankingAccountListV2</h3>
+<p id="tocSresponsebankingaccountlistv2" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-banking-apiresponsebankingaccountlistv2"></a>
 
@@ -4456,7 +4457,7 @@ This operation does not require authentication
 
 ```
 
-### Properties
+<h3 id="cdr-banking-api_responsebankingaccountlistv2_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -4465,7 +4466,8 @@ This operation does not require authentication
 |links|[LinksPaginated](#schemacdr-banking-apilinkspaginated)|mandatory|none|
 |meta|[MetaPaginated](#schemacdr-banking-apimetapaginated)|mandatory|none|
 
-<h3 class="schema-toc" id="tocSbankingaccountv2">BankingAccountV2</h3>
+<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingaccountv2">BankingAccountV2</h3>
+<p id="tocSbankingaccountv2" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-banking-apibankingaccountv2"></a>
 
@@ -4485,7 +4487,7 @@ This operation does not require authentication
 
 ```
 
-### Properties
+<h3 id="cdr-banking-api_bankingaccountv2_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -4500,7 +4502,7 @@ This operation does not require authentication
 |productCategory|[BankingProductCategory](#schemacdr-banking-apibankingproductcategory)|mandatory|The category to which a product or account belongs. See [here](#product-categories) for more details|
 |productName|string|mandatory|The unique identifier of the account as defined by the data holder (akin to model number for the account)|
 
-#### Enumerated Values
+<h4 id="cdr-banking-api_bankingaccountv2_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|
@@ -4512,7 +4514,8 @@ This operation does not require authentication
 |accountOwnership|MANY_PARTY|
 |accountOwnership|OTHER|
 
-<h3 class="schema-toc" id="tocSresponsebankingaccountbyidv3">ResponseBankingAccountByIdV3</h3>
+<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSresponsebankingaccountbyidv3">ResponseBankingAccountByIdV3</h3>
+<p id="tocSresponsebankingaccountbyidv3" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-banking-apiresponsebankingaccountbyidv3"></a>
 
@@ -4719,7 +4722,7 @@ This operation does not require authentication
 
 ```
 
-### Properties
+<h3 id="cdr-banking-api_responsebankingaccountbyidv3_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -4727,7 +4730,8 @@ This operation does not require authentication
 |links|[Links](#schemacdr-banking-apilinks)|mandatory|none|
 |meta|[Meta](#schemacdr-banking-apimeta)|optional|none|
 
-<h3 class="schema-toc" id="tocSbankingaccountdetailv3">BankingAccountDetailV3</h3>
+<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingaccountdetailv3">BankingAccountDetailV3</h3>
+<p id="tocSbankingaccountdetailv3" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-banking-apibankingaccountdetailv3"></a>
 
@@ -4928,7 +4932,7 @@ This operation does not require authentication
 
 ```
 
-### Properties
+<h3 id="cdr-banking-api_bankingaccountdetailv3_properties">Properties</h3>
 
 *allOf*
 
@@ -4974,7 +4978,7 @@ This operation does not require authentication
 |» fees|[[BankingProductFee](#schemacdr-banking-apibankingproductfee)]|optional|Fees and charges applicable to the account based on the equivalent structure in Product Reference|
 |» addresses|[[CommonPhysicalAddress](#schemacdr-banking-apicommonphysicaladdress)]|optional|The addresses for the account to be used for correspondence|
 
-#### Enumerated Values
+<h4 id="cdr-banking-api_bankingaccountdetailv3_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|
@@ -4982,7 +4986,8 @@ This operation does not require authentication
 |specificAccountUType|loan|
 |specificAccountUType|termDeposit|
 
-<h3 class="schema-toc" id="tocSbankingtermdepositaccount">BankingTermDepositAccount</h3>
+<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingtermdepositaccount">BankingTermDepositAccount</h3>
+<p id="tocSbankingtermdepositaccount" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-banking-apibankingtermdepositaccount"></a>
 
@@ -4997,7 +5002,7 @@ This operation does not require authentication
 
 ```
 
-### Properties
+<h3 id="cdr-banking-api_bankingtermdepositaccount_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -5007,7 +5012,7 @@ This operation does not require authentication
 |maturityCurrency|[CurrencyString](#common-field-types)|optional|If absent assumes AUD|
 |maturityInstructions|[Enum](#common-field-types)|mandatory|Current instructions on action to be taken at maturity. This includes default actions that may be specified in the terms and conditions for the product e.g. roll-over to the same term and frequency of interest payments|
 
-#### Enumerated Values
+<h4 id="cdr-banking-api_bankingtermdepositaccount_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|
@@ -5015,7 +5020,8 @@ This operation does not require authentication
 |maturityInstructions|PAID_OUT_AT_MATURITY|
 |maturityInstructions|ROLLED_OVER|
 
-<h3 class="schema-toc" id="tocSbankingcreditcardaccount">BankingCreditCardAccount</h3>
+<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingcreditcardaccount">BankingCreditCardAccount</h3>
+<p id="tocSbankingcreditcardaccount" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-banking-apibankingcreditcardaccount"></a>
 
@@ -5029,7 +5035,7 @@ This operation does not require authentication
 
 ```
 
-### Properties
+<h3 id="cdr-banking-api_bankingcreditcardaccount_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -5038,7 +5044,8 @@ This operation does not require authentication
 |paymentCurrency|[CurrencyString](#common-field-types)|optional|If absent assumes AUD|
 |paymentDueDate|[DateString](#common-field-types)|mandatory|Date that the next payment for the card is due|
 
-<h3 class="schema-toc" id="tocSbankingloanaccountv2">BankingLoanAccountV2</h3>
+<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingloanaccountv2">BankingLoanAccountV2</h3>
+<p id="tocSbankingloanaccountv2" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-banking-apibankingloanaccountv2"></a>
 
@@ -5065,7 +5072,7 @@ This operation does not require authentication
 
 ```
 
-### Properties
+<h3 id="cdr-banking-api_bankingloanaccountv2_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -5081,18 +5088,19 @@ This operation does not require authentication
 |minRedraw|[AmountString](#common-field-types)|optional|Minimum redraw amount|
 |minRedrawCurrency|[CurrencyString](#common-field-types)|optional|If absent assumes AUD|
 |offsetAccountEnabled|[Boolean](#common-field-types)|optional|Set to true if one or more offset accounts are configured for this loan account|
-|offsetAccountIds|[string]|optional|The accountIDs of the configured offset accounts attached to this loan. Only offset accounts that can be accessed under the current authorisation should be included. It is expected behaviour that offsetAccountEnabled is set to true but the offsetAccountIds field is absent or empty. This represents a situation where an offset account exists but details can not be accessed under the current authorisation|
+|offsetAccountIds|[[ASCIIString]](#common-field-types)|optional|The accountIDs of the configured offset accounts attached to this loan. Only offset accounts that can be accessed under the current authorisation should be included. It is expected behaviour that offsetAccountEnabled is set to true but the offsetAccountIds field is absent or empty. This represents a situation where an offset account exists but details can not be accessed under the current authorisation|
 |repaymentType|[Enum](#common-field-types)|optional|Options in place for repayments. If absent defaults to PRINCIPAL_AND_INTEREST|
 |repaymentFrequency|[ExternalRef](#common-field-types)|optional|The expected or required repayment frequency. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
 
-#### Enumerated Values
+<h4 id="cdr-banking-api_bankingloanaccountv2_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|
 |repaymentType|INTEREST_ONLY|
 |repaymentType|PRINCIPAL_AND_INTEREST|
 
-<h3 class="schema-toc" id="tocSresponsebankingtransactionlist">ResponseBankingTransactionList</h3>
+<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSresponsebankingtransactionlist">ResponseBankingTransactionList</h3>
+<p id="tocSresponsebankingtransactionlist" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-banking-apiresponsebankingtransactionlist"></a>
 
@@ -5138,7 +5146,7 @@ This operation does not require authentication
 
 ```
 
-### Properties
+<h3 id="cdr-banking-api_responsebankingtransactionlist_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -5147,7 +5155,8 @@ This operation does not require authentication
 |links|[LinksPaginated](#schemacdr-banking-apilinkspaginated)|mandatory|none|
 |meta|[MetaPaginatedTransaction](#schemacdr-banking-apimetapaginatedtransaction)|mandatory|none|
 
-<h3 class="schema-toc" id="tocSbankingtransaction">BankingTransaction</h3>
+<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingtransaction">BankingTransaction</h3>
+<p id="tocSbankingtransaction" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-banking-apibankingtransaction"></a>
 
@@ -5175,7 +5184,7 @@ This operation does not require authentication
 
 ```
 
-### Properties
+<h3 id="cdr-banking-api_bankingtransaction_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -5198,7 +5207,7 @@ This operation does not require authentication
 |crn|string|conditional|BPAY CRN for the transaction (if available).<br/>Where the CRN contains sensitive information, it should be masked in line with how the Data Holder currently displays account identifiers in their existing online banking channels. If the contents of the CRN match the format of a Credit Card PAN they should be masked according to the rules applicable for MaskedPANString. If the contents are otherwise sensitive, then it should be masked using the rules applicable for the MaskedAccountString common type.|
 |apcaNumber|string|optional|6 Digit APCA number for the initiating institution. The field is fixed-width and padded with leading zeros if applicable.|
 
-#### Enumerated Values
+<h4 id="cdr-banking-api_bankingtransaction_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|
@@ -5213,7 +5222,8 @@ This operation does not require authentication
 |status|PENDING|
 |status|POSTED|
 
-<h3 class="schema-toc" id="tocSresponsebankingtransactionbyid">ResponseBankingTransactionById</h3>
+<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSresponsebankingtransactionbyid">ResponseBankingTransactionById</h3>
+<p id="tocSresponsebankingtransactionbyid" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-banking-apiresponsebankingtransactionbyid"></a>
 
@@ -5258,7 +5268,7 @@ This operation does not require authentication
 
 ```
 
-### Properties
+<h3 id="cdr-banking-api_responsebankingtransactionbyid_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -5266,7 +5276,8 @@ This operation does not require authentication
 |links|[Links](#schemacdr-banking-apilinks)|mandatory|none|
 |meta|[Meta](#schemacdr-banking-apimeta)|optional|none|
 
-<h3 class="schema-toc" id="tocSbankingtransactiondetail">BankingTransactionDetail</h3>
+<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingtransactiondetail">BankingTransactionDetail</h3>
+<p id="tocSbankingtransactiondetail" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-banking-apibankingtransactiondetail"></a>
 
@@ -5305,7 +5316,7 @@ This operation does not require authentication
 
 ```
 
-### Properties
+<h3 id="cdr-banking-api_bankingtransactiondetail_properties">Properties</h3>
 
 *allOf*
 
@@ -5328,14 +5339,15 @@ This operation does not require authentication
 |»»» purposeCode|string|optional|Purpose of the payment.  Format is defined by NPP standards for the x2p1.01 overlay service|
 |»» service|[Enum](#common-field-types)|mandatory|Identifier of the applicable overlay service. Valid values are: X2P1.01|
 
-#### Enumerated Values
+<h4 id="cdr-banking-api_bankingtransactiondetail_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|
 |extensionUType|x2p101Payload|
 |service|X2P1.01|
 
-<h3 class="schema-toc" id="tocSresponsebankingaccountsbalancelist">ResponseBankingAccountsBalanceList</h3>
+<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSresponsebankingaccountsbalancelist">ResponseBankingAccountsBalanceList</h3>
+<p id="tocSresponsebankingaccountsbalancelist" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-banking-apiresponsebankingaccountsbalancelist"></a>
 
@@ -5374,7 +5386,7 @@ This operation does not require authentication
 
 ```
 
-### Properties
+<h3 id="cdr-banking-api_responsebankingaccountsbalancelist_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -5383,7 +5395,8 @@ This operation does not require authentication
 |links|[LinksPaginated](#schemacdr-banking-apilinkspaginated)|mandatory|none|
 |meta|[MetaPaginated](#schemacdr-banking-apimetapaginated)|mandatory|none|
 
-<h3 class="schema-toc" id="tocSresponsebankingaccountsbalancebyid">ResponseBankingAccountsBalanceById</h3>
+<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSresponsebankingaccountsbalancebyid">ResponseBankingAccountsBalanceById</h3>
+<p id="tocSresponsebankingaccountsbalancebyid" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-banking-apiresponsebankingaccountsbalancebyid"></a>
 
@@ -5411,7 +5424,7 @@ This operation does not require authentication
 
 ```
 
-### Properties
+<h3 id="cdr-banking-api_responsebankingaccountsbalancebyid_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -5419,7 +5432,8 @@ This operation does not require authentication
 |links|[Links](#schemacdr-banking-apilinks)|mandatory|none|
 |meta|[Meta](#schemacdr-banking-apimeta)|optional|none|
 
-<h3 class="schema-toc" id="tocSbankingbalance">BankingBalance</h3>
+<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingbalance">BankingBalance</h3>
+<p id="tocSbankingbalance" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-banking-apibankingbalance"></a>
 
@@ -5441,7 +5455,7 @@ This operation does not require authentication
 
 ```
 
-### Properties
+<h3 id="cdr-banking-api_bankingbalance_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -5453,7 +5467,8 @@ This operation does not require authentication
 |currency|[CurrencyString](#common-field-types)|optional|The currency for the balance amounts. If absent assumed to be AUD|
 |purses|[[BankingBalancePurse](#schemacdr-banking-apibankingbalancepurse)]|optional|Optional array of balances for the account in other currencies. Included to support accounts that support multi-currency purses such as Travel Cards|
 
-<h3 class="schema-toc" id="tocSbankingbalancepurse">BankingBalancePurse</h3>
+<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingbalancepurse">BankingBalancePurse</h3>
+<p id="tocSbankingbalancepurse" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-banking-apibankingbalancepurse"></a>
 
@@ -5465,14 +5480,15 @@ This operation does not require authentication
 
 ```
 
-### Properties
+<h3 id="cdr-banking-api_bankingbalancepurse_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
 |amount|[AmountString](#common-field-types)|mandatory|The balance available for this additional currency purse|
 |currency|[CurrencyString](#common-field-types)|optional|The currency for the purse|
 
-<h3 class="schema-toc" id="tocSresponsebankingpayeelistv2">ResponseBankingPayeeListV2</h3>
+<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSresponsebankingpayeelistv2">ResponseBankingPayeeListV2</h3>
+<p id="tocSresponsebankingpayeelistv2" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-banking-apiresponsebankingpayeelistv2"></a>
 
@@ -5504,7 +5520,7 @@ This operation does not require authentication
 
 ```
 
-### Properties
+<h3 id="cdr-banking-api_responsebankingpayeelistv2_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -5513,7 +5529,8 @@ This operation does not require authentication
 |links|[LinksPaginated](#schemacdr-banking-apilinkspaginated)|mandatory|none|
 |meta|[MetaPaginated](#schemacdr-banking-apimetapaginated)|mandatory|none|
 
-<h3 class="schema-toc" id="tocSresponsebankingpayeebyidv2">ResponseBankingPayeeByIdV2</h3>
+<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSresponsebankingpayeebyidv2">ResponseBankingPayeeByIdV2</h3>
+<p id="tocSresponsebankingpayeebyidv2" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-banking-apiresponsebankingpayeebyidv2"></a>
 
@@ -5583,7 +5600,7 @@ This operation does not require authentication
 
 ```
 
-### Properties
+<h3 id="cdr-banking-api_responsebankingpayeebyidv2_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -5591,7 +5608,8 @@ This operation does not require authentication
 |links|[Links](#schemacdr-banking-apilinks)|mandatory|none|
 |meta|[Meta](#schemacdr-banking-apimeta)|optional|none|
 
-<h3 class="schema-toc" id="tocSbankingpayeev2">BankingPayeeV2</h3>
+<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingpayeev2">BankingPayeeV2</h3>
+<p id="tocSbankingpayeev2" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-banking-apibankingpayeev2"></a>
 
@@ -5606,7 +5624,7 @@ This operation does not require authentication
 
 ```
 
-### Properties
+<h3 id="cdr-banking-api_bankingpayeev2_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -5616,7 +5634,7 @@ This operation does not require authentication
 |type|[Enum](#common-field-types)|mandatory|The type of payee.<br/>DOMESTIC means a registered payee for domestic payments including NPP. <br/>INTERNATIONAL means a registered payee for international payments. <br/>BILLER means a registered payee for BPAY. <br/>DIGITAL_WALLET means a registered payee for a bank's digital wallet|
 |creationDate|[DateString](#common-field-types)|optional|The date the payee was created by the customer|
 
-#### Enumerated Values
+<h4 id="cdr-banking-api_bankingpayeev2_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|
@@ -5625,7 +5643,8 @@ This operation does not require authentication
 |type|DOMESTIC|
 |type|INTERNATIONAL|
 
-<h3 class="schema-toc" id="tocSbankingpayeedetailv2">BankingPayeeDetailV2</h3>
+<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingpayeedetailv2">BankingPayeeDetailV2</h3>
+<p id="tocSbankingpayeedetailv2" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-banking-apibankingpayeedetailv2"></a>
 
@@ -5689,7 +5708,7 @@ This operation does not require authentication
 
 ```
 
-### Properties
+<h3 id="cdr-banking-api_bankingpayeedetailv2_properties">Properties</h3>
 
 *allOf*
 
@@ -5708,7 +5727,7 @@ This operation does not require authentication
 |» digitalWallet|[BankingDigitalWalletPayee](#schemacdr-banking-apibankingdigitalwalletpayee)|conditional|none|
 |» international|[BankingInternationalPayee](#schemacdr-banking-apibankinginternationalpayee)|conditional|none|
 
-#### Enumerated Values
+<h4 id="cdr-banking-api_bankingpayeedetailv2_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|
@@ -5717,7 +5736,8 @@ This operation does not require authentication
 |payeeUType|domestic|
 |payeeUType|international|
 
-<h3 class="schema-toc" id="tocSbankingdomesticpayee">BankingDomesticPayee</h3>
+<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingdomesticpayee">BankingDomesticPayee</h3>
+<p id="tocSbankingdomesticpayee" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-banking-apibankingdomesticpayee"></a>
 
@@ -5741,7 +5761,7 @@ This operation does not require authentication
 
 ```
 
-### Properties
+<h3 id="cdr-banking-api_bankingdomesticpayee_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -5750,7 +5770,7 @@ This operation does not require authentication
 |card|[BankingDomesticPayeeCard](#schemacdr-banking-apibankingdomesticpayeecard)|conditional|none|
 |payId|[BankingDomesticPayeePayId](#schemacdr-banking-apibankingdomesticpayeepayid)|conditional|none|
 
-#### Enumerated Values
+<h4 id="cdr-banking-api_bankingdomesticpayee_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|
@@ -5758,7 +5778,8 @@ This operation does not require authentication
 |payeeAccountUType|card|
 |payeeAccountUType|payId|
 
-<h3 class="schema-toc" id="tocSbankingdomesticpayeeaccount">BankingDomesticPayeeAccount</h3>
+<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingdomesticpayeeaccount">BankingDomesticPayeeAccount</h3>
+<p id="tocSbankingdomesticpayeeaccount" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-banking-apibankingdomesticpayeeaccount"></a>
 
@@ -5771,7 +5792,7 @@ This operation does not require authentication
 
 ```
 
-### Properties
+<h3 id="cdr-banking-api_bankingdomesticpayeeaccount_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -5779,7 +5800,8 @@ This operation does not require authentication
 |bsb|string|mandatory|BSB of the account to pay to|
 |accountNumber|string|mandatory|Number of the account to pay to|
 
-<h3 class="schema-toc" id="tocSbankingdomesticpayeecard">BankingDomesticPayeeCard</h3>
+<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingdomesticpayeecard">BankingDomesticPayeeCard</h3>
+<p id="tocSbankingdomesticpayeecard" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-banking-apibankingdomesticpayeecard"></a>
 
@@ -5790,13 +5812,14 @@ This operation does not require authentication
 
 ```
 
-### Properties
+<h3 id="cdr-banking-api_bankingdomesticpayeecard_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
 |cardNumber|[MaskedPANString](#common-field-types)|mandatory|Name of the account to pay to|
 
-<h3 class="schema-toc" id="tocSbankingdomesticpayeepayid">BankingDomesticPayeePayId</h3>
+<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingdomesticpayeepayid">BankingDomesticPayeePayId</h3>
+<p id="tocSbankingdomesticpayeepayid" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-banking-apibankingdomesticpayeepayid"></a>
 
@@ -5809,7 +5832,7 @@ This operation does not require authentication
 
 ```
 
-### Properties
+<h3 id="cdr-banking-api_bankingdomesticpayeepayid_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -5817,7 +5840,7 @@ This operation does not require authentication
 |identifier|string|mandatory|The identifier of the PayID (dependent on type)|
 |type|[Enum](#common-field-types)|mandatory|The type of the PayID|
 
-#### Enumerated Values
+<h4 id="cdr-banking-api_bankingdomesticpayeepayid_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|
@@ -5826,7 +5849,8 @@ This operation does not require authentication
 |type|ORG_IDENTIFIER|
 |type|TELEPHONE|
 
-<h3 class="schema-toc" id="tocSbankingbillerpayee">BankingBillerPayee</h3>
+<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingbillerpayee">BankingBillerPayee</h3>
+<p id="tocSbankingbillerpayee" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-banking-apibankingbillerpayee"></a>
 
@@ -5839,7 +5863,7 @@ This operation does not require authentication
 
 ```
 
-### Properties
+<h3 id="cdr-banking-api_bankingbillerpayee_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -5847,7 +5871,8 @@ This operation does not require authentication
 |crn|string|conditional|BPAY CRN of the Biller (if available).<br/>Where the CRN contains sensitive information, it should be masked in line with how the Data Holder currently displays account identifiers in their existing online banking channels. If the contents of the CRN match the format of a Credit Card PAN they should be masked according to the rules applicable for MaskedPANString. If the contents are otherwise sensitive, then it should be masked using the rules applicable for the MaskedAccountString common type.|
 |billerName|string|mandatory|Name of the Biller|
 
-<h3 class="schema-toc" id="tocSbankinginternationalpayee">BankingInternationalPayee</h3>
+<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankinginternationalpayee">BankingInternationalPayee</h3>
+<p id="tocSbankinginternationalpayee" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-banking-apibankinginternationalpayee"></a>
 
@@ -5876,7 +5901,7 @@ This operation does not require authentication
 
 ```
 
-### Properties
+<h3 id="cdr-banking-api_bankinginternationalpayee_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -5897,7 +5922,8 @@ This operation does not require authentication
 |» routingNumber|string|optional|International bank routing number|
 |» legalEntityIdentifier|[ExternalRef](#common-field-types)|optional|The legal entity identifier (LEI) for the beneficiary.  Aligns with [ISO 17442](https://www.iso.org/standard/59771.html)|
 
-<h3 class="schema-toc" id="tocSbankingdigitalwalletpayee">BankingDigitalWalletPayee</h3>
+<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingdigitalwalletpayee">BankingDigitalWalletPayee</h3>
+<p id="tocSbankingdigitalwalletpayee" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-banking-apibankingdigitalwalletpayee"></a>
 
@@ -5911,7 +5937,7 @@ This operation does not require authentication
 
 ```
 
-### Properties
+<h3 id="cdr-banking-api_bankingdigitalwalletpayee_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -5920,7 +5946,7 @@ This operation does not require authentication
 |type|[Enum](#common-field-types)|mandatory|The type of the digital wallet identifier|
 |provider|[Enum](#common-field-types)|mandatory|The provider of the digital wallet|
 
-#### Enumerated Values
+<h4 id="cdr-banking-api_bankingdigitalwalletpayee_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|
@@ -5930,7 +5956,8 @@ This operation does not require authentication
 |provider|PAYPAL_AU|
 |provider|OTHER|
 
-<h3 class="schema-toc" id="tocSresponsebankingdirectdebitauthorisationlist">ResponseBankingDirectDebitAuthorisationList</h3>
+<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSresponsebankingdirectdebitauthorisationlist">ResponseBankingDirectDebitAuthorisationList</h3>
+<p id="tocSresponsebankingdirectdebitauthorisationlist" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-banking-apiresponsebankingdirectdebitauthorisationlist"></a>
 
@@ -5967,7 +5994,7 @@ This operation does not require authentication
 
 ```
 
-### Properties
+<h3 id="cdr-banking-api_responsebankingdirectdebitauthorisationlist_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -5976,7 +6003,8 @@ This operation does not require authentication
 |links|[LinksPaginated](#schemacdr-banking-apilinkspaginated)|mandatory|none|
 |meta|[MetaPaginated](#schemacdr-banking-apimetapaginated)|mandatory|none|
 
-<h3 class="schema-toc" id="tocSbankingdirectdebit">BankingDirectDebit</h3>
+<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingdirectdebit">BankingDirectDebit</h3>
+<p id="tocSbankingdirectdebit" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-banking-apibankingdirectdebit"></a>
 
@@ -5996,7 +6024,7 @@ This operation does not require authentication
 
 ```
 
-### Properties
+<h3 id="cdr-banking-api_bankingdirectdebit_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -6005,7 +6033,8 @@ This operation does not require authentication
 |lastDebitDateTime|[DateTimeString](#common-field-types)|optional|The date and time of the last debit executed under this authorisation|
 |lastDebitAmount|[AmountString](#common-field-types)|optional|The amount of the last debit executed under this authorisation|
 
-<h3 class="schema-toc" id="tocSbankingauthorisedentity">BankingAuthorisedEntity</h3>
+<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingauthorisedentity">BankingAuthorisedEntity</h3>
+<p id="tocSbankingauthorisedentity" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-banking-apibankingauthorisedentity"></a>
 
@@ -6020,7 +6049,7 @@ This operation does not require authentication
 
 ```
 
-### Properties
+<h3 id="cdr-banking-api_bankingauthorisedentity_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -6030,7 +6059,8 @@ This operation does not require authentication
 |acn|string|optional|Australian Company Number for the authorised entity|
 |arbn|string|optional|Australian Registered Body Number for the authorised entity|
 
-<h3 class="schema-toc" id="tocSresponsebankingscheduledpaymentslistv2">ResponseBankingScheduledPaymentsListV2</h3>
+<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSresponsebankingscheduledpaymentslistv2">ResponseBankingScheduledPaymentsListV2</h3>
+<p id="tocSresponsebankingscheduledpaymentslistv2" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-banking-apiresponsebankingscheduledpaymentslistv2"></a>
 
@@ -6155,7 +6185,7 @@ This operation does not require authentication
 
 ```
 
-### Properties
+<h3 id="cdr-banking-api_responsebankingscheduledpaymentslistv2_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -6164,7 +6194,8 @@ This operation does not require authentication
 |links|[LinksPaginated](#schemacdr-banking-apilinkspaginated)|mandatory|none|
 |meta|[MetaPaginated](#schemacdr-banking-apimetapaginated)|mandatory|none|
 
-<h3 class="schema-toc" id="tocSbankingscheduledpaymentv2">BankingScheduledPaymentV2</h3>
+<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingscheduledpaymentv2">BankingScheduledPaymentV2</h3>
+<p id="tocSbankingscheduledpaymentv2" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-banking-apibankingscheduledpaymentv2"></a>
 
@@ -6272,7 +6303,7 @@ This operation does not require authentication
 
 ```
 
-### Properties
+<h3 id="cdr-banking-api_bankingscheduledpaymentv2_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -6285,7 +6316,7 @@ This operation does not require authentication
 |paymentSet|[[BankingScheduledPaymentSetV2](#schemacdr-banking-apibankingscheduledpaymentsetv2)]|mandatory|[The set of payment amounts and destination accounts for this payment accommodating multi-part payments. A single entry indicates a simple payment with one destination account. Must have at least one entry]|
 |recurrence|[BankingScheduledPaymentRecurrence](#schemacdr-banking-apibankingscheduledpaymentrecurrence)|mandatory|Object containing the detail of the schedule for the payment|
 
-#### Enumerated Values
+<h4 id="cdr-banking-api_bankingscheduledpaymentv2_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|
@@ -6293,7 +6324,8 @@ This operation does not require authentication
 |status|INACTIVE|
 |status|SKIP|
 
-<h3 class="schema-toc" id="tocSbankingscheduledpaymentsetv2">BankingScheduledPaymentSetV2</h3>
+<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingscheduledpaymentsetv2">BankingScheduledPaymentSetV2</h3>
+<p id="tocSbankingscheduledpaymentsetv2" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-banking-apibankingscheduledpaymentsetv2"></a>
 
@@ -6363,7 +6395,7 @@ This operation does not require authentication
 
 *The set of payment amounts and destination accounts for this payment accommodating multi-part payments. A single entry indicates a simple payment with one destination account. Must have at least one entry*
 
-### Properties
+<h3 id="cdr-banking-api_bankingscheduledpaymentsetv2_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -6372,7 +6404,8 @@ This operation does not require authentication
 |amount|[AmountString](#common-field-types)|conditional|The amount of the next payment if known. Mandatory unless the isAmountCalculated field is set to true. Must be zero or positive if present|
 |currency|[CurrencyString](#common-field-types)|optional|The currency for the payment. AUD assumed if not present|
 
-<h3 class="schema-toc" id="tocSbankingscheduledpaymenttov2">BankingScheduledPaymentToV2</h3>
+<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingscheduledpaymenttov2">BankingScheduledPaymentToV2</h3>
+<p id="tocSbankingscheduledpaymenttov2" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-banking-apibankingscheduledpaymenttov2"></a>
 
@@ -6437,7 +6470,7 @@ This operation does not require authentication
 
 *Object containing details of the destination of the payment. Used to specify a variety of payment destination types*
 
-### Properties
+<h3 id="cdr-banking-api_bankingscheduledpaymenttov2_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -6451,7 +6484,7 @@ This operation does not require authentication
 |biller|[BankingBillerPayee](#schemacdr-banking-apibankingbillerpayee)|conditional|none|
 |international|[BankingInternationalPayee](#schemacdr-banking-apibankinginternationalpayee)|conditional|none|
 
-#### Enumerated Values
+<h4 id="cdr-banking-api_bankingscheduledpaymenttov2_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|
@@ -6462,7 +6495,8 @@ This operation does not require authentication
 |toUType|international|
 |toUType|payeeId|
 
-<h3 class="schema-toc" id="tocSbankingscheduledpaymentfrom">BankingScheduledPaymentFrom</h3>
+<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingscheduledpaymentfrom">BankingScheduledPaymentFrom</h3>
+<p id="tocSbankingscheduledpaymentfrom" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-banking-apibankingscheduledpaymentfrom"></a>
 
@@ -6475,13 +6509,14 @@ This operation does not require authentication
 
 *Object containing details of the source of the payment. Currently only specifies an account ID but provided as an object to facilitate future extensibility and consistency with the to object*
 
-### Properties
+<h3 id="cdr-banking-api_bankingscheduledpaymentfrom_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
 |accountId|[ASCIIString](#common-field-types)|mandatory|ID of the account that is the source of funds for the payment|
 
-<h3 class="schema-toc" id="tocSbankingscheduledpaymentrecurrence">BankingScheduledPaymentRecurrence</h3>
+<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingscheduledpaymentrecurrence">BankingScheduledPaymentRecurrence</h3>
+<p id="tocSbankingscheduledpaymentrecurrence" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-banking-apibankingscheduledpaymentrecurrence"></a>
 
@@ -6519,7 +6554,7 @@ This operation does not require authentication
 
 *Object containing the detail of the schedule for the payment*
 
-### Properties
+<h3 id="cdr-banking-api_bankingscheduledpaymentrecurrence_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -6530,7 +6565,7 @@ This operation does not require authentication
 |lastWeekDay|[BankingScheduledPaymentRecurrenceLastWeekday](#schemacdr-banking-apibankingscheduledpaymentrecurrencelastweekday)|conditional|Indicates that the schedule of payments is defined according to the last occurrence of a specific weekday in an interval. Mandatory if recurrenceUType is set to lastWeekDay|
 |eventBased|[BankingScheduledPaymentRecurrenceEventBased](#schemacdr-banking-apibankingscheduledpaymentrecurrenceeventbased)|conditional|Indicates that the schedule of payments is defined according to an external event that cannot be predetermined. Mandatory if recurrenceUType is set to eventBased|
 
-#### Enumerated Values
+<h4 id="cdr-banking-api_bankingscheduledpaymentrecurrence_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|
@@ -6539,7 +6574,8 @@ This operation does not require authentication
 |recurrenceUType|lastWeekDay|
 |recurrenceUType|onceOff|
 
-<h3 class="schema-toc" id="tocSbankingscheduledpaymentrecurrenceonceoff">BankingScheduledPaymentRecurrenceOnceOff</h3>
+<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingscheduledpaymentrecurrenceonceoff">BankingScheduledPaymentRecurrenceOnceOff</h3>
+<p id="tocSbankingscheduledpaymentrecurrenceonceoff" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-banking-apibankingscheduledpaymentrecurrenceonceoff"></a>
 
@@ -6552,13 +6588,14 @@ This operation does not require authentication
 
 *Indicates that the payment is a once off payment on a specific future date. Mandatory if recurrenceUType is set to onceOff*
 
-### Properties
+<h3 id="cdr-banking-api_bankingscheduledpaymentrecurrenceonceoff_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
 |paymentDate|[DateString](#common-field-types)|mandatory|The scheduled date for the once off payment|
 
-<h3 class="schema-toc" id="tocSbankingscheduledpaymentrecurrenceintervalschedule">BankingScheduledPaymentRecurrenceIntervalSchedule</h3>
+<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingscheduledpaymentrecurrenceintervalschedule">BankingScheduledPaymentRecurrenceIntervalSchedule</h3>
+<p id="tocSbankingscheduledpaymentrecurrenceintervalschedule" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-banking-apibankingscheduledpaymentrecurrenceintervalschedule"></a>
 
@@ -6579,7 +6616,7 @@ This operation does not require authentication
 
 *Indicates that the schedule of payments is defined by a series of intervals. Mandatory if recurrenceUType is set to intervalSchedule*
 
-### Properties
+<h3 id="cdr-banking-api_bankingscheduledpaymentrecurrenceintervalschedule_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -6588,7 +6625,7 @@ This operation does not require authentication
 |nonBusinessDayTreatment|[Enum](#common-field-types)|optional|Enumerated field giving the treatment where a scheduled payment date is not a business day. If absent assumed to be ON.<br/>**AFTER** - If a scheduled payment date is a non-business day the payment will be made on the first business day after the scheduled payment date.<br/>**BEFORE** - If a scheduled payment date is a non-business day the payment will be made on the first business day before the scheduled payment date.<br/>**ON** - If a scheduled payment date is a non-business day the payment will be made on that day regardless.<br/>**ONLY** - Payments only occur on business days. If a scheduled payment date is a non-business day the payment will be ignored|
 |intervals|[[BankingScheduledPaymentInterval](#schemacdr-banking-apibankingscheduledpaymentinterval)]|mandatory|An array of interval objects defining the payment schedule.  Each entry in the array is additive, in that it adds payments to the overall payment schedule.  If multiple intervals result in a payment on the same day then only one payment will be made. Must have at least one entry|
 
-#### Enumerated Values
+<h4 id="cdr-banking-api_bankingscheduledpaymentrecurrenceintervalschedule_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|
@@ -6597,7 +6634,8 @@ This operation does not require authentication
 |nonBusinessDayTreatment|ON|
 |nonBusinessDayTreatment|ONLY|
 
-<h3 class="schema-toc" id="tocSbankingscheduledpaymentinterval">BankingScheduledPaymentInterval</h3>
+<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingscheduledpaymentinterval">BankingScheduledPaymentInterval</h3>
+<p id="tocSbankingscheduledpaymentinterval" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-banking-apibankingscheduledpaymentinterval"></a>
 
@@ -6609,14 +6647,15 @@ This operation does not require authentication
 
 ```
 
-### Properties
+<h3 id="cdr-banking-api_bankingscheduledpaymentinterval_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
 |interval|[ExternalRef](#common-field-types)|mandatory|An interval for the payment. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)  (excludes recurrence syntax) with components less than a day in length ignored. This duration defines the period between payments starting with nextPaymentDate|
 |dayInInterval|[ExternalRef](#common-field-types)|optional|Uses an interval to define the ordinal day within the interval defined by the interval field on which the payment occurs. If the resulting duration is 0 days in length or larger than the number of days in the interval then the payment will occur on the last day of the interval. A duration of 1 day indicates the first day of the interval. If absent the assumed value is P1D. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax) with components less than a day in length ignored. The first day of a week is considered to be Monday.|
 
-<h3 class="schema-toc" id="tocSbankingscheduledpaymentrecurrencelastweekday">BankingScheduledPaymentRecurrenceLastWeekday</h3>
+<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingscheduledpaymentrecurrencelastweekday">BankingScheduledPaymentRecurrenceLastWeekday</h3>
+<p id="tocSbankingscheduledpaymentrecurrencelastweekday" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-banking-apibankingscheduledpaymentrecurrencelastweekday"></a>
 
@@ -6633,7 +6672,7 @@ This operation does not require authentication
 
 *Indicates that the schedule of payments is defined according to the last occurrence of a specific weekday in an interval. Mandatory if recurrenceUType is set to lastWeekDay*
 
-### Properties
+<h3 id="cdr-banking-api_bankingscheduledpaymentrecurrencelastweekday_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -6643,7 +6682,7 @@ This operation does not require authentication
 |lastWeekDay|[Enum](#common-field-types)|mandatory|The weekDay specified. The payment will occur on the last occurrence of this weekday in the interval.|
 |nonBusinessDayTreatment|[Enum](#common-field-types)|optional|Enumerated field giving the treatment where a scheduled payment date is not a business day. If absent assumed to be ON.<br/>**AFTER** - If a scheduled payment date is a non-business day the payment will be made on the first business day after the scheduled payment date.<br/>**BEFORE** - If a scheduled payment date is a non-business day the payment will be made on the first business day before the scheduled payment date.<br/>**ON** - If a scheduled payment date is a non-business day the payment will be made on that day regardless.<br/>**ONLY** - Payments only occur on business days. If a scheduled payment date is a non-business day the payment will be ignored|
 
-#### Enumerated Values
+<h4 id="cdr-banking-api_bankingscheduledpaymentrecurrencelastweekday_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|
@@ -6659,7 +6698,8 @@ This operation does not require authentication
 |nonBusinessDayTreatment|ON|
 |nonBusinessDayTreatment|ONLY|
 
-<h3 class="schema-toc" id="tocSbankingscheduledpaymentrecurrenceeventbased">BankingScheduledPaymentRecurrenceEventBased</h3>
+<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingscheduledpaymentrecurrenceeventbased">BankingScheduledPaymentRecurrenceEventBased</h3>
+<p id="tocSbankingscheduledpaymentrecurrenceeventbased" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-banking-apibankingscheduledpaymentrecurrenceeventbased"></a>
 
@@ -6672,13 +6712,14 @@ This operation does not require authentication
 
 *Indicates that the schedule of payments is defined according to an external event that cannot be predetermined. Mandatory if recurrenceUType is set to eventBased*
 
-### Properties
+<h3 id="cdr-banking-api_bankingscheduledpaymentrecurrenceeventbased_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
 |description|string|mandatory|Description of the event and conditions that will result in the payment. Expected to be formatted for display to a customer|
 
-<h3 class="schema-toc" id="tocScommonphysicaladdress">CommonPhysicalAddress</h3>
+<h3 class="schema-toc" id="cdr-banking-api_schemas_tocScommonphysicaladdress">CommonPhysicalAddress</h3>
+<p id="tocScommonphysicaladdress" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-banking-apicommonphysicaladdress"></a>
 
@@ -6723,7 +6764,7 @@ This operation does not require authentication
 
 ```
 
-### Properties
+<h3 id="cdr-banking-api_commonphysicaladdress_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -6731,14 +6772,15 @@ This operation does not require authentication
 |simple|[CommonSimpleAddress](#schemacdr-banking-apicommonsimpleaddress)|conditional|none|
 |paf|[CommonPAFAddress](#schemacdr-banking-apicommonpafaddress)|conditional|Australian address formatted according to the file format defined by the [PAF file format](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf)|
 
-#### Enumerated Values
+<h4 id="cdr-banking-api_commonphysicaladdress_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|
 |addressUType|paf|
 |addressUType|simple|
 
-<h3 class="schema-toc" id="tocScommonsimpleaddress">CommonSimpleAddress</h3>
+<h3 class="schema-toc" id="cdr-banking-api_schemas_tocScommonsimpleaddress">CommonSimpleAddress</h3>
+<p id="tocScommonsimpleaddress" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-banking-apicommonsimpleaddress"></a>
 
@@ -6756,7 +6798,7 @@ This operation does not require authentication
 
 ```
 
-### Properties
+<h3 id="cdr-banking-api_commonsimpleaddress_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -6769,7 +6811,8 @@ This operation does not require authentication
 |state|string|mandatory|Free text if the country is not Australia. If country is Australia then must be one of the values defined by the [State Type Abbreviation](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf) in the PAF file format. NSW, QLD, VIC, NT, WA, SA, TAS, ACT, AAT|
 |country|[ExternalRef](#common-field-types)|optional|A valid [ISO 3166 Alpha-3](https://www.iso.org/iso-3166-country-codes.html) country code. Australia (AUS) is assumed if country is not present.|
 
-<h3 class="schema-toc" id="tocScommonpafaddress">CommonPAFAddress</h3>
+<h3 class="schema-toc" id="cdr-banking-api_schemas_tocScommonpafaddress">CommonPAFAddress</h3>
+<p id="tocScommonpafaddress" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-banking-apicommonpafaddress"></a>
 
@@ -6803,7 +6846,7 @@ This operation does not require authentication
 
 *Australian address formatted according to the file format defined by the [PAF file format](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf)*
 
-### Properties
+<h3 id="cdr-banking-api_commonpafaddress_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -6830,7 +6873,8 @@ This operation does not require authentication
 |postcode|string|mandatory|Postcode for the locality|
 |state|string|mandatory|State in which the address belongs. Valid enumeration defined by Australia Post PAF code file [State Type Abbreviation](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf). NSW, QLD, VIC, NT, WA, SA, TAS, ACT, AAT|
 
-<h3 class="schema-toc" id="tocSlinks">Links</h3>
+<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSlinks">Links</h3>
+<p id="tocSlinks" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-banking-apilinks"></a>
 
@@ -6841,13 +6885,14 @@ This operation does not require authentication
 
 ```
 
-### Properties
+<h3 id="cdr-banking-api_links_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
 |self|[URIString](#common-field-types)|mandatory|Fully qualified link that generated the current response document|
 
-<h3 class="schema-toc" id="tocSmeta">Meta</h3>
+<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSmeta">Meta</h3>
+<p id="tocSmeta" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-banking-apimeta"></a>
 
@@ -6856,11 +6901,12 @@ This operation does not require authentication
 
 ```
 
-### Properties
+<h3 id="cdr-banking-api_meta_properties">Properties</h3>
 
 *None*
 
-<h3 class="schema-toc" id="tocSlinkspaginated">LinksPaginated</h3>
+<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSlinkspaginated">LinksPaginated</h3>
+<p id="tocSlinkspaginated" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-banking-apilinkspaginated"></a>
 
@@ -6875,7 +6921,7 @@ This operation does not require authentication
 
 ```
 
-### Properties
+<h3 id="cdr-banking-api_linkspaginated_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -6885,7 +6931,8 @@ This operation does not require authentication
 |next|[URIString](#common-field-types)|conditional|URI to the next page of this set. Mandatory if this response is not the last page|
 |last|[URIString](#common-field-types)|conditional|URI to the last page of this set. Mandatory if this response is not the last page|
 
-<h3 class="schema-toc" id="tocSmetapaginated">MetaPaginated</h3>
+<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSmetapaginated">MetaPaginated</h3>
+<p id="tocSmetapaginated" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-banking-apimetapaginated"></a>
 
@@ -6897,14 +6944,15 @@ This operation does not require authentication
 
 ```
 
-### Properties
+<h3 id="cdr-banking-api_metapaginated_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
 |totalRecords|[NaturalNumber](#common-field-types)|mandatory|The total number of records in the full set. See [pagination](#pagination).|
 |totalPages|[NaturalNumber](#common-field-types)|mandatory|The total number of pages in the full set. See [pagination](#pagination).|
 
-<h3 class="schema-toc" id="tocSmetapaginatedtransaction">MetaPaginatedTransaction</h3>
+<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSmetapaginatedtransaction">MetaPaginatedTransaction</h3>
+<p id="tocSmetapaginatedtransaction" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-banking-apimetapaginatedtransaction"></a>
 
@@ -6917,7 +6965,7 @@ This operation does not require authentication
 
 ```
 
-### Properties
+<h3 id="cdr-banking-api_metapaginatedtransaction_properties">Properties</h3>
 
 *allOf*
 
@@ -6932,7 +6980,8 @@ This operation does not require authentication
 |*anonymous*|object|mandatory|none|
 |» isQueryParamUnsupported|[Boolean](#common-field-types)|optional|**true** if *"text"* query parameter is not supported|
 
-<h3 class="schema-toc" id="tocSmetaerror">MetaError</h3>
+<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSmetaerror">MetaError</h3>
+<p id="tocSmetaerror" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-banking-apimetaerror"></a>
 
@@ -6945,13 +6994,14 @@ This operation does not require authentication
 
 *Additional data for customised error codes*
 
-### Properties
+<h3 id="cdr-banking-api_metaerror_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
 |urn|string|conditional|The CDR error code URN which the application-specific error code extends. Mandatory if the error `code` is an application-specific error rather than a standardised error code.|
 
-<h3 class="schema-toc" id="tocSresponseerrorlistv2">ResponseErrorListV2</h3>
+<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSresponseerrorlistv2">ResponseErrorListV2</h3>
+<p id="tocSresponseerrorlistv2" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-banking-apiresponseerrorlistv2"></a>
 
@@ -6971,7 +7021,7 @@ This operation does not require authentication
 
 ```
 
-### Properties
+<h3 id="cdr-banking-api_responseerrorlistv2_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -6981,7 +7031,8 @@ This operation does not require authentication
 |» detail|string|mandatory|A human-readable explanation specific to this occurrence of the problem.|
 |» meta|[MetaError](#schemacdr-banking-apimetaerror)|optional|Additional data for customised error codes|
 
-<h3 class="schema-toc" id="tocSbankingproductcategory">BankingProductCategory</h3>
+<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingproductcategory">BankingProductCategory</h3>
+<p id="tocSbankingproductcategory" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-banking-apibankingproductcategory"></a>
 
@@ -6992,13 +7043,13 @@ This operation does not require authentication
 
 *The category to which a product or account belongs. See [here](#product-categories) for more details*
 
-### Properties
+<h3 id="cdr-banking-api_bankingproductcategory_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
 |*anonymous*|[Enum](#common-field-types)|mandatory|The category to which a product or account belongs. See [here](#product-categories) for more details|
 
-#### Enumerated Values
+<h4 id="cdr-banking-api_bankingproductcategory_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|

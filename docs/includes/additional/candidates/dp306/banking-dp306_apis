@@ -16,7 +16,10 @@ This means that:
 <tr><td><a href='../../../../includes/swagger/cds_banking_dp306.json'>Banking OpenAPI Specification (JSON)</a></td></tr>
 <tr><td><a href='../../../../includes/swagger/cds_banking_dp306.yaml'>Banking OpenAPI Specification (YAML)</a></td></tr>
 </table>
-<pre class="highlight diff tab-diff"><code>Changed the `cardArt` array to a `cardOption` object to provide additional card details in 'Get Products', 'Get Product Detail' and 'Get Account Detail'.
+<pre class="highlight diff tab-diff"><code>Additional note for v1.29.0: In this version, the delta statements from v1.28.0 have been retained in v1.29.0 as this Candidate remains under consultation. The affected delta statements will be noted as being associated with v1.28.0
+</code></pre><pre class="highlight diff tab-diff"><code>**v1.28.0 Change**
+
+Changed the `cardArt` array to a `cardOption` object to provide additional card details in 'Get Products', 'Get Product Detail' and 'Get Account Detail'.
 
 Added the `FEE` `lendingRateType` value to support lending products that have a fee-based rather than rate-based cost. This type may be expected to align to the new `PRINCIPAL_AND_FEE` `repaymentType`.
 

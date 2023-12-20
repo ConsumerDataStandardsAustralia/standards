@@ -1,6 +1,10 @@
-<h2 id='notification-standards'>Notification Standards</h2>
+<h2 class="schema-heading" id="consumer-experience_notification-standards">Notification Standards</h2>
+<pre class="highlight diff tab-diff"><code>Notification Standards subheadings included in menu navigation
+</code></pre>
 <p>The standards in this section apply where a relevant joint account holder is about to take an action that may or, where a data holder leverages rule 4A.15 and allows a vulnerable joint account holder to share joint account data as if it were from an individual account, may not result in the other joint account holder(s) being notified.</p>
-<h3 id='notifications-joint-account-alerts'>Notifications: Joint Account Alerts</h3>
+
+<h3 class="schema-toc" data-cds-menu="h3" id="consumer-experience_notification-standards_notifications-joint-account-alerts">Notifications: Joint Account Alerts</h3>
+
 <table><thead>
 <tr>
 <th>Area</th>
@@ -20,7 +24,9 @@
 <td>In relation to the joint account alert standards in this section, data holders <strong>MAY</strong> provide further information about any services or processes in place for supporting vulnerable consumers or reporting risks of physical, psychological, or financial harm or abuse to the data holder.</td>
 </tr>
 </tbody></table>
-<h3 id='alternative-notification-schedules-for-joint-accounts'>Alternative Notification Schedules for Joint Accounts</h3>
+
+<h3 class="schema-toc" data-cds-menu="h3" id="consumer-experience_notification-standards_alternative-notification-schedules-for-joint-accounts">Alternative Notification Schedules for Joint Accounts</h3>
+
 <p>Rule 4A.14(3) requires data holders to
 (a) provide for alternative notification schedules (including reducing the frequency of notifications or not receiving notifications) and
 (b) give each joint account holder a means of selecting such an alternative, and of changing an election.</p>

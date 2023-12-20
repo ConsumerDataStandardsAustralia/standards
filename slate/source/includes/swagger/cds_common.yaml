@@ -11,7 +11,7 @@ info:
     name: MIT License
     url: https://opensource.org/licenses/MIT
   title: CDR Common API
-  version: 1.28.0
+  version: 1.29.0
 servers:
 - url: https://data.holder.com.au/cds-au/v1
 paths:
@@ -20,7 +20,7 @@ paths:
       description: |-
         Obtain basic information on the customer that has authorised the current session
 
-        ### Conventions
+        <h3 id='cdr-common-api_get-customer_conventions'>Conventions</h3>
         In the customer payloads relevant conventions are explained here, in one place.
 
         #### Given Names

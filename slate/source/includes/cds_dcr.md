@@ -1,8 +1,7 @@
 
 
-## Register Data Recipient oAuth Client
-
-<a id="opIdPostDataRecipientRegistration"></a>
+<h2 id="cdr-dynamic-client-registration-api_register-data-recipient-oauth-client">Register Data Recipient oAuth Client</h2>
+<p id="register-data-recipient-oauth-client" class="orig-anchor"></p>
 
 > Code samples
 
@@ -50,12 +49,12 @@ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
 
 ```
 
-###Endpoint Version
+<h3 id="cdr-dynamic-client-registration-api_register-data-recipient-oauth-client_endpoint-version">Endpoint Version</h3>
 |   |  |
 |---|--|
 |Version|**Versioning is not supported for this endpoint**
 
-<h3 id="register-data-recipient-oauth-client-parameters">Parameters</h3>
+<h3 id="cdr-dynamic-client-registration-api_register-data-recipient-oauth-client_parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -112,7 +111,7 @@ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
 }
 ```
 
-<h3 id="register-data-recipient-oauth-client-responses">Responses</h3>
+<h3 id="cdr-dynamic-client-registration-api_register-data-recipient-oauth-client_responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -126,9 +125,8 @@ This operation does not require authentication
 
   
 
-## Get oAuth Client Registration
-
-<a id="opIdGetClientRegistration"></a>
+<h2 id="cdr-dynamic-client-registration-api_get-oauth-client-registration">Get oAuth Client Registration</h2>
+<p id="get-oauth-client-registration" class="orig-anchor"></p>
 
 > Code samples
 
@@ -167,12 +165,12 @@ fetch('https://data.holder.com.au/register/{ClientId}',
 
 Get a Client Registration for a given Client ID.
 
-###Endpoint Version
+<h3 id="cdr-dynamic-client-registration-api_get-oauth-client-registration_endpoint-version">Endpoint Version</h3>
 |   |  |
 |---|--|
 |Version|**Versioning is not supported for this endpoint**
 
-<h3 id="get-oauth-client-registration-parameters">Parameters</h3>
+<h3 id="cdr-dynamic-client-registration-api_get-oauth-client-registration_parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -230,7 +228,7 @@ Get a Client Registration for a given Client ID.
 }
 ```
 
-<h3 id="get-oauth-client-registration-responses">Responses</h3>
+<h3 id="cdr-dynamic-client-registration-api_get-oauth-client-registration_responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -238,7 +236,7 @@ Get a Client Registration for a given Client ID.
 |401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Request failed due to unknown or invalid Client or invalid access token|None|
 |403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|The client does not have permission to read, update or delete the Client|None|
 
-### Response Headers
+<h3 id="cdr-dynamic-client-registration-api_get-oauth-client-registration_response-headers">Response Headers</h3>
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
@@ -254,9 +252,8 @@ To perform this operation, you must be authenticated and authorised with the fol
     
   
 
-## Update Data Recipient Registration
-
-<a id="opIdPutDataRecipientRegistration"></a>
+<h2 id="cdr-dynamic-client-registration-api_update-data-recipient-registration">Update Data Recipient Registration</h2>
+<p id="update-data-recipient-registration" class="orig-anchor"></p>
 
 > Code samples
 
@@ -304,12 +301,12 @@ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
 
 ```
 
-###Endpoint Version
+<h3 id="cdr-dynamic-client-registration-api_update-data-recipient-registration_endpoint-version">Endpoint Version</h3>
 |   |  |
 |---|--|
 |Version|**Versioning is not supported for this endpoint**
 
-<h3 id="update-data-recipient-registration-parameters">Parameters</h3>
+<h3 id="cdr-dynamic-client-registration-api_update-data-recipient-registration_parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -368,7 +365,7 @@ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
 }
 ```
 
-<h3 id="update-data-recipient-registration-responses">Responses</h3>
+<h3 id="cdr-dynamic-client-registration-api_update-data-recipient-registration_responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -377,7 +374,7 @@ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
 |401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Request failed due to unknown or invalid Client or invalid access token|None|
 |403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|The client does not have permission to read, update or delete the Client|None|
 
-### Response Headers
+<h3 id="cdr-dynamic-client-registration-api_update-data-recipient-registration_response-headers">Response Headers</h3>
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
@@ -393,9 +390,8 @@ To perform this operation, you must be authenticated and authorised with the fol
     
   
 
-## Delete Data Recipient oAuth Client Registration
-
-<a id="opIdDeleteDataRecipientRegistration"></a>
+<h2 id="cdr-dynamic-client-registration-api_delete-data-recipient-oauth-client-registration">Delete Data Recipient oAuth Client Registration</h2>
+<p id="delete-data-recipient-oauth-client-registration" class="orig-anchor"></p>
 
 > Code samples
 
@@ -433,19 +429,19 @@ fetch('https://data.holder.com.au/register/{ClientId}',
 
 Delete a Client Registration for a given Client ID.
 
-###Endpoint Version
+<h3 id="cdr-dynamic-client-registration-api_delete-data-recipient-oauth-client-registration_endpoint-version">Endpoint Version</h3>
 |   |  |
 |---|--|
 |Version|**Versioning is not supported for this endpoint**
 
-<h3 id="delete-data-recipient-oauth-client-registration-parameters">Parameters</h3>
+<h3 id="cdr-dynamic-client-registration-api_delete-data-recipient-oauth-client-registration_parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |ClientId|path|string|mandatory|The client ID issued by the target Data Holder|
 |Authorization|header|string|mandatory|An Authorisation Token as per **[[RFC6750]](#nref-RFC6750)**|
 
-<h3 id="delete-data-recipient-oauth-client-registration-responses">Responses</h3>
+<h3 id="cdr-dynamic-client-registration-api_delete-data-recipient-oauth-client-registration_responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -454,7 +450,7 @@ Delete a Client Registration for a given Client ID.
 |403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|The client does not have permission to read, update or delete the Client|None|
 |405|[Method Not Allowed](https://tools.ietf.org/html/rfc7231#section-6.5.5)|Method Not Allowed. The requested method is unsupported|None|
 
-### Response Headers
+<h3 id="cdr-dynamic-client-registration-api_delete-data-recipient-oauth-client-registration_response-headers">Response Headers</h3>
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
@@ -471,9 +467,9 @@ To perform this operation, you must be authenticated and authorised with the fol
   
 
 <h2 class="schema-heading" id="cdr-dynamic-client-registration-api-schemas">Schemas</h2>
-<a class="schema-link" id="cdr-dynamic-client-registration-api-schemas"></a>
 
-<h3 class="schema-toc" id="tocSclientregistrationrequest">ClientRegistrationRequest</h3>
+<h3 class="schema-toc" id="cdr-dynamic-client-registration-api_schemas_tocSclientregistrationrequest">ClientRegistrationRequest</h3>
+<p id="tocSclientregistrationrequest" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-dynamic-client-registration-apiclientregistrationrequest"></a>
 
@@ -484,13 +480,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 *The registration request JWT to be used to register with a Data Holder.*
 
-### Properties
+<h3 id="cdr-dynamic-client-registration-api_clientregistrationrequest_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
 |*anonymous*|string(JWT)|mandatory|The registration request JWT to be used to register with a Data Holder.|
 
-<h3 class="schema-toc" id="tocSregistrationproperties">RegistrationProperties</h3>
+<h3 class="schema-toc" id="cdr-dynamic-client-registration-api_schemas_tocSregistrationproperties">RegistrationProperties</h3>
+<p id="tocSregistrationproperties" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-dynamic-client-registration-apiregistrationproperties"></a>
 
@@ -542,7 +539,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-### Properties
+<h3 id="cdr-dynamic-client-registration-api_registrationproperties_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -555,7 +552,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |legal_entity_name|string|optional|Human-readable string name of the Accredited Data Recipient Legal Entity|
 |org_id|string|mandatory|A unique identifier string assigned by the CDR Register that identifies the Accredited Data Recipient Brand|
 |org_name|string|mandatory|Human-readable string name of the Accredited Data Recipient to be presented to the end user during authorization|
-|redirect_uris|[string]|mandatory|Array of redirection URI strings for use in redirect-based flows. If used, redirect_uris MUST match or be a subset of the redirect_uris as defined in the SSA|
+|redirect_uris|[[URIString]](#common-field-types)|mandatory|Array of redirection URI strings for use in redirect-based flows. If used, redirect_uris MUST match or be a subset of the redirect_uris as defined in the SSA|
 |sector_identifier_uri|[URIString](#common-field-types)|optional|URL string referencing the client sector identifier URI, used as an optional input to the Pairwise Identifier|
 |logo_uri|[URIString](#common-field-types)|mandatory|URL string that references a logo for the client. If present, the server SHOULD display this image to the end-user during approval|
 |tos_uri|[URIString](#common-field-types)|optional|URL string that points to a human-readable terms of service document for the Software Product|
@@ -580,7 +577,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |software_roles|[Enum](#common-field-types)|optional|String containing a role of the software in the CDR Regime. Initially the only value used will be `data-recipient-software-product`|
 |scope|string|mandatory|String containing a space-separated list of scope values that the client can use when requesting access tokens.|
 
-#### Enumerated Values
+<h4 id="cdr-dynamic-client-registration-api_registrationproperties_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|
@@ -605,7 +602,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |request_object_signing_alg|ES256|
 |software_roles|data-recipient-software-product|
 
-<h3 class="schema-toc" id="tocSclientregistration">ClientRegistration</h3>
+<h3 class="schema-toc" id="cdr-dynamic-client-registration-api_schemas_tocSclientregistration">ClientRegistration</h3>
+<p id="tocSclientregistration" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-dynamic-client-registration-apiclientregistration"></a>
 
@@ -662,7 +660,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-### Properties
+<h3 id="cdr-dynamic-client-registration-api_clientregistration_properties">Properties</h3>
 
 *allOf*
 
@@ -681,7 +679,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |---|---|---|---|
 |*anonymous*|[RegistrationProperties](#schemacdr-dynamic-client-registration-apiregistrationproperties)|mandatory|none|
 
-<h3 class="schema-toc" id="tocSregistrationerror">RegistrationError</h3>
+<h3 class="schema-toc" id="cdr-dynamic-client-registration-api_schemas_tocSregistrationerror">RegistrationError</h3>
+<p id="tocSregistrationerror" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-dynamic-client-registration-apiregistrationerror"></a>
 
@@ -693,14 +692,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-### Properties
+<h3 id="cdr-dynamic-client-registration-api_registrationerror_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
 |error|[Enum](#common-field-types)|mandatory|Predefined error code as described in [section 3.3 OIDC Dynamic Client Registration](https://openid.net/specs/openid-connect-registration-1_0.html)|
 |error_description|[ASCIIString](#common-field-types)|optional|Additional text description of the error for debugging.|
 
-#### Enumerated Values
+<h4 id="cdr-dynamic-client-registration-api_registrationerror_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|

@@ -1,5 +1,6 @@
-<h2 id='get-service-points-sr'>Get Service Points (SR)</h2>
-<p><a id="opIdlistServicePoints"></a></p>
+<h2 id="cdr-energy-secondary-data-holder-api_get-service-points-sr">Get Service Points (SR)</h2>
+
+<p id="get-service-points-sr" class="orig-anchor"></p>
 
 <blockquote>
 <p>Code samples</p>
@@ -60,7 +61,9 @@ x-cds-arrangement: string
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='endpoint-version'>Endpoint Version</h3>
+</span></code></pre>
+<h3 id="cdr-energy-secondary-data-holder-api_get-service-points-sr_endpoint-version">Endpoint Version</h3>
+
 <table><thead>
 <tr>
 <th></th>
@@ -73,7 +76,7 @@ x-cds-arrangement: string
 </tr>
 </tbody></table>
 
-<h3 id="get-service-points-(sr)-parameters">Parameters</h3>
+<h3 id="cdr-energy-secondary-data-holder-api_get-service-points-sr_parameters">Parameters</h3>
 
 <table><thead>
 <tr>
@@ -172,7 +175,7 @@ x-cds-arrangement: string
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id="get-service-points-(sr)-responses">Responses</h3>
+<h3 id="cdr-energy-secondary-data-holder-api_get-service-points-sr_responses">Responses</h3>
 
 <table><thead>
 <tr>
@@ -207,7 +210,9 @@ x-cds-arrangement: string
 <td><a href="#schemacdr-energy-secondary-data-holder-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 </tbody></table>
-<h3 id='response-headers'>Response Headers</h3>
+
+<h3 id="cdr-energy-secondary-data-holder-api_get-service-points-sr_response-headers">Response Headers</h3>
+
 <table><thead>
 <tr>
 <th>Status</th>
@@ -257,8 +262,10 @@ x-cds-arrangement: string
 <p><aside class="success">
 This operation may only be called by an Energy Retailer using the information security policies defined by AEMO
 </aside></p>
-<h2 id='get-service-point-detail-sr'>Get Service Point Detail (SR)</h2>
-<p><a id="opIdgetServicePoint"></a></p>
+
+<h2 id="cdr-energy-secondary-data-holder-api_get-service-point-detail-sr">Get Service Point Detail (SR)</h2>
+
+<p id="get-service-point-detail-sr" class="orig-anchor"></p>
 
 <blockquote>
 <p>Code samples</p>
@@ -298,7 +305,9 @@ x-cds-arrangement: string
 <p><code>GET /secondary/energy/electricity/servicepoints/{servicePointId}</code></p>
 
 <p>Obtain detailed standing information for a specific service point that is owned by the customer that has authorised the current session</p>
-<h3 id='endpoint-version-2'>Endpoint Version</h3>
+
+<h3 id="cdr-energy-secondary-data-holder-api_get-service-point-detail-sr_endpoint-version">Endpoint Version</h3>
+
 <table><thead>
 <tr>
 <th></th>
@@ -311,7 +320,7 @@ x-cds-arrangement: string
 </tr>
 </tbody></table>
 
-<h3 id="get-service-point-detail-(sr)-parameters">Parameters</h3>
+<h3 id="cdr-energy-secondary-data-holder-api_get-service-point-detail-sr_parameters">Parameters</h3>
 
 <table><thead>
 <tr>
@@ -460,7 +469,7 @@ x-cds-arrangement: string
   </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id="get-service-point-detail-(sr)-responses">Responses</h3>
+<h3 id="cdr-energy-secondary-data-holder-api_get-service-point-detail-sr_responses">Responses</h3>
 
 <table><thead>
 <tr>
@@ -495,7 +504,9 @@ x-cds-arrangement: string
 <td><a href="#schemacdr-energy-secondary-data-holder-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 </tbody></table>
-<h3 id='response-headers-2'>Response Headers</h3>
+
+<h3 id="cdr-energy-secondary-data-holder-api_get-service-point-detail-sr_response-headers">Response Headers</h3>
+
 <table><thead>
 <tr>
 <th>Status</th>
@@ -545,8 +556,10 @@ x-cds-arrangement: string
 <p><aside class="success">
 This operation may only be called by an Energy Retailer using the information security policies defined by AEMO
 </aside></p>
-<h2 id='get-usage-for-service-point-sr'>Get Usage For Service Point (SR)</h2>
-<p><a id="opIdgetUsageForServicePoint"></a></p>
+
+<h2 id="cdr-energy-secondary-data-holder-api_get-usage-for-service-point-sr">Get Usage For Service Point (SR)</h2>
+
+<p id="get-usage-for-service-point-sr" class="orig-anchor"></p>
 
 <blockquote>
 <p>Code samples</p>
@@ -586,7 +599,9 @@ x-cds-arrangement: string
 <p><code>GET /secondary/energy/electricity/servicepoints/{servicePointId}/usage</code></p>
 
 <p>Obtain a list of electricity usage data from a particular service point</p>
-<h3 id='endpoint-version-3'>Endpoint Version</h3>
+
+<h3 id="cdr-energy-secondary-data-holder-api_get-usage-for-service-point-sr_endpoint-version">Endpoint Version</h3>
+
 <table><thead>
 <tr>
 <th></th>
@@ -599,7 +614,7 @@ x-cds-arrangement: string
 </tr>
 </tbody></table>
 
-<h3 id="get-usage-for-service-point-(sr)-parameters">Parameters</h3>
+<h3 id="cdr-energy-secondary-data-holder-api_get-usage-for-service-point-sr_parameters">Parameters</h3>
 
 <table><thead>
 <tr>
@@ -634,7 +649,7 @@ x-cds-arrangement: string
 <tr>
 <td>interval-reads</td>
 <td>query</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>optional</td>
 <td>Type of interval reads. Any one of the valid values for this field can be supplied. If absent defaults to NONE</td>
 </tr>
@@ -681,7 +696,9 @@ x-cds-arrangement: string
 <td>A unique string representing a consent arrangement between a Data Recipient Software Product and Data Holder for a given consumer. The identifier MUST be unique per customer according to the definition of customer in the CDR Federation section of this profile. The x-cds-arrangement should contain the arrangement ID for the consent that the request is being made under and will be used for tracing and audit purposes. This field MUST be populated but AEMO MUST NOT seek to validate the consent associated with the arrangement</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values'>Enumerated Values</h4>
+
+<h4 id="cdr-energy-secondary-data-holder-api_get-usage-for-service-point-sr_enumerated-values-parameters">Enumerated Values</h4>
+
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -754,7 +771,7 @@ x-cds-arrangement: string
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id="get-usage-for-service-point-(sr)-responses">Responses</h3>
+<h3 id="cdr-energy-secondary-data-holder-api_get-usage-for-service-point-sr_responses">Responses</h3>
 
 <table><thead>
 <tr>
@@ -795,7 +812,9 @@ x-cds-arrangement: string
 <td><a href="#schemacdr-energy-secondary-data-holder-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 </tbody></table>
-<h3 id='response-headers-3'>Response Headers</h3>
+
+<h3 id="cdr-energy-secondary-data-holder-api_get-usage-for-service-point-sr_response-headers">Response Headers</h3>
+
 <table><thead>
 <tr>
 <th>Status</th>
@@ -852,8 +871,10 @@ x-cds-arrangement: string
 <p><aside class="success">
 This operation may only be called by an Energy Retailer using the information security policies defined by AEMO
 </aside></p>
-<h2 id='get-usage-for-specific-service-points-sr'>Get Usage For Specific Service Points (SR)</h2>
-<p><a id="opIdlistUsageForServicePoints"></a></p>
+
+<h2 id="cdr-energy-secondary-data-holder-api_get-usage-for-specific-service-points-sr">Get Usage For Specific Service Points (SR)</h2>
+
+<p id="get-usage-for-specific-service-points-sr" class="orig-anchor"></p>
 
 <blockquote>
 <p>Code samples</p>
@@ -914,7 +935,9 @@ x-cds-arrangement: string
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='endpoint-version-4'>Endpoint Version</h3>
+</span></code></pre>
+<h3 id="cdr-energy-secondary-data-holder-api_get-usage-for-specific-service-points-sr_endpoint-version">Endpoint Version</h3>
+
 <table><thead>
 <tr>
 <th></th>
@@ -927,7 +950,7 @@ x-cds-arrangement: string
 </tr>
 </tbody></table>
 
-<h3 id="get-usage-for-specific-service-points-(sr)-parameters">Parameters</h3>
+<h3 id="cdr-energy-secondary-data-holder-api_get-usage-for-specific-service-points-sr_parameters">Parameters</h3>
 
 <table><thead>
 <tr>
@@ -955,7 +978,7 @@ x-cds-arrangement: string
 <tr>
 <td>interval-reads</td>
 <td>query</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>optional</td>
 <td>Type of interval reads. Any one of the valid values for this field can be supplied. If absent defaults to NONE</td>
 </tr>
@@ -1009,7 +1032,9 @@ x-cds-arrangement: string
 <td>Request payload containing list of specific Service Points to obtain data for</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-2'>Enumerated Values</h4>
+
+<h4 id="cdr-energy-secondary-data-holder-api_get-usage-for-specific-service-points-sr_enumerated-values-parameters">Enumerated Values</h4>
+
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1082,7 +1107,7 @@ x-cds-arrangement: string
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id="get-usage-for-specific-service-points-(sr)-responses">Responses</h3>
+<h3 id="cdr-energy-secondary-data-holder-api_get-usage-for-specific-service-points-sr_responses">Responses</h3>
 
 <table><thead>
 <tr>
@@ -1117,7 +1142,9 @@ x-cds-arrangement: string
 <td><a href="#schemacdr-energy-secondary-data-holder-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 </tbody></table>
-<h3 id='response-headers-4'>Response Headers</h3>
+
+<h3 id="cdr-energy-secondary-data-holder-api_get-usage-for-specific-service-points-sr_response-headers">Response Headers</h3>
+
 <table><thead>
 <tr>
 <th>Status</th>
@@ -1167,8 +1194,10 @@ x-cds-arrangement: string
 <p><aside class="success">
 This operation may only be called by an Energy Retailer using the information security policies defined by AEMO
 </aside></p>
-<h2 id='get-der-for-service-point-sr'>Get DER For Service Point (SR)</h2>
-<p><a id="opIdgetDERForServicePoint"></a></p>
+
+<h2 id="cdr-energy-secondary-data-holder-api_get-der-for-service-point-sr">Get DER For Service Point (SR)</h2>
+
+<p id="get-der-for-service-point-sr" class="orig-anchor"></p>
 
 <blockquote>
 <p>Code samples</p>
@@ -1208,7 +1237,9 @@ x-cds-arrangement: string
 <p><code>GET /secondary/energy/electricity/servicepoints/{servicePointId}/der</code></p>
 
 <p>Obtain a list of DER data from a particular service point</p>
-<h3 id='endpoint-version-5'>Endpoint Version</h3>
+
+<h3 id="cdr-energy-secondary-data-holder-api_get-der-for-service-point-sr_endpoint-version">Endpoint Version</h3>
+
 <table><thead>
 <tr>
 <th></th>
@@ -1221,7 +1252,7 @@ x-cds-arrangement: string
 </tr>
 </tbody></table>
 
-<h3 id="get-der-for-service-point-(sr)-parameters">Parameters</h3>
+<h3 id="cdr-energy-secondary-data-holder-api_get-der-for-service-point-sr_parameters">Parameters</h3>
 
 <table><thead>
 <tr>
@@ -1332,7 +1363,7 @@ x-cds-arrangement: string
   </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id="get-der-for-service-point-(sr)-responses">Responses</h3>
+<h3 id="cdr-energy-secondary-data-holder-api_get-der-for-service-point-sr_responses">Responses</h3>
 
 <table><thead>
 <tr>
@@ -1367,7 +1398,9 @@ x-cds-arrangement: string
 <td><a href="#schemacdr-energy-secondary-data-holder-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 </tbody></table>
-<h3 id='response-headers-5'>Response Headers</h3>
+
+<h3 id="cdr-energy-secondary-data-holder-api_get-der-for-service-point-sr_response-headers">Response Headers</h3>
+
 <table><thead>
 <tr>
 <th>Status</th>
@@ -1417,8 +1450,10 @@ x-cds-arrangement: string
 <p><aside class="success">
 This operation may only be called by an Energy Retailer using the information security policies defined by AEMO
 </aside></p>
-<h2 id='get-der-for-specific-service-points-sr'>Get DER For Specific Service Points (SR)</h2>
-<p><a id="opIdlistDERForServicePoints"></a></p>
+
+<h2 id="cdr-energy-secondary-data-holder-api_get-der-for-specific-service-points-sr">Get DER For Specific Service Points (SR)</h2>
+
+<p id="get-der-for-specific-service-points-sr" class="orig-anchor"></p>
 
 <blockquote>
 <p>Code samples</p>
@@ -1479,7 +1514,9 @@ x-cds-arrangement: string
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='endpoint-version-6'>Endpoint Version</h3>
+</span></code></pre>
+<h3 id="cdr-energy-secondary-data-holder-api_get-der-for-specific-service-points-sr_endpoint-version">Endpoint Version</h3>
+
 <table><thead>
 <tr>
 <th></th>
@@ -1492,7 +1529,7 @@ x-cds-arrangement: string
 </tr>
 </tbody></table>
 
-<h3 id="get-der-for-specific-service-points-(sr)-parameters">Parameters</h3>
+<h3 id="cdr-energy-secondary-data-holder-api_get-der-for-specific-service-points-sr_parameters">Parameters</h3>
 
 <table><thead>
 <tr>
@@ -1628,7 +1665,7 @@ x-cds-arrangement: string
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id="get-der-for-specific-service-points-(sr)-responses">Responses</h3>
+<h3 id="cdr-energy-secondary-data-holder-api_get-der-for-specific-service-points-sr_responses">Responses</h3>
 
 <table><thead>
 <tr>
@@ -1663,7 +1700,9 @@ x-cds-arrangement: string
 <td><a href="#schemacdr-energy-secondary-data-holder-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 </tbody></table>
-<h3 id='response-headers-6'>Response Headers</h3>
+
+<h3 id="cdr-energy-secondary-data-holder-api_get-der-for-specific-service-points-sr_response-headers">Response Headers</h3>
+
 <table><thead>
 <tr>
 <th>Status</th>
@@ -1716,9 +1755,9 @@ This operation may only be called by an Energy Retailer using the information se
 
 <h2 class="schema-heading" id="cdr-energy-secondary-data-holder-api-schemas">Schemas</h2>
 
-<p><a class="schema-link" id="cdr-energy-secondary-data-holder-api-schemas"></a></p>
+<h3 class="schema-toc" id="cdr-energy-secondary-data-holder-api_schemas_tocSenergyservicepointlistresponse">EnergyServicePointListResponse</h3>
 
-<h3 class="schema-toc" id="tocSenergyservicepointlistresponse">EnergyServicePointListResponse</h3>
+<p id="tocSenergyservicepointlistresponse" class="orig-anchor"></p>
 
 <p><a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apienergyservicepointlistresponse"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -1753,7 +1792,9 @@ This operation may only be called by an Energy Retailer using the information se
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties'>Properties</h3>
+</span></code></pre>
+<h3 id="cdr-energy-secondary-data-holder-api_energyservicepointlistresponse_properties">Properties</h3>
+
 <table><thead>
 <tr>
 <th>Name</th>
@@ -1788,7 +1829,9 @@ This operation may only be called by an Energy Retailer using the information se
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSenergyservicepointdetailresponse">EnergyServicePointDetailResponse</h3>
+<h3 class="schema-toc" id="cdr-energy-secondary-data-holder-api_schemas_tocSenergyservicepointdetailresponse">EnergyServicePointDetailResponse</h3>
+
+<p id="tocSenergyservicepointdetailresponse" class="orig-anchor"></p>
 
 <p><a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apienergyservicepointdetailresponse"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -1887,7 +1930,9 @@ This operation may only be called by an Energy Retailer using the information se
   </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-2'>Properties</h3>
+</span></code></pre>
+<h3 id="cdr-energy-secondary-data-holder-api_energyservicepointdetailresponse_properties">Properties</h3>
+
 <table><thead>
 <tr>
 <th>Name</th>
@@ -1916,7 +1961,9 @@ This operation may only be called by an Energy Retailer using the information se
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSenergyusagelistresponse">EnergyUsageListResponse</h3>
+<h3 class="schema-toc" id="cdr-energy-secondary-data-holder-api_schemas_tocSenergyusagelistresponse">EnergyUsageListResponse</h3>
+
+<p id="tocSenergyusagelistresponse" class="orig-anchor"></p>
 
 <p><a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apienergyusagelistresponse"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -1966,7 +2013,9 @@ This operation may only be called by an Energy Retailer using the information se
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-3'>Properties</h3>
+</span></code></pre>
+<h3 id="cdr-energy-secondary-data-holder-api_energyusagelistresponse_properties">Properties</h3>
+
 <table><thead>
 <tr>
 <th>Name</th>
@@ -2001,7 +2050,9 @@ This operation may only be called by an Energy Retailer using the information se
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSenergyderlistresponse">EnergyDerListResponse</h3>
+<h3 class="schema-toc" id="cdr-energy-secondary-data-holder-api_schemas_tocSenergyderlistresponse">EnergyDerListResponse</h3>
+
+<p id="tocSenergyderlistresponse" class="orig-anchor"></p>
 
 <p><a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apienergyderlistresponse"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -2073,7 +2124,9 @@ This operation may only be called by an Energy Retailer using the information se
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-4'>Properties</h3>
+</span></code></pre>
+<h3 id="cdr-energy-secondary-data-holder-api_energyderlistresponse_properties">Properties</h3>
+
 <table><thead>
 <tr>
 <th>Name</th>
@@ -2108,7 +2161,9 @@ This operation may only be called by an Energy Retailer using the information se
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSenergyderdetailresponse">EnergyDerDetailResponse</h3>
+<h3 class="schema-toc" id="cdr-energy-secondary-data-holder-api_schemas_tocSenergyderdetailresponse">EnergyDerDetailResponse</h3>
+
+<p id="tocSenergyderdetailresponse" class="orig-anchor"></p>
 
 <p><a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apienergyderdetailresponse"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -2169,7 +2224,9 @@ This operation may only be called by an Energy Retailer using the information se
   </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-5'>Properties</h3>
+</span></code></pre>
+<h3 id="cdr-energy-secondary-data-holder-api_energyderdetailresponse_properties">Properties</h3>
+
 <table><thead>
 <tr>
 <th>Name</th>
@@ -2198,7 +2255,9 @@ This operation may only be called by an Energy Retailer using the information se
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSresponseerrorlistv2">ResponseErrorListV2</h3>
+<h3 class="schema-toc" id="cdr-energy-secondary-data-holder-api_schemas_tocSresponseerrorlistv2">ResponseErrorListV2</h3>
+
+<p id="tocSresponseerrorlistv2" class="orig-anchor"></p>
 
 <p><a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apiresponseerrorlistv2"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -2214,7 +2273,9 @@ This operation may only be called by an Energy Retailer using the information se
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-6'>Properties</h3>
+</span></code></pre>
+<h3 id="cdr-energy-secondary-data-holder-api_responseerrorlistv2_properties">Properties</h3>
+
 <table><thead>
 <tr>
 <th>Name</th>
@@ -2261,7 +2322,9 @@ This operation may only be called by an Energy Retailer using the information se
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSenergyservicepoint">EnergyServicePoint</h3>
+<h3 class="schema-toc" id="cdr-energy-secondary-data-holder-api_schemas_tocSenergyservicepoint">EnergyServicePoint</h3>
+
+<p id="tocSenergyservicepoint" class="orig-anchor"></p>
 
 <p><a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apienergyservicepoint"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -2279,7 +2342,9 @@ This operation may only be called by an Energy Retailer using the information se
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-7'>Properties</h3>
+</span></code></pre>
+<h3 id="cdr-energy-secondary-data-holder-api_energyservicepoint_properties">Properties</h3>
+
 <table><thead>
 <tr>
 <th>Name</th>
@@ -2355,7 +2420,9 @@ This operation may only be called by an Energy Retailer using the information se
 <td>A code that defines the consumption threshold as defined in the National Energy Retail Regulations, or in overriding Jurisdictional instruments. Note the details of enumeration values below: <ul><li><strong>LOW</strong> - Consumption is less than the ‘lower consumption threshold’ as defined in the National Energy Retail Regulations</li><li><strong>MEDIUM</strong> - Consumption is equal to or greater than the ‘lower consumption threshold’, but less than the ‘upper consumption threshold’, as defined in the National Energy Retail Regulations</li><li><strong>HIGH</strong> - Consumption is equal to or greater than the ‘upper consumption threshold’ as defined in the National Energy Retail Regulations</li></ul></td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-3'>Enumerated Values</h4>
+
+<h4 id="cdr-energy-secondary-data-holder-api_energyservicepoint_enumerated-values-main">Enumerated Values</h4>
+
 <table><thead>
 <tr>
 <th>Property</th>
@@ -2468,7 +2535,9 @@ This operation may only be called by an Energy Retailer using the information se
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSenergyservicepointdetail">EnergyServicePointDetail</h3>
+<h3 class="schema-toc" id="cdr-energy-secondary-data-holder-api_schemas_tocSenergyservicepointdetail">EnergyServicePointDetail</h3>
+
+<p id="tocSenergyservicepointdetail" class="orig-anchor"></p>
 
 <p><a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apienergyservicepointdetail"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -2561,7 +2630,9 @@ This operation may only be called by an Energy Retailer using the information se
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-8'>Properties</h3>
+</span></code></pre>
+<h3 id="cdr-energy-secondary-data-holder-api_energyservicepointdetail_properties">Properties</h3>
+
 <table><thead>
 <tr>
 <th>Name</th>
@@ -2805,7 +2876,9 @@ This operation may only be called by an Energy Retailer using the information se
 <td>Actual/Subtractive Indicator. Note the details of enumeration values below: <ul><li><strong>ACTUAL</strong> implies volume of energy actually metered between two dates</li><li><strong>CUMULATIVE</strong> indicates a meter reading for a specific date. A second Meter Reading is required to determine the consumption between those two Meter Reading dates</li></ul></td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-4'>Enumerated Values</h4>
+
+<h4 id="cdr-energy-secondary-data-holder-api_energyservicepointdetail_enumerated-values-main">Enumerated Values</h4>
+
 <table><thead>
 <tr>
 <th>Property</th>
@@ -3066,7 +3139,9 @@ This operation may only be called by an Energy Retailer using the information se
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSenergyusageread">EnergyUsageRead</h3>
+<h3 class="schema-toc" id="cdr-energy-secondary-data-holder-api_schemas_tocSenergyusageread">EnergyUsageRead</h3>
+
+<p id="tocSenergyusageread" class="orig-anchor"></p>
 
 <p><a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apienergyusageread"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -3099,7 +3174,9 @@ This operation may only be called by an Energy Retailer using the information se
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-9'>Properties</h3>
+</span></code></pre>
+<h3 id="cdr-energy-secondary-data-holder-api_energyusageread_properties">Properties</h3>
+
 <table><thead>
 <tr>
 <th>Name</th>
@@ -3229,7 +3306,9 @@ This operation may only be called by an Energy Retailer using the information se
 <td>The quality of the read taken</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-5'>Enumerated Values</h4>
+
+<h4 id="cdr-energy-secondary-data-holder-api_energyusageread_enumerated-values-main">Enumerated Values</h4>
+
 <table><thead>
 <tr>
 <th>Property</th>
@@ -3266,7 +3345,9 @@ This operation may only be called by an Energy Retailer using the information se
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSenergyderrecord">EnergyDerRecord</h3>
+<h3 class="schema-toc" id="cdr-energy-secondary-data-holder-api_schemas_tocSenergyderrecord">EnergyDerRecord</h3>
+
+<p id="tocSenergyderrecord" class="orig-anchor"></p>
 
 <p><a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apienergyderrecord"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -3321,7 +3402,9 @@ This operation may only be called by an Energy Retailer using the information se
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-10'>Properties</h3>
+</span></code></pre>
+<h3 id="cdr-energy-secondary-data-holder-api_energyderrecord_properties">Properties</h3>
+
 <table><thead>
 <tr>
 <th>Name</th>
@@ -3583,7 +3666,9 @@ This operation may only be called by an Energy Retailer using the information se
 <td>Maximum storage capacity in kVAh. This refers to the capacity of each storage module within the device group. Mandatory if type is equal to “STORAGE”. Default is 0 if value not known</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-6'>Enumerated Values</h4>
+
+<h4 id="cdr-energy-secondary-data-holder-api_energyderrecord_enumerated-values-main">Enumerated Values</h4>
+
 <table><thead>
 <tr>
 <th>Property</th>
@@ -3656,7 +3741,9 @@ This operation may only be called by an Energy Retailer using the information se
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocScommonphysicaladdress">CommonPhysicalAddress</h3>
+<h3 class="schema-toc" id="cdr-energy-secondary-data-holder-api_schemas_tocScommonphysicaladdress">CommonPhysicalAddress</h3>
+
+<p id="tocScommonphysicaladdress" class="orig-anchor"></p>
 
 <p><a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apicommonphysicaladdress"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -3697,7 +3784,9 @@ This operation may only be called by an Energy Retailer using the information se
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-11'>Properties</h3>
+</span></code></pre>
+<h3 id="cdr-energy-secondary-data-holder-api_commonphysicaladdress_properties">Properties</h3>
+
 <table><thead>
 <tr>
 <th>Name</th>
@@ -3725,7 +3814,9 @@ This operation may only be called by an Energy Retailer using the information se
 <td>Australian address formatted according to the file format defined by the <a href="https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf">PAF file format</a>. Required if addressUType is set to paf</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-7'>Enumerated Values</h4>
+
+<h4 id="cdr-energy-secondary-data-holder-api_commonphysicaladdress_enumerated-values-main">Enumerated Values</h4>
+
 <table><thead>
 <tr>
 <th>Property</th>
@@ -3742,7 +3833,9 @@ This operation may only be called by an Energy Retailer using the information se
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocScommonsimpleaddress">CommonSimpleAddress</h3>
+<h3 class="schema-toc" id="cdr-energy-secondary-data-holder-api_schemas_tocScommonsimpleaddress">CommonSimpleAddress</h3>
+
+<p id="tocScommonsimpleaddress" class="orig-anchor"></p>
 
 <p><a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apicommonsimpleaddress"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -3758,7 +3851,9 @@ This operation may only be called by an Energy Retailer using the information se
 
 </span></code></pre>
 <p><em>Required if addressUType is set to simple</em></p>
-<h3 id='properties-12'>Properties</h3>
+
+<h3 id="cdr-energy-secondary-data-holder-api_commonsimpleaddress_properties">Properties</h3>
+
 <table><thead>
 <tr>
 <th>Name</th>
@@ -3817,7 +3912,9 @@ This operation may only be called by an Energy Retailer using the information se
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocScommonpafaddress">CommonPAFAddress</h3>
+<h3 class="schema-toc" id="cdr-energy-secondary-data-holder-api_schemas_tocScommonpafaddress">CommonPAFAddress</h3>
+
+<p id="tocScommonpafaddress" class="orig-anchor"></p>
 
 <p><a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apicommonpafaddress"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -3847,7 +3944,9 @@ This operation may only be called by an Energy Retailer using the information se
 
 </span></code></pre>
 <p><em>Australian address formatted according to the file format defined by the <a href="https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf">PAF file format</a>. Required if addressUType is set to paf</em></p>
-<h3 id='properties-13'>Properties</h3>
+
+<h3 id="cdr-energy-secondary-data-holder-api_commonpafaddress_properties">Properties</h3>
+
 <table><thead>
 <tr>
 <th>Name</th>
@@ -3990,7 +4089,9 @@ This operation may only be called by an Energy Retailer using the information se
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSrequestservicepointidlist">RequestServicePointIdList</h3>
+<h3 class="schema-toc" id="cdr-energy-secondary-data-holder-api_schemas_tocSrequestservicepointidlist">RequestServicePointIdList</h3>
+
+<p id="tocSrequestservicepointidlist" class="orig-anchor"></p>
 
 <p><a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apirequestservicepointidlist"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -4002,7 +4103,9 @@ This operation may only be called by an Energy Retailer using the information se
   </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-14'>Properties</h3>
+</span></code></pre>
+<h3 id="cdr-energy-secondary-data-holder-api_requestservicepointidlist_properties">Properties</h3>
+
 <table><thead>
 <tr>
 <th>Name</th>
@@ -4031,14 +4134,18 @@ This operation may only be called by an Energy Retailer using the information se
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSlinks">Links</h3>
+<h3 class="schema-toc" id="cdr-energy-secondary-data-holder-api_schemas_tocSlinks">Links</h3>
+
+<p id="tocSlinks" class="orig-anchor"></p>
 
 <p><a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apilinks"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-15'>Properties</h3>
+</span></code></pre>
+<h3 id="cdr-energy-secondary-data-holder-api_links_properties">Properties</h3>
+
 <table><thead>
 <tr>
 <th>Name</th>
@@ -4055,15 +4162,21 @@ This operation may only be called by an Energy Retailer using the information se
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSmeta">Meta</h3>
+<h3 class="schema-toc" id="cdr-energy-secondary-data-holder-api_schemas_tocSmeta">Meta</h3>
+
+<p id="tocSmeta" class="orig-anchor"></p>
 
 <p><a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apimeta"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{}</span><span class="w">
 
-</span></code></pre><h3 id='properties-16'>Properties</h3>
+</span></code></pre>
+<h3 id="cdr-energy-secondary-data-holder-api_meta_properties">Properties</h3>
+
 <p><em>None</em></p>
 
-<h3 class="schema-toc" id="tocSlinkspaginated">LinksPaginated</h3>
+<h3 class="schema-toc" id="cdr-energy-secondary-data-holder-api_schemas_tocSlinkspaginated">LinksPaginated</h3>
+
+<p id="tocSlinkspaginated" class="orig-anchor"></p>
 
 <p><a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apilinkspaginated"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -4074,7 +4187,9 @@ This operation may only be called by an Energy Retailer using the information se
   </span><span class="s2">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-17'>Properties</h3>
+</span></code></pre>
+<h3 id="cdr-energy-secondary-data-holder-api_linkspaginated_properties">Properties</h3>
+
 <table><thead>
 <tr>
 <th>Name</th>
@@ -4115,7 +4230,9 @@ This operation may only be called by an Energy Retailer using the information se
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSmetapaginated">MetaPaginated</h3>
+<h3 class="schema-toc" id="cdr-energy-secondary-data-holder-api_schemas_tocSmetapaginated">MetaPaginated</h3>
+
+<p id="tocSmetapaginated" class="orig-anchor"></p>
 
 <p><a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apimetapaginated"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -4123,7 +4240,9 @@ This operation may only be called by an Energy Retailer using the information se
   </span><span class="s2">"totalPages"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-18'>Properties</h3>
+</span></code></pre>
+<h3 id="cdr-energy-secondary-data-holder-api_metapaginated_properties">Properties</h3>
+
 <table><thead>
 <tr>
 <th>Name</th>
