@@ -17,6 +17,7 @@ Release notes for version v1.29.0 of the [CDR Standards](../../index.html).
 
 This release addresses the following minor defects raised on [Standards Staging](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues):
 
+- [Staging Issue 222 - Resolve links within the standards to specific errors and other parts](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/222)
 - [Staging Issue 334 - Add visual indicator for different Standards categories](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/334)
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
@@ -32,6 +33,7 @@ This release addresses the following Decision Proposals published on [Standards]
 ## General Changes
 |Change|Description|Link|
 |------|-----------|----|
+|Navigation links|**[Standards Staging #222](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/222):** Updated anchor links throughout the Standards to remove duplicates, and updated menu navigation code to prevent the page from jumping to the previous section when opening in a new window.|Most navigation links|
 |Standards category ribbon|**[Standards Staging #334](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/334):** Added a red ribbon below the CDS logo on different Standards versions to visually distinguish them from the binding version|[Draft](../../#draft-standards), [Candidate](../../#candidate-standards), [Staging](https://consumerdatastandardsaustralia.github.io/standards-staging/), [Archived](../../#archives), and superseded endpoint version pages|
 
 
