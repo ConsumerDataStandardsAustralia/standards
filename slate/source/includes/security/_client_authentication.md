@@ -1,4 +1,3 @@
-<a id="client-authentication"></a>
 ## Client Authentication
 
 This section outlines how participants in the CDR regime will authenticate clients seeking access to end points.

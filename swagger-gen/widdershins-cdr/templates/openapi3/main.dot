@@ -24,13 +24,13 @@
 
 {{? data.api.components && data.api.components.schemas }}
 <h2 class="schema-heading" id="{{=data.title_prefix+'-schemas'}}">Schemas</h2>
-<a class="schema-link" id="{{=data.title_prefix+'-schemas'}}"></a>
 
 {{ for (var s in data.components.schemas) { }}
 {{ var origSchema = data.components.schemas[s]; }}
 {{ var schema = data.api.components.schemas[s]; }}
 
-<h3 class="schema-toc" id="tocS{{=s.toLowerCase()}}">{{=s}}</h3>
+<h3 class="schema-toc" id="{{= data.title_prefix }}_schemas_tocS{{=s.toLowerCase() }}">{{= s }}</h3>
+<p id="tocS{{=s.toLowerCase()}}" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schema{{=data.title_prefix}}{{=s.toLowerCase()}}"></a>
 
@@ -68,7 +68,7 @@
 {{?}}
 
 {{? block===blocks[0] }}
-### Properties
+<h3 id="{{= data.title_prefix }}_{{= s.toLowerCase() }}_properties">Properties</h3>
 {{?}}
 
 {{? block.rows.length}}|Name|Type|Required|Description|
@@ -81,7 +81,7 @@
 {{?}}
 
 {{? enums.length > 0 }}
-#### Enumerated Values
+<h4 id="{{= data.title_prefix }}_{{= s.toLowerCase() }}_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|
