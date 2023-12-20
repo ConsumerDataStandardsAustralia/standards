@@ -1,4 +1,7 @@
-<h1 id='change-log'>Change Log</h1>
+<h1 id='change-log'>Change Log</h1><pre class="highlight diff tab-diff"><code>Corrected minor typo
+<span class="gd">- Detail Of change
+</span><span class="gi">+ Detail of change
+</span></code></pre>
 <p>The following table lists the changes made to these standards in reverse date order (most recent change is at the top).</p>
 
 <table><thead>
@@ -6,9 +9,15 @@
 <th>Change Date</th>
 <th>Version</th>
 <th>Description</th>
-<th>Detail Of change</th>
+<th>Detail of change</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>TBC</td>
+<td>1.29.0</td>
+<td>Changes TBC</td>
+<td>See <a href="includes/releasenotes/releasenotes.1.29.0.html">release notes</a> and <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/XXX">Decision XXX</a> for details.</td>
+</tr>
 <tr>
 <td>10/11/2023</td>
 <td>1.28.0</td>

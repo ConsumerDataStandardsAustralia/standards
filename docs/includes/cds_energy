@@ -1,5 +1,6 @@
-<h2 id='get-generic-plans'>Get Generic Plans</h2>
-<p><a id="opIdlistPlans"></a></p>
+<h2 id="cdr-energy-api_get-generic-plans">Get Generic Plans</h2>
+
+<p id="get-generic-plans" class="orig-anchor"></p>
 
 <blockquote>
 <p>Code samples</p>
@@ -37,7 +38,9 @@ x-min-v: string
 <p>Obtain a list of energy plans that are currently offered to the market.</p>
 
 <p>Note that the results returned by this end point are expected to be ordered in descending order according to <code>lastUpdated</code>.</p>
-<h3 id='endpoint-version'>Endpoint Version</h3>
+
+<h3 id="cdr-energy-api_get-generic-plans_endpoint-version">Endpoint Version</h3>
+
 <table><thead>
 <tr>
 <th></th>
@@ -50,7 +53,7 @@ x-min-v: string
 </tr>
 </tbody></table>
 
-<h3 id="get-generic-plans-parameters">Parameters</h3>
+<h3 id="cdr-energy-api_get-generic-plans_parameters">Parameters</h3>
 
 <table><thead>
 <tr>
@@ -64,21 +67,21 @@ x-min-v: string
 <tr>
 <td>type</td>
 <td>query</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>optional</td>
 <td>Used to filter results on the type field.  Any one of the valid values for this field can be supplied plus &#39;ALL&#39;.  If absent defaults to &#39;ALL&#39;</td>
 </tr>
 <tr>
 <td>fuelType</td>
 <td>query</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>optional</td>
 <td>Used to filter results on the fuelType field.  Any one of the valid values for this field can be supplied plus &#39;ALL&#39;.  If absent defaults to &#39;ALL&#39;</td>
 </tr>
 <tr>
 <td>effective</td>
 <td>query</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>optional</td>
 <td>Allows for the filtering of plans based on whether the current time is within the period of time defined as effective by the effectiveFrom and effectiveTo fields. Valid values are ‘CURRENT’, ‘FUTURE’ and ‘ALL’. If absent defaults to &#39;CURRENT&#39;</td>
 </tr>
@@ -125,7 +128,9 @@ x-min-v: string
 <td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values'>Enumerated Values</h4>
+
+<h4 id="cdr-energy-api_get-generic-plans_enumerated-values-parameters">Enumerated Values</h4>
+
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -233,7 +238,7 @@ x-min-v: string
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id="get-generic-plans-responses">Responses</h3>
+<h3 id="cdr-energy-api_get-generic-plans_responses">Responses</h3>
 
 <table><thead>
 <tr>
@@ -268,7 +273,9 @@ x-min-v: string
 <td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 </tbody></table>
-<h3 id='response-headers'>Response Headers</h3>
+
+<h3 id="cdr-energy-api_get-generic-plans_response-headers">Response Headers</h3>
+
 <table><thead>
 <tr>
 <th>Status</th>
@@ -290,8 +297,10 @@ x-min-v: string
 <p><aside class="success">
 This operation does not require authentication
 </aside></p>
-<h2 id='get-generic-plan-detail'>Get Generic Plan Detail</h2>
-<p><a id="opIdgetPlan"></a></p>
+
+<h2 id="cdr-energy-api_get-generic-plan-detail">Get Generic Plan Detail</h2>
+
+<p id="get-generic-plan-detail" class="orig-anchor"></p>
 
 <blockquote>
 <p>Code samples</p>
@@ -329,7 +338,9 @@ x-min-v: string
 <p>Obtain detailed information on a single energy plan offered openly to the market.</p>
 
 <p>Other Versions: <a href="includes/obsolete/get-generic-plan-detail-v1.html">v1</a></p>
-<h3 id='endpoint-version-2'>Endpoint Version</h3>
+
+<h3 id="cdr-energy-api_get-generic-plan-detail_endpoint-version">Endpoint Version</h3>
+
 <table><thead>
 <tr>
 <th></th>
@@ -342,7 +353,7 @@ x-min-v: string
 </tr>
 </tbody></table>
 
-<h3 id="get-generic-plan-detail-parameters">Parameters</h3>
+<h3 id="cdr-energy-api_get-generic-plan-detail_parameters">Parameters</h3>
 
 <table><thead>
 <tr>
@@ -899,7 +910,7 @@ x-min-v: string
   </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id="get-generic-plan-detail-responses">Responses</h3>
+<h3 id="cdr-energy-api_get-generic-plan-detail_responses">Responses</h3>
 
 <table><thead>
 <tr>
@@ -934,7 +945,9 @@ x-min-v: string
 <td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 </tbody></table>
-<h3 id='response-headers-2'>Response Headers</h3>
+
+<h3 id="cdr-energy-api_get-generic-plan-detail_response-headers">Response Headers</h3>
+
 <table><thead>
 <tr>
 <th>Status</th>
@@ -956,8 +969,10 @@ x-min-v: string
 <p><aside class="success">
 This operation does not require authentication
 </aside></p>
-<h2 id='get-service-points'>Get Service Points</h2>
-<p><a id="opIdlistServicePoints"></a></p>
+
+<h2 id="cdr-energy-api_get-service-points">Get Service Points</h2>
+
+<p id="get-service-points" class="orig-anchor"></p>
 
 <blockquote>
 <p>Code samples</p>
@@ -1001,7 +1016,9 @@ x-cds-client-headers: string
 <p><code>GET /energy/electricity/servicepoints</code></p>
 
 <p>Obtain a list of service points owned by the customer that has authorised the current session</p>
-<h3 id='endpoint-version-3'>Endpoint Version</h3>
+
+<h3 id="cdr-energy-api_get-service-points_endpoint-version">Endpoint Version</h3>
+
 <table><thead>
 <tr>
 <th></th>
@@ -1014,7 +1031,7 @@ x-cds-client-headers: string
 </tr>
 </tbody></table>
 
-<h3 id="get-service-points-parameters">Parameters</h3>
+<h3 id="cdr-energy-api_get-service-points_parameters">Parameters</h3>
 
 <table><thead>
 <tr>
@@ -1120,7 +1137,7 @@ x-cds-client-headers: string
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id="get-service-points-responses">Responses</h3>
+<h3 id="cdr-energy-api_get-service-points_responses">Responses</h3>
 
 <table><thead>
 <tr>
@@ -1155,7 +1172,9 @@ x-cds-client-headers: string
 <td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 </tbody></table>
-<h3 id='response-headers-3'>Response Headers</h3>
+
+<h3 id="cdr-energy-api_get-service-points_response-headers">Response Headers</h3>
+
 <table><thead>
 <tr>
 <th>Status</th>
@@ -1206,8 +1225,10 @@ x-cds-client-headers: string
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">energy:electricity.servicepoints.basic:read</a>
 </aside></p>
-<h2 id='get-service-point-detail'>Get Service Point Detail</h2>
-<p><a id="opIdgetServicePoint"></a></p>
+
+<h2 id="cdr-energy-api_get-service-point-detail">Get Service Point Detail</h2>
+
+<p id="get-service-point-detail" class="orig-anchor"></p>
 
 <blockquote>
 <p>Code samples</p>
@@ -1251,7 +1272,9 @@ x-cds-client-headers: string
 <p><code>GET /energy/electricity/servicepoints/{servicePointId}</code></p>
 
 <p>Obtain detailed standing information for a specific service point that is owned by the customer that has authorised the current session</p>
-<h3 id='endpoint-version-4'>Endpoint Version</h3>
+
+<h3 id="cdr-energy-api_get-service-point-detail_endpoint-version">Endpoint Version</h3>
+
 <table><thead>
 <tr>
 <th></th>
@@ -1264,7 +1287,7 @@ x-cds-client-headers: string
 </tr>
 </tbody></table>
 
-<h3 id="get-service-point-detail-parameters">Parameters</h3>
+<h3 id="cdr-energy-api_get-service-point-detail_parameters">Parameters</h3>
 
 <table><thead>
 <tr>
@@ -1427,7 +1450,7 @@ x-cds-client-headers: string
   </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id="get-service-point-detail-responses">Responses</h3>
+<h3 id="cdr-energy-api_get-service-point-detail_responses">Responses</h3>
 
 <table><thead>
 <tr>
@@ -1462,7 +1485,9 @@ x-cds-client-headers: string
 <td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 </tbody></table>
-<h3 id='response-headers-4'>Response Headers</h3>
+
+<h3 id="cdr-energy-api_get-service-point-detail_response-headers">Response Headers</h3>
+
 <table><thead>
 <tr>
 <th>Status</th>
@@ -1513,8 +1538,10 @@ x-cds-client-headers: string
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">energy:electricity.servicepoints.detail:read</a>
 </aside></p>
-<h2 id='get-usage-for-service-point'>Get Usage For Service Point</h2>
-<p><a id="opIdgetUsageForServicePoint"></a></p>
+
+<h2 id="cdr-energy-api_get-usage-for-service-point">Get Usage For Service Point</h2>
+
+<p id="get-usage-for-service-point" class="orig-anchor"></p>
 
 <blockquote>
 <p>Code samples</p>
@@ -1558,7 +1585,9 @@ x-cds-client-headers: string
 <p><code>GET /energy/electricity/servicepoints/{servicePointId}/usage</code></p>
 
 <p>Obtain a list of electricity usage data from a particular service point</p>
-<h3 id='endpoint-version-5'>Endpoint Version</h3>
+
+<h3 id="cdr-energy-api_get-usage-for-service-point_endpoint-version">Endpoint Version</h3>
+
 <table><thead>
 <tr>
 <th></th>
@@ -1571,7 +1600,7 @@ x-cds-client-headers: string
 </tr>
 </tbody></table>
 
-<h3 id="get-usage-for-service-point-parameters">Parameters</h3>
+<h3 id="cdr-energy-api_get-usage-for-service-point_parameters">Parameters</h3>
 
 <table><thead>
 <tr>
@@ -1606,7 +1635,7 @@ x-cds-client-headers: string
 <tr>
 <td>interval-reads</td>
 <td>query</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>optional</td>
 <td>Type of interval reads. Any one of the valid values for this field can be supplied. If absent defaults to NONE</td>
 </tr>
@@ -1667,7 +1696,9 @@ x-cds-client-headers: string
 <td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-2'>Enumerated Values</h4>
+
+<h4 id="cdr-energy-api_get-usage-for-service-point_enumerated-values-parameters">Enumerated Values</h4>
+
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1740,7 +1771,7 @@ x-cds-client-headers: string
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id="get-usage-for-service-point-responses">Responses</h3>
+<h3 id="cdr-energy-api_get-usage-for-service-point_responses">Responses</h3>
 
 <table><thead>
 <tr>
@@ -1781,7 +1812,9 @@ x-cds-client-headers: string
 <td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 </tbody></table>
-<h3 id='response-headers-5'>Response Headers</h3>
+
+<h3 id="cdr-energy-api_get-usage-for-service-point_response-headers">Response Headers</h3>
+
 <table><thead>
 <tr>
 <th>Status</th>
@@ -1839,8 +1872,10 @@ x-cds-client-headers: string
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">energy:electricity.usage:read</a>
 </aside></p>
-<h2 id='get-bulk-usage'>Get Bulk Usage</h2>
-<p><a id="opIdlistUsageBulk"></a></p>
+
+<h2 id="cdr-energy-api_get-bulk-usage">Get Bulk Usage</h2>
+
+<p id="get-bulk-usage" class="orig-anchor"></p>
 
 <blockquote>
 <p>Code samples</p>
@@ -1884,7 +1919,9 @@ x-cds-client-headers: string
 <p><code>GET /energy/electricity/servicepoints/usage</code></p>
 
 <p>Obtain usage data for all service points associated with the customer</p>
-<h3 id='endpoint-version-6'>Endpoint Version</h3>
+
+<h3 id="cdr-energy-api_get-bulk-usage_endpoint-version">Endpoint Version</h3>
+
 <table><thead>
 <tr>
 <th></th>
@@ -1897,7 +1934,7 @@ x-cds-client-headers: string
 </tr>
 </tbody></table>
 
-<h3 id="get-bulk-usage-parameters">Parameters</h3>
+<h3 id="cdr-energy-api_get-bulk-usage_parameters">Parameters</h3>
 
 <table><thead>
 <tr>
@@ -1911,7 +1948,7 @@ x-cds-client-headers: string
 <tr>
 <td>interval-reads</td>
 <td>query</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>optional</td>
 <td>Type of interval reads. Any one of the valid values for this field can be supplied. If absent defaults to NONE</td>
 </tr>
@@ -1986,7 +2023,9 @@ x-cds-client-headers: string
 <td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-3'>Enumerated Values</h4>
+
+<h4 id="cdr-energy-api_get-bulk-usage_enumerated-values-parameters">Enumerated Values</h4>
+
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -2059,7 +2098,7 @@ x-cds-client-headers: string
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id="get-bulk-usage-responses">Responses</h3>
+<h3 id="cdr-energy-api_get-bulk-usage_responses">Responses</h3>
 
 <table><thead>
 <tr>
@@ -2094,7 +2133,9 @@ x-cds-client-headers: string
 <td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 </tbody></table>
-<h3 id='response-headers-6'>Response Headers</h3>
+
+<h3 id="cdr-energy-api_get-bulk-usage_response-headers">Response Headers</h3>
+
 <table><thead>
 <tr>
 <th>Status</th>
@@ -2145,8 +2186,10 @@ x-cds-client-headers: string
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">energy:electricity.usage:read</a>
 </aside></p>
-<h2 id='get-usage-for-specific-service-points'>Get Usage For Specific Service Points</h2>
-<p><a id="opIdlistUsageForServicePoints"></a></p>
+
+<h2 id="cdr-energy-api_get-usage-for-specific-service-points">Get Usage For Specific Service Points</h2>
+
+<p id="get-usage-for-specific-service-points" class="orig-anchor"></p>
 
 <blockquote>
 <p>Code samples</p>
@@ -2211,7 +2254,9 @@ x-cds-client-headers: string
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='endpoint-version-7'>Endpoint Version</h3>
+</span></code></pre>
+<h3 id="cdr-energy-api_get-usage-for-specific-service-points_endpoint-version">Endpoint Version</h3>
+
 <table><thead>
 <tr>
 <th></th>
@@ -2224,7 +2269,7 @@ x-cds-client-headers: string
 </tr>
 </tbody></table>
 
-<h3 id="get-usage-for-specific-service-points-parameters">Parameters</h3>
+<h3 id="cdr-energy-api_get-usage-for-specific-service-points_parameters">Parameters</h3>
 
 <table><thead>
 <tr>
@@ -2252,7 +2297,7 @@ x-cds-client-headers: string
 <tr>
 <td>interval-reads</td>
 <td>query</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>optional</td>
 <td>Type of interval reads. Any one of the valid values for this field can be supplied. If absent defaults to NONE</td>
 </tr>
@@ -2320,7 +2365,9 @@ x-cds-client-headers: string
 <td>Request payload containing list of specific Service Points to obtain data for</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-4'>Enumerated Values</h4>
+
+<h4 id="cdr-energy-api_get-usage-for-specific-service-points_enumerated-values-parameters">Enumerated Values</h4>
+
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -2393,7 +2440,7 @@ x-cds-client-headers: string
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id="get-usage-for-specific-service-points-responses">Responses</h3>
+<h3 id="cdr-energy-api_get-usage-for-specific-service-points_responses">Responses</h3>
 
 <table><thead>
 <tr>
@@ -2428,7 +2475,9 @@ x-cds-client-headers: string
 <td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 </tbody></table>
-<h3 id='response-headers-7'>Response Headers</h3>
+
+<h3 id="cdr-energy-api_get-usage-for-specific-service-points_response-headers">Response Headers</h3>
+
 <table><thead>
 <tr>
 <th>Status</th>
@@ -2479,8 +2528,10 @@ x-cds-client-headers: string
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">energy:electricity.usage:read</a>
 </aside></p>
-<h2 id='get-der-for-service-point'>Get DER For Service Point</h2>
-<p><a id="opIdgetDERForServicePoint"></a></p>
+
+<h2 id="cdr-energy-api_get-der-for-service-point">Get DER For Service Point</h2>
+
+<p id="get-der-for-service-point" class="orig-anchor"></p>
 
 <blockquote>
 <p>Code samples</p>
@@ -2524,7 +2575,9 @@ x-cds-client-headers: string
 <p><code>GET /energy/electricity/servicepoints/{servicePointId}/der</code></p>
 
 <p>Obtain a list of DER data from a particular service point</p>
-<h3 id='endpoint-version-8'>Endpoint Version</h3>
+
+<h3 id="cdr-energy-api_get-der-for-service-point_endpoint-version">Endpoint Version</h3>
+
 <table><thead>
 <tr>
 <th></th>
@@ -2537,7 +2590,7 @@ x-cds-client-headers: string
 </tr>
 </tbody></table>
 
-<h3 id="get-der-for-service-point-parameters">Parameters</h3>
+<h3 id="cdr-energy-api_get-der-for-service-point_parameters">Parameters</h3>
 
 <table><thead>
 <tr>
@@ -2662,7 +2715,7 @@ x-cds-client-headers: string
   </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id="get-der-for-service-point-responses">Responses</h3>
+<h3 id="cdr-energy-api_get-der-for-service-point_responses">Responses</h3>
 
 <table><thead>
 <tr>
@@ -2697,7 +2750,9 @@ x-cds-client-headers: string
 <td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 </tbody></table>
-<h3 id='response-headers-8'>Response Headers</h3>
+
+<h3 id="cdr-energy-api_get-der-for-service-point_response-headers">Response Headers</h3>
+
 <table><thead>
 <tr>
 <th>Status</th>
@@ -2748,8 +2803,10 @@ x-cds-client-headers: string
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">energy:electricity.der:read</a>
 </aside></p>
-<h2 id='get-bulk-der'>Get Bulk DER</h2>
-<p><a id="opIdlistDERBulk"></a></p>
+
+<h2 id="cdr-energy-api_get-bulk-der">Get Bulk DER</h2>
+
+<p id="get-bulk-der" class="orig-anchor"></p>
 
 <blockquote>
 <p>Code samples</p>
@@ -2793,7 +2850,9 @@ x-cds-client-headers: string
 <p><code>GET /energy/electricity/servicepoints/der</code></p>
 
 <p>Obtain DER data for all service points associated with the customer</p>
-<h3 id='endpoint-version-9'>Endpoint Version</h3>
+
+<h3 id="cdr-energy-api_get-bulk-der_endpoint-version">Endpoint Version</h3>
+
 <table><thead>
 <tr>
 <th></th>
@@ -2806,7 +2865,7 @@ x-cds-client-headers: string
 </tr>
 </tbody></table>
 
-<h3 id="get-bulk-der-parameters">Parameters</h3>
+<h3 id="cdr-energy-api_get-bulk-der_parameters">Parameters</h3>
 
 <table><thead>
 <tr>
@@ -2949,7 +3008,7 @@ x-cds-client-headers: string
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id="get-bulk-der-responses">Responses</h3>
+<h3 id="cdr-energy-api_get-bulk-der_responses">Responses</h3>
 
 <table><thead>
 <tr>
@@ -2984,7 +3043,9 @@ x-cds-client-headers: string
 <td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 </tbody></table>
-<h3 id='response-headers-9'>Response Headers</h3>
+
+<h3 id="cdr-energy-api_get-bulk-der_response-headers">Response Headers</h3>
+
 <table><thead>
 <tr>
 <th>Status</th>
@@ -3035,8 +3096,10 @@ x-cds-client-headers: string
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">energy:electricity.der:read</a>
 </aside></p>
-<h2 id='get-der-for-specific-service-points'>Get DER For Specific Service Points</h2>
-<p><a id="opIdlistDERForServicePoints"></a></p>
+
+<h2 id="cdr-energy-api_get-der-for-specific-service-points">Get DER For Specific Service Points</h2>
+
+<p id="get-der-for-specific-service-points" class="orig-anchor"></p>
 
 <blockquote>
 <p>Code samples</p>
@@ -3101,7 +3164,9 @@ x-cds-client-headers: string
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='endpoint-version-10'>Endpoint Version</h3>
+</span></code></pre>
+<h3 id="cdr-energy-api_get-der-for-specific-service-points_endpoint-version">Endpoint Version</h3>
+
 <table><thead>
 <tr>
 <th></th>
@@ -3114,7 +3179,7 @@ x-cds-client-headers: string
 </tr>
 </tbody></table>
 
-<h3 id="get-der-for-specific-service-points-parameters">Parameters</h3>
+<h3 id="cdr-energy-api_get-der-for-specific-service-points_parameters">Parameters</h3>
 
 <table><thead>
 <tr>
@@ -3264,7 +3329,7 @@ x-cds-client-headers: string
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id="get-der-for-specific-service-points-responses">Responses</h3>
+<h3 id="cdr-energy-api_get-der-for-specific-service-points_responses">Responses</h3>
 
 <table><thead>
 <tr>
@@ -3299,7 +3364,9 @@ x-cds-client-headers: string
 <td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 </tbody></table>
-<h3 id='response-headers-10'>Response Headers</h3>
+
+<h3 id="cdr-energy-api_get-der-for-specific-service-points_response-headers">Response Headers</h3>
+
 <table><thead>
 <tr>
 <th>Status</th>
@@ -3350,8 +3417,10 @@ x-cds-client-headers: string
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">energy:electricity.der:read</a>
 </aside></p>
-<h2 id='get-energy-accounts'>Get Energy Accounts</h2>
-<p><a id="opIdlistAccounts"></a></p>
+
+<h2 id="cdr-energy-api_get-energy-accounts">Get Energy Accounts</h2>
+
+<p id="get-energy-accounts" class="orig-anchor"></p>
 
 <blockquote>
 <p>Code samples</p>
@@ -3397,7 +3466,9 @@ x-cds-client-headers: string
 <p>Obtain the list of energy accounts available under the authorised consent</p>
 
 <p>Other Versions: <a href="includes/obsolete/get-energy-accounts-v1.html">v1</a></p>
-<h3 id='endpoint-version-11'>Endpoint Version</h3>
+
+<h3 id="cdr-energy-api_get-energy-accounts_endpoint-version">Endpoint Version</h3>
+
 <table><thead>
 <tr>
 <th></th>
@@ -3410,7 +3481,7 @@ x-cds-client-headers: string
 </tr>
 </tbody></table>
 
-<h3 id="get-energy-accounts-parameters">Parameters</h3>
+<h3 id="cdr-energy-api_get-energy-accounts_parameters">Parameters</h3>
 
 <table><thead>
 <tr>
@@ -3424,7 +3495,7 @@ x-cds-client-headers: string
 <tr>
 <td>open-status</td>
 <td>query</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>optional</td>
 <td>Used to filter results according to open/closed status. Values can be OPEN, CLOSED or ALL. If absent then ALL is assumed</td>
 </tr>
@@ -3485,7 +3556,9 @@ x-cds-client-headers: string
 <td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-5'>Enumerated Values</h4>
+
+<h4 id="cdr-energy-api_get-energy-accounts_enumerated-values-parameters">Enumerated Values</h4>
+
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -3549,7 +3622,7 @@ x-cds-client-headers: string
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id="get-energy-accounts-responses">Responses</h3>
+<h3 id="cdr-energy-api_get-energy-accounts_responses">Responses</h3>
 
 <table><thead>
 <tr>
@@ -3584,7 +3657,9 @@ x-cds-client-headers: string
 <td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 </tbody></table>
-<h3 id='response-headers-11'>Response Headers</h3>
+
+<h3 id="cdr-energy-api_get-energy-accounts_response-headers">Response Headers</h3>
+
 <table><thead>
 <tr>
 <th>Status</th>
@@ -3635,8 +3710,10 @@ x-cds-client-headers: string
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">energy:accounts.basic:read</a>
 </aside></p>
-<h2 id='get-energy-account-detail'>Get Energy Account Detail</h2>
-<p><a id="opIdgetAccount"></a></p>
+
+<h2 id="cdr-energy-api_get-energy-account-detail">Get Energy Account Detail</h2>
+
+<p id="get-energy-account-detail" class="orig-anchor"></p>
 
 <blockquote>
 <p>Code samples</p>
@@ -3682,7 +3759,9 @@ x-cds-client-headers: string
 <p>Obtain detailed information for a specific energy account</p>
 
 <p>Other Versions: <a href="includes/obsolete/get-energy-account-detail-v1.html">v1</a> <a href="includes/obsolete/get-energy-account-detail-v2.html">v2</a></p>
-<h3 id='endpoint-version-12'>Endpoint Version</h3>
+
+<h3 id="cdr-energy-api_get-energy-account-detail_endpoint-version">Endpoint Version</h3>
+
 <table><thead>
 <tr>
 <th></th>
@@ -3695,7 +3774,7 @@ x-cds-client-headers: string
 </tr>
 </tbody></table>
 
-<h3 id="get-energy-account-detail-parameters">Parameters</h3>
+<h3 id="cdr-energy-api_get-energy-account-detail_parameters">Parameters</h3>
 
 <table><thead>
 <tr>
@@ -4155,7 +4234,7 @@ x-cds-client-headers: string
   </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id="get-energy-account-detail-responses">Responses</h3>
+<h3 id="cdr-energy-api_get-energy-account-detail_responses">Responses</h3>
 
 <table><thead>
 <tr>
@@ -4190,7 +4269,9 @@ x-cds-client-headers: string
 <td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 </tbody></table>
-<h3 id='response-headers-12'>Response Headers</h3>
+
+<h3 id="cdr-energy-api_get-energy-account-detail_response-headers">Response Headers</h3>
+
 <table><thead>
 <tr>
 <th>Status</th>
@@ -4241,8 +4322,10 @@ x-cds-client-headers: string
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">energy:accounts.detail:read</a>
 </aside></p>
-<h2 id='get-agreed-payment-schedule'>Get Agreed Payment Schedule</h2>
-<p><a id="opIdgetPaymentSchedule"></a></p>
+
+<h2 id="cdr-energy-api_get-agreed-payment-schedule">Get Agreed Payment Schedule</h2>
+
+<p id="get-agreed-payment-schedule" class="orig-anchor"></p>
 
 <blockquote>
 <p>Code samples</p>
@@ -4290,7 +4373,9 @@ x-cds-client-headers: string
 <p>Some general notes about this end point:</p>
 
 <p><ul><li>This API describes how the consumer has elected to pay for their account</li><li>Payments initiated by the consumer are classified as manual payments. The billing frequency is captured for manual payments. The consumer may choose to pay on a different schedule/frequency. The payment method and frequency is not captured for manual payments</li><li>Payments that can be initiated by the retailer, based on a consumer&#39;s preferences and permission, include payments based on a direct debit, card debit or digital wallet setup. Each of these requires a payment frequency to be provided along with other relevant fields</li><li>Information about payment plans related to debt repayments or arrangements due to hardship is not captured within this API</li></ul></p>
-<h3 id='endpoint-version-13'>Endpoint Version</h3>
+
+<h3 id="cdr-energy-api_get-agreed-payment-schedule_endpoint-version">Endpoint Version</h3>
+
 <table><thead>
 <tr>
 <th></th>
@@ -4303,7 +4388,7 @@ x-cds-client-headers: string
 </tr>
 </tbody></table>
 
-<h3 id="get-agreed-payment-schedule-parameters">Parameters</h3>
+<h3 id="cdr-energy-api_get-agreed-payment-schedule_parameters">Parameters</h3>
 
 <table><thead>
 <tr>
@@ -4408,7 +4493,7 @@ x-cds-client-headers: string
   </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id="get-agreed-payment-schedule-responses">Responses</h3>
+<h3 id="cdr-energy-api_get-agreed-payment-schedule_responses">Responses</h3>
 
 <table><thead>
 <tr>
@@ -4443,7 +4528,9 @@ x-cds-client-headers: string
 <td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 </tbody></table>
-<h3 id='response-headers-13'>Response Headers</h3>
+
+<h3 id="cdr-energy-api_get-agreed-payment-schedule_response-headers">Response Headers</h3>
+
 <table><thead>
 <tr>
 <th>Status</th>
@@ -4494,8 +4581,10 @@ x-cds-client-headers: string
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">energy:accounts.paymentschedule:read</a>
 </aside></p>
-<h2 id='get-concessions'>Get Concessions</h2>
-<p><a id="opIdgetConcessions"></a></p>
+
+<h2 id="cdr-energy-api_get-concessions">Get Concessions</h2>
+
+<p id="get-concessions" class="orig-anchor"></p>
 
 <blockquote>
 <p>Code samples</p>
@@ -4539,7 +4628,9 @@ x-cds-client-headers: string
 <p><code>GET /energy/accounts/{accountId}/concessions</code></p>
 
 <p>Obtain the details of any concessions or arrangements applied to a specific energy account</p>
-<h3 id='endpoint-version-14'>Endpoint Version</h3>
+
+<h3 id="cdr-energy-api_get-concessions_endpoint-version">Endpoint Version</h3>
+
 <table><thead>
 <tr>
 <th></th>
@@ -4552,7 +4643,7 @@ x-cds-client-headers: string
 </tr>
 </tbody></table>
 
-<h3 id="get-concessions-parameters">Parameters</h3>
+<h3 id="cdr-energy-api_get-concessions_parameters">Parameters</h3>
 
 <table><thead>
 <tr>
@@ -4644,7 +4735,7 @@ x-cds-client-headers: string
   </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id="get-concessions-responses">Responses</h3>
+<h3 id="cdr-energy-api_get-concessions_responses">Responses</h3>
 
 <table><thead>
 <tr>
@@ -4679,7 +4770,9 @@ x-cds-client-headers: string
 <td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 </tbody></table>
-<h3 id='response-headers-14'>Response Headers</h3>
+
+<h3 id="cdr-energy-api_get-concessions_response-headers">Response Headers</h3>
+
 <table><thead>
 <tr>
 <th>Status</th>
@@ -4730,8 +4823,10 @@ x-cds-client-headers: string
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">energy:accounts.concessions:read</a>
 </aside></p>
-<h2 id='get-balance-for-energy-account'>Get Balance For Energy Account</h2>
-<p><a id="opIdgetBalanceForAccount"></a></p>
+
+<h2 id="cdr-energy-api_get-balance-for-energy-account">Get Balance For Energy Account</h2>
+
+<p id="get-balance-for-energy-account" class="orig-anchor"></p>
 
 <blockquote>
 <p>Code samples</p>
@@ -4775,7 +4870,9 @@ x-cds-client-headers: string
 <p><code>GET /energy/accounts/{accountId}/balance</code></p>
 
 <p>Obtain the current balance for a specific account</p>
-<h3 id='endpoint-version-15'>Endpoint Version</h3>
+
+<h3 id="cdr-energy-api_get-balance-for-energy-account_endpoint-version">Endpoint Version</h3>
+
 <table><thead>
 <tr>
 <th></th>
@@ -4788,7 +4885,7 @@ x-cds-client-headers: string
 </tr>
 </tbody></table>
 
-<h3 id="get-balance-for-energy-account-parameters">Parameters</h3>
+<h3 id="cdr-energy-api_get-balance-for-energy-account_parameters">Parameters</h3>
 
 <table><thead>
 <tr>
@@ -4865,7 +4962,7 @@ x-cds-client-headers: string
   </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id="get-balance-for-energy-account-responses">Responses</h3>
+<h3 id="cdr-energy-api_get-balance-for-energy-account_responses">Responses</h3>
 
 <table><thead>
 <tr>
@@ -4900,7 +4997,9 @@ x-cds-client-headers: string
 <td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 </tbody></table>
-<h3 id='response-headers-15'>Response Headers</h3>
+
+<h3 id="cdr-energy-api_get-balance-for-energy-account_response-headers">Response Headers</h3>
+
 <table><thead>
 <tr>
 <th>Status</th>
@@ -4951,8 +5050,10 @@ x-cds-client-headers: string
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">energy:billing:read</a>
 </aside></p>
-<h2 id='get-bulk-balances-for-energy'>Get Bulk Balances for Energy</h2>
-<p><a id="opIdlistBalancesBulk"></a></p>
+
+<h2 id="cdr-energy-api_get-bulk-balances-for-energy">Get Bulk Balances for Energy</h2>
+
+<p id="get-bulk-balances-for-energy" class="orig-anchor"></p>
 
 <blockquote>
 <p>Code samples</p>
@@ -4996,7 +5097,9 @@ x-cds-client-headers: string
 <p><code>GET /energy/accounts/balances</code></p>
 
 <p>Obtain the current balance for all accounts</p>
-<h3 id='endpoint-version-16'>Endpoint Version</h3>
+
+<h3 id="cdr-energy-api_get-bulk-balances-for-energy_endpoint-version">Endpoint Version</h3>
+
 <table><thead>
 <tr>
 <th></th>
@@ -5009,7 +5112,7 @@ x-cds-client-headers: string
 </tr>
 </tbody></table>
 
-<h3 id="get-bulk-balances-for-energy-parameters">Parameters</h3>
+<h3 id="cdr-energy-api_get-bulk-balances-for-energy_parameters">Parameters</h3>
 
 <table><thead>
 <tr>
@@ -5105,7 +5208,7 @@ x-cds-client-headers: string
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id="get-bulk-balances-for-energy-responses">Responses</h3>
+<h3 id="cdr-energy-api_get-bulk-balances-for-energy_responses">Responses</h3>
 
 <table><thead>
 <tr>
@@ -5140,7 +5243,9 @@ x-cds-client-headers: string
 <td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 </tbody></table>
-<h3 id='response-headers-16'>Response Headers</h3>
+
+<h3 id="cdr-energy-api_get-bulk-balances-for-energy_response-headers">Response Headers</h3>
+
 <table><thead>
 <tr>
 <th>Status</th>
@@ -5191,8 +5296,10 @@ x-cds-client-headers: string
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">energy:billing:read</a>
 </aside></p>
-<h2 id='get-balances-for-specific-energy-accounts'>Get Balances For Specific Energy Accounts</h2>
-<p><a id="opIdlistBalancesForAccounts"></a></p>
+
+<h2 id="cdr-energy-api_get-balances-for-specific-energy-accounts">Get Balances For Specific Energy Accounts</h2>
+
+<p id="get-balances-for-specific-energy-accounts" class="orig-anchor"></p>
 
 <blockquote>
 <p>Code samples</p>
@@ -5257,7 +5364,9 @@ x-cds-client-headers: string
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='endpoint-version-17'>Endpoint Version</h3>
+</span></code></pre>
+<h3 id="cdr-energy-api_get-balances-for-specific-energy-accounts_endpoint-version">Endpoint Version</h3>
+
 <table><thead>
 <tr>
 <th></th>
@@ -5270,7 +5379,7 @@ x-cds-client-headers: string
 </tr>
 </tbody></table>
 
-<h3 id="get-balances-for-specific-energy-accounts-parameters">Parameters</h3>
+<h3 id="cdr-energy-api_get-balances-for-specific-energy-accounts_parameters">Parameters</h3>
 
 <table><thead>
 <tr>
@@ -5373,7 +5482,7 @@ x-cds-client-headers: string
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id="get-balances-for-specific-energy-accounts-responses">Responses</h3>
+<h3 id="cdr-energy-api_get-balances-for-specific-energy-accounts_responses">Responses</h3>
 
 <table><thead>
 <tr>
@@ -5408,7 +5517,9 @@ x-cds-client-headers: string
 <td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 </tbody></table>
-<h3 id='response-headers-17'>Response Headers</h3>
+
+<h3 id="cdr-energy-api_get-balances-for-specific-energy-accounts_response-headers">Response Headers</h3>
+
 <table><thead>
 <tr>
 <th>Status</th>
@@ -5459,8 +5570,10 @@ x-cds-client-headers: string
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">energy:billing:read</a>
 </aside></p>
-<h2 id='get-invoices-for-account'>Get Invoices For Account</h2>
-<p><a id="opIdgetInvoicesForAccount"></a></p>
+
+<h2 id="cdr-energy-api_get-invoices-for-account">Get Invoices For Account</h2>
+
+<p id="get-invoices-for-account" class="orig-anchor"></p>
 
 <blockquote>
 <p>Code samples</p>
@@ -5504,7 +5617,9 @@ x-cds-client-headers: string
 <p><code>GET /energy/accounts/{accountId}/invoices</code></p>
 
 <p>Obtain the invoices for a specific account</p>
-<h3 id='endpoint-version-18'>Endpoint Version</h3>
+
+<h3 id="cdr-energy-api_get-invoices-for-account_endpoint-version">Endpoint Version</h3>
+
 <table><thead>
 <tr>
 <th></th>
@@ -5517,7 +5632,7 @@ x-cds-client-headers: string
 </tr>
 </tbody></table>
 
-<h3 id="get-invoices-for-account-parameters">Parameters</h3>
+<h3 id="cdr-energy-api_get-invoices-for-account_parameters">Parameters</h3>
 
 <table><thead>
 <tr>
@@ -5685,7 +5800,7 @@ x-cds-client-headers: string
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id="get-invoices-for-account-responses">Responses</h3>
+<h3 id="cdr-energy-api_get-invoices-for-account_responses">Responses</h3>
 
 <table><thead>
 <tr>
@@ -5726,7 +5841,9 @@ x-cds-client-headers: string
 <td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 </tbody></table>
-<h3 id='response-headers-18'>Response Headers</h3>
+
+<h3 id="cdr-energy-api_get-invoices-for-account_response-headers">Response Headers</h3>
+
 <table><thead>
 <tr>
 <th>Status</th>
@@ -5784,8 +5901,10 @@ x-cds-client-headers: string
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">energy:billing:read</a>
 </aside></p>
-<h2 id='get-bulk-invoices'>Get Bulk Invoices</h2>
-<p><a id="opIdlistInvoicesBulk"></a></p>
+
+<h2 id="cdr-energy-api_get-bulk-invoices">Get Bulk Invoices</h2>
+
+<p id="get-bulk-invoices" class="orig-anchor"></p>
 
 <blockquote>
 <p>Code samples</p>
@@ -5829,7 +5948,9 @@ x-cds-client-headers: string
 <p><code>GET /energy/accounts/invoices</code></p>
 
 <p>Obtain the invoices for all accounts</p>
-<h3 id='endpoint-version-19'>Endpoint Version</h3>
+
+<h3 id="cdr-energy-api_get-bulk-invoices_endpoint-version">Endpoint Version</h3>
+
 <table><thead>
 <tr>
 <th></th>
@@ -5842,7 +5963,7 @@ x-cds-client-headers: string
 </tr>
 </tbody></table>
 
-<h3 id="get-bulk-invoices-parameters">Parameters</h3>
+<h3 id="cdr-energy-api_get-bulk-invoices_parameters">Parameters</h3>
 
 <table><thead>
 <tr>
@@ -6003,7 +6124,7 @@ x-cds-client-headers: string
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id="get-bulk-invoices-responses">Responses</h3>
+<h3 id="cdr-energy-api_get-bulk-invoices_responses">Responses</h3>
 
 <table><thead>
 <tr>
@@ -6038,7 +6159,9 @@ x-cds-client-headers: string
 <td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 </tbody></table>
-<h3 id='response-headers-19'>Response Headers</h3>
+
+<h3 id="cdr-energy-api_get-bulk-invoices_response-headers">Response Headers</h3>
+
 <table><thead>
 <tr>
 <th>Status</th>
@@ -6089,8 +6212,10 @@ x-cds-client-headers: string
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">energy:billing:read</a>
 </aside></p>
-<h2 id='get-invoices-for-specific-accounts'>Get Invoices For Specific Accounts</h2>
-<p><a id="opIdlistInvoicesForAccounts"></a></p>
+
+<h2 id="cdr-energy-api_get-invoices-for-specific-accounts">Get Invoices For Specific Accounts</h2>
+
+<p id="get-invoices-for-specific-accounts" class="orig-anchor"></p>
 
 <blockquote>
 <p>Code samples</p>
@@ -6155,7 +6280,9 @@ x-cds-client-headers: string
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='endpoint-version-20'>Endpoint Version</h3>
+</span></code></pre>
+<h3 id="cdr-energy-api_get-invoices-for-specific-accounts_endpoint-version">Endpoint Version</h3>
+
 <table><thead>
 <tr>
 <th></th>
@@ -6168,7 +6295,7 @@ x-cds-client-headers: string
 </tr>
 </tbody></table>
 
-<h3 id="get-invoices-for-specific-accounts-parameters">Parameters</h3>
+<h3 id="cdr-energy-api_get-invoices-for-specific-accounts_parameters">Parameters</h3>
 
 <table><thead>
 <tr>
@@ -6336,7 +6463,7 @@ x-cds-client-headers: string
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id="get-invoices-for-specific-accounts-responses">Responses</h3>
+<h3 id="cdr-energy-api_get-invoices-for-specific-accounts_responses">Responses</h3>
 
 <table><thead>
 <tr>
@@ -6371,7 +6498,9 @@ x-cds-client-headers: string
 <td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 </tbody></table>
-<h3 id='response-headers-20'>Response Headers</h3>
+
+<h3 id="cdr-energy-api_get-invoices-for-specific-accounts_response-headers">Response Headers</h3>
+
 <table><thead>
 <tr>
 <th>Status</th>
@@ -6422,8 +6551,10 @@ x-cds-client-headers: string
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">energy:billing:read</a>
 </aside></p>
-<h2 id='get-billing-for-account'>Get Billing For Account</h2>
-<p><a id="opIdgetBillingForAccount"></a></p>
+
+<h2 id="cdr-energy-api_get-billing-for-account">Get Billing For Account</h2>
+
+<p id="get-billing-for-account" class="orig-anchor"></p>
 
 <blockquote>
 <p>Code samples</p>
@@ -6468,8 +6599,15 @@ x-cds-client-headers: string
 
 <p>Obtain the billing transactions for a specific account</p>
 
-<p>Other Versions: <a href="includes/obsolete/get-billing-for-account-v1.html">v1</a></p>
-<h3 id='endpoint-version-21'>Endpoint Version</h3>
+<p>Deprecated Versions: </p>
+
+<ul>
+<li><a href="includes/obsolete/get-billing-for-account-v1.html">v1</a> - This version is to be ceased to be called by data recipients by September 9th 2024 and <strong>MAY</strong> be decommissioned by data holders as of that date </li>
+<li><a href="includes/obsolete/get-billing-for-account-v2.html">v2</a> - This version <strong>MAY</strong> be retired by September 9th 2024 if v3 is implemented.</li>
+</ul>
+
+<h3 id="cdr-energy-api_get-billing-for-account_endpoint-version">Endpoint Version</h3>
+
 <table><thead>
 <tr>
 <th></th>
@@ -6478,11 +6616,11 @@ x-cds-client-headers: string
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>2</strong></td>
+<td><strong>3</strong></td>
 </tr>
 </tbody></table>
 
-<h3 id="get-billing-for-account-parameters">Parameters</h3>
+<h3 id="cdr-energy-api_get-billing-for-account_parameters">Parameters</h3>
 
 <table><thead>
 <tr>
@@ -6617,6 +6755,7 @@ x-cds-client-headers: string
           </span><span class="s2">"isEstimate"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
           </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"measureUnit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KWH"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"rate"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
           </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"calculationFactors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -6679,7 +6818,7 @@ x-cds-client-headers: string
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id="get-billing-for-account-responses">Responses</h3>
+<h3 id="cdr-energy-api_get-billing-for-account_responses">Responses</h3>
 
 <table><thead>
 <tr>
@@ -6693,7 +6832,7 @@ x-cds-client-headers: string
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>Successful response</td>
-<td><a href="#schemacdr-energy-apienergybillinglistresponsev2">EnergyBillingListResponseV2</a></td>
+<td><a href="#schemacdr-energy-apienergybillinglistresponsev3">EnergyBillingListResponseV3</a></td>
 </tr>
 <tr>
 <td>400</td>
@@ -6720,7 +6859,9 @@ x-cds-client-headers: string
 <td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 </tbody></table>
-<h3 id='response-headers-21'>Response Headers</h3>
+
+<h3 id="cdr-energy-api_get-billing-for-account_response-headers">Response Headers</h3>
+
 <table><thead>
 <tr>
 <th>Status</th>
@@ -6778,8 +6919,10 @@ x-cds-client-headers: string
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">energy:billing:read</a>
 </aside></p>
-<h2 id='get-bulk-billing'>Get Bulk Billing</h2>
-<p><a id="opIdlistBillingBulk"></a></p>
+
+<h2 id="cdr-energy-api_get-bulk-billing">Get Bulk Billing</h2>
+
+<p id="get-bulk-billing" class="orig-anchor"></p>
 
 <blockquote>
 <p>Code samples</p>
@@ -6824,8 +6967,15 @@ x-cds-client-headers: string
 
 <p>Obtain billing transactions for all accounts</p>
 
-<p>Other Versions: <a href="includes/obsolete/get-bulk-billing-v1.html">v1</a></p>
-<h3 id='endpoint-version-22'>Endpoint Version</h3>
+<p>Deprecated Versions: </p>
+
+<ul>
+<li><a href="includes/obsolete/get-bulk-billing-v1.html">v1</a> - This version is to be ceased to be called by data recipients by September 9th 2024 and <strong>MAY</strong> be decommissioned by data holders as of that date </li>
+<li><a href="includes/obsolete/get-bulk-billing-v2.html">v2</a> - This version <strong>MAY</strong> be retired by September 9th 2024 if v3 is implemented.</li>
+</ul>
+
+<h3 id="cdr-energy-api_get-bulk-billing_endpoint-version">Endpoint Version</h3>
+
 <table><thead>
 <tr>
 <th></th>
@@ -6838,7 +6988,7 @@ x-cds-client-headers: string
 </tr>
 </tbody></table>
 
-<h3 id="get-bulk-billing-parameters">Parameters</h3>
+<h3 id="cdr-energy-api_get-bulk-billing_parameters">Parameters</h3>
 
 <table><thead>
 <tr>
@@ -6966,6 +7116,7 @@ x-cds-client-headers: string
           </span><span class="s2">"isEstimate"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
           </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"measureUnit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KWH"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"rate"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
           </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"calculationFactors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -7028,7 +7179,7 @@ x-cds-client-headers: string
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id="get-bulk-billing-responses">Responses</h3>
+<h3 id="cdr-energy-api_get-bulk-billing_responses">Responses</h3>
 
 <table><thead>
 <tr>
@@ -7042,7 +7193,7 @@ x-cds-client-headers: string
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>Successful response</td>
-<td><a href="#schemacdr-energy-apienergybillinglistresponsev2">EnergyBillingListResponseV2</a></td>
+<td><a href="#schemacdr-energy-apienergybillinglistresponsev3">EnergyBillingListResponseV3</a></td>
 </tr>
 <tr>
 <td>400</td>
@@ -7063,7 +7214,9 @@ x-cds-client-headers: string
 <td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 </tbody></table>
-<h3 id='response-headers-22'>Response Headers</h3>
+
+<h3 id="cdr-energy-api_get-bulk-billing_response-headers">Response Headers</h3>
+
 <table><thead>
 <tr>
 <th>Status</th>
@@ -7114,8 +7267,10 @@ x-cds-client-headers: string
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">energy:billing:read</a>
 </aside></p>
-<h2 id='get-billing-for-specific-accounts'>Get Billing For Specific Accounts</h2>
-<p><a id="opIdlistBillingForAccounts"></a></p>
+
+<h2 id="cdr-energy-api_get-billing-for-specific-accounts">Get Billing For Specific Accounts</h2>
+
+<p id="get-billing-for-specific-accounts" class="orig-anchor"></p>
 
 <blockquote>
 <p>Code samples</p>
@@ -7169,7 +7324,12 @@ x-cds-client-headers: string
 
 <p>Obtain billing for a specified set of accounts</p>
 
-<p>Other Versions: <a href="includes/obsolete/get-billing-for-specific-accounts-v1.html">v1</a></p>
+<p>Deprecated Versions: </p>
+
+<ul>
+<li><a href="includes/obsolete/get-billing-for-specific-accounts-v1.html">v1</a> - This version is to be ceased to be called by data recipients by September 9th 2024 and <strong>MAY</strong> be decommissioned by data holders as of that date </li>
+<li><a href="includes/obsolete/get-billing-for-specific-accounts-v2.html">v2</a> - This version <strong>MAY</strong> be retired by September 9th 2024 if v3 is implemented.</li>
+</ul>
 
 <blockquote>
 <p>Body parameter</p>
@@ -7182,7 +7342,9 @@ x-cds-client-headers: string
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='endpoint-version-23'>Endpoint Version</h3>
+</span></code></pre>
+<h3 id="cdr-energy-api_get-billing-for-specific-accounts_endpoint-version">Endpoint Version</h3>
+
 <table><thead>
 <tr>
 <th></th>
@@ -7195,7 +7357,7 @@ x-cds-client-headers: string
 </tr>
 </tbody></table>
 
-<h3 id="get-billing-for-specific-accounts-parameters">Parameters</h3>
+<h3 id="cdr-energy-api_get-billing-for-specific-accounts_parameters">Parameters</h3>
 
 <table><thead>
 <tr>
@@ -7330,6 +7492,7 @@ x-cds-client-headers: string
           </span><span class="s2">"isEstimate"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
           </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"measureUnit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KWH"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"rate"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
           </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"calculationFactors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -7392,7 +7555,7 @@ x-cds-client-headers: string
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id="get-billing-for-specific-accounts-responses">Responses</h3>
+<h3 id="cdr-energy-api_get-billing-for-specific-accounts_responses">Responses</h3>
 
 <table><thead>
 <tr>
@@ -7406,7 +7569,7 @@ x-cds-client-headers: string
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>Successful response</td>
-<td><a href="#schemacdr-energy-apienergybillinglistresponsev2">EnergyBillingListResponseV2</a></td>
+<td><a href="#schemacdr-energy-apienergybillinglistresponsev3">EnergyBillingListResponseV3</a></td>
 </tr>
 <tr>
 <td>400</td>
@@ -7427,7 +7590,9 @@ x-cds-client-headers: string
 <td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 </tbody></table>
-<h3 id='response-headers-23'>Response Headers</h3>
+
+<h3 id="cdr-energy-api_get-billing-for-specific-accounts_response-headers">Response Headers</h3>
+
 <table><thead>
 <tr>
 <th>Status</th>
@@ -7481,9 +7646,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h2 class="schema-heading" id="cdr-energy-api-schemas">Schemas</h2>
 
-<p><a class="schema-link" id="cdr-energy-api-schemas"></a></p>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyplanlistresponse">EnergyPlanListResponse</h3>
 
-<h3 class="schema-toc" id="tocSenergyplanlistresponse">EnergyPlanListResponse</h3>
+<p id="tocSenergyplanlistresponse" class="orig-anchor"></p>
 
 <p><a class="schema-anchor" id="schemacdr-energy-apienergyplanlistresponse"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -7536,7 +7701,9 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties'>Properties</h3>
+</span></code></pre>
+<h3 id="cdr-energy-api_energyplanlistresponse_properties">Properties</h3>
+
 <table><thead>
 <tr>
 <th>Name</th>
@@ -7571,7 +7738,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSenergyplanresponsev2">EnergyPlanResponseV2</h3>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyplanresponsev2">EnergyPlanResponseV2</h3>
+
+<p id="tocSenergyplanresponsev2" class="orig-anchor"></p>
 
 <p><a class="schema-anchor" id="schemacdr-energy-apienergyplanresponsev2"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -8092,7 +8261,9 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-2'>Properties</h3>
+</span></code></pre>
+<h3 id="cdr-energy-api_energyplanresponsev2_properties">Properties</h3>
+
 <table><thead>
 <tr>
 <th>Name</th>
@@ -8121,7 +8292,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSenergyservicepointlistresponse">EnergyServicePointListResponse</h3>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyservicepointlistresponse">EnergyServicePointListResponse</h3>
+
+<p id="tocSenergyservicepointlistresponse" class="orig-anchor"></p>
 
 <p><a class="schema-anchor" id="schemacdr-energy-apienergyservicepointlistresponse"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -8156,7 +8329,9 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-3'>Properties</h3>
+</span></code></pre>
+<h3 id="cdr-energy-api_energyservicepointlistresponse_properties">Properties</h3>
+
 <table><thead>
 <tr>
 <th>Name</th>
@@ -8191,7 +8366,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSenergyservicepointdetailresponse">EnergyServicePointDetailResponse</h3>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyservicepointdetailresponse">EnergyServicePointDetailResponse</h3>
+
+<p id="tocSenergyservicepointdetailresponse" class="orig-anchor"></p>
 
 <p><a class="schema-anchor" id="schemacdr-energy-apienergyservicepointdetailresponse"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -8290,7 +8467,9 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-4'>Properties</h3>
+</span></code></pre>
+<h3 id="cdr-energy-api_energyservicepointdetailresponse_properties">Properties</h3>
+
 <table><thead>
 <tr>
 <th>Name</th>
@@ -8319,7 +8498,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSenergyusagelistresponse">EnergyUsageListResponse</h3>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyusagelistresponse">EnergyUsageListResponse</h3>
+
+<p id="tocSenergyusagelistresponse" class="orig-anchor"></p>
 
 <p><a class="schema-anchor" id="schemacdr-energy-apienergyusagelistresponse"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -8369,7 +8550,9 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-5'>Properties</h3>
+</span></code></pre>
+<h3 id="cdr-energy-api_energyusagelistresponse_properties">Properties</h3>
+
 <table><thead>
 <tr>
 <th>Name</th>
@@ -8404,7 +8587,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSenergyderlistresponse">EnergyDerListResponse</h3>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyderlistresponse">EnergyDerListResponse</h3>
+
+<p id="tocSenergyderlistresponse" class="orig-anchor"></p>
 
 <p><a class="schema-anchor" id="schemacdr-energy-apienergyderlistresponse"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -8476,7 +8661,9 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-6'>Properties</h3>
+</span></code></pre>
+<h3 id="cdr-energy-api_energyderlistresponse_properties">Properties</h3>
+
 <table><thead>
 <tr>
 <th>Name</th>
@@ -8511,7 +8698,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSenergyderdetailresponse">EnergyDerDetailResponse</h3>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyderdetailresponse">EnergyDerDetailResponse</h3>
+
+<p id="tocSenergyderdetailresponse" class="orig-anchor"></p>
 
 <p><a class="schema-anchor" id="schemacdr-energy-apienergyderdetailresponse"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -8572,7 +8761,9 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-7'>Properties</h3>
+</span></code></pre>
+<h3 id="cdr-energy-api_energyderdetailresponse_properties">Properties</h3>
+
 <table><thead>
 <tr>
 <th>Name</th>
@@ -8601,7 +8792,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSenergyaccountlistresponsev2">EnergyAccountListResponseV2</h3>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyaccountlistresponsev2">EnergyAccountListResponseV2</h3>
+
+<p id="tocSenergyaccountlistresponsev2" class="orig-anchor"></p>
 
 <p><a class="schema-anchor" id="schemacdr-energy-apienergyaccountlistresponsev2"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -8642,7 +8835,9 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-8'>Properties</h3>
+</span></code></pre>
+<h3 id="cdr-energy-api_energyaccountlistresponsev2_properties">Properties</h3>
+
 <table><thead>
 <tr>
 <th>Name</th>
@@ -8677,7 +8872,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSenergyaccountdetailresponsev3">EnergyAccountDetailResponseV3</h3>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyaccountdetailresponsev3">EnergyAccountDetailResponseV3</h3>
+
+<p id="tocSenergyaccountdetailresponsev3" class="orig-anchor"></p>
 
 <p><a class="schema-anchor" id="schemacdr-energy-apienergyaccountdetailresponsev3"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -9073,7 +9270,9 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-9'>Properties</h3>
+</span></code></pre>
+<h3 id="cdr-energy-api_energyaccountdetailresponsev3_properties">Properties</h3>
+
 <table><thead>
 <tr>
 <th>Name</th>
@@ -9102,7 +9301,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSenergypaymentscheduleresponse">EnergyPaymentScheduleResponse</h3>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergypaymentscheduleresponse">EnergyPaymentScheduleResponse</h3>
+
+<p id="tocSenergypaymentscheduleresponse" class="orig-anchor"></p>
 
 <p><a class="schema-anchor" id="schemacdr-energy-apienergypaymentscheduleresponse"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -9143,7 +9344,9 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-10'>Properties</h3>
+</span></code></pre>
+<h3 id="cdr-energy-api_energypaymentscheduleresponse_properties">Properties</h3>
+
 <table><thead>
 <tr>
 <th>Name</th>
@@ -9178,7 +9381,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSenergyconcessionsresponse">EnergyConcessionsResponse</h3>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyconcessionsresponse">EnergyConcessionsResponse</h3>
+
+<p id="tocSenergyconcessionsresponse" class="orig-anchor"></p>
 
 <p><a class="schema-anchor" id="schemacdr-energy-apienergyconcessionsresponse"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -9206,7 +9411,9 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-11'>Properties</h3>
+</span></code></pre>
+<h3 id="cdr-energy-api_energyconcessionsresponse_properties">Properties</h3>
+
 <table><thead>
 <tr>
 <th>Name</th>
@@ -9241,7 +9448,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSenergybalancelistresponse">EnergyBalanceListResponse</h3>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergybalancelistresponse">EnergyBalanceListResponse</h3>
+
+<p id="tocSenergybalancelistresponse" class="orig-anchor"></p>
 
 <p><a class="schema-anchor" id="schemacdr-energy-apienergybalancelistresponse"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -9266,7 +9475,9 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-12'>Properties</h3>
+</span></code></pre>
+<h3 id="cdr-energy-api_energybalancelistresponse_properties">Properties</h3>
+
 <table><thead>
 <tr>
 <th>Name</th>
@@ -9313,7 +9524,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSenergybalanceresponse">EnergyBalanceResponse</h3>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergybalanceresponse">EnergyBalanceResponse</h3>
+
+<p id="tocSenergybalanceresponse" class="orig-anchor"></p>
 
 <p><a class="schema-anchor" id="schemacdr-energy-apienergybalanceresponse"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -9326,7 +9539,9 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-13'>Properties</h3>
+</span></code></pre>
+<h3 id="cdr-energy-api_energybalanceresponse_properties">Properties</h3>
+
 <table><thead>
 <tr>
 <th>Name</th>
@@ -9361,7 +9576,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSenergyinvoicelistresponse">EnergyInvoiceListResponse</h3>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyinvoicelistresponse">EnergyInvoiceListResponse</h3>
+
+<p id="tocSenergyinvoicelistresponse" class="orig-anchor"></p>
 
 <p><a class="schema-anchor" id="schemacdr-energy-apienergyinvoicelistresponse"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -9437,7 +9654,9 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-14'>Properties</h3>
+</span></code></pre>
+<h3 id="cdr-energy-api_energyinvoicelistresponse_properties">Properties</h3>
+
 <table><thead>
 <tr>
 <th>Name</th>
@@ -9472,9 +9691,11 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSenergybillinglistresponsev2">EnergyBillingListResponseV2</h3>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergybillinglistresponsev3">EnergyBillingListResponseV3</h3>
 
-<p><a class="schema-anchor" id="schemacdr-energy-apienergybillinglistresponsev2"></a></p>
+<p id="tocSenergybillinglistresponsev3" class="orig-anchor"></p>
+
+<p><a class="schema-anchor" id="schemacdr-energy-apienergybillinglistresponsev3"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"transactions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -9515,6 +9736,7 @@ To perform this operation, you must be authenticated and authorised with the fol
           </span><span class="s2">"isEstimate"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
           </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"measureUnit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KWH"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"rate"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
           </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"calculationFactors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -9577,7 +9799,9 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-15'>Properties</h3>
+</span></code></pre>
+<h3 id="cdr-energy-api_energybillinglistresponsev3_properties">Properties</h3>
+
 <table><thead>
 <tr>
 <th>Name</th>
@@ -9594,7 +9818,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>» transactions</td>
-<td>[<a href="#schemacdr-energy-apienergybillingtransactionv2">EnergyBillingTransactionV2</a>]</td>
+<td>[<a href="#schemacdr-energy-apienergybillingtransactionv3">EnergyBillingTransactionV3</a>]</td>
 <td>mandatory</td>
 <td>Array of transactions sorted by date and time in descending order</td>
 </tr>
@@ -9612,7 +9836,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSresponseerrorlistv2">ResponseErrorListV2</h3>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSresponseerrorlistv2">ResponseErrorListV2</h3>
+
+<p id="tocSresponseerrorlistv2" class="orig-anchor"></p>
 
 <p><a class="schema-anchor" id="schemacdr-energy-apiresponseerrorlistv2"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -9628,7 +9854,9 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-16'>Properties</h3>
+</span></code></pre>
+<h3 id="cdr-energy-api_responseerrorlistv2_properties">Properties</h3>
+
 <table><thead>
 <tr>
 <th>Name</th>
@@ -9675,7 +9903,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSenergyplan">EnergyPlan</h3>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyplan">EnergyPlan</h3>
+
+<p id="tocSenergyplan" class="orig-anchor"></p>
 
 <p><a class="schema-anchor" id="schemacdr-energy-apienergyplan"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -9711,7 +9941,9 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-17'>Properties</h3>
+</span></code></pre>
+<h3 id="cdr-energy-api_energyplan_properties">Properties</h3>
+
 <table><thead>
 <tr>
 <th>Name</th>
@@ -9853,7 +10085,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Array of distributors for the plan. Must have at least one entry</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-6'>Enumerated Values</h4>
+
+<h4 id="cdr-energy-api_energyplan_enumerated-values-main">Enumerated Values</h4>
+
 <table><thead>
 <tr>
 <th>Property</th>
@@ -9894,7 +10128,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSenergyplandetailv2">EnergyPlanDetailV2</h3>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyplandetailv2">EnergyPlanDetailV2</h3>
+
+<p id="tocSenergyplandetailv2" class="orig-anchor"></p>
 
 <p><a class="schema-anchor" id="schemacdr-energy-apienergyplandetailv2"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -10409,7 +10645,9 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-18'>Properties</h3>
+</span></code></pre>
+<h3 id="cdr-energy-api_energyplandetailv2_properties">Properties</h3>
+
 <p><em>allOf</em></p>
 
 <table><thead>
@@ -10494,7 +10732,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSenergyplancontractv2">EnergyPlanContractV2</h3>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyplancontractv2">EnergyPlanContractV2</h3>
+
+<p id="tocSenergyplancontractv2" class="orig-anchor"></p>
 
 <p><a class="schema-anchor" id="schemacdr-energy-apienergyplancontractv2"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -10723,7 +10963,9 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-19'>Properties</h3>
+</span></code></pre>
+<h3 id="cdr-energy-api_energyplancontractv2_properties">Properties</h3>
+
 <table><thead>
 <tr>
 <th>Name</th>
@@ -10835,7 +11077,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Array of tariff periods</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-7'>Enumerated Values</h4>
+
+<h4 id="cdr-energy-api_energyplancontractv2_enumerated-values-main">Enumerated Values</h4>
+
 <table><thead>
 <tr>
 <th>Property</th>
@@ -10900,7 +11144,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSenergyplancontractfullv2">EnergyPlanContractFullV2</h3>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyplancontractfullv2">EnergyPlanContractFullV2</h3>
+
+<p id="tocSenergyplancontractfullv2" class="orig-anchor"></p>
 
 <p><a class="schema-anchor" id="schemacdr-energy-apienergyplancontractfullv2"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -11139,7 +11385,9 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-20'>Properties</h3>
+</span></code></pre>
+<h3 id="cdr-energy-api_energyplancontractfullv2_properties">Properties</h3>
+
 <p><em>allOf</em></p>
 
 <table><thead>
@@ -11211,7 +11459,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>An array of the available billing schedules for this contract. Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 Durations</a> (excludes recurrence syntax)</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-8'>Enumerated Values</h4>
+
+<h4 id="cdr-energy-api_energyplancontractfullv2_enumerated-values-main">Enumerated Values</h4>
+
 <table><thead>
 <tr>
 <th>Property</th>
@@ -11248,7 +11498,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSenergyplancontrolledload">EnergyPlanControlledLoad</h3>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyplancontrolledload">EnergyPlanControlledLoad</h3>
+
+<p id="tocSenergyplancontrolledload" class="orig-anchor"></p>
 
 <p><a class="schema-anchor" id="schemacdr-energy-apienergyplancontrolledload"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
@@ -11300,7 +11552,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 </span></code></pre>
 <p><em>Required if pricing model is SINGLE_RATE_CONT_LOAD or TIME_OF_USE_CONT_LOAD or FLEXIBLE_CONT_LOAD</em></p>
-<h3 id='properties-21'>Properties</h3>
+
+<h3 id="cdr-energy-api_energyplancontrolledload_properties">Properties</h3>
+
 <table><thead>
 <tr>
 <th>Name</th>
@@ -11443,15 +11697,15 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>»» startTime</td>
-<td><a href="#common-field-types">TimeString</a></td>
+<td><a href="#common-field-types">ExternalRef</a></td>
 <td>conditional</td>
-<td>The beginning of the time period per day for which the controlled load rate applies. Required if endTime provided</td>
+<td>The beginning of the time period per day for which the controlled load rate applies. Required if endTime provided.  Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Times">ISO 8601 Times</a>. If the time is provided without a UTC offset, the time zone will be determined by the value of EnergyPlanContract.timeZone.</td>
 </tr>
 <tr>
 <td>»» endTime</td>
-<td><a href="#common-field-types">TimeString</a></td>
+<td><a href="#common-field-types">ExternalRef</a></td>
 <td>conditional</td>
-<td>The end of the time period per day for which the controlled load rate applies. Required if startTime provided</td>
+<td>The end of the time period per day for which the controlled load rate applies. Required if startTime provided.  Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Times">ISO 8601 Times</a>. If the time is provided without a UTC offset, the time zone will be determined by the value of EnergyPlanContract.timeZone.</td>
 </tr>
 <tr>
 <td>»» additionalInfo</td>
@@ -11472,7 +11726,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>The type of usage that the rate applies to</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-9'>Enumerated Values</h4>
+
+<h4 id="cdr-energy-api_energyplancontrolledload_enumerated-values-main">Enumerated Values</h4>
+
 <table><thead>
 <tr>
 <th>Property</th>
@@ -11601,7 +11857,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSenergyplanincentives">EnergyPlanIncentives</h3>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyplanincentives">EnergyPlanIncentives</h3>
+
+<p id="tocSenergyplanincentives" class="orig-anchor"></p>
 
 <p><a class="schema-anchor" id="schemacdr-energy-apienergyplanincentives"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
@@ -11615,7 +11873,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 </span></code></pre>
 <p><em>Optional list of incentives available for the contract</em></p>
-<h3 id='properties-22'>Properties</h3>
+
+<h3 id="cdr-energy-api_energyplanincentives_properties">Properties</h3>
+
 <table><thead>
 <tr>
 <th>Name</th>
@@ -11649,7 +11909,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>A display message outlining an eligibility criteria that may apply</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-10'>Enumerated Values</h4>
+
+<h4 id="cdr-energy-api_energyplanincentives_enumerated-values-main">Enumerated Values</h4>
+
 <table><thead>
 <tr>
 <th>Property</th>
@@ -11670,7 +11932,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSenergyplandiscounts">EnergyPlanDiscounts</h3>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyplandiscounts">EnergyPlanDiscounts</h3>
+
+<p id="tocSenergyplandiscounts" class="orig-anchor"></p>
 
 <p><a class="schema-anchor" id="schemacdr-energy-apienergyplandiscounts"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
@@ -11699,7 +11963,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 </span></code></pre>
 <p><em>Optional list of discounts available for the contract</em></p>
-<h3 id='properties-23'>Properties</h3>
+
+<h3 id="cdr-energy-api_energyplandiscounts_properties">Properties</h3>
+
 <table><thead>
 <tr>
 <th>Name</th>
@@ -11799,7 +12065,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>The usage amount threshold above which the discount applies</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-11'>Enumerated Values</h4>
+
+<h4 id="cdr-energy-api_energyplandiscounts_enumerated-values-main">Enumerated Values</h4>
+
 <table><thead>
 <tr>
 <th>Property</th>
@@ -11852,7 +12120,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSenergyplangreenpowercharges">EnergyPlanGreenPowerCharges</h3>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyplangreenpowercharges">EnergyPlanGreenPowerCharges</h3>
+
+<p id="tocSenergyplangreenpowercharges" class="orig-anchor"></p>
 
 <p><a class="schema-anchor" id="schemacdr-energy-apienergyplangreenpowercharges"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
@@ -11873,7 +12143,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 </span></code></pre>
 <p><em>Optional list of charges applicable to green power</em></p>
-<h3 id='properties-24'>Properties</h3>
+
+<h3 id="cdr-energy-api_energyplangreenpowercharges_properties">Properties</h3>
+
 <table><thead>
 <tr>
 <th>Name</th>
@@ -11931,7 +12203,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>The amount of the charge if the type implies the application of a fixed amount</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-12'>Enumerated Values</h4>
+
+<h4 id="cdr-energy-api_energyplangreenpowercharges_enumerated-values-main">Enumerated Values</h4>
+
 <table><thead>
 <tr>
 <th>Property</th>
@@ -11972,7 +12246,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSenergyplaneligibility">EnergyPlanEligibility</h3>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyplaneligibility">EnergyPlanEligibility</h3>
+
+<p id="tocSenergyplaneligibility" class="orig-anchor"></p>
 
 <p><a class="schema-anchor" id="schemacdr-energy-apienergyplaneligibility"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
@@ -11985,7 +12261,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 </span></code></pre>
 <p><em>Eligibility restrictions or requirements</em></p>
-<h3 id='properties-25'>Properties</h3>
+
+<h3 id="cdr-energy-api_energyplaneligibility_properties">Properties</h3>
+
 <table><thead>
 <tr>
 <th>Name</th>
@@ -12013,7 +12291,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>A description of the eligibility restriction</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-13'>Enumerated Values</h4>
+
+<h4 id="cdr-energy-api_energyplaneligibility_enumerated-values-main">Enumerated Values</h4>
+
 <table><thead>
 <tr>
 <th>Property</th>
@@ -12106,7 +12386,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSenergyplanfees">EnergyPlanFees</h3>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyplanfees">EnergyPlanFees</h3>
+
+<p id="tocSenergyplanfees" class="orig-anchor"></p>
 
 <p><a class="schema-anchor" id="schemacdr-energy-apienergyplanfees"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
@@ -12121,7 +12403,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 </span></code></pre>
 <p><em>An array of fees applicable to the plan</em></p>
-<h3 id='properties-26'>Properties</h3>
+
+<h3 id="cdr-energy-api_energyplanfees_properties">Properties</h3>
+
 <table><thead>
 <tr>
 <th>Name</th>
@@ -12161,7 +12445,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>A description of the fee</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-14'>Enumerated Values</h4>
+
+<h4 id="cdr-energy-api_energyplanfees_enumerated-values-main">Enumerated Values</h4>
+
 <table><thead>
 <tr>
 <th>Property</th>
@@ -12286,7 +12572,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSenergyplansolarfeedintariffv2">EnergyPlanSolarFeedInTariffV2</h3>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyplansolarfeedintariffv2">EnergyPlanSolarFeedInTariffV2</h3>
+
+<p id="tocSenergyplansolarfeedintariffv2" class="orig-anchor"></p>
 
 <p><a class="schema-anchor" id="schemacdr-energy-apienergyplansolarfeedintariffv2"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
@@ -12331,7 +12619,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 </span></code></pre>
 <p><em>Array of feed in tariffs for solar power</em></p>
-<h3 id='properties-27'>Properties</h3>
+
+<h3 id="cdr-energy-api_energyplansolarfeedintariffv2_properties">Properties</h3>
+
 <table><thead>
 <tr>
 <th>Name</th>
@@ -12462,18 +12752,20 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>»» startTime</td>
-<td><a href="#common-field-types">TimeString</a></td>
+<td><a href="#common-field-types">ExternalRef</a></td>
 <td>optional</td>
-<td>The beginning of the time period per day for which the tariff applies.  If absent assumes start of day (ie. midnight)</td>
+<td>The beginning of the time period per day for which the tariff applies.  If absent assumes start of day (ie. midnight).  Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Times">ISO 8601 Times</a>. If the time is provided without a UTC offset, the time zone will be determined by the value of EnergyPlanContract.timeZone.</td>
 </tr>
 <tr>
 <td>»» endTime</td>
-<td><a href="#common-field-types">TimeString</a></td>
+<td><a href="#common-field-types">ExternalRef</a></td>
 <td>optional</td>
-<td>The end of the time period per day for which the tariff applies.  If absent assumes end of day (ie. one second before midnight)</td>
+<td>The end of the time period per day for which the tariff applies.  If absent assumes end of day (ie. one second before midnight).  Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Times">ISO 8601 Times</a>. If the time is provided without a UTC offset, the time zone will be determined by the value of EnergyPlanContract.timeZone.</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-15'>Enumerated Values</h4>
+
+<h4 id="cdr-energy-api_energyplansolarfeedintariffv2_enumerated-values-main">Enumerated Values</h4>
+
 <table><thead>
 <tr>
 <th>Property</th>
@@ -12614,7 +12906,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSenergyplantariffperiod">EnergyPlanTariffPeriod</h3>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyplantariffperiod">EnergyPlanTariffPeriod</h3>
+
+<p id="tocSenergyplantariffperiod" class="orig-anchor"></p>
 
 <p><a class="schema-anchor" id="schemacdr-energy-apienergyplantariffperiod"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
@@ -12684,7 +12978,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 </span></code></pre>
 <p><em>Array of tariff periods</em></p>
-<h3 id='properties-28'>Properties</h3>
+
+<h3 id="cdr-energy-api_energyplantariffperiod_properties">Properties</h3>
+
 <table><thead>
 <tr>
 <th>Name</th>
@@ -12845,15 +13141,15 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>»» startTime</td>
-<td><a href="#common-field-types">TimeString</a></td>
+<td><a href="#common-field-types">ExternalRef</a></td>
 <td>mandatory</td>
-<td>Start of the period</td>
+<td>Start of the period.  Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Times">ISO 8601 Times</a>. If the time is provided without a UTC offset, the time zone will be determined by the value of EnergyPlanContract.timeZone.</td>
 </tr>
 <tr>
 <td>»» endTime</td>
-<td><a href="#common-field-types">TimeString</a></td>
+<td><a href="#common-field-types">ExternalRef</a></td>
 <td>mandatory</td>
-<td>End of the period</td>
+<td>End of the period.  Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Times">ISO 8601 Times</a>. If the time is provided without a UTC offset, the time zone will be determined by the value of EnergyPlanContract.timeZone.</td>
 </tr>
 <tr>
 <td>» type</td>
@@ -12893,15 +13189,15 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>» startTime</td>
-<td><a href="#common-field-types">TimeString</a></td>
+<td><a href="#common-field-types">ExternalRef</a></td>
 <td>mandatory</td>
-<td>Start of the period</td>
+<td>Start of the period.  Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Times">ISO 8601 Times</a>. If the time is provided without a UTC offset, the time zone will be determined by the value of EnergyPlanContract.timeZone.</td>
 </tr>
 <tr>
 <td>» endTime</td>
-<td><a href="#common-field-types">TimeString</a></td>
+<td><a href="#common-field-types">ExternalRef</a></td>
 <td>mandatory</td>
-<td>End of the period</td>
+<td>End of the period.  Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Times">ISO 8601 Times</a>. If the time is provided without a UTC offset, the time zone will be determined by the value of EnergyPlanContract.timeZone.</td>
 </tr>
 <tr>
 <td>» days</td>
@@ -12934,7 +13230,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Charge period for the demand tariff</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-16'>Enumerated Values</h4>
+
+<h4 id="cdr-energy-api_energyplantariffperiod_enumerated-values-main">Enumerated Values</h4>
+
 <table><thead>
 <tr>
 <th>Property</th>
@@ -13195,7 +13493,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSenergyservicepoint">EnergyServicePoint</h3>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyservicepoint">EnergyServicePoint</h3>
+
+<p id="tocSenergyservicepoint" class="orig-anchor"></p>
 
 <p><a class="schema-anchor" id="schemacdr-energy-apienergyservicepoint"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -13213,7 +13513,9 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-29'>Properties</h3>
+</span></code></pre>
+<h3 id="cdr-energy-api_energyservicepoint_properties">Properties</h3>
+
 <table><thead>
 <tr>
 <th>Name</th>
@@ -13289,7 +13591,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>A code that defines the consumption threshold as defined in the National Energy Retail Regulations, or in overriding Jurisdictional instruments. Note the details of enumeration values below: <ul><li><strong>LOW</strong> - Consumption is less than the ‘lower consumption threshold’ as defined in the National Energy Retail Regulations</li><li><strong>MEDIUM</strong> - Consumption is equal to or greater than the ‘lower consumption threshold’, but less than the ‘upper consumption threshold’, as defined in the National Energy Retail Regulations</li><li><strong>HIGH</strong> - Consumption is equal to or greater than the ‘upper consumption threshold’ as defined in the National Energy Retail Regulations</li></ul></td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-17'>Enumerated Values</h4>
+
+<h4 id="cdr-energy-api_energyservicepoint_enumerated-values-main">Enumerated Values</h4>
+
 <table><thead>
 <tr>
 <th>Property</th>
@@ -13402,7 +13706,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSenergyservicepointdetail">EnergyServicePointDetail</h3>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyservicepointdetail">EnergyServicePointDetail</h3>
+
+<p id="tocSenergyservicepointdetail" class="orig-anchor"></p>
 
 <p><a class="schema-anchor" id="schemacdr-energy-apienergyservicepointdetail"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -13495,7 +13801,9 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-30'>Properties</h3>
+</span></code></pre>
+<h3 id="cdr-energy-api_energyservicepointdetail_properties">Properties</h3>
+
 <table><thead>
 <tr>
 <th>Name</th>
@@ -13739,7 +14047,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Actual/Subtractive Indicator. Note the details of enumeration values below: <ul><li><strong>ACTUAL</strong> implies volume of energy actually metered between two dates</li><li><strong>CUMULATIVE</strong> indicates a meter reading for a specific date. A second Meter Reading is required to determine the consumption between those two Meter Reading dates</li></ul></td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-18'>Enumerated Values</h4>
+
+<h4 id="cdr-energy-api_energyservicepointdetail_enumerated-values-main">Enumerated Values</h4>
+
 <table><thead>
 <tr>
 <th>Property</th>
@@ -14000,7 +14310,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSenergyusageread">EnergyUsageRead</h3>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyusageread">EnergyUsageRead</h3>
+
+<p id="tocSenergyusageread" class="orig-anchor"></p>
 
 <p><a class="schema-anchor" id="schemacdr-energy-apienergyusageread"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -14033,7 +14345,9 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-31'>Properties</h3>
+</span></code></pre>
+<h3 id="cdr-energy-api_energyusageread_properties">Properties</h3>
+
 <table><thead>
 <tr>
 <th>Name</th>
@@ -14163,7 +14477,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>The quality of the read taken</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-19'>Enumerated Values</h4>
+
+<h4 id="cdr-energy-api_energyusageread_enumerated-values-main">Enumerated Values</h4>
+
 <table><thead>
 <tr>
 <th>Property</th>
@@ -14200,7 +14516,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSenergyderrecord">EnergyDerRecord</h3>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyderrecord">EnergyDerRecord</h3>
+
+<p id="tocSenergyderrecord" class="orig-anchor"></p>
 
 <p><a class="schema-anchor" id="schemacdr-energy-apienergyderrecord"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -14255,7 +14573,9 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-32'>Properties</h3>
+</span></code></pre>
+<h3 id="cdr-energy-api_energyderrecord_properties">Properties</h3>
+
 <table><thead>
 <tr>
 <th>Name</th>
@@ -14517,7 +14837,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Maximum storage capacity in kVAh. This refers to the capacity of each storage module within the device group. Mandatory if type is equal to “STORAGE”. Default is 0 if value not known</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-20'>Enumerated Values</h4>
+
+<h4 id="cdr-energy-api_energyderrecord_enumerated-values-main">Enumerated Values</h4>
+
 <table><thead>
 <tr>
 <th>Property</th>
@@ -14590,7 +14912,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSenergyaccountbasev2">EnergyAccountBaseV2</h3>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyaccountbasev2">EnergyAccountBaseV2</h3>
+
+<p id="tocSenergyaccountbasev2" class="orig-anchor"></p>
 
 <p><a class="schema-anchor" id="schemacdr-energy-apienergyaccountbasev2"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -14601,7 +14925,9 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="s2">"creationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-33'>Properties</h3>
+</span></code></pre>
+<h3 id="cdr-energy-api_energyaccountbasev2_properties">Properties</h3>
+
 <table><thead>
 <tr>
 <th>Name</th>
@@ -14641,7 +14967,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>The date that the account was created or opened. Mandatory if openStatus is OPEN</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-21'>Enumerated Values</h4>
+
+<h4 id="cdr-energy-api_energyaccountbasev2_enumerated-values-main">Enumerated Values</h4>
+
 <table><thead>
 <tr>
 <th>Property</th>
@@ -14658,7 +14986,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSenergyaccountv2">EnergyAccountV2</h3>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyaccountv2">EnergyAccountV2</h3>
+
+<p id="tocSenergyaccountv2" class="orig-anchor"></p>
 
 <p><a class="schema-anchor" id="schemacdr-energy-apienergyaccountv2"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -14682,7 +15012,9 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-34'>Properties</h3>
+</span></code></pre>
+<h3 id="cdr-energy-api_energyaccountv2_properties">Properties</h3>
+
 <p><em>allOf</em></p>
 
 <table><thead>
@@ -14761,7 +15093,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSenergyaccountdetailv3">EnergyAccountDetailV3</h3>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyaccountdetailv3">EnergyAccountDetailV3</h3>
+
+<p id="tocSenergyaccountdetailv3" class="orig-anchor"></p>
 
 <p><a class="schema-anchor" id="schemacdr-energy-apienergyaccountdetailv3"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -15211,7 +15545,9 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-35'>Properties</h3>
+</span></code></pre>
+<h3 id="cdr-energy-api_energyaccountdetailv3_properties">Properties</h3>
+
 <p><em>allOf</em></p>
 
 <table><thead>
@@ -15391,7 +15727,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Used for a trailing suffix to the name (e.g. Jr)</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-22'>Enumerated Values</h4>
+
+<h4 id="cdr-energy-api_energyaccountdetailv3_enumerated-values-main">Enumerated Values</h4>
+
 <table><thead>
 <tr>
 <th>Property</th>
@@ -15412,7 +15750,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSenergypaymentschedule">EnergyPaymentSchedule</h3>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergypaymentschedule">EnergyPaymentSchedule</h3>
+
+<p id="tocSenergypaymentschedule" class="orig-anchor"></p>
 
 <p><a class="schema-anchor" id="schemacdr-energy-apienergypaymentschedule"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -15443,7 +15783,9 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-36'>Properties</h3>
+</span></code></pre>
+<h3 id="cdr-energy-api_energypaymentschedule_properties">Properties</h3>
+
 <table><thead>
 <tr>
 <th>Name</th>
@@ -15579,7 +15921,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>The frequency with which a bill will be issued.  Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 Durations</a> (excludes recurrence syntax)</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-23'>Enumerated Values</h4>
+
+<h4 id="cdr-energy-api_energypaymentschedule_enumerated-values-main">Enumerated Values</h4>
+
 <table><thead>
 <tr>
 <th>Property</th>
@@ -15684,7 +16028,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSenergyconcession">EnergyConcession</h3>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyconcession">EnergyConcession</h3>
+
+<p id="tocSenergyconcession" class="orig-anchor"></p>
 
 <p><a class="schema-anchor" id="schemacdr-energy-apienergyconcession"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -15702,7 +16048,9 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-37'>Properties</h3>
+</span></code></pre>
+<h3 id="cdr-energy-api_energyconcession_properties">Properties</h3>
+
 <table><thead>
 <tr>
 <th>Name</th>
@@ -15772,7 +16120,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Array of ENUM&#39;s to specify what the concession applies to. Multiple ENUM values can be provided. If absent, USAGE is assumed</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-24'>Enumerated Values</h4>
+
+<h4 id="cdr-energy-api_energyconcession_enumerated-values-main">Enumerated Values</h4>
+
 <table><thead>
 <tr>
 <th>Property</th>
@@ -15809,7 +16159,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSenergyinvoice">EnergyInvoice</h3>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyinvoice">EnergyInvoice</h3>
+
+<p id="tocSenergyinvoice" class="orig-anchor"></p>
 
 <p><a class="schema-anchor" id="schemacdr-energy-apienergyinvoice"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -15868,7 +16220,9 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="s2">"paymentStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PAID"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-38'>Properties</h3>
+</span></code></pre>
+<h3 id="cdr-energy-api_energyinvoice_properties">Properties</h3>
+
 <table><thead>
 <tr>
 <th>Name</th>
@@ -15992,7 +16346,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Indicator of the payment status for the invoice</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-25'>Enumerated Values</h4>
+
+<h4 id="cdr-energy-api_energyinvoice_enumerated-values-main">Enumerated Values</h4>
+
 <table><thead>
 <tr>
 <th>Property</th>
@@ -16013,7 +16369,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSenergyinvoicegasusagecharges">EnergyInvoiceGasUsageCharges</h3>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyinvoicegasusagecharges">EnergyInvoiceGasUsageCharges</h3>
+
+<p id="tocSenergyinvoicegasusagecharges" class="orig-anchor"></p>
 
 <p><a class="schema-anchor" id="schemacdr-energy-apienergyinvoicegasusagecharges"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -16031,7 +16389,9 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="s2">"totalGst"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-39'>Properties</h3>
+</span></code></pre>
+<h3 id="cdr-energy-api_energyinvoicegasusagecharges_properties">Properties</h3>
+
 <table><thead>
 <tr>
 <th>Name</th>
@@ -16095,7 +16455,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>The total GST for all gas usage charges.  If absent then zero is assumed</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-26'>Enumerated Values</h4>
+
+<h4 id="cdr-energy-api_energyinvoicegasusagecharges_enumerated-values-main">Enumerated Values</h4>
+
 <table><thead>
 <tr>
 <th>Property</th>
@@ -16132,7 +16494,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSenergyinvoiceelectricityusagecharges">EnergyInvoiceElectricityUsageCharges</h3>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyinvoiceelectricityusagecharges">EnergyInvoiceElectricityUsageCharges</h3>
+
+<p id="tocSenergyinvoiceelectricityusagecharges" class="orig-anchor"></p>
 
 <p><a class="schema-anchor" id="schemacdr-energy-apienergyinvoiceelectricityusagecharges"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -16150,7 +16514,9 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="s2">"totalGst"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-40'>Properties</h3>
+</span></code></pre>
+<h3 id="cdr-energy-api_energyinvoiceelectricityusagecharges_properties">Properties</h3>
+
 <table><thead>
 <tr>
 <th>Name</th>
@@ -16214,7 +16580,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>The total GST for all electricity usage charges.  If absent then zero is assumed</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-27'>Enumerated Values</h4>
+
+<h4 id="cdr-energy-api_energyinvoiceelectricityusagecharges_enumerated-values-main">Enumerated Values</h4>
+
 <table><thead>
 <tr>
 <th>Property</th>
@@ -16251,7 +16619,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSenergyinvoiceaccountcharges">EnergyInvoiceAccountCharges</h3>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyinvoiceaccountcharges">EnergyInvoiceAccountCharges</h3>
+
+<p id="tocSenergyinvoiceaccountcharges" class="orig-anchor"></p>
 
 <p><a class="schema-anchor" id="schemacdr-energy-apienergyinvoiceaccountcharges"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -16262,7 +16632,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 </span></code></pre>
 <p><em>Object contains account level charges and credits related to electricity usage</em></p>
-<h3 id='properties-41'>Properties</h3>
+
+<h3 id="cdr-energy-api_energyinvoiceaccountcharges_properties">Properties</h3>
+
 <table><thead>
 <tr>
 <th>Name</th>
@@ -16291,9 +16663,11 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSenergybillingtransactionv2">EnergyBillingTransactionV2</h3>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergybillingtransactionv3">EnergyBillingTransactionV3</h3>
 
-<p><a class="schema-anchor" id="schemacdr-energy-apienergybillingtransactionv2"></a></p>
+<p id="tocSenergybillingtransactionv3" class="orig-anchor"></p>
+
+<p><a class="schema-anchor" id="schemacdr-energy-apienergybillingtransactionv3"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"executionDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -16331,6 +16705,7 @@ To perform this operation, you must be authenticated and authorised with the fol
     </span><span class="s2">"isEstimate"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"measureUnit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KWH"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"rate"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
     </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"calculationFactors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -16379,7 +16754,9 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-42'>Properties</h3>
+</span></code></pre>
+<h3 id="cdr-energy-api_energybillingtransactionv3_properties">Properties</h3>
+
 <table><thead>
 <tr>
 <th>Name</th>
@@ -16420,7 +16797,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>demand</td>
-<td><a href="#schemacdr-energy-apienergybillingdemandtransactionv2">EnergyBillingDemandTransactionV2</a></td>
+<td><a href="#schemacdr-energy-apienergybillingdemandtransactionv3">EnergyBillingDemandTransactionV3</a></td>
 <td>optional</td>
 <td>Represents a demand charge or generation credit.  Mandatory if transactionUType is equal to demand</td>
 </tr>
@@ -16443,7 +16820,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Represents a payment to the account.  Mandatory if transactionUType is equal to payment</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-28'>Enumerated Values</h4>
+
+<h4 id="cdr-energy-api_energybillingtransactionv3_enumerated-values-main">Enumerated Values</h4>
+
 <table><thead>
 <tr>
 <th>Property</th>
@@ -16472,7 +16851,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSenergybillingusagetransactionv2">EnergyBillingUsageTransactionV2</h3>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergybillingusagetransactionv2">EnergyBillingUsageTransactionV2</h3>
+
+<p id="tocSenergybillingusagetransactionv2" class="orig-anchor"></p>
 
 <p><a class="schema-anchor" id="schemacdr-energy-apienergybillingusagetransactionv2"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -16500,7 +16881,9 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-43'>Properties</h3>
+</span></code></pre>
+<h3 id="cdr-energy-api_energybillingusagetransactionv2_properties">Properties</h3>
+
 <table><thead>
 <tr>
 <th>Name</th>
@@ -16606,7 +16989,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>A free text description of the adjustment</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-29'>Enumerated Values</h4>
+
+<h4 id="cdr-energy-api_energybillingusagetransactionv2_enumerated-values-main">Enumerated Values</h4>
+
 <table><thead>
 <tr>
 <th>Property</th>
@@ -16695,9 +17080,11 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSenergybillingdemandtransactionv2">EnergyBillingDemandTransactionV2</h3>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergybillingdemandtransactionv3">EnergyBillingDemandTransactionV3</h3>
 
-<p><a class="schema-anchor" id="schemacdr-energy-apienergybillingdemandtransactionv2"></a></p>
+<p id="tocSenergybillingdemandtransactionv3" class="orig-anchor"></p>
+
+<p><a class="schema-anchor" id="schemacdr-energy-apienergybillingdemandtransactionv3"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"servicePointId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"invoiceNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -16706,6 +17093,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="s2">"isEstimate"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
   </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"measureUnit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KWH"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"rate"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"calculationFactors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -16722,7 +17110,9 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-44'>Properties</h3>
+</span></code></pre>
+<h3 id="cdr-energy-api_energybillingdemandtransactionv3_properties">Properties</h3>
+
 <table><thead>
 <tr>
 <th>Name</th>
@@ -16774,10 +17164,16 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Date and time when the demand period ends</td>
 </tr>
 <tr>
+<td>measureUnit</td>
+<td><a href="#common-field-types">Enum</a></td>
+<td>optional</td>
+<td>The measurement unit of rate. Assumed to be KVA if absent</td>
+</tr>
+<tr>
 <td>rate</td>
 <td>number</td>
 <td>mandatory</td>
-<td>The rate for the demand charge in kVA.  A negative value indicates power generated</td>
+<td>The rate for the demand charge in measureUnit. Assumed to be KVA if measureUnit not provided. A negative value indicates power generated</td>
 </tr>
 <tr>
 <td>amount</td>
@@ -16822,7 +17218,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>A free text description of the adjustment</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-30'>Enumerated Values</h4>
+
+<h4 id="cdr-energy-api_energybillingdemandtransactionv3_enumerated-values-main">Enumerated Values</h4>
+
 <table><thead>
 <tr>
 <th>Property</th>
@@ -16874,6 +17272,38 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>EXCESS</td>
 </tr>
 <tr>
+<td>measureUnit</td>
+<td>KWH</td>
+</tr>
+<tr>
+<td>measureUnit</td>
+<td>KVA</td>
+</tr>
+<tr>
+<td>measureUnit</td>
+<td>KVAR</td>
+</tr>
+<tr>
+<td>measureUnit</td>
+<td>KVARH</td>
+</tr>
+<tr>
+<td>measureUnit</td>
+<td>KW</td>
+</tr>
+<tr>
+<td>measureUnit</td>
+<td>DAYS</td>
+</tr>
+<tr>
+<td>measureUnit</td>
+<td>METER</td>
+</tr>
+<tr>
+<td>measureUnit</td>
+<td>MONTH</td>
+</tr>
+<tr>
 <td>type</td>
 <td>DLF</td>
 </tr>
@@ -16883,7 +17313,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSenergybillingonceofftransaction">EnergyBillingOnceOffTransaction</h3>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergybillingonceofftransaction">EnergyBillingOnceOffTransaction</h3>
+
+<p id="tocSenergybillingonceofftransaction" class="orig-anchor"></p>
 
 <p><a class="schema-anchor" id="schemacdr-energy-apienergybillingonceofftransaction"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -16893,7 +17325,9 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-45'>Properties</h3>
+</span></code></pre>
+<h3 id="cdr-energy-api_energybillingonceofftransaction_properties">Properties</h3>
+
 <table><thead>
 <tr>
 <th>Name</th>
@@ -16928,7 +17362,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSenergybillingothertransaction">EnergyBillingOtherTransaction</h3>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergybillingothertransaction">EnergyBillingOtherTransaction</h3>
+
+<p id="tocSenergybillingothertransaction" class="orig-anchor"></p>
 
 <p><a class="schema-anchor" id="schemacdr-energy-apienergybillingothertransaction"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -16953,7 +17389,9 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-46'>Properties</h3>
+</span></code></pre>
+<h3 id="cdr-energy-api_energybillingothertransaction_properties">Properties</h3>
+
 <table><thead>
 <tr>
 <th>Name</th>
@@ -17041,7 +17479,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>A free text description of the adjustment</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-31'>Enumerated Values</h4>
+
+<h4 id="cdr-energy-api_energybillingothertransaction_enumerated-values-main">Enumerated Values</h4>
+
 <table><thead>
 <tr>
 <th>Property</th>
@@ -17086,7 +17526,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSenergybillingpaymenttransaction">EnergyBillingPaymentTransaction</h3>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergybillingpaymenttransaction">EnergyBillingPaymentTransaction</h3>
+
+<p id="tocSenergybillingpaymenttransaction" class="orig-anchor"></p>
 
 <p><a class="schema-anchor" id="schemacdr-energy-apienergybillingpaymenttransaction"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -17094,7 +17536,9 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="s2">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DIRECT_DEBIT"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-47'>Properties</h3>
+</span></code></pre>
+<h3 id="cdr-energy-api_energybillingpaymenttransaction_properties">Properties</h3>
+
 <table><thead>
 <tr>
 <th>Name</th>
@@ -17116,7 +17560,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>The method of payment</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-32'>Enumerated Values</h4>
+
+<h4 id="cdr-energy-api_energybillingpaymenttransaction_enumerated-values-main">Enumerated Values</h4>
+
 <table><thead>
 <tr>
 <th>Property</th>
@@ -17153,7 +17599,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocScommonphysicaladdress">CommonPhysicalAddress</h3>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocScommonphysicaladdress">CommonPhysicalAddress</h3>
+
+<p id="tocScommonphysicaladdress" class="orig-anchor"></p>
 
 <p><a class="schema-anchor" id="schemacdr-energy-apicommonphysicaladdress"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -17194,7 +17642,9 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-48'>Properties</h3>
+</span></code></pre>
+<h3 id="cdr-energy-api_commonphysicaladdress_properties">Properties</h3>
+
 <table><thead>
 <tr>
 <th>Name</th>
@@ -17222,7 +17672,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Australian address formatted according to the file format defined by the <a href="https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf">PAF file format</a>. Required if addressUType is set to paf</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-33'>Enumerated Values</h4>
+
+<h4 id="cdr-energy-api_commonphysicaladdress_enumerated-values-main">Enumerated Values</h4>
+
 <table><thead>
 <tr>
 <th>Property</th>
@@ -17239,7 +17691,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocScommonsimpleaddress">CommonSimpleAddress</h3>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocScommonsimpleaddress">CommonSimpleAddress</h3>
+
+<p id="tocScommonsimpleaddress" class="orig-anchor"></p>
 
 <p><a class="schema-anchor" id="schemacdr-energy-apicommonsimpleaddress"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -17255,7 +17709,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 </span></code></pre>
 <p><em>Required if addressUType is set to simple</em></p>
-<h3 id='properties-49'>Properties</h3>
+
+<h3 id="cdr-energy-api_commonsimpleaddress_properties">Properties</h3>
+
 <table><thead>
 <tr>
 <th>Name</th>
@@ -17314,7 +17770,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocScommonpafaddress">CommonPAFAddress</h3>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocScommonpafaddress">CommonPAFAddress</h3>
+
+<p id="tocScommonpafaddress" class="orig-anchor"></p>
 
 <p><a class="schema-anchor" id="schemacdr-energy-apicommonpafaddress"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -17344,7 +17802,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 </span></code></pre>
 <p><em>Australian address formatted according to the file format defined by the <a href="https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf">PAF file format</a>. Required if addressUType is set to paf</em></p>
-<h3 id='properties-50'>Properties</h3>
+
+<h3 id="cdr-energy-api_commonpafaddress_properties">Properties</h3>
+
 <table><thead>
 <tr>
 <th>Name</th>
@@ -17487,7 +17947,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSrequestservicepointidlist">RequestServicePointIdList</h3>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSrequestservicepointidlist">RequestServicePointIdList</h3>
+
+<p id="tocSrequestservicepointidlist" class="orig-anchor"></p>
 
 <p><a class="schema-anchor" id="schemacdr-energy-apirequestservicepointidlist"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -17499,7 +17961,9 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-51'>Properties</h3>
+</span></code></pre>
+<h3 id="cdr-energy-api_requestservicepointidlist_properties">Properties</h3>
+
 <table><thead>
 <tr>
 <th>Name</th>
@@ -17528,7 +17992,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSrequestaccountidlist">RequestAccountIdList</h3>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSrequestaccountidlist">RequestAccountIdList</h3>
+
+<p id="tocSrequestaccountidlist" class="orig-anchor"></p>
 
 <p><a class="schema-anchor" id="schemacdr-energy-apirequestaccountidlist"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -17540,7 +18006,9 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-52'>Properties</h3>
+</span></code></pre>
+<h3 id="cdr-energy-api_requestaccountidlist_properties">Properties</h3>
+
 <table><thead>
 <tr>
 <th>Name</th>
@@ -17569,14 +18037,18 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSlinks">Links</h3>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSlinks">Links</h3>
+
+<p id="tocSlinks" class="orig-anchor"></p>
 
 <p><a class="schema-anchor" id="schemacdr-energy-apilinks"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-53'>Properties</h3>
+</span></code></pre>
+<h3 id="cdr-energy-api_links_properties">Properties</h3>
+
 <table><thead>
 <tr>
 <th>Name</th>
@@ -17593,15 +18065,21 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSmeta">Meta</h3>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSmeta">Meta</h3>
+
+<p id="tocSmeta" class="orig-anchor"></p>
 
 <p><a class="schema-anchor" id="schemacdr-energy-apimeta"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{}</span><span class="w">
 
-</span></code></pre><h3 id='properties-54'>Properties</h3>
+</span></code></pre>
+<h3 id="cdr-energy-api_meta_properties">Properties</h3>
+
 <p><em>None</em></p>
 
-<h3 class="schema-toc" id="tocSlinkspaginated">LinksPaginated</h3>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSlinkspaginated">LinksPaginated</h3>
+
+<p id="tocSlinkspaginated" class="orig-anchor"></p>
 
 <p><a class="schema-anchor" id="schemacdr-energy-apilinkspaginated"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -17612,7 +18090,9 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="s2">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-55'>Properties</h3>
+</span></code></pre>
+<h3 id="cdr-energy-api_linkspaginated_properties">Properties</h3>
+
 <table><thead>
 <tr>
 <th>Name</th>
@@ -17653,7 +18133,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSmetapaginated">MetaPaginated</h3>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSmetapaginated">MetaPaginated</h3>
+
+<p id="tocSmetapaginated" class="orig-anchor"></p>
 
 <p><a class="schema-anchor" id="schemacdr-energy-apimetapaginated"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -17661,7 +18143,9 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="s2">"totalPages"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-56'>Properties</h3>
+</span></code></pre>
+<h3 id="cdr-energy-api_metapaginated_properties">Properties</h3>
+
 <table><thead>
 <tr>
 <th>Name</th>

@@ -1,4 +1,7 @@
-<h2 id='consent-standards'>Consent Standards</h2>
+<h2 class="schema-heading" id="consumer-experience_consent-standards">Consent Standards</h2>
+<pre class="highlight diff tab-diff"><code>Consent Standards subheadings included in menu navigation
+</code></pre><pre class="highlight diff tab-diff"><code>Added 'Business consumer statement' details
+</code></pre>
 <table><thead>
 <tr>
 <th>Area</th>
@@ -10,6 +13,14 @@
 <td>Data recipients <strong>MUST</strong> notify consumers of redirection prior to authentication.</td>
 </tr>
 <tr>
+<td><strong>Business consumer statement:</strong> Method</td>
+<td>When seeking a business consumer statement, data recipients <strong>MUST</strong> invite the business consumer to give the business consumer statement in a manner that is explicit, express, and through an active selection or declaration.<br><br>The giving of a business consumer statement <strong>MUST</strong> be clearly separated from any other interaction or information provided to the consumer and <strong>MUST NOT</strong> be implied or bundled with any other permission.</td>
+</tr>
+<tr>
+<td><strong>Business consumer statement:</strong> Content</td>
+<td>Data recipients <strong>MUST</strong> use plain and concise language when inviting a consumer to give a business consumer statement.</td>
+</tr>
+<tr>
 <td><strong>Disclosure consent:</strong><br/>Collection source</td>
 <td>In the course of seeking a consumer’s consent to disclose data as part of a disclosure consent:<ol><li>Data Recipients <strong>MUST</strong> specify which CDR Participant(s) they collected the associated CDR data from</li><li>Data Recipients <strong>SHOULD</strong> specify the sector(s) the data was collected from or associated with</li></ol><strong>Note:</strong><ul><li>Point (1) only requires the Data Recipient to refer to the CDR Participant(s) immediately preceding them in the disclosure chain, which may not always include a consumer’s Data Holder(s)</li><li>This standard is proposed to apply to all data to be disclosed by a Data Recipient, including unmodified, aggregated, derived, and transformed CDR data</li><li>Where applicable, the existing data language standards apply to descriptions of CDR data that have not been modified</li></ul></td>
 </tr>
@@ -19,12 +30,11 @@
 </tr>
 </tbody></table>
 
-<p><br>
-<strong>Disclosure Consent: Insight Descriptions</strong>
-<br><br>
-The standards in this section outline insight description requirements that apply where an insight disclosure consent is being sought and may also feature in CDR Receipts and Dashboards. These standards do not alter any existing rules obligations for CDR receipts or dashboards.
-<br><br>
-<strong>Note:</strong> The use of the term ‘data recipients’ to refer to accredited data recipients is consistent with the data standards nomenclature. Where these standards refer to ‘data recipient’, this should not be taken to mean a non-accredited person or trusted adviser.</p>
+<h3 class="schema-toc" data-cds-menu="h3" id="consumer-experience_consent-standards_disclosure-consent-insight-descriptions">Disclosure Consent: Insight Descriptions</h3>
+
+<p>The standards in this section outline insight description requirements that apply where an insight disclosure consent is being sought and may also feature in CDR Receipts and Dashboards. These standards do not alter any existing rules obligations for CDR receipts or dashboards.</p>
+
+<p><strong>Note:</strong> The use of the term ‘data recipients’ to refer to accredited data recipients is consistent with the data standards nomenclature. Where these standards refer to ‘data recipient’, this should not be taken to mean a non-accredited person or trusted adviser.</p>
 
 <table><thead>
 <tr>
@@ -50,13 +60,19 @@ The standards in this section outline insight description requirements that appl
 </tr>
 </tbody></table>
 
-<p><br>
-<strong>Disclosure Consent: Non-Accredited Person Disclosure Notification</strong>
-<br><br>
-The standards in this section outline requirements that apply when a disclosure consent is being sought to disclose data to a non-accredited person, which includes insight disclosure consents and trusted adviser disclosure consents.<br><br>These standards will feature where such a disclosure consent is being sought and may, as stated in any accompanying notes, also feature in CDR Receipts and Dashboards.
-<br><br>
-<strong>Note:</strong> The use of the term ‘data recipients’ to refer to accredited data recipients is consistent with the data standards nomenclature. Where these standards refer to ‘data recipient’, this should not be taken to mean a non-accredited person or trusted adviser.</p>
+<h3 class="schema-toc" data-cds-menu="h3" id="consumer-experience_consent-standards_disclosure-consent-non-accredited-person-disclosure-notification">Disclosure Consent: Non-Accredited Person Disclosure Notification</h3>
+<pre class="highlight diff tab-diff"><code>First sentence updated to include 'business consumer disclosure consents'
+<span class="gd">- The standards in this section outline requirements that apply when a disclosure consent is being sought to disclose data to a non-accredited person, which includes insight disclosure consents and trusted adviser disclosure consents.
+</span><span class="gi">+ The standards in this section outline requirements that apply when a disclosure consent is being sought to disclose data to a non-accredited person, which includes insight disclosure consents, business consumer disclosure consents, and trusted adviser disclosure consents.
+</span></code></pre>
+<p>The standards in this section outline requirements that apply when a disclosure consent is being sought to disclose data to a non-accredited person, which includes insight disclosure consents, business consumer disclosure consents, and trusted adviser disclosure consents.</p>
 
+<p>These standards will feature where such a disclosure consent is being sought and may, as stated in any accompanying notes, also feature in CDR Receipts and Dashboards.</p>
+
+<p><strong>Note:</strong> The use of the term ‘data recipients’ to refer to accredited data recipients is consistent with the data standards nomenclature. Where these standards refer to ‘data recipient’, this should not be taken to mean a non-accredited person or trusted adviser.</p>
+<pre class="highlight diff tab-diff"><code>Added to 'Disclosure consent: CDR protections' row
+<span class="gi">+ This information SHOULD be immediately viewable by the consumer without further interaction.
+</span></code></pre>
 <table><thead>
 <tr>
 <th>Area</th>
@@ -65,7 +81,7 @@ The standards in this section outline requirements that apply when a disclosure 
 </thead><tbody>
 <tr>
 <td><strong>Disclosure consent:</strong> <br> CDR protections</td>
-<td>Data recipients <strong>MUST</strong> state that data disclosed to a non-accredited person will not be regulated as part of the Consumer Data Right.<br><br>Data recipients <strong>MAY</strong> include a plain and concise explanation of what this means, which <strong>MAY</strong> include information on the Consumer Data Right, and <strong>MAY</strong> include a link to the <a href="https://www.oaic.gov.au/consumer-data-right">Office of the Australian Information Commissioner guidance on the Consumer Data Right.</a></td>
+<td>Data recipients <strong>MUST</strong> state that data disclosed to a non-accredited person will not be regulated as part of the Consumer Data Right.<br><br>This information <strong>SHOULD</strong> be immediately viewable by the consumer without further interaction.<br><br>Data recipients <strong>MAY</strong> include a plain and concise explanation of what this means, which <strong>MAY</strong> include information on the Consumer Data Right, and <strong>MAY</strong> include a link to the <a href="https://www.oaic.gov.au/consumer-data-right">Office of the Australian Information Commissioner guidance on the Consumer Data Right.</a></td>
 </tr>
 <tr>
 <td><strong>Disclosure consent:</strong> <br> Review</td>
