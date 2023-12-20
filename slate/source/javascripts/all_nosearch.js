@@ -4,6 +4,7 @@
 //= require ./app/_tooltips
 //= require ./app/_datepicker
 //= require ./app/_scroll
+//= require ./cds/standards-category
 
 $(function() {
   loadToc($('#toc'), '.toc-link', '.toc-list-h2', 10);
