@@ -210,6 +210,10 @@ PENALTY | A specific penalty rate that may be applied. A penalty rate increases 
 
 Description of the usage of the `maturityInstructions` field as it applies to accounts.
 
+```diff
+Added additional entries for PAID_OUT_AT_MATURITY and ROLLED_OVER
+```
+
 |Value|Description|Use of additionalValue Field|
 |-----|-----------|----------------------------|
 |HOLD_ON_MATURITY|Funds are held in a facility or similar mechanism managed by the data holder for a period of time until the customer provides instructions or the maximum period of the hold has elapsed. Funds may be renewed or withdrawn upon instructions by the customer|NA|

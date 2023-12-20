@@ -27,6 +27,7 @@ This release addresses the following minor defects raised on [Standards Staging]
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
 - [Standards Maintenance Issue 587 - EnergyBillingDemandTransactionV2 - Measure Unit](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/587)
+- [Standards Maintenance Issue 612 - Maintenance Iteration 17 Holistic Feedback](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/612)
 - [Standards Maintenance Issue 613 - Time format change request for Energy Plan Data](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/613)
 
 ### Decision Proposals
@@ -46,6 +47,8 @@ This release addresses the following Decision Proposals published on [Standards]
 |CX navigation links|**[Standards Staging #338](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/338):** Included subheadings in Consumer Experience navigation for two sections|[Consumer Experience](../../#consumer-experience)|
 |Common Field Types in arrays|**[Standards Staging #348](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/348):** Properties defined in response schemas with specific 'Common Field Types' values inside arrays should show the specific type instead of a generic type | Response Properties tables |
 |Enum property type|**[Standards Staging #349](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/349):** Request parameters defined with enumerated values will now show the type as 'Enum' instead of 'string' | Request Parameters tables |
+|Obligation Date Reference|Added a reference to the Obligation Date Schedule|[Future Dated Obligations](../../#future-dated-obligations)|
+|Updated DSB Link|Updated the reference to informaiton on the DSB|[Introduction](../../#introduction)|
 
 
 ## Introduction
@@ -65,7 +68,13 @@ This release addresses the following Decision Proposals published on [Standards]
 |------|-----------|----|
 | Measure Unit in EnergyBillingDemandTransaction | **[Standards Maintenance #587](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/587):** Added new field `measureUnit` in EnergyBillingDemandTransaction. Incremented versions of `Get Billing for Account`, `Get Billing for Specific Account` and `Get Bulk Billing` endpoints | [Energy APIs](../../#energy-apis) |
 | Change time field type | [**Standards Maintenance #613**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/613): Change the type of time fields in energy plan data to ExternalRef referring to [ISO 8601 Times](https://en.wikipedia.org/wiki/ISO_8601#Times) specification. | [Energy APIs](../../#energy-apis) |
+|Register API Names|Minor changes to the names of the Register APIs in the summary table|[Register APIs](../../#register-apis)|
+|Term Deposit Account Types|Added additional additionalValue field explanations for term deposit account types|[Product Deposit Rate Types](../../#product-amp-account-components)|
+|Corrected Field References|ified references to three incorrect field labels (tierMinimumValue, tierMaximumValue, tierUnitOfMeasure) in the property descriptions of BankingProductRateTierV3|[BankingProductRateTierV3](../../#cdr-banking-api_schemas_tocSbankingproductratetierv3)|
+|Normative Ref Update|Add reference to RFC7636 to the entry for PKCE|[Normative References](../../#normative-references)|
+|Number Clarification|Clarified that a number can be integer or decimal|[Common Field Types](../../#common-field-types)|
 
+#product-amp-account-components
 ## Information Security Profile
 
 |Change|Description|Link|
@@ -76,12 +85,15 @@ This release addresses the following Decision Proposals published on [Standards]
 |Change|Description|Link|
 |------|-----------|----|
 
+
 ## Consumer Experience
 
 |Change|Description|Link|
 |------|-----------|----|
 |Dashboard Standards|**[Decision Proposal #334](https://github.com/ConsumerDataStandardsAustralia/standards/issues/334):** Added Dashboard Standards section to include detail for Data Holder Dashboards|[Dashboard Standards](../../#consumer-experience_dashboard-standards)|
 |Business Consumer Provisions|**[Decision Proposal #333](https://github.com/ConsumerDataStandardsAustralia/standards/issues/333):** Updated requirements for Business consumer statements and Business consumer disclosure consents|[Consent Standards](../../#consent-standards)|
+|New Guidelines Link|Updated the CX Guidelines link to the new site|[Consumer Experience](../../#consumer-experience)|
+
 
 ## Non-Functional Requirements
 
