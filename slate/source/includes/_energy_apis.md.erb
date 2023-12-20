@@ -9,6 +9,16 @@ This specification defines the APIs for Data Holders exposing Energy endpoints.
 </table>
 
 ```diff
+Changed type of the following time fields from timeString to ExternalRef referring to ISO 8601 Times specification:
+    EnergyPlanControlledLoad.timeOfUseRates.timeOfUse.startTime
+    EnergyPlanControlledLoad.timeOfUseRates.timeOfUse.endTime
+    EnergyPlanSolarFeedInTariffV2.timeVaryingTariffs.timeVariations.startTime
+    EnergyPlanSolarFeedInTariffV2.timeVaryingTariffs.timeVariations.endTime
+    EnergyPlanTariffPeriod.timeOfUseRates.timeOfUse.startTime
+    EnergyPlanTariffPeriod.timeOfUseRates.timeOfUse.endTime
+    EnergyPlanTariffPeriod.demandCharges.startTime
+    EnergyPlanTariffPeriod.demandCharges.endTime
+
 Added following ENUM field to EnergyBillingDemandTransaction:
 + measureUnit
 
@@ -26,7 +36,6 @@ to:
 + EnergyBillingListResponseV3
 + EnergyBillingTransactionV3
 + EnergyBillingDemandTransactionV3
-
 ```
 
 <%= partial "includes/cds_energy.md" %>
