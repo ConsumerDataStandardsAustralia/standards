@@ -29,6 +29,7 @@ This release addresses the following change requests raised on [Standards Mainte
 - [Standards Maintenance Issue 587 - EnergyBillingDemandTransactionV2 - Measure Unit](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/587)
 - [Standards Maintenance Issue 612 - Maintenance Iteration 17 Holistic Feedback](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/612)
 - [Standards Maintenance Issue 613 - Time format change request for Energy Plan Data](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/613)
+- [Standards Maintenance Issue 620 - Authorization Response Algs should be conditional in RegistrationProperties](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/620)
 
 ### Decision Proposals
 
