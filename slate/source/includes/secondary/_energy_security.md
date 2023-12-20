@@ -9,7 +9,7 @@ For the energy sector requests for the following data clusters are Shared Respon
 
 CDR requests for these data clusters to a Data Holder MUST be fulfilled by a request to AEMO.
 
-### Security Profile
+<h3 id="shared-responsibility_energy_security-profile">Security Profile</h3>
 
 In its function as market operator of the National Energy Market, AEMO already maintains a
 registration process for industry participants and shares data with participants using real time,
@@ -22,7 +22,7 @@ and a security profile. More information is published by AEMO.
 
 The e-Hub platform and associated mechanisms (**[[EHUB]](#nref-EHUB)**) will be considered a normative standard for the requesting of data from AEMO to fulfil Shared Responsibility Data Requests.
 
-#### Normative References
+<h4 id="shared-responsibility_energy_normative-references">Normative References</h4>
 
 | **Reference**  | **Description**  | **Version** |
 | --- | --- | --- |

@@ -1,5 +1,6 @@
-<h2 id='register-data-recipient-oauth-client'>Register Data Recipient oAuth Client</h2>
-<p><a id="opIdPostDataRecipientRegistration"></a></p>
+<h2 id="cdr-dynamic-client-registration-api_register-data-recipient-oauth-client">Register Data Recipient oAuth Client</h2>
+
+<p id="register-data-recipient-oauth-client" class="orig-anchor"></p>
 
 <blockquote>
 <p>Code samples</p>
@@ -41,7 +42,9 @@
 </blockquote>
 <pre class="highlight yaml tab-yaml"><code><span class="s">eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...</span>
 
-</code></pre><h3 id='endpoint-version'>Endpoint Version</h3>
+</code></pre>
+<h3 id="cdr-dynamic-client-registration-api_register-data-recipient-oauth-client_endpoint-version">Endpoint Version</h3>
+
 <table><thead>
 <tr>
 <th></th>
@@ -54,7 +57,7 @@
 </tr>
 </tbody></table>
 
-<h3 id="register-data-recipient-oauth-client-parameters">Parameters</h3>
+<h3 id="cdr-dynamic-client-registration-api_register-data-recipient-oauth-client_parameters">Parameters</h3>
 
 <table><thead>
 <tr>
@@ -124,7 +127,7 @@
   </span><span class="s2">"scope"</span><span class="p">:</span><span class="w"> </span><span class="s2">"openid profile bank:accounts.basic:read bank:accounts.detail:read bank:transactions:read bank:payees:read bank:regular_payments:read common:customer.basic:read common:customer.detail:read cdr:registration"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id="register-data-recipient-oauth-client-responses">Responses</h3>
+<h3 id="cdr-dynamic-client-registration-api_register-data-recipient-oauth-client_responses">Responses</h3>
 
 <table><thead>
 <tr>
@@ -151,8 +154,10 @@
 <p><aside class="success">
 This operation does not require authentication
 </aside></p>
-<h2 id='get-oauth-client-registration'>Get oAuth Client Registration</h2>
-<p><a id="opIdGetClientRegistration"></a></p>
+
+<h2 id="cdr-dynamic-client-registration-api_get-oauth-client-registration">Get oAuth Client Registration</h2>
+
+<p id="get-oauth-client-registration" class="orig-anchor"></p>
 
 <blockquote>
 <p>Code samples</p>
@@ -186,7 +191,9 @@ This operation does not require authentication
 <p><code>GET /register/{ClientId}</code></p>
 
 <p>Get a Client Registration for a given Client ID.</p>
-<h3 id='endpoint-version-2'>Endpoint Version</h3>
+
+<h3 id="cdr-dynamic-client-registration-api_get-oauth-client-registration_endpoint-version">Endpoint Version</h3>
+
 <table><thead>
 <tr>
 <th></th>
@@ -199,7 +206,7 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h3 id="get-oauth-client-registration-parameters">Parameters</h3>
+<h3 id="cdr-dynamic-client-registration-api_get-oauth-client-registration_parameters">Parameters</h3>
 
 <table><thead>
 <tr>
@@ -276,7 +283,7 @@ This operation does not require authentication
   </span><span class="s2">"scope"</span><span class="p">:</span><span class="w"> </span><span class="s2">"openid profile bank:accounts.basic:read bank:accounts.detail:read bank:transactions:read bank:payees:read bank:regular_payments:read common:customer.basic:read common:customer.detail:read cdr:registration"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id="get-oauth-client-registration-responses">Responses</h3>
+<h3 id="cdr-dynamic-client-registration-api_get-oauth-client-registration_responses">Responses</h3>
 
 <table><thead>
 <tr>
@@ -305,7 +312,9 @@ This operation does not require authentication
 <td>None</td>
 </tr>
 </tbody></table>
-<h3 id='response-headers'>Response Headers</h3>
+
+<h3 id="cdr-dynamic-client-registration-api_get-oauth-client-registration_response-headers">Response Headers</h3>
+
 <table><thead>
 <tr>
 <th>Status</th>
@@ -328,8 +337,10 @@ This operation does not require authentication
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">cdr:registration</a>
 </aside></p>
-<h2 id='update-data-recipient-registration'>Update Data Recipient Registration</h2>
-<p><a id="opIdPutDataRecipientRegistration"></a></p>
+
+<h2 id="cdr-dynamic-client-registration-api_update-data-recipient-registration">Update Data Recipient Registration</h2>
+
+<p id="update-data-recipient-registration" class="orig-anchor"></p>
 
 <blockquote>
 <p>Code samples</p>
@@ -371,7 +382,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 </blockquote>
 <pre class="highlight yaml tab-yaml"><code><span class="s">eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...</span>
 
-</code></pre><h3 id='endpoint-version-3'>Endpoint Version</h3>
+</code></pre>
+<h3 id="cdr-dynamic-client-registration-api_update-data-recipient-registration_endpoint-version">Endpoint Version</h3>
+
 <table><thead>
 <tr>
 <th></th>
@@ -384,7 +397,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h3 id="update-data-recipient-registration-parameters">Parameters</h3>
+<h3 id="cdr-dynamic-client-registration-api_update-data-recipient-registration_parameters">Parameters</h3>
 
 <table><thead>
 <tr>
@@ -468,7 +481,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="s2">"scope"</span><span class="p">:</span><span class="w"> </span><span class="s2">"openid profile bank:accounts.basic:read bank:accounts.detail:read bank:transactions:read bank:payees:read bank:regular_payments:read common:customer.basic:read common:customer.detail:read cdr:registration"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id="update-data-recipient-registration-responses">Responses</h3>
+<h3 id="cdr-dynamic-client-registration-api_update-data-recipient-registration_responses">Responses</h3>
 
 <table><thead>
 <tr>
@@ -503,7 +516,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>None</td>
 </tr>
 </tbody></table>
-<h3 id='response-headers-2'>Response Headers</h3>
+
+<h3 id="cdr-dynamic-client-registration-api_update-data-recipient-registration_response-headers">Response Headers</h3>
+
 <table><thead>
 <tr>
 <th>Status</th>
@@ -526,8 +541,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">cdr:registration</a>
 </aside></p>
-<h2 id='delete-data-recipient-oauth-client-registration'>Delete Data Recipient oAuth Client Registration</h2>
-<p><a id="opIdDeleteDataRecipientRegistration"></a></p>
+
+<h2 id="cdr-dynamic-client-registration-api_delete-data-recipient-oauth-client-registration">Delete Data Recipient oAuth Client Registration</h2>
+
+<p id="delete-data-recipient-oauth-client-registration" class="orig-anchor"></p>
 
 <blockquote>
 <p>Code samples</p>
@@ -560,7 +577,9 @@ Authorization: string
 <p><code>DELETE /register/{ClientId}</code></p>
 
 <p>Delete a Client Registration for a given Client ID.</p>
-<h3 id='endpoint-version-4'>Endpoint Version</h3>
+
+<h3 id="cdr-dynamic-client-registration-api_delete-data-recipient-oauth-client-registration_endpoint-version">Endpoint Version</h3>
+
 <table><thead>
 <tr>
 <th></th>
@@ -573,7 +592,7 @@ Authorization: string
 </tr>
 </tbody></table>
 
-<h3 id="delete-data-recipient-oauth-client-registration-parameters">Parameters</h3>
+<h3 id="cdr-dynamic-client-registration-api_delete-data-recipient-oauth-client-registration_parameters">Parameters</h3>
 
 <table><thead>
 <tr>
@@ -600,7 +619,7 @@ Authorization: string
 </tr>
 </tbody></table>
 
-<h3 id="delete-data-recipient-oauth-client-registration-responses">Responses</h3>
+<h3 id="cdr-dynamic-client-registration-api_delete-data-recipient-oauth-client-registration_responses">Responses</h3>
 
 <table><thead>
 <tr>
@@ -635,7 +654,9 @@ Authorization: string
 <td>None</td>
 </tr>
 </tbody></table>
-<h3 id='response-headers-3'>Response Headers</h3>
+
+<h3 id="cdr-dynamic-client-registration-api_delete-data-recipient-oauth-client-registration_response-headers">Response Headers</h3>
+
 <table><thead>
 <tr>
 <th>Status</th>
@@ -661,16 +682,18 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h2 class="schema-heading" id="cdr-dynamic-client-registration-api-schemas">Schemas</h2>
 
-<p><a class="schema-link" id="cdr-dynamic-client-registration-api-schemas"></a></p>
+<h3 class="schema-toc" id="cdr-dynamic-client-registration-api_schemas_tocSclientregistrationrequest">ClientRegistrationRequest</h3>
 
-<h3 class="schema-toc" id="tocSclientregistrationrequest">ClientRegistrationRequest</h3>
+<p id="tocSclientregistrationrequest" class="orig-anchor"></p>
 
 <p><a class="schema-anchor" id="schemacdr-dynamic-client-registration-apiclientregistrationrequest"></a></p>
 <pre class="highlight json tab-json"><code><span class="s2">"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."</span><span class="w">
 
 </span></code></pre>
 <p><em>The registration request JWT to be used to register with a Data Holder.</em></p>
-<h3 id='properties'>Properties</h3>
+
+<h3 id="cdr-dynamic-client-registration-api_clientregistrationrequest_properties">Properties</h3>
+
 <table><thead>
 <tr>
 <th>Name</th>
@@ -687,7 +710,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSregistrationproperties">RegistrationProperties</h3>
+<h3 class="schema-toc" id="cdr-dynamic-client-registration-api_schemas_tocSregistrationproperties">RegistrationProperties</h3>
+
+<p id="tocSregistrationproperties" class="orig-anchor"></p>
 
 <p><a class="schema-anchor" id="schemacdr-dynamic-client-registration-apiregistrationproperties"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -735,7 +760,9 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="s2">"scope"</span><span class="p">:</span><span class="w"> </span><span class="s2">"openid profile bank:accounts.basic:read bank:accounts.detail:read bank:transactions:read bank:payees:read bank:regular_payments:read common:customer.basic:read common:customer.detail:read cdr:registration"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-2'>Properties</h3>
+</span></code></pre>
+<h3 id="cdr-dynamic-client-registration-api_registrationproperties_properties">Properties</h3>
+
 <table><thead>
 <tr>
 <th>Name</th>
@@ -800,7 +827,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>redirect_uris</td>
-<td>[string]</td>
+<td><a href="#common-field-types">[URIString]</a></td>
 <td>mandatory</td>
 <td>Array of redirection URI strings for use in redirect-based flows. If used, redirect_uris MUST match or be a subset of the redirect_uris as defined in the SSA</td>
 </tr>
@@ -943,7 +970,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>String containing a space-separated list of scope values that the client can use when requesting access tokens.</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values'>Enumerated Values</h4>
+
+<h4 id="cdr-dynamic-client-registration-api_registrationproperties_enumerated-values-main">Enumerated Values</h4>
+
 <table><thead>
 <tr>
 <th>Property</th>
@@ -1032,7 +1061,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSclientregistration">ClientRegistration</h3>
+<h3 class="schema-toc" id="cdr-dynamic-client-registration-api_schemas_tocSclientregistration">ClientRegistration</h3>
+
+<p id="tocSclientregistration" class="orig-anchor"></p>
 
 <p><a class="schema-anchor" id="schemacdr-dynamic-client-registration-apiclientregistration"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -1085,7 +1116,9 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="s2">"scope"</span><span class="p">:</span><span class="w"> </span><span class="s2">"openid profile bank:accounts.basic:read bank:accounts.detail:read bank:transactions:read bank:payees:read bank:regular_payments:read common:customer.basic:read common:customer.detail:read cdr:registration"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-3'>Properties</h3>
+</span></code></pre>
+<h3 id="cdr-dynamic-client-registration-api_clientregistration_properties">Properties</h3>
+
 <p><em>allOf</em></p>
 
 <table><thead>
@@ -1152,7 +1185,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSregistrationerror">RegistrationError</h3>
+<h3 class="schema-toc" id="cdr-dynamic-client-registration-api_schemas_tocSregistrationerror">RegistrationError</h3>
+
+<p id="tocSregistrationerror" class="orig-anchor"></p>
 
 <p><a class="schema-anchor" id="schemacdr-dynamic-client-registration-apiregistrationerror"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -1160,7 +1195,9 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="s2">"error_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-4'>Properties</h3>
+</span></code></pre>
+<h3 id="cdr-dynamic-client-registration-api_registrationerror_properties">Properties</h3>
+
 <table><thead>
 <tr>
 <th>Name</th>
@@ -1182,7 +1219,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Additional text description of the error for debugging.</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-2'>Enumerated Values</h4>
+
+<h4 id="cdr-dynamic-client-registration-api_registrationerror_enumerated-values-main">Enumerated Values</h4>
+
 <table><thead>
 <tr>
 <th>Property</th>

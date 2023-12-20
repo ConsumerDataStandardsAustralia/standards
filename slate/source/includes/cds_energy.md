@@ -1,8 +1,7 @@
 
 
-## Get Generic Plans
-
-<a id="opIdlistPlans"></a>
+<h2 id="cdr-energy-api_get-generic-plans">Get Generic Plans</h2>
+<p id="get-generic-plans" class="orig-anchor"></p>
 
 > Code samples
 
@@ -45,18 +44,18 @@ Obtain a list of energy plans that are currently offered to the market.
 
 Note that the results returned by this end point are expected to be ordered in descending order according to `lastUpdated`.
 
-###Endpoint Version
+<h3 id="cdr-energy-api_get-generic-plans_endpoint-version">Endpoint Version</h3>
 |   |  |
 |---|--|
 |Version|**1**
 
-<h3 id="get-generic-plans-parameters">Parameters</h3>
+<h3 id="cdr-energy-api_get-generic-plans_parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|type|query|string|optional|Used to filter results on the type field.  Any one of the valid values for this field can be supplied plus 'ALL'.  If absent defaults to 'ALL'|
-|fuelType|query|string|optional|Used to filter results on the fuelType field.  Any one of the valid values for this field can be supplied plus 'ALL'.  If absent defaults to 'ALL'|
-|effective|query|string|optional|Allows for the filtering of plans based on whether the current time is within the period of time defined as effective by the effectiveFrom and effectiveTo fields. Valid values are ‘CURRENT’, ‘FUTURE’ and ‘ALL’. If absent defaults to 'CURRENT'|
+|type|query|[Enum](#common-field-types)|optional|Used to filter results on the type field.  Any one of the valid values for this field can be supplied plus 'ALL'.  If absent defaults to 'ALL'|
+|fuelType|query|[Enum](#common-field-types)|optional|Used to filter results on the fuelType field.  Any one of the valid values for this field can be supplied plus 'ALL'.  If absent defaults to 'ALL'|
+|effective|query|[Enum](#common-field-types)|optional|Allows for the filtering of plans based on whether the current time is within the period of time defined as effective by the effectiveFrom and effectiveTo fields. Valid values are ‘CURRENT’, ‘FUTURE’ and ‘ALL’. If absent defaults to 'CURRENT'|
 |updated-since|query|[DateTimeString](#common-field-types)|optional|Only include plans that have been updated after the specified date and time.  If absent defaults to include all plans|
 |brand|query|string|optional|Used to filter results on the brand field.  If absent defaults to include all plans|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
@@ -64,7 +63,7 @@ Note that the results returned by this end point are expected to be ordered in d
 |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
 |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
 
-#### Enumerated Values
+<h4 id="cdr-energy-api_get-generic-plans_enumerated-values-parameters">Enumerated Values</h4>
 
 |Parameter|Value|
 |---|---|
@@ -136,7 +135,7 @@ Note that the results returned by this end point are expected to be ordered in d
 }
 ```
 
-<h3 id="get-generic-plans-responses">Responses</h3>
+<h3 id="cdr-energy-api_get-generic-plans_responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -145,7 +144,7 @@ Note that the results returned by this end point are expected to be ordered in d
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 
-### Response Headers
+<h3 id="cdr-energy-api_get-generic-plans_response-headers">Response Headers</h3>
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
@@ -158,9 +157,8 @@ This operation does not require authentication
 
   
 
-## Get Generic Plan Detail
-
-<a id="opIdgetPlan"></a>
+<h2 id="cdr-energy-api_get-generic-plan-detail">Get Generic Plan Detail</h2>
+<p id="get-generic-plan-detail" class="orig-anchor"></p>
 
 > Code samples
 
@@ -203,12 +201,12 @@ Obtain detailed information on a single energy plan offered openly to the market
 
 Other Versions: [v1](includes/obsolete/get-generic-plan-detail-v1.html)
 
-###Endpoint Version
+<h3 id="cdr-energy-api_get-generic-plan-detail_endpoint-version">Endpoint Version</h3>
 |   |  |
 |---|--|
 |Version|**2**
 
-<h3 id="get-generic-plan-detail-parameters">Parameters</h3>
+<h3 id="cdr-energy-api_get-generic-plan-detail_parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -740,7 +738,7 @@ Other Versions: [v1](includes/obsolete/get-generic-plan-detail-v1.html)
 }
 ```
 
-<h3 id="get-generic-plan-detail-responses">Responses</h3>
+<h3 id="cdr-energy-api_get-generic-plan-detail_responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -749,7 +747,7 @@ Other Versions: [v1](includes/obsolete/get-generic-plan-detail-v1.html)
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[404 - Invalid Resource](#error-404-resource-invalid)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 
-### Response Headers
+<h3 id="cdr-energy-api_get-generic-plan-detail_response-headers">Response Headers</h3>
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
@@ -762,9 +760,8 @@ This operation does not require authentication
 
   
 
-## Get Service Points
-
-<a id="opIdlistServicePoints"></a>
+<h2 id="cdr-energy-api_get-service-points">Get Service Points</h2>
+<p id="get-service-points" class="orig-anchor"></p>
 
 > Code samples
 
@@ -813,12 +810,12 @@ fetch('/energy/electricity/servicepoints',
 
 Obtain a list of service points owned by the customer that has authorised the current session
 
-###Endpoint Version
+<h3 id="cdr-energy-api_get-service-points_endpoint-version">Endpoint Version</h3>
 |   |  |
 |---|--|
 |Version|**1**
 
-<h3 id="get-service-points-parameters">Parameters</h3>
+<h3 id="cdr-energy-api_get-service-points_parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -869,7 +866,7 @@ Obtain a list of service points owned by the customer that has authorised the cu
 }
 ```
 
-<h3 id="get-service-points-responses">Responses</h3>
+<h3 id="cdr-energy-api_get-service-points_responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -878,7 +875,7 @@ Obtain a list of service points owned by the customer that has authorised the cu
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 
-### Response Headers
+<h3 id="cdr-energy-api_get-service-points_response-headers">Response Headers</h3>
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
@@ -898,9 +895,8 @@ To perform this operation, you must be authenticated and authorised with the fol
     
   
 
-## Get Service Point Detail
-
-<a id="opIdgetServicePoint"></a>
+<h2 id="cdr-energy-api_get-service-point-detail">Get Service Point Detail</h2>
+<p id="get-service-point-detail" class="orig-anchor"></p>
 
 > Code samples
 
@@ -949,12 +945,12 @@ fetch('/energy/electricity/servicepoints/{servicePointId}',
 
 Obtain detailed standing information for a specific service point that is owned by the customer that has authorised the current session
 
-###Endpoint Version
+<h3 id="cdr-energy-api_get-service-point-detail_endpoint-version">Endpoint Version</h3>
 |   |  |
 |---|--|
 |Version|**1**
 
-<h3 id="get-service-point-detail-parameters">Parameters</h3>
+<h3 id="cdr-energy-api_get-service-point-detail_parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -1068,7 +1064,7 @@ Obtain detailed standing information for a specific service point that is owned 
 }
 ```
 
-<h3 id="get-service-point-detail-responses">Responses</h3>
+<h3 id="cdr-energy-api_get-service-point-detail_responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -1077,7 +1073,7 @@ Obtain detailed standing information for a specific service point that is owned 
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[404 - Unavailable Service Point](#error-404-unavailable-service-point)</li><li>[404 - Invalid Service Point](#error-404-invalid-service-point)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 
-### Response Headers
+<h3 id="cdr-energy-api_get-service-point-detail_response-headers">Response Headers</h3>
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
@@ -1097,9 +1093,8 @@ To perform this operation, you must be authenticated and authorised with the fol
     
   
 
-## Get Usage For Service Point
-
-<a id="opIdgetUsageForServicePoint"></a>
+<h2 id="cdr-energy-api_get-usage-for-service-point">Get Usage For Service Point</h2>
+<p id="get-usage-for-service-point" class="orig-anchor"></p>
 
 > Code samples
 
@@ -1148,19 +1143,19 @@ fetch('/energy/electricity/servicepoints/{servicePointId}/usage',
 
 Obtain a list of electricity usage data from a particular service point
 
-###Endpoint Version
+<h3 id="cdr-energy-api_get-usage-for-service-point_endpoint-version">Endpoint Version</h3>
 |   |  |
 |---|--|
 |Version|**1**
 
-<h3 id="get-usage-for-service-point-parameters">Parameters</h3>
+<h3 id="cdr-energy-api_get-usage-for-service-point_parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |servicePointId|path|string|mandatory|ID of the specific service point requested.  This is a tokenised ID previous obtained from the Service Point List Data end point.  Note that it is not a nationalMeteringId.|
 |oldest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with effective date at or after this date. If absent defaults to newest-date minus 24 months.  Format is aligned to DateString common type|
 |newest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with effective date at or before this date.  If absent defaults to current date.  Format is aligned to DateString common type|
-|interval-reads|query|string|optional|Type of interval reads. Any one of the valid values for this field can be supplied. If absent defaults to NONE|
+|interval-reads|query|[Enum](#common-field-types)|optional|Type of interval reads. Any one of the valid values for this field can be supplied. If absent defaults to NONE|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request.  Default is 25 (standard pagination)|
 |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
@@ -1170,7 +1165,7 @@ Obtain a list of electricity usage data from a particular service point
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
 |x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
 
-#### Enumerated Values
+<h4 id="cdr-energy-api_get-usage-for-service-point_enumerated-values-parameters">Enumerated Values</h4>
 
 |Parameter|Value|
 |---|---|
@@ -1231,7 +1226,7 @@ Obtain a list of electricity usage data from a particular service point
 }
 ```
 
-<h3 id="get-usage-for-service-point-responses">Responses</h3>
+<h3 id="cdr-energy-api_get-usage-for-service-point_responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -1241,7 +1236,7 @@ Obtain a list of electricity usage data from a particular service point
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 
-### Response Headers
+<h3 id="cdr-energy-api_get-usage-for-service-point_response-headers">Response Headers</h3>
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
@@ -1262,9 +1257,8 @@ To perform this operation, you must be authenticated and authorised with the fol
     
   
 
-## Get Bulk Usage
-
-<a id="opIdlistUsageBulk"></a>
+<h2 id="cdr-energy-api_get-bulk-usage">Get Bulk Usage</h2>
+<p id="get-bulk-usage" class="orig-anchor"></p>
 
 > Code samples
 
@@ -1313,16 +1307,16 @@ fetch('/energy/electricity/servicepoints/usage',
 
 Obtain usage data for all service points associated with the customer
 
-###Endpoint Version
+<h3 id="cdr-energy-api_get-bulk-usage_endpoint-version">Endpoint Version</h3>
 |   |  |
 |---|--|
 |Version|**1**
 
-<h3 id="get-bulk-usage-parameters">Parameters</h3>
+<h3 id="cdr-energy-api_get-bulk-usage_parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|interval-reads|query|string|optional|Type of interval reads. Any one of the valid values for this field can be supplied. If absent defaults to NONE|
+|interval-reads|query|[Enum](#common-field-types)|optional|Type of interval reads. Any one of the valid values for this field can be supplied. If absent defaults to NONE|
 |oldest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with effective date at or after this date. If absent defaults to newest-date minus 24 months.  Format is aligned to DateString common type|
 |newest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with effective date at or before this date.  If absent defaults to current date.  Format is aligned to DateString common type|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
@@ -1334,7 +1328,7 @@ Obtain usage data for all service points associated with the customer
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
 |x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
 
-#### Enumerated Values
+<h4 id="cdr-energy-api_get-bulk-usage_enumerated-values-parameters">Enumerated Values</h4>
 
 |Parameter|Value|
 |---|---|
@@ -1395,7 +1389,7 @@ Obtain usage data for all service points associated with the customer
 }
 ```
 
-<h3 id="get-bulk-usage-responses">Responses</h3>
+<h3 id="cdr-energy-api_get-bulk-usage_responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -1404,7 +1398,7 @@ Obtain usage data for all service points associated with the customer
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 
-### Response Headers
+<h3 id="cdr-energy-api_get-bulk-usage_response-headers">Response Headers</h3>
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
@@ -1424,9 +1418,8 @@ To perform this operation, you must be authenticated and authorised with the fol
     
   
 
-## Get Usage For Specific Service Points
-
-<a id="opIdlistUsageForServicePoints"></a>
+<h2 id="cdr-energy-api_get-usage-for-specific-service-points">Get Usage For Specific Service Points</h2>
+<p id="get-usage-for-specific-service-points" class="orig-anchor"></p>
 
 > Code samples
 
@@ -1497,18 +1490,18 @@ Obtain the electricity usage data for a specific set of service points
 }
 ```
 
-###Endpoint Version
+<h3 id="cdr-energy-api_get-usage-for-specific-service-points_endpoint-version">Endpoint Version</h3>
 |   |  |
 |---|--|
 |Version|**1**
 
-<h3 id="get-usage-for-specific-service-points-parameters">Parameters</h3>
+<h3 id="cdr-energy-api_get-usage-for-specific-service-points_parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |oldest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with effective date at or after this date. If absent defaults to newest-date minus 24 months.  Format is aligned to DateString common type|
 |newest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with effective date at or before this date.  If absent defaults to current date.  Format is aligned to DateString common type|
-|interval-reads|query|string|optional|Type of interval reads. Any one of the valid values for this field can be supplied. If absent defaults to NONE|
+|interval-reads|query|[Enum](#common-field-types)|optional|Type of interval reads. Any one of the valid values for this field can be supplied. If absent defaults to NONE|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request.  Default is 25 (standard pagination)|
 |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
@@ -1519,7 +1512,7 @@ Obtain the electricity usage data for a specific set of service points
 |x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
 |body|body|[RequestServicePointIdList](#schemacdr-energy-apirequestservicepointidlist)|mandatory|Request payload containing list of specific Service Points to obtain data for|
 
-#### Enumerated Values
+<h4 id="cdr-energy-api_get-usage-for-specific-service-points_enumerated-values-parameters">Enumerated Values</h4>
 
 |Parameter|Value|
 |---|---|
@@ -1580,7 +1573,7 @@ Obtain the electricity usage data for a specific set of service points
 }
 ```
 
-<h3 id="get-usage-for-specific-service-points-responses">Responses</h3>
+<h3 id="cdr-energy-api_get-usage-for-specific-service-points_responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -1589,7 +1582,7 @@ Obtain the electricity usage data for a specific set of service points
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li><li>[422 - Unavailable Service Point](#error-422-unavailable-service-point)</li><li>[422 - Invalid Service Point](#error-422-invalid-service-point)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 
-### Response Headers
+<h3 id="cdr-energy-api_get-usage-for-specific-service-points_response-headers">Response Headers</h3>
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
@@ -1609,9 +1602,8 @@ To perform this operation, you must be authenticated and authorised with the fol
     
   
 
-## Get DER For Service Point
-
-<a id="opIdgetDERForServicePoint"></a>
+<h2 id="cdr-energy-api_get-der-for-service-point">Get DER For Service Point</h2>
+<p id="get-der-for-service-point" class="orig-anchor"></p>
 
 > Code samples
 
@@ -1660,12 +1652,12 @@ fetch('/energy/electricity/servicepoints/{servicePointId}/der',
 
 Obtain a list of DER data from a particular service point
 
-###Endpoint Version
+<h3 id="cdr-energy-api_get-der-for-service-point_endpoint-version">Endpoint Version</h3>
 |   |  |
 |---|--|
 |Version|**1**
 
-<h3 id="get-der-for-service-point-parameters">Parameters</h3>
+<h3 id="cdr-energy-api_get-der-for-service-point_parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -1741,7 +1733,7 @@ Obtain a list of DER data from a particular service point
 }
 ```
 
-<h3 id="get-der-for-service-point-responses">Responses</h3>
+<h3 id="cdr-energy-api_get-der-for-service-point_responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -1750,7 +1742,7 @@ Obtain a list of DER data from a particular service point
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[404 - Unavailable Service Point](#error-404-unavailable-service-point)</li><li>[404 - Invalid Service Point](#error-404-invalid-service-point)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 
-### Response Headers
+<h3 id="cdr-energy-api_get-der-for-service-point_response-headers">Response Headers</h3>
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
@@ -1770,9 +1762,8 @@ To perform this operation, you must be authenticated and authorised with the fol
     
   
 
-## Get Bulk DER
-
-<a id="opIdlistDERBulk"></a>
+<h2 id="cdr-energy-api_get-bulk-der">Get Bulk DER</h2>
+<p id="get-bulk-der" class="orig-anchor"></p>
 
 > Code samples
 
@@ -1821,12 +1812,12 @@ fetch('/energy/electricity/servicepoints/der',
 
 Obtain DER data for all service points associated with the customer
 
-###Endpoint Version
+<h3 id="cdr-energy-api_get-bulk-der_endpoint-version">Endpoint Version</h3>
 |   |  |
 |---|--|
 |Version|**1**
 
-<h3 id="get-bulk-der-parameters">Parameters</h3>
+<h3 id="cdr-energy-api_get-bulk-der_parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -1914,7 +1905,7 @@ Obtain DER data for all service points associated with the customer
 }
 ```
 
-<h3 id="get-bulk-der-responses">Responses</h3>
+<h3 id="cdr-energy-api_get-bulk-der_responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -1923,7 +1914,7 @@ Obtain DER data for all service points associated with the customer
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 
-### Response Headers
+<h3 id="cdr-energy-api_get-bulk-der_response-headers">Response Headers</h3>
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
@@ -1943,9 +1934,8 @@ To perform this operation, you must be authenticated and authorised with the fol
     
   
 
-## Get DER For Specific Service Points
-
-<a id="opIdlistDERForServicePoints"></a>
+<h2 id="cdr-energy-api_get-der-for-specific-service-points">Get DER For Specific Service Points</h2>
+<p id="get-der-for-specific-service-points" class="orig-anchor"></p>
 
 > Code samples
 
@@ -2016,12 +2006,12 @@ Obtain DER data for a specific set of service points
 }
 ```
 
-###Endpoint Version
+<h3 id="cdr-energy-api_get-der-for-specific-service-points_endpoint-version">Endpoint Version</h3>
 |   |  |
 |---|--|
 |Version|**1**
 
-<h3 id="get-der-for-specific-service-points-parameters">Parameters</h3>
+<h3 id="cdr-energy-api_get-der-for-specific-service-points_parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -2110,7 +2100,7 @@ Obtain DER data for a specific set of service points
 }
 ```
 
-<h3 id="get-der-for-specific-service-points-responses">Responses</h3>
+<h3 id="cdr-energy-api_get-der-for-specific-service-points_responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -2119,7 +2109,7 @@ Obtain DER data for a specific set of service points
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li><li>[422 - Unavailable Service Point](#error-422-unavailable-service-point)</li><li>[422 - Invalid Service Point](#error-422-invalid-service-point)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 
-### Response Headers
+<h3 id="cdr-energy-api_get-der-for-specific-service-points_response-headers">Response Headers</h3>
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
@@ -2139,9 +2129,8 @@ To perform this operation, you must be authenticated and authorised with the fol
     
   
 
-## Get Energy Accounts
-
-<a id="opIdlistAccounts"></a>
+<h2 id="cdr-energy-api_get-energy-accounts">Get Energy Accounts</h2>
+<p id="get-energy-accounts" class="orig-anchor"></p>
 
 > Code samples
 
@@ -2192,16 +2181,16 @@ Obtain the list of energy accounts available under the authorised consent
 
 Other Versions: [v1](includes/obsolete/get-energy-accounts-v1.html)
 
-###Endpoint Version
+<h3 id="cdr-energy-api_get-energy-accounts_endpoint-version">Endpoint Version</h3>
 |   |  |
 |---|--|
 |Version|**2**
 
-<h3 id="get-energy-accounts-parameters">Parameters</h3>
+<h3 id="cdr-energy-api_get-energy-accounts_parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|open-status|query|string|optional|Used to filter results according to open/closed status. Values can be OPEN, CLOSED or ALL. If absent then ALL is assumed|
+|open-status|query|[Enum](#common-field-types)|optional|Used to filter results according to open/closed status. Values can be OPEN, CLOSED or ALL. If absent then ALL is assumed|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request.  Default is 25 (standard pagination)|
 |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
@@ -2211,7 +2200,7 @@ Other Versions: [v1](includes/obsolete/get-energy-accounts-v1.html)
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
 |x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
 
-#### Enumerated Values
+<h4 id="cdr-energy-api_get-energy-accounts_enumerated-values-parameters">Enumerated Values</h4>
 
 |Parameter|Value|
 |---|---|
@@ -2263,7 +2252,7 @@ Other Versions: [v1](includes/obsolete/get-energy-accounts-v1.html)
 }
 ```
 
-<h3 id="get-energy-accounts-responses">Responses</h3>
+<h3 id="cdr-energy-api_get-energy-accounts_responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -2272,7 +2261,7 @@ Other Versions: [v1](includes/obsolete/get-energy-accounts-v1.html)
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 
-### Response Headers
+<h3 id="cdr-energy-api_get-energy-accounts_response-headers">Response Headers</h3>
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
@@ -2292,9 +2281,8 @@ To perform this operation, you must be authenticated and authorised with the fol
     
   
 
-## Get Energy Account Detail
-
-<a id="opIdgetAccount"></a>
+<h2 id="cdr-energy-api_get-energy-account-detail">Get Energy Account Detail</h2>
+<p id="get-energy-account-detail" class="orig-anchor"></p>
 
 > Code samples
 
@@ -2345,12 +2333,12 @@ Obtain detailed information for a specific energy account
 
 Other Versions: [v1](includes/obsolete/get-energy-account-detail-v1.html) [v2](includes/obsolete/get-energy-account-detail-v2.html)
 
-###Endpoint Version
+<h3 id="cdr-energy-api_get-energy-account-detail_endpoint-version">Endpoint Version</h3>
 |   |  |
 |---|--|
 |Version|**3**
 
-<h3 id="get-energy-account-detail-parameters">Parameters</h3>
+<h3 id="cdr-energy-api_get-energy-account-detail_parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -2761,7 +2749,7 @@ Other Versions: [v1](includes/obsolete/get-energy-account-detail-v1.html) [v2](i
 }
 ```
 
-<h3 id="get-energy-account-detail-responses">Responses</h3>
+<h3 id="cdr-energy-api_get-energy-account-detail_responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -2770,7 +2758,7 @@ Other Versions: [v1](includes/obsolete/get-energy-account-detail-v1.html) [v2](i
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[404 - Unavailable Energy Account](#error-404-unavailable-energy-account)</li><li>[404 - Invalid Energy Account](#error-404-invalid-energy-account)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 
-### Response Headers
+<h3 id="cdr-energy-api_get-energy-account-detail_response-headers">Response Headers</h3>
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
@@ -2790,9 +2778,8 @@ To perform this operation, you must be authenticated and authorised with the fol
     
   
 
-## Get Agreed Payment Schedule
-
-<a id="opIdgetPaymentSchedule"></a>
+<h2 id="cdr-energy-api_get-agreed-payment-schedule">Get Agreed Payment Schedule</h2>
+<p id="get-agreed-payment-schedule" class="orig-anchor"></p>
 
 > Code samples
 
@@ -2845,12 +2832,12 @@ Some general notes about this end point:
 
  <ul><li>This API describes how the consumer has elected to pay for their account</li><li>Payments initiated by the consumer are classified as manual payments. The billing frequency is captured for manual payments. The consumer may choose to pay on a different schedule/frequency. The payment method and frequency is not captured for manual payments</li><li>Payments that can be initiated by the retailer, based on a consumer's preferences and permission, include payments based on a direct debit, card debit or digital wallet setup. Each of these requires a payment frequency to be provided along with other relevant fields</li><li>Information about payment plans related to debt repayments or arrangements due to hardship is not captured within this API</li></ul>
 
-###Endpoint Version
+<h3 id="cdr-energy-api_get-agreed-payment-schedule_endpoint-version">Endpoint Version</h3>
 |   |  |
 |---|--|
 |Version|**1**
 
-<h3 id="get-agreed-payment-schedule-parameters">Parameters</h3>
+<h3 id="cdr-energy-api_get-agreed-payment-schedule_parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -2906,7 +2893,7 @@ Some general notes about this end point:
 }
 ```
 
-<h3 id="get-agreed-payment-schedule-responses">Responses</h3>
+<h3 id="cdr-energy-api_get-agreed-payment-schedule_responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -2915,7 +2902,7 @@ Some general notes about this end point:
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[404 - Unavailable Energy Account](#error-404-unavailable-energy-account)</li><li>[404 - Invalid Energy Account](#error-404-invalid-energy-account)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 
-### Response Headers
+<h3 id="cdr-energy-api_get-agreed-payment-schedule_response-headers">Response Headers</h3>
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
@@ -2935,9 +2922,8 @@ To perform this operation, you must be authenticated and authorised with the fol
     
   
 
-## Get Concessions
-
-<a id="opIdgetConcessions"></a>
+<h2 id="cdr-energy-api_get-concessions">Get Concessions</h2>
+<p id="get-concessions" class="orig-anchor"></p>
 
 > Code samples
 
@@ -2986,12 +2972,12 @@ fetch('/energy/accounts/{accountId}/concessions',
 
 Obtain the details of any concessions or arrangements applied to a specific energy account
 
-###Endpoint Version
+<h3 id="cdr-energy-api_get-concessions_endpoint-version">Endpoint Version</h3>
 |   |  |
 |---|--|
 |Version|**1**
 
-<h3 id="get-concessions-parameters">Parameters</h3>
+<h3 id="cdr-energy-api_get-concessions_parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -3034,7 +3020,7 @@ Obtain the details of any concessions or arrangements applied to a specific ener
 }
 ```
 
-<h3 id="get-concessions-responses">Responses</h3>
+<h3 id="cdr-energy-api_get-concessions_responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -3043,7 +3029,7 @@ Obtain the details of any concessions or arrangements applied to a specific ener
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[404 - Unavailable Energy Account](#error-404-unavailable-energy-account)</li><li>[404 - Invalid Energy Account](#error-404-invalid-energy-account)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 
-### Response Headers
+<h3 id="cdr-energy-api_get-concessions_response-headers">Response Headers</h3>
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
@@ -3063,9 +3049,8 @@ To perform this operation, you must be authenticated and authorised with the fol
     
   
 
-## Get Balance For Energy Account
-
-<a id="opIdgetBalanceForAccount"></a>
+<h2 id="cdr-energy-api_get-balance-for-energy-account">Get Balance For Energy Account</h2>
+<p id="get-balance-for-energy-account" class="orig-anchor"></p>
 
 > Code samples
 
@@ -3114,12 +3099,12 @@ fetch('/energy/accounts/{accountId}/balance',
 
 Obtain the current balance for a specific account
 
-###Endpoint Version
+<h3 id="cdr-energy-api_get-balance-for-energy-account_endpoint-version">Endpoint Version</h3>
 |   |  |
 |---|--|
 |Version|**1**
 
-<h3 id="get-balance-for-energy-account-parameters">Parameters</h3>
+<h3 id="cdr-energy-api_get-balance-for-energy-account_parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -3147,7 +3132,7 @@ Obtain the current balance for a specific account
 }
 ```
 
-<h3 id="get-balance-for-energy-account-responses">Responses</h3>
+<h3 id="cdr-energy-api_get-balance-for-energy-account_responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -3156,7 +3141,7 @@ Obtain the current balance for a specific account
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[404 - Unavailable Energy Account](#error-404-unavailable-energy-account)</li><li>[404 - Invalid Energy Account](#error-404-invalid-energy-account)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 
-### Response Headers
+<h3 id="cdr-energy-api_get-balance-for-energy-account_response-headers">Response Headers</h3>
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
@@ -3176,9 +3161,8 @@ To perform this operation, you must be authenticated and authorised with the fol
     
   
 
-## Get Bulk Balances for Energy
-
-<a id="opIdlistBalancesBulk"></a>
+<h2 id="cdr-energy-api_get-bulk-balances-for-energy">Get Bulk Balances for Energy</h2>
+<p id="get-bulk-balances-for-energy" class="orig-anchor"></p>
 
 > Code samples
 
@@ -3227,12 +3211,12 @@ fetch('/energy/accounts/balances',
 
 Obtain the current balance for all accounts
 
-###Endpoint Version
+<h3 id="cdr-energy-api_get-bulk-balances-for-energy_endpoint-version">Endpoint Version</h3>
 |   |  |
 |---|--|
 |Version|**1**
 
-<h3 id="get-bulk-balances-for-energy-parameters">Parameters</h3>
+<h3 id="cdr-energy-api_get-bulk-balances-for-energy_parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -3273,7 +3257,7 @@ Obtain the current balance for all accounts
 }
 ```
 
-<h3 id="get-bulk-balances-for-energy-responses">Responses</h3>
+<h3 id="cdr-energy-api_get-bulk-balances-for-energy_responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -3282,7 +3266,7 @@ Obtain the current balance for all accounts
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 
-### Response Headers
+<h3 id="cdr-energy-api_get-bulk-balances-for-energy_response-headers">Response Headers</h3>
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
@@ -3302,9 +3286,8 @@ To perform this operation, you must be authenticated and authorised with the fol
     
   
 
-## Get Balances For Specific Energy Accounts
-
-<a id="opIdlistBalancesForAccounts"></a>
+<h2 id="cdr-energy-api_get-balances-for-specific-energy-accounts">Get Balances For Specific Energy Accounts</h2>
+<p id="get-balances-for-specific-energy-accounts" class="orig-anchor"></p>
 
 > Code samples
 
@@ -3375,12 +3358,12 @@ Obtain the current balance for a specified set of accounts
 }
 ```
 
-###Endpoint Version
+<h3 id="cdr-energy-api_get-balances-for-specific-energy-accounts_endpoint-version">Endpoint Version</h3>
 |   |  |
 |---|--|
 |Version|**1**
 
-<h3 id="get-balances-for-specific-energy-accounts-parameters">Parameters</h3>
+<h3 id="cdr-energy-api_get-balances-for-specific-energy-accounts_parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -3422,7 +3405,7 @@ Obtain the current balance for a specified set of accounts
 }
 ```
 
-<h3 id="get-balances-for-specific-energy-accounts-responses">Responses</h3>
+<h3 id="cdr-energy-api_get-balances-for-specific-energy-accounts_responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -3431,7 +3414,7 @@ Obtain the current balance for a specified set of accounts
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li><li>[422 - Unavailable Energy Account](#error-422-unavailable-energy-account)</li><li>[422 - Invalid Energy Account](#error-422-invalid-energy-account)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 
-### Response Headers
+<h3 id="cdr-energy-api_get-balances-for-specific-energy-accounts_response-headers">Response Headers</h3>
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
@@ -3451,9 +3434,8 @@ To perform this operation, you must be authenticated and authorised with the fol
     
   
 
-## Get Invoices For Account
-
-<a id="opIdgetInvoicesForAccount"></a>
+<h2 id="cdr-energy-api_get-invoices-for-account">Get Invoices For Account</h2>
+<p id="get-invoices-for-account" class="orig-anchor"></p>
 
 > Code samples
 
@@ -3502,12 +3484,12 @@ fetch('/energy/accounts/{accountId}/invoices',
 
 Obtain the invoices for a specific account
 
-###Endpoint Version
+<h3 id="cdr-energy-api_get-invoices-for-account_endpoint-version">Endpoint Version</h3>
 |   |  |
 |---|--|
 |Version|**1**
 
-<h3 id="get-invoices-for-account-parameters">Parameters</h3>
+<h3 id="cdr-energy-api_get-invoices-for-account_parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -3602,7 +3584,7 @@ Obtain the invoices for a specific account
 }
 ```
 
-<h3 id="get-invoices-for-account-responses">Responses</h3>
+<h3 id="cdr-energy-api_get-invoices-for-account_responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -3612,7 +3594,7 @@ Obtain the invoices for a specific account
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 
-### Response Headers
+<h3 id="cdr-energy-api_get-invoices-for-account_response-headers">Response Headers</h3>
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
@@ -3633,9 +3615,8 @@ To perform this operation, you must be authenticated and authorised with the fol
     
   
 
-## Get Bulk Invoices
-
-<a id="opIdlistInvoicesBulk"></a>
+<h2 id="cdr-energy-api_get-bulk-invoices">Get Bulk Invoices</h2>
+<p id="get-bulk-invoices" class="orig-anchor"></p>
 
 > Code samples
 
@@ -3684,12 +3665,12 @@ fetch('/energy/accounts/invoices',
 
 Obtain the invoices for all accounts
 
-###Endpoint Version
+<h3 id="cdr-energy-api_get-bulk-invoices_endpoint-version">Endpoint Version</h3>
 |   |  |
 |---|--|
 |Version|**1**
 
-<h3 id="get-bulk-invoices-parameters">Parameters</h3>
+<h3 id="cdr-energy-api_get-bulk-invoices_parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -3783,7 +3764,7 @@ Obtain the invoices for all accounts
 }
 ```
 
-<h3 id="get-bulk-invoices-responses">Responses</h3>
+<h3 id="cdr-energy-api_get-bulk-invoices_responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -3792,7 +3773,7 @@ Obtain the invoices for all accounts
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 
-### Response Headers
+<h3 id="cdr-energy-api_get-bulk-invoices_response-headers">Response Headers</h3>
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
@@ -3812,9 +3793,8 @@ To perform this operation, you must be authenticated and authorised with the fol
     
   
 
-## Get Invoices For Specific Accounts
-
-<a id="opIdlistInvoicesForAccounts"></a>
+<h2 id="cdr-energy-api_get-invoices-for-specific-accounts">Get Invoices For Specific Accounts</h2>
+<p id="get-invoices-for-specific-accounts" class="orig-anchor"></p>
 
 > Code samples
 
@@ -3885,12 +3865,12 @@ Obtain invoices for a specified set of accounts
 }
 ```
 
-###Endpoint Version
+<h3 id="cdr-energy-api_get-invoices-for-specific-accounts_endpoint-version">Endpoint Version</h3>
 |   |  |
 |---|--|
 |Version|**1**
 
-<h3 id="get-invoices-for-specific-accounts-parameters">Parameters</h3>
+<h3 id="cdr-energy-api_get-invoices-for-specific-accounts_parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -3985,7 +3965,7 @@ Obtain invoices for a specified set of accounts
 }
 ```
 
-<h3 id="get-invoices-for-specific-accounts-responses">Responses</h3>
+<h3 id="cdr-energy-api_get-invoices-for-specific-accounts_responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -3994,7 +3974,7 @@ Obtain invoices for a specified set of accounts
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li><li>[422 - Unavailable Energy Account](#error-422-unavailable-energy-account)</li><li>[422 - Invalid Energy Account](#error-422-invalid-energy-account)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 
-### Response Headers
+<h3 id="cdr-energy-api_get-invoices-for-specific-accounts_response-headers">Response Headers</h3>
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
@@ -4014,9 +3994,8 @@ To perform this operation, you must be authenticated and authorised with the fol
     
   
 
-## Get Billing For Account
-
-<a id="opIdgetBillingForAccount"></a>
+<h2 id="cdr-energy-api_get-billing-for-account">Get Billing For Account</h2>
+<p id="get-billing-for-account" class="orig-anchor"></p>
 
 > Code samples
 
@@ -4065,14 +4044,17 @@ fetch('/energy/accounts/{accountId}/billing',
 
 Obtain the billing transactions for a specific account
 
-Other Versions: [v1](includes/obsolete/get-billing-for-account-v1.html)
+Deprecated Versions: 
 
-###Endpoint Version
+- [v1](includes/obsolete/get-billing-for-account-v1.html) - This version is to be ceased to be called by data recipients by September 9th 2024 and **MAY** be decommissioned by data holders as of that date 
+- [v2](includes/obsolete/get-billing-for-account-v2.html) - This version **MAY** be retired by September 9th 2024 if v3 is implemented.
+
+<h3 id="cdr-energy-api_get-billing-for-account_endpoint-version">Endpoint Version</h3>
 |   |  |
 |---|--|
-|Version|**2**
+|Version|**3**
 
-<h3 id="get-billing-for-account-parameters">Parameters</h3>
+<h3 id="cdr-energy-api_get-billing-for-account_parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -4133,6 +4115,7 @@ Other Versions: [v1](includes/obsolete/get-billing-for-account-v1.html)
           "isEstimate": true,
           "startDate": "string",
           "endDate": "string",
+          "measureUnit": "KWH",
           "rate": 0,
           "amount": "string",
           "calculationFactors": [
@@ -4196,17 +4179,17 @@ Other Versions: [v1](includes/obsolete/get-billing-for-account-v1.html)
 }
 ```
 
-<h3 id="get-billing-for-account-responses">Responses</h3>
+<h3 id="cdr-energy-api_get-billing-for-account_responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyBillingListResponseV2](#schemacdr-energy-apienergybillinglistresponsev2)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyBillingListResponseV3](#schemacdr-energy-apienergybillinglistresponsev3)|
 |400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[404 - Unavailable Energy Account](#error-404-unavailable-energy-account)</li><li>[404 - Invalid Energy Account](#error-404-invalid-energy-account)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 
-### Response Headers
+<h3 id="cdr-energy-api_get-billing-for-account_response-headers">Response Headers</h3>
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
@@ -4227,9 +4210,8 @@ To perform this operation, you must be authenticated and authorised with the fol
     
   
 
-## Get Bulk Billing
-
-<a id="opIdlistBillingBulk"></a>
+<h2 id="cdr-energy-api_get-bulk-billing">Get Bulk Billing</h2>
+<p id="get-bulk-billing" class="orig-anchor"></p>
 
 > Code samples
 
@@ -4278,14 +4260,17 @@ fetch('/energy/accounts/billing',
 
 Obtain billing transactions for all accounts
 
-Other Versions: [v1](includes/obsolete/get-bulk-billing-v1.html)
+Deprecated Versions: 
 
-###Endpoint Version
+- [v1](includes/obsolete/get-bulk-billing-v1.html) - This version is to be ceased to be called by data recipients by September 9th 2024 and **MAY** be decommissioned by data holders as of that date 
+- [v2](includes/obsolete/get-bulk-billing-v2.html) - This version **MAY** be retired by September 9th 2024 if v3 is implemented.
+
+<h3 id="cdr-energy-api_get-bulk-billing_endpoint-version">Endpoint Version</h3>
 |   |  |
 |---|--|
 |Version|**2**
 
-<h3 id="get-bulk-billing-parameters">Parameters</h3>
+<h3 id="cdr-energy-api_get-bulk-billing_parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -4345,6 +4330,7 @@ Other Versions: [v1](includes/obsolete/get-bulk-billing-v1.html)
           "isEstimate": true,
           "startDate": "string",
           "endDate": "string",
+          "measureUnit": "KWH",
           "rate": 0,
           "amount": "string",
           "calculationFactors": [
@@ -4408,16 +4394,16 @@ Other Versions: [v1](includes/obsolete/get-bulk-billing-v1.html)
 }
 ```
 
-<h3 id="get-bulk-billing-responses">Responses</h3>
+<h3 id="cdr-energy-api_get-bulk-billing_responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyBillingListResponseV2](#schemacdr-energy-apienergybillinglistresponsev2)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyBillingListResponseV3](#schemacdr-energy-apienergybillinglistresponsev3)|
 |400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 
-### Response Headers
+<h3 id="cdr-energy-api_get-bulk-billing_response-headers">Response Headers</h3>
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
@@ -4437,9 +4423,8 @@ To perform this operation, you must be authenticated and authorised with the fol
     
   
 
-## Get Billing For Specific Accounts
-
-<a id="opIdlistBillingForAccounts"></a>
+<h2 id="cdr-energy-api_get-billing-for-specific-accounts">Get Billing For Specific Accounts</h2>
+<p id="get-billing-for-specific-accounts" class="orig-anchor"></p>
 
 > Code samples
 
@@ -4497,7 +4482,10 @@ fetch('/energy/accounts/billing',
 
 Obtain billing for a specified set of accounts
 
-Other Versions: [v1](includes/obsolete/get-billing-for-specific-accounts-v1.html)
+Deprecated Versions: 
+
+- [v1](includes/obsolete/get-billing-for-specific-accounts-v1.html) - This version is to be ceased to be called by data recipients by September 9th 2024 and **MAY** be decommissioned by data holders as of that date 
+- [v2](includes/obsolete/get-billing-for-specific-accounts-v2.html) - This version **MAY** be retired by September 9th 2024 if v3 is implemented.
 
 > Body parameter
 
@@ -4512,12 +4500,12 @@ Other Versions: [v1](includes/obsolete/get-billing-for-specific-accounts-v1.html
 }
 ```
 
-###Endpoint Version
+<h3 id="cdr-energy-api_get-billing-for-specific-accounts_endpoint-version">Endpoint Version</h3>
 |   |  |
 |---|--|
 |Version|**2**
 
-<h3 id="get-billing-for-specific-accounts-parameters">Parameters</h3>
+<h3 id="cdr-energy-api_get-billing-for-specific-accounts_parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -4578,6 +4566,7 @@ Other Versions: [v1](includes/obsolete/get-billing-for-specific-accounts-v1.html
           "isEstimate": true,
           "startDate": "string",
           "endDate": "string",
+          "measureUnit": "KWH",
           "rate": 0,
           "amount": "string",
           "calculationFactors": [
@@ -4641,16 +4630,16 @@ Other Versions: [v1](includes/obsolete/get-billing-for-specific-accounts-v1.html
 }
 ```
 
-<h3 id="get-billing-for-specific-accounts-responses">Responses</h3>
+<h3 id="cdr-energy-api_get-billing-for-specific-accounts_responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyBillingListResponseV2](#schemacdr-energy-apienergybillinglistresponsev2)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyBillingListResponseV3](#schemacdr-energy-apienergybillinglistresponsev3)|
 |400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li><li>[422 - Unavailable Energy Account](#error-422-unavailable-energy-account)</li><li>[422 - Invalid Energy Account](#error-422-invalid-energy-account)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 
-### Response Headers
+<h3 id="cdr-energy-api_get-billing-for-specific-accounts_response-headers">Response Headers</h3>
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
@@ -4671,9 +4660,9 @@ To perform this operation, you must be authenticated and authorised with the fol
   
 
 <h2 class="schema-heading" id="cdr-energy-api-schemas">Schemas</h2>
-<a class="schema-link" id="cdr-energy-api-schemas"></a>
 
-<h3 class="schema-toc" id="tocSenergyplanlistresponse">EnergyPlanListResponse</h3>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyplanlistresponse">EnergyPlanListResponse</h3>
+<p id="tocSenergyplanlistresponse" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-energy-apienergyplanlistresponse"></a>
 
@@ -4730,7 +4719,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-### Properties
+<h3 id="cdr-energy-api_energyplanlistresponse_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -4739,7 +4728,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |links|[LinksPaginated](#schemacdr-energy-apilinkspaginated)|mandatory|none|
 |meta|[MetaPaginated](#schemacdr-energy-apimetapaginated)|mandatory|none|
 
-<h3 class="schema-toc" id="tocSenergyplanresponsev2">EnergyPlanResponseV2</h3>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyplanresponsev2">EnergyPlanResponseV2</h3>
+<p id="tocSenergyplanresponsev2" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-energy-apienergyplanresponsev2"></a>
 
@@ -5264,7 +5254,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-### Properties
+<h3 id="cdr-energy-api_energyplanresponsev2_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -5272,7 +5262,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |links|[Links](#schemacdr-energy-apilinks)|mandatory|none|
 |meta|[Meta](#schemacdr-energy-apimeta)|optional|none|
 
-<h3 class="schema-toc" id="tocSenergyservicepointlistresponse">EnergyServicePointListResponse</h3>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyservicepointlistresponse">EnergyServicePointListResponse</h3>
+<p id="tocSenergyservicepointlistresponse" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-energy-apienergyservicepointlistresponse"></a>
 
@@ -5311,7 +5302,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-### Properties
+<h3 id="cdr-energy-api_energyservicepointlistresponse_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -5320,7 +5311,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |links|[LinksPaginated](#schemacdr-energy-apilinkspaginated)|mandatory|none|
 |meta|[MetaPaginated](#schemacdr-energy-apimetapaginated)|mandatory|none|
 
-<h3 class="schema-toc" id="tocSenergyservicepointdetailresponse">EnergyServicePointDetailResponse</h3>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyservicepointdetailresponse">EnergyServicePointDetailResponse</h3>
+<p id="tocSenergyservicepointdetailresponse" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-energy-apienergyservicepointdetailresponse"></a>
 
@@ -5423,7 +5415,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-### Properties
+<h3 id="cdr-energy-api_energyservicepointdetailresponse_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -5431,7 +5423,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |links|[Links](#schemacdr-energy-apilinks)|mandatory|none|
 |meta|[Meta](#schemacdr-energy-apimeta)|optional|none|
 
-<h3 class="schema-toc" id="tocSenergyusagelistresponse">EnergyUsageListResponse</h3>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyusagelistresponse">EnergyUsageListResponse</h3>
+<p id="tocSenergyusagelistresponse" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-energy-apienergyusagelistresponse"></a>
 
@@ -5485,7 +5478,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-### Properties
+<h3 id="cdr-energy-api_energyusagelistresponse_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -5494,7 +5487,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |links|[LinksPaginated](#schemacdr-energy-apilinkspaginated)|mandatory|none|
 |meta|[MetaPaginated](#schemacdr-energy-apimetapaginated)|mandatory|none|
 
-<h3 class="schema-toc" id="tocSenergyderlistresponse">EnergyDerListResponse</h3>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyderlistresponse">EnergyDerListResponse</h3>
+<p id="tocSenergyderlistresponse" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-energy-apienergyderlistresponse"></a>
 
@@ -5570,7 +5564,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-### Properties
+<h3 id="cdr-energy-api_energyderlistresponse_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -5579,7 +5573,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |links|[LinksPaginated](#schemacdr-energy-apilinkspaginated)|mandatory|none|
 |meta|[MetaPaginated](#schemacdr-energy-apimetapaginated)|mandatory|none|
 
-<h3 class="schema-toc" id="tocSenergyderdetailresponse">EnergyDerDetailResponse</h3>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyderdetailresponse">EnergyDerDetailResponse</h3>
+<p id="tocSenergyderdetailresponse" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-energy-apienergyderdetailresponse"></a>
 
@@ -5644,7 +5639,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-### Properties
+<h3 id="cdr-energy-api_energyderdetailresponse_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -5652,7 +5647,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |links|[Links](#schemacdr-energy-apilinks)|mandatory|none|
 |meta|[Meta](#schemacdr-energy-apimeta)|optional|none|
 
-<h3 class="schema-toc" id="tocSenergyaccountlistresponsev2">EnergyAccountListResponseV2</h3>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyaccountlistresponsev2">EnergyAccountListResponseV2</h3>
+<p id="tocSenergyaccountlistresponsev2" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-energy-apienergyaccountlistresponsev2"></a>
 
@@ -5697,7 +5693,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-### Properties
+<h3 id="cdr-energy-api_energyaccountlistresponsev2_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -5706,7 +5702,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |links|[LinksPaginated](#schemacdr-energy-apilinkspaginated)|mandatory|none|
 |meta|[MetaPaginated](#schemacdr-energy-apimetapaginated)|mandatory|none|
 
-<h3 class="schema-toc" id="tocSenergyaccountdetailresponsev3">EnergyAccountDetailResponseV3</h3>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyaccountdetailresponsev3">EnergyAccountDetailResponseV3</h3>
+<p id="tocSenergyaccountdetailresponsev3" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-energy-apienergyaccountdetailresponsev3"></a>
 
@@ -6106,7 +6103,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-### Properties
+<h3 id="cdr-energy-api_energyaccountdetailresponsev3_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -6114,7 +6111,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |links|[Links](#schemacdr-energy-apilinks)|mandatory|none|
 |meta|[Meta](#schemacdr-energy-apimeta)|optional|none|
 
-<h3 class="schema-toc" id="tocSenergypaymentscheduleresponse">EnergyPaymentScheduleResponse</h3>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergypaymentscheduleresponse">EnergyPaymentScheduleResponse</h3>
+<p id="tocSenergypaymentscheduleresponse" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-energy-apienergypaymentscheduleresponse"></a>
 
@@ -6159,7 +6157,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-### Properties
+<h3 id="cdr-energy-api_energypaymentscheduleresponse_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -6168,7 +6166,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |links|[Links](#schemacdr-energy-apilinks)|mandatory|none|
 |meta|[Meta](#schemacdr-energy-apimeta)|optional|none|
 
-<h3 class="schema-toc" id="tocSenergyconcessionsresponse">EnergyConcessionsResponse</h3>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyconcessionsresponse">EnergyConcessionsResponse</h3>
+<p id="tocSenergyconcessionsresponse" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-energy-apienergyconcessionsresponse"></a>
 
@@ -6200,7 +6199,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-### Properties
+<h3 id="cdr-energy-api_energyconcessionsresponse_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -6209,7 +6208,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |links|[Links](#schemacdr-energy-apilinks)|mandatory|none|
 |meta|[Meta](#schemacdr-energy-apimeta)|optional|none|
 
-<h3 class="schema-toc" id="tocSenergybalancelistresponse">EnergyBalanceListResponse</h3>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergybalancelistresponse">EnergyBalanceListResponse</h3>
+<p id="tocSenergybalancelistresponse" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-energy-apienergybalancelistresponse"></a>
 
@@ -6238,7 +6238,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-### Properties
+<h3 id="cdr-energy-api_energybalancelistresponse_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -6249,7 +6249,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |links|[LinksPaginated](#schemacdr-energy-apilinkspaginated)|mandatory|none|
 |meta|[MetaPaginated](#schemacdr-energy-apimetapaginated)|mandatory|none|
 
-<h3 class="schema-toc" id="tocSenergybalanceresponse">EnergyBalanceResponse</h3>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergybalanceresponse">EnergyBalanceResponse</h3>
+<p id="tocSenergybalanceresponse" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-energy-apienergybalanceresponse"></a>
 
@@ -6266,7 +6267,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-### Properties
+<h3 id="cdr-energy-api_energybalanceresponse_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -6275,7 +6276,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |links|[Links](#schemacdr-energy-apilinks)|mandatory|none|
 |meta|[Meta](#schemacdr-energy-apimeta)|optional|none|
 
-<h3 class="schema-toc" id="tocSenergyinvoicelistresponse">EnergyInvoiceListResponse</h3>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyinvoicelistresponse">EnergyInvoiceListResponse</h3>
+<p id="tocSenergyinvoicelistresponse" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-energy-apienergyinvoicelistresponse"></a>
 
@@ -6355,7 +6357,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-### Properties
+<h3 id="cdr-energy-api_energyinvoicelistresponse_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -6364,9 +6366,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 |links|[LinksPaginated](#schemacdr-energy-apilinkspaginated)|mandatory|none|
 |meta|[MetaPaginated](#schemacdr-energy-apimetapaginated)|mandatory|none|
 
-<h3 class="schema-toc" id="tocSenergybillinglistresponsev2">EnergyBillingListResponseV2</h3>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergybillinglistresponsev3">EnergyBillingListResponseV3</h3>
+<p id="tocSenergybillinglistresponsev3" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-energy-apienergybillinglistresponsev2"></a>
+<a class="schema-anchor" id="schemacdr-energy-apienergybillinglistresponsev3"></a>
 
 ```json
 {
@@ -6409,6 +6412,7 @@ To perform this operation, you must be authenticated and authorised with the fol
           "isEstimate": true,
           "startDate": "string",
           "endDate": "string",
+          "measureUnit": "KWH",
           "rate": 0,
           "amount": "string",
           "calculationFactors": [
@@ -6473,16 +6477,17 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-### Properties
+<h3 id="cdr-energy-api_energybillinglistresponsev3_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
 |data|object|mandatory|none|
-|» transactions|[[EnergyBillingTransactionV2](#schemacdr-energy-apienergybillingtransactionv2)]|mandatory|Array of transactions sorted by date and time in descending order|
+|» transactions|[[EnergyBillingTransactionV3](#schemacdr-energy-apienergybillingtransactionv3)]|mandatory|Array of transactions sorted by date and time in descending order|
 |links|[LinksPaginated](#schemacdr-energy-apilinkspaginated)|mandatory|none|
 |meta|[MetaPaginated](#schemacdr-energy-apimetapaginated)|mandatory|none|
 
-<h3 class="schema-toc" id="tocSresponseerrorlistv2">ResponseErrorListV2</h3>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSresponseerrorlistv2">ResponseErrorListV2</h3>
+<p id="tocSresponseerrorlistv2" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-energy-apiresponseerrorlistv2"></a>
 
@@ -6502,7 +6507,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-### Properties
+<h3 id="cdr-energy-api_responseerrorlistv2_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -6513,7 +6518,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |» meta|object|optional|Additional data for customised error codes|
 |»» urn|string|conditional|The CDR error code URN which the application-specific error code extends. Mandatory if the error `code` is an application-specific error rather than a standardised error code.|
 
-<h3 class="schema-toc" id="tocSenergyplan">EnergyPlan</h3>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyplan">EnergyPlan</h3>
+<p id="tocSenergyplan" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-energy-apienergyplan"></a>
 
@@ -6553,7 +6559,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-### Properties
+<h3 id="cdr-energy-api_energyplan_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -6580,7 +6586,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |» includedPostcodes|[string]|optional|Array of valid Australian postcodes that are included from the plan.  If absent defaults to all non-excluded postcodes.  Each element is a single four digit postcode (e.g. 3000) or a range of postcodes defined by two four digit postcodes and a hyphen (e.g. 3000-3999)|
 |» distributors|[string]|mandatory|Array of distributors for the plan. Must have at least one entry|
 
-#### Enumerated Values
+<h4 id="cdr-energy-api_energyplan_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|
@@ -6593,7 +6599,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |customerType|RESIDENTIAL|
 |customerType|BUSINESS|
 
-<h3 class="schema-toc" id="tocSenergyplandetailv2">EnergyPlanDetailV2</h3>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyplandetailv2">EnergyPlanDetailV2</h3>
+<p id="tocSenergyplandetailv2" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-energy-apienergyplandetailv2"></a>
 
@@ -7112,7 +7119,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-### Properties
+<h3 id="cdr-energy-api_energyplandetailv2_properties">Properties</h3>
 
 *allOf*
 
@@ -7134,7 +7141,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |» gasContract|[EnergyPlanContractFullV2](#schemacdr-energy-apienergyplancontractfullv2)|conditional|The details of the terms for the supply of electricity under this plan.  Is mandatory if fuelType is set to GAS or DUAL|
 |» electricityContract|[EnergyPlanContractFullV2](#schemacdr-energy-apienergyplancontractfullv2)|conditional|The details of the terms for the supply of electricity under this plan.  Is mandatory if fuelType is set to ELECTRICITY or DUAL|
 
-<h3 class="schema-toc" id="tocSenergyplancontractv2">EnergyPlanContractV2</h3>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyplancontractv2">EnergyPlanContractV2</h3>
+<p id="tocSenergyplancontractv2" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-energy-apienergyplancontractv2"></a>
 
@@ -7367,7 +7375,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-### Properties
+<h3 id="cdr-energy-api_energyplancontractv2_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -7389,7 +7397,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |solarFeedInTariff|[EnergyPlanSolarFeedInTariffV2](#schemacdr-energy-apienergyplansolarfeedintariffv2)|optional|Array of feed in tariffs for solar power|
 |tariffPeriod|[EnergyPlanTariffPeriod](#schemacdr-energy-apienergyplantariffperiod)|mandatory|Array of tariff periods|
 
-#### Enumerated Values
+<h4 id="cdr-energy-api_energyplancontractv2_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|
@@ -7408,7 +7416,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |paymentOption|BPAY|
 |paymentOption|OTHER|
 
-<h3 class="schema-toc" id="tocSenergyplancontractfullv2">EnergyPlanContractFullV2</h3>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyplancontractfullv2">EnergyPlanContractFullV2</h3>
+<p id="tocSenergyplancontractfullv2" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-energy-apienergyplancontractfullv2"></a>
 
@@ -7651,7 +7660,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-### Properties
+<h3 id="cdr-energy-api_energyplancontractfullv2_properties">Properties</h3>
 
 *allOf*
 
@@ -7671,7 +7680,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |» coolingOffDays|[PositiveInteger](#common-field-types)|conditional|Number of days in the cooling off period for the contract.  Mandatory for plans with type of MARKET|
 |» billFrequency|[string]|mandatory|An array of the available billing schedules for this contract. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
 
-#### Enumerated Values
+<h4 id="cdr-energy-api_energyplancontractfullv2_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|
@@ -7683,7 +7692,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |termType|ONGOING|
 |termType|OTHER|
 
-<h3 class="schema-toc" id="tocSenergyplancontrolledload">EnergyPlanControlledLoad</h3>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyplancontrolledload">EnergyPlanControlledLoad</h3>
+<p id="tocSenergyplancontrolledload" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-energy-apienergyplancontrolledload"></a>
 
@@ -7739,7 +7749,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 *Required if pricing model is SINGLE_RATE_CONT_LOAD or TIME_OF_USE_CONT_LOAD or FLEXIBLE_CONT_LOAD*
 
-### Properties
+<h3 id="cdr-energy-api_energyplancontrolledload_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -7765,13 +7775,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 |»» volume|number|optional|Volume in kWh that this rate applies to.  Only applicable for ‘stepped’ rates where different rates apply for different volumes of usage in a period|
 |» timeOfUse|[object]|mandatory|Array of times of use.|
 |»» days|[[Enum](#common-field-types)]|optional|The days that the rate applies to|
-|»» startTime|[TimeString](#common-field-types)|conditional|The beginning of the time period per day for which the controlled load rate applies. Required if endTime provided|
-|»» endTime|[TimeString](#common-field-types)|conditional|The end of the time period per day for which the controlled load rate applies. Required if startTime provided|
+|»» startTime|[ExternalRef](#common-field-types)|conditional|The beginning of the time period per day for which the controlled load rate applies. Required if endTime provided.  Formatted according to [ISO 8601 Times](https://en.wikipedia.org/wiki/ISO_8601#Times). If the time is provided without a UTC offset, the time zone will be determined by the value of EnergyPlanContract.timeZone.|
+|»» endTime|[ExternalRef](#common-field-types)|conditional|The end of the time period per day for which the controlled load rate applies. Required if startTime provided.  Formatted according to [ISO 8601 Times](https://en.wikipedia.org/wiki/ISO_8601#Times). If the time is provided without a UTC offset, the time zone will be determined by the value of EnergyPlanContract.timeZone.|
 |»» additionalInfo|string|conditional|Display text providing more information on the contrlled load, for e.g. controlled load availability if specific day/time is not known. Required if startTime and endTime absent or if additionalInfoUri provided|
 |»» additionalInfoUri|[URIString](#common-field-types)|optional|Optional link to additional information regarding the controlled load|
 |» type|[Enum](#common-field-types)|mandatory|The type of usage that the rate applies to|
 
-#### Enumerated Values
+<h4 id="cdr-energy-api_energyplancontrolledload_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|
@@ -7806,7 +7816,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |type|SHOULDER|
 |type|SOLAR_SPONGE|
 
-<h3 class="schema-toc" id="tocSenergyplanincentives">EnergyPlanIncentives</h3>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyplanincentives">EnergyPlanIncentives</h3>
+<p id="tocSenergyplanincentives" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-energy-apienergyplanincentives"></a>
 
@@ -7824,7 +7835,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 *Optional list of incentives available for the contract*
 
-### Properties
+<h3 id="cdr-energy-api_energyplanincentives_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -7833,7 +7844,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |category|[Enum](#common-field-types)|mandatory|The type of the incentive|
 |eligibility|string|optional|A display message outlining an eligibility criteria that may apply|
 
-#### Enumerated Values
+<h4 id="cdr-energy-api_energyplanincentives_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|
@@ -7841,7 +7852,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |category|ACCOUNT_CREDIT|
 |category|OTHER|
 
-<h3 class="schema-toc" id="tocSenergyplandiscounts">EnergyPlanDiscounts</h3>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyplandiscounts">EnergyPlanDiscounts</h3>
+<p id="tocSenergyplandiscounts" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-energy-apienergyplandiscounts"></a>
 
@@ -7874,7 +7886,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 *Optional list of discounts available for the contract*
 
-### Properties
+<h3 id="cdr-energy-api_energyplandiscounts_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -7894,7 +7906,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |» rate|[RateString](#common-field-types)|mandatory|The rate of the discount over the usage amount|
 |» usageAmount|[AmountString](#common-field-types)|mandatory|The usage amount threshold above which the discount applies|
 
-#### Enumerated Values
+<h4 id="cdr-energy-api_energyplandiscounts_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|
@@ -7910,7 +7922,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |methodUType|fixedAmount|
 |methodUType|percentOverThreshold|
 
-<h3 class="schema-toc" id="tocSenergyplangreenpowercharges">EnergyPlanGreenPowerCharges</h3>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyplangreenpowercharges">EnergyPlanGreenPowerCharges</h3>
+<p id="tocSenergyplangreenpowercharges" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-energy-apienergyplangreenpowercharges"></a>
 
@@ -7935,7 +7948,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 *Optional list of charges applicable to green power*
 
-### Properties
+<h3 id="cdr-energy-api_energyplangreenpowercharges_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -7948,7 +7961,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |» rate|[RateString](#common-field-types)|conditional|The rate of the charge if the type implies the application of a rate|
 |» amount|[AmountString](#common-field-types)|conditional|The amount of the charge if the type implies the application of a fixed amount|
 
-#### Enumerated Values
+<h4 id="cdr-energy-api_energyplangreenpowercharges_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|
@@ -7961,7 +7974,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |type|PERCENT_OF_USE|
 |type|PERCENT_OF_BILL|
 
-<h3 class="schema-toc" id="tocSenergyplaneligibility">EnergyPlanEligibility</h3>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyplaneligibility">EnergyPlanEligibility</h3>
+<p id="tocSenergyplaneligibility" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-energy-apienergyplaneligibility"></a>
 
@@ -7978,7 +7992,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 *Eligibility restrictions or requirements*
 
-### Properties
+<h3 id="cdr-energy-api_energyplaneligibility_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -7986,7 +8000,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |information|string|mandatory|Information of the eligibility restriction specific to the type of the restriction|
 |description|string|optional|A description of the eligibility restriction|
 
-#### Enumerated Values
+<h4 id="cdr-energy-api_energyplaneligibility_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|
@@ -8012,7 +8026,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |type|CONTINGENT_PLAN|
 |type|OTHER|
 
-<h3 class="schema-toc" id="tocSenergyplanfees">EnergyPlanFees</h3>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyplanfees">EnergyPlanFees</h3>
+<p id="tocSenergyplanfees" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-energy-apienergyplanfees"></a>
 
@@ -8031,7 +8046,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 *An array of fees applicable to the plan*
 
-### Properties
+<h3 id="cdr-energy-api_energyplanfees_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -8041,7 +8056,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |rate|[RateString](#common-field-types)|conditional|The fee rate. Required if term is PERCENT_OF_BILL|
 |description|string|optional|A description of the fee|
 
-#### Enumerated Values
+<h4 id="cdr-energy-api_energyplanfees_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|
@@ -8075,7 +8090,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |term|BIANNUAL|
 |term|VARIABLE|
 
-<h3 class="schema-toc" id="tocSenergyplansolarfeedintariffv2">EnergyPlanSolarFeedInTariffV2</h3>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyplansolarfeedintariffv2">EnergyPlanSolarFeedInTariffV2</h3>
+<p id="tocSenergyplansolarfeedintariffv2" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-energy-apienergyplansolarfeedintariffv2"></a>
 
@@ -8124,7 +8140,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 *Array of feed in tariffs for solar power*
 
-### Properties
+<h3 id="cdr-energy-api_energyplansolarfeedintariffv2_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -8148,10 +8164,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 |»» volume|number|optional|Volume that this rate applies to. Only applicable for ‘stepped’ rates where different rates apply for different volumes of usage in a period|
 |» timeVariations|[object]|mandatory|Array of time periods for which this tariff is applicable|
 |»» days|[[Enum](#common-field-types)]|mandatory|The days that the tariff applies to. At least one entry required|
-|»» startTime|[TimeString](#common-field-types)|optional|The beginning of the time period per day for which the tariff applies.  If absent assumes start of day (ie. midnight)|
-|»» endTime|[TimeString](#common-field-types)|optional|The end of the time period per day for which the tariff applies.  If absent assumes end of day (ie. one second before midnight)|
+|»» startTime|[ExternalRef](#common-field-types)|optional|The beginning of the time period per day for which the tariff applies.  If absent assumes start of day (ie. midnight).  Formatted according to [ISO 8601 Times](https://en.wikipedia.org/wiki/ISO_8601#Times). If the time is provided without a UTC offset, the time zone will be determined by the value of EnergyPlanContract.timeZone.|
+|»» endTime|[ExternalRef](#common-field-types)|optional|The end of the time period per day for which the tariff applies.  If absent assumes end of day (ie. one second before midnight).  Formatted according to [ISO 8601 Times](https://en.wikipedia.org/wiki/ISO_8601#Times). If the time is provided without a UTC offset, the time zone will be determined by the value of EnergyPlanContract.timeZone.|
 
-#### Enumerated Values
+<h4 id="cdr-energy-api_energyplansolarfeedintariffv2_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|
@@ -8189,7 +8205,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |days|SAT|
 |days|PUBLIC_HOLIDAYS|
 
-<h3 class="schema-toc" id="tocSenergyplantariffperiod">EnergyPlanTariffPeriod</h3>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyplantariffperiod">EnergyPlanTariffPeriod</h3>
+<p id="tocSenergyplantariffperiod" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-energy-apienergyplantariffperiod"></a>
 
@@ -8263,7 +8280,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 *Array of tariff periods*
 
-### Properties
+<h3 id="cdr-energy-api_energyplantariffperiod_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -8292,23 +8309,23 @@ To perform this operation, you must be authenticated and authorised with the fol
 |»» volume|number|optional|Volume in kWh that this rate applies to.  Only applicable for ‘stepped’ rates where different rates apply for different volumes of usage in a period|
 |» timeOfUse|[object]|mandatory|Array of times of use|
 |»» days|[[Enum](#common-field-types)]|mandatory|The days that the rate applies to|
-|»» startTime|[TimeString](#common-field-types)|mandatory|Start of the period|
-|»» endTime|[TimeString](#common-field-types)|mandatory|End of the period|
+|»» startTime|[ExternalRef](#common-field-types)|mandatory|Start of the period.  Formatted according to [ISO 8601 Times](https://en.wikipedia.org/wiki/ISO_8601#Times). If the time is provided without a UTC offset, the time zone will be determined by the value of EnergyPlanContract.timeZone.|
+|»» endTime|[ExternalRef](#common-field-types)|mandatory|End of the period.  Formatted according to [ISO 8601 Times](https://en.wikipedia.org/wiki/ISO_8601#Times). If the time is provided without a UTC offset, the time zone will be determined by the value of EnergyPlanContract.timeZone.|
 |» type|[Enum](#common-field-types)|mandatory|The type of usage that the rate applies to|
 |demandCharges|[object]|conditional|Array of demand charges.  Required if rateBlockUType is demandCharges|
 |» displayName|string|mandatory|Display name of the charge|
 |» description|string|optional|Description of the charge|
 |» amount|[AmountString](#common-field-types)|mandatory|The charge amount per  measure unit exclusive of GST|
 |» measureUnit|[Enum](#common-field-types)|optional|The measurement unit of charge amount. Assumed to be KWH if absent|
-|» startTime|[TimeString](#common-field-types)|mandatory|Start of the period|
-|» endTime|[TimeString](#common-field-types)|mandatory|End of the period|
+|» startTime|[ExternalRef](#common-field-types)|mandatory|Start of the period.  Formatted according to [ISO 8601 Times](https://en.wikipedia.org/wiki/ISO_8601#Times). If the time is provided without a UTC offset, the time zone will be determined by the value of EnergyPlanContract.timeZone.|
+|» endTime|[ExternalRef](#common-field-types)|mandatory|End of the period.  Formatted according to [ISO 8601 Times](https://en.wikipedia.org/wiki/ISO_8601#Times). If the time is provided without a UTC offset, the time zone will be determined by the value of EnergyPlanContract.timeZone.|
 |» days|[[Enum](#common-field-types)]|optional|The days that the demand tariff applies to|
 |» minDemand|[AmountString](#common-field-types)|optional|Minimum demand for this demand tariff in kW.  If absent then 0 is assumed|
 |» maxDemand|[AmountString](#common-field-types)|optional|Maximum demand for this demand tariff in kW.  If present, must be higher than the value of the minDemand field|
 |» measurementPeriod|[Enum](#common-field-types)|mandatory|Application period for the demand tariff|
 |» chargePeriod|[Enum](#common-field-types)|mandatory|Charge period for the demand tariff|
 
-#### Enumerated Values
+<h4 id="cdr-energy-api_energyplantariffperiod_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|
@@ -8376,7 +8393,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |chargePeriod|MONTH|
 |chargePeriod|TARIFF_PERIOD|
 
-<h3 class="schema-toc" id="tocSenergyservicepoint">EnergyServicePoint</h3>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyservicepoint">EnergyServicePoint</h3>
+<p id="tocSenergyservicepoint" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-energy-apienergyservicepoint"></a>
 
@@ -8398,7 +8416,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-### Properties
+<h3 id="cdr-energy-api_energyservicepoint_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -8414,7 +8432,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |» classification|[Enum](#common-field-types)|optional|A code that defines the consumer class as defined in the National Energy Retail Regulations, or in overriding Jurisdictional instruments|
 |» threshold|[Enum](#common-field-types)|optional|A code that defines the consumption threshold as defined in the National Energy Retail Regulations, or in overriding Jurisdictional instruments. Note the details of enumeration values below: <ul><li>**LOW** - Consumption is less than the ‘lower consumption threshold’ as defined in the National Energy Retail Regulations</li><li>**MEDIUM** - Consumption is equal to or greater than the ‘lower consumption threshold’, but less than the ‘upper consumption threshold’, as defined in the National Energy Retail Regulations</li><li>**HIGH** - Consumption is equal to or greater than the ‘upper consumption threshold’ as defined in the National Energy Retail Regulations</li></ul>|
 
-#### Enumerated Values
+<h4 id="cdr-energy-api_energyservicepoint_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|
@@ -8445,7 +8463,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |threshold|MEDIUM|
 |threshold|HIGH|
 
-<h3 class="schema-toc" id="tocSenergyservicepointdetail">EnergyServicePointDetail</h3>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyservicepointdetail">EnergyServicePointDetail</h3>
+<p id="tocSenergyservicepointdetail" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-energy-apienergyservicepointdetail"></a>
 
@@ -8542,7 +8561,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-### Properties
+<h3 id="cdr-energy-api_energyservicepointdetail_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -8586,7 +8605,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |»» controlledLoad|boolean|optional|Indicates whether the energy recorded by this register is created under a Controlled Load regime|
 |»» consumptionType|[Enum](#common-field-types)|optional|Actual/Subtractive Indicator. Note the details of enumeration values below: <ul><li>**ACTUAL** implies volume of energy actually metered between two dates</li><li>**CUMULATIVE** indicates a meter reading for a specific date. A second Meter Reading is required to determine the consumption between those two Meter Reading dates</li></ul>|
 
-#### Enumerated Values
+<h4 id="cdr-energy-api_energyservicepointdetail_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|
@@ -8654,7 +8673,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |consumptionType|ACTUAL|
 |consumptionType|CUMULATIVE|
 
-<h3 class="schema-toc" id="tocSenergyusageread">EnergyUsageRead</h3>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyusageread">EnergyUsageRead</h3>
+<p id="tocSenergyusageread" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-energy-apienergyusageread"></a>
 
@@ -8691,7 +8711,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-### Properties
+<h3 id="cdr-energy-api_energyusageread_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -8716,7 +8736,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |»» endInterval|[PositiveInteger](#common-field-types)|mandatory|End interval for read quality flag|
 |»» quality|[Enum](#common-field-types)|mandatory|The quality of the read taken|
 
-#### Enumerated Values
+<h4 id="cdr-energy-api_energyusageread_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|
@@ -8728,7 +8748,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |quality|SUBSTITUTE|
 |quality|FINAL_SUBSTITUTE|
 
-<h3 class="schema-toc" id="tocSenergyderrecord">EnergyDerRecord</h3>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyderrecord">EnergyDerRecord</h3>
+<p id="tocSenergyderrecord" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-energy-apienergyderrecord"></a>
 
@@ -8787,7 +8808,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-### Properties
+<h3 id="cdr-energy-api_energyderrecord_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -8834,7 +8855,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |»» nominalRatedCapacity|number|mandatory|Maximum output in kVA that is listed in the product specification by the manufacturer. This refers to the capacity of each unit within the device group. Default is 0 if value not known|
 |»» nominalStorageCapacity|number|conditional|Maximum storage capacity in kVAh. This refers to the capacity of each storage module within the device group. Mandatory if type is equal to “STORAGE”. Default is 0 if value not known|
 
-#### Enumerated Values
+<h4 id="cdr-energy-api_energyderrecord_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|
@@ -8855,7 +8876,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |type|STORAGE|
 |type|OTHER|
 
-<h3 class="schema-toc" id="tocSenergyaccountbasev2">EnergyAccountBaseV2</h3>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyaccountbasev2">EnergyAccountBaseV2</h3>
+<p id="tocSenergyaccountbasev2" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-energy-apienergyaccountbasev2"></a>
 
@@ -8870,7 +8892,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-### Properties
+<h3 id="cdr-energy-api_energyaccountbasev2_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -8880,14 +8902,15 @@ To perform this operation, you must be authenticated and authorised with the fol
 |openStatus|[Enum](#common-field-types)|optional|Open or closed status for the account. If not present then OPEN is assumed|
 |creationDate|[DateString](#common-field-types)|conditional|The date that the account was created or opened. Mandatory if openStatus is OPEN|
 
-#### Enumerated Values
+<h4 id="cdr-energy-api_energyaccountbasev2_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|
 |openStatus|CLOSED|
 |openStatus|OPEN|
 
-<h3 class="schema-toc" id="tocSenergyaccountv2">EnergyAccountV2</h3>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyaccountv2">EnergyAccountV2</h3>
+<p id="tocSenergyaccountv2" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-energy-apienergyaccountv2"></a>
 
@@ -8915,7 +8938,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-### Properties
+<h3 id="cdr-energy-api_energyaccountv2_properties">Properties</h3>
 
 *allOf*
 
@@ -8936,7 +8959,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |»»» startDate|[DateString](#common-field-types)|mandatory|The start date of the applicability of this plan|
 |»»» endDate|[DateString](#common-field-types)|optional|The end date of the applicability of this plan|
 
-<h3 class="schema-toc" id="tocSenergyaccountdetailv3">EnergyAccountDetailV3</h3>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyaccountdetailv3">EnergyAccountDetailV3</h3>
+<p id="tocSenergyaccountdetailv3" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-energy-apienergyaccountdetailv3"></a>
 
@@ -9390,7 +9414,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-### Properties
+<h3 id="cdr-energy-api_energyaccountdetailv3_properties">Properties</h3>
 
 *allOf*
 
@@ -9428,7 +9452,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |»»» prefix|string|optional|Also known as title or salutation. The prefix to the name (e.g. Mr, Mrs, Ms, Miss, Sir, etc)|
 |»»» suffix|string|optional|Used for a trailing suffix to the name (e.g. Jr)|
 
-#### Enumerated Values
+<h4 id="cdr-energy-api_energyaccountdetailv3_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|
@@ -9436,7 +9460,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |fuelType|GAS|
 |fuelType|DUAL|
 
-<h3 class="schema-toc" id="tocSenergypaymentschedule">EnergyPaymentSchedule</h3>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergypaymentschedule">EnergyPaymentSchedule</h3>
+<p id="tocSenergypaymentschedule" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-energy-apienergypaymentschedule"></a>
 
@@ -9471,7 +9496,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-### Properties
+<h3 id="cdr-energy-api_energypaymentschedule_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -9497,7 +9522,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |manualPayment|object|conditional|Represents a manual payment schedule where the customer pays in response to a delivered statement. Mandatory if paymentScheduleUType is set to manualPayment|
 |» billFrequency|[ExternalRef](#common-field-types)|mandatory|The frequency with which a bill will be issued.  Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
 
-#### Enumerated Values
+<h4 id="cdr-energy-api_energypaymentschedule_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|
@@ -9526,7 +9551,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |calculationType|BALANCE|
 |calculationType|CALCULATED|
 
-<h3 class="schema-toc" id="tocSenergyconcession">EnergyConcession</h3>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyconcession">EnergyConcession</h3>
+<p id="tocSenergyconcession" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-energy-apienergyconcession"></a>
 
@@ -9548,7 +9574,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-### Properties
+<h3 id="cdr-energy-api_energyconcession_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -9563,7 +9589,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |percentage|[RateString](#common-field-types)|conditional|Conditional attribute for the percentage of discount of concession - required if type is FIXED_PERCENTAGE|
 |appliedTo|[[Enum](#common-field-types)]|optional|Array of ENUM's to specify what the concession applies to. Multiple ENUM values can be provided. If absent, USAGE is assumed|
 
-#### Enumerated Values
+<h4 id="cdr-energy-api_energyconcession_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|
@@ -9575,7 +9601,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |appliedTo|SERVICE_CHARGE|
 |appliedTo|CONTROLLED_LOAD|
 
-<h3 class="schema-toc" id="tocSenergyinvoice">EnergyInvoice</h3>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyinvoice">EnergyInvoice</h3>
+<p id="tocSenergyinvoice" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-energy-apienergyinvoice"></a>
 
@@ -9638,7 +9665,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-### Properties
+<h3 id="cdr-energy-api_energyinvoice_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -9662,7 +9689,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |accountCharges|[EnergyInvoiceAccountCharges](#schemacdr-energy-apienergyinvoiceaccountcharges)|optional|Object contains account level charges and credits related to electricity usage|
 |paymentStatus|[Enum](#common-field-types)|mandatory|Indicator of the payment status for the invoice|
 
-#### Enumerated Values
+<h4 id="cdr-energy-api_energyinvoice_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|
@@ -9670,7 +9697,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |paymentStatus|PARTIALLY_PAID|
 |paymentStatus|NOT_PAID|
 
-<h3 class="schema-toc" id="tocSenergyinvoicegasusagecharges">EnergyInvoiceGasUsageCharges</h3>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyinvoicegasusagecharges">EnergyInvoiceGasUsageCharges</h3>
+<p id="tocSenergyinvoicegasusagecharges" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-energy-apienergyinvoicegasusagecharges"></a>
 
@@ -9692,7 +9720,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-### Properties
+<h3 id="cdr-energy-api_energyinvoicegasusagecharges_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -9706,7 +9734,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |» description|string|mandatory|A free text description of the type of charge|
 |totalGst|[AmountString](#common-field-types)|optional|The total GST for all gas usage charges.  If absent then zero is assumed|
 
-#### Enumerated Values
+<h4 id="cdr-energy-api_energyinvoicegasusagecharges_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|
@@ -9718,7 +9746,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |type|RCTI|
 |type|OTHER|
 
-<h3 class="schema-toc" id="tocSenergyinvoiceelectricityusagecharges">EnergyInvoiceElectricityUsageCharges</h3>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyinvoiceelectricityusagecharges">EnergyInvoiceElectricityUsageCharges</h3>
+<p id="tocSenergyinvoiceelectricityusagecharges" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-energy-apienergyinvoiceelectricityusagecharges"></a>
 
@@ -9740,7 +9769,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-### Properties
+<h3 id="cdr-energy-api_energyinvoiceelectricityusagecharges_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -9754,7 +9783,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |» description|string|mandatory|A free text description of the type of charge|
 |totalGst|[AmountString](#common-field-types)|optional|The total GST for all electricity usage charges.  If absent then zero is assumed|
 
-#### Enumerated Values
+<h4 id="cdr-energy-api_energyinvoiceelectricityusagecharges_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|
@@ -9766,7 +9795,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |type|RCTI|
 |type|OTHER|
 
-<h3 class="schema-toc" id="tocSenergyinvoiceaccountcharges">EnergyInvoiceAccountCharges</h3>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyinvoiceaccountcharges">EnergyInvoiceAccountCharges</h3>
+<p id="tocSenergyinvoiceaccountcharges" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-energy-apienergyinvoiceaccountcharges"></a>
 
@@ -9781,7 +9811,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 *Object contains account level charges and credits related to electricity usage*
 
-### Properties
+<h3 id="cdr-energy-api_energyinvoiceaccountcharges_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -9789,9 +9819,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 |totalDiscounts|[AmountString](#common-field-types)|mandatory|The aggregate total of account level discounts or credits for the period covered by the invoice|
 |totalGst|[AmountString](#common-field-types)|optional|The total GST for all account level charges.  If absent then zero is assumed|
 
-<h3 class="schema-toc" id="tocSenergybillingtransactionv2">EnergyBillingTransactionV2</h3>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergybillingtransactionv3">EnergyBillingTransactionV3</h3>
+<p id="tocSenergybillingtransactionv3" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-energy-apienergybillingtransactionv2"></a>
+<a class="schema-anchor" id="schemacdr-energy-apienergybillingtransactionv3"></a>
 
 ```json
 {
@@ -9831,6 +9862,7 @@ To perform this operation, you must be authenticated and authorised with the fol
     "isEstimate": true,
     "startDate": "string",
     "endDate": "string",
+    "measureUnit": "KWH",
     "rate": 0,
     "amount": "string",
     "calculationFactors": [
@@ -9881,7 +9913,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-### Properties
+<h3 id="cdr-energy-api_energybillingtransactionv3_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -9890,12 +9922,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 |gst|[AmountString](#common-field-types)|optional|The GST incurred in the transaction.  Should not be included for credits or payments.  If absent zero is assumed|
 |transactionUType|[Enum](#common-field-types)|mandatory|Indicator of the type of transaction object present in this record|
 |usage|[EnergyBillingUsageTransactionV2](#schemacdr-energy-apienergybillingusagetransactionv2)|conditional|Represents a usage charge or generation credit.  Mandatory if transactionUType is equal to usage|
-|demand|[EnergyBillingDemandTransactionV2](#schemacdr-energy-apienergybillingdemandtransactionv2)|optional|Represents a demand charge or generation credit.  Mandatory if transactionUType is equal to demand|
+|demand|[EnergyBillingDemandTransactionV3](#schemacdr-energy-apienergybillingdemandtransactionv3)|optional|Represents a demand charge or generation credit.  Mandatory if transactionUType is equal to demand|
 |onceOff|[EnergyBillingOnceOffTransaction](#schemacdr-energy-apienergybillingonceofftransaction)|conditional|Represents a once off charge or credit.  Mandatory if transactionUType is equal to onceOff|
 |otherCharges|[EnergyBillingOtherTransaction](#schemacdr-energy-apienergybillingothertransaction)|optional|Represents charge other than usage and once off.  Mandatory if transactionUType is equal to otherCharge|
 |payment|[EnergyBillingPaymentTransaction](#schemacdr-energy-apienergybillingpaymenttransaction)|conditional|Represents a payment to the account.  Mandatory if transactionUType is equal to payment|
 
-#### Enumerated Values
+<h4 id="cdr-energy-api_energybillingtransactionv3_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|
@@ -9905,7 +9937,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |transactionUType|otherCharges|
 |transactionUType|payment|
 
-<h3 class="schema-toc" id="tocSenergybillingusagetransactionv2">EnergyBillingUsageTransactionV2</h3>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergybillingusagetransactionv2">EnergyBillingUsageTransactionV2</h3>
+<p id="tocSenergybillingusagetransactionv2" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-energy-apienergybillingusagetransactionv2"></a>
 
@@ -9937,7 +9970,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-### Properties
+<h3 id="cdr-energy-api_energybillingusagetransactionv2_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -9958,7 +9991,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |» amount|[AmountString](#common-field-types)|mandatory|The amount of the adjustment|
 |» description|string|mandatory|A free text description of the adjustment|
 
-#### Enumerated Values
+<h4 id="cdr-energy-api_energybillingusagetransactionv2_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|
@@ -9983,9 +10016,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 |type|DLF|
 |type|MLF|
 
-<h3 class="schema-toc" id="tocSenergybillingdemandtransactionv2">EnergyBillingDemandTransactionV2</h3>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergybillingdemandtransactionv3">EnergyBillingDemandTransactionV3</h3>
+<p id="tocSenergybillingdemandtransactionv3" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-energy-apienergybillingdemandtransactionv2"></a>
+<a class="schema-anchor" id="schemacdr-energy-apienergybillingdemandtransactionv3"></a>
 
 ```json
 {
@@ -9996,6 +10030,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   "isEstimate": true,
   "startDate": "string",
   "endDate": "string",
+  "measureUnit": "KWH",
   "rate": 0,
   "amount": "string",
   "calculationFactors": [
@@ -10014,7 +10049,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-### Properties
+<h3 id="cdr-energy-api_energybillingdemandtransactionv3_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -10025,7 +10060,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |isEstimate|boolean|optional|Flag indicating if the usage is estimated or actual.  True indicates estimate.  False or absent indicates actual|
 |startDate|[DateTimeString](#common-field-types)|mandatory|Date and time when the demand period starts|
 |endDate|[DateTimeString](#common-field-types)|mandatory|Date and time when the demand period ends|
-|rate|number|mandatory|The rate for the demand charge in kVA.  A negative value indicates power generated|
+|measureUnit|[Enum](#common-field-types)|optional|The measurement unit of rate. Assumed to be KVA if absent|
+|rate|number|mandatory|The rate for the demand charge in measureUnit. Assumed to be KVA if measureUnit not provided. A negative value indicates power generated|
 |amount|[AmountString](#common-field-types)|mandatory|The amount charged or credited for this transaction prior to any adjustments being applied.  A negative value indicates a credit|
 |calculationFactors|[object]|optional|Additional calculation factors that inform the transaction|
 |» value|number|mandatory|The value of the calculation factor|
@@ -10034,7 +10070,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |» amount|[AmountString](#common-field-types)|mandatory|The amount of the adjustment|
 |» description|string|mandatory|A free text description of the adjustment|
 
-#### Enumerated Values
+<h4 id="cdr-energy-api_energybillingdemandtransactionv3_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|
@@ -10049,10 +10085,19 @@ To perform this operation, you must be authenticated and authorised with the fol
 |timeOfUseType|AGGREGATE|
 |timeOfUseType|ALL_DAY|
 |timeOfUseType|EXCESS|
+|measureUnit|KWH|
+|measureUnit|KVA|
+|measureUnit|KVAR|
+|measureUnit|KVARH|
+|measureUnit|KW|
+|measureUnit|DAYS|
+|measureUnit|METER|
+|measureUnit|MONTH|
 |type|DLF|
 |type|MLF|
 
-<h3 class="schema-toc" id="tocSenergybillingonceofftransaction">EnergyBillingOnceOffTransaction</h3>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergybillingonceofftransaction">EnergyBillingOnceOffTransaction</h3>
+<p id="tocSenergybillingonceofftransaction" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-energy-apienergybillingonceofftransaction"></a>
 
@@ -10066,7 +10111,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-### Properties
+<h3 id="cdr-energy-api_energybillingonceofftransaction_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -10075,7 +10120,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |amount|[AmountString](#common-field-types)|mandatory|The amount of the charge or credit.  A positive value indicates a charge and a negative value indicates a credit|
 |description|string|mandatory|A free text description of the item|
 
-<h3 class="schema-toc" id="tocSenergybillingothertransaction">EnergyBillingOtherTransaction</h3>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergybillingothertransaction">EnergyBillingOtherTransaction</h3>
+<p id="tocSenergybillingothertransaction" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-energy-apienergybillingothertransaction"></a>
 
@@ -10104,7 +10150,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-### Properties
+<h3 id="cdr-energy-api_energybillingothertransaction_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -10122,7 +10168,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |» amount|[AmountString](#common-field-types)|mandatory|The amount of the adjustment|
 |» description|string|mandatory|A free text description of the adjustment|
 
-#### Enumerated Values
+<h4 id="cdr-energy-api_energybillingothertransaction_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|
@@ -10136,7 +10182,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |type|DLF|
 |type|MLF|
 
-<h3 class="schema-toc" id="tocSenergybillingpaymenttransaction">EnergyBillingPaymentTransaction</h3>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergybillingpaymenttransaction">EnergyBillingPaymentTransaction</h3>
+<p id="tocSenergybillingpaymenttransaction" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-energy-apienergybillingpaymenttransaction"></a>
 
@@ -10148,14 +10195,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-### Properties
+<h3 id="cdr-energy-api_energybillingpaymenttransaction_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
 |amount|[AmountString](#common-field-types)|mandatory|The amount paid|
 |method|[Enum](#common-field-types)|mandatory|The method of payment|
 
-#### Enumerated Values
+<h4 id="cdr-energy-api_energybillingpaymenttransaction_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|
@@ -10167,7 +10214,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |method|CHEQUE|
 |method|OTHER|
 
-<h3 class="schema-toc" id="tocScommonphysicaladdress">CommonPhysicalAddress</h3>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocScommonphysicaladdress">CommonPhysicalAddress</h3>
+<p id="tocScommonphysicaladdress" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-energy-apicommonphysicaladdress"></a>
 
@@ -10212,7 +10260,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-### Properties
+<h3 id="cdr-energy-api_commonphysicaladdress_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -10220,14 +10268,15 @@ To perform this operation, you must be authenticated and authorised with the fol
 |simple|[CommonSimpleAddress](#schemacdr-energy-apicommonsimpleaddress)|conditional|Required if addressUType is set to simple|
 |paf|[CommonPAFAddress](#schemacdr-energy-apicommonpafaddress)|conditional|Australian address formatted according to the file format defined by the [PAF file format](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf). Required if addressUType is set to paf|
 
-#### Enumerated Values
+<h4 id="cdr-energy-api_commonphysicaladdress_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|
 |addressUType|paf|
 |addressUType|simple|
 
-<h3 class="schema-toc" id="tocScommonsimpleaddress">CommonSimpleAddress</h3>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocScommonsimpleaddress">CommonSimpleAddress</h3>
+<p id="tocScommonsimpleaddress" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-energy-apicommonsimpleaddress"></a>
 
@@ -10247,7 +10296,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 *Required if addressUType is set to simple*
 
-### Properties
+<h3 id="cdr-energy-api_commonsimpleaddress_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -10260,7 +10309,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |state|string|mandatory|Free text if the country is not Australia. If country is Australia then must be one of the values defined by the [State Type Abbreviation](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf) in the PAF file format. NSW, QLD, VIC, NT, WA, SA, TAS, ACT, AAT|
 |country|[ExternalRef](#common-field-types)|optional|A valid [ISO 3166 Alpha-3](https://www.iso.org/iso-3166-country-codes.html) country code. Australia (AUS) is assumed if country is not present.|
 
-<h3 class="schema-toc" id="tocScommonpafaddress">CommonPAFAddress</h3>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocScommonpafaddress">CommonPAFAddress</h3>
+<p id="tocScommonpafaddress" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-energy-apicommonpafaddress"></a>
 
@@ -10294,7 +10344,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 *Australian address formatted according to the file format defined by the [PAF file format](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf). Required if addressUType is set to paf*
 
-### Properties
+<h3 id="cdr-energy-api_commonpafaddress_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -10321,7 +10371,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |postcode|string|mandatory|Postcode for the locality|
 |state|string|mandatory|State in which the address belongs. Valid enumeration defined by Australia Post PAF code file [State Type Abbreviation](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf). NSW, QLD, VIC, NT, WA, SA, TAS, ACT, AAT|
 
-<h3 class="schema-toc" id="tocSrequestservicepointidlist">RequestServicePointIdList</h3>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSrequestservicepointidlist">RequestServicePointIdList</h3>
+<p id="tocSrequestservicepointidlist" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-energy-apirequestservicepointidlist"></a>
 
@@ -10337,7 +10388,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-### Properties
+<h3 id="cdr-energy-api_requestservicepointidlist_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -10345,7 +10396,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |» servicePointIds|[string]|mandatory|Array of specific servicePointIds to obtain data for|
 |meta|[Meta](#schemacdr-energy-apimeta)|optional|none|
 
-<h3 class="schema-toc" id="tocSrequestaccountidlist">RequestAccountIdList</h3>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSrequestaccountidlist">RequestAccountIdList</h3>
+<p id="tocSrequestaccountidlist" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-energy-apirequestaccountidlist"></a>
 
@@ -10361,7 +10413,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-### Properties
+<h3 id="cdr-energy-api_requestaccountidlist_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -10369,7 +10421,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |» accountIds|[string]|mandatory|Array of specific accountIds to obtain data for|
 |meta|[Meta](#schemacdr-energy-apimeta)|optional|none|
 
-<h3 class="schema-toc" id="tocSlinks">Links</h3>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSlinks">Links</h3>
+<p id="tocSlinks" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-energy-apilinks"></a>
 
@@ -10380,13 +10433,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-### Properties
+<h3 id="cdr-energy-api_links_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
 |self|[URIString](#common-field-types)|mandatory|Fully qualified link that generated the current response document|
 
-<h3 class="schema-toc" id="tocSmeta">Meta</h3>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSmeta">Meta</h3>
+<p id="tocSmeta" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-energy-apimeta"></a>
 
@@ -10395,11 +10449,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-### Properties
+<h3 id="cdr-energy-api_meta_properties">Properties</h3>
 
 *None*
 
-<h3 class="schema-toc" id="tocSlinkspaginated">LinksPaginated</h3>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSlinkspaginated">LinksPaginated</h3>
+<p id="tocSlinkspaginated" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-energy-apilinkspaginated"></a>
 
@@ -10414,7 +10469,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-### Properties
+<h3 id="cdr-energy-api_linkspaginated_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -10424,7 +10479,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |next|[URIString](#common-field-types)|conditional|URI to the next page of this set. Mandatory if this response is not the last page|
 |last|[URIString](#common-field-types)|conditional|URI to the last page of this set. Mandatory if this response is not the last page|
 
-<h3 class="schema-toc" id="tocSmetapaginated">MetaPaginated</h3>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSmetapaginated">MetaPaginated</h3>
+<p id="tocSmetapaginated" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-energy-apimetapaginated"></a>
 
@@ -10436,7 +10492,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-### Properties
+<h3 id="cdr-energy-api_metapaginated_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|

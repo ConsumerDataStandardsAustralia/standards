@@ -1,5 +1,6 @@
-<h2 id='metadata-update'>Metadata Update</h2>
-<p><a id="opIdmetadataUpdate"></a></p>
+<h2 id="cdr-admin-api_metadata-update">Metadata Update</h2>
+
+<p id="metadata-update" class="orig-anchor"></p>
 
 <blockquote>
 <p>Code samples</p>
@@ -52,7 +53,9 @@
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='endpoint-version'>Endpoint Version</h3>
+</span></code></pre>
+<h3 id="cdr-admin-api_metadata-update_endpoint-version">Endpoint Version</h3>
+
 <table><thead>
 <tr>
 <th></th>
@@ -65,7 +68,7 @@
 </tr>
 </tbody></table>
 
-<h3 id="metadata-update-parameters">Parameters</h3>
+<h3 id="cdr-admin-api_metadata-update_parameters">Parameters</h3>
 
 <table><thead>
 <tr>
@@ -106,7 +109,7 @@
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="kc">null</span><span class="w">
 </span></code></pre>
-<h3 id="metadata-update-responses">Responses</h3>
+<h3 id="cdr-admin-api_metadata-update_responses">Responses</h3>
 
 <table><thead>
 <tr>
@@ -136,8 +139,10 @@
 </tr>
 </tbody></table>
 
-<h3 id="metadata-update-responseschema">Response Schema</h3>
-<h3 id='response-headers'>Response Headers</h3>
+<h3 id="cdr-admin-api_metadata-update_response-schema">Response Schema</h3> 
+
+<h3 id="cdr-admin-api_metadata-update_response-headers">Response Headers</h3>
+
 <table><thead>
 <tr>
 <th>Status</th>
@@ -165,8 +170,10 @@ Otherwise, the scope is not applicable when the Data Holder supports Self-Signed
 <aside class="success">
 This operation may only be called by the CDR Register
 </aside>
-<h2 id='get-metrics'>Get Metrics</h2>
-<p><a id="opIdgetMetrics"></a></p>
+
+<h2 id="cdr-admin-api_get-metrics">Get Metrics</h2>
+
+<p id="get-metrics" class="orig-anchor"></p>
 
 <blockquote>
 <p>Code samples</p>
@@ -217,7 +224,9 @@ This operation may only be called by the CDR Register
 </ul>
 
 <p>If the Data Holder supports private_key_jwt client authentication they MUST validate the scope.</p>
-<h3 id='endpoint-version-2'>Endpoint Version</h3>
+
+<h3 id="cdr-admin-api_get-metrics_endpoint-version">Endpoint Version</h3>
+
 <table><thead>
 <tr>
 <th></th>
@@ -230,7 +239,7 @@ This operation may only be called by the CDR Register
 </tr>
 </tbody></table>
 
-<h3 id="get-metrics-parameters">Parameters</h3>
+<h3 id="cdr-admin-api_get-metrics_parameters">Parameters</h3>
 
 <table><thead>
 <tr>
@@ -244,7 +253,7 @@ This operation may only be called by the CDR Register
 <tr>
 <td>period</td>
 <td>query</td>
-<td>string</td>
+<td><a href="#common-field-types">Enum</a></td>
 <td>optional</td>
 <td>The period of metrics to be requested. Values can be CURRENT (meaning metrics for current period, dependent on the metric type), HISTORIC (meaning metrics for previous period, depending on the metric type) or ALL. If absent the default is ALL.</td>
 </tr>
@@ -263,7 +272,9 @@ This operation may only be called by the CDR Register
 <td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values'>Enumerated Values</h4>
+
+<h4 id="cdr-admin-api_get-metrics_enumerated-values-parameters">Enumerated Values</h4>
+
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -747,7 +758,7 @@ This operation may only be called by the CDR Register
   </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id="get-metrics-responses">Responses</h3>
+<h3 id="cdr-admin-api_get-metrics_responses">Responses</h3>
 
 <table><thead>
 <tr>
@@ -776,7 +787,9 @@ This operation may only be called by the CDR Register
 <td><a href="#schemacdr-admin-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 </tbody></table>
-<h3 id='response-headers-2'>Response Headers</h3>
+
+<h3 id="cdr-admin-api_get-metrics_response-headers">Response Headers</h3>
+
 <table><thead>
 <tr>
 <th>Status</th>
@@ -807,9 +820,9 @@ This operation may only be called by the CDR Register
 
 <h2 class="schema-heading" id="cdr-admin-api-schemas">Schemas</h2>
 
-<p><a class="schema-link" id="cdr-admin-api-schemas"></a></p>
+<h3 class="schema-toc" id="cdr-admin-api_schemas_tocSrequestmetadataupdate">RequestMetaDataUpdate</h3>
 
-<h3 class="schema-toc" id="tocSrequestmetadataupdate">RequestMetaDataUpdate</h3>
+<p id="tocSrequestmetadataupdate" class="orig-anchor"></p>
 
 <p><a class="schema-anchor" id="schemacdr-admin-apirequestmetadataupdate"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -819,7 +832,9 @@ This operation may only be called by the CDR Register
   </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties'>Properties</h3>
+</span></code></pre>
+<h3 id="cdr-admin-api_requestmetadataupdate_properties">Properties</h3>
+
 <table><thead>
 <tr>
 <th>Name</th>
@@ -847,7 +862,9 @@ This operation may only be called by the CDR Register
 <td>none</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-2'>Enumerated Values</h4>
+
+<h4 id="cdr-admin-api_requestmetadataupdate_enumerated-values-main">Enumerated Values</h4>
+
 <table><thead>
 <tr>
 <th>Property</th>
@@ -860,7 +877,9 @@ This operation may only be called by the CDR Register
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSresponsemetricslistv5">ResponseMetricsListV5</h3>
+<h3 class="schema-toc" id="cdr-admin-api_schemas_tocSresponsemetricslistv5">ResponseMetricsListV5</h3>
+
+<p id="tocSresponsemetricslistv5" class="orig-anchor"></p>
 
 <p><a class="schema-anchor" id="schemacdr-admin-apiresponsemetricslistv5"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -1321,7 +1340,9 @@ This operation may only be called by the CDR Register
   </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-2'>Properties</h3>
+</span></code></pre>
+<h3 id="cdr-admin-api_responsemetricslistv5_properties">Properties</h3>
+
 <table><thead>
 <tr>
 <th>Name</th>
@@ -1434,7 +1455,9 @@ This operation may only be called by the CDR Register
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSavailabilitymetricsv2">AvailabilityMetricsV2</h3>
+<h3 class="schema-toc" id="cdr-admin-api_schemas_tocSavailabilitymetricsv2">AvailabilityMetricsV2</h3>
+
+<p id="tocSavailabilitymetricsv2" class="orig-anchor"></p>
 
 <p><a class="schema-anchor" id="schemacdr-admin-apiavailabilitymetricsv2"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -1460,7 +1483,9 @@ This operation may only be called by the CDR Register
 
 </span></code></pre>
 <p><em>Availability metrics</em></p>
-<h3 id='properties-3'>Properties</h3>
+
+<h3 id="cdr-admin-api_availabilitymetricsv2_properties">Properties</h3>
+
 <table><thead>
 <tr>
 <th>Name</th>
@@ -1483,7 +1508,7 @@ This operation may only be called by the CDR Register
 </tr>
 <tr>
 <td>» previousMonths</td>
-<td>[string]</td>
+<td><a href="#common-field-types">[RateString]</a></td>
 <td>conditional</td>
 <td>Percentage availability of the CDR platform for previous calendar months. The first element indicates the last month and so on. A maximum of twelve entries is required if available. 0.0 means 0%. 1.0 means 100%. Values must be a positive or zero</td>
 </tr>
@@ -1501,7 +1526,7 @@ This operation may only be called by the CDR Register
 </tr>
 <tr>
 <td>» previousMonths</td>
-<td>[string]</td>
+<td><a href="#common-field-types">[RateString]</a></td>
 <td>conditional</td>
 <td>Percentage availability of the CDR platform for previous calendar months. The first element indicates the last month and so on. A maximum of twelve entries is required if available. 0.0 means 0%. 1.0 means 100%. Values must be a positive or zero</td>
 </tr>
@@ -1519,13 +1544,15 @@ This operation may only be called by the CDR Register
 </tr>
 <tr>
 <td>» previousMonths</td>
-<td>[string]</td>
+<td><a href="#common-field-types">[RateString]</a></td>
 <td>conditional</td>
 <td>Percentage availability of the CDR platform for previous calendar months. The first element indicates the last month and so on. A maximum of twelve entries is required if available. 0.0 means 0%. 1.0 means 100%. Values must be a positive or zero</td>
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSperformancemetricsv3">PerformanceMetricsV3</h3>
+<h3 class="schema-toc" id="cdr-admin-api_schemas_tocSperformancemetricsv3">PerformanceMetricsV3</h3>
+
+<p id="tocSperformancemetricsv3" class="orig-anchor"></p>
 
 <p><a class="schema-anchor" id="schemacdr-admin-apiperformancemetricsv3"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -1633,7 +1660,9 @@ This operation may only be called by the CDR Register
 
 </span></code></pre>
 <p><em>Percentage of calls within the performance thresholds in each performance tier over time</em></p>
-<h3 id='properties-4'>Properties</h3>
+
+<h3 id="cdr-admin-api_performancemetricsv3_properties">Properties</h3>
+
 <table><thead>
 <tr>
 <th>Name</th>
@@ -1656,7 +1685,7 @@ This operation may only be called by the CDR Register
 </tr>
 <tr>
 <td>» previousDays</td>
-<td>[string]</td>
+<td><a href="#common-field-types">[RateString]</a></td>
 <td>conditional</td>
 <td>Percentage of calls within the performance threshold for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. 0.0 means 0%. 1.0 means 100%. Values must be a positive or zero</td>
 </tr>
@@ -1668,7 +1697,7 @@ This operation may only be called by the CDR Register
 </tr>
 <tr>
 <td>» currentDay</td>
-<td>[string]</td>
+<td><a href="#common-field-types">[RateString]</a></td>
 <td>conditional</td>
 <td>Array of contiguous hourly metrics for the current day.  Each element represents a 1 hour period starting from 12am-1am.  Timezone for determining 12am must be consistent but is at the discretion of the Data Holder</td>
 </tr>
@@ -1686,7 +1715,7 @@ This operation may only be called by the CDR Register
 </tr>
 <tr>
 <td>» currentDay</td>
-<td>[string]</td>
+<td><a href="#common-field-types">[RateString]</a></td>
 <td>conditional</td>
 <td>Array of contiguous hourly metrics for the current day.  Each element represents a 1 hour period starting from 12am-1am.  Timezone for determining 12am must be consistent but is at the discretion of the Data Holder</td>
 </tr>
@@ -1704,7 +1733,7 @@ This operation may only be called by the CDR Register
 </tr>
 <tr>
 <td>» currentDay</td>
-<td>[string]</td>
+<td><a href="#common-field-types">[RateString]</a></td>
 <td>conditional</td>
 <td>Array of contiguous hourly metrics for the current day.  Each element represents a 1 hour period starting from 12am-1am.  Timezone for determining 12am must be consistent but is at the discretion of the Data Holder</td>
 </tr>
@@ -1722,7 +1751,7 @@ This operation may only be called by the CDR Register
 </tr>
 <tr>
 <td>» currentDay</td>
-<td>[string]</td>
+<td><a href="#common-field-types">[RateString]</a></td>
 <td>conditional</td>
 <td>Array of contiguous hourly metrics for the current day.  Each element represents a 1 hour period starting from 12am-1am.  Timezone for determining 12am must be consistent but is at the discretion of the Data Holder</td>
 </tr>
@@ -1740,7 +1769,7 @@ This operation may only be called by the CDR Register
 </tr>
 <tr>
 <td>» currentDay</td>
-<td>[string]</td>
+<td><a href="#common-field-types">[RateString]</a></td>
 <td>conditional</td>
 <td>Array of contiguous hourly metrics for the current day.  Each element represents a 1 hour period starting from 12am-1am.  Timezone for determining 12am must be consistent but is at the discretion of the Data Holder</td>
 </tr>
@@ -1764,7 +1793,7 @@ This operation may only be called by the CDR Register
 </tr>
 <tr>
 <td>»» currentDay</td>
-<td>[string]</td>
+<td><a href="#common-field-types">[RateString]</a></td>
 <td>conditional</td>
 <td>Array of contiguous hourly metrics for the current day.  Each element represents a 1 hour period starting from 12am-1am.  Timezone for determining 12am must be consistent but is at the discretion of the Data Holder</td>
 </tr>
@@ -1782,7 +1811,7 @@ This operation may only be called by the CDR Register
 </tr>
 <tr>
 <td>»» currentDay</td>
-<td>[string]</td>
+<td><a href="#common-field-types">[RateString]</a></td>
 <td>conditional</td>
 <td>Array of contiguous hourly metrics for the current day.  Each element represents a 1 hour period starting from 12am-1am.  Timezone for determining 12am must be consistent but is at the discretion of the Data Holder</td>
 </tr>
@@ -1806,7 +1835,7 @@ This operation may only be called by the CDR Register
 </tr>
 <tr>
 <td>»» currentDay</td>
-<td>[string]</td>
+<td><a href="#common-field-types">[RateString]</a></td>
 <td>conditional</td>
 <td>Array of contiguous hourly metrics for the current day.  Each element represents a 1 hour period starting from 12am-1am.  Timezone for determining 12am must be consistent but is at the discretion of the Data Holder</td>
 </tr>
@@ -1824,7 +1853,7 @@ This operation may only be called by the CDR Register
 </tr>
 <tr>
 <td>»» currentDay</td>
-<td>[string]</td>
+<td><a href="#common-field-types">[RateString]</a></td>
 <td>conditional</td>
 <td>Array of contiguous hourly metrics for the current day.  Each element represents a 1 hour period starting from 12am-1am.  Timezone for determining 12am must be consistent but is at the discretion of the Data Holder</td>
 </tr>
@@ -1836,7 +1865,9 @@ This operation may only be called by the CDR Register
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSinvocationmetricsv3">InvocationMetricsV3</h3>
+<h3 class="schema-toc" id="cdr-admin-api_schemas_tocSinvocationmetricsv3">InvocationMetricsV3</h3>
+
+<p id="tocSinvocationmetricsv3" class="orig-anchor"></p>
 
 <p><a class="schema-anchor" id="schemacdr-admin-apiinvocationmetricsv3"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -1886,7 +1917,9 @@ This operation may only be called by the CDR Register
 
 </span></code></pre>
 <p><em>Number of API calls in each performance tier over time</em></p>
-<h3 id='properties-5'>Properties</h3>
+
+<h3 id="cdr-admin-api_invocationmetricsv3_properties">Properties</h3>
+
 <table><thead>
 <tr>
 <th>Name</th>
@@ -1909,7 +1942,7 @@ This operation may only be called by the CDR Register
 </tr>
 <tr>
 <td>» previousDays</td>
-<td>[integer]</td>
+<td><a href="#common-field-types">[NaturalNumber]</a></td>
 <td>conditional</td>
 <td>API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available</td>
 </tr>
@@ -1927,7 +1960,7 @@ This operation may only be called by the CDR Register
 </tr>
 <tr>
 <td>» previousDays</td>
-<td>[integer]</td>
+<td><a href="#common-field-types">[NaturalNumber]</a></td>
 <td>conditional</td>
 <td>API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available</td>
 </tr>
@@ -1945,7 +1978,7 @@ This operation may only be called by the CDR Register
 </tr>
 <tr>
 <td>» previousDays</td>
-<td>[integer]</td>
+<td><a href="#common-field-types">[NaturalNumber]</a></td>
 <td>conditional</td>
 <td>API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available</td>
 </tr>
@@ -1963,7 +1996,7 @@ This operation may only be called by the CDR Register
 </tr>
 <tr>
 <td>» previousDays</td>
-<td>[integer]</td>
+<td><a href="#common-field-types">[NaturalNumber]</a></td>
 <td>conditional</td>
 <td>API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available</td>
 </tr>
@@ -1981,7 +2014,7 @@ This operation may only be called by the CDR Register
 </tr>
 <tr>
 <td>» previousDays</td>
-<td>[integer]</td>
+<td><a href="#common-field-types">[NaturalNumber]</a></td>
 <td>conditional</td>
 <td>API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available</td>
 </tr>
@@ -1999,7 +2032,7 @@ This operation may only be called by the CDR Register
 </tr>
 <tr>
 <td>» previousDays</td>
-<td>[integer]</td>
+<td><a href="#common-field-types">[NaturalNumber]</a></td>
 <td>conditional</td>
 <td>API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available</td>
 </tr>
@@ -2017,13 +2050,15 @@ This operation may only be called by the CDR Register
 </tr>
 <tr>
 <td>» previousDays</td>
-<td>[integer]</td>
+<td><a href="#common-field-types">[NaturalNumber]</a></td>
 <td>conditional</td>
 <td>API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available</td>
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSaverageresponsemetricsv2">AverageResponseMetricsV2</h3>
+<h3 class="schema-toc" id="cdr-admin-api_schemas_tocSaverageresponsemetricsv2">AverageResponseMetricsV2</h3>
+
+<p id="tocSaverageresponsemetricsv2" class="orig-anchor"></p>
 
 <p><a class="schema-anchor" id="schemacdr-admin-apiaverageresponsemetricsv2"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -2089,7 +2124,9 @@ This operation may only be called by the CDR Register
 
 </span></code></pre>
 <p><em>Average response time in seconds, at millisecond resolution, within each performance tier</em></p>
-<h3 id='properties-6'>Properties</h3>
+
+<h3 id="cdr-admin-api_averageresponsemetricsv2_properties">Properties</h3>
+
 <table><thead>
 <tr>
 <th>Name</th>
@@ -2274,7 +2311,9 @@ This operation may only be called by the CDR Register
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSsessioncountmetricsv2">SessionCountMetricsV2</h3>
+<h3 class="schema-toc" id="cdr-admin-api_schemas_tocSsessioncountmetricsv2">SessionCountMetricsV2</h3>
+
+<p id="tocSsessioncountmetricsv2" class="orig-anchor"></p>
 
 <p><a class="schema-anchor" id="schemacdr-admin-apisessioncountmetricsv2"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -2286,7 +2325,9 @@ This operation may only be called by the CDR Register
 
 </span></code></pre>
 <p><em>Session counts over time. Note that a session is defined as the provisioning of an Access Token.</em></p>
-<h3 id='properties-7'>Properties</h3>
+
+<h3 id="cdr-admin-api_sessioncountmetricsv2_properties">Properties</h3>
+
 <table><thead>
 <tr>
 <th>Name</th>
@@ -2303,13 +2344,15 @@ This operation may only be called by the CDR Register
 </tr>
 <tr>
 <td>previousDays</td>
-<td>[integer]</td>
+<td><a href="#common-field-types">[NaturalNumber]</a></td>
 <td>conditional</td>
 <td>Session count for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available</td>
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSaveragetpsmetricsv2">AverageTPSMetricsV2</h3>
+<h3 class="schema-toc" id="cdr-admin-api_schemas_tocSaveragetpsmetricsv2">AverageTPSMetricsV2</h3>
+
+<p id="tocSaveragetpsmetricsv2" class="orig-anchor"></p>
 
 <p><a class="schema-anchor" id="schemacdr-admin-apiaveragetpsmetricsv2"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -2335,7 +2378,9 @@ This operation may only be called by the CDR Register
 
 </span></code></pre>
 <p><em>Average transactions per second over time</em></p>
-<h3 id='properties-8'>Properties</h3>
+
+<h3 id="cdr-admin-api_averagetpsmetricsv2_properties">Properties</h3>
+
 <table><thead>
 <tr>
 <th>Name</th>
@@ -2400,7 +2445,9 @@ This operation may only be called by the CDR Register
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSpeaktpsmetricsv2">PeakTPSMetricsV2</h3>
+<h3 class="schema-toc" id="cdr-admin-api_schemas_tocSpeaktpsmetricsv2">PeakTPSMetricsV2</h3>
+
+<p id="tocSpeaktpsmetricsv2" class="orig-anchor"></p>
 
 <p><a class="schema-anchor" id="schemacdr-admin-apipeaktpsmetricsv2"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -2426,7 +2473,9 @@ This operation may only be called by the CDR Register
 
 </span></code></pre>
 <p><em>Peak transactions per second over time</em></p>
-<h3 id='properties-9'>Properties</h3>
+
+<h3 id="cdr-admin-api_peaktpsmetricsv2_properties">Properties</h3>
+
 <table><thead>
 <tr>
 <th>Name</th>
@@ -2491,7 +2540,9 @@ This operation may only be called by the CDR Register
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSerrormetricsv2">ErrorMetricsV2</h3>
+<h3 class="schema-toc" id="cdr-admin-api_schemas_tocSerrormetricsv2">ErrorMetricsV2</h3>
+
+<p id="tocSerrormetricsv2" class="orig-anchor"></p>
 
 <p><a class="schema-anchor" id="schemacdr-admin-apierrormetricsv2"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -2533,7 +2584,9 @@ This operation may only be called by the CDR Register
 
 </span></code></pre>
 <p><em>Number of calls resulting in error due to server execution over time</em></p>
-<h3 id='properties-10'>Properties</h3>
+
+<h3 id="cdr-admin-api_errormetricsv2_properties">Properties</h3>
+
 <table><thead>
 <tr>
 <th>Name</th>
@@ -2556,7 +2609,7 @@ This operation may only be called by the CDR Register
 </tr>
 <tr>
 <td>» previousDays</td>
-<td>[integer]</td>
+<td><a href="#common-field-types">[NaturalNumber]</a></td>
 <td>conditional</td>
 <td>Error counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available</td>
 </tr>
@@ -2646,7 +2699,9 @@ This operation may only be called by the CDR Register
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSrejectionmetricsv3">RejectionMetricsV3</h3>
+<h3 class="schema-toc" id="cdr-admin-api_schemas_tocSrejectionmetricsv3">RejectionMetricsV3</h3>
+
+<p id="tocSrejectionmetricsv3" class="orig-anchor"></p>
 
 <p><a class="schema-anchor" id="schemacdr-admin-apirejectionmetricsv3"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -2666,7 +2721,9 @@ This operation may only be called by the CDR Register
 
 </span></code></pre>
 <p><em>Number of calls rejected due to traffic thresholds over time</em></p>
-<h3 id='properties-11'>Properties</h3>
+
+<h3 id="cdr-admin-api_rejectionmetricsv3_properties">Properties</h3>
+
 <table><thead>
 <tr>
 <th>Name</th>
@@ -2689,7 +2746,7 @@ This operation may only be called by the CDR Register
 </tr>
 <tr>
 <td>» previousDays</td>
-<td>[integer]</td>
+<td><a href="#common-field-types">[NaturalNumber]</a></td>
 <td>conditional</td>
 <td>Number of calls rejected for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.</td>
 </tr>
@@ -2707,13 +2764,15 @@ This operation may only be called by the CDR Register
 </tr>
 <tr>
 <td>» previousDays</td>
-<td>[integer]</td>
+<td><a href="#common-field-types">[NaturalNumber]</a></td>
 <td>conditional</td>
 <td>Number of calls rejected for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.</td>
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSsecondaryholdermetricsv2">SecondaryHolderMetricsV2</h3>
+<h3 class="schema-toc" id="cdr-admin-api_schemas_tocSsecondaryholdermetricsv2">SecondaryHolderMetricsV2</h3>
+
+<p id="tocSsecondaryholdermetricsv2" class="orig-anchor"></p>
 
 <p><a class="schema-anchor" id="schemacdr-admin-apisecondaryholdermetricsv2"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -2733,7 +2792,9 @@ This operation may only be called by the CDR Register
 
 </span></code></pre>
 <p><em>Errors and rejections received by the primary data holder from the secondary data holder.  Mandatory for data holders designated for a Shared Responsibility Data Request data cluster</em></p>
-<h3 id='properties-12'>Properties</h3>
+
+<h3 id="cdr-admin-api_secondaryholdermetricsv2_properties">Properties</h3>
+
 <table><thead>
 <tr>
 <th>Name</th>
@@ -2756,7 +2817,7 @@ This operation may only be called by the CDR Register
 </tr>
 <tr>
 <td>» previousDays</td>
-<td>[integer]</td>
+<td><a href="#common-field-types">[NaturalNumber]</a></td>
 <td>conditional</td>
 <td>Number of errors for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available</td>
 </tr>
@@ -2774,13 +2835,15 @@ This operation may only be called by the CDR Register
 </tr>
 <tr>
 <td>» previousDays</td>
-<td>[integer]</td>
+<td><a href="#common-field-types">[NaturalNumber]</a></td>
 <td>conditional</td>
 <td>Number of rejections for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available</td>
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSauthorisationmetricsv2">AuthorisationMetricsV2</h3>
+<h3 class="schema-toc" id="cdr-admin-api_schemas_tocSauthorisationmetricsv2">AuthorisationMetricsV2</h3>
+
+<p id="tocSauthorisationmetricsv2" class="orig-anchor"></p>
 
 <p><a class="schema-anchor" id="schemacdr-admin-apiauthorisationmetricsv2"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -2896,7 +2959,9 @@ This operation may only be called by the CDR Register
 
 </span></code></pre>
 <p><em>Authorisation counts for the data holder</em></p>
-<h3 id='properties-13'>Properties</h3>
+
+<h3 id="cdr-admin-api_authorisationmetricsv2_properties">Properties</h3>
+
 <table><thead>
 <tr>
 <th>Name</th>
@@ -3153,7 +3218,7 @@ This operation may only be called by the CDR Register
 </tr>
 <tr>
 <td>» previousDays</td>
-<td>[integer]</td>
+<td><a href="#common-field-types">[NaturalNumber]</a></td>
 <td>conditional</td>
 <td>Number of consents flows that were not successfully authorised for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available</td>
 </tr>
@@ -3177,7 +3242,7 @@ This operation may only be called by the CDR Register
 </tr>
 <tr>
 <td>»» previousDays</td>
-<td>[integer]</td>
+<td><a href="#common-field-types">[NaturalNumber]</a></td>
 <td>conditional</td>
 <td>Number of abandoned consent flows for this stage for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available</td>
 </tr>
@@ -3195,7 +3260,7 @@ This operation may only be called by the CDR Register
 </tr>
 <tr>
 <td>»» previousDays</td>
-<td>[integer]</td>
+<td><a href="#common-field-types">[NaturalNumber]</a></td>
 <td>conditional</td>
 <td>Number of abandoned consent flows for this stage for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available</td>
 </tr>
@@ -3213,7 +3278,7 @@ This operation may only be called by the CDR Register
 </tr>
 <tr>
 <td>»» previousDays</td>
-<td>[integer]</td>
+<td><a href="#common-field-types">[NaturalNumber]</a></td>
 <td>conditional</td>
 <td>Number of abandoned consent flows for this stage for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available</td>
 </tr>
@@ -3231,7 +3296,7 @@ This operation may only be called by the CDR Register
 </tr>
 <tr>
 <td>»» previousDays</td>
-<td>[integer]</td>
+<td><a href="#common-field-types">[NaturalNumber]</a></td>
 <td>conditional</td>
 <td>Number of abandoned consent flows for this stage for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available</td>
 </tr>
@@ -3249,7 +3314,7 @@ This operation may only be called by the CDR Register
 </tr>
 <tr>
 <td>»» previousDays</td>
-<td>[integer]</td>
+<td><a href="#common-field-types">[NaturalNumber]</a></td>
 <td>conditional</td>
 <td>Number of abandoned consent flows for this stage for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available</td>
 </tr>
@@ -3267,20 +3332,24 @@ This operation may only be called by the CDR Register
 </tr>
 <tr>
 <td>»» previousDays</td>
-<td>[integer]</td>
+<td><a href="#common-field-types">[NaturalNumber]</a></td>
 <td>conditional</td>
 <td>Number of abandoned consent flows for this stage for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available</td>
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSlinks">Links</h3>
+<h3 class="schema-toc" id="cdr-admin-api_schemas_tocSlinks">Links</h3>
+
+<p id="tocSlinks" class="orig-anchor"></p>
 
 <p><a class="schema-anchor" id="schemacdr-admin-apilinks"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-14'>Properties</h3>
+</span></code></pre>
+<h3 id="cdr-admin-api_links_properties">Properties</h3>
+
 <table><thead>
 <tr>
 <th>Name</th>
@@ -3297,15 +3366,21 @@ This operation may only be called by the CDR Register
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSmeta">Meta</h3>
+<h3 class="schema-toc" id="cdr-admin-api_schemas_tocSmeta">Meta</h3>
+
+<p id="tocSmeta" class="orig-anchor"></p>
 
 <p><a class="schema-anchor" id="schemacdr-admin-apimeta"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{}</span><span class="w">
 
-</span></code></pre><h3 id='properties-15'>Properties</h3>
+</span></code></pre>
+<h3 id="cdr-admin-api_meta_properties">Properties</h3>
+
 <p><em>None</em></p>
 
-<h3 class="schema-toc" id="tocSmetaerror">MetaError</h3>
+<h3 class="schema-toc" id="cdr-admin-api_schemas_tocSmetaerror">MetaError</h3>
+
+<p id="tocSmetaerror" class="orig-anchor"></p>
 
 <p><a class="schema-anchor" id="schemacdr-admin-apimetaerror"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -3314,7 +3389,9 @@ This operation may only be called by the CDR Register
 
 </span></code></pre>
 <p><em>Additional data for customised error codes</em></p>
-<h3 id='properties-16'>Properties</h3>
+
+<h3 id="cdr-admin-api_metaerror_properties">Properties</h3>
+
 <table><thead>
 <tr>
 <th>Name</th>
@@ -3331,7 +3408,9 @@ This operation may only be called by the CDR Register
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="tocSresponseerrorlistv2">ResponseErrorListV2</h3>
+<h3 class="schema-toc" id="cdr-admin-api_schemas_tocSresponseerrorlistv2">ResponseErrorListV2</h3>
+
+<p id="tocSresponseerrorlistv2" class="orig-anchor"></p>
 
 <p><a class="schema-anchor" id="schemacdr-admin-apiresponseerrorlistv2"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -3347,7 +3426,9 @@ This operation may only be called by the CDR Register
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-17'>Properties</h3>
+</span></code></pre>
+<h3 id="cdr-admin-api_responseerrorlistv2_properties">Properties</h3>
+
 <table><thead>
 <tr>
 <th>Name</th>

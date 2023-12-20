@@ -1,8 +1,7 @@
 
 
-## Get Telco Products
-
-<a id="opIdlistProducts"></a>
+<h2 id="cdr-telco-api_get-telco-products">Get Telco Products</h2>
+<p id="get-telco-products" class="orig-anchor"></p>
 
 > Code samples
 
@@ -45,18 +44,18 @@ Obtain a list of telco products that are currently offered to the market.
 
 Note that the results returned by this end point are expected to be ordered in descending order according to `lastUpdated`.
 
-###Endpoint Version
+<h3 id="cdr-telco-api_get-telco-products_endpoint-version">Endpoint Version</h3>
 |   |  |
 |---|--|
 |Version|**1**
 
-<h3 id="get-telco-products-parameters">Parameters</h3>
+<h3 id="cdr-telco-api_get-telco-products_parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|type|query|string|optional|Used to filter results on the type field. Any one of the valid values for this field can be supplied. If absent, defaults to include ALL products. Valid values are [MOBILE](https://www.legislation.gov.au/Details/C2022C00170/Html/Volume_1#_Toc95898745) service. BROADBAND fixed internet service or ALL|
-|billing-type|query|string|optional|Used to filter results on the billing-type field.  Any one of the valid values for this field can be supplied. If absent, defaults to include all billing types. Valid values are ‘PRE_PAID’, ‘POST_PAID’, 'UPFRONT_PAID', 'ALL'|
-|effective|query|string|optional|Allows for the filtering of productd based on whether the current time is within the period of time defined as effective by the effectiveFrom and effectiveTo fields. Valid values are ‘CURRENT’, ‘FUTURE’ and ‘ALL’. If absent defaults to 'CURRENT'|
+|type|query|[Enum](#common-field-types)|optional|Used to filter results on the type field. Any one of the valid values for this field can be supplied. If absent, defaults to include ALL products. Valid values are [MOBILE](https://www.legislation.gov.au/Details/C2022C00170/Html/Volume_1#_Toc95898745) service. BROADBAND fixed internet service or ALL|
+|billing-type|query|[Enum](#common-field-types)|optional|Used to filter results on the billing-type field.  Any one of the valid values for this field can be supplied. If absent, defaults to include all billing types. Valid values are ‘PRE_PAID’, ‘POST_PAID’, 'UPFRONT_PAID', 'ALL'|
+|effective|query|[Enum](#common-field-types)|optional|Allows for the filtering of productd based on whether the current time is within the period of time defined as effective by the effectiveFrom and effectiveTo fields. Valid values are ‘CURRENT’, ‘FUTURE’ and ‘ALL’. If absent defaults to 'CURRENT'|
 |updated-since|query|[DateTimeString](#common-field-types)|optional|Only include products that have been updated after the specified date and time.  If absent defaults to include all plans|
 |brand|query|string|optional|Used to filter results on the brand field. If absent, defaults to include all products. For service providers that operate a number of mobile and internet brands|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
@@ -64,7 +63,7 @@ Note that the results returned by this end point are expected to be ordered in d
 |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
 |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
 
-#### Enumerated Values
+<h4 id="cdr-telco-api_get-telco-products_enumerated-values-parameters">Enumerated Values</h4>
 
 |Parameter|Value|
 |---|---|
@@ -141,7 +140,7 @@ Note that the results returned by this end point are expected to be ordered in d
 }
 ```
 
-<h3 id="get-telco-products-responses">Responses</h3>
+<h3 id="cdr-telco-api_get-telco-products_responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -150,7 +149,7 @@ Note that the results returned by this end point are expected to be ordered in d
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-telco-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ResponseErrorListV2](#schemacdr-telco-apiresponseerrorlistv2)|
 
-### Response Headers
+<h3 id="cdr-telco-api_get-telco-products_response-headers">Response Headers</h3>
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
@@ -163,9 +162,8 @@ This operation does not require authentication
 
   
 
-## Get Telco Product Detail
-
-<a id="opIdgetProduct"></a>
+<h2 id="cdr-telco-api_get-telco-product-detail">Get Telco Product Detail</h2>
+<p id="get-telco-product-detail" class="orig-anchor"></p>
 
 > Code samples
 
@@ -206,12 +204,12 @@ fetch('https://data.holder.com.au/cds-au/v1/telco/products/{productId}',
 
 Obtain detailed information on a single telco prouct offered openly to the market
 
-###Endpoint Version
+<h3 id="cdr-telco-api_get-telco-product-detail_endpoint-version">Endpoint Version</h3>
 |   |  |
 |---|--|
 |Version|**1**
 
-<h3 id="get-telco-product-detail-parameters">Parameters</h3>
+<h3 id="cdr-telco-api_get-telco-product-detail_parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -332,7 +330,7 @@ Obtain detailed information on a single telco prouct offered openly to the marke
 }
 ```
 
-<h3 id="get-telco-product-detail-responses">Responses</h3>
+<h3 id="cdr-telco-api_get-telco-product-detail_responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -341,7 +339,7 @@ Obtain detailed information on a single telco prouct offered openly to the marke
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[404 - Invalid Resource](#error-404-resource-invalid)</li></ul>|[ResponseErrorListV2](#schemacdr-telco-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-telco-apiresponseerrorlistv2)|
 
-### Response Headers
+<h3 id="cdr-telco-api_get-telco-product-detail_response-headers">Response Headers</h3>
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
@@ -354,9 +352,8 @@ This operation does not require authentication
 
   
 
-## Get Usage For Telco Service
-
-<a id="opIdgetUsageForService"></a>
+<h2 id="cdr-telco-api_get-usage-for-telco-service">Get Usage For Telco Service</h2>
+<p id="get-usage-for-telco-service" class="orig-anchor"></p>
 
 > Code samples
 
@@ -405,12 +402,12 @@ fetch('https://data.holder.com.au/cds-au/v1/telco/accounts/{serviceId}/usage',
 
 Obtain a usage data from a particular service Id
 
-###Endpoint Version
+<h3 id="cdr-telco-api_get-usage-for-telco-service_endpoint-version">Endpoint Version</h3>
 |   |  |
 |---|--|
 |Version|**1**
 
-<h3 id="get-usage-for-telco-service-parameters">Parameters</h3>
+<h3 id="cdr-telco-api_get-usage-for-telco-service_parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -487,7 +484,7 @@ Obtain a usage data from a particular service Id
 }
 ```
 
-<h3 id="get-usage-for-telco-service-responses">Responses</h3>
+<h3 id="cdr-telco-api_get-usage-for-telco-service_responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -497,7 +494,7 @@ Obtain a usage data from a particular service Id
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-telco-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ResponseErrorListV2](#schemacdr-telco-apiresponseerrorlistv2)|
 
-### Response Headers
+<h3 id="cdr-telco-api_get-usage-for-telco-service_response-headers">Response Headers</h3>
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
@@ -518,9 +515,8 @@ To perform this operation, you must be authenticated and authorised with the fol
     
   
 
-## Get Usage
-
-<a id="opIdlistUsage"></a>
+<h2 id="cdr-telco-api_get-usage">Get Usage</h2>
+<p id="get-usage" class="orig-anchor"></p>
 
 > Code samples
 
@@ -569,12 +565,12 @@ fetch('https://data.holder.com.au/cds-au/v1/telco/accounts/usage',
 
 Obtain usage data for all services associated with the customer
 
-###Endpoint Version
+<h3 id="cdr-telco-api_get-usage_endpoint-version">Endpoint Version</h3>
 |   |  |
 |---|--|
 |Version|**1**
 
-<h3 id="get-usage-parameters">Parameters</h3>
+<h3 id="cdr-telco-api_get-usage_parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -663,7 +659,7 @@ Obtain usage data for all services associated with the customer
 }
 ```
 
-<h3 id="get-usage-responses">Responses</h3>
+<h3 id="cdr-telco-api_get-usage_responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -672,7 +668,7 @@ Obtain usage data for all services associated with the customer
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-telco-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ResponseErrorListV2](#schemacdr-telco-apiresponseerrorlistv2)|
 
-### Response Headers
+<h3 id="cdr-telco-api_get-usage_response-headers">Response Headers</h3>
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
@@ -692,9 +688,8 @@ To perform this operation, you must be authenticated and authorised with the fol
     
   
 
-## Get Usage For Specific Telco Service
-
-<a id="opIdlistUsageForService"></a>
+<h2 id="cdr-telco-api_get-usage-for-specific-telco-service">Get Usage For Specific Telco Service</h2>
+<p id="get-usage-for-specific-telco-service" class="orig-anchor"></p>
 
 > Code samples
 
@@ -765,12 +760,12 @@ Obtain usage data for a specific service
 }
 ```
 
-###Endpoint Version
+<h3 id="cdr-telco-api_get-usage-for-specific-telco-service_endpoint-version">Endpoint Version</h3>
 |   |  |
 |---|--|
 |Version|**1**
 
-<h3 id="get-usage-for-specific-telco-service-parameters">Parameters</h3>
+<h3 id="cdr-telco-api_get-usage-for-specific-telco-service_parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -861,7 +856,7 @@ Obtain usage data for a specific service
 }
 ```
 
-<h3 id="get-usage-for-specific-telco-service-responses">Responses</h3>
+<h3 id="cdr-telco-api_get-usage-for-specific-telco-service_responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -870,7 +865,7 @@ Obtain usage data for a specific service
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-telco-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li><li>[422 - Unavailable Service Point](#error-422-unavailable-service-point)</li><li>[422 - Invalid Service Point](#error-422-invalid-service-point)</li></ul>|[ResponseErrorListV2](#schemacdr-telco-apiresponseerrorlistv2)|
 
-### Response Headers
+<h3 id="cdr-telco-api_get-usage-for-specific-telco-service_response-headers">Response Headers</h3>
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
@@ -890,9 +885,8 @@ To perform this operation, you must be authenticated and authorised with the fol
     
   
 
-## Get Telco Accounts
-
-<a id="opIdlistAccounts"></a>
+<h2 id="cdr-telco-api_get-telco-accounts">Get Telco Accounts</h2>
+<p id="get-telco-accounts" class="orig-anchor"></p>
 
 > Code samples
 
@@ -941,16 +935,16 @@ fetch('https://data.holder.com.au/cds-au/v1/telco/accounts',
 
 Obtain the list of telco accounts available under the authorised consent
 
-###Endpoint Version
+<h3 id="cdr-telco-api_get-telco-accounts_endpoint-version">Endpoint Version</h3>
 |   |  |
 |---|--|
 |Version|**1**
 
-<h3 id="get-telco-accounts-parameters">Parameters</h3>
+<h3 id="cdr-telco-api_get-telco-accounts_parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|open-status|query|string|optional|Used to filter results according to open/closed status. Values can be OPEN, CLOSED or ALL. If absent then ALL is assumed|
+|open-status|query|[Enum](#common-field-types)|optional|Used to filter results according to open/closed status. Values can be OPEN, CLOSED or ALL. If absent then ALL is assumed|
 |updated-since|query|[DateString](#common-field-types)|optional|Only include accounts that have been updated after the specified date and time.  If absent defaults to include all plans|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request.  Default is 25 (standard pagination)|
@@ -961,7 +955,7 @@ Obtain the list of telco accounts available under the authorised consent
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
 |x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
 
-#### Enumerated Values
+<h4 id="cdr-telco-api_get-telco-accounts_enumerated-values-parameters">Enumerated Values</h4>
 
 |Parameter|Value|
 |---|---|
@@ -1017,7 +1011,7 @@ Obtain the list of telco accounts available under the authorised consent
 }
 ```
 
-<h3 id="get-telco-accounts-responses">Responses</h3>
+<h3 id="cdr-telco-api_get-telco-accounts_responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -1026,7 +1020,7 @@ Obtain the list of telco accounts available under the authorised consent
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-telco-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ResponseErrorListV2](#schemacdr-telco-apiresponseerrorlistv2)|
 
-### Response Headers
+<h3 id="cdr-telco-api_get-telco-accounts_response-headers">Response Headers</h3>
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
@@ -1046,9 +1040,8 @@ To perform this operation, you must be authenticated and authorised with the fol
     
   
 
-## Get Telco Account Detail
-
-<a id="opIdgetAccount"></a>
+<h2 id="cdr-telco-api_get-telco-account-detail">Get Telco Account Detail</h2>
+<p id="get-telco-account-detail" class="orig-anchor"></p>
 
 > Code samples
 
@@ -1097,12 +1090,12 @@ fetch('https://data.holder.com.au/cds-au/v1/telco/accounts/{accountId}',
 
 Obtain detailed information for a specific telco account
 
-###Endpoint Version
+<h3 id="cdr-telco-api_get-telco-account-detail_endpoint-version">Endpoint Version</h3>
 |   |  |
 |---|--|
 |Version|**1**
 
-<h3 id="get-telco-account-detail-parameters">Parameters</h3>
+<h3 id="cdr-telco-api_get-telco-account-detail_parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -1162,7 +1155,7 @@ Obtain detailed information for a specific telco account
 }
 ```
 
-<h3 id="get-telco-account-detail-responses">Responses</h3>
+<h3 id="cdr-telco-api_get-telco-account-detail_responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -1171,7 +1164,7 @@ Obtain detailed information for a specific telco account
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[404 - Unavailable Telco Account](#error-404-unavailable-telco-account)</li><li>[404 - Invalid Telco Account](#error-404-invalid-telco-account)</li></ul>|[ResponseErrorListV2](#schemacdr-telco-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-telco-apiresponseerrorlistv2)|
 
-### Response Headers
+<h3 id="cdr-telco-api_get-telco-account-detail_response-headers">Response Headers</h3>
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
@@ -1191,9 +1184,8 @@ To perform this operation, you must be authenticated and authorised with the fol
     
   
 
-## Get Telco Agreed Payment Schedule
-
-<a id="opIdgetPaymentSchedule"></a>
+<h2 id="cdr-telco-api_get-telco-agreed-payment-schedule">Get Telco Agreed Payment Schedule</h2>
+<p id="get-telco-agreed-payment-schedule" class="orig-anchor"></p>
 
 > Code samples
 
@@ -1246,12 +1238,12 @@ Some general notes about this end point:
 
  <ul><li>This API describes how the consumer has elected to pay for their account</li><li>Payments initiated by the consumer are classified as manual payments. The billing frequency is captured for manual payments. The consumer may choose to pay on a different schedule/frequency. The payment method and frequency is not captured for manual payments</li><li>Payments that can be initiated by the retailer, based on a consumer's preferences and permission, include payments based on a direct debit, card debit or digital wallet setup. Each of these requires a payment frequency to be provided along with other relevant fields</li><li>Information about payment plans related to debt repayments or arrangements due to hardship is not captured within this API</li></ul>
 
-###Endpoint Version
+<h3 id="cdr-telco-api_get-telco-agreed-payment-schedule_endpoint-version">Endpoint Version</h3>
 |   |  |
 |---|--|
 |Version|**1**
 
-<h3 id="get-telco-agreed-payment-schedule-parameters">Parameters</h3>
+<h3 id="cdr-telco-api_get-telco-agreed-payment-schedule_parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -1314,7 +1306,7 @@ Some general notes about this end point:
 }
 ```
 
-<h3 id="get-telco-agreed-payment-schedule-responses">Responses</h3>
+<h3 id="cdr-telco-api_get-telco-agreed-payment-schedule_responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -1323,7 +1315,7 @@ Some general notes about this end point:
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[404 - Unavailable Telco Account](#error-404-unavailable-telco-account)</li><li>[404 - Invalid Telco Account](#error-404-invalid-telco-account)</li></ul>|[ResponseErrorListV2](#schemacdr-telco-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-telco-apiresponseerrorlistv2)|
 
-### Response Headers
+<h3 id="cdr-telco-api_get-telco-agreed-payment-schedule_response-headers">Response Headers</h3>
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
@@ -1343,9 +1335,8 @@ To perform this operation, you must be authenticated and authorised with the fol
     
   
 
-## Get Telco Concessions
-
-<a id="opIdgetConcessions"></a>
+<h2 id="cdr-telco-api_get-telco-concessions">Get Telco Concessions</h2>
+<p id="get-telco-concessions" class="orig-anchor"></p>
 
 > Code samples
 
@@ -1394,12 +1385,12 @@ fetch('https://data.holder.com.au/cds-au/v1/telco/accounts/{accountId}/concessio
 
 Obtain the details of any concessions or arrangements applied to a specific telco account
 
-###Endpoint Version
+<h3 id="cdr-telco-api_get-telco-concessions_endpoint-version">Endpoint Version</h3>
 |   |  |
 |---|--|
 |Version|**1**
 
-<h3 id="get-telco-concessions-parameters">Parameters</h3>
+<h3 id="cdr-telco-api_get-telco-concessions_parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -1449,7 +1440,7 @@ Obtain the details of any concessions or arrangements applied to a specific telc
 }
 ```
 
-<h3 id="get-telco-concessions-responses">Responses</h3>
+<h3 id="cdr-telco-api_get-telco-concessions_responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -1458,7 +1449,7 @@ Obtain the details of any concessions or arrangements applied to a specific telc
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[404 - Unavailable Telco Account](#error-404-unavailable-telco-account)</li><li>[404 - Invalid Telco Account](#error-404-invalid-telco-account)</li></ul>|[ResponseErrorListV2](#schemacdr-telco-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-telco-apiresponseerrorlistv2)|
 
-### Response Headers
+<h3 id="cdr-telco-api_get-telco-concessions_response-headers">Response Headers</h3>
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
@@ -1478,9 +1469,8 @@ To perform this operation, you must be authenticated and authorised with the fol
     
   
 
-## Get Balance For Telco Account
-
-<a id="opIdgetBalanceForAccount"></a>
+<h2 id="cdr-telco-api_get-balance-for-telco-account">Get Balance For Telco Account</h2>
+<p id="get-balance-for-telco-account" class="orig-anchor"></p>
 
 > Code samples
 
@@ -1529,12 +1519,12 @@ fetch('https://data.holder.com.au/cds-au/v1/telco/accounts/{accountId}/balance',
 
 Obtain the current balance for a specific account
 
-###Endpoint Version
+<h3 id="cdr-telco-api_get-balance-for-telco-account_endpoint-version">Endpoint Version</h3>
 |   |  |
 |---|--|
 |Version|**1**
 
-<h3 id="get-balance-for-telco-account-parameters">Parameters</h3>
+<h3 id="cdr-telco-api_get-balance-for-telco-account_parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -1622,7 +1612,7 @@ Obtain the current balance for a specific account
 }
 ```
 
-<h3 id="get-balance-for-telco-account-responses">Responses</h3>
+<h3 id="cdr-telco-api_get-balance-for-telco-account_responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -1631,7 +1621,7 @@ Obtain the current balance for a specific account
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[404 - Unavailable Telco Account](#error-404-unavailable-telco-account)</li><li>[404 - Invalid Telco Account](#error-404-invalid-telco-account)</li></ul>|[ResponseErrorListV2](#schemacdr-telco-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-telco-apiresponseerrorlistv2)|
 
-### Response Headers
+<h3 id="cdr-telco-api_get-balance-for-telco-account_response-headers">Response Headers</h3>
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
@@ -1651,9 +1641,8 @@ To perform this operation, you must be authenticated and authorised with the fol
     
   
 
-## Get Bulk Telco Balances
-
-<a id="opIdlistBalance"></a>
+<h2 id="cdr-telco-api_get-bulk-telco-balances">Get Bulk Telco Balances</h2>
+<p id="get-bulk-telco-balances" class="orig-anchor"></p>
 
 > Code samples
 
@@ -1702,12 +1691,12 @@ fetch('https://data.holder.com.au/cds-au/v1/telco/accounts/balance',
 
 Obtain the current balance for all accounts
 
-###Endpoint Version
+<h3 id="cdr-telco-api_get-bulk-telco-balances_endpoint-version">Endpoint Version</h3>
 |   |  |
 |---|--|
 |Version|**1**
 
-<h3 id="get-bulk-telco-balances-parameters">Parameters</h3>
+<h3 id="cdr-telco-api_get-bulk-telco-balances_parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -1810,7 +1799,7 @@ Obtain the current balance for all accounts
 }
 ```
 
-<h3 id="get-bulk-telco-balances-responses">Responses</h3>
+<h3 id="cdr-telco-api_get-bulk-telco-balances_responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -1819,7 +1808,7 @@ Obtain the current balance for all accounts
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-telco-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ResponseErrorListV2](#schemacdr-telco-apiresponseerrorlistv2)|
 
-### Response Headers
+<h3 id="cdr-telco-api_get-bulk-telco-balances_response-headers">Response Headers</h3>
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
@@ -1839,9 +1828,8 @@ To perform this operation, you must be authenticated and authorised with the fol
     
   
 
-## Get Balances For Specific Telco Accounts
-
-<a id="opIdlistBalancesForAccounts"></a>
+<h2 id="cdr-telco-api_get-balances-for-specific-telco-accounts">Get Balances For Specific Telco Accounts</h2>
+<p id="get-balances-for-specific-telco-accounts" class="orig-anchor"></p>
 
 > Code samples
 
@@ -1912,12 +1900,12 @@ Obtain the current balance for a specified set of accounts
 }
 ```
 
-###Endpoint Version
+<h3 id="cdr-telco-api_get-balances-for-specific-telco-accounts_endpoint-version">Endpoint Version</h3>
 |   |  |
 |---|--|
 |Version|**1**
 
-<h3 id="get-balances-for-specific-telco-accounts-parameters">Parameters</h3>
+<h3 id="cdr-telco-api_get-balances-for-specific-telco-accounts_parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -2024,7 +2012,7 @@ Obtain the current balance for a specified set of accounts
 }
 ```
 
-<h3 id="get-balances-for-specific-telco-accounts-responses">Responses</h3>
+<h3 id="cdr-telco-api_get-balances-for-specific-telco-accounts_responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -2033,7 +2021,7 @@ Obtain the current balance for a specified set of accounts
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-telco-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li><li>[422 - Unavailable Telco Account](#error-422-unavailable-telco-account)</li><li>[422 - Invalid Telco Account](#error-422-invalid-telco-account)</li></ul>|[ResponseErrorListV2](#schemacdr-telco-apiresponseerrorlistv2)|
 
-### Response Headers
+<h3 id="cdr-telco-api_get-balances-for-specific-telco-accounts_response-headers">Response Headers</h3>
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
@@ -2053,9 +2041,8 @@ To perform this operation, you must be authenticated and authorised with the fol
     
   
 
-## Get Invoices For Telco Account
-
-<a id="opIdgetInvoicesForAccount"></a>
+<h2 id="cdr-telco-api_get-invoices-for-telco-account">Get Invoices For Telco Account</h2>
+<p id="get-invoices-for-telco-account" class="orig-anchor"></p>
 
 > Code samples
 
@@ -2104,12 +2091,12 @@ fetch('https://data.holder.com.au/cds-au/v1/telco/accounts/{accountId}/invoices'
 
 Obtain the invoices for a specific account
 
-###Endpoint Version
+<h3 id="cdr-telco-api_get-invoices-for-telco-account_endpoint-version">Endpoint Version</h3>
 |   |  |
 |---|--|
 |Version|**1**
 
-<h3 id="get-invoices-for-telco-account-parameters">Parameters</h3>
+<h3 id="cdr-telco-api_get-invoices-for-telco-account_parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -2214,7 +2201,7 @@ Obtain the invoices for a specific account
 }
 ```
 
-<h3 id="get-invoices-for-telco-account-responses">Responses</h3>
+<h3 id="cdr-telco-api_get-invoices-for-telco-account_responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -2224,7 +2211,7 @@ Obtain the invoices for a specific account
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-telco-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ResponseErrorListV2](#schemacdr-telco-apiresponseerrorlistv2)|
 
-### Response Headers
+<h3 id="cdr-telco-api_get-invoices-for-telco-account_response-headers">Response Headers</h3>
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
@@ -2245,9 +2232,8 @@ To perform this operation, you must be authenticated and authorised with the fol
     
   
 
-## Get Telco Invoices
-
-<a id="opIdlistInvoices"></a>
+<h2 id="cdr-telco-api_get-telco-invoices">Get Telco Invoices</h2>
+<p id="get-telco-invoices" class="orig-anchor"></p>
 
 > Code samples
 
@@ -2296,12 +2282,12 @@ fetch('https://data.holder.com.au/cds-au/v1/telco/accounts/invoices',
 
 Obtain the invoices for all accounts
 
-###Endpoint Version
+<h3 id="cdr-telco-api_get-telco-invoices_endpoint-version">Endpoint Version</h3>
 |   |  |
 |---|--|
 |Version|**1**
 
-<h3 id="get-telco-invoices-parameters">Parameters</h3>
+<h3 id="cdr-telco-api_get-telco-invoices_parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -2416,7 +2402,7 @@ Obtain the invoices for all accounts
 }
 ```
 
-<h3 id="get-telco-invoices-responses">Responses</h3>
+<h3 id="cdr-telco-api_get-telco-invoices_responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -2425,7 +2411,7 @@ Obtain the invoices for all accounts
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-telco-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ResponseErrorListV2](#schemacdr-telco-apiresponseerrorlistv2)|
 
-### Response Headers
+<h3 id="cdr-telco-api_get-telco-invoices_response-headers">Response Headers</h3>
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
@@ -2445,9 +2431,8 @@ To perform this operation, you must be authenticated and authorised with the fol
     
   
 
-## Get Invoices For Specific Telco Accounts
-
-<a id="opIdlistInvoicesForAccounts"></a>
+<h2 id="cdr-telco-api_get-invoices-for-specific-telco-accounts">Get Invoices For Specific Telco Accounts</h2>
+<p id="get-invoices-for-specific-telco-accounts" class="orig-anchor"></p>
 
 > Code samples
 
@@ -2518,12 +2503,12 @@ Obtain invoices for a specified set of accounts
 }
 ```
 
-###Endpoint Version
+<h3 id="cdr-telco-api_get-invoices-for-specific-telco-accounts_endpoint-version">Endpoint Version</h3>
 |   |  |
 |---|--|
 |Version|**1**
 
-<h3 id="get-invoices-for-specific-telco-accounts-parameters">Parameters</h3>
+<h3 id="cdr-telco-api_get-invoices-for-specific-telco-accounts_parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -2642,7 +2627,7 @@ Obtain invoices for a specified set of accounts
 }
 ```
 
-<h3 id="get-invoices-for-specific-telco-accounts-responses">Responses</h3>
+<h3 id="cdr-telco-api_get-invoices-for-specific-telco-accounts_responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -2651,7 +2636,7 @@ Obtain invoices for a specified set of accounts
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-telco-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li><li>[422 - Unavailable Telco Account](#error-422-unavailable-telco-account)</li><li>[422 - Invalid Telco Account](#error-422-invalid-telco-account)</li></ul>|[ResponseErrorListV2](#schemacdr-telco-apiresponseerrorlistv2)|
 
-### Response Headers
+<h3 id="cdr-telco-api_get-invoices-for-specific-telco-accounts_response-headers">Response Headers</h3>
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
@@ -2671,9 +2656,8 @@ To perform this operation, you must be authenticated and authorised with the fol
     
   
 
-## Get Transactions For Telco Account
-
-<a id="opIdgetTransactionsForAccount"></a>
+<h2 id="cdr-telco-api_get-transactions-for-telco-account">Get Transactions For Telco Account</h2>
+<p id="get-transactions-for-telco-account" class="orig-anchor"></p>
 
 > Code samples
 
@@ -2722,12 +2706,12 @@ fetch('https://data.holder.com.au/cds-au/v1/telco/accounts/{accountId}/transacti
 
 Obtain the billing transactions for a specific account
 
-###Endpoint Version
+<h3 id="cdr-telco-api_get-transactions-for-telco-account_endpoint-version">Endpoint Version</h3>
 |   |  |
 |---|--|
 |Version|**1**
 
-<h3 id="get-transactions-for-telco-account-parameters">Parameters</h3>
+<h3 id="cdr-telco-api_get-transactions-for-telco-account_parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -2812,7 +2796,7 @@ Obtain the billing transactions for a specific account
 }
 ```
 
-<h3 id="get-transactions-for-telco-account-responses">Responses</h3>
+<h3 id="cdr-telco-api_get-transactions-for-telco-account_responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -2822,7 +2806,7 @@ Obtain the billing transactions for a specific account
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-telco-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ResponseErrorListV2](#schemacdr-telco-apiresponseerrorlistv2)|
 
-### Response Headers
+<h3 id="cdr-telco-api_get-transactions-for-telco-account_response-headers">Response Headers</h3>
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
@@ -2843,9 +2827,8 @@ To perform this operation, you must be authenticated and authorised with the fol
     
   
 
-## Get Telco Transactions
-
-<a id="opIdlistTransactions"></a>
+<h2 id="cdr-telco-api_get-telco-transactions">Get Telco Transactions</h2>
+<p id="get-telco-transactions" class="orig-anchor"></p>
 
 > Code samples
 
@@ -2894,12 +2877,12 @@ fetch('https://data.holder.com.au/cds-au/v1/telco/accounts/transactions',
 
 Obtain billing transactions for all accounts
 
-###Endpoint Version
+<h3 id="cdr-telco-api_get-telco-transactions_endpoint-version">Endpoint Version</h3>
 |   |  |
 |---|--|
 |Version|**1**
 
-<h3 id="get-telco-transactions-parameters">Parameters</h3>
+<h3 id="cdr-telco-api_get-telco-transactions_parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -2983,7 +2966,7 @@ Obtain billing transactions for all accounts
 }
 ```
 
-<h3 id="get-telco-transactions-responses">Responses</h3>
+<h3 id="cdr-telco-api_get-telco-transactions_responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -2992,7 +2975,7 @@ Obtain billing transactions for all accounts
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-telco-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ResponseErrorListV2](#schemacdr-telco-apiresponseerrorlistv2)|
 
-### Response Headers
+<h3 id="cdr-telco-api_get-telco-transactions_response-headers">Response Headers</h3>
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
@@ -3012,9 +2995,8 @@ To perform this operation, you must be authenticated and authorised with the fol
     
   
 
-## Get Transactions For Specific Telco Accounts
-
-<a id="opIdlistBillingForAccounts"></a>
+<h2 id="cdr-telco-api_get-transactions-for-specific-telco-accounts">Get Transactions For Specific Telco Accounts</h2>
+<p id="get-transactions-for-specific-telco-accounts" class="orig-anchor"></p>
 
 > Code samples
 
@@ -3085,12 +3067,12 @@ Obtain transactions for a specified set of accounts
 }
 ```
 
-###Endpoint Version
+<h3 id="cdr-telco-api_get-transactions-for-specific-telco-accounts_endpoint-version">Endpoint Version</h3>
 |   |  |
 |---|--|
 |Version|**1**
 
-<h3 id="get-transactions-for-specific-telco-accounts-parameters">Parameters</h3>
+<h3 id="cdr-telco-api_get-transactions-for-specific-telco-accounts_parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -3178,7 +3160,7 @@ Obtain transactions for a specified set of accounts
 }
 ```
 
-<h3 id="get-transactions-for-specific-telco-accounts-responses">Responses</h3>
+<h3 id="cdr-telco-api_get-transactions-for-specific-telco-accounts_responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -3187,7 +3169,7 @@ Obtain transactions for a specified set of accounts
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-telco-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li><li>[422 - Unavailable Telco Account](#error-422-unavailable-telco-account)</li><li>[422 - Invalid Telco Account](#error-422-invalid-telco-account)</li></ul>|[ResponseErrorListV2](#schemacdr-telco-apiresponseerrorlistv2)|
 
-### Response Headers
+<h3 id="cdr-telco-api_get-transactions-for-specific-telco-accounts_response-headers">Response Headers</h3>
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
@@ -3208,9 +3190,9 @@ To perform this operation, you must be authenticated and authorised with the fol
   
 
 <h2 class="schema-heading" id="cdr-telco-api-schemas">Schemas</h2>
-<a class="schema-link" id="cdr-telco-api-schemas"></a>
 
-<h3 class="schema-toc" id="tocStelcoproductlistresponse">TelcoProductListResponse</h3>
+<h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoproductlistresponse">TelcoProductListResponse</h3>
+<p id="tocStelcoproductlistresponse" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-telco-apitelcoproductlistresponse"></a>
 
@@ -3273,7 +3255,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-### Properties
+<h3 id="cdr-telco-api_telcoproductlistresponse_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -3281,7 +3263,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |links|[LinksPaginated](#schemacdr-telco-apilinkspaginated)|mandatory|none|
 |meta|[MetaPaginated](#schemacdr-telco-apimetapaginated)|mandatory|none|
 
-<h3 class="schema-toc" id="tocStelcoproductresponse">TelcoProductResponse</h3>
+<h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoproductresponse">TelcoProductResponse</h3>
+<p id="tocStelcoproductresponse" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-telco-apitelcoproductresponse"></a>
 
@@ -3395,7 +3378,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-### Properties
+<h3 id="cdr-telco-api_telcoproductresponse_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -3420,7 +3403,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |links|[Links](#schemacdr-telco-apilinks)|mandatory|none|
 |meta|[Meta](#schemacdr-telco-apimeta)|optional|none|
 
-<h3 class="schema-toc" id="tocStelcousageresponse">TelcoUsageResponse</h3>
+<h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcousageresponse">TelcoUsageResponse</h3>
+<p id="tocStelcousageresponse" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-telco-apitelcousageresponse"></a>
 
@@ -3491,7 +3475,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-### Properties
+<h3 id="cdr-telco-api_telcousageresponse_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -3499,7 +3483,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |links|[Links](#schemacdr-telco-apilinks)|mandatory|none|
 |meta|[Meta](#schemacdr-telco-apimeta)|mandatory|none|
 
-<h3 class="schema-toc" id="tocStelcoserviceusageresponse">TelcoServiceUsageResponse</h3>
+<h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoserviceusageresponse">TelcoServiceUsageResponse</h3>
+<p id="tocStelcoserviceusageresponse" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-telco-apitelcoserviceusageresponse"></a>
 
@@ -3563,7 +3548,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-### Properties
+<h3 id="cdr-telco-api_telcoserviceusageresponse_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -3571,7 +3556,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |links|[Links](#schemacdr-telco-apilinks)|mandatory|none|
 |meta|[Meta](#schemacdr-telco-apimeta)|mandatory|none|
 
-<h3 class="schema-toc" id="tocStelcoserviceusagelistresponse">TelcoServiceUsageListResponse</h3>
+<h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoserviceusagelistresponse">TelcoServiceUsageListResponse</h3>
+<p id="tocStelcoserviceusagelistresponse" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-telco-apitelcoserviceusagelistresponse"></a>
 
@@ -3644,7 +3630,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-### Properties
+<h3 id="cdr-telco-api_telcoserviceusagelistresponse_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -3652,7 +3638,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |links|[LinksPaginated](#schemacdr-telco-apilinkspaginated)|mandatory|none|
 |meta|[MetaPaginated](#schemacdr-telco-apimetapaginated)|mandatory|none|
 
-<h3 class="schema-toc" id="tocStelcoaccountlistresponse">TelcoAccountListResponse</h3>
+<h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoaccountlistresponse">TelcoAccountListResponse</h3>
+<p id="tocStelcoaccountlistresponse" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-telco-apitelcoaccountlistresponse"></a>
 
@@ -3701,7 +3688,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-### Properties
+<h3 id="cdr-telco-api_telcoaccountlistresponse_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -3709,7 +3696,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |links|[LinksPaginated](#schemacdr-telco-apilinkspaginated)|mandatory|none|
 |meta|[MetaPaginated](#schemacdr-telco-apimetapaginated)|mandatory|none|
 
-<h3 class="schema-toc" id="tocStelcoaccountdetailresponse">TelcoAccountDetailResponse</h3>
+<h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoaccountdetailresponse">TelcoAccountDetailResponse</h3>
+<p id="tocStelcoaccountdetailresponse" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-telco-apitelcoaccountdetailresponse"></a>
 
@@ -3758,7 +3746,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-### Properties
+<h3 id="cdr-telco-api_telcoaccountdetailresponse_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -3766,7 +3754,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |links|[Links](#schemacdr-telco-apilinks)|mandatory|none|
 |meta|[Meta](#schemacdr-telco-apimeta)|mandatory|none|
 
-<h3 class="schema-toc" id="tocStelcopaymentscheduleresponse">TelcoPaymentScheduleResponse</h3>
+<h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcopaymentscheduleresponse">TelcoPaymentScheduleResponse</h3>
+<p id="tocStelcopaymentscheduleresponse" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-telco-apitelcopaymentscheduleresponse"></a>
 
@@ -3818,7 +3807,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-### Properties
+<h3 id="cdr-telco-api_telcopaymentscheduleresponse_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -3826,7 +3815,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |links|[LinksPaginated](#schemacdr-telco-apilinkspaginated)|mandatory|none|
 |meta|[MetaPaginated](#schemacdr-telco-apimetapaginated)|mandatory|none|
 
-<h3 class="schema-toc" id="tocStelcoconcessionsresponse">TelcoConcessionsResponse</h3>
+<h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoconcessionsresponse">TelcoConcessionsResponse</h3>
+<p id="tocStelcoconcessionsresponse" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-telco-apitelcoconcessionsresponse"></a>
 
@@ -3865,7 +3855,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-### Properties
+<h3 id="cdr-telco-api_telcoconcessionsresponse_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -3873,7 +3863,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |links|[LinksPaginated](#schemacdr-telco-apilinkspaginated)|mandatory|none|
 |meta|[MetaPaginated](#schemacdr-telco-apimetapaginated)|mandatory|none|
 
-<h3 class="schema-toc" id="tocStelcobalancelistresponse">TelcoBalanceListResponse</h3>
+<h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcobalancelistresponse">TelcoBalanceListResponse</h3>
+<p id="tocStelcobalancelistresponse" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-telco-apitelcobalancelistresponse"></a>
 
@@ -3964,7 +3955,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-### Properties
+<h3 id="cdr-telco-api_telcobalancelistresponse_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -3972,7 +3963,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |links|[LinksPaginated](#schemacdr-telco-apilinkspaginated)|mandatory|none|
 |meta|[MetaPaginated](#schemacdr-telco-apimetapaginated)|mandatory|none|
 
-<h3 class="schema-toc" id="tocStelcobalanceresponse">TelcoBalanceResponse</h3>
+<h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcobalanceresponse">TelcoBalanceResponse</h3>
+<p id="tocStelcobalanceresponse" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-telco-apitelcobalanceresponse"></a>
 
@@ -4049,7 +4041,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-### Properties
+<h3 id="cdr-telco-api_telcobalanceresponse_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -4057,7 +4049,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |links|[Links](#schemacdr-telco-apilinks)|mandatory|none|
 |meta|[Meta](#schemacdr-telco-apimeta)|mandatory|none|
 
-<h3 class="schema-toc" id="tocStelcotransactionlistresponse">TelcoTransactionListResponse</h3>
+<h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcotransactionlistresponse">TelcoTransactionListResponse</h3>
+<p id="tocStelcotransactionlistresponse" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-telco-apitelcotransactionlistresponse"></a>
 
@@ -4127,7 +4120,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-### Properties
+<h3 id="cdr-telco-api_telcotransactionlistresponse_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -4135,7 +4128,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |links|[LinksPaginated](#schemacdr-telco-apilinkspaginated)|mandatory|none|
 |meta|[MetaPaginated](#schemacdr-telco-apimetapaginated)|mandatory|none|
 
-<h3 class="schema-toc" id="tocSmetaerror">MetaError</h3>
+<h3 class="schema-toc" id="cdr-telco-api_schemas_tocSmetaerror">MetaError</h3>
+<p id="tocSmetaerror" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-telco-apimetaerror"></a>
 
@@ -4148,13 +4142,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 *Additional data for customised error codes*
 
-### Properties
+<h3 id="cdr-telco-api_metaerror_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
 |urn|string|conditional|The CDR error code URN which the application-specific error code extends. Mandatory if the error `code` is an application-specific error rather than a standardised error code.|
 
-<h3 class="schema-toc" id="tocSresponseerrorlistv2">ResponseErrorListV2</h3>
+<h3 class="schema-toc" id="cdr-telco-api_schemas_tocSresponseerrorlistv2">ResponseErrorListV2</h3>
+<p id="tocSresponseerrorlistv2" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-telco-apiresponseerrorlistv2"></a>
 
@@ -4174,7 +4169,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-### Properties
+<h3 id="cdr-telco-api_responseerrorlistv2_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -4184,7 +4179,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |» detail|string|mandatory|A human-readable explanation specific to this occurrence of the problem.|
 |» meta|[MetaError](#schemacdr-telco-apimetaerror)|optional|Additional data for customised error codes|
 
-<h3 class="schema-toc" id="tocStelcoproduct">TelcoProduct</h3>
+<h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoproduct">TelcoProduct</h3>
+<p id="tocStelcoproduct" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-telco-apitelcoproduct"></a>
 
@@ -4230,7 +4226,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-### Properties
+<h3 id="cdr-telco-api_telcoproduct_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -4253,7 +4249,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |applicationUri|[URIString](#common-field-types)|optional|A link to an application web page where this plan can be applied for|
 |additionalInformation|[TelcoAdditionalInformation](#schemacdr-telco-apitelcoadditionalinformation)|optional|Object that contains links to additional information on specific topics|
 
-#### Enumerated Values
+<h4 id="cdr-telco-api_telcoproduct_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|
@@ -4267,7 +4263,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |billingType|UPFRONT_PAID|
 |billingType|OTHER|
 
-<h3 class="schema-toc" id="tocStelcocontract">TelcoContract</h3>
+<h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcocontract">TelcoContract</h3>
+<p id="tocStelcocontract" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-telco-apitelcocontract"></a>
 
@@ -4283,7 +4280,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 *Summary of the contract details. Mandatory if the billing type is POST_PAID and a contract agreement is required with the service provider for the plan*
 
-### Properties
+<h3 id="cdr-telco-api_telcocontract_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -4292,7 +4289,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |duration|[Number](#common-field-types)|mandatory|Minimum contract duration in months|
 |contractUri|[URIString](#common-field-types)|optional|URI of the contract conditions|
 
-<h3 class="schema-toc" id="tocStelcoservicedetail">TelcoServiceDetail</h3>
+<h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoservicedetail">TelcoServiceDetail</h3>
+<p id="tocStelcoservicedetail" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-telco-apitelcoservicedetail"></a>
 
@@ -4303,13 +4301,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-### Properties
+<h3 id="cdr-telco-api_telcoservicedetail_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
 |serviceId|string|mandatory|The tokenised ID of the service identifier for use in the CDR APIs. E.g a mobile [MSISDN](https://www.etsi.org/deliver/etsi_gts/03/0303/05.00.00_60/gsmts_0303v050000p.pdf), [FNN](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf) or internet service e.g [NBN AVC Service ID](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf).  Created according to the CDR rules for [CDR ID permanence](#id-permanence)|
 
-<h3 class="schema-toc" id="tocStelcoaccountusage">TelcoAccountUsage</h3>
+<h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoaccountusage">TelcoAccountUsage</h3>
+<p id="tocStelcoaccountusage" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-telco-apitelcoaccountusage"></a>
 
@@ -4374,14 +4373,15 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-### Properties
+<h3 id="cdr-telco-api_telcoaccountusage_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
 |accountId|string|mandatory|Tokenised ID of the account. In accordance with [CDR ID permanence](#id-permanence) requirements|
 |services|[[TelcoAccountUsageServices](#schemacdr-telco-apitelcoaccountusageservices)]|mandatory|List of services that are part of the account|
 
-<h3 class="schema-toc" id="tocStelcoserviceusage">TelcoServiceUsage</h3>
+<h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoserviceusage">TelcoServiceUsage</h3>
+<p id="tocStelcoserviceusage" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-telco-apitelcoserviceusage"></a>
 
@@ -4439,7 +4439,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-### Properties
+<h3 id="cdr-telco-api_telcoserviceusage_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -4450,7 +4450,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |endDate|[DateTimeString](#common-field-types)|optional|Date when the usage period ends|
 |usage|[TelcoUsage](#schemacdr-telco-apitelcousage)|optional|Object containing usage summary|
 
-<h3 class="schema-toc" id="tocStelcoaccountbase">TelcoAccountBase</h3>
+<h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoaccountbase">TelcoAccountBase</h3>
+<p id="tocStelcoaccountbase" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-telco-apitelcoaccountbase"></a>
 
@@ -4467,7 +4468,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-### Properties
+<h3 id="cdr-telco-api_telcoaccountbase_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -4479,14 +4480,15 @@ To perform this operation, you must be authenticated and authorised with the fol
 |brand|string|optional|The retail name of the brand|
 |openStatus|[Enum](#common-field-types)|optional|Open or closed status for the account. If not present then OPEN is assumed|
 
-#### Enumerated Values
+<h4 id="cdr-telco-api_telcoaccountbase_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|
 |openStatus|CLOSED|
 |openStatus|OPEN|
 
-<h3 class="schema-toc" id="tocStelcoaccountresponsedata">TelcoAccountResponseData</h3>
+<h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoaccountresponsedata">TelcoAccountResponseData</h3>
+<p id="tocStelcoaccountresponsedata" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-telco-apitelcoaccountresponsedata"></a>
 
@@ -4518,7 +4520,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-### Properties
+<h3 id="cdr-telco-api_telcoaccountresponsedata_properties">Properties</h3>
 
 *allOf*
 
@@ -4532,7 +4534,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |---|---|---|---|
 |*anonymous*|[TelcoAccount](#schemacdr-telco-apitelcoaccount)|mandatory|The array of plans containing services and associated plan details|
 
-<h3 class="schema-toc" id="tocStelcoaccountdetailresponsedata">TelcoAccountDetailResponseData</h3>
+<h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoaccountdetailresponsedata">TelcoAccountDetailResponseData</h3>
+<p id="tocStelcoaccountdetailresponsedata" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-telco-apitelcoaccountdetailresponsedata"></a>
 
@@ -4575,7 +4578,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-### Properties
+<h3 id="cdr-telco-api_telcoaccountdetailresponsedata_properties">Properties</h3>
 
 *allOf*
 
@@ -4595,7 +4598,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |---|---|---|---|
 |*anonymous*|[TelcoAccountDetail](#schemacdr-telco-apitelcoaccountdetail)|mandatory|The array of plans containing services and associated plan details|
 
-<h3 class="schema-toc" id="tocStelcopaymentschedule">TelcoPaymentSchedule</h3>
+<h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcopaymentschedule">TelcoPaymentSchedule</h3>
+<p id="tocStelcopaymentschedule" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-telco-apitelcopaymentschedule"></a>
 
@@ -4630,7 +4634,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-### Properties
+<h3 id="cdr-telco-api_telcopaymentschedule_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -4641,7 +4645,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |digitalWallet|[TelcoPaymentScheduleDigitalWallet](#schemacdr-telco-apitelcopaymentscheduledigitalwallet)|conditional|Represents a regular payment from a digital wallet. Mandatory if paymentScheduleUType is set to digitalWallet|
 |manualPayment|[TelcoPaymentScheduleManualPayment](#schemacdr-telco-apitelcopaymentschedulemanualpayment)|conditional|Represents a manual payment schedule where the customer pays in response to a delivered statement. Mandatory if paymentScheduleUType is set to manualPayment|
 
-#### Enumerated Values
+<h4 id="cdr-telco-api_telcopaymentschedule_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|
@@ -4650,7 +4654,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |paymentScheduleUType|manualPayment|
 |paymentScheduleUType|digitalWallet|
 
-<h3 class="schema-toc" id="tocStelcoconcession">TelcoConcession</h3>
+<h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoconcession">TelcoConcession</h3>
+<p id="tocStelcoconcession" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-telco-apitelcoconcession"></a>
 
@@ -4672,7 +4677,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-### Properties
+<h3 id="cdr-telco-api_telcoconcession_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -4687,7 +4692,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |percentage|[RateString](#common-field-types)|conditional|Conditional attribute for the percentage of discount of concession - required if type is FIXED_PERCENTAGE|
 |appliedTo|[[Enum](#common-field-types)]|optional|Array of ENUM's to specify what the concession applies to. Multiple ENUM values can be provided. If absent, USAGE is assumed|
 
-#### Enumerated Values
+<h4 id="cdr-telco-api_telcoconcession_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|
@@ -4697,7 +4702,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |appliedTo|INVOICE|
 |appliedTo|USAGE|
 
-<h3 class="schema-toc" id="tocStelcoinvoice">TelcoInvoice</h3>
+<h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoinvoice">TelcoInvoice</h3>
+<p id="tocStelcoinvoice" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-telco-apitelcoinvoice"></a>
 
@@ -4781,7 +4787,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-### Properties
+<h3 id="cdr-telco-api_telcoinvoice_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -4799,7 +4805,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |accountUsage|[TelcoUsage](#schemacdr-telco-apitelcousage)|optional|Object containing usage summary|
 |paymentStatus|[Enum](#common-field-types)|mandatory|Indicator of the payment status for the invoice|
 
-#### Enumerated Values
+<h4 id="cdr-telco-api_telcoinvoice_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|
@@ -4807,7 +4813,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |paymentStatus|PARTIALLY_PAID|
 |paymentStatus|NOT_PAID|
 
-<h3 class="schema-toc" id="tocStelcousage">TelcoUsage</h3>
+<h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcousage">TelcoUsage</h3>
+<p id="tocStelcousage" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-telco-apitelcousage"></a>
 
@@ -4860,7 +4867,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 *Object containing usage summary*
 
-### Properties
+<h3 id="cdr-telco-api_telcousage_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -4868,7 +4875,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |voice|[TelcoUsageVoice](#schemacdr-telco-apitelcousagevoice)|conditional|Summary of voice calls. Required if voice calls are included in product plan|
 |messaging|[TelcoUsageMessaging](#schemacdr-telco-apitelcousagemessaging)|conditional|Summary of messaging. Required if messaging services is included in the product plan|
 
-<h3 class="schema-toc" id="tocStelcoinvoiceaccountcharges">TelcoInvoiceAccountCharges</h3>
+<h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoinvoiceaccountcharges">TelcoInvoiceAccountCharges</h3>
+<p id="tocStelcoinvoiceaccountcharges" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-telco-apitelcoinvoiceaccountcharges"></a>
 
@@ -4889,7 +4897,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 *Object contain charges and credits related to usage*
 
-### Properties
+<h3 id="cdr-telco-api_telcoinvoiceaccountcharges_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -4899,7 +4907,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |otherCharges|[TelcoInvoiceAccountChargesOtherCharges](#schemacdr-telco-apitelcoinvoiceaccountchargesothercharges)|optional|Optional array of charges that may be part of the invoice (for example services fees) (exclusive of GST)|
 |totalGst|[AmountString](#common-field-types)|optional|The total GST for all account level charges.  If absent then zero is assumed|
 
-<h3 class="schema-toc" id="tocStelcobillingtransaction">TelcoBillingTransaction</h3>
+<h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcobillingtransaction">TelcoBillingTransaction</h3>
+<p id="tocStelcobillingtransaction" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-telco-apitelcobillingtransaction"></a>
 
@@ -4952,7 +4961,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-### Properties
+<h3 id="cdr-telco-api_telcobillingtransaction_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -4965,7 +4974,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |otherCharges|[TelcoBillingOtherTransaction](#schemacdr-telco-apitelcobillingothertransaction)|optional|none|
 |payment|[TelcoBillingPaymentTransaction](#schemacdr-telco-apitelcobillingpaymenttransaction)|conditional|none|
 
-#### Enumerated Values
+<h4 id="cdr-telco-api_telcobillingtransaction_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|
@@ -4974,7 +4983,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |transactionUType|otherCharges|
 |transactionUType|payment|
 
-<h3 class="schema-toc" id="tocStelcobillingaccounttransaction">TelcoBillingAccountTransaction</h3>
+<h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcobillingaccounttransaction">TelcoBillingAccountTransaction</h3>
+<p id="tocStelcobillingaccounttransaction" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-telco-apitelcobillingaccounttransaction"></a>
 
@@ -4996,7 +5006,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-### Properties
+<h3 id="cdr-telco-api_telcobillingaccounttransaction_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -5008,7 +5018,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |amount|[AmountString](#common-field-types)|mandatory|The amount charged or credited for this transaction prior to any adjustments being applied.  A negative value indicates a credit|
 |adjustments|[[TelcoBillingAccountTransactionAdjustments](#schemacdr-telco-apitelcobillingaccounttransactionadjustments)]|optional|Optional array of adjustments arising for this transaction|
 
-<h3 class="schema-toc" id="tocStelcobillingonceofftransaction">TelcoBillingOnceOffTransaction</h3>
+<h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcobillingonceofftransaction">TelcoBillingOnceOffTransaction</h3>
+<p id="tocStelcobillingonceofftransaction" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-telco-apitelcobillingonceofftransaction"></a>
 
@@ -5022,7 +5033,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-### Properties
+<h3 id="cdr-telco-api_telcobillingonceofftransaction_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -5031,7 +5042,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |amount|[AmountString](#common-field-types)|mandatory|The amount of the charge or credit.  A positive value indicates a charge and a negative value indicates a credit|
 |description|string|mandatory|A free text description of the item|
 
-<h3 class="schema-toc" id="tocStelcobillingothertransaction">TelcoBillingOtherTransaction</h3>
+<h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcobillingothertransaction">TelcoBillingOtherTransaction</h3>
+<p id="tocStelcobillingothertransaction" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-telco-apitelcobillingothertransaction"></a>
 
@@ -5054,7 +5066,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-### Properties
+<h3 id="cdr-telco-api_telcobillingothertransaction_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -5067,7 +5079,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |description|string|mandatory|A free text description of the item|
 |adjustments|[[TelcoBillingAccountTransactionAdjustments](#schemacdr-telco-apitelcobillingaccounttransactionadjustments)]|optional|Optional array of adjustments arising for this transaction|
 
-#### Enumerated Values
+<h4 id="cdr-telco-api_telcobillingothertransaction_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|
@@ -5077,7 +5089,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |type|METERING|
 |type|OTHER|
 
-<h3 class="schema-toc" id="tocStelcobillingpaymenttransaction">TelcoBillingPaymentTransaction</h3>
+<h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcobillingpaymenttransaction">TelcoBillingPaymentTransaction</h3>
+<p id="tocStelcobillingpaymenttransaction" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-telco-apitelcobillingpaymenttransaction"></a>
 
@@ -5089,14 +5102,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-### Properties
+<h3 id="cdr-telco-api_telcobillingpaymenttransaction_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
 |amount|[AmountString](#common-field-types)|mandatory|The amount paid|
 |method|[Enum](#common-field-types)|mandatory|The method of payment|
 
-#### Enumerated Values
+<h4 id="cdr-telco-api_telcobillingpaymenttransaction_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|
@@ -5109,7 +5122,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |method|VOUCHER|
 |method|OTHER|
 
-<h3 class="schema-toc" id="tocStelcobalance">TelcoBalance</h3>
+<h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcobalance">TelcoBalance</h3>
+<p id="tocStelcobalance" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-telco-apitelcobalance"></a>
 
@@ -5182,13 +5196,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 *Object containing account service usage summary*
 
-### Properties
+<h3 id="cdr-telco-api_telcobalance_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
 |services|[allOf]|mandatory|Summary of balances|
 
-<h3 class="schema-toc" id="tocStelcoservicebalance">TelcoServiceBalance</h3>
+<h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoservicebalance">TelcoServiceBalance</h3>
+<p id="tocStelcoservicebalance" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-telco-apitelcoservicebalance"></a>
 
@@ -5257,7 +5272,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 *Telco balances for a service*
 
-### Properties
+<h3 id="cdr-telco-api_telcoservicebalance_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -5268,7 +5283,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |endDate|[DateTimeString](#common-field-types)|optional|Date when the balance period ends|
 |balance|[TelcoServiceBalances](#schemacdr-telco-apitelcoservicebalances)|optional|A summary of Service balances|
 
-<h3 class="schema-toc" id="tocStelcoplantype">TelcoPlanType</h3>
+<h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoplantype">TelcoPlanType</h3>
+<p id="tocStelcoplantype" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-telco-apitelcoplantype"></a>
 
@@ -5279,13 +5295,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 *Plan type for this feature. METERED: A plan is charged by usage for the feature. UNMETERED: A plan with no limits for a feature. LIMITED: Where plan limit inclusions apply. UNSUPPORTED: Feature is not supported*
 
-### Properties
+<h3 id="cdr-telco-api_telcoplantype_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
 |*anonymous*|[Enum](#common-field-types)|mandatory|Plan type for this feature. METERED: A plan is charged by usage for the feature. UNMETERED: A plan with no limits for a feature. LIMITED: Where plan limit inclusions apply. UNSUPPORTED: Feature is not supported|
 
-#### Enumerated Values
+<h4 id="cdr-telco-api_telcoplantype_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|
@@ -5294,7 +5310,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |*anonymous*|LIMITED|
 |*anonymous*|UNSUPPORTED|
 
-<h3 class="schema-toc" id="tocScommonphysicaladdress">CommonPhysicalAddress</h3>
+<h3 class="schema-toc" id="cdr-telco-api_schemas_tocScommonphysicaladdress">CommonPhysicalAddress</h3>
+<p id="tocScommonphysicaladdress" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-telco-apicommonphysicaladdress"></a>
 
@@ -5339,7 +5356,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-### Properties
+<h3 id="cdr-telco-api_commonphysicaladdress_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -5347,14 +5364,15 @@ To perform this operation, you must be authenticated and authorised with the fol
 |simple|[CommonSimpleAddress](#schemacdr-telco-apicommonsimpleaddress)|conditional|Required if addressUType is set to simple|
 |paf|[CommonPAFAddress](#schemacdr-telco-apicommonpafaddress)|conditional|Australian address formatted according to the file format defined by the [PAF file format](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf). Required if addressUType is set to paf|
 
-#### Enumerated Values
+<h4 id="cdr-telco-api_commonphysicaladdress_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|
 |addressUType|paf|
 |addressUType|simple|
 
-<h3 class="schema-toc" id="tocScommonsimpleaddress">CommonSimpleAddress</h3>
+<h3 class="schema-toc" id="cdr-telco-api_schemas_tocScommonsimpleaddress">CommonSimpleAddress</h3>
+<p id="tocScommonsimpleaddress" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-telco-apicommonsimpleaddress"></a>
 
@@ -5374,7 +5392,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 *Required if addressUType is set to simple*
 
-### Properties
+<h3 id="cdr-telco-api_commonsimpleaddress_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -5387,7 +5405,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |state|string|mandatory|Free text if the country is not Australia. If country is Australia then must be one of the values defined by the [State Type Abbreviation](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf) in the PAF file format. NSW, QLD, VIC, NT, WA, SA, TAS, ACT, AAT|
 |country|[ExternalRef](#common-field-types)|optional|A valid [ISO 3166 Alpha-3](https://www.iso.org/iso-3166-country-codes.html) country code. Australia (AUS) is assumed if country is not present.|
 
-<h3 class="schema-toc" id="tocScommonpafaddress">CommonPAFAddress</h3>
+<h3 class="schema-toc" id="cdr-telco-api_schemas_tocScommonpafaddress">CommonPAFAddress</h3>
+<p id="tocScommonpafaddress" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-telco-apicommonpafaddress"></a>
 
@@ -5421,7 +5440,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 *Australian address formatted according to the file format defined by the [PAF file format](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf). Required if addressUType is set to paf*
 
-### Properties
+<h3 id="cdr-telco-api_commonpafaddress_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -5448,7 +5467,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |postcode|string|mandatory|Postcode for the locality|
 |state|string|mandatory|State in which the address belongs. Valid enumeration defined by Australia Post PAF code file [State Type Abbreviation](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf). NSW, QLD, VIC, NT, WA, SA, TAS, ACT, AAT|
 
-<h3 class="schema-toc" id="tocSlinks">Links</h3>
+<h3 class="schema-toc" id="cdr-telco-api_schemas_tocSlinks">Links</h3>
+<p id="tocSlinks" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-telco-apilinks"></a>
 
@@ -5459,13 +5479,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-### Properties
+<h3 id="cdr-telco-api_links_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
 |self|[URIString](#common-field-types)|mandatory|Fully qualified link that generated the current response document|
 
-<h3 class="schema-toc" id="tocSmeta">Meta</h3>
+<h3 class="schema-toc" id="cdr-telco-api_schemas_tocSmeta">Meta</h3>
+<p id="tocSmeta" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-telco-apimeta"></a>
 
@@ -5474,11 +5495,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-### Properties
+<h3 id="cdr-telco-api_meta_properties">Properties</h3>
 
 *None*
 
-<h3 class="schema-toc" id="tocSlinkspaginated">LinksPaginated</h3>
+<h3 class="schema-toc" id="cdr-telco-api_schemas_tocSlinkspaginated">LinksPaginated</h3>
+<p id="tocSlinkspaginated" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-telco-apilinkspaginated"></a>
 
@@ -5493,7 +5515,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-### Properties
+<h3 id="cdr-telco-api_linkspaginated_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -5503,7 +5525,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |next|[URIString](#common-field-types)|conditional|URI to the next page of this set. Mandatory if this response is not the last page|
 |last|[URIString](#common-field-types)|conditional|URI to the last page of this set. Mandatory if this response is not the last page|
 
-<h3 class="schema-toc" id="tocSmetapaginated">MetaPaginated</h3>
+<h3 class="schema-toc" id="cdr-telco-api_schemas_tocSmetapaginated">MetaPaginated</h3>
+<p id="tocSmetapaginated" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-telco-apimetapaginated"></a>
 
@@ -5515,14 +5538,15 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-### Properties
+<h3 id="cdr-telco-api_metapaginated_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
 |totalRecords|[NaturalNumber](#common-field-types)|mandatory|The total number of records in the full set. See [pagination](#pagination).|
 |totalPages|[NaturalNumber](#common-field-types)|mandatory|The total number of pages in the full set. See [pagination](#pagination).|
 
-<h3 class="schema-toc" id="tocStelcoproductlistresponsedata">TelcoProductListResponseData</h3>
+<h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoproductlistresponsedata">TelcoProductListResponseData</h3>
+<p id="tocStelcoproductlistresponsedata" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-telco-apitelcoproductlistresponsedata"></a>
 
@@ -5572,13 +5596,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-### Properties
+<h3 id="cdr-telco-api_telcoproductlistresponsedata_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
 |plans|[[TelcoProduct](#schemacdr-telco-apitelcoproduct)]|mandatory|Array of Products|
 
-<h3 class="schema-toc" id="tocStelcousagelistresponse">TelcoUsageListResponse</h3>
+<h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcousagelistresponse">TelcoUsageListResponse</h3>
+<p id="tocStelcousagelistresponse" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-telco-apitelcousagelistresponse"></a>
 
@@ -5653,7 +5678,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-### Properties
+<h3 id="cdr-telco-api_telcousagelistresponse_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -5661,7 +5686,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |links|[Links](#schemacdr-telco-apilinks)|mandatory|none|
 |meta|[Meta](#schemacdr-telco-apimeta)|mandatory|none|
 
-<h3 class="schema-toc" id="tocStelcousagelistresponsedata">TelcoUsageListResponseData</h3>
+<h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcousagelistresponsedata">TelcoUsageListResponseData</h3>
+<p id="tocStelcousagelistresponsedata" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-telco-apitelcousagelistresponsedata"></a>
 
@@ -5730,13 +5756,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-### Properties
+<h3 id="cdr-telco-api_telcousagelistresponsedata_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
 |accounts|[[TelcoAccountUsage](#schemacdr-telco-apitelcoaccountusage)]|mandatory|Array of usage on accounts|
 
-<h3 class="schema-toc" id="tocStelcoaccountlistresponsedata">TelcoAccountListResponseData</h3>
+<h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoaccountlistresponsedata">TelcoAccountListResponseData</h3>
+<p id="tocStelcoaccountlistresponsedata" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-telco-apitelcoaccountlistresponsedata"></a>
 
@@ -5772,13 +5799,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-### Properties
+<h3 id="cdr-telco-api_telcoaccountlistresponsedata_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
 |accounts|[[TelcoAccountResponseData](#schemacdr-telco-apitelcoaccountresponsedata)]|mandatory|Array of accounts|
 
-<h3 class="schema-toc" id="tocStelcopaymentscheduleresponsedata">TelcoPaymentScheduleResponseData</h3>
+<h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcopaymentscheduleresponsedata">TelcoPaymentScheduleResponseData</h3>
+<p id="tocStelcopaymentscheduleresponsedata" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-telco-apitelcopaymentscheduleresponsedata"></a>
 
@@ -5817,13 +5845,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-### Properties
+<h3 id="cdr-telco-api_telcopaymentscheduleresponsedata_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
 |paymentSchedules|[[TelcoPaymentSchedule](#schemacdr-telco-apitelcopaymentschedule)]|mandatory|Array may be empty if no payment schedule exist|
 
-<h3 class="schema-toc" id="tocStelcoconcessionsresponsedata">TelcoConcessionsResponseData</h3>
+<h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoconcessionsresponsedata">TelcoConcessionsResponseData</h3>
+<p id="tocStelcoconcessionsresponsedata" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-telco-apitelcoconcessionsresponsedata"></a>
 
@@ -5849,13 +5878,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-### Properties
+<h3 id="cdr-telco-api_telcoconcessionsresponsedata_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
 |concessions|[[TelcoConcession](#schemacdr-telco-apitelcoconcession)]|mandatory|Array may be empty if no concessions exist|
 
-<h3 class="schema-toc" id="tocStelcobalancelistresponsedata">TelcoBalanceListResponseData</h3>
+<h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcobalancelistresponsedata">TelcoBalanceListResponseData</h3>
+<p id="tocStelcobalancelistresponsedata" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-telco-apitelcobalancelistresponsedata"></a>
 
@@ -5933,13 +5963,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-### Properties
+<h3 id="cdr-telco-api_telcobalancelistresponsedata_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
 |balances|[[TelcoBalanceResponseData](#schemacdr-telco-apitelcobalanceresponsedata)]|mandatory|Array of account balances|
 
-<h3 class="schema-toc" id="tocStelcobalanceresponsedata">TelcoBalanceResponseData</h3>
+<h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcobalanceresponsedata">TelcoBalanceResponseData</h3>
+<p id="tocStelcobalanceresponsedata" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-telco-apitelcobalanceresponsedata"></a>
 
@@ -6013,14 +6044,15 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-### Properties
+<h3 id="cdr-telco-api_telcobalanceresponsedata_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
 |accountId|string|optional|The ID of the account. In accordance with [CDR ID permanence](#id-permanence) requirements|
 |balance|[TelcoBalance](#schemacdr-telco-apitelcobalance)|optional|Object containing account service usage summary|
 
-<h3 class="schema-toc" id="tocStelcoinvoiceresponse">TelcoInvoiceResponse</h3>
+<h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoinvoiceresponse">TelcoInvoiceResponse</h3>
+<p id="tocStelcoinvoiceresponse" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-telco-apitelcoinvoiceresponse"></a>
 
@@ -6114,7 +6146,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-### Properties
+<h3 id="cdr-telco-api_telcoinvoiceresponse_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -6122,7 +6154,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |links|[Links](#schemacdr-telco-apilinks)|mandatory|none|
 |meta|[Meta](#schemacdr-telco-apimeta)|mandatory|none|
 
-<h3 class="schema-toc" id="tocStelcoinvoicelistresponse">TelcoInvoiceListResponse</h3>
+<h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoinvoicelistresponse">TelcoInvoiceListResponse</h3>
+<p id="tocStelcoinvoicelistresponse" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-telco-apitelcoinvoicelistresponse"></a>
 
@@ -6223,7 +6256,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-### Properties
+<h3 id="cdr-telco-api_telcoinvoicelistresponse_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -6231,7 +6264,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |links|[LinksPaginated](#schemacdr-telco-apilinkspaginated)|mandatory|none|
 |meta|[MetaPaginated](#schemacdr-telco-apimetapaginated)|mandatory|none|
 
-<h3 class="schema-toc" id="tocStelcoinvoicelistresponsedata">TelcoInvoiceListResponseData</h3>
+<h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoinvoicelistresponsedata">TelcoInvoiceListResponseData</h3>
+<p id="tocStelcoinvoicelistresponsedata" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-telco-apitelcoinvoicelistresponsedata"></a>
 
@@ -6319,13 +6353,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-### Properties
+<h3 id="cdr-telco-api_telcoinvoicelistresponsedata_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
 |invoices|[[TelcoInvoice](#schemacdr-telco-apitelcoinvoice)]|mandatory|Array of invoices sorted by issue date in descending order|
 
-<h3 class="schema-toc" id="tocStelcotransactionlistresponsedata">TelcoTransactionListResponseData</h3>
+<h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcotransactionlistresponsedata">TelcoTransactionListResponseData</h3>
+<p id="tocStelcotransactionlistresponsedata" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-telco-apitelcotransactionlistresponsedata"></a>
 
@@ -6382,13 +6417,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-### Properties
+<h3 id="cdr-telco-api_telcotransactionlistresponsedata_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
 |transactions|[[TelcoBillingTransaction](#schemacdr-telco-apitelcobillingtransaction)]|mandatory|Array of transactions sorted by date and time in descending order|
 
-<h3 class="schema-toc" id="tocStelcoproductpricing">TelcoProductPricing</h3>
+<h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoproductpricing">TelcoProductPricing</h3>
+<p id="tocStelcoproductpricing" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-telco-apitelcoproductpricing"></a>
 
@@ -6402,7 +6438,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-### Properties
+<h3 id="cdr-telco-api_telcoproductpricing_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -6411,7 +6447,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |period|[ExternalRef](#common-field-types)|optional|The duration that occurs on a pricing schedule indicates the frequency. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
 |amount|[AmountString](#common-field-types)|mandatory|The amount charged for the duration period|
 
-<h3 class="schema-toc" id="tocStelcoadditionalinformation">TelcoAdditionalInformation</h3>
+<h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoadditionalinformation">TelcoAdditionalInformation</h3>
+<p id="tocStelcoadditionalinformation" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-telco-apitelcoadditionalinformation"></a>
 
@@ -6428,7 +6465,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 *Object that contains links to additional information on specific topics*
 
-### Properties
+<h3 id="cdr-telco-api_telcoadditionalinformation_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -6438,7 +6475,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |pricingUri|[URIString](#common-field-types)|optional|A link to detail on pricing for the plan|
 |bundleUri|[URIString](#common-field-types)|optional|A link to detail on bundles that this plan can be a part of|
 
-<h3 class="schema-toc" id="tocStelcoproductdetailmeteringcharges">TelcoProductDetailMeteringCharges</h3>
+<h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoproductdetailmeteringcharges">TelcoProductDetailMeteringCharges</h3>
+<p id="tocStelcoproductdetailmeteringcharges" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-telco-apitelcoproductdetailmeteringcharges"></a>
 
@@ -6453,7 +6491,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-### Properties
+<h3 id="cdr-telco-api_telcoproductdetailmeteringcharges_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -6463,7 +6501,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |maximumValue|[AmountString](#common-field-types)|optional|The upper limit of the charge if the charge could occur in a range|
 |period|[ExternalRef](#common-field-types)|optional|The charges that occur on a schedule indicates the frequency. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
 
-<h3 class="schema-toc" id="tocStelcoproductdetailfeature">TelcoProductDetailFeature</h3>
+<h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoproductdetailfeature">TelcoProductDetailFeature</h3>
+<p id="tocStelcoproductdetailfeature" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-telco-apitelcoproductdetailfeature"></a>
 
@@ -6476,7 +6515,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-### Properties
+<h3 id="cdr-telco-api_telcoproductdetailfeature_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -6484,7 +6523,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |description|string|optional|The description of the feature|
 |category|[Enum](#common-field-types)|optional|The type of the feature|
 
-#### Enumerated Values
+<h4 id="cdr-telco-api_telcoproductdetailfeature_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|
@@ -6499,7 +6538,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |category|SOFTWARE|
 |category|OTHER|
 
-<h3 class="schema-toc" id="tocStelcoproductdetailbundles">TelcoProductDetailBundles</h3>
+<h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoproductdetailbundles">TelcoProductDetailBundles</h3>
+<p id="tocStelcoproductdetailbundles" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-telco-apitelcoproductdetailbundles"></a>
 
@@ -6519,7 +6559,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-### Properties
+<h3 id="cdr-telco-api_telcoproductdetailbundles_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -6528,7 +6568,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |bundleUri|[URIString](#common-field-types)|optional|The URI of the product bundle|
 |features|[[TelcoProductDetailFeature](#schemacdr-telco-apitelcoproductdetailfeature)]|optional|Optional list of features of the bundle|
 
-<h3 class="schema-toc" id="tocStelcoproductdetailplan">TelcoProductDetailPlan</h3>
+<h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoproductdetailplan">TelcoProductDetailPlan</h3>
+<p id="tocStelcoproductdetailplan" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-telco-apitelcoproductdetailplan"></a>
 
@@ -6547,7 +6588,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-### Properties
+<h3 id="cdr-telco-api_telcoproductdetailplan_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -6556,7 +6597,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |planUri|[URIString](#common-field-types)|optional|The URI of the product plan|
 |features|[[TelcoProductDetailPlanFeature](#schemacdr-telco-apitelcoproductdetailplanfeature)]|optional|Optional list of features of the plan|
 
-<h3 class="schema-toc" id="tocStelcoproductdetailplanfeature">TelcoProductDetailPlanFeature</h3>
+<h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoproductdetailplanfeature">TelcoProductDetailPlanFeature</h3>
+<p id="tocStelcoproductdetailplanfeature" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-telco-apitelcoproductdetailplanfeature"></a>
 
@@ -6568,14 +6610,15 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-### Properties
+<h3 id="cdr-telco-api_telcoproductdetailplanfeature_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
 |displayName|string|mandatory|The display name of the feature|
 |description|string|optional|The description of the feature|
 
-<h3 class="schema-toc" id="tocStelcoproductdetaildiscountfeature">TelcoProductDetailDiscountFeature</h3>
+<h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoproductdetaildiscountfeature">TelcoProductDetailDiscountFeature</h3>
+<p id="tocStelcoproductdetaildiscountfeature" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-telco-apitelcoproductdetaildiscountfeature"></a>
 
@@ -6587,14 +6630,15 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-### Properties
+<h3 id="cdr-telco-api_telcoproductdetaildiscountfeature_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
 |displayName|string|mandatory|The display name of the discount feature|
 |description|string|optional|The description of the discount feature|
 
-<h3 class="schema-toc" id="tocStelcoproductdetaildiscounts">TelcoProductDetailDiscounts</h3>
+<h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoproductdetaildiscounts">TelcoProductDetailDiscounts</h3>
+<p id="tocStelcoproductdetaildiscounts" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-telco-apitelcoproductdetaildiscounts"></a>
 
@@ -6613,7 +6657,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-### Properties
+<h3 id="cdr-telco-api_telcoproductdetaildiscounts_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -6622,7 +6666,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |discountUri|[URIString](#common-field-types)|optional|The URI of the discount|
 |features|[[TelcoProductDetailDiscountFeature](#schemacdr-telco-apitelcoproductdetaildiscountfeature)]|optional|Optional list of features of the discount|
 
-<h3 class="schema-toc" id="tocStelcoproductdetailincentivefeature">TelcoProductDetailIncentiveFeature</h3>
+<h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoproductdetailincentivefeature">TelcoProductDetailIncentiveFeature</h3>
+<p id="tocStelcoproductdetailincentivefeature" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-telco-apitelcoproductdetailincentivefeature"></a>
 
@@ -6634,14 +6679,15 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-### Properties
+<h3 id="cdr-telco-api_telcoproductdetailincentivefeature_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
 |displayName|string|mandatory|The display name of the incentive feature|
 |description|string|optional|The description of the incentive feature|
 
-<h3 class="schema-toc" id="tocStelcoproductdetailincentives">TelcoProductDetailIncentives</h3>
+<h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoproductdetailincentives">TelcoProductDetailIncentives</h3>
+<p id="tocStelcoproductdetailincentives" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-telco-apitelcoproductdetailincentives"></a>
 
@@ -6660,7 +6706,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-### Properties
+<h3 id="cdr-telco-api_telcoproductdetailincentives_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -6669,7 +6715,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |incentiveUri|[URIString](#common-field-types)|optional|The URI of the incentive|
 |features|[[TelcoProductDetailIncentiveFeature](#schemacdr-telco-apitelcoproductdetailincentivefeature)]|optional|Optional list of features of the incentive|
 
-<h3 class="schema-toc" id="tocStelcoproductdetail">TelcoProductDetail</h3>
+<h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoproductdetail">TelcoProductDetail</h3>
+<p id="tocStelcoproductdetail" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-telco-apitelcoproductdetail"></a>
 
@@ -6741,7 +6788,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-### Properties
+<h3 id="cdr-telco-api_telcoproductdetail_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -6751,7 +6798,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |discounts|[[TelcoProductDetailDiscounts](#schemacdr-telco-apitelcoproductdetaildiscounts)]|optional|Discounts associated to the product|
 |incentives|[[TelcoProductDetailIncentives](#schemacdr-telco-apitelcoproductdetailincentives)]|optional|Incentives associated to the product|
 
-<h3 class="schema-toc" id="tocStelcoaccountusageservices">TelcoAccountUsageServices</h3>
+<h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoaccountusageservices">TelcoAccountUsageServices</h3>
+<p id="tocStelcoaccountusageservices" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-telco-apitelcoaccountusageservices"></a>
 
@@ -6811,13 +6859,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-### Properties
+<h3 id="cdr-telco-api_telcoaccountusageservices_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
 |service|[TelcoServiceUsage](#schemacdr-telco-apitelcoserviceusage)|mandatory|none|
 
-<h3 class="schema-toc" id="tocStelcoaccountplanoverview">TelcoAccountPlanOverview</h3>
+<h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoaccountplanoverview">TelcoAccountPlanOverview</h3>
+<p id="tocStelcoaccountplanoverview" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-telco-apitelcoaccountplanoverview"></a>
 
@@ -6832,7 +6881,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 *Mandatory if openStatus is OPEN*
 
-### Properties
+<h3 id="cdr-telco-api_telcoaccountplanoverview_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -6840,7 +6889,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |startDate|[DateString](#common-field-types)|mandatory|The start date of the applicability of this plan|
 |endDate|[DateString](#common-field-types)|optional|The end date of the applicability of this plan|
 
-<h3 class="schema-toc" id="tocStelcoaccountplan">TelcoAccountPlan</h3>
+<h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoaccountplan">TelcoAccountPlan</h3>
+<p id="tocStelcoaccountplan" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-telco-apitelcoaccountplan"></a>
 
@@ -6861,7 +6911,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-### Properties
+<h3 id="cdr-telco-api_telcoaccountplan_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -6871,7 +6921,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |serviceIds|[string]|mandatory|The serviceId representing a unique service identifier such as a mobile [MSISDN](https://www.etsi.org/deliver/etsi_gts/03/0303/05.00.00_60/gsmts_0303v050000p.pdf), [FNN](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf) or internet service e.g [NBN AVC Service ID](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf). In accordance with [CDR ID permanence](#id-permanence) requirement|
 |planOverview|[TelcoAccountPlanOverview](#schemacdr-telco-apitelcoaccountplanoverview)|mandatory|Mandatory if openStatus is OPEN|
 
-#### Enumerated Values
+<h4 id="cdr-telco-api_telcoaccountplan_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|
@@ -6882,7 +6932,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |billingType|UPFRONT_PAID|
 |billingType|OTHER|
 
-<h3 class="schema-toc" id="tocStelcoaccount">TelcoAccount</h3>
+<h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoaccount">TelcoAccount</h3>
+<p id="tocStelcoaccount" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-telco-apitelcoaccount"></a>
 
@@ -6909,13 +6960,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 *The array of plans containing services and associated plan details*
 
-### Properties
+<h3 id="cdr-telco-api_telcoaccount_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
 |plans|[[TelcoAccountPlan](#schemacdr-telco-apitelcoaccountplan)]|mandatory|The array of plans containing service and associated plan details|
 
-<h3 class="schema-toc" id="tocStelcoaccountplandetail">TelcoAccountPlanDetail</h3>
+<h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoaccountplandetail">TelcoAccountPlanDetail</h3>
+<p id="tocStelcoaccountplandetail" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-telco-apitelcoaccountplandetail"></a>
 
@@ -6938,14 +6990,15 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 *Detail on the plan applicable to this account. Mandatory if openStatus is OPEN*
 
-### Properties
+<h3 id="cdr-telco-api_telcoaccountplandetail_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
 |planDetail|object|mandatory|none|
 |» charges|[[TelcoProductDetailMeteringCharges](#schemacdr-telco-apitelcoproductdetailmeteringcharges)]|mandatory|Charges for metering included in the plan|
 
-<h3 class="schema-toc" id="tocStelcoaccountdetailauthorisedcontacts">TelcoAccountDetailAuthorisedContacts</h3>
+<h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoaccountdetailauthorisedcontacts">TelcoAccountDetailAuthorisedContacts</h3>
+<p id="tocStelcoaccountdetailauthorisedcontacts" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-telco-apitelcoaccountdetailauthorisedcontacts"></a>
 
@@ -6962,7 +7015,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-### Properties
+<h3 id="cdr-telco-api_telcoaccountdetailauthorisedcontacts_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -6972,7 +7025,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |prefix|string|optional|Also known as title or salutation. The prefix to the name (e.g. Mr, Mrs, Ms, Miss, Sir, etc)|
 |suffix|string|optional|Used for a trailing suffix to the name (e.g. Jr)|
 
-<h3 class="schema-toc" id="tocStelcoaccountdetail">TelcoAccountDetail</h3>
+<h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoaccountdetail">TelcoAccountDetail</h3>
+<p id="tocStelcoaccountdetail" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-telco-apitelcoaccountdetail"></a>
 
@@ -7010,7 +7064,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 *The array of plans containing services and associated plan details*
 
-### Properties
+<h3 id="cdr-telco-api_telcoaccountdetail_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -7028,7 +7082,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |---|---|---|---|
 |» *anonymous*|[TelcoAccountPlanDetail](#schemacdr-telco-apitelcoaccountplandetail)|mandatory|Detail on the plan applicable to this account. Mandatory if openStatus is OPEN|
 
-<h3 class="schema-toc" id="tocStelcopaymentschedulecarddebit">TelcoPaymentScheduleCardDebit</h3>
+<h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcopaymentschedulecarddebit">TelcoPaymentScheduleCardDebit</h3>
+<p id="tocStelcopaymentschedulecarddebit" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-telco-apitelcopaymentschedulecarddebit"></a>
 
@@ -7043,7 +7098,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 *Represents a regular credit card payment schedule. Mandatory if paymentScheduleUType is set to cardDebit*
 
-### Properties
+<h3 id="cdr-telco-api_telcopaymentschedulecarddebit_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -7051,7 +7106,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |paymentFrequency|[ExternalRef](#common-field-types)|mandatory|The frequency that payments will occur.  Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
 |calculationType|[Enum](#common-field-types)|mandatory|The mechanism by which the payment amount is calculated.  Explanation of values are as follows:<br/><ul><li>**STATIC** - Indicates a consistent, static amount, per payment</li><li>**BALANCE** - Indicates that the outstanding balance for the account is paid per period</li><li>**CALCULATED** - Indicates that the payment amount is variable and calculated using a pre-defined algorithm</li></ul>|
 
-#### Enumerated Values
+<h4 id="cdr-telco-api_telcopaymentschedulecarddebit_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|
@@ -7065,7 +7120,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |calculationType|BALANCE|
 |calculationType|CALCULATED|
 
-<h3 class="schema-toc" id="tocStelcopaymentscheduledirectdebit">TelcoPaymentScheduleDirectDebit</h3>
+<h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcopaymentscheduledirectdebit">TelcoPaymentScheduleDirectDebit</h3>
+<p id="tocStelcopaymentscheduledirectdebit" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-telco-apitelcopaymentscheduledirectdebit"></a>
 
@@ -7082,7 +7138,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 *Represents a regular direct debit from a specified bank account. Mandatory if paymentScheduleUType is set to directDebit*
 
-### Properties
+<h3 id="cdr-telco-api_telcopaymentscheduledirectdebit_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -7092,7 +7148,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |paymentFrequency|[ExternalRef](#common-field-types)|mandatory|The frequency that payments will occur.  Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
 |calculationType|[Enum](#common-field-types)|mandatory|The mechanism by which the payment amount is calculated.  Explanation of values are as follows:<br/><ul><li>**STATIC** - Indicates a consistent, static amount, per payment</li><li>**BALANCE** - Indicates that the outstanding balance for the account is paid per period</li><li>**CALCULATED** - Indicates that the payment amount is variable and calculated using a pre-defined algorithm</li></ul>|
 
-#### Enumerated Values
+<h4 id="cdr-telco-api_telcopaymentscheduledirectdebit_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|
@@ -7100,7 +7156,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |calculationType|BALANCE|
 |calculationType|CALCULATED|
 
-<h3 class="schema-toc" id="tocStelcopaymentscheduledigitalwallet">TelcoPaymentScheduleDigitalWallet</h3>
+<h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcopaymentscheduledigitalwallet">TelcoPaymentScheduleDigitalWallet</h3>
+<p id="tocStelcopaymentscheduledigitalwallet" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-telco-apitelcopaymentscheduledigitalwallet"></a>
 
@@ -7118,7 +7175,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 *Represents a regular payment from a digital wallet. Mandatory if paymentScheduleUType is set to digitalWallet*
 
-### Properties
+<h3 id="cdr-telco-api_telcopaymentscheduledigitalwallet_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -7129,7 +7186,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |paymentFrequency|[ExternalRef](#common-field-types)|mandatory|The frequency that payments will occur.  Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
 |calculationType|[Enum](#common-field-types)|mandatory|The mechanism by which the payment amount is calculated.  Explanation of values are as follows:<br/><ul><li>**STATIC** - Indicates a consistent, static amount, per payment</li><li>**BALANCE** - Indicates that the outstanding balance for the account is paid per period</li><li>**CALCULATED** - Indicates that the payment amount is variable and calculated using a pre-defined algorithm</li></ul>|
 
-#### Enumerated Values
+<h4 id="cdr-telco-api_telcopaymentscheduledigitalwallet_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|
@@ -7142,7 +7199,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |calculationType|BALANCE|
 |calculationType|CALCULATED|
 
-<h3 class="schema-toc" id="tocStelcopaymentschedulemanualpayment">TelcoPaymentScheduleManualPayment</h3>
+<h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcopaymentschedulemanualpayment">TelcoPaymentScheduleManualPayment</h3>
+<p id="tocStelcopaymentschedulemanualpayment" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-telco-apitelcopaymentschedulemanualpayment"></a>
 
@@ -7155,13 +7213,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 *Represents a manual payment schedule where the customer pays in response to a delivered statement. Mandatory if paymentScheduleUType is set to manualPayment*
 
-### Properties
+<h3 id="cdr-telco-api_telcopaymentschedulemanualpayment_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
 |billFrequency|[ExternalRef](#common-field-types)|mandatory|The frequency with which a bill will be issued.  Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
 
-<h3 class="schema-toc" id="tocStelcoinvoiceperiod">TelcoInvoicePeriod</h3>
+<h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoinvoiceperiod">TelcoInvoicePeriod</h3>
+<p id="tocStelcoinvoiceperiod" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-telco-apitelcoinvoiceperiod"></a>
 
@@ -7175,14 +7234,15 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 *Object containing the start and end date for the period covered by the invoice. Mandatory if any usage based charges are included in the invoice*
 
-### Properties
+<h3 id="cdr-telco-api_telcoinvoiceperiod_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
 |startDate|[DateString](#common-field-types)|mandatory|The start date of the period covered by this invoice|
 |endDate|[DateString](#common-field-types)|mandatory|The end date of the period covered by this invoice|
 
-<h3 class="schema-toc" id="tocStelcoinvoicepayontimediscount">TelcoInvoicePayOnTimeDiscount</h3>
+<h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoinvoicepayontimediscount">TelcoInvoicePayOnTimeDiscount</h3>
+<p id="tocStelcoinvoicepayontimediscount" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-telco-apitelcoinvoicepayontimediscount"></a>
 
@@ -7197,7 +7257,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 *A discount for on time payment*
 
-### Properties
+<h3 id="cdr-telco-api_telcoinvoicepayontimediscount_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -7205,7 +7265,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |gstAmount|[AmountString](#common-field-types)|optional|The GST amount that will be discounted if the invoice is paid by the date specified.  If absent then zero is assumed|
 |date|[DateString](#common-field-types)|mandatory|The date by which the invoice must be paid to receive the pay on time discount|
 
-<h3 class="schema-toc" id="tocStelcousagedatroaming">TelcoUsageDatRoaming</h3>
+<h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcousagedatroaming">TelcoUsageDatRoaming</h3>
+<p id="tocStelcousagedatroaming" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-telco-apitelcousagedatroaming"></a>
 
@@ -7219,14 +7280,15 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 *Roaming Data Usage*
 
-### Properties
+<h3 id="cdr-telco-api_telcousagedatroaming_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
 |download|[Number](#common-field-types)|conditional|Amount of data used while roaming in megabytes (MB)|
 |amount|[AmountString](#common-field-types)|conditional|Amount value of data roaming charges|
 
-<h3 class="schema-toc" id="tocStelcousagedata">TelcoUsageData</h3>
+<h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcousagedata">TelcoUsageData</h3>
+<p id="tocStelcousagedata" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-telco-apitelcousagedata"></a>
 
@@ -7246,7 +7308,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 *Summary of data usage*
 
-### Properties
+<h3 id="cdr-telco-api_telcousagedata_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -7256,7 +7318,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |amount|[AmountString](#common-field-types)|mandatory|Cost amount of data usage|
 |roaming|[TelcoUsageDatRoaming](#schemacdr-telco-apitelcousagedatroaming)|optional|Required if roaming is suipported|
 
-<h3 class="schema-toc" id="tocStelcousagevoicenational">TelcoUsageVoiceNational</h3>
+<h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcousagevoicenational">TelcoUsageVoiceNational</h3>
+<p id="tocStelcousagevoicenational" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-telco-apitelcousagevoicenational"></a>
 
@@ -7271,7 +7334,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 *National voice calls*
 
-### Properties
+<h3 id="cdr-telco-api_telcousagevoicenational_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -7279,7 +7342,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |number|[Number](#common-field-types)|mandatory|Number of national voice calls|
 |amount|[AmountString](#common-field-types)|mandatory|Cost amount of national calls|
 
-<h3 class="schema-toc" id="tocStelcousagevoiceinternational">TelcoUsageVoiceInternational</h3>
+<h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcousagevoiceinternational">TelcoUsageVoiceInternational</h3>
+<p id="tocStelcousagevoiceinternational" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-telco-apitelcousagevoiceinternational"></a>
 
@@ -7294,7 +7358,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 *International voice calls. Requied if international calling is supported*
 
-### Properties
+<h3 id="cdr-telco-api_telcousagevoiceinternational_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -7302,7 +7366,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |number|[Number](#common-field-types)|mandatory|Number of international voice calls|
 |amount|[AmountString](#common-field-types)|mandatory|Cost amount of international voice calls|
 
-<h3 class="schema-toc" id="tocStelcousagevoiceroaming">TelcoUsageVoiceRoaming</h3>
+<h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcousagevoiceroaming">TelcoUsageVoiceRoaming</h3>
+<p id="tocStelcousagevoiceroaming" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-telco-apitelcousagevoiceroaming"></a>
 
@@ -7317,7 +7382,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 *Roaming voice calls, Required if roaming is supported*
 
-### Properties
+<h3 id="cdr-telco-api_telcousagevoiceroaming_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -7325,7 +7390,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |number|[Number](#common-field-types)|mandatory|Number of roaming voice calls|
 |amount|[AmountString](#common-field-types)|mandatory|Cost amount of roaming voice calls|
 
-<h3 class="schema-toc" id="tocStelcousagevoice">TelcoUsageVoice</h3>
+<h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcousagevoice">TelcoUsageVoice</h3>
+<p id="tocStelcousagevoice" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-telco-apitelcousagevoice"></a>
 
@@ -7352,7 +7418,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 *Summary of voice calls. Required if voice calls are included in product plan*
 
-### Properties
+<h3 id="cdr-telco-api_telcousagevoice_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -7360,7 +7426,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |international|[TelcoUsageVoiceInternational](#schemacdr-telco-apitelcousagevoiceinternational)|mandatory|International voice calls. Requied if international calling is supported|
 |roaming|[TelcoUsageVoiceRoaming](#schemacdr-telco-apitelcousagevoiceroaming)|mandatory|Roaming voice calls, Required if roaming is supported|
 
-<h3 class="schema-toc" id="tocStelcousagemessagingsms">TelcoUsageMessagingSms</h3>
+<h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcousagemessagingsms">TelcoUsageMessagingSms</h3>
+<p id="tocStelcousagemessagingsms" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-telco-apitelcousagemessagingsms"></a>
 
@@ -7376,7 +7443,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 *Summary of SMS usage*
 
-### Properties
+<h3 id="cdr-telco-api_telcousagemessagingsms_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -7385,7 +7452,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |roaming|[Number](#common-field-types)|conditional|Number of roaming SMS messages sent. Including premium SMS services|
 |amount|[AmountString](#common-field-types)|mandatory|Cost amount of SMS messages. Including premium SMS services|
 
-<h3 class="schema-toc" id="tocStelcousagemessagingmms">TelcoUsageMessagingMms</h3>
+<h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcousagemessagingmms">TelcoUsageMessagingMms</h3>
+<p id="tocStelcousagemessagingmms" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-telco-apitelcousagemessagingmms"></a>
 
@@ -7401,7 +7469,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 *Summary of MMS usage*
 
-### Properties
+<h3 id="cdr-telco-api_telcousagemessagingmms_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -7410,7 +7478,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |roaming|[Number](#common-field-types)|conditional|Number of roaming SMS messages sent. Including premium SMS services|
 |amount|[AmountString](#common-field-types)|mandatory|Cost amount of MMS messages|
 
-<h3 class="schema-toc" id="tocStelcousagemessaging">TelcoUsageMessaging</h3>
+<h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcousagemessaging">TelcoUsageMessaging</h3>
+<p id="tocStelcousagemessaging" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-telco-apitelcousagemessaging"></a>
 
@@ -7434,14 +7503,15 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 *Summary of messaging. Required if messaging services is included in the product plan*
 
-### Properties
+<h3 id="cdr-telco-api_telcousagemessaging_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
 |sms|[TelcoUsageMessagingSms](#schemacdr-telco-apitelcousagemessagingsms)|mandatory|Summary of SMS usage|
 |mms|[TelcoUsageMessagingMms](#schemacdr-telco-apitelcousagemessagingmms)|mandatory|Summary of MMS usage|
 
-<h3 class="schema-toc" id="tocStelcoinvoiceaccountchargesothercharges">TelcoInvoiceAccountChargesOtherCharges</h3>
+<h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoinvoiceaccountchargesothercharges">TelcoInvoiceAccountChargesOtherCharges</h3>
+<p id="tocStelcoinvoiceaccountchargesothercharges" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-telco-apitelcoinvoiceaccountchargesothercharges"></a>
 
@@ -7456,7 +7526,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 *Optional array of charges that may be part of the invoice (for example services fees) (exclusive of GST)*
 
-### Properties
+<h3 id="cdr-telco-api_telcoinvoiceaccountchargesothercharges_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -7464,7 +7534,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |description|[AmountString](#common-field-types)|mandatory|A free text description of the charge|
 |type|[Enum](#common-field-types)|optional|A free text description of the charge|
 
-#### Enumerated Values
+<h4 id="cdr-telco-api_telcoinvoiceaccountchargesothercharges_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|
@@ -7478,7 +7548,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |type|SOFTWARE|
 |type|OTHER|
 
-<h3 class="schema-toc" id="tocStelcobillingaccounttransactionadjustments">TelcoBillingAccountTransactionAdjustments</h3>
+<h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcobillingaccounttransactionadjustments">TelcoBillingAccountTransactionAdjustments</h3>
+<p id="tocStelcobillingaccounttransactionadjustments" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-telco-apitelcobillingaccounttransactionadjustments"></a>
 
@@ -7490,14 +7561,15 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-### Properties
+<h3 id="cdr-telco-api_telcobillingaccounttransactionadjustments_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
 |amount|[AmountString](#common-field-types)|mandatory|The amount of the adjustment|
 |description|string|mandatory|A free text description of the adjustment|
 
-<h3 class="schema-toc" id="tocStelcoservicebalancedataroaming">TelcoServiceBalanceDataRoaming</h3>
+<h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoservicebalancedataroaming">TelcoServiceBalanceDataRoaming</h3>
+<p id="tocStelcoservicebalancedataroaming" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-telco-apitelcoservicebalancedataroaming"></a>
 
@@ -7512,7 +7584,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 *Balance of data roaming charges. Required unless planType is UNSUPPORTED*
 
-### Properties
+<h3 id="cdr-telco-api_telcoservicebalancedataroaming_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -7520,7 +7592,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |download|[Number](#common-field-types)|conditional|Amount of data used overseas in megabytes (MB). Required unless planType is UNSUPPORTED|
 |amount|[AmountString](#common-field-types)|conditional|Amount value of data roaming charges. Required unless planType is UNSUPPORTED|
 
-<h3 class="schema-toc" id="tocStelcoservicebalancedata">TelcoServiceBalanceData</h3>
+<h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoservicebalancedata">TelcoServiceBalanceData</h3>
+<p id="tocStelcoservicebalancedata" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-telco-apitelcoservicebalancedata"></a>
 
@@ -7542,7 +7615,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 *Summary of data balances*
 
-### Properties
+<h3 id="cdr-telco-api_telcoservicebalancedata_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -7553,7 +7626,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |amount|[AmountString](#common-field-types)|conditional|Remaining value amount of data available. Required unless planType is UNSUPPORTED or UNMETERED|
 |roaming|[TelcoServiceBalanceDataRoaming](#schemacdr-telco-apitelcoservicebalancedataroaming)|optional|Balance of data roaming charges. Required unless planType is UNSUPPORTED|
 
-<h3 class="schema-toc" id="tocStelcoservicebalancevoicenational">TelcoServiceBalanceVoiceNational</h3>
+<h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoservicebalancevoicenational">TelcoServiceBalanceVoiceNational</h3>
+<p id="tocStelcoservicebalancevoicenational" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-telco-apitelcoservicebalancevoicenational"></a>
 
@@ -7569,7 +7643,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 *National voice calls*
 
-### Properties
+<h3 id="cdr-telco-api_telcoservicebalancevoicenational_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -7578,7 +7652,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |number|[Number](#common-field-types)|conditional|Number of national voice calls. Required unless planType is UNSUPPORTED or UNMETERED|
 |amount|[AmountString](#common-field-types)|conditional|Amount balance of national calls. Required unless planType is UNSUPPORTED or UNMETERED|
 
-<h3 class="schema-toc" id="tocStelcoservicebalancevoiceinternational">TelcoServiceBalanceVoiceInternational</h3>
+<h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoservicebalancevoiceinternational">TelcoServiceBalanceVoiceInternational</h3>
+<p id="tocStelcoservicebalancevoiceinternational" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-telco-apitelcoservicebalancevoiceinternational"></a>
 
@@ -7594,7 +7669,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 *International voice calls*
 
-### Properties
+<h3 id="cdr-telco-api_telcoservicebalancevoiceinternational_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -7603,7 +7678,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |number|[Number](#common-field-types)|optional|Number of international voice calls available Required unless planType is UNSUPPORTED or UNMETERED|
 |amount|[AmountString](#common-field-types)|conditional|Amount value of international calls available. Required unless planType is UNSUPPORTED or UNMETERED|
 
-<h3 class="schema-toc" id="tocStelcoservicebalancevoiceroaming">TelcoServiceBalanceVoiceRoaming</h3>
+<h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoservicebalancevoiceroaming">TelcoServiceBalanceVoiceRoaming</h3>
+<p id="tocStelcoservicebalancevoiceroaming" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-telco-apitelcoservicebalancevoiceroaming"></a>
 
@@ -7619,7 +7695,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 *Roaming voice calls*
 
-### Properties
+<h3 id="cdr-telco-api_telcoservicebalancevoiceroaming_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -7628,7 +7704,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |number|[Number](#common-field-types)|optional|Number of roaming voice calls available Required unless planType is UNSUPPORTED or UNMETERED|
 |amount|[AmountString](#common-field-types)|conditional|Amount value of roaming calls available. Required unless planType is UNSUPPORTED or UNMETERED|
 
-<h3 class="schema-toc" id="tocStelcoservicebalancevoice">TelcoServiceBalanceVoice</h3>
+<h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoservicebalancevoice">TelcoServiceBalanceVoice</h3>
+<p id="tocStelcoservicebalancevoice" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-telco-apitelcoservicebalancevoice"></a>
 
@@ -7659,7 +7736,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 *Summary of voice balances. Required if voice calls are included in product plan*
 
-### Properties
+<h3 id="cdr-telco-api_telcoservicebalancevoice_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -7668,7 +7745,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |international|[TelcoServiceBalanceVoiceInternational](#schemacdr-telco-apitelcoservicebalancevoiceinternational)|conditional|International voice calls|
 |roaming|[TelcoServiceBalanceVoiceRoaming](#schemacdr-telco-apitelcoservicebalancevoiceroaming)|conditional|Roaming voice calls|
 
-<h3 class="schema-toc" id="tocStelcoservicebalancemessagingsms">TelcoServiceBalanceMessagingSms</h3>
+<h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoservicebalancemessagingsms">TelcoServiceBalanceMessagingSms</h3>
+<p id="tocStelcoservicebalancemessagingsms" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-telco-apitelcoservicebalancemessagingsms"></a>
 
@@ -7685,7 +7763,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 *Summary of SMS Balance. Required if the service plan supports SMS messaging*
 
-### Properties
+<h3 id="cdr-telco-api_telcoservicebalancemessagingsms_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -7695,7 +7773,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |roaming|[Number](#common-field-types)|conditional|Number of roaming SMS messages remaining. Required unless planType is UNSUPPORTED or UNMETERED|
 |amount|[AmountString](#common-field-types)|conditional|Amount value of SMS messages remaining. Required unless planType is UNSUPPORTED or UNMETERED|
 
-<h3 class="schema-toc" id="tocStelcoservicebalancemessagingmms">TelcoServiceBalanceMessagingMms</h3>
+<h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoservicebalancemessagingmms">TelcoServiceBalanceMessagingMms</h3>
+<p id="tocStelcoservicebalancemessagingmms" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-telco-apitelcoservicebalancemessagingmms"></a>
 
@@ -7712,7 +7791,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 *Summary of MMS Balance. Required if the service plan supports MMS messaging*
 
-### Properties
+<h3 id="cdr-telco-api_telcoservicebalancemessagingmms_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -7722,7 +7801,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |roaming|[Number](#common-field-types)|conditional|Number of roaming MMS messages remaining. Required unless planType is UNSUPPORTED or UNMETERED|
 |amount|[AmountString](#common-field-types)|conditional|Amount value of MMS messages remaining. Required unless planType is UNSUPPORTED or UNMETERED|
 
-<h3 class="schema-toc" id="tocStelcoservicebalancemessaging">TelcoServiceBalanceMessaging</h3>
+<h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoservicebalancemessaging">TelcoServiceBalanceMessaging</h3>
+<p id="tocStelcoservicebalancemessaging" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-telco-apitelcoservicebalancemessaging"></a>
 
@@ -7749,7 +7829,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 *Summary of messaging. Required if messaging services is included in the product plan*
 
-### Properties
+<h3 id="cdr-telco-api_telcoservicebalancemessaging_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -7757,7 +7837,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |sms|[TelcoServiceBalanceMessagingSms](#schemacdr-telco-apitelcoservicebalancemessagingsms)|mandatory|Summary of SMS Balance. Required if the service plan supports SMS messaging|
 |mms|[TelcoServiceBalanceMessagingMms](#schemacdr-telco-apitelcoservicebalancemessagingmms)|mandatory|Summary of MMS Balance. Required if the service plan supports MMS messaging|
 
-<h3 class="schema-toc" id="tocStelcoservicebalances">TelcoServiceBalances</h3>
+<h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoservicebalances">TelcoServiceBalances</h3>
+<p id="tocStelcoservicebalances" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-telco-apitelcoservicebalances"></a>
 
@@ -7819,7 +7900,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 *A summary of Service balances*
 
-### Properties
+<h3 id="cdr-telco-api_telcoservicebalances_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|

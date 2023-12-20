@@ -55,7 +55,6 @@ The following statements are applicable to both the OIDC Hybrid Flow and Authori
 * Data Recipient Software Products **MUST** use **[[RFC9126]](#nref-RFC9126)** (PAR) with **[[PKCE]](#nref-PKCE)** (**[[RFC7636]](#nref-RFC7636)**) and, if supported, **MUST** use S256 as the code challenge method.
 * Data Recipient Software Products **SHOULD** use Authorization Code Flow.
 
-<a id="hybrid-flow"></a>
 ### OIDC Hybrid Flow
 The **[[OIDC]](#nref-OIDC)** Hybrid Flow is a type of redirection flow where the consumer's user
 agent is redirected from a Data Recipient Software Product’s (Relying Party) web site to a Data
@@ -66,7 +65,6 @@ authorisation code flow detailed under **[[OIDC]](#nref-OIDC)**.
 
 Only a `response_type` (see [section 3.3](https://openid.net/specs/openid-connect-core-1_0.html#HybridFlowAuth) of **[[OIDC]](#nref-OIDC)**) of `code id_token` **SHALL** be allowed.
 
-<a id="authorization-code-flow"></a>
 ### Authorization Code Flow
 
 The following statements are applicable for this flow:

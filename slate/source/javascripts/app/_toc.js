@@ -5,6 +5,8 @@
 
   var htmlPattern = /<[^>]*>/g;
   var loaded = false;
+  var initialHash = window.location.hash;
+  var initialHashSet = false;
 
   var debounce = function(func, waitTime) {
     var timeout = false;
@@ -140,6 +142,13 @@
       });
 
       makeSchemaToggle();
+
+      if (initialHash && (window.location.hash !== initialHash) && (!initialHashSet)) {
+        if (window.history.replaceState) {
+          window.history.replaceState(null, "", initialHash);
+        }
+        initialHashSet = true;
+      }
 
       $(window).scroll(debounce(refreshToc, 200));
       $(window).resize(debounce(recacheHeights, 200));

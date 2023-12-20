@@ -78,7 +78,7 @@ Resources that are collections, and members of collections, will follow the [JSO
 
 Under this model, collections, individual members and collection sub-resources would be accessed as follows:
 
-[]() | []()
+ <span></span> | <span></span>
 -|-
 `GET …/accounts` | Returns an array of accounts
 `GET …/accounts/{id}` | Returns the detail of a specific account

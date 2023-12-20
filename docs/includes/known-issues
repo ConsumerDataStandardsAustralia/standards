@@ -33,32 +33,32 @@
 </tr>
 </thead><tbody>
 <tr>
-<td><a href="#get-data-holder-brands">Get Data Holder Brands</a></td>
+<td><a href="#cdr-participant-discovery-api_get-data-holder-brands">Get Data Holder Brands</a></td>
 <td>400: <br />Missing Required Header / Invalid Header / Invalid Version / Invalid Field</td>
 <td>404: <br />Invalid Industry</td>
 </tr>
 <tr>
-<td><a href="#get-software-statement-assertion-ssa">Get Software Statement Assertion (SSA)</a></td>
+<td><a href="#cdr-participant-discovery-api_get-software-statement-assertion-ssa">Get Software Statement Assertion (SSA)</a></td>
 <td>400: <br />Missing Required Header / Invalid Header / Invalid Version / Invalid Field <br /><br />403: <br />The ADR or the ADR&#39;s Software Product is not active <br /><br />404: <br />Invalid Industry / Invalid Brand Id / Invalid Software Product Id</td>
 <td></td>
 </tr>
 <tr>
-<td><a href="#get-data-holder-statuses">Get Data Holder Statuses</a></td>
+<td><a href="#cdr-participant-discovery-api_get-data-holder-statuses">Get Data Holder Statuses</a></td>
 <td>400: <br />Missing Required Header / Invalid Header / Invalid Version / Invalid Field</td>
 <td>404: <br />Invalid Industry</td>
 </tr>
 <tr>
-<td><a href="#get-software-products-statuses">Get Software Products Statuses</a></td>
+<td><a href="#cdr-participant-discovery-api_get-software-products-statuses">Get Software Products Statuses</a></td>
 <td>400: <br />Missing Required Header / Invalid Header / Invalid Version / Invalid Field</td>
 <td>404: <br />Invalid Industry</td>
 </tr>
 <tr>
-<td><a href="#get-data-recipients-statuses">Get Data Recipients Statuses</a></td>
+<td><a href="#cdr-participant-discovery-api_get-data-recipients-statuses">Get Data Recipients Statuses</a></td>
 <td>400: <br />Missing Required Header / Invalid Header / Invalid Version / Invalid Field</td>
 <td>404: <br />Invalid Industry</td>
 </tr>
 <tr>
-<td><a href="#get-data-recipients">Get Data Recipients</a></td>
+<td><a href="#cdr-participant-discovery-api_get-data-recipients">Get Data Recipients</a></td>
 <td>400: <br />Missing Required Header / Invalid Header / Invalid Version / Invalid Field</td>
 <td>404: <br />Invalid Industry</td>
 </tr>
