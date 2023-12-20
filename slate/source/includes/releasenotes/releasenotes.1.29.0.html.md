@@ -17,10 +17,11 @@ Release notes for version v1.29.0 of the [CDR Standards](../../index.html).
 
 This release addresses the following minor defects raised on [Standards Staging](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues):
 
-- [Staging Issue 312 - Typos in Change Log and Archives](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/312)
 - [Staging Issue 222 - Resolve links within the standards to specific errors and other parts](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/222)
+- [Staging Issue 312 - Typos in Change Log and Archives](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/312)
 - [Staging Issue 334 - Add visual indicator for different Standards categories](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/334)
 - [Staging Issue 338 - Sub-menus in CX Standards](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/338)
+- [Staging Issue 348 - Change previousDays data type to '[NaturalNumber]' in Get Metrics AuthorisationMetricsV2.abandonmentsByStage](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/348)
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
@@ -37,10 +38,11 @@ This release addresses the following Decision Proposals published on [Standards]
 ## General Changes
 |Change|Description|Link|
 |------|-----------|----|
-|Documentation correction|**[Standards Staging #312](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/312):** Minor typos in table headings|[Change Log](../../#change-log), [Archives](../../#archives)|
 |Navigation links|**[Standards Staging #222](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/222):** Updated anchor links throughout the Standards to remove duplicates, and updated menu navigation code to prevent the page from jumping to the previous section when opening in a new window.|Most navigation links|
+|Documentation correction|**[Standards Staging #312](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/312):** Minor typos in table headings|[Change Log](../../#change-log), [Archives](../../#archives)|
 |Standards category ribbon|**[Standards Staging #334](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/334):** Added a red ribbon below the CDS logo on different Standards versions to visually distinguish them from the binding version|[Draft](../../#draft-standards), [Candidate](../../#candidate-standards), [Staging](https://consumerdatastandardsaustralia.github.io/standards-staging/), [Archived](../../#archives), and superseded endpoint version pages|
 |CX navigation links|**[Standards Staging #338](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/338):** Included subheadings in Consumer Experience navigation for two sections|[Consumer Experience](../../#consumer-experience)|
+|Common Field Types in arrays|**[Standards Staging #348](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/348):** Properties defined in response schemas with specific 'Common Field Types' values inside arrays should show the specific type instead of a generic type | Response Properties tables |
 
 
 ## Introduction
