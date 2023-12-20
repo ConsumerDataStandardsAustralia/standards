@@ -18,6 +18,7 @@ Release notes for version v1.29.0 of the [CDR Standards](../../index.html).
 This release addresses the following minor defects raised on [Standards Staging](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues):
 
 - [Staging Issue 222 - Resolve links within the standards to specific errors and other parts](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/222)
+- [Staging Issue 288 - Gap in CDS specs around the mandatory nature of 'redirect_uri' in the Token Request](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/288)
 - [Staging Issue 312 - Typos in Change Log and Archives](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/312)
 - [Staging Issue 334 - Add visual indicator for different Standards categories](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/334)
 - [Staging Issue 338 - Sub-menus in CX Standards](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/338)
@@ -50,6 +51,7 @@ This release addresses the following Decision Proposals published on [Standards]
 |Enum property type|**[Standards Staging #349](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/349):** Request parameters defined with enumerated values will now show the type as 'Enum' instead of 'string' | Request Parameters tables |
 |Obligation Date Reference|Added a reference to the Obligation Date Schedule|[Future Dated Obligations](../../#future-dated-obligations)|
 |Updated DSB Link|Updated the reference to informaiton on the DSB|[Introduction](../../#introduction)|
+|Updated Example|Added redirect_uri to the Client authentication example in the non-normative examples|[Client Authentication](../../#client-authentication)|
 
 
 ## Introduction
