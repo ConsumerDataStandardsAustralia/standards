@@ -18,7 +18,6 @@ Release notes for version v1.29.0 of the [CDR Standards](../../index.html).
 This release addresses the following minor defects raised on [Standards Staging](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues):
 
 - [Staging Issue 222 - Resolve links within the standards to specific errors and other parts](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/222)
-- [Staging Issue 288 - Gap in CDS specs around the mandatory nature of 'redirect_uri' in the Token Request](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/288)
 - [Staging Issue 312 - Typos in Change Log and Archives](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/312)
 - [Staging Issue 334 - Add visual indicator for different Standards categories](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/334)
 - [Staging Issue 338 - Sub-menus in CX Standards](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/338)
@@ -27,6 +26,7 @@ This release addresses the following minor defects raised on [Standards Staging]
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
+- [Standards Maintenance Issue 288 - Gap in CDS specs around the mandatory nature of 'redirect_uri' in the Token Request](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/288)
 - [Standards Maintenance Issue 587 - EnergyBillingDemandTransactionV2 - Measure Unit](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/587)
 - [Standards Maintenance Issue 612 - Maintenance Iteration 17 Holistic Feedback](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/612)
 - [Standards Maintenance Issue 613 - Time format change request for Energy Plan Data](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/613)
@@ -56,16 +56,16 @@ This release addresses the following Decision Proposals published on [Standards]
 
 |Change|Description|Link|
 |------|-----------|----|
-|Obligation Date Reference|Added a reference to the Obligation Date Schedule|[Future Dated Obligations](../../#future-dated-obligations)|
-|Updated DSB Link|Updated the reference to informaiton on the DSB|[Introduction](../../#introduction)|
-|Normative Ref Update|Add reference to RFC7636 to the entry for PKCE|[Normative References](../../#normative-references)|
+|Obligation Date Reference| **[Standards Maintenance #612](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/612#issuecomment-1730724509)** Added a reference to the Obligation Date Schedule|[Future Dated Obligations](../../#future-dated-obligations)|
+|Updated DSB Link| **[Standards Maintenance #612](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/612#issuecomment-1811695332)** Updated the reference to information on the DSB|[Introduction](../../#introduction)|
+|Normative Ref Update| **[Standards Maintenance #612](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/612#issuecomment-1718803458)** Add reference to RFC7636 to the entry for PKCE|[Normative References](../../#normative-references)|
 
 
 ## High Level Standards
 
 |Change|Description|Link|
 |------|-----------|----|
-|Number Clarification|Clarified that a number can be integer or decimal|[Common Field Types](../../#common-field-types)|
+|Number Clarification| **[Standards Maintenance #612](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/612#issuecomment-1749849269)** Clarified that a number can be integer or decimal|[Common Field Types](../../#common-field-types)|
 
 ## API End Points
 
@@ -73,21 +73,21 @@ This release addresses the following Decision Proposals published on [Standards]
 |------|-----------|----|
 | Measure Unit in EnergyBillingDemandTransaction | **[Standards Maintenance #587](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/587):** Added new field `measureUnit` in EnergyBillingDemandTransaction. Incremented versions of `Get Billing for Account`, `Get Billing for Specific Account` and `Get Bulk Billing` endpoints | [Energy APIs](../../#energy-apis) |
 | Change time field type | [**Standards Maintenance #613**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/613): Change the type of time fields in energy plan data to ExternalRef referring to [ISO 8601 Times](https://en.wikipedia.org/wiki/ISO_8601#Times) specification. | [Energy APIs](../../#energy-apis) |
-|Register API Names|Minor changes to the names of the Register APIs in the summary table|[Register APIs](../../#register-apis)|
-|Term Deposit Account Types|Added additional additionalValue field explanations for term deposit account types|[Product Deposit Rate Types](../../#product-amp-account-components)|
-|Corrected Field References|Modified references to three incorrect field labels (tierMinimumValue, tierMaximumValue, tierUnitOfMeasure) in the property descriptions of BankingProductRateTierV3|[BankingProductRateTierV3](../../#cdr-banking-api_schemas_tocSbankingproductratetierv3)|
+|Register API Names| **[Standards Maintenance #612](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/612#issuecomment-1727189549)** Minor changes to the names of the Register APIs in the summary table|[Register APIs](../../#register-apis)|
+|Term Deposit Account Types| **[Standards Maintenance #612](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/612#issuecomment-1720955744)** Added additional additionalValue field explanations for term deposit account types|[Product Deposit Rate Types](../../#product-amp-account-components)|
+|Corrected Field References| **[Standards Maintenance #612](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/612#issuecomment-1724733931)** Modified references to three incorrect field labels (tierMinimumValue, tierMaximumValue, tierUnitOfMeasure) in the property descriptions of BankingProductRateTierV3|[BankingProductRateTierV3](../../#cdr-banking-api_schemas_tocSbankingproductratetierv3)|
 
 ## Information Security Profile
 
 |Change|Description|Link|
 |------|-----------|----|
-|Updated Example|Added redirect_uri to the Client authentication example in the non-normative examples|[Client Authentication](../../#client-authentication)|
+|Updated Example| **[Standards Maintenance #288](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/288)** Added redirect_uri to the Client authentication example in the non-normative examples|[Client Authentication](../../#client-authentication)|
 
 ## Register Standards
 
 |Change|Description|Link|
 |------|-----------|----|
-|Field Clarification|Changed authorization_signed_response_alg and authorization_encrypted_response_alg from optional to conditional to align to the field description|[Client Registration](../../#client-registration)|
+|Field Clarification| **[Standards Maintenance #620](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/620)** Changed authorization_signed_response_alg and authorization_encrypted_response_alg from optional to conditional to align to the field description|[Client Registration](../../#client-registration)|
 
 
 ## Consumer Experience
@@ -96,7 +96,7 @@ This release addresses the following Decision Proposals published on [Standards]
 |------|-----------|----|
 |Dashboard Standards|**[Decision Proposal #334](https://github.com/ConsumerDataStandardsAustralia/standards/issues/334):** Added Dashboard Standards section to include detail for Data Holder Dashboards|[Dashboard Standards](../../#consumer-experience_dashboard-standards)|
 |Business Consumer Provisions|**[Decision Proposal #333](https://github.com/ConsumerDataStandardsAustralia/standards/issues/333):** Updated requirements for Business consumer statements and Business consumer disclosure consents|[Consent Standards](../../#consent-standards)|
-|New Guidelines Link|Updated the CX Guidelines link to the new site|[Consumer Experience](../../#consumer-experience)|
+|New Guidelines Link| **[Standards Maintenance #612](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/612#issuecomment-1740313159)** Updated the CX Guidelines link to the new site|[Consumer Experience](../../#consumer-experience)|
 
 
 ## Non-Functional Requirements
