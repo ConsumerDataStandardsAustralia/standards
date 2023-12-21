@@ -1,4 +1,3 @@
-<a id="consent"></a>
 ## Consent
 Consent requirements will be communicated between the Data Recipient Software Product and Data Holder via the authorisation request object.  The primary mechanism for capturing consent will be scopes and claims under **[[OIDC]](#nref-OIDC)**.
 

@@ -1,8 +1,7 @@
 
 
-## Get Data Holder Brands
-
-<a id="opIdGetDataHolderBrands"></a>
+<h2 id="cdr-participant-discovery-api_get-data-holder-brands">Get Data Holder Brands</h2>
+<p id="get-data-holder-brands" class="orig-anchor"></p>
 
 > Code samples
 
@@ -47,16 +46,16 @@ Allows Data Recipients to discover Data Holder Brands available in the CDR ecosy
 
 Obsolete versions: [v1](../../../../includes/obsolete/get-data-holder-brands-v1.html), [v2](../../../../includes/obsolete/get-data-holder-brands-v2.html)
 
-###Endpoint Version
+<h3 id="cdr-participant-discovery-api_get-data-holder-brands_endpoint-version">Endpoint Version</h3>
 |   |  |
 |---|--|
 |Version|**3**
 
-<h3 id="get-data-holder-brands-parameters">Parameters</h3>
+<h3 id="cdr-participant-discovery-api_get-data-holder-brands_parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|industry|path|string|mandatory|The industry the participant is retrieving data for (Banking, etc)|
+|industry|path|[Enum](#common-field-types)|mandatory|The industry the participant is retrieving data for (Banking, etc)|
 |Authorization|header|string|mandatory|An Authorisation Token as per **[[RFC6750]](#nref-RFC6750)**.|
 |x-v|header|string|optional|The version of the API end point requested by the client. Must be set to a positive integer. For backwards compatiblity defaults to 1 if absent. Note that once version 1 is decommissioned the header will be mandatory for a valid response to be obtained|
 |x-min-v|header|string|optional|The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided.|
@@ -64,7 +63,7 @@ Obsolete versions: [v1](../../../../includes/obsolete/get-data-holder-brands-v1.
 |page|query|[PositiveInteger](#common-field-types)|optional|the page number to return|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|the number of records to return per page|
 
-#### Enumerated Values
+<h4 id="cdr-participant-discovery-api_get-data-holder-brands_enumerated-values-parameters">Enumerated Values</h4>
 
 |Parameter|Value|
 |---|---|
@@ -134,7 +133,7 @@ Obsolete versions: [v1](../../../../includes/obsolete/get-data-holder-brands-v1.
 }
 ```
 
-<h3 id="get-data-holder-brands-responses">Responses</h3>
+<h3 id="cdr-participant-discovery-api_get-data-holder-brands_responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -143,7 +142,7 @@ Obsolete versions: [v1](../../../../includes/obsolete/get-data-holder-brands-v1.
 |401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Invalid Bearer Token|[ResponseErrorListV2](#schemacdr-participant-discovery-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|Unsupported Version|[ResponseErrorListV2](#schemacdr-participant-discovery-apiresponseerrorlistv2)|
 
-### Response Headers
+<h3 id="cdr-participant-discovery-api_get-data-holder-brands_response-headers">Response Headers</h3>
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
@@ -159,9 +158,8 @@ To perform this operation, you must be authenticated and authorised with the fol
     
   
 
-## Get Data Holder Brands Summary
-
-<a id="opIdGetDataHolderBrandsSummary"></a>
+<h2 id="cdr-participant-discovery-api_get-data-holder-brands-summary">Get Data Holder Brands Summary</h2>
+<p id="get-data-holder-brands-summary" class="orig-anchor"></p>
 
 > Code samples
 
@@ -206,21 +204,21 @@ Endpoint used by participants to discover public details of Data Holder Brands f
 
 Obsolete versions: [v1](../../../../includes/obsolete/get-data-holder-brands-summary-v1.html)
 
-###Endpoint Version
+<h3 id="cdr-participant-discovery-api_get-data-holder-brands-summary_endpoint-version">Endpoint Version</h3>
 |   |  |
 |---|--|
 |Version|**2**
 
-<h3 id="get-data-holder-brands-summary-parameters">Parameters</h3>
+<h3 id="cdr-participant-discovery-api_get-data-holder-brands-summary_parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|industry|path|string|mandatory|The industry the participant is retrieving data for (Banking, etc)|
+|industry|path|[Enum](#common-field-types)|mandatory|The industry the participant is retrieving data for (Banking, etc)|
 |x-v|header|string|mandatory|The version of the API end point requested by the client. Must be set to a positive integer.|
 |x-min-v|header|string|optional|The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided.|
 |If-None-Match|header|string|optional|Makes the request method conditional on a recipient cache or origin server not having any current representation of the target resource with an entity-tag that does not match any of those listed in the field-value.|
 
-#### Enumerated Values
+<h4 id="cdr-participant-discovery-api_get-data-holder-brands-summary_enumerated-values-parameters">Enumerated Values</h4>
 
 |Parameter|Value|
 |---|---|
@@ -259,7 +257,7 @@ Obsolete versions: [v1](../../../../includes/obsolete/get-data-holder-brands-sum
 }
 ```
 
-<h3 id="get-data-holder-brands-summary-responses">Responses</h3>
+<h3 id="cdr-participant-discovery-api_get-data-holder-brands-summary_responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -269,7 +267,7 @@ Obsolete versions: [v1](../../../../includes/obsolete/get-data-holder-brands-sum
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Industry Not Found|[ResponseErrorListV2](#schemacdr-participant-discovery-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|Unsupported Version|[ResponseErrorListV2](#schemacdr-participant-discovery-apiresponseerrorlistv2)|
 
-### Response Headers
+<h3 id="cdr-participant-discovery-api_get-data-holder-brands-summary_response-headers">Response Headers</h3>
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
@@ -284,9 +282,8 @@ This operation does not require authentication
 
   
 
-## Get Data Holder Statuses
-
-<a id="opIdGetDataHolderStatuses"></a>
+<h2 id="cdr-participant-discovery-api_get-data-holder-statuses">Get Data Holder Statuses</h2>
+<p id="get-data-holder-statuses" class="orig-anchor"></p>
 
 > Code samples
 
@@ -331,21 +328,21 @@ Endpoint used by participants to discover the statuses for Data Holders from the
 
 Obsolete versions: [v1](../../../../includes/obsolete/get-data-holder-statuses-v1.html)
 
-###Endpoint Version
+<h3 id="cdr-participant-discovery-api_get-data-holder-statuses_endpoint-version">Endpoint Version</h3>
 |   |  |
 |---|--|
 |Version|**2**
 
-<h3 id="get-data-holder-statuses-parameters">Parameters</h3>
+<h3 id="cdr-participant-discovery-api_get-data-holder-statuses_parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|industry|path|string|mandatory|The industry the participant is retrieving data for (Banking, etc)|
+|industry|path|[Enum](#common-field-types)|mandatory|The industry the participant is retrieving data for (Banking, etc)|
 |x-v|header|string|optional|The version of the API end point requested by the client. Must be set to a positive integer.  For backwards compatiblity defaults to 1 if absent. Note that once version 1 is decommissioned the header will be mandatory for a valid response to be obtained|
 |x-min-v|header|string|optional|The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided.|
 |If-None-Match|header|string|optional|Makes the request method conditional on a recipient cache or origin server not having any current representation of the target resource with an entity-tag that does not match any of those listed in the field-value.|
 
-#### Enumerated Values
+<h4 id="cdr-participant-discovery-api_get-data-holder-statuses_enumerated-values-parameters">Enumerated Values</h4>
 
 |Parameter|Value|
 |---|---|
@@ -374,7 +371,7 @@ Obsolete versions: [v1](../../../../includes/obsolete/get-data-holder-statuses-v
 }
 ```
 
-<h3 id="get-data-holder-statuses-responses">Responses</h3>
+<h3 id="cdr-participant-discovery-api_get-data-holder-statuses_responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -383,7 +380,7 @@ Obsolete versions: [v1](../../../../includes/obsolete/get-data-holder-statuses-v
 |400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Missing Required Header / Invalid Version / Invalid Path Parameter|[ResponseErrorListV2](#schemacdr-participant-discovery-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|Unsupported Version|[ResponseErrorListV2](#schemacdr-participant-discovery-apiresponseerrorlistv2)|
 
-### Response Headers
+<h3 id="cdr-participant-discovery-api_get-data-holder-statuses_response-headers">Response Headers</h3>
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
@@ -399,9 +396,9 @@ This operation does not require authentication
   
 
 <h2 class="schema-heading" id="cdr-participant-discovery-api-schemas">Schemas</h2>
-<a class="schema-link" id="cdr-participant-discovery-api-schemas"></a>
 
-<h3 class="schema-toc" id="tocSresponseregisterdataholderbrandlist">ResponseRegisterDataHolderBrandList</h3>
+<h3 class="schema-toc" id="cdr-participant-discovery-api_schemas_tocSresponseregisterdataholderbrandlist">ResponseRegisterDataHolderBrandList</h3>
+<p id="tocSresponseregisterdataholderbrandlist" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-participant-discovery-apiresponseregisterdataholderbrandlist"></a>
 
@@ -464,7 +461,7 @@ This operation does not require authentication
 
 *Response containing a list of CDR Register Data Holder Brand objects*
 
-### Properties
+<h3 id="cdr-participant-discovery-api_responseregisterdataholderbrandlist_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -472,7 +469,8 @@ This operation does not require authentication
 |links|[LinksPaginated](#schemacdr-participant-discovery-apilinkspaginated)|mandatory|none|
 |meta|[MetaPaginated](#schemacdr-participant-discovery-apimetapaginated)|mandatory|none|
 
-<h3 class="schema-toc" id="tocSregisterdataholderbrand">RegisterDataHolderBrand</h3>
+<h3 class="schema-toc" id="cdr-participant-discovery-api_schemas_tocSregisterdataholderbrand">RegisterDataHolderBrand</h3>
+<p id="tocSregisterdataholderbrand" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-participant-discovery-apiregisterdataholderbrand"></a>
 
@@ -518,7 +516,7 @@ This operation does not require authentication
 
 ```
 
-### Properties
+<h3 id="cdr-participant-discovery-api_registerdataholderbrand_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -532,7 +530,7 @@ This operation does not require authentication
 |authDetails|[[RegisterDataHolderAuth](#schemacdr-participant-discovery-apiregisterdataholderauth)]|mandatory|[Defines the mechanism used and associated endpoints for Data Holder to Data Recipient authentication]|
 |lastUpdated|[DateTimeString](#common-field-types)|mandatory|The date/time that the Data Holder Brand data was last updated in the Register|
 
-#### Enumerated Values
+<h4 id="cdr-participant-discovery-api_registerdataholderbrand_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|
@@ -544,7 +542,8 @@ This operation does not require authentication
 |status|INACTIVE|
 |status|REMOVED|
 
-<h3 class="schema-toc" id="tocSresponsedataholdersbrandsummarylist">ResponseDataHoldersBrandSummaryList</h3>
+<h3 class="schema-toc" id="cdr-participant-discovery-api_schemas_tocSresponsedataholdersbrandsummarylist">ResponseDataHoldersBrandSummaryList</h3>
+<p id="tocSresponsedataholdersbrandsummarylist" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-participant-discovery-apiresponsedataholdersbrandsummarylist"></a>
 
@@ -574,7 +573,7 @@ This operation does not require authentication
 
 ```
 
-### Properties
+<h3 id="cdr-participant-discovery-api_responsedataholdersbrandsummarylist_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -582,7 +581,8 @@ This operation does not require authentication
 |links|[Links](#schemacdr-participant-discovery-apilinks)|mandatory|none|
 |meta|[Meta](#schemacdr-participant-discovery-apimeta)|mandatory|none|
 
-<h3 class="schema-toc" id="tocSdataholderbrandsummary">DataHolderBrandSummary</h3>
+<h3 class="schema-toc" id="cdr-participant-discovery-api_schemas_tocSdataholderbrandsummary">DataHolderBrandSummary</h3>
+<p id="tocSdataholderbrandsummary" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-participant-discovery-apidataholderbrandsummary"></a>
 
@@ -604,7 +604,7 @@ This operation does not require authentication
 
 ```
 
-### Properties
+<h3 id="cdr-participant-discovery-api_dataholderbrandsummary_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -619,7 +619,7 @@ This operation does not require authentication
 |acn|string|optional|Australian Company Number for the organisation|
 |arbn|string|optional|Australian Registered Body Number.  ARBNs are issued to registrable Australian bodies and foreign companies|
 
-#### Enumerated Values
+<h4 id="cdr-participant-discovery-api_dataholderbrandsummary_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|
@@ -628,7 +628,8 @@ This operation does not require authentication
 |industries|non-bank-lending|
 |industries|telco|
 
-<h3 class="schema-toc" id="tocSdataholdersstatuslist">DataHoldersStatusList</h3>
+<h3 class="schema-toc" id="cdr-participant-discovery-api_schemas_tocSdataholdersstatuslist">DataHoldersStatusList</h3>
+<p id="tocSdataholdersstatuslist" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-participant-discovery-apidataholdersstatuslist"></a>
 
@@ -648,7 +649,7 @@ This operation does not require authentication
 
 ```
 
-### Properties
+<h3 id="cdr-participant-discovery-api_dataholdersstatuslist_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -656,7 +657,8 @@ This operation does not require authentication
 |links|[Links](#schemacdr-participant-discovery-apilinks)|mandatory|none|
 |meta|[Meta](#schemacdr-participant-discovery-apimeta)|mandatory|none|
 
-<h3 class="schema-toc" id="tocSdataholderstatus">DataHolderStatus</h3>
+<h3 class="schema-toc" id="cdr-participant-discovery-api_schemas_tocSdataholderstatus">DataHolderStatus</h3>
+<p id="tocSdataholderstatus" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-participant-discovery-apidataholderstatus"></a>
 
@@ -668,21 +670,22 @@ This operation does not require authentication
 
 ```
 
-### Properties
+<h3 id="cdr-participant-discovery-api_dataholderstatus_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
 |legalEntityId|string|mandatory|Unique id of the Data Holder Legal Entity issued by the CDR Register.|
 |status|[Enum](#common-field-types)|mandatory|Data Holder status in the CDR Register|
 
-#### Enumerated Values
+<h4 id="cdr-participant-discovery-api_dataholderstatus_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|
 |status|ACTIVE|
 |status|REMOVED|
 
-<h3 class="schema-toc" id="tocSlegalentitydetail">LegalEntityDetail</h3>
+<h3 class="schema-toc" id="cdr-participant-discovery-api_schemas_tocSlegalentitydetail">LegalEntityDetail</h3>
+<p id="tocSlegalentitydetail" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-participant-discovery-apilegalentitydetail"></a>
 
@@ -706,7 +709,7 @@ This operation does not require authentication
 
 *The data that is common to all organisations, regardless of the type (e.g. company, trust, partnership, government)*
 
-### Properties
+<h3 id="cdr-participant-discovery-api_legalentitydetail_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -723,7 +726,7 @@ This operation does not require authentication
 |organisationType|[Enum](#common-field-types)|optional|Legal organisation type|
 |status|[Enum](#common-field-types)|mandatory|none|
 
-#### Enumerated Values
+<h4 id="cdr-participant-discovery-api_legalentitydetail_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|
@@ -736,7 +739,8 @@ This operation does not require authentication
 |status|ACTIVE|
 |status|REMOVED|
 
-<h3 class="schema-toc" id="tocSregisterdataholderbrandserviceendpoint">RegisterDataHolderBrandServiceEndpoint</h3>
+<h3 class="schema-toc" id="cdr-participant-discovery-api_schemas_tocSregisterdataholderbrandserviceendpoint">RegisterDataHolderBrandServiceEndpoint</h3>
+<p id="tocSregisterdataholderbrandserviceendpoint" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-participant-discovery-apiregisterdataholderbrandserviceendpoint"></a>
 
@@ -754,7 +758,7 @@ This operation does not require authentication
 
 *Endpoints related to Data Holder Brand services*
 
-### Properties
+<h3 id="cdr-participant-discovery-api_registerdataholderbrandserviceendpoint_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -765,7 +769,8 @@ This operation does not require authentication
 |extensionBaseUri|[URIString](#common-field-types)|optional|Base URI for the Data Holder extension endpoints to the Consumer Data Standard (optional)|
 |websiteUri|[URIString](#common-field-types)|mandatory|Publicly available website or web resource URI|
 
-<h3 class="schema-toc" id="tocSregisterdataholderauth">RegisterDataHolderAuth</h3>
+<h3 class="schema-toc" id="cdr-participant-discovery-api_schemas_tocSregisterdataholderauth">RegisterDataHolderAuth</h3>
+<p id="tocSregisterdataholderauth" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-participant-discovery-apiregisterdataholderauth"></a>
 
@@ -779,20 +784,21 @@ This operation does not require authentication
 
 *Defines the mechanism used and associated endpoints for Data Holder to Data Recipient authentication*
 
-### Properties
+<h3 id="cdr-participant-discovery-api_registerdataholderauth_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
 |registerUType|[Enum](#common-field-types)|mandatory|The type of authentication and authorisation mechanism in use|
 |jwksEndpoint|[URIString](#common-field-types)|mandatory|JWKS endpoint used for authentication by the Data Holder with the Data Recipient|
 
-#### Enumerated Values
+<h4 id="cdr-participant-discovery-api_registerdataholderauth_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|
 |registerUType|SIGNED-JWT|
 
-<h3 class="schema-toc" id="tocSlinkspaginated">LinksPaginated</h3>
+<h3 class="schema-toc" id="cdr-participant-discovery-api_schemas_tocSlinkspaginated">LinksPaginated</h3>
+<p id="tocSlinkspaginated" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-participant-discovery-apilinkspaginated"></a>
 
@@ -807,7 +813,7 @@ This operation does not require authentication
 
 ```
 
-### Properties
+<h3 id="cdr-participant-discovery-api_linkspaginated_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -817,7 +823,8 @@ This operation does not require authentication
 |prev|[URIString](#common-field-types)|optional|URI to the previous page of this set. Mandatory if this response is not the first page|
 |self|[URIString](#common-field-types)|mandatory|Fully qualified link to this API call|
 
-<h3 class="schema-toc" id="tocSmetapaginated">MetaPaginated</h3>
+<h3 class="schema-toc" id="cdr-participant-discovery-api_schemas_tocSmetapaginated">MetaPaginated</h3>
+<p id="tocSmetapaginated" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-participant-discovery-apimetapaginated"></a>
 
@@ -829,14 +836,15 @@ This operation does not require authentication
 
 ```
 
-### Properties
+<h3 id="cdr-participant-discovery-api_metapaginated_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
 |totalPages|[NaturalNumber](#common-field-types)|mandatory|The total number of pages in the full set|
 |totalRecords|[NaturalNumber](#common-field-types)|mandatory|The total number of records in the full set|
 
-<h3 class="schema-toc" id="tocSlinks">Links</h3>
+<h3 class="schema-toc" id="cdr-participant-discovery-api_schemas_tocSlinks">Links</h3>
+<p id="tocSlinks" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-participant-discovery-apilinks"></a>
 
@@ -847,13 +855,14 @@ This operation does not require authentication
 
 ```
 
-### Properties
+<h3 id="cdr-participant-discovery-api_links_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
 |self|[URIString](#common-field-types)|mandatory|Fully qualified link to this API call|
 
-<h3 class="schema-toc" id="tocSmeta">Meta</h3>
+<h3 class="schema-toc" id="cdr-participant-discovery-api_schemas_tocSmeta">Meta</h3>
+<p id="tocSmeta" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-participant-discovery-apimeta"></a>
 
@@ -862,11 +871,12 @@ This operation does not require authentication
 
 ```
 
-### Properties
+<h3 id="cdr-participant-discovery-api_meta_properties">Properties</h3>
 
 *None*
 
-<h3 class="schema-toc" id="tocSmetaerror">MetaError</h3>
+<h3 class="schema-toc" id="cdr-participant-discovery-api_schemas_tocSmetaerror">MetaError</h3>
+<p id="tocSmetaerror" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-participant-discovery-apimetaerror"></a>
 
@@ -879,13 +889,14 @@ This operation does not require authentication
 
 *Additional data for customised error codes*
 
-### Properties
+<h3 id="cdr-participant-discovery-api_metaerror_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
 |urn|string|conditional|The CDR error code URN which the application-specific error code extends. Mandatory if the error `code` is an application-specific error rather than a standardised error code.|
 
-<h3 class="schema-toc" id="tocSresponseerrorlistv2">ResponseErrorListV2</h3>
+<h3 class="schema-toc" id="cdr-participant-discovery-api_schemas_tocSresponseerrorlistv2">ResponseErrorListV2</h3>
+<p id="tocSresponseerrorlistv2" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-participant-discovery-apiresponseerrorlistv2"></a>
 
@@ -905,13 +916,14 @@ This operation does not require authentication
 
 ```
 
-### Properties
+<h3 id="cdr-participant-discovery-api_responseerrorlistv2_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
 |errors|[[ResponseErrorListV2_errors](#schemacdr-participant-discovery-apiresponseerrorlistv2_errors)]|mandatory|none|
 
-<h3 class="schema-toc" id="tocSresponseerrorlistv2_errors">ResponseErrorListV2_errors</h3>
+<h3 class="schema-toc" id="cdr-participant-discovery-api_schemas_tocSresponseerrorlistv2_errors">ResponseErrorListV2_errors</h3>
+<p id="tocSresponseerrorlistv2_errors" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-participant-discovery-apiresponseerrorlistv2_errors"></a>
 
@@ -927,7 +939,7 @@ This operation does not require authentication
 
 ```
 
-### Properties
+<h3 id="cdr-participant-discovery-api_responseerrorlistv2_errors_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|

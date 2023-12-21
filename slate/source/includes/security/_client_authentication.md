@@ -1,4 +1,3 @@
-<a id="client-authentication"></a>
 ## Client Authentication
 
 This section outlines how participants in the CDR regime will authenticate clients seeking access to end points.
@@ -176,6 +175,7 @@ Content-Type: application/x-www-form-urlencoded
 
 grant_type=authorization_code&
   code=i1WsRn1uB1&
+  redirect_uri=https%3A%2F%2Fwww.recipient.com.au%2Fcoolstuff&
   client_id=s6BhdRkqt3&
   code_verifier=4d9213fb-d68b-49d1-a2c9-486e5a0b4e14&
   client_assertion_type=urn%3Aietf%3Aparams%3Aoauth%3Aclient-assertion-type%3Ajwt-bearer&

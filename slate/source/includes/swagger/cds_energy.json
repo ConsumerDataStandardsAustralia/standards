@@ -3,7 +3,7 @@
   "info" : {
     "description" : "Consumer Data Right end points and payloads for the Energy sector",
     "title" : "CDR Energy API",
-    "version" : "1.28.0"
+    "version" : "1.29.0"
   },
   "servers" : [ {
     "url" : "/"
@@ -3816,7 +3816,7 @@
     },
     "/energy/accounts/{accountId}/billing" : {
       "get" : {
-        "description" : "Obtain the billing transactions for a specific account\n\nOther Versions: [v1](includes/obsolete/get-billing-for-account-v1.html)",
+        "description" : "Obtain the billing transactions for a specific account\n\nDeprecated Versions: \n\n- [v1](includes/obsolete/get-billing-for-account-v1.html) - This version is to be ceased to be called by data recipients by September 9th 2024 and **MAY** be decommissioned by data holders as of that date \n- [v2](includes/obsolete/get-billing-for-account-v2.html) - This version **MAY** be retired by September 9th 2024 if v3 is implemented.",
         "operationId" : "getBillingForAccount",
         "parameters" : [ {
           "description" : "ID of a specific account to obtain data for.  This is a tokenised ID previous obtained from the Account List end point.",
@@ -3941,7 +3941,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/EnergyBillingListResponseV2"
+                  "$ref" : "#/components/schemas/EnergyBillingListResponseV3"
                 }
               }
             },
@@ -4049,12 +4049,12 @@
         "summary" : "Get Billing For Account",
         "tags" : [ "Energy", "Billing" ],
         "x-scopes" : [ "energy:billing:read" ],
-        "x-version" : "2"
+        "x-version" : "3"
       }
     },
     "/energy/accounts/billing" : {
       "get" : {
-        "description" : "Obtain billing transactions for all accounts\n\nOther Versions: [v1](includes/obsolete/get-bulk-billing-v1.html)",
+        "description" : "Obtain billing transactions for all accounts\n\nDeprecated Versions: \n\n- [v1](includes/obsolete/get-bulk-billing-v1.html) - This version is to be ceased to be called by data recipients by September 9th 2024 and **MAY** be decommissioned by data holders as of that date \n- [v2](includes/obsolete/get-bulk-billing-v2.html) - This version **MAY** be retired by September 9th 2024 if v3 is implemented.",
         "operationId" : "listBillingBulk",
         "parameters" : [ {
           "description" : "Constrain the request to records with effective time at or before this date/time.  If absent defaults to current date/time.  Format is aligned to DateTimeString common type",
@@ -4169,7 +4169,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/EnergyBillingListResponseV2"
+                  "$ref" : "#/components/schemas/EnergyBillingListResponseV3"
                 }
               }
             },
@@ -4260,7 +4260,7 @@
         "x-version" : "2"
       },
       "post" : {
-        "description" : "Obtain billing for a specified set of accounts\n\nOther Versions: [v1](includes/obsolete/get-billing-for-specific-accounts-v1.html)",
+        "description" : "Obtain billing for a specified set of accounts\n\nDeprecated Versions: \n\n- [v1](includes/obsolete/get-billing-for-specific-accounts-v1.html) - This version is to be ceased to be called by data recipients by September 9th 2024 and **MAY** be decommissioned by data holders as of that date \n- [v2](includes/obsolete/get-billing-for-specific-accounts-v2.html) - This version **MAY** be retired by September 9th 2024 if v3 is implemented.",
         "operationId" : "listBillingForAccounts",
         "parameters" : [ {
           "description" : "Constrain the request to records with effective time at or before this date/time.  If absent defaults to current date/time.  Format is aligned to DateTimeString common type",
@@ -4386,7 +4386,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/EnergyBillingListResponseV2"
+                  "$ref" : "#/components/schemas/EnergyBillingListResponseV3"
                 }
               }
             },
@@ -5075,7 +5075,7 @@
         "content" : {
           "application/json" : {
             "schema" : {
-              "$ref" : "#/components/schemas/EnergyBillingListResponseV2"
+              "$ref" : "#/components/schemas/EnergyBillingListResponseV3"
             }
           }
         },
@@ -5311,10 +5311,10 @@
         "required" : [ "data", "links", "meta" ],
         "type" : "object"
       },
-      "EnergyBillingListResponseV2" : {
+      "EnergyBillingListResponseV3" : {
         "properties" : {
           "data" : {
-            "$ref" : "#/components/schemas/EnergyBillingListResponseV2_data"
+            "$ref" : "#/components/schemas/EnergyBillingListResponseV3_data"
           },
           "links" : {
             "$ref" : "#/components/schemas/LinksPaginated"
@@ -5611,14 +5611,14 @@
                           "type" : "array"
                         },
                         "startTime" : {
-                          "description" : "The beginning of the time period per day for which the controlled load rate applies. Required if endTime provided",
+                          "description" : "The beginning of the time period per day for which the controlled load rate applies. Required if endTime provided.\n\nFormatted according to [ISO 8601 Times](https://en.wikipedia.org/wiki/ISO_8601#Times). If the time is provided without a UTC offset, the time zone will be determined by the value of EnergyPlanContract.timeZone.",
                           "type" : "string",
-                          "x-cds-type" : "TimeString"
+                          "x-cds-type" : "ExternalRef"
                         },
                         "endTime" : {
-                          "description" : "The end of the time period per day for which the controlled load rate applies. Required if startTime provided",
+                          "description" : "The end of the time period per day for which the controlled load rate applies. Required if startTime provided.\n\nFormatted according to [ISO 8601 Times](https://en.wikipedia.org/wiki/ISO_8601#Times). If the time is provided without a UTC offset, the time zone will be determined by the value of EnergyPlanContract.timeZone.",
                           "type" : "string",
-                          "x-cds-type" : "TimeString"
+                          "x-cds-type" : "ExternalRef"
                         },
                         "additionalInfo" : {
                           "description" : "Display text providing more information on the contrlled load, for e.g. controlled load availability if specific day/time is not known. Required if startTime and endTime absent or if additionalInfoUri provided",
@@ -5997,14 +5997,14 @@
                         "type" : "array"
                       },
                       "startTime" : {
-                        "description" : "The beginning of the time period per day for which the tariff applies.  If absent assumes start of day (ie. midnight)",
+                        "description" : "The beginning of the time period per day for which the tariff applies.  If absent assumes start of day (ie. midnight).\n\nFormatted according to [ISO 8601 Times](https://en.wikipedia.org/wiki/ISO_8601#Times). If the time is provided without a UTC offset, the time zone will be determined by the value of EnergyPlanContract.timeZone.",
                         "type" : "string",
-                        "x-cds-type" : "TimeString"
+                        "x-cds-type" : "ExternalRef"
                       },
                       "endTime" : {
-                        "description" : "The end of the time period per day for which the tariff applies.  If absent assumes end of day (ie. one second before midnight)",
+                        "description" : "The end of the time period per day for which the tariff applies.  If absent assumes end of day (ie. one second before midnight).\n\nFormatted according to [ISO 8601 Times](https://en.wikipedia.org/wiki/ISO_8601#Times). If the time is provided without a UTC offset, the time zone will be determined by the value of EnergyPlanContract.timeZone.",
                         "type" : "string",
-                        "x-cds-type" : "TimeString"
+                        "x-cds-type" : "ExternalRef"
                       }
                     },
                     "required" : [ "days" ],
@@ -6158,14 +6158,14 @@
                           "type" : "array"
                         },
                         "startTime" : {
-                          "description" : "Start of the period",
+                          "description" : "Start of the period.\n\nFormatted according to [ISO 8601 Times](https://en.wikipedia.org/wiki/ISO_8601#Times). If the time is provided without a UTC offset, the time zone will be determined by the value of EnergyPlanContract.timeZone.",
                           "type" : "string",
-                          "x-cds-type" : "TimeString"
+                          "x-cds-type" : "ExternalRef"
                         },
                         "endTime" : {
-                          "description" : "End of the period",
+                          "description" : "End of the period.\n\nFormatted according to [ISO 8601 Times](https://en.wikipedia.org/wiki/ISO_8601#Times). If the time is provided without a UTC offset, the time zone will be determined by the value of EnergyPlanContract.timeZone.",
                           "type" : "string",
-                          "x-cds-type" : "TimeString"
+                          "x-cds-type" : "ExternalRef"
                         }
                       },
                       "required" : [ "days", "endTime", "startTime" ],
@@ -6207,14 +6207,14 @@
                     "type" : "string"
                   },
                   "startTime" : {
-                    "description" : "Start of the period",
+                    "description" : "Start of the period.\n\nFormatted according to [ISO 8601 Times](https://en.wikipedia.org/wiki/ISO_8601#Times). If the time is provided without a UTC offset, the time zone will be determined by the value of EnergyPlanContract.timeZone.",
                     "type" : "string",
-                    "x-cds-type" : "TimeString"
+                    "x-cds-type" : "ExternalRef"
                   },
                   "endTime" : {
-                    "description" : "End of the period",
+                    "description" : "End of the period.\n\nFormatted according to [ISO 8601 Times](https://en.wikipedia.org/wiki/ISO_8601#Times). If the time is provided without a UTC offset, the time zone will be determined by the value of EnergyPlanContract.timeZone.",
                     "type" : "string",
-                    "x-cds-type" : "TimeString"
+                    "x-cds-type" : "ExternalRef"
                   },
                   "days" : {
                     "description" : "The days that the demand tariff applies to",
@@ -6764,7 +6764,7 @@
         "required" : [ "totalCharges", "totalDiscounts" ],
         "type" : "object"
       },
-      "EnergyBillingTransactionV2" : {
+      "EnergyBillingTransactionV3" : {
         "properties" : {
           "accountId" : {
             "description" : "The ID of the account for which transaction applies",
@@ -6789,7 +6789,7 @@
             "$ref" : "#/components/schemas/EnergyBillingUsageTransactionV2"
           },
           "demand" : {
-            "$ref" : "#/components/schemas/EnergyBillingDemandTransactionV2"
+            "$ref" : "#/components/schemas/EnergyBillingDemandTransactionV3"
           },
           "onceOff" : {
             "$ref" : "#/components/schemas/EnergyBillingOnceOffTransaction"
@@ -6870,7 +6870,7 @@
         "required" : [ "amount", "endDate", "startDate", "timeOfUseType", "usage" ],
         "type" : "object"
       },
-      "EnergyBillingDemandTransactionV2" : {
+      "EnergyBillingDemandTransactionV3" : {
         "properties" : {
           "servicePointId" : {
             "description" : "The ID of the service point to which this transaction applies if any",
@@ -6903,8 +6903,13 @@
             "type" : "string",
             "x-cds-type" : "DateTimeString"
           },
+          "measureUnit" : {
+            "description" : "The measurement unit of rate. Assumed to be KVA if absent",
+            "enum" : [ "KWH", "KVA", "KVAR", "KVARH", "KW", "DAYS", "METER", "MONTH" ],
+            "type" : "string"
+          },
           "rate" : {
-            "description" : "The rate for the demand charge in kVA.  A negative value indicates power generated",
+            "description" : "The rate for the demand charge in measureUnit. Assumed to be KVA if measureUnit not provided. A negative value indicates power generated",
             "type" : "number"
           },
           "amount" : {
@@ -7407,12 +7412,12 @@
         "required" : [ "invoices" ],
         "type" : "object"
       },
-      "EnergyBillingListResponseV2_data" : {
+      "EnergyBillingListResponseV3_data" : {
         "properties" : {
           "transactions" : {
             "description" : "Array of transactions sorted by date and time in descending order",
             "items" : {
-              "$ref" : "#/components/schemas/EnergyBillingTransactionV2"
+              "$ref" : "#/components/schemas/EnergyBillingTransactionV3"
             },
             "type" : "array"
           }

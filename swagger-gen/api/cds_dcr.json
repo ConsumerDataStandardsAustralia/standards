@@ -3,7 +3,7 @@
   "info": {
     "title": "CDR Dynamic Client Registration API",
     "description": "This specification defines the APIs for Data Holders exposing Dynamic Client Registration endpoints.",
-    "version": "1.28.0"
+    "version": "1.29.0"
   },
   "servers": [
     {
@@ -284,7 +284,9 @@
         ],
         "x-conditional": [
           "id_token_encrypted_response_alg",
-          "id_token_encrypted_response_enc"
+          "id_token_encrypted_response_enc",
+          "authorization_signed_response_alg",
+          "authorization_encrypted_response_alg"
         ],
         "type": "object",
         "properties": {

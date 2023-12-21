@@ -2,7 +2,7 @@ openapi: 3.0.3
 info:
   description: Consumer Data Right end points and payloads for the Energy sector
   title: CDR Energy API
-  version: 1.28.0
+  version: 1.29.0
 servers:
 - url: /
 paths:
@@ -3825,10 +3825,12 @@ paths:
       x-version: "1"
   /energy/accounts/{accountId}/billing:
     get:
-      description: |-
-        Obtain the billing transactions for a specific account
-
-        Other Versions: [v1](includes/obsolete/get-billing-for-account-v1.html)
+      description: "Obtain the billing transactions for a specific account\n\nDeprecated\
+        \ Versions: \n\n- [v1](includes/obsolete/get-billing-for-account-v1.html)\
+        \ - This version is to be ceased to be called by data recipients by September\
+        \ 9th 2024 and **MAY** be decommissioned by data holders as of that date \n\
+        - [v2](includes/obsolete/get-billing-for-account-v2.html) - This version **MAY**\
+        \ be retired by September 9th 2024 if v3 is implemented."
       operationId: getBillingForAccount
       parameters:
       - description: ID of a specific account to obtain data for.  This is a tokenised
@@ -3958,7 +3960,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EnergyBillingListResponseV2'
+                $ref: '#/components/schemas/EnergyBillingListResponseV3'
           description: Successful response
           headers:
             x-v:
@@ -4060,13 +4062,14 @@ paths:
       - Billing
       x-scopes:
       - energy:billing:read
-      x-version: "2"
+      x-version: "3"
   /energy/accounts/billing:
     get:
-      description: |-
-        Obtain billing transactions for all accounts
-
-        Other Versions: [v1](includes/obsolete/get-bulk-billing-v1.html)
+      description: "Obtain billing transactions for all accounts\n\nDeprecated Versions:\
+        \ \n\n- [v1](includes/obsolete/get-bulk-billing-v1.html) - This version is\
+        \ to be ceased to be called by data recipients by September 9th 2024 and **MAY**\
+        \ be decommissioned by data holders as of that date \n- [v2](includes/obsolete/get-bulk-billing-v2.html)\
+        \ - This version **MAY** be retired by September 9th 2024 if v3 is implemented."
       operationId: listBillingBulk
       parameters:
       - description: Constrain the request to records with effective time at or before
@@ -4187,7 +4190,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EnergyBillingListResponseV2'
+                $ref: '#/components/schemas/EnergyBillingListResponseV3'
           description: Successful response
           headers:
             x-v:
@@ -4272,10 +4275,12 @@ paths:
       - energy:billing:read
       x-version: "2"
     post:
-      description: |-
-        Obtain billing for a specified set of accounts
-
-        Other Versions: [v1](includes/obsolete/get-billing-for-specific-accounts-v1.html)
+      description: "Obtain billing for a specified set of accounts\n\nDeprecated Versions:\
+        \ \n\n- [v1](includes/obsolete/get-billing-for-specific-accounts-v1.html)\
+        \ - This version is to be ceased to be called by data recipients by September\
+        \ 9th 2024 and **MAY** be decommissioned by data holders as of that date \n\
+        - [v2](includes/obsolete/get-billing-for-specific-accounts-v2.html) - This\
+        \ version **MAY** be retired by September 9th 2024 if v3 is implemented."
       operationId: listBillingForAccounts
       parameters:
       - description: Constrain the request to records with effective time at or before
@@ -4404,7 +4409,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EnergyBillingListResponseV2'
+                $ref: '#/components/schemas/EnergyBillingListResponseV3'
           description: Successful response
           headers:
             x-v:
@@ -5023,7 +5028,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/EnergyBillingListResponseV2'
+            $ref: '#/components/schemas/EnergyBillingListResponseV3'
       description: Successful response
       headers:
         x-v:
@@ -5984,7 +5989,7 @@ components:
       - links
       - meta
       type: object
-    EnergyBillingListResponseV2:
+    EnergyBillingListResponseV3:
       example:
         data:
           transactions:
@@ -6052,6 +6057,7 @@ components:
               servicePointId: servicePointId
               invoiceNumber: invoiceNumber
               description: description
+              measureUnit: KWH
               calculationFactors:
               - type: DLF
                 value: 6.027456183070403
@@ -6123,6 +6129,7 @@ components:
               servicePointId: servicePointId
               invoiceNumber: invoiceNumber
               description: description
+              measureUnit: KWH
               calculationFactors:
               - type: DLF
                 value: 6.027456183070403
@@ -6141,7 +6148,7 @@ components:
           first: first
       properties:
         data:
-          $ref: '#/components/schemas/EnergyBillingListResponseV2_data'
+          $ref: '#/components/schemas/EnergyBillingListResponseV3_data'
         links:
           $ref: '#/components/schemas/LinksPaginated'
         meta:
@@ -6480,17 +6487,19 @@ components:
                               type: string
                             type: array
                           startTime:
-                            description: The beginning of the time period per day
-                              for which the controlled load rate applies. Required
-                              if endTime provided
+                            description: |-
+                              The beginning of the time period per day for which the controlled load rate applies. Required if endTime provided.
+
+                              Formatted according to [ISO 8601 Times](https://en.wikipedia.org/wiki/ISO_8601#Times). If the time is provided without a UTC offset, the time zone will be determined by the value of EnergyPlanContract.timeZone.
                             type: string
-                            x-cds-type: TimeString
+                            x-cds-type: ExternalRef
                           endTime:
-                            description: The end of the time period per day for which
-                              the controlled load rate applies. Required if startTime
-                              provided
+                            description: |-
+                              The end of the time period per day for which the controlled load rate applies. Required if startTime provided.
+
+                              Formatted according to [ISO 8601 Times](https://en.wikipedia.org/wiki/ISO_8601#Times). If the time is provided without a UTC offset, the time zone will be determined by the value of EnergyPlanContract.timeZone.
                             type: string
-                            x-cds-type: TimeString
+                            x-cds-type: ExternalRef
                           additionalInfo:
                             description: Display text providing more information on
                               the contrlled load, for e.g. controlled load availability
@@ -6957,17 +6966,19 @@ components:
                             type: string
                           type: array
                         startTime:
-                          description: The beginning of the time period per day for
-                            which the tariff applies.  If absent assumes start of
-                            day (ie. midnight)
+                          description: |-
+                            The beginning of the time period per day for which the tariff applies.  If absent assumes start of day (ie. midnight).
+
+                            Formatted according to [ISO 8601 Times](https://en.wikipedia.org/wiki/ISO_8601#Times). If the time is provided without a UTC offset, the time zone will be determined by the value of EnergyPlanContract.timeZone.
                           type: string
-                          x-cds-type: TimeString
+                          x-cds-type: ExternalRef
                         endTime:
-                          description: The end of the time period per day for which
-                            the tariff applies.  If absent assumes end of day (ie.
-                            one second before midnight)
+                          description: |-
+                            The end of the time period per day for which the tariff applies.  If absent assumes end of day (ie. one second before midnight).
+
+                            Formatted according to [ISO 8601 Times](https://en.wikipedia.org/wiki/ISO_8601#Times). If the time is provided without a UTC offset, the time zone will be determined by the value of EnergyPlanContract.timeZone.
                           type: string
-                          x-cds-type: TimeString
+                          x-cds-type: ExternalRef
                       required:
                       - days
                       type: object
@@ -7155,13 +7166,19 @@ components:
                               type: string
                             type: array
                           startTime:
-                            description: Start of the period
+                            description: |-
+                              Start of the period.
+
+                              Formatted according to [ISO 8601 Times](https://en.wikipedia.org/wiki/ISO_8601#Times). If the time is provided without a UTC offset, the time zone will be determined by the value of EnergyPlanContract.timeZone.
                             type: string
-                            x-cds-type: TimeString
+                            x-cds-type: ExternalRef
                           endTime:
-                            description: End of the period
+                            description: |-
+                              End of the period.
+
+                              Formatted according to [ISO 8601 Times](https://en.wikipedia.org/wiki/ISO_8601#Times). If the time is provided without a UTC offset, the time zone will be determined by the value of EnergyPlanContract.timeZone.
                             type: string
-                            x-cds-type: TimeString
+                            x-cds-type: ExternalRef
                         required:
                         - days
                         - endTime
@@ -7214,13 +7231,19 @@ components:
                       - MONTH
                       type: string
                     startTime:
-                      description: Start of the period
+                      description: |-
+                        Start of the period.
+
+                        Formatted according to [ISO 8601 Times](https://en.wikipedia.org/wiki/ISO_8601#Times). If the time is provided without a UTC offset, the time zone will be determined by the value of EnergyPlanContract.timeZone.
                       type: string
-                      x-cds-type: TimeString
+                      x-cds-type: ExternalRef
                     endTime:
-                      description: End of the period
+                      description: |-
+                        End of the period.
+
+                        Formatted according to [ISO 8601 Times](https://en.wikipedia.org/wiki/ISO_8601#Times). If the time is provided without a UTC offset, the time zone will be determined by the value of EnergyPlanContract.timeZone.
                       type: string
-                      x-cds-type: TimeString
+                      x-cds-type: ExternalRef
                     days:
                       description: The days that the demand tariff applies to
                       items:
@@ -7433,17 +7456,19 @@ components:
                           type: string
                         type: array
                       startTime:
-                        description: The beginning of the time period per day for
-                          which the controlled load rate applies. Required if endTime
-                          provided
+                        description: |-
+                          The beginning of the time period per day for which the controlled load rate applies. Required if endTime provided.
+
+                          Formatted according to [ISO 8601 Times](https://en.wikipedia.org/wiki/ISO_8601#Times). If the time is provided without a UTC offset, the time zone will be determined by the value of EnergyPlanContract.timeZone.
                         type: string
-                        x-cds-type: TimeString
+                        x-cds-type: ExternalRef
                       endTime:
-                        description: The end of the time period per day for which
-                          the controlled load rate applies. Required if startTime
-                          provided
+                        description: |-
+                          The end of the time period per day for which the controlled load rate applies. Required if startTime provided.
+
+                          Formatted according to [ISO 8601 Times](https://en.wikipedia.org/wiki/ISO_8601#Times). If the time is provided without a UTC offset, the time zone will be determined by the value of EnergyPlanContract.timeZone.
                         type: string
-                        x-cds-type: TimeString
+                        x-cds-type: ExternalRef
                       additionalInfo:
                         description: Display text providing more information on the
                           contrlled load, for e.g. controlled load availability if
@@ -7909,16 +7934,19 @@ components:
                         type: string
                       type: array
                     startTime:
-                      description: The beginning of the time period per day for which
-                        the tariff applies.  If absent assumes start of day (ie. midnight)
+                      description: |-
+                        The beginning of the time period per day for which the tariff applies.  If absent assumes start of day (ie. midnight).
+
+                        Formatted according to [ISO 8601 Times](https://en.wikipedia.org/wiki/ISO_8601#Times). If the time is provided without a UTC offset, the time zone will be determined by the value of EnergyPlanContract.timeZone.
                       type: string
-                      x-cds-type: TimeString
+                      x-cds-type: ExternalRef
                     endTime:
-                      description: The end of the time period per day for which the
-                        tariff applies.  If absent assumes end of day (ie. one second
-                        before midnight)
+                      description: |-
+                        The end of the time period per day for which the tariff applies.  If absent assumes end of day (ie. one second before midnight).
+
+                        Formatted according to [ISO 8601 Times](https://en.wikipedia.org/wiki/ISO_8601#Times). If the time is provided without a UTC offset, the time zone will be determined by the value of EnergyPlanContract.timeZone.
                       type: string
-                      x-cds-type: TimeString
+                      x-cds-type: ExternalRef
                   required:
                   - days
                   type: object
@@ -8103,13 +8131,19 @@ components:
                           type: string
                         type: array
                       startTime:
-                        description: Start of the period
+                        description: |-
+                          Start of the period.
+
+                          Formatted according to [ISO 8601 Times](https://en.wikipedia.org/wiki/ISO_8601#Times). If the time is provided without a UTC offset, the time zone will be determined by the value of EnergyPlanContract.timeZone.
                         type: string
-                        x-cds-type: TimeString
+                        x-cds-type: ExternalRef
                       endTime:
-                        description: End of the period
+                        description: |-
+                          End of the period.
+
+                          Formatted according to [ISO 8601 Times](https://en.wikipedia.org/wiki/ISO_8601#Times). If the time is provided without a UTC offset, the time zone will be determined by the value of EnergyPlanContract.timeZone.
                         type: string
-                        x-cds-type: TimeString
+                        x-cds-type: ExternalRef
                     required:
                     - days
                     - endTime
@@ -8160,13 +8194,19 @@ components:
                   - MONTH
                   type: string
                 startTime:
-                  description: Start of the period
+                  description: |-
+                    Start of the period.
+
+                    Formatted according to [ISO 8601 Times](https://en.wikipedia.org/wiki/ISO_8601#Times). If the time is provided without a UTC offset, the time zone will be determined by the value of EnergyPlanContract.timeZone.
                   type: string
-                  x-cds-type: TimeString
+                  x-cds-type: ExternalRef
                 endTime:
-                  description: End of the period
+                  description: |-
+                    End of the period.
+
+                    Formatted according to [ISO 8601 Times](https://en.wikipedia.org/wiki/ISO_8601#Times). If the time is provided without a UTC offset, the time zone will be determined by the value of EnergyPlanContract.timeZone.
                   type: string
-                  x-cds-type: TimeString
+                  x-cds-type: ExternalRef
                 days:
                   description: The days that the demand tariff applies to
                   items:
@@ -9172,7 +9212,7 @@ components:
       - totalCharges
       - totalDiscounts
       type: object
-    EnergyBillingTransactionV2:
+    EnergyBillingTransactionV3:
       example:
         accountId: accountId
         onceOff:
@@ -9238,6 +9278,7 @@ components:
           servicePointId: servicePointId
           invoiceNumber: invoiceNumber
           description: description
+          measureUnit: KWH
           calculationFactors:
           - type: DLF
             value: 6.027456183070403
@@ -9271,7 +9312,7 @@ components:
         usage:
           $ref: '#/components/schemas/EnergyBillingUsageTransactionV2'
         demand:
-          $ref: '#/components/schemas/EnergyBillingDemandTransactionV2'
+          $ref: '#/components/schemas/EnergyBillingDemandTransactionV3'
         onceOff:
           $ref: '#/components/schemas/EnergyBillingOnceOffTransaction'
         otherCharges:
@@ -9386,7 +9427,7 @@ components:
       - timeOfUseType
       - usage
       type: object
-    EnergyBillingDemandTransactionV2:
+    EnergyBillingDemandTransactionV3:
       example:
         amount: amount
         adjustments:
@@ -9400,6 +9441,7 @@ components:
         servicePointId: servicePointId
         invoiceNumber: invoiceNumber
         description: description
+        measureUnit: KWH
         calculationFactors:
         - type: DLF
           value: 6.027456183070403
@@ -9447,9 +9489,21 @@ components:
           description: Date and time when the demand period ends
           type: string
           x-cds-type: DateTimeString
+        measureUnit:
+          description: The measurement unit of rate. Assumed to be KVA if absent
+          enum:
+          - KWH
+          - KVA
+          - KVAR
+          - KVARH
+          - KW
+          - DAYS
+          - METER
+          - MONTH
+          type: string
         rate:
-          description: The rate for the demand charge in kVA.  A negative value indicates
-            power generated
+          description: The rate for the demand charge in measureUnit. Assumed to be
+            KVA if measureUnit not provided. A negative value indicates power generated
           type: number
         amount:
           description: The amount charged or credited for this transaction prior to
@@ -10501,7 +10555,7 @@ components:
       required:
       - invoices
       type: object
-    EnergyBillingListResponseV2_data:
+    EnergyBillingListResponseV3_data:
       example:
         transactions:
         - accountId: accountId
@@ -10568,6 +10622,7 @@ components:
             servicePointId: servicePointId
             invoiceNumber: invoiceNumber
             description: description
+            measureUnit: KWH
             calculationFactors:
             - type: DLF
               value: 6.027456183070403
@@ -10639,6 +10694,7 @@ components:
             servicePointId: servicePointId
             invoiceNumber: invoiceNumber
             description: description
+            measureUnit: KWH
             calculationFactors:
             - type: DLF
               value: 6.027456183070403
@@ -10651,7 +10707,7 @@ components:
           description: Array of transactions sorted by date and time in descending
             order
           items:
-            $ref: '#/components/schemas/EnergyBillingTransactionV2'
+            $ref: '#/components/schemas/EnergyBillingTransactionV3'
           type: array
       required:
       - transactions

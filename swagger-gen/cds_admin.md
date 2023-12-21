@@ -1,8 +1,7 @@
 
 
-## Metadata Update
-
-<a id="opIdmetadataUpdate"></a>
+<h2 id="cdr-admin-api_metadata-update">Metadata Update</h2>
+<p id="metadata-update" class="orig-anchor"></p>
 
 > Code samples
 
@@ -61,12 +60,12 @@ Indicate that a critical update to the metadata for Accredited Data Recipients h
 }
 ```
 
-###Endpoint Version
+<h3 id="cdr-admin-api_metadata-update_endpoint-version">Endpoint Version</h3>
 |   |  |
 |---|--|
 |Version|**1**
 
-<h3 id="metadata-update-parameters">Parameters</h3>
+<h3 id="cdr-admin-api_metadata-update_parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -82,7 +81,7 @@ Indicate that a critical update to the metadata for Accredited Data Recipients h
 null
 ```
 
-<h3 id="metadata-update-responses">Responses</h3>
+<h3 id="cdr-admin-api_metadata-update_responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -90,9 +89,9 @@ null
 |400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-admin-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-admin-apiresponseerrorlistv2)|
 
-<h3 id="metadata-update-responseschema">Response Schema</h3>
+<h3 id="cdr-admin-api_metadata-update_response-schema">Response Schema</h3> 
 
-### Response Headers
+<h3 id="cdr-admin-api_metadata-update_response-headers">Response Headers</h3>
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
@@ -113,9 +112,8 @@ This operation may only be called by the CDR Register
     
   
 
-## Get Metrics
-
-<a id="opIdgetMetrics"></a>
+<h2 id="cdr-admin-api_get-metrics">Get Metrics</h2>
+<p id="get-metrics" class="orig-anchor"></p>
 
 > Code samples
 
@@ -169,20 +167,20 @@ Deprecated versions:
 
 If the Data Holder supports private_key_jwt client authentication they MUST validate the scope.
 
-###Endpoint Version
+<h3 id="cdr-admin-api_get-metrics_endpoint-version">Endpoint Version</h3>
 |   |  |
 |---|--|
 |Version|**5**
 
-<h3 id="get-metrics-parameters">Parameters</h3>
+<h3 id="cdr-admin-api_get-metrics_parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|period|query|string|optional|The period of metrics to be requested. Values can be CURRENT (meaning metrics for current period, dependent on the metric type), HISTORIC (meaning metrics for previous period, depending on the metric type) or ALL. If absent the default is ALL.|
+|period|query|[Enum](#common-field-types)|optional|The period of metrics to be requested. Values can be CURRENT (meaning metrics for current period, dependent on the metric type), HISTORIC (meaning metrics for previous period, depending on the metric type) or ALL. If absent the default is ALL.|
 |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
 |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.|
 
-#### Enumerated Values
+<h4 id="cdr-admin-api_get-metrics_enumerated-values-parameters">Enumerated Values</h4>
 
 |Parameter|Value|
 |---|---|
@@ -654,7 +652,7 @@ If the Data Holder supports private_key_jwt client authentication they MUST vali
 }
 ```
 
-<h3 id="get-metrics-responses">Responses</h3>
+<h3 id="cdr-admin-api_get-metrics_responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -662,7 +660,7 @@ If the Data Holder supports private_key_jwt client authentication they MUST vali
 |400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-admin-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-admin-apiresponseerrorlistv2)|
 
-### Response Headers
+<h3 id="cdr-admin-api_get-metrics_response-headers">Response Headers</h3>
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
@@ -684,9 +682,9 @@ This operation may only be called by the CDR Register
   
 
 <h2 class="schema-heading" id="cdr-admin-api-schemas">Schemas</h2>
-<a class="schema-link" id="cdr-admin-api-schemas"></a>
 
-<h3 class="schema-toc" id="tocSrequestmetadataupdate">RequestMetaDataUpdate</h3>
+<h3 class="schema-toc" id="cdr-admin-api_schemas_tocSrequestmetadataupdate">RequestMetaDataUpdate</h3>
+<p id="tocSrequestmetadataupdate" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-admin-apirequestmetadataupdate"></a>
 
@@ -700,7 +698,7 @@ This operation may only be called by the CDR Register
 
 ```
 
-### Properties
+<h3 id="cdr-admin-api_requestmetadataupdate_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -708,13 +706,14 @@ This operation may only be called by the CDR Register
 |» action|[Enum](#common-field-types)|mandatory|The action to take for the meta data. At the moment the only option is REFRESH which requires the data holder to call the ACCC to refresh meta data as soon as practicable|
 |meta|[Meta](#schemacdr-admin-apimeta)|optional|none|
 
-#### Enumerated Values
+<h4 id="cdr-admin-api_requestmetadataupdate_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|
 |action|REFRESH|
 
-<h3 class="schema-toc" id="tocSresponsemetricslistv5">ResponseMetricsListV5</h3>
+<h3 class="schema-toc" id="cdr-admin-api_schemas_tocSresponsemetricslistv5">ResponseMetricsListV5</h3>
+<p id="tocSresponsemetricslistv5" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-admin-apiresponsemetricslistv5"></a>
 
@@ -1179,7 +1178,7 @@ This operation may only be called by the CDR Register
 
 ```
 
-### Properties
+<h3 id="cdr-admin-api_responsemetricslistv5_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -1192,7 +1191,7 @@ This operation may only be called by the CDR Register
 |» sessionCount|[SessionCountMetricsV2](#schemacdr-admin-apisessioncountmetricsv2)|mandatory|Session counts over time. Note that a session is defined as the provisioning of an Access Token.|
 |» averageTps|[AverageTPSMetricsV2](#schemacdr-admin-apiaveragetpsmetricsv2)|mandatory|Average transactions per second over time|
 |» peakTps|[PeakTPSMetricsV2](#schemacdr-admin-apipeaktpsmetricsv2)|mandatory|Peak transactions per second over time|
-|» errors|[ErrorMetricsV2](#schemacdr-admin-apierrormetricsv2)|mandatory|Number of calls resulting in error due to server execution over time|
+|» errors|[ErrorMetricsV2](#schemacdr-admin-apierrormetricsv2)|mandatory|Number of calls resulting in error, over time|
 |» rejections|[RejectionMetricsV3](#schemacdr-admin-apirejectionmetricsv3)|mandatory|Number of calls rejected due to traffic thresholds over time|
 |» customerCount|[NaturalNumber](#common-field-types)|mandatory|Number of customers with active authorisations at the time of the call|
 |» recipientCount|[NaturalNumber](#common-field-types)|mandatory|Number of Data Recipient Software Products with active authorisations at the time of the call|
@@ -1201,7 +1200,8 @@ This operation may only be called by the CDR Register
 |links|[Links](#schemacdr-admin-apilinks)|mandatory|none|
 |meta|[Meta](#schemacdr-admin-apimeta)|optional|none|
 
-<h3 class="schema-toc" id="tocSavailabilitymetricsv2">AvailabilityMetricsV2</h3>
+<h3 class="schema-toc" id="cdr-admin-api_schemas_tocSavailabilitymetricsv2">AvailabilityMetricsV2</h3>
+<p id="tocSavailabilitymetricsv2" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-admin-apiavailabilitymetricsv2"></a>
 
@@ -1231,21 +1231,22 @@ This operation may only be called by the CDR Register
 
 *Availability metrics*
 
-### Properties
+<h3 id="cdr-admin-api_availabilitymetricsv2_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
 |aggregate|object|mandatory|Aggregated availability metrics|
 |» currentMonth|[RateString](#common-field-types)|conditional|Percentage availability of the CDR platform so far for the current calendar month. 0.0 means 0%. 1.0 means 100%. Must be a positive value or zero|
-|» previousMonths|[string]|conditional|Percentage availability of the CDR platform for previous calendar months. The first element indicates the last month and so on. A maximum of twelve entries is required if available. 0.0 means 0%. 1.0 means 100%. Values must be a positive or zero|
+|» previousMonths|[[RateString]](#common-field-types)|conditional|Percentage availability of the CDR platform for previous calendar months. The first element indicates the last month and so on. A maximum of twelve entries is required if available. 0.0 means 0%. 1.0 means 100%. Values must be a positive or zero|
 |unauthenticated|object|mandatory|Availability metrics for the unauthenticated aspects of the CDR regime|
 |» currentMonth|[RateString](#common-field-types)|conditional|Percentage availability of the CDR platform so far for the current calendar month. 0.0 means 0%. 1.0 means 100%. Must be a positive value or zero|
-|» previousMonths|[string]|conditional|Percentage availability of the CDR platform for previous calendar months. The first element indicates the last month and so on. A maximum of twelve entries is required if available. 0.0 means 0%. 1.0 means 100%. Values must be a positive or zero|
+|» previousMonths|[[RateString]](#common-field-types)|conditional|Percentage availability of the CDR platform for previous calendar months. The first element indicates the last month and so on. A maximum of twelve entries is required if available. 0.0 means 0%. 1.0 means 100%. Values must be a positive or zero|
 |authenticated|object|mandatory|Availability metrics for the authenticated aspects of the CDR regime|
 |» currentMonth|[RateString](#common-field-types)|conditional|Percentage availability of the CDR platform so far for the current calendar month. 0.0 means 0%. 1.0 means 100%. Must be a positive value or zero|
-|» previousMonths|[string]|conditional|Percentage availability of the CDR platform for previous calendar months. The first element indicates the last month and so on. A maximum of twelve entries is required if available. 0.0 means 0%. 1.0 means 100%. Values must be a positive or zero|
+|» previousMonths|[[RateString]](#common-field-types)|conditional|Percentage availability of the CDR platform for previous calendar months. The first element indicates the last month and so on. A maximum of twelve entries is required if available. 0.0 means 0%. 1.0 means 100%. Values must be a positive or zero|
 
-<h3 class="schema-toc" id="tocSperformancemetricsv3">PerformanceMetricsV3</h3>
+<h3 class="schema-toc" id="cdr-admin-api_schemas_tocSperformancemetricsv3">PerformanceMetricsV3</h3>
+<p id="tocSperformancemetricsv3" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-admin-apiperformancemetricsv3"></a>
 
@@ -1357,44 +1358,45 @@ This operation may only be called by the CDR Register
 
 *Percentage of calls within the performance thresholds in each performance tier over time*
 
-### Properties
+<h3 id="cdr-admin-api_performancemetricsv3_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
 |aggregate|object|optional|Percentage of calls within Primary Data Holder performance thresholds. Note that Secondary Data Holder performance <b>MUST</b> be excluded from this metric.|
 |» currentDay|[RateString](#common-field-types)|conditional|Percentage of calls within the performance threshold for the current day. 0.0 means 0%. 1.0 means 100%. Must be a positive value or zero|
-|» previousDays|[string]|conditional|Percentage of calls within the performance threshold for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. 0.0 means 0%. 1.0 means 100%. Values must be a positive or zero|
+|» previousDays|[[RateString]](#common-field-types)|conditional|Percentage of calls within the performance threshold for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. 0.0 means 0%. 1.0 means 100%. Values must be a positive or zero|
 |highPriority|object|mandatory|Percentage of high priority calls within the performance thresholds|
-|» currentDay|[string]|conditional|Array of contiguous hourly metrics for the current day.  Each element represents a 1 hour period starting from 12am-1am.  Timezone for determining 12am must be consistent but is at the discretion of the Data Holder|
+|» currentDay|[[RateString]](#common-field-types)|conditional|Array of contiguous hourly metrics for the current day.  Each element represents a 1 hour period starting from 12am-1am.  Timezone for determining 12am must be consistent but is at the discretion of the Data Holder|
 |» previousDays|[array]|conditional|Percentage of calls within the performance threshold for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. 0.0 means 0%. 1.0 means 100%. Values must be a positive or zero|
 |largePayload|object|mandatory|Percentage of large payload calls within the performance thresholds|
-|» currentDay|[string]|conditional|Array of contiguous hourly metrics for the current day.  Each element represents a 1 hour period starting from 12am-1am.  Timezone for determining 12am must be consistent but is at the discretion of the Data Holder|
+|» currentDay|[[RateString]](#common-field-types)|conditional|Array of contiguous hourly metrics for the current day.  Each element represents a 1 hour period starting from 12am-1am.  Timezone for determining 12am must be consistent but is at the discretion of the Data Holder|
 |» previousDays|[array]|conditional|Percentage of calls within the performance threshold for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. 0.0 means 0%. 1.0 means 100%. Values must be a positive or zero|
 |lowPriority|object|mandatory|Percentage of low priority calls within the performance thresholds|
-|» currentDay|[string]|conditional|Array of contiguous hourly metrics for the current day.  Each element represents a 1 hour period starting from 12am-1am.  Timezone for determining 12am must be consistent but is at the discretion of the Data Holder|
+|» currentDay|[[RateString]](#common-field-types)|conditional|Array of contiguous hourly metrics for the current day.  Each element represents a 1 hour period starting from 12am-1am.  Timezone for determining 12am must be consistent but is at the discretion of the Data Holder|
 |» previousDays|[array]|conditional|Percentage of calls within the performance threshold for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. 0.0 means 0%. 1.0 means 100%. Values must be a positive or zero|
 |unattended|object|mandatory|Percentage of unattended calls within the performance thresholds|
-|» currentDay|[string]|conditional|Array of contiguous hourly metrics for the current day.  Each element represents a 1 hour period starting from 12am-1am.  Timezone for determining 12am must be consistent but is at the discretion of the Data Holder|
+|» currentDay|[[RateString]](#common-field-types)|conditional|Array of contiguous hourly metrics for the current day.  Each element represents a 1 hour period starting from 12am-1am.  Timezone for determining 12am must be consistent but is at the discretion of the Data Holder|
 |» previousDays|[array]|conditional|Percentage of calls within the performance threshold for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. 0.0 means 0%. 1.0 means 100%. Values must be a positive or zero|
 |unauthenticated|object|mandatory|Percentage of unauthenticated calls within the performance thresholds|
-|» currentDay|[string]|conditional|Array of contiguous hourly metrics for the current day.  Each element represents a 1 hour period starting from 12am-1am.  Timezone for determining 12am must be consistent but is at the discretion of the Data Holder|
+|» currentDay|[[RateString]](#common-field-types)|conditional|Array of contiguous hourly metrics for the current day.  Each element represents a 1 hour period starting from 12am-1am.  Timezone for determining 12am must be consistent but is at the discretion of the Data Holder|
 |» previousDays|[array]|conditional|Percentage of calls within the performance threshold for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. 0.0 means 0%. 1.0 means 100%. Values must be a positive or zero|
 |secondary|object|conditional|Percentage of Shared Responsibility calls within the performance thresholds. Mandatory for data holders designated for a Shared Responsibility Data Request data cluster|
 |» primary|object|mandatory|Percentage of Shared Responsibility calls within the performance thresholds for the primary data holder|
-|»» currentDay|[string]|conditional|Array of contiguous hourly metrics for the current day.  Each element represents a 1 hour period starting from 12am-1am.  Timezone for determining 12am must be consistent but is at the discretion of the Data Holder|
+|»» currentDay|[[RateString]](#common-field-types)|conditional|Array of contiguous hourly metrics for the current day.  Each element represents a 1 hour period starting from 12am-1am.  Timezone for determining 12am must be consistent but is at the discretion of the Data Holder|
 |»» previousDays|[array]|conditional|Percentage of calls within the performance threshold for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. 0.0 means 0%. 1.0 means 100%. Values must be a positive or zero|
 |» secondary|object|mandatory|Percentage of Shared Responsibility calls within the performance thresholds for the secondary data holder|
-|»» currentDay|[string]|conditional|Array of contiguous hourly metrics for the current day.  Each element represents a 1 hour period starting from 12am-1am.  Timezone for determining 12am must be consistent but is at the discretion of the Data Holder|
+|»» currentDay|[[RateString]](#common-field-types)|conditional|Array of contiguous hourly metrics for the current day.  Each element represents a 1 hour period starting from 12am-1am.  Timezone for determining 12am must be consistent but is at the discretion of the Data Holder|
 |»» previousDays|[array]|conditional|Percentage of calls within the performance threshold for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. 0.0 means 0%. 1.0 means 100%. Values must be a positive or zero|
 |largeSecondary|object|conditional|Percentage of large Shared Responsibility calls within the performance thresholds. Mandatory for data holders designated for a Shared Responsibility Data Request data cluster|
 |» primary|object|mandatory|Percentage of large Shared Responsibility calls within the performance thresholds for the secondary data holder|
-|»» currentDay|[string]|conditional|Array of contiguous hourly metrics for the current day.  Each element represents a 1 hour period starting from 12am-1am.  Timezone for determining 12am must be consistent but is at the discretion of the Data Holder|
+|»» currentDay|[[RateString]](#common-field-types)|conditional|Array of contiguous hourly metrics for the current day.  Each element represents a 1 hour period starting from 12am-1am.  Timezone for determining 12am must be consistent but is at the discretion of the Data Holder|
 |»» previousDays|[array]|conditional|Percentage of calls within the performance threshold for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. 0.0 means 0%. 1.0 means 100%. Values must be a positive or zero|
 |» secondary|object|mandatory|Percentage of large Shared Responsibility calls within the performance thresholds for the secondary data holder|
-|»» currentDay|[string]|conditional|Array of contiguous hourly metrics for the current day.  Each element represents a 1 hour period starting from 12am-1am.  Timezone for determining 12am must be consistent but is at the discretion of the Data Holder|
+|»» currentDay|[[RateString]](#common-field-types)|conditional|Array of contiguous hourly metrics for the current day.  Each element represents a 1 hour period starting from 12am-1am.  Timezone for determining 12am must be consistent but is at the discretion of the Data Holder|
 |»» previousDays|[array]|conditional|Percentage of calls within the performance threshold for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. 0.0 means 0%. 1.0 means 100%. Values must be a positive or zero|
 
-<h3 class="schema-toc" id="tocSinvocationmetricsv3">InvocationMetricsV3</h3>
+<h3 class="schema-toc" id="cdr-admin-api_schemas_tocSinvocationmetricsv3">InvocationMetricsV3</h3>
+<p id="tocSinvocationmetricsv3" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-admin-apiinvocationmetricsv3"></a>
 
@@ -1448,33 +1450,34 @@ This operation may only be called by the CDR Register
 
 *Number of API calls in each performance tier over time*
 
-### Properties
+<h3 id="cdr-admin-api_invocationmetricsv3_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
 |unauthenticated|object|mandatory|API call counts for the unauthenticated tier|
 |» currentDay|[NaturalNumber](#common-field-types)|conditional|API call counts for current day|
-|» previousDays|[integer]|conditional|API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available|
+|» previousDays|[[NaturalNumber]](#common-field-types)|conditional|API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available|
 |highPriority|object|mandatory|API call counts for the high priority tier|
 |» currentDay|[NaturalNumber](#common-field-types)|conditional|API call counts for current day|
-|» previousDays|[integer]|conditional|API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available|
+|» previousDays|[[NaturalNumber]](#common-field-types)|conditional|API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available|
 |lowPriority|object|mandatory|API call counts for the low priority tier|
 |» currentDay|[NaturalNumber](#common-field-types)|conditional|API call counts for current day|
-|» previousDays|[integer]|conditional|API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available|
+|» previousDays|[[NaturalNumber]](#common-field-types)|conditional|API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available|
 |unattended|object|mandatory|API call counts for the unattended tier|
 |» currentDay|[NaturalNumber](#common-field-types)|conditional|API call counts for current day|
-|» previousDays|[integer]|conditional|API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available|
+|» previousDays|[[NaturalNumber]](#common-field-types)|conditional|API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available|
 |largePayload|object|mandatory|API call counts for the large payload tier|
 |» currentDay|[NaturalNumber](#common-field-types)|conditional|API call counts for current day|
-|» previousDays|[integer]|conditional|API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available|
+|» previousDays|[[NaturalNumber]](#common-field-types)|conditional|API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available|
 |secondary|object|conditional|API call counts for the Shared Responsibility Data Requests tier.  Mandatory for data holders designated for a Shared Responsibility Data Request data cluster|
 |» currentDay|[NaturalNumber](#common-field-types)|conditional|API call counts for current day|
-|» previousDays|[integer]|conditional|API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available|
+|» previousDays|[[NaturalNumber]](#common-field-types)|conditional|API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available|
 |largeSecondary|object|conditional|API call counts for the large Shared Responsibility Data Requests tier.  Mandatory for data holders designated for a Shared Responsibility Data Request data cluster|
 |» currentDay|[NaturalNumber](#common-field-types)|conditional|API call counts for current day|
-|» previousDays|[integer]|conditional|API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available|
+|» previousDays|[[NaturalNumber]](#common-field-types)|conditional|API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available|
 
-<h3 class="schema-toc" id="tocSaverageresponsemetricsv2">AverageResponseMetricsV2</h3>
+<h3 class="schema-toc" id="cdr-admin-api_schemas_tocSaverageresponsemetricsv2">AverageResponseMetricsV2</h3>
+<p id="tocSaverageresponsemetricsv2" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-admin-apiaverageresponsemetricsv2"></a>
 
@@ -1544,7 +1547,7 @@ This operation may only be called by the CDR Register
 
 *Average response time in seconds, at millisecond resolution, within each performance tier*
 
-### Properties
+<h3 id="cdr-admin-api_averageresponsemetricsv2_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -1578,7 +1581,8 @@ This operation may only be called by the CDR Register
 |»» currentDay|number|conditional|Average response time for current day|
 |»» previousDays|[number]|conditional|Average response time for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.|
 
-<h3 class="schema-toc" id="tocSsessioncountmetricsv2">SessionCountMetricsV2</h3>
+<h3 class="schema-toc" id="cdr-admin-api_schemas_tocSsessioncountmetricsv2">SessionCountMetricsV2</h3>
+<p id="tocSsessioncountmetricsv2" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-admin-apisessioncountmetricsv2"></a>
 
@@ -1594,14 +1598,15 @@ This operation may only be called by the CDR Register
 
 *Session counts over time. Note that a session is defined as the provisioning of an Access Token.*
 
-### Properties
+<h3 id="cdr-admin-api_sessioncountmetricsv2_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
 |currentDay|[NaturalNumber](#common-field-types)|conditional|Session count for current day|
-|previousDays|[integer]|conditional|Session count for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available|
+|previousDays|[[NaturalNumber]](#common-field-types)|conditional|Session count for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available|
 
-<h3 class="schema-toc" id="tocSaveragetpsmetricsv2">AverageTPSMetricsV2</h3>
+<h3 class="schema-toc" id="cdr-admin-api_schemas_tocSaveragetpsmetricsv2">AverageTPSMetricsV2</h3>
+<p id="tocSaveragetpsmetricsv2" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-admin-apiaveragetpsmetricsv2"></a>
 
@@ -1631,7 +1636,7 @@ This operation may only be called by the CDR Register
 
 *Average transactions per second over time*
 
-### Properties
+<h3 id="cdr-admin-api_averagetpsmetricsv2_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -1645,7 +1650,8 @@ This operation may only be called by the CDR Register
 |» currentDay|number|conditional|Average TPS for current day. Must be a positive value or zero|
 |» previousDays|[number]|conditional|Average TPS for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. Values must be a positive or zero|
 
-<h3 class="schema-toc" id="tocSpeaktpsmetricsv2">PeakTPSMetricsV2</h3>
+<h3 class="schema-toc" id="cdr-admin-api_schemas_tocSpeaktpsmetricsv2">PeakTPSMetricsV2</h3>
+<p id="tocSpeaktpsmetricsv2" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-admin-apipeaktpsmetricsv2"></a>
 
@@ -1675,7 +1681,7 @@ This operation may only be called by the CDR Register
 
 *Peak transactions per second over time*
 
-### Properties
+<h3 id="cdr-admin-api_peaktpsmetricsv2_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -1689,7 +1695,8 @@ This operation may only be called by the CDR Register
 |» currentDay|number|conditional|Peak TPS for current day. Must be a positive value or zero|
 |» previousDays|[number]|conditional|Peak TPS for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. Values must be a positive or zero|
 
-<h3 class="schema-toc" id="tocSerrormetricsv2">ErrorMetricsV2</h3>
+<h3 class="schema-toc" id="cdr-admin-api_schemas_tocSerrormetricsv2">ErrorMetricsV2</h3>
+<p id="tocSerrormetricsv2" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-admin-apierrormetricsv2"></a>
 
@@ -1733,23 +1740,23 @@ This operation may only be called by the CDR Register
 
 ```
 
-*Number of calls resulting in error due to server execution over time*
+*Number of calls resulting in error, over time*
 
-### Properties
+<h3 id="cdr-admin-api_errormetricsv2_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
 |aggregate|object|mandatory|Aggregate number of calls resulting in error due to server execution over time for all endpoints|
 |» currentDay|[NaturalNumber](#common-field-types)|conditional|Error counts for current day|
-|» previousDays|[integer]|conditional|Error counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available|
-|unauthenticated|object|mandatory|Number of calls resulting in error due to server execution over time for unauthenticated endpoints|
+|» previousDays|[[NaturalNumber]](#common-field-types)|conditional|Error counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available|
+|unauthenticated|object|mandatory|Number of calls resulting in error for unauthenticated endpoints|
 |» currentDay|object|conditional|Error counts, by HTTP error code, for current day|
 |»» **additionalProperties**|[NaturalNumber](#common-field-types)|optional|Number of errors for a specific HTTP error code.  Note that the property name must be 3 digits represent the HTTP error code the error is for|
 |»» 500|[NaturalNumber](#common-field-types)|optional|Number of errors for HTTP error code 500.  Note that this field is an example of a single entry due to the lack of OAS support for the JSON Schema `patternProperties` syntax.  See the `additionalProperties` field in this schema for the generic property structure for error code counts|
 |» previousDays|[object]|conditional|Error counts, by HTTP error code, for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available|
 |»» **additionalProperties**|[NaturalNumber](#common-field-types)|optional|Number of errors for a specific HTTP error code.  Note that the property name must be 3 digits represent the HTTP error code the error is for|
 |»» 500|[NaturalNumber](#common-field-types)|optional|Number of errors for HTTP error code 500.  Note that this field is an example of a single entry due to the lack of OAS support JSON Schema `patternProperties` syntax.  See the `additionalProperties` field in this schema for the generic property structure for error code counts|
-|authenticated|object|mandatory|Number of calls resulting in error due to server execution over time for authenticated endpoints|
+|authenticated|object|mandatory|Number of calls resulting in error for authenticated endpoints|
 |» currentDay|object|conditional|Error counts, by HTTP error code, for current day|
 |»» **additionalProperties**|[NaturalNumber](#common-field-types)|optional|Number of errors for a specific HTTP error code.  Note that the property name must be 3 digits represent the HTTP error code the error is for|
 |»» 500|[NaturalNumber](#common-field-types)|optional|Number of errors for HTTP error code 500.  Note that this field is an example of a single entry due to the lack of OAS support for the JSON Schema `patternProperties` syntax.  See the `additionalProperties` field in this schema for the generic property structure for error code counts|
@@ -1757,7 +1764,8 @@ This operation may only be called by the CDR Register
 |»» **additionalProperties**|[NaturalNumber](#common-field-types)|optional|Number of errors for a specific HTTP error code.  Note that the property name must be 3 digits represent the HTTP error code the error is for|
 |»» 500|[NaturalNumber](#common-field-types)|optional|Number of errors for HTTP error code 500.  Note that this field is an example of a single entry due to the lack of OAS support JSON Schema `patternProperties` syntax.  See the `additionalProperties` field in this schema for the generic property structure for error code counts|
 
-<h3 class="schema-toc" id="tocSrejectionmetricsv3">RejectionMetricsV3</h3>
+<h3 class="schema-toc" id="cdr-admin-api_schemas_tocSrejectionmetricsv3">RejectionMetricsV3</h3>
+<p id="tocSrejectionmetricsv3" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-admin-apirejectionmetricsv3"></a>
 
@@ -1781,18 +1789,19 @@ This operation may only be called by the CDR Register
 
 *Number of calls rejected due to traffic thresholds over time*
 
-### Properties
+<h3 id="cdr-admin-api_rejectionmetricsv3_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
 |authenticated|object|mandatory|Rejection counts for all authenticated end points|
 |» currentDay|[NaturalNumber](#common-field-types)|conditional|Number of calls rejected for current day|
-|» previousDays|[integer]|conditional|Number of calls rejected for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.|
+|» previousDays|[[NaturalNumber]](#common-field-types)|conditional|Number of calls rejected for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.|
 |unauthenticated|object|mandatory|Rejection counts for all unauthenticated end points|
 |» currentDay|[NaturalNumber](#common-field-types)|conditional|Number of calls rejected for current day|
-|» previousDays|[integer]|conditional|Number of calls rejected for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.|
+|» previousDays|[[NaturalNumber]](#common-field-types)|conditional|Number of calls rejected for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.|
 
-<h3 class="schema-toc" id="tocSsecondaryholdermetricsv2">SecondaryHolderMetricsV2</h3>
+<h3 class="schema-toc" id="cdr-admin-api_schemas_tocSsecondaryholdermetricsv2">SecondaryHolderMetricsV2</h3>
+<p id="tocSsecondaryholdermetricsv2" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-admin-apisecondaryholdermetricsv2"></a>
 
@@ -1816,18 +1825,19 @@ This operation may only be called by the CDR Register
 
 *Errors and rejections received by the primary data holder from the secondary data holder.  Mandatory for data holders designated for a Shared Responsibility Data Request data cluster*
 
-### Properties
+<h3 id="cdr-admin-api_secondaryholdermetricsv2_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
 |errors|object|mandatory|Number of calls resulting in error due to server execution over time|
 |» currentDay|[NaturalNumber](#common-field-types)|conditional|Number of errors for current day|
-|» previousDays|[integer]|conditional|Number of errors for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available|
+|» previousDays|[[NaturalNumber]](#common-field-types)|conditional|Number of errors for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available|
 |rejections|object|mandatory|Number of calls rejected due to traffic thresholds over time|
 |» currentDay|[NaturalNumber](#common-field-types)|conditional|Number of rejections for current day|
-|» previousDays|[integer]|conditional|Number of rejections for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available|
+|» previousDays|[[NaturalNumber]](#common-field-types)|conditional|Number of rejections for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available|
 
-<h3 class="schema-toc" id="tocSauthorisationmetricsv2">AuthorisationMetricsV2</h3>
+<h3 class="schema-toc" id="cdr-admin-api_schemas_tocSauthorisationmetricsv2">AuthorisationMetricsV2</h3>
+<p id="tocSauthorisationmetricsv2" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-admin-apiauthorisationmetricsv2"></a>
 
@@ -1947,7 +1957,7 @@ This operation may only be called by the CDR Register
 
 *Authorisation counts for the data holder*
 
-### Properties
+<h3 id="cdr-admin-api_authorisationmetricsv2_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -1992,28 +2002,29 @@ This operation may only be called by the CDR Register
 |»» nonIndividual|[NaturalNumber](#common-field-types)|mandatory|Expired authorisation count for non-individual customers|
 |abandonedConsentFlowCount|object|mandatory|The number of consents flows that were not successfully authorised|
 |» currentDay|[NaturalNumber](#common-field-types)|conditional|Number of consents flows that were not successfully authorised for the current day|
-|» previousDays|[integer]|conditional|Number of consents flows that were not successfully authorised for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available|
+|» previousDays|[[NaturalNumber]](#common-field-types)|conditional|Number of consents flows that were not successfully authorised for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available|
 |abandonmentsByStage|object|mandatory|Customer abandonment count per stage of the consent flow.  Note that the aggregated abandonment count for all stages for a period should equal the count in `abandonedConsentFlowCount` for the same period (ie. each abandoned consent should assigned to one, and only one, stage)|
 |» preIdentification|object|mandatory|The number of authorisations that commenced with the data holder but the customer did not successfully identify their profile or user ID|
 |»» currentDay|[NaturalNumber](#common-field-types)|conditional|Number of abandoned consent flows for this stage for the current day|
-|»» previousDays|[integer]|conditional|Number of abandoned consent flows for this stage for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available|
+|»» previousDays|[[NaturalNumber]](#common-field-types)|conditional|Number of abandoned consent flows for this stage for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available|
 |» preAuthentication|object|mandatory|The number of authorisations where the customer identified themselves (ie. they successfully identify the customer profile to use for the authorisation) but failed to provide a valid OTP or equivalent|
 |»» currentDay|[NaturalNumber](#common-field-types)|conditional|Number of abandoned consent flows for this stage for the current day|
-|»» previousDays|[integer]|conditional|Number of abandoned consent flows for this stage for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available|
+|»» previousDays|[[NaturalNumber]](#common-field-types)|conditional|Number of abandoned consent flows for this stage for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available|
 |» preAccountSelection|object|mandatory|The number of authorisations where the customer successfully authenticated with a valid OTP or equivalent but abandoned the process before selecting accounts|
 |»» currentDay|[NaturalNumber](#common-field-types)|conditional|Number of abandoned consent flows for this stage for the current day|
-|»» previousDays|[integer]|conditional|Number of abandoned consent flows for this stage for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available|
+|»» previousDays|[[NaturalNumber]](#common-field-types)|conditional|Number of abandoned consent flows for this stage for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available|
 |» preAuthorisation|object|mandatory|The number of authorisations where the customer has passed the account selection step but abandoned the process before approving or rejecting the consent being requested|
 |»» currentDay|[NaturalNumber](#common-field-types)|conditional|Number of abandoned consent flows for this stage for the current day|
-|»» previousDays|[integer]|conditional|Number of abandoned consent flows for this stage for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available|
+|»» previousDays|[[NaturalNumber]](#common-field-types)|conditional|Number of abandoned consent flows for this stage for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available|
 |» rejected|object|mandatory|The number of authorisations where the customer actively rejected the authorisation rather than abandoning the process|
 |»» currentDay|[NaturalNumber](#common-field-types)|conditional|Number of abandoned consent flows for this stage for the current day|
-|»» previousDays|[integer]|conditional|Number of abandoned consent flows for this stage for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available|
+|»» previousDays|[[NaturalNumber]](#common-field-types)|conditional|Number of abandoned consent flows for this stage for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available|
 |» failedTokenExchange|object|mandatory|The number of authorisations that completed the interactive flow with the consumer authorising the consent, but the ADR failed to - or was unable to - obtain a refresh or access token using the authorisation code|
 |»» currentDay|[NaturalNumber](#common-field-types)|conditional|Number of abandoned consent flows for this stage for the current day|
-|»» previousDays|[integer]|conditional|Number of abandoned consent flows for this stage for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available|
+|»» previousDays|[[NaturalNumber]](#common-field-types)|conditional|Number of abandoned consent flows for this stage for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available|
 
-<h3 class="schema-toc" id="tocSlinks">Links</h3>
+<h3 class="schema-toc" id="cdr-admin-api_schemas_tocSlinks">Links</h3>
+<p id="tocSlinks" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-admin-apilinks"></a>
 
@@ -2024,13 +2035,14 @@ This operation may only be called by the CDR Register
 
 ```
 
-### Properties
+<h3 id="cdr-admin-api_links_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
 |self|[URIString](#common-field-types)|mandatory|Fully qualified link to this API call|
 
-<h3 class="schema-toc" id="tocSmeta">Meta</h3>
+<h3 class="schema-toc" id="cdr-admin-api_schemas_tocSmeta">Meta</h3>
+<p id="tocSmeta" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-admin-apimeta"></a>
 
@@ -2039,11 +2051,12 @@ This operation may only be called by the CDR Register
 
 ```
 
-### Properties
+<h3 id="cdr-admin-api_meta_properties">Properties</h3>
 
 *None*
 
-<h3 class="schema-toc" id="tocSmetaerror">MetaError</h3>
+<h3 class="schema-toc" id="cdr-admin-api_schemas_tocSmetaerror">MetaError</h3>
+<p id="tocSmetaerror" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-admin-apimetaerror"></a>
 
@@ -2056,13 +2069,14 @@ This operation may only be called by the CDR Register
 
 *Additional data for customised error codes*
 
-### Properties
+<h3 id="cdr-admin-api_metaerror_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
 |urn|string|conditional|The CDR error code URN which the application-specific error code extends. Mandatory if the error `code` is an application-specific error rather than a standardised error code.|
 
-<h3 class="schema-toc" id="tocSresponseerrorlistv2">ResponseErrorListV2</h3>
+<h3 class="schema-toc" id="cdr-admin-api_schemas_tocSresponseerrorlistv2">ResponseErrorListV2</h3>
+<p id="tocSresponseerrorlistv2" class="orig-anchor"></p>
 
 <a class="schema-anchor" id="schemacdr-admin-apiresponseerrorlistv2"></a>
 
@@ -2082,7 +2096,7 @@ This operation may only be called by the CDR Register
 
 ```
 
-### Properties
+<h3 id="cdr-admin-api_responseerrorlistv2_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|

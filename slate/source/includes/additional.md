@@ -1,8 +1,11 @@
 # Additional Standards
 
 ```diff
-Added Candidate Standards for Banking Decision Proposal 306
-Updated the Draft Standards for the Banking and Non-Bank Lending sector (related to Decision Proposal 318)
+The Draft Non-Bank Lending Standards have been made as Candidate Standards -
++ Candidate Standards for the Banking and Non-Bank Lending sector
+- Draft Standards for the Banking and Non-Bank Lending sector
+
+Added a red ribbon below the CDS logo on different Standards versions to visually distinguish them from the binding version
 ```
 
 The Consumer Data Standards also incorporate other non-binding standards that are developed to facilitate consultation and feedback or to facilitate voluntary extension of CDR implementations.
@@ -19,12 +22,11 @@ The Consumer Data Standards currently include the following Candidate Standards:
 
 - [Candidate Standards for the Telecommunications sector](./includes/additional/candidates/telco.html)
 - [Candidate Standards for Banking Decision Proposal 306](./includes/additional/candidates/dp306/banking-dp306.html)
+- [Candidate Standards for the Banking and Non-Bank Lending sector](./includes/additional/candidates/non-bank-lending/banking-non-bank-lending.html)
 
 ## Draft Standards
 
-The Consumer Data Standards currently include the following Draft Standards:
-
-- [Draft Standards for the Banking and Non-Bank Lending sector](./includes/additional/drafts/non-bank-lending/banking-non-bank-lending.html)
+The Consumer Data Standards do not currently include any Draft Standards.
 
 ## Experimental Standards
 

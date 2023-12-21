@@ -1,11 +1,16 @@
 # Change Log
 
-
+```diff
+Corrected minor typo
+- Detail Of change
++ Detail of change
+```
 
 The following table lists the changes made to these standards in reverse date order (most recent change is at the top).
 
-|Change Date|Version|Description|Detail Of change|
+|Change Date|Version|Description|Detail of change|
 |-----------|-------|-----------|----------------|
+|21/12/2023 | 1.29.0 | Changes from maintenance iteration 17.  Also includes CX Standards changes to uplift Data Holder Dashboards and accommodate Business Consumers | See [release notes](includes/releasenotes/releasenotes.1.29.0.html), [Decision 318](https://github.com/ConsumerDataStandardsAustralia/standards/issues/318), [Decision 328](https://github.com/ConsumerDataStandardsAustralia/standards/issues/328), [Decision 333](https://github.com/ConsumerDataStandardsAustralia/standards/issues/333) and [Decision 334](https://github.com/ConsumerDataStandardsAustralia/standards/issues/334) for details. |
 |10/11/2023| 1.28.0 | Candidate standards arising from Decision 306 and updated draft non-bank lending standards | See [release notes](includes/releasenotes/releasenotes.1.28.0.html) and [Decision 306](https://github.com/ConsumerDataStandardsAustralia/standards/issues/306) for details. |
 |10/10/2023| 1.27.0 | Changes arising from Decision 313 (Maintenance Iteration 16) | See [release notes](includes/releasenotes/releasenotes.1.27.0.html) and [Decision 313](https://github.com/ConsumerDataStandardsAustralia/standards/issues/313) for details. |
 |24/08/2023| 1.26.0 | Changes to obligations for the implementation of Get Metrics | See [release notes](includes/releasenotes/releasenotes.1.26.0.html) and [Decision 322](https://github.com/ConsumerDataStandardsAustralia/standards/issues/322) for details. |

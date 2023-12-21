@@ -8,11 +8,19 @@ This text is an example of text removed from the standards:
 Note: changes to request and response payloads are listed at the beginning of the relevant API section due to the documentation being auto generated from OpenAPI specification files.
 ```
 
+```diff
+Updated anchor links throughout the Standards to remove duplicates, and updated menu navigation code to prevent the page from jumping to the previous section when opening in a new window.
+```
+
 These standards have been developed as part of the Australian Government's introduction of the [Consumer Data Right](https://www.accc.gov.au/focus-areas/consumer-data-right "ACCC Consumer Data Right webpage") legislation to give Australians greater control over their data.
 
 The Consumer Data Right (CDR) is intended to be applied sector by sector across the whole economy, beginning in the banking, energy and telecommunications sectors.  These standards have been developed to facilitate the Consumer Data Right by acting as a specific baseline for implementation.
 
-These standards are maintained by the [Data Standards Body](https://www.directory.gov.au/portfolios/treasury/data-standards-body) (DSB) within [**Treasury**](#iref-Treasury), with the Data Standards Chair as the independent decision maker. The work of standards development is conducted in consultation with the [Australian Competition and Consumer Commission](https://www.accc.gov.au/focus-areas/consumer-data-right-cdr-0) ([**ACCC**](#iref-ACCC)) and [Office of the Australian Information Commissioner](https://www.oaic.gov.au/consumer-data-right/about-the-consumer-data-right/)) ([**OAIC**](#iref-OAIC)) as co-regulators of the Consumer Data Right ([**CDR**](#iref-CDR)).
+```diff
+Updated the reference to information on the DSB
+```
+
+These standards are maintained by the [Data Standards Body](https://www.legislation.gov.au/Details/F2021N00038) (DSB) within [**Treasury**](#iref-Treasury), with the Data Standards Chair as the independent decision maker. The work of standards development is conducted in consultation with the [Australian Competition and Consumer Commission](https://www.accc.gov.au/focus-areas/consumer-data-right-cdr-0) ([**ACCC**](#iref-ACCC)) and [Office of the Australian Information Commissioner](https://www.oaic.gov.au/consumer-data-right/about-the-consumer-data-right/)) ([**OAIC**](#iref-OAIC)) as co-regulators of the Consumer Data Right ([**CDR**](#iref-CDR)).
 
 The standards are required to be published. The obligations on CDR participants to apply the published standards commence on the commencement of the Consumer Data Right rules:
 
@@ -24,7 +32,7 @@ Some of these standards will be binding data standards under the Competition and
 
 ## Version
 
-These standards represent version 1.28.0 of the high level standards.  See the [versioning section](#versioning) for more information on how versions are managed in the standard.
+These standards represent version 1.29.0 of the high level standards.  See the [versioning section](#versioning) for more information on how versions are managed in the standard.
 
 ## Interpretation
 
