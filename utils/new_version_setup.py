@@ -9,8 +9,8 @@ diff_regex = re.compile(r'```diff(.*?)```', re.DOTALL) #regex for diff blocks
 new_version = "-1.-1.-1"
 current_version = "-2.-2.-2"
 exclude_list = ["_intro.md"] # Define the exclude_list for diff block removal
-changelog_table_header = "|Change Date|Version|Description|Detail Of change|"
-archives_table_header = "|Releases Date|Version|Description|"
+changelog_table_header = "|Change Date|Version|Description|Detail of change|"
+archives_table_header = "|Release Date|Version|Description|"
 SWAGGERGENAPIPATH = '../swagger-gen/api'
 INTROMDPATH = '../slate/source/includes/introduction/_intro.md'
 CHANGEPATH  = '../slate/source/includes/changelog.md'
@@ -35,7 +35,7 @@ def set_new_minor_version(content):
         new_minor = minor + 1
 
         # Construct the new version string
-        new_version = f"{major}.{new_minor}.{patch}"
+        new_version = f"{major}.{new_minor}.{0}"
 
         print(f"New Version: {new_version}")
         return new_version
@@ -93,7 +93,10 @@ def get_first_entry(file_path, table_header):
     # Extract the line immediately after the header (if it exists)
     if start_index != -1 and start_index + 1 < len(line):
         first_entry = line[start_index + 2]
-    return(first_entry)
+        return(first_entry)
+    else:
+        print("No first entry found in the changelog.")
+        return
 
 # Function to update the version number in a file
 def update_version_in_file(file_name):
@@ -207,7 +210,6 @@ def search_and_remove_diff_blocks(directory='.'):
                 remove_diff_blocks(file_path)
 
 
-
 def main():
 #   Get new version from user
     global new_version, current_version
@@ -255,8 +257,12 @@ def main():
     create_releasenotes()
     add_archives_entry()
     add_changelog_entry()
-#   Specify the directory where you want to start the search (default is the current directory)
-    search_and_remove_diff_blocks("../")
+    if "-ndiff" in sys.argv:
+        print("'-ndiff' argument provided. diff blocks will not be removed")
+    else:
+        print("removing diff blocks")
+    #   Specify the directory where you want to start the search (default is the current directory) as function argument 
+        search_and_remove_diff_blocks("../")
 
 if __name__ == "__main__":
     main()
