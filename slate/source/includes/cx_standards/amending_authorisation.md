@@ -1,4 +1,9 @@
 ## Amending Authorisation Standards
+
+```diff
+**v1.29.1 Change** Removed reference to Future Dated Obligations as the obligation dates for the associated requirements have passed
+```
+
 |Area|CX Standard|
 |-------------------|------------------------------|
 |**Authorisation:**<br/>Amending consent | The following standards apply when a Data Holder invites a CDR consumer to amend a current authorisation as per rule 4.22A and the ADR has supplied a *cdr_arrangement_id*:|
@@ -6,4 +11,3 @@
 |Account Selection|Where account selection applies, Data Holders **MUST** pre-select accounts that were associated with the previous authorisation provided these accounts remain eligible and available to share. Data Holders **MAY** allow these accounts to be amended, and **MAY** provide information regarding the pre-selection of accounts.|
 |Changing Attributes| Data Holders **MUST** indicate where a dataset is being added to an authorisation or a disclosure duration is being amended. Data Holders **MAY** apply this standard to other changing attributes, but this **MUST ONLY** apply where the attribute in the new authorisation differs to that of the previous authorisation. How a changed attributed is signified is at the Data Holder’s discretion.|
 
-<br>Refer also to [Future Dated obligations](#future-dated-obligations)<br>
