@@ -17,7 +17,7 @@ Release notes for version v1.29.1 of the [CDR Standards](../../index.html).
 
 This release addresses the following minor defects raised on [Standards Staging](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues):
 
-- [Staging Issue xxx - Description](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/xxx)
+- [Standards Staging Issue 368 - Fix Incorrect versions of Energy Billing APIs in v1.29.0](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/368)
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
@@ -77,4 +77,6 @@ This release addresses the following Decision Proposals published on [Standards]
 
 ## Known Issues
 
-TBC
+|Change|Description|Link|
+|------|-----------|----|
+| Fixed Energy API Versions | **[Standards Staging #368](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/368):** Resolved the known issue of incorrect version of `Get Bulk Billing` and `Get Billing For Specific Accounts` APIs changing them from 2 to 3 | [Energy APIs](../../#energy-apis) |
