@@ -65,6 +65,7 @@ This release addresses the following Decision Proposals published on [Standards]
 
 |Change|Description|Link|
 |------|-----------|----|
+|Removed reference to FDOs|**[Maintenance Issue 612 - Maintenance Iteration 17 Holistic Feedback](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/612#issuecomment-1730719461):** Removed reference to Future Dated Obligations as the obligation dates for the associated requirements have passed|[Amending Authorisation Standards](../../#amending-authorisation-standards)|
 
 ## Non-Functional Requirements
 
