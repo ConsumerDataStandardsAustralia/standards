@@ -5,6 +5,7 @@
 The Consumer Experience (CX) Standards contain requirements for the creation of implementations by both Data Recipients and Data Holders. The full list of CX Standards can be found below.
 
 ```diff
+**v1.29.0 Change**
 Updated the CX Guidelines link to the new site
 ```
 

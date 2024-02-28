@@ -2032,7 +2032,7 @@ This operation does not require authentication
 <td>kid</td>
 <td><a href="#common-field-types">ExternalRef</a></td>
 <td>mandatory</td>
-<td>The &quot;kid&quot; (key ID) parameter is partially used to match a specific key. Note the &quot;kid&quot; parameter is not guaranteed unique and additional parameters should be used to progressively to identify a key within a set</td>
+<td>The &quot;kid&quot; (key ID) parameter is partially used to match a specific key. Note the &quot;kid&quot; parameter is not guaranteed to be unique and additional parameters should be used to progressively identify a key within a set</td>
 </tr>
 <tr>
 <td>kty</td>

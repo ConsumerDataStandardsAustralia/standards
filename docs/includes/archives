@@ -1,4 +1,5 @@
-<h1 id='archives'>Archives</h1><pre class="highlight diff tab-diff"><code>Corrected minor typo
+<h1 id='archives'>Archives</h1><pre class="highlight diff tab-diff"><code>**v1.29.0 Change**
+Corrected minor typo
 <span class="gd">- Releases Date
 </span><span class="gi">+ Release Date
 </span></code></pre>
@@ -11,6 +12,11 @@
 <th>Description</th>
 </tr>
 </thead><tbody>
+<tr>
+<td><a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.29.0/'>21/12/2023</a></td>
+<td>1.29.0</td>
+<td><a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.29.0/'>Changes from maintenance iteration 17.  Also includes CX Standards changes to uplift Data Holder Dashboards and accommodate Business Consumers</a></td>
+</tr>
 <tr>
 <td><a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.28.0/'>10/11/2023</a></td>
 <td>1.28.0</td>

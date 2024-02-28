@@ -1153,7 +1153,7 @@ This operation does not require authentication
 |alg|[ExternalRef](#common-field-types)|mandatory|The "alg" (algorithm) parameter identifies the algorithm intended for use with the key|
 |e|[ExternalRef](#common-field-types)|mandatory|The "e" RSA public exponent parameter|
 |key_ops|[[ExternalRef]](#common-field-types)|mandatory|The "key_ops" (key operations) parameter identifies the operation(s) for which the key is intended to be used|
-|kid|[ExternalRef](#common-field-types)|mandatory|The "kid" (key ID) parameter is partially used to match a specific key. Note the "kid" parameter is not guaranteed unique and additional parameters should be used to progressively to identify a key within a set|
+|kid|[ExternalRef](#common-field-types)|mandatory|The "kid" (key ID) parameter is partially used to match a specific key. Note the "kid" parameter is not guaranteed to be unique and additional parameters should be used to progressively identify a key within a set|
 |kty|[ExternalRef](#common-field-types)|mandatory|The "kty" (key type) parameter identifies the cryptographic algorithm family used with the key|
 |n|[ExternalRef](#common-field-types)|mandatory|The "n" RSA public modulus parameter|
 

@@ -4268,7 +4268,7 @@ Deprecated Versions:
 <h3 id="cdr-energy-api_get-bulk-billing_endpoint-version">Endpoint Version</h3>
 |   |  |
 |---|--|
-|Version|**2**
+|Version|**3**
 
 <h3 id="cdr-energy-api_get-bulk-billing_parameters">Parameters</h3>
 
@@ -4503,7 +4503,7 @@ Deprecated Versions:
 <h3 id="cdr-energy-api_get-billing-for-specific-accounts_endpoint-version">Endpoint Version</h3>
 |   |  |
 |---|--|
-|Version|**2**
+|Version|**3**
 
 <h3 id="cdr-energy-api_get-billing-for-specific-accounts_parameters">Parameters</h3>
 

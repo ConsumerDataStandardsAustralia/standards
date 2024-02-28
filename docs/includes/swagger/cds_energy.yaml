@@ -2,7 +2,7 @@ openapi: 3.0.3
 info:
   description: Consumer Data Right end points and payloads for the Energy sector
   title: CDR Energy API
-  version: 1.29.0
+  version: 1.29.1
 servers:
 - url: /
 paths:
@@ -4273,7 +4273,7 @@ paths:
       - Billing
       x-scopes:
       - energy:billing:read
-      x-version: "2"
+      x-version: "3"
     post:
       description: "Obtain billing for a specified set of accounts\n\nDeprecated Versions:\
         \ \n\n- [v1](includes/obsolete/get-billing-for-specific-accounts-v1.html)\
@@ -4494,7 +4494,7 @@ paths:
       - Billing
       x-scopes:
       - energy:billing:read
-      x-version: "2"
+      x-version: "3"
 components:
   parameters:
     servicePointId:

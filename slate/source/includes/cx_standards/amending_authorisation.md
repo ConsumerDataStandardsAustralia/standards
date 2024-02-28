@@ -1,7 +1,8 @@
 ## Amending Authorisation Standards
 
 ```diff
-**v1.29.1 Change** Removed reference to Future Dated Obligations as the obligation dates for the associated requirements have passed
+**v1.29.1 Change**
+Removed reference to Future Dated Obligations as the obligation dates for the associated requirements have passed
 ```
 
 |Area|CX Standard|

@@ -25,35 +25,27 @@ This release addresses the following change requests raised on [Standards Mainte
 
 ### Decision Proposals
 
-This release addresses the following Decision Proposals published on [Standards](https://github.com/ConsumerDataStandardsAustralia/standards/issues):
-
-- [Decision Proposal xxx - Description](https://github.com/ConsumerDataStandardsAustralia/standards/issues/xxx)
+None
 
 ## General Changes
-|Change|Description|Link|
-|------|-----------|----|
 
+None
 
 ## Introduction
 
-|Change|Description|Link|
-|------|-----------|----|
-
+None
 
 ## High Level Standards
 
-|Change|Description|Link|
-|------|-----------|----|
+None
 
 ## API End Points
 
-|Change|Description|Link|
-|------|-----------|----|
+None
 
 ## Information Security Profile
 
-|Change|Description|Link|
-|------|-----------|----|
+None
 
 ## Register Standards
 
@@ -69,13 +61,11 @@ This release addresses the following Decision Proposals published on [Standards]
 
 ## Non-Functional Requirements
 
-|Change|Description|Link|
-|------|-----------|----|
+None
 
 ## Additional Standards
 
-|Change|Description|Link|
-|------|-----------|----|
+None
 
 ## Known Issues
 

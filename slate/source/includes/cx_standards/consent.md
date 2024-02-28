@@ -1,10 +1,9 @@
 <h2 class="schema-heading" id="consumer-experience_consent-standards">Consent Standards</h2>
 
 ```diff
+**v1.29.0 Change**
 Consent Standards subheadings included in menu navigation
-```
 
-```diff
 Added 'Business consumer statement' details
 ```
 
@@ -32,6 +31,7 @@ The standards in this section outline insight description requirements that appl
 <h3 class="schema-toc" data-cds-menu="h3" id="consumer-experience_consent-standards_disclosure-consent-non-accredited-person-disclosure-notification">Disclosure Consent: Non-Accredited Person Disclosure Notification</h3>
 
 ```diff
+**v1.29.0 Change**
 First sentence updated to include 'business consumer disclosure consents'
 - The standards in this section outline requirements that apply when a disclosure consent is being sought to disclose data to a non-accredited person, which includes insight disclosure consents and trusted adviser disclosure consents.
 + The standards in this section outline requirements that apply when a disclosure consent is being sought to disclose data to a non-accredited person, which includes insight disclosure consents, business consumer disclosure consents, and trusted adviser disclosure consents.
@@ -44,6 +44,7 @@ These standards will feature where such a disclosure consent is being sought and
 **Note:** The use of the term ‘data recipients’ to refer to accredited data recipients is consistent with the data standards nomenclature. Where these standards refer to ‘data recipient’, this should not be taken to mean a non-accredited person or trusted adviser.
 
 ```diff
+**v1.29.0 Change**
 Added to 'Disclosure consent: CDR protections' row
 + This information SHOULD be immediately viewable by the consumer without further interaction.
 ```

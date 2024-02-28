@@ -11,6 +11,7 @@ This specification defines the APIs for Data Holders exposing Dynamic Client Reg
 </table>
 
 ```diff
+**v1.29.0 Change**
 Changed authorization_signed_response_alg and authorization_encrypted_response_alg
 from optional to conditional to align to the field description
 ```
