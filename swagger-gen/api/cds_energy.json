@@ -6864,7 +6864,7 @@
                     "Energy",
 					"Billing"
 				],
-                "x-version": "2",
+                "x-version": "3",
 				"parameters": [{
 						"$ref": "#/components/parameters/newest-time"
 					},
@@ -6967,7 +6967,7 @@
                     "Energy",
 					"Billing"
 				],
-                "x-version": "2",
+                "x-version": "3",
 				"parameters": [{
 						"$ref": "#/components/parameters/newest-time"
 					},
