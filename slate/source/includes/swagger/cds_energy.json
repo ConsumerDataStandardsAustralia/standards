@@ -3,7 +3,7 @@
   "info" : {
     "description" : "Consumer Data Right end points and payloads for the Energy sector",
     "title" : "CDR Energy API",
-    "version" : "1.29.0"
+    "version" : "1.29.1"
   },
   "servers" : [ {
     "url" : "/"
@@ -4257,7 +4257,7 @@
         "summary" : "Get Bulk Billing",
         "tags" : [ "Energy", "Billing" ],
         "x-scopes" : [ "energy:billing:read" ],
-        "x-version" : "2"
+        "x-version" : "3"
       },
       "post" : {
         "description" : "Obtain billing for a specified set of accounts\n\nDeprecated Versions: \n\n- [v1](includes/obsolete/get-billing-for-specific-accounts-v1.html) - This version is to be ceased to be called by data recipients by September 9th 2024 and **MAY** be decommissioned by data holders as of that date \n- [v2](includes/obsolete/get-billing-for-specific-accounts-v2.html) - This version **MAY** be retired by September 9th 2024 if v3 is implemented.",
@@ -4474,7 +4474,7 @@
         "summary" : "Get Billing For Specific Accounts",
         "tags" : [ "Energy", "Billing" ],
         "x-scopes" : [ "energy:billing:read" ],
-        "x-version" : "2"
+        "x-version" : "3"
       }
     }
   },

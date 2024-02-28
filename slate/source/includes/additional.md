@@ -1,6 +1,7 @@
 # Additional Standards
 
 ```diff
+**v1.29.0 Change**
 The Draft Non-Bank Lending Standards have been made as Candidate Standards -
 + Candidate Standards for the Banking and Non-Bank Lending sector
 - Draft Standards for the Banking and Non-Bank Lending sector

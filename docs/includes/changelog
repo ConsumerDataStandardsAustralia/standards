@@ -1,4 +1,5 @@
-<h1 id='change-log'>Change Log</h1><pre class="highlight diff tab-diff"><code>Corrected minor typo
+<h1 id='change-log'>Change Log</h1><pre class="highlight diff tab-diff"><code>**v1.29.0 Change**
+Corrected minor typo
 <span class="gd">- Detail Of change
 </span><span class="gi">+ Detail of change
 </span></code></pre>
@@ -12,6 +13,12 @@
 <th>Detail of change</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>28/02/2024</td>
+<td>1.29.1</td>
+<td>Patch release fixing minor issues</td>
+<td>See <a href="includes/releasenotes/releasenotes.1.29.1.html">release notes</a> for details.</td>
+</tr>
 <tr>
 <td>21/12/2023</td>
 <td>1.29.0</td>

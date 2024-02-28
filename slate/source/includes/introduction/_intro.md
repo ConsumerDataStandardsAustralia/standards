@@ -6,10 +6,12 @@ This text is an example of a new addition to the standards:
 This text is an example of text removed from the standards:
 - Old text removed
 Note: changes to request and response payloads are listed at the beginning of the relevant API section due to the documentation being auto generated from OpenAPI specification files.
+
+Updated anchor links throughout the Standards to remove duplicates, and updated menu navigation code to prevent the page from jumping to the previous section when opening in a new window.
 ```
 
 ```diff
-Updated anchor links throughout the Standards to remove duplicates, and updated menu navigation code to prevent the page from jumping to the previous section when opening in a new window.
+Additional note for v1.29.1: In this version, due to the recency of publish, the delta statements from v1.29.0 have been retained. The affected delta statements will be noted as being associated with v1.29.0
 ```
 
 These standards have been developed as part of the Australian Government's introduction of the [Consumer Data Right](https://www.accc.gov.au/focus-areas/consumer-data-right "ACCC Consumer Data Right webpage") legislation to give Australians greater control over their data.
@@ -17,6 +19,7 @@ These standards have been developed as part of the Australian Government's intro
 The Consumer Data Right (CDR) is intended to be applied sector by sector across the whole economy, beginning in the banking, energy and telecommunications sectors.  These standards have been developed to facilitate the Consumer Data Right by acting as a specific baseline for implementation.
 
 ```diff
+**v1.29.0 Change**
 Updated the reference to information on the DSB
 ```
 
@@ -32,7 +35,7 @@ Some of these standards will be binding data standards under the Competition and
 
 ## Version
 
-These standards represent version 1.29.0 of the high level standards.  See the [versioning section](#versioning) for more information on how versions are managed in the standard.
+These standards represent version 1.29.1 of the high level standards.  See the [versioning section](#versioning) for more information on how versions are managed in the standard.
 
 ## Interpretation
 
