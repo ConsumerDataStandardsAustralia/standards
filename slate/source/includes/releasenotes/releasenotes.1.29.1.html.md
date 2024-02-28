@@ -21,7 +21,7 @@ This release addresses the following minor defects raised on [Standards Staging]
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
-- [Maintenance Issue xxx - Description](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/xxx)
+- [Maintenance Issue 612 - Maintenance Iteration 17 Holistic Feedback](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/612)
 
 ### Decision Proposals
 
@@ -59,6 +59,7 @@ This release addresses the following Decision Proposals published on [Standards]
 
 |Change|Description|Link|
 |------|-----------|----|
+|Corrected typos|**[Maintenance Issue 612 - Maintenance Iteration 17 Holistic Feedback](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/612#issuecomment-1720719607):** Corrected typos in the description of the `kid` field in the 'JWK' schema of the 'Get JWKS' endpoint|[JWK schema](../../#cdr-participant-discovery-api_schemas_tocSjwk)|
 
 ## Consumer Experience
 
