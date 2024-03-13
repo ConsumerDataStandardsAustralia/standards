@@ -1,13 +1,6 @@
 # Additional Standards
 
-```diff
-**v1.29.0 Change**
-The Draft Non-Bank Lending Standards have been made as Candidate Standards -
-+ Candidate Standards for the Banking and Non-Bank Lending sector
-- Draft Standards for the Banking and Non-Bank Lending sector
 
-Added a red ribbon below the CDS logo on different Standards versions to visually distinguish them from the binding version
-```
 
 The Consumer Data Standards also incorporate other non-binding standards that are developed to facilitate consultation and feedback or to facilitate voluntary extension of CDR implementations.
 

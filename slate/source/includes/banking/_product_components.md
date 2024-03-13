@@ -210,10 +210,7 @@ PENALTY | A specific penalty rate that may be applied. A penalty rate increases 
 
 Description of the usage of the `maturityInstructions` field as it applies to accounts.
 
-```diff
-**v1.29.0 Change**
-Added additional entries for PAID_OUT_AT_MATURITY and ROLLED_OVER
-```
+
 
 |Value|Description|Use of additionalValue Field|
 |-----|-----------|----------------------------|

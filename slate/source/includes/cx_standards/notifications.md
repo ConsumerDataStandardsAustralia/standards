@@ -1,9 +1,6 @@
 <h2 class="schema-heading" id="consumer-experience_notification-standards">Notification Standards</h2>
 
-```diff
-**v1.29.0 Change**
-Notification Standards subheadings included in menu navigation
-```
+
 
 The standards in this section apply where a relevant joint account holder is about to take an action that may or, where a data holder leverages rule 4A.15 and allows a vulnerable joint account holder to share joint account data as if it were from an individual account, may not result in the other joint account holder(s) being notified.
 

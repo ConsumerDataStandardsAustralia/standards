@@ -1,9 +1,6 @@
 <h2 class="schema-heading" id="consumer-experience_dashboard-standards">Dashboard Standards</h2>
 
-```diff
-**v1.29.0 Change**
-Added Dashboard Standards section
-```
+
 
 This section outlines standards for consumer dashboards. These are expected to be implemented on each specific data sharing arrangement.
 

@@ -35,7 +35,7 @@ Some of these standards will be binding data standards under the Competition and
 
 ## Version
 
-These standards represent version 1.29.1 of the high level standards.  See the [versioning section](#versioning) for more information on how versions are managed in the standard.
+These standards represent version 1.30.0 of the high level standards.  See the [versioning section](#versioning) for more information on how versions are managed in the standard.
 
 ## Interpretation
 

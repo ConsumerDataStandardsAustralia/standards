@@ -1,14 +1,6 @@
 ## Future Dated Obligations
 
-```diff
-**v1.29.0 Change**
-Added a reference to the Obligation Date Schedule
 
-Added Data Holder Dashboards Future Dated Obligation
-
-Added entries for the changes to Get Billing For Account, Get Bulk Billing
-and Get Billing For Specific Accounts
-```
 
 The standards, as published from time to time, may include specific statements indicating that a specific section of the standards will not take effect until a future date or may cease to have effect on some future date. 
 
