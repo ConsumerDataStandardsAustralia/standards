@@ -16,65 +16,65 @@ Release notes for version v{version_number} of the [CDR Standards](../../index.h
 ### Change Requests
 
 This release addresses the following minor defects raised on [Standards Staging](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues):
-
-- [Staging Issue xxx - Description](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/xxx)
+- [Standards Staging XXX - Description](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/XXX)
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
+- [Standards Maintenance XXX - Description](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/XXX)
 
-- [Maintenance Issue xxx - Description](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/xxx)
 
 ### Decision Proposals
-
 This release addresses the following Decision Proposals published on [Standards](https://github.com/ConsumerDataStandardsAustralia/standards/issues):
+- [Decision Proposal XXX - Description](https://github.com/ConsumerDataStandardsAustralia/standards/issues/XXX)
 
-- [Decision Proposal xxx - Description](https://github.com/ConsumerDataStandardsAustralia/standards/issues/xxx)
 
 ## General Changes
 |Change|Description|Link|
 |------|-----------|----|
+| Change summary | [**Standards Staging XXX**](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/XXX): Description | [Standards section](#section)
+| Change summary | [**Standards Maintenance XXX**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/XXX): Description | [Standards section](#section)
+| Change summary | [**Standards XXX**](https://github.com/ConsumerDataStandardsAustralia/standards/issues/XXX): Description | [Standards section](#section)
 
 
 ## Introduction
-
 |Change|Description|Link|
 |------|-----------|----|
 
 
 ## High Level Standards
-
 |Change|Description|Link|
 |------|-----------|----|
 
-## API End Points
 
+## API Endpoints
 |Change|Description|Link|
 |------|-----------|----|
+
 
 ## Information Security Profile
-
 |Change|Description|Link|
 |------|-----------|----|
+
 
 ## Register Standards
-
 |Change|Description|Link|
 |------|-----------|----|
+
 
 ## Consumer Experience
-
 |Change|Description|Link|
 |------|-----------|----|
+
 
 ## Non-Functional Requirements
-
 |Change|Description|Link|
 |------|-----------|----|
+
 
 ## Additional Standards
-
 |Change|Description|Link|
 |------|-----------|----|
 
-## Known Issues
 
-TBC
+## Known Issues
+|Change|Description|Link|
+|------|-----------|----|

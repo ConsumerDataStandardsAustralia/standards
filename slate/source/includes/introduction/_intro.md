@@ -1,27 +1,7 @@
 
-```diff
-The Version Delta tab can be used to see in context changes between this version of the standards and the immediately previous version of the standards.
-This text is an example of a new addition to the standards:
-+ New text added here
-This text is an example of text removed from the standards:
-- Old text removed
-Note: changes to request and response payloads are listed at the beginning of the relevant API section due to the documentation being auto generated from OpenAPI specification files.
-
-Updated anchor links throughout the Standards to remove duplicates, and updated menu navigation code to prevent the page from jumping to the previous section when opening in a new window.
-```
-
-```diff
-Additional note for v1.29.1: In this version, due to the recency of publish, the delta statements from v1.29.0 have been retained. The affected delta statements will be noted as being associated with v1.29.0
-```
-
 These standards have been developed as part of the Australian Government's introduction of the [Consumer Data Right](https://www.accc.gov.au/focus-areas/consumer-data-right "ACCC Consumer Data Right webpage") legislation to give Australians greater control over their data.
 
 The Consumer Data Right (CDR) is intended to be applied sector by sector across the whole economy, beginning in the banking, energy and telecommunications sectors.  These standards have been developed to facilitate the Consumer Data Right by acting as a specific baseline for implementation.
-
-```diff
-**v1.29.0 Change**
-Updated the reference to information on the DSB
-```
 
 These standards are maintained by the [Data Standards Body](https://www.legislation.gov.au/Details/F2021N00038) (DSB) within [**Treasury**](#iref-Treasury), with the Data Standards Chair as the independent decision maker. The work of standards development is conducted in consultation with the [Australian Competition and Consumer Commission](https://www.accc.gov.au/focus-areas/consumer-data-right-cdr-0) ([**ACCC**](#iref-ACCC)) and [Office of the Australian Information Commissioner](https://www.oaic.gov.au/consumer-data-right/about-the-consumer-data-right/)) ([**OAIC**](#iref-OAIC)) as co-regulators of the Consumer Data Right ([**CDR**](#iref-CDR)).
 
@@ -40,3 +20,4 @@ These standards represent version 1.30.0 of the high level standards.  See the [
 ## Interpretation
 
 Note that, in these standards, the key words **MUST**, **MUST NOT**, **REQUIRED**, **SHALL**, **SHALL NOT**, **SHOULD**, **SHOULD NOT**, **RECOMMENDED**, **MAY**, and **OPTIONAL** are to be interpreted as described in **[[RFC2119]](#nref-RFC2119)**.
+
