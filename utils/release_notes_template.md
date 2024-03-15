@@ -16,23 +16,26 @@ Release notes for version v{version_number} of the [CDR Standards](../../index.h
 ### Change Requests
 
 This release addresses the following minor defects raised on [Standards Staging](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues):
-- [Standards Staging XXX - Description](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/XXX)
+
+- [Standards Staging #XXX - Title](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/XXX)
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
-- [Standards Maintenance XXX - Description](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/XXX)
+
+- [Standards Maintenance #XXX - Title](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/XXX)
 
 
 ### Decision Proposals
 This release addresses the following Decision Proposals published on [Standards](https://github.com/ConsumerDataStandardsAustralia/standards/issues):
-- [Decision Proposal XXX - Description](https://github.com/ConsumerDataStandardsAustralia/standards/issues/XXX)
+
+- [Decision Proposal #XXX - Title](https://github.com/ConsumerDataStandardsAustralia/standards/issues/XXX)
 
 
 ## General Changes
 |Change|Description|Link|
 |------|-----------|----|
-| Change summary | [**Standards Staging XXX**](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/XXX): Description | [Standards section](#section)
-| Change summary | [**Standards Maintenance XXX**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/XXX): Description | [Standards section](#section)
-| Change summary | [**Standards XXX**](https://github.com/ConsumerDataStandardsAustralia/standards/issues/XXX): Description | [Standards section](#section)
+| Change summary | [**Standards Staging #XXX**](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/XXX): Change detail | [Standards section](../../#section)
+| Change summary | [**Standards Maintenance #XXX**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/XXX): Change detail | [Standards section](../../#section)
+| Change summary | [**Decision Proposal #XXX**](https://github.com/ConsumerDataStandardsAustralia/standards/issues/XXX): Change detail | [Standards section](../../#section)
 
 
 ## Introduction
