@@ -17,7 +17,7 @@ Release notes for version v1.30.0 of the [CDR Standards](../../index.html).
 
 This release addresses the following minor defects raised on [Standards Staging](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues):
 
-- [Standards Staging #XXX - Title](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/XXX)
+- [Standards Staging #362 - Update PPID link](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/362)
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
@@ -56,6 +56,7 @@ This release addresses the following Decision Proposals published on [Standards]
 ## Information Security Profile
 |Change|Description|Link|
 |------|-----------|----|
+| Updated link | [**Standards Staging #362**](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/362): Updated 'Pairwise Pseudonymous Identifier (PPID)' link | [Scopes and Claims](../../#scopes-and-claims)
 
 
 ## Register Standards
