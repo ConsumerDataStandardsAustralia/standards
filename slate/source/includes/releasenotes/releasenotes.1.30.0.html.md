@@ -17,7 +17,7 @@ Release notes for version v1.30.0 of the [CDR Standards](../../index.html).
 
 This release addresses the following minor defects raised on [Standards Staging](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues):
 
-- [Standards Staging #XXX - Title](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/XXX)
+- [Standards Staging #370 - Add 'Consumer Experience Principles' to the Introduction text in the Principles section of the CDS and add CX acronym](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/370)
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
@@ -46,6 +46,7 @@ This release addresses the following Decision Proposals published on [Standards]
 ## High Level Standards
 |Change|Description|Link|
 |------|-----------|----|
+| Updated Principles | [**Standards Staging #370**](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/370): Added reference to 'Consumer Experience (CX) Principles' in the introductory sentence and reformatted CX Principle 4 and 5. | [Principles](../../#principles)
 
 
 ## API Endpoints
