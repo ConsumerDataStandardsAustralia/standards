@@ -109,7 +109,9 @@ The identifier **MUST** be unique per customer according to the definition of cu
 
 The Data Holder **MUST** provide the CDR Arrangement ID as the claim ``cdr_arrangement_id`` in the Token End Point response and Token Introspection End Point response.
 
-A Data Holder **MUST** only return the ``cdr_arrangement_id`` in the Token and Token Introspection End Point responses if they also support concurrent consent. This ensures that Data Recipient Software Products have a reliable way to determine whether a given Data Holder supports concurrent consent.
+```diff
+Removed two outdated statements relating to the introduction of concurrent consent and retrospectively generating a cdr_arrangement_id.
+```
 
 Statements related to the CDR Arrangement ID:
 
@@ -119,7 +121,5 @@ Statements related to the CDR Arrangement ID:
 * A CDR Arrangement ID **MUST** be static across consents within the one sharing arrangement (e.g. across consent renewal and re-authorisation)
 
 #### Obtaining a CDR Arrangement ID
-
-For any existing consents, Data Holders **MUST** retrospectively generate a ``cdr_arrangement_id`` such that Data Recipient Software Products can obtain a valid ``cdr_arrangement_id`` for all active consents they hold.
 
 A Data Recipient Software Product can call either the Token or Token Introspection End Points at any point post-consent to obtain the CDR Arrangement ID in the response JSON as the claim ``cdr_arrangement_id``.

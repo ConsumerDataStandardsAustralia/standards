@@ -21,7 +21,7 @@ This release addresses the following minor defects raised on [Standards Staging]
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
-- [Standards Maintenance #XXX - Title](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/XXX)
+- [Standards Maintenance #632 - Concurrent consent support and cdr_arrangement_id](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/632)
 
 
 ### Decision Proposals
@@ -56,6 +56,7 @@ This release addresses the following Decision Proposals published on [Standards]
 ## Information Security Profile
 |Change|Description|Link|
 |------|-----------|----|
+| Removed outdated statements | [**Standards Maintenance #632**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/632): Removed two outdated statements relating to the introduction of concurrent consent and retrospectively generating a cdr_arrangement_id. | [Identifiers and Subject Types](../../#identifiers-and-subject-types)
 
 
 ## Register Standards
