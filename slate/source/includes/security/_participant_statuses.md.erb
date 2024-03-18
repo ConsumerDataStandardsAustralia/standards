@@ -2,17 +2,20 @@
 
 ### Data Recipient and Software Product Statuses
 
+```diff
+Changed 'Software Package' to 'Software Product' in two lines
+```
 
 The accreditation status of Data Recipients, and the status of their associated Software Products, **MAY** traverse through multiple statuses in the CDR.
 
 The status of participants is maintained in the CDR Register by the CDR Registrar according to determination of the CDR Accreditor or the participant themselves.
 
-CDR data **MAY** only be disclosed to active Data Recipients.  Data Holders **MUST** cease disclosing CDR data where the accreditation of a Data Recipient or Software Package is:
+CDR data **MAY** only be disclosed to active Data Recipients.  Data Holders **MUST** cease disclosing CDR data where the accreditation of a Data Recipient or Software Product is:
 
 1.	Suspended or revoked by the CDR Registrar.
 2.	Surrendered by the Data Recipient.
 
-The CDR Register **MUST** notify all Data Holders of the above changes in Data Recipient and Software Package status via the [Register APIs](#register-apis).
+The CDR Register **MUST** notify all Data Holders of the above changes in Data Recipient and Software Product status via the [Register APIs](#register-apis).
 
 The CDR Register **MUST** expose the statuses of data recipients and their associated software products via the [Register APIs](#register-apis), using the following state models:
 
