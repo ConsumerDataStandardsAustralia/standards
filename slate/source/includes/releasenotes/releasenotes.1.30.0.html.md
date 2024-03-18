@@ -21,7 +21,7 @@ This release addresses the following minor defects raised on [Standards Staging]
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
-- [Standards Maintenance #XXX - Title](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/XXX)
+- [Standards Maintenance #629 - Maintenance Iteration 18 Holistic Feedback](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/629)
 
 
 ### Decision Proposals
@@ -56,6 +56,7 @@ This release addresses the following Decision Proposals published on [Standards]
 ## Information Security Profile
 |Change|Description|Link|
 |------|-----------|----|
+| Corrected typo | [**Standards Maintenance #629**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/629#issuecomment-1920466440): Corrected typo in `cdr_arragement_id` | [Security Endpoints](../../#security-endpoints)
 
 
 ## Register Standards

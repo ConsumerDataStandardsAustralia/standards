@@ -112,6 +112,10 @@ Authorization: Bearer eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNDU2In0.ey
 
 The location of the Data Recipient Software Product CDR Arrangement Revocation End Point is determined by the `RecipientBaseURI` provided by the Data Recipient Software Product in the client Software Statement Assertion (SSA).
 
+```diff
+Corrected typo in `cdr_arragement_id`
+```
+
 This end point will be implemented according to the following:
 
 * Data Recipient Software Products **MUST** expose their CDR Arrangement Revocation End Point under their `recipient_base_uri` published in their Software Statement Assertion.
@@ -120,7 +124,7 @@ This end point will be implemented according to the following:
 * **From March 31st 2022**, Data Recipients **MUST** support the "CDR Arrangement JWT" method.
 * **From July 31st 2022**, Data Holders **MUST** send the `cdr_arrangement_id` using the "CDR Arrangement JWT" method.
 * Data Holders **MAY** additionally send a duplicate of the `cdr_arrangement_id` as a form parameter.
-* Data Recipient Software Products **MUST NOT** reject requests including the `cdr_arragement_id` as a form parameter. 
+* Data Recipient Software Products **MUST NOT** reject requests including the `cdr_arrangement_id` as a form parameter. 
 * If the `cdr_arrangement_id` is presented as a form parameter, Data Recipient Software Products **SHOULD** validate it is identical to the `cdr_arrangement_id` presented in the "CDR Arrangement JWT".
 * **From November 15th 2022**, if the `cdr_arrangement_id` is presented as a form parameter, Data Recipient Software Products **MUST** validate it is identical to the `cdr_arrangement_id` presented in the "CDR Arrangement JWT".
 * **From November 15th 2022**, if the Self-Signed JWT claims are presented in the "CDR Arrangement JWT", Data Recipient Software Products **MUST** validate in accordance with Data Holders calling Data Recipients using [Self-Signed JWT Client Authentication](#self-signed-jwt-client-authentication).
