@@ -77,6 +77,7 @@ This release addresses the following Decision Proposals published on [Standards]
 ## Additional Standards
 |Change|Description|Link|
 |------|-----------|----|
+| Clarified endpoint response | [**Standards Maintenance #629**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/629#issuecomment-1930936447): Removed ResponseErrorListV2 as the 401 error response schema for 'Get Data Holder Brands'. This endpoint conform to RFC6750, returning an oAuth error in the WWW-Authenticate response header. | [Register APIs in the Non-Bank Lending Candidate Standards](../../#candidate-standards)
 
 
 ## Known Issues
