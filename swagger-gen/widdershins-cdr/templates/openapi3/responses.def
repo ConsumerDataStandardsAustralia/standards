@@ -75,9 +75,9 @@ Status Code **{{=response.status}}**
 
 <h3 id="{{= data.cds_uniqueAnchorPrefix }}_response-headers">Response Headers</h3>
 
-|Status|Header|Type|Format|Description|
+|Status|Header|Type|Description|
 |---|---|---|---|---|
-{{~ data.responseHeaders :h}}|{{=h.status}}|{{=h.header}}|{{? h.schema['x-cds-type']}}{{='[' + h.schema['x-cds-type'] + '](#common-field-types)'}}{{??}}{{=h.type}}{{?}}|{{=h.format||''}}|{{=h.description||'none'}}|
+{{~ data.responseHeaders :h}}|{{=h.status}}|{{=h.header}}|{{? h.schema['x-cds-type']}}{{='[' + h.schema['x-cds-type'] + '](#common-field-types)'}}{{??}}{{=h.type}}{{?}}|{{=h.description||'none'}}|
 {{~}}
 
 {{?}}
