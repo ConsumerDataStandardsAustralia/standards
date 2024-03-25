@@ -17,7 +17,7 @@ Release notes for version v1.30.0 of the [CDR Standards](../../index.html).
 
 This release addresses the following minor defects raised on [Standards Staging](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues):
 
-- [Standards Staging #XXX - Title](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/XXX)
+- [Standards Staging #376 - Custom field types for Response Headers are not displayed](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/376)
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
@@ -33,7 +33,7 @@ This release addresses the following Decision Proposals published on [Standards]
 ## General Changes
 |Change|Description|Link|
 |------|-----------|----|
-| Change summary | [**Standards Staging #XXX**](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/XXX): Change detail | [Standards section](../../#section)
+| Updated documentation template | [**Standards Staging #376**](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/376): Request parameters and response headers with custom types defined in the schema (with `x-cds-type`) should now all be displayed with the correct type. The unused 'Format' column in the 'Response Headers' tables has also been removed. | [DCR APIs](../../#dcr-apis)<br>[Register APIs](../../#register-apis)
 | Change summary | [**Standards Maintenance #XXX**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/XXX): Change detail | [Standards section](../../#section)
 | Change summary | [**Decision Proposal #XXX**](https://github.com/ConsumerDataStandardsAustralia/standards/issues/XXX): Change detail | [Standards section](../../#section)
 

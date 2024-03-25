@@ -77,7 +77,7 @@ Status Code **{{=response.status}}**
 
 |Status|Header|Type|Description|
 |---|---|---|---|---|
-{{~ data.responseHeaders :h}}|{{=h.status}}|{{=h.header}}|{{? h.schema['x-cds-type']}}{{='[' + h.schema['x-cds-type'] + '](#common-field-types)'}}{{??}}{{=h.type}}{{?}}|{{=h.description||'none'}}|
+{{~ data.responseHeaders :h}}|{{=h.status}}|{{=h.header}}|{{= h.cdrType || h.type}}|{{=h.description||'none'}}|
 {{~}}
 
 {{?}}
