@@ -17,7 +17,7 @@ Release notes for version v1.30.0 of the [CDR Standards](../../index.html).
 
 This release addresses the following minor defects raised on [Standards Staging](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues):
 
-- [Standards Staging #XXX - Title](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/XXX)
+- [Standards Staging #388 - Fix typo in Amending Authorisation Standards: Changing Attributes](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/388)
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
@@ -66,7 +66,7 @@ This release addresses the following Decision Proposals published on [Standards]
 ## Consumer Experience
 |Change|Description|Link|
 |------|-----------|----|
-
+| Fixed typo | [**Standards Staging #388**](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/388): Fixed typo in the Amending Authorisation Standards section | [Amending Authorisation Standards](../../#amending-authorisation-standards)
 
 ## Non-Functional Requirements
 |Change|Description|Link|
