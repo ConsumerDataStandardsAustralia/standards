@@ -21,7 +21,7 @@ This release addresses the following minor defects raised on [Standards Staging]
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
-- [Standards Maintenance #XXX - Title](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/XXX)
+- [Standards Maintenance #624 - Improved structure for Solar Time Varying Tariffs](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/624)
 
 
 ### Decision Proposals
@@ -51,7 +51,7 @@ This release addresses the following Decision Proposals published on [Standards]
 ## API Endpoints
 |Change|Description|Link|
 |------|-----------|----|
-
+| Improved structure for Solar Time Varying Tariffs  | [**Standards Maintenance #624**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/624#issuecomment-2019888328): <ul><li>Converted `solarFeedInTariff.timeVaringTariffs` into an array to allow representation of multiple feed in tariffs</li><li>Added new mandatory `displayName` field to `solarFeedInTariff.timeVaryingTariffs`</li></ul> | [Energy APIs](../../#energy-apis)
 
 ## Information Security Profile
 |Change|Description|Link|
