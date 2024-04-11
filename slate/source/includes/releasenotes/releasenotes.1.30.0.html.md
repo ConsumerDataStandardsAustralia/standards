@@ -21,7 +21,7 @@ This release addresses the following minor defects raised on [Standards Staging]
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
-- [Standards Maintenance #XXX - Title](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/XXX)
+- [Standards Maintenance #627 - EnergyPlanTariffPeriod - Change to daily supply charge](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/627)
 
 
 ### Decision Proposals
@@ -51,6 +51,7 @@ This release addresses the following Decision Proposals published on [Standards]
 ## API Endpoints
 |Change|Description|Link|
 |------|-----------|----|
+| Banded Daily Supply Charges | [**Standards Maintenance #627**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/627#issuecomment-2024573078): Made following changes to `EnergyPlanTariffPeriod` to allow sharing of banded daily supply charges: <ul><li>Added `dailySupplyChargeType` - new ENUM field to note if the daily supply charge is single or banded</li><li>Added `bandedDailySupplyCharges`- A new object allowing representation of banded daily supply charges</li><li>Changed `dailySupplyCharges` to `dailySupplyCharge`</li></ul> | [Energy APIs](../../#energy-apis)
 
 
 ## Information Security Profile

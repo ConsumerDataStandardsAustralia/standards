@@ -8,6 +8,16 @@ This specification defines the APIs for Data Holders exposing Energy endpoints.
 <tr><td><a href='./includes/swagger/cds_energy.yaml'>Energy OpenAPI Specification (YAML)</a></td></tr>
 </table>
 
+```diff
+Added following new elements to EnergyPlanTariffPeriod:
++ dailySupplyChargeType - A new ENUM field to indicate if the daily supply charge is single or banded
++ bandedDailySupplyCharges - A new object allowing representation of banded daily supply charges
 
+Changed the following in EnergyPlanTariffPeriod
+from:
+- dailySupplyCharges
+to:
++ dailySupplyCharge 
+```
 
 <%= partial "includes/cds_energy.md" %>

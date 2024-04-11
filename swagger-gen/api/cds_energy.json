@@ -38,7 +38,7 @@
                     }
                 }
             },
-            "EnergyPlanResponseV2": {
+            "EnergyPlanResponseV3": {
                 "type": "object",
                 "required": [
                     "data",
@@ -46,7 +46,7 @@
                 ],
                 "properties": {
                     "data": {
-                        "$ref": "#/components/schemas/EnergyPlanDetailV2"
+                        "$ref": "#/components/schemas/EnergyPlanDetailV3"
                     },
                     "links": {
                         "$ref": "#/components/schemas/Links"
@@ -215,7 +215,7 @@
                     }
                 }
             },
-            "EnergyAccountDetailResponseV3": {
+            "EnergyAccountDetailResponseV4": {
                 "type": "object",
                 "required": [
                     "data",
@@ -223,7 +223,7 @@
                 ],
                 "properties": {
                     "data": {
-                        "$ref": "#/components/schemas/EnergyAccountDetailV3"
+                        "$ref": "#/components/schemas/EnergyAccountDetailV4"
                     },
                     "links": {
                         "$ref": "#/components/schemas/Links"
@@ -615,7 +615,7 @@
                     }
                 }
             },
-            "EnergyPlanDetailV2": {
+            "EnergyPlanDetailV3": {
                 "allOf": [
                     {
                         "$ref": "#/components/schemas/EnergyPlan"
@@ -662,17 +662,17 @@
                             },
                             "gasContract": {
                                 "description": "The details of the terms for the supply of electricity under this plan.  Is mandatory if fuelType is set to GAS or DUAL",
-                                "$ref": "#/components/schemas/EnergyPlanContractFullV2"
+                                "$ref": "#/components/schemas/EnergyPlanContractFullV3"
                             },
                             "electricityContract": {
                                 "description": "The details of the terms for the supply of electricity under this plan.  Is mandatory if fuelType is set to ELECTRICITY or DUAL",
-                                "$ref": "#/components/schemas/EnergyPlanContractFullV2"
+                                "$ref": "#/components/schemas/EnergyPlanContractFullV3"
                             }
                         }
                     }
                 ]
             },
-            "EnergyPlanContractV2": {
+            "EnergyPlanContractV3": {
                 "type": "object",
                 "required": [
                     "pricingModel",
@@ -768,14 +768,14 @@
                         "$ref": "#/components/schemas/EnergyPlanSolarFeedInTariffV2"
                     },
                     "tariffPeriod": {
-                        "$ref": "#/components/schemas/EnergyPlanTariffPeriod"
+                        "$ref": "#/components/schemas/EnergyPlanTariffPeriodV2"
                     }
                 }
             },
-            "EnergyPlanContractFullV2": {
+            "EnergyPlanContractFullV3": {
                 "allOf": [
                     {
-                        "$ref": "#/components/schemas/EnergyPlanContractV2"
+                        "$ref": "#/components/schemas/EnergyPlanContractV3"
                     },
                     {
                         "type": "object",
@@ -1500,13 +1500,13 @@
                     }
                 }
             },
-            "EnergyPlanTariffPeriod": {
+            "EnergyPlanTariffPeriodV2": {
                 "description": "Array of tariff periods",
                 "type": "array",
                 "items": {
                     "type": "object",
                     "required": ["displayName", "startDate", "endDate", "rateBlockUType"],
-                    "x-conditional": ["singleRate", "timeOfUseRates", "demandCharges"],
+                    "x-conditional": ["singleRate", "timeOfUseRates", "demandCharges", "dailySupplyCharge", "bandedDailySupplyCharges"],
                     "properties": {
                         "type": {
                             "description": "Type of charge. Assumed to be other if absent",
@@ -1533,10 +1533,45 @@
                             "type": "string",
                             "description": "The end date of the tariff period in a calendar year.  Formatted in mm-dd format"
                         },
-                        "dailySupplyCharges": {
+                        "dailySupplyChargeType": {
+                            "type": "string",
+                            "description": "Specifies if daily supply charge is single or banded. Default value SINGLE is field not provided",
+                            "enum": ["SINGLE",
+                                "BAND"
+                            ]
+                        },
+                        "dailySupplyCharge": {
                             "type": "string",
                             "x-cds-type": "AmountString",
-                            "description": "The amount of access charge for the tariff period, in dollars per day exclusive of GST."
+                            "description": "The amount of access charge for the tariff period, in dollars per day exclusive of GST. Mandatory if dailySupplyChargeType is SINGLE"
+                        },
+                        "bandedDailySupplyCharges": {
+                            "type": "object",
+                            "description": "Object representing a banded daily supply charges rate.  Mandatory if dailySupplyChargeType is BAND",
+                            "required": ["unitPrice"],
+                            "properties": {
+                                "unitPrice": {
+                                    "type": "string",
+                                    "x-cds-type": "AmountString",
+                                    "description": "The amount of daily supply charge for the band, in dollars per day exclusive of GST"
+                                },
+                                "measureUnit": {
+                                    "type": "string",
+                                    "description": "The measurement unit of rate. Assumed to be DAYS if absent",
+                                    "enum": ["KWH",
+                                        "KVA",
+                                        "KVAR",
+                                        "KVARH",
+                                        "KW",
+                                        "DAYS",
+                                        "METER",
+                                        "MONTH"]
+                                },
+                                "volume": {
+                                    "type": "number",
+                                    "description": "Volume the charge applies to"
+                                }
+                            }
                         },
                         "timeZone": {
                             "type": "string",
@@ -2673,7 +2708,7 @@
                     }
                 ]
             },
-            "EnergyAccountDetailV3": {
+            "EnergyAccountDetailV4": {
                 "allOf": [
                     {
                         "$ref": "#/components/schemas/EnergyAccountBaseV2"
@@ -2792,11 +2827,11 @@
                                                 },
                                                 "gasContract": {
                                                     "description": "The details of the terms for the supply of electricity under this plan.  Is mandatory if fuelType is set to GAS or DUAL",
-                                                    "$ref": "#/components/schemas/EnergyPlanContractV2"
+                                                    "$ref": "#/components/schemas/EnergyPlanContractV3"
                                                 },
                                                 "electricityContract": {
                                                     "description": "The details of the terms for the supply of electricity under this plan.  Is mandatory if fuelType is set to ELECTRICITY or DUAL",
-                                                    "$ref": "#/components/schemas/EnergyPlanContractV2"
+                                                    "$ref": "#/components/schemas/EnergyPlanContractV3"
                                                 }
                                             }
                                         },
@@ -4341,7 +4376,7 @@
 				"content": {
 					"application/json": {
 						"schema": {
-                            "$ref": "#/components/schemas/EnergyPlanResponseV2"
+                            "$ref": "#/components/schemas/EnergyPlanResponseV3"
 						}
 					}
 				}
@@ -4509,7 +4544,7 @@
 				"content": {
 					"application/json": {
                         "schema": {
-                            "$ref": "#/components/schemas/EnergyAccountDetailResponseV3"
+                            "$ref": "#/components/schemas/EnergyAccountDetailResponseV4"
 						}
 					}
 				}
@@ -4777,12 +4812,12 @@
 			"get": {
 				"summary": "Get Generic Plan Detail",
 				"operationId": "getPlan",
-				"description": "Obtain detailed information on a single energy plan offered openly to the market.\n\nOther Versions: [v1](includes/obsolete/get-generic-plan-detail-v1.html)",
+				"description": "Obtain detailed information on a single energy plan offered openly to the market.\n\nOther Versions: [v1](includes/obsolete/get-generic-plan-detail-v1.html) [v2](includes/obsolete/get-generic-plan-detail-v2.html)",
 				"tags": [
                     "Energy",
 					"Generic Tariffs"
 				],
-                "x-version": "2",
+                "x-version": "3",
 				"parameters": [{
 						"name": "planId",
 						"description": "ID of the specific plan requested",
@@ -5794,7 +5829,7 @@
 			"get": {
 				"summary": "Get Energy Account Detail",
 				"operationId": "getAccount",
-				"description": "Obtain detailed information for a specific energy account\n\nOther Versions: [v1](includes/obsolete/get-energy-account-detail-v1.html) [v2](includes/obsolete/get-energy-account-detail-v2.html)",
+				"description": "Obtain detailed information for a specific energy account\n\nOther Versions: [v1](includes/obsolete/get-energy-account-detail-v1.html) [v2](includes/obsolete/get-energy-account-detail-v2.html) [v3](includes/obsolete/get-energy-account-detail-v3.html)",
                 "x-scopes": [
                     "energy:accounts.detail:read"
                 ],
@@ -5802,7 +5837,7 @@
                     "Energy",
 					"Energy Accounts"
 				],
-                "x-version": "3",
+                "x-version": "4",
 				"parameters": [{
 						"$ref": "#/components/parameters/accountId"
 					},
