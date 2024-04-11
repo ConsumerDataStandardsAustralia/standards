@@ -21,7 +21,7 @@ This release addresses the following minor defects raised on [Standards Staging]
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
-- [Standards Maintenance #XXX - Title](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/XXX)
+- [Standards Maintenance #625 - Additional field to support Step Tariff calculations](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/625)
 
 
 ### Decision Proposals
@@ -51,7 +51,7 @@ This release addresses the following Decision Proposals published on [Standards]
 ## API Endpoints
 |Change|Description|Link|
 |------|-----------|----|
-
+| Support Step Tariff calculations | [**Standards Maintenance #625**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/625#issuecomment-1993734451): Added new optional `period` field to `EnergyPlanControlledLoad.singleRate`, `EnergyPlanSolarFeedInTariffV2.singleRate`, `EnergyPlanControlledLoad.timeOfUseRates` and `EnergyPlanSolarFeedInTariffV2.timeVaryingTariffs` to help support stepped tariff calculations  | [Energy APIs](../../#energy-apis)
 
 ## Information Security Profile
 |Change|Description|Link|
