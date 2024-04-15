@@ -1546,30 +1546,33 @@
                             "description": "The amount of access charge for the tariff period, in dollars per day exclusive of GST. Mandatory if dailySupplyChargeType is SINGLE"
                         },
                         "bandedDailySupplyCharges": {
-                            "type": "object",
-                            "description": "Object representing a banded daily supply charges rate.  Mandatory if dailySupplyChargeType is BAND",
-                            "required": ["unitPrice"],
-                            "properties": {
-                                "unitPrice": {
-                                    "type": "string",
-                                    "x-cds-type": "AmountString",
-                                    "description": "The amount of daily supply charge for the band, in dollars per day exclusive of GST"
-                                },
-                                "measureUnit": {
-                                    "type": "string",
-                                    "description": "The measurement unit of rate. Assumed to be DAYS if absent",
-                                    "enum": ["KWH",
-                                        "KVA",
-                                        "KVAR",
-                                        "KVARH",
-                                        "KW",
-                                        "DAYS",
-                                        "METER",
-                                        "MONTH"]
-                                },
-                                "volume": {
-                                    "type": "number",
-                                    "description": "Volume the charge applies to"
+                            "type": "array",
+                            "description": "Array representing banded daily supply charges rates.  Mandatory if dailySupplyChargeType is BAND",
+                            "items": {
+                                "type":"object",
+                                "required": ["unitPrice"],
+                                "properties": {
+                                    "unitPrice": {
+                                        "type": "string",
+                                        "x-cds-type": "AmountString",
+                                        "description": "The amount of daily supply charge for the band, in dollars per day exclusive of GST"
+                                    },
+                                    "measureUnit": {
+                                        "type": "string",
+                                        "description": "The measurement unit of rate. Assumed to be DAYS if absent",
+                                        "enum": ["KWH",
+                                            "KVA",
+                                            "KVAR",
+                                            "KVARH",
+                                            "KW",
+                                            "DAYS",
+                                            "METER",
+                                            "MONTH"]
+                                    },
+                                    "volume": {
+                                        "type": "number",
+                                        "description": "Volume the charge applies to"
+                                    }
                                 }
                             }
                         },
