@@ -1535,7 +1535,7 @@
                         },
                         "dailySupplyChargeType": {
                             "type": "string",
-                            "description": "Specifies if daily supply charge is single or banded. Default value SINGLE is field not provided",
+                            "description": "Specifies if daily supply charge is single or banded. Default value is SINGLE if field not provided",
                             "enum": ["SINGLE",
                                 "BAND"
                             ]
@@ -1547,7 +1547,7 @@
                         },
                         "bandedDailySupplyCharges": {
                             "type": "array",
-                            "description": "Array representing banded daily supply charges rates.  Mandatory if dailySupplyChargeType is BAND",
+                            "description": "Array representing banded daily supply charge rates.  Mandatory if dailySupplyChargeType is BAND",
                             "items": {
                                 "type":"object",
                                 "required": ["unitPrice"],
