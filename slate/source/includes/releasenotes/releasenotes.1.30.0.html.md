@@ -51,7 +51,7 @@ This release addresses the following Decision Proposals published on [Standards]
 ## API Endpoints
 |Change|Description|Link|
 |------|-----------|----|
-| Support Step Tariff calculations | [**Standards Maintenance #625**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/625#issuecomment-1993734451): Added new optional `period` field to `EnergyPlanControlledLoad.singleRate`, `EnergyPlanSolarFeedInTariffV2.singleRate`, `EnergyPlanControlledLoad.timeOfUseRates` and `EnergyPlanSolarFeedInTariffV2.timeVaryingTariffs` to help support stepped tariff calculations  | [Energy APIs](../../#energy-apis)
+| Support Step Tariff calculations | [**Standards Maintenance #625**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/625#issuecomment-1993734451): Added new optional `period` field to the following to help support stepped tariff calculations: <ul><li>`EnergyPlanControlledLoad.singleRate`</li><li>`EnergyPlanSolarFeedInTariffV2.singleRate`</li><li>`EnergyPlanControlledLoad.timeOfUseRates`</li><li>`EnergyPlanSolarFeedInTariffV2.timeVaryingTariffs`</li><li>`EnergyPlanTariffPeriod.timeOfUseRates`</li></ul>  | [Energy APIs](../../#energy-apis)
 
 ## Information Security Profile
 |Change|Description|Link|
