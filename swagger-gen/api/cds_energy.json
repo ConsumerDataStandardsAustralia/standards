@@ -1357,9 +1357,7 @@
                         "scheme": {
                             "type": "string",
                             "description": "The applicable scheme",
-                            "enum": ["PREMIUM",
-                                "OTHER"
-                            ]
+                            "enum": ["PREMIUM","CURRENT","VARIABLE","OTHER"]
                         },
                         "payerType": {
                             "type": "string",
