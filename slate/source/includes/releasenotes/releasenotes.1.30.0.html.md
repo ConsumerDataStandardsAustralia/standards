@@ -17,7 +17,7 @@ Release notes for version v1.30.0 of the [CDR Standards](../../index.html).
 
 This release addresses the following minor defects raised on [Standards Staging](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues):
 
-- [Standards Staging #XXX - Title](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/XXX)
+- [Standards Staging #310 - Review date format conventions](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/310)
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
@@ -41,6 +41,7 @@ This release addresses the following Decision Proposals published on [Standards]
 ## Introduction
 |Change|Description|Link|
 |------|-----------|----|
+| Updated date format | [**Standards Staging #310**](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/310): Updated the date format in the 'Obligation Dates Schedule' table in the linked summary page to match the format in the 'Endpoint Version Schedule' tables to simplify cross-referencing. The aligned format is YYYY-MM-DD. | [Future Dated Obligations](../../#future-dated-obligations)
 
 
 ## High Level Standards
