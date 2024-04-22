@@ -22,7 +22,7 @@ This release addresses the following minor defects raised on [Standards Staging]
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
-- [Standards Maintenance #XXX - Title](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/XXX)
+- [Standards Maintenance #543 - refresh_token_expires_at and sharing_expires_at claims listed as MUST be supported](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/543)
 
 
 ### Decision Proposals
@@ -58,6 +58,7 @@ This release addresses the following Decision Proposals published on [Standards]
 ## Information Security Profile
 |Change|Description|Link|
 |------|-----------|----|
+| Removed outdated statements | [**Standards Maintenance #543**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/543): Removed outdated statements related to the `refresh_token_expires_at` and `sharing_expires_at` claims | [Scopes and Claims](../../#scopes-and-claims)<br>[Request Object](../../#request-object)
 
 
 ## Register Standards
