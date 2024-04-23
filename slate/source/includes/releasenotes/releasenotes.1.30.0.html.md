@@ -55,6 +55,7 @@ This release addresses the following Decision Proposals published on [Standards]
 ## High Level Standards
 |Change|Description|Link|
 |------|-----------|----|
+| Updated Non-normative Example | [**Standards Maintenance #629**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/629#issuecomment-1968023646): Removed incorrect Non-normative Example showing `Accept-Encoding: charset=UTF-8` | [HTTP Headers](../../#http-headers)
 | Updated Principles | [**Standards Staging #370**](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/370): Added reference to 'Consumer Experience (CX) Principles' in the introductory sentence and reformatted CX Principle 4 and 5. | [Principles](../../#principles)
 
 
