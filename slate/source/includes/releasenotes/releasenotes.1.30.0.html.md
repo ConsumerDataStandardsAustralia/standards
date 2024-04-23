@@ -28,6 +28,7 @@ This release addresses the following minor defects raised on [Standards Staging]
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
 - [Standards Maintenance #543 - refresh_token_expires_at and sharing_expires_at claims listed as MUST be supported](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/543)
+- [Standards Maintenance #629 - Maintenance Iteration 18 Holistic Feedback](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/629)
 - [Standards Maintenance #631 - Updates to 'Revoking consent' Standards](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/631)
 - [Standards Maintenance #632 - Concurrent consent support and cdr_arrangement_id](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/632)
 
@@ -65,6 +66,7 @@ This release addresses the following Decision Proposals published on [Standards]
 ## Information Security Profile
 |Change|Description|Link|
 |------|-----------|----|
+| Corrected typo | [**Standards Maintenance #629**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/629#issuecomment-1920466440): Corrected typo in `cdr_arragement_id` | [Security Endpoints](../../#security-endpoints)
 | Corrected typo | [**Standards Staging #361**](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/361): Corrected typo in the Description of `sector_identifier_uri` | [Client Registration](../../#client-registration)
 | Updated link | [**Standards Staging #362**](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/362): Updated 'Pairwise Pseudonymous Identifier (PPID)' link | [Scopes and Claims](../../#scopes-and-claims)
 | Updates to 'Revoking consent' Standards | [**Standards Maintenance #631**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/631): Updates to 'Revoking consent' requirements to align to rules | [Security Endpoints](../../#security-endpoints)
