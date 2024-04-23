@@ -66,6 +66,7 @@ This release addresses the following Decision Proposals published on [Standards]
 ## Information Security Profile
 |Change|Description|Link|
 |------|-----------|----|
+| Updated documentation | [**Standards Maintenance #629**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/629#issuecomment-1940397162): Updated documentation to include link to string(JWT) schema from ClientRegistrationRequest | [ClientRegistrationRequest](../../#cdr-dynamic-client-registration-api_schemas_tocSclientregistrationrequest)
 | Corrected typos | [**Standards Maintenance #629**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/629#issuecomment-1938107616): Changed 'Software Package' to 'Software Product' in two lines | [Participant Statuses](../../#participant-statuses)
 | Corrected typo | [**Standards Maintenance #629**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/629#issuecomment-1920466440): Corrected typo in `cdr_arragement_id` | [Security Endpoints](../../#security-endpoints)
 | Corrected typo | [**Standards Staging #361**](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/361): Corrected typo in the Description of `sector_identifier_uri` | [Client Registration](../../#client-registration)
