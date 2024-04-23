@@ -91,7 +91,13 @@ To accomplish this, the Data Holder **MUST** support an additional claim in the 
 
 Note that the period of `one year` in the above statements **SHOULD** be interpreted as 365, 24 hour days (or 31,536,000 seconds).
 
-The Data Recipient Software Product is able to obtain the expiration of sharing via the `sharing_expires_at` claim.
+```diff
+Updated statement referring to the `sharing_expires_at` claim, replacing it with a reference to the `exp` field:
+- The Data Recipient Software Product is able to obtain the expiration of sharing via the `sharing_expires_at` claim.
++ The Data Recipient Software Product is able to obtain the expiration of the sharing arrangement by presenting a refresh token to the token introspection endpoint. The expiration value is provided in the `exp` field in the response.
+```
+
+The Data Recipient Software Product is able to obtain the expiration of the sharing arrangement by presenting a refresh token to the token introspection endpoint. The expiration value is provided in the `exp` field in the response.
 
 ### Specifying an existing arrangement
 Provided a Data Holder supports PAR, they **MUST** also support the ``cdr_arrangement_id`` claim provided in the Request Object sent to the [PAR End Point](#pushed-authorisation-end-point). The Data Recipient Software Product **MAY** provide the ``cdr_arrangement_id`` claim in the Request Object sent to the [PAR End Point](#pushed-authorisation-end-point).
