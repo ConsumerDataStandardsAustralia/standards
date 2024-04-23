@@ -17,16 +17,17 @@ Release notes for version v1.30.0 of the [CDR Standards](../../index.html).
 
 This release addresses the following minor defects raised on [Standards Staging](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues):
 
+- [Standards Staging #310 - Review date format conventions](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/310)
 - [Standards Staging #362 - Update PPID link](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/362)
+- [Standards Staging #370 - Add 'Consumer Experience Principles' to the Introduction text in the Principles section of the CDS and add CX acronym](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/370)
 - [Standards Staging #371 - Avoid scrollbars for long lines](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/371)
 - [Standards Staging #388 - Fix typo in Amending Authorisation Standards: Changing Attributes](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/388)
-- [Standards Staging #310 - Review date format conventions](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/310)
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
+- [Standards Maintenance #543 - refresh_token_expires_at and sharing_expires_at claims listed as MUST be supported](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/543)
 - [Standards Maintenance #631 - Updates to 'Revoking consent' Standards](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/631)
 - [Standards Maintenance #632 - Concurrent consent support and cdr_arrangement_id](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/632)
-- [Standards Maintenance #543 - refresh_token_expires_at and sharing_expires_at claims listed as MUST be supported](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/543)
 
 
 ### Decision Proposals
@@ -52,6 +53,7 @@ This release addresses the following Decision Proposals published on [Standards]
 ## High Level Standards
 |Change|Description|Link|
 |------|-----------|----|
+| Updated Principles | [**Standards Staging #370**](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/370): Added reference to 'Consumer Experience (CX) Principles' in the introductory sentence and reformatted CX Principle 4 and 5. | [Principles](../../#principles)
 
 
 ## API Endpoints
