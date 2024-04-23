@@ -1,6 +1,10 @@
 ## Future Dated Obligations
 
-
+```diff
+Updated the date format in the 'Obligation Dates Schedule' table in the linked summary page to match the format in the 'Endpoint Version Schedule' tables to simplify cross-referencing. The aligned format is YYYY-MM-DD.
+- 13/05/2024
++ 2024-05-13
+```
 
 The standards, as published from time to time, may include specific statements indicating that a specific section of the standards will not take effect until a future date or may cease to have effect on some future date. 
 
