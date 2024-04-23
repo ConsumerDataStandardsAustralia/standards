@@ -39,12 +39,6 @@ Host: www.holder.com.au
       "acr": {
         "essential": true,
         "values": ["urn:cds.au:cdr:2"]
-      },
-      "refresh_token_expires_at": {
-        "essential": true
-      },
-      "sharing_expires_at": {
-        "essential": true
       }
     }
   }
