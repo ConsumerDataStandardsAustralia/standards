@@ -935,11 +935,12 @@ content: '<<< END DISCUSS?';
   }
 }
 
-// staging#305
+// staging#305, staging#371
 body .tab-json code, body .tab-examples code, body .tab-diff code, body .highlight > code {
     /* background-color: blue; */
     word-break: break-word;
     text-wrap: wrap;
+    white-space: break-spaces;
 }
 
 // staging#338
