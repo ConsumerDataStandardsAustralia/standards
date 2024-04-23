@@ -17,6 +17,7 @@ Release notes for version v1.30.0 of the [CDR Standards](../../index.html).
 
 This release addresses the following minor defects raised on [Standards Staging](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues):
 
+- [Standards Staging #371 - Avoid scrollbars for long lines](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/371)
 - [Standards Staging #388 - Fix typo in Amending Authorisation Standards: Changing Attributes](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/388)
 - [Standards Staging #310 - Review date format conventions](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/310)
 
@@ -36,7 +37,7 @@ This release addresses the following Decision Proposals published on [Standards]
 ## General Changes
 |Change|Description|Link|
 |------|-----------|----|
-| Change summary | [**Standards Staging #XXX**](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/XXX): Change detail | [Standards section](../../#section)
+| Minor styling update | [**Standards Staging #371**](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/371): Improved line wrapping to avoid horizontal scrollbars in the 'Non-normative Examples' and 'Version Delta' tab columns. | [Non-normative Examples](../../?examples)<br>[Version Delta](../../?diff)
 | Change summary | [**Standards Maintenance #XXX**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/XXX): Change detail | [Standards section](../../#section)
 | Change summary | [**Decision Proposal #XXX**](https://github.com/ConsumerDataStandardsAustralia/standards/issues/XXX): Change detail | [Standards section](../../#section)
 
