@@ -22,6 +22,7 @@ This release addresses the following minor defects raised on [Standards Staging]
 - [Standards Staging #362 - Update PPID link](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/362)
 - [Standards Staging #370 - Add 'Consumer Experience Principles' to the Introduction text in the Principles section of the CDS and add CX acronym](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/370)
 - [Standards Staging #371 - Avoid scrollbars for long lines](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/371)
+- [Standards Staging #376 - Custom field types for Response Headers are not displayed](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/376)
 - [Standards Staging #388 - Fix typo in Amending Authorisation Standards: Changing Attributes](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/388)
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
@@ -40,9 +41,8 @@ This release addresses the following Decision Proposals published on [Standards]
 ## General Changes
 |Change|Description|Link|
 |------|-----------|----|
+| Updated documentation template | [**Standards Staging #376**](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/376): Request parameters and response headers with custom types defined in the schema (with `x-cds-type`) should now all be displayed with the correct type. The unused 'Format' column in the 'Response Headers' tables has also been removed. | [DCR APIs](../../#dcr-apis)<br>[Register APIs](../../#register-apis)
 | Minor styling update | [**Standards Staging #371**](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/371): Improved line wrapping to avoid horizontal scrollbars in the 'Non-normative Examples' and 'Version Delta' tab columns. | [Non-normative Examples](../../?examples)<br>[Version Delta](../../?diff)
-| Change summary | [**Standards Maintenance #XXX**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/XXX): Change detail | [Standards section](../../#section)
-| Change summary | [**Decision Proposal #XXX**](https://github.com/ConsumerDataStandardsAustralia/standards/issues/XXX): Change detail | [Standards section](../../#section)
 
 
 ## Introduction
