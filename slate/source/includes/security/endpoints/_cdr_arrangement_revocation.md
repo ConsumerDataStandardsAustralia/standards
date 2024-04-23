@@ -138,9 +138,20 @@ Response Code | Situation | Description
 204 No Content | Success | The sharing arrangement has been revoked successfully
 422 Unprocessable Entity | Invalid Arrangement ID | The client submitted an invalid arrangement identifier or the identifier could not be found. The server MUST respond with [Invalid Consent Arrangement](#error-422-authorisation-invalid-arrangement).
 
+```diff
+Updates to 'Revoking consent' requirements to align to rules
+```
 
 **Revoking consent**
 
-Data Recipient Software Products MUST use the Data Holder's CDR Arrangement Revocation End Point with a valid ``cdr_arrangement_id`` to notify the Data Holder when consent is revoked by the consumer via the Data Recipient Software Product.
+Data Recipient Software Products **MUST** use the Data Holder's CDR Arrangement Revocation endpoint with a valid `cdr_arrangement_id` to notify the Data Holder when consent is withdrawn or otherwise expires, except for the following reasons:
 
-Data Holder's MUST use the Data Recipient Software Product's CDR Arrangement Revocation End Point with a valid ``cdr_arrangement_id`` to notify the Data Recipient Software Product when consent is revoked by the consumer via the Data Holder.
+- The withdrawal was initiated via the Data Holder,
+- The consent expires at its natural expiry time, defined by the Data Recipient in the authorisation request and available in the token introspection endpoint,
+- Invalidation of the consent due to a change in the Data Holder or Data Holder Brand status on the Register.
+
+Data Holder's **MUST** use the Data Recipient Software Product's CDR Arrangement Revocation endpoint with a valid `cdr_arrangement_id` to notify the Data Recipient Software Product when an authorisation is withdrawn or otherwise expires, except for the following reasons:
+
+- The withdrawal was initiated via the Data Recipient,
+- The authorisation expires at its natural expiry time, defined by the Data Recipient in the authorisation request and available in the token introspection endpoint,
+- Invalidation of the authorisation due to a change in the Data Recipient or Software Product status on the Register.

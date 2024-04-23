@@ -240,12 +240,24 @@ function getParameters(data) {
         }
         templateVars[stupidity(param.name)] = param.exampleValues.object;
 
+        // Specifying at the top level could be deprecated
         if (typeof param['x-cds-type'] === 'string') {
           param.cdrType = '[' + param['x-cds-type'] +'](#common-field-types)';
         }
 
+        // Specifying inside the schema object could be a common location
+        if (param.schema && typeof param.schema['x-cds-type'] === 'string') {
+          param.cdrType = '[' + param.schema['x-cds-type'] +'](#common-field-types)';
+        }
+
+        // Specifying at the top level could be deprecated
         if (typeof param['x-conditional'] === 'boolean') {
           param.cdrConditional = param['x-conditional'];
+        }
+
+        // Specifying inside the schema object could be a common location
+        if (param.schema && typeof param.schema['x-conditional'] === 'boolean') {
+          param.cdrConditional = param.schema['x-conditional'];
         }
 
         if (param.schema && param.schema.enum) {
@@ -537,6 +549,16 @@ function getResponseHeaders(data) {
                 entry.required = header.required;
                 entry.schema = header.schema || {};
                 entry.type = entry.schema.type;
+                
+                // Specifying at the top level could be deprecated
+                if (entry['x-cds-type']) {
+                  entry.cdrType = '[' + entry['x-cds-type'] +'](#common-field-types)';
+                }
+                // Specifying inside the schema object could be a common location
+                if (entry.schema && entry.schema['x-cds-type']) {
+                  entry.cdrType = '[' + entry.schema['x-cds-type'] +'](#common-field-types)';
+                }
+                
                 entry.format = entry.schema.format;
                 headers.push(entry);
             }
