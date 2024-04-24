@@ -42,24 +42,6 @@ client_id=s6BhdRkqt3
 }
 ```
 
-> Decoded JWT
-
-```
-{
-  "iss": "https://data.holder.com.au",
-  "sub": "a9ebbef6-1f0b-44eb-96cf-0c5b51b37ab2",
-  "aud": "12345",
-  "nonce": "n-0S6_WzA2Mj",
-  "exp": 1311281970,
-  "iat": 1311280970,
-  "nbf": 1311280970,
-  "auth_time": 1311280969,
-  "acr": "urn:cds.au:cdr:3",
-  "refresh_token_expires_at": 1311281970,
-  "sharing_expires_at": 1311281970
-}
-```
-
 > Decoded JWT - FAPI 1.0 Final Phase 3 Obligation  
 
 ```
@@ -109,7 +91,9 @@ The identifier **MUST** be unique per customer according to the definition of cu
 
 The Data Holder **MUST** provide the CDR Arrangement ID as the claim ``cdr_arrangement_id`` in the Token End Point response and Token Introspection End Point response.
 
-A Data Holder **MUST** only return the ``cdr_arrangement_id`` in the Token and Token Introspection End Point responses if they also support concurrent consent. This ensures that Data Recipient Software Products have a reliable way to determine whether a given Data Holder supports concurrent consent.
+```diff
+Removed two outdated statements relating to the introduction of concurrent consent and retrospectively generating a cdr_arrangement_id.
+```
 
 Statements related to the CDR Arrangement ID:
 
@@ -119,7 +103,5 @@ Statements related to the CDR Arrangement ID:
 * A CDR Arrangement ID **MUST** be static across consents within the one sharing arrangement (e.g. across consent renewal and re-authorisation)
 
 #### Obtaining a CDR Arrangement ID
-
-For any existing consents, Data Holders **MUST** retrospectively generate a ``cdr_arrangement_id`` such that Data Recipient Software Products can obtain a valid ``cdr_arrangement_id`` for all active consents they hold.
 
 A Data Recipient Software Product can call either the Token or Token Introspection End Points at any point post-consent to obtain the CDR Arrangement ID in the response JSON as the claim ``cdr_arrangement_id``.
