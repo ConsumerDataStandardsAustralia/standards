@@ -38,7 +38,7 @@
                     }
                 }
             },
-            "EnergyPlanResponseV2": {
+            "EnergyPlanResponseV3": {
                 "type": "object",
                 "required": [
                     "data",
@@ -46,7 +46,7 @@
                 ],
                 "properties": {
                     "data": {
-                        "$ref": "#/components/schemas/EnergyPlanDetailV2"
+                        "$ref": "#/components/schemas/EnergyPlanDetailV3"
                     },
                     "links": {
                         "$ref": "#/components/schemas/Links"
@@ -215,7 +215,7 @@
                     }
                 }
             },
-            "EnergyAccountDetailResponseV3": {
+            "EnergyAccountDetailResponseV4": {
                 "type": "object",
                 "required": [
                     "data",
@@ -223,7 +223,7 @@
                 ],
                 "properties": {
                     "data": {
-                        "$ref": "#/components/schemas/EnergyAccountDetailV3"
+                        "$ref": "#/components/schemas/EnergyAccountDetailV4"
                     },
                     "links": {
                         "$ref": "#/components/schemas/Links"
@@ -615,7 +615,7 @@
                     }
                 }
             },
-            "EnergyPlanDetailV2": {
+            "EnergyPlanDetailV3": {
                 "allOf": [
                     {
                         "$ref": "#/components/schemas/EnergyPlan"
@@ -662,17 +662,17 @@
                             },
                             "gasContract": {
                                 "description": "The details of the terms for the supply of electricity under this plan.  Is mandatory if fuelType is set to GAS or DUAL",
-                                "$ref": "#/components/schemas/EnergyPlanContractFullV2"
+                                "$ref": "#/components/schemas/EnergyPlanContractFullV3"
                             },
                             "electricityContract": {
                                 "description": "The details of the terms for the supply of electricity under this plan.  Is mandatory if fuelType is set to ELECTRICITY or DUAL",
-                                "$ref": "#/components/schemas/EnergyPlanContractFullV2"
+                                "$ref": "#/components/schemas/EnergyPlanContractFullV3"
                             }
                         }
                     }
                 ]
             },
-            "EnergyPlanContractV2": {
+            "EnergyPlanContractV3": {
                 "type": "object",
                 "required": [
                     "pricingModel",
@@ -765,17 +765,17 @@
                         "$ref": "#/components/schemas/EnergyPlanFees"
                     },
                     "solarFeedInTariff": {
-                        "$ref": "#/components/schemas/EnergyPlanSolarFeedInTariffV2"
+                        "$ref": "#/components/schemas/EnergyPlanSolarFeedInTariffV3"
                     },
                     "tariffPeriod": {
                         "$ref": "#/components/schemas/EnergyPlanTariffPeriod"
                     }
                 }
             },
-            "EnergyPlanContractFullV2": {
+            "EnergyPlanContractFullV3": {
                 "allOf": [
                     {
-                        "$ref": "#/components/schemas/EnergyPlanContractV2"
+                        "$ref": "#/components/schemas/EnergyPlanContractV3"
                     },
                     {
                         "type": "object",
@@ -1328,7 +1328,7 @@
                     }
                 }
             },
-            "EnergyPlanSolarFeedInTariffV2": {
+            "EnergyPlanSolarFeedInTariffV3": {
                 "description": "Array of feed in tariffs for solar power",
                 "type": "array",
                 "items": {
@@ -1357,9 +1357,7 @@
                         "scheme": {
                             "type": "string",
                             "description": "The applicable scheme",
-                            "enum": ["PREMIUM",
-                                "OTHER"
-                            ]
+                            "enum": ["PREMIUM","CURRENT","VARIABLE","OTHER"]
                         },
                         "payerType": {
                             "type": "string",
@@ -1415,86 +1413,93 @@
                             }
                         },
                         "timeVaryingTariffs": {
-                            "type": "object",
+                            "type": "array",
                             "description": "Represents a tariff based on time.  Mandatory if tariffUType is set to timeVaryingTariffs",
-                            "required": ["amount", "timeVariations"],
-                            "properties": {
-                                "type": {
-                                    "type": "string",
-                                    "description": "The type of the charging time period. If absent applies to all periods",
-                                    "enum": ["PEAK",
-                                        "OFF_PEAK",
-                                        "SHOULDER"
-                                    ]
-                                },
-                                "rates": {
-                                    "description": "Array of feed in rates",
-                                    "type": "array",
-                                    "items": {
-                                        "type": "object",
-                                        "required": ["unitPrice"],
-                                        "properties": {
-                                            "unitPrice": {
-                                                "type": "string",
-                                                "x-cds-type": "AmountString",
-                                                "description": "Unit price of usage per measure unit (exclusive of GST)"
-                                            },
-                                            "measureUnit": {
-                                                "type": "string",
-                                                "description": "The measurement unit of rate. Assumed to be KWH if absent",
-                                                "enum": ["KWH",
-                                                    "KVA",
-                                                    "KVAR",
-                                                    "KVARH",
-                                                    "KW",
-                                                    "DAYS",
-                                                    "METER",
-                                                    "MONTH"]
-                                            },
-                                            "volume": {
-                                                "type": "number",
-                                                "description": "Volume that this rate applies to. Only applicable for ‘stepped’ rates where different rates apply for different volumes of usage in a period"
-                                            }
-                                        }
-                                    }
-                                },
-                                "timeVariations": {
-                                    "description": "Array of time periods for which this tariff is applicable",
-                                    "type": "array",
-                                    "items": {
-                                        "type": "object",
-                                        "required": ["days"],
-                                        "properties": {
-                                                "days": {
-                                                    "description": "The days that the tariff applies to. At least one entry required",
-                                                    "type": "array",
-                                                    "items": {
-                                                        "type": "string",
-                                                        "enum": ["SUN",
-                                                            "MON",
-                                                            "TUE",
-                                                            "WED",
-                                                            "THU",
-                                                            "FRI",
-                                                            "SAT",
-                                                            "PUBLIC_HOLIDAYS"
-                                                        ]
-                                                    }
+                            "items":{
+                                "type": "object",
+                                "required": ["amount", "timeVariations","displayName"],
+                                "properties": {
+                                    "type": {
+                                        "type": "string",
+                                        "description": "The type of the charging time period. If absent applies to all periods",
+                                        "enum": ["PEAK",
+                                            "OFF_PEAK",
+                                            "SHOULDER"
+                                        ]
+                                    },
+                                    "displayName": {
+                                        "type": "string",
+                                        "description": "Display name of the tariff"
+                                    },
+                                    "rates": {
+                                        "description": "Array of feed in rates",
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "required": ["unitPrice"],
+                                            "properties": {
+                                                "unitPrice": {
+                                                    "type": "string",
+                                                    "x-cds-type": "AmountString",
+                                                    "description": "Unit price of usage per measure unit (exclusive of GST)"
                                                 },
-                                            "startTime": {
-                                                "description": "The beginning of the time period per day for which the tariff applies.  If absent assumes start of day (ie. midnight).\n\nFormatted according to [ISO 8601 Times](https://en.wikipedia.org/wiki/ISO_8601#Times). If the time is provided without a UTC offset, the time zone will be determined by the value of EnergyPlanContract.timeZone.",
-                                                "type": "string",
-                                                "x-cds-type": "ExternalRef"
-                                            },
-                                            "endTime": {
-                                                "description": "The end of the time period per day for which the tariff applies.  If absent assumes end of day (ie. one second before midnight).\n\nFormatted according to [ISO 8601 Times](https://en.wikipedia.org/wiki/ISO_8601#Times). If the time is provided without a UTC offset, the time zone will be determined by the value of EnergyPlanContract.timeZone.",
-                                                "type": "string",
-                                                "x-cds-type": "ExternalRef"
+                                                "measureUnit": {
+                                                    "type": "string",
+                                                    "description": "The measurement unit of rate. Assumed to be KWH if absent",
+                                                    "enum": ["KWH",
+                                                        "KVA",
+                                                        "KVAR",
+                                                        "KVARH",
+                                                        "KW",
+                                                        "DAYS",
+                                                        "METER",
+                                                        "MONTH"]
+                                                },
+                                                "volume": {
+                                                    "type": "number",
+                                                    "description": "Volume that this rate applies to. Only applicable for ‘stepped’ rates where different rates apply for different volumes of usage in a period"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "timeVariations": {
+                                        "description": "Array of time periods for which this tariff is applicable",
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "required": ["days"],
+                                            "properties": {
+                                                    "days": {
+                                                        "description": "The days that the tariff applies to. At least one entry required",
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "string",
+                                                            "enum": ["SUN",
+                                                                "MON",
+                                                                "TUE",
+                                                                "WED",
+                                                                "THU",
+                                                                "FRI",
+                                                                "SAT",
+                                                                "PUBLIC_HOLIDAYS"
+                                                            ]
+                                                        }
+                                                    },
+                                                "startTime": {
+                                                    "description": "The beginning of the time period per day for which the tariff applies.  If absent assumes start of day (ie. midnight).\n\nFormatted according to [ISO 8601 Times](https://en.wikipedia.org/wiki/ISO_8601#Times). If the time is provided without a UTC offset, the time zone will be determined by the value of EnergyPlanContract.timeZone.",
+                                                    "type": "string",
+                                                    "x-cds-type": "ExternalRef"
+                                                },
+                                                "endTime": {
+                                                    "description": "The end of the time period per day for which the tariff applies.  If absent assumes end of day (ie. one second before midnight).\n\nFormatted according to [ISO 8601 Times](https://en.wikipedia.org/wiki/ISO_8601#Times). If the time is provided without a UTC offset, the time zone will be determined by the value of EnergyPlanContract.timeZone.",
+                                                    "type": "string",
+                                                    "x-cds-type": "ExternalRef"
+                                                }
                                             }
                                         }
                                     }
-                                }
 
+                                }
                             }
                         }
                     }
@@ -2673,7 +2678,7 @@
                     }
                 ]
             },
-            "EnergyAccountDetailV3": {
+            "EnergyAccountDetailV4": {
                 "allOf": [
                     {
                         "$ref": "#/components/schemas/EnergyAccountBaseV2"
@@ -2792,11 +2797,11 @@
                                                 },
                                                 "gasContract": {
                                                     "description": "The details of the terms for the supply of electricity under this plan.  Is mandatory if fuelType is set to GAS or DUAL",
-                                                    "$ref": "#/components/schemas/EnergyPlanContractV2"
+                                                    "$ref": "#/components/schemas/EnergyPlanContractV3"
                                                 },
                                                 "electricityContract": {
                                                     "description": "The details of the terms for the supply of electricity under this plan.  Is mandatory if fuelType is set to ELECTRICITY or DUAL",
-                                                    "$ref": "#/components/schemas/EnergyPlanContractV2"
+                                                    "$ref": "#/components/schemas/EnergyPlanContractV3"
                                                 }
                                             }
                                         },
@@ -4341,7 +4346,7 @@
 				"content": {
 					"application/json": {
 						"schema": {
-                            "$ref": "#/components/schemas/EnergyPlanResponseV2"
+                            "$ref": "#/components/schemas/EnergyPlanResponseV3"
 						}
 					}
 				}
@@ -4509,7 +4514,7 @@
 				"content": {
 					"application/json": {
                         "schema": {
-                            "$ref": "#/components/schemas/EnergyAccountDetailResponseV3"
+                            "$ref": "#/components/schemas/EnergyAccountDetailResponseV4"
 						}
 					}
 				}
@@ -4777,12 +4782,12 @@
 			"get": {
 				"summary": "Get Generic Plan Detail",
 				"operationId": "getPlan",
-				"description": "Obtain detailed information on a single energy plan offered openly to the market.\n\nOther Versions: [v1](includes/obsolete/get-generic-plan-detail-v1.html)",
+				"description": "Obtain detailed information on a single energy plan offered openly to the market.\n\nOther Versions: [v1](includes/obsolete/get-generic-plan-detail-v1.html) [v2](includes/obsolete/get-generic-plan-detail-v2.html)",
 				"tags": [
                     "Energy",
 					"Generic Tariffs"
 				],
-                "x-version": "2",
+                "x-version": "3",
 				"parameters": [{
 						"name": "planId",
 						"description": "ID of the specific plan requested",
@@ -5794,7 +5799,7 @@
 			"get": {
 				"summary": "Get Energy Account Detail",
 				"operationId": "getAccount",
-				"description": "Obtain detailed information for a specific energy account\n\nOther Versions: [v1](includes/obsolete/get-energy-account-detail-v1.html) [v2](includes/obsolete/get-energy-account-detail-v2.html)",
+				"description": "Obtain detailed information for a specific energy account\n\nOther Versions: [v1](includes/obsolete/get-energy-account-detail-v1.html) [v2](includes/obsolete/get-energy-account-detail-v2.html) [v3](includes/obsolete/get-energy-account-detail-v3.html)",
                 "x-scopes": [
                     "energy:accounts.detail:read"
                 ],
@@ -5802,7 +5807,7 @@
                     "Energy",
 					"Energy Accounts"
 				],
-                "x-version": "3",
+                "x-version": "4",
 				"parameters": [{
 						"$ref": "#/components/parameters/accountId"
 					},

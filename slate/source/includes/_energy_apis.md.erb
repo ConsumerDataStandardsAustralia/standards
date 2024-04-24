@@ -8,6 +8,33 @@ This specification defines the APIs for Data Holders exposing Energy endpoints.
 <tr><td><a href='./includes/swagger/cds_energy.yaml'>Energy OpenAPI Specification (YAML)</a></td></tr>
 </table>
 
+```diff
+Converted `solarFeedInTariff.timeVaringTariffs` into an array 
 
+Added following new mandatory field to `solarFeedInTariff.timeVaryingTariffs`:
++ displayName
+
+Added following ENUM values to `solarFeedInTariff.scheme`:
++ CURRENT
++ VARIABLE
+
+Updated the following structures
+from:
+- EnergyPlanSolarFeedInTariffV2
+- EnergyPlanContractV2
+- EnergyPlanContractFullV2
+- EnergyPlanDetailV2
+- EnergyPlanResponseV2
+- EnergyAccountDetailV3
+- EnergyAccountDetailResponseV3
+to:
++ EnergyPlanSolarFeedInTariffV3
++ EnergyPlanContractV3
++ EnergyPlanContractFullV3
++ EnergyPlanDetailV3
++ EnergyPlanResponseV3
++ EnergyAccountDetailV4
++ EnergyAccountDetailResponseV4
+```
 
 <%= partial "includes/cds_energy.md" %>

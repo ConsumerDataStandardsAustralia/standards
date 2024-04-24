@@ -38,7 +38,7 @@ These dates may be subject to change depending upon new or changed legislative a
 | **Y24 #2** | 2024-05-13 | 2 |
 | **Y24 #3** | 2024-07-01 | 1 |
 | **Y24 #4** | 2024-09-09 | 3 |
-| **Y24 #5** | 2024-11-11 | 0 |
+| **Y24 #5** | 2024-11-11 | 2 |
 
 <div id="date-picker">
   <div class="input-group">
