@@ -9,6 +9,16 @@ This specification defines the APIs for Data Holders exposing Energy endpoints.
 </table>
 
 ```diff
+Added following new elements to EnergyPlanTariffPeriod:
++ dailySupplyChargeType - A new ENUM field to indicate if the daily supply charge is single or banded
++ bandedDailySupplyCharges - A new field allowing representation of banded daily supply charges
+
+Changed the following in EnergyPlanTariffPeriod
+from:
+- dailySupplyCharges
+to:
++ dailySupplyCharge 
+
 Added new `period` field  to the following elements:
   EnergyPlanControlledLoad.singleRate
   EnergyPlanControlledLoad.timeOfUseRates
