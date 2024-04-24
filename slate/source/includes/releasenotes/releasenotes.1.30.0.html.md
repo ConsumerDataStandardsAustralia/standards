@@ -39,7 +39,7 @@ This release addresses the following change requests raised on [Standards Mainte
 ### Decision Proposals
 This release addresses the following Decision Proposals published on [Standards](https://github.com/ConsumerDataStandardsAustralia/standards/issues):
 
-- [Decision Proposal #XXX - Title](https://github.com/ConsumerDataStandardsAustralia/standards/issues/XXX)
+- [Decision Proposal #340 - Maintenance Iteration 18](https://github.com/ConsumerDataStandardsAustralia/standards/issues/340)
 
 
 ## General Changes
@@ -95,9 +95,8 @@ This release addresses the following Decision Proposals published on [Standards]
 | Fixed typo | [**Standards Staging #388**](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/388): Fixed typo in the Amending Authorisation Standards section | [Amending Authorisation Standards](../../#amending-authorisation-standards)
 
 ## Non-Functional Requirements
-|Change|Description|Link|
-|------|-----------|----|
 
+None
 
 ## Additional Standards
 |Change|Description|Link|
@@ -106,5 +105,5 @@ This release addresses the following Decision Proposals published on [Standards]
 
 
 ## Known Issues
-|Change|Description|Link|
-|------|-----------|----|
+
+None

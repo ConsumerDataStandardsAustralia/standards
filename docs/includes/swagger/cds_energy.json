@@ -3,7 +3,7 @@
   "info" : {
     "description" : "Consumer Data Right end points and payloads for the Energy sector",
     "title" : "CDR Energy API",
-    "version" : "1.29.1"
+    "version" : "1.30.0"
   },
   "servers" : [ {
     "url" : "/"
@@ -172,7 +172,7 @@
     },
     "/energy/plans/{planId}" : {
       "get" : {
-        "description" : "Obtain detailed information on a single energy plan offered openly to the market.\n\nOther Versions: [v1](includes/obsolete/get-generic-plan-detail-v1.html)",
+        "description" : "Obtain detailed information on a single energy plan offered openly to the market.\n\nOther Versions: [v1](includes/obsolete/get-generic-plan-detail-v1.html) [v2](includes/obsolete/get-generic-plan-detail-v2.html)",
         "operationId" : "getPlan",
         "parameters" : [ {
           "description" : "ID of the specific plan requested",
@@ -210,7 +210,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/EnergyPlanResponseV2"
+                  "$ref" : "#/components/schemas/EnergyPlanResponseV3"
                 }
               }
             },
@@ -259,7 +259,7 @@
         },
         "summary" : "Get Generic Plan Detail",
         "tags" : [ "Energy", "Generic Tariffs" ],
-        "x-version" : "2"
+        "x-version" : "3"
       }
     },
     "/energy/electricity/servicepoints" : {
@@ -2076,7 +2076,7 @@
     },
     "/energy/accounts/{accountId}" : {
       "get" : {
-        "description" : "Obtain detailed information for a specific energy account\n\nOther Versions: [v1](includes/obsolete/get-energy-account-detail-v1.html) [v2](includes/obsolete/get-energy-account-detail-v2.html)",
+        "description" : "Obtain detailed information for a specific energy account\n\nOther Versions: [v1](includes/obsolete/get-energy-account-detail-v1.html) [v2](includes/obsolete/get-energy-account-detail-v2.html) [v3](includes/obsolete/get-energy-account-detail-v3.html)",
         "operationId" : "getAccount",
         "parameters" : [ {
           "description" : "ID of a specific account to obtain data for.  This is a tokenised ID previous obtained from the Account List end point.",
@@ -2157,7 +2157,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/EnergyAccountDetailResponseV3"
+                  "$ref" : "#/components/schemas/EnergyAccountDetailResponseV4"
                 }
               }
             },
@@ -2245,7 +2245,7 @@
         "summary" : "Get Energy Account Detail",
         "tags" : [ "Energy", "Energy Accounts" ],
         "x-scopes" : [ "energy:accounts.detail:read" ],
-        "x-version" : "3"
+        "x-version" : "4"
       }
     },
     "/energy/accounts/{accountId}/payment-schedule" : {
@@ -4719,7 +4719,7 @@
         "content" : {
           "application/json" : {
             "schema" : {
-              "$ref" : "#/components/schemas/EnergyPlanResponseV2"
+              "$ref" : "#/components/schemas/EnergyPlanResponseV3"
             }
           }
         },
@@ -4907,7 +4907,7 @@
         "content" : {
           "application/json" : {
             "schema" : {
-              "$ref" : "#/components/schemas/EnergyAccountDetailResponseV3"
+              "$ref" : "#/components/schemas/EnergyAccountDetailResponseV4"
             }
           }
         },
@@ -5116,10 +5116,10 @@
         "required" : [ "data", "links", "meta" ],
         "type" : "object"
       },
-      "EnergyPlanResponseV2" : {
+      "EnergyPlanResponseV3" : {
         "properties" : {
           "data" : {
-            "$ref" : "#/components/schemas/EnergyPlanDetailV2"
+            "$ref" : "#/components/schemas/EnergyPlanDetailV3"
           },
           "links" : {
             "$ref" : "#/components/schemas/Links"
@@ -5221,10 +5221,10 @@
         "required" : [ "data", "links", "meta" ],
         "type" : "object"
       },
-      "EnergyAccountDetailResponseV3" : {
+      "EnergyAccountDetailResponseV4" : {
         "properties" : {
           "data" : {
-            "$ref" : "#/components/schemas/EnergyAccountDetailV3"
+            "$ref" : "#/components/schemas/EnergyAccountDetailV4"
           },
           "links" : {
             "$ref" : "#/components/schemas/Links"
@@ -5408,14 +5408,14 @@
         "required" : [ "brand", "brandName", "fuelType", "lastUpdated", "planId", "type" ],
         "type" : "object"
       },
-      "EnergyPlanDetailV2" : {
+      "EnergyPlanDetailV3" : {
         "allOf" : [ {
           "$ref" : "#/components/schemas/EnergyPlan"
         }, {
-          "$ref" : "#/components/schemas/EnergyPlanDetailV2_allOf"
+          "$ref" : "#/components/schemas/EnergyPlanDetailV3_allOf"
         } ]
       },
-      "EnergyPlanContractV2" : {
+      "EnergyPlanContractV3" : {
         "properties" : {
           "additionalFeeInformation" : {
             "description" : "Free text field containing additional information of the fees for this contract",
@@ -5452,10 +5452,10 @@
             "type" : "array"
           },
           "intrinsicGreenPower" : {
-            "$ref" : "#/components/schemas/EnergyPlanContractV2_intrinsicGreenPower"
+            "$ref" : "#/components/schemas/EnergyPlanContractV3_intrinsicGreenPower"
           },
           "controlledLoad" : {
-            "$ref" : "#/components/schemas/EnergyPlanControlledLoad"
+            "$ref" : "#/components/schemas/EnergyPlanControlledLoadV2"
           },
           "incentives" : {
             "$ref" : "#/components/schemas/EnergyPlanIncentives"
@@ -5473,24 +5473,24 @@
             "$ref" : "#/components/schemas/EnergyPlanFees"
           },
           "solarFeedInTariff" : {
-            "$ref" : "#/components/schemas/EnergyPlanSolarFeedInTariffV2"
+            "$ref" : "#/components/schemas/EnergyPlanSolarFeedInTariffV3"
           },
           "tariffPeriod" : {
-            "$ref" : "#/components/schemas/EnergyPlanTariffPeriod"
+            "$ref" : "#/components/schemas/EnergyPlanTariffPeriodV2"
           }
         },
         "required" : [ "isFixed", "paymentOption", "pricingModel", "tariffPeriod" ],
         "type" : "object",
         "x-conditional" : [ "timeZone", "variation", "controlledLoad" ]
       },
-      "EnergyPlanContractFullV2" : {
+      "EnergyPlanContractFullV3" : {
         "allOf" : [ {
-          "$ref" : "#/components/schemas/EnergyPlanContractV2"
+          "$ref" : "#/components/schemas/EnergyPlanContractV3"
         }, {
-          "$ref" : "#/components/schemas/EnergyPlanContractFullV2_allOf"
+          "$ref" : "#/components/schemas/EnergyPlanContractFullV3_allOf"
         } ]
       },
-      "EnergyPlanControlledLoad" : {
+      "EnergyPlanControlledLoadV2" : {
         "description" : "Required if pricing model is SINGLE_RATE_CONT_LOAD or TIME_OF_USE_CONT_LOAD or FLEXIBLE_CONT_LOAD",
         "items" : {
           "properties" : {
@@ -5552,6 +5552,11 @@
                     "type" : "object"
                   },
                   "type" : "array"
+                },
+                "period" : {
+                  "description" : "Usage period for which the block rate applies. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax). Defaults to P1Y if absent",
+                  "type" : "string",
+                  "x-cds-type" : "ExternalRef"
                 }
               },
               "required" : [ "displayName", "rates" ],
@@ -5597,6 +5602,11 @@
                       "type" : "object"
                     },
                     "type" : "array"
+                  },
+                  "period" : {
+                    "description" : "Usage period for which the block rate applies. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax). Defaults to P1Y if absent",
+                    "type" : "string",
+                    "x-cds-type" : "ExternalRef"
                   },
                   "timeOfUse" : {
                     "description" : "Array of times of use.",
@@ -5884,7 +5894,7 @@
         },
         "type" : "array"
       },
-      "EnergyPlanSolarFeedInTariffV2" : {
+      "EnergyPlanSolarFeedInTariffV3" : {
         "description" : "Array of feed in tariffs for solar power",
         "items" : {
           "properties" : {
@@ -5908,7 +5918,7 @@
             },
             "scheme" : {
               "description" : "The applicable scheme",
-              "enum" : [ "PREMIUM", "OTHER" ],
+              "enum" : [ "PREMIUM", "CURRENT", "VARIABLE", "OTHER" ],
               "type" : "string"
             },
             "payerType" : {
@@ -5947,6 +5957,11 @@
                     "type" : "object"
                   },
                   "type" : "array"
+                },
+                "period" : {
+                  "description" : "Usage period for which the block rate applies. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax). Defaults to P1Y if absent",
+                  "type" : "string",
+                  "x-cds-type" : "ExternalRef"
                 }
               },
               "required" : [ "rates" ],
@@ -5954,67 +5969,79 @@
             },
             "timeVaryingTariffs" : {
               "description" : "Represents a tariff based on time.  Mandatory if tariffUType is set to timeVaryingTariffs",
-              "properties" : {
-                "type" : {
-                  "description" : "The type of the charging time period. If absent applies to all periods",
-                  "enum" : [ "PEAK", "OFF_PEAK", "SHOULDER" ],
-                  "type" : "string"
-                },
-                "rates" : {
-                  "description" : "Array of feed in rates",
-                  "items" : {
-                    "properties" : {
-                      "unitPrice" : {
-                        "description" : "Unit price of usage per measure unit (exclusive of GST)",
-                        "type" : "string",
-                        "x-cds-type" : "AmountString"
-                      },
-                      "measureUnit" : {
-                        "description" : "The measurement unit of rate. Assumed to be KWH if absent",
-                        "enum" : [ "KWH", "KVA", "KVAR", "KVARH", "KW", "DAYS", "METER", "MONTH" ],
-                        "type" : "string"
-                      },
-                      "volume" : {
-                        "description" : "Volume that this rate applies to. Only applicable for ‘stepped’ rates where different rates apply for different volumes of usage in a period",
-                        "type" : "number"
-                      }
-                    },
-                    "required" : [ "unitPrice" ],
-                    "type" : "object"
+              "items" : {
+                "properties" : {
+                  "type" : {
+                    "description" : "The type of the charging time period. If absent applies to all periods",
+                    "enum" : [ "PEAK", "OFF_PEAK", "SHOULDER" ],
+                    "type" : "string"
                   },
-                  "type" : "array"
-                },
-                "timeVariations" : {
-                  "description" : "Array of time periods for which this tariff is applicable",
-                  "items" : {
-                    "properties" : {
-                      "days" : {
-                        "description" : "The days that the tariff applies to. At least one entry required",
-                        "items" : {
-                          "enum" : [ "SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT", "PUBLIC_HOLIDAYS" ],
+                  "displayName" : {
+                    "description" : "Display name of the tariff",
+                    "type" : "string"
+                  },
+                  "rates" : {
+                    "description" : "Array of feed in rates",
+                    "items" : {
+                      "properties" : {
+                        "unitPrice" : {
+                          "description" : "Unit price of usage per measure unit (exclusive of GST)",
+                          "type" : "string",
+                          "x-cds-type" : "AmountString"
+                        },
+                        "measureUnit" : {
+                          "description" : "The measurement unit of rate. Assumed to be KWH if absent",
+                          "enum" : [ "KWH", "KVA", "KVAR", "KVARH", "KW", "DAYS", "METER", "MONTH" ],
                           "type" : "string"
                         },
-                        "type" : "array"
+                        "volume" : {
+                          "description" : "Volume that this rate applies to. Only applicable for ‘stepped’ rates where different rates apply for different volumes of usage in a period",
+                          "type" : "number"
+                        }
                       },
-                      "startTime" : {
-                        "description" : "The beginning of the time period per day for which the tariff applies.  If absent assumes start of day (ie. midnight).\n\nFormatted according to [ISO 8601 Times](https://en.wikipedia.org/wiki/ISO_8601#Times). If the time is provided without a UTC offset, the time zone will be determined by the value of EnergyPlanContract.timeZone.",
-                        "type" : "string",
-                        "x-cds-type" : "ExternalRef"
-                      },
-                      "endTime" : {
-                        "description" : "The end of the time period per day for which the tariff applies.  If absent assumes end of day (ie. one second before midnight).\n\nFormatted according to [ISO 8601 Times](https://en.wikipedia.org/wiki/ISO_8601#Times). If the time is provided without a UTC offset, the time zone will be determined by the value of EnergyPlanContract.timeZone.",
-                        "type" : "string",
-                        "x-cds-type" : "ExternalRef"
-                      }
+                      "required" : [ "unitPrice" ],
+                      "type" : "object"
                     },
-                    "required" : [ "days" ],
-                    "type" : "object"
+                    "type" : "array"
                   },
-                  "type" : "array"
-                }
+                  "period" : {
+                    "description" : "Usage period for which the block rate applies. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax). Defaults to P1Y if absent",
+                    "type" : "string",
+                    "x-cds-type" : "ExternalRef"
+                  },
+                  "timeVariations" : {
+                    "description" : "Array of time periods for which this tariff is applicable",
+                    "items" : {
+                      "properties" : {
+                        "days" : {
+                          "description" : "The days that the tariff applies to. At least one entry required",
+                          "items" : {
+                            "enum" : [ "SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT", "PUBLIC_HOLIDAYS" ],
+                            "type" : "string"
+                          },
+                          "type" : "array"
+                        },
+                        "startTime" : {
+                          "description" : "The beginning of the time period per day for which the tariff applies.  If absent assumes start of day (ie. midnight).\n\nFormatted according to [ISO 8601 Times](https://en.wikipedia.org/wiki/ISO_8601#Times). If the time is provided without a UTC offset, the time zone will be determined by the value of EnergyPlanContract.timeZone.",
+                          "type" : "string",
+                          "x-cds-type" : "ExternalRef"
+                        },
+                        "endTime" : {
+                          "description" : "The end of the time period per day for which the tariff applies.  If absent assumes end of day (ie. one second before midnight).\n\nFormatted according to [ISO 8601 Times](https://en.wikipedia.org/wiki/ISO_8601#Times). If the time is provided without a UTC offset, the time zone will be determined by the value of EnergyPlanContract.timeZone.",
+                          "type" : "string",
+                          "x-cds-type" : "ExternalRef"
+                        }
+                      },
+                      "required" : [ "days" ],
+                      "type" : "object"
+                    },
+                    "type" : "array"
+                  }
+                },
+                "required" : [ "amount", "displayName", "timeVariations" ],
+                "type" : "object"
               },
-              "required" : [ "amount", "timeVariations" ],
-              "type" : "object"
+              "type" : "array"
             }
           },
           "required" : [ "displayName", "payerType", "scheme", "tariffUType" ],
@@ -6023,7 +6050,7 @@
         },
         "type" : "array"
       },
-      "EnergyPlanTariffPeriod" : {
+      "EnergyPlanTariffPeriodV2" : {
         "description" : "Array of tariff periods",
         "items" : {
           "properties" : {
@@ -6044,10 +6071,39 @@
               "description" : "The end date of the tariff period in a calendar year.  Formatted in mm-dd format",
               "type" : "string"
             },
-            "dailySupplyCharges" : {
-              "description" : "The amount of access charge for the tariff period, in dollars per day exclusive of GST.",
+            "dailySupplyChargeType" : {
+              "description" : "Specifies if daily supply charge is single or banded. Default value is SINGLE if field not provided",
+              "enum" : [ "SINGLE", "BAND" ],
+              "type" : "string"
+            },
+            "dailySupplyCharge" : {
+              "description" : "The amount of access charge for the tariff period, in dollars per day exclusive of GST. Mandatory if dailySupplyChargeType is SINGLE",
               "type" : "string",
               "x-cds-type" : "AmountString"
+            },
+            "bandedDailySupplyCharges" : {
+              "description" : "Array representing banded daily supply charge rates.  Mandatory if dailySupplyChargeType is BAND",
+              "items" : {
+                "properties" : {
+                  "unitPrice" : {
+                    "description" : "The amount of daily supply charge for the band, in dollars per day exclusive of GST",
+                    "type" : "string",
+                    "x-cds-type" : "AmountString"
+                  },
+                  "measureUnit" : {
+                    "description" : "The measurement unit of rate. Assumed to be DAYS if absent",
+                    "enum" : [ "KWH", "KVA", "KVAR", "KVARH", "KW", "DAYS", "METER", "MONTH" ],
+                    "type" : "string"
+                  },
+                  "volume" : {
+                    "description" : "Volume the charge applies to",
+                    "type" : "number"
+                  }
+                },
+                "required" : [ "unitPrice" ],
+                "type" : "object"
+              },
+              "type" : "array"
             },
             "timeZone" : {
               "description" : "Specifies the charge specific time zone for calculation of the time of use thresholds. If absent, timezone value in EnergyPlanContract is assumed.",
@@ -6144,6 +6200,11 @@
                       "type" : "object"
                     },
                     "type" : "array"
+                  },
+                  "period" : {
+                    "description" : "Usage period for which the block rate applies. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax). Defaults to P1Y if absent",
+                    "type" : "string",
+                    "x-cds-type" : "ExternalRef"
                   },
                   "timeOfUse" : {
                     "description" : "Array of times of use",
@@ -6253,7 +6314,7 @@
           },
           "required" : [ "displayName", "endDate", "rateBlockUType", "startDate" ],
           "type" : "object",
-          "x-conditional" : [ "singleRate", "timeOfUseRates", "demandCharges" ]
+          "x-conditional" : [ "singleRate", "timeOfUseRates", "demandCharges", "dailySupplyCharge", "bandedDailySupplyCharges" ]
         },
         "type" : "array"
       },
@@ -6505,11 +6566,11 @@
           "$ref" : "#/components/schemas/EnergyAccountV2_allOf"
         } ]
       },
-      "EnergyAccountDetailV3" : {
+      "EnergyAccountDetailV4" : {
         "allOf" : [ {
           "$ref" : "#/components/schemas/EnergyAccountBaseV2"
         }, {
-          "$ref" : "#/components/schemas/EnergyAccountDetailV3_allOf"
+          "$ref" : "#/components/schemas/EnergyAccountDetailV4_allOf"
         } ]
       },
       "EnergyPaymentSchedule" : {
@@ -7516,7 +7577,7 @@
         "required" : [ "distributors" ],
         "type" : "object"
       },
-      "EnergyPlanDetailV2_allOf_meteringCharges" : {
+      "EnergyPlanDetailV3_allOf_meteringCharges" : {
         "properties" : {
           "displayName" : {
             "description" : "Display name of the charge",
@@ -7545,26 +7606,26 @@
         "required" : [ "displayName", "minimumValue" ],
         "type" : "object"
       },
-      "EnergyPlanDetailV2_allOf" : {
+      "EnergyPlanDetailV3_allOf" : {
         "properties" : {
           "meteringCharges" : {
             "description" : "Charges for metering included in the plan",
             "items" : {
-              "$ref" : "#/components/schemas/EnergyPlanDetailV2_allOf_meteringCharges"
+              "$ref" : "#/components/schemas/EnergyPlanDetailV3_allOf_meteringCharges"
             },
             "type" : "array"
           },
           "gasContract" : {
-            "$ref" : "#/components/schemas/EnergyPlanContractFullV2"
+            "$ref" : "#/components/schemas/EnergyPlanContractFullV3"
           },
           "electricityContract" : {
-            "$ref" : "#/components/schemas/EnergyPlanContractFullV2"
+            "$ref" : "#/components/schemas/EnergyPlanContractFullV3"
           }
         },
         "type" : "object",
         "x-conditional" : [ "gasContract", "electricityContract" ]
       },
-      "EnergyPlanContractV2_intrinsicGreenPower" : {
+      "EnergyPlanContractV3_intrinsicGreenPower" : {
         "description" : "Describes intrinsic green power for the plan.  If present then the plan includes a percentage of green power in the base plan. Should not be present for gas contracts",
         "properties" : {
           "greenPercentage" : {
@@ -7576,7 +7637,7 @@
         "required" : [ "greenPercentage" ],
         "type" : "object"
       },
-      "EnergyPlanContractFullV2_allOf" : {
+      "EnergyPlanContractFullV3_allOf" : {
         "properties" : {
           "termType" : {
             "description" : "The term for the contract.  If absent assumes no specified term",
@@ -8056,7 +8117,7 @@
         "required" : [ "plans" ],
         "type" : "object"
       },
-      "EnergyAccountDetailV3_allOf_planDetail" : {
+      "EnergyAccountDetailV4_allOf_planDetail" : {
         "description" : "Detail on the plan applicable to this account. Mandatory if openStatus is OPEN",
         "properties" : {
           "fuelType" : {
@@ -8072,22 +8133,22 @@
           "meteringCharges" : {
             "description" : "Charges for metering included in the plan",
             "items" : {
-              "$ref" : "#/components/schemas/EnergyPlanDetailV2_allOf_meteringCharges"
+              "$ref" : "#/components/schemas/EnergyPlanDetailV3_allOf_meteringCharges"
             },
             "type" : "array"
           },
           "gasContract" : {
-            "$ref" : "#/components/schemas/EnergyPlanContractV2"
+            "$ref" : "#/components/schemas/EnergyPlanContractV3"
           },
           "electricityContract" : {
-            "$ref" : "#/components/schemas/EnergyPlanContractV2"
+            "$ref" : "#/components/schemas/EnergyPlanContractV3"
           }
         },
         "required" : [ "fuelType" ],
         "type" : "object",
         "x-conditional" : [ "gasContract", "electricityContract" ]
       },
-      "EnergyAccountDetailV3_allOf_authorisedContacts" : {
+      "EnergyAccountDetailV4_allOf_authorisedContacts" : {
         "properties" : {
           "firstName" : {
             "description" : "For people with single names this field need not be present. The single name should be in the lastName field",
@@ -8116,7 +8177,7 @@
         "required" : [ "lastName" ],
         "type" : "object"
       },
-      "EnergyAccountDetailV3_allOf_plans" : {
+      "EnergyAccountDetailV4_allOf_plans" : {
         "properties" : {
           "nickname" : {
             "description" : "Optional display name for the plan provided by the customer to help differentiate multiple plans",
@@ -8133,12 +8194,12 @@
             "$ref" : "#/components/schemas/EnergyAccountV2_allOf_planOverview"
           },
           "planDetail" : {
-            "$ref" : "#/components/schemas/EnergyAccountDetailV3_allOf_planDetail"
+            "$ref" : "#/components/schemas/EnergyAccountDetailV4_allOf_planDetail"
           },
           "authorisedContacts" : {
             "description" : "An array of additional contacts that are authorised to act on this account",
             "items" : {
-              "$ref" : "#/components/schemas/EnergyAccountDetailV3_allOf_authorisedContacts"
+              "$ref" : "#/components/schemas/EnergyAccountDetailV4_allOf_authorisedContacts"
             },
             "type" : "array"
           }
@@ -8147,13 +8208,13 @@
         "type" : "object",
         "x-conditional" : [ "planOverview", "planDetail" ]
       },
-      "EnergyAccountDetailV3_allOf" : {
+      "EnergyAccountDetailV4_allOf" : {
         "description" : "The array of plans containing service points and associated plan details",
         "properties" : {
           "plans" : {
             "description" : "The array of plans containing service points and associated plan details",
             "items" : {
-              "$ref" : "#/components/schemas/EnergyAccountDetailV3_allOf_plans"
+              "$ref" : "#/components/schemas/EnergyAccountDetailV4_allOf_plans"
             },
             "type" : "array"
           }

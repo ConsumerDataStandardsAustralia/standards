@@ -3,7 +3,7 @@
   "info" : {
     "description" : "This specification defines the APIs for Data Holders exposing Dynamic Client Registration endpoints.",
     "title" : "CDR Dynamic Client Registration API",
-    "version" : "1.29.1"
+    "version" : "1.30.0"
   },
   "servers" : [ {
     "url" : "https://data.holder.com.au/"
@@ -306,7 +306,7 @@
     },
     "schemas" : {
       "ClientRegistrationRequest" : {
-        "description" : "The registration request JWT to be used to register with a Data Holder.",
+        "description" : "The registration request JWT to be used to register with a Data Holder. The schema of the payload section of the decoded string(JWT) is defined in [ClientRegistration](#cdr-dynamic-client-registration-api_schemas_tocSclientregistration).",
         "example" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
         "format" : "JWT",
         "type" : "string"

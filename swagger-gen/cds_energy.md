@@ -146,9 +146,9 @@ Note that the results returned by this end point are expected to be ordered in d
 
 <h3 id="cdr-energy-api_get-generic-plans_response-headers">Response Headers</h3>
 
-|Status|Header|Type|Format|Description|
+|Status|Header|Type|Description|
 |---|---|---|---|---|
-|200|x-v|string||The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-v|string|The [version](#response-headers) of the API end point that the data holder has responded with.|
 
   
     <aside class="success">
@@ -199,12 +199,12 @@ fetch('/energy/plans/{planId}',
 
 Obtain detailed information on a single energy plan offered openly to the market.
 
-Other Versions: [v1](includes/obsolete/get-generic-plan-detail-v1.html)
+Other Versions: [v1](includes/obsolete/get-generic-plan-detail-v1.html) [v2](includes/obsolete/get-generic-plan-detail-v2.html)
 
 <h3 id="cdr-energy-api_get-generic-plan-detail_endpoint-version">Endpoint Version</h3>
 |   |  |
 |---|--|
-|Version|**2**
+|Version|**3**
 
 <h3 id="cdr-energy-api_get-generic-plan-detail_parameters">Parameters</h3>
 
@@ -289,7 +289,8 @@ Other Versions: [v1](includes/obsolete/get-generic-plan-detail-v1.html)
                 "measureUnit": "KWH",
                 "volume": 0
               }
-            ]
+            ],
+            "period": "string"
           },
           "timeOfUseRates": [
             {
@@ -303,6 +304,7 @@ Other Versions: [v1](includes/obsolete/get-generic-plan-detail-v1.html)
                   "volume": 0
                 }
               ],
+              "period": "string",
               "timeOfUse": [
                 {
                   "days": [
@@ -397,27 +399,32 @@ Other Versions: [v1](includes/obsolete/get-generic-plan-detail-v1.html)
                 "measureUnit": "KWH",
                 "volume": 0
               }
-            ]
-          },
-          "timeVaryingTariffs": {
-            "type": "PEAK",
-            "rates": [
-              {
-                "unitPrice": "string",
-                "measureUnit": "KWH",
-                "volume": 0
-              }
             ],
-            "timeVariations": [
-              {
-                "days": [
-                  "SUN"
-                ],
-                "startTime": "string",
-                "endTime": "string"
-              }
-            ]
-          }
+            "period": "string"
+          },
+          "timeVaryingTariffs": [
+            {
+              "type": "PEAK",
+              "displayName": "string",
+              "rates": [
+                {
+                  "unitPrice": "string",
+                  "measureUnit": "KWH",
+                  "volume": 0
+                }
+              ],
+              "period": "string",
+              "timeVariations": [
+                {
+                  "days": [
+                    "SUN"
+                  ],
+                  "startTime": "string",
+                  "endTime": "string"
+                }
+              ]
+            }
+          ]
         }
       ],
       "tariffPeriod": [
@@ -426,7 +433,15 @@ Other Versions: [v1](includes/obsolete/get-generic-plan-detail-v1.html)
           "displayName": "string",
           "startDate": "string",
           "endDate": "string",
-          "dailySupplyCharges": "string",
+          "dailySupplyChargeType": "SINGLE",
+          "dailySupplyCharge": "string",
+          "bandedDailySupplyCharges": [
+            {
+              "unitPrice": "string",
+              "measureUnit": "KWH",
+              "volume": 0
+            }
+          ],
           "timeZone": "LOCAL",
           "rateBlockUType": "singleRate",
           "singleRate": {
@@ -453,6 +468,7 @@ Other Versions: [v1](includes/obsolete/get-generic-plan-detail-v1.html)
                   "volume": 0
                 }
               ],
+              "period": "string",
               "timeOfUse": [
                 {
                   "days": [
@@ -524,7 +540,8 @@ Other Versions: [v1](includes/obsolete/get-generic-plan-detail-v1.html)
                 "measureUnit": "KWH",
                 "volume": 0
               }
-            ]
+            ],
+            "period": "string"
           },
           "timeOfUseRates": [
             {
@@ -538,6 +555,7 @@ Other Versions: [v1](includes/obsolete/get-generic-plan-detail-v1.html)
                   "volume": 0
                 }
               ],
+              "period": "string",
               "timeOfUse": [
                 {
                   "days": [
@@ -632,27 +650,32 @@ Other Versions: [v1](includes/obsolete/get-generic-plan-detail-v1.html)
                 "measureUnit": "KWH",
                 "volume": 0
               }
-            ]
-          },
-          "timeVaryingTariffs": {
-            "type": "PEAK",
-            "rates": [
-              {
-                "unitPrice": "string",
-                "measureUnit": "KWH",
-                "volume": 0
-              }
             ],
-            "timeVariations": [
-              {
-                "days": [
-                  "SUN"
-                ],
-                "startTime": "string",
-                "endTime": "string"
-              }
-            ]
-          }
+            "period": "string"
+          },
+          "timeVaryingTariffs": [
+            {
+              "type": "PEAK",
+              "displayName": "string",
+              "rates": [
+                {
+                  "unitPrice": "string",
+                  "measureUnit": "KWH",
+                  "volume": 0
+                }
+              ],
+              "period": "string",
+              "timeVariations": [
+                {
+                  "days": [
+                    "SUN"
+                  ],
+                  "startTime": "string",
+                  "endTime": "string"
+                }
+              ]
+            }
+          ]
         }
       ],
       "tariffPeriod": [
@@ -661,7 +684,15 @@ Other Versions: [v1](includes/obsolete/get-generic-plan-detail-v1.html)
           "displayName": "string",
           "startDate": "string",
           "endDate": "string",
-          "dailySupplyCharges": "string",
+          "dailySupplyChargeType": "SINGLE",
+          "dailySupplyCharge": "string",
+          "bandedDailySupplyCharges": [
+            {
+              "unitPrice": "string",
+              "measureUnit": "KWH",
+              "volume": 0
+            }
+          ],
           "timeZone": "LOCAL",
           "rateBlockUType": "singleRate",
           "singleRate": {
@@ -688,6 +719,7 @@ Other Versions: [v1](includes/obsolete/get-generic-plan-detail-v1.html)
                   "volume": 0
                 }
               ],
+              "period": "string",
               "timeOfUse": [
                 {
                   "days": [
@@ -742,16 +774,16 @@ Other Versions: [v1](includes/obsolete/get-generic-plan-detail-v1.html)
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyPlanResponseV2](#schemacdr-energy-apienergyplanresponsev2)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyPlanResponseV3](#schemacdr-energy-apienergyplanresponsev3)|
 |400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[404 - Invalid Resource](#error-404-resource-invalid)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 
 <h3 id="cdr-energy-api_get-generic-plan-detail_response-headers">Response Headers</h3>
 
-|Status|Header|Type|Format|Description|
+|Status|Header|Type|Description|
 |---|---|---|---|---|
-|200|x-v|string||The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-v|string|The [version](#response-headers) of the API end point that the data holder has responded with.|
 
   
     <aside class="success">
@@ -877,13 +909,13 @@ Obtain a list of service points owned by the customer that has authorised the cu
 
 <h3 id="cdr-energy-api_get-service-points_response-headers">Response Headers</h3>
 
-|Status|Header|Type|Format|Description|
+|Status|Header|Type|Description|
 |---|---|---|---|---|
-|200|x-v|string||The [version](#response-headers) of the API end point that the data holder has responded with.|
-|200|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|400|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|406|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|422|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|200|x-v|string|The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|422|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     
@@ -1075,13 +1107,13 @@ Obtain detailed standing information for a specific service point that is owned 
 
 <h3 id="cdr-energy-api_get-service-point-detail_response-headers">Response Headers</h3>
 
-|Status|Header|Type|Format|Description|
+|Status|Header|Type|Description|
 |---|---|---|---|---|
-|200|x-v|string||The [version](#response-headers) of the API end point that the data holder has responded with.|
-|200|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|400|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|404|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|406|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|200|x-v|string|The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|404|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     
@@ -1238,14 +1270,14 @@ Obtain a list of electricity usage data from a particular service point
 
 <h3 id="cdr-energy-api_get-usage-for-service-point_response-headers">Response Headers</h3>
 
-|Status|Header|Type|Format|Description|
+|Status|Header|Type|Description|
 |---|---|---|---|---|
-|200|x-v|string||The [version](#response-headers) of the API end point that the data holder has responded with.|
-|200|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|400|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|404|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|406|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|422|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|200|x-v|string|The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|404|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|422|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     
@@ -1400,13 +1432,13 @@ Obtain usage data for all service points associated with the customer
 
 <h3 id="cdr-energy-api_get-bulk-usage_response-headers">Response Headers</h3>
 
-|Status|Header|Type|Format|Description|
+|Status|Header|Type|Description|
 |---|---|---|---|---|
-|200|x-v|string||The [version](#response-headers) of the API end point that the data holder has responded with.|
-|200|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|400|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|406|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|422|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|200|x-v|string|The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|422|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     
@@ -1584,13 +1616,13 @@ Obtain the electricity usage data for a specific set of service points
 
 <h3 id="cdr-energy-api_get-usage-for-specific-service-points_response-headers">Response Headers</h3>
 
-|Status|Header|Type|Format|Description|
+|Status|Header|Type|Description|
 |---|---|---|---|---|
-|200|x-v|string||The [version](#response-headers) of the API end point that the data holder has responded with.|
-|200|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|400|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|406|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|422|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|200|x-v|string|The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|422|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     
@@ -1744,13 +1776,13 @@ Obtain a list of DER data from a particular service point
 
 <h3 id="cdr-energy-api_get-der-for-service-point_response-headers">Response Headers</h3>
 
-|Status|Header|Type|Format|Description|
+|Status|Header|Type|Description|
 |---|---|---|---|---|
-|200|x-v|string||The [version](#response-headers) of the API end point that the data holder has responded with.|
-|200|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|400|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|404|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|406|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|200|x-v|string|The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|404|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     
@@ -1916,13 +1948,13 @@ Obtain DER data for all service points associated with the customer
 
 <h3 id="cdr-energy-api_get-bulk-der_response-headers">Response Headers</h3>
 
-|Status|Header|Type|Format|Description|
+|Status|Header|Type|Description|
 |---|---|---|---|---|
-|200|x-v|string||The [version](#response-headers) of the API end point that the data holder has responded with.|
-|200|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|400|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|406|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|422|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|200|x-v|string|The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|422|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     
@@ -2111,13 +2143,13 @@ Obtain DER data for a specific set of service points
 
 <h3 id="cdr-energy-api_get-der-for-specific-service-points_response-headers">Response Headers</h3>
 
-|Status|Header|Type|Format|Description|
+|Status|Header|Type|Description|
 |---|---|---|---|---|
-|200|x-v|string||The [version](#response-headers) of the API end point that the data holder has responded with.|
-|200|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|400|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|406|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|422|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|200|x-v|string|The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|422|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     
@@ -2263,13 +2295,13 @@ Other Versions: [v1](includes/obsolete/get-energy-accounts-v1.html)
 
 <h3 id="cdr-energy-api_get-energy-accounts_response-headers">Response Headers</h3>
 
-|Status|Header|Type|Format|Description|
+|Status|Header|Type|Description|
 |---|---|---|---|---|
-|200|x-v|string||The [version](#response-headers) of the API end point that the data holder has responded with.|
-|200|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|400|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|406|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|422|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|200|x-v|string|The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|422|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     
@@ -2331,12 +2363,12 @@ fetch('/energy/accounts/{accountId}',
 
 Obtain detailed information for a specific energy account
 
-Other Versions: [v1](includes/obsolete/get-energy-account-detail-v1.html) [v2](includes/obsolete/get-energy-account-detail-v2.html)
+Other Versions: [v1](includes/obsolete/get-energy-account-detail-v1.html) [v2](includes/obsolete/get-energy-account-detail-v2.html) [v3](includes/obsolete/get-energy-account-detail-v3.html)
 
 <h3 id="cdr-energy-api_get-energy-account-detail_endpoint-version">Endpoint Version</h3>
 |   |  |
 |---|--|
-|Version|**3**
+|Version|**4**
 
 <h3 id="cdr-energy-api_get-energy-account-detail_parameters">Parameters</h3>
 
@@ -2410,7 +2442,8 @@ Other Versions: [v1](includes/obsolete/get-energy-account-detail-v1.html) [v2](i
                   "dailySupplyCharge": "string",
                   "rates": [
                     {}
-                  ]
+                  ],
+                  "period": "string"
                 },
                 "timeOfUseRates": [
                   {
@@ -2418,6 +2451,7 @@ Other Versions: [v1](includes/obsolete/get-energy-account-detail-v1.html) [v2](i
                     "description": "string",
                     "dailySupplyCharge": "string",
                     "rates": [],
+                    "period": "string",
                     "timeOfUse": [],
                     "type": "PEAK"
                   }
@@ -2498,17 +2532,18 @@ Other Versions: [v1](includes/obsolete/get-energy-account-detail-v1.html) [v2](i
                 "singleTariff": {
                   "rates": [
                     {}
-                  ]
-                },
-                "timeVaryingTariffs": {
-                  "type": "PEAK",
-                  "rates": [
-                    {}
                   ],
-                  "timeVariations": [
-                    {}
-                  ]
-                }
+                  "period": "string"
+                },
+                "timeVaryingTariffs": [
+                  {
+                    "type": "PEAK",
+                    "displayName": "string",
+                    "rates": [],
+                    "period": "string",
+                    "timeVariations": []
+                  }
+                ]
               }
             ],
             "tariffPeriod": [
@@ -2517,7 +2552,15 @@ Other Versions: [v1](includes/obsolete/get-energy-account-detail-v1.html) [v2](i
                 "displayName": "string",
                 "startDate": "string",
                 "endDate": "string",
-                "dailySupplyCharges": "string",
+                "dailySupplyChargeType": "SINGLE",
+                "dailySupplyCharge": "string",
+                "bandedDailySupplyCharges": [
+                  {
+                    "unitPrice": "string",
+                    "measureUnit": "KWH",
+                    "volume": 0
+                  }
+                ],
                 "timeZone": "LOCAL",
                 "rateBlockUType": "singleRate",
                 "singleRate": {
@@ -2534,6 +2577,7 @@ Other Versions: [v1](includes/obsolete/get-energy-account-detail-v1.html) [v2](i
                     "displayName": "string",
                     "description": "string",
                     "rates": [],
+                    "period": "string",
                     "timeOfUse": [],
                     "type": "PEAK"
                   }
@@ -2581,7 +2625,8 @@ Other Versions: [v1](includes/obsolete/get-energy-account-detail-v1.html) [v2](i
                   "dailySupplyCharge": "string",
                   "rates": [
                     {}
-                  ]
+                  ],
+                  "period": "string"
                 },
                 "timeOfUseRates": [
                   {
@@ -2589,6 +2634,7 @@ Other Versions: [v1](includes/obsolete/get-energy-account-detail-v1.html) [v2](i
                     "description": "string",
                     "dailySupplyCharge": "string",
                     "rates": [],
+                    "period": "string",
                     "timeOfUse": [],
                     "type": "PEAK"
                   }
@@ -2669,17 +2715,18 @@ Other Versions: [v1](includes/obsolete/get-energy-account-detail-v1.html) [v2](i
                 "singleTariff": {
                   "rates": [
                     {}
-                  ]
-                },
-                "timeVaryingTariffs": {
-                  "type": "PEAK",
-                  "rates": [
-                    {}
                   ],
-                  "timeVariations": [
-                    {}
-                  ]
-                }
+                  "period": "string"
+                },
+                "timeVaryingTariffs": [
+                  {
+                    "type": "PEAK",
+                    "displayName": "string",
+                    "rates": [],
+                    "period": "string",
+                    "timeVariations": []
+                  }
+                ]
               }
             ],
             "tariffPeriod": [
@@ -2688,7 +2735,15 @@ Other Versions: [v1](includes/obsolete/get-energy-account-detail-v1.html) [v2](i
                 "displayName": "string",
                 "startDate": "string",
                 "endDate": "string",
-                "dailySupplyCharges": "string",
+                "dailySupplyChargeType": "SINGLE",
+                "dailySupplyCharge": "string",
+                "bandedDailySupplyCharges": [
+                  {
+                    "unitPrice": "string",
+                    "measureUnit": "KWH",
+                    "volume": 0
+                  }
+                ],
                 "timeZone": "LOCAL",
                 "rateBlockUType": "singleRate",
                 "singleRate": {
@@ -2705,6 +2760,7 @@ Other Versions: [v1](includes/obsolete/get-energy-account-detail-v1.html) [v2](i
                     "displayName": "string",
                     "description": "string",
                     "rates": [],
+                    "period": "string",
                     "timeOfUse": [],
                     "type": "PEAK"
                   }
@@ -2753,20 +2809,20 @@ Other Versions: [v1](includes/obsolete/get-energy-account-detail-v1.html) [v2](i
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyAccountDetailResponseV3](#schemacdr-energy-apienergyaccountdetailresponsev3)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyAccountDetailResponseV4](#schemacdr-energy-apienergyaccountdetailresponsev4)|
 |400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[404 - Unavailable Energy Account](#error-404-unavailable-energy-account)</li><li>[404 - Invalid Energy Account](#error-404-invalid-energy-account)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 
 <h3 id="cdr-energy-api_get-energy-account-detail_response-headers">Response Headers</h3>
 
-|Status|Header|Type|Format|Description|
+|Status|Header|Type|Description|
 |---|---|---|---|---|
-|200|x-v|string||The [version](#response-headers) of the API end point that the data holder has responded with.|
-|200|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|400|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|404|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|406|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|200|x-v|string|The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|404|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     
@@ -2904,13 +2960,13 @@ Some general notes about this end point:
 
 <h3 id="cdr-energy-api_get-agreed-payment-schedule_response-headers">Response Headers</h3>
 
-|Status|Header|Type|Format|Description|
+|Status|Header|Type|Description|
 |---|---|---|---|---|
-|200|x-v|string||The [version](#response-headers) of the API end point that the data holder has responded with.|
-|200|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|400|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|404|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|406|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|200|x-v|string|The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|404|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     
@@ -3031,13 +3087,13 @@ Obtain the details of any concessions or arrangements applied to a specific ener
 
 <h3 id="cdr-energy-api_get-concessions_response-headers">Response Headers</h3>
 
-|Status|Header|Type|Format|Description|
+|Status|Header|Type|Description|
 |---|---|---|---|---|
-|200|x-v|string||The [version](#response-headers) of the API end point that the data holder has responded with.|
-|200|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|400|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|404|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|406|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|200|x-v|string|The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|404|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     
@@ -3143,13 +3199,13 @@ Obtain the current balance for a specific account
 
 <h3 id="cdr-energy-api_get-balance-for-energy-account_response-headers">Response Headers</h3>
 
-|Status|Header|Type|Format|Description|
+|Status|Header|Type|Description|
 |---|---|---|---|---|
-|200|x-v|string||The [version](#response-headers) of the API end point that the data holder has responded with.|
-|200|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|400|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|404|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|406|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|200|x-v|string|The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|404|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     
@@ -3268,13 +3324,13 @@ Obtain the current balance for all accounts
 
 <h3 id="cdr-energy-api_get-bulk-balances-for-energy_response-headers">Response Headers</h3>
 
-|Status|Header|Type|Format|Description|
+|Status|Header|Type|Description|
 |---|---|---|---|---|
-|200|x-v|string||The [version](#response-headers) of the API end point that the data holder has responded with.|
-|200|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|400|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|406|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|422|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|200|x-v|string|The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|422|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     
@@ -3416,13 +3472,13 @@ Obtain the current balance for a specified set of accounts
 
 <h3 id="cdr-energy-api_get-balances-for-specific-energy-accounts_response-headers">Response Headers</h3>
 
-|Status|Header|Type|Format|Description|
+|Status|Header|Type|Description|
 |---|---|---|---|---|
-|200|x-v|string||The [version](#response-headers) of the API end point that the data holder has responded with.|
-|200|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|400|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|406|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|422|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|200|x-v|string|The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|422|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     
@@ -3596,14 +3652,14 @@ Obtain the invoices for a specific account
 
 <h3 id="cdr-energy-api_get-invoices-for-account_response-headers">Response Headers</h3>
 
-|Status|Header|Type|Format|Description|
+|Status|Header|Type|Description|
 |---|---|---|---|---|
-|200|x-v|string||The [version](#response-headers) of the API end point that the data holder has responded with.|
-|200|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|400|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|404|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|406|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|422|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|200|x-v|string|The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|404|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|422|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     
@@ -3775,13 +3831,13 @@ Obtain the invoices for all accounts
 
 <h3 id="cdr-energy-api_get-bulk-invoices_response-headers">Response Headers</h3>
 
-|Status|Header|Type|Format|Description|
+|Status|Header|Type|Description|
 |---|---|---|---|---|
-|200|x-v|string||The [version](#response-headers) of the API end point that the data holder has responded with.|
-|200|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|400|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|406|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|422|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|200|x-v|string|The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|422|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     
@@ -3976,13 +4032,13 @@ Obtain invoices for a specified set of accounts
 
 <h3 id="cdr-energy-api_get-invoices-for-specific-accounts_response-headers">Response Headers</h3>
 
-|Status|Header|Type|Format|Description|
+|Status|Header|Type|Description|
 |---|---|---|---|---|
-|200|x-v|string||The [version](#response-headers) of the API end point that the data holder has responded with.|
-|200|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|400|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|406|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|422|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|200|x-v|string|The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|422|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     
@@ -4191,14 +4247,14 @@ Deprecated Versions:
 
 <h3 id="cdr-energy-api_get-billing-for-account_response-headers">Response Headers</h3>
 
-|Status|Header|Type|Format|Description|
+|Status|Header|Type|Description|
 |---|---|---|---|---|
-|200|x-v|string||The [version](#response-headers) of the API end point that the data holder has responded with.|
-|200|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|400|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|404|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|406|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|422|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|200|x-v|string|The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|404|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|422|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     
@@ -4405,13 +4461,13 @@ Deprecated Versions:
 
 <h3 id="cdr-energy-api_get-bulk-billing_response-headers">Response Headers</h3>
 
-|Status|Header|Type|Format|Description|
+|Status|Header|Type|Description|
 |---|---|---|---|---|
-|200|x-v|string||The [version](#response-headers) of the API end point that the data holder has responded with.|
-|200|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|400|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|406|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|422|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|200|x-v|string|The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|422|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     
@@ -4641,13 +4697,13 @@ Deprecated Versions:
 
 <h3 id="cdr-energy-api_get-billing-for-specific-accounts_response-headers">Response Headers</h3>
 
-|Status|Header|Type|Format|Description|
+|Status|Header|Type|Description|
 |---|---|---|---|---|
-|200|x-v|string||The [version](#response-headers) of the API end point that the data holder has responded with.|
-|200|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|400|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|406|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|422|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|200|x-v|string|The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|422|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     
@@ -4728,10 +4784,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 |links|[LinksPaginated](#schemacdr-energy-apilinkspaginated)|mandatory|none|
 |meta|[MetaPaginated](#schemacdr-energy-apimetapaginated)|mandatory|none|
 
-<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyplanresponsev2">EnergyPlanResponseV2</h3>
-<p id="tocSenergyplanresponsev2" class="orig-anchor"></p>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyplanresponsev3">EnergyPlanResponseV3</h3>
+<p id="tocSenergyplanresponsev3" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-energy-apienergyplanresponsev2"></a>
+<a class="schema-anchor" id="schemacdr-energy-apienergyplanresponsev3"></a>
 
 ```json
 {
@@ -4804,7 +4860,8 @@ To perform this operation, you must be authenticated and authorised with the fol
                 "measureUnit": "KWH",
                 "volume": 0
               }
-            ]
+            ],
+            "period": "string"
           },
           "timeOfUseRates": [
             {
@@ -4818,6 +4875,7 @@ To perform this operation, you must be authenticated and authorised with the fol
                   "volume": 0
                 }
               ],
+              "period": "string",
               "timeOfUse": [
                 {
                   "days": [
@@ -4912,27 +4970,32 @@ To perform this operation, you must be authenticated and authorised with the fol
                 "measureUnit": "KWH",
                 "volume": 0
               }
-            ]
-          },
-          "timeVaryingTariffs": {
-            "type": "PEAK",
-            "rates": [
-              {
-                "unitPrice": "string",
-                "measureUnit": "KWH",
-                "volume": 0
-              }
             ],
-            "timeVariations": [
-              {
-                "days": [
-                  "SUN"
-                ],
-                "startTime": "string",
-                "endTime": "string"
-              }
-            ]
-          }
+            "period": "string"
+          },
+          "timeVaryingTariffs": [
+            {
+              "type": "PEAK",
+              "displayName": "string",
+              "rates": [
+                {
+                  "unitPrice": "string",
+                  "measureUnit": "KWH",
+                  "volume": 0
+                }
+              ],
+              "period": "string",
+              "timeVariations": [
+                {
+                  "days": [
+                    "SUN"
+                  ],
+                  "startTime": "string",
+                  "endTime": "string"
+                }
+              ]
+            }
+          ]
         }
       ],
       "tariffPeriod": [
@@ -4941,7 +5004,15 @@ To perform this operation, you must be authenticated and authorised with the fol
           "displayName": "string",
           "startDate": "string",
           "endDate": "string",
-          "dailySupplyCharges": "string",
+          "dailySupplyChargeType": "SINGLE",
+          "dailySupplyCharge": "string",
+          "bandedDailySupplyCharges": [
+            {
+              "unitPrice": "string",
+              "measureUnit": "KWH",
+              "volume": 0
+            }
+          ],
           "timeZone": "LOCAL",
           "rateBlockUType": "singleRate",
           "singleRate": {
@@ -4968,6 +5039,7 @@ To perform this operation, you must be authenticated and authorised with the fol
                   "volume": 0
                 }
               ],
+              "period": "string",
               "timeOfUse": [
                 {
                   "days": [
@@ -5039,7 +5111,8 @@ To perform this operation, you must be authenticated and authorised with the fol
                 "measureUnit": "KWH",
                 "volume": 0
               }
-            ]
+            ],
+            "period": "string"
           },
           "timeOfUseRates": [
             {
@@ -5053,6 +5126,7 @@ To perform this operation, you must be authenticated and authorised with the fol
                   "volume": 0
                 }
               ],
+              "period": "string",
               "timeOfUse": [
                 {
                   "days": [
@@ -5147,27 +5221,32 @@ To perform this operation, you must be authenticated and authorised with the fol
                 "measureUnit": "KWH",
                 "volume": 0
               }
-            ]
-          },
-          "timeVaryingTariffs": {
-            "type": "PEAK",
-            "rates": [
-              {
-                "unitPrice": "string",
-                "measureUnit": "KWH",
-                "volume": 0
-              }
             ],
-            "timeVariations": [
-              {
-                "days": [
-                  "SUN"
-                ],
-                "startTime": "string",
-                "endTime": "string"
-              }
-            ]
-          }
+            "period": "string"
+          },
+          "timeVaryingTariffs": [
+            {
+              "type": "PEAK",
+              "displayName": "string",
+              "rates": [
+                {
+                  "unitPrice": "string",
+                  "measureUnit": "KWH",
+                  "volume": 0
+                }
+              ],
+              "period": "string",
+              "timeVariations": [
+                {
+                  "days": [
+                    "SUN"
+                  ],
+                  "startTime": "string",
+                  "endTime": "string"
+                }
+              ]
+            }
+          ]
         }
       ],
       "tariffPeriod": [
@@ -5176,7 +5255,15 @@ To perform this operation, you must be authenticated and authorised with the fol
           "displayName": "string",
           "startDate": "string",
           "endDate": "string",
-          "dailySupplyCharges": "string",
+          "dailySupplyChargeType": "SINGLE",
+          "dailySupplyCharge": "string",
+          "bandedDailySupplyCharges": [
+            {
+              "unitPrice": "string",
+              "measureUnit": "KWH",
+              "volume": 0
+            }
+          ],
           "timeZone": "LOCAL",
           "rateBlockUType": "singleRate",
           "singleRate": {
@@ -5203,6 +5290,7 @@ To perform this operation, you must be authenticated and authorised with the fol
                   "volume": 0
                 }
               ],
+              "period": "string",
               "timeOfUse": [
                 {
                   "days": [
@@ -5254,11 +5342,11 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-<h3 id="cdr-energy-api_energyplanresponsev2_properties">Properties</h3>
+<h3 id="cdr-energy-api_energyplanresponsev3_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|data|[EnergyPlanDetailV2](#schemacdr-energy-apienergyplandetailv2)|mandatory|none|
+|data|[EnergyPlanDetailV3](#schemacdr-energy-apienergyplandetailv3)|mandatory|none|
 |links|[Links](#schemacdr-energy-apilinks)|mandatory|none|
 |meta|[Meta](#schemacdr-energy-apimeta)|optional|none|
 
@@ -5702,10 +5790,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 |links|[LinksPaginated](#schemacdr-energy-apilinkspaginated)|mandatory|none|
 |meta|[MetaPaginated](#schemacdr-energy-apimetapaginated)|mandatory|none|
 
-<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyaccountdetailresponsev3">EnergyAccountDetailResponseV3</h3>
-<p id="tocSenergyaccountdetailresponsev3" class="orig-anchor"></p>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyaccountdetailresponsev4">EnergyAccountDetailResponseV4</h3>
+<p id="tocSenergyaccountdetailresponsev4" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-energy-apienergyaccountdetailresponsev3"></a>
+<a class="schema-anchor" id="schemacdr-energy-apienergyaccountdetailresponsev4"></a>
 
 ```json
 {
@@ -5763,7 +5851,8 @@ To perform this operation, you must be authenticated and authorised with the fol
                   "dailySupplyCharge": "string",
                   "rates": [
                     {}
-                  ]
+                  ],
+                  "period": "string"
                 },
                 "timeOfUseRates": [
                   {
@@ -5771,6 +5860,7 @@ To perform this operation, you must be authenticated and authorised with the fol
                     "description": "string",
                     "dailySupplyCharge": "string",
                     "rates": [],
+                    "period": "string",
                     "timeOfUse": [],
                     "type": "PEAK"
                   }
@@ -5851,17 +5941,18 @@ To perform this operation, you must be authenticated and authorised with the fol
                 "singleTariff": {
                   "rates": [
                     {}
-                  ]
-                },
-                "timeVaryingTariffs": {
-                  "type": "PEAK",
-                  "rates": [
-                    {}
                   ],
-                  "timeVariations": [
-                    {}
-                  ]
-                }
+                  "period": "string"
+                },
+                "timeVaryingTariffs": [
+                  {
+                    "type": "PEAK",
+                    "displayName": "string",
+                    "rates": [],
+                    "period": "string",
+                    "timeVariations": []
+                  }
+                ]
               }
             ],
             "tariffPeriod": [
@@ -5870,7 +5961,15 @@ To perform this operation, you must be authenticated and authorised with the fol
                 "displayName": "string",
                 "startDate": "string",
                 "endDate": "string",
-                "dailySupplyCharges": "string",
+                "dailySupplyChargeType": "SINGLE",
+                "dailySupplyCharge": "string",
+                "bandedDailySupplyCharges": [
+                  {
+                    "unitPrice": "string",
+                    "measureUnit": "KWH",
+                    "volume": 0
+                  }
+                ],
                 "timeZone": "LOCAL",
                 "rateBlockUType": "singleRate",
                 "singleRate": {
@@ -5887,6 +5986,7 @@ To perform this operation, you must be authenticated and authorised with the fol
                     "displayName": "string",
                     "description": "string",
                     "rates": [],
+                    "period": "string",
                     "timeOfUse": [],
                     "type": "PEAK"
                   }
@@ -5934,7 +6034,8 @@ To perform this operation, you must be authenticated and authorised with the fol
                   "dailySupplyCharge": "string",
                   "rates": [
                     {}
-                  ]
+                  ],
+                  "period": "string"
                 },
                 "timeOfUseRates": [
                   {
@@ -5942,6 +6043,7 @@ To perform this operation, you must be authenticated and authorised with the fol
                     "description": "string",
                     "dailySupplyCharge": "string",
                     "rates": [],
+                    "period": "string",
                     "timeOfUse": [],
                     "type": "PEAK"
                   }
@@ -6022,17 +6124,18 @@ To perform this operation, you must be authenticated and authorised with the fol
                 "singleTariff": {
                   "rates": [
                     {}
-                  ]
-                },
-                "timeVaryingTariffs": {
-                  "type": "PEAK",
-                  "rates": [
-                    {}
                   ],
-                  "timeVariations": [
-                    {}
-                  ]
-                }
+                  "period": "string"
+                },
+                "timeVaryingTariffs": [
+                  {
+                    "type": "PEAK",
+                    "displayName": "string",
+                    "rates": [],
+                    "period": "string",
+                    "timeVariations": []
+                  }
+                ]
               }
             ],
             "tariffPeriod": [
@@ -6041,7 +6144,15 @@ To perform this operation, you must be authenticated and authorised with the fol
                 "displayName": "string",
                 "startDate": "string",
                 "endDate": "string",
-                "dailySupplyCharges": "string",
+                "dailySupplyChargeType": "SINGLE",
+                "dailySupplyCharge": "string",
+                "bandedDailySupplyCharges": [
+                  {
+                    "unitPrice": "string",
+                    "measureUnit": "KWH",
+                    "volume": 0
+                  }
+                ],
                 "timeZone": "LOCAL",
                 "rateBlockUType": "singleRate",
                 "singleRate": {
@@ -6058,6 +6169,7 @@ To perform this operation, you must be authenticated and authorised with the fol
                     "displayName": "string",
                     "description": "string",
                     "rates": [],
+                    "period": "string",
                     "timeOfUse": [],
                     "type": "PEAK"
                   }
@@ -6103,11 +6215,11 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-<h3 id="cdr-energy-api_energyaccountdetailresponsev3_properties">Properties</h3>
+<h3 id="cdr-energy-api_energyaccountdetailresponsev4_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|data|[EnergyAccountDetailV3](#schemacdr-energy-apienergyaccountdetailv3)|mandatory|none|
+|data|[EnergyAccountDetailV4](#schemacdr-energy-apienergyaccountdetailv4)|mandatory|none|
 |links|[Links](#schemacdr-energy-apilinks)|mandatory|none|
 |meta|[Meta](#schemacdr-energy-apimeta)|optional|none|
 
@@ -6599,10 +6711,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 |customerType|RESIDENTIAL|
 |customerType|BUSINESS|
 
-<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyplandetailv2">EnergyPlanDetailV2</h3>
-<p id="tocSenergyplandetailv2" class="orig-anchor"></p>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyplandetailv3">EnergyPlanDetailV3</h3>
+<p id="tocSenergyplandetailv3" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-energy-apienergyplandetailv2"></a>
+<a class="schema-anchor" id="schemacdr-energy-apienergyplandetailv3"></a>
 
 ```json
 {
@@ -6674,7 +6786,8 @@ To perform this operation, you must be authenticated and authorised with the fol
               "measureUnit": "KWH",
               "volume": 0
             }
-          ]
+          ],
+          "period": "string"
         },
         "timeOfUseRates": [
           {
@@ -6688,6 +6801,7 @@ To perform this operation, you must be authenticated and authorised with the fol
                 "volume": 0
               }
             ],
+            "period": "string",
             "timeOfUse": [
               {
                 "days": [
@@ -6782,27 +6896,32 @@ To perform this operation, you must be authenticated and authorised with the fol
               "measureUnit": "KWH",
               "volume": 0
             }
-          ]
-        },
-        "timeVaryingTariffs": {
-          "type": "PEAK",
-          "rates": [
-            {
-              "unitPrice": "string",
-              "measureUnit": "KWH",
-              "volume": 0
-            }
           ],
-          "timeVariations": [
-            {
-              "days": [
-                "SUN"
-              ],
-              "startTime": "string",
-              "endTime": "string"
-            }
-          ]
-        }
+          "period": "string"
+        },
+        "timeVaryingTariffs": [
+          {
+            "type": "PEAK",
+            "displayName": "string",
+            "rates": [
+              {
+                "unitPrice": "string",
+                "measureUnit": "KWH",
+                "volume": 0
+              }
+            ],
+            "period": "string",
+            "timeVariations": [
+              {
+                "days": [
+                  "SUN"
+                ],
+                "startTime": "string",
+                "endTime": "string"
+              }
+            ]
+          }
+        ]
       }
     ],
     "tariffPeriod": [
@@ -6811,7 +6930,15 @@ To perform this operation, you must be authenticated and authorised with the fol
         "displayName": "string",
         "startDate": "string",
         "endDate": "string",
-        "dailySupplyCharges": "string",
+        "dailySupplyChargeType": "SINGLE",
+        "dailySupplyCharge": "string",
+        "bandedDailySupplyCharges": [
+          {
+            "unitPrice": "string",
+            "measureUnit": "KWH",
+            "volume": 0
+          }
+        ],
         "timeZone": "LOCAL",
         "rateBlockUType": "singleRate",
         "singleRate": {
@@ -6838,6 +6965,7 @@ To perform this operation, you must be authenticated and authorised with the fol
                 "volume": 0
               }
             ],
+            "period": "string",
             "timeOfUse": [
               {
                 "days": [
@@ -6909,7 +7037,8 @@ To perform this operation, you must be authenticated and authorised with the fol
               "measureUnit": "KWH",
               "volume": 0
             }
-          ]
+          ],
+          "period": "string"
         },
         "timeOfUseRates": [
           {
@@ -6923,6 +7052,7 @@ To perform this operation, you must be authenticated and authorised with the fol
                 "volume": 0
               }
             ],
+            "period": "string",
             "timeOfUse": [
               {
                 "days": [
@@ -7017,27 +7147,32 @@ To perform this operation, you must be authenticated and authorised with the fol
               "measureUnit": "KWH",
               "volume": 0
             }
-          ]
-        },
-        "timeVaryingTariffs": {
-          "type": "PEAK",
-          "rates": [
-            {
-              "unitPrice": "string",
-              "measureUnit": "KWH",
-              "volume": 0
-            }
           ],
-          "timeVariations": [
-            {
-              "days": [
-                "SUN"
-              ],
-              "startTime": "string",
-              "endTime": "string"
-            }
-          ]
-        }
+          "period": "string"
+        },
+        "timeVaryingTariffs": [
+          {
+            "type": "PEAK",
+            "displayName": "string",
+            "rates": [
+              {
+                "unitPrice": "string",
+                "measureUnit": "KWH",
+                "volume": 0
+              }
+            ],
+            "period": "string",
+            "timeVariations": [
+              {
+                "days": [
+                  "SUN"
+                ],
+                "startTime": "string",
+                "endTime": "string"
+              }
+            ]
+          }
+        ]
       }
     ],
     "tariffPeriod": [
@@ -7046,7 +7181,15 @@ To perform this operation, you must be authenticated and authorised with the fol
         "displayName": "string",
         "startDate": "string",
         "endDate": "string",
-        "dailySupplyCharges": "string",
+        "dailySupplyChargeType": "SINGLE",
+        "dailySupplyCharge": "string",
+        "bandedDailySupplyCharges": [
+          {
+            "unitPrice": "string",
+            "measureUnit": "KWH",
+            "volume": 0
+          }
+        ],
         "timeZone": "LOCAL",
         "rateBlockUType": "singleRate",
         "singleRate": {
@@ -7073,6 +7216,7 @@ To perform this operation, you must be authenticated and authorised with the fol
                 "volume": 0
               }
             ],
+            "period": "string",
             "timeOfUse": [
               {
                 "days": [
@@ -7119,7 +7263,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-<h3 id="cdr-energy-api_energyplandetailv2_properties">Properties</h3>
+<h3 id="cdr-energy-api_energyplandetailv3_properties">Properties</h3>
 
 *allOf*
 
@@ -7138,13 +7282,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 |»» minimumValue|[AmountString](#common-field-types)|mandatory|Minimum value of the charge if the charge is a range or the absolute value of the charge if no range is specified|
 |»» maximumValue|[AmountString](#common-field-types)|optional|The upper limit of the charge if the charge could occur in a range|
 |»» period|[ExternalRef](#common-field-types)|optional|The charges that occur on a schedule indicates the frequency. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
-|» gasContract|[EnergyPlanContractFullV2](#schemacdr-energy-apienergyplancontractfullv2)|conditional|The details of the terms for the supply of electricity under this plan.  Is mandatory if fuelType is set to GAS or DUAL|
-|» electricityContract|[EnergyPlanContractFullV2](#schemacdr-energy-apienergyplancontractfullv2)|conditional|The details of the terms for the supply of electricity under this plan.  Is mandatory if fuelType is set to ELECTRICITY or DUAL|
+|» gasContract|[EnergyPlanContractFullV3](#schemacdr-energy-apienergyplancontractfullv3)|conditional|The details of the terms for the supply of electricity under this plan.  Is mandatory if fuelType is set to GAS or DUAL|
+|» electricityContract|[EnergyPlanContractFullV3](#schemacdr-energy-apienergyplancontractfullv3)|conditional|The details of the terms for the supply of electricity under this plan.  Is mandatory if fuelType is set to ELECTRICITY or DUAL|
 
-<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyplancontractv2">EnergyPlanContractV2</h3>
-<p id="tocSenergyplancontractv2" class="orig-anchor"></p>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyplancontractv3">EnergyPlanContractV3</h3>
+<p id="tocSenergyplancontractv3" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-energy-apienergyplancontractv2"></a>
+<a class="schema-anchor" id="schemacdr-energy-apienergyplancontractv3"></a>
 
 ```json
 {
@@ -7176,7 +7320,8 @@ To perform this operation, you must be authenticated and authorised with the fol
             "measureUnit": "KWH",
             "volume": 0
           }
-        ]
+        ],
+        "period": "string"
       },
       "timeOfUseRates": [
         {
@@ -7190,6 +7335,7 @@ To perform this operation, you must be authenticated and authorised with the fol
               "volume": 0
             }
           ],
+          "period": "string",
           "timeOfUse": [
             {
               "days": [
@@ -7284,27 +7430,32 @@ To perform this operation, you must be authenticated and authorised with the fol
             "measureUnit": "KWH",
             "volume": 0
           }
-        ]
-      },
-      "timeVaryingTariffs": {
-        "type": "PEAK",
-        "rates": [
-          {
-            "unitPrice": "string",
-            "measureUnit": "KWH",
-            "volume": 0
-          }
         ],
-        "timeVariations": [
-          {
-            "days": [
-              "SUN"
-            ],
-            "startTime": "string",
-            "endTime": "string"
-          }
-        ]
-      }
+        "period": "string"
+      },
+      "timeVaryingTariffs": [
+        {
+          "type": "PEAK",
+          "displayName": "string",
+          "rates": [
+            {
+              "unitPrice": "string",
+              "measureUnit": "KWH",
+              "volume": 0
+            }
+          ],
+          "period": "string",
+          "timeVariations": [
+            {
+              "days": [
+                "SUN"
+              ],
+              "startTime": "string",
+              "endTime": "string"
+            }
+          ]
+        }
+      ]
     }
   ],
   "tariffPeriod": [
@@ -7313,7 +7464,15 @@ To perform this operation, you must be authenticated and authorised with the fol
       "displayName": "string",
       "startDate": "string",
       "endDate": "string",
-      "dailySupplyCharges": "string",
+      "dailySupplyChargeType": "SINGLE",
+      "dailySupplyCharge": "string",
+      "bandedDailySupplyCharges": [
+        {
+          "unitPrice": "string",
+          "measureUnit": "KWH",
+          "volume": 0
+        }
+      ],
       "timeZone": "LOCAL",
       "rateBlockUType": "singleRate",
       "singleRate": {
@@ -7340,6 +7499,7 @@ To perform this operation, you must be authenticated and authorised with the fol
               "volume": 0
             }
           ],
+          "period": "string",
           "timeOfUse": [
             {
               "days": [
@@ -7375,7 +7535,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-<h3 id="cdr-energy-api_energyplancontractv2_properties">Properties</h3>
+<h3 id="cdr-energy-api_energyplancontractv3_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -7388,16 +7548,16 @@ To perform this operation, you must be authenticated and authorised with the fol
 |paymentOption|[[Enum](#common-field-types)]|mandatory|Payment options for this contract|
 |intrinsicGreenPower|object|optional|Describes intrinsic green power for the plan.  If present then the plan includes a percentage of green power in the base plan. Should not be present for gas contracts|
 |» greenPercentage|[RateString](#common-field-types)|mandatory|Percentage of green power intrinsically included in the plan|
-|controlledLoad|[EnergyPlanControlledLoad](#schemacdr-energy-apienergyplancontrolledload)|conditional|Required if pricing model is SINGLE_RATE_CONT_LOAD or TIME_OF_USE_CONT_LOAD or FLEXIBLE_CONT_LOAD|
+|controlledLoad|[EnergyPlanControlledLoadV2](#schemacdr-energy-apienergyplancontrolledloadv2)|conditional|Required if pricing model is SINGLE_RATE_CONT_LOAD or TIME_OF_USE_CONT_LOAD or FLEXIBLE_CONT_LOAD|
 |incentives|[EnergyPlanIncentives](#schemacdr-energy-apienergyplanincentives)|optional|Optional list of incentives available for the contract|
 |discounts|[EnergyPlanDiscounts](#schemacdr-energy-apienergyplandiscounts)|optional|Optional list of discounts available for the contract|
 |greenPowerCharges|[EnergyPlanGreenPowerCharges](#schemacdr-energy-apienergyplangreenpowercharges)|optional|Optional list of charges applicable to green power|
 |eligibility|[EnergyPlanEligibility](#schemacdr-energy-apienergyplaneligibility)|optional|Eligibility restrictions or requirements|
 |fees|[EnergyPlanFees](#schemacdr-energy-apienergyplanfees)|optional|An array of fees applicable to the plan|
-|solarFeedInTariff|[EnergyPlanSolarFeedInTariffV2](#schemacdr-energy-apienergyplansolarfeedintariffv2)|optional|Array of feed in tariffs for solar power|
-|tariffPeriod|[EnergyPlanTariffPeriod](#schemacdr-energy-apienergyplantariffperiod)|mandatory|Array of tariff periods|
+|solarFeedInTariff|[EnergyPlanSolarFeedInTariffV3](#schemacdr-energy-apienergyplansolarfeedintariffv3)|optional|Array of feed in tariffs for solar power|
+|tariffPeriod|[EnergyPlanTariffPeriodV2](#schemacdr-energy-apienergyplantariffperiodv2)|mandatory|Array of tariff periods|
 
-<h4 id="cdr-energy-api_energyplancontractv2_enumerated-values-main">Enumerated Values</h4>
+<h4 id="cdr-energy-api_energyplancontractv3_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|
@@ -7416,10 +7576,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 |paymentOption|BPAY|
 |paymentOption|OTHER|
 
-<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyplancontractfullv2">EnergyPlanContractFullV2</h3>
-<p id="tocSenergyplancontractfullv2" class="orig-anchor"></p>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyplancontractfullv3">EnergyPlanContractFullV3</h3>
+<p id="tocSenergyplancontractfullv3" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-energy-apienergyplancontractfullv2"></a>
+<a class="schema-anchor" id="schemacdr-energy-apienergyplancontractfullv3"></a>
 
 ```json
 {
@@ -7451,7 +7611,8 @@ To perform this operation, you must be authenticated and authorised with the fol
             "measureUnit": "KWH",
             "volume": 0
           }
-        ]
+        ],
+        "period": "string"
       },
       "timeOfUseRates": [
         {
@@ -7465,6 +7626,7 @@ To perform this operation, you must be authenticated and authorised with the fol
               "volume": 0
             }
           ],
+          "period": "string",
           "timeOfUse": [
             {
               "days": [
@@ -7559,27 +7721,32 @@ To perform this operation, you must be authenticated and authorised with the fol
             "measureUnit": "KWH",
             "volume": 0
           }
-        ]
-      },
-      "timeVaryingTariffs": {
-        "type": "PEAK",
-        "rates": [
-          {
-            "unitPrice": "string",
-            "measureUnit": "KWH",
-            "volume": 0
-          }
         ],
-        "timeVariations": [
-          {
-            "days": [
-              "SUN"
-            ],
-            "startTime": "string",
-            "endTime": "string"
-          }
-        ]
-      }
+        "period": "string"
+      },
+      "timeVaryingTariffs": [
+        {
+          "type": "PEAK",
+          "displayName": "string",
+          "rates": [
+            {
+              "unitPrice": "string",
+              "measureUnit": "KWH",
+              "volume": 0
+            }
+          ],
+          "period": "string",
+          "timeVariations": [
+            {
+              "days": [
+                "SUN"
+              ],
+              "startTime": "string",
+              "endTime": "string"
+            }
+          ]
+        }
+      ]
     }
   ],
   "tariffPeriod": [
@@ -7588,7 +7755,15 @@ To perform this operation, you must be authenticated and authorised with the fol
       "displayName": "string",
       "startDate": "string",
       "endDate": "string",
-      "dailySupplyCharges": "string",
+      "dailySupplyChargeType": "SINGLE",
+      "dailySupplyCharge": "string",
+      "bandedDailySupplyCharges": [
+        {
+          "unitPrice": "string",
+          "measureUnit": "KWH",
+          "volume": 0
+        }
+      ],
       "timeZone": "LOCAL",
       "rateBlockUType": "singleRate",
       "singleRate": {
@@ -7615,6 +7790,7 @@ To perform this operation, you must be authenticated and authorised with the fol
               "volume": 0
             }
           ],
+          "period": "string",
           "timeOfUse": [
             {
               "days": [
@@ -7660,13 +7836,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-<h3 id="cdr-energy-api_energyplancontractfullv2_properties">Properties</h3>
+<h3 id="cdr-energy-api_energyplancontractfullv3_properties">Properties</h3>
 
 *allOf*
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|*anonymous*|[EnergyPlanContractV2](#schemacdr-energy-apienergyplancontractv2)|mandatory|none|
+|*anonymous*|[EnergyPlanContractV3](#schemacdr-energy-apienergyplancontractv3)|mandatory|none|
 
 *and*
 
@@ -7680,7 +7856,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |» coolingOffDays|[PositiveInteger](#common-field-types)|conditional|Number of days in the cooling off period for the contract.  Mandatory for plans with type of MARKET|
 |» billFrequency|[string]|mandatory|An array of the available billing schedules for this contract. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
 
-<h4 id="cdr-energy-api_energyplancontractfullv2_enumerated-values-main">Enumerated Values</h4>
+<h4 id="cdr-energy-api_energyplancontractfullv3_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|
@@ -7692,10 +7868,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 |termType|ONGOING|
 |termType|OTHER|
 
-<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyplancontrolledload">EnergyPlanControlledLoad</h3>
-<p id="tocSenergyplancontrolledload" class="orig-anchor"></p>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyplancontrolledloadv2">EnergyPlanControlledLoadV2</h3>
+<p id="tocSenergyplancontrolledloadv2" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-energy-apienergyplancontrolledload"></a>
+<a class="schema-anchor" id="schemacdr-energy-apienergyplancontrolledloadv2"></a>
 
 ```json
 [
@@ -7714,7 +7890,8 @@ To perform this operation, you must be authenticated and authorised with the fol
           "measureUnit": "KWH",
           "volume": 0
         }
-      ]
+      ],
+      "period": "string"
     },
     "timeOfUseRates": [
       {
@@ -7728,6 +7905,7 @@ To perform this operation, you must be authenticated and authorised with the fol
             "volume": 0
           }
         ],
+        "period": "string",
         "timeOfUse": [
           {
             "days": [
@@ -7749,7 +7927,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 *Required if pricing model is SINGLE_RATE_CONT_LOAD or TIME_OF_USE_CONT_LOAD or FLEXIBLE_CONT_LOAD*
 
-<h3 id="cdr-energy-api_energyplancontrolledload_properties">Properties</h3>
+<h3 id="cdr-energy-api_energyplancontrolledloadv2_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -7765,6 +7943,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |»» unitPrice|[AmountString](#common-field-types)|mandatory|Unit price of usage per  measure unit (exclusive of GST)|
 |»» measureUnit|[Enum](#common-field-types)|optional|The measurement unit of rate. Assumed to be KWH if absent|
 |»» volume|number|optional|Volume in kWh that this rate applies to.  Only applicable for ‘stepped’ rates where different rates apply for different volumes of usage in a period|
+|» period|[ExternalRef](#common-field-types)|optional|Usage period for which the block rate applies. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax). Defaults to P1Y if absent|
 |timeOfUseRates|[object]|conditional|Array of objects representing time of use rates.  Required if rateBlockUType is timeOfUseRates|
 |» displayName|string|mandatory|Display name of the controlled load rate|
 |» description|string|optional|Description of the controlled load rate|
@@ -7773,6 +7952,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |»» unitPrice|[AmountString](#common-field-types)|mandatory|Unit price of usage per  measure unit (exclusive of GST)|
 |»» measureUnit|[Enum](#common-field-types)|optional|The measurement unit of rate. Assumed to be KWH if absent|
 |»» volume|number|optional|Volume in kWh that this rate applies to.  Only applicable for ‘stepped’ rates where different rates apply for different volumes of usage in a period|
+|» period|[ExternalRef](#common-field-types)|optional|Usage period for which the block rate applies. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax). Defaults to P1Y if absent|
 |» timeOfUse|[object]|mandatory|Array of times of use.|
 |»» days|[[Enum](#common-field-types)]|optional|The days that the rate applies to|
 |»» startTime|[ExternalRef](#common-field-types)|conditional|The beginning of the time period per day for which the controlled load rate applies. Required if endTime provided.  Formatted according to [ISO 8601 Times](https://en.wikipedia.org/wiki/ISO_8601#Times). If the time is provided without a UTC offset, the time zone will be determined by the value of EnergyPlanContract.timeZone.|
@@ -7781,7 +7961,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |»» additionalInfoUri|[URIString](#common-field-types)|optional|Optional link to additional information regarding the controlled load|
 |» type|[Enum](#common-field-types)|mandatory|The type of usage that the rate applies to|
 
-<h4 id="cdr-energy-api_energyplancontrolledload_enumerated-values-main">Enumerated Values</h4>
+<h4 id="cdr-energy-api_energyplancontrolledloadv2_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|
@@ -8090,10 +8270,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 |term|BIANNUAL|
 |term|VARIABLE|
 
-<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyplansolarfeedintariffv2">EnergyPlanSolarFeedInTariffV2</h3>
-<p id="tocSenergyplansolarfeedintariffv2" class="orig-anchor"></p>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyplansolarfeedintariffv3">EnergyPlanSolarFeedInTariffV3</h3>
+<p id="tocSenergyplansolarfeedintariffv3" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-energy-apienergyplansolarfeedintariffv2"></a>
+<a class="schema-anchor" id="schemacdr-energy-apienergyplansolarfeedintariffv3"></a>
 
 ```json
 [
@@ -8112,27 +8292,32 @@ To perform this operation, you must be authenticated and authorised with the fol
           "measureUnit": "KWH",
           "volume": 0
         }
-      ]
-    },
-    "timeVaryingTariffs": {
-      "type": "PEAK",
-      "rates": [
-        {
-          "unitPrice": "string",
-          "measureUnit": "KWH",
-          "volume": 0
-        }
       ],
-      "timeVariations": [
-        {
-          "days": [
-            "SUN"
-          ],
-          "startTime": "string",
-          "endTime": "string"
-        }
-      ]
-    }
+      "period": "string"
+    },
+    "timeVaryingTariffs": [
+      {
+        "type": "PEAK",
+        "displayName": "string",
+        "rates": [
+          {
+            "unitPrice": "string",
+            "measureUnit": "KWH",
+            "volume": 0
+          }
+        ],
+        "period": "string",
+        "timeVariations": [
+          {
+            "days": [
+              "SUN"
+            ],
+            "startTime": "string",
+            "endTime": "string"
+          }
+        ]
+      }
+    ]
   }
 ]
 
@@ -8140,7 +8325,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 *Array of feed in tariffs for solar power*
 
-<h3 id="cdr-energy-api_energyplansolarfeedintariffv2_properties">Properties</h3>
+<h3 id="cdr-energy-api_energyplansolarfeedintariffv3_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -8156,22 +8341,27 @@ To perform this operation, you must be authenticated and authorised with the fol
 |»» unitPrice|[AmountString](#common-field-types)|mandatory|Unit price of usage per measure unit (exclusive of GST)|
 |»» measureUnit|[Enum](#common-field-types)|optional|The measurement unit of rate. Assumed to be KWH if absent|
 |»» volume|number|optional|Volume that this rate applies to. Only applicable for ‘stepped’ rates where different rates apply for different volumes of usage in a period|
-|timeVaryingTariffs|object|conditional|Represents a tariff based on time.  Mandatory if tariffUType is set to timeVaryingTariffs|
+|» period|[ExternalRef](#common-field-types)|optional|Usage period for which the block rate applies. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax). Defaults to P1Y if absent|
+|timeVaryingTariffs|[object]|conditional|Represents a tariff based on time.  Mandatory if tariffUType is set to timeVaryingTariffs|
 |» type|[Enum](#common-field-types)|optional|The type of the charging time period. If absent applies to all periods|
+|» displayName|string|mandatory|Display name of the tariff|
 |» rates|[object]|optional|Array of feed in rates|
 |»» unitPrice|[AmountString](#common-field-types)|mandatory|Unit price of usage per measure unit (exclusive of GST)|
 |»» measureUnit|[Enum](#common-field-types)|optional|The measurement unit of rate. Assumed to be KWH if absent|
 |»» volume|number|optional|Volume that this rate applies to. Only applicable for ‘stepped’ rates where different rates apply for different volumes of usage in a period|
+|» period|[ExternalRef](#common-field-types)|optional|Usage period for which the block rate applies. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax). Defaults to P1Y if absent|
 |» timeVariations|[object]|mandatory|Array of time periods for which this tariff is applicable|
 |»» days|[[Enum](#common-field-types)]|mandatory|The days that the tariff applies to. At least one entry required|
 |»» startTime|[ExternalRef](#common-field-types)|optional|The beginning of the time period per day for which the tariff applies.  If absent assumes start of day (ie. midnight).  Formatted according to [ISO 8601 Times](https://en.wikipedia.org/wiki/ISO_8601#Times). If the time is provided without a UTC offset, the time zone will be determined by the value of EnergyPlanContract.timeZone.|
 |»» endTime|[ExternalRef](#common-field-types)|optional|The end of the time period per day for which the tariff applies.  If absent assumes end of day (ie. one second before midnight).  Formatted according to [ISO 8601 Times](https://en.wikipedia.org/wiki/ISO_8601#Times). If the time is provided without a UTC offset, the time zone will be determined by the value of EnergyPlanContract.timeZone.|
 
-<h4 id="cdr-energy-api_energyplansolarfeedintariffv2_enumerated-values-main">Enumerated Values</h4>
+<h4 id="cdr-energy-api_energyplansolarfeedintariffv3_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|
 |scheme|PREMIUM|
+|scheme|CURRENT|
+|scheme|VARIABLE|
 |scheme|OTHER|
 |payerType|GOVERNMENT|
 |payerType|RETAILER|
@@ -8205,10 +8395,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 |days|SAT|
 |days|PUBLIC_HOLIDAYS|
 
-<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyplantariffperiod">EnergyPlanTariffPeriod</h3>
-<p id="tocSenergyplantariffperiod" class="orig-anchor"></p>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyplantariffperiodv2">EnergyPlanTariffPeriodV2</h3>
+<p id="tocSenergyplantariffperiodv2" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-energy-apienergyplantariffperiod"></a>
+<a class="schema-anchor" id="schemacdr-energy-apienergyplantariffperiodv2"></a>
 
 ```json
 [
@@ -8217,7 +8407,15 @@ To perform this operation, you must be authenticated and authorised with the fol
     "displayName": "string",
     "startDate": "string",
     "endDate": "string",
-    "dailySupplyCharges": "string",
+    "dailySupplyChargeType": "SINGLE",
+    "dailySupplyCharge": "string",
+    "bandedDailySupplyCharges": [
+      {
+        "unitPrice": "string",
+        "measureUnit": "KWH",
+        "volume": 0
+      }
+    ],
     "timeZone": "LOCAL",
     "rateBlockUType": "singleRate",
     "singleRate": {
@@ -8244,6 +8442,7 @@ To perform this operation, you must be authenticated and authorised with the fol
             "volume": 0
           }
         ],
+        "period": "string",
         "timeOfUse": [
           {
             "days": [
@@ -8280,7 +8479,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 *Array of tariff periods*
 
-<h3 id="cdr-energy-api_energyplantariffperiod_properties">Properties</h3>
+<h3 id="cdr-energy-api_energyplantariffperiodv2_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -8288,7 +8487,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 |displayName|string|mandatory|The name of the tariff period|
 |startDate|string|mandatory|The start date of the tariff period in a calendar year.  Formatted in mm-dd format|
 |endDate|string|mandatory|The end date of the tariff period in a calendar year.  Formatted in mm-dd format|
-|dailySupplyCharges|[AmountString](#common-field-types)|optional|The amount of access charge for the tariff period, in dollars per day exclusive of GST.|
+|dailySupplyChargeType|[Enum](#common-field-types)|optional|Specifies if daily supply charge is single or banded. Default value is SINGLE if field not provided|
+|dailySupplyCharge|[AmountString](#common-field-types)|conditional|The amount of access charge for the tariff period, in dollars per day exclusive of GST. Mandatory if dailySupplyChargeType is SINGLE|
+|bandedDailySupplyCharges|[object]|conditional|Array representing banded daily supply charge rates.  Mandatory if dailySupplyChargeType is BAND|
+|» unitPrice|[AmountString](#common-field-types)|mandatory|The amount of daily supply charge for the band, in dollars per day exclusive of GST|
+|» measureUnit|[Enum](#common-field-types)|optional|The measurement unit of rate. Assumed to be DAYS if absent|
+|» volume|number|optional|Volume the charge applies to|
 |timeZone|[Enum](#common-field-types)|optional|Specifies the charge specific time zone for calculation of the time of use thresholds. If absent, timezone value in EnergyPlanContract is assumed.|
 |rateBlockUType|[Enum](#common-field-types)|mandatory|Specifies the type of rate applicable to this tariff period|
 |singleRate|object|conditional|Object representing a single rate.  Required if rateBlockUType is singleRate|
@@ -8307,6 +8511,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |»» unitPrice|[AmountString](#common-field-types)|mandatory|Unit price of usage per  measure unit (exclusive of GST)|
 |»» measureUnit|[Enum](#common-field-types)|optional|The measurement unit of rate. Assumed to be KWH if absent|
 |»» volume|number|optional|Volume in kWh that this rate applies to.  Only applicable for ‘stepped’ rates where different rates apply for different volumes of usage in a period|
+|» period|[ExternalRef](#common-field-types)|optional|Usage period for which the block rate applies. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax). Defaults to P1Y if absent|
 |» timeOfUse|[object]|mandatory|Array of times of use|
 |»» days|[[Enum](#common-field-types)]|mandatory|The days that the rate applies to|
 |»» startTime|[ExternalRef](#common-field-types)|mandatory|Start of the period.  Formatted according to [ISO 8601 Times](https://en.wikipedia.org/wiki/ISO_8601#Times). If the time is provided without a UTC offset, the time zone will be determined by the value of EnergyPlanContract.timeZone.|
@@ -8325,7 +8530,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |» measurementPeriod|[Enum](#common-field-types)|mandatory|Application period for the demand tariff|
 |» chargePeriod|[Enum](#common-field-types)|mandatory|Charge period for the demand tariff|
 
-<h4 id="cdr-energy-api_energyplantariffperiod_enumerated-values-main">Enumerated Values</h4>
+<h4 id="cdr-energy-api_energyplantariffperiodv2_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|
@@ -8336,6 +8541,16 @@ To perform this operation, you must be authenticated and authorised with the fol
 |type|RETAIL_SERVICE|
 |type|RCTI|
 |type|OTHER|
+|dailySupplyChargeType|SINGLE|
+|dailySupplyChargeType|BAND|
+|measureUnit|KWH|
+|measureUnit|KVA|
+|measureUnit|KVAR|
+|measureUnit|KVARH|
+|measureUnit|KW|
+|measureUnit|DAYS|
+|measureUnit|METER|
+|measureUnit|MONTH|
 |timeZone|LOCAL|
 |timeZone|AEST|
 |rateBlockUType|singleRate|
@@ -8959,10 +9174,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 |»»» startDate|[DateString](#common-field-types)|mandatory|The start date of the applicability of this plan|
 |»»» endDate|[DateString](#common-field-types)|optional|The end date of the applicability of this plan|
 
-<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyaccountdetailv3">EnergyAccountDetailV3</h3>
-<p id="tocSenergyaccountdetailv3" class="orig-anchor"></p>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyaccountdetailv4">EnergyAccountDetailV4</h3>
+<p id="tocSenergyaccountdetailv4" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-energy-apienergyaccountdetailv3"></a>
+<a class="schema-anchor" id="schemacdr-energy-apienergyaccountdetailv4"></a>
 
 ```json
 {
@@ -9023,7 +9238,8 @@ To perform this operation, you must be authenticated and authorised with the fol
                     "measureUnit": "KWH",
                     "volume": 0
                   }
-                ]
+                ],
+                "period": "string"
               },
               "timeOfUseRates": [
                 {
@@ -9033,6 +9249,7 @@ To perform this operation, you must be authenticated and authorised with the fol
                   "rates": [
                     {}
                   ],
+                  "period": "string",
                   "timeOfUse": [
                     {}
                   ],
@@ -9119,25 +9336,22 @@ To perform this operation, you must be authenticated and authorised with the fol
                     "measureUnit": "KWH",
                     "volume": 0
                   }
-                ]
-              },
-              "timeVaryingTariffs": {
-                "type": "PEAK",
-                "rates": [
-                  {
-                    "unitPrice": "string",
-                    "measureUnit": "KWH",
-                    "volume": 0
-                  }
                 ],
-                "timeVariations": [
-                  {
-                    "days": [],
-                    "startTime": "string",
-                    "endTime": "string"
-                  }
-                ]
-              }
+                "period": "string"
+              },
+              "timeVaryingTariffs": [
+                {
+                  "type": "PEAK",
+                  "displayName": "string",
+                  "rates": [
+                    {}
+                  ],
+                  "period": "string",
+                  "timeVariations": [
+                    {}
+                  ]
+                }
+              ]
             }
           ],
           "tariffPeriod": [
@@ -9146,7 +9360,15 @@ To perform this operation, you must be authenticated and authorised with the fol
               "displayName": "string",
               "startDate": "string",
               "endDate": "string",
-              "dailySupplyCharges": "string",
+              "dailySupplyChargeType": "SINGLE",
+              "dailySupplyCharge": "string",
+              "bandedDailySupplyCharges": [
+                {
+                  "unitPrice": "string",
+                  "measureUnit": "KWH",
+                  "volume": 0
+                }
+              ],
               "timeZone": "LOCAL",
               "rateBlockUType": "singleRate",
               "singleRate": {
@@ -9169,6 +9391,7 @@ To perform this operation, you must be authenticated and authorised with the fol
                   "rates": [
                     {}
                   ],
+                  "period": "string",
                   "timeOfUse": [
                     {}
                   ],
@@ -9224,7 +9447,8 @@ To perform this operation, you must be authenticated and authorised with the fol
                     "measureUnit": "KWH",
                     "volume": 0
                   }
-                ]
+                ],
+                "period": "string"
               },
               "timeOfUseRates": [
                 {
@@ -9234,6 +9458,7 @@ To perform this operation, you must be authenticated and authorised with the fol
                   "rates": [
                     {}
                   ],
+                  "period": "string",
                   "timeOfUse": [
                     {}
                   ],
@@ -9320,25 +9545,22 @@ To perform this operation, you must be authenticated and authorised with the fol
                     "measureUnit": "KWH",
                     "volume": 0
                   }
-                ]
-              },
-              "timeVaryingTariffs": {
-                "type": "PEAK",
-                "rates": [
-                  {
-                    "unitPrice": "string",
-                    "measureUnit": "KWH",
-                    "volume": 0
-                  }
                 ],
-                "timeVariations": [
-                  {
-                    "days": [],
-                    "startTime": "string",
-                    "endTime": "string"
-                  }
-                ]
-              }
+                "period": "string"
+              },
+              "timeVaryingTariffs": [
+                {
+                  "type": "PEAK",
+                  "displayName": "string",
+                  "rates": [
+                    {}
+                  ],
+                  "period": "string",
+                  "timeVariations": [
+                    {}
+                  ]
+                }
+              ]
             }
           ],
           "tariffPeriod": [
@@ -9347,7 +9569,15 @@ To perform this operation, you must be authenticated and authorised with the fol
               "displayName": "string",
               "startDate": "string",
               "endDate": "string",
-              "dailySupplyCharges": "string",
+              "dailySupplyChargeType": "SINGLE",
+              "dailySupplyCharge": "string",
+              "bandedDailySupplyCharges": [
+                {
+                  "unitPrice": "string",
+                  "measureUnit": "KWH",
+                  "volume": 0
+                }
+              ],
               "timeZone": "LOCAL",
               "rateBlockUType": "singleRate",
               "singleRate": {
@@ -9370,6 +9600,7 @@ To perform this operation, you must be authenticated and authorised with the fol
                   "rates": [
                     {}
                   ],
+                  "period": "string",
                   "timeOfUse": [
                     {}
                   ],
@@ -9414,7 +9645,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-<h3 id="cdr-energy-api_energyaccountdetailv3_properties">Properties</h3>
+<h3 id="cdr-energy-api_energyaccountdetailv4_properties">Properties</h3>
 
 *allOf*
 
@@ -9443,8 +9674,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |»»»» minimumValue|[AmountString](#common-field-types)|mandatory|Minimum value of the charge if the charge is a range or the absolute value of the charge if no range is specified|
 |»»»» maximumValue|[AmountString](#common-field-types)|optional|The upper limit of the charge if the charge could occur in a range|
 |»»»» period|[ExternalRef](#common-field-types)|optional|The charges that occur on a schedule indicates the frequency. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
-|»»» gasContract|[EnergyPlanContractV2](#schemacdr-energy-apienergyplancontractv2)|conditional|The details of the terms for the supply of electricity under this plan.  Is mandatory if fuelType is set to GAS or DUAL|
-|»»» electricityContract|[EnergyPlanContractV2](#schemacdr-energy-apienergyplancontractv2)|conditional|The details of the terms for the supply of electricity under this plan.  Is mandatory if fuelType is set to ELECTRICITY or DUAL|
+|»»» gasContract|[EnergyPlanContractV3](#schemacdr-energy-apienergyplancontractv3)|conditional|The details of the terms for the supply of electricity under this plan.  Is mandatory if fuelType is set to GAS or DUAL|
+|»»» electricityContract|[EnergyPlanContractV3](#schemacdr-energy-apienergyplancontractv3)|conditional|The details of the terms for the supply of electricity under this plan.  Is mandatory if fuelType is set to ELECTRICITY or DUAL|
 |»» authorisedContacts|[object]|optional|An array of additional contacts that are authorised to act on this account|
 |»»» firstName|string|optional|For people with single names this field need not be present. The single name should be in the lastName field|
 |»»» lastName|string|mandatory|For people with single names the single name should be in this field|
@@ -9452,7 +9683,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |»»» prefix|string|optional|Also known as title or salutation. The prefix to the name (e.g. Mr, Mrs, Ms, Miss, Sir, etc)|
 |»»» suffix|string|optional|Used for a trailing suffix to the name (e.g. Jr)|
 
-<h4 id="cdr-energy-api_energyaccountdetailv3_enumerated-values-main">Enumerated Values</h4>
+<h4 id="cdr-energy-api_energyaccountdetailv4_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|

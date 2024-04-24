@@ -175,7 +175,7 @@ Get a Client Registration for a given Client ID.
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |ClientId|path|string|mandatory|The client ID issued by the target Data Holder|
-|Authorization|header|string|mandatory|An Authorisation Token as per **[[RFC6750]](#nref-RFC6750)**|
+|Authorization|header|[ExternalRef](#common-field-types)|mandatory|An Authorisation Token as per **[[RFC6750]](#nref-RFC6750)**|
 
 > Example responses
 
@@ -238,9 +238,9 @@ Get a Client Registration for a given Client ID.
 
 <h3 id="cdr-dynamic-client-registration-api_get-oauth-client-registration_response-headers">Response Headers</h3>
 
-|Status|Header|Type|Format|Description|
+|Status|Header|Type|Description|
 |---|---|---|---|---|
-|401|WWW-Authenticate|string||The Response Header Field as per **[[RFC6750]](#nref-RFC6750)**|
+|401|WWW-Authenticate|[ExternalRef](#common-field-types)|The Response Header Field as per **[[RFC6750]](#nref-RFC6750)**|
 
   
     
@@ -311,7 +311,7 @@ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |ClientId|path|string|mandatory|The client ID issued by the target Data Holder|
-|Authorization|header|string|mandatory|An Authorisation Token as per **[[RFC6750]](#nref-RFC6750)**|
+|Authorization|header|[ExternalRef](#common-field-types)|mandatory|An Authorisation Token as per **[[RFC6750]](#nref-RFC6750)**|
 |body|body|[ClientRegistrationRequest](#schemacdr-dynamic-client-registration-apiclientregistrationrequest)|mandatory|The registration request JWT to be used to register with a Data Holder.|
 
 > Example responses
@@ -376,9 +376,9 @@ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
 
 <h3 id="cdr-dynamic-client-registration-api_update-data-recipient-registration_response-headers">Response Headers</h3>
 
-|Status|Header|Type|Format|Description|
+|Status|Header|Type|Description|
 |---|---|---|---|---|
-|401|WWW-Authenticate|string||The Response Header Field as per **[[RFC6750]](#nref-RFC6750)**|
+|401|WWW-Authenticate|[ExternalRef](#common-field-types)|The Response Header Field as per **[[RFC6750]](#nref-RFC6750)**|
 
   
     
@@ -439,7 +439,7 @@ Delete a Client Registration for a given Client ID.
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |ClientId|path|string|mandatory|The client ID issued by the target Data Holder|
-|Authorization|header|string|mandatory|An Authorisation Token as per **[[RFC6750]](#nref-RFC6750)**|
+|Authorization|header|[ExternalRef](#common-field-types)|mandatory|An Authorisation Token as per **[[RFC6750]](#nref-RFC6750)**|
 
 <h3 id="cdr-dynamic-client-registration-api_delete-data-recipient-oauth-client-registration_responses">Responses</h3>
 
@@ -452,9 +452,9 @@ Delete a Client Registration for a given Client ID.
 
 <h3 id="cdr-dynamic-client-registration-api_delete-data-recipient-oauth-client-registration_response-headers">Response Headers</h3>
 
-|Status|Header|Type|Format|Description|
+|Status|Header|Type|Description|
 |---|---|---|---|---|
-|401|WWW-Authenticate|string||The Response Header Field as per **[[RFC6750]](#nref-RFC6750)**|
+|401|WWW-Authenticate|[ExternalRef](#common-field-types)|The Response Header Field as per **[[RFC6750]](#nref-RFC6750)**|
 
   
     
@@ -478,13 +478,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-*The registration request JWT to be used to register with a Data Holder.*
+*The registration request JWT to be used to register with a Data Holder. The schema of the payload section of the decoded string(JWT) is defined in [ClientRegistration](#cdr-dynamic-client-registration-api_schemas_tocSclientregistration).*
 
 <h3 id="cdr-dynamic-client-registration-api_clientregistrationrequest_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|*anonymous*|string(JWT)|mandatory|The registration request JWT to be used to register with a Data Holder.|
+|*anonymous*|string(JWT)|mandatory|The registration request JWT to be used to register with a Data Holder. The schema of the payload section of the decoded string(JWT) is defined in [ClientRegistration](#cdr-dynamic-client-registration-api_schemas_tocSclientregistration).|
 
 <h3 class="schema-toc" id="cdr-dynamic-client-registration-api_schemas_tocSregistrationproperties">RegistrationProperties</h3>
 <p id="tocSregistrationproperties" class="orig-anchor"></p>

@@ -6,7 +6,7 @@ The following table lists the changes made to these standards in reverse date or
 
 |Change Date|Version|Description|Detail of change|
 |-----------|-------|-----------|----------------|
-|TBC | 1.30.0 | Changes TBC | See [release notes](includes/releasenotes/releasenotes.1.30.0.html) and [Decision XXX](https://github.com/ConsumerDataStandardsAustralia/standards/issues/XXX) for details. |
+|24/04/2024 | 1.30.0 | Changes from maintenance iteration 18 | See [release notes](includes/releasenotes/releasenotes.1.30.0.html) and [Decision 340](https://github.com/ConsumerDataStandardsAustralia/standards/issues/340) for details. |
 |28/02/2024 | 1.29.1 | Patch release fixing minor issues | See [release notes](includes/releasenotes/releasenotes.1.29.1.html) for details. |
 |21/12/2023 | 1.29.0 | Changes from maintenance iteration 17.  Also includes CX Standards changes to uplift Data Holder Dashboards and accommodate Business Consumers | See [release notes](includes/releasenotes/releasenotes.1.29.0.html), [Decision 318](https://github.com/ConsumerDataStandardsAustralia/standards/issues/318), [Decision 328](https://github.com/ConsumerDataStandardsAustralia/standards/issues/328), [Decision 333](https://github.com/ConsumerDataStandardsAustralia/standards/issues/333) and [Decision 334](https://github.com/ConsumerDataStandardsAustralia/standards/issues/334) for details. |
 |10/11/2023| 1.28.0 | Candidate standards arising from Decision 306 and updated draft non-bank lending standards | See [release notes](includes/releasenotes/releasenotes.1.28.0.html) and [Decision 306](https://github.com/ConsumerDataStandardsAustralia/standards/issues/306) for details. |

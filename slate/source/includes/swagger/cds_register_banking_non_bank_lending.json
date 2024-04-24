@@ -2,7 +2,7 @@
   "openapi" : "3.0.3",
   "info" : {
     "title" : "CDR Participant Discovery API",
-    "version" : "1.29.1"
+    "version" : "1.30.0"
   },
   "servers" : [ {
     "url" : "https://<register-base-url>/"
@@ -124,14 +124,18 @@
             "description" : "Missing Required Header / Invalid Version / Invalid Path Parameter"
           },
           "401" : {
-            "content" : {
-              "application/json" : {
+            "description" : "Invalid Bearer Token",
+            "headers" : {
+              "WWW-Authenticate" : {
+                "description" : "The Response Header Field as per **[[RFC6750]](#nref-RFC6750)**",
+                "explode" : false,
                 "schema" : {
-                  "$ref" : "#/components/schemas/ResponseErrorListV2"
-                }
+                  "type" : "string",
+                  "x-cds-type" : "ExternalRef"
+                },
+                "style" : "simple"
               }
-            },
-            "description" : "Invalid Bearer Token"
+            }
           },
           "406" : {
             "content" : {
