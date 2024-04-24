@@ -1367,9 +1367,7 @@
                         "scheme": {
                             "type": "string",
                             "description": "The applicable scheme",
-                            "enum": ["PREMIUM",
-                                "OTHER"
-                            ]
+                            "enum": ["PREMIUM","CURRENT","VARIABLE","OTHER"]
                         },
                         "payerType": {
                             "type": "string",
@@ -1430,61 +1428,67 @@
                             }
                         },
                         "timeVaryingTariffs": {
-                            "type": "object",
+                            "type": "array",
                             "description": "Represents a tariff based on time.  Mandatory if tariffUType is set to timeVaryingTariffs",
-                            "required": ["amount", "timeVariations"],
-                            "properties": {
-                                "type": {
-                                    "type": "string",
-                                    "description": "The type of the charging time period. If absent applies to all periods",
-                                    "enum": ["PEAK",
-                                        "OFF_PEAK",
-                                        "SHOULDER"
-                                    ]
-                                },
-                                "rates": {
-                                    "description": "Array of feed in rates",
-                                    "type": "array",
-                                    "items": {
-                                        "type": "object",
-                                        "required": ["unitPrice"],
-                                        "properties": {
-                                            "unitPrice": {
-                                                "type": "string",
-                                                "x-cds-type": "AmountString",
-                                                "description": "Unit price of usage per measure unit (exclusive of GST)"
-                                            },
-                                            "measureUnit": {
-                                                "type": "string",
-                                                "description": "The measurement unit of rate. Assumed to be KWH if absent",
-                                                "enum": ["KWH",
-                                                    "KVA",
-                                                    "KVAR",
-                                                    "KVARH",
-                                                    "KW",
-                                                    "DAYS",
-                                                    "METER",
-                                                    "MONTH"]
-                                            },
-                                            "volume": {
-                                                "type": "number",
-                                                "description": "Volume that this rate applies to. Only applicable for ‘stepped’ rates where different rates apply for different volumes of usage in a period"
+                            "items":{
+                                "type": "object",
+                                "required": ["amount", "timeVariations","displayName"],
+                                "properties": {
+                                    "type": {
+                                        "type": "string",
+                                        "description": "The type of the charging time period. If absent applies to all periods",
+                                        "enum": ["PEAK",
+                                            "OFF_PEAK",
+                                            "SHOULDER"
+                                        ]
+                                    },
+                                    "displayName": {
+                                        "type": "string",
+                                        "description": "Display name of the tariff"
+                                    },
+                                    "rates": {
+                                        "description": "Array of feed in rates",
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "required": ["unitPrice"],
+                                            "properties": {
+                                                "unitPrice": {
+                                                    "type": "string",
+                                                    "x-cds-type": "AmountString",
+                                                    "description": "Unit price of usage per measure unit (exclusive of GST)"
+                                                },
+                                                "measureUnit": {
+                                                    "type": "string",
+                                                    "description": "The measurement unit of rate. Assumed to be KWH if absent",
+                                                    "enum": ["KWH",
+                                                        "KVA",
+                                                        "KVAR",
+                                                        "KVARH",
+                                                        "KW",
+                                                        "DAYS",
+                                                        "METER",
+                                                        "MONTH"]
+                                                },
+                                                "volume": {
+                                                    "type": "number",
+                                                    "description": "Volume that this rate applies to. Only applicable for ‘stepped’ rates where different rates apply for different volumes of usage in a period"
+                                                }
                                             }
                                         }
-                                    }
-                                },
-                                "period": {
-                                    "type": "string",
-                                    "x-cds-type": "ExternalRef",
-                                    "description": "Usage period for which the block rate applies. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax). Defaults to P1Y if absent"
-                                },
-                                "timeVariations": {
-                                    "description": "Array of time periods for which this tariff is applicable",
-                                    "type": "array",
-                                    "items": {
-                                        "type": "object",
-                                        "required": ["days"],
-                                        "properties": {
+                                    },
+                                    "period": {
+                                        "type": "string",
+                                        "x-cds-type": "ExternalRef",
+                                        "description": "Usage period for which the block rate applies. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax). Defaults to P1Y if absent"
+                                    },
+                                    "timeVariations": {
+                                        "description": "Array of time periods for which this tariff is applicable",
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "required": ["days"],
+                                            "properties": {
                                                 "days": {
                                                     "description": "The days that the tariff applies to. At least one entry required",
                                                     "type": "array",
@@ -1501,20 +1505,21 @@
                                                         ]
                                                     }
                                                 },
-                                            "startTime": {
-                                                "description": "The beginning of the time period per day for which the tariff applies.  If absent assumes start of day (ie. midnight).\n\nFormatted according to [ISO 8601 Times](https://en.wikipedia.org/wiki/ISO_8601#Times). If the time is provided without a UTC offset, the time zone will be determined by the value of EnergyPlanContract.timeZone.",
-                                                "type": "string",
-                                                "x-cds-type": "ExternalRef"
-                                            },
-                                            "endTime": {
-                                                "description": "The end of the time period per day for which the tariff applies.  If absent assumes end of day (ie. one second before midnight).\n\nFormatted according to [ISO 8601 Times](https://en.wikipedia.org/wiki/ISO_8601#Times). If the time is provided without a UTC offset, the time zone will be determined by the value of EnergyPlanContract.timeZone.",
-                                                "type": "string",
-                                                "x-cds-type": "ExternalRef"
+                                                "startTime": {
+                                                    "description": "The beginning of the time period per day for which the tariff applies.  If absent assumes start of day (ie. midnight).\n\nFormatted according to [ISO 8601 Times](https://en.wikipedia.org/wiki/ISO_8601#Times). If the time is provided without a UTC offset, the time zone will be determined by the value of EnergyPlanContract.timeZone.",
+                                                    "type": "string",
+                                                    "x-cds-type": "ExternalRef"
+                                                },
+                                                "endTime": {
+                                                    "description": "The end of the time period per day for which the tariff applies.  If absent assumes end of day (ie. one second before midnight).\n\nFormatted according to [ISO 8601 Times](https://en.wikipedia.org/wiki/ISO_8601#Times). If the time is provided without a UTC offset, the time zone will be determined by the value of EnergyPlanContract.timeZone.",
+                                                    "type": "string",
+                                                    "x-cds-type": "ExternalRef"
+                                                }
                                             }
                                         }
                                     }
-                                }
 
+                                }
                             }
                         }
                     }
