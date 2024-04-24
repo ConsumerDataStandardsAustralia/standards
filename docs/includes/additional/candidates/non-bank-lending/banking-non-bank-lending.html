@@ -610,10 +610,7 @@
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id='high-level-standards'>High Level Standards</h1><pre class="highlight diff tab-diff"><code>**v1.29.0 Change**
-The Draft Non-Bank Lending Standards have been made as Candidate Standards. 
-No other changes were made between the Draft and Candidate version.
-</code></pre>
+        <h1 id='high-level-standards'>High Level Standards</h1>
 <aside class="notice">
 This standard is part of the Consumer Data Standards and is classified as a <strong>Candidate Standard</strong><br/>
 This means that:
@@ -720,7 +717,8 @@ These endpoints are exposed by the Register and consumed by Data Holders and Dat
   Data Holders and Data Recipient Software Products are required to call these endpoints to obtain metadata that enables connection and registration between participants as well as obtaining the status of participants in the CDR.
   These statuses are provided authoritatively by the Register to allow participants to determine whether a connecting third-party is permitted to perform registration requests or data sharing requests.
 </aside>
-
+<pre class="highlight diff tab-diff"><code>Removed ResponseErrorListV2 as the 401 error response schema for 'Get Data Holder Brands'. This endpoint conforms to RFC6750, returning an oAuth error in the WWW-Authenticate response header.
+</code></pre>
 <p><br>
 <table>
 <tr><td><a href='../../../../includes/swagger/cds_register_banking_non_bank_lending.json'>Register OpenAPI Specification (JSON)</a></td></tr>
@@ -807,7 +805,7 @@ x-min-v: string
 <tr>
 <td>Authorization</td>
 <td>header</td>
-<td>string</td>
+<td><a href="#common-field-types">ExternalRef</a></td>
 <td>mandatory</td>
 <td>An Authorisation Token as per <strong><a href="#nref-RFC6750">[RFC6750]</a></strong>.</td>
 </tr>
@@ -828,7 +826,7 @@ x-min-v: string
 <tr>
 <td>updated-since</td>
 <td>query</td>
-<td>string</td>
+<td><a href="#common-field-types">DateTimeString</a></td>
 <td>optional</td>
 <td>query filter returns results updated since the specified date-time</td>
 </tr>
@@ -965,7 +963,7 @@ x-min-v: string
 <td>401</td>
 <td><a href="https://tools.ietf.org/html/rfc7235#section-3.1">Unauthorized</a></td>
 <td>Invalid Bearer Token</td>
-<td><a href="#schemacdr-participant-discovery-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
+<td>None</td>
 </tr>
 <tr>
 <td>406</td>
@@ -982,7 +980,6 @@ x-min-v: string
 <th>Status</th>
 <th>Header</th>
 <th>Type</th>
-<th>Format</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -990,8 +987,13 @@ x-min-v: string
 <td>200</td>
 <td>x-v</td>
 <td>string</td>
-<td></td>
 <td>The version of the API end point that the CDR Register has responded with.</td>
+</tr>
+<tr>
+<td>401</td>
+<td>WWW-Authenticate</td>
+<td><a href="#common-field-types">ExternalRef</a></td>
+<td>The Response Header Field as per <strong><a href="#nref-RFC6750">[RFC6750]</a></strong></td>
 </tr>
 </tbody></table>
 
@@ -1094,7 +1096,7 @@ If-None-Match: string
 <tr>
 <td>If-None-Match</td>
 <td>header</td>
-<td>string</td>
+<td><a href="#common-field-types">ASCIIString</a></td>
 <td>optional</td>
 <td>Makes the request method conditional on a recipient cache or origin server not having any current representation of the target resource with an entity-tag that does not match any of those listed in the field-value.</td>
 </tr>
@@ -1209,7 +1211,6 @@ If-None-Match: string
 <th>Status</th>
 <th>Header</th>
 <th>Type</th>
-<th>Format</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -1217,21 +1218,18 @@ If-None-Match: string
 <td>200</td>
 <td>x-v</td>
 <td>string</td>
-<td></td>
 <td>The version of the API end point that the CDR Register has responded with.</td>
 </tr>
 <tr>
 <td>200</td>
 <td>Etag</td>
-<td>string</td>
-<td></td>
+<td><a href="#common-field-types">ASCIIString</a></td>
 <td>Entity tag that uniquely represents the requested resource.</td>
 </tr>
 <tr>
 <td>304</td>
 <td>Etag</td>
-<td>string</td>
-<td></td>
+<td><a href="#common-field-types">ASCIIString</a></td>
 <td>Entity tag that uniquely represents the requested resource.</td>
 </tr>
 </tbody></table>
@@ -1334,7 +1332,7 @@ If-None-Match: string
 <tr>
 <td>If-None-Match</td>
 <td>header</td>
-<td>string</td>
+<td><a href="#common-field-types">ASCIIString</a></td>
 <td>optional</td>
 <td>Makes the request method conditional on a recipient cache or origin server not having any current representation of the target resource with an entity-tag that does not match any of those listed in the field-value.</td>
 </tr>
@@ -1433,7 +1431,6 @@ If-None-Match: string
 <th>Status</th>
 <th>Header</th>
 <th>Type</th>
-<th>Format</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -1441,21 +1438,18 @@ If-None-Match: string
 <td>200</td>
 <td>x-v</td>
 <td>string</td>
-<td></td>
 <td>The version of the API end point that the CDR Register has responded with.</td>
 </tr>
 <tr>
 <td>200</td>
 <td>Etag</td>
-<td>string</td>
-<td></td>
+<td><a href="#common-field-types">ASCIIString</a></td>
 <td>Entity tag that uniquely represents the requested resource.</td>
 </tr>
 <tr>
 <td>304</td>
 <td>Etag</td>
-<td>string</td>
-<td></td>
+<td><a href="#common-field-types">ASCIIString</a></td>
 <td>Entity tag that uniquely represents the requested resource.</td>
 </tr>
 </tbody></table>
@@ -2845,7 +2839,6 @@ This operation does not require authentication
 <th>Status</th>
 <th>Header</th>
 <th>Type</th>
-<th>Format</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -2853,35 +2846,30 @@ This operation does not require authentication
 <td>200</td>
 <td>x-v</td>
 <td>string</td>
-<td></td>
 <td>The <a href="#response-headers">version</a> of the API endpoint that the data holder has responded with.</td>
 </tr>
 <tr>
 <td>200</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td></td>
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>400</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td></td>
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>406</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td></td>
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>422</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td></td>
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 </tbody></table>
@@ -3198,7 +3186,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 <th>Status</th>
 <th>Header</th>
 <th>Type</th>
-<th>Format</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -3206,35 +3193,30 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>200</td>
 <td>x-v</td>
 <td>string</td>
-<td></td>
 <td>The <a href="#response-headers">version</a> of the API endpoint that the data holder has responded with.</td>
 </tr>
 <tr>
 <td>200</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td></td>
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>400</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td></td>
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>406</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td></td>
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>422</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td></td>
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 </tbody></table>
@@ -3482,7 +3464,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 <th>Status</th>
 <th>Header</th>
 <th>Type</th>
-<th>Format</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -3490,35 +3471,30 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>200</td>
 <td>x-v</td>
 <td>string</td>
-<td></td>
 <td>The <a href="#response-headers">version</a> of the API endpoint that the data holder has responded with.</td>
 </tr>
 <tr>
 <td>200</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td></td>
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>400</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td></td>
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>406</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td></td>
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>422</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td></td>
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 </tbody></table>
@@ -3720,7 +3696,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 <th>Status</th>
 <th>Header</th>
 <th>Type</th>
-<th>Format</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -3728,35 +3703,30 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>200</td>
 <td>x-v</td>
 <td>string</td>
-<td></td>
 <td>The <a href="#response-headers">version</a> of the API endpoint that the data holder has responded with.</td>
 </tr>
 <tr>
 <td>200</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td></td>
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>400</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td></td>
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>404</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td></td>
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>406</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td></td>
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 </tbody></table>
@@ -4162,7 +4132,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 <th>Status</th>
 <th>Header</th>
 <th>Type</th>
-<th>Format</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -4170,35 +4139,30 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>200</td>
 <td>x-v</td>
 <td>string</td>
-<td></td>
 <td>The <a href="#response-headers">version</a> of the API endpoint that the data holder has responded with.</td>
 </tr>
 <tr>
 <td>200</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td></td>
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>400</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td></td>
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>404</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td></td>
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>406</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td></td>
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 </tbody></table>
@@ -4488,7 +4452,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 <th>Status</th>
 <th>Header</th>
 <th>Type</th>
-<th>Format</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -4496,42 +4459,36 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>200</td>
 <td>x-v</td>
 <td>string</td>
-<td></td>
 <td>The <a href="#response-headers">version</a> of the API endpoint that the data holder has responded with.</td>
 </tr>
 <tr>
 <td>200</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td></td>
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>400</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td></td>
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>404</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td></td>
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>406</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td></td>
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>422</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td></td>
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 </tbody></table>
@@ -4757,7 +4714,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 <th>Status</th>
 <th>Header</th>
 <th>Type</th>
-<th>Format</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -4765,35 +4721,30 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>200</td>
 <td>x-v</td>
 <td>string</td>
-<td></td>
 <td>The <a href="#response-headers">version</a> of the API endpoint that the data holder has responded with.</td>
 </tr>
 <tr>
 <td>200</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td></td>
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>400</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td></td>
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>404</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td></td>
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>406</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td></td>
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 </tbody></table>
@@ -5024,7 +4975,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 <th>Status</th>
 <th>Header</th>
 <th>Type</th>
-<th>Format</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -5032,42 +4982,36 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>200</td>
 <td>x-v</td>
 <td>string</td>
-<td></td>
 <td>The <a href="#response-headers">version</a> of the API endpoint that the data holder has responded with.</td>
 </tr>
 <tr>
 <td>200</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td></td>
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>400</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td></td>
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>404</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td></td>
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>406</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td></td>
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>422</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td></td>
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 </tbody></table>
@@ -5382,7 +5326,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 <th>Status</th>
 <th>Header</th>
 <th>Type</th>
-<th>Format</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -5390,35 +5333,30 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>200</td>
 <td>x-v</td>
 <td>string</td>
-<td></td>
 <td>The <a href="#response-headers">version</a> of the API endpoint that the data holder has responded with.</td>
 </tr>
 <tr>
 <td>200</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td></td>
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>400</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td></td>
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>406</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td></td>
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>422</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td></td>
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 </tbody></table>
@@ -5664,7 +5602,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 <th>Status</th>
 <th>Header</th>
 <th>Type</th>
-<th>Format</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -5672,35 +5609,30 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>200</td>
 <td>x-v</td>
 <td>string</td>
-<td></td>
 <td>The <a href="#response-headers">version</a> of the API endpoint that the data holder has responded with.</td>
 </tr>
 <tr>
 <td>200</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td></td>
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>400</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td></td>
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>406</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td></td>
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>422</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td></td>
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 </tbody></table>
@@ -6021,7 +5953,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 <th>Status</th>
 <th>Header</th>
 <th>Type</th>
-<th>Format</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -6029,42 +5960,36 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>200</td>
 <td>x-v</td>
 <td>string</td>
-<td></td>
 <td>The <a href="#response-headers">version</a> of the API endpoint that the data holder has responded with.</td>
 </tr>
 <tr>
 <td>200</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td></td>
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>400</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td></td>
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>404</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td></td>
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>406</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td></td>
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>422</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td></td>
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 </tbody></table>
@@ -6467,7 +6392,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 <th>Status</th>
 <th>Header</th>
 <th>Type</th>
-<th>Format</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -6475,35 +6399,30 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>200</td>
 <td>x-v</td>
 <td>string</td>
-<td></td>
 <td>The <a href="#response-headers">version</a> of the API endpoint that the data holder has responded with.</td>
 </tr>
 <tr>
 <td>200</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td></td>
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>400</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td></td>
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>406</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td></td>
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>422</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td></td>
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 </tbody></table>
@@ -6839,7 +6758,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 <th>Status</th>
 <th>Header</th>
 <th>Type</th>
-<th>Format</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -6847,35 +6765,30 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>200</td>
 <td>x-v</td>
 <td>string</td>
-<td></td>
 <td>The <a href="#response-headers">version</a> of the API endpoint that the data holder has responded with.</td>
 </tr>
 <tr>
 <td>200</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td></td>
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>400</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td></td>
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>406</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td></td>
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>422</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td></td>
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 </tbody></table>
@@ -7127,7 +7040,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 <th>Status</th>
 <th>Header</th>
 <th>Type</th>
-<th>Format</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -7135,35 +7047,30 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>200</td>
 <td>x-v</td>
 <td>string</td>
-<td></td>
 <td>The <a href="#response-headers">version</a> of the API endpoint that the data holder has responded with.</td>
 </tr>
 <tr>
 <td>200</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td></td>
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>400</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td></td>
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>406</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td></td>
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>422</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td></td>
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 </tbody></table>
@@ -7417,7 +7324,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 <th>Status</th>
 <th>Header</th>
 <th>Type</th>
-<th>Format</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -7425,42 +7331,36 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>200</td>
 <td>x-v</td>
 <td>string</td>
-<td></td>
 <td>The <a href="#response-headers">version</a> of the API endpoint that the data holder has responded with.</td>
 </tr>
 <tr>
 <td>200</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td></td>
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>400</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td></td>
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>404</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td></td>
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>406</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td></td>
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>422</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td></td>
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 </tbody></table>
@@ -7819,7 +7719,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 <th>Status</th>
 <th>Header</th>
 <th>Type</th>
-<th>Format</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -7827,7 +7726,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>200</td>
 <td>x-v</td>
 <td>string</td>
-<td></td>
 <td>The <a href="#response-headers">version</a> of the API endpoint that the data holder has responded with.</td>
 </tr>
 </tbody></table>
@@ -8172,7 +8070,6 @@ This operation does not require authentication
 <th>Status</th>
 <th>Header</th>
 <th>Type</th>
-<th>Format</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -8180,7 +8077,6 @@ This operation does not require authentication
 <td>200</td>
 <td>x-v</td>
 <td>string</td>
-<td></td>
 <td>The <a href="#response-headers">version</a> of the API endpoint that the data holder has responded with.</td>
 </tr>
 </tbody></table>

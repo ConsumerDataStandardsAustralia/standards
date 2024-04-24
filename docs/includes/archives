@@ -1,8 +1,4 @@
-<h1 id='archives'>Archives</h1><pre class="highlight diff tab-diff"><code>**v1.29.0 Change**
-Corrected minor typo
-<span class="gd">- Releases Date
-</span><span class="gi">+ Release Date
-</span></code></pre>
+<h1 id='archives'>Archives</h1>
 <p>The following table lists archived versions of the Consumer Data Standards.  These are older versions of the standards that are available for reference only.  They are not considered binding.</p>
 
 <table><thead>
@@ -12,6 +8,11 @@ Corrected minor typo
 <th>Description</th>
 </tr>
 </thead><tbody>
+<tr>
+<td><a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.29.1/'>28/02/2024</a></td>
+<td>1.29.1</td>
+<td><a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.29.1/'>Patch release fixing minor issues</a></td>
+</tr>
 <tr>
 <td><a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.29.0/'>21/12/2023</a></td>
 <td>1.29.0</td>

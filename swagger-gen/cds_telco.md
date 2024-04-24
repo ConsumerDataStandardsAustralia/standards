@@ -151,9 +151,9 @@ Note that the results returned by this end point are expected to be ordered in d
 
 <h3 id="cdr-telco-api_get-telco-products_response-headers">Response Headers</h3>
 
-|Status|Header|Type|Format|Description|
+|Status|Header|Type|Description|
 |---|---|---|---|---|
-|200|x-v|string||none|
+|200|x-v|string|none|
 
   
     <aside class="success">
@@ -341,9 +341,9 @@ Obtain detailed information on a single telco prouct offered openly to the marke
 
 <h3 id="cdr-telco-api_get-telco-product-detail_response-headers">Response Headers</h3>
 
-|Status|Header|Type|Format|Description|
+|Status|Header|Type|Description|
 |---|---|---|---|---|
-|200|x-v|string||none|
+|200|x-v|string|none|
 
   
     <aside class="success">
@@ -496,14 +496,14 @@ Obtain a usage data from a particular service Id
 
 <h3 id="cdr-telco-api_get-usage-for-telco-service_response-headers">Response Headers</h3>
 
-|Status|Header|Type|Format|Description|
+|Status|Header|Type|Description|
 |---|---|---|---|---|
-|200|x-v|string||none|
-|200|x-fapi-interaction-id|string||none|
-|400|x-fapi-interaction-id|string||none|
-|404|x-fapi-interaction-id|string||none|
-|406|x-fapi-interaction-id|string||none|
-|422|x-fapi-interaction-id|string||none|
+|200|x-v|string|none|
+|200|x-fapi-interaction-id|string|none|
+|400|x-fapi-interaction-id|string|none|
+|404|x-fapi-interaction-id|string|none|
+|406|x-fapi-interaction-id|string|none|
+|422|x-fapi-interaction-id|string|none|
 
   
     
@@ -670,13 +670,13 @@ Obtain usage data for all services associated with the customer
 
 <h3 id="cdr-telco-api_get-usage_response-headers">Response Headers</h3>
 
-|Status|Header|Type|Format|Description|
+|Status|Header|Type|Description|
 |---|---|---|---|---|
-|200|x-v|string||none|
-|200|x-fapi-interaction-id|string||none|
-|400|x-fapi-interaction-id|string||none|
-|406|x-fapi-interaction-id|string||none|
-|422|x-fapi-interaction-id|string||none|
+|200|x-v|string|none|
+|200|x-fapi-interaction-id|string|none|
+|400|x-fapi-interaction-id|string|none|
+|406|x-fapi-interaction-id|string|none|
+|422|x-fapi-interaction-id|string|none|
 
   
     
@@ -867,13 +867,13 @@ Obtain usage data for a specific service
 
 <h3 id="cdr-telco-api_get-usage-for-specific-telco-service_response-headers">Response Headers</h3>
 
-|Status|Header|Type|Format|Description|
+|Status|Header|Type|Description|
 |---|---|---|---|---|
-|200|x-v|string||none|
-|200|x-fapi-interaction-id|string||none|
-|400|x-fapi-interaction-id|string||none|
-|406|x-fapi-interaction-id|string||none|
-|422|x-fapi-interaction-id|string||none|
+|200|x-v|string|none|
+|200|x-fapi-interaction-id|string|none|
+|400|x-fapi-interaction-id|string|none|
+|406|x-fapi-interaction-id|string|none|
+|422|x-fapi-interaction-id|string|none|
 
   
     
@@ -1022,13 +1022,13 @@ Obtain the list of telco accounts available under the authorised consent
 
 <h3 id="cdr-telco-api_get-telco-accounts_response-headers">Response Headers</h3>
 
-|Status|Header|Type|Format|Description|
+|Status|Header|Type|Description|
 |---|---|---|---|---|
-|200|x-v|string||none|
-|200|x-fapi-interaction-id|string||none|
-|400|x-fapi-interaction-id|string||none|
-|406|x-fapi-interaction-id|string||none|
-|422|x-fapi-interaction-id|string||none|
+|200|x-v|string|none|
+|200|x-fapi-interaction-id|string|none|
+|400|x-fapi-interaction-id|string|none|
+|406|x-fapi-interaction-id|string|none|
+|422|x-fapi-interaction-id|string|none|
 
   
     
@@ -1166,13 +1166,13 @@ Obtain detailed information for a specific telco account
 
 <h3 id="cdr-telco-api_get-telco-account-detail_response-headers">Response Headers</h3>
 
-|Status|Header|Type|Format|Description|
+|Status|Header|Type|Description|
 |---|---|---|---|---|
-|200|x-v|string||none|
-|200|x-fapi-interaction-id|string||none|
-|400|x-fapi-interaction-id|string||none|
-|404|x-fapi-interaction-id|string||none|
-|406|x-fapi-interaction-id|string||none|
+|200|x-v|string|none|
+|200|x-fapi-interaction-id|string|none|
+|400|x-fapi-interaction-id|string|none|
+|404|x-fapi-interaction-id|string|none|
+|406|x-fapi-interaction-id|string|none|
 
   
     
@@ -1317,13 +1317,13 @@ Some general notes about this end point:
 
 <h3 id="cdr-telco-api_get-telco-agreed-payment-schedule_response-headers">Response Headers</h3>
 
-|Status|Header|Type|Format|Description|
+|Status|Header|Type|Description|
 |---|---|---|---|---|
-|200|x-v|string||none|
-|200|x-fapi-interaction-id|string||none|
-|400|x-fapi-interaction-id|string||none|
-|404|x-fapi-interaction-id|string||none|
-|406|x-fapi-interaction-id|string||none|
+|200|x-v|string|none|
+|200|x-fapi-interaction-id|string|none|
+|400|x-fapi-interaction-id|string|none|
+|404|x-fapi-interaction-id|string|none|
+|406|x-fapi-interaction-id|string|none|
 
   
     
@@ -1451,13 +1451,13 @@ Obtain the details of any concessions or arrangements applied to a specific telc
 
 <h3 id="cdr-telco-api_get-telco-concessions_response-headers">Response Headers</h3>
 
-|Status|Header|Type|Format|Description|
+|Status|Header|Type|Description|
 |---|---|---|---|---|
-|200|x-v|string||none|
-|200|x-fapi-interaction-id|string||none|
-|400|x-fapi-interaction-id|string||none|
-|404|x-fapi-interaction-id|string||none|
-|406|x-fapi-interaction-id|string||none|
+|200|x-v|string|none|
+|200|x-fapi-interaction-id|string|none|
+|400|x-fapi-interaction-id|string|none|
+|404|x-fapi-interaction-id|string|none|
+|406|x-fapi-interaction-id|string|none|
 
   
     
@@ -1623,13 +1623,13 @@ Obtain the current balance for a specific account
 
 <h3 id="cdr-telco-api_get-balance-for-telco-account_response-headers">Response Headers</h3>
 
-|Status|Header|Type|Format|Description|
+|Status|Header|Type|Description|
 |---|---|---|---|---|
-|200|x-v|string||none|
-|200|x-fapi-interaction-id|string||none|
-|400|x-fapi-interaction-id|string||none|
-|404|x-fapi-interaction-id|string||none|
-|406|x-fapi-interaction-id|string||none|
+|200|x-v|string|none|
+|200|x-fapi-interaction-id|string|none|
+|400|x-fapi-interaction-id|string|none|
+|404|x-fapi-interaction-id|string|none|
+|406|x-fapi-interaction-id|string|none|
 
   
     
@@ -1810,13 +1810,13 @@ Obtain the current balance for all accounts
 
 <h3 id="cdr-telco-api_get-bulk-telco-balances_response-headers">Response Headers</h3>
 
-|Status|Header|Type|Format|Description|
+|Status|Header|Type|Description|
 |---|---|---|---|---|
-|200|x-v|string||none|
-|200|x-fapi-interaction-id|string||none|
-|400|x-fapi-interaction-id|string||none|
-|406|x-fapi-interaction-id|string||none|
-|422|x-fapi-interaction-id|string||none|
+|200|x-v|string|none|
+|200|x-fapi-interaction-id|string|none|
+|400|x-fapi-interaction-id|string|none|
+|406|x-fapi-interaction-id|string|none|
+|422|x-fapi-interaction-id|string|none|
 
   
     
@@ -2023,13 +2023,13 @@ Obtain the current balance for a specified set of accounts
 
 <h3 id="cdr-telco-api_get-balances-for-specific-telco-accounts_response-headers">Response Headers</h3>
 
-|Status|Header|Type|Format|Description|
+|Status|Header|Type|Description|
 |---|---|---|---|---|
-|200|x-v|string||none|
-|200|x-fapi-interaction-id|string||none|
-|400|x-fapi-interaction-id|string||none|
-|406|x-fapi-interaction-id|string||none|
-|422|x-fapi-interaction-id|string||none|
+|200|x-v|string|none|
+|200|x-fapi-interaction-id|string|none|
+|400|x-fapi-interaction-id|string|none|
+|406|x-fapi-interaction-id|string|none|
+|422|x-fapi-interaction-id|string|none|
 
   
     
@@ -2213,14 +2213,14 @@ Obtain the invoices for a specific account
 
 <h3 id="cdr-telco-api_get-invoices-for-telco-account_response-headers">Response Headers</h3>
 
-|Status|Header|Type|Format|Description|
+|Status|Header|Type|Description|
 |---|---|---|---|---|
-|200|x-v|string||none|
-|200|x-fapi-interaction-id|string||none|
-|400|x-fapi-interaction-id|string||none|
-|404|x-fapi-interaction-id|string||none|
-|406|x-fapi-interaction-id|string||none|
-|422|x-fapi-interaction-id|string||none|
+|200|x-v|string|none|
+|200|x-fapi-interaction-id|string|none|
+|400|x-fapi-interaction-id|string|none|
+|404|x-fapi-interaction-id|string|none|
+|406|x-fapi-interaction-id|string|none|
+|422|x-fapi-interaction-id|string|none|
 
   
     
@@ -2413,13 +2413,13 @@ Obtain the invoices for all accounts
 
 <h3 id="cdr-telco-api_get-telco-invoices_response-headers">Response Headers</h3>
 
-|Status|Header|Type|Format|Description|
+|Status|Header|Type|Description|
 |---|---|---|---|---|
-|200|x-v|string||none|
-|200|x-fapi-interaction-id|string||none|
-|400|x-fapi-interaction-id|string||none|
-|406|x-fapi-interaction-id|string||none|
-|422|x-fapi-interaction-id|string||none|
+|200|x-v|string|none|
+|200|x-fapi-interaction-id|string|none|
+|400|x-fapi-interaction-id|string|none|
+|406|x-fapi-interaction-id|string|none|
+|422|x-fapi-interaction-id|string|none|
 
   
     
@@ -2638,13 +2638,13 @@ Obtain invoices for a specified set of accounts
 
 <h3 id="cdr-telco-api_get-invoices-for-specific-telco-accounts_response-headers">Response Headers</h3>
 
-|Status|Header|Type|Format|Description|
+|Status|Header|Type|Description|
 |---|---|---|---|---|
-|200|x-v|string||none|
-|200|x-fapi-interaction-id|string||none|
-|400|x-fapi-interaction-id|string||none|
-|406|x-fapi-interaction-id|string||none|
-|422|x-fapi-interaction-id|string||none|
+|200|x-v|string|none|
+|200|x-fapi-interaction-id|string|none|
+|400|x-fapi-interaction-id|string|none|
+|406|x-fapi-interaction-id|string|none|
+|422|x-fapi-interaction-id|string|none|
 
   
     
@@ -2808,14 +2808,14 @@ Obtain the billing transactions for a specific account
 
 <h3 id="cdr-telco-api_get-transactions-for-telco-account_response-headers">Response Headers</h3>
 
-|Status|Header|Type|Format|Description|
+|Status|Header|Type|Description|
 |---|---|---|---|---|
-|200|x-v|string||none|
-|200|x-fapi-interaction-id|string||none|
-|400|x-fapi-interaction-id|string||none|
-|404|x-fapi-interaction-id|string||none|
-|406|x-fapi-interaction-id|string||none|
-|422|x-fapi-interaction-id|string||none|
+|200|x-v|string|none|
+|200|x-fapi-interaction-id|string|none|
+|400|x-fapi-interaction-id|string|none|
+|404|x-fapi-interaction-id|string|none|
+|406|x-fapi-interaction-id|string|none|
+|422|x-fapi-interaction-id|string|none|
 
   
     
@@ -2977,13 +2977,13 @@ Obtain billing transactions for all accounts
 
 <h3 id="cdr-telco-api_get-telco-transactions_response-headers">Response Headers</h3>
 
-|Status|Header|Type|Format|Description|
+|Status|Header|Type|Description|
 |---|---|---|---|---|
-|200|x-v|string||none|
-|200|x-fapi-interaction-id|string||none|
-|400|x-fapi-interaction-id|string||none|
-|406|x-fapi-interaction-id|string||none|
-|422|x-fapi-interaction-id|string||none|
+|200|x-v|string|none|
+|200|x-fapi-interaction-id|string|none|
+|400|x-fapi-interaction-id|string|none|
+|406|x-fapi-interaction-id|string|none|
+|422|x-fapi-interaction-id|string|none|
 
   
     
@@ -3171,13 +3171,13 @@ Obtain transactions for a specified set of accounts
 
 <h3 id="cdr-telco-api_get-transactions-for-specific-telco-accounts_response-headers">Response Headers</h3>
 
-|Status|Header|Type|Format|Description|
+|Status|Header|Type|Description|
 |---|---|---|---|---|
-|200|x-v|string||none|
-|200|x-fapi-interaction-id|string||none|
-|400|x-fapi-interaction-id|string||none|
-|406|x-fapi-interaction-id|string||none|
-|422|x-fapi-interaction-id|string||none|
+|200|x-v|string|none|
+|200|x-fapi-interaction-id|string|none|
+|400|x-fapi-interaction-id|string|none|
+|406|x-fapi-interaction-id|string|none|
+|422|x-fapi-interaction-id|string|none|
 
   
     

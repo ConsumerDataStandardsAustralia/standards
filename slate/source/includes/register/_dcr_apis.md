@@ -10,11 +10,7 @@ This specification defines the APIs for Data Holders exposing Dynamic Client Reg
 <tr><td><a href='./includes/swagger/swagger_dcr.yaml'>DCR Swagger (YAML)</a></td></tr>
 </table>
 
-```diff
-**v1.29.0 Change**
-Changed authorization_signed_response_alg and authorization_encrypted_response_alg
-from optional to conditional to align to the field description
-```
+
 
 ## Register a client using a CDR Register issued Software Statement Assertion
 

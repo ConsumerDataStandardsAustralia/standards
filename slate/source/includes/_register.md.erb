@@ -10,8 +10,7 @@ These endpoints are exposed by the Register and consumed by Data Holders and Dat
 </aside>
 
 ```diff
-**v1.29.1 Change**
-Corrected typos in the description of the `kid` field in the 'JWK' schema of the 'Get JWKS' endpoint
+Removed ResponseErrorListV2 as the 401 error response schema for 'Get Data Holder Brands' and 'Get Software Statement Assertion (SSA)'. These endpoints conform to RFC6750, returning an oAuth error in the WWW-Authenticate response header.
 ```
 
 <br>
@@ -20,10 +19,7 @@ Corrected typos in the description of the `kid` field in the 'JWK' schema of the
 <tr><td><a href='./includes/swagger/cds_register.yaml'>Register OpenAPI Specification (YAML)</a></td></tr>
 </table>
 
-```diff
-**v1.29.0 Change**
-Minor adjustments to API naming in the table below
-```
+
 
 |API|Caller|Description|MTLS|TLS|Bearer Token|
 |---|---|---|---|---|---|

@@ -1,24 +1,6 @@
 ## Tokens  
 ### ID Token
 
-> Non-Normative Example - acr
-
-```
-{
-  "iss": "https://www.holder.com.au",
-  "sub": "a9ebbef6-1f0b-44eb-96cf-0c5b51b37ab2",
-  "aud": "12345",
-  "nonce": "n-0S6_WzA2Mj",
-  "exp": 1311281970,
-  "iat": 1311280970,
-  "nbf": 1311280970,
-  "auth_time": 1311280969,
-  "acr": "urn:cds.au:cdr:3",
-  "refresh_token_expires_at": 1311281970,
-  "sharing_expires_at": 1311281970
-}
-```
-
 > Non-Normative Example - FAPI 1.0 Final Phase 3 Obligations
 
 ```

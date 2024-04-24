@@ -1,10 +1,6 @@
 # Known Issues
 
-```diff
-**v1.29.0 Change**
-The known issue related to the incorrect API version of `Get Bulk Billing` and 
-`Get Billing For Specific Accounts` has been removed as it has been resolved
-```
+
 
 There are certain aspects of the standards that are actively under review. These known issues are articulated in the following table.
 

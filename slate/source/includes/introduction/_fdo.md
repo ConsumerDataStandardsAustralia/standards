@@ -1,13 +1,9 @@
 ## Future Dated Obligations
 
 ```diff
-**v1.29.0 Change**
-Added a reference to the Obligation Date Schedule
-
-Added Data Holder Dashboards Future Dated Obligation
-
-Added entries for the changes to Get Billing For Account, Get Bulk Billing
-and Get Billing For Specific Accounts
+Updated the date format in the 'Obligation Dates Schedule' table in the linked summary page to match the format in the 'Endpoint Version Schedule' tables to simplify cross-referencing. The aligned format is YYYY-MM-DD.
+- 13/05/2024
++ 2024-05-13
 ```
 
 The standards, as published from time to time, may include specific statements indicating that a specific section of the standards will not take effect until a future date or may cease to have effect on some future date. 
@@ -46,3 +42,5 @@ The table below highlights these areas of the standards.
 |[Get Billing For Account](#cdr-energy-api_get-billing-for-account)|Data Holders **MAY** retire v2 of this endpoint by **September 9th 2024** if they implement v3| September 9th 2024 |
 |[Get Bulk Billing](#cdr-energy-api_get-bulk-billing)|Data Holders **MAY** retire v2 of this endpoint by **September 9th 2024** if they implement v3| September 9th 2024 |
 |[Get Billing For Specific Accounts](#cdr-energy-api_get-billing-for-specific-accounts)|Data Holders **MAY** retire v2 of this endpoint by **September 9th 2024** if they implement v3| September 9th 2024 |
+|[Get Generic Plan Detail](#cdr-energy-api_get-generic-plan-detail)|<ul><li>Data Holders **MUST** implement v3 of this endpoint by **November 11th 2024**</li><li>Data Holder **MAY** retire v2 of this endpoint by **September 8th 2025**</li></ul>| November 11th 2024 |
+|[Get Energy Account Detail](#cdr-energy-api_get-energy-account-detail)|<ul><li>Data Holders **MUST** implement v4 of this endpoint by **November 11th 2024**</li><li>Data Holder **MAY** retire v3 of this endpoint by **September 8th 2025**</li></ul>| November 11th 2024 |

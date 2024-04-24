@@ -1,13 +1,6 @@
 ## Common Field Types
 
-```diff
-**v1.29.0 Change**
-Properties defined in request parameters with enumerated values will now correctly show the type as 'Enum' instead of 'string'
 
-Properties defined in response schemas with specific 'Common Field Types' values inside arrays will now show the specific type instead of a generic type
-
-Added clarification that a number can be integer or decimal
-```
 
 The following table outlines the common data types for fields used in the standard.
 

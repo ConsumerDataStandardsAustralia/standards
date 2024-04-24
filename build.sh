@@ -18,4 +18,4 @@ cd $BUILD_DIR/slate
 ./build.sh
 
 echo "*** Build Complete ***"
-echo "*** To test the docs exectute run.sh in the slate dir ***"
+echo "*** To test the docs execute run.sh in the slate dir ***"

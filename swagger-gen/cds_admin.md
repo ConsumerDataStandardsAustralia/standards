@@ -93,9 +93,9 @@ null
 
 <h3 id="cdr-admin-api_metadata-update_response-headers">Response Headers</h3>
 
-|Status|Header|Type|Format|Description|
+|Status|Header|Type|Description|
 |---|---|---|---|---|
-|200|x-v|string||The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-v|string|The [version](#response-headers) of the API end point that the data holder has responded with.|
 
   
     
@@ -662,9 +662,9 @@ If the Data Holder supports private_key_jwt client authentication they MUST vali
 
 <h3 id="cdr-admin-api_get-metrics_response-headers">Response Headers</h3>
 
-|Status|Header|Type|Format|Description|
+|Status|Header|Type|Description|
 |---|---|---|---|---|
-|200|x-v|string||The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-v|string|The [version](#response-headers) of the API end point that the data holder has responded with.|
 
   
     

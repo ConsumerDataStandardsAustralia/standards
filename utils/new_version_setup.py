@@ -8,7 +8,7 @@ version_regex = r"\b\d{1}\.\d{2}\.\d{1}\b" #regex for version
 diff_regex = re.compile(r'```diff(.*?)```', re.DOTALL) #regex for diff blocks
 new_version = "-1.-1.-1"
 current_version = "-2.-2.-2"
-exclude_list = ["_intro.md"] # Define the exclude_list for diff block removal
+exclude_list = ["_version_delta_intro.md"] # Define the exclude_list for diff block removal
 changelog_table_header = "|Change Date|Version|Description|Detail of change|"
 archives_table_header = "|Release Date|Version|Description|"
 SWAGGERGENAPIPATH = '../swagger-gen/api'
@@ -213,7 +213,7 @@ def search_and_remove_diff_blocks(directory='.'):
 def main():
 #   Get new version from user
     global new_version, current_version
-    user_input = input("Leave blank to incriment current version or enter new version number (e.g., 1.27.0): ")
+    user_input = input("Leave blank to increment current version or enter new version number (e.g., 1.27.0): ")
     
     with open(INTROMDPATH, 'r+') as f :
         file_content = f.read()
