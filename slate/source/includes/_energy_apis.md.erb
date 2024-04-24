@@ -9,6 +9,13 @@ This specification defines the APIs for Data Holders exposing Energy endpoints.
 </table>
 
 ```diff
+Added new `period` field  to the following elements:
+  EnergyPlanControlledLoad.singleRate
+  EnergyPlanControlledLoad.timeOfUseRates
+  EnergyPlanSolarFeedInTariffV2.singleRate
+  EnergyPlanSolarFeedInTariffV2.timeVaryingTariffs
+  EnergyPlanTariffPeriod.timeOfUseRates
+
 Converted `solarFeedInTariff.timeVaringTariffs` into an array 
 
 Added following new mandatory field to `solarFeedInTariff.timeVaryingTariffs`:

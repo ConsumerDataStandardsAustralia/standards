@@ -29,6 +29,7 @@ This release addresses the following change requests raised on [Standards Mainte
 
 - [Standards Maintenance #543 - refresh_token_expires_at and sharing_expires_at claims listed as MUST be supported](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/543)
 - [Standards Maintenance #624 - Improved structure for Solar Time Varying Tariffs](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/624)
+- [Standards Maintenance #625 - Additional field to support Step Tariff calculations](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/625)
 - [Standards Maintenance #629 - Maintenance Iteration 18 Holistic Feedback](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/629)
 - [Standards Maintenance #631 - Updates to 'Revoking consent' Standards](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/631)
 - [Standards Maintenance #632 - Concurrent consent support and cdr_arrangement_id](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/632)
@@ -63,6 +64,7 @@ This release addresses the following Decision Proposals published on [Standards]
 ## API Endpoints
 |Change|Description|Link|
 |------|-----------|----|
+| Support Step Tariff calculations | [**Standards Maintenance #625**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/625#issuecomment-1993734451): Added new optional `period` field to the following to help support stepped tariff calculations: <ul><li>`EnergyPlanControlledLoad.singleRate`</li><li>`EnergyPlanSolarFeedInTariffV2.singleRate`</li><li>`EnergyPlanControlledLoad.timeOfUseRates`</li><li>`EnergyPlanSolarFeedInTariffV2.timeVaryingTariffs`</li><li>`EnergyPlanTariffPeriod.timeOfUseRates`</li></ul>  | [Energy APIs](../../#energy-apis)
 | Improved structure for Solar Time Varying Tariffs  | [**Standards Maintenance #624**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/624#issuecomment-2019888328): <ul><li>Converted `solarFeedInTariff.timeVaringTariffs` into an array to allow representation of multiple feed in tariffs</li><li>Added new mandatory `displayName` field to `solarFeedInTariff.timeVaryingTariffs`</li><li>Added new ENUM values `CURRENT` and `VARIABLE` to `solarFeedInTariff.scheme`</li></ul> | [Energy APIs](../../#energy-apis)
 
 ## Information Security Profile

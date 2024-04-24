@@ -747,7 +747,7 @@
                         }
                     },
                     "controlledLoad": {
-                        "$ref": "#/components/schemas/EnergyPlanControlledLoad"
+                        "$ref": "#/components/schemas/EnergyPlanControlledLoadV2"
                     },
                     "incentives": {
                         "$ref": "#/components/schemas/EnergyPlanIncentives"
@@ -768,7 +768,7 @@
                         "$ref": "#/components/schemas/EnergyPlanSolarFeedInTariffV3"
                     },
                     "tariffPeriod": {
-                        "$ref": "#/components/schemas/EnergyPlanTariffPeriod"
+                        "$ref": "#/components/schemas/EnergyPlanTariffPeriodV2"
                     }
                 }
             },
@@ -831,7 +831,7 @@
                     }
                 ]
             },
-            "EnergyPlanControlledLoad": {
+            "EnergyPlanControlledLoadV2": {
                 "description": "Required if pricing model is SINGLE_RATE_CONT_LOAD or TIME_OF_USE_CONT_LOAD or FLEXIBLE_CONT_LOAD",
                 "type": "array",
                     "items":{
@@ -908,6 +908,11 @@
                                             }
                                         }
                                     }
+                                },
+                                "period": {
+                                    "type": "string",
+                                    "x-cds-type": "ExternalRef",
+                                    "description": "Usage period for which the block rate applies. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax). Defaults to P1Y if absent"
                                 }
                         }
                     },
@@ -961,6 +966,11 @@
                                                 }
                                             }
                                         }
+                                    },
+                                    "period": {
+                                        "type": "string",
+                                        "x-cds-type": "ExternalRef",
+                                        "description": "Usage period for which the block rate applies. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax). Defaults to P1Y if absent"
                                     },
                                     "timeOfUse": {
                                         "description": "Array of times of use.",
@@ -1408,6 +1418,11 @@
                                             }
                                         }
                                     }
+                                },
+                                "period": {
+                                    "type": "string",
+                                    "x-cds-type": "ExternalRef",
+                                    "description": "Usage period for which the block rate applies. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax). Defaults to P1Y if absent"
                                 }
 
                             }
@@ -1462,6 +1477,11 @@
                                             }
                                         }
                                     },
+                                    "period": {
+                                        "type": "string",
+                                        "x-cds-type": "ExternalRef",
+                                        "description": "Usage period for which the block rate applies. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax). Defaults to P1Y if absent"
+                                    },
                                     "timeVariations": {
                                         "description": "Array of time periods for which this tariff is applicable",
                                         "type": "array",
@@ -1469,22 +1489,22 @@
                                             "type": "object",
                                             "required": ["days"],
                                             "properties": {
-                                                    "days": {
-                                                        "description": "The days that the tariff applies to. At least one entry required",
-                                                        "type": "array",
-                                                        "items": {
-                                                            "type": "string",
-                                                            "enum": ["SUN",
-                                                                "MON",
-                                                                "TUE",
-                                                                "WED",
-                                                                "THU",
-                                                                "FRI",
-                                                                "SAT",
-                                                                "PUBLIC_HOLIDAYS"
-                                                            ]
-                                                        }
-                                                    },
+                                                "days": {
+                                                    "description": "The days that the tariff applies to. At least one entry required",
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string",
+                                                        "enum": ["SUN",
+                                                            "MON",
+                                                            "TUE",
+                                                            "WED",
+                                                            "THU",
+                                                            "FRI",
+                                                            "SAT",
+                                                            "PUBLIC_HOLIDAYS"
+                                                        ]
+                                                    }
+                                                },
                                                 "startTime": {
                                                     "description": "The beginning of the time period per day for which the tariff applies.  If absent assumes start of day (ie. midnight).\n\nFormatted according to [ISO 8601 Times](https://en.wikipedia.org/wiki/ISO_8601#Times). If the time is provided without a UTC offset, the time zone will be determined by the value of EnergyPlanContract.timeZone.",
                                                     "type": "string",
@@ -1505,7 +1525,7 @@
                     }
                 }
             },
-            "EnergyPlanTariffPeriod": {
+            "EnergyPlanTariffPeriodV2": {
                 "description": "Array of tariff periods",
                 "type": "array",
                 "items": {
@@ -1660,6 +1680,11 @@
                                                 }
                                             }
                                         }
+                                    },
+                                    "period": {
+                                        "type": "string",
+                                        "x-cds-type": "ExternalRef",
+                                        "description": "Usage period for which the block rate applies. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax). Defaults to P1Y if absent"
                                     },
                                     "timeOfUse": {
                                         "description": "Array of times of use",
@@ -5799,7 +5824,7 @@
 			"get": {
 				"summary": "Get Energy Account Detail",
 				"operationId": "getAccount",
-				"description": "Obtain detailed information for a specific energy account\n\nOther Versions: [v1](includes/obsolete/get-energy-account-detail-v1.html) [v2](includes/obsolete/get-energy-account-detail-v2.html) [v3](includes/obsolete/get-energy-account-detail-v3.html)",
+                "description": "Obtain detailed information for a specific energy account\n\nOther Versions: [v1](includes/obsolete/get-energy-account-detail-v1.html) [v2](includes/obsolete/get-energy-account-detail-v2.html) [v3](includes/obsolete/get-energy-account-detail-v3.html)",
                 "x-scopes": [
                     "energy:accounts.detail:read"
                 ],
