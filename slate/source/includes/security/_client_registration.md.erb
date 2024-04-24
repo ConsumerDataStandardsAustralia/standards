@@ -93,6 +93,10 @@ Decoded SSA
 
 ```
 
+```diff
+Corrected typo in the Description of `sector_identifier_uri`
+```
+
 The SSA will conform to the requirements of **[[DCR]](#nref-DCR)** with the following clarifications:
 
 | Client Metadata | Required | Modifiable | Description
@@ -109,7 +113,7 @@ The SSA will conform to the requirements of **[[DCR]](#nref-DCR)** with the foll
 |**client_description**|	Required | <i class="icon-check"></i> | Human-readable string name of the software product description to be presented to the end user during authorization
 |**client_uri**|	Required | <i class="icon-check"></i> | URL string of a web page providing information about the client
 |**redirect_uris**|	Required | <i class="icon-check"></i> | Array of redirection URI strings for use in redirect-based flows
-|**sector_identifier_uri**| Optional | <i class="icon-check"></i>  | URL string referencing the client's sector identifier URI, used as an optional input to the Pairwise Identifier as described in described in [section 8](https://openid.net/specs/openid-connect-core-1_0.html#SubjectIDTypes) of **[[OIDC]](#nref-OIDC)**
+|**sector_identifier_uri**| Optional | <i class="icon-check"></i>  | URL string referencing the client's sector identifier URI, used as an optional input to the Pairwise Identifier as described in [section 8](https://openid.net/specs/openid-connect-core-1_0.html#SubjectIDTypes) of **[[OIDC]](#nref-OIDC)**
 |**logo_uri**|	Required | <i class="icon-check"></i> | URL string that references a logo for the client software product. The server **SHOULD** display this image to the end-user during approval
 |**tos_uri**|	Optional | <i class="icon-check"></i> | URL string that points to a human-readable terms of service document for the Software Product
 |**policy_uri**|	Optional | <i class="icon-check"></i> | URL string that points to a human-readable policy document for the Software Product

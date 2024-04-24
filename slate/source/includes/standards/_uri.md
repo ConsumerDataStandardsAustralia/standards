@@ -2,30 +2,30 @@
 >Some example URIs that meet this standard are:  
 
 ```
-1. https://www.bank.com.au/api/cds-au/v1/banking/accounts  
-2. https://www.bank.com.au/api/cds-au/v1/banking/accounts/abc123/transactions/?x=y#bar  
-3. https://www.bank.com.au/complex/uri/taxonomy/cds-au/v1/banking/products?page=2  
-4. https://www.energyretailer.com.au/api/cds-au/v1/energy/usage  
-5. https://www.energyretailer.com.au/api/cds-au/v1/ACME/apply  
+1. https://www.bank.com.au/api/cds-au/v1/banking/accounts
+2. https://www.bank.com.au/api/cds-au/v1/banking/accounts/abc123/transactions/?x=y#bar
+3. https://www.bank.com.au/complex/uri/taxonomy/cds-au/v1/banking/products?page=2
+4. https://www.energyretailer.com.au/api/cds-au/v1/energy/usage
+5. https://www.energyretailer.com.au/api/cds-au/v1/ACME/apply
 ```
 
 >The holder path for each example is:  
 
 ```
-1. www.bank.com.au/api  
-2. www.bank.com.au/api   
-3. www.bank.com.au/complex/uri/taxonomy  
-4. www.energyretailer.com.au/api  
+1. www.bank.com.au/api
+2. www.bank.com.au/api
+3. www.bank.com.au/complex/uri/taxonomy
+4. www.energyretailer.com.au/api
 5. www.energyretailer.com.au/api
 ```
 
 >The Base Path for each example is:  
 
 ```
-1. https://www.bank.com.au/api/cds-au/v1/banking  
-2. https://www.bank.com.au/api/cds-au/v1/banking   
-3. https://www.bank.com.au/complex/uri/taxonomy/cds-au/v1/banking  
-4. https://www.energyretailer.com.au/api/cds-au/v1/energy  
+1. https://www.bank.com.au/api/cds-au/v1/banking
+2. https://www.bank.com.au/api/cds-au/v1/banking
+3. https://www.bank.com.au/complex/uri/taxonomy/cds-au/v1/banking
+4. https://www.energyretailer.com.au/api/cds-au/v1/energy
 5. https://www.energyretailer.com.au/api/cds-au/v1/ACME
 ```
 
