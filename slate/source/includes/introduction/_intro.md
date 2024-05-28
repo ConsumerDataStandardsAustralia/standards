@@ -1,7 +1,5 @@
 
-```diff
-Improved line wrapping to avoid horizontal scrollbars in the 'Non-normative Examples' and 'Version Delta' tab columns.
-```
+
 
 These standards have been developed as part of the Australian Government's introduction of the [Consumer Data Right](https://www.accc.gov.au/focus-areas/consumer-data-right "ACCC Consumer Data Right webpage") legislation to give Australians greater control over their data.
 
@@ -19,7 +17,7 @@ Some of these standards will be binding data standards under the Competition and
 
 ## Version
 
-These standards represent version 1.30.0 of the high level standards.  See the [versioning section](#versioning) for more information on how versions are managed in the standard.
+These standards represent version 1.31.0 of the high level standards.  See the [versioning section](#versioning) for more information on how versions are managed in the standard.
 
 ## Interpretation
 

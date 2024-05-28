@@ -1,10 +1,6 @@
 ## Amending Authorisation Standards
 
-```diff
-Fixed typo:
-- How a changed attributed is signified
-+ How a changed attribute is signified
-```
+
 
 |Area|CX Standard|
 |-------------------|------------------------------|
