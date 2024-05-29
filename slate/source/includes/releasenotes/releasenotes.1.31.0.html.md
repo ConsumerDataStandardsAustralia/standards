@@ -17,7 +17,7 @@ Release notes for version v1.31.0 of the [CDR Standards](../../index.html).
 
 This release addresses the following minor defects raised on [Standards Staging](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues):
 
-- [Standards Staging #XXX - Title](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/XXX)
+- [Standards Staging #396 - Improve clarity of the PerformanceMetricsV3 structure](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/396)
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
@@ -51,6 +51,7 @@ This release addresses the following Decision Proposals published on [Standards]
 ## API Endpoints
 |Change|Description|Link|
 |------|-----------|----|
+| Clarified PerformanceMetricsV3 structure | [**Standards Staging #396**](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/396): Clarified PerformanceMetricsV3 structure to ensure previousDays arrays are represented correctly | [PerformanceMetricsV3](../../#cdr-admin-api_schemas_tocSperformancemetricsv3)
 
 
 ## Information Security Profile
