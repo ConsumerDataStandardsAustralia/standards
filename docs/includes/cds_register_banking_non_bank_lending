@@ -76,7 +76,7 @@ x-min-v: string
 <tr>
 <td>Authorization</td>
 <td>header</td>
-<td>string</td>
+<td><a href="#common-field-types">ExternalRef</a></td>
 <td>mandatory</td>
 <td>An Authorisation Token as per <strong><a href="#nref-RFC6750">[RFC6750]</a></strong>.</td>
 </tr>
@@ -97,7 +97,7 @@ x-min-v: string
 <tr>
 <td>updated-since</td>
 <td>query</td>
-<td>string</td>
+<td><a href="#common-field-types">DateTimeString</a></td>
 <td>optional</td>
 <td>query filter returns results updated since the specified date-time</td>
 </tr>
@@ -232,7 +232,7 @@ x-min-v: string
 <td>401</td>
 <td><a href="https://tools.ietf.org/html/rfc7235#section-3.1">Unauthorized</a></td>
 <td>Invalid Bearer Token</td>
-<td><a href="#schemacdr-participant-discovery-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
+<td>None</td>
 </tr>
 <tr>
 <td>406</td>
@@ -249,7 +249,6 @@ x-min-v: string
 <th>Status</th>
 <th>Header</th>
 <th>Type</th>
-<th>Format</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -257,8 +256,13 @@ x-min-v: string
 <td>200</td>
 <td>x-v</td>
 <td>string</td>
-<td></td>
 <td>The version of the API end point that the CDR Register has responded with.</td>
+</tr>
+<tr>
+<td>401</td>
+<td>WWW-Authenticate</td>
+<td><a href="#common-field-types">ExternalRef</a></td>
+<td>The Response Header Field as per <strong><a href="#nref-RFC6750">[RFC6750]</a></strong></td>
 </tr>
 </tbody></table>
 
@@ -359,7 +363,7 @@ If-None-Match: string
 <tr>
 <td>If-None-Match</td>
 <td>header</td>
-<td>string</td>
+<td><a href="#common-field-types">ASCIIString</a></td>
 <td>optional</td>
 <td>Makes the request method conditional on a recipient cache or origin server not having any current representation of the target resource with an entity-tag that does not match any of those listed in the field-value.</td>
 </tr>
@@ -472,7 +476,6 @@ If-None-Match: string
 <th>Status</th>
 <th>Header</th>
 <th>Type</th>
-<th>Format</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -480,21 +483,18 @@ If-None-Match: string
 <td>200</td>
 <td>x-v</td>
 <td>string</td>
-<td></td>
 <td>The version of the API end point that the CDR Register has responded with.</td>
 </tr>
 <tr>
 <td>200</td>
 <td>Etag</td>
-<td>string</td>
-<td></td>
+<td><a href="#common-field-types">ASCIIString</a></td>
 <td>Entity tag that uniquely represents the requested resource.</td>
 </tr>
 <tr>
 <td>304</td>
 <td>Etag</td>
-<td>string</td>
-<td></td>
+<td><a href="#common-field-types">ASCIIString</a></td>
 <td>Entity tag that uniquely represents the requested resource.</td>
 </tr>
 </tbody></table>
@@ -595,7 +595,7 @@ If-None-Match: string
 <tr>
 <td>If-None-Match</td>
 <td>header</td>
-<td>string</td>
+<td><a href="#common-field-types">ASCIIString</a></td>
 <td>optional</td>
 <td>Makes the request method conditional on a recipient cache or origin server not having any current representation of the target resource with an entity-tag that does not match any of those listed in the field-value.</td>
 </tr>
@@ -692,7 +692,6 @@ If-None-Match: string
 <th>Status</th>
 <th>Header</th>
 <th>Type</th>
-<th>Format</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -700,21 +699,18 @@ If-None-Match: string
 <td>200</td>
 <td>x-v</td>
 <td>string</td>
-<td></td>
 <td>The version of the API end point that the CDR Register has responded with.</td>
 </tr>
 <tr>
 <td>200</td>
 <td>Etag</td>
-<td>string</td>
-<td></td>
+<td><a href="#common-field-types">ASCIIString</a></td>
 <td>Entity tag that uniquely represents the requested resource.</td>
 </tr>
 <tr>
 <td>304</td>
 <td>Etag</td>
-<td>string</td>
-<td></td>
+<td><a href="#common-field-types">ASCIIString</a></td>
 <td>Entity tag that uniquely represents the requested resource.</td>
 </tr>
 </tbody></table>

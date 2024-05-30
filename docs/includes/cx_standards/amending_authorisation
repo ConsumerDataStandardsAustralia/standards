@@ -1,6 +1,7 @@
-<h2 id='amending-authorisation-standards'>Amending Authorisation Standards</h2><pre class="highlight diff tab-diff"><code>**v1.29.1 Change**
-Removed reference to Future Dated Obligations as the obligation dates for the associated requirements have passed
-</code></pre>
+<h2 id='amending-authorisation-standards'>Amending Authorisation Standards</h2><pre class="highlight diff tab-diff"><code>Fixed typo:
+<span class="gd">- How a changed attributed is signified
+</span><span class="gi">+ How a changed attribute is signified
+</span></code></pre>
 <table><thead>
 <tr>
 <th>Area</th>
@@ -21,6 +22,6 @@ Removed reference to Future Dated Obligations as the obligation dates for the as
 </tr>
 <tr>
 <td>Changing Attributes</td>
-<td>Data Holders <strong>MUST</strong> indicate where a dataset is being added to an authorisation or a disclosure duration is being amended. Data Holders <strong>MAY</strong> apply this standard to other changing attributes, but this <strong>MUST ONLY</strong> apply where the attribute in the new authorisation differs to that of the previous authorisation. How a changed attributed is signified is at the Data Holder’s discretion.</td>
+<td>Data Holders <strong>MUST</strong> indicate where a dataset is being added to an authorisation or a disclosure duration is being amended. Data Holders <strong>MAY</strong> apply this standard to other changing attributes, but this <strong>MUST ONLY</strong> apply where the attribute in the new authorisation differs to that of the previous authorisation. How a changed attribute is signified is at the Data Holder’s discretion.</td>
 </tr>
 </tbody></table>

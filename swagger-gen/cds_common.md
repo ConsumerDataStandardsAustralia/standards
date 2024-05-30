@@ -134,12 +134,12 @@ For example, a person whose given names are "John Paul Winston" but the data hol
 
 <h3 id="cdr-common-api_get-customer_response-headers">Response Headers</h3>
 
-|Status|Header|Type|Format|Description|
+|Status|Header|Type|Description|
 |---|---|---|---|---|
-|200|x-v|string||The [version](#response-headers) of the API end point that the data holder has responded with.|
-|200|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|400|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|406|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|200|x-v|string|The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     
@@ -372,12 +372,12 @@ Obsolete versions: [v1](includes/obsolete/get-customer-detail-v1.html)
 
 <h3 id="cdr-common-api_get-customer-detail_response-headers">Response Headers</h3>
 
-|Status|Header|Type|Format|Description|
+|Status|Header|Type|Description|
 |---|---|---|---|---|
-|200|x-v|string||The [version](#response-headers) of the API end point that the data holder has responded with.|
-|200|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|400|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|406|x-fapi-interaction-id|string||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|200|x-v|string|The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     
@@ -473,9 +473,9 @@ Obtain a health check status for the implementation
 
 <h3 id="cdr-common-api_get-status_response-headers">Response Headers</h3>
 
-|Status|Header|Type|Format|Description|
+|Status|Header|Type|Description|
 |---|---|---|---|---|
-|200|x-v|string||The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-v|string|The [version](#response-headers) of the API end point that the data holder has responded with.|
 
   
     <aside class="success">
@@ -571,9 +571,9 @@ Obtain a list of scheduled outages for the implementation
 
 <h3 id="cdr-common-api_get-outages_response-headers">Response Headers</h3>
 
-|Status|Header|Type|Format|Description|
+|Status|Header|Type|Description|
 |---|---|---|---|---|
-|200|x-v|string||The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-v|string|The [version](#response-headers) of the API end point that the data holder has responded with.|
 
   
     <aside class="success">

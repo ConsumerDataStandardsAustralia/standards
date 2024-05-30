@@ -2,7 +2,7 @@
   "openapi": "3.0.3",
   "info": {
     "title": "CDR Participant Discovery API",
-    "version": "1.30.0"
+    "version": "1.31.0"
   },
   "servers": [
     {
@@ -125,10 +125,12 @@
           },
           "401": {
             "description": "Invalid Bearer Token",
-            "content": {
-              "application/json": {
+            "headers": {
+              "WWW-Authenticate": {
+                "description": "The Response Header Field as per **[[RFC6750]](#nref-RFC6750)**",
                 "schema": {
-                  "$ref": "#/components/schemas/ResponseErrorListV2"
+                  "type": "string",
+                  "x-cds-type": "ExternalRef"
                 }
               }
             }

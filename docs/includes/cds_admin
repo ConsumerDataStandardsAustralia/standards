@@ -148,7 +148,6 @@
 <th>Status</th>
 <th>Header</th>
 <th>Type</th>
-<th>Format</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -156,7 +155,6 @@
 <td>200</td>
 <td>x-v</td>
 <td>string</td>
-<td></td>
 <td>The <a href="#response-headers">version</a> of the API end point that the data holder has responded with.</td>
 </tr>
 </tbody></table>
@@ -795,7 +793,6 @@ This operation may only be called by the CDR Register
 <th>Status</th>
 <th>Header</th>
 <th>Type</th>
-<th>Format</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -803,7 +800,6 @@ This operation may only be called by the CDR Register
 <td>200</td>
 <td>x-v</td>
 <td>string</td>
-<td></td>
 <td>The <a href="#response-headers">version</a> of the API end point that the data holder has responded with.</td>
 </tr>
 </tbody></table>

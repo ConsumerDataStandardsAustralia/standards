@@ -91,7 +91,9 @@ To accomplish this, the Data Holder **MUST** support an additional claim in the 
 
 Note that the period of `one year` in the above statements **SHOULD** be interpreted as 365, 24 hour days (or 31,536,000 seconds).
 
-The Data Recipient Software Product is able to obtain the expiration of sharing via the `sharing_expires_at` claim.
+
+
+The Data Recipient Software Product is able to obtain the expiration of the sharing arrangement by presenting a refresh token to the token introspection endpoint. The expiration value is provided in the `exp` field in the response.
 
 ### Specifying an existing arrangement
 Provided a Data Holder supports PAR, they **MUST** also support the ``cdr_arrangement_id`` claim provided in the Request Object sent to the [PAR End Point](#pushed-authorisation-end-point). The Data Recipient Software Product **MAY** provide the ``cdr_arrangement_id`` claim in the Request Object sent to the [PAR End Point](#pushed-authorisation-end-point).
@@ -115,8 +117,10 @@ In addition:
 
 Data Holders **MUST** support Pushed Authorisation Requests (PAR) via the pushed authorisation end point according to **[[PAR]](#nref-PAR)**.
 
+
+
 * Data Holders **MUST** support **[[RFC9126]](#nref-RFC9126)** (PAR) using **[[PKCE]](#nref-PKCE)** (**[[RFC7636]](#nref-RFC7636)**) with S256 as the code challenge method in accordance with **[[FAPI-1.0-Advanced]](#nref-FAPI-1-0-Advanced)** [section 5.2.2](https://openid.net/specs/openid-financial-api-part-2-1_0.html#authorization-server).
-*	Data Holders **MUST** require PAR for authorisation request data in accordance with **[[RFC9126]](#nref-RFC9126)** where "require_pushed_authorization_requests" parameter is set to "true".
+*	Data Holders **MUST** require PAR for authorisation request data in accordance with **[[RFC9126]](#nref-RFC9126)** where "require_pushed_authorization_requests" parameter is set to `true`.
 *	Data Holders **MUST** require the request object to contain an "exp" claim that has a lifetime of no longer than 60 minutes after the "nbf" claim in accordance with **[[FAPI-1.0-Advanced]](#nref-FAPI-1-0-Advanced)** [section 5.2.2](https://openid.net/specs/openid-financial-api-part-2-1_0.html#authorization-server).
 * Authorisation request data **MUST only** be accepted using PAR.
 * Data Holders **MUST** reject authorisation request containing "request" parameter

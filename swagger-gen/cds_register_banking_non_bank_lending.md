@@ -56,10 +56,10 @@ Obsolete versions: [v1](../../../../includes/obsolete/get-data-holder-brands-v1.
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |industry|path|[Enum](#common-field-types)|mandatory|The industry the participant is retrieving data for (Banking, etc)|
-|Authorization|header|string|mandatory|An Authorisation Token as per **[[RFC6750]](#nref-RFC6750)**.|
+|Authorization|header|[ExternalRef](#common-field-types)|mandatory|An Authorisation Token as per **[[RFC6750]](#nref-RFC6750)**.|
 |x-v|header|string|optional|The version of the API end point requested by the client. Must be set to a positive integer. For backwards compatiblity defaults to 1 if absent. Note that once version 1 is decommissioned the header will be mandatory for a valid response to be obtained|
 |x-min-v|header|string|optional|The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided.|
-|updated-since|query|string|optional|query filter returns results updated since the specified date-time|
+|updated-since|query|[DateTimeString](#common-field-types)|optional|query filter returns results updated since the specified date-time|
 |page|query|[PositiveInteger](#common-field-types)|optional|the page number to return|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|the number of records to return per page|
 
@@ -139,14 +139,15 @@ Obsolete versions: [v1](../../../../includes/obsolete/get-data-holder-brands-v1.
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseRegisterDataHolderBrandList](#schemacdr-participant-discovery-apiresponseregisterdataholderbrandlist)|
 |400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Missing Required Header / Invalid Version / Invalid Path Parameter|[ResponseErrorListV2](#schemacdr-participant-discovery-apiresponseerrorlistv2)|
-|401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Invalid Bearer Token|[ResponseErrorListV2](#schemacdr-participant-discovery-apiresponseerrorlistv2)|
+|401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Invalid Bearer Token|None|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|Unsupported Version|[ResponseErrorListV2](#schemacdr-participant-discovery-apiresponseerrorlistv2)|
 
 <h3 id="cdr-participant-discovery-api_get-data-holder-brands_response-headers">Response Headers</h3>
 
-|Status|Header|Type|Format|Description|
+|Status|Header|Type|Description|
 |---|---|---|---|---|
-|200|x-v|string||The version of the API end point that the CDR Register has responded with.|
+|200|x-v|string|The version of the API end point that the CDR Register has responded with.|
+|401|WWW-Authenticate|[ExternalRef](#common-field-types)|The Response Header Field as per **[[RFC6750]](#nref-RFC6750)**|
 
   
     
@@ -216,7 +217,7 @@ Obsolete versions: [v1](../../../../includes/obsolete/get-data-holder-brands-sum
 |industry|path|[Enum](#common-field-types)|mandatory|The industry the participant is retrieving data for (Banking, etc)|
 |x-v|header|string|mandatory|The version of the API end point requested by the client. Must be set to a positive integer.|
 |x-min-v|header|string|optional|The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided.|
-|If-None-Match|header|string|optional|Makes the request method conditional on a recipient cache or origin server not having any current representation of the target resource with an entity-tag that does not match any of those listed in the field-value.|
+|If-None-Match|header|[ASCIIString](#common-field-types)|optional|Makes the request method conditional on a recipient cache or origin server not having any current representation of the target resource with an entity-tag that does not match any of those listed in the field-value.|
 
 <h4 id="cdr-participant-discovery-api_get-data-holder-brands-summary_enumerated-values-parameters">Enumerated Values</h4>
 
@@ -269,11 +270,11 @@ Obsolete versions: [v1](../../../../includes/obsolete/get-data-holder-brands-sum
 
 <h3 id="cdr-participant-discovery-api_get-data-holder-brands-summary_response-headers">Response Headers</h3>
 
-|Status|Header|Type|Format|Description|
+|Status|Header|Type|Description|
 |---|---|---|---|---|
-|200|x-v|string||The version of the API end point that the CDR Register has responded with.|
-|200|Etag|string||Entity tag that uniquely represents the requested resource.|
-|304|Etag|string||Entity tag that uniquely represents the requested resource.|
+|200|x-v|string|The version of the API end point that the CDR Register has responded with.|
+|200|Etag|[ASCIIString](#common-field-types)|Entity tag that uniquely represents the requested resource.|
+|304|Etag|[ASCIIString](#common-field-types)|Entity tag that uniquely represents the requested resource.|
 
   
     <aside class="success">
@@ -340,7 +341,7 @@ Obsolete versions: [v1](../../../../includes/obsolete/get-data-holder-statuses-v
 |industry|path|[Enum](#common-field-types)|mandatory|The industry the participant is retrieving data for (Banking, etc)|
 |x-v|header|string|optional|The version of the API end point requested by the client. Must be set to a positive integer.  For backwards compatiblity defaults to 1 if absent. Note that once version 1 is decommissioned the header will be mandatory for a valid response to be obtained|
 |x-min-v|header|string|optional|The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided.|
-|If-None-Match|header|string|optional|Makes the request method conditional on a recipient cache or origin server not having any current representation of the target resource with an entity-tag that does not match any of those listed in the field-value.|
+|If-None-Match|header|[ASCIIString](#common-field-types)|optional|Makes the request method conditional on a recipient cache or origin server not having any current representation of the target resource with an entity-tag that does not match any of those listed in the field-value.|
 
 <h4 id="cdr-participant-discovery-api_get-data-holder-statuses_enumerated-values-parameters">Enumerated Values</h4>
 
@@ -382,11 +383,11 @@ Obsolete versions: [v1](../../../../includes/obsolete/get-data-holder-statuses-v
 
 <h3 id="cdr-participant-discovery-api_get-data-holder-statuses_response-headers">Response Headers</h3>
 
-|Status|Header|Type|Format|Description|
+|Status|Header|Type|Description|
 |---|---|---|---|---|
-|200|x-v|string||The version of the API end point that the CDR Register has responded with.|
-|200|Etag|string||Entity tag that uniquely represents the requested resource.|
-|304|Etag|string||Entity tag that uniquely represents the requested resource.|
+|200|x-v|string|The version of the API end point that the CDR Register has responded with.|
+|200|Etag|[ASCIIString](#common-field-types)|Entity tag that uniquely represents the requested resource.|
+|304|Etag|[ASCIIString](#common-field-types)|Entity tag that uniquely represents the requested resource.|
 
   
     <aside class="success">

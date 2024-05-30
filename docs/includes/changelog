@@ -1,8 +1,4 @@
-<h1 id='change-log'>Change Log</h1><pre class="highlight diff tab-diff"><code>**v1.29.0 Change**
-Corrected minor typo
-<span class="gd">- Detail Of change
-</span><span class="gi">+ Detail of change
-</span></code></pre>
+<h1 id='change-log'>Change Log</h1>
 <p>The following table lists the changes made to these standards in reverse date order (most recent change is at the top).</p>
 
 <table><thead>
@@ -13,6 +9,12 @@ Corrected minor typo
 <th>Detail of change</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>24/04/2024</td>
+<td>1.30.0</td>
+<td>Changes from maintenance iteration 18</td>
+<td>See <a href="includes/releasenotes/releasenotes.1.30.0.html">release notes</a> and <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/340">Decision 340</a> for details.</td>
+</tr>
 <tr>
 <td>28/02/2024</td>
 <td>1.29.1</td>

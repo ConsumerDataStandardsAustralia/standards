@@ -1,7 +1,5 @@
 <h2 class="schema-heading" id="consumer-experience_dashboard-standards">Dashboard Standards</h2>
-<pre class="highlight diff tab-diff"><code>**v1.29.0 Change**
-Added Dashboard Standards section
-</code></pre>
+
 <p>This section outlines standards for consumer dashboards. These are expected to be implemented on each specific data sharing arrangement.</p>
 
 <h3 class="schema-toc" data-cds-menu="h3" id="consumer-experience_dashboard-standards_data-holder-dashboards">Data Holder Dashboards</h3>

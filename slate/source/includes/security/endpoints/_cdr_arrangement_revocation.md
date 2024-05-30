@@ -112,6 +112,8 @@ Authorization: Bearer eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNDU2In0.ey
 
 The location of the Data Recipient Software Product CDR Arrangement Revocation End Point is determined by the `RecipientBaseURI` provided by the Data Recipient Software Product in the client Software Statement Assertion (SSA).
 
+
+
 This end point will be implemented according to the following:
 
 * Data Recipient Software Products **MUST** expose their CDR Arrangement Revocation End Point under their `recipient_base_uri` published in their Software Statement Assertion.
@@ -120,7 +122,7 @@ This end point will be implemented according to the following:
 * **From March 31st 2022**, Data Recipients **MUST** support the "CDR Arrangement JWT" method.
 * **From July 31st 2022**, Data Holders **MUST** send the `cdr_arrangement_id` using the "CDR Arrangement JWT" method.
 * Data Holders **MAY** additionally send a duplicate of the `cdr_arrangement_id` as a form parameter.
-* Data Recipient Software Products **MUST NOT** reject requests including the `cdr_arragement_id` as a form parameter. 
+* Data Recipient Software Products **MUST NOT** reject requests including the `cdr_arrangement_id` as a form parameter. 
 * If the `cdr_arrangement_id` is presented as a form parameter, Data Recipient Software Products **SHOULD** validate it is identical to the `cdr_arrangement_id` presented in the "CDR Arrangement JWT".
 * **From November 15th 2022**, if the `cdr_arrangement_id` is presented as a form parameter, Data Recipient Software Products **MUST** validate it is identical to the `cdr_arrangement_id` presented in the "CDR Arrangement JWT".
 * **From November 15th 2022**, if the Self-Signed JWT claims are presented in the "CDR Arrangement JWT", Data Recipient Software Products **MUST** validate in accordance with Data Holders calling Data Recipients using [Self-Signed JWT Client Authentication](#self-signed-jwt-client-authentication).
@@ -135,8 +137,17 @@ Response Code | Situation | Description
 422 Unprocessable Entity | Invalid Arrangement ID | The client submitted an invalid arrangement identifier or the identifier could not be found. The server MUST respond with [Invalid Consent Arrangement](#error-422-authorisation-invalid-arrangement).
 
 
+
 **Revoking consent**
 
-Data Recipient Software Products MUST use the Data Holder's CDR Arrangement Revocation End Point with a valid ``cdr_arrangement_id`` to notify the Data Holder when consent is revoked by the consumer via the Data Recipient Software Product.
+Data Recipient Software Products **MUST** use the Data Holder's CDR Arrangement Revocation endpoint with a valid `cdr_arrangement_id` to notify the Data Holder when consent is withdrawn or otherwise expires, except for the following reasons:
 
-Data Holder's MUST use the Data Recipient Software Product's CDR Arrangement Revocation End Point with a valid ``cdr_arrangement_id`` to notify the Data Recipient Software Product when consent is revoked by the consumer via the Data Holder.
+- The withdrawal was initiated via the Data Holder,
+- The consent expires at its natural expiry time, defined by the Data Recipient in the authorisation request and available in the token introspection endpoint,
+- Invalidation of the consent due to a change in the Data Holder or Data Holder Brand status on the Register.
+
+Data Holder's **MUST** use the Data Recipient Software Product's CDR Arrangement Revocation endpoint with a valid `cdr_arrangement_id` to notify the Data Recipient Software Product when an authorisation is withdrawn or otherwise expires, except for the following reasons:
+
+- The withdrawal was initiated via the Data Recipient,
+- The authorisation expires at its natural expiry time, defined by the Data Recipient in the authorisation request and available in the token introspection endpoint,
+- Invalidation of the authorisation due to a change in the Data Recipient or Software Product status on the Register.

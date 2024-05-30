@@ -5,27 +5,28 @@ Supported HTTP headers, and their usage, for the standards are as laid out in th
 ### Request Headers
 >A sample set of headers requesting version 3 to 5:  
 <BR>
-`Content-Type : application/json;charset=UTF-8`  
-`Accept : application/json;charset=UTF-8`  
-`x-v : 5`  
-`x-min-v : 3`  
-`x-fapi-interaction-id : 6ba7b814-9dad-11d1-80b4-00c04fd430c8`  
-`x-fapi-auth-date : Thu, 16 Jan 2020 16:50:15 GMT`  
-`x-fapi-customer-ip-address : 2001:0db8:85a3:0000:0000:8a2e:0370:7334`  
-`x-cds-client-headers : TW96aWxsYS81LjAgKFgxMTsgTGludXggeDg2XzY0KSBBcHBsZVdlYktpdC81MzcuMzYgKEtIVE1MLCBsaWtlIEdlY2tvKSBDaHJvbWUvNzkuMC4zOTQ1Ljg4IFNhZmFyaS81MzcuMzY=`  
+`Content-Type: application/json;charset=UTF-8`  
+`Accept: application/json;charset=UTF-8`  
+`x-v: 5`  
+`x-min-v: 3`  
+`x-fapi-interaction-id: 6ba7b814-9dad-11d1-80b4-00c04fd430c8`  
+`x-fapi-auth-date: Thu, 16 Jan 2020 16:50:15 GMT`  
+`x-fapi-customer-ip-address: 2001:0db8:85a3:0000:0000:8a2e:0370:7334`  
+`x-cds-client-headers: TW96aWxsYS81LjAgKFgxMTsgTGludXggeDg2XzY0KSBBcHBsZVdlYktpdC81MzcuMzYgKEtIVE1MLCBsaWtlIEdlY2tvKSBDaHJvbWUvNzkuMC4zOTQ1Ljg4IFNhZmFyaS81MzcuMzY=`  
 
 >A Data Holder must be able to process Content-Type headers in accordance with [RFC7231]. The following would be valid:   
 <BR>
 `Content-Type: application/json;charset=UTF-8`  
-`Content-Type: application/json`    
+`Content-Type: application/json`  
 `Content-Type: AppliCAtion/JSon;Charset=uTf-8`  
+
+
 
 >A Data Holder must be able to process Accept headers in accordance with [RFC7231]. The following would be valid:  
 <BR>
 `Accept: */*`  
 `Accept: application/json;charset=UTF-8`  
 `Accept: application/json`  
-`Accept-Encoding: charset=UTF-8`  
 `Accept: AppliCAtion/JSon;Charset=uTf-8`  
 
 Header Field | Description | Mandatory?
