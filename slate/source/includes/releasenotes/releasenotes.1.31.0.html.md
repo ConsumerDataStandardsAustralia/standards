@@ -21,7 +21,7 @@ This release addresses the following minor defects raised on [Standards Staging]
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
-- [Standards Maintenance #XXX - Title](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/XXX)
+- [Standards Maintenance #615 - Plan Obligation Milestones for 2025](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/615)
 
 
 ### Decision Proposals
@@ -33,14 +33,12 @@ This release addresses the following Decision Proposals published on [Standards]
 ## General Changes
 |Change|Description|Link|
 |------|-----------|----|
-| Change summary | [**Standards Staging #XXX**](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/XXX): Change detail | [Standards section](../../#section)
-| Change summary | [**Standards Maintenance #XXX**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/XXX): Change detail | [Standards section](../../#section)
-| Change summary | [**Decision Proposal #XXX**](https://github.com/ConsumerDataStandardsAustralia/standards/issues/XXX): Change detail | [Standards section](../../#section)
 
 
 ## Introduction
 |Change|Description|Link|
 |------|-----------|----|
+| Updated Obligation Date Schedule | [**Standards Maintenance #615**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/615): Added 2025 dates to the Obligation Date Schedule and removed dates prior to 2024 | [Future Dated Obligations](../../index.html?diff#future-dated-obligations)
 
 
 ## High Level Standards
