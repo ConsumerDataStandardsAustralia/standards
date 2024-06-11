@@ -1,5 +1,7 @@
 
-
+```diff
+Added anchors to allow linking to a schema base (without a specific version) from guidance material
+```
 
 These standards have been developed as part of the Australian Government's introduction of the [Consumer Data Right](https://www.accc.gov.au/focus-areas/consumer-data-right "ACCC Consumer Data Right webpage") legislation to give Australians greater control over their data.
 
