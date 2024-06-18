@@ -22,6 +22,7 @@ This release addresses the following minor defects raised on [Standards Staging]
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
 - [Standards Maintenance #XXX - Title](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/XXX)
+- [Standards Maintenance #640 - Retirement date for Get Generic Plan Detail v2 and Get Energy Account Detail v3](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/640)
 
 
 ### Decision Proposals
@@ -51,7 +52,7 @@ This release addresses the following Decision Proposals published on [Standards]
 ## API Endpoints
 |Change|Description|Link|
 |------|-----------|----|
-
+| Retirement date change| [**Standards Maintenance #640**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/640): Changed retirement date of  Get Generic Plan Detail v2 and Get Energy Account Detail v3 to March 3rd 2025 | [Future Dated Obligations](../../#future-dated-obligations)
 
 ## Information Security Profile
 |Change|Description|Link|
