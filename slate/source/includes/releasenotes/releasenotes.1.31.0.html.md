@@ -57,7 +57,7 @@ This release addresses the following Decision Proposals published on [Standards]
 ## Information Security Profile
 |Change|Description|Link|
 |------|-----------|----|
-| Change summary | [**Standards Maintenance #415**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/415): Clarified that a Token Introspection End Point response must include specific fields only for currently active tokens | [Security Endpoints](../../#security-endpoints)
+| Introspection endpoint clarification | [**Standards Maintenance #415**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/415): Clarified that a Token Introspection End Point response must include specific fields only for currently active tokens | [Security Endpoints](../../#security-endpoints)
 
 ## Register Standards
 |Change|Description|Link|
