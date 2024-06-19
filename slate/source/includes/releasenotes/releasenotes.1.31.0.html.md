@@ -22,6 +22,7 @@ This release addresses the following minor defects raised on [Standards Staging]
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
 - [Standards Maintenance #XXX - Title](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/XXX)
+- [Standards Maintenance #633 - Collection Consents - Authorisation Amendment](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/633)
 
 
 ### Decision Proposals
@@ -56,7 +57,7 @@ This release addresses the following Decision Proposals published on [Standards]
 ## Information Security Profile
 |Change|Description|Link|
 |------|-----------|----|
-
+| Arrangement amendment clarification | [**Standards Maintenance #633**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/633): Updated the "Specifying an existing arrangement" section clarifying the requirements for amending existing arrangements | [Specifying an existing arrangement](../../#specifying-an-existing-arrangement)
 
 ## Register Standards
 |Change|Description|Link|
@@ -66,7 +67,7 @@ This release addresses the following Decision Proposals published on [Standards]
 ## Consumer Experience
 |Change|Description|Link|
 |------|-----------|----|
-
+| Arrangement amendment clarification | [**Standards Maintenance #633**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/633): <ul><li>Updated "Authorisation: Amending consent" CX standard noting it needs to align with security requirements for specifiying an existing arrangement.</li><li> Added "Amendment of Collection Consents and Authorisations" CX standard to clarify CDR Arrangement ID is required for consent and authorisation amendments</li></ul> | [Amending Authorisation Standards](../../#amending-authorisation-standards) </br>[Consent Standards](../../#consumer-experience_consent-standards)
 
 ## Non-Functional Requirements
 |Change|Description|Link|

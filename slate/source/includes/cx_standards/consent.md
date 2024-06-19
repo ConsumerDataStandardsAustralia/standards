@@ -1,9 +1,13 @@
 <h2 class="schema-heading" id="consumer-experience_consent-standards">Consent Standards</h2>
 
-
+```diff
+Added following CX standard to clarify CDR Arrangement ID is required for consent and authorisation amendments:
++ Amendment of Collection Consents and Authorisations
+```
 
 |Area|CX Standard|
 |-------------------|------------------------------|
+|**Consent:**<br/>Amendment of Collection Consents and Authorisations |When notifying a Data Holder of an amended collection consent as per rules 4.18C or 4.20S, Data Recipients MUST supply the relevant CDR Arrangement ID to the Data Holder according to [Specifying an existing arrangement](#specifying-an-existing-arrangement). Providing the CDR Arrangement ID is necessary to trigger the Data Holder authorisation flow simplifications outlined in the [Amending Authorisation Standards](#amending-authorisation-standards). Failure to supply the CDR Arrangement ID will result in the full authorisation flow and a disconnected data sharing arrangement history on consumer dashboards.|
 |**Consent:**<br/>Redirection|Data recipients **MUST** notify consumers of redirection prior to authentication.|
 |**Business consumer statement:** Method|When seeking a business consumer statement, data recipients **MUST** invite the business consumer to give the business consumer statement in a manner that is explicit, express, and through an active selection or declaration.<br><br>The giving of a business consumer statement **MUST** be clearly separated from any other interaction or information provided to the consumer and **MUST NOT** be implied or bundled with any other permission.|
 |**Business consumer statement:** Content|Data recipients **MUST** use plain and concise language when inviting a consumer to give a business consumer statement.|
