@@ -1,6 +1,8 @@
 # Additional Standards
 
-
+```diff
+In addition to minor styling updates, aligned Banking documentation to enhancements applied in the Candidate Standards
+```
 
 The Consumer Data Standards also incorporate other non-binding standards that are developed to facilitate consultation and feedback or to facilitate voluntary extension of CDR implementations.
 
