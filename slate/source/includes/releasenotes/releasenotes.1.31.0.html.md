@@ -42,7 +42,7 @@ This release addresses the following Decision Proposals published on [Standards]
 ## Introduction
 |Change|Description|Link|
 |------|-----------|----|
-
+| Energy API retirement date change| [**Standards Maintenance #640**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/640): Changed retirement date of  Get Generic Plan Detail v2 and Get Energy Account Detail v3 to March 3rd 2025 | [Future Dated Obligations](../../#future-dated-obligations)
 
 ## High Level Standards
 |Change|Description|Link|
@@ -52,7 +52,7 @@ This release addresses the following Decision Proposals published on [Standards]
 ## API Endpoints
 |Change|Description|Link|
 |------|-----------|----|
-| Retirement date change| [**Standards Maintenance #640**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/640): Changed retirement date of  Get Generic Plan Detail v2 and Get Energy Account Detail v3 to March 3rd 2025 | [Future Dated Obligations](../../#future-dated-obligations)
+
 
 ## Information Security Profile
 |Change|Description|Link|
