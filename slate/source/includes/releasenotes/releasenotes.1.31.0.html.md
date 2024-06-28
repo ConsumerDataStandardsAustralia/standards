@@ -22,7 +22,7 @@ This release addresses the following minor defects raised on [Standards Staging]
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
 - [Standards Maintenance #XXX - Title](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/XXX)
-
+- [Standards Maintenance #643 - Update TLS cipher suite requirements to address DHEat Attacks and Raccoon Attack vulnerabilities](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/643)
 
 ### Decision Proposals
 This release addresses the following Decision Proposals published on [Standards](https://github.com/ConsumerDataStandardsAustralia/standards/issues):
@@ -56,7 +56,7 @@ This release addresses the following Decision Proposals published on [Standards]
 ## Information Security Profile
 |Change|Description|Link|
 |------|-----------|----|
-
+| Deprecation of vulnerable ciphers | [**Standards Maintenance #643**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/643): Allow data holders to depricate use of vulnerable TLS ciphers | [Ciphers](../../#ciphers)
 
 ## Register Standards
 |Change|Description|Link|
