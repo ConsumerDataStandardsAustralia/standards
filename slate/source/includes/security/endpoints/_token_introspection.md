@@ -15,7 +15,7 @@ Introspection of Refresh Tokens MUST be supported.
 
 Introspection of Access Tokens and ID Tokens MUST NOT be supported.
 
-For currently active tokens, a Token Introspection End Point Response SHALL include, at least, the following fields:
+For currently active tokens, a Token Introspection End Point Response **SHALL** include, at least, the following fields:
 
 - `active`: Boolean indicator of whether or not the presented token
       is currently active.
