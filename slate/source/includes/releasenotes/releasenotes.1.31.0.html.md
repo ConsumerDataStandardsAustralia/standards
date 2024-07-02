@@ -17,10 +17,10 @@ Release notes for version v1.31.0 of the [CDR Standards](../../index.html).
 
 This release addresses the following minor defects raised on [Standards Staging](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues):
 
+- [Standards Staging #395 - Enhancements to Banking documentation](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/395)
 - [Standards Staging #377 - Review FDO table](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/377)
 - [Standards Staging #402 - Update Consumer Data Right link](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/402)
 - [Standards Staging #394 - Fix typo 'registeration'](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/394)
-
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
@@ -55,6 +55,7 @@ This release addresses the following Decision Proposals published on [Standards]
 ## API Endpoints
 |Change|Description|Link|
 |------|-----------|----|
+| Enhancements to Banking documentation | [**Standards Staging #395**](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/395): In addition to minor styling updates, aligned Banking documentation to enhancements applied in the Candidate Standards | [Banking APIs](../../#banking-apis)<br>[Additional Standards](../../#additional-standards)
 
 
 ## Information Security Profile
