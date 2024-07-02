@@ -17,8 +17,10 @@ Release notes for version v1.31.0 of the [CDR Standards](../../index.html).
 
 This release addresses the following minor defects raised on [Standards Staging](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues):
 
+- [Standards Staging #377 - Review FDO table](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/377)
 - [Standards Staging #402 - Update Consumer Data Right link](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/402)
 - [Standards Staging #394 - Fix typo 'registeration'](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/394)
+
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
@@ -40,6 +42,7 @@ This release addresses the following Decision Proposals published on [Standards]
 ## Introduction
 |Change|Description|Link|
 |------|-----------|----|
+| Updated FDO table | [**Standards Staging #377**](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/377): Removed Future Dated Obligations prior to 2024. Earlier obligations may be viewed in Archived versions | [Future Dated Obligations](../../#future-dated-obligations)<br>[Archives](../../#archives)
 
 
 ## High Level Standards
