@@ -17,6 +17,7 @@ Release notes for version v1.31.0 of the [CDR Standards](../../index.html).
 
 This release addresses the following minor defects raised on [Standards Staging](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues):
 
+- [Standards Staging #400 - Enable generic links to schemas](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/400)
 - [Standards Staging #395 - Enhancements to Banking documentation](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/395)
 - [Standards Staging #377 - Review FDO table](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/377)
 - [Standards Staging #402 - Update Consumer Data Right link](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/402)
@@ -41,6 +42,7 @@ This release addresses the following Decision Proposals published on [Standards]
 ## General Changes
 |Change|Description|Link|
 |------|-----------|----|
+| Enable generic links to schemas | [**Standards Staging #400**](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/400): Added anchors to allow linking to a schema base (without a specific version) from guidance material | Applies to all schemas
 | Updated Consumer Data Right link | [**Standards Staging #402**](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/402): Updated Consumer Data Right website link | [Introduction](../../#introduction)
 
 

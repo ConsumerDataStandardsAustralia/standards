@@ -1,5 +1,7 @@
 
 ```diff
+Added anchors to allow linking to a schema base (without a specific version) from guidance material
+
 Updated 'Consumer Data Right' website link
 ```
 

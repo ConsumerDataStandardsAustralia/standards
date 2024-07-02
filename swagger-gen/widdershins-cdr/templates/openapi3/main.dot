@@ -32,7 +32,10 @@
 <h3 class="schema-toc" id="{{= data.title_prefix }}_schemas_tocS{{=s.toLowerCase() }}">{{= s }}</h3>
 <p id="tocS{{=s.toLowerCase()}}" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schema{{=data.title_prefix}}{{=s.toLowerCase()}}"></a>
+<p>
+  <a id="{{= data.title_prefix }}_schema-base_{{=s.toLowerCase().replace(/v\d+$/, '') }}"></a>
+  <a class="schema-anchor" id="schema{{=data.title_prefix}}{{=s.toLowerCase()}}"></a>
+</p>
 
 {{? data.options.yaml }}
 ```yaml
