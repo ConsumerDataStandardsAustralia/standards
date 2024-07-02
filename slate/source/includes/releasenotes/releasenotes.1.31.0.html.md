@@ -56,7 +56,7 @@ This release addresses the following Decision Proposals published on [Standards]
 ## Information Security Profile
 |Change|Description|Link|
 |------|-----------|----|
-| Deprecation of vulnerable ciphers | [**Standards Maintenance #643**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/643): Allow data holders to depricate use of vulnerable TLS ciphers | [Ciphers](../../#ciphers)
+| Deprecation of vulnerable ciphers | [**Standards Maintenance #643**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/643): Allow data holders to deprecate use of vulnerable TLS ciphers | [Ciphers](../../#ciphers)
 
 ## Register Standards
 |Change|Description|Link|
