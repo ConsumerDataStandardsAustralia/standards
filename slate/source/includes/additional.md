@@ -2,6 +2,10 @@
 
 ```diff
 In addition to minor styling updates, aligned Banking documentation to enhancements applied in the Candidate Standards
+
+Removed duplicate `TelcoAccount` schema in the `TelcoAccountDetailResponseData` schema, in the 'Get Telco Account Detail' endpoint in the Telco Candidate Standards
+
+Fixed typo in 'Country of registeration' in the Candidate Standards for the Banking and Non-Bank Lending sector
 ```
 
 The Consumer Data Standards also incorporate other non-binding standards that are developed to facilitate consultation and feedback or to facilitate voluntary extension of CDR implementations.
