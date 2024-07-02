@@ -17,6 +17,7 @@ Release notes for version v1.31.0 of the [CDR Standards](../../index.html).
 
 This release addresses the following minor defects raised on [Standards Staging](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues):
 
+- [Standards Staging #402 - Update Consumer Data Right link](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/402)
 - [Standards Staging #394 - Fix typo 'registeration'](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/394)
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
@@ -33,9 +34,7 @@ This release addresses the following Decision Proposals published on [Standards]
 ## General Changes
 |Change|Description|Link|
 |------|-----------|----|
-| Change summary | [**Standards Staging #XXX**](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/XXX): Change detail | [Standards section](../../#section)
-| Change summary | [**Standards Maintenance #XXX**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/XXX): Change detail | [Standards section](../../#section)
-| Change summary | [**Decision Proposal #XXX**](https://github.com/ConsumerDataStandardsAustralia/standards/issues/XXX): Change detail | [Standards section](../../#section)
+| Updated Consumer Data Right link | [**Standards Staging #402**](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/402): Updated Consumer Data Right website link | [Introduction](../../#introduction)
 
 
 ## Introduction
