@@ -95,10 +95,18 @@ Note that the period of `one year` in the above statements **SHOULD** be interpr
 
 The Data Recipient Software Product is able to obtain the expiration of the sharing arrangement by presenting a refresh token to the token introspection endpoint. The expiration value is provided in the `exp` field in the response.
 
-### Specifying an existing arrangement
-Provided a Data Holder supports PAR, they **MUST** also support the ``cdr_arrangement_id`` claim provided in the Request Object sent to the [PAR End Point](#pushed-authorisation-end-point). The Data Recipient Software Product **MAY** provide the ``cdr_arrangement_id`` claim in the Request Object sent to the [PAR End Point](#pushed-authorisation-end-point).
 
-If a Data Recipient Software Product provides the ``cdr_arrangement_id`` claim in the request object to the Data Holder's [PAR End Point](#pushed-authorisation-end-point), the Data Holder **MUST** revoke any existing tokens related to the arrangement once the new consent is successfully established and a new set of tokens has been provided to the Data Recipient Software Product.
+### Specifying an existing arrangement
+```diff
+Updated the "Specifying an existing arrangement" section clarifying the requirements for amending existing arrangements
+```
+To facilitate the amending of an existing arrangement, the following statements apply:
+
+* Data Holders **MUST** support the `cdr_arrangement_id` claim provided in the Request Object.
+* The Data Recipient Software Product **MUST** provide the `cdr_arrangement_id` claim in the Request Object if requesting to amend a current authorisation in accordance with [Consent: Amendment of Collection Consents and Authorisations](#consumer-experience_consent-standards).
+* Data Holders **MUST** treat the request under the [Amending Authorisation Standards](#amending-authorisation-standards) if the `cdr_arrangement_id` claim is provided.
+
+If a Data Recipient Software Product provides the `cdr_arrangement_id` claim in the request object to the Data Holder's [PAR endpoint](#pushed-authorisation-end-point), the Data Holder **MUST** revoke any existing tokens related to the arrangement once the new consent is successfully established and a new set of tokens has been provided to the Data Recipient Software Product.
 
 
 ### Request Object Submission
