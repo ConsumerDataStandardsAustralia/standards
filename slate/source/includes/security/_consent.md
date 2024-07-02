@@ -13,9 +13,7 @@ In addition to CDR data scopes the following scopes **MUST** be supported:
 
 ### Claims
 
-```diff
-Updated 'Pairwise Pseudonymous Identifier (PPID)' link
-```
+
 
 The following [normal](https://openid.net/specs/openid-connect-core-1_0.html#NormalClaims) **[[OIDC]](#nref-OIDC)** and [standard claims](https://openid.net/specs/openid-connect-core-1_0.html#StandardClaims) claims **MUST** be supported for the authenticated End-User*:
 
@@ -27,15 +25,7 @@ The following [normal](https://openid.net/specs/openid-connect-core-1_0.html#Nor
 - `family_name`: Surname(s) or last name(s) of the End-User.
 - `updated_at`: Time the End-User's information was last updated. Its value is a JSON number representing the number of seconds from 1970-01-01T00:00:00Z to the UTC `updated_at` time.
 
-```diff
-Removed outdated statements and Non-normative Examples referring to the `refresh_token_expires_at` and `sharing_expires_at` in the following sections:
-* Security Profile > Scopes and Claims > Claims
-* Security Profile > Tokens
-* Security Profile > Identifiers and Subject Types
-* Security Profile > Security Endpoints > OpenID Provider Configuration End Point
-* Security Profile > Security Endpoints > Authorisation End Point
 
-```
 
 The following standard **[[OIDC]](#nref-OIDC)** claims **MAY** be supported:
 

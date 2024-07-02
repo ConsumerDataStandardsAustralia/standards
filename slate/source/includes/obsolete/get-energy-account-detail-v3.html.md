@@ -15,7 +15,7 @@ search: false
 This page documents version 3 of the Get Energy Account Detail end point. 
 
 * Data Holders **MUST** implement Get Energy Account Detail v4 by **November 11th 2024**.
-* This version is to be ceased to be called by data recipients by **September 8th 2025** and can be retired by data holders as of that date.
+* This version is to be ceased to be called by data recipients by **March 3rd 2025** and can be retired by data holders as of that date.
 
 ## Get Energy Account Detail
 

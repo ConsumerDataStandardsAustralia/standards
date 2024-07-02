@@ -15,7 +15,7 @@ search: false
 This page documents version 2 of the Get Generic Plan Detail end point. 
 
 * Data Holders **MUST** implement Get Generic Plan Detail v3 by **November 11th 2024**.
-* This version is to be ceased to be called by data recipients by **September 8th 2025** and can be retired by data holders as of that date.
+* This version is to be ceased to be called by data recipients by **March 3rd 2025** and can be retired by data holders as of that date.
 
 
 ## Get Generic Plan Detail

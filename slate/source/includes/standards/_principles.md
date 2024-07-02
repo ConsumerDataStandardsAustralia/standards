@@ -1,8 +1,6 @@
 ## Principles
 
-```diff
-Added reference to 'Consumer Experience (CX) Principles' in the introductory sentence and reformatted CX Principle 4 and 5.
-```
+
 
 The following principles, classified as Outcome Principles, Technical Principles and Consumer Experience (CX) Principles, are the basis for the development of the standards for the Consumer Data Right.
 

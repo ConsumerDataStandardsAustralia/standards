@@ -20,9 +20,7 @@ Supported HTTP headers, and their usage, for the standards are as laid out in th
 `Content-Type: application/json`  
 `Content-Type: AppliCAtion/JSon;Charset=uTf-8`  
 
-```diff
-Removed incorrect Non-normative Example showing `Accept-Encoding: charset=UTF-8`
-```
+
 
 >A Data Holder must be able to process Accept headers in accordance with [RFC7231]. The following would be valid:  
 <BR>

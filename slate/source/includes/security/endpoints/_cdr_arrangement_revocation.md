@@ -112,9 +112,7 @@ Authorization: Bearer eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNDU2In0.ey
 
 The location of the Data Recipient Software Product CDR Arrangement Revocation End Point is determined by the `RecipientBaseURI` provided by the Data Recipient Software Product in the client Software Statement Assertion (SSA).
 
-```diff
-Corrected typo in `cdr_arragement_id`
-```
+
 
 This end point will be implemented according to the following:
 
@@ -138,9 +136,7 @@ Response Code | Situation | Description
 204 No Content | Success | The sharing arrangement has been revoked successfully
 422 Unprocessable Entity | Invalid Arrangement ID | The client submitted an invalid arrangement identifier or the identifier could not be found. The server MUST respond with [Invalid Consent Arrangement](#error-422-authorisation-invalid-arrangement).
 
-```diff
-Updates to 'Revoking consent' requirements to align to rules
-```
+
 
 **Revoking consent**
 
