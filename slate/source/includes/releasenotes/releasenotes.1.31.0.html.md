@@ -25,6 +25,7 @@ This release addresses the following minor defects raised on [Standards Staging]
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
 - [Standards Maintenance #XXX - Title](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/XXX)
+- [Standards Maintenance #633 - Collection Consents - Authorisation Amendment](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/633)
 - [Standards Maintenance #640 - Retirement date for Get Generic Plan Detail v2 and Get Energy Account Detail v3](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/640)
 - [Standards Maintenance #643 - Update TLS cipher suite requirements to address DHEat Attacks and Raccoon Attack vulnerabilities](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/643)
 - [Standards Maintenance #634 - Potential error in Telco specification](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/634)
@@ -63,6 +64,7 @@ This release addresses the following Decision Proposals published on [Standards]
 ## Information Security Profile
 |Change|Description|Link|
 |------|-----------|----|
+| Arrangement amendment clarification | [**Standards Maintenance #633**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/633): Updated the "Specifying an existing arrangement" section clarifying the requirements for amending existing arrangements | [Specifying an existing arrangement](../../#specifying-an-existing-arrangement)
 | Deprecation of vulnerable ciphers | [**Standards Maintenance #643**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/643): Allow data holders to deprecate use of vulnerable TLS ciphers | [Ciphers](../../#ciphers)
 
 ## Register Standards
@@ -73,7 +75,7 @@ This release addresses the following Decision Proposals published on [Standards]
 ## Consumer Experience
 |Change|Description|Link|
 |------|-----------|----|
-
+| Arrangement amendment clarification | [**Standards Maintenance #633**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/633): <ul><li>Updated "Authorisation: Amending consent" CX standard noting it needs to align with security requirements for specifiying an existing arrangement.</li><li> Added "Amendment of Collection Consents and Authorisations" CX standard to clarify CDR Arrangement ID is required for consent and authorisation amendments</li></ul> | [Amending Authorisation Standards](../../#amending-authorisation-standards) </br>[Consent Standards](../../#consumer-experience_consent-standards)
 
 ## Non-Functional Requirements
 |Change|Description|Link|
