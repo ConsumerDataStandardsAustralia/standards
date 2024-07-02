@@ -27,7 +27,7 @@ This release addresses the following minor defects raised on [Standards Staging]
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
 - [Standards Maintenance #615 - Plan Obligation Milestones for 2025](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/615)
-- [Standards Maintenance #XXX - Title](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/XXX)
+- [Standards Maintenance #415 - Disambiguation of the claims for a response from the introspection endpoint](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/415)
 - [Standards Maintenance #633 - Collection Consents - Authorisation Amendment](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/633)
 - [Standards Maintenance #640 - Retirement date for Get Generic Plan Detail v2 and Get Energy Account Detail v3](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/640)
 - [Standards Maintenance #643 - Update TLS cipher suite requirements to address DHEat Attacks and Raccoon Attack vulnerabilities](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/643)
@@ -70,6 +70,7 @@ This release addresses the following Decision Proposals published on [Standards]
 ## Information Security Profile
 |Change|Description|Link|
 |------|-----------|----|
+| Introspection endpoint clarification | [**Standards Maintenance #415**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/415): Clarified that a Token Introspection End Point response must include specific fields only for currently active tokens | [Introspection End Point](../../#introspection-end-point)
 | Arrangement amendment clarification | [**Standards Maintenance #633**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/633): Updated the "Specifying an existing arrangement" section clarifying the requirements for amending existing arrangements | [Specifying an existing arrangement](../../#specifying-an-existing-arrangement)
 | Deprecation of vulnerable ciphers | [**Standards Maintenance #643**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/643): Allow data holders to deprecate use of vulnerable TLS ciphers | [Ciphers](../../#ciphers)
 
