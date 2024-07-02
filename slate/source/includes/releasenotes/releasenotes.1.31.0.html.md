@@ -25,6 +25,7 @@ This release addresses the following minor defects raised on [Standards Staging]
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
 - [Standards Maintenance #XXX - Title](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/XXX)
+- [Standards Maintenance #640 - Retirement date for Get Generic Plan Detail v2 and Get Energy Account Detail v3](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/640)
 - [Standards Maintenance #643 - Update TLS cipher suite requirements to address DHEat Attacks and Raccoon Attack vulnerabilities](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/643)
 - [Standards Maintenance #634 - Potential error in Telco specification](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/634)
 
@@ -44,6 +45,7 @@ This release addresses the following Decision Proposals published on [Standards]
 ## Introduction
 |Change|Description|Link|
 |------|-----------|----|
+| Energy API retirement date change| [**Standards Maintenance #640**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/640): Changed retirement date of  Get Generic Plan Detail v2 and Get Energy Account Detail v3 to March 3rd 2025 | [Future Dated Obligations](../../#future-dated-obligations)
 | Updated FDO table | [**Standards Staging #377**](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/377): Removed Future Dated Obligations prior to 2024. Earlier obligations may be viewed in Archived versions | [Future Dated Obligations](../../#future-dated-obligations)<br>[Archives](../../#archives)
 
 
