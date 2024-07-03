@@ -883,7 +883,10 @@ This operation does not require authentication
 
 <p id="tocSresponsecommondiscoverystatus" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-common-apiresponsecommondiscoverystatus"></a></p>
+<p>
+  <a id="cdr-common-api_schema-base_responsecommondiscoverystatus"></a>
+  <a class="schema-anchor" id="schemacdr-common-apiresponsecommondiscoverystatus"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="p">,</span><span class="w">
@@ -989,7 +992,10 @@ This operation does not require authentication
 
 <p id="tocSresponsediscoveryoutageslist" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-common-apiresponsediscoveryoutageslist"></a></p>
+<p>
+  <a id="cdr-common-api_schema-base_responsediscoveryoutageslist"></a>
+  <a class="schema-anchor" id="schemacdr-common-apiresponsediscoveryoutageslist"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"outages"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -1048,7 +1054,10 @@ This operation does not require authentication
 
 <p id="tocSdiscoveryoutage" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-common-apidiscoveryoutage"></a></p>
+<p>
+  <a id="cdr-common-api_schema-base_discoveryoutage"></a>
+  <a class="schema-anchor" id="schemacdr-common-apidiscoveryoutage"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"outageTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"duration"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -1097,7 +1106,10 @@ This operation does not require authentication
 
 <p id="tocSresponsecommoncustomer" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-common-apiresponsecommoncustomer"></a></p>
+<p>
+  <a id="cdr-common-api_schema-base_responsecommoncustomer"></a>
+  <a class="schema-anchor" id="schemacdr-common-apiresponsecommoncustomer"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"customerUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"organisation"</span><span class="p">,</span><span class="w">
@@ -1208,7 +1220,10 @@ This operation does not require authentication
 
 <p id="tocSresponsecommoncustomerdetailv2" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-common-apiresponsecommoncustomerdetailv2"></a></p>
+<p>
+  <a id="cdr-common-api_schema-base_responsecommoncustomerdetail"></a>
+  <a class="schema-anchor" id="schemacdr-common-apiresponsecommoncustomerdetailv2"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"customerUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"organisation"</span><span class="p">,</span><span class="w">
@@ -1417,7 +1432,10 @@ This operation does not require authentication
 
 <p id="tocScommonperson" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-common-apicommonperson"></a></p>
+<p>
+  <a id="cdr-common-api_schema-base_commonperson"></a>
+  <a class="schema-anchor" id="schemacdr-common-apicommonperson"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"lastUpdateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -1522,7 +1540,10 @@ This operation does not require authentication
 
 <p id="tocScommonpersondetailv2" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-common-apicommonpersondetailv2"></a></p>
+<p>
+  <a id="cdr-common-api_schema-base_commonpersondetail"></a>
+  <a class="schema-anchor" id="schemacdr-common-apicommonpersondetailv2"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"lastUpdateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -1655,7 +1676,10 @@ This operation does not require authentication
 
 <p id="tocScommonorganisation" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-common-apicommonorganisation"></a></p>
+<p>
+  <a id="cdr-common-api_schema-base_commonorganisation"></a>
+  <a class="schema-anchor" id="schemacdr-common-apicommonorganisation"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"lastUpdateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"agentFirstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -1823,7 +1847,10 @@ This operation does not require authentication
 
 <p id="tocScommonorganisationdetailv2" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-common-apicommonorganisationdetailv2"></a></p>
+<p>
+  <a id="cdr-common-api_schema-base_commonorganisationdetail"></a>
+  <a class="schema-anchor" id="schemacdr-common-apicommonorganisationdetailv2"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"lastUpdateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"agentFirstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -1931,7 +1958,10 @@ This operation does not require authentication
 
 <p id="tocScommonphonenumber" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-common-apicommonphonenumber"></a></p>
+<p>
+  <a id="cdr-common-api_schema-base_commonphonenumber"></a>
+  <a class="schema-anchor" id="schemacdr-common-apicommonphonenumber"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"isPreferred"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
   </span><span class="s2">"purpose"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HOME"</span><span class="p">,</span><span class="w">
@@ -2035,7 +2065,10 @@ This operation does not require authentication
 
 <p id="tocScommonemailaddress" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-common-apicommonemailaddress"></a></p>
+<p>
+  <a id="cdr-common-api_schema-base_commonemailaddress"></a>
+  <a class="schema-anchor" id="schemacdr-common-apicommonemailaddress"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"isPreferred"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
   </span><span class="s2">"purpose"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HOME"</span><span class="p">,</span><span class="w">
@@ -2103,7 +2136,10 @@ This operation does not require authentication
 
 <p id="tocScommonphysicaladdresswithpurpose" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-common-apicommonphysicaladdresswithpurpose"></a></p>
+<p>
+  <a id="cdr-common-api_schema-base_commonphysicaladdresswithpurpose"></a>
+  <a class="schema-anchor" id="schemacdr-common-apicommonphysicaladdresswithpurpose"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"addressUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"paf"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"simple"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -2222,7 +2258,10 @@ This operation does not require authentication
 
 <p id="tocScommonphysicaladdress" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-common-apicommonphysicaladdress"></a></p>
+<p>
+  <a id="cdr-common-api_schema-base_commonphysicaladdress"></a>
+  <a class="schema-anchor" id="schemacdr-common-apicommonphysicaladdress"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"addressUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"paf"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"simple"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -2314,7 +2353,10 @@ This operation does not require authentication
 
 <p id="tocScommonsimpleaddress" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-common-apicommonsimpleaddress"></a></p>
+<p>
+  <a id="cdr-common-api_schema-base_commonsimpleaddress"></a>
+  <a class="schema-anchor" id="schemacdr-common-apicommonsimpleaddress"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"mailingName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"addressLine1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -2391,7 +2433,10 @@ This operation does not require authentication
 
 <p id="tocScommonpafaddress" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-common-apicommonpafaddress"></a></p>
+<p>
+  <a id="cdr-common-api_schema-base_commonpafaddress"></a>
+  <a class="schema-anchor" id="schemacdr-common-apicommonpafaddress"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"dpid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"thoroughfareNumber1"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -2568,7 +2613,10 @@ This operation does not require authentication
 
 <p id="tocSlinks" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-common-apilinks"></a></p>
+<p>
+  <a id="cdr-common-api_schema-base_links"></a>
+  <a class="schema-anchor" id="schemacdr-common-apilinks"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -2596,7 +2644,10 @@ This operation does not require authentication
 
 <p id="tocSmeta" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-common-apimeta"></a></p>
+<p>
+  <a id="cdr-common-api_schema-base_meta"></a>
+  <a class="schema-anchor" id="schemacdr-common-apimeta"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{}</span><span class="w">
 
 </span></code></pre>
@@ -2608,7 +2659,10 @@ This operation does not require authentication
 
 <p id="tocSmetaerror" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-common-apimetaerror"></a></p>
+<p>
+  <a id="cdr-common-api_schema-base_metaerror"></a>
+  <a class="schema-anchor" id="schemacdr-common-apimetaerror"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"urn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -2638,7 +2692,10 @@ This operation does not require authentication
 
 <p id="tocSresponseerrorlistv2" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-common-apiresponseerrorlistv2"></a></p>
+<p>
+  <a id="cdr-common-api_schema-base_responseerrorlist"></a>
+  <a class="schema-anchor" id="schemacdr-common-apiresponseerrorlistv2"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">

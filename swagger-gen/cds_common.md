@@ -587,7 +587,10 @@ This operation does not require authentication
 <h3 class="schema-toc" id="cdr-common-api_schemas_tocSresponsecommondiscoverystatus">ResponseCommonDiscoveryStatus</h3>
 <p id="tocSresponsecommondiscoverystatus" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-common-apiresponsecommondiscoverystatus"></a>
+<p>
+  <a id="cdr-common-api_schema-base_responsecommondiscoverystatus"></a>
+  <a class="schema-anchor" id="schemacdr-common-apiresponsecommondiscoverystatus"></a>
+</p>
 
 ```json
 {
@@ -631,7 +634,10 @@ This operation does not require authentication
 <h3 class="schema-toc" id="cdr-common-api_schemas_tocSresponsediscoveryoutageslist">ResponseDiscoveryOutagesList</h3>
 <p id="tocSresponsediscoveryoutageslist" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-common-apiresponsediscoveryoutageslist"></a>
+<p>
+  <a id="cdr-common-api_schema-base_responsediscoveryoutageslist"></a>
+  <a class="schema-anchor" id="schemacdr-common-apiresponsediscoveryoutageslist"></a>
+</p>
 
 ```json
 {
@@ -665,7 +671,10 @@ This operation does not require authentication
 <h3 class="schema-toc" id="cdr-common-api_schemas_tocSdiscoveryoutage">DiscoveryOutage</h3>
 <p id="tocSdiscoveryoutage" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-common-apidiscoveryoutage"></a>
+<p>
+  <a id="cdr-common-api_schema-base_discoveryoutage"></a>
+  <a class="schema-anchor" id="schemacdr-common-apidiscoveryoutage"></a>
+</p>
 
 ```json
 {
@@ -689,7 +698,10 @@ This operation does not require authentication
 <h3 class="schema-toc" id="cdr-common-api_schemas_tocSresponsecommoncustomer">ResponseCommonCustomer</h3>
 <p id="tocSresponsecommoncustomer" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-common-apiresponsecommoncustomer"></a>
+<p>
+  <a id="cdr-common-api_schema-base_responsecommoncustomer"></a>
+  <a class="schema-anchor" id="schemacdr-common-apiresponsecommoncustomer"></a>
+</p>
 
 ```json
 {
@@ -754,7 +766,10 @@ This operation does not require authentication
 <h3 class="schema-toc" id="cdr-common-api_schemas_tocSresponsecommoncustomerdetailv2">ResponseCommonCustomerDetailV2</h3>
 <p id="tocSresponsecommoncustomerdetailv2" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-common-apiresponsecommoncustomerdetailv2"></a>
+<p>
+  <a id="cdr-common-api_schema-base_responsecommoncustomerdetail"></a>
+  <a class="schema-anchor" id="schemacdr-common-apiresponsecommoncustomerdetailv2"></a>
+</p>
 
 ```json
 {
@@ -917,7 +932,10 @@ This operation does not require authentication
 <h3 class="schema-toc" id="cdr-common-api_schemas_tocScommonperson">CommonPerson</h3>
 <p id="tocScommonperson" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-common-apicommonperson"></a>
+<p>
+  <a id="cdr-common-api_schema-base_commonperson"></a>
+  <a class="schema-anchor" id="schemacdr-common-apicommonperson"></a>
+</p>
 
 ```json
 {
@@ -960,7 +978,10 @@ This operation does not require authentication
 <h3 class="schema-toc" id="cdr-common-api_schemas_tocScommonpersondetailv2">CommonPersonDetailV2</h3>
 <p id="tocScommonpersondetailv2" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-common-apicommonpersondetailv2"></a>
+<p>
+  <a id="cdr-common-api_schema-base_commonpersondetail"></a>
+  <a class="schema-anchor" id="schemacdr-common-apicommonpersondetailv2"></a>
+</p>
 
 ```json
 {
@@ -1056,7 +1077,10 @@ This operation does not require authentication
 <h3 class="schema-toc" id="cdr-common-api_schemas_tocScommonorganisation">CommonOrganisation</h3>
 <p id="tocScommonorganisation" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-common-apicommonorganisation"></a>
+<p>
+  <a id="cdr-common-api_schema-base_commonorganisation"></a>
+  <a class="schema-anchor" id="schemacdr-common-apicommonorganisation"></a>
+</p>
 
 ```json
 {
@@ -1115,7 +1139,10 @@ This operation does not require authentication
 <h3 class="schema-toc" id="cdr-common-api_schemas_tocScommonorganisationdetailv2">CommonOrganisationDetailV2</h3>
 <p id="tocScommonorganisationdetailv2" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-common-apicommonorganisationdetailv2"></a>
+<p>
+  <a id="cdr-common-api_schema-base_commonorganisationdetail"></a>
+  <a class="schema-anchor" id="schemacdr-common-apicommonorganisationdetailv2"></a>
+</p>
 
 ```json
 {
@@ -1196,7 +1223,10 @@ This operation does not require authentication
 <h3 class="schema-toc" id="cdr-common-api_schemas_tocScommonphonenumber">CommonPhoneNumber</h3>
 <p id="tocScommonphonenumber" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-common-apicommonphonenumber"></a>
+<p>
+  <a id="cdr-common-api_schema-base_commonphonenumber"></a>
+  <a class="schema-anchor" id="schemacdr-common-apicommonphonenumber"></a>
+</p>
 
 ```json
 {
@@ -1237,7 +1267,10 @@ This operation does not require authentication
 <h3 class="schema-toc" id="cdr-common-api_schemas_tocScommonemailaddress">CommonEmailAddress</h3>
 <p id="tocScommonemailaddress" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-common-apicommonemailaddress"></a>
+<p>
+  <a id="cdr-common-api_schema-base_commonemailaddress"></a>
+  <a class="schema-anchor" id="schemacdr-common-apicommonemailaddress"></a>
+</p>
 
 ```json
 {
@@ -1268,7 +1301,10 @@ This operation does not require authentication
 <h3 class="schema-toc" id="cdr-common-api_schemas_tocScommonphysicaladdresswithpurpose">CommonPhysicalAddressWithPurpose</h3>
 <p id="tocScommonphysicaladdresswithpurpose" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-common-apicommonphysicaladdresswithpurpose"></a>
+<p>
+  <a id="cdr-common-api_schema-base_commonphysicaladdresswithpurpose"></a>
+  <a class="schema-anchor" id="schemacdr-common-apicommonphysicaladdresswithpurpose"></a>
+</p>
 
 ```json
 {
@@ -1340,7 +1376,10 @@ This operation does not require authentication
 <h3 class="schema-toc" id="cdr-common-api_schemas_tocScommonphysicaladdress">CommonPhysicalAddress</h3>
 <p id="tocScommonphysicaladdress" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-common-apicommonphysicaladdress"></a>
+<p>
+  <a id="cdr-common-api_schema-base_commonphysicaladdress"></a>
+  <a class="schema-anchor" id="schemacdr-common-apicommonphysicaladdress"></a>
+</p>
 
 ```json
 {
@@ -1401,7 +1440,10 @@ This operation does not require authentication
 <h3 class="schema-toc" id="cdr-common-api_schemas_tocScommonsimpleaddress">CommonSimpleAddress</h3>
 <p id="tocScommonsimpleaddress" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-common-apicommonsimpleaddress"></a>
+<p>
+  <a id="cdr-common-api_schema-base_commonsimpleaddress"></a>
+  <a class="schema-anchor" id="schemacdr-common-apicommonsimpleaddress"></a>
+</p>
 
 ```json
 {
@@ -1433,7 +1475,10 @@ This operation does not require authentication
 <h3 class="schema-toc" id="cdr-common-api_schemas_tocScommonpafaddress">CommonPAFAddress</h3>
 <p id="tocScommonpafaddress" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-common-apicommonpafaddress"></a>
+<p>
+  <a id="cdr-common-api_schema-base_commonpafaddress"></a>
+  <a class="schema-anchor" id="schemacdr-common-apicommonpafaddress"></a>
+</p>
 
 ```json
 {
@@ -1495,7 +1540,10 @@ This operation does not require authentication
 <h3 class="schema-toc" id="cdr-common-api_schemas_tocSlinks">Links</h3>
 <p id="tocSlinks" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-common-apilinks"></a>
+<p>
+  <a id="cdr-common-api_schema-base_links"></a>
+  <a class="schema-anchor" id="schemacdr-common-apilinks"></a>
+</p>
 
 ```json
 {
@@ -1513,7 +1561,10 @@ This operation does not require authentication
 <h3 class="schema-toc" id="cdr-common-api_schemas_tocSmeta">Meta</h3>
 <p id="tocSmeta" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-common-apimeta"></a>
+<p>
+  <a id="cdr-common-api_schema-base_meta"></a>
+  <a class="schema-anchor" id="schemacdr-common-apimeta"></a>
+</p>
 
 ```json
 {}
@@ -1527,7 +1578,10 @@ This operation does not require authentication
 <h3 class="schema-toc" id="cdr-common-api_schemas_tocSmetaerror">MetaError</h3>
 <p id="tocSmetaerror" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-common-apimetaerror"></a>
+<p>
+  <a id="cdr-common-api_schema-base_metaerror"></a>
+  <a class="schema-anchor" id="schemacdr-common-apimetaerror"></a>
+</p>
 
 ```json
 {
@@ -1547,7 +1601,10 @@ This operation does not require authentication
 <h3 class="schema-toc" id="cdr-common-api_schemas_tocSresponseerrorlistv2">ResponseErrorListV2</h3>
 <p id="tocSresponseerrorlistv2" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-common-apiresponseerrorlistv2"></a>
+<p>
+  <a id="cdr-common-api_schema-base_responseerrorlist"></a>
+  <a class="schema-anchor" id="schemacdr-common-apiresponseerrorlistv2"></a>
+</p>
 
 ```json
 {

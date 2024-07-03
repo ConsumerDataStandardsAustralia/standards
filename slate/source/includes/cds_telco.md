@@ -3194,7 +3194,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoproductlistresponse">TelcoProductListResponse</h3>
 <p id="tocStelcoproductlistresponse" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-telco-apitelcoproductlistresponse"></a>
+<p>
+  <a id="cdr-telco-api_schema-base_telcoproductlistresponse"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcoproductlistresponse"></a>
+</p>
 
 ```json
 {
@@ -3266,7 +3269,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoproductresponse">TelcoProductResponse</h3>
 <p id="tocStelcoproductresponse" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-telco-apitelcoproductresponse"></a>
+<p>
+  <a id="cdr-telco-api_schema-base_telcoproductresponse"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcoproductresponse"></a>
+</p>
 
 ```json
 {
@@ -3406,7 +3412,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcousageresponse">TelcoUsageResponse</h3>
 <p id="tocStelcousageresponse" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-telco-apitelcousageresponse"></a>
+<p>
+  <a id="cdr-telco-api_schema-base_telcousageresponse"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcousageresponse"></a>
+</p>
 
 ```json
 {
@@ -3486,7 +3495,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoserviceusageresponse">TelcoServiceUsageResponse</h3>
 <p id="tocStelcoserviceusageresponse" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-telco-apitelcoserviceusageresponse"></a>
+<p>
+  <a id="cdr-telco-api_schema-base_telcoserviceusageresponse"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcoserviceusageresponse"></a>
+</p>
 
 ```json
 {
@@ -3559,7 +3571,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoserviceusagelistresponse">TelcoServiceUsageListResponse</h3>
 <p id="tocStelcoserviceusagelistresponse" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-telco-apitelcoserviceusagelistresponse"></a>
+<p>
+  <a id="cdr-telco-api_schema-base_telcoserviceusagelistresponse"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcoserviceusagelistresponse"></a>
+</p>
 
 ```json
 {
@@ -3641,7 +3656,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoaccountlistresponse">TelcoAccountListResponse</h3>
 <p id="tocStelcoaccountlistresponse" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-telco-apitelcoaccountlistresponse"></a>
+<p>
+  <a id="cdr-telco-api_schema-base_telcoaccountlistresponse"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcoaccountlistresponse"></a>
+</p>
 
 ```json
 {
@@ -3699,7 +3717,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoaccountdetailresponse">TelcoAccountDetailResponse</h3>
 <p id="tocStelcoaccountdetailresponse" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-telco-apitelcoaccountdetailresponse"></a>
+<p>
+  <a id="cdr-telco-api_schema-base_telcoaccountdetailresponse"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcoaccountdetailresponse"></a>
+</p>
 
 ```json
 {
@@ -3757,7 +3778,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcopaymentscheduleresponse">TelcoPaymentScheduleResponse</h3>
 <p id="tocStelcopaymentscheduleresponse" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-telco-apitelcopaymentscheduleresponse"></a>
+<p>
+  <a id="cdr-telco-api_schema-base_telcopaymentscheduleresponse"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcopaymentscheduleresponse"></a>
+</p>
 
 ```json
 {
@@ -3818,7 +3842,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoconcessionsresponse">TelcoConcessionsResponse</h3>
 <p id="tocStelcoconcessionsresponse" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-telco-apitelcoconcessionsresponse"></a>
+<p>
+  <a id="cdr-telco-api_schema-base_telcoconcessionsresponse"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcoconcessionsresponse"></a>
+</p>
 
 ```json
 {
@@ -3866,7 +3893,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcobalancelistresponse">TelcoBalanceListResponse</h3>
 <p id="tocStelcobalancelistresponse" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-telco-apitelcobalancelistresponse"></a>
+<p>
+  <a id="cdr-telco-api_schema-base_telcobalancelistresponse"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcobalancelistresponse"></a>
+</p>
 
 ```json
 {
@@ -3966,7 +3996,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcobalanceresponse">TelcoBalanceResponse</h3>
 <p id="tocStelcobalanceresponse" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-telco-apitelcobalanceresponse"></a>
+<p>
+  <a id="cdr-telco-api_schema-base_telcobalanceresponse"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcobalanceresponse"></a>
+</p>
 
 ```json
 {
@@ -4052,7 +4085,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcotransactionlistresponse">TelcoTransactionListResponse</h3>
 <p id="tocStelcotransactionlistresponse" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-telco-apitelcotransactionlistresponse"></a>
+<p>
+  <a id="cdr-telco-api_schema-base_telcotransactionlistresponse"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcotransactionlistresponse"></a>
+</p>
 
 ```json
 {
@@ -4131,7 +4167,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocSmetaerror">MetaError</h3>
 <p id="tocSmetaerror" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-telco-apimetaerror"></a>
+<p>
+  <a id="cdr-telco-api_schema-base_metaerror"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apimetaerror"></a>
+</p>
 
 ```json
 {
@@ -4151,7 +4190,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocSresponseerrorlistv2">ResponseErrorListV2</h3>
 <p id="tocSresponseerrorlistv2" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-telco-apiresponseerrorlistv2"></a>
+<p>
+  <a id="cdr-telco-api_schema-base_responseerrorlist"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apiresponseerrorlistv2"></a>
+</p>
 
 ```json
 {
@@ -4182,7 +4224,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoproduct">TelcoProduct</h3>
 <p id="tocStelcoproduct" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-telco-apitelcoproduct"></a>
+<p>
+  <a id="cdr-telco-api_schema-base_telcoproduct"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcoproduct"></a>
+</p>
 
 ```json
 {
@@ -4266,7 +4311,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcocontract">TelcoContract</h3>
 <p id="tocStelcocontract" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-telco-apitelcocontract"></a>
+<p>
+  <a id="cdr-telco-api_schema-base_telcocontract"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcocontract"></a>
+</p>
 
 ```json
 {
@@ -4292,7 +4340,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoservicedetail">TelcoServiceDetail</h3>
 <p id="tocStelcoservicedetail" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-telco-apitelcoservicedetail"></a>
+<p>
+  <a id="cdr-telco-api_schema-base_telcoservicedetail"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcoservicedetail"></a>
+</p>
 
 ```json
 {
@@ -4310,7 +4361,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoaccountusage">TelcoAccountUsage</h3>
 <p id="tocStelcoaccountusage" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-telco-apitelcoaccountusage"></a>
+<p>
+  <a id="cdr-telco-api_schema-base_telcoaccountusage"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcoaccountusage"></a>
+</p>
 
 ```json
 {
@@ -4383,7 +4437,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoserviceusage">TelcoServiceUsage</h3>
 <p id="tocStelcoserviceusage" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-telco-apitelcoserviceusage"></a>
+<p>
+  <a id="cdr-telco-api_schema-base_telcoserviceusage"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcoserviceusage"></a>
+</p>
 
 ```json
 {
@@ -4453,7 +4510,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoaccountbase">TelcoAccountBase</h3>
 <p id="tocStelcoaccountbase" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-telco-apitelcoaccountbase"></a>
+<p>
+  <a id="cdr-telco-api_schema-base_telcoaccountbase"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcoaccountbase"></a>
+</p>
 
 ```json
 {
@@ -4490,7 +4550,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoaccountresponsedata">TelcoAccountResponseData</h3>
 <p id="tocStelcoaccountresponsedata" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-telco-apitelcoaccountresponsedata"></a>
+<p>
+  <a id="cdr-telco-api_schema-base_telcoaccountresponsedata"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcoaccountresponsedata"></a>
+</p>
 
 ```json
 {
@@ -4537,7 +4600,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoaccountdetailresponsedata">TelcoAccountDetailResponseData</h3>
 <p id="tocStelcoaccountdetailresponsedata" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-telco-apitelcoaccountdetailresponsedata"></a>
+<p>
+  <a id="cdr-telco-api_schema-base_telcoaccountdetailresponsedata"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcoaccountdetailresponsedata"></a>
+</p>
 
 ```json
 {
@@ -4590,18 +4656,15 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|*anonymous*|[TelcoAccount](#schemacdr-telco-apitelcoaccount)|mandatory|The array of plans containing services and associated plan details|
-
-*and*
-
-|Name|Type|Required|Description|
-|---|---|---|---|
 |*anonymous*|[TelcoAccountDetail](#schemacdr-telco-apitelcoaccountdetail)|mandatory|The array of plans containing services and associated plan details|
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcopaymentschedule">TelcoPaymentSchedule</h3>
 <p id="tocStelcopaymentschedule" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-telco-apitelcopaymentschedule"></a>
+<p>
+  <a id="cdr-telco-api_schema-base_telcopaymentschedule"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcopaymentschedule"></a>
+</p>
 
 ```json
 {
@@ -4657,7 +4720,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoconcession">TelcoConcession</h3>
 <p id="tocStelcoconcession" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-telco-apitelcoconcession"></a>
+<p>
+  <a id="cdr-telco-api_schema-base_telcoconcession"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcoconcession"></a>
+</p>
 
 ```json
 {
@@ -4705,7 +4771,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoinvoice">TelcoInvoice</h3>
 <p id="tocStelcoinvoice" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-telco-apitelcoinvoice"></a>
+<p>
+  <a id="cdr-telco-api_schema-base_telcoinvoice"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcoinvoice"></a>
+</p>
 
 ```json
 {
@@ -4816,7 +4885,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcousage">TelcoUsage</h3>
 <p id="tocStelcousage" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-telco-apitelcousage"></a>
+<p>
+  <a id="cdr-telco-api_schema-base_telcousage"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcousage"></a>
+</p>
 
 ```json
 {
@@ -4878,7 +4950,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoinvoiceaccountcharges">TelcoInvoiceAccountCharges</h3>
 <p id="tocStelcoinvoiceaccountcharges" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-telco-apitelcoinvoiceaccountcharges"></a>
+<p>
+  <a id="cdr-telco-api_schema-base_telcoinvoiceaccountcharges"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcoinvoiceaccountcharges"></a>
+</p>
 
 ```json
 {
@@ -4910,7 +4985,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcobillingtransaction">TelcoBillingTransaction</h3>
 <p id="tocStelcobillingtransaction" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-telco-apitelcobillingtransaction"></a>
+<p>
+  <a id="cdr-telco-api_schema-base_telcobillingtransaction"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcobillingtransaction"></a>
+</p>
 
 ```json
 {
@@ -4986,7 +5064,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcobillingaccounttransaction">TelcoBillingAccountTransaction</h3>
 <p id="tocStelcobillingaccounttransaction" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-telco-apitelcobillingaccounttransaction"></a>
+<p>
+  <a id="cdr-telco-api_schema-base_telcobillingaccounttransaction"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcobillingaccounttransaction"></a>
+</p>
 
 ```json
 {
@@ -5021,7 +5102,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcobillingonceofftransaction">TelcoBillingOnceOffTransaction</h3>
 <p id="tocStelcobillingonceofftransaction" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-telco-apitelcobillingonceofftransaction"></a>
+<p>
+  <a id="cdr-telco-api_schema-base_telcobillingonceofftransaction"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcobillingonceofftransaction"></a>
+</p>
 
 ```json
 {
@@ -5045,7 +5129,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcobillingothertransaction">TelcoBillingOtherTransaction</h3>
 <p id="tocStelcobillingothertransaction" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-telco-apitelcobillingothertransaction"></a>
+<p>
+  <a id="cdr-telco-api_schema-base_telcobillingothertransaction"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcobillingothertransaction"></a>
+</p>
 
 ```json
 {
@@ -5092,7 +5179,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcobillingpaymenttransaction">TelcoBillingPaymentTransaction</h3>
 <p id="tocStelcobillingpaymenttransaction" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-telco-apitelcobillingpaymenttransaction"></a>
+<p>
+  <a id="cdr-telco-api_schema-base_telcobillingpaymenttransaction"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcobillingpaymenttransaction"></a>
+</p>
 
 ```json
 {
@@ -5125,7 +5215,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcobalance">TelcoBalance</h3>
 <p id="tocStelcobalance" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-telco-apitelcobalance"></a>
+<p>
+  <a id="cdr-telco-api_schema-base_telcobalance"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcobalance"></a>
+</p>
 
 ```json
 {
@@ -5205,7 +5298,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoservicebalance">TelcoServiceBalance</h3>
 <p id="tocStelcoservicebalance" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-telco-apitelcoservicebalance"></a>
+<p>
+  <a id="cdr-telco-api_schema-base_telcoservicebalance"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcoservicebalance"></a>
+</p>
 
 ```json
 {
@@ -5286,7 +5382,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoplantype">TelcoPlanType</h3>
 <p id="tocStelcoplantype" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-telco-apitelcoplantype"></a>
+<p>
+  <a id="cdr-telco-api_schema-base_telcoplantype"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcoplantype"></a>
+</p>
 
 ```json
 "METERED"
@@ -5313,7 +5412,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocScommonphysicaladdress">CommonPhysicalAddress</h3>
 <p id="tocScommonphysicaladdress" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-telco-apicommonphysicaladdress"></a>
+<p>
+  <a id="cdr-telco-api_schema-base_commonphysicaladdress"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apicommonphysicaladdress"></a>
+</p>
 
 ```json
 {
@@ -5374,7 +5476,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocScommonsimpleaddress">CommonSimpleAddress</h3>
 <p id="tocScommonsimpleaddress" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-telco-apicommonsimpleaddress"></a>
+<p>
+  <a id="cdr-telco-api_schema-base_commonsimpleaddress"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apicommonsimpleaddress"></a>
+</p>
 
 ```json
 {
@@ -5408,7 +5513,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocScommonpafaddress">CommonPAFAddress</h3>
 <p id="tocScommonpafaddress" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-telco-apicommonpafaddress"></a>
+<p>
+  <a id="cdr-telco-api_schema-base_commonpafaddress"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apicommonpafaddress"></a>
+</p>
 
 ```json
 {
@@ -5470,7 +5578,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocSlinks">Links</h3>
 <p id="tocSlinks" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-telco-apilinks"></a>
+<p>
+  <a id="cdr-telco-api_schema-base_links"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apilinks"></a>
+</p>
 
 ```json
 {
@@ -5488,7 +5599,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocSmeta">Meta</h3>
 <p id="tocSmeta" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-telco-apimeta"></a>
+<p>
+  <a id="cdr-telco-api_schema-base_meta"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apimeta"></a>
+</p>
 
 ```json
 {}
@@ -5502,7 +5616,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocSlinkspaginated">LinksPaginated</h3>
 <p id="tocSlinkspaginated" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-telco-apilinkspaginated"></a>
+<p>
+  <a id="cdr-telco-api_schema-base_linkspaginated"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apilinkspaginated"></a>
+</p>
 
 ```json
 {
@@ -5528,7 +5645,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocSmetapaginated">MetaPaginated</h3>
 <p id="tocSmetapaginated" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-telco-apimetapaginated"></a>
+<p>
+  <a id="cdr-telco-api_schema-base_metapaginated"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apimetapaginated"></a>
+</p>
 
 ```json
 {
@@ -5548,7 +5668,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoproductlistresponsedata">TelcoProductListResponseData</h3>
 <p id="tocStelcoproductlistresponsedata" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-telco-apitelcoproductlistresponsedata"></a>
+<p>
+  <a id="cdr-telco-api_schema-base_telcoproductlistresponsedata"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcoproductlistresponsedata"></a>
+</p>
 
 ```json
 {
@@ -5605,7 +5728,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcousagelistresponse">TelcoUsageListResponse</h3>
 <p id="tocStelcousagelistresponse" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-telco-apitelcousagelistresponse"></a>
+<p>
+  <a id="cdr-telco-api_schema-base_telcousagelistresponse"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcousagelistresponse"></a>
+</p>
 
 ```json
 {
@@ -5689,7 +5815,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcousagelistresponsedata">TelcoUsageListResponseData</h3>
 <p id="tocStelcousagelistresponsedata" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-telco-apitelcousagelistresponsedata"></a>
+<p>
+  <a id="cdr-telco-api_schema-base_telcousagelistresponsedata"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcousagelistresponsedata"></a>
+</p>
 
 ```json
 {
@@ -5765,7 +5894,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoaccountlistresponsedata">TelcoAccountListResponseData</h3>
 <p id="tocStelcoaccountlistresponsedata" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-telco-apitelcoaccountlistresponsedata"></a>
+<p>
+  <a id="cdr-telco-api_schema-base_telcoaccountlistresponsedata"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcoaccountlistresponsedata"></a>
+</p>
 
 ```json
 {
@@ -5808,7 +5940,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcopaymentscheduleresponsedata">TelcoPaymentScheduleResponseData</h3>
 <p id="tocStelcopaymentscheduleresponsedata" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-telco-apitelcopaymentscheduleresponsedata"></a>
+<p>
+  <a id="cdr-telco-api_schema-base_telcopaymentscheduleresponsedata"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcopaymentscheduleresponsedata"></a>
+</p>
 
 ```json
 {
@@ -5854,7 +5989,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoconcessionsresponsedata">TelcoConcessionsResponseData</h3>
 <p id="tocStelcoconcessionsresponsedata" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-telco-apitelcoconcessionsresponsedata"></a>
+<p>
+  <a id="cdr-telco-api_schema-base_telcoconcessionsresponsedata"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcoconcessionsresponsedata"></a>
+</p>
 
 ```json
 {
@@ -5887,7 +6025,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcobalancelistresponsedata">TelcoBalanceListResponseData</h3>
 <p id="tocStelcobalancelistresponsedata" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-telco-apitelcobalancelistresponsedata"></a>
+<p>
+  <a id="cdr-telco-api_schema-base_telcobalancelistresponsedata"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcobalancelistresponsedata"></a>
+</p>
 
 ```json
 {
@@ -5972,7 +6113,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcobalanceresponsedata">TelcoBalanceResponseData</h3>
 <p id="tocStelcobalanceresponsedata" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-telco-apitelcobalanceresponsedata"></a>
+<p>
+  <a id="cdr-telco-api_schema-base_telcobalanceresponsedata"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcobalanceresponsedata"></a>
+</p>
 
 ```json
 {
@@ -6054,7 +6198,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoinvoiceresponse">TelcoInvoiceResponse</h3>
 <p id="tocStelcoinvoiceresponse" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-telco-apitelcoinvoiceresponse"></a>
+<p>
+  <a id="cdr-telco-api_schema-base_telcoinvoiceresponse"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcoinvoiceresponse"></a>
+</p>
 
 ```json
 {
@@ -6157,7 +6304,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoinvoicelistresponse">TelcoInvoiceListResponse</h3>
 <p id="tocStelcoinvoicelistresponse" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-telco-apitelcoinvoicelistresponse"></a>
+<p>
+  <a id="cdr-telco-api_schema-base_telcoinvoicelistresponse"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcoinvoicelistresponse"></a>
+</p>
 
 ```json
 {
@@ -6267,7 +6417,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoinvoicelistresponsedata">TelcoInvoiceListResponseData</h3>
 <p id="tocStelcoinvoicelistresponsedata" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-telco-apitelcoinvoicelistresponsedata"></a>
+<p>
+  <a id="cdr-telco-api_schema-base_telcoinvoicelistresponsedata"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcoinvoicelistresponsedata"></a>
+</p>
 
 ```json
 {
@@ -6362,7 +6515,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcotransactionlistresponsedata">TelcoTransactionListResponseData</h3>
 <p id="tocStelcotransactionlistresponsedata" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-telco-apitelcotransactionlistresponsedata"></a>
+<p>
+  <a id="cdr-telco-api_schema-base_telcotransactionlistresponsedata"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcotransactionlistresponsedata"></a>
+</p>
 
 ```json
 {
@@ -6426,7 +6582,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoproductpricing">TelcoProductPricing</h3>
 <p id="tocStelcoproductpricing" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-telco-apitelcoproductpricing"></a>
+<p>
+  <a id="cdr-telco-api_schema-base_telcoproductpricing"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcoproductpricing"></a>
+</p>
 
 ```json
 {
@@ -6450,7 +6609,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoadditionalinformation">TelcoAdditionalInformation</h3>
 <p id="tocStelcoadditionalinformation" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-telco-apitelcoadditionalinformation"></a>
+<p>
+  <a id="cdr-telco-api_schema-base_telcoadditionalinformation"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcoadditionalinformation"></a>
+</p>
 
 ```json
 {
@@ -6478,7 +6640,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoproductdetailmeteringcharges">TelcoProductDetailMeteringCharges</h3>
 <p id="tocStelcoproductdetailmeteringcharges" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-telco-apitelcoproductdetailmeteringcharges"></a>
+<p>
+  <a id="cdr-telco-api_schema-base_telcoproductdetailmeteringcharges"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcoproductdetailmeteringcharges"></a>
+</p>
 
 ```json
 {
@@ -6504,7 +6669,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoproductdetailfeature">TelcoProductDetailFeature</h3>
 <p id="tocStelcoproductdetailfeature" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-telco-apitelcoproductdetailfeature"></a>
+<p>
+  <a id="cdr-telco-api_schema-base_telcoproductdetailfeature"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcoproductdetailfeature"></a>
+</p>
 
 ```json
 {
@@ -6541,7 +6709,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoproductdetailbundles">TelcoProductDetailBundles</h3>
 <p id="tocStelcoproductdetailbundles" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-telco-apitelcoproductdetailbundles"></a>
+<p>
+  <a id="cdr-telco-api_schema-base_telcoproductdetailbundles"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcoproductdetailbundles"></a>
+</p>
 
 ```json
 {
@@ -6571,7 +6742,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoproductdetailplan">TelcoProductDetailPlan</h3>
 <p id="tocStelcoproductdetailplan" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-telco-apitelcoproductdetailplan"></a>
+<p>
+  <a id="cdr-telco-api_schema-base_telcoproductdetailplan"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcoproductdetailplan"></a>
+</p>
 
 ```json
 {
@@ -6600,7 +6774,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoproductdetailplanfeature">TelcoProductDetailPlanFeature</h3>
 <p id="tocStelcoproductdetailplanfeature" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-telco-apitelcoproductdetailplanfeature"></a>
+<p>
+  <a id="cdr-telco-api_schema-base_telcoproductdetailplanfeature"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcoproductdetailplanfeature"></a>
+</p>
 
 ```json
 {
@@ -6620,7 +6797,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoproductdetaildiscountfeature">TelcoProductDetailDiscountFeature</h3>
 <p id="tocStelcoproductdetaildiscountfeature" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-telco-apitelcoproductdetaildiscountfeature"></a>
+<p>
+  <a id="cdr-telco-api_schema-base_telcoproductdetaildiscountfeature"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcoproductdetaildiscountfeature"></a>
+</p>
 
 ```json
 {
@@ -6640,7 +6820,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoproductdetaildiscounts">TelcoProductDetailDiscounts</h3>
 <p id="tocStelcoproductdetaildiscounts" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-telco-apitelcoproductdetaildiscounts"></a>
+<p>
+  <a id="cdr-telco-api_schema-base_telcoproductdetaildiscounts"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcoproductdetaildiscounts"></a>
+</p>
 
 ```json
 {
@@ -6669,7 +6852,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoproductdetailincentivefeature">TelcoProductDetailIncentiveFeature</h3>
 <p id="tocStelcoproductdetailincentivefeature" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-telco-apitelcoproductdetailincentivefeature"></a>
+<p>
+  <a id="cdr-telco-api_schema-base_telcoproductdetailincentivefeature"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcoproductdetailincentivefeature"></a>
+</p>
 
 ```json
 {
@@ -6689,7 +6875,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoproductdetailincentives">TelcoProductDetailIncentives</h3>
 <p id="tocStelcoproductdetailincentives" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-telco-apitelcoproductdetailincentives"></a>
+<p>
+  <a id="cdr-telco-api_schema-base_telcoproductdetailincentives"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcoproductdetailincentives"></a>
+</p>
 
 ```json
 {
@@ -6718,7 +6907,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoproductdetail">TelcoProductDetail</h3>
 <p id="tocStelcoproductdetail" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-telco-apitelcoproductdetail"></a>
+<p>
+  <a id="cdr-telco-api_schema-base_telcoproductdetail"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcoproductdetail"></a>
+</p>
 
 ```json
 {
@@ -6801,7 +6993,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoaccountusageservices">TelcoAccountUsageServices</h3>
 <p id="tocStelcoaccountusageservices" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-telco-apitelcoaccountusageservices"></a>
+<p>
+  <a id="cdr-telco-api_schema-base_telcoaccountusageservices"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcoaccountusageservices"></a>
+</p>
 
 ```json
 {
@@ -6868,7 +7063,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoaccountplanoverview">TelcoAccountPlanOverview</h3>
 <p id="tocStelcoaccountplanoverview" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-telco-apitelcoaccountplanoverview"></a>
+<p>
+  <a id="cdr-telco-api_schema-base_telcoaccountplanoverview"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcoaccountplanoverview"></a>
+</p>
 
 ```json
 {
@@ -6892,7 +7090,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoaccountplan">TelcoAccountPlan</h3>
 <p id="tocStelcoaccountplan" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-telco-apitelcoaccountplan"></a>
+<p>
+  <a id="cdr-telco-api_schema-base_telcoaccountplan"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcoaccountplan"></a>
+</p>
 
 ```json
 {
@@ -6935,7 +7136,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoaccount">TelcoAccount</h3>
 <p id="tocStelcoaccount" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-telco-apitelcoaccount"></a>
+<p>
+  <a id="cdr-telco-api_schema-base_telcoaccount"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcoaccount"></a>
+</p>
 
 ```json
 {
@@ -6969,7 +7173,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoaccountplandetail">TelcoAccountPlanDetail</h3>
 <p id="tocStelcoaccountplandetail" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-telco-apitelcoaccountplandetail"></a>
+<p>
+  <a id="cdr-telco-api_schema-base_telcoaccountplandetail"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcoaccountplandetail"></a>
+</p>
 
 ```json
 {
@@ -7000,7 +7207,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoaccountdetailauthorisedcontacts">TelcoAccountDetailAuthorisedContacts</h3>
 <p id="tocStelcoaccountdetailauthorisedcontacts" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-telco-apitelcoaccountdetailauthorisedcontacts"></a>
+<p>
+  <a id="cdr-telco-api_schema-base_telcoaccountdetailauthorisedcontacts"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcoaccountdetailauthorisedcontacts"></a>
+</p>
 
 ```json
 {
@@ -7028,7 +7238,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoaccountdetail">TelcoAccountDetail</h3>
 <p id="tocStelcoaccountdetail" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-telco-apitelcoaccountdetail"></a>
+<p>
+  <a id="cdr-telco-api_schema-base_telcoaccountdetail"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcoaccountdetail"></a>
+</p>
 
 ```json
 {
@@ -7085,7 +7298,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcopaymentschedulecarddebit">TelcoPaymentScheduleCardDebit</h3>
 <p id="tocStelcopaymentschedulecarddebit" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-telco-apitelcopaymentschedulecarddebit"></a>
+<p>
+  <a id="cdr-telco-api_schema-base_telcopaymentschedulecarddebit"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcopaymentschedulecarddebit"></a>
+</p>
 
 ```json
 {
@@ -7123,7 +7339,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcopaymentscheduledirectdebit">TelcoPaymentScheduleDirectDebit</h3>
 <p id="tocStelcopaymentscheduledirectdebit" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-telco-apitelcopaymentscheduledirectdebit"></a>
+<p>
+  <a id="cdr-telco-api_schema-base_telcopaymentscheduledirectdebit"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcopaymentscheduledirectdebit"></a>
+</p>
 
 ```json
 {
@@ -7159,7 +7378,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcopaymentscheduledigitalwallet">TelcoPaymentScheduleDigitalWallet</h3>
 <p id="tocStelcopaymentscheduledigitalwallet" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-telco-apitelcopaymentscheduledigitalwallet"></a>
+<p>
+  <a id="cdr-telco-api_schema-base_telcopaymentscheduledigitalwallet"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcopaymentscheduledigitalwallet"></a>
+</p>
 
 ```json
 {
@@ -7202,7 +7424,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcopaymentschedulemanualpayment">TelcoPaymentScheduleManualPayment</h3>
 <p id="tocStelcopaymentschedulemanualpayment" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-telco-apitelcopaymentschedulemanualpayment"></a>
+<p>
+  <a id="cdr-telco-api_schema-base_telcopaymentschedulemanualpayment"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcopaymentschedulemanualpayment"></a>
+</p>
 
 ```json
 {
@@ -7222,7 +7447,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoinvoiceperiod">TelcoInvoicePeriod</h3>
 <p id="tocStelcoinvoiceperiod" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-telco-apitelcoinvoiceperiod"></a>
+<p>
+  <a id="cdr-telco-api_schema-base_telcoinvoiceperiod"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcoinvoiceperiod"></a>
+</p>
 
 ```json
 {
@@ -7244,7 +7472,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoinvoicepayontimediscount">TelcoInvoicePayOnTimeDiscount</h3>
 <p id="tocStelcoinvoicepayontimediscount" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-telco-apitelcoinvoicepayontimediscount"></a>
+<p>
+  <a id="cdr-telco-api_schema-base_telcoinvoicepayontimediscount"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcoinvoicepayontimediscount"></a>
+</p>
 
 ```json
 {
@@ -7268,7 +7499,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcousagedatroaming">TelcoUsageDatRoaming</h3>
 <p id="tocStelcousagedatroaming" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-telco-apitelcousagedatroaming"></a>
+<p>
+  <a id="cdr-telco-api_schema-base_telcousagedatroaming"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcousagedatroaming"></a>
+</p>
 
 ```json
 {
@@ -7290,7 +7524,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcousagedata">TelcoUsageData</h3>
 <p id="tocStelcousagedata" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-telco-apitelcousagedata"></a>
+<p>
+  <a id="cdr-telco-api_schema-base_telcousagedata"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcousagedata"></a>
+</p>
 
 ```json
 {
@@ -7321,7 +7558,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcousagevoicenational">TelcoUsageVoiceNational</h3>
 <p id="tocStelcousagevoicenational" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-telco-apitelcousagevoicenational"></a>
+<p>
+  <a id="cdr-telco-api_schema-base_telcousagevoicenational"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcousagevoicenational"></a>
+</p>
 
 ```json
 {
@@ -7345,7 +7585,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcousagevoiceinternational">TelcoUsageVoiceInternational</h3>
 <p id="tocStelcousagevoiceinternational" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-telco-apitelcousagevoiceinternational"></a>
+<p>
+  <a id="cdr-telco-api_schema-base_telcousagevoiceinternational"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcousagevoiceinternational"></a>
+</p>
 
 ```json
 {
@@ -7369,7 +7612,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcousagevoiceroaming">TelcoUsageVoiceRoaming</h3>
 <p id="tocStelcousagevoiceroaming" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-telco-apitelcousagevoiceroaming"></a>
+<p>
+  <a id="cdr-telco-api_schema-base_telcousagevoiceroaming"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcousagevoiceroaming"></a>
+</p>
 
 ```json
 {
@@ -7393,7 +7639,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcousagevoice">TelcoUsageVoice</h3>
 <p id="tocStelcousagevoice" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-telco-apitelcousagevoice"></a>
+<p>
+  <a id="cdr-telco-api_schema-base_telcousagevoice"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcousagevoice"></a>
+</p>
 
 ```json
 {
@@ -7429,7 +7678,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcousagemessagingsms">TelcoUsageMessagingSms</h3>
 <p id="tocStelcousagemessagingsms" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-telco-apitelcousagemessagingsms"></a>
+<p>
+  <a id="cdr-telco-api_schema-base_telcousagemessagingsms"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcousagemessagingsms"></a>
+</p>
 
 ```json
 {
@@ -7455,7 +7707,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcousagemessagingmms">TelcoUsageMessagingMms</h3>
 <p id="tocStelcousagemessagingmms" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-telco-apitelcousagemessagingmms"></a>
+<p>
+  <a id="cdr-telco-api_schema-base_telcousagemessagingmms"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcousagemessagingmms"></a>
+</p>
 
 ```json
 {
@@ -7481,7 +7736,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcousagemessaging">TelcoUsageMessaging</h3>
 <p id="tocStelcousagemessaging" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-telco-apitelcousagemessaging"></a>
+<p>
+  <a id="cdr-telco-api_schema-base_telcousagemessaging"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcousagemessaging"></a>
+</p>
 
 ```json
 {
@@ -7513,7 +7771,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoinvoiceaccountchargesothercharges">TelcoInvoiceAccountChargesOtherCharges</h3>
 <p id="tocStelcoinvoiceaccountchargesothercharges" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-telco-apitelcoinvoiceaccountchargesothercharges"></a>
+<p>
+  <a id="cdr-telco-api_schema-base_telcoinvoiceaccountchargesothercharges"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcoinvoiceaccountchargesothercharges"></a>
+</p>
 
 ```json
 {
@@ -7551,7 +7812,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcobillingaccounttransactionadjustments">TelcoBillingAccountTransactionAdjustments</h3>
 <p id="tocStelcobillingaccounttransactionadjustments" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-telco-apitelcobillingaccounttransactionadjustments"></a>
+<p>
+  <a id="cdr-telco-api_schema-base_telcobillingaccounttransactionadjustments"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcobillingaccounttransactionadjustments"></a>
+</p>
 
 ```json
 {
@@ -7571,7 +7835,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoservicebalancedataroaming">TelcoServiceBalanceDataRoaming</h3>
 <p id="tocStelcoservicebalancedataroaming" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-telco-apitelcoservicebalancedataroaming"></a>
+<p>
+  <a id="cdr-telco-api_schema-base_telcoservicebalancedataroaming"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcoservicebalancedataroaming"></a>
+</p>
 
 ```json
 {
@@ -7595,7 +7862,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoservicebalancedata">TelcoServiceBalanceData</h3>
 <p id="tocStelcoservicebalancedata" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-telco-apitelcoservicebalancedata"></a>
+<p>
+  <a id="cdr-telco-api_schema-base_telcoservicebalancedata"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcoservicebalancedata"></a>
+</p>
 
 ```json
 {
@@ -7629,7 +7899,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoservicebalancevoicenational">TelcoServiceBalanceVoiceNational</h3>
 <p id="tocStelcoservicebalancevoicenational" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-telco-apitelcoservicebalancevoicenational"></a>
+<p>
+  <a id="cdr-telco-api_schema-base_telcoservicebalancevoicenational"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcoservicebalancevoicenational"></a>
+</p>
 
 ```json
 {
@@ -7655,7 +7928,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoservicebalancevoiceinternational">TelcoServiceBalanceVoiceInternational</h3>
 <p id="tocStelcoservicebalancevoiceinternational" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-telco-apitelcoservicebalancevoiceinternational"></a>
+<p>
+  <a id="cdr-telco-api_schema-base_telcoservicebalancevoiceinternational"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcoservicebalancevoiceinternational"></a>
+</p>
 
 ```json
 {
@@ -7681,7 +7957,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoservicebalancevoiceroaming">TelcoServiceBalanceVoiceRoaming</h3>
 <p id="tocStelcoservicebalancevoiceroaming" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-telco-apitelcoservicebalancevoiceroaming"></a>
+<p>
+  <a id="cdr-telco-api_schema-base_telcoservicebalancevoiceroaming"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcoservicebalancevoiceroaming"></a>
+</p>
 
 ```json
 {
@@ -7707,7 +7986,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoservicebalancevoice">TelcoServiceBalanceVoice</h3>
 <p id="tocStelcoservicebalancevoice" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-telco-apitelcoservicebalancevoice"></a>
+<p>
+  <a id="cdr-telco-api_schema-base_telcoservicebalancevoice"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcoservicebalancevoice"></a>
+</p>
 
 ```json
 {
@@ -7748,7 +8030,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoservicebalancemessagingsms">TelcoServiceBalanceMessagingSms</h3>
 <p id="tocStelcoservicebalancemessagingsms" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-telco-apitelcoservicebalancemessagingsms"></a>
+<p>
+  <a id="cdr-telco-api_schema-base_telcoservicebalancemessagingsms"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcoservicebalancemessagingsms"></a>
+</p>
 
 ```json
 {
@@ -7776,7 +8061,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoservicebalancemessagingmms">TelcoServiceBalanceMessagingMms</h3>
 <p id="tocStelcoservicebalancemessagingmms" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-telco-apitelcoservicebalancemessagingmms"></a>
+<p>
+  <a id="cdr-telco-api_schema-base_telcoservicebalancemessagingmms"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcoservicebalancemessagingmms"></a>
+</p>
 
 ```json
 {
@@ -7804,7 +8092,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoservicebalancemessaging">TelcoServiceBalanceMessaging</h3>
 <p id="tocStelcoservicebalancemessaging" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-telco-apitelcoservicebalancemessaging"></a>
+<p>
+  <a id="cdr-telco-api_schema-base_telcoservicebalancemessaging"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcoservicebalancemessaging"></a>
+</p>
 
 ```json
 {
@@ -7840,7 +8131,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoservicebalances">TelcoServiceBalances</h3>
 <p id="tocStelcoservicebalances" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-telco-apitelcoservicebalances"></a>
+<p>
+  <a id="cdr-telco-api_schema-base_telcoservicebalances"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcoservicebalances"></a>
+</p>
 
 ```json
 {

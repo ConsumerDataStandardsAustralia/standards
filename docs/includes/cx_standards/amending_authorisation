@@ -1,7 +1,5 @@
-<h2 id='amending-authorisation-standards'>Amending Authorisation Standards</h2><pre class="highlight diff tab-diff"><code>Fixed typo:
-<span class="gd">- How a changed attributed is signified
-</span><span class="gi">+ How a changed attribute is signified
-</span></code></pre>
+<h2 id='amending-authorisation-standards'>Amending Authorisation Standards</h2><pre class="highlight diff tab-diff"><code>Updated "Authorisation: Amending consent" CX standard noting it needs to align with security requirements for specifiying an existing arrangement 
+</code></pre>
 <table><thead>
 <tr>
 <th>Area</th>
@@ -10,7 +8,7 @@
 </thead><tbody>
 <tr>
 <td><strong>Authorisation:</strong><br/>Amending consent</td>
-<td>The following standards apply when a Data Holder invites a CDR consumer to amend a current authorisation as per rule 4.22A and the ADR has supplied a <em>cdr_arrangement_id</em>:</td>
+<td>The following standards apply when a Data Holder invites a CDR consumer to amend a current authorisation as per rule 4.22A and in accordance with <a href="#specifying-an-existing-arrangement">Specifying an existing arrangement</a>:</td>
 </tr>
 <tr>
 <td>Customer Profile</td>

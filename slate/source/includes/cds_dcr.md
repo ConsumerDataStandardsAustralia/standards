@@ -471,7 +471,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-dynamic-client-registration-api_schemas_tocSclientregistrationrequest">ClientRegistrationRequest</h3>
 <p id="tocSclientregistrationrequest" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-dynamic-client-registration-apiclientregistrationrequest"></a>
+<p>
+  <a id="cdr-dynamic-client-registration-api_schema-base_clientregistrationrequest"></a>
+  <a class="schema-anchor" id="schemacdr-dynamic-client-registration-apiclientregistrationrequest"></a>
+</p>
 
 ```json
 "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
@@ -489,7 +492,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-dynamic-client-registration-api_schemas_tocSregistrationproperties">RegistrationProperties</h3>
 <p id="tocSregistrationproperties" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-dynamic-client-registration-apiregistrationproperties"></a>
+<p>
+  <a id="cdr-dynamic-client-registration-api_schema-base_registrationproperties"></a>
+  <a class="schema-anchor" id="schemacdr-dynamic-client-registration-apiregistrationproperties"></a>
+</p>
 
 ```json
 {
@@ -605,7 +611,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-dynamic-client-registration-api_schemas_tocSclientregistration">ClientRegistration</h3>
 <p id="tocSclientregistration" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-dynamic-client-registration-apiclientregistration"></a>
+<p>
+  <a id="cdr-dynamic-client-registration-api_schema-base_clientregistration"></a>
+  <a class="schema-anchor" id="schemacdr-dynamic-client-registration-apiclientregistration"></a>
+</p>
 
 ```json
 {
@@ -682,7 +691,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-dynamic-client-registration-api_schemas_tocSregistrationerror">RegistrationError</h3>
 <p id="tocSregistrationerror" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-dynamic-client-registration-apiregistrationerror"></a>
+<p>
+  <a id="cdr-dynamic-client-registration-api_schema-base_registrationerror"></a>
+  <a class="schema-anchor" id="schemacdr-dynamic-client-registration-apiregistrationerror"></a>
+</p>
 
 ```json
 {

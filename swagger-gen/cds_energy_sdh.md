@@ -1022,7 +1022,10 @@ This operation may only be called by an Energy Retailer using the information se
 <h3 class="schema-toc" id="cdr-energy-secondary-data-holder-api_schemas_tocSenergyservicepointlistresponse">EnergyServicePointListResponse</h3>
 <p id="tocSenergyservicepointlistresponse" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apienergyservicepointlistresponse"></a>
+<p>
+  <a id="cdr-energy-secondary-data-holder-api_schema-base_energyservicepointlistresponse"></a>
+  <a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apienergyservicepointlistresponse"></a>
+</p>
 
 ```json
 {
@@ -1071,7 +1074,10 @@ This operation may only be called by an Energy Retailer using the information se
 <h3 class="schema-toc" id="cdr-energy-secondary-data-holder-api_schemas_tocSenergyservicepointdetailresponse">EnergyServicePointDetailResponse</h3>
 <p id="tocSenergyservicepointdetailresponse" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apienergyservicepointdetailresponse"></a>
+<p>
+  <a id="cdr-energy-secondary-data-holder-api_schema-base_energyservicepointdetailresponse"></a>
+  <a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apienergyservicepointdetailresponse"></a>
+</p>
 
 ```json
 {
@@ -1183,7 +1189,10 @@ This operation may only be called by an Energy Retailer using the information se
 <h3 class="schema-toc" id="cdr-energy-secondary-data-holder-api_schemas_tocSenergyusagelistresponse">EnergyUsageListResponse</h3>
 <p id="tocSenergyusagelistresponse" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apienergyusagelistresponse"></a>
+<p>
+  <a id="cdr-energy-secondary-data-holder-api_schema-base_energyusagelistresponse"></a>
+  <a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apienergyusagelistresponse"></a>
+</p>
 
 ```json
 {
@@ -1247,7 +1256,10 @@ This operation may only be called by an Energy Retailer using the information se
 <h3 class="schema-toc" id="cdr-energy-secondary-data-holder-api_schemas_tocSenergyderlistresponse">EnergyDerListResponse</h3>
 <p id="tocSenergyderlistresponse" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apienergyderlistresponse"></a>
+<p>
+  <a id="cdr-energy-secondary-data-holder-api_schema-base_energyderlistresponse"></a>
+  <a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apienergyderlistresponse"></a>
+</p>
 
 ```json
 {
@@ -1333,7 +1345,10 @@ This operation may only be called by an Energy Retailer using the information se
 <h3 class="schema-toc" id="cdr-energy-secondary-data-holder-api_schemas_tocSenergyderdetailresponse">EnergyDerDetailResponse</h3>
 <p id="tocSenergyderdetailresponse" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apienergyderdetailresponse"></a>
+<p>
+  <a id="cdr-energy-secondary-data-holder-api_schema-base_energyderdetailresponse"></a>
+  <a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apienergyderdetailresponse"></a>
+</p>
 
 ```json
 {
@@ -1407,7 +1422,10 @@ This operation may only be called by an Energy Retailer using the information se
 <h3 class="schema-toc" id="cdr-energy-secondary-data-holder-api_schemas_tocSresponseerrorlistv2">ResponseErrorListV2</h3>
 <p id="tocSresponseerrorlistv2" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apiresponseerrorlistv2"></a>
+<p>
+  <a id="cdr-energy-secondary-data-holder-api_schema-base_responseerrorlist"></a>
+  <a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apiresponseerrorlistv2"></a>
+</p>
 
 ```json
 {
@@ -1439,7 +1457,10 @@ This operation may only be called by an Energy Retailer using the information se
 <h3 class="schema-toc" id="cdr-energy-secondary-data-holder-api_schemas_tocSenergyservicepoint">EnergyServicePoint</h3>
 <p id="tocSenergyservicepoint" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apienergyservicepoint"></a>
+<p>
+  <a id="cdr-energy-secondary-data-holder-api_schema-base_energyservicepoint"></a>
+  <a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apienergyservicepoint"></a>
+</p>
 
 ```json
 {
@@ -1509,7 +1530,10 @@ This operation may only be called by an Energy Retailer using the information se
 <h3 class="schema-toc" id="cdr-energy-secondary-data-holder-api_schemas_tocSenergyservicepointdetail">EnergyServicePointDetail</h3>
 <p id="tocSenergyservicepointdetail" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apienergyservicepointdetail"></a>
+<p>
+  <a id="cdr-energy-secondary-data-holder-api_schema-base_energyservicepointdetail"></a>
+  <a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apienergyservicepointdetail"></a>
+</p>
 
 ```json
 {
@@ -1719,7 +1743,10 @@ This operation may only be called by an Energy Retailer using the information se
 <h3 class="schema-toc" id="cdr-energy-secondary-data-holder-api_schemas_tocSenergyusageread">EnergyUsageRead</h3>
 <p id="tocSenergyusageread" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apienergyusageread"></a>
+<p>
+  <a id="cdr-energy-secondary-data-holder-api_schema-base_energyusageread"></a>
+  <a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apienergyusageread"></a>
+</p>
 
 ```json
 {
@@ -1794,7 +1821,10 @@ This operation may only be called by an Energy Retailer using the information se
 <h3 class="schema-toc" id="cdr-energy-secondary-data-holder-api_schemas_tocSenergyderrecord">EnergyDerRecord</h3>
 <p id="tocSenergyderrecord" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apienergyderrecord"></a>
+<p>
+  <a id="cdr-energy-secondary-data-holder-api_schema-base_energyderrecord"></a>
+  <a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apienergyderrecord"></a>
+</p>
 
 ```json
 {
@@ -1922,7 +1952,10 @@ This operation may only be called by an Energy Retailer using the information se
 <h3 class="schema-toc" id="cdr-energy-secondary-data-holder-api_schemas_tocScommonphysicaladdress">CommonPhysicalAddress</h3>
 <p id="tocScommonphysicaladdress" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apicommonphysicaladdress"></a>
+<p>
+  <a id="cdr-energy-secondary-data-holder-api_schema-base_commonphysicaladdress"></a>
+  <a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apicommonphysicaladdress"></a>
+</p>
 
 ```json
 {
@@ -1983,7 +2016,10 @@ This operation may only be called by an Energy Retailer using the information se
 <h3 class="schema-toc" id="cdr-energy-secondary-data-holder-api_schemas_tocScommonsimpleaddress">CommonSimpleAddress</h3>
 <p id="tocScommonsimpleaddress" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apicommonsimpleaddress"></a>
+<p>
+  <a id="cdr-energy-secondary-data-holder-api_schema-base_commonsimpleaddress"></a>
+  <a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apicommonsimpleaddress"></a>
+</p>
 
 ```json
 {
@@ -2017,7 +2053,10 @@ This operation may only be called by an Energy Retailer using the information se
 <h3 class="schema-toc" id="cdr-energy-secondary-data-holder-api_schemas_tocScommonpafaddress">CommonPAFAddress</h3>
 <p id="tocScommonpafaddress" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apicommonpafaddress"></a>
+<p>
+  <a id="cdr-energy-secondary-data-holder-api_schema-base_commonpafaddress"></a>
+  <a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apicommonpafaddress"></a>
+</p>
 
 ```json
 {
@@ -2079,7 +2118,10 @@ This operation may only be called by an Energy Retailer using the information se
 <h3 class="schema-toc" id="cdr-energy-secondary-data-holder-api_schemas_tocSrequestservicepointidlist">RequestServicePointIdList</h3>
 <p id="tocSrequestservicepointidlist" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apirequestservicepointidlist"></a>
+<p>
+  <a id="cdr-energy-secondary-data-holder-api_schema-base_requestservicepointidlist"></a>
+  <a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apirequestservicepointidlist"></a>
+</p>
 
 ```json
 {
@@ -2104,7 +2146,10 @@ This operation may only be called by an Energy Retailer using the information se
 <h3 class="schema-toc" id="cdr-energy-secondary-data-holder-api_schemas_tocSlinks">Links</h3>
 <p id="tocSlinks" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apilinks"></a>
+<p>
+  <a id="cdr-energy-secondary-data-holder-api_schema-base_links"></a>
+  <a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apilinks"></a>
+</p>
 
 ```json
 {
@@ -2122,7 +2167,10 @@ This operation may only be called by an Energy Retailer using the information se
 <h3 class="schema-toc" id="cdr-energy-secondary-data-holder-api_schemas_tocSmeta">Meta</h3>
 <p id="tocSmeta" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apimeta"></a>
+<p>
+  <a id="cdr-energy-secondary-data-holder-api_schema-base_meta"></a>
+  <a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apimeta"></a>
+</p>
 
 ```json
 {}
@@ -2136,7 +2184,10 @@ This operation may only be called by an Energy Retailer using the information se
 <h3 class="schema-toc" id="cdr-energy-secondary-data-holder-api_schemas_tocSlinkspaginated">LinksPaginated</h3>
 <p id="tocSlinkspaginated" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apilinkspaginated"></a>
+<p>
+  <a id="cdr-energy-secondary-data-holder-api_schema-base_linkspaginated"></a>
+  <a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apilinkspaginated"></a>
+</p>
 
 ```json
 {
@@ -2162,7 +2213,10 @@ This operation may only be called by an Energy Retailer using the information se
 <h3 class="schema-toc" id="cdr-energy-secondary-data-holder-api_schemas_tocSmetapaginated">MetaPaginated</h3>
 <p id="tocSmetapaginated" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apimetapaginated"></a>
+<p>
+  <a id="cdr-energy-secondary-data-holder-api_schema-base_metapaginated"></a>
+  <a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apimetapaginated"></a>
+</p>
 
 ```json
 {

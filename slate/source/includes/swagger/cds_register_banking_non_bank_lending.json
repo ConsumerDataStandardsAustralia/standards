@@ -2,7 +2,7 @@
   "openapi" : "3.0.3",
   "info" : {
     "title" : "CDR Participant Discovery API",
-    "version" : "1.30.0"
+    "version" : "1.31.0"
   },
   "servers" : [ {
     "url" : "https://<register-base-url>/"
@@ -776,7 +776,7 @@
             "x-cds-type" : "DateString"
           },
           "registeredCountry" : {
-            "description" : "Country of registeration (if the company is registered outside Australia)",
+            "description" : "Country of registration (if the company is registered outside Australia)",
             "maxLength" : 100,
             "type" : "string"
           },

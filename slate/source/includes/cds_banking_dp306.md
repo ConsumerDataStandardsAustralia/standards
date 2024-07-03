@@ -50,7 +50,7 @@ fetch('https://data.holder.com.au/cds-au/v1/banking/accounts',
 
 Obtain a list of accounts.
 
-Obsolete versions: [v1](../../../../includes/obsolete/get-accounts-v1.html), [v2](../../../../includes/obsolete/get-accounts-v2.html)
+Obsolete versions: [v1](../../../../includes/obsolete/get-accounts-v1.html), [v2](../../../../includes/obsolete/get-accounts-v2.html).
 
 <h3 id="cdr-banking-api_get-accounts_endpoint-version">Endpoint Version</h3>
 |   |  |
@@ -61,17 +61,17 @@ Obsolete versions: [v1](../../../../includes/obsolete/get-accounts-v1.html), [v2
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|product-category|query|[Enum](#common-field-types)|optional|Used to filter results on the `productCategory` field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.)|
-|open-status|query|[Enum](#common-field-types)|optional|Used to filter results according to open/closed status. Values can be `OPEN`, `CLOSED` or `ALL`. If absent then `ALL` is assumed|
-|is-owned|query|[Boolean](#common-field-types)|optional|Filters accounts based on whether they are owned by the authorised customer.  True for owned accounts, false for unowned accounts and absent for all accounts|
-|page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
-|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
-|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`.|
-|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
+|product-category|query|[Enum](#common-field-types)|optional|Used to filter results on the _productCategory_ field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.|
+|open-status|query|[Enum](#common-field-types)|optional|Used to filter results according to open/closed status. Values can be `OPEN`, `CLOSED` or `ALL`. If absent then `ALL` is assumed.|
+|is-owned|query|[Boolean](#common-field-types)|optional|Filters accounts based on whether they are owned by the authorised customer. `true` for owned accounts, `false` for unowned accounts and absent for all accounts.|
+|page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination).|
+|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination).|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`.|
+|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
 
 <h4 id="cdr-banking-api_get-accounts_enumerated-values-parameters">Enumerated Values</h4>
 
@@ -144,10 +144,10 @@ Obsolete versions: [v1](../../../../includes/obsolete/get-accounts-v1.html), [v2
 |Status|Header|Type|Description|
 |---|---|---|---|---|
 |200|x-v|string|The [version](#response-headers) of the API endpoint that the data holder has responded with.|
-|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|422|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|422|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     
@@ -207,9 +207,9 @@ fetch('https://data.holder.com.au/cds-au/v1/banking/accounts/balances',
 
 `GET /banking/accounts/balances`
 
-Obtain balances for multiple, filtered accounts
+Obtain balances for multiple, filtered accounts.
 
-Obsolete versions: [v1](../../../../includes/obsolete/get-bulk-balances-v1.html)
+Obsolete versions: [v1](../../../../includes/obsolete/get-bulk-balances-v1.html).
 
 <h3 id="cdr-banking-api_get-bulk-balances_endpoint-version">Endpoint Version</h3>
 |   |  |
@@ -220,17 +220,17 @@ Obsolete versions: [v1](../../../../includes/obsolete/get-bulk-balances-v1.html)
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|product-category|query|[Enum](#common-field-types)|optional|Used to filter results on the `productCategory` field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.|
-|open-status|query|[Enum](#common-field-types)|optional|Used to filter results according to open/closed status. Values can be `OPEN`, `CLOSED` or `ALL`. If absent then `ALL` is assumed|
-|is-owned|query|[Boolean](#common-field-types)|optional|Filters accounts based on whether they are owned by the authorised customer.  True for owned accounts, false for unowned accounts and absent for all accounts|
-|page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
-|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
-|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`.|
-|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
+|product-category|query|[Enum](#common-field-types)|optional|Used to filter results on the _productCategory_ field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.|
+|open-status|query|[Enum](#common-field-types)|optional|Used to filter results according to open/closed status. Values can be `OPEN`, `CLOSED` or `ALL`. If absent then `ALL` is assumed.|
+|is-owned|query|[Boolean](#common-field-types)|optional|Filters accounts based on whether they are owned by the authorised customer. `true` for owned accounts, `false` for unowned accounts and absent for all accounts.|
+|page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination).|
+|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination).|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`.|
+|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
 
 <h4 id="cdr-banking-api_get-bulk-balances_enumerated-values-parameters">Enumerated Values</h4>
 
@@ -305,10 +305,10 @@ Obsolete versions: [v1](../../../../includes/obsolete/get-bulk-balances-v1.html)
 |Status|Header|Type|Description|
 |---|---|---|---|---|
 |200|x-v|string|The [version](#response-headers) of the API endpoint that the data holder has responded with.|
-|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|422|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|422|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     
@@ -377,7 +377,7 @@ fetch('https://data.holder.com.au/cds-au/v1/banking/accounts/balances',
 
 `POST /banking/accounts/balances`
 
-Obtain balances for a specified list of accounts
+Obtain balances for a specified list of accounts.
 
 > Body parameter
 
@@ -401,15 +401,15 @@ Obtain balances for a specified list of accounts
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
-|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
-|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`.|
-|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
+|page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination).|
+|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination).|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`.|
+|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
-|body|body|[RequestAccountIds](#schemacdr-banking-apirequestaccountids)|mandatory|The list of account IDs to obtain balances for|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
+|body|body|[RequestAccountIds](#schemacdr-banking-apirequestaccountids)|mandatory|The list of account IDs to obtain balances for.|
 
 > Example responses
 
@@ -463,10 +463,10 @@ Obtain balances for a specified list of accounts
 |Status|Header|Type|Description|
 |---|---|---|---|---|
 |200|x-v|string|The [version](#response-headers) of the API endpoint that the data holder has responded with.|
-|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|422|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|422|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     
@@ -526,7 +526,7 @@ fetch('https://data.holder.com.au/cds-au/v1/banking/accounts/{accountId}/balance
 
 `GET /banking/accounts/{accountId}/balance`
 
-Obtain the balance for a single specified account
+Obtain the balance for a single specified account.
 
 <h3 id="cdr-banking-api_get-account-balance_endpoint-version">Endpoint Version</h3>
 |   |  |
@@ -537,13 +537,13 @@ Obtain the balance for a single specified account
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|accountId|path|[ASCIIString](#common-field-types)|mandatory|ID of the specific account requested|
-|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`.|
-|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
+|accountId|path|[ASCIIString](#common-field-types)|mandatory|ID of the specific account requested.|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`.|
+|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
 
 > Example responses
 
@@ -586,10 +586,10 @@ Obtain the balance for a single specified account
 |Status|Header|Type|Description|
 |---|---|---|---|---|
 |200|x-v|string|The [version](#response-headers) of the API endpoint that the data holder has responded with.|
-|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|404|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|404|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     
@@ -651,7 +651,7 @@ fetch('https://data.holder.com.au/cds-au/v1/banking/accounts/{accountId}',
 
 Obtain detailed information on a single account.
 
-Obsolete versions: [v1](../../../../includes/obsolete/get-account-detail-v1.html), [v2](../../../../includes/obsolete/get-account-detail-v2.html), [v3](../../../../includes/obsolete/get-account-detail-v3.html)
+Obsolete versions: [v1](../../../../includes/obsolete/get-account-detail-v1.html), [v2](../../../../includes/obsolete/get-account-detail-v2.html), [v3](../../../../includes/obsolete/get-account-detail-v3.html).
 
 <h3 id="cdr-banking-api_get-account-detail_endpoint-version">Endpoint Version</h3>
 |   |  |
@@ -662,13 +662,13 @@ Obsolete versions: [v1](../../../../includes/obsolete/get-account-detail-v1.html
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|accountId|path|[ASCIIString](#common-field-types)|mandatory|A tokenised identifier for the account which is unique but not shareable|
-|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`.|
-|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
+|accountId|path|[ASCIIString](#common-field-types)|mandatory|A tokenised identifier for the account which is unique but not shareable.|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`.|
+|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
 
 > Example responses
 
@@ -1091,10 +1091,10 @@ Obsolete versions: [v1](../../../../includes/obsolete/get-account-detail-v1.html
 |Status|Header|Type|Description|
 |---|---|---|---|---|
 |200|x-v|string|The [version](#response-headers) of the API endpoint that the data holder has responded with.|
-|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|404|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|404|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     
@@ -1164,7 +1164,7 @@ Some general notes that apply to all endpoints that retrieve transactions:
   - Execution date/time if available, then
   - A reasonable date/time nominated by the data holder using internal data structures
 - For transaction amounts it should be assumed that a negative value indicates a reduction of the available balance on the account while a positive value indicates an increase in the available balance on the account
-- For aggregated transactions (ie. groups of sub transactions reported as a single entry for the account) only the aggregated information, with as much consistent information across the subsidiary transactions as possible, is required to be shared
+- For aggregated transactions (i.e. groups of sub transactions reported as a single entry for the account) only the aggregated information, with as much consistent information across the subsidiary transactions as possible, is required to be shared.
 
 <h3 id="cdr-banking-api_get-transactions-for-account_endpoint-version">Endpoint Version</h3>
 |   |  |
@@ -1175,20 +1175,20 @@ Some general notes that apply to all endpoints that retrieve transactions:
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|accountId|path|[ASCIIString](#common-field-types)|mandatory|ID of the account to get transactions for.  Must have previously been returned by one of the account list endpoints.|
-|oldest-time|query|[DateTimeString](#common-field-types)|optional|Constrain the transaction history request to transactions with effective time at or after this date/time. If absent defaults to newest-time minus 90 days.  Format is aligned to DateTimeString common type|
-|newest-time|query|[DateTimeString](#common-field-types)|optional|Constrain the transaction history request to transactions with effective time at or before this date/time.  If absent defaults to today.  Format is aligned to DateTimeString common type|
-|min-amount|query|[AmountString](#common-field-types)|optional|Filter transactions to only transactions with amounts higher than or equal to this amount|
-|max-amount|query|[AmountString](#common-field-types)|optional|Filter transactions to only transactions with amounts less than or equal to this amount|
-|text|query|string|optional|Filter transactions to only transactions where this string value is found as a substring of either the reference or description fields. Format is arbitrary ASCII string. This parameter is optionally implemented by data holders. If it is not implemented then a response should be provided as normal without text filtering applied and an additional boolean field named isQueryParamUnsupported should be included in the meta object and set to true (whether the text parameter is supplied or not)|
-|page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
-|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
-|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`.|
-|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
+|accountId|path|[ASCIIString](#common-field-types)|mandatory|ID of the account to get transactions for. Must have previously been returned by one of the account list endpoints.|
+|oldest-time|query|[DateTimeString](#common-field-types)|optional|Constrain the transaction history request to transactions with effective time at or after this date/time. If absent defaults to newest-time minus 90 days. Format is aligned to [DateTimeString](#common-field-types) common type.|
+|newest-time|query|[DateTimeString](#common-field-types)|optional|Constrain the transaction history request to transactions with effective time at or before this date/time. If absent defaults to today. Format is aligned to [DateTimeString](#common-field-types) common type.|
+|min-amount|query|[AmountString](#common-field-types)|optional|Filter transactions to only transactions with amounts higher than or equal to this amount.|
+|max-amount|query|[AmountString](#common-field-types)|optional|Filter transactions to only transactions with amounts less than or equal to this amount.|
+|text|query|string|optional|Filter transactions to only transactions where this string value is found as a substring of either the reference or description fields. Format is arbitrary ASCII string. This parameter is optionally implemented by data holders. If it is not implemented then a response should be provided as normal without text filtering applied and an additional boolean field named _isQueryParamUnsupported_ should be included in the meta object and set to `true` (whether the text parameter is supplied or not).|
+|page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination).|
+|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination).|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`.|
+|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
 
 > Example responses
 
@@ -1250,11 +1250,11 @@ Some general notes that apply to all endpoints that retrieve transactions:
 |Status|Header|Type|Description|
 |---|---|---|---|---|
 |200|x-v|string|The [version](#response-headers) of the API endpoint that the data holder has responded with.|
-|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|404|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|422|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|404|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|422|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     
@@ -1314,7 +1314,7 @@ fetch('https://data.holder.com.au/cds-au/v1/banking/accounts/{accountId}/transac
 
 `GET /banking/accounts/{accountId}/transactions/{transactionId}`
 
-Obtain detailed information on a transaction for a specific account
+Obtain detailed information on a transaction for a specific account.
 
 <h3 id="cdr-banking-api_get-transaction-detail_endpoint-version">Endpoint Version</h3>
 |   |  |
@@ -1325,14 +1325,14 @@ Obtain detailed information on a transaction for a specific account
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|accountId|path|[ASCIIString](#common-field-types)|mandatory|ID of the account to get transactions for.  Must have previously been returned by one of the account list endpoints|
-|transactionId|path|[ASCIIString](#common-field-types)|mandatory|ID of the transaction obtained from a previous call to one of the other transaction endpoints|
-|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`.|
-|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
+|accountId|path|[ASCIIString](#common-field-types)|mandatory|ID of the account to get transactions for. Must have previously been returned by one of the account list endpoints.|
+|transactionId|path|[ASCIIString](#common-field-types)|mandatory|ID of the transaction obtained from a previous call to one of the other transaction endpoints.|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`.|
+|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
 
 > Example responses
 
@@ -1392,10 +1392,10 @@ Obtain detailed information on a transaction for a specific account
 |Status|Header|Type|Description|
 |---|---|---|---|---|
 |200|x-v|string|The [version](#response-headers) of the API endpoint that the data holder has responded with.|
-|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|404|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|404|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     
@@ -1455,7 +1455,7 @@ fetch('https://data.holder.com.au/cds-au/v1/banking/accounts/{accountId}/direct-
 
 `GET /banking/accounts/{accountId}/direct-debits`
 
-Obtain direct debit authorisations for a specific account
+Obtain direct debit authorisations for a specific account.
 
 <h3 id="cdr-banking-api_get-direct-debits-for-account_endpoint-version">Endpoint Version</h3>
 |   |  |
@@ -1466,15 +1466,15 @@ Obtain direct debit authorisations for a specific account
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|accountId|path|[ASCIIString](#common-field-types)|mandatory|ID of the account to get direct debit authorisations for.  Must have previously been returned by one of the account list endpoints.|
-|page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
-|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
-|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`.|
-|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
+|accountId|path|[ASCIIString](#common-field-types)|mandatory|ID of the account to get direct debit authorisations for. Must have previously been returned by one of the account list endpoints.|
+|page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination).|
+|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination).|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`.|
+|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
 
 > Example responses
 
@@ -1527,11 +1527,11 @@ Obtain direct debit authorisations for a specific account
 |Status|Header|Type|Description|
 |---|---|---|---|---|
 |200|x-v|string|The [version](#response-headers) of the API endpoint that the data holder has responded with.|
-|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|404|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|422|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|404|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|422|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     
@@ -1591,9 +1591,9 @@ fetch('https://data.holder.com.au/cds-au/v1/banking/accounts/direct-debits',
 
 `GET /banking/accounts/direct-debits`
 
-Obtain direct debit authorisations for multiple, filtered accounts
+Obtain direct debit authorisations for multiple, filtered accounts.
 
-Obsolete versions: [v1](../../../../includes/obsolete/get-bulk-direct-debits-v1.html)
+Obsolete versions: [v1](../../../../includes/obsolete/get-bulk-direct-debits-v1.html).
 
 <h3 id="cdr-banking-api_get-bulk-direct-debits_endpoint-version">Endpoint Version</h3>
 |   |  |
@@ -1604,17 +1604,17 @@ Obsolete versions: [v1](../../../../includes/obsolete/get-bulk-direct-debits-v1.
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|product-category|query|[Enum](#common-field-types)|optional|Used to filter results on the `productCategory` field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.|
-|open-status|query|[Enum](#common-field-types)|optional|Used to filter results according to open/closed status. Values can be `OPEN`, `CLOSED` or `ALL`. If absent then `ALL` is assumed|
-|is-owned|query|[Boolean](#common-field-types)|optional|Filters accounts based on whether they are owned by the authorised customer.  True for owned accounts, false for unowned accounts and absent for all accounts|
-|page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
-|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
-|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`.|
-|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
+|product-category|query|[Enum](#common-field-types)|optional|Used to filter results on the _productCategory_ field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.|
+|open-status|query|[Enum](#common-field-types)|optional|Used to filter results according to open/closed status. Values can be `OPEN`, `CLOSED` or `ALL`. If absent then `ALL` is assumed.|
+|is-owned|query|[Boolean](#common-field-types)|optional|Filters accounts based on whether they are owned by the authorised customer. `true` for owned accounts, `false` for unowned accounts and absent for all accounts.|
+|page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination).|
+|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination).|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`.|
+|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
 
 <h4 id="cdr-banking-api_get-bulk-direct-debits_enumerated-values-parameters">Enumerated Values</h4>
 
@@ -1687,10 +1687,10 @@ Obsolete versions: [v1](../../../../includes/obsolete/get-bulk-direct-debits-v1.
 |Status|Header|Type|Description|
 |---|---|---|---|---|
 |200|x-v|string|The [version](#response-headers) of the API endpoint that the data holder has responded with.|
-|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|422|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|422|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     
@@ -1759,7 +1759,7 @@ fetch('https://data.holder.com.au/cds-au/v1/banking/accounts/direct-debits',
 
 `POST /banking/accounts/direct-debits`
 
-Obtain direct debit authorisations for a specified list of accounts
+Obtain direct debit authorisations for a specified list of accounts.
 
 > Body parameter
 
@@ -1783,15 +1783,15 @@ Obtain direct debit authorisations for a specified list of accounts
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
-|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
-|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`.|
-|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
+|page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination).|
+|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination).|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`.|
+|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
-|body|body|[RequestAccountIds](#schemacdr-banking-apirequestaccountids)|mandatory|Array of specific accountIds to obtain authorisations for|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
+|body|body|[RequestAccountIds](#schemacdr-banking-apirequestaccountids)|mandatory|Array of specific accountIds to obtain authorisations for.|
 
 > Example responses
 
@@ -1843,10 +1843,10 @@ Obtain direct debit authorisations for a specified list of accounts
 |Status|Header|Type|Description|
 |---|---|---|---|---|
 |200|x-v|string|The [version](#response-headers) of the API endpoint that the data holder has responded with.|
-|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|422|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|422|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     
@@ -1906,9 +1906,9 @@ fetch('https://data.holder.com.au/cds-au/v1/banking/accounts/{accountId}/payment
 
 `GET /banking/accounts/{accountId}/payments/scheduled`
 
-Obtain scheduled, outgoing payments for a specific account
+Obtain scheduled, outgoing payments for a specific account.
 
-Obsolete versions: [v1](../../../../includes/obsolete/get-scheduled-payments-for-account-v1.html)
+Obsolete versions: [v1](../../../../includes/obsolete/get-scheduled-payments-for-account-v1.html).
 
 <h3 id="cdr-banking-api_get-scheduled-payments-for-account_endpoint-version">Endpoint Version</h3>
 |   |  |
@@ -1919,15 +1919,15 @@ Obsolete versions: [v1](../../../../includes/obsolete/get-scheduled-payments-for
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|accountId|path|[ASCIIString](#common-field-types)|mandatory|ID of the account to get scheduled payments for. Must have previously been returned by one of the account list endpoints. The account specified is the source account for the payment|
-|page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
-|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
-|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`.|
-|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
+|accountId|path|[ASCIIString](#common-field-types)|mandatory|ID of the account to get scheduled payments for. Must have previously been returned by one of the account list endpoints. The account specified is the source account for the payment.|
+|page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination).|
+|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination).|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`.|
+|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
 
 > Example responses
 
@@ -2068,11 +2068,11 @@ Obsolete versions: [v1](../../../../includes/obsolete/get-scheduled-payments-for
 |Status|Header|Type|Description|
 |---|---|---|---|---|
 |200|x-v|string|The [version](#response-headers) of the API endpoint that the data holder has responded with.|
-|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|404|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|422|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|404|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|422|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     
@@ -2132,9 +2132,9 @@ fetch('https://data.holder.com.au/cds-au/v1/banking/payments/scheduled',
 
 `GET /banking/payments/scheduled`
 
-Obtain scheduled payments for multiple, filtered accounts that are the source of funds for the payments
+Obtain scheduled payments for multiple, filtered accounts that are the source of funds for the payments.
 
-Obsolete versions: [v1](../../../../includes/obsolete/get-scheduled-payments-bulk-v1.html), [v2](../../../../includes/obsolete/get-scheduled-payments-bulk-v2.html)
+Obsolete versions: [v1](../../../../includes/obsolete/get-scheduled-payments-bulk-v1.html), [v2](../../../../includes/obsolete/get-scheduled-payments-bulk-v2.html).
 
 <h3 id="cdr-banking-api_get-scheduled-payments-bulk_endpoint-version">Endpoint Version</h3>
 |   |  |
@@ -2145,17 +2145,17 @@ Obsolete versions: [v1](../../../../includes/obsolete/get-scheduled-payments-bul
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|product-category|query|[Enum](#common-field-types)|optional|Used to filter results on the `productCategory` field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.|
-|open-status|query|[Enum](#common-field-types)|optional|Used to filter results according to open/closed status. Values can be `OPEN`, `CLOSED` or `ALL`. If absent then `ALL` is assumed|
-|is-owned|query|[Boolean](#common-field-types)|optional|Filters accounts based on whether they are owned by the authorised customer.  True for owned accounts, false for unowned accounts and absent for all accounts|
-|page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
-|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
-|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`.|
-|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
+|product-category|query|[Enum](#common-field-types)|optional|Used to filter results on the _productCategory_ field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.|
+|open-status|query|[Enum](#common-field-types)|optional|Used to filter results according to open/closed status. Values can be `OPEN`, `CLOSED` or `ALL`. If absent then `ALL` is assumed.|
+|is-owned|query|[Boolean](#common-field-types)|optional|Filters accounts based on whether they are owned by the authorised customer. `true` for owned accounts, `false` for unowned accounts and absent for all accounts.|
+|page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination).|
+|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination).|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`.|
+|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
 
 <h4 id="cdr-banking-api_get-scheduled-payments-bulk_enumerated-values-parameters">Enumerated Values</h4>
 
@@ -2316,10 +2316,10 @@ Obsolete versions: [v1](../../../../includes/obsolete/get-scheduled-payments-bul
 |Status|Header|Type|Description|
 |---|---|---|---|---|
 |200|x-v|string|The [version](#response-headers) of the API endpoint that the data holder has responded with.|
-|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|422|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|422|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     
@@ -2388,9 +2388,9 @@ fetch('https://data.holder.com.au/cds-au/v1/banking/payments/scheduled',
 
 `POST /banking/payments/scheduled`
 
-Obtain scheduled payments for a specified list of accounts
+Obtain scheduled payments for a specified list of accounts.
 
-Obsolete versions: [v1](../../../../includes/obsolete/get-scheduled-payments-for-specific-accounts-v1.html)
+Obsolete versions: [v1](../../../../includes/obsolete/get-scheduled-payments-for-specific-accounts-v1.html).
 
 > Body parameter
 
@@ -2414,15 +2414,15 @@ Obsolete versions: [v1](../../../../includes/obsolete/get-scheduled-payments-for
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
-|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
-|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`.|
-|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
+|page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination).|
+|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination).|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`.|
+|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
-|body|body|[RequestAccountIds](#schemacdr-banking-apirequestaccountids)|mandatory|Array of specific accountIds to obtain scheduled payments for.  The accounts specified are the source of funds for the payments returned|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
+|body|body|[RequestAccountIds](#schemacdr-banking-apirequestaccountids)|mandatory|Array of specific accountIds to obtain scheduled payments for. The accounts specified are the source of funds for the payments returned.|
 
 > Example responses
 
@@ -2562,10 +2562,10 @@ Obsolete versions: [v1](../../../../includes/obsolete/get-scheduled-payments-for
 |Status|Header|Type|Description|
 |---|---|---|---|---|
 |200|x-v|string|The [version](#response-headers) of the API endpoint that the data holder has responded with.|
-|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|422|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|422|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     
@@ -2627,7 +2627,7 @@ fetch('https://data.holder.com.au/cds-au/v1/banking/payees',
 
 Obtain a list of pre-registered payees.
 
-Obsolete versions: [v1](../../../../includes/obsolete/get-payees-v1.html)
+Obsolete versions: [v1](../../../../includes/obsolete/get-payees-v1.html).
 
 <h3 id="cdr-banking-api_get-payees_endpoint-version">Endpoint Version</h3>
 |   |  |
@@ -2638,15 +2638,15 @@ Obsolete versions: [v1](../../../../includes/obsolete/get-payees-v1.html)
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|type|query|[Enum](#common-field-types)|optional|Filter on the payee type field.  In addition to normal type field values, ALL can be specified to retrieve all payees.  If absent the assumed value is ALL|
-|page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
-|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
-|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`.|
-|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
+|type|query|[Enum](#common-field-types)|optional|Filter on the payee type field. In addition to normal type field values, `ALL` can be specified to retrieve all payees. If absent the assumed value is `ALL`.|
+|page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination).|
+|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination).|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`.|
+|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
 
 <h4 id="cdr-banking-api_get-payees_enumerated-values-parameters">Enumerated Values</h4>
 
@@ -2703,10 +2703,10 @@ Obsolete versions: [v1](../../../../includes/obsolete/get-payees-v1.html)
 |Status|Header|Type|Description|
 |---|---|---|---|---|
 |200|x-v|string|The [version](#response-headers) of the API endpoint that the data holder has responded with.|
-|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|422|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|422|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     
@@ -2770,7 +2770,7 @@ Obtain detailed information on a single payee.
 
 Note that the payee sub-structure should be selected to represent the payment destination only rather than any known characteristics of the payment recipient.
 
-Obsolete versions: [v1](../../../../includes/obsolete/get-payee-detail-v1.html)
+Obsolete versions: [v1](../../../../includes/obsolete/get-payee-detail-v1.html).
 
 <h3 id="cdr-banking-api_get-payee-detail_endpoint-version">Endpoint Version</h3>
 |   |  |
@@ -2781,13 +2781,13 @@ Obsolete versions: [v1](../../../../includes/obsolete/get-payee-detail-v1.html)
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|payeeId|path|[ASCIIString](#common-field-types)|mandatory|The ID used to locate the details of a particular payee|
-|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`.|
-|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
+|payeeId|path|[ASCIIString](#common-field-types)|mandatory|The ID used to locate the details of a particular payee.|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`.|
+|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
 
 > Example responses
 
@@ -2873,11 +2873,11 @@ Obsolete versions: [v1](../../../../includes/obsolete/get-payee-detail-v1.html)
 |Status|Header|Type|Description|
 |---|---|---|---|---|
 |200|x-v|string|The [version](#response-headers) of the API endpoint that the data holder has responded with.|
-|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|404|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|422|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|404|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|422|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     
@@ -2929,9 +2929,9 @@ fetch('https://data.holder.com.au/cds-au/v1/banking/products',
 
 `GET /banking/products`
 
-Obtain a list of products that are currently openly offered to the market
+Obtain a list of products that are currently openly offered to the market.
 
-Note that the results returned by this endpoint are expected to be ordered in descending order according to `lastUpdated`.
+Note that the results returned by this endpoint are expected to be ordered in descending order according to _lastUpdated_.
 
 ### Conventions
 In the product reference payloads there are a number of recurring conventions that are explained here, in one place.
@@ -2942,9 +2942,9 @@ In the product detail payload there are a number of arrays articulating generic 
 
 - Each element in an array has the same structure so that clients can reliably interpret the payloads
 - Each element as a type element that is an enumeration of the specific aspect of a product being described, such as types of fees.
-- Each element has a field name [additionalValue](#productfeaturetypedoc).  This is a generic field with contents that will vary based on the type of object being described. The contents of this field for the `ADDITIONAL_CARDS` feature is the number of cards allowed while the contents of this field for the `MAX_LIMIT` constraint would be the maximum credit limit allowed for the product.
+- Each element has a field name [_additionalValue_](#productfeaturetypedoc). This is a generic field with contents that will vary based on the type of object being described. The contents of this field for the `ADDITIONAL_CARDS` feature is the number of cards allowed while the contents of this field for the `MAX_LIMIT` constraint would be the maximum credit limit allowed for the product.
 - An element in these arrays of the same type may appear more than once. For instance, a product may offer two separate loyalty programs that the customer can select from. A fixed term mortgage may have different rates for different term lengths.
-- An element in these arrays may contain an `additionalInfo` and `additionalInfoUri` field. The `additionalInfo` field is used to provide displayable text clarifying the purpose of the element in some way when the product is presented to a customer. The `additionalInfoUri` provides a link to externally hosted information specifically relevant to that feature of the product.
+- An element in these arrays may contain an _additionalInfo_ and _additionalInfoUri_ field. The _additionalInfo_ field is used to provide displayable text clarifying the purpose of the element in some way when the product is presented to a customer. The _additionalInfoUri_ provides a link to externally hosted information specifically relevant to that feature of the product.
 - Depending on the type of data being represented there may be additional specific fields.
 
 #### URIs To More Information
@@ -2954,18 +2954,18 @@ As the complexities and nuances of a financial product can not easily be fully e
 These URIs do not need to all link to different pages. If desired, they can all link to a single hosted page and use difference HTML anchors to focus on a specific topic such as eligibility or fees.
 
 #### Linkage To Accounts
-From the moment that a customer applies for a product and an account is created the account and the product that spawned it will diverge.  Rates and features of the product may change and a discount may be negotiated for the account.
+From the moment that a customer applies for a product and an account is created the account and the product that spawned it will diverge. Rates and features of the product may change and a discount may be negotiated for the account.
 
-For this reason, while `productCategory` is a common field between accounts and products, there is no specific ID that can be used to link an account to a product within the regime.
+For this reason, while _productCategory_ is a common field between accounts and products, there is no specific ID that can be used to link an account to a product within the regime.
 
 Similarly, many of the fields and objects in the product payload will appear in the account detail payload but the structures and semantics are not identical as one refers to a product that can potentially be originated and one refers to an account that actually has been instantiated and created along with the associated decisions inherent in that process.
 
 #### Dates
-It is expected that data consumers needing this data will call relatively frequently to ensure the data they have is representative of the current offering from a bank.  To minimise the volume and frequency of these calls the ability to set a `lastUpdated` field with the date and time of the last update to this product is included.  A call for a list of products can then be filtered to only return products that have been updated since the last time that data was obtained using the `updated-since` query parameter.
+It is expected that data consumers needing this data will call relatively frequently to ensure the data they have is representative of the current offering from a bank. To minimise the volume and frequency of these calls the ability to set a _lastUpdated_ field with the date and time of the last update to this product is included. A call for a list of products can then be filtered to only return products that have been updated since the last time that data was obtained using the _updated-since_ query parameter.
 
-In addition, the concept of effective date and time has also been included.  This allows for a product to be marked for obsolescence, or introduction, from a certain time without the need for an update to show that a product has been changed.  The inclusion of these dates also removes the need to represent deleted products in the payload.  Products that are no long offered can be marked not effective for a few weeks before they are then removed from the product set as an option entirely.
+In addition, the concept of effective date and time has also been included. This allows for a product to be marked for obsolescence, or introduction, from a certain time without the need for an update to show that a product has been changed. The inclusion of these dates also removes the need to represent deleted products in the payload. Products that are no long offered can be marked not effective for a few weeks before they are then removed from the product set as an option entirely.
 
-Obsolete versions: [v1](../../../../includes/obsolete/get-products-v1.html), [v2](../../../../includes/obsolete/get-products-v2.html), [v3](../../../../includes/obsolete/get-products-v3.html)
+Obsolete versions: [v1](../../../../includes/obsolete/get-products-v1.html), [v2](../../../../includes/obsolete/get-products-v2.html), [v3](../../../../includes/obsolete/get-products-v3.html).
 
 <h3 id="cdr-banking-api_get-products_endpoint-version">Endpoint Version</h3>
 |   |  |
@@ -2976,14 +2976,14 @@ Obsolete versions: [v1](../../../../includes/obsolete/get-products-v1.html), [v2
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|effective|query|[Enum](#common-field-types)|optional|Allows for the filtering of products based on whether the current time is within the period of time defined as effective by the effectiveFrom and effectiveTo fields. Valid values are `CURRENT`, `FUTURE` and `ALL`. If absent defaults to `CURRENT`|
-|updated-since|query|[DateTimeString](#common-field-types)|optional|Only include products that have been updated after the specified date and time. If absent defaults to include all products|
-|brand|query|string|optional|Filter results based on a specific brand|
-|product-category|query|[Enum](#common-field-types)|optional|Used to filter results on the `productCategory` field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.|
-|page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
-|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
-|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`.|
+|effective|query|[Enum](#common-field-types)|optional|Allows for the filtering of products based on whether the current time is within the period of time defined as effective by the effectiveFrom and effectiveTo fields. Valid values are `CURRENT`, `FUTURE` and `ALL`. If absent defaults to `CURRENT`.|
+|updated-since|query|[DateTimeString](#common-field-types)|optional|Only include products that have been updated after the specified date and time. If absent defaults to include all products.|
+|brand|query|string|optional|Filter results based on a specific brand.|
+|product-category|query|[Enum](#common-field-types)|optional|Used to filter results on the _productCategory_ field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.|
+|page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination).|
+|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination).|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`.|
 
 <h4 id="cdr-banking-api_get-products_enumerated-values-parameters">Enumerated Values</h4>
 
@@ -3154,7 +3154,7 @@ fetch('https://data.holder.com.au/cds-au/v1/banking/products/{productId}',
 
 Obtain detailed information on a single product offered openly to the market.
 
-Obsolete versions: [v1](../../../../includes/obsolete/get-product-detail-v1.html), [v2](../../../../includes/obsolete/get-product-detail-v2.html), [v3](../../../../includes/obsolete/get-product-detail-v3.html), [v4](../../../../includes/obsolete/get-product-detail-v4.html)
+Obsolete versions: [v1](../../../../includes/obsolete/get-product-detail-v1.html), [v2](../../../../includes/obsolete/get-product-detail-v2.html), [v3](../../../../includes/obsolete/get-product-detail-v3.html), [v4](../../../../includes/obsolete/get-product-detail-v4.html).
 
 <h3 id="cdr-banking-api_get-product-detail_endpoint-version">Endpoint Version</h3>
 |   |  |
@@ -3165,9 +3165,9 @@ Obsolete versions: [v1](../../../../includes/obsolete/get-product-detail-v1.html
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|productId|path|[ASCIIString](#common-field-types)|mandatory|ID of the specific product requested|
-|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`.|
+|productId|path|[ASCIIString](#common-field-types)|mandatory|ID of the specific product requested.|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`.|
 
 > Example responses
 
@@ -3454,7 +3454,10 @@ This operation does not require authentication
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSrequestaccountids">RequestAccountIds</h3>
 <p id="tocSrequestaccountids" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-banking-apirequestaccountids"></a>
+<p>
+  <a id="cdr-banking-api_schema-base_requestaccountids"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apirequestaccountids"></a>
+</p>
 
 ```json
 {
@@ -3479,7 +3482,10 @@ This operation does not require authentication
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSresponsebankingproductlistv3">ResponseBankingProductListV3</h3>
 <p id="tocSresponsebankingproductlistv3" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-banking-apiresponsebankingproductlistv3"></a>
+<p>
+  <a id="cdr-banking-api_schema-base_responsebankingproductlist"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apiresponsebankingproductlistv3"></a>
+</p>
 
 ```json
 {
@@ -3567,14 +3573,17 @@ This operation does not require authentication
 |Name|Type|Required|Description|
 |---|---|---|---|
 |data|object|mandatory|none|
-|» products|[[BankingProductV5](#schemacdr-banking-apibankingproductv5)]|mandatory|The list of products returned.  If the filter results in an empty set then this array may have no records|
+|» products|[[BankingProductV5](#schemacdr-banking-apibankingproductv5)]|mandatory|The list of products returned. If the filter results in an empty set then this array may have no records.|
 |links|[LinksPaginated](#schemacdr-banking-apilinkspaginated)|mandatory|none|
 |meta|[MetaPaginated](#schemacdr-banking-apimetapaginated)|mandatory|none|
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingproductv5">BankingProductV5</h3>
 <p id="tocSbankingproductv5" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-banking-apibankingproductv5"></a>
+<p>
+  <a id="cdr-banking-api_schema-base_bankingproduct"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apibankingproductv5"></a>
+</p>
 
 ```json
 {
@@ -3645,23 +3654,26 @@ This operation does not require authentication
 |Name|Type|Required|Description|
 |---|---|---|---|
 |productId|[ASCIIString](#common-field-types)|mandatory|A data holder specific unique identifier for this product. This identifier must be unique to a product but does not otherwise need to adhere to ID permanence guidelines.|
-|effectiveFrom|[DateTimeString](#common-field-types)|optional|The date and time from which this product is effective (ie. is available for origination).  Used to enable the articulation of products to the regime before they are available for customers to originate|
-|effectiveTo|[DateTimeString](#common-field-types)|optional|The date and time at which this product will be retired and will no longer be offered.  Used to enable the managed deprecation of products|
-|lastUpdated|[DateTimeString](#common-field-types)|mandatory|The last date and time that the information for this product was changed (or the creation date for the product if it has never been altered)|
-|productCategory|[BankingProductCategoryV2](#schemacdr-banking-apibankingproductcategoryv2)|mandatory|The category to which a product or account belongs. See [here](#product-categories) for more details|
-|name|string|mandatory|The display name of the product|
-|description|string|mandatory|A description of the product|
-|brand|string|mandatory|A label of the brand for the product. Able to be used for filtering. For data holders with single brands this value is still required|
-|brandName|string|optional|An optional display name of the brand|
+|effectiveFrom|[DateTimeString](#common-field-types)|optional|The date and time from which this product is effective (i.e. is available for origination). Used to enable the articulation of products to the regime before they are available for customers to originate.|
+|effectiveTo|[DateTimeString](#common-field-types)|optional|The date and time at which this product will be retired and will no longer be offered. Used to enable the managed deprecation of products.|
+|lastUpdated|[DateTimeString](#common-field-types)|mandatory|The last date and time that the information for this product was changed (or the creation date for the product if it has never been altered).|
+|productCategory|[BankingProductCategoryV2](#schemacdr-banking-apibankingproductcategoryv2)|mandatory|The category to which a product or account belongs. See [here](#product-categories) for more details.|
+|name|string|mandatory|The display name of the product.|
+|description|string|mandatory|A description of the product.|
+|brand|string|mandatory|A label of the brand for the product. Able to be used for filtering. For data holders with single brands this value is still required.|
+|brandName|string|optional|An optional display name of the brand.|
 |applicationUri|[URIString](#common-field-types)|optional|A link to an application web page where this product can be applied for.|
-|isTailored|[Boolean](#common-field-types)|mandatory|Indicates whether the product is specifically tailored to a circumstance.  In this case fees and prices are significantly negotiated depending on context. While all products are open to a degree of tailoring this flag indicates that tailoring is expected and thus that the provision of specific fees and rates is not applicable|
-|additionalInformation|[BankingProductAdditionalInformationV2](#schemacdr-banking-apibankingproductadditionalinformationv2)|optional|Object that contains links to additional information on specific topics|
-|cardOption|[BankingProductCardOption](#schemacdr-banking-apibankingproductcardoption)|optional|Information about the type of card available with the account|
+|isTailored|[Boolean](#common-field-types)|mandatory|Indicates whether the product is specifically tailored to a circumstance. In this case fees and prices are significantly negotiated depending on context. While all products are open to a degree of tailoring this flag indicates that tailoring is expected and thus that the provision of specific fees and rates is not applicable.|
+|additionalInformation|[BankingProductAdditionalInformationV2](#schemacdr-banking-apibankingproductadditionalinformationv2)|optional|Object that contains links to additional information on specific topics.|
+|cardOption|[BankingProductCardOption](#schemacdr-banking-apibankingproductcardoption)|optional|Information about the type of card available with the account.|
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingproductcardoption">BankingProductCardOption</h3>
 <p id="tocSbankingproductcardoption" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-banking-apibankingproductcardoption"></a>
+<p>
+  <a id="cdr-banking-api_schema-base_bankingproductcardoption"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apibankingproductcardoption"></a>
+</p>
 
 ```json
 {
@@ -3677,15 +3689,15 @@ This operation does not require authentication
 
 ```
 
-*Information about the type of card available with the account*
+*Information about the type of card available with the account.*
 
 <h3 id="cdr-banking-api_bankingproductcardoption_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|cardScheme|[Enum](#common-field-types)|mandatory|Card scheme available with the account|
-|cardType|[Enum](#common-field-types)|mandatory|Card type available with the account|
-|cardImages|[[BankingProductCardOption_cardImages](#schemacdr-banking-apibankingproductcardoption_cardimages)]|optional|An array of card art images|
+|cardScheme|[Enum](#common-field-types)|mandatory|Card scheme available with the account.|
+|cardType|[Enum](#common-field-types)|mandatory|Card type available with the account.|
+|cardImages|[[BankingProductCardOption_cardImages](#schemacdr-banking-apibankingproductcardoption_cardimages)]|optional|An array of card art images.|
 
 <h4 id="cdr-banking-api_bankingproductcardoption_enumerated-values-main">Enumerated Values</h4>
 
@@ -3704,7 +3716,10 @@ This operation does not require authentication
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingproductcardoption_cardimages">BankingProductCardOption_cardImages</h3>
 <p id="tocSbankingproductcardoption_cardimages" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-banking-apibankingproductcardoption_cardimages"></a>
+<p>
+  <a id="cdr-banking-api_schema-base_bankingproductcardoption_cardimages"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apibankingproductcardoption_cardimages"></a>
+</p>
 
 ```json
 {
@@ -3718,13 +3733,16 @@ This operation does not require authentication
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|title|string|optional|Display label for the specific image|
-|imageUri|[URIString](#common-field-types)|mandatory|URI reference to a PNG, JPG or GIF image with proportions defined by ISO 7810 ID-1 and width no greater than 512 pixels. The URI reference may be a link or url-encoded data URI according to **[[RFC2397]](#nref-RFC2397)**|
+|title|string|optional|Display label for the specific image.|
+|imageUri|[URIString](#common-field-types)|mandatory|URI reference to a PNG, JPG or GIF image with proportions defined by ISO 7810 ID-1 and width no greater than 512 pixels. The URI reference may be a link or url-encoded data URI according to **[[RFC2397]](#nref-RFC2397)**.|
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingproductadditionalinformationv2">BankingProductAdditionalInformationV2</h3>
 <p id="tocSbankingproductadditionalinformationv2" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-banking-apibankingproductadditionalinformationv2"></a>
+<p>
+  <a id="cdr-banking-api_schema-base_bankingproductadditionalinformation"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apibankingproductadditionalinformationv2"></a>
+</p>
 
 ```json
 {
@@ -3767,27 +3785,30 @@ This operation does not require authentication
 
 ```
 
-*Object that contains links to additional information on specific topics*
+*Object that contains links to additional information on specific topics.*
 
 <h3 id="cdr-banking-api_bankingproductadditionalinformationv2_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|overviewUri|[URIString](#common-field-types)|conditional|General overview of the product. Mandatory if `additionalOverviewUris` includes one or more supporting documents.|
-|termsUri|[URIString](#common-field-types)|conditional|Terms and conditions for the product. Mandatory if `additionalTermsUris` includes one or more supporting documents.|
-|eligibilityUri|[URIString](#common-field-types)|conditional|Eligibility rules and criteria for the product. Mandatory if `additionalEligibilityUris` includes one or more supporting documents.|
-|feesAndPricingUri|[URIString](#common-field-types)|conditional|Description of fees, pricing, discounts, exemptions and bonuses for the product. Mandatory if `additionalFeesAndPricingUris` includes one or more supporting documents.|
-|bundleUri|[URIString](#common-field-types)|conditional|Description of a bundle that this product can be part of. Mandatory if `additionalBundleUris` includes one or more supporting documents.|
-|additionalOverviewUris|[[BankingProductAdditionalInformationV2_additionalInformationUris](#schemacdr-banking-apibankingproductadditionalinformationv2_additionalinformationuris)]|optional|An array of additional general overviews for the product or features of the product, if applicable. To be treated as secondary documents to the `overviewUri`. Only to be used if there is a primary `overviewUri`.|
-|additionalTermsUris|[[BankingProductAdditionalInformationV2_additionalInformationUris](#schemacdr-banking-apibankingproductadditionalinformationv2_additionalinformationuris)]|optional|An array of additional terms and conditions for the product, if applicable. To be treated as secondary documents to the `termsUri`. Only to be used if there is a primary `termsUri`.|
-|additionalEligibilityUris|[[BankingProductAdditionalInformationV2_additionalInformationUris](#schemacdr-banking-apibankingproductadditionalinformationv2_additionalinformationuris)]|optional|An array of additional eligibility rules and criteria for the product, if applicable. To be treated as secondary documents to the `eligibilityUri`. Only to be used if there is a primary `eligibilityUri`.|
-|additionalFeesAndPricingUris|[[BankingProductAdditionalInformationV2_additionalInformationUris](#schemacdr-banking-apibankingproductadditionalinformationv2_additionalinformationuris)]|optional|An array of additional fees, pricing, discounts, exemptions and bonuses for the product, if applicable. To be treated as secondary documents to the `feesAndPricingUri`. Only to be used if there is a primary `feesAndPricingUri`.|
-|additionalBundleUris|[[BankingProductAdditionalInformationV2_additionalInformationUris](#schemacdr-banking-apibankingproductadditionalinformationv2_additionalinformationuris)]|optional|An array of additional bundles for the product, if applicable. To be treated as secondary documents to the `bundleUri`. Only to be used if there is a primary `bundleUri`.|
+|overviewUri|[URIString](#common-field-types)|conditional|General overview of the product. Mandatory if _additionalOverviewUris_ includes one or more supporting documents.|
+|termsUri|[URIString](#common-field-types)|conditional|Terms and conditions for the product. Mandatory if _additionalTermsUris_ includes one or more supporting documents.|
+|eligibilityUri|[URIString](#common-field-types)|conditional|Eligibility rules and criteria for the product. Mandatory if _additionalEligibilityUris_ includes one or more supporting documents.|
+|feesAndPricingUri|[URIString](#common-field-types)|conditional|Description of fees, pricing, discounts, exemptions and bonuses for the product. Mandatory if _additionalFeesAndPricingUris_ includes one or more supporting documents.|
+|bundleUri|[URIString](#common-field-types)|conditional|Description of a bundle that this product can be part of. Mandatory if _additionalBundleUris_ includes one or more supporting documents.|
+|additionalOverviewUris|[[BankingProductAdditionalInformationV2_additionalInformationUris](#schemacdr-banking-apibankingproductadditionalinformationv2_additionalinformationuris)]|optional|An array of additional general overviews for the product or features of the product, if applicable. To be treated as secondary documents to the _overviewUri_. Only to be used if there is a primary _overviewUri_.|
+|additionalTermsUris|[[BankingProductAdditionalInformationV2_additionalInformationUris](#schemacdr-banking-apibankingproductadditionalinformationv2_additionalinformationuris)]|optional|An array of additional terms and conditions for the product, if applicable. To be treated as secondary documents to the _termsUri_. Only to be used if there is a primary _termsUri_.|
+|additionalEligibilityUris|[[BankingProductAdditionalInformationV2_additionalInformationUris](#schemacdr-banking-apibankingproductadditionalinformationv2_additionalinformationuris)]|optional|An array of additional eligibility rules and criteria for the product, if applicable. To be treated as secondary documents to the _eligibilityUri_. Only to be used if there is a primary _eligibilityUri_.|
+|additionalFeesAndPricingUris|[[BankingProductAdditionalInformationV2_additionalInformationUris](#schemacdr-banking-apibankingproductadditionalinformationv2_additionalinformationuris)]|optional|An array of additional fees, pricing, discounts, exemptions and bonuses for the product, if applicable. To be treated as secondary documents to the _feesAndPricingUri_. Only to be used if there is a primary _feesAndPricingUri_.|
+|additionalBundleUris|[[BankingProductAdditionalInformationV2_additionalInformationUris](#schemacdr-banking-apibankingproductadditionalinformationv2_additionalinformationuris)]|optional|An array of additional bundles for the product, if applicable. To be treated as secondary documents to the _bundleUri_. Only to be used if there is a primary _bundleUri_.|
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingproductadditionalinformationv2_additionalinformationuris">BankingProductAdditionalInformationV2_additionalInformationUris</h3>
 <p id="tocSbankingproductadditionalinformationv2_additionalinformationuris" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-banking-apibankingproductadditionalinformationv2_additionalinformationuris"></a>
+<p>
+  <a id="cdr-banking-api_schema-base_bankingproductadditionalinformationv2_additionalinformationuris"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apibankingproductadditionalinformationv2_additionalinformationuris"></a>
+</p>
 
 ```json
 {
@@ -3801,13 +3822,16 @@ This operation does not require authentication
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|description|string|optional|Display text providing more information about the document URI|
-|additionalInfoUri|[URIString](#common-field-types)|mandatory|The URI describing the additional information|
+|description|string|optional|Display text providing more information about the document URI.|
+|additionalInfoUri|[URIString](#common-field-types)|mandatory|The URI describing the additional information.|
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSresponsebankingproductbyidv5">ResponseBankingProductByIdV5</h3>
 <p id="tocSresponsebankingproductbyidv5" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-banking-apiresponsebankingproductbyidv5"></a>
+<p>
+  <a id="cdr-banking-api_schema-base_responsebankingproductbyid"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apiresponsebankingproductbyidv5"></a>
+</p>
 
 ```json
 {
@@ -4075,7 +4099,10 @@ This operation does not require authentication
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingproductdetailv5">BankingProductDetailV5</h3>
 <p id="tocSbankingproductdetailv5" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-banking-apibankingproductdetailv5"></a>
+<p>
+  <a id="cdr-banking-api_schema-base_bankingproductdetail"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apibankingproductdetailv5"></a>
+</p>
 
 ```json
 {
@@ -4339,19 +4366,22 @@ This operation does not require authentication
 |Name|Type|Required|Description|
 |---|---|---|---|
 |*anonymous*|object|mandatory|none|
-|» bundles|[[BankingProductBundle](#schemacdr-banking-apibankingproductbundle)]|optional|An array of bundles that this product participates in.  Each bundle is described by free form information but also by a list of product IDs of the other products that are included in the bundle.  It is assumed that the current product is included in the bundle also|
-|» features|[[BankingProductFeatureV3](#schemacdr-banking-apibankingproductfeaturev3)]|optional|Array of features and limitations of the product|
-|» constraints|[[BankingProductConstraintV2](#schemacdr-banking-apibankingproductconstraintv2)]|optional|Constraints on the application for the product such as minimum balances or limit thresholds|
-|» eligibility|[[BankingProductEligibility](#schemacdr-banking-apibankingproducteligibility)]|optional|Eligibility criteria for the product|
-|» fees|[[BankingProductFeeV2](#schemacdr-banking-apibankingproductfeev2)]|optional|Fees applicable to the product|
-|» depositRates|[[BankingProductDepositRateV2](#schemacdr-banking-apibankingproductdepositratev2)]|optional|Interest rates available for deposits|
-|» lendingRates|[[BankingProductLendingRateV3](#schemacdr-banking-apibankingproductlendingratev3)]|optional|Interest rates charged against lending balances|
-|» instalments|[BankingProductInstalments](#schemacdr-banking-apibankingproductinstalments)|optional|Details of instalment features on the account|
+|» bundles|[[BankingProductBundle](#schemacdr-banking-apibankingproductbundle)]|optional|An array of bundles that this product participates in. Each bundle is described by free form information but also by a list of product IDs of the other products that are included in the bundle. It is assumed that the current product is included in the bundle also.|
+|» features|[[BankingProductFeatureV3](#schemacdr-banking-apibankingproductfeaturev3)]|optional|Array of features and limitations of the product.|
+|» constraints|[[BankingProductConstraintV2](#schemacdr-banking-apibankingproductconstraintv2)]|optional|Constraints on the application for the product such as minimum balances or limit thresholds.|
+|» eligibility|[[BankingProductEligibility](#schemacdr-banking-apibankingproducteligibility)]|optional|Eligibility criteria for the product.|
+|» fees|[[BankingProductFeeV2](#schemacdr-banking-apibankingproductfeev2)]|optional|Fees applicable to the product.|
+|» depositRates|[[BankingProductDepositRateV2](#schemacdr-banking-apibankingproductdepositratev2)]|optional|Interest rates available for deposits.|
+|» lendingRates|[[BankingProductLendingRateV3](#schemacdr-banking-apibankingproductlendingratev3)]|optional|Interest rates charged against lending balances.|
+|» instalments|[BankingProductInstalments](#schemacdr-banking-apibankingproductinstalments)|optional|Details of instalment features on the account.|
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingproductbundle">BankingProductBundle</h3>
 <p id="tocSbankingproductbundle" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-banking-apibankingproductbundle"></a>
+<p>
+  <a id="cdr-banking-api_schema-base_bankingproductbundle"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apibankingproductbundle"></a>
+</p>
 
 ```json
 {
@@ -4370,16 +4400,19 @@ This operation does not require authentication
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|name|string|mandatory|Name of the bundle|
-|description|string|mandatory|Description of the bundle|
-|additionalInfo|string|optional|Display text providing more information on the bundle|
-|additionalInfoUri|[URIString](#common-field-types)|optional|Link to a web page with more information on the bundle criteria and benefits|
-|productIds|[[ASCIIString]](#common-field-types)|optional|Array of product IDs for products included in the bundle that are available via the product endpoints.  Note that this array is not intended to represent a comprehensive model of the products included in the bundle and some products available for the bundle may not be available via the product reference endpoints|
+|name|string|mandatory|Name of the bundle.|
+|description|string|mandatory|Description of the bundle.|
+|additionalInfo|string|optional|Display text providing more information on the bundle.|
+|additionalInfoUri|[URIString](#common-field-types)|optional|Link to a web page with more information on the bundle criteria and benefits.|
+|productIds|[[ASCIIString]](#common-field-types)|optional|Array of product IDs for products included in the bundle that are available via the product endpoints. Note that this array is not intended to represent a comprehensive model of the products included in the bundle and some products available for the bundle may not be available via the product reference endpoints.|
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingproductfeaturev3">BankingProductFeatureV3</h3>
 <p id="tocSbankingproductfeaturev3" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-banking-apibankingproductfeaturev3"></a>
+<p>
+  <a id="cdr-banking-api_schema-base_bankingproductfeature"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apibankingproductfeaturev3"></a>
+</p>
 
 ```json
 {
@@ -4391,16 +4424,16 @@ This operation does not require authentication
 
 ```
 
-*Array of features and limitations of the product*
+*Array of features and limitations of the product.*
 
 <h3 id="cdr-banking-api_bankingproductfeaturev3_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|featureType|[Enum](#common-field-types)|mandatory|The type of feature described. For further details, refer to [Product Feature Types](#tocSproductfeaturetypedoc)|
-|additionalValue|string|conditional|Generic field containing additional information relevant to the [featureType](#tocSproductfeaturetypedoc) specified. Whether mandatory or not is dependent on the value of the [featureType.](#tocSproductfeaturetypedoc)|
-|additionalInfo|string|conditional|Display text providing more information on the feature. Mandatory if the [feature type](#tocSproductfeaturetypedoc) is set to `OTHER`|
-|additionalInfoUri|[URIString](#common-field-types)|optional|Link to a web page with more information on this feature|
+|featureType|[Enum](#common-field-types)|mandatory|The type of feature described. For further details, refer to [Product Feature Types](#tocSproductfeaturetypedoc).|
+|additionalValue|string|conditional|Generic field containing additional information relevant to the [_featureType_](#tocSproductfeaturetypedoc) specified. Whether mandatory or not is dependent on the value of the [_featureType_](#tocSproductfeaturetypedoc).|
+|additionalInfo|string|conditional|Display text providing more information on the feature. Mandatory if [_featureType_](#tocSproductfeaturetypedoc) is set to `OTHER`.|
+|additionalInfoUri|[URIString](#common-field-types)|optional|Link to a web page with more information on this feature.|
 
 <h4 id="cdr-banking-api_bankingproductfeaturev3_enumerated-values-main">Enumerated Values</h4>
 
@@ -4446,7 +4479,10 @@ This operation does not require authentication
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingproductconstraintv2">BankingProductConstraintV2</h3>
 <p id="tocSbankingproductconstraintv2" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-banking-apibankingproductconstraintv2"></a>
+<p>
+  <a id="cdr-banking-api_schema-base_bankingproductconstraint"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apibankingproductconstraintv2"></a>
+</p>
 
 ```json
 {
@@ -4462,10 +4498,10 @@ This operation does not require authentication
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|constraintType|[Enum](#common-field-types)|mandatory|The type of constraint described. For further details, refer to [Product Constraint Types](#tocSproductconstrainttypedoc)|
-|additionalValue|string|conditional|Generic field containing additional information relevant to the [constraintType](#tocSproductconstrainttypedoc) specified.  Whether mandatory or not is dependent on the value of [constraintType](#tocSproductconstrainttypedoc)|
-|additionalInfo|string|conditional|Display text providing more information on the constraint. Mandatory if the [constraint type](#tocSproductconstrainttypedoc) is set to `OTHER`|
-|additionalInfoUri|[URIString](#common-field-types)|optional|Link to a web page with more information on the constraint|
+|constraintType|[Enum](#common-field-types)|mandatory|The type of constraint described. For further details, refer to [Product Constraint Types](#tocSproductconstrainttypedoc).|
+|additionalValue|string|conditional|Generic field containing additional information relevant to the [_constraintType_](#tocSproductconstrainttypedoc) specified. Whether mandatory or not is dependent on the value of [_constraintType_](#tocSproductconstrainttypedoc).|
+|additionalInfo|string|conditional|Display text providing more information on the constraint. Mandatory if the [constraint type](#tocSproductconstrainttypedoc) is set to `OTHER`.|
+|additionalInfoUri|[URIString](#common-field-types)|optional|Link to a web page with more information on the constraint.|
 
 <h4 id="cdr-banking-api_bankingproductconstraintv2_enumerated-values-main">Enumerated Values</h4>
 
@@ -4481,7 +4517,10 @@ This operation does not require authentication
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingproducteligibility">BankingProductEligibility</h3>
 <p id="tocSbankingproducteligibility" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-banking-apibankingproducteligibility"></a>
+<p>
+  <a id="cdr-banking-api_schema-base_bankingproducteligibility"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apibankingproducteligibility"></a>
+</p>
 
 ```json
 {
@@ -4497,10 +4536,10 @@ This operation does not require authentication
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|eligibilityType|[Enum](#common-field-types)|mandatory|The type of eligibility criteria described.  For further details, refer to [Product Eligibility Types](#tocSproducteligibilitytypedoc)|
-|additionalValue|string|conditional|Generic field containing additional information relevant to the [eligibilityType](#tocSproducteligibilitytypedoc) specified. Whether mandatory or not is dependent on the value of [eligibilityType](#tocSproducteligibilitytypedoc)|
-|additionalInfo|string|conditional|Display text providing more information on the [eligibility](#tocSproducteligibilitytypedoc) criteria. Mandatory if the field is set to `OTHER`|
-|additionalInfoUri|[URIString](#common-field-types)|optional|Link to a web page with more information on this eligibility criteria|
+|eligibilityType|[Enum](#common-field-types)|mandatory|The type of eligibility criteria described. For further details, refer to [Product Eligibility Types](#tocSproducteligibilitytypedoc).|
+|additionalValue|string|conditional|Generic field containing additional information relevant to the [_eligibilityType_](#tocSproducteligibilitytypedoc) specified. Whether mandatory or not is dependent on the value of [_eligibilityType_](#tocSproducteligibilitytypedoc).|
+|additionalInfo|string|conditional|Display text providing more information on the [eligibility](#tocSproducteligibilitytypedoc) criteria. Mandatory if the field is set to `OTHER`.|
+|additionalInfoUri|[URIString](#common-field-types)|optional|Link to a web page with more information on this eligibility criteria.|
 
 <h4 id="cdr-banking-api_bankingproducteligibility_enumerated-values-main">Enumerated Values</h4>
 
@@ -4522,7 +4561,10 @@ This operation does not require authentication
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingproductfeev2">BankingProductFeeV2</h3>
 <p id="tocSbankingproductfeev2" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-banking-apibankingproductfeev2"></a>
+<p>
+  <a id="cdr-banking-api_schema-base_bankingproductfee"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apibankingproductfeev2"></a>
+</p>
 
 ```json
 {
@@ -4583,20 +4625,20 @@ This operation does not require authentication
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|name|string|mandatory|Name of the fee|
-|feeCategory|[Enum](#common-field-types)|mandatory|The category of fee, used to group `feeType` values. For further details, refer to [Product Fee Categories](#tocSproductfeecategorydoc).|
+|name|string|mandatory|Name of the fee.|
+|feeCategory|[Enum](#common-field-types)|mandatory|The category of fee, used to group _feeType_ values. For further details, refer to [Product Fee Categories](#tocSproductfeecategorydoc).|
 |feeType|[Enum](#common-field-types)|mandatory|The type of fee. For further details, refer to [Product Fee Types](#tocSproductfeetypedoc).|
-|feeMethodUType|[Enum](#common-field-types)|mandatory|The fee charge method|
-|fixedAmount|[BankingFeeAmount](#schemacdr-banking-apibankingfeeamount)|conditional|Present if `feeMethodUType` is set to `fixedAmount`. Where the fee is a specific amount|
-|rateBased|[BankingFeeRate](#schemacdr-banking-apibankingfeerate)|conditional|Present if `feeMethodUType` is set to `rateBased`. Where the fee is based on a type of rate|
-|variable|[BankingFeeRange](#schemacdr-banking-apibankingfeerange)|conditional|Present if `feeMethodUType` is set to `variable`. Where the amount or rate may not be known until the fee is incurred|
-|feeCap|[AmountString](#common-field-types)|optional|The cap amount if multiple occurrences of the fee are capped to a limit|
-|feeCapPeriod|[ExternalRef](#common-field-types)|optional|Specifies a duration over which multiple occurrences of the fee will be capped. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
-|currency|[CurrencyString](#common-field-types)|optional|The currency the fee will be charged in. Assumes `AUD` if absent|
-|additionalValue|string|conditional|Generic field containing additional information relevant to the [feeType](#tocSproductfeetypedoc) specified. Whether mandatory or not is dependent on the value of [feeType](#tocSproductfeetypedoc)|
-|additionalInfo|string|conditional|Display text providing more information on the fee|
-|additionalInfoUri|[URIString](#common-field-types)|optional|Link to a web page with more information on this fee|
-|discounts|[[BankingProductDiscount](#schemacdr-banking-apibankingproductdiscount)]|optional|An optional list of discounts to this fee that may be available|
+|feeMethodUType|[Enum](#common-field-types)|mandatory|The fee charge method.|
+|fixedAmount|[BankingFeeAmount](#schemacdr-banking-apibankingfeeamount)|conditional|Present if _feeMethodUType_ is set to `fixedAmount`. Where the fee is a specific amount.|
+|rateBased|[BankingFeeRate](#schemacdr-banking-apibankingfeerate)|conditional|Present if _feeMethodUType_ is set to `rateBased`. Where the fee is based on a type of rate.|
+|variable|[BankingFeeRange](#schemacdr-banking-apibankingfeerange)|conditional|Present if _feeMethodUType_ is set to `variable`. Where the amount or rate may not be known until the fee is incurred.|
+|feeCap|[AmountString](#common-field-types)|optional|The cap amount if multiple occurrences of the fee are capped to a limit.|
+|feeCapPeriod|[ExternalRef](#common-field-types)|optional|Specifies a duration over which multiple occurrences of the fee will be capped. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax).|
+|currency|[CurrencyString](#common-field-types)|optional|The currency the fee will be charged in. Assumes `AUD` if absent.|
+|additionalValue|string|conditional|Generic field containing additional information relevant to the [_feeType_](#tocSproductfeetypedoc) specified. Whether mandatory or not is dependent on the value of [_feeType_](#tocSproductfeetypedoc).|
+|additionalInfo|string|conditional|Display text providing more information on the fee.|
+|additionalInfoUri|[URIString](#common-field-types)|optional|Link to a web page with more information on this fee.|
+|discounts|[[BankingProductDiscount](#schemacdr-banking-apibankingproductdiscount)]|optional|An optional list of discounts to this fee that may be available.|
 
 <h4 id="cdr-banking-api_bankingproductfeev2_enumerated-values-main">Enumerated Values</h4>
 
@@ -4643,7 +4685,10 @@ This operation does not require authentication
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingfeeamount">BankingFeeAmount</h3>
 <p id="tocSbankingfeeamount" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-banking-apibankingfeeamount"></a>
+<p>
+  <a id="cdr-banking-api_schema-base_bankingfeeamount"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apibankingfeeamount"></a>
+</p>
 
 ```json
 {
@@ -4656,12 +4701,15 @@ This operation does not require authentication
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|amount|[AmountString](#common-field-types)|mandatory|The specific amount charged for the fee each time it is incurred|
+|amount|[AmountString](#common-field-types)|mandatory|The specific amount charged for the fee each time it is incurred.|
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingfeerate">BankingFeeRate</h3>
 <p id="tocSbankingfeerate" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-banking-apibankingfeerate"></a>
+<p>
+  <a id="cdr-banking-api_schema-base_bankingfeerate"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apibankingfeerate"></a>
+</p>
 
 ```json
 {
@@ -4681,16 +4729,19 @@ This operation does not require authentication
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|balanceRate|[RateString](#common-field-types)|conditional|A fee rate calculated based on a proportion of the balance. One of `balanceRate`, `transactionRate` and `accruedRate` is mandatory|
-|transactionRate|[RateString](#common-field-types)|conditional|A fee rate calculated based on a proportion of a transaction. One of `balanceRate`, `transactionRate` and `accruedRate` is mandatory|
-|accruedRate|[RateString](#common-field-types)|conditional|A fee rate calculated based on a proportion of the calculated interest accrued on the account. One of `balanceRate`, `transactionRate` and `accruedRate` is mandatory|
-|accrualFrequency|[ExternalRef](#common-field-types)|optional|The indicative frequency with which the fee is calculated on the account. Only applies if `balanceRate` or `accruedRate` is also present. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
-|amountRange|[BankingFeeRange](#schemacdr-banking-apibankingfeerange)|optional|A minimum or maximum fee amount where a specific fixed amount is not known until the fee is incurred|
+|balanceRate|[RateString](#common-field-types)|conditional|A fee rate calculated based on a proportion of the balance. One of _balanceRate_, _transactionRate_ and _accruedRate_ is mandatory.|
+|transactionRate|[RateString](#common-field-types)|conditional|A fee rate calculated based on a proportion of a transaction. One of _balanceRate_, _transactionRate_ and _accruedRate_ is mandatory.|
+|accruedRate|[RateString](#common-field-types)|conditional|A fee rate calculated based on a proportion of the calculated interest accrued on the account. One of _balanceRate_, _transactionRate_ and _accruedRate_ is mandatory.|
+|accrualFrequency|[ExternalRef](#common-field-types)|optional|The indicative frequency with which the fee is calculated on the account. Only applies if _balanceRate_ or _accruedRate_ is also present. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax).|
+|amountRange|[BankingFeeRange](#schemacdr-banking-apibankingfeerange)|optional|A minimum or maximum fee amount where a specific fixed amount is not known until the fee is incurred.|
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingfeerange">BankingFeeRange</h3>
 <p id="tocSbankingfeerange" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-banking-apibankingfeerange"></a>
+<p>
+  <a id="cdr-banking-api_schema-base_bankingfeerange"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apibankingfeerange"></a>
+</p>
 
 ```json
 {
@@ -4700,19 +4751,22 @@ This operation does not require authentication
 
 ```
 
-*A minimum or maximum fee amount where a specific fixed amount is not known until the fee is incurred*
+*A minimum or maximum fee amount where a specific fixed amount is not known until the fee is incurred.*
 
 <h3 id="cdr-banking-api_bankingfeerange_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|feeMinimum|[AmountString](#common-field-types)|optional|The minimum fee that will be charged per occurrence|
-|feeMaximum|[AmountString](#common-field-types)|optional|The maximum fee that will be charged per occurrence|
+|feeMinimum|[AmountString](#common-field-types)|optional|The minimum fee that will be charged per occurrence.|
+|feeMaximum|[AmountString](#common-field-types)|optional|The maximum fee that will be charged per occurrence.|
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingproductdiscount">BankingProductDiscount</h3>
 <p id="tocSbankingproductdiscount" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-banking-apibankingproductdiscount"></a>
+<p>
+  <a id="cdr-banking-api_schema-base_bankingproductdiscount"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apibankingproductdiscount"></a>
+</p>
 
 ```json
 {
@@ -4742,17 +4796,17 @@ This operation does not require authentication
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|description|string|mandatory|Description of the discount|
-|discountType|[Enum](#common-field-types)|mandatory|The type of discount. For further details, refer to [Product Discount Types](#tocSproductdiscounttypedoc)|
-|amount|[AmountString](#common-field-types)|conditional|Dollar value of the discount. One of `amount`, `balanceRate`, `transactionRate`, `accruedRate` and `feeRate` is mandatory.|
-|balanceRate|[RateString](#common-field-types)|conditional|A discount rate calculated based on a proportion of the balance. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of `amount`, `balanceRate`, `transactionRate`, `accruedRate` and `feeRate` is mandatory. Unless noted in `additionalInfo`, assumes the application and calculation frequency are the same as the corresponding fee|
-|transactionRate|[RateString](#common-field-types)|conditional|A discount rate calculated based on a proportion of a transaction. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of `amount`, `balanceRate`, `transactionRate`, `accruedRate` and `feeRate` is mandatory.|
-|accruedRate|[RateString](#common-field-types)|conditional|A discount rate calculated based on a proportion of the calculated interest accrued on the account. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of `amount`, `balanceRate`, `transactionRate`, `accruedRate` and `feeRate` is mandatory. Unless noted in `additionalInfo`, assumes the application and calculation frequency are the same as the corresponding fee|
-|feeRate|[RateString](#common-field-types)|conditional|A discount rate calculated based on a proportion of the fee to which this discount is attached. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of `amount`, `balanceRate`, `transactionRate`, `accruedRate` and `feeRate` is mandatory. Unless noted in `additionalInfo`, assumes the application and calculation frequency are the same as the corresponding fee|
-|additionalValue|string|conditional|Generic field containing additional information relevant to the [discountType](#tocSproductdiscounttypedoc) specified. Whether mandatory or not is dependent on the value of [discountType](#tocSproductdiscounttypedoc)|
-|additionalInfo|string|optional|Display text providing more information on the discount|
-|additionalInfoUri|[URIString](#common-field-types)|optional|Link to a web page with more information on this discount|
-|eligibility|[[BankingProductDiscountEligibility](#schemacdr-banking-apibankingproductdiscounteligibility)]|conditional|Eligibility constraints that apply to this discount. Mandatory if `discountType` is `ELIGIBILITY_ONLY`.|
+|description|string|mandatory|Description of the discount.|
+|discountType|[Enum](#common-field-types)|mandatory|The type of discount. For further details, refer to [Product Discount Types](#tocSproductdiscounttypedoc).|
+|amount|[AmountString](#common-field-types)|conditional|Dollar value of the discount. One of _amount_, _balanceRate_, _transactionRate_, _accruedRate_ and _feeRate_ is mandatory.|
+|balanceRate|[RateString](#common-field-types)|conditional|A discount rate calculated based on a proportion of the balance. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of _amount_, _balanceRate_, _transactionRate_, _accruedRate_ and _feeRate_ is mandatory. Unless noted in _additionalInfo_, assumes the application and calculation frequency are the same as the corresponding fee.|
+|transactionRate|[RateString](#common-field-types)|conditional|A discount rate calculated based on a proportion of a transaction. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of _amount_, _balanceRate_, _transactionRate_, _accruedRate_ and _feeRate_ is mandatory.|
+|accruedRate|[RateString](#common-field-types)|conditional|A discount rate calculated based on a proportion of the calculated interest accrued on the account. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of _amount_, _balanceRate_, _transactionRate_, _accruedRate_ and _feeRate_ is mandatory. Unless noted in _additionalInfo_, assumes the application and calculation frequency are the same as the corresponding fee.|
+|feeRate|[RateString](#common-field-types)|conditional|A discount rate calculated based on a proportion of the fee to which this discount is attached. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of _amount_, _balanceRate_, _transactionRate_, _accruedRate_ and _feeRate_ is mandatory. Unless noted in _additionalInfo_, assumes the application and calculation frequency are the same as the corresponding fee.|
+|additionalValue|string|conditional|Generic field containing additional information relevant to the [_discountType_](#tocSproductdiscounttypedoc) specified. Whether mandatory or not is dependent on the value of [_discountType_](#tocSproductdiscounttypedoc).|
+|additionalInfo|string|optional|Display text providing more information on the discount.|
+|additionalInfoUri|[URIString](#common-field-types)|optional|Link to a web page with more information on this discount.|
+|eligibility|[[BankingProductDiscountEligibility](#schemacdr-banking-apibankingproductdiscounteligibility)]|conditional|Eligibility constraints that apply to this discount. Mandatory if _discountType_ is `ELIGIBILITY_ONLY`.|
 
 <h4 id="cdr-banking-api_bankingproductdiscount_enumerated-values-main">Enumerated Values</h4>
 
@@ -4767,7 +4821,10 @@ This operation does not require authentication
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingproductdiscounteligibility">BankingProductDiscountEligibility</h3>
 <p id="tocSbankingproductdiscounteligibility" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-banking-apibankingproductdiscounteligibility"></a>
+<p>
+  <a id="cdr-banking-api_schema-base_bankingproductdiscounteligibility"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apibankingproductdiscounteligibility"></a>
+</p>
 
 ```json
 {
@@ -4783,10 +4840,10 @@ This operation does not require authentication
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|discountEligibilityType|[Enum](#common-field-types)|mandatory|The type of the specific eligibility constraint for a discount. For further details, refer to [Product Discount Eligibility Types](#tocSproductdiscounteligibilitydoc)|
-|additionalValue|string|conditional|Generic field containing additional information relevant to the [discountEligibilityType](#tocSproductdiscounteligibilitydoc) specified. Whether mandatory or not is dependent on the value of [discountEligibilityType](#tocSproductdiscounteligibilitydoc)|
-|additionalInfo|string|conditional|Display text providing more information on this eligibility constraint. Whether mandatory or not is dependent on the value of [discountEligibilityType](#tocSproductdiscounteligibilitydoc)|
-|additionalInfoUri|[URIString](#common-field-types)|optional|Link to a web page with more information on this eligibility constraint|
+|discountEligibilityType|[Enum](#common-field-types)|mandatory|The type of the specific eligibility constraint for a discount. For further details, refer to [Product Discount Eligibility Types](#tocSproductdiscounteligibilitydoc).|
+|additionalValue|string|conditional|Generic field containing additional information relevant to the [_discountEligibilityType_](#tocSproductdiscounteligibilitydoc) specified. Whether mandatory or not is dependent on the value of [_discountEligibilityType_](#tocSproductdiscounteligibilitydoc).|
+|additionalInfo|string|conditional|Display text providing more information on this eligibility constraint. Whether mandatory or not is dependent on the value of [_discountEligibilityType_](#tocSproductdiscounteligibilitydoc).|
+|additionalInfoUri|[URIString](#common-field-types)|optional|Link to a web page with more information on this eligibility constraint.|
 
 <h4 id="cdr-banking-api_bankingproductdiscounteligibility_enumerated-values-main">Enumerated Values</h4>
 
@@ -4809,7 +4866,10 @@ This operation does not require authentication
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingproductdepositratev2">BankingProductDepositRateV2</h3>
 <p id="tocSbankingproductdepositratev2" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-banking-apibankingproductdepositratev2"></a>
+<p>
+  <a id="cdr-banking-api_schema-base_bankingproductdepositrate"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apibankingproductdepositratev2"></a>
+</p>
 
 ```json
 {
@@ -4858,18 +4918,18 @@ This operation does not require authentication
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|depositRateType|[Enum](#common-field-types)|mandatory|The type of rate (`FIXED`, `VARIABLE`, `BONUS`, etc). For further details, refer to [Product Deposit Rate Types](#tocSproductdepositratetypedoc)|
-|rate|[RateString](#common-field-types)|mandatory|The rate to be applied|
-|adjustmentToBase|[Enum](#common-field-types)|optional|For an adjustment `depositRateType`, the base rate that the adjustment value will apply to. The value of the `additionalValue` field may be used to further qualify the corresponding base.|
-|adjustmentBundle|string|optional|The name of the bundle that makes the adjustment rate applicable|
-|calculationFrequency|[ExternalRef](#common-field-types)|optional|The period after which the rate is applied to the balance to calculate the amount due for the period. Calculation of the amount is often daily (as balances may change) but accumulated until the total amount is 'applied' to the account (see `applicationFrequency`). Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
-|applicationType|[Enum](#common-field-types)|optional|The type of approach used to apply the rate to the account. An `applicationFrequency` value is only expected when the approach is `PERIODIC`|
-|applicationFrequency|[ExternalRef](#common-field-types)|optional|The period after which the calculated amount(s) (see `calculationFrequency`) are 'applied' (i.e. debited or credited) to the account. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
-|tiers|[[BankingProductRateTierV4](#schemacdr-banking-apibankingproductratetierv4)]|optional|Rate tiers applicable for this rate|
-|applicabilityConditions|[[BankingProductRateConditionV2](#schemacdr-banking-apibankingproductrateconditionv2)]|optional|Array of applicability conditions for a rate|
-|additionalValue|string|conditional|Generic field containing additional information relevant to the [depositRateType](#tocSproductdepositratetypedoc) specified. Whether mandatory or not is dependent on the value of [depositRateType](#tocSproductdepositratetypedoc)|
-|additionalInfo|string|optional|Display text providing more information on the rate|
-|additionalInfoUri|[URIString](#common-field-types)|optional|Link to a web page with more information on this rate|
+|depositRateType|[Enum](#common-field-types)|mandatory|The type of rate (`FIXED`, `VARIABLE`, `BONUS`, etc.) For further details, refer to [Product Deposit Rate Types](#tocSproductdepositratetypedoc).|
+|rate|[RateString](#common-field-types)|mandatory|The rate to be applied.|
+|adjustmentToBase|[Enum](#common-field-types)|optional|For an adjustment _depositRateType_, the base rate that the adjustment value will apply to. The value of the _additionalValue_ field may be used to further qualify the corresponding base.|
+|adjustmentBundle|string|optional|The name of the bundle that makes the adjustment rate applicable.|
+|calculationFrequency|[ExternalRef](#common-field-types)|optional|The period after which the rate is applied to the balance to calculate the amount due for the period. Calculation of the amount is often daily (as balances may change) but accumulated until the total amount is 'applied' to the account (see _applicationFrequency_). Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax).|
+|applicationType|[Enum](#common-field-types)|optional|The type of approach used to apply the rate to the account. An _applicationFrequency_ value is only expected when the approach is `PERIODIC`.|
+|applicationFrequency|[ExternalRef](#common-field-types)|optional|The period after which the calculated amount(s) (see _calculationFrequency_) are 'applied' (i.e. debited or credited) to the account. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax).|
+|tiers|[[BankingProductRateTierV4](#schemacdr-banking-apibankingproductratetierv4)]|optional|Rate tiers applicable for this rate.|
+|applicabilityConditions|[[BankingProductRateConditionV2](#schemacdr-banking-apibankingproductrateconditionv2)]|optional|Array of applicability conditions for a rate.|
+|additionalValue|string|conditional|Generic field containing additional information relevant to the [_depositRateType_](#tocSproductdepositratetypedoc) specified. Whether mandatory or not is dependent on the value of [_depositRateType_](#tocSproductdepositratetypedoc).|
+|additionalInfo|string|optional|Display text providing more information on the rate.|
+|additionalInfoUri|[URIString](#common-field-types)|optional|Link to a web page with more information on this rate.|
 
 <h4 id="cdr-banking-api_bankingproductdepositratev2_enumerated-values-main">Enumerated Values</h4>
 
@@ -4891,7 +4951,10 @@ This operation does not require authentication
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingproductlendingratev3">BankingProductLendingRateV3</h3>
 <p id="tocSbankingproductlendingratev3" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-banking-apibankingproductlendingratev3"></a>
+<p>
+  <a id="cdr-banking-api_schema-base_bankingproductlendingrate"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apibankingproductlendingratev3"></a>
+</p>
 
 ```json
 {
@@ -4947,25 +5010,25 @@ This operation does not require authentication
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|lendingRateType|[Enum](#common-field-types)|mandatory|The type of rate (fixed, variable, etc). For further details, refer to [Product Lending Rate Types](#tocSproductlendingratetypedoc)|
-|rate|[RateString](#common-field-types)|conditional|The rate to be applied. Mandatory unless the `lendingRateType` `FEE` is supplied|
-|referenceRate|[RateString](#common-field-types)|optional|The reference or index rate for this account option, or variant|
-|comparisonRate|[RateString](#common-field-types)|optional|A comparison rate equivalent for this rate. The comparison rate associated with an 'adjustment' [lendingRateType](#tocSproductlendingratetypedoc) is the full comparison rate assuming the adjusted rate is available for origination.|
+|lendingRateType|[Enum](#common-field-types)|mandatory|The type of rate (`FIXED`, `VARIABLE`, etc.) For further details, refer to [Product Lending Rate Types](#tocSproductlendingratetypedoc).|
+|rate|[RateString](#common-field-types)|conditional|The rate to be applied. Mandatory unless the _lendingRateType_ `FEE` is supplied.|
+|referenceRate|[RateString](#common-field-types)|optional|The reference or index rate for this account option, or variant.|
+|comparisonRate|[RateString](#common-field-types)|optional|A comparison rate equivalent for this rate. The comparison rate associated with an 'adjustment' [_lendingRateType_](#tocSproductlendingratetypedoc) is the full comparison rate assuming the adjusted rate is available for origination.|
 |revertRate|[RateString](#common-field-types)|optional|The revert rate applicable after the respective rate expires. For example, `FIXED`, or `INTEREST_ONLY` rates may revert to a different rate when those terms expire. Expected where this product will continue to operate with a new 'revert' rate.|
-|revertProductId|string|optional|A reference to a `productId` that the associated product will revert to after the respective rate terms expire. For example, `FIXED`, or `INTEREST_ONLY` rates may revert to a different rate when those terms expire. Expected if the product will change when the rate reverts to different terms.|
-|adjustmentToBase|[Enum](#common-field-types)|optional|For an adjustment `lendingRateType`, the base rate that the adjustment value will apply to. The values of the `repaymentType`, `loanPurpose` and `additionalValue` fields may be used to further qualify the corresponding base.|
-|adjustmentBundle|string|optional|The name of the bundle that makes the adjustment rate applicable|
-|calculationFrequency|[ExternalRef](#common-field-types)|optional|The period after which the rate is applied to the balance to calculate the amount due for the period. Calculation of the amount is often daily (as balances may change) but accumulated until the total amount is 'applied' to the account (see `applicationFrequency`). Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
-|applicationType|[Enum](#common-field-types)|optional|The type of approach used to apply the rate to the account. An `applicationFrequency` value is only expected when the approach is `PERIODIC`|
-|applicationFrequency|[ExternalRef](#common-field-types)|optional|The period after which the calculated amount(s) (see `calculationFrequency`) are 'applied' (i.e. debited or credited) to the account. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
-|interestPaymentDue|[Enum](#common-field-types)|optional|When loan payments are due to be paid within each period. The investment benefit of earlier payments affect the rate that can be offered|
-|repaymentType|[Enum](#common-field-types)|optional|Options in place for repayments. If absent, the lending rate is applicable to all repayment types|
-|loanPurpose|[Enum](#common-field-types)|optional|The reason for taking out the loan. If absent, the lending rate is applicable to all loan purposes|
-|tiers|[[BankingProductRateTierV4](#schemacdr-banking-apibankingproductratetierv4)]|optional|Rate tiers applicable for this rate|
-|applicabilityConditions|[[BankingProductRateConditionV2](#schemacdr-banking-apibankingproductrateconditionv2)]|optional|Array of applicability conditions for a rate|
-|additionalValue|string|conditional|Generic field containing additional information relevant to the [lendingRateType](#tocSproductlendingratetypedoc) specified. Whether mandatory or not is dependent on the value of [lendingRateType](#tocSproductlendingratetypedoc)|
-|additionalInfo|string|optional|Display text providing more information on the rate|
-|additionalInfoUri|[URIString](#common-field-types)|optional|Link to a web page with more information on this rate|
+|revertProductId|string|optional|A reference to a _productId_ that the associated product will revert to after the respective rate terms expire. For example, `FIXED`, or `INTEREST_ONLY` rates may revert to a different rate when those terms expire. Expected if the product will change when the rate reverts to different terms.|
+|adjustmentToBase|[Enum](#common-field-types)|optional|For an adjustment _lendingRateType_, the base rate that the adjustment value will apply to. The values of the _repaymentType_, _loanPurpose_ and _additionalValue_ fields may be used to further qualify the corresponding base.|
+|adjustmentBundle|string|optional|The name of the bundle that makes the adjustment rate applicable.|
+|calculationFrequency|[ExternalRef](#common-field-types)|optional|The period after which the rate is applied to the balance to calculate the amount due for the period. Calculation of the amount is often daily (as balances may change) but accumulated until the total amount is 'applied' to the account (see _applicationFrequency_). Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax).|
+|applicationType|[Enum](#common-field-types)|optional|The type of approach used to apply the rate to the account. An _applicationFrequency_ value is only expected when the approach is `PERIODIC`.|
+|applicationFrequency|[ExternalRef](#common-field-types)|optional|The period after which the calculated amount(s) (see _calculationFrequency_) are 'applied' (i.e. debited or credited) to the account. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax).|
+|interestPaymentDue|[Enum](#common-field-types)|optional|When loan payments are due to be paid within each period. The investment benefit of earlier payments affect the rate that can be offered.|
+|repaymentType|[Enum](#common-field-types)|optional|Options in place for repayments. If absent, the lending rate is applicable to all repayment types.|
+|loanPurpose|[Enum](#common-field-types)|optional|The reason for taking out the loan. If absent, the lending rate is applicable to all loan purposes.|
+|tiers|[[BankingProductRateTierV4](#schemacdr-banking-apibankingproductratetierv4)]|optional|Rate tiers applicable for this rate.|
+|applicabilityConditions|[[BankingProductRateConditionV2](#schemacdr-banking-apibankingproductrateconditionv2)]|optional|Array of applicability conditions for a rate.|
+|additionalValue|string|conditional|Generic field containing additional information relevant to the [_lendingRateType_](#tocSproductlendingratetypedoc) specified. Whether mandatory or not is dependent on the value of [_lendingRateType_](#tocSproductlendingratetypedoc).|
+|additionalInfo|string|optional|Display text providing more information on the rate.|
+|additionalInfoUri|[URIString](#common-field-types)|optional|Link to a web page with more information on this rate.|
 
 <h4 id="cdr-banking-api_bankingproductlendingratev3_enumerated-values-main">Enumerated Values</h4>
 
@@ -5003,7 +5066,10 @@ This operation does not require authentication
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingproductratetierv4">BankingProductRateTierV4</h3>
 <p id="tocSbankingproductratetierv4" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-banking-apibankingproductratetierv4"></a>
+<p>
+  <a id="cdr-banking-api_schema-base_bankingproductratetier"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apibankingproductratetierv4"></a>
+</p>
 
 ```json
 {
@@ -5026,20 +5092,20 @@ This operation does not require authentication
 
 ```
 
-*Defines the criteria and conditions for which a rate applies*
+*Defines the criteria and conditions for which a rate applies.*
 
 <h3 id="cdr-banking-api_bankingproductratetierv4_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|name|string|mandatory|A display name for the tier|
-|unitOfMeasure|[Enum](#common-field-types)|mandatory|The unit of measure that applies to the `minimumValue` and `maximumValue` values, e.g.:<ul><li>`DOLLAR` for a dollar amount (with values in AmountString format)<li>`PERCENT` for Loan-to-Value Ratio or LVR (with values in RateString format)<li>`MONTH` or `DAY` for a period representing a discrete number of months or days for a fixed-term deposit or loan (with values as a string containing a positive integer)</ul>|
-|minimumValue|string|mandatory|The number of `unitOfMeasure` units that form the lower bound of the tier. The tier should be inclusive of this value|
-|maximumValue|string|optional|The number of `unitOfMeasure` units that form the upper bound of the tier or band. For a tier with a discrete value (as opposed to a range of values e.g. 1 month) this must be the same as `minimumValue`. Where this is the same as the `minimumValue` value of the next-higher tier the referenced tier should be exclusive of this value. For example a term deposit of 2 months falls into the upper tier of the following tiers: (1 – 2 months, 2 – 3 months). If absent the tier's range has no upper bound.|
-|rateApplicationMethod|[Enum](#common-field-types)|optional|The method used to calculate the amount to be applied using one or more tiers. A single rate may be applied to the entire balance or each applicable tier rate is applied to the portion of the balance that falls into that tier (referred to as 'bands' or 'steps')|
-|applicabilityConditions|[[BankingProductRateConditionV2](#schemacdr-banking-apibankingproductrateconditionv2)]|optional|Array of applicability conditions for a tier|
-|additionalInfo|string|optional|Display text providing more information on the rate tier|
-|additionalInfoUri|[URIString](#common-field-types)|optional|Link to a web page with more information on this rate tier|
+|name|string|mandatory|A display name for the tier.|
+|unitOfMeasure|[Enum](#common-field-types)|mandatory|The unit of measure that applies to the _minimumValue_ and _maximumValue_ values, e.g.,<ul><li>`DOLLAR` for a dollar amount (with values in AmountString format)<li>`PERCENT` for Loan-to-Value Ratio or LVR (with values in RateString format)<li>`MONTH` or `DAY` for a period representing a discrete number of months or days for a fixed-term deposit or loan (with values as a string containing a positive integer).</ul>|
+|minimumValue|string|mandatory|The number of _unitOfMeasure_ units that form the lower bound of the tier. The tier should be inclusive of this value.|
+|maximumValue|string|optional|The number of _unitOfMeasure_ units that form the upper bound of the tier or band. For a tier with a discrete value (as opposed to a range of values e.g., 1 month) this must be the same as _minimumValue_. Where this is the same as the _minimumValue_ value of the next-higher tier the referenced tier should be exclusive of this value. For example a term deposit of 2 months falls into the upper tier of the following tiers: (1 – 2 months, 2 – 3 months). If absent the tier's range has no upper bound.|
+|rateApplicationMethod|[Enum](#common-field-types)|optional|The method used to calculate the amount to be applied using one or more tiers. A single rate may be applied to the entire balance or each applicable tier rate is applied to the portion of the balance that falls into that tier (referred to as 'bands' or 'steps').|
+|applicabilityConditions|[[BankingProductRateConditionV2](#schemacdr-banking-apibankingproductrateconditionv2)]|optional|Array of applicability conditions for a tier.|
+|additionalInfo|string|optional|Display text providing more information on the rate tier.|
+|additionalInfoUri|[URIString](#common-field-types)|optional|Link to a web page with more information on this rate tier.|
 
 <h4 id="cdr-banking-api_bankingproductratetierv4_enumerated-values-main">Enumerated Values</h4>
 
@@ -5055,7 +5121,10 @@ This operation does not require authentication
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingproductrateconditionv2">BankingProductRateConditionV2</h3>
 <p id="tocSbankingproductrateconditionv2" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-banking-apibankingproductrateconditionv2"></a>
+<p>
+  <a id="cdr-banking-api_schema-base_bankingproductratecondition"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apibankingproductrateconditionv2"></a>
+</p>
 
 ```json
 {
@@ -5067,16 +5136,16 @@ This operation does not require authentication
 
 ```
 
-*Defines a condition for the applicability of a tiered rate*
+*Defines a condition for the applicability of a tiered rate.*
 
 <h3 id="cdr-banking-api_bankingproductrateconditionv2_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|rateApplicabilityType|[Enum](#common-field-types)|optional|Category of applicability condition associated with the rate. For more information refer to [Rate and Tier Applicability Types](#tocSbankingproductrateconditiondoc)|
-|additionalValue|string|conditional|Generic field containing additional information relevant to the `rateApplicabilityType` specified. Whether mandatory or not is dependent on the value of [rateApplicabilityType](#tocSbankingproductrateconditiondoc)|
-|additionalInfo|string|conditional|Display text providing more information on the condition|
-|additionalInfoUri|[URIString](#common-field-types)|optional|Link to a web page with more information on this condition|
+|rateApplicabilityType|[Enum](#common-field-types)|optional|Category of applicability condition associated with the rate. For more information refer to [Rate and Tier Applicability Types](#tocSbankingproductrateconditiondoc).|
+|additionalValue|string|conditional|Generic field containing additional information relevant to the _rateApplicabilityType_ specified. Whether mandatory or not is dependent on the value of [_rateApplicabilityType_](#tocSbankingproductrateconditiondoc).|
+|additionalInfo|string|conditional|Display text providing more information on the condition.|
+|additionalInfoUri|[URIString](#common-field-types)|optional|Link to a web page with more information on this condition.|
 
 <h4 id="cdr-banking-api_bankingproductrateconditionv2_enumerated-values-main">Enumerated Values</h4>
 
@@ -5098,7 +5167,10 @@ This operation does not require authentication
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingproductinstalments">BankingProductInstalments</h3>
 <p id="tocSbankingproductinstalments" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-banking-apibankingproductinstalments"></a>
+<p>
+  <a id="cdr-banking-api_schema-base_bankingproductinstalments"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apibankingproductinstalments"></a>
+</p>
 
 ```json
 {
@@ -5116,17 +5188,20 @@ This operation does not require authentication
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|maximumPlanCount|[PositiveInteger](#common-field-types)|mandatory|Total number of plans that may be created|
-|instalmentsLimit|[AmountString](#common-field-types)|mandatory|Maximum combined limit of all instalment plans that may be created|
-|minimumPlanValue|[AmountString](#common-field-types)|mandatory|Minimum value that can be opened as an instalment plan|
-|maximumPlanValue|[AmountString](#common-field-types)|mandatory|Maximum value that can be opened as an instalment plan|
-|minimumSplit|[PositiveInteger](#common-field-types)|mandatory|Minimum number of instalment payments a plan can be created with|
-|maximumSplit|[PositiveInteger](#common-field-types)|mandatory|Maximum number of instalment payments a plan can be created with|
+|maximumPlanCount|[PositiveInteger](#common-field-types)|mandatory|Total number of plans that may be created.|
+|instalmentsLimit|[AmountString](#common-field-types)|mandatory|Maximum combined limit of all instalment plans that may be created.|
+|minimumPlanValue|[AmountString](#common-field-types)|mandatory|Minimum value that can be opened as an instalment plan.|
+|maximumPlanValue|[AmountString](#common-field-types)|mandatory|Maximum value that can be opened as an instalment plan.|
+|minimumSplit|[PositiveInteger](#common-field-types)|mandatory|Minimum number of instalment payments a plan can be created with.|
+|maximumSplit|[PositiveInteger](#common-field-types)|mandatory|Maximum number of instalment payments a plan can be created with.|
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSresponsebankingaccountlistv3">ResponseBankingAccountListV3</h3>
 <p id="tocSresponsebankingaccountlistv3" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-banking-apiresponsebankingaccountlistv3"></a>
+<p>
+  <a id="cdr-banking-api_schema-base_responsebankingaccountlist"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apiresponsebankingaccountlistv3"></a>
+</p>
 
 ```json
 {
@@ -5166,14 +5241,17 @@ This operation does not require authentication
 |Name|Type|Required|Description|
 |---|---|---|---|
 |data|object|mandatory|none|
-|» accounts|[[BankingAccountV3](#schemacdr-banking-apibankingaccountv3)]|mandatory|The list of accounts returned. If the filter results in an empty set then this array may have no records|
+|» accounts|[[BankingAccountV3](#schemacdr-banking-apibankingaccountv3)]|mandatory|The list of accounts returned. If the filter results in an empty set then this array may have no records.|
 |links|[LinksPaginated](#schemacdr-banking-apilinkspaginated)|mandatory|none|
 |meta|[MetaPaginated](#schemacdr-banking-apimetapaginated)|mandatory|none|
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingaccountv3">BankingAccountV3</h3>
 <p id="tocSbankingaccountv3" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-banking-apibankingaccountv3"></a>
+<p>
+  <a id="cdr-banking-api_schema-base_bankingaccount"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apibankingaccountv3"></a>
+</p>
 
 ```json
 {
@@ -5195,16 +5273,16 @@ This operation does not require authentication
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|accountId|[ASCIIString](#common-field-types)|mandatory|A unique ID of the account adhering to the standards for ID permanence|
-|creationDate|[DateString](#common-field-types)|optional|Date that the account was created (if known)|
+|accountId|[ASCIIString](#common-field-types)|mandatory|A unique ID of the account adhering to the standards for ID permanence.|
+|creationDate|[DateString](#common-field-types)|optional|Date that the account was created (if known).|
 |displayName|string|mandatory|The display name of the account as defined by the bank. This should not incorporate account numbers or PANs. If it does the values should be masked according to the rules of the [MaskedAccountString](#common-field-types) common type.|
-|nickname|string|optional|A customer supplied nick name for the account|
-|openStatus|[Enum](#common-field-types)|optional|Open or closed status for the account. If not present then `OPEN` is assumed|
-|isOwned|[Boolean](#common-field-types)|optional|Flag indicating that the customer associated with the authorisation is an owner of the account. Does not indicate sole ownership, however. If not present then `true` is assumed|
-|accountOwnership|[Enum](#common-field-types)|mandatory|Value indicating the number of customers that have ownership of the account, according to the data holder's definition of account ownership. Does not indicate that all account owners are eligible consumers|
-|maskedNumber|[MaskedAccountString](#common-field-types)|mandatory|A masked version of the account. Whether BSB/Account Number, Credit Card PAN or another number|
-|productCategory|[BankingProductCategoryV2](#schemacdr-banking-apibankingproductcategoryv2)|mandatory|The category to which a product or account belongs. See [here](#product-categories) for more details|
-|productName|string|mandatory|The unique identifier of the account as defined by the data holder (akin to model number for the account)|
+|nickname|string|optional|A customer supplied nick name for the account.|
+|openStatus|[Enum](#common-field-types)|optional|Open or closed status for the account. If not present then `OPEN` is assumed.|
+|isOwned|[Boolean](#common-field-types)|optional|Flag indicating that the customer associated with the authorisation is an owner of the account. Does not indicate sole ownership, however. If not present then `true` is assumed.|
+|accountOwnership|[Enum](#common-field-types)|mandatory|Value indicating the number of customers that have ownership of the account, according to the data holder's definition of account ownership. Does not indicate that all account owners are eligible consumers.|
+|maskedNumber|[MaskedAccountString](#common-field-types)|mandatory|A masked version of the account. Whether BSB/Account Number, Credit Card PAN or another number.|
+|productCategory|[BankingProductCategoryV2](#schemacdr-banking-apibankingproductcategoryv2)|mandatory|The category to which a product or account belongs. See [here](#product-categories) for more details.|
+|productName|string|mandatory|The unique identifier of the account as defined by the data holder (akin to model number for the account).|
 
 <h4 id="cdr-banking-api_bankingaccountv3_enumerated-values-main">Enumerated Values</h4>
 
@@ -5221,7 +5299,10 @@ This operation does not require authentication
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSresponsebankingaccountbyidv4">ResponseBankingAccountByIdV4</h3>
 <p id="tocSresponsebankingaccountbyidv4" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-banking-apiresponsebankingaccountbyidv4"></a>
+<p>
+  <a id="cdr-banking-api_schema-base_responsebankingaccountbyid"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apiresponsebankingaccountbyidv4"></a>
+</p>
 
 ```json
 {
@@ -5638,7 +5719,10 @@ This operation does not require authentication
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingaccountdetailv4">BankingAccountDetailV4</h3>
 <p id="tocSbankingaccountdetailv4" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-banking-apibankingaccountdetailv4"></a>
+<p>
+  <a id="cdr-banking-api_schema-base_bankingaccountdetail"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apibankingaccountdetailv4"></a>
+</p>
 
 ```json
 {
@@ -6051,41 +6135,44 @@ This operation does not require authentication
 |Name|Type|Required|Description|
 |---|---|---|---|
 |*anonymous*|object|mandatory|none|
-|» bsb|string|optional|The unmasked BSB for the account. Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces|
-|» accountNumber|string|optional|The unmasked account number for the account. Should not be supplied if the account number is a PAN requiring PCI compliance. Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces|
-|» bundleName|string|optional|Optional field to indicate if this account is part of a bundle that is providing additional benefit to the customer|
-|» cardOption|[BankingProductCardOption](#schemacdr-banking-apibankingproductcardoption)|optional|Information about the type of card available with the account|
-|» instalments|[BankingAccountInstalments](#schemacdr-banking-apibankingaccountinstalments)|optional|Details of instalment features on the account|
-|» termDeposit|[[BankingTermDepositAccountV2](#schemacdr-banking-apibankingtermdepositaccountv2)]|optional|A structure suited to accounts that have term deposit-like features|
-|» creditCard|[BankingCreditCardAccountV2](#schemacdr-banking-apibankingcreditcardaccountv2)|optional|A structure suited to accounts that have credit card-like features|
-|» loan|[BankingLoanAccountV3](#schemacdr-banking-apibankingloanaccountv3)|optional|A structure suited to accounts that have loan-like features|
-|» deposit|[BankingDepositAccount](#schemacdr-banking-apibankingdepositaccount)|optional|A structure suited to accounts that have deposit-like features without term deposit maturity detail|
-|» features|[allOf]|optional|Array of features of the account based on the equivalent structure in Product Reference with the following additional field|
+|» bsb|string|optional|The unmasked BSB for the account. Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces.|
+|» accountNumber|string|optional|The unmasked account number for the account. Should not be supplied if the account number is a PAN requiring PCI compliance. Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces.|
+|» bundleName|string|optional|Optional field to indicate if this account is part of a bundle that is providing additional benefit to the customer.|
+|» cardOption|[BankingProductCardOption](#schemacdr-banking-apibankingproductcardoption)|optional|Information about the type of card available with the account.|
+|» instalments|[BankingAccountInstalments](#schemacdr-banking-apibankingaccountinstalments)|optional|Details of instalment features on the account.|
+|» termDeposit|[[BankingTermDepositAccountV2](#schemacdr-banking-apibankingtermdepositaccountv2)]|optional|A structure suited to accounts that have term deposit-like features.|
+|» creditCard|[BankingCreditCardAccountV2](#schemacdr-banking-apibankingcreditcardaccountv2)|optional|A structure suited to accounts that have credit card-like features.|
+|» loan|[BankingLoanAccountV3](#schemacdr-banking-apibankingloanaccountv3)|optional|A structure suited to accounts that have loan-like features.|
+|» deposit|[BankingDepositAccount](#schemacdr-banking-apibankingdepositaccount)|optional|A structure suited to accounts that have deposit-like features without term deposit maturity detail.|
+|» features|[allOf]|optional|Array of features of the account based on the equivalent structure in Product Reference with the following additional field.|
 
 *allOf*
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|»» *anonymous*|[BankingProductFeatureV3](#schemacdr-banking-apibankingproductfeaturev3)|mandatory|Array of features and limitations of the product|
+|»» *anonymous*|[BankingProductFeatureV3](#schemacdr-banking-apibankingproductfeaturev3)|mandatory|Array of features and limitations of the product.|
 
 *and*
 
 |Name|Type|Required|Description|
 |---|---|---|---|
 |»» *anonymous*|object|mandatory|none|
-|»»» isActivated|[Boolean](#common-field-types)|optional|<ul><li>`true` if the feature has been activated by the customer or is a standard feature of the product.<li>`false` if the feature is not activated but is available for activation.<li>`null` or absent if the activation state is unknown.</ul>(Note this is an additional field appended to the feature object defined in the Product Reference payload.)|
+|»»» isActivated|[Boolean](#common-field-types)|optional|<ul><li>`true` if the feature has been activated by the customer or is a standard feature of the product.<li>`false` if the feature is not activated but is available for activation.<li>`null` or absent if the activation state is unknown.</ul>Note: this is an additional field appended to the feature object defined in the Product Reference payload.|
 
 *continued*
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|» fees|[[BankingProductFeeV2](#schemacdr-banking-apibankingproductfeev2)]|optional|Fees and charges applicable to the account based on the equivalent structure in Product Reference|
-|» addresses|[[CommonPhysicalAddress](#schemacdr-banking-apicommonphysicaladdress)]|optional|The addresses for the account to be used for correspondence|
+|» fees|[[BankingProductFeeV2](#schemacdr-banking-apibankingproductfeev2)]|optional|Fees and charges applicable to the account based on the equivalent structure in Product Reference.|
+|» addresses|[[CommonPhysicalAddress](#schemacdr-banking-apicommonphysicaladdress)]|optional|The addresses for the account to be used for correspondence.|
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingaccountinstalments">BankingAccountInstalments</h3>
 <p id="tocSbankingaccountinstalments" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-banking-apibankingaccountinstalments"></a>
+<p>
+  <a id="cdr-banking-api_schema-base_bankingaccountinstalments"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apibankingaccountinstalments"></a>
+</p>
 
 ```json
 {
@@ -6114,7 +6201,7 @@ This operation does not require authentication
 
 ```
 
-*Details of instalment features on the account*
+*Details of instalment features on the account.*
 
 <h3 id="cdr-banking-api_bankingaccountinstalments_properties">Properties</h3>
 
@@ -6129,12 +6216,15 @@ This operation does not require authentication
 |Name|Type|Required|Description|
 |---|---|---|---|
 |*anonymous*|object|mandatory|none|
-|» plans|[[BankingInstalmentPlans](#schemacdr-banking-apibankinginstalmentplans)]|optional|Array of instalment plans|
+|» plans|[[BankingInstalmentPlans](#schemacdr-banking-apibankinginstalmentplans)]|optional|Array of instalment plans.|
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankinginstalmentplans">BankingInstalmentPlans</h3>
 <p id="tocSbankinginstalmentplans" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-banking-apibankinginstalmentplans"></a>
+<p>
+  <a id="cdr-banking-api_schema-base_bankinginstalmentplans"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apibankinginstalmentplans"></a>
+</p>
 
 ```json
 {
@@ -6157,17 +6247,20 @@ This operation does not require authentication
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|planNickname|string|mandatory|The short display name of the plan as provided by the customer. Where a customer has not provided a nickname, a display name derived by the data holder consistent with existing channels|
-|creationDate|[DateString](#common-field-types)|mandatory|The date the plan was created|
-|amount|[AmountString](#common-field-types)|mandatory|The total amount of the plan|
-|duration|[ExternalRef](#common-field-types)|mandatory|The original expected repayment duration. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
-|instalmentInterval|[ExternalRef](#common-field-types)|mandatory|The expected repayment interval. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
-|schedule|[[BankingInstalmentPlanSchedule](#schemacdr-banking-apibankinginstalmentplanschedule)]|mandatory|Array of expected repayment amounts and dates|
+|planNickname|string|mandatory|The short display name of the plan as provided by the customer. Where a customer has not provided a nickname, a display name derived by the data holder consistent with existing channels.|
+|creationDate|[DateString](#common-field-types)|mandatory|The date the plan was created.|
+|amount|[AmountString](#common-field-types)|mandatory|The total amount of the plan.|
+|duration|[ExternalRef](#common-field-types)|mandatory|The original expected repayment duration. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax).|
+|instalmentInterval|[ExternalRef](#common-field-types)|mandatory|The expected repayment interval. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax).|
+|schedule|[[BankingInstalmentPlanSchedule](#schemacdr-banking-apibankinginstalmentplanschedule)]|mandatory|Array of expected repayment amounts and dates.|
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankinginstalmentplanschedule">BankingInstalmentPlanSchedule</h3>
 <p id="tocSbankinginstalmentplanschedule" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-banking-apibankinginstalmentplanschedule"></a>
+<p>
+  <a id="cdr-banking-api_schema-base_bankinginstalmentplanschedule"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apibankinginstalmentplanschedule"></a>
+</p>
 
 ```json
 {
@@ -6181,13 +6274,16 @@ This operation does not require authentication
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|amountDue|[AmountString](#common-field-types)|mandatory|Amount due with this repayment|
-|dueDate|[DateString](#common-field-types)|mandatory|Date this repayment is due|
+|amountDue|[AmountString](#common-field-types)|mandatory|Amount due with this repayment.|
+|dueDate|[DateString](#common-field-types)|mandatory|Date this repayment is due.|
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingtermdepositaccountv2">BankingTermDepositAccountV2</h3>
 <p id="tocSbankingtermdepositaccountv2" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-banking-apibankingtermdepositaccountv2"></a>
+<p>
+  <a id="cdr-banking-api_schema-base_bankingtermdepositaccount"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apibankingtermdepositaccountv2"></a>
+</p>
 
 ```json
 {
@@ -6256,12 +6352,12 @@ This operation does not require authentication
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|lodgementDate|[DateString](#common-field-types)|mandatory|The lodgement date of the original deposit|
-|maturityDate|[DateString](#common-field-types)|mandatory|Maturity date for the term deposit|
-|maturityAmount|[AmountString](#common-field-types)|optional|Amount to be paid upon maturity. If absent it implies the amount to paid is variable and cannot currently be calculated|
-|maturityCurrency|[CurrencyString](#common-field-types)|optional|If absent assumes `AUD`|
-|maturityInstructions|[Enum](#common-field-types)|mandatory|Current instructions on action to be taken at maturity. This includes default actions that may be specified in the terms and conditions for the product e.g. roll-over to the same term and frequency of interest payments|
-|depositRateDetail|[BankingDepositRateDetail](#schemacdr-banking-apibankingdepositratedetail)|optional|Detail about deposit rates and adjustments|
+|lodgementDate|[DateString](#common-field-types)|mandatory|The lodgement date of the original deposit.|
+|maturityDate|[DateString](#common-field-types)|mandatory|Maturity date for the term deposit.|
+|maturityAmount|[AmountString](#common-field-types)|optional|Amount to be paid upon maturity. If absent it implies the amount to paid is variable and cannot currently be calculated.|
+|maturityCurrency|[CurrencyString](#common-field-types)|optional|If absent assumes `AUD`.|
+|maturityInstructions|[Enum](#common-field-types)|mandatory|Current instructions on action to be taken at maturity. This includes default actions that may be specified in the terms and conditions for the product e.g., roll-over to the same term and frequency of interest payments.|
+|depositRateDetail|[BankingDepositRateDetail](#schemacdr-banking-apibankingdepositratedetail)|optional|Detail about deposit rates and adjustments.|
 
 <h4 id="cdr-banking-api_bankingtermdepositaccountv2_enumerated-values-main">Enumerated Values</h4>
 
@@ -6274,7 +6370,10 @@ This operation does not require authentication
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingdepositratedetail">BankingDepositRateDetail</h3>
 <p id="tocSbankingdepositratedetail" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-banking-apibankingdepositratedetail"></a>
+<p>
+  <a id="cdr-banking-api_schema-base_bankingdepositratedetail"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apibankingdepositratedetail"></a>
+</p>
 
 ```json
 {
@@ -6332,24 +6431,24 @@ This operation does not require authentication
 
 ```
 
-*Detail about deposit rates and adjustments*
+*Detail about deposit rates and adjustments.*
 
 <h3 id="cdr-banking-api_bankingdepositratedetail_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|depositRateType|[Enum](#common-field-types)|mandatory|The type of rate|
-|referenceRate|[RateString](#common-field-types)|mandatory|Reference rate for this account type and terms|
-|effectiveRate|[RateString](#common-field-types)|mandatory|Rate being paid for this deposit|
-|calculationFrequency|[ExternalRef](#common-field-types)|optional|The period after which the rate is applied to the balance to calculate the amount due for the period. Calculation of the amount is often daily (as balances may change) but accumulated until the total amount is 'applied' to the account (see `applicationFrequency`). Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
-|applicationType|[Enum](#common-field-types)|optional|The type of approach used to apply the rate to the account. An `applicationFrequency` value is only expected when the approach is `PERIODIC`|
-|applicationFrequency|[ExternalRef](#common-field-types)|optional|The period after which the calculated amount(s) (see `calculationFrequency`) are 'applied' (i.e. debited or credited) to the account. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
-|tiers|[[BankingProductRateTierV4](#schemacdr-banking-apibankingproductratetierv4)]|optional|Rate tiers applicable for this rate|
-|applicabilityConditions|[[BankingProductRateConditionV2](#schemacdr-banking-apibankingproductrateconditionv2)]|optional|Array of applicability conditions for a rate|
-|additionalValue|string|conditional|Generic field containing additional information relevant to the [depositRateType](#tocSproductdepositratetypedoc) specified. Whether mandatory or not is dependent on the value of [depositRateType](#tocSproductdepositratetypedoc)|
-|additionalInfo|string|optional|Display text providing more information on the rate|
-|additionalInfoUri|[URIString](#common-field-types)|optional|Link to a web page with more information on this rate|
-|adjustments|[[BankingRateAdjustments](#schemacdr-banking-apibankingrateadjustments)]|optional|Adjustments applicable to the rate|
+|depositRateType|[Enum](#common-field-types)|mandatory|The type of rate.|
+|referenceRate|[RateString](#common-field-types)|mandatory|Reference rate for this account type and terms.|
+|effectiveRate|[RateString](#common-field-types)|mandatory|Rate being paid for this deposit.|
+|calculationFrequency|[ExternalRef](#common-field-types)|optional|The period after which the rate is applied to the balance to calculate the amount due for the period. Calculation of the amount is often daily (as balances may change) but accumulated until the total amount is 'applied' to the account (see _applicationFrequency_). Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax).|
+|applicationType|[Enum](#common-field-types)|optional|The type of approach used to apply the rate to the account. An _applicationFrequency_ value is only expected when the approach is `PERIODIC`.|
+|applicationFrequency|[ExternalRef](#common-field-types)|optional|The period after which the calculated amount(s) (see _calculationFrequency_) are 'applied' (i.e. debited or credited) to the account. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax).|
+|tiers|[[BankingProductRateTierV4](#schemacdr-banking-apibankingproductratetierv4)]|optional|Rate tiers applicable for this rate.|
+|applicabilityConditions|[[BankingProductRateConditionV2](#schemacdr-banking-apibankingproductrateconditionv2)]|optional|Array of applicability conditions for a rate.|
+|additionalValue|string|conditional|Generic field containing additional information relevant to the [_depositRateType_](#tocSproductdepositratetypedoc) specified. Whether mandatory or not is dependent on the value of [_depositRateType_](#tocSproductdepositratetypedoc).|
+|additionalInfo|string|optional|Display text providing more information on the rate.|
+|additionalInfoUri|[URIString](#common-field-types)|optional|Link to a web page with more information on this rate.|
+|adjustments|[[BankingRateAdjustments](#schemacdr-banking-apibankingrateadjustments)]|optional|Adjustments applicable to the rate.|
 
 <h4 id="cdr-banking-api_bankingdepositratedetail_enumerated-values-main">Enumerated Values</h4>
 
@@ -6366,7 +6465,10 @@ This operation does not require authentication
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingrateadjustments">BankingRateAdjustments</h3>
 <p id="tocSbankingrateadjustments" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-banking-apibankingrateadjustments"></a>
+<p>
+  <a id="cdr-banking-api_schema-base_bankingrateadjustments"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apibankingrateadjustments"></a>
+</p>
 
 ```json
 {
@@ -6384,22 +6486,22 @@ This operation does not require authentication
 
 ```
 
-*Information about adjustments to an associated rate*
+*Information about adjustments to an associated rate.*
 
 <h3 id="cdr-banking-api_bankingrateadjustments_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|adjustmentType|[Enum](#common-field-types)|mandatory|The type of adjustment. For further details, refer to [Deposit Adjustment Rate Types](#tocSproductdepositadjustmentratetypedoc) and [Lending Adjustment Rate Types](#tocSproductlendingadjustmentratetypedoc)|
-|amount|[AmountString](#common-field-types)|optional|Adjustment amount if not a rate|
-|currency|[CurrencyString](#common-field-types)|optional|Adjustment amount currency. If absent assumes `AUD`|
-|rate|[RateString](#common-field-types)|optional|Adjustment to an associated base rate. The impact to the base rate depends on the type of base (deposit or loan) and the `adjustmentType` (bonus, discount or penalty)|
-|adjustmentBundle|string|optional|The name of the bundle that makes the adjustment rate applicable|
-|adjustmentPeriod|[ExternalRef](#common-field-types)|optional|The original or standard adjustment period after which the adjustment ends. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
-|adjustmentEndDate|[DateString](#common-field-types)|optional|Date the adjustment will cease to apply|
-|additionalValue|string|conditional|Generic field containing additional information relevant to the `adjustmentType` specified. Whether mandatory or not is dependent on the value of `adjustmentType`|
-|additionalInfo|string|optional|Display text providing more information on the rate|
-|additionalInfoUri|[URIString](#common-field-types)|optional|Link to a web page with more information on this rate|
+|adjustmentType|[Enum](#common-field-types)|mandatory|The type of adjustment. For further details, refer to [Deposit Adjustment Rate Types](#tocSproductdepositadjustmentratetypedoc) and [Lending Adjustment Rate Types](#tocSproductlendingadjustmentratetypedoc).|
+|amount|[AmountString](#common-field-types)|optional|Adjustment amount if not a rate.|
+|currency|[CurrencyString](#common-field-types)|optional|Adjustment amount currency. If absent assumes `AUD`.|
+|rate|[RateString](#common-field-types)|optional|Adjustment to an associated base rate. The impact to the base rate depends on the type of base (deposit or loan) and the _adjustmentType_ (`BONUS`, `DISCOUNT` or `PENALTY`).|
+|adjustmentBundle|string|optional|The name of the bundle that makes the adjustment rate applicable.|
+|adjustmentPeriod|[ExternalRef](#common-field-types)|optional|The original or standard adjustment period after which the adjustment ends. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax).|
+|adjustmentEndDate|[DateString](#common-field-types)|optional|Date the adjustment will cease to apply.|
+|additionalValue|string|conditional|Generic field containing additional information relevant to the _adjustmentType_ specified. Whether mandatory or not is dependent on the value of _adjustmentType_.|
+|additionalInfo|string|optional|Display text providing more information on the rate.|
+|additionalInfoUri|[URIString](#common-field-types)|optional|Link to a web page with more information on this rate.|
 
 <h4 id="cdr-banking-api_bankingrateadjustments_enumerated-values-main">Enumerated Values</h4>
 
@@ -6412,7 +6514,10 @@ This operation does not require authentication
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingcreditcardaccountv2">BankingCreditCardAccountV2</h3>
 <p id="tocSbankingcreditcardaccountv2" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-banking-apibankingcreditcardaccountv2"></a>
+<p>
+  <a id="cdr-banking-api_schema-base_bankingcreditcardaccount"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apibankingcreditcardaccountv2"></a>
+</p>
 
 ```json
 {
@@ -6476,16 +6581,19 @@ This operation does not require authentication
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|minPaymentAmount|[AmountString](#common-field-types)|mandatory|The minimum payment amount due for the next card payment|
-|paymentDueAmount|[AmountString](#common-field-types)|mandatory|The amount due for the next card payment|
-|paymentCurrency|[CurrencyString](#common-field-types)|optional|If absent assumes `AUD`|
-|paymentDueDate|[DateString](#common-field-types)|mandatory|Date that the next payment for the card is due|
+|minPaymentAmount|[AmountString](#common-field-types)|mandatory|The minimum payment amount due for the next card payment.|
+|paymentDueAmount|[AmountString](#common-field-types)|mandatory|The amount due for the next card payment.|
+|paymentCurrency|[CurrencyString](#common-field-types)|optional|If absent assumes `AUD`.|
+|paymentDueDate|[DateString](#common-field-types)|mandatory|Date that the next payment for the card is due.|
 |cardPlans|[[BankingCreditCardPlan](#schemacdr-banking-apibankingcreditcardplan)]|mandatory|Card plans sorted in order of repayment allocation. Repayments are allocated to the first entry first.|
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingcreditcardplan">BankingCreditCardPlan</h3>
 <p id="tocSbankingcreditcardplan" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-banking-apibankingcreditcardplan"></a>
+<p>
+  <a id="cdr-banking-api_schema-base_bankingcreditcardplan"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apibankingcreditcardplan"></a>
+</p>
 
 ```json
 {
@@ -6541,30 +6649,33 @@ This operation does not require authentication
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|nickname|string|optional|A short display name of the deposit amount if provided by the customer. Where a customer has not provided a nickname, a display name derived by the bank consistent with existing digital banking channels may be provided|
-|planType|[BankingCardPlanTypes](#schemacdr-banking-apibankingcardplantypes)|mandatory|The credit card plan type|
-|atExpiryBalanceTransfersTo|[BankingCardPlanTypes](#schemacdr-banking-apibankingcardplantypes)|optional|A reference to the plan type that any balance will be transferred to at the expiry of this plan|
-|planCreationDate|[DateString](#common-field-types)|optional|Date this plan was created|
-|planPeriod|[ExternalRef](#common-field-types)|optional|Original duration for this plan. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
-|planEndDate|[DateString](#common-field-types)|optional|Date this plan is expected to end|
-|planReferenceRate|[RateString](#common-field-types)|mandatory|Reference rate for this plan type|
-|planEffectiveRate|[RateString](#common-field-types)|mandatory|Effective rate for this plan|
-|minPaymentAmount|[AmountString](#common-field-types)|optional|The minimum payment amount due for this plan|
-|paymentDueAmount|[AmountString](#common-field-types)|optional|The amount due for this plan|
-|paymentCurrency|[CurrencyString](#common-field-types)|optional|If absent assumes `AUD`|
-|paymentDueDate|[DateString](#common-field-types)|optional|Date that the next payment for this plan is due|
-|additionalInfo|string|optional|Display text providing more information on the plan|
-|additionalInfoUri|[URIString](#common-field-types)|optional|Link to a web page with more information on this plan|
+|nickname|string|optional|A short display name of the deposit amount if provided by the customer. Where a customer has not provided a nickname, a display name derived by the bank consistent with existing digital banking channels may be provided.|
+|planType|[BankingCardPlanTypes](#schemacdr-banking-apibankingcardplantypes)|mandatory|The credit card plan type.|
+|atExpiryBalanceTransfersTo|[BankingCardPlanTypes](#schemacdr-banking-apibankingcardplantypes)|optional|A reference to the plan type that any balance will be transferred to at the expiry of this plan.|
+|planCreationDate|[DateString](#common-field-types)|optional|Date this plan was created.|
+|planPeriod|[ExternalRef](#common-field-types)|optional|Original duration for this plan. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax).|
+|planEndDate|[DateString](#common-field-types)|optional|Date this plan is expected to end.|
+|planReferenceRate|[RateString](#common-field-types)|mandatory|Reference rate for this plan type.|
+|planEffectiveRate|[RateString](#common-field-types)|mandatory|Effective rate for this plan.|
+|minPaymentAmount|[AmountString](#common-field-types)|optional|The minimum payment amount due for this plan.|
+|paymentDueAmount|[AmountString](#common-field-types)|optional|The amount due for this plan.|
+|paymentCurrency|[CurrencyString](#common-field-types)|optional|If absent assumes `AUD`.|
+|paymentDueDate|[DateString](#common-field-types)|optional|Date that the next payment for this plan is due.|
+|additionalInfo|string|optional|Display text providing more information on the plan.|
+|additionalInfoUri|[URIString](#common-field-types)|optional|Link to a web page with more information on this plan.|
 |interestFreePeriods|[object]|optional|Defines when any current or future interest-free periods will be applicable to this plan. The interest-free period itself will be specified through an associated `INTEREST_FREE` plan feature.|
-|» from|[DateString](#common-field-types)|optional|The date any associated interest-free period will be available for the plan|
-|» to|[DateString](#common-field-types)|mandatory|The date any associated interest-free period will no longer be available|
-|adjustments|[[BankingRateAdjustments](#schemacdr-banking-apibankingrateadjustments)]|optional|Adjustments applicable to the plan rate|
-|planFeatures|[[BankingCardPlanFeatures](#schemacdr-banking-apibankingcardplanfeatures)]|optional|Array of features available or applicable to this plan|
+|» from|[DateString](#common-field-types)|optional|The date any associated interest-free period will be available for the plan.|
+|» to|[DateString](#common-field-types)|mandatory|The date any associated interest-free period will no longer be available.|
+|adjustments|[[BankingRateAdjustments](#schemacdr-banking-apibankingrateadjustments)]|optional|Adjustments applicable to the plan rate.|
+|planFeatures|[[BankingCardPlanFeatures](#schemacdr-banking-apibankingcardplanfeatures)]|optional|Array of features available or applicable to this plan.|
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingcardplantypes">BankingCardPlanTypes</h3>
 <p id="tocSbankingcardplantypes" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-banking-apibankingcardplantypes"></a>
+<p>
+  <a id="cdr-banking-api_schema-base_bankingcardplantypes"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apibankingcardplantypes"></a>
+</p>
 
 ```json
 "PURCHASE_PLAN"
@@ -6589,7 +6700,10 @@ This operation does not require authentication
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingcardplanfeatures">BankingCardPlanFeatures</h3>
 <p id="tocSbankingcardplanfeatures" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-banking-apibankingcardplanfeatures"></a>
+<p>
+  <a id="cdr-banking-api_schema-base_bankingcardplanfeatures"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apibankingcardplanfeatures"></a>
+</p>
 
 ```json
 {
@@ -6603,18 +6717,18 @@ This operation does not require authentication
 
 ```
 
-*Features and limitations available or applicable to the associated plan*
+*Features and limitations available or applicable to the associated plan.*
 
 <h3 id="cdr-banking-api_bankingcardplanfeatures_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
 |planFeatureType|[Enum](#common-field-types)|mandatory|Type of feature or limitation. For details refer to [Plan Feature Types](#tocSbankingproductplanfeaturedoc).|
-|period|[ExternalRef](#common-field-types)|optional|Original duration of the feature or limitation. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
-|endDate|[DateString](#common-field-types)|optional|Date that the feature or limitation will cease to apply|
-|additionalValue|string|conditional|Detail associated with the planFeatureType. For details refer to [Plan Feature Types](#tocSbankingproductplanfeaturedoc).|
-|additionalInfo|string|optional|Display text providing more information on the plan feature|
-|additionalInfoUri|[URIString](#common-field-types)|optional|Link to a web page with more information on this plan feature|
+|period|[ExternalRef](#common-field-types)|optional|Original duration of the feature or limitation. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax).|
+|endDate|[DateString](#common-field-types)|optional|Date that the feature or limitation will cease to apply.|
+|additionalValue|string|conditional|Detail associated with the _planFeatureType_. For details refer to [Plan Feature Types](#tocSbankingproductplanfeaturedoc).|
+|additionalInfo|string|optional|Display text providing more information on the plan feature.|
+|additionalInfoUri|[URIString](#common-field-types)|optional|Link to a web page with more information on this plan feature.|
 
 <h4 id="cdr-banking-api_bankingcardplanfeatures_enumerated-values-main">Enumerated Values</h4>
 
@@ -6627,7 +6741,10 @@ This operation does not require authentication
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingdepositaccount">BankingDepositAccount</h3>
 <p id="tocSbankingdepositaccount" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-banking-apibankingdepositaccount"></a>
+<p>
+  <a id="cdr-banking-api_schema-base_bankingdepositaccount"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apibankingdepositaccount"></a>
+</p>
 
 ```json
 {
@@ -6693,14 +6810,17 @@ This operation does not require authentication
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|lodgementDate|[DateString](#common-field-types)|optional|The lodgement date of the deposit|
-|nickname|[DateString](#common-field-types)|optional|A short display name of the deposit amount if provided by the customer. Where a customer has not provided a nickname, a display name derived by the bank consistent with existing digital banking channels may be provided|
-|depositRateDetail|[BankingDepositRateDetail](#schemacdr-banking-apibankingdepositratedetail)|optional|Detail about deposit rates and adjustments|
+|lodgementDate|[DateString](#common-field-types)|optional|The lodgement date of the deposit.|
+|nickname|[DateString](#common-field-types)|optional|A short display name of the deposit amount if provided by the customer. Where a customer has not provided a nickname, a display name derived by the bank consistent with existing digital banking channels may be provided.|
+|depositRateDetail|[BankingDepositRateDetail](#schemacdr-banking-apibankingdepositratedetail)|optional|Detail about deposit rates and adjustments.|
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingloanaccountv3">BankingLoanAccountV3</h3>
 <p id="tocSbankingloanaccountv3" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-banking-apibankingloanaccountv3"></a>
+<p>
+  <a id="cdr-banking-api_schema-base_bankingloanaccount"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apibankingloanaccountv3"></a>
+</p>
 
 ```json
 {
@@ -6784,25 +6904,28 @@ This operation does not require authentication
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|originalStartDate|[DateString](#common-field-types)|optional|Optional original start date for the loan|
-|originalLoanAmount|[AmountString](#common-field-types)|optional|Optional original loan value|
-|originalLoanCurrency|[CurrencyString](#common-field-types)|optional|If absent assumes `AUD`|
-|loanEndDate|[DateString](#common-field-types)|optional|Date that the loan is due to be repaid in full|
-|nextInstalmentDate|[DateString](#common-field-types)|optional|Next date that an instalment is required|
-|minInstalmentAmount|[AmountString](#common-field-types)|optional|Minimum amount of next instalment|
-|minInstalmentCurrency|[CurrencyString](#common-field-types)|optional|If absent assumes `AUD`|
-|maxRedraw|[AmountString](#common-field-types)|optional|Maximum amount of funds that can be redrawn. If not present redraw is not available even if the feature exists for the account|
-|maxRedrawCurrency|[CurrencyString](#common-field-types)|optional|If absent assumes `AUD`|
-|minRedraw|[AmountString](#common-field-types)|optional|Minimum redraw amount|
-|minRedrawCurrency|[CurrencyString](#common-field-types)|optional|If absent assumes `AUD`|
-|offsetAccountEnabled|[Boolean](#common-field-types)|optional|Set to `true` if one or more offset accounts are configured for this loan account|
-|offsetAccountIds|[[ASCIIString]](#common-field-types)|optional|The accountIDs of the configured offset accounts attached to this loan. Only offset accounts that can be accessed under the current authorisation should be included. It is expected behaviour that `offsetAccountEnabled` is set to `true` but the `offsetAccountIds` field is absent or empty. This represents a situation where an offset account exists but details can not be accessed under the current authorisation|
-|lendingRateDetail|[[BankingLendingRateDetail](#schemacdr-banking-apibankinglendingratedetail)]|optional|Information about lending rates and adjustments|
+|originalStartDate|[DateString](#common-field-types)|optional|Optional original start date for the loan.|
+|originalLoanAmount|[AmountString](#common-field-types)|optional|Optional original loan value.|
+|originalLoanCurrency|[CurrencyString](#common-field-types)|optional|If absent assumes `AUD`.|
+|loanEndDate|[DateString](#common-field-types)|optional|Date that the loan is due to be repaid in full.|
+|nextInstalmentDate|[DateString](#common-field-types)|optional|Next date that an instalment is required.|
+|minInstalmentAmount|[AmountString](#common-field-types)|optional|Minimum amount of next instalment.|
+|minInstalmentCurrency|[CurrencyString](#common-field-types)|optional|If absent assumes `AUD`.|
+|maxRedraw|[AmountString](#common-field-types)|optional|Maximum amount of funds that can be redrawn. If not present redraw is not available even if the feature exists for the account.|
+|maxRedrawCurrency|[CurrencyString](#common-field-types)|optional|If absent assumes `AUD`.|
+|minRedraw|[AmountString](#common-field-types)|optional|Minimum redraw amount.|
+|minRedrawCurrency|[CurrencyString](#common-field-types)|optional|If absent assumes `AUD`.|
+|offsetAccountEnabled|[Boolean](#common-field-types)|optional|Set to `true` if one or more offset accounts are configured for this loan account.|
+|offsetAccountIds|[[ASCIIString]](#common-field-types)|optional|The accountIDs of the configured offset accounts attached to this loan. Only offset accounts that can be accessed under the current authorisation should be included. It is expected behaviour that _offsetAccountEnabled_ is set to `true` but the _offsetAccountIds_ field is absent or empty. This represents a situation where an offset account exists but details can not be accessed under the current authorisation.|
+|lendingRateDetail|[[BankingLendingRateDetail](#schemacdr-banking-apibankinglendingratedetail)]|optional|Information about lending rates and adjustments.|
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankinglendingratedetail">BankingLendingRateDetail</h3>
 <p id="tocSbankinglendingratedetail" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-banking-apibankinglendingratedetail"></a>
+<p>
+  <a id="cdr-banking-api_schema-base_bankinglendingratedetail"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apibankinglendingratedetail"></a>
+</p>
 
 ```json
 {
@@ -6869,16 +6992,16 @@ This operation does not require authentication
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|loanPurpose|[Enum](#common-field-types)|optional|The reason for taking out the loan. If absent, the lending rate is applicable to all loan purposes|
-|repaymentType|[Enum](#common-field-types)|optional|Options in place for repayments. If absent defaults to `PRINCIPAL_AND_INTEREST`|
+|loanPurpose|[Enum](#common-field-types)|optional|The reason for taking out the loan. If absent, the lending rate is applicable to all loan purposes.|
+|repaymentType|[Enum](#common-field-types)|optional|Options in place for repayments. If absent defaults to `PRINCIPAL_AND_INTEREST`.|
 |rateStartDate|[DateString](#common-field-types)|optional|Date this rate will begin to apply. If not specified, the rate is currently applicable to the account.|
 |rateEndDate|[DateString](#common-field-types)|optional|Date this rate will cease to apply. If not specified, the rate on the account is not scheduled to change or 'revert' to a different rate setting.|
-|revertProductId|string|optional|The `productId` of the product that this account will revert to at the specified `rateEndDate`|
-|repaymentUType|[Enum](#common-field-types)|mandatory|The type of structure to present account specific fields|
+|revertProductId|string|optional|The _productId_ of the product that this account will revert to at the specified _rateEndDate_.|
+|repaymentUType|[Enum](#common-field-types)|mandatory|The type of structure to present account specific fields.|
 |fixedRate|[BankingLendingRateFixed](#schemacdr-banking-apibankinglendingratefixed)|optional|none|
 |variableRate|[BankingLendingRateVariable](#schemacdr-banking-apibankinglendingratevariable)|optional|none|
 |feeAmount|[BankingLendingFee](#schemacdr-banking-apibankinglendingfee)|optional|none|
-|adjustments|[[BankingRateAdjustments](#schemacdr-banking-apibankingrateadjustments)]|optional|Adjustments applicable to the rate or fee|
+|adjustments|[[BankingRateAdjustments](#schemacdr-banking-apibankingrateadjustments)]|optional|Adjustments applicable to the rate or fee.|
 
 <h4 id="cdr-banking-api_bankinglendingratedetail_enumerated-values-main">Enumerated Values</h4>
 
@@ -6896,7 +7019,10 @@ This operation does not require authentication
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankinglendingratefixed">BankingLendingRateFixed</h3>
 <p id="tocSbankinglendingratefixed" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-banking-apibankinglendingratefixed"></a>
+<p>
+  <a id="cdr-banking-api_schema-base_bankinglendingratefixed"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apibankinglendingratefixed"></a>
+</p>
 
 ```json
 {
@@ -6918,16 +7044,16 @@ This operation does not require authentication
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|fixedPeriod|[ExternalRef](#common-field-types)|optional|The period of time for the fixed rate. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
-|referenceRate|[RateString](#common-field-types)|mandatory|Reference rate for this account type and terms|
-|effectiveRate|[RateString](#common-field-types)|mandatory|The current rate to calculate interest payable being applied to lending balances as it stands at the time of the API call|
-|calculationFrequency|[ExternalRef](#common-field-types)|optional|The period after which the rate is applied to the balance to calculate the amount due for the period. Calculation of the amount is often daily (as balances may change) but accumulated until the total amount is 'applied' to the account (see `applicationFrequency`). Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
-|applicationType|[Enum](#common-field-types)|optional|The type of approach used to apply the rate to the account. An `applicationFrequency` value is only expected when the approach is `PERIODIC`|
-|applicationFrequency|[ExternalRef](#common-field-types)|optional|The period after which the calculated amount(s) (see `calculationFrequency`) are 'applied' (i.e. debited or credited) to the account. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
-|interestPaymentDue|[Enum](#common-field-types)|optional|When loan payments are due to be paid within each period. The investment benefit of earlier payments affect the rate that can be offered|
-|repaymentFrequency|[ExternalRef](#common-field-types)|optional|The expected or required repayment frequency. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
-|additionalInfo|string|optional|Display text providing more information on the rate|
-|additionalInfoUri|[URIString](#common-field-types)|optional|Link to a web page with more information on this rate|
+|fixedPeriod|[ExternalRef](#common-field-types)|optional|The period of time for the fixed rate. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax).|
+|referenceRate|[RateString](#common-field-types)|mandatory|Reference rate for this account type and terms.|
+|effectiveRate|[RateString](#common-field-types)|mandatory|The current rate to calculate interest payable being applied to lending balances as it stands at the time of the API call.|
+|calculationFrequency|[ExternalRef](#common-field-types)|optional|The period after which the rate is applied to the balance to calculate the amount due for the period. Calculation of the amount is often daily (as balances may change) but accumulated until the total amount is 'applied' to the account (see _applicationFrequency_). Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax).|
+|applicationType|[Enum](#common-field-types)|optional|The type of approach used to apply the rate to the account. An _applicationFrequency_ value is only expected when the approach is `PERIODIC`.|
+|applicationFrequency|[ExternalRef](#common-field-types)|optional|The period after which the calculated amount(s) (see _calculationFrequency_) are 'applied' (i.e. debited or credited) to the account. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax).|
+|interestPaymentDue|[Enum](#common-field-types)|optional|When loan payments are due to be paid within each period. The investment benefit of earlier payments affect the rate that can be offered.|
+|repaymentFrequency|[ExternalRef](#common-field-types)|optional|The expected or required repayment frequency. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax).|
+|additionalInfo|string|optional|Display text providing more information on the rate.|
+|additionalInfoUri|[URIString](#common-field-types)|optional|Link to a web page with more information on this rate.|
 
 <h4 id="cdr-banking-api_bankinglendingratefixed_enumerated-values-main">Enumerated Values</h4>
 
@@ -6942,7 +7068,10 @@ This operation does not require authentication
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankinglendingratevariable">BankingLendingRateVariable</h3>
 <p id="tocSbankinglendingratevariable" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-banking-apibankinglendingratevariable"></a>
+<p>
+  <a id="cdr-banking-api_schema-base_bankinglendingratevariable"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apibankinglendingratevariable"></a>
+</p>
 
 ```json
 {
@@ -6965,17 +7094,17 @@ This operation does not require authentication
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|variableRateType|[Enum](#common-field-types)|mandatory|The type of variable rate|
-|referenceRate|[RateString](#common-field-types)|mandatory|Reference rate for this account type and terms|
-|effectiveRate|[RateString](#common-field-types)|mandatory|The current rate to calculate interest payable being applied to lending balances as it stands at the time of the API call|
-|calculationFrequency|[ExternalRef](#common-field-types)|optional|The period after which the rate is applied to the balance to calculate the amount due for the period. Calculation of the amount is often daily (as balances may change) but accumulated until the total amount is 'applied' to the account (see `applicationFrequency`). Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
-|applicationType|[Enum](#common-field-types)|optional|The type of approach used to apply the rate to the account. An `applicationFrequency` value is only expected when the approach is `PERIODIC`|
-|applicationFrequency|[ExternalRef](#common-field-types)|optional|The period after which the calculated amount(s) (see `calculationFrequency`) are 'applied' (i.e. debited or credited) to the account. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
-|interestPaymentDue|[Enum](#common-field-types)|optional|When loan payments are due to be paid within each period. The investment benefit of earlier payments affect the rate that can be offered|
-|repaymentFrequency|[ExternalRef](#common-field-types)|optional|The expected or required repayment frequency. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
-|additionalValue|string|conditional|Generic field containing additional information relevant to the [variableRateType](#tocSproductlendingratetypedoc) specified. Whether mandatory or not is dependent on the value of [variableRateType](#tocSproductlendingratetypedoc)|
-|additionalInfo|string|optional|Display text providing more information on the rate|
-|additionalInfoUri|[URIString](#common-field-types)|optional|Link to a web page with more information on this rate|
+|variableRateType|[Enum](#common-field-types)|mandatory|The type of variable rate.|
+|referenceRate|[RateString](#common-field-types)|mandatory|Reference rate for this account type and terms.|
+|effectiveRate|[RateString](#common-field-types)|mandatory|The current rate to calculate interest payable being applied to lending balances as it stands at the time of the API call.|
+|calculationFrequency|[ExternalRef](#common-field-types)|optional|The period after which the rate is applied to the balance to calculate the amount due for the period. Calculation of the amount is often daily (as balances may change) but accumulated until the total amount is 'applied' to the account (see _applicationFrequency_). Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax).|
+|applicationType|[Enum](#common-field-types)|optional|The type of approach used to apply the rate to the account. An _applicationFrequency_ value is only expected when the approach is `PERIODIC`.|
+|applicationFrequency|[ExternalRef](#common-field-types)|optional|The period after which the calculated amount(s) (see _calculationFrequency_) are 'applied' (i.e. debited or credited) to the account. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax).|
+|interestPaymentDue|[Enum](#common-field-types)|optional|When loan payments are due to be paid within each period. The investment benefit of earlier payments affect the rate that can be offered.|
+|repaymentFrequency|[ExternalRef](#common-field-types)|optional|The expected or required repayment frequency. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax).|
+|additionalValue|string|conditional|Generic field containing additional information relevant to the [_variableRateType_](#tocSproductlendingratetypedoc) specified. Whether mandatory or not is dependent on the value of [_variableRateType_](#tocSproductlendingratetypedoc).|
+|additionalInfo|string|optional|Display text providing more information on the rate.|
+|additionalInfoUri|[URIString](#common-field-types)|optional|Link to a web page with more information on this rate.|
 
 <h4 id="cdr-banking-api_bankinglendingratevariable_enumerated-values-main">Enumerated Values</h4>
 
@@ -6993,7 +7122,10 @@ This operation does not require authentication
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankinglendingfee">BankingLendingFee</h3>
 <p id="tocSbankinglendingfee" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-banking-apibankinglendingfee"></a>
+<p>
+  <a id="cdr-banking-api_schema-base_bankinglendingfee"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apibankinglendingfee"></a>
+</p>
 
 ```json
 {
@@ -7011,12 +7143,12 @@ This operation does not require authentication
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|amount|[AmountString](#common-field-types)|mandatory|Minimum payment due at specified `repaymentFrequency`|
-|currency|[CurrencyString](#common-field-types)|optional|Currency of the fee. `AUD` assumed if not present|
-|repaymentDue|[Enum](#common-field-types)|optional|When loan payments are due to be paid within each period|
-|repaymentFrequency|[ExternalRef](#common-field-types)|optional|The expected or required repayment frequency. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
-|additionalInfo|string|optional|Display text providing more information on the fee|
-|additionalInfoUri|[URIString](#common-field-types)|optional|Link to a web page with more information on this fee|
+|amount|[AmountString](#common-field-types)|mandatory|Minimum payment due at specified _repaymentFrequency_.|
+|currency|[CurrencyString](#common-field-types)|optional|Currency of the fee. `AUD` assumed if not present.|
+|repaymentDue|[Enum](#common-field-types)|optional|When loan payments are due to be paid within each period.|
+|repaymentFrequency|[ExternalRef](#common-field-types)|optional|The expected or required repayment frequency. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax).|
+|additionalInfo|string|optional|Display text providing more information on the fee.|
+|additionalInfoUri|[URIString](#common-field-types)|optional|Link to a web page with more information on this fee.|
 
 <h4 id="cdr-banking-api_bankinglendingfee_enumerated-values-main">Enumerated Values</h4>
 
@@ -7028,7 +7160,10 @@ This operation does not require authentication
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSresponsebankingtransactionlist">ResponseBankingTransactionList</h3>
 <p id="tocSresponsebankingtransactionlist" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-banking-apiresponsebankingtransactionlist"></a>
+<p>
+  <a id="cdr-banking-api_schema-base_responsebankingtransactionlist"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apiresponsebankingtransactionlist"></a>
+</p>
 
 ```json
 {
@@ -7084,7 +7219,10 @@ This operation does not require authentication
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingtransaction">BankingTransaction</h3>
 <p id="tocSbankingtransaction" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-banking-apibankingtransaction"></a>
+<p>
+  <a id="cdr-banking-api_schema-base_bankingtransaction"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apibankingtransaction"></a>
+</p>
 
 ```json
 {
@@ -7114,22 +7252,22 @@ This operation does not require authentication
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|accountId|[ASCIIString](#common-field-types)|mandatory|ID of the account for which transactions are provided|
-|transactionId|[ASCIIString](#common-field-types)|conditional|A unique ID of the transaction adhering to the standards for ID permanence.  This is mandatory (through hashing if necessary) unless there are specific and justifiable technical reasons why a transaction cannot be uniquely identified for a particular account type. It is mandatory if `isDetailAvailable` is set to true.|
-|isDetailAvailable|[Boolean](#common-field-types)|mandatory|`true` if extended information is available using the transaction detail endpoint. `false` if extended data is not available|
-|type|[Enum](#common-field-types)|mandatory|The type of the transaction|
-|status|[Enum](#common-field-types)|mandatory|Status of the transaction whether pending or posted. Note that there is currently no provision in the standards to guarantee the ability to correlate a pending transaction with an associated posted transaction|
-|description|string|mandatory|The transaction description as applied by the financial institution|
-|postingDateTime|[DateTimeString](#common-field-types)|conditional|The time the transaction was posted. This field is Mandatory if the transaction has status `POSTED`.  This is the time that appears on a standard statement|
-|valueDateTime|[DateTimeString](#common-field-types)|optional|Date and time at which assets become available to the account owner in case of a credit entry, or cease to be available to the account owner in case of a debit transaction entry|
-|executionDateTime|[DateTimeString](#common-field-types)|optional|The time the transaction was executed by the originating customer, if available|
-|amount|[AmountString](#common-field-types)|mandatory|The value of the transaction. Negative values mean money was outgoing from the account|
-|currency|[CurrencyString](#common-field-types)|optional|The currency for the transaction amount. `AUD` assumed if not present|
-|reference|string|mandatory|The reference for the transaction provided by the originating institution. Empty string if no data provided|
-|merchantName|string|optional|Name of the merchant for an outgoing payment to a merchant|
-|merchantCategoryCode|string|optional|The merchant category code (or MCC) for an outgoing payment to a merchant|
-|billerCode|string|optional|BPAY Biller Code for the transaction (if available)|
-|billerName|string|optional|Name of the BPAY biller for the transaction (if available)|
+|accountId|[ASCIIString](#common-field-types)|mandatory|ID of the account for which transactions are provided.|
+|transactionId|[ASCIIString](#common-field-types)|conditional|A unique ID of the transaction adhering to the standards for ID permanence. This is mandatory (through hashing if necessary) unless there are specific and justifiable technical reasons why a transaction cannot be uniquely identified for a particular account type. It is mandatory if _isDetailAvailable_ is set to `true`.|
+|isDetailAvailable|[Boolean](#common-field-types)|mandatory|`true` if extended information is available using the transaction detail endpoint. `false` if extended data is not available.|
+|type|[Enum](#common-field-types)|mandatory|The type of the transaction.|
+|status|[Enum](#common-field-types)|mandatory|Status of the transaction whether pending or posted. Note that there is currently no provision in the standards to guarantee the ability to correlate a pending transaction with an associated posted transaction.|
+|description|string|mandatory|The transaction description as applied by the financial institution.|
+|postingDateTime|[DateTimeString](#common-field-types)|conditional|The time the transaction was posted. This field is Mandatory if the transaction has status `POSTED`. This is the time that appears on a standard statement.|
+|valueDateTime|[DateTimeString](#common-field-types)|optional|Date and time at which assets become available to the account owner in case of a credit entry, or cease to be available to the account owner in case of a debit transaction entry.|
+|executionDateTime|[DateTimeString](#common-field-types)|optional|The time the transaction was executed by the originating customer, if available.|
+|amount|[AmountString](#common-field-types)|mandatory|The value of the transaction. Negative values mean money was outgoing from the account.|
+|currency|[CurrencyString](#common-field-types)|optional|The currency for the transaction amount. `AUD` assumed if not present.|
+|reference|string|mandatory|The reference for the transaction provided by the originating institution. Empty string if no data provided.|
+|merchantName|string|optional|Name of the merchant for an outgoing payment to a merchant.|
+|merchantCategoryCode|string|optional|The merchant category code (or MCC) for an outgoing payment to a merchant.|
+|billerCode|string|optional|BPAY Biller Code for the transaction (if available).|
+|billerName|string|optional|Name of the BPAY biller for the transaction (if available).|
 |crn|string|conditional|BPAY CRN for the transaction (if available).<br/>Where the CRN contains sensitive information, it should be masked in line with how the Data Holder currently displays account identifiers in their existing online banking channels. If the contents of the CRN match the format of a Credit Card PAN they should be masked according to the rules applicable for [MaskedPANString](#common-field-types). If the contents are otherwise sensitive, then it should be masked using the rules applicable for the [MaskedAccountString](#common-field-types) common type.|
 |apcaNumber|string|optional|6 Digit APCA number for the initiating institution. The field is fixed-width and padded with leading zeros if applicable.|
 
@@ -7151,7 +7289,10 @@ This operation does not require authentication
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSresponsebankingtransactionbyid">ResponseBankingTransactionById</h3>
 <p id="tocSresponsebankingtransactionbyid" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-banking-apiresponsebankingtransactionbyid"></a>
+<p>
+  <a id="cdr-banking-api_schema-base_responsebankingtransactionbyid"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apiresponsebankingtransactionbyid"></a>
+</p>
 
 ```json
 {
@@ -7205,7 +7346,10 @@ This operation does not require authentication
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingtransactiondetail">BankingTransactionDetail</h3>
 <p id="tocSbankingtransactiondetail" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-banking-apibankingtransactiondetail"></a>
+<p>
+  <a id="cdr-banking-api_schema-base_bankingtransactiondetail"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apibankingtransactiondetail"></a>
+</p>
 
 ```json
 {
@@ -7256,14 +7400,14 @@ This operation does not require authentication
 |---|---|---|---|
 |*anonymous*|object|mandatory|none|
 |» extendedData|object|mandatory|none|
-|»» payer|string|conditional|Label of the originating payer. Mandatory for inbound payment|
-|»» payee|string|conditional|Label of the target PayID.  Mandatory for an outbound payment. The name assigned to the BSB/Account Number or PayID (by the owner of the PayID)|
-|»» extensionUType|[Enum](#common-field-types)|optional|Optional extended data specific to transactions originated via NPP|
+|»» payer|string|conditional|Label of the originating payer. Mandatory for inbound payment.|
+|»» payee|string|conditional|Label of the target PayID. Mandatory for an outbound payment. The name assigned to the BSB/Account Number or PayID (by the owner of the PayID).|
+|»» extensionUType|[Enum](#common-field-types)|optional|Optional extended data specific to transactions originated via NPP.|
 |»» x2p101Payload|object|conditional|none|
-|»»» extendedDescription|string|conditional|An extended string description. Required if the extensionUType field is `x2p101Payload`|
-|»»» endToEndId|string|optional|An end to end ID for the payment created at initiation|
-|»»» purposeCode|string|optional|Purpose of the payment.  Format is defined by NPP standards for the x2p1.01 overlay service|
-|»» service|[Enum](#common-field-types)|mandatory|Identifier of the applicable overlay service. Valid values are: `X2P1.01`|
+|»»» extendedDescription|string|conditional|An extended string description. Required if the _extensionUType_ field is `x2p101Payload`.|
+|»»» endToEndId|string|optional|An end to end ID for the payment created at initiation.|
+|»»» purposeCode|string|optional|Purpose of the payment. Format is defined by NPP standards for the x2p1.01 overlay service.|
+|»» service|[Enum](#common-field-types)|mandatory|Identifier of the applicable overlay service. Valid values are: `X2P1.01`.|
 
 <h4 id="cdr-banking-api_bankingtransactiondetail_enumerated-values-main">Enumerated Values</h4>
 
@@ -7275,7 +7419,10 @@ This operation does not require authentication
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSresponsebankingaccountsbalancelist">ResponseBankingAccountsBalanceList</h3>
 <p id="tocSresponsebankingaccountsbalancelist" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-banking-apiresponsebankingaccountsbalancelist"></a>
+<p>
+  <a id="cdr-banking-api_schema-base_responsebankingaccountsbalancelist"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apiresponsebankingaccountsbalancelist"></a>
+</p>
 
 ```json
 {
@@ -7317,14 +7464,17 @@ This operation does not require authentication
 |Name|Type|Required|Description|
 |---|---|---|---|
 |data|object|mandatory|none|
-|» balances|[[BankingBalance](#schemacdr-banking-apibankingbalance)]|mandatory|The list of balances returned|
+|» balances|[[BankingBalance](#schemacdr-banking-apibankingbalance)]|mandatory|The list of balances returned.|
 |links|[LinksPaginated](#schemacdr-banking-apilinkspaginated)|mandatory|none|
 |meta|[MetaPaginated](#schemacdr-banking-apimetapaginated)|mandatory|none|
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSresponsebankingaccountsbalancebyid">ResponseBankingAccountsBalanceById</h3>
 <p id="tocSresponsebankingaccountsbalancebyid" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-banking-apiresponsebankingaccountsbalancebyid"></a>
+<p>
+  <a id="cdr-banking-api_schema-base_responsebankingaccountsbalancebyid"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apiresponsebankingaccountsbalancebyid"></a>
+</p>
 
 ```json
 {
@@ -7361,7 +7511,10 @@ This operation does not require authentication
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingbalance">BankingBalance</h3>
 <p id="tocSbankingbalance" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-banking-apibankingbalance"></a>
+<p>
+  <a id="cdr-banking-api_schema-base_bankingbalance"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apibankingbalance"></a>
+</p>
 
 ```json
 {
@@ -7385,18 +7538,21 @@ This operation does not require authentication
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|accountId|[ASCIIString](#common-field-types)|mandatory|A unique ID of the account adhering to the standards for ID permanence|
-|currentBalance|[AmountString](#common-field-types)|mandatory|The balance of the account at this time. Should align to the balance available via other channels such as Internet Banking. Assumed to be negative if the customer has money owing|
-|availableBalance|[AmountString](#common-field-types)|mandatory|Balance representing the amount of funds available for transfer. Assumed to be zero or positive|
-|creditLimit|[AmountString](#common-field-types)|optional|Object representing the maximum amount of credit that is available for this account. Assumed to be zero if absent|
-|amortisedLimit|[AmountString](#common-field-types)|optional|Object representing the available limit amortised according to payment schedule. Assumed to be zero if absent|
-|currency|[CurrencyString](#common-field-types)|optional|The currency for the balance amounts. If absent assumed to be `AUD`|
-|purses|[[BankingBalancePurse](#schemacdr-banking-apibankingbalancepurse)]|optional|Optional array of balances for the account in other currencies. Included to support accounts that support multi-currency purses such as Travel Cards|
+|accountId|[ASCIIString](#common-field-types)|mandatory|A unique ID of the account adhering to the standards for ID permanence.|
+|currentBalance|[AmountString](#common-field-types)|mandatory|The balance of the account at this time. Should align to the balance available via other channels such as Internet Banking. Assumed to be negative if the customer has money owing.|
+|availableBalance|[AmountString](#common-field-types)|mandatory|Balance representing the amount of funds available for transfer. Assumed to be zero or positive.|
+|creditLimit|[AmountString](#common-field-types)|optional|Object representing the maximum amount of credit that is available for this account. Assumed to be zero if absent.|
+|amortisedLimit|[AmountString](#common-field-types)|optional|Object representing the available limit amortised according to payment schedule. Assumed to be zero if absent.|
+|currency|[CurrencyString](#common-field-types)|optional|The currency for the balance amounts. If absent assumed to be `AUD`.|
+|purses|[[BankingBalancePurse](#schemacdr-banking-apibankingbalancepurse)]|optional|Optional array of balances for the account in other currencies. Included to support accounts that support multi-currency purses such as Travel Cards.|
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingbalancepurse">BankingBalancePurse</h3>
 <p id="tocSbankingbalancepurse" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-banking-apibankingbalancepurse"></a>
+<p>
+  <a id="cdr-banking-api_schema-base_bankingbalancepurse"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apibankingbalancepurse"></a>
+</p>
 
 ```json
 {
@@ -7410,13 +7566,16 @@ This operation does not require authentication
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|amount|[AmountString](#common-field-types)|mandatory|The balance available for this additional currency purse|
-|currency|[CurrencyString](#common-field-types)|optional|The currency for the purse|
+|amount|[AmountString](#common-field-types)|mandatory|The balance available for this additional currency purse.|
+|currency|[CurrencyString](#common-field-types)|optional|The currency for the purse.|
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSresponsebankingpayeelistv2">ResponseBankingPayeeListV2</h3>
 <p id="tocSresponsebankingpayeelistv2" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-banking-apiresponsebankingpayeelistv2"></a>
+<p>
+  <a id="cdr-banking-api_schema-base_responsebankingpayeelist"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apiresponsebankingpayeelistv2"></a>
+</p>
 
 ```json
 {
@@ -7451,14 +7610,17 @@ This operation does not require authentication
 |Name|Type|Required|Description|
 |---|---|---|---|
 |data|object|mandatory|none|
-|» payees|[[BankingPayeeV2](#schemacdr-banking-apibankingpayeev2)]|mandatory|The list of payees returned|
+|» payees|[[BankingPayeeV2](#schemacdr-banking-apibankingpayeev2)]|mandatory|The list of payees returned.|
 |links|[LinksPaginated](#schemacdr-banking-apilinkspaginated)|mandatory|none|
 |meta|[MetaPaginated](#schemacdr-banking-apimetapaginated)|mandatory|none|
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSresponsebankingpayeebyidv2">ResponseBankingPayeeByIdV2</h3>
 <p id="tocSresponsebankingpayeebyidv2" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-banking-apiresponsebankingpayeebyidv2"></a>
+<p>
+  <a id="cdr-banking-api_schema-base_responsebankingpayeebyid"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apiresponsebankingpayeebyidv2"></a>
+</p>
 
 ```json
 {
@@ -7537,7 +7699,10 @@ This operation does not require authentication
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingpayeev2">BankingPayeeV2</h3>
 <p id="tocSbankingpayeev2" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-banking-apibankingpayeev2"></a>
+<p>
+  <a id="cdr-banking-api_schema-base_bankingpayee"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apibankingpayeev2"></a>
+</p>
 
 ```json
 {
@@ -7554,11 +7719,11 @@ This operation does not require authentication
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|payeeId|[ASCIIString](#common-field-types)|mandatory|ID of the payee adhering to the rules of ID permanence|
-|nickname|string|mandatory|The short display name of the payee as provided by the customer. Where a customer has not provided a nickname, a display name derived by the bank for the payee consistent with existing digital banking channels|
-|description|string|optional|A description of the payee provided by the customer|
-|type|[Enum](#common-field-types)|mandatory|The type of payee.<ul><li>`DOMESTIC` means a registered payee for domestic payments including NPP.<li>`INTERNATIONAL` means a registered payee for international payments.<li>`BILLER` means a registered payee for BPAY.<li>`DIGITAL_WALLET` means a registered payee for a bank's digital wallet</ul>|
-|creationDate|[DateString](#common-field-types)|optional|The date the payee was created by the customer|
+|payeeId|[ASCIIString](#common-field-types)|mandatory|ID of the payee adhering to the rules of ID permanence.|
+|nickname|string|mandatory|The short display name of the payee as provided by the customer. Where a customer has not provided a nickname, a display name derived by the bank for the payee consistent with existing digital banking channels.|
+|description|string|optional|A description of the payee provided by the customer.|
+|type|[Enum](#common-field-types)|mandatory|The type of payee.<ul><li>`DOMESTIC` means a registered payee for domestic payments including NPP.<li>`INTERNATIONAL` means a registered payee for international payments.<li>`BILLER` means a registered payee for BPAY.<li>`DIGITAL_WALLET` means a registered payee for a bank's digital wallet.</ul>|
+|creationDate|[DateString](#common-field-types)|optional|The date the payee was created by the customer.|
 
 <h4 id="cdr-banking-api_bankingpayeev2_enumerated-values-main">Enumerated Values</h4>
 
@@ -7572,7 +7737,10 @@ This operation does not require authentication
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingpayeedetailv2">BankingPayeeDetailV2</h3>
 <p id="tocSbankingpayeedetailv2" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-banking-apibankingpayeedetailv2"></a>
+<p>
+  <a id="cdr-banking-api_schema-base_bankingpayeedetail"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apibankingpayeedetailv2"></a>
+</p>
 
 ```json
 {
@@ -7647,7 +7815,7 @@ This operation does not require authentication
 |Name|Type|Required|Description|
 |---|---|---|---|
 |*anonymous*|object|mandatory|none|
-|» payeeUType|[Enum](#common-field-types)|mandatory|Type of object included that describes the payee in detail|
+|» payeeUType|[Enum](#common-field-types)|mandatory|Type of object included that describes the payee in detail.|
 |» biller|[BankingBillerPayee](#schemacdr-banking-apibankingbillerpayee)|conditional|none|
 |» domestic|[BankingDomesticPayee](#schemacdr-banking-apibankingdomesticpayee)|conditional|none|
 |» digitalWallet|[BankingDigitalWalletPayee](#schemacdr-banking-apibankingdigitalwalletpayee)|conditional|none|
@@ -7665,7 +7833,10 @@ This operation does not require authentication
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingdomesticpayee">BankingDomesticPayee</h3>
 <p id="tocSbankingdomesticpayee" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-banking-apibankingdomesticpayee"></a>
+<p>
+  <a id="cdr-banking-api_schema-base_bankingdomesticpayee"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apibankingdomesticpayee"></a>
+</p>
 
 ```json
 {
@@ -7691,7 +7862,7 @@ This operation does not require authentication
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|payeeAccountUType|[Enum](#common-field-types)|mandatory|Type of account object included. Valid values are: <ul><li>`account` A standard Australian account defined by BSB/Account Number.<li>`card` A credit or charge card to pay to (note that PANs are masked).<li>`payId` A PayID recognised by NPP</ul>|
+|payeeAccountUType|[Enum](#common-field-types)|mandatory|Type of account object included. Valid values are: <ul><li>`account` A standard Australian account defined by BSB/Account Number.<li>`card` A credit or charge card to pay to (note that PANs are masked).<li>`payId` A PayID recognised by NPP.</ul>|
 |account|[BankingDomesticPayeeAccount](#schemacdr-banking-apibankingdomesticpayeeaccount)|conditional|none|
 |card|[BankingDomesticPayeeCard](#schemacdr-banking-apibankingdomesticpayeecard)|conditional|none|
 |payId|[BankingDomesticPayeePayId](#schemacdr-banking-apibankingdomesticpayeepayid)|conditional|none|
@@ -7707,7 +7878,10 @@ This operation does not require authentication
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingdomesticpayeeaccount">BankingDomesticPayeeAccount</h3>
 <p id="tocSbankingdomesticpayeeaccount" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-banking-apibankingdomesticpayeeaccount"></a>
+<p>
+  <a id="cdr-banking-api_schema-base_bankingdomesticpayeeaccount"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apibankingdomesticpayeeaccount"></a>
+</p>
 
 ```json
 {
@@ -7722,14 +7896,17 @@ This operation does not require authentication
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|accountName|string|optional|Name of the account to pay to|
-|bsb|string|mandatory|BSB of the account to pay to|
-|accountNumber|string|mandatory|Number of the account to pay to|
+|accountName|string|optional|Name of the account to pay to.|
+|bsb|string|mandatory|BSB of the account to pay to.|
+|accountNumber|string|mandatory|Number of the account to pay to.|
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingdomesticpayeecard">BankingDomesticPayeeCard</h3>
 <p id="tocSbankingdomesticpayeecard" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-banking-apibankingdomesticpayeecard"></a>
+<p>
+  <a id="cdr-banking-api_schema-base_bankingdomesticpayeecard"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apibankingdomesticpayeecard"></a>
+</p>
 
 ```json
 {
@@ -7742,12 +7919,15 @@ This operation does not require authentication
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|cardNumber|[MaskedPANString](#common-field-types)|mandatory|Name of the account to pay to|
+|cardNumber|[MaskedPANString](#common-field-types)|mandatory|Name of the account to pay to.|
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingdomesticpayeepayid">BankingDomesticPayeePayId</h3>
 <p id="tocSbankingdomesticpayeepayid" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-banking-apibankingdomesticpayeepayid"></a>
+<p>
+  <a id="cdr-banking-api_schema-base_bankingdomesticpayeepayid"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apibankingdomesticpayeepayid"></a>
+</p>
 
 ```json
 {
@@ -7762,9 +7942,9 @@ This operation does not require authentication
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|name|string|optional|The name assigned to the PayID by the owner of the PayID|
-|identifier|string|mandatory|The identifier of the PayID (dependent on type)|
-|type|[Enum](#common-field-types)|mandatory|The type of the PayID|
+|name|string|optional|The name assigned to the PayID by the owner of the PayID.|
+|identifier|string|mandatory|The identifier of the PayID (dependent on type).|
+|type|[Enum](#common-field-types)|mandatory|The type of the PayID.|
 
 <h4 id="cdr-banking-api_bankingdomesticpayeepayid_enumerated-values-main">Enumerated Values</h4>
 
@@ -7778,7 +7958,10 @@ This operation does not require authentication
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingbillerpayee">BankingBillerPayee</h3>
 <p id="tocSbankingbillerpayee" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-banking-apibankingbillerpayee"></a>
+<p>
+  <a id="cdr-banking-api_schema-base_bankingbillerpayee"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apibankingbillerpayee"></a>
+</p>
 
 ```json
 {
@@ -7793,14 +7976,17 @@ This operation does not require authentication
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|billerCode|string|mandatory|BPAY Biller Code of the Biller|
+|billerCode|string|mandatory|BPAY Biller Code of the Biller.|
 |crn|string|conditional|BPAY CRN of the Biller (if available).<br/>Where the CRN contains sensitive information, it should be masked in line with how the Data Holder currently displays account identifiers in their existing online banking channels. If the contents of the CRN match the format of a Credit Card PAN they should be masked according to the rules applicable for [MaskedPANString](#common-field-types). If the contents are otherwise sensitive, then it should be masked using the rules applicable for the [MaskedAccountString](#common-field-types) common type.|
-|billerName|string|mandatory|Name of the Biller|
+|billerName|string|mandatory|Name of the Biller.|
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankinginternationalpayee">BankingInternationalPayee</h3>
 <p id="tocSbankinginternationalpayee" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-banking-apibankinginternationalpayee"></a>
+<p>
+  <a id="cdr-banking-api_schema-base_bankinginternationalpayee"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apibankinginternationalpayee"></a>
+</p>
 
 ```json
 {
@@ -7832,26 +8018,29 @@ This operation does not require authentication
 |Name|Type|Required|Description|
 |---|---|---|---|
 |beneficiaryDetails|object|mandatory|none|
-|» name|string|optional|Name of the beneficiary|
-|» country|[ExternalRef](#common-field-types)|mandatory|Country where the beneficiary resides. A valid [ISO 3166 Alpha-3](https://www.iso.org/iso-3166-country-codes.html) country code|
-|» message|string|optional|Response message for the payment|
+|» name|string|optional|Name of the beneficiary.|
+|» country|[ExternalRef](#common-field-types)|mandatory|Country where the beneficiary resides. A valid [ISO 3166 Alpha-3](https://www.iso.org/iso-3166-country-codes.html) country code.|
+|» message|string|optional|Response message for the payment.|
 |bankDetails|object|mandatory|none|
-|» country|[ExternalRef](#common-field-types)|mandatory|Country of the recipient institution. A valid [ISO 3166 Alpha-3](https://www.iso.org/iso-3166-country-codes.html) country code|
-|» accountNumber|string|mandatory|Account Targeted for payment|
+|» country|[ExternalRef](#common-field-types)|mandatory|Country of the recipient institution. A valid [ISO 3166 Alpha-3](https://www.iso.org/iso-3166-country-codes.html) country code.|
+|» accountNumber|string|mandatory|Account Targeted for payment.|
 |» bankAddress|object|optional|none|
-|»» name|string|mandatory|Name of the recipient Bank|
-|»» address|string|mandatory|Address of the recipient Bank|
-|» beneficiaryBankBIC|[ExternalRef](#common-field-types)|optional|Swift bank code.  Aligns with standard [ISO 9362](https://www.iso.org/standard/60390.html)|
-|» fedWireNumber|string|optional|Number for Fedwire payment (Federal Reserve Wire Network)|
-|» sortCode|string|optional|Sort code used for account identification in some jurisdictions|
-|» chipNumber|string|optional|Number for the Clearing House Interbank Payments System|
-|» routingNumber|string|optional|International bank routing number|
-|» legalEntityIdentifier|[ExternalRef](#common-field-types)|optional|The legal entity identifier (LEI) for the beneficiary.  Aligns with [ISO 17442](https://www.iso.org/standard/59771.html)|
+|»» name|string|mandatory|Name of the recipient Bank.|
+|»» address|string|mandatory|Address of the recipient Bank.|
+|» beneficiaryBankBIC|[ExternalRef](#common-field-types)|optional|Swift bank code. Aligns with standard [ISO 9362](https://www.iso.org/standard/60390.html).|
+|» fedWireNumber|string|optional|Number for Fedwire payment (Federal Reserve Wire Network).|
+|» sortCode|string|optional|Sort code used for account identification in some jurisdictions.|
+|» chipNumber|string|optional|Number for the Clearing House Interbank Payments System.|
+|» routingNumber|string|optional|International bank routing number.|
+|» legalEntityIdentifier|[ExternalRef](#common-field-types)|optional|The legal entity identifier (LEI) for the beneficiary. Aligns with [ISO 17442](https://www.iso.org/standard/59771.html).|
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingdigitalwalletpayee">BankingDigitalWalletPayee</h3>
 <p id="tocSbankingdigitalwalletpayee" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-banking-apibankingdigitalwalletpayee"></a>
+<p>
+  <a id="cdr-banking-api_schema-base_bankingdigitalwalletpayee"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apibankingdigitalwalletpayee"></a>
+</p>
 
 ```json
 {
@@ -7867,10 +8056,10 @@ This operation does not require authentication
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|name|string|mandatory|The display name of the wallet as given by the customer, else a default value defined by the data holder|
-|identifier|string|mandatory|The identifier of the digital wallet (dependent on type)|
-|type|[Enum](#common-field-types)|mandatory|The type of the digital wallet identifier|
-|provider|[Enum](#common-field-types)|mandatory|The provider of the digital wallet|
+|name|string|mandatory|The display name of the wallet as given by the customer, else a default value defined by the data holder.|
+|identifier|string|mandatory|The identifier of the digital wallet (dependent on type).|
+|type|[Enum](#common-field-types)|mandatory|The type of the digital wallet identifier.|
+|provider|[Enum](#common-field-types)|mandatory|The provider of the digital wallet.|
 
 <h4 id="cdr-banking-api_bankingdigitalwalletpayee_enumerated-values-main">Enumerated Values</h4>
 
@@ -7885,7 +8074,10 @@ This operation does not require authentication
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSresponsebankingdirectdebitauthorisationlist">ResponseBankingDirectDebitAuthorisationList</h3>
 <p id="tocSresponsebankingdirectdebitauthorisationlist" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-banking-apiresponsebankingdirectdebitauthorisationlist"></a>
+<p>
+  <a id="cdr-banking-api_schema-base_responsebankingdirectdebitauthorisationlist"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apiresponsebankingdirectdebitauthorisationlist"></a>
+</p>
 
 ```json
 {
@@ -7925,14 +8117,17 @@ This operation does not require authentication
 |Name|Type|Required|Description|
 |---|---|---|---|
 |data|object|mandatory|none|
-|» directDebitAuthorisations|[[BankingDirectDebit](#schemacdr-banking-apibankingdirectdebit)]|mandatory|The list of authorisations returned|
+|» directDebitAuthorisations|[[BankingDirectDebit](#schemacdr-banking-apibankingdirectdebit)]|mandatory|The list of authorisations returned.|
 |links|[LinksPaginated](#schemacdr-banking-apilinkspaginated)|mandatory|none|
 |meta|[MetaPaginated](#schemacdr-banking-apimetapaginated)|mandatory|none|
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingdirectdebit">BankingDirectDebit</h3>
 <p id="tocSbankingdirectdebit" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-banking-apibankingdirectdebit"></a>
+<p>
+  <a id="cdr-banking-api_schema-base_bankingdirectdebit"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apibankingdirectdebit"></a>
+</p>
 
 ```json
 {
@@ -7956,13 +8151,16 @@ This operation does not require authentication
 |---|---|---|---|
 |accountId|[ASCIIString](#common-field-types)|mandatory|A unique ID of the account adhering to the standards for ID permanence.|
 |authorisedEntity|[BankingAuthorisedEntity](#schemacdr-banking-apibankingauthorisedentity)|mandatory|none|
-|lastDebitDateTime|[DateTimeString](#common-field-types)|optional|The date and time of the last debit executed under this authorisation|
-|lastDebitAmount|[AmountString](#common-field-types)|optional|The amount of the last debit executed under this authorisation|
+|lastDebitDateTime|[DateTimeString](#common-field-types)|optional|The date and time of the last debit executed under this authorisation.|
+|lastDebitAmount|[AmountString](#common-field-types)|optional|The amount of the last debit executed under this authorisation.|
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingauthorisedentity">BankingAuthorisedEntity</h3>
 <p id="tocSbankingauthorisedentity" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-banking-apibankingauthorisedentity"></a>
+<p>
+  <a id="cdr-banking-api_schema-base_bankingauthorisedentity"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apibankingauthorisedentity"></a>
+</p>
 
 ```json
 {
@@ -7979,16 +8177,19 @@ This operation does not require authentication
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|description|string|optional|Description of the authorised entity derived from previously executed direct debits|
-|financialInstitution|string|conditional|Name of the financial institution through which the direct debit will be executed. Is required unless the payment is made via a credit card scheme|
-|abn|string|optional|Australian Business Number for the authorised entity|
-|acn|string|optional|Australian Company Number for the authorised entity|
-|arbn|string|optional|Australian Registered Body Number for the authorised entity|
+|description|string|optional|Description of the authorised entity derived from previously executed direct debits.|
+|financialInstitution|string|conditional|Name of the financial institution through which the direct debit will be executed. Is required unless the payment is made via a credit card scheme.|
+|abn|string|optional|Australian Business Number for the authorised entity.|
+|acn|string|optional|Australian Company Number for the authorised entity.|
+|arbn|string|optional|Australian Registered Body Number for the authorised entity.|
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSresponsebankingscheduledpaymentslistv2">ResponseBankingScheduledPaymentsListV2</h3>
 <p id="tocSresponsebankingscheduledpaymentslistv2" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-banking-apiresponsebankingscheduledpaymentslistv2"></a>
+<p>
+  <a id="cdr-banking-api_schema-base_responsebankingscheduledpaymentslist"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apiresponsebankingscheduledpaymentslistv2"></a>
+</p>
 
 ```json
 {
@@ -8116,14 +8317,17 @@ This operation does not require authentication
 |Name|Type|Required|Description|
 |---|---|---|---|
 |data|object|mandatory|none|
-|» scheduledPayments|[[BankingScheduledPaymentV2](#schemacdr-banking-apibankingscheduledpaymentv2)]|mandatory|The list of scheduled payments to return|
+|» scheduledPayments|[[BankingScheduledPaymentV2](#schemacdr-banking-apibankingscheduledpaymentv2)]|mandatory|The list of scheduled payments to return.|
 |links|[LinksPaginated](#schemacdr-banking-apilinkspaginated)|mandatory|none|
 |meta|[MetaPaginated](#schemacdr-banking-apimetapaginated)|mandatory|none|
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingscheduledpaymentv2">BankingScheduledPaymentV2</h3>
 <p id="tocSbankingscheduledpaymentv2" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-banking-apibankingscheduledpaymentv2"></a>
+<p>
+  <a id="cdr-banking-api_schema-base_bankingscheduledpayment"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apibankingscheduledpaymentv2"></a>
+</p>
 
 ```json
 {
@@ -8233,14 +8437,14 @@ This operation does not require authentication
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|scheduledPaymentId|[ASCIIString](#common-field-types)|mandatory|A unique ID of the scheduled payment adhering to the standards for ID permanence|
-|nickname|string|optional|The short display name of the scheduled payment as provided by the customer if provided. Where a customer has not provided a nickname, a display name derived by the bank for the scheduled payment should be provided that is consistent with existing digital banking channels|
-|payerReference|string|mandatory|The reference for the transaction that will be used by the originating institution for the purposes of constructing a statement narrative on the payer’s account. Empty string if no data provided|
-|payeeReference|string|conditional|The reference for the transaction, if applicable, that will be provided by the originating institution for all payments in the payment set. Empty string if no data provided|
+|scheduledPaymentId|[ASCIIString](#common-field-types)|mandatory|A unique ID of the scheduled payment adhering to the standards for ID permanence.|
+|nickname|string|optional|The short display name of the scheduled payment as provided by the customer if provided. Where a customer has not provided a nickname, a display name derived by the bank for the scheduled payment should be provided that is consistent with existing digital banking channels.|
+|payerReference|string|mandatory|The reference for the transaction that will be used by the originating institution for the purposes of constructing a statement narrative on the payer’s account. Empty string if no data provided.|
+|payeeReference|string|conditional|The reference for the transaction, if applicable, that will be provided by the originating institution for all payments in the payment set. Empty string if no data provided.|
 |status|[Enum](#common-field-types)|mandatory|Indicates whether the schedule is currently active. The value `SKIP` is equivalent to `ACTIVE` except that the customer has requested the next normal occurrence to be skipped.|
-|from|[BankingScheduledPaymentFrom](#schemacdr-banking-apibankingscheduledpaymentfrom)|mandatory|Object containing details of the source of the payment. Currently only specifies an account ID but provided as an object to facilitate future extensibility and consistency with the to object|
-|paymentSet|[[BankingScheduledPaymentSetV2](#schemacdr-banking-apibankingscheduledpaymentsetv2)]|mandatory|[The set of payment amounts and destination accounts for this payment accommodating multi-part payments. A single entry indicates a simple payment with one destination account. Must have at least one entry]|
-|recurrence|[BankingScheduledPaymentRecurrence](#schemacdr-banking-apibankingscheduledpaymentrecurrence)|mandatory|Object containing the detail of the schedule for the payment|
+|from|[BankingScheduledPaymentFrom](#schemacdr-banking-apibankingscheduledpaymentfrom)|mandatory|Object containing details of the source of the payment. Currently only specifies an account ID but provided as an object to facilitate future extensibility and consistency with the _to_ object.|
+|paymentSet|[[BankingScheduledPaymentSetV2](#schemacdr-banking-apibankingscheduledpaymentsetv2)]|mandatory|[The set of payment amounts and destination accounts for this payment accommodating multi-part payments. A single entry indicates a simple payment with one destination account. Must have at least one entry.]|
+|recurrence|[BankingScheduledPaymentRecurrence](#schemacdr-banking-apibankingscheduledpaymentrecurrence)|mandatory|Object containing the detail of the schedule for the payment.|
 
 <h4 id="cdr-banking-api_bankingscheduledpaymentv2_enumerated-values-main">Enumerated Values</h4>
 
@@ -8253,7 +8457,10 @@ This operation does not require authentication
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingscheduledpaymentsetv2">BankingScheduledPaymentSetV2</h3>
 <p id="tocSbankingscheduledpaymentsetv2" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-banking-apibankingscheduledpaymentsetv2"></a>
+<p>
+  <a id="cdr-banking-api_schema-base_bankingscheduledpaymentset"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apibankingscheduledpaymentsetv2"></a>
+</p>
 
 ```json
 {
@@ -8319,21 +8526,24 @@ This operation does not require authentication
 
 ```
 
-*The set of payment amounts and destination accounts for this payment accommodating multi-part payments. A single entry indicates a simple payment with one destination account. Must have at least one entry*
+*The set of payment amounts and destination accounts for this payment accommodating multi-part payments. A single entry indicates a simple payment with one destination account. Must have at least one entry.*
 
 <h3 id="cdr-banking-api_bankingscheduledpaymentsetv2_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|to|[BankingScheduledPaymentToV2](#schemacdr-banking-apibankingscheduledpaymenttov2)|mandatory|Object containing details of the destination of the payment. Used to specify a variety of payment destination types|
-|isAmountCalculated|[Boolean](#common-field-types)|optional|Flag indicating whether the amount of the payment is calculated based on the context of the event. For instance a payment to reduce the balance of a credit card to zero. If absent then false is assumed|
-|amount|[AmountString](#common-field-types)|conditional|The amount of the next payment if known. Mandatory unless the isAmountCalculated field is set to true. Must be zero or positive if present|
-|currency|[CurrencyString](#common-field-types)|optional|The currency for the payment. `AUD` assumed if not present|
+|to|[BankingScheduledPaymentToV2](#schemacdr-banking-apibankingscheduledpaymenttov2)|mandatory|Object containing details of the destination of the payment. Used to specify a variety of payment destination types.|
+|isAmountCalculated|[Boolean](#common-field-types)|optional|Flag indicating whether the amount of the payment is calculated based on the context of the event. For instance a payment to reduce the balance of a credit card to zero. If absent then `false` is assumed.|
+|amount|[AmountString](#common-field-types)|conditional|The amount of the next payment if known. Mandatory unless the _isAmountCalculated_ field is set to `true`. Must be zero or positive if present.|
+|currency|[CurrencyString](#common-field-types)|optional|The currency for the payment. `AUD` assumed if not present.|
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingscheduledpaymenttov2">BankingScheduledPaymentToV2</h3>
 <p id="tocSbankingscheduledpaymenttov2" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-banking-apibankingscheduledpaymenttov2"></a>
+<p>
+  <a id="cdr-banking-api_schema-base_bankingscheduledpaymentto"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apibankingscheduledpaymenttov2"></a>
+</p>
 
 ```json
 {
@@ -8394,16 +8604,16 @@ This operation does not require authentication
 
 ```
 
-*Object containing details of the destination of the payment. Used to specify a variety of payment destination types*
+*Object containing details of the destination of the payment. Used to specify a variety of payment destination types.*
 
 <h3 id="cdr-banking-api_bankingscheduledpaymenttov2_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
 |toUType|[Enum](#common-field-types)|mandatory|The type of object provided that specifies the destination of the funds for the payment.|
-|accountId|[ASCIIString](#common-field-types)|conditional|Present if `toUType` is set to `accountId`. Indicates that the payment is to another account that is accessible under the current consent|
-|payeeId|[ASCIIString](#common-field-types)|conditional|Present if `toUType` is set to `payeeId`. Indicates that the payment is to registered payee that can be accessed using the payee endpoint. If the Bank Payees scope has not been consented to then a `payeeId` should not be provided and the full payee details should be provided instead|
-|nickname|string|conditional|The short display name of the payee as provided by the customer unless `toUType` is set to `payeeId`. Where a customer has not provided a nickname, a display name derived by the bank for payee should be provided that is consistent with existing digital banking channels|
+|accountId|[ASCIIString](#common-field-types)|conditional|Present if _toUType_ is set to `accountId`. Indicates that the payment is to another account that is accessible under the current consent.|
+|payeeId|[ASCIIString](#common-field-types)|conditional|Present if _toUType_ is set to `payeeId`. Indicates that the payment is to registered payee that can be accessed using the payee endpoint. If the Bank Payees scope has not been consented to then a _payeeId_ should not be provided and the full payee details should be provided instead.|
+|nickname|string|conditional|The short display name of the payee as provided by the customer unless _toUType_ is set to `payeeId`. Where a customer has not provided a nickname, a display name derived by the bank for payee should be provided that is consistent with existing digital banking channels.|
 |payeeReference|string|conditional|The reference for the transaction, if applicable, that will be provided by the originating institution for the specific payment. If not empty, it overrides the value provided at the BankingScheduledPayment level.|
 |digitalWallet|[BankingDigitalWalletPayee](#schemacdr-banking-apibankingdigitalwalletpayee)|conditional|none|
 |domestic|[BankingDomesticPayee](#schemacdr-banking-apibankingdomesticpayee)|conditional|none|
@@ -8424,7 +8634,10 @@ This operation does not require authentication
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingscheduledpaymentfrom">BankingScheduledPaymentFrom</h3>
 <p id="tocSbankingscheduledpaymentfrom" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-banking-apibankingscheduledpaymentfrom"></a>
+<p>
+  <a id="cdr-banking-api_schema-base_bankingscheduledpaymentfrom"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apibankingscheduledpaymentfrom"></a>
+</p>
 
 ```json
 {
@@ -8433,18 +8646,21 @@ This operation does not require authentication
 
 ```
 
-*Object containing details of the source of the payment. Currently only specifies an account ID but provided as an object to facilitate future extensibility and consistency with the to object*
+*Object containing details of the source of the payment. Currently only specifies an account ID but provided as an object to facilitate future extensibility and consistency with the _to_ object.*
 
 <h3 id="cdr-banking-api_bankingscheduledpaymentfrom_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|accountId|[ASCIIString](#common-field-types)|mandatory|ID of the account that is the source of funds for the payment|
+|accountId|[ASCIIString](#common-field-types)|mandatory|ID of the account that is the source of funds for the payment.|
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingscheduledpaymentrecurrence">BankingScheduledPaymentRecurrence</h3>
 <p id="tocSbankingscheduledpaymentrecurrence" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-banking-apibankingscheduledpaymentrecurrence"></a>
+<p>
+  <a id="cdr-banking-api_schema-base_bankingscheduledpaymentrecurrence"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apibankingscheduledpaymentrecurrence"></a>
+</p>
 
 ```json
 {
@@ -8478,18 +8694,18 @@ This operation does not require authentication
 
 ```
 
-*Object containing the detail of the schedule for the payment*
+*Object containing the detail of the schedule for the payment.*
 
 <h3 id="cdr-banking-api_bankingscheduledpaymentrecurrence_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|nextPaymentDate|[DateString](#common-field-types)|optional|The date of the next payment under the recurrence schedule|
-|recurrenceUType|[Enum](#common-field-types)|mandatory|The type of recurrence used to define the schedule|
-|onceOff|[BankingScheduledPaymentRecurrenceOnceOff](#schemacdr-banking-apibankingscheduledpaymentrecurrenceonceoff)|conditional|Indicates that the payment is a once off payment on a specific future date. Mandatory if recurrenceUType is set to onceOff|
-|intervalSchedule|[BankingScheduledPaymentRecurrenceIntervalSchedule](#schemacdr-banking-apibankingscheduledpaymentrecurrenceintervalschedule)|conditional|Indicates that the schedule of payments is defined by a series of intervals. Mandatory if recurrenceUType is set to intervalSchedule|
-|lastWeekDay|[BankingScheduledPaymentRecurrenceLastWeekday](#schemacdr-banking-apibankingscheduledpaymentrecurrencelastweekday)|conditional|Indicates that the schedule of payments is defined according to the last occurrence of a specific weekday in an interval. Mandatory if recurrenceUType is set to lastWeekDay|
-|eventBased|[BankingScheduledPaymentRecurrenceEventBased](#schemacdr-banking-apibankingscheduledpaymentrecurrenceeventbased)|conditional|Indicates that the schedule of payments is defined according to an external event that cannot be predetermined. Mandatory if recurrenceUType is set to eventBased|
+|nextPaymentDate|[DateString](#common-field-types)|optional|The date of the next payment under the recurrence schedule.|
+|recurrenceUType|[Enum](#common-field-types)|mandatory|The type of recurrence used to define the schedule.|
+|onceOff|[BankingScheduledPaymentRecurrenceOnceOff](#schemacdr-banking-apibankingscheduledpaymentrecurrenceonceoff)|conditional|Indicates that the payment is a once off payment on a specific future date. Mandatory if _recurrenceUType_ is set to `onceOff`.|
+|intervalSchedule|[BankingScheduledPaymentRecurrenceIntervalSchedule](#schemacdr-banking-apibankingscheduledpaymentrecurrenceintervalschedule)|conditional|Indicates that the schedule of payments is defined by a series of intervals. Mandatory if _recurrenceUType_ is set to `intervalSchedule`.|
+|lastWeekDay|[BankingScheduledPaymentRecurrenceLastWeekday](#schemacdr-banking-apibankingscheduledpaymentrecurrencelastweekday)|conditional|Indicates that the schedule of payments is defined according to the last occurrence of a specific weekday in an interval. Mandatory if _recurrenceUType_ is set to `lastWeekDay`.|
+|eventBased|[BankingScheduledPaymentRecurrenceEventBased](#schemacdr-banking-apibankingscheduledpaymentrecurrenceeventbased)|conditional|Indicates that the schedule of payments is defined according to an external event that cannot be predetermined. Mandatory if _recurrenceUType_ is set to `eventBased`.|
 
 <h4 id="cdr-banking-api_bankingscheduledpaymentrecurrence_enumerated-values-main">Enumerated Values</h4>
 
@@ -8503,7 +8719,10 @@ This operation does not require authentication
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingscheduledpaymentrecurrenceonceoff">BankingScheduledPaymentRecurrenceOnceOff</h3>
 <p id="tocSbankingscheduledpaymentrecurrenceonceoff" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-banking-apibankingscheduledpaymentrecurrenceonceoff"></a>
+<p>
+  <a id="cdr-banking-api_schema-base_bankingscheduledpaymentrecurrenceonceoff"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apibankingscheduledpaymentrecurrenceonceoff"></a>
+</p>
 
 ```json
 {
@@ -8512,18 +8731,21 @@ This operation does not require authentication
 
 ```
 
-*Indicates that the payment is a once off payment on a specific future date. Mandatory if recurrenceUType is set to onceOff*
+*Indicates that the payment is a once off payment on a specific future date. Mandatory if _recurrenceUType_ is set to `onceOff`.*
 
 <h3 id="cdr-banking-api_bankingscheduledpaymentrecurrenceonceoff_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|paymentDate|[DateString](#common-field-types)|mandatory|The scheduled date for the once off payment|
+|paymentDate|[DateString](#common-field-types)|mandatory|The scheduled date for the once off payment.|
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingscheduledpaymentrecurrenceintervalschedule">BankingScheduledPaymentRecurrenceIntervalSchedule</h3>
 <p id="tocSbankingscheduledpaymentrecurrenceintervalschedule" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-banking-apibankingscheduledpaymentrecurrenceintervalschedule"></a>
+<p>
+  <a id="cdr-banking-api_schema-base_bankingscheduledpaymentrecurrenceintervalschedule"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apibankingscheduledpaymentrecurrenceintervalschedule"></a>
+</p>
 
 ```json
 {
@@ -8540,16 +8762,16 @@ This operation does not require authentication
 
 ```
 
-*Indicates that the schedule of payments is defined by a series of intervals. Mandatory if recurrenceUType is set to intervalSchedule*
+*Indicates that the schedule of payments is defined by a series of intervals. Mandatory if _recurrenceUType_ is set to `intervalSchedule`.*
 
 <h3 id="cdr-banking-api_bankingscheduledpaymentrecurrenceintervalschedule_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|finalPaymentDate|[DateString](#common-field-types)|optional|The limit date after which no more payments should be made using this schedule. If both finalPaymentDate and paymentsRemaining are present then payments will stop according to the most constraining value. If neither field is present the payments will continue indefinitely|
-|paymentsRemaining|[PositiveInteger](#common-field-types)|optional|Indicates the number of payments remaining in the schedule. If both finalPaymentDate and paymentsRemaining are present then payments will stop according to the most constraining value, If neither field is present the payments will continue indefinitely|
-|nonBusinessDayTreatment|[Enum](#common-field-types)|optional|Enumerated field giving the treatment where a scheduled payment date is not a business day. If absent assumed to be `ON`.<br/>**AFTER** - If a scheduled payment date is a non-business day the payment will be made on the first business day after the scheduled payment date.<br/>**BEFORE** - If a scheduled payment date is a non-business day the payment will be made on the first business day before the scheduled payment date.<br/>**ON** - If a scheduled payment date is a non-business day the payment will be made on that day regardless.<br/>**ONLY** - Payments only occur on business days. If a scheduled payment date is a non-business day the payment will be ignored|
-|intervals|[[BankingScheduledPaymentInterval](#schemacdr-banking-apibankingscheduledpaymentinterval)]|mandatory|An array of interval objects defining the payment schedule.  Each entry in the array is additive, in that it adds payments to the overall payment schedule.  If multiple intervals result in a payment on the same day then only one payment will be made. Must have at least one entry|
+|finalPaymentDate|[DateString](#common-field-types)|optional|The limit date after which no more payments should be made using this schedule. If both _finalPaymentDate_ and _paymentsRemaining_ are present then payments will stop according to the most constraining value. If neither field is present the payments will continue indefinitely.|
+|paymentsRemaining|[PositiveInteger](#common-field-types)|optional|Indicates the number of payments remaining in the schedule. If both _finalPaymentDate_ and _paymentsRemaining_ are present then payments will stop according to the most constraining value, If neither field is present the payments will continue indefinitely.|
+|nonBusinessDayTreatment|[Enum](#common-field-types)|optional|Enumerated field giving the treatment where a scheduled payment date is not a business day. If absent assumed to be `ON`.<ul><li>`AFTER` - If a scheduled payment date is a non-business day the payment will be made on the first business day after the scheduled payment date.<li>`BEFORE` - If a scheduled payment date is a non-business day the payment will be made on the first business day before the scheduled payment date.<li>`ON` - If a scheduled payment date is a non-business day the payment will be made on that day regardless.<li>`ONLY` - Payments only occur on business days. If a scheduled payment date is a non-business day the payment will be ignored</ul>|
+|intervals|[[BankingScheduledPaymentInterval](#schemacdr-banking-apibankingscheduledpaymentinterval)]|mandatory|An array of interval objects defining the payment schedule. Each entry in the array is additive, in that it adds payments to the overall payment schedule. If multiple intervals result in a payment on the same day then only one payment will be made. Must have at least one entry.|
 
 <h4 id="cdr-banking-api_bankingscheduledpaymentrecurrenceintervalschedule_enumerated-values-main">Enumerated Values</h4>
 
@@ -8563,7 +8785,10 @@ This operation does not require authentication
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingscheduledpaymentinterval">BankingScheduledPaymentInterval</h3>
 <p id="tocSbankingscheduledpaymentinterval" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-banking-apibankingscheduledpaymentinterval"></a>
+<p>
+  <a id="cdr-banking-api_schema-base_bankingscheduledpaymentinterval"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apibankingscheduledpaymentinterval"></a>
+</p>
 
 ```json
 {
@@ -8577,13 +8802,16 @@ This operation does not require authentication
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|interval|[ExternalRef](#common-field-types)|mandatory|An interval for the payment. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)  (excludes recurrence syntax) with components less than a day in length ignored. This duration defines the period between payments starting with nextPaymentDate|
-|dayInInterval|[ExternalRef](#common-field-types)|optional|Uses an interval to define the ordinal day within the interval defined by the interval field on which the payment occurs. If the resulting duration is 0 days in length or larger than the number of days in the interval then the payment will occur on the last day of the interval. A duration of 1 day indicates the first day of the interval. If absent the assumed value is P1D. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax) with components less than a day in length ignored. The first day of a week is considered to be Monday.|
+|interval|[ExternalRef](#common-field-types)|mandatory|An interval for the payment. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax) with components less than a day in length ignored. This duration defines the period between payments starting with _nextPaymentDate_.|
+|dayInInterval|[ExternalRef](#common-field-types)|optional|Uses an interval to define the ordinal day within the interval defined by the interval field on which the payment occurs. If the resulting duration is 0 days in length or larger than the number of days in the interval then the payment will occur on the last day of the interval. A duration of 1 day indicates the first day of the interval. If absent the assumed value is `P1D`. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax) with components less than a day in length ignored. The first day of a week is considered to be Monday.|
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingscheduledpaymentrecurrencelastweekday">BankingScheduledPaymentRecurrenceLastWeekday</h3>
 <p id="tocSbankingscheduledpaymentrecurrencelastweekday" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-banking-apibankingscheduledpaymentrecurrencelastweekday"></a>
+<p>
+  <a id="cdr-banking-api_schema-base_bankingscheduledpaymentrecurrencelastweekday"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apibankingscheduledpaymentrecurrencelastweekday"></a>
+</p>
 
 ```json
 {
@@ -8596,17 +8824,17 @@ This operation does not require authentication
 
 ```
 
-*Indicates that the schedule of payments is defined according to the last occurrence of a specific weekday in an interval. Mandatory if recurrenceUType is set to lastWeekDay*
+*Indicates that the schedule of payments is defined according to the last occurrence of a specific weekday in an interval. Mandatory if _recurrenceUType_ is set to `lastWeekDay`.*
 
 <h3 id="cdr-banking-api_bankingscheduledpaymentrecurrencelastweekday_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|finalPaymentDate|[DateString](#common-field-types)|optional|The limit date after which no more payments should be made using this schedule. If both finalPaymentDate and paymentsRemaining are present then payments will stop according to the most constraining value. If neither field is present the payments will continue indefinitely|
-|paymentsRemaining|[PositiveInteger](#common-field-types)|optional|Indicates the number of payments remaining in the schedule. If both finalPaymentDate and paymentsRemaining are present then payments will stop according to the most constraining value. If neither field is present the payments will continue indefinitely|
-|interval|[ExternalRef](#common-field-types)|mandatory|The interval for the payment. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax) with components less than a day in length ignored. This duration defines the period between payments starting with nextPaymentDate|
+|finalPaymentDate|[DateString](#common-field-types)|optional|The limit date after which no more payments should be made using this schedule. If both _finalPaymentDate_ and _paymentsRemaining_ are present then payments will stop according to the most constraining value. If neither field is present the payments will continue indefinitely.|
+|paymentsRemaining|[PositiveInteger](#common-field-types)|optional|Indicates the number of payments remaining in the schedule. If both _finalPaymentDate_ and _paymentsRemaining_ are present then payments will stop according to the most constraining value. If neither field is present the payments will continue indefinitely.|
+|interval|[ExternalRef](#common-field-types)|mandatory|The interval for the payment. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax) with components less than a day in length ignored. This duration defines the period between payments starting with _nextPaymentDate_.|
 |lastWeekDay|[Enum](#common-field-types)|mandatory|The weekDay specified. The payment will occur on the last occurrence of this weekday in the interval.|
-|nonBusinessDayTreatment|[Enum](#common-field-types)|optional|Enumerated field giving the treatment where a scheduled payment date is not a business day. If absent assumed to be `ON`.<br/>**AFTER** - If a scheduled payment date is a non-business day the payment will be made on the first business day after the scheduled payment date.<br/>**BEFORE** - If a scheduled payment date is a non-business day the payment will be made on the first business day before the scheduled payment date.<br/>**ON** - If a scheduled payment date is a non-business day the payment will be made on that day regardless.<br/>**ONLY** - Payments only occur on business days. If a scheduled payment date is a non-business day the payment will be ignored|
+|nonBusinessDayTreatment|[Enum](#common-field-types)|optional|Enumerated field giving the treatment where a scheduled payment date is not a business day. If absent assumed to be `ON`.<ul><li>`AFTER` - If a scheduled payment date is a non-business day the payment will be made on the first business day after the scheduled payment date.<li>`BEFORE` - If a scheduled payment date is a non-business day the payment will be made on the first business day before the scheduled payment date.<li>`ON` - If a scheduled payment date is a non-business day the payment will be made on that day regardless.<li>`ONLY` - Payments only occur on business days. If a scheduled payment date is a non-business day the payment will be ignored.</ul>|
 
 <h4 id="cdr-banking-api_bankingscheduledpaymentrecurrencelastweekday_enumerated-values-main">Enumerated Values</h4>
 
@@ -8627,7 +8855,10 @@ This operation does not require authentication
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingscheduledpaymentrecurrenceeventbased">BankingScheduledPaymentRecurrenceEventBased</h3>
 <p id="tocSbankingscheduledpaymentrecurrenceeventbased" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-banking-apibankingscheduledpaymentrecurrenceeventbased"></a>
+<p>
+  <a id="cdr-banking-api_schema-base_bankingscheduledpaymentrecurrenceeventbased"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apibankingscheduledpaymentrecurrenceeventbased"></a>
+</p>
 
 ```json
 {
@@ -8636,18 +8867,21 @@ This operation does not require authentication
 
 ```
 
-*Indicates that the schedule of payments is defined according to an external event that cannot be predetermined. Mandatory if recurrenceUType is set to eventBased*
+*Indicates that the schedule of payments is defined according to an external event that cannot be predetermined. Mandatory if _recurrenceUType_ is set to `eventBased`.*
 
 <h3 id="cdr-banking-api_bankingscheduledpaymentrecurrenceeventbased_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|description|string|mandatory|Description of the event and conditions that will result in the payment. Expected to be formatted for display to a customer|
+|description|string|mandatory|Description of the event and conditions that will result in the payment. Expected to be formatted for display to a customer.|
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocScommonphysicaladdress">CommonPhysicalAddress</h3>
 <p id="tocScommonphysicaladdress" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-banking-apicommonphysicaladdress"></a>
+<p>
+  <a id="cdr-banking-api_schema-base_commonphysicaladdress"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apicommonphysicaladdress"></a>
+</p>
 
 ```json
 {
@@ -8694,9 +8928,9 @@ This operation does not require authentication
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|addressUType|[Enum](#common-field-types)|mandatory|The type of address object present|
+|addressUType|[Enum](#common-field-types)|mandatory|The type of address object present.|
 |simple|[CommonSimpleAddress](#schemacdr-banking-apicommonsimpleaddress)|conditional|none|
-|paf|[CommonPAFAddress](#schemacdr-banking-apicommonpafaddress)|conditional|Australian address formatted according to the file format defined by the [PAF file format](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf)|
+|paf|[CommonPAFAddress](#schemacdr-banking-apicommonpafaddress)|conditional|Australian address formatted according to the file format defined by the [PAF file format](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf).|
 
 <h4 id="cdr-banking-api_commonphysicaladdress_enumerated-values-main">Enumerated Values</h4>
 
@@ -8708,7 +8942,10 @@ This operation does not require authentication
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocScommonsimpleaddress">CommonSimpleAddress</h3>
 <p id="tocScommonsimpleaddress" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-banking-apicommonsimpleaddress"></a>
+<p>
+  <a id="cdr-banking-api_schema-base_commonsimpleaddress"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apicommonsimpleaddress"></a>
+</p>
 
 ```json
 {
@@ -8728,19 +8965,22 @@ This operation does not require authentication
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|mailingName|string|optional|Name of the individual or business formatted for inclusion in an address used for physical mail|
-|addressLine1|string|mandatory|First line of the standard address object|
-|addressLine2|string|optional|Second line of the standard address object|
-|addressLine3|string|optional|Third line of the standard address object|
-|postcode|string|conditional|Mandatory for Australian addresses|
-|city|string|mandatory|Name of the city or locality|
-|state|string|mandatory|Free text if the country is not Australia. If country is Australia then must be one of the values defined by the [State Type Abbreviation](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf) in the PAF file format. NSW, QLD, VIC, NT, WA, SA, TAS, ACT, AAT|
-|country|[ExternalRef](#common-field-types)|optional|A valid [ISO 3166 Alpha-3](https://www.iso.org/iso-3166-country-codes.html) country code. Australia (AUS) is assumed if country is not present.|
+|mailingName|string|optional|Name of the individual or business formatted for inclusion in an address used for physical mail.|
+|addressLine1|string|mandatory|First line of the standard address object.|
+|addressLine2|string|optional|Second line of the standard address object.|
+|addressLine3|string|optional|Third line of the standard address object.|
+|postcode|string|conditional|Mandatory for Australian addresses.|
+|city|string|mandatory|Name of the city or locality.|
+|state|string|mandatory|Free text if the country is not Australia. If country is Australia then must be one of the values defined by the [State Type Abbreviation](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf) in the PAF file format. `NSW`, `QLD`, `VIC`, `NT`, `WA`, `SA`, `TAS`, `ACT`, `AAT`.|
+|country|[ExternalRef](#common-field-types)|optional|A valid [ISO 3166 Alpha-3](https://www.iso.org/iso-3166-country-codes.html) country code. Australia (`AUS`) is assumed if country is not present.|
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocScommonpafaddress">CommonPAFAddress</h3>
 <p id="tocScommonpafaddress" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-banking-apicommonpafaddress"></a>
+<p>
+  <a id="cdr-banking-api_schema-base_commonpafaddress"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apicommonpafaddress"></a>
+</p>
 
 ```json
 {
@@ -8770,39 +9010,42 @@ This operation does not require authentication
 
 ```
 
-*Australian address formatted according to the file format defined by the [PAF file format](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf)*
+*Australian address formatted according to the file format defined by the [PAF file format](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf).*
 
 <h3 id="cdr-banking-api_commonpafaddress_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|dpid|string|optional|Unique identifier for an address as defined by Australia Post.  Also known as Delivery Point Identifier|
-|thoroughfareNumber1|[PositiveInteger](#common-field-types)|optional|Thoroughfare number for a property (first number in a property ranged address)|
-|thoroughfareNumber1Suffix|string|optional|Suffix for the thoroughfare number. Only relevant is thoroughfareNumber1 is populated|
-|thoroughfareNumber2|[PositiveInteger](#common-field-types)|optional|Second thoroughfare number (only used if the property has a ranged address eg 23-25)|
-|thoroughfareNumber2Suffix|string|optional|Suffix for the second thoroughfare number. Only relevant is thoroughfareNumber2 is populated|
-|flatUnitType|string|optional|Type of flat or unit for the address|
-|flatUnitNumber|string|optional|Unit number (including suffix, if applicable)|
-|floorLevelType|string|optional|Type of floor or level for the address|
-|floorLevelNumber|string|optional|Floor or level number (including alpha characters)|
-|lotNumber|string|optional|Allotment number for the address|
-|buildingName1|string|optional|Building/Property name 1|
-|buildingName2|string|optional|Building/Property name 2|
-|streetName|string|optional|The name of the street|
-|streetType|string|optional|The street type. Valid enumeration defined by Australia Post PAF code file|
-|streetSuffix|string|optional|The street type suffix. Valid enumeration defined by Australia Post PAF code file|
-|postalDeliveryType|string|optional|Postal delivery type. (eg. PO BOX). Valid enumeration defined by Australia Post PAF code file|
-|postalDeliveryNumber|[PositiveInteger](#common-field-types)|optional|Postal delivery number if the address is a postal delivery type|
-|postalDeliveryNumberPrefix|string|optional|Postal delivery number prefix related to the postal delivery number|
-|postalDeliveryNumberSuffix|string|optional|Postal delivery number suffix related to the postal delivery number|
-|localityName|string|mandatory|Full name of locality|
-|postcode|string|mandatory|Postcode for the locality|
-|state|string|mandatory|State in which the address belongs. Valid enumeration defined by Australia Post PAF code file [State Type Abbreviation](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf). NSW, QLD, VIC, NT, WA, SA, TAS, ACT, AAT|
+|dpid|string|optional|Unique identifier for an address as defined by Australia Post. Also known as Delivery Point Identifier.|
+|thoroughfareNumber1|[PositiveInteger](#common-field-types)|optional|Thoroughfare number for a property (first number in a property ranged address).|
+|thoroughfareNumber1Suffix|string|optional|Suffix for the thoroughfare number. Only relevant is _thoroughfareNumber1_ is populated.|
+|thoroughfareNumber2|[PositiveInteger](#common-field-types)|optional|Second thoroughfare number (only used if the property has a ranged address, e.g., 23-25).|
+|thoroughfareNumber2Suffix|string|optional|Suffix for the second thoroughfare number. Only relevant is _thoroughfareNumber2_ is populated.|
+|flatUnitType|string|optional|Type of flat or unit for the address.|
+|flatUnitNumber|string|optional|Unit number (including suffix, if applicable).|
+|floorLevelType|string|optional|Type of floor or level for the address.|
+|floorLevelNumber|string|optional|Floor or level number (including alpha characters).|
+|lotNumber|string|optional|Allotment number for the address.|
+|buildingName1|string|optional|Building/Property name 1.|
+|buildingName2|string|optional|Building/Property name 2.|
+|streetName|string|optional|The name of the street.|
+|streetType|string|optional|The street type. Valid enumeration defined by Australia Post PAF code file.|
+|streetSuffix|string|optional|The street type suffix. Valid enumeration defined by Australia Post PAF code file.|
+|postalDeliveryType|string|optional|Postal delivery type. (e.g., PO BOX). Valid enumeration defined by Australia Post PAF code file.|
+|postalDeliveryNumber|[PositiveInteger](#common-field-types)|optional|Postal delivery number if the address is a postal delivery type.|
+|postalDeliveryNumberPrefix|string|optional|Postal delivery number prefix related to the postal delivery number.|
+|postalDeliveryNumberSuffix|string|optional|Postal delivery number suffix related to the postal delivery number.|
+|localityName|string|mandatory|Full name of locality.|
+|postcode|string|mandatory|Postcode for the locality.|
+|state|string|mandatory|State in which the address belongs. Valid enumeration defined by Australia Post PAF code file [State Type Abbreviation](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf). `NSW`, `QLD`, `VIC`, `NT`, `WA`, `SA`, `TAS`, `ACT`, `AAT`.|
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSlinks">Links</h3>
 <p id="tocSlinks" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-banking-apilinks"></a>
+<p>
+  <a id="cdr-banking-api_schema-base_links"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apilinks"></a>
+</p>
 
 ```json
 {
@@ -8815,12 +9058,15 @@ This operation does not require authentication
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|self|[URIString](#common-field-types)|mandatory|Fully qualified link that generated the current response document|
+|self|[URIString](#common-field-types)|mandatory|Fully qualified link that generated the current response document.|
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSmeta">Meta</h3>
 <p id="tocSmeta" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-banking-apimeta"></a>
+<p>
+  <a id="cdr-banking-api_schema-base_meta"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apimeta"></a>
+</p>
 
 ```json
 {}
@@ -8834,7 +9080,10 @@ This operation does not require authentication
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSlinkspaginated">LinksPaginated</h3>
 <p id="tocSlinkspaginated" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-banking-apilinkspaginated"></a>
+<p>
+  <a id="cdr-banking-api_schema-base_linkspaginated"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apilinkspaginated"></a>
+</p>
 
 ```json
 {
@@ -8851,16 +9100,19 @@ This operation does not require authentication
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|self|[URIString](#common-field-types)|mandatory|Fully qualified link that generated the current response document|
-|first|[URIString](#common-field-types)|conditional|URI to the first page of this set. Mandatory if this response is not the first page|
-|prev|[URIString](#common-field-types)|conditional|URI to the previous page of this set. Mandatory if this response is not the first page|
-|next|[URIString](#common-field-types)|conditional|URI to the next page of this set. Mandatory if this response is not the last page|
-|last|[URIString](#common-field-types)|conditional|URI to the last page of this set. Mandatory if this response is not the last page|
+|self|[URIString](#common-field-types)|mandatory|Fully qualified link that generated the current response document.|
+|first|[URIString](#common-field-types)|conditional|URI to the first page of this set. Mandatory if this response is not the first page.|
+|prev|[URIString](#common-field-types)|conditional|URI to the previous page of this set. Mandatory if this response is not the first page.|
+|next|[URIString](#common-field-types)|conditional|URI to the next page of this set. Mandatory if this response is not the last page.|
+|last|[URIString](#common-field-types)|conditional|URI to the last page of this set. Mandatory if this response is not the last page.|
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSmetapaginated">MetaPaginated</h3>
 <p id="tocSmetapaginated" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-banking-apimetapaginated"></a>
+<p>
+  <a id="cdr-banking-api_schema-base_metapaginated"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apimetapaginated"></a>
+</p>
 
 ```json
 {
@@ -8880,7 +9132,10 @@ This operation does not require authentication
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSmetapaginatedtransaction">MetaPaginatedTransaction</h3>
 <p id="tocSmetapaginatedtransaction" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-banking-apimetapaginatedtransaction"></a>
+<p>
+  <a id="cdr-banking-api_schema-base_metapaginatedtransaction"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apimetapaginatedtransaction"></a>
+</p>
 
 ```json
 {
@@ -8904,12 +9159,15 @@ This operation does not require authentication
 |Name|Type|Required|Description|
 |---|---|---|---|
 |*anonymous*|object|mandatory|none|
-|» isQueryParamUnsupported|[Boolean](#common-field-types)|optional|**true** if *"text"* query parameter is not supported|
+|» isQueryParamUnsupported|[Boolean](#common-field-types)|optional|`true` if _text_ query parameter is not supported.|
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSmetaerror">MetaError</h3>
 <p id="tocSmetaerror" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-banking-apimetaerror"></a>
+<p>
+  <a id="cdr-banking-api_schema-base_metaerror"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apimetaerror"></a>
+</p>
 
 ```json
 {
@@ -8918,18 +9176,21 @@ This operation does not require authentication
 
 ```
 
-*Additional data for customised error codes*
+*Additional data for customised error codes.*
 
 <h3 id="cdr-banking-api_metaerror_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|urn|string|conditional|The CDR error code URN which the application-specific error code extends. Mandatory if the error `code` is an application-specific error rather than a standardised error code.|
+|urn|string|conditional|The CDR error code URN which the application-specific error code extends. Mandatory if the error _code_ is an application-specific error rather than a standardised error code.|
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSresponseerrorlistv2">ResponseErrorListV2</h3>
 <p id="tocSresponseerrorlistv2" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-banking-apiresponseerrorlistv2"></a>
+<p>
+  <a id="cdr-banking-api_schema-base_responseerrorlist"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apiresponseerrorlistv2"></a>
+</p>
 
 ```json
 {
@@ -8955,25 +9216,28 @@ This operation does not require authentication
 |» code|string|mandatory|The code of the error encountered. Where the error is specific to the respondent, an application-specific error code, expressed as a string value. If the error is application-specific, the URN code that the specific error extends must be provided in the meta object. Otherwise, the value is the error code URN.|
 |» title|string|mandatory|A short, human-readable summary of the problem that MUST NOT change from occurrence to occurrence of the problem represented by the error code.|
 |» detail|string|mandatory|A human-readable explanation specific to this occurrence of the problem.|
-|» meta|[MetaError](#schemacdr-banking-apimetaerror)|optional|Additional data for customised error codes|
+|» meta|[MetaError](#schemacdr-banking-apimetaerror)|optional|Additional data for customised error codes.|
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingproductcategoryv2">BankingProductCategoryV2</h3>
 <p id="tocSbankingproductcategoryv2" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-banking-apibankingproductcategoryv2"></a>
+<p>
+  <a id="cdr-banking-api_schema-base_bankingproductcategory"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apibankingproductcategoryv2"></a>
+</p>
 
 ```json
 "BUSINESS_LOANS"
 
 ```
 
-*The category to which a product or account belongs. See [here](#product-categories) for more details*
+*The category to which a product or account belongs. See [here](#product-categories) for more details.*
 
 <h3 id="cdr-banking-api_bankingproductcategoryv2_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|*anonymous*|[Enum](#common-field-types)|mandatory|The category to which a product or account belongs. See [here](#product-categories) for more details|
+|*anonymous*|[Enum](#common-field-types)|mandatory|The category to which a product or account belongs. See [here](#product-categories) for more details.|
 
 <h4 id="cdr-banking-api_bankingproductcategoryv2_enumerated-values-main">Enumerated Values</h4>
 
